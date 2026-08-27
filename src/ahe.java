@@ -1,13 +1,8 @@
-public final class ahe extends RuntimeException {
-   public static final ahe a = new ahe();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private ahe() {
-      this.setStackTrace(new StackTraceElement[0]);
-   }
-
-   @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ahe {
 }

@@ -1,180 +1,140 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import com.mojang.serialization.Lifecycle;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 
-public interface ij<T> extends Iterable<ie<T>> {
-   Stream<ie<T>> a();
+public interface ij<T> extends ii<T> {
+   Stream<ih.c<T>> b();
 
-   int b();
-
-   Either<asg<T>, List<ie<T>>> c();
-
-   Optional<ie<T>> a(auf var1);
-
-   ie<T> a(int var1);
-
-   boolean a(ie<T> var1);
-
-   boolean a(ii<T> var1);
-
-   Optional<asg<T>> d();
-
-   @Deprecated
-   @VisibleForTesting
-   static <T> ij.c<T> a(ii<T> $$0, asg<T> $$1) {
-      return new ij.c<>($$0, $$1);
+   default Stream<ahc<T>> c() {
+      return this.b().map(ih.c::g);
    }
 
-   @SafeVarargs
-   static <T> ij.a<T> a(ie<T>... $$0) {
-      return new ij.a<>(List.of($$0));
+   Stream<il.c<T>> d();
+
+   default Stream<asq<T>> e() {
+      return this.d().map(il.c::f);
    }
 
-   static <T> ij.a<T> a(List<? extends ie<T>> $$0) {
-      return new ij.a<>(List.copyOf($$0));
-   }
-
-   @SafeVarargs
-   static <E, T> ij.a<T> a(Function<E, ie<T>> $$0, E... $$1) {
-      return a(Stream.of($$1).map($$0).toList());
-   }
-
-   static <E, T> ij.a<T> a(Function<E, ie<T>> $$0, Collection<E> $$1) {
-      return a($$1.stream().map($$0).toList());
-   }
-
-   public static class a<T> extends ij.b<T> {
-      private final List<ie<T>> a;
-      @Nullable
-      private Set<ie<T>> b;
-
-      a(List<ie<T>> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      protected List<ie<T>> e() {
-         return this.a;
-      }
-
-      @Override
-      public Either<asg<T>, List<ie<T>>> c() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public Optional<asg<T>> d() {
-         return Optional.empty();
-      }
-
-      @Override
-      public boolean a(ie<T> $$0) {
-         if (this.b == null) {
-            this.b = Set.copyOf(this.a);
+   default ij<T> a(final Predicate<T> $$0) {
+      return new ij.a<T>(this) {
+         @Override
+         public Optional<ih.c<T>> a(ahc<T> $$0x) {
+            return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
          }
 
-         return this.b.contains($$0);
+         @Override
+         public Stream<ih.c<T>> b() {
+            return this.c.b().filter($$1 -> $$0.test($$1.a()));
+         }
+      };
+   }
+
+   public static class a<T> implements ij<T> {
+      protected final ij<T> c;
+
+      public a(ij<T> $$0) {
+         this.c = $$0;
       }
 
       @Override
-      public String toString() {
-         return "DirectSet[" + this.a + "]";
+      public Optional<ih.c<T>> a(ahc<T> $$0) {
+         return this.c.a($$0);
+      }
+
+      @Override
+      public Stream<ih.c<T>> b() {
+         return this.c.b();
+      }
+
+      @Override
+      public Optional<il.c<T>> a(asq<T> $$0) {
+         return this.c.a($$0);
+      }
+
+      @Override
+      public Stream<il.c<T>> d() {
+         return this.c.d();
       }
    }
 
-   public abstract static class b<T> implements ij<T> {
-      protected abstract List<ie<T>> e();
+   public interface b {
+      Stream<ahc<? extends it<?>>> a();
 
-      @Override
-      public int b() {
-         return this.e().size();
+      <T> Optional<ij.c<T>> a(ahc<? extends it<? extends T>> var1);
+
+      default <T> ij.c<T> b(ahc<? extends it<? extends T>> $$0) {
+         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
-      @Override
-      public Spliterator<ie<T>> spliterator() {
-         return this.e().spliterator();
+      default ii.a b() {
+         return new ii.a() {
+            @Override
+            public <T> Optional<ii<T>> a(ahc<? extends it<? extends T>> $$0) {
+               return b.this.a($$0).map($$0x -> $$0x);
+            }
+         };
       }
 
-      @Override
-      public Iterator<ie<T>> iterator() {
-         return this.e().iterator();
-      }
+      static ij.b a(Stream<ij.c<?>> $$0) {
+         final Map<ahc<? extends it<?>>, ij.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(ij.c::f, $$0x -> $$0x));
+         return new ij.b() {
+            @Override
+            public Stream<ahc<? extends it<?>>> a() {
+               return $$1.keySet().stream();
+            }
 
-      @Override
-      public Stream<ie<T>> a() {
-         return this.e().stream();
-      }
-
-      @Override
-      public Optional<ie<T>> a(auf $$0) {
-         return ac.b(this.e(), $$0);
-      }
-
-      @Override
-      public ie<T> a(int $$0) {
-         return this.e().get($$0);
-      }
-
-      @Override
-      public boolean a(ii<T> $$0) {
-         return true;
+            @Override
+            public <T> Optional<ij.c<T>> a(ahc<? extends it<? extends T>> $$0) {
+               return Optional.ofNullable((ij.c<T>)$$1.get($$0));
+            }
+         };
       }
    }
 
-   public static class c<T> extends ij.b<T> {
-      private final ii<T> a;
-      private final asg<T> b;
-      private List<ie<T>> c = List.of();
+   public interface c<T> extends ij<T>, ik<T> {
+      ahc<? extends it<? extends T>> f();
 
-      c(ii<T> $$0, asg<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      Lifecycle g();
+
+      default ij<T> a(chl $$0) {
+         return (ij<T>)(chi.bx.contains(this.f()) ? this.a($$1 -> ((chi)$$1).a($$0)) : this);
       }
 
-      void b(List<ie<T>> $$0) {
-         this.c = List.copyOf($$0);
-      }
+      public abstract static class a<T> implements ij.c<T> {
+         protected abstract ij.c<T> a();
 
-      public asg<T> f() {
-         return this.b;
-      }
+         @Override
+         public ahc<? extends it<? extends T>> f() {
+            return this.a().f();
+         }
 
-      @Override
-      protected List<ie<T>> e() {
-         return this.c;
-      }
+         @Override
+         public Lifecycle g() {
+            return this.a().g();
+         }
 
-      @Override
-      public Either<asg<T>, List<ie<T>>> c() {
-         return Either.left(this.b);
-      }
+         @Override
+         public Optional<ih.c<T>> a(ahc<T> $$0) {
+            return this.a().a($$0);
+         }
 
-      @Override
-      public Optional<asg<T>> d() {
-         return Optional.of(this.b);
-      }
+         @Override
+         public Stream<ih.c<T>> b() {
+            return this.a().b();
+         }
 
-      @Override
-      public boolean a(ie<T> $$0) {
-         return $$0.a(this.b);
-      }
+         @Override
+         public Optional<il.c<T>> a(asq<T> $$0) {
+            return this.a().a($$0);
+         }
 
-      @Override
-      public String toString() {
-         return "NamedSet(" + this.b + ")[" + this.c + "]";
-      }
-
-      @Override
-      public boolean a(ii<T> $$0) {
-         return this.a.a($$0);
+         @Override
+         public Stream<il.c<T>> d() {
+            return this.a().d();
+         }
       }
    }
 }

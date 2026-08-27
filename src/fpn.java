@@ -1,51 +1,81 @@
-public class fpn extends fqw {
-   fpn(fmt $$0, double $$1, double $$2, double $$3) {
+public class fpn extends frn {
+   fpn(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
+      this.B = 0.7F;
+      this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
       this.n = false;
-   }
-
-   @Override
-   public fqa b() {
-      return fqa.b;
+      this.a();
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * aty.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * aui.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+   @Override
+   public void a() {
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
+   }
 
-      public a(fqr $$0) {
+   @Override
+   public fqr b() {
+      return fqr.b;
+   }
+
+   public static class a implements fqq<ka> {
+      private final fri a;
+
+      public a(fri $$0) {
          this.a = $$0;
       }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpn $$8 = new fpn($$1, $$2, $$3 + 0.5, $$4);
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpn $$8 = new fpn($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
          $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
          return $$8;
       }
    }
 
-   public static class b implements fpz<jy> {
-      private final fqr a;
+   public static class b implements fqq<ka> {
+      private final fri a;
 
-      public b(fqr $$0) {
+      public b(fri $$0) {
          this.a = $$0;
       }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpn $$8 = new fpn($$1, $$2, $$3, $$4);
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpn $$8 = new fpn($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements fqq<ka> {
+      private final fri a;
+
+      public c(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpn $$8 = new fpn($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;
       }

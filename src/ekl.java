@@ -1,32 +1,61 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class ekl implements ekm<MinecraftServer> {
-   final agt a;
+public record ekl(ekr b, String c, float d) implements ekj {
+   public static final Codec<ekl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eks.a.fieldOf("target").forGetter(ekl::c),
+               Codec.STRING.fieldOf("score").forGetter(ekl::d),
+               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(ekl::e)
+            )
+            .apply($$0, ekl::new)
+   );
 
-   public ekl(agt $$0) {
-      this.a = $$0;
+   @Override
+   public eki b() {
+      return ekk.e;
    }
 
-   public void a(MinecraftServer $$0, eko<MinecraftServer> $$1, long $$2) {
-      ahh $$3 = $$0.aC();
+   @Override
+   public Set<eix<?>> a() {
+      return this.b.b();
+   }
 
-      for (gz<ds> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
+   public static ekl a(egp.b $$0, String $$1) {
+      return a($$0, $$1, 1.0F);
+   }
+
+   public static ekl a(egp.b $$0, String $$1, float $$2) {
+      return new ekl(eko.a($$0), $$1, $$2);
+   }
+
+   @Override
+   public float b(egp $$0) {
+      emp $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         return 0.0F;
+      } else {
+         emq $$2 = $$0.d().f();
+         emi $$3 = $$2.a(this.c);
+         if ($$3 == null) {
+            return 0.0F;
+         } else {
+            emm $$4 = $$2.d($$1, $$3);
+            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+         }
       }
    }
 
-   public static class a extends ekm.a<MinecraftServer, ekl> {
-      public a() {
-         super(new agt("function_tag"), ekl.class);
-      }
+   public ekr c() {
+      return this.b;
+   }
 
-      public void a(sj $$0, ekl $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   public String d() {
+      return this.c;
+   }
 
-      public ekl a(sj $$0) {
-         agt $$1 = new agt($$0.l("Name"));
-         return new ekl($$1);
-      }
+   public float e() {
+      return this.d;
    }
 }

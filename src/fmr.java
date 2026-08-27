@@ -1,66 +1,30 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fmr {
+   public static final fmr a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
+   public final float f;
+   public final float g;
 
-public class fmr extends fmq implements uq, yh {
-   private static final Logger g = LogUtils.getLogger();
-   private final GameProfile h;
-   private is.b i;
-   private chb j;
-
-   public fmr(euk $$0, uc $$1, fmx $$2) {
-      super($$0, $$1, $$2);
-      this.h = $$2.a();
-      this.i = $$2.c();
-      this.j = $$2.d();
+   private fmr(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   @Override
-   public boolean c() {
-      return this.b.k();
+   public static fmr a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   @Override
-   protected is.b f() {
-      return this.i;
+   public static fmr b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(xo $$0) {
-      this.b($$0);
-   }
-
-   private void b(xo $$0) {
-      g.warn("Unknown custom packet payload: {}", $$0.a());
-   }
-
-   @Override
-   public void a(yj $$0) {
-      ww.a($$0, this, this.a);
-      is.b $$1 = fmv.a().a(fmv.b, $$0.a()).a();
-      if (!this.b.g()) {
-         $$1.c().forEach($$0x -> $$0x.b().m());
-      }
-
-      this.i = $$1;
-   }
-
-   @Override
-   public void a(yk $$0) {
-      this.j = chd.e.a($$0.a());
-   }
-
-   @Override
-   public void a(yi $$0) {
-      this.b.a();
-      ww.a($$0, this, this.a);
-      this.b.a(new fmu(this.a, this.b, new fmx(this.h, this.e, this.i, this.j, this.d, this.c, this.f)));
-      this.b.b();
-      this.b.a(new ym());
-   }
-
-   @Override
-   public void e() {
-      this.g();
+   public static fmr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new fmr($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

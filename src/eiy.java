@@ -1,84 +1,70 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import com.google.common.collect.Sets;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
 
-public record eiy(Map<String, egd> b, ege.b c) implements ejd {
-   public static final Codec<eiy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, egd.a).fieldOf("scores").forGetter(eiy::c), ege.b.e.fieldOf("entity").forGetter(eiy::d))
-            .apply($$0, eiy::new)
-   );
+public class eiy {
+   private final Set<eix<?>> a;
+   private final Set<eix<?>> b;
 
-   @Override
-   public eje b() {
-      return ejf.i;
+   eiy(Set<eix<?>> $$0, Set<eix<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   @Override
-   public Set<eim<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public boolean a(eix<?> $$0) {
+      return this.b.contains($$0);
    }
 
-   public boolean a(ege $$0) {
-      blf $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         ema $$2 = $$1.dM().J();
-
-         for (Entry<String, egd> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   public Set<eix<?>> a() {
+      return this.a;
    }
 
-   protected boolean a(ege $$0, blf $$1, ema $$2, String $$3, egd $$4) {
-      elx $$5 = $$2.b($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         String $$6 = $$1.cy();
-         return !$$2.b($$6, $$5) ? false : $$4.b($$0, $$2.c($$6, $$5).b());
-      }
-   }
-
-   public static eiy.a a(ege.b $$0) {
-      return new eiy.a($$0);
-   }
-
-   public Map<String, egd> c() {
+   public Set<eix<?>> b() {
       return this.b;
    }
 
-   public ege.b d() {
-      return this.c;
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
    }
 
-   public static class a implements ejd.a {
-      private final Builder<String, egd> a = ImmutableMap.builder();
-      private final ege.b b;
+   public void a(egy $$0, egq $$1) {
+      Set<eix<?>> $$2 = $$1.a();
+      Set<eix<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
 
-      public a(ege.b $$0) {
-         this.b = $$0;
+   public static eiy.a c() {
+      return new eiy.a();
+   }
+
+   public static class a {
+      private final Set<eix<?>> a = Sets.newIdentityHashSet();
+      private final Set<eix<?>> b = Sets.newIdentityHashSet();
+
+      public eiy.a a(eix<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
       }
 
-      public eiy.a a(String $$0, egd $$1) {
-         this.a.put($$0, $$1);
-         return this;
+      public eiy.a b(eix<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
-      @Override
-      public ejd build() {
-         return new eiy(this.a.build(), this.b);
+      public eiy a() {
+         return new eiy(this.a, this.b);
       }
    }
 }

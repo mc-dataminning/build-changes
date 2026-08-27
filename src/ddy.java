@@ -1,87 +1,53 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddy extends cvz {
+public class ddy extends cwj {
    public static final MapCodec<ddy> a = b(ddy::new);
-   public static final djp b = djf.aw;
-   protected static final float c = 6.0F;
-   protected static final elu d = cvz.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+   private static final emf b = cwj.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
 
    @Override
    public MapCodec<ddy> a() {
       return a;
    }
 
-   protected ddy(dio.d $$0) {
+   public ddy(diz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return d;
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      return cwj.a($$1, $$2.c(), ic.a) && !$$1.z($$2);
    }
 
    @Override
-   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      return $$1 == ic.b && !this.a($$0, $$3, $$4) ? cwl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
-      if ($$1.t($$2.c())) {
-         int $$4 = 1;
+   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(jx.aw, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      hx.a $$10 = new hx.a();
 
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(b);
-            if ($$5 == 15) {
-               $$1.b($$2.c(), this.o());
-               $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 4);
-            } else {
-               $$1.a($$2, $$0.a(b, Integer.valueOf($$5 + 1)), 4);
-            }
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + aui.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + aui.a($$3, -10, 10));
+         dja $$12 = $$1.a_($$10);
+         if (!$$12.r($$1, $$10)) {
+            $$1.a(jx.aA, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
          }
       }
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dip $$0, ctb $$1, hv $$2) {
-      dip $$3 = $$1.a_($$2.d());
-      if ($$3.a(this)) {
-         return true;
-      } else {
-         if ($$3.a(arr.af) || $$3.a(arr.H)) {
-            hv $$4 = $$2.d();
-
-            for (ia $$5 : ia.c.a) {
-               dip $$6 = $$1.a_($$4.a($$5));
-               edz $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(arw.a) || $$6.a(cwb.kI)) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b);
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return b;
    }
 }

@@ -1,91 +1,103 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class fcd extends fcc {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final vb c = vb.c("selectWorld.allowCommands");
-   private static final vb k = vb.c("selectWorld.gameMode");
-   private static final vb l = vb.c("lanServer.otherPlayers");
-   private static final vb m = vb.c("lanServer.port");
-   private static final vb n = vb.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final vb o = vb.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int p = 16733525;
-   private final fcc q;
-   private csv r = csv.a;
-   private boolean t;
-   private int u = atp.a();
-   @Nullable
-   private ewq v;
+public class fcd extends fct {
+   private static final long a = 2000L;
+   private final anm b;
+   private long c = -1L;
+   private boolean k;
+   private static final Object2IntMap<dlb> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dlb.c, 5526612);
+      $$0.put(dlb.d, 10066329);
+      $$0.put(dlb.e, 6250897);
+      $$0.put(dlb.f, 8434258);
+      $$0.put(dlb.g, 13750737);
+      $$0.put(dlb.h, 7497737);
+      $$0.put(dlb.i, 3159410);
+      $$0.put(dlb.j, 2213376);
+      $$0.put(dlb.k, 13421772);
+      $$0.put(dlb.l, 16769184);
+      $$0.put(dlb.m, 15884384);
+      $$0.put(dlb.n, 16777215);
+   });
 
-   public fcd(fcc $$0) {
-      super(vb.c("lanServer.title"));
-      this.q = $$0;
+   public fcd(anm $$0) {
+      super(eus.a);
+      this.b = $$0;
    }
 
    @Override
-   protected void aP_() {
-      ghn $$0 = this.f.S();
-      this.r = $$0.v_();
-      this.t = $$0.aY().o();
-      this.d(ewo.a(csv::e).a(csv.a, csv.d, csv.b, csv.c).a(this.r).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.r = $$1x));
-      this.d(ewo.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
-      ewh $$1 = ewh.a(vb.c("lanServer.start"), $$1x -> {
-         this.f.a(null);
-         vb $$2;
-         if ($$0.a(this.r, this.t, this.u)) {
-            $$2 = ajs.a(this.u);
-         } else {
-            $$2 = vb.c("commands.publish.failed");
-         }
-
-         this.f.l.d().a($$2);
-         this.f.d();
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
-      this.v = new ewq(this.i, this.g / 2 - 75, 160, 150, 20, vb.c("lanServer.port"));
-      this.v.b($$1x -> {
-         vb $$2 = this.a($$1x);
-         this.v.c(vb.b(this.u + "").a(n.i));
-         if ($$2 == null) {
-            this.v.m(14737632);
-            this.v.a(null);
-            $$1.i = true;
-         } else {
-            this.v.m(16733525);
-            this.v.a(exs.a($$2));
-            $$1.i = false;
-         }
-      });
-      this.v.c(vb.b(this.u + "").a(n.i));
-      this.d(this.v);
-      this.d($$1);
-      this.d(ewh.a(va.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+   public boolean aL_() {
+      return false;
    }
 
-   @Nullable
-   private vb a(String $$0) {
-      if ($$0.isBlank()) {
-         this.u = atp.a();
-         return null;
+   @Override
+   protected boolean aM_() {
+      return false;
+   }
+
+   @Override
+   public void j() {
+      this.k = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(far $$0) {
+      if (this.k) {
+         $$0.a(faq.a, vd.c("narrator.loading.done"));
       } else {
-         try {
-            this.u = Integer.parseInt($$0);
-            if (this.u < 1024 || this.u > 65535) {
-               return o;
-            } else {
-               return !atp.a(this.u) ? n : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.u = atp.a();
-            return o;
-         }
+         $$0.a(faq.a, this.n());
       }
    }
 
+   private vd n() {
+      return vd.a("loading.progress", aui.a(this.b.e(), 0, 100));
+   }
+
    @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      $$0.a(this.i, l, this.g / 2, 82, 16777215);
-      $$0.a(this.i, m, this.g / 2, 142, 16777215);
+      long $$4 = ac.b();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
+      }
+
+      int $$5 = this.g / 2;
+      int $$6 = this.h / 2;
+      int $$7 = 30;
+      a($$0, this.b, $$5, $$6 + 30, 2, 0);
+      $$0.a(this.i, this.n(), $$5, $$6 - 9 / 2 - 30, 16777215);
+   }
+
+   public static void a(ewm $$0, anm $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.c();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.d();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      $$0.a(() -> {
+         if ($$5 != 0) {
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+         }
+
+         for (int $$11x = 0; $$11x < $$9; $$11x++) {
+            for (int $$12x = 0; $$12x < $$9; $$12x++) {
+               dlb $$13x = $$1.a($$11x, $$12x);
+               int $$14x = $$11 + $$11x * $$6;
+               int $$15 = $$12 + $$12x * $$6;
+               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
+            }
+         }
+      });
    }
 }

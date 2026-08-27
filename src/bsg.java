@@ -1,34 +1,68 @@
-import java.util.EnumSet;
+public class bsg extends bse {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class bsg extends bsr {
-   private final blx a;
-   private final csy b;
-
-   public bsg(blx $$0, csy $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bsr.a.c));
+   public bsg(bmh $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
-   public boolean a() {
-      boolean $$0 = this.a.aB || this.a.aA;
-      if ($$0 && this.a.ai().a(aru.h)) {
-         hv $$1 = this.a.dm().c();
-         dip $$2 = this.b.a_($$1);
-         return $$2.a(cwb.qP) || $$2.k(this.b, $$1) == elr.a();
+   public void a() {
+      if (this.r && this.d.aZ()) {
+         this.d.g(this.d.dp().b(0.0, 0.005, 0.0));
+      }
+
+      if (this.k == bse.a.b && !this.d.N().l()) {
+         double $$0 = this.e - this.d.dr();
+         double $$1 = this.f - this.d.dt();
+         double $$2 = this.g - this.d.dx();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.A(0.0F);
+         } else {
+            float $$4 = (float)(aui.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.r(this.a(this.d.dC(), $$4, (float)this.o));
+            this.d.aU = this.d.dC();
+            this.d.aW = this.d.dC();
+            float $$5 = (float)(this.h * this.d.b(bnl.m));
+            if (this.d.aZ()) {
+               this.d.w($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(aui.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = aui.a(aui.g($$7), (float)(-this.n), (float)this.n);
+                  this.d.s(this.a(this.d.dE(), $$7, 5.0F));
+               }
+
+               float $$8 = aui.b(this.d.dE() * (float) (Math.PI / 180.0));
+               float $$9 = aui.a(this.d.dE() * (float) (Math.PI / 180.0));
+               this.d.bm = $$8 * $$5;
+               this.d.bl = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(aui.g(this.d.dC() - $$4));
+               float $$11 = a($$10);
+               this.d.w($$5 * this.q * $$11);
+            }
+         }
       } else {
-         return false;
+         this.d.w(0.0F);
+         this.d.C(0.0F);
+         this.d.B(0.0F);
+         this.d.A(0.0F);
       }
    }
 
-   @Override
-   public boolean T_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.a.M().a();
+   private static float a(float $$0) {
+      return 1.0F - aui.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

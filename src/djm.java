@@ -1,23 +1,21 @@
-public enum djm implements aut {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+public enum djm implements ave {
+   a("none"),
+   b("small"),
+   c("large");
 
-   private final String f;
+   private final String d;
 
    private djm(String $$0) {
-      this.f = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
    }
 }

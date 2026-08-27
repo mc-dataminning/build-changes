@@ -1,65 +1,39 @@
-public class fpi extends fqe {
-   fpi(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+public class fpi extends frn {
+   fpi(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public fqa b() {
-      return fqa.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = aty.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
+   public void a() {
+      super.a();
+      if (!this.o && !this.c.b_(hx.a(this.g, this.h, this.i)).a(asg.a)) {
+         this.k();
       }
-
-      return $$3 | $$4 << 16;
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+   @Override
+   public fqr b() {
+      return fqr.b;
+   }
 
-      public a(fqr $$0) {
+   public static class a implements fqq<ka> {
+      private final fri a;
+
+      public a(fri $$0) {
          this.a = $$0;
       }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fpi $$8 = new fpi($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements fpz<jy> {
-      private final fqr a;
-
-      public b(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpi $$8 = new fpi($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.d(0.5F);
          return $$8;
       }
    }

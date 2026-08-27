@@ -1,59 +1,58 @@
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public abstract class eto extends etk {
-   private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final vb d;
-   private final Runnable e;
+public class eto {
+   private static final String a = "realms_persistence.json";
+   private static final eqr b = new eqr();
+   private static final Logger c = LogUtils.getLogger();
 
-   public eto(long $$0, vb $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public eto.a a() {
+      return b();
    }
 
-   protected abstract void a(ept var1, long var2) throws erg;
+   public void a(eto.a $$0) {
+      b($$0);
+   }
 
-   @Override
-   public void run() {
-      ept $$0 = ept.a();
-      int $$1 = 0;
+   public static eto.a b() {
+      Path $$0 = c();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (erh var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         eto.a $$2 = b.a($$1, eto.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new eto.a();
+   }
+
+   public static void b(eto.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   @Override
-   public vb a() {
-      return this.d;
+   private static Path c() {
+      return eva.N().p.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements erj {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

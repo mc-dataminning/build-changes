@@ -1,69 +1,88 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-public class fau extends fav {
-   private static final vb k = vb.c("chat.copy");
-   private static final vb l = vb.c("chat.link.warning");
-   private final String m;
-   private final boolean n;
+public class fau {
+   int a;
+   final Map<fau.a, fau.b> b = Maps.newTreeMap(Comparator.<fau.a, faq>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-   public fau(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), vb.b($$1), $$1, $$2 ? va.e : va.g, $$2);
+   public void a(Consumer<far> $$0) {
+      this.a++;
+      $$0.accept(new fau.c(0));
    }
 
-   public fau(BooleanConsumer $$0, vb $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? va.e : va.g, $$3);
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean c = true;
+
+         public void a(String $$0) {
+            if (!this.c) {
+               $$1.append(". ");
+            }
+
+            this.c = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   public fau(BooleanConsumer $$0, vb $$1, vb $$2, String $$3, vb $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (vb)($$5 ? vb.c("chat.link.open") : va.f);
-      this.b = $$4;
-      this.n = !$$5;
-      this.m = $$3;
-   }
+   static class a {
+      final faq a;
+      final int b;
 
-   protected static vp a(boolean $$0, String $$1) {
-      return c($$0).b(va.u).b(vb.b($$1));
-   }
-
-   protected static vp c(boolean $$0) {
-      return vb.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
-   }
-
-   @Override
-   protected void a(int $$0) {
-      this.d(ewh.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
-      this.d(ewh.a(k, $$0x -> {
-         this.k();
-         this.c.accept(false);
-      }).a(this.g / 2 - 50, $$0, 100, 20).a());
-      this.d(ewh.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void k() {
-      this.f.o.a(this.m);
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.n) {
-         $$0.a(this.i, l, this.g / 2, 110, 16764108);
+      a(faq $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   public static void a(fcc $$0, String $$1) {
-      euk $$2 = euk.N();
-      $$2.a(new fau($$3 -> {
-         if ($$3) {
-            ac.i().a($$1);
+   static class b {
+      fat<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fat.a;
+         this.b = -1;
+      }
+
+      public fau.b a(int $$0, fat<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
          }
 
-         $$2.a($$0);
-      }, $$1, true));
+         this.b = $$0;
+         return this;
+      }
    }
 
-   public static ewh.c b(fcc $$0, String $$1) {
-      return $$2 -> a($$0, $$1);
+   class c implements far {
+      private final int b;
+
+      c(int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(faq $$0, fat<?> $$1) {
+         fau.this.b.computeIfAbsent(new fau.a($$0, this.b), $$0x -> new fau.b()).a(fau.this.a, $$1);
+      }
+
+      @Override
+      public far a() {
+         return fau.this.new c(this.b + 1);
+      }
    }
 }

@@ -1,181 +1,103 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
-import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
 public class dyp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = -1;
-   private final dll c;
-   private final is d;
-   private final ir<ctx> e;
-   private final ir<dyo> f;
-   private final ecp g;
-   private final ags<csy> h;
-   private final dkm i;
-   private final dom j;
-   private final cta k;
-   private final cub l;
-   private final long m;
-   private final DataFixer n;
-   private final Long2ObjectMap<Object2IntMap<dyo>> o = new Long2ObjectOpenHashMap();
-   private final Map<dyo, Long2BooleanMap> p = new HashMap<>();
+   public static final ahc<dyo> a = a("normal");
+   public static final ahc<dyo> b = a("flat");
+   public static final ahc<dyo> c = a("large_biomes");
+   public static final ahc<dyo> d = a("amplified");
+   public static final ahc<dyo> e = a("single_biome_surface");
+   public static final ahc<dyo> f = a("debug_all_block_states");
 
-   public dyp(dll $$0, is $$1, ecp $$2, ags<csy> $$3, dkm $$4, dom $$5, cta $$6, cub $$7, long $$8, DataFixer $$9) {
-      this.c = $$0;
-      this.d = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.e = $$1.d(kc.as);
-      this.f = $$1.d(kc.aC);
+   public static void a(pc<dyo> $$0) {
+      new dyp.a($$0).a();
    }
 
-   public dyq a(csf $$0, dyo $$1, boolean $$2) {
-      long $$3 = $$0.a();
-      Object2IntMap<dyo> $$4 = (Object2IntMap<dyo>)this.o.get($$3);
-      if ($$4 != null) {
-         return this.a($$4, $$1, $$2);
-      } else {
-         dyq $$5 = this.a($$0, $$1, $$2, $$3);
-         if ($$5 != null) {
-            return $$5;
+   private static ahc<dyo> a(String $$0) {
+      return ahc.a(ke.aK, new ahd($$0));
+   }
+
+   public static Optional<ahc<dyo>> a(it<dmk> $$0) {
+      return $$0.d(dmk.b).flatMap($$0x -> {
+         dkx $$1 = $$0x.b();
+         if ($$1 instanceof doe) {
+            return Optional.of(b);
          } else {
-            boolean $$6 = this.p.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$3, $$2x -> this.b($$0, $$1));
-            return !$$6 ? dyq.b : dyq.c;
-         }
-      }
-   }
-
-   private boolean b(csf $$0, dyo $$1) {
-      return $$1.b(new dyo.a(this.d, this.i, this.l, this.j, this.g, this.m, $$0, this.k, $$1.a()::a)).isPresent();
-   }
-
-   @Nullable
-   private dyq a(csf $$0, dyo $$1, boolean $$2, long $$3) {
-      tn $$4 = new tn(new tp(so.a, "DataVersion"), new tp("Level", "Structures", sj.b, "Starts"), new tp("structures", sj.b, "starts"));
-
-      try {
-         this.c.a($$0, $$4).join();
-      } catch (Exception var13) {
-         a.warn("Failed to read chunk {}", $$0, var13);
-         return dyq.c;
-      }
-
-      if (!($$4.d() instanceof sj $$7)) {
-         return null;
-      } else {
-         int $$8 = dln.a($$7);
-         if ($$8 <= 1493) {
-            return dyq.c;
-         } else {
-            dln.a($$7, this.h, this.i.b());
-
-            sj $$9;
-            try {
-               $$9 = avg.c.a(this.n, $$7, $$8);
-            } catch (Exception var12) {
-               a.warn("Failed to partially datafix chunk {}", $$0, var12);
-               return dyq.c;
-            }
-
-            Object2IntMap<dyo> $$12 = this.a($$9);
-            if ($$12 == null) {
-               return null;
-            } else {
-               this.a($$3, $$12);
-               return this.a($$12, $$1, $$2);
-            }
-         }
-      }
-   }
-
-   @Nullable
-   private Object2IntMap<dyo> a(sj $$0) {
-      if (!$$0.b("structures", 10)) {
-         return null;
-      } else {
-         sj $$1 = $$0.p("structures");
-         if (!$$1.b("starts", 10)) {
-            return null;
-         } else {
-            sj $$2 = $$1.p("starts");
-            if ($$2.g()) {
-               return Object2IntMaps.emptyMap();
-            } else {
-               Object2IntMap<dyo> $$3 = new Object2IntOpenHashMap();
-               ir<dyo> $$4 = this.d.d(kc.aC);
-
-               for (String $$5 : $$2.e()) {
-                  agt $$6 = agt.a($$5);
-                  if ($$6 != null) {
-                     dyo $$7 = $$4.a($$6);
-                     if ($$7 != null) {
-                        sj $$8 = $$2.p($$5);
-                        if (!$$8.g()) {
-                           String $$9 = $$8.l("id");
-                           if (!"INVALID".equals($$9)) {
-                              int $$10 = $$8.h("references");
-                              $$3.put($$7, $$10);
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$3;
-            }
-         }
-      }
-   }
-
-   private static Object2IntMap<dyo> a(Object2IntMap<dyo> $$0) {
-      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
-   }
-
-   private dyq a(Object2IntMap<dyo> $$0, dyo $$1, boolean $$2) {
-      int $$3 = $$0.getOrDefault($$1, -1);
-      return $$3 == -1 || $$2 && $$3 != 0 ? dyq.b : dyq.a;
-   }
-
-   public void a(csf $$0, Map<dyo, dyw> $$1) {
-      long $$2 = $$0.a();
-      Object2IntMap<dyo> $$3 = new Object2IntOpenHashMap();
-      $$1.forEach(($$1x, $$2x) -> {
-         if ($$2x.b()) {
-            $$3.put($$1x, $$2x.f());
+            return $$1 instanceof doa ? Optional.of(f) : Optional.empty();
          }
       });
-      this.a($$2, $$3);
    }
 
-   private void a(long $$0, Object2IntMap<dyo> $$1) {
-      this.o.put($$0, a($$1));
-      this.p.values().forEach($$1x -> $$1x.remove($$0));
+   public static dpe a(iu $$0) {
+      return $$0.d(ke.aK).f(a).a().a();
    }
 
-   public void a(csf $$0, dyo $$1) {
-      this.o.compute($$0.a(), ($$1x, $$2) -> {
-         if ($$2 == null || $$2.isEmpty()) {
-            $$2 = new Object2IntOpenHashMap();
-         }
+   public static dmk b(iu $$0) {
+      return $$0.d(ke.aK).f(a).a().b().orElseThrow();
+   }
 
-         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
-         return $$2;
-      });
+   static class a {
+      private final pc<dyo> a;
+      private final ii<doo> b;
+      private final ii<cuh> c;
+      private final ii<dyd> d;
+      private final ii<dzf> e;
+      private final ii<cuv> f;
+      private final ih<dmj> g;
+      private final dmk h;
+      private final dmk i;
+
+      a(pc<dyo> $$0) {
+         this.a = $$0;
+         ii<dmj> $$1 = $$0.a(ke.ay);
+         this.b = $$0.a(ke.aA);
+         this.c = $$0.a(ke.at);
+         this.d = $$0.a(ke.aC);
+         this.e = $$0.a(ke.aF);
+         this.f = $$0.a(ke.aL);
+         this.g = $$1.b(dmh.a);
+         ih<dmj> $$2 = $$1.b(dmh.b);
+         ih<doo> $$3 = this.b.b(doo.f);
+         ih.c<cuv> $$4 = this.f.b(cuw.a);
+         this.h = new dmk($$2, new dom(cuu.a($$4), $$3));
+         ih<dmj> $$5 = $$1.b(dmh.c);
+         ih<doo> $$6 = this.b.b(doo.g);
+         this.i = new dmk($$5, new dom(cuy.a(this.c), $$6));
+      }
+
+      private dmk a(dkx $$0) {
+         return new dmk(this.g, $$0);
+      }
+
+      private dmk a(cul $$0, ih<doo> $$1) {
+         return this.a(new dom($$0, $$1));
+      }
+
+      private dyo a(dmk $$0) {
+         return new dyo(Map.of(dmk.b, $$0, dmk.c, this.h, dmk.d, this.i));
+      }
+
+      private void a(ahc<dyo> $$0, dmk $$1) {
+         this.a.a($$0, this.a($$1));
+      }
+
+      private void a(cul $$0) {
+         ih<doo> $$1 = this.b.b(doo.c);
+         this.a(dyp.a, this.a($$0, $$1));
+         ih<doo> $$2 = this.b.b(doo.d);
+         this.a(dyp.c, this.a($$0, $$2));
+         ih<doo> $$3 = this.b.b(doo.e);
+         this.a(dyp.d, this.a($$0, $$3));
+      }
+
+      public void a() {
+         ih.c<cuv> $$0 = this.f.b(cuw.b);
+         this.a(cuu.a($$0));
+         ih<doo> $$1 = this.b.b(doo.c);
+         ih.c<cuh> $$2 = this.c.b(cuo.b);
+         this.a(dyp.e, this.a(new cus($$2), $$1));
+         this.a(dyp.b, this.a(new doe(dxc.a(this.c, this.e, this.d))));
+         this.a(dyp.f, this.a(new doa($$2)));
+      }
    }
 }

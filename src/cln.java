@@ -1,36 +1,62 @@
-public class cln extends cmc implements cob {
-   public cln(cmc.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cln extends cmm {
+   public static final String a = "StoredEnchantments";
+
+   public cln(cmm.a $$0) {
       super($$0);
    }
 
    @Override
-   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
-      cmh $$3 = $$1.b($$2);
-      if ($$1.ck != null) {
-         if (!$$0.B) {
-            int $$4 = $$1.ck.a($$3);
-            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
-         }
-
-         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arc.is, ard.g, 1.0F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-         $$1.a(dmz.C);
-      } else {
-         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arc.iu, ard.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-         if (!$$0.B) {
-            int $$5 = cqu.c($$3);
-            int $$6 = cqu.b($$3);
-            $$0.b(new cff($$1, $$0, $$6, $$5));
-         }
-
-         $$1.b(arm.c.b(this));
-         $$1.a(dmz.D);
-      }
-
-      return bjm.a($$3, $$0.y_());
+   public boolean i(cmr $$0) {
+      return true;
    }
 
    @Override
-   public int c() {
-      return 1;
+   public boolean d_(cmr $$0) {
+      return false;
+   }
+
+   public static sr d(cmr $$0) {
+      sl $$1 = $$0.v();
+      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new sr();
+   }
+
+   @Override
+   public void a(cmr $$0, @Nullable cti $$1, List<vd> $$2, coi $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      cmr.a($$2, d($$0));
+   }
+
+   public static void a(cmr $$0, crf $$1) {
+      sr $$2 = d($$0);
+      boolean $$3 = true;
+      ahd $$4 = cre.a($$1.a);
+
+      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
+         sl $$6 = $$2.a($$5);
+         ahd $$7 = cre.b($$6);
+         if ($$7 != null && $$7.equals($$4)) {
+            if (cre.a($$6) < $$1.b) {
+               cre.a($$6, $$1.b);
+            }
+
+            $$3 = false;
+            break;
+         }
+      }
+
+      if ($$3) {
+         $$2.add(cre.a($$4, $$1.b));
+      }
+
+      $$0.w().a("StoredEnchantments", $$2);
+   }
+
+   public static cmr a(crf $$0) {
+      cmr $$1 = new cmr(cmu.up);
+      a($$1, $$0);
+      return $$1;
    }
 }

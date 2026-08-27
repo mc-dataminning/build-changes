@@ -1,63 +1,37 @@
-import java.util.Collection;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-public abstract class gjk<E extends exd.a<E>> extends exd<E> {
-   protected gjk(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      super(euk.N(), $$0, $$1, $$2, $$3, $$4);
-   }
+public class gjk {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   public void k(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.k() != 0) {
-         this.a(this.d($$0));
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
       }
    }
 
-   @Override
-   public void a(int $$0) {
-      this.k($$0);
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
+      this.d = $$0;
    }
 
-   @Override
-   public int a() {
-      return 0;
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   @Override
-   public int c() {
-      return this.o() + this.b();
-   }
-
-   @Override
-   public int b() {
-      return (int)((double)this.e * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int k() {
-      return super.k();
-   }
-
-   @Override
-   public int h(int $$0) {
-      return super.h($$0);
-   }
-
-   @Override
-   public int o() {
-      return super.o();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void v() {
-      this.j();
+   public void a(giz $$0) {
+      this.b.ifPresent($$1 -> $$0.send(gja.e, $$1x -> {
+            $$1x.a(gjc.p, this.a($$1));
+            $$1x.a(gjc.q, (int)this.c);
+         }));
    }
 }

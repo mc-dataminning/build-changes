@@ -1,98 +1,67 @@
-public class cby extends cci {
-   public cby(blj<? extends cby> $$0, csy $$1) {
+import java.util.List;
+import org.joml.Vector3f;
+
+public class cby extends ccf {
+   public static final float b = blt.B.k() / blt.W.k();
+   private static final int e = 1200;
+   private static final int bT = 50;
+   private static final int bU = 6000;
+   private static final int bV = 2;
+   private static final int bW = 1200;
+
+   public cby(blt<? extends cby> $$0, cti $$1) {
       super($$0, $$1);
+      this.fJ();
+      if (this.d != null) {
+         this.d.c(400);
+      }
    }
 
-   public static bna.a u() {
-      return cbz.gk().a(bnb.m, 0.2F);
-   }
-
-   public static boolean b(blj<cby> $$0, csz $$1, blz $$2, hv $$3, auf $$4) {
-      return $$1.aj() != bji.a;
-   }
-
-   @Override
-   public boolean a(ctb $$0) {
-      return $$0.f(this) && !$$0.d(this.cH());
+   public static bnk.a u() {
+      return ccf.ge().a(bnl.m, 0.3F).a(bnl.c, 8.0).a(bnl.l, 80.0);
    }
 
    @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.a(bnb.a).a((double)($$0 * 3));
+   public int w() {
+      return 60;
    }
 
    @Override
-   public float bo() {
-      return 1.0F;
+   protected arl y() {
+      return this.bc() ? arm.hk : arm.hl;
    }
 
    @Override
-   protected jt w() {
-      return jv.E;
+   protected arl d(bkn $$0) {
+      return this.bc() ? arm.hq : arm.hr;
    }
 
    @Override
-   public boolean bN() {
-      return false;
+   protected arl n_() {
+      return this.bc() ? arm.hn : arm.ho;
    }
 
    @Override
-   protected int A() {
-      return super.A() * 4;
+   protected arl A() {
+      return arm.hp;
    }
 
    @Override
-   protected void ga() {
-      this.d *= 0.9F;
-   }
+   protected void Z() {
+      super.Z();
+      if ((this.ah + this.aj()) % 1200 == 0) {
+         blc $$0 = new blc(ble.d, 6000, 2);
+         List<ana> $$1 = bld.a((amz)this.dM(), this, this.dk(), 50.0, $$0, 1200);
+         $$1.forEach($$0x -> $$0x.c.b(new aac(aac.k, this.aU() ? 0.0F : 1.0F)));
+      }
 
-   @Override
-   protected void fb() {
-      elb $$0 = this.dp();
-      float $$1 = (float)this.gf() * 0.1F;
-      this.o($$0.c, (double)(this.eZ() + $$1), $$0.e);
-      this.au = true;
-   }
-
-   @Override
-   protected void c(asg<edy> $$0) {
-      if ($$0 == arw.b) {
-         elb $$1 = this.dp();
-         this.o($$1.c, (double)(0.22F + (float)this.gf() * 0.05F), $$1.e);
-         this.au = true;
-      } else {
-         super.c($$0);
+      if (!this.fQ()) {
+         this.a(this.dm(), 16);
       }
    }
 
    @Override
-   protected boolean gb() {
-      return this.cY();
-   }
-
-   @Override
-   protected float gc() {
-      return super.gc() + 2.0F;
-   }
-
-   @Override
-   protected arb d(bkd $$0) {
-      return this.gg() ? arc.nC : arc.nB;
-   }
-
-   @Override
-   protected arb n_() {
-      return this.gg() ? arc.nt : arc.nA;
-   }
-
-   @Override
-   protected arb gd() {
-      return this.gg() ? arc.nF : arc.nE;
-   }
-
-   @Override
-   protected arb ge() {
-      return arc.nD;
+   protected Vector3f a(blp $$0, blq $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.353125F * $$2, 0.0F);
    }
 }

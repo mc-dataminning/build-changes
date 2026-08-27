@@ -1,23 +1,57 @@
-public class fyj extends fyu<bxu, fjn<bxu>> {
-   private static final agt a = new agt("textures/entity/iron_golem/iron_golem.png");
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
-   public fyj(fxo.a $$0) {
-      super($$0, new fjn<>($$0.a(flx.as)), 0.7F);
-      this.a(new gbq(this));
-      this.a(new gbr(this, $$0.c()));
+public class fyj extends fye<blv> {
+   private static final ahd a = new ahd("textures/entity/experience_orb.png");
+   private static final fth f = fth.g(a);
+
+   public fyj(fyf.a $$0) {
+      super($$0);
+      this.d = 0.15F;
+      this.e = 0.75F;
    }
 
-   public agt a(bxu $$0) {
+   protected int a(blv $$0, hx $$1) {
+      return aui.a(super.a($$0, $$1) + 7, 0, 15);
+   }
+
+   public void a(blv $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
+      $$3.a();
+      int $$6 = $$0.s();
+      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
+      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
+      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
+      float $$11 = 1.0F;
+      float $$12 = 0.5F;
+      float $$13 = 0.25F;
+      float $$14 = 255.0F;
+      float $$15 = ((float)$$0.ah + $$2) / 2.0F;
+      int $$16 = (int)((aui.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$17 = 255;
+      int $$18 = (int)((aui.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$3.a(0.0F, 0.1F, 0.0F);
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      float $$19 = 0.3F;
+      $$3.b(0.3F, 0.3F, 0.3F);
+      epx $$20 = $$4.getBuffer(f);
+      ept.a $$21 = $$3.c();
+      Matrix4f $$22 = $$21.a();
+      Matrix3f $$23 = $$21.b();
+      a($$20, $$22, $$23, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
+      a($$20, $$22, $$23, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
+      a($$20, $$22, $$23, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
+      a($$20, $$22, $$23, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private static void a(epx $$0, Matrix4f $$1, Matrix3f $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9, int $$10) {
+      $$0.a($$1, $$3, $$4, 0.0F).a($$5, $$6, $$7, 128).a($$8, $$9).c(gdw.d).b($$10).a($$2, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public ahd a(blv $$0) {
       return a;
-   }
-
-   protected void a(bxu $$0, epd $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if (!((double)$$0.aQ.a() < 0.01)) {
-         float $$5 = 13.0F;
-         float $$6 = $$0.aQ.c($$4) + 6.0F;
-         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$7));
-      }
    }
 }

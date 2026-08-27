@@ -1,120 +1,68 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fnp extends fns {
-   final IntSet f = new IntOpenHashSet();
+public class fnp extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final fox b;
+   private final fnp.a c;
 
-   fnp(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+   public fnp(fox $$0, fnp.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.f.contains($$0)) {
-         this.f.remove($$0);
-      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
-         this.f.add($$0);
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
+
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         anr.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         anr.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
       }
    }
 
-   public fnp a() {
-      fnp $$0 = new fnp(this.a, this.b, this.c);
-      $$0.f.addAll(this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
-   }
-
-   @Override
-   public fcc a(fcc $$0, fnw $$1) {
-      return new fgb($$0, $$1, this);
-   }
-
-   public static class a extends fns.a<fnp> {
-      public a(fnp $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new fnp(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.f;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.f.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public fns.b c() {
-         if (this.a.f.isEmpty()) {
-            return fns.b.b;
-         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
-            return fns.b.c;
-         } else if (this.a.e == null) {
-            return fns.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fns.b.d : null;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = anr.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = aui.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = aui.a($$4.get(4), -1);
+            int $$9 = aui.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
          }
       }
 
-      @Override
-      public Either<fns.c, fns.b> a(fnw $$0) {
-         fns.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new fns.c(this.a.a, fnv.a, $$5));
-         }
-      }
+      $$0.close();
+   }
 
-      private ReportEvidence b(fnw $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         fnq $$2 = new fnq(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
+   }
 
-      private ReportChatMessage a(fnl.a $$0, boolean $$1) {
-         vw $$2 = $$0.g().j();
-         vu $$3 = $$0.g().l();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(vn::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().k(), vn::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public fnp.a d() {
-         return new fnp.a(this.a.a(), this.b);
-      }
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

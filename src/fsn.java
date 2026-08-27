@@ -1,70 +1,115 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.joml.Matrix4f;
+
 public class fsn {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+   private static final int a = 6;
+   private final ahd[] b = new ahd[6];
 
-   public fsn(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public fsn(ahd $$0) {
+      for (int $$1 = 0; $$1 < 6; $$1++) {
+         this.b[$$1] = $$0.c($$0.a() + "_" + $$1 + ".png");
+      }
    }
 
-   public fsn a(fsn $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   public void a(eva $$0, float $$1, float $$2, float $$3) {
+      epv $$4 = epv.b();
+      epo $$5 = $$4.d();
+      Matrix4f $$6 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aL().k() / (float)$$0.aL().l(), 0.05F, 10.0F);
+      RenderSystem.backupProjectionMatrix();
+      RenderSystem.setProjectionMatrix($$6, eqb.a);
+      ept $$7 = RenderSystem.getModelViewStack();
+      $$7.a();
+      $$7.e();
+      $$7.a(a.b.rotationDegrees(180.0F));
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.setShader(fss::t);
+      RenderSystem.enableBlend();
+      RenderSystem.disableCull();
+      RenderSystem.depthMask(false);
+      int $$8 = 2;
+
+      for (int $$9 = 0; $$9 < 4; $$9++) {
+         $$7.a();
+         float $$10 = ((float)($$9 % 2) / 2.0F - 0.5F) / 256.0F;
+         float $$11 = ((float)($$9 / 2) / 2.0F - 0.5F) / 256.0F;
+         float $$12 = 0.0F;
+         $$7.a($$10, $$11, 0.0F);
+         $$7.a(a.b.rotationDegrees($$1));
+         $$7.a(a.d.rotationDegrees($$2));
+         RenderSystem.applyModelViewMatrix();
+
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            RenderSystem.setShaderTexture(0, this.b[$$13]);
+            $$5.a(epy.b.h, epr.s);
+            int $$14 = Math.round(255.0F * $$3) / ($$9 + 1);
+            if ($$13 == 0) {
+               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 1) {
+               $$5.a(1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 2) {
+               $$5.a(1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 3) {
+               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 4) {
+               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 5) {
+               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            $$4.c();
+         }
+
+         $$7.b();
+         RenderSystem.applyModelViewMatrix();
+         RenderSystem.colorMask(true, true, true, false);
+      }
+
+      RenderSystem.colorMask(true, true, true, true);
+      RenderSystem.restoreProjectionMatrix();
+      $$7.b();
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableCull();
+      RenderSystem.enableDepthTest();
    }
 
-   public int a() {
-      return this.a;
-   }
+   public CompletableFuture<Void> a(geg $$0, Executor $$1) {
+      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
 
-   public int b() {
-      return this.b;
-   }
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$2[$$3] = $$0.a(this.b[$$3], $$1);
+      }
 
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(int $$0) {
-      this.b = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public void d(int $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+      return CompletableFuture.allOf($$2);
    }
 }

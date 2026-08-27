@@ -1,23 +1,5 @@
-public class gho {
-   private final String a;
-   private final String b;
-   private long c;
+public interface gho extends ghn {
+   boolean m();
 
-   public gho(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ac.b();
-   }
-
-   public String a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.b;
-   }
-
-   public void c() {
-      this.c = ac.b();
-   }
+   void q();
 }

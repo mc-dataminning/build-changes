@@ -1,80 +1,59 @@
 import javax.annotation.Nullable;
 
-public class can extends caa {
-   private boolean b;
+public class can extends cak {
    @Nullable
-   private eeo c;
-   @Nullable
-   private elb d;
+   private elm b;
+   private int c;
 
-   public can(bzy $$0) {
+   public can(cai $$0) {
       super($$0);
    }
 
    @Override
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.eg().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.eg().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.eg().i() - 0.5F) * 8.0F;
+         this.a.dM().a(jx.w, this.a.dr() + (double)$$0, this.a.dt() + 2.0 + (double)$$1, this.a.dx() + (double)$$2, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
    public void c() {
-      if (!this.b && this.c != null) {
-         hv $$0 = this.a.dM().a(dny.a.f, drb.a(this.a.u()));
-         if (!$$0.a(this.a.dk(), 10.0)) {
-            this.a.gb().a(cao.a);
-         }
+      this.c++;
+      if (this.b == null) {
+         hx $$0 = this.a.dM().a(doj.a.e, drm.a(this.a.u()));
+         this.b = elm.c($$0);
+      }
+
+      double $$1 = this.b.c(this.a.dr(), this.a.dt(), this.a.dx());
+      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.P && !this.a.Q) {
+         this.a.c(1.0F);
       } else {
-         this.b = false;
-         this.j();
+         this.a.c(0.0F);
       }
    }
 
    @Override
    public void d() {
-      this.b = true;
-      this.c = null;
-      this.d = null;
+      this.b = null;
+      this.c = 0;
    }
 
-   private void j() {
-      int $$0 = this.a.A();
-      elb $$1 = this.a.D(1.0F);
-      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.gc() != null && this.a.gc().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.k();
-   }
-
-   private void k() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            iz $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.eg().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new elb((double)$$0.u(), $$1, (double)$$0.w());
-         }
-      }
+   @Override
+   public float f() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public elb g() {
-      return this.d;
+   public elm g() {
+      return this.b;
    }
 
    @Override
-   public cao<can> i() {
-      return cao.e;
+   public cay<can> i() {
+      return cay.j;
    }
 }

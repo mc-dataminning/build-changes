@@ -1,132 +1,137 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-public class cwy extends dcy {
-   public static final MapCodec<cwy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dkc.a.fieldOf("wood_type").forGetter(dcy::d), u()).apply($$0, cwy::new));
-   public static final djp b = djf.ba;
-   public static final djg c = djf.a;
-   protected static final float d = 5.0F;
-   protected static final elu e = cvz.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final Map<Integer, elu> i = Maps.newHashMap(
-      ImmutableMap.of(
-         0,
-         cvz.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         4,
-         cvz.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
-         8,
-         cvz.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         12,
-         cvz.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
-      )
-   );
+public class cwy extends cvb implements ddj {
+   public static final MapCodec<cwy> c = b(cwy::new);
+   public static final int d = 1;
+   public static final int e = 4;
+   public static final dka f = djq.az;
+   public static final djr g = cvb.b;
+   public static final djr h = djq.C;
+   public static final ToIntFunction<dja> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
+   private static final Int2ObjectMap<List<elm>> j = ac.a(() -> {
+      Int2ObjectMap<List<elm>> $$0 = new Int2ObjectOpenHashMap();
+      $$0.defaultReturnValue(ImmutableList.of());
+      $$0.put(1, ImmutableList.of(new elm(0.5, 0.5, 0.5)));
+      $$0.put(2, ImmutableList.of(new elm(0.375, 0.44, 0.5), new elm(0.625, 0.5, 0.44)));
+      $$0.put(3, ImmutableList.of(new elm(0.5, 0.313, 0.625), new elm(0.375, 0.44, 0.5), new elm(0.56, 0.5, 0.44)));
+      $$0.put(4, ImmutableList.of(new elm(0.44, 0.313, 0.56), new elm(0.625, 0.44, 0.56), new elm(0.375, 0.44, 0.375), new elm(0.56, 0.5, 0.375)));
+      return Int2ObjectMaps.unmodifiable($$0);
+   });
+   private static final emf k = cwj.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
+   private static final emf l = cwj.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
+   private static final emf m = cwj.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
+   private static final emf n = cwj.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
 
    @Override
    public MapCodec<cwy> a() {
-      return a;
+      return c;
    }
 
-   public cwy(dkc $$0, dio.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+   public cwy(diz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
    }
 
    @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      if ($$1.c_($$2) instanceof dhm $$6) {
-         cmh $$7 = $$3.b($$4);
-         if (this.a($$3, $$5, $$6, $$7)) {
-            return bjl.d;
-         }
+   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
+      if ($$3.fT().e && $$3.b($$4).b() && $$0.c(g)) {
+         a($$3, $$0, $$1, $$2);
+         return bjv.a($$1.B);
+      } else {
+         return bjv.d;
+      }
+   }
+
+   @Override
+   public boolean a(dja $$0, cpa $$1) {
+      return !$$1.h() && $$1.n().d() == this.k() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public dja a(cpa $$0) {
+      dja $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(f);
+      } else {
+         eek $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == eel.c;
+         return super.a($$0).a(h, Boolean.valueOf($$3));
+      }
+   }
+
+   @Override
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      if ($$0.c(h)) {
+         $$3.a($$4, eel.c, eel.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private boolean a(cer $$0, ekx $$1, dhm $$2, cmh $$3) {
-      return !$$2.a($$2.a($$0), $$0) && $$3.d() instanceof clt && $$1.b().equals(ia.a);
+   @Override
+   public eek c_(dja $$0) {
+      return $$0.c(h) ? eel.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public boolean a(dip $$0, ctb $$1, hv $$2) {
-      return $$1.a_($$2.c()).a($$1, $$2.c(), ia.a, ddz.b);
-   }
-
-   @Override
-   public dip a(coq $$0) {
-      csy $$1 = $$0.q();
-      edz $$2 = $$1.b_($$0.a());
-      hv $$3 = $$0.a().c();
-      dip $$4 = $$1.a_($$3);
-      boolean $$5 = $$4.a(arr.az);
-      ia $$6 = ia.a((double)$$0.i());
-      boolean $$7 = !cvz.a($$4.k($$1, $$3), ia.a) || $$0.h();
-      if ($$5 && !$$0.h()) {
-         if ($$4.b(dew.b)) {
-            ia $$8 = $$4.c(dew.b);
-            if ($$8.o().a($$6)) {
-               $$7 = false;
-            }
-         } else if ($$4.b(b)) {
-            Optional<ia> $$9 = djv.a($$4.c(b));
-            if ($$9.isPresent() && $$9.get().o().a($$6)) {
-               $$7 = false;
-            }
-         }
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      switch ($$0.c(f)) {
+         case 1:
+         default:
+            return k;
+         case 2:
+            return l;
+         case 3:
+            return m;
+         case 4:
+            return n;
       }
-
-      int $$10 = !$$7 ? djv.a($$6.g()) : djv.a($$0.i() + 180.0F);
-      return this.o().a(c, Boolean.valueOf($$7)).a(b, Integer.valueOf($$10)).a(f, Boolean.valueOf($$2.a() == eea.c));
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      elu $$4 = i.get($$0.c(b));
-      return $$4 == null ? e : $$4;
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(f, g, h);
    }
 
    @Override
-   public elu b_(dip $$0, cse $$1, hv $$2) {
-      return this.a($$0, $$1, $$2, elg.a());
+   public boolean a(ctj $$0, hx $$1, dja $$2, eek $$3) {
+      if (!$$2.c(h) && $$3.a() == eel.c) {
+         dja $$4 = $$2.a(h, Boolean.valueOf(true));
+         if ($$2.c(g)) {
+            a(null, $$4, $$0, $$1);
+         } else {
+            $$0.a($$1, $$4, 3);
+         }
+
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static boolean g(dja $$0) {
+      return $$0.a(asb.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      return $$1 == ia.b && !this.a($$0, $$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected Iterable<elm> b(dja $$0) {
+      return (Iterable<elm>)j.get($$0.c(f));
    }
 
    @Override
-   public float g(dip $$0) {
-      return djv.b($$0.c(b));
+   protected boolean d(dja $$0) {
+      return !$$0.c(h) && super.d($$0);
    }
 
    @Override
-   public dip a(dip $$0, dcl $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   public dip a(dip $$0, dav $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b, c, f);
-   }
-
-   @Override
-   public dgd a(hv $$0, dip $$1) {
-      return new dha($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
-      return a($$2, dgf.i, dhm::a);
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      return cwj.a($$1, $$2.d(), ic.b);
    }
 }

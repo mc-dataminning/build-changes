@@ -1,72 +1,69 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public class exs implements fab {
-   private static final int a = 170;
-   private final vb b;
-   @Nullable
-   private List<atk> c;
-   @Nullable
-   private final vb d;
-   private int e;
-   private long f;
-   private boolean g;
+public class exs extends ewv {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final auz<exs.a, exr> c;
+   private boolean d = false;
 
-   private exs(vb $$0, @Nullable vb $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public exs(vd $$0, ewk $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public void a(int $$0) {
-      this.e = $$0;
+   public exs(int $$0, int $$1, vd $$2, ewk $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? exr.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : exr.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
    }
 
-   public static exs a(vb $$0, @Nullable vb $$1) {
-      return new exs($$0, $$1);
+   public exs b(int $$0) {
+      super.a($$0);
+      return this;
    }
 
-   public static exs a(vb $$0) {
-      return new exs($$0, $$0);
+   public exs c(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public exs d(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public exs b(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
    @Override
-   public void b(faa $$0) {
-      if (this.d != null) {
-         $$0.a(ezz.c, this.d);
+   public int w() {
+      return this.c.a(this.d()).b();
+   }
+
+   @Override
+   public int u() {
+      return this.c.a(this.d()).a() * 9;
+   }
+
+   @Override
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+      exr $$4 = this.c.a(this.d());
+      int $$5 = this.B();
+      int $$6 = this.C();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.w() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   public List<atk> a(euk $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
-      }
-
-      return this.c;
+   private exs.a d() {
+      return new exs.a(this.x(), this.a.orElse(Integer.MAX_VALUE), this.b);
    }
 
-   public static List<atk> a(euk $$0, vb $$1) {
-      return $$0.h.c($$1, 170);
-   }
-
-   public void a(boolean $$0, boolean $$1, fak $$2) {
-      boolean $$3 = $$0 || $$1 && euk.N().aT().b();
-      if ($$3 != this.g) {
-         if ($$3) {
-            this.f = ac.b();
-         }
-
-         this.g = $$3;
-      }
-
-      if ($$3 && ac.b() - this.f > (long)this.e) {
-         fcc $$4 = euk.N().y;
-         if ($$4 != null) {
-            $$4.a(this, this.b($$0, $$1, $$2), $$1);
-         }
-      }
-   }
-
-   protected fev b(boolean $$0, boolean $$1, fak $$2) {
-      return (fev)(!$$0 && $$1 && euk.N().aT().b() ? new fer($$2) : new fex($$2));
+   static record a(vd a, int b, OptionalInt c) {
    }
 }

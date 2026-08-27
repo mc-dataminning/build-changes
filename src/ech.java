@@ -1,36 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ech extends ecl {
-   public static final Codec<ech> a = ecd.b.listOf().fieldOf("rules").xmap(ech::new, $$0 -> $$0.b).codec();
-   private final ImmutableList<ecd> b;
+public class ech extends ecw {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<ech> a = Codec.unit(() -> ech.b);
+   public static final ech b = new ech();
 
-   public ech(List<? extends ecd> $$0) {
-      this.b = ImmutableList.copyOf($$0);
+   private ech() {
    }
 
    @Nullable
    @Override
-   public eco.c a(ctb $$0, hv $$1, hv $$2, eco.c $$3, eco.c $$4, eck $$5) {
-      auf $$6 = auf.a(aty.a($$4.a()));
-      dip $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
+   public ecz.c a(ctl $$0, hx $$1, hx $$2, ecz.c $$3, ecz.c $$4, ecv $$5) {
+      dja $$6 = $$4.b();
+      if ($$6.a(cwl.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
 
-      while (var9.hasNext()) {
-         ecd $$8 = (ecd)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new eco.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+            dja $$9;
+            try {
+               fk.a $$8 = fk.a($$0.a(ke.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               throw new RuntimeException(var11);
+            }
+
+            return $$9.a(cwl.kN) ? null : new ecz.c($$4.a(), $$9, null);
          }
+      } else {
+         return $$4;
       }
-
-      return $$4;
    }
 
    @Override
-   protected ecn<?> a() {
-      return ecn.i;
+   protected ecy<?> a() {
+      return ecy.h;
    }
 }

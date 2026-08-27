@@ -1,24 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class bvu extends bwc<blx> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
-
+public class bvu extends bwm<blk> {
    @Override
-   public Set<bux<?>> a() {
-      return ImmutableSet.of(bux.K);
+   public Set<bvh<?>> a() {
+      return ImmutableSet.of(bvh.J, bvh.h);
    }
 
-   protected void a(amp $$0, blx $$1) {
-      bmv<?> $$2 = $$1.dO();
-      List<cbe> $$3 = $$0.a(cbe.class, $$1.cH().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      Optional<cbe> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.q())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(bux.K, $$4);
+   protected void a(amz $$0, blk $$1) {
+      $$1.dO().c(bvh.h).ifPresent($$1x -> this.a($$1, $$1x));
+   }
+
+   private void a(blk $$0, bvj $$1) {
+      Optional<blk> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.o_()).map(blk.class::cast);
+      $$0.dO().a(bvh.J, $$2);
    }
 }

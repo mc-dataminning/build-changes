@@ -1,99 +1,67 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class buf extends bsr {
-   private final bsr a;
-   private final int b;
-   private boolean c;
+public class buf extends btb {
+   private final bzr a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public buf(int $$0, bsr $$1) {
-      this.b = $$0;
-      this.a = $$1;
-   }
-
-   public boolean a(buf $$0) {
-      return this.S_() && $$0.i() < this.i();
+   public buf(bzr $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(btb.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean S_() {
-      return this.a.S_();
+      if (!this.a.gt() && this.a.bP()) {
+         elm $$0 = bwx.a(this.a, 5, 4);
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
-      }
+      this.a.N().a(this.c, this.d, this.e, this.b);
    }
 
    @Override
-   public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
-      }
-   }
-
-   @Override
-   public boolean T_() {
-      return this.a.T_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
+   public boolean b() {
+      return !this.a.gt() && !this.a.N().l() && this.a.bP();
    }
 
    @Override
    public void e() {
-      this.a.e();
-   }
+      if (!this.a.gt() && this.a.eg().a(this.a(50)) == 0) {
+         blp $$0 = this.a.cQ();
+         if ($$0 == null) {
+            return;
+         }
 
-   @Override
-   public void a(EnumSet<bsr.a> $$0) {
-      this.a.a($$0);
-   }
+         if ($$0 instanceof cfb $$1) {
+            int $$2 = this.a.gz();
+            int $$3 = this.a.gF();
+            if ($$3 > 0 && this.a.eg().a($$3) < $$2) {
+               this.a.h($$1);
+               return;
+            }
 
-   @Override
-   public EnumSet<bsr.a> j() {
-      return this.a.j();
-   }
+            this.a.v(5);
+         }
 
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public bsr k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((buf)$$0).a) : false;
+         this.a.bB();
+         this.a.gK();
+         this.a.dM().a(this.a, (byte)6);
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
    }
 }

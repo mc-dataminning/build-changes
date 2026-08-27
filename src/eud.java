@@ -1,39 +1,13 @@
-import java.util.function.IntFunction;
+public class eud extends eue {
+   private final err b;
 
-public enum eud implements aua {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
-
-   private static final IntFunction<eud> d = asq.a(eud::a, values(), asq.a.b);
-   private final int e;
-   private final String f;
-
-   private eud(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eud(err $$0, long $$1, vd $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public int a() {
-      return this.e;
-   }
-
-   @Override
-   public String b() {
-      return this.f;
-   }
-
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static eud a(int $$0) {
-      return d.apply($$0);
+   protected void a(eqj $$0, long $$1) throws erw {
+      $$0.d($$1, this.b.a);
    }
 }

@@ -1,20 +1,17 @@
-public enum djo implements aut {
-   a("top"),
-   b("bottom");
+public enum djo implements ave {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String c;
+   private final String e;
 
    private djo(String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.e;
    }
 }

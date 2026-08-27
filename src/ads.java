@@ -1,24 +1,32 @@
-public class ads implements wu<acw> {
-   private final boolean a;
+public class ads implements xd<adg> {
+   private final int a;
+   private final String b;
 
-   public ads(boolean $$0) {
+   public ads(int $$0, String $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(acw $$0) {
-      $$0.a(this);
-   }
-
-   public ads(ue $$0) {
-      this.a = $$0.readBoolean();
+   public ads(ug $$0) {
+      this.a = $$0.n();
+      this.b = $$0.d(32500);
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
+   public void a(ug $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b, 32500);
    }
 
-   public boolean a() {
+   public void a(adg $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
+   }
+
+   public String d() {
+      return this.b;
    }
 }

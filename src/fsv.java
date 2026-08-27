@@ -1,411 +1,527 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
+import org.joml.Matrix4f;
 
 public class fsv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ia[] b = ia.values();
-   private static final int c = 60;
-   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
-   private boolean e = true;
-   @Nullable
-   private Future<?> f;
-   @Nullable
-   private fsz g;
-   private final AtomicReference<fsv.b> h = new AtomicReference<>();
-   private final AtomicReference<fsv.a> i = new AtomicReference<>();
-   private final AtomicBoolean j = new AtomicBoolean(false);
+   private static final fth a = fth.t(new ahd("textures/map/map_background.png"));
+   private static final fth b = fth.t(new ahd("textures/map/map_background_checkerboard.png"));
+   private static final float c = -0.4F;
+   private static final float d = 0.2F;
+   private static final float e = -0.2F;
+   private static final float f = -0.6F;
+   private static final float g = 0.56F;
+   private static final float h = -0.52F;
+   private static final float i = -0.72F;
+   private static final float j = 45.0F;
+   private static final float k = -80.0F;
+   private static final float l = -20.0F;
+   private static final float m = -20.0F;
+   private static final float n = 10.0F;
+   private static final float o = 90.0F;
+   private static final float p = 30.0F;
+   private static final float q = 0.6F;
+   private static final float r = -0.5F;
+   private static final float s = 0.0F;
+   private static final double t = 27.0;
+   private static final float u = 0.8F;
+   private static final float v = 0.1F;
+   private static final float w = -0.3F;
+   private static final float x = 0.4F;
+   private static final float y = -0.4F;
+   private static final float z = 70.0F;
+   private static final float A = -20.0F;
+   private static final float B = -0.6F;
+   private static final float C = 0.8F;
+   private static final float D = 0.8F;
+   private static final float E = -0.75F;
+   private static final float F = -0.9F;
+   private static final float G = 45.0F;
+   private static final float H = -1.0F;
+   private static final float I = 3.6F;
+   private static final float J = 3.5F;
+   private static final float K = 5.6F;
+   private static final int L = 200;
+   private static final int M = -135;
+   private static final int N = 120;
+   private static final float O = -0.4F;
+   private static final float P = -0.2F;
+   private static final float Q = 0.0F;
+   private static final float R = 0.04F;
+   private static final float S = -0.72F;
+   private static final float T = -1.2F;
+   private static final float U = -0.5F;
+   private static final float V = 45.0F;
+   private static final float W = -85.0F;
+   private static final float X = 45.0F;
+   private static final float Y = 92.0F;
+   private static final float Z = -41.0F;
+   private static final float aa = 0.3F;
+   private static final float ab = -1.1F;
+   private static final float ac = 0.45F;
+   private static final float ad = 20.0F;
+   private static final float ae = 0.38F;
+   private static final float af = -0.5F;
+   private static final float ag = -0.5F;
+   private static final float ah = 0.0F;
+   private static final float ai = 0.0078125F;
+   private static final int aj = 7;
+   private static final int ak = 128;
+   private static final int al = 128;
+   private static final float am = 0.0F;
+   private static final float an = 0.0F;
+   private static final float ao = 0.04F;
+   private static final float ap = 0.0F;
+   private static final float aq = 0.004F;
+   private static final float ar = 0.0F;
+   private static final float as = 0.2F;
+   private static final float at = 0.1F;
+   private final eva au;
+   private cmr av = cmr.f;
+   private cmr aw = cmr.f;
+   private float ax;
+   private float ay;
+   private float az;
+   private float aA;
+   private final fyd aB;
+   private final fzd aC;
 
-   public void a(@Nullable fsz $$0) {
-      if (this.f != null) {
-         try {
-            this.f.get();
-            this.f = null;
-         } catch (Exception var3) {
-            a.warn("Full update failed", var3);
-         }
+   public fsv(eva $$0, fyd $$1, fzd $$2) {
+      this.au = $$0;
+      this.aB = $$1;
+      this.aC = $$2;
+   }
+
+   public void a(bmf $$0, cmr $$1, cmo $$2, boolean $$3, ept $$4, fsz $$5, int $$6) {
+      if (!$$1.b()) {
+         this.aC.a($$0, $$1, $$2, $$3, $$4, $$5, $$0.dM(), $$6, gdw.d, $$0.aj() + $$2.ordinal());
+      }
+   }
+
+   private float a(float $$0) {
+      float $$1 = 1.0F - $$0 / 45.0F + 0.1F;
+      $$1 = aui.a($$1, 0.0F, 1.0F);
+      return -aui.b($$1 * (float) Math.PI) * 0.5F + 0.5F;
+   }
+
+   private void a(ept $$0, fsz $$1, int $$2, blz $$3) {
+      gdi $$4 = (gdi)this.aB.<fry>a(this.au.s);
+      $$0.a();
+      float $$5 = $$3 == blz.b ? 1.0F : -1.0F;
+      $$0.a(a.d.rotationDegrees(92.0F));
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.a(a.f.rotationDegrees($$5 * -41.0F));
+      $$0.a($$5 * 0.3F, -1.1F, 0.45F);
+      if ($$3 == blz.b) {
+         $$4.a($$0, $$1, $$2, this.au.s);
+      } else {
+         $$4.b($$0, $$1, $$2, this.au.s);
       }
 
-      this.g = $$0;
-      if ($$0 != null) {
-         this.h.set(new fsv.b($$0.f.length));
-         this.a();
+      $$0.b();
+   }
+
+   private void a(ept $$0, fsz $$1, int $$2, float $$3, blz $$4, float $$5, cmr $$6) {
+      float $$7 = $$4 == blz.b ? 1.0F : -1.0F;
+      $$0.a($$7 * 0.125F, -0.125F, 0.0F);
+      if (!this.au.s.ce()) {
+         $$0.a();
+         $$0.a(a.f.rotationDegrees($$7 * 10.0F));
+         this.a($$0, $$1, $$2, $$3, $$5, $$4);
+         $$0.b();
+      }
+
+      $$0.a();
+      $$0.a($$7 * 0.51F, -0.08F + $$3 * -1.2F, -0.75F);
+      float $$8 = aui.c($$5);
+      float $$9 = aui.a($$8 * (float) Math.PI);
+      float $$10 = -0.5F * $$9;
+      float $$11 = 0.4F * aui.a($$8 * (float) (Math.PI * 2));
+      float $$12 = -0.3F * aui.a($$5 * (float) Math.PI);
+      $$0.a($$7 * $$10, $$11 - 0.3F * $$9, $$12);
+      $$0.a(a.b.rotationDegrees($$9 * -45.0F));
+      $$0.a(a.d.rotationDegrees($$7 * $$9 * -30.0F));
+      this.a($$0, $$1, $$2, $$6);
+      $$0.b();
+   }
+
+   private void a(ept $$0, fsz $$1, int $$2, float $$3, float $$4, float $$5) {
+      float $$6 = aui.c($$5);
+      float $$7 = -0.2F * aui.a($$5 * (float) Math.PI);
+      float $$8 = -0.4F * aui.a($$6 * (float) Math.PI);
+      $$0.a(0.0F, -$$7 / 2.0F, $$8);
+      float $$9 = this.a($$3);
+      $$0.a(0.0F, 0.04F + $$4 * -1.2F + $$9 * -0.5F, -0.72F);
+      $$0.a(a.b.rotationDegrees($$9 * -85.0F));
+      if (!this.au.s.ce()) {
+         $$0.a();
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a($$0, $$1, $$2, blz.b);
+         this.a($$0, $$1, $$2, blz.a);
+         $$0.b();
+      }
+
+      float $$10 = aui.a($$6 * (float) Math.PI);
+      $$0.a(a.b.rotationDegrees($$10 * 20.0F));
+      $$0.b(2.0F, 2.0F, 2.0F);
+      this.a($$0, $$1, $$2, this.av);
+   }
+
+   private void a(ept $$0, fsz $$1, int $$2, cmr $$3) {
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.a(a.f.rotationDegrees(180.0F));
+      $$0.b(0.38F, 0.38F, 0.38F);
+      $$0.a(-0.5F, -0.5F, 0.0F);
+      $$0.b(0.0078125F, 0.0078125F, 0.0078125F);
+      Integer $$4 = cmy.d($$3);
+      efu $$5 = cmy.a($$4, this.au.r);
+      epx $$6 = $$1.getBuffer($$5 == null ? a : b);
+      Matrix4f $$7 = $$0.c().a();
+      $$6.a($$7, -7.0F, 135.0F, 0.0F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$2).e();
+      $$6.a($$7, 135.0F, 135.0F, 0.0F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$2).e();
+      $$6.a($$7, 135.0F, -7.0F, 0.0F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$2).e();
+      $$6.a($$7, -7.0F, -7.0F, 0.0F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$2).e();
+      if ($$5 != null) {
+         this.au.j.j().a($$0, $$1, $$4, $$5, false, $$2);
+      }
+   }
+
+   private void a(ept $$0, fsz $$1, int $$2, float $$3, float $$4, blz $$5) {
+      boolean $$6 = $$5 != blz.a;
+      float $$7 = $$6 ? 1.0F : -1.0F;
+      float $$8 = aui.c($$4);
+      float $$9 = -0.3F * aui.a($$8 * (float) Math.PI);
+      float $$10 = 0.4F * aui.a($$8 * (float) (Math.PI * 2));
+      float $$11 = -0.4F * aui.a($$4 * (float) Math.PI);
+      $$0.a($$7 * ($$9 + 0.64000005F), $$10 + -0.6F + $$3 * -0.6F, $$11 + -0.71999997F);
+      $$0.a(a.d.rotationDegrees($$7 * 45.0F));
+      float $$12 = aui.a($$4 * $$4 * (float) Math.PI);
+      float $$13 = aui.a($$8 * (float) Math.PI);
+      $$0.a(a.d.rotationDegrees($$7 * $$13 * 70.0F));
+      $$0.a(a.f.rotationDegrees($$7 * $$12 * -20.0F));
+      fry $$14 = this.au.s;
+      $$0.a($$7 * -1.0F, 3.6F, 3.5F);
+      $$0.a(a.f.rotationDegrees($$7 * 120.0F));
+      $$0.a(a.b.rotationDegrees(200.0F));
+      $$0.a(a.d.rotationDegrees($$7 * -135.0F));
+      $$0.a($$7 * 5.6F, 0.0F, 0.0F);
+      gdi $$15 = (gdi)this.aB.<fry>a($$14);
+      if ($$6) {
+         $$15.a($$0, $$1, $$2, $$14);
       } else {
-         this.h.set(null);
+         $$15.b($$0, $$1, $$2, $$14);
+      }
+   }
+
+   private void a(ept $$0, float $$1, blz $$2, cmr $$3) {
+      float $$4 = (float)this.au.s.fq() - $$1 + 1.0F;
+      float $$5 = $$4 / (float)$$3.r();
+      if ($$5 < 0.8F) {
+         float $$6 = aui.e(aui.b($$4 / 4.0F * (float) Math.PI) * 0.1F);
+         $$0.a(0.0F, $$6, 0.0F);
+      }
+
+      float $$7 = 1.0F - (float)Math.pow((double)$$5, 27.0);
+      int $$8 = $$2 == blz.b ? 1 : -1;
+      $$0.a($$7 * 0.6F * (float)$$8, $$7 * -0.5F, $$7 * 0.0F);
+      $$0.a(a.d.rotationDegrees((float)$$8 * $$7 * 90.0F));
+      $$0.a(a.b.rotationDegrees($$7 * 10.0F));
+      $$0.a(a.f.rotationDegrees((float)$$8 * $$7 * 30.0F));
+   }
+
+   private void a(ept $$0, float $$1, blz $$2, cmr $$3, float $$4) {
+      this.b($$0, $$2, $$4);
+      float $$5 = (float)(this.au.s.fq() % 10);
+      float $$6 = $$5 - $$1 + 1.0F;
+      float $$7 = 1.0F - $$6 / 10.0F;
+      float $$8 = -90.0F;
+      float $$9 = 60.0F;
+      float $$10 = 150.0F;
+      float $$11 = -15.0F;
+      int $$12 = 2;
+      float $$13 = -15.0F + 75.0F * aui.b($$7 * 2.0F * (float) Math.PI);
+      if ($$2 != blz.b) {
+         $$0.a(0.1, 0.83, 0.35);
+         $$0.a(a.b.rotationDegrees(-80.0F));
+         $$0.a(a.d.rotationDegrees(-90.0F));
+         $$0.a(a.b.rotationDegrees($$13));
+         $$0.a(-0.3, 0.22, 0.35);
+      } else {
+         $$0.a(-0.25, 0.22, 0.35);
+         $$0.a(a.b.rotationDegrees(-80.0F));
+         $$0.a(a.d.rotationDegrees(90.0F));
+         $$0.a(a.f.rotationDegrees(0.0F));
+         $$0.a(a.b.rotationDegrees($$13));
+      }
+   }
+
+   private void a(ept $$0, blz $$1, float $$2) {
+      int $$3 = $$1 == blz.b ? 1 : -1;
+      float $$4 = aui.a($$2 * $$2 * (float) Math.PI);
+      $$0.a(a.d.rotationDegrees((float)$$3 * (45.0F + $$4 * -20.0F)));
+      float $$5 = aui.a(aui.c($$2) * (float) Math.PI);
+      $$0.a(a.f.rotationDegrees((float)$$3 * $$5 * -20.0F));
+      $$0.a(a.b.rotationDegrees($$5 * -80.0F));
+      $$0.a(a.d.rotationDegrees((float)$$3 * -45.0F));
+   }
+
+   private void b(ept $$0, blz $$1, float $$2) {
+      int $$3 = $$1 == blz.b ? 1 : -1;
+      $$0.a((float)$$3 * 0.56F, -0.52F + $$2 * -0.6F, -0.72F);
+   }
+
+   public void a(float $$0, ept $$1, fsz.a $$2, fsb $$3, int $$4) {
+      float $$5 = $$3.x($$0);
+      bju $$6 = (bju)MoreObjects.firstNonNull($$3.aG, bju.a);
+      float $$7 = aui.i($$0, $$3.O, $$3.dE());
+      fsv.a $$8 = a($$3);
+      float $$9 = aui.i($$0, $$3.cu, $$3.cs);
+      float $$10 = aui.i($$0, $$3.ct, $$3.cr);
+      $$1.a(a.b.rotationDegrees(($$3.g($$0) - $$9) * 0.1F));
+      $$1.a(a.d.rotationDegrees(($$3.h($$0) - $$10) * 0.1F));
+      if ($$8.d) {
+         float $$11 = $$6 == bju.a ? $$5 : 0.0F;
+         float $$12 = 1.0F - aui.i($$0, this.ay, this.ax);
+         this.a($$3, $$0, $$7, bju.a, $$11, this.av, $$12, $$1, $$2, $$4);
+      }
+
+      if ($$8.e) {
+         float $$13 = $$6 == bju.b ? $$5 : 0.0F;
+         float $$14 = 1.0F - aui.i($$0, this.aA, this.az);
+         this.a($$3, $$0, $$7, bju.b, $$13, this.aw, $$14, $$1, $$2, $$4);
+      }
+
+      $$2.b();
+   }
+
+   @VisibleForTesting
+   static fsv.a a(fsb $$0) {
+      cmr $$1 = $$0.eT();
+      cmr $$2 = $$0.eU();
+      boolean $$3 = $$1.a(cmu.or) || $$2.a(cmu.or);
+      boolean $$4 = $$1.a(cmu.vM) || $$2.a(cmu.vM);
+      if (!$$3 && !$$4) {
+         return fsv.a.a;
+      } else if ($$0.fn()) {
+         return b($$0);
+      } else {
+         return a($$1) ? fsv.a.b : fsv.a.a;
+      }
+   }
+
+   private static fsv.a b(fsb $$0) {
+      cmr $$1 = $$0.fp();
+      bju $$2 = $$0.fo();
+      if (!$$1.a(cmu.or) && !$$1.a(cmu.vM)) {
+         return $$2 == bju.a && a($$0.eU()) ? fsv.a.b : fsv.a.a;
+      } else {
+         return fsv.a.a($$2);
+      }
+   }
+
+   private static boolean a(cmr $$0) {
+      return $$0.a(cmu.vM) && ckz.d($$0);
+   }
+
+   private void a(fry $$0, float $$1, float $$2, bju $$3, float $$4, cmr $$5, float $$6, ept $$7, fsz $$8, int $$9) {
+      if (!$$0.gq()) {
+         boolean $$10 = $$3 == bju.a;
+         blz $$11 = $$10 ? $$0.fm() : $$0.fm().e();
+         $$7.a();
+         if ($$5.b()) {
+            if ($$10 && !$$0.ce()) {
+               this.a($$7, $$8, $$9, $$6, $$4, $$11);
+            }
+         } else if ($$5.a(cmu.rR)) {
+            if ($$10 && this.aw.b()) {
+               this.a($$7, $$8, $$9, $$2, $$6, $$4);
+            } else {
+               this.a($$7, $$8, $$9, $$6, $$11, $$4, $$5);
+            }
+         } else if ($$5.a(cmu.vM)) {
+            boolean $$12 = ckz.d($$5);
+            boolean $$13 = $$11 == blz.b;
+            int $$14 = $$13 ? 1 : -1;
+            if ($$0.fn() && $$0.fq() > 0 && $$0.fo() == $$3) {
+               this.b($$7, $$11, $$6);
+               $$7.a((float)$$14 * -0.4785682F, -0.094387F, 0.05731531F);
+               $$7.a(a.b.rotationDegrees(-11.935F));
+               $$7.a(a.d.rotationDegrees((float)$$14 * 65.3F));
+               $$7.a(a.f.rotationDegrees((float)$$14 * -9.785F));
+               float $$15 = (float)$$5.r() - ((float)this.au.s.fq() - $$1 + 1.0F);
+               float $$16 = $$15 / (float)ckz.k($$5);
+               if ($$16 > 1.0F) {
+                  $$16 = 1.0F;
+               }
+
+               if ($$16 > 0.1F) {
+                  float $$17 = aui.a(($$15 - 0.1F) * 1.3F);
+                  float $$18 = $$16 - 0.1F;
+                  float $$19 = $$17 * $$18;
+                  $$7.a($$19 * 0.0F, $$19 * 0.004F, $$19 * 0.0F);
+               }
+
+               $$7.a($$16 * 0.0F, $$16 * 0.0F, $$16 * 0.04F);
+               $$7.b(1.0F, 1.0F, 1.0F + $$16 * 0.2F);
+               $$7.a(a.c.rotationDegrees((float)$$14 * 45.0F));
+            } else {
+               float $$20 = -0.4F * aui.a(aui.c($$4) * (float) Math.PI);
+               float $$21 = 0.2F * aui.a(aui.c($$4) * (float) (Math.PI * 2));
+               float $$22 = -0.2F * aui.a($$4 * (float) Math.PI);
+               $$7.a((float)$$14 * $$20, $$21, $$22);
+               this.b($$7, $$11, $$6);
+               this.a($$7, $$11, $$4);
+               if ($$12 && $$4 < 0.001F && $$10) {
+                  $$7.a((float)$$14 * -0.641864F, 0.0F, 0.0F);
+                  $$7.a(a.d.rotationDegrees((float)$$14 * 10.0F));
+               }
+            }
+
+            this.a($$0, $$5, $$13 ? cmo.e : cmo.d, !$$13, $$7, $$8, $$9);
+         } else {
+            boolean $$23 = $$11 == blz.b;
+            if ($$0.fn() && $$0.fq() > 0 && $$0.fo() == $$3) {
+               int $$24 = $$23 ? 1 : -1;
+               switch ($$5.s()) {
+                  case a:
+                     this.b($$7, $$11, $$6);
+                     break;
+                  case b:
+                  case c:
+                     this.a($$7, $$1, $$11, $$5);
+                     this.b($$7, $$11, $$6);
+                     break;
+                  case d:
+                     this.b($$7, $$11, $$6);
+                     break;
+                  case e:
+                     this.b($$7, $$11, $$6);
+                     $$7.a((float)$$24 * -0.2785682F, 0.18344387F, 0.15731531F);
+                     $$7.a(a.b.rotationDegrees(-13.935F));
+                     $$7.a(a.d.rotationDegrees((float)$$24 * 35.3F));
+                     $$7.a(a.f.rotationDegrees((float)$$24 * -9.785F));
+                     float $$25 = (float)$$5.r() - ((float)this.au.s.fq() - $$1 + 1.0F);
+                     float $$26 = $$25 / 20.0F;
+                     $$26 = ($$26 * $$26 + $$26 * 2.0F) / 3.0F;
+                     if ($$26 > 1.0F) {
+                        $$26 = 1.0F;
+                     }
+
+                     if ($$26 > 0.1F) {
+                        float $$27 = aui.a(($$25 - 0.1F) * 1.3F);
+                        float $$28 = $$26 - 0.1F;
+                        float $$29 = $$27 * $$28;
+                        $$7.a($$29 * 0.0F, $$29 * 0.004F, $$29 * 0.0F);
+                     }
+
+                     $$7.a($$26 * 0.0F, $$26 * 0.0F, $$26 * 0.04F);
+                     $$7.b(1.0F, 1.0F, 1.0F + $$26 * 0.2F);
+                     $$7.a(a.c.rotationDegrees((float)$$24 * 45.0F));
+                     break;
+                  case f:
+                     this.b($$7, $$11, $$6);
+                     $$7.a((float)$$24 * -0.5F, 0.7F, 0.1F);
+                     $$7.a(a.b.rotationDegrees(-55.0F));
+                     $$7.a(a.d.rotationDegrees((float)$$24 * 35.3F));
+                     $$7.a(a.f.rotationDegrees((float)$$24 * -9.785F));
+                     float $$30 = (float)$$5.r() - ((float)this.au.s.fq() - $$1 + 1.0F);
+                     float $$31 = $$30 / 10.0F;
+                     if ($$31 > 1.0F) {
+                        $$31 = 1.0F;
+                     }
+
+                     if ($$31 > 0.1F) {
+                        float $$32 = aui.a(($$30 - 0.1F) * 1.3F);
+                        float $$33 = $$31 - 0.1F;
+                        float $$34 = $$32 * $$33;
+                        $$7.a($$34 * 0.0F, $$34 * 0.004F, $$34 * 0.0F);
+                     }
+
+                     $$7.a(0.0F, 0.0F, $$31 * 0.2F);
+                     $$7.b(1.0F, 1.0F, 1.0F + $$31 * 0.2F);
+                     $$7.a(a.c.rotationDegrees((float)$$24 * 45.0F));
+                     break;
+                  case j:
+                     this.a($$7, $$1, $$11, $$5, $$6);
+               }
+            } else if ($$0.fj()) {
+               this.b($$7, $$11, $$6);
+               int $$35 = $$23 ? 1 : -1;
+               $$7.a((float)$$35 * -0.4F, 0.8F, 0.3F);
+               $$7.a(a.d.rotationDegrees((float)$$35 * 65.0F));
+               $$7.a(a.f.rotationDegrees((float)$$35 * -85.0F));
+            } else {
+               float $$36 = -0.4F * aui.a(aui.c($$4) * (float) Math.PI);
+               float $$37 = 0.2F * aui.a(aui.c($$4) * (float) (Math.PI * 2));
+               float $$38 = -0.2F * aui.a($$4 * (float) Math.PI);
+               int $$39 = $$23 ? 1 : -1;
+               $$7.a((float)$$39 * $$36, $$37, $$38);
+               this.b($$7, $$11, $$6);
+               this.a($$7, $$11, $$4);
+            }
+
+            this.a($$0, $$5, $$23 ? cmo.e : cmo.d, !$$23, $$7, $$8, $$9);
+         }
+
+         $$7.b();
       }
    }
 
    public void a() {
-      this.e = true;
-   }
-
-   public void a(fvl $$0, List<fvh.b> $$1) {
-      for (fsv.d $$2 : this.h.get().a().b) {
-         if ($$0.a($$2.a.b())) {
-            $$1.add($$2.a);
-         }
-      }
-   }
-
-   public boolean b() {
-      return this.j.compareAndSet(true, false);
-   }
-
-   public void a(csf $$0) {
-      fsv.a $$1 = this.i.get();
-      if ($$1 != null) {
-         this.a($$1, $$0);
+      this.ay = this.ax;
+      this.aA = this.az;
+      fsb $$0 = this.au.s;
+      cmr $$1 = $$0.eT();
+      cmr $$2 = $$0.eU();
+      if (cmr.a(this.av, $$1)) {
+         this.av = $$1;
       }
 
-      fsv.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         this.a($$2, $$0);
-      }
-   }
-
-   public void a(fvh.b $$0) {
-      fsv.a $$1 = this.i.get();
-      if ($$1 != null) {
-         $$1.b.add($$0);
+      if (cmr.a(this.aw, $$2)) {
+         this.aw = $$2;
       }
 
-      fsv.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         $$2.b.add($$0);
-      }
-   }
-
-   public void a(boolean $$0, etv $$1, fvl $$2, List<fvh.b> $$3) {
-      elb $$4 = $$1.b();
-      if (this.e && (this.f == null || this.f.isDone())) {
-         this.a($$0, $$1, $$4);
-      }
-
-      this.a($$0, $$2, $$3, $$4);
-   }
-
-   private void a(boolean $$0, etv $$1, elb $$2) {
-      this.e = false;
-      this.f = ac.f().submit(() -> {
-         fsv.b $$3 = new fsv.b(this.g.f.length);
-         this.i.set($$3.b);
-         Queue<fsv.d> $$4 = Queues.newArrayDeque();
-         this.a($$1, $$4);
-         $$4.forEach($$1xx -> $$3.a.a.a($$1xx.a, $$1xx));
-         this.a($$3.a, $$2, $$4, $$0, $$0xx -> {
-         });
-         this.h.set($$3);
-         this.i.set(null);
-         this.j.set(true);
-      });
-   }
-
-   private void a(boolean $$0, fvl $$1, List<fvh.b> $$2, elb $$3) {
-      fsv.b $$4 = this.h.get();
-      this.a($$4);
-      if (!$$4.b.b.isEmpty()) {
-         Queue<fsv.d> $$5 = Queues.newArrayDeque();
-
-         while (!$$4.b.b.isEmpty()) {
-            fvh.b $$6 = $$4.b.b.poll();
-            fsv.d $$7 = $$4.a.a.a($$6);
-            if ($$7 != null && $$7.a == $$6) {
-               $$5.add($$7);
-            }
-         }
-
-         fvl $$8 = fsg.a($$1);
-         Consumer<fvh.b> $$9 = $$2x -> {
-            if ($$8.a($$2x.b())) {
-               $$2.add($$2x);
-            }
-         };
-         this.a($$4.a, $$3, $$5, $$0, $$9);
-      }
-   }
-
-   private void a(fsv.b $$0) {
-      LongIterator $$1 = $$0.b.a.iterator();
-
-      while ($$1.hasNext()) {
-         long $$2 = $$1.nextLong();
-         List<fvh.b> $$3 = (List<fvh.b>)$$0.a.c.get($$2);
-         if ($$3 != null && $$3.get(0).a()) {
-            $$0.b.b.addAll($$3);
-            $$0.a.c.remove($$2);
-         }
-      }
-
-      $$0.b.a.clear();
-   }
-
-   private void a(fsv.a $$0, csf $$1) {
-      $$0.a.add(csf.c($$1.e - 1, $$1.f));
-      $$0.a.add(csf.c($$1.e, $$1.f - 1));
-      $$0.a.add(csf.c($$1.e + 1, $$1.f));
-      $$0.a.add(csf.c($$1.e, $$1.f + 1));
-   }
-
-   private void a(etv $$0, Queue<fsv.d> $$1) {
-      int $$2 = 16;
-      elb $$3 = $$0.b();
-      hv $$4 = $$0.c();
-      fvh.b $$5 = this.g.a($$4);
-      if ($$5 == null) {
-         cta $$6 = this.g.c();
-         boolean $$7 = $$4.v() > $$6.J_();
-         int $$8 = $$7 ? $$6.ak() - 8 : $$6.J_() + 8;
-         int $$9 = aty.a($$3.c / 16.0) * 16;
-         int $$10 = aty.a($$3.e / 16.0) * 16;
-         int $$11 = this.g.b();
-         List<fsv.d> $$12 = Lists.newArrayList();
-
-         for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-            for (int $$14 = -$$11; $$14 <= $$11; $$14++) {
-               fvh.b $$15 = this.g.a(new hv($$9 + ix.a($$13, 8), $$8, $$10 + ix.a($$14, 8)));
-               if ($$15 != null && this.a($$4, $$15.f())) {
-                  ia $$16 = $$7 ? ia.a : ia.b;
-                  fsv.d $$17 = new fsv.d($$15, $$16, 0);
-                  $$17.a($$17.d, $$16);
-                  if ($$13 > 0) {
-                     $$17.a($$17.d, ia.f);
-                  } else if ($$13 < 0) {
-                     $$17.a($$17.d, ia.e);
-                  }
-
-                  if ($$14 > 0) {
-                     $$17.a($$17.d, ia.d);
-                  } else if ($$14 < 0) {
-                     $$17.a($$17.d, ia.c);
-                  }
-
-                  $$12.add($$17);
-               }
-            }
-         }
-
-         $$12.sort(Comparator.comparingDouble($$1x -> $$4.j($$1x.a.f().b(8, 8, 8))));
-         $$1.addAll($$12);
+      if ($$0.A()) {
+         this.ax = aui.a(this.ax - 0.4F, 0.0F, 1.0F);
+         this.az = aui.a(this.az - 0.4F, 0.0F, 1.0F);
       } else {
-         $$1.add(new fsv.d($$5, null, 0));
+         float $$3 = $$0.B(1.0F);
+         this.ax = this.ax + aui.a((this.av == $$1 ? $$3 * $$3 * $$3 : 0.0F) - this.ax, -0.4F, 0.4F);
+         this.az = this.az + aui.a((float)(this.aw == $$2 ? 1 : 0) - this.az, -0.4F, 0.4F);
+      }
+
+      if (this.ax < 0.1F) {
+         this.av = $$1;
+      }
+
+      if (this.az < 0.1F) {
+         this.aw = $$2;
       }
    }
 
-   private void a(fsv.c $$0, elb $$1, Queue<fsv.d> $$2, boolean $$3, Consumer<fvh.b> $$4) {
-      int $$5 = 16;
-      hv $$6 = new hv(aty.a($$1.c / 16.0) * 16, aty.a($$1.d / 16.0) * 16, aty.a($$1.e / 16.0) * 16);
-      hv $$7 = $$6.b(8, 8, 8);
-
-      while (!$$2.isEmpty()) {
-         fsv.d $$8 = $$2.poll();
-         fvh.b $$9 = $$8.a;
-         if ($$0.b.add($$8)) {
-            $$4.accept($$8.a);
-         }
-
-         boolean $$10 = Math.abs($$9.f().u() - $$6.u()) > 60 || Math.abs($$9.f().v() - $$6.v()) > 60 || Math.abs($$9.f().w() - $$6.w()) > 60;
-
-         for (ia $$11 : b) {
-            fvh.b $$12 = this.a($$6, $$9, $$11);
-            if ($$12 != null && (!$$3 || !$$8.a($$11.g()))) {
-               if ($$3 && $$8.a()) {
-                  fvh.a $$13 = $$9.d();
-                  boolean $$14 = false;
-
-                  for (int $$15 = 0; $$15 < b.length; $$15++) {
-                     if ($$8.a($$15) && $$13.a(b[$$15].g(), $$11)) {
-                        $$14 = true;
-                        break;
-                     }
-                  }
-
-                  if (!$$14) {
-                     continue;
-                  }
-               }
-
-               if ($$3 && $$10) {
-                  hv $$16 = $$12.f();
-                  hv $$17 = $$16.b(
-                     ($$11.o() == ia.a.a ? $$7.u() <= $$16.u() : $$7.u() >= $$16.u()) ? 0 : 16,
-                     ($$11.o() == ia.a.b ? $$7.v() <= $$16.v() : $$7.v() >= $$16.v()) ? 0 : 16,
-                     ($$11.o() == ia.a.c ? $$7.w() <= $$16.w() : $$7.w() >= $$16.w()) ? 0 : 16
-                  );
-                  elb $$18 = new elb((double)$$17.u(), (double)$$17.v(), (double)$$17.w());
-                  elb $$19 = $$1.d($$18).d().a(d);
-                  boolean $$20 = true;
-
-                  while ($$1.d($$18).g() > 3600.0) {
-                     $$18 = $$18.e($$19);
-                     cta $$21 = this.g.c();
-                     if ($$18.d > (double)$$21.ak() || $$18.d < (double)$$21.J_()) {
-                        break;
-                     }
-
-                     fvh.b $$22 = this.g.a(hv.a($$18.c, $$18.d, $$18.e));
-                     if ($$22 == null || $$0.a.a($$22) == null) {
-                        $$20 = false;
-                        break;
-                     }
-                  }
-
-                  if (!$$20) {
-                     continue;
-                  }
-               }
-
-               fsv.d $$23 = $$0.a.a($$12);
-               if ($$23 != null) {
-                  $$23.b($$11);
-               } else {
-                  fsv.d $$24 = new fsv.d($$12, $$11, $$8.b + 1);
-                  $$24.a($$8.d, $$11);
-                  if ($$12.a()) {
-                     $$2.add($$24);
-                     $$0.a.a($$12, $$24);
-                  } else if (this.a($$6, $$12.f())) {
-                     $$0.a.a($$12, $$24);
-                     ((List)$$0.c.computeIfAbsent(csf.a($$12.f()), $$0x -> new ArrayList())).add($$12);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(hv $$0, hv $$1) {
-      int $$2 = ix.a($$0.u());
-      int $$3 = ix.a($$0.w());
-      int $$4 = ix.a($$1.u());
-      int $$5 = ix.a($$1.w());
-      return amd.a($$2, $$3, this.g.b(), $$4, $$5);
-   }
-
-   @Nullable
-   private fvh.b a(hv $$0, fvh.b $$1, ia $$2) {
-      hv $$3 = $$1.a($$2);
-      if (!this.a($$0, $$3)) {
-         return null;
+   public void a(bju $$0) {
+      if ($$0 == bju.a) {
+         this.ax = 0.0F;
       } else {
-         return aty.a($$0.v() - $$3.v()) > this.g.b() * 16 ? null : this.g.a($$3);
+         this.az = 0.0F;
       }
    }
 
-   @Nullable
-   @avd
-   protected fsv.d b(fvh.b $$0) {
-      return this.h.get().a.a.a($$0);
-   }
+   @VisibleForTesting
+   static enum a {
+      a(true, true),
+      b(true, false),
+      c(false, true);
 
-   static record a(LongSet a, BlockingQueue<fvh.b> b) {
+      final boolean d;
+      final boolean e;
 
-      public a() {
-         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
-      }
-   }
-
-   static record b(fsv.c a, fsv.a b) {
-
-      public b(int $$0) {
-         this(new fsv.c($$0), new fsv.a());
-      }
-   }
-
-   static class c {
-      public final fsv.e a;
-      public final LinkedHashSet<fsv.d> b;
-      public final Long2ObjectMap<List<fvh.b>> c;
-
-      public c(int $$0) {
-         this.a = new fsv.e($$0);
-         this.b = new LinkedHashSet<>($$0);
-         this.c = new Long2ObjectOpenHashMap();
-      }
-   }
-
-   @avd
-   protected static class d {
-      @avd
-      protected final fvh.b a;
-      private byte c;
-      byte d;
-      @avd
-      protected final int b;
-
-      d(fvh.b $$0, @Nullable ia $$1, int $$2) {
-         this.a = $$0;
-         if ($$1 != null) {
-            this.b($$1);
-         }
-
-         this.b = $$2;
+      private a(boolean $$0, boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      void a(byte $$0, ia $$1) {
-         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
-      }
-
-      boolean a(ia $$0) {
-         return (this.d & 1 << $$0.ordinal()) > 0;
-      }
-
-      void b(ia $$0) {
-         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
-      }
-
-      @avd
-      protected boolean a(int $$0) {
-         return (this.c & 1 << $$0) > 0;
-      }
-
-      boolean a() {
-         return this.c != 0;
-      }
-
-      @Override
-      public int hashCode() {
-         return this.a.f().hashCode();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof fsv.d $$1) ? false : this.a.f().equals($$1.a.f());
-      }
-   }
-
-   static class e {
-      private final fsv.d[] a;
-
-      e(int $$0) {
-         this.a = new fsv.d[$$0];
-      }
-
-      public void a(fvh.b $$0, fsv.d $$1) {
-         this.a[$$0.b] = $$1;
-      }
-
-      @Nullable
-      public fsv.d a(fvh.b $$0) {
-         int $$1 = $$0.b;
-         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      public static fsv.a a(bju $$0) {
+         return $$0 == bju.a ? b : c;
       }
    }
 }

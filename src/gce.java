@@ -1,36 +1,34 @@
-public class gce extends gbz<byg, fky<byg>> {
-   private final ftc a;
-   private final fym b;
+public class gce extends gcq<bzt, fka<bzt>> {
+   private final fka<bzt> a;
 
-   public gce(fzj<byg, fky<byg>> $$0, ftc $$1, fym $$2) {
+   public gce(gaa<bzt, fka<bzt>> $$0, fml $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.a = new fka<>($$1.a(fmo.an));
    }
 
-   public void a(epd $$0, fsi $$1, int $$2, byg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.w()) {
-         boolean $$10 = euk.N().b($$3) && $$3.ce();
-         if (!$$3.ce() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            cmh $$12 = new cmh(cwb.ee);
-            if ($$10) {
-               dip $$13 = cwb.ee.o();
-               gfp $$14 = this.a.a($$13);
-               int $$15 = fyp.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(fsq.r(gdn.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
-            } else {
-               this.b.a($$3, $$12, cme.f, false, $$0, $$1, $$3.dM(), $$2, fyp.c($$3, 0.0F), $$3.aj());
-            }
-
-            $$0.b();
+   public void a(ept $$0, fsz $$1, int $$2, bzt $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cmr $$10 = $$3.u();
+      if ($$10.d() instanceof cmh) {
+         cmh $$11 = (cmh)$$10.d();
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$13;
+         float $$14;
+         float $$15;
+         if ($$11 instanceof cli) {
+            int $$12 = ((cli)$$11).e_($$10);
+            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
+            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
+            $$15 = (float)($$12 & 0xFF) / 255.0F;
+         } else {
+            $$13 = 1.0F;
+            $$14 = 1.0F;
+            $$15 = 1.0F;
          }
+
+         epx $$19 = $$1.getBuffer(fth.e($$11.h()));
+         this.a.a($$0, $$19, $$2, gdw.d, $$13, $$14, $$15, 1.0F);
       }
    }
 }

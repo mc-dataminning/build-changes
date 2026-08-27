@@ -1,14 +1,84 @@
-public class fwu extends fyu<ccv, fih<ccv>> {
-   private static final agt a = new agt("textures/entity/breeze/breeze.png");
-   private static final agt i = new agt("textures/entity/breeze/breeze_wind.png");
+import org.joml.Matrix4f;
 
-   public fwu(fxo.a $$0) {
-      super($$0, new fih<>($$0.a(flx.n)), 0.8F);
-      this.a(new gay(this, $$0.f(), i));
-      this.a(new gax(this, $$0.f(), a));
+public class fwu implements fwk.a {
+   private final eva a;
+
+   public fwu(eva $$0) {
+      this.a = $$0;
    }
 
-   public agt a(ccv $$0) {
-      return a;
+   @Override
+   public void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      cso $$6 = this.a.s.dM();
+      hx $$7 = hx.a($$2, $$3, $$4);
+
+      for (hx $$8 : hx.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         dja $$9 = $$6.a_($$8);
+         if (!$$9.a(cwl.a)) {
+            emf $$10 = $$9.j($$6, $$8);
+
+            for (elh $$11 : $$10.e()) {
+               elh $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               float $$19 = 1.0F;
+               float $$20 = 0.0F;
+               float $$21 = 0.0F;
+               float $$22 = 0.5F;
+               if ($$9.d($$6, $$8, ic.e)) {
+                  epx $$23 = $$1.getBuffer(fth.y());
+                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.d)) {
+                  epx $$24 = $$1.getBuffer(fth.y());
+                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.f)) {
+                  epx $$25 = $$1.getBuffer(fth.y());
+                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.c)) {
+                  epx $$26 = $$1.getBuffer(fth.y());
+                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.a)) {
+                  epx $$27 = $$1.getBuffer(fth.y());
+                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, ic.b)) {
+                  epx $$28 = $$1.getBuffer(fth.y());
+                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+            }
+         }
+      }
    }
 }

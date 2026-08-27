@@ -1,81 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bpw extends bnm<blv> {
-   public static final int c = 100;
-   private long d;
-
-   public bpw() {
-      super(ImmutableMap.of(bux.b, buy.a, bux.H, buy.c));
+@Deprecated
+public class bpw {
+   public static bnx<bmf> a(float $$0, bjg $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   @Override
-   protected boolean a(amp $$0, blv $$1) {
-      if ($$1.bO()) {
-         return false;
-      } else {
-         bmv<?> $$2 = $$1.dO();
-         id $$3 = $$2.c(bux.b).get();
-         if ($$0.ad() != $$3.a()) {
+   public static bnx<bmf> a(blt<?> $$0, float $$1, bjg $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ai()));
+   }
+
+   private static bnx<bmf> a(float $$0, bjg $$1, Predicate<bmf> $$2) {
+      float $$3 = $$0 * $$0;
+      bpw.a $$4 = new bpw.a($$1);
+      return brj.a(
+         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$3x -> $$3x.group($$3x.c(bvh.n), $$3x.b(bvh.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bmf> $$9 = $$3x.<bvj>b($$5).a($$2.and($$2xxxx -> $$2xxxx.f((blp)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
+                     } else {
+                        $$4x.a(new boh($$9.get(), true));
+                        return true;
+                     }
+                  }))
+      );
+   }
+
+   public static final class a {
+      private final bjg a;
+      private int b;
+
+      public a(bjg $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(aup $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
             return false;
          } else {
-            Optional<Long> $$4 = $$2.c(bux.H);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.W() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
-
-            dip $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dk(), 2.0) && $$6.a(arr.R) && !$$6.c(cvs.c);
+            return --this.b == 0;
          }
-      }
-   }
-
-   @Override
-   protected boolean a(amp $$0, blv $$1, long $$2) {
-      Optional<id> $$3 = $$1.dO().c(bux.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         hv $$4 = $$3.get().b();
-         return $$1.dO().c(cgd.e) && $$1.dt() > (double)$$4.v() + 0.4 && $$4.a($$1.dk(), 1.14);
-      }
-   }
-
-   @Override
-   protected void d(amp $$0, blv $$1, long $$2) {
-      if ($$2 > this.d) {
-         bmv<?> $$3 = $$1.dO();
-         if ($$3.a(bux.v)) {
-            Set<id> $$4 = $$3.c(bux.v).get();
-            Optional<List<blv>> $$5;
-            if ($$3.a(bux.g)) {
-               $$5 = $$3.c(bux.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            bok.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.dO().c(bux.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(amp $$0, blv $$1, long $$2) {
-      if ($$1.fD()) {
-         $$1.fE();
-         this.d = $$2 + 40L;
       }
    }
 }

@@ -1,242 +1,153 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ezf implements eng {
-   static final Logger a = LogUtils.getLogger();
-   private final eoe b;
-   private final eyu<ezf.b> c;
+public class ezf implements ezg {
+   private static final ahd a = new ahd("toast/system");
+   private static final int d = 200;
+   private static final int e = 12;
+   private static final int f = 10;
+   private final ezf.a g;
+   private vd h;
+   private List<atu> i;
+   private long j;
+   private boolean k;
+   private final int l;
 
-   ezf(eoe $$0, eyu<ezf.b> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ezf(ezf.a $$0, vd $$1, @Nullable vd $$2) {
+      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(eva.N().h.a($$1), $$2 == null ? 0 : eva.N().h.a($$2))));
+   }
+
+   public static ezf a(eva $$0, ezf.a $$1, vd $$2, vd $$3) {
+      ewk $$4 = $$0.h;
+      List<atu> $$5 = $$4.c($$3, 200);
+      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
+      return new ezf($$1, $$2, $$5, $$6 + 30);
+   }
+
+   private ezf(ezf.a $$0, vd $$1, List<atu> $$2, int $$3) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.l = $$3;
+   }
+
+   private static ImmutableList<atu> a(@Nullable vd $$0) {
+      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
    }
 
    @Override
-   public void close() {
-      this.b.close();
-   }
-
-   @Nullable
-   @Override
-   public enf a(int $$0) {
-      return this.c.a($$0);
+   public int a() {
+      return this.l;
    }
 
    @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.c.b());
+   public int b() {
+      return 20 + Math.max(this.i.size(), 1) * 12;
    }
 
-   public static record a(agt c, int d, int e, int[][] f) implements ezg {
-      private static final Codec<int[][]> g = atg.a(Codec.STRING.listOf().xmap($$0 -> {
-         int $$1 = $$0.size();
-         int[][] $$2 = new int[$$1][];
+   @Override
+   public ezg.a a(ewm $$0, ezh $$1, long $$2) {
+      if (this.k) {
+         this.j = $$2;
+         this.k = false;
+      }
 
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
+      int $$3 = this.a();
+      if ($$3 == 160 && this.i.size() <= 1) {
+         $$0.a(a, 0, 0, $$3, this.b());
+      } else {
+         int $$4 = this.b();
+         int $$5 = 28;
+         int $$6 = Math.min(4, $$4 - 28);
+         this.a($$0, $$3, 0, 0, 28);
+
+         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
+            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
          }
 
-         return $$2;
-      }, $$0 -> {
-         List<String> $$1 = new ArrayList<>($$0.length);
+         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
+      }
 
-         for (int[] $$2 : $$0) {
-            $$1.add(new String($$2, 0, $$2.length));
-         }
+      if (this.i == null) {
+         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
+      } else {
+         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
 
-         return $$1;
-      }), ezf.a::a);
-      public static final MapCodec<ezf.a> a = atg.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     agt.a.fieldOf("file").forGetter(ezf.a::c),
-                     Codec.INT.optionalFieldOf("height", 8).forGetter(ezf.a::d),
-                     Codec.INT.fieldOf("ascent").forGetter(ezf.a::e),
-                     g.fieldOf("chars").forGetter(ezf.a::f)
-                  )
-                  .apply($$0, ezf.a::new)
-         ),
-         ezf.a::a
-      );
-
-      private static DataResult<int[][]> a(int[][] $$0) {
-         int $$1 = $$0.length;
-         if ($$1 == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
-         } else {
-            int[] $$2 = $$0[0];
-            int $$3 = $$2.length;
-            if ($$3 == 0) {
-               return DataResult.error(() -> "Expected to find data in codepoint grid");
-            } else {
-               for (int $$4 = 1; $$4 < $$1; $$4++) {
-                  int[] $$5 = $$0[$$4];
-                  if ($$5.length != $$3) {
-                     return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                              + $$5.length
-                              + " codepoints, expected: "
-                              + $$3
-                              + "), pad with \\u0000"
-                     );
-                  }
-               }
-
-               return DataResult.success($$0);
-            }
+         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
+            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
          }
       }
 
-      private static DataResult<ezf.a> a(ezf.a $$0) {
-         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
+      return (double)($$2 - this.j) < (double)this.g.i * $$1.c() ? ezg.a.a : ezg.a.b;
+   }
+
+   private void a(ewm $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$2 == 0 ? 20 : 5;
+      int $$6 = Math.min(60, $$1 - $$5);
+      ahd $$7 = a;
+      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
+
+      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
+         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
       }
 
-      @Override
-      public ezh a() {
-         return ezh.a;
-      }
+      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
+   }
 
-      @Override
-      public Either<ezg.a, ezg.b> b() {
-         return Either.left(this::a);
-      }
+   public void a(vd $$0, @Nullable vd $$1) {
+      this.h = $$0;
+      this.i = a($$1);
+      this.k = true;
+   }
 
-      private eng a(aps $$0) throws IOException {
-         agt $$1 = this.c.d("textures/");
+   public ezf.a c() {
+      return this.g;
+   }
 
-         ezf var22;
-         try (InputStream $$2 = $$0.open($$1)) {
-            eoe $$3 = eoe.a(eoe.a.a, $$2);
-            int $$4 = $$3.a();
-            int $$5 = $$3.b();
-            int $$6 = $$4 / this.f[0].length;
-            int $$7 = $$5 / this.f.length;
-            float $$8 = (float)this.d / (float)$$7;
-            eyu<ezf.b> $$9 = new eyu<>(ezf.b[]::new, ezf.b[][]::new);
+   public static void a(ezh $$0, ezf.a $$1, vd $$2, @Nullable vd $$3) {
+      $$0.a(new ezf($$1, $$2, $$3));
+   }
 
-            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
-               int $$11 = 0;
-
-               for (int $$12 : this.f[$$10]) {
-                  int $$13 = $$11++;
-                  if ($$12 != 0) {
-                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
-                     ezf.b $$15 = $$9.a($$12, new ezf.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
-                     if ($$15 != null) {
-                        ezf.a.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
-                     }
-                  }
-               }
-            }
-
-            var22 = new ezf($$3, $$9);
-         }
-
-         return var22;
-      }
-
-      private int a(eoe $$0, int $$1, int $$2, int $$3, int $$4) {
-         int $$5;
-         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
-            int $$6 = $$3 * $$1 + $$5;
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               int $$8 = $$4 * $$2 + $$7;
-               if ($$0.e($$6, $$8) != 0) {
-                  return $$5 + 1;
-               }
-            }
-         }
-
-         return $$5 + 1;
+   public static void b(ezh $$0, ezf.a $$1, vd $$2, @Nullable vd $$3) {
+      ezf $$4 = $$0.a(ezf.class, $$1);
+      if ($$4 == null) {
+         a($$0, $$1, $$2, $$3);
+      } else {
+         $$4.a($$2, $$3);
       }
    }
 
-   static record b(float a, eoe b, int c, int d, int e, int f, int g, int h) implements enf {
+   public static void a(eva $$0, String $$1) {
+      a($$0.ax(), ezf.a.e, vd.c("selectWorld.access_failure"), vd.b($$1));
+   }
 
-      @Override
-      public float getAdvance() {
-         return (float)this.g;
+   public static void b(eva $$0, String $$1) {
+      a($$0.ax(), ezf.a.e, vd.c("selectWorld.delete_failure"), vd.b($$1));
+   }
+
+   public static void c(eva $$0, String $$1) {
+      a($$0.ax(), ezf.a.f, vd.c("pack.copyFailure"), vd.b($$1));
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h(10000L);
+
+      final long i;
+
+      private a(long $$0) {
+         this.i = $$0;
       }
 
-      @Override
-      public eza bake(Function<enh, eza> $$0) {
-         return $$0.apply(new enh() {
-            @Override
-            public float d() {
-               return 1.0F / b.this.a;
-            }
-
-            @Override
-            public int a() {
-               return b.this.e;
-            }
-
-            @Override
-            public int b() {
-               return b.this.f;
-            }
-
-            @Override
-            public float j() {
-               return enh.super.j() + 7.0F - (float)b.this.h;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
-            }
-
-            @Override
-            public boolean c() {
-               return b.this.b.c().a() > 1;
-            }
-         });
-      }
-
-      public float c() {
-         return this.a;
-      }
-
-      public eoe d() {
-         return this.b;
-      }
-
-      public int e() {
-         return this.c;
-      }
-
-      public int f() {
-         return this.d;
-      }
-
-      public int g() {
-         return this.e;
-      }
-
-      public int h() {
-         return this.f;
-      }
-
-      public int i() {
-         return this.g;
-      }
-
-      public int j() {
-         return this.h;
+      private a() {
+         this(5000L);
       }
    }
 }

@@ -1,45 +1,43 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cap {
-   private static final Logger a = LogUtils.getLogger();
-   private final bzy b;
-   private final cai[] c = new cai[cao.c()];
+public class cap extends cak {
    @Nullable
-   private cai d;
+   private elm b;
 
-   public cap(bzy $$0) {
-      this.b = $$0;
-      this.a(cao.k);
+   public cap(cai $$0) {
+      super($$0);
    }
 
-   public void a(cao<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
-
-         this.d = this.b((cao<cai>)$$0);
-         if (!this.b.dM().B) {
-            this.b.an().b(bzy.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dM().B ? "client" : "server");
-         this.d.d();
+   @Override
+   public void c() {
+      if (this.b == null) {
+         this.b = this.a.dk();
       }
    }
 
-   public cai a() {
-      return this.d;
+   @Override
+   public boolean a() {
+      return true;
    }
 
-   public <T extends cai> T b(cao<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
-      return (T)this.c[$$1];
+   @Override
+   public float f() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   public elm g() {
+      return this.b;
+   }
+
+   @Override
+   public cay<cap> i() {
+      return cay.k;
    }
 }

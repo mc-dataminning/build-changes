@@ -1,517 +1,818 @@
 import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.nio.FloatBuffer;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import java.nio.channels.Channels;
+import java.nio.channels.WritableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.EnumSet;
+import java.util.Locale;
+import java.util.Set;
+import java.util.function.IntUnaryOperator;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.lwjgl.stb.STBIWriteCallback;
+import org.lwjgl.stb.STBImage;
+import org.lwjgl.stb.STBImageResize;
+import org.lwjgl.stb.STBImageWrite;
+import org.lwjgl.stb.STBTTFontinfo;
+import org.lwjgl.stb.STBTruetype;
+import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class eou extends eom implements AutoCloseable {
-   private static final Logger l = LogUtils.getLogger();
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   public static final int g = 6;
-   public static final int h = 7;
-   public static final int i = 8;
-   public static final int j = 9;
-   public static final int k = 10;
-   private static final boolean m = false;
-   private int n;
-   private final int o;
-   private final int p;
-   private final IntBuffer q;
-   private final FloatBuffer r;
-   private final String s;
-   private boolean t;
-   private final eot u;
+public final class eou implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Set<StandardOpenOption> b = EnumSet.of(StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+   private final eou.a c;
+   private final int d;
+   private final int e;
+   private final boolean f;
+   private long g;
+   private final long h;
 
-   public eou(String $$0, int $$1, int $$2, eot $$3) {
-      this.s = $$0;
-      this.o = $$2;
-      this.p = $$1;
-      this.u = $$3;
-      if ($$1 <= 3) {
-         this.q = MemoryUtil.memAllocInt($$2);
-         this.r = null;
-      } else {
-         this.q = null;
-         this.r = MemoryUtil.memAllocFloat($$2);
-      }
-
-      this.n = -1;
-      this.h();
+   public eou(int $$0, int $$1, boolean $$2) {
+      this(eou.a.a, $$0, $$1, $$2);
    }
 
-   public static int a(int $$0, CharSequence $$1) {
-      return GlStateManager._glGetUniformLocation($$0, $$1);
-   }
-
-   public static void b(int $$0, int $$1) {
-      RenderSystem.glUniform1i($$0, $$1);
-   }
-
-   public static int b(int $$0, CharSequence $$1) {
-      return GlStateManager._glGetAttribLocation($$0, $$1);
-   }
-
-   public static void a(int $$0, int $$1, CharSequence $$2) {
-      GlStateManager._glBindAttribLocation($$0, $$1, $$2);
-   }
-
-   @Override
-   public void close() {
-      if (this.q != null) {
-         MemoryUtil.memFree(this.q);
-      }
-
-      if (this.r != null) {
-         MemoryUtil.memFree(this.r);
-      }
-   }
-
-   private void h() {
-      this.t = true;
-      if (this.u != null) {
-         this.u.b();
-      }
-   }
-
-   public static int a(String $$0) {
-      int $$1 = -1;
-      if ("int".equals($$0)) {
-         $$1 = 0;
-      } else if ("float".equals($$0)) {
-         $$1 = 4;
-      } else if ($$0.startsWith("matrix")) {
-         if ($$0.endsWith("2x2")) {
-            $$1 = 8;
-         } else if ($$0.endsWith("3x3")) {
-            $$1 = 9;
-         } else if ($$0.endsWith("4x4")) {
-            $$1 = 10;
-         }
-      }
-
-      return $$1;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
-   }
-
-   public String a() {
-      return this.s;
-   }
-
-   @Override
-   public final void a(float $$0) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.h();
-   }
-
-   public final void a(int $$0, float $$1) {
-      this.r.position(0);
-      this.r.put($$0, $$1);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.h();
-   }
-
-   @Override
-   public final void a(Vector3f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3) {
-      this.r.position(0);
-      this.r.put($$0);
-      this.r.put($$1);
-      this.r.put($$2);
-      this.r.put($$3);
-      this.r.flip();
-      this.h();
-   }
-
-   @Override
-   public final void a(Vector4f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3) {
-      this.r.position(0);
-      if (this.p >= 4) {
-         this.r.put(0, $$0);
-      }
-
-      if (this.p >= 5) {
-         this.r.put(1, $$1);
-      }
-
-      if (this.p >= 6) {
-         this.r.put(2, $$2);
-      }
-
-      if (this.p >= 7) {
-         this.r.put(3, $$3);
-      }
-
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0, int $$1, int $$2, int $$3) {
-      this.q.position(0);
-      if (this.p >= 0) {
-         this.q.put(0, $$0);
-      }
-
-      if (this.p >= 1) {
-         this.q.put(1, $$1);
-      }
-
-      if (this.p >= 2) {
-         this.q.put(2, $$2);
-      }
-
-      if (this.p >= 3) {
-         this.q.put(3, $$3);
-      }
-
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0, int $$1) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.q.put(1, $$1);
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0, int $$1, int $$2) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.q.put(1, $$1);
-      this.q.put(2, $$2);
-      this.h();
-   }
-
-   @Override
-   public final void b(int $$0, int $$1, int $$2, int $$3) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.q.put(1, $$1);
-      this.q.put(2, $$2);
-      this.q.put(3, $$3);
-      this.h();
-   }
-
-   @Override
-   public final void a(float[] $$0) {
-      if ($$0.length < this.o) {
-         l.warn("Uniform.set called with a too-small value array (expected {}, got {}). Ignoring.", this.o, $$0.length);
-      } else {
-         this.r.position(0);
-         this.r.put($$0);
-         this.r.position(0);
-         this.h();
-      }
-   }
-
-   @Override
-   public final void c(float $$0, float $$1, float $$2, float $$3) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.r.put(9, $$9);
-      this.r.put(10, $$10);
-      this.r.put(11, $$11);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.r.put(9, $$9);
-      this.r.put(10, $$10);
-      this.r.put(11, $$11);
-      this.h();
-   }
-
-   @Override
-   public final void a(
-      float $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.r.put(9, $$9);
-      this.r.put(10, $$10);
-      this.r.put(11, $$11);
-      this.r.put(12, $$12);
-      this.r.put(13, $$13);
-      this.r.put(14, $$14);
-      this.r.put(15, $$15);
-      this.h();
-   }
-
-   @Override
-   public final void a(Matrix4f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   @Override
-   public final void a(Matrix3f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   public void b() {
-      if (!this.t) {
-      }
-
-      this.t = false;
-      if (this.p <= 3) {
-         this.i();
-      } else if (this.p <= 7) {
-         this.j();
-      } else {
-         if (this.p > 10) {
-            l.warn("Uniform.upload called, but type value ({}) is not a valid type. Ignoring.", this.p);
-            return;
+   public eou(eou.a $$0, int $$1, int $$2, boolean $$3) {
+      if ($$1 > 0 && $$2 > 0) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.h = (long)$$1 * (long)$$2 * (long)$$0.a();
+         this.f = false;
+         if ($$3) {
+            this.g = MemoryUtil.nmemCalloc(1L, this.h);
+         } else {
+            this.g = MemoryUtil.nmemAlloc(this.h);
          }
 
-         this.k();
+         if (this.g == 0L) {
+            throw new IllegalStateException("Unable to allocate texture of size " + $$1 + "x" + $$2 + " (" + $$0.a() + " channels)");
+         }
+      } else {
+         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
       }
    }
 
-   private void i() {
-      this.q.rewind();
-      switch (this.p) {
-         case 0:
-            RenderSystem.glUniform1(this.n, this.q);
-            break;
-         case 1:
-            RenderSystem.glUniform2(this.n, this.q);
-            break;
-         case 2:
-            RenderSystem.glUniform3(this.n, this.q);
-            break;
-         case 3:
-            RenderSystem.glUniform4(this.n, this.q);
-            break;
-         default:
-            l.warn("Uniform.upload called, but count value ({}) is  not in the range of 1 to 4. Ignoring.", this.o);
+   private eou(eou.a $$0, int $$1, int $$2, boolean $$3, long $$4) {
+      if ($$1 > 0 && $$2 > 0) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = (long)$$1 * (long)$$2 * (long)$$0.a();
+      } else {
+         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
+      }
+   }
+
+   @Override
+   public String toString() {
+      return "NativeImage[" + this.c + " " + this.d + "x" + this.e + "@" + this.g + (this.f ? "S" : "N") + "]";
+   }
+
+   private boolean f(int $$0, int $$1) {
+      return $$0 < 0 || $$0 >= this.d || $$1 < 0 || $$1 >= this.e;
+   }
+
+   public static eou a(InputStream $$0) throws IOException {
+      return a(eou.a.a, $$0);
+   }
+
+   public static eou a(@Nullable eou.a $$0, InputStream $$1) throws IOException {
+      ByteBuffer $$2 = null;
+
+      eou var3;
+      try {
+         $$2 = TextureUtil.readResource($$1);
+         $$2.rewind();
+         var3 = a($$0, $$2);
+      } finally {
+         MemoryUtil.memFree($$2);
+         IOUtils.closeQuietly($$1);
+      }
+
+      return var3;
+   }
+
+   public static eou a(ByteBuffer $$0) throws IOException {
+      return a(eou.a.a, $$0);
+   }
+
+   public static eou a(byte[] $$0) throws IOException {
+      MemoryStack $$1 = MemoryStack.stackPush();
+
+      eou var3;
+      try {
+         ByteBuffer $$2 = $$1.malloc($$0.length);
+         $$2.put($$0);
+         $$2.rewind();
+         var3 = a($$2);
+      } catch (Throwable var5) {
+         if ($$1 != null) {
+            try {
+               $$1.close();
+            } catch (Throwable var4) {
+               var5.addSuppressed(var4);
+            }
+         }
+
+         throw var5;
+      }
+
+      if ($$1 != null) {
+         $$1.close();
+      }
+
+      return var3;
+   }
+
+   public static eou a(@Nullable eou.a $$0, ByteBuffer $$1) throws IOException {
+      if ($$0 != null && !$$0.w()) {
+         throw new UnsupportedOperationException("Don't know how to read format " + $$0);
+      } else if (MemoryUtil.memAddress($$1) == 0L) {
+         throw new IllegalArgumentException("Invalid buffer");
+      } else {
+         aum.a($$1);
+         MemoryStack $$2 = MemoryStack.stackPush();
+
+         eou var7;
+         try {
+            IntBuffer $$3 = $$2.mallocInt(1);
+            IntBuffer $$4 = $$2.mallocInt(1);
+            IntBuffer $$5 = $$2.mallocInt(1);
+            ByteBuffer $$6 = STBImage.stbi_load_from_memory($$1, $$3, $$4, $$5, $$0 == null ? 0 : $$0.e);
+            if ($$6 == null) {
+               throw new IOException("Could not load image: " + STBImage.stbi_failure_reason());
+            }
+
+            var7 = new eou($$0 == null ? eou.a.a($$5.get(0)) : $$0, $$3.get(0), $$4.get(0), true, MemoryUtil.memAddress($$6));
+         } catch (Throwable var9) {
+            if ($$2 != null) {
+               try {
+                  $$2.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
+         }
+
+         if ($$2 != null) {
+            $$2.close();
+         }
+
+         return var7;
+      }
+   }
+
+   private static void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if ($$0) {
+         GlStateManager._texParameter(3553, 10241, $$1 ? 9987 : 9729);
+         GlStateManager._texParameter(3553, 10240, 9729);
+      } else {
+         GlStateManager._texParameter(3553, 10241, $$1 ? 9986 : 9728);
+         GlStateManager._texParameter(3553, 10240, 9728);
       }
    }
 
    private void j() {
-      this.r.rewind();
-      switch (this.p) {
-         case 4:
-            RenderSystem.glUniform1(this.n, this.r);
-            break;
-         case 5:
-            RenderSystem.glUniform2(this.n, this.r);
-            break;
-         case 6:
-            RenderSystem.glUniform3(this.n, this.r);
-            break;
-         case 7:
-            RenderSystem.glUniform4(this.n, this.r);
-            break;
-         default:
-            l.warn("Uniform.upload called, but count value ({}) is not in the range of 1 to 4. Ignoring.", this.o);
+      if (this.g == 0L) {
+         throw new IllegalStateException("Image is not allocated.");
       }
    }
 
-   private void k() {
-      this.r.clear();
-      switch (this.p) {
-         case 8:
-            RenderSystem.glUniformMatrix2(this.n, false, this.r);
-            break;
-         case 9:
-            RenderSystem.glUniformMatrix3(this.n, false, this.r);
-            break;
-         case 10:
-            RenderSystem.glUniformMatrix4(this.n, false, this.r);
+   @Override
+   public void close() {
+      if (this.g != 0L) {
+         if (this.f) {
+            STBImage.nstbi_image_free(this.g);
+         } else {
+            MemoryUtil.nmemFree(this.g);
+         }
+      }
+
+      this.g = 0L;
+   }
+
+   public int a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public eou.a c() {
+      return this.c;
+   }
+
+   public int a(int $$0, int $$1) {
+      if (this.c != eou.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixelRGBA only works on RGBA images; have %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         this.j();
+         long $$2 = ((long)$$0 + (long)$$1 * (long)this.d) * 4L;
+         return MemoryUtil.memGetInt(this.g + $$2);
       }
    }
 
-   public int c() {
-      return this.n;
+   public void a(int $$0, int $$1, int $$2) {
+      if (this.c != eou.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "setPixelRGBA only works on RGBA images; have %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         this.j();
+         long $$3 = ((long)$$0 + (long)$$1 * (long)this.d) * 4L;
+         MemoryUtil.memPutInt(this.g + $$3, $$2);
+      }
    }
 
-   public int d() {
-      return this.o;
+   public eou a(IntUnaryOperator $$0) {
+      if (this.c != eou.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "function application only works on RGBA images; have %s", this.c));
+      } else {
+         this.j();
+         eou $$1 = new eou(this.d, this.e, false);
+         int $$2 = this.d * this.e;
+         IntBuffer $$3 = MemoryUtil.memIntBuffer(this.g, $$2);
+         IntBuffer $$4 = MemoryUtil.memIntBuffer($$1.g, $$2);
+
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            $$4.put($$5, $$0.applyAsInt($$3.get($$5)));
+         }
+
+         return $$1;
+      }
    }
 
-   public int e() {
-      return this.p;
+   public void b(IntUnaryOperator $$0) {
+      if (this.c != eou.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "function application only works on RGBA images; have %s", this.c));
+      } else {
+         this.j();
+         int $$1 = this.d * this.e;
+         IntBuffer $$2 = MemoryUtil.memIntBuffer(this.g, $$1);
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2.put($$3, $$0.applyAsInt($$2.get($$3)));
+         }
+      }
    }
 
-   public IntBuffer f() {
-      return this.q;
+   public int[] d() {
+      if (this.c != eou.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixelsRGBA only works on RGBA images; have %s", this.c));
+      } else {
+         this.j();
+         int[] $$0 = new int[this.d * this.e];
+         MemoryUtil.memIntBuffer(this.g, this.d * this.e).get($$0);
+         return $$0;
+      }
    }
 
-   public FloatBuffer g() {
-      return this.r;
+   public void a(int $$0, int $$1, byte $$2) {
+      RenderSystem.assertOnRenderThread();
+      if (!this.c.h()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "setPixelLuminance only works on image with luminance; have %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         this.j();
+         long $$3 = ((long)$$0 + (long)$$1 * (long)this.d) * (long)this.c.a() + (long)(this.c.m() / 8);
+         MemoryUtil.memPutByte(this.g + $$3, $$2);
+      }
+   }
+
+   public byte b(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if (!this.c.o()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "no red or luminance in %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         int $$2 = ($$0 + $$1 * this.d) * this.c.a() + this.c.s() / 8;
+         return MemoryUtil.memGetByte(this.g + (long)$$2);
+      }
+   }
+
+   public byte c(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if (!this.c.p()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "no green or luminance in %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         int $$2 = ($$0 + $$1 * this.d) * this.c.a() + this.c.t() / 8;
+         return MemoryUtil.memGetByte(this.g + (long)$$2);
+      }
+   }
+
+   public byte d(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if (!this.c.q()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "no blue or luminance in %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         int $$2 = ($$0 + $$1 * this.d) * this.c.a() + this.c.u() / 8;
+         return MemoryUtil.memGetByte(this.g + (long)$$2);
+      }
+   }
+
+   public byte e(int $$0, int $$1) {
+      if (!this.c.r()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "no luminance or alpha in %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         int $$2 = ($$0 + $$1 * this.d) * this.c.a() + this.c.v() / 8;
+         return MemoryUtil.memGetByte(this.g + (long)$$2);
+      }
+   }
+
+   public void b(int $$0, int $$1, int $$2) {
+      if (this.c != eou.a.a) {
+         throw new UnsupportedOperationException("Can only call blendPixel with RGBA format");
+      } else {
+         int $$3 = this.a($$0, $$1);
+         float $$4 = (float)ats.a.a($$2) / 255.0F;
+         float $$5 = (float)ats.a.d($$2) / 255.0F;
+         float $$6 = (float)ats.a.c($$2) / 255.0F;
+         float $$7 = (float)ats.a.b($$2) / 255.0F;
+         float $$8 = (float)ats.a.a($$3) / 255.0F;
+         float $$9 = (float)ats.a.d($$3) / 255.0F;
+         float $$10 = (float)ats.a.c($$3) / 255.0F;
+         float $$11 = (float)ats.a.b($$3) / 255.0F;
+         float $$13 = 1.0F - $$4;
+         float $$14 = $$4 * $$4 + $$8 * $$13;
+         float $$15 = $$5 * $$4 + $$9 * $$13;
+         float $$16 = $$6 * $$4 + $$10 * $$13;
+         float $$17 = $$7 * $$4 + $$11 * $$13;
+         if ($$14 > 1.0F) {
+            $$14 = 1.0F;
+         }
+
+         if ($$15 > 1.0F) {
+            $$15 = 1.0F;
+         }
+
+         if ($$16 > 1.0F) {
+            $$16 = 1.0F;
+         }
+
+         if ($$17 > 1.0F) {
+            $$17 = 1.0F;
+         }
+
+         int $$18 = (int)($$14 * 255.0F);
+         int $$19 = (int)($$15 * 255.0F);
+         int $$20 = (int)($$16 * 255.0F);
+         int $$21 = (int)($$17 * 255.0F);
+         this.a($$0, $$1, ats.a.a($$18, $$19, $$20, $$21));
+      }
+   }
+
+   @Deprecated
+   public int[] e() {
+      if (this.c != eou.a.a) {
+         throw new UnsupportedOperationException("can only call makePixelArray for RGBA images.");
+      } else {
+         this.j();
+         int[] $$0 = new int[this.a() * this.b()];
+
+         for (int $$1 = 0; $$1 < this.b(); $$1++) {
+            for (int $$2 = 0; $$2 < this.a(); $$2++) {
+               int $$3 = this.a($$2, $$1);
+               $$0[$$2 + $$1 * this.a()] = ats.b.a(ats.a.a($$3), ats.a.b($$3), ats.a.c($$3), ats.a.d($$3));
+            }
+         }
+
+         return $$0;
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, 0, 0, this.d, this.e, false, $$3);
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, false, $$7, $$8);
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8, boolean $$9, boolean $$10) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+      } else {
+         this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
+   }
+
+   private void b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8, boolean $$9, boolean $$10) {
+      try {
+         RenderSystem.assertOnRenderThreadOrInit();
+         this.j();
+         a($$7, $$9);
+         if ($$5 == this.a()) {
+            GlStateManager._pixelStore(3314, 0);
+         } else {
+            GlStateManager._pixelStore(3314, this.a());
+         }
+
+         GlStateManager._pixelStore(3316, $$3);
+         GlStateManager._pixelStore(3315, $$4);
+         this.c.c();
+         GlStateManager._texSubImage2D(3553, $$0, $$1, $$2, $$5, $$6, this.c.d(), 5121, this.g);
+         if ($$8) {
+            GlStateManager._texParameter(3553, 10242, 33071);
+            GlStateManager._texParameter(3553, 10243, 33071);
+         }
+      } finally {
+         if ($$10) {
+            this.close();
+         }
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThread();
+      this.j();
+      this.c.b();
+      GlStateManager._getTexImage(3553, $$0, this.c.d(), 5121, this.g);
+      if ($$1 && this.c.i()) {
+         for (int $$2 = 0; $$2 < this.b(); $$2++) {
+            for (int $$3 = 0; $$3 < this.a(); $$3++) {
+               this.a($$3, $$2, this.a($$3, $$2) | 255 << this.c.n());
+            }
+         }
+      }
+   }
+
+   public void a(float $$0) {
+      RenderSystem.assertOnRenderThread();
+      if (this.c.a() != 1) {
+         throw new IllegalStateException("Depth buffer must be stored in NativeImage with 1 component.");
+      } else {
+         this.j();
+         this.c.b();
+         GlStateManager._readPixels(0, 0, this.d, this.e, 6402, 5121, this.g);
+      }
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      this.c.c();
+      GlStateManager._glDrawPixels(this.d, this.e, this.c.d(), 5121, this.g);
+   }
+
+   public void a(File $$0) throws IOException {
+      this.a($$0.toPath());
+   }
+
+   public void a(STBTTFontinfo $$0, int $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7, int $$8, int $$9) {
+      if ($$8 < 0 || $$8 + $$2 > this.a() || $$9 < 0 || $$9 + $$3 > this.b()) {
+         throw new IllegalArgumentException(
+            String.format(Locale.ROOT, "Out of bounds: start: (%s, %s) (size: %sx%s); size: %sx%s", $$8, $$9, $$2, $$3, this.a(), this.b())
+         );
+      } else if (this.c.a() != 1) {
+         throw new IllegalArgumentException("Can only write fonts into 1-component images.");
+      } else {
+         STBTruetype.nstbtt_MakeGlyphBitmapSubpixel($$0.address(), this.g + (long)$$8 + (long)($$9 * this.a()), $$2, $$3, this.a(), $$4, $$5, $$6, $$7, $$1);
+      }
+   }
+
+   public void a(Path $$0) throws IOException {
+      if (!this.c.w()) {
+         throw new UnsupportedOperationException("Don't know how to write format " + this.c);
+      } else {
+         this.j();
+
+         try (WritableByteChannel $$1 = Files.newByteChannel($$0, b)) {
+            if (!this.a($$1)) {
+               throw new IOException("Could not write image to the PNG file \"" + $$0.toAbsolutePath() + "\": " + STBImage.stbi_failure_reason());
+            }
+         }
+      }
+   }
+
+   public byte[] g() throws IOException {
+      byte[] var3;
+      try (
+         ByteArrayOutputStream $$0 = new ByteArrayOutputStream();
+         WritableByteChannel $$1 = Channels.newChannel($$0);
+      ) {
+         if (!this.a($$1)) {
+            throw new IOException("Could not write image to byte array: " + STBImage.stbi_failure_reason());
+         }
+
+         var3 = $$0.toByteArray();
+      }
+
+      return var3;
+   }
+
+   private boolean a(WritableByteChannel $$0) throws IOException {
+      eou.c $$1 = new eou.c($$0);
+
+      boolean var4;
+      try {
+         int $$2 = Math.min(this.b(), Integer.MAX_VALUE / this.a() / this.c.a());
+         if ($$2 < this.b()) {
+            a.warn("Dropping image height from {} to {} to fit the size into 32-bit signed int", this.b(), $$2);
+         }
+
+         if (STBImageWrite.nstbi_write_png_to_func($$1.address(), 0L, this.a(), $$2, this.c.a(), this.g, 0) != 0) {
+            $$1.a();
+            return true;
+         }
+
+         var4 = false;
+      } finally {
+         $$1.free();
+      }
+
+      return var4;
+   }
+
+   public void a(eou $$0) {
+      if ($$0.c() != this.c) {
+         throw new UnsupportedOperationException("Image formats don't match.");
+      } else {
+         int $$1 = this.c.a();
+         this.j();
+         $$0.j();
+         if (this.d == $$0.d) {
+            MemoryUtil.memCopy($$0.g, this.g, Math.min(this.h, $$0.h));
+         } else {
+            int $$2 = Math.min(this.a(), $$0.a());
+            int $$3 = Math.min(this.b(), $$0.b());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               int $$5 = $$4 * $$0.a() * $$1;
+               int $$6 = $$4 * this.a() * $$1;
+               MemoryUtil.memCopy($$0.g + (long)$$5, this.g + (long)$$6, (long)$$2);
+            }
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$1 + $$3; $$5++) {
+         for (int $$6 = $$0; $$6 < $$0 + $$2; $$6++) {
+            this.a($$6, $$5, $$4);
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, boolean $$6, boolean $$7) {
+      this.a(this, $$0, $$1, $$0 + $$2, $$1 + $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public void a(eou $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8) {
+      for (int $$9 = 0; $$9 < $$6; $$9++) {
+         for (int $$10 = 0; $$10 < $$5; $$10++) {
+            int $$11 = $$7 ? $$5 - 1 - $$10 : $$10;
+            int $$12 = $$8 ? $$6 - 1 - $$9 : $$9;
+            int $$13 = this.a($$1 + $$10, $$2 + $$9);
+            $$0.a($$3 + $$11, $$4 + $$12, $$13);
+         }
+      }
+   }
+
+   public void h() {
+      this.j();
+      int $$0 = this.c.a();
+      int $$1 = this.a() * $$0;
+      long $$2 = MemoryUtil.nmemAlloc((long)$$1);
+
+      try {
+         for (int $$3 = 0; $$3 < this.b() / 2; $$3++) {
+            int $$4 = $$3 * this.a() * $$0;
+            int $$5 = (this.b() - 1 - $$3) * this.a() * $$0;
+            MemoryUtil.memCopy(this.g + (long)$$4, $$2, (long)$$1);
+            MemoryUtil.memCopy(this.g + (long)$$5, this.g + (long)$$4, (long)$$1);
+            MemoryUtil.memCopy($$2, this.g + (long)$$5, (long)$$1);
+         }
+      } finally {
+         MemoryUtil.nmemFree($$2);
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, eou $$4) {
+      this.j();
+      if ($$4.c() != this.c) {
+         throw new UnsupportedOperationException("resizeSubRectTo only works for images of the same format.");
+      } else {
+         int $$5 = this.c.a();
+         STBImageResize.nstbir_resize_uint8(this.g + (long)(($$0 + $$1 * this.a()) * $$5), $$2, $$3, this.a() * $$5, $$4.g, $$4.a(), $$4.b(), 0, $$5);
+      }
+   }
+
+   public void i() {
+      eoj.a(this.g);
+   }
+
+   public static enum a {
+      a(4, 6408, true, true, true, false, true, 0, 8, 16, 255, 24, true),
+      b(3, 6407, true, true, true, false, false, 0, 8, 16, 255, 255, true),
+      c(2, 33319, false, false, false, true, true, 255, 255, 255, 0, 8, true),
+      d(1, 6403, false, false, false, true, false, 0, 0, 0, 0, 255, true);
+
+      final int e;
+      private final int f;
+      private final boolean g;
+      private final boolean h;
+      private final boolean i;
+      private final boolean j;
+      private final boolean k;
+      private final int l;
+      private final int m;
+      private final int n;
+      private final int o;
+      private final int p;
+      private final boolean q;
+
+      private a(int $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, int $$7, int $$8, int $$9, int $$10, int $$11, boolean $$12) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$5;
+         this.k = $$6;
+         this.l = $$7;
+         this.m = $$8;
+         this.n = $$9;
+         this.o = $$10;
+         this.p = $$11;
+         this.q = $$12;
+      }
+
+      public int a() {
+         return this.e;
+      }
+
+      public void b() {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager._pixelStore(3333, this.a());
+      }
+
+      public void c() {
+         RenderSystem.assertOnRenderThreadOrInit();
+         GlStateManager._pixelStore(3317, this.a());
+      }
+
+      public int d() {
+         return this.f;
+      }
+
+      public boolean e() {
+         return this.g;
+      }
+
+      public boolean f() {
+         return this.h;
+      }
+
+      public boolean g() {
+         return this.i;
+      }
+
+      public boolean h() {
+         return this.j;
+      }
+
+      public boolean i() {
+         return this.k;
+      }
+
+      public int j() {
+         return this.l;
+      }
+
+      public int k() {
+         return this.m;
+      }
+
+      public int l() {
+         return this.n;
+      }
+
+      public int m() {
+         return this.o;
+      }
+
+      public int n() {
+         return this.p;
+      }
+
+      public boolean o() {
+         return this.j || this.g;
+      }
+
+      public boolean p() {
+         return this.j || this.h;
+      }
+
+      public boolean q() {
+         return this.j || this.i;
+      }
+
+      public boolean r() {
+         return this.j || this.k;
+      }
+
+      public int s() {
+         return this.j ? this.o : this.l;
+      }
+
+      public int t() {
+         return this.j ? this.o : this.m;
+      }
+
+      public int u() {
+         return this.j ? this.o : this.n;
+      }
+
+      public int v() {
+         return this.j ? this.o : this.p;
+      }
+
+      public boolean w() {
+         return this.q;
+      }
+
+      static eou.a a(int $$0) {
+         switch ($$0) {
+            case 1:
+               return d;
+            case 2:
+               return c;
+            case 3:
+               return b;
+            case 4:
+            default:
+               return a;
+         }
+      }
+   }
+
+   public static enum b {
+      a(6408),
+      b(6407),
+      c(33319),
+      d(6403);
+
+      private final int e;
+
+      private b(int $$0) {
+         this.e = $$0;
+      }
+
+      public int a() {
+         return this.e;
+      }
+   }
+
+   static class c extends STBIWriteCallback {
+      private final WritableByteChannel a;
+      @Nullable
+      private IOException b;
+
+      c(WritableByteChannel $$0) {
+         this.a = $$0;
+      }
+
+      public void invoke(long $$0, long $$1, int $$2) {
+         ByteBuffer $$3 = getData($$1, $$2);
+
+         try {
+            this.a.write($$3);
+         } catch (IOException var8) {
+            this.b = var8;
+         }
+      }
+
+      public void a() throws IOException {
+         if (this.b != null) {
+            throw this.b;
+         }
+      }
    }
 }

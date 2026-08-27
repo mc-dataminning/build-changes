@@ -1,32 +1,32 @@
-public class adk implements wu<acw> {
+public class adk implements xd<adg> {
    private final int a;
-   private final int b;
+   private final hx b;
 
-   public adk(int $$0, int $$1) {
+   public adk(int $$0, hx $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public void a(acw $$0) {
-      $$0.a(this);
-   }
-
-   public adk(ue $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.readByte();
+   public adk(ug $$0) {
+      this.a = $$0.n();
+      this.b = $$0.e();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.k(this.a);
-      $$0.k(this.b);
+   public void a(ug $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+   }
+
+   public void a(adg $$0) {
+      $$0.a(this);
    }
 
    public int a() {
       return this.a;
    }
 
-   public int d() {
+   public hx d() {
       return this.b;
    }
 }

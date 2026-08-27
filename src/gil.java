@@ -1,165 +1,58 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public record gil<T>(String F, String G, Codec<T> H, gil.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final gil<String> a = b("user_id", "userId");
-   public static final gil<String> b = b("client_id", "clientId");
-   public static final gil<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final gil<String> d = b("game_version", "buildDisplayName");
-   public static final gil<String> e = b("operating_system", "buildPlatform");
-   public static final gil<String> f = b("platform", "platform");
-   public static final gil<Boolean> g = a("client_modded", "clientModded");
-   public static final gil<String> h = b("launcher_name", "launcherName");
-   public static final gil<UUID> i = e("world_session_id", "worldSessionId");
-   public static final gil<Boolean> j = a("server_modded", "serverModded");
-   public static final gil<gil.c> k = a("server_type", "serverType", gil.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final gil<Boolean> l = a("opt_in", "isOptional");
-   public static final gil<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", atg.m, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final gil<gil.b> n = a("game_mode", "playerGameMode", gil.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final gil<String> o = b("realms_map_content", "realmsMapContent");
-   public static final gil<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final gil<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final gil<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final gil<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final gil<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final gil<Integer> u = c("number_of_samples", "numSamples");
-   public static final gil<Integer> v = c("render_distance", "renderDistance");
-   public static final gil<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final gil<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final gil<Boolean> y = a("new_world", "newWorld");
-   public static final gil<gip.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final gil<gip.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final gil<gip.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final gil<gip.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final gil<String> D = b("advancement_id", "advancementId");
-   public static final gil<Long> E = d("advancement_game_time", "advancementGameTime");
+public class gil implements gij {
+   private final gil.a a;
+   private gij b;
+   private final BufferedInputStream c;
 
-   public static <T> gil<T> a(String $$0, String $$1, Codec<T> $$2, gil.a<T> $$3) {
-      return new gil<>($$0, $$1, $$2, $$3);
-   }
-
-   public static gil<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static gil<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static gil<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static gil<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static gil<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, iy.c, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static gil<gip.a> f(String $$0, String $$1) {
-      return a($$0, $$1, gip.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static gil<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(gim $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
-      } else {
-         $$1.addNullProperty(this.G);
-      }
-   }
-
-   public vp a() {
-      return vb.c("telemetry.property." + this.F + ".title");
+   public gil(gil.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new gil.b(this.c));
    }
 
    @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+   public AudioFormat a() {
+      return this.b.a();
    }
 
-   public String b() {
-      return this.F;
-   }
-
-   public String c() {
-      return this.G;
-   }
-
-   public Codec<T> d() {
-      return this.H;
-   }
-
-   public gil.a<T> e() {
-      return this.I;
-   }
-
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
-
-   public static enum b implements aut {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<gil.b> f = aut.a(gil.b::values);
-      private final String g;
-      private final int h;
-
-      private b(String $$0, int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new gil.b(this.c));
+         $$1 = this.b.a($$0);
       }
 
-      public int a() {
-         return this.h;
+      return $$1;
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      gij create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
       }
 
       @Override
-      public String c() {
-         return this.g;
-      }
-   }
-
-   public static enum c implements aut {
-      a("realm"),
-      b("local"),
-      c("server");
-
-      public static final Codec<gil.c> d = aut.a(gil.c::values);
-      private final String e;
-
-      private c(String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
+      public void close() {
       }
    }
 }

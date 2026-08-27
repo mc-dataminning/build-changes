@@ -1,5 +1,7 @@
 public enum eep {
    a,
    b,
-   c;
+   c,
+   d,
+   e;
 }

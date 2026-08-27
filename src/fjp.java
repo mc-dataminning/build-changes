@@ -1,28 +1,26 @@
-public class fjp<T extends blf> extends fjh<T> {
-   private static final String a = "knot";
-   private final fly b;
-   private final fly f;
+import java.util.function.Function;
 
-   public fjp(fly $$0) {
-      this.b = $$0;
-      this.f = $$0.b("knot");
+public abstract class fjp<T extends blp> extends fkl {
+   public float c;
+   public boolean d;
+   public boolean e = true;
+
+   protected fjp() {
+      this(fth::e);
    }
 
-   public static fme b() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      $$1.a("knot", fmd.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fma.a);
-      return fme.a($$0, 32, 32);
+   protected fjp(Function<ahd, fth> $$0) {
+      super($$0);
    }
 
-   @Override
-   public fly a() {
-      return this.b;
+   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   public void a(fjp<T> $$0) {
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
    }
 }

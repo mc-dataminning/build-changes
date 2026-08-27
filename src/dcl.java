@@ -1,105 +1,49 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public enum dcl implements aut {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dcl extends cwj {
+   public static final MapCodec<dcl> a = b(dcl::new);
+   public static final djr b = dcm.d;
 
-   public static final Codec<dcl> e = aut.a(dcl::values);
-   private final String f;
-   private final h g;
-
-   private dcl(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dcl> a() {
+      return a;
    }
 
-   public dcl a(dcl $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
+   public dcl(diz.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
-   public h a() {
-      return this.g;
+   @Nullable
+   @Override
+   public dja a(cpa $$0) {
+      return this.o().a(b, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
-   public ia a(ia $$0) {
-      if ($$0.o() == ia.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
+   @Override
+   public void a(dja $$0, cti $$1, hx $$2, cwj $$3, hx $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.C($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
          }
       }
    }
 
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
+   @Override
+   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if ($$0.c(b) && !$$1.C($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
       }
    }
 
-   public static dcl a(auf $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dcl> b(auf $$0) {
-      return ac.b(values(), $$0);
-   }
-
    @Override
-   public String c() {
-      return this.f;
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(b);
    }
 }

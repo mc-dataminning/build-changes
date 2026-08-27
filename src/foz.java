@@ -1,43 +1,30 @@
-import org.joml.Vector3f;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-public class foz extends fpb<jo> {
-   private final Vector3f a;
-   private final Vector3f b;
+public class foz {
+   public static final foz a = new foz(foy.b, fpa.createDnsSrvRedirectHandler(), fov.a());
+   private final foy b;
+   private final fpa c;
+   private final fov d;
 
-   protected foz(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jo $$7, fqr $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.c(), $$9);
-      this.b = this.a($$7.d(), $$9);
+   @VisibleForTesting
+   foz(foy $$0, fpa $$1, fov $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
+   public Optional<fow> a(fox $$0) {
+      Optional<fow> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fox> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
-   }
-
-   @Override
-   public void a(eph $$0, etv $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
-   }
-
-   public static class a implements fpz<jo> {
-      private final fqr a;
-
-      public a(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jo $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new foz($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

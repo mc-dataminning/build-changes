@@ -1,28 +1,37 @@
-public final class aru {
-   public static final asg<blj<?>> a = a("skeletons");
-   public static final asg<blj<?>> b = a("zombies");
-   public static final asg<blj<?>> c = a("raiders");
-   public static final asg<blj<?>> d = a("undead");
-   public static final asg<blj<?>> e = a("beehive_inhabitors");
-   public static final asg<blj<?>> f = a("arrows");
-   public static final asg<blj<?>> g = a("impact_projectiles");
-   public static final asg<blj<?>> h = a("powder_snow_walkable_mobs");
-   public static final asg<blj<?>> i = a("axolotl_always_hostiles");
-   public static final asg<blj<?>> j = a("axolotl_hunt_targets");
-   public static final asg<blj<?>> k = a("freeze_immune_entity_types");
-   public static final asg<blj<?>> l = a("freeze_hurts_extra_types");
-   public static final asg<blj<?>> m = a("can_breathe_under_water");
-   public static final asg<blj<?>> n = a("frog_food");
-   public static final asg<blj<?>> o = a("fall_damage_immune");
-   public static final asg<blj<?>> p = a("dismounts_underwater");
-   public static final asg<blj<?>> q = a("non_controlling_rider");
-   public static final asg<blj<?>> r = a("deflects_arrows");
-   public static final asg<blj<?>> s = a("deflects_tridents");
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-   private aru() {
-   }
+public interface aru {
+   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   aru b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   aru c = $$0 -> a.format((double)$$0 * 0.1);
+   aru d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   aru e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
+      }
+   };
 
-   private static asg<blj<?>> a(String $$0) {
-      return asg.a(kc.u, new agt($$0));
-   }
+   String format(int var1);
 }

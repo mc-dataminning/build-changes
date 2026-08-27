@@ -1,105 +1,70 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public interface dnr {
-   Codec<dnr> b = dns.b;
-   Codec<ie<dnr>> c = agp.a(kc.aw, b);
-   Codec<dnr> d = c.xmap(dns.j::new, $$0 -> (ie)($$0 instanceof dns.j $$1 ? $$1.j() : new ie.a<>($$0)));
+public record dnr(dnk b, float c, elm d, @Nullable UUID e, @Nullable UUID f, @Nullable blp g) {
+   public static final Codec<dnr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kd.a.q().fieldOf("game_event").forGetter(dnr::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dnr::b),
+               elm.a.fieldOf("pos").forGetter(dnr::c),
+               ja.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               ja.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dnr($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
 
-   double a(dnr.b var1);
-
-   void a(double[] var1, dnr.a var2);
-
-   dnr a(dnr.f var1);
-
-   double a();
-
-   double b();
-
-   ats<? extends dnr> c();
-
-   default dnr a(double $$0, double $$1) {
-      return new dns.g(this, $$0, $$1);
+   public dnr(dnk $$0, float $$1, elm $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   default dnr d() {
-      return dns.a(this, dns.k.a.a);
+   public dnr(dnk $$0, float $$1, elm $$2, @Nullable blp $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
    }
 
-   default dnr e() {
-      return dns.a(this, dns.k.a.b);
-   }
-
-   default dnr f() {
-      return dns.a(this, dns.k.a.c);
-   }
-
-   default dnr g() {
-      return dns.a(this, dns.k.a.d);
-   }
-
-   default dnr h() {
-      return dns.a(this, dns.k.a.e);
-   }
-
-   default dnr i() {
-      return dns.a(this, dns.k.a.f);
-   }
-
-   public interface a {
-      dnr.b a(int var1);
-
-      void a(double[] var1, dnr var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dpa d() {
-         return dpa.a();
-      }
-   }
-
-   public static record c(ie<edc.a> b, @Nullable edc c) {
-      public static final Codec<dnr.c> a = edc.a.b.xmap($$0 -> new dnr.c($$0, null), dnr.c::b);
-
-      public c(ie<edc.a> $$0) {
-         this($$0, null);
+   @Nullable
+   private static UUID a(@Nullable blp $$0) {
+      if ($$0 instanceof cft $$1 && $$1.w() != null) {
+         return $$1.w().cw();
       }
 
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+      return null;
    }
 
-   public interface d extends dnr {
-      @Override
-      default void a(double[] $$0, dnr.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default dnr a(dnr.f $$0) {
-         return $$0.apply(this);
-      }
+   public Optional<blp> a(amz $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
    }
 
-   public static record e(int a, int b, int c) implements dnr.b {
+   public Optional<blp> b(amz $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cft).map($$0x -> (cft)$$0x).map(cft::w).or(() -> Optional.ofNullable(this.f).map($$0::a));
    }
 
-   public interface f {
-      dnr apply(dnr var1);
+   public dnk a() {
+      return this.b;
+   }
 
-      default dnr.c a(dnr.c $$0) {
-         return $$0;
-      }
+   public float b() {
+      return this.c;
+   }
+
+   public elm c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public blp f() {
+      return this.g;
    }
 }

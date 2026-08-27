@@ -1,225 +1,100 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class gdl<T extends gdl.a> {
-   private static final Comparator<gdl.b<?>> a = Comparator.<gdl.b<?>, Integer>comparing($$0 -> -$$0.c)
-      .thenComparing($$0 -> -$$0.b)
-      .thenComparing($$0 -> $$0.a.c());
-   private final int b;
-   private final List<gdl.b<T>> c = new ArrayList<>();
-   private final List<gdl.c<T>> d = new ArrayList<>();
-   private int e;
-   private int f;
-   private final int g;
-   private final int h;
+public class gdl implements gdk {
+   public static final int a = 0;
+   private final gdl.b c = new gdl.b();
+   private final gdl.b d = new gdl.b();
+   public final gdl.a b;
 
-   public gdl(int $$0, int $$1, int $$2) {
-      this.b = $$2;
-      this.g = $$0;
-      this.h = $$1;
+   public gdl(gdl.a $$0) {
+      this.b = $$0;
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      gdl.b<T> $$1 = new gdl.b<>($$0, this.b);
-      this.c.add($$1);
-   }
-
-   public void c() {
-      List<gdl.b<T>> $$0 = new ArrayList<>(this.c);
-      $$0.sort(a);
-
-      for (gdl.b<T> $$1 : $$0) {
-         if (!this.a($$1)) {
-            throw new gdm($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
-         }
-      }
-   }
-
-   public void a(gdl.d<T> $$0) {
-      for (gdl.c<T> $$1 : this.d) {
-         $$1.a($$0);
-      }
-   }
-
-   static int a(int $$0, int $$1) {
-      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
-   }
-
-   private boolean a(gdl.b<T> $$0) {
-      for (gdl.c<T> $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return this.b($$0);
-   }
-
-   private boolean b(gdl.b<T> $$0) {
-      int $$1 = aty.c(this.e);
-      int $$2 = aty.c(this.f);
-      int $$3 = aty.c(this.e + $$0.b);
-      int $$4 = aty.c(this.f + $$0.c);
-      boolean $$5 = $$3 <= this.g;
-      boolean $$6 = $$4 <= this.h;
-      if (!$$5 && !$$6) {
-         return false;
+   @Override
+   public float unclampedCall(cmr $$0, @Nullable fnk $$1, @Nullable bmf $$2, int $$3) {
+      blp $$4 = (blp)($$2 != null ? $$2 : $$0.H());
+      if ($$4 == null) {
+         return 0.0F;
       } else {
-         boolean $$7 = $$5 && $$1 != $$3;
-         boolean $$8 = $$6 && $$2 != $$4;
-         boolean $$9;
-         if ($$7 ^ $$8) {
-            $$9 = $$7;
-         } else {
-            $$9 = $$5 && $$1 <= $$2;
-         }
-
-         gdl.c<T> $$11;
-         if ($$9) {
-            if (this.f == 0) {
-               this.f = $$4;
-            }
-
-            $$11 = new gdl.c<>(this.e, 0, $$3 - this.e, this.f);
-            this.e = $$3;
-         } else {
-            $$11 = new gdl.c<>(0, this.f, this.e, $$4 - this.f);
-            this.f = $$4;
-         }
-
-         $$11.a($$0);
-         this.d.add($$11);
-         return true;
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
       }
+   }
+
+   private float a(cmr $$0, fnk $$1, int $$2, blp $$3) {
+      ig $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.X();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
+
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return aui.b((float)$$2, 1.0F);
+   }
+
+   private float a(blp $$0, long $$1, hx $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cfb $$5 && $$5.g()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
+         }
+
+         double $$6 = $$3 + this.c.a;
+         return aui.b((float)$$6, 1.0F);
+      }
+
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return aui.b((float)$$7, 1.0F);
+   }
+
+   @Nullable
+   private fnk a(blp $$0, @Nullable fnk $$1) {
+      return $$1 == null && $$0.dM() instanceof fnk ? (fnk)$$0.dM() : $$1;
+   }
+
+   private boolean a(blp $$0, @Nullable ig $$1) {
+      return $$1 != null && $$1.a() == $$0.dM().ae() && !($$1.b().b($$0.dk()) < 1.0E-5F);
+   }
+
+   private double a(blp $$0, hx $$1) {
+      elm $$2 = elm.b($$1);
+      return Math.atan2($$2.c() - $$0.dx(), $$2.a() - $$0.dr()) / (float) (Math.PI * 2);
+   }
+
+   private double a(blp $$0) {
+      return aui.c((double)($$0.dD() / 360.0F), 1.0);
+   }
+
+   private int a(int $$0) {
+      return $$0 * 1327217883;
    }
 
    public interface a {
-      int a();
-
-      int b();
-
-      agt c();
-   }
-
-   static record b<T extends gdl.a>(T a, int b, int c) {
-
-      public b(T $$0, int $$1) {
-         this($$0, gdl.a($$0.a(), $$1), gdl.a($$0.b(), $$1));
-      }
-   }
-
-   public static class c<T extends gdl.a> {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
       @Nullable
-      private List<gdl.c<T>> e;
-      @Nullable
-      private gdl.b<T> f;
-
-      public c(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public boolean a(gdl.b<T> $$0) {
-         if (this.f != null) {
-            return false;
-         } else {
-            int $$1 = $$0.b;
-            int $$2 = $$0.c;
-            if ($$1 <= this.c && $$2 <= this.d) {
-               if ($$1 == this.c && $$2 == this.d) {
-                  this.f = $$0;
-                  return true;
-               } else {
-                  if (this.e == null) {
-                     this.e = new ArrayList<>(1);
-                     this.e.add(new gdl.c<>(this.a, this.b, $$1, $$2));
-                     int $$3 = this.c - $$1;
-                     int $$4 = this.d - $$2;
-                     if ($$4 > 0 && $$3 > 0) {
-                        int $$5 = Math.max(this.d, $$3);
-                        int $$6 = Math.max(this.c, $$4);
-                        if ($$5 >= $$6) {
-                           this.e.add(new gdl.c<>(this.a, this.b + $$2, $$1, $$4));
-                           this.e.add(new gdl.c<>(this.a + $$1, this.b, $$3, this.d));
-                        } else {
-                           this.e.add(new gdl.c<>(this.a + $$1, this.b, $$3, $$2));
-                           this.e.add(new gdl.c<>(this.a, this.b + $$2, this.c, $$4));
-                        }
-                     } else if ($$3 == 0) {
-                        this.e.add(new gdl.c<>(this.a, this.b + $$2, $$1, $$4));
-                     } else if ($$4 == 0) {
-                        this.e.add(new gdl.c<>(this.a + $$1, this.b, $$3, $$2));
-                     }
-                  }
-
-                  for (gdl.c<T> $$7 : this.e) {
-                     if ($$7.a($$0)) {
-                        return true;
-                     }
-                  }
-
-                  return false;
-               }
-            } else {
-               return false;
-            }
-         }
-      }
-
-      public void a(gdl.d<T> $$0) {
-         if (this.f != null) {
-            $$0.load(this.f.a, this.a(), this.b());
-         } else if (this.e != null) {
-            for (gdl.c<T> $$1 : this.e) {
-               $$1.a($$0);
-            }
-         }
-      }
-
-      @Override
-      public String toString() {
-         return "Slot{originX="
-            + this.a
-            + ", originY="
-            + this.b
-            + ", width="
-            + this.c
-            + ", height="
-            + this.d
-            + ", texture="
-            + this.f
-            + ", subSlots="
-            + this.e
-            + "}";
-      }
+      ig getPos(fnk var1, cmr var2, blp var3);
    }
 
-   public interface d<T extends gdl.a> {
-      void load(T var1, int var2, int var3);
+   static class b {
+      double a;
+      private double b;
+      private long c;
+
+      boolean a(long $$0) {
+         return this.c != $$0;
+      }
+
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = aui.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = aui.c(this.a + this.b, 1.0);
+      }
    }
 }

@@ -1,11 +1,12 @@
-public class fzt extends fwo<cfo> {
-   public static final agt a = new agt("textures/entity/projectiles/spectral_arrow.png");
+public class fzt extends fzl<byj, fkr<byj>> {
+   private static final ahd a = new ahd("textures/entity/pig/pig.png");
 
-   public fzt(fxo.a $$0) {
-      super($$0);
+   public fzt(fyf.a $$0) {
+      super($$0, new fkr<>($$0.a(fmo.aF)), 0.7F);
+      this.a(new gcr<>(this, new fkr<>($$0.a(fmo.aN)), new ahd("textures/entity/pig/pig_saddle.png")));
    }
 
-   public agt a(cfo $$0) {
+   public ahd a(byj $$0) {
       return a;
    }
 }

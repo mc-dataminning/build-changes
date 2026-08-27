@@ -1,17 +1,25 @@
-import java.io.IOException;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class gej extends apx<int[]> {
-   private static final agt a = new agt("textures/colormap/grass.png");
+public interface gej {
+   agw a = new agw("textures", ".png");
 
-   protected int[] a(aps $$0, bgc $$1) {
-      try {
-         return gel.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
+   void a(aqc var1, gej.a var2);
+
+   gel a();
+
+   public interface a {
+      default void a(ahd $$0, aqa $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
       }
+
+      void a(ahd var1, gej.b var2);
+
+      void a(Predicate<ahd> var1);
    }
 
-   protected void a(int[] $$0, aps $$1, bgc $$2) {
-      csw.a($$0);
+   public interface b extends Function<gei, gdz> {
+      default void a() {
+      }
    }
 }

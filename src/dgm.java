@@ -1,120 +1,147 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dgm extends dgd implements bje {
-   public static final int c = 6;
-   private static final Logger d = LogUtils.getLogger();
-   private final io<cmh> e = io.a(6, cmh.f);
-   private int f = -1;
+public class dgm extends dgo {
+   private static final int d = 50;
+   private static final int e = 60;
+   private static final int f = 60;
+   private static final int g = 40;
+   private static final int h = 5;
+   private static final int i = 48;
+   private static final int j = 32;
+   private static final int k = 48;
+   private long l;
+   public int a;
+   public boolean b;
+   public ic c;
+   private List<bmf> m;
+   private boolean n;
+   private int r;
 
-   public dgm(hv $$0, dip $$1) {
-      super(dgf.M, $$0, $$1);
+   public dgm(hx $$0, dja $$1) {
+      super(dgq.E, $$0, $$1);
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.f = $$0;
-         dip $$1 = this.r();
-
-         for (int $$2 = 0; $$2 < cxd.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).b();
-            djg $$4 = cxd.c.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
-         }
-
-         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
-         this.o.a(dmz.c, this.p, dmz.a.a($$1));
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.c();
+         this.r = 0;
+         this.c = ic.a($$1);
+         this.a = 0;
+         this.b = true;
+         return true;
       } else {
-         d.error("Expected slot 0-5, got {}", $$0);
+         return super.a_($$0, $$1);
       }
    }
 
-   @Override
-   public void a(sj $$0) {
-      this.e.clear();
-      bjf.b($$0, this.e);
-      this.f = $$0.h("last_interacted_slot");
-   }
-
-   @Override
-   protected void b(sj $$0) {
-      bjf.a($$0, this.e, true);
-      $$0.a("last_interacted_slot", this.f);
-   }
-
-   public int f() {
-      return (int)this.e.stream().filter(Predicate.not(cmh::b)).count();
-   }
-
-   @Override
-   public void a() {
-      this.e.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean ai_() {
-      return this.e.stream().allMatch(cmh::b);
-   }
-
-   @Override
-   public cmh a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Override
-   public cmh a(int $$0, int $$1) {
-      cmh $$2 = Objects.requireNonNullElse(this.e.get($$0), cmh.f);
-      this.e.set($$0, cmh.f);
-      if (!$$2.b()) {
-         this.c($$0);
+   private static void a(cti $$0, hx $$1, dja $$2, dgm $$3, dgm.a $$4) {
+      if ($$3.b) {
+         $$3.a++;
       }
 
-      return $$2;
-   }
+      if ($$3.a >= 50) {
+         $$3.b = false;
+         $$3.a = 0;
+      }
 
-   @Override
-   public cmh b(int $$0) {
-      return this.a($$0, 1);
-   }
+      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
+         $$3.n = true;
+         $$0.a(null, $$1, arm.bL, arn.e, 1.0F, 1.0F);
+      }
 
-   @Override
-   public void a(int $$0, cmh $$1) {
-      if ($$1.a(arz.av)) {
-         this.e.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.b()) {
-         this.a($$0, 1);
+      if ($$3.n) {
+         if ($$3.r < 40) {
+            $$3.r++;
+         } else {
+            $$4.run($$0, $$1, $$3.m);
+            $$3.n = false;
+         }
       }
    }
 
-   @Override
-   public boolean a(bje $$0, int $$1, cmh $$2) {
-      return $$0.a_($$2x -> $$2x.b() ? true : cmh.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.ak_()));
+   public static void a(cti $$0, hx $$1, dja $$2, dgm $$3) {
+      a($$0, $$1, $$2, $$3, dgm::b);
    }
 
-   @Override
-   public int ak_() {
-      return 1;
+   public static void b(cti $$0, hx $$1, dja $$2, dgm $$3) {
+      a($$0, $$1, $$2, $$3, dgm::a);
    }
 
-   @Override
-   public boolean a(cer $$0) {
-      return bje.a(this, $$0);
+   public void a(ic $$0) {
+      hx $$1 = this.aB_();
+      this.c = $$0;
+      if (this.b) {
+         this.a = 0;
+      } else {
+         this.b = true;
+      }
+
+      this.o.a($$1, this.r().b(), 1, $$0.d());
    }
 
-   @Override
-   public boolean b(int $$0, cmh $$1) {
-      return $$1.a(arz.av) && this.a($$0).b();
+   private void c() {
+      hx $$0 = this.aB_();
+      if (this.o.X() > this.l + 60L || this.m == null) {
+         this.l = this.o.X();
+         elh $$1 = new elh($$0).g(48.0);
+         this.m = this.o.a(bmf.class, $$1);
+      }
+
+      if (!this.o.B) {
+         for (bmf $$2 : this.m) {
+            if ($$2.bx() && !$$2.dH() && $$0.a($$2.dk(), 32.0)) {
+               $$2.dO().a(bvh.D, this.o.X());
+            }
+         }
+      }
    }
 
-   public int g() {
-      return this.f;
+   private static boolean a(hx $$0, List<bmf> $$1) {
+      for (bmf $$2 : $$1) {
+         if ($$2.bx() && !$$2.dH() && $$0.a($$2.dk(), 32.0) && $$2.ai().a(ase.c)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static void a(cti $$0, hx $$1, List<bmf> $$2) {
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dgm::a);
+   }
+
+   private static void b(cti $$0, hx $$1, List<bmf> $$2) {
+      MutableInt $$3 = new MutableInt(16700985);
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dk(), 48.0)).count();
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
+         float $$5 = 1.0F;
+         double $$6 = Math.sqrt(($$4x.dr() - (double)$$1.u()) * ($$4x.dr() - (double)$$1.u()) + ($$4x.dx() - (double)$$1.w()) * ($$4x.dx() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dr() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dx() - (double)$$1.w());
+         int $$9 = aui.a(($$4 - 21) / -2, 3, 15);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            int $$11 = $$3.addAndGet(5);
+            double $$12 = (double)ats.b.b($$11) / 255.0;
+            double $$13 = (double)ats.b.c($$11) / 255.0;
+            double $$14 = (double)ats.b.d($$11) / 255.0;
+            $$0.a(jx.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
+         }
+      });
+   }
+
+   private static boolean a(hx $$0, bmf $$1) {
+      return $$1.bx() && !$$1.dH() && $$0.a($$1.dk(), 48.0) && $$1.ai().a(ase.c);
+   }
+
+   private static void a(bmf $$0) {
+      $$0.b(new blc(ble.x, 60));
+   }
+
+   @FunctionalInterface
+   interface a {
+      void run(cti var1, hx var2, List<bmf> var3);
    }
 }

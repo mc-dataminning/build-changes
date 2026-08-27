@@ -1,40 +1,20 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.google.gson.JsonObject;
 
-public class erl implements Iterable<eqk> {
-   private final euk a;
-   private final Set<eqk> b = new HashSet<>();
-   private List<eqk> c = List.of();
+public class erl extends erp {
+   public String a;
+   public long b;
+   public long c;
 
-   public erl(euk $$0) {
-      this.a = $$0;
-   }
+   public static erl a(JsonObject $$0) {
+      erl $$1 = new erl();
 
-   public void a(List<eqk> $$0) {
-      List<eqk> $$1 = new ArrayList<>($$0);
-      $$1.sort(new eqk.b(this.a.U().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+      try {
+         $$1.a = etm.b("profileUuid", $$0, null);
+         $$1.b = etm.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = etm.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
       }
 
-      this.c = $$1;
-   }
-
-   public void a(eqk $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<eqk> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+      return $$1;
    }
 }

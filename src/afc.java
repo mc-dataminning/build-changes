@@ -1,42 +1,32 @@
-import java.security.PublicKey;
+public class afc implements xd<adg> {
+   private final bju a;
+   private final int b;
 
-public class afc implements wu<aez> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
-
-   public afc(String $$0, byte[] $$1, byte[] $$2) {
+   public afc(bju $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public afc(ue $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
+   public afc(ug $$0) {
+      this.a = $$0.b(bju.class);
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.c(this.b);
    }
 
-   public void a(aez $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public bju a() {
       return this.a;
    }
 
-   public PublicKey d() throws asx {
-      return asw.a(this.b);
-   }
-
-   public byte[] e() {
-      return this.c;
+   public int d() {
+      return this.b;
    }
 }

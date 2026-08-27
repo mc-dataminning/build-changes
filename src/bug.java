@@ -1,32 +1,44 @@
-public class bug extends btb {
-   private final ccs b;
-   private int c;
+import java.util.EnumSet;
 
-   public bug(ccs $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class bug extends btb {
+   private final bna a;
+
+   public bug(bna $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(btb.a.c, btb.a.a));
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.ge();
+   }
+
+   @Override
+   public boolean a() {
+      if (!this.a.u()) {
+         return false;
+      } else if (this.a.bc()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
+      } else {
+         bmf $$0 = this.a.R_();
+         if ($$0 == null) {
+            return true;
+         } else {
+            return this.a.f($$0) < 144.0 && $$0.eh() != null ? false : this.a.ge();
+         }
+      }
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
+      this.a.N().n();
+      this.a.y(true);
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+      this.a.y(false);
    }
 }

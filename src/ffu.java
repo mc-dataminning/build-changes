@@ -1,116 +1,50 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Set;
+public class ffu extends fct {
+   private static final int a = 600;
+   private final ue b;
+   private ewy c;
+   private int k;
+   private final fam l = fam.d();
 
-public class ffu {
-   private final is a;
-   private final List<cpn<?>> b;
-   private final boolean c;
-   private final Set<cpn<?>> d = Sets.newHashSet();
-   private final Set<cpn<?>> e = Sets.newHashSet();
-   private final Set<cpn<?>> f = Sets.newHashSet();
+   public ffu(vd $$0, ue $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
-   public ffu(is $$0, List<cpn<?>> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      if ($$1.size() <= 1) {
-         this.c = true;
+   @Override
+   public boolean aL_() {
+      return false;
+   }
+
+   @Override
+   protected void aN_() {
+      this.l.c().b().a(10);
+      this.l.a(new eyf(this.e, this.i));
+      this.c = this.l.a(ewy.a(vc.p, $$0 -> this.b.a(fbn.a)).a());
+      this.c.j = false;
+      this.l.a();
+      this.l.a($$1 -> {
+         eww var10000 = this.d($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fag.a(this.l, this.F());
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.k++;
+      if (this.k == 600) {
+         this.c.j = true;
+      }
+
+      if (this.b.k()) {
+         this.b.d();
       } else {
-         this.c = a($$0, $$1);
+         this.b.p();
       }
-   }
-
-   private static boolean a(is $$0, List<cpn<?>> $$1) {
-      int $$2 = $$1.size();
-      cmh $$3 = $$1.get(0).b().a($$0);
-
-      for (int $$4 = 1; $$4 < $$2; $$4++) {
-         cmh $$5 = $$1.get($$4).b().a($$0);
-         if (!cmh.c($$3, $$5)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public is a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return !this.f.isEmpty();
-   }
-
-   public void a(arf $$0) {
-      for (cpn<?> $$1 : this.b) {
-         if ($$0.b($$1)) {
-            this.f.add($$1);
-         }
-      }
-   }
-
-   public void a(cev $$0, int $$1, int $$2, arf $$3) {
-      for (cpn<?> $$4 : this.b) {
-         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
-         if ($$5) {
-            this.e.add($$4);
-         } else {
-            this.e.remove($$4);
-         }
-
-         if ($$5 && $$0.a($$4.b(), null)) {
-            this.d.add($$4);
-         } else {
-            this.d.remove($$4);
-         }
-      }
-   }
-
-   public boolean a(cpn<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean c() {
-      return !this.d.isEmpty();
-   }
-
-   public boolean d() {
-      return !this.e.isEmpty();
-   }
-
-   public List<cpn<?>> e() {
-      return this.b;
-   }
-
-   public List<cpn<?>> a(boolean $$0) {
-      List<cpn<?>> $$1 = Lists.newArrayList();
-      Set<cpn<?>> $$2 = $$0 ? this.d : this.e;
-
-      for (cpn<?> $$3 : this.b) {
-         if ($$2.contains($$3)) {
-            $$1.add($$3);
-         }
-      }
-
-      return $$1;
-   }
-
-   public List<cpn<?>> b(boolean $$0) {
-      List<cpn<?>> $$1 = Lists.newArrayList();
-
-      for (cpn<?> $$2 : this.b) {
-         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public boolean f() {
-      return this.c;
    }
 }

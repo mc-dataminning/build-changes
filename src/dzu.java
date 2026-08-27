@@ -1,128 +1,74 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class dzu extends dzv {
-   private static final Codec<Either<agt, eco>> a = Codec.of(dzu::a, agt.a.map(Either::left));
-   public static final Codec<dzu> b = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, dzu::new));
-   protected final Either<agt, eco> c;
-   protected final ie<ecm> d;
+public class dzu extends dzw {
+   public static final Codec<dzu> a = atq.<dzu>a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> a($$0)
+                  .and(
+                     $$0.group(
+                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(dzu::a),
+                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(dzu::b),
+                        dzv.c.optionalFieldOf("spread_type", dzv.a).forGetter(dzu::c)
+                     )
+                  )
+                  .apply($$0, dzu::new)
+         ),
+         dzu::a
+      )
+      .codec();
+   private final int c;
+   private final int d;
+   private final dzv e;
 
-   private static <T> DataResult<T> a(Either<agt, eco> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<agt> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : agt.a.encode($$3.get(), $$1, $$2);
+   private static DataResult<dzu> a(dzu $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
    }
 
-   protected static <E extends dzu> RecordCodecBuilder<E, ie<ecm>> b() {
-      return ecn.d.fieldOf("processors").forGetter($$0 -> $$0.d);
+   public dzu(jb $$0, dzw.c $$1, float $$2, int $$3, Optional<dzw.a> $$4, int $$5, int $$6, dzv $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
    }
 
-   protected static <E extends dzu> RecordCodecBuilder<E, Either<agt, eco>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
+   public dzu(int $$0, int $$1, dzv $$2, int $$3) {
+      this(jb.g, dzw.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
    }
 
-   protected dzu(Either<agt, eco> $$0, ie<ecm> $$1, dzx.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   public iz a(ecp $$0, dcl $$1) {
-      eco $$2 = this.a($$0);
-      return $$2.a($$1);
+   public int b() {
+      return this.d;
    }
 
-   private eco a(ecp $$0) {
-      return (eco)this.c.map($$0::a, Function.identity());
+   public dzv c() {
+      return this.e;
    }
 
-   public List<eco.c> a(ecp $$0, hv $$1, dcl $$2, boolean $$3) {
-      eco $$4 = this.a($$0);
-      List<eco.c> $$5 = $$4.a($$1, new eck().a($$2), cwb.pa, $$3);
-      List<eco.c> $$6 = Lists.newArrayList();
-
-      for (eco.c $$7 : $$5) {
-         sj $$8 = $$7.c();
-         if ($$8 != null) {
-            djz $$9 = djz.valueOf($$8.l("mode"));
-            if ($$9 == djz.d) {
-               $$6.add($$7);
-            }
-         }
-      }
-
-      return $$6;
-   }
-
-   @Override
-   public List<eco.c> a(ecp $$0, hv $$1, dcl $$2, auf $$3) {
-      eco $$4 = this.a($$0);
-      ObjectArrayList<eco.c> $$5 = $$4.a($$1, new eck().a($$2), cwb.pb, true);
-      ac.c($$5, $$3);
-      a($$5);
-      return $$5;
-   }
-
-   @VisibleForTesting
-   static void a(List<eco.c> $$0) {
-      $$0.sort(Comparator.<eco.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
+   public csp a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      dpi $$5 = new dpi(new dok(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new csp($$3 * this.c + $$7, $$4 * this.c + $$8);
    }
 
    @Override
-   public dyg a(ecp $$0, hv $$1, dcl $$2) {
-      eco $$3 = this.a($$0);
-      return $$3.b(new eck().a($$2), $$1);
+   protected boolean a(dky $$0, int $$1, int $$2) {
+      csp $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.e == $$1 && $$3.f == $$2;
    }
 
    @Override
-   public boolean a(ecp $$0, ctt $$1, ctr $$2, dkm $$3, hv $$4, hv $$5, dcl $$6, dyg $$7, auf $$8, boolean $$9) {
-      eco $$10 = this.a($$0);
-      eck $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (eco.c $$13 : eco.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
-         }
-
-         return true;
-      }
-   }
-
-   protected eck a(dcl $$0, dyg $$1, boolean $$2) {
-      eck $$3 = new eck();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(ebq.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(ebw.b);
-      }
-
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
-   }
-
-   @Override
-   public dzw<?> a() {
-      return dzw.a;
-   }
-
-   @Override
-   public String toString() {
-      return "Single[" + this.c + "]";
+   public dzx<?> e() {
+      return dzx.a;
    }
 }

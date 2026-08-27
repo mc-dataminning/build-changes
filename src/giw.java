@@ -1,50 +1,29 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class giw {
-   private final gjd a;
-   private final euo b;
-   @Nullable
-   private eyr c;
+public record giw(gja b, gjd c) {
+   public static final Codec<giw> a = gja.a.dispatchStable(giw::a, gja::c);
 
-   public giw(gjd $$0, euo $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
-      }
-
-      vb $$0 = vb.c("tutorial.bundleInsert.title");
-      vb $$1 = vb.c("tutorial.bundleInsert.description");
-      this.c = new eyr(eyr.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
-   }
-
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
-
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.as();
-      }
-   }
-
-   public void a(cmh $$0, cmh $$1, chs $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cmk.qR)) {
-            if ($$2 == chs.a) {
-               this.a();
-            } else if ($$2 == chs.b) {
-               this.b();
-            }
-         } else if ($$0.a(cmk.qR) && !$$1.b() && $$2 == chs.b) {
-            this.b();
+   public giw(gja b, gjd c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
          }
-      }
+      });
+      this.b = b;
+      this.c = c;
+   }
+
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
+   }
+
+   public gja a() {
+      return this.b;
+   }
+
+   public gjd b() {
+      return this.c;
    }
 }

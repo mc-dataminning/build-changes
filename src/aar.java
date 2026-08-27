@@ -1,17 +1,24 @@
-import java.util.List;
-import java.util.UUID;
+public class aar implements xd<yx> {
+   private final bju a;
 
-public record aar(List<UUID> a) implements wu<yo> {
-   public aar(ue $$0) {
-      this($$0.a(ue::p));
+   public aar(bju $$0) {
+      this.a = $$0;
+   }
+
+   public aar(ug $$0) {
+      this.a = $$0.b(bju.class);
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a, ue::a);
+   public void a(ug $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
+   }
+
+   public bju a() {
+      return this.a;
    }
 }

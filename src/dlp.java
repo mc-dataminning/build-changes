@@ -1,231 +1,371 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.Iterator;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.Consumer;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dlp implements dll, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicBoolean b = new AtomicBoolean();
-   private final bie<big.b> c;
-   private final dls d;
-   private final Map<csf, dlp.a> e = Maps.newLinkedHashMap();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
-   private static final int g = 1024;
+public class dlp<T> implements dlo<T>, dlq<T> {
+   private static final int a = 0;
+   private final dlo<T> b = ($$0x, $$1x) -> 0;
+   private final im<T> c;
+   private volatile dlp.c<T> d;
+   private final dlp.d e;
+   private final avh f = new avh("PalettedContainer");
 
-   protected dlp(Path $$0, boolean $$1, String $$2) {
-      this.d = new dls($$0, $$1);
-      this.c = new bie<>(new big.a(dlp.b.values().length), ac.g(), "IOWorker-" + $$2);
+   public void a() {
+      this.f.a();
    }
 
-   public boolean a(csf $$0, int $$1) {
-      csf $$2 = new csf($$0.e - $$1, $$0.f - $$1);
-      csf $$3 = new csf($$0.e + $$1, $$0.f + $$1);
-
-      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
-         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
-            BitSet $$6 = this.a($$4, $$5).join();
-            if (!$$6.isEmpty()) {
-               csf $$7 = csf.a($$4, $$5);
-               int $$8 = Math.max($$2.e - $$7.e, 0);
-               int $$9 = Math.max($$2.f - $$7.f, 0);
-               int $$10 = Math.min($$3.e - $$7.e, 31);
-               int $$11 = Math.min($$3.f - $$7.f, 31);
-
-               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
-                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
-                     int $$14 = $$13 * 32 + $$12;
-                     if ($$6.get($$14)) {
-                        return true;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return false;
+   public void b() {
+      this.f.b();
    }
 
-   private CompletableFuture<BitSet> a(int $$0, int $$1) {
-      long $$2 = csf.c($$0, $$1);
-      synchronized (this.f) {
-         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
-         if ($$3 == null) {
-            $$3 = this.b($$0, $$1);
-            this.f.putAndMoveToFirst($$2, $$3);
-            if (this.f.size() > 1024) {
-               this.f.removeLast();
-            }
-         }
-
-         return $$3;
-      }
+   public static <T> Codec<dlp<T>> a(im<T> $$0, Codec<T> $$1, dlp.d $$2, T $$3) {
+      dlq.b<T, dlp<T>> $$4 = dlp::a;
+      return a($$0, $$1, $$2, $$3, $$4);
    }
 
-   private CompletableFuture<BitSet> b(int $$0, int $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         csf $$2 = csf.a($$0, $$1);
-         csf $$3 = csf.b($$0, $$1);
-         BitSet $$4 = new BitSet();
-         csf.a($$2, $$3).forEach($$1xx -> {
-            tn $$2x = new tn(new tp(so.a, "DataVersion"), new tp(sj.b, "blending_data"));
-
-            try {
-               this.a($$1xx, $$2x).join();
-            } catch (Exception var7) {
-               a.warn("Failed to scan chunk {}", $$1xx, var7);
-               return;
-            }
-
-            if ($$2x.d() instanceof sj $$5 && this.a($$5)) {
-               int $$6 = $$1xx.k() * 32 + $$1xx.j();
-               $$4.set($$6);
-            }
-         });
-         return $$4;
-      }, ac.f());
+   public static <T> Codec<dlq<T>> b(im<T> $$0, Codec<T> $$1, dlp.d $$2, T $$3) {
+      dlq.b<T, dlq<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
+      return a($$0, $$1, $$2, $$3, $$4);
    }
 
-   private boolean a(sj $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
-   }
-
-   public CompletableFuture<Void> a(csf $$0, @Nullable sj $$1) {
-      return this.a(() -> {
-         dlp.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dlp.a($$1));
-         $$2.a = $$1;
-         return Either.left($$2.b);
-      }).thenCompose(Function.identity());
-   }
-
-   public CompletableFuture<Optional<sj>> a(csf $$0) {
-      return this.a(() -> {
-         dlp.a $$1 = this.e.get($$0);
-         if ($$1 != null) {
-            return Either.left(Optional.ofNullable($$1.a));
-         } else {
-            try {
-               sj $$2 = this.d.a($$0);
-               return Either.left(Optional.ofNullable($$2));
-            } catch (Exception var4) {
-               a.warn("Failed to read chunk {}", $$0, var4);
-               return Either.right(var4);
-            }
-         }
-      });
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      CompletableFuture<Void> $$1 = this.a(
-            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+   private static <T, C extends dlq<T>> Codec<C> a(im<T> $$0, Codec<T> $$1, dlp.d $$2, T $$3, dlq.b<T, C> $$4) {
+      return RecordCodecBuilder.create(
+            $$2x -> $$2x.group(
+                     $$1.mapResult(atq.a($$3)).listOf().fieldOf("palette").forGetter(dlq.a::a), Codec.LONG_STREAM.optionalFieldOf("data").forGetter(dlq.a::b)
+                  )
+                  .apply($$2x, dlq.a::new)
          )
-         .thenCompose(Function.identity());
-      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
-            try {
-               this.d.a();
-               return Either.left(null);
-            } catch (Exception var2x) {
-               a.warn("Failed to synchronize chunks", var2x);
-               return Either.right(var2x);
-            }
-         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
+         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
+   }
+
+   public dlp(im<T> $$0, dlp.d $$1, dlp.a<T> $$2, asy $$3, List<T> $$4) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new dlp.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
+   }
+
+   private dlp(im<T> $$0, dlp.d $$1, dlp.c<T> $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$2;
+   }
+
+   public dlp(im<T> $$0, T $$1, dlp.d $$2) {
+      this.e = $$2;
+      this.c = $$0;
+      this.d = this.a(null, 0);
+      this.d.c.a($$1);
+   }
+
+   private dlp.c<T> a(@Nullable dlp.c<T> $$0, int $$1) {
+      dlp.a<T> $$2 = this.e.a(this.c, $$1);
+      return $$0 != null && $$2.equals($$0.c()) ? $$0 : $$2.a(this.c, this, this.e.a());
    }
 
    @Override
-   public CompletableFuture<Void> a(csf $$0, td $$1) {
-      return this.a(() -> {
-         try {
-            dlp.a $$2 = this.e.get($$0);
-            if ($$2 != null) {
-               if ($$2.a != null) {
-                  $$2.a.b($$1);
-               }
-            } else {
-               this.d.a($$0, $$1);
-            }
-
-            return Either.left(null);
-         } catch (Exception var4) {
-            a.warn("Failed to bulk scan chunk {}", $$0, var4);
-            return Either.right(var4);
-         }
-      });
+   public int onResize(int $$0, T $$1) {
+      dlp.c<T> $$2 = this.d;
+      dlp.c<T> $$3 = this.a($$2, $$0);
+      $$3.a($$2.c, $$2.b);
+      this.d = $$3;
+      return $$3.c.a($$1);
    }
 
-   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
-      return this.c.c($$1 -> new big.b(dlp.b.a.ordinal(), () -> {
-            if (!this.b.get()) {
-               $$1.a($$0.get());
-            }
+   public T a(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
 
-            this.b();
-         }));
+      Object var5;
+      try {
+         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+
+      return (T)var5;
    }
 
-   private void a() {
-      if (!this.e.isEmpty()) {
-         Iterator<Entry<csf, dlp.a>> $$0 = this.e.entrySet().iterator();
-         Entry<csf, dlp.a> $$1 = $$0.next();
-         $$0.remove();
-         this.a($$1.getKey(), $$1.getValue());
+   public T b(int $$0, int $$1, int $$2, T $$3) {
+      return this.a(this.e.a($$0, $$1, $$2), $$3);
+   }
+
+   private T a(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      int $$3 = this.d.b.a($$0, $$2);
+      return this.d.c.a($$3);
+   }
+
+   public void c(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      try {
+         this.b(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
          this.b();
       }
    }
 
-   private void b() {
-      this.c.a(new big.b(dlp.b.b.ordinal(), this::a));
+   private void b(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      this.d.b.b($$0, $$2);
    }
 
-   private void a(csf $$0, dlp.a $$1) {
+   @Override
+   public T a(int $$0, int $$1, int $$2) {
+      return this.a(this.e.a($$0, $$1, $$2));
+   }
+
+   protected T a(int $$0) {
+      dlp.c<T> $$1 = this.d;
+      return $$1.c.a($$1.b.a($$0));
+   }
+
+   @Override
+   public void a(Consumer<T> $$0) {
+      dln<T> $$1 = this.d.e();
+      IntSet $$2 = new IntArraySet();
+      this.d.b.a($$2::add);
+      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
+   }
+
+   public void a(ug $$0) {
+      this.a();
+
       try {
-         this.d.a($$0, $$1.a);
-         $$1.b.complete(null);
-      } catch (Exception var4) {
-         a.error("Failed to store chunk {}", $$0, var4);
-         $$1.b.completeExceptionally(var4);
+         int $$1 = $$0.readByte();
+         dlp.c<T> $$2 = this.a(this.d, $$1);
+         $$2.c.a($$0);
+         $$0.b($$2.b.a());
+         this.d = $$2;
+      } finally {
+         this.b();
       }
    }
 
    @Override
-   public void close() throws IOException {
-      if (this.b.compareAndSet(false, true)) {
-         this.c.b($$0 -> new big.b(dlp.b.c.ordinal(), () -> $$0.a(avc.a))).join();
-         this.c.close();
+   public void b(ug $$0) {
+      this.a();
+
+      try {
+         this.d.a($$0);
+      } finally {
+         this.b();
+      }
+   }
+
+   private static <T> DataResult<dlp<T>> a(im<T> $$0, dlp.d $$1, dlq.a<T> $$2) {
+      List<T> $$3 = $$2.a();
+      int $$4 = $$1.a();
+      int $$5 = $$1.b($$0, $$3.size());
+      dlp.a<T> $$6 = $$1.a($$0, $$5);
+      asy $$7;
+      if ($$5 == 0) {
+         $$7 = new avo($$4);
+      } else {
+         Optional<LongStream> $$8 = $$2.b();
+         if ($$8.isEmpty()) {
+            return DataResult.error(() -> "Missing values for non-zero storage");
+         }
+
+         long[] $$9 = $$8.get().toArray();
 
          try {
-            this.d.close();
-         } catch (Exception var2) {
-            a.error("Failed to close storage", var2);
+            if ($$6.a() == dlp.d.f) {
+               dln<T> $$10 = new dlf<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
+               auy $$11 = new auy($$5, $$4, $$9);
+               int[] $$12 = new int[$$4];
+               $$11.a($$12);
+               a($$12, $$2x -> $$0.a($$10.a($$2x)));
+               $$7 = new auy($$6.b(), $$4, $$12);
+            } else {
+               $$7 = new auy($$6.b(), $$4, $$9);
+            }
+         } catch (auy.a var13) {
+            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
          }
       }
+
+      return DataResult.success(new dlp<>($$0, $$1, $$6, $$7, $$3));
    }
 
-   static class a {
-      @Nullable
-      sj a;
-      final CompletableFuture<Void> b = new CompletableFuture<>();
+   @Override
+   public dlq.a<T> a(im<T> $$0, dlp.d $$1) {
+      this.a();
 
-      public a(@Nullable sj $$0) {
-         this.a = $$0;
+      dlq.a var12;
+      try {
+         dlf<T> $$2 = new dlf<>($$0, this.d.b.c(), this.b);
+         int $$3 = $$1.a();
+         int[] $$4 = new int[$$3];
+         this.d.b.a($$4);
+         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
+         int $$5 = $$1.b($$0, $$2.b());
+         Optional<LongStream> $$7;
+         if ($$5 != 0) {
+            auy $$6 = new auy($$5, $$3, $$4);
+            $$7 = Optional.of(Arrays.stream($$6.a()));
+         } else {
+            $$7 = Optional.empty();
+         }
+
+         var12 = new dlq.a<>($$2.d(), $$7);
+      } finally {
+         this.b();
+      }
+
+      return var12;
+   }
+
+   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
+      int $$2 = -1;
+      int $$3 = -1;
+
+      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+         int $$5 = $$0[$$4];
+         if ($$5 != $$2) {
+            $$2 = $$5;
+            $$3 = $$1.applyAsInt($$5);
+         }
+
+         $$0[$$4] = $$3;
       }
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   @Override
+   public int c() {
+      return this.d.a();
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return this.d.c.a($$0);
+   }
+
+   public dlp<T> d() {
+      return new dlp<>(this.c, this.e, this.d.b());
+   }
+
+   @Override
+   public dlp<T> e() {
+      return new dlp<>(this.c, this.d.c.a(0), this.e);
+   }
+
+   @Override
+   public void a(dlp.b<T> $$0) {
+      if (this.d.c.b() == 1) {
+         $$0.accept(this.d.c.a(0), this.d.b.b());
+      } else {
+         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
+         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
+         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
+      }
+   }
+
+   static record a<T>(dln.a a, int b) {
+      public dlp.c<T> a(im<T> $$0, dlo<T> $$1, int $$2) {
+         asy $$3 = (asy)(this.b == 0 ? new avo($$2) : new auy(this.b, $$2));
+         dln<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
+         return new dlp.c<>(this, $$3, $$4);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(T var1, int var2);
+   }
+
+   static record c<T>(dlp.a<T> a, asy b, dln<T> c) {
+
+      public void a(dln<T> $$0, asy $$1) {
+         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
+            T $$3 = $$0.a($$1.a($$2));
+            this.b.b($$2, this.c.a($$3));
+         }
+      }
+
+      public int a() {
+         return 1 + this.c.a() + uu.a(this.b.a().length) + this.b.a().length * 8;
+      }
+
+      public void a(ug $$0) {
+         $$0.k(this.b.c());
+         this.c.b($$0);
+         $$0.a(this.b.a());
+      }
+
+      public dlp.c<T> b() {
+         return new dlp.c<>(this.a, this.b.d(), this.c.c());
+      }
+
+      public dlp.a<T> c() {
+         return this.a;
+      }
+
+      public asy d() {
+         return this.b;
+      }
+
+      public dln<T> e() {
+         return this.c;
+      }
+   }
+
+   public abstract static class d {
+      public static final dln.a a = dls::a;
+      public static final dln.a b = dll::a;
+      public static final dln.a c = dlf::a;
+      static final dln.a f = dle::a;
+      public static final dlp.d d = new dlp.d(4) {
+         @Override
+         public <A> dlp.a<A> a(im<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dlp.a(a, $$1);
+               case 1, 2, 3, 4 -> new dlp.a(b, 4);
+               case 5, 6, 7, 8 -> new dlp.a(c, $$1);
+               default -> new dlp.a(dlp.d.f, aui.e($$0.b()));
+            };
+         }
+      };
+      public static final dlp.d e = new dlp.d(2) {
+         @Override
+         public <A> dlp.a<A> a(im<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dlp.a(a, $$1);
+               case 1, 2, 3 -> new dlp.a(b, $$1);
+               default -> new dlp.a(dlp.d.f, aui.e($$0.b()));
+            };
+         }
+      };
+      private final int g;
+
+      d(int $$0) {
+         this.g = $$0;
+      }
+
+      public int a() {
+         return 1 << this.g * 3;
+      }
+
+      public int a(int $$0, int $$1, int $$2) {
+         return ($$1 << this.g | $$2) << this.g | $$0;
+      }
+
+      public abstract <A> dlp.a<A> a(im<A> var1, int var2);
+
+      <A> int b(im<A> $$0, int $$1) {
+         int $$2 = aui.e($$1);
+         dlp.a<A> $$3 = this.a($$0, $$2);
+         return $$3.a() == f ? $$2 : $$3.b();
+      }
    }
 }

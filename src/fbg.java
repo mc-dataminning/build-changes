@@ -1,31 +1,47 @@
-public class fbg extends fcc {
-   private final vb a;
+public class fbg extends fct {
+   private static final int a = 90;
+   private final vd b;
+   private exr c = exr.a;
+   private final Runnable k;
+   private final vd l;
+   private final boolean m;
 
-   public fbg(vb $$0, vb $$1) {
-      super($$0);
-      this.a = $$1;
+   public fbg(Runnable $$0, vd $$1, vd $$2) {
+      this($$0, $$1, $$2, vc.k, true);
+   }
+
+   public fbg(Runnable $$0, vd $$1, vd $$2, vd $$3, boolean $$4) {
+      super($$1);
+      this.k = $$0;
+      this.b = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.d(ewh.a(va.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+   public vd h() {
+      return vc.a(super.h(), this.b);
    }
 
    @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
+   protected void aN_() {
+      super.aN_();
+      this.c = exr.a(this.i, this.b, this.g - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = aui.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
+      int $$2 = 150;
+      this.d(ewy.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
+   }
+
+   @Override
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
-      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
+      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
+      this.c.a($$0, this.g / 2, 90);
    }
 
    @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
-   }
-
-   @Override
-   public boolean aE_() {
-      return false;
+   public boolean aL_() {
+      return this.m;
    }
 }

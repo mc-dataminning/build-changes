@@ -1,16 +1,24 @@
-public interface aez extends tz {
-   @Override
-   default ud b() {
-      return ud.d;
+public class aez implements xd<adg> {
+   private final bju a;
+
+   public aez(bju $$0) {
+      this.a = $$0;
    }
 
-   void a(afc var1);
+   public aez(ug $$0) {
+      this.a = $$0.b(bju.class);
+   }
 
-   void a(afb var1);
+   @Override
+   public void a(ug $$0) {
+      $$0.a(this.a);
+   }
 
-   void a(afe var1);
+   public void a(adg $$0) {
+      $$0.a(this);
+   }
 
-   void a(afd var1);
-
-   void a(afa var1);
+   public bju a() {
+      return this.a;
+   }
 }

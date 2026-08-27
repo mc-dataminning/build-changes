@@ -1,219 +1,139 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public abstract class bxi extends bla {
-   protected static final int bV = 6000;
-   private int bT;
-   @Nullable
-   private UUID bU;
+public class bxi {
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<bxh> b = new Short2ObjectOpenHashMap();
+   private final Map<ih<bxj>, Set<bxh>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   protected bxi(blj<? extends bxi> $$0, csy $$1) {
-      super($$0, $$1);
-      this.a(eek.n, 16.0F);
-      this.a(eek.o, -1.0F);
+   public static Codec<bxi> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     RecordCodecBuilder.point($$0),
+                     Codec.BOOL.optionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
+                     bxh.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
+                  )
+                  .apply($$1, bxi::new)
+         )
+         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new bxi($$0, false, ImmutableList.of()));
    }
 
-   @Override
-   protected void Z() {
-      if (this.h() != 0) {
-         this.bT = 0;
-      }
-
-      super.Z();
+   public bxi(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
    }
 
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.h() != 0) {
-         this.bT = 0;
-      }
+   private bxi(Runnable $$0, boolean $$1, List<bxh> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
+   }
 
-      if (this.bT > 0) {
-         this.bT--;
-         if (this.bT % 10 == 0) {
-            double $$0 = this.ag.k() * 0.02;
-            double $$1 = this.ag.k() * 0.02;
-            double $$2 = this.ag.k() * 0.02;
-            this.dM().a(jv.O, this.d(1.0), this.du() + 0.5, this.g(1.0), $$0, $$1, $$2);
+   public Stream<bxh> a(Predicate<ih<bxj>> $$0, bxg.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((ih<bxj>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
+   }
+
+   public void a(hx $$0, ih<bxj> $$1) {
+      if (this.a(new bxh($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.e().map($$0x -> $$0x.a().toString()).orElse("[unregistered]"), $$0);
+         this.d.run();
+      }
+   }
+
+   private boolean a(bxh $$0) {
+      hx $$1 = $$0.f();
+      ih<bxj> $$2 = $$0.g();
+      short $$3 = iz.b($$1);
+      bxh $$4 = (bxh)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.g())) {
+            return false;
          }
+
+         ac.a("POI data mismatch: already registered at " + $$1);
       }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
    }
 
-   @Override
-   public boolean a(bkd $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
+   public void a(hx $$0) {
+      bxh $$1 = (bxh)this.b.remove(iz.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
       } else {
-         this.bT = 0;
-         return super.a($$0, $$1);
+         this.c.get($$1.g()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
+         this.d.run();
       }
    }
 
-   @Override
-   public float a(hv $$0, ctb $$1) {
-      return $$1.a_($$0.d()).a(cwb.i) ? 10.0F : $$1.v($$0);
+   @Deprecated
+   @avn
+   public int b(hx $$0) {
+      return this.e($$0).map(bxh::a).orElse(0);
    }
 
-   @Override
-   public void b(sj $$0) {
-      super.b($$0);
-      $$0.a("InLove", this.bT);
-      if (this.bU != null) {
-         $$0.a("LoveCause", this.bU);
-      }
-   }
-
-   @Override
-   public void a(sj $$0) {
-      super.a($$0);
-      this.bT = $$0.h("InLove");
-      this.bU = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
-   }
-
-   public static boolean b(blj<? extends bxi> $$0, csz $$1, blz $$2, hv $$3, auf $$4) {
-      boolean $$5 = blz.b($$2) || a($$1, $$3);
-      return $$1.a_($$3.d()).a(arr.bP) && $$5;
-   }
-
-   protected static boolean a(csb $$0, hv $$1) {
-      return $$0.b($$1, 0) > 8;
-   }
-
-   @Override
-   public int Q() {
-      return 120;
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
-   }
-
-   @Override
-   public int ee() {
-      return 1 + this.dM().z.a(3);
-   }
-
-   public boolean m(cmh $$0) {
-      return $$0.a(cmk.pt);
-   }
-
-   @Override
-   public bjl b(cer $$0, bjk $$1) {
-      cmh $$2 = $$0.b($$1);
-      if (this.m($$2)) {
-         int $$3 = this.h();
-         if (!this.dM().B && $$3 == 0 && this.gf()) {
-            this.a($$0, $$1, $$2);
-            this.g($$0);
-            return bjl.a;
-         }
-
-         if (this.o_()) {
-            this.a($$0, $$1, $$2);
-            this.a(d_(-$$3), true);
-            return bjl.a(this.dM().B);
-         }
-
-         if (this.dM().B) {
-            return bjl.b;
-         }
-      }
-
-      return super.b($$0, $$1);
-   }
-
-   protected void a(cer $$0, bjk $$1, cmh $$2) {
-      if (!$$0.fT().d) {
-         $$2.h(1);
-      }
-   }
-
-   public boolean gf() {
-      return this.bT <= 0;
-   }
-
-   public void g(@Nullable cer $$0) {
-      this.bT = 600;
-      if ($$0 != null) {
-         this.bU = $$0.cw();
-      }
-
-      this.dM().a(this, (byte)18);
-   }
-
-   public void s(int $$0) {
-      this.bT = $$0;
-   }
-
-   public int gg() {
-      return this.bT;
-   }
-
-   @Nullable
-   public amq gh() {
-      if (this.bU == null) {
-         return null;
+   public boolean c(hx $$0) {
+      bxh $$1 = (bxh)this.b.get(iz.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
       } else {
-         cer $$0 = this.dM().b(this.bU);
-         return $$0 instanceof amq ? (amq)$$0 : null;
+         boolean $$2 = $$1.c();
+         this.d.run();
+         return $$2;
       }
    }
 
-   public boolean gi() {
-      return this.bT > 0;
+   public boolean a(hx $$0, Predicate<ih<bxj>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
    }
 
-   public void gj() {
-      this.bT = 0;
+   public Optional<ih<bxj>> d(hx $$0) {
+      return this.e($$0).map(bxh::g);
    }
 
-   public boolean a(bxi $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return $$0.getClass() != this.getClass() ? false : this.gi() && $$0.gi();
+   private Optional<bxh> e(hx $$0) {
+      return Optional.ofNullable((bxh)this.b.get(iz.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<hx, ih<bxj>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<bxh> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.b();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = iz.b($$1x);
+            bxh $$4 = (bxh)$$1.computeIfAbsent($$3, $$2x -> new bxh($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
       }
    }
 
-   public void a(amp $$0, bxi $$1) {
-      bla $$2 = this.a($$0, (bla)$$1);
-      if ($$2 != null) {
-         $$2.a(true);
-         $$2.b(this.dr(), this.dt(), this.dx(), 0.0F, 0.0F);
-         this.a($$0, $$1, $$2);
-         $$0.a_($$2);
-      }
+   private void b() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   public void a(amp $$0, bxi $$1, @Nullable bla $$2) {
-      Optional.ofNullable(this.gh()).or(() -> Optional.ofNullable($$1.gh())).ifPresent($$2x -> {
-         $$2x.a(arm.P);
-         am.p.a($$2x, this, $$1, $$2);
-      });
-      this.c_(6000);
-      $$1.c_(6000);
-      this.gj();
-      $$1.gj();
-      $$0.a(this, (byte)18);
-      if ($$0.Y().b(csu.f)) {
-         $$0.b(new bll($$0, this.dr(), this.dt(), this.dx(), this.eg().a(7) + 1));
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 18) {
-         for (int $$1 = 0; $$1 < 7; $$1++) {
-            double $$2 = this.ag.k() * 0.02;
-            double $$3 = this.ag.k() * 0.02;
-            double $$4 = this.ag.k() * 0.02;
-            this.dM().a(jv.O, this.d(1.0), this.du() + 0.5, this.g(1.0), $$2, $$3, $$4);
-         }
-      } else {
-         super.b($$0);
-      }
+   boolean a() {
+      return this.e;
    }
 }

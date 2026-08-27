@@ -1,268 +1,46 @@
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMaps;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.LongSummaryStatistics;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class emk<T> implements emj<T> {
-   private static final Comparator<emi<?>> a = ($$0, $$1) -> emn.b.compare($$0.b(), $$1.b());
-   private final LongPredicate b;
-   private final Supplier<bgc> c;
-   private final Long2ObjectMap<emi<T>> d = new Long2ObjectOpenHashMap();
-   private final Long2LongMap e = ac.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
-   private final Queue<emi<T>> f = new PriorityQueue<>(a);
-   private final Queue<emn<T>> g = new ArrayDeque<>();
-   private final List<emn<T>> h = new ArrayList<>();
-   private final Set<emn<?>> i = new ObjectOpenCustomHashSet(emn.c);
-   private final BiConsumer<emi<T>, emn<T>> j = ($$0x, $$1x) -> {
-      if ($$1x.equals($$0x.b())) {
-         this.b($$1x);
-      }
-   };
+class emk {
+   private final Map<emi, emn> a = new HashMap<>();
 
-   public emk(LongPredicate $$0, Supplier<bgc> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Nullable
+   public emn a(emi $$0) {
+      return this.a.get($$0);
    }
 
-   public void a(csf $$0, emi<T> $$1) {
-      long $$2 = $$0.a();
-      this.d.put($$2, $$1);
-      emn<T> $$3 = $$1.b();
-      if ($$3 != null) {
-         this.e.put($$2, $$3.c());
-      }
-
-      $$1.a(this.j);
-   }
-
-   public void a(csf $$0) {
-      long $$1 = $$0.a();
-      emi<T> $$2 = (emi<T>)this.d.remove($$1);
-      this.e.remove($$1);
-      if ($$2 != null) {
-         $$2.a(null);
-      }
-   }
-
-   @Override
-   public void a(emn<T> $$0) {
-      long $$1 = csf.a($$0.b());
-      emi<T> $$2 = (emi<T>)this.d.get($$1);
-      if ($$2 == null) {
-         ac.b(new IllegalStateException("Trying to schedule tick in not loaded position " + $$0.b()));
-      } else {
-         $$2.a($$0);
-      }
-   }
-
-   public void a(long $$0, int $$1, BiConsumer<hv, T> $$2) {
-      bgc $$3 = this.c.get();
-      $$3.a("collect");
-      this.a($$0, $$1, $$3);
-      $$3.b("run");
-      $$3.a("ticksToRun", this.g.size());
-      this.a($$2);
-      $$3.b("cleanup");
-      this.c();
-      $$3.c();
-   }
-
-   private void a(long $$0, int $$1, bgc $$2) {
-      this.a($$0);
-      $$2.a("containersToTick", this.f.size());
-      this.a($$0, $$1);
-      this.b();
-   }
-
-   private void a(long $$0) {
-      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.e);
-
-      while ($$1.hasNext()) {
-         Entry $$2 = (Entry)$$1.next();
-         long $$3 = $$2.getLongKey();
-         long $$4 = $$2.getLongValue();
-         if ($$4 <= $$0) {
-            emi<T> $$5 = (emi<T>)this.d.get($$3);
-            if ($$5 == null) {
-               $$1.remove();
-            } else {
-               emn<T> $$6 = $$5.b();
-               if ($$6 == null) {
-                  $$1.remove();
-               } else if ($$6.c() > $$0) {
-                  $$2.setValue($$6.c());
-               } else if (this.b.test($$3)) {
-                  $$1.remove();
-                  this.f.add($$5);
-               }
-            }
-         }
-      }
-   }
-
-   private void a(long $$0, int $$1) {
-      emi<T> $$2;
-      while (this.a($$1) && ($$2 = this.f.poll()) != null) {
-         emn<T> $$3 = $$2.c();
-         this.c($$3);
-         this.a(this.f, $$2, $$0, $$1);
-         emn<T> $$4 = $$2.b();
-         if ($$4 != null) {
-            if ($$4.c() <= $$0 && this.a($$1)) {
-               this.f.add($$2);
-            } else {
-               this.b($$4);
-            }
-         }
-      }
-   }
-
-   private void b() {
-      for (emi<T> $$0 : this.f) {
-         this.b($$0.b());
-      }
-   }
-
-   private void b(emn<T> $$0) {
-      this.e.put(csf.a($$0.b()), $$0.c());
-   }
-
-   private void a(Queue<emi<T>> $$0, emi<T> $$1, long $$2, int $$3) {
-      if (this.a($$3)) {
-         emi<T> $$4 = $$0.peek();
-         emn<T> $$5 = $$4 != null ? $$4.b() : null;
-
-         while (this.a($$3)) {
-            emn<T> $$6 = $$1.b();
-            if ($$6 == null || $$6.c() > $$2 || $$5 != null && emn.b.compare($$6, $$5) > 0) {
-               break;
-            }
-
-            $$1.c();
-            this.c($$6);
-         }
-      }
-   }
-
-   private void c(emn<T> $$0) {
-      this.g.add($$0);
-   }
-
-   private boolean a(int $$0) {
-      return this.g.size() < $$0;
-   }
-
-   private void a(BiConsumer<hv, T> $$0) {
-      while (!this.g.isEmpty()) {
-         emn<T> $$1 = this.g.poll();
-         if (!this.i.isEmpty()) {
-            this.i.remove($$1);
-         }
-
-         this.h.add($$1);
-         $$0.accept($$1.b(), $$1.a());
-      }
-   }
-
-   private void c() {
-      this.g.clear();
-      this.f.clear();
-      this.h.clear();
-      this.i.clear();
-   }
-
-   @Override
-   public boolean a(hv $$0, T $$1) {
-      emi<T> $$2 = (emi<T>)this.d.get(csf.a($$0));
-      return $$2 != null && $$2.a($$0, $$1);
-   }
-
-   @Override
-   public boolean b(hv $$0, T $$1) {
-      this.d();
-      return this.i.contains(emn.a($$1, $$0));
-   }
-
-   private void d() {
-      if (this.i.isEmpty() && !this.g.isEmpty()) {
-         this.i.addAll(this.g);
-      }
-   }
-
-   private void a(dyg $$0, emk.a<T> $$1) {
-      int $$2 = ix.a((double)$$0.h());
-      int $$3 = ix.a((double)$$0.j());
-      int $$4 = ix.a((double)$$0.k());
-      int $$5 = ix.a((double)$$0.m());
-
-      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
-         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
-            long $$8 = csf.c($$6, $$7);
-            emi<T> $$9 = (emi<T>)this.d.get($$8);
-            if ($$9 != null) {
-               $$1.accept($$8, $$9);
-            }
-         }
-      }
-   }
-
-   public void a(dyg $$0) {
-      Predicate<emn<T>> $$1 = $$1x -> $$0.b($$1x.b());
-      this.a($$0, ($$1x, $$2) -> {
-         emn<T> $$3 = $$2.b();
-         $$2.a($$1);
-         emn<T> $$4 = $$2.b();
-         if ($$4 != $$3) {
-            if ($$4 != null) {
-               this.b($$4);
-            } else {
-               this.e.remove($$1x);
-            }
-         }
+   public emn a(emi $$0, Consumer<emn> $$1) {
+      return this.a.computeIfAbsent($$0, $$1x -> {
+         emn $$2 = new emn();
+         $$1.accept($$2);
+         return $$2;
       });
-      this.h.removeIf($$1);
-      this.g.removeIf($$1);
    }
 
-   public void a(dyg $$0, iz $$1) {
-      this.a(this, $$0, $$1);
+   public boolean b(emi $$0) {
+      return this.a.get($$0) != null;
    }
 
-   public void a(emk<T> $$0, dyg $$1, iz $$2) {
-      List<emn<T>> $$3 = new ArrayList<>();
-      Predicate<emn<T>> $$4 = $$1x -> $$1.b($$1x.b());
-      $$0.h.stream().filter($$4).forEach($$3::add);
-      $$0.g.stream().filter($$4).forEach($$3::add);
-      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
-      LongSummaryStatistics $$5 = $$3.stream().mapToLong(emn::e).summaryStatistics();
-      long $$6 = $$5.getMin();
-      long $$7 = $$5.getMax();
-      $$3.forEach($$3x -> this.a(new emn<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
+   public boolean a() {
+      return !this.a.isEmpty();
    }
 
-   @Override
-   public int a() {
-      return this.d.values().stream().mapToInt(emp::a).sum();
+   public Object2IntMap<emi> b() {
+      Object2IntMap<emi> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
    }
 
-   @FunctionalInterface
-   interface a<T> {
-      void accept(long var1, emi<T> var3);
+   void a(emi $$0, emn $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<emi, emn> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

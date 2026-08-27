@@ -1,18 +1,42 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-public class tu {
-   private final AtomicInteger a = new AtomicInteger();
-   private final auh b;
+public class tu extends tq {
+   private final Deque<ts> a = new ArrayDeque<>();
 
-   public tu(auh $$0) {
-      this.b = $$0;
+   public tu(tr... $$0) {
+      ts $$1 = ts.a();
+
+      for (tr $$2 : $$0) {
+         $$1.a($$2);
+      }
+
+      this.a.push($$1);
    }
 
-   public void a(int $$0) {
-      this.a.getAndAdd($$0);
+   @Override
+   public tf.a a(tk<?> $$0, String $$1) {
+      ts $$2 = this.a.element();
+      if ($$2.a($$0, $$1)) {
+         return tf.a.b;
+      } else {
+         if ($$0 == sl.b) {
+            ts $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.a.push($$3);
+            }
+         }
+
+         return super.a($$0, $$1);
+      }
    }
 
-   public void a() {
-      this.b.a((long)this.a.getAndSet(0));
+   @Override
+   public tf.b b() {
+      if (this.e() == this.a.element().b()) {
+         this.a.pop();
+      }
+
+      return super.b();
    }
 }

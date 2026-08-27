@@ -1,39 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
+import com.mojang.brigadier.context.CommandContext;
 
 public class ajk {
    public static void a(CommandDispatcher<ds> $$0) {
-      LiteralCommandNode<ds> $$1 = $$0.register(
-         (LiteralArgumentBuilder)dt.a("msg").then(dt.a("targets", ee.d()).then(dt.a("message", ei.a()).executes($$0x -> {
-            Collection<amq> $$1x = ee.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               ei.a($$0x, "message", $$2 -> a((ds)$$0x.getSource(), $$1x, $$2));
+      final LiteralArgumentBuilder<ds> $$1 = (LiteralArgumentBuilder<ds>)dt.a("gamerule").requires($$0x -> $$0x.c(2));
+      cte.a(
+         new cte.c() {
+            @Override
+            public <T extends cte.g<T>> void a(cte.e<T> $$0, cte.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)dt.a($$0.a()).executes($$1xxx -> ajk.a((ds)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> ajk.a($$1xxx, $$0)))
+               );
             }
-
-            return $$1x.size();
-         })))
+         }
       );
-      $$0.register((LiteralArgumentBuilder)dt.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)dt.a("w").redirect($$1));
+      $$0.register($$1);
    }
 
-   private static void a(ds $$0, Collection<amq> $$1, vr $$2) {
-      ux.a $$3 = ux.a(ux.e, $$0);
-      vq $$4 = vq.a($$2);
-      boolean $$5 = false;
+   static <T extends cte.g<T>> int a(CommandContext<ds> $$0, cte.e<T> $$1) {
+      ds $$2 = (ds)$$0.getSource();
+      T $$3 = $$2.l().aK().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> vd.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
 
-      for (amq $$6 : $$1) {
-         ux.a $$7 = ux.a(ux.f, $$0).c($$6.Q_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.i();
-      }
-
-      if ($$5) {
-         $$0.a(aqf.f);
-      }
+   static <T extends cte.g<T>> int a(ds $$0, cte.e<T> $$1) {
+      T $$2 = $$0.l().aK().a($$1);
+      $$0.a(() -> vd.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

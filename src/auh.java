@@ -1,41 +1,49 @@
-public class auh {
-   public static final int a = 240;
-   private final long[] b = new long[240];
-   private int c;
-   private int d;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-   public void a(long $$0) {
-      int $$1 = this.b(this.c + this.d);
-      this.b[$$1] = $$0;
-      if (this.d < 240) {
-         this.d++;
+public record auh(auh.a a, String b) {
+   public static auh a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new auh(auh.a.c, $$2 + " brand changed to '" + $$4 + "'");
       } else {
-         this.c = this.b(this.c + 1);
+         return $$3.getSigners() == null
+            ? new auh(auh.a.b, $$2 + " jar signature invalidated")
+            : new auh(auh.a.a, $$2 + " jar signature and brand is untouched");
       }
    }
 
-   public int a() {
-      return this.b.length;
+   public boolean a() {
+      return this.a.e;
    }
 
-   public int b() {
-      return this.d;
+   public auh a(auh $$0) {
+      return new auh((auh.a)ObjectUtils.max(new auh.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
    }
 
-   public long a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.d) {
-         return this.b[this.b(this.c + $$0)];
-      } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.d);
+   public String b() {
+      return this.a.d + " " + this.b;
+   }
+
+   public auh.a c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(String $$0, boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
-   }
-
-   private int b(int $$0) {
-      return $$0 % 240;
-   }
-
-   public void c() {
-      this.c = 0;
-      this.d = 0;
    }
 }

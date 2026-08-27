@@ -1,32 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dtf implements dtg {
-   public static final Codec<dtf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hv.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dtf::new)
-   );
-   private final Optional<hv> b;
-   private final boolean c;
-
-   private dtf(Optional<hv> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dtf extends dtc {
+   public dtf(Codec<duq> $$0) {
+      super($$0);
    }
 
-   public static dtf a(hv $$0, boolean $$1) {
-      return new dtf(Optional.of($$0), $$1);
+   @Override
+   protected Set<hx> a(cud $$0, duq $$1, aup $$2, hx $$3, Predicate<dja> $$4, int $$5, int $$6) {
+      Set<hx> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<hx> $$8 = new HashSet<>();
+      hx.a $$9 = new hx.a();
+
+      for (hx $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (hx $$11 : $$8) {
+         $$0.a($$11, cwl.G.o(), 2);
+      }
+
+      return $$8;
    }
 
-   public static dtf a() {
-      return new dtf(Optional.empty(), false);
+   private static boolean a(cud $$0, Set<hx> $$1, hx $$2, hx.a $$3) {
+      return a($$0, $$2, $$3, ic.c) || a($$0, $$2, $$3, ic.f) || a($$0, $$2, $$3, ic.d) || a($$0, $$2, $$3, ic.e) || a($$0, $$2, $$3, ic.a);
    }
 
-   public Optional<hv> b() {
-      return this.b;
+   private static boolean a(cud $$0, hx $$1, hx.a $$2, ic $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
    }
 
-   public boolean c() {
-      return this.c;
+   @Override
+   protected boolean a(cud $$0, duq $$1, dkx $$2, aup $$3, hx $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         dja $$5 = $$0.a_($$4);
+         if ($$5.b(djq.C) && !$$5.c(djq.C)) {
+            $$0.a($$4, $$5.a(djq.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

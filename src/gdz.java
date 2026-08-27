@@ -1,151 +1,316 @@
-import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Supplier;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gdz implements gds {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gdz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(agt.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
-               agt.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
-               Codec.unboundedMap(Codec.STRING, agt.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, gdz::new)
-   );
-   private final List<agt> d;
-   private final Map<String, agt> e;
-   private final agt f;
+public class gdz implements gec.a, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final ahd b;
+   final int c;
+   final int d;
+   private final eou e;
+   eou[] f;
+   @Nullable
+   private final gdz.a g;
+   private final aqe h;
 
-   private gdz(List<agt> $$0, agt $$1, Map<String, agt> $$2) {
-      this.d = $$0;
+   public gdz(ahd $$0, gfs $$1, eou $$2, aqe $$3) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$1.b();
+      this.h = $$3;
+      gfq $$4 = $$3.a(gfq.a).orElse(gfq.e);
+      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
       this.e = $$2;
-      this.f = $$1;
+      this.f = new eou[]{this.e};
    }
 
-   @Override
-   public void a(aps $$0, gds.a $$1) {
-      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
-      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
-      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
-
-      for (agt $$4 : this.d) {
-         agt $$5 = a.a($$4);
-         Optional<apq> $$6 = $$0.getResource($$5);
-         if ($$6.isEmpty()) {
-            c.warn("Unable to find texture {}", $$5);
-         } else {
-            gdy $$7 = new gdy($$5, $$6.get(), $$3.size());
-
-            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
-               agt $$9 = $$4.e("_" + $$8.getKey());
-               $$1.a($$9, new gdz.a($$7, $$8.getValue(), $$9));
+   public void a(int $$0) {
+      try {
+         this.f = gdu.a(this.f, $$0);
+      } catch (Throwable var6) {
+         o $$2 = o.a(var6, "Generating mipmaps for frame");
+         p $$3 = $$2.a("Sprite being mipmapped");
+         $$3.a("First frame", () -> {
+            StringBuilder $$0x = new StringBuilder();
+            if ($$0x.length() > 0) {
+               $$0x.append(", ");
             }
-         }
+
+            $$0x.append(this.e.a()).append("x").append(this.e.b());
+            return $$0x.toString();
+         });
+         p $$4 = $$2.a("Frame being iterated");
+         $$4.a("Sprite name", this.b);
+         $$4.a("Sprite size", () -> this.c + " x " + this.d);
+         $$4.a("Sprite frames", () -> this.g() + " frames");
+         $$4.a("Mipmap levels", $$0);
+         throw new y($$2);
       }
    }
 
-   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
-      if ($$1.length != $$0.length) {
-         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
-         throw new IllegalArgumentException();
-      } else {
-         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
+   private int g() {
+      return this.g != null ? this.g.b.size() : 1;
+   }
 
-         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-            int $$4 = $$0[$$3];
-            if (ati.a.a($$4) != 0) {
-               $$2.put(ati.a.e($$4), $$1[$$3]);
-            }
+   @Nullable
+   private gdz.a a(gfs $$0, int $$1, int $$2, gfq $$3) {
+      int $$4 = $$1 / $$0.a();
+      int $$5 = $$2 / $$0.b();
+      int $$6 = $$4 * $$5;
+      List<gdz.b> $$7 = new ArrayList<>();
+      $$3.a(($$1x, $$2x) -> $$7.add(new gdz.b($$1x, $$2x)));
+      if ($$7.isEmpty()) {
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            $$7.add(new gdz.b($$8, $$3.a()));
          }
+      } else {
+         int $$9 = 0;
+         IntSet $$10 = new IntOpenHashSet();
 
-         return $$1x -> {
-            int $$2x = ati.a.a($$1x);
-            if ($$2x == 0) {
-               return $$1x;
+         for (Iterator<gdz.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
+            gdz.b $$12 = $$11.next();
+            boolean $$13 = true;
+            if ($$12.b <= 0) {
+               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
+               $$13 = false;
+            }
+
+            if ($$12.a < 0 || $$12.a >= $$6) {
+               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
+               $$13 = false;
+            }
+
+            if ($$13) {
+               $$10.add($$12.a);
             } else {
-               int $$3x = ati.a.e($$1x);
-               int $$4x = $$2.getOrDefault($$3x, ati.a.f($$3x));
-               int $$5 = ati.a.a($$4x);
-               return ati.a.a($$2x * $$5 / 255, $$4x);
+               $$11.remove();
             }
-         };
+         }
+
+         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
+         if ($$14.length > 0) {
+            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
+         }
       }
+
+      return $$7.size() <= 1 ? null : new gdz.a(ImmutableList.copyOf($$7), $$4, $$3.b());
    }
 
-   public static int[] a(aps $$0, agt $$1) {
-      Optional<apq> $$2 = $$0.getResource(a.a($$1));
-      if ($$2.isEmpty()) {
-         c.error("Failed to load palette image {}", $$1);
-         throw new IllegalArgumentException();
-      } else {
-         try {
-            int[] var5;
-            try (
-               InputStream $$3 = $$2.get().d();
-               eoe $$4 = eoe.a($$3);
-            ) {
-               var5 = $$4.d();
-            }
-
-            return var5;
-         } catch (Exception var11) {
-            c.error("Couldn't load texture {}", $$1, var11);
-            throw new IllegalArgumentException();
-         }
+   void a(int $$0, int $$1, int $$2, int $$3, eou[] $$4) {
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
       }
    }
 
    @Override
-   public gdu a() {
-      return gdv.e;
+   public int a() {
+      return this.c;
    }
 
-   static record a(gdy a, Supplier<IntUnaryOperator> b, agt c) implements gds.b {
-      @Nullable
-      public gdi a(gdr $$0) {
-         Object var3;
-         try {
-            eoe $$1 = this.a.a().a(this.b.get());
-            return new gdi(this.c, new gfb($$1.a(), $$1.b()), $$1, apu.a);
-         } catch (IllegalArgumentException | IOException var7) {
-            gdz.c.error("unable to apply palette to {}", this.c, var7);
-            var3 = null;
-         } finally {
-            this.a.b();
-         }
+   @Override
+   public int b() {
+      return this.d;
+   }
 
-         return (gdi)var3;
+   @Override
+   public ahd c() {
+      return this.b;
+   }
+
+   public IntStream d() {
+      return this.g != null ? this.g.b() : IntStream.of(1);
+   }
+
+   @Nullable
+   public geb e() {
+      return this.g != null ? this.g.a() : null;
+   }
+
+   public aqe f() {
+      return this.h;
+   }
+
+   @Override
+   public void close() {
+      for (eou $$0 : this.f) {
+         $$0.close();
+      }
+   }
+
+   @Override
+   public String toString() {
+      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
+   }
+
+   public boolean a(int $$0, int $$1, int $$2) {
+      int $$3 = $$1;
+      int $$4 = $$2;
+      if (this.g != null) {
+         $$3 = $$1 + this.g.a($$0) * this.c;
+         $$4 = $$2 + this.g.b($$0) * this.d;
+      }
+
+      return (this.e.a($$3, $$4) >> 24 & 0xFF) == 0;
+   }
+
+   public void a(int $$0, int $$1) {
+      if (this.g != null) {
+         this.g.a($$0, $$1);
+      } else {
+         this.a($$0, $$1, 0, 0, this.f);
+      }
+   }
+
+   class a {
+      final List<gdz.b> b;
+      private final int c;
+      private final boolean d;
+
+      a(List<gdz.b> $$0, int $$1, boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      int a(int $$0) {
+         return $$0 % this.c;
+      }
+
+      int b(int $$0) {
+         return $$0 / this.c;
+      }
+
+      void a(int $$0, int $$1, int $$2) {
+         int $$3 = this.a($$2) * gdz.this.c;
+         int $$4 = this.b($$2) * gdz.this.d;
+         gdz.this.a($$0, $$1, $$3, $$4, gdz.this.f);
+      }
+
+      public geb a() {
+         return gdz.this.new d(this, this.d ? gdz.this.new c() : null);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.a($$0, $$1, this.b.get(0).a);
+      }
+
+      public IntStream b() {
+         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
+      }
+   }
+
+   static class b {
+      final int a;
+      final int b;
+
+      b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+   }
+
+   final class c implements AutoCloseable {
+      private final eou[] b = new eou[gdz.this.f.length];
+
+      c() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            int $$1 = gdz.this.c >> $$0;
+            int $$2 = gdz.this.d >> $$0;
+            this.b[$$0] = new eou($$1, $$2, false);
+         }
+      }
+
+      void a(int $$0, int $$1, gdz.d $$2) {
+         gdz.a $$3 = $$2.d;
+         List<gdz.b> $$4 = $$3.b;
+         gdz.b $$5 = $$4.get($$2.b);
+         double $$6 = 1.0 - (double)$$2.c / (double)$$5.b;
+         int $$7 = $$5.a;
+         int $$8 = $$4.get(($$2.b + 1) % $$4.size()).a;
+         if ($$7 != $$8) {
+            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+               int $$10 = gdz.this.c >> $$9;
+               int $$11 = gdz.this.d >> $$9;
+
+               for (int $$12 = 0; $$12 < $$11; $$12++) {
+                  for (int $$13 = 0; $$13 < $$10; $$13++) {
+                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
+                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
+                     int $$16 = this.a($$6, $$14 >> 16 & 0xFF, $$15 >> 16 & 0xFF);
+                     int $$17 = this.a($$6, $$14 >> 8 & 0xFF, $$15 >> 8 & 0xFF);
+                     int $$18 = this.a($$6, $$14 & 0xFF, $$15 & 0xFF);
+                     this.b[$$9].a($$13, $$12, $$14 & 0xFF000000 | $$16 << 16 | $$17 << 8 | $$18);
+                  }
+               }
+            }
+
+            gdz.this.a($$0, $$1, 0, 0, this.b);
+         }
+      }
+
+      private int a(gdz.a $$0, int $$1, int $$2, int $$3, int $$4) {
+         return gdz.this.f[$$2].a($$3 + ($$0.a($$1) * gdz.this.c >> $$2), $$4 + ($$0.b($$1) * gdz.this.d >> $$2));
+      }
+
+      private int a(double $$0, int $$1, int $$2) {
+         return (int)($$0 * (double)$$1 + (1.0 - $$0) * (double)$$2);
       }
 
       @Override
-      public void a() {
-         this.a.b();
+      public void close() {
+         for (eou $$0 : this.b) {
+            $$0.close();
+         }
+      }
+   }
+
+   class d implements geb {
+      int b;
+      int c;
+      final gdz.a d;
+      @Nullable
+      private final gdz.c e;
+
+      d(gdz.a $$0, @Nullable gdz.c $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      public gdy b() {
-         return this.a;
+      @Override
+      public void a(int $$0, int $$1) {
+         this.c++;
+         gdz.b $$2 = this.d.b.get(this.b);
+         if (this.c >= $$2.b) {
+            int $$3 = $$2.a;
+            this.b = (this.b + 1) % this.d.b.size();
+            this.c = 0;
+            int $$4 = this.d.b.get(this.b).a;
+            if ($$3 != $$4) {
+               this.d.a($$0, $$1, $$4);
+            }
+         } else if (this.e != null) {
+            if (!RenderSystem.isOnRenderThread()) {
+               RenderSystem.recordRenderCall(() -> this.e.a($$0, $$1, this));
+            } else {
+               this.e.a($$0, $$1, this);
+            }
+         }
       }
 
-      public Supplier<IntUnaryOperator> c() {
-         return this.b;
-      }
-
-      public agt d() {
-         return this.c;
+      @Override
+      public void close() {
+         if (this.e != null) {
+            this.e.close();
+         }
       }
    }
 }

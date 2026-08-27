@@ -10,8 +10,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public interface ck<T extends Number> {
-   SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("argument.range.empty"));
-   SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("argument.range.swapped"));
+   SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("argument.range.empty"));
+   SimpleCommandExceptionType b = new SimpleCommandExceptionType(vd.c("argument.range.swapped"));
 
    Optional<T> a();
 
@@ -29,7 +29,7 @@ public interface ck<T extends Number> {
 
    static <T extends Number, R extends ck<T>> Codec<R> a(Codec<T> $$0, ck.a<T, R> $$1) {
       Codec<R> $$2 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group(atg.a($$0, "min").forGetter(ck::a), atg.a($$0, "max").forGetter(ck::b)).apply($$2x, $$1::create)
+         $$2x -> $$2x.group(atq.a($$0, "min").forGetter(ck::a), atq.a($$0, "max").forGetter(ck::b)).apply($$2x, $$1::create)
       );
       return Codec.either($$2, $$0).xmap($$1x -> (ck)$$1x.map($$0xx -> $$0xx, $$1xx -> $$1.create(Optional.of((T)$$1xx), Optional.of((T)$$1xx))), $$0x -> {
          Optional<T> $$1x = $$0x.d();

@@ -1,72 +1,75 @@
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dwe extends dwk {
-   public static final Codec<dwe> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dwe::new));
+public class dwe extends dwj {
+   public static final Codec<dwe> a = dvs.a.fieldOf("provider").xmap(dwe::new, $$0 -> $$0.b).codec();
+   private final dvs b;
 
-   public dwe(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dwe(dvs $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected dwl<?> a() {
-      return dwl.e;
+   protected dwk<?> a() {
+      return dwk.e;
    }
 
    @Override
-   public List<dus.a> a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, int $$3, hv $$4, duc $$5) {
-      List<dus.a> $$6 = Lists.newArrayList();
-      hv $$7 = $$4.d();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.h(), $$5);
-      a($$0, $$1, $$2, $$7.f(), $$5);
-      a($$0, $$1, $$2, $$7.f().h(), $$5);
-      ia $$8 = ia.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
-
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         hv $$19 = new hv($$14, $$18, $$15);
-         if (dso.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.h(), $$5);
-            this.b($$0, $$1, $$2, $$19.f(), $$5);
-            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
-         }
+   public void a(dwj.a $$0) {
+      List<hx> $$1 = Lists.newArrayList();
+      List<hx> $$2 = $$0.e();
+      List<hx> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
       }
 
-      $$6.add(new dus.a(new hv($$14, $$16, $$15), 0, true));
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.g().e());
+            this.a($$0, $$1x.g(2).e());
+            this.a($$0, $$1x.g().e(2));
+            this.a($$0, $$1x.g(2).e(2));
 
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new hv($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
                }
+            }
+         });
+      }
+   }
 
-               $$6.add(new dus.a(new hv($$14 + $$20, $$16, $$15 + $$21), 0, false));
+   private void a(dwj.a $$0, hx $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
             }
          }
       }
+   }
 
-      return $$6;
+   private void b(dwj.a $$0, hx $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         hx $$3 = $$1.b($$2);
+         if (drn.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
+      }
    }
 }

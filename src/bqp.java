@@ -1,33 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bqp {
-   private static final int a = 16;
+   public static bnx<ceo> a(bvh<List<ig>> $$0, float $$1, int $$2, int $$3, bvh<ig> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return brj.a(
+         (Function<brj.b<ceo>, ? extends App<brj.c<ceo>, brm<ceo>>>)($$6 -> $$6.group($$6.a(bvh.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<ig> $$11 = $$6.b($$6x);
+                     ig $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        ig $$13 = $$11.get($$8.F_().a($$11.size()));
+                        if ($$13 != null && $$8.ae() == $$13.a() && $$12.b().a($$9.dk(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new bvk($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   public static bnn<blv> a(Predicate<ie<bwz>> $$0, bux<id> $$1) {
-      return bqz.a((Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               id $$6 = $$2.b($$2x);
-               hv $$7 = $$6.b();
-               if ($$3.ad() == $$6.a() && $$7.a($$4.dk(), 16.0)) {
-                  amp $$8 = $$3.n().a($$6.a());
-                  if ($$8 == null || !$$8.x().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.x().b($$7);
-                     acv.c($$3, $$7);
-                  }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
-   }
-
-   private static boolean a(amp $$0, hv $$1, blv $$2) {
-      dip $$3 = $$0.a_($$1);
-      return $$3.a(arr.R) && $$3.c(cvs.c) && !$$2.fD();
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

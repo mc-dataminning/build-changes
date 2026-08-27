@@ -1,15 +1,14 @@
-public class fxl extends fyu<cbq, fix<cbq>> {
-   private static final agt a = new agt("textures/entity/endermite.png");
+public class fxl extends fzl<cdf, fiy<cdf>> {
+   private static final ahd a = new ahd("textures/entity/breeze/breeze.png");
+   private static final ahd i = new ahd("textures/entity/breeze/breeze_wind.png");
 
-   public fxl(fxo.a $$0) {
-      super($$0, new fix<>($$0.a(flx.V)), 0.3F);
+   public fxl(fyf.a $$0) {
+      super($$0, new fiy<>($$0.a(fmo.n)), 0.8F);
+      this.a(new gbp(this, $$0.f(), i));
+      this.a(new gbo(this, $$0.f(), a));
    }
 
-   protected float a(cbq $$0) {
-      return 180.0F;
-   }
-
-   public agt b(cbq $$0) {
+   public ahd a(cdf $$0) {
       return a;
    }
 }

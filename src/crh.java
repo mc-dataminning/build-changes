@@ -1,35 +1,20 @@
-public class crh extends cqs {
-   public crh(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.b, $$1);
+public class crh extends crc {
+   protected crh(crc.a $$0, blu... $$1) {
+      super($$0, crd.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 10 + 20 * ($$0 - 1);
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
+      return super.a($$0) + 50;
    }
 
    @Override
    public int a() {
-      return 3;
+      return 2;
    }
 }

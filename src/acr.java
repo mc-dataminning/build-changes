@@ -1,92 +1,63 @@
 import javax.annotation.Nullable;
 
-public class acr implements wu<yo> {
+public class acr implements xd<yx> {
    private static final int a = 1;
    private static final int b = 2;
-   private static final int c = 4;
-   private final int d;
-   private final bkq e;
-   private final byte f;
-   private final int g;
-   private final byte h;
    @Nullable
-   private final bks.a i;
+   private final ahd c;
+   @Nullable
+   private final arn d;
 
-   public acr(int $$0, bks $$1) {
-      this.d = $$0;
-      this.e = $$1.c();
-      this.f = (byte)($$1.e() & 0xFF);
-      this.g = $$1.d();
-      byte $$2 = 0;
-      if ($$1.f()) {
-         $$2 = (byte)($$2 | 1);
-      }
-
-      if ($$1.g()) {
-         $$2 = (byte)($$2 | 2);
-      }
-
-      if ($$1.h()) {
-         $$2 = (byte)($$2 | 4);
-      }
-
-      this.h = $$2;
-      this.i = $$1.a().orElse(null);
+   public acr(@Nullable ahd $$0, @Nullable arn $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public acr(ue $$0) {
-      this.d = $$0.n();
-      this.e = $$0.a(kb.d);
-      this.f = $$0.readByte();
-      this.g = $$0.n();
-      this.h = $$0.readByte();
-      this.i = $$0.c($$0x -> $$0x.a(sx.a, bks.a.a));
+   public acr(ug $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.d = $$0.b(arn.class);
+      } else {
+         this.d = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.c = $$0.t();
+      } else {
+         this.c = null;
+      }
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.c(this.d);
-      $$0.a(kb.d, this.e);
-      $$0.k(this.f);
-      $$0.c(this.g);
-      $$0.k(this.h);
-      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(sx.a, bks.a.a, $$1));
-   }
-
-   public void a(yo $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   public bkq d() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return (this.h & 2) == 2;
-   }
-
-   public boolean h() {
-      return (this.h & 1) == 1;
-   }
-
-   public boolean i() {
-      return (this.h & 4) == 4;
+   public void a(ug $$0) {
+      if (this.d != null) {
+         if (this.c != null) {
+            $$0.k(3);
+            $$0.a(this.d);
+            $$0.a(this.c);
+         } else {
+            $$0.k(1);
+            $$0.a(this.d);
+         }
+      } else if (this.c != null) {
+         $$0.k(2);
+         $$0.a(this.c);
+      } else {
+         $$0.k(0);
+      }
    }
 
    @Nullable
-   public bks.a j() {
-      return this.i;
+   public ahd a() {
+      return this.c;
+   }
+
+   @Nullable
+   public arn d() {
+      return this.d;
+   }
+
+   public void a(yx $$0) {
+      $$0.a(this);
    }
 }

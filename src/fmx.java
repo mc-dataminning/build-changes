@@ -1,5 +1,9 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
 
-public record fmx(GameProfile a, gin b, is.b c, chb d, @Nullable String e, @Nullable fne f, @Nullable fcc g) {
+public class fmx {
+   private final fmy a = new fmy(ImmutableList.of(), fmr.a);
+
+   public fmy a() {
+      return this.a;
+   }
 }

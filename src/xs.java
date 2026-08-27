@@ -1,20 +1,31 @@
-public record xs(hv b, int c, String d, int e) implements xo {
-   public static final agt a = new agt("debug/game_test_add_marker");
+public class xs implements xd<xn> {
+   private final xs.a a;
 
-   public xs(ue $$0) {
-      this($$0.e(), $$0.readInt(), $$0.s(), $$0.readInt());
+   public xs(xs.a $$0) {
+      this.a = $$0;
+   }
+
+   public xs(ug $$0) {
+      this.a = $$0.b(xs.a.class);
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
+   public void a(ug $$0) {
+      $$0.a(this.a);
    }
 
-   @Override
-   public agt a() {
-      return a;
+   public void a(xn $$0) {
+      $$0.a(this);
+   }
+
+   public xs.a a() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

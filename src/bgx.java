@@ -1,31 +1,44 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.net.SocketAddress;
+import jdk.jfr.Category;
+import jdk.jfr.DataAmount;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public record bgx(Duration a, @Nullable String b, long c) {
-   public static bgx.a a(Duration $$0, List<bgx> $$1) {
-      long $$2 = $$1.stream().mapToLong($$0x -> $$0x.c).sum();
-      return new bgx.a(
-         $$2,
-         (double)$$2 / (double)$$0.getSeconds(),
-         (long)$$1.size(),
-         (double)$$1.size() / (double)$$0.getSeconds(),
-         $$1.stream().map(bgx::a).reduce(Duration.ZERO, Duration::plus),
-         $$1.stream()
-            .filter($$0x -> $$0x.b != null)
-            .collect(Collectors.groupingBy($$0x -> $$0x.b, Collectors.summingLong($$0x -> $$0x.c)))
-            .entrySet()
-            .stream()
-            .sorted(Entry.<String, Long>comparingByValue().reversed())
-            .map($$0x -> Pair.of((String)$$0x.getKey(), (Long)$$0x.getValue()))
-            .limit(10L)
-            .toList()
-      );
+@Category({"Minecraft", "Network"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bgx extends Event {
+   @Name("protocolId")
+   @Label("Protocol Id")
+   public final String protocolId;
+   @Name("packetId")
+   @Label("Packet Id")
+   public final int packetId;
+   @Name("remoteAddress")
+   @Label("Remote Address")
+   public final String remoteAddress;
+   @Name("bytes")
+   @Label("Bytes")
+   @DataAmount
+   public final int bytes;
+
+   public bgx(String $$0, int $$1, SocketAddress $$2, int $$3) {
+      this.protocolId = $$0;
+      this.packetId = $$1;
+      this.remoteAddress = $$2.toString();
+      this.bytes = $$3;
    }
 
-   public static record a(long a, double b, long c, double d, Duration e, List<Pair<String, Long>> f) {
+   public static final class a {
+      public static final String a = "remoteAddress";
+      public static final String b = "protocolId";
+      public static final String c = "packetId";
+      public static final String d = "bytes";
+
+      private a() {
+      }
    }
 }

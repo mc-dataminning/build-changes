@@ -1,84 +1,36 @@
-import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class eyr implements eyp {
-   private static final agt g = new agt("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final eyr.a h;
-   private final vb i;
+public abstract class eyr implements eys {
    @Nullable
-   private final vb j;
-   private eyp.a k = eyp.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+   private eyt a;
+   private boolean b;
 
-   public eyr(eyr.a $$0, vb $$1, @Nullable vb $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   @Override
+   public final boolean aG_() {
+      return this.b;
    }
 
    @Override
-   public eyp.a a(evw $$0, eyq $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
-      } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
-      }
-
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = aty.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
-         }
-
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
-      }
-
-      return this.k;
+   public final void b(boolean $$0) {
+      this.b = $$0;
    }
 
-   public void c() {
-      this.k = eyp.a.b;
+   @Nullable
+   @Override
+   public eyt aH_() {
+      return this.a;
    }
 
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(new agt("toast/movement_keys")),
-      b(new agt("toast/mouse")),
-      c(new agt("toast/tree")),
-      d(new agt("toast/recipe_book")),
-      e(new agt("toast/wooden_planks")),
-      f(new agt("toast/social_interactions")),
-      g(new agt("toast/right_click"));
-
-      private final agt h;
-
-      private a(agt $$0) {
-         this.h = $$0;
+   @Override
+   public void a(@Nullable eyt $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
 
-      public void a(evw $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
+      if ($$0 != null) {
+         $$0.a(true);
       }
+
+      this.a = $$0;
    }
 }

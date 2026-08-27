@@ -1,23 +1,25 @@
-public class gcm<T extends blv> extends gbd<T, fln<T>> {
-   public gcm(fzj<T, fln<T>> $$0, fse $$1) {
-      super($$0, $$1);
+public class gcm extends gcq<byh, fko<byh>> {
+   private final fsv a;
+
+   public gcm(gaa<byh, fko<byh>> $$0, fsv $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cmh $$10 = $$3.eT();
-      $$0.a();
-      if ($$10.a(cmk.sh)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
-      }
+   public void a(ept $$0, fsz $$1, int $$2, byh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cmr $$10 = $$3.c(blu.a);
+      if ($$3.A() && !$$3.gw()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gk()) {
+            $$11 -= 0.2F * aui.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * aui.a($$7 * 0.6F);
+         }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cmo.h, false, $$0, $$1, $$2);
+         $$0.b();
+      }
    }
 }

@@ -1,45 +1,31 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dqj extends drc<dsz> {
-   public dqj(Codec<dsz> $$0) {
-      super($$0);
+public class dqj extends dpg {
+   private final iu a;
+   private final don b;
+   private final dox c;
+   private final dpa.o d;
+
+   public dqj(dom $$0, iu $$1, ctk $$2, don $$3, dox $$4, dpa.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public boolean a(dre<dsz> $$0) {
-      hv $$1 = $$0.e();
-      ctt $$2 = $$0.b();
-      auf $$3 = $$0.d();
+   @Deprecated
+   public Optional<dja> a(Function<hx, ih<cuh>> $$0, dkw $$1, hx $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
 
-      dsz $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.J_() + 3; $$1 = $$1.d()) {
-         if (!$$2.t($$1.d())) {
-            dip $$5 = $$2.a_($$1.d());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
+   @Deprecated
+   public iu c() {
+      return this.a;
+   }
 
-      if ($$1.v() <= $$2.J_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (hv $$11 : hv.a($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
-
-         return true;
-      }
+   public dox d() {
+      return this.c;
    }
 }

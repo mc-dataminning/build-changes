@@ -1,21 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public abstract class bph<E extends bmf> implements bnx<E>, brm<E> {
+   private bnw.a a;
 
-public class bph {
-   public static bnn<blv> a() {
-      return bqz.a((Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$0 -> $$0.a((brc<blv>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               bmv<?> $$3 = $$1.dO();
-               cfz $$4 = $$0x.c($$1.dm());
-               if ($$4 == null || $$4.d() || $$4.f()) {
-                  $$3.b(cgd.b);
-                  $$3.a($$0x.X(), $$0x.W());
-               }
+   public bph() {
+      this.a = bnw.a.a;
+   }
 
-               return true;
-            }
-         }))));
+   @Override
+   public final bnw.a a() {
+      return this.a;
+   }
+
+   @Override
+   public final boolean e(amz $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bnw.a.b;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(amz $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(amz $$0, E $$1, long $$2) {
+      this.a = bnw.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

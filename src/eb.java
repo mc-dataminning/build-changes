@@ -2,28 +2,35 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class eb implements ArgumentType<sj> {
-   private static final Collection<String> a = Arrays.asList("{}", "{foo=bar}");
+public class eb implements ArgumentType<vd> {
+   private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vd.b("argument.component.invalid", $$0));
 
    private eb() {
+   }
+
+   public static vd a(CommandContext<ds> $$0, String $$1) {
+      return (vd)$$0.getArgument($$1, vd.class);
    }
 
    public static eb a() {
       return new eb();
    }
 
-   public static <S> sj a(CommandContext<S> $$0, String $$1) {
-      return (sj)$$0.getArgument($$1, sj.class);
-   }
-
-   public sj a(StringReader $$0) throws CommandSyntaxException {
-      return new th($$0).f();
+   public vd a(StringReader $$0) throws CommandSyntaxException {
+      try {
+         return dw.a($$0, vf.a);
+      } catch (Exception var4) {
+         String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
+         throw a.createWithContext($$0, $$2);
+      }
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

@@ -1,80 +1,94 @@
-import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
 
-public class fiv<T extends blv> extends fhv<T> {
-   private final fly a;
-   private final fly b;
+public class fiv<T extends blp> extends fjy<T> {
+   private final fmp a;
+   private final fmp[] b;
+   private final fmp f;
 
-   public fiv(fly $$0) {
-      this.b = $$0.b("left_wing");
-      this.a = $$0.b("right_wing");
+   public fiv(fmp $$0) {
+      this.a = $$0;
+      this.f = $$0.b("head");
+      this.b = new fmp[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fme c() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      fmc $$2 = new fmc(1.0F);
-      $$1.a(
-         "left_wing",
-         fmd.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         fma.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
-      );
-      $$1.a(
-         "right_wing",
-         fmd.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         fma.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
-      );
-      return fme.a($$0, 64, 32);
+   private static String a(int $$0) {
+      return "part" + $$0;
+   }
+
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      $$1.a("head", fmu.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fmr.a);
+      float $$2 = 0.0F;
+      fmu $$3 = fmu.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = aui.b($$2) * 9.0F;
+         float $$6 = -2.0F + aui.b((float)($$4 * 2) * 0.25F);
+         float $$7 = aui.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, fmr.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = aui.b($$2) * 7.0F;
+         float $$10 = 2.0F + aui.b((float)($$8 * 2) * 0.25F);
+         float $$11 = aui.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, fmr.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = aui.b($$2) * 5.0F;
+         float $$14 = 11.0F + aui.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = aui.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, fmr.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return fmv.a($$0, 64, 32);
    }
 
    @Override
-   protected Iterable<fly> a() {
-      return ImmutableList.of();
+   public fmp a() {
+      return this.a;
    }
 
    @Override
-   protected Iterable<fly> b() {
-      return ImmutableList.of(this.b, this.a);
-   }
-
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = (float) (Math.PI / 12);
-      float $$7 = (float) (-Math.PI / 12);
-      float $$8 = 0.0F;
-      float $$9 = 0.0F;
-      if ($$0.fw()) {
-         float $$10 = 1.0F;
-         elb $$11 = $$0.dp();
-         if ($$11.d < 0.0) {
-            elb $$12 = $$11.d();
-            $$10 = 1.0F - (float)Math.pow(-$$12.d, 1.5);
-         }
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
 
-         $$6 = $$10 * (float) (Math.PI / 9) + (1.0F - $$10) * $$6;
-         $$7 = $$10 * (float) (-Math.PI / 2) + (1.0F - $$10) * $$7;
-      } else if ($$0.bX()) {
-         $$6 = (float) (Math.PI * 2.0 / 9.0);
-         $$7 = (float) (-Math.PI / 4);
-         $$8 = 3.0F;
-         $$9 = 0.08726646F;
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + aui.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = aui.b($$6) * 9.0F;
+         this.b[$$7].d = aui.a($$6) * 9.0F;
+         $$6++;
       }
 
-      this.b.c = $$8;
-      if ($$0 instanceof frh $$13) {
-         $$13.c = $$13.c + ($$6 - $$13.c) * 0.1F;
-         $$13.d = $$13.d + ($$9 - $$13.d) * 0.1F;
-         $$13.e = $$13.e + ($$7 - $$13.e) * 0.1F;
-         this.b.e = $$13.c;
-         this.b.f = $$13.d;
-         this.b.g = $$13.e;
-      } else {
-         this.b.e = $$6;
-         this.b.g = $$7;
-         this.b.f = $$9;
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + aui.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = aui.b($$6) * 7.0F;
+         this.b[$$8].d = aui.a($$6) * 7.0F;
+         $$6++;
       }
 
-      this.a.f = -this.b.f;
-      this.a.c = this.b.c;
-      this.a.e = this.b.e;
-      this.a.g = -this.b.g;
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + aui.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = aui.b($$6) * 5.0F;
+         this.b[$$9].d = aui.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

@@ -1,47 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class dqw extends drc<dtd> {
-   public dqw(Codec<dtd> $$0) {
+public class dqw extends drn<dtj> {
+   public dqw(Codec<dtj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<dtd> $$0) {
-      dtd $$1 = $$0.f();
-      hv $$2 = $$0.e();
-      ctt $$3 = $$0.b();
-      auf $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      hv.a $$10 = new hv.a();
+   public boolean a(drp<dtj> $$0) {
+      hx $$1 = $$0.e();
+      cud $$2 = $$0.b();
+      aup $$3 = $$0.d();
+      dtj $$4 = $$0.f();
+      if ($$1.v() < $$2.J_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-      for (hv $$11 : hv.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
+         for (hx $$7 : hx.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
+            }
          }
-      }
 
-      return $$5;
+         return true;
+      }
    }
 
-   protected boolean a(dtd $$0, ctt $$1, auf $$2, int $$3, int $$4, hv.a $$5) {
-      boolean $$6 = false;
+   private boolean a(ctj $$0, hx $$1, aup $$2) {
+      hx $$3 = $$1.d();
+      dja $$4 = $$0.a_($$3);
+      return $$4.a(cwl.kE) ? $$2.h() : $$4.d($$0, $$3, ic.b);
+   }
 
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            dip $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
-         }
+   private void a(ctj $$0, hx $$1, aup $$2, dtj $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
-
-      return $$6;
    }
 }

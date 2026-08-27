@@ -1,31 +1,19 @@
-import java.util.function.Predicate;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class cmx extends cmc {
-   public static final Predicate<cmh> c = $$0 -> $$0.a(arz.at);
-   public static final Predicate<cmh> d = c.or($$0 -> $$0.a(cmk.un));
-
-   public cmx(cmc.a $$0) {
+public class cmx extends cod {
+   public cmx(cmm.a $$0) {
       super($$0);
    }
 
-   public Predicate<cmh> e() {
-      return this.b();
-   }
-
-   public abstract Predicate<cmh> b();
-
-   public static cmh a(blv $$0, Predicate<cmh> $$1) {
-      if ($$1.test($$0.b(bjk.b))) {
-         return $$0.b(bjk.b);
-      } else {
-         return $$1.test($$0.b(bjk.a)) ? $$0.b(bjk.a) : cmh.f;
-      }
+   @Override
+   public void a(cmr $$0, @Nullable cti $$1, List<vd> $$2, coi $$3) {
+      cor.a($$0, $$2, 0.25F);
    }
 
    @Override
-   public int c() {
-      return 1;
+   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.nj, arn.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
-
-   public abstract int d();
 }

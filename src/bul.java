@@ -1,19 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bul extends btb {
+   private final bmo a;
 
-public class bul<T extends blv> extends buk<T> {
-   private boolean i = true;
-
-   public bul(cga $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<blv> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public bul(bmo $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.i && super.a();
+      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(asg.a);
+   }
+
+   @Override
+   public void c() {
+      hx $$0 = null;
+
+      for (hx $$2 : hx.b(
+         aui.a(this.a.dr() - 2.0), aui.a(this.a.dt() - 2.0), aui.a(this.a.dx() - 2.0), aui.a(this.a.dr() + 2.0), this.a.ds(), aui.a(this.a.dx() + 2.0)
+      )) {
+         if (this.a.dM().b_($$2).a(asg.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

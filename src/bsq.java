@@ -1,78 +1,34 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bsq extends bsr {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final bxi d;
-   @Nullable
-   private bxi e;
-   private final double f;
-   private int g;
+public class bsq extends btb {
+   private final bmh a;
+   private final cti b;
 
-   public bsq(bxi $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public bsq(bmh $$0, cti $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(btb.a.c));
    }
 
    @Override
    public boolean a() {
-      if (this.d.h() >= 0) {
-         return false;
+      boolean $$0 = this.a.aB || this.a.aA;
+      if ($$0 && this.a.ai().a(ase.h)) {
+         hx $$1 = this.a.dm().c();
+         dja $$2 = this.b.a_($$1);
+         return $$2.a(cwl.qP) || $$2.k(this.b, $$1) == emc.a();
       } else {
-         List<? extends bxi> $$0 = this.d.dM().a((Class<? extends bxi>)this.d.getClass(), this.d.cH().c(8.0, 4.0, 8.0));
-         bxi $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (bxi $$3 : $$0) {
-            if ($$3.h() >= 0) {
-               double $$4 = this.d.f($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
+         return false;
       }
    }
 
    @Override
-   public boolean b() {
-      if (this.d.h() >= 0) {
-         return false;
-      } else if (!this.e.bx()) {
-         return false;
-      } else {
-         double $$0 = this.d.f(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
-   }
-
-   @Override
-   public void c() {
-      this.g = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e = null;
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void e() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.N().a(this.e, this.f);
-      }
+      this.a.M().a();
    }
 }

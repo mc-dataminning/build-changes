@@ -1,48 +1,72 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class eyj {
-   private final Consumer<ewf> a;
-   private final Consumer<ewf> b;
+public class eyj implements fas {
+   private static final int a = 170;
+   private final vd b;
    @Nullable
-   private eyi c;
+   private List<atu> c;
    @Nullable
-   private fak d;
+   private final vd d;
+   private int e;
+   private long f;
+   private boolean g;
 
-   public eyj(Consumer<ewf> $$0, Consumer<ewf> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private eyj(vd $$0, @Nullable vd $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   public void a(fak $$0) {
-      this.d = $$0;
-      eyi $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
+   public void a(int $$0) {
+      this.e = $$0;
+   }
+
+   public static eyj a(vd $$0, @Nullable vd $$1) {
+      return new eyj($$0, $$1);
+   }
+
+   public static eyj a(vd $$0) {
+      return new eyj($$0, $$0);
+   }
+
+   @Override
+   public void b(far $$0) {
+      if (this.d != null) {
+         $$0.a(faq.c, this.d);
       }
    }
 
-   public void a(eyi $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            euk.N().ah().a(ggr.a(arc.zu, 1.0F));
-         }
+   public List<atu> a(eva $$0) {
+      if (this.c == null) {
+         this.c = a($$0, this.b);
       }
-   }
 
-   @Nullable
-   public eyi a() {
       return this.c;
+   }
+
+   public static List<atu> a(eva $$0, vd $$1) {
+      return $$0.h.c($$1, 170);
+   }
+
+   public void a(boolean $$0, boolean $$1, fbb $$2) {
+      boolean $$3 = $$0 || $$1 && eva.N().aT().b();
+      if ($$3 != this.g) {
+         if ($$3) {
+            this.f = ac.b();
+         }
+
+         this.g = $$3;
+      }
+
+      if ($$3 && ac.b() - this.f > (long)this.e) {
+         fct $$4 = eva.N().y;
+         if ($$4 != null) {
+            $$4.a(this, this.b($$0, $$1, $$2), $$1);
+         }
+      }
+   }
+
+   protected ffm b(boolean $$0, boolean $$1, fbb $$2) {
+      return (ffm)(!$$0 && $$1 && eva.N().aT().b() ? new ffi($$2) : new ffo($$2));
    }
 }

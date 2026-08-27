@@ -1,6 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dxd {
-   @Nullable
-   dip a(doc var1, int var2, int var3, int var4);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dxd {
 }

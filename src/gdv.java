@@ -1,34 +1,50 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
+import com.google.common.collect.ImmutableList;
+import javax.annotation.Nullable;
 
-public class gdv {
-   private static final BiMap<agt, gdu> i = HashBiMap.create();
-   public static final gdu a = a("single", gea.b);
-   public static final gdu b = a("directory", gdx.b);
-   public static final gdu c = a("filter", geb.b);
-   public static final gdu d = a("unstitch", gec.b);
-   public static final gdu e = a("paletted_permutations", gdz.b);
-   public static Codec<gdu> f = agt.a.flatXmap($$0 -> {
-      gdu $$1 = (gdu)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      agt $$1 = (agt)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gds> g = f.dispatch(gds::a, gdu::a);
-   public static Codec<List<gds>> h = g.listOf().fieldOf("sources").codec();
+public final class gdv {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final ahd d = new ahd("missingno");
+   private static final aqe e = new aqe.a().a(gfq.a, new gfq(ImmutableList.of(new gfp(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static gds f;
 
-   private static gdu a(String $$0, Codec<? extends gds> $$1) {
-      gdu $$2 = new gdu($$1);
-      agt $$3 = new agt($$0);
-      gdu $$4 = (gdu)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
+   private static eou a(int $$0, int $$1) {
+      eou $$2 = new eou($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
+            }
+         }
       }
+
+      return $$2;
+   }
+
+   public static gdz a() {
+      eou $$0 = a(16, 16);
+      return new gdz(d, new gfs(16, 16), $$0, e);
+   }
+
+   public static ahd b() {
+      return d;
+   }
+
+   public static gds c() {
+      if (f == null) {
+         eou $$0 = a(16, 16);
+         $$0.i();
+         f = new gds($$0);
+         eva.N().X().a(d, f);
+      }
+
+      return f;
    }
 }

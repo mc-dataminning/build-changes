@@ -1,104 +1,119 @@
-public interface epa extends eph {
-   epj j();
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
 
-   void f();
+public abstract class epa {
+   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
+   private static final String b = "//[^\\v]*";
+   private static final Pattern c = Pattern.compile(
+      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
+   );
+   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
+   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
 
-   void a(int var1, byte var2);
-
-   void a(int var1, short var2);
-
-   void a(int var1, float var2);
-
-   @Override
-   default eph a(double $$0, double $$1, double $$2) {
-      if (this.j().b() != epj.b.a) {
-         return this;
-      } else if (this.j().a() == epj.a.a && this.j().c() == 3) {
-         this.a(0, (float)$$0);
-         this.a(4, (float)$$1);
-         this.a(8, (float)$$2);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
+   public List<String> a(String $$0) {
+      epa.a $$1 = new epa.a();
+      List<String> $$2 = this.a($$0, $$1, "");
+      $$2.set(0, this.a($$2.get(0), $$1.a));
+      return $$2;
    }
 
-   @Override
-   default eph a(int $$0, int $$1, int $$2, int $$3) {
-      epj $$4 = this.j();
-      if ($$4.b() != epj.b.c) {
-         return this;
-      } else if ($$4.a() == epj.a.b && $$4.c() == 4) {
-         this.a(0, (byte)$$0);
-         this.a(1, (byte)$$1);
-         this.a(2, (byte)$$2);
-         this.a(3, (byte)$$3);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
+   private List<String> a(String $$0, epa.a $$1, String $$2) {
+      int $$3 = $$1.b;
+      int $$4 = 0;
+      String $$5 = "";
+      List<String> $$6 = Lists.newArrayList();
+      Matcher $$7 = c.matcher($$0);
 
-   @Override
-   default eph a(float $$0, float $$1) {
-      epj $$2 = this.j();
-      if ($$2.b() == epj.b.d && $$2.d() == 0) {
-         if ($$2.a() == epj.a.a && $$2.c() == 2) {
-            this.a(0, $$0);
-            this.a(4, $$1);
-            this.f();
-            return this;
-         } else {
-            throw new IllegalStateException();
+      while ($$7.find()) {
+         if (!a($$0, $$7, $$4)) {
+            String $$8 = $$7.group(2);
+            boolean $$9 = $$8 != null;
+            if (!$$9) {
+               $$8 = $$7.group(3);
+            }
+
+            if ($$8 != null) {
+               String $$10 = $$0.substring($$4, $$7.start(1));
+               String $$11 = $$2 + $$8;
+               String $$12 = this.a($$9, $$11);
+               if (!Strings.isNullOrEmpty($$12)) {
+                  if (!avf.d($$12)) {
+                     $$12 = $$12 + System.lineSeparator();
+                  }
+
+                  $$1.b++;
+                  int $$13 = $$1.b;
+                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.a($$11) : "");
+                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
+                  if (!ac.b($$10)) {
+                     $$6.add($$10);
+                  }
+
+                  $$6.addAll($$14);
+               } else {
+                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
+                  $$6.add($$5 + $$10 + $$15);
+               }
+
+               int $$16 = avf.c($$0.substring(0, $$7.end(1)));
+               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
+               $$4 = $$7.end(1);
+            }
          }
+      }
+
+      String $$17 = $$0.substring($$4);
+      if (!ac.b($$17)) {
+         $$6.add($$5 + $$17);
+      }
+
+      return $$6;
+   }
+
+   private String a(String $$0, epa.a $$1) {
+      Matcher $$2 = d.matcher($$0);
+      if ($$2.find() && a($$0, $$2)) {
+         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
+         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
       } else {
-         return this;
+         return $$0;
       }
    }
 
-   @Override
-   default eph a(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 1);
+   private String a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
    }
 
-   @Override
-   default eph b(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 2);
+   private static boolean a(String $$0, Matcher $$1) {
+      return !a($$0, $$1, 0);
    }
 
-   default eph a(short $$0, short $$1, int $$2) {
-      epj $$3 = this.j();
-      if ($$3.b() != epj.b.d || $$3.d() != $$2) {
-         return this;
-      } else if ($$3.a() == epj.a.e && $$3.c() == 2) {
-         this.a(0, $$0);
-         this.a(2, $$1);
-         this.f();
-         return this;
+   private static boolean a(String $$0, Matcher $$1, int $$2) {
+      int $$3 = $$1.start() - $$2;
+      if ($$3 == 0) {
+         return false;
       } else {
-         throw new IllegalStateException();
+         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
+         if (!$$4.find()) {
+            return true;
+         } else {
+            int $$5 = $$4.end(1);
+            return $$5 == $$1.start();
+         }
       }
    }
 
-   @Override
-   default eph a(float $$0, float $$1, float $$2) {
-      epj $$3 = this.j();
-      if ($$3.b() != epj.b.b) {
-         return this;
-      } else if ($$3.a() == epj.a.c && $$3.c() == 3) {
-         this.a(0, a($$0));
-         this.a(1, a($$1));
-         this.a(2, a($$2));
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
+   @Nullable
+   public abstract String a(boolean var1, String var2);
 
-   static byte a(float $$0) {
-      return (byte)((int)(aty.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   static final class a {
+      int a;
+      int b;
    }
 }

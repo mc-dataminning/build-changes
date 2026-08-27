@@ -1,60 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dnh {
-   public static final Codec<dnh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dng.a.optionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
-            )
-            .apply($$0, dnh::new)
-   );
-   private Optional<Pair<dng, Long>> b;
+public class dnh<T extends dnm> {
+   private final T a;
+   @Nullable
+   private iz b;
 
-   public dnh(Optional<dng> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
+   public dnh(T $$0) {
+      this.a = $$0;
    }
 
-   public dnh() {
-      this.b = Optional.empty();
+   public void a(amz $$0) {
+      this.c($$0);
    }
 
-   public void a(dng $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
-      }
+   public T a() {
+      return this.a;
    }
 
-   private boolean b(dng $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
-      } else {
-         Pair<dng, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            dng $$4 = (dng)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : dni.a_($$0.a()) > dni.a_($$4.a());
-            }
+   public void b(amz $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   }
+
+   public void c(amz $$0) {
+      this.a.a().a($$0).map(iz::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
+   }
+
+   private static void a(ctl $$0, @Nullable iz $$1, Consumer<dnn> $$2) {
+      if ($$1 != null) {
+         dkw $$3 = $$0.a($$1.a(), $$1.c(), dlb.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
          }
       }
-   }
-
-   public Optional<dng> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((dng)this.b.get().getLeft()) : Optional.empty();
-      }
-   }
-
-   public void a() {
-      this.b = Optional.empty();
    }
 }

@@ -1,28 +1,46 @@
-public enum ddz {
-   a {
-      @Override
-      public boolean a(dip $$0, cse $$1, hv $$2, ia $$3) {
-         return cvz.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final elu e = cvz.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
 
-      @Override
-      public boolean a(dip $$0, cse $$1, hv $$2, ia $$3) {
-         return !elr.c($$0.l($$1, $$2).a($$3), this.e, elf.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final elu e = elr.a(elr.b(), cvz.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), elf.e);
+public abstract class ddz extends dds {
+   protected ddz(diz.d $$0) {
+      super($$0);
+   }
 
-      @Override
-      public boolean a(dip $$0, cse $$1, hv $$2, ia $$3) {
-         return !elr.c($$0.l($$1, $$2).a($$3), this.e, elf.c);
+   private static boolean b(dja $$0, ctl $$1, hx $$2) {
+      hx $$3 = $$2.c();
+      dja $$4 = $$1.a_($$3);
+      if ($$4.a(cwl.dN) && $$4.c(ddr.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = eeb.a($$1, $$0, $$2, $$4, $$3, ic.b, $$4.b($$1, $$3));
+         return $$5 < $$1.O();
       }
-   };
+   }
 
-   public abstract boolean a(dip var1, cse var2, hv var3, ia var4);
+   @Override
+   protected abstract MapCodec<? extends ddz> a();
+
+   private static boolean c(dja $$0, ctl $$1, hx $$2) {
+      hx $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(asg.a);
+   }
+
+   @Override
+   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, cwl.j.o());
+      } else {
+         if ($$1.A($$2.c()) >= 9) {
+            dja $$4 = this.o();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               hx $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(cwl.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(cwl.dN))));
+               }
+            }
+         }
+      }
+   }
 }

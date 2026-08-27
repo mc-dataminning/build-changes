@@ -1,67 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fni {
-   private final fnk[] a;
-   private int b;
+public class fni extends fnh implements us, yq {
+   private static final Logger g = LogUtils.getLogger();
+   private final GameProfile h;
+   private iu.b i;
+   private chl j;
 
-   public static Codec<fni> a(int $$0) {
-      return Codec.list(fnk.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new fni($$0, $$1));
-            },
-            fni::c
-         );
+   public fni(eva $$0, ue $$1, fno $$2) {
+      super($$0, $$1, $$2);
+      this.h = $$2.a();
+      this.i = $$2.c();
+      this.j = $$2.d();
    }
 
-   public fni(int $$0) {
-      this.a = new fnk[$$0];
+   @Override
+   public boolean c() {
+      return this.b.k();
    }
 
-   private fni(int $$0, List<fnk> $$1) {
-      this.a = $$1.toArray(fnk[]::new);
-      this.b = $$1.size();
+   @Override
+   protected iu.b f() {
+      return this.i;
    }
 
-   private List<fnk> c() {
-      List<fnk> $$0 = new ArrayList<>(this.d());
+   @Override
+   protected void a(xx $$0) {
+      this.b($$0);
+   }
 
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
+   private void b(xx $$0) {
+      g.warn("Unknown custom packet payload: {}", $$0.a());
+   }
+
+   @Override
+   public void a(ys $$0) {
+      xf.a($$0, this, this.a);
+      iu.b $$1 = fnm.a().a(fnm.b, $$0.a()).a();
+      if (!this.b.g()) {
+         $$1.c().forEach($$0x -> $$0x.b().m());
       }
 
-      return $$0;
+      this.i = $$1;
    }
 
-   public void a(fnk $$0) {
-      this.a[this.c(this.b++)] = $$0;
+   @Override
+   public void a(yt $$0) {
+      this.j = chn.e.a($$0.a());
    }
 
-   @Nullable
-   public fnk b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   @Override
+   public void a(yr $$0) {
+      this.b.a();
+      xf.a($$0, this, this.a);
+      this.b.a(new fnl(this.a, this.b, new fno(this.h, this.e, this.i, this.j, this.d, this.c, this.f)));
+      this.b.b();
+      this.b.a(new yv());
    }
 
-   private int c(int $$0) {
-      return $$0 % this.a.length;
-   }
-
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
-   }
-
-   public int b() {
-      return this.b - 1;
-   }
-
-   private int d() {
-      return this.b() - this.a() + 1;
+   @Override
+   public void e() {
+      this.g();
    }
 }

@@ -1,15 +1,19 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public abstract class ecl {
-   @Nullable
-   public eco.c a(ctb $$0, hv $$1, hv $$2, eco.c $$3, eco.c $$4, eck $$5) {
-      return $$4;
+public class ecl extends ecm {
+   public static final Codec<ecl> a = Codec.unit(() -> ecl.b);
+   public static final ecl b = new ecl();
+
+   private ecl() {
    }
 
-   protected abstract ecn<?> a();
+   @Override
+   public boolean a(hx $$0, hx $$1, hx $$2, aup $$3) {
+      return true;
+   }
 
-   public List<eco.c> a(ctn $$0, hv $$1, hv $$2, List<eco.c> $$3, List<eco.c> $$4, eck $$5) {
-      return $$4;
+   @Override
+   protected ecn<?> a() {
+      return ecn.a;
    }
 }

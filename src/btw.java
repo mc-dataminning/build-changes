@@ -1,44 +1,42 @@
 import java.util.EnumSet;
 
-public class btw extends bsr {
-   private final bmq a;
+public class btw extends btb {
+   private final bmh a;
+   private double b;
+   private double c;
+   private int d;
 
-   public btw(bmq $$0) {
+   public btw(bmh $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bsr.a.c, bsr.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.ge();
+      this.a(EnumSet.of(btb.a.a, btb.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.u()) {
-         return false;
-      } else if (this.a.bc()) {
-         return false;
-      } else if (!this.a.aC()) {
-         return false;
-      } else {
-         blv $$0 = this.a.R_();
-         if ($$0 == null) {
-            return true;
-         } else {
-            return this.a.f($$0) < 144.0 && $$0.eh() != null ? false : this.a.ge();
-         }
-      }
+      return this.a.eg().i() < 0.02F;
+   }
+
+   @Override
+   public boolean b() {
+      return this.d >= 0;
    }
 
    @Override
    public void c() {
-      this.a.N().n();
-      this.a.y(true);
+      double $$0 = (Math.PI * 2) * this.a.eg().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.eg().a(20);
    }
 
    @Override
-   public void d() {
-      this.a.y(false);
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.d--;
+      this.a.I().a(this.a.dr() + this.b, this.a.dv(), this.a.dx() + this.c);
    }
 }

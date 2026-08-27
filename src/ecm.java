@@ -1,18 +1,9 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class ecm {
-   private final List<ecl> a;
+public abstract class ecm {
+   public static final Codec<ecm> c = kd.q.q().dispatch("predicate_type", ecm::a, ecn::codec);
 
-   public ecm(List<ecl> $$0) {
-      this.a = $$0;
-   }
+   public abstract boolean a(hx var1, hx var2, hx var3, aup var4);
 
-   public List<ecl> a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
-   }
+   protected abstract ecn<?> a();
 }

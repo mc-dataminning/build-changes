@@ -1,162 +1,42 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import org.slf4j.Logger;
 
 public class epi {
-   private final ImmutableList<epj> a;
-   private final ImmutableMap<String, epj> b;
-   private final IntList c = new IntArrayList();
-   private final int d;
-   @Nullable
-   private epg e;
+   private static final Logger a = LogUtils.getLogger();
 
-   public epi(ImmutableMap<String, epj> $$0) {
-      this.b = $$0;
-      this.a = $$0.values().asList();
-      int $$1 = 0;
-      UnmodifiableIterator var3 = $$0.values().iterator();
-
-      while (var3.hasNext()) {
-         epj $$2 = (epj)var3.next();
-         this.c.add($$1);
-         $$1 += $$2.e();
-      }
-
-      this.d = $$1;
+   public static void a(int $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram($$0);
    }
 
-   @Override
-   public String toString() {
-      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+   public static void a(epj $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.d().a();
+      $$0.c().a();
+      GlStateManager.glDeleteProgram($$0.a());
    }
 
-   public int a() {
-      return this.b() / 4;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ImmutableList<epj> c() {
-      return this.a;
-   }
-
-   public ImmutableList<String> d() {
-      return this.b.keySet().asList();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         epi $$1 = (epi)$$0;
-         return this.d != $$1.d ? false : this.b.equals($$1.b);
+   public static int a() throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = GlStateManager.glCreateProgram();
+      if ($$0 <= 0) {
+         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
       } else {
-         return false;
+         return $$0;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::h);
-      } else {
-         this.h();
-      }
-   }
-
-   private void h() {
-      int $$0 = this.b();
-      List<epj> $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
-      }
-   }
-
-   public void f() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::i);
-      } else {
-         this.i();
-      }
-   }
-
-   private void i() {
-      ImmutableList<epj> $$0 = this.c();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         epj $$2 = (epj)$$0.get($$1);
-         $$2.a($$1);
-      }
-   }
-
-   public epg g() {
-      epg $$0 = this.e;
-      if ($$0 == null) {
-         this.e = $$0 = new epg(epg.a.b);
-      }
-
-      return $$0;
-   }
-
-   public static enum a {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      public static epi.a a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum b {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private b(int $$0, int $$1, int $$2, boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-      }
-
-      public int a(int $$0) {
-         return switch (this) {
-            case b, c, d, e, f, g -> $$0;
-            case a, h -> $$0 / 4 * 6;
-            default -> 0;
-         };
+   public static void b(epj $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.e();
+      GlStateManager.glLinkProgram($$0.a());
+      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
+      if ($$1 == 0) {
+         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
+         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
       }
    }
 }

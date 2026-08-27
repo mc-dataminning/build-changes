@@ -1,35 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class bix extends biq {
-   public static final Codec<bix> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bhv.b(biq.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bix::new)
-   );
-   private final bhv<biq> b;
+public class bix extends bja {
+   public static final bix a = new bix(0);
+   public static final Codec<bix> b = atq.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bix::new, bix::d);
    private final int f;
-   private final int g;
 
-   public bix(bhv<biq> $$0) {
-      this.b = $$0;
-      List<bhx.b<biq>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+   public static bix a(int $$0) {
+      return $$0 == 0 ? a : new bix($$0);
+   }
 
-      for (bhx.b<biq> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
-      }
+   private bix(int $$0) {
+      this.f = $$0;
+   }
 
-      this.f = $$2;
-      this.g = $$3;
+   public int d() {
+      return this.f;
    }
 
    @Override
-   public int a(auf $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   public int a(aup $$0) {
+      return this.f;
    }
 
    @Override
@@ -39,11 +29,16 @@ public class bix extends biq {
 
    @Override
    public int b() {
-      return this.g;
+      return this.f;
    }
 
    @Override
-   public bir<?> c() {
-      return bir.e;
+   public bjb<?> c() {
+      return bjb.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
    }
 }

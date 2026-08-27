@@ -1,48 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
 public class akt {
-   private static final vy a = vy.a.a(new vh(vh.a.a, vb.c("chat.type.team.hover"))).a(new uz(uz.a.d, "/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("commands.teammsg.failed.noteam"));
-
    public static void a(CommandDispatcher<ds> $$0) {
-      LiteralCommandNode<ds> $$1 = $$0.register((LiteralArgumentBuilder)dt.a("teammsg").then(dt.a("message", ei.a()).executes($$0x -> {
-         ds $$1x = (ds)$$0x.getSource();
-         blf $$2 = $$1x.g();
-         ely $$3 = $$2.cg();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<amq> $$4 = $$1x.l().ae().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cg() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               ei.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
-
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)dt.a("tm").redirect($$1));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ds)$$0x.getSource(), Collections.singleton(((ds)$$0x.getSource()).h()), hx.a(((ds)$$0x.getSource()).d()), 0.0F)))
+            .then(
+               ((RequiredArgumentBuilder)dt.a("targets", ef.d())
+                     .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), hx.a(((ds)$$0x.getSource()).d()), 0.0F)))
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("pos", fm.a()).executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), fm.c($$0x, "pos"), 0.0F)))
+                        .then(dt.a("angle", dy.a()).executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), fm.c($$0x, "pos"), dy.a($$0x, "angle"))))
+                  )
+            )
+      );
    }
 
-   private static void a(ds $$0, blf $$1, ely $$2, List<amq> $$3, vr $$4) {
-      vb $$5 = $$2.d().c(a);
-      ux.a $$6 = ux.a(ux.g, $$0).c($$5);
-      ux.a $$7 = ux.a(ux.h, $$0).c($$5);
-      vq $$8 = vq.a($$4);
-      boolean $$9 = false;
+   private static int a(ds $$0, Collection<ana> $$1, hx $$2, float $$3) {
+      ahc<cti> $$4 = $$0.e().ae();
 
-      for (amq $$10 : $$3) {
-         ux.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.i();
+      for (ana $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
 
-      if ($$9) {
-         $$0.a(aqf.f);
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> vd.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vd.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
       }
+
+      return $$1.size();
    }
 }

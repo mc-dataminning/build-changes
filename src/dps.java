@@ -1,25 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public class dps implements dpf {
-   public static final Codec<dps> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iz.v(16).optionalFieldOf("offset", iz.g).forGetter($$0x -> $$0x.e), dip.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dps::new)
-   );
-   private final iz e;
-   private final dip f;
+abstract class dps implements dpq {
+   protected final List<dpq> e;
 
-   protected dps(iz $$0, dip $$1) {
+   protected dps(List<dpq> $$0) {
       this.e = $$0;
-      this.f = $$1;
    }
 
-   public boolean a(ctt $$0, hv $$1) {
-      return this.f.a($$0, $$1.a(this.e));
-   }
-
-   @Override
-   public dpg<?> a() {
-      return dpg.g;
+   public static <T extends dps> Codec<T> a(Function<List<dpq>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dpq.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

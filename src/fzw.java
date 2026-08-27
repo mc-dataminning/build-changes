@@ -1,13 +1,16 @@
-public class fzw extends fzp {
-   private static final agt a = new agt("textures/entity/skeleton/stray.png");
+public class fzw extends fzl<byk, fkv<byk>> {
+   private static final ahd a = new ahd("textures/entity/bear/polarbear.png");
 
-   public fzw(fxo.a $$0) {
-      super($$0, flx.bw, flx.bx, flx.by);
-      this.a(new gch<>(this, $$0.f()));
+   public fzw(fyf.a $$0) {
+      super($$0, new fkv<>($$0.a(fmo.aX)), 0.9F);
    }
 
-   @Override
-   public agt a(cbi $$0) {
+   public ahd a(byk $$0) {
       return a;
+   }
+
+   protected void a(byk $$0, ept $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

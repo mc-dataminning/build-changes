@@ -1,59 +1,14 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class gdf extends gcq<byv, fmg<byv>> {
+   private static final ahd a = new ahd("textures/entity/wolf/wolf_collar.png");
 
-public class gdf implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final gdb f = new gdb(16, 16, false);
+   public gdf(gaa<byv, fmg<byv>> $$0) {
+      super($$0);
+   }
 
-   public gdf() {
-      eoe $$0 = this.f.e();
-
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1308622593);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, $$3 << 24 | 16777215);
-            }
-         }
+   public void a(ept $$0, fsz $$1, int $$2, byv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.u() && !$$3.ce()) {
+         float[] $$10 = $$3.gn().d();
+         a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
       }
-
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
-      RenderSystem.activeTexture(33984);
-   }
-
-   @Override
-   public void close() {
-      this.f.close();
-   }
-
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f::a, 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
    }
 }

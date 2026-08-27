@@ -1,15 +1,25 @@
-public class clr extends cmc implements cng {
-   public clr(cmc.a $$0) {
+public class clr extends cmm {
+   public clr(cmm.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(csy $$0, dhm $$1, boolean $$2, cer $$3) {
-      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
-         $$0.a(null, $$1.aB_(), arc.jW, ard.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
+      cmr $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.hP, arn.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      $$1.gn().a(this, 20);
+      if (!$$0.B) {
+         cgc $$4 = new cgc($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
+
+      $$1.b(arw.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
+
+      return bjw.a($$3, $$0.y_());
    }
 }

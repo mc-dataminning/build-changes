@@ -1,174 +1,145 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
 
-public class diu {
-   private final Predicate<dit>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public class diu extends cym {
+   public static final MapCodec<diu> b = b(diu::new);
+   public static final djy<dkc> c = djq.bg;
+   public static final djr d = djq.x;
+   public static final float e = 4.0F;
+   protected static final emf f = cwj.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final emf g = cwj.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final emf h = cwj.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final emf i = cwj.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final emf j = cwj.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final emf k = cwj.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final emf o = cwj.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final emf F = cwj.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final emf G = cwj.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final emf H = cwj.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final emf I = cwj.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final emf J = cwj.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final emf K = cwj.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final emf L = cwj.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final emf M = cwj.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final emf N = cwj.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final emf O = cwj.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final emf P = cwj.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final emf[] Q = a(true);
+   private static final emf[] R = a(false);
 
-   public diu(Predicate<dit>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
+   @Override
+   protected MapCodec<diu> a() {
+      return b;
+   }
+
+   private static emf[] a(boolean $$0) {
+      return Arrays.stream(ic.values()).map($$1 -> a($$1, $$0)).toArray(emf[]::new);
+   }
+
+   private static emf a(ic $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return emc.a(k, $$1 ? L : F);
+         case b:
+            return emc.a(j, $$1 ? K : o);
+         case c:
+            return emc.a(i, $$1 ? N : H);
+         case d:
+            return emc.a(h, $$1 ? M : G);
+         case e:
+            return emc.a(g, $$1 ? P : J);
+         case f:
+            return emc.a(f, $$1 ? O : I);
+      }
+   }
+
+   public diu(diz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ic.c).a(c, dkc.a).a(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public boolean g_(dja $$0) {
+      return true;
+   }
+
+   @Override
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return ($$0.c(d) ? Q : R)[$$0.c(a).ordinal()];
+   }
+
+   private boolean a(dja $$0, dja $$1) {
+      cwj $$2 = $$0.c(c) == dkc.a ? cwl.by : cwl.br;
+      return $$1.a($$2) && $$1.c(dit.c) && $$1.c(a) == $$0.c(a);
+   }
+
+   @Override
+   public dja a(cti $$0, hx $$1, dja $$2, cfb $$3) {
+      if (!$$0.B && $$3.fT().d) {
+         hx $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
          }
-      } else {
-         this.c = 0;
-         this.d = 0;
       }
+
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public Predicate<dit>[][][] d() {
-      return this.a;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public diu.b a(ctb $$0, hv $$1, ia $$2, ia $$3) {
-      LoadingCache<hv, dit> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   private diu.b a(hv $$0, ia $$1, ia $$2, LoadingCache<hv, dit> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dit)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
+   @Override
+   public void a(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         hx $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
          }
       }
-
-      return new diu.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
    }
 
-   @Nullable
-   public diu.b a(ctb $$0, hv $$1) {
-      LoadingCache<hv, dit> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (hv $$4 : hv.a($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (ia $$5 : ia.values()) {
-            for (ia $$6 : ia.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  diu.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
+   @Override
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? cwl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static LoadingCache<hv, dit> a(ctb $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new diu.a($$0, $$1));
+   @Override
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      dja $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(cwl.bQ) && $$3.c(a) == $$0.c(a);
    }
 
-   protected static hv a(hv $$0, ia $$1, ia $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         iz $$6 = new iz($$1.j(), $$1.k(), $$1.l());
-         iz $$7 = new iz($$2.j(), $$2.k(), $$2.l());
-         iz $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
+   @Override
+   public void a(dja $$0, cti $$1, hx $$2, cwj $$3, hx $$4, boolean $$5) {
+      if ($$0.a((ctl)$$1, $$2)) {
+         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
       }
    }
 
-   static class a extends CacheLoader<hv, dit> {
-      private final ctb a;
-      private final boolean b;
-
-      public a(ctb $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dit a(hv $$0) {
-         return new dit(this.a, $$0, this.b);
-      }
+   @Override
+   public cmr a(ctl $$0, hx $$1, dja $$2) {
+      return new cmr($$2.c(c) == dkc.b ? cwl.br : cwl.by);
    }
 
-   public static class b {
-      private final hv a;
-      private final ia b;
-      private final ia c;
-      private final LoadingCache<hv, dit> d;
-      private final int e;
-      private final int f;
-      private final int g;
+   @Override
+   public dja a(dja $$0, dcv $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
 
-      public b(hv $$0, ia $$1, ia $$2, LoadingCache<hv, dit> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
+   @Override
+   public dja a(dja $$0, dbf $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
 
-      public hv a() {
-         return this.a;
-      }
+   @Override
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(a, c, d);
+   }
 
-      public ia b() {
-         return this.b;
-      }
-
-      public ia c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dit a(int $$0, int $$1, int $$2) {
-         return (dit)this.d.getUnchecked(diu.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   @Override
+   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
+      return false;
    }
 }

@@ -1,91 +1,231 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.BitSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum dma {
-   a {
-      @Override
-      public void a(amp $$0, dmb $$1, List<bzx> $$2, int $$3, hv $$4) {
-         hv $$5 = new hv(0, 128, 0);
+public class dma implements dlw, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bio<biq.b> c;
+   private final dmd d;
+   private final Map<csp, dma.a> e = Maps.newLinkedHashMap();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
 
-         for (bzx $$6 : $$2) {
-            $$6.a($$5);
-         }
+   protected dma(Path $$0, boolean $$1, String $$2) {
+      this.d = new dmd($$0, $$1);
+      this.c = new bio<>(new biq.a(dma.b.values().length), ac.g(), "IOWorker-" + $$2);
+   }
 
-         $$1.a(b);
-      }
-   },
-   b {
-      @Override
-      public void a(amp $$0, dmb $$1, List<bzx> $$2, int $$3, hv $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new hv(0, 128, 0), 0);
-            }
-         } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(amp $$0, dmb $$1, List<bzx> $$2, int $$3, hv $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<dsm.a> $$8 = dsm.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               dsm.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (bzx $$11 : $$2) {
-                     $$11.a(new hv($$10.a(), $$10.d() + 1, $$10.b()));
+   public boolean a(csp $$0, int $$1) {
+      csp $$2 = new csp($$0.e - $$1, $$0.f - $$1);
+      csp $$3 = new csp($$0.e + $$1, $$0.f + $$1);
+
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               csp $$7 = csp.a($$4, $$5);
+               int $$8 = Math.max($$2.e - $$7.e, 0);
+               int $$9 = Math.max($$2.f - $$7.f, 0);
+               int $$10 = Math.min($$3.e - $$7.e, 31);
+               int $$11 = Math.min($$3.f - $$7.f, 31);
+
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
                   }
-               } else {
-                  int $$12 = 10;
-
-                  for (hv $$13 : hv.a(new hv($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new hv($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
-
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, csy.a.b);
-                  dua $$14 = new dua(true, ImmutableList.of($$10), new hv(0, 128, 0));
-                  drc.J.a($$14, $$0, $$0.k().g(), auf.a(), new hv($$10.a(), 45, $$10.b()));
                }
-            } else if ($$6) {
-               $$1.a(d);
             }
          }
       }
-   },
-   d {
-      @Override
-      public void a(amp $$0, dmb $$1, List<bzx> $$2, int $$3, hv $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
 
-            for (bzx $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dr(), $$5.dt(), $$5.dx(), 6.0F, csy.a.a);
-               $$5.am();
+      return false;
+   }
+
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = csp.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
             }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new hv(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (bzx $$6 : $$2) {
-               $$6.a(new hv(0, 128, 0));
+         }
+
+         return $$3;
+      }
+   }
+
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         csp $$2 = csp.a($$0, $$1);
+         csp $$3 = csp.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         csp.a($$2, $$3).forEach($$1xx -> {
+            tp $$2x = new tp(new tr(sq.a, "DataVersion"), new tr(sl.b, "blending_data"));
+
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
             }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new hv(0, 128, 0), 0);
+
+            if ($$2x.d() instanceof sl $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
+         });
+         return $$4;
+      }, ac.f());
+   }
+
+   private boolean a(sl $$0) {
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
+   }
+
+   public CompletableFuture<Void> a(csp $$0, @Nullable sl $$1) {
+      return this.a(() -> {
+         dma.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dma.a($$1));
+         $$2.a = $$1;
+         return Either.left($$2.b);
+      }).thenCompose(Function.identity());
+   }
+
+   public CompletableFuture<Optional<sl>> a(csp $$0) {
+      return this.a(() -> {
+         dma.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Either.left(Optional.ofNullable($$1.a));
+         } else {
+            try {
+               sl $$2 = this.d.a($$0);
+               return Either.left(Optional.ofNullable($$2));
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               return Either.right(var4);
+            }
+         }
+      });
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.a(
+            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
+            try {
+               this.d.a();
+               return Either.left(null);
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               return Either.right(var2x);
+            }
+         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
+   }
+
+   @Override
+   public CompletableFuture<Void> a(csp $$0, tf $$1) {
+      return this.a(() -> {
+         try {
+            dma.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
+            }
+
+            return Either.left(null);
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            return Either.right(var4);
+         }
+      });
+   }
+
+   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
+      return this.c.c($$1 -> new biq.b(dma.b.a.ordinal(), () -> {
+            if (!this.b.get()) {
+               $$1.a($$0.get());
+            }
+
+            this.b();
+         }));
+   }
+
+   private void a() {
+      if (!this.e.isEmpty()) {
+         Iterator<Entry<csp, dma.a>> $$0 = this.e.entrySet().iterator();
+         Entry<csp, dma.a> $$1 = $$0.next();
+         $$0.remove();
+         this.a($$1.getKey(), $$1.getValue());
+         this.b();
+      }
+   }
+
+   private void b() {
+      this.c.a(new biq.b(dma.b.b.ordinal(), this::a));
+   }
+
+   private void a(csp $$0, dma.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      if (this.b.compareAndSet(false, true)) {
+         this.c.b($$0 -> new biq.b(dma.b.c.ordinal(), () -> $$0.a(avm.a))).join();
+         this.c.close();
+
+         try {
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
          }
       }
-   },
-   e {
-      @Override
-      public void a(amp $$0, dmb $$1, List<bzx> $$2, int $$3, hv $$4) {
-      }
-   };
+   }
 
-   public abstract void a(amp var1, dmb var2, List<bzx> var3, int var4, hv var5);
+   static class a {
+      @Nullable
+      sl a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
+
+      public a(@Nullable sl $$0) {
+         this.a = $$0;
+      }
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
+   }
 }

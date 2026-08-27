@@ -1,14 +1,18 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
 
-public interface ecx<P extends ecw> {
-   ecx<ecu> a = a("clear", ecu.a);
-   ecx<ecv> b = a("passthrough", ecv.b);
-   ecx<ect> c = a("append_static", ect.a);
-   ecx<ecs> d = a("append_loot", ecs.a);
+public class ecx {
+   private final List<ecw> a;
 
-   Codec<P> codec();
+   public ecx(List<ecw> $$0) {
+      this.a = $$0;
+   }
 
-   private static <P extends ecw> ecx<P> a(String $$0, Codec<P> $$1) {
-      return ir.a(kb.p, $$0, () -> $$1);
+   public List<ecw> a() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

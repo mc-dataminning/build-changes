@@ -4,30 +4,26 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 import javax.annotation.Nullable;
 
-public record eke(String b) implements ekg {
-   public static final Codec<eke> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eke::c)).apply($$0, eke::new));
-
-   public static ekg a(String $$0) {
-      return new eke($$0);
-   }
+public record eke(ahd b) implements ekc {
+   public static final Codec<eke> a = RecordCodecBuilder.create($$0 -> $$0.group(ahd.a.fieldOf("source").forGetter(eke::c)).apply($$0, eke::new));
 
    @Override
-   public ekf a() {
-      return ekh.b;
+   public ekb a() {
+      return ekd.b;
    }
 
    @Nullable
    @Override
-   public String a(ege $$0) {
-      return this.b;
+   public ti a(egp $$0) {
+      return $$0.d().o().aI().a(this.b);
    }
 
    @Override
-   public Set<eim<?>> b() {
+   public Set<eix<?>> b() {
       return ImmutableSet.of();
    }
 
-   public String c() {
+   public ahd c() {
       return this.b;
    }
 }

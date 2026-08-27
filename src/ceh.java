@@ -1,68 +1,117 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public record ceh(String q, Predicate<ie<bwz>> r, Predicate<ie<bwz>> s, ImmutableSet<cmc> t, ImmutableSet<cvz> u, @Nullable arb v) {
-   public static final Predicate<ie<bwz>> a = $$0 -> $$0.a(asb.a);
-   public static final ceh b = a("none", bwz.a, a, null);
-   public static final ceh c = a("armorer", bxa.a, arc.zO);
-   public static final ceh d = a("butcher", bxa.b, arc.zP);
-   public static final ceh e = a("cartographer", bxa.c, arc.zQ);
-   public static final ceh f = a("cleric", bxa.d, arc.zR);
-   public static final ceh g = a("farmer", bxa.e, ImmutableSet.of(cmk.pt, cmk.ps, cmk.ve, cmk.rv), ImmutableSet.of(cwb.cC), arc.zS);
-   public static final ceh h = a("fisherman", bxa.f, arc.zT);
-   public static final ceh i = a("fletcher", bxa.g, arc.zU);
-   public static final ceh j = a("leatherworker", bxa.h, arc.zV);
-   public static final ceh k = a("librarian", bxa.i, arc.zW);
-   public static final ceh l = a("mason", bxa.j, arc.zX);
-   public static final ceh m = a("nitwit", bwz.a, bwz.a, null);
-   public static final ceh n = a("shepherd", bxa.k, arc.zY);
-   public static final ceh o = a("toolsmith", bxa.l, arc.zZ);
-   public static final ceh p = a("weaponsmith", bxa.m, arc.Aa);
+public class ceh {
+   public static final Codec<ceh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atq.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               atq.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               atq.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, ceh::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   @Override
-   public String toString() {
-      return this.q;
+   public ceh(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   private static ceh a(String $$0, ags<bwz> $$1, @Nullable arb $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
+      } else {
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
+      }
    }
 
-   private static ceh a(String $$0, Predicate<ie<bwz>> $$1, Predicate<ie<bwz>> $$2, @Nullable arb $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
    }
 
-   private static ceh a(String $$0, ags<bwz> $$1, ImmutableSet<cmc> $$2, ImmutableSet<cvz> $$3, @Nullable arb $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   public static OptionalInt a(amz $$0, hx $$1, ana $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<ana> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
+
+         if ($$3.stream().anyMatch($$0x -> $$0x.aa().map(ceh::d).orElse(false))) {
+            return OptionalInt.empty();
+         } else {
+            Optional<ceh> $$4 = $$3.stream().flatMap($$0x -> $$0x.aa().stream()).max(Comparator.comparingInt(ceh::c));
+            if ($$4.isPresent()) {
+               ceh $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.aa().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
+            } else {
+               return OptionalInt.empty();
+            }
+         }
+      }
    }
 
-   private static ceh a(String $$0, Predicate<ie<bwz>> $$1, Predicate<ie<bwz>> $$2, ImmutableSet<cmc> $$3, ImmutableSet<cvz> $$4, @Nullable arb $$5) {
-      return ir.a(kb.z, new agt($$0), new ceh($$0, $$1, $$2, $$3, $$4, $$5));
+   private boolean d() {
+      return this.i > 0;
    }
 
-   public String a() {
-      return this.q;
+   private static boolean a(amz $$0, hx $$1) {
+      elh $$2 = elh.a(elm.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(cef.class, $$2).isEmpty();
    }
 
-   public Predicate<ie<bwz>> b() {
-      return this.r;
+   private static List<ana> b(amz $$0, hx $$1) {
+      elm $$2 = elm.b($$1);
+      Predicate<ana> $$3 = $$1x -> $$1x.dk().a((ir)$$2, 16.0);
+      return $$0.a($$3.and(bmf::bx).and(bls.f));
    }
 
-   public Predicate<ie<bwz>> c() {
-      return this.s;
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
+      }
    }
 
-   public ImmutableSet<cmc> d() {
-      return this.t;
+   private void f() {
+      this.a(this.c() - 1);
    }
 
-   public ImmutableSet<cvz> e() {
-      return this.u;
+   public void a(int $$0) {
+      this.h = aui.a($$0, 0, 4);
    }
 
-   @Nullable
-   public arb f() {
-      return this.v;
+   public int c() {
+      return this.h;
+   }
+
+   private void a(ceh $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

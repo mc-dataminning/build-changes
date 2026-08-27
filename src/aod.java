@@ -1,11 +1,33 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public record aod(chb b) {
-   private static final Codec<aod> c = RecordCodecBuilder.create($$0 -> $$0.group(chd.f.fieldOf("enabled").forGetter(aod::a)).apply($$0, aod::new));
-   public static final aot<aod> a = aot.a("features", c);
+public interface aod {
+   aod a = new aod() {
+      @Override
+      public void a() {
+      }
 
-   public chb a() {
-      return this.b;
-   }
+      @Override
+      public void b() {
+      }
+
+      @Override
+      public CompletableFuture<anq> a(String $$0) {
+         return CompletableFuture.completedFuture(anq.a($$0));
+      }
+
+      @Override
+      public CompletableFuture<List<anq>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(anq::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   void a();
+
+   void b();
+
+   CompletableFuture<anq> a(String var1);
+
+   CompletableFuture<List<anq>> a(List<String> var1);
 }

@@ -1,63 +1,52 @@
-import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class eug {
+public class eug extends eua {
    private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final frm[] e = new frm[9];
-   private boolean f;
+   private static final vd c = vd.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final err e;
+   private final esj f;
 
-   public eug(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
+   public eug(long $$0, err $$1, esj $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
 
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new frm();
+   @Override
+   public void run() {
+      eqj $$0 = eqj.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (erx var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't start mini game!");
+            this.a(var5);
+         }
       }
    }
 
-   private void b() {
-      try {
-         sj $$0 = sw.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = sy.b($$0, 1343);
-         $$0 = avg.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
-   }
-
-   public void a() {
-      try {
-         sj $$0 = sy.g(new sj());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            $$0.a(String.valueOf($$1), this.a($$1).a());
-         }
-
-         sw.b($$0, this.c);
-      } catch (Exception var3) {
-         b.error("Failed to save creative mode options", var3);
-      }
-   }
-
-   public frm a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
-      }
-
-      return this.e[$$0];
+   @Override
+   public vd a() {
+      return c;
    }
 }

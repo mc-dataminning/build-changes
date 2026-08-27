@@ -1,11 +1,12 @@
-public class gas extends fyu<ccr, fji<ccr>> {
-   private static final agt a = new agt("textures/entity/hoglin/zoglin.png");
+public class gas extends fxf<cfj> {
+   public static final ahd a = new ahd("textures/entity/projectiles/arrow.png");
+   public static final ahd f = new ahd("textures/entity/projectiles/tipped_arrow.png");
 
-   public gas(fxo.a $$0) {
-      super($$0, new fji<>($$0.a(flx.ca)), 0.7F);
+   public gas(fyf.a $$0) {
+      super($$0);
    }
 
-   public agt a(ccr $$0) {
-      return a;
+   public ahd a(cfj $$0) {
+      return $$0.I() > 0 ? f : a;
    }
 }

@@ -2,25 +2,14 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bpp {
-   public static bnn<blv> a() {
-      return bqz.a((Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$0 -> $$0.a((brc<blv>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               bmv<?> $$3 = $$1.dO();
-               cfz $$4 = $$0x.c($$1.dm());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(cgd.h);
-                     $$3.a(cgd.h);
-                  } else {
-                     $$3.b(cgd.i);
-                     $$3.a(cgd.i);
-                  }
+   public static bnx<bmf> a() {
+      return brj.a((Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$0 -> $$0.group($$0.b(bvh.D)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cgj $$3 = $$0xx.d($$1.dm());
+               if ($$3 == null) {
+                  $$1.dO().a(cgn.j);
                }
 
                return true;
-            }
-         }))));
+            })));
    }
 }

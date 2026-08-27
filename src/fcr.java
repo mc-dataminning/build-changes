@@ -1,38 +1,53 @@
-public enum fcr {
-   a(
-      new agt("advancements/box_obtained"),
-      new agt("advancements/task_frame_obtained"),
-      new agt("advancements/challenge_frame_obtained"),
-      new agt("advancements/goal_frame_obtained")
-   ),
-   b(
-      new agt("advancements/box_unobtained"),
-      new agt("advancements/task_frame_unobtained"),
-      new agt("advancements/challenge_frame_unobtained"),
-      new agt("advancements/goal_frame_unobtained")
-   );
+import java.util.function.BooleanSupplier;
 
-   private final agt c;
-   private final agt d;
-   private final agt e;
-   private final agt f;
+public class fcr extends fct {
+   private static final vd a = vd.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier k;
 
-   private fcr(agt $$0, agt $$1, agt $$2, agt $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public fcr(BooleanSupplier $$0) {
+      super(eus.a);
+      this.k = $$0;
+      this.c = System.currentTimeMillis();
    }
 
-   public agt a() {
-      return this.c;
+   @Override
+   public boolean aL_() {
+      return false;
    }
 
-   public agt a(al $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   protected boolean aM_() {
+      return false;
+   }
+
+   @Override
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
+   }
+
+   @Override
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void d() {
+      if (this.k.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
+         this.aE_();
+      }
+   }
+
+   @Override
+   public void aE_() {
+      this.f.aU().c(vd.c("narrator.ready_to_play"));
+      super.aE_();
+   }
+
+   @Override
+   public boolean k() {
+      return false;
    }
 }

@@ -2,37 +2,37 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class sm extends sz {
-   private static final int c = 12;
-   public static final sm a = new sm(0.0F);
-   public static final ti<sm> b = new ti.a<sm>() {
-      public sm a(DataInput $$0, ss $$1) throws IOException {
+public class sm extends tb {
+   private static final int c = 16;
+   public static final sm a = new sm(0.0);
+   public static final tk<sm> b = new tk.a<sm>() {
+      public sm a(DataInput $$0, su $$1) throws IOException {
          return sm.a(d($$0, $$1));
       }
 
       @Override
-      public td.b a(DataInput $$0, td $$1, ss $$2) throws IOException {
+      public tf.b a(DataInput $$0, tf $$1, su $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static float d(DataInput $$0, ss $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      private static double d(DataInput $$0, su $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
 
       @Override
       public int c() {
-         return 4;
+         return 8;
       }
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "DOUBLE";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_Double";
       }
 
       @Override
@@ -40,33 +40,33 @@ public class sm extends sz {
          return true;
       }
    };
-   private final float w;
+   private final double w;
 
-   private sm(float $$0) {
+   private sm(double $$0) {
       this.w = $$0;
    }
 
-   public static sm a(float $$0) {
-      return $$0 == 0.0F ? a : new sm($$0);
+   public static sm a(double $$0) {
+      return $$0 == 0.0 ? a : new sm($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+      $$0.writeDouble(this.w);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 16;
    }
 
    @Override
    public byte b() {
-      return 5;
+      return 6;
    }
 
    @Override
-   public ti<sm> c() {
+   public tk<sm> c() {
       return b;
    }
 
@@ -81,42 +81,43 @@ public class sm extends sz {
 
    @Override
    public int hashCode() {
-      return Float.floatToIntBits(this.w);
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
    }
 
    @Override
-   public void a(tk $$0) {
+   public void a(tm $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.w;
+      return (long)Math.floor(this.w);
    }
 
    @Override
    public int g() {
-      return aty.d(this.w);
+      return aui.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(aty.d(this.w) & 65535);
+      return (short)(aui.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(aty.d(this.w) & 0xFF);
+      return (byte)(aui.a(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.w;
+      return this.w;
    }
 
    @Override
    public float k() {
-      return this.w;
+      return (float)this.w;
    }
 
    @Override
@@ -125,7 +126,7 @@ public class sm extends sz {
    }
 
    @Override
-   public td.b a(td $$0) {
+   public tf.b a(tf $$0) {
       return $$0.a(this.w);
    }
 }

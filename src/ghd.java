@@ -1,35 +1,44 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class ghd extends ggw {
+   public static final int n = 20;
+   private final fsb o;
+   private int p;
 
-public class ghd<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public ghd(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public ghd(fsb $$0) {
+      super(arm.hs, arn.h, ghn.t());
+      this.o = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.1F;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
-
-         if ($$0 < 0) {
-            this.a.next();
+   @Override
+   public void q() {
+      this.p++;
+      if (!this.o.dH() && (this.p <= 20 || this.o.fw())) {
+         this.f = (double)((float)this.o.dr());
+         this.g = (double)((float)this.o.dt());
+         this.h = (double)((float)this.o.dx());
+         float $$0 = (float)this.o.dp().g();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = aui.a($$0 / 4.0F, 0.0F, 1.0F);
          } else {
-            this.b.next();
+            this.d = 0.0F;
          }
-      }
 
-      return (T)this.endOfData();
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
+
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
+      } else {
+         this.n();
+      }
    }
 }

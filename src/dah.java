@@ -1,95 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dah extends cus {
-   public static final MapCodec<dah> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ctx.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), jb.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
-            .apply($$0, dah::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final djp g = djf.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final ctx.c j;
+public class dah extends cwj {
+   public static final MapCodec<dah> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kd.e.q().fieldOf("host").forGetter(dah::b), u()).apply($$0, dah::new));
+   private final cwj b;
+   private static final Map<cwj, cwj> c = Maps.newIdentityHashMap();
+   private static final Map<dja, dja> d = Maps.newIdentityHashMap();
+   private static final Map<dja, dja> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<dah> a() {
-      return d;
+   public MapCodec<? extends dah> a() {
+      return a;
    }
 
-   public dah(ctx.c $$0, jb.a $$1, dio.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+   public dah(cwj $$0, diz.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
+   }
+
+   public cwj b() {
+      return this.b;
+   }
+
+   public static boolean h(dja $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(amz $$0, hx $$1) {
+      ccq $$2 = blt.aJ.a((cti)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.S();
+      }
    }
 
    @Override
-   public boolean d(dip $$0) {
-      return $$0.c(g) == 3;
+   public void a(dja $$0, amz $$1, hx $$2, cmr $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.Z().b(cte.h) && cre.a(crg.v, $$3) == 0) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Override
-   protected boolean a(edy $$0) {
-      return $$0 == eea.c && this.j == ctx.c.b;
+   public static dja n(dja $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
    }
 
-   @Override
-   protected double b(dip $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   public dja o(dja $$0) {
+      return a(e, $$0, () -> this.b().o());
    }
 
-   @Override
-   public void a(dip $$0, csy $$1, hv $$2, blf $$3) {
-      if (!$$1.B && $$3.bN() && this.a($$0, $$2, $$3)) {
-         $$3.aA();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
+   private static dja a(Map<dja, dja> $$0, dja $$1, Supplier<dja> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dja $$2x = $$2.get();
+
+         for (dkd $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
          }
-      }
-   }
 
-   private void e(dip $$0, csy $$1, hv $$2) {
-      if (this.j == ctx.c.c) {
-         d(cwb.fu.o().a(g, $$0.c(g)), $$1, $$2);
-      } else {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public static void d(dip $$0, csy $$1, hv $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dip $$4 = $$3 == 0 ? cwb.ft.o() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dmz.c, $$2, dmz.a.a($$4));
-   }
-
-   @Override
-   public void a(dip $$0, csy $$1, hv $$2, ctx.c $$3) {
-      if (cwu.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dip $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dmz.c, $$2, dmz.a.a($$4));
-      }
-   }
-
-   @Override
-   public int a(dip $$0, csy $$1, hv $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dip $$0, csy $$1, hv $$2, edy $$3) {
-      if (!this.d($$0)) {
-         dip $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dmz.c, $$2, dmz.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+         return $$2x;
+      });
    }
 }

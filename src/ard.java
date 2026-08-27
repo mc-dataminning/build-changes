@@ -1,22 +1,8 @@
-public enum ard {
-   a("master"),
-   b("music"),
-   c("record"),
-   d("weather"),
-   e("block"),
-   f("hostile"),
-   g("neutral"),
-   h("player"),
-   i("ambient"),
-   j("voice");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String k;
-
-   private ard(String $$0) {
-      this.k = $$0;
-   }
-
-   public String a() {
-      return this.k;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ard {
 }

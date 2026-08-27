@@ -1,19 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class dsk extends drc<dtz> {
-   public dsk(Codec<dtz> $$0) {
+public class dsk extends drn<duc> {
+   public dsk(Codec<duc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<dtz> $$0) {
-      auf $$1 = $$0.d();
-      dtz $$2 = $$0.f();
-      ctt $$3 = $$0.b();
-      hv $$4 = $$0.e();
-      dkm $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      dxs $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   public boolean a(drp<duc> $$0) {
+      aup $$1 = $$0.d();
+      duc $$2 = $$0.f();
+      cud $$3 = $$0.b();
+      dkx $$4 = $$0.c();
+      hx $$5 = $$0.e();
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

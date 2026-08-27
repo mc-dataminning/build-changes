@@ -1,12 +1,11 @@
-public class gbj<T extends blv> extends gbl<T, fiw<T>> {
-   private static final fsq a = fsq.p(new agt("textures/entity/enderman/enderman_eyes.png"));
+public class gbj extends fzl<cdb, fjz<cdb>> {
+   private static final ahd a = new ahd("textures/entity/hoglin/zoglin.png");
 
-   public gbj(fzj<T, fiw<T>> $$0) {
-      super($$0);
+   public gbj(fyf.a $$0) {
+      super($$0, new fjz<>($$0.a(fmo.ca)), 0.7F);
    }
 
-   @Override
-   public fsq a() {
+   public ahd a(cdb $$0) {
       return a;
    }
 }

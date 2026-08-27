@@ -1,58 +1,99 @@
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.List;
 
-public class drg extends drc<drh> {
-   public drg(Codec<drh> $$0) {
+public class drg extends drn<dty> {
+   private static final djj a = djj.a(cwl.I);
+   private final dja b = cwl.I.o();
+   private final dja c = cwl.jF.o();
+   private final dja d = cwl.aV.o();
+   private final dja an = cwl.G.o();
+
+   public drg(Codec<dty> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<drh> $$0) {
-      auf $$1 = $$0.d();
-      ctt $$2 = $$0.b();
-      hv $$3 = $$0.e();
-      dcl $$4 = dcl.a($$1);
-      drh $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      ecp $$7 = $$2.D().n().aX();
-      eco $$8 = $$7.a($$5.b.get($$6));
-      eco $$9 = $$7.a($$5.c.get($$6));
-      csf $$10 = new csf($$3);
-      dyg $$11 = new dyg($$10.d() - 16, $$2.J_(), $$10.e() - 16, $$10.f() + 16, $$2.ak(), $$10.g() + 16);
-      eck $$12 = new eck().a($$4).a($$11).a($$1);
-      iz $$13 = $$8.a($$4);
-      hv $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
+   public boolean a(drp<dty> $$0) {
+      cud $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      $$2 = $$2.c();
 
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(dny.a.c, $$14.u() + $$16, $$14.w() + $$17));
-         }
+      while ($$1.u($$2) && $$2.v() > $$1.J_() + 2) {
+         $$2 = $$2.d();
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.J_() + 10);
-      hv $$19 = $$8.a($$14.h($$18), dav.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+      if (!a.a($$1.a_($$2))) {
          return false;
       } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
+            }
+         }
+
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (ic $$8 : ic.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         hx $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (ic $$10 : ic.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<hx> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         aup $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
          return true;
       }
    }
 
-   private static int a(ctt $$0, dyg $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dip $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(cwb.H) || $$3.a(cwb.G)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
+   private static void b(cud $$0, hx $$1) {
+      $$0.a($$1, cwl.J.o(), 3);
+      $$0.a($$1, dgq.N).ifPresent($$1x -> $$1x.a(egn.aO, $$1.a()));
    }
 }

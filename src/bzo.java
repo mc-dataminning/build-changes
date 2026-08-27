@@ -1,85 +1,92 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public class bzo extends bsr {
-   private final bzn a;
+public class bzo {
+   public static final int a = 20;
+   public static final int b = 7;
+   private static final bjg i = bjg.a(5, 16);
+   private static final float j = 1.0F;
+   private static final float k = 1.0F;
+   private static final float l = 1.25F;
+   private static final float m = 1.25F;
+   private static final float n = 2.0F;
+   private static final float o = 1.25F;
+   private static final bjg p = bjg.a(600, 1200);
+   public static final int c = 5;
+   public static final int d = 5;
+   public static final float e = 1.5F;
+   private static final bjg q = bjg.a(600, 6000);
+   private static final bjg r = bjg.a(100, 300);
+   private static final bwt s = bwt.a().a($$0 -> !$$0.ai().equals(blt.V) && $$0.dM().D_().a($$0.cH()));
+   private static final float t = 3.0F;
+   public static final int f = 4;
+   public static final float g = 2.5F;
+   public static final float h = 1.0F;
 
-   public bzo(bzn $$0) {
-      this.a = $$0;
+   protected static void a(bzn $$0, aup $$1) {
+      $$0.dO().a(bvh.R, p.a($$1));
+      $$0.dO().a(bvh.U, q.a($$1));
    }
 
-   @Override
-   public boolean a() {
-      return this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), 10.0);
-   }
-
-   @Override
-   public void e() {
-      amp $$0 = (amp)this.a.dM();
-      bjj $$1 = $$0.d_(this.a.dm());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      blu $$2 = blj.aj.a((csy)$$0);
-      if ($$2 != null) {
-         $$2.e(this.a.dr(), this.a.dt(), this.a.dx());
-         $$2.a(true);
-         $$0.b($$2);
-         cch $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
-
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               bzh $$5 = this.a($$1);
-               if ($$5 != null) {
-                  cch $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.eg().a(0.0, 1.1485), 0.0, this.a.eg().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Nullable
-   private bzh a(bjj $$0) {
-      bzn $$1 = blj.aL.a(this.a.dM());
-      if ($$1 != null) {
-         $$1.a((amp)this.a.dM(), $$0, blz.k, null, null);
-         $$1.a_(this.a.dr(), this.a.dt(), this.a.dx());
-         $$1.al = 60;
-         $$1.fJ();
-         $$1.x(true);
-         $$1.c_(0);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   private cch a(bjj $$0, bzh $$1) {
-      cch $$2 = blj.aK.a($$1.dM());
-      if ($$2 != null) {
-         $$2.a((amp)$$1.dM(), $$0, blz.k, null, null);
-         $$2.a_($$1.dr(), $$1.dt(), $$1.dx());
-         $$2.al = 60;
-         $$2.fJ();
-         if ($$2.c(blk.f).b()) {
-            $$2.a(blk.f, new cmh(cmk.pD));
-         }
-
-         $$2.a(blk.a, cqu.a($$2.eg(), this.a($$2.eT()), (int)(5.0F + $$0.d() * (float)$$2.eg().a(18)), false));
-         $$2.a(blk.f, cqu.a($$2.eg(), this.a($$2.c(blk.f)), (int)(5.0F + $$0.d() * (float)$$2.eg().a(18)), false));
-      }
-
-      return $$2;
-   }
-
-   private cmh a(cmh $$0) {
-      $$0.c("Enchantments");
+   protected static bnf<?> a(bnf<bzn> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      e($$0);
+      $$0.a(ImmutableSet.of(cgn.a));
+      $$0.b(cgn.b);
+      $$0.f();
       return $$0;
+   }
+
+   private static void b(bnf<bzn> $$0) {
+      $$0.a(cgn.a, 0, ImmutableList.of(new bqq(0.8F), new bnr(2.0F), new bpc(45, 90), new bpg(), new boc(bvh.O), new boc(bvh.R), new boc(bvh.U)));
+   }
+
+   private static void c(bnf<bzn> $$0) {
+      $$0.a(
+         cgn.b,
+         ImmutableList.of(
+            Pair.of(0, bpw.a(blt.bv, 6.0F, bjg.a(30, 60))),
+            Pair.of(0, new bnq(blt.V, 1.0F)),
+            Pair.of(1, new boj($$0x -> 1.25F)),
+            Pair.of(2, bnt.a(i, 1.25F)),
+            Pair.of(3, new bpt(ImmutableList.of(Pair.of(bpo.a(1.0F), 2), Pair.of(bqd.a(1.0F, 3), 2), Pair.of(new bog(30, 60), 1))))
+         ),
+         ImmutableSet.of(Pair.of(bvh.V, bvi.b), Pair.of(bvh.S, bvi.b))
+      );
+   }
+
+   private static void d(bnf<bzn> $$0) {
+      $$0.a(
+         cgn.q,
+         ImmutableList.of(Pair.of(0, new box(p, arm.kz)), Pair.of(1, new boz<>(p, 5, 5, 1.5F, $$0x -> $$0x.go() ? arm.ku : arm.kk))),
+         ImmutableSet.of(Pair.of(bvh.N, bvi.b), Pair.of(bvh.r, bvi.b), Pair.of(bvh.m, bvi.b), Pair.of(bvh.R, bvi.b))
+      );
+   }
+
+   private static void e(bnf<bzn> $$0) {
+      $$0.a(
+         cgn.r,
+         ImmutableList.of(
+            Pair.of(
+               0,
+               new bpm(
+                  $$0x -> $$0x.go() ? r : q, s, 3.0F, $$0x -> $$0x.o_() ? 1.0 : 2.5, $$0x -> $$0x.go() ? arm.kx : arm.kn, $$0x -> $$0x.go() ? arm.ky : arm.ko
+               )
+            ),
+            Pair.of(1, new bpl<>($$0x -> $$0x.go() ? r.a() : q.a(), 4, 7, 1.25F, s, 20, $$0x -> $$0x.go() ? arm.kw : arm.km))
+         ),
+         ImmutableSet.of(Pair.of(bvh.N, bvi.b), Pair.of(bvh.r, bvi.b), Pair.of(bvh.U, bvi.b))
+      );
+   }
+
+   public static void a(bzn $$0) {
+      $$0.dO().a(ImmutableList.of(cgn.r, cgn.q, cgn.b));
+   }
+
+   public static cps a() {
+      return cps.a(cmu.pt);
    }
 }

@@ -1,19 +1,25 @@
-public interface csb extends cse {
-   float a(ia var1, boolean var2);
-
-   edo z_();
-
-   int a(hv var1, csj var2);
-
-   default int a(cth $$0, hv $$1) {
-      return this.z_().a($$0).b($$1);
+public class csb extends crc {
+   public csb(crc.a $$0, blu... $$1) {
+      super($$0, crd.b, $$1);
    }
 
-   default int b(hv $$0, int $$1) {
-      return this.z_().a($$0, $$1);
+   @Override
+   public int a(int $$0) {
+      return $$0 * 10;
    }
 
-   default boolean g(hv $$0) {
-      return this.a(cth.a, $$0) >= this.N();
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 15;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(crc $$0) {
+      return super.a($$0) && $$0 != crg.j;
    }
 }

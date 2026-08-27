@@ -1,85 +1,61 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class fts implements gga {
-   private final List<ftt> a;
+public class fts {
+   private Map<dja, ggg> a = Map.of();
+   private final ggm b;
 
-   public fts(List<ftt> $$0) {
+   public fts(ggm $$0) {
+      this.b = $$0;
+   }
+
+   public gef a(dja $$0) {
+      return this.b($$0).e();
+   }
+
+   public ggg b(dja $$0) {
+      ggg $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
+      }
+
+      return $$1;
+   }
+
+   public ggm a() {
+      return this.b;
+   }
+
+   public void a(Map<dja, ggg> $$0) {
       this.a = $$0;
    }
 
-   public List<ftt> a() {
-      return this.a;
+   public static ggn c(dja $$0) {
+      return a(kd.e.b($$0.b()), $$0);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof fts $$1 ? this.a.equals($$1.a) : false;
-      }
+   public static ggn a(ahd $$0, dja $$1) {
+      return new ggn($$0, b($$1.C()));
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
-   }
+   public static String b(Map<dkd<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
 
-   @Override
-   public Collection<agt> f() {
-      return this.a().stream().map(ftt::a).collect(Collectors.toSet());
-   }
-
-   @Override
-   public void a(Function<agt, gga> $$0) {
-      this.a().stream().map(ftt::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
-   }
-
-   @Nullable
-   @Override
-   public gfp a(gft $$0, Function<gfs, gdo> $$1, gfx $$2, agt $$3) {
-      if (this.a().isEmpty()) {
-         return null;
-      } else {
-         ggb.a $$4 = new ggb.a();
-
-         for (ftt $$5 : this.a()) {
-            gfp $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
+      for (Entry<dkd<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
          }
 
-         return $$4.a();
+         dkd<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
       }
+
+      return $$1.toString();
    }
 
-   public static class a implements JsonDeserializer<fts> {
-      public fts a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<ftt> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
-
-            for (JsonElement $$5 : $$4) {
-               $$3.add((ftt)$$2.deserialize($$5, ftt.class));
-            }
-         } else {
-            $$3.add((ftt)$$2.deserialize($$0, ftt.class));
-         }
-
-         return new fts($$3);
-      }
+   private static <T extends Comparable<T>> String a(dkd<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

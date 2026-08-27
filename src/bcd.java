@@ -2,60 +2,58 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Map;
 
 public class bcd extends DataFix {
-   private static final int a = 2;
-   private static final int[] b = new int[]{0, 10, 50, 100, 150};
+   private final String a;
+   private final Map<String, String> b;
 
-   public static int a(int $$0) {
-      return b[aty.a($$0 - 1, 0, b.length - 1)];
+   public bcd(Schema $$0, String $$1, Map<String, String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public bcd(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   protected TypeRewriteRule makeRule() {
+      return TypeRewriteRule.seq(this.b(), this.a());
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bbg.x, "minecraft:villager");
-      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:villager", $$0);
-      OpticFinder<?> $$2 = $$0.findField("Offers");
-      Type<?> $$3 = $$2.type();
-      OpticFinder<?> $$4 = $$3.findField("Recipes");
-      ListType<?> $$5 = (ListType<?>)$$4.type();
-      OpticFinder<?> $$6 = $$5.getElement().finder();
-      return this.fixTypeEverywhereTyped("Villager level and xp rebuild", this.getInputSchema().getType(bbg.x), $$5x -> $$5x.updateTyped($$1, $$0, $$3xx -> {
-            Dynamic<?> $$4xx = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
-            int $$5xx = $$4xx.get("VillagerData").get("level").asInt(0);
-            Typed<?> $$6x = $$3xx;
-            if ($$5xx == 0 || $$5xx == 1) {
-               int $$7 = $$3xx.getOptionalTyped($$2).flatMap($$1xxx -> $$1xxx.getOptionalTyped($$4)).map($$1xxx -> $$1xxx.getAllTyped($$6).size()).orElse(0);
-               $$5xx = aty.a($$7 / 2, 1, 5);
-               if ($$5xx > 1) {
-                  $$6x = a($$3xx, $$5xx);
-               }
-            }
-
-            Optional<Number> $$8 = $$4xx.get("Xp").asNumber().result();
-            if ($$8.isEmpty()) {
-               $$6x = b($$6x, $$5xx);
-            }
-
-            return $$6x;
-         }));
+   private TypeRewriteRule a() {
+      Type<?> $$0 = this.getOutputSchema().getType(bbq.D);
+      Type<?> $$1 = this.getInputSchema().getType(bbq.D);
+      OpticFinder<?> $$2 = $$1.findField("CriteriaType");
+      TaggedChoiceType<?> $$3 = (TaggedChoiceType<?>)$$2.type()
+         .findChoiceType("type", -1)
+         .orElseThrow(() -> new IllegalStateException("Can't find choice type for criteria"));
+      Type<?> $$4 = (Type<?>)$$3.types().get("minecraft:custom");
+      if ($$4 == null) {
+         throw new IllegalStateException("Failed to find custom criterion type variant");
+      } else {
+         OpticFinder<?> $$5 = DSL.namedChoice("minecraft:custom", $$4);
+         OpticFinder<String> $$6 = DSL.fieldFinder("id", bcy.a());
+         return this.fixTypeEverywhereTyped(
+            this.a,
+            $$1,
+            $$0,
+            $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$5, $$1xxx -> $$1xxx.update($$6, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
+         );
+      }
    }
 
-   private static Typed<?> a(Typed<?> $$0, int $$1) {
-      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.update("VillagerData", $$1xx -> $$1xx.set("level", $$1xx.createInt($$1))));
-   }
-
-   private static Typed<?> b(Typed<?> $$0, int $$1) {
-      int $$2 = a($$1);
-      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.set("Xp", $$1x.createInt($$2)));
+   private TypeRewriteRule b() {
+      Type<?> $$0 = this.getOutputSchema().getType(bbq.g);
+      Type<?> $$1 = this.getInputSchema().getType(bbq.g);
+      OpticFinder<?> $$2 = $$1.findField("stats");
+      OpticFinder<?> $$3 = $$2.type().findField("minecraft:custom");
+      OpticFinder<String> $$4 = bcy.a().finder();
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         $$1,
+         $$0,
+         $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$3, $$1xxx -> $$1xxx.update($$4, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
+      );
    }
 }

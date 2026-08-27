@@ -1,31 +1,39 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
 
-public class ww {
-   private static final Logger a = LogUtils.getLogger();
+public class ww implements wt {
+   public static final wu<ww> a = new wu<ww>() {
+      private static final MapCodec<ww> a = wa.b.a.xmap(ww::new, $$0 -> $$0.e);
 
-   public static <T extends uk> void a(wu<T> $$0, T $$1, amp $$2) throws ahe {
-      a($$0, $$1, $$2.n());
+      @Override
+      public MapCodec<ww> a() {
+         return a;
+      }
+
+      public void a(ug $$0, ww $$1) {
+         $$0.a(sz.a, wa.b.b, $$1.e);
+      }
+
+      public ww a(ug $$0) {
+         wa $$1 = $$0.a(sz.a, wa.b.b);
+         return new ww($$1);
+      }
+   };
+   public static final ww b = new ww(wa.a);
+   public static final ww c = new ww(wa.a.a(n.m));
+   public static final ww d = new ww(wa.a.a(n.o));
+   final wa e;
+
+   public ww(wa $$0) {
+      this.e = $$0;
    }
 
-   public static <T extends uk> void a(wu<T> $$0, T $$1, bib<?> $$2) throws ahe {
-      if (!$$2.bq()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var4) {
-                  if (var4 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
-                     throw var4;
-                  }
+   @Override
+   public vr a(int $$0) {
+      return vd.b(Integer.toString($$0)).c(this.e);
+   }
 
-                  a.error("Failed to handle packet {}, suppressing error", $$0, var4);
-               }
-            } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
-            }
-         });
-         throw ahe.a;
-      }
+   @Override
+   public wu<ww> a() {
+      return a;
    }
 }

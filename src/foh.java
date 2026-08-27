@@ -1,30 +1,102 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class foh {
-   public static final foh a = new foh(fog.b, foi.createDnsSrvRedirectHandler(), fod.a());
-   private final fog b;
-   private final foi c;
-   private final fod d;
+   final int a;
+   private final List<foh.a> b = new ArrayList<>();
 
-   @VisibleForTesting
-   foh(fog $$0, foi $$1, fod $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public foh(int $$0) {
+      this.a = $$0;
    }
 
-   public Optional<foe> a(fof $$0) {
-      Optional<foe> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<fof> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   public void a(fnz $$0, IntCollection $$1, foh.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-         return $$1;
-      } else {
-         return Optional.empty();
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         fob $$6 = $$0.b($$4);
+         if ($$6 instanceof foc.a) {
+            foc.a $$5 = (foc.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
+   }
+
+   public void a(vt $$0) {
+      this.b.add(new foh.a($$0));
+   }
+
+   public boolean b(vt $$0) {
+      boolean $$1 = false;
+      Iterator<foh.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         foh.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<vp> b;
+      private vt c;
+      private boolean d = true;
+      private int e;
+
+      a(vt $$0) {
+         this.b = new ObjectOpenHashSet($$0.l().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(vt $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.k());
+            if (this.d && this.c.f().equals($$0.f())) {
+               if (this.c.j().a($$0.j())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= foh.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, foc.a var2);
    }
 }

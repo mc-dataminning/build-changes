@@ -1,47 +1,96 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fel {
+   private static final ahd a = new ahd("minecraft", "alt");
+   private static final wa b = wa.a.a(a);
+   private static final fel c = new fel();
+   private final aup d = aup.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-public class fel extends fdd {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private fuw.a l;
-
-   public fel(dhm $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+   private fel() {
    }
 
-   @Override
-   protected void aP_() {
-      super.aP_();
-      this.l = fuw.a(this.f.aO(), this.a);
+   public static fel a() {
+      return c;
    }
 
-   @Override
-   protected void b(evw $$0, dip $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof ddt;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
+   public vi a(ewk $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ac.a(this.e, this.d));
       }
+
+      return $$0.b().a(vd.b($$2.toString()).c(b), $$1, wa.a);
    }
 
-   @Override
-   protected void a(evw $$0, dip $$1) {
-      if (this.l != null) {
-         boolean $$2 = $$1.b() instanceof ddt;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gfs $$3 = fsx.a(this.a);
-         eph $$4 = $$3.a($$0.d(), this.l::a);
-         this.l.b.k = $$2;
-         this.l.a.a($$0.c(), $$4, 15728880, gdf.d);
-      }
-   }
-
-   @Override
-   protected Vector3f l() {
-      return k;
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

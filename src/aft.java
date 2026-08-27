@@ -1,14 +1,18 @@
-public record aft(afu a) implements wu<afr> {
-   public aft(ue $$0) {
-      this($$0.a(afu.a));
+public record aft() implements xd<afp> {
+   public aft(ug $$0) {
+      this();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(afu.a, this.a);
+   public void a(ug $$0) {
    }
 
-   public void a(afr $$0) {
+   public void a(afp $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public uf c() {
+      return uf.e;
    }
 }

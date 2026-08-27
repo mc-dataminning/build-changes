@@ -1,17 +1,34 @@
-public class gau extends fyf<cct, flr<cct>> {
-   private static final agt a = new agt("textures/entity/zombie_villager/zombie_villager.png");
+public class gau extends fye<cbp> {
+   private final ftt a;
 
-   public gau(fxo.a $$0) {
-      super($$0, new flr<>($$0.a(flx.cg)), 0.5F);
-      this.a(new gbp<>(this, new flr($$0.a(flx.ch)), new flr($$0.a(flx.ci)), $$0.g()));
-      this.a(new gck<>(this, $$0.e(), "zombie_villager"));
+   public gau(fyf.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public agt a(cct $$0) {
-      return a;
+   public void a(cbp $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.s();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = aui.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      gat.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean b(cct $$0) {
-      return super.a($$0) || $$0.go();
+   public ahd a(cbp $$0) {
+      return gee.e;
    }
 }

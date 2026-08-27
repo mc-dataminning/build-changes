@@ -1,16 +1,11 @@
-public class fxh extends fyc {
-   public static final agt a = new agt("textures/entity/guardian_elder.png");
+public class fxh extends fzl<bxn, fit> {
+   private static final ahd a = new ahd("textures/entity/bat.png");
 
-   public fxh(fxo.a $$0) {
-      super($$0, 1.2F, flx.S);
+   public fxh(fyf.a $$0) {
+      super($$0, new fit($$0.a(fmo.g)), 0.25F);
    }
 
-   protected void a(cbv $$0, epd $$1, float $$2) {
-      $$1.b(cbo.b, cbo.b, cbo.b);
-   }
-
-   @Override
-   public agt a(cbv $$0) {
+   public ahd a(bxn $$0) {
       return a;
    }
 }

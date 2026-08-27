@@ -1,31 +1,24 @@
-public class xj implements wu<xe> {
-   private final xj.a a;
+public class xj implements xd<xg> {
+   private final long a;
 
-   public xj(xj.a $$0) {
+   public xj(long $$0) {
       this.a = $$0;
    }
 
-   public xj(ue $$0) {
-      this.a = $$0.b(xj.a.class);
+   public xj(ug $$0) {
+      this.a = $$0.readLong();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
+   public void a(ug $$0) {
+      $$0.b(this.a);
    }
 
-   public void a(xe $$0) {
+   public void a(xg $$0) {
       $$0.a(this);
    }
 
-   public xj.a a() {
+   public long a() {
       return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

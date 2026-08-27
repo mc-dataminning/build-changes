@@ -1,44 +1,11 @@
-import java.util.Optional;
+public interface bnx<E extends bmf> {
+   bnw.a a();
 
-public class bnx implements bpa {
-   private final blf a;
-   private final boolean b;
+   boolean e(amz var1, E var2, long var3);
 
-   public bnx(blf $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void f(amz var1, E var2, long var3);
 
-   @Override
-   public elb a() {
-      return this.b ? this.a.dk().b(0.0, (double)this.a.cI(), 0.0) : this.a.dk();
-   }
+   void g(amz var1, E var2, long var3);
 
-   @Override
-   public hv b() {
-      return this.a.dm();
-   }
-
-   @Override
-   public boolean a(blv $$0) {
-      if (this.a instanceof blv $$1) {
-         if (!$$1.bx()) {
-            return false;
-         } else {
-            Optional<buz> $$3 = $$0.dO().c(bux.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public blf c() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
-   }
+   String b();
 }

@@ -1,49 +1,15 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
+import com.google.common.base.Suppliers;
 import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public interface aud {
-   aud a(String var1);
+@Deprecated
+public class aud<T> {
+   private final Supplier<T> a;
 
-   void b(String var1);
+   public aud(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
+   }
 
-   public static class a implements aud {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
-
-      public a() {
-         this(HashMultimap.create(), () -> "");
-      }
-
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private String b() {
-         if (this.c == null) {
-            this.c = this.b.get();
-         }
-
-         return this.c;
-      }
-
-      @Override
-      public aud a(String $$0) {
-         return new aud.a(this.a, () -> this.b() + $$0);
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.b(), $$0);
-      }
-
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
-      }
+   public T a() {
+      return this.a.get();
    }
 }

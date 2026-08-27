@@ -1,38 +1,39 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageCodec;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import io.netty.util.ReferenceCountUtil;
+import java.util.List;
+import org.slf4j.Logger;
 
-public interface ul {
-   static ul a(final Runnable $$0) {
-      return new ul() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+public class ul extends MessageToMessageCodec<xd<?>, xd<?>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final AttributeKey<uf.a<?>> b;
+   private final AttributeKey<uf.a<?>> c;
 
-         @Nullable
-         @Override
-         public wu<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   public ul(AttributeKey<uf.a<?>> $$0, AttributeKey<uf.a<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static ul a(final Supplier<wu<?>> $$0) {
-      return new ul() {
-         @Nullable
-         @Override
-         public wu<?> b() {
-            return $$0.get();
-         }
-      };
+   private static void a(ChannelHandlerContext $$0, xd<?> $$1, List<Object> $$2, AttributeKey<uf.a<?>> $$3) {
+      Attribute<uf.a<?>> $$4 = $$0.channel().attr($$3);
+      uf.a<?> $$5 = (uf.a<?>)$$4.get();
+      if (!$$5.b($$1)) {
+         a.error("Unrecognized packet in pipeline {}:{} - {}", new Object[]{$$5.a().a(), $$5.b(), $$1});
+      }
+
+      ReferenceCountUtil.retain($$1);
+      $$2.add($$1);
+      uo.a($$4, $$1);
    }
 
-   default void a() {
+   protected void a(ChannelHandlerContext $$0, xd<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.b);
    }
 
-   @Nullable
-   default wu<?> b() {
-      return null;
+   protected void b(ChannelHandlerContext $$0, xd<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.c);
    }
 }

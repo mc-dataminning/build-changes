@@ -1,24 +1,22 @@
-public record cpn<T extends cpl<?>>(agt a, T b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cpn<?> $$1 && this.a.equals($$1.a)) {
-            return true;
-         }
+public abstract class cpn implements cpm {
+   private final cpl a;
 
-         return false;
-      }
+   public cpn(cpl $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public boolean aq_() {
+      return true;
    }
 
    @Override
-   public String toString() {
-      return this.a.toString();
+   public cmr a(iu $$0) {
+      return cmr.f;
+   }
+
+   @Override
+   public cpl d() {
+      return this.a;
    }
 }

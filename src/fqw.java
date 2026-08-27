@@ -1,45 +1,40 @@
-public abstract class fqw extends fqj {
-   protected gdo E;
+public class fqw extends frn {
+   private final fri a;
 
-   protected fqw(fmt $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected fqw(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   fqw(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fri $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(gdo $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   protected float d() {
-      return this.E.d();
+   public int a(float $$0) {
+      return 240;
    }
 
    @Override
-   protected float e() {
-      return this.E.g();
+   public fqr b() {
+      return fqr.c;
    }
 
    @Override
-   protected float f() {
-      return this.E.h();
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 
-   public void a(fqr $$0) {
-      this.a($$0.a(this.r));
-   }
-
-   public void b(fqr $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+   public static record a(fri a) implements fqq<jy> {
+      public fqn a(jy $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqw $$8 = new fqw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.c();
+         $$8.z = $$0.c();
+         $$8.a($$1.z.a(12) + 8);
+         return $$8;
       }
    }
 }

@@ -3,27 +3,27 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
 public record ci(
-   Optional<ci.b> b, Optional<ags<ctx>> c, Optional<ags<dyo>> d, Optional<ags<csy>> e, Optional<Boolean> f, Optional<cf> g, Optional<au> h, Optional<bw> i
+   Optional<ci.b> b, Optional<ahc<cuh>> c, Optional<ahc<dyz>> d, Optional<ahc<cti>> e, Optional<Boolean> f, Optional<cf> g, Optional<au> h, Optional<bw> i
 ) {
    public static final Codec<ci> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atg.a(ci.b.a, "position").forGetter(ci::a),
-               atg.a(ags.a(kc.as), "biome").forGetter(ci::b),
-               atg.a(ags.a(kc.aC), "structure").forGetter(ci::c),
-               atg.a(ags.a(kc.aL), "dimension").forGetter(ci::d),
-               atg.a(Codec.BOOL, "smokey").forGetter(ci::e),
-               atg.a(cf.a, "light").forGetter(ci::f),
-               atg.a(au.a, "block").forGetter(ci::g),
-               atg.a(bw.a, "fluid").forGetter(ci::h)
+               atq.a(ci.b.a, "position").forGetter(ci::a),
+               atq.a(ahc.a(ke.at), "biome").forGetter(ci::b),
+               atq.a(ahc.a(ke.aD), "structure").forGetter(ci::c),
+               atq.a(ahc.a(ke.aM), "dimension").forGetter(ci::d),
+               atq.a(Codec.BOOL, "smokey").forGetter(ci::e),
+               atq.a(cf.a, "light").forGetter(ci::f),
+               atq.a(au.a, "block").forGetter(ci::g),
+               atq.a(bw.a, "fluid").forGetter(ci::h)
             )
             .apply($$0, ci::new)
    );
 
    private static Optional<ci> a(
       Optional<ci.b> $$0,
-      Optional<ags<ctx>> $$1,
-      Optional<ags<dyo>> $$2,
-      Optional<ags<csy>> $$3,
+      Optional<ahc<cuh>> $$1,
+      Optional<ahc<dyz>> $$2,
+      Optional<ahc<cti>> $$3,
       Optional<Boolean> $$4,
       Optional<cf> $$5,
       Optional<au> $$6,
@@ -34,17 +34,17 @@ public record ci(
          : Optional.of(new ci($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public boolean a(amp $$0, double $$1, double $$2, double $$3) {
+   public boolean a(amz $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
-      } else if (this.e.isPresent() && this.e.get() != $$0.ad()) {
+      } else if (this.e.isPresent() && this.e.get() != $$0.ae()) {
          return false;
       } else {
-         hv $$4 = hv.a($$1, $$2, $$3);
-         boolean $$5 = $$0.o($$4);
-         if (!this.c.isPresent() || $$5 && $$0.s($$4).a(this.c.get())) {
+         hx $$4 = hx.a($$1, $$2, $$3);
+         boolean $$5 = $$0.p($$4);
+         if (!this.c.isPresent() || $$5 && $$0.t($$4).a(this.c.get())) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == cwn.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == cwx.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -66,15 +66,15 @@ public record ci(
       return this.b;
    }
 
-   public Optional<ags<ctx>> b() {
+   public Optional<ahc<cuh>> b() {
       return this.c;
    }
 
-   public Optional<ags<dyo>> c() {
+   public Optional<ahc<dyz>> c() {
       return this.d;
    }
 
-   public Optional<ags<csy>> d() {
+   public Optional<ahc<cti>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record ci(
       private ck.c a;
       private ck.c b;
       private ck.c c;
-      private Optional<ags<ctx>> d;
-      private Optional<ags<dyo>> e;
-      private Optional<ags<csy>> f;
+      private Optional<ahc<cuh>> d;
+      private Optional<ahc<dyz>> e;
+      private Optional<ahc<cti>> f;
       private Optional<Boolean> g;
       private Optional<cf> h;
       private Optional<au> i;
@@ -123,15 +123,15 @@ public record ci(
          return new ci.a();
       }
 
-      public static ci.a a(ags<ctx> $$0) {
+      public static ci.a a(ahc<cuh> $$0) {
          return a().d($$0);
       }
 
-      public static ci.a b(ags<csy> $$0) {
+      public static ci.a b(ahc<cti> $$0) {
          return a().f($$0);
       }
 
-      public static ci.a c(ags<dyo> $$0) {
+      public static ci.a c(ahc<dyz> $$0) {
          return a().e($$0);
       }
 
@@ -154,17 +154,17 @@ public record ci(
          return this;
       }
 
-      public ci.a d(ags<ctx> $$0) {
+      public ci.a d(ahc<cuh> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public ci.a e(ags<dyo> $$0) {
+      public ci.a e(ahc<dyz> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public ci.a f(ags<csy> $$0) {
+      public ci.a f(ahc<cti> $$0) {
          this.f = Optional.of($$0);
          return this;
       }
@@ -198,7 +198,7 @@ public record ci(
    static record b(ck.c b, ck.c c, ck.c d) {
       public static final Codec<ci.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atg.a(ck.c.d, "x", ck.c.c).forGetter(ci.b::a), atg.a(ck.c.d, "y", ck.c.c).forGetter(ci.b::b), atg.a(ck.c.d, "z", ck.c.c).forGetter(ci.b::c)
+                  atq.a(ck.c.d, "x", ck.c.c).forGetter(ci.b::a), atq.a(ck.c.d, "y", ck.c.c).forGetter(ci.b::b), atq.a(ck.c.d, "z", ck.c.c).forGetter(ci.b::c)
                )
                .apply($$0, ci.b::new)
       );

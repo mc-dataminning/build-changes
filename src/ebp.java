@@ -1,92 +1,32 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ebp extends ecl {
-   public static final Codec<ebp> a = Codec.FLOAT.fieldOf("mossiness").xmap(ebp::new, $$0 -> $$0.f).codec();
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final dip[] e = new dip[]{cwb.jD.o(), cwb.jK.o()};
-   private final float f;
+public class ebp extends dyz {
+   public static final Codec<ebp> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, ebp::new)
+   );
+   public final boolean e;
 
-   public ebp(float $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   @Override
-   public eco.c a(ctb $$0, hv $$1, hv $$2, eco.c $$3, eco.c $$4, eck $$5) {
-      auf $$6 = $$5.b($$4.a());
-      dip $$7 = $$4.b();
-      hv $$8 = $$4.a();
-      dip $$9 = null;
-      if ($$7.a(cwb.eH) || $$7.a(cwb.b) || $$7.a(cwb.eK)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(arr.J)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(arr.K)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(arr.L)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(cwb.co)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new eco.c($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private dip a(auf $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dip[] $$1 = new dip[]{cwb.eJ.o(), a($$0, cwb.fj)};
-         dip[] $$2 = new dip[]{cwb.eI.o(), a($$0, cwb.ng)};
-         return this.a($$0, $$1, $$2);
-      }
-   }
-
-   @Nullable
-   private dip a(auf $$0, dip $$1) {
-      ia $$2 = $$1.c(dds.b);
-      djo $$3 = $$1.c(dds.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dip[] $$4 = new dip[]{cwb.ng.o().a(dds.b, $$2).a(dds.c, $$3), cwb.nu.o()};
-         return this.a($$0, e, $$4);
-      }
-   }
-
-   @Nullable
-   private dip b(auf $$0) {
-      return $$0.i() < this.f ? cwb.nu.o() : null;
-   }
-
-   @Nullable
-   private dip c(auf $$0) {
-      return $$0.i() < this.f ? cwb.nI.o() : null;
-   }
-
-   @Nullable
-   private dip d(auf $$0) {
-      return $$0.i() < 0.15F ? cwb.pk.o() : null;
-   }
-
-   private static dip a(auf $$0, cvz $$1) {
-      return $$1.o().a(dds.b, ia.c.a.a($$0)).a(dds.c, ac.a(djo.values(), $$0));
-   }
-
-   private dip a(auf $$0, dip[] $$1, dip[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static dip a(auf $$0, dip[] $$1) {
-      return $$1[$$0.a($$1.length)];
+   public ebp(dyz.c $$0, boolean $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected ecn<?> a() {
-      return ecn.k;
+   public Optional<dyz.b> a(dyz.a $$0) {
+      doj.a $$1 = this.e ? doj.a.a : doj.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   }
+
+   private void a(dzr $$0, dyz.a $$1) {
+      dcv $$2 = dcv.a($$1.f());
+      hx $$3 = new hx($$1.h().d(), 90, $$1.h().e());
+      ebo.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
+   }
+
+   @Override
+   public dzi<?> e() {
+      return dzi.m;
    }
 }

@@ -1,26 +1,7 @@
-import java.util.function.Function;
+public interface enf<T> {
+   void a(end<T> var1);
 
-public interface enf {
-   float getAdvance();
+   boolean a(hx var1, T var2);
 
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
-   }
-
-   default float a() {
-      return 1.0F;
-   }
-
-   default float b() {
-      return 1.0F;
-   }
-
-   eza bake(Function<enh, eza> var1);
-
-   public interface a extends enf {
-      @Override
-      default eza bake(Function<enh, eza> $$0) {
-         return ezb.a;
-      }
-   }
+   int a();
 }

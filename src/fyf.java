@@ -1,12 +1,60 @@
-public abstract class fyf<T extends blx, M extends fjl<T>> extends fyu<T, M> {
-   public fyf(fxo.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
-   }
+@FunctionalInterface
+public interface fyf<T extends blp> {
+   fye<T> create(fyf.a var1);
 
-   public fyf(fxo.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new gbe<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new gbi<>(this, $$0.f()));
-      this.a(new gbs<>(this, $$0.d()));
+   public static class a {
+      private final fyd a;
+      private final fzd b;
+      private final ftt c;
+      private final fsv d;
+      private final aqc e;
+      private final fml f;
+      private final ewk g;
+
+      public a(fyd $$0, fzd $$1, ftt $$2, fsv $$3, aqc $$4, fml $$5, ewk $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
+
+      public fyd a() {
+         return this.a;
+      }
+
+      public fzd b() {
+         return this.b;
+      }
+
+      public ftt c() {
+         return this.c;
+      }
+
+      public fsv d() {
+         return this.d;
+      }
+
+      public aqc e() {
+         return this.e;
+      }
+
+      public fml f() {
+         return this.f;
+      }
+
+      public ggm g() {
+         return this.c.a().a();
+      }
+
+      public fmp a(fmn $$0) {
+         return this.f.a($$0);
+      }
+
+      public ewk h() {
+         return this.g;
+      }
    }
 }

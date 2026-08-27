@@ -1,60 +1,36 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record ejl(Optional<Long> b, egd c) implements ejd {
-   public static final Codec<ejl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atg.a(Codec.LONG, "period").forGetter(ejl::c), egd.a.fieldOf("value").forGetter(ejl::d)).apply($$0, ejl::new)
-   );
+public record ejl(ejo b) implements ejo {
+   public static final Codec<ejl> a = RecordCodecBuilder.create($$0 -> $$0.group(ejq.a.fieldOf("term").forGetter(ejl::c)).apply($$0, ejl::new));
 
    @Override
-   public eje b() {
-      return ejf.r;
+   public ejp b() {
+      return ejq.b;
+   }
+
+   public boolean a(egp $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public Set<eim<?>> a() {
-      return this.c.a();
+   public Set<eix<?>> a() {
+      return this.b.a();
    }
 
-   public boolean a(ege $$0) {
-      amp $$1 = $$0.d();
-      long $$2 = $$1.X();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   @Override
+   public void a(egy $$0) {
+      ejo.super.a($$0);
+      this.b.a($$0);
    }
 
-   public static ejl.a a(egd $$0) {
-      return new ejl.a($$0);
+   public static ejo.a a(ejo.a $$0) {
+      ejl $$1 = new ejl($$0.build());
+      return () -> $$1;
    }
 
-   public Optional<Long> c() {
+   public ejo c() {
       return this.b;
-   }
-
-   public egd d() {
-      return this.c;
-   }
-
-   public static class a implements ejd.a {
-      private Optional<Long> a = Optional.empty();
-      private final egd b;
-
-      public a(egd $$0) {
-         this.b = $$0;
-      }
-
-      public ejl.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ejl a() {
-         return new ejl(this.a, this.b);
-      }
    }
 }

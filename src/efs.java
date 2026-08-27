@@ -1,28 +1,46 @@
 public class efs {
-   public static final efs a = new efs("advancements");
-   public static final efs b = new efs("stats");
-   public static final efs c = new efs("playerdata");
-   public static final efs d = new efs("players");
-   public static final efs e = new efs("level.dat");
-   public static final efs f = new efs("level.dat_old");
-   public static final efs g = new efs("icon.png");
-   public static final efs h = new efs("session.lock");
-   public static final efs i = new efs("generated");
-   public static final efs j = new efs("datapacks");
-   public static final efs k = new efs("resources.zip");
-   public static final efs l = new efs(".");
-   private final String m;
+   private final hx a;
+   private final int b;
+   private final int c;
 
-   private efs(String $$0) {
-      this.m = $$0;
+   public efs(hx $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public String a() {
-      return this.m;
+   public static efs a(sl $$0) {
+      hx $$1 = ta.b($$0.p("Pos"));
+      int $$2 = $$0.h("Rotation");
+      int $$3 = $$0.h("EntityId");
+      return new efs($$1, $$2, $$3);
    }
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   public sl a() {
+      sl $$0 = new sl();
+      $$0.a("Pos", ta.a(this.a));
+      $$0.a("Rotation", this.b);
+      $$0.a("EntityId", this.c);
+      return $$0;
+   }
+
+   public hx b() {
+      return this.a;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.c;
+   }
+
+   public String e() {
+      return a(this.a);
+   }
+
+   public static String a(hx $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

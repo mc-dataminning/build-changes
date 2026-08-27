@@ -1,17 +1,37 @@
-public class fol extends fon {
-   protected fol(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fqr $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
+import java.util.Locale;
+
+public enum fol {
+   a("generic"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery");
+
+   private final String k;
+   private final vd l;
+   private final vd m;
+
+   private fol(String $$0) {
+      this.k = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.l = vd.c($$1);
+      this.m = vd.c($$1 + ".description");
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+   public String a() {
+      return this.k;
+   }
 
-      public a(fqr $$0) {
-         this.a = $$0;
-      }
+   public vd b() {
+      return this.l;
+   }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fol($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
-      }
+   public vd c() {
+      return this.m;
    }
 }

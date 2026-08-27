@@ -1,51 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class czw extends czp {
-   public static final MapCodec<czw> e = b(czw::new);
+public abstract class czw extends cwj {
+   protected final ic a;
+   protected final boolean b;
+   protected final emf d;
 
-   @Override
-   public MapCodec<? extends czw> a() {
-      return e;
-   }
-
-   public czw(dio.d $$0) {
+   protected czw(diz.d $$0, ic $$1, emf $$2, boolean $$3) {
       super($$0);
-   }
-
-   public static dip b() {
-      return cwb.G.o();
-   }
-
-   @Override
-   public void a(csy $$0, cer $$1, hv $$2, dip $$3, @Nullable dgd $$4, cmh $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (cqu.a(cqw.v, $$5) == 0) {
-         if ($$0.E_().i()) {
-            $$0.a($$2, false);
-            return;
-         }
-
-         dip $$6 = $$0.a_($$2.d());
-         if ($$6.d() || $$6.k()) {
-            $$0.b($$2, b());
-         }
-      }
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
-      if ($$1.a(cth.b, $$2) > 11 - $$0.b($$1, $$2)) {
-         this.d($$0, $$1, $$2);
+   protected abstract MapCodec<? extends czw> a();
+
+   @Nullable
+   @Override
+   public dja a(cpa $$0) {
+      dja $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
+   }
+
+   public dja a(ctj $$0) {
+      return this.o();
+   }
+
+   @Override
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      hx $$3 = $$2.a(this.a.g());
+      dja $$4 = $$1.a_($$3);
+      return !this.h($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
+   }
+
+   @Override
+   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   protected void d(dip $$0, csy $$1, hv $$2) {
-      if ($$1.E_().i()) {
-         $$1.a($$2, false);
-      } else {
-         $$1.b($$2, b());
-         $$1.a($$2, b().b(), $$2);
-      }
+   protected boolean h(dja $$0) {
+      return true;
    }
+
+   @Override
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return this.d;
+   }
+
+   protected abstract czy c();
+
+   protected abstract cwj b();
 }

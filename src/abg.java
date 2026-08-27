@@ -1,24 +1,36 @@
-public class abg implements wu<yo> {
-   private final double a;
+import javax.annotation.Nullable;
 
-   public abg(dkg $$0) {
-      this.a = $$0.k();
+public class abg implements xd<yx> {
+   private final int a;
+   private final bla b;
+
+   public abg(int $$0, bla $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public abg(ue $$0) {
-      this.a = $$0.readDouble();
+   public abg(ug $$0) {
+      this.a = $$0.n();
+      this.b = $$0.a(kd.d);
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
+   public void a(ug $$0) {
+      $$0.c(this.a);
+      $$0.a(kd.d, this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
+   @Nullable
+   public blp a(cti $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Nullable
+   public bla a() {
+      return this.b;
    }
 }

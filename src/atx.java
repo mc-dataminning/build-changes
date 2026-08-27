@@ -1,49 +1,30 @@
-import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
+import com.google.common.collect.ImmutableSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public record atx(atx.a a, String b) {
-   public static atx a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
-      String $$4 = $$1.get();
-      if (!$$0.equals($$4)) {
-         return new atx(atx.a.c, $$2 + " brand changed to '" + $$4 + "'");
+public final class atx {
+   private atx() {
+   }
+
+   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
+      if ($$1.contains($$4)) {
+         return false;
+      } else if ($$2.contains($$4)) {
+         return true;
       } else {
-         return $$3.getSigners() == null
-            ? new atx(atx.a.b, $$2 + " jar signature invalidated")
-            : new atx(atx.a.a, $$2 + " jar signature and brand is untouched");
-      }
-   }
+         $$2.add($$4);
 
-   public boolean a() {
-      return this.a.e;
-   }
+         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
+            if (a($$0, $$1, $$2, $$3, $$5)) {
+               return true;
+            }
+         }
 
-   public atx a(atx $$0) {
-      return new atx((atx.a)ObjectUtils.max(new atx.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
-   }
-
-   public String b() {
-      return this.a.d + " " + this.b;
-   }
-
-   public atx.a c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public static enum a {
-      a("Probably not.", false),
-      b("Very likely;", true),
-      c("Definitely;", true);
-
-      final String d;
-      final boolean e;
-
-      private a(String $$0, boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
+         $$2.remove($$4);
+         $$1.add($$4);
+         $$3.accept($$4);
+         return false;
       }
    }
 }

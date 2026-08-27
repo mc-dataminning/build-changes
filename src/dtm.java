@@ -1,21 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtm extends dsy {
-   public static final Codec<dtm> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvh.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               atg.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               atg.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dtm::new)
-   );
-   public final int d;
-   public final int e;
+public class dtm implements dtr {
+   public static final Codec<dtm> a = bja.b(0, 256).fieldOf("count").xmap(dtm::new, dtm::a).codec();
+   private final bja b;
 
-   public dtm(dvh $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public dtm(int $$0) {
+      this.b = bix.a($$0);
+   }
+
+   public dtm(bja $$0) {
+      this.b = $$0;
+   }
+
+   public bja a() {
+      return this.b;
    }
 }

@@ -1,59 +1,31 @@
-public class brp implements brq {
-   private final blx a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.google.common.collect.ImmutableMap;
 
-   public brp(blx $$0) {
-      this.a = $$0;
+public class brp<E extends cef> extends bnw<E> {
+   public brp(int $$0) {
+      super(ImmutableMap.of(bvh.o, bvi.b, bvh.m, bvi.b), $$0);
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aU = this.a.dC();
-         this.c();
-         this.f = this.a.aW;
-         this.e = 0;
+   protected boolean a(amz $$0, E $$1, long $$2) {
+      return $$1.dI() == null;
+   }
+
+   protected boolean a(amz $$0, E $$1) {
+      return $$1.aC() || $$1.aZ() || $$1.bn();
+   }
+
+   protected void b(amz $$0, E $$1, long $$2) {
+      if ($$1.aC()) {
+         $$1.b(bmr.o);
+         $$1.a(arm.AA, 5.0F, 1.0F);
       } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aW - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aW;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
-         }
+         $$1.a(arm.Av, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
       }
    }
 
-   private void b() {
-      this.a.aU = aty.c(this.a.aU, this.a.aW, (float)this.a.ab());
-   }
-
-   private void c() {
-      this.a.aW = aty.c(this.a.aW, this.a.aU, (float)this.a.ab());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = aty.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.ab() * (1.0F - $$1);
-      this.a.aU = aty.c(this.a.aU, this.a.aW, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.cQ() instanceof blx);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dr() - this.a.K;
-      double $$1 = this.a.dx() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+   protected void c(amz $$0, E $$1, long $$2) {
+      if ($$1.dI() == null) {
+         $$1.a(blp.c.b);
+      }
    }
 }

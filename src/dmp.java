@@ -1,19 +1,24 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Stream;
 
-public interface dmp<T extends dmg> {
-   @Nullable
-   T a(int var1);
+public class dmp<T> {
+   private final csp a;
+   private final List<T> b;
 
-   @Nullable
-   T a(UUID var1);
+   public dmp(csp $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   Iterable<T> a();
+   public csp a() {
+      return this.a;
+   }
 
-   <U extends T> void a(dmn<T, U> var1, asm<U> var2);
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-   void a(ekw var1, Consumer<T> var2);
-
-   <U extends T> void a(dmn<T, U> var1, ekw var2, asm<U> var3);
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

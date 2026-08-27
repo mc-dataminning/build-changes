@@ -1,43 +1,70 @@
-public class fpl extends fqw {
-   private final fqr a;
-
-   protected fpl(fmt $$0, double $$1, double $$2, double $$3, fqr $$4) {
+public class fpl extends frn {
+   fpl(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
       super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
-   }
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
 
-   @Override
-   public fqa b() {
-      return fqa.d;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
    public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
       } else {
-         this.b(this.a);
+         this.k();
       }
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+   @Override
+   public fqr b() {
+      return fqr.c;
+   }
 
-      public a(fqr $$0) {
+   public static class a implements fqq<ka> {
+      private final fri a;
+
+      public a(fri $$0) {
          this.a = $$0;
       }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpl($$1, $$2, $$3, $$4, this.a);
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpl $$8 = new fpl($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fqq<ka> {
+      private final fri a;
+
+      public b(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpl $$8 = new fpl($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

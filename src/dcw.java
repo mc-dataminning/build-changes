@@ -1,80 +1,63 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcw extends cwi implements cwc, dap {
-   public static final MapCodec<dcw> a = b(dcw::new);
-   protected static final float b = 6.0F;
-   protected static final elu c = cvz.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-
-   @Override
-   public MapCodec<dcw> a() {
-      return a;
-   }
-
-   protected dcw(dio.d $$0) {
-      super($$0);
-   }
+public class dcw extends cws implements cwm {
+   public static final MapCodec<dcw> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dip.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dcw::new)
+   );
+   public static final dka f = djq.aU;
+   protected static final float g = 6.0F;
+   protected static final emf h = cwj.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   protected final dip i;
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return c;
+   public MapCodec<? extends dcw> a() {
+      return e;
    }
 
-   @Override
-   protected boolean b(dip $$0, cse $$1, hv $$2) {
-      return $$0.d($$1, $$2, ia.b) && !$$0.a(cwb.kJ);
-   }
-
-   @Nullable
-   @Override
-   public dip a(coq $$0) {
-      edz $$1 = $$0.q().b_($$0.a());
-      return $$1.a(arw.a) && $$1.e() == 8 ? super.a($$0) : null;
+   protected dcw(dip $$0, diz.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.k(this.E.b().a(f, Integer.valueOf(0)));
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      dip $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!$$6.i()) {
-         $$3.a($$4, eea.c, eea.c.a($$3));
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return h;
+   }
+
+   @Override
+   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
       }
-
-      return $$6;
    }
 
-   @Override
-   public boolean b(ctb $$0, hv $$1, dip $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
-      return true;
-   }
-
-   @Override
-   public edz c_(dip $$0) {
-      return eea.c.a(false);
-   }
-
-   @Override
-   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
-      dip $$4 = cwb.bx.o();
-      dip $$5 = $$4.a(dee.d, djl.a);
-      hv $$6 = $$2.c();
-      if ($$0.a_($$6).a(cwb.G)) {
-         $$0.a($$2, $$4, 2);
-         $$0.a($$6, $$5, 2);
+   public void a(amz $$0, hx $$1, dja $$2, aup $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 4);
+      } else {
+         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
       }
    }
 
    @Override
-   public boolean a(@Nullable cer $$0, cse $$1, hv $$2, dip $$3, edy $$4) {
-      return false;
+   public boolean b(ctl $$0, hx $$1, dja $$2) {
+      return true;
    }
 
    @Override
-   public boolean a(csz $$0, hv $$1, dip $$2, edz $$3) {
-      return false;
+   public boolean a(cti $$0, aup $$1, hx $$2, dja $$3) {
+      return (double)$$0.z.i() < 0.45;
+   }
+
+   @Override
+   public void a(amz $$0, aup $$1, hx $$2, dja $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(f);
    }
 }

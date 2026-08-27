@@ -1,58 +1,53 @@
-import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.Set;
 
-public class awe extends bag {
-   public static final String a = "_filtered_correct";
-   private static final String b = "black";
+public class awe extends DataFix {
+   private final String a;
+   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
 
-   public awe(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, bbg.s, $$2);
+   public awe(Schema $$0) {
+      super($$0, false);
+      this.a = "Blending Data Fix v" + $$0.getVersionKey();
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.set("front_text", b($$0)).set("back_text", c($$0)).set("is_waxed", $$0.createBoolean(false));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bbq.c);
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = avf.a($$0.getOps());
-      List<Dynamic<T>> $$2 = a($$0, "Text").map($$1x -> $$1x.orElse($$1)).toList();
-      Dynamic<T> $$3 = $$0.emptyMap()
-         .set("messages", $$0.createList($$2.stream()))
-         .set("color", $$0.get("Color").result().orElse($$0.createString("black")))
-         .set("has_glowing_text", $$0.get("GlowingText").result().orElse($$0.createBoolean(false)))
-         .set("_filtered_correct", $$0.createBoolean(true));
-      List<Optional<Dynamic<T>>> $$4 = a($$0, "FilteredText").toList();
-      if ($$4.stream().anyMatch(Optional::isPresent)) {
-         $$3 = $$3.set("filtered_messages", $$0.createList(Streams.mapWithIndex($$4.stream(), ($$1x, $$2x) -> {
-            Dynamic<T> $$3x = $$2.get((int)$$2x);
-            return $$1x.orElse($$3x);
-         })));
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      $$0 = $$0.remove("blending_data");
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
+      if ($$2 && $$3.isPresent()) {
+         String $$4 = bcy.a($$3.get().asString("empty"));
+         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
+         if (!b.contains($$4)) {
+            $$0 = a($$0, 384, -64);
+         } else if ($$5.isPresent()) {
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
+            String $$7 = bcy.a($$6.get("target_status").asString("empty"));
+            if (!b.contains($$7)) {
+               $$0 = a($$0, 256, 0);
+            }
+         }
       }
 
-      return $$3;
+      return $$0;
    }
 
-   private static <T> Stream<Optional<Dynamic<T>>> a(Dynamic<T> $$0, String $$1) {
-      return Stream.of($$0.get($$1 + "1").result(), $$0.get($$1 + "2").result(), $$0.get($$1 + "3").result(), $$0.get($$1 + "4").result());
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return $$0.emptyMap().set("messages", d($$0)).set("color", $$0.createString("black")).set("has_glowing_text", $$0.createBoolean(false));
-   }
-
-   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = avf.a($$0.getOps());
-      return $$0.createList(Stream.of($$1, $$1, $$1, $$1));
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), awe::a);
+   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
+      return $$0.set(
+         "blending_data",
+         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(iz.a($$2)), $$0.createString("max_section"), $$0.createInt(iz.a($$2 + $$1))))
+      );
    }
 }

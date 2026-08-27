@@ -1,28 +1,25 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class ean extends dyo {
-   public static final Codec<ean> d = a(ean::new);
+record ean(ahc<eai> c, bif<ahc<eai>> d) implements eak {
+   static Codec<ean> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ahc.a(ke.aG).fieldOf("alias").forGetter(ean::c), bif.b(ahc.a(ke.aG)).fieldOf("targets").forGetter(ean::d)).apply($$0, ean::new)
+   );
 
-   public ean(dyo.c $$0) {
-      super($$0);
+   @Override
+   public void a(aup $$0, BiConsumer<ahc<eai>, ahc<eai>> $$1) {
+      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (ahc<eai>)$$1x.b()));
    }
 
    @Override
-   public Optional<dyo.b> a(dyo.a $$0) {
-      return a($$0, dny.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(dzg $$0, dyo.a $$1) {
-      csf $$2 = $$1.h();
-      dox $$3 = $$1.f();
-      hv $$4 = new hv($$2.d(), 90, $$2.e());
-      dcl $$5 = dcl.a($$3);
-      eam.a($$1.e(), $$4, $$5, $$0, $$3);
+   public Stream<ahc<eai>> a() {
+      return this.d.e().stream().map(bih.b::b);
    }
 
    @Override
-   public dyx<?> e() {
-      return dyx.e;
+   public Codec<ean> b() {
+      return a;
    }
 }

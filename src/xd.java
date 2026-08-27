@@ -1,26 +1,16 @@
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class xd implements wu<wx> {
-   private final Map<ags<? extends ir<?>>, asj.a> a;
+public interface xd<T extends um> {
+   void a(ug var1);
 
-   public xd(Map<ags<? extends ir<?>>, asj.a> $$0) {
-      this.a = $$0;
+   void a(T var1);
+
+   default boolean b() {
+      return false;
    }
 
-   public xd(ue $$0) {
-      this.a = $$0.a(ue::u, asj.a::b);
-   }
-
-   @Override
-   public void a(ue $$0) {
-      $$0.a(this.a, ue::b, ($$0x, $$1) -> $$1.a($$0x));
-   }
-
-   public void a(wx $$0) {
-      $$0.a(this);
-   }
-
-   public Map<ags<? extends ir<?>>, asj.a> a() {
-      return this.a;
+   @Nullable
+   default uf c() {
+      return null;
    }
 }

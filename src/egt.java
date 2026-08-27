@@ -1,70 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class egt extends egq {
-   public static final Codec<egt> a = a(egt::new);
+@FunctionalInterface
+public interface egt {
+   @Nullable
+   <T> T getElement(egr<T> var1);
 
-   egt(List<egx> $$0, List<ejd> $$1) {
-      super($$0, $$1);
+   @Nullable
+   default <T> T getElement(egu<T> $$0, ahd $$1) {
+      return this.getElement(new egr<>($$0, $$1));
    }
 
-   @Override
-   public egy a() {
-      return egv.i;
+   default <T> Optional<T> getElementOptional(egr<T> $$0) {
+      return Optional.ofNullable(this.getElement($$0));
    }
 
-   @Override
-   protected egp a(List<? extends egp> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (egp)$$0.get(0);
-         case 2 -> {
-            egp $$1 = $$0.get(0);
-            egp $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (egp $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   default <T> Optional<T> getElementOptional(egu<T> $$0, ahd $$1) {
+      return this.getElementOptional(new egr<>($$0, $$1));
    }
 
-   public static egt.a a(egx.a<?>... $$0) {
-      return new egt.a($$0);
-   }
-
-   public static class a extends egx.a<egt.a> {
-      private final Builder<egx> a = ImmutableList.builder();
-
-      public a(egx.a<?>... $$0) {
-         for (egx.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected egt.a a() {
-         return this;
-      }
-
-      @Override
-      public egt.a b(egx.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public egx b() {
-         return new egt(this.a.build(), this.f());
-      }
+   default egx getLootTable(ahd $$0) {
+      return this.getElementOptional(egu.c, $$0).orElse(egx.a);
    }
 }

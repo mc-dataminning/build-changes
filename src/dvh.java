@@ -1,17 +1,48 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dvh {
-   public static final Codec<dvh> a = kb.V.q().dispatch(dvh::a, dvi::a);
+public class dvh extends dvd {
+   public static final Codec<dvh> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bja.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dvh::new)
+   );
+   private final bja b;
 
-   public static dvq a(dip $$0) {
-      return new dvq($$0);
+   public dvh(bja $$0, bja $$1, bja $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public static dvq a(cvz $$0) {
-      return new dvq($$0.o());
+   @Override
+   protected dve<?> a() {
+      return dve.c;
    }
 
-   protected abstract dvi<?> a();
+   @Override
+   protected void a(cto $$0, dvd.b $$1, aup $$2, dun $$3, int $$4, dvd.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
 
-   public abstract dip a(auf var1, hv var2);
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
+      }
+   }
+
+   @Override
+   public int a(aup $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(aup $$0, int $$1, dun $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(aup $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   }
 }

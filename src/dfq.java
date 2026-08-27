@@ -1,20 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dfq extends dey {
-   public static final MapCodec<dfq> b = b(dfq::new);
-
-   @Override
-   public MapCodec<dfq> a() {
-      return b;
-   }
-
-   protected dfq(dio.d $$0) {
-      super(dda.b.d, $$0);
-   }
+public class dfq extends dfl implements dfm {
+   public static final MapCodec<dfq> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dfm.a.e.fieldOf("weathering_state").forGetter(dfq::g), u()).apply($$0, dfq::new)
+   );
+   private final dfm.a f;
 
    @Override
-   public void a(csy $$0, hv $$1, dip $$2, @Nullable blv $$3, cmh $$4) {
-      cwb.gG.a($$0, $$1, $$2, $$3, $$4);
+   protected MapCodec<dfq> a() {
+      return e;
+   }
+
+   protected dfq(dfm.a $$0, diz.d $$1) {
+      super($$1);
+      this.f = $$0;
+   }
+
+   @Override
+   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dja $$0) {
+      return dfm.c($$0.b()).isPresent();
+   }
+
+   public dfm.a g() {
+      return this.f;
    }
 }

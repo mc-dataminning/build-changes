@@ -1,31 +1,15 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 
-public class eal extends dyo {
-   public static final Codec<eal> d = a(eal::new);
-
-   public eal(dyo.c $$0) {
-      super($$0);
+public class eal {
+   public static Codec<? extends eak> a(it<Codec<? extends eak>> $$0) {
+      it.a($$0, "random", ean.a);
+      it.a($$0, "random_group", eao.a);
+      return it.a($$0, "direct", eaj.a);
    }
 
-   @Override
-   public Optional<dyo.b> a(dyo.a $$0) {
-      dcl $$1 = dcl.a($$0.f());
-      hv $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dyo.b($$2, (Consumer<dzg>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(dzg $$0, hv $$1, dcl $$2, dyo.a $$3) {
-      List<dys> $$4 = Lists.newArrayList();
-      eak.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
-   }
-
-   @Override
-   public dyx<?> e() {
-      return dyx.c;
+   public static void a(pc<eai> $$0, ih<eai> $$1, List<eak> $$2) {
+      $$2.stream().flatMap(eak::a).map($$0x -> $$0x.a().a()).forEach($$2x -> pj.a($$0, $$2x, new eai($$1, List.of(Pair.of(eag.b($$2x), 1)), eai.a.b)));
    }
 }

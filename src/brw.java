@@ -1,68 +1,61 @@
-public class brw extends bru {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+import com.google.common.collect.ImmutableMap;
 
-   public brw(blx $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
-      super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
+public class brw extends bnw<cef> {
+   private static final int d = 15;
+   private static final int e = 20;
+   private static final double f = 0.5;
+   private static final double g = 2.5;
+   public static final int c = 40;
+   private static final int h = aui.c(34.0);
+   private static final int i = aui.f(60.0F);
+
+   public brw() {
+      super(ImmutableMap.of(bvh.o, bvi.a, bvh.aI, bvi.b, bvh.aJ, bvi.c, bvh.aK, bvi.c), i);
    }
 
-   @Override
-   public void a() {
-      if (this.r && this.d.aZ()) {
-         this.d.g(this.d.dp().b(0.0, 0.005, 0.0));
-      }
+   protected boolean a(amz $$0, cef $$1) {
+      return $$1.a($$1.dO().c(bvh.o).get(), 15.0, 20.0);
+   }
 
-      if (this.k == bru.a.b && !this.d.N().l()) {
-         double $$0 = this.e - this.d.dr();
-         double $$1 = this.f - this.d.dt();
-         double $$2 = this.g - this.d.dx();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.A(0.0F);
-         } else {
-            float $$4 = (float)(aty.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.r(this.a(this.d.dC(), $$4, (float)this.o));
-            this.d.aU = this.d.dC();
-            this.d.aW = this.d.dC();
-            float $$5 = (float)(this.h * this.d.b(bnb.m));
-            if (this.d.aZ()) {
-               this.d.w($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(aty.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = aty.a(aty.g($$7), (float)(-this.n), (float)this.n);
-                  this.d.s(this.a(this.d.dE(), $$7, 5.0F));
-               }
+   protected boolean a(amz $$0, cef $$1, long $$2) {
+      return true;
+   }
 
-               float $$8 = aty.b(this.d.dE() * (float) (Math.PI / 180.0));
-               float $$9 = aty.a(this.d.dE() * (float) (Math.PI / 180.0));
-               this.d.bm = $$8 * $$5;
-               this.d.bl = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(aty.g(this.d.dC() - $$4));
-               float $$11 = a($$10);
-               this.d.w($$5 * this.q * $$11);
+   protected void b(amz $$0, cef $$1, long $$2) {
+      $$1.dO().a(bvh.p, true, (long)i);
+      $$1.dO().a(bvh.aK, avm.a, (long)h);
+      $$0.a($$1, (byte)62);
+      $$1.a(arm.AM, 3.0F, 1.0F);
+   }
+
+   protected void c(amz $$0, cef $$1, long $$2) {
+      $$1.dO().c(bvh.o).ifPresent($$1x -> $$1.I().a($$1x.dk()));
+      if (!$$1.dO().a(bvh.aK) && !$$1.dO().a(bvh.aJ)) {
+         $$1.dO().a(bvh.aJ, avm.a, (long)(i - h));
+         $$1.dO().c(bvh.o).filter($$1::a).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            elm $$3 = $$1.dk().b(0.0, 1.6F, 0.0);
+            elm $$4 = $$2x.br().d($$3);
+            elm $$5 = $$4.d();
+
+            for (int $$6 = 1; $$6 < aui.a($$4.f()) + 7; $$6++) {
+               elm $$7 = $$3.e($$5.a((double)$$6));
+               $$0.a(jx.A, $$7.c, $$7.d, $$7.e, 1, 0.0, 0.0, 0.0, 0.0);
             }
-         }
-      } else {
-         this.d.w(0.0F);
-         this.d.C(0.0F);
-         this.d.B(0.0F);
-         this.d.A(0.0F);
+
+            $$1.a(arm.AL, 3.0F, 1.0F);
+            $$2x.a($$0.ai().e($$1), 10.0F);
+            double $$8 = 0.5 * (1.0 - $$2x.b(bnl.i));
+            double $$9 = 2.5 * (1.0 - $$2x.b(bnl.i));
+            $$2x.j($$5.a() * $$9, $$5.b() * $$8, $$5.c() * $$9);
+         });
       }
    }
 
-   private static float a(float $$0) {
-      return 1.0F - aty.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
+   protected void d(amz $$0, cef $$1, long $$2) {
+      a($$1, 40);
+   }
+
+   public static void a(bmf $$0, int $$1) {
+      $$0.dO().a(bvh.aI, avm.a, (long)$$1);
    }
 }

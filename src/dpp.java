@@ -1,21 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-@Deprecated
-public class dpp extends dpq {
-   public static final Codec<dpp> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dpp::new));
+class dpp extends dps {
+   public static final Codec<dpp> a = a(dpp::new);
 
-   public dpp(iz $$0) {
+   public dpp(List<dpq> $$0) {
       super($$0);
    }
 
-   @Override
-   protected boolean a(dip $$0) {
-      return $$0.e();
+   public boolean a(cud $$0, hx $$1) {
+      for (dpq $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public dpg<?> a() {
-      return dpg.e;
+   public dpr<?> a() {
+      return dpr.i;
    }
 }

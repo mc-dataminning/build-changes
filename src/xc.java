@@ -1,57 +1,72 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class xc implements wu<wx> {
-   public static final int a = 40;
-   private final String b;
-   private final String c;
-   private final boolean d;
-   @Nullable
-   private final vb e;
-
-   public xc(String $$0, String $$1, boolean $$2, @Nullable vb $$3) {
-      if ($$1.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + $$1.length() + ")");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
+public interface xc {
+   int a = 4096;
+   xc b = new xc() {
+      @Override
+      public void a(xd<?> $$0, Consumer<xd<?>> $$1) {
+         $$1.accept($$0);
       }
+
+      @Nullable
+      @Override
+      public xc.a a(xd<?> $$0) {
+         return null;
+      }
+   };
+
+   static <T extends um, P extends xb<T>> xc a(final Class<P> $$0, final Function<Iterable<xd<T>>, P> $$1, final xa<T> $$2) {
+      return new xc() {
+         @Override
+         public void a(xd<?> $$0x, Consumer<xd<?>> $$1x) {
+            if ($$0.getClass() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.a().forEach($$1);
+               $$1.accept($$2);
+            } else {
+               $$1.accept($$0);
+            }
+         }
+
+         @Nullable
+         @Override
+         public xc.a a(xd<?> $$0x) {
+            return $$0 == $$2 ? new xc.a() {
+               private final List<xd<T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public xd<?> a(xd<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((xd<T>)$$0);
+                     return null;
+                  }
+               }
+            } : null;
+         }
+      };
    }
 
-   public xc(ue $$0) {
-      this.b = $$0.s();
-      this.c = $$0.d(40);
-      this.d = $$0.readBoolean();
-      this.e = $$0.c(ue::m);
-   }
-
-   @Override
-   public void a(ue $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ue::a);
-   }
-
-   public void a(wx $$0) {
-      $$0.a(this);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
+   void a(xd<?> var1, Consumer<xd<?>> var2);
 
    @Nullable
-   public vb f() {
-      return this.e;
+   xc.a a(xd<?> var1);
+
+   public interface a {
+      @Nullable
+      xd<?> a(xd<?> var1);
+   }
+
+   public interface b {
+      xc c();
    }
 }

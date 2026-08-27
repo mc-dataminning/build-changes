@@ -1,26 +1,54 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-@FunctionalInterface
-public interface dzc<C extends dtg> {
-   Optional<dzb<C>> createGenerator(dzc.a<C> var1);
+public class dzc extends efp {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   static <C extends dtg> dzc<C> simple(Predicate<dzc.a<C>> $$0, dzb<C> $$1) {
-      Optional<dzb<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   public static efp.a<dzc> a() {
+      return new efp.a<>(dzc::new, dzc::b, avq.o);
    }
 
-   static <C extends dtg> Predicate<dzc.a<C>> checkForBiomeOnTop(dny.a $$0) {
-      return $$1 -> $$1.a($$0);
+   private dzc(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static record a<C extends dtg>(dkm a, cub b, dom c, long d, csf e, C f, cta g, Predicate<ie<ctx>> h, ecp i, is j) {
-      public boolean a(dny.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         ie<ctx> $$4 = this.a.c().getNoiseBiome(iq.a($$1), iq.a($$3), iq.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   public dzc() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static dzc b(sl $$0) {
+      return new dzc(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public sl a(sl $$0) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

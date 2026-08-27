@@ -1,43 +1,44 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dre<FC extends dtg> {
-   private final Optional<dqp<?, ?>> a;
-   private final ctt b;
-   private final dkm c;
-   private final auf d;
-   private final hv e;
-   private final FC f;
-
-   public dre(Optional<dqp<?, ?>> $$0, ctt $$1, dkm $$2, auf $$3, hv $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class dre extends drc {
+   public dre(Codec<dty> $$0) {
+      super($$0);
    }
 
-   public Optional<dqp<?, ?>> a() {
-      return this.a;
-   }
+   @Override
+   protected boolean a(ctj $$0, aup $$1, hx $$2, dja $$3) {
+      hx.a $$4 = $$2.j();
+      int $$5 = $$1.a(3) + 1;
 
-   public ctt b() {
-      return this.b;
-   }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
+         }
 
-   public dkm c() {
-      return this.c;
-   }
+         $$4.c(ic.b);
+      }
 
-   public auf d() {
-      return this.d;
-   }
+      hx $$7 = $$4.i();
+      int $$8 = $$1.a(3) + 2;
+      List<ic> $$9 = ic.c.a.c($$1);
 
-   public hv e() {
-      return this.e;
-   }
+      for (ic $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
 
-   public FC f() {
-      return this.f;
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ic.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
+            }
+         }
+      }
+
+      return true;
    }
 }

@@ -1,13 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public interface ecc<P extends ecb> {
-   ecc<eca> a = a("always_true", eca.a);
-   ecc<eby> b = a("linear_pos", eby.a);
-   ecc<ebn> c = a("axis_aligned_linear_pos", ebn.a);
+public class ecc extends ect {
+   public static final Codec<ecc> a = kd.e.q().fieldOf("block").xmap(ecc::new, $$0 -> $$0.b).codec();
+   private final cwj b;
 
-   Codec<P> codec();
+   public ecc(cwj $$0) {
+      this.b = $$0;
+   }
 
-   static <P extends ecb> ecc<P> a(String $$0, Codec<P> $$1) {
-      return ir.a(kb.q, $$0, () -> $$1);
+   @Override
+   public boolean a(dja $$0, aup $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected ecu<?> a() {
+      return ecu.b;
    }
 }

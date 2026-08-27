@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dkh implements ave {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dkh {
+   private final String d;
+
+   private dkh(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

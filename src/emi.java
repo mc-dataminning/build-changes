@@ -1,126 +1,87 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class emi<T> implements emo<T>, emq<T> {
-   private final Queue<emn<T>> a = new PriorityQueue<>(emn.a);
+public class emi {
+   private final emq a;
+   private final String b;
+   private final emt c;
+   private vd d;
+   private vd e;
+   private emt.a f;
+   private boolean g;
    @Nullable
-   private List<emm<T>> b;
-   private final Set<emn<?>> c = new ObjectOpenCustomHashSet(emn.c);
-   @Nullable
-   private BiConsumer<emi<T>, emn<T>> d;
+   private wt h;
 
-   public emi() {
+   public emi(emq $$0, String $$1, emt $$2, vd $$3, emt.a $$4, boolean $$5, @Nullable wt $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.i();
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   public emi(List<emm<T>> $$0) {
-      this.b = $$0;
-
-      for (emm<T> $$1 : $$0) {
-         this.c.add(emn.a($$1.a(), $$1.b()));
-      }
+   public emq a() {
+      return this.a;
    }
 
-   public void a(@Nullable BiConsumer<emi<T>, emn<T>> $$0) {
+   public String b() {
+      return this.b;
+   }
+
+   public emt c() {
+      return this.c;
+   }
+
+   public vd d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   @Nullable
+   public wt f() {
+      return this.h;
+   }
+
+   public wt a(wt $$0) {
+      return Objects.requireNonNullElse(this.h, $$0);
+   }
+
+   private vd i() {
+      return vg.a((vd)this.d.f().a($$0 -> $$0.a(new vj(vj.a.a, vd.b(this.b)))));
+   }
+
+   public vd g() {
+      return this.e;
+   }
+
+   public void a(vd $$0) {
       this.d = $$0;
+      this.e = this.i();
+      this.a.b(this);
    }
 
-   @Nullable
-   public emn<T> b() {
-      return this.a.peek();
+   public emt.a h() {
+      return this.f;
    }
 
-   @Nullable
-   public emn<T> c() {
-      emn<T> $$0 = this.a.poll();
-      if ($$0 != null) {
-         this.c.remove($$0);
-      }
-
-      return $$0;
+   public void a(emt.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
    }
 
-   @Override
-   public void a(emn<T> $$0) {
-      if (this.c.add($$0)) {
-         this.b($$0);
-      }
+   public void a(boolean $$0) {
+      this.g = $$0;
+      this.a.b(this);
    }
 
-   private void b(emn<T> $$0) {
-      this.a.add($$0);
-      if (this.d != null) {
-         this.d.accept(this, $$0);
-      }
-   }
-
-   @Override
-   public boolean a(hv $$0, T $$1) {
-      return this.c.contains(emn.a($$1, $$0));
-   }
-
-   public void a(Predicate<emn<T>> $$0) {
-      Iterator<emn<T>> $$1 = this.a.iterator();
-
-      while ($$1.hasNext()) {
-         emn<T> $$2 = $$1.next();
-         if ($$0.test($$2)) {
-            $$1.remove();
-            this.c.remove($$2);
-         }
-      }
-   }
-
-   public Stream<emn<T>> d() {
-      return this.a.stream();
-   }
-
-   @Override
-   public int a() {
-      return this.a.size() + (this.b != null ? this.b.size() : 0);
-   }
-
-   public sp a(long $$0, Function<T, String> $$1) {
-      sp $$2 = new sp();
-      if (this.b != null) {
-         for (emm<T> $$3 : this.b) {
-            $$2.add($$3.a($$1));
-         }
-      }
-
-      for (emn<T> $$4 : this.a) {
-         $$2.add(emm.a($$4, $$1, $$0));
-      }
-
-      return $$2;
-   }
-
-   public void a(long $$0) {
-      if (this.b != null) {
-         int $$1 = -this.b.size();
-
-         for (emm<T> $$2 : this.b) {
-            this.b($$2.a($$0, (long)($$1++)));
-         }
-      }
-
-      this.b = null;
-   }
-
-   public static <T> emi<T> a(sp $$0, Function<String, Optional<T>> $$1, csf $$2) {
-      Builder<emm<T>> $$3 = ImmutableList.builder();
-      emm.a($$0, $$1, $$2, $$3::add);
-      return new emi<>($$3.build());
+   public void b(@Nullable wt $$0) {
+      this.h = $$0;
+      this.a.b(this);
    }
 }

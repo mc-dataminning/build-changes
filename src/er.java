@@ -3,75 +3,97 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class er<T> implements ArgumentType<ags<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vb.b("commands.place.feature.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vb.b("commands.place.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vb.b("commands.place.jigsaw.invalid", $$0));
-   final ags<? extends ir<T>> e;
+public class er<T> implements ArgumentType<ih.c<T>> {
+   private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vd.b("entity.not_summonable", $$0));
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vd.b("argument.resource.not_found", $$0, $$1));
+   public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> vd.b("argument.resource.invalid_type", $$0, $$1, $$2)
+   );
+   final ahc<? extends it<T>> e;
+   private final ij<T> f;
 
-   public er(ags<? extends ir<T>> $$0) {
-      this.e = $$0;
+   public er(dn $$0, ahc<? extends it<T>> $$1) {
+      this.e = $$1;
+      this.f = $$0.a($$1);
    }
 
-   public static <T> er<T> a(ags<? extends ir<T>> $$0) {
-      return new er<>($$0);
+   public static <T> er<T> a(dn $$0, ahc<? extends it<T>> $$1) {
+      return new er<>($$0, $$1);
    }
 
-   private static <T> ags<T> a(CommandContext<ds> $$0, String $$1, ags<ir<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      ags<?> $$4 = (ags<?>)$$0.getArgument($$1, ags.class);
-      Optional<ags<T>> $$5 = $$4.c($$2);
-      return $$5.orElseThrow(() -> $$3.create($$4));
+   public static <T> ih.c<T> a(CommandContext<ds> $$0, String $$1, ahc<it<T>> $$2) throws CommandSyntaxException {
+      ih.c<T> $$3 = (ih.c<T>)$$0.getArgument($$1, ih.c.class);
+      ahc<?> $$4 = $$3.g();
+      if ($$4.b($$2)) {
+         return $$3;
+      } else {
+         throw b.create($$4.a(), $$4.b(), $$2.a());
+      }
    }
 
-   private static <T> ir<T> a(CommandContext<ds> $$0, ags<? extends ir<T>> $$1) {
-      return ((ds)$$0.getSource()).l().aZ().d($$1);
+   public static ih.c<bng> a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ke.c);
    }
 
-   private static <T> ie.c<T> b(CommandContext<ds> $$0, String $$1, ags<ir<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      ags<T> $$4 = a($$0, $$1, $$2, $$3);
-      return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
+   public static ih.c<dra<?, ?>> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ke.aw);
    }
 
-   public static ie.c<dqp<?, ?>> a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, kc.av, b);
+   public static ih.c<dyz> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ke.aD);
    }
 
-   public static ie.c<dyo> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, kc.aC, c);
+   public static ih.c<blt<?>> d(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ke.u);
    }
 
-   public static ie.c<dzx> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, kc.aF, d);
+   public static ih.c<blt<?>> e(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      ih.c<blt<?>> $$2 = a($$0, $$1, ke.u);
+      if (!$$2.a().c()) {
+         throw d.create($$2.g().a().toString());
+      } else {
+         return $$2;
+      }
    }
 
-   public ags<T> a(StringReader $$0) throws CommandSyntaxException {
-      agt $$1 = agt.a($$0);
-      return ags.a(this.e, $$1);
+   public static ih.c<bla> f(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ke.Q);
+   }
+
+   public static ih.c<crc> g(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ke.t);
+   }
+
+   public ih.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      ahd $$1 = ahd.a($$0);
+      ahc<T> $$2 = ahc.a(this.e, $$1);
+      return this.f.a($$2).orElseThrow(() -> a.create($$1, this.e.a()));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof dw $$2 ? $$2.a(this.e, dw.a.b, $$1, $$0) : $$1.buildFuture();
+      return dx.a(this.f.c().map(ahc::a), $$1);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return c;
    }
 
-   public static class a<T> implements hh<er<T>, er.a<T>.a> {
-      public void a(er.a<T>.a $$0, ue $$1) {
+   public static class a<T> implements hj<er<T>, er.a<T>.a> {
+      public void a(er.a<T>.a $$0, ug $$1) {
          $$1.b($$0.b);
       }
 
-      public er.a<T>.a a(ue $$0) {
+      public er.a<T>.a a(ug $$0) {
          return new er.a.a($$0.u());
       }
 
@@ -83,19 +105,19 @@ public class er<T> implements ArgumentType<ags<T>> {
          return new er.a.a($$0.e);
       }
 
-      public final class a implements hh.a<er<T>> {
-         final ags<? extends ir<T>> b;
+      public final class a implements hj.a<er<T>> {
+         final ahc<? extends it<T>> b;
 
-         a(ags<? extends ir<T>> $$1) {
+         a(ahc<? extends it<T>> $$1) {
             this.b = $$1;
          }
 
          public er<T> a(dn $$0) {
-            return new er<>(this.b);
+            return new er<>($$0, this.b);
          }
 
          @Override
-         public hh<er<T>, ?> a() {
+         public hj<er<T>, ?> a() {
             return a.this;
          }
       }

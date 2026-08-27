@@ -1,141 +1,525 @@
-import java.util.Arrays;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.DynamicLike;
+import java.util.List;
 
 public class dkr {
-   public static final int a = 16;
-   public static final int b = 128;
-   public static final int c = 2048;
-   private static final int e = 4;
-   @Nullable
-   protected byte[] d;
-   private int f;
+   public static final double c = 5.999997E7F;
+   public static final double d = 2.9999984E7;
+   private final List<dkp> a = Lists.newArrayList();
+   private double b = 0.2;
+   private double f = 5.0;
+   private int g = 15;
+   private int h = 5;
+   private double i;
+   private double j;
+   int k = 29999984;
+   private dkr.a l = new dkr.d(5.999997E7F);
+   public static final dkr.c e = new dkr.c(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
 
-   public dkr() {
-      this(0);
+   public boolean a(hx $$0) {
+      return (double)($$0.u() + 1) > this.e() && (double)$$0.u() < this.g() && (double)($$0.w() + 1) > this.f() && (double)$$0.w() < this.h();
    }
 
-   public dkr(int $$0) {
-      this.f = $$0;
+   public boolean a(csp $$0) {
+      return (double)$$0.f() > this.e() && (double)$$0.d() < this.g() && (double)$$0.g() > this.f() && (double)$$0.e() < this.h();
    }
 
-   public dkr(byte[] $$0) {
-      this.d = $$0;
-      this.f = 0;
-      if ($$0.length != 2048) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
+   public boolean a(double $$0, double $$1) {
+      return $$0 > this.e() && $$0 < this.g() && $$1 > this.f() && $$1 < this.h();
+   }
+
+   public boolean a(double $$0, double $$1, double $$2) {
+      return $$0 > this.e() - $$2 && $$0 < this.g() + $$2 && $$1 > this.f() - $$2 && $$1 < this.h() + $$2;
+   }
+
+   public boolean a(elh $$0) {
+      return $$0.d > this.e() && $$0.a < this.g() && $$0.f > this.f() && $$0.c < this.h();
+   }
+
+   public hx b(double $$0, double $$1, double $$2) {
+      return hx.a(aui.a($$0, this.e(), this.g()), $$1, aui.a($$2, this.f(), this.h()));
+   }
+
+   public double a(blp $$0) {
+      return this.b($$0.dr(), $$0.dx());
+   }
+
+   public emf c() {
+      return this.l.m();
+   }
+
+   public double b(double $$0, double $$1) {
+      double $$2 = $$1 - this.f();
+      double $$3 = this.h() - $$1;
+      double $$4 = $$0 - this.e();
+      double $$5 = this.g() - $$0;
+      double $$6 = Math.min($$4, $$5);
+      $$6 = Math.min($$6, $$2);
+      return Math.min($$6, $$3);
+   }
+
+   public boolean a(blp $$0, elh $$1) {
+      double $$2 = Math.max(aui.a($$1.b(), $$1.d()), 1.0);
+      return this.a($$0) < $$2 * 2.0 && this.a($$0.dr(), $$0.dx(), $$2);
+   }
+
+   public dkq d() {
+      return this.l.i();
+   }
+
+   public double e() {
+      return this.l.a();
+   }
+
+   public double f() {
+      return this.l.c();
+   }
+
+   public double g() {
+      return this.l.b();
+   }
+
+   public double h() {
+      return this.l.d();
+   }
+
+   public double a() {
+      return this.i;
+   }
+
+   public double b() {
+      return this.j;
+   }
+
+   public void c(double $$0, double $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l.k();
+
+      for (dkp $$2 : this.l()) {
+         $$2.a(this, $$0, $$1);
       }
    }
 
-   public int a(int $$0, int $$1, int $$2) {
-      return this.d(b($$0, $$1, $$2));
+   public double i() {
+      return this.l.e();
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.a(b($$0, $$1, $$2), $$3);
+   public long j() {
+      return this.l.g();
    }
 
-   private static int b(int $$0, int $$1, int $$2) {
-      return $$1 << 8 | $$2 << 4 | $$0;
+   public double k() {
+      return this.l.h();
    }
 
-   private int d(int $$0) {
-      if (this.d == null) {
-         return this.f;
-      } else {
-         int $$1 = f($$0);
-         int $$2 = e($$0);
-         return this.d[$$1] >> 4 * $$2 & 15;
+   public void a(double $$0) {
+      this.l = new dkr.d($$0);
+
+      for (dkp $$1 : this.l()) {
+         $$1.a(this, $$0);
       }
    }
 
-   private void a(int $$0, int $$1) {
-      byte[] $$2 = this.a();
-      int $$3 = f($$0);
-      int $$4 = e($$0);
-      int $$5 = ~(15 << 4 * $$4);
-      int $$6 = ($$1 & 15) << 4 * $$4;
-      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
+   public void a(double $$0, double $$1, long $$2) {
+      this.l = (dkr.a)($$0 == $$1 ? new dkr.d($$1) : new dkr.b($$0, $$1, $$2));
+
+      for (dkp $$3 : this.l()) {
+         $$3.a(this, $$0, $$1, $$2);
+      }
    }
 
-   private static int e(int $$0) {
-      return $$0 & 1;
+   protected List<dkp> l() {
+      return Lists.newArrayList(this.a);
    }
 
-   private static int f(int $$0) {
-      return $$0 >> 1;
+   public void a(dkp $$0) {
+      this.a.add($$0);
+   }
+
+   public void b(dkp $$0) {
+      this.a.remove($$0);
    }
 
    public void a(int $$0) {
+      this.k = $$0;
+      this.l.j();
+   }
+
+   public int m() {
+      return this.k;
+   }
+
+   public double n() {
+      return this.f;
+   }
+
+   public void b(double $$0) {
       this.f = $$0;
-      this.d = null;
+
+      for (dkp $$1 : this.l()) {
+         $$1.c(this, $$0);
+      }
    }
 
-   private static byte g(int $$0) {
-      byte $$1 = (byte)$$0;
+   public double o() {
+      return this.b;
+   }
 
-      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
-         $$1 = (byte)($$1 | $$0 << $$2);
+   public void c(double $$0) {
+      this.b = $$0;
+
+      for (dkp $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public double p() {
+      return this.l.f();
+   }
+
+   public int q() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+
+      for (dkp $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
+   }
+
+   public int r() {
+      return this.h;
+   }
+
+   public void c(int $$0) {
+      this.h = $$0;
+
+      for (dkp $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public void s() {
+      this.l = this.l.l();
+   }
+
+   public dkr.c t() {
+      return new dkr.c(this);
+   }
+
+   public void a(dkr.c $$0) {
+      this.c($$0.a(), $$0.b());
+      this.c($$0.c());
+      this.b($$0.d());
+      this.c($$0.e());
+      this.b($$0.f());
+      if ($$0.h() > 0L) {
+         this.a($$0.g(), $$0.i(), $$0.h());
+      } else {
+         this.a($$0.g());
+      }
+   }
+
+   interface a {
+      double a();
+
+      double b();
+
+      double c();
+
+      double d();
+
+      double e();
+
+      double f();
+
+      long g();
+
+      double h();
+
+      dkq i();
+
+      void j();
+
+      void k();
+
+      dkr.a l();
+
+      emf m();
+   }
+
+   class b implements dkr.a {
+      private final double b;
+      private final double c;
+      private final long d;
+      private final long e;
+      private final double f;
+
+      b(double $$0, double $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.f = (double)$$2;
+         this.e = ac.b();
+         this.d = this.e + $$2;
       }
 
-      return $$1;
-   }
-
-   public byte[] a() {
-      if (this.d == null) {
-         this.d = new byte[2048];
-         if (this.f != 0) {
-            Arrays.fill(this.d, g(this.f));
-         }
+      @Override
+      public double a() {
+         return aui.a(dkr.this.a() - this.e() / 2.0, (double)(-dkr.this.k), (double)dkr.this.k);
       }
 
-      return this.d;
-   }
-
-   public dkr b() {
-      return this.d == null ? new dkr(this.f) : new dkr((byte[])this.d.clone());
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-
-      for (int $$1 = 0; $$1 < 4096; $$1++) {
-         $$0.append(Integer.toHexString(this.d($$1)));
-         if (($$1 & 15) == 15) {
-            $$0.append("\n");
-         }
-
-         if (($$1 & 0xFF) == 255) {
-            $$0.append("\n");
-         }
+      @Override
+      public double c() {
+         return aui.a(dkr.this.b() - this.e() / 2.0, (double)(-dkr.this.k), (double)dkr.this.k);
       }
 
-      return $$0.toString();
-   }
-
-   @avd
-   public String b(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (int $$2 = 0; $$2 < 256; $$2++) {
-         $$1.append(Integer.toHexString(this.d($$2)));
-         if (($$2 & 15) == 15) {
-            $$1.append("\n");
-         }
+      @Override
+      public double b() {
+         return aui.a(dkr.this.a() + this.e() / 2.0, (double)(-dkr.this.k), (double)dkr.this.k);
       }
 
-      return $$1.toString();
+      @Override
+      public double d() {
+         return aui.a(dkr.this.b() + this.e() / 2.0, (double)(-dkr.this.k), (double)dkr.this.k);
+      }
+
+      @Override
+      public double e() {
+         double $$0 = (double)(ac.b() - this.e) / this.f;
+         return $$0 < 1.0 ? aui.d($$0, this.b, this.c) : this.c;
+      }
+
+      @Override
+      public double f() {
+         return Math.abs(this.b - this.c) / (double)(this.d - this.e);
+      }
+
+      @Override
+      public long g() {
+         return this.d - ac.b();
+      }
+
+      @Override
+      public double h() {
+         return this.c;
+      }
+
+      @Override
+      public dkq i() {
+         return this.c < this.b ? dkq.b : dkq.a;
+      }
+
+      @Override
+      public void k() {
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public dkr.a l() {
+         return (dkr.a)(this.g() <= 0L ? dkr.this.new d(this.c) : this);
+      }
+
+      @Override
+      public emf m() {
+         return emc.a(
+            emc.c,
+            emc.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            elq.e
+         );
+      }
    }
 
-   public boolean c() {
-      return this.d == null;
+   public static class c {
+      private final double a;
+      private final double b;
+      private final double c;
+      private final double d;
+      private final int e;
+      private final int f;
+      private final double g;
+      private final long h;
+      private final double i;
+
+      c(double $$0, double $$1, double $$2, double $$3, int $$4, int $$5, double $$6, long $$7, double $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+      }
+
+      c(dkr $$0) {
+         this.a = $$0.a();
+         this.b = $$0.b();
+         this.c = $$0.o();
+         this.d = $$0.n();
+         this.e = $$0.r();
+         this.f = $$0.q();
+         this.g = $$0.i();
+         this.h = $$0.j();
+         this.i = $$0.k();
+      }
+
+      public double a() {
+         return this.a;
+      }
+
+      public double b() {
+         return this.b;
+      }
+
+      public double c() {
+         return this.c;
+      }
+
+      public double d() {
+         return this.d;
+      }
+
+      public int e() {
+         return this.e;
+      }
+
+      public int f() {
+         return this.f;
+      }
+
+      public double g() {
+         return this.g;
+      }
+
+      public long h() {
+         return this.h;
+      }
+
+      public double i() {
+         return this.i;
+      }
+
+      public static dkr.c a(DynamicLike<?> $$0, dkr.c $$1) {
+         double $$2 = aui.a($$0.get("BorderCenterX").asDouble($$1.a), -2.9999984E7, 2.9999984E7);
+         double $$3 = aui.a($$0.get("BorderCenterZ").asDouble($$1.b), -2.9999984E7, 2.9999984E7);
+         double $$4 = $$0.get("BorderSize").asDouble($$1.g);
+         long $$5 = $$0.get("BorderSizeLerpTime").asLong($$1.h);
+         double $$6 = $$0.get("BorderSizeLerpTarget").asDouble($$1.i);
+         double $$7 = $$0.get("BorderSafeZone").asDouble($$1.d);
+         double $$8 = $$0.get("BorderDamagePerBlock").asDouble($$1.c);
+         int $$9 = $$0.get("BorderWarningBlocks").asInt($$1.e);
+         int $$10 = $$0.get("BorderWarningTime").asInt($$1.f);
+         return new dkr.c($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
+      }
+
+      public void a(sl $$0) {
+         $$0.a("BorderCenterX", this.a);
+         $$0.a("BorderCenterZ", this.b);
+         $$0.a("BorderSize", this.g);
+         $$0.a("BorderSizeLerpTime", this.h);
+         $$0.a("BorderSafeZone", this.d);
+         $$0.a("BorderDamagePerBlock", this.c);
+         $$0.a("BorderSizeLerpTarget", this.i);
+         $$0.a("BorderWarningBlocks", (double)this.e);
+         $$0.a("BorderWarningTime", (double)this.f);
+      }
    }
 
-   public boolean c(int $$0) {
-      return this.d == null && this.f == $$0;
-   }
+   class d implements dkr.a {
+      private final double b;
+      private double c;
+      private double d;
+      private double e;
+      private double f;
+      private emf g;
 
-   public boolean d() {
-      return this.d == null && this.f == 0;
+      public d(double $$0) {
+         this.b = $$0;
+         this.n();
+      }
+
+      @Override
+      public double a() {
+         return this.c;
+      }
+
+      @Override
+      public double b() {
+         return this.e;
+      }
+
+      @Override
+      public double c() {
+         return this.d;
+      }
+
+      @Override
+      public double d() {
+         return this.f;
+      }
+
+      @Override
+      public double e() {
+         return this.b;
+      }
+
+      @Override
+      public dkq i() {
+         return dkq.c;
+      }
+
+      @Override
+      public double f() {
+         return 0.0;
+      }
+
+      @Override
+      public long g() {
+         return 0L;
+      }
+
+      @Override
+      public double h() {
+         return this.b;
+      }
+
+      private void n() {
+         this.c = aui.a(dkr.this.a() - this.b / 2.0, (double)(-dkr.this.k), (double)dkr.this.k);
+         this.d = aui.a(dkr.this.b() - this.b / 2.0, (double)(-dkr.this.k), (double)dkr.this.k);
+         this.e = aui.a(dkr.this.a() + this.b / 2.0, (double)(-dkr.this.k), (double)dkr.this.k);
+         this.f = aui.a(dkr.this.b() + this.b / 2.0, (double)(-dkr.this.k), (double)dkr.this.k);
+         this.g = emc.a(
+            emc.c,
+            emc.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            elq.e
+         );
+      }
+
+      @Override
+      public void j() {
+         this.n();
+      }
+
+      @Override
+      public void k() {
+         this.n();
+      }
+
+      @Override
+      public dkr.a l() {
+         return this;
+      }
+
+      @Override
+      public emf m() {
+         return this.g;
+      }
    }
 }

@@ -1,69 +1,108 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+public final class asj {
+   public static final asq<cmm> a = a("wool");
+   public static final asq<cmm> b = a("planks");
+   public static final asq<cmm> c = a("stone_bricks");
+   public static final asq<cmm> d = a("wooden_buttons");
+   public static final asq<cmm> e = a("stone_buttons");
+   public static final asq<cmm> f = a("buttons");
+   public static final asq<cmm> g = a("wool_carpets");
+   public static final asq<cmm> h = a("wooden_doors");
+   public static final asq<cmm> i = a("wooden_stairs");
+   public static final asq<cmm> j = a("wooden_slabs");
+   public static final asq<cmm> k = a("wooden_fences");
+   public static final asq<cmm> l = a("fence_gates");
+   public static final asq<cmm> m = a("wooden_pressure_plates");
+   public static final asq<cmm> n = a("wooden_trapdoors");
+   public static final asq<cmm> o = a("doors");
+   public static final asq<cmm> p = a("saplings");
+   public static final asq<cmm> q = a("logs_that_burn");
+   public static final asq<cmm> r = a("logs");
+   public static final asq<cmm> s = a("dark_oak_logs");
+   public static final asq<cmm> t = a("oak_logs");
+   public static final asq<cmm> u = a("birch_logs");
+   public static final asq<cmm> v = a("acacia_logs");
+   public static final asq<cmm> w = a("cherry_logs");
+   public static final asq<cmm> x = a("jungle_logs");
+   public static final asq<cmm> y = a("spruce_logs");
+   public static final asq<cmm> z = a("mangrove_logs");
+   public static final asq<cmm> A = a("crimson_stems");
+   public static final asq<cmm> B = a("warped_stems");
+   public static final asq<cmm> C = a("bamboo_blocks");
+   public static final asq<cmm> D = a("wart_blocks");
+   public static final asq<cmm> E = a("banners");
+   public static final asq<cmm> F = a("sand");
+   public static final asq<cmm> G = a("smelts_to_glass");
+   public static final asq<cmm> H = a("stairs");
+   public static final asq<cmm> I = a("slabs");
+   public static final asq<cmm> J = a("walls");
+   public static final asq<cmm> K = a("anvil");
+   public static final asq<cmm> L = a("rails");
+   public static final asq<cmm> M = a("leaves");
+   public static final asq<cmm> N = a("trapdoors");
+   public static final asq<cmm> O = a("small_flowers");
+   public static final asq<cmm> P = a("beds");
+   public static final asq<cmm> Q = a("fences");
+   public static final asq<cmm> R = a("tall_flowers");
+   public static final asq<cmm> S = a("flowers");
+   public static final asq<cmm> T = a("piglin_repellents");
+   public static final asq<cmm> U = a("piglin_loved");
+   public static final asq<cmm> V = a("ignored_by_piglin_babies");
+   public static final asq<cmm> W = a("piglin_food");
+   public static final asq<cmm> X = a("fox_food");
+   public static final asq<cmm> Y = a("gold_ores");
+   public static final asq<cmm> Z = a("iron_ores");
+   public static final asq<cmm> aa = a("diamond_ores");
+   public static final asq<cmm> ab = a("redstone_ores");
+   public static final asq<cmm> ac = a("lapis_ores");
+   public static final asq<cmm> ad = a("coal_ores");
+   public static final asq<cmm> ae = a("emerald_ores");
+   public static final asq<cmm> af = a("copper_ores");
+   public static final asq<cmm> ag = a("non_flammable_wood");
+   public static final asq<cmm> ah = a("soul_fire_base_blocks");
+   public static final asq<cmm> ai = a("candles");
+   public static final asq<cmm> aj = a("dirt");
+   public static final asq<cmm> ak = a("terracotta");
+   public static final asq<cmm> al = a("completes_find_tree_tutorial");
+   public static final asq<cmm> am = a("boats");
+   public static final asq<cmm> an = a("chest_boats");
+   public static final asq<cmm> ao = a("fishes");
+   public static final asq<cmm> ap = a("signs");
+   public static final asq<cmm> aq = a("music_discs");
+   public static final asq<cmm> ar = a("creeper_drop_music_discs");
+   public static final asq<cmm> as = a("coals");
+   public static final asq<cmm> at = a("arrows");
+   public static final asq<cmm> au = a("lectern_books");
+   public static final asq<cmm> av = a("bookshelf_books");
+   public static final asq<cmm> aw = a("beacon_payment_items");
+   public static final asq<cmm> ax = a("stone_tool_materials");
+   public static final asq<cmm> ay = a("stone_crafting_materials");
+   public static final asq<cmm> az = a("freeze_immune_wearables");
+   public static final asq<cmm> aA = a("axolotl_tempt_items");
+   public static final asq<cmm> aB = a("dampens_vibrations");
+   public static final asq<cmm> aC = a("cluster_max_harvestables");
+   public static final asq<cmm> aD = a("compasses");
+   public static final asq<cmm> aE = a("hanging_signs");
+   public static final asq<cmm> aF = a("creeper_igniters");
+   public static final asq<cmm> aG = a("noteblock_top_instruments");
+   public static final asq<cmm> aH = a("trimmable_armor");
+   public static final asq<cmm> aI = a("trim_materials");
+   public static final asq<cmm> aJ = a("trim_templates");
+   public static final asq<cmm> aK = a("sniffer_food");
+   public static final asq<cmm> aL = a("decorated_pot_sherds");
+   public static final asq<cmm> aM = a("decorated_pot_ingredients");
+   public static final asq<cmm> aN = a("swords");
+   public static final asq<cmm> aO = a("axes");
+   public static final asq<cmm> aP = a("hoes");
+   public static final asq<cmm> aQ = a("pickaxes");
+   public static final asq<cmm> aR = a("shovels");
+   public static final asq<cmm> aS = a("tools");
+   public static final asq<cmm> aT = a("breaks_decorated_pots");
+   public static final asq<cmm> aU = a("villager_plantable_seeds");
 
-public class asj {
-   public static Map<ags<? extends ir<?>>, asj.a> a(im<ahc> $$0) {
-      return iv.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((asj.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+   private asj() {
    }
 
-   private static <T> asj.a a(ir<T> $$0) {
-      Map<agt, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         ij<T> $$3 = (ij<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (ie<T> $$5 : $$3) {
-            if ($$5.f() != ie.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((asg)$$2.getFirst()).b(), $$4);
-      });
-      return new asj.a($$1);
-   }
-
-   public static <T> void a(ags<? extends ir<T>> $$0, ir<T> $$1, asj.a $$2, asj.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         asg<T> $$5 = asg.a($$0, $$3x);
-         List<ie<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<agt, IntList> a;
-
-      a(Map<agt, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(ue $$0) {
-         $$0.a(this.a, ue::a, ue::a);
-      }
-
-      public static asj.a b(ue $$0) {
-         return new asj.a($$0.a(ue::t, ue::a));
-      }
-
-      public boolean a() {
-         return this.a.isEmpty();
-      }
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(asg<T> var1, List<ie<T>> var2);
+   private static asq<cmm> a(String $$0) {
+      return asq.a(ke.F, new ahd($$0));
    }
 }

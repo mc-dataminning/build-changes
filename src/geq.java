@@ -1,56 +1,151 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
+import com.google.common.base.Suppliers;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
+import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class geq extends apx<List<String>> {
-   private static final agt a = new agt("texts/splashes.txt");
-   private static final auf b = auf.a();
-   private final List<String> c = Lists.newArrayList();
-   private final euz d;
+public class geq implements gej {
+   static final Logger c = LogUtils.getLogger();
+   public static final Codec<geq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(ahd.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
+               ahd.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
+               Codec.unboundedMap(Codec.STRING, ahd.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, geq::new)
+   );
+   private final List<ahd> d;
+   private final Map<String, ahd> e;
+   private final ahd f;
 
-   public geq(euz $$0) {
+   private geq(List<ahd> $$0, ahd $$1, Map<String, ahd> $$2) {
       this.d = $$0;
+      this.e = $$2;
+      this.f = $$1;
    }
 
-   protected List<String> a(aps $$0, bgc $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = euk.N().Y().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
+   @Override
+   public void a(aqc $$0, gej.a $$1) {
+      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
+      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
+      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
 
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
+      for (ahd $$4 : this.d) {
+         ahd $$5 = a.a($$4);
+         Optional<aqa> $$6 = $$0.getResource($$5);
+         if ($$6.isEmpty()) {
+            c.warn("Unable to find texture {}", $$5);
+         } else {
+            gep $$7 = new gep($$5, $$6.get(), $$3.size());
+
+            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
+               ahd $$9 = $$4.e("_" + $$8.getKey());
+               $$1.a($$9, new geq.a($$7, $$8.getValue(), $$9));
+            }
+         }
       }
    }
 
-   protected void a(List<String> $$0, aps $$1, bgc $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
+   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
+      if ($$1.length != $$0.length) {
+         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
+         throw new IllegalArgumentException();
+      } else {
+         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
+
+         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
+            int $$4 = $$0[$$3];
+            if (ats.a.a($$4) != 0) {
+               $$2.put(ats.a.e($$4), $$1[$$3]);
+            }
+         }
+
+         return $$1x -> {
+            int $$2x = ats.a.a($$1x);
+            if ($$2x == 0) {
+               return $$1x;
+            } else {
+               int $$3x = ats.a.e($$1x);
+               int $$4x = $$2.getOrDefault($$3x, ats.a.f($$3x));
+               int $$5 = ats.a.a($$4x);
+               return ats.a.a($$2x * $$5 / 255, $$4x);
+            }
+         };
+      }
    }
 
-   @Nullable
-   public exl a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return exl.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return exl.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return exl.c;
-      } else if (this.c.isEmpty()) {
-         return null;
+   public static int[] a(aqc $$0, ahd $$1) {
+      Optional<aqa> $$2 = $$0.getResource(a.a($$1));
+      if ($$2.isEmpty()) {
+         c.error("Failed to load palette image {}", $$1);
+         throw new IllegalArgumentException();
       } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new exl(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new exl(this.c.get(b.a(this.c.size())));
+         try {
+            int[] var5;
+            try (
+               InputStream $$3 = $$2.get().d();
+               eou $$4 = eou.a($$3);
+            ) {
+               var5 = $$4.d();
+            }
+
+            return var5;
+         } catch (Exception var11) {
+            c.error("Couldn't load texture {}", $$1, var11);
+            throw new IllegalArgumentException();
+         }
+      }
+   }
+
+   @Override
+   public gel a() {
+      return gem.e;
+   }
+
+   static record a(gep a, Supplier<IntUnaryOperator> b, ahd c) implements gej.b {
+      @Nullable
+      public gdz a(gei $$0) {
+         Object var3;
+         try {
+            eou $$1 = this.a.a().a(this.b.get());
+            return new gdz(this.c, new gfs($$1.a(), $$1.b()), $$1, aqe.a);
+         } catch (IllegalArgumentException | IOException var7) {
+            geq.c.error("unable to apply palette to {}", this.c, var7);
+            var3 = null;
+         } finally {
+            this.a.b();
+         }
+
+         return (gdz)var3;
+      }
+
+      @Override
+      public void a() {
+         this.a.b();
+      }
+
+      public gep b() {
+         return this.a;
+      }
+
+      public Supplier<IntUnaryOperator> c() {
+         return this.b;
+      }
+
+      public ahd d() {
+         return this.c;
       }
    }
 }

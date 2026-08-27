@@ -1,110 +1,111 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
 
-public record doe(dnr b, dnr c, dnr d, dnr e, dnr f, dnr g, dnr h, dnr i, dnr j, dnr k, dnr l, dnr m, dnr n, dnr o, dnr p) {
-   public static final Codec<doe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", doe::a),
-               a("fluid_level_floodedness", doe::b),
-               a("fluid_level_spread", doe::c),
-               a("lava", doe::d),
-               a("temperature", doe::e),
-               a("vegetation", doe::f),
-               a("continents", doe::g),
-               a("erosion", doe::h),
-               a("depth", doe::i),
-               a("ridges", doe::j),
-               a("initial_density_without_jaggedness", doe::k),
-               a("final_density", doe::l),
-               a("vein_toggle", doe::m),
-               a("vein_ridged", doe::n),
-               a("vein_gap", doe::o)
-            )
-            .apply($$0, doe::new)
-   );
+public class doe extends dkx {
+   public static final Codec<doe> c = RecordCodecBuilder.create($$0 -> $$0.group(dxc.a.fieldOf("settings").forGetter(doe::g)).apply($$0, $$0.stable(doe::new)));
+   private final dxc d;
 
-   private static RecordCodecBuilder<doe, dnr> a(String $$0, Function<doe, dnr> $$1) {
-      return dnr.d.fieldOf($$0).forGetter($$1);
+   public doe(dxc $$0) {
+      super(new cus($$0.d()), ac.b($$0::a));
+      this.d = $$0;
    }
 
-   public doe a(dnr.f $$0) {
-      return new doe(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   @Override
+   public dky a(ij<dzf> $$0, dox $$1, long $$2) {
+      Stream<ih<dzf>> $$3 = this.d.c().map(il::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
+      return dky.a($$1, $$2, this.b, $$3);
    }
 
-   public dnr a() {
-      return this.b;
+   @Override
+   protected Codec<? extends dkx> a() {
+      return c;
    }
 
-   public dnr b() {
-      return this.c;
-   }
-
-   public dnr c() {
+   public dxc g() {
       return this.d;
    }
 
-   public dnr d() {
-      return this.e;
+   @Override
+   public void a(ang $$0, cub $$1, dox $$2, dkw $$3) {
    }
 
-   public dnr e() {
-      return this.f;
+   @Override
+   public int a(ctk $$0) {
+      return $$0.J_() + Math.min($$0.K_(), this.d.f().size());
    }
 
-   public dnr f() {
-      return this.g;
+   @Override
+   public CompletableFuture<dkw> a(Executor $$0, dpl $$1, dox $$2, cub $$3, dkw $$4) {
+      List<dja> $$5 = this.d.f();
+      hx.a $$6 = new hx.a();
+      doj $$7 = $$4.a(doj.a.c);
+      doj $$8 = $$4.a(doj.a.a);
+
+      for (int $$9 = 0; $$9 < Math.min($$4.K_(), $$5.size()); $$9++) {
+         dja $$10 = $$5.get($$9);
+         if ($$10 != null) {
+            int $$11 = $$4.J_() + $$9;
+
+            for (int $$12 = 0; $$12 < 16; $$12++) {
+               for (int $$13 = 0; $$13 < 16; $$13++) {
+                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
+                  $$7.a($$12, $$11, $$13, $$10);
+                  $$8.a($$12, $$11, $$13, $$10);
+               }
+            }
+         }
+      }
+
+      return CompletableFuture.completedFuture($$4);
    }
 
-   public dnr g() {
-      return this.h;
+   @Override
+   public int a(int $$0, int $$1, doj.a $$2, ctk $$3, dox $$4) {
+      List<dja> $$5 = this.d.f();
+
+      for (int $$6 = Math.min($$5.size(), $$3.al()) - 1; $$6 >= 0; $$6--) {
+         dja $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.J_() + $$6 + 1;
+         }
+      }
+
+      return $$3.J_();
    }
 
-   public dnr h() {
-      return this.i;
+   @Override
+   public ctu a(int $$0, int $$1, ctk $$2, dox $$3) {
+      return new ctu($$2.J_(), this.d.f().stream().limit((long)$$2.K_()).map($$0x -> $$0x == null ? cwl.a.o() : $$0x).toArray(dja[]::new));
    }
 
-   public dnr i() {
-      return this.j;
+   @Override
+   public void a(List<String> $$0, dox $$1, hx $$2) {
    }
 
-   public dnr j() {
-      return this.k;
+   @Override
+   public void a(ang $$0, long $$1, dox $$2, cuj $$3, cub $$4, dkw $$5, dof.a $$6) {
    }
 
-   public dnr k() {
-      return this.l;
+   @Override
+   public void a(ang $$0) {
    }
 
-   public dnr l() {
-      return this.m;
+   @Override
+   public int f() {
+      return 0;
    }
 
-   public dnr m() {
-      return this.n;
+   @Override
+   public int d() {
+      return 384;
    }
 
-   public dnr n() {
-      return this.o;
-   }
-
-   public dnr o() {
-      return this.p;
+   @Override
+   public int e() {
+      return -63;
    }
 }

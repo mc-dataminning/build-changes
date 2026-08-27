@@ -1,44 +1,80 @@
-public record aew(int a, String b, int c, aev d) implements wu<aex> {
-   private static final int e = 255;
+public class aew implements xd<adg> {
+   private final hx a;
+   private final ahd b;
+   private final ahd c;
+   private final ahd d;
+   private final String e;
+   private final dho.a f;
+   private final int g;
+   private final int h;
 
-   @Deprecated
-   public aew(int a, String b, int c, aev d) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   public aew(hx $$0, ahd $$1, ahd $$2, ahd $$3, String $$4, dho.a $$5, int $$6, int $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
-   public aew(ue $$0) {
-      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), aev.a($$0.n()));
+   public aew(ug $$0) {
+      this.a = $$0.e();
+      this.b = $$0.t();
+      this.c = $$0.t();
+      this.d = $$0.t();
+      this.e = $$0.s();
+      this.f = dho.a.a($$0.s()).orElse(dho.a.b);
+      this.g = $$0.n();
+      this.h = $$0.n();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.c(this.a);
+   public void a(ug $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.c(this.d.a());
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f.c());
+      $$0.c(this.g);
+      $$0.c(this.h);
    }
 
-   public void a(aex $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public ud c() {
-      return this.d.b();
+   public hx a() {
+      return this.a;
    }
 
-   public String d() {
+   public ahd d() {
       return this.b;
    }
 
-   public int e() {
+   public ahd e() {
       return this.c;
    }
 
-   public aev f() {
+   public ahd f() {
       return this.d;
+   }
+
+   public String g() {
+      return this.e;
+   }
+
+   public dho.a h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.h;
    }
 }

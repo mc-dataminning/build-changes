@@ -1,76 +1,77 @@
 import com.mojang.serialization.MapCodec;
 
-public class cvc extends cvz implements cwc {
-   public static final MapCodec<cvc> a = b(cvc::new);
-   protected static final float b = 4.0F;
-   protected static final elu c = cvz.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public abstract class cvc extends cwj {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final emf h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final emf b = emc.a(
+      emc.b(), emc.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), elq.e
+   );
+   protected final jd.a c;
 
    @Override
-   public MapCodec<cvc> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends cvc> a();
 
-   public cvc(dio.d $$0) {
+   public cvc(diz.d $$0, jd.a $$1) {
       super($$0);
+      this.c = $$1;
+   }
+
+   protected double b(dja $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(dja $$0, hx $$1, blp $$2) {
+      return $$2.dt() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      elb $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
+   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
+      cmr $$6 = $$3.b($$4);
+      jd $$7 = this.c.b().get($$6.d());
+      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
    }
 
    @Override
-   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
-      if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return b;
    }
 
    @Override
-   public boolean a(dip $$0, ctb $$1, hv $$2) {
-      return $$1.a_($$2.d()).a(arr.at);
+   public emf a(dja $$0, cso $$1, hx $$2) {
+      return h;
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return cwb.a.o();
-      } else {
-         if ($$1 == ia.b && $$2.a(cwb.mZ)) {
-            $$3.a($$4, cwb.mZ.o(), 2);
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public cmh a(ctb $$0, hv $$1, dip $$2) {
-      return new cmh(cmk.dQ);
-   }
-
-   @Override
-   public boolean b(ctb $$0, hv $$1, dip $$2) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
+   public boolean d_(dja $$0) {
       return true;
    }
 
    @Override
-   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
-      this.a($$0, $$2);
+   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
+      return false;
    }
+
+   public abstract boolean d(dja var1);
 
    @Override
-   public float a(dip $$0, cer $$1, cse $$2, hv $$3) {
-      return $$1.eT().d() instanceof cns ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
+      hx $$4 = dca.a((cti)$$1, $$2);
+      if ($$4 != null) {
+         eej $$5 = dca.a($$1, $$4);
+         if ($$5 != eel.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
+      }
    }
 
-   protected void a(csy $$0, hv $$1) {
-      $$0.a($$1.c(), cwb.mZ.o().a(cvd.i, djb.b), 3);
+   protected boolean a(eej $$0) {
+      return false;
+   }
+
+   protected void a(dja $$0, cti $$1, hx $$2, eej $$3) {
    }
 }

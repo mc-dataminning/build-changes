@@ -1,73 +1,89 @@
 import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface vx {
-   Logger a = LogUtils.getLogger();
-   vx b = $$0 -> {
-      if ($$0.h()) {
-         a.error("Received chat message with signature from {}, but they have no chat session initialized", $$0.f());
-         return false;
-      } else {
-         return true;
+public class vx {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private vy b;
+
+   public vx(UUID $$0, UUID $$1) {
+      this.b = vy.a($$0, $$1);
+   }
+
+   public vx.c a(auw $$0) {
+      return $$1 -> {
+         vy $$2 = this.a();
+         return $$2 == null ? null : new vp($$0.sign($$2x -> vt.a($$2x, $$2, $$1)));
+      };
+   }
+
+   public vx.b a(cfe $$0) {
+      auv $$1 = $$0.a();
+      return ($$2, $$3) -> {
+         vy $$4 = this.a();
+         if ($$4 == null) {
+            throw new vx.a(vd.c("chat.disabled.chain_broken"), false);
+         } else if ($$0.b().a()) {
+            throw new vx.a(vd.c("chat.disabled.expiredProfileKey"), false);
+         } else {
+            vt $$5 = new vt($$4, $$2, $$3, null, vh.c);
+            if (!$$5.a($$1)) {
+               throw new vx.a(vd.c("multiplayer.disconnect.unsigned_chat"), true);
+            } else {
+               if ($$5.a(Instant.now())) {
+                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
+               }
+
+               return $$5;
+            }
+         }
+      };
+   }
+
+   @Nullable
+   private vy a() {
+      vy $$0 = this.b;
+      if ($$0 != null) {
+         this.b = $$0.a();
       }
-   };
-   vx c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.f());
-      return false;
-   };
 
-   boolean updateAndValidate(vr var1);
+      return $$0;
+   }
 
-   public static class a implements vx {
-      private final aul d;
-      private final BooleanSupplier e;
+   public static class a extends wd {
+      private final boolean a;
+
+      public a(vd $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public boolean a() {
+         return this.a;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      vx.b a = ($$0, $$1) -> {
+         throw new vx.a(vd.c("chat.disabled.missingProfileKey"), false);
+      };
+
+      static vx.b unsigned(UUID $$0) {
+         return ($$1, $$2) -> vt.a($$0, $$2.a());
+      }
+
+      vt unpack(@Nullable vp var1, vw var2) throws vx.a;
+   }
+
+   @FunctionalInterface
+   public interface c {
+      vx.c a = $$0 -> null;
+
       @Nullable
-      private vr f;
-      private boolean g = true;
-
-      public a(aul $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      private boolean a(vr $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.j().a(this.f.j())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.f(), this.f.j().b(), this.f.j().d(), $$0.j().b(), $$0.j().d()}
-            );
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      private boolean b(vr $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.f());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
-
-      @Override
-      public boolean updateAndValidate(vr $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return false;
-         } else {
-            this.f = $$0;
-            return true;
-         }
-      }
+      vp pack(vw var1);
    }
 }

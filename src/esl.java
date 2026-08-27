@@ -1,66 +1,75 @@
-public class esl extends gjl {
-   private static final int a = 212;
-   private static final vb b = vb.c("mco.configure.world.name");
-   private static final vb c = vb.c("mco.configure.world.description");
-   private final ert v;
-   private final eqk w;
-   private ewq x;
-   private ewq y;
+public class esl extends gkc {
+   private static final vd a = vd.c("mco.selectServer.create");
+   private static final vd b = vd.c("mco.configure.world.name");
+   private static final vd c = vd.c("mco.configure.world.description");
+   private static final int v = 10;
+   private static final int w = 210;
+   private final eqe x;
+   private final fai y = new fai(this);
+   private exh z;
+   private exh A;
+   private final Runnable B;
 
-   public esl(ert $$0, eqk $$1) {
-      super(vb.c("mco.configure.world.settings.title"));
-      this.v = $$0;
-      this.w = $$1;
+   public esl(eqe $$0, era $$1) {
+      super(a);
+      this.x = $$0;
+      this.B = () -> this.a($$1);
+   }
+
+   public esl(eqe $$0, long $$1) {
+      super(a);
+      this.x = $$0;
+      this.B = () -> this.a($$1);
    }
 
    @Override
-   public void aP_() {
-      int $$0 = this.g / 2 - 106;
-      String $$1 = this.w.e == eqk.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      ewh $$2 = ewh.a(vb.c($$1), $$0x -> {
-         if (this.w.e == eqk.c.b) {
-            vb $$1x = vb.c("mco.configure.world.close.question.line1");
-            vb $$2x = vb.c("mco.configure.world.close.question.line2");
-            this.f.a(new erz($$0xx -> {
-               if ($$0xx) {
-                  this.v.a(this);
-               } else {
-                  this.f.a(this);
-               }
-            }, erz.a.b, $$1x, $$2x, true));
+   public void aN_() {
+      this.y.a(new eyf(this.e, this.i));
+      fam $$0 = this.y.c(fam.d()).a(10);
+      ewy $$1 = ewy.a(vc.j, $$0x -> this.B.run()).a();
+      $$1.j = false;
+      this.z = new exh(this.i, 210, 20, b);
+      this.z.b($$1x -> $$1.j = !ac.b($$1x));
+      this.A = new exh(this.i, 210, 20, c);
+      $$0.a(fae.a(this.i, this.z, b));
+      $$0.a(fae.a(this.i, this.A, c));
+      fam $$2 = this.y.b(fam.e().a(10));
+      $$2.a($$1);
+      $$2.a(ewy.a(vc.k, $$0x -> this.aE_()).a());
+      this.y.a($$1x -> {
+         eww var10000 = this.d($$1x);
+      });
+      this.c();
+      this.c(this.z);
+   }
+
+   @Override
+   protected void c() {
+      this.y.a();
+   }
+
+   private void a(era $$0) {
+      eui $$1 = new eui($$0.a, this.z.a(), this.A.a());
+      esy $$2 = esy.a(this, $$0, $$1, () -> this.f.execute(() -> {
+            eqe.f();
+            this.f.a(this.x);
+         }));
+      this.f.a($$2);
+   }
+
+   private void a(long $$0) {
+      fct $$1 = new esx($$1x -> {
+         if ($$1x == null) {
+            this.f.a(this);
          } else {
-            this.v.a(false, this);
+            this.f.a(new esq(this, new etx(this.x, $$0, $$1x, this.z.a(), this.A.a())));
          }
-      }).a(this.g / 2 - 53, h(0), 106, 20).a();
-      this.d($$2);
-      this.y = new ewq(this.f.h, $$0, h(4), 212, 20, vb.c("mco.configure.world.name"));
-      this.y.l(32);
-      this.y.a(this.w.b());
-      this.d(this.y);
-      this.c(this.y);
-      this.x = new ewq(this.f.h, $$0, h(8), 212, 20, vb.c("mco.configure.world.description"));
-      this.x.l(32);
-      this.x.a(this.w.a());
-      this.d(this.x);
-      ewh $$3 = this.d(ewh.a(vb.c("mco.configure.world.buttons.done"), $$0x -> this.f()).a($$0 - 2, h(12), 106, 20).a());
-      this.y.b($$1x -> $$3.i = !ac.b($$1x));
-      this.d(ewh.a(va.e, $$0x -> this.aF_()).a(this.g / 2 + 2, h(12), 106, 20).a());
+      }, a);
+      this.f.a($$1);
    }
 
    @Override
-   public void aF_() {
-      this.f.a(this.v);
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, b, this.g / 2 - 106, h(3), -1, false);
-      $$0.a(this.i, c, this.g / 2 - 106, h(7), -1, false);
-   }
-
-   public void f() {
-      this.v.a(this.y.a(), this.x.a());
+   public void aE_() {
+      this.f.a(this.x);
    }
 }

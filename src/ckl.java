@@ -1,111 +1,69 @@
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ckl extends cmc implements cob {
-   private static final Logger d = LogUtils.getLogger();
-   public static final String a = "LodestonePos";
-   public static final String b = "LodestoneDimension";
-   public static final String c = "LodestoneTracked";
+public class ckl extends cmm {
+   private static final Predicate<blp> a = bls.f.and(blp::bt);
+   private final cgv.b b;
+   private final boolean c;
 
-   public ckl(cmc.a $$0) {
-      super($$0);
-   }
-
-   public static boolean d(cmh $$0) {
-      sj $$1 = $$0.v();
-      return $$1 != null && ($$1.e("LodestoneDimension") || $$1.e("LodestonePos"));
-   }
-
-   private static Optional<ags<csy>> c(sj $$0) {
-      return csy.g.parse(sx.a, $$0.c("LodestoneDimension")).result();
-   }
-
-   @Nullable
-   public static id a(sj $$0) {
-      boolean $$1 = $$0.e("LodestonePos");
-      boolean $$2 = $$0.e("LodestoneDimension");
-      if ($$1 && $$2) {
-         Optional<ags<csy>> $$3 = c($$0);
-         if ($$3.isPresent()) {
-            hv $$4 = sy.b($$0.p("LodestonePos"));
-            return id.a($$3.get(), $$4);
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   public static id a(csy $$0) {
-      return $$0.E_().j() ? id.a($$0.ad(), $$0.S()) : null;
+   public ckl(boolean $$0, cgv.b $$1, cmm.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public boolean i(cmh $$0) {
-      return d($$0) || super.i($$0);
-   }
+   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
+      cmr $$3 = $$1.b($$2);
+      elk $$4 = a($$0, $$1, csr.b.c);
+      if ($$4.c() == elk.a.a) {
+         return bjw.c($$3);
+      } else {
+         elm $$5 = $$1.f(1.0F);
+         double $$6 = 5.0;
+         List<blp> $$7 = $$0.a($$1, $$1.cH().b($$5.a(5.0)).g(1.0), a);
+         if (!$$7.isEmpty()) {
+            elm $$8 = $$1.br();
 
-   @Override
-   public void a(cmh $$0, csy $$1, blf $$2, int $$3, boolean $$4) {
-      if (!$$1.B) {
-         if (d($$0)) {
-            sj $$5 = $$0.w();
-            if ($$5.e("LodestoneTracked") && !$$5.q("LodestoneTracked")) {
-               return;
-            }
-
-            Optional<ags<csy>> $$6 = c($$5);
-            if ($$6.isPresent() && $$6.get() == $$1.ad() && $$5.e("LodestonePos")) {
-               hv $$7 = sy.b($$5.p("LodestonePos"));
-               if (!$$1.j($$7) || !((amp)$$1).x().a(bxa.s, $$7)) {
-                  $$5.r("LodestonePos");
+            for (blp $$9 : $$7) {
+               elh $$10 = $$9.cH().g((double)$$9.bE());
+               if ($$10.d($$8)) {
+                  return bjw.c($$3);
                }
             }
          }
-      }
-   }
 
-   @Override
-   public bjl a(cos $$0) {
-      hv $$1 = $$0.a();
-      csy $$2 = $$0.q();
-      if (!$$2.a_($$1).a(cwb.pq)) {
-         return super.a($$0);
-      } else {
-         $$2.a(null, $$1, arc.nz, ard.h, 1.0F, 1.0F);
-         cer $$3 = $$0.o();
-         cmh $$4 = $$0.n();
-         boolean $$5 = !$$3.fT().d && $$4.L() == 1;
-         if ($$5) {
-            this.a($$2.ad(), $$1, $$4.w());
+         if ($$4.c() == elk.a.b) {
+            cgv $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.b);
+            $$11.r($$1.dC());
+            if (!$$0.a($$11, $$11.cH())) {
+               return bjw.d($$3);
+            } else {
+               if (!$$0.B) {
+                  $$0.b($$11);
+                  $$0.a($$1, dnk.t, $$4.e());
+                  if (!$$1.fT().d) {
+                     $$3.h(1);
+                  }
+               }
+
+               $$1.b(arw.c.b(this));
+               return bjw.a($$3, $$0.y_());
+            }
          } else {
-            cmh $$6 = new cmh(cmk.qP, 1);
-            sj $$7 = $$4.u() ? $$4.v().h() : new sj();
-            $$6.c($$7);
-            if (!$$3.fT().d) {
-               $$4.h(1);
-            }
-
-            this.a($$2.ad(), $$1, $$7);
-            if (!$$3.fS().e($$6)) {
-               $$3.a($$6, false);
-            }
+            return bjw.c($$3);
          }
-
-         return bjl.a($$2.B);
       }
    }
 
-   private void a(ags<csy> $$0, hv $$1, sj $$2) {
-      $$2.a("LodestonePos", sy.a($$1));
-      csy.g.encodeStart(sx.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
-      $$2.a("LodestoneTracked", true);
-   }
+   private cgv a(cti $$0, elk $$1, cmr $$2, cfb $$3) {
+      elm $$4 = $$1.e();
+      cgv $$5 = (cgv)(this.c ? new cgw($$0, $$4.c, $$4.d, $$4.e) : new cgv($$0, $$4.c, $$4.d, $$4.e));
+      if ($$0 instanceof amz $$6) {
+         blt.<cgv>a($$6, $$2, $$3).accept($$5);
+      }
 
-   @Override
-   public String j(cmh $$0) {
-      return d($$0) ? "item.minecraft.lodestone_compass" : super.j($$0);
+      return $$5;
    }
 }

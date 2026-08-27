@@ -1,95 +1,100 @@
-public class fee extends fdi implements feg<cio> {
-   private final cio q;
-   private final chw r = new chw() {
-      @Override
-      public void a(chk $$0, int $$1, cmh $$2) {
-         fee.this.I();
-      }
+public class fee extends fds<cii> {
+   private static final ahd x = new ahd("container/crafter/disabled_slot");
+   private static final ahd y = new ahd("container/crafter/powered_redstone");
+   private static final ahd z = new ahd("container/crafter/unpowered_redstone");
+   private static final ahd A = new ahd("textures/gui/container/crafter.png");
+   private static final vd B = vd.c("gui.togglable_slot");
+   private final cfb C;
 
-      @Override
-      public void a(chk $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fee.this.J();
+   public fee(cii $$0, cfa $$1, vd $$2) {
+      super($$0, $$1, $$2);
+      this.C = $$1.m;
+   }
+
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
+   }
+
+   @Override
+   protected void a(cjp $$0, int $$1, int $$2, cid $$3) {
+      if ($$0 instanceof cij && !$$0.h() && !this.C.P_()) {
+         switch ($$3) {
+            case a:
+               if (this.p.e($$1)) {
+                  this.a($$1);
+               } else if (this.p.g().b()) {
+                  this.b($$1);
+               }
+               break;
+            case c:
+               cmr $$4 = this.C.fS().a($$2);
+               if (this.p.e($$1) && !$$4.b()) {
+                  this.a($$1);
+               }
          }
       }
-   };
 
-   public fee(cio $$0, ceq $$1, vb $$2) {
-      this.q = $$0;
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public cio H() {
-      return this.q;
+   private void a(int $$0) {
+      this.a($$0, true);
    }
 
-   @Override
-   protected void aP_() {
-      super.aP_();
-      this.q.a(this.r);
+   private void b(int $$0) {
+      this.a($$0, false);
    }
 
-   @Override
-   public void aF_() {
-      this.f.s.r();
-      super.aF_();
+   private void a(int $$0, boolean $$1) {
+      this.p.a($$0, $$1);
+      super.a($$0, this.p.j, $$1);
+      float $$2 = $$1 ? 1.0F : 0.75F;
+      this.C.a(arm.zu.a(), 0.4F, $$2);
    }
 
    @Override
-   public void aG_() {
-      super.aG_();
-      this.q.b(this.r);
+   public void a(ewm $$0, cjp $$1) {
+      if ($$1 instanceof cij $$2 && this.p.e($$1.e)) {
+         this.a($$0, $$2);
+         return;
+      }
+
+      super.a($$0, $$1);
+   }
+
+   private void a(ewm $$0, cij $$1) {
+      $$0.a(x, $$1.f - 1, $$1.g - 1, 18, 18);
    }
 
    @Override
-   protected void l() {
-      if (this.f.s.ge()) {
-         this.d(ewh.a(va.d, $$0 -> this.aF_()).a(this.g / 2 - 100, 196, 98, 20).a());
-         this.d(ewh.a(vb.c("lectern.take_book"), $$0 -> this.c(3)).a(this.g / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.l();
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      this.a($$0, $$1, $$2);
+      if (this.r instanceof cij && !this.p.e(this.r.e) && this.p.g().b() && !this.r.h()) {
+         $$0.a(this.i, B, $$1, $$2);
       }
    }
 
-   @Override
-   protected void E() {
-      this.c(1);
-   }
-
-   @Override
-   protected void F() {
-      this.c(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.q.m()) {
-         this.c(100 + $$0);
-         return true;
+   private void c(ewm $$0) {
+      int $$1 = this.g / 2 + 9;
+      int $$2 = this.h / 2 - 48;
+      ahd $$3;
+      if (this.p.l()) {
+         $$3 = y;
       } else {
-         return false;
+         $$3 = z;
       }
-   }
 
-   private void c(int $$0) {
-      this.f.q.a(this.q.j, $$0);
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   void I() {
-      cmh $$0 = this.q.l();
-      this.a(fdi.a.a($$0));
-   }
-
-   void J() {
-      this.a(this.q.m());
+      $$0.a($$3, $$1, $$2, 16, 16);
    }
 
    @Override
-   protected void G() {
-      this.f.s.r();
+   protected void a(ewm $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

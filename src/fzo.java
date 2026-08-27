@@ -1,15 +1,11 @@
-public class fzo extends fyu<ccg, fks<ccg>> {
-   private static final agt a = new agt("textures/entity/silverfish.png");
+public class fzo extends fzl<byg, fkn<byg>> {
+   private static final ahd a = new ahd("textures/entity/cat/ocelot.png");
 
-   public fzo(fxo.a $$0) {
-      super($$0, new fks<>($$0.a(flx.bj)), 0.3F);
+   public fzo(fyf.a $$0) {
+      super($$0, new fkn<>($$0.a(fmo.aB)), 0.4F);
    }
 
-   protected float a(ccg $$0) {
-      return 180.0F;
-   }
-
-   public agt b(ccg $$0) {
+   public ahd a(byg $$0) {
       return a;
    }
 }

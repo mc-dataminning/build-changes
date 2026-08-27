@@ -1,53 +1,71 @@
-import java.util.List;
+public abstract class eym {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final ewk d;
+   protected final aur e;
 
-public class eym implements eyp {
-   private static final agt d = new agt("toast/advancement");
-   public static final int a = 5000;
-   private final af e;
-   private boolean f;
-
-   public eym(af $$0) {
-      this.e = $$0;
+   protected eym(ewk $$0, aur $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public eyp.a a(evw $$0, eyq $$1, long $$2) {
-      ar $$3 = this.e.b().c().orElse(null);
-      $$0.a(d, 0, 0, this.a(), this.b());
-      if ($$3 != null) {
-         List<atk> $$4 = $$1.b().h.c($$3.a(), 125);
-         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
-         if ($$4.size() == 1) {
-            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
-            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = aty.d(aty.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = aty.d(aty.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
+   public int a(int $$0) {
+      return Math.min(this.e.a() + 2, $$0);
+   }
 
-               for (atk $$11 : $$4) {
-                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
+   public void a(ewm $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(fth.C(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.a() - ($$2 - 2));
+      int $$8 = this.e.b() - $$7;
 
-         if (!this.f && $$2 > 0L) {
-            this.f = true;
-            if ($$3.e() == al.b) {
-               $$1.b().ah().a(ggr.a(arc.zA, 1.0F, 1.0F));
-            }
-         }
-
-         $$0.b($$3.c(), 8, 8);
-         return (double)$$2 >= 5000.0 * $$1.c() ? eyp.a.b : eyp.a.a;
-      } else {
-         return eyp.a.b;
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         long $$11 = this.e.a($$7 + $$9);
+         $$5 = Math.min($$5, $$11);
+         $$6 = Math.max($$6, $$11);
+         $$4 += $$11;
+         int $$12 = this.b((double)$$11);
+         int $$13 = this.a($$11);
+         $$0.a(fth.C(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
       }
+
+      $$0.a(fth.C(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(fth.C(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(fth.C(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(fth.C(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$14 = this.a((double)$$5) + " min";
+         String $$15 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$16 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$14, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$15, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$16, $$1 + $$2 - this.d.b($$16) - 2, $$3 - 60 - 9, 14737632);
+      }
+
+      this.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(ewm $$0, int $$1, int $$2, int $$3) {
+   }
+
+   protected void a(ewm $$0, String $$1, int $$2, int $$3) {
+      $$0.a(fth.C(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   }
+
+   protected abstract String a(double var1);
+
+   protected abstract int b(double var1);
+
+   protected abstract int a(long var1);
+
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = aui.a($$0, $$1, $$5);
+      return $$0 < $$3 ? ats.b.a((float)($$0 / ($$3 - $$1)), $$2, $$4) : ats.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

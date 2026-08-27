@@ -1,59 +1,109 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+public class cgh extends cfi {
+   private static final agj<Boolean> e = agm.a(cgh.class, agl.k);
 
-public class cgh {
-   private final List<cge> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cge> a() {
-      return ImmutableList.copyOf(this.a);
+   public cgh(blt<? extends cgh> $$0, cti $$1) {
+      super($$0, $$1);
    }
 
-   public cgh a(int $$0, float $$1) {
-      this.a.add(new cge($$0, $$1));
-      this.b();
-      return this;
+   public cgh(cti $$0, bmf $$1, double $$2, double $$3, double $$4) {
+      super(blt.bo, $$1, $$2, $$3, $$4, $$0);
    }
 
-   public cgh a(Collection<cge> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   @Override
+   protected float x() {
+      return this.y() ? 0.73F : super.x();
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cge> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   @Override
+   public boolean bN() {
+      return false;
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cge $$1 = this.a.get(this.b);
-         cge $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+   @Override
+   public float a(cta $$0, cso $$1, hx $$2, dja $$3, eek $$4, float $$5) {
+      return this.y() && cbc.d($$3) ? Math.min(0.8F, $$5) : $$5;
+   }
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cge $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
+   @Override
+   protected void a(elj $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         blp $$1 = $$0.a();
+         boolean $$4;
+         if (this.w() instanceof bmf $$3) {
+            $$4 = $$1.a(this.dN().a(this, $$3), 8.0F);
+            if ($$4) {
+               if ($$1.bx()) {
+                  this.a($$3, $$1);
+               } else {
+                  $$3.b(5.0F);
+               }
             }
-
-            this.b = $$6;
-            $$5 = $$7.b();
+         } else {
+            $$4 = $$1.a(this.dN().o(), 5.0F);
          }
 
-         return $$5;
+         if ($$4 && $$1 instanceof bmf $$6) {
+            int $$7 = 0;
+            if (this.dM().ak() == bjs.c) {
+               $$7 = 10;
+            } else if (this.dM().ak() == bjs.d) {
+               $$7 = 40;
+            }
+
+            if ($$7 > 0) {
+               $$6.b(new blc(ble.t, 20 * $$7, 1), this.J());
+            }
+         }
       }
+   }
+
+   @Override
+   protected void a(elk $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.dM().a(this, this.dr(), this.dt(), this.dx(), 1.0F, false, cti.a.c);
+         this.am();
+      }
+   }
+
+   @Override
+   public boolean bt() {
+      return false;
+   }
+
+   @Override
+   public boolean a(bkn $$0, float $$1) {
+      return false;
+   }
+
+   @Override
+   protected void c_() {
+      this.an.a(e, false);
+   }
+
+   public boolean y() {
+      return this.an.b(e);
+   }
+
+   public void a(boolean $$0) {
+      this.an.b(e, $$0);
+   }
+
+   @Override
+   protected boolean s() {
+      return false;
+   }
+
+   @Override
+   public void b(sl $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.y());
+   }
+
+   @Override
+   public void a(sl $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

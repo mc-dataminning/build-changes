@@ -1,44 +1,50 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Either;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class bin extends biq {
-   public static final bin a = new bin(0);
-   public static final Codec<bin> b = atg.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bin::new, bin::d);
-   private final int f;
+public interface bin<Msg> extends AutoCloseable {
+   String bs();
 
-   public static bin a(int $$0) {
-      return $$0 == 0 ? a : new bin($$0);
-   }
-
-   private bin(int $$0) {
-      this.f = $$0;
-   }
-
-   public int d() {
-      return this.f;
-   }
+   void a(Msg var1);
 
    @Override
-   public int a(auf $$0) {
-      return this.f;
+   default void close() {
    }
 
-   @Override
-   public int a() {
-      return this.f;
+   default <Source> CompletableFuture<Source> b(Function<? super bin<Source>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
+      this.a($$2);
+      return $$1;
    }
 
-   @Override
-   public int b() {
-      return this.f;
+   default <Source> CompletableFuture<Source> c(Function<? super bin<Either<Source, Exception>>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
+         $$1x.ifLeft($$1::complete);
+         $$1x.ifRight($$1::completeExceptionally);
+      }));
+      this.a($$2);
+      return $$1;
    }
 
-   @Override
-   public bir<?> c() {
-      return bir.a;
-   }
+   static <Msg> bin<Msg> a(final String $$0, final Consumer<Msg> $$1) {
+      return new bin<Msg>() {
+         @Override
+         public String bs() {
+            return $$0;
+         }
 
-   @Override
-   public String toString() {
-      return Integer.toString(this.f);
+         @Override
+         public void a(Msg $$0x) {
+            $$1.accept($$0);
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

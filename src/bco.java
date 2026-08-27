@@ -1,42 +1,42 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.Const.PrimitiveType;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.datafixers.types.templates.List.ListType;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
-public class bco extends Schema {
-   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
-      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
-         return $$0.getStringValue($$1).map(bco::a);
-      }
-
-      public <T> T a(DynamicOps<T> $$0, String $$1) {
-         return (T)$$0.createString($$1);
-      }
-
-      @Override
-      public String toString() {
-         return "NamespacedString";
-      }
-   };
-   private static final Type<String> b = new PrimitiveType(a);
-
-   public bco(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bco extends baq {
+   public bco(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Villager trade fix", bbq.x, "minecraft:villager");
    }
 
-   public static String a(String $$0) {
-      agt $$1 = agt.a($$0);
-      return $$1 != null ? $$1.toString() : $$0;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      OpticFinder<?> $$1 = $$0.getType().findField("Offers");
+      OpticFinder<?> $$2 = $$1.type().findField("Recipes");
+      if (!($$2.type() instanceof ListType<?> $$4)) {
+         throw new IllegalStateException("Recipes are expected to be a list.");
+      } else {
+         Type<?> $$5 = $$4.getElement();
+         OpticFinder<?> $$6 = DSL.typeFinder($$5);
+         OpticFinder<?> $$7 = $$5.findField("buy");
+         OpticFinder<?> $$8 = $$5.findField("buyB");
+         OpticFinder<?> $$9 = $$5.findField("sell");
+         OpticFinder<Pair<String, String>> $$10 = DSL.fieldFinder("id", DSL.named(bbq.z.typeName(), bcy.a()));
+         Function<Typed<?>, Typed<?>> $$11 = $$1x -> this.a($$10, $$1x);
+         return $$0.updateTyped(
+            $$1,
+            $$6x -> $$6x.updateTyped(
+                  $$2, $$5xx -> $$5xx.updateTyped($$6, $$4xxx -> $$4xxx.updateTyped($$7, $$11).updateTyped($$8, $$11).updateTyped($$9, $$11))
+               )
+         );
+      }
    }
 
-   public static Type<String> a() {
-      return b;
-   }
-
-   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
-      return super.getChoiceType($$0, a($$1));
+   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
+      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
    }
 }

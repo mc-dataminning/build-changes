@@ -1,73 +1,77 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class cin extends chu {
+   private static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final bjo p;
 
-public class cin {
-   private final List<cin.b> a;
-   private final cin.b b;
+   public cin(int $$0, cfa $$1) {
+      this($$0, $$1, new bkd(9));
+   }
 
-   cin(List<cin.b> $$0, cin.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cin.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+   public cin(int $$0, cfa $$1, bjo $$2) {
+      super(cjb.g, $$0);
+      a($$2, 9);
+      this.p = $$2;
+      $$2.d_($$1.m);
+
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            this.a(new cjp($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cjp($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cjp($$1, $$7, 8 + $$7 * 18, 142));
       }
    }
 
-   public static cin.a a() {
-      return new cin.a();
+   @Override
+   public boolean a(cfb $$0) {
+      return this.p.a($$0);
    }
 
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
-   }
+   @Override
+   public cmr a(cfb $$0, int $$1) {
+      cmr $$2 = cmr.f;
+      cjp $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cmr $$4 = $$3.g();
+         $$2 = $$4.p();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cmr.f;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cmr.f;
+         }
 
-   public cin.b b(int $$0) {
-      return this.a.get($$0);
-   }
+         if ($$4.b()) {
+            $$3.e(cmr.f);
+         } else {
+            $$3.b();
+         }
 
-   public cin.b b() {
-      return this.b;
-   }
+         if ($$4.L() == $$2.L()) {
+            return cmr.f;
+         }
 
-   public List<cin.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(cin.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<cin.b> a = new ArrayList<>();
-      private cin.b b = cin.b.e;
-
-      public cin.a a(int $$0, int $$1, int $$2, Predicate<cmh> $$3) {
-         this.a.add(new cin.b($$0, $$1, $$2, $$3));
-         return this;
+         $$3.a($$0, $$4);
       }
 
-      public cin.a a(int $$0, int $$1, int $$2) {
-         this.b = new cin.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cin a() {
-         return new cin(this.a, this.b);
-      }
+      return $$2;
    }
 
-   public static record b(int a, int b, int c, Predicate<cmh> d) {
-      static final cin.b e = new cin.b(0, 0, 0, $$0 -> true);
+   @Override
+   public void b(cfb $$0) {
+      super.b($$0);
+      this.p.c($$0);
    }
 }

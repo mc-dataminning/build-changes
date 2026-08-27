@@ -1,25 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxh extends dxu {
-   public static final Codec<dxh> a = RecordCodecBuilder.create($$0 -> $$0.group(dpf.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, dxh::new));
-   private final dpf c;
+public interface dxh<P extends dxg> {
+   dxh<dxf> a = a("constant", dxf.b);
+   dxh<dxj> b = a("uniform", dxj.a);
+   dxh<dxe> c = a("biased_to_bottom", dxe.a);
+   dxh<dxk> d = a("very_biased_to_bottom", dxk.a);
+   dxh<dxi> e = a("trapezoid", dxi.a);
+   dxh<dxl> f = a("weighted_list", dxl.a);
 
-   private dxh(dpf $$0) {
-      this.c = $$0;
-   }
+   Codec<P> codec();
 
-   public static dxh a(dpf $$0) {
-      return new dxh($$0);
-   }
-
-   @Override
-   protected boolean a(dxt $$0, auf $$1, hv $$2) {
-      return this.c.test($$0.d(), $$2);
-   }
-
-   @Override
-   public dxw<?> b() {
-      return dxw.a;
+   private static <P extends dxg> dxh<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.N, $$0, () -> $$1);
    }
 }

@@ -1,95 +1,171 @@
-public class doj implements csl {
-   private int a;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-   @Override
-   public int a(amp $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.Y().b(csu.K)) {
-         return 0;
-      } else {
-         auf $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.X() / 24000L;
-            if ($$4 < 5L || !$$0.O()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.w().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  cer $$6 = $$0.w().get($$3.a($$5));
-                  if ($$6.P_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dm(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     hv.a $$9 = $$6.dm().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        ie<ctx> $$11 = $$0.s($$9);
-                        if ($$11.a(arq.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public class doj {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dja> b = $$0 -> !$$0.i();
+   static final Predicate<dja> c = diz.a::d;
+   private final asy d;
+   private final Predicate<dja> e;
+   private final dkw f;
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dny.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
+   public doj(dkw $$0, doj.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = aui.e($$0.K_() + 1);
+      this.d = new auy($$2, 256);
+   }
 
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
+   public static void a(dkw $$0, Set<doj.a> $$1) {
+      int $$2 = $$1.size();
+      ObjectList<doj> $$3 = new ObjectArrayList($$2);
+      ObjectListIterator<doj> $$4 = $$3.iterator();
+      int $$5 = $$0.b() + 16;
+      hx.a $$6 = new hx.a();
 
-                           return $$12;
-                        }
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            for (doj.a $$9 : $$1) {
+               $$3.add($$0.a($$9));
+            }
+
+            for (int $$10 = $$5 - 1; $$10 >= $$0.J_(); $$10--) {
+               $$6.d($$7, $$10, $$8);
+               dja $$11 = $$0.a_($$6);
+               if (!$$11.a(cwl.a)) {
+                  while ($$4.hasNext()) {
+                     doj $$12 = (doj)$$4.next();
+                     if ($$12.e.test($$11)) {
+                        $$12.a($$7, $$8, $$10 + 1);
+                        $$4.remove();
                      }
                   }
+
+                  if ($$3.isEmpty()) {
+                     break;
+                  }
+
+                  $$4.back($$2);
                }
             }
          }
       }
    }
 
-   private boolean a(amp $$0, hv $$1, auf $$2, boolean $$3) {
-      dip $$4 = $$0.a_($$1);
-      if (!ctj.a($$0, $$1, $$4, $$4.u(), blj.az)) {
-         return false;
-      } else if (!cca.b(blj.az, $$0, blz.p, $$1, $$2)) {
+   public boolean a(int $$0, int $$1, int $$2, dja $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
          return false;
       } else {
-         cca $$5 = blj.az.a((csy)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gm();
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            hx.a $$5 = new hx.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.J_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
             }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), blz.p, null, null);
-            $$0.a_($$5);
+            this.a($$0, $$2, this.f.J_());
             return true;
-         } else {
-            return false;
          }
+
+         return false;
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
+   }
+
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
+   }
+
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.J_();
+   }
+
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.J_());
+   }
+
+   public void a(dkw $$0, doj.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements ave {
+      a("WORLD_SURFACE_WG", doj.b.a, doj.b),
+      b("WORLD_SURFACE", doj.b.c, doj.b),
+      c("OCEAN_FLOOR_WG", doj.b.a, doj.c),
+      d("OCEAN_FLOOR", doj.b.b, doj.c),
+      e("MOTION_BLOCKING", doj.b.c, $$0 -> $$0.d() || !$$0.u().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", doj.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof das));
+
+      public static final Codec<doj.a> g = ave.a(doj.a::values);
+      private final String h;
+      private final doj.b i;
+      private final Predicate<dja> j;
+
+      private a(String $$0, doj.b $$1, Predicate<dja> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public boolean b() {
+         return this.i == doj.b.c;
+      }
+
+      public boolean d() {
+         return this.i != doj.b.a;
+      }
+
+      public Predicate<dja> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

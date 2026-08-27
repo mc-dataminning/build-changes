@@ -1,60 +1,62 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cnb extends cka {
-   public cnb(cvz $$0, cmc.a $$1) {
-      super($$0, $$1);
+public class cnb extends cks {
+   private final blt<?> a;
+   private final arl b;
+
+   public cnb(blt<?> $$0, eej $$1, arl $$2, cmm.a $$3) {
+      super($$1, $$3);
+      this.a = $$0;
+      this.b = $$2;
    }
 
-   @Nullable
    @Override
-   public coq b(coq $$0) {
-      hv $$1 = $$0.a();
-      csy $$2 = $$0.q();
-      dip $$3 = $$2.a_($$1);
-      cvz $$4 = this.e();
-      if (!$$3.a($$4)) {
-         return dcn.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         ia $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == ia.b ? $$0.g() : ia.b;
-         }
-
-         int $$7 = 0;
-         hv.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.j($$8)) {
-               cer $$9 = $$0.o();
-               int $$10 = $$2.ak();
-               if ($$9 instanceof amq && $$8.v() >= $$10) {
-                  ((amq)$$9).b(vb.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.e())) {
-               if ($$3.a($$0)) {
-                  return coq.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+   public void a(@Nullable cfb $$0, cti $$1, cmr $$2, hx $$3) {
+      if ($$1 instanceof amz) {
+         this.a((amz)$$1, $$2, $$3);
+         $$1.a($$0, dnk.t, $$3);
       }
    }
 
    @Override
-   protected boolean d() {
-      return false;
+   protected void a(@Nullable cfb $$0, ctj $$1, hx $$2) {
+      $$1.a($$0, $$2, this.b, arn.g, 1.0F, 1.0F);
+   }
+
+   private void a(amz $$0, cmr $$1, hx $$2) {
+      if (this.a.a($$0, $$1, null, $$2, bmj.l, true, false) instanceof bxu $$4) {
+         $$4.c($$1.w());
+         $$4.w(true);
+      }
+   }
+
+   @Override
+   public void a(cmr $$0, @Nullable cti $$1, List<vd> $$2, coi $$3) {
+      if (this.a == blt.bd) {
+         sl $$4 = $$0.v();
+         if ($$4 != null && $$4.b("BucketVariantTag", 3)) {
+            int $$5 = $$4.h("BucketVariantTag");
+            n[] $$6 = new n[]{n.u, n.h};
+            String $$7 = "color.minecraft." + bys.s($$5);
+            String $$8 = "color.minecraft." + bys.t($$5);
+
+            for (int $$9 = 0; $$9 < bys.c.size(); $$9++) {
+               if ($$5 == bys.c.get($$9).a()) {
+                  $$2.add(vd.c(bys.c($$9)).a($$6));
+                  return;
+               }
+            }
+
+            $$2.add(bys.u($$5).d().e().a($$6));
+            vr $$10 = vd.c($$7);
+            if (!$$7.equals($$8)) {
+               $$10.f(", ").b(vd.c($$8));
+            }
+
+            $$10.a($$6);
+            $$2.add($$10);
+         }
+      }
    }
 }

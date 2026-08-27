@@ -1,353 +1,106 @@
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.stream.Stream;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+public class fly extends fjy<ccx> implements fip {
+   private final fmp a;
+   private final fmp b;
+   private final fmp f;
+   private final fmp g;
+   private final fmp h;
+   private final fmp i;
+   private final fmp j;
 
-public final class fly {
-   public static final float a = 1.0F;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h = 1.0F;
-   public float i = 1.0F;
-   public float j = 1.0F;
-   public boolean k = true;
-   public boolean l;
-   private final List<fly.a> m;
-   private final Map<String, fly> n;
-   private fma o = fma.a;
-
-   public fly(List<fly.a> $$0, Map<String, fly> $$1) {
-      this.m = $$0;
-      this.n = $$1;
+   public fly(fmp $$0) {
+      super(fth::i);
+      this.a = $$0.b("root");
+      this.b = this.a.b("body");
+      this.f = this.b.b("right_arm");
+      this.g = this.b.b("left_arm");
+      this.h = this.b.b("right_wing");
+      this.i = this.b.b("left_wing");
+      this.j = this.a.b("head");
    }
 
-   public fma a() {
-      return fma.a(this.b, this.c, this.d, this.e, this.f, this.g);
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      fmy $$2 = $$1.a("root", fmu.c(), fmr.a(0.0F, -2.5F, 0.0F));
+      $$2.a("head", fmu.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fmt(0.0F)), fmr.a(0.0F, 20.0F, 0.0F));
+      fmy $$3 = $$2.a(
+         "body",
+         fmu.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fmt(0.0F)).a(0, 16).a(-1.5F, 1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fmt(-0.2F)),
+         fmr.a(0.0F, 20.0F, 0.0F)
+      );
+      $$3.a("right_arm", fmu.c().a(23, 0).a(-1.25F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fmt(-0.1F)), fmr.a(-1.75F, 0.25F, 0.0F));
+      $$3.a("left_arm", fmu.c().a(23, 6).a(-0.75F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fmt(-0.1F)), fmr.a(1.75F, 0.25F, 0.0F));
+      $$3.a("left_wing", fmu.c().a(16, 14).a().a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fmt(0.0F)).a(false), fmr.a(0.5F, 1.0F, 1.0F));
+      $$3.a("right_wing", fmu.c().a(16, 14).a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fmt(0.0F)), fmr.a(-0.5F, 1.0F, 1.0F));
+      return fmv.a($$0, 32, 32);
    }
 
-   public fma b() {
-      return this.o;
-   }
-
-   public void a(fma $$0) {
-      this.o = $$0;
-   }
-
-   public void c() {
-      this.b(this.o);
-   }
-
-   public void b(fma $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = 1.0F;
-      this.i = 1.0F;
-      this.j = 1.0F;
-   }
-
-   public void a(fly $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.j = $$0.j;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-   }
-
-   public boolean a(String $$0) {
-      return this.n.containsKey($$0);
-   }
-
-   public fly b(String $$0) {
-      fly $$1 = this.n.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException("Can't find part " + $$0);
+   public void a(ccx $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fmp::c);
+      this.j.f = $$4 * (float) (Math.PI / 180.0);
+      this.j.e = $$5 * (float) (Math.PI / 180.0);
+      float $$6 = aui.b($$3 * 5.5F * (float) (Math.PI / 180.0)) * 0.1F;
+      this.f.g = (float) (Math.PI / 5) + $$6;
+      this.g.g = -((float) (Math.PI / 5) + $$6);
+      if ($$0.gf()) {
+         this.b.e = 0.0F;
+         this.a($$0.eT(), $$0.eU(), $$6);
       } else {
-         return $$1;
+         this.b.e = (float) (Math.PI / 20);
       }
+
+      this.i.f = 1.0995574F + aui.b($$3 * 45.836624F * (float) (Math.PI / 180.0)) * (float) (Math.PI / 180.0) * 16.2F;
+      this.h.f = -this.i.f;
+      this.i.e = 0.47123888F;
+      this.i.g = -0.47123888F;
+      this.h.e = 0.47123888F;
+      this.h.g = 0.47123888F;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+   private void a(cmr $$0, cmr $$1, float $$2) {
+      if ($$0.b() && $$1.b()) {
+         this.f.e = -1.2217305F;
+         this.f.f = (float) (Math.PI / 12);
+         this.f.g = -0.47123888F - $$2;
+         this.g.e = -1.2217305F;
+         this.g.f = (float) (-Math.PI / 12);
+         this.g.g = 0.47123888F + $$2;
+      } else {
+         if (!$$0.b()) {
+            this.f.e = (float) (Math.PI * 7.0 / 6.0);
+            this.f.f = (float) (Math.PI / 12);
+            this.f.g = -0.47123888F - $$2;
+         }
 
-   public void b(float $$0, float $$1, float $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public void a(epd $$0, eph $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   public void a(epd $$0, eph $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.k) {
-         if (!this.m.isEmpty() || !this.n.isEmpty()) {
-            $$0.a();
-            this.a($$0);
-            if (!this.l) {
-               this.a($$0.c(), $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            }
-
-            for (fly $$8 : this.n.values()) {
-               $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            }
-
-            $$0.b();
+         if (!$$1.b()) {
+            this.g.e = (float) (Math.PI * 7.0 / 6.0);
+            this.g.f = (float) (-Math.PI / 12);
+            this.g.g = 0.47123888F + $$2;
          }
       }
    }
 
-   public void a(epd $$0, fly.d $$1) {
-      this.a($$0, $$1, "");
+   @Override
+   public fmp a() {
+      return this.a;
    }
 
-   private void a(epd $$0, fly.d $$1, String $$2) {
-      if (!this.m.isEmpty() || !this.n.isEmpty()) {
-         $$0.a();
-         this.a($$0);
-         epd.a $$3 = $$0.c();
+   @Override
+   public void a(blz $$0, ept $$1) {
+      boolean $$2 = $$0 == blz.b;
+      fmp $$3 = $$2 ? this.f : this.g;
+      this.a.a($$1);
+      this.b.a($$1);
+      $$3.a($$1);
+      $$1.b(0.55F, 0.55F, 0.55F);
+      this.a($$1, $$2);
+   }
 
-         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
-            $$1.visit($$3, $$2, $$4, this.m.get($$4));
-         }
-
-         String $$5 = $$2 + "/";
-         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
-         $$0.b();
+   private void a(ept $$0, boolean $$1) {
+      if ($$1) {
+         $$0.a(0.046875, -0.15625, 0.078125);
+      } else {
+         $$0.a(-0.046875, -0.15625, 0.078125);
       }
-   }
-
-   public void a(epd $$0) {
-      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
-      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
-         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
-      }
-
-      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
-         $$0.b(this.h, this.i, this.j);
-      }
-   }
-
-   private void a(epd.a $$0, eph $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      for (fly.a $$8 : this.m) {
-         $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
-
-   public fly.a a(auf $$0) {
-      return this.m.get($$0.a(this.m.size()));
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(Vector3f $$0) {
-      this.b = this.b + $$0.x();
-      this.c = this.c + $$0.y();
-      this.d = this.d + $$0.z();
-   }
-
-   public void b(Vector3f $$0) {
-      this.e = this.e + $$0.x();
-      this.f = this.f + $$0.y();
-      this.g = this.g + $$0.z();
-   }
-
-   public void c(Vector3f $$0) {
-      this.h = this.h + $$0.x();
-      this.i = this.i + $$0.y();
-      this.j = this.j + $$0.z();
-   }
-
-   public Stream<fly> e() {
-      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(fly::e));
-   }
-
-   public static class a {
-      private final fly.b[] g;
-      public final float a;
-      public final float b;
-      public final float c;
-      public final float d;
-      public final float e;
-      public final float f;
-
-      public a(
-         int $$0,
-         int $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         float $$9,
-         float $$10,
-         boolean $$11,
-         float $$12,
-         float $$13,
-         Set<ia> $$14
-      ) {
-         this.a = $$2;
-         this.b = $$3;
-         this.c = $$4;
-         this.d = $$2 + $$5;
-         this.e = $$3 + $$6;
-         this.f = $$4 + $$7;
-         this.g = new fly.b[$$14.size()];
-         float $$15 = $$2 + $$5;
-         float $$16 = $$3 + $$6;
-         float $$17 = $$4 + $$7;
-         $$2 -= $$8;
-         $$3 -= $$9;
-         $$4 -= $$10;
-         $$15 += $$8;
-         $$16 += $$9;
-         $$17 += $$10;
-         if ($$11) {
-            float $$18 = $$15;
-            $$15 = $$2;
-            $$2 = $$18;
-         }
-
-         fly.c $$19 = new fly.c($$2, $$3, $$4, 0.0F, 0.0F);
-         fly.c $$20 = new fly.c($$15, $$3, $$4, 0.0F, 8.0F);
-         fly.c $$21 = new fly.c($$15, $$16, $$4, 8.0F, 8.0F);
-         fly.c $$22 = new fly.c($$2, $$16, $$4, 8.0F, 0.0F);
-         fly.c $$23 = new fly.c($$2, $$3, $$17, 0.0F, 0.0F);
-         fly.c $$24 = new fly.c($$15, $$3, $$17, 0.0F, 8.0F);
-         fly.c $$25 = new fly.c($$15, $$16, $$17, 8.0F, 8.0F);
-         fly.c $$26 = new fly.c($$2, $$16, $$17, 8.0F, 0.0F);
-         float $$27 = (float)$$0;
-         float $$28 = (float)$$0 + $$7;
-         float $$29 = (float)$$0 + $$7 + $$5;
-         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
-         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
-         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
-         float $$33 = (float)$$1;
-         float $$34 = (float)$$1 + $$7;
-         float $$35 = (float)$$1 + $$7 + $$6;
-         int $$36 = 0;
-         if ($$14.contains(ia.a)) {
-            this.g[$$36++] = new fly.b(new fly.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, ia.a);
-         }
-
-         if ($$14.contains(ia.b)) {
-            this.g[$$36++] = new fly.b(new fly.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, ia.b);
-         }
-
-         if ($$14.contains(ia.e)) {
-            this.g[$$36++] = new fly.b(new fly.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, ia.e);
-         }
-
-         if ($$14.contains(ia.c)) {
-            this.g[$$36++] = new fly.b(new fly.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, ia.c);
-         }
-
-         if ($$14.contains(ia.f)) {
-            this.g[$$36++] = new fly.b(new fly.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, ia.f);
-         }
-
-         if ($$14.contains(ia.d)) {
-            this.g[$$36] = new fly.b(new fly.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, ia.d);
-         }
-      }
-
-      public void a(epd.a $$0, eph $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         Matrix4f $$8 = $$0.a();
-         Matrix3f $$9 = $$0.b();
-
-         for (fly.b $$10 : this.g) {
-            Vector3f $$11 = $$9.transform(new Vector3f($$10.b));
-            float $$12 = $$11.x();
-            float $$13 = $$11.y();
-            float $$14 = $$11.z();
-
-            for (fly.c $$15 : $$10.a) {
-               float $$16 = $$15.a.x() / 16.0F;
-               float $$17 = $$15.a.y() / 16.0F;
-               float $$18 = $$15.a.z() / 16.0F;
-               Vector4f $$19 = $$8.transform(new Vector4f($$16, $$17, $$18, 1.0F));
-               $$1.a($$19.x(), $$19.y(), $$19.z(), $$4, $$5, $$6, $$7, $$15.b, $$15.c, $$3, $$2, $$12, $$13, $$14);
-            }
-         }
-      }
-   }
-
-   static class b {
-      public final fly.c[] a;
-      public final Vector3f b;
-
-      public b(fly.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, ia $$8) {
-         this.a = $$0;
-         float $$9 = 0.0F / $$5;
-         float $$10 = 0.0F / $$6;
-         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
-         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
-         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
-         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
-         if ($$7) {
-            int $$11 = $$0.length;
-
-            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
-               fly.c $$13 = $$0[$$12];
-               $$0[$$12] = $$0[$$11 - 1 - $$12];
-               $$0[$$11 - 1 - $$12] = $$13;
-            }
-         }
-
-         this.b = $$8.m();
-         if ($$7) {
-            this.b.mul(-1.0F, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   static class c {
-      public final Vector3f a;
-      public final float b;
-      public final float c;
-
-      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
-         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
-      }
-
-      public fly.c a(float $$0, float $$1) {
-         return new fly.c(this.a, $$0, $$1);
-      }
-
-      public c(Vector3f $$0, float $$1, float $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void visit(epd.a var1, String var2, int var3, fly.a var4);
    }
 }

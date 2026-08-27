@@ -1,316 +1,179 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class gdi implements gdl.a, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final agt b;
-   final int c;
-   final int d;
-   private final eoe e;
-   eoe[] f;
-   @Nullable
-   private final gdi.a g;
-   private final apu h;
-
-   public gdi(agt $$0, gfb $$1, eoe $$2, apu $$3) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$1.b();
-      this.h = $$3;
-      gez $$4 = $$3.a(gez.a).orElse(gez.e);
-      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
-      this.e = $$2;
-      this.f = new eoe[]{this.e};
+public class gdi extends fzg<fry, fku<fry>> {
+   public gdi(fyf.a $$0, boolean $$1) {
+      super($$0, new fku<>($$0.a($$1 ? fmo.aT : fmo.aP), $$1), 0.5F);
+      this.a(new gcg<>(this, new fkb($$0.a($$1 ? fmo.aU : fmo.aR)), new fkb($$0.a($$1 ? fmo.aV : fmo.aS)), $$0.g()));
+      this.a(new gcp<>(this, $$0.d()));
+      this.a(new gbm<>($$0, this));
+      this.a(new gbw(this));
+      this.a(new gbq(this));
+      this.a(new gbv<>(this, $$0.f(), $$0.d()));
+      this.a(new gbz<>(this, $$0.f()));
+      this.a(new gcn<>(this, $$0.f()));
+      this.a(new gcx<>(this, $$0.f()));
+      this.a(new gbn<>(this));
    }
 
-   public void a(int $$0) {
-      try {
-         this.f = gdd.a(this.f, $$0);
-      } catch (Throwable var6) {
-         o $$2 = o.a(var6, "Generating mipmaps for frame");
-         p $$3 = $$2.a("Sprite being mipmapped");
-         $$3.a("First frame", () -> {
-            StringBuilder $$0x = new StringBuilder();
-            if ($$0x.length() > 0) {
-               $$0x.append(", ");
-            }
+   public void a(fry $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
+      this.b($$0);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-            $$0x.append(this.e.a()).append("x").append(this.e.b());
-            return $$0x.toString();
-         });
-         p $$4 = $$2.a("Frame being iterated");
-         $$4.a("Sprite name", this.b);
-         $$4.a("Sprite size", () -> this.c + " x " + this.d);
-         $$4.a("Sprite frames", () -> this.g() + " frames");
-         $$4.a("Mipmap levels", $$0);
-         throw new y($$2);
+   public elm a(fry $$0, float $$1) {
+      return $$0.bX() ? new elm(0.0, -0.125, 0.0) : super.a($$0, $$1);
+   }
+
+   private void b(fry $$0) {
+      fku<fry> $$1 = this.a();
+      if ($$0.P_()) {
+         $$1.b_(false);
+         $$1.k.k = true;
+         $$1.l.k = true;
+      } else {
+         $$1.b_(true);
+         $$1.l.k = $$0.a(cfc.g);
+         $$1.z.k = $$0.a(cfc.b);
+         $$1.x.k = $$0.a(cfc.e);
+         $$1.y.k = $$0.a(cfc.f);
+         $$1.b.k = $$0.a(cfc.c);
+         $$1.w.k = $$0.a(cfc.d);
+         $$1.t = $$0.bX();
+         fkc.a $$2 = a($$0, bju.a);
+         fkc.a $$3 = a($$0, bju.b);
+         if ($$2.a()) {
+            $$3 = $$0.eU().b() ? fkc.a.a : fkc.a.b;
+         }
+
+         if ($$0.fm() == blz.b) {
+            $$1.s = $$2;
+            $$1.r = $$3;
+         } else {
+            $$1.s = $$3;
+            $$1.r = $$2;
+         }
       }
    }
 
-   private int g() {
-      return this.g != null ? this.g.b.size() : 1;
+   private static fkc.a a(fry $$0, bju $$1) {
+      cmr $$2 = $$0.b($$1);
+      if ($$2.b()) {
+         return fkc.a.a;
+      } else {
+         if ($$0.fo() == $$1 && $$0.fq() > 0) {
+            cok $$3 = $$2.s();
+            if ($$3 == cok.d) {
+               return fkc.a.c;
+            }
+
+            if ($$3 == cok.e) {
+               return fkc.a.d;
+            }
+
+            if ($$3 == cok.f) {
+               return fkc.a.e;
+            }
+
+            if ($$3 == cok.g && $$1 == $$0.fo()) {
+               return fkc.a.f;
+            }
+
+            if ($$3 == cok.h) {
+               return fkc.a.h;
+            }
+
+            if ($$3 == cok.i) {
+               return fkc.a.i;
+            }
+
+            if ($$3 == cok.j) {
+               return fkc.a.j;
+            }
+         } else if (!$$0.aF && $$2.a(cmu.vM) && ckz.d($$2)) {
+            return fkc.a.g;
+         }
+
+         return fkc.a.b;
+      }
    }
 
-   @Nullable
-   private gdi.a a(gfb $$0, int $$1, int $$2, gez $$3) {
-      int $$4 = $$1 / $$0.a();
-      int $$5 = $$2 / $$0.b();
-      int $$6 = $$4 * $$5;
-      List<gdi.b> $$7 = new ArrayList<>();
-      $$3.a(($$1x, $$2x) -> $$7.add(new gdi.b($$1x, $$2x)));
-      if ($$7.isEmpty()) {
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$7.add(new gdi.b($$8, $$3.a()));
+   public ahd a(fry $$0) {
+      return $$0.b().a();
+   }
+
+   protected void a(fry $$0, ept $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   }
+
+   protected void a(fry $$0, vd $$1, ept $$2, fsz $$3, int $$4) {
+      double $$5 = this.c.b($$0);
+      $$2.a();
+      if ($$5 < 100.0) {
+         emq $$6 = $$0.gh();
+         emi $$7 = $$6.a(emh.c);
+         if ($$7 != null) {
+            emm $$8 = $$6.d($$0, $$7);
+            vd $$9 = emm.a($$8, $$7.a(ww.b));
+            super.a($$0, vd.i().b($$9).b(vc.u).b($$7.d()), $$2, $$3, $$4);
+            $$2.a(0.0F, 9.0F * 1.15F * 0.025F, 0.0F);
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+      $$2.b();
+   }
+
+   public void a(ept $$0, fsz $$1, int $$2, fry $$3) {
+      this.a($$0, $$1, $$2, $$3, this.f.n, this.f.w);
+   }
+
+   public void b(ept $$0, fsz $$1, int $$2, fry $$3) {
+      this.a($$0, $$1, $$2, $$3, this.f.o, this.f.b);
+   }
+
+   private void a(ept $$0, fsz $$1, int $$2, fry $$3, fmp $$4, fmp $$5) {
+      fku<fry> $$6 = this.a();
+      this.b($$3);
+      $$6.c = 0.0F;
+      $$6.t = false;
+      $$6.u = 0.0F;
+      $$6.a($$3, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      $$4.e = 0.0F;
+      ahd $$7 = $$3.b().a();
+      $$4.a($$0, $$1.getBuffer(fth.c($$7)), $$2, gdw.d);
+      $$5.e = 0.0F;
+      $$5.a($$0, $$1.getBuffer(fth.i($$7)), $$2, gdw.d);
+   }
+
+   protected void a(fry $$0, ept $$1, float $$2, float $$3, float $$4) {
+      float $$5 = $$0.a($$4);
+      float $$6 = $$0.g($$4);
+      if ($$0.fw()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         float $$7 = (float)$$0.fx() + $$4;
+         float $$8 = aui.a($$7 * $$7 / 100.0F, 0.0F, 1.0F);
+         if (!$$0.fj()) {
+            $$1.a(a.b.rotationDegrees($$8 * (-90.0F - $$6)));
+         }
+
+         elm $$9 = $$0.f($$4);
+         elm $$10 = $$0.C($$4);
+         double $$11 = $$10.i();
+         double $$12 = $$9.i();
+         if ($$11 > 0.0 && $$12 > 0.0) {
+            double $$13 = ($$10.c * $$9.c + $$10.e * $$9.e) / Math.sqrt($$11 * $$12);
+            double $$14 = $$10.c * $$9.e - $$10.e * $$9.c;
+            $$1.a(a.d.rotation((float)(Math.signum($$14) * Math.acos($$13))));
+         }
+      } else if ($$5 > 0.0F) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         float $$15 = $$0.aZ() ? -90.0F - $$6 : -90.0F;
+         float $$16 = aui.i($$5, 0.0F, $$15);
+         $$1.a(a.b.rotationDegrees($$16));
+         if ($$0.ca()) {
+            $$1.a(0.0F, -1.0F, 0.3F);
          }
       } else {
-         int $$9 = 0;
-         IntSet $$10 = new IntOpenHashSet();
-
-         for (Iterator<gdi.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
-            gdi.b $$12 = $$11.next();
-            boolean $$13 = true;
-            if ($$12.b <= 0) {
-               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
-               $$13 = false;
-            }
-
-            if ($$12.a < 0 || $$12.a >= $$6) {
-               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
-               $$13 = false;
-            }
-
-            if ($$13) {
-               $$10.add($$12.a);
-            } else {
-               $$11.remove();
-            }
-         }
-
-         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
-         if ($$14.length > 0) {
-            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
-         }
-      }
-
-      return $$7.size() <= 1 ? null : new gdi.a(ImmutableList.copyOf($$7), $$4, $$3.b());
-   }
-
-   void a(int $$0, int $$1, int $$2, int $$3, eoe[] $$4) {
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
-      }
-   }
-
-   @Override
-   public int a() {
-      return this.c;
-   }
-
-   @Override
-   public int b() {
-      return this.d;
-   }
-
-   @Override
-   public agt c() {
-      return this.b;
-   }
-
-   public IntStream d() {
-      return this.g != null ? this.g.b() : IntStream.of(1);
-   }
-
-   @Nullable
-   public gdk e() {
-      return this.g != null ? this.g.a() : null;
-   }
-
-   public apu f() {
-      return this.h;
-   }
-
-   @Override
-   public void close() {
-      for (eoe $$0 : this.f) {
-         $$0.close();
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
-   }
-
-   public boolean a(int $$0, int $$1, int $$2) {
-      int $$3 = $$1;
-      int $$4 = $$2;
-      if (this.g != null) {
-         $$3 = $$1 + this.g.a($$0) * this.c;
-         $$4 = $$2 + this.g.b($$0) * this.d;
-      }
-
-      return (this.e.a($$3, $$4) >> 24 & 0xFF) == 0;
-   }
-
-   public void a(int $$0, int $$1) {
-      if (this.g != null) {
-         this.g.a($$0, $$1);
-      } else {
-         this.a($$0, $$1, 0, 0, this.f);
-      }
-   }
-
-   class a {
-      final List<gdi.b> b;
-      private final int c;
-      private final boolean d;
-
-      a(List<gdi.b> $$0, int $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      int a(int $$0) {
-         return $$0 % this.c;
-      }
-
-      int b(int $$0) {
-         return $$0 / this.c;
-      }
-
-      void a(int $$0, int $$1, int $$2) {
-         int $$3 = this.a($$2) * gdi.this.c;
-         int $$4 = this.b($$2) * gdi.this.d;
-         gdi.this.a($$0, $$1, $$3, $$4, gdi.this.f);
-      }
-
-      public gdk a() {
-         return gdi.this.new d(this, this.d ? gdi.this.new c() : null);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.a($$0, $$1, this.b.get(0).a);
-      }
-
-      public IntStream b() {
-         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
-      }
-   }
-
-   static class b {
-      final int a;
-      final int b;
-
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   final class c implements AutoCloseable {
-      private final eoe[] b = new eoe[gdi.this.f.length];
-
-      c() {
-         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
-            int $$1 = gdi.this.c >> $$0;
-            int $$2 = gdi.this.d >> $$0;
-            this.b[$$0] = new eoe($$1, $$2, false);
-         }
-      }
-
-      void a(int $$0, int $$1, gdi.d $$2) {
-         gdi.a $$3 = $$2.d;
-         List<gdi.b> $$4 = $$3.b;
-         gdi.b $$5 = $$4.get($$2.b);
-         double $$6 = 1.0 - (double)$$2.c / (double)$$5.b;
-         int $$7 = $$5.a;
-         int $$8 = $$4.get(($$2.b + 1) % $$4.size()).a;
-         if ($$7 != $$8) {
-            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
-               int $$10 = gdi.this.c >> $$9;
-               int $$11 = gdi.this.d >> $$9;
-
-               for (int $$12 = 0; $$12 < $$11; $$12++) {
-                  for (int $$13 = 0; $$13 < $$10; $$13++) {
-                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
-                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
-                     int $$16 = this.a($$6, $$14 >> 16 & 0xFF, $$15 >> 16 & 0xFF);
-                     int $$17 = this.a($$6, $$14 >> 8 & 0xFF, $$15 >> 8 & 0xFF);
-                     int $$18 = this.a($$6, $$14 & 0xFF, $$15 & 0xFF);
-                     this.b[$$9].a($$13, $$12, $$14 & 0xFF000000 | $$16 << 16 | $$17 << 8 | $$18);
-                  }
-               }
-            }
-
-            gdi.this.a($$0, $$1, 0, 0, this.b);
-         }
-      }
-
-      private int a(gdi.a $$0, int $$1, int $$2, int $$3, int $$4) {
-         return gdi.this.f[$$2].a($$3 + ($$0.a($$1) * gdi.this.c >> $$2), $$4 + ($$0.b($$1) * gdi.this.d >> $$2));
-      }
-
-      private int a(double $$0, int $$1, int $$2) {
-         return (int)($$0 * (double)$$1 + (1.0 - $$0) * (double)$$2);
-      }
-
-      @Override
-      public void close() {
-         for (eoe $$0 : this.b) {
-            $$0.close();
-         }
-      }
-   }
-
-   class d implements gdk {
-      int b;
-      int c;
-      final gdi.a d;
-      @Nullable
-      private final gdi.c e;
-
-      d(gdi.a $$0, @Nullable gdi.c $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         this.c++;
-         gdi.b $$2 = this.d.b.get(this.b);
-         if (this.c >= $$2.b) {
-            int $$3 = $$2.a;
-            this.b = (this.b + 1) % this.d.b.size();
-            this.c = 0;
-            int $$4 = this.d.b.get(this.b).a;
-            if ($$3 != $$4) {
-               this.d.a($$0, $$1, $$4);
-            }
-         } else if (this.e != null) {
-            if (!RenderSystem.isOnRenderThread()) {
-               RenderSystem.recordRenderCall(() -> this.e.a($$0, $$1, this));
-            } else {
-               this.e.a($$0, $$1, this);
-            }
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.e != null) {
-            this.e.close();
-         }
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 }

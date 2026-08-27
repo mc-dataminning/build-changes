@@ -1,15 +1,15 @@
-public class cqk extends cqs {
-   public cqk(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.k, $$1);
+public class cqk extends cpe {
+   public cqk(String $$0, cpk $$1, cps $$2, cmr $$3, float $$4, int $$5) {
+      super(cqa.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   public cmr g() {
+      return new cmr(cwl.cD);
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   public cpz<?> ar_() {
+      return cpz.p;
    }
 }

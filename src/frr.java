@@ -1,72 +1,122 @@
-public class frr {
-   public static final vb a = vb.c("quickplay.error.title");
-   private static final vb b = vb.c("quickplay.error.invalid_identifier");
-   private static final vb c = vb.c("quickplay.error.realm_connect");
-   private static final vb d = vb.c("quickplay.error.realm_permission");
-   private static final vb e = vb.c("gui.toTitle");
-   private static final vb f = vb.c("gui.toWorld");
-   private static final vb g = vb.c("gui.toRealms");
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   public static void a(euk $$0, fhq.c $$1, ept $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!ac.b($$3)) {
-         a($$0, $$3);
-      } else if (!ac.b($$4)) {
-         b($$0, $$4);
-      } else if (!ac.b($$5)) {
-         a($$0, $$2, $$5);
+public class frr extends frn {
+   private final dno a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
+
+   frr(fnk $$0, double $$1, double $$2, double $$3, dno $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<elm> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         elm $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)aui.d($$8, $$10);
+         this.H = this.G = (float)aui.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
       }
    }
 
-   private static void a(euk $$0, String $$1) {
-      if (!$$0.l().b($$1)) {
-         fcc $$2 = new fgy(new fch());
-         $$0.a(new fbe($$2, a, b, f));
+   @Override
+   public void a(epx $$0, eul $$1, float $$2) {
+      float $$3 = aui.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = aui.i($$2, this.F, this.b);
+      float $$5 = aui.i($$2, this.H, this.G) + (float) (Math.PI / 2);
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY($$4).rotateX(-$$5).rotateY($$3));
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3));
+   }
+
+   private void a(epx $$0, eul $$1, float $$2, Consumer<Quaternionf> $$3) {
+      elm $$4 = $$1.b();
+      float $$5 = (float)(aui.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(aui.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(aui.d((double)$$2, this.f, this.i) - $$4.c());
+      Vector3f $$8 = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+      Quaternionf $$9 = new Quaternionf().setAngleAxis(0.0F, $$8.x(), $$8.y(), $$8.z());
+      $$3.accept($$9);
+      Vector3f[] $$10 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$11 = this.b($$2);
+
+      for (int $$12 = 0; $$12 < 4; $$12++) {
+         Vector3f $$13 = $$10[$$12];
+         $$13.rotate($$9);
+         $$13.mul($$11);
+         $$13.add($$5, $$6, $$7);
+      }
+
+      float $$14 = this.c();
+      float $$15 = this.d();
+      float $$16 = this.e();
+      float $$17 = this.f();
+      int $$18 = this.a($$2);
+      $$0.a((double)$$10[0].x(), (double)$$10[0].y(), (double)$$10[0].z()).a($$15, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[1].x(), (double)$$10[1].y(), (double)$$10[1].z()).a($$15, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[2].x(), (double)$$10[2].y(), (double)$$10[2].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[3].x(), (double)$$10[3].y(), (double)$$10[3].z()).a($$14, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fqr b() {
+      return fqr.c;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         $$0.w().a($$1, () -> $$0.a(new fch()));
+         Optional<elm> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            elm $$3 = $$0.get();
+            this.g = aui.d($$2, this.g, $$3.a());
+            this.h = aui.d($$2, this.h, $$3.b());
+            this.i = aui.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)aui.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)aui.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
+         }
       }
    }
 
-   private static void b(euk $$0, String $$1) {
-      fnf $$2 = new fnf($$0);
-      $$2.a();
-      fne $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new fne(geu.a("selectServer.defaultName"), $$1, fne.b.c);
-         $$2.a($$3, true);
-         $$2.b();
+   public static class a implements fqq<kb> {
+      private final fri a;
+
+      public a(fri $$0) {
+         this.a = $$0;
       }
 
-      fof $$4 = fof.a($$1);
-      faw.a(new ffa(new fch()), $$0, $$4, $$3, true);
-   }
-
-   private static void a(euk $$0, ept $$1, String $$2) {
-      long $$3;
-      eqm $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fcc $$6 = new epo(new fch());
-         $$0.a(new fbe($$6, a, b, g));
-         return;
-      } catch (erg var10) {
-         fcc $$8 = new fch();
-         $$0.a(new fbe($$8, a, c, e));
-         return;
-      }
-
-      eqk $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fcc $$12 = new epo(new fch());
-         $$0.a(new fbe($$12, a, d, g));
-      } else {
-         fch $$13 = new fch();
-         etj $$14 = new etj($$13, $$11);
-         $$0.a(new esa($$13, $$14));
+      public fqn a(kb $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         frr $$8 = new frr($$1, $$2, $$3, $$4, $$0.c(), $$0.d());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

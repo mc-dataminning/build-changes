@@ -1,36 +1,22 @@
-import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record add(String a, Instant b, long c, dy d, vi.b e) implements wu<acw> {
-   public add(ue $$0) {
-      this($$0.d(256), $$0.w(), $$0.readLong(), new dy($$0), new vi.b($$0));
+public record add(ahc<dmj> a, ahc<cti> b, long c, ctf d, @Nullable ctf e, boolean f, boolean g, Optional<ig> h, int i) {
+   public add(ug $$0) {
+      this(
+         $$0.a(ke.ay), $$0.a(ke.aM), $$0.readLong(), ctf.a($$0.readByte()), ctf.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(ug::h), $$0.n()
+      );
    }
 
-   @Override
-   public void a(ue $$0) {
-      $$0.a(this.a, 256);
-      $$0.a(this.b);
+   public void a(ug $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
       $$0.b(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
-   }
-
-   public void a(acw $$0) {
-      $$0.a(this);
-   }
-
-   public Instant d() {
-      return this.b;
-   }
-
-   public long e() {
-      return this.c;
-   }
-
-   public dy f() {
-      return this.d;
-   }
-
-   public vi.b g() {
-      return this.e;
+      $$0.k(this.d.a());
+      $$0.k(ctf.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, ug::a);
+      $$0.c(this.i);
    }
 }

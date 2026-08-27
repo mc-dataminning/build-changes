@@ -1,174 +1,96 @@
-import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class feb extends fdt<cil> implements ffw {
-   private float x;
-   private float y;
-   private final ffq z = new ffq();
-   private boolean A;
-   private boolean B;
+public class feb extends fds<cia> {
+   private static final ahd x = new ahd("container/cartography_table/error");
+   private static final ahd y = new ahd("container/cartography_table/scaled_map");
+   private static final ahd z = new ahd("container/cartography_table/duplicated_map");
+   private static final ahd A = new ahd("container/cartography_table/map");
+   private static final ahd B = new ahd("container/cartography_table/locked");
+   private static final ahd C = new ahd("textures/gui/container/cartography_table.png");
 
-   public feb(cer $$0) {
-      super($$0.bR, $$0.fS(), vb.c("container.crafting"));
-      this.l = 97;
+   public feb(cia $$0, cfa $$1, vd $$2) {
+      super($$0, $$1, $$2);
+      this.m -= 2;
    }
 
    @Override
-   public void C() {
-      if (this.f.q.g()) {
-         this.f.a(new fdq(this.f.s, this.f.s.cn.y(), this.f.m.G().c()));
-      } else {
-         this.z.h();
-      }
-   }
-
-   @Override
-   protected void aP_() {
-      if (this.f.q.g()) {
-         this.f.a(new fdq(this.f.s, this.f.s.cn.y(), this.f.m.G().c()));
-      } else {
-         super.aP_();
-         this.A = this.g < 379;
-         this.z.a(this.g, this.h, this.f, this.A, this.p);
-         this.t = this.z.a(this.g, this.c);
-         this.d(new ewt(this.t + 104, this.h / 2 - 22, 20, 18, ffq.a, $$0 -> {
-            this.z.f();
-            this.t = this.z.a(this.g, this.c);
-            $$0.b(this.t + 104, this.h / 2 - 22);
-            this.B = true;
-         }));
-         this.e(this.z);
-         this.c(this.z);
-      }
-   }
-
-   @Override
-   protected void b(evw $$0, int $$1, int $$2) {
-      $$0.a(this.i, this.e, this.l, this.m, 4210752, false);
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      if (this.z.g() && this.A) {
-         this.b($$0, $$1, $$2, $$3);
-         this.z.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.z.a($$0, $$1, $$2, $$3);
-         this.z.a($$0, this.t, this.u, false, $$3);
-      }
-
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
-      this.z.a($$0, this.t, this.u, $$1, $$2);
-      this.x = (float)$$1;
-      this.y = (float)$$2;
    }
 
    @Override
-   protected void a(evw $$0, float $$1, int $$2, int $$3) {
+   protected void a(ewm $$0, float $$1, int $$2, int $$3) {
       int $$4 = this.t;
       int $$5 = this.u;
-      $$0.a(a, $$4, $$5, 0, 0, this.c, this.k);
-      a($$0, $$4 + 26, $$5 + 8, $$4 + 75, $$5 + 78, 30, 0.0625F, this.x, this.y, this.f.s);
-   }
+      $$0.a(C, $$4, $$5, 0, 0, this.c, this.k);
+      cmr $$6 = this.p.b(1).g();
+      boolean $$7 = $$6.a(cmu.uc);
+      boolean $$8 = $$6.a(cmu.qL);
+      boolean $$9 = $$6.a(cmu.fS);
+      cmr $$10 = this.p.b(0).g();
+      boolean $$11 = false;
+      Integer $$12;
+      efu $$13;
+      if ($$10.a(cmu.rR)) {
+         $$12 = cmy.d($$10);
+         $$13 = cmy.a($$12, this.f.r);
+         if ($$13 != null) {
+            if ($$13.h) {
+               $$11 = true;
+               if ($$8 || $$9) {
+                  $$0.a(x, $$4 + 35, $$5 + 31, 28, 21);
+               }
+            }
 
-   public static void a(evw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, blv $$9) {
-      float $$10 = (float)($$1 + $$3) / 2.0F;
-      float $$11 = (float)($$2 + $$4) / 2.0F;
-      $$0.c($$1, $$2, $$3, $$4);
-      float $$12 = (float)Math.atan((double)(($$10 - $$7) / 40.0F));
-      float $$13 = (float)Math.atan((double)(($$11 - $$8) / 40.0F));
-      Quaternionf $$14 = new Quaternionf().rotateZ((float) Math.PI);
-      Quaternionf $$15 = new Quaternionf().rotateX($$13 * 20.0F * (float) (Math.PI / 180.0));
-      $$14.mul($$15);
-      float $$16 = $$9.aU;
-      float $$17 = $$9.dC();
-      float $$18 = $$9.dE();
-      float $$19 = $$9.aX;
-      float $$20 = $$9.aW;
-      $$9.aU = 180.0F + $$12 * 20.0F;
-      $$9.r(180.0F + $$12 * 40.0F);
-      $$9.s(-$$13 * 20.0F);
-      $$9.aW = $$9.dC();
-      $$9.aX = $$9.dC();
-      Vector3f $$21 = new Vector3f(0.0F, $$9.dh() / 2.0F + $$6, 0.0F);
-      a($$0, $$10, $$11, $$5, $$21, $$14, $$15, $$9);
-      $$9.aU = $$16;
-      $$9.r($$17);
-      $$9.s($$18);
-      $$9.aX = $$19;
-      $$9.aW = $$20;
-      $$0.f();
-   }
-
-   public static void a(evw $$0, float $$1, float $$2, int $$3, Vector3f $$4, Quaternionf $$5, @Nullable Quaternionf $$6, blv $$7) {
-      $$0.c().a();
-      $$0.c().a((double)$$1, (double)$$2, 50.0);
-      $$0.c().a(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
-      $$0.c().a($$4.x, $$4.y, $$4.z);
-      $$0.c().a($$5);
-      enz.c();
-      fxm $$8 = euk.N().an();
-      if ($$6 != null) {
-         $$6.conjugate();
-         $$8.a($$6);
-      }
-
-      $$8.a(false);
-      RenderSystem.runAsFancy(() -> $$8.a($$7, 0.0, 0.0, 0.0, 0.0F, 1.0F, $$0.c(), $$0.d(), 15728880));
-      $$0.e();
-      $$8.a(true);
-      $$0.c().b();
-      enz.b();
-   }
-
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.A || !this.z.g()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.z.a($$0, $$1, $$2)) {
-         this.a(this.z);
-         return true;
+            if ($$8 && $$13.f >= 4) {
+               $$11 = true;
+               $$0.a(x, $$4 + 35, $$5 + 31, 28, 21);
+            }
+         }
       } else {
-         return this.A && this.z.g() ? false : super.a($$0, $$1, $$2);
+         $$12 = null;
+         $$13 = null;
       }
+
+      this.a($$0, $$12, $$13, $$7, $$8, $$9, $$11);
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.B) {
-         this.B = false;
-         return true;
+   private void a(ewm $$0, @Nullable Integer $$1, @Nullable efu $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
+      int $$7 = this.t;
+      int $$8 = this.u;
+      if ($$4 && !$$6) {
+         $$0.a(y, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
+      } else if ($$3) {
+         $$0.a(z, $$7 + 67 + 16, $$8 + 13, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(z, $$7 + 67, $$8 + 13 + 16, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
+         $$0.c().b();
+      } else if ($$5) {
+         $$0.a(A, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(B, $$7 + 118, $$8 + 60, 10, 14);
+         $$0.c().b();
       } else {
-         return super.b($$0, $$1, $$2);
+         $$0.a(A, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
       }
    }
 
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.z.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
-   }
-
-   @Override
-   protected void a(cjf $$0, int $$1, int $$2, cht $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.z.a($$0);
-   }
-
-   @Override
-   public void E() {
-      this.z.i();
-   }
-
-   @Override
-   public ffq F() {
-      return this.z;
+   private void a(ewm $$0, @Nullable Integer $$1, @Nullable efu $$2, int $$3, int $$4, float $$5) {
+      if ($$1 != null && $$2 != null) {
+         $$0.c().a();
+         $$0.c().a((float)$$3, (float)$$4, 1.0F);
+         $$0.c().b($$5, $$5, 1.0F);
+         this.f.j.j().a($$0.c(), $$0.d(), $$1, $$2, true, 15728880);
+         $$0.e();
+         $$0.c().b();
+      }
    }
 }

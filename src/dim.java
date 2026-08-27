@@ -1,185 +1,169 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class dim {
-   public static final int a = 12;
-   private final csy b;
-   private final hv c;
-   private final boolean d;
-   private final hv e;
-   private final ia f;
-   private final List<hv> g = Lists.newArrayList();
-   private final List<hv> h = Lists.newArrayList();
-   private final ia i;
+   public static final String a = "spawn_data";
+   private static final String n = "next_mob_spawns_at";
+   public static MapCodec<dim> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ja.b.optionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
+               ja.b.optionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
+               Codec.LONG.optionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
+               Codec.LONG.optionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
+               ctz.b.optionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
+               ahd.a.optionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dim::new)
+   );
+   protected final Set<UUID> c = new HashSet<>();
+   protected final Set<UUID> d = new HashSet<>();
+   protected long e;
+   protected long f;
+   protected int g;
+   protected Optional<ctz> h;
+   protected Optional<ahd> i;
+   protected bif<ctz> j;
+   @Nullable
+   protected blp k;
+   protected double l;
+   protected double m;
 
-   public dim(csy $$0, hv $$1, ia $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
+   public dim() {
+      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
+   }
+
+   public dim(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<ctz> $$5, Optional<ahd> $$6) {
+      this.c.addAll($$0);
+      this.d.addAll($$1);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+   }
+
+   public void a(dil $$0) {
+      bif<ctz> $$1 = $$0.i();
+      if ($$1.d()) {
+         this.j = bif.a(this.h.orElseGet(ctz::new));
       } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
+         this.j = $$1;
       }
    }
 
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      dip $$0 = this.b.a_(this.e);
-      if (!dii.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.o() == eee.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
-         }
-      } else if (!this.a(this.e, this.f)) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            hv $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
-            }
-         }
+   public void a() {
+      this.c.clear();
+      this.g = 0;
+      this.f = 0L;
+      this.e = 0L;
+      this.d.clear();
+   }
 
-         return true;
+   public boolean b() {
+      boolean $$0 = this.h.isPresent() && this.h.get().a().b("id", 8);
+      return $$0 || !this.j.d();
+   }
+
+   public boolean a(dil $$0, int $$1) {
+      return this.g >= $$0.a($$1);
+   }
+
+   public boolean c() {
+      return this.d.isEmpty();
+   }
+
+   public boolean a(amz $$0, dil $$1, int $$2) {
+      return $$0.X() >= this.f && this.d.size() < $$1.b($$2);
+   }
+
+   public int a(hx $$0) {
+      if (this.c.isEmpty()) {
+         ac.a("Trial Spawner at " + $$0 + " has no detected players");
+      }
+
+      return Math.max(0, this.c.size() - 1);
+   }
+
+   public void a(amz $$0, hx $$1, dij $$2, int $$3) {
+      List<UUID> $$4 = $$2.detect($$0, $$1, $$3);
+      boolean $$5 = this.c.addAll($$4);
+      if ($$5) {
+         this.f = Math.max($$0.X() + 40L, this.f);
+         $$0.c(3013, $$1, this.c.size());
       }
    }
 
-   private static boolean a(dip $$0) {
-      return $$0.a(cwb.hV) || $$0.a(cwb.pg);
+   public boolean a(amz $$0, dil $$1, float $$2) {
+      long $$3 = this.e - (long)$$1.h();
+      return (float)$$0.X() >= (float)$$3 + $$2;
    }
 
-   private static boolean a(dip $$0, dip $$1) {
-      if ($$0.a(cwb.pg) && $$1.a(cwb.hV)) {
-         return false;
+   public boolean b(amz $$0, dil $$1, float $$2) {
+      long $$3 = this.e - (long)$$1.h();
+      return (float)($$0.X() - $$3) % $$2 == 0.0F;
+   }
+
+   public boolean a(amz $$0) {
+      return $$0.X() >= this.e;
+   }
+
+   public void a(dik $$0, aup $$1, blt<?> $$2) {
+      this.a($$0, $$1).a().a("id", kd.g.b($$2).toString());
+   }
+
+   protected ctz a(dik $$0, aup $$1) {
+      if (this.h.isPresent()) {
+         return this.h.get();
       } else {
-         return $$0.a(cwb.hV) && $$1.a(cwb.pg) ? false : a($$0) || a($$1);
+         this.h = Optional.of(this.j.b($$1).map(bih.b::b).orElseGet(ctz::new));
+         $$0.e();
+         return this.h.get();
       }
    }
 
-   private boolean a(hv $$0, ia $$1) {
-      dip $$2 = this.b.a_($$0);
-      if ($$2.i()) {
-         return true;
-      } else if (!dii.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               hv $$4 = $$0.a(this.f.g(), $$3);
-               dip $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.i() || !a($$5, $$2) || !dii.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
-
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
-
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               hv $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     hv $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               }
-
-               $$2 = this.b.a_($$9);
-               if ($$2.i()) {
-                  return true;
-               }
-
-               if (!dii.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.o() == eee.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
+   @Nullable
+   public blp a(dik $$0, cti $$1, din $$2) {
+      if ($$0.a($$1) && $$2.d()) {
+         if (this.k == null) {
+            sl $$3 = this.a($$0, $$1.F_()).a();
+            if ($$3.b("id", 8)) {
+               this.k = blt.a($$3, $$1, Function.identity());
             }
          }
+
+         return this.k;
+      } else {
+         return null;
       }
    }
 
-   private void a(int $$0, int $$1) {
-      List<hv> $$2 = Lists.newArrayList();
-      List<hv> $$3 = Lists.newArrayList();
-      List<hv> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
-   }
-
-   private boolean a(hv $$0) {
-      dip $$1 = this.b.a_($$0);
-
-      for (ia $$2 : ia.values()) {
-         if ($$2.o() != this.f.o()) {
-            hv $$3 = $$0.a($$2);
-            dip $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
-               return false;
-            }
-         }
+   public sl a(din $$0) {
+      sl $$1 = new sl();
+      if ($$0 == din.c) {
+         $$1.a("next_mob_spawns_at", this.f);
       }
 
-      return true;
+      this.h
+         .ifPresent($$1x -> $$1.a("spawn_data", (ti)ctz.b.encodeStart(sz.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
+      return $$1;
    }
 
-   public ia b() {
-      return this.f;
+   public double d() {
+      return this.l;
    }
 
-   public List<hv> c() {
-      return this.g;
-   }
-
-   public List<hv> d() {
-      return this.h;
+   public double e() {
+      return this.m;
    }
 }

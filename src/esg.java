@@ -1,121 +1,292 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class esg extends gjl {
-   private static final vb a = vb.c("mco.selectServer.popup");
-   private static final vb b = vb.c("mco.selectServer.close");
-   private static final agt c = new agt("popup/background");
-   private static final agt v = new agt("icon/trial_available");
-   private static final exu w = new exu(new agt("widget/cross_button"), new agt("widget/cross_button_highlighted"));
-   private static final int x = 236;
-   private static final int y = 34;
-   private static final int z = 6;
-   private static final int A = 195;
-   private static final int B = 152;
-   private static final int C = 4;
-   private static final int D = 10;
-   private static final int E = 320;
-   private static final int F = 172;
-   private static final int G = 100;
-   private static final int H = 99;
-   private static final int I = 100;
-   private static List<agt> J = List.of();
-   private final fcc K;
-   private final boolean L;
-   @Nullable
-   private ewh M;
-   private int N;
-   private int O;
+public class esg extends gkc {
+   static final Logger a = LogUtils.getLogger();
+   static final vd b = vd.c("mco.backup.button.restore");
+   static final vd c = vd.c("mco.backup.changes.tooltip");
+   private static final vd v = vd.c("mco.configure.world.backup");
+   private static final vd w = vd.c("mco.backup.nobackups");
+   private final esj x;
+   List<eqp> y = Collections.emptyList();
+   esg.a z;
+   int A = -1;
+   private final int B;
+   private ewy C;
+   private ewy D;
+   private ewy E;
+   Boolean F = false;
+   final era G;
+   private static final String H = "uploaded";
 
-   public esg(fcc $$0, boolean $$1) {
-      super(a);
-      this.K = $$0;
-      this.L = $$1;
-   }
-
-   public static void a(aps $$0) {
-      Collection<agt> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
-      J = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
+   public esg(esj $$0, era $$1, int $$2) {
+      super(v);
+      this.x = $$0;
+      this.G = $$1;
+      this.B = $$2;
    }
 
    @Override
-   protected void aP_() {
-      this.K.a(this.f, this.g, this.h);
-      if (this.L) {
-         this.M = this.d(
-            ewh.a(vb.c("mco.selectServer.trial"), fau.b(this, "https://aka.ms/startjavarealmstrial")).a(this.E() - 10 - 99, this.F() - 10 - 4 - 40, 99, 20).a()
-         );
-      }
+   public void aN_() {
+      (new Thread("Realms-fetch-backups") {
+         @Override
+         public void run() {
+            eqj $$0 = eqj.a();
 
-      this.d(ewh.a(vb.c("mco.selectServer.buy"), fau.b(this, "https://aka.ms/BuyJavaRealms")).a(this.E() - 10 - 99, this.F() - 10 - 20, 99, 20).a());
-      ewt $$0 = this.d(new ewt(this.C() + 4, this.D() + 4, 14, 14, w, $$0x -> this.aF_(), b));
-      $$0.a(exs.a(b));
-      int $$1 = 142 - (this.L ? 40 : 20);
-      ewr $$2 = new ewr(this.E() - 10 - 100, this.D() + 10, 100, $$1, a, this.i);
-      if ($$2.u()) {
-         $$2.d(100 - $$2.f());
-      }
+            try {
+               List<eqp> $$1 = $$0.e(esg.this.G.a).a;
+               esg.this.f.execute(() -> {
+                  esg.this.y = $$1;
+                  esg.this.F = esg.this.y.isEmpty();
+                  esg.this.z.H();
 
-      this.d($$2);
+                  for (eqp $$1x : esg.this.y) {
+                     esg.this.z.a($$1x);
+                  }
+               });
+            } catch (erw var3) {
+               esg.a.error("Couldn't request backups", var3);
+            }
+         }
+      }).start();
+      this.C = this.d((ewy)ewy.a(vd.c("mco.backup.button.download"), $$0 -> this.H()).a(this.g - 135, g(1), 120, 20).a());
+      this.D = this.d((ewy)ewy.a(vd.c("mco.backup.button.restore"), $$0 -> this.a(this.A)).a(this.g - 135, g(3), 120, 20).a());
+      this.E = this.d((ewy)ewy.a(vd.c("mco.backup.changes.tooltip"), $$0 -> {
+         this.f.a(new esf(this, this.y.get(this.A)));
+         this.A = -1;
+      }).a(this.g - 135, g(5), 120, 20).a());
+      this.d((ewy)ewy.a(vc.k, $$0 -> this.f.a(this.x)).a(this.g - 100, this.h - 35, 85, 20).a());
+      this.z = this.d(new esg.a());
+      this.b(this.z);
+      this.C();
    }
 
    @Override
-   public void d() {
-      super.d();
-      if (++this.O > 100) {
-         this.O = 0;
-         this.N = (this.N + 1) % J.size();
-      }
+   void C() {
+      this.D.k = this.E();
+      this.E.k = this.D();
+   }
+
+   private boolean D() {
+      return this.A == -1 ? false : !this.y.get(this.A).e.isEmpty();
+   }
+
+   private boolean E() {
+      return this.A == -1 ? false : !this.G.j;
    }
 
    @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.x);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   void a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.y.size() && !this.G.j) {
+         this.A = $$0;
+         Date $$1 = this.y.get($$0).b;
+         String $$2 = DateFormat.getDateTimeInstance(3, 3).format($$1);
+         vd $$3 = etq.a($$1);
+         vd $$4 = vd.a("mco.configure.world.restore.question.line1", $$2, $$3);
+         vd $$5 = vd.c("mco.configure.world.restore.question.line2");
+         this.f.a(new esp($$0x -> {
+            if ($$0x) {
+               this.J();
+            } else {
+               this.A = -1;
+               this.f.a(this);
+            }
+         }, esp.a.a, $$4, $$5, true));
+      }
+   }
+
+   private void H() {
+      vd $$0 = vd.c("mco.configure.world.restore.download.question.line1");
+      vd $$1 = vd.c("mco.configure.world.restore.download.question.line2");
+      this.f.a(new esp($$0x -> {
+         if ($$0x) {
+            this.I();
+         } else {
+            this.f.a(this);
+         }
+      }, esp.a.b, $$0, $$1, true));
+   }
+
+   private void I() {
+      this.f.a(new esq(this.x.f(), new ety(this.G.a, this.B, this.G.c + " (" + this.G.i.get(this.G.n).a(this.G.n) + ")", this)));
+   }
+
+   private void J() {
+      eqp $$0 = this.y.get(this.A);
+      this.A = -1;
+      this.f.a(new esq(this.x.f(), new euf($$0, this.G.a, this.x)));
+   }
+
+   @Override
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.M != null) {
-         a($$0, this.M);
+      $$0.a(this.i, this.e, this.g / 2, 12, -1);
+      if (this.F) {
+         $$0.a(this.i, w, 20, this.h / 2 - 10, -1, false);
+      }
+
+      this.C.j = !this.F;
+   }
+
+   class a extends gkb<esg.b> {
+      public a() {
+         super(esg.this.g - 150, esg.this.h - 47, 32, 36);
+      }
+
+      public void a(eqp $$0) {
+         this.a((esg.b)(esg.this.new b($$0)));
+      }
+
+      @Override
+      public int b() {
+         return (int)((double)this.g * 0.93);
+      }
+
+      @Override
+      public int a() {
+         return this.n() * 36;
+      }
+
+      @Override
+      public int c() {
+         return this.g - 5;
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         this.b($$0);
+      }
+
+      public void b(int $$0) {
+         esg.this.A = $$0;
+         esg.this.C();
+      }
+
+      public void a(@Nullable esg.b $$0) {
+         super.a($$0);
+         esg.this.A = this.l().indexOf($$0);
+         esg.this.C();
       }
    }
 
-   public static void a(evw $$0, ewh $$1) {
-      int $$2 = 8;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 110.0F);
-      $$0.a(v, $$1.p() + $$1.k() - 8 - 4, $$1.r() + $$1.i() / 2 - 4, 8, 8);
-      $$0.c().b();
-   }
+   class b extends exu.a<esg.b> {
+      private static final int b = 2;
+      private static final int c = 7;
+      private static final eyl d = new eyl(new ahd("backup/changes"), new ahd("backup/changes_highlighted"));
+      private static final eyl e = new eyl(new ahd("backup/restore"), new ahd("backup/restore_highlighted"));
+      private final eqp f;
+      private final List<eww> g = new ArrayList<>();
+      @Nullable
+      private exk h;
+      @Nullable
+      private exk i;
 
-   @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      this.K.a($$0, -1, -1, $$3);
-      $$0.e();
-      RenderSystem.clear(256, euk.a);
-      this.a($$0);
-      $$0.a(c, this.C(), this.D(), 320, 172);
-      if (!J.isEmpty()) {
-         $$0.a(J.get(this.N), this.C() + 10, this.D() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
+      public b(eqp $$0) {
+         this.f = $$0;
+         this.a($$0);
+         if (!$$0.e.isEmpty()) {
+            this.b();
+         }
+
+         if (!esg.this.G.j) {
+            this.c();
+         }
       }
-   }
 
-   private int C() {
-      return (this.g - 320) / 2;
-   }
+      private void a(eqp $$0) {
+         int $$1 = esg.this.y.indexOf($$0);
+         if ($$1 != esg.this.y.size() - 1) {
+            eqp $$2 = esg.this.y.get($$1 + 1);
 
-   private int D() {
-      return (this.h - 172) / 2;
-   }
+            for (String $$3 : $$0.d.keySet()) {
+               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
+                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
+                     this.a($$3);
+                  }
+               } else {
+                  this.a($$3);
+               }
+            }
+         }
+      }
 
-   private int E() {
-      return this.C() + 320;
-   }
+      private void a(String $$0) {
+         if ($$0.contains("uploaded")) {
+            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.f.b);
+            this.f.e.put($$0, $$1);
+            this.f.a(true);
+         } else {
+            this.f.e.put($$0, this.f.d.get($$0));
+         }
+      }
 
-   private int F() {
-      return this.D() + 172;
-   }
+      private void b() {
+         int $$0 = 9;
+         int $$1 = 9;
+         int $$2 = esg.this.z.r() - 9 - 28;
+         int $$3 = esg.this.z.g(esg.this.y.indexOf(this.f)) + 2;
+         this.i = new exk($$2, $$3, 9, 9, d, $$0x -> esg.this.f.a(new esf(esg.this, this.f)), vc.a);
+         this.i.a(eyj.a(esg.c));
+         this.g.add(this.i);
+      }
 
-   @Override
-   public void aF_() {
-      this.f.a(this.K);
+      private void c() {
+         int $$0 = 17;
+         int $$1 = 10;
+         int $$2 = esg.this.z.r() - 17 - 7;
+         int $$3 = esg.this.z.g(esg.this.y.indexOf(this.f)) + 2;
+         this.h = new exk($$2, $$3, 17, 10, e, $$0x -> esg.this.a(esg.this.y.indexOf(this.f)), vc.a);
+         this.h.a(eyj.a(esg.b));
+         this.g.add(this.h);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         if (this.h != null) {
+            this.h.a($$0, $$1, $$2);
+         }
+
+         if (this.i != null) {
+            this.i.a($$0, $$1, $$2);
+         }
+
+         return true;
+      }
+
+      @Override
+      public void a(ewm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = this.f.a() ? -8388737 : 16777215;
+         $$0.a(esg.this.i, vd.a("mco.backup.entry", etq.a(this.f.b)), $$3, $$2 + 1, $$10, false);
+         $$0.a(esg.this.i, this.a(this.f.b), $$3, $$2 + 12, 5000268, false);
+         this.g.forEach($$5x -> {
+            $$5x.o($$2 + 2);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
+
+      private String a(Date $$0) {
+         return DateFormat.getDateTimeInstance(3, 3).format($$0);
+      }
+
+      @Override
+      public vd a() {
+         return vd.a("narrator.select", this.f.b.toString());
+      }
    }
 }

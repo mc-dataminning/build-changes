@@ -1,39 +1,24 @@
-public class clk extends cmc {
-   public clk(cmc.a $$0) {
+public class clk extends cmm {
+   public clk(cmm.a $$0) {
       super($$0);
    }
 
    @Override
-   public bjl a(cos $$0) {
-      csy $$1 = $$0.q();
-      hv $$2 = $$0.a();
-      dip $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!cwn.h($$3) && !cwo.g($$3) && !cwp.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (cvm.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, cvm.a($$1, $$2));
-            $$1.a($$0.o(), dmz.i, $$2);
-            $$4 = true;
-         }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(djf.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), dmz.c, $$2);
-         $$4 = true;
+   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
+      cmr $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.hj, arn.h, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cgb $$4 = new cgb($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      if ($$4) {
-         $$0.n().h(1);
-         return bjl.a($$1.B);
-      } else {
-         return bjl.e;
+      $$1.b(arw.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
       }
-   }
 
-   private void a(csy $$0, hv $$1) {
-      auf $$2 = $$0.F_();
-      $$0.a(null, $$1, arc.ig, ard.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+      return bjw.a($$3, $$0.y_());
    }
 }

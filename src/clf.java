@@ -1,49 +1,99 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class clf extends cmc {
-   public clf(cmc.a $$0) {
-      super($$0);
+public enum clf implements ave {
+   a(0, "white", 16383998, eeo.i, 15790320, 16777215),
+   b(1, "orange", 16351261, eeo.p, 15435844, 16738335),
+   c(2, "magenta", 13061821, eeo.q, 12801229, 16711935),
+   d(3, "light_blue", 3847130, eeo.r, 6719955, 10141901),
+   e(4, "yellow", 16701501, eeo.s, 14602026, 16776960),
+   f(5, "lime", 8439583, eeo.t, 4312372, 12582656),
+   g(6, "pink", 15961002, eeo.u, 14188952, 16738740),
+   h(7, "gray", 4673362, eeo.v, 4408131, 8421504),
+   i(8, "light_gray", 10329495, eeo.w, 11250603, 13882323),
+   j(9, "cyan", 1481884, eeo.x, 2651799, 65535),
+   k(10, "purple", 8991416, eeo.y, 8073150, 10494192),
+   l(11, "blue", 3949738, eeo.z, 2437522, 255),
+   m(12, "brown", 8606770, eeo.A, 5320730, 9127187),
+   n(13, "green", 6192150, eeo.B, 3887386, 65280),
+   o(14, "red", 11546150, eeo.C, 11743532, 16711680),
+   p(15, "black", 1908001, eeo.D, 1973019, 0);
+
+   private static final IntFunction<clf> r = ata.a(clf::a, values(), ata.a.a);
+   private static final Int2ObjectOpenHashMap<clf> s = new Int2ObjectOpenHashMap(
+      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (clf)$$0))
+   );
+   public static final ave.a<clf> q = ave.a(clf::values);
+   private final int t;
+   private final String u;
+   private final eeo v;
+   private final float[] w;
+   private final int x;
+   private final int y;
+
+   private clf(int $$0, String $$1, int $$2, eeo $$3, int $$4, int $$5) {
+      this.t = $$0;
+      this.u = $$1;
+      this.v = $$3;
+      this.y = $$5;
+      int $$6 = ($$2 & 0xFF0000) >> 16;
+      int $$7 = ($$2 & 0xFF00) >> 8;
+      int $$8 = ($$2 & 0xFF) >> 0;
+      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
+      this.x = $$4;
+   }
+
+   public int a() {
+      return this.t;
+   }
+
+   public String b() {
+      return this.u;
+   }
+
+   public float[] d() {
+      return this.w;
+   }
+
+   public eeo e() {
+      return this.v;
+   }
+
+   public int f() {
+      return this.x;
+   }
+
+   public int g() {
+      return this.y;
+   }
+
+   public static clf a(int $$0) {
+      return r.apply($$0);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static clf a(String $$0, @Nullable clf $$1) {
+      clf $$2 = q.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   public static clf b(int $$0) {
+      return (clf)s.get($$0);
    }
 
    @Override
-   public bjl a(cos $$0) {
-      csy $$1 = $$0.q();
-      hv $$2 = $$0.a();
-      dip $$3 = $$1.a_($$2);
-      if (!$$3.a(cwb.co) && !$$3.a(cwb.F)) {
-         return bjl.e;
-      } else {
-         hv $$4 = $$2.c();
-         if (!$$1.t($$4)) {
-            return bjl.e;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<blf> $$8 = $$1.a_(null, new ekw($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bjl.e;
-            } else {
-               if ($$1 instanceof amp) {
-                  bzx $$9 = new bzx($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), dmz.t, $$4);
-                  dmb $$10 = ((amp)$$1).C();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
-
-               $$0.n().h(1);
-               return bjl.a($$1.B);
-            }
-         }
-      }
+   public String toString() {
+      return this.u;
    }
 
    @Override
-   public boolean i(cmh $$0) {
-      return true;
+   public String c() {
+      return this.u;
    }
 }

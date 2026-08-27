@@ -1,16 +1,34 @@
-public interface egb extends efq {
-   void b(int var1);
+import java.util.Locale;
 
-   void c(int var1);
+public interface egb {
+   int a();
 
-   void d(int var1);
+   int b();
 
-   void a(float var1);
+   int c();
 
-   default void a(hv $$0, float $$1) {
-      this.b($$0.u());
-      this.c($$0.v());
-      this.d($$0.w());
-      this.a($$1);
+   float d();
+
+   long e();
+
+   long f();
+
+   boolean i();
+
+   boolean k();
+
+   void b(boolean var1);
+
+   boolean n();
+
+   cte q();
+
+   bjs s();
+
+   boolean t();
+
+   default void a(p $$0, ctk $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a(), this.b(), this.c()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.e(), this.f()));
    }
 }

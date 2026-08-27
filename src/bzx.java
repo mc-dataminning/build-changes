@@ -1,129 +1,146 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class bzx extends blf {
-   private static final afz<Optional<hv>> c = agc.a(bzx.class, agb.o);
-   private static final afz<Boolean> d = agc.a(bzx.class, agb.k);
-   public int b;
+public class bzx extends bzr {
+   private final bzy bT = new bzy(this);
+   private static final int bU = 18000;
+   private boolean bW;
+   private int bX;
 
-   public bzx(blj<? extends bzx> $$0, csy $$1) {
+   public bzx(blt<? extends bzx> $$0, cti $$1) {
       super($$0, $$1);
-      this.I = true;
-      this.b = this.ag.a(100000);
    }
 
-   public bzx(csy $$0, double $$1, double $$2, double $$3) {
-      this(blj.C, $$0);
-      this.a_($$1, $$2, $$3);
+   public static bnk.a u() {
+      return gE().a(bnl.l, 15.0).a(bnl.m, 0.2F);
    }
 
-   @Override
-   protected blf.b aW() {
-      return blf.b.a;
+   public static boolean c(blt<? extends bxs> $$0, ctj $$1, bmj $$2, hx $$3, aup $$4) {
+      return !bmj.a($$2) ? bxs.b($$0, $$1, $$2, $$3, $$4) : bmj.b($$2) || a($$1, $$3);
    }
 
    @Override
-   protected void c_() {
-      this.an().a(c, Optional.empty());
-      this.an().a(d, true);
+   protected void a(aup $$0) {
+      this.a(bnl.h).a(a($$0::j));
    }
 
    @Override
-   public void l() {
-      this.b++;
-      if (this.dM() instanceof amp) {
-         hv $$0 = this.dm();
-         if (((amp)this.dM()).C() != null && this.dM().a_($$0).i()) {
-            this.dM().b($$0, cvm.a(this.dM(), $$0));
+   protected void gu() {
+   }
+
+   @Override
+   protected arl y() {
+      return this.a(asg.a) ? arm.wl : arm.wh;
+   }
+
+   @Override
+   protected arl n_() {
+      return arm.wi;
+   }
+
+   @Override
+   protected arl d(bkn $$0) {
+      return arm.wj;
+   }
+
+   @Override
+   protected arl aN() {
+      if (this.aC()) {
+         if (!this.bP()) {
+            return arm.wo;
+         }
+
+         this.cu++;
+         if (this.cu > 5 && this.cu % 3 == 0) {
+            return arm.wm;
+         }
+
+         if (this.cu <= 5) {
+            return arm.wo;
          }
       }
+
+      return arm.wk;
    }
 
    @Override
-   protected void b(sj $$0) {
-      if (this.q() != null) {
-         $$0.a("BeamTarget", sy.a(this.q()));
-      }
-
-      $$0.a("ShowBottom", this.s());
-   }
-
-   @Override
-   protected void a(sj $$0) {
-      if ($$0.b("BeamTarget", 10)) {
-         this.a(sy.b($$0.p("BeamTarget")));
-      }
-
-      if ($$0.b("ShowBottom", 1)) {
-         this.a($$0.q("ShowBottom"));
-      }
-   }
-
-   @Override
-   public boolean bt() {
-      return true;
-   }
-
-   @Override
-   public boolean a(bkd $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else if ($$0.d() instanceof bzy) {
-         return false;
+   protected void e(float $$0) {
+      if (this.aC()) {
+         super.e(0.3F);
       } else {
-         if (!this.dH() && !this.dM().B) {
-            this.a(blf.c.a);
-            if (!$$0.a(art.m)) {
-               bkd $$2 = $$0.d() != null ? this.dN().d(this, $$0.d()) : null;
-               this.dM().a(this, $$2, null, this.dr(), this.dt(), this.dx(), 6.0F, false, csy.a.b);
-            }
-
-            this.a($$0);
-         }
-
-         return true;
+         super.e(Math.min(0.1F, $$0 * 25.0F));
       }
    }
 
    @Override
-   public void al() {
-      this.a(this.dN().n());
-      super.al();
-   }
-
-   private void a(bkd $$0) {
-      if (this.dM() instanceof amp) {
-         dmb $$1 = ((amp)this.dM()).C();
-         if ($$1 != null) {
-            $$1.a(this, $$0);
-         }
+   protected void gL() {
+      if (this.aZ()) {
+         this.a(arm.wn, 0.4F, 1.0F);
+      } else {
+         super.gL();
       }
    }
 
-   public void a(@Nullable hv $$0) {
-      this.an().b(c, Optional.ofNullable($$0));
+   @Override
+   public bmk eS() {
+      return bmk.b;
+   }
+
+   @Override
+   protected Vector3f a(blp $$0, blq $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b - (this.o_() ? 0.03125F : 0.28125F) * $$2, 0.0F);
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      if (this.w() && this.bX++ >= 18000) {
+         this.am();
+      }
+   }
+
+   @Override
+   public void b(sl $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.w());
+      $$0.a("SkeletonTrapTime", this.bX);
+   }
+
+   @Override
+   public void a(sl $$0) {
+      super.a($$0);
+      this.w($$0.q("SkeletonTrap"));
+      this.bX = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fd() {
+      return 0.96F;
+   }
+
+   public boolean w() {
+      return this.bW;
+   }
+
+   public void w(boolean $$0) {
+      if ($$0 != this.bW) {
+         this.bW = $$0;
+         if ($$0) {
+            this.bO.a(1, this.bT);
+         } else {
+            this.bO.a(this.bT);
+         }
+      }
    }
 
    @Nullable
-   public hv q() {
-      return this.an().b(c).orElse(null);
-   }
-
-   public void a(boolean $$0) {
-      this.an().b(d, $$0);
-   }
-
-   public boolean s() {
-      return this.an().b(d);
+   @Override
+   public blk a(amz $$0, blk $$1) {
+      return blt.aL.a((cti)$$0);
    }
 
    @Override
-   public boolean a(double $$0) {
-      return super.a($$0) || this.q() != null;
-   }
-
-   @Override
-   public cmh dz() {
-      return new cmh(cmk.uY);
+   public bjv b(cfb $$0, bju $$1) {
+      return !this.gt() ? bjv.d : super.b($$0, $$1);
    }
 }

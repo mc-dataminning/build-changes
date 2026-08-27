@@ -1,37 +1,56 @@
-public class aaq implements wu<yo> {
-   private final int a;
-   private final vb b;
+public class aaq implements xd<yx> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public aaq(int $$0, vb $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aaq(blp $$0) {
+      this.a = $$0.dr();
+      this.b = $$0.dt();
+      this.c = $$0.dx();
+      this.d = $$0.dC();
+      this.e = $$0.dE();
    }
 
-   public aaq(ue $$0) {
-      this.a = $$0.n();
-      this.b = $$0.m();
+   public aaq(ug $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.c(this.a);
+   public void a(ug $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   public int a() {
+   public double a() {
       return this.a;
    }
 
-   public vb d() {
+   public double d() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

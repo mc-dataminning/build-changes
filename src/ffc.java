@@ -1,25 +1,47 @@
-public class ffc extends fff {
-   private static final vb b = vb.c("multiplayerWarning.header").a(n.r);
-   private static final vb c = vb.c("multiplayerWarning.message");
-   private static final vb k = vb.c("multiplayerWarning.check");
-   private static final vb l = b.f().f("\n").b(c);
-   private final fcc m;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public ffc(fcc $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+public class ffc extends fdu {
+   public static final float b = 62.500004F;
+   public static final float c = 0.9765628F;
+   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private fvn.a l;
+
+   public ffc(dhx $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(ewh.a(va.i, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.v = true;
-            this.f.m.as();
-         }
+   protected void aN_() {
+      super.aN_();
+      this.l = fvn.a(this.f.aO(), this.a);
+   }
 
-         this.f.a(new ffa(this.m));
-      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(ewh.a(va.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+   @Override
+   protected void b(ewm $$0, dja $$1) {
+      super.b($$0, $$1);
+      boolean $$2 = $$1.b() instanceof ded;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
+      }
+   }
+
+   @Override
+   protected void a(ewm $$0, dja $$1) {
+      if (this.l != null) {
+         boolean $$2 = $$1.b() instanceof ded;
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         ggj $$3 = fto.a(this.a);
+         epx $$4 = $$3.a($$0.d(), this.l::a);
+         this.l.b.k = $$2;
+         this.l.a.a($$0.c(), $$4, 15728880, gdw.d);
+      }
+   }
+
+   @Override
+   protected Vector3f n() {
+      return k;
    }
 }

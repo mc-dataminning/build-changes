@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface afp extends adh {
+   @Override
+   default uf b() {
+      return uf.d;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface afp {
+   void a(afr var1);
+
+   void a(afs var1);
+
+   void a(afq var1);
+
+   void a(aft var1);
 }

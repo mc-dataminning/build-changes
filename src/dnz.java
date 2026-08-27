@@ -1,77 +1,181 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class dnz implements dnn {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final doa i = new doa(this);
-
-   public dnz(long $$0) {
-      this.b($$0);
+public abstract class dnz {
+   public static dnz.b a(int $$0, int $$1) {
+      return new dnz.b($$0 - 1, $$1 + 1);
    }
 
-   @Override
-   public auf d() {
-      return new dnz(this.g());
+   public static dnz.b b(int $$0, int $$1) {
+      return new dnz.b($$0, $$1);
    }
 
-   @Override
-   public dol e() {
-      return new dnz.a(this.g());
+   public static dnz a(int $$0) {
+      return new dnz.c($$0, false);
    }
 
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw auw.a("LegacyRandomSource", null);
+   public static dnz b(int $$0) {
+      return new dnz.c($$0 + 1, false);
+   }
+
+   public static dnz c(int $$0) {
+      return new dnz.c($$0, true);
+   }
+
+   public static dnz d(int $$0) {
+      return new dnz.c($$0 - 1, true);
+   }
+
+   public static dnz a() {
+      return dnz.a.a;
+   }
+
+   public static dnz a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
       } else {
-         this.i.a();
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw auw.a("LegacyRandomSource", null);
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public dnz a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public dnz b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<dnz> a(cto $$0, hx $$1, int $$2, Predicate<dja> $$3, Predicate<dja> $$4) {
+      hx.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
       } else {
-         return (int)($$2 >> 48 - $$0);
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ic.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ic.a);
+         return Optional.of(a($$8, $$7));
       }
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   private static OptionalInt a(cto $$0, int $$1, Predicate<dja> $$2, Predicate<dja> $$3, hx.a $$4, int $$5, ic $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
    }
 
-   public static class a implements dol {
-      private final long a;
+   public static final class a extends dnz {
+      static final dnz.a a = new dnz.a();
 
-      public a(long $$0) {
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends dnz {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
          this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
       }
 
       @Override
-      public auf a(int $$0, int $$1, int $$2) {
-         long $$3 = aty.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dnz($$4);
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
       }
 
       @Override
-      public auf a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dnz((long)$$1 ^ this.a);
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
       }
 
-      @VisibleForTesting
       @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends dnz {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

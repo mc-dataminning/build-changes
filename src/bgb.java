@@ -1,32 +1,8 @@
-import java.nio.file.Path;
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bgb {
-   char d = '\u001e';
-
-   List<bge> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
-   }
-
-   default int f() {
-      return this.d() - this.b();
-   }
-
-   String e();
-
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bgb {
 }

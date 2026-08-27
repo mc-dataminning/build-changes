@@ -9,14 +9,14 @@ public class cn extends cv<cn.a> {
       return cn.a.a;
    }
 
-   public void a(amq $$0, cmh $$1, @Nullable blf $$2) {
-      ege $$3 = bp.b($$0, $$2);
+   public void a(ana $$0, cmr $$1, @Nullable blp $$2) {
+      egp $$3 = bp.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
    public static record a(Optional<bb> b, Optional<ca> c, Optional<bb> d) implements cv.a {
       public static final Codec<cn.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(cn.a::a), atg.a(ca.a, "item").forGetter(cn.a::b), atg.a(bp.b, "entity").forGetter(cn.a::c))
+         $$0 -> $$0.group(atq.a(bp.b, "player").forGetter(cn.a::a), atq.a(ca.a, "item").forGetter(cn.a::b), atq.a(bp.b, "entity").forGetter(cn.a::c))
                .apply($$0, cn.a::new)
       );
 
@@ -28,7 +28,7 @@ public class cn extends cv<cn.a> {
          return am.Q.a(new cn.a($$0, $$1, $$2));
       }
 
-      public boolean a(amq $$0, cmh $$1, ege $$2) {
+      public boolean a(ana $$0, cmr $$1, egp $$2) {
          return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 

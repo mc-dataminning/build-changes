@@ -1,40 +1,36 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 
-public class dtw implements dtg {
+public class dtw implements dtr {
    public static final Codec<dtw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dxs.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               asg.b(kc.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               dvh.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               dvh.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               dpf.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+               kd.e.q().fieldOf("block").flatXmap(dtw::a, DataResult::success).orElse((dbi)cwl.fg).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               iv.a(ke.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, dtw::new)
    );
-   public final ie<dxs> b;
+   public final dbi b;
    public final int c;
-   public final int d;
-   public final asg<cvz> e;
-   public final dvh f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final dvh k;
-   public final int l;
-   public final int n;
-   public final dpf o;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
+   public final float g;
+   public final il<cwj> h;
+   private final ObjectArrayList<ic> i;
 
-   public dtw(ie<dxs> $$0, int $$1, int $$2, asg<cvz> $$3, dvh $$4, int $$5, int $$6, int $$7, int $$8, dvh $$9, int $$10, int $$11, dpf $$12) {
+   private static DataResult<dbi> a(cwj $$0) {
+      return $$0 instanceof dbi $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+   }
+
+   public dtw(dbi $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, il<cwj> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -42,11 +38,25 @@ public class dtw implements dtg {
       this.f = $$4;
       this.g = $$5;
       this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(ic.b);
+      }
+
+      if ($$2) {
+         this.i.add(ic.a);
+      }
+
+      if ($$4) {
+         ic.c.a.forEach(this.i::add);
+      }
+   }
+
+   public List<ic> a(aup $$0, ic $$1) {
+      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   }
+
+   public List<ic> a(aup $$0) {
+      return ac.a(this.i, $$0);
    }
 }

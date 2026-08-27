@@ -1,138 +1,228 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public class fmm implements fnd {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Duration c = Duration.ofHours(1L);
-   private static final Path d = Path.of("profilekeys");
-   private final UserApiService e;
-   private final Path f;
-   private CompletableFuture<Optional<cet>> g;
-   private Instant h = Instant.EPOCH;
+public class fmm {
+   private static final fmt a = new fmt(0.008F);
+   private static final fmt b = new fmt(1.0F);
+   private static final fmt c = new fmt(0.5F);
 
-   public fmm(UserApiService $$0, UUID $$1, Path $$2) {
-      this.e = $$0;
-      this.f = $$2.resolve(d).resolve($$1 + ".json");
-      this.g = CompletableFuture.<Optional<cet>>supplyAsync(() -> this.c().filter($$0x -> !$$0x.c().b().a()), ac.f()).thenCompose(this::a);
-   }
+   public static Map<fmn, fmv> a() {
+      Builder<fmn, fmv> $$0 = ImmutableMap.builder();
+      fmv $$1 = fmv.a(fkc.a(fmt.a, 0.0F), 64, 64);
+      fmv $$2 = fmv.a(fkb.a(b), 64, 32);
+      fmv $$3 = fmv.a(fkb.a(new fmt(1.02F)), 64, 32);
+      fmv $$4 = fmv.a(fkb.a(c), 64, 32);
+      fmv $$5 = fkk.b();
+      fmv $$6 = fll.c();
+      fmv $$7 = fmv.a(fka.a(fmt.a), 64, 64);
+      fmv $$8 = fkd.b();
+      fmv $$9 = fji.c();
+      fmv $$10 = fmv.a(fkn.a(fmt.a), 64, 32);
+      fmv $$11 = fmv.a(fkt.a(fmt.a), 64, 64);
+      fmv $$12 = fmv.a(fks.a(), 64, 64);
+      fmv $$13 = fll.b();
+      fmv $$14 = fki.a(fmt.a);
+      fmv $$15 = fls.b();
+      fmv $$16 = fjz.c();
+      fmv $$17 = flk.c();
+      fmv $$18 = fmv.a(fma.b(), 64, 64);
+      fmv $$19 = flq.b();
+      $$0.put(fmo.a, fin.b());
+      $$0.put(fmo.b, fir.c());
+      $$0.put(fmo.c, fiq.a(c));
+      $$0.put(fmo.d, fiq.a(b));
+      $$0.put(fmo.e, fis.c());
+      $$0.put(fmo.f, fuu.a());
+      $$0.put(fmo.g, fit.b());
+      $$0.put(fmo.h, fuw.c());
+      $$0.put(fmo.i, fuw.b());
+      $$0.put(fmo.j, fiu.c());
+      $$0.put(fmo.k, fux.b());
+      $$0.put(fmo.l, fiv.b());
+      $$0.put(fmo.m, fix.a());
+      $$0.put(fmo.n, fiy.b());
+      $$0.put(fmo.p, fiy.c());
+      $$0.put(fmo.o, fiy.d());
+      $$0.put(fmo.q, $$10);
+      $$0.put(fmo.r, fmv.a(fkn.a(new fmt(0.01F)), 64, 32));
+      $$0.put(fmo.s, fiz.b());
+      $$0.put(fmo.t, $$19);
+      $$0.put(fmo.u, fvf.b());
+      $$0.put(fmo.v, $$5);
+      $$0.put(fmo.w, fje.c());
+      $$0.put(fmo.x, fjf.b());
+      $$0.put(fmo.y, $$5);
+      $$0.put(fmo.A, fvg.b());
+      $$0.put(fmo.C, fvg.c());
+      $$0.put(fmo.B, fvg.d());
+      $$0.put(fmo.z, fvg.e());
+      $$0.put(fmo.D, $$9);
+      $$0.put(fmo.E, fjj.a(fmt.a));
+      $$0.put(fmo.F, fjj.a(new fmt(2.0F)));
+      $$0.put(fmo.G, $$6);
+      $$0.put(fmo.H, fvh.b());
+      $$0.put(fmo.I, fvh.c());
+      $$0.put(fmo.J, fjk.b());
+      $$0.put(fmo.K, fjd.c());
+      $$0.put(fmo.L, fvf.d());
+      $$0.put(fmo.M, fvf.c());
+      $$0.put(fmo.N, fmj.a());
+      $$0.put(fmo.O, fjl.a(fmt.a));
+      $$0.put(fmo.P, $$4);
+      $$0.put(fmo.Q, $$4);
+      $$0.put(fmo.R, fjl.a(new fmt(0.25F)));
+      $$0.put(fmo.S, fjw.b());
+      $$0.put(fmo.T, fjm.c());
+      $$0.put(fmo.U, fjn.c());
+      $$0.put(fmo.V, fjo.b());
+      $$0.put(fmo.W, fya.a());
+      $$0.put(fmo.X, fxz.a());
+      $$0.put(fmo.Y, $$8);
+      $$0.put(fmo.Z, fjq.b());
+      $$0.put(fmo.aa, fjr.c());
+      $$0.put(fmo.ab, fjs.b());
+      $$0.put(fmo.ac, $$5);
+      $$0.put(fmo.ad, fjt.b());
+      $$0.put(fmo.ae, $$1);
+      $$0.put(fmo.af, $$4);
+      $$0.put(fmo.ag, $$2);
+      $$0.put(fmo.ah, flr.b());
+      $$0.put(fmo.ai, fjv.c());
+      $$0.put(fmo.aj, fjw.b());
+      $$0.put(fmo.ak, $$16);
+      $$0.put(fmo.al, $$5);
+      $$0.put(fmo.am, $$7);
+      $$0.put(fmo.an, fmv.a(fka.a(new fmt(0.1F)), 64, 64));
+      $$0.put(fmo.ao, $$1);
+      $$0.put(fmo.ap, $$4);
+      $$0.put(fmo.aq, $$2);
+      $$0.put(fmo.ar, $$8);
+      $$0.put(fmo.as, fke.b());
+      $$0.put(fmo.at, fkg.b());
+      $$0.put(fmo.au, $$14);
+      $$0.put(fmo.av, fki.a(new fmt(0.5F)));
+      $$0.put(fmo.aw, fkj.b());
+      $$0.put(fmo.ax, fkf.b());
+      $$0.put(fmo.ay, $$5);
+      $$0.put(fmo.az, $$9);
+      $$0.put(fmo.aA, fjd.c());
+      $$0.put(fmo.aB, $$10);
+      $$0.put(fmo.aC, fko.c());
+      $$0.put(fmo.aD, fkp.b());
+      $$0.put(fmo.aE, fkq.b());
+      $$0.put(fmo.aF, fkr.a(fmt.a));
+      $$0.put(fmo.aN, fkr.a(new fmt(0.5F)));
+      $$0.put(fmo.aG, $$11);
+      $$0.put(fmo.aL, $$4);
+      $$0.put(fmo.aM, $$3);
+      $$0.put(fmo.aH, $$11);
+      $$0.put(fmo.aI, $$4);
+      $$0.put(fmo.aJ, $$3);
+      $$0.put(fmo.aK, $$12);
+      $$0.put(fmo.aO, $$8);
+      $$0.put(fmo.aP, fmv.a(fku.a(fmt.a, false), 64, 64));
+      $$0.put(fmo.aQ, $$13);
+      $$0.put(fmo.aR, $$4);
+      $$0.put(fmo.aS, $$2);
+      $$0.put(fmo.aT, fmv.a(fku.a(fmt.a, true), 64, 64));
+      $$0.put(fmo.aU, $$4);
+      $$0.put(fmo.aV, $$2);
+      $$0.put(fmo.aW, gcx.a());
+      $$0.put(fmo.aX, fkv.c());
+      $$0.put(fmo.aY, fkw.b());
+      $$0.put(fmo.aZ, fkx.b());
+      $$0.put(fmo.ba, fky.b());
+      $$0.put(fmo.bb, fla.a());
+      $$0.put(fmo.bc, flc.b());
+      $$0.put(fmo.bd, fld.b());
+      $$0.put(fmo.be, flf.c());
+      $$0.put(fmo.bf, fle.c());
+      $$0.put(fmo.bg, flg.a());
+      $$0.put(fmo.bh, fli.a());
+      $$0.put(fmo.bi, flh.b());
+      $$0.put(fmo.bj, flj.b());
+      $$0.put(fmo.bk, $$17);
+      $$0.put(fmo.bm, $$4);
+      $$0.put(fmo.bn, $$2);
+      $$0.put(fmo.bl, $$7);
+      $$0.put(fmo.bo, $$6);
+      $$0.put(fmo.bp, fln.c());
+      $$0.put(fmo.bq, fln.b());
+      $$0.put(fmo.br, flo.b());
+      $$0.put(fmo.bs, flp.b());
+      $$0.put(fmo.bt, $$5);
+      $$0.put(fmo.bu, $$19);
+      $$0.put(fmo.bv, flr.b());
+      $$0.put(fmo.bw, $$17);
+      $$0.put(fmo.bx, $$4);
+      $$0.put(fmo.by, $$2);
+      $$0.put(fmo.bz, fmv.a(fkc.a(new fmt(0.25F), 0.0F), 64, 32));
+      $$0.put(fmo.bA, $$15);
+      $$0.put(fmo.bB, $$15);
+      $$0.put(fmo.bC, flt.c());
+      $$0.put(fmo.bD, $$5);
+      $$0.put(fmo.bE, $$14);
+      $$0.put(fmo.bF, flu.a());
+      $$0.put(fmo.bG, flw.a(fmt.a));
+      $$0.put(fmo.bH, flw.a(a));
+      $$0.put(fmo.bI, flv.a(fmt.a));
+      $$0.put(fmo.bJ, flv.a(a));
+      $$0.put(fmo.bK, flx.c());
+      $$0.put(fmo.bL, fly.b());
+      $$0.put(fmo.bM, $$18);
+      $$0.put(fmo.bN, $$8);
+      $$0.put(fmo.bO, fmb.b());
+      $$0.put(fmo.bP, $$18);
+      $$0.put(fmo.bQ, fmd.b());
+      $$0.put(fmo.bR, fme.c());
+      $$0.put(fmo.bS, fmf.a(fmt.a));
+      $$0.put(fmo.bT, fmf.a(c));
+      $$0.put(fmo.bY, gbh.a());
+      $$0.put(fmo.bU, $$17);
+      $$0.put(fmo.bV, $$4);
+      $$0.put(fmo.bW, $$2);
+      $$0.put(fmo.bX, $$6);
+      $$0.put(fmo.bZ, fmg.c());
+      $$0.put(fmo.ca, $$16);
+      $$0.put(fmo.cb, $$1);
+      $$0.put(fmo.ce, $$4);
+      $$0.put(fmo.cf, $$2);
+      $$0.put(fmo.cc, $$13);
+      $$0.put(fmo.cd, $$7);
+      $$0.put(fmo.cg, fmi.c());
+      $$0.put(fmo.ch, fmi.a(c));
+      $$0.put(fmo.ci, fmi.a(b));
+      $$0.put(fmo.cj, $$11);
+      $$0.put(fmo.ck, $$4);
+      $$0.put(fmo.cl, $$3);
+      fmv $$20 = fiw.a();
+      fmv $$21 = fjb.e();
+      fmv $$22 = flb.b();
+      fmv $$23 = fjc.a();
 
-   @Override
-   public CompletableFuture<Optional<cet>> a() {
-      this.h = Instant.now().plus(c);
-      this.g = this.g.thenCompose(this::a);
-      return this.g;
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cet::a).orElse(true) : false;
-   }
-
-   private CompletableFuture<Optional<cet>> a(Optional<cet> $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$0.isPresent() && !$$0.get().a()) {
-            if (!aa.aW) {
-               this.a(null);
-            }
-
-            return $$0;
+      for (cgv.b $$24 : cgv.b.values()) {
+         if ($$24 == cgv.b.i) {
+            $$0.put(fmo.c($$24), $$22);
+            $$0.put(fmo.d($$24), $$23);
          } else {
-            try {
-               cet $$1 = this.a(this.e);
-               this.a($$1);
-               return Optional.of($$1);
-            } catch (asx | MinecraftClientException | IOException var3) {
-               b.error("Failed to retrieve profile key pair", var3);
-               this.a(null);
-               return $$0;
-            }
+            $$0.put(fmo.c($$24), $$20);
+            $$0.put(fmo.d($$24), $$21);
          }
-      }, ac.f());
-   }
+      }
 
-   private Optional<cet> c() {
-      if (Files.notExists(this.f)) {
-         return Optional.empty();
+      fmv $$25 = fvn.f();
+      dkn.a().forEach($$2x -> $$0.put(fmo.a($$2x), $$25));
+      fmv $$26 = fvj.e();
+      dkn.a().forEach($$2x -> $$0.put(fmo.b($$2x), $$26));
+      ImmutableMap<fmn, fmv> $$27 = $$0.build();
+      List<fmn> $$28 = fmo.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
       } else {
-         try {
-            Optional var2;
-            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
-               var2 = cet.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to read profile key pair file {}", this.f, var6);
-            return Optional.empty();
-         }
-      }
-   }
-
-   private void a(@Nullable cet $$0) {
-      try {
-         Files.deleteIfExists(this.f);
-      } catch (IOException var3) {
-         b.error("Failed to delete profile key pair file {}", this.f, var3);
-      }
-
-      if ($$0 != null) {
-         if (aa.aW) {
-            cet.a.encodeStart(JsonOps.INSTANCE, $$0).result().ifPresent($$0x -> {
-               try {
-                  Files.createDirectories(this.f.getParent());
-                  Files.writeString(this.f, $$0x.toString());
-               } catch (Exception var3x) {
-                  b.error("Failed to write profile key pair file {}", this.f, var3x);
-               }
-            });
-         }
-      }
-   }
-
-   private cet a(UserApiService $$0) throws asx, IOException {
-      KeyPairResponse $$1 = $$0.getKeyPair();
-      if ($$1 != null) {
-         ceu.a $$2 = a($$1);
-         return new cet(asw.a($$1.keyPair().privateKey()), new ceu($$2), Instant.parse($$1.refreshedAfter()));
-      } else {
-         throw new IOException("Could not retrieve profile key pair");
-      }
-   }
-
-   private static ceu.a a(KeyPairResponse $$0) throws asx {
-      KeyPair $$1 = $$0.keyPair();
-      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
-         try {
-            Instant $$2 = Instant.parse($$0.expiresAt());
-            PublicKey $$3 = asw.b($$1.publicKey());
-            ByteBuffer $$4 = $$0.publicKeySignature();
-            return new ceu.a($$2, $$3, $$4.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new asx(var5);
-         }
-      } else {
-         throw new asx(new MissingException("Missing public key"));
+         return $$27;
       }
    }
 }

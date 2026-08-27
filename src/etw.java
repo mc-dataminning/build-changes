@@ -1,26 +1,34 @@
-public enum etw {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+public class etw extends eua {
+   private static final vd b = vd.c("mco.connect.connecting");
+   private final gjz c;
+   private final era d;
+   private final erb e;
 
-   private static final etw[] d = values();
-   private final boolean e;
-   private final boolean f;
-
-   private etw(boolean $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public etw(fct $$0, era $$1, erb $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new gjz($$0);
    }
 
-   public boolean a() {
-      return this.e;
+   @Override
+   public void run() {
+      this.c.a(this.d, fox.a(this.e.a));
    }
 
-   public boolean b() {
-      return this.f;
+   @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      eva.N().ab().a();
    }
 
-   public etw c() {
-      return d[(this.ordinal() + 1) % d.length];
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public vd a() {
+      return b;
    }
 }

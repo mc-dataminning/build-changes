@@ -1,61 +1,77 @@
-import com.mojang.datafixers.DataFixUtils;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bsn extends bsr {
-   private static final int a = 200;
-   private final bxh b;
-   private int c;
-   private int d;
+public class bsn extends btb {
+   private static final bwt d = bwt.b().a(8.0).d();
+   protected final bxs a;
+   private final Class<? extends bxs> e;
+   protected final cti b;
+   @Nullable
+   protected bxs c;
+   private int f;
+   private final double g;
 
-   public bsn(bxh $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
+   public bsn(bxs $$0, double $$1) {
+      this($$0, $$1, (Class<? extends bxs>)$$0.getClass());
    }
 
-   protected int a(bxh $$0) {
-      return b(200 + $$0.eg().a(200) % 20);
+   public bsn(bxs $$0, double $$1, Class<? extends bxs> $$2) {
+      this.a = $$0;
+      this.b = $$0.dM();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(btb.a.a, btb.a.b));
    }
 
    @Override
    public boolean a() {
-      if (this.b.gk()) {
-         return false;
-      } else if (this.b.gh()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
+      if (!this.a.gi()) {
          return false;
       } else {
-         this.d = this.a(this.b);
-         Predicate<bxh> $$0 = $$0x -> $$0x.gj() || !$$0x.gh();
-         List<? extends bxh> $$1 = this.b.dM().a((Class<? extends bxh>)this.b.getClass(), this.b.cH().c(8.0, 8.0, 8.0), $$0);
-         bxh $$2 = (bxh)DataFixUtils.orElse($$1.stream().filter(bxh::gj).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gh()));
-         return this.b.gh();
+         this.c = this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public boolean b() {
-      return this.b.gh() && this.b.gl();
-   }
-
-   @Override
-   public void c() {
-      this.c = 0;
+      return this.c.bx() && this.c.gi() && this.f < 60 && !this.c.gb();
    }
 
    @Override
    public void d() {
-      this.b.gi();
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gm();
+      this.a.I().a(this.c, 10.0F, (float)this.a.aa());
+      this.a.N().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
+         this.g();
       }
+   }
+
+   @Nullable
+   private bxs h() {
+      List<? extends bxs> $$0 = this.b.a(this.e, d, this.a, this.a.cH().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      bxs $$2 = null;
+
+      for (bxs $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gb() && this.a.f($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.f($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((amz)this.b, this.c);
    }
 }

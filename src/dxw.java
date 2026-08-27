@@ -1,25 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public interface dxw<P extends dxv> {
-   dxw<dxh> a = a("block_predicate_filter", dxh.a);
-   dxw<dxy> b = a("rarity_filter", dxy.a);
-   dxw<dya> c = a("surface_relative_threshold_filter", dya.a);
-   dxw<dyb> d = a("surface_water_depth_filter", dyb.a);
-   dxw<dxg> e = a("biome", dxg.a);
-   dxw<dxl> f = a("count", dxl.a);
-   dxw<dxq> g = a("noise_based_count", dxq.a);
-   dxw<dxr> h = a("noise_threshold_count", dxr.a);
-   dxw<dxk> i = a("count_on_every_layer", dxk.a);
-   dxw<dxm> j = a("environment_scan", dxm.a);
-   dxw<dxo> k = a("heightmap", dxo.a);
-   dxw<dxn> l = a("height_range", dxn.a);
-   dxw<dxp> m = a("in_square", dxp.a);
-   dxw<dxx> n = a("random_offset", dxx.a);
-   dxw<dxi> o = a("carving_mask", dxi.a);
+public class dxw extends dyk {
+   public static final Codec<dxw> a = bja.b(0, 256).fieldOf("count").xmap(dxw::new, $$0 -> $$0.c).codec();
+   private final bja c;
 
-   Codec<P> codec();
+   private dxw(bja $$0) {
+      this.c = $$0;
+   }
 
-   private static <P extends dxv> dxw<P> a(String $$0, Codec<P> $$1) {
-      return ir.a(kb.U, $$0, () -> $$1);
+   public static dxw a(bja $$0) {
+      return new dxw($$0);
+   }
+
+   public static dxw a(int $$0) {
+      return a(bix.a($$0));
+   }
+
+   @Override
+   protected int a(aup $$0, hx $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public dyh<?> b() {
+      return dyh.f;
    }
 }

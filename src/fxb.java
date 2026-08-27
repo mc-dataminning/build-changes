@@ -1,11 +1,13 @@
-public class fxb extends fyu<bxp, fir<bxp>> {
-   private static final agt a = new agt("textures/entity/cow/cow.png");
+public abstract class fxb<T extends bzr, M extends fka<T>> extends fzl<T, M> {
+   private final float a;
 
-   public fxb(fxo.a $$0) {
-      super($$0, new fir<>($$0.a(flx.D)), 0.7F);
+   public fxb(fyf.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public agt a(bxp $$0) {
-      return a;
+   protected void a(T $$0, ept $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

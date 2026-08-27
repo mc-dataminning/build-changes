@@ -1,84 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dam extends cvz implements dcz {
-   public static final MapCodec<dam> a = b(dam::new);
-   public static final int b = 15;
-   public static final djp c = djf.aP;
-   public static final djg d = djf.C;
-   public static final ToIntFunction<dip> e = $$0 -> $$0.c(c);
+public class dam extends czy implements daz {
+   public static final MapCodec<dam> c = b(dam::new);
+   protected static final emf g = cwj.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<dam> a() {
-      return a;
+      return c;
    }
 
-   public dam(dio.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(c, d);
+   protected dam(diz.d $$0) {
+      super($$0, ic.b, g, true, 0.14);
    }
 
    @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      if (!$$1.B && $$3.gp()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return bjl.a;
-      } else {
-         return bjl.b;
-      }
+   protected boolean g(dja $$0) {
+      return $$0.a(cwl.G);
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return $$3.a(cmk.hB) ? elr.b() : elr.a();
+   protected cwj b() {
+      return cwl.md;
    }
 
    @Override
-   public boolean a_(dip $$0, cse $$1, hv $$2) {
-      return true;
+   protected boolean h(dja $$0) {
+      return !$$0.a(cwl.kJ);
    }
 
    @Override
-   public dce b_(dip $$0) {
-      return dce.a;
+   public boolean a(@Nullable cfb $$0, cso $$1, hx $$2, dja $$3, eej $$4) {
+      return false;
    }
 
    @Override
-   public float d(dip $$0, cse $$1, hv $$2) {
-      return 1.0F;
+   public boolean a(ctj $$0, hx $$1, dja $$2, eek $$3) {
+      return false;
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eea.c, eea.c.a($$3));
-      }
+   protected int a(aup $$0) {
+      return 1;
+   }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Nullable
+   @Override
+   public dja a(cpa $$0) {
+      eek $$1 = $$0.q().b_($$0.a());
+      return $$1.a(asg.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   public edz c_(dip $$0) {
-      return $$0.c(d) ? eea.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public cmh a(ctb $$0, hv $$1, dip $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
-   }
-
-   public static cmh a(cmh $$0, int $$1) {
-      if ($$1 != 15) {
-         sj $$2 = new sj();
-         $$2.a(c.f(), String.valueOf($$1));
-         $$0.a("BlockStateTag", $$2);
-      }
-
-      return $$0;
+   public eek c_(dja $$0) {
+      return eel.c.a(false);
    }
 }

@@ -1,98 +1,73 @@
-public interface acw extends acy, xe {
-   @Override
-   default ud b() {
-      return ud.b;
+public class acw implements xd<yx> {
+   private final int a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final byte e;
+   private final byte f;
+   private final boolean g;
+
+   public acw(blp $$0) {
+      this.a = $$0.aj();
+      elm $$1 = $$0.dl();
+      this.b = $$1.c;
+      this.c = $$1.d;
+      this.d = $$1.e;
+      this.e = (byte)((int)($$0.dC() * 256.0F / 360.0F));
+      this.f = (byte)((int)($$0.dE() * 256.0F / 360.0F));
+      this.g = $$0.aC();
    }
 
-   void a(aep var1);
+   public acw(ug $$0) {
+      this.a = $$0.n();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readByte();
+      this.f = $$0.readByte();
+      this.g = $$0.readBoolean();
+   }
 
-   void a(ade var1);
+   @Override
+   public void a(ug $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.k(this.e);
+      $$0.k(this.f);
+      $$0.a(this.g);
+   }
 
-   void a(add var1);
+   public void a(yx $$0) {
+      $$0.a(this);
+   }
 
-   void a(adc var1);
+   public int a() {
+      return this.a;
+   }
 
-   void a(adh var1);
+   public double d() {
+      return this.b;
+   }
 
-   void a(adk var1);
+   public double e() {
+      return this.c;
+   }
 
-   void a(adl var1);
+   public double f() {
+      return this.d;
+   }
 
-   void a(adx var1);
+   public byte g() {
+      return this.e;
+   }
 
-   void a(adm var1);
+   public byte h() {
+      return this.f;
+   }
 
-   void a(adq var1);
-
-   void a(adt var1);
-
-   void a(ady var1);
-
-   void a(adz var1);
-
-   void a(aea var1);
-
-   void a(aeb var1);
-
-   void a(aei var1);
-
-   void a(ael var1);
-
-   void a(aeo var1);
-
-   void a(aer var1);
-
-   void a(aes var1);
-
-   void a(aeq var1);
-
-   void a(adv var1);
-
-   void a(adu var1);
-
-   void a(acz var1);
-
-   void a(aed var1);
-
-   void a(aec var1);
-
-   void a(aef var1);
-
-   void a(adi var1);
-
-   void a(aej var1);
-
-   void a(aek var1);
-
-   void a(adw var1);
-
-   void a(aee var1);
-
-   void a(aeh var1);
-
-   void a(aen var1);
-
-   void a(aeg var1);
-
-   void a(ado var1);
-
-   void a(adp var1);
-
-   void a(adn var1);
-
-   void a(ada var1);
-
-   void a(aem var1);
-
-   void a(adr var1);
-
-   void a(adb var1);
-
-   void a(ads var1);
-
-   void a(adf var1);
-
-   void a(adj var1);
-
-   void a(adg var1);
+   public boolean i() {
+      return this.g;
+   }
 }

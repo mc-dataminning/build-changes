@@ -1,42 +1,78 @@
-import com.mojang.serialization.Codec;
-import java.util.Collections;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class dzo extends dzv {
-   public static final Codec<dzo> a = Codec.unit(() -> dzo.b);
-   public static final dzo b = new dzo();
+public record dzo(List<dzd> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ahd c = new ahd("jigsaw");
+   private static final Map<ahd, ahd> d = ImmutableMap.builder()
+      .put(new ahd("nvi"), c)
+      .put(new ahd("pcp"), c)
+      .put(new ahd("bastionremnant"), c)
+      .put(new ahd("runtime"), c)
+      .build();
 
-   private dzo() {
-      super(dzx.a.a);
+   public dzo(List<dzd> a) {
+      this.a = List.copyOf(a);
    }
 
-   @Override
-   public iz a(ecp $$0, dcl $$1) {
-      return iz.g;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   @Override
-   public List<eco.c> a(ecp $$0, hv $$1, dcl $$2, auf $$3) {
-      return Collections.emptyList();
+   public boolean a(hx $$0) {
+      for (dzd $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public dyg a(ecp $$0, hv $$1, dcl $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   public ti a(dzp $$0) {
+      sr $$1 = new sr();
+
+      for (dzd $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   @Override
-   public boolean a(ecp $$0, ctt $$1, ctr $$2, dkm $$3, hv $$4, hv $$5, dcl $$6, dyg $$7, auf $$8, boolean $$9) {
-      return true;
+   public static dzo a(sr $$0, dzp $$1) {
+      List<dzd> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         sl $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         ahd $$6 = new ahd($$5);
+         ahd $$7 = d.getOrDefault($$6, $$6);
+         dzq $$8 = kd.S.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               dzd $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new dzo($$2);
    }
 
-   @Override
-   public dzw<?> a() {
-      return dzw.d;
+   public dyr b() {
+      return dzd.a(this.a.stream());
    }
 
-   @Override
-   public String toString() {
-      return "Empty";
+   public List<dzd> c() {
+      return this.a;
    }
 }

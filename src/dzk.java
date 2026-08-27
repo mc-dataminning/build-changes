@@ -1,25 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public enum dzk implements aut {
-   a("linear"),
-   b("triangular");
+public enum dzk implements ave {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box");
 
-   public static final Codec<dzk> c = aut.a(dzk::values);
-   private final String d;
+   public static final Codec<dzk> e = ave.a(dzk::values);
+   private final String f;
 
    private dzk(String $$0) {
-      this.d = $$0;
+      this.f = $$0;
    }
 
    @Override
    public String c() {
-      return this.d;
-   }
-
-   public int a(auf $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+      return this.f;
    }
 }

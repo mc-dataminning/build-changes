@@ -1,37 +1,42 @@
 import com.mojang.serialization.Codec;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public interface dzz {
-   Codec<dzz> b = kb.aj.q().dispatch(dzz::b, Function.identity());
+public class dzz extends eag {
+   public static final Codec<dzz> a = Codec.unit(() -> dzz.b);
+   public static final dzz b = new dzz();
 
-   void a(auf var1, BiConsumer<ags<dzx>, ags<dzx>> var2);
-
-   Stream<ags<dzx>> a();
-
-   static dzy a(String $$0, String $$1) {
-      return a(ph.a($$0), ph.a($$1));
+   private dzz() {
+      super(eai.a.a);
    }
 
-   static dzy a(ags<dzx> $$0, ags<dzx> $$1) {
-      return new dzy($$0, $$1);
+   @Override
+   public jb a(eda $$0, dcv $$1) {
+      return jb.g;
    }
 
-   static eac a(String $$0, bhv<String> $$1) {
-      bhv.a<ags<dzx>> $$2 = bhv.a();
-      $$1.e().forEach($$1x -> $$2.a(ph.a((String)$$1x.b()), $$1x.a().a()));
-      return a(ph.a($$0), $$2.a());
+   @Override
+   public List<ecz.c> a(eda $$0, hx $$1, dcv $$2, aup $$3) {
+      return Collections.emptyList();
    }
 
-   static eac a(ags<dzx> $$0, bhv<ags<dzx>> $$1) {
-      return new eac($$0, $$1);
+   @Override
+   public dyr a(eda $$0, hx $$1, dcv $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
    }
 
-   static ead a(bhv<List<dzz>> $$0) {
-      return new ead($$0);
+   @Override
+   public boolean a(eda $$0, cud $$1, cub $$2, dkx $$3, hx $$4, hx $$5, dcv $$6, dyr $$7, aup $$8, boolean $$9) {
+      return true;
    }
 
-   Codec<? extends dzz> b();
+   @Override
+   public eah<?> a() {
+      return eah.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
+   }
 }

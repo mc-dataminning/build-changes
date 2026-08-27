@@ -1,17 +1,19 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public record yk(Set<agt> a) implements wu<yh> {
-   public yk(ue $$0) {
-      this($$0.a(HashSet::new, ue::t));
+public record yk(List<hx> b) implements xx {
+   public static final ahd a = new ahd("debug/raids");
+
+   public yk(ug $$0) {
+      this($$0.a(ug::e));
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a, ue::a);
+   public void a(ug $$0) {
+      $$0.a(this.b, ug::a);
    }
 
-   public void a(yh $$0) {
-      $$0.a(this);
+   @Override
+   public ahd a() {
+      return a;
    }
 }

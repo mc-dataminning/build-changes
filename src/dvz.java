@@ -1,23 +1,21 @@
 import com.mojang.serialization.Codec;
 
-public class dvz<P extends dvy> {
-   public static final dvz<dwa> a = a("trunk_vine", dwa.a);
-   public static final dvz<dvx> b = a("leave_vine", dvx.a);
-   public static final dvz<dvw> c = a("cocoa", dvw.a);
-   public static final dvz<dvv> d = a("beehive", dvv.a);
-   public static final dvz<dvt> e = a("alter_ground", dvt.a);
-   public static final dvz<dvu> f = a("attached_to_leaves", dvu.a);
-   private final Codec<P> g;
+public class dvz extends dvs {
+   public static final Codec<dvz> b = dja.b.fieldOf("state").xmap(diz.a::b, cwj::o).xmap(dvz::new, $$0 -> $$0.c).codec();
+   private final cwj c;
 
-   private static <P extends dvy> dvz<P> a(String $$0, Codec<P> $$1) {
-      return ir.a(kb.Z, $$0, new dvz<>($$1));
+   public dvz(cwj $$0) {
+      this.c = $$0;
    }
 
-   private dvz(Codec<P> $$0) {
-      this.g = $$0;
+   @Override
+   protected dvt<?> a() {
+      return dvt.f;
    }
 
-   public Codec<P> a() {
-      return this.g;
+   @Override
+   public dja a(aup $$0, hx $$1) {
+      ic.a $$2 = ic.a.a($$0);
+      return this.c.o().a(dcu.i, $$2);
    }
 }

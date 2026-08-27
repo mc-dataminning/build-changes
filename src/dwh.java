@@ -1,44 +1,36 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dwh extends dwk {
-   public static final Codec<dwh> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dwh::new));
+public class dwh extends dwj {
+   public static final Codec<dwh> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dwh::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   public dwh(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dwh(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected dwl<?> a() {
-      return dwl.c;
+   protected dwk<?> a() {
+      return dwk.c;
    }
 
    @Override
-   public List<dus.a> a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, int $$3, hv $$4, duc $$5) {
-      hv $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      hv.a $$7 = new hv.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
+   public void a(dwj.a $$0) {
+      aup $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<hx> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (ic $$3x : ic.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  ic $$4 = $$3x.g();
+                  hx $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, cwl.fC.o().a(cxq.c, Integer.valueOf($$1.a(3))).a(cxq.aE, $$3x));
+                  }
+               }
+            }
+         });
       }
-
-      return ImmutableList.of(new dus.a($$4.b($$3), 0, true));
-   }
-
-   private void a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, hv.a $$3, duc $$4, hv $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

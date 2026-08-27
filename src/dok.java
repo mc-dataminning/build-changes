@@ -1,60 +1,77 @@
-public class dok implements csl {
-   private int a;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
+
+public class dok implements dny {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dol i = new dol(this);
+
+   public dok(long $$0) {
+      this.b($$0);
+   }
 
    @Override
-   public int a(amp $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.Y().b(csu.C)) {
-         return 0;
+   public aup d() {
+      return new dok(this.g());
+   }
+
+   @Override
+   public dow e() {
+      return new dok.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw avh.a("LegacyRandomSource", null);
       } else {
-         auf $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.C_() < 5 && $$0.E_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
+         this.i.a();
+      }
+   }
 
-               for (amq $$5 : $$0.w()) {
-                  if (!$$5.P_()) {
-                     hv $$6 = $$5.dm();
-                     if (!$$0.E_().g() || $$6.v() >= $$0.A_() && $$0.g($$6)) {
-                        bjj $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           ari $$8 = $$5.H();
-                           int $$9 = aty.a($$8.a(arm.i.b(arm.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              hv $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dip $$12 = $$0.a_($$11);
-                              edz $$13 = $$0.b_($$11);
-                              if (ctj.a($$0, $$11, $$12, $$13, blj.av)) {
-                                 bmo $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw avh.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
+   }
 
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    ccb $$17 = blj.av.a((csy)$$0);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, blz.a, $$14, null);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
+   @Override
+   public double k() {
+      return this.i.b();
+   }
 
-               return $$4;
-            }
-         }
+   public static class a implements dow {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public aup a(int $$0, int $$1, int $$2) {
+         long $$3 = aui.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dok($$4);
+      }
+
+      @Override
+      public aup a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new dok((long)$$1 ^ this.a);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
       }
    }
 }

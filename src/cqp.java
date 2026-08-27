@@ -1,59 +1,15 @@
-public class cqp extends cqs {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   private static final String[] g = new String[]{"all", "undead", "arthropods"};
-   private static final int[] h = new int[]{1, 5, 5};
-   private static final int[] i = new int[]{11, 8, 8};
-   private static final int[] j = new int[]{20, 20, 20};
-   public final int d;
-
-   public cqp(cqs.a $$0, int $$1, blk... $$2) {
-      super($$0, cqt.f, $$2);
-      this.d = $$1;
+public class cqp extends cqj {
+   public cqp(String $$0, cps $$1, cmr $$2) {
+      super(cqa.f, cpz.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return h[this.d] + ($$0 - 1) * i[this.d];
+   public boolean a(bjo $$0, cti $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + j[this.d];
-   }
-
-   @Override
-   public int a() {
-      return 5;
-   }
-
-   @Override
-   public float a(int $$0, bma $$1) {
-      if (this.d == 0) {
-         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
-      } else if (this.d == 1 && $$1 == bma.b) {
-         return (float)$$0 * 2.5F;
-      } else {
-         return this.d == 2 && $$1 == bma.c ? (float)$$0 * 2.5F : 0.0F;
-      }
-   }
-
-   @Override
-   public boolean a(cqs $$0) {
-      return !($$0 instanceof cqp);
-   }
-
-   @Override
-   public boolean a(cmh $$0) {
-      return $$0.d() instanceof cjw ? true : super.a($$0);
-   }
-
-   @Override
-   public void a(blv $$0, blf $$1, int $$2) {
-      if ($$1 instanceof blv $$3 && this.d == 2 && $$2 > 0 && $$3.eS() == bma.c) {
-         int $$4 = 20 + $$0.eg().a(10 * $$2);
-         $$3.b(new bks(bku.b, $$4, 3));
-      }
+   public cmr g() {
+      return new cmr(cwl.oc);
    }
 }

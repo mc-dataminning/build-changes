@@ -1,54 +1,81 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class acp implements xd<yx> {
+   public static final float a = 8.0F;
+   private final ih<arl> b;
+   private final arn c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final float g;
+   private final float h;
+   private final long i;
 
-public class acp implements wu<yo> {
-   private final boolean a;
-   private final List<af> b;
-   private final Set<agt> c;
-   private final Map<agt, ah> d;
-
-   public acp(boolean $$0, Collection<af> $$1, Set<agt> $$2, Map<agt, ah> $$3) {
-      this.a = $$0;
-      this.b = List.copyOf($$1);
-      this.c = Set.copyOf($$2);
-      this.d = Map.copyOf($$3);
+   public acp(ih<arl> $$0, arn $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = (int)($$2 * 8.0);
+      this.e = (int)($$3 * 8.0);
+      this.f = (int)($$4 * 8.0);
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   public acp(ue $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.a(af::b);
-      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, ue::t);
-      this.d = $$0.a(ue::t, ah::b);
+   public acp(ug $$0) {
+      this.b = $$0.a(kd.b.t(), arl::b);
+      this.c = $$0.b(arn.class);
+      this.d = $$0.readInt();
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readLong();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c, ue::a);
-      $$0.a(this.d, ue::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(ug $$0) {
+      $$0.a(kd.b.t(), this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.p(this.e);
+      $$0.p(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.b(this.i);
    }
 
-   public void a(yo $$0) {
-      $$0.a(this);
-   }
-
-   public List<af> a() {
+   public ih<arl> a() {
       return this.b;
    }
 
-   public Set<agt> d() {
+   public arn d() {
       return this.c;
    }
 
-   public Map<agt, ah> e() {
-      return this.d;
+   public double e() {
+      return (double)((float)this.d / 8.0F);
    }
 
-   public boolean f() {
-      return this.a;
+   public double f() {
+      return (double)((float)this.e / 8.0F);
+   }
+
+   public double g() {
+      return (double)((float)this.f / 8.0F);
+   }
+
+   public float h() {
+      return this.g;
+   }
+
+   public float i() {
+      return this.h;
+   }
+
+   public long j() {
+      return this.i;
+   }
+
+   public void a(yx $$0) {
+      $$0.a(this);
    }
 }

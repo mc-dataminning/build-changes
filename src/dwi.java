@@ -1,41 +1,59 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dwi extends dwh {
-   public static final Codec<dwi> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dwi::new));
+public class dwi extends dwj {
+   public static final Codec<dwi> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dwi::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   public dwi(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected dwk<?> a() {
+      return dwk.b;
+   }
+
+   public dwi(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected dwl<?> a() {
-      return dwl.d;
-   }
-
-   @Override
-   public List<dus.a> a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, int $$3, hv $$4, duc $$5) {
-      List<dus.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + aty.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + aty.a($$8) * (float)$$11);
-            hv $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+   public void a(dwj.a $$0) {
+      aup $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            hx $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, dfd.d, $$0);
+            }
          }
 
-         $$6.add(new dus.a($$4.b($$9, $$7, $$10), -2, false));
-      }
+         if ($$1.i() < this.b) {
+            hx $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, dfd.f, $$0);
+            }
+         }
 
-      return $$6;
+         if ($$1.i() < this.b) {
+            hx $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, dfd.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            hx $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, dfd.c, $$0);
+            }
+         }
+      });
+   }
+
+   private static void a(hx $$0, djr $$1, dwj.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (hx var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
+      }
    }
 }

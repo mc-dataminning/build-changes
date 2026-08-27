@@ -1,43 +1,66 @@
-import java.util.Locale;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public enum epp {
-   a,
-   b,
-   c,
-   d;
+public class epp {
+   @Nullable
+   private static epw a;
 
-   private static final int e = 1024;
-
-   public static epp a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
-         }
+   public static void a() {
+      if (a != null) {
+         b();
+         epw.b();
       }
    }
 
-   public static double a(long $$0, epp $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   public static void b() {
+      a = null;
    }
 
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
+   public static void a(epo.b $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
       } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+         c($$0);
       }
    }
 
-   public static String b(long $$0, epp $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   private static void c(epo.b $$0) {
+      epw $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      }
+   }
+
+   public static void b(epo.b $$0) {
+      epw $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.c();
+      }
+   }
+
+   @Nullable
+   private static epw d(epo.b $$0) {
+      RenderSystem.assertOnRenderThread();
+      if ($$0.d()) {
+         $$0.e();
+         return null;
+      } else {
+         epw $$1 = a($$0.c().g());
+         $$1.a($$0);
+         return $$1;
+      }
+   }
+
+   private static epw a(epy $$0) {
+      epw $$1 = $$0.g();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(epw $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

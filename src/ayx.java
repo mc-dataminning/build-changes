@@ -1,70 +1,41 @@
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.DynamicOps;
+import java.util.function.Function;
+import java.util.function.IntFunction;
 
-public class ayx extends DataFix {
-   public ayx(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class ayx extends baq {
+   private final String a;
+   private final IntFunction<String> b;
+
+   public ayx(Schema $$0, String $$1, TypeReference $$2, String $$3, String $$4, IntFunction<String> $$5) {
+      super($$0, false, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b = $$5;
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.a(this.getOutputSchema().getTypeRaw(bbg.F));
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Function<Dynamic<T>, Dynamic<T>> $$3) {
+      return $$0.map($$4 -> {
+         DynamicOps<T> $$5 = $$0.getOps();
+         Function<T, T> $$6 = $$2xx -> (T)$$3.apply(new Dynamic($$5, $$2xx)).getValue();
+         return $$5.get($$4, $$1).map($$4x -> $$5.set($$4, $$2, $$6.apply((T)$$4x))).result().orElse($$4);
+      });
    }
 
-   private <R> TypeRewriteRule a(Type<R> $$0) {
-      Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1 = DSL.and(
-         DSL.optional(DSL.field("RecipesUsed", DSL.and(DSL.compoundList($$0, DSL.intType()), DSL.remainderType()))), DSL.remainderType()
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> a(
+               $$0x,
+               this.a,
+               "variant",
+               $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asNumber().map($$1 -> $$0xx.createString(this.b.apply($$1.intValue()))).result(), $$0xx)
+            )
       );
-      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:furnace", this.getInputSchema().getChoiceType(bbg.s, "minecraft:furnace"));
-      OpticFinder<?> $$3 = DSL.namedChoice("minecraft:blast_furnace", this.getInputSchema().getChoiceType(bbg.s, "minecraft:blast_furnace"));
-      OpticFinder<?> $$4 = DSL.namedChoice("minecraft:smoker", this.getInputSchema().getChoiceType(bbg.s, "minecraft:smoker"));
-      Type<?> $$5 = this.getOutputSchema().getChoiceType(bbg.s, "minecraft:furnace");
-      Type<?> $$6 = this.getOutputSchema().getChoiceType(bbg.s, "minecraft:blast_furnace");
-      Type<?> $$7 = this.getOutputSchema().getChoiceType(bbg.s, "minecraft:smoker");
-      Type<?> $$8 = this.getInputSchema().getType(bbg.s);
-      Type<?> $$9 = this.getOutputSchema().getType(bbg.s);
-      return this.fixTypeEverywhereTyped(
-         "FurnaceRecipesFix",
-         $$8,
-         $$9,
-         $$8x -> $$8x.updateTyped($$2, $$5, $$2xx -> this.a($$0, $$1, $$2xx))
-               .updateTyped($$3, $$6, $$2xx -> this.a($$0, $$1, $$2xx))
-               .updateTyped($$4, $$7, $$2xx -> this.a($$0, $$1, $$2xx))
-      );
-   }
-
-   private <R> Typed<?> a(Type<R> $$0, Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1, Typed<?> $$2) {
-      Dynamic<?> $$3 = (Dynamic<?>)$$2.getOrCreate(DSL.remainderFinder());
-      int $$4 = $$3.get("RecipesUsedSize").asInt(0);
-      $$3 = $$3.remove("RecipesUsedSize");
-      List<Pair<R, Integer>> $$5 = Lists.newArrayList();
-
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         String $$7 = "RecipeLocation" + $$6;
-         String $$8 = "RecipeAmount" + $$6;
-         Optional<? extends Dynamic<?>> $$9 = $$3.get($$7).result();
-         int $$10 = $$3.get($$8).asInt(0);
-         if ($$10 > 0) {
-            $$9.ifPresent($$3x -> {
-               Optional<? extends Pair<R, ? extends Dynamic<?>>> $$4x = $$0.read($$3x).result();
-               $$4x.ifPresent($$2xx -> $$5.add(Pair.of($$2xx.getFirst(), $$10)));
-            });
-         }
-
-         $$3 = $$3.remove($$7).remove($$8);
-      }
-
-      return $$2.set(DSL.remainderFinder(), $$1, Pair.of(Either.left(Pair.of($$5, $$3.emptyMap())), $$3));
    }
 }

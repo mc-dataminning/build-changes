@@ -1,22 +1,20 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class ece extends ecl {
-   public final asg<cvz> a;
-   public static final Codec<ece> b = asg.b(kc.f).xmap(ece::new, $$0 -> $$0.a);
+public class ece extends ect {
+   public static final Codec<ece> a = dja.b.fieldOf("block_state").xmap(ece::new, $$0 -> $$0.b).codec();
+   private final dja b;
 
-   public ece(asg<cvz> $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public eco.c a(ctb $$0, hv $$1, hv $$2, eco.c $$3, eco.c $$4, eck $$5) {
-      return drc.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public ece(dja $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected ecn<?> a() {
-      return ecn.n;
+   public boolean a(dja $$0, aup $$1) {
+      return $$0 == this.b;
+   }
+
+   @Override
+   protected ecu<?> a() {
+      return ecu.c;
    }
 }

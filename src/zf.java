@@ -1,50 +1,48 @@
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import java.util.List;
+public class zf implements xd<yx> {
+   private final hx a;
+   private final int b;
+   private final int c;
+   private final cwj d;
 
-public class zf implements wu<yo> {
-   private final int a;
-   private final Suggestions b;
-
-   public zf(int $$0, Suggestions $$1) {
+   public zf(hx $$0, cwj $$1, int $$2, int $$3) {
       this.a = $$0;
-      this.b = $$1;
+      this.d = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public zf(ue $$0) {
-      this.a = $$0.n();
-      int $$1 = $$0.n();
-      int $$2 = $$0.n();
-      StringRange $$3 = StringRange.between($$1, $$1 + $$2);
-      List<Suggestion> $$4 = $$0.a((ue.a<Suggestion>)($$1x -> {
-         String $$2x = $$1x.s();
-         vb $$3x = $$1x.c(ue::m);
-         return new Suggestion($$3, $$2x, $$3x);
-      }));
-      this.b = new Suggestions($$3, $$4);
+   public zf(ug $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.a(kd.e);
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b.getRange().getStart());
-      $$0.c(this.b.getRange().getLength());
-      $$0.a(this.b.getList(), ($$0x, $$1) -> {
-         $$0x.a($$1.getText());
-         $$0x.a($$1.getTooltip(), ($$0xx, $$1x) -> $$0xx.a(ve.a($$1x)));
-      });
+   public void a(ug $$0) {
+      $$0.a(this.a);
+      $$0.k(this.b);
+      $$0.k(this.c);
+      $$0.a(kd.e, this.d);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public hx a() {
       return this.a;
    }
 
-   public Suggestions d() {
+   public int d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public cwj f() {
+      return this.d;
    }
 }

@@ -1,41 +1,50 @@
-public class fva extends fvb<dhs> {
-   private static final agt c = new agt("textures/entity/end_gateway_beam.png");
+@FunctionalInterface
+public interface fva<T extends dgo> {
+   fuz<T> create(fva.a var1);
 
-   public fva(fuj.a $$0) {
-      super($$0);
-   }
+   public static class a {
+      private final fuy a;
+      private final ftt b;
+      private final fzd c;
+      private final fyd d;
+      private final fml e;
+      private final ewk f;
 
-   public void a(dhs $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
-      if ($$0.c() || $$0.d()) {
-         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.c() ? (double)$$0.i().ak() : 50.0;
-         $$6 = aty.a($$6 * (float) Math.PI);
-         int $$8 = aty.a((double)$$6 * $$7);
-         float[] $$9 = $$0.c() ? ckv.c.d() : ckv.k.d();
-         long $$10 = $$0.i().W();
-         fue.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      public a(fuy $$0, ftt $$1, fzd $$2, fyd $$3, fml $$4, ewk $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      public fuy a() {
+         return this.a;
+      }
 
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
+      public ftt b() {
+         return this.b;
+      }
 
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
+      public fyd c() {
+         return this.d;
+      }
 
-   @Override
-   protected fsq d() {
-      return fsq.v();
-   }
+      public fzd d() {
+         return this.c;
+      }
 
-   @Override
-   public int aS_() {
-      return 256;
+      public fml e() {
+         return this.e;
+      }
+
+      public fmp a(fmn $$0) {
+         return this.e.a($$0);
+      }
+
+      public ewk f() {
+         return this.f;
+      }
    }
 }

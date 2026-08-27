@@ -1,42 +1,19 @@
-public class blg {
-   public final float a;
-   public final float b;
-   public final boolean c;
-
-   public blg(float $$0, float $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public ekw a(elb $$0) {
-      return this.a($$0.c, $$0.d, $$0.e);
-   }
-
-   public ekw a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new ekw($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
-   }
-
-   public blg a(float $$0) {
-      return this.a($$0, $$0);
-   }
-
-   public blg a(float $$0, float $$1) {
-      return !this.c && ($$0 != 1.0F || $$1 != 1.0F) ? b(this.a * $$0, this.b * $$1) : this;
-   }
-
-   public static blg b(float $$0, float $$1) {
-      return new blg($$0, $$1, false);
-   }
-
-   public static blg c(float $$0, float $$1) {
-      return new blg($$0, $$1, true);
+class blg extends bla {
+   protected blg(blb $$0, int $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String toString() {
-      return "EntityDimensions w=" + this.a + ", h=" + this.b + ", fixed=" + this.c;
+   public void a(bmf $$0, int $$1) {
+      super.a($$0, $$1);
+      if ($$0.ev() < $$0.eM()) {
+         $$0.b(1.0F);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 50 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

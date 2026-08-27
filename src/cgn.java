@@ -1,147 +1,65 @@
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public class cgn {
+   public static final cgn a = a("core");
+   public static final cgn b = a("idle");
+   public static final cgn c = a("work");
+   public static final cgn d = a("play");
+   public static final cgn e = a("rest");
+   public static final cgn f = a("meet");
+   public static final cgn g = a("panic");
+   public static final cgn h = a("raid");
+   public static final cgn i = a("pre_raid");
+   public static final cgn j = a("hide");
+   public static final cgn k = a("fight");
+   public static final cgn l = a("celebrate");
+   public static final cgn m = a("admire_item");
+   public static final cgn n = a("avoid");
+   public static final cgn o = a("ride");
+   public static final cgn p = a("play_dead");
+   public static final cgn q = a("long_jump");
+   public static final cgn r = a("ram");
+   public static final cgn s = a("tongue");
+   public static final cgn t = a("swim");
+   public static final cgn u = a("lay_spawn");
+   public static final cgn v = a("sniff");
+   public static final cgn w = a("investigate");
+   public static final cgn x = a("roar");
+   public static final cgn y = a("emerge");
+   public static final cgn z = a("dig");
+   private final String A;
+   private final int B;
 
-public interface cgn extends bje, bjo {
-   elb dk();
+   private cgn(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
+   }
 
-   @Nullable
-   agt C();
+   public String a() {
+      return this.A;
+   }
 
-   void a(@Nullable agt var1);
-
-   long D();
-
-   void a(long var1);
-
-   io<cmh> E();
-
-   void G();
-
-   csy dM();
-
-   boolean dH();
+   private static cgn a(String $$0) {
+      return it.a(kd.E, $$0, new cgn($$0));
+   }
 
    @Override
-   default boolean ai_() {
-      return this.g();
-   }
-
-   default void c(sj $$0) {
-      if (this.C() != null) {
-         $$0.a("LootTable", this.C().toString());
-         if (this.D() != 0L) {
-            $$0.a("LootTableSeed", this.D());
-         }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cgn $$1 = (cgn)$$0;
+         return this.A.equals($$1.A);
       } else {
-         bjf.a($$0, this.E());
+         return false;
       }
    }
 
-   default void b_(sj $$0) {
-      this.G();
-      if ($$0.b("LootTable", 8)) {
-         this.a(new agt($$0.l("LootTable")));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bjf.b($$0, this.E());
-      }
+   @Override
+   public int hashCode() {
+      return this.B;
    }
 
-   default void a(bkd $$0, csy $$1, blf $$2) {
-      if ($$1.Y().b(csu.i)) {
-         bjh.a($$1, $$2, this);
-         if (!$$1.B) {
-            blf $$3 = $$0.c();
-            if ($$3 != null && $$3.ai() == blj.bv) {
-               cdi.a((cer)$$3, true);
-            }
-         }
-      }
-   }
-
-   default bjl c_(cer $$0) {
-      $$0.a(this);
-      return !$$0.dM().B ? bjl.b : bjl.a;
-   }
-
-   default void f(@Nullable cer $$0) {
-      MinecraftServer $$1 = this.dM().n();
-      if (this.C() != null && $$1 != null) {
-         egm $$2 = $$1.aJ().getLootTable(this.C());
-         if ($$0 != null) {
-            am.O.a((amq)$$0, this.C());
-         }
-
-         this.a(null);
-         egk.a $$3 = new egk.a((amp)this.dM()).a(eip.f, this.dk());
-         if ($$0 != null) {
-            $$3.a($$0.go()).a(eip.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(eio.c), this.D());
-      }
-   }
-
-   default void f() {
-      this.f(null);
-      this.E().clear();
-   }
-
-   default boolean g() {
-      for (cmh $$0 : this.E()) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   default cmh e_(int $$0) {
-      this.f(null);
-      cmh $$1 = this.E().get($$0);
-      if ($$1.b()) {
-         return cmh.f;
-      } else {
-         this.E().set($$0, cmh.f);
-         return $$1;
-      }
-   }
-
-   default cmh f_(int $$0) {
-      this.f(null);
-      return this.E().get($$0);
-   }
-
-   default cmh b(int $$0, int $$1) {
-      this.f(null);
-      return bjf.a(this.E(), $$0, $$1);
-   }
-
-   default void c(int $$0, cmh $$1) {
-      this.f(null);
-      this.E().set($$0, $$1);
-      if (!$$1.b() && $$1.L() > this.ak_()) {
-         $$1.f(this.ak_());
-      }
-   }
-
-   default bmn g_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bmn() {
-         @Override
-         public cmh a() {
-            return cgn.this.f_($$0);
-         }
-
-         @Override
-         public boolean a(cmh $$0x) {
-            cgn.this.c($$0, $$0);
-            return true;
-         }
-      } : bmn.b;
-   }
-
-   default boolean g(cer $$0) {
-      return !this.dH() && this.dk().a((ip)$$0.dk(), 8.0);
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

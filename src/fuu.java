@@ -1,50 +1,88 @@
-public class fuu implements fui<dil> {
-   private final ftc a;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-   public fuu(fuj.a $$0) {
-      this.a = $$0.b();
+public class fuu implements fuz<dge> {
+   private static final int b = 20;
+   private static final int c = 40;
+   private static final int d = 16;
+   public static final String a = "flag";
+   private static final String e = "pole";
+   private static final String f = "bar";
+   private final fmp g;
+   private final fmp h;
+   private final fmp i;
+
+   public fuu(fva.a $$0) {
+      fmp $$1 = $$0.a(fmo.f);
+      this.g = $$1.b("flag");
+      this.h = $$1.b("pole");
+      this.i = $$1.b("bar");
    }
 
-   public void a(dil $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
-      csy $$6 = $$0.i();
-      if ($$6 != null) {
-         hv $$7 = $$0.aB_().a($$0.g().g());
-         dip $$8 = $$0.k();
-         if (!$$8.i()) {
-            fte.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(cwb.bz) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.a(dij.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.f() && !$$0.c()) {
-               djr $$9 = $$8.a(cwb.br) ? djr.b : djr.a;
-               dip $$10 = cwb.bz.o().a(dij.c, $$9).a(dij.a, $$8.c(dii.a));
-               $$10 = $$10.a(dij.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               hv $$11 = $$7.a($$0.g());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.a(dii.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
+   public static fmv a() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      $$1.a("flag", fmu.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fmr.a);
+      $$1.a("pole", fmu.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fmr.a);
+      $$1.a("bar", fmu.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fmr.a);
+      return fmv.a($$0, 64, 64);
+   }
 
-            $$2.b();
-            fte.b();
+   public void a(dge $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
+      List<Pair<ih<dgf>, clf>> $$6 = $$0.c();
+      float $$7 = 0.6666667F;
+      boolean $$8 = $$0.i() == null;
+      $$2.a();
+      long $$9;
+      if ($$8) {
+         $$9 = 0L;
+         $$2.a(0.5F, 0.5F, 0.5F);
+         this.h.k = true;
+      } else {
+         $$9 = $$0.i().X();
+         dja $$11 = $$0.r();
+         if ($$11.b() instanceof cvo) {
+            $$2.a(0.5F, 0.5F, 0.5F);
+            float $$12 = -dkg.b($$11.c(cvo.b));
+            $$2.a(a.d.rotationDegrees($$12));
+            this.h.k = true;
+         } else {
+            $$2.a(0.5F, -0.16666667F, 0.5F);
+            float $$13 = -$$11.c(dfe.b).p();
+            $$2.a(a.d.rotationDegrees($$13));
+            $$2.a(0.0F, -0.3125F, -0.4375F);
+            this.h.k = false;
          }
       }
+
+      $$2.a();
+      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
+      epx $$14 = ggl.f.a($$3, fth::c);
+      this.h.a($$2, $$14, $$4, $$5);
+      this.i.a($$2, $$14, $$4, $$5);
+      hx $$15 = $$0.aB_();
+      float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$9, 100L) + $$1) / 100.0F;
+      this.g.e = (-0.0125F + 0.01F * aui.b((float) (Math.PI * 2) * $$16)) * (float) Math.PI;
+      this.g.c = -32.0F;
+      a($$2, $$3, $$4, $$5, this.g, ggl.f, true, $$6);
+      $$2.b();
+      $$2.b();
    }
 
-   private void a(hv $$0, dip $$1, epd $$2, fsi $$3, csy $$4, boolean $$5, int $$6) {
-      fsq $$7 = fsd.b($$1);
-      eph $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, auf.a(), $$1.a($$0), $$6);
+   public static void a(ept $$0, fsz $$1, int $$2, int $$3, fmp $$4, ggj $$5, boolean $$6, List<Pair<ih<dgf>, clf>> $$7) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
    }
 
-   @Override
-   public int aS_() {
-      return 68;
+   public static void a(ept $$0, fsz $$1, int $$2, int $$3, fmp $$4, ggj $$5, boolean $$6, List<Pair<ih<dgf>, clf>> $$7, boolean $$8) {
+      $$4.a($$0, $$5.a($$1, fth::c, $$8), $$2, $$3);
+
+      for (int $$9 = 0; $$9 < 17 && $$9 < $$7.size(); $$9++) {
+         Pair<ih<dgf>, clf> $$10 = $$7.get($$9);
+         float[] $$11 = ((clf)$$10.getSecond()).d();
+         ((ih)$$10.getFirst())
+            .e()
+            .map($$1x -> $$6 ? fto.a($$1x) : fto.b($$1x))
+            .ifPresent($$6x -> $$4.a($$0, $$6x.a($$1, fth::m), $$2, $$3, $$11[0], $$11[1], $$11[2], 1.0F));
+      }
    }
 }

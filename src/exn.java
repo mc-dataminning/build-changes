@@ -1,39 +1,39 @@
-import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class exn extends ewf {
-   @Nullable
-   protected exu a;
-   protected boolean b;
+public class exn extends eww {
+   private final ewk a;
 
-   public exn(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, va.a);
-      this.b = $$4;
-   }
-
-   public void a(exu $$0) {
+   public exn(ewk $$0, vd $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
       this.a = $$0;
    }
 
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
-      return this.b;
+   @Override
+   protected void b(ewm $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.B() + this.w() / 2;
+      int $$5 = this.C() + this.u() / 2;
+      vd $$6 = this.x();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = fce.a(ac.b());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
    @Override
-   public void a(faa $$0) {
-      this.c($$0);
+   protected void a(far $$0) {
    }
 
    @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         RenderSystem.disableDepthTest();
-         $$0.a(this.a.a(this.b, this.n()), this.p(), this.r(), this.f, this.g);
-         RenderSystem.enableDepthTest();
-      }
+   public void a(gir $$0) {
+   }
+
+   @Override
+   public boolean A() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public ewj a(fax $$0) {
+      return null;
    }
 }

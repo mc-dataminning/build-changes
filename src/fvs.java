@@ -1,29 +1,46 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+import org.joml.Matrix4f;
 
-public class fvs implements fvt.a {
-   private final euk a;
-   private double b = Double.MIN_VALUE;
-   private List<elu> c = Collections.emptyList();
+public class fvs<T extends die> implements fuz<T> {
+   public static final ahd a = new ahd("textures/environment/end_sky.png");
+   public static final ahd b = new ahd("textures/entity/end_portal.png");
 
-   public fvs(euk $$0) {
-      this.a = $$0;
+   public fvs(fva.a $$0) {
    }
 
-   @Override
-   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         blf $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dM().d($$6, $$6.cH().g(6.0)));
-      }
+   public void a(T $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
 
-      eph $$7 = $$1.getBuffer(fsq.w());
+   private void a(T $$0, Matrix4f $$1, epx $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ic.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ic.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ic.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ic.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ic.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ic.b);
+   }
 
-      for (elu $$8 : this.c) {
-         fsg.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+   private void a(T $$0, Matrix4f $$1, epx $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ic $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
       }
+   }
+
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected fth d() {
+      return fth.u();
    }
 }

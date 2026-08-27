@@ -1,42 +1,57 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dyd {
-   public static final Codec<dyd> a = atg.a(
-      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(ags.a(kc.aM), dlz.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, dyd::new)),
-      dyd::a
+public record dyd(ih<dra<?, ?>> e, List<dyg> f) {
+   public static final Codec<dyd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dra.b.fieldOf("feature").forGetter($$0x -> $$0x.e), dyg.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, dyd::new)
    );
-   public static final Codec<ie<dyd>> b = agp.a(kc.aJ, a);
-   private final Map<ags<dlz>, dlz> c;
+   public static final Codec<ih<dyd>> b = agz.a(ke.aC, a);
+   public static final Codec<il<dyd>> c = iv.a(ke.aC, a);
+   public static final Codec<List<il<dyd>>> d = iv.a(ke.aC, a, true).listOf();
 
-   public dyd(Map<ags<dlz>, dlz> $$0) {
-      this.c = $$0;
+   public boolean a(cud $$0, dkx $$1, aup $$2, hx $$3) {
+      return this.a(new dye($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   private ir<dlz> c() {
-      ja<dlz> $$0 = new in<>(kc.aM, Lifecycle.experimental());
-      dot.a(this.c.keySet().stream()).forEach($$1 -> {
-         dlz $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.a((ags<dlz>)$$1, $$2, Lifecycle.stable());
+   public boolean b(cud $$0, dkx $$1, aup $$2, hx $$3) {
+      return this.a(new dye($$0, $$1, Optional.of(this)), $$2, $$3);
+   }
+
+   private boolean a(dye $$0, aup $$1, hx $$2) {
+      Stream<hx> $$3 = Stream.of($$2);
+
+      for (dyg $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      dra<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
          }
       });
-      return $$0.l();
+      return $$6.isTrue();
    }
 
-   public dot a() {
-      return new dot(this.c());
+   public Stream<dra<?, ?>> a() {
+      return this.e.a().a();
    }
 
-   public Optional<dlz> b() {
-      return Optional.ofNullable(this.c.get(dlz.b));
+   @Override
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   private static DataResult<dyd> a(dyd $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   public ih<dra<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<dyg> c() {
+      return this.f;
    }
 }

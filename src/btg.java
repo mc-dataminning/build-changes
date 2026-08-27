@@ -1,55 +1,36 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class btg extends btb {
+   private final byp a;
+   private ana b;
+   private boolean c;
 
-public class btg extends bsr {
-   private final bme a;
-   @Nullable
-   private blv b;
-   private double c;
-   private double d;
-   private double e;
-   private final double f;
-   private final float g;
-
-   public btg(bme $$0, double $$1, float $$2) {
+   public btg(byp $$0) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(bsr.a.a));
    }
 
    @Override
    public boolean a() {
-      this.b = this.a.q();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
-         return false;
-      } else {
-         elb $$0 = bwn.a(this.a, 16, 7, this.b.dk(), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
-      }
+      ana $$0 = (ana)this.a.R_();
+      boolean $$1 = $$0 != null && !$$0.P_() && !$$0.fT().b && !$$0.aZ() && !$$0.aA;
+      return !this.a.ge() && $$1 && this.a.gn();
    }
 
    @Override
-   public boolean b() {
-      return !this.a.N().l() && this.b.bx() && this.b.f(this.a) < (double)(this.g * this.g);
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
+   public boolean S_() {
+      return !this.c;
    }
 
    @Override
    public void c() {
-      this.a.N().a(this.c, this.d, this.e, this.f);
+      this.b = (ana)this.a.R_();
+      this.c = false;
+   }
+
+   @Override
+   public void e() {
+      if (!this.c && !this.a.A() && !this.a.fS()) {
+         if (this.a.cH().c(this.b.cH())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

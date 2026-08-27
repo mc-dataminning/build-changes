@@ -1,75 +1,92 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class va {
-   public static final vb a = vb.i();
-   public static final vb b = vb.c("options.on");
-   public static final vb c = vb.c("options.off");
-   public static final vb d = vb.c("gui.done");
-   public static final vb e = vb.c("gui.cancel");
-   public static final vb f = vb.c("gui.yes");
-   public static final vb g = vb.c("gui.no");
-   public static final vb h = vb.c("gui.ok");
-   public static final vb i = vb.c("gui.proceed");
-   public static final vb j = vb.c("gui.continue");
-   public static final vb k = vb.c("gui.back");
-   public static final vb l = vb.c("gui.toTitle");
-   public static final vb m = vb.c("gui.acknowledge");
-   public static final vb n = vb.c("chat.link.open");
-   public static final vb o = vb.c("gui.copy_link_to_clipboard");
-   public static final vb p = vb.c("menu.disconnect");
-   public static final vb q = vb.c("connect.failed");
-   public static final vb r = vb.b("\n");
-   public static final vb s = vb.b(". ");
-   public static final vb t = vb.b("...");
-   public static final vb u = a();
+public record va(String b, List<va.a> c, wa d) {
+   public static final Codec<va> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(va::a),
+               va.a.d.listOf().fieldOf("parameters").forGetter(va::b),
+               wa.b.b.optionalFieldOf("style", wa.a).forGetter(va::c)
+            )
+            .apply($$0, va::new)
+   );
 
-   public static vp a() {
-      return vb.b(" ");
+   public static va a(String $$0) {
+      return new va($$0, List.of(va.a.a, va.a.c), wa.a);
    }
 
-   public static vp a(long $$0) {
-      return vb.a("gui.days", $$0);
+   public static va b(String $$0) {
+      wa $$1 = wa.a.a(n.h).b(true);
+      return new va($$0, List.of(va.a.a, va.a.c), $$1);
    }
 
-   public static vp b(long $$0) {
-      return vb.a("gui.hours", $$0);
+   public static va c(String $$0) {
+      wa $$1 = wa.a.a(n.h).b(true);
+      return new va($$0, List.of(va.a.b, va.a.c), $$1);
    }
 
-   public static vp c(long $$0) {
-      return vb.a("gui.minutes", $$0);
+   public static va d(String $$0) {
+      return new va($$0, List.of(va.a.b, va.a.a, va.a.c), wa.a);
    }
 
-   public static vb a(boolean $$0) {
-      return $$0 ? b : c;
+   public vd a(vd $$0, uz.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return vd.a(this.b, $$2).c(this.d);
    }
 
-   public static vp a(vb $$0, boolean $$1) {
-      return vb.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
-   }
+   private vd[] b(vd $$0, uz.a $$1) {
+      vd[] $$2 = new vd[this.c.size()];
 
-   public static vp a(vb $$0, vb $$1) {
-      return vb.a("options.generic_value", $$0, $$1);
-   }
-
-   public static vp a(vb... $$0) {
-      vp $$1 = vb.i();
-
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(s);
-         }
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         va.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
 
-      return $$1;
+      return $$2;
    }
 
-   public static vb b(vb... $$0) {
-      return a(Arrays.asList($$0));
+   public String a() {
+      return this.b;
    }
 
-   public static vb a(Collection<? extends vb> $$0) {
-      return ve.a($$0, r);
+   public List<va.a> b() {
+      return this.c;
+   }
+
+   public wa c() {
+      return this.d;
+   }
+
+   public static enum a implements ave {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c()),
+      c("content", ($$0, $$1) -> $$0);
+
+      public static final Codec<va.a> d = ave.a(va.a::values);
+      private final String e;
+      private final va.a.a f;
+
+      private a(String $$0, va.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public vd a(vd $$0, uz.a $$1) {
+         vd $$2 = this.f.select($$0, $$1);
+         return Objects.requireNonNullElse($$2, vc.a);
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+
+      public interface a {
+         @Nullable
+         vd select(vd var1, uz.a var2);
+      }
    }
 }

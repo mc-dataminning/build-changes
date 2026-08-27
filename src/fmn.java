@@ -1,25 +1,37 @@
-public class fmn {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = ac.c();
+public final class fmn {
+   private final ahd a;
+   private final String b;
 
-   public void a() {
-      this.e = ac.c();
+   public fmn(ahd $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(ac.c() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = aty.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
+   public ahd a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fmn $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
       }
    }
 
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
    }
 }

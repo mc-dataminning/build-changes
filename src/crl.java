@@ -1,15 +1,25 @@
-public class crl extends cqs {
-   public crl(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.i, $$1);
+public class crl extends crc {
+   protected crl(crc.a $$0, crd $$1, blu... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(crc $$0) {
+      return super.a($$0) && $$0 != crg.v;
    }
 }

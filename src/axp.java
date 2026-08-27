@@ -1,89 +1,56 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class axp extends DataFix {
-   public axp(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class axp extends baq {
+   private static final String[] a = new String[]{
+      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
+   };
+
+   public axp(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, bbq.s, $$2);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.a(this.getInputSchema().getTypeRaw(bbg.t));
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = $$0.update("front_text", axp::b);
+      $$0 = $$0.update("back_text", axp::b);
+
+      for (String $$1 : a) {
+         $$0 = $$0.remove($$1);
+      }
+
+      return $$0;
    }
 
-   private <IS> TypeRewriteRule a(Type<IS> $$0) {
-      Type<Pair<Either<List<IS>, Unit>, Dynamic<?>>> $$1 = DSL.and(DSL.optional(DSL.field("Equipment", DSL.list($$0))), DSL.remainderType());
-      Type<Pair<Either<List<IS>, Unit>, Pair<Either<List<IS>, Unit>, Dynamic<?>>>> $$2 = DSL.and(
-         DSL.optional(DSL.field("ArmorItems", DSL.list($$0))), DSL.optional(DSL.field("HandItems", DSL.list($$0))), DSL.remainderType()
-      );
-      OpticFinder<Pair<Either<List<IS>, Unit>, Dynamic<?>>> $$3 = DSL.typeFinder($$1);
-      OpticFinder<List<IS>> $$4 = DSL.fieldFinder("Equipment", DSL.list($$0));
-      return this.fixTypeEverywhereTyped(
-         "EntityEquipmentToArmorAndHandFix",
-         this.getInputSchema().getType(bbg.x),
-         this.getOutputSchema().getType(bbg.x),
-         $$4x -> {
-            Either<List<IS>, Unit> $$5 = Either.right(DSL.unit());
-            Either<List<IS>, Unit> $$6 = Either.right(DSL.unit());
-            Dynamic<?> $$7 = (Dynamic<?>)$$4x.getOrCreate(DSL.remainderFinder());
-            Optional<List<IS>> $$8 = $$4x.getOptional($$4);
-            if ($$8.isPresent()) {
-               List<IS> $$9 = $$8.get();
-               IS $$10 = (IS)((Pair)$$0.read($$7.emptyMap())
-                     .result()
-                     .orElseThrow(() -> new IllegalStateException("Could not parse newly created empty itemstack.")))
-                  .getFirst();
-               if (!$$9.isEmpty()) {
-                  $$5 = Either.left(Lists.newArrayList(new Object[]{$$9.get(0), $$10}));
-               }
-
-               if ($$9.size() > 1) {
-                  List<IS> $$11 = Lists.newArrayList(new Object[]{$$10, $$10, $$10, $$10});
-
-                  for (int $$12 = 1; $$12 < Math.min($$9.size(), 5); $$12++) {
-                     $$11.set($$12 - 1, $$9.get($$12));
-                  }
-
-                  $$6 = Either.left($$11);
-               }
-            }
-
-            Dynamic<?> $$13 = $$7;
-            Optional<? extends Stream<? extends Dynamic<?>>> $$14 = $$7.get("DropChances").asStreamOpt().result();
-            if ($$14.isPresent()) {
-               Iterator<? extends Dynamic<?>> $$15 = Stream.concat((Stream<? extends Dynamic<?>>)$$14.get(), Stream.generate(() -> $$13.createInt(0)))
-                  .iterator();
-               float $$16 = $$15.next().asFloat(0.0F);
-               if ($$7.get("HandDropChances").result().isEmpty()) {
-                  Dynamic<?> $$17 = $$7.createList(Stream.of($$16, 0.0F).map($$7::createFloat));
-                  $$7 = $$7.set("HandDropChances", $$17);
-               }
-
-               if ($$7.get("ArmorDropChances").result().isEmpty()) {
-                  Dynamic<?> $$18 = $$7.createList(
-                     Stream.of($$15.next().asFloat(0.0F), $$15.next().asFloat(0.0F), $$15.next().asFloat(0.0F), $$15.next().asFloat(0.0F))
-                        .map($$7::createFloat)
-                  );
-                  $$7 = $$7.set("ArmorDropChances", $$18);
-               }
-
-               $$7 = $$7.remove("DropChances");
-            }
-
-            return $$4x.set($$3, $$2, Pair.of($$5, Pair.of($$6, $$7)));
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
+      if ($$1) {
+         return $$0.remove("_filtered_correct");
+      } else {
+         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
+         if ($$2.isEmpty()) {
+            return $$0;
+         } else {
+            Dynamic<T> $$3 = avp.a($$0.getOps());
+            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
+               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
+               return $$2x.equals($$3) ? $$4x : $$2x;
+            }).toList();
+            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
+               ? $$0.remove("filtered_messages")
+               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
          }
-      );
+      }
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), axp::a);
    }
 }

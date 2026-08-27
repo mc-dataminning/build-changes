@@ -1,93 +1,140 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import java.util.Objects;
 
-public final class eoc {
-   private final long a;
-   private final List<eog> b;
-   private eog c;
-   private int d;
-   private int e;
+public class eoc extends eof {
+   public static final int a = 854;
+   public static final int b = 480;
+   static final eoc.b l = new eoc.b(854, 480);
 
-   public eoc(long $$0) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-      this.a();
+   public eoc(int $$0, int $$1) {
+      super(true);
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
+      } else {
+         this.b($$0, $$1);
+      }
    }
 
-   public void a() {
-      RenderSystem.assertInInitPhase();
-      this.b.clear();
-      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+   private void b(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      eoc.b $$2 = this.c($$0, $$1);
+      this.h = GlStateManager.glGenFramebuffers();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texParameter(3553, 34892, 0);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+      GlStateManager._bindTexture(0);
+      this.e = $$2.a;
+      this.f = $$2.b;
+      this.c = $$2.a;
+      this.d = $$2.b;
+      this.b();
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
 
-      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
-         $$0.position($$1);
-         eog $$2 = new eog($$0);
-         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
-            this.b.add($$2);
+   private eoc.b c(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.i = TextureUtil.generateTextureId();
+      this.j = TextureUtil.generateTextureId();
+      eoc.a $$2 = eoc.a.a;
+
+      for (eoc.b $$3 : eoc.b.a($$0, $$1)) {
+         $$2 = eoc.a.a;
+         if (this.a($$3)) {
+            $$2 = $$2.a(eoc.a.b);
+         }
+
+         if (this.b($$3)) {
+            $$2 = $$2.a(eoc.a.c);
+         }
+
+         if ($$2 == eoc.a.d) {
+            return $$3;
          }
       }
 
-      int[] $$3 = new int[1];
-      int[] $$4 = new int[1];
-      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
-      this.d = $$3[0];
-      this.e = $$4[0];
-      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
-      this.c = new eog($$5);
+      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
    }
 
-   public eog a(Optional<eog> $$0) {
-      RenderSystem.assertInInitPhase();
-      if ($$0.isPresent()) {
-         eog $$1 = $$0.get();
+   private boolean a(eoc.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
+      return GlStateManager._getError() != 1285;
+   }
 
-         for (eog $$2 : this.b) {
-            if ($$2.equals($$1)) {
-               return $$2;
-            }
+   private boolean b(eoc.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
+      return GlStateManager._getError() != 1285;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
+
+      private static final eoc.a[] e = values();
+
+      eoc.a a(eoc.a $$0) {
+         return e[this.ordinal() | $$0.ordinal()];
+      }
+   }
+
+   static class b {
+      public final int a;
+      public final int b;
+
+      b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      static List<eoc.b> a(int $$0, int $$1) {
+         RenderSystem.assertOnRenderThreadOrInit();
+         int $$2 = RenderSystem.maxSupportedTextureSize();
+         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new eoc.b($$0, $$1), eoc.l) : ImmutableList.of(eoc.l);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            eoc.b $$1 = (eoc.b)$$0;
+            return this.a == $$1.a && this.b == $$1.b;
+         } else {
+            return false;
          }
       }
 
-      return this.b();
-   }
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b);
+      }
 
-   public int a(eog $$0) {
-      RenderSystem.assertInInitPhase();
-      return this.b.indexOf($$0);
-   }
-
-   public eog b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public eog a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int e() {
-      return this.b.size();
-   }
-
-   public long f() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
+      @Override
+      public String toString() {
+         return this.a + "x" + this.b;
+      }
    }
 }

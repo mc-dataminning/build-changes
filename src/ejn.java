@@ -1,49 +1,64 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.Set;
 
-public record ejn(Optional<Boolean> b, Optional<Boolean> c) implements ejd {
-   public static final Codec<ejn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atg.a(Codec.BOOL, "raining").forGetter(ejn::d), atg.a(Codec.BOOL, "thundering").forGetter(ejn::e)).apply($$0, ejn::new)
+public record ejn(ih<cwj> b, Optional<cz> c) implements ejo {
+   public static final Codec<ejn> a = atq.a(
+      RecordCodecBuilder.create($$0 -> $$0.group(kd.e.r().fieldOf("block").forGetter(ejn::c), atq.a(cz.a, "properties").forGetter(ejn::d)).apply($$0, ejn::new)),
+      ejn::a
    );
 
+   private static DataResult<ejn> a(ejn $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().n()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
+   }
+
    @Override
-   public eje b() {
-      return ejf.p;
+   public ejp b() {
+      return ejq.j;
    }
 
-   public boolean a(ege $$0) {
-      amp $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.aa() ? false : !this.c.isPresent() || this.c.get() == $$1.Z();
+   @Override
+   public Set<eix<?>> a() {
+      return Set.of(eja.g);
    }
 
-   public static ejn.a c() {
-      return new ejn.a();
+   public boolean a(egp $$0) {
+      dja $$1 = $$0.c(eja.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
    }
 
-   public Optional<Boolean> d() {
+   public static ejn.a a(cwj $$0) {
+      return new ejn.a($$0);
+   }
+
+   public ih<cwj> c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public Optional<cz> d() {
       return this.c;
    }
 
-   public static class a implements ejd.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
+   public static class a implements ejo.a {
+      private final ih<cwj> a;
+      private Optional<cz> b = Optional.empty();
 
-      public ejn.a a(boolean $$0) {
-         this.a = Optional.of($$0);
+      public a(cwj $$0) {
+         this.a = $$0.r();
+      }
+
+      public ejn.a a(cz.a $$0) {
+         this.b = $$0.b();
          return this;
       }
 
-      public ejn.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public ejn a() {
+      @Override
+      public ejo build() {
          return new ejn(this.a, this.b);
       }
    }

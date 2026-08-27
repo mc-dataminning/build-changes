@@ -1,49 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dcb extends cvz {
+public class dcb extends cye {
    public static final MapCodec<dcb> a = b(dcb::new);
-   public static final djg b = dcc.d;
+   private static final emf[] b = new emf[]{
+      cwj.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<dcb> a() {
       return a;
    }
 
-   public dcb(dio.d $$0) {
+   public dcb(diz.d $$0) {
       super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dip a(coq $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().B($$0.a())));
    }
 
    @Override
-   public void a(dip $$0, csy $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$0.c(b);
-         if ($$6 != $$1.B($$2)) {
-            if ($$6) {
-               $$1.a($$2, this, 4);
-            } else {
-               $$1.a($$2, $$0.a(b), 2);
-            }
-         }
-      }
+   protected cth d() {
+      return cmu.tZ;
    }
 
    @Override
-   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
-      if ($$0.c(b) && !$$1.B($$2)) {
-         $$1.a($$2, $$0.a(b), 2);
-      }
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b);
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return b[this.g($$0)];
    }
 }

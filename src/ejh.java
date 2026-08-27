@@ -1,29 +1,17 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.Set;
+import java.util.function.Function;
 
-public class ejh implements ejd {
-   private static final ejh b = new ejh();
-   public static final Codec<ejh> a = Codec.unit(b);
+public interface ejh<T extends ejh<T>> {
+   T b(ejo.a var1);
 
-   private ejh() {
+   default <E> T a_(Iterable<E> $$0, Function<E, ejo.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public eje b() {
-      return ejf.h;
-   }
-
-   @Override
-   public Set<eim<?>> a() {
-      return ImmutableSet.of(eip.b);
-   }
-
-   public boolean a(ege $$0) {
-      return $$0.a(eip.b);
-   }
-
-   public static ejd.a c() {
-      return () -> b;
-   }
+   T d();
 }

@@ -1,17 +1,37 @@
-public class fwx extends fzu<cbk> {
-   private static final agt a = new agt("textures/entity/spider/cave_spider.png");
-   private static final float i = 0.7F;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public fwx(fxo.a $$0) {
-      super($$0, flx.t);
-      this.d *= 0.7F;
+public class fwx implements fwk.a {
+   private static final int a = 60;
+   private final Set<iz> b = Sets.newHashSet();
+
+   fwx() {
    }
 
-   protected void a(cbk $$0, epd $$1, float $$2) {
-      $$1.b(0.7F, 0.7F, 0.7F);
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public agt a(cbk $$0) {
-      return a;
+   public void a(iz $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(iz $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4) {
+      hx $$5 = hx.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(ept $$0, fsz $$1, iz $$2) {
+      fwk.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

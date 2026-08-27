@@ -1,151 +1,17 @@
-import javax.annotation.Nullable;
+public interface ckc {
+   int a(ckb.a var1);
 
-public class ckc extends cmc {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+   int b(ckb.a var1);
 
-   public ckc(cmc.a $$0) {
-      super($$0);
-   }
+   int a();
 
-   @Override
-   public bjl a(cos $$0) {
-      csy $$1 = $$0.q();
-      hv $$2 = $$0.a();
-      hv $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.B) {
-            $$0.o().a(dmz.C);
-            $$1.c(1505, $$2, 0);
-         }
+   arl b();
 
-         return bjl.a($$1.B);
-      } else {
-         dip $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.d($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.B) {
-               $$0.o().a(dmz.C);
-               $$1.c(1505, $$3, 0);
-            }
+   cps d();
 
-            return bjl.a($$1.B);
-         } else {
-            return bjl.d;
-         }
-      }
-   }
+   String e();
 
-   public static boolean a(cmh $$0, csy $$1, hv $$2) {
-      dip $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof cwc $$4 && $$4.b($$1, $$2, $$3)) {
-         if ($$1 instanceof amp) {
-            if ($$4.a($$1, $$1.z, $$2, $$3)) {
-               $$4.a((amp)$$1, $$1.z, $$2, $$3);
-            }
+   float f();
 
-            $$0.h(1);
-         }
-
-         return true;
-      }
-
-      return false;
-   }
-
-   public static boolean a(cmh $$0, csy $$1, hv $$2, @Nullable ia $$3) {
-      if ($$1.a_($$2).a(cwb.G) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof amp)) {
-            return true;
-         } else {
-            auf $$4 = $$1.F_();
-
-            label78:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               hv $$6 = $$2;
-               dip $$7 = cwb.bw.o();
-
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).r($$1, $$6)) {
-                     continue label78;
-                  }
-               }
-
-               ie<ctx> $$9 = $$1.s($$6);
-               if ($$9.a(arq.ac)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = kb.e.b(arr.aq).flatMap($$1x -> $$1x.a($$1.z)).map($$0x -> ((cvz)$$0x.a()).o()).orElse($$7);
-                     if ($$7.b(cvk.c)) {
-                        $$7 = $$7.a(cvk.c, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = kb.e.b(arr.ao).flatMap($$1x -> $$1x.a($$1.z)).map($$0x -> ((cvz)$$0x.a()).o()).orElse($$7);
-                  }
-               }
-
-               if ($$7.a(arr.aq, $$0x -> $$0x.b(cvk.c))) {
-                  for (int $$10 = 0; !$$7.a((ctb)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.a(cvk.c, ia.c.a.a($$4));
-                  }
-               }
-
-               if ($$7.a((ctb)$$1, $$6)) {
-                  dip $$11 = $$1.a_($$6);
-                  if ($$11.a(cwb.G) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(cwb.bw) && $$4.a(10) == 0) {
-                     ((cwc)cwb.bw).a((amp)$$1, $$4, $$6, $$11);
-                  }
-               }
-            }
-
-            $$0.h(1);
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public static void a(csz $$0, hv $$1, int $$2) {
-      if ($$2 == 0) {
-         $$2 = 15;
-      }
-
-      dip $$3 = $$0.a_($$1);
-      if (!$$3.i()) {
-         double $$4 = 0.5;
-         double $$5;
-         if ($$3.a(cwb.G)) {
-            $$2 *= 3;
-            $$5 = 1.0;
-            $$4 = 3.0;
-         } else if ($$3.i($$0, $$1)) {
-            $$1 = $$1.c();
-            $$2 *= 3;
-            $$4 = 3.0;
-            $$5 = 1.0;
-         } else {
-            $$5 = $$3.j($$0, $$1).c(ia.a.b);
-         }
-
-         $$0.a(jv.M, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
-         auf $$8 = $$0.F_();
-
-         for (int $$9 = 0; $$9 < $$2; $$9++) {
-            double $$10 = $$8.k() * 0.02;
-            double $$11 = $$8.k() * 0.02;
-            double $$12 = $$8.k() * 0.02;
-            double $$13 = 0.5 - $$4;
-            double $$14 = (double)$$1.u() + $$13 + $$8.j() * $$4 * 2.0;
-            double $$15 = (double)$$1.v() + $$8.j() * $$5;
-            double $$16 = (double)$$1.w() + $$13 + $$8.j() * $$4 * 2.0;
-            if (!$$0.a_(hv.a($$14, $$15, $$16).d()).i()) {
-               $$0.a(jv.M, $$14, $$15, $$16, $$10, $$11, $$12);
-            }
-         }
-      }
-   }
+   float g();
 }

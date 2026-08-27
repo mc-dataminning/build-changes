@@ -1,155 +1,36 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+public class fvi implements fuz<dhi> {
+   public static final ggj a = new ggj(gee.e, new ahd("entity/enchanting_table_book"));
+   private final fix b;
 
-public class fvi {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final ia[] l = ia.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ac.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
-            }
-         }
-      }
-   });
-   private int o = 4096;
-
-   public void a(hv $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
+   public fvi(fva.a $$0) {
+      this.b = new fix($$0.a(fmo.m));
    }
 
-   private static int b(hv $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
+   public void a(dhi $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + aui.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public fvj a() {
-      fvj $$0 = new fvj();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
-      } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
-         }
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
 
-      return $$0;
-   }
-
-   private Set<ia> a(int $$0) {
-      Set<ia> $$1 = EnumSet.noneOf(ia.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (ia $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
       }
 
-      return $$1;
-   }
-
-   private void a(int $$0, Set<ia> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(ia.e);
-      } else if ($$2 == 15) {
-         $$1.add(ia.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(ia.a);
-      } else if ($$3 == 15) {
-         $$1.add(ia.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(ia.c);
-      } else if ($$4 == 15) {
-         $$1.add(ia.d);
-      }
-   }
-
-   private int a(int $$0, ia $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
-      }
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = aui.i($$1, $$0.c, $$0.b);
+      float $$10 = aui.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = aui.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = aui.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, aui.a($$10, 0.0F, 1.0F), aui.a($$11, 0.0F, 1.0F), $$12);
+      epx $$13 = a.a($$3, fth::c);
+      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

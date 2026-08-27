@@ -1,9 +1,38 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Vector3f;
+import org.lwjgl.openal.AL10;
 
-public class enq extends enp {
-   public enq(int $$0, int $$1, boolean $$2, boolean $$3) {
-      super($$2);
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.a($$0, $$1, $$3);
+public class enq {
+   private float a = 1.0F;
+   private elm b;
+
+   public enq() {
+      this.b = elm.b;
+   }
+
+   public void a(elm $$0) {
+      this.b = $$0;
+      AL10.alListener3f(4100, (float)$$0.c, (float)$$0.d, (float)$$0.e);
+   }
+
+   public elm a() {
+      return this.b;
+   }
+
+   public void a(Vector3f $$0, Vector3f $$1) {
+      AL10.alListenerfv(4111, new float[]{$$0.x(), $$0.y(), $$0.z(), $$1.x(), $$1.y(), $$1.z()});
+   }
+
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
+   }
+
+   public float b() {
+      return this.a;
+   }
+
+   public void c() {
+      this.a(elm.b);
+      this.a(new Vector3f(0.0F, 0.0F, -1.0F), new Vector3f(0.0F, 1.0F, 0.0F));
    }
 }

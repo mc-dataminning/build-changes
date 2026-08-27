@@ -1,28 +1,16 @@
-public class fxc extends fyu<cbl, fis<cbl>> {
-   private static final agt a = new agt("textures/entity/creeper/creeper.png");
+public abstract class fxc<T extends cdc, M extends fmh<T>> extends fyw<T, M> {
+   private static final ahd a = new ahd("textures/entity/zombie/zombie.png");
 
-   public fxc(fxo.a $$0) {
-      super($$0, new fis<>($$0.a(flx.E)), 0.5F);
-      this.a(new gbc(this, $$0.f()));
+   protected fxc(fyf.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new gcg<>(this, $$2, $$3, $$0.g()));
    }
 
-   protected void a(cbl $$0, epd $$1, float $$2) {
-      float $$3 = $$0.E($$2);
-      float $$4 = 1.0F + aty.a($$3 * 100.0F) * $$3 * 0.01F;
-      $$3 = aty.a($$3, 0.0F, 1.0F);
-      $$3 *= $$3;
-      $$3 *= $$3;
-      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
-      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
-      $$1.b($$5, $$6, $$5);
-   }
-
-   protected float a(cbl $$0, float $$1) {
-      float $$2 = $$0.E($$1);
-      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : aty.a($$2, 0.5F, 1.0F);
-   }
-
-   public agt a(cbl $$0) {
+   public ahd a(cdc $$0) {
       return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gl();
    }
 }

@@ -1,19 +1,7 @@
-class bkv extends bkq {
-   protected bkv(bkr $$0, int $$1) {
-      super($$0, $$1);
-   }
+import java.util.UUID;
 
-   @Override
-   public void a(blv $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0.ev() > 1.0F) {
-         $$0.a($$0.dN().o(), 1.0F);
-      }
-   }
+public interface bkv {
+   UUID a();
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 25 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
-   }
+   bnj a(int var1);
 }

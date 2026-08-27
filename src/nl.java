@@ -1,56 +1,21 @@
-import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public class nl {
-   private static final iu a = new iu()
-      .a(kc.ax, pd::a)
-      .a(kc.au, pb::a)
-      .a(kc.av, qf::a)
-      .a(kc.aB, qu::a)
-      .a(kc.aC, pm::a)
-      .a(kc.aE, pl::a)
-      .a(kc.aD, pi::a)
-      .a(kc.aF, ph::a)
-      .a(kc.as, px::a)
-      .a(kc.aK, cum::a)
-      .a(kc.aA, pe::a)
-      .a(kc.aw, dof::a)
-      .a(kc.az, dod::a)
-      .a(kc.aJ, dye::a)
-      .a(kc.ay, dwq::a)
-      .a(kc.at, ux::a)
-      .a(kc.aI, coo::a)
-      .a(kc.aH, col::a)
-      .a(kc.r, bkg::a);
+   public static CompletableFuture<iw.e> a(CompletableFuture<ij.b> $$0, iw $$1) {
+      return $$0.thenApply($$1x -> {
+         iu.b $$2 = iu.a(kd.as);
+         hy.a $$3 = new hy.a();
+         agy.a.forEach($$1xx -> $$1xx.a($$3::a));
+         iw.e $$4 = $$1.a($$2, $$1x, $$3);
+         ij.b $$5 = $$4.a();
+         Optional<ij.c<cuh>> $$6 = $$5.a(ke.at);
+         Optional<ij.c<dyd>> $$7 = $$5.a(ke.aC);
+         if ($$6.isPresent() || $$7.isPresent()) {
+            nn.a($$7.orElseGet(() -> $$1x.b(ke.aC)), $$6.orElseGet(() -> $$1x.b(ke.at)));
+         }
 
-   private static void a(ih.b $$0) {
-      a($$0.b(kc.aB), $$0.b(kc.as));
-   }
-
-   public static void a(ig<dxs> $$0, ih<ctx> $$1) {
-      $$1.b().forEach($$1x -> {
-         agt $$2 = $$1x.g().a();
-         List<ij<dxs>> $$3 = ((ctx)$$1x.a()).d().b();
-         $$3.stream().flatMap(ij::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               ie.c<dxs> $$3xx = $$0.b($$2xx);
-               if (!a($$3xx.a())) {
-                  ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
-               }
-            }).ifRight($$1xxx -> {
-               if (!a($$1xxx)) {
-                  ac.a("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
-               }
-            }));
+         return $$4;
       });
-   }
-
-   private static boolean a(dxs $$0) {
-      return $$0.c().contains(dxg.a());
-   }
-
-   public static ih.b a() {
-      is.b $$0 = is.a(kb.ar);
-      ih.b $$1 = a.a($$0);
-      a($$1);
-      return $$1;
    }
 }

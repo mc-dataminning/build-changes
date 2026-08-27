@@ -1,92 +1,97 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
-public interface bxk {
-   boolean w();
+public class bxk {
+   public static final ahc<bxj> a = a("armorer");
+   public static final ahc<bxj> b = a("butcher");
+   public static final ahc<bxj> c = a("cartographer");
+   public static final ahc<bxj> d = a("cleric");
+   public static final ahc<bxj> e = a("farmer");
+   public static final ahc<bxj> f = a("fisherman");
+   public static final ahc<bxj> g = a("fletcher");
+   public static final ahc<bxj> h = a("leatherworker");
+   public static final ahc<bxj> i = a("librarian");
+   public static final ahc<bxj> j = a("mason");
+   public static final ahc<bxj> k = a("shepherd");
+   public static final ahc<bxj> l = a("toolsmith");
+   public static final ahc<bxj> m = a("weaponsmith");
+   public static final ahc<bxj> n = a("home");
+   public static final ahc<bxj> o = a("meeting");
+   public static final ahc<bxj> p = a("beehive");
+   public static final ahc<bxj> q = a("bee_nest");
+   public static final ahc<bxj> r = a("nether_portal");
+   public static final ahc<bxj> s = a("lodestone");
+   public static final ahc<bxj> t = a("lightning_rod");
+   private static final Set<dja> u = ImmutableList.of(
+         cwl.bn, cwl.bo, cwl.bk, cwl.bl, cwl.bi, cwl.bg, cwl.bm, cwl.bc, cwl.bh, cwl.be, cwl.bb, cwl.ba, new cwj[]{cwl.bf, cwl.bj, cwl.aZ, cwl.bd}
+      )
+      .stream()
+      .flatMap($$0 -> $$0.n().a().stream())
+      .filter($$0 -> $$0.c(cwc.b) == djn.a)
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Set<dja> v = ImmutableList.of(cwl.ft, cwl.fv, cwl.fu, cwl.fw)
+      .stream()
+      .flatMap($$0 -> $$0.n().a().stream())
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Map<dja, ih<bxj>> w = Maps.newHashMap();
 
-   void w(boolean var1);
-
-   void l(cmh var1);
-
-   void c(sj var1);
-
-   cmh b();
-
-   arb A();
-
-   @Deprecated
-   static void a(blx $$0, cmh $$1) {
-      sj $$2 = $$1.w();
-      if ($$0.ae()) {
-         $$1.a($$0.af());
-      }
-
-      if ($$0.fU()) {
-         $$2.a("NoAI", $$0.fU());
-      }
-
-      if ($$0.aU()) {
-         $$2.a("Silent", $$0.aU());
-      }
-
-      if ($$0.aV()) {
-         $$2.a("NoGravity", $$0.aV());
-      }
-
-      if ($$0.cc()) {
-         $$2.a("Glowing", $$0.cc());
-      }
-
-      if ($$0.cr()) {
-         $$2.a("Invulnerable", $$0.cr());
-      }
-
-      $$2.a("Health", $$0.ev());
+   private static Set<dja> a(cwj $$0) {
+      return ImmutableSet.copyOf($$0.n().a());
    }
 
-   @Deprecated
-   static void a(blx $$0, sj $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.t($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.d($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.e($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.i($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.m($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.c($$1.j("Health"));
-      }
+   private static ahc<bxj> a(String $$0) {
+      return ahc.a(ke.U, new ahd($$0));
    }
 
-   static <T extends blv & bxk> Optional<bjl> a(cer $$0, bjk $$1, T $$2) {
-      cmh $$3 = $$0.b($$1);
-      if ($$3.d() == cmk.qw && $$2.bx()) {
-         $$2.a($$2.A(), 1.0F, 1.0F);
-         cmh $$4 = $$2.b();
-         $$2.l($$4);
-         cmh $$5 = cmj.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         csy $$6 = $$2.dM();
-         if (!$$6.B) {
-            am.k.a((amq)$$0, $$4);
+   private static bxj a(it<bxj> $$0, ahc<bxj> $$1, Set<dja> $$2, int $$3, int $$4) {
+      bxj $$5 = new bxj($$2, $$3, $$4);
+      it.a($$0, $$1, $$5);
+      a($$0.f($$1), $$2);
+      return $$5;
+   }
+
+   private static void a(ih<bxj> $$0, Set<dja> $$1) {
+      $$1.forEach($$1x -> {
+         ih<bxj> $$2 = w.put($$1x, $$0);
+         if ($$2 != null) {
+            throw (IllegalStateException)ac.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
          }
+      });
+   }
 
-         $$2.am();
-         return Optional.of(bjl.a($$6.B));
-      } else {
-         return Optional.empty();
-      }
+   public static Optional<ih<bxj>> a(dja $$0) {
+      return Optional.ofNullable(w.get($$0));
+   }
+
+   public static boolean b(dja $$0) {
+      return w.containsKey($$0);
+   }
+
+   public static bxj a(it<bxj> $$0) {
+      a($$0, a, a(cwl.nW), 1, 1);
+      a($$0, b, a(cwl.nV), 1, 1);
+      a($$0, c, a(cwl.nX), 1, 1);
+      a($$0, d, a(cwl.fs), 1, 1);
+      a($$0, e, a(cwl.pc), 1, 1);
+      a($$0, f, a(cwl.nU), 1, 1);
+      a($$0, g, a(cwl.nY), 1, 1);
+      a($$0, h, v, 1, 1);
+      a($$0, i, a(cwl.oa), 1, 1);
+      a($$0, j, a(cwl.oc), 1, 1);
+      a($$0, k, a(cwl.nT), 1, 1);
+      a($$0, l, a(cwl.ob), 1, 1);
+      a($$0, m, a(cwl.nZ), 1, 1);
+      a($$0, n, u, 1, 1);
+      a($$0, o, a(cwl.od), 32, 6);
+      a($$0, p, a(cwl.pf), 0, 1);
+      a($$0, q, a(cwl.pe), 0, 1);
+      a($$0, r, a(cwl.ed), 0, 1);
+      a($$0, s, a(cwl.pq), 0, 1);
+      return a($$0, t, a(cwl.ss), 0, 1);
    }
 }

@@ -1,22 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.LongStream;
 
-public class dpj implements dpf {
-   public static final Codec<dpj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iz.v(16).optionalFieldOf("offset", hv.b).forGetter($$0x -> $$0x.e)).apply($$0, dpj::new)
-   );
-   private final iz e;
+public class dpj {
+   private long b;
+   private long c;
+   public static final Codec<dpj> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dpj($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   public dpj(iz $$0) {
-      this.e = $$0;
+   public dpj(doy.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   public boolean a(ctt $$0, hv $$1) {
-      return !$$0.r($$1.a(this.e));
+   public dpj(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
    }
 
-   @Override
-   public dpg<?> a() {
-      return dpg.h;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

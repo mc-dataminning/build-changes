@@ -1,20 +1,8 @@
-public interface elf {
-   elf a = ($$0, $$1) -> false;
-   elf b = ($$0, $$1) -> !$$0 && !$$1;
-   elf c = ($$0, $$1) -> $$1 && !$$0;
-   elf d = ($$0, $$1) -> !$$0;
-   elf e = ($$0, $$1) -> $$0 && !$$1;
-   elf f = ($$0, $$1) -> !$$1;
-   elf g = ($$0, $$1) -> $$0 != $$1;
-   elf h = ($$0, $$1) -> !$$0 || !$$1;
-   elf i = ($$0, $$1) -> $$0 && $$1;
-   elf j = ($$0, $$1) -> $$0 == $$1;
-   elf k = ($$0, $$1) -> $$1;
-   elf l = ($$0, $$1) -> !$$0 || $$1;
-   elf m = ($$0, $$1) -> $$0;
-   elf n = ($$0, $$1) -> $$0 || !$$1;
-   elf o = ($$0, $$1) -> $$0 || $$1;
-   elf p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface elf {
 }

@@ -1,66 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqk extends drc<dsx> {
-   public dqk(Codec<dsx> $$0) {
-      super($$0);
+public class dqk extends dqh {
+   public static final Codec<dqk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dqh.d.forGetter($$0x -> $$0x),
+               biy.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               biy.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               biy.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dqk::new)
+   );
+   public final biy b;
+   public final biy c;
+   final biy j;
+
+   public dqk(float $$0, dxg $$1, biy $$2, dpd $$3, dqi $$4, il<cwj> $$5, biy $$6, biy $$7, biy $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(dre<dsx> $$0) {
-      ctt $$1 = $$0.b();
-      dsx $$2 = $$0.f();
-      auf $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
-
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
-         return false;
-      } else {
-         hv.a $$8 = $$0.e().j();
-         hv.a $$9 = $$8.j().c($$2.b());
-
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
-
-            $$9.c($$2.b());
-         }
-
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               dsx.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
-               }
-            }
-         }
-
-         return true;
-      }
+   public dqk(float $$0, dxg $$1, biy $$2, dpd $$3, il<cwj> $$4, biy $$5, biy $$6, biy $$7) {
+      this($$0, $$1, $$2, $$3, dqi.a, $$4, $$5, $$6, $$7);
    }
 
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
-
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
-      }
+   public dqk(dqh $$0, biy $$1, biy $$2, biy $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

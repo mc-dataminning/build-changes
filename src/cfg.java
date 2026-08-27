@@ -1,3 +1,8 @@
-public interface cfg {
-   cmh q();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cfg {
 }

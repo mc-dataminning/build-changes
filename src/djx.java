@@ -1,21 +1,23 @@
-public enum djx implements aut {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum djx implements ave {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-   private final String d;
+   private final String f;
 
    private djx(String $$0) {
-      this.d = $$0;
+      this.f = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.f;
    }
 }

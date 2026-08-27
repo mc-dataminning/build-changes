@@ -1,2 +1,8 @@
-public record csd(hv a, cvz b, int c, int d) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface csd {
 }

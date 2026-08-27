@@ -1,14 +1,44 @@
-public class cku extends cka {
-   public cku(cvz $$0, cmc.a $$1) {
-      super($$0, $$1);
+public class cku extends cmm {
+   public cku(cmm.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(coq $$0, dip $$1) {
-      csy $$2 = $$0.q();
-      hv $$3 = $$0.a().c();
-      dip $$4 = $$2.y($$3) ? cwb.G.o() : cwb.a.o();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
+   public cmr a(cmr $$0, cti $$1, bmf $$2) {
+      cmr $$3 = super.a($$0, $$1, $$2);
+      if (!$$1.B) {
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            double $$5 = $$2.dr() + ($$2.eg().j() - 0.5) * 16.0;
+            double $$6 = aui.a($$2.dt() + (double)($$2.eg().a(16) - 8), (double)$$1.J_(), (double)($$1.J_() + ((amz)$$1).k() - 1));
+            double $$7 = $$2.dx() + ($$2.eg().j() - 0.5) * 16.0;
+            if ($$2.bO()) {
+               $$2.ac();
+            }
+
+            elm $$8 = $$2.dk();
+            if ($$2.b($$5, $$6, $$7, true)) {
+               $$1.a(dnk.R, $$8, dnk.a.a($$2));
+               arn $$10;
+               arl $$9;
+               if ($$2 instanceof byc) {
+                  $$9 = arm.iL;
+                  $$10 = arn.g;
+               } else {
+                  $$9 = arm.eJ;
+                  $$10 = arn.h;
+               }
+
+               $$1.a(null, $$2.dr(), $$2.dt(), $$2.dx(), $$9, $$10);
+               $$2.n();
+               break;
+            }
+         }
+
+         if ($$2 instanceof cfb $$13) {
+            $$13.gn().a(this, 20);
+         }
+      }
+
+      return $$3;
    }
 }

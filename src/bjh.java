@@ -1,44 +1,49 @@
-public class bjh {
-   public static void a(csy $$0, hv $$1, bje $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   public static void a(csy $$0, blf $$1, bje $$2) {
-      a($$0, $$1.dr(), $$1.dt(), $$1.dx(), $$2);
-   }
+public class bjh extends bja {
+   public static final Codec<bjh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bif.b(bja.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bjh::new)
+   );
+   private final bif<bja> b;
+   private final int f;
+   private final int g;
 
-   private static void a(csy $$0, double $$1, double $$2, double $$3, bje $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   public bjh(bif<bja> $$0) {
+      this.b = $$0;
+      List<bih.b<bja>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
+
+      for (bih.b<bja> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
       }
+
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public static void a(csy $$0, hv $$1, io<cmh> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   @Override
+   public int a(aup $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
    }
 
-   public static void a(csy $$0, double $$1, double $$2, double $$3, cmh $$4) {
-      double $$5 = (double)blj.ae.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.b()) {
-         cbe $$11 = new cbe($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   @Override
+   public int a() {
+      return this.f;
    }
 
-   public static void a(dip $$0, dip $$1, csy $$2, hv $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bje $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
-         }
-      }
+   @Override
+   public int b() {
+      return this.g;
+   }
+
+   @Override
+   public bjb<?> c() {
+      return bjb.e;
    }
 }

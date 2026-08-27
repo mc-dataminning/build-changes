@@ -1,65 +1,74 @@
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
 public class edp {
-   private final int a;
-   private final LongLinkedOpenHashSet[] b;
-   private int c;
+   private final edq[] a;
+   private final double b;
+   private final double c;
 
-   public edp(int $$0, final int $$1) {
-      this.a = $$0;
-      this.b = new LongLinkedOpenHashSet[$$0];
+   public edp(aup $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
+   }
 
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
-            protected void rehash(int $$0) {
-               if ($$0 > $$1) {
-                  super.rehash($$0);
+   private edp(aup $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            edq $$5 = new edq($$0);
+            int $$6 = $$3;
+            this.a = new edq[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
+
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new edq($$0);
+               } else {
+                  $$0.b(262);
                }
             }
-         };
-      }
 
-      this.c = $$0;
-   }
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               aup $$9 = new dpi(new dok($$8));
 
-   public long a() {
-      LongLinkedOpenHashSet $$0 = this.b[this.c];
-      long $$1 = $$0.removeFirstLong();
-      if ($$0.isEmpty()) {
-         this.a(this.a);
-      }
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new edq($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
 
-      return $$1;
-   }
-
-   public boolean b() {
-      return this.c >= this.a;
-   }
-
-   public void a(long $$0, int $$1, int $$2) {
-      LongLinkedOpenHashSet $$3 = this.b[$$1];
-      $$3.remove($$0);
-      if ($$3.isEmpty() && this.c == $$1) {
-         this.a($$2);
-      }
-   }
-
-   public void a(long $$0, int $$1) {
-      this.b[$$1].add($$0);
-      if (this.c > $$1) {
-         this.c = $$1;
-      }
-   }
-
-   private void a(int $$0) {
-      int $$1 = this.c;
-      this.c = $$0;
-
-      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
-         if (!this.b[$$2].isEmpty()) {
-            this.c = $$2;
-            break;
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
          }
       }
+   }
+
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
+
+      for (edq $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
+         }
+
+         $$4 /= 2.0;
+         $$5 *= 2.0;
+      }
+
+      return $$3;
    }
 }

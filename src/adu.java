@@ -1,56 +1,32 @@
-public class adu implements wu<acw> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+public class adu implements xd<adg> {
+   private final int a;
+   private final int b;
 
-   public adu(blf $$0) {
-      this.a = $$0.dr();
-      this.b = $$0.dt();
-      this.c = $$0.dx();
-      this.d = $$0.dC();
-      this.e = $$0.dE();
+   public adu(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public adu(ue $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-   }
-
-   @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-   }
-
-   public void a(acw $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public adu(ug $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.readByte();
+   }
+
+   @Override
+   public void a(ug $$0) {
+      $$0.k(this.a);
+      $$0.k(this.b);
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public double d() {
+   public int d() {
       return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

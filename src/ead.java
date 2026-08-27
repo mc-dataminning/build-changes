@@ -1,24 +1,29 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record ead(bhv<List<dzz>> c) implements dzz {
-   static Codec<ead> a = RecordCodecBuilder.create($$0 -> $$0.group(bhv.b(Codec.list(dzz.b)).fieldOf("groups").forGetter(ead::c)).apply($$0, ead::new));
+public class ead extends eaf {
+   public static final Codec<ead> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, ead::new));
 
-   @Override
-   public void a(auf $$0, BiConsumer<ags<dzx>, ags<dzx>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   protected ead(Either<ahd, ecz> $$0, ih<ecx> $$1, eai.a $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<ags<dzx>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(dzz::a);
+   protected ecv a(dcv $$0, dyr $$1, boolean $$2) {
+      ecv $$3 = super.a($$0, $$1, $$2);
+      $$3.b(ecb.b);
+      $$3.a(ecb.d);
+      return $$3;
    }
 
    @Override
-   public Codec<ead> b() {
-      return a;
+   public eah<?> a() {
+      return eah.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

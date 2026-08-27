@@ -1,26 +1,56 @@
-public class fre extends fon {
-   private static final int a = 12235202;
+public class fre extends fqv {
+   private final fri b;
+   protected boolean a;
 
-   protected fre(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fqr $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)ati.b.b(12235202) / 255.0F;
-      this.w = (float)ati.b.c(12235202) / 255.0F;
-      this.x = (float)ati.b.d(12235202) / 255.0F;
+   fre(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fri $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+   @Override
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
 
-      public a(fqr $$0) {
+   @Override
+   public fqr b() {
+      return fqr.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements fqq<ka> {
+      private final fri a;
+
+      public a(fri $$0) {
          this.a = $$0;
       }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         auf $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new fre($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fre $$8 = new fre($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
+   }
+
+   public static class b implements fqq<ka> {
+      private final fri a;
+
+      public b(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fre $$8 = new fre($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

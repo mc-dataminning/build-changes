@@ -1,42 +1,35 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public abstract class ger implements apm, AutoCloseable {
-   private final gdn a;
-   private final agt b;
-   private final Set<aos<?>> c;
+public class ger implements gej {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<ger> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ahd.a.fieldOf("resource").forGetter($$0x -> $$0x.d), ahd.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, ger::new)
+   );
+   private final ahd d;
+   private final Optional<ahd> e;
 
-   public ger(gdp $$0, agt $$1, agt $$2) {
-      this($$0, $$1, $$2, gdj.a);
-   }
-
-   public ger(gdp $$0, agt $$1, agt $$2, Set<aos<?>> $$3) {
-      this.b = $$2;
-      this.a = new gdn($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
-   }
-
-   protected gdo a(agt $$0) {
-      return this.a.a($$0);
+   public ger(ahd $$0, Optional<ahd> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public final CompletableFuture<Void> a(apm.a $$0, aps $$1, bgc $$2, bgc $$3, Executor $$4, Executor $$5) {
-      return gdj.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gdj.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(gdj.a $$0, bgc $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
+   public void a(aqc $$0, gej.a $$1) {
+      ahd $$2 = a.a(this.d);
+      Optional<aqa> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
+      }
    }
 
    @Override
-   public void close() {
-      this.a.f();
+   public gel a() {
+      return gem.a;
    }
 }

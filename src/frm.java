@@ -1,38 +1,67 @@
-import com.google.common.collect.ForwardingList;
-import java.util.List;
+public class frm extends frn {
+   private final hx a;
+   private final float b;
+   private final float F;
 
-public class frm extends ForwardingList<cmh> {
-   private final io<cmh> a = io.a(ceq.g(), cmh.f);
-
-   protected List<cmh> delegate() {
-      return this.a;
+   public frm(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dja $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, hx.a($$1, $$2, $$3));
    }
 
-   public sp a() {
-      sp $$0 = new sp();
-
-      for (cmh $$1 : this.delegate()) {
-         $$0.add($$1.b(new sj()));
+   public frm(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dja $$7, hx $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(eva.N().am().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(cwl.i)) {
+         int $$9 = eva.N().at().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
       }
 
-      return $$0;
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
-   public void a(sp $$0) {
-      List<cmh> $$1 = this.delegate();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.set($$2, cmh.a($$0.a($$2)));
-      }
+   @Override
+   public fqr b() {
+      return fqr.a;
    }
 
-   public boolean isEmpty() {
-      for (cmh $$0 : this.delegate()) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
+   }
 
-      return true;
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? fsx.a(this.c, this.a) : $$1;
+   }
+
+   public static class a implements fqq<jp> {
+      public fqn a(jp $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dja $$8 = $$0.c();
+         return !$$8.i() && !$$8.a(cwl.bQ) && $$8.z() ? new frm($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+      }
    }
 }

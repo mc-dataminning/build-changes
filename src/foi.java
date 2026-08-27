@@ -1,48 +1,65 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-@FunctionalInterface
-public interface foi {
-   Logger a = LogUtils.getLogger();
-   foi b = $$0 -> Optional.empty();
+public class foi extends foj {
+   private final String f;
 
-   Optional<fof> lookupRedirect(fof var1);
+   foi(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
+   }
 
-   static foi createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   public String a() {
+      return this.f;
+   }
+
+   public foi c() {
+      foi $$0 = new foi(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
+   }
+
+   @Override
+   public fct a(fct $$0, fon $$1) {
+      return new fgv($$0, $$1, this);
+   }
+
+   public static class a extends foj.a<foi> {
+      public a(foi $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new fof($$4x[3], fof.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new foi(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-         return Optional.empty();
-      };
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public foj.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? foj.b.d : null;
+      }
+
+      @Override
+      public Either<foj.c, foj.b> a(fon $$0) {
+         foj.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new foj.c(this.a.a, fom.c, $$3));
+         }
+      }
    }
 }

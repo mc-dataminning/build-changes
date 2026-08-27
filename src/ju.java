@@ -1,21 +1,12 @@
-import com.mojang.serialization.Codec;
+public class ju {
+   private final int b;
+   public static final ju a = new ju(1000);
 
-public abstract class ju<T extends jt> {
-   private final boolean a;
-   private final jt.a<T> b;
-
-   protected ju(boolean $$0, jt.a<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ju(int $$0) {
+      this.b = $$0;
    }
 
-   public boolean c() {
-      return this.a;
-   }
-
-   public jt.a<T> d() {
+   public int a() {
       return this.b;
    }
-
-   public abstract Codec<T> e();
 }

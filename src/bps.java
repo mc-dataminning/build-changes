@@ -1,42 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class bps {
-   public static box<cee> a(bux<id> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return bqz.a(
-         (Function<bqz.b<cee>, ? extends App<bqz.c<cee>, brc<cee>>>)($$5 -> $$5.group($$5.a(bux.E), $$5.c(bux.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     id $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ad() && (!$$13.isPresent() || $$9.W() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dm()) > $$3) {
-                           elb $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-                           while ($$14 == null || hv.a($$14).k($$10.dm()) > $$3) {
-                              $$14 = bwn.a($$10, 15, 7, elb.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
-
-                           $$7.a(new bva($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dm()) > $$2) {
-                           $$7.a(new bva($$12.b(), $$1, $$2));
-                        }
-                     } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
+   public static bnx<bmf> a() {
+      return brj.a((Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$0 -> $$0.group($$0.b(bvh.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.z.i() <= 0.95F) {
+                  return false;
+               } else {
+                  hx $$5 = $$0.<ig>b($$1).b();
+                  if ($$5.a($$3.dm(), 3.0)) {
+                     dja $$6 = $$2.a_($$5);
+                     if ($$6.a(cwl.od)) {
+                        cwf $$7 = (cwf)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
+                  }
 
-                     return true;
-                  }))
-      );
+                  return true;
+               }
+            })));
    }
 }

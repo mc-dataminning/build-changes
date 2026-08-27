@@ -1,59 +1,87 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gik implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bfo d;
-   @Nullable
-   private CompletableFuture<Optional<gig>> e;
+public class gik {
+   private final Set<gik.a> a = Sets.newIdentityHashSet();
+   final enp b;
+   final Executor c;
 
-   private gik(bfo $$0) {
-      this.d = $$0;
+   public gik(enp $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static CompletableFuture<Optional<gik>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bfo $$1 = bfo.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new gik($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
+   public CompletableFuture<gik.a> a(enp.c $$0) {
+      CompletableFuture<gik.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         eno $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gik.a $$3 = new gik.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
          }
-      }, ac.f());
+      });
+      return $$1;
    }
 
-   public CompletableFuture<Optional<gih>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bfo.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new gig($$1, ac.f()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
+   public void a(Consumer<Stream<eno>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gik.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gik.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
             }
-         }, ac.f());
+         }
+      });
+   }
+
+   public void b() {
+      this.a.forEach(gik.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      eno b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
       }
 
-      return this.e.thenApply($$0 -> $$0.map(gig::a));
-   }
+      public a(eno $$1) {
+         this.b = $$1;
+      }
 
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(gig::close));
+      public void a(Consumer<eno> $$0) {
+         gik.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gik.this.b.a(this.b);
+         this.b = null;
       }
    }
 }

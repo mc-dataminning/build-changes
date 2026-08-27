@@ -1,26 +1,39 @@
-public class fzx extends fyu<ccm, flb<ccm>> {
-   private static final agt a = new agt("textures/entity/strider/strider.png");
-   private static final agt i = new agt("textures/entity/strider/strider_cold.png");
+public class fzx extends fzl<byl, fjp<byl>> {
+   private static final ahd a = new ahd("textures/entity/fish/pufferfish.png");
+   private int i = 3;
+   private final fjp<byl> j;
+   private final fjp<byl> k;
+   private final fjp<byl> l = this.a();
 
-   public fzx(fxo.a $$0) {
-      super($$0, new flb<>($$0.a(flx.bA)), 0.5F);
-      this.a(new gca<>(this, new flb<>($$0.a(flx.bB)), new agt("textures/entity/strider/strider_saddle.png")));
+   public fzx(fyf.a $$0) {
+      super($$0, new fkw<>($$0.a(fmo.aY)), 0.2F);
+      this.k = new fkx<>($$0.a(fmo.aZ));
+      this.j = new fky<>($$0.a(fmo.ba));
    }
 
-   public agt a(ccm $$0) {
-      return $$0.u() ? i : a;
+   public ahd a(byl $$0) {
+      return a;
    }
 
-   protected void a(ccm $$0, epd $$1, float $$2) {
-      if ($$0.o_()) {
-         $$1.b(0.5F, 0.5F, 0.5F);
-         this.d = 0.25F;
-      } else {
-         this.d = 0.5F;
+   public void a(byl $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
+      int $$6 = $$0.gg();
+      if ($$6 != this.i) {
+         if ($$6 == 0) {
+            this.f = this.j;
+         } else if ($$6 == 1) {
+            this.f = this.k;
+         } else {
+            this.f = this.l;
+         }
       }
+
+      this.i = $$6;
+      this.d = 0.1F + 0.1F * (float)$$6;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean b(ccm $$0) {
-      return super.a($$0) || $$0.u();
+   protected void a(byl $$0, ept $$1, float $$2, float $$3, float $$4) {
+      $$1.a(0.0F, aui.b($$2 * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

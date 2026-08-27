@@ -1,4 +1,3 @@
-public enum cth {
-   a,
-   b;
+public interface cth {
+   cmm k();
 }

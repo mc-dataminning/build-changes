@@ -1,92 +1,40 @@
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class esa {
+   private final eto a;
+   private boolean b;
+   private String c;
 
-public class esa extends gjl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gjm b = new gjm(Duration.ofSeconds(5L));
-   private final List<etk> c;
-   private final fcc v;
-   private final ezv w = ezv.d();
-   private volatile vb x;
-   @Nullable
-   private eww y;
+   public esa(eto $$0) {
+      this.a = $$0;
+      eto.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
 
-   public esa(fcc $$0, etk... $$1) {
-      super(euc.a);
-      this.v = $$0;
-      this.c = List.of($$1);
-      if (this.c.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
+   public boolean a() {
+      return this.b;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public void a(eqy $$0) {
+      eto.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   private eto.a b(eqy $$0) {
+      eto.a $$1 = new eto.a();
+      $$1.a = $$0.a;
+      eto.a $$2 = this.a.a();
+      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
+      if ($$3) {
+         return $$2;
       } else {
-         this.x = this.c.get(0).a();
-         Runnable $$2 = () -> {
-            for (etk $$1x : $$1) {
-               this.a($$1x.a());
-               if ($$1x.d()) {
-                  break;
-               }
-
-               $$1x.run();
-            }
-         };
-         Thread $$3 = new Thread($$2, "Realms-long-running-task");
-         $$3.setUncaughtExceptionHandler(new ere(a));
-         $$3.start();
+         $$1.b = true;
+         this.a.a($$1);
+         return $$1;
       }
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      if (this.y != null) {
-         b.a(this.f.aU(), this.y.l());
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.e();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void aP_() {
-      this.w.c().b();
-      this.y = new eww(this.i, this.x);
-      this.w.a(this.y, $$0 -> $$0.e(30));
-      this.w.a(ewh.a(va.e, $$0 -> this.e()).a());
-      this.w.a($$1 -> {
-         ewf var10000 = this.d($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.w.a();
-      ezp.a(this.w, this.s());
-   }
-
-   protected void e() {
-      for (etk $$0 : this.c) {
-         $$0.b();
-      }
-
-      this.f.a(this.v);
-   }
-
-   public void a(vb $$0) {
-      if (this.y != null) {
-         this.y.b($$0);
-      }
-
-      this.x = $$0;
    }
 }

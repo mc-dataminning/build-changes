@@ -1,112 +1,100 @@
-import java.util.Calendar;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fuo<T extends dgd & dhg> implements fui<T> {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final fly d;
-   private final fly e;
-   private final fly f;
-   private final fly g;
-   private final fly h;
-   private final fly i;
-   private final fly j;
-   private final fly k;
-   private final fly l;
-   private boolean m;
+public class fuo implements ggr {
+   private final djb<cwj, dja> a;
+   private final List<fuq> b;
 
-   public fuo(fuj.a $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
-         this.m = true;
+   public fuo(djb<cwj, dja> $$0, List<fuq> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public List<fuq> a() {
+      return this.b;
+   }
+
+   public Set<fuj> b() {
+      Set<fuj> $$0 = Sets.newHashSet();
+
+      for (fuq $$1 : this.b) {
+         $$0.add($$1.a());
       }
 
-      fly $$2 = $$0.a(flx.u);
-      this.e = $$2.b("bottom");
-      this.d = $$2.b("lid");
-      this.f = $$2.b("lock");
-      fly $$3 = $$0.a(flx.L);
-      this.h = $$3.b("bottom");
-      this.g = $$3.b("lid");
-      this.i = $$3.b("lock");
-      fly $$4 = $$0.a(flx.M);
-      this.k = $$4.b("bottom");
-      this.j = $$4.b("lid");
-      this.l = $$4.b("lock");
-   }
-
-   public static fme b() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      $$1.a("bottom", fmd.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), fma.a);
-      $$1.a("lid", fmd.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), fma.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fmd.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), fma.a(0.0F, 9.0F, 1.0F));
-      return fme.a($$0, 64, 64);
-   }
-
-   public static fme c() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      $$1.a("bottom", fmd.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fma.a);
-      $$1.a("lid", fmd.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fma.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fmd.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fma.a(0.0F, 9.0F, 1.0F));
-      return fme.a($$0, 64, 64);
-   }
-
-   public static fme d() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      $$1.a("bottom", fmd.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fma.a);
-      $$1.a("lid", fmd.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fma.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fmd.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fma.a(0.0F, 9.0F, 1.0F));
-      return fme.a($$0, 64, 64);
+      return $$0;
    }
 
    @Override
-   public void a(T $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
-      csy $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      dip $$8 = $$7 ? $$0.r() : cwb.cv.o().a(cxc.c, ia.d);
-      djh $$9 = $$8.b(cxc.d) ? $$8.c(cxc.d) : djh.a;
-      if ($$8.b() instanceof cut<?> $$11) {
-         boolean $$12 = $$9 != djh.a;
-         $$2.a();
-         float $$13 = $$8.c(cxc.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         cyg.c<? extends dgk> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.aB_(), true);
-         } else {
-            $$14 = cyg.b::b;
-         }
-
-         float $$16 = $$14.apply(cxc.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new ful<>()).applyAsInt($$4);
-         gfs $$18 = fsx.a($$0, $$9, this.m);
-         eph $$19 = $$18.a($$3, fsq::d);
-         if ($$12) {
-            if ($$9 == djh.b) {
-               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
-            } else {
-               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
-            }
-         } else {
-            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
-         }
-
-         $$2.b();
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fuo $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
       }
    }
 
-   private void a(epd $$0, eph $$1, fly $$2, fly $$3, fly $$4, float $$5, int $$6, int $$7) {
-      $$2.e = -($$5 * (float) (Math.PI / 2));
-      $$3.e = $$2.e;
-      $$2.a($$0, $$1, $$6, $$7);
-      $$3.a($$0, $$1, $$6, $$7);
-      $$4.a($$0, $$1, $$6, $$7);
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<ahd> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<ahd, ggr> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public ggg a(ggk $$0, Function<ggj, gef> $$1, ggo $$2, ahd $$3) {
+      ggp.a $$4 = new ggp.a();
+
+      for (fuq $$5 : this.a()) {
+         ggg $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
+         }
+      }
+
+      return $$4.a();
+   }
+
+   public static class a implements JsonDeserializer<fuo> {
+      private final fuc.a a;
+
+      public a(fuc.a $$0) {
+         this.a = $$0;
+      }
+
+      public fuo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new fuo(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<fuq> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<fuq> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((fuq)$$0.deserialize($$3, fuq.class));
+         }
+
+         return $$2;
+      }
    }
 }

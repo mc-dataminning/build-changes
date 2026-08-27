@@ -1,27 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public class bog implements bnx<bmf> {
+   private final int a;
+   private final int b;
+   private bnw.a c = bnw.a.a;
+   private long d;
 
-public class bog {
-   public static bnn<blv> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+   public bog(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static <E extends blv> bnn<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return bqz.a((Function<bqz.b<E>, ? extends App<bqz.c<E>, brc<E>>>)($$4 -> {
-         bqz<E, ? extends bra<? extends K1, bva>> $$5 = $$2 ? $$4.a(bux.m) : $$4.c(bux.m);
-         return $$4.group($$4.a(bux.n), $$5, $$4.b(bux.K), $$4.a(bux.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               cbe $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dM().D_().a($$11.dm())) {
-                  bva $$12 = new bva(new bnx($$11, false), $$1, 0);
-                  $$4x.a(new bnx($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   @Override
+   public bnw.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(amz $$0, bmf $$1, long $$2) {
+      this.c = bnw.a.b;
+      int $$3 = this.a + $$0.F_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
+
+   @Override
+   public final void f(amz $$0, bmf $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(amz $$0, bmf $$1, long $$2) {
+      this.c = bnw.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

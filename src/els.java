@@ -1,24 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-public class els extends elu {
-   private final elu b;
-   private final ia.a c;
-   private static final DoubleList d = new elh(1);
+public class els extends AbstractDoubleList {
+   private final int a;
 
-   public els(elu $$0, ia.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
+   els(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
-   private static elk a(elk $$0, ia.a $$1, int $$2) {
-      return new elt(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
    }
 
-   @Override
-   protected DoubleList a(ia.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public int size() {
+      return this.a + 1;
    }
 }

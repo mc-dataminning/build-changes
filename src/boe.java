@@ -1,41 +1,83 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class boe extends bnm<cee> {
-   private static final int d = 1200;
-   final float c;
+public class boe<E extends bmh & cbw, T extends bmf> extends bnw<E> {
+   private static final int c = 1200;
+   private int d;
+   private boe.a e = boe.a.a;
 
-   public boe(float $$0) {
-      super(ImmutableMap.of(bux.d, buy.a), 1200);
-      this.c = $$0;
+   public boe() {
+      super(ImmutableMap.of(bvh.n, bvi.c, bvh.o, bvi.a), 1200);
    }
 
-   protected boolean a(amp $$0, cee $$1) {
-      return $$1.dO().g().map($$0x -> $$0x == cgd.b || $$0x == cgd.c || $$0x == cgd.d).orElse(true);
+   protected boolean a(amz $$0, E $$1) {
+      bmf $$2 = b($$1);
+      return $$1.b(cmu.vM) && bny.b($$1, $$2) && bny.a($$1, $$2, 0);
    }
 
-   protected boolean a(amp $$0, cee $$1, long $$2) {
-      return $$1.dO().a(bux.d);
+   protected boolean a(amz $$0, E $$1, long $$2) {
+      return $$1.dO().a(bvh.o) && this.a($$0, $$1);
    }
 
-   protected void b(amp $$0, cee $$1, long $$2) {
-      bno.a($$1, $$1.dO().c(bux.d).get().b(), this.c, 1);
+   protected void b(amz $$0, E $$1, long $$2) {
+      bmf $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
    }
 
-   protected void c(amp $$0, cee $$1, long $$2) {
-      Optional<id> $$3 = $$1.dO().c(bux.d);
-      $$3.ifPresent($$1x -> {
-         hv $$2x = $$1x.b();
-         amp $$3x = $$0.n().a($$1x.a());
-         if ($$3x != null) {
-            bww $$4 = $$3x.x();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
+   protected void c(amz $$0, E $$1, long $$2) {
+      if ($$1.fn()) {
+         $$1.ft();
+      }
 
-            acv.c($$0, $$2x);
+      if ($$1.b(cmu.vM)) {
+         $$1.b(false);
+         ckz.a($$1.fp(), false);
+      }
+   }
+
+   private void a(E $$0, bmf $$1) {
+      if (this.e == boe.a.a) {
+         $$0.c(cfu.a($$0, cmu.vM));
+         this.e = boe.a.b;
+         $$0.b(true);
+      } else if (this.e == boe.a.b) {
+         if (!$$0.fn()) {
+            this.e = boe.a.a;
          }
-      });
-      $$1.dO().b(bux.d);
+
+         int $$2 = $$0.fr();
+         cmr $$3 = $$0.fp();
+         if ($$2 >= ckz.k($$3)) {
+            $$0.fs();
+            this.e = boe.a.c;
+            this.d = 20 + $$0.eg().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == boe.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = boe.a.d;
+         }
+      } else if (this.e == boe.a.d) {
+         $$0.a($$1, 1.0F);
+         cmr $$4 = $$0.b(cfu.a($$0, cmu.vM));
+         ckz.a($$4, false);
+         this.e = boe.a.a;
+      }
+   }
+
+   private void b(bmh $$0, bmf $$1) {
+      $$0.dO().a(bvh.n, new boh($$1, true));
+   }
+
+   private static bmf b(bmf $$0) {
+      return $$0.dO().c(bvh.o).get();
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,83 +1,85 @@
-public class fox extends fqw {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final fqr M;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   fox(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqr $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = aty.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = aty.a(this.r, 0.0F, 0.0F);
-      this.x = aty.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+public final class fox {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fox c = new fox(HostAndPort.fromParts("server.invalid", 25565));
+
+   public fox(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   private fox(HostAndPort $$0) {
+      this.b = $$0;
+   }
+
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
+   }
+
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static fox a(String $$0) {
+      if ($$0 == null) {
+         return c;
       } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fox($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
          }
+      }
+   }
 
-         if (this.L) {
-            this.k += 0.002;
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
          }
+      } catch (IllegalArgumentException var3) {
+      }
 
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
+      return false;
+   }
 
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
-         }
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
       }
    }
 
    @Override
-   public fqa b() {
-      return fqa.b;
+   public String toString() {
+      return this.b.toString();
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * aty.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fox ? this.b.equals(((fox)$$0).b) : false;
+      }
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
-
-      public a(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fox($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

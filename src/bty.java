@@ -1,48 +1,87 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bty extends bsr {
-   private final cbl a;
-   @Nullable
-   private blv b;
+public class bty extends btb {
+   public static final int a = 120;
+   protected final bmo b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public bty(cbl $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bsr.a.a));
+   public bty(bmo $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public bty(bmo $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public bty(bmo $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(btb.a.a));
    }
 
    @Override
    public boolean a() {
-      blv $$0 = this.a.q();
-      return this.a.w() > 0 || $$0 != null && this.a.f((blf)$$0) < 9.0;
+      if (this.b.cO()) {
+         return false;
+      } else {
+         if (!this.h) {
+            if (this.i && this.b.el() >= 100) {
+               return false;
+            }
+
+            if (this.b.eg().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         elm $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            this.h = false;
+            return true;
+         }
+      }
+   }
+
+   @Nullable
+   protected elm h() {
+      return bwx.a(this.b, 10, 7);
+   }
+
+   @Override
+   public boolean b() {
+      return !this.b.N().l() && !this.b.cO();
    }
 
    @Override
    public void c() {
-      this.a.N().n();
-      this.b = this.a.q();
+      this.b.N().a(this.c, this.d, this.e, this.f);
    }
 
    @Override
    public void d() {
-      this.b = null;
+      this.b.N().n();
+      super.d();
    }
 
-   @Override
-   public boolean T_() {
-      return true;
+   public void i() {
+      this.h = true;
    }
 
-   @Override
-   public void e() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.f((blf)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.O().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
-      }
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

@@ -1,23 +1,27 @@
-public record zv(int a, float b) implements wu<yo> {
-   public zv(blv $$0) {
-      this($$0.aj(), $$0.eE());
-   }
+import java.util.List;
 
-   public zv(ue $$0) {
-      this($$0.n(), $$0.readFloat());
+public record zv(zv.a a, List<String> b) implements xd<yx> {
+   public zv(ug $$0) {
+      this($$0.b(zv.a.class), $$0.a(ug::s));
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public void a(ug $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ug::a);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public float d() {
+   public List<String> d() {
       return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

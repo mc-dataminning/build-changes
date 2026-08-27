@@ -1,37 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class drv extends drc<dtm> {
-   public drv(Codec<dtm> $$0) {
+public class drv extends dqq {
+   public drv(Codec<dtt> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<dtm> $$0) {
-      ctt $$1 = $$0.b();
-      hv $$2 = $$0.e();
-      dip $$3 = $$1.a_($$2.d());
-      dtm $$4 = $$0.f();
-      auf $$5 = $$0.d();
-      if (!$$3.a(arr.aK)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.J_() + 1 && $$6 + 1 < $$1.ak()) {
-            int $$7 = 0;
+   protected void a(ctj $$0, aup $$1, hx $$2, int $$3, hx.a $$4, dtt $$5) {
+      int $$6 = $$5.d;
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               hv $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dip $$10 = $$4.b.a($$5, $$9);
-               if ($$1.t($$9) && $$9.v() > $$1.J_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).i($$0, $$4)) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dja $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(daf.e) && $$19.b(daf.c) && $$19.b(daf.b) && $$19.b(daf.d)) {
+                     $$19 = $$19.a(daf.e, Boolean.valueOf($$15))
+                        .a(daf.c, Boolean.valueOf($$16))
+                        .a(daf.b, Boolean.valueOf($$17))
+                        .a(daf.d, Boolean.valueOf($$18));
+                  }
+
+                  this.a($$0, $$4, $$19);
                }
             }
-
-            return $$7 > 0;
-         } else {
-            return false;
          }
       }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

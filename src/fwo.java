@@ -1,60 +1,64 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public abstract class fwo<T extends cex> extends fxn<T> {
-   public fwo(fxo.a $$0) {
-      super($$0);
+public class fwo implements fwk.a {
+   private final eva a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
+
+   public fwo(eva $$0) {
+      this.a = $$0;
    }
 
-   public void a(T $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(aty.i($$2, $$0.N, $$0.dC()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(aty.i($$2, $$0.O, $$0.dE())));
-      int $$6 = 0;
-      float $$7 = 0.0F;
-      float $$8 = 0.5F;
-      float $$9 = 0.0F;
-      float $$10 = 0.15625F;
-      float $$11 = 0.0F;
-      float $$12 = 0.15625F;
-      float $$13 = 0.15625F;
-      float $$14 = 0.3125F;
-      float $$15 = 0.05625F;
-      float $$16 = (float)$$0.e - $$2;
-      if ($$16 > 0.0F) {
-         float $$17 = -aty.a($$16 * 3.0F) * $$16;
-         $$3.a(a.f.rotationDegrees($$17));
+   @Override
+   public void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4) {
+      ctj $$5 = this.a.r;
+      epx $$6 = $$1.getBuffer(fth.y());
+      hx $$7 = hx.a($$2, 0.0, $$4);
+
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dkw $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+
+            for (Entry<doj.a, doj> $$11 : $$10.e()) {
+               doj.a $$12 = $$11.getKey();
+               csp $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = iz.a($$13.e, $$15);
+                     int $$18 = iz.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     fsx.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
+         }
       }
-
-      $$3.a(a.b.rotationDegrees(45.0F));
-      $$3.b(0.05625F, 0.05625F, 0.05625F);
-      $$3.a(-4.0F, 0.0F, 0.0F);
-      eph $$18 = $$4.getBuffer(fsq.d(this.a($$0)));
-      epd.a $$19 = $$3.c();
-      Matrix4f $$20 = $$19.a();
-      Matrix3f $$21 = $$19.b();
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
-
-      for (int $$22 = 0; $$22 < 4; $$22++) {
-         $$3.a(a.b.rotationDegrees(90.0F));
-         this.a($$20, $$21, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public void a(Matrix4f $$0, Matrix3f $$1, eph $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
-      $$2.a($$0, (float)$$3, (float)$$4, (float)$$5).a(255, 255, 255, 255).a($$6, $$7).c(gdf.d).b($$11).a($$1, (float)$$8, (float)$$10, (float)$$9).e();
+   private Vector3f a(doj.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

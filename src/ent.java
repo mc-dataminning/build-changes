@@ -1,40 +1,61 @@
-import com.mojang.blaze3d.platform.GLX;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
-import org.lwjgl.system.Pointer;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
 
 public class ent {
    @Nullable
-   private static final MethodHandle a = GLX.make(() -> {
-      try {
-         Lookup $$0 = MethodHandles.lookup();
-         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
-         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
-         $$2.setAccessible(true);
-         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
-         $$3.setAccessible(true);
-         Object $$4 = $$3.get(null);
-         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
-      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
-         throw new RuntimeException(var5);
-      }
-   });
+   private ByteBuffer a;
+   private final AudioFormat b;
+   private boolean c;
+   private int d;
 
-   public static void a(long $$0) {
-      if (a != null) {
-         try {
-            a.invoke((long)$$0);
-         } catch (Throwable var3) {
-            throw new RuntimeException(var3);
-         }
-      }
+   public ent(ByteBuffer $$0, AudioFormat $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static void a(Pointer $$0) {
-      a($$0.address());
+   OptionalInt a() {
+      if (!this.c) {
+         if (this.a == null) {
+            return OptionalInt.empty();
+         }
+
+         int $$0 = ens.a(this.b);
+         int[] $$1 = new int[1];
+         AL10.alGenBuffers($$1);
+         if (ens.a("Creating buffer")) {
+            return OptionalInt.empty();
+         }
+
+         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
+         if (ens.a("Assigning buffer data")) {
+            return OptionalInt.empty();
+         }
+
+         this.d = $$1[0];
+         this.c = true;
+         this.a = null;
+      }
+
+      return OptionalInt.of(this.d);
+   }
+
+   public void b() {
+      if (this.c) {
+         AL10.alDeleteBuffers(new int[]{this.d});
+         if (ens.a("Deleting stream buffers")) {
+            return;
+         }
+      }
+
+      this.c = false;
+   }
+
+   public OptionalInt c() {
+      OptionalInt $$0 = this.a();
+      this.c = false;
+      return $$0;
    }
 }

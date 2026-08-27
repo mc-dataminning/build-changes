@@ -1,55 +1,45 @@
-public class cgq extends cgk {
-   public cgq(blj<? extends cgq> $$0, csy $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class cgq {
+   private final cgp a;
+   private final List<cgq.a> b = Lists.newArrayList();
+
+   public cgq(cgp $$0) {
+      this.a = $$0;
    }
 
-   public cgq(csy $$0, double $$1, double $$2, double $$3) {
-      super(blj.q, $$1, $$2, $$3, $$0);
+   public cgq a(int $$0, cgn $$1) {
+      this.b.add(new cgq.a($$0, $$1));
+      return this;
    }
 
-   @Override
-   protected cmc ah_() {
-      return cmk.nM;
+   public cgp a() {
+      this.b.stream().map(cgq.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         cgn $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
    }
 
-   @Override
-   public int b() {
-      return 27;
-   }
+   static class a {
+      private final int a;
+      private final cgn b;
 
-   @Override
-   public cgj.a w() {
-      return cgj.a.b;
-   }
-
-   @Override
-   public dip y() {
-      return cwb.cv.o().a(cxc.c, ia.c);
-   }
-
-   @Override
-   public int A() {
-      return 8;
-   }
-
-   @Override
-   public chk a(int $$0, ceq $$1) {
-      return chr.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c(cer $$0) {
-      this.dM().a(dmz.j, this.dk(), dmz.a.a($$0));
-   }
-
-   @Override
-   public bjl a(cer $$0, bjk $$1) {
-      bjl $$2 = this.c_($$0);
-      if ($$2.a()) {
-         this.a(dmz.k, $$0);
-         cdi.a($$0, true);
+      public a(int $$0, cgn $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$2;
+      public int a() {
+         return this.a;
+      }
+
+      public cgn b() {
+         return this.b;
+      }
    }
 }

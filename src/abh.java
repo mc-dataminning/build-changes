@@ -1,24 +1,22 @@
-public class abh implements wu<yo> {
-   private final int a;
+import javax.annotation.Nullable;
 
-   public abh(dkg $$0) {
-      this.a = $$0.q();
-   }
-
-   public abh(ue $$0) {
-      this.a = $$0.n();
+public record abh(String a, @Nullable String b) implements xd<yx> {
+   public abh(ug $$0) {
+      this($$0.s(), $$0.c(ug::s));
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.c(this.a);
+   public void a(ug $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ug::a);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   @Nullable
+   public String d() {
+      return this.b;
    }
 }

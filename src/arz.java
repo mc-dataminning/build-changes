@@ -1,108 +1,16 @@
-public final class arz {
-   public static final asg<cmc> a = a("wool");
-   public static final asg<cmc> b = a("planks");
-   public static final asg<cmc> c = a("stone_bricks");
-   public static final asg<cmc> d = a("wooden_buttons");
-   public static final asg<cmc> e = a("stone_buttons");
-   public static final asg<cmc> f = a("buttons");
-   public static final asg<cmc> g = a("wool_carpets");
-   public static final asg<cmc> h = a("wooden_doors");
-   public static final asg<cmc> i = a("wooden_stairs");
-   public static final asg<cmc> j = a("wooden_slabs");
-   public static final asg<cmc> k = a("wooden_fences");
-   public static final asg<cmc> l = a("fence_gates");
-   public static final asg<cmc> m = a("wooden_pressure_plates");
-   public static final asg<cmc> n = a("wooden_trapdoors");
-   public static final asg<cmc> o = a("doors");
-   public static final asg<cmc> p = a("saplings");
-   public static final asg<cmc> q = a("logs_that_burn");
-   public static final asg<cmc> r = a("logs");
-   public static final asg<cmc> s = a("dark_oak_logs");
-   public static final asg<cmc> t = a("oak_logs");
-   public static final asg<cmc> u = a("birch_logs");
-   public static final asg<cmc> v = a("acacia_logs");
-   public static final asg<cmc> w = a("cherry_logs");
-   public static final asg<cmc> x = a("jungle_logs");
-   public static final asg<cmc> y = a("spruce_logs");
-   public static final asg<cmc> z = a("mangrove_logs");
-   public static final asg<cmc> A = a("crimson_stems");
-   public static final asg<cmc> B = a("warped_stems");
-   public static final asg<cmc> C = a("bamboo_blocks");
-   public static final asg<cmc> D = a("wart_blocks");
-   public static final asg<cmc> E = a("banners");
-   public static final asg<cmc> F = a("sand");
-   public static final asg<cmc> G = a("smelts_to_glass");
-   public static final asg<cmc> H = a("stairs");
-   public static final asg<cmc> I = a("slabs");
-   public static final asg<cmc> J = a("walls");
-   public static final asg<cmc> K = a("anvil");
-   public static final asg<cmc> L = a("rails");
-   public static final asg<cmc> M = a("leaves");
-   public static final asg<cmc> N = a("trapdoors");
-   public static final asg<cmc> O = a("small_flowers");
-   public static final asg<cmc> P = a("beds");
-   public static final asg<cmc> Q = a("fences");
-   public static final asg<cmc> R = a("tall_flowers");
-   public static final asg<cmc> S = a("flowers");
-   public static final asg<cmc> T = a("piglin_repellents");
-   public static final asg<cmc> U = a("piglin_loved");
-   public static final asg<cmc> V = a("ignored_by_piglin_babies");
-   public static final asg<cmc> W = a("piglin_food");
-   public static final asg<cmc> X = a("fox_food");
-   public static final asg<cmc> Y = a("gold_ores");
-   public static final asg<cmc> Z = a("iron_ores");
-   public static final asg<cmc> aa = a("diamond_ores");
-   public static final asg<cmc> ab = a("redstone_ores");
-   public static final asg<cmc> ac = a("lapis_ores");
-   public static final asg<cmc> ad = a("coal_ores");
-   public static final asg<cmc> ae = a("emerald_ores");
-   public static final asg<cmc> af = a("copper_ores");
-   public static final asg<cmc> ag = a("non_flammable_wood");
-   public static final asg<cmc> ah = a("soul_fire_base_blocks");
-   public static final asg<cmc> ai = a("candles");
-   public static final asg<cmc> aj = a("dirt");
-   public static final asg<cmc> ak = a("terracotta");
-   public static final asg<cmc> al = a("completes_find_tree_tutorial");
-   public static final asg<cmc> am = a("boats");
-   public static final asg<cmc> an = a("chest_boats");
-   public static final asg<cmc> ao = a("fishes");
-   public static final asg<cmc> ap = a("signs");
-   public static final asg<cmc> aq = a("music_discs");
-   public static final asg<cmc> ar = a("creeper_drop_music_discs");
-   public static final asg<cmc> as = a("coals");
-   public static final asg<cmc> at = a("arrows");
-   public static final asg<cmc> au = a("lectern_books");
-   public static final asg<cmc> av = a("bookshelf_books");
-   public static final asg<cmc> aw = a("beacon_payment_items");
-   public static final asg<cmc> ax = a("stone_tool_materials");
-   public static final asg<cmc> ay = a("stone_crafting_materials");
-   public static final asg<cmc> az = a("freeze_immune_wearables");
-   public static final asg<cmc> aA = a("axolotl_tempt_items");
-   public static final asg<cmc> aB = a("dampens_vibrations");
-   public static final asg<cmc> aC = a("cluster_max_harvestables");
-   public static final asg<cmc> aD = a("compasses");
-   public static final asg<cmc> aE = a("hanging_signs");
-   public static final asg<cmc> aF = a("creeper_igniters");
-   public static final asg<cmc> aG = a("noteblock_top_instruments");
-   public static final asg<cmc> aH = a("trimmable_armor");
-   public static final asg<cmc> aI = a("trim_materials");
-   public static final asg<cmc> aJ = a("trim_templates");
-   public static final asg<cmc> aK = a("sniffer_food");
-   public static final asg<cmc> aL = a("decorated_pot_sherds");
-   public static final asg<cmc> aM = a("decorated_pot_ingredients");
-   public static final asg<cmc> aN = a("swords");
-   public static final asg<cmc> aO = a("axes");
-   public static final asg<cmc> aP = a("hoes");
-   public static final asg<cmc> aQ = a("pickaxes");
-   public static final asg<cmc> aR = a("shovels");
-   public static final asg<cmc> aS = a("tools");
-   public static final asg<cmc> aT = a("breaks_decorated_pots");
-   public static final asg<cmc> aU = a("villager_plantable_seeds");
+public class arz {
+   public static final asq<dgf> a = a("no_item_required");
+   public static final asq<dgf> b = a("pattern_item/flower");
+   public static final asq<dgf> c = a("pattern_item/creeper");
+   public static final asq<dgf> d = a("pattern_item/skull");
+   public static final asq<dgf> e = a("pattern_item/mojang");
+   public static final asq<dgf> f = a("pattern_item/globe");
+   public static final asq<dgf> g = a("pattern_item/piglin");
 
    private arz() {
    }
 
-   private static asg<cmc> a(String $$0) {
-      return asg.a(kc.F, new agt($$0));
+   private static asq<dgf> a(String $$0) {
+      return asq.a(ke.d, new ahd($$0));
    }
 }

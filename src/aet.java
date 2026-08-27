@@ -1,51 +1,79 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class aet implements xd<adg> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private final hx d;
+   private final String e;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final dgy.a i;
 
-public class aet {
-   private static final double a = 4096.0;
-   private elb b;
-
-   public aet() {
-      this.b = elb.b;
+   public aet(hx $$0, String $$1, dgy.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$2;
    }
 
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
+   public aet(ug $$0) {
+      this.d = $$0.e();
+      this.e = $$0.s();
+      this.i = $$0.b(dgy.a.class);
+      int $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
    }
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
-   }
-
-   public elb a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new elb($$3, $$4, $$5);
+   @Override
+   public void a(ug $$0) {
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.i);
+      int $$1 = 0;
+      if (this.f) {
+         $$1 |= 1;
       }
+
+      if (this.g) {
+         $$1 |= 2;
+      }
+
+      if (this.h) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
-   public long a(elb $$0) {
-      return a($$0.c) - a(this.b.c);
+   public void a(adg $$0) {
+      $$0.a(this);
    }
 
-   public long b(elb $$0) {
-      return a($$0.d) - a(this.b.d);
+   public hx a() {
+      return this.d;
    }
 
-   public long c(elb $$0) {
-      return a($$0.e) - a(this.b.e);
+   public String d() {
+      return this.e;
    }
 
-   public elb d(elb $$0) {
-      return $$0.d(this.b);
+   public boolean e() {
+      return this.f;
    }
 
-   public void e(elb $$0) {
-      this.b = $$0;
+   public boolean f() {
+      return this.g;
+   }
+
+   public boolean g() {
+      return this.h;
+   }
+
+   public dgy.a h() {
+      return this.i;
    }
 }

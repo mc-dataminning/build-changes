@@ -1,29 +1,57 @@
-public class ggn extends ggf {
-   private final blf n;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   public ggn(arb $$0, ard $$1, float $$2, float $$3, blf $$4, long $$5) {
-      super($$0, $$1, auf.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.dr());
-      this.g = (double)((float)this.n.dt());
-      this.h = (double)((float)this.n.dx());
+public class ggn extends ahd {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
+
+   private ggn(String $$0, String $$1, String $$2, @Nullable ahd.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
+   }
+
+   public ggn(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
+   }
+
+   public ggn(ahd $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static ggn c(String $$0, String $$1) {
+      return new ggn("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.f;
    }
 
    @Override
-   public boolean s() {
-      return !this.n.aU();
-   }
-
-   @Override
-   public void q() {
-      if (this.n.dH()) {
-         this.n();
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof ggn && super.equals($$0)) {
+         ggn $$1 = (ggn)$$0;
+         return this.f.equals($$1.f);
       } else {
-         this.f = (double)((float)this.n.dr());
-         this.g = (double)((float)this.n.dt());
-         this.h = (double)((float)this.n.dx());
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.f;
    }
 }

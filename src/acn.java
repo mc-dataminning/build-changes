@@ -1,23 +1,40 @@
-public record acn(float a, boolean b) implements wu<yo> {
-   public acn(ue $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+public class acn implements xd<yx> {
+   private final int a;
+   private final int b;
+   private final int c;
+
+   public acn(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static acn a(bjv $$0) {
-      return new acn($$0.f(), $$0.l());
+   public acn(ug $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(ug $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public boolean d() {
+   public int a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

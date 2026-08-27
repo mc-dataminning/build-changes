@@ -1,18 +1,24 @@
-public record xq(ags<dmz> b, elb c) implements xo {
-   public static final agt a = new agt("debug/game_event");
+public class xq implements xd<xn> {
+   private final long a;
 
-   public xq(ue $$0) {
-      this($$0.a(kc.B), $$0.k());
+   public xq(long $$0) {
+      this.a = $$0;
+   }
+
+   public void a(xn $$0) {
+      $$0.a(this);
+   }
+
+   public xq(ug $$0) {
+      this.a = $$0.readLong();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.b(this.b);
-      $$0.a(this.c);
+   public void a(ug $$0) {
+      $$0.b(this.a);
    }
 
-   @Override
-   public agt a() {
-      return a;
+   public long a() {
+      return this.a;
    }
 }

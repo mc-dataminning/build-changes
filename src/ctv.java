@@ -1,42 +1,112 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.base.Suppliers;
+import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class ctv {
-   public static final Codec<ctv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arb.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ctv::new)
-   );
-   public static final ctv b = new ctv(arc.h, 6000, 8, 2.0);
-   private final ie<arb> c;
-   private final int d;
-   private final int e;
-   private final double f;
+public class ctv implements cso, css {
+   protected final int a;
+   protected final int b;
+   protected final dkw[][] c;
+   protected boolean d;
+   protected final cti e;
+   private final Supplier<ih<cuh>> f;
 
-   public ctv(ie<arb> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public ctv(cti $$0, hx $$1, hx $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.I_().d(ke.at).f(cuo.b));
+      this.a = iz.a($$1.u());
+      this.b = iz.a($$1.w());
+      int $$3 = iz.a($$2.u());
+      int $$4 = iz.a($$2.w());
+      this.c = new dkw[$$3 - this.a + 1][$$4 - this.b + 1];
+      dla $$5 = $$0.L();
+      this.d = true;
+
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+         }
+      }
+
+      for (int $$8 = iz.a($$1.u()); $$8 <= iz.a($$2.u()); $$8++) {
+         for (int $$9 = iz.a($$1.w()); $$9 <= iz.a($$2.w()); $$9++) {
+            dkw $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public ie<arb> a() {
-      return this.c;
+   private dkw d(hx $$0) {
+      return this.a(iz.a($$0.u()), iz.a($$0.w()));
    }
 
-   public int b() {
-      return this.d;
+   private dkw a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dkw $$4 = this.c[$$2][$$3];
+         return (dkw)($$4 != null ? $$4 : new dld(this.e, new csp($$0, $$1), this.f.get()));
+      } else {
+         return new dld(this.e, new csp($$0, $$1), this.f.get());
+      }
    }
 
-   public int c() {
-      return this.e;
+   @Override
+   public dkr D_() {
+      return this.e.D_();
    }
 
-   public double d() {
-      return this.f;
+   @Override
+   public cso c(int $$0, int $$1) {
+      return this.a($$0, $$1);
+   }
+
+   @Override
+   public List<emf> c(@Nullable blp $$0, elh $$1) {
+      return List.of();
+   }
+
+   @Nullable
+   @Override
+   public dgo c_(hx $$0) {
+      dkw $$1 = this.d($$0);
+      return $$1.c_($$0);
+   }
+
+   @Override
+   public dja a_(hx $$0) {
+      if (this.s($$0)) {
+         return cwl.a.o();
+      } else {
+         dkw $$1 = this.d($$0);
+         return $$1.a_($$0);
+      }
+   }
+
+   @Override
+   public eek b_(hx $$0) {
+      if (this.s($$0)) {
+         return eel.a.g();
+      } else {
+         dkw $$1 = this.d($$0);
+         return $$1.b_($$0);
+      }
+   }
+
+   @Override
+   public int J_() {
+      return this.e.J_();
+   }
+
+   @Override
+   public int K_() {
+      return this.e.K_();
+   }
+
+   public bgm a() {
+      return this.e.af();
    }
 }

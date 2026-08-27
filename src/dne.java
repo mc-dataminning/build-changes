@@ -1,30 +1,29 @@
-import com.mojang.serialization.Codec;
+public enum dne {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public interface dne<T extends dnd> {
-   dne<dmv> a = a("block", new dmv.a());
-   dne<dmx> b = a("entity", new dmx.a());
+   private final boolean d;
+   private final boolean e;
 
-   T b(ue var1);
-
-   void a(ue var1, T var2);
-
-   Codec<T> a();
-
-   static <S extends dne<T>, T extends dnd> S a(String $$0, S $$1) {
-      return ir.a(kb.v, $$0, $$1);
+   private dne(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   static dnd c(ue $$0) {
-      dne<?> $$1 = $$0.a(kb.v);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Unknown position source type");
+   public boolean a() {
+      return this.e;
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public static dne a(ams $$0) {
+      if ($$0.a(ams.d)) {
+         return c;
       } else {
-         return $$1.b($$0);
+         return $$0.a(ams.b) ? b : a;
       }
-   }
-
-   static <T extends dnd> void a(T $$0, ue $$1) {
-      $$1.a(kb.v, $$0.a());
-      ((dne<T>)$$0.a()).a($$1, $$0);
    }
 }

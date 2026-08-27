@@ -1,24 +1,24 @@
-public class xi implements wu<xe> {
-   private final int a;
+public class xi implements xd<xg> {
+   private final vd a;
 
-   public xi(int $$0) {
+   public xi(vd $$0) {
       this.a = $$0;
    }
 
-   public xi(ue $$0) {
-      this.a = $$0.readInt();
+   public xi(ug $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.p(this.a);
+   public void a(ug $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(xe $$0) {
+   public void a(xg $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public vd a() {
       return this.a;
    }
 }

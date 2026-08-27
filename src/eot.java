@@ -1,11 +1,3 @@
 public interface eot {
-   int a();
-
-   void b();
-
-   eor c();
-
-   eor d();
-
-   void e();
+   eos createMonitor(long var1);
 }

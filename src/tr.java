@@ -1,89 +1,15 @@
-public interface tr extends td {
-   tr a = new tr() {
-   };
+import java.util.List;
 
-   @Override
-   default td.b a() {
-      return td.b.a;
+public record tr(List<String> a, tk<?> b, String c) {
+   public tr(tk<?> $$0, String $$1) {
+      this(List.of(), $$0, $$1);
    }
 
-   @Override
-   default td.b a(String $$0) {
-      return td.b.a;
+   public tr(String $$0, tk<?> $$1, String $$2) {
+      this(List.of($$0), $$1, $$2);
    }
 
-   @Override
-   default td.b a(byte $$0) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b a(short $$0) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b a(int $$0) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b a(long $$0) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b a(float $$0) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b a(double $$0) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b a(byte[] $$0) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b a(int[] $$0) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b a(long[] $$0) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b a(ti<?> $$0, int $$1) {
-      return td.b.a;
-   }
-
-   @Override
-   default td.a b(ti<?> $$0, int $$1) {
-      return td.a.b;
-   }
-
-   @Override
-   default td.a a(ti<?> $$0) {
-      return td.a.b;
-   }
-
-   @Override
-   default td.a a(ti<?> $$0, String $$1) {
-      return td.a.b;
-   }
-
-   @Override
-   default td.b b() {
-      return td.b.a;
-   }
-
-   @Override
-   default td.b b(ti<?> $$0) {
-      return td.b.a;
+   public tr(String $$0, String $$1, tk<?> $$2, String $$3) {
+      this(List.of($$0, $$1), $$2, $$3);
    }
 }

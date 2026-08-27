@@ -1,30 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
 
-public class azb extends DataFix {
-   public azb(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class azb extends bca {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
+
+   public azb(Schema $$0) {
+      super("EntityZombifiedPiglinRenameFix", $$0, true);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbg.C);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), azb::a));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(azb::c)).result().orElse(false);
-      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", azb::b);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
-   }
-
-   private static boolean c(Dynamic<?> $$0) {
-      return $$0.get("id").asString("").equals("Iglu");
+   @Override
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
    }
 }

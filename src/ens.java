@@ -1,48 +1,91 @@
-import com.google.common.base.Charsets;
-import java.nio.ByteBuffer;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.system.MemoryUtil;
+import com.mojang.logging.LogUtils;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC10;
+import org.slf4j.Logger;
 
 public class ens {
-   public static final int a = 65545;
-   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
+   private static final Logger a = LogUtils.getLogger();
 
-   public String a(long $$0, GLFWErrorCallbackI $$1) {
-      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
-      String $$3 = GLFW.glfwGetClipboardString($$0);
-      $$3 = $$3 != null ? aus.a($$3) : "";
-      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
-      if ($$4 != null) {
-         $$4.free();
+   private static String a(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid name parameter.";
+         case 40962:
+            return "Invalid enumerated parameter value.";
+         case 40963:
+            return "Invalid parameter parameter value.";
+         case 40964:
+            return "Invalid operation.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
       }
-
-      return $$3;
    }
 
-   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
-      $$1.clear();
-      $$1.put($$2);
-      $$1.put((byte)0);
-      $$1.flip();
-      GLFW.glfwSetClipboardString($$0, $$1);
-   }
-
-   public void a(long $$0, String $$1) {
-      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
-      int $$3 = $$2.length + 1;
-      if ($$3 < this.b.capacity()) {
-         a($$0, this.b, $$2);
+   static boolean a(String $$0) {
+      int $$1 = AL10.alGetError();
+      if ($$1 != 0) {
+         a.error("{}: {}", $$0, a($$1));
+         return true;
       } else {
-         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
+         return false;
+      }
+   }
 
-         try {
-            a($$0, $$4, $$2);
-         } finally {
-            MemoryUtil.memFree($$4);
+   private static String b(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid device.";
+         case 40962:
+            return "Invalid context.";
+         case 40963:
+            return "Illegal enum.";
+         case 40964:
+            return "Invalid value.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
+   }
+
+   static boolean a(long $$0, String $$1) {
+      int $$2 = ALC10.alcGetError($$0);
+      if ($$2 != 0) {
+         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   static int a(AudioFormat $$0) {
+      Encoding $$1 = $$0.getEncoding();
+      int $$2 = $$0.getChannels();
+      int $$3 = $$0.getSampleSizeInBits();
+      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
+         if ($$2 == 1) {
+            if ($$3 == 8) {
+               return 4352;
+            }
+
+            if ($$3 == 16) {
+               return 4353;
+            }
+         } else if ($$2 == 2) {
+            if ($$3 == 8) {
+               return 4354;
+            }
+
+            if ($$3 == 16) {
+               return 4355;
+            }
          }
       }
+
+      throw new IllegalArgumentException("Invalid audio format: " + $$0);
    }
 }

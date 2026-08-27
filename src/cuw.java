@@ -1,24 +1,14 @@
-import com.mojang.serialization.MapCodec;
+public class cuw {
+   public static final ahc<cuv> a = a("nether");
+   public static final ahc<cuv> b = a("overworld");
 
-public class cuw extends cvz {
-   public static final MapCodec<cuw> a = b(cuw::new);
-
-   @Override
-   public MapCodec<cuw> a() {
-      return a;
+   public static void a(pc<cuv> $$0) {
+      ii<cuh> $$1 = $$0.a(ke.at);
+      $$0.a(a, new cuv(cuv.a.a, $$1));
+      $$0.a(b, new cuv(cuv.a.b, $$1));
    }
 
-   public cuw(dio.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dce b_(dip $$0) {
-      return dce.a;
-   }
-
-   @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return elr.a();
+   private static ahc<cuv> a(String $$0) {
+      return ahc.a(ke.aL, new ahd($$0));
    }
 }

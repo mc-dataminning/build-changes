@@ -1,194 +1,132 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cxi extends cvl implements czh {
-   public static final MapCodec<cxi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), u()).apply($$0, cxi::new)
+public class cxi extends ddi {
+   public static final MapCodec<cxi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dkn.a.fieldOf("wood_type").forGetter(ddi::d), u()).apply($$0, cxi::new));
+   public static final dka b = djq.ba;
+   public static final djr c = djq.a;
+   protected static final float d = 5.0F;
+   protected static final emf e = cwj.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+   private static final Map<Integer, emf> i = Maps.newHashMap(
+      ImmutableMap.of(
+         0,
+         cwj.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         4,
+         cwj.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
+         8,
+         cwj.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         12,
+         cwj.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
+      )
    );
-   private static final Logger d = LogUtils.getLogger();
-   public static final djj b = cyc.a;
-   public static final djg c = djf.c;
-   private final boolean e;
 
    @Override
    public MapCodec<cxi> a() {
       return a;
    }
 
-   public cxi(boolean $$0, dio.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(b, ia.c).a(c, Boolean.valueOf(false)));
-      this.e = $$0;
+   public cxi(dkn $$0, diz.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public dgd a(hv $$0, dip $$1) {
-      dgn $$2 = new dgn($$0, $$1);
-      $$2.b(this.e);
-      return $$2;
+   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
+      if ($$1.c_($$2) instanceof dhx $$6) {
+         cmr $$7 = $$3.b($$4);
+         if (this.a($$3, $$5, $$6, $$7)) {
+            return bjv.d;
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(cfb $$0, eli $$1, dhx $$2, cmr $$3) {
+      return !$$2.a($$2.a($$0), $$0) && $$3.d() instanceof cmd && $$1.b().equals(ic.a);
    }
 
    @Override
-   public void a(dip $$0, csy $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
-      if (!$$1.B) {
-         if ($$1.c_($$2) instanceof dgn $$7) {
-            boolean $$8 = $$1.B($$2);
-            boolean $$9 = $$7.d();
-            $$7.a($$8);
-            if (!$$9 && !$$7.f() && $$7.m() != dgn.a.a) {
-               if ($$8) {
-                  $$7.l();
-                  $$1.a($$2, this, 1);
-               }
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      return $$1.a_($$2.c()).a($$1, $$2.c(), ic.a, dej.b);
+   }
+
+   @Override
+   public dja a(cpa $$0) {
+      cti $$1 = $$0.q();
+      eek $$2 = $$1.b_($$0.a());
+      hx $$3 = $$0.a().c();
+      dja $$4 = $$1.a_($$3);
+      boolean $$5 = $$4.a(asb.az);
+      ic $$6 = ic.a((double)$$0.i());
+      boolean $$7 = !cwj.a($$4.k($$1, $$3), ic.a) || $$0.h();
+      if ($$5 && !$$0.h()) {
+         if ($$4.b(dfg.b)) {
+            ic $$8 = $$4.c(dfg.b);
+            if ($$8.o().a($$6)) {
+               $$7 = false;
+            }
+         } else if ($$4.b(b)) {
+            Optional<ic> $$9 = dkg.a($$4.c(b));
+            if ($$9.isPresent() && $$9.get().o().a($$6)) {
+               $$7 = false;
             }
          }
       }
+
+      int $$10 = !$$7 ? dkg.a($$6.g()) : dkg.a($$0.i() + 180.0F);
+      return this.o().a(c, Boolean.valueOf($$7)).a(b, Integer.valueOf($$10)).a(f, Boolean.valueOf($$2.a() == eel.c));
    }
 
    @Override
-   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
-      if ($$1.c_($$2) instanceof dgn $$5) {
-         crz $$6 = $$5.c();
-         boolean $$7 = !auu.b($$6.m());
-         dgn.a $$8 = $$5.m();
-         boolean $$9 = $$5.k();
-         if ($$8 == dgn.a.b) {
-            $$5.l();
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
-
-            if ($$5.d() || $$5.f()) {
-               $$1.a($$2, this, 1);
-            }
-         } else if ($$8 == dgn.a.c) {
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
-         }
-
-         $$1.c($$2, this);
-      }
-   }
-
-   private void a(dip $$0, csy $$1, hv $$2, crz $$3, boolean $$4) {
-      if ($$4) {
-         $$3.a($$1);
-      } else {
-         $$3.a(0);
-      }
-
-      a($$1, $$2, $$0.c(b));
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      emf $$4 = i.get($$0.c(b));
+      return $$4 == null ? e : $$4;
    }
 
    @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      dgd $$6 = $$1.c_($$2);
-      if ($$6 instanceof dgn && $$3.gp()) {
-         $$3.a((dgn)$$6);
-         return bjl.a($$1.B);
-      } else {
-         return bjl.d;
-      }
+   public emf b_(dja $$0, cso $$1, hx $$2) {
+      return this.a($$0, $$1, $$2, elr.a());
    }
 
    @Override
-   public boolean d_(dip $$0) {
-      return true;
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      return $$1 == ic.b && !this.a($$0, $$3, $$4) ? cwl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(dip $$0, csy $$1, hv $$2) {
-      dgd $$3 = $$1.c_($$2);
-      return $$3 instanceof dgn ? ((dgn)$$3).c().k() : 0;
+   public float g(dja $$0) {
+      return dkg.b($$0.c(b));
    }
 
    @Override
-   public void a(csy $$0, hv $$1, dip $$2, blv $$3, cmh $$4) {
-      if ($$0.c_($$1) instanceof dgn $$6) {
-         crz $$7 = $$6.c();
-         if ($$4.A()) {
-            $$7.b($$4.y());
-         }
-
-         if (!$$0.B) {
-            if (cka.a($$4) == null) {
-               $$7.a($$0.Y().b(csu.p));
-               $$6.b(this.e);
-            }
-
-            if ($$6.m() == dgn.a.a) {
-               boolean $$8 = $$0.B($$1);
-               $$6.a($$8);
-            }
-         }
-      }
+   public dja a(dja $$0, dcv $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public dce b_(dip $$0) {
-      return dce.c;
+   public dja a(dja $$0, dbf $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public dip a(dip $$0, dcl $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(b, c, f);
    }
 
    @Override
-   public dip a(dip $$0, dav $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public dgo a(hx $$0, dja $$1) {
+      return new dhl($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dip a(coq $$0) {
-      return this.o().a(b, $$0.d().g());
-   }
-
-   private static void a(csy $$0, hv $$1, ia $$2) {
-      hv.a $$3 = $$1.j();
-      csu $$4 = $$0.Y();
-      int $$5 = $$4.c(csu.x);
-
-      while ($$5-- > 0) {
-         $$3.c($$2);
-         dip $$6 = $$0.a_($$3);
-         cvz $$7 = $$6.b();
-         if (!$$6.a(cwb.kH) || !($$0.c_($$3) instanceof dgn $$9) || $$9.m() != dgn.a.a) {
-            break;
-         }
-
-         if ($$9.d() || $$9.f()) {
-            crz $$10 = $$9.c();
-            if ($$9.l()) {
-               if (!$$10.a($$0)) {
-                  break;
-               }
-
-               $$0.c($$3, $$7);
-            } else if ($$9.w()) {
-               $$10.a(0);
-            }
-         }
-
-         $$2 = $$6.c(b);
-      }
-
-      if ($$5 <= 0) {
-         int $$11 = Math.max($$4.c(csu.x), 0);
-         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
-      }
+   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
+      return a($$2, dgq.i, dhx::a);
    }
 }

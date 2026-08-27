@@ -1,32 +1,24 @@
-public class abn implements wu<yo> {
-   private final hv a;
-   private final float b;
+public class abn implements xd<yx> {
+   private final vd a;
 
-   public abn(hv $$0, float $$1) {
+   public abn(vd $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public abn(ue $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+   public abn(ug $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public hv a() {
+   public vd a() {
       return this.a;
-   }
-
-   public float d() {
-      return this.b;
    }
 }

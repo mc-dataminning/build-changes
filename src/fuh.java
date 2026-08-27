@@ -1,95 +1,96 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fuh implements apt {
-   private Map<dgf<?>, fui<?>> d = ImmutableMap.of();
-   private final evu e;
-   private final flu f;
-   public csy a;
-   public etv b;
-   public ekz c;
-   private final Supplier<ftc> g;
-   private final Supplier<fym> h;
-   private final Supplier<fxm> i;
+public class fuh {
+   public static final fuh a = new fuh(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   public fuh(evu $$0, flu $$1, Supplier<ftc> $$2, Supplier<fym> $$3, Supplier<fxm> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fuh(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   @Nullable
-   public <E extends dgd> fui<E> a(E $$0) {
-      return (fui<E>)this.d.get($$0.v());
-   }
-
-   public void a(csy $$0, etv $$1, ekz $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public <E extends dgd> void a(E $$0, float $$1, epd $$2, fsi $$3) {
-      fui<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.n() && $$0.v().a($$0.r())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
+   public void a(boolean $$0, ept $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
          }
-      }
-   }
 
-   private static <T extends dgd> void a(fui<T> $$0, T $$1, float $$2, epd $$3, fsi $$4) {
-      csy $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = fsg.a($$5, $$1.aB_());
-      } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, gdf.d);
-   }
-
-   public <E extends dgd> boolean a(E $$0, epd $$1, fsi $$2, int $$3, int $$4) {
-      fui<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
-      }
-   }
-
-   private static void a(dgd $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new y($$3);
-      }
-   }
-
-   public void a(@Nullable csy $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
       }
    }
 
    @Override
-   public void a(aps $$0) {
-      fuj.a $$1 = new fuj.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = fuk.a($$1);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
+      } else {
+         fuh $$1 = (fuh)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
+   }
+
+   protected static class a implements JsonDeserializer<fuh> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
+      public fuh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(aui.a($$5.x, -5.0F, 5.0F), aui.a($$5.y, -5.0F, 5.0F), aui.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(aui.a($$6.x, -4.0F, 4.0F), aui.a($$6.y, -4.0F, 4.0F), aui.a($$6.z, -4.0F, 4.0F));
+         return new fuh($$4, $$5, $$6);
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
+         } else {
+            JsonArray $$3 = aty.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
+
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = aty.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
+
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
+         }
+      }
    }
 }

@@ -1,19 +1,36 @@
-public class clx extends cmc {
-   private static final String a = "textures/entity/horse/";
-   private final int b;
-   private final String c;
-
-   public clx(int $$0, String $$1, cmc.a $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
+public class clx extends cmm implements col {
+   public clx(cmm.a $$0) {
+      super($$0);
    }
 
-   public agt h() {
-      return new agt(this.c);
+   @Override
+   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
+      cmr $$3 = $$1.b($$2);
+      if ($$1.ck != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.ck.a($$3);
+            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
+         }
+
+         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.is, arn.g, 1.0F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+         $$1.a(dnk.C);
+      } else {
+         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.iu, arn.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+         if (!$$0.B) {
+            int $$5 = cre.c($$3);
+            int $$6 = cre.b($$3);
+            $$0.b(new cfp($$1, $$0, $$6, $$5));
+         }
+
+         $$1.b(arw.c.b(this));
+         $$1.a(dnk.D);
+      }
+
+      return bjw.a($$3, $$0.y_());
    }
 
-   public int i() {
-      return this.b;
+   @Override
+   public int c() {
+      return 1;
    }
 }

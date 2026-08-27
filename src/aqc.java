@@ -1,43 +1,52 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class aqc extends aqk<String, aqd> {
-   public aqc(File $$0) {
-      super($$0);
-   }
+public interface aqc extends aqf {
+   Set<String> a();
 
-   @Override
-   protected aqj<String> a(JsonObject $$0) {
-      return new aqd($$0);
-   }
+   List<aqa> a(ahd var1);
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
-   }
+   Map<ahd, aqa> b(String var1, Predicate<ahd> var2);
 
-   public boolean a(String $$0) {
-      return this.d($$0);
-   }
+   Map<ahd, List<aqa>> c(String var1, Predicate<ahd> var2);
 
-   @Nullable
-   public aqd b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
+   Stream<aoq> b();
 
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
+   public static enum a implements aqc {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
       }
 
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
+      @Override
+      public Optional<aqa> getResource(ahd $$0) {
+         return Optional.empty();
       }
 
-      return $$1;
+      @Override
+      public List<aqa> a(ahd $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<ahd, aqa> b(String $$0, Predicate<ahd> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<ahd, List<aqa>> c(String $$0, Predicate<ahd> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<aoq> b() {
+         return Stream.of();
+      }
    }
 }

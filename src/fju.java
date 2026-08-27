@@ -1,15 +1,9 @@
-import java.util.function.Function;
-
-public abstract class fju {
-   protected final Function<agt, fsq> v;
-
-   public fju(Function<agt, fsq> $$0) {
-      this.v = $$0;
+public class fju extends fik<cce> {
+   public fju(fmp $$0) {
+      super($$0);
    }
 
-   public final fsq a(agt $$0) {
-      return this.v.apply($$0);
+   public boolean a(cce $$0) {
+      return false;
    }
-
-   public abstract void a(epd var1, eph var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

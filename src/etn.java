@@ -1,13 +1,22 @@
-public class etn extends eto {
-   private final erb b;
+public enum etn {
+   a(0, dyp.a),
+   b(1, dyp.b),
+   c(2, dyp.c),
+   d(3, dyp.d);
 
-   public etn(erb $$0, long $$1, vb $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+   private final int e;
+   private final vd f;
+
+   private etn(int $$0, ahc<dyo> $$1) {
+      this.e = $$0;
+      this.f = vd.c($$1.a().f("generator"));
    }
 
-   @Override
-   protected void a(ept $$0, long $$1) throws erg {
-      $$0.d($$1, this.b.a);
+   public vd a() {
+      return this.f;
+   }
+
+   public int b() {
+      return this.e;
    }
 }

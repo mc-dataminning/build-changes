@@ -1,29 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class bpz {
-   public static bnn<blv> a(int $$0, BiPredicate<blv, blv> $$1) {
-      return bqz.a(
-         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$2 -> $$2.group($$2.b(bux.o), $$2.a(bux.aa), $$2.c(bux.ah), $$2.a(bux.ai))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     blv $$10 = $$2.b($$3);
-                     if (!$$10.ew()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+   public static bnx<bmf> a() {
+      return brj.a((Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$0 -> $$0.a((brm<bmf>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bnf<?> $$3 = $$1.dO();
+               cgj $$4 = $$0x.d($$1.dm());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(cgn.h);
+                     $$3.a(cgn.h);
+                  } else {
+                     $$3.b(cgn.i);
+                     $$3.a(cgn.i);
+                  }
+               }
 
-                        $$5.a($$10.dm(), (long)$$0);
-                        if ($$10.ai() != blj.bv || $$7.Y().b(csu.N)) {
-                           $$3.b();
-                           $$4.b();
-                        }
-
-                        return true;
-                     }
-                  }))
-      );
+               return true;
+            }
+         }))));
    }
 }

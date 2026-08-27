@@ -1,11 +1,9 @@
-import java.security.SignatureException;
-
-@FunctionalInterface
 public interface auk {
-   void update(auk.a var1) throws SignatureException;
+   int a();
 
-   @FunctionalInterface
-   public interface a {
-      void update(byte[] var1) throws SignatureException;
+   String b();
+
+   default vd d() {
+      return vd.c(this.b());
    }
 }

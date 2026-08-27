@@ -1,84 +1,47 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ddw extends cvl implements czh {
+public class ddw extends cvv {
    public static final MapCodec<ddw> a = b(ddw::new);
-   public static final djn<djz> b = djf.bj;
 
    @Override
    public MapCodec<ddw> a() {
       return a;
    }
 
-   protected ddw(dio.d $$0) {
+   protected ddw(diz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, djz.b));
    }
 
    @Override
-   public dgd a(hv $$0, dip $$1) {
-      return new dhr($$0, $$1);
+   public dgo a(hx $$0, dja $$1) {
+      return new dib($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
+      return a($$2, dgq.j, $$0.B ? dib::a : dib::b);
    }
 
    @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      dgd $$6 = $$1.c_($$2);
-      if ($$6 instanceof dhr) {
-         return ((dhr)$$6).a($$3) ? bjl.a($$1.B) : bjl.d;
-      } else {
-         return bjl.d;
+   public void a(dja $$0, amz $$1, hx $$2, cmr $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
       }
    }
 
    @Override
-   public void a(csy $$0, hv $$1, dip $$2, @Nullable blv $$3, cmh $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dgd $$5 = $$0.c_($$1);
-            if ($$5 instanceof dhr) {
-               ((dhr)$$5).a($$3);
-            }
-         }
-      }
+   public dco b_(dja $$0) {
+      return dco.c;
    }
 
    @Override
-   public dce b_(dip $$0) {
-      return dce.c;
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public void a(dip $$0, csy $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
-      if ($$1 instanceof amp) {
-         if ($$1.c_($$2) instanceof dhr $$7) {
-            boolean $$8 = $$1.B($$2);
-            boolean $$9 = $$7.F();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((amp)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(amp $$0, dhr $$1) {
-      switch ($$1.x()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.D();
-         case d:
-      }
+   public void a(cmr $$0, @Nullable cso $$1, List<vd> $$2, coi $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      cua.a($$0, $$2, "SpawnData");
    }
 }

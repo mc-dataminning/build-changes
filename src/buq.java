@@ -1,39 +1,32 @@
-import java.util.List;
+public class buq extends btl {
+   private final cdc b;
+   private int c;
 
-public class buq<T extends blx & bmc> extends bsr {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
-
-   public buq(T $$0, boolean $$1) {
+   public buq(cdc $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
       this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public boolean a() {
-      return this.b.dM().Y().b(csu.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.eh() != null && this.b.eh().ai() == blj.bv && this.b.ei() > this.d;
    }
 
    @Override
    public void c() {
-      this.d = this.b.ei();
-      this.b.ab_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bmc)$$0).forEach(bmc::ab_);
-      }
-
       super.c();
+      this.c = 0;
    }
 
-   private List<? extends blx> i() {
-      double $$0 = this.b.b(bnb.g);
-      ekw $$1 = ekw.a(this.b.dk()).c($$0, 10.0, $$0);
-      return this.b.dM().a((Class<? extends blx>)this.b.getClass(), $$1, bli.f);
+   @Override
+   public void d() {
+      super.d();
+      this.b.v(false);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
+      } else {
+         this.b.v(false);
+      }
    }
 }

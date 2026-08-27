@@ -1,82 +1,55 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dda extends cuv {
-   public static final MapCodec<dda> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dda.a.b.fieldOf("kind").forGetter(cuv::b), u()).apply($$0, dda::new));
-   public static final int d = djv.a();
-   private static final int b = d + 1;
-   public static final djp e = djf.ba;
-   protected static final elu f = cvz.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final elu g = cvz.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+public class dda extends cvv {
+   public static final MapCodec<dda> a = b(dda::new);
+   public static final djr b = djq.E;
+   private final bja c = bix.a(5);
 
    @Override
-   public MapCodec<? extends dda> a() {
-      return c;
+   public MapCodec<dda> a() {
+      return a;
    }
 
-   protected dda(dda.a $$0, dio.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(e, Integer.valueOf(0)));
+   public dda(diz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return this.b() == dda.b.h ? g : f;
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public elu f(dip $$0, cse $$1, hv $$2) {
-      return elr.a();
-   }
-
-   @Override
-   public dip a(coq $$0) {
-      return super.a($$0).a(e, Integer.valueOf(djv.a($$0.i())));
-   }
-
-   @Override
-   public dip a(dip $$0, dcl $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   public dip a(dip $$0, dav $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends aut {
-      Map<String, dda.a> a = new Object2ObjectArrayMap();
-      Codec<dda.a> b = atg.a(aut::c, a::get);
-   }
-
-   public static enum b implements dda.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
       }
+   }
 
-      @Override
-      public String c() {
-         return this.j;
+   @Nullable
+   @Override
+   public dgo a(hx $$0, dja $$1) {
+      return new dht($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
+      return $$0.B ? null : a($$2, dgq.K, dht::a);
+   }
+
+   @Override
+   public dco b_(dja $$0) {
+      return dco.c;
+   }
+
+   @Override
+   public void a(dja $$0, amz $$1, hx $$2, cmr $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
       }
    }
 }

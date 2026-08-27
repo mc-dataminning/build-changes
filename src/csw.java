@@ -1,19 +1,27 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+
 public class csw {
-   private static int[] a = new int[65536];
+   public static final csw a = new csw(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<csw> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, csw::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+   public csw(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
+   public List<String> a() {
+      return this.c;
    }
 
-   public static int a() {
-      return a(0.5, 1.0);
+   public List<String> b() {
+      return this.d;
    }
 }

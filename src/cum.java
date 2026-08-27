@@ -1,14 +1,10 @@
+import com.mojang.serialization.Codec;
+
 public class cum {
-   public static final ags<cul> a = a("nether");
-   public static final ags<cul> b = a("overworld");
-
-   public static void a(pa<cul> $$0) {
-      ig<ctx> $$1 = $$0.a(kc.as);
-      $$0.a(a, new cul(cul.a.a, $$1));
-      $$0.a(b, new cul(cul.a.b, $$1));
-   }
-
-   private static ags<cul> a(String $$0) {
-      return ags.a(kc.aK, new agt($$0));
+   public static Codec<? extends cul> a(it<Codec<? extends cul>> $$0) {
+      it.a($$0, "fixed", cus.b);
+      it.a($$0, "multi_noise", cuu.c);
+      it.a($$0, "checkerboard", cup.b);
+      return it.a($$0, "the_end", cuy.b);
    }
 }

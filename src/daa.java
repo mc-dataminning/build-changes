@@ -1,78 +1,65 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class daa extends cvz implements cyr, czh {
+public class daa extends cwj implements ddj {
    public static final MapCodec<daa> a = b(daa::new);
-   public static final djn<ic> b = djf.T;
+   private static final djr c = djq.C;
+   protected static final emf b = cwj.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<daa> a() {
       return a;
    }
 
-   protected daa(dio.d $$0) {
+   protected daa(diz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ic.k));
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b);
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public dip a(dip $$0, dcl $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
+   public eek c_(dja $$0) {
+      return $$0.c(c) ? eel.c.a(false) : super.c_($$0);
    }
 
+   @Nullable
    @Override
-   public dip a(dip $$0, dav $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public dip a(coq $$0) {
-      ia $$1 = $$0.k();
-      ia $$2;
-      if ($$1.o() == ia.a.b) {
-         $$2 = $$0.g().g();
+   public dja a(cpa $$0) {
+      dja $$1 = super.a($$0);
+      if ($$1 != null) {
+         eek $$2 = $$0.q().b_($$0.a());
+         return $$1.a(c, Boolean.valueOf($$2.a() == eel.c));
       } else {
-         $$2 = ia.b;
-      }
-
-      return this.o().a(b, ic.a($$1, $$2));
-   }
-
-   @Override
-   public dgd a(hv $$0, dip $$1) {
-      return new dhd($$0, $$1);
-   }
-
-   @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      dgd $$6 = $$1.c_($$2);
-      if ($$6 instanceof dhd && $$3.gp()) {
-         $$3.a((dhd)$$6);
-         return bjl.a($$1.B);
-      } else {
-         return bjl.d;
+         return null;
       }
    }
 
-   public static boolean a(eco.c $$0, eco.c $$1) {
-      ia $$2 = h($$0.b());
-      ia $$3 = h($$1.b());
-      ia $$4 = n($$0.b());
-      ia $$5 = n($$1.b());
-      dhd.a $$6 = dhd.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dhd.a.b : dhd.a.a);
-      boolean $$7 = $$6 == dhd.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      hx $$3 = $$2.c();
+      dja $$4 = $$1.a_($$3);
+      return $$4.d($$1, $$3, ic.a);
    }
 
-   public static ia h(dip $$0) {
-      return $$0.c(b).a();
+   @Override
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return b;
    }
 
-   public static ia n(dip $$0) {
-      return $$0.c(b).b();
+   @Override
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      if ($$1 == ic.b && !this.a($$0, $$3, $$4)) {
+         return cwl.a.o();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, eel.c, eel.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

@@ -1,42 +1,26 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dxt extends dov {
-   private final ctt a;
-   private final dkm b;
-   private final Optional<dxs> c;
+public class dxt extends dyg {
+   public static final Codec<dxt> a = dof.a.c.fieldOf("step").xmap(dxt::new, $$0 -> $$0.c).codec();
+   private final dof.a c;
 
-   public dxt(ctt $$0, dkm $$1, Optional<dxs> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private dxt(dof.a $$0) {
+      this.c = $$0;
    }
 
-   public int a(dny.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static dxt a(dof.a $$0) {
+      return new dxt($$0);
    }
 
-   public dkk a(csf $$0, dnu.a $$1) {
-      return ((dlg)this.a.a($$0.e, $$0.f)).b($$1);
+   @Override
+   public Stream<hx> a_(dye $$0, aup $$1, hx $$2) {
+      csp $$3 = new csp($$2);
+      return $$0.a($$3, this.c).a($$3);
    }
 
-   public dip a(hv $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.J_();
-   }
-
-   public ctt d() {
-      return this.a;
-   }
-
-   public Optional<dxs> e() {
-      return this.c;
-   }
-
-   public dkm f() {
-      return this.b;
+   @Override
+   public dyh<?> b() {
+      return dyh.o;
    }
 }

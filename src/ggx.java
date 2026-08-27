@@ -1,5 +1,3 @@
-public interface ggx extends ggw {
-   boolean m();
-
-   void q();
+public interface ggx {
+   void a();
 }

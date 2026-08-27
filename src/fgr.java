@@ -1,123 +1,154 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.Collection;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fgr extends fcc {
-   private static final vb a = vb.c("selectWorld.experimental.title");
-   private static final vb b = vb.c("selectWorld.experimental.message");
-   private static final vb c = vb.c("selectWorld.experimental.details");
-   private static final int k = 10;
-   private static final int l = 100;
-   private final BooleanConsumer m;
-   final Collection<apa> n;
-   private final ezq o = new ezq().a(10).b(20);
+public abstract class fgr<B extends foj.a<?>> extends fct {
+   private static final vd r = vd.c("gui.abuseReport.report_sent_msg");
+   private static final vd t = vd.c("gui.abuseReport.sending.title").a(n.r);
+   private static final vd u = vd.c("gui.abuseReport.sent.title").a(n.r);
+   private static final vd v = vd.c("gui.abuseReport.error.title").a(n.r);
+   private static final vd w = vd.c("gui.abuseReport.send.generic_error");
+   protected static final vd a = vd.c("gui.abuseReport.send");
+   protected static final vd b = vd.c("gui.abuseReport.observed_what");
+   protected static final vd c = vd.c("gui.abuseReport.select_reason");
+   private static final vd x = vd.c("gui.abuseReport.describe");
+   protected static final vd k = vd.c("gui.abuseReport.more_comments");
+   private static final vd y = vd.c("gui.abuseReport.comments");
+   protected static final int l = 20;
+   protected static final int m = 280;
+   protected static final int n = 8;
+   private static final Logger z = LogUtils.getLogger();
+   protected final fct o;
+   protected final fon p;
+   protected B q;
 
-   public fgr(Collection<apa> $$0, BooleanConsumer $$1) {
-      super(a);
-      this.n = $$0;
-      this.m = $$1;
+   protected fgr(vd $$0, fct $$1, fon $$2, B $$3) {
+      super($$0);
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
+   }
+
+   protected exq a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.p.a().b();
+      exq $$4 = new exq(this.i, 0, 0, $$0, $$1, x, y);
+      $$4.a(this.q.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
+   }
+
+   protected void n() {
+      this.q.a(this.p).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
+         this.f.a(fca.a(t, vc.e, () -> {
+            this.f.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.C();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.f);
+      }).ifRight($$0 -> this.a($$0.b()));
+   }
+
+   private void C() {
+      this.E();
+      this.f.a(fca.a(u, r, vc.d, () -> this.f.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      z.error("Encountered error while sending abuse report", $$0);
+      vd $$2;
+      if ($$0.getCause() instanceof wd $$1) {
+         $$2 = $$1.b();
+      } else {
+         $$2 = w;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(vd $$0) {
+      vd $$1 = $$0.f().a(n.m);
+      this.f.a(fca.a(v, $$1, vc.k, () -> this.f.a(this)));
+   }
+
+   void D() {
+      if (this.q.b()) {
+         this.p.a(this.q.e().b());
+      }
+   }
+
+   void E() {
+      this.p.a(null);
    }
 
    @Override
-   public vb h() {
-      return va.a(super.h(), b);
+   public void aE_() {
+      if (this.q.b()) {
+         this.f.a(new fgr.a());
+      } else {
+         this.f.a(this.o);
+      }
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      ezq.b $$0 = this.o.d(2);
-      ezu $$1 = $$0.b().b();
-      $$0.a(new exo(this.e, this.i), 2, $$1);
-      exb $$2 = $$0.a(new exb(b, this.i).b(true), 2, $$1);
-      $$2.j(310);
-      $$0.a(ewh.a(c, $$0x -> this.f.a(new fgr.a())).a(100).a(), 2, $$1);
-      $$0.a(ewh.a(va.i, $$0x -> this.m.accept(true)).a());
-      $$0.a(ewh.a(va.k, $$0x -> this.m.accept(false)).a());
-      this.o.a($$1x -> {
-         ewf var10000 = this.d($$1x);
-      });
-      this.o.a();
-      this.c();
+   public void j() {
+      this.D();
+      super.j();
    }
 
-   @Override
-   protected void c() {
-      ezp.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
-   }
+   class a extends ffw {
+      private static final int c = 20;
+      private static final vd k = vd.c("gui.abuseReport.discard.title").a(n.r);
+      private static final vd l = vd.c("gui.abuseReport.discard.content");
+      private static final vd m = vd.c("gui.abuseReport.discard.return");
+      private static final vd n = vd.c("gui.abuseReport.discard.draft");
+      private static final vd o = vd.c("gui.abuseReport.discard.discard");
 
-   @Override
-   public void aF_() {
-      this.m.accept(false);
-   }
-
-   class a extends fcc {
-      private fgr.a.a b;
-
-      a() {
-         super(vb.c("selectWorld.experimental.details.title"));
+      protected a() {
+         super(k, l, l);
       }
 
       @Override
-      public void aF_() {
+      protected void a(int $$0) {
+         this.d(ewy.a(m, $$0x -> this.aE_()).a(this.g / 2 - 155, 100 + $$0).a());
+         this.d(ewy.a(n, $$0x -> {
+            fgr.this.D();
+            this.f.a(fgr.this.o);
+         }).a(this.g / 2 + 5, 100 + $$0).a());
+         this.d(ewy.a(o, $$0x -> {
+            fgr.this.E();
+            this.f.a(fgr.this.o);
+         }).a(this.g / 2 - 75, 130 + $$0).a());
+      }
+
+      @Override
+      public void aE_() {
          this.f.a(fgr.this);
       }
 
       @Override
-      protected void aP_() {
-         super.aP_();
-         this.d(ewh.a(va.k, $$0 -> this.aF_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
-         this.b = new fgr.a.a(this.f, fgr.this.n);
-         this.e(this.b);
+      public boolean aL_() {
+         return false;
       }
 
       @Override
-      public void a(evw $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
-      }
-
-      class a extends exd<fgr.a.b> {
-         public a(euk $$0, Collection<apa> $$1) {
-            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
-
-            for (apa $$2 : $$1) {
-               String $$3 = chd.a(chd.g, $$2.d());
-               if (!$$3.isEmpty()) {
-                  vb $$4 = ve.a($$2.a().f(), vy.a.a(true));
-                  vb $$5 = vb.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, exa.a(a.this.i, $$5, this.b())));
-               }
-            }
-         }
-
-         @Override
-         public int b() {
-            return this.e * 3 / 4;
-         }
-      }
-
-      class b extends exd.a<fgr.a.b> {
-         private final vb b;
-         private final vb c;
-         private final exa d;
-
-         b(vb $$0, vb $$1, exa $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
-         }
-
-         @Override
-         public void a(evw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
-            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
-         }
-
-         @Override
-         public vb a() {
-            return vb.a("narrator.select", va.a(this.b, this.c));
-         }
+      protected void c(ewm $$0) {
+         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
       }
    }
 }

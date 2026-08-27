@@ -1,112 +1,79 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
+import java.util.Objects;
+import java.util.WeakHashMap;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class bhr {
-   public static final Path a = Paths.get("debug/profiling");
-   public static final String b = "metrics";
-   public static final String c = "deviations";
-   public static final String d = "profiling.txt";
-   private static final Logger e = LogUtils.getLogger();
-   private final String f;
+   public static final bhr a = new bhr();
+   private final WeakHashMap<bht, Void> b = new WeakHashMap<>();
 
-   public bhr(String $$0) {
-      this.f = $$0;
+   private bhr() {
    }
 
-   public Path a(Set<bhg> $$0, Map<bhg, List<bhs>> $$1, bgb $$2) {
-      try {
-         Files.createDirectories(a);
-      } catch (IOException var8) {
-         throw new UncheckedIOException(var8);
+   public void a(bht $$0) {
+      this.b.put($$0, null);
+   }
+
+   public List<bhq> a() {
+      Map<String, List<bhq>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bp().stream()).collect(Collectors.groupingBy(bhq::d));
+      return a($$0);
+   }
+
+   private static List<bhq> a(Map<String, List<bhq>> $$0) {
+      return $$0.entrySet().stream().map($$0x -> {
+         String $$1 = (String)$$0x.getKey();
+         List<bhq> $$2 = (List<bhq>)$$0x.getValue();
+         return (bhq)($$2.size() > 1 ? new bhr.a($$1, $$2) : $$2.get(0));
+      }).collect(Collectors.toList());
+   }
+
+   static class a extends bhq {
+      private final List<bhq> b;
+
+      a(String $$0, List<bhq> $$1) {
+         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
+         this.b = $$1;
       }
 
-      try {
-         Path $$4 = Files.createTempDirectory("minecraft-profiling");
-         $$4.toFile().deleteOnExit();
-         Files.createDirectories(a);
-         Path $$5 = $$4.resolve(this.f);
-         Path $$6 = $$5.resolve("metrics");
-         this.a($$0, $$6);
-         if (!$$1.isEmpty()) {
-            this.a($$1, $$5.resolve("deviations"));
+      private static bhq.c a(List<bhq> $$0) {
+         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
+      }
+
+      private static void b(List<bhq> $$0) {
+         for (bhq $$1 : $$0) {
+            $$1.a();
+         }
+      }
+
+      private static double c(List<bhq> $$0) {
+         double $$1 = 0.0;
+
+         for (bhq $$2 : $$0) {
+            $$1 += $$2.c().getAsDouble();
          }
 
-         this.a($$2, $$5);
-         return $$4;
-      } catch (IOException var7) {
-         throw new UncheckedIOException(var7);
+         return $$1 / (double)$$0.size();
       }
-   }
 
-   private void a(Set<bhg> $$0, Path $$1) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Expected at least one sampler to persist");
-      } else {
-         Map<bhf, List<bhg>> $$2 = $$0.stream().collect(Collectors.groupingBy(bhg::e));
-         $$2.forEach(($$1x, $$2x) -> this.a($$1x, $$2x, $$1));
-      }
-   }
-
-   private void a(bhf $$0, List<bhg> $$1, Path $$2) {
-      Path $$3 = $$2.resolve(ac.a($$0.a(), agt::b) + ".csv");
-      Writer $$4 = null;
-
-      try {
-         Files.createDirectories($$3.getParent());
-         $$4 = Files.newBufferedWriter($$3, StandardCharsets.UTF_8);
-         asy.a $$5 = asy.a();
-         $$5.a("@tick");
-
-         for (bhg $$6 : $$1) {
-            $$5.a($$6.d());
+      @Override
+      public boolean equals(@Nullable Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
+            return false;
+         } else if (!super.equals($$0)) {
+            return false;
+         } else {
+            bhr.a $$1 = (bhr.a)$$0;
+            return this.b.equals($$1.b);
          }
-
-         asy $$7 = $$5.a($$4);
-         List<bhg.b> $$8 = $$1.stream().map(bhg::f).collect(Collectors.toList());
-         int $$9 = $$8.stream().mapToInt(bhg.b::a).summaryStatistics().getMin();
-         int $$10 = $$8.stream().mapToInt(bhg.b::b).summaryStatistics().getMax();
-
-         for (int $$11 = $$9; $$11 <= $$10; $$11++) {
-            int $$12 = $$11;
-            Stream<String> $$13 = $$8.stream().map($$1x -> String.valueOf($$1x.a($$12)));
-            Object[] $$14 = Stream.concat(Stream.of(String.valueOf($$11)), $$13).toArray(String[]::new);
-            $$7.a($$14);
-         }
-
-         e.info("Flushed metrics to {}", $$3);
-      } catch (Exception var18) {
-         e.error("Could not save profiler results to {}", $$3, var18);
-      } finally {
-         IOUtils.closeQuietly($$4);
       }
-   }
 
-   private void a(Map<bhg, List<bhs>> $$0, Path $$1) {
-      DateTimeFormatter $$2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
-      $$0.forEach(($$2x, $$3) -> $$3.forEach($$3x -> {
-            String $$4 = $$2.format($$3x.a);
-            Path $$5 = $$1.resolve(ac.a($$2x.d(), agt::b)).resolve(String.format(Locale.ROOT, "%d@%s.txt", $$3x.b, $$4));
-            $$3x.c.a($$5);
-         }));
-   }
-
-   private void a(bgb $$0, Path $$1) {
-      $$0.a($$1.resolve("profiling.txt"));
+      @Override
+      public int hashCode() {
+         return Objects.hash(super.hashCode(), this.b);
+      }
    }
 }

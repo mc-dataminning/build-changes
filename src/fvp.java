@@ -1,66 +1,36 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import org.joml.Matrix4f;
+public class fvp implements fuz<dib> {
+   private final fyd a;
 
-public class fvp {
-   private static final int a = ati.b.a(255, 255, 100, 255);
-   private static final int b = ati.b.a(255, 100, 255, 255);
-   private static final int c = ati.b.a(255, 0, 255, 0);
-   private static final int d = ati.b.a(255, 255, 165, 0);
-   private static final int e = ati.b.a(255, 255, 0, 0);
-   private static final int f = 20;
-   private static final float g = (float) (Math.PI / 10);
-   private final euk h;
-   private final Map<Integer, xn.a> i = new HashMap<>();
-
-   public fvp(euk $$0) {
-      this.h = $$0;
+   public fvp(fva.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
-      frk $$5 = this.h.s;
-      $$5.dM().a(blj.l, $$5.cH().g(100.0), $$0x -> true).forEach($$6 -> {
-         Optional<xn.a> $$7 = Optional.ofNullable(this.i.get($$6.aj()));
-         $$7.map(xn.a::d).map($$1xx -> $$5.dM().a($$1xx)).map($$0xx -> $$0xx.l(this.h.ar())).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dk(), $$6x, b);
-            elb $$7x = $$6x.b(0.0, 0.01F, 0.0);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fsq.a(2.0)), $$7x, 4.0F, c);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fsq.a(2.0)), $$7x, 8.0F, d);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fsq.a(2.0)), $$7x, 20.0F, e);
-         });
-         $$7.map(xn.a::e).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dk(), $$6x.b(), a);
-            fvt.a($$0, $$1, ekw.a(elb.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
-         });
-      });
+   public void a(dib $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
+      cti $$6 = $$0.i();
+      if ($$6 != null) {
+         csk $$7 = $$0.d();
+         blp $$8 = $$7.b($$6, $$0.aB_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+         }
+      }
    }
 
-   private static void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4, elb $$5, elb $$6, int $$7) {
-      eph $$8 = $$1.getBuffer(fsq.a(2.0));
-      $$8.a($$0.c().a(), (float)($$5.c - $$2), (float)($$5.d - $$3), (float)($$5.e - $$4)).a($$7).e();
-      $$8.a($$0.c().a(), (float)($$6.c - $$2), (float)($$6.d - $$3), (float)($$6.e - $$4)).a($$7).e();
-   }
-
-   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, eph $$4, elb $$5, float $$6, int $$7) {
-      for (int $$8 = 0; $$8 < 20; $$8++) {
-         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static void a(float $$0, ept $$1, fsz $$2, int $$3, blp $$4, fyd $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dg(), $$4.dh());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
       }
 
-      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, eph $$5, elb $$6, float $$7, int $$8) {
-      float $$9 = (float)$$0 * (float) (Math.PI / 10);
-      elb $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
-      $$5.a($$1, (float)($$10.c - $$2), (float)($$10.d - $$3), (float)($$10.e - $$4)).a($$8).e();
-   }
-
-   public void a() {
-      this.i.clear();
-   }
-
-   public void a(xn.a $$0) {
-      this.i.put($$0.c(), $$0);
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)aui.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

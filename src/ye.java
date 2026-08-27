@@ -1,22 +1,31 @@
-public record ye(hv b, float c, float d, float e, float f, float g) implements xo {
-   public static final agt a = new agt("debug/worldgen_attempt");
+public record ye(ye.a b) implements xx {
+   public static final ahd a = new ahd("debug/hive");
 
-   public ye(ue $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   public ye(ug $$0) {
+      this(new ye.a($$0));
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   public void a(ug $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public agt a() {
+   public ahd a() {
       return a;
+   }
+
+   public static record a(hx a, String b, int c, int d, boolean e) {
+      public a(ug $$0) {
+         this($$0.e(), $$0.s(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(ug $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

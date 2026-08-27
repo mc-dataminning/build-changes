@@ -1,280 +1,327 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class doq {
-   private static final dip a = cwb.hj.o();
-   private static final dip b = cwb.hk.o();
-   private static final dip c = cwb.iA.o();
-   private static final dip d = cwb.hn.o();
-   private static final dip e = cwb.hv.o();
-   private static final dip f = cwb.hx.o();
-   private static final dip g = cwb.hr.o();
-   private static final dip h = cwb.iC.o();
-   private static final dip i = cwb.dP.o();
-   private final dip j;
-   private final int k;
-   private final dip[] l;
-   private final edc m;
-   private final edc n;
-   private final edc o;
-   private final edc p;
-   private final edc q;
-   private final edc r;
-   private final edc s;
-   private final dol t;
-   private final edc u;
-   private final edc v;
+   public static final float a = -0.50375F;
+   private static final float n = 0.08F;
+   private static final double o = 1.5;
+   private static final double p = 1.5;
+   private static final double q = 1.5625;
+   private static final double r = -0.703125;
+   public static final int b = 64;
+   public static final long c = 4096L;
+   private static final doc s = dod.a(10.0);
+   private static final doc t = dod.a();
+   private static final ahc<doc> u = a("zero");
+   private static final ahc<doc> v = a("y");
+   private static final ahc<doc> w = a("shift_x");
+   private static final ahc<doc> x = a("shift_z");
+   private static final ahc<doc> y = a("overworld/base_3d_noise");
+   private static final ahc<doc> z = a("nether/base_3d_noise");
+   private static final ahc<doc> A = a("end/base_3d_noise");
+   public static final ahc<doc> d = a("overworld/continents");
+   public static final ahc<doc> e = a("overworld/erosion");
+   public static final ahc<doc> f = a("overworld/ridges");
+   public static final ahc<doc> g = a("overworld/ridges_folded");
+   public static final ahc<doc> h = a("overworld/offset");
+   public static final ahc<doc> i = a("overworld/factor");
+   public static final ahc<doc> j = a("overworld/jaggedness");
+   public static final ahc<doc> k = a("overworld/depth");
+   private static final ahc<doc> B = a("overworld/sloped_cheese");
+   public static final ahc<doc> l = a("overworld_large_biomes/continents");
+   public static final ahc<doc> m = a("overworld_large_biomes/erosion");
+   private static final ahc<doc> C = a("overworld_large_biomes/offset");
+   private static final ahc<doc> D = a("overworld_large_biomes/factor");
+   private static final ahc<doc> E = a("overworld_large_biomes/jaggedness");
+   private static final ahc<doc> F = a("overworld_large_biomes/depth");
+   private static final ahc<doc> G = a("overworld_large_biomes/sloped_cheese");
+   private static final ahc<doc> H = a("overworld_amplified/offset");
+   private static final ahc<doc> I = a("overworld_amplified/factor");
+   private static final ahc<doc> J = a("overworld_amplified/jaggedness");
+   private static final ahc<doc> K = a("overworld_amplified/depth");
+   private static final ahc<doc> L = a("overworld_amplified/sloped_cheese");
+   private static final ahc<doc> M = a("end/sloped_cheese");
+   private static final ahc<doc> N = a("overworld/caves/spaghetti_roughness_function");
+   private static final ahc<doc> O = a("overworld/caves/entrances");
+   private static final ahc<doc> P = a("overworld/caves/noodle");
+   private static final ahc<doc> Q = a("overworld/caves/pillars");
+   private static final ahc<doc> R = a("overworld/caves/spaghetti_2d_thickness_modulator");
+   private static final ahc<doc> S = a("overworld/caves/spaghetti_2d");
 
-   public doq(dom $$0, dip $$1, int $$2, dol $$3) {
-      this.j = $$1;
-      this.k = $$2;
-      this.t = $$3;
-      this.m = $$0.a(doh.P);
-      this.l = a($$3.a(new agt("clay_bands")));
-      this.u = $$0.a(doh.N);
-      this.v = $$0.a(doh.O);
-      this.n = $$0.a(doh.Q);
-      this.o = $$0.a(doh.R);
-      this.p = $$0.a(doh.S);
-      this.q = $$0.a(doh.T);
-      this.r = $$0.a(doh.U);
-      this.s = $$0.a(doh.V);
+   private static ahc<doc> a(String $$0) {
+      return ahc.a(ke.ax, new ahd($$0));
    }
 
-   public void a(dom $$0, ctz $$1, ir<ctx> $$2, boolean $$3, dov $$4, final dkl $$5, doc $$6, dop.o $$7) {
-      final hv.a $$8 = new hv.a();
-      final csf $$9 = $$5.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      dki $$12 = new dki() {
-         @Override
-         public dip a(int $$0) {
-            return $$5.a_($$8.q($$0));
-         }
-
-         @Override
-         public void a(int $$0, dip $$1) {
-            cta $$2 = $$5.z();
-            if ($$0 >= $$2.J_() && $$0 < $$2.ak()) {
-               $$5.a($$8.q($$0), $$1, false);
-               if (!$$1.u().c()) {
-                  $$5.e($$8);
-               }
-            }
-         }
-
-         @Override
-         public String toString() {
-            return "ChunkBlockColumn " + $$9;
-         }
-      };
-      dop.g $$13 = new dop.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
-      dop.u $$14 = $$7.apply($$13);
-      hv.a $$15 = new hv.a();
-
-      for (int $$16 = 0; $$16 < 16; $$16++) {
-         for (int $$17 = 0; $$17 < 16; $$17++) {
-            int $$18 = $$10 + $$16;
-            int $$19 = $$11 + $$17;
-            int $$20 = $$5.a(dny.a.a, $$16, $$17) + 1;
-            $$8.p($$18).r($$19);
-            ie<ctx> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
-            if ($$21.a(cue.B)) {
-               this.a($$12, $$18, $$19, $$20, $$5);
-            }
-
-            int $$22 = $$5.a(dny.a.a, $$16, $$17) + 1;
-            $$13.a($$18, $$19);
-            int $$23 = 0;
-            int $$24 = Integer.MIN_VALUE;
-            int $$25 = Integer.MAX_VALUE;
-            int $$26 = $$5.J_();
-
-            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
-               dip $$28 = $$12.a($$27);
-               if ($$28.i()) {
-                  $$23 = 0;
-                  $$24 = Integer.MIN_VALUE;
-               } else if (!$$28.u().c()) {
-                  if ($$24 == Integer.MIN_VALUE) {
-                     $$24 = $$27 + 1;
-                  }
-               } else {
-                  if ($$25 >= $$27) {
-                     $$25 = dly.g;
-
-                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
-                        dip $$30 = $$12.a($$29);
-                        if (!this.a($$30)) {
-                           $$25 = $$29 + 1;
-                           break;
-                        }
-                     }
-                  }
-
-                  $$23++;
-                  int $$31 = $$27 - $$25 + 1;
-                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
-                  if ($$28 == this.j) {
-                     dip $$32 = $$14.tryApply($$18, $$27, $$19);
-                     if ($$32 != null) {
-                        $$12.a($$27, $$32);
-                     }
-                  }
-               }
-            }
-
-            if ($$21.a(cue.W) || $$21.a(cue.X)) {
-               this.a($$13.b(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
-            }
-         }
-      }
+   public static ih<? extends doc> a(pc<doc> $$0) {
+      ii<edn.a> $$1 = $$0.a(ke.aB);
+      ii<doc> $$2 = $$0.a(ke.ax);
+      $$0.a(u, dod.a());
+      int $$3 = dmj.e * 2;
+      int $$4 = dmj.d * 2;
+      $$0.a(v, dod.a($$3, $$4, (double)$$3, (double)$$4));
+      doc $$5 = a($$0, w, dod.b(dod.c(dod.b($$1.b(dos.j)))));
+      doc $$6 = a($$0, x, dod.b(dod.c(dod.c($$1.b(dos.j)))));
+      $$0.a(y, edk.a(0.25, 0.125, 80.0, 160.0, 8.0));
+      $$0.a(z, edk.a(0.25, 0.375, 80.0, 60.0, 8.0));
+      $$0.a(A, edk.a(0.25, 0.25, 80.0, 160.0, 4.0));
+      ih<doc> $$7 = $$0.a(d, dod.b(dod.a($$5, $$6, 0.25, $$1.b(dos.c))));
+      ih<doc> $$8 = $$0.a(e, dod.b(dod.a($$5, $$6, 0.25, $$1.b(dos.d))));
+      doc $$9 = a($$0, f, dod.b(dod.a($$5, $$6, 0.25, $$1.b(dos.i))));
+      $$0.a(g, a($$9));
+      doc $$10 = dod.b($$1.b(dos.M), 1500.0, 0.0);
+      a($$0, $$2, $$10, $$7, $$8, h, i, j, k, B, false);
+      ih<doc> $$11 = $$0.a(l, dod.b(dod.a($$5, $$6, 0.25, $$1.b(dos.g))));
+      ih<doc> $$12 = $$0.a(m, dod.b(dod.a($$5, $$6, 0.25, $$1.b(dos.h))));
+      a($$0, $$2, $$10, $$11, $$12, C, D, E, F, G, false);
+      a($$0, $$2, $$10, $$7, $$8, H, I, J, K, L, true);
+      $$0.a(M, dod.a(dod.a(0L), a($$2, A)));
+      $$0.a(N, b($$1));
+      $$0.a(R, dod.d(dod.a($$1.b(dos.u), 2.0, 1.0, -0.6, -1.3)));
+      $$0.a(S, f($$2, $$1));
+      $$0.a(O, d($$2, $$1));
+      $$0.a(P, e($$2, $$1));
+      return $$0.a(Q, c($$1));
    }
 
-   protected int a(int $$0, int $$1) {
-      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
-      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
+   private static void a(
+      pc<doc> $$0, ii<doc> $$1, doc $$2, ih<doc> $$3, ih<doc> $$4, ahc<doc> $$5, ahc<doc> $$6, ahc<doc> $$7, ahc<doc> $$8, ahc<doc> $$9, boolean $$10
+   ) {
+      dod.w.a $$11 = new dod.w.a($$3);
+      dod.w.a $$12 = new dod.w.a($$4);
+      dod.w.a $$13 = new dod.w.a($$1.b(f));
+      dod.w.a $$14 = new dod.w.a($$1.b(g));
+      doc $$15 = a($$0, $$5, a(dod.a(dod.a(-0.50375F), dod.a(pr.a($$11, $$12, $$14, $$10))), dod.c()));
+      doc $$16 = a($$0, $$6, a(dod.a(pr.a($$11, $$12, $$13, $$14, $$10)), s));
+      doc $$17 = a($$0, $$8, dod.a(dod.a(-64, 320, 1.5, -1.5), $$15));
+      doc $$18 = a($$0, $$7, a(dod.a(pr.b($$11, $$12, $$13, $$14, $$10)), t));
+      doc $$19 = dod.b($$18, $$2.g());
+      doc $$20 = b($$16, dod.a($$17, $$19));
+      $$0.a($$9, dod.a($$20, a($$1, y)));
    }
 
-   protected double b(int $$0, int $$1) {
-      return this.v.a((double)$$0, 0.0, (double)$$1);
+   private static doc a(pc<doc> $$0, ahc<doc> $$1, doc $$2) {
+      return new dod.j($$0.a($$1, $$2));
    }
 
-   private boolean a(dip $$0) {
-      return !$$0.i() && $$0.u().c();
+   private static doc a(ii<doc> $$0, ahc<doc> $$1) {
+      return new dod.j($$0.b($$1));
    }
 
-   @Deprecated
-   public Optional<dip> a(dop.o $$0, dpy $$1, Function<hv, ie<ctx>> $$2, dkl $$3, doc $$4, hv $$5, boolean $$6) {
-      dop.g $$7 = new dop.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().d(kc.as), $$1);
-      dop.u $$8 = $$0.apply($$7);
-      int $$9 = $$5.u();
-      int $$10 = $$5.v();
-      int $$11 = $$5.w();
-      $$7.a($$9, $$11);
-      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
-      dip $$12 = $$8.tryApply($$9, $$10, $$11);
-      return Optional.ofNullable($$12);
+   private static doc a(doc $$0) {
+      return dod.b(dod.a(dod.a($$0.d(), dod.a(-0.6666666666666666)).d(), dod.a(-0.3333333333333333)), dod.a(-3.0));
    }
 
-   private void a(dki $$0, int $$1, int $$2, int $$3, cta $$4) {
-      double $$5 = 0.2;
-      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
-      if (!($$6 <= 0.0)) {
-         double $$7 = 0.75;
-         double $$8 = 1.5;
-         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
-         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
-         int $$11 = aty.a($$10);
-         if ($$3 <= $$11) {
-            for (int $$12 = $$11; $$12 >= $$4.J_(); $$12--) {
-               dip $$13 = $$0.a($$12);
-               if ($$13.a(this.j.b())) {
-                  break;
-               }
-
-               if ($$13.a(cwb.G)) {
-                  return;
-               }
-            }
-
-            for (int $$14 = $$11; $$14 >= $$4.J_() && $$0.a($$14).i(); $$14--) {
-               $$0.a($$14, this.j);
-            }
-         }
-      }
+   public static float a(float $$0) {
+      return -(Math.abs(Math.abs($$0) - 0.6666667F) - 0.33333334F) * 3.0F;
    }
 
-   private void a(int $$0, ctx $$1, dki $$2, hv.a $$3, int $$4, int $$5, int $$6) {
-      double $$7 = 1.28;
-      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
-      if (!($$8 <= 1.8)) {
-         double $$9 = 1.17;
-         double $$10 = 1.5;
-         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
-         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
-         if ($$1.d($$3.d($$4, 63, $$5))) {
-            $$12 -= 2.0;
-         }
+   private static doc b(ii<edn.a> $$0) {
+      doc $$1 = dod.a($$0.b(dos.z));
+      doc $$2 = dod.a($$0.b(dos.A), 0.0, -0.1);
+      return dod.d(dod.b($$2, dod.a($$1.d(), dod.a(-0.4))));
+   }
 
-         double $$13;
-         if ($$12 > 2.0) {
-            $$13 = (double)this.k - $$12 - 7.0;
-            $$12 += (double)this.k;
+   private static doc d(ii<doc> $$0, ii<edn.a> $$1) {
+      doc $$2 = dod.d(dod.b($$1.b(dos.x), 2.0, 1.0));
+      doc $$3 = dod.a($$1.b(dos.y), -0.065, -0.088);
+      doc $$4 = dod.a($$2, $$1.b(dos.v), dod.z.a.a);
+      doc $$5 = dod.a($$2, $$1.b(dos.w), dod.z.a.a);
+      doc $$6 = dod.a(dod.d($$4, $$5), $$3).a(-1.0, 1.0);
+      doc $$7 = a($$0, N);
+      doc $$8 = dod.b($$1.b(dos.B), 0.75, 0.5);
+      doc $$9 = dod.a(dod.a($$8, dod.a(0.37)), dod.a(-10, 30, 0.3, 0.0));
+      return dod.d(dod.c($$9, dod.a($$7, $$6)));
+   }
+
+   private static doc e(ii<doc> $$0, ii<edn.a> $$1) {
+      doc $$2 = a($$0, v);
+      int $$3 = -64;
+      int $$4 = -60;
+      int $$5 = 320;
+      doc $$6 = a($$2, dod.b($$1.b(dos.I), 1.0, 1.0), -60, 320, -1);
+      doc $$7 = a($$2, dod.a($$1.b(dos.J), 1.0, 1.0, -0.05, -0.1), -60, 320, 0);
+      double $$8 = 2.6666666666666665;
+      doc $$9 = a($$2, dod.b($$1.b(dos.K), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      doc $$10 = a($$2, dod.b($$1.b(dos.L), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      doc $$11 = dod.b(dod.a(1.5), dod.d($$9.d(), $$10.d()));
+      return dod.a($$6, -1000000.0, 0.0, dod.a(64.0), dod.a($$7, $$11));
+   }
+
+   private static doc c(ii<edn.a> $$0) {
+      double $$1 = 25.0;
+      double $$2 = 0.3;
+      doc $$3 = dod.b($$0.b(dos.o), 25.0, 0.3);
+      doc $$4 = dod.a($$0.b(dos.p), 0.0, -2.0);
+      doc $$5 = dod.a($$0.b(dos.q), 0.0, 1.1);
+      doc $$6 = dod.a(dod.b($$3, dod.a(2.0)), $$4);
+      return dod.d(dod.b($$6, $$5.f()));
+   }
+
+   private static doc f(ii<doc> $$0, ii<edn.a> $$1) {
+      doc $$2 = dod.b($$1.b(dos.t), 2.0, 1.0);
+      doc $$3 = dod.a($$2, $$1.b(dos.r), dod.z.a.b);
+      doc $$4 = dod.a($$1.b(dos.s), 0.0, (double)Math.floorDiv(-64, 8), 8.0);
+      doc $$5 = a($$0, R);
+      doc $$6 = dod.a($$4, dod.a(-64, 320, 8.0, -40.0)).d();
+      doc $$7 = dod.a($$6, $$5).f();
+      double $$8 = 0.083;
+      doc $$9 = dod.a($$3, dod.b(dod.a(0.083), $$5));
+      return dod.d($$9, $$7).a(-1.0, 1.0);
+   }
+
+   private static doc a(ii<doc> $$0, ii<edn.a> $$1, doc $$2) {
+      doc $$3 = a($$0, S);
+      doc $$4 = a($$0, N);
+      doc $$5 = dod.a($$1.b(dos.C), 8.0);
+      doc $$6 = dod.b(dod.a(4.0), $$5.e());
+      doc $$7 = dod.a($$1.b(dos.D), 0.6666666666666666);
+      doc $$8 = dod.a(dod.a(dod.a(0.27), $$7).a(-1.0, 1.0), dod.a(dod.a(1.5), dod.b(dod.a(-0.64), $$2)).a(0.0, 0.5));
+      doc $$9 = dod.a($$6, $$8);
+      doc $$10 = dod.c(dod.c($$9, a($$0, O)), dod.a($$3, $$4));
+      doc $$11 = a($$0, Q);
+      doc $$12 = dod.a($$11, -1000000.0, 0.03, dod.a(-1000000.0), $$11);
+      return dod.d($$10, $$12);
+   }
+
+   private static doc b(doc $$0) {
+      doc $$1 = dod.f($$0);
+      return dod.b(dod.a($$1), dod.a(0.64)).i();
+   }
+
+   protected static dop a(ii<doc> $$0, ii<edn.a> $$1, boolean $$2, boolean $$3) {
+      doc $$4 = dod.a($$1.b(dos.k), 0.5);
+      doc $$5 = dod.a($$1.b(dos.l), 0.67);
+      doc $$6 = dod.a($$1.b(dos.n), 0.7142857142857143);
+      doc $$7 = dod.a($$1.b(dos.m));
+      doc $$8 = a($$0, w);
+      doc $$9 = a($$0, x);
+      doc $$10 = dod.a($$8, $$9, 0.25, $$1.b($$2 ? dos.e : dos.a));
+      doc $$11 = dod.a($$8, $$9, 0.25, $$1.b($$2 ? dos.f : dos.b));
+      doc $$12 = a($$0, $$2 ? D : ($$3 ? I : i));
+      doc $$13 = a($$0, $$2 ? F : ($$3 ? K : k));
+      doc $$14 = b(dod.c($$12), $$13);
+      doc $$15 = a($$0, $$2 ? G : ($$3 ? L : B));
+      doc $$16 = dod.c($$15, dod.b(dod.a(5.0), a($$0, O)));
+      doc $$17 = dod.a($$15, -1000000.0, 1.5625, $$16, a($$0, $$1, $$15));
+      doc $$18 = dod.c(b(a($$3, $$17)), a($$0, P));
+      doc $$19 = a($$0, v);
+      int $$20 = Stream.of(dot.a.values()).mapToInt($$0x -> $$0x.c).min().orElse(-dmj.e * 2);
+      int $$21 = Stream.of(dot.a.values()).mapToInt($$0x -> $$0x.d).max().orElse(-dmj.e * 2);
+      doc $$22 = a($$19, dod.b($$1.b(dos.E), 1.5, 1.5), $$20, $$21, 0);
+      float $$23 = 4.0F;
+      doc $$24 = a($$19, dod.b($$1.b(dos.F), 4.0, 4.0), $$20, $$21, 0).d();
+      doc $$25 = a($$19, dod.b($$1.b(dos.G), 4.0, 4.0), $$20, $$21, 0).d();
+      doc $$26 = dod.a(dod.a(-0.08F), dod.d($$24, $$25));
+      doc $$27 = dod.a($$1.b(dos.H));
+      return new dop(
+         $$4,
+         $$5,
+         $$6,
+         $$7,
+         $$10,
+         $$11,
+         a($$0, $$2 ? l : d),
+         a($$0, $$2 ? m : e),
+         $$13,
+         a($$0, f),
+         a($$3, dod.a($$14, dod.a(-0.703125)).a(-64.0, 64.0)),
+         $$18,
+         $$22,
+         $$26,
+         $$27
+      );
+   }
+
+   private static dop b(ii<doc> $$0, ii<edn.a> $$1, doc $$2) {
+      doc $$3 = a($$0, w);
+      doc $$4 = a($$0, x);
+      doc $$5 = dod.a($$3, $$4, 0.25, $$1.b(dos.a));
+      doc $$6 = dod.a($$3, $$4, 0.25, $$1.b(dos.b));
+      doc $$7 = b($$2);
+      return new dop(dod.a(), dod.a(), dod.a(), dod.a(), $$5, $$6, dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), $$7, dod.a(), dod.a(), dod.a());
+   }
+
+   private static doc a(boolean $$0, doc $$1) {
+      return a($$1, -64, 384, $$0 ? 16 : 80, $$0 ? 0 : 64, -0.078125, 0, 24, $$0 ? 0.4 : 0.1171875);
+   }
+
+   private static doc a(ii<doc> $$0, int $$1, int $$2) {
+      return a(a($$0, z), $$1, $$2, 24, 0, 0.9375, -8, 24, 2.5);
+   }
+
+   private static doc a(doc $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, 72, -184, -23.4375, 4, 32, -0.234375);
+   }
+
+   protected static dop a(ii<doc> $$0, ii<edn.a> $$1) {
+      return b($$0, $$1, a($$0, 0, 128));
+   }
+
+   protected static dop b(ii<doc> $$0, ii<edn.a> $$1) {
+      return b($$0, $$1, a($$0, -64, 192));
+   }
+
+   protected static dop c(ii<doc> $$0, ii<edn.a> $$1) {
+      return b($$0, $$1, a(a($$0, A), 0, 256));
+   }
+
+   private static doc c(doc $$0) {
+      return a($$0, 0, 128);
+   }
+
+   protected static dop a(ii<doc> $$0) {
+      doc $$1 = dod.c(dod.a(0L));
+      doc $$2 = b(c(a($$0, M)));
+      return new dop(
+         dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), $$1, dod.a(), dod.a(), c(dod.a($$1, dod.a(-0.703125))), $$2, dod.a(), dod.a(), dod.a()
+      );
+   }
+
+   protected static dop a() {
+      return new dop(dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a(), dod.a());
+   }
+
+   private static doc a(doc $$0, doc $$1) {
+      doc $$2 = dod.a(dod.b(), $$1, $$0);
+      return dod.b(dod.c($$2));
+   }
+
+   private static doc b(doc $$0, doc $$1) {
+      doc $$2 = dod.b($$1, $$0);
+      return dod.b(dod.a(4.0), $$2.h());
+   }
+
+   private static doc a(doc $$0, doc $$1, int $$2, int $$3, int $$4) {
+      return dod.a(dod.a($$0, (double)$$2, (double)($$3 + 1), $$1, dod.a((double)$$4)));
+   }
+
+   private static doc a(doc $$0, int $$1, int $$2, int $$3, int $$4, double $$5, int $$6, int $$7, double $$8) {
+      doc $$10 = dod.a($$1 + $$2 - $$3, $$1 + $$2 - $$4, 1.0, 0.0);
+      doc $$9 = dod.a($$10, $$5, $$0);
+      doc $$11 = dod.a($$1 + $$6, $$1 + $$7, 0.0, 1.0);
+      return dod.a($$11, $$8, $$9);
+   }
+
+   protected static final class a {
+      protected static double a(double $$0) {
+         if ($$0 < -0.75) {
+            return 0.5;
+         } else if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.5) {
+            return 1.0;
          } else {
-            $$12 = 0.0;
-            $$13 = 0.0;
-         }
-
-         double $$15 = $$12;
-         auf $$16 = this.t.a($$4, 0, $$5);
-         int $$17 = 2 + $$16.a(4);
-         int $$18 = this.k + 18 + $$16.a(10);
-         int $$19 = 0;
-
-         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
-            if ($$2.a($$20).i() && $$20 < (int)$$15 && $$16.j() > 0.01
-               || $$2.a($$20).a(cwb.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
-               if ($$19 <= $$17 && $$20 > $$18) {
-                  $$2.a($$20, i);
-                  $$19++;
-               } else {
-                  $$2.a($$20, h);
-               }
-            }
-         }
-      }
-   }
-
-   private static dip[] a(auf $$0) {
-      dip[] $$1 = new dip[192];
-      Arrays.fill($$1, c);
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$2 += $$0.a(5) + 1;
-         if ($$2 < $$1.length) {
-            $$1[$$2] = b;
+            return $$0 < 0.75 ? 2.0 : 3.0;
          }
       }
 
-      a($$0, $$1, 1, d);
-      a($$0, $$1, 2, e);
-      a($$0, $$1, 1, f);
-      int $$3 = $$0.a(9, 15);
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
-         $$1[$$5] = a;
-         if ($$5 - 1 > 0 && $$0.h()) {
-            $$1[$$5 - 1] = g;
-         }
-
-         if ($$5 + 1 < $$1.length && $$0.h()) {
-            $$1[$$5 + 1] = g;
-         }
-
-         $$4++;
-      }
-
-      return $$1;
-   }
-
-   private static void a(auf $$0, dip[] $$1, int $$2, dip $$3) {
-      int $$4 = $$0.a(6, 15);
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         int $$6 = $$2 + $$0.a(3);
-         int $$7 = $$0.a($$1.length);
-
-         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
-            $$1[$$7 + $$8] = $$3;
+      protected static double b(double $$0) {
+         if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.0) {
+            return 1.0;
+         } else {
+            return $$0 < 0.5 ? 1.5 : 2.0;
          }
       }
-   }
-
-   protected dip a(int $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
-      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
    }
 }

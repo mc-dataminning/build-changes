@@ -1,51 +1,70 @@
+import com.google.common.hash.Hashing;
+import com.google.common.hash.HashingOutputStream;
+import com.google.gson.JsonElement;
+import com.google.gson.stream.JsonWriter;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.ToIntFunction;
+import org.slf4j.Logger;
 
-public class kk {
-   private final Path a;
+public interface kk {
+   ToIntFunction<String> a = ac.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.put("type", 0);
+      $$0.put("parent", 1);
+      $$0.defaultReturnValue(2);
+   });
+   Comparator<String> b = Comparator.comparingInt(a).thenComparing($$0 -> (String)$$0);
+   Logger c = LogUtils.getLogger();
 
-   public kk(Path $$0) {
-      this.a = $$0;
+   CompletableFuture<?> a(ki var1);
+
+   String a();
+
+   static <T> CompletableFuture<?> a(ki $$0, Codec<T> $$1, T $$2, Path $$3) {
+      JsonElement $$4 = ac.a($$1.encodeStart(JsonOps.INSTANCE, $$2), IllegalStateException::new);
+      return a($$0, $$4, $$3);
    }
 
-   public Path a() {
-      return this.a;
+   static CompletableFuture<?> a(ki $$0, JsonElement $$1, Path $$2) {
+      return CompletableFuture.runAsync(() -> {
+         try {
+            ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
+            HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
+            JsonWriter $$5 = new JsonWriter(new OutputStreamWriter($$4, StandardCharsets.UTF_8));
+
+            try {
+               $$5.setSerializeNulls(false);
+               $$5.setIndent("  ");
+               aty.a($$5, $$1, b);
+            } catch (Throwable var9) {
+               try {
+                  $$5.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+
+               throw var9;
+            }
+
+            $$5.close();
+            $$0.writeIfNeeded($$2, $$3.toByteArray(), $$4.hash());
+         } catch (IOException var10) {
+            c.error("Failed to save file to {}", $$2, var10);
+         }
+      }, ac.f());
    }
 
-   public Path a(kk.b $$0) {
-      return this.a().resolve($$0.d);
-   }
-
-   public kk.a a(kk.b $$0, String $$1) {
-      return new kk.a(this, $$0, $$1);
-   }
-
-   public static class a {
-      private final Path a;
-      private final String b;
-
-      a(kk $$0, kk.b $$1, String $$2) {
-         this.a = $$0.a($$1);
-         this.b = $$2;
-      }
-
-      public Path a(agt $$0, String $$1) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
-      }
-
-      public Path a(agt $$0) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
-      }
-   }
-
-   public static enum b {
-      a("data"),
-      b("assets"),
-      c("reports");
-
-      final String d;
-
-      private b(String $$0) {
-         this.d = $$0;
-      }
+   @FunctionalInterface
+   public interface a<T extends kk> {
+      T create(km var1);
    }
 }

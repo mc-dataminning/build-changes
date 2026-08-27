@@ -1,71 +1,26 @@
-import javax.annotation.Nullable;
-
-public class fbz extends fcc implements aue {
-   @Nullable
-   private vb a;
-   @Nullable
-   private vb b;
-   private int c;
-   private boolean k;
-   private final boolean l;
-
-   public fbz(boolean $$0) {
-      super(euc.a);
-      this.l = $$0;
+public class fbz extends fct {
+   public fbz(vd $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean aE_() {
+   public boolean aL_() {
       return false;
    }
 
    @Override
-   protected boolean aO_() {
+   protected boolean aM_() {
       return false;
    }
 
    @Override
-   public void a(vb $$0) {
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
+   }
+
+   @Override
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
       this.b($$0);
-   }
-
-   @Override
-   public void b(vb $$0) {
-      this.a = $$0;
-      this.c(vb.c("menu.working"));
-   }
-
-   @Override
-   public void c(vb $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.k = true;
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (this.l) {
-            this.f.a(null);
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.i, vb.i().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
-         }
-      }
    }
 }

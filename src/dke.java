@@ -1,58 +1,36 @@
-public interface dke {
-   void a(dkg var1, double var2);
+public enum dke implements ave {
+   a("north_south"),
+   b("east_west"),
+   c("ascending_east"),
+   d("ascending_west"),
+   e("ascending_north"),
+   f("ascending_south"),
+   g("south_east"),
+   h("south_west"),
+   i("north_west"),
+   j("north_east");
 
-   void a(dkg var1, double var2, double var4, long var6);
+   private final String k;
 
-   void a(dkg var1, double var2, double var4);
+   private dke(String $$0) {
+      this.k = $$0;
+   }
 
-   void a(dkg var1, int var2);
+   public String a() {
+      return this.k;
+   }
 
-   void b(dkg var1, int var2);
+   @Override
+   public String toString() {
+      return this.k;
+   }
 
-   void b(dkg var1, double var2);
+   public boolean b() {
+      return this == e || this == c || this == f || this == d;
+   }
 
-   void c(dkg var1, double var2);
-
-   public static class a implements dke {
-      private final dkg a;
-
-      public a(dkg $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(dkg $$0, double $$1) {
-         this.a.a($$1);
-      }
-
-      @Override
-      public void a(dkg $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(dkg $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(dkg $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(dkg $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(dkg $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(dkg $$0, double $$1) {
-         this.a.b($$1);
-      }
+   @Override
+   public String c() {
+      return this.k;
    }
 }

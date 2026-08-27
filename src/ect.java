@@ -1,22 +1,9 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class ect implements ecw {
-   public static final Codec<ect> a = RecordCodecBuilder.create($$0 -> $$0.group(sj.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, ect::new));
-   private final sj b;
+public abstract class ect {
+   public static final Codec<ect> c = kd.o.q().dispatch("predicate_type", ect::a, ecu::codec);
 
-   public ect(sj $$0) {
-      this.b = $$0;
-   }
+   public abstract boolean a(dja var1, aup var2);
 
-   @Override
-   public sj a(auf $$0, @Nullable sj $$1) {
-      return $$1 == null ? this.b.h() : $$1.a(this.b);
-   }
-
-   @Override
-   public ecx<?> a() {
-      return ecx.c;
-   }
+   protected abstract ecu<?> a();
 }

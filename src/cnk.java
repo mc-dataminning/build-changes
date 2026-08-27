@@ -1,24 +1,20 @@
-public class cnk extends cmc {
-   public cnk(cmc.a $$0) {
+public class cnk extends cmm {
+   public cnk(cmm.a $$0) {
       super($$0);
    }
 
    @Override
-   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
-      cmh $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arc.xD, ard.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cfn $$4 = new cfn($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   public bjv a(cmr $$0, cfb $$1, bmf $$2, bju $$3) {
+      if ($$2 instanceof bmv $$4 && $$2.bx() && !$$4.i() && $$4.g()) {
+         if (!$$1.dM().B) {
+            $$4.a(arn.g);
+            $$2.dM().a($$2, dnk.v, $$2.dk());
+            $$0.h(1);
+         }
+
+         return bjv.a($$1.dM().B);
       }
 
-      $$1.b(arm.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
-
-      return bjm.a($$3, $$0.y_());
+      return bjv.d;
    }
 }

@@ -1,105 +1,160 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dbj extends cyc {
-   public static final MapCodec<dbj> b = b(dbj::new);
-   public static final djg c = djf.w;
+public class dbj {
+   public static final dbj.e[] a = new dbj.e[]{dbj.e.a, dbj.e.b, dbj.e.c};
+   private final dbj.b b;
 
-   @Override
-   public MapCodec<dbj> a() {
-      return b;
+   public dbj(dbi $$0) {
+      this(new dbj.a($$0));
    }
 
-   public dbj(dio.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, ia.d).a(c, Boolean.valueOf(false)));
+   public dbj(dbj.b $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(a, c);
+   public boolean a(dja $$0, cso $$1, hx $$2, ic $$3) {
+      return ic.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   @Override
-   public dip a(dip $$0, dcl $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   public Optional<dbj.c> a(dja $$0, ctj $$1, hx $$2, aup $$3) {
+      return ic.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
    }
 
-   @Override
-   public dip a(dip $$0, dav $$1) {
-      return $$0.a($$1.a($$0.c(a)));
+   public long a(dja $$0, ctj $$1, hx $$2, boolean $$3) {
+      return ic.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
    }
 
-   @Override
-   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
-      if ($$0.c(c)) {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+   public Optional<dbj.c> a(dja $$0, ctj $$1, hx $$2, ic $$3, aup $$4, boolean $$5) {
+      return ic.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
+
+   private long a(dja $$0, ctj $$1, hx $$2, ic $$3, boolean $$4) {
+      return ic.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<dbj.c> a(dja $$0, ctj $$1, hx $$2, ic $$3, ic $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<dbj.c> a(dja $$0, cso $$1, hx $$2, ic $$3, ic $$4, dbj.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (dbj.e $$6 : this.b.a()) {
+            dbj.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
+            }
+         }
+
+         return Optional.empty();
       } else {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-         $$1.a($$2, this, 2);
-      }
-
-      this.a($$1, $$2, $$0);
-   }
-
-   @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      if ($$0.c(a) == $$1 && !$$0.c(c)) {
-         this.a($$3, $$4);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private void a(csz $$0, hv $$1) {
-      if (!$$0.y_() && !$$0.M().a($$1, this)) {
-         $$0.a($$1, this, 2);
+         return Optional.empty();
       }
    }
 
-   protected void a(csy $$0, hv $$1, dip $$2) {
-      ia $$3 = $$2.c(a);
-      hv $$4 = $$1.a($$3.g());
-      $$0.a($$4, this, $$1);
-      $$0.a($$4, this, $$3);
+   public Optional<dbj.c> a(ctj $$0, dbj.c $$1, boolean $$2) {
+      dja $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
    }
 
-   @Override
-   public boolean f_(dip $$0) {
-      return true;
+   public static class a implements dbj.b {
+      protected dbi a;
+
+      public a(dbi $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public dja a(dja $$0, cso $$1, hx $$2, ic $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(cso $$0, hx $$1, hx $$2, ic $$3, dja $$4) {
+         return $$4.i() || $$4.a(this.a) || $$4.a(cwl.G) && $$4.u().b();
+      }
+
+      @Override
+      public boolean a(cso $$0, hx $$1, dbj.c $$2) {
+         dja $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
    }
 
-   @Override
-   public int b(dip $$0, cse $$1, hv $$2, ia $$3) {
-      return $$0.b($$1, $$2, $$3);
-   }
+   public interface b {
+      @Nullable
+      dja a(dja var1, cso var2, hx var3, ic var4);
 
-   @Override
-   public int a(dip $$0, cse $$1, hv $$2, ia $$3) {
-      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
-   }
+      boolean a(cso var1, hx var2, dbj.c var3);
 
-   @Override
-   public void b(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.y_() && $$0.c(c) && !$$1.M().a($$2, this)) {
-            dip $$5 = $$0.a(c, Boolean.valueOf(false));
-            $$1.a($$2, $$5, 18);
-            this.a($$1, $$2, $$5);
+      default dbj.e[] a() {
+         return dbj.a;
+      }
+
+      default boolean a(dja $$0, ic $$1) {
+         return dbi.a($$0, $$1);
+      }
+
+      default boolean a(dja $$0) {
+         return false;
+      }
+
+      default boolean b(dja $$0, ic $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(ctj $$0, dbj.c $$1, dja $$2, boolean $$3) {
+         dja $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
+         } else {
+            return false;
          }
       }
    }
 
-   @Override
-   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.B && $$0.c(c) && $$1.M().a($$2, this)) {
-            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
-         }
-      }
+   public static record c(hx a, ic b) {
    }
 
-   @Override
-   public dip a(coq $$0) {
-      return this.o().a(a, $$0.d().g().g());
+   @FunctionalInterface
+   public interface d {
+      boolean test(cso var1, hx var2, dbj.c var3);
+   }
+
+   public static enum e {
+      a {
+         @Override
+         public dbj.c a(hx $$0, ic $$1, ic $$2) {
+            return new dbj.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public dbj.c a(hx $$0, ic $$1, ic $$2) {
+            return new dbj.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public dbj.c a(hx $$0, ic $$1, ic $$2) {
+            return new dbj.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract dbj.c a(hx var1, ic var2, ic var3);
    }
 }

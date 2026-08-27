@@ -1,39 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import java.util.stream.Stream;
 
-public class duk extends duh {
-   public static final Codec<duk> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
-            )
-            .apply($$0, duk::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
+public class duk implements dtr {
+   public static final Codec<duk> a = atq.b(dyd.c).fieldOf("features").xmap(duk::new, $$0 -> $$0.b).codec();
+   public final il<dyd> b;
 
-   public duk(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
-   }
-
-   public duk(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public duk(il<dyd> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected dui<?> b() {
-      return dui.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public Stream<dra<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

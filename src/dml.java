@@ -1,121 +1,91 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-public class dml<T extends dmg> {
-   private final Class<T> a;
-   private final Long2ObjectFunction<dmt> b;
-   private final Long2ObjectMap<dmk<T>> c = new Long2ObjectOpenHashMap();
-   private final LongSortedSet d = new LongAVLTreeSet();
+public enum dml {
+   a {
+      @Override
+      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
+         hx $$5 = new hx(0, 128, 0);
 
-   public dml(Class<T> $$0, Long2ObjectFunction<dmt> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+         for (cah $$6 : $$2) {
+            $$6.a($$5);
+         }
 
-   public void a(ekw $$0, asm<dmk<T>> $$1) {
-      int $$2 = 2;
-      int $$3 = ix.a($$0.a - 2.0);
-      int $$4 = ix.a($$0.b - 4.0);
-      int $$5 = ix.a($$0.c - 2.0);
-      int $$6 = ix.a($$0.d + 2.0);
-      int $$7 = ix.a($$0.e + 0.0);
-      int $$8 = ix.a($$0.f + 2.0);
+         $$1.a(b);
+      }
+   },
+   b {
+      @Override
+      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new hx(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
+         }
+      }
+   },
+   c {
+      @Override
+      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<dsx.a> $$8 = dsx.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               dsx.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (cah $$11 : $$2) {
+                     $$11.a(new hx($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
-         long $$10 = ix.b($$9, 0, 0);
-         long $$11 = ix.b($$9, -1, -1);
-         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+                  for (hx $$13 : hx.a(new hx($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new hx($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
 
-         while ($$12.hasNext()) {
-            long $$13 = $$12.nextLong();
-            int $$14 = ix.c($$13);
-            int $$15 = ix.d($$13);
-            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
-               dmk<T> $$16 = (dmk<T>)this.c.get($$13);
-               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
-                  return;
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, cti.a.b);
+                  dul $$14 = new dul(true, ImmutableList.of($$10), new hx(0, 128, 0));
+                  drn.J.a($$14, $$0, $$0.l().g(), aup.a(), new hx($$10.a(), 45, $$10.b()));
                }
+            } else if ($$6) {
+               $$1.a(d);
             }
          }
       }
-   }
+   },
+   d {
+      @Override
+      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
 
-   public LongStream a(long $$0) {
-      int $$1 = csf.a($$0);
-      int $$2 = csf.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
-      if ($$3.isEmpty()) {
-         return LongStream.empty();
-      } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+            for (cah $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dr(), $$5.dt(), $$5.dx(), 6.0F, cti.a.a);
+               $$5.am();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new hx(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (cah $$6 : $$2) {
+               $$6.a(new hx(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new hx(0, 128, 0), 0);
+         }
       }
-   }
+   },
+   e {
+      @Override
+      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
+      }
+   };
 
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = ix.b($$0, 0, $$1);
-      long $$3 = ix.b($$0, -1, $$1);
-      return this.d.subSet($$2, $$3 + 1L);
-   }
-
-   public Stream<dmk<T>> b(long $$0) {
-      return this.a($$0).<dmk<T>>mapToObj(this.c::get).filter(Objects::nonNull);
-   }
-
-   private static long f(long $$0) {
-      return csf.c(ix.b($$0), ix.d($$0));
-   }
-
-   public dmk<T> c(long $$0) {
-      return (dmk<T>)this.c.computeIfAbsent($$0, this::g);
-   }
-
-   @Nullable
-   public dmk<T> d(long $$0) {
-      return (dmk<T>)this.c.get($$0);
-   }
-
-   private dmk<T> g(long $$0) {
-      long $$1 = f($$0);
-      dmt $$2 = (dmt)this.b.get($$1);
-      this.d.add($$0);
-      return new dmk<>(this.a, $$2);
-   }
-
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
-      return $$0;
-   }
-
-   public void b(ekw $$0, asm<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
-   }
-
-   public <U extends T> void a(dmn<T, U> $$0, ekw $$1, asm<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
-   }
-
-   public void e(long $$0) {
-      this.c.remove($$0);
-      this.d.remove($$0);
-   }
-
-   @avd
-   public int b() {
-      return this.d.size();
-   }
+   public abstract void a(amz var1, dmm var2, List<cah> var3, int var4, hx var5);
 }

@@ -11,13 +11,13 @@ public class by extends cv<by.a> {
       return by.a.a;
    }
 
-   public void a(amq $$0, ceq $$1, cmh $$2) {
+   public void a(ana $$0, cfa $$1, cmr $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cmh $$7 = $$1.a($$6);
+         cmr $$7 = $$1.a($$6);
          if ($$7.b()) {
             $$4++;
          } else {
@@ -31,16 +31,16 @@ public class by extends cv<by.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(amq $$0, ceq $$1, cmh $$2, int $$3, int $$4, int $$5) {
+   private void a(ana $$0, cfa $$1, cmr $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
    public static record a(Optional<bb> b, by.a.a c, List<ca> d) implements cv.a {
       public static final Codec<by.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atg.a(bp.b, "player").forGetter(by.a::a),
-                  atg.a(by.a.a.a, "slots", by.a.a.b).forGetter(by.a::b),
-                  atg.a(ca.a.listOf(), "items", List.of()).forGetter(by.a::c)
+                  atq.a(bp.b, "player").forGetter(by.a::a),
+                  atq.a(by.a.a.a, "slots", by.a.a.b).forGetter(by.a::b),
+                  atq.a(ca.a.listOf(), "items", List.of()).forGetter(by.a::c)
                )
                .apply($$0, by.a::new)
       );
@@ -53,17 +53,17 @@ public class by extends cv<by.a> {
          return am.f.a(new by.a(Optional.empty(), by.a.a.b, List.of($$0)));
       }
 
-      public static an<by.a> a(csx... $$0) {
+      public static an<by.a> a(cth... $$0) {
          ca[] $$1 = new ca[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-            $$1[$$2] = new ca(Optional.empty(), Optional.of(ij.a($$0[$$2].k().j())), ck.d.c, ck.d.c, List.of(), List.of(), Optional.empty(), Optional.empty());
+            $$1[$$2] = new ca(Optional.empty(), Optional.of(il.a($$0[$$2].k().j())), ck.d.c, ck.d.c, List.of(), List.of(), Optional.empty(), Optional.empty());
          }
 
          return a($$1);
       }
 
-      public boolean a(ceq $$0, cmh $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cfa $$0, cmr $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -77,7 +77,7 @@ public class by extends cv<by.a> {
                   return true;
                }
 
-               cmh $$8 = $$0.a($$7);
+               cmr $$8 = $$0.a($$7);
                if (!$$8.b()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }
@@ -105,9 +105,9 @@ public class by extends cv<by.a> {
       public static record a(ck.d c, ck.d d, ck.d e) {
          public static final Codec<by.a.a> a = RecordCodecBuilder.create(
             $$0 -> $$0.group(
-                     atg.a(ck.d.d, "occupied", ck.d.c).forGetter(by.a.a::a),
-                     atg.a(ck.d.d, "full", ck.d.c).forGetter(by.a.a::b),
-                     atg.a(ck.d.d, "empty", ck.d.c).forGetter(by.a.a::c)
+                     atq.a(ck.d.d, "occupied", ck.d.c).forGetter(by.a.a::a),
+                     atq.a(ck.d.d, "full", ck.d.c).forGetter(by.a.a::b),
+                     atq.a(ck.d.d, "empty", ck.d.c).forGetter(by.a.a::c)
                   )
                   .apply($$0, by.a.a::new)
          );

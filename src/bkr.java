@@ -1,15 +1,19 @@
-public enum bkr {
-   a(n.j),
-   b(n.m),
-   c(n.j);
+import com.mojang.serialization.Codec;
 
-   private final n d;
+public enum bkr implements ave {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
 
-   private bkr(n $$0) {
-      this.d = $$0;
+   public static final Codec<bkr> d = ave.a(bkr::values);
+   private final String e;
+
+   private bkr(String $$0) {
+      this.e = $$0;
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.e;
    }
 }

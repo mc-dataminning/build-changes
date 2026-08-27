@@ -1,48 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class den extends cvl {
+public class den extends cws implements cwm {
    public static final MapCodec<den> a = b(den::new);
-   public static final djn<dic> b = djf.by;
+   protected static final float b = 6.0F;
+   protected static final emf c = cwj.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<den> a() {
       return a;
    }
 
-   public den(dio.d $$0) {
+   protected den(diz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dic.a));
    }
 
    @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b);
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return c;
    }
 
    @Override
-   public dce b_(dip $$0) {
-      return dce.c;
-   }
-
-   @Nullable
-   @Override
-   public dgd a(hv $$0, dip $$1) {
-      return new dhw($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
-      return $$0 instanceof amp $$3
-         ? a($$2, dgf.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.d().b($$3, $$2x))
-         : a($$2, dgf.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.d().a($$0x, $$1x));
+   public boolean b(ctl $$0, hx $$1, dja $$2) {
+      return true;
    }
 
    @Override
-   public void a(cmh $$0, @Nullable cse $$1, List<vb> $$2, cny $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      ctq.a($$0, $$2, "spawn_data");
+   public boolean a(cti $$0, aup $$1, hx $$2, dja $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(amz $$0, aup $$1, hx $$2, dja $$3) {
+      cyr $$4 = (cyr)($$3.a(cwl.bu) ? cwl.iI : cwl.iH);
+      if ($$4.o().a($$0, $$2) && $$0.u($$2.c())) {
+         cyr.a($$0, $$4.o(), $$2, 2);
+      }
    }
 }

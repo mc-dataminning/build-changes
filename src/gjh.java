@@ -1,37 +1,53 @@
-public class gjh extends gjl {
-   private final vb a;
-   private exa b = exa.a;
-   private final fcc c;
-   private int v;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-   public gjh(fcc $$0, vb $$1, vb $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public final class gjh extends gjf {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
+
+   @Override
+   public void a(giz $$0) {
+      if (eva.N().z()) {
+         super.a($$0);
+      }
+   }
+
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
    @Override
-   public void aP_() {
-      this.f.ab().a();
-      this.b = exa.a(this.i, this.a, this.g - 50);
-      this.v = this.b.a() * 9;
-      this.d(ewh.a(va.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.v / 2 + 9, 200, 20).a());
+   public void f() {
+      this.b.add((long)eva.N().n());
+      this.h();
+      this.c.add(eva.N().o());
+   }
+
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
    }
 
    @Override
-   public vb h() {
-      return vb.i().b(this.e).f(": ").b(this.a);
+   public void b(giz $$0) {
+      $$0.send(gja.c, $$0x -> {
+         $$0x.a(gjc.r, new LongArrayList(this.b));
+         $$0x.a(gjc.s, new LongArrayList(this.c));
+         $$0x.a(gjc.t, new LongArrayList(this.d));
+         $$0x.a(gjc.u, this.e());
+         $$0x.a(gjc.v, eva.N().m.aA());
+         $$0x.a(gjc.w, (int)a);
+      });
+      this.g();
    }
 
-   @Override
-   public void aF_() {
-      euk.N().a(this.c);
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.v / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.g / 2, this.h / 2 - this.v / 2);
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

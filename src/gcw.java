@@ -1,6 +1,12 @@
-import javax.annotation.Nullable;
+public class gcw<T extends blp, M extends flq<T>> extends gcc<T, M> {
+   private static final fth a = fth.p(new ahd("textures/entity/spider_eyes.png"));
 
-@Deprecated
-public interface gcw {
-   float call(cmh var1, @Nullable fmt var2, @Nullable blv var3, int var4);
+   public gcw(gaa<T, M> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public fth a() {
+      return a;
+   }
 }

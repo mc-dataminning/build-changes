@@ -1,19 +1,20 @@
+import com.google.common.collect.Lists;
+import java.util.Collection;
+
 public class rs {
-   private static sc a = new ru();
+   public static final rs a = new rs();
+   private final Collection<rm> b = Lists.newCopyOnWriteArrayList();
 
-   public static void a(sc $$0) {
-      a = $$0;
+   public void a(rm $$0) {
+      this.b.add($$0);
    }
 
-   public static void a(rk $$0) {
-      a.a($$0);
+   public void a() {
+      this.b.clear();
    }
 
-   public static void b(rk $$0) {
-      a.b($$0);
-   }
-
-   public static void a() {
-      a.a();
+   public void b() {
+      this.b.forEach(rm::b);
+      this.b.removeIf(rm::l);
    }
 }

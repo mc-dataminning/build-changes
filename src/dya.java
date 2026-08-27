@@ -1,39 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dya extends dxu {
-   public static final Codec<dya> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dny.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dya::new)
-   );
-   private final dny.a c;
-   private final int d;
-   private final int e;
+public class dya extends dyg {
+   private static final dya c = new dya();
+   public static final Codec<dya> a = Codec.unit(() -> c);
 
-   private dya(dny.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static dya a(dny.a $$0, int $$1, int $$2) {
-      return new dya($$0, $$1, $$2);
+   public static dya a() {
+      return c;
    }
 
    @Override
-   protected boolean a(dxt $$0, auf $$1, hv $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public Stream<hx> a_(dye $$0, aup $$1, hx $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new hx($$3, $$2.v(), $$4));
    }
 
    @Override
-   public dxw<?> b() {
-      return dxw.c;
+   public dyh<?> b() {
+      return dyh.m;
    }
 }

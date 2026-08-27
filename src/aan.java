@@ -1,54 +1,95 @@
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public record aan(UUID a, int b, @Nullable vn c, vu.a d, @Nullable vb e, vf f, ux.b g) implements wu<yo> {
-   public aan(ue $$0) {
-      this($$0.p(), $$0.n(), $$0.c(vn::a), new vu.a($$0), $$0.c(ue::m), vf.a($$0), new ux.b($$0));
+public class aan implements xd<yx> {
+   private final int a;
+   private final byte b;
+   private final boolean c;
+   @Nullable
+   private final List<efr> d;
+   @Nullable
+   private final efu.b e;
+
+   public aan(int $$0, byte $$1, boolean $$2, @Nullable Collection<efr> $$3, @Nullable efu.b $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3 != null ? Lists.newArrayList($$3) : null;
+      this.e = $$4;
+   }
+
+   public aan(ug $$0) {
+      this.a = $$0.n();
+      this.b = $$0.readByte();
+      this.c = $$0.readBoolean();
+      this.d = $$0.c($$0x -> $$0x.a((ug.a)($$0xx -> {
+            efr.a $$1x = $$0xx.b(efr.a.class);
+            byte $$2x = $$0xx.readByte();
+            byte $$3x = $$0xx.readByte();
+            byte $$4x = (byte)($$0xx.readByte() & 15);
+            vd $$5x = $$0xx.c(ug::m);
+            return new efr($$1x, $$2x, $$3x, $$4x, $$5x);
+         })));
+      int $$1 = $$0.readUnsignedByte();
+      if ($$1 > 0) {
+         int $$2 = $$0.readUnsignedByte();
+         int $$3 = $$0.readUnsignedByte();
+         int $$4 = $$0.readUnsignedByte();
+         byte[] $$5 = $$0.b();
+         this.e = new efu.b($$3, $$4, $$1, $$2, $$5);
+      } else {
+         this.e = null;
+      }
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c, vn::a);
-      this.d.a($$0);
-      $$0.a(this.e, ue::a);
-      vf.a($$0, this.f);
-      this.g.a($$0);
+   public void a(ug $$0) {
+      $$0.c(this.a);
+      $$0.k(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$0x.a($$1, ($$0xx, $$1x) -> {
+            $$0xx.a($$1x.c());
+            $$0xx.k($$1x.d());
+            $$0xx.k($$1x.e());
+            $$0xx.k($$1x.f() & 15);
+            $$0xx.a($$1x.g(), ug::a);
+         }));
+      if (this.e != null) {
+         $$0.k(this.e.c);
+         $$0.k(this.e.d);
+         $$0.k(this.e.a);
+         $$0.k(this.e.b);
+         $$0.a(this.e.e);
+      } else {
+         $$0.k(0);
+      }
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public int a() {
+      return this.a;
    }
 
-   public int d() {
+   public void a(efu $$0) {
+      if (this.d != null) {
+         $$0.a(this.d);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0);
+      }
+   }
+
+   public byte d() {
       return this.b;
    }
 
-   @Nullable
-   public vn e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public vu.a f() {
-      return this.d;
-   }
-
-   @Nullable
-   public vb g() {
-      return this.e;
-   }
-
-   public vf h() {
-      return this.f;
-   }
-
-   public ux.b i() {
-      return this.g;
    }
 }

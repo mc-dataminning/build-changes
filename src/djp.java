@@ -1,71 +1,101 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class djp extends djs<Integer> {
-   private final ImmutableSet<Integer> a;
-   private final int b;
-   private final int c;
+public record djp(String r, boolean s, boolean t, boolean u, djp.a v, ddv w, arl x, arl y, arl z, arl A, arl B, arl C, arl D, arl E) {
+   private static final Map<String, djp> F = new Object2ObjectArrayMap();
+   public static final Codec<djp> a = atq.a(djp::b, F::get);
+   public static final djp b = a(new djp("iron", false, false, false, djp.a.a, ddv.g, arm.my, arm.mz, arm.mG, arm.mH, arm.nR, arm.nS, arm.yh, arm.yi));
+   public static final djp c = a(new djp("copper", true, true, false, djp.a.a, ddv.aj, arm.fk, arm.fl, arm.fr, arm.fs, arm.nR, arm.nS, arm.yh, arm.yi));
+   public static final djp d = a(new djp("gold", false, true, false, djp.a.a, ddv.g, arm.my, arm.mz, arm.mG, arm.mH, arm.nR, arm.nS, arm.yh, arm.yi));
+   public static final djp e = a(new djp("stone", true, true, false, djp.a.b, ddv.f, arm.my, arm.mz, arm.mG, arm.mH, arm.ym, arm.yn, arm.yh, arm.yi));
+   public static final djp f = a(
+      new djp("polished_blackstone", true, true, false, djp.a.b, ddv.f, arm.my, arm.mz, arm.mG, arm.mH, arm.ym, arm.yn, arm.yh, arm.yi)
+   );
+   public static final djp g = a(new djp("oak"));
+   public static final djp h = a(new djp("spruce"));
+   public static final djp i = a(new djp("birch"));
+   public static final djp j = a(new djp("acacia"));
+   public static final djp k = a(new djp("cherry", true, true, true, djp.a.a, ddv.aU, arm.eg, arm.eh, arm.ei, arm.ej, arm.em, arm.en, arm.ek, arm.el));
+   public static final djp l = a(new djp("jungle"));
+   public static final djp m = a(new djp("dark_oak"));
+   public static final djp n = a(new djp("crimson", true, true, true, djp.a.a, ddv.aT, arm.pT, arm.pU, arm.pV, arm.pW, arm.pZ, arm.qa, arm.pX, arm.pY));
+   public static final djp o = a(new djp("warped", true, true, true, djp.a.a, ddv.aT, arm.pT, arm.pU, arm.pV, arm.pW, arm.pZ, arm.qa, arm.pX, arm.pY));
+   public static final djp p = a(new djp("mangrove"));
+   public static final djp q = a(new djp("bamboo", true, true, true, djp.a.a, ddv.aS, arm.aZ, arm.ba, arm.bb, arm.bc, arm.bf, arm.bg, arm.bd, arm.be));
 
-   protected djp(String $$0, int $$1, int $$2) {
-      super($$0, Integer.class);
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
-      } else if ($$2 <= $$1) {
-         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
-      } else {
-         this.b = $$1;
-         this.c = $$2;
-         Set<Integer> $$3 = Sets.newHashSet();
-
-         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
-            $$3.add($$4);
-         }
-
-         this.a = ImmutableSet.copyOf($$3);
-      }
+   public djp(String $$0) {
+      this($$0, true, true, true, djp.a.a, ddv.b, arm.BE, arm.BF, arm.BG, arm.BH, arm.BK, arm.BL, arm.BI, arm.BJ);
    }
 
-   @Override
-   public Collection<Integer> a() {
-      return this.a;
+   private static djp a(djp $$0) {
+      F.put($$0.r, $$0);
+      return $$0;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof djp $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
+   public static Stream<djp> a() {
+      return F.values().stream();
    }
 
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
+   public String b() {
+      return this.r;
    }
 
-   public static djp a(String $$0, int $$1, int $$2) {
-      return new djp($$0, $$1, $$2);
+   public boolean c() {
+      return this.s;
    }
 
-   @Override
-   public Optional<Integer> b(String $$0) {
-      try {
-         Integer $$1 = Integer.valueOf($$0);
-         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
-      } catch (NumberFormatException var3) {
-         return Optional.empty();
-      }
+   public boolean d() {
+      return this.t;
    }
 
-   public String a(Integer $$0) {
-      return $$0.toString();
+   public boolean e() {
+      return this.u;
+   }
+
+   public djp.a f() {
+      return this.v;
+   }
+
+   public ddv g() {
+      return this.w;
+   }
+
+   public arl h() {
+      return this.x;
+   }
+
+   public arl i() {
+      return this.y;
+   }
+
+   public arl j() {
+      return this.z;
+   }
+
+   public arl k() {
+      return this.A;
+   }
+
+   public arl l() {
+      return this.B;
+   }
+
+   public arl m() {
+      return this.C;
+   }
+
+   public arl n() {
+      return this.D;
+   }
+
+   public arl o() {
+      return this.E;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

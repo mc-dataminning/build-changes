@@ -1,24 +1,14 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.Codec;
 
-public class edi extends edn<edi.a> {
-   protected edi(dkz $$0) {
-      super(cth.b, $$0, new edi.a(new Long2ObjectOpenHashMap()));
-   }
+public interface edi<P extends edh> {
+   edi<edf> a = a("clear", edf.a);
+   edi<edg> b = a("passthrough", edg.b);
+   edi<ede> c = a("append_static", ede.a);
+   edi<edd> d = a("append_loot", edd.a);
 
-   @Override
-   protected int a(long $$0) {
-      long $$1 = ix.e($$0);
-      dkr $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(ix.b(hv.a($$0)), ix.b(hv.b($$0)), ix.b(hv.c($$0)));
-   }
+   Codec<P> codec();
 
-   protected static final class a extends edk<edi.a> {
-      public a(Long2ObjectOpenHashMap<dkr> $$0) {
-         super($$0);
-      }
-
-      public edi.a a() {
-         return new edi.a(this.a.clone());
-      }
+   private static <P extends edh> edi<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.p, $$0, () -> $$1);
    }
 }

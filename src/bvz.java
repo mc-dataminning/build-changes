@@ -1,24 +1,41 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class bvz extends bwc<blv> {
-   @Override
-   public Set<bux<?>> a() {
-      return ImmutableSet.of(bux.j, bux.k, bux.l);
+public class bvz extends bwm<bmf> {
+   private static final int a = 200;
+   private static final int c = 599;
+
+   public bvz() {
+      this(200);
+   }
+
+   public bvz(int $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(amp $$0, blv $$1) {
-      List<cer> $$2 = $$0.w().stream().filter(bli.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
-      bmv<?> $$3 = $$1.dO();
-      $$3.a(bux.j, $$2);
-      List<cer> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(bux.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cer> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(bux.l, $$5);
+   protected void a(amz $$0, bmf $$1) {
+      a($$1);
+   }
+
+   @Override
+   public Set<bvh<?>> a() {
+      return ImmutableSet.of(bvh.g);
+   }
+
+   public static void a(bmf $$0) {
+      Optional<List<bmf>> $$1 = $$0.dO().c(bvh.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(blt.ad));
+         if ($$2) {
+            b($$0);
+         }
+      }
+   }
+
+   public static void b(bmf $$0) {
+      $$0.dO().a(bvh.F, true, 599L);
    }
 }

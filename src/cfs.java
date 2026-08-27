@@ -1,82 +1,76 @@
-import javax.annotation.Nullable;
-
-public class cfs extends cfp {
-   public cfs(blj<? extends cfs> $$0, csy $$1) {
+public class cfs extends cft {
+   public cfs(blt<? extends cfs> $$0, cti $$1) {
       super($$0, $$1);
    }
 
-   public cfs(csy $$0, blv $$1) {
-      super(blj.E, $$1, $$0);
-   }
-
-   @Override
-   protected cmc s() {
-      return cmk.sc;
-   }
-
-   @Override
-   protected void a(eky $$0) {
-      super.a($$0);
-      $$0.a().a(this.dN().b(this, this.w()), 0.0F);
-   }
-
-   @Override
-   protected void a(ekz $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < 32; $$1++) {
-         this.dM().a(jv.Z, this.dr(), this.dt() + this.ag.j() * 2.0, this.dx(), this.ag.k(), 0.0, this.ag.k());
-      }
-
-      if (!this.dM().B && !this.dH()) {
-         blf $$2 = this.w();
-         if ($$2 instanceof amq $$3) {
-            if ($$3.c.c() && $$3.dM() == this.dM() && !$$3.fD()) {
-               if (this.ag.i() < 0.05F && this.dM().Y().b(csu.e)) {
-                  cbq $$4 = blj.G.a(this.dM());
-                  if ($$4 != null) {
-                     $$4.b($$2.dr(), $$2.dt(), $$2.dx(), $$2.dC(), $$2.dE());
-                     this.dM().b($$4);
-                  }
-               }
-
-               if ($$2.bO()) {
-                  $$3.a(this.dr(), this.dt(), this.dx());
-               } else {
-                  $$2.c(this.dr(), this.dt(), this.dx());
-               }
-
-               $$2.n();
-               $$2.a(this.dN().k(), 5.0F);
-               this.dM().a(null, this.dr(), this.dt(), this.dx(), arc.ty, ard.h);
-            }
-         } else if ($$2 != null) {
-            $$2.c(this.dr(), this.dt(), this.dx());
-            $$2.n();
-         }
-
-         this.am();
-      }
+   public cfs(cti $$0, bzu $$1) {
+      this(blt.al, $$0);
+      this.b($$1);
+      this.a_(
+         $$1.dr() - (double)($$1.dg() + 1.0F) * 0.5 * (double)aui.a($$1.aU * (float) (Math.PI / 180.0)),
+         $$1.dv() - 0.1F,
+         $$1.dx() + (double)($$1.dg() + 1.0F) * 0.5 * (double)aui.b($$1.aU * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
    public void l() {
-      blf $$0 = this.w();
-      if ($$0 instanceof amq && !$$0.bx() && this.dM().Y().b(csu.Y)) {
+      super.l();
+      elm $$0 = this.dp();
+      elk $$1 = cfu.a(this, this::a);
+      this.a($$1);
+      double $$2 = this.dr() + $$0.c;
+      double $$3 = this.dt() + $$0.d;
+      double $$4 = this.dx() + $$0.e;
+      this.K();
+      float $$5 = 0.99F;
+      float $$6 = 0.06F;
+      if (this.dM().a(this.cH()).noneMatch(diz.a::i)) {
+         this.am();
+      } else if (this.bc()) {
          this.am();
       } else {
-         super.l();
+         this.g($$0.a(0.99F));
+         if (!this.aV()) {
+            this.g(this.dp().b(0.0, -0.06F, 0.0));
+         }
+
+         this.a_($$2, $$3, $$4);
       }
    }
 
-   @Nullable
    @Override
-   public blf b(amp $$0) {
-      blf $$1 = this.w();
-      if ($$1 != null && $$1.dM().ad() != $$0.ad()) {
-         this.b(null);
+   protected void a(elj $$0) {
+      super.a($$0);
+      if (this.w() instanceof bmf $$1) {
+         $$0.a().a(this.dN().a(this, $$1), 1.0F);
+      }
+   }
+
+   @Override
+   protected void a(eli $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.am();
+      }
+   }
+
+   @Override
+   protected void c_() {
+   }
+
+   @Override
+   public void a(yy $$0) {
+      super.a($$0);
+      double $$1 = $$0.i();
+      double $$2 = $$0.j();
+      double $$3 = $$0.k();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dM().a(jx.ae, this.dr(), this.dt(), this.dx(), $$1 * $$5, $$2, $$3 * $$5);
       }
 
-      return super.b($$0);
+      this.o($$1, $$2, $$3);
    }
 }

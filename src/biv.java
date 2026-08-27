@@ -3,55 +3,62 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public class biv extends bio {
+public class biv extends bja {
    public static final Codec<biv> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+               )
                .apply($$0, biv::new)
       )
       .comapFlatMap(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0),
+         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
          Function.identity()
       );
    private final float b;
-   private final float d;
+   private final float f;
+   private final int g;
+   private final int h;
 
-   private biv(float $$0, float $$1) {
+   public static biv a(float $$0, float $$1, int $$2, int $$3) {
+      return new biv($$0, $$1, $$2, $$3);
+   }
+
+   private biv(float $$0, float $$1, int $$2, int $$3) {
       this.b = $$0;
-      this.d = $$1;
-   }
-
-   public static biv b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new biv($$0, $$1);
-      }
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
    }
 
    @Override
-   public float a(auf $$0) {
-      return aty.b($$0, this.b, this.d);
+   public int a(aup $$0) {
+      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   }
+
+   public static int a(aup $$0, float $$1, float $$2, float $$3, float $$4) {
+      return (int)aui.a(aui.c($$0, $$1, $$2), $$3, $$4);
    }
 
    @Override
-   public float a() {
-      return this.b;
+   public int a() {
+      return this.g;
    }
 
    @Override
-   public float b() {
-      return this.d;
+   public int b() {
+      return this.h;
    }
 
    @Override
-   public bip<?> c() {
-      return bip.b;
+   public bjb<?> c() {
+      return bjb.f;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
    }
 }

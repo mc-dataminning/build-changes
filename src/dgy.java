@@ -1,69 +1,146 @@
-public class dgy extends dgd implements dhg {
-   private final dgl a = new dgl();
-   private final dgq b = new dgq() {
+public class dgy extends dgo {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final csj d = new csj() {
       @Override
-      protected void a(csy $$0, hv $$1, dip $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, arc.hv, ard.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      public void a(String $$0) {
+         super.a($$0);
+         dgy.this.e();
       }
 
       @Override
-      protected void b(csy $$0, hv $$1, dip $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, arc.hu, ard.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      public amz e() {
+         return (amz)dgy.this.o;
       }
 
       @Override
-      protected void a(csy $$0, hv $$1, dip $$2, int $$3, int $$4) {
-         $$0.a(dgy.this.p, cwb.fG, 1, $$4);
+      public void f() {
+         dja $$0 = dgy.this.o.a_(dgy.this.p);
+         this.e().a(dgy.this.p, $$0, $$0, 3);
       }
 
       @Override
-      protected boolean a(cer $$0) {
-         return $$0.gf().b(dgy.this);
+      public elm g() {
+         return elm.b(dgy.this.p);
+      }
+
+      @Override
+      public ds i() {
+         ic $$0 = dgy.this.r().c(cxs.b);
+         return new ds(this, elm.b(dgy.this.p), new ell(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dgy.this.s();
       }
    };
 
-   public dgy(hv $$0, dip $$1) {
-      super(dgf.d, $$0, $$1);
-   }
-
-   public static void a(csy $$0, hv $$1, dip $$2, dgy $$3) {
-      $$3.a.a();
+   public dgy(hx $$0, dja $$1) {
+      super(dgq.w, $$0, $$1);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
+   protected void b(sl $$0) {
+      super.b($$0);
+      this.d.a($$0);
+      $$0.a("powered", this.d());
+      $$0.a("conditionMet", this.k());
+      $$0.a("auto", this.f());
+   }
+
+   @Override
+   public void a(sl $$0) {
+      super.a($$0);
+      this.d.b($$0);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
+   }
+
+   @Override
+   public boolean u() {
+      return true;
+   }
+
+   public csj c() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean d() {
+      return this.a;
+   }
+
+   public boolean f() {
+      return this.b;
+   }
+
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.m() != dgy.a.a) {
+         this.x();
+      }
+   }
+
+   public void g() {
+      dgy.a $$0 = this.m();
+      if ($$0 == dgy.a.b && (this.a || this.b) && this.o != null) {
+         this.x();
+      }
+   }
+
+   private void x() {
+      cwj $$0 = this.r().b();
+      if ($$0 instanceof cxs) {
+         this.l();
+         this.o.a(this.p, $$0, 1);
+      }
+   }
+
+   public boolean k() {
+      return this.c;
+   }
+
+   public boolean l() {
+      this.c = true;
+      if (this.w()) {
+         hx $$0 = this.p.a(this.o.a_(this.p).c(cxs.b).g());
+         if (this.o.a_($$0).b() instanceof cxs) {
+            dgo $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dgy && ((dgy)$$1).c().k() > 0;
+         } else {
+            this.c = false;
+         }
+      }
+
+      return this.c;
+   }
+
+   public dgy.a m() {
+      dja $$0 = this.r();
+      if ($$0.a(cwl.fN)) {
+         return dgy.a.c;
+      } else if ($$0.a(cwl.kG)) {
+         return dgy.a.b;
       } else {
-         return super.a_($$0, $$1);
+         return $$0.a(cwl.kH) ? dgy.a.a : dgy.a.c;
       }
    }
 
-   public void a(cer $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.b.a($$0, this.i(), this.aB_(), this.r());
-      }
+   public boolean w() {
+      dja $$0 = this.o.a_(this.aB_());
+      return $$0.b() instanceof cxs ? $$0.c(cxs.c) : false;
    }
 
-   public void b(cer $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.b.b($$0, this.i(), this.aB_(), this.r());
-      }
-   }
-
-   public boolean c(cer $$0) {
-      return bje.a(this, $$0);
-   }
-
-   public void c() {
-      if (!this.q) {
-         this.b.c(this.i(), this.aB_(), this.r());
-      }
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

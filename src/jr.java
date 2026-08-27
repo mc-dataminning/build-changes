@@ -1,48 +1,34 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.joml.Vector3f;
 
-public class jr implements jt {
-   public static final jt.a<jr> a = new jt.a<jr>() {
-      public jr a(ju<jr> $$0, StringReader $$1) throws CommandSyntaxException {
+public class jr extends js {
+   public static final Vector3f a = elm.a(16711680).j();
+   public static final jr b = new jr(a, 1.0F);
+   public static final Codec<jr> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atq.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, jr::new)
+   );
+   public static final jv.a<jr> d = new jv.a<jr>() {
+      public jr a(jw<jr> $$0, StringReader $$1) throws CommandSyntaxException {
+         Vector3f $$2 = js.a($$1);
          $$1.expect(' ');
-         fy.a $$2 = fy.a(kb.h.p(), $$1);
-         cmh $$3 = new fx($$2.a(), $$2.b()).a(1, false);
-         return new jr($$0, $$3);
+         float $$3 = $$1.readFloat();
+         return new jr($$2, $$3);
       }
 
-      public jr a(ju<jr> $$0, ue $$1) {
-         return new jr($$0, $$1.r());
+      public jr a(jw<jr> $$0, ug $$1) {
+         return new jr(js.b($$1), $$1.readFloat());
       }
    };
-   private final ju<jr> b;
-   private final cmh c;
 
-   public static Codec<jr> a(ju<jr> $$0) {
-      return cmh.a.xmap($$1 -> new jr($$0, $$1), $$0x -> $$0x.c);
-   }
-
-   public jr(ju<jr> $$0, cmh $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public jr(Vector3f $$0, float $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.c);
-   }
-
-   @Override
-   public String a() {
-      return kb.j.b(this.b()) + " " + new fx(this.c.e(), this.c.v()).b();
-   }
-
-   @Override
-   public ju<jr> b() {
-      return this.b;
-   }
-
-   public cmh c() {
-      return this.c;
+   public jw<jr> b() {
+      return jx.o;
    }
 }

@@ -1,10 +1,12 @@
-public class cni extends cmc {
-   public cni(cmc.a $$0) {
-      super($$0);
-   }
+public enum cni {
+   a(n.p),
+   b(n.o),
+   c(n.l),
+   d(n.n);
 
-   @Override
-   public boolean i(cmh $$0) {
-      return true;
+   public final n e;
+
+   private cni(n $$0) {
+      this.e = $$0;
    }
 }

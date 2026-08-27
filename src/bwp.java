@@ -1,22 +1,28 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class bwp {
-   @Nullable
-   public static elb a(bme $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = bwo.a($$0, $$1);
-      return bwr.a($$0, () -> {
-         hv $$9 = bwr.a($$0.eg(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            hv $$10 = bwq.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = bwr.a($$10, $$0.eg().a($$6 - $$7 + 1) + $$7, $$0.dM().ak(), $$1xx -> bwo.c($$0, $$1xx));
-               return !bwo.a($$0, $$10) && !bwo.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+public class bwp extends bwm<bmf> {
+   @Override
+   public Set<bvh<?>> a() {
+      return ImmutableSet.of(bvh.i);
+   }
+
+   @Override
+   protected void a(amz $$0, bmf $$1) {
+      $$1.dO().a(bvh.i, this.a($$1));
+   }
+
+   private List<bmf> a(bmf $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   }
+
+   private boolean b(bmf $$0) {
+      return $$0.ai() == blt.bg && $$0.o_();
+   }
+
+   private bvj c(bmf $$0) {
+      return $$0.dO().c(bvh.h).orElse(bvj.a());
    }
 }

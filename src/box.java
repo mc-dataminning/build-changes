@@ -1,37 +1,34 @@
-public abstract class box<E extends blv> implements bnn<E>, brc<E> {
-   private bnm.a a;
+import com.google.common.collect.ImmutableMap;
 
-   public box() {
-      this.a = bnm.a.a;
+public class box extends bnw<bmh> {
+   public static final int c = 100;
+   private final bjg d;
+   private final arl e;
+
+   public box(bjg $$0, arl $$1) {
+      super(ImmutableMap.of(bvh.n, bvi.c, bvh.S, bvi.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public final bnm.a a() {
-      return this.a;
+   protected boolean a(amz $$0, bmh $$1, long $$2) {
+      return !$$1.aC();
    }
 
-   @Override
-   public final boolean e(amp $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bnm.a.b;
-         return true;
-      } else {
-         return false;
+   protected void b(amz $$0, bmh $$1, long $$2) {
+      $$1.p(true);
+      $$1.b(bmr.g);
+   }
+
+   protected void c(amz $$0, bmh $$1, long $$2) {
+      if ($$1.aC()) {
+         $$1.g($$1.dp().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, arn.g, 2.0F, 1.0F);
       }
-   }
 
-   @Override
-   public final void f(amp $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(amp $$0, E $$1, long $$2) {
-      this.a = bnm.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+      $$1.p(false);
+      $$1.b(bmr.a);
+      $$1.dO().b(bvh.S);
+      $$1.dO().a(bvh.R, this.d.a($$0.z));
    }
 }

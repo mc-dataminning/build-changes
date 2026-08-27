@@ -1,30 +1,29 @@
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.function.Function;
 
-public class fil extends fkk {
-   private static final String a = "chest_bottom";
-   private static final String b = "chest_lid";
-   private static final String f = "chest_lock";
+public abstract class fil<E extends blp> extends fjy<E> {
+   private final float a;
+   private final float b;
 
-   public fil(fly $$0) {
-      super($$0);
+   public fil(float $$0, float $$1) {
+      this($$0, $$1, fth::e);
+   }
+
+   public fil(float $$0, float $$1, Function<ahd, fth> $$2) {
+      super($$2);
+      this.b = $$1;
+      this.a = $$0;
    }
 
    @Override
-   protected Builder<fly> a(fly $$0) {
-      Builder<fly> $$1 = super.a($$0);
-      $$1.add($$0.b("chest_bottom"));
-      $$1.add($$0.b("chest_lid"));
-      $$1.add($$0.b("chest_lock"));
-      return $$1;
-   }
-
-   public static fme a() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      fkk.a($$1);
-      $$1.a("chest_bottom", fmd.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fma.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", fmd.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fma.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", fmd.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fma.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return fme.a($$0, 128, 128);
+   public void a(ept $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(this.a, this.a, this.a);
+         $$0.a(0.0F, this.b / 16.0F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+      } else {
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

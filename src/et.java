@@ -1,170 +1,69 @@
-import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
 
-public class et<T> implements ArgumentType<et.c<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> vb.b("argument.resource_tag.not_found", $$0, $$1));
-   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> vb.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
-   );
-   private final ih<T> d;
-   final ags<? extends ir<T>> e;
+public class et implements ArgumentType<ahd> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vd.b("advancement.advancementNotFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vd.b("recipe.notFound", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vd.b("predicate.unknown", $$0));
+   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> vd.b("item_modifier.unknown", $$0));
 
-   public et(dn $$0, ags<? extends ir<T>> $$1) {
-      this.e = $$1;
-      this.d = $$0.a($$1);
+   public static et a() {
+      return new et();
    }
 
-   public static <T> et<T> a(dn $$0, ags<? extends ir<T>> $$1) {
-      return new et<>($$0, $$1);
-   }
-
-   public static <T> et.c<T> a(CommandContext<ds> $$0, String $$1, ags<ir<T>> $$2) throws CommandSyntaxException {
-      et.c<?> $$3 = (et.c<?>)$$0.getArgument($$1, et.c.class);
-      Optional<et.c<T>> $$4 = $$3.a($$2);
-      return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            ags<?> $$2x = $$1xx.g();
-            return eq.b.create($$2x.a(), $$2x.b(), $$2.a());
-         }, $$1xx -> {
-            asg<?> $$2x = $$1xx.f();
-            return c.create($$2x.b(), $$2x.a(), $$2.a());
-         }));
-   }
-
-   public et.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '#') {
-         int $$1 = $$0.getCursor();
-
-         try {
-            $$0.skip();
-            agt $$2 = agt.a($$0);
-            asg<T> $$3 = asg.a(this.e, $$2);
-            ij.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.create($$2, this.e.a()));
-            return new et.d<>($$4);
-         } catch (CommandSyntaxException var6) {
-            $$0.setCursor($$1);
-            throw var6;
-         }
+   public static af a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      ahd $$2 = e($$0, $$1);
+      af $$3 = ((ds)$$0.getSource()).l().aB().a($$2);
+      if ($$3 == null) {
+         throw b.create($$2);
       } else {
-         agt $$6 = agt.a($$0);
-         ags<T> $$7 = ags.a(this.e, $$6);
-         ie.c<T> $$8 = this.d.a($$7).orElseThrow(() -> eq.a.create($$6, this.e.a()));
-         return new et.b<>($$8);
+         return $$3;
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      dw.a(this.d.e().map(asg::b), $$1, "#");
-      return dw.a(this.d.c().map(ags::a), $$1);
+   public static cpx<?> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      cpy $$2 = ((ds)$$0.getSource()).l().aG();
+      ahd $$3 = e($$0, $$1);
+      return $$2.a($$3).orElseThrow(() -> c.create($$3));
+   }
+
+   public static ejo c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      ahd $$2 = e($$0, $$1);
+      egs $$3 = ((ds)$$0.getSource()).l().aJ();
+      ejo $$4 = $$3.getElement(egu.a, $$2);
+      if ($$4 == null) {
+         throw d.create($$2);
+      } else {
+         return $$4;
+      }
+   }
+
+   public static eic d(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
+      ahd $$2 = e($$0, $$1);
+      egs $$3 = ((ds)$$0.getSource()).l().aJ();
+      eic $$4 = $$3.getElement(egu.b, $$2);
+      if ($$4 == null) {
+         throw e.create($$2);
+      } else {
+         return $$4;
+      }
+   }
+
+   public static ahd e(CommandContext<ds> $$0, String $$1) {
+      return (ahd)$$0.getArgument($$1, ahd.class);
+   }
+
+   public ahd a(StringReader $$0) throws CommandSyntaxException {
+      return ahd.a($$0);
    }
 
    public Collection<String> getExamples() {
       return a;
-   }
-
-   public static class a<T> implements hh<et<T>, et.a<T>.a> {
-      public void a(et.a<T>.a $$0, ue $$1) {
-         $$1.b($$0.b);
-      }
-
-      public et.a<T>.a a(ue $$0) {
-         return new et.a.a($$0.u());
-      }
-
-      public void a(et.a<T>.a $$0, JsonObject $$1) {
-         $$1.addProperty("registry", $$0.b.a().toString());
-      }
-
-      public et.a<T>.a a(et<T> $$0) {
-         return new et.a.a($$0.e);
-      }
-
-      public final class a implements hh.a<et<T>> {
-         final ags<? extends ir<T>> b;
-
-         a(ags<? extends ir<T>> $$1) {
-            this.b = $$1;
-         }
-
-         public et<T> a(dn $$0) {
-            return new et<>($$0, this.b);
-         }
-
-         @Override
-         public hh<et<T>, ?> a() {
-            return a.this;
-         }
-      }
-   }
-
-   static record b<T>(ie.c<T> a) implements et.c<T> {
-      @Override
-      public Either<ie.c<T>, ij.c<T>> a() {
-         return Either.left(this.a);
-      }
-
-      @Override
-      public <E> Optional<et.c<E>> a(ags<? extends ir<E>> $$0) {
-         return this.a.g().b($$0) ? Optional.of((et.c<E>)this) : Optional.empty();
-      }
-
-      public boolean a(ie<T> $$0) {
-         return $$0.equals(this.a);
-      }
-
-      @Override
-      public String b() {
-         return this.a.g().a().toString();
-      }
-
-      public ie.c<T> c() {
-         return this.a;
-      }
-   }
-
-   public interface c<T> extends Predicate<ie<T>> {
-      Either<ie.c<T>, ij.c<T>> a();
-
-      <E> Optional<et.c<E>> a(ags<? extends ir<E>> var1);
-
-      String b();
-   }
-
-   static record d<T>(ij.c<T> a) implements et.c<T> {
-      @Override
-      public Either<ie.c<T>, ij.c<T>> a() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public <E> Optional<et.c<E>> a(ags<? extends ir<E>> $$0) {
-         return this.a.f().c($$0) ? Optional.of((et.c<E>)this) : Optional.empty();
-      }
-
-      public boolean a(ie<T> $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public String b() {
-         return "#" + this.a.f().b();
-      }
-
-      public ij.c<T> c() {
-         return this.a;
-      }
    }
 }

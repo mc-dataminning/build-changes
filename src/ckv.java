@@ -1,99 +1,111 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
+import com.mojang.logging.LogUtils;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import org.slf4j.Logger;
 
-public enum ckv implements aut {
-   a(0, "white", 16383998, eed.i, 15790320, 16777215),
-   b(1, "orange", 16351261, eed.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, eed.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, eed.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, eed.s, 14602026, 16776960),
-   f(5, "lime", 8439583, eed.t, 4312372, 12582656),
-   g(6, "pink", 15961002, eed.u, 14188952, 16738740),
-   h(7, "gray", 4673362, eed.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, eed.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, eed.x, 2651799, 65535),
-   k(10, "purple", 8991416, eed.y, 8073150, 10494192),
-   l(11, "blue", 3949738, eed.z, 2437522, 255),
-   m(12, "brown", 8606770, eed.A, 5320730, 9127187),
-   n(13, "green", 6192150, eed.B, 3887386, 65280),
-   o(14, "red", 11546150, eed.C, 11743532, 16711680),
-   p(15, "black", 1908001, eed.D, 1973019, 0);
+public class ckv extends cmm implements col {
+   private static final Logger d = LogUtils.getLogger();
+   public static final String a = "LodestonePos";
+   public static final String b = "LodestoneDimension";
+   public static final String c = "LodestoneTracked";
 
-   private static final IntFunction<ckv> r = asq.a(ckv::a, values(), asq.a.a);
-   private static final Int2ObjectOpenHashMap<ckv> s = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (ckv)$$0))
-   );
-   public static final aut.a<ckv> q = aut.a(ckv::values);
-   private final int t;
-   private final String u;
-   private final eed v;
-   private final float[] w;
-   private final int x;
-   private final int y;
-
-   private ckv(int $$0, String $$1, int $$2, eed $$3, int $$4, int $$5) {
-      this.t = $$0;
-      this.u = $$1;
-      this.v = $$3;
-      this.y = $$5;
-      int $$6 = ($$2 & 0xFF0000) >> 16;
-      int $$7 = ($$2 & 0xFF00) >> 8;
-      int $$8 = ($$2 & 0xFF) >> 0;
-      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
-      this.x = $$4;
+   public ckv(cmm.a $$0) {
+      super($$0);
    }
 
-   public int a() {
-      return this.t;
+   public static boolean d(cmr $$0) {
+      sl $$1 = $$0.v();
+      return $$1 != null && ($$1.e("LodestoneDimension") || $$1.e("LodestonePos"));
    }
 
-   public String b() {
-      return this.u;
-   }
-
-   public float[] d() {
-      return this.w;
-   }
-
-   public eed e() {
-      return this.v;
-   }
-
-   public int f() {
-      return this.x;
-   }
-
-   public int g() {
-      return this.y;
-   }
-
-   public static ckv a(int $$0) {
-      return r.apply($$0);
+   private static Optional<ahc<cti>> c(sl $$0) {
+      return cti.g.parse(sz.a, $$0.c("LodestoneDimension")).result();
    }
 
    @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static ckv a(String $$0, @Nullable ckv $$1) {
-      ckv $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
+   public static ig a(sl $$0) {
+      boolean $$1 = $$0.e("LodestonePos");
+      boolean $$2 = $$0.e("LodestoneDimension");
+      if ($$1 && $$2) {
+         Optional<ahc<cti>> $$3 = c($$0);
+         if ($$3.isPresent()) {
+            hx $$4 = ta.b($$0.p("LodestonePos"));
+            return ig.a($$3.get(), $$4);
+         }
+      }
+
+      return null;
    }
 
    @Nullable
-   public static ckv b(int $$0) {
-      return (ckv)s.get($$0);
+   public static ig a(cti $$0) {
+      return $$0.E_().j() ? ig.a($$0.ae(), $$0.T()) : null;
    }
 
    @Override
-   public String toString() {
-      return this.u;
+   public boolean i(cmr $$0) {
+      return d($$0) || super.i($$0);
    }
 
    @Override
-   public String c() {
-      return this.u;
+   public void a(cmr $$0, cti $$1, blp $$2, int $$3, boolean $$4) {
+      if (!$$1.B) {
+         if (d($$0)) {
+            sl $$5 = $$0.w();
+            if ($$5.e("LodestoneTracked") && !$$5.q("LodestoneTracked")) {
+               return;
+            }
+
+            Optional<ahc<cti>> $$6 = c($$5);
+            if ($$6.isPresent() && $$6.get() == $$1.ae() && $$5.e("LodestonePos")) {
+               hx $$7 = ta.b($$5.p("LodestonePos"));
+               if (!$$1.k($$7) || !((amz)$$1).y().a(bxk.s, $$7)) {
+                  $$5.r("LodestonePos");
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public bjv a(cpc $$0) {
+      hx $$1 = $$0.a();
+      cti $$2 = $$0.q();
+      if (!$$2.a_($$1).a(cwl.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, arm.nz, arn.h, 1.0F, 1.0F);
+         cfb $$3 = $$0.o();
+         cmr $$4 = $$0.n();
+         boolean $$5 = !$$3.fT().d && $$4.L() == 1;
+         if ($$5) {
+            this.a($$2.ae(), $$1, $$4.w());
+         } else {
+            cmr $$6 = new cmr(cmu.qP, 1);
+            sl $$7 = $$4.u() ? $$4.v().h() : new sl();
+            $$6.c($$7);
+            if (!$$3.fT().d) {
+               $$4.h(1);
+            }
+
+            this.a($$2.ae(), $$1, $$7);
+            if (!$$3.fS().e($$6)) {
+               $$3.a($$6, false);
+            }
+         }
+
+         return bjv.a($$2.B);
+      }
+   }
+
+   private void a(ahc<cti> $$0, hx $$1, sl $$2) {
+      $$2.a("LodestonePos", ta.a($$1));
+      cti.g.encodeStart(sz.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
+      $$2.a("LodestoneTracked", true);
+   }
+
+   @Override
+   public String j(cmr $$0) {
+      return d($$0) ? "item.minecraft.lodestone_compass" : super.j($$0);
    }
 }

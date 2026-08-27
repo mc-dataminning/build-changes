@@ -1,55 +1,43 @@
-public class frc extends fqw {
-   private float a;
+public class frc extends frn {
+   private final fri a;
 
-   frc(fmt $$0, double $$1, double $$2, double $$3) {
+   protected frc(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fri $$7) {
       super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   public fqa b() {
-      return fqa.b;
+   public fqr b() {
+      return fqr.b;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * aty.b(this.a));
-         this.l = this.l + (double)(0.6F * aty.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(hv.a(this.g, this.h, this.i)).a(arw.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
-      }
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+   public static class a implements fqq<ka> {
+      private final fri a;
 
-      public a(fqr $$0) {
+      public a(fri $$0) {
          this.a = $$0;
       }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frc $$8 = new frc($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         frc $$8 = new frc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
          return $$8;
       }
    }

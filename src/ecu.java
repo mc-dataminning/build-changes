@@ -1,17 +1,16 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class ecu implements ecw {
-   private static final ecu b = new ecu();
-   public static final Codec<ecu> a = Codec.unit(b);
+public interface ecu<P extends ect> {
+   ecu<ebx> a = a("always_true", ebx.a);
+   ecu<ecc> b = a("block_match", ecc.a);
+   ecu<ece> c = a("blockstate_match", ece.a);
+   ecu<edb> d = a("tag_match", edb.a);
+   ecu<ecq> e = a("random_block_match", ecq.a);
+   ecu<ecr> f = a("random_blockstate_match", ecr.a);
 
-   @Override
-   public sj a(auf $$0, @Nullable sj $$1) {
-      return new sj();
-   }
+   Codec<P> codec();
 
-   @Override
-   public ecx<?> a() {
-      return ecx.a;
+   static <P extends ect> ecu<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.o, $$0, () -> $$1);
    }
 }

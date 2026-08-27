@@ -1,96 +1,109 @@
-import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public class dhi extends dgd implements dnb.b<dhi.a> {
-   private final dhi.a a;
+public class dhi extends dgo implements bjz {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final aup k = aup.a();
+   private vd l;
 
-   public dhi(hv $$0, dip $$1) {
-      super(dgf.K, $$0, $$1);
-      this.a = new dhi.a($$1, new dmv($$0));
-   }
-
-   public static void a(csy $$0, hv $$1, dip $$2, dhi $$3) {
-      $$3.a.d().a($$0, $$1, $$0.F_(), true);
+   public dhi(hx $$0, dja $$1) {
+      super(dgq.m, $$0, $$1);
    }
 
    @Override
-   public void a(sj $$0) {
-      this.a.b.a($$0);
-   }
-
-   @Override
-   protected void b(sj $$0) {
-      this.a.b.b($$0);
+   protected void b(sl $$0) {
       super.b($$0);
+      if (this.ae()) {
+         $$0.a("CustomName", vd.a.a(this.l));
+      }
    }
 
-   public dhi.a c() {
-      return this.a;
+   @Override
+   public void a(sl $$0) {
+      super.a($$0);
+      if ($$0.b("CustomName", 8)) {
+         this.l = vd.a.a($$0.l("CustomName"));
+      }
    }
 
-   public static class a implements dnb {
-      public static final int a = 8;
-      final dct b;
-      private final dip c;
-      private final dnd d;
+   public static void a(cti $$0, hx $$1, dja $$2, dhi $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      cfb $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.dr() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dx() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)aui.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
 
-      public a(dip $$0, dnd $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dct.a();
-      }
-
-      @Override
-      public dnd a() {
-         return this.d;
-      }
-
-      @Override
-      public int b() {
-         return 8;
-      }
-
-      @Override
-      public dnb.a c() {
-         return dnb.a.b;
-      }
-
-      @Override
-      public boolean a(amp $$0, dmz $$1, dmz.a $$2, elb $$3) {
-         if ($$1 == dmz.p && $$2.a() instanceof blv $$4) {
-            if (!$$4.eD()) {
-               int $$5 = $$4.ee();
-               if ($$4.ec() && $$5 > 0) {
-                  this.b.a(hv.a($$3.a(ia.b, 0.5)), $$5);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eC();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, hv.a($$1x), this.c, $$0.F_()));
-            }
-
-            return true;
-         } else {
-            return false;
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
          }
+      } else {
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
       }
 
-      @VisibleForTesting
-      public dct d() {
-         return this.b;
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
       }
 
-      private void a(amp $$0, hv $$1, dip $$2, auf $$3) {
-         $$0.a($$1, $$2.a(dcq.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(jv.G, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, arc.vd, ard.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
       }
 
-      private void a(csy $$0, blv $$1) {
-         if ($$1.eh() instanceof amq $$3) {
-            bkd $$4 = $$1.ex() == null ? $$0.ah().a((cer)$$3) : $$1.ex();
-            am.X.a($$3, $$1, $$4);
-         }
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
       }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = aui.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = aui.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
+   }
+
+   @Override
+   public vd ad() {
+      return (vd)(this.l != null ? this.l : vd.c("container.enchant"));
+   }
+
+   public void a(@Nullable vd $$0) {
+      this.l = $$0;
+   }
+
+   @Nullable
+   @Override
+   public vd af() {
+      return this.l;
    }
 }

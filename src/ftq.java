@@ -1,96 +1,108 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
 public class ftq {
-   public static final ftq a = new ftq(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-   public final Vector3f b;
-   public final Vector3f c;
-   public final Vector3f d;
+   protected final fsx a;
+   protected final cti b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public fvy.b[] f;
 
-   public ftq(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
-      this.b = new Vector3f($$0);
-      this.c = new Vector3f($$1);
-      this.d = new Vector3f($$2);
+   public ftq(fvy $$0, cti $$1, int $$2, fsx $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
    }
 
-   public void a(boolean $$0, epd $$1) {
-      if (this != a) {
-         float $$2 = this.b.x();
-         float $$3 = this.b.y();
-         float $$4 = this.b.z();
-         if ($$0) {
-            $$3 = -$$3;
-            $$4 = -$$4;
-         }
-
-         int $$5 = $$0 ? -1 : 1;
-         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
-         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
-         $$1.b(this.d.x(), this.d.y(), this.d.z());
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (this.getClass() != $$0.getClass()) {
-         return false;
+   protected void a(fvy $$0) {
+      if (!eva.N().bq()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
       } else {
-         ftq $$1 = (ftq)$$0;
-         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
-      }
-   }
+         int $$1 = this.d * this.c * this.e;
+         this.f = new fvy.b[$$1];
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      $$0 = 31 * $$0 + this.c.hashCode();
-      return 31 * $$0 + this.d.hashCode();
-   }
-
-   protected static class a implements JsonDeserializer<ftq> {
-      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float a = 5.0F;
-      public static final float b = 4.0F;
-
-      public ftq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.a($$3, "rotation", c);
-         Vector3f $$5 = this.a($$3, "translation", d);
-         $$5.mul(0.0625F);
-         $$5.set(aty.a($$5.x, -5.0F, 5.0F), aty.a($$5.y, -5.0F, 5.0F), aty.a($$5.z, -5.0F, 5.0F));
-         Vector3f $$6 = this.a($$3, "scale", e);
-         $$6.set(aty.a($$6.x, -4.0F, 4.0F), aty.a($$6.y, -4.0F, 4.0F), aty.a($$6.z, -4.0F, 4.0F));
-         return new ftq($$4, $$5, $$6);
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
-         if (!$$0.has($$1)) {
-            return $$2;
-         } else {
-            JsonArray $$3 = ato.v($$0, $$1);
-            if ($$3.size() != 3) {
-               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
-            } else {
-               float[] $$4 = new float[3];
-
-               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-                  $$4[$$5] = ato.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.J_() + $$3 * 16, $$4 * 16);
                }
-
-               return new Vector3f($$4[0], $$4[1], $$4[2]);
             }
          }
+      }
+   }
+
+   public void a() {
+      for (fvy.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.am();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public ctk c() {
+      return this.b;
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = aui.c($$0);
+      int $$3 = aui.c($$1);
+
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
+
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
+
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.J_() + $$12 * 16;
+               fvy.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               hx $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.an(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      fvy.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected fvy.b a(hx $$0) {
+      int $$1 = aui.a($$0.v() - this.b.J_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = aui.b(aui.a($$0.u(), 16), this.d);
+         int $$3 = aui.b(aui.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
       }
    }
 }

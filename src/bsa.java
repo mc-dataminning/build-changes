@@ -1,4 +1,2 @@
-enum bsa {
-   a,
-   b;
+public interface bsa {
 }

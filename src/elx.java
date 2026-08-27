@@ -1,56 +1,32 @@
-public class elx {
-   private final ema a;
-   private final String b;
-   private final emd c;
-   private vb d;
-   private vb e;
-   private emd.a f;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   public elx(ema $$0, String $$1, emd $$2, vb $$3, emd.a $$4) {
+public class elx implements ely {
+   private final DoubleList a;
+
+   public elx(DoubleList $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.g();
-      this.f = $$4;
    }
 
-   public ema a() {
+   @Override
+   public boolean a(ely.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
       return this.a;
-   }
-
-   public String b() {
-      return this.b;
-   }
-
-   public emd c() {
-      return this.c;
-   }
-
-   public vb d() {
-      return this.d;
-   }
-
-   private vb g() {
-      return ve.a((vb)this.d.f().a($$0 -> $$0.a(new vh(vh.a.a, vb.b(this.b)))));
-   }
-
-   public vb e() {
-      return this.e;
-   }
-
-   public void a(vb $$0) {
-      this.d = $$0;
-      this.e = this.g();
-      this.a.b(this);
-   }
-
-   public emd.a f() {
-      return this.f;
-   }
-
-   public void a(emd.a $$0) {
-      this.f = $$0;
-      this.a.b(this);
    }
 }

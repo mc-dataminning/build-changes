@@ -1,36 +1,51 @@
-import java.util.function.Function;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public enum gjf {
-   a("movement", gja::new),
-   b("find_tree", giz::new),
-   c("punch_tree", gjc::new),
-   d("open_inventory", gjb::new),
-   e("craft_planks", giy::new),
-   f("none", gix::new);
+public abstract class gjf {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
 
-   private final String g;
-   private final Function<gjd, ? extends gje> h;
-
-   private <T extends gje> gjf(String $$0, Function<gjd, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   public gje a(gjd $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static gjf a(String $$0) {
-      for (gjf $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   public void a(giz $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
       }
 
-      return f;
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
+      }
    }
+
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   }
+
+   public boolean c() {
+      return this.c >= 10;
+   }
+
+   public void d() {
+      this.d = false;
+   }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(giz var1);
 }

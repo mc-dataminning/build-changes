@@ -1,24 +1,8 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dmg {
-   int aj();
-
-   UUID cw();
-
-   hv dm();
-
-   ekw cH();
-
-   void a(dmh var1);
-
-   Stream<? extends dmg> cR();
-
-   Stream<? extends dmg> cS();
-
-   void b(blf.c var1);
-
-   boolean dK();
-
-   boolean dL();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dmg {
 }

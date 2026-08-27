@@ -1,46 +1,26 @@
-public class gaz extends gbz<frh, fkd<frh>> {
-   public gaz(fzj<frh, fkd<frh>> $$0) {
-      super($$0);
+public class gaz extends fzl<ceo, fma<ceo>> {
+   private static final ahd a = new ahd("textures/entity/villager/villager.png");
+
+   public gaz(fyf.a $$0) {
+      super($$0, new fma<>($$0.a(fmo.bM)), 0.5F);
+      this.a(new gbv<>(this, $$0.f(), $$0.d()));
+      this.a(new gdb<>(this, $$0.e(), "villager"));
+      this.a(new gbu<>(this, $$0.d()));
    }
 
-   public void a(epd $$0, fsi $$1, int $$2, frh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce() && $$3.a(ces.a)) {
-         geo $$10 = $$3.b();
-         if ($$10.c() != null) {
-            cmh $$11 = $$3.c(blk.e);
-            if (!$$11.a(cmk.nS)) {
-               $$0.a();
-               $$0.a(0.0F, 0.0F, 0.125F);
-               double $$12 = aty.d((double)$$6, $$3.bY, $$3.cb) - aty.d((double)$$6, $$3.K, $$3.dr());
-               double $$13 = aty.d((double)$$6, $$3.bZ, $$3.cc) - aty.d((double)$$6, $$3.L, $$3.dt());
-               double $$14 = aty.d((double)$$6, $$3.ca, $$3.cd) - aty.d((double)$$6, $$3.M, $$3.dx());
-               float $$15 = aty.j($$6, $$3.aV, $$3.aU);
-               double $$16 = (double)aty.a($$15 * (float) (Math.PI / 180.0));
-               double $$17 = (double)(-aty.b($$15 * (float) (Math.PI / 180.0)));
-               float $$18 = (float)$$13 * 10.0F;
-               $$18 = aty.a($$18, -6.0F, 32.0F);
-               float $$19 = (float)($$12 * $$16 + $$14 * $$17) * 100.0F;
-               $$19 = aty.a($$19, 0.0F, 150.0F);
-               float $$20 = (float)($$12 * $$17 - $$14 * $$16) * 100.0F;
-               $$20 = aty.a($$20, -20.0F, 20.0F);
-               if ($$19 < 0.0F) {
-                  $$19 = 0.0F;
-               }
+   public ahd a(ceo $$0) {
+      return a;
+   }
 
-               float $$21 = aty.i($$6, $$3.bV, $$3.bW);
-               $$18 += aty.a(aty.i($$6, $$3.X, $$3.Y) * 6.0F) * 32.0F * $$21;
-               if ($$3.bX()) {
-                  $$18 += 25.0F;
-               }
-
-               $$0.a(a.b.rotationDegrees(6.0F + $$19 / 2.0F + $$18));
-               $$0.a(a.f.rotationDegrees($$20 / 2.0F));
-               $$0.a(a.d.rotationDegrees(180.0F - $$20 / 2.0F));
-               eph $$22 = $$1.getBuffer(fsq.c($$10.c()));
-               this.c().b($$0, $$22, $$2, gdf.d);
-               $$0.b();
-            }
-         }
+   protected void a(ceo $$0, ept $$1, float $$2) {
+      float $$3 = 0.9375F;
+      if ($$0.o_()) {
+         $$3 *= 0.5F;
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
       }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

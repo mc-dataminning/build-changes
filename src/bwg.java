@@ -1,36 +1,27 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class bwg extends bvw {
-   private static final ImmutableMap<blj<?>, Float> a = ImmutableMap.builder()
-      .put(blj.z, 8.0F)
-      .put(blj.H, 12.0F)
-      .put(blj.aa, 8.0F)
-      .put(blj.ab, 12.0F)
-      .put(blj.az, 15.0F)
-      .put(blj.aE, 12.0F)
-      .put(blj.bf, 8.0F)
-      .put(blj.bh, 10.0F)
-      .put(blj.bq, 10.0F)
-      .put(blj.br, 8.0F)
-      .put(blj.bt, 8.0F)
-      .build();
+public abstract class bwg extends bwm<bmf> {
+   protected abstract boolean a(bmf var1, bmf var2);
+
+   protected abstract bvh<bmf> b();
 
    @Override
-   protected boolean a(blv $$0, blv $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(blv $$0, blv $$1) {
-      float $$2 = (Float)a.get($$1.ai());
-      return $$1.f((blf)$$0) <= (double)($$2 * $$2);
+   public Set<bvh<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   protected bux<blv> b() {
-      return bux.A;
+   protected void a(amz $$0, bmf $$1) {
+      $$1.dO().a(this.b(), this.b($$1));
    }
 
-   private boolean b(blv $$0) {
-      return a.containsKey($$0.ai());
+   private Optional<bmf> b(bmf $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
+
+   protected Optional<bvj> a(bmf $$0) {
+      return $$0.dO().c(bvh.h);
    }
 }

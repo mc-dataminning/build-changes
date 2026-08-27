@@ -1,86 +1,64 @@
-import com.google.common.collect.Lists;
-import java.util.BitSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class aac {
-   private final BitSet a;
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final List<byte[]> e;
-   private final List<byte[]> f;
+public class aac implements xd<yx> {
+   public static final aac.a a = new aac.a(0);
+   public static final aac.a b = new aac.a(1);
+   public static final aac.a c = new aac.a(2);
+   public static final aac.a d = new aac.a(3);
+   public static final aac.a e = new aac.a(4);
+   public static final aac.a f = new aac.a(5);
+   public static final aac.a g = new aac.a(6);
+   public static final aac.a h = new aac.a(7);
+   public static final aac.a i = new aac.a(8);
+   public static final aac.a j = new aac.a(9);
+   public static final aac.a k = new aac.a(10);
+   public static final aac.a l = new aac.a(11);
+   public static final aac.a m = new aac.a(12);
+   public static final aac.a n = new aac.a(13);
+   public static final int o = 0;
+   public static final int p = 101;
+   public static final int q = 102;
+   public static final int r = 103;
+   public static final int s = 104;
+   private final aac.a t;
+   private final float u;
 
-   public aac(csf $$0, edo $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.a = new BitSet();
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = Lists.newArrayList();
-      this.f = Lists.newArrayList();
+   public aac(aac.a $$0, float $$1) {
+      this.t = $$0;
+      this.u = $$1;
+   }
 
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, cth.a, $$4, this.a, this.c, this.e);
-         }
+   public aac(ug $$0) {
+      this.t = (aac.a)aac.a.a.get($$0.readUnsignedByte());
+      this.u = $$0.readFloat();
+   }
 
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, cth.b, $$4, this.b, this.d, this.f);
-         }
+   @Override
+   public void a(ug $$0) {
+      $$0.k(this.t.b);
+      $$0.a(this.u);
+   }
+
+   public void a(yx $$0) {
+      $$0.a(this);
+   }
+
+   public aac.a a() {
+      return this.t;
+   }
+
+   public float d() {
+      return this.u;
+   }
+
+   public static class a {
+      static final Int2ObjectMap<aac.a> a = new Int2ObjectOpenHashMap();
+      final int b;
+
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
       }
-   }
-
-   public aac(ue $$0, int $$1, int $$2) {
-      this.a = $$0.z();
-      this.b = $$0.z();
-      this.c = $$0.z();
-      this.d = $$0.z();
-      this.e = $$0.a((ue.a<byte[]>)($$0x -> $$0x.a(2048)));
-      this.f = $$0.a((ue.a<byte[]>)($$0x -> $$0x.a(2048)));
-   }
-
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ue::a);
-      $$0.a(this.f, ue::a);
-   }
-
-   private void a(csf $$0, edo $$1, cth $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dkr $$7 = $$1.a($$2).a(ix.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
-   }
-
-   public BitSet a() {
-      return this.a;
-   }
-
-   public BitSet b() {
-      return this.c;
-   }
-
-   public List<byte[]> c() {
-      return this.e;
-   }
-
-   public BitSet d() {
-      return this.b;
-   }
-
-   public BitSet e() {
-      return this.d;
-   }
-
-   public List<byte[]> f() {
-      return this.f;
    }
 }

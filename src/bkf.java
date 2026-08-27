@@ -1,51 +1,60 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class bkf {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = avj.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
 
-public record bkf(String b, bkc c, float d, bkb e, bkh f) {
-   public static final Codec<bkf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(bkf::a),
-               bkc.d.fieldOf("scaling").forGetter(bkf::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(bkf::c),
-               bkb.g.optionalFieldOf("effects", bkb.a).forGetter(bkf::d),
-               bkh.d.optionalFieldOf("death_message_type", bkh.a).forGetter(bkf::e)
-            )
-            .apply($$0, bkf::new)
-   );
-
-   public bkf(String $$0, bkc $$1, float $$2) {
-      this($$0, $$1, $$2, bkb.a, bkh.a);
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)avj.a / (double)this.b);
    }
 
-   public bkf(String $$0, bkc $$1, float $$2, bkb $$3) {
-      this($$0, $$1, $$2, $$3, bkh.a);
-   }
-
-   public bkf(String $$0, float $$1, bkb $$2) {
-      this($$0, bkc.b, $$1, $$2);
-   }
-
-   public bkf(String $$0, float $$1) {
-      this($$0, bkc.b, $$1);
-   }
-
-   public String a() {
+   public float f() {
       return this.b;
    }
 
-   public bkc b() {
+   public float g() {
+      return (float)this.c / (float)avj.b;
+   }
+
+   public long h() {
       return this.c;
    }
 
-   public float c() {
-      return this.d;
-   }
-
-   public bkb d() {
+   public boolean i() {
       return this.e;
    }
 
-   public bkh e() {
+   public boolean j() {
+      return this.d > 0;
+   }
+
+   public void c(int $$0) {
+      this.d = $$0;
+   }
+
+   public int k() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean l() {
       return this.f;
+   }
+
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
+      }
+   }
+
+   public boolean a(blp $$0) {
+      return !this.i() && !($$0 instanceof cfb) && $$0.cU() <= 0;
    }
 }

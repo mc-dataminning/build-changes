@@ -1,3 +1,6 @@
-public interface cji {
-   void a(cev var1);
+public enum cji {
+   a,
+   b,
+   c,
+   d;
 }

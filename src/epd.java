@@ -1,97 +1,140 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
 public class epd {
-   private final Deque<epd.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new epd.a($$1, $$2));
-   });
+   @Nullable
+   private static epd a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final boolean g;
+   private final boolean h;
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
+   private epd(boolean $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.g = $$0;
+      this.b = $$2;
+      this.d = $$3;
+      this.c = $$4;
+      this.e = $$5;
+      this.h = $$1;
+      this.f = $$6;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      epd.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
+   public epd() {
+      this(false, true, 1, 0, 1, 0, 32774);
    }
 
-   public void b(float $$0, float $$1, float $$2) {
-      epd.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if ($$0 == $$1 && $$1 == $$2) {
-         if ($$0 > 0.0F) {
-            return;
-         }
-
-         $$3.b.scale(-1.0F);
-      }
-
-      float $$4 = 1.0F / $$0;
-      float $$5 = 1.0F / $$1;
-      float $$6 = 1.0F / $$2;
-      float $$7 = aty.j($$4 * $$5 * $$6);
-      $$3.b.scale($$7 * $$4, $$7 * $$5, $$7 * $$6);
+   public epd(int $$0, int $$1, int $$2) {
+      this(false, false, $$0, $$1, $$0, $$1, $$2);
    }
 
-   public void a(Quaternionf $$0) {
-      epd.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
-   }
-
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      epd.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
+   public epd(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      this(true, false, $$0, $$1, $$2, $$3, $$4);
    }
 
    public void a() {
-      epd.a $$0 = this.a.getLast();
-      this.a.addLast(new epd.a(new Matrix4f($$0.a), new Matrix3f($$0.b)));
-   }
+      if (!this.equals(a)) {
+         if (a == null || this.h != a.b()) {
+            a = this;
+            if (this.h) {
+               RenderSystem.disableBlend();
+               return;
+            }
 
-   public void b() {
-      this.a.removeLast();
-   }
+            RenderSystem.enableBlend();
+         }
 
-   public epd.a c() {
-      return this.a.getLast();
-   }
-
-   public boolean d() {
-      return this.a.size() == 1;
-   }
-
-   public void e() {
-      epd.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
-   }
-
-   public void a(Matrix4f $$0) {
-      this.a.getLast().a.mul($$0);
-   }
-
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
-
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         RenderSystem.blendEquation(this.f);
+         if (this.g) {
+            RenderSystem.blendFuncSeparate(this.b, this.d, this.c, this.e);
+         } else {
+            RenderSystem.blendFunc(this.b, this.d);
+         }
       }
+   }
 
-      public Matrix4f a() {
-         return this.a;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof epd $$1)) {
+         return false;
+      } else if (this.f != $$1.f) {
+         return false;
+      } else if (this.e != $$1.e) {
+         return false;
+      } else if (this.d != $$1.d) {
+         return false;
+      } else if (this.h != $$1.h) {
+         return false;
+      } else if (this.g != $$1.g) {
+         return false;
+      } else {
+         return this.c != $$1.c ? false : this.b == $$1.b;
       }
+   }
 
-      public Matrix3f b() {
-         return this.b;
+   @Override
+   public int hashCode() {
+      int $$0 = this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      $$0 = 31 * $$0 + this.e;
+      $$0 = 31 * $$0 + this.f;
+      $$0 = 31 * $$0 + (this.g ? 1 : 0);
+      return 31 * $$0 + (this.h ? 1 : 0);
+   }
+
+   public boolean b() {
+      return this.h;
+   }
+
+   public static int a(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      if ("add".equals($$1)) {
+         return 32774;
+      } else if ("subtract".equals($$1)) {
+         return 32778;
+      } else if ("reversesubtract".equals($$1)) {
+         return 32779;
+      } else if ("reverse_subtract".equals($$1)) {
+         return 32779;
+      } else if ("min".equals($$1)) {
+         return 32775;
+      } else {
+         return "max".equals($$1) ? 32776 : 32774;
+      }
+   }
+
+   public static int b(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      $$1 = $$1.replaceAll("_", "");
+      $$1 = $$1.replaceAll("one", "1");
+      $$1 = $$1.replaceAll("zero", "0");
+      $$1 = $$1.replaceAll("minus", "-");
+      if ("0".equals($$1)) {
+         return 0;
+      } else if ("1".equals($$1)) {
+         return 1;
+      } else if ("srccolor".equals($$1)) {
+         return 768;
+      } else if ("1-srccolor".equals($$1)) {
+         return 769;
+      } else if ("dstcolor".equals($$1)) {
+         return 774;
+      } else if ("1-dstcolor".equals($$1)) {
+         return 775;
+      } else if ("srcalpha".equals($$1)) {
+         return 770;
+      } else if ("1-srcalpha".equals($$1)) {
+         return 771;
+      } else if ("dstalpha".equals($$1)) {
+         return 772;
+      } else {
+         return "1-dstalpha".equals($$1) ? 773 : -1;
       }
    }
 }

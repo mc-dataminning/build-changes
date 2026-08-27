@@ -1,166 +1,103 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class fnf {
    private static final Logger a = LogUtils.getLogger();
-   private static final bie<Runnable> b = bie.a(ac.f(), "server-list-io");
-   private static final int c = 16;
-   private final euk d;
-   private final List<fne> e = Lists.newArrayList();
-   private final List<fne> f = Lists.newArrayList();
+   private final eva b;
+   private final gje c;
+   private final ak d = new ak();
+   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private fnf.a f;
+   @Nullable
+   private af g;
 
-   public fnf(euk $$0) {
-      this.d = $$0;
+   public fnf(eva $$0, gje $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a() {
-      try {
+   public void a(acz $$0) {
+      if ($$0.f()) {
+         this.d.a();
          this.e.clear();
-         this.f.clear();
-         sj $$0 = sw.a(this.d.p.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
+      }
 
-         sp $$1 = $$0.c("servers", 10);
+      this.d.a($$0.d());
+      this.d.a($$0.a());
 
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            sj $$3 = $$1.a($$2);
-            fne $$4 = fne.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
+      for (Entry<ahd, ah> $$1 : $$0.e().entrySet()) {
+         ag $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ah $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
             }
+
+            if (!$$0.f() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
+
+               Optional<ar> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.ax().a(new ezd($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
       }
    }
 
-   public void b() {
-      try {
-         sp $$0 = new sp();
+   public ak a() {
+      return this.d;
+   }
 
-         for (fne $$1 : this.e) {
-            sj $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
+   public void a(@Nullable af $$0, boolean $$1) {
+      fnl $$2 = this.b.I();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(aep.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
          }
-
-         for (fne $$3 : this.f) {
-            sj $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         sj $$5 = new sj();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.p.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         sw.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ac.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
       }
    }
 
-   public fne a(int $$0) {
-      return this.e.get($$0);
+   public void a(@Nullable fnf.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ag $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
    }
 
    @Nullable
-   public fne a(String $$0) {
-      for (fne $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      for (fne $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
+   public af a(ahd $$0) {
+      ag $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
    }
 
-   @Nullable
-   public fne b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         fne $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
-      }
+   public interface a extends ak.a {
+      void a(ag var1, ah var2);
 
-      return null;
-   }
-
-   public void a(fne $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(fne $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
-      } else {
-         this.e.add($$0);
-      }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      fne $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, fne $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(fne $$0, List<fne> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         fne $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void b(fne $$0) {
-      b.a(() -> {
-         fnf $$1 = new fnf(euk.N());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
-      });
+      void a(@Nullable af var1);
    }
 }

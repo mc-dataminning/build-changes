@@ -1,33 +1,60 @@
-public class fim<T extends bzg> extends fjj<T> {
-   private final fly g = this.b.b("left_chest");
-   private final fly h = this.b.b("right_chest");
+import java.util.function.Function;
 
-   public fim(fly $$0) {
+public abstract class fim<E extends blp> extends fjp<E> {
+   private final boolean a;
+   private final float b;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
+
+   protected fim(boolean $$0, float $$1, float $$2) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
+   }
+
+   protected fim(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this(fth::e, $$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected fim(Function<ahd, fth> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
       super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
-   public static fme c() {
-      fmg $$0 = fjj.a(fmc.a);
-      fmh $$1 = $$0.a();
-      fmh $$2 = $$1.a("body");
-      fmd $$3 = fmd.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$2.a("left_chest", $$3, fma.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$2.a("right_chest", $$3, fma.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      fmh $$4 = $$1.a("head_parts").a("head");
-      fmd $$5 = fmd.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$4.a("left_ear", $$5, fma.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$4.a("right_ear", $$5, fma.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-      return fme.a($$0, 64, 64);
+   protected fim() {
+      this(false, 5.0F, 2.0F);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.w()) {
-         this.g.k = true;
-         this.h.k = true;
+   @Override
+   public void a(ept $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         if (this.a) {
+            float $$8 = 1.5F / this.g;
+            $$0.b($$8, $$8, $$8);
+         }
+
+         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
+         $$0.a();
+         float $$9 = 1.0F / this.h;
+         $$0.b($$9, $$9, $$9);
+         $$0.a(0.0F, this.i / 16.0F, 0.0F);
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         $$0.b();
       } else {
-         this.g.k = false;
-         this.h.k = false;
+         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
    }
+
+   protected abstract Iterable<fmp> a();
+
+   protected abstract Iterable<fmp> b();
 }

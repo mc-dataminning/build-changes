@@ -1,12 +1,39 @@
-public class agj {
-   public static final ags<cvz> a = a("pumpkin");
-   public static final ags<cvz> b = a("pumpkin_stem");
-   public static final ags<cvz> c = a("attached_pumpkin_stem");
-   public static final ags<cvz> d = a("melon");
-   public static final ags<cvz> e = a("melon_stem");
-   public static final ags<cvz> f = a("attached_melon_stem");
+public class agj<T> {
+   private final int a;
+   private final agk<T> b;
 
-   private static ags<cvz> a(String $$0) {
-      return ags.a(kc.f, new agt($$0));
+   public agj(int $$0, agk<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public agk<T> b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         agj<?> $$1 = (agj<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

@@ -1,149 +1,301 @@
+import com.google.common.base.Stopwatch;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2LongMap.Entry;
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.annotation.Nullable;
 
 public class rm {
-   private static final Collection<sa> a = Lists.newArrayList();
-   private static final Set<String> b = Sets.newHashSet();
-   private static final Map<String, Consumer<amp>> c = Maps.newHashMap();
-   private static final Map<String, Consumer<amp>> d = Maps.newHashMap();
-   private static final Collection<sa> e = Sets.newHashSet();
+   private final sc a;
+   @Nullable
+   private hx b;
+   private final amz c;
+   private final Collection<rn> d = Lists.newArrayList();
+   private final int e;
+   private final Collection<rq> f = Lists.newCopyOnWriteArrayList();
+   private final Object2LongMap<Runnable> g = new Object2LongOpenHashMap();
+   private long h;
+   private int i = 20;
+   private boolean j;
+   private boolean k;
+   private long l;
+   private boolean m;
+   private boolean n;
+   private final Stopwatch o = Stopwatch.createUnstarted();
+   private boolean p;
+   private final dcv q;
+   @Nullable
+   private Throwable r;
+   @Nullable
+   private dic s;
 
-   public static void a(Class<?> $$0) {
-      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(rm::a);
+   public rm(sc $$0, dcv $$1, amz $$2) {
+      this.a = $$0;
+      this.c = $$2;
+      this.e = $$0.c();
+      this.q = $$0.g().a($$1);
    }
 
-   public static void a(Method $$0) {
-      String $$1 = $$0.getDeclaringClass().getSimpleName();
-      rc $$2 = $$0.getAnnotation(rc.class);
-      if ($$2 != null) {
-         a.add(c($$0));
-         b.add($$1);
-      }
-
-      ri $$3 = $$0.getAnnotation(ri.class);
-      if ($$3 != null) {
-         a.addAll(b($$0));
-         b.add($$1);
-      }
-
-      a($$0, ra.class, ra::a, c);
-      a($$0, qz.class, qz::a, d);
+   void a(hx $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<amp>> $$3) {
-      T $$4 = $$0.getAnnotation($$1);
-      if ($$4 != null) {
-         String $$5 = $$2.apply($$4);
-         Consumer<amp> $$6 = $$3.putIfAbsent($$5, (Consumer<amp>)d($$0));
-         if ($$6 != null) {
-            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
+   void a() {
+      this.h = this.c.X() + this.a.f();
+      this.o.start();
+   }
+
+   public void b() {
+      if (!this.l()) {
+         if (this.s == null) {
+            this.a(new IllegalStateException("Running test without structure block entity"));
          }
-      }
-   }
 
-   public static Collection<sa> a(String $$0) {
-      return a.stream().filter($$1 -> a($$1, $$0)).collect(Collectors.toList());
-   }
-
-   public static Collection<sa> a() {
-      return a;
-   }
-
-   public static Collection<String> b() {
-      return b;
-   }
-
-   public static boolean b(String $$0) {
-      return b.contains($$0);
-   }
-
-   @Nullable
-   public static Consumer<amp> c(String $$0) {
-      return c.get($$0);
-   }
-
-   @Nullable
-   public static Consumer<amp> d(String $$0) {
-      return d.get($$0);
-   }
-
-   public static Optional<sa> e(String $$0) {
-      return a().stream().filter($$1 -> $$1.a().equalsIgnoreCase($$0)).findFirst();
-   }
-
-   public static sa f(String $$0) {
-      Optional<sa> $$1 = e($$0);
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Can't find the test function for " + $$0);
-      } else {
-         return $$1.get();
-      }
-   }
-
-   private static Collection<sa> b(Method $$0) {
-      try {
-         Object $$1 = $$0.getDeclaringClass().newInstance();
-         return (Collection<sa>)$$0.invoke($$1);
-      } catch (ReflectiveOperationException var2) {
-         throw new RuntimeException(var2);
-      }
-   }
-
-   private static sa c(Method $$0) {
-      rc $$1 = $$0.getAnnotation(rc.class);
-      String $$2 = $$0.getDeclaringClass().getSimpleName();
-      String $$3 = $$2.toLowerCase();
-      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
-      String $$5 = $$1.e().isEmpty() ? $$4 : $$3 + "." + $$1.e();
-      String $$6 = $$1.b();
-      dcl $$7 = rx.a($$1.c());
-      return new sa($$6, $$4, $$5, $$7, $$1.a(), $$1.f(), $$1.d(), $$1.h(), $$1.g(), (Consumer<rj>)d($$0));
-   }
-
-   private static Consumer<?> d(Method $$0) {
-      return $$1 -> {
-         try {
-            Object $$2 = $$0.getDeclaringClass().newInstance();
-            $$0.invoke($$2, $$1);
-         } catch (InvocationTargetException var3) {
-            if (var3.getCause() instanceof RuntimeException) {
-               throw (RuntimeException)var3.getCause();
+         if (this.k || rz.b(this.s).b().allMatch($$0x -> this.c.f($$0x.l()))) {
+            this.k = true;
+            if (this.i > 0) {
+               this.i--;
             } else {
-               throw new RuntimeException(var3.getCause());
+               if (!this.j) {
+                  this.j = true;
+                  this.s.c(this.c);
+                  dyr $$0 = rz.b(this.s);
+                  this.c.m().a($$0);
+                  this.c.a($$0);
+                  this.a();
+               }
+
+               this.C();
+               if (this.l()) {
+                  if (this.r != null) {
+                     this.d.forEach($$0x -> $$0x.c(this));
+                  } else {
+                     this.d.forEach($$0x -> $$0x.b(this));
+                  }
+               }
             }
-         } catch (ReflectiveOperationException var4) {
-            throw new RuntimeException(var4);
          }
-      };
+      }
    }
 
-   private static boolean a(sa $$0, String $$1) {
-      return $$0.a().toLowerCase().startsWith($$1.toLowerCase() + ".");
+   private void C() {
+      this.l = this.c.X() - this.h;
+      if (this.l >= 0L) {
+         if (this.l == 0L) {
+            this.D();
+         }
+
+         ObjectIterator<Entry<Runnable>> $$0 = this.g.object2LongEntrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<Runnable> $$1 = (Entry<Runnable>)$$0.next();
+            if ($$1.getLongValue() <= this.l) {
+               try {
+                  ((Runnable)$$1.getKey()).run();
+               } catch (Exception var4) {
+                  this.a(var4);
+               }
+
+               $$0.remove();
+            }
+         }
+
+         if (this.l > (long)this.e) {
+            if (this.f.isEmpty()) {
+               this.a(new rt("Didn't succeed or fail within " + this.a.c() + " ticks"));
+            } else {
+               this.f.forEach($$0x -> $$0x.b(this.l));
+               if (this.r == null) {
+                  this.a(new rt("No sequences finished"));
+               }
+            }
+         } else {
+            this.f.forEach($$0x -> $$0x.a(this.l));
+         }
+      }
    }
 
-   public static Collection<sa> c() {
-      return e;
+   private void D() {
+      if (this.m) {
+         throw new IllegalStateException("Test already started");
+      } else {
+         this.m = true;
+
+         try {
+            this.a.a(new rl(this));
+         } catch (Exception var2) {
+            this.a(var2);
+         }
+      }
    }
 
-   public static void a(sa $$0) {
-      e.add($$0);
+   public void a(long $$0, Runnable $$1) {
+      this.g.put($$1, $$0);
    }
 
-   public static void d() {
-      e.clear();
+   public String c() {
+      return this.a.a();
+   }
+
+   public hx d() {
+      return this.b;
+   }
+
+   @Nullable
+   public hx e() {
+      dic $$0 = this.E();
+      return $$0 == null ? null : rz.c($$0);
+   }
+
+   @Nullable
+   public jb f() {
+      dic $$0 = this.E();
+      return $$0 == null ? null : $$0.k();
+   }
+
+   @Nullable
+   public elh g() {
+      dic $$0 = this.E();
+      return $$0 == null ? null : rz.a($$0);
+   }
+
+   @Nullable
+   private dic E() {
+      return (dic)this.c.c_(this.b);
+   }
+
+   public amz h() {
+      return this.c;
+   }
+
+   public boolean i() {
+      return this.p && this.r == null;
+   }
+
+   public boolean j() {
+      return this.r != null;
+   }
+
+   public boolean k() {
+      return this.m;
+   }
+
+   public boolean l() {
+      return this.p;
+   }
+
+   public long m() {
+      return this.o.elapsed(TimeUnit.MILLISECONDS);
+   }
+
+   private void F() {
+      if (!this.p) {
+         this.p = true;
+         if (this.o.isRunning()) {
+            this.o.stop();
+         }
+      }
+   }
+
+   public void n() {
+      if (this.r == null) {
+         this.F();
+         elh $$0 = this.g();
+         List<blp> $$1 = this.h().a(blp.class, $$0.g(1.0), $$0x -> !($$0x instanceof cfb));
+         $$1.forEach($$0x -> $$0x.a(blp.c.b));
+      }
+   }
+
+   public void a(Throwable $$0) {
+      this.r = $$0;
+      this.F();
+   }
+
+   @Nullable
+   public Throwable o() {
+      return this.r;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   public void a(rn $$0) {
+      this.d.add($$0);
+   }
+
+   public void b(hx $$0) {
+      this.s = rz.a(this, $$0, this.v(), this.c);
+      this.b = this.s.aB_();
+      rz.a(this.b, new hx(1, 0, -1), this.v(), this.c);
+      this.d.forEach($$0x -> $$0x.a(this));
+   }
+
+   public void p() {
+      if (this.s == null) {
+         throw new IllegalStateException("Expected structure to be initialized, but it was null");
+      } else {
+         dyr $$0 = rz.b(this.s);
+         rz.a($$0, this.c);
+      }
+   }
+
+   long q() {
+      return this.l;
+   }
+
+   rq r() {
+      rq $$0 = new rq(this);
+      this.f.add($$0);
+      return $$0;
+   }
+
+   public boolean s() {
+      return this.a.d();
+   }
+
+   public boolean t() {
+      return !this.a.d();
+   }
+
+   public String u() {
+      return this.a.b();
+   }
+
+   public dcv v() {
+      return this.q;
+   }
+
+   public sc w() {
+      return this.a;
+   }
+
+   public int x() {
+      return this.e;
+   }
+
+   public boolean y() {
+      return this.a.h();
+   }
+
+   public int z() {
+      return this.a.i();
+   }
+
+   public int A() {
+      return this.a.j();
+   }
+
+   public void a(boolean $$0) {
+      this.n = $$0;
+   }
+
+   public boolean B() {
+      return this.n;
    }
 }

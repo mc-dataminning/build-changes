@@ -1,180 +1,217 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fng {
-   private static final Logger a = LogUtils.getLogger();
-   private static final vb b = vb.c("multiplayer.status.cannot_connect").b(-65536);
-   private final List<uc> c = Collections.synchronizedList(Lists.newArrayList());
+public class fng extends dla {
+   static final Logger a = LogUtils.getLogger();
+   private final dlh b;
+   private final edz c;
+   volatile fng.a d;
+   final fnk e;
 
-   public void a(final fne $$0, final Runnable $$1) throws UnknownHostException {
-      final fof $$2 = fof.a($$0.b);
-      Optional<InetSocketAddress> $$3 = foh.a.a($$2).map(foe::d);
-      if ($$3.isEmpty()) {
-         this.a(faw.b, $$0);
+   public fng(fnk $$0, int $$1) {
+      this.e = $$0;
+      this.b = new dld($$0, new csp(0, 0), $$0.I_().d(ke.at).f(cuo.b));
+      this.c = new edz(this, true, $$0.E_().g());
+      this.d = new fng.a(b($$1));
+   }
+
+   @Override
+   public edz p() {
+      return this.c;
+   }
+
+   private static boolean a(@Nullable dlh $$0, int $$1, int $$2) {
+      if ($$0 == null) {
+         return false;
       } else {
-         final InetSocketAddress $$4 = $$3.get();
-         final uc $$5 = uc.a($$4, false, null);
-         this.c.add($$5);
-         $$0.d = vb.c("multiplayer.status.pinging");
-         $$0.f = -1L;
-         $$0.j = Collections.emptyList();
-         afr $$6 = new afr() {
-            private boolean g;
-            private boolean h;
-            private long i;
+         csp $$3 = $$0.f();
+         return $$3.e == $$1 && $$3.f == $$2;
+      }
+   }
 
-            @Override
-            public void a(aft $$0x) {
-               if (this.h) {
-                  $$5.a(vb.c("multiplayer.status.unrequested"));
-               } else {
-                  this.h = true;
-                  afu $$1 = $$0.a();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = vb.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = vb.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = fng.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<vb> $$2xx = new ArrayList<>($$1xxx.c().size());
-
-                        for (GameProfile $$3 : $$1xxx.c()) {
-                           $$2xx.add(vb.b($$3.getName()));
-                        }
-
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(vb.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
-
-                        $$0.j = $$2xx;
-                     } else {
-                        $$0.j = List.of();
-                     }
-                  }, () -> $$0.c = vb.c("multiplayer.status.unknown").a(n.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a(fne.b($$2xx.a()));
-                        $$1.run();
-                     }
-                  });
-                  this.i = ac.b();
-                  $$5.a(new afw(this.i));
-                  this.g = true;
-               }
-            }
-
-            @Override
-            public void a(afs $$0x) {
-               long $$1 = this.i;
-               long $$2 = ac.b();
-               $$0.f = $$2 - $$1;
-               $$5.a(vb.c("multiplayer.status.finished"));
-            }
-
-            @Override
-            public void a(vb $$0x) {
-               if (!this.g) {
-                  fng.this.a($$0, $$0);
-                  fng.this.a($$4, $$2, $$0);
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return $$5.k();
-            }
-         };
-
-         try {
-            $$5.a($$2.a(), $$2.b(), $$6);
-            $$5.a(new afx());
-         } catch (Throwable var9) {
-            a.error("Failed to ping server {}", $$2, var9);
+   public void a(csp $$0) {
+      if (this.d.b($$0.e, $$0.f)) {
+         int $$1 = this.d.a($$0.e, $$0.f);
+         dlh $$2 = this.d.a($$1);
+         if (a($$2, $$0.e, $$0.f)) {
+            this.d.a($$1, $$2, null);
          }
       }
    }
 
-   void a(vb $$0, fne $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = va.a;
-   }
-
-   void a(InetSocketAddress $$0, final fof $$1, final fne $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)uc.g.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
-            try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
-            }
-
-            $$0.pipeline().addLast(new ChannelHandler[]{new fmy($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.g = -1;
-               $$2.h = vb.b($$2xx);
-               $$2.d = vb.b($$3);
-               $$2.c = fng.a($$4, $$5);
-               $$2.e = new afu.b($$5, $$4, List.of());
-            })});
+   @Nullable
+   public dlh b(int $$0, int $$1, dlb $$2, boolean $$3) {
+      if (this.d.b($$0, $$1)) {
+         dlh $$4 = this.d.a(this.d.a($$0, $$1));
+         if (a($$4, $$0, $$1)) {
+            return $$4;
          }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
+      }
+
+      return $$3 ? this.b : null;
    }
 
-   public static vb a(int $$0, int $$1) {
-      vb $$2 = vb.b(Integer.toString($$0)).a(n.h);
-      vb $$3 = vb.b(Integer.toString($$1)).a(n.h);
-      return vb.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
+   @Override
+   public cso q() {
+      return this.e;
    }
 
-   public void a() {
-      synchronized (this.c) {
-         Iterator<uc> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            uc $$1 = $$0.next();
-            if ($$1.k()) {
-               $$1.d();
-            } else {
-               $$0.remove();
-               $$1.p();
-            }
+   public void a(int $$0, int $$1, ug $$2) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+      } else {
+         int $$3 = this.d.a($$0, $$1);
+         dlh $$4 = this.d.b.get($$3);
+         if (!a($$4, $$0, $$1)) {
+            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
+         } else {
+            $$4.a($$2);
          }
       }
    }
 
-   public void b() {
-      synchronized (this.c) {
-         Iterator<uc> $$0 = this.c.iterator();
+   @Nullable
+   public dlh a(int $$0, int $$1, ug $$2, sl $$3, Consumer<aag.b> $$4) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+         return null;
+      } else {
+         int $$5 = this.d.a($$0, $$1);
+         dlh $$6 = this.d.b.get($$5);
+         csp $$7 = new csp($$0, $$1);
+         if (!a($$6, $$0, $$1)) {
+            $$6 = new dlh(this.e, $$7);
+            $$6.a($$2, $$3, $$4);
+            this.d.a($$5, $$6);
+         } else {
+            $$6.a($$2, $$3, $$4);
+         }
 
-         while ($$0.hasNext()) {
-            uc $$1 = $$0.next();
-            if ($$1.k()) {
-               $$0.remove();
-               $$1.a(vb.c("multiplayer.status.cancelled"));
+         this.e.a($$7);
+         return $$6;
+      }
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0, boolean $$1) {
+   }
+
+   public void d(int $$0, int $$1) {
+      this.d.e = $$0;
+      this.d.f = $$1;
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.d.c;
+      int $$2 = b($$0);
+      if ($$1 != $$2) {
+         fng.a $$3 = new fng.a($$2);
+         $$3.e = this.d.e;
+         $$3.f = this.d.f;
+
+         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
+            dlh $$5 = this.d.b.get($$4);
+            if ($$5 != null) {
+               csp $$6 = $$5.f();
+               if ($$3.b($$6.e, $$6.f)) {
+                  $$3.a($$3.a($$6.e, $$6.f), $$5);
+               }
             }
+         }
+
+         this.d = $$3;
+      }
+   }
+
+   private static int b(int $$0) {
+      return Math.max(2, $$0) + 3;
+   }
+
+   @Override
+   public String e() {
+      return this.d.b.length() + ", " + this.j();
+   }
+
+   @Override
+   public int j() {
+      return this.d.g;
+   }
+
+   @Override
+   public void a(ctr $$0, iz $$1) {
+      eva.N().f.b($$1.a(), $$1.b(), $$1.c());
+   }
+
+   final class a {
+      final AtomicReferenceArray<dlh> b;
+      final int c;
+      private final int d;
+      volatile int e;
+      volatile int f;
+      int g;
+
+      a(int $$0) {
+         this.c = $$0;
+         this.d = $$0 * 2 + 1;
+         this.b = new AtomicReferenceArray<>(this.d * this.d);
+      }
+
+      int a(int $$0, int $$1) {
+         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
+      }
+
+      protected void a(int $$0, @Nullable dlh $$1) {
+         dlh $$2 = this.b.getAndSet($$0, $$1);
+         if ($$2 != null) {
+            this.g--;
+            fng.this.e.a($$2);
+         }
+
+         if ($$1 != null) {
+            this.g++;
+         }
+      }
+
+      protected dlh a(int $$0, dlh $$1, @Nullable dlh $$2) {
+         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
+            this.g--;
+         }
+
+         fng.this.e.a($$1);
+         return $$1;
+      }
+
+      boolean b(int $$0, int $$1) {
+         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
+      }
+
+      @Nullable
+      protected dlh a(int $$0) {
+         return this.b.get($$0);
+      }
+
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
+            int $$2 = fng.this.d.c;
+
+            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
+               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
+                  dlh $$5 = fng.this.d.b.get(fng.this.d.a($$4, $$3));
+                  if ($$5 != null) {
+                     csp $$6 = $$5.f();
+                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
+                  }
+               }
+            }
+         } catch (IOException var10) {
+            fng.a.error("Failed to dump chunks to file {}", $$0, var10);
          }
       }
    }

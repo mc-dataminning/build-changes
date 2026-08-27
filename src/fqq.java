@@ -1,25 +1,11 @@
-public class fqq extends frd {
-   fqq(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.04F;
-      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
-         this.j = $$4;
-         this.k = 0.1;
-         this.l = $$6;
-      }
-   }
+import javax.annotation.Nullable;
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+public interface fqq<T extends jv> {
+   @Nullable
+   fqn createParticle(T var1, fnk var2, double var3, double var5, double var7, double var9, double var11, double var13);
 
-      public a(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqq $$8 = new fqq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public interface a<T extends jv> {
+      @Nullable
+      frn createParticle(T var1, fnk var2, double var3, double var5, double var7, double var9, double var11, double var13);
    }
 }

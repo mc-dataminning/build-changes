@@ -1,51 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ecd {
-   public static final ecv a = ecv.a;
-   public static final Codec<ecd> b = RecordCodecBuilder.create(
+public class ecd extends ecw {
+   public static final Codec<ecd> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eci.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
-               eci.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
-               ecb.c.optionalFieldOf("position_predicate", eca.b).forGetter($$0x -> $$0x.e),
-               dip.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
-               ecw.c.optionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+               iv.a(ke.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
             )
             .apply($$0, ecd::new)
    );
-   private final eci c;
-   private final eci d;
-   private final ecb e;
-   private final dip f;
-   private final ecw g;
+   private final Optional<il<cwj>> b;
+   private final float c;
 
-   public ecd(eci $$0, eci $$1, dip $$2) {
-      this($$0, $$1, eca.b, $$2);
+   public ecd(il<cwj> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
    }
 
-   public ecd(eci $$0, eci $$1, ecb $$2, dip $$3) {
-      this($$0, $$1, $$2, $$3, a);
+   public ecd(float $$0) {
+      this(Optional.empty(), $$0);
    }
 
-   public ecd(eci $$0, eci $$1, ecb $$2, dip $$3, ecw $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a(dip $$0, dip $$1, hv $$2, hv $$3, hv $$4, auf $$5) {
-      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
-   }
-
-   public dip a() {
-      return this.f;
+   private ecd(Optional<il<cwj>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
    }
 
    @Nullable
-   public sj a(auf $$0, @Nullable sj $$1) {
-      return this.g.a($$0, $$1);
+   @Override
+   public ecz.c a(ctl $$0, hx $$1, hx $$2, ecz.c $$3, ecz.c $$4, ecv $$5) {
+      aup $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   }
+
+   @Override
+   protected ecy<?> a() {
+      return ecy.f;
    }
 }

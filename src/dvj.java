@@ -1,50 +1,48 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dvj extends dvl {
-   public static final Codec<dvj> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               atq.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               edc.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               atg.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, dvj::new)
+public class dvj extends dvd {
+   public static final Codec<dvj> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bja.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, dvj::new)
    );
-   private final atq<Integer> i;
-   private final edc.a j;
-   private final float k;
-   private final edc l;
+   private final bja b;
 
-   public dvj(atq<Integer> $$0, edc.a $$1, float $$2, long $$3, edc.a $$4, float $$5, List<dip> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = edc.b(new dox(new dnz($$3)), $$1);
+   public dvj(bja $$0, bja $$1, bja $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected dvi<?> a() {
-      return dvi.e;
+   protected dve<?> a() {
+      return dve.b;
    }
 
    @Override
-   public dip a(auf $$0, hv $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)aty.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dip> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected void a(cto $$0, dvd.b $$1, aup $$2, dun $$3, int $$4, dvd.a $$5, int $$6, int $$7, int $$8) {
+      hx $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
       }
-
-      return this.a($$4, $$1, (double)this.e);
    }
 
-   protected double a(hv $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   @Override
+   public int a(aup $$0, int $$1, dun $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(aup $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

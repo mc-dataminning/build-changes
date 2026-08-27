@@ -1,54 +1,164 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class boz {
-   public static bnn<cee> a() {
-      return bqz.a(
-         (Function<bqz.b<cee>, ? extends App<bqz.c<cee>, brc<cee>>>)($$0 -> $$0.group($$0.b(bux.c), $$0.b(bux.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        id $$6 = $$0.b($$1);
-                        $$3.x()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<blv>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cee && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cee)$$0xxxx)
-                                    .filter(blv::bx)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, boz::a)
-                           );
-                        return true;
-                     }
-               ))
-      );
+public class boz<E extends bmh> extends bnw<E> {
+   protected static final int c = 20;
+   private static final int m = 40;
+   protected static final int d = 8;
+   private static final int n = 200;
+   private static final List<Integer> o = Lists.newArrayList(new Integer[]{65, 70, 75, 80});
+   private final bjg p;
+   protected final int e;
+   protected final int f;
+   protected final float g;
+   protected List<boz.a> h = Lists.newArrayList();
+   protected Optional<elm> i = Optional.empty();
+   @Nullable
+   protected elm j;
+   protected int k;
+   protected long l;
+   private final Function<E, arl> q;
+   private final BiPredicate<E, hx> r;
+
+   public boz(bjg $$0, int $$1, int $$2, float $$3, Function<E, arl> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, boz::a);
    }
 
-   private static cee a(cee $$0, cee $$1) {
-      cee $$2;
-      cee $$3;
-      if ($$0.w() > $$1.w()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
+   public static <E extends bmh> boolean a(E $$0, hx $$1) {
+      cti $$2 = $$0.dM();
+      hx $$3 = $$1.d();
+      return $$2.a_($$3).i($$2, $$3) && $$0.a(efe.a($$2, $$1.j())) == 0.0F;
+   }
+
+   public boz(bjg $$0, int $$1, int $$2, float $$3, Function<E, arl> $$4, BiPredicate<E, hx> $$5) {
+      super(ImmutableMap.of(bvh.n, bvi.c, bvh.R, bvi.b, bvh.S, bvi.b), 200);
+      this.p = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.q = $$4;
+      this.r = $$5;
+   }
+
+   protected boolean a(amz $$0, bmh $$1) {
+      boolean $$2 = $$1.aC() && !$$1.aZ() && !$$1.bn() && !$$0.a_($$1.dm()).a(cwl.pg);
+      if (!$$2) {
+         $$1.dO().a(bvh.R, this.p.a($$0.z) / 2);
       }
 
-      $$3.dO().b(bux.c);
       return $$2;
    }
 
-   private static boolean a(id $$0, ie<bwz> $$1, cee $$2) {
-      Optional<id> $$3 = $$2.dO().c(bux.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gp().b());
+   protected boolean b(amz $$0, bmh $$1, long $$2) {
+      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dk()) && this.k > 0 && !$$1.bc() && (this.j != null || !this.h.isEmpty());
+      if (!$$3 && $$1.dO().c(bvh.S).isEmpty()) {
+         $$1.dO().a(bvh.R, this.p.a($$0.z) / 2);
+         $$1.dO().b(bvh.n);
+      }
+
+      return $$3;
    }
 
-   private static boolean a(ie<bwz> $$0, ceh $$1) {
-      return $$1.b().test($$0);
+   protected void a(amz $$0, E $$1, long $$2) {
+      this.j = null;
+      this.k = 20;
+      this.i = Optional.of($$1.dk());
+      hx $$3 = $$1.dm();
+      int $$4 = $$3.u();
+      int $$5 = $$3.v();
+      int $$6 = $$3.w();
+      this.h = hx.a($$4 - this.f, $$5 - this.e, $$6 - this.f, $$4 + this.f, $$5 + this.e, $$6 + this.f)
+         .filter($$1x -> !$$1x.equals($$3))
+         .map($$1x -> new boz.a($$1x.i(), aui.c($$3.j($$1x))))
+         .collect(Collectors.toCollection(Lists::newArrayList));
+   }
+
+   protected void c(amz $$0, E $$1, long $$2) {
+      if (this.j != null) {
+         if ($$2 - this.l >= 40L) {
+            $$1.r($$1.aU);
+            $$1.p(true);
+            double $$3 = this.j.f();
+            double $$4 = $$3 + (double)$$1.fa();
+            $$1.g(this.j.a($$4 / $$3));
+            $$1.dO().a(bvh.S, true);
+            $$0.a(null, $$1, this.q.apply($$1), arn.g, 1.0F, 1.0F);
+         }
+      } else {
+         this.k--;
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void d(amz $$0, E $$1, long $$2) {
+      while (!this.h.isEmpty()) {
+         Optional<boz.a> $$3 = this.a($$0);
+         if (!$$3.isEmpty()) {
+            boz.a $$4 = $$3.get();
+            hx $$5 = $$4.b();
+            if (this.a($$0, $$1, $$5)) {
+               elm $$6 = elm.b($$5);
+               elm $$7 = this.a($$1, $$6);
+               if ($$7 != null) {
+                  $$1.dO().a(bvh.n, new bnz($$5));
+                  bvp $$8 = $$1.N();
+                  eez $$9 = $$8.a($$5, 0, 8);
+                  if ($$9 == null || !$$9.j()) {
+                     this.j = $$7;
+                     this.l = $$2;
+                     return;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected Optional<boz.a> a(amz $$0) {
+      Optional<boz.a> $$1 = bii.a($$0.z, this.h);
+      $$1.ifPresent(this.h::remove);
+      return $$1;
+   }
+
+   private boolean a(amz $$0, E $$1, hx $$2) {
+      hx $$3 = $$1.dm();
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      return $$4 == $$2.u() && $$5 == $$2.w() ? false : this.r.test($$1, $$2);
+   }
+
+   @Nullable
+   protected elm a(bmh $$0, elm $$1) {
+      List<Integer> $$2 = Lists.newArrayList(o);
+      Collections.shuffle($$2);
+
+      for (int $$3 : $$2) {
+         Optional<elm> $$4 = bpa.a($$0, $$1, this.g, $$3, true);
+         if ($$4.isPresent()) {
+            return $$4.get();
+         }
+      }
+
+      return null;
+   }
+
+   public static class a extends bih.a {
+      private final hx a;
+
+      public a(hx $$0, int $$1) {
+         super($$1);
+         this.a = $$0;
+      }
+
+      public hx b() {
+         return this.a;
+      }
    }
 }

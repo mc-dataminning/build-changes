@@ -1,25 +1,19 @@
-import javax.annotation.Nullable;
+public class ctg {
+   private static int[] a = new int[65536];
 
-public interface ctg {
-   boolean a(hv var1, dip var2, int var3, int var4);
-
-   default boolean a(hv $$0, dip $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   boolean a(hv var1, boolean var2);
-
-   default boolean b(hv $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   default boolean a(hv $$0, boolean $$1, @Nullable blf $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
-
-   boolean a(hv var1, boolean var2, @Nullable blf var3, int var4);
-
-   default boolean b(blf $$0) {
-      return false;
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

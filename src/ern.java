@@ -1,59 +1,40 @@
-import java.util.List;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public abstract class ern {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class ern extends erp {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public ern.a c = ern.a.a;
 
-   public ern(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static ern a(String $$0) {
+      ern $$1 = new ern();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = etm.a("startDate", $$3, 0L);
+         $$1.b = etm.a("daysLeft", $$3, 0);
+         $$1.c = b(etm.b("subscriptionType", $$3, ern.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 
-   public void a(evw $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
-   }
-
-   protected abstract void a(evw var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
-   }
-
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(evw $$0, List<ern> $$1, gjk<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (ern $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
+   private static ern.a b(String $$0) {
+      try {
+         return ern.a.valueOf($$0);
+      } catch (Exception var2) {
+         return ern.a.a;
       }
    }
 
-   public static void a(gjk<?> $$0, exd.a<?> $$1, List<ern> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.i().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.a($$6);
-         int $$7 = $$0.o();
-         int $$8 = $$0.h($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
-
-         for (ern $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
-            }
-         }
-      }
+   public static enum a {
+      a,
+      b;
    }
 }

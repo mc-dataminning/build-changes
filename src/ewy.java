@@ -1,35 +1,99 @@
-public class ewy {
-   public static final agt a = new agt("textures/gui/title/minecraft.png");
-   public static final agt b = new agt("textures/gui/title/minceraft.png");
-   public static final agt c = new agt("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)auf.a().i() < 1.0E-4;
-   private final boolean o;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public ewy(boolean $$0) {
-      this.o = $$0;
+public class ewy extends ewp {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 20;
+   public static final int o = 8;
+   protected static final ewy.b p = $$0 -> $$0.get();
+   protected final ewy.c q;
+   protected final ewy.b r;
+
+   public static ewy.a a(vd $$0, ewy.c $$1) {
+      return new ewy.a($$0, $$1);
    }
 
-   public void a(evw $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   protected ewy(int $$0, int $$1, int $$2, int $$3, vd $$4, ewy.c $$5, ewy.b $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.q = $$5;
+      this.r = $$6;
    }
 
-   public void a(evw $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   @Override
+   public void b() {
+      this.q.onPress(this);
+   }
+
+   @Override
+   protected vr aK_() {
+      return this.r.createNarrationMessage(() -> super.aK_());
+   }
+
+   @Override
+   public void a(far $$0) {
+      this.c($$0);
+   }
+
+   public static class a {
+      private final vd a;
+      private final ewy.c b;
+      @Nullable
+      private eyj c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private ewy.b h = ewy.p;
+
+      public a(vd $$0, ewy.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ewy.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public ewy.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public ewy.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
+
+      public ewy.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public ewy.a a(@Nullable eyj $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public ewy.a a(ewy.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public ewy a() {
+         ewy $$0 = new ewy(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
+      }
+   }
+
+   public interface b {
+      vr createNarrationMessage(Supplier<vr> var1);
+   }
+
+   public interface c {
+      void onPress(ewy var1);
    }
 }

@@ -1,36 +1,42 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class frp extends fql {
+   private final blp a;
+   private int b;
+   private final int D;
+   private final jv E;
 
-public class frp implements bhi {
-   private final fsg a;
-   private final Set<bhg> b = new ObjectOpenHashSet();
-   private final bho c = new bho();
+   public frp(fnk $$0, blp $$1, jv $$2) {
+      this($$0, $$1, $$2, 3);
+   }
 
-   public frp(LongSupplier $$0, fsg $$1) {
+   public frp(fnk $$0, blp $$1, jv $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dp());
+   }
+
+   private frp(fnk $$0, blp $$1, jv $$2, int $$3, elm $$4) {
+      super($$0, $$1.dr(), $$1.e(0.5), $$1.dx(), $$4.c, $$4.d, $$4.e);
       this.a = $$1;
-      this.b.add(bhp.a($$0));
+      this.D = $$3;
+      this.E = $$2;
       this.a();
    }
 
-   private void a() {
-      this.b.addAll(bhp.a());
-      this.b.add(bhg.a("totalChunks", bhf.f, this.a, fsg::i));
-      this.b.add(bhg.a("renderedChunks", bhf.f, this.a, fsg::k));
-      this.b.add(bhg.a("lastViewDistance", bhf.f, this.a, fsg::j));
-      fvh $$0 = this.a.h();
-      this.b.add(bhg.a("toUpload", bhf.g, $$0, fvh::c));
-      this.b.add(bhg.a("freeBufferCount", bhf.g, $$0, fvh::d));
-      this.b.add(bhg.a("toBatchCount", bhf.g, $$0, fvh::b));
-      if (eow.a().isPresent()) {
-         this.b.add(bhg.a("gpuUtilization", bhf.i, euk.N(), euk::u));
-      }
-   }
-
    @Override
-   public Set<bhg> a(Supplier<bga> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
+      }
+
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
+      }
    }
 }

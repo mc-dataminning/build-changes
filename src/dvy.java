@@ -1,66 +1,62 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dvy {
-   public static final Codec<dvy> h = kb.Z.q().dispatch(dvy::a, dvz::a);
+public class dvy extends dvs {
+   public static final Codec<dvy> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvs.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bja.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dvy::new)
+   );
+   private final dvs c;
+   private final String d;
+   @Nullable
+   private dka e;
+   private final bja f;
 
-   protected abstract dvz<?> a();
+   public dvy(dvs $$0, dka $$1, bja $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   public abstract void a(dvy.a var1);
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+         }
+      }
+   }
 
-   public static final class a {
-      private final cte a;
-      private final BiConsumer<hv, dip> b;
-      private final auf c;
-      private final ObjectArrayList<hv> d;
-      private final ObjectArrayList<hv> e;
-      private final ObjectArrayList<hv> f;
+   public dvy(dvs $$0, String $$1, bja $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+   }
 
-      public a(cte $$0, BiConsumer<hv, dip> $$1, auf $$2, Set<hv> $$3, Set<hv> $$4, Set<hv> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(iz::v));
-         this.e.sort(Comparator.comparingInt(iz::v));
-         this.f.sort(Comparator.comparingInt(iz::v));
+   @Override
+   protected dvt<?> a() {
+      return dvt.g;
+   }
+
+   @Override
+   public dja a(aup $$0, hx $$1) {
+      dja $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
       }
 
-      public void a(hv $$0, djg $$1) {
-         this.a($$0, cwb.ff.o().a($$1, Boolean.valueOf(true)));
-      }
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
 
-      public void a(hv $$0, dip $$1) {
-         this.b.accept($$0, $$1);
-      }
-
-      public boolean a(hv $$0) {
-         return this.a.a($$0, dio.a::i);
-      }
-
-      public cte a() {
-         return this.a;
-      }
-
-      public auf b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<hv> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<hv> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<hv> e() {
-         return this.f;
-      }
+   private static dka a(dja $$0, String $$1) {
+      Collection<dkd<?>> $$2 = $$0.B();
+      Optional<dka> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dka).map($$0x -> (dka)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

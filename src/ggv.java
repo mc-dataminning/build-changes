@@ -1,66 +1,107 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+public abstract class ggv implements ghn {
+   protected ghk a;
+   protected final arn b;
+   protected final ahd c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected ghn.a k = ghn.a.b;
+   protected boolean l;
+   protected aup m;
 
-public class ggv implements JsonDeserializer<ggu> {
-   private static final bio a = bim.a(1.0F);
-
-   public ggu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = ato.m($$0, "entry");
-      boolean $$4 = ato.a($$3, "replace", false);
-      String $$5 = ato.a($$3, "subtitle", null);
-      List<ggt> $$6 = this.a($$3);
-      return new ggu($$6, $$4, $$5);
+   protected ggv(arl $$0, arn $$1, aup $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   private List<ggt> a(JsonObject $$0) {
-      List<ggt> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = ato.v($$0, "sounds");
+   protected ggv(ahd $$0, arn $$1, aup $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (ato.a($$4)) {
-               String $$5 = ato.a($$4, "sound");
-               $$1.add(new ggt($$5, a, a, 1, ggt.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(ato.m($$4, "sound")));
-            }
+   @Override
+   public ahd a() {
+      return this.c;
+   }
+
+   @Override
+   public gis a(gir $$0) {
+      if (this.c.equals(gir.b)) {
+         this.a = gir.d;
+         return gir.c;
+      } else {
+         gis $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = gir.a;
+         } else {
+            this.a = $$1.a(this.m);
          }
-      }
 
-      return $$1;
+         return $$1;
+      }
    }
 
-   private ggt b(JsonObject $$0) {
-      String $$1 = ato.i($$0, "name");
-      ggt.a $$2 = this.a($$0, ggt.a.a);
-      float $$3 = ato.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = ato.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = ato.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = ato.a($$0, "preload", false);
-      boolean $$7 = ato.a($$0, "stream", false);
-      int $$8 = ato.a($$0, "attenuation_distance", 16);
-      return new ggt($$1, bim.a($$3), bim.a($$4), $$5, $$2, $$7, $$6, $$8);
+   @Override
+   public ghk b() {
+      return this.a;
    }
 
-   private ggt.a a(JsonObject $$0, ggt.a $$1) {
-      ggt.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = ggt.a.a(ato.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
+   @Override
+   public arn c() {
+      return this.b;
+   }
 
-      return $$2;
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public ghn.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

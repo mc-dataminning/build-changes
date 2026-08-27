@@ -1,11 +1,8 @@
-public interface xe extends acx {
-   void a(xh var1);
+public enum xe {
+   a,
+   b;
 
-   void a(xi var1);
-
-   void a(xg var1);
-
-   void a(xj var1);
-
-   void a(xf var1);
+   public xe a() {
+      return this == b ? a : b;
+   }
 }

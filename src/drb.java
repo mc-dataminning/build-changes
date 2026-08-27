@@ -1,56 +1,57 @@
-public class drb extends drc<dtn> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final hv an = hv.b;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-   public static hv a(hv $$0) {
-      return an.a((iz)$$0);
-   }
-
-   public drb(boolean $$0) {
-      super(dtn.a);
-      this.ao = $$0;
+public class drb extends drc {
+   public drb(Codec<dty> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dre<dtn> $$0) {
-      hv $$1 = $$0.e();
-      ctt $$2 = $$0.b();
+   protected boolean a(ctj $$0, aup $$1, hx $$2, dja $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         ic $$4 = ic.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ic> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-      for (hv $$3 : hv.a(new hv($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new hv($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, cwb.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, cwb.fz.o());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, cwb.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, cwb.F.o());
-            } else if (this.ao) {
-               this.a($$2, new hv($$3), cwb.fx.o());
+         for (ic $$8 : $$6.subList(0, $$5)) {
+            hx.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ic $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
             } else {
-               this.a($$2, new hv($$3), cwb.a.o());
+               $$9.c(ic.b);
+               ic[] $$13 = new ic[]{$$8, ic.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(ic.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ic.b);
+               }
             }
          }
+
+         return true;
       }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), cwb.F.o());
-      }
-
-      hv $$6 = $$1.b(2);
-
-      for (ia $$7 : ia.c.a) {
-         this.a($$2, $$6.a($$7), cwb.cq.o().a(dez.g, $$7));
-      }
-
-      return true;
    }
 }

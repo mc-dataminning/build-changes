@@ -1,359 +1,280 @@
-import com.google.common.primitives.Doubles;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.DoubleStream;
-import javax.annotation.Nullable;
 
 public class dpb {
-   private static final double f = 0.1;
-   protected static final int a = 4;
-   protected static final int b = 8;
-   protected static final int c = 2;
-   private static final double g = 1.0;
-   private static final double h = -1.0;
-   private static final int i = 2;
-   private static final int j = iq.a(16);
-   private static final int k = j - 1;
-   private static final int l = j;
-   private static final int m = 2 * k + 1;
-   private static final int n = 2 * l + 1;
-   private static final int o = m + n;
-   private final cta p;
-   private static final List<cvz> q = List.of(cwb.l, cwb.L, cwb.i, cwb.b, cwb.k, cwb.I, cwb.K, cwb.fl, cwb.dP, cwb.iA, cwb.j);
-   protected static final double d = Double.MAX_VALUE;
-   private boolean r;
-   private final double[] s;
-   private final List<List<ie<ctx>>> t;
-   private final transient double[][] u;
-   private static final Codec<double[]> v = Codec.DOUBLE.listOf().xmap(Doubles::toArray, Doubles::asList);
-   public static final Codec<dpb> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("min_section").forGetter($$0x -> $$0x.p.am()),
-                  Codec.INT.fieldOf("max_section").forGetter($$0x -> $$0x.p.an()),
-                  v.optionalFieldOf("heights")
-                     .forGetter($$0x -> DoubleStream.of($$0x.s).anyMatch($$0xx -> $$0xx != Double.MAX_VALUE) ? Optional.of($$0x.s) : Optional.empty())
-               )
-               .apply($$0, dpb::new)
-      )
-      .comapFlatMap(dpb::a, Function.identity());
+   private static final dja a = cwl.hj.o();
+   private static final dja b = cwl.hk.o();
+   private static final dja c = cwl.iA.o();
+   private static final dja d = cwl.hn.o();
+   private static final dja e = cwl.hv.o();
+   private static final dja f = cwl.hx.o();
+   private static final dja g = cwl.hr.o();
+   private static final dja h = cwl.iC.o();
+   private static final dja i = cwl.dP.o();
+   private final dja j;
+   private final int k;
+   private final dja[] l;
+   private final edn m;
+   private final edn n;
+   private final edn o;
+   private final edn p;
+   private final edn q;
+   private final edn r;
+   private final edn s;
+   private final dow t;
+   private final edn u;
+   private final edn v;
 
-   private static DataResult<dpb> a(dpb $$0) {
-      return $$0.s.length != o ? DataResult.error(() -> "heights has to be of length " + o) : DataResult.success($$0);
-   }
-
-   private dpb(int $$0, int $$1, Optional<double[]> $$2) {
-      this.s = $$2.orElse(ac.a(new double[o], $$0x -> Arrays.fill($$0x, Double.MAX_VALUE)));
-      this.u = new double[o][];
-      ObjectArrayList<List<ie<ctx>>> $$3 = new ObjectArrayList(o);
-      $$3.size(o);
+   public dpb(dox $$0, dja $$1, int $$2, dow $$3) {
+      this.j = $$1;
+      this.k = $$2;
       this.t = $$3;
-      int $$4 = ix.c($$0);
-      int $$5 = ix.c($$1) - $$4;
-      this.p = cta.e($$4, $$5);
+      this.m = $$0.a(dos.P);
+      this.l = a($$3.a(new ahd("clay_bands")));
+      this.u = $$0.a(dos.N);
+      this.v = $$0.a(dos.O);
+      this.n = $$0.a(dos.Q);
+      this.o = $$0.a(dos.R);
+      this.p = $$0.a(dos.S);
+      this.q = $$0.a(dos.T);
+      this.r = $$0.a(dos.U);
+      this.s = $$0.a(dos.V);
    }
 
-   @Nullable
-   public static dpb a(amw $$0, int $$1, int $$2) {
-      dkl $$3 = $$0.a($$1, $$2);
-      dpb $$4 = $$3.t();
-      if ($$4 != null && $$3.k().b(dkq.f)) {
-         $$4.a($$3, a($$0, $$1, $$2, false));
-         return $$4;
-      } else {
-         return null;
-      }
-   }
-
-   public static Set<ib> a(ctt $$0, int $$1, int $$2, boolean $$3) {
-      Set<ib> $$4 = EnumSet.noneOf(ib.class);
-
-      for (ib $$5 : ib.values()) {
-         int $$6 = $$1 + $$5.b();
-         int $$7 = $$2 + $$5.c();
-         if ($$0.a($$6, $$7).s() == $$3) {
-            $$4.add($$5);
-         }
-      }
-
-      return $$4;
-   }
-
-   private void a(dkl $$0, Set<ib> $$1) {
-      if (!this.r) {
-         if ($$1.contains(ib.a) || $$1.contains(ib.g) || $$1.contains(ib.h)) {
-            this.a(a(0, 0), $$0, 0, 0);
+   public void a(dox $$0, cuj $$1, it<cuh> $$2, boolean $$3, dpg $$4, final dkw $$5, don $$6, dpa.o $$7) {
+      final hx.a $$8 = new hx.a();
+      final csp $$9 = $$5.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      dkt $$12 = new dkt() {
+         @Override
+         public dja a(int $$0) {
+            return $$5.a_($$8.q($$0));
          }
 
-         if ($$1.contains(ib.a)) {
-            for (int $$2 = 1; $$2 < j; $$2++) {
-               this.a(a($$2, 0), $$0, 4 * $$2, 0);
+         @Override
+         public void a(int $$0, dja $$1) {
+            ctk $$2 = $$5.z();
+            if ($$0 >= $$2.J_() && $$0 < $$2.al()) {
+               $$5.a($$8.q($$0), $$1, false);
+               if (!$$1.u().c()) {
+                  $$5.e($$8);
+               }
             }
          }
 
-         if ($$1.contains(ib.g)) {
-            for (int $$3 = 1; $$3 < j; $$3++) {
-               this.a(a(0, $$3), $$0, 0, 4 * $$3);
+         @Override
+         public String toString() {
+            return "ChunkBlockColumn " + $$9;
+         }
+      };
+      dpa.g $$13 = new dpa.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
+      dpa.u $$14 = $$7.apply($$13);
+      hx.a $$15 = new hx.a();
+
+      for (int $$16 = 0; $$16 < 16; $$16++) {
+         for (int $$17 = 0; $$17 < 16; $$17++) {
+            int $$18 = $$10 + $$16;
+            int $$19 = $$11 + $$17;
+            int $$20 = $$5.a(doj.a.a, $$16, $$17) + 1;
+            $$8.p($$18).r($$19);
+            ih<cuh> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
+            if ($$21.a(cuo.B)) {
+               this.a($$12, $$18, $$19, $$20, $$5);
+            }
+
+            int $$22 = $$5.a(doj.a.a, $$16, $$17) + 1;
+            $$13.a($$18, $$19);
+            int $$23 = 0;
+            int $$24 = Integer.MIN_VALUE;
+            int $$25 = Integer.MAX_VALUE;
+            int $$26 = $$5.J_();
+
+            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
+               dja $$28 = $$12.a($$27);
+               if ($$28.i()) {
+                  $$23 = 0;
+                  $$24 = Integer.MIN_VALUE;
+               } else if (!$$28.u().c()) {
+                  if ($$24 == Integer.MIN_VALUE) {
+                     $$24 = $$27 + 1;
+                  }
+               } else {
+                  if ($$25 >= $$27) {
+                     $$25 = dmj.g;
+
+                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
+                        dja $$30 = $$12.a($$29);
+                        if (!this.a($$30)) {
+                           $$25 = $$29 + 1;
+                           break;
+                        }
+                     }
+                  }
+
+                  $$23++;
+                  int $$31 = $$27 - $$25 + 1;
+                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
+                  if ($$28 == this.j) {
+                     dja $$32 = $$14.tryApply($$18, $$27, $$19);
+                     if ($$32 != null) {
+                        $$12.a($$27, $$32);
+                     }
+                  }
+               }
+            }
+
+            if ($$21.a(cuo.W) || $$21.a(cuo.X)) {
+               this.a($$13.b(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
             }
          }
+      }
+   }
 
-         if ($$1.contains(ib.c)) {
-            for (int $$4 = 1; $$4 < j; $$4++) {
-               this.a(b(l, $$4), $$0, 15, 4 * $$4);
+   protected int a(int $$0, int $$1) {
+      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
+      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
+   }
+
+   protected double b(int $$0, int $$1) {
+      return this.v.a((double)$$0, 0.0, (double)$$1);
+   }
+
+   private boolean a(dja $$0) {
+      return !$$0.i() && $$0.u().c();
+   }
+
+   @Deprecated
+   public Optional<dja> a(dpa.o $$0, dqj $$1, Function<hx, ih<cuh>> $$2, dkw $$3, don $$4, hx $$5, boolean $$6) {
+      dpa.g $$7 = new dpa.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().d(ke.at), $$1);
+      dpa.u $$8 = $$0.apply($$7);
+      int $$9 = $$5.u();
+      int $$10 = $$5.v();
+      int $$11 = $$5.w();
+      $$7.a($$9, $$11);
+      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
+      dja $$12 = $$8.tryApply($$9, $$10, $$11);
+      return Optional.ofNullable($$12);
+   }
+
+   private void a(dkt $$0, int $$1, int $$2, int $$3, ctk $$4) {
+      double $$5 = 0.2;
+      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
+      if (!($$6 <= 0.0)) {
+         double $$7 = 0.75;
+         double $$8 = 1.5;
+         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
+         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
+         int $$11 = aui.a($$10);
+         if ($$3 <= $$11) {
+            for (int $$12 = $$11; $$12 >= $$4.J_(); $$12--) {
+               dja $$13 = $$0.a($$12);
+               if ($$13.a(this.j.b())) {
+                  break;
+               }
+
+               if ($$13.a(cwl.G)) {
+                  return;
+               }
+            }
+
+            for (int $$14 = $$11; $$14 >= $$4.J_() && $$0.a($$14).i(); $$14--) {
+               $$0.a($$14, this.j);
             }
          }
+      }
+   }
 
-         if ($$1.contains(ib.e)) {
-            for (int $$5 = 0; $$5 < j; $$5++) {
-               this.a(b($$5, l), $$0, 4 * $$5, 15);
-            }
+   private void a(int $$0, cuh $$1, dkt $$2, hx.a $$3, int $$4, int $$5, int $$6) {
+      double $$7 = 1.28;
+      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
+      if (!($$8 <= 1.8)) {
+         double $$9 = 1.17;
+         double $$10 = 1.5;
+         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
+         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
+         if ($$1.d($$3.d($$4, 63, $$5))) {
+            $$12 -= 2.0;
          }
 
-         if ($$1.contains(ib.c) && $$1.contains(ib.b)) {
-            this.a(b(l, 0), $$0, 15, 0);
+         double $$13;
+         if ($$12 > 2.0) {
+            $$13 = (double)this.k - $$12 - 7.0;
+            $$12 += (double)this.k;
+         } else {
+            $$12 = 0.0;
+            $$13 = 0.0;
          }
 
-         if ($$1.contains(ib.c) && $$1.contains(ib.e) && $$1.contains(ib.d)) {
-            this.a(b(l, l), $$0, 15, 15);
-         }
+         double $$15 = $$12;
+         aup $$16 = this.t.a($$4, 0, $$5);
+         int $$17 = 2 + $$16.a(4);
+         int $$18 = this.k + 18 + $$16.a(10);
+         int $$19 = 0;
 
-         this.r = true;
-      }
-   }
-
-   private void a(int $$0, dkl $$1, int $$2, int $$3) {
-      if (this.s[$$0] == Double.MAX_VALUE) {
-         this.s[$$0] = (double)this.a($$1, $$2, $$3);
-      }
-
-      this.u[$$0] = this.a($$1, $$2, $$3, aty.a(this.s[$$0]));
-      this.t.set($$0, this.b($$1, $$2, $$3));
-   }
-
-   private int a(dkl $$0, int $$1, int $$2) {
-      int $$3;
-      if ($$0.b(dny.a.a)) {
-         $$3 = Math.min($$0.a(dny.a.a, $$1, $$2) + 1, this.p.ak());
-      } else {
-         $$3 = this.p.ak();
-      }
-
-      int $$5 = this.p.J_();
-      hv.a $$6 = new hv.a($$1, $$3, $$2);
-
-      while ($$6.v() > $$5) {
-         $$6.c(ia.a);
-         if (q.contains($$0.a_($$6).b())) {
-            return $$6.v();
-         }
-      }
-
-      return $$5;
-   }
-
-   private static double a(dkl $$0, hv.a $$1) {
-      return a($$0, (hv)$$1.c(ia.a)) ? 1.0 : -1.0;
-   }
-
-   private static double b(dkl $$0, hv.a $$1) {
-      double $$2 = 0.0;
-
-      for (int $$3 = 0; $$3 < 7; $$3++) {
-         $$2 += a($$0, $$1);
-      }
-
-      return $$2;
-   }
-
-   private double[] a(dkl $$0, int $$1, int $$2, int $$3) {
-      double[] $$4 = new double[this.b()];
-      Arrays.fill($$4, -1.0);
-      hv.a $$5 = new hv.a($$1, this.p.ak(), $$2);
-      double $$6 = b($$0, $$5);
-
-      for (int $$7 = $$4.length - 2; $$7 >= 0; $$7--) {
-         double $$8 = a($$0, $$5);
-         double $$9 = b($$0, $$5);
-         $$4[$$7] = ($$6 + $$8 + $$9) / 15.0;
-         $$6 = $$9;
-      }
-
-      int $$10 = this.a(aty.a($$3, 8));
-      if ($$10 >= 0 && $$10 < $$4.length - 1) {
-         double $$11 = ((double)$$3 + 0.5) % 8.0 / 8.0;
-         double $$12 = (1.0 - $$11) / $$11;
-         double $$13 = Math.max($$12, 1.0) * 0.25;
-         $$4[$$10 + 1] = -$$12 / $$13;
-         $$4[$$10] = 1.0 / $$13;
-      }
-
-      return $$4;
-   }
-
-   private List<ie<ctx>> b(dkl $$0, int $$1, int $$2) {
-      ObjectArrayList<ie<ctx>> $$3 = new ObjectArrayList(this.c());
-      $$3.size(this.c());
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         int $$5 = $$4 + iq.a(this.p.J_());
-         $$3.set($$4, $$0.getNoiseBiome(iq.a($$1), $$5, iq.a($$2)));
-      }
-
-      return $$3;
-   }
-
-   private static boolean a(dkl $$0, hv $$1) {
-      dip $$2 = $$0.a_($$1);
-      if ($$2.i()) {
-         return false;
-      } else if ($$2.a(arr.O)) {
-         return false;
-      } else if ($$2.a(arr.t)) {
-         return false;
-      } else {
-         return $$2.a(cwb.eT) || $$2.a(cwb.eU) ? false : !$$2.k($$0, $$1).c();
-      }
-   }
-
-   protected double a(int $$0, int $$1, int $$2) {
-      if ($$0 == l || $$2 == l) {
-         return this.s[b($$0, $$2)];
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.s[a($$0, $$2)];
-      }
-   }
-
-   private double a(@Nullable double[] $$0, int $$1) {
-      if ($$0 == null) {
-         return Double.MAX_VALUE;
-      } else {
-         int $$2 = this.a($$1);
-         return $$2 >= 0 && $$2 < $$0.length ? $$0[$$2] * 0.1 : Double.MAX_VALUE;
-      }
-   }
-
-   protected double b(int $$0, int $$1, int $$2) {
-      if ($$1 == this.e()) {
-         return 0.1;
-      } else if ($$0 == l || $$2 == l) {
-         return this.a(this.u[b($$0, $$2)], $$1);
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.a(this.u[a($$0, $$2)], $$1);
-      }
-   }
-
-   protected void a(int $$0, int $$1, int $$2, dpb.a $$3) {
-      if ($$1 >= iq.a(this.p.J_()) && $$1 < iq.a(this.p.ak())) {
-         int $$4 = $$1 - iq.a(this.p.J_());
-
-         for (int $$5 = 0; $$5 < this.t.size(); $$5++) {
-            if (this.t.get($$5) != null) {
-               ie<ctx> $$6 = this.t.get($$5).get($$4);
-               if ($$6 != null) {
-                  $$3.consume($$0 + b($$5), $$2 + c($$5), $$6);
+         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
+            if ($$2.a($$20).i() && $$20 < (int)$$15 && $$16.j() > 0.01
+               || $$2.a($$20).a(cwl.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
+               if ($$19 <= $$17 && $$20 > $$18) {
+                  $$2.a($$20, i);
+                  $$19++;
+               } else {
+                  $$2.a($$20, h);
                }
             }
          }
       }
    }
 
-   protected void a(int $$0, int $$1, dpb.c $$2) {
-      for (int $$3 = 0; $$3 < this.s.length; $$3++) {
-         double $$4 = this.s[$$3];
-         if ($$4 != Double.MAX_VALUE) {
-            $$2.consume($$0 + b($$3), $$1 + c($$3), $$4);
+   private static dja[] a(aup $$0) {
+      dja[] $$1 = new dja[192];
+      Arrays.fill($$1, c);
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$2 += $$0.a(5) + 1;
+         if ($$2 < $$1.length) {
+            $$1[$$2] = b;
+         }
+      }
+
+      a($$0, $$1, 1, d);
+      a($$0, $$1, 2, e);
+      a($$0, $$1, 1, f);
+      int $$3 = $$0.a(9, 15);
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
+         $$1[$$5] = a;
+         if ($$5 - 1 > 0 && $$0.h()) {
+            $$1[$$5 - 1] = g;
+         }
+
+         if ($$5 + 1 < $$1.length && $$0.h()) {
+            $$1[$$5 + 1] = g;
+         }
+
+         $$4++;
+      }
+
+      return $$1;
+   }
+
+   private static void a(aup $$0, dja[] $$1, int $$2, dja $$3) {
+      int $$4 = $$0.a(6, 15);
+
+      for (int $$5 = 0; $$5 < $$4; $$5++) {
+         int $$6 = $$2 + $$0.a(3);
+         int $$7 = $$0.a($$1.length);
+
+         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
+            $$1[$$7 + $$8] = $$3;
          }
       }
    }
 
-   protected void a(int $$0, int $$1, int $$2, int $$3, dpb.b $$4) {
-      int $$5 = this.d();
-      int $$6 = Math.max(0, $$2 - $$5);
-      int $$7 = Math.min(this.b(), $$3 - $$5);
-
-      for (int $$8 = 0; $$8 < this.u.length; $$8++) {
-         double[] $$9 = this.u[$$8];
-         if ($$9 != null) {
-            int $$10 = $$0 + b($$8);
-            int $$11 = $$1 + c($$8);
-
-            for (int $$12 = $$6; $$12 < $$7; $$12++) {
-               $$4.consume($$10, $$12 + $$5, $$11, $$9[$$12] * 0.1);
-            }
-         }
-      }
-   }
-
-   private int b() {
-      return this.p.al() * 2;
-   }
-
-   private int c() {
-      return iq.d(this.p.al());
-   }
-
-   private int d() {
-      return this.e() + 1;
-   }
-
-   private int e() {
-      return this.p.am() * 2;
-   }
-
-   private int a(int $$0) {
-      return $$0 - this.d();
-   }
-
-   private static int a(int $$0, int $$1) {
-      return k - $$0 + $$1;
-   }
-
-   private static int b(int $$0, int $$1) {
-      return m + $$0 + l - $$1;
-   }
-
-   private static int b(int $$0) {
-      if ($$0 < m) {
-         return d(k - $$0);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d(l - $$1);
-      }
-   }
-
-   private static int c(int $$0) {
-      if ($$0 < m) {
-         return d($$0 - k);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d($$1 - l);
-      }
-   }
-
-   private static int d(int $$0) {
-      return $$0 & ~($$0 >> 31);
-   }
-
-   public cta a() {
-      return this.p;
-   }
-
-   protected interface a {
-      void consume(int var1, int var2, ie<ctx> var3);
-   }
-
-   protected interface b {
-      void consume(int var1, int var2, int var3, double var4);
-   }
-
-   protected interface c {
-      void consume(int var1, int var2, double var3);
+   protected dja a(int $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
+      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
    }
 }

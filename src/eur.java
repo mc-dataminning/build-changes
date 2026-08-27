@@ -1,30 +1,38 @@
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum eur implements aua {
-   a(0, "options.prioritizeChunkUpdates.none"),
-   b(1, "options.prioritizeChunkUpdates.byPlayer"),
-   c(2, "options.prioritizeChunkUpdates.nearby");
+public class eur {
+   private final fnl a;
+   private int b = -1;
+   @Nullable
+   private Consumer<sl> c;
 
-   private static final IntFunction<eur> d = asq.a(eur::a, values(), asq.a.b);
-   private final int e;
-   private final String f;
-
-   private eur(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eur(fnl $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public boolean a(int $$0, @Nullable sl $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   private int a(Consumer<sl> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   public static eur a(int $$0) {
-      return d.apply($$0);
+   public void a(int $$0, Consumer<sl> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new adz($$2, $$0));
+   }
+
+   public void a(hx $$0, Consumer<sl> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new adk($$2, $$0));
    }
 }

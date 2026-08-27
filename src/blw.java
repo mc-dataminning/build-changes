@@ -1,57 +1,46 @@
-public class blw extends blf {
-   private static final String b = "data";
-   private sj c = new sj();
-
-   public blw(blj<?> $$0, csy $$1) {
+public abstract class blw extends bmh {
+   protected blw(blt<? extends blw> $$0, cti $$1) {
       super($$0, $$1);
-      this.af = true;
    }
 
    @Override
-   public void l() {
+   protected void a(double $$0, boolean $$1, dja $$2, hx $$3) {
    }
 
    @Override
-   protected void c_() {
+   public void a(elm $$0) {
+      if (this.cX()) {
+         if (this.aZ()) {
+            this.a(0.02F, $$0);
+            this.a(bml.a, this.dp());
+            this.g(this.dp().a(0.8F));
+         } else if (this.bn()) {
+            this.a(0.02F, $$0);
+            this.a(bml.a, this.dp());
+            this.g(this.dp().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aC()) {
+               $$1 = this.dM().a_(this.aI()).b().i() * 0.91F;
+            }
+
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aC()) {
+               $$1 = this.dM().a_(this.aI()).b().i() * 0.91F;
+            }
+
+            this.a(this.aC() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bml.a, this.dp());
+            this.g(this.dp().a((double)$$1));
+         }
+      }
+
+      this.q(false);
    }
 
    @Override
-   protected void a(sj $$0) {
-      this.c = $$0.p("data");
-   }
-
-   @Override
-   protected void b(sj $$0) {
-      $$0.a("data", this.c.h());
-   }
-
-   @Override
-   public wu<yo> dj() {
-      throw new IllegalStateException("Markers should never be sent");
-   }
-
-   @Override
-   protected boolean r(blf $$0) {
+   public boolean e_() {
       return false;
-   }
-
-   @Override
-   protected boolean bD() {
-      return false;
-   }
-
-   @Override
-   protected void p(blf $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public eee s_() {
-      return eee.d;
-   }
-
-   @Override
-   public boolean r_() {
-      return true;
    }
 }

@@ -1,121 +1,12 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
+import com.mojang.serialization.Codec;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class gfz implements gfp {
-   protected final List<ftf> a;
-   protected final Map<ia, List<ftf>> b;
-   protected final boolean c;
-   protected final boolean d;
-   protected final boolean e;
-   protected final gdo f;
-   protected final ftr g;
-   protected final ftp h;
+public record gfz(Map<String, gfm> d) {
+   public static final Codec<String> a = atq.b(1, 16);
+   public static final Codec<gfz> b = Codec.unboundedMap(a, gfm.a).xmap(gfz::new, gfz::a);
+   public static final apd<gfz> c = apd.a("language", b);
 
-   public gfz(List<ftf> $$0, Map<ia, List<ftf>> $$1, boolean $$2, boolean $$3, boolean $$4, gdo $$5, ftr $$6, ftp $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$4;
-      this.e = $$3;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-   }
-
-   @Override
-   public List<ftf> a(@Nullable dip $$0, @Nullable ia $$1, auf $$2) {
-      return $$1 == null ? this.a : this.b.get($$1);
-   }
-
-   @Override
-   public boolean a() {
-      return this.c;
-   }
-
-   @Override
-   public boolean b() {
+   public Map<String, gfm> a() {
       return this.d;
-   }
-
-   @Override
-   public boolean c() {
-      return this.e;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public gdo e() {
-      return this.f;
-   }
-
-   @Override
-   public ftr f() {
-      return this.g;
-   }
-
-   @Override
-   public ftp g() {
-      return this.h;
-   }
-
-   public static class a {
-      private final List<ftf> a = Lists.newArrayList();
-      private final Map<ia, List<ftf>> b = Maps.newEnumMap(ia.class);
-      private final ftp c;
-      private final boolean d;
-      private gdo e;
-      private final boolean f;
-      private final boolean g;
-      private final ftr h;
-
-      public a(ftk $$0, ftp $$1, boolean $$2) {
-         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
-      }
-
-      private a(boolean $$0, boolean $$1, boolean $$2, ftr $$3, ftp $$4) {
-         for (ia $$5 : ia.values()) {
-            this.b.put($$5, Lists.newArrayList());
-         }
-
-         this.c = $$4;
-         this.d = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
-      }
-
-      public gfz.a a(ia $$0, ftf $$1) {
-         this.b.get($$0).add($$1);
-         return this;
-      }
-
-      public gfz.a a(ftf $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public gfz.a a(gdo $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public gfz.a a() {
-         return this;
-      }
-
-      public gfp b() {
-         if (this.e == null) {
-            throw new RuntimeException("Missing particle!");
-         } else {
-            return new gfz(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
-         }
-      }
    }
 }

@@ -1,218 +1,276 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class ezq extends ezm {
-   private final List<ezt> c = new ArrayList<>();
-   private final List<ezq.a> d = new ArrayList<>();
-   private final ezu e = ezu.i();
-   private int f = 0;
-   private int g = 0;
+public class ezq {
+   private final Supplier<String> a;
+   private final Consumer<String> b;
+   private final Supplier<String> c;
+   private final Consumer<String> d;
+   private final Predicate<String> e;
+   private int f;
+   private int g;
 
-   public ezq() {
-      this(0, 0);
+   public ezq(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f();
    }
 
-   public ezq(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
+   public static Supplier<String> a(eva $$0) {
+      return () -> b($$0);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      int $$0 = 0;
-      int $$1 = 0;
+   public static String b(eva $$0) {
+      return n.a($$0.o.a().replaceAll("\\r", ""));
+   }
 
-      for (ezq.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
+   public static Consumer<String> c(eva $$0) {
+      return $$1 -> a($$0, $$1);
+   }
+
+   public static void a(eva $$0, String $$1) {
+      $$0.o.a($$1);
+   }
+
+   public boolean a(char $$0) {
+      if (aa.a($$0)) {
+         this.a(this.a.get(), Character.toString($$0));
       }
 
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
-
-      for (ezq.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
-         }
-
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
-      }
-
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (ezq.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.p() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.r() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
+      return true;
    }
 
-   public <T extends ezt> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
-   }
-
-   public <T extends ezt> T a(T $$0, int $$1, int $$2, ezu $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
-   }
-
-   public <T extends ezt> T a(T $$0, int $$1, int $$2, Consumer<ezu> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
-   }
-
-   public <T extends ezt> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends ezt> T a(T $$0, int $$1, int $$2, int $$3, int $$4, ezu $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
+   public boolean a(int $$0) {
+      if (fct.f($$0)) {
+         this.d();
+         return true;
+      } else if (fct.e($$0)) {
+         this.c();
+         return true;
+      } else if (fct.d($$0)) {
+         this.b();
+         return true;
+      } else if (fct.c($$0)) {
+         this.a();
+         return true;
       } else {
-         this.d.add(new ezq.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
+         ezq.a $$1 = fct.r() ? ezq.a.b : ezq.a.a;
+         if ($$0 == 259) {
+            this.a(-1, $$1);
+            return true;
+         } else {
+            if ($$0 == 261) {
+               this.a(1, $$1);
+            } else {
+               if ($$0 == 263) {
+                  this.a(-1, fct.s(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 262) {
+                  this.a(1, fct.s(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 268) {
+                  this.a(fct.s());
+                  return true;
+               }
+
+               if ($$0 == 269) {
+                  this.b(fct.s());
+                  return true;
+               }
+            }
+
+            return false;
+         }
       }
    }
 
-   public <T extends ezt> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<ezu> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
+   private int h(int $$0) {
+      return aui.a($$0, 0, this.a.get().length());
    }
 
-   public ezq a(int $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public ezq b(int $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public ezq c(int $$0) {
-      return this.a($$0).b($$0);
-   }
-
-   @Override
-   public void b(Consumer<ezt> $$0) {
-      this.c.forEach($$0);
-   }
-
-   public ezu b() {
-      return this.e.g();
-   }
-
-   public ezu c() {
-      return this.e;
-   }
-
-   public ezq.b d(int $$0) {
-      return new ezq.b($$0);
-   }
-
-   static class a extends ezm.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(ezt $$0, int $$1, int $$2, int $$3, int $$4, ezu $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   private void a(String $$0, String $$1) {
+      if (this.g != this.f) {
+         $$0 = this.c($$0);
       }
 
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
+      this.f = aui.a(this.f, 0, $$0.length());
+      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
+      if (this.e.test($$2)) {
+         this.b.accept($$2);
+         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
       }
    }
 
-   public final class b {
-      private final int b;
-      private int c;
+   public void a(String $$0) {
+      this.a(this.a.get(), $$0);
+   }
 
-      b(int $$1) {
-         this.b = $$1;
+   private void c(boolean $$0) {
+      if (!$$0) {
+         this.g = this.f;
       }
+   }
 
-      public <T extends ezt> T a(T $$0) {
-         return this.a($$0, 1);
+   public void a(int $$0, boolean $$1, ezq.a $$2) {
+      switch ($$2) {
+         case a:
+            this.a($$0, $$1);
+            break;
+         case b:
+            this.b($$0, $$1);
       }
+   }
 
-      public <T extends ezt> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
+   public void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.f = ac.a(this.a.get(), this.f, $$0);
+      this.c($$1);
+   }
+
+   public void c(int $$0) {
+      this.b($$0, false);
+   }
+
+   public void b(int $$0, boolean $$1) {
+      this.f = evm.a(this.a.get(), $$0, this.f, true);
+      this.c($$1);
+   }
+
+   public void a(int $$0, ezq.a $$1) {
+      switch ($$1) {
+         case a:
+            this.e($$0);
+            break;
+         case b:
+            this.d($$0);
       }
+   }
 
-      public <T extends ezt> T a(T $$0, ezu $$1) {
-         return this.a($$0, 1, $$1);
-      }
+   public void d(int $$0) {
+      int $$1 = evm.a(this.a.get(), $$0, this.f, true);
+      this.e($$1 - this.f);
+   }
 
-      public <T extends ezt> T a(T $$0, int $$1, ezu $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = aty.d(this.c, this.b);
+   public void e(int $$0) {
+      String $$1 = this.a.get();
+      if (!$$1.isEmpty()) {
+         String $$2;
+         if (this.g != this.f) {
+            $$2 = this.c($$1);
+         } else {
+            int $$3 = ac.a($$1, this.f, $$0);
+            int $$4 = Math.min($$3, this.f);
+            int $$5 = Math.max($$3, this.f);
+            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
+            if ($$0 < 0) {
+               this.g = this.f = $$4;
+            }
          }
 
-         this.c += $$1;
-         return ezq.this.a($$0, $$3, $$4, 1, $$1, $$2);
+         this.b.accept($$2);
       }
+   }
 
-      public ezq a() {
-         return ezq.this;
-      }
+   public void a() {
+      String $$0 = this.a.get();
+      this.d.accept(this.b($$0));
+      this.b.accept(this.c($$0));
+   }
 
-      public ezu b() {
-         return ezq.this.b();
-      }
+   public void b() {
+      this.a(this.a.get(), this.c.get());
+      this.g = this.f;
+   }
 
-      public ezu c() {
-         return ezq.this.c();
+   public void c() {
+      this.d.accept(this.b(this.a.get()));
+   }
+
+   public void d() {
+      this.g = 0;
+      this.f = this.a.get().length();
+   }
+
+   private String b(String $$0) {
+      int $$1 = Math.min(this.f, this.g);
+      int $$2 = Math.max(this.f, this.g);
+      return $$0.substring($$1, $$2);
+   }
+
+   private String c(String $$0) {
+      if (this.g == this.f) {
+         return $$0;
+      } else {
+         int $$1 = Math.min(this.f, this.g);
+         int $$2 = Math.max(this.f, this.g);
+         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
+         this.g = this.f = $$1;
+         return $$3;
       }
+   }
+
+   public void e() {
+      this.a(false);
+   }
+
+   public void a(boolean $$0) {
+      this.f = 0;
+      this.c($$0);
+   }
+
+   public void f() {
+      this.b(false);
+   }
+
+   public void b(boolean $$0) {
+      this.f = this.a.get().length();
+      this.c($$0);
+   }
+
+   public int g() {
+      return this.f;
+   }
+
+   public void f(int $$0) {
+      this.c($$0, true);
+   }
+
+   public void c(int $$0, boolean $$1) {
+      this.f = this.h($$0);
+      this.c($$1);
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public void g(int $$0) {
+      this.g = this.h($$0);
+   }
+
+   public void a(int $$0, int $$1) {
+      int $$2 = this.a.get().length();
+      this.f = aui.a($$0, 0, $$2);
+      this.g = aui.a($$1, 0, $$2);
+   }
+
+   public boolean i() {
+      return this.f != this.g;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

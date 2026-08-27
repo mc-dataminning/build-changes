@@ -1,47 +1,34 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class aiz {
-   public static final int a = 2;
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vd.b("commands.difficulty.failure", $$0));
 
    public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("gamemode").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)dt.a("gamemode", ef.a())
-                     .executes($$0x -> a($$0x, Collections.singleton(((ds)$$0x.getSource()).h()), ef.a($$0x, "gamemode"))))
-                  .then(dt.a("target", ee.d()).executes($$0x -> a($$0x, ee.f($$0x, "target"), ef.a($$0x, "gamemode"))))
-            )
-      );
+      LiteralArgumentBuilder<ds> $$1 = dt.a("difficulty");
+
+      for (bjs $$2 : bjs.values()) {
+         $$1.then(dt.a($$2.e()).executes($$1x -> a((ds)$$1x.getSource(), $$2)));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         bjs $$1x = ((ds)$$0x.getSource()).e().ak();
+         ((ds)$$0x.getSource()).a(() -> vd.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
    }
 
-   private static void a(ds $$0, amq $$1, csv $$2) {
-      vb $$3 = vb.c("gameMode." + $$2.b());
-      if ($$0.f() == $$1) {
-         $$0.a(() -> vb.a("commands.gamemode.success.self", $$3), true);
+   public static int a(ds $$0, bjs $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.l();
+      if ($$2.aY().s() == $$1) {
+         throw a.create($$1.e());
       } else {
-         if ($$0.e().Y().b(csu.p)) {
-            $$1.a(vb.a("gameMode.changed", $$3));
-         }
-
-         $$0.a(() -> vb.a("commands.gamemode.success.other", $$1.Q_(), $$3), true);
+         $$2.a($$1, true);
+         $$0.a(() -> vd.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
       }
-   }
-
-   private static int a(CommandContext<ds> $$0, Collection<amq> $$1, csv $$2) {
-      int $$3 = 0;
-
-      for (amq $$4 : $$1) {
-         if ($$4.a($$2)) {
-            a((ds)$$0.getSource(), $$4, $$2);
-            $$3++;
-         }
-      }
-
-      return $$3;
    }
 }

@@ -1,286 +1,105 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public class fck extends fcc {
-   private static final Logger a = LogUtils.getLogger();
-   private static final agt b = new agt("textures/misc/vignette.png");
-   private static final vb c = vb.b("============").a(n.p);
-   private static final String k = "           ";
-   private static final String l = "" + n.p + n.q + n.k + n.l;
-   private static final float m = 5.0F;
-   private static final float n = 15.0F;
-   private final boolean o;
-   private final Runnable p;
-   private float q;
-   private List<atk> r;
-   private IntSet t;
-   private int u;
-   private boolean v;
-   private final IntSet w = new IntOpenHashSet();
-   private float x;
-   private final float y;
-   private int z;
-   private final ewy A = new ewy(false);
+public class fck extends fct {
+   private static final vd a = vd.c("options.skinCustomisation");
+   private static final vd b = vd.c("options.sounds");
+   private static final vd c = vd.c("options.video");
+   private static final vd k = vd.c("options.controls");
+   private static final vd l = vd.c("options.language");
+   private static final vd m = vd.c("options.chat");
+   private static final vd n = vd.c("options.resourcepack");
+   private static final vd o = vd.c("options.accessibility");
+   private static final vd p = vd.c("options.telemetry");
+   private static final vd q = vd.c("options.credits_and_attribution");
+   private static final int r = 2;
+   private final fct t;
+   private final eve u;
+   private exf<bjs> v;
+   private exo w;
 
-   public fck(boolean $$0, Runnable $$1) {
-      super(euc.a);
-      this.o = $$0;
-      this.p = $$1;
-      if (!$$0) {
-         this.y = 0.75F;
+   public fck(fct $$0, eve $$1) {
+      super(vd.c("options.title"));
+      this.t = $$0;
+      this.u = $$1;
+   }
+
+   @Override
+   protected void aN_() {
+      fah $$0 = new fah();
+      $$0.c().f(5).e(4).b();
+      fah.b $$1 = $$0.d(2);
+      $$1.a(this.u.ae().a(this.f.m, 0, 0, 150));
+      $$1.a(this.n());
+      $$1.a(fan.b(26), 2);
+      $$1.a(this.a(a, () -> new fcw(this, this.u)));
+      $$1.a(this.a(b, () -> new fcx(this, this.u)));
+      $$1.a(this.a(c, () -> new fda(this, this.u)));
+      $$1.a(this.a(k, () -> new fdl(this, this.u)));
+      $$1.a(this.a(l, () -> new fcc(this, this.u, this.f.ad())));
+      $$1.a(this.a(m, () -> new fbj(this, this.u)));
+      $$1.a(this.a(n, () -> new fga(this.f.Z(), this::a, this.f.ac(), vd.c("resourcePack.title"))));
+      $$1.a(this.a(o, () -> new fbf(this, this.u)));
+      $$1.a(this.a(p, () -> new fhg(this, this.u)));
+      $$1.a(this.a(q, () -> new fbq(this)));
+      $$1.a(ewy.a(vc.d, $$0x -> this.f.a(this.t)).a(200).a(), 2, $$1.b().c(6));
+      $$0.a();
+      fag.a($$0, 0, this.h / 6 - 12, this.g, this.h, 0.5F, 0.0F);
+      $$0.a(this::d);
+   }
+
+   private void a(apn $$0) {
+      this.u.a($$0);
+      this.f.a(this);
+   }
+
+   private fak n() {
+      if (this.f.r != null && this.f.R()) {
+         this.v = a(0, 0, "options.difficulty", this.f);
+         if (!this.f.r.k().n()) {
+            this.w = new exo(0, 0, $$0x -> this.f.a(new fbm(this::c, vd.c("difficulty.lock.title"), vd.a("difficulty.lock.question", this.f.r.k().s().b()))));
+            this.v.l(this.v.w() - this.w.w());
+            this.w.b(this.f.r.k().t());
+            this.w.j = !this.w.a();
+            this.v.j = !this.w.a();
+            faf $$0 = new faf(150, 0, faf.b.a);
+            $$0.a(this.v);
+            $$0.a(this.w);
+            return $$0;
+         } else {
+            this.v.j = false;
+            return this.v;
+         }
       } else {
-         this.y = 0.5F;
+         return ewy.a(vd.c("options.online"), $$0x -> this.f.a(fcj.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
       }
-
-      this.z = 1;
-      this.x = this.y;
    }
 
-   private float l() {
-      return this.v ? this.y * (5.0F + (float)this.w.size() * 15.0F) * (float)this.z : this.y * (float)this.z;
+   public static exf<bjs> a(int $$0, int $$1, String $$2, eva $$3) {
+      return exf.a(bjs::b).a(bjs.values()).a($$3.r.ak()).a($$0, $$1, 150, 20, vd.c($$2), ($$1x, $$2x) -> $$3.I().b(new adl($$2x)));
    }
 
-   @Override
-   public void d() {
-      this.f.r().a();
-      this.f.ah().a(false);
-      float $$0 = (float)(this.u + this.h + this.h + 24);
-      if (this.q > $$0) {
-         this.C();
+   private void c(boolean $$0) {
+      this.f.a(this);
+      if ($$0 && this.f.r != null) {
+         this.f.I().b(new aec(true));
+         this.w.b(true);
+         this.w.j = false;
+         this.v.j = false;
       }
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.z = -1;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.w.add($$0);
-      } else if ($$0 == 32) {
-         this.v = true;
-      }
-
-      this.x = this.l();
-      return super.a($$0, $$1, $$2);
+   public void j() {
+      this.u.as();
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.z = 1;
-      }
-
-      if ($$0 == 32) {
-         this.v = false;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.w.remove($$0);
-      }
-
-      this.x = this.l();
-      return super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void aF_() {
-      this.C();
-   }
-
-   private void C() {
-      this.p.run();
-   }
-
-   @Override
-   protected void aP_() {
-      if (this.r == null) {
-         this.r = Lists.newArrayList();
-         this.t = new IntOpenHashSet();
-         if (this.o) {
-            this.a("texts/end.txt", this::a);
-         }
-
-         this.a("texts/credits.json", this::b);
-         if (this.o) {
-            this.a("texts/postcredits.txt", this::a);
-         }
-
-         this.u = this.r.size() * 12;
-      }
-   }
-
-   private void a(String $$0, fck.a $$1) {
-      try (Reader $$2 = this.f.Y().openAsReader(new agt($$0))) {
-         $$1.read($$2);
-      } catch (Exception var8) {
-         a.error("Couldn't load credits", var8);
-      }
-   }
-
-   private void a(Reader $$0) throws IOException {
-      BufferedReader $$1 = new BufferedReader($$0);
-      auf $$2 = auf.a(8124371L);
-
-      String $$3;
-      while (($$3 = $$1.readLine()) != null) {
-         $$3 = $$3.replaceAll("PLAYERNAME", this.f.U().c());
-
-         int $$4;
-         while (($$4 = $$3.indexOf(l)) != -1) {
-            String $$5 = $$3.substring(0, $$4);
-            String $$6 = $$3.substring($$4 + l.length());
-            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
-         }
-
-         this.a($$3);
-         this.D();
-      }
-
-      for (int $$7 = 0; $$7 < 8; $$7++) {
-         this.D();
-      }
-   }
-
-   private void b(Reader $$0) {
-      for (JsonElement $$2 : ato.b($$0)) {
-         JsonObject $$3 = $$2.getAsJsonObject();
-         String $$4 = $$3.get("section").getAsString();
-         this.a(c, true);
-         this.a(vb.b($$4).a(n.o), true);
-         this.a(c, true);
-         this.D();
-         this.D();
-
-         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
-            JsonObject $$7 = $$6.getAsJsonObject();
-            String $$8 = $$7.get("discipline").getAsString();
-            if (StringUtils.isNotEmpty($$8)) {
-               this.a(vb.b($$8).a(n.o), true);
-               this.D();
-               this.D();
-            }
-
-            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
-               JsonObject $$11 = $$10.getAsJsonObject();
-               String $$12 = $$11.get("title").getAsString();
-               JsonArray $$13 = $$11.getAsJsonArray("names");
-               this.a(vb.b($$12).a(n.h), false);
-
-               for (JsonElement $$14 : $$13) {
-                  String $$15 = $$14.getAsString();
-                  this.a(vb.b("           ").f($$15).a(n.p), false);
-               }
-
-               this.D();
-               this.D();
-            }
-         }
-      }
-   }
-
-   private void D() {
-      this.r.add(atk.a);
-   }
-
-   private void a(String $$0) {
-      this.r.addAll(this.f.h.c(vb.b($$0), 256));
-   }
-
-   private void a(vb $$0, boolean $$1) {
-      if ($$1) {
-         this.t.add(this.r.size());
-      }
-
-      this.r.add($$0.g());
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      this.q = Math.max(0.0F, this.q + $$3 * this.x);
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.g / 2 - 128;
-      int $$5 = this.h + 50;
-      float $$6 = -this.q;
-      $$0.c().a();
-      $$0.c().a(0.0F, $$6, 0.0F);
-      this.A.a($$0, this.g, 1.0F, $$5);
-      int $$7 = $$5 + 100;
-
-      for (int $$8 = 0; $$8 < this.r.size(); $$8++) {
-         if ($$8 == this.r.size() - 1) {
-            float $$9 = (float)$$7 + $$6 - (float)(this.h / 2 - 6);
-            if ($$9 < 0.0F) {
-               $$0.c().a(0.0F, -$$9, 0.0F);
-            }
-         }
-
-         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.h) {
-            atk $$10 = this.r.get($$8);
-            if (this.t.contains($$8)) {
-               $$0.a(this.i, $$10, $$4 + 128, $$7, 16777215);
-            } else {
-               $$0.b(this.i, $$10, $$4, $$7, 16777215);
-            }
-         }
-
-         $$7 += 12;
-      }
-
-      $$0.c().b();
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
-      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.g, this.h, this.g, this.h);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 
-   @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.g;
-      float $$5 = this.q * 0.5F;
-      int $$6 = 64;
-      float $$7 = this.q / this.y;
-      float $$8 = $$7 * 0.02F;
-      float $$9 = (float)(this.u + this.h + this.h + 24) / this.y;
-      float $$10 = ($$9 - 20.0F - $$7) * 0.005F;
-      if ($$10 < $$8) {
-         $$8 = $$10;
-      }
-
-      if ($$8 > 1.0F) {
-         $$8 = 1.0F;
-      }
-
-      $$8 *= $$8;
-      $$8 = $$8 * 96.0F / 255.0F;
-      $$0.a($$8, $$8, $$8, 1.0F);
-      $$0.a(d, 0, 0, 0, 0.0F, $$5, $$4, this.h, 64, 64);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void aG_() {
-      this.f.r().b(ara.c);
-   }
-
-   @Override
-   public aqz B() {
-      return ara.c;
-   }
-
-   @FunctionalInterface
-   interface a {
-      void read(Reader var1) throws IOException;
+   private ewy a(vd $$0, Supplier<fct> $$1) {
+      return ewy.a($$0, $$1x -> this.f.a($$1.get())).a();
    }
 }

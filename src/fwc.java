@@ -1,45 +1,74 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import org.joml.FrustumIntersection;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class fwc implements fvt.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final euk c;
-   private Collection<hv> d = Lists.newArrayList();
+public class fwc {
+   public static final int a = 4;
+   private final FrustumIntersection b = new FrustumIntersection();
+   private final Matrix4f c = new Matrix4f();
+   private Vector4f d;
+   private double e;
+   private double f;
+   private double g;
 
-   public fwc(euk $$0) {
-      this.c = $$0;
+   public fwc(Matrix4f $$0, Matrix4f $$1) {
+      this.a($$0, $$1);
    }
 
-   public void a(Collection<hv> $$0) {
-      this.d = $$0;
+   public fwc(fwc $$0) {
+      this.b.set($$0.c);
+      this.c.set($$0.c);
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.d = $$0.d;
    }
 
-   @Override
-   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
-      hv $$5 = this.b().c();
+   public fwc a(int $$0) {
+      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
+      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
+      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
+      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
+      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
 
-      for (hv $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
+      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
+         this.b
+               .intersectAab(
+                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
+               )
+            != -2;
+         this.g = this.g - (double)(this.d.z() * 4.0F)
+      ) {
+         this.e = this.e - (double)(this.d.x() * 4.0F);
+         this.f = this.f - (double)(this.d.y() * 4.0F);
       }
+
+      return this;
    }
 
-   private static void a(epd $$0, fsi $$1, hv $$2) {
-      fvt.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
+   public void a(double $$0, double $$1, double $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   private static void a(epd $$0, fsi $$1, String $$2, hv $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      fvt.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   private void a(Matrix4f $$0, Matrix4f $$1) {
+      $$1.mul($$0, this.c);
+      this.b.set(this.c);
+      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
    }
 
-   private etv b() {
-      return this.c.j.m();
+   public boolean a(elh $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   private boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - this.e);
+      float $$7 = (float)($$1 - this.f);
+      float $$8 = (float)($$2 - this.g);
+      float $$9 = (float)($$3 - this.e);
+      float $$10 = (float)($$4 - this.f);
+      float $$11 = (float)($$5 - this.g);
+      return this.b.testAab($$6, $$7, $$8, $$9, $$10, $$11);
    }
 }

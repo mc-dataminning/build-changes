@@ -1,32 +1,24 @@
-public class aes implements wu<acw> {
-   private final bjk a;
-   private final int b;
+public class aes implements xd<adg> {
+   private final int a;
 
-   public aes(bjk $$0, int $$1) {
+   public aes(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public aes(ue $$0) {
-      this.a = $$0.b(bjk.class);
-      this.b = $$0.n();
+   public aes(ug $$0) {
+      this.a = $$0.readShort();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
+   public void a(ug $$0) {
+      $$0.l(this.a);
    }
 
-   public void a(acw $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   public bjk a() {
+   public int a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
    }
 }

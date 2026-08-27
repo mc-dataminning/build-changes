@@ -17,44 +17,44 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class ds implements du<ds>, dw {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("permissions.requires.player"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("permissions.requires.entity"));
+public class ds implements du<ds>, dx {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("permissions.requires.player"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vd.c("permissions.requires.entity"));
    private final dr c;
-   private final elb d;
-   private final amp e;
+   private final elm d;
+   private final amz e;
    private final int f;
    private final String g;
-   private final vb h;
+   private final vd h;
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final blf k;
+   private final blp k;
    private final dp l;
-   private final ed.a m;
-   private final ela n;
+   private final ee.a m;
+   private final ell n;
    private final dq o;
-   private final auv p;
+   private final avg p;
 
-   public ds(dr $$0, elb $$1, ela $$2, amp $$3, int $$4, String $$5, vb $$6, MinecraftServer $$7, @Nullable blf $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, dp.a, ed.a.a, dq.a, auv.immediate($$7));
+   public ds(dr $$0, elm $$1, ell $$2, amz $$3, int $$4, String $$5, vd $$6, MinecraftServer $$7, @Nullable blp $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, dp.a, ee.a.a, dq.a, avg.immediate($$7));
    }
 
    protected ds(
       dr $$0,
-      elb $$1,
-      ela $$2,
-      amp $$3,
+      elm $$1,
+      ell $$2,
+      amz $$3,
       int $$4,
       String $$5,
-      vb $$6,
+      vd $$6,
       MinecraftServer $$7,
-      @Nullable blf $$8,
+      @Nullable blp $$8,
       boolean $$9,
       dp $$10,
-      ed.a $$11,
+      ee.a $$11,
       dq $$12,
-      auv $$13
+      avg $$13
    ) {
       this.c = $$0;
       this.d = $$1;
@@ -76,17 +76,17 @@ public class ds implements du<ds>, dw {
       return this.c == $$0 ? this : new ds($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ds a(blf $$0) {
+   public ds a(blp $$0) {
       return this.k == $$0
          ? this
          : new ds(this.c, this.d, this.n, this.e, this.f, $$0.ad().getString(), $$0.Q_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ds a(elb $$0) {
+   public ds a(elm $$0) {
       return this.d.equals($$0) ? this : new ds(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ds a(ela $$0) {
+   public ds a(ell $$0) {
       return this.n.c($$0) ? this : new ds(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
@@ -115,42 +115,42 @@ public class ds implements du<ds>, dw {
       return $$0 <= this.f ? this : new ds(this.c, this.d, this.n, this.e, $$0, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public ds a(ed.a $$0) {
+   public ds a(ee.a $$0) {
       return $$0 == this.m ? this : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, $$0, this.o, this.p);
    }
 
-   public ds a(amp $$0) {
+   public ds a(amz $$0) {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = dly.a(this.e.E_(), $$0.E_());
-         elb $$2 = new elb(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = dmj.a(this.e.E_(), $$0.E_());
+         elm $$2 = new elm(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new ds(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
       }
    }
 
-   public ds a(blf $$0, ed.a $$1) {
+   public ds a(blp $$0, ee.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public ds b(elb $$0) {
-      elb $$1 = this.m.a(this);
+   public ds b(elm $$0) {
+      elm $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = aty.g((float)(-(aty.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = aty.g((float)(aty.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new ela($$6, $$7));
+      float $$6 = aui.g((float)(-(aui.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = aui.g((float)(aui.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new ell($$6, $$7));
    }
 
-   public ds a(dq $$0, auv $$1) {
+   public ds a(dq $$0, avg $$1) {
       return $$0 == this.o && $$1 == this.p
          ? this
          : new ds(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, $$0, $$1);
    }
 
-   public vb b() {
+   public vd b() {
       return this.h;
    }
 
@@ -163,20 +163,20 @@ public class ds implements du<ds>, dw {
       return this.f >= $$0;
    }
 
-   public elb d() {
+   public elm d() {
       return this.d;
    }
 
-   public amp e() {
+   public amz e() {
       return this.e;
    }
 
    @Nullable
-   public blf f() {
+   public blp f() {
       return this.k;
    }
 
-   public blf g() throws CommandSyntaxException {
+   public blp g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -184,25 +184,25 @@ public class ds implements du<ds>, dw {
       }
    }
 
-   public amq h() throws CommandSyntaxException {
-      blf var2 = this.k;
-      if (var2 instanceof amq) {
-         return (amq)var2;
+   public ana h() throws CommandSyntaxException {
+      blp var2 = this.k;
+      if (var2 instanceof ana) {
+         return (ana)var2;
       } else {
          throw a.create();
       }
    }
 
    @Nullable
-   public amq i() {
-      return this.k instanceof amq $$0 ? $$0 : null;
+   public ana i() {
+      return this.k instanceof ana $$0 ? $$0 : null;
    }
 
    public boolean j() {
-      return this.k instanceof amq;
+      return this.k instanceof ana;
    }
 
-   public ela k() {
+   public ell k() {
       return this.n;
    }
 
@@ -210,7 +210,7 @@ public class ds implements du<ds>, dw {
       return this.i;
    }
 
-   public ed.a m() {
+   public ee.a m() {
       return this.m;
    }
 
@@ -218,18 +218,18 @@ public class ds implements du<ds>, dw {
       return this.o;
    }
 
-   public auv o() {
+   public avg o() {
       return this.p;
    }
 
-   public boolean a(amq $$0) {
-      amq $$1 = this.i();
+   public boolean a(ana $$0) {
+      ana $$1 = this.i();
       return $$0 == $$1 ? false : $$1 != null && $$1.Y() || $$0.Y();
    }
 
-   public void a(vq $$0, boolean $$1, ux.a $$2) {
+   public void a(vs $$0, boolean $$1, uz.a $$2) {
       if (!this.j) {
-         amq $$3 = this.i();
+         ana $$3 = this.i();
          if ($$3 != null) {
             $$3.a($$0, $$1, $$2);
          } else {
@@ -238,9 +238,9 @@ public class ds implements du<ds>, dw {
       }
    }
 
-   public void a(vb $$0) {
+   public void a(vd $$0) {
       if (!this.j) {
-         amq $$1 = this.i();
+         ana $$1 = this.i();
          if ($$1 != null) {
             $$1.a($$0);
          } else {
@@ -249,11 +249,11 @@ public class ds implements du<ds>, dw {
       }
    }
 
-   public void a(Supplier<vb> $$0, boolean $$1) {
+   public void a(Supplier<vd> $$0, boolean $$1) {
       boolean $$2 = this.c.l_() && !this.j;
       boolean $$3 = $$1 && this.c.W_() && !this.j;
       if ($$2 || $$3) {
-         vb $$4 = $$0.get();
+         vd $$4 = $$0.get();
          if ($$2) {
             this.c.a($$4);
          }
@@ -264,24 +264,24 @@ public class ds implements du<ds>, dw {
       }
    }
 
-   private void c(vb $$0) {
-      vb $$1 = vb.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aK().b(csu.p)) {
-         for (amq $$2 : this.i.ae().t()) {
+   private void c(vd $$0) {
+      vd $$1 = vd.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
+      if (this.i.aK().b(cte.p)) {
+         for (ana $$2 : this.i.ae().t()) {
             if ($$2 != this.c && this.i.ae().f($$2.fR())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.c != this.i && this.i.aK().b(csu.m)) {
+      if (this.c != this.i && this.i.aK().b(cte.m)) {
          this.i.a($$1);
       }
    }
 
-   public void b(vb $$0) {
+   public void b(vd $$0) {
       if (this.c.x_() && !this.j) {
-         this.c.a(vb.i().b($$0).a(n.m));
+         this.c.a(vd.i().b($$0).a(n.m));
       }
    }
 
@@ -301,12 +301,12 @@ public class ds implements du<ds>, dw {
    }
 
    @Override
-   public Stream<agt> s() {
-      return kb.b.s().map(arb::a);
+   public Stream<ahd> s() {
+      return kd.b.s().map(arl::a);
    }
 
    @Override
-   public Stream<agt> t() {
+   public Stream<ahd> t() {
       return this.i.aG().d();
    }
 
@@ -316,7 +316,7 @@ public class ds implements du<ds>, dw {
    }
 
    @Override
-   public CompletableFuture<Suggestions> a(ags<? extends ir<?>> $$0, dw.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+   public CompletableFuture<Suggestions> a(ahc<? extends it<?>> $$0, dx.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
       return this.v().c($$0).map($$2x -> {
          this.a($$2x, $$1, $$2);
          return $$2.buildFuture();
@@ -324,18 +324,18 @@ public class ds implements du<ds>, dw {
    }
 
    @Override
-   public Set<ags<csy>> u() {
+   public Set<ahc<cti>> u() {
       return this.i.G();
    }
 
    @Override
-   public is v() {
+   public iu v() {
       return this.i.aZ();
    }
 
    @Override
-   public chb w() {
-      return this.e.H();
+   public chl w() {
+      return this.e.I();
    }
 
    @Override
@@ -344,13 +344,13 @@ public class ds implements du<ds>, dw {
    }
 
    @Override
-   public void a(CommandExceptionType $$0, Message $$1, boolean $$2, @Nullable gp $$3) {
+   public void a(CommandExceptionType $$0, Message $$1, boolean $$2, @Nullable gr $$3) {
       if ($$3 != null) {
          $$3.a($$1.getString());
       }
 
       if (!$$2) {
-         this.b(ve.a($$1));
+         this.b(vg.a($$1));
       }
    }
 

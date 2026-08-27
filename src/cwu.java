@@ -1,62 +1,98 @@
 import com.mojang.serialization.MapCodec;
 
-public class cwu extends cus {
-   public static final MapCodec<cwu> d = b(cwu::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class cwu extends cwj {
+   public static final MapCodec<cwu> a = b(cwu::new);
+   public static final dka b = djq.aw;
+   public static final int c = 15;
+   protected static final int d = 1;
+   protected static final emf e = cwj.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final emf f = cwj.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<cwu> a() {
-      return d;
+      return a;
    }
 
-   public cwu(dio.d $$0) {
-      super($$0, jb.c);
+   protected cwu(diz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean d(dip $$0) {
-      return false;
-   }
-
-   protected static boolean a(csy $$0, ctx.c $$1) {
-      if ($$1 == ctx.c.b) {
-         return $$0.F_().i() < 0.05F;
-      } else {
-         return $$1 == ctx.c.c ? $$0.F_().i() < 0.1F : false;
+   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   public void a(dip $$0, csy $$1, hv $$2, ctx.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == ctx.c.b) {
-            $$1.b($$2, cwb.fu.o());
-            $$1.a(null, dmz.c, $$2);
-         } else if ($$3 == ctx.c.c) {
-            $$1.b($$2, cwb.fw.o());
-            $$1.a(null, dmz.c, $$2);
+   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
+      hx $$4 = $$2.c();
+      if ($$1.u($$4)) {
+         int $$5 = 1;
+
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
+
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.o());
+               dja $$7 = $$0.a(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, $$2, false);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
+            }
          }
       }
    }
 
    @Override
-   protected boolean a(edy $$0) {
-      return true;
+   public emf b(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return e;
    }
 
    @Override
-   protected void a(dip $$0, csy $$1, hv $$2, edy $$3) {
-      if ($$3 == eea.c) {
-         dip $$4 = cwb.fu.o();
-         $$1.b($$2, $$4);
-         $$1.a(dmz.c, $$2, dmz.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == eea.e) {
-         dip $$5 = cwb.fv.o();
-         $$1.b($$2, $$5);
-         $$1.a(dmz.c, $$2, dmz.a.a($$5));
-         $$1.c(1046, $$2, 0);
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return f;
+   }
+
+   @Override
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      for (ic $$3 : ic.c.a) {
+         dja $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(asg.b)) {
+            return false;
+         }
+      }
+
+      dja $$5 = $$1.a_($$2.d());
+      return ($$5.a(cwl.dQ) || $$5.a(asb.H)) && !$$1.a_($$2.c()).k();
+   }
+
+   @Override
+   public void a(dja $$0, cti $$1, hx $$2, blp $$3) {
+      $$3.a($$1.ai().j(), 1.0F);
+   }
+
+   @Override
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
+      return false;
    }
 }

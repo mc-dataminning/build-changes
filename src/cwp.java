@@ -1,106 +1,142 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cwp extends cur {
-   public static final MapCodec<cwp> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kb.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, cwp::new)
-   );
-   public static final djg d = cur.b;
-   protected static final float e = 1.0F;
-   protected static final elu f = cvz.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
-   protected static final elu g = cvz.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
-   protected static final elu h = elr.a(f, g);
-   private static final Map<cvz, cwp> i = Maps.newHashMap();
-   private static final Iterable<elb> j = ImmutableList.of(new elb(0.5, 1.0, 0.5));
-   private final cvz k;
+public class cwp extends cwj implements cwq {
+   public static final MapCodec<cwp> a = b(cwp::new);
+   public static final djr b = djq.e;
+   private static final int c = 5;
 
    @Override
    public MapCodec<cwp> a() {
-      return c;
+      return a;
    }
 
-   protected cwp(cvz $$0, dio.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(d, Boolean.valueOf(false)));
-      i.put($$0, this);
-      this.k = $$0;
-   }
-
-   @Override
-   protected Iterable<elb> b(dip $$0) {
-      return j;
+   public cwp(diz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return h;
-   }
+   public void a(dja $$0, cti $$1, hx $$2, blp $$3) {
+      dja $$4 = $$1.a_($$2.c());
+      if ($$4.i()) {
+         $$3.k($$0.c(b));
+         if (!$$1.B) {
+            amz $$5 = (amz)$$1;
 
-   @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      cmh $$6 = $$3.b($$4);
-      if ($$6.a(cmk.op) || $$6.a(cmk.tS)) {
-         return bjl.d;
-      } else if (a($$5) && $$3.b($$4).b() && $$0.c(d)) {
-         a($$3, $$0, $$1, $$2);
-         return bjl.a($$1.B);
-      } else {
-         bjl $$7 = cwl.a($$1, $$2, cwb.eg.o(), $$3);
-         if ($$7.a()) {
-            c($$0, $$1, $$2);
+            for (int $$6 = 0; $$6 < 2; $$6++) {
+               $$5.a(jx.aj, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+               $$5.a(jx.e, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.01, 0.0, 0.2);
+            }
          }
-
-         return $$7;
+      } else {
+         $$3.l($$0.c(b));
       }
    }
 
-   private static boolean a(ekx $$0) {
-      return $$0.e().d - (double)$$0.a().v() > 0.5;
+   @Override
+   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
+      a($$1, $$2, $$0, $$1.a_($$2.d()));
    }
 
    @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(d);
+   public eek c_(dja $$0) {
+      return eel.c.a(false);
+   }
+
+   public static void b(ctj $$0, hx $$1, dja $$2) {
+      a($$0, $$1, $$0.a_($$1), $$2);
+   }
+
+   public static void a(ctj $$0, hx $$1, dja $$2, dja $$3) {
+      if (h($$2)) {
+         dja $$4 = n($$3);
+         $$0.a($$1, $$4, 2);
+         hx.a $$5 = $$1.j().c(ic.b);
+
+         while (h($$0.a_($$5))) {
+            if (!$$0.a($$5, $$4, 2)) {
+               return;
+            }
+
+            $$5.c(ic.b);
+         }
+      }
+   }
+
+   private static boolean h(dja $$0) {
+      return $$0.a(cwl.nd) || $$0.a(cwl.G) && $$0.u().e() >= 8 && $$0.u().b();
+   }
+
+   private static dja n(dja $$0) {
+      if ($$0.a(cwl.nd)) {
+         return $$0;
+      } else if ($$0.a(cwl.dW)) {
+         return cwl.nd.o().a(b, Boolean.valueOf(false));
+      } else {
+         return $$0.a(cwl.kJ) ? cwl.nd.o().a(b, Boolean.valueOf(true)) : cwl.G.o();
+      }
    }
 
    @Override
-   public cmh a(ctb $$0, hv $$1, dip $$2) {
-      return new cmh(cwb.eg);
+   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
+      double $$4 = (double)$$2.u();
+      double $$5 = (double)$$2.v();
+      double $$6 = (double)$$2.w();
+      if ($$0.c(b)) {
+         $$1.b(jx.am, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, arm.cC, arn.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      } else {
+         $$1.b(jx.an, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
+         $$1.b(jx.an, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, arm.cA, arn.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      }
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      return $$1 == ia.a && !$$0.a($$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      $$3.a($$4, eel.c, eel.c.a($$3));
+      if (!$$0.a($$3, $$4) || $$1 == ic.a || $$1 == ic.b && !$$2.a(cwl.nd) && h($$2)) {
+         $$3.a($$4, this, 5);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dip $$0, ctb $$1, hv $$2) {
-      return $$1.a_($$2.d()).e();
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      dja $$3 = $$1.a_($$2.d());
+      return $$3.a(cwl.nd) || $$3.a(cwl.kJ) || $$3.a(cwl.dW);
    }
 
    @Override
-   public int a(dip $$0, csy $$1, hv $$2) {
-      return cwl.d;
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return emc.a();
    }
 
    @Override
-   public boolean d_(dip $$0) {
-      return true;
+   public dco b_(dja $$0) {
+      return dco.a;
    }
 
    @Override
-   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
-      return false;
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(b);
    }
 
-   public static dip a(cvz $$0) {
-      return i.get($$0).o();
+   @Override
+   public cmr a(@Nullable cfb $$0, ctj $$1, hx $$2, dja $$3) {
+      $$1.a($$2, cwl.a.o(), 11);
+      return new cmr(cmu.qw);
    }
 
-   public static boolean g(dip $$0) {
-      return $$0.a(arr.bj, $$1 -> $$1.b(d) && !$$0.c(d));
+   @Override
+   public Optional<arl> au_() {
+      return eel.c.j();
    }
 }

@@ -1,17 +1,26 @@
-public record eyy(fsq a, fsq b, fsq c) {
-   public static eyy a(agt $$0) {
-      return new eyy(fsq.u($$0), fsq.y($$0), fsq.w($$0));
+import java.util.function.Consumer;
+
+public class eyy implements eyz {
+   private final vd b;
+   protected final fah a = new fah();
+
+   public eyy(vd $$0) {
+      this.b = $$0;
    }
 
-   public static eyy b(agt $$0) {
-      return new eyy(fsq.t($$0), fsq.x($$0), fsq.v($$0));
+   @Override
+   public vd a() {
+      return this.b;
    }
 
-   public fsq a(evu.a $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-         case c -> this.c;
-      };
+   @Override
+   public void a(Consumer<eww> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public void a(fbb $$0) {
+      this.a.a();
+      fag.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

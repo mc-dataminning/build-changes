@@ -1,129 +1,62 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
-public class eie extends ehq {
-   public static final Codec<eie> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.BOOL.fieldOf("replace").orElse(false).forGetter($$0x -> $$0x.b),
-                  vd.a.listOf().fieldOf("lore").forGetter($$0x -> $$0x.c),
-                  atg.a(ege.b.e, "entity").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, eie::new)
-   );
-   private final boolean b;
-   private final List<vb> c;
-   private final Optional<ege.b> d;
+public class eie {
+   public static final BiFunction<cmr, egp, cmr> a = ($$0, $$1) -> $$0;
+   private static final Codec<eic> D = kd.G.q().dispatch("function", eic::b, eid::a);
+   public static final Codec<eic> b = atq.a((Supplier<Codec<eic>>)(() -> atq.e(D, eig.b)));
+   public static final eid c = a("set_count", ein.a);
+   public static final eid d = a("enchant_with_levels", ehv.a);
+   public static final eid e = a("enchant_randomly", ehu.a);
+   public static final eid f = a("set_enchantments", eil.a);
+   public static final eid g = a("set_nbt", eir.a);
+   public static final eid h = a("furnace_smelt", eiu.a);
+   public static final eid i = a("looting_enchant", eif.b);
+   public static final eid j = a("set_damage", eio.a);
+   public static final eid k = a("set_attributes", eih.a);
+   public static final eid l = a("set_name", eiq.a);
+   public static final eid m = a("exploration_map", ehw.f);
+   public static final eid n = a("set_stew_effect", eit.a);
+   public static final eid o = a("copy_name", ehs.a);
+   public static final eid p = a("set_contents", eij.a);
+   public static final eid q = a("limit_count", eia.a);
+   public static final eid r = a("apply_bonus", ehp.a);
+   public static final eid s = a("set_loot_table", eik.a);
+   public static final eid t = a("explosion_decay", ehq.a);
+   public static final eid u = a("set_lore", eip.a);
+   public static final eid v = a("fill_player_head", ehx.a);
+   public static final eid w = a("copy_nbt", eht.a);
+   public static final eid x = a("copy_state", ehr.a);
+   public static final eid y = a("set_banner_pattern", eii.a);
+   public static final eid z = a("set_potion", eis.a);
+   public static final eid A = a("set_instrument", eim.a);
+   public static final eid B = a("reference", ehy.a);
+   public static final eid C = a("sequence", eig.a);
 
-   public eie(List<ejd> $$0, boolean $$1, List<vb> $$2, Optional<ege.b> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
-      this.d = $$3;
+   private static eid a(String $$0, Codec<? extends eic> $$1) {
+      return it.a(kd.G, new ahd($$0), new eid($$1));
    }
 
-   @Override
-   public ehs b() {
-      return eht.u;
-   }
+   public static BiFunction<cmr, egp, cmr> a(List<? extends BiFunction<cmr, egp, cmr>> $$0) {
+      List<BiFunction<cmr, egp, cmr>> $$1 = List.copyOf($$0);
 
-   @Override
-   public Set<eim<?>> a() {
-      return this.d.<Set<eim<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
-   }
-
-   @Override
-   public cmh a(cmh $$0, ege $$1) {
-      sp $$2 = this.a($$0, !this.c.isEmpty());
-      if ($$2 != null) {
-         if (this.b) {
-            $$2.clear();
+      return switch ($$1.size()) {
+         case 0 -> a;
+         case 1 -> (BiFunction)$$1.get(0);
+         case 2 -> {
+            BiFunction<cmr, egp, cmr> $$2 = $$1.get(0);
+            BiFunction<cmr, egp, cmr> $$3 = $$1.get(1);
+            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
+         }
+         default -> ($$1x, $$2x) -> {
+         for (BiFunction<cmr, egp, cmr> $$3x : $$1) {
+            $$1x = $$3x.apply($$1x, $$2x);
          }
 
-         UnaryOperator<vb> $$3 = eif.a($$1, this.d.orElse(null));
-         this.c.stream().map($$3).map(vb.a::a).map(te::a).forEach($$2::add);
-      }
-
-      return $$0;
-   }
-
-   @Nullable
-   private sp a(cmh $$0, boolean $$1) {
-      sj $$2;
-      if ($$0.u()) {
-         $$2 = $$0.v();
-      } else {
-         if (!$$1) {
-            return null;
-         }
-
-         $$2 = new sj();
-         $$0.c($$2);
-      }
-
-      sj $$5;
-      if ($$2.b("display", 10)) {
-         $$5 = $$2.p("display");
-      } else {
-         if (!$$1) {
-            return null;
-         }
-
-         $$5 = new sj();
-         $$2.a("display", $$5);
-      }
-
-      if ($$5.b("Lore", 9)) {
-         return $$5.c("Lore", 8);
-      } else if ($$1) {
-         sp $$8 = new sp();
-         $$5.a("Lore", $$8);
-         return $$8;
-      } else {
-         return null;
-      }
-   }
-
-   public static eie.a c() {
-      return new eie.a();
-   }
-
-   public static class a extends ehq.a<eie.a> {
-      private boolean a;
-      private Optional<ege.b> b = Optional.empty();
-      private final Builder<vb> c = ImmutableList.builder();
-
-      public eie.a a(boolean $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public eie.a a(ege.b $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public eie.a a(vb $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      protected eie.a a() {
-         return this;
-      }
-
-      @Override
-      public ehr b() {
-         return new eie(this.g(), this.a, this.c.build(), this.b);
-      }
+         return $$1x;
+      };
+      };
    }
 }

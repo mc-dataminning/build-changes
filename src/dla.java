@@ -1,114 +1,46 @@
-import java.util.List;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import java.io.IOException;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class dla<T> implements dlc<T> {
-   private final ik<T> a;
-   private final T[] b;
-   private final dld<T> c;
-   private final int d;
-   private int e;
-
-   private dla(ik<T> $$0, int $$1, dld<T> $$2, List<T> $$3) {
-      this.a = $$0;
-      this.b = (T[])(new Object[1 << $$1]);
-      this.d = $$1;
-      this.c = $$2;
-      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         this.b[$$4] = $$3.get($$4);
-      }
-
-      this.e = $$3.size();
+public abstract class dla implements dlk, AutoCloseable {
+   @Nullable
+   public dlh a(int $$0, int $$1, boolean $$2) {
+      return (dlh)this.a($$0, $$1, dlb.n, $$2);
    }
 
-   private dla(ik<T> $$0, T[] $$1, dld<T> $$2, int $$3, int $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   @Nullable
+   public dlh a(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
 
-   public static <A> dlc<A> a(int $$0, ik<A> $$1, dld<A> $$2, List<A> $$3) {
-      return new dla<>($$1, $$0, $$2, $$3);
+   @Nullable
+   @Override
+   public dlj c(int $$0, int $$1) {
+      return this.a($$0, $$1, dlb.c, false);
    }
+
+   public boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, dlb.n, false) != null;
+   }
+
+   @Nullable
+   public abstract dkw a(int var1, int var2, dlb var3, boolean var4);
+
+   public abstract void a(BooleanSupplier var1, boolean var2);
+
+   public abstract String e();
+
+   public abstract int j();
 
    @Override
-   public int a(T $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if (this.b[$$1] == $$0) {
-            return $$1;
-         }
-      }
-
-      int $$2 = this.e;
-      if ($$2 < this.b.length) {
-         this.b[$$2] = $$0;
-         this.e++;
-         return $$2;
-      } else {
-         return this.c.onResize(this.d + 1, $$0);
-      }
+   public void close() throws IOException {
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if ($$0.test(this.b[$$1])) {
-            return true;
-         }
-      }
+   public abstract edz p();
 
-      return false;
+   public void a(boolean $$0, boolean $$1) {
    }
 
-   @Override
-   public T a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.e) {
-         return this.b[$$0];
-      } else {
-         throw new dlb($$0);
-      }
-   }
-
-   @Override
-   public void a(ue $$0) {
-      this.e = $$0.n();
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         this.b[$$1] = this.a.b($$0.n());
-      }
-   }
-
-   @Override
-   public void b(ue $$0) {
-      $$0.c(this.e);
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         $$0.c(this.a.a(this.b[$$1]));
-      }
-   }
-
-   @Override
-   public int a() {
-      int $$0 = us.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += us.a(this.a.a(this.b[$$1]));
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public dlc<T> c() {
-      return new dla<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
+   public void a(csp $$0, boolean $$1) {
    }
 }

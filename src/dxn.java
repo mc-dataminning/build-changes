@@ -1,34 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dxn extends dxv {
-   public static final Codec<dxn> a = RecordCodecBuilder.create($$0 -> $$0.group(dwv.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dxn::new));
-   private final dwv c;
-
-   private dxn(dwv $$0) {
-      this.c = $$0;
-   }
-
-   public static dxn a(dwv $$0) {
-      return new dxn($$0);
-   }
-
-   public static dxn a(dos $$0, dos $$1) {
-      return a(dwy.a($$0, $$1));
-   }
-
-   public static dxn b(dos $$0, dos $$1) {
-      return a(dwx.a($$0, $$1));
-   }
-
+public record dxn(List<don.c> a) implements don.c {
+   @Nullable
    @Override
-   public Stream<hv> a_(dxt $$0, auf $$1, hv $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
-   }
+   public dja calculate(doc.b $$0) {
+      for (don.c $$1 : this.a) {
+         dja $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
 
-   @Override
-   public dxw<?> b() {
-      return dxw.l;
+      return null;
    }
 }

@@ -1,166 +1,68 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+public final class dot {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public record dot(ir<dlz> b) {
-   public static final MapCodec<dot> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(it.b(kc.aM, Lifecycle.stable(), dlz.a).fieldOf("dimensions").forGetter(dot::d)).apply($$0, $$0.stable(dot::new))
-   );
-   private static final Set<ags<dlz>> c = ImmutableSet.of(dlz.b, dlz.c, dlz.d);
-   private static final int d = c.size();
-
-   public dot(ir<dlz> b) {
-      dlz $$1 = b.a(dlz.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.b = b;
-      }
+   private dot() {
    }
 
-   public static Stream<ags<dlz>> a(Stream<ags<dlz>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
-   }
-
-   public dot a(is $$0, dkm $$1) {
-      ir<dly> $$2 = $$0.d(kc.ax);
-      ir<dlz> $$3 = a($$2, this.b, $$1);
-      return new dot($$3);
-   }
-
-   public static ir<dlz> a(ir<dly> $$0, ir<dlz> $$1, dkm $$2) {
-      dlz $$3 = $$1.a(dlz.b);
-      ie<dly> $$4 = (ie<dly>)($$3 == null ? $$0.f(dlw.a) : $$3.a());
-      return a($$1, $$4, $$2);
-   }
-
-   public static ir<dlz> a(ir<dlz> $$0, ie<dly> $$1, dkm $$2) {
-      ja<dlz> $$3 = new in<>(kc.aM, Lifecycle.experimental());
-      $$3.a(dlz.b, new dlz($$1, $$2), Lifecycle.stable());
-
-      for (Entry<ags<dlz>, dlz> $$4 : $$0.g()) {
-         ags<dlz> $$5 = $$4.getKey();
-         if ($$5 != dlz.b) {
-            $$3.a($$5, $$4.getValue(), $$0.e($$4.getValue()));
-         }
-      }
-
-      return $$3.l();
-   }
-
-   public dkm a() {
-      dlz $$0 = this.b.a(dlz.b);
-      if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return $$0.b();
-      }
-   }
-
-   public Optional<dlz> a(ags<dlz> $$0) {
-      return this.b.d($$0);
-   }
-
-   public ImmutableSet<ags<csy>> b() {
-      return this.d().g().stream().map(Entry::getKey).map(kc::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof dnp;
-   }
-
-   private static efy.a b(ir<dlz> $$0) {
-      return $$0.d(dlz.b).map($$0x -> {
-         dkm $$1 = $$0x.b();
-         if ($$1 instanceof dnp) {
-            return efy.a.c;
+   protected static don.c a(doc $$0, doc $$1, doc $$2, dow $$3) {
+      dja $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dot.a $$8 = $$6 > 0.0 ? dot.a.a : dot.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = aui.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               aup $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = aui.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
          } else {
-            return $$1 instanceof dnt ? efy.a.b : efy.a.a;
+            return $$4;
          }
-      }).orElse(efy.a.a);
+      };
    }
 
-   static Lifecycle a(ags<dlz> $$0, dlz $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
+   protected static enum a {
+      a(cwl.ra.o(), cwl.tg.o(), cwl.c.o(), 0, 50),
+      b(cwl.Q.o(), cwl.tf.o(), cwl.qz.o(), -60, -8);
 
-   private static boolean b(ags<dlz> $$0, dlz $$1) {
-      if ($$0 == dlz.b) {
-         return a($$1);
-      } else if ($$0 == dlz.c) {
-         return b($$1);
-      } else {
-         return $$0 == dlz.d ? c($$1) : false;
-      }
-   }
+      final dja e;
+      final dja f;
+      final dja g;
+      protected final int c;
+      protected final int d;
 
-   private static boolean a(dlz $$0) {
-      ie<dly> $$1 = $$0.a();
-      if (!$$1.a(dlw.a) && !$$1.a(dlw.d)) {
-         return false;
-      } else {
-         if ($$0.b().c() instanceof cuk $$2 && !$$2.a(cum.b)) {
-            return false;
-         }
-
-         return true;
-      }
-   }
-
-   private static boolean b(dlz $$0) {
-      return $$0.a().a(dlw.b) && $$0.b() instanceof dob $$1 && $$1.a(dod.f) && $$1.c() instanceof cuk $$2 && $$2.a(cum.a);
-   }
-
-   private static boolean c(dlz $$0) {
-      return $$0.a().a(dlw.c) && $$0.b() instanceof dob $$1 && $$1.a(dod.g) && $$1.c() instanceof cuo;
-   }
-
-   public dot.b a(ir<dlz> $$0) {
-      Stream<ags<dlz>> $$1 = Stream.concat($$0.f().stream(), this.b.f().stream()).distinct();
-
-      record a(ags<dlz> a, dlz b) {
-
-         Lifecycle c() {
-            return dot.a(this.a, this.b);
-         }
-      }
-
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.d($$2x).or(() -> this.b.d($$2x)).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      ja<dlz> $$4 = new in<>(kc.aM, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      ir<dlz> $$5 = $$4.l();
-      efy.a $$6 = b($$5);
-      return new dot.b($$5.l(), $$6);
-   }
-
-   public ir<dlz> d() {
-      return this.b;
-   }
-
-   public static record b(ir<dlz> a, efy.a b) {
-      public Lifecycle a() {
-         return this.a.d();
-      }
-
-      public is.b b() {
-         return new is.c(List.of(this.a)).d();
-      }
-
-      public ir<dlz> c() {
-         return this.a;
-      }
-
-      public efy.a d() {
-         return this.b;
+      private a(dja $$0, dja $$1, dja $$2, int $$3, int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
    }
 }

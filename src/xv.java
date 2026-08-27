@@ -1,31 +1,17 @@
-public record xv(xv.a b) implements xo {
-   public static final agt a = new agt("debug/hive");
+public record xv(String b) implements xx {
+   public static final ahd a = new ahd("brand");
 
-   public xv(ue $$0) {
-      this(new xv.a($$0));
+   public xv(ug $$0) {
+      this($$0.s());
    }
 
    @Override
-   public void a(ue $$0) {
-      this.b.a($$0);
+   public void a(ug $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public agt a() {
+   public ahd a() {
       return a;
-   }
-
-   public static record a(hv a, String b, int c, int d, boolean e) {
-      public a(ue $$0) {
-         this($$0.e(), $$0.s(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
-
-      public void a(ue $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
-      }
    }
 }

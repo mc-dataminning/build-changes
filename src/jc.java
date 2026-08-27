@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Lifecycle;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface jc {
+public interface jc<T> extends it<T> {
+   ih.c<T> a(ahc<T> var1, T var2, Lifecycle var3);
+
+   boolean k();
+
+   ii<T> n();
 }

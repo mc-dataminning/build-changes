@@ -1,183 +1,68 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.FileSystemAlreadyExistsException;
-import java.nio.file.FileSystemNotFoundException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aok {
-   private static final Logger b = LogUtils.getLogger();
-   public static Consumer<aok> a = $$0 -> {
-   };
-   private static final Map<aoh, Path> c = ac.a(() -> {
-      synchronized (aoj.class) {
-         Builder<aoh, Path> $$0 = ImmutableMap.builder();
+public abstract class aok implements aoq {
+   private static final Logger c = LogUtils.getLogger();
+   private final String d;
+   private final boolean e;
 
-         for (aoh $$1 : aoh.values()) {
-            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
-            URL $$3 = aoj.class.getResource($$2);
-            if ($$3 == null) {
-               b.error("File {} does not exist in classpath", $$2);
-            } else {
-               try {
-                  URI $$4 = $$3.toURI();
-                  String $$5 = $$4.getScheme();
-                  if (!"jar".equals($$5) && !"file".equals($$5)) {
-                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
-                  }
-
-                  Path $$6 = a($$4);
-                  $$0.put($$1, $$6.getParent());
-               } catch (Exception var12) {
-                  b.error("Couldn't resolve path to vanilla assets", var12);
-               }
-            }
-         }
-
-         return $$0.build();
-      }
-   });
-   private final Set<Path> d = new LinkedHashSet<>();
-   private final Map<aoh, Set<Path>> e = new EnumMap<>(aoh.class);
-   private aob f = aob.a();
-   private final Set<String> g = new HashSet<>();
-
-   private static Path a(URI $$0) throws IOException {
-      try {
-         return Paths.get($$0);
-      } catch (FileSystemNotFoundException var3) {
-      } catch (Throwable var4) {
-         b.warn("Unable to get path for: {}", $$0, var4);
-      }
-
-      try {
-         FileSystems.newFileSystem($$0, Collections.emptyMap());
-      } catch (FileSystemAlreadyExistsException var2) {
-      }
-
-      return Paths.get($$0);
+   protected aok(String $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private boolean b(Path $$0) {
-      if (!Files.exists($$0)) {
-         return false;
-      } else if (!Files.isDirectory($$0)) {
-         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
+   @Nullable
+   @Override
+   public <T> T a(apc<T> $$0) throws IOException {
+      apu<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
       } else {
-         return true;
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
+         }
+
+         return (T)var4;
       }
    }
 
-   private void c(Path $$0) {
-      if (this.b($$0)) {
-         this.d.add($$0);
-      }
-   }
-
-   private void b(aoh $$0, Path $$1) {
-      if (this.b($$1)) {
-         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
-      }
-   }
-
-   public aok a() {
-      c.forEach(($$0, $$1) -> {
-         this.c($$1.getParent());
-         this.b($$0, $$1);
-      });
-      return this;
-   }
-
-   public aok a(aoh $$0, Class<?> $$1) {
-      Enumeration<URL> $$2 = null;
-
-      try {
-         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
-      } catch (IOException var8) {
+   @Nullable
+   public static <T> T a(apc<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = aty.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
       }
 
-      while ($$2 != null && $$2.hasMoreElements()) {
-         URL $$3 = $$2.nextElement();
-
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
          try {
-            URI $$4 = $$3.toURI();
-            if ("file".equals($$4.getScheme())) {
-               Path $$5 = Paths.get($$4);
-               this.c($$5.getParent());
-               this.b($$0, $$5);
-            }
+            return $$0.a(aty.u($$3, $$0.a()));
          } catch (Exception var7) {
-            b.error("Failed to extract path from {}", $$3, var7);
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
          }
       }
-
-      return this;
    }
 
-   public aok b() {
-      a.accept(this);
-      return this;
+   @Override
+   public String a() {
+      return this.d;
    }
 
-   public aok a(Path $$0) {
-      this.c($$0);
-
-      for (aoh $$1 : aoh.values()) {
-         this.b($$1, $$0.resolve($$1.a()));
-      }
-
-      return this;
-   }
-
-   public aok a(aoh $$0, Path $$1) {
-      this.c($$1);
-      this.b($$0, $$1);
-      return this;
-   }
-
-   public aok a(aob $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public aok a(String... $$0) {
-      this.g.addAll(Arrays.asList($$0));
-      return this;
-   }
-
-   public aoj c() {
-      Map<aoh, List<Path>> $$0 = new EnumMap<>(aoh.class);
-
-      for (aoh $$1 : aoh.values()) {
-         List<Path> $$2 = a(this.e.getOrDefault($$1, Set.of()));
-         $$0.put($$1, $$2);
-      }
-
-      return new aoj(this.f, Set.copyOf(this.g), a(this.d), $$0);
-   }
-
-   private static List<Path> a(Collection<Path> $$0) {
-      List<Path> $$1 = new ArrayList<>($$0);
-      Collections.reverse($$1);
-      return List.copyOf($$1);
+   @Override
+   public boolean b() {
+      return this.e;
    }
 }

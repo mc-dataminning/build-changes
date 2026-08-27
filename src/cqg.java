@@ -1,60 +1,65 @@
-public class cqg extends cpd {
-   public cqg(cpb $$0) {
+public class cqg extends cpn {
+   public cqg(cpl $$0) {
       super($$0);
    }
 
-   public boolean a(cia $$0, csy $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
+   public boolean a(cik $$0, cti $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cmh $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if ($$7.a(cwb.cf.k()) && !$$4) {
-               $$4 = true;
-            } else if ($$7.a(cwb.cg.k()) && !$$3) {
-               $$3 = true;
-            } else if ($$7.a(arz.O) && !$$2) {
-               $$2 = true;
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cmr $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (cwj.a($$5.d()) instanceof ddh) {
+               $$2++;
             } else {
-               if (!$$7.a(cmk.pn) || $$5) {
+               if (!($$5.d() instanceof clg)) {
                   return false;
                }
 
-               $$5 = true;
+               $$3++;
+            }
+
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
             }
          }
       }
 
-      return $$2 && $$4 && $$3 && $$5;
+      return $$2 == 1 && $$3 == 1;
    }
 
-   public cmh a(cia $$0, is $$1) {
-      cmh $$2 = new cmh(cmk.vN, 1);
+   public cmr a(cik $$0, iu $$1) {
+      cmr $$2 = cmr.f;
+      clg $$3 = (clg)cmu.rf;
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cmh $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            dea $$5 = dea.a($$4.d());
-            if ($$5 != null) {
-               cnr.a($$2, $$5.b());
-               break;
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cmr $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            cmm $$6 = $$5.d();
+            if (cwj.a($$6) instanceof ddh) {
+               $$2 = $$5;
+            } else if ($$6 instanceof clg) {
+               $$3 = (clg)$$6;
             }
          }
       }
 
-      return $$2;
+      cmr $$7 = ddh.b($$3.d());
+      if ($$2.u()) {
+         $$7.c($$2.v().h());
+      }
+
+      return $$7;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cpp<?> ar_() {
-      return cpp.n;
+   public cpz<?> ar_() {
+      return cpz.m;
    }
 }

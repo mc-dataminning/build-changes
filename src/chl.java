@@ -1,175 +1,93 @@
-public abstract class chl extends cix<bje> {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int o = 4;
-   private static final int q = 3;
-   private static final int r = 30;
-   private static final int s = 30;
-   private static final int t = 39;
-   private final bje u;
-   private final chu v;
-   protected final csy p;
-   private final cpq<? extends cou> w;
-   private final ciy x;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   protected chl(cir<?> $$0, cpq<? extends cou> $$1, ciy $$2, int $$3, ceq $$4) {
-      this($$0, $$1, $$2, $$3, $$4, new bjt(3), new cje(4));
+public final class chl {
+   private static final chl b = new chl(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final chm c;
+   private final long d;
+
+   private chl(@Nullable chm $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   protected chl(cir<?> $$0, cpq<? extends cou> $$1, ciy $$2, int $$3, ceq $$4, bje $$5, chu $$6) {
-      super($$0, $$3);
-      this.w = $$1;
-      this.x = $$2;
-      a($$5, 3);
-      a($$6, 4);
-      this.u = $$5;
-      this.v = $$6;
-      this.p = $$4.m.dM();
-      this.a(new cjf($$5, 0, 56, 17));
-      this.a(new cif(this, $$5, 1, 56, 53));
-      this.a(new cih($$4.m, $$5, 2, 116, 35));
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cjf($$4, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cjf($$4, $$9, 8 + $$9 * 18, 142));
-      }
-
-      this.a($$6);
-   }
-
-   @Override
-   public void a(cev $$0) {
-      if (this.u instanceof cji) {
-         ((cji)this.u).a($$0);
+   static chl a(chm $$0, Collection<chj> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new chl($$0, $$2);
       }
    }
 
-   @Override
-   public void l() {
-      this.b(0).f(cmh.f);
-      this.b(2).f(cmh.f);
+   public static chl a() {
+      return b;
    }
 
-   @Override
-   public boolean a(cpn<? extends cpl<bje>> $$0) {
-      return $$0.b().a(this.u, this.p);
+   public static chl a(chj $$0) {
+      return new chl($$0.a, $$0.b);
    }
 
-   @Override
-   public int m() {
-      return 2;
+   public static chl a(chj $$0, chj... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new chl($$0.a, $$2);
    }
 
-   @Override
-   public int n() {
-      return 1;
-   }
-
-   @Override
-   public int o() {
-      return 1;
-   }
-
-   @Override
-   public int p() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cer $$0) {
-      return this.u.a($$0);
-   }
-
-   @Override
-   public cmh a(cer $$0, int $$1) {
-      cmh $$2 = cmh.f;
-      cjf $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cmh $$4 = $$3.g();
-         $$2 = $$4.p();
-         if ($$1 == 2) {
-            if (!this.a($$4, 3, 39, true)) {
-               return cmh.f;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if (this.c($$4)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return cmh.f;
-               }
-            } else if (this.d($$4)) {
-               if (!this.a($$4, 1, 2, false)) {
-                  return cmh.f;
-               }
-            } else if ($$1 >= 3 && $$1 < 30) {
-               if (!this.a($$4, 30, 39, false)) {
-                  return cmh.f;
-               }
-            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return cmh.f;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cmh.f;
+   private static long a(chm $$0, long $$1, Iterable<chj> $$2) {
+      for (chj $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
          }
 
-         if ($$4.b()) {
-            $$3.e(cmh.f);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.L() == $$2.L()) {
-            return cmh.f;
-         }
-
-         $$3.a($$0, $$4);
+         $$1 |= $$3.b;
       }
 
-      return $$2;
+      return $$1;
    }
 
-   protected boolean c(cmh $$0) {
-      return this.p.q().a(this.w, new bjt($$0), this.p).isPresent();
+   public boolean b(chj $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
    }
 
-   protected boolean d(cmh $$0) {
-      return dfs.b($$0);
-   }
-
-   public float q() {
-      int $$0 = this.v.a(2);
-      int $$1 = this.v.a(3);
-      return $$1 != 0 && $$0 != 0 ? aty.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
-   }
-
-   public float r() {
-      int $$0 = this.v.a(1);
-      if ($$0 == 0) {
-         $$0 = 200;
+   public boolean a(chl $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
       }
-
-      return aty.a((float)this.v.a(0) / (float)$$0, 0.0F, 1.0F);
    }
 
-   public boolean s() {
-      return this.v.a(0) > 0;
+   public chl b(chl $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new chl(this.c, this.d | $$0.d);
+      }
    }
 
    @Override
-   public ciy t() {
-      return this.x;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof chl $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public boolean e(int $$0) {
-      return $$0 != 1;
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

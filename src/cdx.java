@@ -1,117 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
 public class cdx {
-   public static final Codec<cdx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               atg.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               atg.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               atg.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cdx::new)
-   );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
-
-   public cdx(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-   }
-
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
-      } else {
-         this.g++;
-      }
-
-      if (this.i > 0) {
-         this.i--;
-      }
-   }
-
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(amp $$0, hv $$1, amq $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<amq> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.aa().map(cdx::d).orElse(false))) {
-            return OptionalInt.empty();
-         } else {
-            Optional<cdx> $$4 = $$3.stream().flatMap($$0x -> $$0x.aa().stream()).max(Comparator.comparingInt(cdx::c));
-            if ($$4.isPresent()) {
-               cdx $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.aa().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
-         }
-      }
-   }
-
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(amp $$0, hv $$1) {
-      ekw $$2 = ekw.a(elb.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(cdv.class, $$2).isEmpty();
-   }
-
-   private static List<amq> b(amp $$0, hv $$1) {
-      elb $$2 = elb.b($$1);
-      Predicate<amq> $$3 = $$1x -> $$1x.dk().a((ip)$$2, 16.0);
-      return $$0.a($$3.and(blv::bx).and(bli.f));
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
-      }
-   }
-
-   private void f() {
-      this.a(this.c() - 1);
-   }
-
-   public void a(int $$0) {
-      this.h = aty.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(cdx $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
+   public static bnx<bmf> a(int $$0) {
+      return brj.a(
+         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$1 -> $$1.group($$1.b(bvh.K), $$1.c(bvh.ac), $$1.c(bvh.af), $$1.c(bvh.ae))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     cbo $$7 = $$1.b($$2);
+                     if (!cds.a($$7.q())) {
+                        return false;
+                     } else {
+                        $$3.a(true, (long)$$0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

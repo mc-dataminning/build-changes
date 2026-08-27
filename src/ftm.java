@@ -1,261 +1,411 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import org.slf4j.Logger;
 
 public class ftm {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
+   private static final Logger a = LogUtils.getLogger();
+   private static final ic[] b = ic.values();
+   private static final int c = 60;
+   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
+   private boolean e = true;
+   @Nullable
+   private Future<?> f;
+   @Nullable
+   private ftq g;
+   private final AtomicReference<ftm.b> h = new AtomicReference<>();
+   private final AtomicReference<ftm.a> i = new AtomicReference<>();
+   private final AtomicBoolean j = new AtomicBoolean(false);
 
-   public ftf a(Vector3f $$0, Vector3f $$1, fth $$2, gdo $$3, ia $$4, gfx $$5, @Nullable fti $$6, boolean $$7, agt $$8) {
-      ftj $$9 = $$2.e;
-      if ($$5.c()) {
-         $$9 = a($$2.e, $$4, $$5.b(), $$8);
+   public void a(@Nullable ftq $$0) {
+      if (this.f != null) {
+         try {
+            this.f.get();
+            this.f = null;
+         } catch (Exception var3) {
+            a.warn("Full update failed", var3);
+         }
       }
 
-      float[] $$10 = new float[$$9.a.length];
-      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
-      float $$11 = $$3.k();
-      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
-      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
-      $$9.a[0] = aty.i($$11, $$9.a[0], $$12);
-      $$9.a[2] = aty.i($$11, $$9.a[2], $$12);
-      $$9.a[1] = aty.i($$11, $$9.a[1], $$13);
-      $$9.a[3] = aty.i($$11, $$9.a[3], $$13);
-      int[] $$14 = this.a($$9, $$3, $$4, this.a($$0, $$1), $$5.b(), $$6, $$7);
-      ia $$15 = a($$14);
-      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
-      if ($$6 == null) {
-         this.a($$14, $$15);
-      }
-
-      return new ftf($$14, $$2.c, $$15, $$3, $$7);
-   }
-
-   public static ftj a(ftj $$0, ia $$1, j $$2, agt $$3) {
-      Matrix4f $$4 = hu.a($$2, $$1, () -> "Unable to resolve UVLock for model: " + $$3).c();
-      float $$5 = $$0.a($$0.c(0));
-      float $$6 = $$0.b($$0.c(0));
-      Vector4f $$7 = $$4.transform(new Vector4f($$5 / 16.0F, $$6 / 16.0F, 0.0F, 1.0F));
-      float $$8 = 16.0F * $$7.x();
-      float $$9 = 16.0F * $$7.y();
-      float $$10 = $$0.a($$0.c(2));
-      float $$11 = $$0.b($$0.c(2));
-      Vector4f $$12 = $$4.transform(new Vector4f($$10 / 16.0F, $$11 / 16.0F, 0.0F, 1.0F));
-      float $$13 = 16.0F * $$12.x();
-      float $$14 = 16.0F * $$12.y();
-      float $$15;
-      float $$16;
-      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
-         $$15 = $$8;
-         $$16 = $$13;
+      this.g = $$0;
+      if ($$0 != null) {
+         this.h.set(new ftm.b($$0.f.length));
+         this.a();
       } else {
-         $$15 = $$13;
-         $$16 = $$8;
+         this.h.set(null);
       }
+   }
 
-      float $$19;
-      float $$20;
-      if (Math.signum($$11 - $$6) == Math.signum($$14 - $$9)) {
-         $$19 = $$9;
-         $$20 = $$14;
-      } else {
-         $$19 = $$14;
-         $$20 = $$9;
+   public void a() {
+      this.e = true;
+   }
+
+   public void a(fwc $$0, List<fvy.b> $$1) {
+      for (ftm.d $$2 : this.h.get().a().b) {
+         if ($$0.a($$2.a.b())) {
+            $$1.add($$2.a);
+         }
       }
-
-      float $$23 = (float)Math.toRadians((double)$$0.b);
-      Matrix3f $$24 = new Matrix3f($$4);
-      Vector3f $$25 = $$24.transform(new Vector3f(aty.b($$23), aty.a($$23), 0.0F));
-      int $$26 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$25.y(), (double)$$25.x())) / 90.0)) * 90, 360);
-      return new ftj(new float[]{$$15, $$19, $$16, $$20}, $$26);
    }
 
-   private int[] a(ftj $$0, gdo $$1, ia $$2, float[] $$3, j $$4, @Nullable fti $$5, boolean $$6) {
-      int[] $$7 = new int[32];
-
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         this.a($$7, $$8, $$2, $$0, $$3, $$1, $$4, $$5, $$6);
-      }
-
-      return $$7;
+   public boolean b() {
+      return this.j.compareAndSet(true, false);
    }
 
-   private float[] a(Vector3f $$0, Vector3f $$1) {
-      float[] $$2 = new float[ia.values().length];
-      $$2[frz.a.f] = $$0.x() / 16.0F;
-      $$2[frz.a.e] = $$0.y() / 16.0F;
-      $$2[frz.a.d] = $$0.z() / 16.0F;
-      $$2[frz.a.c] = $$1.x() / 16.0F;
-      $$2[frz.a.b] = $$1.y() / 16.0F;
-      $$2[frz.a.a] = $$1.z() / 16.0F;
-      return $$2;
-   }
-
-   private void a(int[] $$0, int $$1, ia $$2, ftj $$3, float[] $$4, gdo $$5, j $$6, @Nullable fti $$7, boolean $$8) {
-      frz.b $$9 = frz.a($$2).a($$1);
-      Vector3f $$10 = new Vector3f($$4[$$9.a], $$4[$$9.b], $$4[$$9.c]);
-      this.a($$10, $$7);
-      this.a($$10, $$6);
-      this.a($$0, $$1, $$10, $$5, $$3);
-   }
-
-   private void a(int[] $$0, int $$1, Vector3f $$2, gdo $$3, ftj $$4) {
-      int $$5 = $$1 * 8;
-      $$0[$$5] = Float.floatToRawIntBits($$2.x());
-      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$5 + 3] = -1;
-      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
-      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
-   }
-
-   private void a(Vector3f $$0, @Nullable fti $$1) {
+   public void a(csp $$0) {
+      ftm.a $$1 = this.i.get();
       if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
-               break;
-            case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
-            default:
-               throw new IllegalArgumentException("There are only 3 axes");
-         }
+         this.a($$1, $$0);
+      }
 
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
+      ftm.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         this.a($$2, $$0);
+      }
+   }
+
+   public void a(fvy.b $$0) {
+      ftm.a $$1 = this.i.get();
+      if ($$1 != null) {
+         $$1.b.add($$0);
+      }
+
+      ftm.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         $$2.b.add($$0);
+      }
+   }
+
+   public void a(boolean $$0, eul $$1, fwc $$2, List<fvy.b> $$3) {
+      elm $$4 = $$1.b();
+      if (this.e && (this.f == null || this.f.isDone())) {
+         this.a($$0, $$1, $$4);
+      }
+
+      this.a($$0, $$2, $$3, $$4);
+   }
+
+   private void a(boolean $$0, eul $$1, elm $$2) {
+      this.e = false;
+      this.f = ac.f().submit(() -> {
+         ftm.b $$3 = new ftm.b(this.g.f.length);
+         this.i.set($$3.b);
+         Queue<ftm.d> $$4 = Queues.newArrayDeque();
+         this.a($$1, $$4);
+         $$4.forEach($$1xx -> $$3.a.a.a($$1xx.a, $$1xx));
+         this.a($$3.a, $$2, $$4, $$0, $$0xx -> {
+         });
+         this.h.set($$3);
+         this.i.set(null);
+         this.j.set(true);
+      });
+   }
+
+   private void a(boolean $$0, fwc $$1, List<fvy.b> $$2, elm $$3) {
+      ftm.b $$4 = this.h.get();
+      this.a($$4);
+      if (!$$4.b.b.isEmpty()) {
+         Queue<ftm.d> $$5 = Queues.newArrayDeque();
+
+         while (!$$4.b.b.isEmpty()) {
+            fvy.b $$6 = $$4.b.b.poll();
+            ftm.d $$7 = $$4.a.a.a($$6);
+            if ($$7 != null && $$7.a == $$6) {
+               $$5.add($$7);
             }
-
-            $$3.add(1.0F, 1.0F, 1.0F);
-         } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
          }
 
-         this.a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
+         fwc $$8 = fsx.a($$1);
+         Consumer<fvy.b> $$9 = $$2x -> {
+            if ($$8.a($$2x.b())) {
+               $$2.add($$2x);
+            }
+         };
+         this.a($$4.a, $$3, $$5, $$0, $$9);
       }
    }
 
-   public void a(Vector3f $$0, j $$1) {
-      if ($$1 != j.a()) {
-         this.a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
+   private void a(ftm.b $$0) {
+      LongIterator $$1 = $$0.b.a.iterator();
+
+      while ($$1.hasNext()) {
+         long $$2 = $$1.nextLong();
+         List<fvy.b> $$3 = (List<fvy.b>)$$0.a.c.get($$2);
+         if ($$3 != null && $$3.get(0).a()) {
+            $$0.b.b.addAll($$3);
+            $$0.a.c.remove($$2);
+         }
       }
+
+      $$0.b.a.clear();
    }
 
-   private void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
+   private void a(ftm.a $$0, csp $$1) {
+      $$0.a.add(csp.c($$1.e - 1, $$1.f));
+      $$0.a.add(csp.c($$1.e, $$1.f - 1));
+      $$0.a.add(csp.c($$1.e + 1, $$1.f));
+      $$0.a.add(csp.c($$1.e, $$1.f + 1));
    }
 
-   public static ia a(int[] $$0) {
-      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
-      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
-      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return ia.b;
+   private void a(eul $$0, Queue<ftm.d> $$1) {
+      int $$2 = 16;
+      elm $$3 = $$0.b();
+      hx $$4 = $$0.c();
+      fvy.b $$5 = this.g.a($$4);
+      if ($$5 == null) {
+         ctk $$6 = this.g.c();
+         boolean $$7 = $$4.v() > $$6.J_();
+         int $$8 = $$7 ? $$6.al() - 8 : $$6.J_() + 8;
+         int $$9 = aui.a($$3.c / 16.0) * 16;
+         int $$10 = aui.a($$3.e / 16.0) * 16;
+         int $$11 = this.g.b();
+         List<ftm.d> $$12 = Lists.newArrayList();
+
+         for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
+            for (int $$14 = -$$11; $$14 <= $$11; $$14++) {
+               fvy.b $$15 = this.g.a(new hx($$9 + iz.a($$13, 8), $$8, $$10 + iz.a($$14, 8)));
+               if ($$15 != null && this.a($$4, $$15.f())) {
+                  ic $$16 = $$7 ? ic.a : ic.b;
+                  ftm.d $$17 = new ftm.d($$15, $$16, 0);
+                  $$17.a($$17.d, $$16);
+                  if ($$13 > 0) {
+                     $$17.a($$17.d, ic.f);
+                  } else if ($$13 < 0) {
+                     $$17.a($$17.d, ic.e);
+                  }
+
+                  if ($$14 > 0) {
+                     $$17.a($$17.d, ic.d);
+                  } else if ($$14 < 0) {
+                     $$17.a($$17.d, ic.c);
+                  }
+
+                  $$12.add($$17);
+               }
+            }
+         }
+
+         $$12.sort(Comparator.comparingDouble($$1x -> $$4.j($$1x.a.f().b(8, 8, 8))));
+         $$1.addAll($$12);
       } else {
-         ia $$7 = null;
-         float $$8 = 0.0F;
-
-         for (ia $$9 : ia.values()) {
-            iz $$10 = $$9.q();
-            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
-            float $$12 = $$6.dot($$11);
-            if ($$12 >= 0.0F && $$12 > $$8) {
-               $$8 = $$12;
-               $$7 = $$9;
-            }
-         }
-
-         return $$7 == null ? ia.b : $$7;
+         $$1.add(new ftm.d($$5, null, 0));
       }
    }
 
-   private void a(int[] $$0, ia $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[ia.values().length];
-      $$3[frz.a.f] = 999.0F;
-      $$3[frz.a.e] = 999.0F;
-      $$3[frz.a.d] = 999.0F;
-      $$3[frz.a.c] = -999.0F;
-      $$3[frz.a.b] = -999.0F;
-      $$3[frz.a.a] = -999.0F;
+   private void a(ftm.c $$0, elm $$1, Queue<ftm.d> $$2, boolean $$3, Consumer<fvy.b> $$4) {
+      int $$5 = 16;
+      hx $$6 = new hx(aui.a($$1.c / 16.0) * 16, aui.a($$1.d / 16.0) * 16, aui.a($$1.e / 16.0) * 16);
+      hx $$7 = $$6.b(8, 8, 8);
 
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = Float.intBitsToFloat($$2[$$5]);
-         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
-         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
-         if ($$6 < $$3[frz.a.f]) {
-            $$3[frz.a.f] = $$6;
+      while (!$$2.isEmpty()) {
+         ftm.d $$8 = $$2.poll();
+         fvy.b $$9 = $$8.a;
+         if ($$0.b.add($$8)) {
+            $$4.accept($$8.a);
          }
 
-         if ($$7 < $$3[frz.a.e]) {
-            $$3[frz.a.e] = $$7;
-         }
+         boolean $$10 = Math.abs($$9.f().u() - $$6.u()) > 60 || Math.abs($$9.f().v() - $$6.v()) > 60 || Math.abs($$9.f().w() - $$6.w()) > 60;
 
-         if ($$8 < $$3[frz.a.d]) {
-            $$3[frz.a.d] = $$8;
-         }
+         for (ic $$11 : b) {
+            fvy.b $$12 = this.a($$6, $$9, $$11);
+            if ($$12 != null && (!$$3 || !$$8.a($$11.g()))) {
+               if ($$3 && $$8.a()) {
+                  fvy.a $$13 = $$9.d();
+                  boolean $$14 = false;
 
-         if ($$6 > $$3[frz.a.c]) {
-            $$3[frz.a.c] = $$6;
-         }
+                  for (int $$15 = 0; $$15 < b.length; $$15++) {
+                     if ($$8.a($$15) && $$13.a(b[$$15].g(), $$11)) {
+                        $$14 = true;
+                        break;
+                     }
+                  }
 
-         if ($$7 > $$3[frz.a.b]) {
-            $$3[frz.a.b] = $$7;
-         }
+                  if (!$$14) {
+                     continue;
+                  }
+               }
 
-         if ($$8 > $$3[frz.a.a]) {
-            $$3[frz.a.a] = $$8;
-         }
-      }
+               if ($$3 && $$10) {
+                  hx $$16 = $$12.f();
+                  hx $$17 = $$16.b(
+                     ($$11.o() == ic.a.a ? $$7.u() <= $$16.u() : $$7.u() >= $$16.u()) ? 0 : 16,
+                     ($$11.o() == ic.a.b ? $$7.v() <= $$16.v() : $$7.v() >= $$16.v()) ? 0 : 16,
+                     ($$11.o() == ic.a.c ? $$7.w() <= $$16.w() : $$7.w() >= $$16.w()) ? 0 : 16
+                  );
+                  elm $$18 = new elm((double)$$17.u(), (double)$$17.v(), (double)$$17.w());
+                  elm $$19 = $$1.d($$18).d().a(d);
+                  boolean $$20 = true;
 
-      frz $$9 = frz.a($$1);
+                  while ($$1.d($$18).g() > 3600.0) {
+                     $$18 = $$18.e($$19);
+                     ctk $$21 = this.g.c();
+                     if ($$18.d > (double)$$21.al() || $$18.d < (double)$$21.J_()) {
+                        break;
+                     }
 
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         frz.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
+                     fvy.b $$22 = this.g.a(hx.a($$18.c, $$18.d, $$18.e));
+                     if ($$22 == null || $$0.a.a($$22) == null) {
+                        $$20 = false;
+                        break;
+                     }
+                  }
 
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = Float.intBitsToFloat($$2[$$17]);
-            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
-            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
-            if (aty.a($$13, $$18) && aty.a($$14, $$19) && aty.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
+                  if (!$$20) {
+                     continue;
+                  }
+               }
+
+               ftm.d $$23 = $$0.a.a($$12);
+               if ($$23 != null) {
+                  $$23.b($$11);
+               } else {
+                  ftm.d $$24 = new ftm.d($$12, $$11, $$8.b + 1);
+                  $$24.a($$8.d, $$11);
+                  if ($$12.a()) {
+                     $$2.add($$24);
+                     $$0.a.a($$12, $$24);
+                  } else if (this.a($$6, $$12.f())) {
+                     $$0.a.a($$12, $$24);
+                     ((List)$$0.c.computeIfAbsent(csp.a($$12.f()), $$0x -> new ArrayList())).add($$12);
+                  }
+               }
             }
          }
+      }
+   }
+
+   private boolean a(hx $$0, hx $$1) {
+      int $$2 = iz.a($$0.u());
+      int $$3 = iz.a($$0.w());
+      int $$4 = iz.a($$1.u());
+      int $$5 = iz.a($$1.w());
+      return amn.a($$2, $$3, this.g.b(), $$4, $$5);
+   }
+
+   @Nullable
+   private fvy.b a(hx $$0, fvy.b $$1, ic $$2) {
+      hx $$3 = $$1.a($$2);
+      if (!this.a($$0, $$3)) {
+         return null;
+      } else {
+         return aui.a($$0.v() - $$3.v()) > this.g.b() * 16 ? null : this.g.a($$3);
+      }
+   }
+
+   @Nullable
+   @avn
+   protected ftm.d b(fvy.b $$0) {
+      return this.h.get().a.a.a($$0);
+   }
+
+   static record a(LongSet a, BlockingQueue<fvy.b> b) {
+
+      public a() {
+         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
+      }
+   }
+
+   static record b(ftm.c a, ftm.a b) {
+
+      public b(int $$0) {
+         this(new ftm.c($$0), new ftm.a());
+      }
+   }
+
+   static class c {
+      public final ftm.e a;
+      public final LinkedHashSet<ftm.d> b;
+      public final Long2ObjectMap<List<fvy.b>> c;
+
+      public c(int $$0) {
+         this.a = new ftm.e($$0);
+         this.b = new LinkedHashSet<>($$0);
+         this.c = new Long2ObjectOpenHashMap();
+      }
+   }
+
+   @avn
+   protected static class d {
+      @avn
+      protected final fvy.b a;
+      private byte c;
+      byte d;
+      @avn
+      protected final int b;
+
+      d(fvy.b $$0, @Nullable ic $$1, int $$2) {
+         this.a = $$0;
+         if ($$1 != null) {
+            this.b($$1);
+         }
+
+         this.b = $$2;
+      }
+
+      void a(byte $$0, ic $$1) {
+         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
+      }
+
+      boolean a(ic $$0) {
+         return (this.d & 1 << $$0.ordinal()) > 0;
+      }
+
+      void b(ic $$0) {
+         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
+      }
+
+      @avn
+      protected boolean a(int $$0) {
+         return (this.c & 1 << $$0) > 0;
+      }
+
+      boolean a() {
+         return this.c != 0;
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.f().hashCode();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof ftm.d $$1) ? false : this.a.f().equals($$1.a.f());
+      }
+   }
+
+   static class e {
+      private final ftm.d[] a;
+
+      e(int $$0) {
+         this.a = new ftm.d[$$0];
+      }
+
+      public void a(fvy.b $$0, ftm.d $$1) {
+         this.a[$$0.b] = $$1;
+      }
+
+      @Nullable
+      public ftm.d a(fvy.b $$0) {
+         int $$1 = $$0.b;
+         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
       }
    }
 }

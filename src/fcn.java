@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fcn {
+public abstract class fcn implements eyb {
+   public boolean a() {
+      return true;
+   }
 }

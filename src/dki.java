@@ -1,5 +1,21 @@
-public interface dki {
-   dip a(int var1);
+public enum dki implements ave {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-   void a(int var1, dip var2);
+   private final String d;
+
+   private dki(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

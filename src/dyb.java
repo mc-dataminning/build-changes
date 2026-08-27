@@ -1,29 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyb extends dxu {
+public class dyb extends dyk {
    public static final Codec<dyb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, dyb::new)
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dyb::new)
    );
    private final int c;
+   private final double d;
+   private final double e;
 
-   private dyb(int $$0) {
+   private dyb(int $$0, double $$1, double $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static dyb a(int $$0) {
-      return new dyb($$0);
-   }
-
-   @Override
-   protected boolean a(dxt $$0, auf $$1, hv $$2) {
-      int $$3 = $$0.a(dny.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dny.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public static dyb a(int $$0, double $$1, double $$2) {
+      return new dyb($$0, $$1, $$2);
    }
 
    @Override
-   public dxw<?> b() {
-      return dxw.d;
+   protected int a(aup $$0, hx $$1) {
+      double $$2 = cuh.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   }
+
+   @Override
+   public dyh<?> b() {
+      return dyh.g;
    }
 }

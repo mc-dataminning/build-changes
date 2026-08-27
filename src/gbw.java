@@ -1,25 +1,28 @@
-public class gbw<T extends cer> extends gbz<T, fkd<T>> {
-   private final fjy a;
-
-   public gbw(fzj<T, fkd<T>> $$0, flu $$1) {
+public class gbw extends gcq<fry, fku<fry>> {
+   public gbw(gaa<fry, fku<fry>> $$0) {
       super($$0);
-      this.a = new fjy($$1.a(flx.aD));
    }
 
-   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
+   public void a(ept $$0, fsz $$1, int $$2, fry $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.ad().getString()) && !$$3.ce()) {
+         epx $$10 = $$1.getBuffer(fth.c($$3.b().a()));
+         int $$11 = fzg.c($$3, 0.0F);
 
-   private void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      sj $$9 = $$8 ? $$3.gj() : $$3.gk();
-      blj.a($$9.l("id")).filter($$0x -> $$0x == blj.au).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
-         bxy.b $$11 = bxy.b.a($$9.h("Variant"));
-         eph $$12 = $$1.getBuffer(this.a.a(fza.a($$11)));
-         this.a.a($$0, $$12, $$2, gdf.d, $$4, $$5, $$6, $$7, $$3.ah);
-         $$0.b();
-      });
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = aui.i($$6, $$3.N, $$3.dC()) - aui.i($$6, $$3.aV, $$3.aU);
+            float $$14 = aui.i($$6, $$3.O, $$3.dE());
+            $$0.a();
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().a($$0, $$10, $$2, $$11);
+            $$0.b();
+         }
+      }
    }
 }

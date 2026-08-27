@@ -1,85 +1,25 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
-
-public abstract class frh extends cer {
-   @Nullable
-   private fnc cm;
-   protected elb b;
-   public float c;
-   public float d;
-   public float e;
-   public final fmt f;
-
-   public frh(fmt $$0, GameProfile $$1) {
-      super($$0, $$0.S(), $$0.T(), $$1);
-      this.b = elb.b;
-      this.f = $$0;
+public class frh extends fru {
+   frh(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.04F;
+      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
+         this.j = $$4;
+         this.k = 0.1;
+         this.l = $$6;
+      }
    }
 
-   @Override
-   public boolean P_() {
-      fnc $$0 = this.a();
-      return $$0 != null && $$0.e() == csv.d;
-   }
+   public static class a implements fqq<ka> {
+      private final fri a;
 
-   @Override
-   public boolean f() {
-      fnc $$0 = this.a();
-      return $$0 != null && $$0.e() == csv.b;
-   }
-
-   @Nullable
-   protected fnc a() {
-      if (this.cm == null) {
-         this.cm = euk.N().I().a(this.cw());
+      public a(fri $$0) {
+         this.a = $$0;
       }
 
-      return this.cm;
-   }
-
-   @Override
-   public void l() {
-      this.b = this.dp();
-      super.l();
-   }
-
-   public elb C(float $$0) {
-      return this.b.a(this.dp(), (double)$$0);
-   }
-
-   public geo b() {
-      fnc $$0 = this.a();
-      return $$0 == null ? geg.a(this.cw()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.fT().b) {
-         $$0 *= 1.1F;
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         frh $$8 = new frh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
-
-      $$0 *= ((float)this.b(bnb.m) / this.fT().b() + 1.0F) / 2.0F;
-      if (this.fT().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      cmh $$1 = this.fp();
-      if (this.fn()) {
-         if ($$1.a(cmk.or)) {
-            int $$2 = this.fr();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (euk.N().m.ax().a() && this.gq()) {
-            return 0.1F;
-         }
-      }
-
-      return aty.i(euk.N().m.ah().c().floatValue(), 1.0F, $$0);
    }
 }

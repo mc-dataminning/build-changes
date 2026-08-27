@@ -1,94 +1,72 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+public class fsi {
+   public static final vd a = vd.c("quickplay.error.title");
+   private static final vd b = vd.c("quickplay.error.invalid_identifier");
+   private static final vd c = vd.c("quickplay.error.realm_connect");
+   private static final vd d = vd.c("quickplay.error.realm_permission");
+   private static final vd e = vd.c("gui.toTitle");
+   private static final vd f = vd.c("gui.toWorld");
+   private static final vd g = vd.c("gui.toRealms");
 
-public interface fsi {
-   static fsi.a a(eoy $$0) {
-      return a(ImmutableMap.of(), $$0);
+   public static void a(eva $$0, fih.c $$1, eqj $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!ac.b($$3)) {
+         a($$0, $$3);
+      } else if (!ac.b($$4)) {
+         b($$0, $$4);
+      } else if (!ac.b($$5)) {
+         a($$0, $$2, $$5);
+      }
    }
 
-   static fsi.a a(Map<fsq, eoy> $$0, eoy $$1) {
-      return new fsi.a($$1, $$0);
+   private static void a(eva $$0, String $$1) {
+      if (!$$0.l().b($$1)) {
+         fct $$2 = new fhp(new fcy());
+         $$0.a(new fbv($$2, a, b, f));
+      } else {
+         $$0.w().a($$1, () -> $$0.a(new fcy()));
+      }
    }
 
-   eph getBuffer(fsq var1);
-
-   public static class a implements fsi {
-      protected final eoy a;
-      protected final Map<fsq, eoy> b;
-      protected Optional<fsq> c = Optional.empty();
-      protected final Set<eoy> d = Sets.newHashSet();
-
-      protected a(eoy $$0, Map<fsq, eoy> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private static void b(eva $$0, String $$1) {
+      fnw $$2 = new fnw($$0);
+      $$2.a();
+      fnv $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new fnv(gfl.a("selectServer.defaultName"), $$1, fnv.b.c);
+         $$2.a($$3, true);
+         $$2.b();
       }
 
-      @Override
-      public eph getBuffer(fsq $$0) {
-         Optional<fsq> $$1 = $$0.N();
-         eoy $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
-            if (this.c.isPresent()) {
-               fsq $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
+      fox $$4 = fox.a($$1);
+      fbn.a(new ffr(new fcy()), $$0, $$4, $$3, true);
+   }
 
-            if (this.d.add($$2)) {
-               $$2.a($$0.I(), $$0.H());
-            }
-
-            this.c = $$1;
-         }
-
-         return $$2;
+   private static void a(eva $$0, eqj $$1, String $$2) {
+      long $$3;
+      erc $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         fct $$6 = new eqe(new fcy());
+         $$0.a(new fbv($$6, a, b, g));
+         return;
+      } catch (erw var10) {
+         fct $$8 = new fcy();
+         $$0.a(new fbv($$8, a, c, e));
+         return;
       }
 
-      private eoy b(fsq $$0) {
-         return this.b.getOrDefault($$0, this.a);
-      }
-
-      public void a() {
-         if (this.c.isPresent()) {
-            fsq $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
-      }
-
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            eph $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (fsq $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(fsq $$0) {
-         eoy $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.N());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
+      era $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         fct $$12 = new eqe(new fcy());
+         $$0.a(new fbv($$12, a, d, g));
+      } else {
+         fcy $$13 = new fcy();
+         etz $$14 = new etz($$13, $$11);
+         $$0.a(new esq($$13, $$14));
       }
    }
 }

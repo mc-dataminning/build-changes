@@ -1,37 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxr extends dxz {
-   public static final Codec<dxr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dxr::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+public class dxr extends dyf {
+   private static final dxr c = new dxr();
+   public static Codec<dxr> a = Codec.unit(() -> c);
 
-   private dxr(double $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private dxr() {
    }
 
-   public static dxr a(double $$0, int $$1, int $$2) {
-      return new dxr($$0, $$1, $$2);
+   public static dxr a() {
+      return c;
    }
 
    @Override
-   protected int a(auf $$0, hv $$1) {
-      double $$2 = ctx.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   protected boolean a(dye $$0, aup $$1, hx $$2) {
+      dyd $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      ih<cuh> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public dxw<?> b() {
-      return dxw.h;
+   public dyh<?> b() {
+      return dyh.e;
    }
 }

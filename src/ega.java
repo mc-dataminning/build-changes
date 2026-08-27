@@ -1,94 +1,119 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PushbackInputStream;
+import java.util.Map;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface ega {
-   int d = 19133;
-   int e = 19132;
+public class ega {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, efp> b = Maps.newHashMap();
+   private final DataFixer c;
+   private final File d;
 
-   cts F();
-
-   void a(cts var1);
-
-   boolean H();
-
-   Set<String> I();
-
-   Set<String> J();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.I()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.z();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
-      });
+   public ega(File $$0, DataFixer $$1) {
+      this.c = $$1;
+      this.d = $$0;
    }
 
-   default String i(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   private File a(String $$0) {
+      return new File(this.d, $$0 + ".dat");
+   }
+
+   public <T extends efp> T a(efp.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
       }
    }
 
    @Nullable
-   sj G();
+   public <T extends efp> T b(efp.a<T> $$0, String $$1) {
+      efp $$2 = this.b.get($$1);
+      if ($$2 == null && !this.b.containsKey($$1)) {
+         $$2 = this.a($$0.b(), $$0.c(), $$1);
+         this.b.put($$1, $$2);
+      }
 
-   void a(@Nullable sj var1);
-
-   efz K();
-
-   ctc L();
-
-   sj a(is var1, @Nullable sj var2);
-
-   boolean n();
-
-   int z();
-
-   String g();
-
-   csv m();
-
-   void a(csv var1);
-
-   boolean o();
-
-   bji s();
-
-   void a(bji var1);
-
-   boolean t();
-
-   void d(boolean var1);
-
-   csu q();
+      return (T)$$2;
+   }
 
    @Nullable
-   sj y();
+   private <T extends efp> T a(Function<sl, T> $$0, avq $$1, String $$2) {
+      try {
+         File $$3 = this.a($$2);
+         if ($$3.exists()) {
+            sl $$4 = this.a($$2, $$1, aa.b().d().c());
+            return $$0.apply($$4.p("data"));
+         }
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
+      }
 
-   dmb.a E();
+      return null;
+   }
 
-   void a(dmb.a var1);
+   public void a(String $$0, efp $$1) {
+      this.b.put($$0, $$1);
+   }
 
-   dow A();
+   public sl a(String $$0, avq $$1, int $$2) throws IOException {
+      File $$3 = this.a($$0);
 
-   boolean B();
+      sl var9;
+      try (
+         FileInputStream $$4 = new FileInputStream($$3);
+         PushbackInputStream $$5 = new PushbackInputStream($$4, 2);
+      ) {
+         sl $$6;
+         if (this.a($$5)) {
+            $$6 = sy.a($$5, su.a());
+         } else {
+            try (DataInputStream $$7 = new DataInputStream($$5)) {
+               $$6 = sy.a($$7);
+            }
+         }
 
-   boolean C();
+         int $$10 = ta.b($$6, 1343);
+         var9 = $$1.a(this.c, $$6, $$10, $$2);
+      }
 
-   Lifecycle D();
+      return var9;
+   }
 
-   default chb M() {
-      return this.F().b();
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
+         }
+      }
+
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
+      }
+
+      return $$2;
+   }
+
+   public void a() {
+      this.b.forEach(($$0, $$1) -> {
+         if ($$1 != null) {
+            $$1.a(this.a($$0));
+         }
+      });
    }
 }

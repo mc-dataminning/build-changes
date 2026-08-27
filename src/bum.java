@@ -1,37 +1,41 @@
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bum<T extends blv> extends buk<T> {
-   private static final int i = 200;
-   private int j = 0;
+public class bum<T extends bmh> extends btb {
+   private final T a;
+   private final cmr b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final arl d;
 
-   public bum(cga $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<blv> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
-   }
-
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   public bum(T $$0, cmr $$1, @Nullable arl $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean a() {
-      if (this.j > 0 || !this.e.eg().h()) {
-         return false;
-      } else if (!((cga)this.e).gt()) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.fn();
    }
 
    @Override
    public void c() {
-      this.j = b(200);
-      super.c();
+      this.a.a(blu.a, this.b.p());
+      this.a.c(bju.a);
+   }
+
+   @Override
+   public void d() {
+      this.a.a(blu.a, cmr.f);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.eg().i() * 0.2F + 0.9F);
+      }
    }
 }

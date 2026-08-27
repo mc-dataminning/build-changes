@@ -1,9 +1,8 @@
-public interface ary {
-   asg<clz> a = a("regular_goat_horns");
-   asg<clz> b = a("screaming_goat_horns");
-   asg<clz> c = a("goat_horns");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static asg<clz> a(String $$0) {
-      return asg.a(kc.D, new agt($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ary {
 }

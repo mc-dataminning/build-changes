@@ -1,37 +1,29 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record geo(agt a, @Nullable String b, @Nullable agt c, @Nullable agt d, geo.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+public class geo implements gej {
+   public static final Codec<geo> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, geo::new)
+   );
+   private final String c;
+   private final String d;
 
-      private final String c;
+   public geo(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-      private a(String $$0) {
-         this.c = $$0;
-      }
+   @Override
+   public void a(aqc $$0, gej.a $$1) {
+      agw $$2 = new agw("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         ahd $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
+   }
 
-      public static geo.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   @Override
+   public gel a() {
+      return gem.b;
    }
 }

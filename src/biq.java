@@ -1,40 +1,111 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public abstract class biq {
-   private static final Codec<Either<Integer, biq>> a = Codec.either(Codec.INT, kb.M.q().dispatch(biq::c, bir::codec));
-   public static final Codec<biq> c = a.xmap(
-      $$0 -> (biq)$$0.map(bin::a, $$0x -> $$0x), $$0 -> $$0.c() == bir.a ? Either.left(((bin)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<biq> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<biq> e = b(1, Integer.MAX_VALUE);
+public interface biq<T, F> {
+   @Nullable
+   F a();
 
-   public static Codec<biq> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
-   }
+   boolean a(T var1);
 
-   public static <T extends biq> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return atg.a(
-         $$2,
-         (Function<T, DataResult<T>>)($$2x -> {
-            if ($$2x.a() < $$0) {
-               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b() > $$1
-                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
+   boolean b();
+
+   int c();
+
+   public static final class a implements biq<biq.b, Runnable> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
+
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+         }
+      }
+
+      @Nullable
+      public Runnable d() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
             }
-         })
-      );
+         }
+
+         return null;
+      }
+
+      public boolean a(biq.b $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
+      }
    }
 
-   public abstract int a(auf var1);
+   public static final class b implements Runnable {
+      final int a;
+      private final Runnable b;
 
-   public abstract int a();
+      public b(int $$0, Runnable $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public abstract int b();
+      @Override
+      public void run() {
+         this.b.run();
+      }
 
-   public abstract bir<?> c();
+      public int a() {
+         return this.a;
+      }
+   }
+
+   public static final class c<T> implements biq<T, T> {
+      private final Queue<T> a;
+
+      public c(Queue<T> $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public T a() {
+         return this.a.poll();
+      }
+
+      @Override
+      public boolean a(T $$0) {
+         return this.a.add($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public int c() {
+         return this.a.size();
+      }
+   }
 }

@@ -1,129 +1,130 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.time.Duration;
-import java.time.Instant;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public record vr(vw d, @Nullable vn e, vu f, @Nullable vb g, vf h) {
-   public static final MapCodec<vr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               vw.a.fieldOf("link").forGetter(vr::j),
-               vn.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-               vu.a.forGetter(vr::l),
-               vd.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-               vf.a.optionalFieldOf("filter_mask", vf.c).forGetter(vr::n)
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new vr($$0x, (vn)$$1.orElse(null), $$2, (vb)$$3.orElse(null), $$4))
-   );
-   private static final UUID i = ac.d;
-   public static final Duration b = Duration.ofMinutes(5L);
-   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+public class vr implements vd {
+   private final ve c;
+   private final List<vd> d;
+   private wa e;
+   private atu f = atu.a;
+   @Nullable
+   private sg g;
 
-   public static vr a(String $$0) {
-      return a(i, $$0);
+   vr(ve $$0, List<vd> $$1, wa $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static vr a(UUID $$0, String $$1) {
-      vu $$2 = vu.a($$1);
-      vw $$3 = vw.a($$0);
-      return new vr($$3, null, $$2, null, vf.c);
+   public static vr a(ve $$0) {
+      return new vr($$0, Lists.newArrayList(), wa.a);
    }
 
-   public vr a(vb $$0) {
-      vb $$1 = !$$0.equals(vb.b(this.b())) ? $$0 : null;
-      return new vr(this.d, this.e, this.f, $$1, this.h);
+   @Override
+   public ve b() {
+      return this.c;
    }
 
-   public vr a() {
-      return this.g != null ? new vr(this.d, this.e, this.f, null, this.h) : this;
-   }
-
-   public vr a(vf $$0) {
-      return this.h.equals($$0) ? this : new vr(this.d, this.e, this.f, this.g, $$0);
-   }
-
-   public vr a(boolean $$0) {
-      return this.a($$0 ? this.h : vf.c);
-   }
-
-   public static void a(auk.a $$0, vw $$1, vu $$2) throws SignatureException {
-      $$0.update(Ints.toByteArray(1));
-      $$1.a($$0);
-      $$2.a($$0);
-   }
-
-   public boolean a(aul $$0) {
-      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
-   }
-
-   public String b() {
-      return this.f.a();
-   }
-
-   public vb c() {
-      return Objects.requireNonNullElseGet(this.g, () -> vb.b(this.b()));
-   }
-
-   public Instant d() {
-      return this.f.b();
-   }
-
-   public long e() {
-      return this.f.c();
-   }
-
-   public boolean a(Instant $$0) {
-      return $$0.isAfter(this.d().plus(b));
-   }
-
-   public boolean b(Instant $$0) {
-      return $$0.isAfter(this.d().plus(c));
-   }
-
-   public UUID f() {
-      return this.d.c();
-   }
-
-   public boolean g() {
-      return this.f().equals(i);
-   }
-
-   public boolean h() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.h() && this.d.c().equals($$0);
-   }
-
-   public boolean i() {
-      return this.h.b();
-   }
-
-   public vw j() {
+   @Override
+   public List<vd> c() {
       return this.d;
    }
 
-   @Nullable
-   public vn k() {
+   public vr b(wa $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public wa a() {
       return this.e;
    }
 
-   public vu l() {
+   public vr f(String $$0) {
+      return this.b(vd.b($$0));
+   }
+
+   public vr b(vd $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public vr a(UnaryOperator<wa> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public vr c(wa $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public vr a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public vr a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public vr b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public atu g() {
+      sg $$0 = sg.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
+      }
+
       return this.f;
    }
 
-   @Nullable
-   public vb m() {
-      return this.g;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof vr $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      }
    }
 
-   public vf n() {
-      return this.h;
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.g();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
+         }
+
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
+      }
+
+      return $$0.toString();
    }
 }

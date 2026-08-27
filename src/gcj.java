@@ -1,48 +1,39 @@
-public class gcj extends gbz<byi, fiq<byi>> {
-   private static final agt a = new agt("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final agt b = new agt("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final agt c = new agt("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final agt d = new agt("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final agt e = new agt("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final agt f = new agt("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final agt g = new agt("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final agt h = new agt("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final agt i = new agt("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final agt j = new agt("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final agt k = new agt("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final agt l = new agt("textures/entity/fish/tropical_b_pattern_6.png");
-   private final fle<byi> m;
-   private final flf<byi> n;
+public class gcj<T extends bmf, M extends fjp<T> & fip> extends gcq<T, M> {
+   private final fsv a;
 
-   public gcj(fzj<byi, fiq<byi>> $$0, flu $$1) {
+   public gcj(gaa<T, M> $$0, fsv $$1) {
       super($$0);
-      this.m = new fle<>($$1.a(flx.bJ));
-      this.n = new flf<>($$1.a(flx.bH));
+      this.a = $$1;
    }
 
-   public void a(epd $$0, fsi $$1, int $$2, byi $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      byi.b $$10 = $$3.gp();
+   public void a(ept $$0, fsz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fm() == blz.b;
+      cmr $$11 = $$10 ? $$3.eU() : $$3.eT();
+      cmr $$12 = $$10 ? $$3.eT() : $$3.eU();
+      if (!$$11.b() || !$$12.b()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
+         }
 
-      fiy<byi> $$11 = (fiy<byi>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+         this.a($$3, $$12, cmo.c, blz.b, $$0, $$1, $$2);
+         this.a($$3, $$11, cmo.b, blz.a, $$0, $$1, $$2);
+         $$0.b();
+      }
+   }
 
-      agt $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.go().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
+   protected void a(bmf $$0, cmr $$1, cmo $$2, blz $$3, ept $$4, fsz $$5, int $$6) {
+      if (!$$1.b()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == blz.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
+      }
    }
 }

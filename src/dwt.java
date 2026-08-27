@@ -1,52 +1,41 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class dwt extends dwv {
-   public static final Codec<dwt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dos.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dos.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dwt::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dos d;
-   private final dos e;
-   private final int f;
+public class dwt extends dws {
+   public static final Codec<dwt> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dwt::new));
 
-   private dwt(dos $$0, dos $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static dwt a(dos $$0, dos $$1, int $$2) {
-      return new dwt($$0, $$1, $$2);
+   public dwt(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(auf $$0, dov $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
-         return $$0.a($$4 + this.f) + $$2;
+   protected dww<?> a() {
+      return dww.d;
+   }
+
+   @Override
+   public List<dvd.a> a(cto $$0, BiConsumer<hx, dja> $$1, aup $$2, int $$3, hx $$4, dun $$5) {
+      List<dvd.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + aui.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + aui.a($$8) * (float)$$11);
+            hx $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
+
+         $$6.add(new dvd.a($$4.b($$9, $$7, $$10), -2, false));
       }
-   }
 
-   @Override
-   public dww<?> a() {
-      return dww.c;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+      return $$6;
    }
 }

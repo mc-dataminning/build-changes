@@ -1,14 +1,8 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class eaq extends dyn {
-   public static final Codec<eaq> d = a(eaq::new);
-
-   public eaq(dyo.c $$0) {
-      super(eap::new, 12, 15, $$0);
-   }
-
-   @Override
-   public dyx<?> e() {
-      return dyx.g;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eaq {
 }

@@ -1,47 +1,17 @@
-import javax.annotation.Nullable;
+public abstract class ggw extends ggv implements gho {
+   private boolean n;
 
-public interface ggw {
-   agt a();
-
-   @Nullable
-   gib a(gia var1);
-
-   ggt b();
-
-   ard c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   ggw.a k();
-
-   default boolean r() {
-      return false;
+   protected ggw(arl $$0, arn $$1, aup $$2) {
+      super($$0, $$1, $$2);
    }
 
-   default boolean s() {
-      return true;
+   @Override
+   public boolean m() {
+      return this.n;
    }
 
-   static auf t() {
-      return auf.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

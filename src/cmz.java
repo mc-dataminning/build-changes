@@ -1,71 +1,40 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class cmz extends cmm {
+   private static final int a = 32;
 
-public class cmz extends cmc {
-   private static final Map<arb, cmz> a = Maps.newHashMap();
-   private final int b;
-   private final arb c;
-   private final int d;
-
-   protected cmz(int $$0, arb $$1, cmc.a $$2, int $$3) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3 * 20;
-      a.put(this.c, this);
+   public cmz(cmm.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bjl a(cos $$0) {
-      csy $$1 = $$0.q();
-      hv $$2 = $$0.a();
-      dip $$3 = $$1.a_($$2);
-      if ($$3.a(cwb.dT) && !$$3.c(dab.b)) {
-         cmh $$4 = $$0.n();
-         if (!$$1.B) {
-            cer $$5 = $$0.o();
-            if ($$1.c_($$2) instanceof dhe $$6) {
-               $$6.b($$4.p());
-               $$1.a(dmz.c, $$2, dmz.a.a($$5, $$3));
-            }
-
-            $$4.h(1);
-            if ($$5 != null) {
-               $$5.a(arm.al);
-            }
-         }
-
-         return bjl.a($$1.B);
-      } else {
-         return bjl.d;
+   public cmr a(cmr $$0, cti $$1, bmf $$2) {
+      if ($$2 instanceof ana $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(arw.c.b(this));
       }
-   }
 
-   public int h() {
-      return this.b;
+      if ($$2 instanceof cfb && !((cfb)$$2).fT().d) {
+         $$0.h(1);
+      }
+
+      if (!$$1.B) {
+         $$2.er();
+      }
+
+      return $$0.b() ? new cmr(cmu.qv) : $$0;
    }
 
    @Override
-   public void a(cmh $$0, @Nullable csy $$1, List<vb> $$2, cny $$3) {
-      $$2.add(this.i().a(n.h));
+   public int b(cmr $$0) {
+      return 32;
    }
 
-   public vp i() {
-      return vb.c(this.a() + ".desc");
+   @Override
+   public cok c(cmr $$0) {
+      return cok.c;
    }
 
-   @Nullable
-   public static cmz a(arb $$0) {
-      return a.get($$0);
-   }
-
-   public arb x() {
-      return this.c;
-   }
-
-   public int y() {
-      return this.d;
+   @Override
+   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
+      return cmt.a($$0, $$1, $$2);
    }
 }

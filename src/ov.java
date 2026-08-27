@@ -2,110 +2,60 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class ov {
-   public static void a(pa<dzx> $$0) {
-      ig<ecm> $$1 = $$0.a(kc.aD);
-      ie<ecm> $$2 = $$1.b(pi.t);
-      ig<dzx> $$3 = $$0.a(kc.aF);
-      ie<dzx> $$4 = $$3.b(ph.a);
-      ph.a(
+   public static void a(pc<eai> $$0) {
+      ii<ecx> $$1 = $$0.a(ke.aE);
+      ih<ecx> $$2 = $$1.b(pk.y);
+      ih<ecx> $$3 = $$1.b(pk.w);
+      ih<ecx> $$4 = $$1.b(pk.z);
+      ih<ecx> $$5 = $$1.b(pk.x);
+      ii<eai> $$6 = $$0.a(ke.aG);
+      ih<eai> $$7 = $$6.b(pj.a);
+      pj.a(
          $$0,
-         "bastion/units/center_pieces",
-         new dzx(
-            $$4,
+         "bastion/bridge/starting_pieces",
+         new eai(
+            $$7,
             ImmutableList.of(
-               Pair.of(dzv.b("bastion/units/center_pieces/center_0", $$2), 1),
-               Pair.of(dzv.b("bastion/units/center_pieces/center_1", $$2), 1),
-               Pair.of(dzv.b("bastion/units/center_pieces/center_2", $$2), 1)
+               Pair.of(eag.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(eag.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
             ),
-            dzx.a.b
+            eai.a.b
          )
       );
-      ph.a(
+      pj.a($$0, "bastion/bridge/bridge_pieces", new eai($$7, ImmutableList.of(Pair.of(eag.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), eai.a.b));
+      pj.a(
          $$0,
-         "bastion/units/pathways",
-         new dzx(
-            $$4,
-            ImmutableList.of(Pair.of(dzv.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(dzv.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
-            dzx.a.b
+         "bastion/bridge/legs",
+         new eai($$7, ImmutableList.of(Pair.of(eag.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(eag.b("bastion/bridge/legs/leg_1", $$3), 1)), eai.a.b)
+      );
+      pj.a(
+         $$0,
+         "bastion/bridge/walls",
+         new eai(
+            $$7,
+            ImmutableList.of(Pair.of(eag.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(eag.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
+            eai.a.b
          )
       );
-      ph.a(
+      pj.a(
          $$0,
-         "bastion/units/walls/wall_bases",
-         new dzx(
-            $$4,
-            ImmutableList.of(Pair.of(dzv.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(dzv.b("bastion/units/walls/connected_wall", $$2), 1)),
-            dzx.a.b
+         "bastion/bridge/ramparts",
+         new eai(
+            $$7,
+            ImmutableList.of(Pair.of(eag.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(eag.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
+            eai.a.b
          )
       );
-      ph.a(
+      pj.a($$0, "bastion/bridge/rampart_plates", new eai($$7, ImmutableList.of(Pair.of(eag.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), eai.a.b));
+      pj.a(
          $$0,
-         "bastion/units/stages/stage_0",
-         new dzx(
-            $$4,
+         "bastion/bridge/connectors",
+         new eai(
+            $$7,
             ImmutableList.of(
-               Pair.of(dzv.b("bastion/units/stages/stage_0_0", $$2), 1),
-               Pair.of(dzv.b("bastion/units/stages/stage_0_1", $$2), 1),
-               Pair.of(dzv.b("bastion/units/stages/stage_0_2", $$2), 1),
-               Pair.of(dzv.b("bastion/units/stages/stage_0_3", $$2), 1)
+               Pair.of(eag.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(eag.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
             ),
-            dzx.a.b
+            eai.a.b
          )
       );
-      ph.a(
-         $$0,
-         "bastion/units/stages/stage_1",
-         new dzx(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dzv.b("bastion/units/stages/stage_1_0", $$2), 1),
-               Pair.of(dzv.b("bastion/units/stages/stage_1_1", $$2), 1),
-               Pair.of(dzv.b("bastion/units/stages/stage_1_2", $$2), 1),
-               Pair.of(dzv.b("bastion/units/stages/stage_1_3", $$2), 1)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a($$0, "bastion/units/stages/rot/stage_1", new dzx($$4, ImmutableList.of(Pair.of(dzv.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), dzx.a.b));
-      ph.a(
-         $$0,
-         "bastion/units/stages/stage_2",
-         new dzx(
-            $$4, ImmutableList.of(Pair.of(dzv.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(dzv.b("bastion/units/stages/stage_2_1", $$2), 1)), dzx.a.b
-         )
-      );
-      ph.a(
-         $$0,
-         "bastion/units/stages/stage_3",
-         new dzx(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dzv.b("bastion/units/stages/stage_3_0", $$2), 1),
-               Pair.of(dzv.b("bastion/units/stages/stage_3_1", $$2), 1),
-               Pair.of(dzv.b("bastion/units/stages/stage_3_2", $$2), 1),
-               Pair.of(dzv.b("bastion/units/stages/stage_3_3", $$2), 1)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a($$0, "bastion/units/fillers/stage_0", new dzx($$4, ImmutableList.of(Pair.of(dzv.b("bastion/units/fillers/stage_0", $$2), 1)), dzx.a.b));
-      ph.a($$0, "bastion/units/edges", new dzx($$4, ImmutableList.of(Pair.of(dzv.b("bastion/units/edges/edge_0", $$2), 1)), dzx.a.b));
-      ph.a($$0, "bastion/units/wall_units", new dzx($$4, ImmutableList.of(Pair.of(dzv.b("bastion/units/wall_units/unit_0", $$2), 1)), dzx.a.b));
-      ph.a($$0, "bastion/units/edge_wall_units", new dzx($$4, ImmutableList.of(Pair.of(dzv.b("bastion/units/wall_units/edge_0_large", $$2), 1)), dzx.a.b));
-      ph.a(
-         $$0,
-         "bastion/units/ramparts",
-         new dzx(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dzv.b("bastion/units/ramparts/ramparts_0", $$2), 1),
-               Pair.of(dzv.b("bastion/units/ramparts/ramparts_1", $$2), 1),
-               Pair.of(dzv.b("bastion/units/ramparts/ramparts_2", $$2), 1)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a($$0, "bastion/units/large_ramparts", new dzx($$4, ImmutableList.of(Pair.of(dzv.b("bastion/units/ramparts/ramparts_0", $$2), 1)), dzx.a.b));
-      ph.a($$0, "bastion/units/rampart_plates", new dzx($$4, ImmutableList.of(Pair.of(dzv.b("bastion/units/rampart_plates/plate_0", $$2), 1)), dzx.a.b));
    }
 }

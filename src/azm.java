@@ -1,3 +1,4 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
@@ -9,6 +10,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class azm extends DataFix {
    public azm(Schema $$0, boolean $$1) {
@@ -16,19 +18,42 @@ public class azm extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbg.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbg.z.typeName(), bco.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bbq.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbq.z.typeName(), bcy.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
-         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
-            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
-            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
-            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
-            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
+      return this.fixTypeEverywhereTyped("ItemBannerColorFix", $$0, $$3x -> {
+         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
+         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:banner")) {
+            Dynamic<?> $$5 = (Dynamic<?>)$$3x.get(DSL.remainderFinder());
+            Optional<? extends Typed<?>> $$6 = $$3x.getOptionalTyped($$2);
+            if ($$6.isPresent()) {
+               Typed<?> $$7 = (Typed<?>)$$6.get();
+               Optional<? extends Typed<?>> $$8 = $$7.getOptionalTyped($$3);
+               if ($$8.isPresent()) {
+                  Typed<?> $$9 = (Typed<?>)$$8.get();
+                  Dynamic<?> $$10 = (Dynamic<?>)$$7.get(DSL.remainderFinder());
+                  Dynamic<?> $$11 = (Dynamic<?>)$$9.getOrCreate(DSL.remainderFinder());
+                  if ($$11.get("Base").asNumber().result().isPresent()) {
+                     $$5 = $$5.set("Damage", $$5.createShort((short)($$11.get("Base").asInt(0) & 15)));
+                     Optional<? extends Dynamic<?>> $$12 = $$10.get("display").result();
+                     if ($$12.isPresent()) {
+                        Dynamic<?> $$13 = (Dynamic<?>)$$12.get();
+                        Dynamic<?> $$14 = $$13.createMap(ImmutableMap.of($$13.createString("Lore"), $$13.createList(Stream.of($$13.createString("(+NBT")))));
+                        if (Objects.equals($$13, $$14)) {
+                           return $$3x.set(DSL.remainderFinder(), $$5);
+                        }
+                     }
+
+                     $$11.remove("Base");
+                     return $$3x.set(DSL.remainderFinder(), $$5).set($$2, $$7.set($$3, $$9.set(DSL.remainderFinder(), $$11)));
+                  }
+               }
+            }
+
+            return $$3x.set(DSL.remainderFinder(), $$5);
          } else {
-            return $$2x;
+            return $$3x;
          }
       });
    }

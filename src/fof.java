@@ -1,85 +1,47 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public final class fof {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final fof c = new fof(HostAndPort.fromParts("server.invalid", 25565));
+public enum fof {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
 
-   public fof(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   private final vd n;
+
+   private fof(String $$0) {
+      this.n = vd.c("gui.banned.reason." + $$0);
    }
 
-   private fof(HostAndPort $$0) {
-      this.b = $$0;
+   public vd a() {
+      return this.n;
    }
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
-   }
-
-   public int b() {
-      return this.b.getPort();
-   }
-
-   public static fof a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new fof($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
-      }
-   }
-
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof fof ? this.b.equals(((fof)$$0).b) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   @Nullable
+   public static fof a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

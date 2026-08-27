@@ -1,26 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class cxb extends dai {
+public class cxb extends cye {
    public static final MapCodec<cxb> a = b(cxb::new);
+   private static final emf[] b = new emf[]{
+      cwj.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cwj.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<cxb> a() {
       return a;
    }
 
-   public cxb(dio.d $$0) {
+   public cxb(diz.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dip $$0, csy $$1, hv $$2, auf $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         hv $$4 = $$2.d();
-         dip $$5 = $$1.a_($$4);
-         if (!a($$5.k($$1, $$4), ia.b)) {
-            aub.a($$1, $$2, $$3, jv.F);
-         }
-      }
+   protected cth d() {
+      return cmu.tY;
+   }
+
+   @Override
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return b[this.g($$0)];
    }
 }

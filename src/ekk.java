@@ -1,29 +1,23 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class ekk implements ekm<MinecraftServer> {
-   final agt a;
+public class ekk {
+   private static final Codec<ekj> f = kd.I.q().dispatch(ekj::b, eki::a);
+   public static final Codec<ekj> a = atq.a(
+      (Supplier<Codec<ekj>>)(() -> {
+         Codec<ekj> $$0 = atq.e(f, ekm.a);
+         return Codec.either(ekh.b, $$0)
+            .xmap($$0x -> (ekj)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof ekh $$1 ? Either.left($$1) : Either.right($$0x));
+      })
+   );
+   public static final eki b = a("constant", ekh.a);
+   public static final eki c = a("uniform", ekm.a);
+   public static final eki d = a("binomial", ekg.a);
+   public static final eki e = a("score", ekl.a);
 
-   public ekk(agt $$0) {
-      this.a = $$0;
-   }
-
-   public void a(MinecraftServer $$0, eko<MinecraftServer> $$1, long $$2) {
-      ahh $$3 = $$0.aC();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
-   }
-
-   public static class a extends ekm.a<MinecraftServer, ekk> {
-      public a() {
-         super(new agt("function"), ekk.class);
-      }
-
-      public void a(sj $$0, ekk $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public ekk a(sj $$0) {
-         agt $$1 = new agt($$0.l("Name"));
-         return new ekk($$1);
-      }
+   private static eki a(String $$0, Codec<? extends ekj> $$1) {
+      return it.a(kd.I, new ahd($$0), new eki($$1));
    }
 }

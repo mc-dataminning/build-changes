@@ -1,75 +1,55 @@
-public class cpv extends cpd {
-   public cpv(cpb $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
 
-   public boolean a(cia $$0, csy $$1) {
-      cmh $$2 = cmh.f;
-      cmh $$3 = cmh.f;
+public interface cpv<C extends bjo> {
+   Codec<cpv<?>> h = kd.t.q().dispatch(cpv::ar_, cpz::a);
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmh $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof cjx) {
-               if (!$$3.b()) {
-                  return false;
-               }
+   boolean a(C var1, cti var2);
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cmk.vl)) {
-                  return false;
-               }
+   cmr a(C var1, iu var2);
 
-               if (!$$2.b()) {
-                  return false;
-               }
+   boolean a(int var1, int var2);
 
-               if (cka.a($$5) != null) {
-                  return false;
-               }
+   cmr a(iu var1);
 
-               $$2 = $$5;
-            }
+   default iq<cmr> a(C $$0) {
+      iq<cmr> $$1 = iq.a($$0.b(), cmr.f);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cmm $$3 = $$0.a($$2).d();
+         if ($$3.t()) {
+            $$1.set($$2, new cmr($$3.s()));
          }
       }
 
-      return !$$2.b() && !$$3.b();
+      return $$1;
    }
 
-   public cmh a(cia $$0, is $$1) {
-      cmh $$2 = cmh.f;
-      cmh $$3 = cmh.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmh $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof cjx) {
-               $$2 = $$5;
-            } else if ($$5.a(cmk.vl)) {
-               $$3 = $$5.p();
-            }
-         }
-      }
-
-      if ($$3.b()) {
-         return $$3;
-      } else {
-         sj $$6 = cka.a($$2);
-         sj $$7 = $$6 == null ? new sj() : $$6.h();
-         $$7.a("Base", ((cjx)$$2.d()).b().a());
-         cka.a($$3, dgf.t, $$7);
-         return $$3;
-      }
+   default iq<cps> a() {
+      return iq.a();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   default boolean aq_() {
+      return false;
    }
 
-   @Override
-   public cpp<?> ar_() {
-      return cpp.l;
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default cmr g() {
+      return new cmr(cwl.cA);
+   }
+
+   cpz<?> ar_();
+
+   cqa<?> e();
+
+   default boolean i() {
+      iq<cps> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

@@ -1,4 +1,3 @@
-import javax.annotation.Nullable;
-
-public record bjy(bkd a, float b, @Nullable bki c, float d) {
+public interface bjy extends cja {
+   vd Q_();
 }

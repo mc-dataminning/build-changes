@@ -1,81 +1,37 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
 
 public class ajv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("commands.recipe.take.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("commands.op.failed"));
 
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dt.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)dt.a("targets", ee.d())
-                              .then(
-                                 dt.a("recipe", es.a())
-                                    .suggests(hl.b)
-                                    .executes($$0x -> a((ds)$$0x.getSource(), ee.f($$0x, "targets"), Collections.singleton(es.b($$0x, "recipe"))))
-                              ))
-                           .then(dt.a("*").executes($$0x -> a((ds)$$0x.getSource(), ee.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
-                     )
-               ))
-            .then(
-               dt.a("take")
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("targets", ee.d())
-                           .then(
-                              dt.a("recipe", es.a())
-                                 .suggests(hl.b)
-                                 .executes($$0x -> b((ds)$$0x.getSource(), ee.f($$0x, "targets"), Collections.singleton(es.b($$0x, "recipe"))))
-                           ))
-                        .then(dt.a("*").executes($$0x -> b((ds)$$0x.getSource(), ee.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("op").requires($$0x -> $$0x.c(3))).then(dt.a("targets", eh.a()).suggests(($$0x, $$1) -> {
+            aqp $$2 = ((ds)$$0x.getSource()).l().ae();
+            return dx.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fR())).map($$0xx -> $$0xx.fR().getName()), $$1);
+         }).executes($$0x -> a((ds)$$0x.getSource(), eh.a($$0x, "targets"))))
       );
    }
 
-   private static int a(ds $$0, Collection<amq> $$1, Collection<cpn<?>> $$2) throws CommandSyntaxException {
+   private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aqp $$2 = $$0.l().ae();
       int $$3 = 0;
 
-      for (amq $$4 : $$1) {
-         $$3 += $$4.a($$2);
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.f($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> vd.a("commands.op.success", $$1.iterator().next().getName()), true);
+         }
       }
 
       if ($$3 == 0) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vb.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vb.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int b(ds $$0, Collection<amq> $$1, Collection<cpn<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (amq $$4 : $$1) {
-         $$3 += $$4.b($$2);
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vb.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vb.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
          return $$3;
       }
    }

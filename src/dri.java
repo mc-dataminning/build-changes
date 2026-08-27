@@ -1,149 +1,173 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class dri extends drc<dth> {
-   private static final ia[] a = ia.values();
-
-   public dri(Codec<dth> $$0) {
+public class dri extends drn<dtp> {
+   public dri(Codec<dtp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<dth> $$0) {
-      dth $$1 = $$0.f();
-      auf $$2 = $$0.d();
-      hv $$3 = $$0.e();
-      ctt $$4 = $$0.b();
-      int $$5 = $$1.l;
-      int $$6 = $$1.n;
-      List<Pair<hv, Integer>> $$7 = Lists.newLinkedList();
-      int $$8 = $$1.j.a($$2);
-      dox $$9 = new dox(new dnz($$4.B()));
-      edc $$10 = edc.a($$9, -4, 1.0);
-      List<hv> $$11 = Lists.newLinkedList();
-      double $$12 = (double)$$8 / (double)$$1.i.b();
-      dnx $$13 = $$1.d;
-      dnv $$14 = $$1.c;
-      dnw $$15 = $$1.e;
-      double $$16 = 1.0 / Math.sqrt($$13.b);
-      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
-      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
-      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
-      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
-      boolean $$21 = (double)$$2.i() < $$15.b;
-      int $$22 = 0;
+   public boolean a(drp<dtp> $$0) {
+      cud $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      dtp $$3 = $$0.f();
+      aup $$4 = $$0.d();
+      if (!drj.a($$1, $$2)) {
+         return false;
+      } else {
+         int $$5 = $$3.c.a($$4);
+         float $$6 = $$3.i.a($$4);
+         float $$7 = $$3.h.a($$4);
+         int $$8 = $$3.d.a($$4);
+         int $$9 = $$3.d.a($$4);
 
-      for (int $$23 = 0; $$23 < $$8; $$23++) {
-         int $$24 = $$1.i.a($$2);
-         int $$25 = $$1.i.a($$2);
-         int $$26 = $$1.i.a($$2);
-         hv $$27 = $$3.b($$24, $$25, $$26);
-         dip $$28 = $$4.a_($$27);
-         if ($$28.i() || $$28.a(arr.bJ)) {
-            if (++$$22 > $$1.p) {
-               return false;
+         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
+               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
+               hx $$13 = $$2.b($$10, 0, $$11);
+               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
             }
          }
 
-         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+         return true;
       }
+   }
 
-      if ($$21) {
-         int $$29 = $$2.a(4);
-         int $$30 = $$8 * 2 + 1;
-         if ($$29 == 0) {
-            $$11.add($$3.b($$30, 7, 0));
-            $$11.add($$3.b($$30, 5, 0));
-            $$11.add($$3.b($$30, 1, 0));
-         } else if ($$29 == 1) {
-            $$11.add($$3.b(0, 7, $$30));
-            $$11.add($$3.b(0, 5, $$30));
-            $$11.add($$3.b(0, 1, $$30));
-         } else if ($$29 == 2) {
-            $$11.add($$3.b($$30, 7, $$30));
-            $$11.add($$3.b($$30, 5, $$30));
-            $$11.add($$3.b($$30, 1, $$30));
-         } else {
-            $$11.add($$3.b(0, 7, 0));
-            $$11.add($$3.b(0, 5, 0));
-            $$11.add($$3.b(0, 1, 0));
-         }
-      }
+   private void a(cud $$0, aup $$1, hx $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, dtp $$9) {
+      Optional<dnz> $$10 = dnz.a($$0, $$2, $$9.b, drj::c, drj::d);
+      if (!$$10.isEmpty()) {
+         OptionalInt $$11 = $$10.get().b();
+         OptionalInt $$12 = $$10.get().c();
+         if (!$$11.isEmpty() || !$$12.isEmpty()) {
+            boolean $$13 = $$1.i() < $$5;
+            dnz $$15;
+            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
+               int $$14 = $$12.getAsInt();
+               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
+               $$0.a($$2.h($$14), cwl.G.o(), 2);
+            } else {
+               $$15 = $$10.get();
+            }
 
-      List<hv> $$31 = Lists.newArrayList();
-      Predicate<dip> $$32 = a($$1.c.g);
-
-      for (hv $$33 : hv.a($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
-         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
-         double $$35 = 0.0;
-         double $$36 = 0.0;
-
-         for (Pair<hv, Integer> $$37 : $$7) {
-            $$35 += aty.f($$33.j((iz)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
-         }
-
-         for (hv $$38 : $$11) {
-            $$36 += aty.f($$33.j($$38) + (double)$$15.d) + $$34;
-         }
-
-         if (!($$35 < $$19)) {
-            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
-               this.a($$4, $$33, cwb.a.o(), $$32);
-
-               for (ia $$39 : a) {
-                  hv $$40 = $$33.a($$39);
-                  edz $$41 = $$4.b_($$40);
-                  if (!$$41.c()) {
-                     $$4.a($$40, $$41.a(), 0);
-                  }
-               }
-            } else if ($$35 >= $$16) {
-               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
-            } else if ($$35 >= $$17) {
-               boolean $$42 = (double)$$2.i() < $$1.g;
-               if ($$42) {
-                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
+            OptionalInt $$17 = $$15.c();
+            boolean $$18 = $$1.j() < $$6;
+            int $$22;
+            if ($$11.isPresent() && $$18 && !this.a((ctl)$$0, $$2.h($$11.getAsInt()))) {
+               int $$19 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$11.getAsInt()), $$19, ic.b);
+               int $$20;
+               if ($$17.isPresent()) {
+                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
                } else {
-                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
+                  $$20 = $$7;
                }
 
-               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
-                  $$31.add($$33.i());
+               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
+            } else {
+               $$22 = 0;
+            }
+
+            boolean $$24 = $$1.j() < $$6;
+            int $$26;
+            if ($$17.isPresent() && $$24 && !this.a((ctl)$$0, $$2.h($$17.getAsInt()))) {
+               int $$25 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$17.getAsInt()), $$25, ic.a);
+               if ($$11.isPresent()) {
+                  $$26 = Math.max(0, $$22 + aui.b($$1, -$$9.e, $$9.e));
+               } else {
+                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
                }
-            } else if ($$35 >= $$18) {
-               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
-            } else if ($$35 >= $$19) {
-               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
+            } else {
+               $$26 = 0;
+            }
+
+            int $$36;
+            int $$35;
+            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
+               int $$29 = $$17.getAsInt();
+               int $$30 = $$11.getAsInt();
+               int $$31 = Math.max($$30 - $$22, $$29 + 1);
+               int $$32 = Math.min($$29 + $$26, $$30 - 1);
+               int $$33 = aui.b($$1, $$31, $$32 + 1);
+               int $$34 = $$33 - 1;
+               $$35 = $$30 - $$33;
+               $$36 = $$34 - $$29;
+            } else {
+               $$35 = $$22;
+               $$36 = $$26;
+            }
+
+            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
+            if ($$11.isPresent()) {
+               drj.a($$0, $$2.h($$11.getAsInt() - 1), ic.a, $$35, $$39);
+            }
+
+            if ($$17.isPresent()) {
+               drj.a($$0, $$2.h($$17.getAsInt() + 1), ic.b, $$36, $$39);
             }
          }
       }
+   }
 
-      List<dip> $$43 = $$14.f;
+   private boolean a(ctl $$0, hx $$1) {
+      return $$0.a_($$1).a(cwl.H);
+   }
 
-      for (hv $$44 : $$31) {
-         dip $$45 = ac.a($$43, $$2);
-
-         for (ia $$46 : a) {
-            if ($$45.b(djf.P)) {
-               $$45 = $$45.a(djf.P, $$46);
-            }
-
-            hv $$47 = $$44.a($$46);
-            dip $$48 = $$4.a_($$47);
-            if ($$45.b(djf.C)) {
-               $$45 = $$45.a(djf.C, Boolean.valueOf($$48.u().b()));
-            }
-
-            if (cwh.g($$48)) {
-               this.a($$4, $$47, $$45, $$32);
-               break;
-            }
-         }
+   private int a(aup $$0, int $$1, int $$2, float $$3, int $$4, dtp $$5) {
+      if ($$0.i() > $$3) {
+         return 0;
+      } else {
+         int $$6 = Math.abs($$1) + Math.abs($$2);
+         float $$7 = (float)aui.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
+         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
       }
+   }
 
-      return true;
+   private boolean b(cud $$0, hx $$1) {
+      dja $$2 = $$0.a_($$1);
+      if (!$$2.a(cwl.G) && !$$2.a(cwl.su) && !$$2.a(cwl.st)) {
+         if ($$0.a_($$1.c()).u().a(asg.a)) {
+            return false;
+         } else {
+            for (ic $$3 : ic.c.a) {
+               if (!this.a((ctj)$$0, $$1.a($$3))) {
+                  return false;
+               }
+            }
+
+            return this.a((ctj)$$0, $$1.d());
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(ctj $$0, hx $$1) {
+      dja $$2 = $$0.a_($$1);
+      return $$2.a(asb.bd) || $$2.u().a(asg.a);
+   }
+
+   private void a(cud $$0, hx $$1, int $$2, ic $$3) {
+      hx.a $$4 = $$1.j();
+
+      for (int $$5 = 0; $$5 < $$2; $$5++) {
+         if (!drj.c($$0, $$4)) {
+            return;
+         }
+
+         $$4.c($$3);
+      }
+   }
+
+   private double a(int $$0, int $$1, int $$2, int $$3, dtp $$4) {
+      int $$5 = $$0 - Math.abs($$2);
+      int $$6 = $$1 - Math.abs($$3);
+      int $$7 = Math.min($$5, $$6);
+      return (double)aui.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
+   }
+
+   private static float a(aup $$0, float $$1, float $$2, float $$3, float $$4) {
+      return biu.a($$0, $$3, $$4, $$1, $$2);
    }
 }

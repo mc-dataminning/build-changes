@@ -1,132 +1,93 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public interface bkq {
+   ahc<bkp> a = ahc.a(ke.r, new ahd("in_fire"));
+   ahc<bkp> b = ahc.a(ke.r, new ahd("lightning_bolt"));
+   ahc<bkp> c = ahc.a(ke.r, new ahd("on_fire"));
+   ahc<bkp> d = ahc.a(ke.r, new ahd("lava"));
+   ahc<bkp> e = ahc.a(ke.r, new ahd("hot_floor"));
+   ahc<bkp> f = ahc.a(ke.r, new ahd("in_wall"));
+   ahc<bkp> g = ahc.a(ke.r, new ahd("cramming"));
+   ahc<bkp> h = ahc.a(ke.r, new ahd("drown"));
+   ahc<bkp> i = ahc.a(ke.r, new ahd("starve"));
+   ahc<bkp> j = ahc.a(ke.r, new ahd("cactus"));
+   ahc<bkp> k = ahc.a(ke.r, new ahd("fall"));
+   ahc<bkp> l = ahc.a(ke.r, new ahd("fly_into_wall"));
+   ahc<bkp> m = ahc.a(ke.r, new ahd("out_of_world"));
+   ahc<bkp> n = ahc.a(ke.r, new ahd("generic"));
+   ahc<bkp> o = ahc.a(ke.r, new ahd("magic"));
+   ahc<bkp> p = ahc.a(ke.r, new ahd("wither"));
+   ahc<bkp> q = ahc.a(ke.r, new ahd("dragon_breath"));
+   ahc<bkp> r = ahc.a(ke.r, new ahd("dry_out"));
+   ahc<bkp> s = ahc.a(ke.r, new ahd("sweet_berry_bush"));
+   ahc<bkp> t = ahc.a(ke.r, new ahd("freeze"));
+   ahc<bkp> u = ahc.a(ke.r, new ahd("stalagmite"));
+   ahc<bkp> v = ahc.a(ke.r, new ahd("falling_block"));
+   ahc<bkp> w = ahc.a(ke.r, new ahd("falling_anvil"));
+   ahc<bkp> x = ahc.a(ke.r, new ahd("falling_stalactite"));
+   ahc<bkp> y = ahc.a(ke.r, new ahd("sting"));
+   ahc<bkp> z = ahc.a(ke.r, new ahd("mob_attack"));
+   ahc<bkp> A = ahc.a(ke.r, new ahd("mob_attack_no_aggro"));
+   ahc<bkp> B = ahc.a(ke.r, new ahd("player_attack"));
+   ahc<bkp> C = ahc.a(ke.r, new ahd("arrow"));
+   ahc<bkp> D = ahc.a(ke.r, new ahd("trident"));
+   ahc<bkp> E = ahc.a(ke.r, new ahd("mob_projectile"));
+   ahc<bkp> F = ahc.a(ke.r, new ahd("fireworks"));
+   ahc<bkp> G = ahc.a(ke.r, new ahd("fireball"));
+   ahc<bkp> H = ahc.a(ke.r, new ahd("unattributed_fireball"));
+   ahc<bkp> I = ahc.a(ke.r, new ahd("wither_skull"));
+   ahc<bkp> J = ahc.a(ke.r, new ahd("thrown"));
+   ahc<bkp> K = ahc.a(ke.r, new ahd("indirect_magic"));
+   ahc<bkp> L = ahc.a(ke.r, new ahd("thorns"));
+   ahc<bkp> M = ahc.a(ke.r, new ahd("explosion"));
+   ahc<bkp> N = ahc.a(ke.r, new ahd("player_explosion"));
+   ahc<bkp> O = ahc.a(ke.r, new ahd("sonic_boom"));
+   ahc<bkp> P = ahc.a(ke.r, new ahd("bad_respawn_point"));
+   ahc<bkp> Q = ahc.a(ke.r, new ahd("outside_border"));
+   ahc<bkp> R = ahc.a(ke.r, new ahd("generic_kill"));
 
-public class bkq {
-   private final Map<bmw, bkl> a = Maps.newHashMap();
-   private final bkr b;
-   private final int c;
-   @Nullable
-   private String d;
-   private Supplier<bks.a> e = () -> null;
-   private final ie.c<bkq> f = kb.d.f(this);
-
-   protected bkq(bkr $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public Optional<bks.a> b() {
-      return Optional.ofNullable(this.e.get());
-   }
-
-   public void a(blv $$0, int $$1) {
-   }
-
-   public void a(@Nullable blf $$0, @Nullable blf $$1, blv $$2, int $$3, double $$4) {
-      this.a($$2, $$3);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return false;
-   }
-
-   public void b(blv $$0, int $$1) {
-   }
-
-   public boolean a() {
-      return false;
-   }
-
-   protected String c() {
-      if (this.d == null) {
-         this.d = ac.a("effect", kb.d.b(this));
-      }
-
-      return this.d;
-   }
-
-   public String d() {
-      return this.c();
-   }
-
-   public vb e() {
-      return vb.c(this.d());
-   }
-
-   public bkr f() {
-      return this.b;
-   }
-
-   public int g() {
-      return this.c;
-   }
-
-   public bkq a(bmw $$0, String $$1, double $$2, bmz.a $$3) {
-      this.a.put($$0, new bkq.a(UUID.fromString($$1), $$2, $$3));
-      return this;
-   }
-
-   public bkq a(Supplier<bks.a> $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public Map<bmw, bkl> h() {
-      return this.a;
-   }
-
-   public void a(bmy $$0) {
-      for (Entry<bmw, bkl> $$1 : this.a.entrySet()) {
-         bmx $$2 = $$0.a($$1.getKey());
-         if ($$2 != null) {
-            $$2.b($$1.getValue().a());
-         }
-      }
-   }
-
-   public void a(bmy $$0, int $$1) {
-      for (Entry<bmw, bkl> $$2 : this.a.entrySet()) {
-         bmx $$3 = $$0.a($$2.getKey());
-         if ($$3 != null) {
-            $$3.b($$2.getValue().a());
-            $$3.c($$2.getValue().a($$1));
-         }
-      }
-   }
-
-   public boolean i() {
-      return this.b == bkr.a;
-   }
-
-   @Deprecated
-   public ie.c<bkq> j() {
-      return this.f;
-   }
-
-   class a implements bkl {
-      private final UUID b;
-      private final double c;
-      private final bmz.a d;
-
-      public a(UUID $$0, double $$1, bmz.a $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      @Override
-      public UUID a() {
-         return this.b;
-      }
-
-      @Override
-      public bmz a(int $$0) {
-         return new bmz(this.b, bkq.this.d() + " " + $$0, this.c * (double)($$0 + 1), this.d);
-      }
+   static void a(pc<bkp> $$0) {
+      $$0.a(a, new bkp("inFire", 0.1F, bkl.d));
+      $$0.a(b, new bkp("lightningBolt", 0.1F));
+      $$0.a(c, new bkp("onFire", 0.0F, bkl.d));
+      $$0.a(d, new bkp("lava", 0.1F, bkl.d));
+      $$0.a(e, new bkp("hotFloor", 0.1F, bkl.d));
+      $$0.a(f, new bkp("inWall", 0.0F));
+      $$0.a(g, new bkp("cramming", 0.0F));
+      $$0.a(h, new bkp("drown", 0.0F, bkl.c));
+      $$0.a(i, new bkp("starve", 0.0F));
+      $$0.a(j, new bkp("cactus", 0.1F));
+      $$0.a(k, new bkp("fall", bkm.b, 0.0F, bkl.a, bkr.b));
+      $$0.a(l, new bkp("flyIntoWall", 0.0F));
+      $$0.a(m, new bkp("outOfWorld", 0.0F));
+      $$0.a(n, new bkp("generic", 0.0F));
+      $$0.a(o, new bkp("magic", 0.0F));
+      $$0.a(p, new bkp("wither", 0.0F));
+      $$0.a(q, new bkp("dragonBreath", 0.0F));
+      $$0.a(r, new bkp("dryout", 0.1F));
+      $$0.a(s, new bkp("sweetBerryBush", 0.1F, bkl.e));
+      $$0.a(t, new bkp("freeze", 0.0F, bkl.f));
+      $$0.a(u, new bkp("stalagmite", 0.0F));
+      $$0.a(v, new bkp("fallingBlock", 0.1F));
+      $$0.a(w, new bkp("anvil", 0.1F));
+      $$0.a(x, new bkp("fallingStalactite", 0.1F));
+      $$0.a(y, new bkp("sting", 0.1F));
+      $$0.a(z, new bkp("mob", 0.1F));
+      $$0.a(A, new bkp("mob", 0.1F));
+      $$0.a(B, new bkp("player", 0.1F));
+      $$0.a(C, new bkp("arrow", 0.1F));
+      $$0.a(D, new bkp("trident", 0.1F));
+      $$0.a(E, new bkp("mob", 0.1F));
+      $$0.a(F, new bkp("fireworks", 0.1F));
+      $$0.a(H, new bkp("onFire", 0.1F, bkl.d));
+      $$0.a(G, new bkp("fireball", 0.1F, bkl.d));
+      $$0.a(I, new bkp("witherSkull", 0.1F));
+      $$0.a(J, new bkp("thrown", 0.1F));
+      $$0.a(K, new bkp("indirectMagic", 0.0F));
+      $$0.a(L, new bkp("thorns", 0.1F, bkl.b));
+      $$0.a(M, new bkp("explosion", bkm.c, 0.1F));
+      $$0.a(N, new bkp("explosion.player", bkm.c, 0.1F));
+      $$0.a(O, new bkp("sonic_boom", bkm.c, 0.0F));
+      $$0.a(P, new bkp("badRespawnPoint", bkm.c, 0.1F, bkl.a, bkr.c));
+      $$0.a(Q, new bkp("outsideBorder", 0.0F));
+      $$0.a(R, new bkp("genericKill", 0.0F));
    }
 }

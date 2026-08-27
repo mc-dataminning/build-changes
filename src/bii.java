@@ -1,53 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-public class bii extends biq {
-   public static final Codec<bii> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bii::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final int b;
-   private final int f;
-
-   private bii(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+public class bii {
+   private bii() {
    }
 
-   public static bii a(int $$0, int $$1) {
-      return new bii($$0, $$1);
+   public static int a(List<? extends bih> $$0) {
+      long $$1 = 0L;
+
+      for (bih $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
+      }
    }
 
-   @Override
-   public int a(auf $$0) {
-      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
+   public static <T extends bih> Optional<T> a(aup $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
    }
 
-   @Override
-   public int a() {
-      return this.b;
+   public static <T extends bih> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bir<?> c() {
-      return bir.c;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+   public static <T extends bih> Optional<T> a(aup $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

@@ -1,95 +1,70 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class wj implements vc {
-   private static final String d = "*";
+public class wj implements ve {
+   private static final Logger d = LogUtils.getLogger();
    public static final MapCodec<wj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(wj::b), Codec.STRING.fieldOf("objective").forGetter(wj::d)).apply($$0, wj::new)
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("nbt").forGetter(wj::b),
+               Codec.BOOL.optionalFieldOf("interpret", false).forGetter(wj::c),
+               vf.a.optionalFieldOf("separator").forGetter(wj::d),
+               wf.c.forGetter(wj::e)
+            )
+            .apply($$0, wj::new)
    );
-   public static final MapCodec<wj> b = a.fieldOf("score");
-   public static final vc.a<wj> c = new vc.a<>(b, "score");
-   private final String e;
-   @Nullable
-   private final gc f;
+   public static final ve.a<wj> b = new ve.a<>(a, "nbt");
+   private final boolean e;
+   private final Optional<vd> f;
    private final String g;
+   private final wf h;
+   @Nullable
+   protected final ek.g c;
+
+   public wj(String $$0, boolean $$1, Optional<vd> $$2, wf $$3) {
+      this($$0, a($$0), $$1, $$2, $$3);
+   }
+
+   private wj(String $$0, @Nullable ek.g $$1, boolean $$2, Optional<vd> $$3, wf $$4) {
+      this.g = $$0;
+      this.c = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.h = $$4;
+   }
 
    @Nullable
-   private static gc a(String $$0) {
+   private static ek.g a(String $$0) {
       try {
-         return new gd(new StringReader($$0)).t();
+         return new ek().a(new StringReader($$0));
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
-   public wj(String $$0, String $$1) {
-      this.e = $$0;
-      this.f = a($$0);
-      this.g = $$1;
-   }
-
-   @Override
-   public vc.a<?> a() {
-      return c;
-   }
-
    public String b() {
-      return this.e;
-   }
-
-   @Nullable
-   public gc c() {
-      return this.f;
-   }
-
-   public String d() {
       return this.g;
    }
 
-   private String a(ds $$0) throws CommandSyntaxException {
-      if (this.f != null) {
-         List<? extends blf> $$1 = this.f.b($$0);
-         if (!$$1.isEmpty()) {
-            if ($$1.size() != 1) {
-               throw ee.a.create();
-            }
-
-            return $$1.get(0).cy();
-         }
-      }
-
+   public boolean c() {
       return this.e;
    }
 
-   private String a(String $$0, ds $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         ema $$3 = $$2.aH();
-         elx $$4 = $$3.b(this.g);
-         if ($$4 != null && $$3.b($$0, $$4)) {
-            elz $$5 = $$3.c($$0, $$4);
-            return Integer.toString($$5.b());
-         }
-      }
-
-      return "";
+   public Optional<vd> d() {
+      return this.f;
    }
 
-   @Override
-   public vp a(@Nullable ds $$0, @Nullable blf $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return vb.i();
-      } else {
-         String $$3 = this.a($$0);
-         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cy() : $$3;
-         return vb.b(this.a($$4, $$0));
-      }
+   public wf e() {
+      return this.h;
    }
 
    @Override
@@ -97,7 +72,7 @@ public class wj implements vc {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof wj $$1 && this.e.equals($$1.e) && this.g.equals($$1.g)) {
+         if ($$0 instanceof wj $$1 && this.h.equals($$1.h) && this.f.equals($$1.f) && this.e == $$1.e && this.g.equals($$1.g)) {
             return true;
          }
 
@@ -107,12 +82,50 @@ public class wj implements vc {
 
    @Override
    public int hashCode() {
-      int $$0 = this.e.hashCode();
-      return 31 * $$0 + this.g.hashCode();
+      int $$0 = this.e ? 1 : 0;
+      $$0 = 31 * $$0 + this.f.hashCode();
+      $$0 = 31 * $$0 + this.g.hashCode();
+      return 31 * $$0 + this.h.hashCode();
    }
 
    @Override
    public String toString() {
-      return "score{name='" + this.e + "', objective='" + this.g + "'}";
+      return "nbt{" + this.h + ", interpreting=" + this.e + ", separator=" + this.f + "}";
+   }
+
+   @Override
+   public vr a(@Nullable ds $$0, @Nullable blp $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 != null && this.c != null) {
+         Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
+            try {
+               return this.c.a($$0x).stream();
+            } catch (CommandSyntaxException var3x) {
+               return Stream.empty();
+            }
+         }).map(ti::t_);
+         if (this.e) {
+            vd $$4 = (vd)DataFixUtils.orElse(vg.a($$0, this.f, $$1, $$2), vg.c);
+            return $$3.flatMap($$3x -> {
+               try {
+                  vr $$4x = vd.a.a($$3x);
+                  return Stream.of(vg.a($$0, $$4x, $$1, $$2));
+               } catch (Exception var5x) {
+                  d.warn("Failed to parse component: {}", $$3x, var5x);
+                  return Stream.of();
+               }
+            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(vd::i);
+         } else {
+            return vg.a($$0, this.f, $$1, $$2)
+               .map($$1x -> $$3.map(vd::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(vd::i))
+               .orElseGet(() -> vd.b($$3.collect(Collectors.joining(", "))));
+         }
+      } else {
+         return vd.i();
+      }
+   }
+
+   @Override
+   public ve.a<?> a() {
+      return b;
    }
 }

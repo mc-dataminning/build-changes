@@ -1,59 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+public abstract class cuo {
+   public static final ahc<cuh> a = a("the_void");
+   public static final ahc<cuh> b = a("plains");
+   public static final ahc<cuh> c = a("sunflower_plains");
+   public static final ahc<cuh> d = a("snowy_plains");
+   public static final ahc<cuh> e = a("ice_spikes");
+   public static final ahc<cuh> f = a("desert");
+   public static final ahc<cuh> g = a("swamp");
+   public static final ahc<cuh> h = a("mangrove_swamp");
+   public static final ahc<cuh> i = a("forest");
+   public static final ahc<cuh> j = a("flower_forest");
+   public static final ahc<cuh> k = a("birch_forest");
+   public static final ahc<cuh> l = a("dark_forest");
+   public static final ahc<cuh> m = a("old_growth_birch_forest");
+   public static final ahc<cuh> n = a("old_growth_pine_taiga");
+   public static final ahc<cuh> o = a("old_growth_spruce_taiga");
+   public static final ahc<cuh> p = a("taiga");
+   public static final ahc<cuh> q = a("snowy_taiga");
+   public static final ahc<cuh> r = a("savanna");
+   public static final ahc<cuh> s = a("savanna_plateau");
+   public static final ahc<cuh> t = a("windswept_hills");
+   public static final ahc<cuh> u = a("windswept_gravelly_hills");
+   public static final ahc<cuh> v = a("windswept_forest");
+   public static final ahc<cuh> w = a("windswept_savanna");
+   public static final ahc<cuh> x = a("jungle");
+   public static final ahc<cuh> y = a("sparse_jungle");
+   public static final ahc<cuh> z = a("bamboo_jungle");
+   public static final ahc<cuh> A = a("badlands");
+   public static final ahc<cuh> B = a("eroded_badlands");
+   public static final ahc<cuh> C = a("wooded_badlands");
+   public static final ahc<cuh> D = a("meadow");
+   public static final ahc<cuh> E = a("cherry_grove");
+   public static final ahc<cuh> F = a("grove");
+   public static final ahc<cuh> G = a("snowy_slopes");
+   public static final ahc<cuh> H = a("frozen_peaks");
+   public static final ahc<cuh> I = a("jagged_peaks");
+   public static final ahc<cuh> J = a("stony_peaks");
+   public static final ahc<cuh> K = a("river");
+   public static final ahc<cuh> L = a("frozen_river");
+   public static final ahc<cuh> M = a("beach");
+   public static final ahc<cuh> N = a("snowy_beach");
+   public static final ahc<cuh> O = a("stony_shore");
+   public static final ahc<cuh> P = a("warm_ocean");
+   public static final ahc<cuh> Q = a("lukewarm_ocean");
+   public static final ahc<cuh> R = a("deep_lukewarm_ocean");
+   public static final ahc<cuh> S = a("ocean");
+   public static final ahc<cuh> T = a("deep_ocean");
+   public static final ahc<cuh> U = a("cold_ocean");
+   public static final ahc<cuh> V = a("deep_cold_ocean");
+   public static final ahc<cuh> W = a("frozen_ocean");
+   public static final ahc<cuh> X = a("deep_frozen_ocean");
+   public static final ahc<cuh> Y = a("mushroom_fields");
+   public static final ahc<cuh> Z = a("dripstone_caves");
+   public static final ahc<cuh> aa = a("lush_caves");
+   public static final ahc<cuh> ab = a("deep_dark");
+   public static final ahc<cuh> ac = a("nether_wastes");
+   public static final ahc<cuh> ad = a("warped_forest");
+   public static final ahc<cuh> ae = a("crimson_forest");
+   public static final ahc<cuh> af = a("soul_sand_valley");
+   public static final ahc<cuh> ag = a("basalt_deltas");
+   public static final ahc<cuh> ah = a("the_end");
+   public static final ahc<cuh> ai = a("end_highlands");
+   public static final ahc<cuh> aj = a("end_midlands");
+   public static final ahc<cuh> ak = a("small_end_islands");
+   public static final ahc<cuh> al = a("end_barrens");
 
-public class cuo extends cub {
-   public static final Codec<cuo> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(agr.d(cue.ah), agr.d(cue.ai), agr.d(cue.aj), agr.d(cue.ak), agr.d(cue.al)).apply($$0, $$0.stable(cuo::new))
-   );
-   private final ie<ctx> c;
-   private final ie<ctx> d;
-   private final ie<ctx> e;
-   private final ie<ctx> f;
-   private final ie<ctx> g;
-
-   public static cuo a(ig<ctx> $$0) {
-      return new cuo($$0.b(cue.ah), $$0.b(cue.ai), $$0.b(cue.aj), $$0.b(cue.ak), $$0.b(cue.al));
-   }
-
-   private cuo(ie<ctx> $$0, ie<ctx> $$1, ie<ctx> $$2, ie<ctx> $$3, ie<ctx> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   @Override
-   protected Stream<ie<ctx>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
-   }
-
-   @Override
-   protected Codec<? extends cub> a() {
-      return b;
-   }
-
-   @Override
-   public ie<ctx> getNoiseBiome(int $$0, int $$1, int $$2, cug.f $$3) {
-      int $$4 = iq.c($$0);
-      int $$5 = iq.c($$1);
-      int $$6 = iq.c($$2);
-      int $$7 = ix.a($$4);
-      int $$8 = ix.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (ix.a($$4) * 2 + 1) * 8;
-         int $$10 = (ix.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new dnr.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
-         }
-      }
+   private static ahc<cuh> a(String $$0) {
+      return ahc.a(ke.at, new ahd($$0));
    }
 }

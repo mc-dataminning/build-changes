@@ -1,67 +1,57 @@
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class etp extends etk {
+public class etp {
+   private static final Map<String, etp.a> a = Maps.newHashMap();
    private static final Logger b = LogUtils.getLogger();
-   private static final vb c = vb.c("mco.backup.restoring");
-   private final epz d;
-   private final long e;
-   private final ert f;
+   private static final ahd c = new ahd("textures/gui/presets/isles.png");
 
-   public etp(epz $$0, long $$1, ert $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static ahd a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   @Override
-   public void run() {
-      ept $$0 = ept.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.f());
-            return;
-         } catch (erh var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (erg var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var5);
-            a(new erx(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
+   private static ahd b(String $$0, String $$1) {
+      etp.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         eou $$3 = a($$1);
+         if ($$3 == null) {
+            ahd $$4 = gdv.b();
+            a.put($$0, new etp.a($$1, $$4));
+            return $$4;
+         } else {
+            ahd $$5 = new ahd("realms", "dynamic/" + $$0);
+            eva.N().X().a($$5, new gds($$3));
+            a.put($$0, new etp.a($$1, $$5));
+            return $$5;
          }
       }
    }
 
-   @Override
-   public vb a() {
-      return c;
+   @Nullable
+   private static eou a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return eou.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
+   }
+
+   public static record a(String a, ahd b) {
    }
 }

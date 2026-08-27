@@ -1,37 +1,32 @@
-public interface eyp {
-   Object b = new Object();
-   int c = 32;
+import java.util.Locale;
 
-   eyp.a a(evw var1, eyq var2, long var3);
+public class eyp extends eym {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private static final int i = 500;
 
-   default Object d() {
-      return b;
+   public eyp(ewk $$0, aur $$1) {
+      super($$0, $$1);
    }
 
-   default int a() {
-      return 160;
+   @Override
+   protected void a(ewm $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
    }
 
-   default int b() {
-      return 32;
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
    }
 
-   default int e() {
-      return aty.e(this.b(), 32);
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round($$0 * 60.0 / 500.0);
    }
 
-   public static enum a {
-      a(arc.zB),
-      b(arc.zC);
-
-      private final arb c;
-
-      private a(arb $$0) {
-         this.c = $$0;
-      }
-
-      public void a(gia $$0) {
-         $$0.a(ggr.a(this.c, 1.0F, 1.0F));
-      }
+   @Override
+   protected int a(long $$0) {
+      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
    }
 }

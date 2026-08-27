@@ -1,36 +1,28 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eis extends eiu {
-   public static final Codec<eis> a = a(eis::new);
+public class eis extends eib {
+   public static final Codec<eis> a = RecordCodecBuilder.create($$0 -> a($$0).and(kd.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eis::new));
+   private final ih<cop> b;
 
-   eis(List<ejd> $$0) {
-      super($$0, ejf.b($$0));
+   private eis(List<ejo> $$0, ih<cop> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public eje b() {
-      return ejf.c;
+   public eid b() {
+      return eie.z;
    }
 
-   public static eis.a a(ejd.a... $$0) {
-      return new eis.a($$0);
+   @Override
+   public cmr a(cmr $$0, egp $$1) {
+      cor.a($$0, this.b.a());
+      return $$0;
    }
 
-   public static class a extends eiu.a {
-      public a(ejd.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public eis.a or(ejd.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected ejd a(List<ejd> $$0) {
-         return new eis($$0);
-      }
+   public static eib.a<?> a(cop $$0) {
+      return a($$1 -> new eis($$1, $$0.c()));
    }
 }

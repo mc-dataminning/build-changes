@@ -1,41 +1,64 @@
-public class fje<T extends bzd> extends fki<T> {
-   public fje(fly $$0) {
-      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
+import com.google.common.collect.ImmutableList;
+
+public class fje<T extends blp> extends fim<T> {
+   public static final String a = "red_thing";
+   private final fmp b;
+   private final fmp f;
+   private final fmp g;
+   private final fmp h;
+   private final fmp i;
+   private final fmp j;
+   private final fmp k;
+   private final fmp l;
+
+   public fje(fmp $$0) {
+      this.b = $$0.b("head");
+      this.k = $$0.b("beak");
+      this.l = $$0.b("red_thing");
+      this.f = $$0.b("body");
+      this.g = $$0.b("right_leg");
+      this.h = $$0.b("left_leg");
+      this.i = $$0.b("right_wing");
+      this.j = $$0.b("left_wing");
    }
 
-   public static fme c() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      fmh $$2 = $$1.a(
-         "head",
-         fmd.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         fma.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", fmd.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fma.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", fmd.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fma.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", fmd.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fma.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", fmd.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fma.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", fmd.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fma.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", fmd.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fma.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", fmd.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fma.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", fmd.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fma.a(-3.0F, 14.0F, -6.0F));
-      return fme.a($$0, 64, 64);
+   public static fmv c() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      int $$2 = 16;
+      $$1.a("head", fmu.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fmr.a(0.0F, 15.0F, -4.0F));
+      $$1.a("beak", fmu.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fmr.a(0.0F, 15.0F, -4.0F));
+      $$1.a("red_thing", fmu.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fmr.a(0.0F, 15.0F, -4.0F));
+      $$1.a("body", fmu.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fmr.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fmu $$3 = fmu.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$3, fmr.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$3, fmr.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", fmu.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fmr.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", fmu.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fmr.a(4.0F, 13.0F, 0.0F));
+      return fmv.a($$0, 64, 32);
    }
 
+   @Override
+   protected Iterable<fmp> a() {
+      return ImmutableList.of(this.b, this.k, this.l);
+   }
+
+   @Override
+   protected Iterable<fmp> b() {
+      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
+   }
+
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.b("left_horn").k = $$0.ge();
-      this.a.b("right_horn").k = $$0.gk();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.gp();
-      if ($$6 != 0.0F) {
-         this.a.e = $$6;
-      }
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.k.e = this.b.e;
+      this.k.f = this.b.f;
+      this.l.e = this.b.e;
+      this.l.f = this.b.f;
+      this.g.e = aui.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.h.e = aui.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.g = $$3;
+      this.j.g = -$$3;
    }
 }

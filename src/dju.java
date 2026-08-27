@@ -1,25 +1,27 @@
-public enum dju implements aut {
-   a("up"),
-   b("side"),
-   c("none");
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   private final String d;
-
-   private dju(String $$0) {
-      this.d = $$0;
+public class dju extends djy<ic> {
+   protected dju(String $$0, Collection<ic> $$1) {
+      super($$0, ic.class, $$1);
    }
 
-   @Override
-   public String toString() {
-      return this.c();
+   public static dju a(String $$0) {
+      return a($$0, $$0x -> true);
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public static dju a(String $$0, Predicate<ic> $$1) {
+      return a($$0, Arrays.stream(ic.values()).filter($$1).collect(Collectors.toList()));
    }
 
-   public boolean a() {
-      return this != c;
+   public static dju a(String $$0, ic... $$1) {
+      return a($$0, Lists.newArrayList($$1));
+   }
+
+   public static dju a(String $$0, Collection<ic> $$1) {
+      return new dju($$0, $$1);
    }
 }

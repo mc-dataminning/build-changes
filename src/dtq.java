@@ -1,13 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dtq implements dtg {
-   public static final Codec<dtq> k = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, dtq::new)
+public class dtq implements dtr {
+   public static final Codec<dtq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hx.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dtq::new)
    );
-   public final float l;
+   private final Optional<hx> b;
+   private final boolean c;
 
-   public dtq(float $$0) {
-      this.l = $$0;
+   private dtq(Optional<hx> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static dtq a(hx $$0, boolean $$1) {
+      return new dtq(Optional.of($$0), $$1);
+   }
+
+   public static dtq a() {
+      return new dtq(Optional.empty(), false);
+   }
+
+   public Optional<hx> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

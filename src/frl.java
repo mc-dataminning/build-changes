@@ -1,88 +1,118 @@
-import com.mojang.authlib.GameProfile;
-
-public class frl extends frh {
-   private elb cm = elb.b;
-   private int cn;
-
-   public frl(fmt $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.t(1.0F);
-      this.af = true;
+public class frl extends frn {
+   frl(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cA();
-      return $$0 < $$1 * $$1;
+   public fqr b() {
+      return fqr.b;
    }
 
    @Override
-   public boolean a(bkd $$0, float $$1) {
-      return true;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
-   public void l() {
-      super.l();
-      this.q(false);
-   }
-
-   @Override
-   public void d_() {
-      if (this.bn > 0) {
-         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
-         this.bn--;
-      }
-
-      if (this.bu > 0) {
-         this.a(this.bu, this.bt);
-         this.bu--;
-      }
-
-      if (this.cn > 0) {
-         this.h(new elb((this.cm.c - this.dp().c) / (double)this.cn, (this.cm.d - this.dp().d) / (double)this.cn, (this.cm.e - this.dp().e) / (double)this.cn));
-         this.cn--;
-      }
-
-      this.bV = this.bW;
-      this.eQ();
-      float $$1;
-      if (this.aC() && !this.ew()) {
-         $$1 = (float)Math.min(0.1, this.dp().h());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         $$1 = 0.0F;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
+      }
+   }
+
+   public static class a implements fqq<ka> {
+      private final fri a;
+
+      public a(fri $$0) {
+         this.a = $$0;
       }
 
-      this.bW = this.bW + ($$1 - this.bW) * 0.4F;
-      this.dM().ae().a("push");
-      this.M_();
-      this.dM().ae().c();
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         frl $$8 = new frl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.F_().a(5));
+         return $$8;
+      }
    }
 
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.cm = new elb($$0, $$1, $$2);
-      this.cn = this.ai().p() + 1;
+   public static class b implements fqq<ka> {
+      private final fri a;
+
+      public b(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         frl $$8 = new frl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.z.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
    }
 
-   @Override
-   protected void fM() {
+   public static class c implements fqq<ka> {
+      private final fri a;
+
+      public c(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         frl $$8 = new frl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
    }
 
-   @Override
-   public void a(vb $$0) {
-      euk $$1 = euk.N();
-      $$1.l.d().a($$0);
+   public static class d implements fqq<ka> {
+      private final fri a;
+
+      public d(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         frl $$8 = new frl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
    }
 
-   @Override
-   public void a(yp $$0) {
-      super.a($$0);
-      this.bp();
+   public static class e implements fqq<ka> {
+      private final fri a;
+
+      public e(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         frl $$8 = new frl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

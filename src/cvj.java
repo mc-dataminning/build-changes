@@ -1,72 +1,110 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class cvj extends cvz implements dcz {
-   public static final djg d = djf.C;
-   private static final elu a = cvz.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public class cvj extends czf {
+   public static final MapCodec<cvj> a = b(cvj::new);
+   public static final dju b = dae.aE;
+   private static final emf c = cwj.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+   private static final emf d = cwj.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
+   private static final emf e = cwj.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
+   private static final emf f = cwj.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
+   private static final emf g = cwj.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
+   private static final emf h = cwj.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
+   private static final emf i = cwj.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
+   private static final emf j = emc.a(c, d, e, f);
+   private static final emf k = emc.a(c, g, h, i);
+   private static final vd l = vd.c("container.repair");
+   private static final float m = 2.0F;
+   private static final int n = 40;
 
-   protected cvj(dio.d $$0) {
+   @Override
+   public MapCodec<cvj> a() {
+      return a;
+   }
+
+   public cvj(diz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
+      this.k(this.E.b().a(b, ic.c));
    }
 
    @Override
-   protected abstract MapCodec<? extends cvj> a();
-
-   protected void a(dip $$0, csz $$1, hv $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.F_().a(40));
-      }
+   public dja a(cpa $$0) {
+      return this.o().a(b, $$0.g().h());
    }
 
-   protected static boolean e(dip $$0, cse $$1, hv $$2) {
-      if ($$0.c(d)) {
-         return true;
+   @Override
+   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
+      if ($$1.B) {
+         return bjv.a;
       } else {
-         for (ia $$3 : ia.values()) {
-            if ($$1.b_($$2.a($$3)).a(arw.a)) {
-               return true;
-            }
-         }
-
-         return false;
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(arw.aC);
+         return bjv.b;
       }
    }
 
    @Nullable
    @Override
-   public dip a(coq $$0) {
-      edz $$1 = $$0.q().b_($$0.a());
-      return this.o().a(d, Boolean.valueOf($$1.a(arw.a) && $$1.e() == 8));
+   public bjy b(dja $$0, cti $$1, hx $$2) {
+      return new bke(($$2x, $$3, $$4) -> new chw($$2x, $$3, cif.a($$1, $$2)), l);
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return a;
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      ic $$4 = $$0.c(b);
+      return $$4.o() == ic.a.a ? j : k;
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eea.c, eea.c.a($$3));
+   protected void a(cbn $$0) {
+      $$0.b(2.0F, 40);
+   }
+
+   @Override
+   public void a(cti $$0, hx $$1, dja $$2, dja $$3, cbn $$4) {
+      if (!$$4.aU()) {
+         $$0.c(1031, $$1, 0);
       }
-
-      return $$1 == ia.a && !this.a($$0, (ctb)$$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dip $$0, ctb $$1, hv $$2) {
-      hv $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, ia.b);
+   public void a(cti $$0, hx $$1, cbn $$2) {
+      if (!$$2.aU()) {
+         $$0.c(1029, $$1, 0);
+      }
    }
 
    @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(d);
+   public bkn a(blp $$0) {
+      return $$0.dN().b($$0);
+   }
+
+   @Nullable
+   public static dja e(dja $$0) {
+      if ($$0.a(cwl.gS)) {
+         return cwl.gT.o().a(b, $$0.c(b));
+      } else {
+         return $$0.a(cwl.gT) ? cwl.gU.o().a(b, $$0.c(b)) : null;
+      }
    }
 
    @Override
-   public edz c_(dip $$0) {
-      return $$0.c(d) ? eea.c.a(false) : super.c_($$0);
+   public dja a(dja $$0, dcv $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
+      return false;
+   }
+
+   @Override
+   public int b(dja $$0, cso $$1, hx $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

@@ -1,13 +1,20 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public interface alf {
-   void a(sj var1) throws CommandSyntaxException;
+public class alf {
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("tellraw").requires($$0x -> $$0x.c(2)))
+            .then(dt.a("targets", ef.d()).then(dt.a("message", eb.a()).executes($$0x -> {
+               int $$1 = 0;
 
-   sj a() throws CommandSyntaxException;
+               for (ana $$2 : ef.f($$0x, "targets")) {
+                  $$2.b(vg.a((ds)$$0x.getSource(), eb.a($$0x, "message"), $$2, 0), false);
+                  $$1++;
+               }
 
-   vb b();
-
-   vb a(tg var1);
-
-   vb a(ej.g var1, double var2, int var4);
+               return $$1;
+            })))
+      );
+   }
 }

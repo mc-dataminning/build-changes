@@ -1,26 +1,45 @@
-public class gcd<T extends blv> extends gbz<T, fkw<T>> {
-   private final fiy<T> a;
+public class gcd extends gcq<byc, fjr<byc>> {
+   private final fsv a;
 
-   public gcd(fzj<T, fkw<T>> $$0, flu $$1) {
+   public gcd(gaa<byc, fjr<byc>> $$0, fsv $$1) {
       super($$0);
-      this.a = new fkw<>($$1.a(flx.bq));
+      this.a = $$1;
    }
 
-   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      euk $$10 = euk.N();
-      boolean $$11 = $$10.b($$3) && $$3.ce();
-      if (!$$3.ce() || $$11) {
-         eph $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(fsq.r(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(fsq.i(this.a($$3)));
-         }
-
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, fyp.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(ept $$0, fsz $$1, int $$2, byc $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fD();
+      boolean $$11 = $$3.o_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
       }
+
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.E($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.o_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
+
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
+
+      cmr $$14 = $$3.c(blu.a);
+      this.a.a($$3, $$14, cmo.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

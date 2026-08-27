@@ -1,47 +1,96 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Collection;
-import java.util.Optional;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public class djg extends djs<Boolean> {
-   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
+public class djg {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dje>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   protected djg(String $$0) {
-      super($$0, Boolean.class);
+   private djg() {
+      this.c.put(' ', $$0 -> true);
    }
 
-   @Override
-   public Collection<Boolean> a() {
-      return this.a;
-   }
-
-   public static djg a(String $$0) {
-      return new djg($$0);
-   }
-
-   @Override
-   public Optional<Boolean> b(String $$0) {
-      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof djg $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
+   public djg a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
          }
 
-         return false;
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
+         } else {
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
+
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
+                  }
+               }
+            }
+
+            this.b.add($$0);
+            return this;
+         }
+      } else {
+         throw new IllegalArgumentException("Empty pattern for aisle");
       }
    }
 
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
+   public static djg a() {
+      return new djg();
+   }
+
+   public djg a(char $$0, Predicate<dje> $$1) {
+      this.c.put($$0, $$1);
+      return this;
+   }
+
+   public djf b() {
+      return new djf(this.c());
+   }
+
+   private Predicate<dje>[][][] c() {
+      this.d();
+      Predicate<dje>[][][] $$0 = (Predicate<dje>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
+
+      for (Entry<Character, Predicate<dje>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
+      }
+
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+      }
    }
 }

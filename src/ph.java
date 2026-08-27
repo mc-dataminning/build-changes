@@ -1,24 +1,42 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class ph {
-   public static final ags<dzx> a = a("empty");
+   public static final ahc<eai> a = pj.a("pillager_outpost/base_plates");
 
-   public static ags<dzx> a(String $$0) {
-      return ags.a(kc.aF, new agt($$0));
-   }
-
-   public static void a(pa<dzx> $$0, String $$1, dzx $$2) {
-      $$0.a(a($$1), $$2);
-   }
-
-   public static void a(pa<dzx> $$0) {
-      ig<dzx> $$1 = $$0.a(kc.aF);
-      ie<dzx> $$2 = $$1.b(a);
-      $$0.a(a, new dzx($$2, ImmutableList.of(), dzx.a.b));
-      ow.a($$0);
-      pf.a($$0);
-      pw.a($$0);
-      or.a($$0);
-      pq.a($$0);
+   public static void a(pc<eai> $$0) {
+      ii<ecx> $$1 = $$0.a(ke.aE);
+      ih<ecx> $$2 = $$1.b(pk.q);
+      ii<eai> $$3 = $$0.a(ke.aG);
+      ih<eai> $$4 = $$3.b(pj.a);
+      $$0.a(a, new eai($$4, ImmutableList.of(Pair.of(eag.a("pillager_outpost/base_plate"), 1)), eai.a.b));
+      pj.a(
+         $$0,
+         "pillager_outpost/towers",
+         new eai(
+            $$4,
+            ImmutableList.of(Pair.of(eag.b(ImmutableList.of(eag.a("pillager_outpost/watchtower"), eag.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            eai.a.b
+         )
+      );
+      pj.a($$0, "pillager_outpost/feature_plates", new eai($$4, ImmutableList.of(Pair.of(eag.a("pillager_outpost/feature_plate"), 1)), eai.a.a));
+      pj.a(
+         $$0,
+         "pillager_outpost/features",
+         new eai(
+            $$4,
+            ImmutableList.of(
+               Pair.of(eag.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(eag.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(eag.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(eag.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(eag.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(eag.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(eag.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(eag.g(), 6)
+            ),
+            eai.a.b
+         )
+      );
    }
 }

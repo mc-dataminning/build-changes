@@ -1,85 +1,60 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class ell {
+   public static final ell a = new ell(0.0F, 0.0F);
+   public static final ell b = new ell(1.0F, 1.0F);
+   public static final ell c = new ell(1.0F, 0.0F);
+   public static final ell d = new ell(-1.0F, 0.0F);
+   public static final ell e = new ell(0.0F, 1.0F);
+   public static final ell f = new ell(0.0F, -1.0F);
+   public static final ell g = new ell(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final ell h = new ell(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public class ell implements elg {
-   protected static final elg a = new ell(false, -Double.MAX_VALUE, cmh.f, $$0 -> false, null) {
-      @Override
-      public boolean a(elu $$0, hv $$1, boolean $$2) {
-         return $$2;
-      }
-   };
-   private final boolean b;
-   private final double c;
-   private final cmh d;
-   private final Predicate<edz> e;
-   @Nullable
-   private final blf f;
-
-   protected ell(boolean $$0, double $$1, cmh $$2, Predicate<edz> $$3, @Nullable blf $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public ell(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   @Deprecated
-   protected ell(blf $$0) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: aload 1
-      // 02: invokevirtual blf.bW ()Z
-      // 05: aload 1
-      // 06: invokevirtual blf.dt ()D
-      // 09: aload 1
-      // 0a: instanceof blv
-      // 0d: ifeq 1a
-      // 10: aload 1
-      // 11: checkcast blv
-      // 14: invokevirtual blv.eT ()Lcmh;
-      // 17: goto 1d
-      // 1a: getstatic cmh.f Lcmh;
-      // 1d: aload 1
-      // 1e: instanceof blv
-      // 21: ifeq 35
-      // 24: aload 1
-      // 25: checkcast blv
-      // 28: dup
-      // 29: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 2c: pop
-      // 2d: invokedynamic test (Lblv;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, blv.a (Ledz;)Z, (Ledz;)Z ]
-      // 32: goto 3a
-      // 35: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, ell.a (Ledz;)Z, (Ledz;)Z ]
-      // 3a: aload 1
-      // 3b: invokespecial ell.<init> (ZDLcmh;Ljava/util/function/Predicate;Lblf;)V
-      // 3e: return
+   public ell a(float $$0) {
+      return new ell(this.i * $$0, this.j * $$0);
    }
 
-   @Override
-   public boolean a(cmc $$0) {
-      return this.d.a($$0);
+   public float a(ell $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   @Override
-   public boolean a(edz $$0, edz $$1) {
-      return this.e.test($$1) && !$$0.a().a($$1.a());
+   public ell b(ell $$0) {
+      return new ell(this.i + $$0.i, this.j + $$0.j);
    }
 
-   @Override
-   public boolean b() {
-      return this.b;
+   public ell b(float $$0) {
+      return new ell(this.i + $$0, this.j + $$0);
    }
 
-   @Override
-   public boolean a(elu $$0, hv $$1, boolean $$2) {
-      return this.c > (double)$$1.v() + $$0.c(ia.a.b) - 1.0E-5F;
+   public boolean c(ell $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
    }
 
-   @Nullable
-   public blf c() {
-      return this.f;
+   public ell a() {
+      float $$0 = aui.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new ell(this.i / $$0, this.j / $$0);
+   }
+
+   public float b() {
+      return aui.c(this.i * this.i + this.j * this.j);
+   }
+
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
+
+   public float d(ell $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public ell d() {
+      return new ell(-this.i, -this.j);
    }
 }

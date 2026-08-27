@@ -1,24 +1,14 @@
-public class adm implements wu<acw> {
-   private final int a;
-
-   public adm(int $$0) {
-      this.a = $$0;
-   }
-
-   public void a(acw $$0) {
-      $$0.a(this);
-   }
-
-   public adm(ue $$0) {
-      this.a = $$0.readByte();
+public record adm(int a) implements xd<adg> {
+   public adm(ug $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.k(this.a);
+   public void a(ug $$0) {
+      $$0.c(this.a);
    }
 
-   public int a() {
-      return this.a;
+   public void a(adg $$0) {
+      $$0.a(this);
    }
 }

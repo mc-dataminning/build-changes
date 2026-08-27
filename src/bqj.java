@@ -1,39 +1,26 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bqj {
-   private static final int a = 60;
-
-   public static bnn<bme> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bqz.a(
-         (Function<bqz.b<bme>, ? extends App<bqz.c<bme>, brc<bme>>>)($$3 -> $$3.group($$3.c(bux.o), $$3.c(bux.m), $$3.a(bux.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dm()).a(arw.a)) {
+   public static bnx<bmf> a(int $$0, BiPredicate<bmf, bmf> $$1) {
+      return brj.a(
+         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$2 -> $$2.group($$2.b(bvh.o), $$2.a(bvh.aa), $$2.c(bvh.ah), $$2.a(bvh.ai))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bmf $$10 = $$2.b($$3);
+                     if (!$$10.ew()) {
                         return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
                      } else {
-                        hv $$8 = $$6.dm();
-                        hv.a $$9 = new hv.a();
-                        elg $$10 = elg.a($$6);
-
-                        for (hv $$11 : hv.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dip $$12 = $$5x.a_($$11);
-                              dip $$13 = $$5x.a_($$9.a($$11, ia.a));
-                              if (!$$12.a(cwb.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, ia.b)) {
-                                 hv $$14 = $$11.i();
-                                 $$5.a(new bnp($$14));
-                                 $$4.a(new bva(new bnp($$14), $$1, 1));
-                                 break;
-                              }
-                           }
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
                         }
 
-                        $$2.setValue($$7 + 60L);
+                        $$5.a($$10.dm(), (long)$$0);
+                        if ($$10.ai() != blt.bv || $$7.Z().b(cte.N)) {
+                           $$3.b();
+                           $$4.b();
+                        }
+
                         return true;
                      }
                   }))

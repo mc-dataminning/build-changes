@@ -1,52 +1,59 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public abstract class dqr extends drc<dtn> {
-   public dqr(Codec<dtn> $$0) {
+public class dqr extends drn<dub> {
+   private static final dja a = cwl.mZ.o().a(cvn.h, Integer.valueOf(1)).a(cvn.i, djm.a).a(cvn.j, Integer.valueOf(0));
+   private static final dja b = a.a(cvn.i, djm.c).a(cvn.j, Integer.valueOf(1));
+   private static final dja c = a.a(cvn.i, djm.c);
+   private static final dja d = a.a(cvn.i, djm.b);
+
+   public dqr(Codec<dub> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<dtn> $$0) {
-      auf $$1 = $$0.d();
-      ctt $$2 = $$0.b();
-      hv $$3 = $$0.e();
-      Optional<cvz> $$4 = kb.e.b(arr.ap).flatMap($$1x -> $$1x.a($$1)).map(ie::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
-   }
+   public boolean a(drp<dub> $$0) {
+      int $$1 = 0;
+      hx $$2 = $$0.e();
+      cud $$3 = $$0.b();
+      aup $$4 = $$0.d();
+      dub $$5 = $$0.f();
+      hx.a $$6 = $$2.j();
+      hx.a $$7 = $$2.j();
+      if ($$3.u($$6)) {
+         if (cwl.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-   protected abstract boolean a(csz var1, auf var2, hv var3, dip var4);
-
-   protected boolean b(csz $$0, auf $$1, hv $$2, dip $$3) {
-      hv $$4 = $$2.c();
-      dip $$5 = $$0.a_($$2);
-      if (($$5.a(cwb.G) || $$5.a(arr.as)) && $$0.a_($$4).a(cwb.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            kb.e.b(arr.as).flatMap($$1x -> $$1x.a($$1)).map(ie::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, cwb.mV.o().a(dcv.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
-
-         for (ia $$6 : ia.c.a) {
-            if ($$1.i() < 0.2F) {
-               hv $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(cwb.G)) {
-                  kb.e.b(arr.aq).flatMap($$1x -> $$1x.a($$1)).map(ie::a).ifPresent($$3x -> {
-                     dip $$4x = $$3x.o();
-                     if ($$4x.b(cvk.c)) {
-                        $$4x = $$4x.a(cvk.c, $$6);
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(doj.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, cwl.l.o(), 2);
+                        }
                      }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
+                  }
                }
+            }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(ic.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(ic.a, 1), c, 2);
+               $$3.a($$6.c(ic.a, 1), d, 2);
             }
          }
 
-         return true;
-      } else {
-         return false;
+         $$1++;
       }
+
+      return $$1 > 0;
    }
 }

@@ -1,29 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dra extends drc<dtn> {
-   public dra(Codec<dtn> $$0) {
-      super($$0);
+public record dra<FC extends dtr, F extends drn<FC>>(F d, FC e) {
+   public static final Codec<dra<?, ?>> a = kd.Q.q().dispatch($$0 -> $$0.d, drn::a);
+   public static final Codec<ih<dra<?, ?>>> b = agz.a(ke.aw, a);
+   public static final Codec<il<dra<?, ?>>> c = iv.a(ke.aw, a);
+
+   public boolean a(cud $$0, dkx $$1, aup $$2, hx $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<dra<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(dre<dtn> $$0) {
-      ctt $$1 = $$0.b();
-      auf $$2 = $$0.d();
-      hv $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = aty.d(-$$4); $$6 <= aty.f($$4); $$6++) {
-            for (int $$7 = aty.d(-$$4); $$7 <= aty.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), cwb.fz.o());
-               }
-            }
-         }
+   public F b() {
+      return this.d;
+   }
 
-         $$4 -= (float)$$2.a(2) + 0.5F;
-      }
-
-      return true;
+   public FC c() {
+      return this.e;
    }
 }

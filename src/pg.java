@@ -1,318 +1,72 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class pg {
-   public static final ags<dzx> a = ph.a("village/plains/town_centers");
-   private static final ags<dzx> b = ph.a("village/plains/terminators");
+   @Deprecated
+   public static final edn.a a = new edn.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(pa<dzx> $$0) {
-      ig<dxs> $$1 = $$0.a(kc.aB);
-      ie<dxs> $$2 = $$1.b(qx.f);
-      ie<dxs> $$3 = $$1.b(qx.k);
-      ie<dxs> $$4 = $$1.b(qx.a);
-      ig<ecm> $$5 = $$0.a(kc.aD);
-      ie<ecm> $$6 = $$5.b(pi.f);
-      ie<ecm> $$7 = $$5.b(pi.g);
-      ie<ecm> $$8 = $$5.b(pi.h);
-      ie<ecm> $$9 = $$5.b(pi.a);
-      ie<ecm> $$10 = $$5.b(pi.i);
-      ie<ecm> $$11 = $$5.b(pi.l);
-      ig<dzx> $$12 = $$0.a(kc.aF);
-      ie<dzx> $$13 = $$12.b(ph.a);
-      ie<dzx> $$14 = $$12.b(b);
-      $$0.a(
-         a,
-         new dzx(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
-               Pair.of(dzv.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
-               Pair.of(dzv.a("village/plains/town_centers/plains_meeting_point_2"), 50),
-               Pair.of(dzv.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
-               Pair.of(dzv.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
-               Pair.of(dzv.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
-               Pair.of(dzv.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
-               Pair.of(dzv.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a(
-         $$0,
-         "village/plains/streets",
-         new dzx(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/plains/streets/corner_01", $$10), 2),
-               Pair.of(dzv.a("village/plains/streets/corner_02", $$10), 2),
-               Pair.of(dzv.a("village/plains/streets/corner_03", $$10), 2),
-               Pair.of(dzv.a("village/plains/streets/straight_01", $$10), 4),
-               Pair.of(dzv.a("village/plains/streets/straight_02", $$10), 4),
-               Pair.of(dzv.a("village/plains/streets/straight_03", $$10), 7),
-               Pair.of(dzv.a("village/plains/streets/straight_04", $$10), 7),
-               Pair.of(dzv.a("village/plains/streets/straight_05", $$10), 3),
-               Pair.of(dzv.a("village/plains/streets/straight_06", $$10), 4),
-               Pair.of(dzv.a("village/plains/streets/crossroad_01", $$10), 2),
-               Pair.of(dzv.a("village/plains/streets/crossroad_02", $$10), 1),
-               Pair.of(dzv.a("village/plains/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(dzv.a("village/plains/streets/crossroad_04", $$10), 2),
-                  Pair.of(dzv.a("village/plains/streets/crossroad_05", $$10), 2),
-                  Pair.of(dzv.a("village/plains/streets/crossroad_06", $$10), 2),
-                  Pair.of(dzv.a("village/plains/streets/turn_01", $$10), 3)
-               }
-            ),
-            dzx.a.a
-         )
-      );
-      ph.a(
-         $$0,
-         "village/plains/zombie/streets",
-         new dzx(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/plains/zombie/streets/corner_01", $$10), 2),
-               Pair.of(dzv.a("village/plains/zombie/streets/corner_02", $$10), 2),
-               Pair.of(dzv.a("village/plains/zombie/streets/corner_03", $$10), 2),
-               Pair.of(dzv.a("village/plains/zombie/streets/straight_01", $$10), 4),
-               Pair.of(dzv.a("village/plains/zombie/streets/straight_02", $$10), 4),
-               Pair.of(dzv.a("village/plains/zombie/streets/straight_03", $$10), 7),
-               Pair.of(dzv.a("village/plains/zombie/streets/straight_04", $$10), 7),
-               Pair.of(dzv.a("village/plains/zombie/streets/straight_05", $$10), 3),
-               Pair.of(dzv.a("village/plains/zombie/streets/straight_06", $$10), 4),
-               Pair.of(dzv.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
-               Pair.of(dzv.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
-               Pair.of(dzv.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(dzv.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
-                  Pair.of(dzv.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
-                  Pair.of(dzv.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
-                  Pair.of(dzv.a("village/plains/zombie/streets/turn_01", $$10), 3)
-               }
-            ),
-            dzx.a.a
-         )
-      );
-      ph.a(
-         $$0,
-         "village/plains/houses",
-         new dzx(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/plains/houses/plains_small_house_1", $$6), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_small_house_2", $$6), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_small_house_3", $$6), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_small_house_4", $$6), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_small_house_5", $$6), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_small_house_6", $$6), 1),
-               Pair.of(dzv.a("village/plains/houses/plains_small_house_7", $$6), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_small_house_8", $$6), 3),
-               Pair.of(dzv.a("village/plains/houses/plains_medium_house_1", $$6), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_medium_house_2", $$6), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_big_house_1", $$6), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
-               new Pair[]{
-                  Pair.of(dzv.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_shepherds_house_1"), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_tannery_1", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_cartographer_1", $$6), 1),
-                  Pair.of(dzv.a("village/plains/houses/plains_library_1", $$6), 5),
-                  Pair.of(dzv.a("village/plains/houses/plains_library_2", $$6), 1),
-                  Pair.of(dzv.a("village/plains/houses/plains_masons_house_1", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_temple_3", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_temple_4", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_stable_1", $$6), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_stable_2"), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_large_farm_1", $$11), 4),
-                  Pair.of(dzv.a("village/plains/houses/plains_small_farm_1", $$11), 4),
-                  Pair.of(dzv.a("village/plains/houses/plains_animal_pen_1"), 1),
-                  Pair.of(dzv.a("village/plains/houses/plains_animal_pen_2"), 1),
-                  Pair.of(dzv.a("village/plains/houses/plains_animal_pen_3"), 5),
-                  Pair.of(dzv.a("village/plains/houses/plains_accessory_1"), 1),
-                  Pair.of(dzv.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
-                  Pair.of(dzv.a("village/plains/houses/plains_meeting_point_5"), 1),
-                  Pair.of(dzv.g(), 10)
-               }
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a(
-         $$0,
-         "village/plains/zombie/houses",
-         new dzx(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
-               Pair.of(dzv.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
-               Pair.of(dzv.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
-               new Pair[]{
-                  Pair.of(dzv.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
-                  Pair.of(dzv.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
-                  Pair.of(dzv.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_tannery_1", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_cartographer_1", $$9), 1),
-                  Pair.of(dzv.a("village/plains/houses/plains_library_1", $$9), 3),
-                  Pair.of(dzv.a("village/plains/houses/plains_library_2", $$9), 1),
-                  Pair.of(dzv.a("village/plains/houses/plains_masons_house_1", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_temple_3", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_temple_4", $$9), 2),
-                  Pair.of(dzv.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_stable_2", $$9), 2),
-                  Pair.of(dzv.a("village/plains/houses/plains_large_farm_1", $$9), 4),
-                  Pair.of(dzv.a("village/plains/houses/plains_small_farm_1", $$9), 4),
-                  Pair.of(dzv.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
-                  Pair.of(dzv.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
-                  Pair.of(dzv.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
-                  Pair.of(dzv.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
-                  Pair.of(dzv.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
-                  Pair.of(dzv.g(), 10)
-               }
-            ),
-            dzx.a.b
-         )
-      );
-      $$0.a(
-         b,
-         new dzx(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/plains/terminators/terminator_01", $$10), 1),
-               Pair.of(dzv.a("village/plains/terminators/terminator_02", $$10), 1),
-               Pair.of(dzv.a("village/plains/terminators/terminator_03", $$10), 1),
-               Pair.of(dzv.a("village/plains/terminators/terminator_04", $$10), 1)
-            ),
-            dzx.a.a
-         )
-      );
-      ph.a($$0, "village/plains/trees", new dzx($$13, ImmutableList.of(Pair.of(dzv.a($$2), 1)), dzx.a.b));
-      ph.a(
-         $$0,
-         "village/plains/decor",
-         new dzx(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/plains/plains_lamp_1"), 2), Pair.of(dzv.a($$2), 1), Pair.of(dzv.a($$3), 1), Pair.of(dzv.a($$4), 1), Pair.of(dzv.g(), 2)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a(
-         $$0,
-         "village/plains/zombie/decor",
-         new dzx(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/plains/plains_lamp_1", $$9), 1),
-               Pair.of(dzv.a($$2), 1),
-               Pair.of(dzv.a($$3), 1),
-               Pair.of(dzv.a($$4), 1),
-               Pair.of(dzv.g(), 2)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a(
-         $$0,
-         "village/plains/villagers",
-         new dzx(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/plains/villagers/nitwit"), 1),
-               Pair.of(dzv.a("village/plains/villagers/baby"), 1),
-               Pair.of(dzv.a("village/plains/villagers/unemployed"), 10)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a(
-         $$0,
-         "village/plains/zombie/villagers",
-         new dzx(
-            $$13,
-            ImmutableList.of(Pair.of(dzv.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(dzv.a("village/plains/zombie/villagers/unemployed"), 10)),
-            dzx.a.b
-         )
-      );
-      ph.a(
-         $$0,
-         "village/common/animals",
-         new dzx(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/common/animals/cows_1"), 7),
-               Pair.of(dzv.a("village/common/animals/pigs_1"), 7),
-               Pair.of(dzv.a("village/common/animals/horses_1"), 1),
-               Pair.of(dzv.a("village/common/animals/horses_2"), 1),
-               Pair.of(dzv.a("village/common/animals/horses_3"), 1),
-               Pair.of(dzv.a("village/common/animals/horses_4"), 1),
-               Pair.of(dzv.a("village/common/animals/horses_5"), 1),
-               Pair.of(dzv.a("village/common/animals/sheep_1"), 1),
-               Pair.of(dzv.a("village/common/animals/sheep_2"), 1),
-               Pair.of(dzv.g(), 5)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a(
-         $$0,
-         "village/common/sheep",
-         new dzx($$13, ImmutableList.of(Pair.of(dzv.a("village/common/animals/sheep_1"), 1), Pair.of(dzv.a("village/common/animals/sheep_2"), 1)), dzx.a.b)
-      );
-      ph.a(
-         $$0,
-         "village/common/cats",
-         new dzx(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/common/animals/cat_black"), 1),
-               Pair.of(dzv.a("village/common/animals/cat_british"), 1),
-               Pair.of(dzv.a("village/common/animals/cat_calico"), 1),
-               Pair.of(dzv.a("village/common/animals/cat_persian"), 1),
-               Pair.of(dzv.a("village/common/animals/cat_ragdoll"), 1),
-               Pair.of(dzv.a("village/common/animals/cat_red"), 1),
-               Pair.of(dzv.a("village/common/animals/cat_siamese"), 1),
-               Pair.of(dzv.a("village/common/animals/cat_tabby"), 1),
-               Pair.of(dzv.a("village/common/animals/cat_white"), 1),
-               Pair.of(dzv.a("village/common/animals/cat_jellie"), 1),
-               Pair.of(dzv.g(), 3)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a(
-         $$0,
-         "village/common/butcher_animals",
-         new dzx(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dzv.a("village/common/animals/cows_1"), 3),
-               Pair.of(dzv.a("village/common/animals/pigs_1"), 3),
-               Pair.of(dzv.a("village/common/animals/sheep_1"), 1),
-               Pair.of(dzv.a("village/common/animals/sheep_2"), 1)
-            ),
-            dzx.a.b
-         )
-      );
-      ph.a($$0, "village/common/iron_golem", new dzx($$13, ImmutableList.of(Pair.of(dzv.a("village/common/iron_golem"), 1)), dzx.a.b));
-      ph.a($$0, "village/common/well_bottoms", new dzx($$13, ImmutableList.of(Pair.of(dzv.a("village/common/well_bottom"), 1)), dzx.a.b));
+   public static void a(pc<edn.a> $$0) {
+      a($$0, 0, dos.a, dos.b, dos.c, dos.d);
+      a($$0, -2, dos.e, dos.f, dos.g, dos.h);
+      a($$0, dos.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(dos.j, a);
+      a($$0, dos.k, -3, 1.0);
+      a($$0, dos.l, -7, 1.0);
+      a($$0, dos.m, -1, 1.0);
+      a($$0, dos.n, -5, 1.0);
+      a($$0, dos.o, -7, 1.0, 1.0);
+      a($$0, dos.p, -8, 1.0);
+      a($$0, dos.q, -8, 1.0);
+      a($$0, dos.r, -7, 1.0);
+      a($$0, dos.s, -8, 1.0);
+      a($$0, dos.t, -11, 1.0);
+      a($$0, dos.u, -11, 1.0);
+      a($$0, dos.v, -7, 1.0);
+      a($$0, dos.w, -7, 1.0);
+      a($$0, dos.x, -11, 1.0);
+      a($$0, dos.y, -8, 1.0);
+      a($$0, dos.z, -5, 1.0);
+      a($$0, dos.A, -8, 1.0);
+      a($$0, dos.B, -7, 0.4, 0.5, 1.0);
+      a($$0, dos.C, -8, 1.0);
+      a($$0, dos.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, dos.E, -8, 1.0);
+      a($$0, dos.F, -7, 1.0);
+      a($$0, dos.G, -7, 1.0);
+      a($$0, dos.H, -5, 1.0);
+      a($$0, dos.I, -8, 1.0);
+      a($$0, dos.J, -8, 1.0);
+      a($$0, dos.K, -7, 1.0);
+      a($$0, dos.L, -7, 1.0);
+      a($$0, dos.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dos.N, -6, 1.0, 1.0, 1.0);
+      a($$0, dos.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, dos.P, -8, 1.0);
+      a($$0, dos.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dos.R, -8, 1.0);
+      a($$0, dos.S, -6, 1.0, 1.0, 1.0);
+      a($$0, dos.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dos.U, -3, 1.0);
+      a($$0, dos.V, -6, 1.0, 1.0, 1.0);
+      a($$0, dos.W, -2, 1.0);
+      a($$0, dos.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dos.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dos.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dos.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dos.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dos.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dos.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dos.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dos.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, dos.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, dos.ah, -4, 1.0);
+   }
+
+   private static void a(pc<edn.a> $$0, int $$1, ahc<edn.a> $$2, ahc<edn.a> $$3, ahc<edn.a> $$4, ahc<edn.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(pc<edn.a> $$0, ahc<edn.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new edn.a($$2, $$3, $$4));
    }
 }

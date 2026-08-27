@@ -1,11 +1,9 @@
-public interface aue {
-   void a(vb var1);
+public class aue {
+   private static final long a = 6364136223846793005L;
+   private static final long b = 1442695040888963407L;
 
-   void b(vb var1);
-
-   void c(vb var1);
-
-   void a(int var1);
-
-   void a();
+   public static long a(long $$0, long $$1) {
+      $$0 *= $$0 * 6364136223846793005L + 1442695040888963407L;
+      return $$0 + $$1;
+   }
 }

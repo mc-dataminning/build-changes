@@ -1,25 +1,64 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public class ecf extends eci {
+public class ecf extends ecw {
    public static final Codec<ecf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kb.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, ecf::new)
+      $$0 -> $$0.group(ecy.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bja.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, ecf::new)
    );
-   private final cvz b;
-   private final float d;
+   private final ecw b;
+   private final bja c;
 
-   public ecf(cvz $$0, float $$1) {
+   public ecf(ecw $$0, bja $$1) {
       this.b = $$0;
-      this.d = $$1;
+      this.c = $$1;
    }
 
    @Override
-   public boolean a(dip $$0, auf $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
+   protected ecy<?> a() {
+      return ecy.o;
    }
 
    @Override
-   protected ecj<?> a() {
-      return ecj.e;
+   public final List<ecz.c> a(ctx $$0, hx $$1, hx $$2, List<ecz.c> $$3, List<ecz.c> $$4, ecv $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ac.a(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            aup $$6 = aup.a($$0.E().C()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
+
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  ecz.c $$12 = $$3.get($$11);
+                  ecz.c $$13 = $$4.get($$11);
+                  ecz.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
+            }
+         }
+      } else {
+         return $$4;
+      }
    }
 }

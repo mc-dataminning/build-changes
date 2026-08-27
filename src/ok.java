@@ -1,12 +1,12 @@
 import java.util.concurrent.CompletableFuture;
 
-public class ok extends og<bkf> {
-   public ok(kk $$0, CompletableFuture<ih.b> $$1) {
-      super($$0, kc.r, $$1);
+public class ok extends oi<cuh> {
+   public ok(km $$0, CompletableFuture<ij.b> $$1, CompletableFuture<oi.c<cuh>> $$2) {
+      super($$0, ke.at, $$1, $$2);
    }
 
    @Override
-   protected void a(ih.b $$0) {
-      this.b(art.b).a(bkg.C, bkg.D);
+   protected void a(ij.b $$0) {
+      this.b(asa.I).b(asa.l);
    }
 }

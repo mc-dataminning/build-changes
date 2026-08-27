@@ -1,304 +1,136 @@
 import java.util.UUID;
-import java.util.function.Function;
 
-public class yy implements wu<yo> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
+public class yy implements xd<yx> {
+   private static final double a = 8000.0;
+   private static final double b = 3.9;
+   private final int c;
    private final UUID d;
-   private final yy.c e;
-   static final yy.c f = new yy.c() {
-      @Override
-      public yy.d a() {
-         return yy.d.b;
-      }
+   private final blt<?> e;
+   private final double f;
+   private final double g;
+   private final double h;
+   private final int i;
+   private final int j;
+   private final int k;
+   private final byte l;
+   private final byte m;
+   private final byte n;
+   private final int o;
 
-      @Override
-      public void a(UUID $$0, yy.b $$1) {
-         $$1.a($$0);
-      }
-
-      @Override
-      public void a(ue $$0) {
-      }
-   };
-
-   private yy(UUID $$0, yy.c $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public yy(blp $$0) {
+      this($$0, 0);
    }
 
-   public yy(ue $$0) {
+   public yy(blp $$0, int $$1) {
+      this($$0.aj(), $$0.cw(), $$0.dr(), $$0.dt(), $$0.dx(), $$0.dE(), $$0.dC(), $$0.ai(), $$1, $$0.dp(), (double)$$0.cp());
+   }
+
+   public yy(blp $$0, int $$1, hx $$2) {
+      this($$0.aj(), $$0.cw(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dE(), $$0.dC(), $$0.ai(), $$1, $$0.dp(), (double)$$0.cp());
+   }
+
+   public yy(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, blt<?> $$7, int $$8, elm $$9, double $$10) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.l = (byte)aui.d($$5 * 256.0F / 360.0F);
+      this.m = (byte)aui.d($$6 * 256.0F / 360.0F);
+      this.n = (byte)aui.a($$10 * 256.0 / 360.0);
+      this.e = $$7;
+      this.o = $$8;
+      this.i = (int)(aui.a($$9.c, -3.9, 3.9) * 8000.0);
+      this.j = (int)(aui.a($$9.d, -3.9, 3.9) * 8000.0);
+      this.k = (int)(aui.a($$9.e, -3.9, 3.9) * 8000.0);
+   }
+
+   public yy(ug $$0) {
+      this.c = $$0.n();
       this.d = $$0.p();
-      yy.d $$1 = $$0.b(yy.d.class);
-      this.e = $$1.g.apply($$0);
-   }
-
-   public static yy a(bjb $$0) {
-      return new yy($$0.i(), new yy.a($$0));
-   }
-
-   public static yy a(UUID $$0) {
-      return new yy($$0, f);
-   }
-
-   public static yy b(bjb $$0) {
-      return new yy($$0.i(), new yy.f($$0.k()));
-   }
-
-   public static yy c(bjb $$0) {
-      return new yy($$0.i(), new yy.e($$0.j()));
-   }
-
-   public static yy d(bjb $$0) {
-      return new yy($$0.i(), new yy.h($$0.l(), $$0.m()));
-   }
-
-   public static yy e(bjb $$0) {
-      return new yy($$0.i(), new yy.g($$0.n(), $$0.o(), $$0.p()));
+      this.e = $$0.a(kd.g);
+      this.f = $$0.readDouble();
+      this.g = $$0.readDouble();
+      this.h = $$0.readDouble();
+      this.l = $$0.readByte();
+      this.m = $$0.readByte();
+      this.n = $$0.readByte();
+      this.o = $$0.n();
+      this.i = $$0.readShort();
+      this.j = $$0.readShort();
+      this.k = $$0.readShort();
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
+      $$0.c(this.c);
       $$0.a(this.d);
-      $$0.a(this.e.a());
-      this.e.a($$0);
+      $$0.a(kd.g, this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.k(this.l);
+      $$0.k(this.m);
+      $$0.k(this.n);
+      $$0.c(this.o);
+      $$0.l(this.i);
+      $$0.l(this.j);
+      $$0.l(this.k);
    }
 
-   static int a(boolean $$0, boolean $$1, boolean $$2) {
-      int $$3 = 0;
-      if ($$0) {
-         $$3 |= 1;
-      }
-
-      if ($$1) {
-         $$3 |= 2;
-      }
-
-      if ($$2) {
-         $$3 |= 4;
-      }
-
-      return $$3;
-   }
-
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public void a(yy.b $$0) {
-      this.e.a(this.d, $$0);
+   public int a() {
+      return this.c;
    }
 
-   static class a implements yy.c {
-      private final vb a;
-      private final float b;
-      private final bjb.a c;
-      private final bjb.b d;
-      private final boolean e;
-      private final boolean f;
-      private final boolean g;
-
-      a(bjb $$0) {
-         this.a = $$0.j();
-         this.b = $$0.k();
-         this.c = $$0.l();
-         this.d = $$0.m();
-         this.e = $$0.n();
-         this.f = $$0.o();
-         this.g = $$0.p();
-      }
-
-      private a(ue $$0) {
-         this.a = $$0.m();
-         this.b = $$0.readFloat();
-         this.c = $$0.b(bjb.a.class);
-         this.d = $$0.b(bjb.b.class);
-         int $$1 = $$0.readUnsignedByte();
-         this.e = ($$1 & 1) > 0;
-         this.f = ($$1 & 2) > 0;
-         this.g = ($$1 & 4) > 0;
-      }
-
-      @Override
-      public yy.d a() {
-         return yy.d.a;
-      }
-
-      @Override
-      public void a(UUID $$0, yy.b $$1) {
-         $$1.a($$0, this.a, this.b, this.c, this.d, this.e, this.f, this.g);
-      }
-
-      @Override
-      public void a(ue $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-         $$0.k(yy.a(this.e, this.f, this.g));
-      }
+   public UUID d() {
+      return this.d;
    }
 
-   public interface b {
-      default void a(UUID $$0, vb $$1, float $$2, bjb.a $$3, bjb.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      }
-
-      default void a(UUID $$0) {
-      }
-
-      default void a(UUID $$0, float $$1) {
-      }
-
-      default void a(UUID $$0, vb $$1) {
-      }
-
-      default void a(UUID $$0, bjb.a $$1, bjb.b $$2) {
-      }
-
-      default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-      }
+   public blt<?> e() {
+      return this.e;
    }
 
-   interface c {
-      yy.d a();
-
-      void a(UUID var1, yy.b var2);
-
-      void a(ue var1);
+   public double f() {
+      return this.f;
    }
 
-   static enum d {
-      a(yy.a::new),
-      b($$0 -> yy.f),
-      c(yy.f::new),
-      d(yy.e::new),
-      e(yy.h::new),
-      f(yy.g::new);
-
-      final Function<ue, yy.c> g;
-
-      private d(Function<ue, yy.c> $$0) {
-         this.g = $$0;
-      }
+   public double g() {
+      return this.g;
    }
 
-   static class e implements yy.c {
-      private final vb a;
-
-      e(vb $$0) {
-         this.a = $$0;
-      }
-
-      private e(ue $$0) {
-         this.a = $$0.m();
-      }
-
-      @Override
-      public yy.d a() {
-         return yy.d.d;
-      }
-
-      @Override
-      public void a(UUID $$0, yy.b $$1) {
-         $$1.a($$0, this.a);
-      }
-
-      @Override
-      public void a(ue $$0) {
-         $$0.a(this.a);
-      }
+   public double h() {
+      return this.h;
    }
 
-   static class f implements yy.c {
-      private final float a;
-
-      f(float $$0) {
-         this.a = $$0;
-      }
-
-      private f(ue $$0) {
-         this.a = $$0.readFloat();
-      }
-
-      @Override
-      public yy.d a() {
-         return yy.d.c;
-      }
-
-      @Override
-      public void a(UUID $$0, yy.b $$1) {
-         $$1.a($$0, this.a);
-      }
-
-      @Override
-      public void a(ue $$0) {
-         $$0.a(this.a);
-      }
+   public double i() {
+      return (double)this.i / 8000.0;
    }
 
-   static class g implements yy.c {
-      private final boolean a;
-      private final boolean b;
-      private final boolean c;
-
-      g(boolean $$0, boolean $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      private g(ue $$0) {
-         int $$1 = $$0.readUnsignedByte();
-         this.a = ($$1 & 1) > 0;
-         this.b = ($$1 & 2) > 0;
-         this.c = ($$1 & 4) > 0;
-      }
-
-      @Override
-      public yy.d a() {
-         return yy.d.f;
-      }
-
-      @Override
-      public void a(UUID $$0, yy.b $$1) {
-         $$1.a($$0, this.a, this.b, this.c);
-      }
-
-      @Override
-      public void a(ue $$0) {
-         $$0.k(yy.a(this.a, this.b, this.c));
-      }
+   public double j() {
+      return (double)this.j / 8000.0;
    }
 
-   static class h implements yy.c {
-      private final bjb.a a;
-      private final bjb.b b;
+   public double k() {
+      return (double)this.k / 8000.0;
+   }
 
-      h(bjb.a $$0, bjb.b $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public float l() {
+      return (float)(this.l * 360) / 256.0F;
+   }
 
-      private h(ue $$0) {
-         this.a = $$0.b(bjb.a.class);
-         this.b = $$0.b(bjb.b.class);
-      }
+   public float m() {
+      return (float)(this.m * 360) / 256.0F;
+   }
 
-      @Override
-      public yy.d a() {
-         return yy.d.e;
-      }
+   public float n() {
+      return (float)(this.n * 360) / 256.0F;
+   }
 
-      @Override
-      public void a(UUID $$0, yy.b $$1) {
-         $$1.a($$0, this.a, this.b);
-      }
-
-      @Override
-      public void a(ue $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
+   public int o() {
+      return this.o;
    }
 }

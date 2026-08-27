@@ -1,15 +1,18 @@
-public class cqa extends cou {
-   public cqa(String $$0, cpa $$1, cpi $$2, cmh $$3, float $$4, int $$5) {
-      super(cpq.b, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+public interface cqa<T extends cpv<?>> {
+   cqa<cpm> a = a("crafting");
+   cqa<cqk> b = a("smelting");
+   cqa<cph> c = a("blasting");
+   cqa<cqo> d = a("smoking");
+   cqa<cpj> e = a("campfire_cooking");
+   cqa<cqp> f = a("stonecutting");
+   cqa<cql> g = a("smithing");
 
-   @Override
-   public cmh g() {
-      return new cmh(cwb.cD);
-   }
-
-   @Override
-   public cpp<?> ar_() {
-      return cpp.p;
+   static <T extends cpv<?>> cqa<T> a(final String $$0) {
+      return it.a(kd.s, new ahd($$0), new cqa<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

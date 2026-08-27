@@ -1,140 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public abstract class cvo extends cvz implements dcz {
-   protected static final elu a = cvz.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final elu b = cvz.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final djg c = djf.C;
-   private final boolean d;
+public class cvo extends cva {
+   public static final MapCodec<cvo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(clf.q.fieldOf("color").forGetter(cva::b), u()).apply($$0, cvo::new));
+   public static final dka b = djq.ba;
+   private static final Map<clf, cwj> c = Maps.newHashMap();
+   private static final emf d = cwj.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
-   public static boolean a(csy $$0, hv $$1) {
-      return g($$0.a_($$1));
+   @Override
+   public MapCodec<cvo> a() {
+      return a;
    }
 
-   public static boolean g(dip $$0) {
-      return $$0.a(arr.N) && $$0.b() instanceof cvo;
-   }
-
-   protected cvo(boolean $$0, dio.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public cvo(clf $$0, diz.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected abstract MapCodec<? extends cvo> a();
-
-   public boolean b() {
-      return this.d;
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      djt $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
-      return $$4 != null && $$4.b() ? b : a;
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return d;
    }
 
    @Override
-   public boolean a(dip $$0, ctb $$1, hv $$2) {
-      return c($$1, $$2.d());
+   public dja a(cpa $$0) {
+      return this.o().a(b, Integer.valueOf(dkg.a($$0.i() + 180.0F)));
    }
 
    @Override
-   public void b(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
-      }
-   }
-
-   protected dip a(dip $$0, csy $$1, hv $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, $$2, $$3);
-      }
-
-      return $$0;
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      return $$1 == ic.a && !$$0.a($$3, $$4) ? cwl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dip $$0, csy $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
-      if (!$$1.B && $$1.a_($$2).a(this)) {
-         djt $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   private static boolean a(hv $$0, csy $$1, djt $$2) {
-      if (!c($$1, $$0.d())) {
-         return true;
-      } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.h());
-            case d:
-               return !c($$1, $$0.g());
-            case e:
-               return !c($$1, $$0.e());
-            case f:
-               return !c($$1, $$0.f());
-            default:
-               return false;
-         }
-      }
-   }
-
-   protected void a(dip $$0, csy $$1, hv $$2, cvz $$3) {
-   }
-
-   protected dip a(csy $$0, hv $$1, dip $$2, boolean $$3) {
-      if ($$0.B) {
-         return $$2;
-      } else {
-         djt $$4 = $$2.c(this.c());
-         return new dby($$0, $$1, $$2).a($$0.B($$1), $$3, $$4).c();
-      }
+   public dja a(dja $$0, dcv $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
-      if (!$$4) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.c(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.d(), this);
-         }
-      }
+   public dja a(dja $$0, dbf $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public dip a(coq $$0) {
-      edz $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eea.c;
-      dip $$3 = super.o();
-      ia $$4 = $$0.g();
-      boolean $$5 = $$4 == ia.f || $$4 == ia.e;
-      return $$3.a(this.c(), $$5 ? djt.b : djt.a).a(c, Boolean.valueOf($$2));
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(b);
    }
 
-   public abstract djs<djt> c();
-
-   @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eea.c, eea.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public edz c_(dip $$0) {
-      return $$0.c(c) ? eea.c.a(false) : super.c_($$0);
+   public static cwj a(clf $$0) {
+      return c.getOrDefault($$0, cwl.iJ);
    }
 }

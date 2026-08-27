@@ -1,539 +1,398 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.tuple.Triple;
-import org.joml.Matrix4f;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InvalidClassException;
+import java.io.Reader;
+import java.util.List;
+import java.util.Map;
+import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fsp {
-   private static final float aS = 0.99975586F;
-   public static final double a = 8.0;
-   protected final String b;
-   private final Runnable aT;
-   private final Runnable aU;
-   protected static final fsp.p c = new fsp.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
-   });
-   protected static final fsp.p d = new fsp.p("additive_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final fsp.p e = new fsp.p("lightning_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final fsp.p f = new fsp.p(
-      "glint_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final fsp.p g = new fsp.p(
-      "crumbling_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final fsp.p h = new fsp.p(
-      "translucent_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_ALPHA,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-            GlStateManager.SourceFactor.ONE,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final fsp.m i = new fsp.m();
-   protected static final fsp.m j = new fsp.m(fsb::v);
-   protected static final fsp.m k = new fsp.m(fsb::p);
-   protected static final fsp.m l = new fsp.m(fsb::r);
-   protected static final fsp.m m = new fsp.m(fsb::s);
-   protected static final fsp.m n = new fsp.m(fsb::w);
-   protected static final fsp.m o = new fsp.m(fsb::q);
-   protected static final fsp.m p = new fsp.m(fsb::z);
-   protected static final fsp.m q = new fsp.m(fsb::A);
-   protected static final fsp.m r = new fsp.m(fsb::B);
-   protected static final fsp.m s = new fsp.m(fsb::C);
-   protected static final fsp.m t = new fsp.m(fsb::D);
-   protected static final fsp.m u = new fsp.m(fsb::E);
-   protected static final fsp.m v = new fsp.m(fsb::F);
-   protected static final fsp.m w = new fsp.m(fsb::G);
-   protected static final fsp.m x = new fsp.m(fsb::H);
-   protected static final fsp.m y = new fsp.m(fsb::I);
-   protected static final fsp.m z = new fsp.m(fsb::J);
-   protected static final fsp.m A = new fsp.m(fsb::K);
-   protected static final fsp.m B = new fsp.m(fsb::L);
-   protected static final fsp.m C = new fsp.m(fsb::M);
-   protected static final fsp.m D = new fsp.m(fsb::N);
-   protected static final fsp.m E = new fsp.m(fsb::O);
-   protected static final fsp.m F = new fsp.m(fsb::P);
-   protected static final fsp.m G = new fsp.m(fsb::Q);
-   protected static final fsp.m H = new fsp.m(fsb::R);
-   protected static final fsp.m I = new fsp.m(fsb::S);
-   protected static final fsp.m J = new fsp.m(fsb::T);
-   protected static final fsp.m K = new fsp.m(fsb::U);
-   protected static final fsp.m L = new fsp.m(fsb::W);
-   protected static final fsp.m M = new fsp.m(fsb::X);
-   protected static final fsp.m N = new fsp.m(fsb::Y);
-   protected static final fsp.m O = new fsp.m(fsb::Z);
-   protected static final fsp.m P = new fsp.m(fsb::aa);
-   protected static final fsp.m Q = new fsp.m(fsb::ab);
-   protected static final fsp.m R = new fsp.m(fsb::ac);
-   protected static final fsp.m S = new fsp.m(fsb::ad);
-   protected static final fsp.m T = new fsp.m(fsb::ae);
-   protected static final fsp.m U = new fsp.m(fsb::af);
-   protected static final fsp.m V = new fsp.m(fsb::ar);
-   protected static final fsp.m W = new fsp.m(fsb::ag);
-   protected static final fsp.m X = new fsp.m(fsb::ah);
-   protected static final fsp.m Y = new fsp.m(fsb::ai);
-   protected static final fsp.m Z = new fsp.m(fsb::aj);
-   protected static final fsp.m aa = new fsp.m(fsb::ak);
-   protected static final fsp.m ab = new fsp.m(fsb::al);
-   protected static final fsp.m ac = new fsp.m(fsb::am);
-   protected static final fsp.m ad = new fsp.m(fsb::an);
-   protected static final fsp.m ae = new fsp.m(fsb::ao);
-   protected static final fsp.m af = new fsp.m(fsb::ap);
-   protected static final fsp.m ag = new fsp.m(fsb::aq);
-   protected static final fsp.m ah = new fsp.m(fsb::as);
-   protected static final fsp.m ai = new fsp.m(fsb::at);
-   protected static final fsp.m aj = new fsp.m(fsb::au);
-   protected static final fsp.m ak = new fsp.m(fsb::av);
-   protected static final fsp.m al = new fsp.m(fsb::V);
-   protected static final fsp.n am = new fsp.n(gdn.e, false, true);
-   protected static final fsp.n an = new fsp.n(gdn.e, false, false);
-   protected static final fsp.e ao = new fsp.e();
-   protected static final fsp.o ap = new fsp.o("default_texturing", () -> {
-   }, () -> {
-   });
-   protected static final fsp.o aq = new fsp.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
-   protected static final fsp.o ar = new fsp.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
-   protected static final fsp.g as = new fsp.g(true);
-   protected static final fsp.g at = new fsp.g(false);
-   protected static final fsp.l au = new fsp.l(true);
-   protected static final fsp.l av = new fsp.l(false);
-   protected static final fsp.c aw = new fsp.c(true);
-   protected static final fsp.c ax = new fsp.c(false);
-   protected static final fsp.d ay = new fsp.d("always", 519);
-   protected static final fsp.d az = new fsp.d("==", 514);
-   protected static final fsp.d aA = new fsp.d("<=", 515);
-   protected static final fsp.d aB = new fsp.d(">", 516);
-   protected static final fsp.q aC = new fsp.q(true, true);
-   protected static final fsp.q aD = new fsp.q(true, false);
-   protected static final fsp.q aE = new fsp.q(false, true);
-   protected static final fsp.f aF = new fsp.f("no_layering", () -> {
-   }, () -> {
-   });
-   protected static final fsp.f aG = new fsp.f("polygon_offset_layering", () -> {
-      RenderSystem.polygonOffset(-1.0F, -10.0F);
-      RenderSystem.enablePolygonOffset();
-   }, () -> {
-      RenderSystem.polygonOffset(0.0F, 0.0F);
-      RenderSystem.disablePolygonOffset();
-   });
-   protected static final fsp.f aH = new fsp.f("view_offset_z_layering", () -> {
-      epd $$0 = RenderSystem.getModelViewStack();
-      $$0.a();
-      $$0.b(0.99975586F, 0.99975586F, 0.99975586F);
-      RenderSystem.applyModelViewMatrix();
-   }, () -> {
-      epd $$0 = RenderSystem.getModelViewStack();
-      $$0.b();
-      RenderSystem.applyModelViewMatrix();
-   });
-   protected static final fsp.k aI = new fsp.k("main_target", () -> {
-   }, () -> {
-   });
-   protected static final fsp.k aJ = new fsp.k("outline_target", () -> euk.N().f.s().a(false), () -> euk.N().g().a(false));
-   protected static final fsp.k aK = new fsp.k("translucent_target", () -> {
-      if (euk.L()) {
-         euk.N().f.t().a(false);
-      }
-   }, () -> {
-      if (euk.L()) {
-         euk.N().g().a(false);
-      }
-   });
-   protected static final fsp.k aL = new fsp.k("particles_target", () -> {
-      if (euk.L()) {
-         euk.N().f.v().a(false);
-      }
-   }, () -> {
-      if (euk.L()) {
-         euk.N().g().a(false);
-      }
-   });
-   protected static final fsp.k aM = new fsp.k("weather_target", () -> {
-      if (euk.L()) {
-         euk.N().f.w().a(false);
-      }
-   }, () -> {
-      if (euk.L()) {
-         euk.N().g().a(false);
-      }
-   });
-   protected static final fsp.k aN = new fsp.k("clouds_target", () -> {
-      if (euk.L()) {
-         euk.N().f.x().a(false);
-      }
-   }, () -> {
-      if (euk.L()) {
-         euk.N().g().a(false);
-      }
-   });
-   protected static final fsp.k aO = new fsp.k("item_entity_target", () -> {
-      if (euk.L()) {
-         euk.N().f.u().a(false);
-      }
-   }, () -> {
-      if (euk.L()) {
-         euk.N().g().a(false);
-      }
-   });
-   protected static final fsp.h aP = new fsp.h(OptionalDouble.of(1.0));
-   protected static final fsp.b aQ = new fsp.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
-   });
-   protected static final fsp.b aR = new fsp.b("or_reverse", () -> {
-      RenderSystem.enableColorLogicOp();
-      RenderSystem.logicOp(GlStateManager.g.n);
-   }, () -> RenderSystem.disableColorLogicOp());
+public class fsp implements epe, AutoCloseable {
+   private static final String a = "shaders/program/";
+   private static final Logger b = LogUtils.getLogger();
+   private static final epc c = new epc();
+   private static final boolean d = true;
+   private static fsp e;
+   private static int f = -1;
+   private final Map<String, IntSupplier> g = Maps.newHashMap();
+   private final List<String> h = Lists.newArrayList();
+   private final List<Integer> i = Lists.newArrayList();
+   private final List<epk> j = Lists.newArrayList();
+   private final List<Integer> k = Lists.newArrayList();
+   private final Map<String, epk> l = Maps.newHashMap();
+   private final int m;
+   private final String n;
+   private boolean o;
+   private final epd p;
+   private final List<Integer> q;
+   private final List<String> r;
+   private final epf s;
+   private final epf t;
 
-   public fsp(String $$0, Runnable $$1, Runnable $$2) {
-      this.b = $$0;
-      this.aT = $$1;
-      this.aU = $$2;
+   public fsp(aqc $$0, String $$1) throws IOException {
+      ahd $$2 = new ahd("shaders/program/" + $$1 + ".json");
+      this.n = $$1;
+      aqa $$3 = $$0.getResourceOrThrow($$2);
+
+      try (Reader $$4 = $$3.e()) {
+         JsonObject $$5 = aty.a($$4);
+         String $$6 = aty.i($$5, "vertex");
+         String $$7 = aty.i($$5, "fragment");
+         JsonArray $$8 = aty.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
+
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var20) {
+                  ahg $$12 = ahg.a(var20);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
+
+               $$9++;
+            }
+         }
+
+         JsonArray $$13 = aty.a($$5, "attributes", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+            this.q = Lists.newArrayListWithCapacity($$13.size());
+            this.r = Lists.newArrayListWithCapacity($$13.size());
+
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.r.add(aty.a($$15, "attribute"));
+               } catch (Exception var19) {
+                  ahg $$17 = ahg.a(var19);
+                  $$17.a("attributes[" + $$14 + "]");
+                  throw $$17;
+               }
+
+               $$14++;
+            }
+         } else {
+            this.q = null;
+            this.r = null;
+         }
+
+         JsonArray $$18 = aty.a($$5, "uniforms", null);
+         if ($$18 != null) {
+            int $$19 = 0;
+
+            for (JsonElement $$20 : $$18) {
+               try {
+                  this.b($$20);
+               } catch (Exception var18) {
+                  ahg $$22 = ahg.a(var18);
+                  $$22.a("uniforms[" + $$19 + "]");
+                  throw $$22;
+               }
+
+               $$19++;
+            }
+         }
+
+         this.p = a(aty.a($$5, "blend", null));
+         this.s = a($$0, eph.a.a, $$6);
+         this.t = a($$0, eph.a.b, $$7);
+         this.m = epi.a();
+         epi.b(this);
+         this.i();
+         if (this.r != null) {
+            for (String $$23 : this.r) {
+               int $$24 = epk.b(this.m, $$23);
+               this.q.add($$24);
+            }
+         }
+      } catch (Exception var22) {
+         ahg $$26 = ahg.a(var22);
+         $$26.b($$2.a() + " (" + $$3.b() + ")");
+         throw $$26;
+      }
+
+      this.b();
    }
 
-   public void a() {
-      this.aT.run();
+   public static epf a(aqc $$0, eph.a $$1, String $$2) throws IOException {
+      eph $$3 = $$1.c().get($$2);
+      if ($$3 != null && !($$3 instanceof epf)) {
+         throw new InvalidClassException("Program is not of type EffectProgram");
+      } else {
+         epf $$7;
+         if ($$3 == null) {
+            ahd $$4 = new ahd("shaders/program/" + $$2 + $$1.b());
+            aqa $$5 = $$0.getResourceOrThrow($$4);
+
+            try (InputStream $$6 = $$5.d()) {
+               $$7 = epf.a($$1, $$2, $$6, $$5.b());
+            }
+         } else {
+            $$7 = (epf)$$3;
+         }
+
+         return $$7;
+      }
    }
 
-   public void b() {
-      this.aU.run();
+   public static epd a(@Nullable JsonObject $$0) {
+      if ($$0 == null) {
+         return new epd();
+      } else {
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
+         int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (aty.a($$0, "func")) {
+            $$1 = epd.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
+            }
+         }
+
+         if (aty.a($$0, "srcrgb")) {
+            $$2 = epd.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
+
+         if (aty.a($$0, "dstrgb")) {
+            $$3 = epd.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (aty.a($$0, "srcalpha")) {
+            $$4 = epd.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if (aty.a($$0, "dstalpha")) {
+            $$5 = epd.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if ($$6) {
+            return new epd();
+         } else {
+            return $$7 ? new epd($$2, $$3, $$4, $$5, $$1) : new epd($$2, $$3, $$1);
+         }
+      }
    }
 
    @Override
-   public String toString() {
-      return this.b;
+   public void close() {
+      for (epk $$0 : this.j) {
+         $$0.close();
+      }
+
+      epi.a(this);
    }
 
-   private static void a(float $$0) {
-      long $$1 = (long)((double)ac.b() * euk.N().m.aj().c() * 8.0);
-      float $$2 = (float)($$1 % 110000L) / 110000.0F;
-      float $$3 = (float)($$1 % 30000L) / 30000.0F;
-      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
-      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
-      RenderSystem.setTextureMatrix($$4);
-   }
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      epi.a(0);
+      f = -1;
+      e = null;
 
-   static class a extends fsp {
-      private final boolean aS;
-
-      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
-         super($$0, $$1, $$2);
-         this.aS = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aS + "]";
-      }
-   }
-
-   protected static class b extends fsp {
-      public b(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class c extends fsp.a {
-      public c(boolean $$0) {
-         super("cull", () -> {
-            if (!$$0) {
-               RenderSystem.disableCull();
-            }
-         }, () -> {
-            if (!$$0) {
-               RenderSystem.enableCull();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class d extends fsp {
-      private final String aS;
-
-      public d(String $$0, int $$1) {
-         super("depth_test", () -> {
-            if ($$1 != 519) {
-               RenderSystem.enableDepthTest();
-               RenderSystem.depthFunc($$1);
-            }
-         }, () -> {
-            if ($$1 != 519) {
-               RenderSystem.disableDepthTest();
-               RenderSystem.depthFunc(515);
-            }
-         });
-         this.aS = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aS + "]";
-      }
-   }
-
-   protected static class e extends fsp {
-      public e(Runnable $$0, Runnable $$1) {
-         super("texture", $$0, $$1);
-      }
-
-      e() {
-         super("texture", () -> {
-         }, () -> {
-         });
-      }
-
-      protected Optional<agt> c() {
-         return Optional.empty();
-      }
-   }
-
-   protected static class f extends fsp {
-      public f(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class g extends fsp.a {
-      public g(boolean $$0) {
-         super("lightmap", () -> {
-            if ($$0) {
-               euk.N().j.n().c();
-            }
-         }, () -> {
-            if ($$0) {
-               euk.N().j.n().b();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class h extends fsp {
-      private final OptionalDouble aS;
-
-      public h(OptionalDouble $$0) {
-         super("line_width", () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               if ($$0.isPresent()) {
-                  RenderSystem.lineWidth((float)$$0.getAsDouble());
-               } else {
-                  RenderSystem.lineWidth(Math.max(2.5F, (float)euk.N().aL().k() / 1920.0F * 2.5F));
-               }
-            }
-         }, () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               RenderSystem.lineWidth(1.0F);
-            }
-         });
-         this.aS = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + (this.aS.isPresent() ? this.aS.getAsDouble() : "window_scale") + "]";
-      }
-   }
-
-   protected static class i extends fsp.e {
-      private final Optional<agt> aS;
-
-      i(ImmutableList<Triple<agt, Boolean, Boolean>> $$0) {
-         super(() -> {
-            int $$1 = 0;
-            UnmodifiableIterator var2 = $$0.iterator();
-
-            while (var2.hasNext()) {
-               Triple<agt, Boolean, Boolean> $$2 = (Triple<agt, Boolean, Boolean>)var2.next();
-               gdp $$3 = euk.N().X();
-               $$3.b((agt)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
-               RenderSystem.setShaderTexture($$1++, (agt)$$2.getLeft());
-            }
-         }, () -> {
-         });
-         this.aS = $$0.stream().findFirst().map(Triple::getLeft);
-      }
-
-      @Override
-      protected Optional<agt> c() {
-         return this.aS;
-      }
-
-      public static fsp.i.a d() {
-         return new fsp.i.a();
-      }
-
-      public static final class a {
-         private final Builder<Triple<agt, Boolean, Boolean>> a = new Builder();
-
-         public fsp.i.a a(agt $$0, boolean $$1, boolean $$2) {
-            this.a.add(Triple.of($$0, $$1, $$2));
-            return this;
-         }
-
-         public fsp.i a() {
-            return new fsp.i(this.a.build());
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         if (this.g.get(this.h.get($$0)) != null) {
+            GlStateManager._activeTexture(33984 + $$0);
+            GlStateManager._bindTexture(0);
          }
       }
    }
 
-   protected static final class j extends fsp.o {
-      public j(float $$0, float $$1) {
-         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+   public void g() {
+      RenderSystem.assertOnGameThread();
+      this.o = false;
+      e = this;
+      this.p.a();
+      if (this.m != f) {
+         epi.a(this.m);
+         f = this.m;
       }
-   }
 
-   protected static class k extends fsp {
-      public k(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class l extends fsp.a {
-      public l(boolean $$0) {
-         super("overlay", () -> {
-            if ($$0) {
-               euk.N().j.o().a();
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         String $$1 = this.h.get($$0);
+         IntSupplier $$2 = this.g.get($$1);
+         if ($$2 != null) {
+            RenderSystem.activeTexture(33984 + $$0);
+            int $$3 = $$2.getAsInt();
+            if ($$3 != -1) {
+               RenderSystem.bindTexture($$3);
+               epk.b(this.i.get($$0), $$0);
             }
-         }, () -> {
-            if ($$0) {
-               euk.N().j.o().b();
-            }
-         }, $$0);
+         }
+      }
+
+      for (epk $$4 : this.j) {
+         $$4.b();
       }
    }
 
-   protected static class m extends fsp {
-      private final Optional<Supplier<fsw>> aS;
+   @Override
+   public void b() {
+      this.o = true;
+   }
 
-      public m(Supplier<fsw> $$0) {
-         super("shader", () -> RenderSystem.setShader($$0), () -> {
-         });
-         this.aS = Optional.of($$0);
+   @Nullable
+   public epk a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.l.get($$0);
+   }
+
+   public epc b(String $$0) {
+      RenderSystem.assertOnGameThread();
+      epk $$1 = this.a($$0);
+      return (epc)($$1 == null ? c : $$1);
+   }
+
+   private void i() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
+         String $$2 = this.h.get($$1);
+         int $$3 = epk.a(this.m, $$2);
+         if ($$3 == -1) {
+            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
+            this.g.remove($$2);
+            $$0.add($$1);
+         } else {
+            this.i.add($$3);
+         }
       }
 
-      public m() {
-         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
-         });
-         this.aS = Optional.empty();
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         this.h.remove($$0.getInt($$4));
       }
 
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aS + "]";
+      for (epk $$5 : this.j) {
+         String $$6 = $$5.a();
+         int $$7 = epk.a(this.m, $$6);
+         if ($$7 == -1) {
+            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
+         } else {
+            this.k.add($$7);
+            $$5.b($$7);
+            this.l.put($$6, $$5);
+         }
       }
    }
 
-   protected static class n extends fsp.e {
-      private final Optional<agt> aS;
-      private final boolean aT;
-      private final boolean aU;
-
-      public n(agt $$0, boolean $$1, boolean $$2) {
-         super(() -> {
-            gdp $$3 = euk.N().X();
-            $$3.b($$0).a($$1, $$2);
-            RenderSystem.setShaderTexture(0, $$0);
-         }, () -> {
-         });
-         this.aS = Optional.of($$0);
-         this.aT = $$1;
-         this.aU = $$2;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aS + "(blur=" + this.aT + ", mipmap=" + this.aU + ")]";
-      }
-
-      @Override
-      protected Optional<agt> c() {
-         return this.aS;
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = aty.m($$0, "sampler");
+      String $$2 = aty.i($$1, "name");
+      if (!aty.a($$1, "file")) {
+         this.g.put($$2, null);
+         this.h.add($$2);
+      } else {
+         this.h.add($$2);
       }
    }
 
-   protected static class o extends fsp {
-      public o(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
+   public void a(String $$0, IntSupplier $$1) {
+      if (this.g.containsKey($$0)) {
+         this.g.remove($$0);
+      }
+
+      this.g.put($$0, $$1);
+      this.b();
+   }
+
+   private void b(JsonElement $$0) throws ahg {
+      JsonObject $$1 = aty.m($$0, "uniform");
+      String $$2 = aty.i($$1, "name");
+      int $$3 = epk.a(aty.i($$1, "type"));
+      int $$4 = aty.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = aty.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new ahg("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
+
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = aty.e($$8, "value");
+            } catch (Exception var13) {
+               ahg $$10 = ahg.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
+         }
+
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
+            }
+         }
+
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         epk $$12 = new epk($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a($$5);
+         }
+
+         this.j.add($$12);
       }
    }
 
-   protected static class p extends fsp {
-      public p(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
+   @Override
+   public eph c() {
+      return this.s;
    }
 
-   protected static class q extends fsp {
-      private final boolean aS;
-      private final boolean aT;
+   @Override
+   public eph d() {
+      return this.t;
+   }
 
-      public q(boolean $$0, boolean $$1) {
-         super("write_mask_state", () -> {
-            if (!$$1) {
-               RenderSystem.depthMask($$1);
-            }
+   @Override
+   public void e() {
+      this.t.a(this);
+      this.s.a(this);
+   }
 
-            if (!$$0) {
-               RenderSystem.colorMask($$0, $$0, $$0, $$0);
-            }
-         }, () -> {
-            if (!$$1) {
-               RenderSystem.depthMask(true);
-            }
+   public String h() {
+      return this.n;
+   }
 
-            if (!$$0) {
-               RenderSystem.colorMask(true, true, true, true);
-            }
-         });
-         this.aS = $$0;
-         this.aT = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[writeColor=" + this.aS + ", writeDepth=" + this.aT + "]";
-      }
+   @Override
+   public int a() {
+      return this.m;
    }
 }

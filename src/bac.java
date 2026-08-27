@@ -1,37 +1,69 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import org.apache.commons.lang3.StringUtils;
 
-public class bac extends bag {
-   public bac(Schema $$0, String $$1) {
-      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bbg.x, $$1);
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+public class bac extends DataFix {
+   public bac(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Brain", this::b);
+      return $$0.update("pages", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().map($$0xx -> $$0xx.map($$0xxx -> {
+               if ($$0xxx.asString().result().isEmpty()) {
+                  return $$0xxx;
+               } else {
+                  String $$1x = $$0xxx.asString("");
+                  vd $$2 = null;
+                  if (!"null".equals($$1x) && !StringUtils.isEmpty($$1x)) {
+                     if ($$1x.charAt(0) == '"' && $$1x.charAt($$1x.length() - 1) == '"' || $$1x.charAt(0) == '{' && $$1x.charAt($$1x.length() - 1) == '}') {
+                        try {
+                           $$2 = aty.b(awp.a, $$1x, vd.class, true);
+                           if ($$2 == null) {
+                              $$2 = vc.a;
+                           }
+                        } catch (Exception var6) {
+                        }
+
+                        if ($$2 == null) {
+                           try {
+                              $$2 = vd.a.a($$1x);
+                           } catch (Exception var5) {
+                           }
+                        }
+
+                        if ($$2 == null) {
+                           try {
+                              $$2 = vd.a.b($$1x);
+                           } catch (Exception var4) {
+                           }
+                        }
+
+                        if ($$2 == null) {
+                           $$2 = vd.b($$1x);
+                        }
+                     } else {
+                        $$2 = vd.b($$1x);
+                     }
+                  } else {
+                     $$2 = vc.a;
+                  }
+
+                  return $$0xxx.createString(vd.a.a($$2));
+               }
+            })).map($$0::createList).result(), $$0.emptyList()));
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("memories", this::c);
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.updateMapValues(this::a);
-   }
-
-   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      return $$0.mapSecond(this::d);
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbq.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "ItemWrittenBookPagesStrictJsonFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
+      );
    }
 }

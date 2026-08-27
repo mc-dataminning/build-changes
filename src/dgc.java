@@ -1,20 +1,21 @@
-public class dgc extends dfs {
-   public dgc(hv $$0, dip $$1) {
-      super(dgf.C, $$0, $$1, cpq.c);
-   }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class dgc extends cxa {
+   public static final MapCodec<dgc> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(clf.q.fieldOf("color").forGetter(dgc::b), u()).apply($$0, dgc::new));
+   private final clf d;
 
    @Override
-   protected vb l() {
-      return vb.c("container.blast_furnace");
+   public MapCodec<dgc> a() {
+      return c;
    }
 
-   @Override
-   protected int a(cmh $$0) {
-      return super.a($$0) / 2;
+   protected dgc(clf $$0, diz.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
-   @Override
-   protected chk a(int $$0, ceq $$1) {
-      return new cho($$0, $$1, this, this.n);
+   public clf b() {
+      return this.d;
    }
 }

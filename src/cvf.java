@@ -1,99 +1,68 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cvf extends cvl {
-   public static final MapCodec<cvf> a = b(cvf::new);
-   public static final djj b = djf.P;
-   public static final djg c = djf.u;
+public abstract class cvf extends cvv implements cls {
+   public static final djr a = djq.w;
+   private final ddk.a b;
 
-   @Override
-   public MapCodec<cvf> a() {
-      return a;
-   }
-
-   public cvf(dio.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ia.c).a(c, Boolean.valueOf(false)));
+   public cvf(ddk.a $$0, diz.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.k(this.E.b().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      if ($$1.B) {
-         return bjl.a;
-      } else {
-         dgd $$6 = $$1.c_($$2);
-         if ($$6 instanceof dfw) {
-            $$3.a((dfw)$$6);
-            $$3.a(arm.ar);
-            cdi.a($$3, true);
-         }
-
-         return bjl.b;
-      }
-   }
+   protected abstract MapCodec<? extends cvf> a();
 
    @Override
-   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
-      bjh.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
-      dgd $$4 = $$1.c_($$2);
-      if ($$4 instanceof dfw) {
-         ((dfw)$$4).m();
-      }
+   public dgo a(hx $$0, dja $$1) {
+      return new dhz($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dgd a(hv $$0, dip $$1) {
-      return new dfw($$0, $$1);
-   }
-
-   @Override
-   public dce b_(dip $$0) {
-      return dce.c;
-   }
-
-   @Override
-   public void a(csy $$0, hv $$1, dip $$2, @Nullable blv $$3, cmh $$4) {
-      if ($$4.A()) {
-         dgd $$5 = $$0.c_($$1);
-         if ($$5 instanceof dfw) {
-            ((dfw)$$5).a($$4.y());
+   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
+      if ($$0.B) {
+         boolean $$3 = $$1.a(cwl.gO) || $$1.a(cwl.gP) || $$1.a(cwl.gQ) || $$1.a(cwl.gR);
+         if ($$3) {
+            return a($$2, dgq.p, dhz::a);
          }
       }
+
+      return null;
+   }
+
+   public ddk.a b() {
+      return this.b;
    }
 
    @Override
-   public boolean d_(dip $$0) {
-      return true;
+   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
+      return false;
    }
 
    @Override
-   public int a(dip $$0, csy $$1, hv $$2) {
-      return chk.a($$1.c_($$2));
+   public blu g() {
+      return blu.f;
    }
 
    @Override
-   public dip a(dip $$0, dcl $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   public dip a(dip $$0, dav $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public dja a(cpa $$0) {
+      return this.o().a(a, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dip a(coq $$0) {
-      return this.o().a(b, $$0.d().g());
+   public void a(dja $$0, cti $$1, hx $$2, cwj $$3, hx $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

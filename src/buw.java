@@ -1,59 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class buw<T> {
-   private final T a;
-   private long b;
+public class buw<T extends bmf> extends buu<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public buw(T $$0, long $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public buw(cgk $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bmf> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
    }
 
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
+   public int i() {
+      return this.j;
    }
 
-   public static <T> buw<T> a(T $$0) {
-      return new buw<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> buw<T> a(T $$0, long $$1) {
-      return new buw<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+   public void k() {
+      this.j--;
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean a() {
+      if (this.j > 0 || !this.e.eg().h()) {
+         return false;
+      } else if (!((cgk)this.e).gt()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
-   @avd
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
-   }
-
-   public static <T> Codec<buw<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new buw<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void c() {
+      this.j = b(200);
+      super.c();
    }
 }

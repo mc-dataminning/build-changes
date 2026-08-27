@@ -1,33 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ddj extends cvm {
-   public static final MapCodec<ddj> c = b(ddj::new);
-
+public interface ddj extends cwq, daz {
    @Override
-   public MapCodec<ddj> a() {
-      return c;
-   }
-
-   public ddj(dio.d $$0) {
-      super($$0, 2.0F);
+   default boolean a(@Nullable cfb $$0, cso $$1, hx $$2, dja $$3, eej $$4) {
+      return $$4 == eel.c;
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      return this.a($$0, $$3, $$4) ? this.o() : cwb.a.o();
+   default boolean a(ctj $$0, hx $$1, dja $$2, eek $$3) {
+      if (!$$2.c(djq.C) && $$3.a() == eel.c) {
+         if (!$$0.y_()) {
+            $$0.a($$1, $$2.a(djq.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean a(dip $$0, ctb $$1, hv $$2) {
-      return h($$1.a_($$2.d()));
-   }
+   default cmr a(@Nullable cfb $$0, ctj $$1, hx $$2, dja $$3) {
+      if ($$3.c(djq.C)) {
+         $$1.a($$2, $$3.a(djq.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
 
-   public static boolean h(dip $$0) {
-      return $$0.a(arr.aS);
+         return new cmr(cmu.qw);
+      } else {
+         return cmr.f;
+      }
    }
 
    @Override
-   protected boolean f(dip $$0) {
-      return true;
+   default Optional<arl> au_() {
+      return eel.c.j();
    }
 }

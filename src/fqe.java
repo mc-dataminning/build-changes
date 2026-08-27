@@ -1,13 +1,53 @@
-public abstract class fqe extends fqw {
-   protected fqe(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.j = this.j * 0.01F + $$4;
-      this.k = this.k * 0.01F + $$5;
-      this.l = this.l * 0.01F + $$6;
-      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
+public class fqe extends frn {
+   fqe(fnk $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
+   }
+
+   @Override
+   public fqr b() {
+      return fqr.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * aui.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fqq<ka> {
+      private final fri a;
+
+      public a(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqe $$8 = new fqe($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements fqq<ka> {
+      private final fri a;
+
+      public b(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqe $$8 = new fqe($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

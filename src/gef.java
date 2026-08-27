@@ -1,69 +1,121 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class gef extends aoy {
-   private static final aou c = new aou(vb.c("resourcePack.vanilla.description"), aa.b().a(aoh.a), Optional.empty());
-   private static final aob d = aob.a(aou.b, c);
-   private static final vb e = vb.c("resourcePack.vanilla.name");
-   public static final String b = "high_contrast";
-   private static final Map<String, vb> f = Map.of(
-      "programmer_art", vb.c("resourcePack.programmer_art.name"), "high_contrast", vb.c("resourcePack.high_contrast.name")
-   );
-   private static final agt g = new agt("minecraft", "resourcepacks");
-   @Nullable
-   private final Path h;
+public class gef {
+   private final ahd a;
+   private final gdz b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   public gef(Path $$0, ekr $$1) {
-      super(aoh.a, b($$0), g, $$1);
-      this.h = this.a($$0);
+   protected gef(ahd $$0, gdz $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public gdz e() {
+      return this.b;
    }
 
    @Nullable
-   private Path a(Path $$0) {
-      if (aa.aW && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+   public gef.a f() {
+      final geb $$0 = this.b.e();
+      return $$0 != null ? new gef.a() {
+         @Override
+         public void a() {
+            $$0.a(gef.this.c, gef.this.d);
          }
-      }
 
-      return null;
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
    }
 
-   private static aoj b(Path $$0) {
-      aok $$1 = new aok().a(d).a("minecraft", "realms");
-      return $$1.b().a().a(aoh.a, $$0).c();
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public ahd i() {
+      return this.a;
    }
 
    @Override
-   protected vb a(String $$0) {
-      vb $$1 = f.get($$0);
-      return (vb)($$1 != null ? $$1 : vb.b($$0));
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
    }
 
-   @Nullable
-   @Override
-   protected apa a(aog $$0) {
-      return apa.a("vanilla", e, true, b($$0), aoh.a, apa.b.b, ape.c);
+   public void j() {
+      this.b.a(this.c, this.d);
    }
 
-   @Nullable
-   @Override
-   protected apa a(String $$0, apa.c $$1, vb $$2) {
-      return apa.a($$0, $$2, false, $$1, aoh.a, apa.b.a, ape.c);
+   private float l() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
    }
 
-   @Override
-   protected void a(BiConsumer<String, Function<String, apa>> $$0) {
-      super.a($$0);
-      if (this.h != null) {
-         this.a(this.h, $$0);
-      }
+   public float k() {
+      return 4.0F / this.l();
+   }
+
+   public epx a(epx $$0) {
+      return new ftp($$0, this);
+   }
+
+   public interface a extends AutoCloseable {
+      void a();
+
+      @Override
+      void close();
    }
 }

@@ -1,23 +1,17 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxa extends dwv {
+public record dxa(ih<cmm> c, dxc d) {
    public static final Codec<dxa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bhv.b(dwv.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dxa::new)
+      $$0 -> $$0.group(aha.a(ke.F).fieldOf("display").forGetter($$0x -> $$0x.c), dxc.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dxa::new)
    );
-   private final bhv<dwv> b;
+   public static final Codec<ih<dxa>> b = agz.a(ke.az, a);
 
-   public dxa(bhv<dwv> $$0) {
-      this.b = $$0;
+   public ih<cmm> a() {
+      return this.c;
    }
 
-   @Override
-   public int a(auf $$0, dov $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
-   }
-
-   @Override
-   public dww<?> a() {
-      return dww.f;
+   public dxc b() {
+      return this.d;
    }
 }

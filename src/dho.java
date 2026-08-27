@@ -1,186 +1,143 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.time.Duration;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
 
-public class dho extends dgd {
-   public static final String a = "SkullOwner";
-   public static final String b = "note_block_sound";
-   @Nullable
-   private static Executor c;
-   @Nullable
-   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> d;
-   private static final Executor e = $$0 -> {
-      Executor $$1 = c;
-      if ($$1 != null) {
-         $$1.execute($$0);
-      }
-   };
-   @Nullable
-   private GameProfile f;
-   @Nullable
-   private agt g;
-   private int h;
-   private boolean i;
+public class dho extends dgo {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private ahd h = new ahd("empty");
+   private ahd i = new ahd("empty");
+   private ahc<eai> j = ahc.a(ke.aG, new ahd("empty"));
+   private dho.a k = dho.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int n;
 
-   public dho(hv $$0, dip $$1) {
-      super(dgf.p, $$0, $$1);
+   public dho(hx $$0, dja $$1) {
+      super(dgq.F, $$0, $$1);
    }
 
-   public static void a(final ahm $$0, Executor $$1) {
-      c = $$1;
-      final BooleanSupplier $$2 = () -> d == null;
-      d = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
-               return $$2.getAsBoolean() ? CompletableFuture.completedFuture(Optional.empty()) : dho.a($$0, $$0, $$2);
-            }
-         });
+   public ahd c() {
+      return this.h;
    }
 
-   public static void c() {
-      c = null;
-      d = null;
+   public ahd d() {
+      return this.i;
    }
 
-   static CompletableFuture<Optional<GameProfile>> a(String $$0, ahm $$1, BooleanSupplier $$2) {
-      return $$1.e().b($$0).thenApplyAsync($$2x -> {
-         if ($$2x.isPresent() && !$$2.getAsBoolean()) {
-            UUID $$3 = ((GameProfile)$$2x.get()).getId();
-            ProfileResult $$4 = $$1.b().fetchProfile($$3, true);
-            return $$4 != null ? Optional.ofNullable($$4.profile()) : $$2x;
-         } else {
-            return Optional.empty();
-         }
-      }, ac.f());
+   public ahc<eai> f() {
+      return this.j;
+   }
+
+   public String g() {
+      return this.l;
+   }
+
+   public dho.a k() {
+      return this.k;
+   }
+
+   public int l() {
+      return this.m;
+   }
+
+   public int m() {
+      return this.n;
+   }
+
+   public void a(ahd $$0) {
+      this.h = $$0;
+   }
+
+   public void b(ahd $$0) {
+      this.i = $$0;
+   }
+
+   public void a(ahc<eai> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dho.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
    }
 
    @Override
-   protected void b(sj $$0) {
+   protected void b(sl $$0) {
       super.b($$0);
-      if (this.f != null) {
-         sj $$1 = new sj();
-         sy.a($$1, this.f);
-         $$0.a("SkullOwner", $$1);
-      }
-
-      if (this.g != null) {
-         $$0.a("note_block_sound", this.g.toString());
-      }
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.n);
    }
 
    @Override
-   public void a(sj $$0) {
+   public void a(sl $$0) {
       super.a($$0);
-      if ($$0.b("SkullOwner", 10)) {
-         this.a(sy.a($$0.p("SkullOwner")));
-      } else if ($$0.b("ExtraType", 8)) {
-         String $$1 = $$0.l("ExtraType");
-         if (!auu.b($$1)) {
-            this.a(new GameProfile(ac.d, $$1));
-         }
-      }
-
-      if ($$0.b("note_block_sound", 8)) {
-         this.g = agt.a($$0.l("note_block_sound"));
-      }
+      this.h = new ahd($$0.l("name"));
+      this.i = new ahd($$0.l("target"));
+      this.j = ahc.a(ke.aG, new ahd($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = dho.a.a($$0.l("joint")).orElseGet(() -> dak.h(this.r()).o().d() ? dho.a.b : dho.a.a);
+      this.m = $$0.h("placement_priority");
+      this.n = $$0.h("selection_priority");
    }
 
-   public static void a(csy $$0, hv $$1, dip $$2, dho $$3) {
-      if ($$2.b(dda.a) && $$2.c(dda.a)) {
-         $$3.i = true;
-         $$3.h++;
-      } else {
-         $$3.i = false;
-      }
-   }
-
-   public float a(float $$0) {
-      return this.i ? (float)this.h + $$0 : (float)this.h;
-   }
-
-   @Nullable
-   public GameProfile d() {
-      return this.f;
-   }
-
-   @Nullable
-   public agt f() {
-      return this.g;
-   }
-
-   public yv g() {
-      return yv.a(this);
+   public ze w() {
+      return ze.a(this);
    }
 
    @Override
-   public sj ax_() {
+   public sl ax_() {
       return this.q();
    }
 
-   public void a(@Nullable GameProfile $$0) {
-      synchronized (this) {
-         this.f = $$0;
+   public void a(amz $$0, int $$1, boolean $$2) {
+      hx $$3 = this.aB_().a(this.r().c(dak.b).a());
+      it<eai> $$4 = $$0.I_().d(ke.aG);
+      ih<eai> $$5 = $$4.f(this.j);
+      eac.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements ave {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
       }
 
-      this.k();
-   }
-
-   private void k() {
-      if (this.f != null && !ac.b(this.f.getName()) && !b(this.f)) {
-         a(this.f.getName()).thenAcceptAsync($$0 -> {
-            this.f = $$0.orElse(this.f);
-            this.e();
-         }, e);
-      } else {
-         this.e();
+      @Override
+      public String c() {
+         return this.c;
       }
-   }
 
-   @Nullable
-   public static GameProfile d(sj $$0) {
-      if ($$0.b("SkullOwner", 10)) {
-         return sy.a($$0.p("SkullOwner"));
-      } else {
-         if ($$0.b("SkullOwner", 8)) {
-            String $$1 = $$0.l("SkullOwner");
-            if (!ac.b($$1)) {
-               $$0.r("SkullOwner");
-               a($$0, $$1);
-            }
-         }
-
-         return null;
+      public static Optional<dho.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
       }
-   }
 
-   public static void e(sj $$0) {
-      String $$1 = $$0.l("SkullOwner");
-      if (!ac.b($$1)) {
-         a($$0, $$1);
+      public vd a() {
+         return vd.c("jigsaw_block.joint." + this.c);
       }
-   }
-
-   private static void a(sj $$0, String $$1) {
-      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", sy.a(new sj(), $$2.orElse(new GameProfile(ac.d, $$1)))));
-   }
-
-   private static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = d;
-      return $$1 != null && cer.c($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
-   }
-
-   private static boolean b(GameProfile $$0) {
-      return $$0.getProperties().containsKey("textures");
    }
 }

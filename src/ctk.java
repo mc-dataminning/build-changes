@@ -1,25 +1,55 @@
-public final class ctk implements dki {
-   private final int a;
-   private final dip[] b;
+public interface ctk {
+   int K_();
 
-   public ctk(int $$0, dip[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   int J_();
+
+   default int al() {
+      return this.J_() + this.K_();
    }
 
-   @Override
-   public dip a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : cwb.a.o();
+   default int am() {
+      return this.ao() - this.an();
    }
 
-   @Override
-   public void a(int $$0, dip $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   default int an() {
+      return iz.a(this.J_());
+   }
+
+   default int ao() {
+      return iz.a(this.al() - 1) + 1;
+   }
+
+   default boolean s(hx $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.J_() || $$0 >= this.al();
+   }
+
+   default int e(int $$0) {
+      return this.f(iz.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.an();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.an();
+   }
+
+   static ctk e(final int $$0, final int $$1) {
+      return new ctk() {
+         @Override
+         public int K_() {
+            return $$1;
+         }
+
+         @Override
+         public int J_() {
+            return $$0;
+         }
+      };
    }
 }

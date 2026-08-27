@@ -1,43 +1,121 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public class dmw<T extends dnb> {
-   private final T a;
-   @Nullable
-   private ix b;
+public class dmw<T extends dmr> {
+   private final Class<T> a;
+   private final Long2ObjectFunction<dne> b;
+   private final Long2ObjectMap<dmv<T>> c = new Long2ObjectOpenHashMap();
+   private final LongSortedSet d = new LongAVLTreeSet();
 
-   public dmw(T $$0) {
+   public dmw(Class<T> $$0, Long2ObjectFunction<dne> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(amp $$0) {
-      this.c($$0);
-   }
+   public void a(elh $$0, asw<dmv<T>> $$1) {
+      int $$2 = 2;
+      int $$3 = iz.a($$0.a - 2.0);
+      int $$4 = iz.a($$0.b - 4.0);
+      int $$5 = iz.a($$0.c - 2.0);
+      int $$6 = iz.a($$0.d + 2.0);
+      int $$7 = iz.a($$0.e + 0.0);
+      int $$8 = iz.a($$0.f + 2.0);
 
-   public T a() {
-      return this.a;
-   }
+      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+         long $$10 = iz.b($$9, 0, 0);
+         long $$11 = iz.b($$9, -1, -1);
+         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
 
-   public void b(amp $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
-
-   public void c(amp $$0) {
-      this.a.a().a($$0).map(ix::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(ctb $$0, @Nullable ix $$1, Consumer<dnc> $$2) {
-      if ($$1 != null) {
-         dkl $$3 = $$0.a($$1.a(), $$1.c(), dkq.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
+         while ($$12.hasNext()) {
+            long $$13 = $$12.nextLong();
+            int $$14 = iz.c($$13);
+            int $$15 = iz.d($$13);
+            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
+               dmv<T> $$16 = (dmv<T>)this.c.get($$13);
+               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
+                  return;
+               }
+            }
          }
       }
+   }
+
+   public LongStream a(long $$0) {
+      int $$1 = csp.a($$0);
+      int $$2 = csp.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+      }
+   }
+
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = iz.b($$0, 0, $$1);
+      long $$3 = iz.b($$0, -1, $$1);
+      return this.d.subSet($$2, $$3 + 1L);
+   }
+
+   public Stream<dmv<T>> b(long $$0) {
+      return this.a($$0).<dmv<T>>mapToObj(this.c::get).filter(Objects::nonNull);
+   }
+
+   private static long f(long $$0) {
+      return csp.c(iz.b($$0), iz.d($$0));
+   }
+
+   public dmv<T> c(long $$0) {
+      return (dmv<T>)this.c.computeIfAbsent($$0, this::g);
+   }
+
+   @Nullable
+   public dmv<T> d(long $$0) {
+      return (dmv<T>)this.c.get($$0);
+   }
+
+   private dmv<T> g(long $$0) {
+      long $$1 = f($$0);
+      dne $$2 = (dne)this.b.get($$1);
+      this.d.add($$0);
+      return new dmv<>(this.a, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(elh $$0, asw<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(dmy<T, U> $$0, elh $$1, asw<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   @avn
+   public int b() {
+      return this.d.size();
    }
 }

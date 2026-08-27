@@ -1,34 +1,146 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
-public class bpl {
-   public static bnn<blv> a(bly $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ai().f()), $$1);
+public class bpl<E extends bmo> extends bnw<E> {
+   public static final int c = 160;
+   private final ToIntFunction<E> d;
+   private final int e;
+   private final int f;
+   private final float g;
+   private final bwt h;
+   private final int i;
+   private final Function<E, arl> j;
+   private Optional<Long> k = Optional.empty();
+   private Optional<bpl.a> l = Optional.empty();
+
+   public bpl(ToIntFunction<E> $$0, int $$1, int $$2, float $$3, bwt $$4, int $$5, Function<E, arl> $$6) {
+      super(ImmutableMap.of(bvh.n, bvi.c, bvh.U, bvi.b, bvh.h, bvi.a, bvh.V, bvi.b), 160);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   public static box<blv> a(blj<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ai()), $$1);
+   protected void a(amz $$0, bmo $$1, long $$2) {
+      bnf<?> $$3 = $$1.dO();
+      $$3.c(bvh.h).flatMap($$1x -> $$1x.a($$1xx -> this.h.a($$1, $$1xx))).ifPresent($$1x -> this.b($$1, $$1x));
    }
 
-   public static box<blv> a(float $$0) {
-      return a($$0x -> true, $$0);
+   protected void b(amz $$0, E $$1, long $$2) {
+      bnf<?> $$3 = $$1.dO();
+      if (!$$3.a(bvh.V)) {
+         $$0.a($$1, (byte)59);
+         $$3.a(bvh.U, this.d.applyAsInt($$1));
+      }
    }
 
-   public static box<blv> a(Predicate<blv> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return bqz.a(
-         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$2x -> $$2x.group($$2x.c(bux.n), $$2x.b(bux.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<blv> $$8 = $$2x.<buz>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((blf)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bnx($$8.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   protected boolean c(amz $$0, bmo $$1, long $$2) {
+      return this.l.isPresent() && this.l.get().c().bx();
+   }
+
+   protected void d(amz $$0, E $$1, long $$2) {
+      if (!this.l.isEmpty()) {
+         $$1.dO().a(bvh.m, new bvk(this.l.get().a(), this.g, 0));
+         $$1.dO().a(bvh.n, new boh(this.l.get().c(), true));
+         boolean $$3 = !this.l.get().c().dm().equals(this.l.get().b());
+         if ($$3) {
+            $$0.a($$1, (byte)59);
+            $$1.N().n();
+            this.b($$1, this.l.get().c);
+         } else {
+            hx $$4 = $$1.dm();
+            if ($$4.equals(this.l.get().a())) {
+               $$0.a($$1, (byte)58);
+               if (this.k.isEmpty()) {
+                  this.k = Optional.of($$2);
+               }
+
+               if ($$2 - this.k.get() >= (long)this.i) {
+                  $$1.dO().a(bvh.V, this.a($$4, this.l.get().b()));
+                  $$0.a(null, $$1, this.j.apply($$1), arn.g, 1.0F, $$1.eX());
+                  this.l = Optional.empty();
+               }
+            }
+         }
+      }
+   }
+
+   private elm a(hx $$0, hx $$1) {
+      double $$2 = 0.5;
+      double $$3 = 0.5 * (double)aui.j((double)($$1.u() - $$0.u()));
+      double $$4 = 0.5 * (double)aui.j((double)($$1.w() - $$0.w()));
+      return elm.c($$1).b($$3, 0.0, $$4);
+   }
+
+   private Optional<hx> a(bmo $$0, bmf $$1) {
+      hx $$2 = $$1.dm();
+      if (!this.a($$0, $$2)) {
+         return Optional.empty();
+      } else {
+         List<hx> $$3 = Lists.newArrayList();
+         hx.a $$4 = $$2.j();
+
+         for (ic $$5 : ic.c.a) {
+            $$4.g($$2);
+
+            for (int $$6 = 0; $$6 < this.f; $$6++) {
+               if (!this.a($$0, $$4.c($$5))) {
+                  $$4.c($$5.g());
+                  break;
+               }
+            }
+
+            if ($$4.k($$2) >= this.e) {
+               $$3.add($$4.i());
+            }
+         }
+
+         bvp $$7 = $$0.N();
+         return $$3.stream().sorted(Comparator.comparingDouble($$0.dm()::j)).filter($$1x -> {
+            eez $$2x = $$7.a($$1x, 0);
+            return $$2x != null && $$2x.j();
+         }).findFirst();
+      }
+   }
+
+   private boolean a(bmo $$0, hx $$1) {
+      return $$0.N().a($$1) && $$0.a(efe.a($$0.dM(), $$1.j())) == 0.0F;
+   }
+
+   private void b(bmo $$0, bmf $$1) {
+      this.k = Optional.empty();
+      this.l = this.a($$0, $$1).map($$1x -> new bpl.a($$1x, $$1.dm(), $$1));
+   }
+
+   public static class a {
+      private final hx a;
+      private final hx b;
+      final bmf c;
+
+      public a(hx $$0, hx $$1, bmf $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public hx a() {
+         return this.a;
+      }
+
+      public hx b() {
+         return this.b;
+      }
+
+      public bmf c() {
+         return this.c;
+      }
    }
 }

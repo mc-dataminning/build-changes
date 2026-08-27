@@ -1,278 +1,125 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class esf extends gjl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final agt b = new agt("minecraft", "textures/gui/options_background.png");
-   private static final vb c = vb.c("mco.question");
-   static final vb v = vb.c("mco.configure.world.invites.normal.tooltip");
-   static final vb w = vb.c("mco.configure.world.invites.ops.tooltip");
-   static final vb x = vb.c("mco.configure.world.invites.remove.tooltip");
-   private static final int y = -1;
-   private final ert z;
-   final eqk A;
-   esf.b B;
-   int C;
-   int D;
-   private ewh E;
-   private ewh F;
-   int G = -1;
-   private boolean H;
+public class esf extends gkc {
+   private static final vd a = vd.c("mco.backup.info.title");
+   private static final vd b = vd.c("mco.backup.unknown");
+   private final fct c;
+   final eqp v;
+   final fai w = new fai(this);
+   private esf.a x;
 
-   public esf(ert $$0, eqk $$1) {
-      super(vb.c("mco.configure.world.players.title"));
-      this.z = $$0;
-      this.A = $$1;
+   public esf(fct $$0, eqp $$1) {
+      super(a);
+      this.c = $$0;
+      this.v = $$1;
    }
 
    @Override
-   public void aP_() {
-      this.C = this.g / 2 - 160;
-      this.D = 150;
-      int $$0 = this.g / 2 + 12;
-      this.B = new esf.b();
-      this.B.f(this.C);
-      this.e(this.B);
+   public void aN_() {
+      this.w.a(new eyf(a, this.i));
+      this.x = this.w.c(new esf.a(this.f));
+      this.w.b(ewy.a(vc.k, $$0 -> this.aE_()).a());
+      this.c();
+      this.w.a($$1 -> {
+         eww var10000 = this.d($$1);
+      });
+   }
 
-      for (eqg $$1 : this.A.h) {
-         this.B.a($$1);
+   @Override
+   protected void c() {
+      this.x.b(this.g, this.h - this.w.b() - this.w.c());
+      this.w.a();
+   }
+
+   @Override
+   public void aE_() {
+      this.f.a(this.c);
+   }
+
+   vd a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
+      } else {
+         return (vd)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : vd.b($$1));
       }
+   }
 
-      this.G = -1;
-      this.d(ewh.a(vb.c("mco.configure.world.buttons.invite"), $$0x -> this.f.a(new ery(this.z, this, this.A))).a($$0, h(1), this.D + 10, 20).a());
-      this.E = this.d(ewh.a(vb.c("mco.configure.world.invites.remove.tooltip"), $$0x -> this.l(this.G)).a($$0, h(7), this.D + 10, 20).a());
-      this.F = this.d(ewh.a(vb.c("mco.configure.world.invites.ops.tooltip"), $$0x -> {
-         if (this.A.h.get(this.G).c()) {
-            this.k(this.G);
-         } else {
-            this.j(this.G);
+   private vd a(String $$0) {
+      try {
+         return etc.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   private vd b(String $$0) {
+      try {
+         return etc.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   class a extends exu<esf.b> {
+      public a(eva $$0) {
+         super($$0, esf.this.g, esf.this.h - esf.this.w.b() - esf.this.w.c(), esf.this.w.c(), 36);
+         if (esf.this.v.e != null) {
+            esf.this.v.e.forEach(($$0x, $$1) -> this.b(esf.this.new b($$0x, $$1)));
          }
-      }).a($$0, h(9), this.D + 10, 20).a());
-      this.d(ewh.a(va.k, $$0x -> this.D()).a($$0 + this.D / 2 + 2, h(12), this.D / 2 + 10 - 2, 20).a());
-      this.C();
-   }
-
-   @Override
-   void C() {
-      this.E.j = this.i(this.G);
-      this.F.j = this.i(this.G);
-      this.B.d();
-   }
-
-   private boolean i(int $$0) {
-      return $$0 != -1;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.D();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
       }
    }
 
-   private void D() {
-      if (this.H) {
-         this.f.a(this.z.f());
-      } else {
-         this.f.a(this.z);
-      }
-   }
+   class b extends exu.a<esf.b> {
+      private static final vd b = vd.c("mco.backup.entry.templateName");
+      private static final vd c = vd.c("mco.backup.entry.gameDifficulty");
+      private static final vd d = vd.c("mco.backup.entry.name");
+      private static final vd e = vd.c("mco.backup.entry.gameServerVersion");
+      private static final vd f = vd.c("mco.backup.entry.uploaded");
+      private static final vd g = vd.c("mco.backup.entry.enabledPack");
+      private static final vd h = vd.c("mco.backup.entry.description");
+      private static final vd i = vd.c("mco.backup.entry.gameMode");
+      private static final vd j = vd.c("mco.backup.entry.seed");
+      private static final vd k = vd.c("mco.backup.entry.worldType");
+      private static final vd l = vd.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
 
-   void j(int $$0) {
-      ept $$1 = ept.a();
-      UUID $$2 = this.A.h.get($$0).b();
-
-      try {
-         this.a($$1.b(this.A.a, $$2));
-      } catch (erg var5) {
-         a.error("Couldn't op the user", var5);
-      }
-
-      this.C();
-   }
-
-   void k(int $$0) {
-      ept $$1 = ept.a();
-      UUID $$2 = this.A.h.get($$0).b();
-
-      try {
-         this.a($$1.c(this.A.a, $$2));
-      } catch (erg var5) {
-         a.error("Couldn't deop the user", var5);
+      public b(String $$0, String $$1) {
+         this.m = $$0;
+         this.n = $$1;
       }
 
-      this.C();
-   }
-
-   private void a(eqc $$0) {
-      for (eqg $$1 : this.A.h) {
-         $$1.a($$0.a.contains($$1.a()));
-      }
-   }
-
-   void l(int $$0) {
-      this.C();
-      if ($$0 >= 0 && $$0 < this.A.h.size()) {
-         eqg $$1 = this.A.h.get($$0);
-         eru $$2 = new eru($$1x -> {
-            if ($$1x) {
-               ept $$2x = ept.a();
-
-               try {
-                  $$2x.a(this.A.a, $$1.b());
-               } catch (erg var5) {
-                  a.error("Couldn't uninvite user", var5);
-               }
-
-               this.A.h.remove(this.G);
-               this.G = -1;
-               this.C();
-            }
-
-            this.H = true;
-            this.f.a(this);
-         }, c, vb.a("mco.configure.world.uninvite.player", $$1.a()));
-         this.f.a($$2);
-      }
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.B.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      int $$4 = h(12) + 20;
-      $$0.a(0.25F, 0.25F, 0.25F, 1.0F);
-      $$0.a(b, 0, $$4, 0.0F, 0.0F, this.g, this.h - $$4, 32, 32);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      String $$5 = this.A.h != null ? Integer.toString(this.A.h.size()) : "0";
-      $$0.a(this.i, vb.a("mco.configure.world.invited.number", $$5), this.C, h(0), -1, false);
-   }
-
-   class a extends exd.a<esf.a> {
-      private static final int b = 3;
-      private static final int c = 1;
-      private static final int d = 8;
-      private static final int e = 7;
-      private static final exu f = new exu(new agt("player_list/remove_player"), new agt("player_list/remove_player_highlighted"));
-      private static final exu g = new exu(new agt("player_list/make_operator"), new agt("player_list/make_operator_highlighted"));
-      private static final exu h = new exu(new agt("player_list/remove_operator"), new agt("player_list/remove_operator_highlighted"));
-      private final eqg i;
-      private final List<ewf> j = new ArrayList<>();
-      private final ewt k;
-      private final ewt l;
-      private final ewt m;
-
-      public a(eqg $$0) {
-         this.i = $$0;
-         int $$1 = esf.this.A.h.indexOf(this.i);
-         int $$2 = esf.this.B.p() - 16 - 9;
-         int $$3 = esf.this.B.h($$1) + 1;
-         this.k = new ewt($$2, $$3, 8, 7, f, $$1x -> esf.this.l($$1), va.a);
-         this.k.a(exs.a(esf.x));
-         this.j.add(this.k);
-         $$2 += 11;
-         this.l = new ewt($$2, $$3, 8, 7, g, $$1x -> esf.this.j($$1), va.a);
-         this.l.a(exs.a(esf.v));
-         this.j.add(this.l);
-         this.m = new ewt($$2, $$3, 8, 7, h, $$1x -> esf.this.k($$1), va.a);
-         this.m.a(exs.a(esf.w));
-         this.j.add(this.m);
-         this.b();
+      @Override
+      public void a(ewm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(esf.this.i, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(esf.this.i, esf.this.a(this.m, this.n), $$3, $$2 + 12, -1);
       }
 
-      public void b() {
-         this.l.j = !this.i.c();
-         this.m.j = !this.l.j;
+      private vd a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
       }
 
       @Override
       public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.l.a($$0, $$1, $$2)) {
-            this.m.a($$0, $$1, $$2);
-         }
-
-         this.k.a($$0, $$1, $$2);
          return true;
       }
 
       @Override
-      public void a(evw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.i.d()) {
-            $$10 = -6250336;
-         } else if (this.i.e()) {
-            $$10 = 8388479;
-         } else {
-            $$10 = -1;
-         }
-
-         eta.a($$0, esf.this.C + 2 + 2, $$2 + 1, 8, this.i.b());
-         $$0.a(esf.this.i, this.i.a(), esf.this.C + 3 + 12, $$2 + 1, $$10, false);
-         this.j.forEach($$5x -> {
-            $$5x.g($$2 + 1);
-            $$5x.a($$0, $$6, $$7, $$9);
-         });
-      }
-
-      @Override
-      public vb a() {
-         return vb.a("narrator.select", this.i.a());
-      }
-   }
-
-   class b extends gjk<esf.a> {
-      public b() {
-         super(esf.this.D + 10, esf.h(12) + 20, esf.h(1), esf.h(12) + 20, 13);
-      }
-
-      public void d() {
-         if (esf.this.G != -1) {
-            this.d(esf.this.G).b();
-         }
-      }
-
-      public void a(eqg $$0) {
-         this.a((esf.a)(esf.this.new a($$0)));
-      }
-
-      @Override
-      public int b() {
-         return (int)((double)this.e * 1.0);
-      }
-
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         this.b($$0);
-      }
-
-      public void b(int $$0) {
-         esf.this.G = $$0;
-         esf.this.C();
-      }
-
-      public void a(@Nullable esf.a $$0) {
-         super.a($$0);
-         esf.this.G = this.i().indexOf($$0);
-         esf.this.C();
-      }
-
-      @Override
-      public int c() {
-         return esf.this.C + this.e;
-      }
-
-      @Override
-      public int a() {
-         return this.k() * 13;
+      public vd a() {
+         return vd.a("narrator.select", this.m + " " + this.n);
       }
    }
 }

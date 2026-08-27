@@ -1,47 +1,58 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public record ejg(Optional<bp> b, ege.b c) implements ejd {
-   public static final Codec<ejg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atg.a(bp.a, "predicate").forGetter(ejg::c), ege.b.e.fieldOf("entity").forGetter(ejg::d)).apply($$0, ejg::new)
-   );
+public record ejg(ahd b) implements ejo {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<ejg> a = RecordCodecBuilder.create($$0 -> $$0.group(ahd.a.fieldOf("name").forGetter(ejg::c)).apply($$0, ejg::new));
 
    @Override
-   public eje b() {
-      return ejf.g;
+   public ejp b() {
+      return ejq.q;
    }
 
    @Override
-   public Set<eim<?>> a() {
-      return ImmutableSet.of(eip.f, this.c.a());
+   public void a(egy $$0) {
+      egr<ejo> $$1 = new egr<>(egu.a, this.b);
+      if ($$0.a($$1)) {
+         $$0.b("Condition " + this.b + " is recursively called");
+      } else {
+         ejo.super.a($$0);
+         $$0.a()
+            .getElementOptional($$1)
+            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.b("Unknown condition table called " + this.b));
+      }
    }
 
-   public boolean a(ege $$0) {
-      blf $$1 = $$0.c(this.c.a());
-      elb $$2 = $$0.c(eip.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public boolean a(egp $$0) {
+      ejo $$1 = $$0.a().getElement(egu.a, this.b);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b);
+         return false;
+      } else {
+         egp.c<?> $$2 = egp.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
+         }
+      }
    }
 
-   public static ejd.a a(ege.b $$0) {
-      return a($$0, bp.a.a());
+   public static ejo.a a(ahd $$0) {
+      return () -> new ejg($$0);
    }
 
-   public static ejd.a a(ege.b $$0, bp.a $$1) {
-      return () -> new ejg(Optional.of($$1.b()), $$0);
-   }
-
-   public static ejd.a a(ege.b $$0, bp $$1) {
-      return () -> new ejg(Optional.of($$1), $$0);
-   }
-
-   public Optional<bp> c() {
+   public ahd c() {
       return this.b;
-   }
-
-   public ege.b d() {
-      return this.c;
    }
 }

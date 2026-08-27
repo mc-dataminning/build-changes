@@ -1,17 +1,18 @@
-class bky extends bkq {
-   protected bky(bkr $$0, int $$1) {
+class bky extends bla {
+   protected bky(blb $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public void a(blv $$0, int $$1) {
+   public void a(bmf $$0, int $$1) {
       super.a($$0, $$1);
-      $$0.a($$0.dN().p(), 1.0F);
+      if ($$0 instanceof cfb $$2) {
+         $$2.A(0.005F * (float)($$1 + 1));
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return true;
    }
 }

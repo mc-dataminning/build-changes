@@ -1,29 +1,36 @@
-import java.nio.file.Path;
-import java.util.Map;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-interface aoq {
-   aoq a = new aoq() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-   };
-   aoq b = new aoq() {
-      @Override
-      public String toString() {
-         return "relative";
-      }
-   };
+public interface aoq extends AutoCloseable {
+   String a = ".mcmeta";
+   String b = "pack.mcmeta";
 
-   public static record a(Map<String, aon> c) implements aoq {
-      public Map<String, aon> a() {
-         return this.c;
-      }
+   @Nullable
+   apu<InputStream> a(String... var1);
+
+   @Nullable
+   apu<InputStream> a(aor var1, ahd var2);
+
+   void a(aor var1, String var2, String var3, aoq.a var4);
+
+   Set<String> a(aor var1);
+
+   @Nullable
+   <T> T a(apc<T> var1) throws IOException;
+
+   String a();
+
+   default boolean b() {
+      return false;
    }
 
-   public static record b(Path c) implements aoq {
-      public Path a() {
-         return this.c;
-      }
+   @Override
+   void close();
+
+   @FunctionalInterface
+   public interface a extends BiConsumer<ahd, apu<InputStream>> {
    }
 }

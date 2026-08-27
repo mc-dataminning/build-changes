@@ -1,228 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+public class flv<T extends blp> extends fjh<T> {
+   private final fmp a;
+   private final fmp b;
 
-public class flv {
-   private static final fmc a = new fmc(0.008F);
-   private static final fmc b = new fmc(1.0F);
-   private static final fmc c = new fmc(0.5F);
+   public flv(fmp $$0) {
+      this.a = $$0;
+      this.b = $$0.b("tail");
+   }
 
-   public static Map<flw, fme> a() {
-      Builder<flw, fme> $$0 = ImmutableMap.builder();
-      fme $$1 = fme.a(fjl.a(fmc.a, 0.0F), 64, 64);
-      fme $$2 = fme.a(fjk.a(b), 64, 32);
-      fme $$3 = fme.a(fjk.a(new fmc(1.02F)), 64, 32);
-      fme $$4 = fme.a(fjk.a(c), 64, 32);
-      fme $$5 = fjt.b();
-      fme $$6 = fku.c();
-      fme $$7 = fme.a(fjj.a(fmc.a), 64, 64);
-      fme $$8 = fjm.b();
-      fme $$9 = fir.c();
-      fme $$10 = fme.a(fjw.a(fmc.a), 64, 32);
-      fme $$11 = fme.a(fkc.a(fmc.a), 64, 64);
-      fme $$12 = fme.a(fkb.a(), 64, 64);
-      fme $$13 = fku.b();
-      fme $$14 = fjr.a(fmc.a);
-      fme $$15 = flb.b();
-      fme $$16 = fji.c();
-      fme $$17 = fkt.c();
-      fme $$18 = fme.a(flj.b(), 64, 64);
-      fme $$19 = fkz.b();
-      $$0.put(flx.a, fhw.b());
-      $$0.put(flx.b, fia.c());
-      $$0.put(flx.c, fhz.a(c));
-      $$0.put(flx.d, fhz.a(b));
-      $$0.put(flx.e, fib.c());
-      $$0.put(flx.f, fud.a());
-      $$0.put(flx.g, fic.b());
-      $$0.put(flx.h, fuf.c());
-      $$0.put(flx.i, fuf.b());
-      $$0.put(flx.j, fid.c());
-      $$0.put(flx.k, fug.b());
-      $$0.put(flx.l, fie.b());
-      $$0.put(flx.m, fig.a());
-      $$0.put(flx.n, fih.b());
-      $$0.put(flx.p, fih.c());
-      $$0.put(flx.o, fih.d());
-      $$0.put(flx.q, $$10);
-      $$0.put(flx.r, fme.a(fjw.a(new fmc(0.01F)), 64, 32));
-      $$0.put(flx.s, fii.b());
-      $$0.put(flx.t, $$19);
-      $$0.put(flx.u, fuo.b());
-      $$0.put(flx.v, $$5);
-      $$0.put(flx.w, fin.c());
-      $$0.put(flx.x, fio.b());
-      $$0.put(flx.y, $$5);
-      $$0.put(flx.A, fup.b());
-      $$0.put(flx.C, fup.c());
-      $$0.put(flx.B, fup.d());
-      $$0.put(flx.z, fup.e());
-      $$0.put(flx.D, $$9);
-      $$0.put(flx.E, fis.a(fmc.a));
-      $$0.put(flx.F, fis.a(new fmc(2.0F)));
-      $$0.put(flx.G, $$6);
-      $$0.put(flx.H, fuq.b());
-      $$0.put(flx.I, fuq.c());
-      $$0.put(flx.J, fit.b());
-      $$0.put(flx.K, fim.c());
-      $$0.put(flx.L, fuo.d());
-      $$0.put(flx.M, fuo.c());
-      $$0.put(flx.N, fls.a());
-      $$0.put(flx.O, fiu.a(fmc.a));
-      $$0.put(flx.P, $$4);
-      $$0.put(flx.Q, $$4);
-      $$0.put(flx.R, fiu.a(new fmc(0.25F)));
-      $$0.put(flx.S, fjf.b());
-      $$0.put(flx.T, fiv.c());
-      $$0.put(flx.U, fiw.c());
-      $$0.put(flx.V, fix.b());
-      $$0.put(flx.W, fxj.a());
-      $$0.put(flx.X, fxi.a());
-      $$0.put(flx.Y, $$8);
-      $$0.put(flx.Z, fiz.b());
-      $$0.put(flx.aa, fja.c());
-      $$0.put(flx.ab, fjb.b());
-      $$0.put(flx.ac, $$5);
-      $$0.put(flx.ad, fjc.b());
-      $$0.put(flx.ae, $$1);
-      $$0.put(flx.af, $$4);
-      $$0.put(flx.ag, $$2);
-      $$0.put(flx.ah, fla.b());
-      $$0.put(flx.ai, fje.c());
-      $$0.put(flx.aj, fjf.b());
-      $$0.put(flx.ak, $$16);
-      $$0.put(flx.al, $$5);
-      $$0.put(flx.am, $$7);
-      $$0.put(flx.an, fme.a(fjj.a(new fmc(0.1F)), 64, 64));
-      $$0.put(flx.ao, $$1);
-      $$0.put(flx.ap, $$4);
-      $$0.put(flx.aq, $$2);
-      $$0.put(flx.ar, $$8);
-      $$0.put(flx.as, fjn.b());
-      $$0.put(flx.at, fjp.b());
-      $$0.put(flx.au, $$14);
-      $$0.put(flx.av, fjr.a(new fmc(0.5F)));
-      $$0.put(flx.aw, fjs.b());
-      $$0.put(flx.ax, fjo.b());
-      $$0.put(flx.ay, $$5);
-      $$0.put(flx.az, $$9);
-      $$0.put(flx.aA, fim.c());
-      $$0.put(flx.aB, $$10);
-      $$0.put(flx.aC, fjx.c());
-      $$0.put(flx.aD, fjy.b());
-      $$0.put(flx.aE, fjz.b());
-      $$0.put(flx.aF, fka.a(fmc.a));
-      $$0.put(flx.aN, fka.a(new fmc(0.5F)));
-      $$0.put(flx.aG, $$11);
-      $$0.put(flx.aL, $$4);
-      $$0.put(flx.aM, $$3);
-      $$0.put(flx.aH, $$11);
-      $$0.put(flx.aI, $$4);
-      $$0.put(flx.aJ, $$3);
-      $$0.put(flx.aK, $$12);
-      $$0.put(flx.aO, $$8);
-      $$0.put(flx.aP, fme.a(fkd.a(fmc.a, false), 64, 64));
-      $$0.put(flx.aQ, $$13);
-      $$0.put(flx.aR, $$4);
-      $$0.put(flx.aS, $$2);
-      $$0.put(flx.aT, fme.a(fkd.a(fmc.a, true), 64, 64));
-      $$0.put(flx.aU, $$4);
-      $$0.put(flx.aV, $$2);
-      $$0.put(flx.aW, gcg.a());
-      $$0.put(flx.aX, fke.c());
-      $$0.put(flx.aY, fkf.b());
-      $$0.put(flx.aZ, fkg.b());
-      $$0.put(flx.ba, fkh.b());
-      $$0.put(flx.bb, fkj.a());
-      $$0.put(flx.bc, fkl.b());
-      $$0.put(flx.bd, fkm.b());
-      $$0.put(flx.be, fko.c());
-      $$0.put(flx.bf, fkn.c());
-      $$0.put(flx.bg, fkp.a());
-      $$0.put(flx.bh, fkr.a());
-      $$0.put(flx.bi, fkq.b());
-      $$0.put(flx.bj, fks.b());
-      $$0.put(flx.bk, $$17);
-      $$0.put(flx.bm, $$4);
-      $$0.put(flx.bn, $$2);
-      $$0.put(flx.bl, $$7);
-      $$0.put(flx.bo, $$6);
-      $$0.put(flx.bp, fkw.c());
-      $$0.put(flx.bq, fkw.b());
-      $$0.put(flx.br, fkx.b());
-      $$0.put(flx.bs, fky.b());
-      $$0.put(flx.bt, $$5);
-      $$0.put(flx.bu, $$19);
-      $$0.put(flx.bv, fla.b());
-      $$0.put(flx.bw, $$17);
-      $$0.put(flx.bx, $$4);
-      $$0.put(flx.by, $$2);
-      $$0.put(flx.bz, fme.a(fjl.a(new fmc(0.25F), 0.0F), 64, 32));
-      $$0.put(flx.bA, $$15);
-      $$0.put(flx.bB, $$15);
-      $$0.put(flx.bC, flc.c());
-      $$0.put(flx.bD, $$5);
-      $$0.put(flx.bE, $$14);
-      $$0.put(flx.bF, fld.a());
-      $$0.put(flx.bG, flf.a(fmc.a));
-      $$0.put(flx.bH, flf.a(a));
-      $$0.put(flx.bI, fle.a(fmc.a));
-      $$0.put(flx.bJ, fle.a(a));
-      $$0.put(flx.bK, flg.c());
-      $$0.put(flx.bL, flh.b());
-      $$0.put(flx.bM, $$18);
-      $$0.put(flx.bN, $$8);
-      $$0.put(flx.bO, flk.b());
-      $$0.put(flx.bP, $$18);
-      $$0.put(flx.bQ, flm.b());
-      $$0.put(flx.bR, fln.c());
-      $$0.put(flx.bS, flo.a(fmc.a));
-      $$0.put(flx.bT, flo.a(c));
-      $$0.put(flx.bY, gaq.a());
-      $$0.put(flx.bU, $$17);
-      $$0.put(flx.bV, $$4);
-      $$0.put(flx.bW, $$2);
-      $$0.put(flx.bX, $$6);
-      $$0.put(flx.bZ, flp.c());
-      $$0.put(flx.ca, $$16);
-      $$0.put(flx.cb, $$1);
-      $$0.put(flx.ce, $$4);
-      $$0.put(flx.cf, $$2);
-      $$0.put(flx.cc, $$13);
-      $$0.put(flx.cd, $$7);
-      $$0.put(flx.cg, flr.c());
-      $$0.put(flx.ch, flr.a(c));
-      $$0.put(flx.ci, flr.a(b));
-      $$0.put(flx.cj, $$11);
-      $$0.put(flx.ck, $$4);
-      $$0.put(flx.cl, $$3);
-      fme $$20 = fif.a();
-      fme $$21 = fik.e();
-      fme $$22 = fkk.b();
-      fme $$23 = fil.a();
+   public static fmv a(fmt $$0) {
+      fmx $$1 = new fmx();
+      fmy $$2 = $$1.a();
+      int $$3 = 22;
+      $$2.a("body", fmu.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), fmr.a(0.0F, 22.0F, 0.0F));
+      $$2.a("tail", fmu.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fmr.a(0.0F, 22.0F, 3.0F));
+      $$2.a("right_fin", fmu.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fmr.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fmu.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fmr.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fmu.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fmr.a(0.0F, 20.5F, -3.0F));
+      return fmv.a($$1, 32, 32);
+   }
 
-      for (cgl.b $$24 : cgl.b.values()) {
-         if ($$24 == cgl.b.i) {
-            $$0.put(flx.c($$24), $$22);
-            $$0.put(flx.d($$24), $$23);
-         } else {
-            $$0.put(flx.c($$24), $$20);
-            $$0.put(flx.d($$24), $$21);
-         }
+   @Override
+   public fmp a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      if (!$$0.aZ()) {
+         $$6 = 1.5F;
       }
 
-      fme $$25 = fuw.f();
-      dkc.a().forEach($$2x -> $$0.put(flx.a($$2x), $$25));
-      fme $$26 = fus.e();
-      dkc.a().forEach($$2x -> $$0.put(flx.b($$2x), $$26));
-      ImmutableMap<flw, fme> $$27 = $$0.build();
-      List<flw> $$28 = flx.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
-      if (!$$28.isEmpty()) {
-         throw new IllegalStateException("Missing layer definitions: " + $$28);
-      } else {
-         return $$27;
-      }
+      this.b.f = -$$6 * 0.45F * aui.a(0.6F * $$3);
    }
 }

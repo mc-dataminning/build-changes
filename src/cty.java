@@ -1,111 +1,92 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+public interface cty extends cso {
+   ic[] C = ic.values();
 
-public class cty {
-   private static final Logger c = LogUtils.getLogger();
-   public static final cty a = new cty(ImmutableMap.of(), ImmutableList.of());
-   public static final MapCodec<cty> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.simpleMap(dnu.a.c, dqb.c.promotePartial(ac.a("Carver: ", c::error)), aut.a(dnu.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               dxs.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, cty::new)
-   );
-   private final Map<dnu.a, ij<dqb<?>>> d;
-   private final List<ij<dxs>> e;
-   private final Supplier<List<dqp<?, ?>>> f;
-   private final Supplier<Set<dxs>> g;
-
-   cty(Map<dnu.a, ij<dqb<?>>> $$0, List<ij<dxs>> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(ij::a).map(ie::a).flatMap(dxs::a).filter($$0xx -> $$0xx.b() == drc.g).collect(ImmutableList.toImmutableList())
-      );
-      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ij::a).map(ie::a).collect(Collectors.toSet()));
+   default int a(hx $$0, ic $$1) {
+      return this.a_($$0).c(this, $$0, $$1);
    }
 
-   public Iterable<ie<dqb<?>>> a(dnu.a $$0) {
-      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
-   }
-
-   public List<dqp<?, ?>> a() {
-      return this.f.get();
-   }
-
-   public List<ij<dxs>> b() {
-      return this.e;
-   }
-
-   public boolean a(dxs $$0) {
-      return this.g.get().contains($$0);
-   }
-
-   public static class a extends cty.b {
-      private final ig<dxs> a;
-      private final ig<dqb<?>> b;
-
-      public a(ig<dxs> $$0, ig<dqb<?>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public cty.a a(dnu.b $$0, ags<dxs> $$1) {
-         this.a($$0.ordinal(), this.a.b($$1));
-         return this;
-      }
-
-      public cty.a a(dnu.a $$0, ags<dqb<?>> $$1) {
-         this.a($$0, this.b.b($$1));
-         return this;
+   default int e_(hx $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.d(), ic.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.c(), ic.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.e(), ic.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.f(), ic.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.g(), ic.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.h(), ic.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
       }
    }
 
-   public static class b {
-      private final Map<dnu.a, List<ie<dqb<?>>>> a = Maps.newLinkedHashMap();
-      private final List<List<ie<dxs>>> b = Lists.newArrayList();
-
-      public cty.b a(dnu.b $$0, ie<dxs> $$1) {
-         return this.a($$0.ordinal(), $$1);
+   default int a(hx $$0, ic $$1, boolean $$2) {
+      dja $$3 = this.a_($$0);
+      if ($$2) {
+         return cyl.h($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(cwl.ha)) {
+         return 15;
+      } else if ($$3.a(cwl.cw)) {
+         return $$3.c(dck.f);
+      } else {
+         return $$3.m() ? this.a($$0, $$1) : 0;
       }
+   }
 
-      public cty.b a(int $$0, ie<dxs> $$1) {
-         this.a($$0);
-         this.b.get($$0).add($$1);
-         return this;
+   default boolean b(hx $$0, ic $$1) {
+      return this.c($$0, $$1) > 0;
+   }
+
+   default int c(hx $$0, ic $$1) {
+      dja $$2 = this.a_($$0);
+      int $$3 = $$2.b(this, $$0, $$1);
+      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean C(hx $$0) {
+      if (this.c($$0.d(), ic.a) > 0) {
+         return true;
+      } else if (this.c($$0.c(), ic.b) > 0) {
+         return true;
+      } else if (this.c($$0.e(), ic.c) > 0) {
+         return true;
+      } else if (this.c($$0.f(), ic.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.g(), ic.e) > 0 ? true : this.c($$0.h(), ic.f) > 0;
       }
+   }
 
-      public cty.b a(dnu.a $$0, ie<dqb<?>> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
+   default int D(hx $$0) {
+      int $$1 = 0;
 
-      private void a(int $$0) {
-         while (this.b.size() <= $$0) {
-            this.b.add(Lists.newArrayList());
+      for (ic $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
          }
       }
 
-      public cty a() {
-         return new cty(
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ij.a((List)$$0.getValue()))),
-            this.b.stream().map(ij::a).collect(ImmutableList.toImmutableList())
-         );
-      }
+      return $$1;
    }
 }

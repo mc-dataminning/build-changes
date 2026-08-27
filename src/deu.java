@@ -1,87 +1,29 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class deu extends cuq {
-   public static final MapCodec<deu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ckv.q.fieldOf("color").forGetter(cuq::b), u()).apply($$0, deu::new));
-   public static final djj b = czu.aE;
-   private static final Map<ia, elu> c = Maps.newEnumMap(
-      ImmutableMap.of(
-         ia.c,
-         cvz.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
-         ia.d,
-         cvz.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
-         ia.e,
-         cvz.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
-         ia.f,
-         cvz.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
-      )
-   );
+public class deu extends czz {
+   public static final MapCodec<deu> b = b(deu::new);
 
-   @Override
-   public MapCodec<deu> a() {
-      return a;
-   }
-
-   public deu(ckv $$0, dio.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, ia.c));
+   protected deu(diz.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String h() {
-      return this.k().a();
+   protected MapCodec<? extends deu> a() {
+      return b;
    }
 
    @Override
-   public boolean a(dip $$0, ctb $$1, hv $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
+   public emf c(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return emc.a();
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public float d(dja $$0, cso $$1, hx $$2) {
+      return 1.0F;
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return c.get($$0.c(b));
-   }
-
-   @Override
-   public dip a(coq $$0) {
-      dip $$1 = this.o();
-      ctb $$2 = $$0.q();
-      hv $$3 = $$0.a();
-      ia[] $$4 = $$0.f();
-
-      for (ia $$5 : $$4) {
-         if ($$5.o().d()) {
-            ia $$6 = $$5.g();
-            $$1 = $$1.a(b, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   public dip a(dip $$0, dcl $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dip a(dip $$0, dav $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b);
+   public boolean a_(dja $$0, cso $$1, hx $$2) {
+      return true;
    }
 }

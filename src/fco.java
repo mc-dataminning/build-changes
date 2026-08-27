@@ -1,185 +1,121 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fco {
-   private final euk a;
-   private final fcs b;
-   private final fcp c;
-   private final int d;
-   private final ag e;
-   private final ar f;
-   private final cmh g;
-   private final vb h;
-   private final fcq i;
-   private final Map<af, fcq> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
-
-   public fco(euk $$0, fcs $$1, fcp $$2, int $$3, ag $$4, ar $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new fcq(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
-   }
-
-   public fcp a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ag c() {
-      return this.e;
-   }
-
-   public vb d() {
-      return this.h;
-   }
-
-   public ar e() {
-      return this.f;
-   }
-
-   public void a(evw $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(evw $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(evw $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
-      }
-
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      agt $$3 = this.f.d().orElse(gdp.a);
-      int $$4 = aty.a(this.k);
-      int $$5 = aty.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
-         }
-      }
-
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.f();
-   }
-
-   public void a(evw $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, aty.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = aty.a(this.k);
-      int $$7 = aty.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (fcq $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
-         }
-      }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = aty.a(this.q + 0.02F, 0.0F, 0.3F);
-      } else {
-         this.q = aty.a(this.q - 0.04F, 0.0F, 1.0F);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
-   }
-
+public class fco extends fct {
+   private static final ahd a = new ahd("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int k = 4;
+   private static final int l = 204;
+   private static final int m = 98;
+   private static final vd n = vd.c("menu.returnToGame");
+   private static final vd o = vd.c("gui.advancements");
+   private static final vd p = vd.c("gui.stats");
+   private static final vd q = vd.c("menu.sendFeedback");
+   private static final vd r = vd.c("menu.reportBugs");
+   private static final vd t = vd.c("menu.options");
+   private static final vd u = vd.c("menu.shareToLan");
+   private static final vd v = vd.c("menu.playerReporting");
+   private static final vd w = vd.c("menu.returnToMenu");
+   private static final vd x = vd.c("menu.savingLevel");
+   private static final vd y = vd.c("menu.game");
+   private static final vd z = vd.c("menu.paused");
+   private final boolean A;
    @Nullable
-   public static fco a(euk $$0, fcs $$1, int $$2, ag $$3) {
-      Optional<ar> $$4 = $$3.a().c();
-      if ($$4.isEmpty()) {
-         return null;
+   private ewy B;
+
+   public fco(boolean $$0) {
+      super($$0 ? y : z);
+      this.A = $$0;
+   }
+
+   public boolean n() {
+      return this.A;
+   }
+
+   @Override
+   protected void aN_() {
+      if (this.A) {
+         this.C();
+      }
+
+      this.d(new eyf(0, this.A ? 40 : 10, this.g, 9, this.e, this.i));
+   }
+
+   private void C() {
+      fah $$0 = new fah();
+      $$0.c().a(4, 4, 4, 0);
+      fah.b $$1 = $$0.d(2);
+      $$1.a(ewy.a(n, $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(o, () -> new fdj(this.f.s.cn.r())));
+      $$1.a(this.a(p, () -> new fdc(this, this.f.s.j())));
+      $$1.a(this.a(q, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
+      $$1.a(this.a(r, "https://aka.ms/snapshotbugs?ref=game")).j = !aa.b().d().a();
+      $$1.a(this.a(t, () -> new fck(this, this.f.m)));
+      if (this.f.R() && !this.f.S().p()) {
+         $$1.a(this.a(u, () -> new fcu(this)));
       } else {
-         for (fcp $$5 : fcp.values()) {
-            if ($$2 < $$5.a()) {
-               return new fco($$0, $$1, $$5, $$2, $$3, $$4.get());
-            }
+         $$1.a(this.a(v, fhd::new));
+      }
 
-            $$2 -= $$5.a();
-         }
+      vd $$2 = this.f.Q() ? w : vc.p;
+      this.B = $$1.a(ewy.a($$2, $$0x -> {
+         $$0x.j = false;
+         this.f.aW().a(this.f, this, this::D, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      fag.a($$0, 0, 0, this.g, this.h, 0.5F, 0.25F);
+      $$0.a(this::d);
+   }
 
-         return null;
+   private void D() {
+      boolean $$0 = this.f.Q();
+      fnv $$1 = this.f.P();
+      this.f.r.W();
+      if ($$0) {
+         this.f.b(new fbz(x));
+      } else {
+         this.f.y();
+      }
+
+      fcy $$2 = new fcy();
+      if ($$0) {
+         this.f.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.f.a(new eqe($$2));
+      } else {
+         this.f.a(new ffr($$2));
       }
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = aty.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
-
-      if (this.p - this.n > 113) {
-         this.l = aty.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
+   @Override
+   public void d() {
+      super.d();
    }
 
-   public void a(ag $$0) {
-      Optional<ar> $$1 = $$0.a().c();
-      if (!$$1.isEmpty()) {
-         fcq $$2 = new fcq(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
+   @Override
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.A && this.f != null && this.f.aW().c() && this.B != null) {
+         $$0.a(a, this.B.B() + this.B.w() - 17, this.B.C() + 3, 15, 15);
       }
    }
 
-   private void a(fcq $$0, af $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (fcq $$6 : this.j.values()) {
-         $$6.b();
+   @Override
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+      if (this.A) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
-   @Nullable
-   public fcq a(af $$0) {
-      return this.j.get($$0);
+   private ewy a(vd $$0, Supplier<fct> $$1) {
+      return ewy.a($$0, $$1x -> this.f.a($$1.get())).a(98).a();
    }
 
-   public fcs f() {
-      return this.b;
+   private ewy a(vd $$0, String $$1) {
+      return ewy.a($$0, fbl.b(this, $$1)).a(98).a();
    }
 }

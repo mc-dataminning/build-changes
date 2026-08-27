@@ -1,59 +1,72 @@
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.List;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.Stack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class aia {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("commands.banip.failed"));
+   private static final int a = 2;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("ban-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)dt.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(dt.a("reason", ei.a()).executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), ei.a($$0x, "reason"))))
-            )
-      );
-   }
-
-   private static int a(ds $$0, String $$1, @Nullable vb $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
+   private static aia.b a(ae $$0, boolean $$1) {
+      Optional<ar> $$2 = $$0.c();
+      if ($$2.isEmpty()) {
+         return aia.b.b;
+      } else if ($$1) {
+         return aia.b.a;
       } else {
-         amq $$3 = $$0.l().ae().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.A(), $$2);
-         } else {
-            throw a.create();
-         }
+         return $$2.get().j() ? aia.b.b : aia.b.c;
       }
    }
 
-   private static int b(ds $$0, String $$1, @Nullable vb $$2) throws CommandSyntaxException {
-      aqc $$3 = $$0.l().ae().g();
-      if ($$3.a($$1)) {
-         throw b.create();
-      } else {
-         List<amq> $$4 = $$0.l().ae().b($$1);
-         aqd $$5 = new aqd($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> vb.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> vb.a("commands.banip.info", $$4.size(), gc.a($$4)), true);
+   private static boolean a(Stack<aia.b> $$0) {
+      for (int $$1 = 0; $$1 <= 2; $$1++) {
+         aia.b $$2 = (aia.b)$$0.peek($$1);
+         if ($$2 == aia.b.a) {
+            return true;
          }
 
-         for (amq $$6 : $$4) {
-            $$6.c.b(vb.c("multiplayer.disconnect.ip_banned"));
+         if ($$2 == aia.b.b) {
+            return false;
          }
-
-         return $$4.size();
       }
+
+      return false;
+   }
+
+   private static boolean a(ag $$0, Stack<aia.b> $$1, Predicate<ag> $$2, aia.a $$3) {
+      boolean $$4 = $$2.test($$0);
+      aia.b $$5 = a($$0.a(), $$4);
+      boolean $$6 = $$4;
+      $$1.push($$5);
+
+      for (ag $$7 : $$0.e()) {
+         $$6 |= a($$7, $$1, $$2, $$3);
+      }
+
+      boolean $$8 = $$6 || a($$1);
+      $$1.pop();
+      $$3.accept($$0, $$8);
+      return $$6;
+   }
+
+   public static void a(ag $$0, Predicate<ag> $$1, aia.a $$2) {
+      ag $$3 = $$0.d();
+      Stack<aia.b> $$4 = new ObjectArrayList();
+
+      for (int $$5 = 0; $$5 <= 2; $$5++) {
+         $$4.push(aia.b.c);
+      }
+
+      a($$3, $$4, $$1, $$2);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(ag var1, boolean var2);
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

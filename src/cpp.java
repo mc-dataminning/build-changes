@@ -1,37 +1,78 @@
-import com.mojang.serialization.Codec;
+public class cpp extends cpn {
+   private static final cps a = cps.a(cmu.qL);
+   private static final cps b = cps.a(cmu.pr);
+   private static final cps c = cps.a(cmu.uo);
 
-public interface cpp<T extends cpl<?>> {
-   cpp<cps> a = a("crafting_shaped", new cps.a());
-   cpp<cpu> b = a("crafting_shapeless", new cpu.a());
-   cpp<cov> c = a("crafting_special_armordye", new cpy<>(cov::new));
-   cpp<coy> d = a("crafting_special_bookcloning", new cpy<>(coy::new));
-   cpp<cpj> e = a("crafting_special_mapcloning", new cpy<>(cpj::new));
-   cpp<cpk> f = a("crafting_special_mapextending", new cpy<>(cpk::new));
-   cpp<cpf> g = a("crafting_special_firework_rocket", new cpy<>(cpf::new));
-   cpp<cph> h = a("crafting_special_firework_star", new cpy<>(cph::new));
-   cpp<cpg> i = a("crafting_special_firework_star_fade", new cpy<>(cpg::new));
-   cpp<cqh> j = a("crafting_special_tippedarrow", new cpy<>(cqh::new));
-   cpp<cow> k = a("crafting_special_bannerduplicate", new cpy<>(cow::new));
-   cpp<cpv> l = a("crafting_special_shielddecoration", new cpy<>(cpv::new));
-   cpp<cpw> m = a("crafting_special_shulkerboxcoloring", new cpy<>(cpw::new));
-   cpp<cqg> n = a("crafting_special_suspiciousstew", new cpy<>(cqg::new));
-   cpp<cpr> o = a("crafting_special_repairitem", new cpy<>(cpr::new));
-   cpp<cqa> p = a("smelting", new cpx<>(cqa::new, 200));
-   cpp<cox> q = a("blasting", new cpx<>(cox::new, 100));
-   cpp<cqe> r = a("smoking", new cpx<>(cqe::new, 100));
-   cpp<coz> s = a("campfire_cooking", new cpx<>(coz::new, 100));
-   cpp<cqf> t = a("stonecutting", new cpz.b<>(cqf::new));
-   cpp<cqc> u = a("smithing_transform", new cqc.a());
-   cpp<cqd> v = a("smithing_trim", new cqd.a());
-   cpp<cpe> w = a("crafting_decorated_pot", new cpy<>(cpe::new));
+   public cpp(cpl $$0) {
+      super($$0);
+   }
 
-   Codec<T> a();
+   public boolean a(cik $$0, cti $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
 
-   T a(ue var1);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cmr $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
 
-   void a(ue var1, T var2);
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
+            }
+         }
+      }
 
-   static <S extends cpp<T>, T extends cpl<?>> S a(String $$0, S $$1) {
-      return ir.a(kb.t, $$0, $$1);
+      return $$2 && $$3 >= 1;
+   }
+
+   public cmr a(cik $$0, iu $$1) {
+      cmr $$2 = new cmr(cmu.un, 3);
+      sl $$3 = $$2.a("Fireworks");
+      sr $$4 = new sr();
+      int $$5 = 0;
+
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cmr $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (b.a($$7)) {
+               $$5++;
+            } else if (c.a($$7)) {
+               sl $$8 = $$7.b("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
+               }
+            }
+         }
+      }
+
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cmr a(iu $$0) {
+      return new cmr(cmu.un);
+   }
+
+   @Override
+   public cpz<?> ar_() {
+      return cpz.g;
    }
 }

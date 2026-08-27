@@ -1,62 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
 
-public class bcb extends bag {
-   public bcb(Schema $$0, String $$1) {
-      super($$0, false, "Villager profession data fix (" + $$1 + ")", bbg.x, $$1);
+public class bcb extends DataFix {
+   public bcb(Schema $$0) {
+      super($$0, true);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      return $$0.set(
-         DSL.remainderFinder(),
-         $$1.remove("Profession")
-            .remove("Career")
-            .remove("CareerLevel")
-            .set(
-               "VillagerData",
-               $$1.createMap(
-                  ImmutableMap.of(
-                     $$1.createString("type"),
-                     $$1.createString("minecraft:plains"),
-                     $$1.createString("profession"),
-                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
-                     $$1.createString("level"),
-                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
-                  )
-               )
-            )
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbq.B);
+      Type<?> $$1 = this.getOutputSchema().getType(bbq.B);
+      OpticFinder<?> $$2 = $$0.findField("SpawnData");
+      Type<?> $$3 = $$1.findField("SpawnData").type();
+      OpticFinder<?> $$4 = $$0.findField("SpawnPotentials");
+      Type<?> $$5 = $$1.findField("SpawnPotentials").type();
+      return this.fixTypeEverywhereTyped(
+         "Fix mob spawner data structure",
+         $$0,
+         $$1,
+         $$4x -> $$4x.updateTyped($$2, $$3, $$1xx -> this.a($$3, $$1xx)).updateTyped($$4, $$5, $$1xx -> this.b($$5, $$1xx))
       );
    }
 
-   private static String a(int $$0, int $$1) {
-      if ($$0 == 0) {
-         if ($$1 == 2) {
-            return "minecraft:fisherman";
-         } else if ($$1 == 3) {
-            return "minecraft:shepherd";
-         } else {
-            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
-         }
-      } else if ($$0 == 1) {
-         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
-      } else if ($$0 == 2) {
-         return "minecraft:cleric";
-      } else if ($$0 == 3) {
-         if ($$1 == 2) {
-            return "minecraft:weaponsmith";
-         } else {
-            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
-         }
-      } else if ($$0 == 4) {
-         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
-      } else {
-         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
-      }
+   private <T> Typed<T> a(Type<T> $$0, Typed<?> $$1) {
+      DynamicOps<?> $$2 = $$1.getOps();
+      return new Typed($$0, $$2, Pair.of($$1.getValue(), new Dynamic($$2)));
+   }
+
+   private <T> Typed<T> b(Type<T> $$0, Typed<?> $$1) {
+      DynamicOps<?> $$2 = $$1.getOps();
+      List<?> $$3 = (List<?>)$$1.getValue();
+      List<?> $$4 = $$3.stream().map($$1x -> {
+         Pair<Object, Dynamic<?>> $$2x = (Pair<Object, Dynamic<?>>)$$1x;
+         int $$3x = ((Dynamic)$$2x.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
+         Dynamic<?> $$4x = new Dynamic($$2);
+         $$4x = $$4x.set("weight", $$4x.createInt($$3x));
+         Dynamic<?> $$5 = ((Dynamic)$$2x.getSecond()).remove("Weight").remove("Entity");
+         return Pair.of(Pair.of($$2x.getFirst(), $$5), $$4x);
+      }).toList();
+      return new Typed($$0, $$2, $$4);
    }
 }

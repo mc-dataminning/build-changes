@@ -1,53 +1,43 @@
-public class fpq extends fpw {
-   private static final int a = 3;
-   private final fso b;
-   private final blf D;
-   private final blf E;
-   private int F;
-   private final fxm G;
+import org.joml.Vector3f;
 
-   public fpq(fxm $$0, fso $$1, fmt $$2, blf $$3, blf $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dp());
+public class fpq extends fps<jq> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected fpq(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, jq $$7, fri $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.c(), $$9);
+      this.b = this.a($$7.d(), $$9);
    }
 
-   private fpq(fxm $$0, fso $$1, fmt $$2, blf $$3, blf $$4, elb $$5) {
-      super($$2, $$3.dr(), $$3.dt(), $$3.dx(), $$5.c, $$5.d, $$5.e);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
    }
 
-   private blf a(blf $$0) {
-      return (blf)(!($$0 instanceof cbe) ? $$0 : ((cbe)$$0).D());
-   }
-
-   @Override
-   public fqa b() {
-      return fqa.e;
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public void a(eph $$0, etv $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = aty.d((double)$$2, this.E.ac, this.E.dr());
-      double $$5 = aty.d((double)$$2, this.E.ad, (this.E.dt() + this.E.dv()) / 2.0);
-      double $$6 = aty.d((double)$$2, this.E.ae, this.E.dx());
-      double $$7 = aty.d((double)$$3, this.D.dr(), $$4);
-      double $$8 = aty.d((double)$$3, this.D.dt(), $$5);
-      double $$9 = aty.d((double)$$3, this.D.dx(), $$6);
-      fsi.a $$10 = this.b.c();
-      elb $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dC(), $$2, new epd(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public void a(epx $$0, eul $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void a() {
-      this.F++;
-      if (this.F == 3) {
-         this.k();
+   public static class a implements fqq<jq> {
+      private final fri a;
+
+      public a(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(jq $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpq($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

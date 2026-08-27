@@ -1,26 +1,42 @@
-@FunctionalInterface
-public interface ekm<T> {
-   void handle(T var1, eko<T> var2, long var3);
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   public abstract static class a<T, C extends ekm<T>> {
-      private final agt a;
-      private final Class<?> b;
+public record ekm(ekj b, ekj c) implements ekj {
+   public static final Codec<ekm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ekk.a.fieldOf("min").forGetter(ekm::c), ekk.a.fieldOf("max").forGetter(ekm::d)).apply($$0, ekm::new)
+   );
 
-      public a(agt $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public eki b() {
+      return ekk.c;
+   }
 
-      public agt a() {
-         return this.a;
-      }
+   public static ekm a(float $$0, float $$1) {
+      return new ekm(ekh.a($$0), ekh.a($$1));
+   }
 
-      public Class<?> b() {
-         return this.b;
-      }
+   @Override
+   public int a(egp $$0) {
+      return aui.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
 
-      public abstract void a(sj var1, C var2);
+   @Override
+   public float b(egp $$0) {
+      return aui.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
 
-      public abstract C b(sj var1);
+   @Override
+   public Set<eix<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public ekj c() {
+      return this.b;
+   }
+
+   public ekj d() {
+      return this.c;
    }
 }

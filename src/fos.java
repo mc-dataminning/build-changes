@@ -1,49 +1,77 @@
-public class fos extends fqw {
-   fos(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+
+public class fos implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<fos.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(hx $$0, dja $$1, fsb $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new fos.a(this.b, $$1, $$2.dk()));
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+   public boolean a(hx $$0, dja $$1) {
+      fos.a $$2 = (fos.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
       } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(hv.a(this.g, this.h, this.i)).a(arw.a)) {
-            this.k();
+         $$2.a($$1);
+         return true;
+      }
+   }
+
+   public void a(int $$0, fnk $$1) {
+      ObjectIterator<Entry<fos.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<fos.a> $$3 = (Entry<fos.a>)$$2.next();
+         fos.a $$4 = (fos.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            hx $$5 = hx.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
          }
       }
    }
 
-   @Override
-   public fqa b() {
-      return fqa.b;
+   public fos a() {
+      this.b++;
+      this.c = true;
+      return this;
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+   @Override
+   public void close() {
+      this.c = false;
+   }
 
-      public a(fqr $$0) {
-         this.a = $$0;
+   public int b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final elm a;
+      int b;
+      dja c;
+
+      a(int $$0, dja $$1, elm $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fos $$8 = new fos($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      fos.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      void a(dja $$0) {
+         this.c = $$0;
       }
    }
 }

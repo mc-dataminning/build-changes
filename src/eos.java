@@ -1,42 +1,93 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class eos {
-   private static final Logger a = LogUtils.getLogger();
+public final class eos {
+   private final long a;
+   private final List<eow> b;
+   private eow c;
+   private int d;
+   private int e;
 
-   public static void a(int $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram($$0);
+   public eos(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
    }
 
-   public static void a(eot $$0) {
-      RenderSystem.assertOnRenderThread();
-      $$0.d().a();
-      $$0.c().a();
-      GlStateManager.glDeleteProgram($$0.a());
-   }
+   public void a() {
+      RenderSystem.assertInInitPhase();
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
 
-   public static int a() throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = GlStateManager.glCreateProgram();
-      if ($$0 <= 0) {
-         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
-      } else {
-         return $$0;
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         eow $$2 = new eow($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
+         }
       }
+
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new eow($$5);
    }
 
-   public static void b(eot $$0) {
-      RenderSystem.assertOnRenderThread();
-      $$0.e();
-      GlStateManager.glLinkProgram($$0.a());
-      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
-      if ($$1 == 0) {
-         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
-         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
+   public eow a(Optional<eow> $$0) {
+      RenderSystem.assertInInitPhase();
+      if ($$0.isPresent()) {
+         eow $$1 = $$0.get();
+
+         for (eow $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
+            }
+         }
       }
+
+      return this.b();
+   }
+
+   public int a(eow $$0) {
+      RenderSystem.assertInInitPhase();
+      return this.b.indexOf($$0);
+   }
+
+   public eow b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public eow a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

@@ -1,22 +1,22 @@
-public class gjj implements exk {
-   private final vb a;
-   private final int b;
-   private final int c;
-   private final int d;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-   public gjj(vb $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
+public class gjj {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
+
+   public gjj(boolean $$0, @Nullable Duration $$1) {
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.a = $$0;
    }
 
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      $$0.a(euk.N().h, this.a, this.b, this.c, this.d);
-   }
-
-   public vb a() {
-      return this.a;
+   public void a(giz $$0) {
+      if (this.b != null) {
+         $$0.send(gja.d, $$0x -> {
+            $$0x.a(gjc.x, (int)this.b.toMillis());
+            $$0x.a(gjc.y, this.a);
+         });
+      }
    }
 }

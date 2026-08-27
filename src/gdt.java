@@ -1,75 +1,204 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 
-public class gdt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final agm b = new agm("atlases", ".json");
-   private final List<gds> c;
+public class gdt extends gdy {
+   private static final Logger f = LogUtils.getLogger();
+   private static final int g = 64;
+   private static final int h = 64;
+   private static final int i = 32;
+   @Nullable
+   private final File j;
+   private final String k;
+   private final boolean l;
+   @Nullable
+   private final Runnable m;
+   @Nullable
+   private CompletableFuture<?> n;
+   private boolean o;
 
-   private gdt(List<gds> $$0) {
-      this.c = $$0;
+   public gdt(@Nullable File $$0, String $$1, ahd $$2, boolean $$3, @Nullable Runnable $$4) {
+      super($$2);
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$3;
+      this.m = $$4;
    }
 
-   public List<Function<gdr, gdi>> a(aps $$0) {
-      final Map<agt, gds.b> $$1 = new HashMap<>();
-      gds.a $$2 = new gds.a() {
-         @Override
-         public void a(agt $$0, gds.b $$1x) {
-            gds.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
+   private void a(eou $$0) {
+      if (this.m != null) {
+         this.m.run();
+      }
+
+      eva.N().execute(() -> {
+         this.o = true;
+         if (!RenderSystem.isOnRenderThread()) {
+            RenderSystem.recordRenderCall(() -> this.b($$0));
+         } else {
+            this.b($$0);
+         }
+      });
+   }
+
+   private void b(eou $$0) {
+      TextureUtil.prepareImage(this.a(), $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, true);
+   }
+
+   @Override
+   public void a(aqc $$0) throws IOException {
+      eva.N().execute(() -> {
+         if (!this.o) {
+            try {
+               super.a($$0);
+            } catch (IOException var3x) {
+               f.warn("Failed to load texture: {}", this.e, var3x);
             }
+
+            this.o = true;
+         }
+      });
+      if (this.n == null) {
+         eou $$2;
+         if (this.j != null && this.j.isFile()) {
+            f.debug("Loading http texture from local cache ({})", this.j);
+            FileInputStream $$1 = new FileInputStream(this.j);
+            $$2 = this.a($$1);
+         } else {
+            $$2 = null;
          }
 
-         @Override
-         public void a(Predicate<agt> $$0) {
-            Iterator<Entry<agt, gds.b>> $$1 = $$1.entrySet().iterator();
+         if ($$2 != null) {
+            this.a($$2);
+         } else {
+            this.n = CompletableFuture.runAsync(() -> {
+               HttpURLConnection $$0x = null;
+               f.debug("Downloading http texture from {} to {}", this.k, this.j);
 
-            while ($$1.hasNext()) {
-               Entry<agt, gds.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
+               try {
+                  $$0x = (HttpURLConnection)new URL(this.k).openConnection(eva.N().W());
+                  $$0x.setDoInput(true);
+                  $$0x.setDoOutput(false);
+                  $$0x.connect();
+                  if ($$0x.getResponseCode() / 100 == 2) {
+                     InputStream $$1x;
+                     if (this.j != null) {
+                        FileUtils.copyInputStreamToFile($$0x.getInputStream(), this.j);
+                        $$1x = new FileInputStream(this.j);
+                     } else {
+                        $$1x = $$0x.getInputStream();
+                     }
+
+                     eva.N().execute(() -> {
+                        eou $$1xx = this.a($$1x);
+                        if ($$1xx != null) {
+                           this.a($$1xx);
+                        }
+                     });
+                     return;
+                  }
+               } catch (Exception var6) {
+                  f.error("Couldn't download http texture", var6);
+                  return;
+               } finally {
+                  if ($$0x != null) {
+                     $$0x.disconnect();
+                  }
                }
-            }
+            }, ac.f());
          }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<gdr, gdi>> $$3 = ImmutableList.builder();
-      $$3.add((Function<gdr, gdi>)$$0x -> gde.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
+      }
    }
 
-   public static gdt a(aps $$0, agt $$1) {
-      agt $$2 = b.a($$1);
-      List<gds> $$3 = new ArrayList<>();
+   @Nullable
+   private eou a(InputStream $$0) {
+      eou $$1 = null;
 
-      for (apq $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends gds>)gdv.h.parse($$6).getOrThrow(false, a::error));
-         } catch (Exception var11) {
-            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+      try {
+         $$1 = eou.a($$0);
+         if (this.l) {
+            $$1 = this.c($$1);
+         }
+      } catch (Exception var4) {
+         f.warn("Error while loading the skin texture", var4);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   private eou c(eou $$0) {
+      int $$1 = $$0.b();
+      int $$2 = $$0.a();
+      if ($$2 == 64 && ($$1 == 32 || $$1 == 64)) {
+         boolean $$3 = $$1 == 32;
+         if ($$3) {
+            eou $$4 = new eou(64, 64, true);
+            $$4.a($$0);
+            $$0.close();
+            $$0 = $$4;
+            $$4.a(0, 32, 64, 32, 0);
+            $$4.a(4, 16, 16, 32, 4, 4, true, false);
+            $$4.a(8, 16, 16, 32, 4, 4, true, false);
+            $$4.a(0, 20, 24, 32, 4, 12, true, false);
+            $$4.a(4, 20, 16, 32, 4, 12, true, false);
+            $$4.a(8, 20, 8, 32, 4, 12, true, false);
+            $$4.a(12, 20, 16, 32, 4, 12, true, false);
+            $$4.a(44, 16, -8, 32, 4, 4, true, false);
+            $$4.a(48, 16, -8, 32, 4, 4, true, false);
+            $$4.a(40, 20, 0, 32, 4, 12, true, false);
+            $$4.a(44, 20, -8, 32, 4, 12, true, false);
+            $$4.a(48, 20, -16, 32, 4, 12, true, false);
+            $$4.a(52, 20, -8, 32, 4, 12, true, false);
+         }
+
+         b($$0, 0, 0, 32, 16);
+         if ($$3) {
+            a($$0, 32, 0, 64, 32);
+         }
+
+         b($$0, 0, 16, 64, 32);
+         b($$0, 16, 48, 48, 64);
+         return $$0;
+      } else {
+         $$0.close();
+         f.warn("Discarding incorrectly sized ({}x{}) skin texture from {}", new Object[]{$$2, $$1, this.k});
+         return null;
+      }
+   }
+
+   private static void a(eou $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            int $$7 = $$0.a($$5, $$6);
+            if (($$7 >> 24 & 0xFF) < 128) {
+               return;
+            }
          }
       }
 
-      return new gdt($$3);
+      for (int $$8 = $$1; $$8 < $$3; $$8++) {
+         for (int $$9 = $$2; $$9 < $$4; $$9++) {
+            $$0.a($$8, $$9, $$0.a($$8, $$9) & 16777215);
+         }
+      }
+   }
+
+   private static void b(eou $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            $$0.a($$5, $$6, $$0.a($$5, $$6) | 0xFF000000);
+         }
+      }
    }
 }

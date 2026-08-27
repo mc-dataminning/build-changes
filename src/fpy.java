@@ -1,504 +1,339 @@
-import com.google.common.collect.EvictingQueue;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Queues;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Queue;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fpy implements apm {
-   private static final Logger b = LogUtils.getLogger();
-   private static final agm c = agm.a("particles");
-   private static final agt d = new agt("particles");
-   private static final int e = 16384;
-   private static final List<fqa> f = ImmutableList.of(fqa.a, fqa.b, fqa.d, fqa.c, fqa.e);
-   protected fmt a;
-   private final Map<fqa, Queue<fpw>> g = Maps.newIdentityHashMap();
-   private final Queue<fqy> h = Queues.newArrayDeque();
-   private final gdp i;
-   private final auf j = auf.a();
-   private final Int2ObjectMap<fpz<?>> k = new Int2ObjectOpenHashMap();
-   private final Queue<fpw> l = Queues.newArrayDeque();
-   private final Map<agt, fpy.b> m = Maps.newHashMap();
-   private final gdn n;
-   private final Object2IntOpenHashMap<js> o = new Object2IntOpenHashMap();
+public class fpy {
+   public static class a implements fqq<ka> {
+      private final fri a;
 
-   public fpy(fmt $$0, gdp $$1) {
-      this.n = new gdn(gdn.f);
-      $$1.a(this.n.g(), this.n);
-      this.a = $$0;
-      this.i = $$1;
-      this.e();
-   }
-
-   private void e() {
-      this.a(jv.a, fqo.a::new);
-      this.a(jv.b, fpn.a::new);
-      this.a(jv.d, new foo.a());
-      this.a(jv.c, new fqv.a());
-      this.a(jv.e, fos.a::new);
-      this.a(jv.an, foq.a::new);
-      this.a(jv.al, fot.a::new);
-      this.a(jv.aq, fou.a::new);
-      this.a(jv.ar, fou.b::new);
-      this.a(jv.f, fqb.a::new);
-      this.a(jv.N, fqu.a::new);
-      this.a(jv.g, fow.c::new);
-      this.a(jv.am, frc.a::new);
-      this.a(jv.h, fow.a::new);
-      this.a(jv.i, fox.a::new);
-      this.a(jv.ap, fqu.b::new);
-      this.a(jv.j, foy::c);
-      this.a(jv.k, foy::d);
-      this.a(jv.l, foy::e);
-      this.a(jv.m, foy::a);
-      this.a(jv.n, foy::b);
-      this.a(jv.o, fpa.a::new);
-      this.a(jv.p, foz.a::new);
-      this.a(jv.q, fqo.d::new);
-      this.a(jv.r, new fpt.a());
-      this.a(jv.s, fow.b::new);
-      this.a(jv.t, fpd.b::new);
-      this.a(jv.u, fpe.a::new);
-      this.a(jv.v, fqo.c::new);
-      this.a(jv.w, new fpp.a());
-      this.a(jv.x, fpo.a::new);
-      this.a(jv.A, fqm.a::new);
-      this.a(jv.B, fpg.a::new);
-      this.a(jv.y, fpl.a::new);
-      this.a(jv.z, new fpm.a());
-      this.a(jv.C, fph.d::new);
-      this.a(jv.D, frb.a::new);
-      this.a(jv.E, fpi.a::new);
-      this.a(jv.G, fqn.a::new);
-      this.a(jv.H, fqf.a::new);
-      this.a(jv.I, fqg.a::new);
-      this.a(jv.K, fqn.b::new);
-      this.a(jv.J, fpi.a::new);
-      this.a(jv.L, fph.a::new);
-      this.a(jv.M, fqu.d::new);
-      this.a(jv.O, fpn.b::new);
-      this.a(jv.P, fqo.b::new);
-      this.a(jv.Q, new fop.a());
-      this.a(jv.S, new fop.b());
-      this.a(jv.T, new fop.c());
-      this.a(jv.U, fpr.a::new);
-      this.a(jv.V, fps.a::new);
-      this.a(jv.W, fqu.e::new);
-      this.a(jv.ao, fpd.a::new);
-      this.a(jv.X, fpv.a::new);
-      this.a(jv.Y, fpf.a::new);
-      this.a(jv.Z, fqc.a::new);
-      this.a(jv.aa, frd.a::new);
-      this.a(jv.ab, fqk.a::new);
-      this.a(jv.ac, frf.a::new);
-      this.a(jv.ad, fqb.b::new);
-      this.a(jv.aH, fql.a::new);
-      this.a(jv.ae, fqp.a::new);
-      this.a(jv.ag, fom.a::new);
-      this.a(jv.ah, fqx.a::new);
-      this.a(jv.af, fqs.b::new);
-      this.a(jv.ai, fqt.c::new);
-      this.a(jv.aj, fqq.a::new);
-      this.a(jv.ak, fqo.e::new);
-      this.a(jv.as, foy::f);
-      this.a(jv.at, foy::g);
-      this.a(jv.au, foy::h);
-      this.a(jv.av, foy::m);
-      this.a(jv.aw, foy::n);
-      this.a(jv.aA, fqt.b::new);
-      this.a(jv.ax, fol.a::new);
-      this.a(jv.ay, fqt.a::new);
-      this.a(jv.az, fqt.d::new);
-      this.a(jv.aB, foy::o);
-      this.a(jv.aC, foy::p);
-      this.a(jv.aD, foy::q);
-      this.a(jv.aE, fqd.a::new);
-      this.a(jv.aF, fre.a::new);
-      this.a(jv.aG, fpi.b::new);
-      this.a(jv.aK, foy::i);
-      this.a(jv.aL, foy::j);
-      this.a(jv.F, $$0 -> ($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) -> new fov($$2, $$3, $$4, $$5, $$0));
-      this.a(jv.aI, foy::k);
-      this.a(jv.aJ, foy::l);
-      this.a(jv.R, fra.a::new);
-      this.a(jv.aM, fqs.a::new);
-      this.a(jv.aN, fpj.b::new);
-      this.a(jv.aO, fpj.e::new);
-      this.a(jv.aP, fpj.d::new);
-      this.a(jv.aQ, fpj.a::new);
-      this.a(jv.aR, fpj.c::new);
-      this.a(jv.aS, fqh.a::new);
-      this.a(jv.aT, fqu.c::new);
-      this.a(jv.aU, fpc.a::new);
-      this.a(jv.aV, fpk.a::new);
-      this.a(jv.aW, fqz.a::new);
-   }
-
-   private <T extends jt> void a(ju<T> $$0, fpz<T> $$1) {
-      this.k.put(kb.j.a($$0), $$1);
-   }
-
-   private <T extends jt> void a(ju<T> $$0, fpz.a<T> $$1) {
-      this.a($$0, $$1x -> ($$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9) -> {
-            fqw $$10 = $$1.createParticle($$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            if ($$10 != null) {
-               $$10.a($$1x);
-            }
-
-            return $$10;
-         });
-   }
-
-   private <T extends jt> void a(ju<T> $$0, fpy.c<T> $$1) {
-      fpy.b $$2 = new fpy.b();
-      this.m.put(kb.j.b($$0), $$2);
-      this.k.put(kb.j.a($$0), $$1.create($$2));
-   }
-
-   @Override
-   public CompletableFuture<Void> a(apm.a $$0, aps $$1, bgc $$2, bgc $$3, Executor $$4, Executor $$5) {
-      record a(agt a, Optional<List<agt>> b) {
+      public a(fri $$0) {
+         this.a = $$0;
       }
 
-      CompletableFuture<List<a>> $$6 = CompletableFuture.<Map<agt, apq>>supplyAsync(() -> c.a($$1), $$4).thenCompose($$1x -> {
-         List<CompletableFuture<a>> $$2x = new ArrayList<>($$1x.size());
-         $$1x.forEach(($$2xx, $$3x) -> {
-            agt $$4x = c.b($$2xx);
-            $$2x.add(CompletableFuture.supplyAsync(() -> new a($$4x, this.a($$4x, $$3x)), $$4));
-         });
-         return ac.b($$2x);
-      });
-      CompletableFuture<gdj.a> $$7 = gdj.a(this.n).a($$1, d, 0, $$4).thenCompose(gdj.a::a);
-      return CompletableFuture.allOf($$7, $$6).thenCompose($$0::a).thenAcceptAsync($$3x -> {
-         this.f();
-         $$3.a();
-         $$3.a("upload");
-         gdj.a $$4x = $$7.join();
-         this.n.a($$4x);
-         $$3.b("bindSpriteSets");
-         Set<agt> $$5x = new HashSet<>();
-         gdo $$6x = $$4x.e();
-         $$6.join().forEach($$3xx -> {
-            Optional<List<agt>> $$4xx = $$3xx.b();
-            if (!$$4xx.isEmpty()) {
-               List<gdo> $$5xx = new ArrayList<>();
-
-               for (agt $$6xx : $$4xx.get()) {
-                  gdo $$7x = $$4x.f().get($$6xx);
-                  if ($$7x == null) {
-                     $$5x.add($$6xx);
-                     $$5xx.add($$6x);
-                  } else {
-                     $$5xx.add($$7x);
-                  }
-               }
-
-               if ($$5xx.isEmpty()) {
-                  $$5xx.add($$6x);
-               }
-
-               this.m.get($$3xx.a()).a($$5xx);
-            }
-         });
-         if (!$$5x.isEmpty()) {
-            b.warn("Missing particle sprites: {}", $$5x.stream().sorted().map(agt::toString).collect(Collectors.joining(",")));
-         }
-
-         $$3.c();
-         $$3.b();
-      }, $$5);
-   }
-
-   public void a() {
-      this.n.f();
-   }
-
-   private Optional<List<agt>> a(agt $$0, apq $$1) {
-      if (!this.m.containsKey($$0)) {
-         b.debug("Redundant texture list for particle: {}", $$0);
-         return Optional.empty();
-      } else {
-         try {
-            Optional var5;
-            try (Reader $$2 = $$1.e()) {
-               fpx $$3 = fpx.a(ato.a($$2));
-               var5 = Optional.of($$3.a());
-            }
-
-            return var5;
-         } catch (IOException var8) {
-            throw new IllegalStateException("Failed to load description for particle " + $$0, var8);
-         }
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpy.b $$8 = new fpy.b($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 
-   public void a(blf $$0, jt $$1) {
-      this.h.add(new fqy(this.a, $$0, $$1));
-   }
-
-   public void a(blf $$0, jt $$1, int $$2) {
-      this.h.add(new fqy(this.a, $$0, $$1, $$2));
-   }
-
-   @Nullable
-   public fpw a(jt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      fpw $$7 = this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$7 != null) {
-         this.a($$7);
-         return $$7;
-      } else {
-         return null;
-      }
-   }
-
-   @Nullable
-   private <T extends jt> fpw b(T $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      fpz<T> $$7 = (fpz<T>)this.k.get(kb.j.a($$0.b()));
-      return $$7 == null ? null : $$7.createParticle($$0, this.a, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(fpw $$0) {
-      Optional<js> $$1 = $$0.o();
-      if ($$1.isPresent()) {
-         if (this.a($$1.get())) {
-            this.l.add($$0);
-            this.a($$1.get(), 1);
-         }
-      } else {
-         this.l.add($$0);
-      }
-   }
-
-   public void b() {
-      this.g.forEach(($$0, $$1x) -> {
-         this.a.ae().a($$0.toString());
-         this.a($$1x);
-         this.a.ae().c();
-      });
-      if (!this.h.isEmpty()) {
-         List<fqy> $$0 = Lists.newArrayList();
-
-         for (fqy $$1 : this.h) {
-            $$1.a();
-            if (!$$1.m()) {
-               $$0.add($$1);
-            }
-         }
-
-         this.h.removeAll($$0);
-      }
-
-      fpw $$2;
-      if (!this.l.isEmpty()) {
-         while (($$2 = this.l.poll()) != null) {
-            this.g.computeIfAbsent($$2.b(), $$0 -> EvictingQueue.create(16384)).add($$2);
-         }
-      }
-   }
-
-   private void a(Collection<fpw> $$0) {
-      if (!$$0.isEmpty()) {
-         Iterator<fpw> $$1 = $$0.iterator();
-
-         while ($$1.hasNext()) {
-            fpw $$2 = $$1.next();
-            this.b($$2);
-            if (!$$2.m()) {
-               $$2.o().ifPresent($$0x -> this.a($$0x, -1));
-               $$1.remove();
-            }
-         }
-      }
-   }
-
-   private void a(js $$0, int $$1) {
-      this.o.addTo($$0, $$1);
-   }
-
-   private void b(fpw $$0) {
-      try {
-         $$0.a();
-      } catch (Throwable var5) {
-         o $$2 = o.a(var5, "Ticking Particle");
-         p $$3 = $$2.a("Particle being ticked");
-         $$3.a("Particle", $$0::toString);
-         $$3.a("Particle Type", $$0.b()::toString);
-         throw new y($$2);
-      }
-   }
-
-   public void a(epd $$0, fsi.a $$1, fsh $$2, etv $$3, float $$4) {
-      $$2.c();
-      RenderSystem.enableDepthTest();
-      epd $$5 = RenderSystem.getModelViewStack();
-      $$5.a();
-      $$5.a($$0.c().a());
-      RenderSystem.applyModelViewMatrix();
-
-      for (fqa $$6 : f) {
-         Iterable<fpw> $$7 = this.g.get($$6);
-         if ($$7 != null) {
-            RenderSystem.setShader(fsb::u);
-            epf $$8 = epf.b();
-            eoy $$9 = $$8.d();
-            $$6.a($$9, this.i);
-
-            for (fpw $$10 : $$7) {
-               try {
-                  $$10.a($$9, $$3, $$4);
-               } catch (Throwable var17) {
-                  o $$12 = o.a(var17, "Rendering Particle");
-                  p $$13 = $$12.a("Particle being rendered");
-                  $$13.a("Particle", $$10::toString);
-                  $$13.a("Particle Type", $$6::toString);
-                  throw new y($$12);
-               }
-            }
-
-            $$6.a($$8);
-         }
-      }
-
-      $$5.b();
-      RenderSystem.applyModelViewMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.disableBlend();
-      $$2.b();
-   }
-
-   public void a(@Nullable fmt $$0) {
-      this.a = $$0;
-      this.f();
-      this.h.clear();
-   }
-
-   public void a(hv $$0, dip $$1) {
-      if (!$$1.i() && $$1.z()) {
-         elu $$2 = $$1.j(this.a, $$0);
-         double $$3 = 0.25;
-         $$2.b(
-            ($$2x, $$3x, $$4, $$5, $$6, $$7) -> {
-               double $$8 = Math.min(1.0, $$5 - $$2x);
-               double $$9 = Math.min(1.0, $$6 - $$3x);
-               double $$10 = Math.min(1.0, $$7 - $$4);
-               int $$11 = Math.max(2, aty.c($$8 / 0.25));
-               int $$12 = Math.max(2, aty.c($$9 / 0.25));
-               int $$13 = Math.max(2, aty.c($$10 / 0.25));
-
-               for (int $$14 = 0; $$14 < $$11; $$14++) {
-                  for (int $$15 = 0; $$15 < $$12; $$15++) {
-                     for (int $$16 = 0; $$16 < $$13; $$16++) {
-                        double $$17 = ((double)$$14 + 0.5) / (double)$$11;
-                        double $$18 = ((double)$$15 + 0.5) / (double)$$12;
-                        double $$19 = ((double)$$16 + 0.5) / (double)$$13;
-                        double $$20 = $$17 * $$8 + $$2x;
-                        double $$21 = $$18 * $$9 + $$3x;
-                        double $$22 = $$19 * $$10 + $$4;
-                        this.a(
-                           new fqv(this.a, (double)$$0.u() + $$20, (double)$$0.v() + $$21, (double)$$0.w() + $$22, $$17 - 0.5, $$18 - 0.5, $$19 - 0.5, $$1, $$0)
-                        );
-                     }
-                  }
-               }
-            }
-         );
-      }
-   }
-
-   public void a(hv $$0, ia $$1) {
-      dip $$2 = this.a.a_($$0);
-      if ($$2.l() != dce.a && $$2.z()) {
-         int $$3 = $$0.u();
-         int $$4 = $$0.v();
-         int $$5 = $$0.w();
-         float $$6 = 0.1F;
-         ekw $$7 = $$2.j(this.a, $$0).a();
-         double $$8 = (double)$$3 + this.j.j() * ($$7.d - $$7.a - 0.2F) + 0.1F + $$7.a;
-         double $$9 = (double)$$4 + this.j.j() * ($$7.e - $$7.b - 0.2F) + 0.1F + $$7.b;
-         double $$10 = (double)$$5 + this.j.j() * ($$7.f - $$7.c - 0.2F) + 0.1F + $$7.c;
-         if ($$1 == ia.a) {
-            $$9 = (double)$$4 + $$7.b - 0.1F;
-         }
-
-         if ($$1 == ia.b) {
-            $$9 = (double)$$4 + $$7.e + 0.1F;
-         }
-
-         if ($$1 == ia.c) {
-            $$10 = (double)$$5 + $$7.c - 0.1F;
-         }
-
-         if ($$1 == ia.d) {
-            $$10 = (double)$$5 + $$7.f + 0.1F;
-         }
-
-         if ($$1 == ia.e) {
-            $$8 = (double)$$3 + $$7.a - 0.1F;
-         }
-
-         if ($$1 == ia.f) {
-            $$8 = (double)$$3 + $$7.d + 0.1F;
-         }
-
-         this.a(new fqv(this.a, $$8, $$9, $$10, 0.0, 0.0, 0.0, $$2, $$0).c(0.2F).d(0.6F));
-      }
-   }
-
-   public String d() {
-      return String.valueOf(this.g.values().stream().mapToInt(Collection::size).sum());
-   }
-
-   private boolean a(js $$0) {
-      return this.o.getInt($$0) < $$0.a();
-   }
-
-   private void f() {
-      this.g.clear();
-      this.l.clear();
-      this.h.clear();
-      this.o.clear();
-   }
-
-   static class b implements fqr {
-      private List<gdo> a;
-
-      @Override
-      public gdo a(int $$0, int $$1) {
-         return this.a.get($$0 * (this.a.size() - 1) / $$1);
+   public static class b extends frn {
+      b(fnk $$0, double $$1, double $$2, double $$3) {
+         super($$0, $$1, $$2, $$3);
+         this.t = 4;
       }
 
       @Override
-      public gdo a(auf $$0) {
-         return this.a.get($$0.a(this.a.size()));
+      public fqr b() {
+         return fqr.c;
       }
 
-      public void a(List<gdo> $$0) {
-         this.a = ImmutableList.copyOf($$0);
+      @Override
+      public void a(epx $$0, eul $$1, float $$2) {
+         this.e(0.6F - ((float)this.s + $$2 - 1.0F) * 0.25F * 0.5F);
+         super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public float b(float $$0) {
+         return 7.1F * aui.a(((float)this.s + $$0 - 1.0F) * 0.25F * (float) Math.PI);
       }
    }
 
-   @FunctionalInterface
-   interface c<T extends jt> {
-      fpz<T> create(fqr var1);
+   static class c extends fqz {
+      private boolean b;
+      private boolean F;
+      private final fqp G;
+      private float H;
+      private float I;
+      private float J;
+      private boolean K;
+
+      c(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqp $$7, fri $$8) {
+         super($$0, $$1, $$2, $$3, $$8, 0.1F);
+         this.j = $$4;
+         this.k = $$5;
+         this.l = $$6;
+         this.G = $$7;
+         this.D *= 0.75F;
+         this.t = 48 + this.r.a(12);
+         this.b($$8);
+      }
+
+      public void a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      public void b(boolean $$0) {
+         this.F = $$0;
+      }
+
+      @Override
+      public void a(epx $$0, eul $$1, float $$2) {
+         if (!this.F || this.s < this.t / 3 || (this.s + this.t) / 3 % 2 == 0) {
+            super.a($$0, $$1, $$2);
+         }
+      }
+
+      @Override
+      public void a() {
+         super.a();
+         if (this.b && this.s < this.t / 2 && (this.s + this.t) % 2 == 0) {
+            fpy.c $$0 = new fpy.c(this.c, this.g, this.h, this.i, 0.0, 0.0, 0.0, this.G, this.a);
+            $$0.e(0.99F);
+            $$0.a(this.v, this.w, this.x);
+            $$0.s = $$0.t / 2;
+            if (this.K) {
+               $$0.K = true;
+               $$0.H = this.H;
+               $$0.I = this.I;
+               $$0.J = this.J;
+            }
+
+            $$0.F = this.F;
+            this.G.a($$0);
+         }
+      }
+   }
+
+   public static class d implements fqq<ka> {
+      private final fri a;
+
+      public d(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpy.c $$8 = new fpy.c($$1, $$2, $$3, $$4, $$5, $$6, $$7, eva.N().g, this.a);
+         $$8.e(0.99F);
+         return $$8;
+      }
+   }
+
+   public static class e extends fql {
+      private int a;
+      private final fqp b;
+      private sr D;
+      private boolean E;
+
+      public e(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqp $$7, @Nullable sl $$8) {
+         super($$0, $$1, $$2, $$3);
+         this.j = $$4;
+         this.k = $$5;
+         this.l = $$6;
+         this.b = $$7;
+         this.t = 8;
+         if ($$8 != null) {
+            this.D = $$8.c("Explosions", 10);
+            if (this.D.isEmpty()) {
+               this.D = null;
+            } else {
+               this.t = this.D.size() * 2 - 1;
+
+               for (int $$9 = 0; $$9 < this.D.size(); $$9++) {
+                  sl $$10 = this.D.a($$9);
+                  if ($$10.q("Flicker")) {
+                     this.E = true;
+                     this.t += 15;
+                     break;
+                  }
+               }
+            }
+         }
+      }
+
+      @Override
+      public void a() {
+         if (this.a == 0 && this.D != null) {
+            boolean $$0 = this.c();
+            boolean $$1 = false;
+            if (this.D.size() >= 3) {
+               $$1 = true;
+            } else {
+               for (int $$2 = 0; $$2 < this.D.size(); $$2++) {
+                  sl $$3 = this.D.a($$2);
+                  if (clv.a.a($$3.f("Type")) == clv.a.b) {
+                     $$1 = true;
+                     break;
+                  }
+               }
+            }
+
+            arl $$4;
+            if ($$1) {
+               $$4 = $$0 ? arm.ik : arm.ij;
+            } else {
+               $$4 = $$0 ? arm.ii : arm.ih;
+            }
+
+            this.c.a(this.g, this.h, this.i, $$4, arn.i, 20.0F, 0.95F + this.r.i() * 0.1F, true);
+         }
+
+         if (this.a % 2 == 0 && this.D != null && this.a / 2 < this.D.size()) {
+            int $$6 = this.a / 2;
+            sl $$7 = this.D.a($$6);
+            clv.a $$8 = clv.a.a($$7.f("Type"));
+            boolean $$9 = $$7.q("Trail");
+            boolean $$10 = $$7.q("Flicker");
+            int[] $$11 = $$7.n("Colors");
+            int[] $$12 = $$7.n("FadeColors");
+            if ($$11.length == 0) {
+               $$11 = new int[]{clf.p.f()};
+            }
+
+            switch ($$8) {
+               case a:
+               default:
+                  this.a(0.25, 2, $$11, $$12, $$9, $$10);
+                  break;
+               case b:
+                  this.a(0.5, 4, $$11, $$12, $$9, $$10);
+                  break;
+               case c:
+                  this.a(
+                     0.5,
+                     new double[][]{
+                        {0.0, 1.0},
+                        {0.3455, 0.309},
+                        {0.9511, 0.309},
+                        {0.3795918367346939, -0.12653061224489795},
+                        {0.6122448979591837, -0.8040816326530612},
+                        {0.0, -0.35918367346938773}
+                     },
+                     $$11,
+                     $$12,
+                     $$9,
+                     $$10,
+                     false
+                  );
+                  break;
+               case d:
+                  this.a(
+                     0.5,
+                     new double[][]{
+                        {0.0, 0.2},
+                        {0.2, 0.2},
+                        {0.2, 0.6},
+                        {0.6, 0.6},
+                        {0.6, 0.2},
+                        {0.2, 0.2},
+                        {0.2, 0.0},
+                        {0.4, 0.0},
+                        {0.4, -0.6},
+                        {0.2, -0.6},
+                        {0.2, -0.4},
+                        {0.0, -0.4}
+                     },
+                     $$11,
+                     $$12,
+                     $$9,
+                     $$10,
+                     true
+                  );
+                  break;
+               case e:
+                  this.a($$11, $$12, $$9, $$10);
+            }
+
+            int $$13 = $$11[0];
+            float $$14 = (float)(($$13 & 0xFF0000) >> 16) / 255.0F;
+            float $$15 = (float)(($$13 & 0xFF00) >> 8) / 255.0F;
+            float $$16 = (float)(($$13 & 0xFF) >> 0) / 255.0F;
+            fqn $$17 = this.b.a(jx.L, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            $$17.a($$14, $$15, $$16);
+         }
+
+         this.a++;
+         if (this.a > this.t) {
+            if (this.E) {
+               boolean $$18 = this.c();
+               arl $$19 = $$18 ? arm.io : arm.in;
+               this.c.a(this.g, this.h, this.i, $$19, arn.i, 20.0F, 0.9F + this.r.i() * 0.15F, true);
+            }
+
+            this.k();
+         }
+      }
+
+      private boolean c() {
+         eva $$0 = eva.N();
+         return $$0.j.m().b().c(this.g, this.h, this.i) >= 256.0;
+      }
+
+      private void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int[] $$6, int[] $$7, boolean $$8, boolean $$9) {
+         fpy.c $$10 = (fpy.c)this.b.a(jx.C, $$0, $$1, $$2, $$3, $$4, $$5);
+         $$10.a($$8);
+         $$10.b($$9);
+         $$10.e(0.99F);
+         int $$11 = this.r.a($$6.length);
+         $$10.b($$6[$$11]);
+         if ($$7.length > 0) {
+            $$10.c(ac.a($$7, this.r));
+         }
+      }
+
+      private void a(double $$0, int $$1, int[] $$2, int[] $$3, boolean $$4, boolean $$5) {
+         double $$6 = this.g;
+         double $$7 = this.h;
+         double $$8 = this.i;
+
+         for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
+            for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
+               for (int $$11 = -$$1; $$11 <= $$1; $$11++) {
+                  double $$12 = (double)$$10 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$13 = (double)$$9 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$14 = (double)$$11 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$15 = Math.sqrt($$12 * $$12 + $$13 * $$13 + $$14 * $$14) / $$0 + this.r.k() * 0.05;
+                  this.a($$6, $$7, $$8, $$12 / $$15, $$13 / $$15, $$14 / $$15, $$2, $$3, $$4, $$5);
+                  if ($$9 != -$$1 && $$9 != $$1 && $$10 != -$$1 && $$10 != $$1) {
+                     $$11 += $$1 * 2 - 1;
+                  }
+               }
+            }
+         }
+      }
+
+      private void a(double $$0, double[][] $$1, int[] $$2, int[] $$3, boolean $$4, boolean $$5, boolean $$6) {
+         double $$7 = $$1[0][0];
+         double $$8 = $$1[0][1];
+         this.a(this.g, this.h, this.i, $$7 * $$0, $$8 * $$0, 0.0, $$2, $$3, $$4, $$5);
+         float $$9 = this.r.i() * (float) Math.PI;
+         double $$10 = $$6 ? 0.034 : 0.34;
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            double $$12 = (double)$$9 + (double)((float)$$11 * (float) Math.PI) * $$10;
+            double $$13 = $$7;
+            double $$14 = $$8;
+
+            for (int $$15 = 1; $$15 < $$1.length; $$15++) {
+               double $$16 = $$1[$$15][0];
+               double $$17 = $$1[$$15][1];
+
+               for (double $$18 = 0.25; $$18 <= 1.0; $$18 += 0.25) {
+                  double $$19 = aui.d($$18, $$13, $$16) * $$0;
+                  double $$20 = aui.d($$18, $$14, $$17) * $$0;
+                  double $$21 = $$19 * Math.sin($$12);
+                  $$19 *= Math.cos($$12);
+
+                  for (double $$22 = -1.0; $$22 <= 1.0; $$22 += 2.0) {
+                     this.a(this.g, this.h, this.i, $$19 * $$22, $$20, $$21 * $$22, $$2, $$3, $$4, $$5);
+                  }
+               }
+
+               $$13 = $$16;
+               $$14 = $$17;
+            }
+         }
+      }
+
+      private void a(int[] $$0, int[] $$1, boolean $$2, boolean $$3) {
+         double $$4 = this.r.k() * 0.05;
+         double $$5 = this.r.k() * 0.05;
+
+         for (int $$6 = 0; $$6 < 70; $$6++) {
+            double $$7 = this.j * 0.5 + this.r.k() * 0.15 + $$4;
+            double $$8 = this.l * 0.5 + this.r.k() * 0.15 + $$5;
+            double $$9 = this.k * 0.5 + this.r.j() * 0.5;
+            this.a(this.g, this.h, this.i, $$7, $$9, $$8, $$0, $$1, $$2, $$3);
+         }
+      }
    }
 }

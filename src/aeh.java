@@ -1,34 +1,40 @@
-import java.util.Optional;
+public class aeh implements xd<adg> {
+   private final int a;
+   private final ahd b;
+   private final boolean c;
 
-public class aeh implements wu<acw> {
-   private final Optional<bkq> a;
-   private final Optional<bkq> b;
-
-   public aeh(Optional<bkq> $$0, Optional<bkq> $$1) {
+   public aeh(int $$0, cpx<?> $$1, boolean $$2) {
       this.a = $$0;
-      this.b = $$1;
+      this.b = $$1.a();
+      this.c = $$2;
    }
 
-   public aeh(ue $$0) {
-      this.a = $$0.b((ue.a<bkq>)($$0x -> $$0x.a(kb.d)));
-      this.b = $$0.b((ue.a<bkq>)($$0x -> $$0x.a(kb.d)));
+   public aeh(ug $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.t();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(kb.d, $$1));
-      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(kb.d, $$1));
+   public void a(ug $$0) {
+      $$0.k(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(acw $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   public Optional<bkq> a() {
+   public int a() {
       return this.a;
    }
 
-   public Optional<bkq> d() {
+   public ahd d() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

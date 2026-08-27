@@ -1,153 +1,43 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class eyo implements eyp {
-   private static final agt a = new agt("toast/system");
-   private static final int d = 200;
-   private static final int e = 12;
-   private static final int f = 10;
-   private final eyo.a g;
-   private vb h;
-   private List<atk> i;
-   private long j;
-   private boolean k;
-   private final int l;
+public class eyo extends eym {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private static final int i = 30;
+   private static final double j = 33.333333333333336;
 
-   public eyo(eyo.a $$0, vb $$1, @Nullable vb $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(euk.N().h.a($$1), $$2 == null ? 0 : euk.N().h.a($$2))));
-   }
-
-   public static eyo a(euk $$0, eyo.a $$1, vb $$2, vb $$3) {
-      evu $$4 = $$0.h;
-      List<atk> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new eyo($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private eyo(eyo.a $$0, vb $$1, List<atk> $$2, int $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.l = $$3;
-   }
-
-   private static ImmutableList<atk> a(@Nullable vb $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
+   public eyo(ewk $$0, aur $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public int a() {
-      return this.l;
+   protected void a(ewm $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
+      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
+      $$0.a(fth.C(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
+      int $$4 = eva.N().m.h().c();
+      if ($$4 > 0 && $$4 <= 250) {
+         $$0.a(fth.C(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+      }
    }
 
    @Override
-   public int b() {
-      return 20 + Math.max(this.i.size(), 1) * 12;
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
    }
 
    @Override
-   public eyp.a a(evw $$0, eyq $$1, long $$2) {
-      if (this.k) {
-         this.j = $$2;
-         this.k = false;
-      }
-
-      int $$3 = this.a();
-      if ($$3 == 160 && this.i.size() <= 1) {
-         $$0.a(a, 0, 0, $$3, this.b());
-      } else {
-         int $$4 = this.b();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
-
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
-         }
-
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
-      }
-
-      if (this.i == null) {
-         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
-      } else {
-         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
-
-         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
-            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
-         }
-      }
-
-      return (double)($$2 - this.j) < (double)this.g.i * $$1.c() ? eyp.a.a : eyp.a.b;
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
    }
 
-   private void a(evw $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      agt $$7 = a;
-      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
-
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
-      }
-
-      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
+   @Override
+   protected int a(long $$0) {
+      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
    }
 
-   public void a(vb $$0, @Nullable vb $$1) {
-      this.h = $$0;
-      this.i = a($$1);
-      this.k = true;
-   }
-
-   public eyo.a c() {
-      return this.g;
-   }
-
-   public static void a(eyq $$0, eyo.a $$1, vb $$2, @Nullable vb $$3) {
-      $$0.a(new eyo($$1, $$2, $$3));
-   }
-
-   public static void b(eyq $$0, eyo.a $$1, vb $$2, @Nullable vb $$3) {
-      eyo $$4 = $$0.a(eyo.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
-      } else {
-         $$4.a($$2, $$3);
-      }
-   }
-
-   public static void a(euk $$0, String $$1) {
-      a($$0.ax(), eyo.a.e, vb.c("selectWorld.access_failure"), vb.b($$1));
-   }
-
-   public static void b(euk $$0, String $$1) {
-      a($$0.ax(), eyo.a.e, vb.c("selectWorld.delete_failure"), vb.b($$1));
-   }
-
-   public static void c(euk $$0, String $$1) {
-      a($$0.ax(), eyo.a.f, vb.c("pack.copyFailure"), vb.b($$1));
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h(10000L);
-
-      final long i;
-
-      private a(long $$0) {
-         this.i = $$0;
-      }
-
-      private a() {
-         this(5000L);
-      }
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

@@ -1,21 +1,31 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cnh extends cnq {
-   public cnh(cmc.a $$0, cvz $$1, cvz $$2) {
-      super($$1, $$2, $$0, ia.a);
+public abstract class cnh extends cmm {
+   public static final Predicate<cmr> c = $$0 -> $$0.a(asj.at);
+   public static final Predicate<cmr> d = c.or($$0 -> $$0.a(cmu.un));
+
+   public cnh(cmm.a $$0) {
+      super($$0);
    }
 
-   public cnh(cmc.a $$0, cvz $$1, cvz $$2, ia $$3) {
-      super($$1, $$2, $$0, $$3);
+   public Predicate<cmr> e() {
+      return this.b();
+   }
+
+   public abstract Predicate<cmr> b();
+
+   public static cmr a(bmf $$0, Predicate<cmr> $$1) {
+      if ($$1.test($$0.b(bju.b))) {
+         return $$0.b(bju.b);
+      } else {
+         return $$1.test($$0.b(bju.a)) ? $$0.b(bju.a) : cmr.f;
+      }
    }
 
    @Override
-   protected boolean a(hv $$0, csy $$1, @Nullable cer $$2, cmh $$3, dip $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dhm $$6 && $$1.a_($$0).b() instanceof dcy $$7) {
-         $$7.a($$2, $$6, true);
-      }
-
-      return $$5;
+   public int c() {
+      return 1;
    }
+
+   public abstract int d();
 }

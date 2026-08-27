@@ -1,13 +1,6 @@
-import java.time.Instant;
+import java.util.Set;
+import java.util.function.Supplier;
 
-public final class bhs {
-   public final Instant a;
-   public final int b;
-   public final bgb c;
-
-   public bhs(Instant $$0, int $$1, bgb $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+public interface bhs {
+   Set<bhq> a(Supplier<bgk> var1);
 }

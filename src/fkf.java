@@ -1,42 +1,57 @@
-public class fkf<T extends blf> extends fjh<T> {
-   private final fly a;
-   private final fly b;
-   private final fly f;
+import java.util.Arrays;
 
-   public fkf(fly $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+public class fkf<T extends ccs> extends fjy<T> {
+   private static final int a = 8;
+   private final fmp b;
+   private final fmp[] f = new fmp[8];
+
+   public fkf(fmp $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fme b() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fmd.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fma.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fmd.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fma.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", fmd.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fma.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", fmd.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fma.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", fmd.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fma.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", fmd.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fma.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fmd.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fma.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fmd.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fma.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", fmd.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fma.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", fmd.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fma.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", fmd.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fma.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", fmd.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fma.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fmd.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fma.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return fme.a($$0, 32, 32);
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   @Override
-   public fly a() {
-      return this.a;
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = $$2;
+         if ($$2 == 2) {
+            $$3 = 24;
+            $$4 = 10;
+         } else if ($$2 == 3) {
+            $$3 = 24;
+            $$4 = 19;
+         }
+
+         $$1.a(a($$2), fmu.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fmr.a);
+      }
+
+      $$1.a("inside_cube", fmu.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fmr.a);
+      return fmv.a($$0, 64, 32);
    }
 
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * aty.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * aty.a($$3 * 0.2F);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      float $$4 = aui.i($$3, $$0.bS, $$0.e);
+      if ($$4 < 0.0F) {
+         $$4 = 0.0F;
+      }
+
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
+      }
+   }
+
+   @Override
+   public fmp a() {
+      return this.b;
    }
 }

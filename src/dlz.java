@@ -1,19 +1,109 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public record dlz(ie<dly> e, dkm f) {
-   public static final Codec<dlz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dly.j.fieldOf("type").forGetter(dlz::a), dkm.a.fieldOf("generator").forGetter(dlz::b)).apply($$0, $$0.stable(dlz::new))
-   );
-   public static final ags<dlz> b = ags.a(kc.aM, new agt("overworld"));
-   public static final ags<dlz> c = ags.a(kc.aM, new agt("the_nether"));
-   public static final ags<dlz> d = ags.a(kc.aM, new agt("the_end"));
+public class dlz implements dmu<blp> {
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "Entities";
+   private static final String d = "Position";
+   private final amz e;
+   private final dma f;
+   private final LongSet g = new LongOpenHashSet();
+   private final bio<Runnable> h;
+   protected final DataFixer a;
 
-   public ie<dly> a() {
-      return this.e;
+   public dlz(amz $$0, Path $$1, DataFixer $$2, boolean $$3, Executor $$4) {
+      this.e = $$0;
+      this.a = $$2;
+      this.h = bio.a($$4, "entity-deserializer");
+      this.f = new dma($$1, $$3, "entities");
    }
 
-   public dkm b() {
-      return this.f;
+   @Override
+   public CompletableFuture<dmp<blp>> a(csp $$0) {
+      return this.g.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.f.a($$0).thenApplyAsync($$1 -> {
+         if ($$1.isEmpty()) {
+            this.g.add($$0.a());
+            return b($$0);
+         } else {
+            try {
+               csp $$2 = a($$1.get());
+               if (!Objects.equals($$0, $$2)) {
+                  b.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
+               }
+            } catch (Exception var6) {
+               b.warn("Failed to parse chunk {} position info", $$0, var6);
+            }
+
+            sl $$4 = this.b($$1.get());
+            sr $$5 = $$4.c("Entities", 10);
+            List<blp> $$6 = blt.a($$5, this.e).collect(ImmutableList.toImmutableList());
+            return new dmp<>($$0, $$6);
+         }
+      }, this.h::a);
+   }
+
+   private static csp a(sl $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new csp($$1[0], $$1[1]);
+   }
+
+   private static void a(sl $$0, csp $$1) {
+      $$0.a("Position", new sp(new int[]{$$1.e, $$1.f}));
+   }
+
+   private static dmp<blp> b(csp $$0) {
+      return new dmp<>($$0, ImmutableList.of());
+   }
+
+   @Override
+   public void a(dmp<blp> $$0) {
+      csp $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.g.add($$1.a())) {
+            this.f.a($$1, null);
+         }
+      } else {
+         sr $$2 = new sr();
+         $$0.b().forEach($$1x -> {
+            sl $$2x = new sl();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         sl $$3 = ta.g(new sl());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.f.a($$1, $$3).exceptionally($$1x -> {
+            b.error("Failed to store chunk {}", $$1, $$1x);
+            return null;
+         });
+         this.g.remove($$1.a());
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.f.a($$0).join();
+      this.h.a();
+   }
+
+   private sl b(sl $$0) {
+      int $$1 = ta.b($$0, -1);
+      return avq.s.a(this.a, $$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.f.close();
    }
 }

@@ -1,13 +1,17 @@
-public abstract class gbl<T extends blf, M extends fiy<T>> extends gbz<T, M> {
-   public gbl(fzj<T, M> $$0) {
-      super($$0);
+public class gbl extends fyw<cdd, fmi<cdd>> {
+   private static final ahd a = new ahd("textures/entity/zombie_villager/zombie_villager.png");
+
+   public gbl(fyf.a $$0) {
+      super($$0, new fmi<>($$0.a(fmo.cg)), 0.5F);
+      this.a(new gcg<>(this, new fmi($$0.a(fmo.ch)), new fmi($$0.a(fmo.ci)), $$0.g()));
+      this.a(new gdb<>(this, $$0.e(), "zombie_villager"));
    }
 
-   @Override
-   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      eph $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, gdf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public ahd a(cdd $$0) {
+      return a;
    }
 
-   public abstract fsq a();
+   protected boolean b(cdd $$0) {
+      return super.a($$0) || $$0.go();
+   }
 }

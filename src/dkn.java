@@ -1,166 +1,57 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dkn {
-   private static final Logger a = LogUtils.getLogger();
-   private final dom b;
-   private final cub c;
-   private final long d;
-   private final long e;
-   private final Map<dyo, List<dzl>> f = new Object2ObjectOpenHashMap();
-   private final Map<dzi, CompletableFuture<List<csf>>> g = new Object2ObjectArrayMap();
-   private boolean h;
-   private final List<ie<dyu>> i;
+public record dkn(String m, djp n, ddv o, ddv p, arl q, arl r) {
+   private static final Map<String, dkn> s = new Object2ObjectArrayMap();
+   public static final Codec<dkn> a = atq.a(dkn::b, s::get);
+   public static final dkn b = a(new dkn("oak", djp.g));
+   public static final dkn c = a(new dkn("spruce", djp.h));
+   public static final dkn d = a(new dkn("birch", djp.i));
+   public static final dkn e = a(new dkn("acacia", djp.j));
+   public static final dkn f = a(new dkn("cherry", djp.k, ddv.aU, ddv.aX, arm.eo, arm.ep));
+   public static final dkn g = a(new dkn("jungle", djp.l));
+   public static final dkn h = a(new dkn("dark_oak", djp.m));
+   public static final dkn i = a(new dkn("crimson", djp.n, ddv.aT, ddv.aQ, arm.qb, arm.qc));
+   public static final dkn j = a(new dkn("warped", djp.o, ddv.aT, ddv.aQ, arm.qb, arm.qc));
+   public static final dkn k = a(new dkn("mangrove", djp.p));
+   public static final dkn l = a(new dkn("bamboo", djp.q, ddv.aS, ddv.aR, arm.bh, arm.bi));
 
-   public static dkn a(dom $$0, long $$1, cub $$2, Stream<ie<dyu>> $$3) {
-      List<ie<dyu>> $$4 = $$3.filter($$1x -> a((dyu)$$1x.a(), $$2)).toList();
-      return new dkn($$0, $$2, $$1, 0L, $$4);
+   public dkn(String $$0, djp $$1) {
+      this($$0, $$1, ddv.b, ddv.aP, arm.ie, arm.if);
    }
 
-   public static dkn a(dom $$0, long $$1, cub $$2, ih<dyu> $$3) {
-      List<ie<dyu>> $$4 = $$3.b().filter($$1x -> a((dyu)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
-      return new dkn($$0, $$2, $$1, $$1, $$4);
+   private static dkn a(dkn $$0) {
+      s.put($$0.b(), $$0);
+      return $$0;
    }
 
-   private static boolean a(dyu $$0, cub $$1) {
-      Stream<ie<ctx>> $$2 = $$0.a().stream().flatMap($$0x -> {
-         dyo $$1x = $$0x.a().a();
-         return $$1x.a().a();
-      });
-      return $$2.anyMatch($$1.c()::contains);
+   public static Stream<dkn> a() {
+      return s.values().stream();
    }
 
-   private dkn(dom $$0, cub $$1, long $$2, long $$3, List<ie<dyu>> $$4) {
-      this.b = $$0;
-      this.d = $$2;
-      this.c = $$1;
-      this.e = $$3;
-      this.i = $$4;
+   public String b() {
+      return this.m;
    }
 
-   public List<ie<dyu>> a() {
-      return this.i;
+   public djp c() {
+      return this.n;
    }
 
-   private void e() {
-      Set<ie<ctx>> $$0 = this.c.c();
-      this.a().forEach($$1 -> {
-         dyu $$2 = $$1.a();
-         boolean $$3 = false;
-
-         for (dyu.a $$4 : $$2.a()) {
-            dyo $$5 = $$4.a().a();
-            if ($$5.a().a().anyMatch($$0::contains)) {
-               this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
-               $$3 = true;
-            }
-         }
-
-         if ($$3 && $$2.b() instanceof dzi $$7) {
-            this.g.put($$7, this.a((ie<dyu>)$$1, $$7));
-         }
-      });
+   public ddv d() {
+      return this.o;
    }
 
-   private CompletableFuture<List<csf>> a(ie<dyu> $$0, dzi $$1) {
-      if ($$1.c() == 0) {
-         return CompletableFuture.completedFuture(List.of());
-      } else {
-         Stopwatch $$2 = Stopwatch.createStarted(ac.c);
-         int $$3 = $$1.a();
-         int $$4 = $$1.c();
-         List<CompletableFuture<csf>> $$5 = new ArrayList<>($$4);
-         int $$6 = $$1.b();
-         ij<ctx> $$7 = $$1.d();
-         auf $$8 = auf.a();
-         $$8.b(this.e);
-         double $$9 = $$8.j() * Math.PI * 2.0;
-         int $$10 = 0;
-         int $$11 = 0;
-
-         for (int $$12 = 0; $$12 < $$4; $$12++) {
-            double $$13 = (double)(4 * $$3 + $$3 * $$11 * 6) + ($$8.j() - 0.5) * (double)$$3 * 2.5;
-            int $$14 = (int)Math.round(Math.cos($$9) * $$13);
-            int $$15 = (int)Math.round(Math.sin($$9) * $$13);
-            auf $$16 = $$8.d();
-            $$5.add(CompletableFuture.supplyAsync(() -> {
-               Pair<hv, ie<ctx>> $$4x = this.c.a(ix.a($$14, 8), 0, ix.a($$15, 8), 112, $$7::a, $$16, this.b.b());
-               if ($$4x != null) {
-                  hv $$5x = (hv)$$4x.getFirst();
-                  return new csf(ix.a($$5x.u()), ix.a($$5x.w()));
-               } else {
-                  return new csf($$14, $$15);
-               }
-            }, ac.f()));
-            $$9 += (Math.PI * 2) / (double)$$6;
-            if (++$$10 == $$6) {
-               $$11++;
-               $$10 = 0;
-               $$6 += 2 * $$6 / ($$11 + 1);
-               $$6 = Math.min($$6, $$4 - $$12);
-               $$9 += $$8.j() * Math.PI * 2.0;
-            }
-         }
-
-         return ac.b($$5).thenApply($$2x -> {
-            double $$3x = (double)$$2.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
-            a.debug("Calculation for {} took {}s", $$0, $$3x);
-            return $$2x;
-         });
-      }
+   public ddv e() {
+      return this.p;
    }
 
-   public void b() {
-      if (!this.h) {
-         this.e();
-         this.h = true;
-      }
+   public arl f() {
+      return this.q;
    }
 
-   @Nullable
-   public List<csf> a(dzi $$0) {
-      this.b();
-      CompletableFuture<List<csf>> $$1 = this.g.get($$0);
-      return $$1 != null ? $$1.join() : null;
-   }
-
-   public List<dzl> a(ie<dyo> $$0) {
-      this.b();
-      return this.f.getOrDefault($$0.a(), List.of());
-   }
-
-   public dom c() {
-      return this.b;
-   }
-
-   public boolean a(ie<dyu> $$0, int $$1, int $$2, int $$3) {
-      dzl $$4 = $$0.a().b();
-
-      for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
-         for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {
-            if ($$4.b(this, $$5, $$6)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public long d() {
-      return this.d;
+   public arl g() {
+      return this.r;
    }
 }

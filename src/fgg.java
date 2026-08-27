@@ -1,157 +1,244 @@
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fgg extends fcc {
-   private static final vb a = vb.c("gui.abuseReport.reason.title");
-   private static final vb b = vb.c("gui.abuseReport.reason.description");
-   private static final vb c = vb.c("gui.abuseReport.read_info");
-   private static final int k = 95;
-   private static final int l = 150;
-   private static final int m = 20;
-   private static final int n = 320;
-   private static final int o = 4;
+public class fgg implements eyb, eyt {
+   private static final ahd b = new ahd("recipe_book/overlay_recipe");
+   static final ahd c = new ahd("recipe_book/furnace_overlay_highlighted");
+   static final ahd d = new ahd("recipe_book/furnace_overlay");
+   static final ahd e = new ahd("recipe_book/crafting_overlay_highlighted");
+   static final ahd f = new ahd("recipe_book/crafting_overlay");
+   static final ahd g = new ahd("recipe_book/furnace_overlay_disabled_highlighted");
+   static final ahd h = new ahd("recipe_book/furnace_overlay_disabled");
+   static final ahd i = new ahd("recipe_book/crafting_overlay_disabled_highlighted");
+   static final ahd j = new ahd("recipe_book/crafting_overlay_disabled");
+   private static final int k = 4;
+   private static final int l = 5;
+   private static final float m = 0.375F;
+   public static final int a = 25;
+   private final List<fgg.a> n = Lists.newArrayList();
+   private boolean o;
+   private int p;
+   private int q;
+   private eva r;
+   private fgl t;
    @Nullable
-   private final fcc p;
-   @Nullable
-   private fgg.a q;
-   @Nullable
-   fnu r;
-   private final Consumer<fnu> t;
+   private cpx<?> u;
+   float v;
+   boolean w;
 
-   public fgg(@Nullable fcc $$0, @Nullable fnu $$1, Consumer<fnu> $$2) {
-      super(a);
-      this.p = $$0;
-      this.r = $$1;
-      this.t = $$2;
-   }
-
-   @Override
-   protected void aP_() {
-      this.q = new fgg.a(this.f);
-      this.e(this.q);
-      fgg.a.a $$0 = x.a(this.r, this.q::a);
-      this.q.a($$0);
-      int $$1 = this.g / 2 - 150 - 5;
-      this.d(ewh.a(c, fau.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.l(), 150, 20).a());
-      int $$2 = this.g / 2 + 5;
-      this.d(ewh.a(va.d, $$0x -> {
-         fgg.a.a $$1x = this.q.f();
-         if ($$1x != null) {
-            this.t.accept($$1x.b());
-         }
-
-         this.f.a(this.p);
-      }).a($$2, this.l(), 150, 20).a());
-      super.aP_();
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.q.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.C(), this.E(), this.D(), this.F(), 2130706432);
-      $$0.b(this.i, b, this.C() + 4, this.E() + 4, -8421505);
-      fgg.a.a $$4 = this.q.f();
-      if ($$4 != null) {
-         int $$5 = this.C() + 4 + 16;
-         int $$6 = this.D() - 4;
-         int $$7 = this.E() + 4 + 9 + 2;
-         int $$8 = this.F() - 4;
-         int $$9 = $$6 - $$5;
-         int $$10 = $$8 - $$7;
-         int $$11 = this.i.b($$4.b.c(), $$9);
-         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+   public void a(eva $$0, fgl $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
+      this.r = $$0;
+      this.t = $$1;
+      if ($$0.s.bS instanceof chv) {
+         this.w = true;
       }
-   }
 
-   @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
+      boolean $$7 = $$0.s.m().a((cjh<?>)$$0.s.bS);
+      List<cpx<?>> $$8 = $$1.b(true);
+      List<cpx<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.p = $$2;
+      this.q = $$3;
+      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$4 + 50);
+      if ($$14 > $$15) {
+         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
+      }
 
-   private int l() {
-      return this.h - 20 - 4;
-   }
+      float $$16 = (float)(this.q + $$13 * 25);
+      float $$17 = (float)($$5 + 50);
+      if ($$16 > $$17) {
+         this.q = (int)((float)this.q - $$6 * (float)aui.f(($$16 - $$17) / $$6));
+      }
 
-   private int C() {
-      return (this.g - 320) / 2;
-   }
+      float $$18 = (float)this.q;
+      float $$19 = (float)($$5 - 100);
+      if ($$18 < $$19) {
+         this.q = (int)((float)this.q - $$6 * (float)aui.f(($$18 - $$19) / $$6));
+      }
 
-   private int D() {
-      return (this.g + 320) / 2;
-   }
+      this.o = true;
+      this.n.clear();
 
-   private int E() {
-      return this.h - 95 + 4;
-   }
-
-   private int F() {
-      return this.l() - 4;
-   }
-
-   @Override
-   public void aF_() {
-      this.f.a(this.p);
-   }
-
-   public class a extends exd<fgg.a.a> {
-      public a(euk $$1) {
-         super($$1, fgg.this.g, fgg.this.h, 40, fgg.this.h - 95, 18);
-
-         for (fnu $$2 : fnu.values()) {
-            this.b(new fgg.a.a($$2));
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         cpx<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
+         if (this.w) {
+            this.n.add(new fgg.b($$23, $$24, $$22, $$21));
+         } else {
+            this.n.add(new fgg.a($$23, $$24, $$22, $$21));
          }
       }
 
-      @Nullable
-      public fgg.a.a a(fnu $$0) {
-         return this.i().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      this.u = null;
+   }
+
+   public fgl a() {
+      return this.t;
+   }
+
+   @Nullable
+   public cpx<?> b() {
+      return this.u;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
+         return false;
+      } else {
+         for (fgg.a $$3 : this.n) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.u = $$3.c;
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   @Override
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      if (this.o) {
+         this.v += $$3;
+         RenderSystem.enableBlend();
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.n.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.n.size(), $$4);
+         int $$6 = aui.f((float)this.n.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
+         RenderSystem.disableBlend();
+
+         for (fgg.a $$8 : this.n) {
+            $$8.a($$0, $$1, $$2, $$3);
+         }
+
+         $$0.c().b();
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.o = $$0;
+   }
+
+   public boolean c() {
+      return this.o;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public boolean aI_() {
+      return false;
+   }
+
+   class a extends eww implements agq<cps> {
+      final cpx<?> c;
+      private final boolean d;
+      protected final List<fgg.a.a> a = Lists.newArrayList();
+
+      public a(int $$0, int $$1, cpx<?> $$2, boolean $$3) {
+         super($$0, $$1, 200, 20, vc.a);
+         this.g = 24;
+         this.h = 24;
+         this.c = $$2;
+         this.d = $$3;
+         this.a($$2);
+      }
+
+      protected void a(cpx<?> $$0) {
+         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
       }
 
       @Override
-      public int b() {
-         return 320;
+      public void a(far $$0) {
+         this.c($$0);
       }
 
       @Override
-      protected int c() {
-         return this.p() - 2;
+      public void a(Iterator<cps> $$0, int $$1, int $$2, int $$3, int $$4) {
+         cmr[] $$5 = $$0.next().a();
+         if ($$5.length != 0) {
+            this.a.add(new fgg.a.a(3 + $$4 * 7, 3 + $$3 * 7, $$5));
+         }
       }
 
-      public void a(@Nullable fgg.a.a $$0) {
-         super.a($$0);
-         fgg.this.r = $$0 != null ? $$0.b() : null;
+      @Override
+      public void b(ewm $$0, int $$1, int $$2, float $$3) {
+         ahd $$4;
+         if (this.d) {
+            if (fgg.this.w) {
+               $$4 = this.z() ? fgg.c : fgg.d;
+            } else {
+               $$4 = this.z() ? fgg.e : fgg.f;
+            }
+         } else if (fgg.this.w) {
+            $$4 = this.z() ? fgg.g : fgg.h;
+         } else {
+            $$4 = this.z() ? fgg.i : fgg.j;
+         }
+
+         $$0.a($$4, this.B(), this.C(), this.g, this.h);
+         $$0.c().a();
+         $$0.c().a((double)(this.B() + 2), (double)(this.C() + 2), 150.0);
+
+         for (fgg.a.a $$8 : this.a) {
+            $$0.c().a();
+            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0, -8.0, 0.0);
+            if ($$8.a.length > 0) {
+               $$0.a($$8.a[aui.d(fgg.this.v / 30.0F) % $$8.a.length], 0, 0);
+            }
+
+            $$0.c().b();
+         }
+
+         $$0.c().b();
       }
 
-      public class a extends exd.a<fgg.a.a> {
-         final fnu b;
+      protected class a {
+         public final cmr[] a;
+         public final int b;
+         public final int c;
 
-         public a(fnu $$1) {
+         public a(int $$1, int $$2, cmr[] $$3) {
             this.b = $$1;
+            this.c = $$2;
+            this.a = $$3;
          }
+      }
+   }
 
-         @Override
-         public void a(evw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 + 1;
-            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
-            $$0.b(fgg.this.i, this.b.b(), $$10, $$11, -1);
-         }
+   class b extends fgg.a {
+      public b(int $$0, int $$1, cpx<?> $$2, boolean $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
 
-         @Override
-         public vb a() {
-            return vb.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-
-         public fnu b() {
-            return this.b;
-         }
+      @Override
+      protected void a(cpx<?> $$0) {
+         cps $$1 = $$0.b().a().get(0);
+         cmr[] $$2 = $$1.a();
+         this.a.add(new fgg.a.a(10, 10, $$2));
       }
    }
 }

@@ -1,19 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public interface cdn {
+   int m_ = 10;
 
-public class cdn {
-   public static bnn<blv> a(int $$0) {
-      return bqz.a(
-         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$1 -> $$1.group($$1.b(bux.K), $$1.c(bux.ac), $$1.c(bux.af), $$1.c(bux.ae))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
-                     cbe $$7 = $$1.b($$2);
-                     if (!cdi.a($$7.q())) {
-                        return false;
-                     } else {
-                        $$3.a(true, (long)$$0);
-                        return true;
-                     }
-                  }))
-      );
+   int ge();
+
+   static boolean a(bmf $$0, bmf $$1) {
+      float $$2 = (float)$$0.b(bnl.c);
+      float $$3;
+      if (!$$0.o_() && (int)$$2 > 0) {
+         $$3 = $$2 / 2.0F + (float)$$0.dM().z.a((int)$$2);
+      } else {
+         $$3 = $$2;
+      }
+
+      boolean $$5 = $$1.a($$0.dN().b($$0), $$3);
+      if ($$5) {
+         $$0.a($$0, $$1);
+         if (!$$0.o_()) {
+            b($$0, $$1);
+         }
+      }
+
+      return $$5;
+   }
+
+   static void b(bmf $$0, bmf $$1) {
+      double $$2 = $$0.b(bnl.d);
+      double $$3 = $$1.b(bnl.i);
+      double $$4 = $$2 - $$3;
+      if (!($$4 <= 0.0)) {
+         double $$5 = $$1.dr() - $$0.dr();
+         double $$6 = $$1.dx() - $$0.dx();
+         float $$7 = (float)($$0.dM().z.a(21) - 10);
+         double $$8 = $$4 * (double)($$0.dM().z.i() * 0.5F + 0.2F);
+         elm $$9 = new elm($$5, 0.0, $$6).d().a($$8).b($$7);
+         double $$10 = $$4 * (double)$$0.dM().z.i() * 0.5;
+         $$1.j($$9.c, $$10, $$9.e);
+         $$1.T = true;
+      }
    }
 }

@@ -1,117 +1,69 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class dhj extends dgd implements dnb.b<dni.b>, dni {
-   private static final Logger b = LogUtils.getLogger();
-   private dni.a c;
-   private final dni.b d;
-   private final dni.d e = this.c();
-   private int g;
-
-   protected dhj(dgf<?> $$0, hv $$1, dip $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dni.a();
-      this.d = new dni.b(this);
-   }
-
-   public dhj(hv $$0, dip $$1) {
-      this(dgf.I, $$0, $$1);
-   }
-
-   public dni.d c() {
-      return new dhj.a(this.aB_());
-   }
-
-   @Override
-   public void a(sj $$0) {
-      super.a($$0);
-      this.g = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dni.a.a.parse(new Dynamic(sx.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
-      }
-   }
-
-   @Override
-   protected void b(sj $$0) {
-      super.b($$0);
-      $$0.a("last_vibration_frequency", this.g);
-      dni.a.a.encodeStart(sx.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
-   }
-
-   @Override
-   public dni.a gg() {
-      return this.c;
-   }
-
-   @Override
-   public dni.d gh() {
-      return this.e;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   public dni.b g() {
-      return this.d;
-   }
-
-   protected class a implements dni.d {
-      public static final int b = 8;
-      protected final hv c;
-      private final dnd a;
-
-      public a(hv $$1) {
-         this.c = $$1;
-         this.a = new dmv($$1);
+public class dhj extends dgo implements dhr {
+   private final dgw a = new dgw();
+   private final dhb b = new dhb() {
+      @Override
+      protected void a(cti $$0, hx $$1, dja $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, arm.hv, arn.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
 
       @Override
-      public int a() {
-         return 8;
+      protected void b(cti $$0, hx $$1, dja $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, arm.hu, arn.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
 
       @Override
-      public dnd b() {
-         return this.a;
+      protected void a(cti $$0, hx $$1, dja $$2, int $$3, int $$4) {
+         $$0.a(dhj.this.p, cwl.fG, 1, $$4);
       }
 
       @Override
-      public boolean d() {
+      protected boolean a(cfb $$0) {
+         return $$0.gf().b(dhj.this);
+      }
+   };
+
+   public dhj(hx $$0, dja $$1) {
+      super(dgq.d, $$0, $$1);
+   }
+
+   public static void a(cti $$0, hx $$1, dja $$2, dhj $$3) {
+      $$3.a.a();
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.a.a($$1 > 0);
          return true;
+      } else {
+         return super.a_($$0, $$1);
       }
+   }
 
-      @Override
-      public boolean a(amp $$0, hv $$1, dmz $$2, @Nullable dmz.a $$3) {
-         return !$$1.equals(this.c) || $$2 != dmz.f && $$2 != dmz.i ? dcr.n(dhj.this.r()) : false;
+   public void a(cfb $$0) {
+      if (!this.q && !$$0.P_()) {
+         this.b.a($$0, this.i(), this.aB_(), this.r());
       }
+   }
 
-      @Override
-      public void a(amp $$0, hv $$1, dmz $$2, @Nullable blf $$3, @Nullable blf $$4, float $$5) {
-         dip $$6 = dhj.this.r();
-         if (dcr.n($$6)) {
-            dhj.this.a(dni.a_($$2));
-            int $$7 = dni.a_($$5, this.a());
-            if ($$6.b() instanceof dcr $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dhj.this.f());
-            }
-         }
+   public void b(cfb $$0) {
+      if (!this.q && !$$0.P_()) {
+         this.b.b($$0, this.i(), this.aB_(), this.r());
       }
+   }
 
-      @Override
-      public void e() {
-         dhj.this.e();
-      }
+   public boolean c(cfb $$0) {
+      return bjo.a(this, $$0);
+   }
 
-      @Override
-      public boolean f() {
-         return true;
+   public void c() {
+      if (!this.q) {
+         this.b.c(this.i(), this.aB_(), this.r());
       }
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.a.a($$0);
    }
 }

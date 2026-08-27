@@ -1,40 +1,30 @@
-public class fpv extends fqw {
-   fpv(fmt $$0, double $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, aty.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, aty.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, aty.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+public class fpv extends fqz {
+   fpv(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fri $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.c(15916745);
+      this.b($$7);
    }
 
    @Override
-   public fqa b() {
-      return fqa.b;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * aty.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements fqq<ka> {
+      private final fri a;
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
-
-      public a(fqr $$0) {
+      public a(fri $$0) {
          this.a = $$0;
       }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpv $$8 = new fpv($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

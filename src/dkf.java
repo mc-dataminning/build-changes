@@ -1,15 +1,25 @@
-public enum dkf {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dkf implements ave {
+   a("up"),
+   b("side"),
+   c("none");
 
-   private final int d;
+   private final String d;
 
-   private dkf(int $$0) {
+   private dkf(String $$0) {
       this.d = $$0;
    }
 
-   public int a() {
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
       return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

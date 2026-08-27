@@ -1,32 +1,11 @@
-public interface cny {
-   cny.a a = new cny.a(false, false);
-   cny.a b = new cny.a(true, false);
+public class cny extends cod {
+   public cny(cmm.a $$0) {
+      super($$0);
+   }
 
-   boolean a();
-
-   boolean b();
-
-   public static record a(boolean c, boolean d) implements cny {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cny.a c() {
-         return new cny.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.xT, arn.h, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

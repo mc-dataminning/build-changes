@@ -1,55 +1,588 @@
-import com.google.gson.JsonElement;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.JsonOps;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class egj<T> {
-   private static final Logger d = LogUtils.getLogger();
-   public static final egj<ejd> a = new egj<>(ejf.a, "predicates", c());
-   public static final egj<ehr> b = new egj<>(eht.b, "item_modifiers", c());
-   public static final egj<egm> c = new egj<>(egm.c, "loot_tables", d());
-   private final Codec<T> e;
-   private final String f;
-   private final egj.a<T> g;
+public class egj implements egk, egl {
+   private static final Logger f = LogUtils.getLogger();
+   public static final String a = "LevelName";
+   protected static final String b = "Player";
+   protected static final String c = "WorldGenSettings";
+   private ctm g;
+   private final dph h;
+   private final egj.a i;
+   private final Lifecycle j;
+   private int k;
+   private int l;
+   private int m;
+   private float n;
+   private long o;
+   private long p;
+   @Nullable
+   private final sl q;
+   private final int r;
+   private int s;
+   private boolean t;
+   private int u;
+   private boolean v;
+   private int w;
+   private boolean x;
+   private boolean y;
+   private dkr.c z;
+   private dmm.a A;
+   @Nullable
+   private sl B;
+   private int C;
+   private int D;
+   @Nullable
+   private UUID E;
+   private final Set<String> F;
+   private boolean G;
+   private final Set<String> H;
+   private final ekz<MinecraftServer> I;
 
-   private egj(Codec<T> $$0, String $$1, egj.a<T> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private egj(
+      @Nullable sl $$0,
+      boolean $$1,
+      int $$2,
+      int $$3,
+      int $$4,
+      float $$5,
+      long $$6,
+      long $$7,
+      int $$8,
+      int $$9,
+      int $$10,
+      boolean $$11,
+      int $$12,
+      boolean $$13,
+      boolean $$14,
+      boolean $$15,
+      dkr.c $$16,
+      int $$17,
+      int $$18,
+      @Nullable UUID $$19,
+      Set<String> $$20,
+      Set<String> $$21,
+      ekz<MinecraftServer> $$22,
+      @Nullable sl $$23,
+      dmm.a $$24,
+      ctm $$25,
+      dph $$26,
+      egj.a $$27,
+      Lifecycle $$28
+   ) {
+      this.G = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
+      this.r = $$8;
+      this.s = $$9;
+      this.u = $$10;
+      this.t = $$11;
+      this.w = $$12;
+      this.v = $$13;
+      this.x = $$14;
+      this.y = $$15;
+      this.z = $$16;
+      this.C = $$17;
+      this.D = $$18;
+      this.E = $$19;
+      this.F = $$20;
+      this.H = $$21;
+      this.q = $$0;
+      this.I = $$22;
+      this.B = $$23;
+      this.A = $$24;
+      this.g = $$25;
+      this.h = $$26;
+      this.i = $$27;
+      this.j = $$28;
    }
 
-   public String a() {
-      return this.f;
+   public egj(ctm $$0, dph $$1, egj.a $$2, Lifecycle $$3) {
+      this(
+         null,
+         false,
+         0,
+         0,
+         0,
+         0.0F,
+         0L,
+         0L,
+         19133,
+         0,
+         0,
+         false,
+         0,
+         false,
+         false,
+         false,
+         dkr.e,
+         0,
+         0,
+         null,
+         Sets.newLinkedHashSet(),
+         new HashSet<>(),
+         new ekz<>(eky.a),
+         null,
+         dmm.a.b,
+         $$0.h(),
+         $$1,
+         $$2,
+         $$3
+      );
    }
 
-   public void a(egn $$0, egg<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
+   public static <T> egj a(Dynamic<T> $$0, ctm $$1, egj.a $$2, dph $$3, Lifecycle $$4) {
+      long $$5 = $$0.get("Time").asLong(0L);
+      return new egj(
+         (sl)sl.a.parse($$0.get("Player").orElseEmptyMap()).result().orElse(null),
+         $$0.get("WasModded").asBoolean(false),
+         $$0.get("SpawnX").asInt(0),
+         $$0.get("SpawnY").asInt(0),
+         $$0.get("SpawnZ").asInt(0),
+         $$0.get("SpawnAngle").asFloat(0.0F),
+         $$5,
+         $$0.get("DayTime").asLong($$5),
+         egh.a($$0).a(),
+         $$0.get("clearWeatherTime").asInt(0),
+         $$0.get("rainTime").asInt(0),
+         $$0.get("raining").asBoolean(false),
+         $$0.get("thunderTime").asInt(0),
+         $$0.get("thundering").asBoolean(false),
+         $$0.get("initialized").asBoolean(true),
+         $$0.get("DifficultyLocked").asBoolean(false),
+         dkr.c.a($$0, dkr.e),
+         $$0.get("WanderingTraderSpawnDelay").asInt(0),
+         $$0.get("WanderingTraderSpawnChance").asInt(0),
+         (UUID)$$0.get("WanderingTraderId").read(ja.a).result().orElse(null),
+         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
+         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
+         new ekz<>(eky.a, $$0.get("ScheduledEvents").asStream()),
+         (sl)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
+         $$0.get("DragonFight").read(dmm.a.a).resultOrPartial(f::error).orElse(dmm.a.b),
+         $$1,
+         $$3,
+         $$2,
+         $$4
+      );
    }
 
-   public Optional<T> a(agt $$0, JsonElement $$1) {
-      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
-      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$2.result();
+   @Override
+   public sl a(iu $$0, @Nullable sl $$1) {
+      if ($$1 == null) {
+         $$1 = this.q;
+      }
+
+      sl $$2 = new sl();
+      this.a($$0, $$2, $$1);
+      return $$2;
    }
 
-   public static Stream<egj<?>> b() {
-      return Stream.of(a, b, c);
+   private void a(iu $$0, sl $$1, @Nullable sl $$2) {
+      $$1.a("ServerBrands", a(this.F));
+      $$1.a("WasModded", this.G);
+      if (!this.H.isEmpty()) {
+         $$1.a("removed_features", a(this.H));
+      }
+
+      sl $$3 = new sl();
+      $$3.a("Name", aa.b().c());
+      $$3.a("Id", aa.b().d().c());
+      $$3.a("Snapshot", !aa.b().g());
+      $$3.a("Series", aa.b().d().b());
+      $$1.a("Version", $$3);
+      ta.g($$1);
+      DynamicOps<ti> $$4 = ahb.a(sz.a, $$0);
+      dpf.a($$4, this.h, $$0).resultOrPartial(ac.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
+      $$1.a("GameType", this.g.b().a());
+      $$1.a("SpawnX", this.k);
+      $$1.a("SpawnY", this.l);
+      $$1.a("SpawnZ", this.m);
+      $$1.a("SpawnAngle", this.n);
+      $$1.a("Time", this.o);
+      $$1.a("DayTime", this.p);
+      $$1.a("LastPlayed", ac.d());
+      $$1.a("LevelName", this.g.a());
+      $$1.a("version", 19133);
+      $$1.a("clearWeatherTime", this.s);
+      $$1.a("rainTime", this.u);
+      $$1.a("raining", this.t);
+      $$1.a("thunderTime", this.w);
+      $$1.a("thundering", this.v);
+      $$1.a("hardcore", this.g.c());
+      $$1.a("allowCommands", this.g.e());
+      $$1.a("initialized", this.x);
+      this.z.a($$1);
+      $$1.a("Difficulty", (byte)this.g.d().a());
+      $$1.a("DifficultyLocked", this.y);
+      $$1.a("GameRules", this.g.f().a());
+      $$1.a("DragonFight", ac.a(dmm.a.a.encodeStart(sz.a, this.A), IllegalStateException::new));
+      if ($$2 != null) {
+         $$1.a("Player", $$2);
+      }
+
+      DataResult<ti> $$5 = cuc.b.encodeStart(sz.a, this.g.g());
+      $$5.get().ifLeft($$1x -> $$1.a((sl)$$1x)).ifRight($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
+      if (this.B != null) {
+         $$1.a("CustomBossEvents", this.B);
+      }
+
+      $$1.a("ScheduledEvents", this.I.b());
+      $$1.a("WanderingTraderSpawnDelay", this.C);
+      $$1.a("WanderingTraderSpawnChance", this.D);
+      if (this.E != null) {
+         $$1.a("WanderingTraderId", this.E);
+      }
    }
 
-   private static <T extends egf> egj.a<T> c() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   private static sr a(Set<String> $$0) {
+      sr $$1 = new sr();
+      $$0.stream().map(tg::a).forEach($$1::add);
+      return $$1;
    }
 
-   private static egj.a<egm> d() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   @Override
+   public int a() {
+      return this.k;
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(egn var1, egg<T> var2, T var3);
+   @Override
+   public int b() {
+      return this.l;
+   }
+
+   @Override
+   public int c() {
+      return this.m;
+   }
+
+   @Override
+   public float d() {
+      return this.n;
+   }
+
+   @Override
+   public long e() {
+      return this.o;
+   }
+
+   @Override
+   public long f() {
+      return this.p;
+   }
+
+   @Nullable
+   @Override
+   public sl y() {
+      return this.q;
+   }
+
+   @Override
+   public void b(int $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public void c(int $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public void d(int $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public void a(float $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.o = $$0;
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.p = $$0;
+   }
+
+   @Override
+   public void a(hx $$0, float $$1) {
+      this.k = $$0.u();
+      this.l = $$0.v();
+      this.m = $$0.w();
+      this.n = $$1;
+   }
+
+   @Override
+   public String g() {
+      return this.g.a();
+   }
+
+   @Override
+   public int z() {
+      return this.r;
+   }
+
+   @Override
+   public int h() {
+      return this.s;
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public boolean i() {
+      return this.v;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.v = $$0;
+   }
+
+   @Override
+   public int j() {
+      return this.w;
+   }
+
+   @Override
+   public void e(int $$0) {
+      this.w = $$0;
+   }
+
+   @Override
+   public boolean k() {
+      return this.t;
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.t = $$0;
+   }
+
+   @Override
+   public int l() {
+      return this.u;
+   }
+
+   @Override
+   public void f(int $$0) {
+      this.u = $$0;
+   }
+
+   @Override
+   public ctf m() {
+      return this.g.b();
+   }
+
+   @Override
+   public void a(ctf $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean n() {
+      return this.g.c();
+   }
+
+   @Override
+   public boolean o() {
+      return this.g.e();
+   }
+
+   @Override
+   public boolean p() {
+      return this.x;
+   }
+
+   @Override
+   public void c(boolean $$0) {
+      this.x = $$0;
+   }
+
+   @Override
+   public cte q() {
+      return this.g.f();
+   }
+
+   @Override
+   public dkr.c r() {
+      return this.z;
+   }
+
+   @Override
+   public void a(dkr.c $$0) {
+      this.z = $$0;
+   }
+
+   @Override
+   public bjs s() {
+      return this.g.d();
+   }
+
+   @Override
+   public void a(bjs $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean t() {
+      return this.y;
+   }
+
+   @Override
+   public void d(boolean $$0) {
+      this.y = $$0;
+   }
+
+   @Override
+   public ekz<MinecraftServer> u() {
+      return this.I;
+   }
+
+   @Override
+   public void a(p $$0, ctk $$1) {
+      egk.super.a($$0, $$1);
+      egl.super.a($$0);
+   }
+
+   @Override
+   public dph A() {
+      return this.h;
+   }
+
+   @Override
+   public boolean B() {
+      return this.i == egj.a.b;
+   }
+
+   @Override
+   public boolean C() {
+      return this.i == egj.a.c;
+   }
+
+   @Override
+   public Lifecycle D() {
+      return this.j;
+   }
+
+   @Override
+   public dmm.a E() {
+      return this.A;
+   }
+
+   @Override
+   public void a(dmm.a $$0) {
+      this.A = $$0;
+   }
+
+   @Override
+   public cuc F() {
+      return this.g.g();
+   }
+
+   @Override
+   public void a(cuc $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public sl G() {
+      return this.B;
+   }
+
+   @Override
+   public void a(@Nullable sl $$0) {
+      this.B = $$0;
+   }
+
+   @Override
+   public int v() {
+      return this.C;
+   }
+
+   @Override
+   public void g(int $$0) {
+      this.C = $$0;
+   }
+
+   @Override
+   public int w() {
+      return this.D;
+   }
+
+   @Override
+   public void h(int $$0) {
+      this.D = $$0;
+   }
+
+   @Nullable
+   @Override
+   public UUID x() {
+      return this.E;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+      this.E = $$0;
+   }
+
+   @Override
+   public void a(String $$0, boolean $$1) {
+      this.F.add($$0);
+      this.G |= $$1;
+   }
+
+   @Override
+   public boolean H() {
+      return this.G;
+   }
+
+   @Override
+   public Set<String> I() {
+      return ImmutableSet.copyOf(this.F);
+   }
+
+   @Override
+   public Set<String> J() {
+      return Set.copyOf(this.H);
+   }
+
+   @Override
+   public egk K() {
+      return this;
+   }
+
+   @Override
+   public ctm L() {
+      return this.g.h();
+   }
+
+   @Deprecated
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

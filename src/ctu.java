@@ -1,23 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public final class ctu implements dkt {
+   private final int a;
+   private final dja[] b;
 
-public class ctu {
-   public static final Codec<ctu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arb.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, ctu::new)
-   );
-   private final ie<arb> b;
-   private final double c;
-
-   public ctu(ie<arb> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ctu(int $$0, dja[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public ie<arb> a() {
-      return this.b;
+   @Override
+   public dja a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : cwl.a.o();
    }
 
-   public double b() {
-      return this.c;
+   @Override
+   public void a(int $$0, dja $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
+      }
    }
 }

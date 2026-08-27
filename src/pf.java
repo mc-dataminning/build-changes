@@ -1,42 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.OptionalLong;
 
 public class pf {
-   public static final ags<dzx> a = ph.a("pillager_outpost/base_plates");
-
-   public static void a(pa<dzx> $$0) {
-      ig<ecm> $$1 = $$0.a(kc.aD);
-      ie<ecm> $$2 = $$1.b(pi.q);
-      ig<dzx> $$3 = $$0.a(kc.aF);
-      ie<dzx> $$4 = $$3.b(ph.a);
-      $$0.a(a, new dzx($$4, ImmutableList.of(Pair.of(dzv.a("pillager_outpost/base_plate"), 1)), dzx.a.b));
-      ph.a(
-         $$0,
-         "pillager_outpost/towers",
-         new dzx(
-            $$4,
-            ImmutableList.of(Pair.of(dzv.b(ImmutableList.of(dzv.a("pillager_outpost/watchtower"), dzv.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            dzx.a.b
+   public static void a(pc<dmj> $$0) {
+      $$0.a(
+         dmh.a,
+         new dmj(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, asb.ba, dmh.e, 0.0F, new dmj.a(false, true, bjg.a(0, 7), 0))
+      );
+      $$0.a(
+         dmh.b,
+         new dmj(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, asb.bb, dmh.f, 0.1F, new dmj.a(true, false, bix.a(7), 15))
+      );
+      $$0.a(
+         dmh.c,
+         new dmj(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, asb.bc, dmh.g, 0.0F, new dmj.a(false, true, bjg.a(0, 7), 0)
          )
       );
-      ph.a($$0, "pillager_outpost/feature_plates", new dzx($$4, ImmutableList.of(Pair.of(dzv.a("pillager_outpost/feature_plate"), 1)), dzx.a.a));
-      ph.a(
-         $$0,
-         "pillager_outpost/features",
-         new dzx(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dzv.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(dzv.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(dzv.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(dzv.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(dzv.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(dzv.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(dzv.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(dzv.g(), 6)
-            ),
-            dzx.a.b
-         )
+      $$0.a(
+         dmh.d,
+         new dmj(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, asb.ba, dmh.e, 0.0F, new dmj.a(false, true, bjg.a(0, 7), 0))
       );
    }
 }

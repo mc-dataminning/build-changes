@@ -1,83 +1,32 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+public class fmd extends fjy<cgg> {
+   private final fmp a;
 
-public class fmd {
-   private static final Set<ia> a = EnumSet.allOf(ia.class);
-   private final List<fmb> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public fmd a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public fmd(fmp $$0) {
+      super(fth::i);
+      this.a = $$0.b("bone");
    }
 
-   public fmd a() {
-      return this.a(true);
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      fmy $$2 = $$1.a("bone", fmu.c(), fmr.a(0.0F, 0.0F, 0.0F));
+      fmy $$3 = $$2.a("projectile", fmu.c(), fmr.a(0.0F, 0.0F, 0.0F));
+      fmy $$4 = $$3.a(
+         "wind",
+         fmu.c().a(20, 112).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fmt(0.0F)).a(0, 8).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fmt(0.0F)),
+         fmr.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a("cube_r1", fmu.c().a(32, 24).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fmt(-0.6F)), fmr.a(0.0F, 0.0F, 0.0F, -1.5708F, 0.0F, 1.5708F));
+      $$4.a("cube_r2", fmu.c().a(16, 40).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fmt(-0.3F)), fmr.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.5708F));
+      $$3.a("wind_charge", fmu.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new fmt(0.0F)), fmr.a(0.0F, 0.0F, 0.0F));
+      return fmv.a($$0, 64, 64);
    }
 
-   public fmd a(boolean $$0) {
-      this.e = $$0;
-      return this;
+   public void a(cgg $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
    }
 
-   public fmd a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fmc $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new fmb($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fmd a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new fmb($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fmc.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fmd a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new fmb(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fmc.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fmd a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ia> $$6) {
-      this.b.add(new fmb(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fmc.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public fmd a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new fmb($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fmc.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fmd a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fmc $$7) {
-      this.b.add(new fmb($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fmd a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new fmb(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fmc.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fmd a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fmc $$6, float $$7, float $$8) {
-      this.b.add(new fmb(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public fmd a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fmc $$6) {
-      this.b.add(new fmb(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<fmb> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static fmd c() {
-      return new fmd();
+   @Override
+   public fmp a() {
+      return this.a;
    }
 }

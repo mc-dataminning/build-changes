@@ -1,88 +1,83 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+public abstract class fad implements faj {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-public class fad {
-   int a;
-   final Map<fad.a, fad.b> b = Maps.newTreeMap(Comparator.<fad.a, ezz>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
-
-   public void a(Consumer<faa> $$0) {
-      this.a++;
-      $$0.accept(new fad.c(0));
+   public fad(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean c = true;
-
-         public void a(String $$0) {
-            if (!this.c) {
-               $$1.append(". ");
-            }
-
-            this.c = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
+   @Override
+   public void n(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.B() + ($$0 - this.B());
+         $$1.n($$2);
       });
-      return $$1.toString();
+      this.c = $$0;
    }
 
-   static class a {
-      final ezz a;
-      final int b;
+   @Override
+   public void o(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.C() + ($$0 - this.C());
+         $$1.o($$2);
+      });
+      this.d = $$0;
+   }
 
-      a(ezz $$0, int $$1) {
+   @Override
+   public int B() {
+      return this.c;
+   }
+
+   @Override
+   public int C() {
+      return this.d;
+   }
+
+   @Override
+   public int w() {
+      return this.a;
+   }
+
+   @Override
+   public int u() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final fak a;
+      public final fal.a b;
+
+      protected a(fak $$0, fal $$1) {
          this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   static class b {
-      fac<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fac.a;
-         this.b = -1;
+         this.b = $$1.h();
       }
 
-      public fad.b a(int $$0, fac<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
-   }
-
-   class c implements faa {
-      private final int b;
-
-      c(int $$0) {
-         this.b = $$0;
+      public int a() {
+         return this.a.u() + this.b.b + this.b.d;
       }
 
-      @Override
-      public void a(ezz $$0, fac<?> $$1) {
-         fad.this.b.computeIfAbsent(new fad.a($$0, this.b), $$0x -> new fad.b()).a(fad.this.a, $$1);
+      public int b() {
+         return this.a.w() + this.b.a + this.b.c;
       }
 
-      @Override
-      public faa a() {
-         return fad.this.new c(this.b + 1);
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.w() - this.b.c);
+         int $$4 = (int)aui.i(this.b.e, $$2, $$3);
+         this.a.n($$4 + $$0);
+      }
+
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.u() - this.b.d);
+         int $$4 = Math.round(aui.i(this.b.f, $$2, $$3));
+         this.a.o($$4 + $$0);
       }
    }
 }

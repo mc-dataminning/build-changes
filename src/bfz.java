@@ -1,68 +1,83 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
 
-public class bfz implements bga {
-   public static final bfz a = new bfz();
+public class bfz<T> implements Closeable {
+   private static final Gson a = new Gson();
+   private final Codec<T> b;
+   final FileChannel c;
+   private final AtomicInteger d = new AtomicInteger(1);
 
-   private bfz() {
+   public bfz(Codec<T> $$0, FileChannel $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static <T> bfz<T> a(Codec<T> $$0, Path $$1) throws IOException {
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+      return new bfz<>($$0, $$2);
+   }
+
+   public void a(T $$0) throws IOException, JsonIOException {
+      JsonElement $$1 = ac.a(this.b.encodeStart(JsonOps.INSTANCE, $$0), IOException::new);
+      this.c.position(this.c.size());
+      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
+      a.toJson($$1, $$2);
+      $$2.write(10);
+      $$2.flush();
+   }
+
+   public bga<T> a() throws IOException {
+      if (this.d.get() <= 0) {
+         throw new IOException("Event log has already been closed");
+      } else {
+         this.d.incrementAndGet();
+         final bga<T> $$0 = bga.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
+         return new bga<T>() {
+            private volatile long c;
+
+            @Nullable
+            @Override
+            public T a() throws IOException {
+               Object var1;
+               try {
+                  bfz.this.c.position(this.c);
+                  var1 = $$0.a();
+               } finally {
+                  this.c = bfz.this.c.position();
+               }
+
+               return (T)var1;
+            }
+
+            @Override
+            public void close() throws IOException {
+               bfz.this.b();
+            }
+         };
+      }
    }
 
    @Override
-   public void a() {
+   public void close() throws IOException {
+      this.b();
    }
 
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void a(String $$0) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(bhf $$0) {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void b(String $$0) {
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-   }
-
-   @Override
-   public bgb d() {
-      return bfx.a;
-   }
-
-   @Nullable
-   @Override
-   public bfv.a c(String $$0) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, bhf>> e() {
-      return ImmutableSet.of();
+   void b() throws IOException {
+      if (this.d.decrementAndGet() <= 0) {
+         this.c.close();
+      }
    }
 }

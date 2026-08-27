@@ -1,43 +1,26 @@
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-abstract class aol implements BasicFileAttributes {
-   private static final FileTime a = FileTime.fromMillis(0L);
+public class aol {
+   private static final aol a = new aol(Map.of());
+   private final Map<apc<?>, ?> b;
 
-   @Override
-   public FileTime lastModifiedTime() {
+   private aol(Map<apc<?>, ?> $$0) {
+      this.b = $$0;
+   }
+
+   public <T> T a(apc<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public static aol a() {
       return a;
    }
 
-   @Override
-   public FileTime lastAccessTime() {
-      return a;
+   public static <T> aol a(apc<T> $$0, T $$1) {
+      return new aol(Map.of($$0, $$1));
    }
 
-   @Override
-   public FileTime creationTime() {
-      return a;
-   }
-
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
-
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Nullable
-   @Override
-   public Object fileKey() {
-      return null;
+   public static <T1, T2> aol a(apc<T1> $$0, T1 $$1, apc<T2> $$2, T2 $$3) {
+      return new aol(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

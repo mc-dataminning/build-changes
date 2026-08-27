@@ -1,89 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class bwx {
-   private final hv a;
-   private final ie<bwz> b;
-   private int c;
-   private final Runnable d;
-
-   public static Codec<bwx> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  hv.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
-                  agq.a(kc.U).fieldOf("type").forGetter($$0xx -> $$0xx.b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
-                  RecordCodecBuilder.point($$0)
-               )
-               .apply($$1, bwx::new)
-      );
+   @Nullable
+   public static elm a(bmo $$0, int $$1, int $$2) {
+      boolean $$3 = bwy.a($$0, $$1);
+      return bxb.a($$0, () -> {
+         hx $$4 = bxb.a($$0.eg(), $$1, $$2);
+         return a($$0, $$1, $$3, $$4);
+      });
    }
 
-   private bwx(hv $$0, ie<bwz> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.i();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   @Nullable
+   public static elm a(bmo $$0, int $$1, int $$2, elm $$3, double $$4) {
+      elm $$5 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
+      boolean $$6 = bwy.a($$0, $$1);
+      return bxb.a($$0, () -> {
+         hx $$6x = bxb.a($$0.eg(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
+         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
+      });
    }
 
-   public bwx(hv $$0, ie<bwz> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
+   @Nullable
+   public static elm a(bmo $$0, int $$1, int $$2, elm $$3) {
+      elm $$4 = $$0.dk().d($$3);
+      boolean $$5 = bwy.a($$0, $$1);
+      return bxb.a($$0, () -> {
+         hx $$5x = bxb.a($$0.eg(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
+         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
+      });
    }
 
-   @Deprecated
-   @avd
-   public int a() {
-      return this.c;
-   }
-
-   protected boolean b() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
-   }
-
-   protected boolean c() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean d() {
-      return this.c > 0;
-   }
-
-   public boolean e() {
-      return this.c != this.b.a().b();
-   }
-
-   public hv f() {
-      return this.a;
-   }
-
-   public ie<bwz> g() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((bwx)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   @Nullable
+   private static hx a(bmo $$0, int $$1, boolean $$2, hx $$3) {
+      hx $$4 = bxb.a($$0, $$1, $$0.eg(), $$3);
+      return !bwy.a($$4, $$0) && !bwy.a($$2, $$0, $$4) && !bwy.a($$0.N(), $$4) && !bwy.b($$0, $$4) ? $$4 : null;
    }
 }

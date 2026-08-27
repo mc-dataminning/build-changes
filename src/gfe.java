@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gfe extends gfi {
+   private static final ahd a = new ahd("back");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gfe {
+   public gfe(geg $$0) {
+      super($$0, new ahd("textures/atlas/paintings.png"), new ahd("paintings"));
+   }
+
+   public gef a(cbk $$0) {
+      return this.a(kd.l.b($$0));
+   }
+
+   public gef a() {
+      return this.a(a);
+   }
 }

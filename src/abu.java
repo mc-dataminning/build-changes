@@ -1,40 +1,24 @@
-public class abu implements wu<yo> {
-   private final float a;
-   private final int b;
-   private final float c;
+public class abu implements xd<yx> {
+   private final int a;
 
-   public abu(float $$0, int $$1, float $$2) {
+   public abu(int $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public abu(ue $$0) {
-      this.a = $$0.readFloat();
-      this.b = $$0.n();
-      this.c = $$0.readFloat();
+   public abu(ug $$0) {
+      this.a = $$0.readByte();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public void a(ug $$0) {
+      $$0.k(this.a);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public float a() {
+   public int a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

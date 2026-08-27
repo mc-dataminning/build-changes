@@ -1,56 +1,19 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class dfu {
-   final String a;
+public class dfu extends cwj {
+   public static final MapCodec<dfu> a = b(dfu::new);
 
-   public dfu(String $$0) {
-      this.a = $$0;
+   @Override
+   public MapCodec<dfu> a() {
+      return a;
    }
 
-   public static agt a(ags<dfu> $$0, boolean $$1) {
-      String $$2 = $$1 ? "banner" : "shield";
-      return $$0.a().d("entity/" + $$2 + "/");
+   public dfu(diz.d $$0) {
+      super($$0);
    }
 
-   public String a() {
-      return this.a;
-   }
-
-   @Nullable
-   public static ie<dfu> a(String $$0) {
-      return kb.am.h().filter($$1 -> $$1.a().a.equals($$0)).findAny().orElse(null);
-   }
-
-   public static class a {
-      private final List<Pair<ie<dfu>, ckv>> a = Lists.newArrayList();
-
-      public dfu.a a(ags<dfu> $$0, ckv $$1) {
-         return this.a(kb.am.f($$0), $$1);
-      }
-
-      public dfu.a a(ie<dfu> $$0, ckv $$1) {
-         return this.a(Pair.of($$0, $$1));
-      }
-
-      public dfu.a a(Pair<ie<dfu>, ckv> $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public sp a() {
-         sp $$0 = new sp();
-
-         for (Pair<ie<dfu>, ckv> $$1 : this.a) {
-            sj $$2 = new sj();
-            $$2.a("Pattern", ((dfu)((ie)$$1.getFirst()).a()).a);
-            $$2.a("Color", ((ckv)$$1.getSecond()).a());
-            $$0.add($$2);
-         }
-
-         return $$0;
-      }
+   @Override
+   public void a(dja $$0, cti $$1, hx $$2, blp $$3) {
+      $$3.a($$0, new elm(0.25, 0.05F, 0.25));
    }
 }

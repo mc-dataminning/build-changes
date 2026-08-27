@@ -1,67 +1,106 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cwz extends dck implements dcz {
-   public static final MapCodec<cwz> a = b(cwz::new);
-   public static final djg b = djf.C;
-   protected static final float c = 6.5F;
-   protected static final float d = 9.5F;
-   protected static final elu e = cvz.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final elu f = cvz.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final elu g = cvz.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
+public class cwz extends cvb {
+   public static final MapCodec<cwz> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kd.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, cwz::new)
+   );
+   public static final djr d = cvb.b;
+   protected static final float e = 1.0F;
+   protected static final emf f = cwj.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final emf g = cwj.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final emf h = emc.a(f, g);
+   private static final Map<cwj, cwz> i = Maps.newHashMap();
+   private static final Iterable<elm> j = ImmutableList.of(new elm(0.5, 1.0, 0.5));
+   private final cwj k;
 
    @Override
    public MapCodec<cwz> a() {
-      return a;
+      return c;
    }
 
-   public cwz(dio.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(i, ia.a.b));
+   protected cwz(cwj $$0, diz.d $$1) {
+      super($$1);
+      this.k(this.E.b().a(d, Boolean.valueOf(false)));
+      i.put($$0, this);
+      this.k = $$0;
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      switch ((ia.a)$$0.c(i)) {
-         case a:
-         default:
-            return g;
-         case c:
-            return f;
-         case b:
-            return e;
+   protected Iterable<elm> b(dja $$0) {
+      return j;
+   }
+
+   @Override
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return h;
+   }
+
+   @Override
+   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
+      cmr $$6 = $$3.b($$4);
+      if ($$6.a(cmu.op) || $$6.a(cmu.tS)) {
+         return bjv.d;
+      } else if (a($$5) && $$3.b($$4).b() && $$0.c(d)) {
+         a($$3, $$0, $$1, $$2);
+         return bjv.a($$1.B);
+      } else {
+         bjv $$7 = cwv.a($$1, $$2, cwl.eg.o(), $$3);
+         if ($$7.a()) {
+            c($$0, $$1, $$2);
+         }
+
+         return $$7;
       }
    }
 
-   @Nullable
-   @Override
-   public dip a(coq $$0) {
-      edz $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eea.c;
-      return super.a($$0).a(b, Boolean.valueOf($$2));
+   private static boolean a(eli $$0) {
+      return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eea.c, eea.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b).a(i);
+   public cmr a(ctl $$0, hx $$1, dja $$2) {
+      return new cmr(cwl.eg);
    }
 
    @Override
-   public edz c_(dip $$0) {
-      return $$0.c(b) ? eea.c.a(false) : super.c_($$0);
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      return $$1 == ic.a && !$$0.a($$3, $$4) ? cwl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   public int a(dja $$0, cti $$1, hx $$2) {
+      return cwv.d;
+   }
+
+   @Override
+   public boolean d_(dja $$0) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
       return false;
+   }
+
+   public static dja a(cwj $$0) {
+      return i.get($$0).o();
+   }
+
+   public static boolean g(dja $$0) {
+      return $$0.a(asb.bj, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

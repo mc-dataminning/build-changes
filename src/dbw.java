@@ -1,39 +1,88 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public class dbw extends cvz {
-   public static final MapCodec<dbw> a = b(dbw::new);
+public abstract class dbw extends cwj {
+   private static final ic[] a = ic.values();
+   public static final djr b = djq.L;
+   public static final djr c = djq.M;
+   public static final djr d = djq.N;
+   public static final djr e = djq.O;
+   public static final djr f = djq.J;
+   public static final djr g = djq.K;
+   public static final Map<ic, djr> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ic.class), $$0 -> {
+      $$0.put(ic.c, b);
+      $$0.put(ic.f, c);
+      $$0.put(ic.d, d);
+      $$0.put(ic.e, e);
+      $$0.put(ic.b, f);
+      $$0.put(ic.a, g);
+   }));
+   protected final emf[] i;
 
-   @Override
-   public MapCodec<dbw> a() {
-      return a;
+   protected dbw(float $$0, diz.d $$1) {
+      super($$1);
+      this.i = this.a($$0);
    }
 
-   protected dbw(dio.d $$0) {
-      super($$0);
-   }
-
    @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      cmh $$6 = $$3.b($$4);
-      if ($$6.a(cmk.rS)) {
-         if (!$$1.B) {
-            ia $$7 = $$5.b();
-            ia $$8 = $$7.o() == ia.a.b ? $$3.cE().g() : $$7;
-            $$1.a(null, $$2, arc.tZ, ard.e, 1.0F, 1.0F);
-            $$1.a($$2, cwb.ee.o().a(cwt.b, $$8), 11);
-            cbe $$9 = new cbe(
-               $$1, (double)$$2.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$2.v() + 0.1, (double)$$2.w() + 0.5 + (double)$$8.l() * 0.65, new cmh(cmk.rV, 4)
-            );
-            $$9.o(0.05 * (double)$$8.j() + $$1.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$1.z.j() * 0.02);
-            $$1.b($$9);
-            $$6.a(1, $$3, $$1x -> $$1x.d($$4));
-            $$1.a($$3, dmz.M, $$2);
-            $$3.b(arm.c.b(cmk.rS));
+   protected abstract MapCodec<? extends dbw> a();
+
+   private emf[] a(float $$0) {
+      float $$1 = 0.5F - $$0;
+      float $$2 = 0.5F + $$0;
+      emf $$3 = cwj.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
+      emf[] $$4 = new emf[a.length];
+
+      for (int $$5 = 0; $$5 < a.length; $$5++) {
+         ic $$6 = a[$$5];
+         $$4[$$5] = emc.a(
+            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
+            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
+            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
+         );
+      }
+
+      emf[] $$7 = new emf[64];
+
+      for (int $$8 = 0; $$8 < 64; $$8++) {
+         emf $$9 = $$3;
+
+         for (int $$10 = 0; $$10 < a.length; $$10++) {
+            if (($$8 & 1 << $$10) != 0) {
+               $$9 = emc.a($$9, $$4[$$10]);
+            }
          }
 
-         return bjl.a($$1.B);
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$7[$$8] = $$9;
       }
+
+      return $$7;
+   }
+
+   @Override
+   public boolean a_(dja $$0, cso $$1, hx $$2) {
+      return false;
+   }
+
+   @Override
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return this.i[this.h($$0)];
+   }
+
+   protected int h(dja $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < a.length; $$2++) {
+         if ($$0.c(h.get(a[$$2]))) {
+            $$1 |= 1 << $$2;
+         }
+      }
+
+      return $$1;
    }
 }

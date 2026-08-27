@@ -1,24 +1,31 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bpx {
-   private static final float a = 0.3F;
+   private static final int a = 300;
 
-   public static box<blv> a() {
-      return bqz.a(
-         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$0 -> $$0.group($$0.a(bux.m), $$0.a(bux.n), $$0.b(bux.e), $$0.b(bux.h), $$0.c(bux.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     id $$9 = $$0.b($$3);
-                     buz $$10 = $$0.b($$4);
-                     if ($$6.F_().a(100) == 0 && $$6.ad() == $$9.a() && $$9.b().a($$7.dk(), 4.0) && $$10.d($$0xxx -> blj.bg.equals($$0xxx.ai()))) {
-                        $$10.a($$1xx -> blj.bg.equals($$1xx.ai()) && $$1xx.f((blf)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bnx($$3xx, true));
-                           $$1.a(new bva(new bnx($$3xx, false), 0.3F, 1));
-                        });
+   public static bnx<bmf> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return brj.a(
+         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$3x -> $$3x.group($$3x.b(bvh.C), $$3x.b(bvh.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        hx $$11 = $$3x.<ig>b($$4).b();
+                        if ($$11.a($$7.dm(), (double)$$1)) {
+                           $$3.increment();
+                        }
+
                         return true;
                      } else {
-                        return false;
+                        $$5.b();
+                        $$4.b();
+                        $$7.dO().a($$6.Y(), $$6.X());
+                        $$3.setValue(0);
+                        return true;
                      }
                   }))
       );

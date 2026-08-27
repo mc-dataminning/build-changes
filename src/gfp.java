@@ -1,20 +1,22 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gfp {
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-public interface gfp {
-   List<ftf> a(@Nullable dip var1, @Nullable ia var2, auf var3);
+   public gfp(int $$0) {
+      this($$0, -1);
+   }
 
-   boolean a();
+   public gfp(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   boolean b();
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
 
-   boolean c();
-
-   boolean d();
-
-   gdo e();
-
-   ftr f();
-
-   ftp g();
+   public int a() {
+      return this.b;
+   }
 }

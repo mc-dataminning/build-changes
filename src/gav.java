@@ -1,24 +1,41 @@
-public class gav<T extends blv, M extends fkd<T>> extends gci<T, M> {
-   private final fxm a;
+public class gav extends fzl<bys, fjh<bys>> {
+   private final fjh<bys> a = this.a();
+   private final fjh<bys> i;
+   private static final ahd j = new ahd("textures/entity/fish/tropical_a.png");
+   private static final ahd k = new ahd("textures/entity/fish/tropical_b.png");
 
-   public gav(fxo.a $$0, fyp<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public gav(fyf.a $$0) {
+      super($$0, new flv<>($$0.a(fmo.bI)), 0.15F);
+      this.i = new flw<>($$0.a(fmo.bG));
+      this.a(new gda(this, $$0.f()));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eO();
+   public ahd a(bys $$0) {
+      return switch ($$0.gp().a()) {
+         case a -> j;
+         case b -> k;
+      };
    }
 
-   @Override
-   protected void a(epd $$0, fsi $$1, int $$2, blf $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = aty.c($$4 * $$4 + $$6 * $$6);
-      cez $$9 = new cez($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), cmh.f);
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.N = $$9.dC();
-      $$9.O = $$9.dE();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   public void a(bys $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
+      fjh<bys> $$6 = switch ($$0.gp().a()) {
+         case a -> this.a;
+         case b -> this.i;
+      };
+      this.f = $$6;
+      float[] $$7 = $$0.gn().d();
+      $$6.a($$7[0], $$7[1], $$7[2]);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$6.a(1.0F, 1.0F, 1.0F);
+   }
+
+   protected void a(bys $$0, ept $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = 4.3F * aui.a(0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$5));
+      if (!$$0.aZ()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

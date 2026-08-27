@@ -1,69 +1,49 @@
-public class cfr extends cfp {
-   public cfr(blj<? extends cfr> $$0, csy $$1) {
+public class cfr extends cfn {
+   private int e = 1;
+
+   public cfr(blt<? extends cfr> $$0, cti $$1) {
       super($$0, $$1);
    }
 
-   public cfr(csy $$0, blv $$1) {
-      super(blj.A, $$1, $$0);
-   }
-
-   public cfr(csy $$0, double $$1, double $$2, double $$3) {
-      super(blj.A, $$1, $$2, $$3, $$0);
+   public cfr(cti $$0, bmf $$1, double $$2, double $$3, double $$4, int $$5) {
+      super(blt.ah, $$1, $$2, $$3, $$4, $$0);
+      this.e = $$5;
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dM()
-               .a(
-                  new jr(jv.Q, this.q()),
-                  this.dr(),
-                  this.dt(),
-                  this.dx(),
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08
-               );
-         }
-      }
-   }
-
-   @Override
-   protected void a(eky $$0) {
-      super.a($$0);
-      $$0.a().a(this.dN().b(this, this.w()), 0.0F);
-   }
-
-   @Override
-   protected void a(ekz $$0) {
+   protected void a(elk $$0) {
       super.a($$0);
       if (!this.dM().B) {
-         if (this.ag.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ag.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               bxn $$3 = blj.r.a(this.dM());
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dr(), this.dt(), this.dx(), this.dC(), 0.0F);
-                  this.dM().b($$3);
-               }
-            }
-         }
-
-         this.dM().a(this, (byte)3);
+         boolean $$1 = this.dM().Z().b(cte.c);
+         this.dM().a(this, this.dr(), this.dt(), this.dx(), (float)this.e, $$1, cti.a.c);
          this.am();
       }
    }
 
    @Override
-   protected cmc s() {
-      return cmk.qO;
+   protected void a(elj $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         blp $$1 = $$0.a();
+         blp $$2 = this.w();
+         $$1.a(this.dN().a((cfn)this, $$2), 6.0F);
+         if ($$2 instanceof bmf) {
+            this.a((bmf)$$2, $$1);
+         }
+      }
+   }
+
+   @Override
+   public void b(sl $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.e);
+   }
+
+   @Override
+   public void a(sl $$0) {
+      super.a($$0);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.e = $$0.f("ExplosionPower");
+      }
    }
 }

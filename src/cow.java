@@ -1,90 +1,45 @@
-public class cow extends cpd {
-   public cow(cpb $$0) {
-      super($$0);
+import java.util.Map;
+import java.util.Optional;
+
+public class cow {
+   public static final ahc<cov> a = a("quartz");
+   public static final ahc<cov> b = a("iron");
+   public static final ahc<cov> c = a("netherite");
+   public static final ahc<cov> d = a("redstone");
+   public static final ahc<cov> e = a("copper");
+   public static final ahc<cov> f = a("gold");
+   public static final ahc<cov> g = a("emerald");
+   public static final ahc<cov> h = a("diamond");
+   public static final ahc<cov> i = a("lapis");
+   public static final ahc<cov> j = a("amethyst");
+
+   public static void a(pc<cov> $$0) {
+      a($$0, a, cmu.oy, wa.a.a(14931140), 0.1F);
+      a($$0, b, cmu.oB, wa.a.a(15527148), 0.2F, Map.of(ckd.c, "iron_darker"));
+      a($$0, c, cmu.oG, wa.a.a(6445145), 0.3F, Map.of(ckd.g, "netherite_darker"));
+      a($$0, d, cmu.lG, wa.a.a(9901575), 0.4F);
+      a($$0, e, cmu.oD, wa.a.a(11823181), 0.5F);
+      a($$0, f, cmu.oF, wa.a.a(14594349), 0.6F, Map.of(ckd.d, "gold_darker"));
+      a($$0, g, cmu.ow, wa.a.a(1155126), 0.7F);
+      a($$0, h, cmu.ov, wa.a.a(7269586), 0.8F, Map.of(ckd.e, "diamond_darker"));
+      a($$0, i, cmu.ox, wa.a.a(4288151), 0.9F);
+      a($$0, j, cmu.oz, wa.a.a(10116294), 1.0F);
    }
 
-   public boolean a(cia $$0, csy $$1) {
-      ckv $$2 = null;
-      cmh $$3 = null;
-      cmh $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cmh $$6 = $$0.a($$5);
-         if (!$$6.b()) {
-            cmc $$7 = $$6.d();
-            if (!($$7 instanceof cjx)) {
-               return false;
-            }
-
-            cjx $$8 = (cjx)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = dft.c($$6);
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
-      }
-
-      return $$3 != null && $$4 != null;
+   public static Optional<ih.c<cov>> a(iu $$0, cmr $$1) {
+      return $$0.d(ke.aI).h().filter($$1x -> $$1.a(((cov)$$1x.a()).b())).findFirst();
    }
 
-   public cmh a(cia $$0, is $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         cmh $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            int $$4 = dft.c($$3);
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return cmh.f;
+   private static void a(pc<cov> $$0, ahc<cov> $$1, cmm $$2, wa $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   public io<cmh> a(cia $$0) {
-      io<cmh> $$1 = io.a($$0.b(), cmh.f);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cmh $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            if ($$3.d().t()) {
-               $$1.set($$2, new cmh($$3.d().s()));
-            } else if ($$3.u() && dft.c($$3) > 0) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
+   private static void a(pc<cov> $$0, ahc<cov> $$1, cmm $$2, wa $$3, float $$4, Map<ckd, String> $$5) {
+      cov $$6 = cov.a($$1.a().a(), $$2, $$4, vd.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   @Override
-   public cpp<?> ar_() {
-      return cpp.k;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   private static ahc<cov> a(String $$0) {
+      return ahc.a(ke.aI, new ahd($$0));
    }
 }

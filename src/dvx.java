@@ -1,59 +1,48 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dvx extends dvy {
-   public static final Codec<dvx> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dvx::new, $$0 -> $$0.b).codec();
-   private final float b;
+public class dvx extends dvv {
+   public static final Codec<dvx> b = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dja.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(dja.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(dja.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, dvx::new)
+   );
+   private final float g;
+   private final float h;
+   private final dja i;
+   private final List<dja> j;
+   private final List<dja> k;
+
+   public dvx(long $$0, edn.a $$1, float $$2, float $$3, float $$4, dja $$5, List<dja> $$6, List<dja> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+   }
 
    @Override
-   protected dvz<?> a() {
-      return dvz.b;
-   }
-
-   public dvx(float $$0) {
-      this.b = $$0;
+   protected dvt<?> a() {
+      return dvt.c;
    }
 
    @Override
-   public void a(dvy.a $$0) {
-      auf $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            hv $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               a($$3, det.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            hv $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               a($$4, det.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            hv $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               a($$5, det.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            hv $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               a($$6, det.c, $$0);
-            }
-         }
-      });
-   }
-
-   private static void a(hv $$0, djg $$1, dvy.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
-
-      for (hv var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.d();
+   public dja a(aup $$0, hx $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
       }
    }
 }

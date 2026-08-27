@@ -1,36 +1,34 @@
-public class gbi<T extends blv, M extends fiy<T>> extends gbz<T, M> {
-   private static final agt a = new agt("textures/entity/elytra.png");
-   private final fiv<T> b;
+public class gbi extends fzl<byv, fmg<byv>> {
+   private static final ahd a = new ahd("textures/entity/wolf/wolf.png");
+   private static final ahd i = new ahd("textures/entity/wolf/wolf_tame.png");
+   private static final ahd j = new ahd("textures/entity/wolf/wolf_angry.png");
 
-   public gbi(fzj<T, M> $$0, flu $$1) {
-      super($$0);
-      this.b = new fiv<>($$1.a(flx.T));
+   public gbi(fyf.a $$0) {
+      super($$0, new fmg<>($$0.a(fmo.bZ)), 0.5F);
+      this.a(new gdf(this));
    }
 
-   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cmh $$10 = $$3.c(blk.e);
-      if ($$10.a(cmk.nS)) {
-         agt $$13;
-         if ($$3 instanceof frh $$11) {
-            geo $$12 = $$11.b();
-            if ($$12.d() != null) {
-               $$13 = $$12.d();
-            } else if ($$12.c() != null && $$11.a(ces.a)) {
-               $$13 = $$12.c();
-            } else {
-               $$13 = a;
-            }
-         } else {
-            $$13 = a;
-         }
+   protected float a(byv $$0, float $$1) {
+      return $$0.gm();
+   }
 
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eph $$17 = fym.a($$1, fsq.a($$13), false, $$10.B());
-         this.b.a($$0, $$17, $$2, gdf.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.b();
+   public void a(byv $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
+      if ($$0.gl()) {
+         float $$6 = $$0.E($$2);
+         this.f.a($$6, $$6, $$6);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gl()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public ahd a(byv $$0) {
+      if ($$0.u()) {
+         return i;
+      } else {
+         return $$0.aa_() ? j : a;
       }
    }
 }

@@ -1,54 +1,44 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class ghh extends ggw {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cfb p;
+   private final cgt q;
+   private final boolean r;
 
-public interface ghh<T> {
-   static <T> ghh<T> a() {
-      return new ghh<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
-
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public ghh(cfb $$0, cgt $$1, boolean $$2) {
+      super($$2 ? arm.nU : arm.nV, arn.g, ghn.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = ghn.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   static <T> ghh<T> a(List<T> $$0, Function<T, Stream<agt>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
+   @Override
+   public boolean s() {
+      return !this.q.aU();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dH() || !this.p.bO() || this.p.cZ() != this.q) {
+         this.n();
+      } else if (this.r != this.p.be()) {
+         this.d = 0.0F;
       } else {
-         final ghk<T> $$2 = new ghk<>();
-         final ghk<T> $$3 = new ghk<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
+         float $$0 = (float)this.q.dp().h();
+         if ($$0 >= 0.01F) {
+            this.d = aui.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
          }
-
-         $$2.a();
-         $$3.a();
-         return new ghh<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
       }
    }
-
-   List<T> a(String var1);
-
-   List<T> b(String var1);
 }

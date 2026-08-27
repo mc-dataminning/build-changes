@@ -1,11 +1,89 @@
-import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface cgy {
-   Set<ags<? extends ir<? extends cgy>>> bx = Set.of(kc.F, kc.f, kc.u, kc.P);
+public class cgy {
+   public static int[][] a(ic $$0) {
+      ic $$1 = $$0.h();
+      ic $$2 = $$1.g();
+      ic $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
+   }
 
-   chb m();
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
+   }
 
-   default boolean a(chb $$0) {
-      return this.m().a($$0);
+   public static boolean a(css $$0, bmf $$1, elh $$2) {
+      for (emf $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
+      }
+
+      return $$0.D_().a($$2);
+   }
+
+   public static boolean a(css $$0, elm $$1, bmf $$2, bmr $$3) {
+      return a($$0, $$2, $$2.e($$3).c($$1));
+   }
+
+   public static emf a(cso $$0, hx $$1) {
+      dja $$2 = $$0.a_($$1);
+      return !$$2.a(asb.aO) && (!($$2.b() instanceof dev) || !$$2.c(dev.b)) ? $$2.k($$0, $$1) : emc.a();
+   }
+
+   public static double a(hx $$0, int $$1, Function<hx, emf> $$2) {
+      hx.a $$3 = $$0.j();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         emf $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ic.a.b);
+         }
+
+         $$4++;
+         $$3.c(ic.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
+   @Nullable
+   public static elm a(blt<?> $$0, css $$1, hx $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((cso)$$1, $$2), () -> a((cso)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            elm $$5 = elm.a($$2, $$4);
+            elh $$6 = $$0.n().a($$5);
+
+            for (emf $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
+
+            if ($$0 != blt.bv || !$$1.a_($$2).a(asb.ci) && !$$1.a_($$2.c()).a(asb.ci)) {
+               return !$$1.D_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
+      }
    }
 }

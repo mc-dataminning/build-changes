@@ -1,21 +1,16 @@
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bun<T extends blv> extends buk<T> {
-   private final bmq i;
-
-   public bun(bmq $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<blv> $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+public class bun extends buo {
+   public bun(bmo $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      return !this.i.u() && super.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.d != null ? this.d.a(this.e, this.c) : super.b();
+   protected elm h() {
+      elm $$0 = this.b.f(0.0F);
+      int $$1 = 8;
+      elm $$2 = bwz.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : bwv.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

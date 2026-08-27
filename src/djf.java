@@ -1,131 +1,174 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
 public class djf {
-   public static final djg a = djg.a("attached");
-   public static final djg b = djg.a("bottom");
-   public static final djg c = djg.a("conditional");
-   public static final djg d = djg.a("disarmed");
-   public static final djg e = djg.a("drag");
-   public static final djg f = djg.a("enabled");
-   public static final djg g = djg.a("extended");
-   public static final djg h = djg.a("eye");
-   public static final djg i = djg.a("falling");
-   public static final djg j = djg.a("hanging");
-   public static final djg k = djg.a("has_bottle_0");
-   public static final djg l = djg.a("has_bottle_1");
-   public static final djg m = djg.a("has_bottle_2");
-   public static final djg n = djg.a("has_record");
-   public static final djg o = djg.a("has_book");
-   public static final djg p = djg.a("inverted");
-   public static final djg q = djg.a("in_wall");
-   public static final djg r = djg.a("lit");
-   public static final djg s = djg.a("locked");
-   public static final djg t = djg.a("occupied");
-   public static final djg u = djg.a("open");
-   public static final djg v = djg.a("persistent");
-   public static final djg w = djg.a("powered");
-   public static final djg x = djg.a("short");
-   public static final djg y = djg.a("signal_fire");
-   public static final djg z = djg.a("snowy");
-   public static final djg A = djg.a("triggered");
-   public static final djg B = djg.a("unstable");
-   public static final djg C = djg.a("waterlogged");
-   public static final djg D = djg.a("berries");
-   public static final djg E = djg.a("bloom");
-   public static final djg F = djg.a("shrieking");
-   public static final djg G = djg.a("can_summon");
-   public static final djn<ia.a> H = djn.a("axis", ia.a.class, ia.a.a, ia.a.c);
-   public static final djn<ia.a> I = djn.a("axis", ia.a.class);
-   public static final djg J = djg.a("up");
-   public static final djg K = djg.a("down");
-   public static final djg L = djg.a("north");
-   public static final djg M = djg.a("east");
-   public static final djg N = djg.a("south");
-   public static final djg O = djg.a("west");
-   public static final djj P = djj.a("facing", ia.c, ia.f, ia.d, ia.e, ia.b, ia.a);
-   public static final djj Q = djj.a("facing", $$0 -> $$0 != ia.b);
-   public static final djj R = djj.a("facing", ia.c.a);
-   public static final djp S = djp.a("flower_amount", 1, 4);
-   public static final djn<ic> T = djn.a("orientation", ic.class);
-   public static final djn<dja> U = djn.a("face", dja.class);
-   public static final djn<djd> V = djn.a("attachment", djd.class);
-   public static final djn<dkb> W = djn.a("east", dkb.class);
-   public static final djn<dkb> X = djn.a("north", dkb.class);
-   public static final djn<dkb> Y = djn.a("south", dkb.class);
-   public static final djn<dkb> Z = djn.a("west", dkb.class);
-   public static final djn<dju> aa = djn.a("east", dju.class);
-   public static final djn<dju> ab = djn.a("north", dju.class);
-   public static final djn<dju> ac = djn.a("south", dju.class);
-   public static final djn<dju> ad = djn.a("west", dju.class);
-   public static final djn<djl> ae = djn.a("half", djl.class);
-   public static final djn<djo> af = djn.a("half", djo.class);
-   public static final djn<djt> ag = djn.a("shape", djt.class);
-   public static final djn<djt> ah = djn.a("shape", djt.class, $$0 -> $$0 != djt.j && $$0 != djt.i && $$0 != djt.g && $$0 != djt.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final djp aq = djp.a("age", 0, 1);
-   public static final djp ar = djp.a("age", 0, 2);
-   public static final djp as = djp.a("age", 0, 3);
-   public static final djp at = djp.a("age", 0, 4);
-   public static final djp au = djp.a("age", 0, 5);
-   public static final djp av = djp.a("age", 0, 7);
-   public static final djp aw = djp.a("age", 0, 15);
-   public static final djp ax = djp.a("age", 0, 25);
-   public static final djp ay = djp.a("bites", 0, 6);
-   public static final djp az = djp.a("candles", 1, 4);
-   public static final djp aA = djp.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final djp aC = djp.a("distance", 1, 7);
-   public static final djp aD = djp.a("eggs", 1, 4);
-   public static final djp aE = djp.a("hatch", 0, 2);
-   public static final djp aF = djp.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final djp aK = djp.a("level", 1, 3);
-   public static final djp aL = djp.a("level", 0, 8);
-   public static final djp aM = djp.a("level", 1, 8);
-   public static final djp aN = djp.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final djp aP = djp.a("level", 0, 15);
-   public static final djp aQ = djp.a("moisture", 0, 7);
-   public static final djp aR = djp.a("note", 0, 24);
-   public static final djp aS = djp.a("pickles", 1, 4);
-   public static final djp aT = djp.a("power", 0, 15);
-   public static final djp aU = djp.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final djp aW = djp.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final djp aZ = djp.a("charges", 0, 4);
-   public static final djp ba = djp.a("rotation", 0, djv.a());
-   public static final djn<djc> bb = djn.a("part", djc.class);
-   public static final djn<djh> bc = djn.a("type", djh.class);
-   public static final djn<dji> bd = djn.a("mode", dji.class);
-   public static final djn<djk> be = djn.a("hinge", djk.class);
-   public static final djn<djq> bf = djn.a("instrument", djq.class);
-   public static final djn<djr> bg = djn.a("type", djr.class);
-   public static final djn<djx> bh = djn.a("type", djx.class);
-   public static final djn<djy> bi = djn.a("shape", djy.class);
-   public static final djn<djz> bj = djn.a("mode", djz.class);
-   public static final djn<djb> bk = djn.a("leaves", djb.class);
-   public static final djn<dka> bl = djn.a("tilt", dka.class);
-   public static final djj bm = djj.a("vertical_direction", ia.b, ia.a);
-   public static final djn<djm> bn = djn.a("thickness", djm.class);
-   public static final djn<djw> bo = djn.a("sculk_sensor_phase", djw.class);
-   public static final djg bp = djg.a("slot_0_occupied");
-   public static final djg bq = djg.a("slot_1_occupied");
-   public static final djg br = djg.a("slot_2_occupied");
-   public static final djg bs = djg.a("slot_3_occupied");
-   public static final djg bt = djg.a("slot_4_occupied");
-   public static final djg bu = djg.a("slot_5_occupied");
-   public static final djp bv = djp.a("dusted", 0, 3);
-   public static final djg bw = djg.a("cracked");
-   public static final djg bx = djg.a("crafting");
-   public static final djn<dic> by = djn.a("trial_spawner_state", dic.class);
+   private final Predicate<dje>[][][] a;
+   private final int b;
+   private final int c;
+   private final int d;
+
+   public djf(Predicate<dje>[][][] $$0) {
+      this.a = $$0;
+      this.b = $$0.length;
+      if (this.b > 0) {
+         this.c = $$0[0].length;
+         if (this.c > 0) {
+            this.d = $$0[0][0].length;
+         } else {
+            this.d = 0;
+         }
+      } else {
+         this.c = 0;
+         this.d = 0;
+      }
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public Predicate<dje>[][][] d() {
+      return this.a;
+   }
+
+   @Nullable
+   @VisibleForTesting
+   public djf.b a(ctl $$0, hx $$1, ic $$2, ic $$3) {
+      LoadingCache<hx, dje> $$4 = a($$0, false);
+      return this.a($$1, $$2, $$3, $$4);
+   }
+
+   @Nullable
+   private djf.b a(hx $$0, ic $$1, ic $$2, LoadingCache<hx, dje> $$3) {
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         for (int $$5 = 0; $$5 < this.c; $$5++) {
+            for (int $$6 = 0; $$6 < this.b; $$6++) {
+               if (!this.a[$$6][$$5][$$4].test((dje)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
+                  return null;
+               }
+            }
+         }
+      }
+
+      return new djf.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
+   }
+
+   @Nullable
+   public djf.b a(ctl $$0, hx $$1) {
+      LoadingCache<hx, dje> $$2 = a($$0, false);
+      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+
+      for (hx $$4 : hx.a($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
+         for (ic $$5 : ic.values()) {
+            for (ic $$6 : ic.values()) {
+               if ($$6 != $$5 && $$6 != $$5.g()) {
+                  djf.b $$7 = this.a($$4, $$5, $$6, $$2);
+                  if ($$7 != null) {
+                     return $$7;
+                  }
+               }
+            }
+         }
+      }
+
+      return null;
+   }
+
+   public static LoadingCache<hx, dje> a(ctl $$0, boolean $$1) {
+      return CacheBuilder.newBuilder().build(new djf.a($$0, $$1));
+   }
+
+   protected static hx a(hx $$0, ic $$1, ic $$2, int $$3, int $$4, int $$5) {
+      if ($$1 != $$2 && $$1 != $$2.g()) {
+         jb $$6 = new jb($$1.j(), $$1.k(), $$1.l());
+         jb $$7 = new jb($$2.j(), $$2.k(), $$2.l());
+         jb $$8 = $$6.d($$7);
+         return $$0.b(
+            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
+         );
+      } else {
+         throw new IllegalArgumentException("Invalid forwards & up combination");
+      }
+   }
+
+   static class a extends CacheLoader<hx, dje> {
+      private final ctl a;
+      private final boolean b;
+
+      public a(ctl $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dje a(hx $$0) {
+         return new dje(this.a, $$0, this.b);
+      }
+   }
+
+   public static class b {
+      private final hx a;
+      private final ic b;
+      private final ic c;
+      private final LoadingCache<hx, dje> d;
+      private final int e;
+      private final int f;
+      private final int g;
+
+      public b(hx $$0, ic $$1, ic $$2, LoadingCache<hx, dje> $$3, int $$4, int $$5, int $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
+
+      public hx a() {
+         return this.a;
+      }
+
+      public ic b() {
+         return this.b;
+      }
+
+      public ic c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public int e() {
+         return this.f;
+      }
+
+      public int f() {
+         return this.g;
+      }
+
+      public dje a(int $$0, int $$1, int $$2) {
+         return (dje)this.d.getUnchecked(djf.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
+      }
+
+      @Override
+      public String toString() {
+         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      }
+   }
 }

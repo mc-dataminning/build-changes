@@ -1,7 +1,8 @@
-public interface gic<T> {
-   int e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   T b(auf var1);
-
-   void a(ghx var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gic {
 }

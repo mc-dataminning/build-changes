@@ -1,26 +1,13 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 
-public class dxg extends dxu {
-   private static final dxg c = new dxg();
-   public static Codec<dxg> a = Codec.unit(() -> c);
+public abstract class dxg {
+   private static final Codec<Either<dpd, dxg>> a = Codec.either(dpd.a, kd.N.q().dispatch(dxg::a, dxh::codec));
+   public static final Codec<dxg> c = a.xmap(
+      $$0 -> (dxg)$$0.map(dxf::a, $$0x -> $$0x), $$0 -> $$0.a() == dxh.a ? Either.left(((dxf)$$0).b()) : Either.right($$0)
+   );
 
-   private dxg() {
-   }
+   public abstract int a(aup var1, dpg var2);
 
-   public static dxg a() {
-      return c;
-   }
-
-   @Override
-   protected boolean a(dxt $$0, auf $$1, hv $$2) {
-      dxs $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      ie<ctx> $$4 = $$0.d().s($$2);
-      return $$0.f().a($$4).a($$3);
-   }
-
-   @Override
-   public dxw<?> b() {
-      return dxw.e;
-   }
+   public abstract dxh<?> a();
 }

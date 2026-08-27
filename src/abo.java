@@ -1,40 +1,32 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class abo implements xd<yx> {
+   private final double a;
+   private final double b;
 
-public class abo implements wu<yo> {
-   private final elw a;
-   private final String b;
-
-   public abo(elw $$0, @Nullable elx $$1) {
-      this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
+   public abo(dkr $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
    }
 
-   public abo(ue $$0) {
-      this.a = $$0.a(elw.u);
-      this.b = $$0.s();
+   public abo(ug $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(elw::a, this.a);
+   public void a(ug $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public elw a() {
-      return this.a;
+   public double a() {
+      return this.b;
    }
 
-   @Nullable
-   public String d() {
-      return Objects.equals(this.b, "") ? null : this.b;
+   public double d() {
+      return this.a;
    }
 }

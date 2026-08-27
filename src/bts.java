@@ -1,129 +1,49 @@
 import java.util.EnumSet;
 
-public class bts<T extends cbz & ccd & cbm> extends bsr {
-   public static final biw a = auz.a(1, 2);
-   private final T b;
-   private bts.a c = bts.a.a;
-   private final double d;
-   private final float e;
-   private int f;
-   private int g;
-   private int h;
+public class bts extends btb {
+   private static final bwt b = bwt.b().a(6.0);
+   public static final int a = 400;
+   private final bye c;
+   private ceo d;
+   private int e;
 
-   public bts(T $$0, double $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(bsr.a.a, bsr.a.b));
+   public bts(bye $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(btb.a.a, btb.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.i() && this.h();
-   }
-
-   private boolean h() {
-      return this.b.b(cmk.vM);
+      if (!this.c.dM().P()) {
+         return false;
+      } else if (this.c.eg().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = this.c.dM().a(ceo.class, b, this.c, this.c.dr(), this.c.dt(), this.c.dx(), this.c.cH().c(6.0, 2.0, 6.0));
+         return this.d != null;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.i() && (this.a() || !this.b.N().l()) && this.h();
+      return this.e > 0;
    }
 
-   private boolean i() {
-      return this.b.q() != null && this.b.q().bx();
+   @Override
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
-      this.b.h(null);
-      this.f = 0;
-      if (this.b.fn()) {
-         this.b.ft();
-         this.b.b(false);
-         ckp.a(this.b.fp(), false);
-      }
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
+      this.c.w(false);
+      this.d = null;
    }
 
    @Override
    public void e() {
-      blv $$0 = this.b.q();
-      if ($$0 != null) {
-         boolean $$1 = this.b.O().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
-            this.f = 0;
-         }
-
-         if ($$1) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         double $$3 = this.b.f($$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.N().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.eg());
-            }
-         } else {
-            this.h = 0;
-            this.b.N().n();
-         }
-
-         this.b.I().a($$0, 30.0F, 30.0F);
-         if (this.c == bts.a.a) {
-            if (!$$4) {
-               this.b.c(cfk.a(this.b, cmk.vM));
-               this.c = bts.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == bts.a.b) {
-            if (!this.b.fn()) {
-               this.c = bts.a.a;
-            }
-
-            int $$5 = this.b.fr();
-            cmh $$6 = this.b.fp();
-            if ($$5 >= ckp.k($$6)) {
-               this.b.fs();
-               this.c = bts.a.c;
-               this.g = 20 + this.b.eg().a(20);
-               this.b.b(false);
-            }
-         } else if (this.c == bts.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = bts.a.d;
-            }
-         } else if (this.c == bts.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            cmh $$7 = this.b.b(cfk.a(this.b, cmk.vM));
-            ckp.a($$7, false);
-            this.c = bts.a.a;
-         }
-      }
-   }
-
-   private boolean k() {
-      return this.c == bts.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+      this.c.I().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

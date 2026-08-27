@@ -1,52 +1,141 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
 
-public class bhv<E> extends bhz<bhx.b<E>> {
-   public static <E> Codec<bhv<E>> a(Codec<E> $$0) {
-      return bhx.b.a($$0).listOf().xmap(bhv::new, bhz::e);
+public class bhv implements bhx {
+   public static final int a = 10;
+   @Nullable
+   private static Consumer<Path> b = null;
+   private final Map<bhq, List<bic>> c = new Object2ObjectOpenHashMap();
+   private final bgg d;
+   private final Executor e;
+   private final bib f;
+   private final Consumer<bgl> g;
+   private final Consumer<Path> h;
+   private final bhs i;
+   private final LongSupplier j;
+   private final long k;
+   private int l;
+   private bgk m;
+   private volatile boolean n;
+   private Set<bhq> o = ImmutableSet.of();
+
+   private bhv(bhs $$0, LongSupplier $$1, Executor $$2, bib $$3, Consumer<bgl> $$4, Consumer<Path> $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.d = new bgg($$1, () -> this.l);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = b == null ? $$5 : $$5.andThen(b);
+      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
+      this.m = new bgf(this.j, () -> this.l, false);
+      this.d.c();
    }
 
-   public static <E> Codec<bhv<E>> b(Codec<E> $$0) {
-      return atg.a(bhx.b.a($$0).listOf()).xmap(bhv::new, bhz::e);
+   public static bhv a(bhs $$0, LongSupplier $$1, Executor $$2, bib $$3, Consumer<bgl> $$4, Consumer<Path> $$5) {
+      return new bhv($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   bhv(List<? extends bhx.b<E>> $$0) {
-      super($$0);
+   @Override
+   public synchronized void a() {
+      if (this.e()) {
+         this.n = true;
+      }
    }
 
-   public static <E> bhv.a<E> a() {
-      return new bhv.a<>();
+   @Override
+   public synchronized void b() {
+      if (this.e()) {
+         this.m = bgj.a;
+         this.g.accept(bgh.a);
+         this.a(this.o);
+      }
    }
 
-   public static <E> bhv<E> b() {
-      return new bhv<>(List.of());
-   }
+   @Override
+   public void c() {
+      this.g();
+      this.o = this.i.a(() -> this.m);
 
-   public static <E> bhv<E> a(E $$0) {
-      return new bhv<>(List.of(bhx.a($$0, 1)));
-   }
-
-   public Optional<E> a(auf $$0) {
-      return this.b($$0).map(bhx.b::b);
-   }
-
-   public static class a<E> {
-      private final Builder<bhx.b<E>> a = ImmutableList.builder();
-
-      public bhv.a<E> a(E $$0) {
-         return this.a($$0, 1);
+      for (bhq $$0 : this.o) {
+         $$0.a();
       }
 
-      public bhv.a<E> a(E $$0, int $$1) {
-         this.a.add(bhx.a($$0, $$1));
-         return this;
+      this.l++;
+   }
+
+   @Override
+   public void d() {
+      this.g();
+      if (this.l != 0) {
+         for (bhq $$0 : this.o) {
+            $$0.a(this.l);
+            if ($$0.g()) {
+               bic $$1 = new bic(Instant.now(), this.l, this.m.d());
+               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+            }
+         }
+
+         if (!this.n && this.j.getAsLong() <= this.k) {
+            this.m = new bgf(this.j, () -> this.l, false);
+         } else {
+            this.n = false;
+            bgl $$2 = this.d.e();
+            this.m = bgj.a;
+            this.g.accept($$2);
+            this.a($$2);
+         }
+      }
+   }
+
+   @Override
+   public boolean e() {
+      return this.d.a();
+   }
+
+   @Override
+   public bgm f() {
+      return bgm.a(this.d.d(), this.m);
+   }
+
+   private void g() {
+      if (!this.e()) {
+         throw new IllegalStateException("Not started!");
+      }
+   }
+
+   private void a(bgl $$0) {
+      HashSet<bhq> $$1 = new HashSet<>(this.o);
+      this.e.execute(() -> {
+         Path $$2 = this.f.a($$1, this.c, $$0);
+         this.a($$1);
+         this.h.accept($$2);
+      });
+   }
+
+   private void a(Collection<bhq> $$0) {
+      for (bhq $$1 : $$0) {
+         $$1.b();
       }
 
-      public bhv<E> a() {
-         return new bhv<>(this.a.build());
-      }
+      this.c.clear();
+      this.d.b();
+   }
+
+   public static void a(Consumer<Path> $$0) {
+      b = $$0;
    }
 }

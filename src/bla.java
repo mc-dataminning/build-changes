@@ -1,183 +1,132 @@
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public abstract class bla extends bme {
-   private static final afz<Boolean> bT = agc.a(bla.class, agb.k);
-   public static final int b = -24000;
-   private static final int bU = 40;
-   protected int c;
-   protected int d;
-   protected int e;
-
-   protected bla(blj<? extends bla> $$0, csy $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public bmo a(ctn $$0, bjj $$1, blz $$2, @Nullable bmo $$3, @Nullable sj $$4) {
-      if ($$3 == null) {
-         $$3 = new bla.a(true);
-      }
-
-      bla.a $$5 = (bla.a)$$3;
-      if ($$5.c() && $$5.a() > 0 && $$0.F_().i() <= $$5.d()) {
-         this.c_(-24000);
-      }
-
-      $$5.b();
-      return super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
+public class bla {
+   private final Map<bng, bkv> a = Maps.newHashMap();
+   private final blb b;
+   private final int c;
    @Nullable
-   public abstract bla a(amp var1, bla var2);
+   private String d;
+   private Supplier<blc.a> e = () -> null;
+   private final ih.c<bla> f = kd.d.f(this);
 
-   @Override
-   protected void c_() {
-      super.c_();
-      this.an.a(bT, false);
+   protected bla(blb $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public boolean Y_() {
+   public Optional<blc.a> b() {
+      return Optional.ofNullable(this.e.get());
+   }
+
+   public void a(bmf $$0, int $$1) {
+   }
+
+   public void a(@Nullable blp $$0, @Nullable blp $$1, bmf $$2, int $$3, double $$4) {
+      this.a($$2, $$3);
+   }
+
+   public boolean a(int $$0, int $$1) {
       return false;
    }
 
-   public int h() {
-      if (this.dM().B) {
-         return this.an.b(bT) ? -1 : 1;
-      } else {
-         return this.c;
-      }
+   public void b(bmf $$0, int $$1) {
    }
 
-   public void a(int $$0, boolean $$1) {
-      int $$2 = this.h();
-      $$2 += $$0 * 20;
-      if ($$2 > 0) {
-         $$2 = 0;
+   public boolean a() {
+      return false;
+   }
+
+   protected String c() {
+      if (this.d == null) {
+         this.d = ac.a("effect", kd.d.b(this));
       }
 
-      int $$4 = $$2 - $$2;
-      this.c_($$2);
-      if ($$1) {
-         this.d += $$4;
-         if (this.e == 0) {
-            this.e = 40;
-         }
-      }
-
-      if (this.h() == 0) {
-         this.c_(this.d);
-      }
+      return this.d;
    }
 
-   public void b_(int $$0) {
-      this.a($$0, false);
+   public String d() {
+      return this.c();
    }
 
-   public void c_(int $$0) {
-      int $$1 = this.h();
-      this.c = $$0;
-      if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
-         this.an.b(bT, $$0 < 0);
-         this.m();
-      }
+   public vd e() {
+      return vd.c(this.d());
    }
 
-   @Override
-   public void b(sj $$0) {
-      super.b($$0);
-      $$0.a("Age", this.h());
-      $$0.a("ForcedAge", this.d);
+   public blb f() {
+      return this.b;
    }
 
-   @Override
-   public void a(sj $$0) {
-      super.a($$0);
-      this.c_($$0.h("Age"));
-      this.d = $$0.h("ForcedAge");
+   public int g() {
+      return this.c;
    }
 
-   @Override
-   public void a(afz<?> $$0) {
-      if (bT.equals($$0)) {
-         this.k_();
-      }
-
-      super.a($$0);
+   public bla a(bng $$0, String $$1, double $$2, bnj.a $$3) {
+      this.a.put($$0, new bla.a(UUID.fromString($$1), $$2, $$3));
+      return this;
    }
 
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.dM().B) {
-         if (this.e > 0) {
-            if (this.e % 4 == 0) {
-               this.dM().a(jv.M, this.d(1.0), this.du() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-            }
+   public bla a(Supplier<blc.a> $$0) {
+      this.e = $$0;
+      return this;
+   }
 
-            this.e--;
-         }
-      } else if (this.bx()) {
-         int $$0 = this.h();
-         if ($$0 < 0) {
-            this.c_(++$$0);
-         } else if ($$0 > 0) {
-            this.c_(--$$0);
+   public Map<bng, bkv> h() {
+      return this.a;
+   }
+
+   public void a(bni $$0) {
+      for (Entry<bng, bkv> $$1 : this.a.entrySet()) {
+         bnh $$2 = $$0.a($$1.getKey());
+         if ($$2 != null) {
+            $$2.b($$1.getValue().a());
          }
       }
    }
 
-   protected void m() {
-      if (!this.o_() && this.bO() && this.cZ() instanceof cgl $$0 && !$$0.a((blf)this)) {
-         this.ac();
+   public void a(bni $$0, int $$1) {
+      for (Entry<bng, bkv> $$2 : this.a.entrySet()) {
+         bnh $$3 = $$0.a($$2.getKey());
+         if ($$3 != null) {
+            $$3.b($$2.getValue().a());
+            $$3.c($$2.getValue().a($$1));
+         }
       }
    }
 
-   @Override
-   public boolean o_() {
-      return this.h() < 0;
+   public boolean i() {
+      return this.b == blb.a;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      this.c_($$0 ? -24000 : 0);
+   @Deprecated
+   public ih.c<bla> j() {
+      return this.f;
    }
 
-   public static int d_(int $$0) {
-      return (int)((float)($$0 / 20) * 0.1F);
-   }
+   class a implements bkv {
+      private final UUID b;
+      private final double c;
+      private final bnj.a d;
 
-   public static class a implements bmo {
-      private int a;
-      private final boolean b;
-      private final float c;
-
-      private a(boolean $$0, float $$1) {
+      public a(UUID $$0, double $$1, bnj.a $$2) {
          this.b = $$0;
          this.c = $$1;
+         this.d = $$2;
       }
 
-      public a(boolean $$0) {
-         this($$0, 0.05F);
-      }
-
-      public a(float $$0) {
-         this(true, $$0);
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public void b() {
-         this.a++;
-      }
-
-      public boolean c() {
+      @Override
+      public UUID a() {
          return this.b;
       }
 
-      public float d() {
-         return this.c;
+      @Override
+      public bnj a(int $$0) {
+         return new bnj(this.b, bla.this.d() + " " + $$0, this.c * (double)($$0 + 1), this.d);
       }
    }
 }

@@ -1,31 +1,40 @@
-import com.mojang.authlib.GameProfile;
+public class afb implements xd<adg> {
+   private final eli a;
+   private final bju b;
+   private final int c;
 
-public class afb implements wu<aez> {
-   private final GameProfile a;
-
-   public afb(GameProfile $$0) {
-      this.a = $$0;
+   public afb(bju $$0, eli $$1, int $$2) {
+      this.b = $$0;
+      this.a = $$1;
+      this.c = $$2;
    }
 
-   public afb(ue $$0) {
-      this.a = $$0.A();
+   public afb(ug $$0) {
+      this.b = $$0.b(bju.class);
+      this.a = $$0.y();
+      this.c = $$0.n();
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
+      $$0.a(this.b);
       $$0.a(this.a);
+      $$0.c(this.c);
    }
 
-   public void a(aez $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   public GameProfile a() {
+   public bju a() {
+      return this.b;
+   }
+
+   public eli d() {
       return this.a;
    }
 
-   @Override
-   public ud c() {
-      return ud.e;
+   public int e() {
+      return this.c;
    }
 }

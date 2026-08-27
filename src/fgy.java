@@ -1,83 +1,77 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.UUID;
+import java.util.function.Supplier;
 
-public class fgy extends fcc {
-   private static final Logger k = LogUtils.getLogger();
-   public static final dow a = new dow((long)"test1".hashCode(), true, false);
-   protected final fcc b;
-   private ewh l;
-   private ewh m;
-   private ewh n;
-   private ewh o;
-   protected ewq c;
-   private fhd p;
+public class fgy extends fgr<foo.a> {
+   private static final int r = 120;
+   private static final int t = 85;
+   private static final int u = 178;
+   private static final vd v = vd.c("gui.abuseReport.skin.title");
+   private final fam w = fam.d().a(8);
+   private exq x;
+   private ewy y;
+   private ewy z;
 
-   public fgy(fcc $$0) {
-      super(vb.c("selectWorld.title"));
-      this.b = $$0;
+   private fgy(fct $$0, fon $$1, foo.a $$2) {
+      super(v, $$0, $$1, $$2);
+   }
+
+   public fgy(fct $$0, fon $$1, UUID $$2, Supplier<gff> $$3) {
+      this($$0, $$1, new foo.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fgy(fct $$0, fon $$1, foo $$2) {
+      this($$0, $$1, new foo.a($$2, $$1.a().b()));
    }
 
    @Override
-   protected void aP_() {
-      this.c = new ewq(this.i, this.g / 2 - 100, 22, 200, 20, this.c, vb.c("selectWorld.search"));
-      this.c.b($$0 -> this.p.a($$0));
-      this.p = new fhd(this, this.f, this.g, this.h, 48, this.h - 64, 36, this.c.a(), this.p);
-      this.e(this.c);
-      this.e(this.p);
-      this.m = this.d(ewh.a(efv.a, $$0 -> this.p.e().ifPresent(fhd.c::c)).a(this.g / 2 - 154, this.h - 52, 150, 20).a());
-      this.d(ewh.a(vb.c("selectWorld.create"), $$0 -> fgs.a(this.f, this)).a(this.g / 2 + 4, this.h - 52, 150, 20).a());
-      this.n = this.d(ewh.a(vb.c("selectWorld.edit"), $$0 -> this.p.e().ifPresent(fhd.c::g)).a(this.g / 2 - 154, this.h - 28, 72, 20).a());
-      this.l = this.d(ewh.a(vb.c("selectWorld.delete"), $$0 -> this.p.e().ifPresent(fhd.c::e)).a(this.g / 2 - 76, this.h - 28, 72, 20).a());
-      this.o = this.d(ewh.a(vb.c("selectWorld.recreate"), $$0 -> this.p.e().ifPresent(fhd.c::h)).a(this.g / 2 + 4, this.h - 28, 72, 20).a());
-      this.d(ewh.a(va.k, $$0 -> this.f.a(this.b)).a(this.g / 2 + 82, this.h - 28, 72, 20).a());
-      this.a(null);
-      this.c(this.c);
+   protected void aN_() {
+      this.w.c().b();
+      this.w.a(new eyf(this.e, this.i));
+      fam $$0 = this.w.a(fam.e().a(8));
+      $$0.c().e();
+      $$0.a(new exy(85, 120, this.f.aO(), this.q.e().a()));
+      fam $$1 = $$0.a(fam.d().a(8));
+      this.z = ewy.a(c, $$0x -> this.f.a(new fgx(this, this.q.h(), $$0xx -> {
+            this.q.a($$0xx);
+            this.C();
+         }))).a(178).a();
+      $$1.a(fae.a(this.i, this.z, b));
+      this.x = this.a(178, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.C();
+      });
+      $$1.a(fae.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
+      fam $$2 = this.w.a(fam.e().a(8));
+      $$2.a(ewy.a(vc.k, $$0x -> this.aE_()).a(120).a());
+      this.y = $$2.a(ewy.a(a, $$0x -> this.n()).a(120).a());
+      this.w.a($$1x -> {
+         eww var10000 = this.d($$1x);
+      });
+      this.c();
+      this.C();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return super.a($$0, $$1, $$2) ? true : this.c.a($$0, $$1, $$2);
+   protected void c() {
+      this.w.a();
+      fag.a(this.w, this.F());
    }
 
-   @Override
-   public void aF_() {
-      this.f.a(this.b);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.c.a($$0, $$1);
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.p.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable efv $$0) {
-      if ($$0 == null) {
-         this.m.b(efv.a);
-         this.m.i = false;
-         this.n.i = false;
-         this.o.i = false;
-         this.l.i = false;
+   private void C() {
+      fol $$0 = this.q.h();
+      if ($$0 != null) {
+         this.z.b($$0.b());
       } else {
-         this.m.b($$0.t());
-         this.m.i = $$0.u();
-         this.n.i = $$0.v();
-         this.o.i = $$0.w();
-         this.l.i = $$0.x();
+         this.z.b(c);
       }
+
+      foj.b $$1 = this.q.c();
+      this.y.j = $$1 == null;
+      this.y.a(x.a($$1, foj.b::a));
    }
 
    @Override
-   public void aG_() {
-      if (this.p != null) {
-         this.p.i().forEach(fhd.a::close);
-      }
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
    }
 }

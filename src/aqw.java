@@ -1,146 +1,52 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.Locale;
-import org.slf4j.Logger;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.Date;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class aqw extends aqu {
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = 3;
-   private static final int f = 2;
-   private static final int g = 0;
-   private static final int h = 2;
-   private static final int i = -1;
-   private boolean j;
-   private final Socket k;
-   private final byte[] l = new byte[1460];
-   private final String m;
-   private final ahj n;
+public class aqw extends aqk<GameProfile> {
+   public aqw(@Nullable GameProfile $$0) {
+      this($$0, null, null, null, null);
+   }
 
-   aqw(ahj $$0, String $$1, Socket $$2) {
-      super("RCON Client " + $$2.getInetAddress());
-      this.n = $$0;
-      this.k = $$2;
+   public aqw(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
 
-      try {
-         this.k.setSoTimeout(0);
-      } catch (Exception var5) {
-         this.a = false;
-      }
-
-      this.m = $$1;
+   public aqw(JsonObject $$0) {
+      super(b($$0), $$0);
    }
 
    @Override
-   public void run() {
-      try {
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public vd e() {
+      GameProfile $$0 = this.g();
+      return $$0 != null ? vd.b($$0.getName()) : vd.c("commands.banlist.entry.unknown");
+   }
+
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
+
+         UUID $$2;
          try {
-            while (this.a) {
-               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
-               int $$1 = $$0.read(this.l, 0, 1460);
-               if (10 > $$1) {
-                  return;
-               }
-
-               int $$2 = 0;
-               int $$3 = aqr.b(this.l, 0, $$1);
-               if ($$3 != $$1 - 4) {
-                  return;
-               }
-
-               $$2 += 4;
-               int $$4 = aqr.b(this.l, $$2, $$1);
-               $$2 += 4;
-               int $$5 = aqr.a(this.l, $$2);
-               $$2 += 4;
-               switch ($$5) {
-                  case 2:
-                     if (this.j) {
-                        String $$7 = aqr.a(this.l, $$2, $$1);
-
-                        try {
-                           this.a($$4, this.n.a($$7));
-                        } catch (Exception var15) {
-                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
-                        }
-                        break;
-                     }
-
-                     this.d();
-                     break;
-                  case 3:
-                     String $$6 = aqr.a(this.l, $$2, $$1);
-                     $$2 += $$6.length();
-                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
-                        this.j = true;
-                        this.a($$4, 2, "");
-                        break;
-                     }
-
-                     this.j = false;
-                     this.d();
-                     break;
-                  default:
-                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
-               }
-            }
-
-            return;
-         } catch (IOException var16) {
-         } catch (Exception var17) {
-            d.error("Exception whilst parsing RCON input", var17);
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
          }
-      } finally {
-         this.e();
-         d.info("Thread {} shutting down", this.b);
-         this.a = false;
-      }
-   }
 
-   private void a(int $$0, int $$1, String $$2) throws IOException {
-      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
-      DataOutputStream $$4 = new DataOutputStream($$3);
-      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
-      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
-      $$4.writeInt(Integer.reverseBytes($$0));
-      $$4.writeInt(Integer.reverseBytes($$1));
-      $$4.write($$5);
-      $$4.write(0);
-      $$4.write(0);
-      this.k.getOutputStream().write($$3.toByteArray());
-   }
-
-   private void d() throws IOException {
-      this.a(-1, 2, "");
-   }
-
-   private void a(int $$0, String $$1) throws IOException {
-      int $$2 = $$1.length();
-
-      do {
-         int $$3 = 4096 <= $$2 ? 4096 : $$2;
-         this.a($$0, 0, $$1.substring(0, $$3));
-         $$1 = $$1.substring($$3);
-         $$2 = $$1.length();
-      } while (0 != $$2);
-   }
-
-   @Override
-   public void b() {
-      this.a = false;
-      this.e();
-      super.b();
-   }
-
-   private void e() {
-      try {
-         this.k.close();
-      } catch (IOException var2) {
-         d.warn("Failed to close socket", var2);
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
       }
    }
 }

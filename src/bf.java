@@ -5,22 +5,22 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bf(List<db<bkf>> b, Optional<bp> c, Optional<bp> d) {
+public record bf(List<db<bkp>> b, Optional<bp> c, Optional<bp> d) {
    public static final Codec<bf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atg.a(db.a(kc.r).listOf(), "tags", List.of()).forGetter(bf::a),
-               atg.a(bp.a, "direct_entity").forGetter(bf::b),
-               atg.a(bp.a, "source_entity").forGetter(bf::c)
+               atq.a(db.a(ke.r).listOf(), "tags", List.of()).forGetter(bf::a),
+               atq.a(bp.a, "direct_entity").forGetter(bf::b),
+               atq.a(bp.a, "source_entity").forGetter(bf::c)
             )
             .apply($$0, bf::new)
    );
 
-   public boolean a(amq $$0, bkd $$1) {
+   public boolean a(ana $$0, bkn $$1) {
       return this.a($$0.z(), $$0.dk(), $$1);
    }
 
-   public boolean a(amp $$0, elb $$1, bkd $$2) {
-      for (db<bkf> $$3 : this.b) {
+   public boolean a(amz $$0, elm $$1, bkn $$2) {
+      for (db<bkp> $$3 : this.b) {
          if (!$$3.a($$2.k())) {
             return false;
          }
@@ -29,7 +29,7 @@ public record bf(List<db<bkf>> b, Optional<bp> c, Optional<bp> d) {
       return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
    }
 
-   public List<db<bkf>> a() {
+   public List<db<bkp>> a() {
       return this.b;
    }
 
@@ -42,7 +42,7 @@ public record bf(List<db<bkf>> b, Optional<bp> c, Optional<bp> d) {
    }
 
    public static class a {
-      private final Builder<db<bkf>> a = ImmutableList.builder();
+      private final Builder<db<bkp>> a = ImmutableList.builder();
       private Optional<bp> b = Optional.empty();
       private Optional<bp> c = Optional.empty();
 
@@ -50,7 +50,7 @@ public record bf(List<db<bkf>> b, Optional<bp> c, Optional<bp> d) {
          return new bf.a();
       }
 
-      public bf.a a(db<bkf> $$0) {
+      public bf.a a(db<bkp> $$0) {
          this.a.add($$0);
          return this;
       }

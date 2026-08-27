@@ -1,22 +1,36 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public interface ejd extends egf, Predicate<ege> {
-   eje b();
+public class ejd extends ejf {
+   public static final Codec<ejd> a = a(ejd::new);
 
-   @FunctionalInterface
-   public interface a {
-      ejd build();
+   ejd(List<ejo> $$0) {
+      super($$0, ejq.b($$0));
+   }
 
-      default ejd.a invert() {
-         return eja.a(this);
+   @Override
+   public ejp b() {
+      return ejq.c;
+   }
+
+   public static ejd.a a(ejo.a... $$0) {
+      return new ejd.a($$0);
+   }
+
+   public static class a extends ejf.a {
+      public a(ejo.a... $$0) {
+         super($$0);
       }
 
-      default eis.a or(ejd.a $$0) {
-         return eis.a(this, $$0);
+      @Override
+      public ejd.a or(ejo.a $$0) {
+         this.a($$0);
+         return this;
       }
 
-      default eir.a and(ejd.a $$0) {
-         return eir.a(this, $$0);
+      @Override
+      protected ejo a(List<ejo> $$0) {
+         return new ejd($$0);
       }
    }
 }

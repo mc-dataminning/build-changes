@@ -1,84 +1,44 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
 
 public class ajp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vb.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vb.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("commands.kick.owner.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vd.c("commands.kick.singleplayer.failed"));
 
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(dt.a("start").executes($$0x -> a((ds)$$0x.getSource()))))
-            .then(dt.a("stop").executes($$0x -> b((ds)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("kick").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)dt.a("targets", ef.d())
+                     .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), vd.c("multiplayer.disconnect.kicked"))))
+                  .then(dt.a("reason", ej.a()).executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), ej.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(ds $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aS()) {
-         throw c.create();
-      } else {
-         Consumer<bgb> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> vb.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
-
-   private static int b(ds $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aS()) {
+   private static int a(ds $$0, Collection<ana> $$1, vd $$2) throws CommandSyntaxException {
+      if (!$$0.l().p()) {
          throw b.create();
       } else {
-         $$1.aU();
-         return 0;
-      }
-   }
+         int $$3 = 0;
 
-   private static void a(ds $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aY().g(), aa.b().b());
+         for (ana $$4 : $$1) {
+            if (!$$0.l().a($$4.fR())) {
+               $$4.c.b($$2);
+               $$0.a(() -> vd.a("commands.kick.success", $$4.Q_(), $$2), true);
+               $$3++;
+            }
+         }
 
-      String $$4;
-      try {
-         $$4 = v.a(bhr.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(vb.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (atj $$7 = new atj(bhr.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> vb.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(ds $$0, bgb $$1) {
-      if ($$1 != bfx.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)auz.a;
-         $$0.a(() -> vb.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         if ($$3 == 0) {
+            throw a.create();
+         } else {
+            return $$3;
+         }
       }
    }
 }

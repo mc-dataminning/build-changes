@@ -1,37 +1,29 @@
-import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
 
-public class bcr extends Schema {
-   public bcr(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bcr extends DataFix {
+   public bcr(Schema $$0) {
+      super($$0, false);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bbg.F, () -> DSL.constType(bco.a()));
-      $$0.registerType(
-         false,
-         bbg.b,
-         () -> DSL.optionalFields(
-               "RootVehicle",
-               DSL.optionalFields("Entity", bbg.w.in($$0)),
-               "Inventory",
-               DSL.list(bbg.t.in($$0)),
-               "EnderItems",
-               DSL.list(bbg.t.in($$0)),
-               DSL.optionalFields(
-                  "ShoulderEntityLeft",
-                  bbg.w.in($$0),
-                  "ShoulderEntityRight",
-                  bbg.w.in($$0),
-                  "recipeBook",
-                  DSL.optionalFields("recipes", DSL.list(bbg.F.in($$0)), "toBeDisplayed", DSL.list(bbg.F.in($$0)))
-               )
-            )
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbq.I);
+      OpticFinder<?> $$1 = $$0.findField("dimensions");
+      return this.fixTypeEverywhereTyped(
+         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
+               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
+                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
+                        if ($$1xx.get("type").asString().result().isEmpty()) {
+                           throw new IllegalStateException("Unable load old custom worlds.");
+                        }
+                     });
+                     return $$0xxxx;
+                  }));
+               return $$0xx;
+            })
       );
-      $$0.registerType(false, bbg.d, () -> DSL.compoundList(DSL.list(bbg.t.in($$0))));
    }
 }

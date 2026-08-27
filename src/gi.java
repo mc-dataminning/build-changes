@@ -1,5 +1,8 @@
-public record gi<T>(go a, gl<T> b) {
-   public void a(gm<T> $$0) {
-      this.b.execute($$0, this.a);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gi {
 }

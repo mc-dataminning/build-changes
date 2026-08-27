@@ -1,89 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
+import java.util.List;
 
-public class vv {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private vw b;
+public record vv<S>(List<vv.a<S>> a) {
+   public static <S> vv<S> a(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<vv.a<S>> $$4 = a($$1, $$2);
 
-   public vv(UUID $$0, UUID $$1) {
-      this.b = vw.a($$0, $$1);
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null) {
+         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
+         if (!$$6) {
+            break;
+         }
+
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
+      }
+
+      return new vv<>($$4);
    }
 
-   public vv.c a(aum $$0) {
-      return $$1 -> {
-         vw $$2 = this.a();
-         return $$2 == null ? null : new vn($$0.sign($$2x -> vr.a($$2x, $$2, $$1)));
-      };
-   }
+   private static <S> List<vv.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<vv.a<S>> $$2 = new ArrayList<>();
 
-   public vv.b a(ceu $$0) {
-      aul $$1 = $$0.a();
-      return ($$2, $$3) -> {
-         vw $$4 = this.a();
-         if ($$4 == null) {
-            throw new vv.a(vb.c("chat.disabled.chain_broken"), false);
-         } else if ($$0.b().a()) {
-            throw new vv.a(vb.c("chat.disabled.expiredProfileKey"), false);
-         } else {
-            vr $$5 = new vr($$4, $$2, $$3, null, vf.c);
-            if (!$$5.a($$1)) {
-               throw new vv.a(vb.c("multiplayer.disconnect.unsigned_chat"), true);
-            } else {
-               if ($$5.a(Instant.now())) {
-                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof ey) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new vv.a<>($$4, $$6));
                }
-
-               return $$5;
             }
          }
-      };
-   }
-
-   @Nullable
-   private vw a() {
-      vw $$0 = this.b;
-      if ($$0 != null) {
-         this.b = $$0.a();
       }
 
-      return $$0;
+      return $$2;
    }
 
-   public static class a extends wb {
-      private final boolean a;
-
-      public a(vb $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
       }
 
-      public boolean a() {
+      public ArgumentCommandNode<S, ?> b() {
          return this.a;
       }
-   }
 
-   @FunctionalInterface
-   public interface b {
-      vv.b a = ($$0, $$1) -> {
-         throw new vv.a(vb.c("chat.disabled.missingProfileKey"), false);
-      };
-
-      static vv.b unsigned(UUID $$0) {
-         return ($$1, $$2) -> vr.a($$0, $$2.a());
+      public String c() {
+         return this.b;
       }
-
-      vr unpack(@Nullable vn var1, vu var2) throws vv.a;
-   }
-
-   @FunctionalInterface
-   public interface c {
-      vv.c a = $$0 -> null;
-
-      @Nullable
-      vn pack(vu var1);
    }
 }

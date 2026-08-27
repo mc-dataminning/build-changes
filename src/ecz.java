@@ -1,159 +1,712 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
-import java.util.stream.IntStream;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ecz implements dnr.d {
-   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
-   private static final MapCodec<ecz> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
-               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
-               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
-               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
-               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
-            )
-            .apply($$0, ecz::a)
-   );
-   public static final ats<ecz> a = ats.a(f);
-   private final edd g;
-   private final edd h;
-   private final edd i;
-   private final double j;
-   private final double k;
-   private final double l;
-   private final double m;
-   private final double n;
-   private final double o;
-   private final double p;
-   private final double q;
+public class ecz {
+   public static final String a = "palette";
+   public static final String b = "palettes";
+   public static final String c = "entities";
+   public static final String d = "blocks";
+   public static final String e = "pos";
+   public static final String f = "state";
+   public static final String g = "nbt";
+   public static final String h = "pos";
+   public static final String i = "blockPos";
+   public static final String j = "nbt";
+   public static final String k = "size";
+   private final List<ecz.a> l = Lists.newArrayList();
+   private final List<ecz.d> m = Lists.newArrayList();
+   private jb n = jb.g;
+   private String o = "?";
 
-   public static ecz a(double $$0, double $$1, double $$2, double $$3, double $$4) {
-      return new ecz(new doz(0L), $$0, $$1, $$2, $$3, $$4);
+   public jb a() {
+      return this.n;
    }
 
-   private ecz(edd $$0, edd $$1, edd $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.l = $$5;
-      this.m = $$6;
-      this.n = $$7;
-      this.j = 684.412 * this.p;
-      this.k = 684.412 * this.q;
-      this.o = $$0.a(this.k);
+   public void a(String $$0) {
+      this.o = $$0;
    }
 
-   @VisibleForTesting
-   public ecz(auf $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      this(
-         edd.a($$0, IntStream.rangeClosed(-15, 0)),
-         edd.a($$0, IntStream.rangeClosed(-15, 0)),
-         edd.a($$0, IntStream.rangeClosed(-7, 0)),
-         $$1,
-         $$2,
-         $$3,
-         $$4,
-         $$5
-      );
-   }
-
-   public ecz a(auf $$0) {
-      return new ecz($$0, this.p, this.q, this.l, this.m, this.n);
-   }
-
-   @Override
-   public double a(dnr.b $$0) {
-      double $$1 = (double)$$0.a() * this.j;
-      double $$2 = (double)$$0.b() * this.k;
-      double $$3 = (double)$$0.c() * this.j;
-      double $$4 = $$1 / this.l;
-      double $$5 = $$2 / this.m;
-      double $$6 = $$3 / this.l;
-      double $$7 = this.k * this.n;
-      double $$8 = $$7 / this.m;
-      double $$9 = 0.0;
-      double $$10 = 0.0;
-      double $$11 = 0.0;
-      boolean $$12 = true;
-      double $$13 = 1.0;
-
-      for (int $$14 = 0; $$14 < 8; $$14++) {
-         eda $$15 = this.i.a($$14);
-         if ($$15 != null) {
-            $$11 += $$15.a(edd.b($$4 * $$13), edd.b($$5 * $$13), edd.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
-         }
-
-         $$13 /= 2.0;
-      }
-
-      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
-      boolean $$17 = $$16 >= 1.0;
-      boolean $$18 = $$16 <= 0.0;
-      $$13 = 1.0;
-
-      for (int $$19 = 0; $$19 < 16; $$19++) {
-         double $$20 = edd.b($$1 * $$13);
-         double $$21 = edd.b($$2 * $$13);
-         double $$22 = edd.b($$3 * $$13);
-         double $$23 = $$7 * $$13;
-         if (!$$17) {
-            eda $$24 = this.g.a($$19);
-            if ($$24 != null) {
-               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
-         }
-
-         if (!$$18) {
-            eda $$25 = this.h.a($$19);
-            if ($$25 != null) {
-               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
-         }
-
-         $$13 /= 2.0;
-      }
-
-      return aty.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
-   }
-
-   @Override
-   public double a() {
-      return -this.b();
-   }
-
-   @Override
-   public double b() {
+   public String b() {
       return this.o;
    }
 
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("BlendedNoise{minLimitNoise=");
-      this.g.a($$0);
-      $$0.append(", maxLimitNoise=");
-      this.h.a($$0);
-      $$0.append(", mainNoise=");
-      this.i.a($$0);
-      $$0.append(
-            String.format(
-               Locale.ROOT,
-               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
-               684.412,
-               684.412,
-               8.555150000000001,
-               4.277575000000001
-            )
-         )
-         .append('}');
+   public void a(cti $$0, hx $$1, jb $$2, boolean $$3, @Nullable cwj $$4) {
+      if ($$2.u() >= 1 && $$2.v() >= 1 && $$2.w() >= 1) {
+         hx $$5 = $$1.a($$2).b(-1, -1, -1);
+         List<ecz.c> $$6 = Lists.newArrayList();
+         List<ecz.c> $$7 = Lists.newArrayList();
+         List<ecz.c> $$8 = Lists.newArrayList();
+         hx $$9 = new hx(Math.min($$1.u(), $$5.u()), Math.min($$1.v(), $$5.v()), Math.min($$1.w(), $$5.w()));
+         hx $$10 = new hx(Math.max($$1.u(), $$5.u()), Math.max($$1.v(), $$5.v()), Math.max($$1.w(), $$5.w()));
+         this.n = $$2;
+
+         for (hx $$11 : hx.a($$9, $$10)) {
+            hx $$12 = $$11.b($$9);
+            dja $$13 = $$0.a_($$11);
+            if ($$4 == null || !$$13.a($$4)) {
+               dgo $$14 = $$0.c_($$11);
+               ecz.c $$15;
+               if ($$14 != null) {
+                  $$15 = new ecz.c($$12, $$13, $$14.p());
+               } else {
+                  $$15 = new ecz.c($$12, $$13, null);
+               }
+
+               a($$15, $$6, $$7, $$8);
+            }
+         }
+
+         List<ecz.c> $$17 = a($$6, $$7, $$8);
+         this.l.clear();
+         this.l.add(new ecz.a($$17));
+         if ($$3) {
+            this.a($$0, $$9, $$10);
+         } else {
+            this.m.clear();
+         }
+      }
    }
 
-   @Override
-   public ats<? extends dnr> c() {
-      return a;
+   private static void a(ecz.c $$0, List<ecz.c> $$1, List<ecz.c> $$2, List<ecz.c> $$3) {
+      if ($$0.c != null) {
+         $$2.add($$0);
+      } else if (!$$0.b.b().p() && $$0.b.r(csx.a, hx.b)) {
+         $$1.add($$0);
+      } else {
+         $$3.add($$0);
+      }
+   }
+
+   private static List<ecz.c> a(List<ecz.c> $$0, List<ecz.c> $$1, List<ecz.c> $$2) {
+      Comparator<ecz.c> $$3 = Comparator.<ecz.c>comparingInt($$0x -> $$0x.a.v()).thenComparingInt($$0x -> $$0x.a.u()).thenComparingInt($$0x -> $$0x.a.w());
+      $$0.sort($$3);
+      $$2.sort($$3);
+      $$1.sort($$3);
+      List<ecz.c> $$4 = Lists.newArrayList();
+      $$4.addAll($$0);
+      $$4.addAll($$2);
+      $$4.addAll($$1);
+      return $$4;
+   }
+
+   private void a(cti $$0, hx $$1, hx $$2) {
+      List<blp> $$3 = $$0.a(blp.class, elh.a($$1, $$2), $$0x -> !($$0x instanceof cfb));
+      this.m.clear();
+
+      for (blp $$4 : $$3) {
+         elm $$5 = new elm($$4.dr() - (double)$$1.u(), $$4.dt() - (double)$$1.v(), $$4.dx() - (double)$$1.w());
+         sl $$6 = new sl();
+         $$4.e($$6);
+         hx $$7;
+         if ($$4 instanceof cbj) {
+            $$7 = ((cbj)$$4).E().b($$1);
+         } else {
+            $$7 = hx.a($$5);
+         }
+
+         this.m.add(new ecz.d($$5, $$7, $$6.h()));
+      }
+   }
+
+   public List<ecz.c> a(hx $$0, ecv $$1, cwj $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
+
+   public ObjectArrayList<ecz.c> a(hx $$0, ecv $$1, cwj $$2, boolean $$3) {
+      ObjectArrayList<ecz.c> $$4 = new ObjectArrayList();
+      dyr $$5 = $$1.g();
+      if (this.l.isEmpty()) {
+         return $$4;
+      } else {
+         for (ecz.c $$6 : $$1.a(this.l, $$0).a($$2)) {
+            hx $$7 = $$3 ? a($$1, $$6.a).a((jb)$$0) : $$6.a;
+            if ($$5 == null || $$5.b($$7)) {
+               $$4.add(new ecz.c($$7, $$6.b.a($$1.d()), $$6.c));
+            }
+         }
+
+         return $$4;
+      }
+   }
+
+   public hx a(ecv $$0, hx $$1, ecv $$2, hx $$3) {
+      hx $$4 = a($$0, $$1);
+      hx $$5 = a($$2, $$3);
+      return $$4.b($$5);
+   }
+
+   public static hx a(ecv $$0, hx $$1) {
+      return a($$1, $$0.c(), $$0.d(), $$0.e());
+   }
+
+   public boolean a(ctx $$0, hx $$1, hx $$2, ecv $$3, aup $$4, int $$5) {
+      if (this.l.isEmpty()) {
+         return false;
+      } else {
+         List<ecz.c> $$6 = $$3.a(this.l, $$1).a();
+         if ((!$$6.isEmpty() || !$$3.f() && !this.m.isEmpty()) && this.n.u() >= 1 && this.n.v() >= 1 && this.n.w() >= 1) {
+            dyr $$7 = $$3.g();
+            List<hx> $$8 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
+            List<hx> $$9 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
+            List<Pair<hx, sl>> $$10 = Lists.newArrayListWithCapacity($$6.size());
+            int $$11 = Integer.MAX_VALUE;
+            int $$12 = Integer.MAX_VALUE;
+            int $$13 = Integer.MAX_VALUE;
+            int $$14 = Integer.MIN_VALUE;
+            int $$15 = Integer.MIN_VALUE;
+            int $$16 = Integer.MIN_VALUE;
+
+            for (ecz.c $$18 : a($$0, $$1, $$2, $$3, $$6)) {
+               hx $$19 = $$18.a;
+               if ($$7 == null || $$7.b($$19)) {
+                  eek $$20 = $$3.j() ? $$0.b_($$19) : null;
+                  dja $$21 = $$18.b.a($$3.c()).a($$3.d());
+                  if ($$18.c != null) {
+                     dgo $$22 = $$0.c_($$19);
+                     bjm.a_($$22);
+                     $$0.a($$19, cwl.hW.o(), 20);
+                  }
+
+                  if ($$0.a($$19, $$21, $$5)) {
+                     $$11 = Math.min($$11, $$19.u());
+                     $$12 = Math.min($$12, $$19.v());
+                     $$13 = Math.min($$13, $$19.w());
+                     $$14 = Math.max($$14, $$19.u());
+                     $$15 = Math.max($$15, $$19.v());
+                     $$16 = Math.max($$16, $$19.w());
+                     $$10.add(Pair.of($$19, $$18.c));
+                     if ($$18.c != null) {
+                        dgo $$23 = $$0.c_($$19);
+                        if ($$23 != null) {
+                           if ($$23 instanceof bkc) {
+                              $$18.c.a("LootTableSeed", $$4.g());
+                           }
+
+                           $$23.a($$18.c);
+                        }
+                     }
+
+                     if ($$20 != null) {
+                        if ($$21.u().b()) {
+                           $$9.add($$19);
+                        } else if ($$21.b() instanceof daz) {
+                           ((daz)$$21.b()).a($$0, $$19, $$21, $$20);
+                           if (!$$20.b()) {
+                              $$8.add($$19);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+
+            boolean $$24 = true;
+            ic[] $$25 = new ic[]{ic.b, ic.c, ic.f, ic.d, ic.e};
+
+            while ($$24 && !$$8.isEmpty()) {
+               $$24 = false;
+               Iterator<hx> $$26 = $$8.iterator();
+
+               while ($$26.hasNext()) {
+                  hx $$27 = $$26.next();
+                  eek $$28 = $$0.b_($$27);
+
+                  for (int $$29 = 0; $$29 < $$25.length && !$$28.b(); $$29++) {
+                     hx $$30 = $$27.a($$25[$$29]);
+                     eek $$31 = $$0.b_($$30);
+                     if ($$31.b() && !$$9.contains($$30)) {
+                        $$28 = $$31;
+                     }
+                  }
+
+                  if ($$28.b()) {
+                     dja $$32 = $$0.a_($$27);
+                     cwj $$33 = $$32.b();
+                     if ($$33 instanceof daz) {
+                        ((daz)$$33).a($$0, $$27, $$32, $$28);
+                        $$24 = true;
+                        $$26.remove();
+                     }
+                  }
+               }
+            }
+
+            if ($$11 <= $$14) {
+               if (!$$3.h()) {
+                  elv $$34 = new elp($$14 - $$11 + 1, $$15 - $$12 + 1, $$16 - $$13 + 1);
+                  int $$35 = $$11;
+                  int $$36 = $$12;
+                  int $$37 = $$13;
+
+                  for (Pair<hx, sl> $$38 : $$10) {
+                     hx $$39 = (hx)$$38.getFirst();
+                     $$34.c($$39.u() - $$35, $$39.v() - $$36, $$39.w() - $$37);
+                  }
+
+                  a($$0, $$5, $$34, $$35, $$36, $$37);
+               }
+
+               for (Pair<hx, sl> $$40 : $$10) {
+                  hx $$41 = (hx)$$40.getFirst();
+                  if (!$$3.h()) {
+                     dja $$42 = $$0.a_($$41);
+                     dja $$43 = cwj.b($$42, $$0, $$41);
+                     if ($$42 != $$43) {
+                        $$0.a($$41, $$43, $$5 & -2 | 16);
+                     }
+
+                     $$0.b($$41, $$43.b());
+                  }
+
+                  if ($$40.getSecond() != null) {
+                     dgo $$44 = $$0.c_($$41);
+                     if ($$44 != null) {
+                        $$44.e();
+                     }
+                  }
+               }
+            }
+
+            if (!$$3.f()) {
+               this.a($$0, $$1, $$3.c(), $$3.d(), $$3.e(), $$7, $$3.k());
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      }
+   }
+
+   public static void a(ctj $$0, int $$1, elv $$2, int $$3, int $$4, int $$5) {
+      $$2.a(($$5x, $$6, $$7, $$8) -> {
+         hx $$9 = new hx($$3 + $$6, $$4 + $$7, $$5 + $$8);
+         hx $$10 = $$9.a($$5x);
+         dja $$11 = $$0.a_($$9);
+         dja $$12 = $$0.a_($$10);
+         dja $$13 = $$11.a($$5x, $$12, $$0, $$9, $$10);
+         if ($$11 != $$13) {
+            $$0.a($$9, $$13, $$1 & -2);
+         }
+
+         dja $$14 = $$12.a($$5x.g(), $$13, $$0, $$10, $$9);
+         if ($$12 != $$14) {
+            $$0.a($$10, $$14, $$1 & -2);
+         }
+      });
+   }
+
+   public static List<ecz.c> a(ctx $$0, hx $$1, hx $$2, ecv $$3, List<ecz.c> $$4) {
+      List<ecz.c> $$5 = new ArrayList<>();
+      List<ecz.c> $$6 = new ArrayList<>();
+
+      for (ecz.c $$7 : $$4) {
+         hx $$8 = a($$3, $$7.a).a((jb)$$1);
+         ecz.c $$9 = new ecz.c($$8, $$7.b, $$7.c != null ? $$7.c.h() : null);
+         Iterator<ecw> $$10 = $$3.i().iterator();
+
+         while ($$9 != null && $$10.hasNext()) {
+            $$9 = $$10.next().a($$0, $$1, $$2, $$7, $$9, $$3);
+         }
+
+         if ($$9 != null) {
+            $$6.add($$9);
+            $$5.add($$7);
+         }
+      }
+
+      for (ecw $$11 : $$3.i()) {
+         $$6 = $$11.a($$0, $$1, $$2, $$5, $$6, $$3);
+      }
+
+      return $$6;
+   }
+
+   private void a(ctx $$0, hx $$1, dbf $$2, dcv $$3, hx $$4, @Nullable dyr $$5, boolean $$6) {
+      for (ecz.d $$7 : this.m) {
+         hx $$8 = a($$7.b, $$2, $$3, $$4).a((jb)$$1);
+         if ($$5 == null || $$5.b($$8)) {
+            sl $$9 = $$7.c.h();
+            elm $$10 = a($$7.a, $$2, $$3, $$4);
+            elm $$11 = $$10.b((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            sr $$12 = new sr();
+            $$12.add(sm.a($$11.c));
+            $$12.add(sm.a($$11.d));
+            $$12.add(sm.a($$11.e));
+            $$9.a("Pos", $$12);
+            $$9.r("UUID");
+            a($$0, $$9).ifPresent($$6x -> {
+               float $$7x = $$6x.a($$3);
+               $$7x += $$6x.a($$2) - $$6x.dC();
+               $$6x.b($$11.c, $$11.d, $$11.e, $$7x, $$6x.dE());
+               if ($$6 && $$6x instanceof bmh) {
+                  ((bmh)$$6x).a($$0, $$0.d_(hx.a($$11)), bmj.d, null, $$9);
+               }
+
+               $$0.a_($$6x);
+            });
+         }
+      }
+   }
+
+   private static Optional<blp> a(ctx $$0, sl $$1) {
+      try {
+         return blt.a($$1, $$0.E());
+      } catch (Exception var3) {
+         return Optional.empty();
+      }
+   }
+
+   public jb a(dcv $$0) {
+      switch ($$0) {
+         case d:
+         case b:
+            return new jb(this.n.w(), this.n.v(), this.n.u());
+         default:
+            return this.n;
+      }
+   }
+
+   public static hx a(hx $$0, dbf $$1, dcv $$2, hx $$3) {
+      int $$4 = $$0.u();
+      int $$5 = $$0.v();
+      int $$6 = $$0.w();
+      boolean $$7 = true;
+      switch ($$1) {
+         case b:
+            $$6 = -$$6;
+            break;
+         case c:
+            $$4 = -$$4;
+            break;
+         default:
+            $$7 = false;
+      }
+
+      int $$8 = $$3.u();
+      int $$9 = $$3.w();
+      switch ($$2) {
+         case d:
+            return new hx($$8 - $$9 + $$6, $$5, $$8 + $$9 - $$4);
+         case b:
+            return new hx($$8 + $$9 - $$6, $$5, $$9 - $$8 + $$4);
+         case c:
+            return new hx($$8 + $$8 - $$4, $$5, $$9 + $$9 - $$6);
+         default:
+            return $$7 ? new hx($$4, $$5, $$6) : $$0;
+      }
+   }
+
+   public static elm a(elm $$0, dbf $$1, dcv $$2, hx $$3) {
+      double $$4 = $$0.c;
+      double $$5 = $$0.d;
+      double $$6 = $$0.e;
+      boolean $$7 = true;
+      switch ($$1) {
+         case b:
+            $$6 = 1.0 - $$6;
+            break;
+         case c:
+            $$4 = 1.0 - $$4;
+            break;
+         default:
+            $$7 = false;
+      }
+
+      int $$8 = $$3.u();
+      int $$9 = $$3.w();
+      switch ($$2) {
+         case d:
+            return new elm((double)($$8 - $$9) + $$6, $$5, (double)($$8 + $$9 + 1) - $$4);
+         case b:
+            return new elm((double)($$8 + $$9 + 1) - $$6, $$5, (double)($$9 - $$8) + $$4);
+         case c:
+            return new elm((double)($$8 + $$8 + 1) - $$4, $$5, (double)($$9 + $$9 + 1) - $$6);
+         default:
+            return $$7 ? new elm($$4, $$5, $$6) : $$0;
+      }
+   }
+
+   public hx a(hx $$0, dbf $$1, dcv $$2) {
+      return a($$0, $$1, $$2, this.a().u(), this.a().w());
+   }
+
+   public static hx a(hx $$0, dbf $$1, dcv $$2, int $$3, int $$4) {
+      $$3--;
+      $$4--;
+      int $$5 = $$1 == dbf.c ? $$3 : 0;
+      int $$6 = $$1 == dbf.b ? $$4 : 0;
+      hx $$7 = $$0;
+      switch ($$2) {
+         case d:
+            $$7 = $$0.b($$6, 0, $$3 - $$5);
+            break;
+         case b:
+            $$7 = $$0.b($$4 - $$6, 0, $$5);
+            break;
+         case c:
+            $$7 = $$0.b($$3 - $$5, 0, $$4 - $$6);
+            break;
+         case a:
+            $$7 = $$0.b($$5, 0, $$6);
+      }
+
+      return $$7;
+   }
+
+   public dyr b(ecv $$0, hx $$1) {
+      return this.a($$1, $$0.d(), $$0.e(), $$0.c());
+   }
+
+   public dyr a(hx $$0, dcv $$1, hx $$2, dbf $$3) {
+      return a($$0, $$1, $$2, $$3, this.n);
+   }
+
+   @VisibleForTesting
+   protected static dyr a(hx $$0, dcv $$1, hx $$2, dbf $$3, jb $$4) {
+      jb $$5 = $$4.c(-1, -1, -1);
+      hx $$6 = a(hx.b, $$3, $$1, $$2);
+      hx $$7 = a(hx.b.a($$5), $$3, $$1, $$2);
+      return dyr.a($$6, $$7).a((jb)$$0);
+   }
+
+   public sl a(sl $$0) {
+      if (this.l.isEmpty()) {
+         $$0.a("blocks", new sr());
+         $$0.a("palette", new sr());
+      } else {
+         List<ecz.b> $$1 = Lists.newArrayList();
+         ecz.b $$2 = new ecz.b();
+         $$1.add($$2);
+
+         for (int $$3 = 1; $$3 < this.l.size(); $$3++) {
+            $$1.add(new ecz.b());
+         }
+
+         sr $$4 = new sr();
+         List<ecz.c> $$5 = this.l.get(0).a();
+
+         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+            ecz.c $$7 = $$5.get($$6);
+            sl $$8 = new sl();
+            $$8.a("pos", this.a($$7.a.u(), $$7.a.v(), $$7.a.w()));
+            int $$9 = $$2.a($$7.b);
+            $$8.a("state", $$9);
+            if ($$7.c != null) {
+               $$8.a("nbt", $$7.c);
+            }
+
+            $$4.add($$8);
+
+            for (int $$10 = 1; $$10 < this.l.size(); $$10++) {
+               ecz.b $$11 = $$1.get($$10);
+               $$11.a(this.l.get($$10).a().get($$6).b, $$9);
+            }
+         }
+
+         $$0.a("blocks", $$4);
+         if ($$1.size() == 1) {
+            sr $$12 = new sr();
+
+            for (dja $$13 : $$2) {
+               $$12.add(ta.a($$13));
+            }
+
+            $$0.a("palette", $$12);
+         } else {
+            sr $$14 = new sr();
+
+            for (ecz.b $$15 : $$1) {
+               sr $$16 = new sr();
+
+               for (dja $$17 : $$15) {
+                  $$16.add(ta.a($$17));
+               }
+
+               $$14.add($$16);
+            }
+
+            $$0.a("palettes", $$14);
+         }
+      }
+
+      sr $$18 = new sr();
+
+      for (ecz.d $$19 : this.m) {
+         sl $$20 = new sl();
+         $$20.a("pos", this.a($$19.a.c, $$19.a.d, $$19.a.e));
+         $$20.a("blockPos", this.a($$19.b.u(), $$19.b.v(), $$19.b.w()));
+         if ($$19.c != null) {
+            $$20.a("nbt", $$19.c);
+         }
+
+         $$18.add($$20);
+      }
+
+      $$0.a("entities", $$18);
+      $$0.a("size", this.a(this.n.u(), this.n.v(), this.n.w()));
+      return ta.g($$0);
+   }
+
+   public void a(ii<cwj> $$0, sl $$1) {
+      this.l.clear();
+      this.m.clear();
+      sr $$2 = $$1.c("size", 3);
+      this.n = new jb($$2.e(0), $$2.e(1), $$2.e(2));
+      sr $$3 = $$1.c("blocks", 10);
+      if ($$1.b("palettes", 9)) {
+         sr $$4 = $$1.c("palettes", 9);
+
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            this.a($$0, $$4.b($$5), $$3);
+         }
+      } else {
+         this.a($$0, $$1.c("palette", 10), $$3);
+      }
+
+      sr $$6 = $$1.c("entities", 10);
+
+      for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
+         sl $$8 = $$6.a($$7);
+         sr $$9 = $$8.c("pos", 6);
+         elm $$10 = new elm($$9.h(0), $$9.h(1), $$9.h(2));
+         sr $$11 = $$8.c("blockPos", 3);
+         hx $$12 = new hx($$11.e(0), $$11.e(1), $$11.e(2));
+         if ($$8.e("nbt")) {
+            sl $$13 = $$8.p("nbt");
+            this.m.add(new ecz.d($$10, $$12, $$13));
+         }
+      }
+   }
+
+   private void a(ii<cwj> $$0, sr $$1, sr $$2) {
+      ecz.b $$3 = new ecz.b();
+
+      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+         $$3.a(ta.a($$0, $$1.a($$4)), $$4);
+      }
+
+      List<ecz.c> $$5 = Lists.newArrayList();
+      List<ecz.c> $$6 = Lists.newArrayList();
+      List<ecz.c> $$7 = Lists.newArrayList();
+
+      for (int $$8 = 0; $$8 < $$2.size(); $$8++) {
+         sl $$9 = $$2.a($$8);
+         sr $$10 = $$9.c("pos", 3);
+         hx $$11 = new hx($$10.e(0), $$10.e(1), $$10.e(2));
+         dja $$12 = $$3.a($$9.h("state"));
+         sl $$13;
+         if ($$9.e("nbt")) {
+            $$13 = $$9.p("nbt");
+         } else {
+            $$13 = null;
+         }
+
+         ecz.c $$15 = new ecz.c($$11, $$12, $$13);
+         a($$15, $$5, $$6, $$7);
+      }
+
+      List<ecz.c> $$16 = a($$5, $$6, $$7);
+      this.l.add(new ecz.a($$16));
+   }
+
+   private sr a(int... $$0) {
+      sr $$1 = new sr();
+
+      for (int $$2 : $$0) {
+         $$1.add(sq.a($$2));
+      }
+
+      return $$1;
+   }
+
+   private sr a(double... $$0) {
+      sr $$1 = new sr();
+
+      for (double $$2 : $$0) {
+         $$1.add(sm.a($$2));
+      }
+
+      return $$1;
+   }
+
+   public static final class a {
+      private final List<ecz.c> a;
+      private final Map<cwj, List<ecz.c>> b = Maps.newHashMap();
+
+      a(List<ecz.c> $$0) {
+         this.a = $$0;
+      }
+
+      public List<ecz.c> a() {
+         return this.a;
+      }
+
+      public List<ecz.c> a(cwj $$0) {
+         return this.b.computeIfAbsent($$0, $$0x -> this.a.stream().filter($$1 -> $$1.b.a($$0x)).collect(Collectors.toList()));
+      }
+   }
+
+   static class b implements Iterable<dja> {
+      public static final dja a = cwl.a.o();
+      private final in<dja> b = new in<>(16);
+      private int c;
+
+      public int a(dja $$0) {
+         int $$1 = this.b.a($$0);
+         if ($$1 == -1) {
+            $$1 = this.c++;
+            this.b.a($$0, $$1);
+         }
+
+         return $$1;
+      }
+
+      @Nullable
+      public dja a(int $$0) {
+         dja $$1 = this.b.a($$0);
+         return $$1 == null ? a : $$1;
+      }
+
+      @Override
+      public Iterator<dja> iterator() {
+         return this.b.iterator();
+      }
+
+      public void a(dja $$0, int $$1) {
+         this.b.a($$0, $$1);
+      }
+   }
+
+   public static record c(hx a, dja b, @Nullable sl c) {
+
+      @Override
+      public String toString() {
+         return String.format(Locale.ROOT, "<StructureBlockInfo | %s | %s | %s>", this.a, this.b, this.c);
+      }
+   }
+
+   public static class d {
+      public final elm a;
+      public final hx b;
+      public final sl c;
+
+      public d(elm $$0, hx $$1, sl $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
    }
 }

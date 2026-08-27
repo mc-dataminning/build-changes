@@ -1,50 +1,27 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+public interface cml {
+   int a = 256;
+   int b = 140;
+   ahc<cmj> c = a("ponder_goat_horn");
+   ahc<cmj> d = a("sing_goat_horn");
+   ahc<cmj> e = a("seek_goat_horn");
+   ahc<cmj> f = a("feel_goat_horn");
+   ahc<cmj> g = a("admire_goat_horn");
+   ahc<cmj> h = a("call_goat_horn");
+   ahc<cmj> i = a("yearn_goat_horn");
+   ahc<cmj> j = a("dream_goat_horn");
 
-public class cml extends cmc {
-   private static final String a = "Recipes";
-   private static final Logger b = LogUtils.getLogger();
-
-   public cml(cmc.a $$0) {
-      super($$0);
+   private static ahc<cmj> a(String $$0) {
+      return ahc.a(ke.D, new ahd($$0));
    }
 
-   @Override
-   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
-      cmh $$3 = $$1.b($$2);
-      sj $$4 = $$3.v();
-      if (!$$1.fT().d) {
-         $$1.a($$2, cmh.f);
-      }
-
-      if ($$4 != null && $$4.b("Recipes", 9)) {
-         if (!$$0.B) {
-            sp $$5 = $$4.c("Recipes", 8);
-            List<cpn<?>> $$6 = Lists.newArrayList();
-            cpo $$7 = $$0.n().aG();
-
-            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
-               String $$9 = $$5.j($$8);
-               Optional<cpn<?>> $$10 = $$7.a(new agt($$9));
-               if (!$$10.isPresent()) {
-                  b.error("Invalid recipe: {}", $$9);
-                  return bjm.d($$3);
-               }
-
-               $$6.add($$10.get());
-            }
-
-            $$1.a($$6);
-            $$1.b(arm.c.b(this));
-         }
-
-         return bjm.a($$3, $$0.y_());
-      } else {
-         b.error("Tag not valid: {}", $$4);
-         return bjm.d($$3);
-      }
+   static cmj a(it<cmj> $$0) {
+      it.a($$0, c, new cmj((ih<arl>)arm.lR.get(0), 140, 256.0F));
+      it.a($$0, d, new cmj((ih<arl>)arm.lR.get(1), 140, 256.0F));
+      it.a($$0, e, new cmj((ih<arl>)arm.lR.get(2), 140, 256.0F));
+      it.a($$0, f, new cmj((ih<arl>)arm.lR.get(3), 140, 256.0F));
+      it.a($$0, g, new cmj((ih<arl>)arm.lR.get(4), 140, 256.0F));
+      it.a($$0, h, new cmj((ih<arl>)arm.lR.get(5), 140, 256.0F));
+      it.a($$0, i, new cmj((ih<arl>)arm.lR.get(6), 140, 256.0F));
+      return it.a($$0, j, new cmj((ih<arl>)arm.lR.get(7), 140, 256.0F));
    }
 }

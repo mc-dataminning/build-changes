@@ -1,45 +1,55 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public class eio {
-   private static final BiMap<agt, ein> p = HashBiMap.create();
-   public static final Codec<ein> a = agt.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((ein)p.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         p.inverse()::get
-      );
-   public static final ein b = a("empty", $$0 -> {
-   });
-   public static final ein c = a("chest", $$0 -> $$0.a(eip.f).b(eip.a));
-   public static final ein d = a("command", $$0 -> $$0.a(eip.f).b(eip.a));
-   public static final ein e = a("selector", $$0 -> $$0.a(eip.f).a(eip.a));
-   public static final ein f = a("fishing", $$0 -> $$0.a(eip.f).a(eip.i).b(eip.a));
-   public static final ein g = a("entity", $$0 -> $$0.a(eip.a).a(eip.f).a(eip.c).b(eip.d).b(eip.e).b(eip.b));
-   public static final ein h = a("archaeology", $$0 -> $$0.a(eip.f).b(eip.a));
-   public static final ein i = a("gift", $$0 -> $$0.a(eip.f).a(eip.a));
-   public static final ein j = a("barter", $$0 -> $$0.a(eip.a));
-   public static final ein k = a("advancement_reward", $$0 -> $$0.a(eip.a).a(eip.f));
-   public static final ein l = a("advancement_entity", $$0 -> $$0.a(eip.a).a(eip.f));
-   public static final ein m = a("advancement_location", $$0 -> $$0.a(eip.a).a(eip.f).a(eip.i).a(eip.g));
-   public static final ein n = a("generic", $$0 -> $$0.a(eip.a).a(eip.b).a(eip.c).a(eip.d).a(eip.e).a(eip.f).a(eip.g).a(eip.h).a(eip.i).a(eip.j));
-   public static final ein o = a("block", $$0 -> $$0.a(eip.g).a(eip.f).a(eip.i).b(eip.a).b(eip.h).b(eip.j));
+public class eio extends eib {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<eio> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(ekk.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, eio::new)
+   );
+   private final ekj c;
+   private final boolean d;
 
-   private static ein a(String $$0, Consumer<ein.a> $$1) {
-      ein.a $$2 = new ein.a();
-      $$1.accept($$2);
-      ein $$3 = $$2.a();
-      agt $$4 = new agt($$0);
-      ein $$5 = (ein)p.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+   private eio(List<ejo> $$0, ekj $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   @Override
+   public eid b() {
+      return eie.j;
+   }
+
+   @Override
+   public Set<eix<?>> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public cmr a(cmr $$0, egp $$1) {
+      if ($$0.i()) {
+         int $$2 = $$0.l();
+         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - aui.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(aui.d($$4 * (float)$$2));
       } else {
-         return $$3;
+         b.warn("Couldn't set damage of loot item {}", $$0);
       }
+
+      return $$0;
+   }
+
+   public static eib.a<?> a(ekj $$0) {
+      return a($$1 -> new eio($$1, $$0, false));
+   }
+
+   public static eib.a<?> a(ekj $$0, boolean $$1) {
+      return a($$2 -> new eio($$2, $$0, $$1));
    }
 }

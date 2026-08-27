@@ -1,9 +1,6 @@
-public class pw {
-   public static void a(pa<dzx> $$0) {
-      pg.a($$0);
-      pk.a($$0);
-      pj.a($$0);
-      pc.a($$0);
-      po.a($$0);
+public interface pw {
+   static void a(pc<dzf> $$0) {
+      ii<dyz> $$1 = $$0.a(ke.aD);
+      $$0.a(dys.t, new dzf($$1.b(dyt.H), new dzu(32, 8, dzv.a, 94251327)));
    }
 }

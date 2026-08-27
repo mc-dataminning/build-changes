@@ -1,9 +1,9 @@
-public class fen extends fdc<cjh> {
-   private static final agt y = new agt("container/smoker/lit_progress");
-   private static final agt z = new agt("container/smoker/burn_progress");
-   private static final agt A = new agt("textures/gui/container/smoker.png");
+public class fen extends fdt<ciq> {
+   private static final ahd y = new ahd("container/furnace/lit_progress");
+   private static final ahd z = new ahd("container/furnace/burn_progress");
+   private static final ahd A = new ahd("textures/gui/container/furnace.png");
 
-   public fen(cjh $$0, ceq $$1, vb $$2) {
-      super($$0, new ffy(), $$1, $$2, A, y, z);
+   public fen(ciq $$0, cfa $$1, vd $$2) {
+      super($$0, new fgo(), $$1, $$2, A, y, z);
    }
 }

@@ -1,16 +1,16 @@
 public interface dn {
-   <T> ih<T> a(ags<? extends ir<T>> var1);
+   <T> ij<T> a(ahc<? extends it<T>> var1);
 
-   static dn a(final ih.b $$0, final chb $$1) {
+   static dn a(final ij.b $$0, final chl $$1) {
       return new dn() {
          @Override
-         public <T> ih<T> a(ags<? extends ir<T>> $$0x) {
+         public <T> ij<T> a(ahc<? extends it<T>> $$0x) {
             return $$0.b($$0).a($$1);
          }
       };
    }
 
-   static dn.a a(final is $$0, final chb $$1) {
+   static dn.a a(final iu $$0, final chl $$1) {
       return new dn.a() {
          dn.b c = dn.b.b;
 
@@ -20,13 +20,13 @@ public interface dn {
          }
 
          @Override
-         public <T> ih<T> a(ags<? extends ir<T>> $$0x) {
-            ir<T> $$1 = $$0.d($$0);
-            final ih.c<T> $$2 = $$1.p();
-            final ih.c<T> $$3 = $$1.u();
-            ih.c<T> $$4 = new ih.c.a<T>() {
+         public <T> ij<T> a(ahc<? extends it<T>> $$0x) {
+            it<T> $$1 = $$0.d($$0);
+            final ij.c<T> $$2 = $$1.p();
+            final ij.c<T> $$3 = $$1.u();
+            ij.c<T> $$4 = new ij.c.a<T>() {
                @Override
-               protected ih.c<T> a() {
+               protected ij.c<T> a() {
                   return switch (c) {
                      case b -> $$2;
                      case a -> $$3;

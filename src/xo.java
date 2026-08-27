@@ -1,5 +1,14 @@
-public interface xo {
-   void a(ue var1);
+public record xo(amo a) implements xd<xn> {
+   public xo(ug $$0) {
+      this(new amo($$0));
+   }
 
-   agt a();
+   @Override
+   public void a(ug $$0) {
+      this.a.a($$0);
+   }
+
+   public void a(xn $$0) {
+      $$0.a(this);
+   }
 }

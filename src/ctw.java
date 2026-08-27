@@ -1,23 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
 
 public class ctw {
-   public static final Codec<ctw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jv.aX.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, ctw::new)
-   );
-   private final jt b;
-   private final float c;
+   private final List<ctw.a> a = Lists.newArrayList();
 
-   public ctw(jt $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public void a(hx $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new ctw.a($$0, $$1));
+      }
    }
 
-   public jt a() {
-      return this.b;
+   public double b(hx $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (ctw.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   public boolean a(auf $$0) {
-      return $$0.i() <= this.c;
+   static class a {
+      private final hx a;
+      private final double b;
+
+      public a(hx $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public double a(hx $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

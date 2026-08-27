@@ -1,57 +1,25 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class exd<E extends exd.a<E>> extends ewc<E> {
-   private static final vb a = vb.c("narration.selection.usage");
+public class exd {
+   private static final atu a = atu.codepoint(32, wa.a);
 
-   public exd(euk $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   private static String a(String $$0) {
+      return eva.N().m.I().c() ? $$0 : n.a($$0);
    }
 
-   @Nullable
-   @Override
-   public evt a(fag $$0) {
-      if (this.k() == 0) {
-         return null;
-      } else if (this.aJ_() && $$0 instanceof fag.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? evt.a(this, evt.a($$2)) : null;
-      } else if (!this.aJ_()) {
-         E $$3 = this.f();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : evt.a(this, evt.a($$3));
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   public void b(faa $$0) {
-      E $$1 = this.r();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.f();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aJ_()) {
-         $$0.a(ezz.d, a);
-      }
-   }
-
-   public abstract static class a<E extends exd.a<E>> extends ewc.a<E> implements fab {
-      public abstract vb a();
-
-      @Override
-      public void b(faa $$0) {
-         $$0.a(ezz.a, this.a());
-      }
+   public static List<atu> a(vi $$0, int $$1, ewk $$2) {
+      euq $$3 = new euq();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(vi.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, wa.a);
+      List<atu> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, wa.a, ($$1x, $$2x) -> {
+         atu $$3x = sg.a().a($$1x);
+         $$4.add($$2x ? atu.composite(a, $$3x) : $$3x);
+      });
+      return (List<atu>)($$4.isEmpty() ? Lists.newArrayList(new atu[]{atu.a}) : $$4);
    }
 }

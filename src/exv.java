@@ -1,71 +1,98 @@
-public abstract class exv {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final evu d;
-   protected final auh e;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   protected exv(evu $$0, auh $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class exv extends exe<exv.a> {
+   public exv(eva $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.e = false;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.a() + 2, $$0);
+   public int a(evd<?> $$0) {
+      return this.b(exv.a.a(this.c.m, this.g, $$0));
    }
 
-   public void a(evw $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(fsq.C(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.a() - ($$2 - 2));
-      int $$8 = this.e.b() - $$7;
+   public void a(evd<?> $$0, @Nullable evd<?> $$1) {
+      this.b(exv.a.a(this.c.m, this.g, $$0, $$1));
+   }
 
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         long $$11 = this.e.a($$7 + $$9);
-         $$5 = Math.min($$5, $$11);
-         $$6 = Math.max($$6, $$11);
-         $$4 += $$11;
-         int $$12 = this.b((double)$$11);
-         int $$13 = this.a($$11);
-         $$0.a(fsq.C(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
+   public void a(evd<?>[] $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         this.a($$0[$$1], $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null);
+      }
+   }
+
+   @Override
+   public int b() {
+      return 400;
+   }
+
+   @Override
+   protected int c() {
+      return super.c() + 32;
+   }
+
+   @Nullable
+   public eww b(evd<?> $$0) {
+      for (exv.a $$1 : this.l()) {
+         eww $$2 = $$1.a.get($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
       }
 
-      $$0.a(fsq.C(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(fsq.C(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(fsq.C(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(fsq.C(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$14 = this.a((double)$$5) + " min";
-         String $$15 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$16 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$14, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$15, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$16, $$1 + $$2 - this.d.b($$16) - 2, $$3 - 60 - 9, 14737632);
+      return null;
+   }
+
+   public Optional<eww> e(double $$0, double $$1) {
+      for (exv.a $$2 : this.l()) {
+         for (eww $$3 : $$2.b) {
+            if ($$3.c($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
       }
 
-      this.a($$0, $$1, $$2, $$3);
+      return Optional.empty();
    }
 
-   protected void a(evw $$0, int $$1, int $$2, int $$3) {
-   }
+   protected static class a extends exe.a<exv.a> {
+      final Map<evd<?>, eww> a;
+      final List<eww> b;
 
-   protected void a(evw $$0, String $$1, int $$2, int $$3) {
-      $$0.a(fsq.C(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
+      private a(Map<evd<?>, eww> $$0) {
+         this.a = $$0;
+         this.b = ImmutableList.copyOf($$0.values());
+      }
 
-   protected abstract String a(double var1);
+      public static exv.a a(eve $$0, int $$1, evd<?> $$2) {
+         return new exv.a(ImmutableMap.of($$2, $$2.a($$0, $$1 / 2 - 155, 0, 310)));
+      }
 
-   protected abstract int b(double var1);
+      public static exv.a a(eve $$0, int $$1, evd<?> $$2, @Nullable evd<?> $$3) {
+         eww $$4 = $$2.a($$0, $$1 / 2 - 155, 0, 150);
+         return $$3 == null ? new exv.a(ImmutableMap.of($$2, $$4)) : new exv.a(ImmutableMap.of($$2, $$4, $$3, $$3.a($$0, $$1 / 2 - 155 + 160, 0, 150)));
+      }
 
-   protected abstract int a(long var1);
+      @Override
+      public void a(ewm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.b.forEach($$5x -> {
+            $$5x.o($$2);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
 
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = aty.a($$0, $$1, $$5);
-      return $$0 < $$3 ? ati.b.a((float)($$0 / ($$3 - $$1)), $$2, $$4) : ati.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+      @Override
+      public List<? extends eyt> l() {
+         return this.b;
+      }
+
+      @Override
+      public List<? extends fap> a() {
+         return this.b;
+      }
    }
 }

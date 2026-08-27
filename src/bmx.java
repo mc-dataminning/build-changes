@@ -1,194 +1,65 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class bmx {
-   private final bmw a;
-   private final Map<bmz.a, Set<bmz>> b = Maps.newEnumMap(bmz.a.class);
-   private final Map<UUID, bmz> c = new Object2ObjectArrayMap();
-   private final Set<bmz> d = new ObjectArraySet();
-   private double e;
-   private boolean f = true;
-   private double g;
-   private final Consumer<bmx> h;
-
-   public bmx(bmw $$0, Consumer<bmx> $$1) {
-      this.a = $$0;
-      this.h = $$1;
-      this.e = $$0.a();
-   }
-
-   public bmw a() {
-      return this.a;
-   }
-
-   public double b() {
-      return this.e;
-   }
-
-   public void a(double $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.d();
+public interface bmx {
+   bmx b = new bmx() {
+      @Override
+      public cmr a() {
+         return cmr.f;
       }
-   }
 
-   public Set<bmz> a(bmz.a $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
-   }
-
-   public Set<bmz> c() {
-      return ImmutableSet.copyOf(this.c.values());
-   }
-
-   @Nullable
-   public bmz a(UUID $$0) {
-      return this.c.get($$0);
-   }
-
-   public boolean a(bmz $$0) {
-      return this.c.get($$0.a()) != null;
-   }
-
-   private void d(bmz $$0) {
-      bmz $$1 = this.c.putIfAbsent($$0.a(), $$0);
-      if ($$1 != null) {
-         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
-      } else {
-         this.a($$0.b()).add($$0);
-         this.d();
-      }
-   }
-
-   public void b(bmz $$0) {
-      this.d($$0);
-   }
-
-   public void c(bmz $$0) {
-      this.d($$0);
-      this.d.add($$0);
-   }
-
-   protected void d() {
-      this.f = true;
-      this.h.accept(this);
-   }
-
-   private void e(bmz $$0) {
-      this.a($$0.b()).remove($$0);
-      this.c.remove($$0.a());
-      this.d.remove($$0);
-      this.d();
-   }
-
-   public void b(UUID $$0) {
-      bmz $$1 = this.a($$0);
-      if ($$1 != null) {
-         this.e($$1);
-      }
-   }
-
-   public boolean c(UUID $$0) {
-      bmz $$1 = this.a($$0);
-      if ($$1 != null && this.d.contains($$1)) {
-         this.e($$1);
-         return true;
-      } else {
+      @Override
+      public boolean a(cmr $$0) {
          return false;
       }
-   }
+   };
 
-   public void e() {
-      for (bmz $$0 : this.c()) {
-         this.e($$0);
-      }
-   }
-
-   public double f() {
-      if (this.f) {
-         this.g = this.h();
-         this.f = false;
-      }
-
-      return this.g;
-   }
-
-   private double h() {
-      double $$0 = this.b();
-
-      for (bmz $$1 : this.b(bmz.a.a)) {
-         $$0 += $$1.c();
-      }
-
-      double $$2 = $$0;
-
-      for (bmz $$3 : this.b(bmz.a.b)) {
-         $$2 += $$0 * $$3.c();
-      }
-
-      for (bmz $$4 : this.b(bmz.a.c)) {
-         $$2 *= 1.0 + $$4.c();
-      }
-
-      return this.a.a($$2);
-   }
-
-   private Collection<bmz> b(bmz.a $$0) {
-      return this.b.getOrDefault($$0, Collections.emptySet());
-   }
-
-   public void a(bmx $$0) {
-      this.e = $$0.e;
-      this.c.clear();
-      this.c.putAll($$0.c);
-      this.d.clear();
-      this.d.addAll($$0.d);
-      this.b.clear();
-      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
-      this.d();
-   }
-
-   public sj g() {
-      sj $$0 = new sj();
-      $$0.a("Name", kb.u.b(this.a).toString());
-      $$0.a("Base", this.e);
-      if (!this.d.isEmpty()) {
-         sp $$1 = new sp();
-
-         for (bmz $$2 : this.d) {
-            $$1.add($$2.d());
+   static bmx a(final bjo $$0, final int $$1, final Predicate<cmr> $$2) {
+      return new bmx() {
+         @Override
+         public cmr a() {
+            return $$0.a($$1);
          }
 
-         $$0.a("Modifiers", $$1);
-      }
-
-      return $$0;
-   }
-
-   public void a(sj $$0) {
-      this.e = $$0.k("Base");
-      if ($$0.b("Modifiers", 9)) {
-         sp $$1 = $$0.c("Modifiers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            bmz $$3 = bmz.a($$1.a($$2));
-            if ($$3 != null) {
-               this.c.put($$3.a(), $$3);
-               this.a($$3.b()).add($$3);
-               this.d.add($$3);
+         @Override
+         public boolean a(cmr $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
             }
          }
-      }
-
-      this.d();
+      };
    }
+
+   static bmx a(bjo $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   static bmx a(final bmf $$0, final blu $$1, final Predicate<cmr> $$2) {
+      return new bmx() {
+         @Override
+         public cmr a() {
+            return $$0.c($$1);
+         }
+
+         @Override
+         public boolean a(cmr $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
+   }
+
+   static bmx a(bmf $$0, blu $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   cmr a();
+
+   boolean a(cmr var1);
 }

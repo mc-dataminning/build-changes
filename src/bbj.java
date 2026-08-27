@@ -1,12 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class bbj {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
-      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
-      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
-      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
-      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
-      .build();
+public class bbj extends avu {
+   private final Predicate<String> a;
+
+   public bbj(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, $$1);
+      this.a = $$2.negate();
+   }
+
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.filter(this::a);
+   }
+
+   private <T> boolean a(Dynamic<T> $$0) {
+      return $$0.get("type").asString().result().filter(this.a).isPresent();
+   }
 }

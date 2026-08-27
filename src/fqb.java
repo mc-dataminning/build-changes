@@ -1,78 +1,66 @@
-public class fqb extends fqw {
-   private final fqr a;
+import org.joml.Vector3f;
 
-   fqb(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqr $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.a = $$7;
-      float $$8 = 2.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
-      this.v = $$9;
-      this.w = $$9;
-      this.x = $$9;
-      this.D *= 1.875F;
-      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
-      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
+public class fqb extends frn {
+   private final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F);
+   private final Vector3f b = new Vector3f(1.0F, 1.0F, 1.0F);
+
+   fqb(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
       this.n = false;
-      this.b($$7);
+      this.j = $$4 + (double)aui.b(this.r, -0.4F, 0.4F);
+      this.l = $$6 + (double)aui.b(this.r, -0.4F, 0.4F);
+      double $$7 = Math.random() * 2.0;
+      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
+      this.j = this.j / $$8 * $$7 * 0.4F;
+      this.l = this.l / $$8 * $$7 * 0.4F;
+      this.D *= 2.5F;
+      this.j *= 0.08F;
+      this.l *= 0.08F;
+      this.t = 18 + this.r.a(4);
    }
 
    @Override
-   public fqa b() {
-      return fqa.c;
+   public void a(epx $$0, eul $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)(this.t + 1);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * aty.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public fqr b() {
+      return fqr.c;
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         cer $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
-         if ($$0 != null) {
-            double $$1 = $$0.dt();
-            if (this.h > $$1) {
-               this.h = this.h + ($$1 - this.h) * 0.2;
-               this.k = this.k + ($$0.dp().d - this.k) * 0.2;
-               this.c(this.g, this.h, this.i);
-            }
-         }
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.d = this.g;
+         this.f = this.i;
+         this.a(this.j, 0.0, this.l);
+         this.j *= 0.99;
+         this.l *= 0.99;
       }
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+   public static class a implements fqq<ka> {
+      private final fri a;
 
-      public a(fqr $$0) {
+      public a(fri $$0) {
          this.a = $$0;
       }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements fpz<jy> {
-      private final fqr a;
-
-      public b(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpw $$8 = new fqb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(200.0F, 50.0F, 120.0F);
-         $$8.e(0.4F);
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqb $$8 = new fqb($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
          return $$8;
       }
    }

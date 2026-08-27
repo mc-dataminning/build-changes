@@ -1,320 +1,111 @@
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
+import java.util.List;
 
-public abstract class edn<M extends edk<M>> {
-   private final cth i;
-   protected final dkz a;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   protected volatile M c;
-   protected final M d;
-   protected final LongSet e = new LongOpenHashSet();
-   protected final LongSet f = new LongOpenHashSet();
-   protected final Long2ObjectMap<dkr> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
-   private final LongSet k = new LongOpenHashSet();
-   private final LongSet l = new LongOpenHashSet();
-   protected volatile boolean h;
+public class edn {
+   private static final double a = 1.0181268882175227;
+   private static final double b = 0.3333333333333333;
+   private final double c;
+   private final edo d;
+   private final edo e;
+   private final double f;
+   private final edn.a g;
 
-   protected edn(cth $$0, dkz $$1, M $$2) {
-      this.i = $$0;
-      this.a = $$1;
-      this.d = $$2;
-      this.c = $$2.b();
-      this.c.d();
-      this.b.defaultReturnValue((byte)0);
+   @Deprecated
+   public static edn a(aup $$0, edn.a $$1) {
+      return new edn($$0, $$1, false);
    }
 
-   protected boolean b(long $$0) {
-      return this.a($$0, true) != null;
+   public static edn a(aup $$0, int $$1, double... $$2) {
+      return b($$0, new edn.a($$1, new DoubleArrayList($$2)));
    }
 
-   @Nullable
-   protected dkr a(long $$0, boolean $$1) {
-      return this.a($$1 ? this.d : this.c, $$0);
+   public static edn b(aup $$0, edn.a $$1) {
+      return new edn($$0, $$1, true);
    }
 
-   @Nullable
-   protected dkr a(M $$0, long $$1) {
-      return $$0.c($$1);
-   }
-
-   @Nullable
-   protected dkr c(long $$0) {
-      dkr $$1 = this.d.c($$0);
-      if ($$1 == null) {
-         return null;
+   private edn(aup $$0, edn.a $$1, boolean $$2) {
+      int $$3 = $$1.c;
+      DoubleList $$4 = $$1.d;
+      this.g = $$1;
+      if ($$2) {
+         this.d = edo.b($$0, $$3, $$4);
+         this.e = edo.b($$0, $$3, $$4);
       } else {
-         if (this.e.add($$0)) {
-            $$1 = $$1.b();
-            this.d.a($$0, $$1);
-            this.d.c();
-         }
-
-         return $$1;
-      }
-   }
-
-   @Nullable
-   public dkr d(long $$0) {
-      dkr $$1 = (dkr)this.g.get($$0);
-      return $$1 != null ? $$1 : this.a($$0, false);
-   }
-
-   protected abstract int a(long var1);
-
-   protected int e(long $$0) {
-      long $$1 = ix.e($$0);
-      dkr $$2 = this.a($$1, true);
-      return $$2.a(ix.b(hv.a($$0)), ix.b(hv.b($$0)), ix.b(hv.c($$0)));
-   }
-
-   protected void a(long $$0, int $$1) {
-      long $$2 = ix.e($$0);
-      dkr $$3;
-      if (this.e.add($$2)) {
-         $$3 = this.d.a($$2);
-      } else {
-         $$3 = this.a($$2, true);
+         this.d = edo.a($$0, $$3, $$4);
+         this.e = edo.a($$0, $$3, $$4);
       }
 
-      $$3.a(ix.b(hv.a($$0)), ix.b(hv.b($$0)), ix.b(hv.c($$0)), $$1);
-      ix.a($$0, this.f::add);
-   }
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = Integer.MIN_VALUE;
+      DoubleListIterator $$7 = $$4.iterator();
 
-   protected void f(long $$0) {
-      int $$1 = ix.b($$0);
-      int $$2 = ix.c($$0);
-      int $$3 = ix.d($$0);
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               this.f.add(ix.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
-            }
-         }
-      }
-   }
-
-   protected dkr g(long $$0) {
-      dkr $$1 = (dkr)this.g.get($$0);
-      return $$1 != null ? $$1 : new dkr();
-   }
-
-   protected boolean a() {
-      return this.h;
-   }
-
-   protected void a(edq<M, ?> $$0) {
-      if (this.h) {
-         this.h = false;
-         LongIterator $$5 = this.l.iterator();
-
-         while ($$5.hasNext()) {
-            long $$1 = (Long)$$5.next();
-            dkr $$2 = (dkr)this.g.remove($$1);
-            dkr $$3 = this.d.d($$1);
-            if (this.k.contains(ix.f($$1))) {
-               if ($$2 != null) {
-                  this.g.put($$1, $$2);
-               } else if ($$3 != null) {
-                  this.g.put($$1, $$3);
-               }
-            }
-         }
-
-         this.d.c();
-         $$5 = this.l.iterator();
-
-         while ($$5.hasNext()) {
-            long $$4 = (Long)$$5.next();
-            this.i($$4);
-            this.e.add($$4);
-         }
-
-         this.l.clear();
-         ObjectIterator<Entry<dkr>> $$5x = Long2ObjectMaps.fastIterator(this.g);
-
-         while ($$5x.hasNext()) {
-            Entry<dkr> $$6 = (Entry<dkr>)$$5x.next();
-            long $$7 = $$6.getLongKey();
-            if (this.b($$7)) {
-               dkr $$8 = (dkr)$$6.getValue();
-               if (this.d.c($$7) != $$8) {
-                  this.d.a($$7, $$8);
-                  this.e.add($$7);
-               }
-
-               $$5x.remove();
-            }
-         }
-
-         this.d.c();
-      }
-   }
-
-   protected void h(long $$0) {
-   }
-
-   protected void i(long $$0) {
-   }
-
-   protected void b(long $$0, boolean $$1) {
-      if ($$1) {
-         this.j.add($$0);
-      } else {
-         this.j.remove($$0);
-      }
-   }
-
-   protected boolean j(long $$0) {
-      long $$1 = ix.f($$0);
-      return this.j.contains($$1);
-   }
-
-   public void c(long $$0, boolean $$1) {
-      if ($$1) {
-         this.k.add($$0);
-      } else {
-         this.k.remove($$0);
-      }
-   }
-
-   protected void a(long $$0, @Nullable dkr $$1) {
-      if ($$1 != null) {
-         this.g.put($$0, $$1);
-         this.h = true;
-      } else {
-         this.g.remove($$0);
-      }
-   }
-
-   protected void d(long $$0, boolean $$1) {
-      byte $$2 = this.b.get($$0);
-      byte $$3 = edn.a.a($$2, !$$1);
-      if ($$2 != $$3) {
-         this.a($$0, $$3);
-         int $$4 = $$1 ? -1 : 1;
-
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               for (int $$7 = -1; $$7 <= 1; $$7++) {
-                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
-                     long $$8 = ix.a($$0, $$5, $$6, $$7);
-                     byte $$9 = this.b.get($$8);
-                     this.a($$8, edn.a.a($$9, edn.a.b($$9) + $$4));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(long $$0, byte $$1) {
-      if ($$1 != 0) {
-         if (this.b.put($$0, $$1) == 0) {
-            this.l($$0);
-         }
-      } else if (this.b.remove($$0) != 0) {
-         this.m($$0);
-      }
-   }
-
-   private void l(long $$0) {
-      if (!this.l.remove($$0)) {
-         this.d.a($$0, this.g($$0));
-         this.e.add($$0);
-         this.h($$0);
-         this.f($$0);
-         this.h = true;
-      }
-   }
-
-   private void m(long $$0) {
-      this.l.add($$0);
-      this.h = true;
-   }
-
-   protected void b() {
-      if (!this.e.isEmpty()) {
-         M $$0 = this.d.b();
-         $$0.d();
-         this.c = $$0;
-         this.e.clear();
-      }
-
-      if (!this.f.isEmpty()) {
-         LongIterator $$1 = this.f.iterator();
-
-         while ($$1.hasNext()) {
-            long $$2 = $$1.nextLong();
-            this.a.a(this.i, ix.a($$2));
-         }
-
-         this.f.clear();
-      }
-   }
-
-   public edn.b k(long $$0) {
-      return edn.a.c(this.b.get($$0));
-   }
-
-   protected static class a {
-      public static final byte a = 0;
-      private static final int b = 0;
-      private static final int c = 26;
-      private static final byte d = 32;
-      private static final byte e = 31;
-
-      public static byte a(byte $$0, boolean $$1) {
-         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
-      }
-
-      public static byte a(byte $$0, int $$1) {
-         if ($$1 >= 0 && $$1 <= 26) {
-            return (byte)($$0 & -32 | $$1 & 31);
-         } else {
-            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
+      while ($$7.hasNext()) {
+         int $$8 = $$7.nextIndex();
+         double $$9 = $$7.nextDouble();
+         if ($$9 != 0.0) {
+            $$5 = Math.min($$5, $$8);
+            $$6 = Math.max($$6, $$8);
          }
       }
 
-      public static boolean a(byte $$0) {
-         return ($$0 & 32) != 0;
-      }
-
-      public static int b(byte $$0) {
-         return $$0 & 31;
-      }
-
-      public static edn.b c(byte $$0) {
-         if ($$0 == 0) {
-            return edn.b.a;
-         } else {
-            return a($$0) ? edn.b.c : edn.b.b;
-         }
-      }
+      this.c = 0.16666666666666666 / a($$6 - $$5);
+      this.f = (this.d.a() + this.e.a()) * this.c;
    }
 
-   public static enum b {
-      a("2"),
-      b("1"),
-      c("0");
+   public double a() {
+      return this.f;
+   }
 
-      private final String d;
+   private static double a(int $$0) {
+      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
+   }
 
-      private b(String $$0) {
-         this.d = $$0;
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 * 1.0181268882175227;
+      double $$4 = $$1 * 1.0181268882175227;
+      double $$5 = $$2 * 1.0181268882175227;
+      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   }
+
+   public edn.a b() {
+      return this.g;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("NormalNoise {");
+      $$0.append("first: ");
+      this.d.a($$0);
+      $$0.append(", second: ");
+      this.e.a($$0);
+      $$0.append("}");
+   }
+
+   public static record a(int c, DoubleList d) {
+      public static final Codec<edn.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(edn.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(edn.a::b))
+               .apply($$0, edn.a::new)
+      );
+      public static final Codec<ih<edn.a>> b = agz.a(ke.aB, a);
+
+      public a(int $$0, List<Double> $$1) {
+         this($$0, new DoubleArrayList($$1));
       }
 
-      public String a() {
+      public a(int $$0, double $$1, double... $$2) {
+         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public DoubleList b() {
          return this.d;
       }
    }

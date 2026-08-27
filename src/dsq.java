@@ -1,56 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class dsq extends drc<due> {
-   public dsq(Codec<due> $$0) {
+public class dsq extends drn<dtz> {
+   private static final int a = 7;
+
+   dsq(Codec<dtz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<due> $$0) {
-      ctt $$1 = $$0.b();
-      hv $$2 = $$0.e();
-      due $$3 = $$0.f();
-      auf $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         hv $$6 = $$2.h($$5.getAsInt());
-         iz $$7 = new iz($$3.c, $$3.c, $$3.c);
-         dyg $$8 = dyg.a($$6.b($$7), $$6.a($$7));
-         return hv.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, cwb.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+   public boolean a(drp<dtz> $$0) {
+      cud $$1 = $$0.b();
+      aup $$2 = $$0.d();
+      dtz $$3 = $$0.f();
+      hx $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      hx.a $$6 = new hx.a();
 
-   private static OptionalInt a(ctt $$0, hv $$1, due $$2) {
-      Predicate<dip> $$3 = $$0x -> $$0x.a(cwb.G);
-      Predicate<dip> $$4 = $$0x -> !$$0x.a(cwb.G);
-      Optional<dno> $$5 = dno.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dno::c).orElseGet(OptionalInt::empty);
-   }
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dja $$8 = $$1.a_($$6);
 
-   private boolean b(ctt $$0, hv $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (ia $$2 : ia.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+         for (dtz.a $$9 : $$3.b) {
+            if (dsi.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 
-   private boolean a(csz $$0, hv $$1) {
-      dip $$2 = $$0.a_($$1);
-      return $$2.a(cwb.G) || $$2.i();
+   private void a(hx.a $$0, aup $$1, hx $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(aup $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

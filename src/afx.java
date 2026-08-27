@@ -1,15 +1,5 @@
-public class afx implements wu<afv> {
-   public afx() {
-   }
-
-   public afx(ue $$0) {
-   }
-
+public record afx(ahd a) implements afv {
    @Override
-   public void a(ue $$0) {
-   }
-
-   public void a(afv $$0) {
-      $$0.a(this);
+   public void a(ug $$0) {
    }
 }

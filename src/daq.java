@@ -1,41 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class daq extends czu {
-   public static final MapCodec<daq> a = b(daq::new);
-   private static final vb b = vb.c("container.loom");
+public class daq extends cvc {
+   public static final MapCodec<daq> d = b(daq::new);
 
    @Override
    public MapCodec<daq> a() {
-      return a;
+      return d;
    }
 
-   protected daq(dio.d $$0) {
-      super($$0);
+   public daq(diz.d $$0) {
+      super($$0, jd.e);
    }
 
    @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      if ($$1.B) {
-         return bjl.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(arm.ax);
-         return bjl.b;
+   protected double b(dja $$0) {
+      return 0.9375;
+   }
+
+   @Override
+   public boolean d(dja $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dja $$0, cti $$1, hx $$2, blp $$3) {
+      if (this.a($$0, $$2, $$3)) {
+         $$3.ay();
       }
    }
 
    @Override
-   public bjo b(dip $$0, csy $$1, hv $$2) {
-      return new bju(($$2x, $$3, $$4) -> new cip($$2x, $$3, chv.a($$1, $$2)), b);
-   }
-
-   @Override
-   public dip a(coq $$0) {
-      return this.o().a(aE, $$0.g().g());
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(aE);
+   public int a(dja $$0, cti $$1, hx $$2) {
+      return 3;
    }
 }

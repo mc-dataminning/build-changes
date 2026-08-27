@@ -1,83 +1,78 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class ehu extends ehq {
-   public static final int a = 0;
-   public static final Codec<ehu> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(ejz.a.fieldOf("count").forGetter($$0x -> $$0x.c), atg.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
-            .apply($$0, ehu::new)
-   );
-   private final ejy c;
-   private final int d;
+public class ehu extends eib {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Codec<il<crc>> c = kd.f.r().listOf().xmap(il::a, $$0 -> $$0.a().toList());
+   public static final Codec<ehu> a = RecordCodecBuilder.create($$0 -> a($$0).and(atq.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, ehu::new));
+   private final Optional<il<crc>> d;
 
-   ehu(List<ejd> $$0, ejy $$1, int $$2) {
+   ehu(List<ejo> $$0, Optional<il<crc>> $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.d = $$1;
    }
 
    @Override
-   public ehs b() {
-      return eht.i;
+   public eid b() {
+      return eie.e;
    }
 
    @Override
-   public Set<eim<?>> a() {
-      return Sets.union(ImmutableSet.of(eip.d), this.c.a());
+   public cmr a(cmr $$0, egp $$1) {
+      aup $$2 = $$1.b();
+      Optional<ih<crc>> $$3 = this.d.<ih<crc>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
+         boolean $$2x = $$0.a(cmu.qM);
+         List<ih.c<crc>> $$3x = kd.f.h().filter($$0xx -> ((crc)$$0xx.a()).i()).filter($$2xx -> $$2x || ((crc)$$2xx.a()).a($$0)).toList();
+         return ac.b($$3x, $$2);
+      });
+      if ($$3.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
+         return $$0;
+      } else {
+         return a($$0, $$3.get().a(), $$2);
+      }
    }
 
-   private boolean c() {
-      return this.d > 0;
-   }
-
-   @Override
-   public cmh a(cmh $$0, ege $$1) {
-      blf $$2 = $$1.c(eip.d);
-      if ($$2 instanceof blv) {
-         int $$3 = cqu.h((blv)$$2);
-         if ($$3 == 0) {
-            return $$0;
-         }
-
-         float $$4 = (float)$$3 * this.c.b($$1);
-         $$0.g(Math.round($$4));
-         if (this.c() && $$0.L() > this.d) {
-            $$0.f(this.d);
-         }
+   private static cmr a(cmr $$0, crc $$1, aup $$2) {
+      int $$3 = aui.a($$2, $$1.e(), $$1.a());
+      if ($$0.a(cmu.qM)) {
+         $$0 = new cmr(cmu.up);
+         cln.a($$0, new crf($$1, $$3));
+      } else {
+         $$0.a($$1, $$3);
       }
 
       return $$0;
    }
 
-   public static ehu.a a(ejy $$0) {
-      return new ehu.a($$0);
+   public static ehu.a c() {
+      return new ehu.a();
    }
 
-   public static class a extends ehq.a<ehu.a> {
-      private final ejy a;
-      private int b = 0;
+   public static eib.a<?> d() {
+      return a($$0 -> new ehu($$0, Optional.empty()));
+   }
 
-      public a(ejy $$0) {
-         this.a = $$0;
-      }
+   public static class a extends eib.a<ehu.a> {
+      private final List<ih<crc>> a = new ArrayList<>();
 
       protected ehu.a a() {
          return this;
       }
 
-      public ehu.a a(int $$0) {
-         this.b = $$0;
+      public ehu.a a(crc $$0) {
+         this.a.add($$0.j());
          return this;
       }
 
       @Override
-      public ehr b() {
-         return new ehu(this.g(), this.a, this.b);
+      public eic b() {
+         return new ehu(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(il.a(this.a)));
       }
    }
 }

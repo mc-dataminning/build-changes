@@ -1,181 +1,106 @@
-public final class arr {
-   public static final asg<cvz> a = a("wool");
-   public static final asg<cvz> b = a("planks");
-   public static final asg<cvz> c = a("stone_bricks");
-   public static final asg<cvz> d = a("wooden_buttons");
-   public static final asg<cvz> e = a("stone_buttons");
-   public static final asg<cvz> f = a("buttons");
-   public static final asg<cvz> g = a("wool_carpets");
-   public static final asg<cvz> h = a("wooden_doors");
-   public static final asg<cvz> i = a("wooden_stairs");
-   public static final asg<cvz> j = a("wooden_slabs");
-   public static final asg<cvz> k = a("wooden_fences");
-   public static final asg<cvz> l = a("pressure_plates");
-   public static final asg<cvz> m = a("wooden_pressure_plates");
-   public static final asg<cvz> n = a("stone_pressure_plates");
-   public static final asg<cvz> o = a("wooden_trapdoors");
-   public static final asg<cvz> p = a("doors");
-   public static final asg<cvz> q = a("saplings");
-   public static final asg<cvz> r = a("logs_that_burn");
-   public static final asg<cvz> s = a("overworld_natural_logs");
-   public static final asg<cvz> t = a("logs");
-   public static final asg<cvz> u = a("dark_oak_logs");
-   public static final asg<cvz> v = a("oak_logs");
-   public static final asg<cvz> w = a("birch_logs");
-   public static final asg<cvz> x = a("acacia_logs");
-   public static final asg<cvz> y = a("cherry_logs");
-   public static final asg<cvz> z = a("jungle_logs");
-   public static final asg<cvz> A = a("spruce_logs");
-   public static final asg<cvz> B = a("mangrove_logs");
-   public static final asg<cvz> C = a("crimson_stems");
-   public static final asg<cvz> D = a("warped_stems");
-   public static final asg<cvz> E = a("bamboo_blocks");
-   public static final asg<cvz> F = a("wart_blocks");
-   public static final asg<cvz> G = a("banners");
-   public static final asg<cvz> H = a("sand");
-   public static final asg<cvz> I = a("smelts_to_glass");
-   public static final asg<cvz> J = a("stairs");
-   public static final asg<cvz> K = a("slabs");
-   public static final asg<cvz> L = a("walls");
-   public static final asg<cvz> M = a("anvil");
-   public static final asg<cvz> N = a("rails");
-   public static final asg<cvz> O = a("leaves");
-   public static final asg<cvz> P = a("trapdoors");
-   public static final asg<cvz> Q = a("small_flowers");
-   public static final asg<cvz> R = a("beds");
-   public static final asg<cvz> S = a("fences");
-   public static final asg<cvz> T = a("tall_flowers");
-   public static final asg<cvz> U = a("flowers");
-   public static final asg<cvz> V = a("piglin_repellents");
-   public static final asg<cvz> W = a("gold_ores");
-   public static final asg<cvz> X = a("iron_ores");
-   public static final asg<cvz> Y = a("diamond_ores");
-   public static final asg<cvz> Z = a("redstone_ores");
-   public static final asg<cvz> aa = a("lapis_ores");
-   public static final asg<cvz> ab = a("coal_ores");
-   public static final asg<cvz> ac = a("emerald_ores");
-   public static final asg<cvz> ad = a("copper_ores");
-   public static final asg<cvz> ae = a("candles");
-   public static final asg<cvz> af = a("dirt");
-   public static final asg<cvz> ag = a("terracotta");
-   public static final asg<cvz> ah = a("concrete_powder");
-   public static final asg<cvz> ai = a("completes_find_tree_tutorial");
-   public static final asg<cvz> aj = a("flower_pots");
-   public static final asg<cvz> ak = a("enderman_holdable");
-   public static final asg<cvz> al = a("ice");
-   public static final asg<cvz> am = a("valid_spawn");
-   public static final asg<cvz> an = a("impermeable");
-   public static final asg<cvz> ao = a("underwater_bonemeals");
-   public static final asg<cvz> ap = a("coral_blocks");
-   public static final asg<cvz> aq = a("wall_corals");
-   public static final asg<cvz> ar = a("coral_plants");
-   public static final asg<cvz> as = a("corals");
-   public static final asg<cvz> at = a("bamboo_plantable_on");
-   public static final asg<cvz> au = a("standing_signs");
-   public static final asg<cvz> av = a("wall_signs");
-   public static final asg<cvz> aw = a("signs");
-   public static final asg<cvz> ax = a("ceiling_hanging_signs");
-   public static final asg<cvz> ay = a("wall_hanging_signs");
-   public static final asg<cvz> az = a("all_hanging_signs");
-   public static final asg<cvz> aA = a("all_signs");
-   public static final asg<cvz> aB = a("dragon_immune");
-   public static final asg<cvz> aC = a("dragon_transparent");
-   public static final asg<cvz> aD = a("wither_immune");
-   public static final asg<cvz> aE = a("wither_summon_base_blocks");
-   public static final asg<cvz> aF = a("beehives");
-   public static final asg<cvz> aG = a("crops");
-   public static final asg<cvz> aH = a("bee_growables");
-   public static final asg<cvz> aI = a("portals");
-   public static final asg<cvz> aJ = a("fire");
-   public static final asg<cvz> aK = a("nylium");
-   public static final asg<cvz> aL = a("beacon_base_blocks");
-   public static final asg<cvz> aM = a("soul_speed_blocks");
-   public static final asg<cvz> aN = a("wall_post_override");
-   public static final asg<cvz> aO = a("climbable");
-   public static final asg<cvz> aP = a("fall_damage_resetting");
-   public static final asg<cvz> aQ = a("shulker_boxes");
-   public static final asg<cvz> aR = a("hoglin_repellents");
-   public static final asg<cvz> aS = a("soul_fire_base_blocks");
-   public static final asg<cvz> aT = a("strider_warm_blocks");
-   public static final asg<cvz> aU = a("campfires");
-   public static final asg<cvz> aV = a("guarded_by_piglins");
-   public static final asg<cvz> aW = a("prevent_mob_spawning_inside");
-   public static final asg<cvz> aX = a("fence_gates");
-   public static final asg<cvz> aY = a("unstable_bottom_center");
-   public static final asg<cvz> aZ = a("mushroom_grow_block");
-   public static final asg<cvz> ba = a("infiniburn_overworld");
-   public static final asg<cvz> bb = a("infiniburn_nether");
-   public static final asg<cvz> bc = a("infiniburn_end");
-   public static final asg<cvz> bd = a("base_stone_overworld");
-   public static final asg<cvz> be = a("stone_ore_replaceables");
-   public static final asg<cvz> bf = a("deepslate_ore_replaceables");
-   public static final asg<cvz> bg = a("base_stone_nether");
-   public static final asg<cvz> bh = a("overworld_carver_replaceables");
-   public static final asg<cvz> bi = a("nether_carver_replaceables");
-   public static final asg<cvz> bj = a("candle_cakes");
-   public static final asg<cvz> bk = a("cauldrons");
-   public static final asg<cvz> bl = a("crystal_sound_blocks");
-   public static final asg<cvz> bm = a("inside_step_sound_blocks");
-   public static final asg<cvz> bn = a("combination_step_sound_blocks");
-   public static final asg<cvz> bo = a("camel_sand_step_sound_blocks");
-   public static final asg<cvz> bp = a("occludes_vibration_signals");
-   public static final asg<cvz> bq = a("dampens_vibrations");
-   public static final asg<cvz> br = a("dripstone_replaceable_blocks");
-   public static final asg<cvz> bs = a("cave_vines");
-   public static final asg<cvz> bt = a("moss_replaceable");
-   public static final asg<cvz> bu = a("lush_ground_replaceable");
-   public static final asg<cvz> bv = a("azalea_root_replaceable");
-   public static final asg<cvz> bw = a("small_dripleaf_placeable");
-   public static final asg<cvz> bx = a("big_dripleaf_placeable");
-   public static final asg<cvz> by = a("snow");
-   public static final asg<cvz> bz = a("mineable/axe");
-   public static final asg<cvz> bA = a("mineable/hoe");
-   public static final asg<cvz> bB = a("mineable/pickaxe");
-   public static final asg<cvz> bC = a("mineable/shovel");
-   public static final asg<cvz> bD = a("sword_efficient");
-   public static final asg<cvz> bE = a("needs_diamond_tool");
-   public static final asg<cvz> bF = a("needs_iron_tool");
-   public static final asg<cvz> bG = a("needs_stone_tool");
-   public static final asg<cvz> bH = a("features_cannot_replace");
-   public static final asg<cvz> bI = a("lava_pool_stone_cannot_replace");
-   public static final asg<cvz> bJ = a("geode_invalid_blocks");
-   public static final asg<cvz> bK = a("frog_prefer_jump_to");
-   public static final asg<cvz> bL = a("sculk_replaceable");
-   public static final asg<cvz> bM = a("sculk_replaceable_world_gen");
-   public static final asg<cvz> bN = a("ancient_city_replaceable");
-   public static final asg<cvz> bO = a("vibration_resonators");
-   public static final asg<cvz> bP = a("animals_spawnable_on");
-   public static final asg<cvz> bQ = a("axolotls_spawnable_on");
-   public static final asg<cvz> bR = a("goats_spawnable_on");
-   public static final asg<cvz> bS = a("mooshrooms_spawnable_on");
-   public static final asg<cvz> bT = a("parrots_spawnable_on");
-   public static final asg<cvz> bU = a("polar_bears_spawnable_on_alternate");
-   public static final asg<cvz> bV = a("rabbits_spawnable_on");
-   public static final asg<cvz> bW = a("foxes_spawnable_on");
-   public static final asg<cvz> bX = a("wolves_spawnable_on");
-   public static final asg<cvz> bY = a("frogs_spawnable_on");
-   public static final asg<cvz> bZ = a("azalea_grows_on");
-   public static final asg<cvz> ca = a("convertable_to_mud");
-   public static final asg<cvz> cb = a("mangrove_logs_can_grow_through");
-   public static final asg<cvz> cc = a("mangrove_roots_can_grow_through");
-   public static final asg<cvz> cd = a("dead_bush_may_place_on");
-   public static final asg<cvz> ce = a("snaps_goat_horn");
-   public static final asg<cvz> cf = a("replaceable_by_trees");
-   public static final asg<cvz> cg = a("snow_layer_cannot_survive_on");
-   public static final asg<cvz> ch = a("snow_layer_can_survive_on");
-   public static final asg<cvz> ci = a("invalid_spawn_inside");
-   public static final asg<cvz> cj = a("sniffer_diggable_block");
-   public static final asg<cvz> ck = a("sniffer_egg_hatch_boost");
-   public static final asg<cvz> cl = a("trail_ruins_replaceable");
-   public static final asg<cvz> cm = a("replaceable");
-   public static final asg<cvz> cn = a("enchantment_power_provider");
-   public static final asg<cvz> co = a("enchantment_power_transmitter");
-   public static final asg<cvz> cp = a("maintains_farmland");
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   private arr() {
+public class arr extends arp {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
+
+   public int a(Collection<cpx<?>> $$0, ana $$1) {
+      List<ahd> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cpx<?> $$4 : $$0) {
+         ahd $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().aq_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            am.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(abe.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   private static asg<cvz> a(String $$0) {
-      return asg.a(kc.f, new agt($$0));
+   public int b(Collection<cpx<?>> $$0, ana $$1) {
+      List<ahd> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cpx<?> $$4 : $$0) {
+         ahd $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(abe.a.c, $$1, $$2);
+      return $$3;
+   }
+
+   private void a(abe.a $$0, ana $$1, List<ahd> $$2) {
+      $$1.c.b(new abe($$0, $$2, Collections.emptyList(), this.a()));
+   }
+
+   public sl b() {
+      sl $$0 = new sl();
+      this.a().b($$0);
+      sr $$1 = new sr();
+
+      for (ahd $$2 : this.a) {
+         $$1.add(tg.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      sr $$3 = new sr();
+
+      for (ahd $$4 : this.b) {
+         $$3.add(tg.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(sl $$0, cpy $$1) {
+      this.a(arq.a($$0));
+      sr $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      sr $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
+   }
+
+   private void a(sr $$0, Consumer<cpx<?>> $$1, cpy $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            ahd $$5 = new ahd($$4);
+            Optional<cpx<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
+   }
+
+   public void a(ana $$0) {
+      $$0.c.b(new abe(abe.a.a, this.a, this.b, this.a()));
    }
 }

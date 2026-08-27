@@ -1,69 +1,138 @@
-public class cjc extends chk {
-   private static final int k = 27;
-   private final bje l;
+import javax.annotation.Nullable;
 
-   public cjc(int $$0, ceq $$1) {
-      this($$0, $$1, new bjt(27));
+public class cjc implements bjo {
+   private final csf c;
+   private final iq<cmr> d = iq.a(3, cmr.f);
+   @Nullable
+   private csg e;
+   private int f;
+   private int g;
+
+   public cjc(csf $$0) {
+      this.c = $$0;
    }
 
-   public cjc(int $$0, ceq $$1, bje $$2) {
-      super(cir.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.m);
-      int $$3 = 3;
-      int $$4 = 9;
+   @Override
+   public int b() {
+      return this.d.size();
+   }
 
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cjd($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
+   @Override
+   public boolean ai_() {
+      for (cmr $$0 : this.d) {
+         if (!$$0.b()) {
+            return false;
          }
       }
 
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cjf($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+      return true;
+   }
+
+   @Override
+   public cmr a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cmr a(int $$0, int $$1) {
+      cmr $$2 = this.d.get($$0);
+      if ($$0 == 2 && !$$2.b()) {
+         return bjp.a(this.d, $$0, $$2.L());
+      } else {
+         cmr $$3 = bjp.a(this.d, $$0, $$1);
+         if (!$$3.b() && this.d($$0)) {
+            this.f();
          }
+
+         return $$3;
+      }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public cmr b(int $$0) {
+      return bjp.a(this.d, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cmr $$1) {
+      this.d.set($$0, $$1);
+      if (!$$1.b() && $$1.L() > this.ak_()) {
+         $$1.f(this.ak_());
       }
 
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cjf($$1, $$9, 8 + $$9 * 18, 142));
+      if (this.d($$0)) {
+         this.f();
       }
    }
 
    @Override
-   public boolean a(cer $$0) {
-      return this.l.a($$0);
+   public boolean a(cfb $$0) {
+      return this.c.ge() == $$0;
    }
 
    @Override
-   public cmh a(cer $$0, int $$1) {
-      cmh $$2 = cmh.f;
-      cjf $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cmh $$4 = $$3.g();
-         $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cmh.f;
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.e = null;
+      cmr $$0;
+      cmr $$1;
+      if (this.d.get(0).b()) {
+         $$0 = this.d.get(1);
+         $$1 = cmr.f;
+      } else {
+         $$0 = this.d.get(0);
+         $$1 = this.d.get(1);
+      }
+
+      if ($$0.b()) {
+         this.a(2, cmr.f);
+         this.g = 0;
+      } else {
+         csh $$4 = this.c.gg();
+         if (!$$4.isEmpty()) {
+            csg $$5 = $$4.a($$0, $$1, this.f);
+            if ($$5 == null || $$5.p()) {
+               this.e = $$5;
+               $$5 = $$4.a($$1, $$0, this.f);
             }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cmh.f;
+
+            if ($$5 != null && !$$5.p()) {
+               this.e = $$5;
+               this.a(2, $$5.f());
+               this.g = $$5.o();
+            } else {
+               this.a(2, cmr.f);
+               this.g = 0;
+            }
          }
 
-         if ($$4.b()) {
-            $$3.e(cmh.f);
-         } else {
-            $$3.b();
-         }
+         this.c.l(this.a(2));
       }
+   }
 
-      return $$2;
+   @Nullable
+   public csg g() {
+      return this.e;
+   }
+
+   public void c(int $$0) {
+      this.f = $$0;
+      this.f();
    }
 
    @Override
-   public void b(cer $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public void a() {
+      this.d.clear();
+   }
+
+   public int h() {
+      return this.g;
    }
 }

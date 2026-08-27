@@ -1,22 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class due implements dtg {
+public record due(int b, int c, int d, ih<dyd> e) implements dtr {
    public static final Codec<due> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               atq.j.fieldOf("tries").orElse(128).forGetter(due::a),
+               atq.i.fieldOf("xz_spread").orElse(7).forGetter(due::b),
+               atq.i.fieldOf("y_spread").orElse(3).forGetter(due::c),
+               dyd.b.fieldOf("feature").forGetter(due::d)
             )
             .apply($$0, due::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
 
-   public due(int $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public ih<dyd> d() {
+      return this.e;
    }
 }

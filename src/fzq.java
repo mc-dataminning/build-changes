@@ -1,27 +1,86 @@
-public class fzq extends fyu<cci, fkw<cci>> {
-   private static final agt a = new agt("textures/entity/slime/slime.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fzq(fxo.a $$0) {
-      super($$0, new fkw<>($$0.a(flx.bp)), 0.25F);
-      this.a(new gcd<>(this, $$0.f()));
+public class fzq extends fzl<byh, fko<byh>> {
+   private static final Map<byh.a, ahd> a = ac.a(Maps.newEnumMap(byh.a.class), $$0 -> {
+      $$0.put(byh.a.a, new ahd("textures/entity/panda/panda.png"));
+      $$0.put(byh.a.b, new ahd("textures/entity/panda/lazy_panda.png"));
+      $$0.put(byh.a.c, new ahd("textures/entity/panda/worried_panda.png"));
+      $$0.put(byh.a.d, new ahd("textures/entity/panda/playful_panda.png"));
+      $$0.put(byh.a.e, new ahd("textures/entity/panda/brown_panda.png"));
+      $$0.put(byh.a.f, new ahd("textures/entity/panda/weak_panda.png"));
+      $$0.put(byh.a.g, new ahd("textures/entity/panda/aggressive_panda.png"));
+   });
+
+   public fzq(fyf.a $$0) {
+      super($$0, new fko<>($$0.a(fmo.aC)), 0.9F);
+      this.a(new gcm(this, $$0.d()));
    }
 
-   public void a(cci $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gf();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ahd a(byh $$0) {
+      return a.getOrDefault($$0.gq(), a.get(byh.a.a));
    }
 
-   protected void a(cci $$0, epd $$1, float $$2) {
-      float $$3 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$4 = (float)$$0.gf();
-      float $$5 = aty.i($$2, $$0.bS, $$0.e) / ($$4 * 0.5F + 1.0F);
-      float $$6 = 1.0F / ($$5 + 1.0F);
-      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
+   protected void a(byh $$0, ept $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$0.bU > 0) {
+         int $$5 = $$0.bU;
+         int $$6 = $$5 + 1;
+         float $$7 = 7.0F;
+         float $$8 = $$0.o_() ? 0.3F : 0.8F;
+         if ($$5 < 8) {
+            float $$9 = (float)(90 * $$5) / 7.0F;
+            float $$10 = (float)(90 * $$6) / 7.0F;
+            float $$11 = this.a($$9, $$10, $$6, $$4, 8.0F);
+            $$1.a(0.0F, ($$8 + 0.2F) * ($$11 / 90.0F), 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$11));
+         } else if ($$5 < 16) {
+            float $$12 = ((float)$$5 - 8.0F) / 7.0F;
+            float $$13 = 90.0F + 90.0F * $$12;
+            float $$14 = 90.0F + 90.0F * ((float)$$6 - 8.0F) / 7.0F;
+            float $$15 = this.a($$13, $$14, $$6, $$4, 16.0F);
+            $$1.a(0.0F, $$8 + 0.2F + ($$8 - 0.2F) * ($$15 - 90.0F) / 90.0F, 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$15));
+         } else if ((float)$$5 < 24.0F) {
+            float $$16 = ((float)$$5 - 16.0F) / 7.0F;
+            float $$17 = 180.0F + 90.0F * $$16;
+            float $$18 = 180.0F + 90.0F * ((float)$$6 - 16.0F) / 7.0F;
+            float $$19 = this.a($$17, $$18, $$6, $$4, 24.0F);
+            $$1.a(0.0F, $$8 + $$8 * (270.0F - $$19) / 90.0F, 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$19));
+         } else if ($$5 < 32) {
+            float $$20 = ((float)$$5 - 24.0F) / 7.0F;
+            float $$21 = 270.0F + 90.0F * $$20;
+            float $$22 = 270.0F + 90.0F * ((float)$$6 - 24.0F) / 7.0F;
+            float $$23 = this.a($$21, $$22, $$6, $$4, 32.0F);
+            $$1.a(0.0F, $$8 * ((360.0F - $$23) / 90.0F), 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$23));
+         }
+      }
+
+      float $$24 = $$0.E($$4);
+      if ($$24 > 0.0F) {
+         $$1.a(0.0F, 0.8F * $$24, 0.0F);
+         $$1.a(a.b.rotationDegrees(aui.i($$24, $$0.dE(), $$0.dE() + 90.0F)));
+         $$1.a(0.0F, -1.0F * $$24, 0.0F);
+         if ($$0.gw()) {
+            float $$25 = (float)(Math.cos((double)$$0.ah * 1.25) * Math.PI * 0.05F);
+            $$1.a(a.d.rotationDegrees($$25));
+            if ($$0.o_()) {
+               $$1.a(0.0F, 0.8F, 0.55F);
+            }
+         }
+      }
+
+      float $$26 = $$0.F($$4);
+      if ($$26 > 0.0F) {
+         float $$27 = $$0.o_() ? 0.5F : 1.3F;
+         $$1.a(0.0F, $$27 * $$26, 0.0F);
+         $$1.a(a.b.rotationDegrees(aui.i($$26, $$0.dE(), $$0.dE() + 180.0F)));
+      }
    }
 
-   public agt a(cci $$0) {
-      return a;
+   private float a(float $$0, float $$1, int $$2, float $$3, float $$4) {
+      return (float)$$2 < $$4 ? aui.i($$3, $$0, $$1) : $$0;
    }
 }

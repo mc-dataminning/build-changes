@@ -1,175 +1,148 @@
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cfu extends cfp implements cfg {
-   public static final double b = 4.0;
-   private static final double d = 16.0;
-   public static final Predicate<blv> c = $$0 -> $$0.fh() || $$0.bN();
+public final class cfu {
+   private static final float a = 0.3F;
 
-   public cfu(blj<? extends cfu> $$0, csy $$1) {
-      super($$0, $$1);
+   public static elk a(blp $$0, Predicate<blp> $$1) {
+      elm $$2 = $$0.dp();
+      cti $$3 = $$0.dM();
+      elm $$4 = $$0.dk();
+      return a($$4, $$0, $$1, $$2, $$3, 0.3F, csr.a.a);
    }
 
-   public cfu(csy $$0, blv $$1) {
-      super(blj.aB, $$1, $$0);
+   public static elk a(blp $$0, Predicate<blp> $$1, csr.a $$2) {
+      elm $$3 = $$0.dp();
+      cti $$4 = $$0.dM();
+      elm $$5 = $$0.dk();
+      return a($$5, $$0, $$1, $$3, $$4, 0.3F, $$2);
    }
 
-   public cfu(csy $$0, double $$1, double $$2, double $$3) {
-      super(blj.aB, $$1, $$2, $$3, $$0);
+   public static elk a(blp $$0, Predicate<blp> $$1, double $$2) {
+      elm $$3 = $$0.f(0.0F).a($$2);
+      cti $$4 = $$0.dM();
+      elm $$5 = $$0.br();
+      return a($$5, $$0, $$1, $$3, $$4, 0.0F, csr.a.a);
    }
 
-   @Override
-   protected cmc s() {
-      return cmk.vh;
-   }
-
-   @Override
-   protected float x() {
-      return 0.05F;
-   }
-
-   @Override
-   protected void a(ekx $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         cmh $$1 = this.q();
-         coe $$2 = cog.d($$1);
-         List<bks> $$3 = cog.a($$1);
-         boolean $$4 = $$2 == coh.c && $$3.isEmpty();
-         ia $$5 = $$0.b();
-         hv $$6 = $$0.a();
-         hv $$7 = $$6.a($$5);
-         if ($$4) {
-            this.a($$7);
-            this.a($$7.a($$5.g()));
-
-            for (ia $$8 : ia.c.a) {
-               this.a($$7.a($$8));
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(ekz $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         cmh $$1 = this.q();
-         coe $$2 = cog.d($$1);
-         List<bks> $$3 = cog.a($$1);
-         boolean $$4 = $$2 == coh.c && $$3.isEmpty();
-         if ($$4) {
-            this.y();
-         } else if (!$$3.isEmpty()) {
-            if (this.z()) {
-               this.a($$1, $$2);
-            } else {
-               this.a($$3, $$0.c() == ekz.a.c ? ((eky)$$0).a() : null);
-            }
-         }
-
-         int $$5 = $$2.b() ? 2007 : 2002;
-         this.dM().c($$5, this.dm(), cog.c($$1));
-         this.am();
-      }
-   }
-
-   private void y() {
-      ekw $$0 = this.cH().c(4.0, 2.0, 4.0);
-
-      for (blv $$2 : this.dM().a(blv.class, $$0, c)) {
-         double $$3 = this.f($$2);
-         if ($$3 < 16.0) {
-            if ($$2.fh()) {
-               $$2.a(this.dN().c(this, this.w()), 1.0F);
-            }
-
-            if ($$2.bN() && $$2.bx()) {
-               $$2.aF();
-            }
-         }
+   private static elk a(elm $$0, blp $$1, Predicate<blp> $$2, elm $$3, cti $$4, float $$5, csr.a $$6) {
+      elm $$7 = $$0.e($$3);
+      elk $$8 = $$4.a(new csr($$0, $$7, $$6, csr.b.a, $$1));
+      if ($$8.c() != elk.a.a) {
+         $$7 = $$8.e();
       }
 
-      for (byp $$5 : this.dM().a(byp.class, $$0)) {
-         $$5.u();
+      elk $$9 = a($$4, $$1, $$0, $$7, $$1.cH().b($$3).g(1.0), $$2, $$5);
+      if ($$9 != null) {
+         $$8 = $$9;
       }
+
+      return $$8;
    }
 
-   private void a(List<bks> $$0, @Nullable blf $$1) {
-      ekw $$2 = this.cH().c(4.0, 2.0, 4.0);
-      List<blv> $$3 = this.dM().a(blv.class, $$2);
-      if (!$$3.isEmpty()) {
-         blf $$4 = this.J();
+   @Nullable
+   public static elj a(blp $$0, elm $$1, elm $$2, elh $$3, Predicate<blp> $$4, double $$5) {
+      cti $$6 = $$0.dM();
+      double $$7 = $$5;
+      blp $$8 = null;
+      elm $$9 = null;
 
-         for (blv $$5 : $$3) {
-            if ($$5.fy()) {
-               double $$6 = this.f($$5);
-               if ($$6 < 16.0) {
-                  double $$7;
-                  if ($$5 == $$1) {
-                     $$7 = 1.0;
-                  } else {
-                     $$7 = 1.0 - Math.sqrt($$6) / 4.0;
+      for (blp $$10 : $$6.a($$0, $$3, $$4)) {
+         elh $$11 = $$10.cH().g((double)$$10.bE());
+         Optional<elm> $$12 = $$11.b($$1, $$2);
+         if ($$11.d($$1)) {
+            if ($$7 >= 0.0) {
+               $$8 = $$10;
+               $$9 = $$12.orElse($$1);
+               $$7 = 0.0;
+            }
+         } else if ($$12.isPresent()) {
+            elm $$13 = $$12.get();
+            double $$14 = $$1.g($$13);
+            if ($$14 < $$7 || $$7 == 0.0) {
+               if ($$10.cW() == $$0.cW()) {
+                  if ($$7 == 0.0) {
+                     $$8 = $$10;
+                     $$9 = $$13;
                   }
-
-                  for (bks $$9 : $$0) {
-                     bkq $$10 = $$9.c();
-                     if ($$10.a()) {
-                        $$10.a(this, this.w(), $$5, $$9.e(), $$7);
-                     } else {
-                        int $$11 = $$9.a($$1x -> (int)($$7 * (double)$$1x + 0.5));
-                        bks $$12 = new bks($$10, $$11, $$9.e(), $$9.f(), $$9.g());
-                        if (!$$12.a(20)) {
-                           $$5.b($$12, $$4);
-                        }
-                     }
-                  }
+               } else {
+                  $$8 = $$10;
+                  $$9 = $$13;
+                  $$7 = $$14;
                }
             }
          }
       }
+
+      return $$8 == null ? null : new elj($$8, $$9);
    }
 
-   private void a(cmh $$0, coe $$1) {
-      blc $$2 = new blc(this.dM(), this.dr(), this.dt(), this.dx());
-      blf $$3 = this.w();
-      if ($$3 instanceof blv) {
-         $$2.a((blv)$$3);
-      }
-
-      $$2.a(3.0F);
-      $$2.b(-0.5F);
-      $$2.d(10);
-      $$2.c(-$$2.h() / (float)$$2.m());
-      $$2.a($$1);
-
-      for (bks $$4 : cog.b($$0)) {
-         $$2.a(new bks($$4));
-      }
-
-      sj $$5 = $$0.v();
-      if ($$5 != null && $$5.b("CustomPotionColor", 99)) {
-         $$2.a($$5.h("CustomPotionColor"));
-      }
-
-      this.dM().b($$2);
+   @Nullable
+   public static elj a(cti $$0, blp $$1, elm $$2, elm $$3, elh $$4, Predicate<blp> $$5) {
+      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
    }
 
-   private boolean z() {
-      return this.q().a(cmk.vk);
+   @Nullable
+   public static elj a(cti $$0, blp $$1, elm $$2, elm $$3, elh $$4, Predicate<blp> $$5, float $$6) {
+      double $$7 = Double.MAX_VALUE;
+      blp $$8 = null;
+
+      for (blp $$9 : $$0.a($$1, $$4, $$5)) {
+         elh $$10 = $$9.cH().g((double)$$6);
+         Optional<elm> $$11 = $$10.b($$2, $$3);
+         if ($$11.isPresent()) {
+            double $$12 = $$2.g($$11.get());
+            if ($$12 < $$7) {
+               $$8 = $$9;
+               $$7 = $$12;
+            }
+         }
+      }
+
+      return $$8 == null ? null : new elj($$8);
    }
 
-   private void a(hv $$0) {
-      dip $$1 = this.dM().a_($$0);
-      if ($$1.a(arr.aJ)) {
-         this.dM().a($$0, false, this);
-      } else if (cur.c($$1)) {
-         cur.a(null, $$1, this.dM(), $$0);
-      } else if (cwn.g($$1)) {
-         this.dM().a(null, 1009, $$0, 0);
-         cwn.a(this.w(), this.dM(), $$0, $$1);
-         this.dM().b($$0, $$1.a(cwn.c, Boolean.valueOf(false)));
+   public static void a(blp $$0, float $$1) {
+      elm $$2 = $$0.dp();
+      if ($$2.g() != 0.0) {
+         double $$3 = $$2.h();
+         $$0.r((float)(aui.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
+         $$0.s((float)(aui.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
+
+         while ($$0.dE() - $$0.O < -180.0F) {
+            $$0.O -= 360.0F;
+         }
+
+         while ($$0.dE() - $$0.O >= 180.0F) {
+            $$0.O += 360.0F;
+         }
+
+         while ($$0.dC() - $$0.N < -180.0F) {
+            $$0.N -= 360.0F;
+         }
+
+         while ($$0.dC() - $$0.N >= 180.0F) {
+            $$0.N += 360.0F;
+         }
+
+         $$0.s(aui.i($$1, $$0.O, $$0.dE()));
+         $$0.r(aui.i($$1, $$0.N, $$0.dC()));
       }
+   }
+
+   public static bju a(bmf $$0, cmm $$1) {
+      return $$0.eT().a($$1) ? bju.a : bju.b;
+   }
+
+   public static cfh a(bmf $$0, cmr $$1, float $$2) {
+      ckf $$3 = (ckf)($$1.d() instanceof ckf ? $$1.d() : cmu.os);
+      cfh $$4 = $$3.a($$0.dM(), $$1, $$0);
+      $$4.a($$0, $$2);
+      if ($$1.a(cmu.vj) && $$4 instanceof cfj) {
+         ((cfj)$$4).a($$1);
+      }
+
+      return $$4;
    }
 }

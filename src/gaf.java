@@ -1,19 +1,15 @@
-public class gaf extends fyu<byj, flg<byj>> {
-   private static final agt a = new agt("textures/entity/turtle/big_sea_turtle.png");
+public class gaf extends fzl<ccq, flj<ccq>> {
+   private static final ahd a = new ahd("textures/entity/silverfish.png");
 
-   public gaf(fxo.a $$0) {
-      super($$0, new flg<>($$0.a(flx.bK)), 0.7F);
+   public gaf(fyf.a $$0) {
+      super($$0, new flj<>($$0.a(fmo.bj)), 0.3F);
    }
 
-   public void a(byj $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
-      if ($$0.o_()) {
-         this.d *= 0.5F;
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected float a(ccq $$0) {
+      return 180.0F;
    }
 
-   public agt a(byj $$0) {
+   public ahd b(ccq $$0) {
       return a;
    }
 }

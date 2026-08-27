@@ -1,36 +1,71 @@
 import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
 import java.security.SignatureException;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.time.Instant;
+import java.util.Optional;
 
-public record vw(int b, UUID c, UUID d) {
-   public static final Codec<vw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atg.i.fieldOf("index").forGetter(vw::b), iy.a.fieldOf("sender").forGetter(vw::c), iy.a.fieldOf("session_id").forGetter(vw::d))
+public record vw(String b, Instant c, long d, vk e) {
+   public static final MapCodec<vw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(vw::a),
+               atq.m.fieldOf("time_stamp").forGetter(vw::b),
+               Codec.LONG.fieldOf("salt").forGetter(vw::c),
+               vk.a.optionalFieldOf("last_seen", vk.b).forGetter(vw::d)
+            )
             .apply($$0, vw::new)
    );
 
-   public static vw a(UUID $$0) {
-      return a($$0, ac.d);
+   public static vw a(String $$0) {
+      return new vw($$0, Instant.now(), 0L, vk.b);
    }
 
-   public static vw a(UUID $$0, UUID $$1) {
-      return new vw(0, $$0, $$1);
+   public void a(auu.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   public void a(auk.a $$0) throws SignatureException {
-      $$0.update(iy.b(this.c));
-      $$0.update(iy.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
+   public vw.a a(vq $$0) {
+      return new vw.a(this.b, this.c, this.d, this.e.a($$0));
    }
 
-   public boolean a(vw $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   public String a() {
+      return this.b;
    }
 
-   @Nullable
-   public vw a() {
-      return this.b == Integer.MAX_VALUE ? null : new vw(this.b + 1, this.c, this.d);
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public vk d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, vk.a d) {
+      public a(ug $$0) {
+         this($$0.d(256), $$0.w(), $$0.readLong(), new vk.a($$0));
+      }
+
+      public void a(ug $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
+      }
+
+      public Optional<vw> a(vq $$0) {
+         return this.d.a($$0).map($$0x -> new vw(this.a, this.b, this.c, $$0x));
+      }
    }
 }

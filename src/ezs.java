@@ -1,18 +1,13 @@
-import java.util.function.Consumer;
+import org.joml.Matrix4f;
 
-public interface ezs extends ezt {
-   void b(Consumer<ezt> var1);
+public class ezs extends ezr {
+   public static final ezs a = new ezs();
 
-   @Override
-   default void a(Consumer<ewf> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   public ezs() {
+      super(ezp.b(new ahd("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof ezs $$1) {
-            $$1.a();
-         }
-      });
+   @Override
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, epx $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

@@ -1,40 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dvc(ij<cvz> b, ij<cvz> c, dvh d, int e, int f, float g) {
-   public static final Codec<dvc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               it.a(kc.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               it.a(kc.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               dvh.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dvc::new)
-   );
+public class dvc extends duy {
+   public static final Codec<dvc> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dvc::new));
 
-   public ij<cvz> a() {
-      return this.b;
+   public dvc(bja $$0, bja $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public ij<cvz> b() {
-      return this.c;
+   @Override
+   protected dve<?> a() {
+      return dve.f;
    }
 
-   public dvh c() {
-      return this.d;
+   @Override
+   protected void a(cto $$0, dvd.b $$1, aup $$2, dun $$3, int $$4, dvd.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
    }
 
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   @Override
+   protected boolean a(aup $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return aui.k((float)$$1 + 0.5F) + aui.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

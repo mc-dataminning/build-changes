@@ -1,127 +1,78 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class ewd extends ewf {
-   private static final agt a = new agt("widget/slider");
-   private static final agt d = new agt("widget/slider_highlighted");
-   private static final agt e = new agt("widget/slider_handle");
-   private static final agt l = new agt("widget/slider_handle_highlighted");
-   protected static final int b = 2;
-   private static final int m = 8;
-   private static final int n = 4;
-   protected double c;
-   private boolean o;
+public class ewd {
+   private static final int a = -1;
+   private final in<ewc> b = new in<>(32);
+   private final Map<cwj, Set<dkd<?>>> c = Maps.newHashMap();
 
-   public ewd(int $$0, int $$1, int $$2, int $$3, vb $$4, double $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-   }
-
-   private agt e() {
-      return this.aJ_() && !this.o ? d : a;
-   }
-
-   private agt f() {
-      return !this.h && !this.o ? e : l;
-   }
-
-   @Override
-   protected vp aM_() {
-      return vb.a("gui.narrate.slider", this.l());
-   }
-
-   @Override
-   public void a(faa $$0) {
-      $$0.a(ezz.a, this.aM_());
-      if (this.i) {
-         if (this.aJ_()) {
-            $$0.a(ezz.d, vb.c("narration.slider.usage.focused"));
+   public static ewd a() {
+      ewd $$0 = new ewd();
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fsl.a($$1, $$0x.c(cyr.b) == djw.a ? $$2.d() : $$2) : ctg.a(), cwl.iI, cwl.iH);
+      $$0.a(cyr.b, cwl.iI, cwl.iH);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fsl.a($$1, $$2) : ctg.a(), cwl.i, cwl.bu, cwl.bt, cwl.gb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         if ($$3 != 0) {
+            return $$1 != null && $$2 != null ? fsl.a($$1, $$2) : ctg.a();
          } else {
-            $$0.a(ezz.d, vb.c("narration.slider.usage.hovered"));
+            return -1;
          }
-      }
+      }, cwl.sB);
+      $$0.a(($$0x, $$1, $$2, $$3) -> ctc.a(), cwl.aF);
+      $$0.a(($$0x, $$1, $$2, $$3) -> ctc.b(), cwl.aG);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fsl.b($$1, $$2) : ctc.c(), cwl.aE, cwl.aH, cwl.aI, cwl.aK, cwl.ff, cwl.aL);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fsl.c($$1, $$2) : -1, cwl.G, cwl.nd, cwl.fu);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dck.b($$0x.c(dck.f)), cwl.cw);
+      $$0.a(dck.f, cwl.cw);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fsl.a($$1, $$2) : -1, cwl.dS);
+      $$0.a(($$0x, $$1, $$2, $$3) -> 14731036, cwl.fc, cwl.fb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         int $$4 = $$0x.c(dee.c);
+         int $$5 = $$4 * 32;
+         int $$6 = 255 - $$4 * 8;
+         int $$7 = $$4 * 4;
+         return $$5 << 16 | $$6 << 8 | $$7;
+      }, cwl.fe, cwl.fd);
+      $$0.a(dee.c, cwl.fe, cwl.fd);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? 2129968 : 7455580, cwl.fm);
+      return $$0;
    }
 
-   @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      euk $$4 = euk.N();
-      $$0.a(1.0F, 1.0F, 1.0F, this.k);
-      RenderSystem.enableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.enableDepthTest();
-      $$0.a(this.e(), this.p(), this.r(), this.k(), this.i());
-      $$0.a(this.f(), this.p() + (int)(this.c * (double)(this.f - 8)), this.r(), 8, this.i());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.i ? 16777215 : 10526880;
-      this.a($$0, $$4.h, 2, $$5 | aty.f(this.k * 255.0F) << 24);
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      this.a($$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (!$$0) {
-         this.o = false;
+   public int a(dja $$0, cti $$1, hx $$2) {
+      ewc $$3 = this.b.a(kd.e.a($$0.b()));
+      if ($$3 != null) {
+         return $$3.getColor($$0, null, null, 0);
       } else {
-         euh $$1 = euk.N().aT();
-         if ($$1 == euh.b || $$1 == euh.d) {
-            this.o = true;
-         }
+         eeo $$4 = $$0.d($$1, $$2);
+         return $$4 != null ? $$4.ak : -1;
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (faf.a($$0)) {
-         this.o = !this.o;
-         return true;
-      } else {
-         if (this.o) {
-            boolean $$3 = $$0 == 263;
-            if ($$3 || $$0 == 262) {
-               float $$4 = $$3 ? -1.0F : 1.0F;
-               this.b(this.c + (double)($$4 / (float)(this.f - 8)));
-               return true;
-            }
-         }
+   public int a(dja $$0, @Nullable csl $$1, @Nullable hx $$2, int $$3) {
+      ewc $$4 = this.b.a(kd.e.a($$0.b()));
+      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
+   }
 
-         return false;
+   public void a(ewc $$0, cwj... $$1) {
+      for (cwj $$2 : $$1) {
+         this.b.a($$0, kd.e.a($$2));
       }
    }
 
-   private void a(double $$0) {
-      this.b(($$0 - (double)(this.p() + 4)) / (double)(this.f - 8));
-   }
-
-   private void b(double $$0) {
-      double $$1 = this.c;
-      this.c = aty.a($$0, 0.0, 1.0);
-      if ($$1 != this.c) {
-         this.a();
+   private void a(Set<dkd<?>> $$0, cwj... $$1) {
+      for (cwj $$2 : $$1) {
+         this.c.put($$2, $$0);
       }
-
-      this.b();
    }
 
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.a($$0);
-      super.b($$0, $$1, $$2, $$3);
+   private void a(dkd<?> $$0, cwj... $$1) {
+      this.a(ImmutableSet.of($$0), $$1);
    }
 
-   @Override
-   public void a(gia $$0) {
+   public Set<dkd<?>> a(cwj $$0) {
+      return this.c.getOrDefault($$0, ImmutableSet.of());
    }
-
-   @Override
-   public void c(double $$0, double $$1) {
-      super.a(euk.N().ah());
-   }
-
-   protected abstract void b();
-
-   protected abstract void a();
 }

@@ -1,42 +1,42 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+public class fbq extends fct {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final vd c = vd.c("credits_and_attribution.screen.title");
+   private static final vd k = vd.c("credits_and_attribution.button.credits");
+   private static final vd l = vd.c("credits_and_attribution.button.attribution");
+   private static final vd m = vd.c("credits_and_attribution.button.licenses");
+   private final fct n;
+   private final fai o = new fai(this);
 
-public class fbq extends fbu {
-   private exe c;
-
-   private static eun<?>[] a(euo $$0) {
-      return new eun[]{$$0.d(), $$0.O(), $$0.D(), $$0.P(), $$0.W()};
-   }
-
-   public fbq(fcc $$0, euo $$1) {
-      super($$0, $$1, vb.c("options.mouse_settings.title"));
-   }
-
-   @Override
-   protected void aP_() {
-      this.c = new exe(this.f, this.g, this.h, 32, this.h - 32, 25);
-      if (eny.a()) {
-         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.E())).toArray(eun[]::new));
-      } else {
-         this.c.a(a(this.b));
-      }
-
-      this.e(this.c);
-      this.d(ewh.a(va.d, $$0 -> {
-         this.b.as();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   public fbq(fct $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
+   protected void aN_() {
+      this.o.a(new eyf(this.o(), this.i));
+      fam $$0 = this.o.c(fam.d()).a(8);
+      $$0.c().b();
+      $$0.a(ewy.a(k, $$0x -> this.n()).a(210).a());
+      $$0.a(ewy.a(l, fbl.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(ewy.a(m, fbl.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.o.b(ewy.a(vc.d, $$0x -> this.aE_()).a());
+      this.o.a();
+      this.o.a(this::d);
    }
 
    @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   protected void c() {
+      this.o.a();
+   }
+
+   private void n() {
+      this.f.a(new fdb(false, () -> this.f.a(this)));
+   }
+
+   @Override
+   public void aE_() {
+      this.f.a(this.n);
    }
 }

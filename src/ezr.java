@@ -1,122 +1,76 @@
-import java.util.function.Consumer;
+import org.joml.Matrix4f;
 
-public class ezr implements ezs {
-   public static final int a = 36;
-   private static final int b = 30;
-   private final ezp c = new ezp();
-   private final ezp d = new ezp();
-   private final ezp e = new ezp();
-   private final fcc f;
-   private int g;
-   private int h;
+public class ezr {
+   private final ezp a;
+   private final float b;
+   private final float c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public ezr(fcc $$0) {
-      this($$0, 36);
+   public ezr(ezp $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
-   public ezr(fcc $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, epx $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      int $$10 = 3;
+      float $$11 = $$1 + this.f;
+      float $$12 = $$1 + this.g;
+      float $$13 = this.h - 3.0F;
+      float $$14 = this.i - 3.0F;
+      float $$15 = $$2 + $$13;
+      float $$16 = $$2 + $$14;
+      float $$17 = $$0 ? 1.0F - 0.25F * $$13 : 0.0F;
+      float $$18 = $$0 ? 1.0F - 0.25F * $$14 : 0.0F;
+      $$4.a($$3, $$11 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
+      $$4.a($$3, $$11 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
+      $$4.a($$3, $$12 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
+      $$4.a($$3, $$12 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
    }
 
-   public ezr(fcc $$0, int $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
+   public void a(ezr.a $$0, Matrix4f $$1, epx $$2, int $$3) {
+      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
+      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
    }
 
-   @Override
-   public void f(int $$0) {
+   public fth a(ewk.a $$0) {
+      return this.a.a($$0);
    }
 
-   @Override
-   public void g(int $$0) {
-   }
+   public static class a {
+      protected final float a;
+      protected final float b;
+      protected final float c;
+      protected final float d;
+      protected final float e;
+      protected final float f;
+      protected final float g;
+      protected final float h;
+      protected final float i;
 
-   @Override
-   public int p() {
-      return 0;
-   }
-
-   @Override
-   public int r() {
-      return 0;
-   }
-
-   @Override
-   public int k() {
-      return this.f.g;
-   }
-
-   @Override
-   public int i() {
-      return this.f.h;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   @Override
-   public void b(Consumer<ezt> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
-   }
-
-   @Override
-   public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.g);
-      this.c.a($$0);
-      this.c.b(0, 0);
-      this.c.a();
-      this.d.b(this.f.g);
-      this.d.a($$1);
-      this.d.a();
-      this.d.g(this.f.h - $$1);
-      this.e.b(this.f.g);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.h - $$1 - this.e.i();
-      this.e.b(0, Math.min($$2, $$3));
-   }
-
-   public <T extends ezt> T a(T $$0) {
-      return this.c.a($$0);
-   }
-
-   public <T extends ezt> T a(T $$0, Consumer<ezu> $$1) {
-      return this.c.a($$0, $$1);
-   }
-
-   public <T extends ezt> T b(T $$0) {
-      return this.d.a($$0);
-   }
-
-   public <T extends ezt> T b(T $$0, Consumer<ezu> $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   public <T extends ezt> T c(T $$0) {
-      return this.e.a($$0);
-   }
-
-   public <T extends ezt> T c(T $$0, Consumer<ezu> $$1) {
-      return this.e.a($$0, $$1);
+      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+      }
    }
 }

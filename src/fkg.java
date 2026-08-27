@@ -1,40 +1,28 @@
-public class fkg<T extends blf> extends fjh<T> {
-   private final fly a;
-   private final fly b;
-   private final fly f;
+public class fkg<T extends blp> extends fjy<T> {
+   private static final String a = "knot";
+   private final fmp b;
+   private final fmp f;
 
-   public fkg(fly $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+   public fkg(fmp $$0) {
+      this.b = $$0;
+      this.f = $$0.b("knot");
    }
 
-   public static fme b() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fmd.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fma.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fmd.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fma.a(-2.5F, 17.0F, -1.5F));
-      $$1.a("left_blue_fin", fmd.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fma.a(2.5F, 17.0F, -1.5F));
-      $$1.a("top_front_fin", fmd.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fma.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_back_fin", fmd.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fma.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fmd.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fma.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("right_back_fin", fmd.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fma.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fmd.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fma.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fmd.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fma.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_back_fin", fmd.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fma.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_front_fin", fmd.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fma.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      return fme.a($$0, 32, 32);
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      $$1.a("knot", fmu.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fmr.a);
+      return fmv.a($$0, 32, 32);
    }
 
    @Override
-   public fly a() {
-      return this.a;
+   public fmp a() {
+      return this.b;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * aty.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * aty.a($$3 * 0.2F);
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

@@ -1,33 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.google.common.collect.ImmutableMap;
 
-public class bpn {
-   private static final int a = 300;
+public class bpn extends bnw<bmh> {
+   private final bja c;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   public static bnn<blv> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return bqz.a(
-         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$3x -> $$3x.group($$3x.b(bux.C), $$3x.b(bux.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        hv $$11 = $$3x.<id>b($$4).b();
-                        if ($$11.a($$7.dm(), (double)$$1)) {
-                           $$3.increment();
-                        }
+   public bpn(bja $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(bvh.n, bvi.b, bvh.P, bvi.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
 
-                        return true;
-                     } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.dO().a($$6.X(), $$6.W());
-                        $$3.setValue(0);
-                        return true;
-                     }
-                  }))
-      );
+   protected void a(amz $$0, bmh $$1, long $$2) {
+      aup $$3 = $$1.eg();
+      float $$4 = aui.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = aui.g($$1.dC() + 2.0F * $$3.i() * this.d - this.d);
+      elm $$6 = elm.a($$4, $$5);
+      $$1.dO().a(bvh.n, new bnz($$1.br().e($$6)));
+      $$1.dO().a(bvh.P, this.c.a($$3));
    }
 }

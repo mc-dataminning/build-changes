@@ -1,75 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dsn extends drc<dub> {
-   public dsn(Codec<dub> $$0) {
+public class dsn extends drn<dug> {
+   public dsn(Codec<dug> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<dub> $$0) {
-      dub $$1 = $$0.f();
-      ctt $$2 = $$0.b();
-      hv $$3 = $$0.e();
-      if (!$$2.a_($$3.c()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+   public boolean a(drp<dug> $$0) {
+      dug $$1 = $$0.f();
+      cud $$2 = $$0.b();
+      aup $$3 = $$0.d();
+      cwj $$4 = $$1.b.b();
+      hx $$5 = a($$2, $$0.e().j().a(ic.a.b, $$2.J_() + 1, $$2.al() - 1), $$4);
+      if ($$5 == null) {
          return false;
       } else {
-         dip $$4 = $$2.a_($$3);
-         if (!$$4.i() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (hx $$11 : hx.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
+            dja $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
             }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.d()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.t($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.t($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.t($$3.e())) {
-               $$7++;
-            }
-
-            if ($$2.t($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.t($$3.d())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
          }
+
+         return $$10;
       }
+   }
+
+   @Nullable
+   private static hx a(ctj $$0, hx.a $$1, cwj $$2) {
+      while ($$1.v() > $$0.J_() + 1) {
+         dja $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ic.a);
+      }
+
+      return null;
    }
 }

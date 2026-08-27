@@ -1,29 +1,81 @@
-public class clj extends cmc {
-   public clj(cmc.a $$0) {
-      super($$0);
+import java.util.List;
+
+public interface clj {
+   String p_ = "color";
+   String q_ = "display";
+   int r_ = 10511680;
+
+   default boolean a(cmr $$0) {
+      sl $$1 = $$0.b("display");
+      return $$1 != null && $$1.b("color", 99);
    }
 
-   @Override
-   public boolean i(cmh $$0) {
-      return true;
+   default int e_(cmr $$0) {
+      sl $$1 = $$0.b("display");
+      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
    }
 
-   @Override
-   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
-      cmh $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arc.ic, ard.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cft $$4 = new cft($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
+   default void f_(cmr $$0) {
+      sl $$1 = $$0.b("display");
+      if ($$1 != null && $$1.e("color")) {
+         $$1.r("color");
+      }
+   }
+
+   default void a(cmr $$0, int $$1) {
+      $$0.a("display").a("color", $$1);
+   }
+
+   static cmr a(cmr $$0, List<clg> $$1) {
+      cmr $$2 = cmr.f;
+      int[] $$3 = new int[3];
+      int $$4 = 0;
+      int $$5 = 0;
+      clj $$6 = null;
+      cmm $$7 = $$0.d();
+      if ($$7 instanceof clj) {
+         $$6 = (clj)$$7;
+         $$2 = $$0.c(1);
+         if ($$6.a($$0)) {
+            int $$8 = $$6.e_($$2);
+            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
+            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
+            float $$11 = (float)($$8 & 0xFF) / 255.0F;
+            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
+            $$3[0] += (int)($$9 * 255.0F);
+            $$3[1] += (int)($$10 * 255.0F);
+            $$3[2] += (int)($$11 * 255.0F);
+            $$5++;
+         }
+
+         for (clg $$12 : $$1) {
+            float[] $$13 = $$12.d().d();
+            int $$14 = (int)($$13[0] * 255.0F);
+            int $$15 = (int)($$13[1] * 255.0F);
+            int $$16 = (int)($$13[2] * 255.0F);
+            $$4 += Math.max($$14, Math.max($$15, $$16));
+            $$3[0] += $$14;
+            $$3[1] += $$15;
+            $$3[2] += $$16;
+            $$5++;
+         }
       }
 
-      $$1.b(arm.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
+      if ($$6 == null) {
+         return cmr.f;
+      } else {
+         int $$17 = $$3[0] / $$5;
+         int $$18 = $$3[1] / $$5;
+         int $$19 = $$3[2] / $$5;
+         float $$20 = (float)$$4 / (float)$$5;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int var26 = ($$17 << 8) + $$18;
+         var26 = (var26 << 8) + $$19;
+         $$6.a($$2, var26);
+         return $$2;
       }
-
-      return bjm.a($$3, $$0.y_());
    }
 }

@@ -1,32 +1,36 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record ejk(Optional<ca> b) implements ejd {
-   public static final Codec<ejk> a = RecordCodecBuilder.create($$0 -> $$0.group(atg.a(ca.a, "predicate").forGetter(ejk::c)).apply($$0, ejk::new));
+public class ejk implements ejo {
+   private static final ejk b = new ejk();
+   public static final Codec<ejk> a = Codec.unit(b);
 
-   @Override
-   public eje b() {
-      return ejf.k;
+   private ejk() {
    }
 
    @Override
-   public Set<eim<?>> a() {
-      return ImmutableSet.of(eip.i);
+   public ejp b() {
+      return ejq.m;
    }
 
-   public boolean a(ege $$0) {
-      cmh $$1 = $$0.c(eip.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   @Override
+   public Set<eix<?>> a() {
+      return ImmutableSet.of(eja.j);
    }
 
-   public static ejd.a a(ca.a $$0) {
-      return () -> new ejk(Optional.of($$0.b()));
+   public boolean a(egp $$0) {
+      Float $$1 = $$0.c(eja.j);
+      if ($$1 != null) {
+         aup $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public Optional<ca> c() {
-      return this.b;
+   public static ejo.a c() {
+      return () -> b;
    }
 }

@@ -1,115 +1,27 @@
-public class fqo extends fqw {
-   private static final auf a = auf.a();
-   private final fqr b;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
 
-   fqo(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqr $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
+public class fqo {
+   private final List<ahd> a;
 
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
+   private fqo(List<ahd> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public fqa b() {
-      return fqa.c;
+   public List<ahd> a() {
+      return this.a;
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.e(0.0F);
+   public static fqo a(JsonObject $$0) {
+      JsonArray $$1 = aty.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new fqo(List.of());
       } else {
-         this.e(aty.i(0.05F, this.y, 1.0F));
-      }
-   }
-
-   private boolean g() {
-      euk $$0 = euk.N();
-      frk $$1 = $$0.s;
-      return $$1 != null && $$1.br().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gq();
-   }
-
-   public static class a implements fpz<jy> {
-      private final fqr a;
-
-      public a(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpw $$8 = new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(0.15F);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class b implements fpz<jy> {
-      private final fqr a;
-
-      public b(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class c implements fpz<jy> {
-      private final fqr a;
-
-      public c(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpw $$8 = new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class d implements fpz<jy> {
-      private final fqr a;
-
-      public d(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class e implements fpz<jy> {
-      private final fqr a;
-
-      public e(fqr $$0) {
-         this.a = $$0;
-      }
-
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqo $$8 = new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
-         return $$8;
+         List<ahd> $$2 = Streams.stream($$1).map($$0x -> aty.a($$0x, "texture")).map(ahd::new).collect(ImmutableList.toImmutableList());
+         return new fqo($$2);
       }
    }
 }

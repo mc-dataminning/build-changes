@@ -1,95 +1,84 @@
-public abstract class bsi extends bsr {
-   protected blx d;
-   protected hv e = hv.b;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public bsi(blx $$0) {
-      this.d = $$0;
-      if (!bwo.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
+public class bsi<T extends bmf> extends btb {
+   protected final bmo a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected eez d;
+   protected final bvp e;
+   protected final Class<T> f;
+   protected final Predicate<bmf> g;
+   protected final Predicate<bmf> h;
+   private final bwt k;
+
+   public bsi(bmo $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bls.e::test);
    }
 
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         dip $$0 = this.d.dM().a_(this.e);
-         if (!($$0.b() instanceof cyf)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(cyf.c);
-         }
-      }
+   public bsi(bmo $$0, Class<T> $$1, Predicate<bmf> $$2, float $$3, double $$4, double $$5, Predicate<bmf> $$6) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.N();
+      this.a(EnumSet.of(btb.a.a));
+      this.k = bwt.a().a((double)$$3).a($$6.and($$2));
    }
 
-   protected void a(boolean $$0) {
-      if (this.f) {
-         dip $$1 = this.d.dM().a_(this.e);
-         if ($$1.b() instanceof cyf) {
-            ((cyf)$$1.b()).a(this.d, this.d.dM(), $$1, this.e, $$0);
-         }
-      }
+   public bsi(bmo $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bmf> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean a() {
-      if (!bwo.a(this.d)) {
-         return false;
-      } else if (!this.d.P) {
+      this.b = this.a
+         .dM()
+         .a(this.a.dM().a(this.f, this.a.cH().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dr(), this.a.dt(), this.a.dx());
+      if (this.b == null) {
          return false;
       } else {
-         bve $$0 = (bve)this.d.N();
-         eeo $$1 = $$0.j();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               eem $$3 = $$1.a($$2);
-               this.e = new hv($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dt(), (double)this.e.w()) > 2.25)) {
-                  this.f = cyf.a(this.d.dM(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.dm().c();
-            this.f = cyf.a(this.d.dM(), this.e);
-            return this.f;
-         } else {
+         elm $$0 = bwx.a(this.a, 16, 7, this.b.dk());
+         if ($$0 == null) {
             return false;
+         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.f(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
+            return this.d != null;
          }
       }
    }
 
    @Override
    public boolean b() {
-      return !this.a;
+      return !this.e.l();
    }
 
    @Override
    public void c() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dr());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dx());
+      this.e.a(this.d, this.i);
    }
 
    @Override
-   public boolean T_() {
-      return true;
+   public void d() {
+      this.b = null;
    }
 
    @Override
    public void e() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dr());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dx());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
+      if (this.a.f((blp)this.b) < 49.0) {
+         this.a.N().a(this.j);
+      } else {
+         this.a.N().a(this.i);
       }
    }
 }

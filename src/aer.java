@@ -1,40 +1,34 @@
-public class aer implements wu<acw> {
-   private final ekx a;
-   private final bjk b;
-   private final int c;
+import java.util.Optional;
 
-   public aer(bjk $$0, ekx $$1, int $$2) {
-      this.b = $$0;
-      this.a = $$1;
-      this.c = $$2;
+public class aer implements xd<adg> {
+   private final Optional<bla> a;
+   private final Optional<bla> b;
+
+   public aer(Optional<bla> $$0, Optional<bla> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public aer(ue $$0) {
-      this.b = $$0.b(bjk.class);
-      this.a = $$0.y();
-      this.c = $$0.n();
+   public aer(ug $$0) {
+      this.a = $$0.b((ug.a<bla>)($$0x -> $$0x.a(kd.d)));
+      this.b = $$0.b((ug.a<bla>)($$0x -> $$0x.a(kd.d)));
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.b);
-      $$0.a(this.a);
-      $$0.c(this.c);
+   public void a(ug $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(kd.d, $$1));
+      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(kd.d, $$1));
    }
 
-   public void a(acw $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   public bjk a() {
-      return this.b;
-   }
-
-   public ekx d() {
+   public Optional<bla> a() {
       return this.a;
    }
 
-   public int e() {
-      return this.c;
+   public Optional<bla> d() {
+      return this.b;
    }
 }

@@ -1,44 +1,133 @@
-import java.util.Locale;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public interface efb {
-   ia[] a = new ia[]{ia.e, ia.f, ia.a, ia.b, ia.c, ia.d};
+public class efb {
+   private static final float a = 1.5F;
+   private final eex[] b = new eex[32];
+   private final int c;
+   private final eey d;
+   private static final boolean e = false;
+   private final eeu f = new eeu();
 
-   void a(ia var1, dip var2, hv var3, hv var4, int var5, int var6);
+   public efb(eey $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
+   }
 
-   void a(hv var1, cvz var2, hv var3);
+   @Nullable
+   public eez a(ctv $$0, bmh $$1, Set<hx> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      eex $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<efd, hx> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         eez $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
+      }
+   }
 
-   void a(dip var1, hv var2, cvz var3, hv var4, boolean var5);
+   @Nullable
+   private eez a(bgm $$0, eex $$1, Map<efd, hx> $$2, float $$3, int $$4, float $$5) {
+      $$0.a("find_path");
+      $$0.a(bhp.a);
+      Set<efd> $$6 = $$2.keySet();
+      $$1.e = 0.0F;
+      $$1.f = this.a($$1, $$6);
+      $$1.g = $$1.f;
+      this.f.a();
+      this.f.a($$1);
+      Set<eex> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<efd> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$5);
 
-   default void a(hv $$0, cvz $$1, @Nullable ia $$2) {
-      for (ia $$3 : a) {
-         if ($$3 != $$2) {
-            this.a($$0.a($$3), $$1, $$0);
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
+
+         eex $$11 = this.f.c();
+         $$11.i = true;
+
+         for (efd $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$4) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
+
+         if (!$$9.isEmpty()) {
+            break;
+         }
+
+         if (!($$11.a($$1) >= $$3)) {
+            int $$13 = this.d.a(this.b, $$11);
+
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               eex $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
+                  }
+               }
+            }
          }
       }
+
+      Optional<eez> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(eez::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(eez::m).thenComparingInt(eez::e));
+      $$0.c();
+      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   static void a(csz $$0, ia $$1, dip $$2, hv $$3, hv $$4, int $$5, int $$6) {
-      dip $$7 = $$0.a_($$3);
-      dip $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
-      cvz.a($$7, $$8, $$0, $$3, $$5, $$6);
+   protected float a(eex $$0, eex $$1) {
+      return $$0.a($$1);
    }
 
-   static void a(csy $$0, dip $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kb.e.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + kb.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new y($$7);
+   private float a(eex $$0, Set<efd> $$1) {
+      float $$2 = Float.MAX_VALUE;
+
+      for (efd $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
       }
+
+      return $$2;
+   }
+
+   private eez a(eex $$0, hx $$1, boolean $$2) {
+      List<eex> $$3 = Lists.newArrayList();
+      eex $$4 = $$0;
+      $$3.add(0, $$0);
+
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
+      }
+
+      return new eez($$3, $$1, $$2);
    }
 }

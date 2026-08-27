@@ -1,93 +1,302 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.PortUnreachableException;
+import java.net.SocketAddress;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Map;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class arf {
-   protected final Set<agt> a = Sets.newHashSet();
-   protected final Set<agt> b = Sets.newHashSet();
-   private final arg c = new arg();
+public class arf extends are {
+   private static final Logger d = LogUtils.getLogger();
+   private static final String e = "SMP";
+   private static final String f = "MINECRAFT";
+   private static final long g = 30000L;
+   private static final long h = 5000L;
+   private long i;
+   private final int j;
+   private final int k;
+   private final int l;
+   private final String m;
+   private final String n;
+   private DatagramSocket o;
+   private final byte[] p = new byte[1460];
+   private String q;
+   private String r;
+   private final Map<SocketAddress, arf.a> s;
+   private final ara t;
+   private long u;
+   private final aht v;
 
-   public void a(arf $$0) {
-      this.a.clear();
-      this.b.clear();
-      this.c.a($$0.c);
-      this.a.addAll($$0.a);
-      this.b.addAll($$0.b);
+   private arf(aht $$0, int $$1) {
+      super("Query Listener");
+      this.v = $$0;
+      this.j = $$1;
+      this.r = $$0.b();
+      this.k = $$0.d();
+      this.m = $$0.f();
+      this.l = $$0.K();
+      this.n = $$0.q();
+      this.u = 0L;
+      this.q = "0.0.0.0";
+      if (!this.r.isEmpty() && !this.q.equals(this.r)) {
+         this.q = this.r;
+      } else {
+         this.r = "0.0.0.0";
+
+         try {
+            InetAddress $$2 = InetAddress.getLocalHost();
+            this.q = $$2.getHostAddress();
+         } catch (UnknownHostException var4) {
+            d.warn("Unable to determine local host IP, please set server-ip in server.properties", var4);
+         }
+      }
+
+      this.t = new ara(1460);
+      this.s = Maps.newHashMap();
    }
 
-   public void a(cpn<?> $$0) {
-      if (!$$0.b().aq_()) {
-         this.a($$0.a());
+   @Nullable
+   public static arf a(aht $$0) {
+      int $$1 = $$0.a().q;
+      if (0 < $$1 && 65535 >= $$1) {
+         arf $$2 = new arf($$0, $$1);
+         return !$$2.a() ? null : $$2;
+      } else {
+         d.warn("Invalid query port {} found in server.properties (queries disabled)", $$1);
+         return null;
       }
    }
 
-   protected void a(agt $$0) {
-      this.a.add($$0);
+   private void a(byte[] $$0, DatagramPacket $$1) throws IOException {
+      this.o.send(new DatagramPacket($$0, $$0.length, $$1.getSocketAddress()));
    }
 
-   public boolean b(@Nullable cpn<?> $$0) {
-      return $$0 == null ? false : this.a.contains($$0.a());
+   private boolean a(DatagramPacket $$0) throws IOException {
+      byte[] $$1 = $$0.getData();
+      int $$2 = $$0.getLength();
+      SocketAddress $$3 = $$0.getSocketAddress();
+      d.debug("Packet len {} [{}]", $$2, $$3);
+      if (3 <= $$2 && -2 == $$1[0] && -3 == $$1[1]) {
+         d.debug("Packet '{}' [{}]", arb.a($$1[2]), $$3);
+         switch ($$1[2]) {
+            case 0:
+               if (!this.c($$0)) {
+                  d.debug("Invalid challenge [{}]", $$3);
+                  return false;
+               } else if (15 == $$2) {
+                  this.a(this.b($$0), $$0);
+                  d.debug("Rules [{}]", $$3);
+               } else {
+                  ara $$4 = new ara(1460);
+                  $$4.a(0);
+                  $$4.a(this.a($$0.getSocketAddress()));
+                  $$4.a(this.m);
+                  $$4.a("SMP");
+                  $$4.a(this.n);
+                  $$4.a(Integer.toString(this.v.J()));
+                  $$4.a(Integer.toString(this.l));
+                  $$4.a((short)this.k);
+                  $$4.a(this.q);
+                  this.a($$4.a(), $$0);
+                  d.debug("Status [{}]", $$3);
+               }
+            default:
+               return true;
+            case 9:
+               this.d($$0);
+               d.debug("Challenge [{}]", $$3);
+               return true;
+         }
+      } else {
+         d.debug("Invalid packet [{}]", $$3);
+         return false;
+      }
    }
 
-   public boolean b(agt $$0) {
-      return this.a.contains($$0);
+   private byte[] b(DatagramPacket $$0) throws IOException {
+      long $$1 = ac.b();
+      if ($$1 < this.u + 5000L) {
+         byte[] $$2 = this.t.a();
+         byte[] $$3 = this.a($$0.getSocketAddress());
+         $$2[1] = $$3[0];
+         $$2[2] = $$3[1];
+         $$2[3] = $$3[2];
+         $$2[4] = $$3[3];
+         return $$2;
+      } else {
+         this.u = $$1;
+         this.t.b();
+         this.t.a(0);
+         this.t.a(this.a($$0.getSocketAddress()));
+         this.t.a("splitnum");
+         this.t.a(128);
+         this.t.a(0);
+         this.t.a("hostname");
+         this.t.a(this.m);
+         this.t.a("gametype");
+         this.t.a("SMP");
+         this.t.a("game_id");
+         this.t.a("MINECRAFT");
+         this.t.a("version");
+         this.t.a(this.v.I());
+         this.t.a("plugins");
+         this.t.a(this.v.s());
+         this.t.a("map");
+         this.t.a(this.n);
+         this.t.a("numplayers");
+         this.t.a(this.v.J() + "");
+         this.t.a("maxplayers");
+         this.t.a(this.l + "");
+         this.t.a("hostport");
+         this.t.a(this.k + "");
+         this.t.a("hostip");
+         this.t.a(this.q);
+         this.t.a(0);
+         this.t.a(1);
+         this.t.a("player_");
+         this.t.a(0);
+         String[] $$4 = this.v.L();
+
+         for (String $$5 : $$4) {
+            this.t.a($$5);
+         }
+
+         this.t.a(0);
+         return this.t.a();
+      }
    }
 
-   public void c(cpn<?> $$0) {
-      this.c($$0.a());
+   private byte[] a(SocketAddress $$0) {
+      return this.s.get($$0).c();
    }
 
-   protected void c(agt $$0) {
-      this.a.remove($$0);
-      this.b.remove($$0);
+   private Boolean c(DatagramPacket $$0) {
+      SocketAddress $$1 = $$0.getSocketAddress();
+      if (!this.s.containsKey($$1)) {
+         return false;
+      } else {
+         byte[] $$2 = $$0.getData();
+         return this.s.get($$1).a() == arb.c($$2, 7, $$0.getLength());
+      }
    }
 
-   public boolean d(cpn<?> $$0) {
-      return this.b.contains($$0.a());
+   private void d(DatagramPacket $$0) throws IOException {
+      arf.a $$1 = new arf.a($$0);
+      this.s.put($$0.getSocketAddress(), $$1);
+      this.a($$1.b(), $$0);
    }
 
-   public void e(cpn<?> $$0) {
-      this.b.remove($$0.a());
+   private void d() {
+      if (this.a) {
+         long $$0 = ac.b();
+         if ($$0 >= this.i + 30000L) {
+            this.i = $$0;
+            this.s.values().removeIf($$1 -> $$1.a($$0));
+         }
+      }
    }
 
-   public void f(cpn<?> $$0) {
-      this.d($$0.a());
+   @Override
+   public void run() {
+      d.info("Query running on {}:{}", this.r, this.j);
+      this.i = ac.b();
+      DatagramPacket $$0 = new DatagramPacket(this.p, this.p.length);
+
+      try {
+         while (this.a) {
+            try {
+               this.o.receive($$0);
+               this.d();
+               this.a($$0);
+            } catch (SocketTimeoutException var8) {
+               this.d();
+            } catch (PortUnreachableException var9) {
+            } catch (IOException var10) {
+               this.a(var10);
+            }
+         }
+      } finally {
+         d.debug("closeSocket: {}:{}", this.r, this.j);
+         this.o.close();
+      }
    }
 
-   protected void d(agt $$0) {
-      this.b.add($$0);
+   @Override
+   public boolean a() {
+      if (this.a) {
+         return true;
+      } else {
+         return !this.e() ? false : super.a();
+      }
    }
 
-   public boolean a(ciy $$0) {
-      return this.c.a($$0);
+   private void a(Exception $$0) {
+      if (this.a) {
+         d.warn("Unexpected exception", $$0);
+         if (!this.e()) {
+            d.error("Failed to recover from exception, shutting down!");
+            this.a = false;
+         }
+      }
    }
 
-   public void a(ciy $$0, boolean $$1) {
-      this.c.a($$0, $$1);
+   private boolean e() {
+      try {
+         this.o = new DatagramSocket(this.j, InetAddress.getByName(this.r));
+         this.o.setSoTimeout(500);
+         return true;
+      } catch (Exception var2) {
+         d.warn("Unable to initialise query system on {}:{}", new Object[]{this.r, this.j, var2});
+         return false;
+      }
    }
 
-   public boolean a(cix<?> $$0) {
-      return this.b($$0.t());
-   }
+   static class a {
+      private final long a = new Date().getTime();
+      private final int b;
+      private final byte[] c;
+      private final byte[] d;
+      private final String e;
 
-   public boolean b(ciy $$0) {
-      return this.c.b($$0);
-   }
+      public a(DatagramPacket $$0) {
+         byte[] $$1 = $$0.getData();
+         this.c = new byte[4];
+         this.c[0] = $$1[3];
+         this.c[1] = $$1[4];
+         this.c[2] = $$1[5];
+         this.c[3] = $$1[6];
+         this.e = new String(this.c, StandardCharsets.UTF_8);
+         this.b = aup.a().a(16777216);
+         this.d = String.format(Locale.ROOT, "\t%s%d\u0000", this.e, this.b).getBytes(StandardCharsets.UTF_8);
+      }
 
-   public void b(ciy $$0, boolean $$1) {
-      this.c.b($$0, $$1);
-   }
+      public Boolean a(long $$0) {
+         return this.a < $$0;
+      }
 
-   public void a(arg $$0) {
-      this.c.a($$0);
-   }
+      public int a() {
+         return this.b;
+      }
 
-   public arg a() {
-      return this.c.a();
-   }
+      public byte[] b() {
+         return this.d;
+      }
 
-   public void a(ciy $$0, boolean $$1, boolean $$2) {
-      this.c.a($$0, $$1);
-      this.c.b($$0, $$2);
+      public byte[] c() {
+         return this.c;
+      }
+
+      public String d() {
+         return this.e;
+      }
    }
 }

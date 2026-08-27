@@ -1,14 +1,27 @@
-import com.mojang.serialization.Codec;
+public abstract class bip<R extends Runnable> extends bil<R> {
+   private int b;
 
-public interface bip<P extends bio> {
-   bip<bim> a = a("constant", bim.b);
-   bip<biv> b = a("uniform", biv.a);
-   bip<bik> c = a("clamped_normal", bik.a);
-   bip<biu> d = a("trapezoid", biu.a);
+   public bip(String $$0) {
+      super($$0);
+   }
 
-   Codec<P> codec();
+   @Override
+   public boolean av() {
+      return this.bw() || super.av();
+   }
 
-   static <P extends bio> bip<P> a(String $$0, Codec<P> $$1) {
-      return ir.a(kb.L, $$0, () -> $$1);
+   protected boolean bw() {
+      return this.b != 0;
+   }
+
+   @Override
+   public void d(R $$0) {
+      this.b++;
+
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
+      }
    }
 }

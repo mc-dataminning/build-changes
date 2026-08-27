@@ -1,8 +1,45 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface sd {
+public class sd implements ArgumentType<sc> {
+   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+
+   public sc a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      Optional<sc> $$2 = ro.e($$1);
+      if ($$2.isPresent()) {
+         return $$2.get();
+      } else {
+         Message $$3 = vd.b("No such test: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
+      }
+   }
+
+   public static sd a() {
+      return new sd();
+   }
+
+   public static sc a(CommandContext<ds> $$0, String $$1) {
+      return (sc)$$0.getArgument($$1, sc.class);
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      Stream<String> $$2 = ro.a().stream().map(sc::a);
+      return dx.b($$2, $$1);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
 }

@@ -1,40 +1,67 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bri extends bnm<cdv> {
-   private static final int c = 25;
-   private static final int d = 20;
-
-   public bri() {
-      super(ImmutableMap.of(bux.ax, buy.a, bux.o, buy.b, bux.aE, buy.c, bux.aC, buy.c), cdw.b);
+public class bri {
+   public static bnx<ceo> a(float $$0) {
+      return brj.a(
+         (Function<brj.b<ceo>, ? extends App<brj.c<ceo>, brm<ceo>>>)($$1 -> $$1.group($$1.b(bvh.d), $$1.c(bvh.c), $$1.b(bvh.g), $$1.a(bvh.m), $$1.a(bvh.n))
+               .apply(
+                  $$1,
+                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                        if ($$7.o_()) {
+                           return false;
+                        } else if ($$7.gp().b() != cer.b) {
+                           return false;
+                        } else {
+                           hx $$9 = $$1.<ig>b($$2).b();
+                           Optional<ih<bxj>> $$10 = $$6x.y().c($$9);
+                           if ($$10.isEmpty()) {
+                              return true;
+                           } else {
+                              $$1.<List<bmf>>b($$4)
+                                 .stream()
+                                 .filter($$1xxx -> $$1xxx instanceof ceo && $$1xxx != $$7)
+                                 .map($$0xxxx -> (ceo)$$0xxxx)
+                                 .filter(bmf::bx)
+                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
+                                 .findFirst()
+                                 .ifPresent($$6xx -> {
+                                    $$5.b();
+                                    $$6.b();
+                                    $$2.b();
+                                    if ($$6xx.dO().c(bvh.c).isEmpty()) {
+                                       bny.a($$6xx, $$9, $$0, 1);
+                                       $$6xx.dO().a(bvh.d, ig.a($$6x.ae(), $$9));
+                                       adf.c($$6x, $$9);
+                                    }
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 
-   protected void a(amp $$0, cdv $$1, long $$2) {
-      bmv<cdv> $$3 = $$1.dO();
-      $$3.a(bux.aC, avc.a, 25L);
-      $$3.b(bux.m);
-      blv $$4 = $$1.dO().c(bux.ax).get();
-      bno.a($$1, $$4);
-      $$1.b(bmh.l);
-      $$1.a($$4, 20, false);
-   }
-
-   protected boolean b(amp $$0, cdv $$1, long $$2) {
-      return true;
-   }
-
-   protected void c(amp $$0, cdv $$1, long $$2) {
-      if (!$$1.dO().a(bux.aC) && !$$1.dO().a(bux.aE)) {
-         $$1.dO().a(bux.aE, avc.a, (long)(cdw.b - 25));
-         $$1.a(arc.AJ, 3.0F, 1.0F);
+   private static boolean a(ih<bxj> $$0, ceo $$1, hx $$2) {
+      boolean $$3 = $$1.dO().c(bvh.d).isPresent();
+      if ($$3) {
+         return false;
+      } else {
+         Optional<ig> $$4 = $$1.dO().c(bvh.c);
+         cer $$5 = $$1.gp().b();
+         if ($$5.b().test($$0)) {
+            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
+         } else {
+            return false;
+         }
       }
    }
 
-   protected void d(amp $$0, cdv $$1, long $$2) {
-      if ($$1.c(bmh.l)) {
-         $$1.b(bmh.a);
-      }
-
-      $$1.dO().c(bux.ax).ifPresent($$1::j);
-      $$1.dO().b(bux.ax);
+   private static boolean a(bmo $$0, hx $$1, bxj $$2) {
+      eez $$3 = $$0.N().a($$1, $$2.c());
+      return $$3 != null && $$3.j();
    }
 }

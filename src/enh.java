@@ -1,35 +1,29 @@
-public interface enh {
-   int a();
+public enum enh {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-   int b();
+   private final int h;
 
-   void a(int var1, int var2);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   private enh(int $$0) {
+      this.h = $$0;
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   public static enh a(int $$0) {
+      for (enh $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
    }
 
-   default float g() {
-      return this.j();
-   }
-
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
-   }
-
-   default float i() {
-      return 0.0F;
-   }
-
-   default float j() {
-      return 3.0F;
+   public int a() {
+      return this.h;
    }
 }

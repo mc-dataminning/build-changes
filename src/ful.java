@@ -1,23 +1,19 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import com.google.common.collect.Streams;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class ful<S extends dgd> implements cyg.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = fsg.a($$0.i(), $$0.aB_());
-         int $$4 = fsg.a($$1.i(), $$1.aB_());
-         int $$5 = fsh.a($$3);
-         int $$6 = fsh.a($$4);
-         int $$7 = fsh.b($$3);
-         int $$8 = fsh.b($$4);
-         return fsh.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+public class ful implements fum {
+   public static final String a = "AND";
+   private final Iterable<? extends fum> d;
+
+   public ful(Iterable<? extends fum> $$0) {
+      this.d = $$0;
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
-   }
-
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   @Override
+   public Predicate<dja> getPredicate(djb<cwj, dja> $$0) {
+      List<Predicate<dja>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
+      return $$1x -> $$1.stream().allMatch($$1xx -> $$1xx.test($$1x));
    }
 }

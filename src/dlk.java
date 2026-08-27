@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dlk {
+public interface dlk {
+   @Nullable
+   dlj c(int var1, int var2);
+
+   default void a(ctr $$0, iz $$1) {
+   }
+
+   cso q();
 }

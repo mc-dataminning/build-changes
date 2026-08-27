@@ -1,46 +1,50 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class fvb<T extends dht> implements fui<T> {
-   public static final agt a = new agt("textures/environment/end_sky.png");
-   public static final agt b = new agt("textures/entity/end_portal.png");
+public class fvb {
+   private static final Map<dgq<?>, fva<?>> a = Maps.newHashMap();
 
-   public fvb(fuj.a $$0) {
+   private static <T extends dgo> void a(dgq<? extends T> $$0, fva<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(T $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   public static Map<dgq<?>, fuz<?>> a(fva.a $$0) {
+      Builder<dgq<?>, fuz<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + kd.k.b((dgq<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
    }
 
-   private void a(T $$0, Matrix4f $$1, eph $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ia.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ia.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ia.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ia.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ia.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ia.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, eph $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ia $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
-      }
-   }
-
-   protected float b() {
-      return 0.75F;
-   }
-
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected fsq d() {
-      return fsq.u();
+   static {
+      a(dgq.h, fvn::new);
+      a(dgq.i, fvj::new);
+      a(dgq.j, fvp::new);
+      a(dgq.k, fvl::new);
+      a(dgq.b, fvf::new);
+      a(dgq.d, fvf::new);
+      a(dgq.c, fvf::new);
+      a(dgq.m, fvi::new);
+      a(dgq.D, fvk::new);
+      a(dgq.n, fvs::new);
+      a(dgq.v, fvr::new);
+      a(dgq.o, fuv::new);
+      a(dgq.p, fvo::new);
+      a(dgq.t, fuu::new);
+      a(dgq.u, fvq::new);
+      a(dgq.x, fvm::new);
+      a(dgq.y, fuw::new);
+      a(dgq.z, fvg::new);
+      a(dgq.E, fux::new);
+      a(dgq.G, fve::new);
+      a(dgq.N, fvd::new);
+      a(dgq.O, fvh::new);
+      a(dgq.Q, fvt::new);
    }
 }

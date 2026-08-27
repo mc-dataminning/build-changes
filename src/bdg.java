@@ -1,29 +1,16 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bdg extends bco {
+public class bdg extends Schema {
    public bdg(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bcp.a($$0));
-   }
-
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:turtle");
-      a($$0, $$1, "minecraft:cod_mob");
-      a($$0, $$1, "minecraft:tropical_fish");
-      a($$0, $$1, "minecraft:salmon_mob");
-      a($$0, $$1, "minecraft:puffer_fish");
-      a($$0, $$1, "minecraft:phantom");
-      a($$0, $$1, "minecraft:dolphin");
-      a($$0, $$1, "minecraft:drowned");
-      $$0.register($$1, "minecraft:trident", $$1x -> DSL.optionalFields("inBlockState", bbg.u.in($$0), "Trident", bbg.t.in($$0)));
+      $$1.remove("TippedArrow");
       return $$1;
    }
 }

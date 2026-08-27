@@ -1,19 +1,65 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class cmn extends cnt {
-   public cmn(cmc.a $$0) {
-      super($$0);
+public class cmn {
+   private final Map<cmm, cmn.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(cmm $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public void a(cmh $$0, @Nullable csy $$1, List<vb> $$2, cny $$3) {
-      cog.a($$0, $$2, 0.25F);
+   public float a(cmm $$0, float $$1) {
+      cmn.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return aui.a($$4 / $$3, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
+      }
    }
 
-   @Override
-   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arc.nj, ard.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<cmm, cmn.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cmm, cmn.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
+      }
+   }
+
+   public void a(cmm $$0, int $$1) {
+      this.a.put($$0, new cmn.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(cmm $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(cmm $$0, int $$1) {
+   }
+
+   protected void c(cmm $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

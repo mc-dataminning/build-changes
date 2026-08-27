@@ -1,24 +1,26 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.List;
 
 public class pv {
-   public static void a(pa<dyo> $$0) {
-      ig<ctx> $$1 = $$0.a(kc.as);
-      ig<dzx> $$2 = $$0.a(kc.aF);
-      $$0.a(
-         dyi.H,
-         new eao(
-            pm.a($$1.b(arq.I), Arrays.stream(bly.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new dyv(dyv.a.a, bhz.c()))), dnu.b.d, dyz.b),
-            $$2.b(pr.a),
-            Optional.empty(),
-            20,
-            dwy.a(dos.a(-40), dos.a(-20)),
-            false,
-            Optional.empty(),
-            116,
-            pr.d
+   public static final ahc<ecx> a = ahc.a(ke.aE, new ahd("trial_chambers_copper_bulb_degradation"));
+
+   public static void a(pc<ecx> $$0) {
+      a(
+         $$0,
+         a,
+         List.of(
+            new ecs(
+               List.of(
+                  new eco(new ecq(cwl.so, 0.1F), ebx.b, cwl.sn.o().a(cxx.c, Boolean.valueOf(true))),
+                  new eco(new ecq(cwl.so, 0.33333334F), ebx.b, cwl.sm.o().a(cxx.c, Boolean.valueOf(true))),
+                  new eco(new ecq(cwl.so, 0.5F), ebx.b, cwl.sl.o().a(cxx.c, Boolean.valueOf(true)))
+               )
+            ),
+            new ecp(asb.bH)
          )
       );
+   }
+
+   private static void a(pc<ecx> $$0, ahc<ecx> $$1, List<ecw> $$2) {
+      $$0.a($$1, new ecx($$2));
    }
 }

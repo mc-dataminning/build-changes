@@ -9,18 +9,18 @@ public class bv extends cv<bv.a> {
       return bv.a.a;
    }
 
-   public void a(amq $$0, cmh $$1, cff $$2, Collection<cmh> $$3) {
-      ege $$4 = bp.b($$0, (blf)($$2.u() != null ? $$2.u() : $$2));
+   public void a(ana $$0, cmr $$1, cfp $$2, Collection<cmr> $$3) {
+      egp $$4 = bp.b($$0, (blp)($$2.u() != null ? $$2.u() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
    public static record a(Optional<bb> b, Optional<ca> c, Optional<bb> d, Optional<ca> e) implements cv.a {
       public static final Codec<bv.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atg.a(bp.b, "player").forGetter(bv.a::a),
-                  atg.a(ca.a, "rod").forGetter(bv.a::b),
-                  atg.a(bp.b, "entity").forGetter(bv.a::c),
-                  atg.a(ca.a, "item").forGetter(bv.a::d)
+                  atq.a(bp.b, "player").forGetter(bv.a::a),
+                  atq.a(ca.a, "rod").forGetter(bv.a::b),
+                  atq.a(bp.b, "entity").forGetter(bv.a::c),
+                  atq.a(ca.a, "item").forGetter(bv.a::d)
                )
                .apply($$0, bv.a::new)
       );
@@ -29,7 +29,7 @@ public class bv extends cv<bv.a> {
          return am.E.a(new bv.a(Optional.empty(), $$0, bp.a($$1), $$2));
       }
 
-      public boolean a(cmh $$0, ege $$1, Collection<cmh> $$2) {
+      public boolean a(cmr $$0, egp $$1, Collection<cmr> $$2) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else if (this.d.isPresent() && !this.d.get().a($$1)) {
@@ -37,12 +37,12 @@ public class bv extends cv<bv.a> {
          } else {
             if (this.e.isPresent()) {
                boolean $$3 = false;
-               blf $$4 = $$1.c(eip.a);
-               if ($$4 instanceof cbe $$5 && this.e.get().a($$5.q())) {
+               blp $$4 = $$1.c(eja.a);
+               if ($$4 instanceof cbo $$5 && this.e.get().a($$5.q())) {
                   $$3 = true;
                }
 
-               for (cmh $$6 : $$2) {
+               for (cmr $$6 : $$2) {
                   if (this.e.get().a($$6)) {
                      $$3 = true;
                      break;

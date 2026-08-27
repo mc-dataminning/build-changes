@@ -1,53 +1,81 @@
-public class eag {
-   public static class a extends dys {
-      public a(hv $$0) {
-         super(dzf.aa, 0, new dyg($$0));
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+
+public abstract class eag {
+   public static final Codec<eag> e = kd.ai.q().dispatch("element_type", eag::a, eah::codec);
+   private static final ih<ecx> a = ih.a(new ecx(List.of()));
+   @Nullable
+   private volatile eai.a b;
+
+   protected static <E extends eag> RecordCodecBuilder<E, eai.a> d() {
+      return eai.a.c.fieldOf("projection").forGetter(eag::e);
+   }
+
+   protected eag(eai.a $$0) {
+      this.b = $$0;
+   }
+
+   public abstract jb a(eda var1, dcv var2);
+
+   public abstract List<ecz.c> a(eda var1, hx var2, dcv var3, aup var4);
+
+   public abstract dyr a(eda var1, hx var2, dcv var3);
+
+   public abstract boolean a(eda var1, cud var2, cub var3, dkx var4, hx var5, hx var6, dcv var7, dyr var8, aup var9, boolean var10);
+
+   public abstract eah<?> a();
+
+   public void a(ctj $$0, ecz.c $$1, hx $$2, dcv $$3, aup $$4, dyr $$5) {
+   }
+
+   public eag a(eai.a $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public eai.a e() {
+      eai.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
       }
+   }
 
-      public a(sj $$0) {
-         super(dzf.aa, $$0);
-      }
+   public int f() {
+      return 1;
+   }
 
-      @Override
-      protected void a(dze $$0, sj $$1) {
-      }
+   public static Function<eai.a, dzz> g() {
+      return $$0 -> dzz.b;
+   }
 
-      @Override
-      public void a(ctt $$0, ctr $$1, dkm $$2, auf $$3, dyg $$4, csf $$5, hv $$6) {
-         int $$7 = $$0.a(dny.a.c, this.f.h(), this.f.j());
-         hv.a $$8 = new hv.a(this.f.h(), $$7, this.f.j());
+   public static Function<eai.a, ead> a(String $$0) {
+      return $$1 -> new ead(Either.left(new ahd($$0)), a, $$1);
+   }
 
-         while ($$8.v() > $$0.J_()) {
-            dip $$9 = $$0.a_($$8);
-            dip $$10 = $$0.a_($$8.d());
-            if ($$10 == cwb.aV.o() || $$10 == cwb.b.o() || $$10 == cwb.g.o() || $$10 == cwb.c.o() || $$10 == cwb.e.o()) {
-               dip $$11 = !$$9.i() && !this.b($$9) ? $$9 : cwb.I.o();
+   public static Function<eai.a, ead> a(String $$0, ih<ecx> $$1) {
+      return $$2 -> new ead(Either.left(new ahd($$0)), $$1, $$2);
+   }
 
-               for (ia $$12 : ia.values()) {
-                  hv $$13 = $$8.a($$12);
-                  dip $$14 = $$0.a_($$13);
-                  if ($$14.i() || this.b($$14)) {
-                     hv $$15 = $$13.d();
-                     dip $$16 = $$0.a_($$15);
-                     if (($$16.i() || this.b($$16)) && $$12 != ia.b) {
-                        $$0.a($$13, $$10, 3);
-                     } else {
-                        $$0.a($$13, $$11, 3);
-                     }
-                  }
-               }
+   public static Function<eai.a, eaf> b(String $$0) {
+      return $$1 -> new eaf(Either.left(new ahd($$0)), a, $$1);
+   }
 
-               this.f = new dyg($$8);
-               this.a($$0, $$4, $$3, $$8, egc.G, null);
-               return;
-            }
+   public static Function<eai.a, eaf> b(String $$0, ih<ecx> $$1) {
+      return $$2 -> new eaf(Either.left(new ahd($$0)), $$1, $$2);
+   }
 
-            $$8.e(0, -1, 0);
-         }
-      }
+   public static Function<eai.a, eaa> a(ih<dyd> $$0) {
+      return $$1 -> new eaa($$0, $$1);
+   }
 
-      private boolean b(dip $$0) {
-         return $$0 == cwb.G.o() || $$0 == cwb.H.o();
-      }
+   public static Function<eai.a, eae> b(List<Function<eai.a, ? extends eag>> $$0) {
+      return $$1 -> new eae($$0.stream().map($$1x -> (eag)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

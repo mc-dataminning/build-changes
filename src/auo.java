@@ -1,24 +1,11 @@
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public interface auo {
+   void a(vd var1);
 
-public class auo<K, V> {
-   private final Function<K, V> a;
-   @Nullable
-   private K b = (K)null;
-   @Nullable
-   private V c;
+   void b(vd var1);
 
-   public auo(Function<K, V> $$0) {
-      this.a = $$0;
-   }
+   void c(vd var1);
 
-   public V a(K $$0) {
-      if (this.c == null || !Objects.equals(this.b, $$0)) {
-         this.c = this.a.apply($$0);
-         this.b = $$0;
-      }
+   void a(int var1);
 
-      return this.c;
-   }
+   void a();
 }

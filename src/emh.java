@@ -1,55 +1,66 @@
-public interface emh extends bje {
-   cmh x();
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-   cmh c(int var1);
+public enum emh implements ave {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
 
-   void b(cmh var1);
+   public static final ave.a<emh> t = ave.a(emh::values);
+   public static final IntFunction<emh> u = ata.a(emh::a, values(), ata.a.a);
+   private final int v;
+   private final String w;
 
-   dgd y();
+   private emh(int $$0, String $$1) {
+      this.v = $$0;
+      this.w = $$1;
+   }
 
-   default cmh h() {
-      return this.c(this.ak_());
+   public int a() {
+      return this.v;
    }
 
    @Override
-   default int b() {
-      return 1;
+   public String c() {
+      return this.w;
    }
 
-   @Override
-   default boolean ai_() {
-      return this.x().b();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cmh b(int $$0) {
-      return this.a($$0, this.ak_());
-   }
-
-   @Override
-   default cmh a(int $$0) {
-      return $$0 == 0 ? this.x() : cmh.f;
-   }
-
-   @Override
-   default cmh a(int $$0, int $$1) {
-      return $$0 != 0 ? cmh.f : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cmh $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
-
-   @Override
-   default boolean a(cer $$0) {
-      return bje.a(this.y(), $$0);
+   @Nullable
+   public static emh a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

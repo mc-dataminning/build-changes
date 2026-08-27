@@ -1,111 +1,205 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import com.google.common.base.MoreObjects;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ama<T> {
-   public static final int a = aly.a + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Optional<T>>>> b = IntStream.range(0, a)
-      .mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap())
-      .collect(Collectors.toList());
-   private volatile int c = a;
-   private final String d;
-   private final LongSet e = new LongOpenHashSet();
-   private final int f;
+public abstract class ama<T extends ama<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   protected final Properties Z;
 
-   public ama(String $$0, int $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public ama(Properties $$0) {
+      this.Z = $$0;
    }
 
-   protected void a(int $$0, csf $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
-         List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
+   public static Properties b(Path $$0) {
+      try {
+         try {
+            Properties var13;
+            try (InputStream $$1 = Files.newInputStream($$0)) {
+               CharsetDecoder $$2 = StandardCharsets.UTF_8
+                  .newDecoder()
+                  .onMalformedInput(CodingErrorAction.REPORT)
+                  .onUnmappableCharacter(CodingErrorAction.REPORT);
+               Properties $$3 = new Properties();
+               $$3.load(new InputStreamReader($$1, $$2));
+               var13 = $$3;
             }
-         }
 
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
+            return var13;
+         } catch (CharacterCodingException var9) {
+            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
+
+            Properties var4;
+            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
+               Properties $$6 = new Properties();
+               $$6.load($$5);
+               var4 = $$6;
+            }
+
+            return var4;
          }
+      } catch (IOException var10) {
+         a.error("Failed to load properties from file: {}", $$0, var10);
+         return new Properties();
       }
    }
 
-   protected void a(Optional<T> $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
+   public void c(Path $$0) {
+      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
+         this.Z.store($$1, "Minecraft server properties");
+      } catch (IOException var7) {
+         a.error("Failed to store properties to file: {}", $$0);
+      }
    }
 
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$2 : this.b) {
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            } else {
-               $$3.removeIf($$0x -> $$0x.isEmpty());
-            }
-
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
-            }
+   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
+      return $$1 -> {
+         try {
+            return $$0.apply($$1);
+         } catch (NumberFormatException var3) {
+            return null;
          }
-      }
-
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
-
-      this.e.remove($$0);
+      };
    }
 
-   private Runnable a(long $$0) {
-      return () -> this.e.add($$0);
+   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
+      return $$2 -> {
+         try {
+            return $$0.apply(Integer.parseInt($$2));
+         } catch (NumberFormatException var4) {
+            return $$1.apply($$2);
+         }
+      };
    }
 
    @Nullable
-   public Stream<Either<T, Runnable>> a() {
-      if (this.e.size() >= this.f) {
-         return null;
-      } else if (!this.b()) {
+   private String c(String $$0) {
+      return (String)this.Z.get($$0);
+   }
+
+   @Nullable
+   protected <V> V a(String $$0, Function<String, V> $$1) {
+      String $$2 = this.c($$0);
+      if ($$2 == null) {
          return null;
       } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$1.removeFirst();
-
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
-         }
-
-         return $$3.stream().map($$1x -> $$1x.map(Either::left).orElseGet(() -> Either.right(this.a($$2))));
+         this.Z.remove($$0);
+         return $$1.apply($$2);
       }
    }
 
-   public boolean b() {
-      return this.c < a;
+   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.Z.put($$0, $$2.apply($$5));
+      return $$5;
    }
 
-   @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
+   protected <V> ama<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.Z.put($$0, $$2.apply($$5));
+      return new ama.a<>($$0, $$5, $$2);
    }
 
-   @VisibleForTesting
-   LongSet c() {
-      return new LongOpenHashSet(this.e);
+   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
+      return this.a($$0, $$2x -> {
+         V $$3x = $$1.apply($$2x);
+         return $$3x != null ? $$2.apply($$3x) : null;
+      }, $$3, $$4);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
+      return this.a($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected <V> ama<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
+      return this.b($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected String a(String $$0, String $$1) {
+      return this.a($$0, Function.identity(), Function.identity(), $$1);
+   }
+
+   @Nullable
+   protected String a(String $$0) {
+      return this.a($$0, Function.identity());
+   }
+
+   protected int a(String $$0, int $$1) {
+      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
+   }
+
+   protected ama<T>.a<Integer> b(String $$0, int $$1) {
+      return this.b($$0, a(Integer::parseInt), $$1);
+   }
+
+   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
+      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
+   }
+
+   protected long a(String $$0, long $$1) {
+      return this.a($$0, a(Long::parseLong), $$1);
+   }
+
+   protected boolean a(String $$0, boolean $$1) {
+      return this.a($$0, Boolean::valueOf, $$1);
+   }
+
+   protected ama<T>.a<Boolean> b(String $$0, boolean $$1) {
+      return this.b($$0, Boolean::valueOf, $$1);
+   }
+
+   @Nullable
+   protected Boolean b(String $$0) {
+      return this.a($$0, Boolean::valueOf);
+   }
+
+   protected Properties a() {
+      Properties $$0 = new Properties();
+      $$0.putAll(this.Z);
+      return $$0;
+   }
+
+   protected abstract T b(iu var1, Properties var2);
+
+   public class a<V> implements Supplier<V> {
+      private final String b;
+      private final V c;
+      private final Function<V, String> d;
+
+      a(String $$1, V $$2, Function<V, String> $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public V get() {
+         return this.c;
+      }
+
+      public T a(iu $$0, V $$1) {
+         Properties $$2 = ama.this.a();
+         $$2.put(this.b, this.d.apply($$1));
+         return ama.this.b($$0, $$2);
+      }
    }
 }

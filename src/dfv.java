@@ -1,91 +1,30 @@
-public class dfv {
-   public static final ags<dfu> a = a("base");
-   public static final ags<dfu> b = a("square_bottom_left");
-   public static final ags<dfu> c = a("square_bottom_right");
-   public static final ags<dfu> d = a("square_top_left");
-   public static final ags<dfu> e = a("square_top_right");
-   public static final ags<dfu> f = a("stripe_bottom");
-   public static final ags<dfu> g = a("stripe_top");
-   public static final ags<dfu> h = a("stripe_left");
-   public static final ags<dfu> i = a("stripe_right");
-   public static final ags<dfu> j = a("stripe_center");
-   public static final ags<dfu> k = a("stripe_middle");
-   public static final ags<dfu> l = a("stripe_downright");
-   public static final ags<dfu> m = a("stripe_downleft");
-   public static final ags<dfu> n = a("small_stripes");
-   public static final ags<dfu> o = a("cross");
-   public static final ags<dfu> p = a("straight_cross");
-   public static final ags<dfu> q = a("triangle_bottom");
-   public static final ags<dfu> r = a("triangle_top");
-   public static final ags<dfu> s = a("triangles_bottom");
-   public static final ags<dfu> t = a("triangles_top");
-   public static final ags<dfu> u = a("diagonal_left");
-   public static final ags<dfu> v = a("diagonal_up_right");
-   public static final ags<dfu> w = a("diagonal_up_left");
-   public static final ags<dfu> x = a("diagonal_right");
-   public static final ags<dfu> y = a("circle");
-   public static final ags<dfu> z = a("rhombus");
-   public static final ags<dfu> A = a("half_vertical");
-   public static final ags<dfu> B = a("half_horizontal");
-   public static final ags<dfu> C = a("half_vertical_right");
-   public static final ags<dfu> D = a("half_horizontal_bottom");
-   public static final ags<dfu> E = a("border");
-   public static final ags<dfu> F = a("curly_border");
-   public static final ags<dfu> G = a("gradient");
-   public static final ags<dfu> H = a("gradient_up");
-   public static final ags<dfu> I = a("bricks");
-   public static final ags<dfu> J = a("globe");
-   public static final ags<dfu> K = a("creeper");
-   public static final ags<dfu> L = a("skull");
-   public static final ags<dfu> M = a("flower");
-   public static final ags<dfu> N = a("mojang");
-   public static final ags<dfu> O = a("piglin");
+import com.mojang.serialization.MapCodec;
 
-   private static ags<dfu> a(String $$0) {
-      return ags.a(kc.d, new agt($$0));
+public class dfv extends czy {
+   public static final MapCodec<dfv> c = b(dfv::new);
+   protected static final emf g = cwj.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+
+   @Override
+   public MapCodec<dfv> a() {
+      return c;
    }
 
-   public static dfu a(ir<dfu> $$0) {
-      ir.a($$0, a, new dfu("b"));
-      ir.a($$0, b, new dfu("bl"));
-      ir.a($$0, c, new dfu("br"));
-      ir.a($$0, d, new dfu("tl"));
-      ir.a($$0, e, new dfu("tr"));
-      ir.a($$0, f, new dfu("bs"));
-      ir.a($$0, g, new dfu("ts"));
-      ir.a($$0, h, new dfu("ls"));
-      ir.a($$0, i, new dfu("rs"));
-      ir.a($$0, j, new dfu("cs"));
-      ir.a($$0, k, new dfu("ms"));
-      ir.a($$0, l, new dfu("drs"));
-      ir.a($$0, m, new dfu("dls"));
-      ir.a($$0, n, new dfu("ss"));
-      ir.a($$0, o, new dfu("cr"));
-      ir.a($$0, p, new dfu("sc"));
-      ir.a($$0, q, new dfu("bt"));
-      ir.a($$0, r, new dfu("tt"));
-      ir.a($$0, s, new dfu("bts"));
-      ir.a($$0, t, new dfu("tts"));
-      ir.a($$0, u, new dfu("ld"));
-      ir.a($$0, v, new dfu("rd"));
-      ir.a($$0, w, new dfu("lud"));
-      ir.a($$0, x, new dfu("rud"));
-      ir.a($$0, y, new dfu("mc"));
-      ir.a($$0, z, new dfu("mr"));
-      ir.a($$0, A, new dfu("vh"));
-      ir.a($$0, B, new dfu("hh"));
-      ir.a($$0, C, new dfu("vhr"));
-      ir.a($$0, D, new dfu("hhb"));
-      ir.a($$0, E, new dfu("bo"));
-      ir.a($$0, F, new dfu("cbo"));
-      ir.a($$0, G, new dfu("gra"));
-      ir.a($$0, H, new dfu("gru"));
-      ir.a($$0, I, new dfu("bri"));
-      ir.a($$0, J, new dfu("glb"));
-      ir.a($$0, K, new dfu("cre"));
-      ir.a($$0, L, new dfu("sku"));
-      ir.a($$0, M, new dfu("flo"));
-      ir.a($$0, N, new dfu("moj"));
-      return ir.a($$0, O, new dfu("pig"));
+   public dfv(diz.d $$0) {
+      super($$0, ic.a, g, false, 0.1);
+   }
+
+   @Override
+   protected int a(aup $$0) {
+      return dbo.a($$0);
+   }
+
+   @Override
+   protected cwj b() {
+      return cwl.oA;
+   }
+
+   @Override
+   protected boolean g(dja $$0) {
+      return dbo.a($$0);
    }
 }

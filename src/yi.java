@@ -1,18 +1,17 @@
-public record yi() implements wu<yh> {
-   public yi(ue $$0) {
-      this();
+public record yi(hx b) implements xx {
+   public static final ahd a = new ahd("debug/poi_removed");
+
+   public yi(ug $$0) {
+      this($$0.e());
    }
 
    @Override
-   public void a(ue $$0) {
-   }
-
-   public void a(yh $$0) {
-      $$0.a(this);
+   public void a(ug $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public ud c() {
-      return ud.b;
+   public ahd a() {
+      return a;
    }
 }

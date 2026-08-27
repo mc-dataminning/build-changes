@@ -4,11 +4,11 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 public record bg(ck.c b, ck.c c, ck.c d, ck.c e, ck.c f) {
    public static final Codec<bg> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atg.a(ck.c.d, "x", ck.c.c).forGetter(bg::a),
-               atg.a(ck.c.d, "y", ck.c.c).forGetter(bg::b),
-               atg.a(ck.c.d, "z", ck.c.c).forGetter(bg::c),
-               atg.a(ck.c.d, "horizontal", ck.c.c).forGetter(bg::d),
-               atg.a(ck.c.d, "absolute", ck.c.c).forGetter(bg::e)
+               atq.a(ck.c.d, "x", ck.c.c).forGetter(bg::a),
+               atq.a(ck.c.d, "y", ck.c.c).forGetter(bg::b),
+               atq.a(ck.c.d, "z", ck.c.c).forGetter(bg::c),
+               atq.a(ck.c.d, "horizontal", ck.c.c).forGetter(bg::d),
+               atq.a(ck.c.d, "absolute", ck.c.c).forGetter(bg::e)
             )
             .apply($$0, bg::new)
    );
@@ -29,7 +29,7 @@ public record bg(ck.c b, ck.c c, ck.c d, ck.c e, ck.c f) {
       float $$6 = (float)($$0 - $$3);
       float $$7 = (float)($$1 - $$4);
       float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)aty.e($$6)) || !this.c.d((double)aty.e($$7)) || !this.d.d((double)aty.e($$8))) {
+      if (!this.b.d((double)aui.e($$6)) || !this.c.d((double)aui.e($$7)) || !this.d.d((double)aui.e($$8))) {
          return false;
       } else {
          return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));

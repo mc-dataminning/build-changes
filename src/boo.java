@@ -1,48 +1,41 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
 
-public class boo<E extends blx> extends bop<E> {
-   private final asg<cvz> m;
-   private final float n;
-   private final List<bop.a> o = new ArrayList<>();
-   private boolean p;
+public class boo extends bnw<ceo> {
+   private static final int d = 1200;
+   final float c;
 
-   public boo(biw $$0, int $$1, int $$2, float $$3, Function<E, arb> $$4, asg<cvz> $$5, float $$6, BiPredicate<E, hv> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public boo(float $$0) {
+      super(ImmutableMap.of(bvh.d, bvi.a), 1200);
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(amp $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.eg().i() < this.n;
+   protected boolean a(amz $$0, ceo $$1) {
+      return $$1.dO().g().map($$0x -> $$0x == cgn.b || $$0x == cgn.c || $$0x == cgn.d).orElse(true);
    }
 
-   @Override
-   protected Optional<bop.a> a(amp $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         hv.a $$1 = new hv.a();
+   protected boolean a(amz $$0, ceo $$1, long $$2) {
+      return $$1.dO().a(bvh.d);
+   }
 
-         while (!this.h.isEmpty()) {
-            Optional<bop.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bop.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), ia.a)).a(this.m)) {
-                  return $$2;
-               }
+   protected void b(amz $$0, ceo $$1, long $$2) {
+      bny.a($$1, $$1.dO().c(bvh.d).get().b(), this.c, 1);
+   }
 
-               this.o.add($$3);
+   protected void c(amz $$0, ceo $$1, long $$2) {
+      Optional<ig> $$3 = $$1.dO().c(bvh.d);
+      $$3.ifPresent($$1x -> {
+         hx $$2x = $$1x.b();
+         amz $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            bxg $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
             }
-         }
 
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+            adf.c($$0, $$2x);
+         }
+      });
+      $$1.dO().b(bvh.d);
    }
 }

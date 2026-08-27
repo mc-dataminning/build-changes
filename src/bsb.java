@@ -1,77 +1,51 @@
-import java.util.function.Predicate;
+public class bsb extends bse {
+   private final int l;
+   private final boolean m;
 
-public class bsb extends bsi {
-   private static final int g = 240;
-   private final Predicate<bji> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
-
-   public bsb(blx $$0, Predicate<bji> $$1) {
+   public bsb(bmh $$0, int $$1, boolean $$2) {
       super($$0);
-      this.h = $$1;
-   }
-
-   public bsb(blx $$0, int $$1, Predicate<bji> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
-   }
-
-   protected int f() {
-      return Math.max(240, this.c);
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public boolean a() {
-      if (!super.a()) {
-         return false;
-      } else {
-         return !this.d.dM().Y().b(csu.c) ? false : this.a(this.d.dM().aj()) && !this.h();
-      }
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.a = 0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dk(), 2.0) && this.a(this.d.dM().aj());
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.d.dM().a(this.d.aj(), this.e, -1);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (this.d.eg().a(20) == 0) {
-         this.d.dM().c(1019, this.e, 0);
-         if (!this.d.aF) {
-            this.d.a(this.d.fo());
+   public void a() {
+      if (this.k == bse.a.b) {
+         this.k = bse.a.a;
+         this.d.e(true);
+         double $$0 = this.e - this.d.dr();
+         double $$1 = this.f - this.d.dt();
+         double $$2 = this.g - this.d.dx();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.B(0.0F);
+            this.d.A(0.0F);
+            return;
          }
-      }
 
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dM().a(this.d.aj(), this.e, $$0);
-         this.b = $$0;
-      }
+         float $$4 = (float)(aui.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dC(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aC()) {
+            $$5 = (float)(this.h * this.d.b(bnl.m));
+         } else {
+            $$5 = (float)(this.h * this.d.b(bnl.f));
+         }
 
-      if (this.a == this.f() && this.a(this.d.dM().aj())) {
-         this.d.dM().a(this.e, false);
-         this.d.dM().c(1021, this.e, 0);
-         this.d.dM().c(2001, this.e, cvz.i(this.d.dM().a_(this.e)));
-      }
-   }
+         this.d.w($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(aui.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.s(this.a(this.d.dE(), $$8, (float)this.l));
+            this.d.B($$1 > 0.0 ? $$5 : -$$5);
+         }
+      } else {
+         if (!this.m) {
+            this.d.e(false);
+         }
 
-   private boolean a(bji $$0) {
-      return this.h.test($$0);
+         this.d.B(0.0F);
+         this.d.A(0.0F);
+      }
    }
 }

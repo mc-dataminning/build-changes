@@ -1,13 +1,14 @@
-public record zc() implements wu<yo> {
-   public zc(ue $$0) {
-      this();
+public record zc(int a) implements xd<yx> {
+   public zc(ug $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 }

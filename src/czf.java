@@ -1,55 +1,54 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class czf extends cwi implements cwc {
-   public static final MapCodec<czf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ags.a(kc.av).fieldOf("feature").forGetter($$0x -> $$0x.e), kb.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, czf::new)
-   );
-   protected static final elu b = cvz.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final cvz d;
-   private final ags<dqp<?, ?>> e;
-
-   @Override
-   public MapCodec<czf> a() {
-      return a;
-   }
-
-   protected czf(ags<dqp<?, ?>> $$0, cvz $$1, dio.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
+public abstract class czf extends cwj implements cze {
+   public czf(diz.d $$0) {
+      super($$0);
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return b;
+   protected abstract MapCodec<? extends czf> a();
+
+   @Override
+   public void b(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   protected boolean b(dip $$0, cse $$1, hv $$2) {
-      return $$0.a(arr.aK) || $$0.a(cwb.fl) || $$0.a(cwb.dX) || super.b($$0, $$1, $$2);
-   }
-
-   private Optional<? extends ie<dqp<?, ?>>> a(ctb $$0) {
-      return $$0.I_().d(kc.av).b(this.e);
+   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
+      $$3.a($$4, this, this.b());
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean b(ctb $$0, hv $$1, dip $$2) {
-      dip $$3 = $$0.a_($$1.d());
-      return $$3.a(this.d);
+   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if (h($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
+         cbn $$4 = cbn.a($$1, $$2, $$0);
+         this.a($$4);
+      }
+   }
+
+   protected void a(cbn $$0) {
+   }
+
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean h(dja $$0) {
+      return $$0.i() || $$0.a(asb.aJ) || $$0.k() || $$0.r();
    }
 
    @Override
-   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
-      return (double)$$1.i() < 0.4;
+   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
+      if ($$3.a(16) == 0) {
+         hx $$4 = $$2.d();
+         if (h($$1.a_($$4))) {
+            aul.a($$1, $$2, $$3, new jp(jx.B, $$0));
+         }
+      }
    }
 
-   @Override
-   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
-      this.a($$0).ifPresent($$3x -> ((dqp)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2));
+   public int b(dja $$0, cso $$1, hx $$2) {
+      return -16777216;
    }
 }

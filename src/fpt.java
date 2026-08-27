@@ -1,37 +1,30 @@
-public class fpt extends fpw {
-   private final fju a;
-   private final fsq b = fsq.i(fxh.a);
+public class fpt extends fpf {
+   private static final int a = 12235202;
 
-   fpt(fmt $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new fjf(euk.N().aO().a(flx.S));
-      this.u = 0.0F;
-      this.t = 30;
+   protected fpt(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fri $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)ats.b.b(12235202) / 255.0F - $$9;
+      this.w = (float)ats.b.c(12235202) / 255.0F - $$9;
+      this.x = (float)ats.b.d(12235202) / 255.0F - $$9;
    }
 
    @Override
-   public fqa b() {
-      return fqa.e;
+   public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   @Override
-   public void a(eph $$0, etv $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * aty.a($$3 * (float) Math.PI);
-      epd $$5 = new epd();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      fsi.a $$6 = euk.N().aN().c();
-      eph $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, gdf.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
-   }
+   public static class a implements fqq<ka> {
+      private final fri a;
 
-   public static class a implements fpz<jy> {
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpt($$1, $$2, $$3, $$4);
+      public a(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpt($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

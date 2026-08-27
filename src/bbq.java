@@ -1,40 +1,39 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import java.util.Locale;
-import java.util.Objects;
+import com.mojang.datafixers.DSL.TypeReference;
 
-public abstract class bbq extends DataFix {
-   private final String a;
-
-   public bbq(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
-   }
-
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbg.x);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbg.x);
-      Type<Pair<String, String>> $$2 = DSL.named(bbg.v.typeName(), bco.a());
-      if (!Objects.equals(this.getOutputSchema().getType(bbg.v), $$2)) {
-         throw new IllegalStateException("Entity name type is not what was expected.");
-      } else {
-         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
-                  String $$3 = this.a($$2xxx);
-                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
-                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
-                  if (!$$5.equals($$4, true, true)) {
-                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
-                  } else {
-                     return $$3;
-                  }
-               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
-      }
-   }
-
-   protected abstract String a(String var1);
+public class bbq {
+   public static final TypeReference a = () -> "level";
+   public static final TypeReference b = () -> "player";
+   public static final TypeReference c = () -> "chunk";
+   public static final TypeReference d = () -> "hotbar";
+   public static final TypeReference e = () -> "options";
+   public static final TypeReference f = () -> "structure";
+   public static final TypeReference g = () -> "stats";
+   public static final TypeReference h = () -> "saved_data/command_storage";
+   public static final TypeReference i = () -> "saved_data/chunks";
+   public static final TypeReference j = () -> "saved_data/map_data";
+   public static final TypeReference k = () -> "saved_data/idcounts";
+   public static final TypeReference l = () -> "saved_data/raids";
+   public static final TypeReference m = () -> "saved_data/random_sequences";
+   public static final TypeReference n = () -> "saved_data/structure_feature_indices";
+   public static final TypeReference o = () -> "saved_data/scoreboard";
+   public static final TypeReference p = () -> "advancements";
+   public static final TypeReference q = () -> "poi_chunk";
+   public static final TypeReference r = () -> "entity_chunk";
+   public static final TypeReference s = () -> "block_entity";
+   public static final TypeReference t = () -> "item_stack";
+   public static final TypeReference u = () -> "block_state";
+   public static final TypeReference v = () -> "entity_name";
+   public static final TypeReference w = () -> "entity_tree";
+   public static final TypeReference x = () -> "entity";
+   public static final TypeReference y = () -> "block_name";
+   public static final TypeReference z = () -> "item_name";
+   public static final TypeReference A = () -> "game_event_name";
+   public static final TypeReference B = () -> "untagged_spawner";
+   public static final TypeReference C = () -> "structure_feature";
+   public static final TypeReference D = () -> "objective";
+   public static final TypeReference E = () -> "team";
+   public static final TypeReference F = () -> "recipe";
+   public static final TypeReference G = () -> "biome";
+   public static final TypeReference H = () -> "multi_noise_biome_source_parameter_list";
+   public static final TypeReference I = () -> "world_gen_settings";
 }

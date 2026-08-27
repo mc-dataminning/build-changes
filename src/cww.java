@@ -1,72 +1,61 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cww extends czo implements cwc, cwv {
-   public static final MapCodec<cww> c = b(cww::new);
-   private static final float g = 0.11F;
+public class cww extends ddb {
+   public static final MapCodec<cww> a = b(cww::new);
+   public static final dju b = djq.R;
 
    @Override
    public MapCodec<cww> a() {
-      return c;
+      return a;
    }
 
-   public cww(dio.d $$0) {
-      super($$0, ia.a, r_, false, 0.1);
-      this.k(this.E.b().a(e, Integer.valueOf(0)).a(s_, Boolean.valueOf(false)));
+   public cww(diz.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, ic.c));
+   }
+
+   @Nullable
+   @Override
+   public dgo a(hx $$0, dja $$1) {
+      return new dgt($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
+      return !$$0.B ? a($$2, dgq.J, ($$0x, $$1x, $$2x, $$3) -> dnt.c.a($$0x, $$3.gg(), $$3.gh())) : null;
+   }
+
+   @Nullable
+   @Override
+   public dja a(cpa $$0) {
+      return super.a($$0).a(b, $$0.g());
    }
 
    @Override
-   protected int a(auf $$0) {
-      return 1;
+   public int a(dja $$0, cso $$1, hx $$2, ic $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
    }
 
    @Override
-   protected boolean g(dip $$0) {
-      return $$0.i();
-   }
-
-   @Override
-   protected cvz b() {
-      return cwb.sw;
-   }
-
-   @Override
-   protected dip a(dip $$0, dip $$1) {
-      return $$1.a(s_, $$0.c(s_));
-   }
-
-   @Override
-   protected dip a(dip $$0, auf $$1) {
-      return super.a($$0, $$1).a(s_, Boolean.valueOf($$1.i() < 0.11F));
-   }
-
-   @Override
-   public cmh a(ctb $$0, hv $$1, dip $$2) {
-      return new cmh(cmk.wj);
-   }
-
-   @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      return cwv.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
+   protected void a(djb.a<cwj, dja> $$0) {
       super.a($$0);
-      $$0.a(s_);
+      $$0.a(b);
    }
 
    @Override
-   public boolean b(ctb $$0, hv $$1, dip $$2) {
-      return !$$2.c(s_);
+   public dja a(dja $$0, dcv $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
-      return true;
+   public dja a(dja $$0, dbf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
-      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
+   public int c() {
+      return 10;
    }
 }

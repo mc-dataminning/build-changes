@@ -1,36 +1,20 @@
-public class adx implements wu<acw> {
-   private final int a;
-   private final agt b;
-   private final boolean c;
-
-   public adx(int $$0, cpn<?> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1.a();
-      this.c = $$2;
-   }
-
-   public adx(ue $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.t();
-      this.c = $$0.readBoolean();
+public record adx(int a, int b, boolean c) implements xd<adg> {
+   public adx(ug $$0) {
+      this($$0.n(), $$0.n(), $$0.readBoolean());
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.k(this.a);
-      $$0.a(this.b);
+   public void a(ug $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
       $$0.a(this.c);
    }
 
-   public void a(acw $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public agt d() {
+   public int d() {
       return this.b;
    }
 

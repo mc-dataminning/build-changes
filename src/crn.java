@@ -1,11 +1,11 @@
-public class crn extends cqs {
-   public crn(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.i, $$1);
+public class crn extends crc {
+   public crn(crc.a $$0, blu... $$1) {
+      super($$0, crd.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 5 + $$0 * 7;
+      return 20;
    }
 
    @Override
@@ -14,7 +14,7 @@ public class crn extends cqs {
    }
 
    @Override
-   public int a() {
-      return 3;
+   public boolean a(crc $$0) {
+      return super.a($$0) && $$0 != crg.K;
    }
 }

@@ -1,19 +1,33 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dui<P extends duh> {
-   public static final dui<duk> a = a("two_layers_feature_size", duk.d);
-   public static final dui<duj> b = a("three_layers_feature_size", duj.d);
-   private final Codec<P> c;
+public record dui(int b, int c, int d, int e, int f, bja g, float h) implements dtr {
+   public static final Codec<dui> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dui::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dui::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dui::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dui::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dui::f),
+               bja.c.fieldOf("extra_rare_growths").forGetter(dui::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dui::h)
+            )
+            .apply($$0, dui::new)
+   );
 
-   private static <P extends duh> dui<P> a(String $$0, Codec<P> $$1) {
-      return ir.a(kb.aa, $$0, new dui<>($$1));
+   public int a() {
+      return this.b;
    }
 
-   private dui(Codec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public Codec<P> a() {
+   public int b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

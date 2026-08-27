@@ -1,49 +1,61 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public record dvp(dvh b, List<dvp.a> c) {
-   public static final Codec<dvp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dvh.a.fieldOf("fallback").forGetter(dvp::a), dvp.a.a.listOf().fieldOf("rules").forGetter(dvp::b)).apply($$0, dvp::new)
-   );
+public abstract class dvp {
+   public static final Codec<dvp> d = kd.Y.q().dispatch(dvp::a, dvq::a);
+   protected final bja e;
+   protected final dvs f;
+   protected final Optional<dvm> g;
 
-   public static dvp a(dvh $$0) {
-      return new dvp($$0, List.of());
+   protected static <P extends dvp> P3<Mu<P>, bja, dvs, Optional<dvm>> a(Instance<P> $$0) {
+      return $$0.group(
+         bja.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         dvs.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         dvm.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public static dvp a(cvz $$0) {
-      return a(dvh.a($$0));
+   public dvp(bja $$0, dvs $$1, Optional<dvm> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public dip a(ctt $$0, auf $$1, hv $$2) {
-      for (dvp.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+   protected abstract dvq<?> a();
+
+   public abstract boolean a(cto var1, BiConsumer<hx, dja> var2, aup var3, hx var4, hx var5, dun var6);
+
+   protected boolean a(cto $$0, hx $$1) {
+      return dsz.c($$0, $$1);
+   }
+
+   protected void a(cto $$0, BiConsumer<hx, dja> $$1, aup $$2, hx $$3, dun $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            dvm $$5 = this.g.get();
+            hx $$6 = $$3.c();
+            if ($$2.i() < $$5.b() && $$0.a($$6, diz.a::i)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
          }
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public dvh a() {
-      return this.b;
-   }
-
-   public List<dvp.a> b() {
-      return this.c;
-   }
-
-   public static record a(dpf b, dvh c) {
-      public static final Codec<dvp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dpf.b.fieldOf("if_true").forGetter(dvp.a::a), dvh.a.fieldOf("then").forGetter(dvp.a::b)).apply($$0, dvp.a::new)
-      );
-
-      public dpf a() {
-         return this.b;
+   protected dja a(cto $$0, hx $$1, dja $$2) {
+      if ($$2.b(djq.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(asg.a));
+         return $$2.a(djq.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
       }
+   }
 
-      public dvh b() {
-         return this.c;
-      }
+   public hx a(hx $$0, aup $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

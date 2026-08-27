@@ -1,123 +1,225 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class gec implements gds {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gec> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               agt.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               atg.a(gec.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, gec::new)
-   );
-   private final agt d;
-   private final List<gec.a> e;
-   private final double f;
-   private final double g;
+public class gec<T extends gec.a> {
+   private static final Comparator<gec.b<?>> a = Comparator.<gec.b<?>, Integer>comparing($$0 -> -$$0.c)
+      .thenComparing($$0 -> -$$0.b)
+      .thenComparing($$0 -> $$0.a.c());
+   private final int b;
+   private final List<gec.b<T>> c = new ArrayList<>();
+   private final List<gec.c<T>> d = new ArrayList<>();
+   private int e;
+   private int f;
+   private final int g;
+   private final int h;
 
-   public gec(agt $$0, List<gec.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public gec(int $$0, int $$1, int $$2) {
+      this.b = $$2;
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   @Override
-   public void a(aps $$0, gds.a $$1) {
-      agt $$2 = a.a(this.d);
-      Optional<apq> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         gdy $$4 = new gdy($$2, $$3.get(), this.e.size());
+   public int a() {
+      return this.e;
+   }
 
-         for (gec.a $$5 : this.e) {
-            $$1.a($$5.b, new gec.b($$4, $$5, this.f, this.g));
+   public int b() {
+      return this.f;
+   }
+
+   public void a(T $$0) {
+      gec.b<T> $$1 = new gec.b<>($$0, this.b);
+      this.c.add($$1);
+   }
+
+   public void c() {
+      List<gec.b<T>> $$0 = new ArrayList<>(this.c);
+      $$0.sort(a);
+
+      for (gec.b<T> $$1 : $$0) {
+         if (!this.a($$1)) {
+            throw new ged($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
          }
+      }
+   }
+
+   public void a(gec.d<T> $$0) {
+      for (gec.c<T> $$1 : this.d) {
+         $$1.a($$0);
+      }
+   }
+
+   static int a(int $$0, int $$1) {
+      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
+   }
+
+   private boolean a(gec.b<T> $$0) {
+      for (gec.c<T> $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return this.b($$0);
+   }
+
+   private boolean b(gec.b<T> $$0) {
+      int $$1 = aui.c(this.e);
+      int $$2 = aui.c(this.f);
+      int $$3 = aui.c(this.e + $$0.b);
+      int $$4 = aui.c(this.f + $$0.c);
+      boolean $$5 = $$3 <= this.g;
+      boolean $$6 = $$4 <= this.h;
+      if (!$$5 && !$$6) {
+         return false;
       } else {
-         c.warn("Missing sprite: {}", $$2);
+         boolean $$7 = $$5 && $$1 != $$3;
+         boolean $$8 = $$6 && $$2 != $$4;
+         boolean $$9;
+         if ($$7 ^ $$8) {
+            $$9 = $$7;
+         } else {
+            $$9 = $$5 && $$1 <= $$2;
+         }
+
+         gec.c<T> $$11;
+         if ($$9) {
+            if (this.f == 0) {
+               this.f = $$4;
+            }
+
+            $$11 = new gec.c<>(this.e, 0, $$3 - this.e, this.f);
+            this.e = $$3;
+         } else {
+            $$11 = new gec.c<>(0, this.f, this.e, $$4 - this.f);
+            this.f = $$4;
+         }
+
+         $$11.a($$0);
+         this.d.add($$11);
+         return true;
       }
    }
 
-   @Override
-   public gdu a() {
-      return gdv.d;
+   public interface a {
+      int a();
+
+      int b();
+
+      ahd c();
    }
 
-   static record a(agt b, double c, double d, double e, double f) {
-      public static final Codec<gec.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  agt.a.fieldOf("sprite").forGetter(gec.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(gec.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(gec.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(gec.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(gec.a::e)
-               )
-               .apply($$0, gec.a::new)
-      );
+   static record b<T extends gec.a>(T a, int b, int c) {
 
-      public agt a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
+      public b(T $$0, int $$1) {
+         this($$0, gec.a($$0.a(), $$1), gec.a($$0.b(), $$1));
       }
    }
 
-   static class b implements gds.b {
-      private final gdy a;
-      private final gec.a b;
-      private final double c;
-      private final double d;
+   public static class c<T extends gec.a> {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private List<gec.c<T>> e;
+      @Nullable
+      private gec.b<T> f;
 
-      b(gdy $$0, gec.a $$1, double $$2, double $$3) {
+      public c(int $$0, int $$1, int $$2, int $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
          this.d = $$3;
       }
 
-      public gdi a(gdr $$0) {
-         try {
-            eoe $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = aty.a(this.b.c * $$2);
-            int $$5 = aty.a(this.b.d * $$3);
-            int $$6 = aty.a(this.b.e * $$2);
-            int $$7 = aty.a(this.b.f * $$3);
-            eoe $$8 = new eoe(eoe.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new gdi(this.b.b, new gfb($$6, $$7), $$8, apu.a);
-         } catch (Exception var16) {
-            gec.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
-         }
+      public int a() {
+         return this.a;
+      }
 
-         return gde.a();
+      public int b() {
+         return this.b;
+      }
+
+      public boolean a(gec.b<T> $$0) {
+         if (this.f != null) {
+            return false;
+         } else {
+            int $$1 = $$0.b;
+            int $$2 = $$0.c;
+            if ($$1 <= this.c && $$2 <= this.d) {
+               if ($$1 == this.c && $$2 == this.d) {
+                  this.f = $$0;
+                  return true;
+               } else {
+                  if (this.e == null) {
+                     this.e = new ArrayList<>(1);
+                     this.e.add(new gec.c<>(this.a, this.b, $$1, $$2));
+                     int $$3 = this.c - $$1;
+                     int $$4 = this.d - $$2;
+                     if ($$4 > 0 && $$3 > 0) {
+                        int $$5 = Math.max(this.d, $$3);
+                        int $$6 = Math.max(this.c, $$4);
+                        if ($$5 >= $$6) {
+                           this.e.add(new gec.c<>(this.a, this.b + $$2, $$1, $$4));
+                           this.e.add(new gec.c<>(this.a + $$1, this.b, $$3, this.d));
+                        } else {
+                           this.e.add(new gec.c<>(this.a + $$1, this.b, $$3, $$2));
+                           this.e.add(new gec.c<>(this.a, this.b + $$2, this.c, $$4));
+                        }
+                     } else if ($$3 == 0) {
+                        this.e.add(new gec.c<>(this.a, this.b + $$2, $$1, $$4));
+                     } else if ($$4 == 0) {
+                        this.e.add(new gec.c<>(this.a + $$1, this.b, $$3, $$2));
+                     }
+                  }
+
+                  for (gec.c<T> $$7 : this.e) {
+                     if ($$7.a($$0)) {
+                        return true;
+                     }
+                  }
+
+                  return false;
+               }
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public void a(gec.d<T> $$0) {
+         if (this.f != null) {
+            $$0.load(this.f.a, this.a(), this.b());
+         } else if (this.e != null) {
+            for (gec.c<T> $$1 : this.e) {
+               $$1.a($$0);
+            }
+         }
       }
 
       @Override
-      public void a() {
-         this.a.b();
+      public String toString() {
+         return "Slot{originX="
+            + this.a
+            + ", originY="
+            + this.b
+            + ", width="
+            + this.c
+            + ", height="
+            + this.d
+            + ", texture="
+            + this.f
+            + ", subSlots="
+            + this.e
+            + "}";
       }
+   }
+
+   public interface d<T extends gec.a> {
+      void load(T var1, int var2, int var3);
    }
 }

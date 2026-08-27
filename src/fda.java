@@ -1,131 +1,176 @@
-public abstract class fda extends fcc {
-   private static final vb m = vb.c("advMode.setCommand");
-   private static final vb n = vb.c("advMode.command");
-   private static final vb o = vb.c("advMode.previousOutput");
-   protected ewq a;
-   protected ewq b;
-   protected ewh c;
-   protected ewh k;
-   protected ewo<Boolean> l;
-   ewk p;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public fda() {
-      super(euc.a);
-   }
+public class fda extends fcl {
+   private static final vd c = vd.c("options.graphics.fabulous").a(n.u);
+   private static final vd k = vd.a("options.graphics.warning.message", c, c);
+   private static final vd l = vd.c("options.graphics.warning.title").a(n.m);
+   private static final vd m = vd.c("options.graphics.warning.accept");
+   private static final vd n = vd.c("options.graphics.warning.cancel");
+   private exv o;
+   private final fst p;
+   private final int q;
 
-   @Override
-   public void d() {
-      if (!this.l().j()) {
-         this.aF_();
-      }
-   }
-
-   abstract crz l();
-
-   abstract int C();
-
-   @Override
-   protected void aP_() {
-      this.c = this.d(ewh.a(va.d, $$0x -> this.D()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
-      this.k = this.d(ewh.a(va.e, $$0x -> this.aF_()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.l().o();
-      this.l = this.d(ewo.a(vb.b("O"), vb.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.C(), 20, 20, vb.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         crz $$2 = this.l();
-         $$2.a($$1);
-         this.c($$1);
-      }));
-      this.a = new ewq(this.i, this.g / 2 - 150, 50, 300, 20, vb.c("advMode.command")) {
-         @Override
-         protected vp aM_() {
-            return super.aM_().b(fda.this.p.e());
-         }
+   private static evd<?>[] a(eve $$0) {
+      return new evd[]{
+         $$0.j(),
+         $$0.e(),
+         $$0.l(),
+         $$0.f(),
+         $$0.k(),
+         $$0.h(),
+         $$0.L(),
+         $$0.Y(),
+         $$0.an(),
+         $$0.B(),
+         $$0.am(),
+         $$0.i(),
+         $$0.X(),
+         $$0.ao(),
+         $$0.A(),
+         $$0.M(),
+         $$0.ag(),
+         $$0.g(),
+         $$0.ah(),
+         $$0.ac(),
+         $$0.aj(),
+         $$0.ak()
       };
-      this.a.l(32500);
-      this.a.b(this::a);
-      this.e(this.a);
-      this.b = new ewq(this.i, this.g / 2 - 150, this.C(), 276, 20, vb.c("advMode.previousOutput"));
-      this.b.l(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.e(this.b);
-      this.c(this.a);
-      this.p = new ewk(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.p.a(true);
-      this.p.d();
-      this.c($$0);
    }
 
-   @Override
-   protected vb z() {
-      return this.p.a() ? this.p.b() : super.z();
-   }
-
-   @Override
-   public void a(euk $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.p.d();
-   }
-
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.l().l().getString() : "-");
-   }
-
-   protected void D() {
-      crz $$0 = this.l();
-      this.a($$0);
-      if (!$$0.o()) {
-         $$0.c(null);
+   public fda(fct $$0, eve $$1) {
+      super($$0, $$1, vd.c("options.videoTitle"));
+      this.p = $$0.f.ag();
+      this.p.i();
+      if ($$1.j().c() == eut.c) {
+         this.p.e();
       }
 
-      this.f.a(null);
-   }
-
-   protected abstract void a(crz var1);
-
-   private void a(String $$0) {
-      this.p.d();
+      this.q = $$1.A().c();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.p.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
+   protected void aN_() {
+      this.o = this.d(new exv(this.f, this.g, this.h - 64, 32, 25));
+      int $$0 = -1;
+      eox $$1 = this.f.aL();
+      eos $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
       } else {
-         this.D();
+         Optional<eow> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
+      }
+
+      evd<Integer> $$6 = new evd<>("options.fullscreen.resolution", evd.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return vd.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return eve.a($$1x, vd.c("options.fullscreen.current"));
+         } else {
+            eow $$3x = $$2.a($$2x);
+            return eve.a($$1x, vd.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
+         }
+      }, new evd.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+         }
+      });
+      this.o.a($$6);
+      this.o.a(this.b.C());
+      this.o.a(a(this.b));
+      this.d(ewy.a(vc.d, $$1x -> {
+         this.f.m.as();
+         $$1.g();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   }
+
+   @Override
+   public void j() {
+      if (this.b.A().c() != this.q) {
+         this.f.b(this.b.A().c());
+         this.f.O();
+      }
+
+      super.j();
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = this.b.an().c();
+      if (super.a($$0, $$1, $$2)) {
+         if (this.b.an().c() != $$3) {
+            this.f.a();
+         }
+
+         if (this.p.g()) {
+            List<vd> $$4 = Lists.newArrayList(new vd[]{k, vc.r});
+            String $$5 = this.p.j();
+            if ($$5 != null) {
+               $$4.add(vc.r);
+               $$4.add(vd.a("options.graphics.warning.renderer", $$5).a(n.h));
+            }
+
+            String $$6 = this.p.l();
+            if ($$6 != null) {
+               $$4.add(vc.r);
+               $$4.add(vd.a("options.graphics.warning.vendor", $$6).a(n.h));
+            }
+
+            String $$7 = this.p.k();
+            if ($$7 != null) {
+               $$4.add(vc.r);
+               $$4.add(vd.a("options.graphics.warning.version", $$7).a(n.h));
+            }
+
+            this.f.a(new fcz(l, $$4, ImmutableList.of(new fcz.a(m, $$0x -> {
+               this.b.j().a(eut.c);
+               eva.N().f.f();
+               this.p.e();
+               this.f.a(this);
+            }), new fcz.a(n, $$0x -> {
+               this.p.f();
+               this.f.a(this);
+            }))));
+         }
+
          return true;
+      } else {
+         return false;
       }
    }
 
    @Override
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
-   }
+      if (fct.r()) {
+         evd<Integer> $$4 = this.b.an();
+         int $$5 = $$4.c() + (int)Math.signum($$3);
+         if ($$5 != 0) {
+            $$4.a($$5);
+            if ($$4.c() == $$5) {
+               this.f.a();
+               return true;
+            }
+         }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, m, this.g / 2, 20, 16777215);
-      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.C() - 135;
-         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
       }
+   }
 
-      this.p.a($$0, $$1, $$2);
+   @Override
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+   }
+
+   @Override
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

@@ -1,88 +1,109 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
+import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+import java.util.Map;
 
-public class fsm implements AutoCloseable {
-   private final fry c;
-   public final enp a;
-   public final enp b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
+public class fsm implements aqd {
+   private static final dhw[] a = Arrays.stream(clf.values())
+      .sorted(Comparator.comparingInt(clf::a))
+      .map($$0 -> new dhw($$0, hx.b, cwl.kP.o()))
+      .toArray(dhw[]::new);
+   private static final dhw b = new dhw(hx.b, cwl.kP.o());
+   private final dgv c = new dgv(hx.b, cwl.cv.o());
+   private final dgv d = new dig(hx.b, cwl.gV.o());
+   private final dhj e = new dhj(hx.b, cwl.fG.o());
+   private final dge f = new dge(hx.b, cwl.iJ.o());
+   private final dgk g = new dgk(hx.b, cwl.bn.o());
+   private final dha h = new dha(hx.b, cwl.mX.o());
+   private final dhe i = new dhe(hx.b, cwl.tp.o());
+   private flg j;
+   private flu k;
+   private Map<ddk.a, flm> l;
+   private final fuy m;
+   private final fml n;
 
-   public fsm(aps $$0, String $$1, enp $$2, enp $$3) throws IOException {
-      this.c = new fry($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   public fsm(fuy $$0, fml $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   public void close() {
-      this.c.close();
+   public void a(aqc $$0) {
+      this.j = new flg(this.n.a(fmo.bg));
+      this.k = new flu(this.n.a(fmo.bF));
+      this.l = fvo.a(this.n);
    }
 
-   public final String a() {
-      return this.c.h();
-   }
+   public void a(cmr $$0, cmo $$1, ept $$2, fsz $$3, int $$4, int $$5) {
+      cmm $$6 = $$0.d();
+      if ($$6 instanceof ckk) {
+         cwj $$7 = ((ckk)$$6).e();
+         if ($$7 instanceof cvf $$8) {
+            sl $$9 = $$0.v();
+            GameProfile $$10 = $$9 != null ? dhz.d($$9) : null;
+            flm $$11 = this.l.get($$8.b());
+            fth $$12 = fvo.a($$8.b(), $$10);
+            fvo.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$11, $$12);
+         } else {
+            dja $$13 = $$7.o();
+            dgo $$14;
+            if ($$7 instanceof cva) {
+               this.f.a($$0, ((cva)$$7).b());
+               $$14 = this.f;
+            } else if ($$7 instanceof cwc) {
+               this.g.a(((cwc)$$7).b());
+               $$14 = this.g;
+            } else if ($$13.a(cwl.mX)) {
+               $$14 = this.h;
+            } else if ($$13.a(cwl.cv)) {
+               $$14 = this.c;
+            } else if ($$13.a(cwl.fG)) {
+               $$14 = this.e;
+            } else if ($$13.a(cwl.gV)) {
+               $$14 = this.d;
+            } else if ($$13.a(cwl.tp)) {
+               this.i.a($$0);
+               $$14 = this.i;
+            } else {
+               if (!($$7 instanceof ddh)) {
+                  return;
+               }
 
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
-   }
+               clf $$21 = ddh.b($$6);
+               if ($$21 == null) {
+                  $$14 = b;
+               } else {
+                  $$14 = a[$$21.a()];
+               }
+            }
 
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
-   }
+            this.m.a($$14, $$2, $$3, $$4, $$5);
+         }
+      } else {
+         if ($$0.a(cmu.vl)) {
+            boolean $$25 = ckk.a($$0) != null;
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            ggj $$26 = $$25 ? ggl.g : ggl.h;
+            epx $$27 = $$26.c().a(fzd.c($$3, this.j.a($$26.a()), true, $$0.B()));
+            this.j.c().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            if ($$25) {
+               List<Pair<ih<dgf>, clf>> $$28 = dge.a(cno.d($$0), dge.a($$0));
+               fuu.a($$2, $$3, $$4, $$5, this.j.b(), $$26, false, $$28, $$0.B());
+            } else {
+               this.j.b().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            }
 
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
-      }
-
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      euk $$4 = euk.N();
-      this.c.b("ScreenSize").a((float)$$4.aL().k(), (float)$$4.aL().l());
-      this.c.g();
-      this.b.b(euk.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      eoy $$5 = epf.b().d();
-      $$5.a(epi.b.h, epb.m);
-      $$5.a(0.0, 0.0, 500.0).e();
-      $$5.a((double)$$1, 0.0, 500.0).e();
-      $$5.a((double)$$1, (double)$$2, 500.0).e();
-      $$5.a(0.0, (double)$$2, 500.0).e();
-      eoz.b($$5.d());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
-
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof enp) {
-            ((enp)$$6).d();
+            $$2.b();
+         } else if ($$0.a(cmu.vI)) {
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            epx $$29 = fzd.c($$3, this.k.a(flu.a), false, $$0.B());
+            this.k.a($$2, $$29, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            $$2.b();
          }
       }
-   }
-
-   public fry b() {
-      return this.c;
    }
 }

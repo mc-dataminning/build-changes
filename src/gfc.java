@@ -1,38 +1,17 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class gfc {
-   public static final gfd a = new gfd();
-   public static final String b = "villager";
-   private final gfc.a c;
-
-   public gfc(gfc.a $$0) {
-      this.c = $$0;
-   }
-
-   public gfc.a a() {
-      return this.c;
-   }
-
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
-
-      private static final Map<String, gfc.a> d = Arrays.stream(values()).collect(Collectors.toMap(gfc.a::a, $$0 -> (gfc.a)$$0));
-      private final String e;
-
-      private a(String $$0) {
-         this.e = $$0;
+   @Deprecated
+   public static int[] a(aqc $$0, ahd $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         eou $$3 = eou.a($$2);
+      ) {
+         var4 = $$3.e();
       }
 
-      public String a() {
-         return this.e;
-      }
-
-      public static gfc.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
+      return var4;
    }
 }

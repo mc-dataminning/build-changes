@@ -1,24 +1,15 @@
-public class xb implements wu<wx> {
-   private final int a;
+public abstract class xb<T extends um> implements xd<T> {
+   private final Iterable<xd<T>> a;
 
-   public xb(int $$0) {
+   protected xb(Iterable<xd<T>> $$0) {
       this.a = $$0;
    }
 
-   public xb(ue $$0) {
-      this.a = $$0.readInt();
+   public final Iterable<xd<T>> a() {
+      return this.a;
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.p(this.a);
-   }
-
-   public void a(wx $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
+   public final void a(ug $$0) {
    }
 }

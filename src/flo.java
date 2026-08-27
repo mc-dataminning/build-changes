@@ -1,77 +1,70 @@
-public class flo<T extends cas> extends fjh<T> {
-   private static final String a = "ribcage";
-   private static final String b = "center_head";
-   private static final String f = "right_head";
-   private static final String g = "left_head";
-   private static final float h = 0.065F;
-   private static final float i = 0.265F;
-   private final fly j;
-   private final fly k;
-   private final fly l;
-   private final fly m;
-   private final fly n;
-   private final fly o;
+public class flo<T extends cae> extends fil<T> {
+   private static final float a = 9.0F;
+   private static final float b = 100.0F;
+   private final fmp f;
+   private final fmp g;
 
-   public flo(fly $$0) {
-      this.j = $$0;
-      this.n = $$0.b("ribcage");
-      this.o = $$0.b("tail");
-      this.k = $$0.b("center_head");
-      this.l = $$0.b("right_head");
-      this.m = $$0.b("left_head");
+   public flo(fmp $$0) {
+      super(0.5F, 24.0F);
+      this.f = $$0.b("root");
+      this.g = this.f.b("bone").b("body").b("head");
    }
 
-   public static fme a(fmc $$0) {
-      fmg $$1 = new fmg();
-      fmh $$2 = $$1.a();
-      $$2.a("shoulders", fmd.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), fma.a);
-      float $$3 = 0.20420352F;
-      $$2.a(
-         "ribcage",
-         fmd.c()
-            .a(0, 22)
-            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
-         fma.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a().a("root", fmu.c(), fmr.a(0.0F, 5.0F, 0.0F));
+      fmy $$2 = $$1.a("bone", fmu.c(), fmr.a(0.0F, 0.0F, 0.0F));
+      fmy $$3 = $$2.a(
+         "body",
+         fmu.c()
+            .a(62, 68)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new fmt(0.0F))
+            .a(62, 0)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new fmt(0.5F))
+            .a(87, 68)
+            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new fmt(0.0F)),
+         fmr.a(0.0F, 0.0F, 0.0F)
       );
-      $$2.a(
-         "tail",
-         fmd.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
-         fma.a(-2.0F, 6.9F + aty.b(0.20420352F) * 10.0F, -0.5F + aty.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
+      $$2.a("right_front_leg", fmu.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(-7.5F, 10.0F, -15.0F));
+      $$2.a("right_mid_leg", fmu.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(-7.5F, 10.0F, 0.0F));
+      $$2.a("right_hind_leg", fmu.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(-7.5F, 10.0F, 15.0F));
+      $$2.a("left_front_leg", fmu.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(7.5F, 10.0F, -15.0F));
+      $$2.a("left_mid_leg", fmu.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(7.5F, 10.0F, 0.0F));
+      $$2.a("left_hind_leg", fmu.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(7.5F, 10.0F, 15.0F));
+      fmy $$4 = $$3.a(
+         "head",
+         fmu.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new fmt(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new fmt(0.0F)),
+         fmr.a(0.0F, 6.5F, -19.48F)
       );
-      $$2.a("center_head", fmd.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fma.a);
-      fmd $$4 = fmd.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
-      $$2.a("right_head", $$4, fma.a(-8.0F, 4.0F, 0.0F));
-      $$2.a("left_head", $$4, fma.a(10.0F, 4.0F, 0.0F));
-      return fme.a($$1, 64, 64);
-   }
-
-   @Override
-   public fly a() {
-      return this.j;
+      $$4.a("left_ear", fmu.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fmt(0.0F)), fmr.a(6.51F, -7.5F, -4.51F));
+      $$4.a("right_ear", fmu.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fmt(0.0F)), fmr.a(-6.51F, -7.5F, -4.51F));
+      $$4.a("nose", fmu.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new fmt(0.0F)), fmr.a(0.0F, -4.5F, -11.5F));
+      $$4.a("lower_beak", fmu.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new fmt(0.0F)), fmr.a(0.0F, 2.5F, -12.5F));
+      return fmv.a($$0, 192, 192);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = aty.b($$3 * 0.1F);
-      this.n.e = (0.065F + 0.05F * $$6) * (float) Math.PI;
-      this.o.a(-2.0F, 6.9F + aty.b(this.n.e) * 10.0F, -0.5F + aty.a(this.n.e) * 10.0F);
-      this.o.e = (0.265F + 0.1F * $$6) * (float) Math.PI;
-      this.k.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = $$5 * (float) (Math.PI / 180.0);
+      this.a().e().forEach(fmp::c);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$0.w()) {
+         this.a(evy.e, $$1, $$2, 9.0F, 100.0F);
+      } else {
+         this.a(evy.d, $$1, $$2, 9.0F, 100.0F);
+      }
+
+      this.a($$0.bX, evy.f, $$3);
+      this.a($$0.bW, evy.c, $$3);
+      this.a($$0.bY, evy.g, $$3);
+      this.a($$0.bT, evy.i, $$3);
+      this.a($$0.bU, evy.b, $$3);
+      if (this.e) {
+         this.a(evy.a);
+      }
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      a($$0, this.l, 0);
-      a($$0, this.m, 1);
-   }
-
-   private static <T extends cas> void a(T $$0, fly $$1, int $$2) {
-      $$1.f = ($$0.b($$2) - $$0.aU) * (float) (Math.PI / 180.0);
-      $$1.e = $$0.c($$2) * (float) (Math.PI / 180.0);
+   @Override
+   public fmp a() {
+      return this.f;
    }
 }

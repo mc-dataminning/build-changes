@@ -1,48 +1,61 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class bsx extends bsr {
-   private final blx a;
-   private blv b;
-   private final float c;
+public class bsx extends btb {
+   private static final int a = 200;
+   private final bxr b;
+   private int c;
+   private int d;
 
-   public bsx(blx $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bsr.a.c, bsr.a.a));
+   public bsx(bxr $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(bxr $$0) {
+      return b(200 + $$0.eg().a(200) % 20);
    }
 
    @Override
    public boolean a() {
-      if (this.a.cO()) {
+      if (this.b.gk()) {
+         return false;
+      } else if (this.b.gh()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
          return false;
       } else {
-         this.b = this.a.q();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.f(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aC() ? false : this.a.eg().a(b(5)) == 0;
-            }
-         }
+         this.d = this.a(this.b);
+         Predicate<bxr> $$0 = $$0x -> $$0x.gj() || !$$0x.gh();
+         List<? extends bxr> $$1 = this.b.dM().a((Class<? extends bxr>)this.b.getClass(), this.b.cH().c(8.0, 8.0, 8.0), $$0);
+         bxr $$2 = (bxr)DataFixUtils.orElse($$1.stream().filter(bxr::gj).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gh()));
+         return this.b.gh();
       }
    }
 
    @Override
    public boolean b() {
-      return !this.a.aC();
+      return this.b.gh() && this.b.gl();
    }
 
    @Override
    public void c() {
-      elb $$0 = this.a.dp();
-      elb $$1 = new elb(this.b.dr() - this.a.dr(), 0.0, this.b.dx() - this.a.dx());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
-      }
+      this.c = 0;
+   }
 
-      this.a.o($$1.c, (double)this.c, $$1.e);
+   @Override
+   public void d() {
+      this.b.gi();
+   }
+
+   @Override
+   public void e() {
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gm();
+      }
    }
 }

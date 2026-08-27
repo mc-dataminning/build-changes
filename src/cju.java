@@ -1,42 +1,97 @@
-import java.util.function.Consumer;
+import java.util.List;
 
-public class cju extends cmc {
-   public cju(cmc.a $$0) {
-      super($$0);
+public class cju implements cik {
+   private final iq<cmr> c;
+   private final int d;
+   private final int e;
+   private final chu f;
+
+   public cju(chu $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, iq.a($$1 * $$2, cmr.f));
+   }
+
+   public cju(chu $$0, int $$1, int $$2, iq<cmr> $$3) {
+      this.c = $$3;
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public bjl a(cos $$0) {
-      ia $$1 = $$0.k();
-      if ($$1 == ia.a) {
-         return bjl.e;
-      } else {
-         csy $$2 = $$0.q();
-         coq $$3 = new coq($$0);
-         hv $$4 = $$3.a();
-         cmh $$5 = $$0.n();
-         elb $$6 = elb.c($$4);
-         ekw $$7 = blj.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof amp $$8) {
-               Consumer<cau> $$9 = blj.a($$8, $$5, $$0.o());
-               cau $$10 = blj.d.b($$8, $$5.v(), $$9, $$4, blz.m, true, true);
-               if ($$10 == null) {
-                  return bjl.e;
-               }
+   public int b() {
+      return this.c.size();
+   }
 
-               float $$11 = (float)aty.d((aty.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dr(), $$10.dt(), $$10.dx(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dr(), $$10.dt(), $$10.dx(), arc.ao, ard.e, 0.75F, 0.8F);
-               $$10.a(dmz.t, $$0.o());
-            }
-
-            $$5.h(1);
-            return bjl.a($$2.B);
-         } else {
-            return bjl.e;
+   @Override
+   public boolean ai_() {
+      for (cmr $$0 : this.c) {
+         if (!$$0.b()) {
+            return false;
          }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cmr a(int $$0) {
+      return $$0 >= this.b() ? cmr.f : this.c.get($$0);
+   }
+
+   @Override
+   public cmr b(int $$0) {
+      return bjp.a(this.c, $$0);
+   }
+
+   @Override
+   public cmr a(int $$0, int $$1) {
+      cmr $$2 = bjp.a(this.c, $$0, $$1);
+      if (!$$2.b()) {
+         this.f.a(this);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(int $$0, cmr $$1) {
+      this.c.set($$0, $$1);
+      this.f.a(this);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cfb $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.e;
+   }
+
+   @Override
+   public int f() {
+      return this.d;
+   }
+
+   @Override
+   public List<cmr> h() {
+      return List.copyOf(this.c);
+   }
+
+   @Override
+   public void a(cff $$0) {
+      for (cmr $$1 : this.c) {
+         $$0.a($$1);
       }
    }
 }

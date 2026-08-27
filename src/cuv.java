@@ -1,68 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class cuv extends cvl implements cli {
-   public static final djg a = djf.w;
-   private final dda.a b;
+public class cuv {
+   public static final Codec<cuv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cuv.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ahb.c(ke.at)).apply($$0, cuv::new)
+   );
+   public static final Codec<ih<cuv>> b = agz.a(ke.aL, a);
+   private final cuv.a c;
+   private final cuq.c<ih<cuh>> d;
 
-   public cuv(dda.a $$0, dio.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.k(this.E.b().a(a, Boolean.valueOf(false)));
+   public cuv(cuv.a $$0, ii<cuh> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   @Override
-   protected abstract MapCodec<? extends cuv> a();
-
-   @Override
-   public dgd a(hv $$0, dip $$1) {
-      return new dho($$0, $$1);
+   public cuq.c<ih<cuh>> a() {
+      return this.d;
    }
 
-   @Nullable
-   @Override
-   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
-      if ($$0.B) {
-         boolean $$3 = $$1.a(cwb.gO) || $$1.a(cwb.gP) || $$1.a(cwb.gQ) || $$1.a(cwb.gR);
-         if ($$3) {
-            return a($$2, dgf.p, dho::a);
+   public static Map<cuv.a, cuq.c<ahc<cuh>>> b() {
+      return cuv.a.f.values().stream().collect(Collectors.toMap($$0 -> (cuv.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   }
+
+   public static record a(ahd d, cuv.a.a e) {
+      public static final cuv.a a = new cuv.a(
+         new ahd("nether"),
+         new cuv.a.a() {
+            @Override
+            public <T> cuq.c<T> apply(Function<ahc<cuh>, T> $$0) {
+               return new cuq.c<>(
+                  List.of(
+                     Pair.of(cuq.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cuo.ac)),
+                     Pair.of(cuq.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cuo.af)),
+                     Pair.of(cuq.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cuo.ae)),
+                     Pair.of(cuq.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cuo.ad)),
+                     Pair.of(cuq.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cuo.ag))
+                  )
+               );
+            }
          }
+      );
+      public static final cuv.a b = new cuv.a(new ahd("overworld"), new cuv.a.a() {
+         @Override
+         public <T> cuq.c<T> apply(Function<ahc<cuh>, T> $$0) {
+            return cuv.a.a($$0);
+         }
+      });
+      static final Map<ahd, cuv.a> f = Stream.of(a, b).collect(Collectors.toMap(cuv.a::b, $$0 -> (cuv.a)$$0));
+      public static final Codec<cuv.a> c = ahd.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> cuq.c<T> a(Function<ahc<cuh>, T> $$0) {
+         Builder<Pair<cuq.d, T>> $$1 = ImmutableList.builder();
+         new cux().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new cuq.c<>($$1.build());
       }
 
-      return null;
-   }
+      public Stream<ahc<cuh>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ahc<cuh>>map(Pair::getSecond).distinct();
+      }
 
-   public dda.a b() {
-      return this.b;
-   }
+      public ahd b() {
+         return this.d;
+      }
 
-   @Override
-   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
-      return false;
-   }
+      public cuv.a.a c() {
+         return this.e;
+      }
 
-   @Override
-   public blk g() {
-      return blk.f;
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dip a(coq $$0) {
-      return this.o().a(a, Boolean.valueOf($$0.q().B($$0.a())));
-   }
-
-   @Override
-   public void a(dip $$0, csy $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$1.B($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
-         }
+      @FunctionalInterface
+      interface a {
+         <T> cuq.c<T> apply(Function<ahc<cuh>, T> var1);
       }
    }
 }

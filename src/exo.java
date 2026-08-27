@@ -1,56 +1,49 @@
-public class exo extends ewe {
-   private float a = 0.5F;
+public class exo extends ewy {
+   private boolean a;
 
-   public exo(vb $$0, evu $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
-   }
-
-   public exo(int $$0, int $$1, vb $$2, evu $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
-
-   public exo(int $$0, int $$1, int $$2, int $$3, vb $$4, evu $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.i = false;
-   }
-
-   public exo i(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private exo b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public exo e() {
-      return this.b(0.0F);
-   }
-
-   public exo f() {
-      return this.b(0.5F);
-   }
-
-   public exo g() {
-      return this.b(1.0F);
+   public exo(int $$0, int $$1, ewy.c $$2) {
+      super($$0, $$1, 20, 20, vd.c("narrator.button.difficulty_lock"), $$2, p);
    }
 
    @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      vb $$4 = this.l();
-      evu $$5 = this.a();
-      int $$6 = this.k();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.p() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.r() + (this.i() - 9) / 2;
-      atk $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   protected vr aK_() {
+      return vc.a(super.aK_(), this.a() ? vd.c("narrator.button.difficulty_lock.locked") : vd.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   private atk a(vb $$0, int $$1) {
-      evu $$2 = this.a();
-      vg $$3 = $$2.a($$0, $$1 - $$2.a(va.t));
-      return se.a().a(vg.a($$3, va.t));
+   public boolean a() {
+      return this.a;
+   }
+
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+      exo.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? exo.a.c : exo.a.f;
+      } else if (this.z()) {
+         $$4 = this.a ? exo.a.b : exo.a.e;
+      } else {
+         $$4 = this.a ? exo.a.a : exo.a.d;
+      }
+
+      $$0.a($$4.g, this.B(), this.C(), this.g, this.h);
+   }
+
+   static enum a {
+      a(new ahd("widget/locked_button")),
+      b(new ahd("widget/locked_button_highlighted")),
+      c(new ahd("widget/locked_button_disabled")),
+      d(new ahd("widget/unlocked_button")),
+      e(new ahd("widget/unlocked_button_highlighted")),
+      f(new ahd("widget/unlocked_button_disabled"));
+
+      final ahd g;
+
+      private a(ahd $$0) {
+         this.g = $$0;
+      }
    }
 }

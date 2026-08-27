@@ -1,32 +1,35 @@
-public class brv extends brt {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.google.common.collect.ImmutableMap;
 
-   public brv(blx $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class brv<E extends cef> extends bnw<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public brv(int $$0) {
+      super(ImmutableMap.of(bvh.aA, bvi.a, bvh.o, bvi.b, bvh.m, bvi.b, bvh.n, bvi.c, bvh.B, bvi.c, bvh.ay, bvi.c, bvh.aF, bvi.c), $$0);
    }
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dE(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.N().l()) {
-            this.a.s(this.a(this.a.dE(), 0.0F, 5.0F));
+   protected boolean a(amz $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(amz $$0, E $$1, long $$2) {
+      $$1.a(arm.AK, 5.0F, 1.0F);
+   }
+
+   protected void c(amz $$0, E $$1, long $$2) {
+      if ($$1.c(bmr.m)) {
+         $$1.b(bmr.a);
+      }
+
+      $$1.dO().b(bvh.aA);
+      $$1.dO().c(bvh.B).filter($$1::a).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.c($$1x);
          }
 
-         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
-      }
-
-      float $$0 = aty.g(this.a.aW - this.a.aU);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aU -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aU += 4.0F;
-      }
+         if (!$$1.dO().a(bvh.ay)) {
+            ceg.a($$1, $$1x.dm());
+         }
+      });
    }
 }

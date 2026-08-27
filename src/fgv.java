@@ -1,83 +1,59 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.UUID;
 
-public class fgv extends fcc {
-   private static final int a = 310;
-   private final ezr b = new ezr(this);
-   private final fcc c;
-   private final apd k;
-   private final Consumer<apd> l;
-   private final Object2BooleanMap<apa> m = new Object2BooleanLinkedOpenHashMap();
+public class fgv extends fgr<foi.a> {
+   private static final int r = 120;
+   private static final vd t = vd.c("gui.abuseReport.name.title");
+   private final fam u = fam.d().a(8);
+   private exq v;
+   private ewy w;
 
-   public fgv(fcc $$0, apd $$1, Consumer<apd> $$2) {
-      super(vb.c("experiments_screen.title"));
-      this.c = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   private fgv(fct $$0, fon $$1, foi.a $$2) {
+      super(t, $$0, $$1, $$2);
+   }
 
-      for (apa $$3 : $$1.c()) {
-         if ($$3.j() == ape.d) {
-            this.m.put($$3, $$1.f().contains($$3));
-         }
-      }
+   public fgv(fct $$0, fon $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new foi.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fgv(fct $$0, fon $$1, foi $$2) {
+      this($$0, $$1, new foi.a($$2, $$1.a().b()));
    }
 
    @Override
-   protected void aP_() {
-      this.b.a(new exo(vb.c("selectWorld.experiments"), this.i));
-      ezv $$0 = this.b.c(ezv.d());
-      $$0.a(new exb(vb.c("selectWorld.experiments.info").a(n.m), this.i).j(310), $$0x -> $$0x.e(15));
-      fgz.a $$1 = fgz.a(310).a(2, true).b(4);
-      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
-      $$1.a($$0::a);
-      ezq.b $$2 = this.b.b(new ezq().a(10)).d(2);
-      $$2.a(ewh.a(va.d, $$0x -> this.l()).a());
-      $$2.a(ewh.a(va.e, $$0x -> this.aF_()).a());
-      this.b.a($$1x -> {
-         ewf var10000 = this.d($$1x);
+   protected void aN_() {
+      this.u.c().b();
+      this.u.a(new eyf(this.e, this.i));
+      vd $$0 = vd.b(this.q.e().a()).a(n.o);
+      this.u.a(new eyf(vd.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
+      this.v = this.a(280, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.C();
+      });
+      this.u.a(fae.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
+      fam $$1 = this.u.a(fam.e().a(8));
+      $$1.a(ewy.a(vc.k, $$0x -> this.aE_()).a(120).a());
+      this.w = $$1.a(ewy.a(a, $$0x -> this.n()).a(120).a());
+      this.C();
+      this.u.a($$1x -> {
+         eww var10000 = this.d($$1x);
       });
       this.c();
    }
 
-   private static vb a(apa $$0) {
-      String $$1 = "dataPack." + $$0.f() + ".name";
-      return (vb)(geu.a($$1) ? vb.c($$1) : $$0.a());
-   }
-
-   @Override
-   public void aF_() {
-      this.f.a(this.c);
-   }
-
-   private void l() {
-      List<apa> $$0 = new ArrayList<>(this.k.f());
-      List<apa> $$1 = new ArrayList<>();
-      this.m.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.k.a($$0.stream().map(apa::f).toList());
-      this.l.accept(this.k);
-   }
-
    @Override
    protected void c() {
-      this.b.a();
+      this.u.a();
+      fag.a(this.u, this.F());
+   }
+
+   private void C() {
+      foj.b $$0 = this.q.c();
+      this.w.j = $$0 == null;
+      this.w.a(x.a($$0, foj.b::a));
    }
 
    @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
-      int $$4 = 32;
-      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
    }
 }

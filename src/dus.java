@@ -1,146 +1,29 @@
-import com.mojang.datafixers.Products.P2;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public abstract class dus {
-   public static final Codec<dus> d = kb.W.q().dispatch(dus::a, dut::a);
-   protected final biq e;
-   protected final biq f;
+   public static final Codec<dus> a = kd.aa.q().dispatch(dus::b, dut::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   protected static <P extends dus> P2<Mu<P>, biq, biq> b(Instance<P> $$0) {
-      return $$0.group(biq.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), biq.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
+   protected static <S extends dus> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   public dus(biq $$0, biq $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public dus(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   protected abstract dut<?> a();
+   protected abstract dut<?> b();
 
-   public void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
-   }
+   public abstract int a(int var1, int var2);
 
-   protected abstract void a(cte var1, dus.b var2, auf var3, duc var4, int var5, dus.a var6, int var7, int var8, int var9);
-
-   public abstract int a(auf var1, int var2, duc var3);
-
-   public int a(auf $$0, int $$1) {
-      return this.e.a($$0);
-   }
-
-   private int a(auf $$0) {
-      return this.f.a($$0);
-   }
-
-   protected abstract boolean a(auf var1, int var2, int var3, int var4, int var5, boolean var6);
-
-   protected boolean b(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6;
-      int $$7;
-      if ($$5) {
-         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
-         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
-      } else {
-         $$6 = Math.abs($$1);
-         $$7 = Math.abs($$3);
-      }
-
-      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
-   }
-
-   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, hv $$4, int $$5, int $$6, boolean $$7) {
-      int $$8 = $$7 ? 1 : 0;
-      hv.a $$9 = new hv.a();
-
-      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
-         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
-            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
-               $$9.a($$4, $$10, $$6, $$11);
-               a($$0, $$1, $$2, $$3, $$9);
-            }
-         }
-      }
-   }
-
-   protected final void a(cte $$0, dus.b $$1, auf $$2, duc $$3, hv $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      int $$10 = $$7 ? 1 : 0;
-      hv $$11 = $$4.d();
-      hv.a $$12 = new hv.a();
-
-      for (ia $$13 : ia.c.a) {
-         ia $$14 = $$13.h();
-         int $$15 = $$14.f() == ia.b.a ? $$5 + $$10 : $$5;
-         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
-         int $$16 = -$$5;
-
-         while ($$16 < $$5 + $$10) {
-            boolean $$17 = $$1.a($$12.c(ia.b));
-            $$12.c(ia.a);
-            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
-               $$12.c(ia.a);
-               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
-               $$12.c(ia.b);
-            }
-
-            $$16++;
-            $$12.c($$13);
-         }
-      }
-   }
-
-   private static boolean a(cte $$0, dus.b $$1, auf $$2, duc $$3, float $$4, hv $$5, hv.a $$6) {
-      if ($$6.k($$5) >= 7) {
-         return false;
-      } else {
-         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
-      }
-   }
-
-   protected static boolean a(cte $$0, dus.b $$1, auf $$2, duc $$3, hv $$4) {
-      if (!dso.c($$0, $$4)) {
-         return false;
-      } else {
-         dip $$5 = $$3.e.a($$2, $$4);
-         if ($$5.b(djf.C)) {
-            $$5 = $$5.a(djf.C, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(eea.c))));
-         }
-
-         $$1.a($$4, $$5);
-         return true;
-      }
-   }
-
-   public static final class a {
-      private final hv a;
-      private final int b;
-      private final boolean c;
-
-      public a(hv $$0, int $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public hv a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public boolean c() {
-         return this.c;
-      }
-   }
-
-   public interface b {
-      void a(hv var1, dip var2);
-
-      boolean a(hv var1);
+   public OptionalInt c() {
+      return this.c;
    }
 }

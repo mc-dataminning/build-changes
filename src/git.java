@@ -1,37 +1,7 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+public interface git<T> {
+   int e();
 
-public class git {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+   T b(aup var1);
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
-   }
-
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
-   }
-
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
-   }
-
-   public void a(gii $$0) {
-      this.b.ifPresent($$1 -> $$0.send(gij.e, $$1x -> {
-            $$1x.a(gil.p, this.a($$1));
-            $$1x.a(gil.q, (int)this.c);
-         }));
-   }
+   void a(gio var1);
 }

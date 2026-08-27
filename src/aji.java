@@ -1,107 +1,192 @@
-import com.google.common.base.Stopwatch;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class aji {
-   private static final Logger a = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vb.b("commands.locate.structure.not_found", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vb.b("commands.locate.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vb.b("commands.locate.biome.not_found", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> vb.b("commands.locate.poi.not_found", $$0));
-   private static final int f = 100;
-   private static final int g = 6400;
-   private static final int h = 32;
-   private static final int i = 64;
-   private static final int j = 256;
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vd.b("commands.function.error.argument_not_compound", $$0));
+   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vd.b("commands.function.scheduled.no_functions", $$0));
+   @VisibleForTesting
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vd.b("commands.function.instantiationFailure", $$0, $$1));
+   public static final SuggestionProvider<ds> b = ($$0, $$1) -> {
+      ahr $$2 = ((ds)$$0.getSource()).l().aC();
+      dx.a($$2.e(), $$1, "#");
+      return dx.a($$2.d(), $$1);
+   };
+   static final aji.b<ds> e = new aji.b<ds>() {
+      public void a(ds $$0, ahd $$1, int $$2) {
+         $$0.a(() -> vd.a("commands.function.result", vd.a($$1), $$2), true);
+      }
+   };
 
-   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
+   public static void a(CommandDispatcher<ds> $$0) {
+      LiteralArgumentBuilder<ds> $$1 = dt.a("with");
+
+      for (alq.c $$2 : alq.c) {
+         $$2.a($$1, $$1x -> $$1x.executes(new aji.c() {
+               @Override
+               protected sl a(CommandContext<ds> $$0) throws CommandSyntaxException {
+                  return $$2.a($$0).a();
+               }
+            }).then(dt.a("path", ek.a()).executes(new aji.c() {
+               @Override
+               protected sl a(CommandContext<ds> $$0) throws CommandSyntaxException {
+                  return aji.a(ek.a($$0, "path"), $$2.a($$0));
+               }
+            })));
+      }
+
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("locate").requires($$0x -> $$0x.c(2)))
-                  .then(dt.a("structure").then(dt.a("structure", eu.a(kc.aC)).executes($$0x -> a((ds)$$0x.getSource(), eu.a($$0x, "structure", kc.aC, c))))))
-               .then(dt.a("biome").then(dt.a("biome", et.a($$1, kc.as)).executes($$0x -> a((ds)$$0x.getSource(), et.a($$0x, "biome", kc.as))))))
-            .then(dt.a("poi").then(dt.a("poi", et.a($$1, kc.U)).executes($$0x -> b((ds)$$0x.getSource(), et.a($$0x, "poi", kc.U)))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("function").requires($$0x -> $$0x.c(2)))
+            .then(((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("name", fx.a()).suggests(b).executes(new aji.c() {
+               @Nullable
+               @Override
+               protected sl a(CommandContext<ds> $$0) {
+                  return null;
+               }
+            })).then(dt.a("arguments", ec.a()).executes(new aji.c() {
+               @Override
+               protected sl a(CommandContext<ds> $$0) {
+                  return ec.a($$0, "arguments");
+               }
+            }))).then($$1))
       );
    }
 
-   private static Optional<? extends ij.b<dyo>> a(eu.c<dyo> $$0, ir<dyo> $$1) {
-      return (Optional<? extends ij.b<dyo>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> ij.a($$0xx)), $$1::b);
-   }
-
-   private static int a(ds $$0, eu.c<dyo> $$1) throws CommandSyntaxException {
-      ir<dyo> $$2 = $$0.e().I_().d(kc.aC);
-      ij<dyo> $$3 = (ij<dyo>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
-      hv $$4 = hv.a($$0.d());
-      amp $$5 = $$0.e();
-      Stopwatch $$6 = Stopwatch.createStarted(ac.c);
-      Pair<hv, ie<dyo>> $$7 = $$5.k().g().a($$5, $$3, $$4, 100, false);
-      $$6.stop();
-      if ($$7 == null) {
-         throw b.create($$1.b());
+   static sl a(ek.g $$0, alp $$1) throws CommandSyntaxException {
+      ti $$2 = alq.a($$0, $$1);
+      if ($$2 instanceof sl) {
+         return (sl)$$2;
       } else {
-         return a($$0, $$1, $$4, $$7, "commands.locate.structure.success", false, $$6.elapsed());
+         throw c.create($$2.c().a());
       }
    }
 
-   private static int a(ds $$0, et.c<ctx> $$1) throws CommandSyntaxException {
-      hv $$2 = hv.a($$0.d());
-      Stopwatch $$3 = Stopwatch.createStarted(ac.c);
-      Pair<hv, ie<ctx>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
-      $$3.stop();
-      if ($$4 == null) {
-         throw d.create($$1.b());
+   public static ds a(ds $$0) {
+      return $$0.a().b(2);
+   }
+
+   public static <T extends du<T>> void a(Collection<hb<T>> $$0, @Nullable sl $$1, T $$2, T $$3, gp<T> $$4, aji.b<T> $$5, gj $$6) throws CommandSyntaxException {
+      if ($$6.c()) {
+         a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         return a($$0, $$1, $$2, $$4, "commands.locate.biome.success", true, $$3.elapsed());
+         b($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   private static int b(ds $$0, et.c<bwz> $$1) throws CommandSyntaxException {
-      hv $$2 = hv.a($$0.d());
-      amp $$3 = $$0.e();
-      Stopwatch $$4 = Stopwatch.createStarted(ac.c);
-      Optional<Pair<ie<bwz>, hv>> $$5 = $$3.x().e($$1, $$2, 256, bww.b.c);
-      $$4.stop();
-      if ($$5.isEmpty()) {
-         throw e.create($$1.b());
-      } else {
-         return a($$0, $$1, $$2, $$5.get().swap(), "commands.locate.poi.success", false, $$4.elapsed());
+   private static <T extends du<T>> void a(@Nullable sl $$0, gp<T> $$1, CommandDispatcher<T> $$2, T $$3, hb<T> $$4, ahd $$5, dp $$6, boolean $$7) throws CommandSyntaxException {
+      try {
+         hd<T> $$8 = $$4.a($$0, $$2, $$3);
+         $$1.a(new gv<>($$8, $$6, $$7).bind($$3));
+      } catch (dv var9) {
+         throw a.create($$5, var9.a());
       }
    }
 
-   private static String a(Pair<hv, ? extends ie<?>> $$0) {
-      return ((ie)$$0.getSecond()).e().map($$0x -> $$0x.a().toString()).orElse("[unregistered]");
+   private static <T extends du<T>> dp a(T $$0, aji.b<T> $$1, ahd $$2, dp $$3) {
+      return $$0.y() ? $$3 : ($$4, $$5) -> {
+         $$1.a($$0, $$2, $$5);
+         $$3.onSuccess($$5);
+      };
    }
 
-   public static int a(ds $$0, et.c<?> $$1, hv $$2, Pair<hv, ? extends ie<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + a($$3) + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
+   private static <T extends du<T>> void a(Collection<hb<T>> $$0, @Nullable sl $$1, T $$2, T $$3, gp<T> $$4, aji.b<T> $$5) throws CommandSyntaxException {
+      CommandDispatcher<T> $$6 = $$2.x();
+      T $$7 = $$3.a_();
+      dp $$8 = dp.chain($$2.p(), $$4.b().d());
+
+      for (hb<T> $$9 : $$0) {
+         ahd $$10 = $$9.a();
+         dp $$11 = a($$2, $$5, $$10, $$8);
+         a($$1, $$4, $$6, $$7, $$9, $$10, $$11, true);
+      }
+
+      if ($$8 != dp.a) {
+         $$4.a(gy.a());
+      }
    }
 
-   public static int a(ds $$0, eu.c<?> $$1, hv $$2, Pair<hv, ? extends ie<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + a($$3) + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
+   private static <T extends du<T>> void b(Collection<hb<T>> $$0, @Nullable sl $$1, T $$2, T $$3, gp<T> $$4, aji.b<T> $$5) throws CommandSyntaxException {
+      CommandDispatcher<T> $$6 = $$2.x();
+      T $$7 = $$3.a_();
+      dp $$8 = $$2.p();
+      if (!$$0.isEmpty()) {
+         if ($$0.size() == 1) {
+            hb<T> $$9 = $$0.iterator().next();
+            ahd $$10 = $$9.a();
+            dp $$11 = a($$2, $$5, $$10, $$8);
+            a($$1, $$4, $$6, $$7, $$9, $$10, $$11, false);
+         } else if ($$8 == dp.a) {
+            for (hb<T> $$12 : $$0) {
+               ahd $$13 = $$12.a();
+               dp $$14 = a($$2, $$5, $$13, $$8);
+               a($$1, $$4, $$6, $$7, $$12, $$13, $$14, false);
+            }
+         } else {
+            class a {
+               boolean a;
+               int b;
+
+               public void a(int $$0) {
+                  this.a = true;
+                  this.b += $$0;
+               }
+            }
+
+            a $$15 = new a();
+            dp $$16 = ($$1x, $$2x) -> $$15.a($$2x);
+
+            for (hb<T> $$17 : $$0) {
+               ahd $$18 = $$17.a();
+               dp $$19 = a($$2, $$5, $$18, $$16);
+               a($$1, $$4, $$6, $$7, $$17, $$18, $$19, false);
+            }
+
+            $$4.a(($$2x, $$3x) -> {
+               if ($$15.a) {
+                  $$8.onSuccess($$15.b);
+               }
+            });
+         }
+      }
    }
 
-   private static int a(ds $$0, hv $$1, Pair<hv, ? extends ie<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
-      hv $$7 = (hv)$$2.getFirst();
-      int $$8 = $$4 ? aty.d(aty.c((float)$$1.j($$7))) : aty.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
-      String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
-      vb $$10 = ve.a((vb)vb.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
-         .a($$2x -> $$2x.a(n.k).a(new uz(uz.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new vh(vh.a.a, vb.c("chat.coordinates.tooltip"))));
-      $$0.a(() -> vb.a($$3, $$5, $$10, $$8), false);
-      a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
-      return $$8;
+   public interface b<T> {
+      void a(T var1, ahd var2, int var3);
    }
 
-   private static float a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 - $$0;
-      int $$5 = $$3 - $$1;
-      return aty.c((float)($$4 * $$4 + $$5 * $$5));
+   abstract static class c extends gl.b<ds> implements gl.a<ds> {
+      @Nullable
+      protected abstract sl a(CommandContext<ds> var1) throws CommandSyntaxException;
+
+      public void a(ds $$0, ContextChain<ds> $$1, gj $$2, gp<ds> $$3) throws CommandSyntaxException {
+         CommandContext<ds> $$4 = $$1.getTopContext().copyFor($$0);
+         Pair<ahd, Collection<hb<ds>>> $$5 = fx.b($$4, "name").mapSecond($$0x -> (Collection)$$0x.map(Collections::singleton, Function.identity()));
+         Collection<hb<ds>> $$6 = (Collection<hb<ds>>)$$5.getSecond();
+         if ($$6.isEmpty()) {
+            throw aji.d.create(vd.a((ahd)$$5.getFirst()));
+         } else {
+            sl $$7 = this.a($$4);
+            ds $$8 = aji.a($$0);
+            if ($$6.size() == 1) {
+               $$0.a(() -> vd.a("commands.function.scheduled.single", vd.a($$6.iterator().next().a())), true);
+            } else {
+               $$0.a(() -> vd.a("commands.function.scheduled.multiple", vg.b($$6.stream().map(hb::a).toList(), vd::a)), true);
+            }
+
+            aji.a($$6, $$7, $$0, $$8, $$3, aji.e, $$2);
+         }
+      }
    }
 }

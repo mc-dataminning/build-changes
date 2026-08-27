@@ -1,39 +1,10 @@
-public record bxm(agt l) {
-   public static final ags<bxm> a = a("tabby");
-   public static final ags<bxm> b = a("black");
-   public static final ags<bxm> c = a("red");
-   public static final ags<bxm> d = a("siamese");
-   public static final ags<bxm> e = a("british_shorthair");
-   public static final ags<bxm> f = a("calico");
-   public static final ags<bxm> g = a("persian");
-   public static final ags<bxm> h = a("ragdoll");
-   public static final ags<bxm> i = a("white");
-   public static final ags<bxm> j = a("jellie");
-   public static final ags<bxm> k = a("all_black");
-
-   private static ags<bxm> a(String $$0) {
-      return ags.a(kc.l, new agt($$0));
+public abstract class bxm extends bmh {
+   protected bxm(blt<? extends bxm> $$0, cti $$1) {
+      super($$0, $$1);
    }
 
-   public static bxm a(ir<bxm> $$0) {
-      a($$0, a, "textures/entity/cat/tabby.png");
-      a($$0, b, "textures/entity/cat/black.png");
-      a($$0, c, "textures/entity/cat/red.png");
-      a($$0, d, "textures/entity/cat/siamese.png");
-      a($$0, e, "textures/entity/cat/british_shorthair.png");
-      a($$0, f, "textures/entity/cat/calico.png");
-      a($$0, g, "textures/entity/cat/persian.png");
-      a($$0, h, "textures/entity/cat/ragdoll.png");
-      a($$0, i, "textures/entity/cat/white.png");
-      a($$0, j, "textures/entity/cat/jellie.png");
-      return a($$0, k, "textures/entity/cat/all_black.png");
-   }
-
-   private static bxm a(ir<bxm> $$0, ags<bxm> $$1, String $$2) {
-      return ir.a($$0, $$1, new bxm(new agt($$2)));
-   }
-
-   public agt a() {
-      return this.l;
+   @Override
+   public boolean a(cfb $$0) {
+      return false;
    }
 }

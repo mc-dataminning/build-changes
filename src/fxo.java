@@ -1,60 +1,17 @@
-@FunctionalInterface
-public interface fxo<T extends blf> {
-   fxn<T> create(fxo.a var1);
+public class fxo extends gal<cbu> {
+   private static final ahd a = new ahd("textures/entity/spider/cave_spider.png");
+   private static final float i = 0.7F;
 
-   public static class a {
-      private final fxm a;
-      private final fym b;
-      private final ftc c;
-      private final fse d;
-      private final aps e;
-      private final flu f;
-      private final evu g;
+   public fxo(fyf.a $$0) {
+      super($$0, fmo.t);
+      this.d *= 0.7F;
+   }
 
-      public a(fxm $$0, fym $$1, ftc $$2, fse $$3, aps $$4, flu $$5, evu $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
+   protected void a(cbu $$0, ept $$1, float $$2) {
+      $$1.b(0.7F, 0.7F, 0.7F);
+   }
 
-      public fxm a() {
-         return this.a;
-      }
-
-      public fym b() {
-         return this.b;
-      }
-
-      public ftc c() {
-         return this.c;
-      }
-
-      public fse d() {
-         return this.d;
-      }
-
-      public aps e() {
-         return this.e;
-      }
-
-      public flu f() {
-         return this.f;
-      }
-
-      public gfv g() {
-         return this.c.a().a();
-      }
-
-      public fly a(flw $$0) {
-         return this.f.a($$0);
-      }
-
-      public evu h() {
-         return this.g;
-      }
+   public ahd a(cbu $$0) {
+      return a;
    }
 }

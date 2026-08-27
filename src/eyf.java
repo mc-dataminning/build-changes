@@ -1,130 +1,56 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class eyf extends ewv {
+   private float a = 0.5F;
 
-public class eyf implements fhk {
-   private static final agt a = new agt("hud/hotbar");
-   private static final agt b = new agt("hud/hotbar_selection");
-   private static final long c = 5000L;
-   private static final long d = 2000L;
-   private final euk e;
-   private long f;
-   @Nullable
-   private fhh g;
-
-   public eyf(euk $$0) {
-      this.e = $$0;
+   public eyf(vd $$0, ewk $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
    }
 
-   public void a(int $$0) {
-      this.f = ac.b();
-      if (this.g != null) {
-         this.g.b($$0);
-      } else {
-         this.g = new fhh(this);
-      }
+   public eyf(int $$0, int $$1, vd $$2, ewk $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
    }
 
-   private float c() {
-      long $$0 = this.f - ac.b() + 5000L;
-      return aty.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
+   public eyf(int $$0, int $$1, int $$2, int $$3, vd $$4, ewk $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
    }
 
-   public void a(evw $$0) {
-      if (this.g != null) {
-         float $$1 = this.c();
-         if ($$1 <= 0.0F) {
-            this.g.d();
-         } else {
-            int $$2 = $$0.a() / 2;
-            $$0.c().a();
-            $$0.c().a(0.0F, 0.0F, -90.0F);
-            int $$3 = aty.d((float)$$0.b() - 22.0F * $$1);
-            fhl $$4 = this.g.f();
-            this.a($$0, $$1, $$2, $$3, $$4);
-            $$0.c().b();
-         }
-      }
+   public eyf b(int $$0) {
+      super.a($$0);
+      return this;
    }
 
-   protected void a(evw $$0, float $$1, int $$2, int $$3, fhl $$4) {
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$1);
-      $$0.a(a, $$2 - 91, $$3, 182, 22);
-      if ($$4.a() >= 0) {
-         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
-      }
-
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
-      }
-
-      RenderSystem.disableBlend();
+   private eyf b(float $$0) {
+      this.a = $$0;
+      return this;
    }
 
-   private void a(evw $$0, int $$1, int $$2, float $$3, float $$4, fhj $$5) {
-      if ($$5 != fhh.a) {
-         int $$6 = (int)($$4 * 255.0F);
-         $$0.c().a();
-         $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$7 = $$5.aR_() ? 1.0F : 0.25F;
-         $$0.a($$7, $$7, $$7, $$4);
-         $$5.a($$0, $$7, $$6);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-         if ($$6 > 3 && $$5.aR_()) {
-            vb $$8 = this.e.m.U[$$1].k();
-            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
-         }
-      }
+   public eyf d() {
+      return this.b(0.0F);
    }
 
-   public void b(evw $$0) {
-      int $$1 = (int)(this.c() * 255.0F);
-      if ($$1 > 3 && this.g != null) {
-         fhj $$2 = this.g.b();
-         vb $$3 = $$2 == fhh.a ? this.g.c().b() : $$2.aQ_();
-         if ($$3 != null) {
-            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
-            int $$5 = $$0.b() - 35;
-            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
-         }
-      }
+   public eyf e() {
+      return this.b(0.5F);
+   }
+
+   public eyf f() {
+      return this.b(1.0F);
    }
 
    @Override
-   public void a(fhh $$0) {
-      this.g = null;
-      this.f = 0L;
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+      vd $$4 = this.x();
+      ewk $$5 = this.a();
+      int $$6 = this.w();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.B() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.C() + (this.u() - 9) / 2;
+      atu $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
    }
 
-   public boolean a() {
-      return this.g != null;
-   }
-
-   public void b(int $$0) {
-      int $$1 = this.g.e() + $$0;
-
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fhh.a || !this.g.a($$1).aR_())) {
-         $$1 += $$0;
-      }
-
-      if ($$1 >= 0 && $$1 <= 8) {
-         this.g.b($$1);
-         this.f = ac.b();
-      }
-   }
-
-   public void b() {
-      this.f = ac.b();
-      if (this.a()) {
-         int $$0 = this.g.e();
-         if ($$0 != -1) {
-            this.g.b($$0);
-         }
-      } else {
-         this.g = new fhh(this);
-      }
+   private atu a(vd $$0, int $$1) {
+      ewk $$2 = this.a();
+      vi $$3 = $$2.a($$0, $$1 - $$2.a(vc.t));
+      return sg.a().a(vi.a($$3, vc.t));
    }
 }

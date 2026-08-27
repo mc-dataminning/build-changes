@@ -1,33 +1,49 @@
-public class clp<T extends blf & bls> extends cmc {
-   private final blj<T> a;
-   private final int b;
+import java.util.List;
 
-   public clp(cmc.a $$0, blj<T> $$1, int $$2) {
+public class clp extends cmm {
+   public clp(cmm.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
-      cmh $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bjm.c($$3);
+   public bjv a(cpc $$0) {
+      cti $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      dja $$3 = $$1.a_($$2);
+      if (!$$3.a(cwl.co) && !$$3.a(cwl.F)) {
+         return bjv.e;
       } else {
-         blf $$4 = $$1.da();
-         if ($$1.bO() && $$4 instanceof bls $$5 && $$4.ai() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
-            if ($$3.b()) {
-               cmh $$6 = new cmh(cmk.qS);
-               $$6.c($$3.v());
-               return bjm.a($$6);
+         hx $$4 = $$2.c();
+         if (!$$1.u($$4)) {
+            return bjv.e;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<blp> $$8 = $$1.a_(null, new elh($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bjv.e;
+            } else {
+               if ($$1 instanceof amz) {
+                  cah $$9 = new cah($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), dnk.t, $$4);
+                  dmm $$10 = ((amz)$$1).D();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
+
+               $$0.n().h(1);
+               return bjv.a($$1.B);
             }
-
-            return bjm.a($$3);
          }
-
-         $$1.b(arm.c.b(this));
-         return bjm.c($$3);
       }
+   }
+
+   @Override
+   public boolean i(cmr $$0) {
+      return true;
    }
 }

@@ -1,50 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-public final class id {
-   public static final Codec<id> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(csy.g.fieldOf("dimension").forGetter(id::a), hv.a.fieldOf("pos").forGetter(id::b)).apply($$0, id::a)
-   );
-   private final ags<csy> b;
-   private final hv c;
+public enum id {
+   a(ic.c),
+   b(ic.c, ic.f),
+   c(ic.f),
+   d(ic.d, ic.f),
+   e(ic.d),
+   f(ic.d, ic.e),
+   g(ic.e),
+   h(ic.c, ic.e);
 
-   private id(ags<csy> $$0, hv $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   private final Set<ic> i;
+   private final jb j;
 
-   public static id a(ags<csy> $$0, hv $$1) {
-      return new id($$0, $$1);
-   }
+   private id(ic... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new jb(0, 0, 0);
 
-   public ags<csy> a() {
-      return this.b;
-   }
-
-   public hv b() {
-      return this.c;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         id $$1 = (id)$$0;
-         return Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-      } else {
-         return false;
+      for (ic $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
+   public Set<ic> a() {
+      return this.i;
    }
 
-   @Override
-   public String toString() {
-      return this.b + " " + this.c;
+   public int b() {
+      return this.j.u();
+   }
+
+   public int c() {
+      return this.j.w();
    }
 }

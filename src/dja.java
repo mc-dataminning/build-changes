@@ -1,16 +1,16 @@
-public enum dja implements aut {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   private final String d;
+public class dja extends diz.a {
+   public static final Codec<dja> b = a(kd.e.q(), cwj::o).stable();
 
-   private dja(String $$0) {
-      this.d = $$0;
+   public dja(cwj $$0, ImmutableMap<dkd<?>, Comparable<?>> $$1, MapCodec<dja> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String c() {
-      return this.d;
+   protected dja x() {
+      return this;
    }
 }

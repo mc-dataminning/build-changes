@@ -1,289 +1,212 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.nio.ByteBuffer;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public abstract class epw<T extends epw<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
-   private static final String f = "Is-Prerelease";
-   private static final String g = "Cookie";
+public class epw implements AutoCloseable {
+   private final epw.a a;
+   private int b;
+   private int c;
+   private int d;
+   @Nullable
+   private epy e;
+   @Nullable
+   private RenderSystem.a f;
+   private epy.a g;
+   private int h;
+   private epy.b i;
 
-   public epw(String $$0, int $$1, int $$2) {
+   public epw(epw.a $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = GlStateManager._glGenBuffers();
+      this.c = GlStateManager._glGenBuffers();
+      this.d = GlStateManager._glGenVertexArrays();
+   }
+
+   public void a(epo.b $$0) {
       try {
-         this.b = $$0;
-         Proxy $$3 = epu.a();
-         if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
-         } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
-         }
-
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new erf(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new erf(var6.getMessage(), var6);
-      }
-   }
-
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
-   }
-
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
-      } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
-      }
-   }
-
-   public void a(boolean $$0) {
-      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
-   }
-
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
-      }
-   }
-
-   public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new erf(var2.getMessage(), var2);
-      }
-   }
-
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
-         }
-
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new erf(var2.getMessage(), var2);
-      }
-   }
-
-   private String a(@Nullable InputStream $$0) throws IOException {
-      if ($$0 == null) {
-         return "";
-      } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
-
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
-
-         return $$2.toString();
-      }
-   }
-
-   private void f() {
-      byte[] $$0 = new byte[1024];
-
-      try {
-         InputStream $$1 = this.a.getInputStream();
-
-         while ($$1.read($$0) > 0) {
-         }
-
-         $$1.close();
-         return;
-      } catch (Exception var9) {
-         try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
-               }
-
-               $$3.close();
-               return;
-            }
-         } catch (IOException var8) {
+         if (!this.e()) {
+            RenderSystem.assertOnRenderThread();
+            epo.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.i();
+            this.g = $$1.k();
+            this.i = $$1.j();
             return;
          }
       } finally {
-         if (this.a != null) {
-            this.a.disconnect();
-         }
+         $$0.e();
       }
    }
 
-   protected T d() {
-      if (this.c) {
-         return (T)this;
+   private epy a(epo.a $$0, @Nullable ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.g().equals(this.e)) {
+         if (this.e != null) {
+            this.e.f();
+         }
+
+         GlStateManager._glBindBuffer(34962, this.b);
+         $$0.g().e();
+         $$2 = true;
+      }
+
+      if ($$1 != null) {
+         if (!$$2) {
+            GlStateManager._glBindBuffer(34962, this.b);
+         }
+
+         RenderSystem.glBufferData(34962, $$1, this.a.c);
+      }
+
+      return $$0.g();
+   }
+
+   @Nullable
+   private RenderSystem.a b(epo.a $$0, @Nullable ByteBuffer $$1) {
+      if ($$1 != null) {
+         GlStateManager._glBindBuffer(34963, this.c);
+         RenderSystem.glBufferData(34963, $$1, this.a.c);
+         return null;
       } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
-      }
-   }
-
-   protected abstract T e();
-
-   public static epw<?> a(String $$0) {
-      return new epw.b($$0, 5000, 60000);
-   }
-
-   public static epw<?> a(String $$0, int $$1, int $$2) {
-      return new epw.b($$0, $$1, $$2);
-   }
-
-   public static epw<?> b(String $$0, String $$1) {
-      return new epw.c($$0, $$1, 5000, 60000);
-   }
-
-   public static epw<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new epw.c($$0, $$1, $$2, $$3);
-   }
-
-   public static epw<?> b(String $$0) {
-      return new epw.a($$0, 5000, 60000);
-   }
-
-   public static epw<?> c(String $$0, String $$1) {
-      return new epw.d($$0, $$1, 5000, 60000);
-   }
-
-   public static epw<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new epw.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
-      }
-   }
-
-   public static class a extends epw<epw.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public epw.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new erf(var2.getMessage(), var2);
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
+         if ($$2 != this.f || !$$2.a($$0.i())) {
+            $$2.b($$0.i());
          }
+
+         return $$2;
       }
    }
 
-   public static class b extends epw<epw.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
+   public void a() {
+      epp.b();
+      GlStateManager._glBindVertexArray(this.d);
+   }
 
-      public epw.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new erf(var2.getMessage(), var2);
-         }
+   public static void b() {
+      epp.b();
+      GlStateManager._glBindVertexArray(0);
+   }
+
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private epy.a f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, ftn $$2) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
+      } else {
+         this.b($$0, $$1, $$2);
       }
    }
 
-   public static class c extends epw<epw.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
+   private void b(Matrix4f $$0, Matrix4f $$1, ftn $$2) {
+      for (int $$3 = 0; $$3 < 12; $$3++) {
+         int $$4 = RenderSystem.getShaderTexture($$3);
+         $$2.a("Sampler" + $$3, $$4);
       }
 
-      public epw.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
+      if ($$2.b != null) {
+         $$2.b.a($$0);
+      }
 
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new erf(var3.getMessage(), var3);
-         }
+      if ($$2.c != null) {
+         $$2.c.a($$1);
+      }
+
+      if ($$2.d != null) {
+         $$2.d.a(RenderSystem.getInverseViewRotationMatrix());
+      }
+
+      if ($$2.g != null) {
+         $$2.g.a(RenderSystem.getShaderColor());
+      }
+
+      if ($$2.j != null) {
+         $$2.j.a(RenderSystem.getShaderGlintAlpha());
+      }
+
+      if ($$2.k != null) {
+         $$2.k.a(RenderSystem.getShaderFogStart());
+      }
+
+      if ($$2.l != null) {
+         $$2.l.a(RenderSystem.getShaderFogEnd());
+      }
+
+      if ($$2.m != null) {
+         $$2.m.a(RenderSystem.getShaderFogColor());
+      }
+
+      if ($$2.n != null) {
+         $$2.n.a(RenderSystem.getShaderFogShape().a());
+      }
+
+      if ($$2.e != null) {
+         $$2.e.a(RenderSystem.getTextureMatrix());
+      }
+
+      if ($$2.p != null) {
+         $$2.p.a(RenderSystem.getShaderGameTime());
+      }
+
+      if ($$2.f != null) {
+         eox $$5 = eva.N().aL();
+         $$2.f.a((float)$$5.k(), (float)$$5.l());
+      }
+
+      if ($$2.o != null && (this.i == epy.b.a || this.i == epy.b.b)) {
+         $$2.o.a(RenderSystem.getShaderLineWidth());
+      }
+
+      RenderSystem.setupShaderLights($$2);
+      $$2.g();
+      this.c();
+      $$2.f();
+   }
+
+   @Override
+   public void close() {
+      if (this.b >= 0) {
+         RenderSystem.glDeleteBuffers(this.b);
+         this.b = -1;
+      }
+
+      if (this.c >= 0) {
+         RenderSystem.glDeleteBuffers(this.c);
+         this.c = -1;
+      }
+
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
       }
    }
 
-   public static class d extends epw<epw.d> {
-      private final String c;
+   public epy d() {
+      return this.e;
+   }
 
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
+   public boolean e() {
+      return this.d == -1;
+   }
 
-      public epw.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
+   public static enum a {
+      a(35044),
+      b(35048);
 
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new erf(var3.getMessage(), var3);
-         }
+      final int c;
+
+      private a(int $$0) {
+         this.c = $$0;
       }
    }
 }

@@ -1,174 +1,152 @@
-import com.google.common.collect.Lists;
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.datafixers.util.Either;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Supplier;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
 
-public class ev implements ArgumentType<ev.b> {
-   public static final SuggestionProvider<ds> a = ($$0, $$1) -> {
-      StringReader $$2 = new StringReader($$1.getInput());
-      $$2.setCursor($$1.getStart());
-      gd $$3 = new gd($$2);
+public class ev<T> implements ArgumentType<ev.c<T>> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
+   final ahc<? extends it<T>> b;
 
-      try {
-         $$3.t();
-      } catch (CommandSyntaxException var5) {
-      }
-
-      return $$3.a($$1, $$1x -> dw.b(((ds)$$0.getSource()).q(), $$1x));
-   };
-   private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vb.c("argument.scoreHolder.empty"));
-   final boolean d;
-
-   public ev(boolean $$0) {
-      this.d = $$0;
+   public ev(ahc<? extends it<T>> $$0) {
+      this.b = $$0;
    }
 
-   public static String a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1).iterator().next();
+   public static <T> ev<T> a(ahc<? extends it<T>> $$0) {
+      return new ev<>($$0);
    }
 
-   public static Collection<String> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, Collections::emptyList);
+   public static <T> ev.c<T> a(CommandContext<ds> $$0, String $$1, ahc<it<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      ev.c<?> $$4 = (ev.c<?>)$$0.getArgument($$1, ev.c.class);
+      Optional<ev.c<T>> $$5 = $$4.a($$2);
+      return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   public static Collection<String> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ((ds)$$0.getSource()).l().aH()::e);
-   }
+   public ev.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '#') {
+         int $$1 = $$0.getCursor();
 
-   public static Collection<String> a(CommandContext<ds> $$0, String $$1, Supplier<Collection<String>> $$2) throws CommandSyntaxException {
-      Collection<String> $$3 = ((ev.b)$$0.getArgument($$1, ev.b.class)).getNames((ds)$$0.getSource(), $$2);
-      if ($$3.isEmpty()) {
-         throw ee.d.create();
-      } else {
-         return $$3;
-      }
-   }
-
-   public static ev a() {
-      return new ev(false);
-   }
-
-   public static ev b() {
-      return new ev(true);
-   }
-
-   public ev.b a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '@') {
-         gd $$1 = new gd($$0);
-         gc $$2 = $$1.t();
-         if (!this.d && $$2.a() > 1) {
-            throw ee.a.create();
-         } else {
-            return new ev.c($$2);
-         }
-      } else {
-         int $$3 = $$0.getCursor();
-
-         while ($$0.canRead() && $$0.peek() != ' ') {
+         try {
             $$0.skip();
+            ahd $$2 = ahd.a($$0);
+            return new ev.d<>(asq.a(this.b, $$2));
+         } catch (CommandSyntaxException var4) {
+            $$0.setCursor($$1);
+            throw var4;
          }
-
-         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
-         if ($$4.equals("*")) {
-            return ($$0x, $$1) -> {
-               Collection<String> $$2 = $$1.get();
-               if ($$2.isEmpty()) {
-                  throw c.create();
-               } else {
-                  return $$2;
-               }
-            };
-         } else {
-            Collection<String> $$5 = Collections.singleton($$4);
-            return ($$1, $$2) -> $$5;
-         }
+      } else {
+         ahd $$4 = ahd.a($$0);
+         return new ev.b<>(ahc.a(this.b, $$4));
       }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return $$0.getSource() instanceof dx $$2 ? $$2.a(this.b, dx.a.c, $$1, $$0) : $$1.buildFuture();
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 
-   public static class a implements hh<ev, ev.a.a> {
-      private static final byte a = 1;
-
-      public void a(ev.a.a $$0, ue $$1) {
-         int $$2 = 0;
-         if ($$0.b) {
-            $$2 |= 1;
-         }
-
-         $$1.k($$2);
+   public static class a<T> implements hj<ev<T>, ev.a<T>.a> {
+      public void a(ev.a<T>.a $$0, ug $$1) {
+         $$1.b($$0.b);
       }
 
-      public ev.a.a a(ue $$0) {
-         byte $$1 = $$0.readByte();
-         boolean $$2 = ($$1 & 1) != 0;
-         return new ev.a.a($$2);
+      public ev.a<T>.a a(ug $$0) {
+         return new ev.a.a($$0.u());
       }
 
-      public void a(ev.a.a $$0, JsonObject $$1) {
-         $$1.addProperty("amount", $$0.b ? "multiple" : "single");
+      public void a(ev.a<T>.a $$0, JsonObject $$1) {
+         $$1.addProperty("registry", $$0.b.a().toString());
       }
 
-      public ev.a.a a(ev $$0) {
-         return new ev.a.a($$0.d);
+      public ev.a<T>.a a(ev<T> $$0) {
+         return new ev.a.a($$0.b);
       }
 
-      public final class a implements hh.a<ev> {
-         final boolean b;
+      public final class a implements hj.a<ev<T>> {
+         final ahc<? extends it<T>> b;
 
-         a(boolean $$1) {
+         a(ahc<? extends it<T>> $$1) {
             this.b = $$1;
          }
 
-         public ev a(dn $$0) {
-            return new ev(this.b);
+         public ev<T> a(dn $$0) {
+            return new ev<>(this.b);
          }
 
          @Override
-         public hh<ev, ?> a() {
+         public hj<ev<T>, ?> a() {
             return a.this;
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      Collection<String> getNames(ds var1, Supplier<Collection<String>> var2) throws CommandSyntaxException;
-   }
-
-   public static class c implements ev.b {
-      private final gc a;
-
-      public c(gc $$0) {
-         this.a = $$0;
+   static record b<T>(ahc<T> a) implements ev.c<T> {
+      @Override
+      public Either<ahc<T>, asq<T>> a() {
+         return Either.left(this.a);
       }
 
       @Override
-      public Collection<String> getNames(ds $$0, Supplier<Collection<String>> $$1) throws CommandSyntaxException {
-         List<? extends blf> $$2 = this.a.b($$0);
-         if ($$2.isEmpty()) {
-            throw ee.d.create();
-         } else {
-            List<String> $$3 = Lists.newArrayList();
+      public <E> Optional<ev.c<E>> a(ahc<? extends it<E>> $$0) {
+         return this.a.c($$0).map(ev.b::new);
+      }
 
-            for (blf $$4 : $$2) {
-               $$3.add($$4.cy());
-            }
+      public boolean a(ih<T> $$0) {
+         return $$0.a(this.a);
+      }
 
-            return $$3;
-         }
+      @Override
+      public String b() {
+         return this.a.a().toString();
+      }
+
+      public ahc<T> c() {
+         return this.a;
+      }
+   }
+
+   public interface c<T> extends Predicate<ih<T>> {
+      Either<ahc<T>, asq<T>> a();
+
+      <E> Optional<ev.c<E>> a(ahc<? extends it<E>> var1);
+
+      String b();
+   }
+
+   static record d<T>(asq<T> a) implements ev.c<T> {
+      @Override
+      public Either<ahc<T>, asq<T>> a() {
+         return Either.right(this.a);
+      }
+
+      @Override
+      public <E> Optional<ev.c<E>> a(ahc<? extends it<E>> $$0) {
+         return this.a.d($$0).map(ev.d::new);
+      }
+
+      public boolean a(ih<T> $$0) {
+         return $$0.a(this.a);
+      }
+
+      @Override
+      public String b() {
+         return "#" + this.a.b();
+      }
+
+      public asq<T> c() {
+         return this.a;
       }
    }
 }

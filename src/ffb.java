@@ -1,24 +1,21 @@
-public class ffb extends fff {
-   private static final vb b = vb.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final vb c = vb.c("title.32bit.deprecation.realms");
-   private static final vb k = vb.c("title.32bit.deprecation.realms.check");
-   private static final vb l = b.f().f("\n").b(c);
-   private final fcc m;
+public class ffb extends fds<cjm> {
+   private static final ahd x = new ahd("textures/gui/container/shulker_box.png");
 
-   public ffb(fcc $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+   public ffb(cjm $$0, cfa $$1, vd $$2) {
+      super($$0, $$1, $$2);
+      this.k++;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(ewh.a(va.d, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.w = true;
-            this.f.m.as();
-         }
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
 
-         this.f.a(this.m);
-      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
+   @Override
+   protected void a(ewm $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

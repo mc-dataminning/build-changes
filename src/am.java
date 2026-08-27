@@ -1,7 +1,7 @@
 import com.mojang.serialization.Codec;
 
 public class am {
-   public static final Codec<ap<?>> a = kb.aq.q();
+   public static final Codec<ap<?>> a = kd.aq.q();
    public static final bx b = a("impossible", new bx());
    public static final cd c = a("player_killed_entity", new cd());
    public static final cd d = a("entity_killed_player", new cd());
@@ -56,10 +56,10 @@ public class am {
    public static final cs aa = a("recipe_crafted", new cs());
 
    private static <T extends ap<?>> T a(String $$0, T $$1) {
-      return ir.a(kb.aq, $$0, $$1);
+      return it.a(kd.aq, $$0, $$1);
    }
 
-   public static ap<?> a(ir<ap<?>> $$0) {
+   public static ap<?> a(it<ap<?>> $$0) {
       return b;
    }
 }

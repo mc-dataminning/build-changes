@@ -1,39 +1,62 @@
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
+
 public class ftf {
-   protected final int[] a;
-   protected final int b;
-   protected final ia c;
-   protected final gdo d;
-   private final boolean e;
+   private final ftk a = new ftk();
+   private final ftl b;
+   private final fsz.a c;
+   private final fsz.a d;
+   private final fta e;
 
-   public ftf(int[] $$0, int $$1, ia $$2, gdo $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public ftf(int $$0) {
+      this.b = ftl.a($$0);
+      SortedMap<fth, epo> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(fto.h(), this.a.a(fth.c()));
+         $$0x.put(fto.i(), this.a.a(fth.e()));
+         $$0x.put(fto.a(), this.a.a(fth.d()));
+         $$0x.put(fto.k(), this.a.a(fth.f()));
+         a($$0x, fto.b());
+         a($$0x, fto.c());
+         a($$0x, fto.d());
+         a($$0x, fto.e());
+         a($$0x, fto.f());
+         $$0x.put(fto.g(), new epo(786432));
+         a($$0x, fth.j());
+         a($$0x, fth.k());
+         a($$0x, fth.m());
+         a($$0x, fth.n());
+         a($$0x, fth.l());
+         a($$0x, fth.o());
+         a($$0x, fth.p());
+         a($$0x, fth.i());
+         ggl.l.forEach($$1x -> a($$0x, $$1x));
+      });
+      this.d = fsz.a(new epo(1536));
+      this.c = fsz.a($$1, new epo(786432));
+      this.e = new fta(this.c);
    }
 
-   public gdo a() {
-      return this.d;
+   private static void a(Object2ObjectLinkedOpenHashMap<fth, epo> $$0, fth $$1) {
+      $$0.put($$1, new epo($$1.G()));
    }
 
-   public int[] b() {
+   public ftk a() {
       return this.a;
    }
 
-   public boolean c() {
-      return this.b != -1;
-   }
-
-   public int d() {
+   public ftl b() {
       return this.b;
    }
 
-   public ia e() {
+   public fsz.a c() {
       return this.c;
    }
 
-   public boolean f() {
+   public fsz.a d() {
+      return this.d;
+   }
+
+   public fta e() {
       return this.e;
    }
 }

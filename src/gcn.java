@@ -1,24 +1,25 @@
-public class gcn extends gbk<cas, flo<cas>> {
-   private static final agt a = new agt("textures/entity/wither/wither_armor.png");
-   private final flo<cas> b;
+public class gcn<T extends cfb> extends gcq<T, fku<T>> {
+   private final fkp a;
 
-   public gcn(fzj<cas, flo<cas>> $$0, flu $$1) {
+   public gcn(gaa<T, fku<T>> $$0, fml $$1) {
       super($$0);
-      this.b = new flo<>($$1.a(flx.bT));
+      this.a = new fkp($$1.a(fmo.aD));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return aty.b($$0 * 0.02F) * 3.0F;
+   public void a(ept $$0, fsz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
    }
 
-   @Override
-   protected agt a() {
-      return a;
-   }
-
-   @Override
-   protected fiy<cas> b() {
-      return this.b;
+   private void a(ept $$0, fsz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      sl $$9 = $$8 ? $$3.gj() : $$3.gk();
+      blt.a($$9.l("id")).filter($$0x -> $$0x == blt.au).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
+         byi.b $$11 = byi.b.a($$9.h("Variant"));
+         epx $$12 = $$1.getBuffer(this.a.a(fzr.a($$11)));
+         this.a.a($$0, $$12, $$2, gdw.d, $$4, $$5, $$6, $$7, $$3.ah);
+         $$0.b();
+      });
    }
 }

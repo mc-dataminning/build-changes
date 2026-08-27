@@ -1,26 +1,84 @@
-import com.mojang.serialization.Codec;
+public abstract class dyx extends dzd {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public interface dyx<S extends dyo> {
-   dyx<eah> a = a("buried_treasure", eah.d);
-   dyx<eaj> b = a("desert_pyramid", eaj.d);
-   dyx<eal> c = a("end_city", eal.d);
-   dyx<eau> d = a("fortress", eau.e);
-   dyx<ean> e = a("igloo", ean.d);
-   dyx<eao> f = a("jigsaw", eao.f);
-   dyx<eaq> g = a("jungle_temple", eaq.d);
-   dyx<eas> h = a("mineshaft", eas.d);
-   dyx<eaw> i = a("nether_fossil", eaw.d);
-   dyx<eay> j = a("ocean_monument", eay.d);
-   dyx<eba> k = a("ocean_ruin", eba.d);
-   dyx<ebc> l = a("ruined_portal", ebc.d);
-   dyx<ebe> m = a("shipwreck", ebe.d);
-   dyx<ebg> n = a("stronghold", ebg.d);
-   dyx<ebi> o = a("swamp_hut", ebi.d);
-   dyx<ebk> p = a("woodland_mansion", ebk.d);
+   protected dyx(dzq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ic $$7) {
+      super($$0, 0, dzd.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
+   }
 
-   Codec<S> codec();
+   protected dyx(dzq $$0, sl $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
+   }
 
-   private static <S extends dyo> dyx<S> a(String $$0, Codec<S> $$1) {
-      return ir.a(kb.T, $$0, () -> $$1);
+   @Override
+   protected void a(dzp $$0, sl $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
+   }
+
+   protected boolean a(ctj $$0, dyr $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         hx.a $$5 = new hx.a();
+
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(doj.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
+         }
+      }
+   }
+
+   protected boolean a(ctj $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.al();
+         boolean $$3 = false;
+         hx.a $$4 = new hx.a();
+
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(doj.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
+
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

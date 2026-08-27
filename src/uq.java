@@ -1,3 +1,6 @@
-public interface uq extends uk {
-   void e();
+public interface uq extends um {
+   @Override
+   default xe a() {
+      return xe.a;
+   }
 }

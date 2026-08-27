@@ -1,79 +1,109 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public class dsp extends drc<dud> {
-   public dsp(Codec<dud> $$0) {
+public class dsp extends drn<duh> {
+   public dsp(Codec<duh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<dud> $$0) {
-      ctt $$1 = $$0.b();
-      hv $$2 = $$0.e();
-      if (a($$1, $$2)) {
+   public boolean a(drp<duh> $$0) {
+      cud $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      if (!$$1.a_($$2).i()) {
          return false;
       } else {
-         auf $$3 = $$0.d();
-         dud $$4 = $$0.f();
-         int $$5 = $$4.a();
-         int $$6 = $$4.b();
-         int $$7 = $$4.c();
-         hv.a $$8 = new hv.a();
-
-         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
-            $$8.g($$2).e(aty.a($$3, -$$5, $$5), aty.a($$3, -$$6, $$6), aty.a($$3, -$$5, $$5));
-            if (a($$1, $$8) && !a($$1, (hv)$$8)) {
-               int $$10 = aty.a($$3, 1, $$7);
-               if ($$3.a(6) == 0) {
-                  $$10 *= 2;
-               }
-
-               if ($$3.a(5) == 0) {
-                  $$10 = 1;
-               }
-
-               int $$11 = 17;
-               int $$12 = 25;
-               a($$1, $$3, $$8, $$10, 17, 25);
-            }
+         aup $$3 = $$0.d();
+         hx $$4 = $$0.e();
+         duh $$5 = $$0.f();
+         hx.a $$6 = $$4.j();
+         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
+            a($$1, $$5, $$3, $$4, $$6);
          }
 
          return true;
       }
    }
 
-   private static boolean a(csz $$0, hv.a $$1) {
-      do {
-         $$1.e(0, -1, 0);
-         if ($$0.r($$1)) {
+   private static boolean a(cud $$0, duh $$1, hx $$2) {
+      hx.a $$3 = $$2.j();
+
+      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
+         $$3.c(ic.b);
+         dja $$5 = $$0.a_($$3);
+         if (!a($$5, $$4, $$1.n)) {
             return false;
          }
-      } while ($$0.a_($$1).i());
+      }
 
-      $$1.e(0, 1, 0);
       return true;
    }
 
-   public static void a(csz $$0, auf $$1, hv.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 1; $$6 <= $$3; $$6++) {
-         if ($$0.t($$2)) {
-            if ($$6 == $$3 || !$$0.t($$2.c())) {
-               $$0.a($$2, cwb.oB.o().a(czo.e, Integer.valueOf(aty.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, cwb.oC.o(), 2);
-         }
-
-         $$2.c(ia.b);
+   private static boolean a(dja $$0, int $$1, int $$2) {
+      if ($$0.i()) {
+         return true;
+      } else {
+         int $$3 = $$1 + 1;
+         return $$3 <= $$2 && $$0.u().a(asg.a);
       }
    }
 
-   private static boolean a(csz $$0, hv $$1) {
-      if (!$$0.t($$1)) {
-         return true;
-      } else {
-         dip $$2 = $$0.a_($$1.d());
-         return !$$2.a(cwb.dV) && !$$2.a(cwb.on) && !$$2.a(cwb.op);
+   private static boolean a(cud $$0, dkx $$1, duh $$2, aup $$3, hx.a $$4, hx $$5) {
+      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
+         $$4.c(ic.b);
+         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
+            hx $$7 = $$4.d();
+            if ($$0.b_($$7).a(asg.b) || !$$0.a_($$7).e()) {
+               return false;
+            }
+
+            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
+               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static void a(hx $$0, int $$1, cud $$2, duh $$3, aup $$4) {
+      int $$5 = $$0.u();
+      int $$6 = $$0.w();
+      hx.a $$7 = $$0.j();
+
+      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
+         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      }
+   }
+
+   private static void a(cud $$0, duh $$1, aup $$2, int $$3, int $$4, hx.a $$5) {
+      int $$6 = $$1.d;
+      Predicate<dja> $$7 = $$1x -> $$1x.a($$1.e);
+
+      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
+         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
+         if ($$7.test($$0.a_($$5))) {
+            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+         }
+
+         $$5.p($$3);
+         $$5.r($$4);
+      }
+   }
+
+   private static void a(cud $$0, duh $$1, aup $$2, hx $$3, hx.a $$4) {
+      int $$5 = $$1.i;
+      int $$6 = $$1.j;
+
+      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
+         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
+         if ($$0.u($$4)) {
+            dja $$8 = $$1.k.a($$2, $$4);
+            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, ic.a)) {
+               $$0.a($$4, $$8, 2);
+            }
+         }
       }
    }
 }

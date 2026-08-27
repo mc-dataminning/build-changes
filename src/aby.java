@@ -1,64 +1,40 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class aby implements wu<yo> {
-   private final String a;
-   @Nullable
+public class aby implements xd<yx> {
+   private final emh a;
    private final String b;
-   private final int c;
-   private final ahk.a d;
 
-   public aby(ahk.a $$0, @Nullable String $$1, String $$2, int $$3) {
-      if ($$0 != ahk.a.b && $$1 == null) {
-         throw new IllegalArgumentException("Need an objective name");
+   public aby(emh $$0, @Nullable emi $$1) {
+      this.a = $$0;
+      if ($$1 == null) {
+         this.b = "";
       } else {
-         this.a = $$2;
-         this.b = $$1;
-         this.c = $$3;
-         this.d = $$0;
+         this.b = $$1.b();
       }
    }
 
-   public aby(ue $$0) {
-      this.a = $$0.s();
-      this.d = $$0.b(ahk.a.class);
-      String $$1 = $$0.s();
-      this.b = Objects.equals($$1, "") ? null : $$1;
-      if (this.d != ahk.a.b) {
-         this.c = $$0.n();
-      } else {
-         this.c = 0;
-      }
+   public aby(ug $$0) {
+      this.a = $$0.a(emh.u);
+      this.b = $$0.s();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.a(this.d);
-      $$0.a(this.b == null ? "" : this.b);
-      if (this.d != ahk.a.b) {
-         $$0.c(this.c);
-      }
+   public void a(ug $$0) {
+      $$0.a(emh::a, this.a);
+      $$0.a(this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public emh a() {
       return this.a;
    }
 
    @Nullable
    public String d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public ahk.a f() {
-      return this.d;
+      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

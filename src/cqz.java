@@ -1,52 +1,59 @@
-public class cqz extends cqs {
-   public cqz(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.b, $$1);
+public class cqz extends crc {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   private static final String[] g = new String[]{"all", "undead", "arthropods"};
+   private static final int[] h = new int[]{1, 5, 5};
+   private static final int[] i = new int[]{11, 8, 8};
+   private static final int[] j = new int[]{20, 20, 20};
+   public final int d;
+
+   public cqz(crc.a $$0, int $$1, blu... $$2) {
+      super($$0, crd.f, $$2);
+      this.d = $$1;
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return h[this.d] + ($$0 - 1) * i[this.d];
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+      return this.a($$0) + j[this.d];
    }
 
    @Override
    public int a() {
-      return 2;
+      return 5;
    }
 
-   public static void a(blv $$0, csy $$1, hv $$2, int $$3) {
-      if ($$0.aC()) {
-         dip $$4 = cwb.kI.o();
-         int $$5 = Math.min(16, 2 + $$3);
-         hv.a $$6 = new hv.a();
-
-         for (hv $$7 : hv.a($$2.b(-$$5, -1, -$$5), $$2.b($$5, -1, $$5))) {
-            if ($$7.a($$0.dk(), (double)$$5)) {
-               $$6.d($$7.u(), $$7.v() + 1, $$7.w());
-               dip $$8 = $$1.a_($$6);
-               if ($$8.i()) {
-                  dip $$9 = $$1.a_($$7);
-                  if ($$9 == cze.b() && $$4.a((ctb)$$1, $$7) && $$1.a($$4, $$7, elg.a())) {
-                     $$1.b($$7, $$4);
-                     $$1.a($$7, cwb.kI, aty.a($$0.eg(), 60, 120));
-                  }
-               }
-            }
-         }
+   @Override
+   public float a(int $$0, bmk $$1) {
+      if (this.d == 0) {
+         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
+      } else if (this.d == 1 && $$1 == bmk.b) {
+         return (float)$$0 * 2.5F;
+      } else {
+         return this.d == 2 && $$1 == bmk.c ? (float)$$0 * 2.5F : 0.0F;
       }
    }
 
    @Override
-   public boolean a(cqs $$0) {
-      return super.a($$0) && $$0 != cqw.i;
+   public boolean a(crc $$0) {
+      return !($$0 instanceof cqz);
+   }
+
+   @Override
+   public boolean a(cmr $$0) {
+      return $$0.d() instanceof ckg ? true : super.a($$0);
+   }
+
+   @Override
+   public void a(bmf $$0, blp $$1, int $$2) {
+      if ($$1 instanceof bmf $$3 && this.d == 2 && $$2 > 0 && $$3.eS() == bmk.c) {
+         int $$4 = 20 + $$0.eg().a(10 * $$2);
+         $$3.b(new blc(ble.b, $$4, 3));
+      }
    }
 }

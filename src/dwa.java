@@ -1,45 +1,49 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dwa extends dvy {
-   public static final Codec<dwa> a = Codec.unit(() -> dwa.b);
-   public static final dwa b = new dwa();
+public record dwa(dvs b, List<dwa.a> c) {
+   public static final Codec<dwa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dvs.a.fieldOf("fallback").forGetter(dwa::a), dwa.a.a.listOf().fieldOf("rules").forGetter(dwa::b)).apply($$0, dwa::new)
+   );
 
-   @Override
-   protected dvz<?> a() {
-      return dvz.a;
+   public static dwa a(dvs $$0) {
+      return new dwa($$0, List.of());
    }
 
-   @Override
-   public void a(dvy.a $$0) {
-      auf $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            hv $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, det.d);
-            }
-         }
+   public static dwa a(cwj $$0) {
+      return a(dvs.a($$0));
+   }
 
-         if ($$1.a(3) > 0) {
-            hv $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, det.f);
-            }
+   public dja a(cud $$0, aup $$1, hx $$2) {
+      for (dwa.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
+      }
 
-         if ($$1.a(3) > 0) {
-            hv $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, det.e);
-            }
-         }
+      return this.b.a($$1, $$2);
+   }
 
-         if ($$1.a(3) > 0) {
-            hv $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, det.c);
-            }
-         }
-      });
+   public dvs a() {
+      return this.b;
+   }
+
+   public List<dwa.a> b() {
+      return this.c;
+   }
+
+   public static record a(dpq b, dvs c) {
+      public static final Codec<dwa.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dpq.b.fieldOf("if_true").forGetter(dwa.a::a), dvs.a.fieldOf("then").forGetter(dwa.a::b)).apply($$0, dwa.a::new)
+      );
+
+      public dpq a() {
+         return this.b;
+      }
+
+      public dvs b() {
+         return this.c;
+      }
    }
 }

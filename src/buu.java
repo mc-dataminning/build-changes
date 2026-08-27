@@ -1,32 +1,64 @@
-import com.mojang.serialization.Codec;
+import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public enum buu implements aut {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class buu<T extends bmf> extends bvb {
+   private static final int i = 10;
+   protected final Class<T> a;
+   protected final int b;
+   @Nullable
+   protected bmf c;
+   protected bwt d;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<buu> n = aut.a(buu::values);
+   public buu(bmh $$0, Class<T> $$1, boolean $$2) {
+      this($$0, $$1, 10, $$2, false, null);
+   }
 
-   private buu(String $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public buu(bmh $$0, Class<T> $$1, boolean $$2, Predicate<bmf> $$3) {
+      this($$0, $$1, 10, $$2, false, $$3);
+   }
+
+   public buu(bmh $$0, Class<T> $$1, boolean $$2, boolean $$3) {
+      this($$0, $$1, 10, $$2, $$3, null);
+   }
+
+   public buu(bmh $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bmf> $$5) {
+      super($$0, $$3, $$4);
+      this.a = $$1;
+      this.b = b($$2);
+      this.a(EnumSet.of(btb.a.d));
+      this.d = bwt.a().a(this.l()).a($$5);
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean a() {
+      if (this.b > 0 && this.e.eg().a(this.b) != 0) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   protected elh a(double $$0) {
+      return this.e.cH().c($$0, 4.0, $$0);
+   }
+
+   protected void h() {
+      if (this.a != cfb.class && this.a != ana.class) {
+         this.c = this.e.dM().a(this.e.dM().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dr(), this.e.dv(), this.e.dx());
+      } else {
+         this.c = this.e.dM().a(this.d, this.e, this.e.dr(), this.e.dv(), this.e.dx());
+      }
+   }
+
+   @Override
+   public void c() {
+      this.e.h(this.c);
+      super.c();
+   }
+
+   public void a(@Nullable bmf $$0) {
+      this.c = $$0;
    }
 }

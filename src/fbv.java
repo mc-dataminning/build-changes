@@ -1,27 +1,52 @@
-public class fbv extends fcc {
-   private exa a;
+public class fbv extends fct {
+   private static final vd a = vd.c("gui.toMenu");
+   private static final vd b = vd.c("gui.toTitle");
+   private final fct c;
+   private final vd k;
+   private final vd l;
+   private final fam m = fam.d();
 
-   public fbv() {
-      super(vb.c("outOfMemory.title"));
-      this.a = exa.a;
+   public fbv(fct $$0, vd $$1, vd $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fbv(fct $$0, vd $$1, vd $$2, vd $$3) {
+      super($$1);
+      this.c = $$0;
+      this.k = $$2;
+      this.l = $$3;
    }
 
    @Override
-   protected void aP_() {
-      this.d(ewh.a(va.l, $$0 -> this.f.a(new fch())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
-      this.d(ewh.a(vb.c("menu.quit"), $$0 -> this.f.p()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
-      this.a = exa.a(this.i, vb.c("outOfMemory.message"), 295);
+   protected void aN_() {
+      this.m.c().b().a(10);
+      this.m.a(new eyf(this.e, this.i));
+      this.m.a(new exs(this.k, this.i).c(this.g - 50).b(true));
+      ewy $$0;
+      if (this.f.C()) {
+         $$0 = ewy.a(this.l, $$0x -> this.f.a(this.c)).a();
+      } else {
+         $$0 = ewy.a(b, $$0x -> this.f.a(new fcy())).a();
+      }
+
+      this.m.a($$0);
+      this.m.a();
+      this.m.a(this::d);
+      this.c();
    }
 
    @Override
-   public boolean aE_() {
+   protected void c() {
+      fag.a(this.m, this.F());
+   }
+
+   @Override
+   public vd h() {
+      return vc.a(this.e, this.k);
+   }
+
+   @Override
+   public boolean aL_() {
       return false;
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
-      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
    }
 }

@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fnm {
+public enum fnm {
+   a,
+   b;
+
+   private static final List<fnm> c = List.of(values());
+   private static final iu.b d = iu.a(kd.as);
+
+   public static io<fnm> a() {
+      return new io<>(c).a(a, d);
+   }
 }

@@ -1,32 +1,28 @@
-public class abl implements wu<yo> {
-   private final int a;
-   private final int b;
+import javax.annotation.Nullable;
 
-   public abl(int $$0, int $$1) {
+public class abl implements xd<yx> {
+   @Nullable
+   private final ahd a;
+
+   public abl(@Nullable ahd $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public abl(ue $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
-   }
-
-   @Override
-   public void a(ue $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-   }
-
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public abl(ug $$0) {
+      this.a = $$0.c(ug::t);
    }
 
-   public int d() {
-      return this.b;
+   @Override
+   public void a(ug $$0) {
+      $$0.a(this.a, ug::a);
+   }
+
+   @Nullable
+   public ahd a() {
+      return this.a;
    }
 }

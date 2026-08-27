@@ -1,48 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class eaw extends dyo {
-   public static final Codec<eaw> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), dwv.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, eaw::new)
-   );
-   public final dwv e;
+public class eaw extends dyz {
+   public static final Codec<eaw> d = a(eaw::new);
 
-   public eaw(dyo.c $$0, dwv $$1) {
+   public eaw(dyz.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<dyo.b> a(dyo.a $$0) {
-      dox $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dov $$5 = new dov($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      ctk $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      hv.a $$8 = new hv.a($$2, $$6, $$3);
+   public Optional<dyz.b> a(dyz.a $$0) {
+      dcv $$1 = dcv.a($$0.f());
+      hx $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dyz.b($$2, (Consumer<dzr>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   }
 
-      while ($$6 > $$4) {
-         dip $$9 = $$7.a($$6);
-         dip $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(cwb.dW) || $$10.d(csn.a, $$8.q($$6), ia.b))) {
-            break;
-         }
-      }
-
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         hv $$11 = new hv($$2, $$6, $$3);
-         return Optional.of(new dyo.b($$11, (Consumer<dzg>)($$3x -> eav.a($$0.e(), $$3x, $$1, $$11))));
-      }
+   private void a(dzr $$0, hx $$1, dcv $$2, dyz.a $$3) {
+      List<dzd> $$4 = Lists.newArrayList();
+      eav.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public dyx<?> e() {
-      return dyx.i;
+   public dzi<?> e() {
+      return dzi.c;
    }
 }

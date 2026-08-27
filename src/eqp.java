@@ -1,36 +1,50 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
+import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.slf4j.Logger;
 
-public class eqp extends eqz {
-   private static final Logger b = LogUtils.getLogger();
-   public List<eqo> a;
+public class eqp extends erp {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public static eqp a(String $$0) {
-      eqp $$1 = new eqp();
-      $$1.a = Lists.newArrayList();
+   public static eqp a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      eqp $$2 = new eqp();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("lists").isJsonArray()) {
-            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
+         $$2.a = etm.b("backupId", $$1, "");
+         $$2.b = etm.b("lastModifiedDate", $$1);
+         $$2.c = etm.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
 
-            while ($$5.hasNext()) {
-               $$1.a.add(eqo.a($$5.next().getAsJsonObject()));
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
             }
          }
-      } catch (Exception var6) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
 
-      return $$1;
+      return $$2;
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

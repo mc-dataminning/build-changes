@@ -1,42 +1,52 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class eau extends dyo {
-   public static final bhz<cuj.c> d = bhz.a(
-      new cuj.c(blj.i, 10, 2, 3), new cuj.c(blj.bu, 5, 4, 4), new cuj.c(blj.bn, 8, 5, 5), new cuj.c(blj.aK, 2, 5, 5), new cuj.c(blj.am, 3, 4, 4)
-   );
-   public static final Codec<eau> e = a(eau::new);
+public class eau extends dyy {
+   public static final Codec<eau> d = a(eau::new);
 
-   public eau(dyo.c $$0) {
-      super($$0);
+   public eau(dyz.c $$0) {
+      super(eat::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<dyo.b> a(dyo.a $$0) {
-      csf $$1 = $$0.h();
-      hv $$2 = new hv($$1.d(), 64, $$1.e());
-      return Optional.of(new dyo.b($$2, (Consumer<dzg>)($$1x -> a($$1x, $$0))));
-   }
+   public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, dzo $$6) {
+      Set<hx> $$7 = avb.a(jb::i);
 
-   private static void a(dzg $$0, dyo.a $$1) {
-      eat.q $$2 = new eat.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<dys> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         dys $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
+      for (dzd $$8 : $$6.c()) {
+         if ($$8 instanceof eat $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
+         }
       }
 
-      $$0.a($$1.f(), 48, 70);
+      ObjectArrayList<hx> $$10 = new ObjectArrayList($$7.stream().toList());
+      aup $$11 = aup.a($$0.C()).e().a($$6.b().g());
+      ac.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         hx $$13 = (hx)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, cwl.I.o(), 2);
+         }
+      }
+   }
+
+   private static void a(dyr $$0, cud $$1, hx $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, cwl.J.o(), 2);
+         $$1.a($$2, dgq.N).ifPresent($$1x -> $$1x.a(egn.aP, $$2.a()));
+      }
    }
 
    @Override
-   public dyx<?> e() {
-      return dyx.d;
+   public dzi<?> e() {
+      return dzi.b;
    }
 }

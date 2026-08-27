@@ -1,80 +1,33 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Map;
 
-public class agw extends IOException {
-   private final List<agw.a> a = Lists.newArrayList();
+public class agw {
+   private final String a;
    private final String b;
 
-   public agw(String $$0) {
-      this.a.add(new agw.a());
-      this.b = $$0;
+   public agw(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public agw(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new agw.a());
-      this.b = $$0;
+   public static agw a(String $$0) {
+      return new agw($$0, ".json");
    }
 
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
+   public ahd a(ahd $$0) {
+      return $$0.c(this.a + "/" + $$0.a() + this.b);
    }
 
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new agw.a());
+   public ahd b(ahd $$0) {
+      String $$1 = $$0.a();
+      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
    }
 
-   @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
+   public Map<ahd, aqa> a(aqc $$0) {
+      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 
-   public static agw a(Exception $$0) {
-      if ($$0 instanceof agw) {
-         return (agw)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new agw($$1, $$0);
-      }
-   }
-
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
-
-      a() {
-      }
-
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
-         }
-      }
+   public Map<ahd, List<aqa>> b(aqc $$0) {
+      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

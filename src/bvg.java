@@ -1,50 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class bvg extends bve {
-   @Nullable
-   private hv p;
+public class bvg<T> {
+   private final T a;
+   private long b;
 
-   public bvg(blx $$0, csy $$1) {
-      super($$0, $$1);
+   public bvg(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public eeo a(hv $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public eeo a(blf $$0, int $$1) {
-      this.p = $$0.dm();
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(blf $$0, double $$1) {
-      eeo $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dm();
-         this.d = $$1;
-         return true;
+   public void a() {
+      if (this.e()) {
+         this.b--;
       }
    }
 
+   public static <T> bvg<T> a(T $$0) {
+      return new bvg<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> bvg<T> a(T $$0, long $$1) {
+      return new bvg<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
    @Override
-   public void c() {
-      if (!this.l()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dk(), (double)this.a.dg())
-               && (!(this.a.dt() > (double)this.p.v()) || !hv.a((double)this.p.u(), this.a.dt(), (double)this.p.w()).a(this.a.dk(), (double)this.a.dg()))) {
-               this.a.K().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @avn
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<bvg<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new bvg<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

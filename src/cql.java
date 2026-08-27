@@ -1,20 +1,22 @@
-public class cql extends cqs {
-   public cql(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.k, $$1);
+public interface cql extends cpv<bjo> {
+   @Override
+   default cqa<?> e() {
+      return cqa.g;
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   default cmr g() {
+      return new cmr(cwl.ob);
    }
 
-   @Override
-   public boolean a(cqs $$0) {
-      return $$0 instanceof crc ? false : super.a($$0);
-   }
+   boolean a(cmr var1);
+
+   boolean b(cmr var1);
+
+   boolean c(cmr var1);
 }

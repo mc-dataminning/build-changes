@@ -1,15 +1,89 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class air {
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register((LiteralArgumentBuilder)dt.a("me").then(dt.a("action", ei.a()).executes($$0x -> {
-         ei.a($$0x, "action", $$1 -> {
-            ds $$2 = (ds)$$0x.getSource();
-            aqf $$3 = $$2.l().ae();
-            $$3.a($$1, $$2, ux.a(ux.i, $$2));
-         });
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("commands.damage.invulnerable"));
+
+   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("damage").requires($$0x -> $$0x.c(2)))
+            .then(
+               dt.a("target", ef.a())
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (ds)$$0x.getSource(), ef.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((ds)$$0x.getSource()).e().ai().n()
+                                 )
+                           ))
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("damageType", er.a($$1, ke.r))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ds)$$0x.getSource(),
+                                             ef.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new bkn(er.a($$0x, "damageType", ke.r))
+                                          )
+                                    ))
+                                 .then(
+                                    dt.a("at")
+                                       .then(
+                                          dt.a("location", ft.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      ef.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bkn(er.a($$0x, "damageType", ke.r), ft.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dt.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)dt.a("entity", ef.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      ef.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bkn(er.a($$0x, "damageType", ke.r), ef.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             dt.a("from")
+                                                .then(
+                                                   dt.a("cause", ef.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ds)$$0x.getSource(),
+                                                               ef.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new bkn(er.a($$0x, "damageType", ke.r), ef.a($$0x, "entity"), ef.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
+   }
+
+   private static int a(ds $$0, blp $$1, float $$2, bkn $$3) throws CommandSyntaxException {
+      if ($$1.a($$3, $$2)) {
+         $$0.a(() -> vd.a("commands.damage.success", $$2, $$1.Q_()), true);
          return 1;
-      })));
+      } else {
+         throw a.create();
+      }
    }
 }

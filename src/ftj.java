@@ -1,90 +1,140 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class ftj {
-   public float[] a;
-   public final int b;
+   private static final ahd a = new ahd("textures/misc/underwater.png");
 
-   public ftj(@Nullable float[] $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
-   }
-
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
-   }
-
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
-
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<ftj> {
-      private static final int a = 0;
-
-      public ftj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new ftj($$4, $$5);
-      }
-
-      protected int a(JsonObject $$0) {
-         int $$1 = ato.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+   public static void a(eva $$0, ept $$1) {
+      cfb $$2 = $$0.s;
+      if (!$$2.af) {
+         dja $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.am().a().a($$3), $$1);
          }
       }
 
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = ato.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
+      if (!$$0.s.P_()) {
+         if ($$0.s.a(asg.a)) {
+            b($$0, $$1);
+         }
 
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = ato.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
-            }
+         if ($$0.s.bN()) {
+            c($$0, $$1);
          }
       }
+   }
+
+   @Nullable
+   private static dja a(cfb $$0) {
+      hx.a $$1 = new hx.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dr() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dg() * 0.8F);
+         double $$4 = $$0.dv() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F);
+         double $$5 = $$0.dx() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dg() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dja $$6 = $$0.dM().a_($$1);
+         if ($$6.l() != dco.a && $$6.p($$0.dM(), $$1)) {
+            return $$6;
+         }
+      }
+
+      return null;
+   }
+
+   private static void a(gef $$0, ept $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(fss::r);
+      epo $$2 = epv.b().d();
+      float $$3 = 0.1F;
+      float $$4 = -1.0F;
+      float $$5 = 1.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -0.5F;
+      float $$9 = $$0.c();
+      float $$10 = $$0.d();
+      float $$11 = $$0.g();
+      float $$12 = $$0.h();
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(epy.b.h, epr.r);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
+      epp.a($$2.d());
+   }
+
+   private static void b(eva $$0, ept $$1) {
+      RenderSystem.setShader(fss::s);
+      RenderSystem.setShaderTexture(0, a);
+      epo $$2 = epv.b().d();
+      hx $$3 = hx.a($$0.s.dr(), $$0.s.dv(), $$0.s.dx());
+      float $$4 = fsy.a($$0.s.dM().E_(), $$0.s.dM().A($$3));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
+      float $$5 = 4.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -1.0F;
+      float $$9 = 1.0F;
+      float $$10 = -0.5F;
+      float $$11 = -$$0.s.dC() / 64.0F;
+      float $$12 = $$0.s.dE() / 64.0F;
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(epy.b.h, epr.q);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
+      epp.a($$2.d());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+   }
+
+   private static void c(eva $$0, ept $$1) {
+      epo $$2 = epv.b().d();
+      RenderSystem.setShader(fss::r);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      gef $$3 = ggl.b.c();
+      RenderSystem.setShaderTexture(0, $$3.i());
+      float $$4 = $$3.c();
+      float $$5 = $$3.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$3.g();
+      float $$8 = $$3.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$3.k();
+      float $$11 = aui.i($$10, $$4, $$6);
+      float $$12 = aui.i($$10, $$5, $$6);
+      float $$13 = aui.i($$10, $$7, $$9);
+      float $$14 = aui.i($$10, $$8, $$9);
+      float $$15 = 1.0F;
+
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$1.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$1.c().a();
+         $$2.a(epy.b.h, epr.r);
+         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
+         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
+         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
+         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
+         epp.a($$2.d());
+         $$1.b();
+      }
+
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

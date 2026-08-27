@@ -1,643 +1,510 @@
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.SignStyle;
-import java.time.temporal.ChronoField;
-import java.util.ArrayList;
-import java.util.Base64;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class efu {
-   static final Logger b = LogUtils.getLogger();
-   static final DateTimeFormatter c = new DateTimeFormatterBuilder()
-      .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
-      .appendLiteral('-')
-      .appendValue(ChronoField.MONTH_OF_YEAR, 2)
-      .appendLiteral('-')
-      .appendValue(ChronoField.DAY_OF_MONTH, 2)
-      .appendLiteral('_')
-      .appendValue(ChronoField.HOUR_OF_DAY, 2)
-      .appendLiteral('-')
-      .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
-      .appendLiteral('-')
-      .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
-      .toFormatter();
-   private static final String d = "Data";
-   private static final PathMatcher e = $$0 -> false;
-   public static final String a = "allowed_symlinks.txt";
-   private static final int f = 104857600;
-   private final Path g;
-   private final Path h;
-   final DataFixer i;
-   private final ekr j;
-   boolean k;
+public class efu extends efp {
+   private static final Logger i = LogUtils.getLogger();
+   private static final int j = 128;
+   private static final int k = 64;
+   public static final int a = 4;
+   public static final int b = 256;
+   public final int c;
+   public final int d;
+   public final ahc<cti> e;
+   private final boolean l;
+   private final boolean m;
+   public final byte f;
+   public byte[] g = new byte[16384];
+   public final boolean h;
+   private final List<efu.a> n = Lists.newArrayList();
+   private final Map<cfb, efu.a> o = Maps.newHashMap();
+   private final Map<String, efq> p = Maps.newHashMap();
+   final Map<String, efr> q = Maps.newLinkedHashMap();
+   private final Map<String, efs> r = Maps.newHashMap();
+   private int s;
 
-   public efu(Path $$0, Path $$1, ekr $$2, DataFixer $$3) {
-      this.i = $$3;
-
-      try {
-         v.c($$0);
-      } catch (IOException var6) {
-         throw new UncheckedIOException(var6);
-      }
-
-      this.g = $$0;
-      this.h = $$1;
-      this.j = $$2;
+   public static efp.a<efu> a() {
+      return new efp.a<>(() -> {
+         throw new IllegalStateException("Should never create an empty map saved data");
+      }, efu::b, avq.j);
    }
 
-   public static ekr a(Path $$0) {
-      if (Files.exists($$0)) {
-         try {
-            ekr var2;
-            try (BufferedReader $$1 = Files.newBufferedReader($$0)) {
-               var2 = new ekr(ekt.a($$1));
-            }
+   private efu(int $$0, int $$1, byte $$2, boolean $$3, boolean $$4, boolean $$5, ahc<cti> $$6) {
+      this.f = $$2;
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$6;
+      this.l = $$3;
+      this.m = $$4;
+      this.h = $$5;
+      this.c();
+   }
 
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to parse {}, disallowing all symbolic links", "allowed_symlinks.txt", var6);
+   public static efu a(double $$0, double $$1, byte $$2, boolean $$3, boolean $$4, ahc<cti> $$5) {
+      int $$6 = 128 * (1 << $$2);
+      int $$7 = aui.a(($$0 + 64.0) / (double)$$6);
+      int $$8 = aui.a(($$1 + 64.0) / (double)$$6);
+      int $$9 = $$7 * $$6 + $$6 / 2 - 64;
+      int $$10 = $$8 * $$6 + $$6 / 2 - 64;
+      return new efu($$9, $$10, $$2, $$3, $$4, false, $$5);
+   }
+
+   public static efu a(byte $$0, boolean $$1, ahc<cti> $$2) {
+      return new efu(0, 0, $$0, false, false, $$1, $$2);
+   }
+
+   public static efu b(sl $$0) {
+      ahc<cti> $$1 = (ahc<cti>)dmj.a(new Dynamic(sz.a, $$0.c("dimension")))
+         .resultOrPartial(i::error)
+         .orElseThrow(() -> new IllegalArgumentException("Invalid map dimension: " + $$0.c("dimension")));
+      int $$2 = $$0.h("xCenter");
+      int $$3 = $$0.h("zCenter");
+      byte $$4 = (byte)aui.a($$0.f("scale"), 0, 4);
+      boolean $$5 = !$$0.b("trackingPosition", 1) || $$0.q("trackingPosition");
+      boolean $$6 = $$0.q("unlimitedTracking");
+      boolean $$7 = $$0.q("locked");
+      efu $$8 = new efu($$2, $$3, $$4, $$5, $$6, $$7, $$1);
+      byte[] $$9 = $$0.m("colors");
+      if ($$9.length == 16384) {
+         $$8.g = $$9;
+      }
+
+      sr $$10 = $$0.c("banners", 10);
+
+      for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+         efq $$12 = efq.a($$10.a($$11));
+         $$8.p.put($$12.f(), $$12);
+         $$8.a($$12.c(), null, $$12.f(), (double)$$12.a().u(), (double)$$12.a().w(), 180.0, $$12.d());
+      }
+
+      sr $$13 = $$0.c("frames", 10);
+
+      for (int $$14 = 0; $$14 < $$13.size(); $$14++) {
+         efs $$15 = efs.a($$13.a($$14));
+         $$8.r.put($$15.e(), $$15);
+         $$8.a(efr.a.b, null, "frame-" + $$15.d(), (double)$$15.b().u(), (double)$$15.b().w(), (double)$$15.c(), null);
+      }
+
+      return $$8;
+   }
+
+   @Override
+   public sl a(sl $$0) {
+      ahd.a.encodeStart(sz.a, this.e.a()).resultOrPartial(i::error).ifPresent($$1x -> $$0.a("dimension", $$1x));
+      $$0.a("xCenter", this.c);
+      $$0.a("zCenter", this.d);
+      $$0.a("scale", this.f);
+      $$0.a("colors", this.g);
+      $$0.a("trackingPosition", this.l);
+      $$0.a("unlimitedTracking", this.m);
+      $$0.a("locked", this.h);
+      sr $$1 = new sr();
+
+      for (efq $$2 : this.p.values()) {
+         $$1.add($$2.e());
+      }
+
+      $$0.a("banners", $$1);
+      sr $$3 = new sr();
+
+      for (efs $$4 : this.r.values()) {
+         $$3.add($$4.a());
+      }
+
+      $$0.a("frames", $$3);
+      return $$0;
+   }
+
+   public efu b() {
+      efu $$0 = new efu(this.c, this.d, this.f, this.l, this.m, true, this.e);
+      $$0.p.putAll(this.p);
+      $$0.q.putAll(this.q);
+      $$0.s = this.s;
+      System.arraycopy(this.g, 0, $$0.g, 0, this.g.length);
+      $$0.c();
+      return $$0;
+   }
+
+   public efu a(int $$0) {
+      return a((double)this.c, (double)this.d, (byte)aui.a(this.f + $$0, 0, 4), this.l, this.m, this.e);
+   }
+
+   public void a(cfb $$0, cmr $$1) {
+      if (!this.o.containsKey($$0)) {
+         efu.a $$2 = new efu.a($$0);
+         this.o.put($$0, $$2);
+         this.n.add($$2);
+      }
+
+      if (!$$0.fS().h($$1)) {
+         this.a($$0.ad().getString());
+      }
+
+      for (int $$3 = 0; $$3 < this.n.size(); $$3++) {
+         efu.a $$4 = this.n.get($$3);
+         String $$5 = $$4.a.ad().getString();
+         if (!$$4.a.dH() && ($$4.a.fS().h($$1) || $$1.F())) {
+            if (!$$1.F() && $$4.a.dM().ae() == this.e && this.l) {
+               this.a(efr.a.a, $$4.a.dM(), $$5, $$4.a.dr(), $$4.a.dx(), (double)$$4.a.dC(), null);
+            }
+         } else {
+            this.o.remove($$4.a);
+            this.n.remove($$4);
+            this.a($$5);
          }
       }
 
-      return new ekr(e);
+      if ($$1.F() && this.l) {
+         cbh $$6 = $$1.G();
+         hx $$7 = $$6.E();
+         efs $$8 = this.r.get(efs.a($$7));
+         if ($$8 != null && $$6.aj() != $$8.d() && this.r.containsKey($$8.e())) {
+            this.a("frame-" + $$8.d());
+         }
+
+         efs $$9 = new efs($$7, $$6.cE().e() * 90, $$6.aj());
+         this.a(efr.a.b, $$0.dM(), "frame-" + $$6.aj(), (double)$$7.u(), (double)$$7.w(), (double)($$6.cE().e() * 90), null);
+         this.r.put($$9.e(), $$9);
+      }
+
+      sl $$10 = $$1.v();
+      if ($$10 != null && $$10.b("Decorations", 9)) {
+         sr $$11 = $$10.c("Decorations", 10);
+
+         for (int $$12 = 0; $$12 < $$11.size(); $$12++) {
+            sl $$13 = $$11.a($$12);
+            if (!this.q.containsKey($$13.l("id"))) {
+               this.a(efr.a.a($$13.f("type")), $$0.dM(), $$13.l("id"), $$13.k("x"), $$13.k("z"), $$13.k("rot"), null);
+            }
+         }
+      }
    }
 
-   public static efu b(Path $$0) {
-      ekr $$1 = a($$0.resolve("allowed_symlinks.txt"));
-      return new efu($$0, $$0.resolve("../backups"), $$1, avh.a());
+   private void a(String $$0) {
+      efr $$1 = this.q.remove($$0);
+      if ($$1 != null && $$1.c().g()) {
+         this.s--;
+      }
+
+      this.h();
    }
 
-   public static cts a(Dynamic<?> $$0) {
-      return cts.b.parse($$0).resultOrPartial(b::error).orElse(cts.c);
-   }
-
-   public static aho.d a(Dynamic<?> $$0, apd $$1, boolean $$2) {
-      return new aho.d($$1, a($$0), $$2, false);
-   }
-
-   public static efr a(Dynamic<?> $$0, cts $$1, ir<dlz> $$2, is.b $$3) {
-      Dynamic<?> $$4 = a($$0, $$3);
-      Dynamic<?> $$5 = $$4.get("WorldGenSettings").orElseEmptyMap();
-      dou $$6 = (dou)dou.a.parse($$5).getOrThrow(false, ac.a("WorldGenSettings: ", b::error));
-      ctc $$7 = ctc.a($$4, $$1);
-      dot.b $$8 = $$6.b().a($$2);
-      Lifecycle $$9 = $$8.a().add($$3.e());
-      efy $$10 = efy.a($$4, $$7, $$8.d(), $$6.a(), $$9);
-      return new efr($$10, $$8);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, is.b $$1) {
-      agr<T> $$2 = agr.a($$0.getOps(), $$1);
-      return new Dynamic($$2, $$0.getValue());
-   }
-
-   public String a() {
-      return "Anvil";
-   }
-
-   public efu.a b() throws eft {
-      if (!Files.isDirectory(this.g)) {
-         throw new eft(vb.c("selectWorld.load_folder_access"));
+   public static void a(cmr $$0, hx $$1, String $$2, efr.a $$3) {
+      sr $$4;
+      if ($$0.u() && $$0.v().b("Decorations", 9)) {
+         $$4 = $$0.v().c("Decorations", 10);
       } else {
-         try {
-            efu.a var3;
-            try (Stream<Path> $$0 = Files.list(this.g)) {
-               List<efu.b> $$1 = $$0.filter($$0x -> Files.isDirectory($$0x))
-                  .map(efu.b::new)
-                  .filter($$0x -> Files.isRegularFile($$0x.b()) || Files.isRegularFile($$0x.c()))
-                  .toList();
-               var3 = new efu.a($$1);
-            }
+         $$4 = new sr();
+         $$0.a("Decorations", $$4);
+      }
 
-            return var3;
-         } catch (IOException var6) {
-            throw new eft(vb.c("selectWorld.load_folder_access"));
+      sl $$6 = new sl();
+      $$6.a("type", $$3.a());
+      $$6.a("id", $$2);
+      $$6.a("x", (double)$$1.u());
+      $$6.a("z", (double)$$1.w());
+      $$6.a("rot", 180.0);
+      $$4.add($$6);
+      if ($$3.e()) {
+         sl $$7 = $$0.a("display");
+         $$7.a("MapColor", $$3.f());
+      }
+   }
+
+   private void a(efr.a $$0, @Nullable ctj $$1, String $$2, double $$3, double $$4, double $$5, @Nullable vd $$6) {
+      int $$7 = 1 << this.f;
+      float $$8 = (float)($$3 - (double)this.c) / (float)$$7;
+      float $$9 = (float)($$4 - (double)this.d) / (float)$$7;
+      byte $$10 = (byte)((int)((double)($$8 * 2.0F) + 0.5));
+      byte $$11 = (byte)((int)((double)($$9 * 2.0F) + 0.5));
+      int $$12 = 63;
+      byte $$13;
+      if ($$8 >= -63.0F && $$9 >= -63.0F && $$8 <= 63.0F && $$9 <= 63.0F) {
+         $$5 += $$5 < 0.0 ? -8.0 : 8.0;
+         $$13 = (byte)((int)($$5 * 16.0 / 360.0));
+         if (this.e == cti.i && $$1 != null) {
+            int $$14 = (int)($$1.B_().f() / 10L);
+            $$13 = (byte)($$14 * $$14 * 34187121 + $$14 * 121 >> 15 & 15);
          }
-      }
-   }
+      } else {
+         if ($$0 != efr.a.a) {
+            this.a($$2);
+            return;
+         }
 
-   public CompletableFuture<List<efv>> a(efu.a $$0) {
-      List<CompletableFuture<efv>> $$1 = new ArrayList<>($$0.a.size());
-
-      for (efu.b $$2 : $$0.a) {
-         $$1.add(CompletableFuture.supplyAsync(() -> {
-            boolean $$1x;
-            try {
-               $$1x = ate.b($$2.f());
-            } catch (Exception var13) {
-               b.warn("Failed to read {} lock", $$2.f(), var13);
-               return null;
+         int $$15 = 320;
+         if (Math.abs($$8) < 320.0F && Math.abs($$9) < 320.0F) {
+            $$0 = efr.a.g;
+         } else {
+            if (!this.m) {
+               this.a($$2);
+               return;
             }
 
-            try {
-               return this.a($$2, $$1x);
-            } catch (OutOfMemoryError var12) {
-               atw.b();
-               System.gc();
-               String $$5 = "Ran out of memory trying to read summary of world folder \"" + $$2.a() + "\"";
-               b.error(LogUtils.FATAL_MARKER, $$5);
-               OutOfMemoryError $$6 = new OutOfMemoryError("Ran out of memory reading level data");
-               $$6.initCause(var12);
-               o $$7 = o.a($$6, $$5);
-               p $$8 = $$7.a("World details");
-               $$8.a("Folder Name", $$2.a());
+            $$0 = efr.a.h;
+         }
 
-               try {
-                  long $$9 = Files.size($$2.b());
-                  $$8.a("level.dat size", $$9);
-               } catch (IOException var11) {
-                  $$8.a("level.dat size", (Throwable)var11);
-               }
+         $$13 = 0;
+         if ($$8 <= -63.0F) {
+            $$10 = -128;
+         }
 
-               throw new y($$7);
-            }
-         }, ac.f()));
-      }
+         if ($$9 <= -63.0F) {
+            $$11 = -128;
+         }
 
-      return ac.d($$1).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).sorted().toList());
-   }
+         if ($$8 >= 63.0F) {
+            $$10 = 127;
+         }
 
-   private int f() {
-      return 19133;
-   }
-
-   static sj c(Path $$0) throws IOException {
-      return sw.a($$0, ss.a(104857600L));
-   }
-
-   static Dynamic<?> a(Path $$0, DataFixer $$1) throws IOException {
-      sj $$2 = c($$0);
-      sj $$3 = $$2.p("Data");
-      int $$4 = sy.b($$3, -1);
-      Dynamic<?> $$5 = avg.a.a($$1, new Dynamic(sx.a, $$3), $$4);
-      Dynamic<?> $$6 = $$5.get("Player").orElseEmptyMap();
-      Dynamic<?> $$7 = avg.b.a($$1, $$6, $$4);
-      $$5 = $$5.set("Player", $$7);
-      Dynamic<?> $$8 = $$5.get("WorldGenSettings").orElseEmptyMap();
-      Dynamic<?> $$9 = avg.r.a($$1, $$8, $$4);
-      return $$5.set("WorldGenSettings", $$9);
-   }
-
-   private efv a(efu.b $$0, boolean $$1) {
-      Path $$2 = $$0.b();
-      if (Files.exists($$2)) {
-         try {
-            if (Files.isSymbolicLink($$2)) {
-               List<eks> $$3 = this.j.a($$2);
-               if (!$$3.isEmpty()) {
-                  b.warn("{}", ekq.a($$2, $$3));
-                  return new efv.c($$0.a(), $$0.d());
-               }
-            }
-
-            if (e($$2) instanceof sj $$5) {
-               sj $$6 = $$5.p("Data");
-               int $$7 = sy.b($$6, -1);
-               Dynamic<?> $$8 = avg.a.a(this.i, new Dynamic(sx.a, $$6), $$7);
-               return this.a($$8, $$0, $$1);
-            }
-
-            b.warn("Invalid root tag in {}", $$2);
-         } catch (Exception var9) {
-            b.error("Exception reading {}", $$2, var9);
+         if ($$9 >= 63.0F) {
+            $$11 = 127;
          }
       }
 
-      return new efv.b($$0.a(), $$0.d(), a($$0));
+      efr $$18 = new efr($$0, $$10, $$11, $$13, $$6);
+      efr $$19 = this.q.put($$2, $$18);
+      if (!$$18.equals($$19)) {
+         if ($$19 != null && $$19.c().g()) {
+            this.s--;
+         }
+
+         if ($$0.g()) {
+            this.s++;
+         }
+
+         this.h();
+      }
    }
 
-   private static long a(efu.b $$0) {
-      Instant $$1 = d($$0.b());
+   @Nullable
+   public xd<?> a(int $$0, cfb $$1) {
+      efu.a $$2 = this.o.get($$1);
+      return $$2 == null ? null : $$2.a($$0);
+   }
+
+   private void a(int $$0, int $$1) {
+      this.c();
+
+      for (efu.a $$2 : this.n) {
+         $$2.a($$0, $$1);
+      }
+   }
+
+   private void h() {
+      this.c();
+      this.n.forEach(efu.a::b);
+   }
+
+   public efu.a a(cfb $$0) {
+      efu.a $$1 = this.o.get($$0);
       if ($$1 == null) {
-         $$1 = d($$0.c());
+         $$1 = new efu.a($$0);
+         this.o.put($$0, $$1);
+         this.n.add($$1);
       }
 
-      return $$1 == null ? -1L : $$1.toEpochMilli();
+      return $$1;
    }
 
-   @Nullable
-   static Instant d(Path $$0) {
-      try {
-         return Files.getLastModifiedTime($$0).toInstant();
-      } catch (IOException var2) {
-         return null;
+   public boolean a(ctj $$0, hx $$1) {
+      double $$2 = (double)$$1.u() + 0.5;
+      double $$3 = (double)$$1.w() + 0.5;
+      int $$4 = 1 << this.f;
+      double $$5 = ($$2 - (double)this.c) / (double)$$4;
+      double $$6 = ($$3 - (double)this.d) / (double)$$4;
+      int $$7 = 63;
+      if ($$5 >= -63.0 && $$6 >= -63.0 && $$5 <= 63.0 && $$6 <= 63.0) {
+         efq $$8 = efq.a($$0, $$1);
+         if ($$8 == null) {
+            return false;
+         }
+
+         if (this.p.remove($$8.f(), $$8)) {
+            this.a($$8.f());
+            return true;
+         }
+
+         if (!this.b(256)) {
+            this.p.put($$8.f(), $$8);
+            this.a($$8.c(), $$0, $$8.f(), $$2, $$3, 180.0, $$8.d());
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public void a(cso $$0, int $$1, int $$2) {
+      Iterator<efq> $$3 = this.p.values().iterator();
+
+      while ($$3.hasNext()) {
+         efq $$4 = $$3.next();
+         if ($$4.a().u() == $$1 && $$4.a().w() == $$2) {
+            efq $$5 = efq.a($$0, $$4.a());
+            if (!$$4.equals($$5)) {
+               $$3.remove();
+               this.a($$4.f());
+            }
+         }
       }
    }
 
-   efv a(Dynamic<?> $$0, efu.b $$1, boolean $$2) {
-      efw $$3 = efw.a($$0);
-      int $$4 = $$3.a();
-      if ($$4 != 19132 && $$4 != 19133) {
-         throw new sv("Unknown data version: " + Integer.toHexString($$4));
-      } else {
-         boolean $$5 = $$4 != this.f();
-         Path $$6 = $$1.d();
-         cts $$7 = a($$0);
-         ctc $$8 = ctc.a($$0, $$7);
-         chb $$9 = b($$0);
-         boolean $$10 = chd.a($$9);
-         return new efv($$8, $$3, $$1.a(), $$5, $$2, $$10, $$6);
-      }
+   public Collection<efq> e() {
+      return this.p.values();
    }
 
-   private static chb b(Dynamic<?> $$0) {
-      Set<agt> $$1 = $$0.get("enabled_features").asStream().flatMap($$0x -> $$0x.asString().result().map(agt::a).stream()).collect(Collectors.toSet());
-      return chd.e.a($$1, $$0x -> {
-      });
+   public void a(hx $$0, int $$1) {
+      this.a("frame-" + $$1);
+      this.r.remove(efs.a($$0));
    }
 
-   @Nullable
-   private static tg e(Path $$0) throws IOException {
-      ts $$1 = new ts(new tp("Data", sj.b, "Player"), new tp("Data", sj.b, "WorldGenSettings"));
-      sw.a($$0, $$1, ss.a(104857600L));
-      return $$1.d();
-   }
-
-   public boolean a(String $$0) {
-      try {
-         Path $$1 = this.c($$0);
-         Files.createDirectory($$1);
-         Files.deleteIfExists($$1);
+   public boolean a(int $$0, int $$1, byte $$2) {
+      byte $$3 = this.g[$$0 + $$1 * 128];
+      if ($$3 != $$2) {
+         this.b($$0, $$1, $$2);
          return true;
-      } catch (IOException var3) {
-         return false;
-      }
-   }
-
-   public boolean b(String $$0) {
-      try {
-         return Files.isDirectory(this.c($$0));
-      } catch (InvalidPathException var3) {
-         return false;
-      }
-   }
-
-   public Path c(String $$0) {
-      return this.g.resolve($$0);
-   }
-
-   public Path c() {
-      return this.g;
-   }
-
-   public Path d() {
-      return this.h;
-   }
-
-   public efu.c d(String $$0) throws IOException, ekq {
-      Path $$1 = this.c($$0);
-      List<eks> $$2 = this.j.a($$1, true);
-      if (!$$2.isEmpty()) {
-         throw new ekq($$1, $$2);
       } else {
-         return new efu.c($$0, $$1);
+         return false;
       }
    }
 
-   public efu.c e(String $$0) throws IOException {
-      Path $$1 = this.c($$0);
-      return new efu.c($$0, $$1);
+   public void b(int $$0, int $$1, byte $$2) {
+      this.g[$$0 + $$1 * 128] = $$2;
+      this.a($$0, $$1);
    }
 
-   public ekr e() {
-      return this.j;
-   }
-
-   public static record a(List<efu.b> a) implements Iterable<efu.b> {
-
-      public boolean a() {
-         return this.a.isEmpty();
-      }
-
-      @Override
-      public Iterator<efu.b> iterator() {
-         return this.a.iterator();
-      }
-
-      public List<efu.b> b() {
-         return this.a;
-      }
-   }
-
-   public static record b(Path a) {
-      public String a() {
-         return this.a.getFileName().toString();
-      }
-
-      public Path b() {
-         return this.a(efs.e);
-      }
-
-      public Path c() {
-         return this.a(efs.f);
-      }
-
-      public Path a(LocalDateTime $$0) {
-         return this.a.resolve(efs.e.a() + "_corrupted_" + $$0.format(efu.c));
-      }
-
-      public Path b(LocalDateTime $$0) {
-         return this.a.resolve(efs.e.a() + "_raw_" + $$0.format(efu.c));
-      }
-
-      public Path d() {
-         return this.a(efs.g);
-      }
-
-      public Path e() {
-         return this.a(efs.h);
-      }
-
-      public Path a(efs $$0) {
-         return this.a.resolve($$0.a());
-      }
-
-      public Path f() {
-         return this.a;
-      }
-   }
-
-   public class c implements AutoCloseable {
-      final ate b;
-      final efu.b c;
-      private final String d;
-      private final Map<efs, Path> e = Maps.newHashMap();
-
-      c(String $$1, Path $$2) throws IOException {
-         this.d = $$1;
-         this.c = new efu.b($$2);
-         this.b = ate.a($$2);
-      }
-
-      public void a() {
-         try {
-            this.close();
-         } catch (IOException var2) {
-            efu.b.warn("Failed to unlock access to level {}", this.d(), var2);
+   public boolean f() {
+      for (efr $$0 : this.q.values()) {
+         if ($$0.c().b()) {
+            return true;
          }
       }
 
-      public efu b() {
-         return efu.this;
-      }
+      return false;
+   }
 
-      public efu.b c() {
-         return this.c;
-      }
+   public void a(List<efr> $$0) {
+      this.q.clear();
+      this.s = 0;
 
-      public String d() {
-         return this.d;
-      }
-
-      public Path a(efs $$0) {
-         return this.e.computeIfAbsent($$0, this.c::a);
-      }
-
-      public Path a(ags<csy> $$0) {
-         return dly.a($$0, this.c.f());
-      }
-
-      private void m() {
-         if (!this.b.a()) {
-            throw new IllegalStateException("Lock is no longer valid");
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         efr $$2 = $$0.get($$1);
+         this.q.put("icon-" + $$1, $$2);
+         if ($$2.c().g()) {
+            this.s++;
          }
       }
+   }
 
-      public efx e() {
-         this.m();
-         return new efx(this, efu.this.i);
+   public Iterable<efr> g() {
+      return this.q.values();
+   }
+
+   public boolean b(int $$0) {
+      return this.s >= $$0;
+   }
+
+   public class a {
+      public final cfb a;
+      private boolean d = true;
+      private int e;
+      private int f;
+      private int g = 127;
+      private int h = 127;
+      private boolean i = true;
+      private int j;
+      public int b;
+
+      a(cfb $$1) {
+         this.a = $$1;
       }
 
-      public efv a(Dynamic<?> $$0) {
-         this.m();
-         return efu.this.a($$0, this.c, false);
-      }
+      private efu.b a() {
+         int $$0 = this.e;
+         int $$1 = this.f;
+         int $$2 = this.g + 1 - this.e;
+         int $$3 = this.h + 1 - this.f;
+         byte[] $$4 = new byte[$$2 * $$3];
 
-      public Dynamic<?> f() throws IOException {
-         return this.b(false);
-      }
-
-      public Dynamic<?> g() throws IOException {
-         return this.b(true);
-      }
-
-      private Dynamic<?> b(boolean $$0) throws IOException {
-         this.m();
-         return efu.a($$0 ? this.c.c() : this.c.b(), efu.this.i);
-      }
-
-      public void a(is $$0, ega $$1) {
-         this.a($$0, $$1, null);
-      }
-
-      public void a(is $$0, ega $$1, @Nullable sj $$2) {
-         sj $$3 = $$1.a($$0, $$2);
-         sj $$4 = new sj();
-         $$4.a("Data", $$3);
-         this.a($$4);
-      }
-
-      private void a(sj $$0) {
-         Path $$1 = this.c.f();
-         Exception $$2 = null;
-
-         try {
-            Path $$3 = Files.createTempFile($$1, "level", ".dat");
-            sw.a($$0, $$3);
-            Path $$4 = this.c.c();
-            Path $$5 = this.c.b();
-            ac.a($$5, $$3, $$4);
-         } catch (Exception var9) {
-            efu.b.error("Failed to save level {}", $$1, var9);
-            $$2 = var9;
-         }
-
-         Path $$7 = this.c.b();
-         if (Files.exists($$7)) {
-            try {
-               sw.a($$7, ss.a(104857600L));
-            } catch (Exception var10) {
-               if (efu.this.k) {
-                  efu.b.error("Failed to save level {}. Skipping further handling, reported errors earlier already.", $$1, var10);
-               } else {
-                  efu.this.k = true;
-                  o $$9 = new o("Won the zlib-lottery?", new IllegalStateException("Failed to read back written world data", $$2));
-                  p $$10 = $$9.a("level.dat");
-                  $$10.a("World folder", this.c.a());
-                  $$10.a("Reading Exception", (var10 instanceof y $$11 ? $$11.getCause() : var10).toString());
-                  $$10.a("Uncompressed", () -> Base64.getEncoder().encodeToString(sw.b($$0)));
-                  $$10.a("Compressed saved", () -> Base64.getEncoder().encodeToString(Files.readAllBytes($$7)));
-                  $$10.a("Compressed array", () -> Base64.getEncoder().encodeToString(sw.a($$0)));
-                  LocalDateTime $$12 = LocalDateTime.now();
-                  $$10.a("Corrupted file", () -> {
-                     Path $$2x = this.c.a($$12);
-                     Files.move($$7, $$2x);
-                     return $$2x.getFileName().toString();
-                  });
-                  $$10.a("Raw file", () -> {
-                     Path $$2x = this.c.b($$12);
-                     Files.write($$2x, sw.b($$0));
-                     return $$2x.getFileName().toString();
-                  });
-                  throw new y($$9);
-               }
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$3; $$6++) {
+               $$4[$$5 + $$6 * $$2] = efu.this.g[$$0 + $$5 + ($$1 + $$6) * 128];
             }
          }
-      }
 
-      public Optional<Path> h() {
-         return !this.b.a() ? Optional.empty() : Optional.of(this.c.d());
-      }
-
-      public void i() throws IOException {
-         this.m();
-         final Path $$0 = this.c.e();
-         efu.b.info("Deleting level {}", this.d);
-
-         for (int $$1 = 1; $$1 <= 5; $$1++) {
-            efu.b.info("Attempt {}...", $$1);
-
-            try {
-               Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
-                  public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) throws IOException {
-                     if (!$$0.equals($$0)) {
-                        efu.b.debug("Deleting {}", $$0);
-                        Files.delete($$0);
-                     }
-
-                     return FileVisitResult.CONTINUE;
-                  }
-
-                  public FileVisitResult a(Path $$0x, @Nullable IOException $$1) throws IOException {
-                     if ($$1 != null) {
-                        throw $$1;
-                     } else {
-                        if ($$0.equals(c.this.c.f())) {
-                           c.this.b.close();
-                           Files.deleteIfExists($$0);
-                        }
-
-                        Files.delete($$0);
-                        return FileVisitResult.CONTINUE;
-                     }
-                  }
-               });
-               break;
-            } catch (IOException var6) {
-               if ($$1 >= 5) {
-                  throw var6;
-               }
-
-               efu.b.warn("Failed to delete {}", this.c.f(), var6);
-
-               try {
-                  Thread.sleep(500L);
-               } catch (InterruptedException var5) {
-               }
-            }
-         }
-      }
-
-      public void a(String $$0) throws IOException {
-         this.a((Consumer<sj>)($$1 -> $$1.a("LevelName", $$0.trim())));
-      }
-
-      public void b(String $$0) throws IOException {
-         this.a((Consumer<sj>)($$1 -> {
-            $$1.a("LevelName", $$0.trim());
-            $$1.r("Player");
-         }));
-      }
-
-      private void a(Consumer<sj> $$0) throws IOException {
-         this.m();
-         sj $$1 = efu.c(this.c.b());
-         $$0.accept($$1.p("Data"));
-         this.a($$1);
-      }
-
-      public long j() throws IOException {
-         this.m();
-         String $$0 = LocalDateTime.now().format(efu.c) + "_" + this.d;
-         Path $$1 = efu.this.d();
-
-         try {
-            v.c($$1);
-         } catch (IOException var9) {
-            throw new RuntimeException(var9);
-         }
-
-         Path $$3 = $$1.resolve(v.a($$1, $$0, ".zip"));
-
-         try (final ZipOutputStream $$4 = new ZipOutputStream(new BufferedOutputStream(Files.newOutputStream($$3)))) {
-            final Path $$5 = Paths.get(this.d);
-            Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
-               public FileVisitResult a(Path $$0, BasicFileAttributes $$1) throws IOException {
-                  if ($$0.endsWith("session.lock")) {
-                     return FileVisitResult.CONTINUE;
-                  } else {
-                     String $$2 = $$5.resolve(c.this.c.f().relativize($$0)).toString().replace('\\', '/');
-                     ZipEntry $$3 = new ZipEntry($$2);
-                     $$4.putNextEntry($$3);
-                     com.google.common.io.Files.asByteSource($$0.toFile()).copyTo($$4);
-                     $$4.closeEntry();
-                     return FileVisitResult.CONTINUE;
-                  }
-               }
-            });
-         }
-
-         return Files.size($$3);
-      }
-
-      public boolean k() {
-         return Files.exists(this.c.b()) || Files.exists(this.c.c());
-      }
-
-      @Override
-      public void close() throws IOException {
-         this.b.close();
-      }
-
-      public boolean l() {
-         return ac.a(this.c.b(), this.c.c(), this.c.a(LocalDateTime.now()), true);
+         return new efu.b($$0, $$1, $$2, $$3, $$4);
       }
 
       @Nullable
-      public Instant a(boolean $$0) {
-         return efu.d($$0 ? this.c.c() : this.c.b());
+      xd<?> a(int $$0) {
+         efu.b $$1;
+         if (this.d) {
+            this.d = false;
+            $$1 = this.a();
+         } else {
+            $$1 = null;
+         }
+
+         Collection<efr> $$3;
+         if (this.i && this.j++ % 5 == 0) {
+            this.i = false;
+            $$3 = efu.this.q.values();
+         } else {
+            $$3 = null;
+         }
+
+         return $$3 == null && $$1 == null ? null : new aan($$0, efu.this.f, efu.this.h, $$3, $$1);
+      }
+
+      void a(int $$0, int $$1) {
+         if (this.d) {
+            this.e = Math.min(this.e, $$0);
+            this.f = Math.min(this.f, $$1);
+            this.g = Math.max(this.g, $$0);
+            this.h = Math.max(this.h, $$1);
+         } else {
+            this.d = true;
+            this.e = $$0;
+            this.f = $$1;
+            this.g = $$0;
+            this.h = $$1;
+         }
+      }
+
+      private void b() {
+         this.i = true;
+      }
+   }
+
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
+      public final int d;
+      public final byte[] e;
+
+      public b(int $$0, int $$1, int $$2, int $$3, byte[] $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      public void a(efu $$0) {
+         for (int $$1 = 0; $$1 < this.c; $$1++) {
+            for (int $$2 = 0; $$2 < this.d; $$2++) {
+               $$0.b(this.a + $$1, this.b + $$2, this.e[$$1 + $$2 * this.c]);
+            }
+         }
       }
    }
 }

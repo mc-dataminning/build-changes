@@ -1,71 +1,17 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.io.IOException;
 
-public class gfa implements aos<gez> {
-   public gez b(JsonObject $$0) {
-      Builder<gey> $$1 = ImmutableList.builder();
-      int $$2 = ato.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
+public class gfa extends aqh<int[]> {
+   private static final ahd a = new ahd("textures/colormap/grass.png");
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = ato.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gey $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = ato.a($$0, "width", -1);
-      int $$9 = ato.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = ato.a($$0, "interpolate", false);
-      return new gez($$1.build(), $$8, $$9, $$2, $$10);
-   }
-
-   @Nullable
-   private gey a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gey(ato.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = ato.m($$1, "frames[" + $$0 + "]");
-         int $$3 = ato.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
-         }
-
-         int $$4 = ato.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gey($$4, $$3);
-      } else {
-         return null;
+   protected int[] a(aqc $$0, bgm $$1) {
+      try {
+         return gfc.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
       }
    }
 
-   @Override
-   public String a() {
-      return "animation";
+   protected void a(int[] $$0, aqc $$1, bgm $$2) {
+      ctg.a($$0);
    }
 }

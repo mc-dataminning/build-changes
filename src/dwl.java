@@ -1,26 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class dwl<P extends dwk> {
-   public static final dwl<dwj> a = a("straight_trunk_placer", dwj.a);
-   public static final dwl<dwg> b = a("forking_trunk_placer", dwg.a);
-   public static final dwl<dwh> c = a("giant_trunk_placer", dwh.a);
-   public static final dwl<dwi> d = a("mega_jungle_trunk_placer", dwi.b);
-   public static final dwl<dwe> e = a("dark_oak_trunk_placer", dwe.a);
-   public static final dwl<dwf> f = a("fancy_trunk_placer", dwf.a);
-   public static final dwl<dwc> g = a("bending_trunk_placer", dwc.a);
-   public static final dwl<dwm> h = a("upwards_branching_trunk_placer", dwm.a);
-   public static final dwl<dwd> i = a("cherry_trunk_placer", dwd.a);
-   private final Codec<P> j;
+public class dwl extends dwj {
+   public static final Codec<dwl> a = Codec.unit(() -> dwl.b);
+   public static final dwl b = new dwl();
 
-   private static <P extends dwk> dwl<P> a(String $$0, Codec<P> $$1) {
-      return ir.a(kb.X, $$0, new dwl<>($$1));
+   @Override
+   protected dwk<?> a() {
+      return dwk.a;
    }
 
-   private dwl(Codec<P> $$0) {
-      this.j = $$0;
-   }
+   @Override
+   public void a(dwj.a $$0) {
+      aup $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            hx $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dfd.d);
+            }
+         }
 
-   public Codec<P> a() {
-      return this.j;
+         if ($$1.a(3) > 0) {
+            hx $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dfd.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            hx $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dfd.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            hx $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dfd.c);
+            }
+         }
+      });
    }
 }

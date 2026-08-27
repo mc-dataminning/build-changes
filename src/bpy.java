@@ -1,34 +1,23 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bpy {
-   public static <E extends blx> bnn<E> a(Function<E, Optional<? extends blv>> $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static <E extends blx> bnn<E> a(Predicate<E> $$0, Function<E, Optional<? extends blv>> $$1) {
-      return bqz.a(
-         (Function<bqz.b<E>, ? extends App<bqz.c<E>, brc<E>>>)($$2 -> $$2.group($$2.c(bux.o), $$2.a(bux.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test((E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends blv> $$7 = $$1.apply((E)$$5);
-                     if ($$7.isEmpty()) {
+   public static bnx<bmf> a(blt<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return brj.a(
+         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$2x -> $$2x.group($$2x.a(bvh.n), $$2x.c(bvh.q), $$2x.b(bvh.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bmf> $$9 = $$2x.<bvj>b($$5).a($$3xx -> $$3xx.f((blp)$$7) <= (double)$$2 && $$0.equals($$3xx.ai()));
+                     if ($$9.isEmpty()) {
                         return false;
                      } else {
-                        blv $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
+                        bmf $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new boh($$10, true));
+                        return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

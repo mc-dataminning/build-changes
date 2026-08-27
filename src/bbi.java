@@ -1,19 +1,22 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
-public class bbi extends bag {
-   public bbi(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Remove Golem Gossip Fix", bbg.x, "minecraft:villager");
+public class bbi extends avv {
+   public bbi(Schema $$0) {
+      super($$0, bbq.b);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bbi::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "PlayerUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> {
+            OpticFinder<?> $$1 = $$0.getType().findField("RootVehicle");
+            return $$0.updateTyped($$1, $$1.type(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> c($$0xx, "Attach", "Attach").orElse($$0xx)))
+               .update(DSL.remainderFinder(), $$0x -> ayw.c(ayw.b($$0x)));
+         }
+      );
    }
 }

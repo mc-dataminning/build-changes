@@ -1,40 +1,25 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
 public interface ctq {
-   void a(blj<?> var1, auf var2);
+   boolean a(hx var1, dja var2, int var3, int var4);
 
-   static void a(cmh $$0, List<vb> $$1, String $$2) {
-      vb $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
-      } else {
-         $$1.add(va.a);
-         $$1.add(vb.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(va.a().b(vb.c("block.minecraft.spawner.desc2").a(n.j)));
-      }
+   default boolean a(hx $$0, dja $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   @Nullable
-   static vb a(cmh $$0, String $$1) {
-      sj $$2 = cka.a($$0);
-      if ($$2 != null) {
-         agt $$3 = a($$2, $$1);
-         if ($$3 != null) {
-            return kb.g.b($$3).map($$0x -> vb.c($$0x.g()).a(n.h)).orElse(null);
-         }
-      }
+   boolean a(hx var1, boolean var2);
 
-      return null;
+   default boolean b(hx $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   @Nullable
-   private static agt a(sj $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return agt.a($$2);
-      } else {
-         return null;
-      }
+   default boolean a(hx $$0, boolean $$1, @Nullable blp $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   boolean a(hx var1, boolean var2, @Nullable blp var3, int var4);
+
+   default boolean b(blp $$0) {
+      return false;
    }
 }

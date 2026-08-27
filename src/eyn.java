@@ -1,54 +1,62 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Locale;
 
-public class eyn implements eyp {
-   private static final agt a = new agt("toast/recipe");
-   private static final long d = 5000L;
-   private static final vb e = vb.c("recipe.toast.title");
-   private static final vb f = vb.c("recipe.toast.description");
-   private final List<cpn<?>> g = Lists.newArrayList();
-   private long h;
-   private boolean i;
+public class eyn extends eym {
+   private static final int f = -16711681;
+   private static final int g = -6250241;
+   private static final int h = -65536;
+   private static final int i = 1024;
+   private static final int j = 1048576;
+   private static final int k = 1048576;
 
-   public eyn(cpn<?> $$0) {
-      this.g.add($$0);
+   public eyn(ewk $$0, aur $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eyp.a a(evw $$0, eyq $$1, long $$2) {
-      if (this.i) {
-         this.h = $$2;
-         this.i = false;
-      }
+   protected void a(ewm $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, 64);
+      this.a($$0, $$1, $$2, $$3, 1024);
+      this.a($$0, $$1, $$2, $$3, 16384);
+      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
+   }
 
-      if (this.g.isEmpty()) {
-         return eyp.a.b;
+   private void a(ewm $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
+   }
+
+   private void a(ewm $$0, int $$1, int $$2, int $$3, String $$4) {
+      this.a($$0, $$4, $$1 + 1, $$3 + 1);
+      $$0.a(fth.C(), $$1, $$1 + $$2 - 1, $$3, -1);
+   }
+
+   @Override
+   protected String a(double $$0) {
+      return c(e($$0));
+   }
+
+   private static String c(double $$0) {
+      if ($$0 >= 1048576.0) {
+         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
       } else {
-         $$0.a(a, 0, 0, this.a(), this.b());
-         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
-         cpn<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
-         cmh $$4 = $$3.b().g();
-         $$0.c().a();
-         $$0.c().b(0.6F, 0.6F, 1.0F);
-         $$0.b($$4, 3, 3);
-         $$0.c().b();
-         $$0.b($$3.b().a($$1.b().r.I_()), 8, 8);
-         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? eyp.a.b : eyp.a.a;
+         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", aui.a($$0));
       }
    }
 
-   private void a(cpn<?> $$0) {
-      this.g.add($$0);
-      this.i = true;
+   @Override
+   protected int b(double $$0) {
+      return d(e($$0));
    }
 
-   public static void a(eyq $$0, cpn<?> $$1) {
-      eyn $$2 = $$0.a(eyn.class, b);
-      if ($$2 == null) {
-         $$0.a(new eyn($$1));
-      } else {
-         $$2.a($$1);
-      }
+   private static int d(double $$0) {
+      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
+   }
+
+   @Override
+   protected int a(long $$0) {
+      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
+   }
+
+   private static double e(double $$0) {
+      return $$0 * 20.0;
    }
 }

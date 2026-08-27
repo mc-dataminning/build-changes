@@ -1,42 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class btm extends bsr {
-   private final blx a;
-   private double b;
-   private double c;
-   private int d;
+public class btm extends bty {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public btm(blx $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bsr.a.a, bsr.a.b));
+   public btm(bmo $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      return this.a.eg().i() < 0.02F;
+      amz $$0 = (amz)this.b.dM();
+      hx $$1 = this.b.dm();
+      return $$0.c($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return this.d >= 0;
-   }
-
-   @Override
-   public void c() {
-      double $$0 = (Math.PI * 2) * this.a.eg().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.eg().a(20);
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.d--;
-      this.a.I().a(this.a.dr() + this.b, this.a.dv(), this.a.dx() + this.c);
+   protected elm h() {
+      amz $$0 = (amz)this.b.dM();
+      hx $$1 = this.b.dm();
+      iz $$2 = iz.a($$1);
+      iz $$3 = bny.a($$0, $$2, 2);
+      return $$3 != $$2 ? bwx.a(this.b, 10, 7, elm.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

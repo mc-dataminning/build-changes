@@ -1,20 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface elq {
+   elq a = ($$0, $$1) -> false;
+   elq b = ($$0, $$1) -> !$$0 && !$$1;
+   elq c = ($$0, $$1) -> $$1 && !$$0;
+   elq d = ($$0, $$1) -> !$$0;
+   elq e = ($$0, $$1) -> $$0 && !$$1;
+   elq f = ($$0, $$1) -> !$$1;
+   elq g = ($$0, $$1) -> $$0 != $$1;
+   elq h = ($$0, $$1) -> !$$0 || !$$1;
+   elq i = ($$0, $$1) -> $$0 && $$1;
+   elq j = ($$0, $$1) -> $$0 == $$1;
+   elq k = ($$0, $$1) -> $$1;
+   elq l = ($$0, $$1) -> !$$0 || $$1;
+   elq m = ($$0, $$1) -> $$0;
+   elq n = ($$0, $$1) -> $$0 || !$$1;
+   elq o = ($$0, $$1) -> $$0 || $$1;
+   elq p = ($$0, $$1) -> true;
 
-public class elq extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
-
-   public elq(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
-   }
-
-   public int size() {
-      return this.a.size();
-   }
+   boolean apply(boolean var1, boolean var2);
 }

@@ -1,31 +1,26 @@
-import java.util.UUID;
+public abstract class ewv extends eww {
+   private final ewk a;
+   private int b = 16777215;
 
-public class ewv extends bjb {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
-
-   public ewv(UUID $$0, vb $$1, float $$2, bjb.a $$3, bjb.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.b();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public ewv(int $$0, int $$1, int $$2, int $$3, vd $$4, ewk $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.k();
-      this.h = $$0;
-      this.i = ac.b();
+   protected void a(far $$0) {
    }
 
-   @Override
-   public float k() {
-      long $$0 = ac.b() - this.i;
-      float $$1 = aty.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return aty.i($$1, this.b, this.h);
+   public ewv a(int $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   protected final ewk a() {
+      return this.a;
+   }
+
+   protected final int b() {
+      return this.b;
    }
 }

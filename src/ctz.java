@@ -1,101 +1,71 @@
-import com.google.common.hash.Hashing;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ctz {
-   public static final int a = iq.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final ctz.a e;
-   private final long f;
+public record ctz(sl d, Optional<ctz.a> e) {
+   public static final String a = "entity";
+   public static final Codec<ctz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(sl.a.fieldOf("entity").forGetter($$0x -> $$0x.d), ctz.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
+            .apply($$0, ctz::new)
+   );
+   public static final Codec<bif<ctz>> c = bif.a(b);
 
-   public ctz(ctz.a $$0, long $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ctz() {
+      this(new sl(), Optional.empty());
    }
 
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
-   }
-
-   public ctz a(ctz.a $$0) {
-      return new ctz($$0, this.f);
-   }
-
-   public ie<ctx> a(hv $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
-
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
+   public ctz(sl d, Optional<ctz.a> e) {
+      if (d.e("id")) {
+         ahd $$2 = ahd.a(d.l("id"));
+         if ($$2 != null) {
+            d.a("id", $$2.toString());
+         } else {
+            d.r("id");
          }
       }
 
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
+      this.d = d;
+      this.e = e;
    }
 
-   public ie<ctx> a(double $$0, double $$1, double $$2) {
-      int $$3 = iq.a(aty.a($$0));
-      int $$4 = iq.a(aty.a($$1));
-      int $$5 = iq.a(aty.a($$2));
-      return this.a($$3, $$4, $$5);
+   public sl a() {
+      return this.d;
    }
 
-   public ie<ctx> b(hv $$0) {
-      int $$1 = iq.a($$0.u());
-      int $$2 = iq.a($$0.v());
-      int $$3 = iq.a($$0.w());
-      return this.a($$1, $$2, $$3);
+   public Optional<ctz.a> b() {
+      return this.e;
    }
 
-   public ie<ctx> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
+   public sl c() {
+      return this.d;
    }
 
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = atu.a($$0, (long)$$1);
-      $$7 = atu.a($$7, (long)$$2);
-      $$7 = atu.a($$7, (long)$$3);
-      $$7 = atu.a($$7, (long)$$1);
-      $$7 = atu.a($$7, (long)$$2);
-      $$7 = atu.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = atu.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = atu.a($$7, $$0);
-      double $$10 = b($$7);
-      return aty.k($$6 + $$10) + aty.k($$5 + $$9) + aty.k($$4 + $$8);
+   public Optional<ctz.a> d() {
+      return this.e;
    }
 
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
-   }
+   public static record a(aua<Integer> b, aua<Integer> c) {
+      private static final aua<Integer> d = new aua<>(0, 15);
+      public static final Codec<ctz.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, ctz.a::new)
+      );
 
-   public interface a {
-      ie<ctx> getNoiseBiome(int var1, int var2, int var3);
+      private static DataResult<aua<Integer>> a(aua<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<aua<Integer>> a(String $$0) {
+         return atq.a(aua.a.optionalFieldOf($$0, d), ctz.a::a);
+      }
+
+      public aua<Integer> a() {
+         return this.b;
+      }
+
+      public aua<Integer> b() {
+         return this.c;
+      }
    }
 }

@@ -1,25 +1,15 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class eah extends dyo {
-   public static final Codec<eah> d = a(eah::new);
+public interface eah<P extends eag> {
+   eah<eaf> a = a("single_pool_element", eaf.b);
+   eah<eae> b = a("list_pool_element", eae.a);
+   eah<eaa> c = a("feature_pool_element", eaa.a);
+   eah<dzz> d = a("empty_pool_element", dzz.a);
+   eah<ead> e = a("legacy_single_pool_element", ead.a);
 
-   public eah(dyo.c $$0) {
-      super($$0);
-   }
+   Codec<P> codec();
 
-   @Override
-   public Optional<dyo.b> a(dyo.a $$0) {
-      return a($$0, dny.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(dzg $$0, dyo.a $$1) {
-      hv $$2 = new hv($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new eag.a($$2));
-   }
-
-   @Override
-   public dyx<?> e() {
-      return dyx.a;
+   static <P extends eag> eah<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.ai, $$0, () -> $$1);
    }
 }

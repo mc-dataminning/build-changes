@@ -1,45 +1,53 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+public class ebg {
+   private static final ahd[] a = new ahd[]{
+      new ahd("nether_fossils/fossil_1"),
+      new ahd("nether_fossils/fossil_2"),
+      new ahd("nether_fossils/fossil_3"),
+      new ahd("nether_fossils/fossil_4"),
+      new ahd("nether_fossils/fossil_5"),
+      new ahd("nether_fossils/fossil_6"),
+      new ahd("nether_fossils/fossil_7"),
+      new ahd("nether_fossils/fossil_8"),
+      new ahd("nether_fossils/fossil_9"),
+      new ahd("nether_fossils/fossil_10"),
+      new ahd("nether_fossils/fossil_11"),
+      new ahd("nether_fossils/fossil_12"),
+      new ahd("nether_fossils/fossil_13"),
+      new ahd("nether_fossils/fossil_14")
+   };
 
-public class ebg extends dyo {
-   public static final Codec<ebg> d = a(ebg::new);
-
-   public ebg(dyo.c $$0) {
-      super($$0);
+   public static void a(eda $$0, dze $$1, aup $$2, hx $$3) {
+      dcv $$4 = dcv.a($$2);
+      $$1.a(new ebg.a($$0, ac.a(a, $$2), $$3, $$4));
    }
 
-   @Override
-   public Optional<dyo.b> a(dyo.a $$0) {
-      return Optional.of(new dyo.b($$0.h().l(), (Consumer<dzg>)($$1 -> a($$1, $$0))));
-   }
+   public static class a extends dzj {
+      public a(eda $$0, ahd $$1, hx $$2, dcv $$3) {
+         super(dzq.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+      }
 
-   private static void a(dzg $$0, dyo.a $$1) {
-      int $$2 = 0;
+      public a(eda $$0, sl $$1) {
+         super(dzq.ac, $$1, $$0, $$1x -> a(dcv.valueOf($$1.l("Rot"))));
+      }
 
-      ebf.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         ebf.a();
-         $$3 = new ebf.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<dys> $$4 = $$3.c;
+      private static ecv a(dcv $$0) {
+         return new ecv().a($$0).a(dbf.a).a(ecb.d);
+      }
 
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            dys $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
-         }
+      @Override
+      protected void a(dzp $$0, sl $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
 
-         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
-   }
+      @Override
+      protected void a(String $$0, hx $$1, ctx $$2, aup $$3, dyr $$4) {
+      }
 
-   @Override
-   public dyx<?> e() {
-      return dyx.n;
+      @Override
+      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

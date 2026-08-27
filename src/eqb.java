@@ -1,20 +1,36 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import javax.annotation.Nullable;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class eqb {
-   private final Gson a = new Gson();
+public interface eqb {
+   eqb a = a(0.0F, 0.0F, 0.0F);
+   eqb b = a((eqb.a)($$0 -> -$$0.z()));
 
-   public String a(eqt $$0) {
-      return this.a.toJson($$0);
+   static eqb a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   public String a(JsonElement $$0) {
-      return this.a.toJson($$0);
+   static eqb a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   @Nullable
-   public <T extends eqt> T a(String $$0, Class<T> $$1) {
-      return (T)this.a.fromJson($$0, $$1);
+   static eqb a(eqb.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
+   }
+
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

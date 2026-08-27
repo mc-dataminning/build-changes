@@ -1,80 +1,34 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bqw extends bqx {
-   private static final List<cmc> c = ImmutableList.of(cmk.ps, cmk.ve);
+public class bqw {
+   public static bnx<bmf> a(cwj $$0) {
+      return brj.a(
+         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$1 -> $$1.group($$1.c(bvh.o), $$1.b(bvh.m), $$1.b(bvh.X))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.aZ() && $$3x.aC()) {
+                        hx $$5 = $$3x.dm().d();
 
-   @Override
-   protected void a(amp $$0, cee $$1) {
-      Optional<id> $$2 = $$1.dO().c(bux.c);
-      if (!$$2.isEmpty()) {
-         id $$3 = $$2.get();
-         dip $$4 = $$0.a_($$3.b());
-         if ($$4.a(cwb.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
-         }
-      }
-   }
+                        for (ic $$6 : ic.c.a) {
+                           hx $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(ic.b).c() && $$2x.b_($$7).b(eel.c)) {
+                              hx $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 dja $$9 = $$0.o();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(dnk.i, $$8, dnk.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, arm.jl, arn.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   private void a(amp $$0, cee $$1, id $$2, dip $$3) {
-      hv $$4 = $$2.b();
-      if ($$3.c(cxk.e) == 8) {
-         $$3 = cxk.a($$1, $$3, (csy)$$0, $$4);
-      }
-
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bjt $$8 = $$1.A();
-      int $$9 = $$8.b();
-      dip $$10 = $$3;
-
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         cmh $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.d());
-         if ($$13 != -1) {
-            int $$14 = $$12.L();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = cxk.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(cxk.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
-                  }
-               }
-            }
-         }
-      }
-
-      this.a($$0, $$3, $$4, $$10);
-   }
-
-   private void a(amp $$0, dip $$1, hv $$2, dip $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
-   }
-
-   private void a(cee $$0) {
-      bjt $$1 = $$0.A();
-      if ($$1.a_(cmk.pu) <= 36) {
-         int $$2 = $$1.a_(cmk.pt);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(cmk.pt, $$6);
-            cmh $$7 = $$1.a(new cmh(cmk.pu, $$5));
-            if (!$$7.b()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
-      }
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

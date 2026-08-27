@@ -1,133 +1,125 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dcc extends cvp {
-   public static final MapCodec<dcc> c = b(dcc::new);
-   public static final djg d = djf.r;
-   private static final Map<cse, List<dcc.a>> h = new WeakHashMap<>();
-   public static final int e = 60;
-   public static final int f = 8;
-   public static final int g = 160;
-   private static final int i = 2;
+public class dcc extends cwj implements cwq {
+   public static final MapCodec<dcc> a = b(dcc::new);
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final emf f = emc.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
-   public MapCodec<? extends dcc> a() {
-      return c;
+   public MapCodec<dcc> a() {
+      return a;
    }
 
-   protected dcc(dio.d $$0) {
+   public dcc(diz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public void b(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
-      for (ia $$5 : ia.values()) {
-         $$1.a($$2.a($$5), this);
-      }
+   public boolean a(dja $$0, dja $$1, ic $$2) {
+      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(dip $$0, csy $$1, hv $$2, dip $$3, boolean $$4) {
-      if (!$$4) {
-         for (ia $$5 : ia.values()) {
-            $$1.a($$2.a($$5), this);
-         }
-      }
+   public emf f(dja $$0, cso $$1, hx $$2) {
+      return emc.a();
    }
 
    @Override
-   public int a(dip $$0, cse $$1, hv $$2, ia $$3) {
-      return $$0.c(d) && ia.b != $$3 ? 15 : 0;
-   }
-
-   protected boolean a(csy $$0, hv $$1, dip $$2) {
-      return $$0.b($$1.d(), ia.a);
-   }
-
-   @Override
-   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
-      boolean $$4 = this.a($$1, $$2, $$0);
-      List<dcc.a> $$5 = h.get($$1);
-
-      while ($$5 != null && !$$5.isEmpty() && $$1.W() - $$5.get(0).b > 60L) {
-         $$5.remove(0);
-      }
-
-      if ($$0.c(d)) {
-         if ($$4) {
-            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
-            if (a($$1, $$2, true)) {
-               $$1.c(1502, $$2, 0);
-               $$1.a($$2, $$1.a_($$2).b(), 160);
+   public void a(dja $$0, cti $$1, hx $$2, blp $$3) {
+      if (!($$3 instanceof bmf) || $$3.dn().a(this)) {
+         $$3.a($$0, new elm(0.9F, 1.5, 0.9F));
+         if ($$1.B) {
+            aup $$4 = $$1.F_();
+            boolean $$5 = $$3.ac != $$3.dr() || $$3.ae != $$3.dx();
+            if ($$5 && $$4.h()) {
+               $$1.a(
+                  jx.aH,
+                  $$3.dr(),
+                  (double)($$2.v() + 1),
+                  $$3.dx(),
+                  (double)(aui.b($$4, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(aui.b($$4, -1.0F, 1.0F) * 0.083333336F)
+               );
             }
          }
-      } else if (!$$4 && !a($$1, $$2, false)) {
-         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
+      }
+
+      $$3.o(true);
+      if (!$$1.B) {
+         if ($$3.bN() && ($$1.Z().b(cte.c) || $$3 instanceof cfb) && $$3.a($$1, $$2)) {
+            $$1.b($$2, false);
+         }
+
+         $$3.a_(false);
       }
    }
 
    @Override
-   public void a(dip $$0, csy $$1, hv $$2, cvz $$3, hv $$4, boolean $$5) {
-      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.M().b($$2, this)) {
-         $$1.a($$2, this, 2);
+   public void a(cti $$0, dja $$1, hx $$2, blp $$3, float $$4) {
+      if (!((double)$$4 < 4.0) && $$3 instanceof bmf $$5) {
+         bmf.a $$7 = $$5.eG();
+         arl $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
       }
    }
 
    @Override
-   public int b(dip $$0, cse $$1, hv $$2, ia $$3) {
-      return $$3 == ia.a ? $$0.b($$1, $$2, $$3) : 0;
+   public emf b(dja $$0, cso $$1, hx $$2, elr $$3) {
+      if ($$3 instanceof elw $$4) {
+         blp $$5 = $$4.c();
+         if ($$5 != null) {
+            if ($$5.ab > 2.5F) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof cbn;
+            if ($$6 || a($$5) && $$3.a(emc.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return emc.a();
    }
 
    @Override
-   public boolean f_(dip $$0) {
+   public emf c(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return emc.a();
+   }
+
+   public static boolean a(blp $$0) {
+      if ($$0.ai().a(ase.h)) {
+         return true;
+      } else {
+         return $$0 instanceof bmf ? ((bmf)$$0).c(blu.c).a(cmu.py) : false;
+      }
+   }
+
+   @Override
+   public cmr a(@Nullable cfb $$0, ctj $$1, hx $$2, dja $$3) {
+      $$1.a($$2, cwl.a.o(), 11);
+      if (!$$1.y_()) {
+         $$1.c(2001, $$2, cwj.i($$3));
+      }
+
+      return new cmr(cmu.qy);
+   }
+
+   @Override
+   public Optional<arl> au_() {
+      return Optional.of(arm.cO);
+   }
+
+   @Override
+   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
       return true;
-   }
-
-   @Override
-   public void a(dip $$0, csy $$1, hv $$2, auf $$3) {
-      if ($$0.c(d)) {
-         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         $$1.a(jp.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(d);
-   }
-
-   private static boolean a(csy $$0, hv $$1, boolean $$2) {
-      List<dcc.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
-      if ($$2) {
-         $$3.add(new dcc.a($$1.i(), $$0.W()));
-      }
-
-      int $$4 = 0;
-
-      for (dcc.a $$5 : $$3) {
-         if ($$5.a.equals($$1)) {
-            if (++$$4 >= 8) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static class a {
-      final hv a;
-      final long b;
-
-      public a(hv $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
    }
 }

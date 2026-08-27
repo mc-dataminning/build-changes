@@ -1,69 +1,37 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
-public class azs extends DataFix {
-   public azs(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
+public abstract class azs extends DataFix {
+   private final String a;
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("pages", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().map($$0xx -> $$0xx.map($$0xxx -> {
-               if ($$0xxx.asString().result().isEmpty()) {
-                  return $$0xxx;
-               } else {
-                  String $$1x = $$0xxx.asString("");
-                  vb $$2 = null;
-                  if (!"null".equals($$1x) && !StringUtils.isEmpty($$1x)) {
-                     if ($$1x.charAt(0) == '"' && $$1x.charAt($$1x.length() - 1) == '"' || $$1x.charAt(0) == '{' && $$1x.charAt($$1x.length() - 1) == '}') {
-                        try {
-                           $$2 = ato.b(awf.a, $$1x, vb.class, true);
-                           if ($$2 == null) {
-                              $$2 = va.a;
-                           }
-                        } catch (Exception var6) {
-                        }
-
-                        if ($$2 == null) {
-                           try {
-                              $$2 = vb.a.a($$1x);
-                           } catch (Exception var5) {
-                           }
-                        }
-
-                        if ($$2 == null) {
-                           try {
-                              $$2 = vb.a.b($$1x);
-                           } catch (Exception var4) {
-                           }
-                        }
-
-                        if ($$2 == null) {
-                           $$2 = vb.b($$1x);
-                        }
-                     } else {
-                        $$2 = vb.b($$1x);
-                     }
-                  } else {
-                     $$2 = va.a;
-                  }
-
-                  return $$0xxx.createString(vb.a.a($$2));
-               }
-            })).map($$0::createList).result(), $$0.emptyList()));
+   public azs(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbg.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemWrittenBookPagesStrictJsonFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
-      );
+      Type<Pair<String, String>> $$0 = DSL.named(bbq.z.typeName(), bcy.a());
+      if (!Objects.equals(this.getInputSchema().getType(bbq.z), $$0)) {
+         throw new IllegalStateException("item name type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
+   }
+
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new azs($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

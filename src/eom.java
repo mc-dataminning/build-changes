@@ -1,95 +1,31 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
 
 public class eom {
-   public void a(float $$0) {
+   public static ByteBuffer a(int $$0) {
+      return MemoryUtil.memAlloc($$0);
    }
 
-   public void a(float $$0, float $$1) {
+   public static void a(Buffer $$0) {
+      MemoryUtil.memFree($$0);
    }
 
-   public void a(float $$0, float $$1, float $$2) {
+   public static String a() {
+      return GlStateManager._getString(7936);
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
+   public static String b() {
+      return GLX._getCpuInfo();
    }
 
-   public void b(float $$0, float $$1, float $$2, float $$3) {
+   public static String c() {
+      return GlStateManager._getString(7937);
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-   }
-
-   public void a(int $$0) {
-   }
-
-   public void a(int $$0, int $$1) {
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-   }
-
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-   }
-
-   public void a(float[] $$0) {
-   }
-
-   public void a(Vector3f $$0) {
-   }
-
-   public void a(Vector4f $$0) {
-   }
-
-   public void c(float $$0, float $$1, float $$2, float $$3) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void a(
-      float $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-   }
-
-   public void a(Matrix4f $$0) {
-   }
-
-   public void a(Matrix3f $$0) {
+   public static String d() {
+      return GlStateManager._getString(7938);
    }
 }

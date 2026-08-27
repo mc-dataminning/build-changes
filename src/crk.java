@@ -1,15 +1,11 @@
-import java.util.Map.Entry;
-
-public class crk extends cqs {
-   private static final float a = 0.15F;
-
-   public crk(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.d, $$1);
+public class crk extends crc {
+   protected crk(crc.a $$0, blu... $$1) {
+      super($$0, crd.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 + 20 * ($$0 - 1);
+      return 5 + 20 * ($$0 - 1);
    }
 
    @Override
@@ -19,34 +15,6 @@ public class crk extends cqs {
 
    @Override
    public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cmh $$0) {
-      return $$0.d() instanceof cjr ? true : super.a($$0);
-   }
-
-   @Override
-   public void b(blv $$0, blf $$1, int $$2) {
-      auf $$3 = $$0.eg();
-      Entry<blk, cmh> $$4 = cqu.b(cqw.h, $$0);
-      if (a($$2, $$3)) {
-         if ($$1 != null) {
-            $$1.a($$0.dN().d($$0), (float)b($$2, $$3));
-         }
-
-         if ($$4 != null) {
-            $$4.getValue().a(2, $$0, $$1x -> $$1x.d($$4.getKey()));
-         }
-      }
-   }
-
-   public static boolean a(int $$0, auf $$1) {
-      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
-   }
-
-   public static int b(int $$0, auf $$1) {
-      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
+      return 2;
    }
 }

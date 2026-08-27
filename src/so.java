@@ -2,21 +2,22 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class so extends sz {
-   private static final int b = 12;
-   public static final ti<so> a = new ti.a<so>() {
-      public so a(DataInput $$0, ss $$1) throws IOException {
+public class so extends tb {
+   private static final int c = 12;
+   public static final so a = new so(0.0F);
+   public static final tk<so> b = new tk.a<so>() {
+      public so a(DataInput $$0, su $$1) throws IOException {
          return so.a(d($$0, $$1));
       }
 
       @Override
-      public td.b a(DataInput $$0, td $$1, ss $$2) throws IOException {
+      public tf.b a(DataInput $$0, tf $$1, su $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static int d(DataInput $$0, ss $$1) throws IOException {
+      private static float d(DataInput $$0, su $$1) throws IOException {
          $$1.b(12L);
-         return $$0.readInt();
+         return $$0.readFloat();
       }
 
       @Override
@@ -26,12 +27,12 @@ public class so extends sz {
 
       @Override
       public String a() {
-         return "INT";
+         return "FLOAT";
       }
 
       @Override
       public String b() {
-         return "TAG_Int";
+         return "TAG_Float";
       }
 
       @Override
@@ -39,19 +40,19 @@ public class so extends sz {
          return true;
       }
    };
-   private final int c;
+   private final float w;
 
-   so(int $$0) {
-      this.c = $$0;
+   private so(float $$0) {
+      this.w = $$0;
    }
 
-   public static so a(int $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? so.a.a[$$0 - -128] : new so($$0);
+   public static so a(float $$0) {
+      return $$0 == 0.0F ? a : new so($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c);
+      $$0.writeFloat(this.w);
    }
 
    @Override
@@ -61,12 +62,12 @@ public class so extends sz {
 
    @Override
    public byte b() {
-      return 3;
+      return 5;
    }
 
    @Override
-   public ti<so> c() {
-      return a;
+   public tk<so> c() {
+      return b;
    }
 
    public so e() {
@@ -75,71 +76,56 @@ public class so extends sz {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof so && this.c == ((so)$$0).c;
+      return this == $$0 ? true : $$0 instanceof so && this.w == ((so)$$0).w;
    }
 
    @Override
    public int hashCode() {
-      return this.c;
+      return Float.floatToIntBits(this.w);
    }
 
    @Override
-   public void a(tk $$0) {
+   public void a(tm $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.c;
+      return (long)this.w;
    }
 
    @Override
    public int g() {
-      return this.c;
+      return aui.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(this.c & 65535);
+      return (short)(aui.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(this.c & 0xFF);
+      return (byte)(aui.d(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.c;
+      return (double)this.w;
    }
 
    @Override
    public float k() {
-      return (float)this.c;
+      return this.w;
    }
 
    @Override
    public Number l() {
-      return this.c;
+      return this.w;
    }
 
    @Override
-   public td.b a(td $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final so[] a = new so[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new so(-128 + $$0);
-         }
-      }
+   public tf.b a(tf $$0) {
+      return $$0.a(this.w);
    }
 }

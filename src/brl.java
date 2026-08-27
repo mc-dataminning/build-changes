@@ -1,35 +1,53 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class brl<E extends cdv> extends bnm<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public interface brl<F extends K1, Value> {
+   bvh<Value> a();
 
-   public brl(int $$0) {
-      super(ImmutableMap.of(bux.aA, buy.a, bux.o, buy.b, bux.m, buy.b, bux.n, buy.c, bux.B, buy.c, bux.ay, buy.c, bux.aF, buy.c), $$0);
-   }
+   bvi b();
 
-   protected boolean a(amp $$0, E $$1, long $$2) {
-      return true;
-   }
+   @Nullable
+   brk<F, Value> a(bnf<?> var1, Optional<Value> var2);
 
-   protected void b(amp $$0, E $$1, long $$2) {
-      $$1.a(arc.AK, 5.0F, 1.0F);
-   }
-
-   protected void c(amp $$0, E $$1, long $$2) {
-      if ($$1.c(bmh.m)) {
-         $$1.b(bmh.a);
+   public static record a<Value>(bvh<Value> a) implements brl<Mu<Unit>, Value> {
+      @Override
+      public bvi b() {
+         return bvi.b;
       }
 
-      $$1.dO().b(bux.aA);
-      $$1.dO().c(bux.B).filter($$1::a).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.c($$1x);
-         }
+      @Override
+      public brk<Mu<Unit>, Value> a(bnf<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new brk<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
+   }
 
-         if (!$$1.dO().a(bux.ay)) {
-            cdw.a($$1, $$1x.dm());
-         }
-      });
+   public static record b<Value>(bvh<Value> a) implements brl<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public bvi b() {
+         return bvi.a;
+      }
+
+      @Override
+      public brk<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bnf<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new brk<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
+
+   public static record c<Value>(bvh<Value> a) implements brl<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public bvi b() {
+         return bvi.c;
+      }
+
+      @Override
+      public brk<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bnf<?> $$0, Optional<Value> $$1) {
+         return new brk<>($$0, this.a, OptionalBox.create($$1));
+      }
    }
 }

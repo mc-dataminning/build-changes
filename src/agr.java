@@ -1,79 +1,188 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class agr<T> extends agl<T> {
-   private final agr.b b;
+public class agr<C extends bjo> implements agq<Integer> {
+   private static final Logger d = LogUtils.getLogger();
+   protected final cff a = new cff();
+   protected cfa b;
+   protected cjh<C> c;
 
-   private static agr.b a(final agr.b $$0) {
-      return new agr.b() {
-         private final Map<ags<? extends ir<?>>, Optional<? extends agr.a<?>>> b = new HashMap<>();
+   public agr(cjh<C> $$0) {
+      this.c = $$0;
+   }
 
-         @Override
-         public <T> Optional<agr.a<T>> a(ags<? extends ir<? extends T>> $$0x) {
-            return (Optional<agr.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
+   public void a(ana $$0, @Nullable cpx<? extends cpv<C>> $$1, boolean $$2) {
+      if ($$1 != null && $$0.I().b($$1)) {
+         this.b = $$0.fS();
+         if (this.b() || $$0.f()) {
+            this.a.a();
+            $$0.fS().a(this.a);
+            this.c.a(this.a);
+            if (this.a.a((cpv<?>)$$1.b(), null)) {
+               this.a($$1, $$2);
+            } else {
+               this.a();
+               $$0.c.b(new aau($$0.bS.j, $$1));
+            }
+
+            $$0.fS().e();
          }
-      };
+      }
    }
 
-   public static <T> agr<T> a(DynamicOps<T> $$0, final ih.b $$1) {
-      return a($$0, a(new agr.b() {
-         @Override
-         public <E> Optional<agr.a<E>> a(ags<? extends ir<? extends E>> $$0) {
-            return $$1.a($$0).map($$0x -> (agr.a<E>)(new agr.a<>($$0x, $$0x, $$0x.g())));
+   protected void a() {
+      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
+         if (this.c.e($$0)) {
+            cmr $$1 = this.c.b($$0).g().p();
+            this.b.a($$1, false);
+            this.c.b($$0).f($$1);
          }
-      }));
+      }
+
+      this.c.l();
    }
 
-   public static <T> agr<T> a(DynamicOps<T> $$0, agr.b $$1) {
-      return new agr<>($$0, $$1);
+   protected void a(cpx<? extends cpv<C>> $$0, boolean $$1) {
+      boolean $$2 = this.c.a($$0);
+      int $$3 = this.a.a($$0, null);
+      if ($$2) {
+         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               cmr $$5 = this.c.b($$4).g();
+               if (!$$5.b() && Math.min($$3, $$5.g()) < $$5.L() + 1) {
+                  return;
+               }
+            }
+         }
+      }
+
+      int $$6 = this.a($$1, $$3, $$2);
+      IntList $$7 = new IntArrayList();
+      if (this.a.a((cpv<?>)$$0.b(), $$7, $$6)) {
+         int $$8 = $$6;
+         IntListIterator var8 = $$7.iterator();
+
+         while (var8.hasNext()) {
+            int $$9 = (Integer)var8.next();
+            int $$10 = cff.a($$9).g();
+            if ($$10 < $$8) {
+               $$8 = $$10;
+            }
+         }
+
+         if (this.a.a((cpv<?>)$$0.b(), $$7, $$8)) {
+            this.a();
+            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
+         }
+      }
    }
 
-   private agr(DynamicOps<T> $$0, agr.b $$1) {
-      super($$0);
-      this.b = $$1;
+   @Override
+   public void a(Iterator<Integer> $$0, int $$1, int $$2, int $$3, int $$4) {
+      cjp $$5 = this.c.b($$1);
+      cmr $$6 = cff.a($$0.next());
+      if (!$$6.b()) {
+         for (int $$7 = 0; $$7 < $$2; $$7++) {
+            this.a($$5, $$6);
+         }
+      }
    }
 
-   public <E> Optional<ii<E>> a(ags<? extends ir<? extends E>> $$0) {
-      return this.b.a($$0).map(agr.a::a);
+   protected int a(boolean $$0, int $$1, boolean $$2) {
+      int $$3 = 1;
+      if ($$0) {
+         $$3 = $$1;
+      } else if ($$2) {
+         $$3 = 64;
+
+         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               cmr $$5 = this.c.b($$4).g();
+               if (!$$5.b() && $$3 > $$5.L()) {
+                  $$3 = $$5.L();
+               }
+            }
+         }
+
+         if ($$3 < 64) {
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 
-   public <E> Optional<ig<E>> b(ags<? extends ir<? extends E>> $$0) {
-      return this.b.a($$0).map(agr.a::b);
+   protected void a(cjp $$0, cmr $$1) {
+      int $$2 = this.b.c($$1);
+      if ($$2 != -1) {
+         cmr $$3 = this.b.a($$2);
+         if (!$$3.b()) {
+            if ($$3.L() > 1) {
+               this.b.a($$2, 1);
+            } else {
+               this.b.b($$2);
+            }
+
+            if ($$0.g().b()) {
+               $$0.f($$3.c(1));
+            } else {
+               $$0.g().g(1);
+            }
+         }
+      }
    }
 
-   public static <E, O> RecordCodecBuilder<O, ig<E>> c(ags<? extends ir<? extends E>> $$0) {
-      return atg.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof agr<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
+   private boolean b() {
+      List<cmr> $$0 = Lists.newArrayList();
+      int $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
+         if ($$2 != this.c.m()) {
+            cmr $$3 = this.c.b($$2).g().p();
+            if (!$$3.b()) {
+               int $$4 = this.b.d($$3);
+               if ($$4 == -1 && $$0.size() <= $$1) {
+                  for (cmr $$5 : $$0) {
+                     if (cmr.b($$5, $$3) && $$5.L() != $$5.g() && $$5.L() + $$3.L() <= $$5.g()) {
+                        $$5.g($$3.L());
+                        $$3.f(0);
+                        break;
+                     }
+                  }
+
+                  if (!$$3.b()) {
+                     if ($$0.size() >= $$1) {
+                        return false;
+                     }
+
+                     $$0.add($$3);
+                  }
+               } else if ($$4 == -1) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      return true;
    }
 
-   public static <E, O> RecordCodecBuilder<O, ie.c<E>> d(ags<E> $$0) {
-      ags<? extends ir<E>> $$1 = ags.a($$0.b());
-      return atg.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof agr<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
+   private int c() {
+      int $$0 = 0;
 
-   public static record a<T>(ii<T> a, ig<T> b, Lifecycle c) {
-   }
+      for (cmr $$1 : this.b.i) {
+         if ($$1.b()) {
+            $$0++;
+         }
+      }
 
-   public interface b {
-      <T> Optional<agr.a<T>> a(ags<? extends ir<? extends T>> var1);
+      return $$0;
    }
 }

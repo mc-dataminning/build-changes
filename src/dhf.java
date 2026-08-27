@@ -1,211 +1,110 @@
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dhf extends dgd implements bjc, bjo {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bje e = new bje() {
-      @Override
-      public int b() {
-         return 1;
-      }
+public class dhf {
+   private static final String b = "decorated_pot_base";
+   public static final ahc<String> a = a("decorated_pot_base");
+   private static final String c = "decorated_pot_side";
+   private static final String d = "angler_pottery_pattern";
+   private static final String e = "archer_pottery_pattern";
+   private static final String f = "arms_up_pottery_pattern";
+   private static final String g = "blade_pottery_pattern";
+   private static final String h = "brewer_pottery_pattern";
+   private static final String i = "burn_pottery_pattern";
+   private static final String j = "danger_pottery_pattern";
+   private static final String k = "explorer_pottery_pattern";
+   private static final String l = "friend_pottery_pattern";
+   private static final String m = "heart_pottery_pattern";
+   private static final String n = "heartbreak_pottery_pattern";
+   private static final String o = "howl_pottery_pattern";
+   private static final String p = "miner_pottery_pattern";
+   private static final String q = "mourner_pottery_pattern";
+   private static final String r = "plenty_pottery_pattern";
+   private static final String s = "prize_pottery_pattern";
+   private static final String t = "sheaf_pottery_pattern";
+   private static final String u = "shelter_pottery_pattern";
+   private static final String v = "skull_pottery_pattern";
+   private static final String w = "snort_pottery_pattern";
+   private static final ahc<String> x = a("decorated_pot_side");
+   private static final ahc<String> y = a("angler_pottery_pattern");
+   private static final ahc<String> z = a("archer_pottery_pattern");
+   private static final ahc<String> A = a("arms_up_pottery_pattern");
+   private static final ahc<String> B = a("blade_pottery_pattern");
+   private static final ahc<String> C = a("brewer_pottery_pattern");
+   private static final ahc<String> D = a("burn_pottery_pattern");
+   private static final ahc<String> E = a("danger_pottery_pattern");
+   private static final ahc<String> F = a("explorer_pottery_pattern");
+   private static final ahc<String> G = a("friend_pottery_pattern");
+   private static final ahc<String> H = a("heart_pottery_pattern");
+   private static final ahc<String> I = a("heartbreak_pottery_pattern");
+   private static final ahc<String> J = a("howl_pottery_pattern");
+   private static final ahc<String> K = a("miner_pottery_pattern");
+   private static final ahc<String> L = a("mourner_pottery_pattern");
+   private static final ahc<String> M = a("plenty_pottery_pattern");
+   private static final ahc<String> N = a("prize_pottery_pattern");
+   private static final ahc<String> O = a("sheaf_pottery_pattern");
+   private static final ahc<String> P = a("shelter_pottery_pattern");
+   private static final ahc<String> Q = a("skull_pottery_pattern");
+   private static final ahc<String> R = a("snort_pottery_pattern");
+   private static final Map<cmm, ahc<String>> S = Map.ofEntries(
+      Map.entry(cmu.qI, x),
+      Map.entry(cmu.xA, y),
+      Map.entry(cmu.xB, z),
+      Map.entry(cmu.xC, A),
+      Map.entry(cmu.xD, B),
+      Map.entry(cmu.xE, C),
+      Map.entry(cmu.xF, D),
+      Map.entry(cmu.xG, E),
+      Map.entry(cmu.xH, F),
+      Map.entry(cmu.xI, G),
+      Map.entry(cmu.xJ, H),
+      Map.entry(cmu.xK, I),
+      Map.entry(cmu.xL, J),
+      Map.entry(cmu.xM, K),
+      Map.entry(cmu.xN, L),
+      Map.entry(cmu.xO, M),
+      Map.entry(cmu.xP, N),
+      Map.entry(cmu.xQ, O),
+      Map.entry(cmu.xR, P),
+      Map.entry(cmu.xS, Q),
+      Map.entry(cmu.xT, R)
+   );
 
-      @Override
-      public boolean ai_() {
-         return dhf.this.g.b();
-      }
-
-      @Override
-      public cmh a(int $$0) {
-         return $$0 == 0 ? dhf.this.g : cmh.f;
-      }
-
-      @Override
-      public cmh a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cmh $$2 = dhf.this.g.a($$1);
-            if (dhf.this.g.b()) {
-               dhf.this.l();
-            }
-
-            return $$2;
-         } else {
-            return cmh.f;
-         }
-      }
-
-      @Override
-      public cmh b(int $$0) {
-         if ($$0 == 0) {
-            cmh $$1 = dhf.this.g;
-            dhf.this.g = cmh.f;
-            dhf.this.l();
-            return $$1;
-         } else {
-            return cmh.f;
-         }
-      }
-
-      @Override
-      public void a(int $$0, cmh $$1) {
-      }
-
-      @Override
-      public int ak_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dhf.this.e();
-      }
-
-      @Override
-      public boolean a(cer $$0) {
-         return bje.a(dhf.this, $$0) && dhf.this.f();
-      }
-
-      @Override
-      public boolean b(int $$0, cmh $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final chu f = new chu() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? dhf.this.h : 0;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dhf.this.a($$1);
-         }
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   cmh g = cmh.f;
-   int h;
-   private int i;
-
-   public dhf(hv $$0, dip $$1) {
-      super(dgf.D, $$0, $$1);
+   private static ahc<String> a(String $$0) {
+      return ahc.a(ke.ar, new ahd($$0));
    }
 
-   public cmh c() {
-      return this.g;
+   public static ahd a(ahc<String> $$0) {
+      return $$0.a().d("entity/decorated_pot/");
    }
 
-   public boolean f() {
-      return this.g.a(cmk.tT) || this.g.a(cmk.tU);
+   @Nullable
+   public static ahc<String> a(cmm $$0) {
+      return S.get($$0);
    }
 
-   public void a(cmh $$0) {
-      this.a($$0, null);
-   }
-
-   void l() {
-      this.h = 0;
-      this.i = 0;
-      daj.a(null, this.i(), this.aB_(), this.r(), false);
-   }
-
-   public void a(cmh $$0, @Nullable cer $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = cod.k(this.g);
-      this.e();
-   }
-
-   void a(int $$0) {
-      int $$1 = aty.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         daj.a(this.i(), this.aB_(), this.r());
-      }
-   }
-
-   public int g() {
-      return this.h;
-   }
-
-   public int k() {
-      float $$0 = this.i > 1 ? (float)this.g() / ((float)this.i - 1.0F) : 1.0F;
-      return aty.d($$0 * 14.0F) + (this.f() ? 1 : 0);
-   }
-
-   private cmh b(cmh $$0, @Nullable cer $$1) {
-      if (this.o instanceof amp && $$0.a(cmk.tU)) {
-         cod.a($$0, this.a($$1), $$1);
-      }
-
-      return $$0;
-   }
-
-   private ds a(@Nullable cer $$0) {
-      String $$1;
-      vb $$2;
-      if ($$0 == null) {
-         $$1 = "Lectern";
-         $$2 = vb.b("Lectern");
-      } else {
-         $$1 = $$0.ad().getString();
-         $$2 = $$0.Q_();
-      }
-
-      elb $$5 = elb.b(this.p);
-      return new ds(dr.a, $$5, ela.a, (amp)this.o, 2, $$1, $$2, this.o.n(), $$0);
-   }
-
-   @Override
-   public boolean u() {
-      return true;
-   }
-
-   @Override
-   public void a(sj $$0) {
-      super.a($$0);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cmh.a($$0.p("Book")), null);
-      } else {
-         this.g = cmh.f;
-      }
-
-      this.i = cod.k(this.g);
-      this.h = aty.a($$0.h("Page"), 0, this.i - 1);
-   }
-
-   @Override
-   protected void b(sj $$0) {
-      super.b($$0);
-      if (!this.c().b()) {
-         $$0.a("Book", this.c().b(new sj()));
-         $$0.a("Page", this.h);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.a(cmh.f);
-   }
-
-   @Override
-   public chk createMenu(int $$0, ceq $$1, cer $$2) {
-      return new cio($$0, this.e, this.f);
-   }
-
-   @Override
-   public vb Q_() {
-      return vb.c("container.lectern");
+   public static String a(it<String> $$0) {
+      it.a($$0, x, "decorated_pot_side");
+      it.a($$0, y, "angler_pottery_pattern");
+      it.a($$0, z, "archer_pottery_pattern");
+      it.a($$0, A, "arms_up_pottery_pattern");
+      it.a($$0, B, "blade_pottery_pattern");
+      it.a($$0, C, "brewer_pottery_pattern");
+      it.a($$0, D, "burn_pottery_pattern");
+      it.a($$0, E, "danger_pottery_pattern");
+      it.a($$0, F, "explorer_pottery_pattern");
+      it.a($$0, G, "friend_pottery_pattern");
+      it.a($$0, H, "heart_pottery_pattern");
+      it.a($$0, I, "heartbreak_pottery_pattern");
+      it.a($$0, J, "howl_pottery_pattern");
+      it.a($$0, K, "miner_pottery_pattern");
+      it.a($$0, L, "mourner_pottery_pattern");
+      it.a($$0, M, "plenty_pottery_pattern");
+      it.a($$0, N, "prize_pottery_pattern");
+      it.a($$0, O, "sheaf_pottery_pattern");
+      it.a($$0, P, "shelter_pottery_pattern");
+      it.a($$0, Q, "skull_pottery_pattern");
+      it.a($$0, R, "snort_pottery_pattern");
+      return it.a($$0, a, "decorated_pot_base");
    }
 }

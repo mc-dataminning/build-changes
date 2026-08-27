@@ -1,40 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
 
 public class akm {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vb.c("commands.spectate.self"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vb.b("commands.spectate.not_spectator", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("commands.save.alreadyOn"));
 
    public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("spectate").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ds)$$0x.getSource(), null, ((ds)$$0x.getSource()).h())))
-            .then(
-               ((RequiredArgumentBuilder)dt.a("target", ee.a()).executes($$0x -> a((ds)$$0x.getSource(), ee.a($$0x, "target"), ((ds)$$0x.getSource()).h())))
-                  .then(dt.a("player", ee.c()).executes($$0x -> a((ds)$$0x.getSource(), ee.a($$0x, "target"), ee.e($$0x, "player"))))
-            )
-      );
-   }
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ds $$1 = (ds)$$0x.getSource();
+         boolean $$2 = false;
 
-   private static int a(ds $$0, @Nullable blf $$1, amq $$2) throws CommandSyntaxException {
-      if ($$2 == $$1) {
-         throw a.create();
-      } else if ($$2.e.b() != csv.d) {
-         throw b.create($$2.Q_());
-      } else {
-         $$2.c($$1);
-         if ($$1 != null) {
-            $$0.a(() -> vb.a("commands.spectate.success.started", $$1.Q_()), false);
-         } else {
-            $$0.a(() -> vb.c("commands.spectate.success.stopped"), false);
+         for (amz $$3 : $$1.l().H()) {
+            if ($$3 != null && $$3.e) {
+               $$3.e = false;
+               $$2 = true;
+            }
          }
 
-         return 1;
-      }
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> vd.c("commands.save.enabled"), true);
+            return 1;
+         }
+      }));
    }
 }

@@ -1,77 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public abstract class cus extends cvz {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final elu h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final elu b = elr.a(
-      elr.b(), elr.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), elf.e
-   );
-   protected final jb.a c;
+public class cus extends cul implements cuj.a {
+   public static final Codec<cus> b = cuh.c.fieldOf("biome").xmap(cus::new, $$0 -> $$0.c).stable().codec();
+   private final ih<cuh> c;
 
-   @Override
-   protected abstract MapCodec<? extends cus> a();
-
-   public cus(dio.d $$0, jb.a $$1) {
-      super($$0);
-      this.c = $$1;
-   }
-
-   protected double b(dip $$0) {
-      return 0.0;
-   }
-
-   protected boolean a(dip $$0, hv $$1, blf $$2) {
-      return $$2.dt() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
+   public cus(ih<cuh> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      cmh $$6 = $$3.b($$4);
-      jb $$7 = this.c.b().get($$6.d());
-      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
+   protected Stream<ih<cuh>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
+   protected Codec<? extends cul> a() {
       return b;
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2) {
-      return h;
+   public ih<cuh> getNoiseBiome(int $$0, int $$1, int $$2, cuq.f $$3) {
+      return this.c;
    }
 
    @Override
-   public boolean d_(dip $$0) {
-      return true;
+   public ih<cuh> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
    }
 
+   @Nullable
    @Override
-   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
-      return false;
-   }
-
-   public abstract boolean d(dip var1);
-
-   @Override
-   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
-      hv $$4 = dbq.a((csy)$$1, $$2);
-      if ($$4 != null) {
-         edy $$5 = dbq.a($$1, $$4);
-         if ($$5 != eea.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
+   public Pair<hx, ih<cuh>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ih<cuh>> $$5, aup $$6, boolean $$7, cuq.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new hx($$0, $$1, $$2), this.c) : Pair.of(new hx($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
       }
    }
 
-   protected boolean a(edy $$0) {
-      return false;
+   @Nullable
+   @Override
+   public Pair<hx, ih<cuh>> a(hx $$0, int $$1, int $$2, int $$3, Predicate<ih<cuh>> $$4, cuq.f $$5, ctl $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
    }
 
-   protected void a(dip $$0, csy $$1, hv $$2, edy $$3) {
+   @Override
+   public Set<ih<cuh>> a(int $$0, int $$1, int $$2, int $$3, cuq.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

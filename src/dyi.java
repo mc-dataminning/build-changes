@@ -1,40 +1,42 @@
-public interface dyi {
-   ags<dyo> a = a("pillager_outpost");
-   ags<dyo> b = a("mineshaft");
-   ags<dyo> c = a("mineshaft_mesa");
-   ags<dyo> d = a("mansion");
-   ags<dyo> e = a("jungle_pyramid");
-   ags<dyo> f = a("desert_pyramid");
-   ags<dyo> g = a("igloo");
-   ags<dyo> h = a("shipwreck");
-   ags<dyo> i = a("shipwreck_beached");
-   ags<dyo> j = a("swamp_hut");
-   ags<dyo> k = a("stronghold");
-   ags<dyo> l = a("monument");
-   ags<dyo> m = a("ocean_ruin_cold");
-   ags<dyo> n = a("ocean_ruin_warm");
-   ags<dyo> o = a("fortress");
-   ags<dyo> p = a("nether_fossil");
-   ags<dyo> q = a("end_city");
-   ags<dyo> r = a("buried_treasure");
-   ags<dyo> s = a("bastion_remnant");
-   ags<dyo> t = a("village_plains");
-   ags<dyo> u = a("village_desert");
-   ags<dyo> v = a("village_savanna");
-   ags<dyo> w = a("village_snowy");
-   ags<dyo> x = a("village_taiga");
-   ags<dyo> y = a("ruined_portal");
-   ags<dyo> z = a("ruined_portal_desert");
-   ags<dyo> A = a("ruined_portal_jungle");
-   ags<dyo> B = a("ruined_portal_swamp");
-   ags<dyo> C = a("ruined_portal_mountain");
-   ags<dyo> D = a("ruined_portal_ocean");
-   ags<dyo> E = a("ruined_portal_nether");
-   ags<dyo> F = a("ancient_city");
-   ags<dyo> G = a("trail_ruins");
-   ags<dyo> H = a("trial_chambers");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   private static ags<dyo> a(String $$0) {
-      return ags.a(kc.aC, new agt($$0));
+public class dyi extends dyg {
+   public static final Codec<dyi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bja.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bja.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, dyi::new)
+   );
+   private final bja c;
+   private final bja d;
+
+   public static dyi a(bja $$0, bja $$1) {
+      return new dyi($$0, $$1);
+   }
+
+   public static dyi a(bja $$0) {
+      return new dyi(bix.a(0), $$0);
+   }
+
+   public static dyi b(bja $$0) {
+      return new dyi($$0, bix.a(0));
+   }
+
+   private dyi(bja $$0, bja $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Override
+   public Stream<hx> a_(dye $$0, aup $$1, hx $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new hx($$3, $$4, $$5));
+   }
+
+   @Override
+   public dyh<?> b() {
+      return dyh.n;
    }
 }

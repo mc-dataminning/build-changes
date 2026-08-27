@@ -1,34 +1,24 @@
-import javax.annotation.Nullable;
+public class abq implements xd<yx> {
+   private final double a;
 
-public class abq implements wu<yo> {
-   private final int a;
-   private final int b;
-
-   public abq(blf $$0, @Nullable blf $$1) {
-      this.a = $$0.aj();
-      this.b = $$1 != null ? $$1.aj() : 0;
+   public abq(dkr $$0) {
+      this.a = $$0.k();
    }
 
-   public abq(ue $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
+   public abq(ug $$0) {
+      this.a = $$0.readDouble();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
+   public void a(ug $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
    }
 }

@@ -1,218 +1,353 @@
-import com.mojang.logging.LogUtils;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.stream.Stream;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class fmp extends dkp {
-   static final Logger a = LogUtils.getLogger();
-   private final dkw b;
-   private final edo c;
-   volatile fmp.a d;
-   final fmt e;
+public final class fmp {
+   public static final float a = 1.0F;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h = 1.0F;
+   public float i = 1.0F;
+   public float j = 1.0F;
+   public boolean k = true;
+   public boolean l;
+   private final List<fmp.a> m;
+   private final Map<String, fmp> n;
+   private fmr o = fmr.a;
 
-   public fmp(fmt $$0, int $$1) {
-      this.e = $$0;
-      this.b = new dks($$0, new csf(0, 0), $$0.I_().d(kc.as).f(cue.b));
-      this.c = new edo(this, true, $$0.E_().g());
-      this.d = new fmp.a(b($$1));
+   public fmp(List<fmp.a> $$0, Map<String, fmp> $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   @Override
-   public edo p() {
-      return this.c;
+   public fmr a() {
+      return fmr.a(this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   private static boolean a(@Nullable dkw $$0, int $$1, int $$2) {
-      if ($$0 == null) {
-         return false;
+   public fmr b() {
+      return this.o;
+   }
+
+   public void a(fmr $$0) {
+      this.o = $$0;
+   }
+
+   public void c() {
+      this.b(this.o);
+   }
+
+   public void b(fmr $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = 1.0F;
+      this.i = 1.0F;
+      this.j = 1.0F;
+   }
+
+   public void a(fmp $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.j = $$0.j;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+   }
+
+   public boolean a(String $$0) {
+      return this.n.containsKey($$0);
+   }
+
+   public fmp b(String $$0) {
+      fmp $$1 = this.n.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException("Can't find part " + $$0);
       } else {
-         csf $$3 = $$0.f();
-         return $$3.e == $$1 && $$3.f == $$2;
-      }
-   }
-
-   public void a(csf $$0) {
-      if (this.d.b($$0.e, $$0.f)) {
-         int $$1 = this.d.a($$0.e, $$0.f);
-         dkw $$2 = this.d.a($$1);
-         if (a($$2, $$0.e, $$0.f)) {
-            this.d.a($$1, $$2, null);
-         }
-      }
-   }
-
-   @Nullable
-   public dkw b(int $$0, int $$1, dkq $$2, boolean $$3) {
-      if (this.d.b($$0, $$1)) {
-         dkw $$4 = this.d.a(this.d.a($$0, $$1));
-         if (a($$4, $$0, $$1)) {
-            return $$4;
-         }
-      }
-
-      return $$3 ? this.b : null;
-   }
-
-   @Override
-   public cse q() {
-      return this.e;
-   }
-
-   public void a(int $$0, int $$1, ue $$2) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-      } else {
-         int $$3 = this.d.a($$0, $$1);
-         dkw $$4 = this.d.b.get($$3);
-         if (!a($$4, $$0, $$1)) {
-            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
-         } else {
-            $$4.a($$2);
-         }
-      }
-   }
-
-   @Nullable
-   public dkw a(int $$0, int $$1, ue $$2, sj $$3, Consumer<zx.b> $$4) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-         return null;
-      } else {
-         int $$5 = this.d.a($$0, $$1);
-         dkw $$6 = this.d.b.get($$5);
-         csf $$7 = new csf($$0, $$1);
-         if (!a($$6, $$0, $$1)) {
-            $$6 = new dkw(this.e, $$7);
-            $$6.a($$2, $$3, $$4);
-            this.d.a($$5, $$6);
-         } else {
-            $$6.a($$2, $$3, $$4);
-         }
-
-         this.e.a($$7);
-         return $$6;
-      }
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
-   }
-
-   public void d(int $$0, int $$1) {
-      this.d.e = $$0;
-      this.d.f = $$1;
-   }
-
-   public void a(int $$0) {
-      int $$1 = this.d.c;
-      int $$2 = b($$0);
-      if ($$1 != $$2) {
-         fmp.a $$3 = new fmp.a($$2);
-         $$3.e = this.d.e;
-         $$3.f = this.d.f;
-
-         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
-            dkw $$5 = this.d.b.get($$4);
-            if ($$5 != null) {
-               csf $$6 = $$5.f();
-               if ($$3.b($$6.e, $$6.f)) {
-                  $$3.a($$3.a($$6.e, $$6.f), $$5);
-               }
-            }
-         }
-
-         this.d = $$3;
-      }
-   }
-
-   private static int b(int $$0) {
-      return Math.max(2, $$0) + 3;
-   }
-
-   @Override
-   public String e() {
-      return this.d.b.length() + ", " + this.j();
-   }
-
-   @Override
-   public int j() {
-      return this.d.g;
-   }
-
-   @Override
-   public void a(cth $$0, ix $$1) {
-      euk.N().f.b($$1.a(), $$1.b(), $$1.c());
-   }
-
-   final class a {
-      final AtomicReferenceArray<dkw> b;
-      final int c;
-      private final int d;
-      volatile int e;
-      volatile int f;
-      int g;
-
-      a(int $$0) {
-         this.c = $$0;
-         this.d = $$0 * 2 + 1;
-         this.b = new AtomicReferenceArray<>(this.d * this.d);
-      }
-
-      int a(int $$0, int $$1) {
-         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
-      }
-
-      protected void a(int $$0, @Nullable dkw $$1) {
-         dkw $$2 = this.b.getAndSet($$0, $$1);
-         if ($$2 != null) {
-            this.g--;
-            fmp.this.e.a($$2);
-         }
-
-         if ($$1 != null) {
-            this.g++;
-         }
-      }
-
-      protected dkw a(int $$0, dkw $$1, @Nullable dkw $$2) {
-         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
-            this.g--;
-         }
-
-         fmp.this.e.a($$1);
          return $$1;
       }
+   }
 
-      boolean b(int $$0, int $$1) {
-         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
-      }
+   public void a(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-      @Nullable
-      protected dkw a(int $$0) {
-         return this.b.get($$0);
-      }
+   public void b(float $$0, float $$1, float $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
 
-      private void a(String $$0) {
-         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
-            int $$2 = fmp.this.d.c;
+   public void a(ept $$0, epx $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
 
-            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
-               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
-                  dkw $$5 = fmp.this.d.b.get(fmp.this.d.a($$4, $$3));
-                  if ($$5 != null) {
-                     csf $$6 = $$5.f();
-                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
-                  }
-               }
+   public void a(ept $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.k) {
+         if (!this.m.isEmpty() || !this.n.isEmpty()) {
+            $$0.a();
+            this.a($$0);
+            if (!this.l) {
+               this.a($$0.c(), $$1, $$2, $$3, $$4, $$5, $$6, $$7);
             }
-         } catch (IOException var10) {
-            fmp.a.error("Failed to dump chunks to file {}", $$0, var10);
+
+            for (fmp $$8 : this.n.values()) {
+               $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+            }
+
+            $$0.b();
          }
       }
+   }
+
+   public void a(ept $$0, fmp.d $$1) {
+      this.a($$0, $$1, "");
+   }
+
+   private void a(ept $$0, fmp.d $$1, String $$2) {
+      if (!this.m.isEmpty() || !this.n.isEmpty()) {
+         $$0.a();
+         this.a($$0);
+         ept.a $$3 = $$0.c();
+
+         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
+            $$1.visit($$3, $$2, $$4, this.m.get($$4));
+         }
+
+         String $$5 = $$2 + "/";
+         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
+         $$0.b();
+      }
+   }
+
+   public void a(ept $$0) {
+      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
+      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
+         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
+      }
+
+      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
+         $$0.b(this.h, this.i, this.j);
+      }
+   }
+
+   private void a(ept.a $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      for (fmp.a $$8 : this.m) {
+         $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   public fmp.a a(aup $$0) {
+      return this.m.get($$0.a(this.m.size()));
+   }
+
+   public boolean d() {
+      return this.m.isEmpty();
+   }
+
+   public void a(Vector3f $$0) {
+      this.b = this.b + $$0.x();
+      this.c = this.c + $$0.y();
+      this.d = this.d + $$0.z();
+   }
+
+   public void b(Vector3f $$0) {
+      this.e = this.e + $$0.x();
+      this.f = this.f + $$0.y();
+      this.g = this.g + $$0.z();
+   }
+
+   public void c(Vector3f $$0) {
+      this.h = this.h + $$0.x();
+      this.i = this.i + $$0.y();
+      this.j = this.j + $$0.z();
+   }
+
+   public Stream<fmp> e() {
+      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(fmp::e));
+   }
+
+   public static class a {
+      private final fmp.b[] g;
+      public final float a;
+      public final float b;
+      public final float c;
+      public final float d;
+      public final float e;
+      public final float f;
+
+      public a(
+         int $$0,
+         int $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         float $$9,
+         float $$10,
+         boolean $$11,
+         float $$12,
+         float $$13,
+         Set<ic> $$14
+      ) {
+         this.a = $$2;
+         this.b = $$3;
+         this.c = $$4;
+         this.d = $$2 + $$5;
+         this.e = $$3 + $$6;
+         this.f = $$4 + $$7;
+         this.g = new fmp.b[$$14.size()];
+         float $$15 = $$2 + $$5;
+         float $$16 = $$3 + $$6;
+         float $$17 = $$4 + $$7;
+         $$2 -= $$8;
+         $$3 -= $$9;
+         $$4 -= $$10;
+         $$15 += $$8;
+         $$16 += $$9;
+         $$17 += $$10;
+         if ($$11) {
+            float $$18 = $$15;
+            $$15 = $$2;
+            $$2 = $$18;
+         }
+
+         fmp.c $$19 = new fmp.c($$2, $$3, $$4, 0.0F, 0.0F);
+         fmp.c $$20 = new fmp.c($$15, $$3, $$4, 0.0F, 8.0F);
+         fmp.c $$21 = new fmp.c($$15, $$16, $$4, 8.0F, 8.0F);
+         fmp.c $$22 = new fmp.c($$2, $$16, $$4, 8.0F, 0.0F);
+         fmp.c $$23 = new fmp.c($$2, $$3, $$17, 0.0F, 0.0F);
+         fmp.c $$24 = new fmp.c($$15, $$3, $$17, 0.0F, 8.0F);
+         fmp.c $$25 = new fmp.c($$15, $$16, $$17, 8.0F, 8.0F);
+         fmp.c $$26 = new fmp.c($$2, $$16, $$17, 8.0F, 0.0F);
+         float $$27 = (float)$$0;
+         float $$28 = (float)$$0 + $$7;
+         float $$29 = (float)$$0 + $$7 + $$5;
+         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
+         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
+         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
+         float $$33 = (float)$$1;
+         float $$34 = (float)$$1 + $$7;
+         float $$35 = (float)$$1 + $$7 + $$6;
+         int $$36 = 0;
+         if ($$14.contains(ic.a)) {
+            this.g[$$36++] = new fmp.b(new fmp.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, ic.a);
+         }
+
+         if ($$14.contains(ic.b)) {
+            this.g[$$36++] = new fmp.b(new fmp.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, ic.b);
+         }
+
+         if ($$14.contains(ic.e)) {
+            this.g[$$36++] = new fmp.b(new fmp.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, ic.e);
+         }
+
+         if ($$14.contains(ic.c)) {
+            this.g[$$36++] = new fmp.b(new fmp.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, ic.c);
+         }
+
+         if ($$14.contains(ic.f)) {
+            this.g[$$36++] = new fmp.b(new fmp.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, ic.f);
+         }
+
+         if ($$14.contains(ic.d)) {
+            this.g[$$36] = new fmp.b(new fmp.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, ic.d);
+         }
+      }
+
+      public void a(ept.a $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         Matrix4f $$8 = $$0.a();
+         Matrix3f $$9 = $$0.b();
+
+         for (fmp.b $$10 : this.g) {
+            Vector3f $$11 = $$9.transform(new Vector3f($$10.b));
+            float $$12 = $$11.x();
+            float $$13 = $$11.y();
+            float $$14 = $$11.z();
+
+            for (fmp.c $$15 : $$10.a) {
+               float $$16 = $$15.a.x() / 16.0F;
+               float $$17 = $$15.a.y() / 16.0F;
+               float $$18 = $$15.a.z() / 16.0F;
+               Vector4f $$19 = $$8.transform(new Vector4f($$16, $$17, $$18, 1.0F));
+               $$1.a($$19.x(), $$19.y(), $$19.z(), $$4, $$5, $$6, $$7, $$15.b, $$15.c, $$3, $$2, $$12, $$13, $$14);
+            }
+         }
+      }
+   }
+
+   static class b {
+      public final fmp.c[] a;
+      public final Vector3f b;
+
+      public b(fmp.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, ic $$8) {
+         this.a = $$0;
+         float $$9 = 0.0F / $$5;
+         float $$10 = 0.0F / $$6;
+         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
+         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
+         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
+         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
+         if ($$7) {
+            int $$11 = $$0.length;
+
+            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
+               fmp.c $$13 = $$0[$$12];
+               $$0[$$12] = $$0[$$11 - 1 - $$12];
+               $$0[$$11 - 1 - $$12] = $$13;
+            }
+         }
+
+         this.b = $$8.m();
+         if ($$7) {
+            this.b.mul(-1.0F, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   static class c {
+      public final Vector3f a;
+      public final float b;
+      public final float c;
+
+      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
+         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
+      }
+
+      public fmp.c a(float $$0, float $$1) {
+         return new fmp.c(this.a, $$0, $$1);
+      }
+
+      public c(Vector3f $$0, float $$1, float $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void visit(ept.a var1, String var2, int var3, fmp.a var4);
    }
 }

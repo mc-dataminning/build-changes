@@ -1,35 +1,17 @@
-public class fxq extends fxn<cfb> {
-   private static final agt a = new agt("textures/entity/illager/evoker_fangs.png");
-   private final fiz<cfb> f;
+public class fxq extends fzl<bxx, fje<bxx>> {
+   private static final ahd a = new ahd("textures/entity/chicken.png");
 
-   public fxq(fxo.a $$0) {
-      super($$0);
-      this.f = new fiz<>($$0.a(flx.Z));
+   public fxq(fyf.a $$0) {
+      super($$0, new fje<>($$0.a(fmo.w)), 0.3F);
    }
 
-   public void a(cfb $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
-      float $$6 = $$0.a($$2);
-      if ($$6 != 0.0F) {
-         float $$7 = 2.0F;
-         if ($$6 > 0.9F) {
-            $$7 *= (1.0F - $$6) / 0.1F;
-         }
-
-         $$3.a();
-         $$3.a(a.d.rotationDegrees(90.0F - $$0.dC()));
-         $$3.b(-$$7, -$$7, $$7);
-         float $$8 = 0.03125F;
-         $$3.a(0.0, -0.626, 0.0);
-         $$3.b(0.5F, 0.5F, 0.5F);
-         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dC(), $$0.dE());
-         eph $$9 = $$4.getBuffer(this.f.a(a));
-         this.f.a($$3, $$9, $$5, gdf.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   public agt a(cfb $$0) {
+   public ahd a(bxx $$0) {
       return a;
+   }
+
+   protected float a(bxx $$0, float $$1) {
+      float $$2 = aui.i($$1, $$0.bX, $$0.bT);
+      float $$3 = aui.i($$1, $$0.bW, $$0.bU);
+      return (aui.a($$2) + 1.0F) * $$3;
    }
 }

@@ -1,64 +1,15 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class ceb implements crv {
-   private final cer a;
-   private crx b = new crx();
-   private int c;
-
-   public ceb(cer $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public cer ge() {
-      return this.a;
-   }
-
-   @Override
-   public void f(@Nullable cer $$0) {
-   }
-
-   @Override
-   public crx gg() {
-      return this.b;
-   }
-
-   @Override
-   public void a(crx $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(crw $$0) {
-      $$0.j();
-   }
-
-   @Override
-   public void l(cmh $$0) {
-   }
-
-   @Override
-   public boolean gm() {
-      return this.a.dM().B;
-   }
-
-   @Override
-   public int w() {
-      return this.c;
-   }
-
-   @Override
-   public void t(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gh() {
-      return true;
-   }
-
-   @Override
-   public arb gi() {
-      return arc.zN;
+public class ceb {
+   public static bnx<cdr> a() {
+      return brj.a((Function<brj.b<cdr>, ? extends App<brj.c<cdr>, brm<cdr>>>)($$0 -> $$0.group($$0.c(bvh.ac)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               if (!$$1.eU().b() && !$$1.eU().a(cmu.vl)) {
+                  cds.a($$1, true);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

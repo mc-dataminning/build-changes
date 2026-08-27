@@ -1,17 +1,18 @@
-public record xz(hv b) implements xo {
-   public static final agt a = new agt("debug/poi_removed");
+public record xz(ahc<dnk> b, elm c) implements xx {
+   public static final ahd a = new ahd("debug/game_event");
 
-   public xz(ue $$0) {
-      this($$0.e());
+   public xz(ug $$0) {
+      this($$0.a(ke.B), $$0.k());
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.b);
+   public void a(ug $$0) {
+      $$0.b(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public agt a() {
+   public ahd a() {
       return a;
    }
 }

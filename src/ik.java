@@ -1,21 +1,5 @@
-import javax.annotation.Nullable;
-
-public interface ik<T> extends Iterable<T> {
-   int a = -1;
-
-   int a(T var1);
-
-   @Nullable
-   T a(int var1);
-
-   default T b(int $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No value with id " + $$0);
-      } else {
-         return $$1;
-      }
+public interface ik<T> {
+   default boolean a(ik<T> $$0) {
+      return $$0 == this;
    }
-
-   int b();
 }

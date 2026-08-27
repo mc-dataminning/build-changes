@@ -1,47 +1,271 @@
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public interface pl {
-   static void a(pa<dyu> $$0) {
-      ig<dyo> $$1 = $$0.a(kc.aC);
-      ig<ctx> $$2 = $$0.a(kc.as);
-      ie.c<dyu> $$3 = $$0.a(
-         dyh.a,
-         new dyu(
-            List.of(dyu.a($$1.b(dyi.t)), dyu.a($$1.b(dyi.u)), dyu.a($$1.b(dyi.v)), dyu.a($$1.b(dyi.w)), dyu.a($$1.b(dyi.x))), new dzj(34, 8, dzk.a, 10387312)
-         )
-      );
-      $$0.a(dyh.b, new dyu($$1.b(dyi.f), new dzj(32, 8, dzk.a, 14357617)));
-      $$0.a(dyh.c, new dyu($$1.b(dyi.g), new dzj(32, 8, dzk.a, 14357618)));
-      $$0.a(dyh.d, new dyu($$1.b(dyi.e), new dzj(32, 8, dzk.a, 14357619)));
-      $$0.a(dyh.e, new dyu($$1.b(dyi.j), new dzj(32, 8, dzk.a, 14357620)));
-      $$0.a(dyh.f, new dyu($$1.b(dyi.a), new dzj(iz.g, dzl.c.b, 0.2F, 165745296, Optional.of(new dzl.a($$3, 10)), 32, 8, dzk.a)));
-      $$0.a(dyh.q, new dyu($$1.b(dyi.F), new dzj(24, 8, dzk.a, 20083232)));
-      $$0.a(dyh.g, new dyu($$1.b(dyi.l), new dzj(32, 5, dzk.b, 10387313)));
-      $$0.a(dyh.h, new dyu($$1.b(dyi.d), new dzj(80, 20, dzk.b, 10387319)));
-      $$0.a(dyh.i, new dyu($$1.b(dyi.r), new dzj(new iz(9, 0, 9), dzl.c.c, 0.01F, 0, Optional.empty(), 1, 0, dzk.a)));
-      $$0.a(dyh.j, new dyu(List.of(dyu.a($$1.b(dyi.b)), dyu.a($$1.b(dyi.c))), new dzj(iz.g, dzl.c.d, 0.004F, 0, Optional.empty(), 1, 0, dzk.a)));
+public class pl {
+   public static final ahc<eai> a = pj.a("village/savanna/town_centers");
+   private static final ahc<eai> b = pj.a("village/savanna/terminators");
+   private static final ahc<eai> c = pj.a("village/savanna/zombie/terminators");
+
+   public static void a(pc<eai> $$0) {
+      ii<dyd> $$1 = $$0.a(ke.aC);
+      ih<dyd> $$2 = $$1.b(qz.g);
+      ih<dyd> $$3 = $$1.b(qz.a);
+      ih<dyd> $$4 = $$1.b(qz.b);
+      ii<ecx> $$5 = $$0.a(ke.aE);
+      ih<ecx> $$6 = $$5.b(pk.b);
+      ih<ecx> $$7 = $$5.b(pk.j);
+      ih<ecx> $$8 = $$5.b(pk.m);
+      ii<eai> $$9 = $$0.a(ke.aG);
+      ih<eai> $$10 = $$9.b(pj.a);
+      ih<eai> $$11 = $$9.b(b);
+      ih<eai> $$12 = $$9.b(c);
       $$0.a(
-         dyh.k,
-         new dyu(
-            List.of(
-               dyu.a($$1.b(dyi.y)),
-               dyu.a($$1.b(dyi.z)),
-               dyu.a($$1.b(dyi.A)),
-               dyu.a($$1.b(dyi.B)),
-               dyu.a($$1.b(dyi.C)),
-               dyu.a($$1.b(dyi.D)),
-               dyu.a($$1.b(dyi.E))
+         a,
+         new eai(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eag.a("village/savanna/town_centers/savanna_meeting_point_1"), 100),
+               Pair.of(eag.a("village/savanna/town_centers/savanna_meeting_point_2"), 50),
+               Pair.of(eag.a("village/savanna/town_centers/savanna_meeting_point_3"), 150),
+               Pair.of(eag.a("village/savanna/town_centers/savanna_meeting_point_4"), 150),
+               Pair.of(eag.a("village/savanna/zombie/town_centers/savanna_meeting_point_1", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/town_centers/savanna_meeting_point_2", $$6), 1),
+               Pair.of(eag.a("village/savanna/zombie/town_centers/savanna_meeting_point_3", $$6), 3),
+               Pair.of(eag.a("village/savanna/zombie/town_centers/savanna_meeting_point_4", $$6), 3)
             ),
-            new dzj(40, 15, dzk.a, 34222645)
+            eai.a.b
          )
       );
-      $$0.a(dyh.l, new dyu(List.of(dyu.a($$1.b(dyi.h)), dyu.a($$1.b(dyi.i))), new dzj(24, 4, dzk.a, 165745295)));
-      $$0.a(dyh.m, new dyu(List.of(dyu.a($$1.b(dyi.m)), dyu.a($$1.b(dyi.n))), new dzj(20, 8, dzk.a, 14357621)));
-      $$0.a(dyh.n, new dyu(List.of(dyu.a($$1.b(dyi.o), 2), dyu.a($$1.b(dyi.s), 3)), new dzj(27, 4, dzk.a, 30084232)));
-      $$0.a(dyh.o, new dyu($$1.b(dyi.p), new dzj(2, 1, dzk.a, 14357921)));
-      $$0.a(dyh.p, new dyu($$1.b(dyi.q), new dzj(20, 11, dzk.b, 10387313)));
-      $$0.a(dyh.r, new dyu($$1.b(dyi.k), new dzi(32, 3, 128, $$2.b(arq.o))));
-      $$0.a(dyh.s, new dyu($$1.b(dyi.G), new dzj(34, 8, dzk.a, 83469867)));
+      pj.a(
+         $$0,
+         "village/savanna/streets",
+         new eai(
+            $$11,
+            ImmutableList.of(
+               Pair.of(eag.a("village/savanna/streets/corner_01", $$7), 2),
+               Pair.of(eag.a("village/savanna/streets/corner_03", $$7), 2),
+               Pair.of(eag.a("village/savanna/streets/straight_02", $$7), 4),
+               Pair.of(eag.a("village/savanna/streets/straight_04", $$7), 7),
+               Pair.of(eag.a("village/savanna/streets/straight_05", $$7), 3),
+               Pair.of(eag.a("village/savanna/streets/straight_06", $$7), 4),
+               Pair.of(eag.a("village/savanna/streets/straight_08", $$7), 4),
+               Pair.of(eag.a("village/savanna/streets/straight_09", $$7), 4),
+               Pair.of(eag.a("village/savanna/streets/straight_10", $$7), 4),
+               Pair.of(eag.a("village/savanna/streets/straight_11", $$7), 4),
+               Pair.of(eag.a("village/savanna/streets/crossroad_02", $$7), 1),
+               Pair.of(eag.a("village/savanna/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(eag.a("village/savanna/streets/crossroad_04", $$7), 2),
+                  Pair.of(eag.a("village/savanna/streets/crossroad_05", $$7), 2),
+                  Pair.of(eag.a("village/savanna/streets/crossroad_06", $$7), 2),
+                  Pair.of(eag.a("village/savanna/streets/crossroad_07", $$7), 2),
+                  Pair.of(eag.a("village/savanna/streets/split_01", $$7), 2),
+                  Pair.of(eag.a("village/savanna/streets/split_02", $$7), 2),
+                  Pair.of(eag.a("village/savanna/streets/turn_01", $$7), 3)
+               }
+            ),
+            eai.a.a
+         )
+      );
+      pj.a(
+         $$0,
+         "village/savanna/zombie/streets",
+         new eai(
+            $$12,
+            ImmutableList.of(
+               Pair.of(eag.a("village/savanna/zombie/streets/corner_01", $$7), 2),
+               Pair.of(eag.a("village/savanna/zombie/streets/corner_03", $$7), 2),
+               Pair.of(eag.a("village/savanna/zombie/streets/straight_02", $$7), 4),
+               Pair.of(eag.a("village/savanna/zombie/streets/straight_04", $$7), 7),
+               Pair.of(eag.a("village/savanna/zombie/streets/straight_05", $$7), 3),
+               Pair.of(eag.a("village/savanna/zombie/streets/straight_06", $$7), 4),
+               Pair.of(eag.a("village/savanna/zombie/streets/straight_08", $$7), 4),
+               Pair.of(eag.a("village/savanna/zombie/streets/straight_09", $$7), 4),
+               Pair.of(eag.a("village/savanna/zombie/streets/straight_10", $$7), 4),
+               Pair.of(eag.a("village/savanna/zombie/streets/straight_11", $$7), 4),
+               Pair.of(eag.a("village/savanna/zombie/streets/crossroad_02", $$7), 1),
+               Pair.of(eag.a("village/savanna/zombie/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(eag.a("village/savanna/zombie/streets/crossroad_04", $$7), 2),
+                  Pair.of(eag.a("village/savanna/zombie/streets/crossroad_05", $$7), 2),
+                  Pair.of(eag.a("village/savanna/zombie/streets/crossroad_06", $$7), 2),
+                  Pair.of(eag.a("village/savanna/zombie/streets/crossroad_07", $$7), 2),
+                  Pair.of(eag.a("village/savanna/zombie/streets/split_01", $$7), 2),
+                  Pair.of(eag.a("village/savanna/zombie/streets/split_02", $$7), 2),
+                  Pair.of(eag.a("village/savanna/zombie/streets/turn_01", $$7), 3)
+               }
+            ),
+            eai.a.a
+         )
+      );
+      pj.a(
+         $$0,
+         "village/savanna/houses",
+         new eai(
+            $$11,
+            ImmutableList.of(
+               Pair.of(eag.a("village/savanna/houses/savanna_small_house_1"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_small_house_2"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_small_house_3"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_small_house_4"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_small_house_5"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_small_house_6"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_small_house_7"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_small_house_8"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_medium_house_1"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_medium_house_2"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_butchers_shop_1"), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_butchers_shop_2"), 2),
+               new Pair[]{
+                  Pair.of(eag.a("village/savanna/houses/savanna_tool_smith_1"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_fletcher_house_1"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_shepherd_1"), 7),
+                  Pair.of(eag.a("village/savanna/houses/savanna_armorer_1"), 1),
+                  Pair.of(eag.a("village/savanna/houses/savanna_fisher_cottage_1"), 3),
+                  Pair.of(eag.a("village/savanna/houses/savanna_tannery_1"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_cartographer_1"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_library_1"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_mason_1"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_weaponsmith_1"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_weaponsmith_2"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_temple_1"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_temple_2"), 3),
+                  Pair.of(eag.a("village/savanna/houses/savanna_large_farm_1", $$8), 4),
+                  Pair.of(eag.a("village/savanna/houses/savanna_large_farm_2", $$8), 6),
+                  Pair.of(eag.a("village/savanna/houses/savanna_small_farm", $$8), 4),
+                  Pair.of(eag.a("village/savanna/houses/savanna_animal_pen_1"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_animal_pen_2"), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_animal_pen_3"), 2),
+                  Pair.of(eag.g(), 5)
+               }
+            ),
+            eai.a.b
+         )
+      );
+      pj.a(
+         $$0,
+         "village/savanna/zombie/houses",
+         new eai(
+            $$12,
+            ImmutableList.of(
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_small_house_1", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_small_house_2", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_small_house_3", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_small_house_4", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_small_house_5", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_small_house_6", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_small_house_7", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_small_house_8", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_medium_house_1", $$6), 2),
+               Pair.of(eag.a("village/savanna/zombie/houses/savanna_medium_house_2", $$6), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_butchers_shop_1", $$6), 2),
+               Pair.of(eag.a("village/savanna/houses/savanna_butchers_shop_2", $$6), 2),
+               new Pair[]{
+                  Pair.of(eag.a("village/savanna/houses/savanna_tool_smith_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_fletcher_house_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_shepherd_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_armorer_1", $$6), 1),
+                  Pair.of(eag.a("village/savanna/houses/savanna_fisher_cottage_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_tannery_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_cartographer_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_library_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_mason_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_weaponsmith_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_weaponsmith_2", $$6), 2),
+                  Pair.of(eag.a("village/savanna/houses/savanna_temple_1", $$6), 1),
+                  Pair.of(eag.a("village/savanna/houses/savanna_temple_2", $$6), 3),
+                  Pair.of(eag.a("village/savanna/houses/savanna_large_farm_1", $$6), 4),
+                  Pair.of(eag.a("village/savanna/zombie/houses/savanna_large_farm_2", $$6), 4),
+                  Pair.of(eag.a("village/savanna/houses/savanna_small_farm", $$6), 4),
+                  Pair.of(eag.a("village/savanna/houses/savanna_animal_pen_1", $$6), 2),
+                  Pair.of(eag.a("village/savanna/zombie/houses/savanna_animal_pen_2", $$6), 2),
+                  Pair.of(eag.a("village/savanna/zombie/houses/savanna_animal_pen_3", $$6), 2),
+                  Pair.of(eag.g(), 5)
+               }
+            ),
+            eai.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new eai(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(eag.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(eag.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(eag.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(eag.a("village/savanna/terminators/terminator_05", $$7), 1)
+            ),
+            eai.a.a
+         )
+      );
+      $$0.a(
+         c,
+         new eai(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(eag.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(eag.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(eag.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(eag.a("village/savanna/zombie/terminators/terminator_05", $$7), 1)
+            ),
+            eai.a.a
+         )
+      );
+      pj.a($$0, "village/savanna/trees", new eai($$10, ImmutableList.of(Pair.of(eag.a($$2), 1)), eai.a.b));
+      pj.a(
+         $$0,
+         "village/savanna/decor",
+         new eai(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eag.a("village/savanna/savanna_lamp_post_01"), 4),
+               Pair.of(eag.a($$2), 4),
+               Pair.of(eag.a($$3), 4),
+               Pair.of(eag.a($$4), 1),
+               Pair.of(eag.g(), 4)
+            ),
+            eai.a.b
+         )
+      );
+      pj.a(
+         $$0,
+         "village/savanna/zombie/decor",
+         new eai(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eag.a("village/savanna/savanna_lamp_post_01", $$6), 4),
+               Pair.of(eag.a($$2), 4),
+               Pair.of(eag.a($$3), 4),
+               Pair.of(eag.a($$4), 1),
+               Pair.of(eag.g(), 4)
+            ),
+            eai.a.b
+         )
+      );
+      pj.a(
+         $$0,
+         "village/savanna/villagers",
+         new eai(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eag.a("village/savanna/villagers/nitwit"), 1),
+               Pair.of(eag.a("village/savanna/villagers/baby"), 1),
+               Pair.of(eag.a("village/savanna/villagers/unemployed"), 10)
+            ),
+            eai.a.b
+         )
+      );
+      pj.a(
+         $$0,
+         "village/savanna/zombie/villagers",
+         new eai(
+            $$10,
+            ImmutableList.of(Pair.of(eag.a("village/savanna/zombie/villagers/nitwit"), 1), Pair.of(eag.a("village/savanna/zombie/villagers/unemployed"), 10)),
+            eai.a.b
+         )
+      );
    }
 }

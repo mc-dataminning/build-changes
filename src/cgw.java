@@ -1,87 +1,192 @@
-public abstract class cgw extends blf {
-   protected static final afz<Integer> f = agc.a(cgw.class, agb.b);
-   protected static final afz<Integer> g = agc.a(cgw.class, agb.b);
-   protected static final afz<Float> h = agc.a(cgw.class, agb.d);
+import javax.annotation.Nullable;
 
-   public cgw(blj<?> $$0, csy $$1) {
+public class cgw extends cgv implements bly, cgx {
+   private static final int i = 27;
+   private iq<cmr> j = iq.a(27, cmr.f);
+   @Nullable
+   private ahd k;
+   private long l;
+
+   public cgw(blt<? extends cgv> $$0, cti $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public boolean a(bkd $$0, float $$1) {
-      if (this.dM().B || this.dH()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
-      } else {
-         this.m(-this.P());
-         this.d(10);
-         this.bq();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dmz.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof cer && ((cer)$$0.d()).fT().d;
-         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.am();
-            }
-         } else {
-            this.a($$0);
-         }
-
-         return true;
-      }
-   }
-
-   boolean d(bkd $$0) {
-      return false;
-   }
-
-   public void b(cmc $$0) {
-      this.al();
-      if (this.dM().Y().b(csu.i)) {
-         cmh $$1 = new cmh($$0);
-         if (this.ae()) {
-            $$1.a(this.af());
-         }
-
-         this.b($$1);
-      }
+   public cgw(cti $$0, double $$1, double $$2, double $$3) {
+      super(blt.p, $$0);
+      this.a_($$1, $$2, $$3);
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
    }
 
    @Override
-   protected void c_() {
-      this.an.a(f, 0);
-      this.an.a(g, 1);
-      this.an.a(h, 0.0F);
+   protected float x() {
+      return 0.15F;
    }
 
-   public void d(int $$0) {
-      this.an.b(f, $$0);
+   @Override
+   protected int z() {
+      return 1;
    }
 
-   public void m(int $$0) {
-      this.an.b(g, $$0);
+   @Override
+   protected void b(sl $$0) {
+      super.b($$0);
+      this.c($$0);
    }
 
-   public void b(float $$0) {
-      this.an.b(h, $$0);
+   @Override
+   protected void a(sl $$0) {
+      super.a($$0);
+      this.b_($$0);
    }
 
-   public float N() {
-      return this.an.b(h);
-   }
-
-   public int O() {
-      return this.an.b(f);
-   }
-
-   public int P() {
-      return this.an.b(g);
-   }
-
-   protected void a(bkd $$0) {
+   @Override
+   public void a(bkn $$0) {
       this.b(this.ah_());
+      this.a($$0, this.dM(), this);
    }
 
-   abstract cmc ah_();
+   @Override
+   public void a(blp.c $$0) {
+      if (!this.dM().B && $$0.a()) {
+         bjr.a(this.dM(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public bjv a(cfb $$0, bju $$1) {
+      if (this.r($$0) && !$$0.fI()) {
+         return super.a($$0, $$1);
+      } else {
+         bjv $$2 = this.c_($$0);
+         if ($$2.a()) {
+            this.a(dnk.k, $$0);
+            cds.a($$0, true);
+         }
+
+         return $$2;
+      }
+   }
+
+   @Override
+   public void b(cfb $$0) {
+      $$0.a((bjy)this);
+      if (!$$0.dM().B) {
+         this.a(dnk.k, $$0);
+         cds.a($$0, true);
+      }
+   }
+
+   @Override
+   public cmm ah_() {
+      return switch (this.y()) {
+         case b -> cmu.nW;
+         case c -> cmu.nY;
+         case d -> cmu.oa;
+         case e -> cmu.oc;
+         case f -> cmu.oe;
+         case g -> cmu.og;
+         case h -> cmu.oi;
+         case i -> cmu.ok;
+         default -> cmu.nU;
+      };
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   public cmr a(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public cmr a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cmr b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cmr $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bmx a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cfb $$0) {
+      return this.g($$0);
+   }
+
+   @Nullable
+   @Override
+   public chu createMenu(int $$0, cfa $$1, cfb $$2) {
+      if (this.k != null && $$2.P_()) {
+         return null;
+      } else {
+         this.e($$1.m);
+         return cib.a($$0, $$1, this);
+      }
+   }
+
+   public void e(@Nullable cfb $$0) {
+      this.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public ahd C() {
+      return this.k;
+   }
+
+   @Override
+   public void a(@Nullable ahd $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public long D() {
+      return this.l;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public iq<cmr> E() {
+      return this.j;
+   }
+
+   @Override
+   public void G() {
+      this.j = iq.a(this.b(), cmr.f);
+   }
+
+   @Override
+   public void c(cfb $$0) {
+      this.dM().a(dnk.j, this.dk(), dnk.a.a($$0));
+   }
 }

@@ -1,12 +1,9 @@
-import com.google.gson.JsonObject;
-
-public class gfd implements aos<gfc> {
-   public gfc b(JsonObject $$0) {
-      return new gfc(gfc.a.a(ato.a($$0, "hat", "none")));
+public class gfd extends gfi {
+   public gfd(geg $$0) {
+      super($$0, new ahd("textures/atlas/mob_effects.png"), new ahd("mob_effects"));
    }
 
-   @Override
-   public String a() {
-      return "villager";
+   public gef a(bla $$0) {
+      return this.a(kd.d.b($$0));
    }
 }

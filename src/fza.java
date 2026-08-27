@@ -1,31 +1,23 @@
-public class fza extends fyu<bxy, fjy> {
-   private static final agt a = new agt("textures/entity/parrot/parrot_red_blue.png");
-   private static final agt i = new agt("textures/entity/parrot/parrot_blue.png");
-   private static final agt j = new agt("textures/entity/parrot/parrot_green.png");
-   private static final agt k = new agt("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final agt l = new agt("textures/entity/parrot/parrot_grey.png");
+public class fza extends fzl<bye, fke<bye>> {
+   private static final ahd a = new ahd("textures/entity/iron_golem/iron_golem.png");
 
-   public fza(fxo.a $$0) {
-      super($$0, new fjy($$0.a(flx.aD)), 0.3F);
+   public fza(fyf.a $$0) {
+      super($$0, new fke<>($$0.a(fmo.as)), 0.7F);
+      this.a(new gch(this));
+      this.a(new gci(this, $$0.c()));
    }
 
-   public agt a(bxy $$0) {
-      return a($$0.gm());
+   public ahd a(bye $$0) {
+      return a;
    }
 
-   public static agt a(bxy.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
-
-   public float a(bxy $$0, float $$1) {
-      float $$2 = aty.i($$1, $$0.bZ, $$0.bW);
-      float $$3 = aty.i($$1, $$0.bY, $$0.bX);
-      return (aty.a($$2) + 1.0F) * $$3;
+   protected void a(bye $$0, ept $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if (!((double)$$0.aQ.a() < 0.01)) {
+         float $$5 = 13.0F;
+         float $$6 = $$0.aQ.c($$4) + 6.0F;
+         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$7));
+      }
    }
 }

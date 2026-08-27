@@ -1,51 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duq extends dus {
-   public static final Codec<duq> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, duq::new));
+public class duq implements dtr {
+   public static final Codec<duq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               asq.b(ke.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               dvs.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               dyd.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               dxu.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bja.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bja.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, duq::new)
+   );
+   public final asq<cwj> b;
+   public final dvs c;
+   public final ih<dyd> d;
+   public final dxu e;
+   public final bja f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bja j;
+   public final float k;
 
-   public duq(biq $$0, biq $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected dut<?> a() {
-      return dut.i;
-   }
-
-   @Override
-   protected void a(cte $$0, dus.b $$1, auf $$2, duc $$3, int $$4, dus.a $$5, int $$6, int $$7, int $$8) {
-      hv $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
-      }
-   }
-
-   @Override
-   public int a(auf $$0, int $$1, duc $$2) {
-      return 4;
-   }
-
-   @Override
-   protected boolean b(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
-   }
-
-   @Override
-   protected boolean a(auf $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+   public duq(asq<cwj> $$0, dvs $$1, ih<dyd> $$2, dxu $$3, bja $$4, float $$5, int $$6, float $$7, bja $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

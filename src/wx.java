@@ -1,13 +1,8 @@
-public interface wx extends tz {
-   void a(xa var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(xb var1);
-
-   void a(wy var1);
-
-   void a(wz var1);
-
-   void a(xc var1);
-
-   void a(xd var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface wx {
 }

@@ -8,12 +8,12 @@ public class cr extends cv<cr.a> {
       return cr.a.a;
    }
 
-   public void a(amq $$0) {
+   public void a(ana $$0) {
       this.a($$0, $$0x -> true);
    }
 
    public static record a(Optional<bb> b) implements cv.a {
-      public static final Codec<cr.a> a = RecordCodecBuilder.create($$0 -> $$0.group(atg.a(bp.b, "player").forGetter(cr.a::a)).apply($$0, cr.a::new));
+      public static final Codec<cr.a> a = RecordCodecBuilder.create($$0 -> $$0.group(atq.a(bp.b, "player").forGetter(cr.a::a)).apply($$0, cr.a::new));
 
       public static an<cr.a> a(ci.a $$0) {
          return am.q.a(new cr.a(Optional.of(bp.a(bp.a.a().a($$0)))));
@@ -43,7 +43,7 @@ public class cr extends cv<cr.a> {
          return am.x.a(new cr.a(Optional.empty()));
       }
 
-      public static an<cr.a> a(cvz $$0, cmc $$1) {
+      public static an<cr.a> a(cwj $$0, cmm $$1) {
          return a(bp.a.a().a(bm.a.a().d(ca.a.a().a($$1))).b(ci.a.a().a(au.a.a().a($$0))));
       }
 

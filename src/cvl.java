@@ -1,35 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class cvl extends cvz implements cyr {
-   protected cvl(dio.d $$0) {
+public class cvl extends cws implements cwm {
+   public static final MapCodec<cvl> a = b(cvl::new);
+   private static final emf b = emc.a(cwj.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), cwj.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
+
+   @Override
+   public MapCodec<cvl> a() {
+      return a;
+   }
+
+   protected cvl(diz.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends cvl> a();
-
-   @Override
-   public dce b_(dip $$0) {
-      return dce.a;
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return b;
    }
 
    @Override
-   public boolean a(dip $$0, csy $$1, hv $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dgd $$5 = $$1.c_($$2);
-      return $$5 == null ? false : $$5.a_($$3, $$4);
+   protected boolean b(dja $$0, cso $$1, hx $$2) {
+      return $$0.a(cwl.dR) || super.b($$0, $$1, $$2);
    }
 
-   @Nullable
    @Override
-   public bjo b(dip $$0, csy $$1, hv $$2) {
-      dgd $$3 = $$1.c_($$2);
-      return $$3 instanceof bjo ? (bjo)$$3 : null;
+   public boolean b(ctl $$0, hx $$1, dja $$2) {
+      return $$0.b_($$1.c()).c();
    }
 
-   @Nullable
-   protected static <E extends dgd, A extends dgd> dge<A> a(dgf<A> $$0, dgf<E> $$1, dge<? super E> $$2) {
-      return $$1 == $$0 ? $$2 : null;
+   @Override
+   public boolean a(cti $$0, aup $$1, hx $$2, dja $$3) {
+      return (double)$$0.z.i() < 0.45;
+   }
+
+   @Override
+   public void a(amz $$0, aup $$1, hx $$2, dja $$3) {
+      dip.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
    }
 }

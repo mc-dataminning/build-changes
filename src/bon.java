@@ -1,34 +1,37 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bon extends bnm<blx> {
-   public static final int c = 100;
-   private final biw d;
-   private final arb e;
+public class bon {
+   public static bnx<ceo> a(float $$0, int $$1) {
+      return brj.a((Function<brj.b<ceo>, ? extends App<brj.c<ceo>, brm<ceo>>>)($$2 -> $$2.group($$2.c(bvh.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dm())) {
+                  return false;
+               } else {
+                  bxg $$6 = $$3.y();
+                  int $$7 = $$6.a(iz.a($$4.dm()));
+                  elm $$8 = null;
 
-   public bon(biw $$0, arb $$1) {
-      super(ImmutableMap.of(bux.n, buy.c, bux.S, buy.a), 100);
-      this.d = $$0;
-      this.e = $$1;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     elm $$10 = bxa.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(iz.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(iz.a(hx.a($$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   protected boolean a(amp $$0, blx $$1, long $$2) {
-      return !$$1.aC();
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   protected void b(amp $$0, blx $$1, long $$2) {
-      $$1.p(true);
-      $$1.b(bmh.g);
-   }
+                  if ($$8 != null) {
+                     $$2x.a(new bvk($$8, $$0, $$1));
+                  }
 
-   protected void c(amp $$0, blx $$1, long $$2) {
-      if ($$1.aC()) {
-         $$1.g($$1.dp().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, ard.g, 2.0F, 1.0F);
-      }
-
-      $$1.p(false);
-      $$1.b(bmh.a);
-      $$1.dO().b(bux.S);
-      $$1.dO().a(bux.R, this.d.a($$0.z));
+                  return true;
+               }
+            })));
    }
 }

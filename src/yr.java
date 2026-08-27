@@ -1,37 +1,18 @@
-public class yr implements wu<yo> {
-   public static final int a = 0;
-   public static final int b = 2;
-   public static final int c = 3;
-   public static final int d = 4;
-   public static final int e = 5;
-   private final int f;
-   private final int g;
-
-   public yr(blf $$0, int $$1) {
-      this.f = $$0.aj();
-      this.g = $$1;
-   }
-
-   public yr(ue $$0) {
-      this.f = $$0.n();
-      this.g = $$0.readUnsignedByte();
+public record yr() implements xd<yq> {
+   public yr(ug $$0) {
+      this();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.c(this.f);
-      $$0.k(this.g);
+   public void a(ug $$0) {
    }
 
-   public void a(yo $$0) {
+   public void a(yq $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.f;
-   }
-
-   public int d() {
-      return this.g;
+   @Override
+   public uf c() {
+      return uf.b;
    }
 }

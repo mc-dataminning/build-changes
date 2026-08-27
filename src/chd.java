@@ -1,40 +1,106 @@
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.stream.Collectors;
+public class chd extends cgu implements dhm {
+   private boolean i = true;
 
-public class chd {
-   public static final cgz a;
-   public static final cgz b;
-   public static final cgz c;
-   public static final cgz d;
-   public static final cha e;
-   public static final Codec<chb> f;
-   public static final chb g;
-   public static final chb h;
-
-   public static String a(chb $$0, chb $$1) {
-      return a(e, $$0, $$1);
+   public chd(blt<? extends chd> $$0, cti $$1) {
+      super($$0, $$1);
    }
 
-   public static String a(cha $$0, chb $$1, chb $$2) {
-      Set<agt> $$3 = $$0.b($$2);
-      Set<agt> $$4 = $$0.b($$1);
-      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(agt::toString).collect(Collectors.joining(", "));
+   public chd(cti $$0, double $$1, double $$2, double $$3) {
+      super(blt.Y, $$1, $$2, $$3, $$0);
    }
 
-   public static boolean a(chb $$0) {
-      return !$$0.a(g);
+   @Override
+   public cgt.a w() {
+      return cgt.a.f;
    }
 
-   static {
-      cha.a $$0 = new cha.a("main");
-      a = $$0.a("vanilla");
-      b = $$0.a("bundle");
-      d = $$0.a("trade_rebalance");
-      c = $$0.a("update_1_21");
-      e = $$0.a();
-      f = e.b();
-      g = chb.a(a);
-      h = g;
+   @Override
+   public dja y() {
+      return cwl.hc.o();
+   }
+
+   @Override
+   public int A() {
+      return 1;
+   }
+
+   @Override
+   public int b() {
+      return 5;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.H()) {
+         this.p($$4);
+      }
+   }
+
+   public boolean H() {
+      return this.i;
+   }
+
+   public void p(boolean $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public double I() {
+      return this.dr();
+   }
+
+   @Override
+   public double J() {
+      return this.dt() + 0.5;
+   }
+
+   @Override
+   public double K() {
+      return this.dx();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dM().B && this.bx() && this.H() && this.M()) {
+         this.e();
+      }
+   }
+
+   public boolean M() {
+      if (dhn.a(this.dM(), this)) {
+         return true;
+      } else {
+         for (cbo $$1 : this.dM().a(cbo.class, this.cH().c(0.25, 0.0, 0.25), bls.a)) {
+            if (dhn.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected cmm ah_() {
+      return cmu.nP;
+   }
+
+   @Override
+   protected void b(sl $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.i);
+   }
+
+   @Override
+   protected void a(sl $$0) {
+      super.a($$0);
+      this.i = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public chu a(int $$0, cfa $$1) {
+      return new cit($$0, $$1, this);
    }
 }

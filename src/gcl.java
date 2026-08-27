@@ -1,41 +1,52 @@
-import java.util.List;
+public class gcl<T extends byf> extends gcq<T, fji<T>> {
+   private final ftt a;
 
-public class gcl<T extends cdv, M extends flk<T>> extends gbz<T, M> {
-   private final agt a;
-   private final gcl.a<T> b;
-   private final gcl.b<T, M> c;
-
-   public gcl(fzj<T, M> $$0, agt $$1, gcl.a<T> $$2, gcl.b<T, M> $$3) {
+   public gcl(gaa<T, fji<T>> $$0, ftt $$1) {
       super($$0);
       this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
    }
 
-   public void a(epd $$0, fsi $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce()) {
-         this.a();
-         eph $$10 = $$1.getBuffer(fsq.j(this.a));
-         this.c().a($$0, $$10, $$2, fyp.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+   public void a(ept $$0, fsz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.o_()) {
+         eva $$10 = eva.N();
+         boolean $$11 = $$10.b($$3) && $$3.ce();
+         if (!$$3.ce() || $$11) {
+            dja $$12 = $$3.w().a();
+            int $$13 = fzg.c($$3, 0.0F);
+            ggg $$14 = this.a.a($$12);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            this.c().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+         }
       }
    }
 
-   private void a() {
-      List<fly> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
-
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends cdv> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends cdv, M extends fiy<T>> {
-      List<fly> getPartsToDraw(M var1);
+   private void a(ept $$0, fsz $$1, int $$2, boolean $$3, dja $$4, int $$5, ggg $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(fth.r(gee.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
 }

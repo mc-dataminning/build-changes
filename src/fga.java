@@ -1,154 +1,318 @@
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.google.common.collect.Maps;
+import com.google.common.hash.Hashing;
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public abstract class fga<B extends fns.a<?>> extends fcc {
-   private static final vb r = vb.c("gui.abuseReport.report_sent_msg");
-   private static final vb t = vb.c("gui.abuseReport.sending.title").a(n.r);
-   private static final vb u = vb.c("gui.abuseReport.sent.title").a(n.r);
-   private static final vb v = vb.c("gui.abuseReport.error.title").a(n.r);
-   private static final vb w = vb.c("gui.abuseReport.send.generic_error");
-   protected static final vb a = vb.c("gui.abuseReport.send");
-   protected static final vb b = vb.c("gui.abuseReport.observed_what");
-   protected static final vb c = vb.c("gui.abuseReport.select_reason");
-   private static final vb x = vb.c("gui.abuseReport.describe");
-   protected static final vb k = vb.c("gui.abuseReport.more_comments");
-   private static final vb y = vb.c("gui.abuseReport.comments");
-   protected static final int l = 20;
-   protected static final int m = 280;
-   protected static final int n = 8;
-   private static final Logger z = LogUtils.getLogger();
-   protected final fcc o;
-   protected final fnw p;
-   protected B q;
+public class fga extends fct {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 200;
+   private static final vd c = vd.c("pack.dropInfo").a(n.h);
+   private static final vd k = vd.c("pack.folderInfo");
+   private static final int l = 20;
+   private static final ahd m = new ahd("textures/misc/unknown_pack.png");
+   private final ffz n;
+   @Nullable
+   private fga.a o;
+   private long p;
+   private fgb q;
+   private fgb r;
+   private final Path t;
+   private ewy u;
+   private final Map<String, ahd> v = Maps.newHashMap();
 
-   protected fga(vb $$0, fcc $$1, fnw $$2, B $$3) {
-      super($$0);
-      this.o = $$1;
-      this.p = $$2;
-      this.q = $$3;
+   public fga(apn $$0, Consumer<apn> $$1, Path $$2, vd $$3) {
+      super($$3);
+      this.n = new ffz(this::D, this::a, $$0, $$1);
+      this.t = $$2;
+      this.o = fga.a.a($$2);
    }
 
-   protected ewz a(int $$0, int $$1, Consumer<String> $$2) {
-      AbuseReportLimits $$3 = this.p.a().b();
-      ewz $$4 = new ewz(this.i, 0, 0, $$0, $$1, x, y);
-      $$4.a(this.q.g());
-      $$4.a($$3.maxOpinionCommentsLength());
-      $$4.b($$2);
-      return $$4;
-   }
-
-   protected void l() {
-      this.q.a(this.p).ifLeft($$0 -> {
-         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
-         this.f.a(fbj.a(t, va.e, () -> {
-            this.f.a(this);
-            $$1.cancel(true);
-         }));
-         $$1.handleAsync(($$0x, $$1x) -> {
-            if ($$1x == null) {
-               this.C();
-            } else {
-               if ($$1x instanceof CancellationException) {
-                  return null;
-               }
-
-               this.a($$1x);
-            }
-
-            return null;
-         }, this.f);
-      }).ifRight($$0 -> this.a($$0.b()));
+   @Override
+   public void aE_() {
+      this.n.c();
+      this.C();
    }
 
    private void C() {
+      if (this.o != null) {
+         try {
+            this.o.close();
+            this.o = null;
+         } catch (Exception var2) {
+         }
+      }
+   }
+
+   @Override
+   protected void aN_() {
+      this.q = this.d(new fgb(this.f, this, 200, this.h, vd.c("pack.available.title")));
+      this.q.n(this.g / 2 - 4 - 200);
+      this.r = this.d(new fgb(this.f, this, 200, this.h, vd.c("pack.selected.title")));
+      this.r.n(this.g / 2 + 4);
+      this.d(ewy.a(vd.c("pack.openFolder"), $$0 -> ac.i().a(this.t.toUri())).a(this.g / 2 - 154, this.h - 48, 150, 20).a(eyj.a(k)).a());
+      this.u = this.d(ewy.a(vc.d, $$0 -> this.aE_()).a(this.g / 2 + 4, this.h - 48, 150, 20).a());
       this.E();
-      this.f.a(fbj.a(u, r, va.d, () -> this.f.a(null)));
-   }
-
-   private void a(Throwable $$0) {
-      z.error("Encountered error while sending abuse report", $$0);
-      vb $$2;
-      if ($$0.getCause() instanceof wb $$1) {
-         $$2 = $$1.b();
-      } else {
-         $$2 = w;
-      }
-
-      this.a($$2);
-   }
-
-   private void a(vb $$0) {
-      vb $$1 = $$0.f().a(n.m);
-      this.f.a(fbj.a(v, $$1, va.k, () -> this.f.a(this)));
-   }
-
-   void D() {
-      if (this.q.b()) {
-         this.p.a(this.q.e().b());
-      }
-   }
-
-   void E() {
-      this.p.a(null);
    }
 
    @Override
-   public void aF_() {
-      if (this.q.b()) {
-         this.f.a(new fga.a());
-      } else {
-         this.f.a(this.o);
+   public void d() {
+      if (this.o != null) {
+         try {
+            if (this.o.a()) {
+               this.p = 20L;
+            }
+         } catch (IOException var2) {
+            a.warn("Failed to poll for directory {} changes, stopping", this.t);
+            this.C();
+         }
+      }
+
+      if (this.p > 0L && --this.p == 0L) {
+         this.E();
       }
    }
 
-   @Override
-   public void aG_() {
+   private void D() {
+      this.a(this.r, this.n.b());
+      this.a(this.q, this.n.a());
+      this.u.j = !this.r.l().isEmpty();
+   }
+
+   private void a(fgb $$0, Stream<ffz.a> $$1) {
+      $$0.l().clear();
+      fgb.a $$2 = $$0.i();
+      String $$3 = $$2 == null ? "" : $$2.b();
+      $$0.a(null);
+      $$1.forEach($$2x -> {
+         fgb.a $$3x = new fgb.a(this.f, $$0, $$2x);
+         $$0.l().add($$3x);
+         if ($$2x.c().equals($$3)) {
+            $$0.a($$3x);
+         }
+      });
+   }
+
+   public void a(fgb $$0) {
+      fgb $$1 = this.r == $$0 ? this.q : this.r;
+      this.a(ewj.a($$1.j(), $$1, this));
+   }
+
+   public void n() {
+      this.r.a(null);
+      this.q.a(null);
+   }
+
+   private void E() {
+      this.n.d();
       this.D();
-      super.aG_();
+      this.p = 0L;
+      this.v.clear();
    }
 
-   class a extends fff {
-      private static final int c = 20;
-      private static final vb k = vb.c("gui.abuseReport.discard.title").a(n.r);
-      private static final vb l = vb.c("gui.abuseReport.discard.content");
-      private static final vb m = vb.c("gui.abuseReport.discard.return");
-      private static final vb n = vb.c("gui.abuseReport.discard.draft");
-      private static final vb o = vb.c("gui.abuseReport.discard.discard");
+   @Override
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      $$0.a(this.i, c, this.g / 2, 20, 16777215);
+   }
 
-      protected a() {
-         super(k, l, l);
+   @Override
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   protected static void a(eva $$0, List<Path> $$1, Path $$2) {
+      MutableBoolean $$3 = new MutableBoolean();
+      $$1.forEach($$2x -> {
+         try (Stream<Path> $$3x = Files.walk($$2x)) {
+            $$3x.forEach($$3xx -> {
+               try {
+                  ac.b($$2x.getParent(), $$2, $$3xx);
+               } catch (IOException var5) {
+                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
+                  $$3.setTrue();
+               }
+            });
+         } catch (IOException var8) {
+            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
+            $$3.setTrue();
+         }
+      });
+      if ($$3.isTrue()) {
+         ezf.c($$0, $$2.toString());
+      }
+   }
+
+   @Override
+   public void a(List<Path> $$0) {
+      String $$1 = a($$0).collect(Collectors.joining(", "));
+      this.f.a(new fbm($$1x -> {
+         if ($$1x) {
+            List<Path> $$2 = new ArrayList<>($$0.size());
+            Set<Path> $$3 = new HashSet<>($$0);
+            apm<Path> $$4 = new apm<Path>(this.f.ba()) {
+               protected Path a(Path $$0) {
+                  return $$0;
+               }
+
+               protected Path b(Path $$0) {
+                  return $$0;
+               }
+            };
+            List<eld> $$5 = new ArrayList<>();
+
+            for (Path $$6 : $$0) {
+               try {
+                  Path $$7 = $$4.a($$6, $$5);
+                  if ($$7 == null) {
+                     a.warn("Path {} does not seem like pack", $$6);
+                  } else {
+                     $$2.add($$7);
+                     $$3.remove($$7);
+                  }
+               } catch (IOException var10) {
+                  a.warn("Failed to check {} for packs", $$6, var10);
+               }
+            }
+
+            if (!$$5.isEmpty()) {
+               this.f.a(fci.b(() -> this.f.a(this)));
+               return;
+            }
+
+            if (!$$2.isEmpty()) {
+               a(this.f, $$2, this.t);
+               this.E();
+            }
+
+            if (!$$3.isEmpty()) {
+               String $$9 = a($$3).collect(Collectors.joining(", "));
+               this.f.a(new fbg(() -> this.f.a(this), vd.c("pack.dropRejected.title"), vd.a("pack.dropRejected.message", $$9)));
+               return;
+            }
+         }
+
+         this.f.a(this);
+      }, vd.c("pack.dropConfirm"), vd.b($$1)));
+   }
+
+   private static Stream<String> a(Collection<Path> $$0) {
+      return $$0.stream().map(Path::getFileName).map(Path::toString);
+   }
+
+   private ahd a(geg $$0, apk $$1) {
+      try {
+         ahd var9;
+         try (aoq $$2 = $$1.e()) {
+            apu<InputStream> $$3 = $$2.a("pack.png");
+            if ($$3 == null) {
+               return m;
+            }
+
+            String $$4 = $$1.f();
+            ahd $$5 = new ahd("minecraft", "pack/" + ac.a($$4, ahd::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
+
+            try (InputStream $$6 = $$3.get()) {
+               eou $$7 = eou.a($$6);
+               $$0.a($$5, new gds($$7));
+               var9 = $$5;
+            }
+         }
+
+         return var9;
+      } catch (Exception var14) {
+         a.warn("Failed to load icon from pack {}", $$1.f(), var14);
+         return m;
+      }
+   }
+
+   private ahd a(apk $$0) {
+      return this.v.computeIfAbsent($$0.f(), $$1 -> this.a(this.f.X(), $$0));
+   }
+
+   static class a implements AutoCloseable {
+      private final WatchService a;
+      private final Path b;
+
+      public a(Path $$0) throws IOException {
+         this.b = $$0;
+         this.a = $$0.getFileSystem().newWatchService();
+
+         try {
+            this.b($$0);
+
+            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
+               for (Path $$2 : $$1) {
+                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$2);
+                  }
+               }
+            }
+         } catch (Exception var7) {
+            this.a.close();
+            throw var7;
+         }
+      }
+
+      @Nullable
+      public static fga.a a(Path $$0) {
+         try {
+            return new fga.a($$0);
+         } catch (IOException var2) {
+            fga.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
+            return null;
+         }
+      }
+
+      private void b(Path $$0) throws IOException {
+         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
+      }
+
+      public boolean a() throws IOException {
+         boolean $$0 = false;
+
+         WatchKey $$1;
+         while (($$1 = this.a.poll()) != null) {
+            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
+               $$0 = true;
+               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
+                  Path $$4 = this.b.resolve((Path)$$3.context());
+                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$4);
+                  }
+               }
+            }
+
+            $$1.reset();
+         }
+
+         return $$0;
       }
 
       @Override
-      protected void a(int $$0) {
-         this.d(ewh.a(m, $$0x -> this.aF_()).a(this.g / 2 - 155, 100 + $$0).a());
-         this.d(ewh.a(n, $$0x -> {
-            fga.this.D();
-            this.f.a(fga.this.o);
-         }).a(this.g / 2 + 5, 100 + $$0).a());
-         this.d(ewh.a(o, $$0x -> {
-            fga.this.E();
-            this.f.a(fga.this.o);
-         }).a(this.g / 2 - 75, 130 + $$0).a());
-      }
-
-      @Override
-      public void aF_() {
-         this.f.a(fga.this);
-      }
-
-      @Override
-      public boolean aE_() {
-         return false;
-      }
-
-      @Override
-      protected void c(evw $$0) {
-         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
+      public void close() throws IOException {
+         this.a.close();
       }
    }
 }

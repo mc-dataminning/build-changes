@@ -1,40 +1,26 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class buo extends bur {
-   private final bmq a;
-   private blv b;
-   private int c;
+public class buo extends bty {
+   public static final float i = 0.001F;
+   protected final float j;
 
-   public buo(bmq $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(bsr.a.d));
+   public buo(bmo $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
+   public buo(bmo $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
+   }
+
+   @Nullable
    @Override
-   public boolean a() {
-      if (this.a.u() && !this.a.ge()) {
-         blv $$0 = this.a.R_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eh();
-            int $$1 = $$0.ei();
-            return $$1 != this.c && this.a(this.b, bwj.a) && this.a.a(this.b, $$0);
-         }
+   protected elm h() {
+      if (this.b.bc()) {
+         elm $$0 = bxa.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         return false;
+         return this.b.eg().i() >= this.j ? bxa.a(this.b, 10, 7) : super.h();
       }
-   }
-
-   @Override
-   public void c() {
-      this.e.h(this.b);
-      blv $$0 = this.a.R_();
-      if ($$0 != null) {
-         this.c = $$0.ei();
-      }
-
-      super.c();
    }
 }

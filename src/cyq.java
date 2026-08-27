@@ -1,132 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class cyq extends cut<dgy> implements dcz {
-   public static final MapCodec<cyq> b = b(cyq::new);
-   public static final djj c = czu.aE;
-   public static final djg d = djf.C;
-   protected static final elu e = cvz.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final vb f = vb.c("container.enderchest");
-
-   @Override
-   public MapCodec<cyq> a() {
-      return b;
-   }
-
-   protected cyq(dio.d $$0) {
-      super($$0, () -> dgf.d);
-      this.k(this.E.b().a(c, ia.c).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public cyg.c<? extends dgk> a(dip $$0, csy $$1, hv $$2, boolean $$3) {
-      return cyg.b::b;
-   }
-
-   @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return e;
-   }
-
-   @Override
-   public dce b_(dip $$0) {
-      return dce.b;
-   }
-
-   @Override
-   public dip a(coq $$0) {
-      edz $$1 = $$0.q().b_($$0.a());
-      return this.o().a(c, $$0.g().g()).a(d, Boolean.valueOf($$1.a() == eea.c));
-   }
-
-   @Override
-   public bjl a(dip $$0, csy $$1, hv $$2, cer $$3, bjk $$4, ekx $$5) {
-      ciw $$6 = $$3.gf();
-      dgd $$7 = $$1.c_($$2);
-      if ($$6 != null && $$7 instanceof dgy) {
-         hv $$8 = $$2.c();
-         if ($$1.a_($$8).g($$1, $$8)) {
-            return bjl.a($$1.B);
-         } else if ($$1.B) {
-            return bjl.a;
-         } else {
-            dgy $$9 = (dgy)$$7;
-            $$6.a($$9);
-            $$3.a(new bju(($$1x, $$2x, $$3x) -> chr.a($$1x, $$2x, $$6), f));
-            $$3.a(arm.aj);
-            cdi.a($$3, true);
-            return bjl.b;
-         }
+public class cyq {
+   public static <S extends dgo> cyq.c<S> a(
+      dgq<S> $$0, Function<dja, cyq.a> $$1, Function<dja, ic> $$2, dju $$3, dja $$4, ctj $$5, hx $$6, BiPredicate<ctj, hx> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return cyq.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return cyq.b::b;
       } else {
-         return bjl.a($$1.B);
+         cyq.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == cyq.a.a;
+         boolean $$11 = $$9 == cyq.a.b;
+         if ($$10) {
+            return new cyq.c.b<>($$8);
+         } else {
+            hx $$12 = $$6.a($$2.apply($$4));
+            dja $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               cyq.a $$14 = $$1.apply($$13);
+               if ($$14 != cyq.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return cyq.b::b;
+                  }
+
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new cyq.c.a<>($$16, $$17);
+                  }
+               }
+            }
+
+            return new cyq.c.b<>($$8);
+         }
       }
    }
 
-   @Override
-   public dgd a(hv $$0, dip $$1) {
-      return new dgy($$0, $$1);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Nullable
-   @Override
-   public <T extends dgd> dge<T> a(csy $$0, dip $$1, dgf<T> $$2) {
-      return $$0.B ? a($$2, dgf.d, dgy::a) : null;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Override
-   public void a(dip $$0, csy $$1, hv $$2, auf $$3) {
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         int $$5 = $$3.a(2) * 2 - 1;
-         int $$6 = $$3.a(2) * 2 - 1;
-         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
-         double $$8 = (double)((float)$$2.v() + $$3.i());
-         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
-         double $$10 = (double)($$3.i() * (float)$$5);
-         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
-         double $$12 = (double)($$3.i() * (float)$$6);
-         $$1.a(jv.Z, $$7, $$8, $$9, $$10, $$11, $$12);
-      }
-   }
+   public interface c<S> {
+      <T> T apply(cyq.b<? super S, T> var1);
 
-   @Override
-   public dip a(dip $$0, dcl $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
+      public static final class a<S> implements cyq.c<S> {
+         private final S a;
+         private final S b;
 
-   @Override
-   public dip a(dip $$0, dav $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
 
-   @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   public edz c_(dip $$0) {
-      return $$0.c(d) ? eea.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eea.c, eea.c.a($$3));
+         @Override
+         public <T> T apply(cyq.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      public static final class b<S> implements cyq.c<S> {
+         private final S a;
 
-   @Override
-   public boolean a(dip $$0, cse $$1, hv $$2, eep $$3) {
-      return false;
-   }
+         public b(S $$0) {
+            this.a = $$0;
+         }
 
-   @Override
-   public void a(dip $$0, amp $$1, hv $$2, auf $$3) {
-      dgd $$4 = $$1.c_($$2);
-      if ($$4 instanceof dgy) {
-         ((dgy)$$4).c();
+         @Override
+         public <T> T apply(cyq.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
       }
    }
 }

@@ -1,115 +1,149 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import java.util.List;
 import java.util.function.Predicate;
-import org.slf4j.Logger;
 
-public class drt extends drc<dtn> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final blj<?>[] b = new blj[]{blj.aK, blj.br, blj.br, blj.aT};
-   private static final dip c = cwb.nc.o();
+public class drt extends drn<dts> {
+   private static final ic[] a = ic.values();
 
-   public drt(Codec<dtn> $$0) {
+   public drt(Codec<dts> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<dtn> $$0) {
-      Predicate<dip> $$1 = drc.a(arr.bH);
-      hv $$2 = $$0.e();
-      auf $$3 = $$0.d();
-      ctt $$4 = $$0.b();
-      int $$5 = 3;
-      int $$6 = $$3.a(2) + 2;
-      int $$7 = -$$6 - 1;
-      int $$8 = $$6 + 1;
-      int $$9 = -1;
-      int $$10 = 4;
-      int $$11 = $$3.a(2) + 2;
-      int $$12 = -$$11 - 1;
-      int $$13 = $$11 + 1;
-      int $$14 = 0;
+   public boolean a(drp<dts> $$0) {
+      dts $$1 = $$0.f();
+      aup $$2 = $$0.d();
+      hx $$3 = $$0.e();
+      cud $$4 = $$0.b();
+      int $$5 = $$1.l;
+      int $$6 = $$1.n;
+      List<Pair<hx, Integer>> $$7 = Lists.newLinkedList();
+      int $$8 = $$1.j.a($$2);
+      dpi $$9 = new dpi(new dok($$4.C()));
+      edn $$10 = edn.a($$9, -4, 1.0);
+      List<hx> $$11 = Lists.newLinkedList();
+      double $$12 = (double)$$8 / (double)$$1.i.b();
+      doi $$13 = $$1.d;
+      dog $$14 = $$1.c;
+      doh $$15 = $$1.e;
+      double $$16 = 1.0 / Math.sqrt($$13.b);
+      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
+      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
+      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
+      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
+      boolean $$21 = (double)$$2.i() < $$15.b;
+      int $$22 = 0;
 
-      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
-         for (int $$16 = -1; $$16 <= 4; $$16++) {
-            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
-               hv $$18 = $$2.b($$15, $$16, $$17);
-               boolean $$19 = $$4.a_($$18).e();
-               if ($$16 == -1 && !$$19) {
-                  return false;
-               }
-
-               if ($$16 == 4 && !$$19) {
-                  return false;
-               }
-
-               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.t($$18) && $$4.t($$18.c())) {
-                  $$14++;
-               }
+      for (int $$23 = 0; $$23 < $$8; $$23++) {
+         int $$24 = $$1.i.a($$2);
+         int $$25 = $$1.i.a($$2);
+         int $$26 = $$1.i.a($$2);
+         hx $$27 = $$3.b($$24, $$25, $$26);
+         dja $$28 = $$4.a_($$27);
+         if ($$28.i() || $$28.a(asb.bJ)) {
+            if (++$$22 > $$1.p) {
+               return false;
             }
          }
+
+         $$7.add(Pair.of($$27, $$1.k.a($$2)));
       }
 
-      if ($$14 >= 1 && $$14 <= 5) {
-         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
-            for (int $$21 = 3; $$21 >= -1; $$21--) {
-               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
-                  hv $$23 = $$2.b($$20, $$21, $$22);
-                  dip $$24 = $$4.a_($$23);
-                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
-                     if ($$23.v() >= $$4.J_() && !$$4.a_($$23.d()).e()) {
-                        $$4.a($$23, c, 2);
-                     } else if ($$24.e() && !$$24.a(cwb.cv)) {
-                        if ($$21 == -1 && $$3.a(4) != 0) {
-                           this.a($$4, $$23, cwb.cn.o(), $$1);
-                        } else {
-                           this.a($$4, $$23, cwb.m.o(), $$1);
-                        }
-                     }
-                  } else if (!$$24.a(cwb.cv) && !$$24.a(cwb.ct)) {
-                     this.a($$4, $$23, c, $$1);
-                  }
-               }
-            }
-         }
-
-         for (int $$25 = 0; $$25 < 2; $$25++) {
-            for (int $$26 = 0; $$26 < 3; $$26++) {
-               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
-               int $$28 = $$2.v();
-               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
-               hv $$30 = new hv($$27, $$28, $$29);
-               if ($$4.t($$30)) {
-                  int $$31 = 0;
-
-                  for (ia $$32 : ia.c.a) {
-                     if ($$4.a_($$30.a($$32)).e()) {
-                        $$31++;
-                     }
-                  }
-
-                  if ($$31 == 1) {
-                     this.a($$4, $$30, dys.a($$4, $$30, cwb.cv.o()), $$1);
-                     bjs.a($$4, $$3, $$30, egc.d);
-                     break;
-                  }
-               }
-            }
-         }
-
-         this.a($$4, $$2, cwb.ct.o(), $$1);
-         if ($$4.c_($$2) instanceof dhq $$34) {
-            $$34.a(this.a($$3), $$3);
+      if ($$21) {
+         int $$29 = $$2.a(4);
+         int $$30 = $$8 * 2 + 1;
+         if ($$29 == 0) {
+            $$11.add($$3.b($$30, 7, 0));
+            $$11.add($$3.b($$30, 5, 0));
+            $$11.add($$3.b($$30, 1, 0));
+         } else if ($$29 == 1) {
+            $$11.add($$3.b(0, 7, $$30));
+            $$11.add($$3.b(0, 5, $$30));
+            $$11.add($$3.b(0, 1, $$30));
+         } else if ($$29 == 2) {
+            $$11.add($$3.b($$30, 7, $$30));
+            $$11.add($$3.b($$30, 5, $$30));
+            $$11.add($$3.b($$30, 1, $$30));
          } else {
-            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+            $$11.add($$3.b(0, 7, 0));
+            $$11.add($$3.b(0, 5, 0));
+            $$11.add($$3.b(0, 1, 0));
+         }
+      }
+
+      List<hx> $$31 = Lists.newArrayList();
+      Predicate<dja> $$32 = a($$1.c.g);
+
+      for (hx $$33 : hx.a($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
+         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
+         double $$35 = 0.0;
+         double $$36 = 0.0;
+
+         for (Pair<hx, Integer> $$37 : $$7) {
+            $$35 += aui.f($$33.j((jb)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
          }
 
-         return true;
-      } else {
-         return false;
-      }
-   }
+         for (hx $$38 : $$11) {
+            $$36 += aui.f($$33.j($$38) + (double)$$15.d) + $$34;
+         }
 
-   private blj<?> a(auf $$0) {
-      return ac.a(b, $$0);
+         if (!($$35 < $$19)) {
+            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
+               this.a($$4, $$33, cwl.a.o(), $$32);
+
+               for (ic $$39 : a) {
+                  hx $$40 = $$33.a($$39);
+                  eek $$41 = $$4.b_($$40);
+                  if (!$$41.c()) {
+                     $$4.a($$40, $$41.a(), 0);
+                  }
+               }
+            } else if ($$35 >= $$16) {
+               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
+            } else if ($$35 >= $$17) {
+               boolean $$42 = (double)$$2.i() < $$1.g;
+               if ($$42) {
+                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
+               } else {
+                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
+               }
+
+               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
+                  $$31.add($$33.i());
+               }
+            } else if ($$35 >= $$18) {
+               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
+            } else if ($$35 >= $$19) {
+               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
+            }
+         }
+      }
+
+      List<dja> $$43 = $$14.f;
+
+      for (hx $$44 : $$31) {
+         dja $$45 = ac.a($$43, $$2);
+
+         for (ic $$46 : a) {
+            if ($$45.b(djq.P)) {
+               $$45 = $$45.a(djq.P, $$46);
+            }
+
+            hx $$47 = $$44.a($$46);
+            dja $$48 = $$4.a_($$47);
+            if ($$45.b(djq.C)) {
+               $$45 = $$45.a(djq.C, Boolean.valueOf($$48.u().b()));
+            }
+
+            if (cwr.g($$48)) {
+               this.a($$4, $$47, $$45, $$32);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 }

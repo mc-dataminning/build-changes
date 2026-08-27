@@ -1,35 +1,85 @@
-import java.net.InetSocketAddress;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public interface foe {
-   String a();
+   static foe a(fok $$0, UserApiService $$1) {
+      return new foe.b($$0, $$1);
+   }
 
-   String b();
+   CompletableFuture<Unit> a(UUID var1, fom var2, AbuseReport var3);
 
-   int c();
+   boolean a();
 
-   InetSocketAddress d();
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
+   }
 
-   static foe a(final InetSocketAddress $$0) {
-      return new foe() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
+   public static class a extends wd {
+      public a(vd $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
+   }
 
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
+   public static record b(fok a, UserApiService b) implements foe {
+      private static final vd c = vd.c("gui.abuseReport.send.service_unavailable");
+      private static final vd d = vd.c("gui.abuseReport.send.http_error");
+      private static final vd e = vd.c("gui.abuseReport.send.json_error");
 
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fom $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               vd $$5 = this.a(var7);
+               throw new CompletionException(new foe.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               vd $$7 = this.a(var8);
+               throw new CompletionException(new foe.a($$7, var8));
+            }
+         }, ac.g());
+      }
+
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private vd a(MinecraftClientHttpException $$0) {
+         return vd.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private vd a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fok c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
+      }
    }
 }

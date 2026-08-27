@@ -1,222 +1,132 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fcs extends fcc implements fmo.a {
-   private static final agt p = new agt("textures/gui/advancements/window.png");
-   public static final int a = 252;
-   public static final int b = 140;
-   private static final int q = 9;
-   private static final int r = 18;
-   public static final int c = 234;
-   public static final int k = 113;
-   private static final int t = 8;
-   private static final int u = 6;
-   public static final int l = 16;
-   public static final int m = 16;
-   public static final int n = 14;
-   public static final int o = 7;
-   private static final double v = 16.0;
-   private static final vb w = vb.c("advancements.sad_label");
-   private static final vb x = vb.c("advancements.empty");
-   private static final vb y = vb.c("gui.advancements");
-   private final fmo z;
-   private final Map<af, fco> A = Maps.newLinkedHashMap();
-   @Nullable
-   private fco B;
-   private boolean C;
+public class fcs extends fct {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final vd c = vd.c("recover_world.title").a(n.r);
+   private static final vd k = vd.c("recover_world.bug_tracker");
+   private static final vd l = vd.c("recover_world.restore");
+   private static final vd m = vd.c("recover_world.no_fallback");
+   private static final vd n = vd.c("recover_world.done.title");
+   private static final vd o = vd.c("recover_world.done.success");
+   private static final vd p = vd.c("recover_world.done.failed");
+   private static final vd q = vd.c("recover_world.issue.none").a(n.k);
+   private static final vd r = vd.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer t;
+   private final fam u = fam.d().a(10);
+   private final vd v;
+   private final exs w;
+   private final exs x;
+   private final egf.c y;
 
-   public fcs(fmo $$0) {
-      super(euc.a);
-      this.z = $$0;
+   public fcs(eva $$0, BooleanConsumer $$1, egf.c $$2) {
+      super(c);
+      this.t = $$1;
+      this.v = vd.a("recover_world.message", vd.b($$2.d()).a(n.h));
+      this.w = new exs(this.v, $$0.h);
+      this.y = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      vd $$5 = vd.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.x = new exs($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.u.c().b();
+      this.u.a(new eyf(this.e, $$0.h));
+      this.u.a(this.w.b(true));
+      this.u.a(this.x);
+      fam $$7 = fam.e().a(5);
+      $$7.a(ewy.a(k, fbl.b(this, "https://aka.ms/snapshotbugs?ref=game")).b(120, 20).a());
+      $$7.a(ewy.a(l, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : eyj.a(m)).a()).j = $$6;
+      this.u.a($$7);
+      this.u.a(ewy.a(vc.k, $$0x -> this.aE_()).b(120, 20).a());
+      this.u.a(this::d);
    }
 
-   @Override
-   protected void aP_() {
-      this.A.clear();
-      this.B = null;
-      this.z.a(this);
-      if (this.B == null && !this.A.isEmpty()) {
-         fco $$0 = this.A.values().iterator().next();
-         this.z.a($$0.c().b(), true);
-      } else {
-         this.z.a(this.B == null ? null : this.B.c().b(), true);
-      }
-   }
-
-   @Override
-   public void aG_() {
-      this.z.a(null);
-      fmu $$0 = this.f.I();
-      if ($$0 != null) {
-         $$0.b(aef.a());
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         int $$3 = (this.g - 252) / 2;
-         int $$4 = (this.h - 140) / 2;
-
-         for (fco $$5 : this.A.values()) {
-            if ($$5.a($$3, $$4, $$0, $$1)) {
-               this.z.a($$5.c().b(), true);
-               break;
-            }
+   private void a(eva $$0) {
+      Exception $$1 = this.a(this.y, false);
+      Exception $$2 = this.a(this.y, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fbz(vd.c("recover_world.restoring")));
+         fhl.a(this.y);
+         if (this.y.l()) {
+            $$0.a(new fbm(this.t, n, o, vc.j, vc.k));
+         } else {
+            $$0.a(new fbg(() -> this.t.accept(false), n, p));
          }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.f.m.T.a($$0, $$1)) {
-         this.f.a(null);
-         this.f.n.i();
-         return true;
       } else {
-         return super.a($$0, $$1, $$2);
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fbg(() -> this.t.accept(false), n, p));
       }
    }
 
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      int $$4 = (this.g - 252) / 2;
-      int $$5 = (this.h - 140) / 2;
-      this.b($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2, $$4, $$5);
-      this.a($$0, $$4, $$5);
-      this.b($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if ($$2 != 0) {
-         this.C = false;
-         return false;
+   private vd a(egf.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return vd.i();
       } else {
-         if (!this.C) {
-            this.C = true;
-         } else if (this.B != null) {
-            this.B.a($$3, $$4);
+         vr $$3 = vd.i();
+         Instant $$4 = $$0.a($$1);
+         vr $$5 = $$4 != null ? vd.b(fhu.a.format($$4)) : vd.c("recover_world.state_entry.unknown");
+         $$3.b(vd.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(q);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(r);
+         } else if ($$2 instanceof tc) {
+            $$3.b(vd.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(vd.b($$2.toString()).a(n.m));
          }
 
-         return true;
+         return $$3;
       }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.B != null) {
-         this.B.a($$2 * 16.0, $$3 * 16.0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(evw $$0, int $$1, int $$2, int $$3, int $$4) {
-      fco $$5 = this.B;
-      if ($$5 == null) {
-         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
-         int $$6 = $$3 + 9 + 117;
-         $$0.a(this.i, x, $$6, $$4 + 18 + 56 - 9 / 2, -1);
-         $$0.a(this.i, w, $$6, $$4 + 18 + 113 - 9, -1);
-      } else {
-         $$5.b($$0, $$3 + 9, $$4 + 18);
-      }
-   }
-
-   public void a(evw $$0, int $$1, int $$2) {
-      RenderSystem.enableBlend();
-      $$0.a(p, $$1, $$2, 0, 0, 252, 140);
-      if (this.A.size() > 1) {
-         for (fco $$3 : this.A.values()) {
-            $$3.a($$0, $$1, $$2, $$3 == this.B);
-         }
-
-         for (fco $$4 : this.A.values()) {
-            $$4.a($$0, $$1, $$2);
-         }
-      }
-
-      $$0.a(this.i, y, $$1 + 8, $$2 + 6, 4210752, false);
-   }
-
-   private void b(evw $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.B != null) {
-         $$0.c().a();
-         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
-         RenderSystem.enableDepthTest();
-         this.B.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
-         RenderSystem.disableDepthTest();
-         $$0.c().b();
-      }
-
-      if (this.A.size() > 1) {
-         for (fco $$5 : this.A.values()) {
-            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
-               $$0.a(this.i, $$5.d(), $$1, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void a(ag $$0) {
-      fco $$1 = fco.a(this.f, this, this.A.size(), $$0);
-      if ($$1 != null) {
-         this.A.put($$0.b(), $$1);
-      }
-   }
-
-   @Override
-   public void b(ag $$0) {
-   }
-
-   @Override
-   public void c(ag $$0) {
-      fco $$1 = this.f($$0);
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
-   }
-
-   @Override
-   public void d(ag $$0) {
-   }
-
-   @Override
-   public void a(ag $$0, ah $$1) {
-      fcq $$2 = this.e($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public void a(@Nullable af $$0) {
-      this.B = this.A.get($$0);
-   }
-
-   @Override
-   public void a() {
-      this.A.clear();
-      this.B = null;
    }
 
    @Nullable
-   public fcq e(ag $$0) {
-      fco $$1 = this.f($$0);
-      return $$1 == null ? null : $$1.a($$0.b());
+   private Exception a(egf.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.f());
+         } else {
+            $$0.a($$0.g());
+         }
+
+         return null;
+      } catch (sw | tc | IOException var4) {
+         return var4;
+      }
    }
 
-   @Nullable
-   private fco f(ag $$0) {
-      ag $$1 = $$0.d();
-      return this.A.get($$1.b());
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.x.c(this.g - 50);
+      this.w.c(this.g - 50);
+      this.u.a();
+      fag.a(this.u, this.F());
+   }
+
+   @Override
+   public vd h() {
+      return vc.a(super.h(), this.v);
+   }
+
+   @Override
+   public void aE_() {
+      this.t.accept(false);
    }
 }

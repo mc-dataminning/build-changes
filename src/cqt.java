@@ -1,104 +1,20 @@
-public enum cqt {
-   a {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0 instanceof cjr;
-      }
-   },
-   b {
-      @Override
-      public boolean a(cmc $$0) {
-         if ($$0 instanceof cjr $$1 && $$1.g() == blk.c) {
-            return true;
-         }
+public class cqt extends crc {
+   public cqt(crc.a $$0, blu... $$1) {
+      super($$0, crd.k, $$1);
+   }
 
-         return false;
-      }
-   },
-   c {
-      @Override
-      public boolean a(cmc $$0) {
-         if ($$0 instanceof cjr $$1 && $$1.g() == blk.d) {
-            return true;
-         }
+   @Override
+   public int a(int $$0) {
+      return 1 + ($$0 - 1) * 10;
+   }
 
-         return false;
-      }
-   },
-   d {
-      @Override
-      public boolean a(cmc $$0) {
-         if ($$0 instanceof cjr $$1 && $$1.g() == blk.e) {
-            return true;
-         }
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 15;
+   }
 
-         return false;
-      }
-   },
-   e {
-      @Override
-      public boolean a(cmc $$0) {
-         if ($$0 instanceof cjr $$1 && $$1.g() == blk.f) {
-            return true;
-         }
-
-         return false;
-      }
-   },
-   f {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0 instanceof cns;
-      }
-   },
-   g {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0 instanceof ckr;
-      }
-   },
-   h {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0 instanceof cln;
-      }
-   },
-   i {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0 instanceof cnz;
-      }
-   },
-   j {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0.o();
-      }
-   },
-   k {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0 instanceof ckf;
-      }
-   },
-   l {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0 instanceof cli || cvz.a($$0) instanceof cli;
-      }
-   },
-   m {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0 instanceof ckp;
-      }
-   },
-   n {
-      @Override
-      public boolean a(cmc $$0) {
-         return $$0 instanceof cob || cvz.a($$0) instanceof cob || j.a($$0);
-      }
-   };
-
-   public abstract boolean a(cmc var1);
+   @Override
+   public int a() {
+      return 5;
+   }
 }

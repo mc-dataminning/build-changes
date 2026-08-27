@@ -1,39 +1,44 @@
-import javax.annotation.Nullable;
+public record afg(int a, String b, int c, aff d) implements xd<afh> {
+   private static final int e = 255;
 
-public record afg(int a, @Nullable afk b) implements wu<aff> {
-   private static final int c = 1048576;
-
-   public static afg b(ue $$0) {
-      int $$1 = $$0.n();
-      return new afg($$1, a($$1, $$0));
+   @Deprecated
+   public afg(int a, String b, int c, aff d) {
+      this.a = a;
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   private static afk a(int $$0, ue $$1) {
-      return c($$1);
-   }
-
-   private static afk c(ue $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return afm.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
+   public afg(ug $$0) {
+      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), aff.a($$0.n()));
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
       $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.c(this.d.a());
    }
 
-   public void a(aff $$0) {
+   public void a(afh $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public afk d() {
+   @Override
+   public uf c() {
+      return this.d.b();
+   }
+
+   public String d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public aff f() {
+      return this.d;
    }
 }

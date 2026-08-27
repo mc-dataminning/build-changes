@@ -1,11 +1,11 @@
-public class crq extends cqs {
-   public crq(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.n, $$1);
+public class crq extends crc {
+   public crq(crc.a $$0, blu... $$1) {
+      super($$0, crd.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 12 + ($$0 - 1) * 20;
    }
 
    @Override
@@ -14,12 +14,7 @@ public class crq extends cqs {
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
+   public int a() {
+      return 3;
    }
 }

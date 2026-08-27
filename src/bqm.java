@@ -1,34 +1,22 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bqm {
-   public static bnn<blv> a(cvz $$0) {
-      return bqz.a(
-         (Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$1 -> $$1.group($$1.c(bux.o), $$1.b(bux.m), $$1.b(bux.X))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.aZ() && $$3x.aC()) {
-                        hv $$5 = $$3x.dm().d();
-
-                        for (ia $$6 : ia.c.a) {
-                           hv $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).k($$2x, $$7).a(ia.b).c() && $$2x.b_($$7).b(eea.c)) {
-                              hv $$8 = $$7.c();
-                              if ($$2x.a_($$8).i()) {
-                                 dip $$9 = $$0.o();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(dmz.i, $$8, dmz.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, arc.jl, ard.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
-                        }
-
+   public static bnx<bmf> a() {
+      return brj.a(
+         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$0 -> $$0.group($$0.b(bvh.aa))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof bmf $$1xx ? $$1xx : null)
+                           .filter(bmf::ew)
+                           .filter($$1xx -> $$1xx.ai() != blt.bv || $$2.Z().b(cte.N))
+                           .ifPresent($$1xx -> $$1.b());
                         return true;
-                     } else {
-                        return false;
                      }
-                  }))
+               ))
       );
    }
 }

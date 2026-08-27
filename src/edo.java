@@ -1,154 +1,217 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public class edo implements edr {
-   public static final int b = 1;
-   protected final cta c;
-   @Nullable
-   private final edq<?, ?> a;
-   @Nullable
-   private final edq<?, ?> d;
+public class edo {
+   private static final int a = 33554432;
+   private final edl[] b;
+   private final int c;
+   private final DoubleList d;
+   private final double e;
+   private final double f;
+   private final double g;
 
-   public edo(dkz $$0, boolean $$1, boolean $$2) {
-      this.c = $$0.q();
-      this.a = $$1 ? new edh($$0) : null;
-      this.d = $$2 ? new eds($$0) : null;
+   @Deprecated
+   public static edo a(aup $$0, IntStream $$1) {
+      return new edo($$0, a(new IntRBTreeSet($$1.boxed().collect(ImmutableList.toImmutableList()))), false);
    }
 
-   @Override
-   public void a(hv $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0);
-      }
+   @Deprecated
+   public static edo a(aup $$0, int $$1, DoubleList $$2) {
+      return new edo($$0, Pair.of($$1, $$2), false);
    }
 
-   @Override
-   public boolean L_() {
-      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
+   public static edo b(aup $$0, IntStream $$1) {
+      return a($$0, $$1.boxed().collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.d != null) {
-         $$0 += this.d.a();
-      }
-
-      return $$0;
+   public static edo a(aup $$0, List<Integer> $$1) {
+      return new edo($$0, a(new IntRBTreeSet($$1)), true);
    }
 
-   @Override
-   public void a(ix $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
+   public static edo a(aup $$0, int $$1, double $$2, double... $$3) {
+      DoubleArrayList $$4 = new DoubleArrayList($$3);
+      $$4.add(0, $$2);
+      return new edo($$0, Pair.of($$1, $$4), true);
    }
 
-   @Override
-   public void a(csf $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
+   public static edo b(aup $$0, int $$1, DoubleList $$2) {
+      return new edo($$0, Pair.of($$1, $$2), true);
    }
 
-   @Override
-   public void b(csf $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public edm a(cth $$0) {
-      if ($$0 == cth.b) {
-         return (edm)(this.a == null ? edm.a.a : this.a);
+   private static Pair<Integer, DoubleList> a(IntSortedSet $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
       } else {
-         return (edm)(this.d == null ? edm.a.a : this.d);
-      }
-   }
+         int $$1 = -$$0.firstInt();
+         int $$2 = $$0.lastInt();
+         int $$3 = $$1 + $$2 + 1;
+         if ($$3 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            DoubleList $$4 = new DoubleArrayList(new double[$$3]);
+            IntBidirectionalIterator $$5 = $$0.iterator();
 
-   public String a(cth $$0, ix $$1) {
-      if ($$0 == cth.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
+            while ($$5.hasNext()) {
+               int $$6 = $$5.nextInt();
+               $$4.set($$6 + $$1, 1.0);
+            }
+
+            return Pair.of(-$$1, $$4);
          }
-      } else if (this.d != null) {
-         return this.d.b($$1.s());
       }
-
-      return "n/a";
    }
 
-   public edn.b b(cth $$0, ix $$1) {
-      if ($$0 == cth.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
+   protected edo(aup $$0, Pair<Integer, DoubleList> $$1, boolean $$2) {
+      this.c = (Integer)$$1.getFirst();
+      this.d = (DoubleList)$$1.getSecond();
+      int $$3 = this.d.size();
+      int $$4 = -this.c;
+      this.b = new edl[$$3];
+      if ($$2) {
+         dow $$5 = $$0.e();
+
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            if (this.d.getDouble($$6) != 0.0) {
+               int $$7 = this.c + $$6;
+               this.b[$$6] = new edl($$5.a("octave_" + $$7));
+            }
          }
-      } else if (this.d != null) {
-         return this.d.c($$1.s());
-      }
-
-      return edn.b.a;
-   }
-
-   public void a(cth $$0, ix $$1, @Nullable dkr $$2) {
-      if ($$0 == cth.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
+      } else {
+         edl $$8 = new edl($$0);
+         if ($$4 >= 0 && $$4 < $$3) {
+            double $$9 = this.d.getDouble($$4);
+            if ($$9 != 0.0) {
+               this.b[$$4] = $$8;
+            }
          }
-      } else if (this.d != null) {
-         this.d.a($$1.s(), $$2);
+
+         for (int $$10 = $$4 - 1; $$10 >= 0; $$10--) {
+            if ($$10 < $$3) {
+               double $$11 = this.d.getDouble($$10);
+               if ($$11 != 0.0) {
+                  this.b[$$10] = new edl($$0);
+               } else {
+                  a($$0);
+               }
+            } else {
+               a($$0);
+            }
+         }
+
+         if (Arrays.stream(this.b).filter(Objects::nonNull).count() != this.d.stream().filter($$0x -> $$0x != 0.0).count()) {
+            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
+         }
+
+         if ($$4 < $$3 - 1) {
+            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
+         }
       }
+
+      this.f = Math.pow(2.0, (double)(-$$4));
+      this.e = Math.pow(2.0, (double)($$3 - 1)) / (Math.pow(2.0, (double)$$3) - 1.0);
+      this.g = this.c(2.0);
    }
 
-   public void b(csf $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
+   protected double a() {
+      return this.g;
+   }
+
+   private static void a(aup $$0) {
+      $$0.b(262);
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0, false);
+   }
+
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4, boolean $$5) {
+      double $$6 = 0.0;
+      double $$7 = this.f;
+      double $$8 = this.e;
+
+      for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+         edl $$10 = this.b[$$9];
+         if ($$10 != null) {
+            double $$11 = $$10.a(b($$0 * $$7), $$5 ? -$$10.b : b($$1 * $$7), b($$2 * $$7), $$3 * $$7, $$4 * $$7);
+            $$6 += this.d.getDouble($$9) * $$11 * $$8;
+         }
+
+         $$7 *= 2.0;
+         $$8 /= 2.0;
       }
 
-      if (this.d != null) {
-         this.d.b($$0, $$1);
+      return $$6;
+   }
+
+   public double a(double $$0) {
+      return this.c($$0 + 2.0);
+   }
+
+   private double c(double $$0) {
+      double $$1 = 0.0;
+      double $$2 = this.e;
+
+      for (int $$3 = 0; $$3 < this.b.length; $$3++) {
+         edl $$4 = this.b[$$3];
+         if ($$4 != null) {
+            $$1 += this.d.getDouble($$3) * $$0 * $$2;
+         }
+
+         $$2 /= 2.0;
       }
+
+      return $$1;
    }
 
-   public int a(hv $$0, int $$1) {
-      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
+   @Nullable
+   public edl a(int $$0) {
+      return this.b[this.b.length - 1 - $$0];
    }
 
-   public boolean a(ix $$0) {
-      long $$1 = $$0.s();
-      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
+   public static double b(double $$0) {
+      return $$0 - (double)aui.b($$0 / 3.3554432E7 + 0.5) * 3.3554432E7;
    }
 
-   public int c() {
-      return this.c.al() + 2;
+   protected int b() {
+      return this.c;
    }
 
-   public int d() {
-      return this.c.am() - 1;
+   protected DoubleList c() {
+      return this.d;
    }
 
-   public int e() {
-      return this.d() + this.c();
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("PerlinNoise{");
+      List<String> $$1 = this.d.stream().map($$0x -> String.format(Locale.ROOT, "%.2f", $$0x)).toList();
+      $$0.append("first octave: ").append(this.c).append(", amplitudes: ").append($$1).append(", noise levels: [");
+
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         $$0.append($$2).append(": ");
+         edl $$3 = this.b[$$2];
+         if ($$3 == null) {
+            $$0.append("null");
+         } else {
+            $$3.a($$0);
+         }
+
+         $$0.append(", ");
+      }
+
+      $$0.append("]");
+      $$0.append("}");
    }
 }

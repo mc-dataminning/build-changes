@@ -1,30 +1,15 @@
-public class cqo extends cqs {
-   public cqo(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.l, $$1);
+public class cqo extends cpe {
+   public cqo(String $$0, cpk $$1, cps $$2, cmr $$3, float $$4, int $$5) {
+      super(cqa.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 25;
+   public cmr g() {
+      return new cmr(cwl.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   @Override
-   public boolean a(cmh $$0) {
-      return !$$0.a(cmk.vl) && super.a($$0);
+   public cpz<?> ar_() {
+      return cpz.r;
    }
 }

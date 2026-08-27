@@ -1,84 +1,67 @@
-public class flj<T extends blf> extends fjh<T> implements fjg, fli {
-   private final fly b;
-   private final fly f;
-   private final fly g;
-   private final fly h;
-   private final fly i;
-   private final fly j;
-   protected final fly a;
+import java.util.Arrays;
 
-   public flj(fly $$0) {
+public class flj<T extends blp> extends fjy<T> {
+   private static final int a = 7;
+   private final fmp b;
+   private final fmp[] f = new fmp[7];
+   private final fmp[] g = new fmp[3];
+   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
+   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+
+   public flj(fmp $$0) {
       this.b = $$0;
-      this.f = $$0.b("head");
-      this.g = this.f.b("hat");
-      this.h = this.g.b("hat_rim");
-      this.a = this.f.b("nose");
-      this.i = $$0.b("right_leg");
-      this.j = $$0.b("left_leg");
+      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
+      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fmg b() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      float $$2 = 0.5F;
-      fmh $$3 = $$1.a("head", fmd.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fma.a);
-      fmh $$4 = $$3.a("hat", fmd.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fmc(0.51F)), fma.a);
-      $$4.a("hat_rim", fmd.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fma.b((float) (-Math.PI / 2), 0.0F, 0.0F));
-      $$3.a("nose", fmd.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), fma.a(0.0F, -2.0F, 0.0F));
-      fmh $$5 = $$1.a("body", fmd.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), fma.a);
-      $$5.a("jacket", fmd.c().a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fmc(0.5F)), fma.a);
-      $$1.a(
-         "arms",
-         fmd.c()
-            .a(44, 22)
-            .a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F)
-            .a(44, 22)
-            .a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, true)
-            .a(40, 38)
-            .a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
-         fma.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
-      );
-      $$1.a("right_leg", fmd.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fma.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fmd.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fma.a(2.0F, 12.0F, 0.0F));
-      return $$0;
+   private static String a(int $$0) {
+      return "layer" + $$0;
+   }
+
+   private static String b(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      float[] $$2 = new float[7];
+      float $$3 = -3.5F;
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         $$1.a(
+            b($$4),
+            fmu.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
+            fmr.a(0.0F, (float)(24 - h[$$4][1]), $$3)
+         );
+         $$2[$$4] = $$3;
+         if ($$4 < 6) {
+            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
+         }
+      }
+
+      $$1.a(a(0), fmu.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), fmr.a(0.0F, 16.0F, $$2[2]));
+      $$1.a(a(1), fmu.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), fmr.a(0.0F, 20.0F, $$2[4]));
+      $$1.a(a(2), fmu.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), fmr.a(0.0F, 19.0F, $$2[1]));
+      return fmv.a($$0, 64, 32);
    }
 
    @Override
-   public fly a() {
+   public fmp a() {
       return this.b;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      boolean $$6 = false;
-      if ($$0 instanceof cdz) {
-         $$6 = ((cdz)$$0).u() > 0;
+      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
+         this.f[$$6].f = aui.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
+         this.f[$$6].b = aui.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
       }
 
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
-      if ($$6) {
-         this.f.g = 0.3F * aty.a(0.45F * $$3);
-         this.f.e = 0.4F;
-      } else {
-         this.f.g = 0.0F;
-      }
-
-      this.i.e = aty.b($$1 * 0.6662F) * 1.4F * $$2 * 0.5F;
-      this.j.e = aty.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2 * 0.5F;
-      this.i.f = 0.0F;
-      this.j.f = 0.0F;
-   }
-
-   @Override
-   public fly d() {
-      return this.f;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.f.k = $$0;
-      this.g.k = $$0;
-      this.h.k = $$0;
+      this.g[0].f = this.f[2].f;
+      this.g[1].f = this.f[4].f;
+      this.g[1].b = this.f[4].b;
+      this.g[2].f = this.f[1].f;
+      this.g[2].b = this.f[1].b;
    }
 }

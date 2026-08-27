@@ -1,31 +1,18 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record ekd(ege.b c) implements ekg {
-   public static final Codec<ekd> a = RecordCodecBuilder.create($$0 -> $$0.group(ege.b.e.fieldOf("target").forGetter(ekd::c)).apply($$0, ekd::new));
-   public static final Codec<ekd> b = ege.b.e.xmap(ekd::new, ekd::c);
+public class ekd {
+   private static final Codec<ekc> d = kd.J.q().dispatch(ekc::a, ekb::a);
+   public static final Codec<ekc> a = atq.a(
+      (Supplier<Codec<ekc>>)(() -> Codec.either(eka.c, d)
+            .xmap($$0 -> (ekc)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof eka $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final ekb b = a("storage", eke.a);
+   public static final ekb c = a("context", eka.b);
 
-   public static ekg a(ege.b $$0) {
-      return new ekd($$0);
-   }
-
-   @Override
-   public ekf a() {
-      return ekh.c;
-   }
-
-   @Nullable
-   @Override
-   public String a(ege $$0) {
-      blf $$1 = $$0.c(this.c.a());
-      return $$1 != null ? $$1.cy() : null;
-   }
-
-   @Override
-   public Set<eim<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   private static ekb a(String $$0, Codec<? extends ekc> $$1) {
+      return it.a(kd.J, new ahd($$0), new ekb($$1));
    }
 }

@@ -1,94 +1,112 @@
-import java.util.Arrays;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class fie<T extends blf> extends fjh<T> {
-   private final fly a;
-   private final fly[] b;
-   private final fly f;
+public class fie implements fhz, fia {
+   private static final ahd a = new ahd("spectator/teleport_to_team");
+   private static final vd b = vd.c("spectatorMenu.team_teleport");
+   private static final vd c = vd.c("spectatorMenu.team_teleport.prompt");
+   private final List<fia> d;
 
-   public fie(fly $$0) {
-      this.a = $$0;
-      this.f = $$0.b("head");
-      this.b = new fly[12];
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+   public fie() {
+      eva $$0 = eva.N();
+      this.d = a($$0, $$0.r.K());
    }
 
-   private static String a(int $$0) {
-      return "part" + $$0;
-   }
-
-   public static fme b() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      $$1.a("head", fmd.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fma.a);
-      float $$2 = 0.0F;
-      fmd $$3 = fmd.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = aty.b($$2) * 9.0F;
-         float $$6 = -2.0F + aty.b((float)($$4 * 2) * 0.25F);
-         float $$7 = aty.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, fma.a($$5, $$6, $$7));
-         $$2++;
-      }
-
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = aty.b($$2) * 7.0F;
-         float $$10 = 2.0F + aty.b((float)($$8 * 2) * 0.25F);
-         float $$11 = aty.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, fma.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = aty.b($$2) * 5.0F;
-         float $$14 = 11.0F + aty.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = aty.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, fma.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return fme.a($$0, 64, 32);
+   private static List<fia> a(eva $$0, emq $$1) {
+      return $$1.g().stream().flatMap($$1x -> fie.a.a($$0, $$1x).stream()).toList();
    }
 
    @Override
-   public fly a() {
-      return this.a;
+   public List<fia> a() {
+      return this.d;
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 * (float) Math.PI * -0.1F;
+   public vd b() {
+      return c;
+   }
 
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         this.b[$$7].c = -2.0F + aty.b(((float)($$7 * 2) + $$3) * 0.25F);
-         this.b[$$7].b = aty.b($$6) * 9.0F;
-         this.b[$$7].d = aty.a($$6) * 9.0F;
-         $$6++;
+   @Override
+   public void a(fhy $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public vd aO_() {
+      return b;
+   }
+
+   @Override
+   public void a(ewm $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aP_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fia {
+      private final eml a;
+      private final Supplier<gff> b;
+      private final List<fnt> c;
+
+      private a(eml $$0, List<fnt> $$1, Supplier<gff> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
+      public static Optional<fia> a(eva $$0, eml $$1) {
+         List<fnt> $$2 = new ArrayList<>();
 
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         this.b[$$8].c = 2.0F + aty.b(((float)($$8 * 2) + $$3) * 0.25F);
-         this.b[$$8].b = aty.b($$6) * 7.0F;
-         this.b[$$8].d = aty.a($$6) * 7.0F;
-         $$6++;
+         for (String $$3 : $$1.g()) {
+            fnt $$4 = $$0.I().a($$3);
+            if ($$4 != null && $$4.e() != ctf.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(aup.a().a($$2.size())).a();
+            Supplier<gff> $$6 = $$0.ak().a($$5);
+            return Optional.of(new fie.a($$1, $$2, $$6));
+         }
       }
 
-      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
-
-      for (int $$9 = 8; $$9 < 12; $$9++) {
-         this.b[$$9].c = 11.0F + aty.b(((float)$$9 * 1.5F + $$3) * 0.5F);
-         this.b[$$9].b = aty.b($$6) * 5.0F;
-         this.b[$$9].d = aty.a($$6) * 5.0F;
-         $$6++;
+      @Override
+      public void a(fhy $$0) {
+         $$0.a(new fid(this.c));
       }
 
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      @Override
+      public vd aO_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(ewm $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, aui.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         exx.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aP_() {
+         return true;
+      }
    }
 }

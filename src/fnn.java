@@ -1,85 +1,162 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface fnn {
-   static fnn a(fnt $$0, UserApiService $$1) {
-      return new fnn.b($$0, $$1);
+public class fnn implements dx {
+   private final fnl a;
+   private final eva b;
+   private int c = -1;
+   @Nullable
+   private CompletableFuture<Suggestions> d;
+   private final Set<String> e = new HashSet<>();
+
+   public fnn(fnl $$0, eva $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   CompletableFuture<Unit> a(UUID var1, fnv var2, AbuseReport var3);
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
 
-   boolean a();
+      for (fnt $$1 : this.a.o()) {
+         $$0.add($$1.a().getName());
+      }
 
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
+      return $$0;
    }
 
-   public static class a extends wb {
-      public a(vb $$0, Throwable $$1) {
-         super($$0, $$1);
+   @Override
+   public Collection<String> z() {
+      if (this.e.isEmpty()) {
+         return this.q();
+      } else {
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.e);
+         return $$0;
       }
    }
 
-   public static record b(fnt a, UserApiService b) implements fnn {
-      private static final vb c = vb.c("gui.abuseReport.send.service_unavailable");
-      private static final vb d = vb.c("gui.abuseReport.send.http_error");
-      private static final vb e = vb.c("gui.abuseReport.send.json_error");
+   @Override
+   public Collection<String> A() {
+      return (Collection<String>)(this.b.v != null && this.b.v.c() == elk.a.c ? Collections.singleton(((elj)this.b.v).a().cx()) : Collections.emptyList());
+   }
 
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, fnv $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+   @Override
+   public Collection<String> r() {
+      return this.a.t().K().f();
+   }
 
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               vb $$5 = this.a(var7);
-               throw new CompletionException(new fnn.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               vb $$7 = this.a(var8);
-               throw new CompletionException(new fnn.a($$7, var8));
-            }
-         }, ac.g());
+   @Override
+   public Stream<ahd> s() {
+      return this.b.ah().b().stream();
+   }
+
+   @Override
+   public Stream<ahd> t() {
+      return this.a.l().d();
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      fsb $$1 = this.b.s;
+      return $$1 != null ? $$1.l($$0) : $$0 == 0;
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(ahc<? extends it<?>> $$0, dx.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.v().c($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.d != null) {
+         this.d.cancel(false);
       }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
+      this.d = new CompletableFuture<>();
+      int $$1 = ++this.c;
+      this.a.b(new ads($$1, $$0.getInput()));
+      return this.d;
+   }
 
-      private vb a(MinecraftClientHttpException $$0) {
-         return vb.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
+   }
 
-      private vb a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new IncompatibleClassChangeError();
-         };
-      }
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
+   @Override
+   public Collection<dx.b> B() {
+      elk $$0 = this.b.v;
+      if ($$0 != null && $$0.c() == elk.a.b) {
+         hx $$1 = ((eli)$$0).a();
+         return Collections.singleton(new dx.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return dx.super.B();
       }
+   }
 
-      public fnt c() {
-         return this.a;
+   @Override
+   public Collection<dx.b> C() {
+      elk $$0 = this.b.v;
+      if ($$0 != null && $$0.c() == elk.a.b) {
+         elm $$1 = $$0.e();
+         return Collections.singleton(new dx.b(a($$1.c), a($$1.d), a($$1.e)));
+      } else {
+         return dx.super.C();
       }
+   }
 
-      public UserApiService d() {
-         return this.b;
+   @Override
+   public Set<ahc<cti>> u() {
+      return this.a.w();
+   }
+
+   @Override
+   public iu v() {
+      return this.a.f();
+   }
+
+   @Override
+   public chl w() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.c) {
+         this.d.complete($$1);
+         this.d = null;
+         this.c = -1;
+      }
+   }
+
+   public void a(zv.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.e.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.e::remove);
+            break;
+         case c:
+            this.e.clear();
+            this.e.addAll($$1);
       }
    }
 }

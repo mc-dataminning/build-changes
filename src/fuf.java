@@ -1,53 +1,68 @@
-public class fuf implements fui<dfz> {
-   private final fly a;
-   private final fly b;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-   public fuf(fuj.a $$0) {
-      this.a = $$0.a(flx.i);
-      this.b = $$0.a(flx.h);
+public class fuf {
+   private final ahd a;
+   private final List<fuf.b> b;
+
+   public fuf(ahd $$0, List<fuf.b> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
    }
 
-   public static fme b() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      $$1.a("main", fmd.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fma.a);
-      $$1.a("left_leg", fmd.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fma.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fmd.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fma.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fme.a($$0, 64, 64);
+   public ahd a() {
+      return this.a;
    }
 
-   public static fme c() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      $$1.a("main", fmd.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fma.a);
-      $$1.a("left_leg", fmd.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fma.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fmd.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fma.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fme.a($$0, 64, 64);
+   public Stream<fuf.b> b() {
+      return this.b.stream();
    }
 
-   public void a(dfz $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
-      gfs $$6 = fsx.p[$$0.d().a()];
-      csy $$7 = $$0.i();
-      if ($$7 != null) {
-         dip $$8 = $$0.r();
-         cyg.c<? extends dfz> $$9 = cyg.a(dgf.y, cvs::h, cvs::g, cxc.c, $$8, $$7, $$0.aB_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new ful<>()).get($$4);
-         this.a($$2, $$3, $$8.c(cvs.b) == djc.a ? this.a : this.b, $$8.c(cvs.aE), $$6, $$10, $$5, false);
-      } else {
-         this.a($$2, $$3, this.a, ia.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, ia.d, $$6, $$4, $$5, true);
+   protected static class a implements JsonDeserializer<fuf> {
+      public fuf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         ahd $$4 = new ahd(aty.i($$3, "model"));
+         List<fuf.b> $$5 = this.a($$3);
+         return new fuf($$4, $$5);
+      }
+
+      protected List<fuf.b> a(JsonObject $$0) {
+         Map<ahd, Float> $$1 = Maps.newLinkedHashMap();
+         JsonObject $$2 = aty.u($$0, "predicate");
+
+         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+            $$1.put(new ahd($$3.getKey()), aty.e($$3.getValue(), $$3.getKey()));
+         }
+
+         return $$1.entrySet().stream().map($$0x -> new fuf.b((ahd)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
       }
    }
 
-   private void a(epd $$0, fsi $$1, fly $$2, ia $$3, gfs $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      eph $$8 = $$4.a($$1, fsq::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   public static class b {
+      private final ahd a;
+      private final float b;
+
+      public b(ahd $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ahd a() {
+         return this.a;
+      }
+
+      public float b() {
+         return this.b;
+      }
    }
 }

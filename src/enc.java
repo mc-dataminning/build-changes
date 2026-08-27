@@ -1,91 +1,90 @@
-import com.mojang.logging.LogUtils;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC10;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class enc {
-   private static final Logger a = LogUtils.getLogger();
-
-   private static String a(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid name parameter.";
-         case 40962:
-            return "Invalid enumerated parameter value.";
-         case 40963:
-            return "Invalid parameter parameter value.";
-         case 40964:
-            return "Invalid operation.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
+public record enc<T>(T b, hx c, int d, enh e) {
+   private static final String f = "i";
+   private static final String g = "x";
+   private static final String h = "y";
+   private static final String i = "z";
+   private static final String j = "t";
+   private static final String k = "p";
+   public static final Strategy<enc<?>> a = new Strategy<enc<?>>() {
+      public int a(enc<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
-   }
 
-   static boolean a(String $$0) {
-      int $$1 = AL10.alGetError();
-      if ($$1 != 0) {
-         a.error("{}: {}", $$0, a($$1));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static String b(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid device.";
-         case 40962:
-            return "Invalid context.";
-         case 40963:
-            return "Illegal enum.";
-         case 40964:
-            return "Invalid value.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
-   }
-
-   static boolean a(long $$0, String $$1) {
-      int $$2 = ALC10.alcGetError($$0);
-      if ($$2 != 0) {
-         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   static int a(AudioFormat $$0) {
-      Encoding $$1 = $$0.getEncoding();
-      int $$2 = $$0.getChannels();
-      int $$3 = $$0.getSampleSizeInBits();
-      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
-         if ($$2 == 1) {
-            if ($$3 == 8) {
-               return 4352;
-            }
-
-            if ($$3 == 16) {
-               return 4353;
-            }
-         } else if ($$2 == 2) {
-            if ($$3 == 8) {
-               return 4354;
-            }
-
-            if ($$3 == 16) {
-               return 4355;
-            }
+      public boolean a(@Nullable enc<?> $$0, @Nullable enc<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
          }
       }
+   };
 
-      throw new IllegalArgumentException("Invalid audio format: " + $$0);
+   public static <T> void a(sr $$0, Function<String, Optional<T>> $$1, csp $$2, Consumer<enc<T>> $$3) {
+      long $$4 = $$2.a();
+
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         sl $$6 = $$0.a($$5);
+         a($$6, $$1).ifPresent($$2x -> {
+            if (csp.a($$2x.b()) == $$4) {
+               $$3.accept($$2x);
+            }
+         });
+      }
+   }
+
+   public static <T> Optional<enc<T>> a(sl $$0, Function<String, Optional<T>> $$1) {
+      return $$1.apply($$0.l("i")).map($$1x -> {
+         hx $$2 = new hx($$0.h("x"), $$0.h("y"), $$0.h("z"));
+         return new enc<>((T)$$1x, $$2, $$0.h("t"), enh.a($$0.h("p")));
+      });
+   }
+
+   private static sl a(String $$0, hx $$1, int $$2, enh $$3) {
+      sl $$4 = new sl();
+      $$4.a("i", $$0);
+      $$4.a("x", $$1.u());
+      $$4.a("y", $$1.v());
+      $$4.a("z", $$1.w());
+      $$4.a("t", $$2);
+      $$4.a("p", $$3.a());
+      return $$4;
+   }
+
+   public static <T> sl a(end<T> $$0, Function<T, String> $$1, long $$2) {
+      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
+   }
+
+   public sl a(Function<T, String> $$0) {
+      return a($$0.apply(this.b), this.c, this.d, this.e);
+   }
+
+   public end<T> a(long $$0, long $$1) {
+      return new end<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
+   }
+
+   public static <T> enc<T> a(T $$0, hx $$1) {
+      return new enc<>($$0, $$1, 0, enh.d);
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public hx b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public enh d() {
+      return this.e;
    }
 }

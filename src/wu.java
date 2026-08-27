@@ -1,16 +1,9 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface wu<T extends uk> {
-   void a(ue var1);
+public interface wu<T extends wt> {
+   MapCodec<T> a();
 
-   void a(T var1);
+   void a(ug var1, T var2);
 
-   default boolean b() {
-      return false;
-   }
-
-   @Nullable
-   default ud c() {
-      return null;
-   }
+   T b(ug var1);
 }

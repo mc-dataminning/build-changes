@@ -1,28 +1,17 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record asp(int d, int e) {
-   public static final Codec<Integer> a = atg.a(0, 15);
-   public static final Codec<asp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a.fieldOf("block").forGetter(asp::b), a.fieldOf("sky").forGetter(asp::c)).apply($$0, asp::new)
+public record asp(List<aso> b, boolean c) {
+   public static final Codec<asp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aso.a.listOf().fieldOf("values").forGetter(asp::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(asp::b)).apply($$0, asp::new)
    );
-   public static asp c = new asp(15, 15);
 
-   public int a() {
-      return this.d << 4 | this.e << 20;
+   public List<aso> a() {
+      return this.b;
    }
 
-   public static asp a(int $$0) {
-      int $$1 = $$0 >> 4 & 65535;
-      int $$2 = $$0 >> 20 & 65535;
-      return new asp($$1, $$2);
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
+   public boolean b() {
+      return this.c;
    }
 }

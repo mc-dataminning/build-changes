@@ -1,18 +1,35 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekh {
-   private static final Codec<ekg> d = kb.K.q().dispatch(ekg::a, ekf::a);
-   public static final Codec<ekg> a = atg.a(
-      (Supplier<Codec<ekg>>)(() -> Codec.either(ekd.b, d)
-            .xmap($$0 -> (ekg)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ekd $$1 ? Either.left($$1) : Either.right($$0)))
-   );
-   public static final ekf b = a("fixed", eke.a);
-   public static final ekf c = a("context", ekd.a);
+public record ekh(float c) implements ekj {
+   public static final Codec<ekh> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(ekh::c)).apply($$0, ekh::new));
+   public static final Codec<ekh> b = Codec.FLOAT.xmap(ekh::new, ekh::c);
 
-   private static ekf a(String $$0, Codec<? extends ekg> $$1) {
-      return ir.a(kb.K, new agt($$0), new ekf($$1));
+   @Override
+   public eki b() {
+      return ekk.b;
+   }
+
+   @Override
+   public float b(egp $$0) {
+      return this.c;
+   }
+
+   public static ekh a(float $$0) {
+      return new ekh($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((ekh)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

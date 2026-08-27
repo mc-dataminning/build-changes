@@ -1,30 +1,70 @@
-import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eqd extends eqz {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+public class eqd {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<eqd.a> b;
 
-   public static eqd a(JsonObject $$0) {
-      eqd $$1 = new eqd();
-
-      try {
-         $$1.a = esw.b("invitationId", $$0, "");
-         $$1.b = esw.b("worldName", $$0, "");
-         $$1.c = esw.b("worldOwnerName", $$0, "");
-         $$1.d = esw.a("worldOwnerUuid", $$0, ac.d);
-         $$1.e = esw.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+   public static CompletableFuture<eqd.a> a() {
+      if (b == null || a(b)) {
+         b = b();
       }
 
-      return $$1;
+      return b;
+   }
+
+   private static boolean a(CompletableFuture<eqd.a> $$0) {
+      eqd.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
+
+   private static CompletableFuture<eqd.a> b() {
+      return CompletableFuture.supplyAsync(() -> {
+         eqj $$0 = eqj.a();
+
+         try {
+            if ($$0.g() != eqj.a.a) {
+               return new eqd.a(eqd.b.b);
+            } else {
+               return !$$0.f() ? new eqd.a(eqd.b.c) : new eqd.a(eqd.b.a);
+            }
+         } catch (erw var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new eqd.a(eqd.b.d) : new eqd.a(var2);
+         }
+      }, ac.g());
+   }
+
+   public static record a(eqd.b a, @Nullable erw b) {
+      public a(eqd.b $$0) {
+         this($$0, null);
+      }
+
+      public a(erw $$0) {
+         this(eqd.b.e, $$0);
+      }
+
+      @Nullable
+      public fct a(fct $$0) {
+         return (fct)(switch (this.a) {
+            case a -> null;
+            case b -> new esi($$0);
+            case c -> new est($$0);
+            case d -> new esn(vd.c("mco.error.invalid.session.title"), vd.c("mco.error.invalid.session.message"), $$0);
+            case e -> new esn(Objects.requireNonNull(this.b), $$0);
+         });
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

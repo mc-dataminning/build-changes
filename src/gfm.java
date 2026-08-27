@@ -1,14 +1,17 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gfm implements aos<gfl> {
-   public gfl b(JsonObject $$0) {
-      boolean $$1 = ato.a($$0, "blur", false);
-      boolean $$2 = ato.a($$0, "clamp", false);
-      return new gfl($$1, $$2);
-   }
+public record gfm(String b, String c, boolean d) {
+   public static final Codec<gfm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atq.v.fieldOf("region").forGetter(gfm::b),
+               atq.v.fieldOf("name").forGetter(gfm::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gfm::d)
+            )
+            .apply($$0, gfm::new)
+   );
 
-   @Override
-   public String a() {
-      return "texture";
+   public vd a() {
+      return vd.b(this.c + " (" + this.b + ")");
    }
 }

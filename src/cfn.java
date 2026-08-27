@@ -1,51 +1,52 @@
-public class cfn extends cfp {
-   public cfn(blj<? extends cfn> $$0, csy $$1) {
+public abstract class cfn extends cfi implements cfq {
+   private static final agj<cmr> e = agm.a(cfn.class, agl.h);
+
+   public cfn(blt<? extends cfn> $$0, cti $$1) {
       super($$0, $$1);
    }
 
-   public cfn(csy $$0, blv $$1) {
-      super(blj.aQ, $$1, $$0);
+   public cfn(blt<? extends cfn> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cti $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public cfn(csy $$0, double $$1, double $$2, double $$3) {
-      super(blj.aQ, $$1, $$2, $$3, $$0);
+   public cfn(blt<? extends cfn> $$0, bmf $$1, double $$2, double $$3, double $$4, cti $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(cmr $$0) {
+      if (!$$0.a(cmu.tS) || $$0.u()) {
+         this.an().b(e, $$0.c(1));
+      }
+   }
+
+   protected cmr y() {
+      return this.an().b(e);
    }
 
    @Override
-   protected cmc s() {
-      return cmk.qz;
-   }
-
-   private jt y() {
-      cmh $$0 = this.u();
-      return (jt)($$0.b() ? jv.T : new jr(jv.Q, $$0));
+   public cmr q() {
+      cmr $$0 = this.y();
+      return $$0.b() ? new cmr(cmu.tS) : $$0;
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         jt $$1 = this.y();
+   protected void c_() {
+      this.an().a(e, cmr.f);
+   }
 
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dM().a($$1, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
-         }
+   @Override
+   public void b(sl $$0) {
+      super.b($$0);
+      cmr $$1 = this.y();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new sl()));
       }
    }
 
    @Override
-   protected void a(eky $$0) {
+   public void a(sl $$0) {
       super.a($$0);
-      blf $$1 = $$0.a();
-      int $$2 = $$1 instanceof cbj ? 3 : 0;
-      $$1.a(this.dN().b(this, this.w()), (float)$$2);
-   }
-
-   @Override
-   protected void a(ekz $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         this.dM().a(this, (byte)3);
-         this.am();
-      }
+      cmr $$1 = cmr.a($$0.p("Item"));
+      this.a($$1);
    }
 }

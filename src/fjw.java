@@ -1,146 +1,138 @@
-import com.google.common.collect.ImmutableList;
+public class fjw extends fjy<ccf> {
+   private static final float[] a = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
+   private static final float[] b = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
+   private static final float[] f = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
+   private static final float[] g = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
+   private static final float[] h = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
+   private static final float[] i = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
+   private static final String j = "eye";
+   private static final String k = "tail0";
+   private static final String l = "tail1";
+   private static final String m = "tail2";
+   private final fmp n;
+   private final fmp o;
+   private final fmp p;
+   private final fmp[] q;
+   private final fmp[] r;
 
-public class fjw<T extends blf> extends fhv<T> {
-   private static final int q = 0;
-   private static final int r = 1;
-   private static final int s = 2;
-   protected static final int a = 3;
-   private static final float t = 0.0F;
-   private static final float u = 16.0F;
-   private static final float w = -9.0F;
-   private static final float x = 15.0F;
-   private static final float y = -9.0F;
-   private static final float z = 12.0F;
-   private static final float A = -10.0F;
-   private static final float B = 15.0F;
-   private static final float C = 8.0F;
-   private static final float D = 20.0F;
-   private static final float E = 14.0F;
-   protected static final float b = 18.0F;
-   protected static final float f = 5.0F;
-   protected static final float g = 14.1F;
-   private static final float F = -5.0F;
-   private static final String G = "tail1";
-   private static final String H = "tail2";
-   protected final fly h;
-   protected final fly i;
-   protected final fly j;
-   protected final fly k;
-   protected final fly l;
-   protected final fly m;
-   protected final fly n;
-   protected final fly o;
-   protected int p = 1;
+   public fjw(fmp $$0) {
+      this.n = $$0;
+      this.q = new fmp[12];
+      this.o = $$0.b("head");
 
-   public fjw(fly $$0) {
-      super(true, 10.0F, 4.0F);
-      this.n = $$0.b("head");
-      this.o = $$0.b("body");
-      this.l = $$0.b("tail1");
-      this.m = $$0.b("tail2");
-      this.h = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_hind_leg");
-      this.j = $$0.b("left_front_leg");
-      this.k = $$0.b("right_front_leg");
+      for (int $$1 = 0; $$1 < this.q.length; $$1++) {
+         this.q[$$1] = this.o.b(a($$1));
+      }
+
+      this.p = this.o.b("eye");
+      this.r = new fmp[3];
+      this.r[0] = this.o.b("tail0");
+      this.r[1] = this.r[0].b("tail1");
+      this.r[2] = this.r[1].b("tail2");
    }
 
-   public static fmg a(fmc $$0) {
-      fmg $$1 = new fmg();
-      fmh $$2 = $$1.a();
-      fmc $$3 = new fmc(-0.02F);
-      $$2.a(
+   private static String a(int $$0) {
+      return "spike" + $$0;
+   }
+
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      fmy $$2 = $$1.a(
          "head",
-         fmd.c()
-            .a("main", -2.5F, -2.0F, -3.0F, 5.0F, 4.0F, 5.0F, $$0)
-            .a("nose", -1.5F, -0.001F, -4.0F, 3, 2, 2, $$0, 0, 24)
-            .a("ear1", -2.0F, -3.0F, 0.0F, 1, 1, 2, $$0, 0, 10)
-            .a("ear2", 1.0F, -3.0F, 0.0F, 1, 1, 2, $$0, 6, 10),
-         fma.a(0.0F, 15.0F, -9.0F)
+         fmu.c()
+            .a(0, 0)
+            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
+            .a(0, 28)
+            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
+            .a(0, 28)
+            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
+            .a(16, 40)
+            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
+            .a(16, 40)
+            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
+         fmr.a
       );
-      $$2.a("body", fmd.c().a(20, 0).a(-2.0F, 3.0F, -8.0F, 4.0F, 16.0F, 6.0F, $$0), fma.a(0.0F, 12.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$2.a("tail1", fmd.c().a(0, 15).a(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, $$0), fma.a(0.0F, 15.0F, 8.0F, 0.9F, 0.0F, 0.0F));
-      $$2.a("tail2", fmd.c().a(4, 15).a(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, $$3), fma.a(0.0F, 20.0F, 14.0F));
-      fmd $$4 = fmd.c().a(8, 13).a(-1.0F, 0.0F, 1.0F, 2.0F, 6.0F, 2.0F, $$0);
-      $$2.a("left_hind_leg", $$4, fma.a(1.1F, 18.0F, 5.0F));
-      $$2.a("right_hind_leg", $$4, fma.a(-1.1F, 18.0F, 5.0F));
-      fmd $$5 = fmd.c().a(40, 0).a(-1.0F, 0.0F, 0.0F, 2.0F, 10.0F, 2.0F, $$0);
-      $$2.a("left_front_leg", $$5, fma.a(1.2F, 14.1F, -5.0F));
-      $$2.a("right_front_leg", $$5, fma.a(-1.2F, 14.1F, -5.0F));
-      return $$1;
+      fmu $$3 = fmu.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         float $$5 = b($$4, 0.0F, 0.0F);
+         float $$6 = c($$4, 0.0F, 0.0F);
+         float $$7 = d($$4, 0.0F, 0.0F);
+         float $$8 = (float) Math.PI * a[$$4];
+         float $$9 = (float) Math.PI * b[$$4];
+         float $$10 = (float) Math.PI * f[$$4];
+         $$2.a(a($$4), $$3, fmr.a($$5, $$6, $$7, $$8, $$9, $$10));
+      }
+
+      $$2.a("eye", fmu.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), fmr.a(0.0F, 0.0F, -8.25F));
+      fmy $$11 = $$2.a("tail0", fmu.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), fmr.a);
+      fmy $$12 = $$11.a("tail1", fmu.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), fmr.a(-1.5F, 0.5F, 14.0F));
+      $$12.a("tail2", fmu.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), fmr.a(0.5F, 0.5F, 6.0F));
+      return fmv.a($$0, 64, 64);
    }
 
    @Override
-   protected Iterable<fly> a() {
-      return ImmutableList.of(this.n);
+   public fmp a() {
+      return this.n;
    }
 
-   @Override
-   protected Iterable<fly> b() {
-      return ImmutableList.of(this.o, this.h, this.i, this.j, this.k, this.l, this.m);
-   }
+   public void a(ccf $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ah;
+      this.o.f = $$4 * (float) (Math.PI / 180.0);
+      this.o.e = $$5 * (float) (Math.PI / 180.0);
+      float $$7 = (1.0F - $$0.F($$6)) * 0.55F;
+      this.a($$3, $$7);
+      blp $$8 = eva.N().al();
+      if ($$0.gg()) {
+         $$8 = $$0.gh();
+      }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.n.e = $$5 * (float) (Math.PI / 180.0);
-      this.n.f = $$4 * (float) (Math.PI / 180.0);
-      if (this.p != 3) {
-         this.o.e = (float) (Math.PI / 2);
-         if (this.p == 2) {
-            this.h.e = aty.b($$1 * 0.6662F) * $$2;
-            this.i.e = aty.b($$1 * 0.6662F + 0.3F) * $$2;
-            this.j.e = aty.b($$1 * 0.6662F + (float) Math.PI + 0.3F) * $$2;
-            this.k.e = aty.b($$1 * 0.6662F + (float) Math.PI) * $$2;
-            this.m.e = 1.7278761F + (float) (Math.PI / 10) * aty.b($$1) * $$2;
+      if ($$8 != null) {
+         elm $$9 = $$8.j(0.0F);
+         elm $$10 = $$0.j(0.0F);
+         double $$11 = $$9.d - $$10.d;
+         if ($$11 > 0.0) {
+            this.p.c = 0.0F;
          } else {
-            this.h.e = aty.b($$1 * 0.6662F) * $$2;
-            this.i.e = aty.b($$1 * 0.6662F + (float) Math.PI) * $$2;
-            this.j.e = aty.b($$1 * 0.6662F + (float) Math.PI) * $$2;
-            this.k.e = aty.b($$1 * 0.6662F) * $$2;
-            if (this.p == 1) {
-               this.m.e = 1.7278761F + (float) (Math.PI / 4) * aty.b($$1) * $$2;
-            } else {
-               this.m.e = 1.7278761F + 0.47123894F * aty.b($$1) * $$2;
-            }
+            this.p.c = 1.0F;
          }
+
+         elm $$12 = $$0.f(0.0F);
+         $$12 = new elm($$12.c, 0.0, $$12.e);
+         elm $$13 = new elm($$10.c - $$9.c, 0.0, $$10.e - $$9.e).d().b((float) (Math.PI / 2));
+         double $$14 = $$12.b($$13);
+         this.p.b = aui.c((float)Math.abs($$14)) * 2.0F * (float)Math.signum($$14);
+      }
+
+      this.p.k = true;
+      float $$15 = $$0.E($$6);
+      this.r[0].f = aui.a($$15) * (float) Math.PI * 0.05F;
+      this.r[1].f = aui.a($$15) * (float) Math.PI * 0.1F;
+      this.r[2].f = aui.a($$15) * (float) Math.PI * 0.15F;
+   }
+
+   private void a(float $$0, float $$1) {
+      for (int $$2 = 0; $$2 < 12; $$2++) {
+         this.q[$$2].b = b($$2, $$0, $$1);
+         this.q[$$2].c = c($$2, $$0, $$1);
+         this.q[$$2].d = d($$2, $$0, $$1);
       }
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.o.c = 12.0F;
-      this.o.d = -10.0F;
-      this.n.c = 15.0F;
-      this.n.d = -9.0F;
-      this.l.c = 15.0F;
-      this.l.d = 8.0F;
-      this.m.c = 20.0F;
-      this.m.d = 14.0F;
-      this.j.c = 14.1F;
-      this.j.d = -5.0F;
-      this.k.c = 14.1F;
-      this.k.d = -5.0F;
-      this.h.c = 18.0F;
-      this.h.d = 5.0F;
-      this.i.c = 18.0F;
-      this.i.d = 5.0F;
-      this.l.e = 0.9F;
-      if ($$0.bX()) {
-         this.o.c++;
-         this.n.c += 2.0F;
-         this.l.c++;
-         this.m.c += -4.0F;
-         this.m.d += 2.0F;
-         this.l.e = (float) (Math.PI / 2);
-         this.m.e = (float) (Math.PI / 2);
-         this.p = 0;
-      } else if ($$0.bY()) {
-         this.m.c = this.l.c;
-         this.m.d += 2.0F;
-         this.l.e = (float) (Math.PI / 2);
-         this.m.e = (float) (Math.PI / 2);
-         this.p = 2;
-      } else {
-         this.p = 1;
-      }
+   private static float a(int $$0, float $$1, float $$2) {
+      return 1.0F + aui.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
+   }
+
+   private static float b(int $$0, float $$1, float $$2) {
+      return g[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float c(int $$0, float $$1, float $$2) {
+      return 16.0F + h[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float d(int $$0, float $$1, float $$2) {
+      return i[$$0] * a($$0, $$1, $$2);
    }
 }

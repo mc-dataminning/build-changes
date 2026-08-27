@@ -1,23 +1,30 @@
-public class cms extends cmc {
-   public cms(cmc.a $$0) {
-      super($$0);
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
+
+public class cms {
+   private static final Strategy<? super cmr> a = new Strategy<cmr>() {
+      public int a(@Nullable cmr $$0) {
+         return cms.a($$0);
+      }
+
+      public boolean a(@Nullable cmr $$0, @Nullable cmr $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.b() == $$1.b() && cmr.c($$0, $$1);
+      }
+   };
+
+   static int a(@Nullable cmr $$0) {
+      if ($$0 != null) {
+         sl $$1 = $$0.v();
+         int $$2 = 31 + $$0.d().hashCode();
+         return 31 * $$2 + ($$1 == null ? 0 : $$1.hashCode());
+      } else {
+         return 0;
+      }
    }
 
-   @Override
-   public bjl a(cmh $$0, cer $$1, blv $$2, bjk $$3) {
-      if ($$0.A() && !($$2 instanceof cer)) {
-         if (!$$1.dM().B && $$2.bx()) {
-            $$2.b($$0.y());
-            if ($$2 instanceof blx) {
-               ((blx)$$2).fJ();
-            }
-
-            $$0.h(1);
-         }
-
-         return bjl.a($$1.dM().B);
-      } else {
-         return bjl.d;
-      }
+   public static Set<cmr> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

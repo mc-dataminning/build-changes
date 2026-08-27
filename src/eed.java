@@ -1,135 +1,331 @@
-import com.google.common.base.Preconditions;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public class eed {
-   private static final eed[] am = new eed[64];
-   public static final eed a = new eed(0, 0);
-   public static final eed b = new eed(1, 8368696);
-   public static final eed c = new eed(2, 16247203);
-   public static final eed d = new eed(3, 13092807);
-   public static final eed e = new eed(4, 16711680);
-   public static final eed f = new eed(5, 10526975);
-   public static final eed g = new eed(6, 10987431);
-   public static final eed h = new eed(7, 31744);
-   public static final eed i = new eed(8, 16777215);
-   public static final eed j = new eed(9, 10791096);
-   public static final eed k = new eed(10, 9923917);
-   public static final eed l = new eed(11, 7368816);
-   public static final eed m = new eed(12, 4210943);
-   public static final eed n = new eed(13, 9402184);
-   public static final eed o = new eed(14, 16776437);
-   public static final eed p = new eed(15, 14188339);
-   public static final eed q = new eed(16, 11685080);
-   public static final eed r = new eed(17, 6724056);
-   public static final eed s = new eed(18, 15066419);
-   public static final eed t = new eed(19, 8375321);
-   public static final eed u = new eed(20, 15892389);
-   public static final eed v = new eed(21, 5000268);
-   public static final eed w = new eed(22, 10066329);
-   public static final eed x = new eed(23, 5013401);
-   public static final eed y = new eed(24, 8339378);
-   public static final eed z = new eed(25, 3361970);
-   public static final eed A = new eed(26, 6704179);
-   public static final eed B = new eed(27, 6717235);
-   public static final eed C = new eed(28, 10040115);
-   public static final eed D = new eed(29, 1644825);
-   public static final eed E = new eed(30, 16445005);
-   public static final eed F = new eed(31, 6085589);
-   public static final eed G = new eed(32, 4882687);
-   public static final eed H = new eed(33, 55610);
-   public static final eed I = new eed(34, 8476209);
-   public static final eed J = new eed(35, 7340544);
-   public static final eed K = new eed(36, 13742497);
-   public static final eed L = new eed(37, 10441252);
-   public static final eed M = new eed(38, 9787244);
-   public static final eed N = new eed(39, 7367818);
-   public static final eed O = new eed(40, 12223780);
-   public static final eed P = new eed(41, 6780213);
-   public static final eed Q = new eed(42, 10505550);
-   public static final eed R = new eed(43, 3746083);
-   public static final eed S = new eed(44, 8874850);
-   public static final eed T = new eed(45, 5725276);
-   public static final eed U = new eed(46, 8014168);
-   public static final eed V = new eed(47, 4996700);
-   public static final eed W = new eed(48, 4993571);
-   public static final eed X = new eed(49, 5001770);
-   public static final eed Y = new eed(50, 9321518);
-   public static final eed Z = new eed(51, 2430480);
-   public static final eed aa = new eed(52, 12398641);
-   public static final eed ab = new eed(53, 9715553);
-   public static final eed ac = new eed(54, 6035741);
-   public static final eed ad = new eed(55, 1474182);
-   public static final eed ae = new eed(56, 3837580);
-   public static final eed af = new eed(57, 5647422);
-   public static final eed ag = new eed(58, 1356933);
-   public static final eed ah = new eed(59, 6579300);
-   public static final eed ai = new eed(60, 14200723);
-   public static final eed aj = new eed(61, 8365974);
-   public final int ak;
-   public final int al;
+public final class eed extends eeb<eee.a, eee> {
+   private static final long g = eeb.a.a(15);
+   private static final long h = eeb.a.a(15, ic.b);
+   private static final long i = eeb.a.a(15, false, ic.b);
+   private final hx.a j = new hx.a();
+   private final edu k;
 
-   private eed(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
-      } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+   public eed(dlk $$0) {
+      this($$0, new eee($$0));
+   }
+
+   @VisibleForTesting
+   protected eed(dlk $$0, eee $$1) {
+      super($$0, $$1);
+      this.k = new edu($$0.q());
+   }
+
+   private static boolean a(int $$0) {
+      return $$0 == 15;
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      edu $$3 = this.b(iz.a($$0), iz.a($$1));
+      return $$3 == null ? $$2 : $$3.a(iz.b($$0), iz.b($$1));
+   }
+
+   @Nullable
+   private edu b(int $$0, int $$1) {
+      dlj $$2 = this.e.c($$0, $$1);
+      return $$2 != null ? $$2.B() : null;
+   }
+
+   @Override
+   protected void a(long $$0) {
+      int $$1 = hx.a($$0);
+      int $$2 = hx.b($$0);
+      int $$3 = hx.c($$0);
+      long $$4 = iz.e($$0);
+      int $$5 = this.f.j($$4) ? this.a($$1, $$3, Integer.MAX_VALUE) : Integer.MAX_VALUE;
+      if ($$5 != Integer.MAX_VALUE) {
+         this.b($$1, $$3, $$5);
+      }
+
+      if (this.f.b($$4)) {
+         boolean $$6 = $$2 >= $$5;
+         if ($$6) {
+            this.b($$0, h);
+            this.c($$0, i);
+         } else {
+            int $$7 = this.f.e($$0);
+            if ($$7 > 0) {
+               this.f.a($$0, 0);
+               this.b($$0, eeb.a.a($$7));
+            } else {
+               this.b($$0, c);
+            }
+         }
       }
    }
 
-   public int a(eed.a $$0) {
-      if (this == a) {
+   private void b(int $$0, int $$1, int $$2) {
+      int $$3 = iz.c(this.f.c());
+      this.a($$0, $$1, $$2, $$3);
+      this.b($$0, $$1, $$2, $$3);
+   }
+
+   private void a(int $$0, int $$1, int $$2, int $$3) {
+      if ($$2 > $$3) {
+         int $$4 = iz.a($$0);
+         int $$5 = iz.a($$1);
+         int $$6 = $$2 - 1;
+
+         for (int $$7 = iz.a($$6); this.f.a($$7); $$7--) {
+            if (this.f.b(iz.b($$4, $$7, $$5))) {
+               int $$8 = iz.c($$7);
+               int $$9 = $$8 + 15;
+
+               for (int $$10 = Math.min($$9, $$6); $$10 >= $$8; $$10--) {
+                  long $$11 = hx.a($$0, $$10, $$1);
+                  if (!a(this.f.e($$11))) {
+                     return;
+                  }
+
+                  this.f.a($$11, 0);
+                  this.b($$11, $$10 == $$2 - 1 ? g : h);
+               }
+            }
+         }
+      }
+   }
+
+   private void b(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = iz.a($$0);
+      int $$5 = iz.a($$1);
+      int $$6 = Math.max(
+         Math.max(this.a($$0 - 1, $$1, Integer.MIN_VALUE), this.a($$0 + 1, $$1, Integer.MIN_VALUE)),
+         Math.max(this.a($$0, $$1 - 1, Integer.MIN_VALUE), this.a($$0, $$1 + 1, Integer.MIN_VALUE))
+      );
+      int $$7 = Math.max($$2, $$3);
+
+      for (long $$8 = iz.b($$4, iz.a($$7), $$5); !this.f.l($$8); $$8 = iz.a($$8, ic.b)) {
+         if (this.f.b($$8)) {
+            int $$9 = iz.c(iz.c($$8));
+            int $$10 = $$9 + 15;
+
+            for (int $$11 = Math.max($$9, $$7); $$11 <= $$10; $$11++) {
+               long $$12 = hx.a($$0, $$11, $$1);
+               if (a(this.f.e($$12))) {
+                  return;
+               }
+
+               this.f.a($$12, 15);
+               if ($$11 < $$6 || $$11 == $$2) {
+                  this.c($$12, i);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dja $$3 = null;
+      int $$4 = this.d($$0);
+
+      for (ic $$5 : d) {
+         if (eeb.a.a($$1, $$5)) {
+            long $$6 = hx.a($$0, $$5);
+            if (this.f.b(iz.e($$6))) {
+               int $$7 = this.f.e($$6);
+               int $$8 = $$2 - 1;
+               if ($$8 > $$7) {
+                  this.j.f($$6);
+                  dja $$9 = this.c(this.j);
+                  int $$10 = $$2 - this.a($$9, this.j);
+                  if ($$10 > $$7) {
+                     if ($$3 == null) {
+                        $$3 = eeb.a.b($$1) ? cwl.a.o() : this.c(this.j.f($$0));
+                     }
+
+                     if (!this.a($$0, $$3, $$6, $$9, $$5)) {
+                        this.f.a($$6, $$10);
+                        if ($$10 > 1) {
+                           this.c($$6, eeb.a.a($$10, a($$9), $$5.g()));
+                        }
+
+                        this.a($$6, $$5, $$10, true, $$4);
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = this.d($$0);
+      int $$3 = eeb.a.a($$1);
+
+      for (ic $$4 : d) {
+         if (eeb.a.a($$1, $$4)) {
+            long $$5 = hx.a($$0, $$4);
+            if (this.f.b(iz.e($$5))) {
+               int $$6 = this.f.e($$5);
+               if ($$6 != 0) {
+                  if ($$6 <= $$3 - 1) {
+                     this.f.a($$5, 0);
+                     this.b($$5, eeb.a.a($$6, $$4.g()));
+                     this.a($$5, $$4, $$6, false, $$2);
+                  } else {
+                     this.c($$5, eeb.a.b($$6, false, $$4.g()));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private int d(long $$0) {
+      int $$1 = hx.b($$0);
+      int $$2 = iz.b($$1);
+      if ($$2 != 0) {
          return 0;
       } else {
-         int $$1 = $$0.f;
-         int $$2 = (this.ak >> 16 & 0xFF) * $$1 / 255;
-         int $$3 = (this.ak >> 8 & 0xFF) * $$1 / 255;
-         int $$4 = (this.ak & 0xFF) * $$1 / 255;
-         return 0xFF000000 | $$4 << 16 | $$3 << 8 | $$2;
+         int $$3 = hx.a($$0);
+         int $$4 = hx.c($$0);
+         int $$5 = iz.b($$3);
+         int $$6 = iz.b($$4);
+         if ($$5 != 0 && $$5 != 15 && $$6 != 0 && $$6 != 15) {
+            return 0;
+         } else {
+            int $$7 = iz.a($$3);
+            int $$8 = iz.a($$1);
+            int $$9 = iz.a($$4);
+            int $$10 = 0;
+
+            while (!this.f.b(iz.b($$7, $$8 - $$10 - 1, $$9)) && this.f.a($$8 - $$10 - 1)) {
+               $$10++;
+            }
+
+            return $$10;
+         }
       }
    }
 
-   public static eed a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
-   }
+   private void a(long $$0, ic $$1, int $$2, boolean $$3, int $$4) {
+      if ($$4 != 0) {
+         int $$5 = hx.a($$0);
+         int $$6 = hx.c($$0);
+         if (a($$1, iz.b($$5), iz.b($$6))) {
+            int $$7 = hx.b($$0);
+            int $$8 = iz.a($$5);
+            int $$9 = iz.a($$6);
+            int $$10 = iz.a($$7) - 1;
+            int $$11 = $$10 - $$4 + 1;
 
-   private static eed c(int $$0) {
-      eed $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
-   }
+            while ($$10 >= $$11) {
+               if (!this.f.b(iz.b($$8, $$10, $$9))) {
+                  $$10--;
+               } else {
+                  int $$12 = iz.c($$10);
 
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(eed.a.b($$1 & 3));
-   }
+                  for (int $$13 = 15; $$13 >= 0; $$13--) {
+                     long $$14 = hx.a($$5, $$12 + $$13, $$6);
+                     if ($$3) {
+                        this.f.a($$14, $$2);
+                        if ($$2 > 1) {
+                           this.c($$14, eeb.a.a($$2, true, $$1.g()));
+                        }
+                     } else {
+                        this.f.a($$14, 0);
+                        this.b($$14, eeb.a.a($$2, $$1.g()));
+                     }
+                  }
 
-   public byte b(eed.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
-   }
-
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
-
-      private static final eed.a[] g = new eed.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+                  $$10--;
+               }
+            }
+         }
       }
+   }
 
-      public static eed.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+   private static boolean a(ic $$0, int $$1, int $$2) {
+      return switch ($$0) {
+         case c -> $$2 == 15;
+         case d -> $$2 == 0;
+         case e -> $$1 == 15;
+         case f -> $$1 == 0;
+         default -> false;
+      };
+   }
+
+   @Override
+   public void a(csp $$0, boolean $$1) {
+      super.a($$0, $$1);
+      if ($$1) {
+         edu $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
+         int $$3 = $$2.a() - 1;
+         int $$4 = iz.a($$3) + 1;
+         long $$5 = iz.b($$0.e, $$0.f);
+         int $$6 = this.f.m($$5);
+         int $$7 = Math.max(this.f.c(), $$4);
+
+         for (int $$8 = $$6 - 1; $$8 >= $$7; $$8--) {
+            dlc $$9 = this.f.c(iz.b($$0.e, $$8, $$0.f));
+            if ($$9 != null && $$9.d()) {
+               $$9.a(15);
+            }
+         }
       }
+   }
 
-      static eed.a b(int $$0) {
-         return g[$$0];
+   @Override
+   public void b(csp $$0) {
+      long $$1 = iz.b($$0.e, $$0.f);
+      this.f.b($$1, true);
+      edu $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
+      edu $$3 = Objects.requireNonNullElse(this.b($$0.e, $$0.f - 1), this.k);
+      edu $$4 = Objects.requireNonNullElse(this.b($$0.e, $$0.f + 1), this.k);
+      edu $$5 = Objects.requireNonNullElse(this.b($$0.e - 1, $$0.f), this.k);
+      edu $$6 = Objects.requireNonNullElse(this.b($$0.e + 1, $$0.f), this.k);
+      int $$7 = this.f.m($$1);
+      int $$8 = this.f.c();
+      int $$9 = iz.c($$0.e);
+      int $$10 = iz.c($$0.f);
+
+      for (int $$11 = $$7 - 1; $$11 >= $$8; $$11--) {
+         long $$12 = iz.b($$0.e, $$11, $$0.f);
+         dlc $$13 = this.f.c($$12);
+         if ($$13 != null) {
+            int $$14 = iz.c($$11);
+            int $$15 = $$14 + 15;
+            boolean $$16 = false;
+
+            for (int $$17 = 0; $$17 < 16; $$17++) {
+               for (int $$18 = 0; $$18 < 16; $$18++) {
+                  int $$19 = $$2.a($$18, $$17);
+                  if ($$19 <= $$15) {
+                     int $$20 = $$17 == 0 ? $$3.a($$18, 15) : $$2.a($$18, $$17 - 1);
+                     int $$21 = $$17 == 15 ? $$4.a($$18, 0) : $$2.a($$18, $$17 + 1);
+                     int $$22 = $$18 == 0 ? $$5.a(15, $$17) : $$2.a($$18 - 1, $$17);
+                     int $$23 = $$18 == 15 ? $$6.a(0, $$17) : $$2.a($$18 + 1, $$17);
+                     int $$24 = Math.max(Math.max($$20, $$21), Math.max($$22, $$23));
+
+                     for (int $$25 = $$15; $$25 >= Math.max($$14, $$19); $$25--) {
+                        $$13.a($$18, iz.b($$25), $$17, 15);
+                        if ($$25 == $$19 || $$25 < $$24) {
+                           long $$26 = hx.a($$9 + $$18, $$25, $$10 + $$17);
+                           this.c($$26, eeb.a.a($$25 == $$19, $$25 < $$20, $$25 < $$21, $$25 < $$22, $$25 < $$23));
+                        }
+                     }
+
+                     if ($$19 < $$14) {
+                        $$16 = true;
+                     }
+                  }
+               }
+            }
+
+            if (!$$16) {
+               break;
+            }
+         }
       }
    }
 }

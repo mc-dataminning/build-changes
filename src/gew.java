@@ -1,74 +1,69 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gew implements apt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gev b = new gev("US", "English", false);
-   private Map<String, gev> c = ImmutableMap.of("en_us", b);
-   private String d;
+public class gew extends api {
+   private static final ape c = new ape(vd.c("resourcePack.vanilla.description"), aa.b().a(aor.a), Optional.empty());
+   private static final aol d = aol.a(ape.b, c);
+   private static final vd e = vd.c("resourcePack.vanilla.name");
+   public static final String b = "high_contrast";
+   private static final Map<String, vd> f = Map.of(
+      "programmer_art", vd.c("resourcePack.programmer_art.name"), "high_contrast", vd.c("resourcePack.high_contrast.name")
+   );
+   private static final ahd g = new ahd("minecraft", "resourcepacks");
+   @Nullable
+   private final Path h;
 
-   public gew(String $$0) {
-      this.d = $$0;
-   }
-
-   private static Map<String, gev> a(Stream<aog> $$0) {
-      Map<String, gev> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            gfi $$2 = $$1x.a(gfi.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
-
-   @Override
-   public void a(aps $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         gev $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
-      }
-
-      ges $$4 = ges.a($$0, $$1, $$2);
-      geu.a($$4);
-      se.a($$4);
-   }
-
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, gev> b() {
-      return new TreeMap<>(this.c);
+   public gew(Path $$0, elc $$1) {
+      super(aor.a, b($$0), g, $$1);
+      this.h = this.a($$0);
    }
 
    @Nullable
-   public gev b(String $$0) {
-      return this.c.get($$0);
+   private Path a(Path $$0) {
+      if (aa.aW && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   private static aot b(Path $$0) {
+      aou $$1 = new aou().a(d).a("minecraft", "realms");
+      return $$1.b().a().a(aor.a, $$0).c();
+   }
+
+   @Override
+   protected vd a(String $$0) {
+      vd $$1 = f.get($$0);
+      return (vd)($$1 != null ? $$1 : vd.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected apk a(aoq $$0) {
+      return apk.a("vanilla", e, true, b($$0), aor.a, apk.b.b, apo.c);
+   }
+
+   @Nullable
+   @Override
+   protected apk a(String $$0, apk.c $$1, vd $$2) {
+      return apk.a($$0, $$2, false, $$1, aor.a, apk.b.a, apo.c);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, apk>> $$0) {
+      super.a($$0);
+      if (this.h != null) {
+         this.a(this.h, $$0);
+      }
    }
 }

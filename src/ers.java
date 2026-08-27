@@ -1,43 +1,56 @@
-public class ers extends gjl {
-   private static final vb a = vb.c("mco.client.incompatible.title");
-   private static final vb[] b = new vb[]{
-      vb.c("mco.client.incompatible.msg.line1"), vb.c("mco.client.incompatible.msg.line2"), vb.c("mco.client.incompatible.msg.line3")
-   };
-   private static final vb[] c = new vb[]{vb.c("mco.client.incompatible.msg.line1"), vb.c("mco.client.incompatible.msg.line2")};
-   private final fcc v;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public ers(fcc $$0) {
-      super(a);
-      this.v = $$0;
+public class ers extends erp {
+   private static final Logger e = LogUtils.getLogger();
+   public List<err> a;
+   public int b;
+   public int c;
+   public int d;
+
+   public ers() {
    }
 
-   @Override
-   public void aP_() {
-      this.d(ewh.a(va.k, $$0 -> this.f.a(this.v)).a(this.g / 2 - 100, h(12), 200, 20).a());
+   public ers(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, h(3), -65536);
-      vb[] $$4 = this.C();
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   }
 
-      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-         $$0.a(this.i, $$4[$$5], this.g / 2, h(5) + $$5 * 12, -1);
+   public static ers a(String $$0) {
+      ers $$1 = new ers();
+      $$1.a = Lists.newArrayList();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(err.a($$4.next().getAsJsonObject()));
+            }
+         }
+
+         $$1.b = etm.a("page", $$3, 0);
+         $$1.c = etm.a("size", $$3, 0);
+         $$1.d = etm.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
       }
-   }
 
-   private vb[] C() {
-      return aa.b().g() ? c : b;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.f.a(this.v);
-         return true;
-      }
+      return $$1;
    }
 }

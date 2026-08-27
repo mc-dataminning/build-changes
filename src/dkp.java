@@ -1,46 +1,58 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+public interface dkp {
+   void a(dkr var1, double var2);
 
-public abstract class dkp implements dkz, AutoCloseable {
-   @Nullable
-   public dkw a(int $$0, int $$1, boolean $$2) {
-      return (dkw)this.a($$0, $$1, dkq.n, $$2);
-   }
+   void a(dkr var1, double var2, double var4, long var6);
 
-   @Nullable
-   public dkw a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
+   void a(dkr var1, double var2, double var4);
 
-   @Nullable
-   @Override
-   public dky c(int $$0, int $$1) {
-      return this.a($$0, $$1, dkq.c, false);
-   }
+   void a(dkr var1, int var2);
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dkq.n, false) != null;
-   }
+   void b(dkr var1, int var2);
 
-   @Nullable
-   public abstract dkl a(int var1, int var2, dkq var3, boolean var4);
+   void b(dkr var1, double var2);
 
-   public abstract void a(BooleanSupplier var1, boolean var2);
+   void c(dkr var1, double var2);
 
-   public abstract String e();
+   public static class a implements dkp {
+      private final dkr a;
 
-   public abstract int j();
+      public a(dkr $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public void close() throws IOException {
-   }
+      @Override
+      public void a(dkr $$0, double $$1) {
+         this.a.a($$1);
+      }
 
-   public abstract edo p();
+      @Override
+      public void a(dkr $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
 
-   public void a(boolean $$0, boolean $$1) {
-   }
+      @Override
+      public void a(dkr $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
 
-   public void a(csf $$0, boolean $$1) {
+      @Override
+      public void a(dkr $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dkr $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dkr $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dkr $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

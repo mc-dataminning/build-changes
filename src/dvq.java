@@ -1,20 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class dvq extends dvh {
-   public static final Codec<dvq> b = dip.b.fieldOf("state").xmap(dvq::new, $$0 -> $$0.c).codec();
-   private final dip c;
+public class dvq<P extends dvp> {
+   public static final dvq<dvo> a = a("mangrove_root_placer", dvo.c);
+   private final Codec<P> b;
 
-   protected dvq(dip $$0) {
-      this.c = $$0;
+   private static <P extends dvp> dvq<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.Y, $$0, new dvq<>($$1));
    }
 
-   @Override
-   protected dvi<?> a() {
-      return dvi.a;
+   private dvq(Codec<P> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public dip a(auf $$0, hv $$1) {
-      return this.c;
+   public Codec<P> a() {
+      return this.b;
    }
 }

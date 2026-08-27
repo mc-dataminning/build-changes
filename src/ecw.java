@@ -1,11 +1,15 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface ecw {
-   Codec<ecw> c = kb.p.q().dispatch(ecw::a, ecx::codec);
-
+public abstract class ecw {
    @Nullable
-   sj a(auf var1, @Nullable sj var2);
+   public ecz.c a(ctl $$0, hx $$1, hx $$2, ecz.c $$3, ecz.c $$4, ecv $$5) {
+      return $$4;
+   }
 
-   ecx<?> a();
+   protected abstract ecy<?> a();
+
+   public List<ecz.c> a(ctx $$0, hx $$1, hx $$2, List<ecz.c> $$3, List<ecz.c> $$4, ecv $$5) {
+      return $$4;
+   }
 }

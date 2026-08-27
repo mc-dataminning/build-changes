@@ -1,15 +1,27 @@
-public class dgz extends dfs {
-   public dgz(hv $$0, dip $$1) {
-      super(dgf.a, $$0, $$1, cpq.b);
+public class dgz extends dgo {
+   private int a;
+
+   public dgz(hx $$0, dja $$1) {
+      super(dgq.s, $$0, $$1);
    }
 
    @Override
-   protected vb l() {
-      return vb.c("container.furnace");
+   protected void b(sl $$0) {
+      super.b($$0);
+      $$0.a("OutputSignal", this.a);
    }
 
    @Override
-   protected chk a(int $$0, ceq $$1) {
-      return new cig($$0, $$1, this, this.n);
+   public void a(sl $$0) {
+      super.a($$0);
+      this.a = $$0.h("OutputSignal");
+   }
+
+   public int c() {
+      return this.a;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
    }
 }

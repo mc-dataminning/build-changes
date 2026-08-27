@@ -1,140 +1,220 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Map;
+import com.mojang.datafixers.util.Either;
+import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface ih<T> extends ig<T> {
-   Stream<ie.c<T>> b();
+public interface ih<T> {
+   T a();
 
-   default Stream<ags<T>> c() {
-      return this.b().map(ie.c::g);
+   boolean b();
+
+   boolean a(ahd var1);
+
+   boolean a(ahc<T> var1);
+
+   boolean a(Predicate<ahc<T>> var1);
+
+   boolean a(asq<T> var1);
+
+   Stream<asq<T>> c();
+
+   Either<ahc<T>, T> d();
+
+   Optional<ahc<T>> e();
+
+   ih.b f();
+
+   boolean a(ik<T> var1);
+
+   static <T> ih<T> a(T $$0) {
+      return new ih.a<>($$0);
    }
 
-   Stream<ij.c<T>> d();
+   public static record a<T>(T a) implements ih<T> {
+      @Override
+      public boolean b() {
+         return true;
+      }
 
-   default Stream<asg<T>> e() {
-      return this.d().map(ij.c::f);
+      @Override
+      public boolean a(ahd $$0) {
+         return false;
+      }
+
+      @Override
+      public boolean a(ahc<T> $$0) {
+         return false;
+      }
+
+      @Override
+      public boolean a(asq<T> $$0) {
+         return false;
+      }
+
+      @Override
+      public boolean a(Predicate<ahc<T>> $$0) {
+         return false;
+      }
+
+      @Override
+      public Either<ahc<T>, T> d() {
+         return Either.right(this.a);
+      }
+
+      @Override
+      public Optional<ahc<T>> e() {
+         return Optional.empty();
+      }
+
+      @Override
+      public ih.b f() {
+         return ih.b.b;
+      }
+
+      @Override
+      public String toString() {
+         return "Direct{" + this.a + "}";
+      }
+
+      @Override
+      public boolean a(ik<T> $$0) {
+         return true;
+      }
+
+      @Override
+      public Stream<asq<T>> c() {
+         return Stream.of();
+      }
    }
 
-   default ih<T> a(final Predicate<T> $$0) {
-      return new ih.a<T>(this) {
-         @Override
-         public Optional<ie.c<T>> a(ags<T> $$0x) {
-            return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
-         }
-
-         @Override
-         public Stream<ie.c<T>> b() {
-            return this.c.b().filter($$1 -> $$0.test($$1.a()));
-         }
-      };
+   public static enum b {
+      a,
+      b;
    }
 
-   public static class a<T> implements ih<T> {
-      protected final ih<T> c;
+   public static class c<T> implements ih<T> {
+      private final ik<T> a;
+      private Set<asq<T>> b = Set.of();
+      private final ih.c.a c;
+      @Nullable
+      private ahc<T> d;
+      @Nullable
+      private T e;
 
-      public a(ih<T> $$0) {
+      protected c(ih.c.a $$0, ik<T> $$1, @Nullable ahc<T> $$2, @Nullable T $$3) {
+         this.a = $$1;
          this.c = $$0;
+         this.d = $$2;
+         this.e = $$3;
+      }
+
+      public static <T> ih.c<T> a(ik<T> $$0, ahc<T> $$1) {
+         return new ih.c<>(ih.c.a.a, $$0, $$1, null);
+      }
+
+      @Deprecated
+      public static <T> ih.c<T> a(ik<T> $$0, @Nullable T $$1) {
+         return new ih.c<>(ih.c.a.b, $$0, null, $$1);
+      }
+
+      public ahc<T> g() {
+         if (this.d == null) {
+            throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
+         } else {
+            return this.d;
+         }
       }
 
       @Override
-      public Optional<ie.c<T>> a(ags<T> $$0) {
-         return this.c.a($$0);
+      public T a() {
+         if (this.e == null) {
+            throw new IllegalStateException("Trying to access unbound value '" + this.d + "' from registry " + this.a);
+         } else {
+            return this.e;
+         }
       }
 
       @Override
-      public Stream<ie.c<T>> b() {
-         return this.c.b();
+      public boolean a(ahd $$0) {
+         return this.g().a().equals($$0);
       }
 
       @Override
-      public Optional<ij.c<T>> a(asg<T> $$0) {
-         return this.c.a($$0);
+      public boolean a(ahc<T> $$0) {
+         return this.g() == $$0;
       }
 
       @Override
-      public Stream<ij.c<T>> d() {
-         return this.c.d();
-      }
-   }
-
-   public interface b {
-      Stream<ags<? extends ir<?>>> a();
-
-      <T> Optional<ih.c<T>> a(ags<? extends ir<? extends T>> var1);
-
-      default <T> ih.c<T> b(ags<? extends ir<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      public boolean a(asq<T> $$0) {
+         return this.b.contains($$0);
       }
 
-      default ig.a b() {
-         return new ig.a() {
-            @Override
-            public <T> Optional<ig<T>> a(ags<? extends ir<? extends T>> $$0) {
-               return b.this.a($$0).map($$0x -> $$0x);
-            }
-         };
+      @Override
+      public boolean a(Predicate<ahc<T>> $$0) {
+         return $$0.test(this.g());
       }
 
-      static ih.b a(Stream<ih.c<?>> $$0) {
-         final Map<ags<? extends ir<?>>, ih.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(ih.c::f, $$0x -> $$0x));
-         return new ih.b() {
-            @Override
-            public Stream<ags<? extends ir<?>>> a() {
-               return $$1.keySet().stream();
-            }
-
-            @Override
-            public <T> Optional<ih.c<T>> a(ags<? extends ir<? extends T>> $$0) {
-               return Optional.ofNullable((ih.c<T>)$$1.get($$0));
-            }
-         };
-      }
-   }
-
-   public interface c<T> extends ih<T>, ii<T> {
-      ags<? extends ir<? extends T>> f();
-
-      Lifecycle g();
-
-      default ih<T> a(chb $$0) {
-         return (ih<T>)(cgy.bx.contains(this.f()) ? this.a($$1 -> ((cgy)$$1).a($$0)) : this);
+      @Override
+      public boolean a(ik<T> $$0) {
+         return this.a.a($$0);
       }
 
-      public abstract static class a<T> implements ih.c<T> {
-         protected abstract ih.c<T> a();
+      @Override
+      public Either<ahc<T>, T> d() {
+         return Either.left(this.g());
+      }
 
-         @Override
-         public ags<? extends ir<? extends T>> f() {
-            return this.a().f();
-         }
+      @Override
+      public Optional<ahc<T>> e() {
+         return Optional.of(this.g());
+      }
 
-         @Override
-         public Lifecycle g() {
-            return this.a().g();
-         }
+      @Override
+      public ih.b f() {
+         return ih.b.a;
+      }
 
-         @Override
-         public Optional<ie.c<T>> a(ags<T> $$0) {
-            return this.a().a($$0);
-         }
+      @Override
+      public boolean b() {
+         return this.d != null && this.e != null;
+      }
 
-         @Override
-         public Stream<ie.c<T>> b() {
-            return this.a().b();
+      void b(ahc<T> $$0) {
+         if (this.d != null && $$0 != this.d) {
+            throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
+         } else {
+            this.d = $$0;
          }
+      }
 
-         @Override
-         public Optional<ij.c<T>> a(asg<T> $$0) {
-            return this.a().a($$0);
+      protected void b(T $$0) {
+         if (this.c == ih.c.a.b && this.e != $$0) {
+            throw new IllegalStateException("Can't change holder " + this.d + " value: existing=" + this.e + ", new=" + $$0);
+         } else {
+            this.e = $$0;
          }
+      }
 
-         @Override
-         public Stream<ij.c<T>> d() {
-            return this.a().d();
-         }
+      void a(Collection<asq<T>> $$0) {
+         this.b = Set.copyOf($$0);
+      }
+
+      @Override
+      public Stream<asq<T>> c() {
+         return this.b.stream();
+      }
+
+      @Override
+      public String toString() {
+         return "Reference{" + this.d + "=" + this.e + "}";
+      }
+
+      protected static enum a {
+         a,
+         b;
       }
    }
 }

@@ -1,18 +1,29 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.Set;
 
-public class ejs {
-   private static final Codec<ejr> d = kb.J.q().dispatch(ejr::a, ejq::a);
-   public static final Codec<ejr> a = atg.a(
-      (Supplier<Codec<ejr>>)(() -> Codec.either(ejp.c, d)
-            .xmap($$0 -> (ejr)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ejp $$1 ? Either.left($$1) : Either.right($$0)))
-   );
-   public static final ejq b = a("storage", ejt.a);
-   public static final ejq c = a("context", ejp.b);
+public class ejs implements ejo {
+   private static final ejs b = new ejs();
+   public static final Codec<ejs> a = Codec.unit(b);
 
-   private static ejq a(String $$0, Codec<? extends ejr> $$1) {
-      return ir.a(kb.J, new agt($$0), new ejq($$1));
+   private ejs() {
+   }
+
+   @Override
+   public ejp b() {
+      return ejq.h;
+   }
+
+   @Override
+   public Set<eix<?>> a() {
+      return ImmutableSet.of(eja.b);
+   }
+
+   public boolean a(egp $$0) {
+      return $$0.a(eja.b);
+   }
+
+   public static ejo.a c() {
+      return () -> b;
    }
 }

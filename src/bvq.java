@@ -1,43 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class bvq extends bwc<cdb> {
-   @Override
-   public Set<bux<?>> a() {
-      return ImmutableSet.of(bux.h, bux.av, bux.ap, bux.ao, bux.ar, bux.as, new bux[0]);
+public class bvq extends bvo {
+   @Nullable
+   private hx p;
+
+   public bvq(bmh $$0, cti $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(amp $$0, cdb $$1) {
-      bmv<?> $$2 = $$1.dO();
-      $$2.a(bux.av, this.b($$0, $$1));
-      Optional<cdh> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<cdb> $$5 = Lists.newArrayList();
-      buz $$6 = $$2.c(bux.h).orElse(buz.a());
+   @Override
+   public eez a(hx $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
 
-      for (blv $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof cdh || $$0x instanceof cdb))) {
-         if ($$7 instanceof cdh $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
+   @Override
+   public eez a(blp $$0, int $$1) {
+      this.p = $$0.dm();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(blp $$0, double $$1) {
+      eez $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dm();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dk(), (double)this.a.dg())
+               && (!(this.a.dt() > (double)this.p.v()) || !hx.a((double)this.p.u(), this.a.dt(), (double)this.p.w()).a(this.a.dk(), (double)this.a.dg()))) {
+               this.a.K().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
             }
          }
-
-         if ($$7 instanceof cdb $$9) {
-            $$5.add($$9);
-         }
       }
-
-      $$2.a(bux.ap, $$3);
-      $$2.a(bux.ao, $$5);
-      $$2.a(bux.ar, $$4);
-      $$2.a(bux.as, $$5.size());
-   }
-
-   private Optional<hv> b(amp $$0, cdb $$1) {
-      return hv.a($$1.dm(), 8, 4, $$1x -> $$0.a_($$1x).a(arr.aR));
    }
 }

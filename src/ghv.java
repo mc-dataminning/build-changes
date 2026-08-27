@@ -1,62 +1,36 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class ghv {
-   private static final int a = 100;
-   private final auf b = auf.a();
-   private final euk c;
-   @Nullable
-   private ggw d;
-   private int e = 100;
+public class ghv<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   public ghv(euk $$0) {
-      this.c = $$0;
+   public ghv(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   public void a() {
-      aqz $$0 = this.c.ai();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.ah().b(this.d);
-            this.e = aty.a(this.b, 0, $$0.b() / 2);
+   protected T computeNext() {
+      boolean $$0 = !this.a.hasNext();
+      boolean $$1 = !this.b.hasNext();
+      if ($$0 && $$1) {
+         return (T)this.endOfData();
+      } else if ($$0) {
+         return (T)this.b.next();
+      } else if ($$1) {
+         return (T)this.a.next();
+      } else {
+         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$2 == 0) {
+            this.b.next();
          }
 
-         if (!this.c.ah().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, aty.a(this.b, $$0.b(), $$0.c()));
-         }
+         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
       }
-
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
-   }
-
-   public void a(aqz $$0) {
-      this.d = ggr.a($$0.a().a());
-      if (this.d.b() != gia.a) {
-         this.c.ah().a(this.d);
-      }
-
-      this.e = Integer.MAX_VALUE;
-   }
-
-   public void b(aqz $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         this.c.ah().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
-   }
-
-   public boolean c(aqz $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

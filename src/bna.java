@@ -1,96 +1,193 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class bna {
-   private final Map<bmw, bmx> a;
+public abstract class bna extends bxs implements bmn {
+   protected static final agj<Byte> bT = agm.a(bna.class, agl.a);
+   protected static final agj<Optional<UUID>> bU = agm.a(bna.class, agl.q);
+   private boolean bW;
 
-   public bna(Map<bmw, bmx> $$0) {
-      this.a = ImmutableMap.copyOf($$0);
+   protected bna(blt<? extends bna> $$0, cti $$1) {
+      super($$0, $$1);
+      this.w();
    }
 
-   private bmx d(bmw $$0) {
-      bmx $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + kb.u.b($$0));
+   @Override
+   protected void c_() {
+      super.c_();
+      this.an.a(bT, (byte)0);
+      this.an.a(bU, Optional.empty());
+   }
+
+   @Override
+   public void b(sl $$0) {
+      super.b($$0);
+      if (this.d() != null) {
+         $$0.a("Owner", this.d());
+      }
+
+      $$0.a("Sitting", this.bW);
+   }
+
+   @Override
+   public void a(sl $$0) {
+      super.a($$0);
+      UUID $$1;
+      if ($$0.b("Owner")) {
+         $$1 = $$0.a("Owner");
       } else {
-         return $$1;
+         String $$2 = $$0.l("Owner");
+         $$1 = aqo.a(this.cL(), $$2);
+      }
+
+      if ($$1 != null) {
+         try {
+            this.b($$1);
+            this.x(true);
+         } catch (Throwable var4) {
+            this.x(false);
+         }
+      }
+
+      this.bW = $$0.q("Sitting");
+      this.y(this.bW);
+   }
+
+   @Override
+   public boolean a(cfb $$0) {
+      return !this.fS();
+   }
+
+   protected void w(boolean $$0) {
+      jv $$1 = jx.O;
+      if (!$$0) {
+         $$1 = jx.ab;
+      }
+
+      for (int $$2 = 0; $$2 < 7; $$2++) {
+         double $$3 = this.ag.k() * 0.02;
+         double $$4 = this.ag.k() * 0.02;
+         double $$5 = this.ag.k() * 0.02;
+         this.dM().a($$1, this.d(1.0), this.du() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
-   public double a(bmw $$0) {
-      return this.d($$0).f();
-   }
-
-   public double b(bmw $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(bmw $$0, UUID $$1) {
-      bmz $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + kb.u.b($$0));
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 7) {
+         this.w(true);
+      } else if ($$0 == 6) {
+         this.w(false);
       } else {
-         return $$2.c();
+         super.b($$0);
+      }
+   }
+
+   @Override
+   public boolean u() {
+      return (this.an.b(bT) & 4) != 0;
+   }
+
+   public void x(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 4));
+      } else {
+         this.an.b(bT, (byte)($$1 & -5));
+      }
+
+      this.w();
+   }
+
+   protected void w() {
+   }
+
+   public boolean A() {
+      return (this.an.b(bT) & 1) != 0;
+   }
+
+   public void y(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 1));
+      } else {
+         this.an.b(bT, (byte)($$1 & -2));
       }
    }
 
    @Nullable
-   public bmx a(Consumer<bmx> $$0, bmw $$1) {
-      bmx $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         bmx $$3 = new bmx($$1, $$0);
-         $$3.a($$2);
-         return $$3;
+   @Override
+   public UUID d() {
+      return this.an.b(bU).orElse(null);
+   }
+
+   public void b(@Nullable UUID $$0) {
+      this.an.b(bU, Optional.ofNullable($$0));
+   }
+
+   public void f(cfb $$0) {
+      this.x(true);
+      this.b($$0.cw());
+      if ($$0 instanceof ana) {
+         am.y.a((ana)$$0, this);
       }
    }
 
-   public static bna.a a() {
-      return new bna.a();
+   @Override
+   public boolean c(bmf $$0) {
+      return this.j($$0) ? false : super.c($$0);
    }
 
-   public boolean c(bmw $$0) {
-      return this.a.containsKey($$0);
+   public boolean j(bmf $$0) {
+      return $$0 == this.R_();
    }
 
-   public boolean b(bmw $$0, UUID $$1) {
-      bmx $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
+   public boolean a(bmf $$0, bmf $$1) {
+      return true;
    }
 
-   public static class a {
-      private final Map<bmw, bmx> a = Maps.newHashMap();
-      private boolean b;
-
-      private bmx b(bmw $$0) {
-         bmx $$1 = new bmx($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + kb.u.b($$0));
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+   @Override
+   public eml cg() {
+      if (this.u()) {
+         bmf $$0 = this.R_();
+         if ($$0 != null) {
+            return $$0.cg();
+         }
       }
 
-      public bna.a a(bmw $$0) {
-         this.b($$0);
-         return this;
+      return super.cg();
+   }
+
+   @Override
+   public boolean s(blp $$0) {
+      if (this.u()) {
+         bmf $$1 = this.R_();
+         if ($$0 == $$1) {
+            return true;
+         }
+
+         if ($$1 != null) {
+            return $$1.s($$0);
+         }
       }
 
-      public bna.a a(bmw $$0, double $$1) {
-         bmx $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
+      return super.s($$0);
+   }
+
+   @Override
+   public void a(bkn $$0) {
+      if (!this.dM().B && this.dM().Z().b(cte.n) && this.R_() instanceof ana) {
+         this.R_().a(this.eK().a());
       }
 
-      public bna a() {
-         this.b = true;
-         return new bna(this.a);
-      }
+      super.a($$0);
+   }
+
+   public boolean ge() {
+      return this.bW;
+   }
+
+   public void z(boolean $$0) {
+      this.bW = $$0;
    }
 }

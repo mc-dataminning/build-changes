@@ -1,42 +1,48 @@
 import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class bui extends bur {
-   private final bxu a;
+public class bui extends btb {
+   private final cbv a;
    @Nullable
-   private blv b;
-   private final bwj c = bwj.a().a(64.0);
+   private bmf b;
 
-   public bui(bxu $$0) {
-      super($$0, false, true);
+   public bui(cbv $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bsr.a.d));
+      this.a(EnumSet.of(btb.a.a));
    }
 
    @Override
    public boolean a() {
-      ekw $$0 = this.a.cH().c(10.0, 8.0, 10.0);
-      List<? extends blv> $$1 = this.a.dM().a(cee.class, this.c, this.a, $$0);
-      List<cer> $$2 = this.a.dM().a(this.c, this.a, $$0);
-
-      for (blv $$3 : $$1) {
-         cee $$4 = (cee)$$3;
-
-         for (cer $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
-         }
-      }
-
-      return this.b == null ? false : !(this.b instanceof cer) || !this.b.P_() && !((cer)this.b).f();
+      bmf $$0 = this.a.q();
+      return this.a.w() > 0 || $$0 != null && this.a.f((blp)$$0) < 9.0;
    }
 
    @Override
    public void c() {
-      this.a.h(this.b);
-      super.c();
+      this.a.N().n();
+      this.b = this.a.q();
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.f((blp)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.O().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
+      }
    }
 }

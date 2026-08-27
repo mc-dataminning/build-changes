@@ -1,61 +1,95 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cve extends cuq {
-   public static final MapCodec<cve> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ckv.q.fieldOf("color").forGetter(cuq::b), u()).apply($$0, cve::new));
-   public static final djp b = djf.ba;
-   private static final Map<ckv, cvz> c = Maps.newHashMap();
-   private static final elu d = cvz.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public abstract class cve extends cvv {
+   public static final dju a = dae.aE;
+   public static final djr b = djq.r;
 
-   @Override
-   public MapCodec<cve> a() {
-      return a;
-   }
-
-   public cve(ckv $$0, dio.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
-      c.put($$0, this);
+   protected cve(diz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ic.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a(dip $$0, ctb $$1, hv $$2) {
-      return $$1.a_($$2.d()).e();
+   protected abstract MapCodec<? extends cve> a();
+
+   @Override
+   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
+      if ($$1.B) {
+         return bjv.a;
+      } else {
+         this.a($$1, $$2, $$3);
+         return bjv.b;
+      }
+   }
+
+   protected abstract void a(cti var1, hx var2, cfb var3);
+
+   @Override
+   public dja a(cpa $$0) {
+      return this.o().a(a, $$0.g().g());
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return d;
+   public void a(cti $$0, hx $$1, dja $$2, bmf $$3, cmr $$4) {
+      if ($$4.A()) {
+         dgo $$5 = $$0.c_($$1);
+         if ($$5 instanceof dgd) {
+            ((dgd)$$5).a($$4.y());
+         }
+      }
    }
 
    @Override
-   public dip a(coq $$0) {
-      return this.o().a(b, Integer.valueOf(djv.a($$0.i() + 180.0F)));
+   public void a(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dgo $$5 = $$1.c_($$2);
+         if ($$5 instanceof dgd) {
+            if ($$1 instanceof amz) {
+               bjr.a($$1, $$2, (dgd)$$5);
+               ((dgd)$$5).a((amz)$$1, elm.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
    }
 
    @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      return $$1 == ia.a && !$$0.a($$3, $$4) ? cwb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean d_(dja $$0) {
+      return true;
    }
 
    @Override
-   public dip a(dip $$0, dcl $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public int a(dja $$0, cti $$1, hx $$2) {
+      return chu.a($$1.c_($$2));
    }
 
    @Override
-   public dip a(dip $$0, dav $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public dco b_(dja $$0) {
+      return dco.c;
    }
 
    @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(b);
+   public dja a(dja $$0, dcv $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
-   public static cvz a(ckv $$0) {
-      return c.getOrDefault($$0, cwb.iJ);
+   @Override
+   public dja a(dja $$0, dbf $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dgo> dgp<T> a(cti $$0, dgq<T> $$1, dgq<? extends dgd> $$2) {
+      return $$0.B ? null : a($$1, $$2, dgd::a);
    }
 }

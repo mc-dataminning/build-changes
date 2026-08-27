@@ -1,8 +1,5 @@
-public interface afv extends acx, acy {
-   @Override
-   default ud b() {
-      return ud.c;
-   }
+public interface afv {
+   ahd a();
 
-   void a(afx var1);
+   void a(ug var1);
 }

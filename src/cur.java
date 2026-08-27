@@ -1,76 +1,108 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public abstract class cur extends cvz {
-   public static final int a = 3;
-   public static final djg b = djf.r;
+public class cur {
+   public static <T> List<cur.b> a(List<T> $$0, Function<T, List<il<dyd>>> $$1, boolean $$2) {
+      Object2IntMap<dyd> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   @Override
-   protected abstract MapCodec<? extends cur> a();
-
-   protected cur(dio.d $$0) {
-      super($$0);
-   }
-
-   protected abstract Iterable<elb> b(dip var1);
-
-   public static boolean c(dip $$0) {
-      return $$0.b(b) && ($$0.a(arr.ae) || $$0.a(arr.bj)) && $$0.c(b);
-   }
-
-   @Override
-   public void a(csy $$0, dip $$1, ekx $$2, cfj $$3) {
-      if (!$$0.B && $$3.bN() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
+      record a(int a, int b, dyd c) {
       }
-   }
 
-   protected boolean d(dip $$0) {
-      return !$$0.c(b);
-   }
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
 
-   @Override
-   public void a(dip $$0, csy $$1, hv $$2, auf $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<il<dyd>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
 
-   private static void a(csy $$0, elb $$1, auf $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(jv.ab, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, arc.dl, ard.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (ih<dyd> $$12 : $$10.get($$11)) {
+               dyd $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
+            }
+         }
+
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
          }
       }
 
-      $$0.a(jv.aG, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
 
-   public static void a(@Nullable cer $$0, dip $$1, csz $$2, hv $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof cur) {
-         ((cur)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(jv.ab, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && atx.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
       }
 
-      $$2.a(null, $$3, arc.dn, ard.e, 1.0F, 1.0F);
-      $$2.a($$0, dmz.c, $$3);
-   }
+      Collections.reverse($$18);
+      Builder<cur.b> $$25 = ImmutableList.builder();
 
-   private static void a(csz $$0, dip $$1, hv $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   public void a(dip $$0, csy $$1, hv $$2, csq $$3, BiConsumer<cmh, hv> $$4) {
-      if ($$3.j() == csq.a.d && !$$1.y_() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<dyd> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new cur.b($$28));
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+      return $$25.build();
+   }
+
+   public static record b(List<dyd> a, ToIntFunction<dyd> b) {
+      b(List<dyd> $$0) {
+         this($$0, ac.f($$0));
+      }
    }
 }

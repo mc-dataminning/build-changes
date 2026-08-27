@@ -1,61 +1,22 @@
-import java.util.Map;
-import java.util.Map.Entry;
-
 public class ftb {
-   private Map<dip, gfp> a = Map.of();
-   private final gfv b;
+   private final eva a;
+   private final fsn b;
+   private float c;
+   private float d;
 
-   public ftb(gfv $$0) {
+   public ftb(fsn $$0) {
       this.b = $$0;
+      this.a = eva.N();
    }
 
-   public gdo a(dip $$0) {
-      return this.b($$0).e();
+   public void a(float $$0, float $$1) {
+      float $$2 = (float)((double)$$0 * this.a.m.q().c());
+      this.c = b(this.c + $$2 * 0.1F, 360.0F);
+      this.d = b(this.d + $$2 * 0.001F, (float) (Math.PI * 2));
+      this.b.a(this.a, 10.0F, -this.c, $$1);
    }
 
-   public gfp b(dip $$0) {
-      gfp $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
-   }
-
-   public gfv a() {
-      return this.b;
-   }
-
-   public void a(Map<dip, gfp> $$0) {
-      this.a = $$0;
-   }
-
-   public static gfw c(dip $$0) {
-      return a(kb.e.b($$0.b()), $$0);
-   }
-
-   public static gfw a(agt $$0, dip $$1) {
-      return new gfw($$0, b($$1.C()));
-   }
-
-   public static String b(Map<djs<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<djs<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         djs<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
-      }
-
-      return $$1.toString();
-   }
-
-   private static <T extends Comparable<T>> String a(djs<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+   private static float b(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

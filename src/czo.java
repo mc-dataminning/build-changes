@@ -1,106 +1,87 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class czo extends czm implements cwc {
-   public static final djp e = djf.ax;
-   public static final int f = 25;
-   private final double c;
+public class czo extends dag {
+   public static final MapCodec<czo> a = b(czo::new);
+   public static final int b = 3;
+   public static final dka c = djq.as;
+   private static final int f = 4;
+   private static final int g = 2;
 
-   protected czo(dio.d $$0, ia $$1, elu $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.k(this.E.b().a(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<czo> a() {
+      return a;
+   }
+
+   public czo(diz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends czo> a();
-
-   @Override
-   public dip a(csz $$0) {
-      return this.o().a(e, Integer.valueOf($$0.F_().a(25)));
+   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean e_(dip $$0) {
-      return $$0.c(e) < 25;
-   }
+   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         hx.a $$4 = new hx.a();
 
-   @Override
-   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         hv $$4 = $$2.a(this.a);
-         if (this.g($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.z));
+         for (ic $$5 : ic.values()) {
+            $$4.a($$2, $$5);
+            dja $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, aui.a($$3, 20, 40));
+            }
          }
-      }
-   }
-
-   protected dip a(dip $$0, auf $$1) {
-      return $$0.a(e);
-   }
-
-   public dip n(dip $$0) {
-      return $$0.a(e, Integer.valueOf(25));
-   }
-
-   public boolean o(dip $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected dip a(dip $$0, dip $$1) {
-      return $$1;
-   }
-
-   @Override
-   public dip a(dip $$0, ia $$1, dip $$2, csz $$3, hv $$4, hv $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, eea.c, eea.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         return this.a($$0, this.b().o());
+         $$1.a($$2, this, aui.a($$3, 20, 40));
+      }
+   }
+
+   private boolean e(dja $$0, cti $$1, hx $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
       }
    }
 
    @Override
-   protected void a(diq.a<cvz, dip> $$0) {
-      $$0.a(e);
+   public void a(dja $$0, cti $$1, hx $$2, cwj $$3, hx $$4, boolean $$5) {
+      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public boolean b(ctb $$0, hv $$1, dip $$2) {
-      return this.g($$0.a_($$1.a(this.a)));
-   }
+   private boolean a(cso $$0, hx $$1, int $$2) {
+      int $$3 = 0;
+      hx.a $$4 = new hx.a();
 
-   @Override
-   public boolean a(csy $$0, auf $$1, hv $$2, dip $$3) {
+      for (ic $$5 : ic.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
       return true;
    }
 
    @Override
-   public void a(amp $$0, auf $$1, hv $$2, dip $$3) {
-      hv $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
-      }
+   protected void a(djb.a<cwj, dja> $$0) {
+      $$0.a(c);
    }
 
-   protected abstract int a(auf var1);
-
-   protected abstract boolean g(dip var1);
-
    @Override
-   protected czo c() {
-      return this;
+   public cmr a(ctl $$0, hx $$1, dja $$2) {
+      return cmr.f;
    }
 }

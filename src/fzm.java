@@ -1,38 +1,18 @@
-public class fzm extends fxn<cfl> {
-   private static final agt a = new agt("textures/entity/shulker/spark.png");
-   private static final fsq f = fsq.i(a);
-   private final fkq<cfl> g;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fzm(fxo.a $$0) {
-      super($$0);
-      this.g = new fkq<>($$0.a(flx.bi));
+public class fzm extends fzl<byf, fji<byf>> {
+   private static final Map<byf.a, ahd> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(byf.a.b, new ahd("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(byf.a.a, new ahd("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public fzm(fyf.a $$0) {
+      super($$0, new fji<>($$0.a(fmo.az)), 0.7F);
+      this.a(new gcl<>(this, $$0.c()));
    }
 
-   protected int a(cfl $$0, hv $$1) {
-      return 15;
-   }
-
-   public void a(cfl $$0, float $$1, float $$2, epd $$3, fsi $$4, int $$5) {
-      $$3.a();
-      float $$6 = aty.j($$2, $$0.N, $$0.dC());
-      float $$7 = aty.i($$2, $$0.O, $$0.dE());
-      float $$8 = (float)$$0.ah + $$2;
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(aty.a($$8 * 0.1F) * 180.0F));
-      $$3.a(a.b.rotationDegrees(aty.b($$8 * 0.1F) * 180.0F));
-      $$3.a(a.f.rotationDegrees(aty.a($$8 * 0.15F) * 360.0F));
-      $$3.b(-0.5F, -0.5F, 0.5F);
-      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
-      eph $$9 = $$4.getBuffer(this.g.a(a));
-      this.g.a($$3, $$9, $$5, gdf.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b(1.5F, 1.5F, 1.5F);
-      eph $$10 = $$4.getBuffer(f);
-      this.g.a($$3, $$10, $$5, gdf.d, 1.0F, 1.0F, 1.0F, 0.15F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public agt a(cfl $$0) {
-      return a;
+   public ahd a(byf $$0) {
+      return a.get($$0.w());
    }
 }

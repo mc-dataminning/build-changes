@@ -1,32 +1,74 @@
-public class fww extends fyu<bxl, fij<bxl>> {
-   public fww(fxo.a $$0) {
-      super($$0, new fij<>($$0.a(flx.q)), 0.4F);
-      this.a(new gbb(this, $$0.f()));
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
+
+public class fww implements fwk.a {
+   private final eva a;
+   private double b = Double.MIN_VALUE;
+   private List<blp> c = Collections.emptyList();
+
+   public fww(eva $$0) {
+      this.a = $$0;
    }
 
-   public agt a(bxl $$0) {
-      return $$0.gk();
-   }
+   @Override
+   public void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         blp $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dM().a_($$6, $$6.cH().g(16.0)));
+      }
 
-   protected void a(bxl $$0, epd $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b(0.8F, 0.8F, 0.8F);
-   }
+      cfb $$7 = this.a.s;
+      if ($$7 != null && $$7.aD.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      }
 
-   protected void a(bxl $$0, epd $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = $$0.E($$4);
-      if ($$5 > 0.0F) {
-         $$1.a(0.4F * $$5, 0.15F * $$5, 0.1F * $$5);
-         $$1.a(a.f.rotationDegrees(aty.j($$5, 0.0F, 90.0F)));
-         hv $$6 = $$0.dm();
-
-         for (cer $$8 : $$0.dM().a(cer.class, new ekw($$6).c(2.0, 2.0, 2.0))) {
-            if ($$8.fD()) {
-               $$1.a(0.15F * $$5, 0.0F, 0.0F);
-               break;
-            }
+      for (blp $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
          }
       }
+   }
+
+   private void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4, blp $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.aD.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         hx $$12 = $$5.aJ();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         hx $$13 = $$5.aH();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
+   }
+
+   private double a(blp $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
+   }
+
+   private void a(hx $$0, ept $$1, double $$2, double $$3, double $$4, fsz $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      fsx.a($$1, $$5.getBuffer(fth.w()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      fsx.a(
+         $$1,
+         $$5.getBuffer(fth.w()),
+         this.a.r.a_($$0).b(this.a.r, $$0, elr.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
+         -$$2,
+         -$$3,
+         -$$4,
+         $$7,
+         $$8,
+         $$9,
+         1.0F,
+         false
+      );
    }
 }

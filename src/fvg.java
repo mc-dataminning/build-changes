@@ -1,76 +1,103 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fvg {
-   private final Long2ObjectMap<fvg.a> a = new Long2ObjectOpenHashMap();
+public class fvg implements fuz<dha> {
+   public static final ggj a = new ggj(gee.e, new ahd("entity/conduit/base"));
+   public static final ggj b = new ggj(gee.e, new ahd("entity/conduit/cage"));
+   public static final ggj c = new ggj(gee.e, new ahd("entity/conduit/wind"));
+   public static final ggj d = new ggj(gee.e, new ahd("entity/conduit/wind_vertical"));
+   public static final ggj e = new ggj(gee.e, new ahd("entity/conduit/open_eye"));
+   public static final ggj f = new ggj(gee.e, new ahd("entity/conduit/closed_eye"));
+   private final fmp g;
+   private final fmp h;
+   private final fmp i;
+   private final fmp j;
+   private final fuy k;
 
-   @Nullable
-   public fvf a(csy $$0, hv $$1, hv $$2, int $$3) {
-      int $$4 = ix.a($$1.u() - $$3);
-      int $$5 = ix.a($$1.w() - $$3);
-      int $$6 = ix.a($$2.u() + $$3);
-      int $$7 = ix.a($$2.w() + $$3);
-      fvg.a[][] $$8 = new fvg.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
+   public fvg(fva.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(fmo.A);
+      this.h = $$0.a(fmo.C);
+      this.i = $$0.a(fmo.B);
+      this.j = $$0.a(fmo.z);
+   }
 
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (fvg.a)this.a.computeIfAbsent(csf.c($$9, $$10), $$1x -> new fvg.a($$0.d(csf.a($$1x), csf.b($$1x))));
-         }
-      }
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      $$1.a("eye", fmu.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fmt(0.01F)), fmr.a);
+      return fmv.a($$0, 16, 16);
+   }
 
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
+   public static fmv c() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      $$1.a("wind", fmu.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fmr.a);
+      return fmv.a($$0, 64, 32);
+   }
+
+   public static fmv d() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      $$1.a("shell", fmu.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fmr.a);
+      return fmv.a($$0, 32, 16);
+   }
+
+   public static fmv e() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      $$1.a("shell", fmu.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fmr.a);
+      return fmv.a($$0, 32, 16);
+   }
+
+   public void a(dha $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.d()) {
+         float $$7 = $$0.a(0.0F);
+         epx $$8 = a.a($$3, fth::c);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
       } else {
-         fve[][] $$11 = new fve[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = aui.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, fth::e), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
          }
 
-         return new fvf($$0, $$4, $$5, $$11);
-      }
-   }
-
-   private static boolean a(hv $$0, hv $$1, int $$2, int $$3, fvg.a[][] $$4) {
-      int $$5 = ix.a($$0.u());
-      int $$6 = ix.a($$0.w());
-      int $$7 = ix.a($$1.u());
-      int $$8 = ix.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            dkw $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   static final class a {
-      private final dkw a;
-      @Nullable
-      private fve b;
-
-      a(dkw $$0) {
-         this.a = $$0;
-      }
-
-      public dkw a() {
-         return this.a;
-      }
-
-      public fve b() {
-         if (this.b == null) {
-            this.b = new fve(this.a);
-         }
-
-         return this.b;
+         epx $$13 = ($$12 == 1 ? d : c).a($$3, fth::e);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         eul $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.f() ? e : f).a($$3, fth::e), $$4, $$5);
+         $$2.b();
       }
    }
 }

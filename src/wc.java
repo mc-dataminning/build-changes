@@ -1,78 +1,89 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record wc(String d, @Nullable fm e) implements wd {
-   public static final MapCodec<wc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(wc::b)).apply($$0, wc::new));
-   public static final wd.a<wc> b = new wd.a<>(a, "block");
-
-   public wc(String $$0) {
-      this($$0, a($$0));
-   }
-
+public final class wc {
+   private static final String b = "#";
+   public static final Codec<wc> a = Codec.STRING.comapFlatMap(wc::a, wc::b);
+   private static final Map<n, wc> c = Stream.of(n.values())
+      .filter(n::e)
+      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new wc($$0.f(), $$0.g())));
+   private static final Map<String, wc> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
+   private final int e;
    @Nullable
-   private static fm a(String $$0) {
-      try {
-         return fk.a().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   private final String f;
+
+   private wc(int $$0, String $$1) {
+      this.e = $$0 & 16777215;
+      this.f = $$1;
    }
 
-   @Override
-   public Stream<sj> a(ds $$0) {
-      if (this.e != null) {
-         amp $$1 = $$0.e();
-         hv $$2 = this.e.c($$0);
-         if ($$1.o($$2)) {
-            dgd $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.o());
-            }
-         }
-      }
-
-      return Stream.empty();
+   private wc(int $$0) {
+      this.e = $$0 & 16777215;
+      this.f = null;
    }
 
-   @Override
-   public wd.a<?> a() {
-      return b;
+   public int a() {
+      return this.e;
    }
 
-   @Override
-   public String toString() {
-      return "block=" + this.d;
+   public String b() {
+      return this.f != null ? this.f : this.c();
+   }
+
+   private String c() {
+      return String.format(Locale.ROOT, "#%06X", this.e);
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         wc $$1 = (wc)$$0;
+         return this.e == $$1.e;
       } else {
-         if ($$0 instanceof wc $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
          return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return this.d.hashCode();
+      return Objects.hash(this.e, this.f);
    }
 
-   public String b() {
-      return this.d;
+   @Override
+   public String toString() {
+      return this.b();
    }
 
    @Nullable
-   public fm c() {
-      return this.e;
+   public static wc a(n $$0) {
+      return c.get($$0);
+   }
+
+   public static wc a(int $$0) {
+      return new wc($$0);
+   }
+
+   public static DataResult<wc> a(String $$0) {
+      if ($$0.startsWith("#")) {
+         try {
+            int $$1 = Integer.parseInt($$0.substring(1), 16);
+            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Invalid color value: " + $$0);
+         }
+      } else {
+         wc $$3 = d.get($$0);
+         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
+      }
    }
 }

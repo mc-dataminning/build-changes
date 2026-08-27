@@ -1,26 +1,95 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dou implements csv {
+   private int a;
 
-public record dou(dow b, dot c) {
-   public static final Codec<dou> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dow.a.forGetter(dou::a), dot.a.forGetter(dou::b)).apply($$0, $$0.stable(dou::new))
-   );
+   @Override
+   public int a(amz $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.Z().b(cte.K)) {
+         return 0;
+      } else {
+         aup $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.Y() / 24000L;
+            if ($$4 < 5L || !$$0.P()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cfb $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.P_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dm(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     hx.a $$9 = $$6.dm().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        ih<cuh> $$11 = $$0.t($$9);
+                        if ($$11.a(asa.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dow $$1, dot $$2) {
-      return a.encodeStart($$0, new dou($$1, $$2));
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(doj.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
+
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
+
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dow $$1, is $$2) {
-      return a($$0, $$1, new dot($$2.d(kc.aM)));
-   }
+   private boolean a(amz $$0, hx $$1, aup $$2, boolean $$3) {
+      dja $$4 = $$0.a_($$1);
+      if (!ctt.a($$0, $$1, $$4, $$4.u(), blt.az)) {
+         return false;
+      } else if (!cck.b(blt.az, $$0, bmj.p, $$1, $$2)) {
+         return false;
+      } else {
+         cck $$5 = blt.az.a((cti)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gm();
+            }
 
-   public dow a() {
-      return this.b;
-   }
-
-   public dot b() {
-      return this.c;
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bmj.p, null, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 }

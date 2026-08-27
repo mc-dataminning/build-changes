@@ -1,11 +1,66 @@
-import javax.annotation.Nullable;
+public class fpz extends fqv {
+   fpz(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-public interface fpz<T extends jt> {
-   @Nullable
-   fpw createParticle(T var1, fmt var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public fqr b() {
+      return fqr.b;
+   }
 
-   public interface a<T extends jt> {
-      @Nullable
-      fqw createParticle(T var1, fmt var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = aui.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
+   }
+
+   public static class a implements fqq<ka> {
+      private final fri a;
+
+      public a(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpz $$8 = new fpz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fqq<ka> {
+      private final fri a;
+
+      public b(fri $$0) {
+         this.a = $$0;
+      }
+
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpz $$8 = new fpz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
+      }
    }
 }

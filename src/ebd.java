@@ -1,105 +1,96 @@
-import java.util.Map;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-public class ebd {
-   static final hv a = new hv(4, 0, 15);
-   private static final agt[] b = new agt[]{
-      new agt("shipwreck/with_mast"),
-      new agt("shipwreck/sideways_full"),
-      new agt("shipwreck/sideways_fronthalf"),
-      new agt("shipwreck/sideways_backhalf"),
-      new agt("shipwreck/rightsideup_full"),
-      new agt("shipwreck/rightsideup_fronthalf"),
-      new agt("shipwreck/rightsideup_backhalf"),
-      new agt("shipwreck/with_mast_degraded"),
-      new agt("shipwreck/rightsideup_full_degraded"),
-      new agt("shipwreck/rightsideup_fronthalf_degraded"),
-      new agt("shipwreck/rightsideup_backhalf_degraded")
-   };
-   private static final agt[] c = new agt[]{
-      new agt("shipwreck/with_mast"),
-      new agt("shipwreck/upsidedown_full"),
-      new agt("shipwreck/upsidedown_fronthalf"),
-      new agt("shipwreck/upsidedown_backhalf"),
-      new agt("shipwreck/sideways_full"),
-      new agt("shipwreck/sideways_fronthalf"),
-      new agt("shipwreck/sideways_backhalf"),
-      new agt("shipwreck/rightsideup_full"),
-      new agt("shipwreck/rightsideup_fronthalf"),
-      new agt("shipwreck/rightsideup_backhalf"),
-      new agt("shipwreck/with_mast_degraded"),
-      new agt("shipwreck/upsidedown_full_degraded"),
-      new agt("shipwreck/upsidedown_fronthalf_degraded"),
-      new agt("shipwreck/upsidedown_backhalf_degraded"),
-      new agt("shipwreck/sideways_full_degraded"),
-      new agt("shipwreck/sideways_fronthalf_degraded"),
-      new agt("shipwreck/sideways_backhalf_degraded"),
-      new agt("shipwreck/rightsideup_full_degraded"),
-      new agt("shipwreck/rightsideup_fronthalf_degraded"),
-      new agt("shipwreck/rightsideup_backhalf_degraded")
-   };
-   static final Map<String, agt> d = Map.of("map_chest", egc.H, "treasure_chest", egc.J, "supply_chest", egc.I);
+public class ebd extends dyz {
+   public static final Codec<ebd> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), ebd.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, ebd::new)
+   );
+   private final ebd.a e;
 
-   public static void a(ecp $$0, hv $$1, dcl $$2, dyt $$3, auf $$4, boolean $$5) {
-      agt $$6 = ac.a($$5 ? b : c, $$4);
-      $$3.a(new ebd.a($$0, $$6, $$1, $$2, $$5));
+   public ebd(dyz.c $$0, ebd.a $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   public static class a extends dyy {
-      private final boolean h;
+   @Override
+   public Optional<dyz.b> a(dyz.a $$0) {
+      $$0.f().j();
+      csp $$1 = $$0.h();
+      hx $$2 = new hx($$1.b(), 50, $$1.e());
+      dzr $$3 = new dzr();
+      int $$4 = this.a($$3, $$0);
+      return Optional.of(new dyz.b($$2.b(0, $$4, 0), Either.right($$3)));
+   }
 
-      public a(ecp $$0, agt $$1, hv $$2, dcl $$3, boolean $$4) {
-         super(dzf.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-         this.h = $$4;
+   private int a(dzr $$0, dyz.a $$1) {
+      csp $$2 = $$1.h();
+      dpi $$3 = $$1.f();
+      dkx $$4 = $$1.b();
+      ebc.d $$5 = new ebc.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
+      $$0.a($$5);
+      $$5.a($$5, $$0, $$3);
+      int $$6 = $$4.e();
+      if (this.e == ebd.a.b) {
+         hx $$7 = $$0.d().g();
+         int $$8 = $$4.a($$7.u(), $$7.w(), doj.a.a, $$1.i(), $$1.d());
+         int $$9 = $$8 <= $$6 ? $$6 : aui.b($$3, $$6, $$8);
+         int $$10 = $$9 - $$7.v();
+         $$0.a($$10);
+         return $$10;
+      } else {
+         return $$0.a($$6, $$4.f(), $$3, 10);
+      }
+   }
+
+   @Override
+   public dzi<?> e() {
+      return dzi.h;
+   }
+
+   public static enum a implements ave {
+      a("normal", cwl.U, cwl.n, cwl.dU),
+      b("mesa", cwl.aa, cwl.t, cwl.ki);
+
+      public static final Codec<ebd.a> c = ave.a(ebd.a::values);
+      private static final IntFunction<ebd.a> d = ata.a(Enum::ordinal, values(), ata.a.a);
+      private final String e;
+      private final dja f;
+      private final dja g;
+      private final dja h;
+
+      private a(String $$0, cwj $$1, cwj $$2, cwj $$3) {
+         this.e = $$0;
+         this.f = $$1.o();
+         this.g = $$2.o();
+         this.h = $$3.o();
       }
 
-      public a(ecp $$0, sj $$1) {
-         super(dzf.ab, $$1, $$0, $$1x -> a(dcl.valueOf($$1.l("Rot"))));
-         this.h = $$1.q("isBeached");
+      public String a() {
+         return this.e;
+      }
+
+      public static ebd.a a(int $$0) {
+         return d.apply($$0);
+      }
+
+      public dja b() {
+         return this.f;
+      }
+
+      public dja d() {
+         return this.g;
+      }
+
+      public dja e() {
+         return this.h;
       }
 
       @Override
-      protected void a(dze $$0, sj $$1) {
-         super.a($$0, $$1);
-         $$1.a("isBeached", this.h);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      private static eck a(dcl $$0) {
-         return new eck().a($$0).a(dav.a).a(ebd.a).a(ebq.d);
-      }
-
-      @Override
-      protected void a(String $$0, hv $$1, ctn $$2, auf $$3, dyg $$4) {
-         agt $$5 = ebd.d.get($$0);
-         if ($$5 != null) {
-            bjs.a($$2, $$3, $$1.d(), $$5);
-         }
-      }
-
-      @Override
-      public void a(ctt $$0, ctr $$1, dkm $$2, auf $$3, dyg $$4, csf $$5, hv $$6) {
-         int $$7 = $$0.ak();
-         int $$8 = 0;
-         iz $$9 = this.b.a();
-         dny.a $$10 = this.h ? dny.a.a : dny.a.c;
-         int $$11 = $$9.u() * $$9.w();
-         if ($$11 == 0) {
-            $$8 = $$0.a($$10, this.d.u(), this.d.w());
-         } else {
-            hv $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
-
-            for (hv $$13 : hv.a(this.d, $$12)) {
-               int $$14 = $$0.a($$10, $$13.u(), $$13.w());
-               $$8 += $$14;
-               $$7 = Math.min($$7, $$14);
-            }
-
-            $$8 /= $$11;
-         }
-
-         int $$15 = this.h ? $$7 - $$9.v() / 2 - $$3.a(3) : $$8;
-         this.d = new hv(this.d.u(), $$15, this.d.w());
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      public String c() {
+         return this.e;
       }
    }
 }

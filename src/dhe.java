@@ -1,172 +1,189 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dhe extends dgd implements bjc, emh {
-   private static final int c = 20;
-   private cmh d = cmh.f;
-   private int e;
-   private long f;
-   private long g;
-   private boolean h;
+public class dhe extends dgo implements bkc, emx {
+   public static final String e = "sherds";
+   public static final String f = "item";
+   public static final int g = 1;
+   public long h;
+   @Nullable
+   public dhe.b i;
+   private dhe.a l;
+   private cmr m = cmr.f;
+   @Nullable
+   protected ahd j;
+   protected long k;
 
-   public dhe(hv $$0, dip $$1) {
-      super(dgf.e, $$0, $$1);
+   public dhe(hx $$0, dja $$1) {
+      super(dgq.O, $$0, $$1);
+      this.l = dhe.a.a;
    }
 
    @Override
-   public void a(sj $$0) {
-      super.a($$0);
-      if ($$0.b("RecordItem", 10)) {
-         this.d = cmh.a($$0.p("RecordItem"));
-      }
-
-      this.h = $$0.q("IsPlaying");
-      this.g = $$0.i("RecordStartTick");
-      this.f = $$0.i("TickCount");
-   }
-
-   @Override
-   protected void b(sj $$0) {
+   protected void b(sl $$0) {
       super.b($$0);
-      if (!this.x().b()) {
-         $$0.a("RecordItem", this.x().b(new sj()));
-      }
-
-      $$0.a("IsPlaying", this.h);
-      $$0.a("RecordStartTick", this.g);
-      $$0.a("TickCount", this.f);
-   }
-
-   public boolean f() {
-      return !this.x().b() && this.h;
-   }
-
-   private void a(@Nullable blf $$0, boolean $$1) {
-      if (this.o.a_(this.aB_()) == this.r()) {
-         this.o.a(this.aB_(), this.r().a(dab.b, Boolean.valueOf($$1)), 2);
-         this.o.a(dmz.c, this.aB_(), dmz.a.a($$0, this.r()));
+      this.l.a($$0);
+      if (!this.d_($$0) && !this.m.b()) {
+         $$0.a("item", this.m.b(new sl()));
       }
    }
 
-   @VisibleForTesting
-   public void g() {
-      this.g = this.f;
-      this.h = true;
-      this.o.a(this.aB_(), this.r().b());
-      this.o.a(null, 1010, this.aB_(), cmc.a(this.x().d()));
-      this.e();
-   }
-
-   private void l() {
-      this.h = false;
-      this.o.a(dmz.F, this.aB_(), dmz.a.a(this.r()));
-      this.o.a(this.aB_(), this.r().b());
-      this.o.c(1011, this.aB_(), 0);
-      this.e();
-   }
-
-   private void b(csy $$0, hv $$1, dip $$2) {
-      this.e++;
-      if (this.f() && this.x().d() instanceof cmz $$3) {
-         if (this.a($$3)) {
-            this.l();
-         } else if (this.m()) {
-            this.e = 0;
-            $$0.a(dmz.E, $$1, dmz.a.a($$2));
-            this.a($$0, $$1);
+   @Override
+   public void a(sl $$0) {
+      super.a($$0);
+      this.l = dhe.a.b($$0);
+      if (!this.c_($$0)) {
+         if ($$0.b("item", 10)) {
+            this.m = cmr.a($$0.p("item"));
+         } else {
+            this.m = cmr.f;
          }
       }
-
-      this.f++;
    }
 
-   private boolean a(cmz $$0) {
-      return this.f >= this.g + (long)$$0.y() + 20L;
-   }
-
-   private boolean m() {
-      return this.e >= 20;
+   public ze k() {
+      return ze.a(this);
    }
 
    @Override
-   public cmh x() {
-      return this.d;
+   public sl ax_() {
+      return this.q();
+   }
+
+   public ic l() {
+      return this.r().c(djq.R);
+   }
+
+   public dhe.a m() {
+      return this.l;
+   }
+
+   public void a(cmr $$0) {
+      this.l = dhe.a.b(ckk.a($$0));
+   }
+
+   public cmr w() {
+      return a(this.l);
+   }
+
+   public static cmr a(dhe.a $$0) {
+      cmr $$1 = cmu.eB.am_();
+      sl $$2 = $$0.a(new sl());
+      ckk.a($$1, dgq.O, $$2);
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public ahd az_() {
+      return this.j;
    }
 
    @Override
-   public cmh c(int $$0) {
-      cmh $$1 = this.d;
-      this.d = cmh.f;
-      if (!$$1.b()) {
-         this.a(null, false);
-         this.l();
+   public void a(@Nullable ahd $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public long aA_() {
+      return this.k;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public cmr x() {
+      this.e_(null);
+      return this.m;
+   }
+
+   @Override
+   public cmr c(int $$0) {
+      this.e_(null);
+      cmr $$1 = this.m.a($$0);
+      if (this.m.b()) {
+         this.m = cmr.f;
       }
 
       return $$1;
    }
 
    @Override
-   public void b(cmh $$0) {
-      if ($$0.a(arz.aq) && this.o != null) {
-         this.d = $$0;
-         this.a(null, true);
-         this.g();
-      } else if ($$0.b()) {
-         this.c(1);
-      }
+   public void b(cmr $$0) {
+      this.e_(null);
+      this.m = $$0;
    }
 
    @Override
-   public int ak_() {
-      return 1;
-   }
-
-   @Override
-   public dgd y() {
+   public dgo y() {
       return this;
    }
 
-   @Override
-   public boolean b(int $$0, cmh $$1) {
-      return $$1.a(arz.aq) && this.a($$0).b();
-   }
-
-   @Override
-   public boolean a(bje $$0, int $$1, cmh $$2) {
-      return $$0.a_(cmh::b);
-   }
-
-   private void a(csy $$0, hv $$1) {
-      if ($$0 instanceof amp $$2) {
-         elb $$3 = elb.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.F_().a(4) / 24.0F;
-         $$2.a(jv.X, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+   public void a(dhe.b $$0) {
+      if (this.o != null && !this.o.y_()) {
+         this.o.a(this.aB_(), this.r().b(), 1, $$0.ordinal());
       }
    }
 
-   public void k() {
-      if (this.o != null && !this.o.B) {
-         hv $$0 = this.aB_();
-         cmh $$1 = this.x();
-         if (!$$1.b()) {
-            this.h();
-            elb $$2 = elb.a($$0, 0.5, 1.01, 0.5).a(this.o.z, 0.7F);
-            cmh $$3 = $$1.p();
-            cbe $$4 = new cbe(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
-            $$4.u();
-            this.o.b($$4);
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dhe.b.values().length) {
+         this.h = this.o.X();
+         this.i = dhe.b.values()[$$1];
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public static record a(cmm b, cmm c, cmm d, cmm e) {
+      public static final dhe.a a = new dhe.a(cmu.qI, cmu.qI, cmu.qI, cmu.qI);
+
+      public sl a(sl $$0) {
+         if (this.equals(a)) {
+            return $$0;
+         } else {
+            sr $$1 = new sr();
+            this.a().forEach($$1x -> $$1.add(tg.a(kd.h.b($$1x).toString())));
+            $$0.a("sherds", $$1);
+            return $$0;
+         }
+      }
+
+      public Stream<cmm> a() {
+         return Stream.of(this.b, this.c, this.d, this.e);
+      }
+
+      public static dhe.a b(@Nullable sl $$0) {
+         if ($$0 != null && $$0.b("sherds", 9)) {
+            sr $$1 = $$0.c("sherds", 8);
+            return new dhe.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
+         } else {
+            return a;
+         }
+      }
+
+      private static cmm a(sr $$0, int $$1) {
+         if ($$1 >= $$0.size()) {
+            return cmu.qI;
+         } else {
+            ti $$2 = $$0.k($$1);
+            return kd.h.a(ahd.a($$2.t_()));
          }
       }
    }
 
-   public static void a(csy $$0, hv $$1, dip $$2, dhe $$3) {
-      $$3.b($$0, $$1, $$2);
-   }
+   public static enum b {
+      a(7),
+      b(10);
 
-   @VisibleForTesting
-   public void a(cmh $$0) {
-      this.d = $$0;
-      this.o.a(this.aB_(), this.r().b());
-      this.e();
+      public final int c;
+
+      private b(int $$0) {
+         this.c = $$0;
+      }
    }
 }

@@ -1,110 +1,89 @@
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-public abstract class bxh extends bxf {
-   @Nullable
-   private bxh b;
-   private int c = 1;
+public class bxh {
+   private final hx a;
+   private final ih<bxj> b;
+   private int c;
+   private final Runnable d;
 
-   public bxh(blj<? extends bxh> $$0, csy $$1) {
-      super($$0, $$1);
+   public static Codec<bxh> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  hx.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  aha.a(ke.U).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, bxh::new)
+      );
    }
 
-   @Override
-   protected void B() {
-      super.B();
-      this.bO.a(5, new bsn(this));
+   private bxh(hx $$0, ih<bxj> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.i();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public int fI() {
-      return this.gg();
+   public bxh(hx $$0, ih<bxj> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   public int gg() {
-      return super.fI();
+   @Deprecated
+   @avn
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   protected boolean ge() {
-      return !this.gh();
-   }
-
-   public boolean gh() {
-      return this.b != null && this.b.bx();
-   }
-
-   public bxh a(bxh $$0) {
-      this.b = $$0;
-      $$0.gn();
-      return $$0;
-   }
-
-   public void gi() {
-      this.b.go();
-      this.b = null;
-   }
-
-   private void gn() {
-      this.c++;
-   }
-
-   private void go() {
-      this.c--;
-   }
-
-   public boolean gj() {
-      return this.gk() && this.c < this.gg();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.gk() && this.dM().z.a(200) == 1) {
-         List<? extends bxf> $$0 = this.dM().a((Class<? extends bxf>)this.getClass(), this.cH().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.c = 1;
-         }
-      }
-   }
-
-   public boolean gk() {
-      return this.c > 1;
-   }
-
-   public boolean gl() {
-      return this.f(this.b) <= 121.0;
-   }
-
-   public void gm() {
-      if (this.gh()) {
-         this.N().a(this.b, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends bxh> $$0) {
-      $$0.limit((long)(this.gg() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
-   }
-
-   @Nullable
-   @Override
-   public bmo a(ctn $$0, bjj $$1, blz $$2, @Nullable bmo $$3, @Nullable sj $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 == null) {
-         $$3 = new bxh.a(this);
+   protected boolean b() {
+      if (this.c <= 0) {
+         return false;
       } else {
-         this.a(((bxh.a)$$3).a);
+         this.c--;
+         this.d.run();
+         return true;
       }
-
-      return $$3;
    }
 
-   public static class a implements bmo {
-      public final bxh a;
-
-      public a(bxh $$0) {
-         this.a = $$0;
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
       }
+   }
+
+   public boolean d() {
+      return this.c > 0;
+   }
+
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public hx f() {
+      return this.a;
+   }
+
+   public ih<bxj> g() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((bxh)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

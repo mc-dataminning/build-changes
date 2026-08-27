@@ -1,94 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class cpz implements cpl<bje> {
-   protected final cpi a;
-   protected final cmh b;
-   private final cpq<?> d;
-   private final cpp<?> e;
-   protected final String c;
+public interface cpz<T extends cpv<?>> {
+   cpz<cqc> a = a("crafting_shaped", new cqc.a());
+   cpz<cqe> b = a("crafting_shapeless", new cqe.a());
+   cpz<cpf> c = a("crafting_special_armordye", new cqi<>(cpf::new));
+   cpz<cpi> d = a("crafting_special_bookcloning", new cqi<>(cpi::new));
+   cpz<cpt> e = a("crafting_special_mapcloning", new cqi<>(cpt::new));
+   cpz<cpu> f = a("crafting_special_mapextending", new cqi<>(cpu::new));
+   cpz<cpp> g = a("crafting_special_firework_rocket", new cqi<>(cpp::new));
+   cpz<cpr> h = a("crafting_special_firework_star", new cqi<>(cpr::new));
+   cpz<cpq> i = a("crafting_special_firework_star_fade", new cqi<>(cpq::new));
+   cpz<cqr> j = a("crafting_special_tippedarrow", new cqi<>(cqr::new));
+   cpz<cpg> k = a("crafting_special_bannerduplicate", new cqi<>(cpg::new));
+   cpz<cqf> l = a("crafting_special_shielddecoration", new cqi<>(cqf::new));
+   cpz<cqg> m = a("crafting_special_shulkerboxcoloring", new cqi<>(cqg::new));
+   cpz<cqq> n = a("crafting_special_suspiciousstew", new cqi<>(cqq::new));
+   cpz<cqb> o = a("crafting_special_repairitem", new cqi<>(cqb::new));
+   cpz<cqk> p = a("smelting", new cqh<>(cqk::new, 200));
+   cpz<cph> q = a("blasting", new cqh<>(cph::new, 100));
+   cpz<cqo> r = a("smoking", new cqh<>(cqo::new, 100));
+   cpz<cpj> s = a("campfire_cooking", new cqh<>(cpj::new, 100));
+   cpz<cqp> t = a("stonecutting", new cqj.b<>(cqp::new));
+   cpz<cqm> u = a("smithing_transform", new cqm.a());
+   cpz<cqn> v = a("smithing_trim", new cqn.a());
+   cpz<cpo> w = a("crafting_decorated_pot", new cqi<>(cpo::new));
 
-   public cpz(cpq<?> $$0, cpp<?> $$1, String $$2, cpi $$3, cmh $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
-   }
+   Codec<T> a();
 
-   @Override
-   public cpq<?> e() {
-      return this.d;
-   }
+   T a(ug var1);
 
-   @Override
-   public cpp<?> ar_() {
-      return this.e;
-   }
+   void a(ug var1, T var2);
 
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   @Override
-   public cmh a(is $$0) {
-      return this.b;
-   }
-
-   @Override
-   public io<cpi> a() {
-      io<cpi> $$0 = io.a();
-      $$0.add(this.a);
-      return $$0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public cmh a(bje $$0, is $$1) {
-      return this.b.p();
-   }
-
-   public interface a<T extends cpz> {
-      T create(String var1, cpi var2, cmh var3);
-   }
-
-   public static class b<T extends cpz> implements cpp<T> {
-      final cpz.a<T> x;
-      private final Codec<T> y;
-
-      protected b(cpz.a<T> $$0) {
-         this.x = $$0;
-         this.y = RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     atg.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                     cpi.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     cmh.e.forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-      }
-
-      @Override
-      public Codec<T> a() {
-         return this.y;
-      }
-
-      public T b(ue $$0) {
-         String $$1 = $$0.s();
-         cpi $$2 = cpi.b($$0);
-         cmh $$3 = $$0.r();
-         return this.x.create($$1, $$2, $$3);
-      }
-
-      public void a(ue $$0, T $$1) {
-         $$0.a($$1.c);
-         $$1.a.a($$0);
-         $$0.a($$1.b);
-      }
+   static <S extends cpz<T>, T extends cpv<?>> S a(String $$0, S $$1) {
+      return it.a(kd.t, $$0, $$1);
    }
 }

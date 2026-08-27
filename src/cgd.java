@@ -1,65 +1,34 @@
-public class cgd {
-   public static final cgd a = a("core");
-   public static final cgd b = a("idle");
-   public static final cgd c = a("work");
-   public static final cgd d = a("play");
-   public static final cgd e = a("rest");
-   public static final cgd f = a("meet");
-   public static final cgd g = a("panic");
-   public static final cgd h = a("raid");
-   public static final cgd i = a("pre_raid");
-   public static final cgd j = a("hide");
-   public static final cgd k = a("fight");
-   public static final cgd l = a("celebrate");
-   public static final cgd m = a("admire_item");
-   public static final cgd n = a("avoid");
-   public static final cgd o = a("ride");
-   public static final cgd p = a("play_dead");
-   public static final cgd q = a("long_jump");
-   public static final cgd r = a("ram");
-   public static final cgd s = a("tongue");
-   public static final cgd t = a("swim");
-   public static final cgd u = a("lay_spawn");
-   public static final cgd v = a("sniff");
-   public static final cgd w = a("investigate");
-   public static final cgd x = a("roar");
-   public static final cgd y = a("emerge");
-   public static final cgd z = a("dig");
-   private final String A;
-   private final int B;
-
-   private cgd(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+public class cgd extends cfz {
+   public cgd(blt<? extends cgd> $$0, cti $$1) {
+      super($$0, $$1);
    }
 
-   public String a() {
-      return this.A;
+   public cgd(cti $$0, bmf $$1) {
+      super(blt.J, $$1, $$0);
    }
 
-   private static cgd a(String $$0) {
-      return ir.a(kb.E, $$0, new cgd($$0));
+   public cgd(cti $$0, double $$1, double $$2, double $$3) {
+      super(blt.J, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         cgd $$1 = (cgd)$$0;
-         return this.A.equals($$1.A);
-      } else {
-         return false;
+   protected cmm s() {
+      return cmu.tR;
+   }
+
+   @Override
+   protected float x() {
+      return 0.07F;
+   }
+
+   @Override
+   protected void a(elk $$0) {
+      super.a($$0);
+      if (this.dM() instanceof amz) {
+         this.dM().c(2002, this.dm(), cor.a(cos.c));
+         int $$1 = 3 + this.dM().z.a(5) + this.dM().z.a(5);
+         blv.a((amz)this.dM(), this.dk(), $$1);
+         this.am();
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.B;
-   }
-
-   @Override
-   public String toString() {
-      return this.a();
    }
 }

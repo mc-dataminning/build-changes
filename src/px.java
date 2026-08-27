@@ -1,70 +1,24 @@
-public abstract class px {
-   public static void a(pa<ctx> $$0) {
-      ig<dxs> $$1 = $$0.a(kc.aB);
-      ig<dqb<?>> $$2 = $$0.a(kc.au);
-      $$0.a(cue.a, qa.j($$1, $$2));
-      $$0.a(cue.b, qa.a($$1, $$2, false, false, false));
-      $$0.a(cue.c, qa.a($$1, $$2, true, false, false));
-      $$0.a(cue.d, qa.a($$1, $$2, false, true, false));
-      $$0.a(cue.e, qa.a($$1, $$2, false, true, true));
-      $$0.a(cue.f, qa.d($$1, $$2));
-      $$0.a(cue.g, qa.h($$1, $$2));
-      $$0.a(cue.h, qa.i($$1, $$2));
-      $$0.a(cue.i, qa.b($$1, $$2, false, false, false));
-      $$0.a(cue.j, qa.b($$1, $$2, false, false, true));
-      $$0.a(cue.k, qa.b($$1, $$2, true, false, false));
-      $$0.a(cue.l, qa.g($$1, $$2));
-      $$0.a(cue.m, qa.b($$1, $$2, true, true, false));
-      $$0.a(cue.n, qa.a($$1, $$2, false));
-      $$0.a(cue.o, qa.a($$1, $$2, true));
-      $$0.a(cue.p, qa.h($$1, $$2, false));
-      $$0.a(cue.q, qa.h($$1, $$2, true));
-      $$0.a(cue.r, qa.a($$1, $$2, false, false));
-      $$0.a(cue.s, qa.a($$1, $$2, false, true));
-      $$0.a(cue.t, qa.b($$1, $$2, false));
-      $$0.a(cue.u, qa.b($$1, $$2, false));
-      $$0.a(cue.v, qa.b($$1, $$2, true));
-      $$0.a(cue.w, qa.a($$1, $$2, true, false));
-      $$0.a(cue.x, qa.b($$1, $$2));
-      $$0.a(cue.y, qa.a($$1, $$2));
-      $$0.a(cue.z, qa.c($$1, $$2));
-      $$0.a(cue.A, qa.c($$1, $$2, false));
-      $$0.a(cue.B, qa.c($$1, $$2, false));
-      $$0.a(cue.C, qa.c($$1, $$2, true));
-      $$0.a(cue.D, qa.j($$1, $$2, false));
-      $$0.a(cue.E, qa.j($$1, $$2, true));
-      $$0.a(cue.F, qa.o($$1, $$2));
-      $$0.a(cue.G, qa.n($$1, $$2));
-      $$0.a(cue.H, qa.k($$1, $$2));
-      $$0.a(cue.I, qa.l($$1, $$2));
-      $$0.a(cue.J, qa.m($$1, $$2));
-      $$0.a(cue.K, qa.i($$1, $$2, false));
-      $$0.a(cue.L, qa.i($$1, $$2, true));
-      $$0.a(cue.M, qa.b($$1, $$2, false, false));
-      $$0.a(cue.N, qa.b($$1, $$2, true, false));
-      $$0.a(cue.O, qa.b($$1, $$2, false, true));
-      $$0.a(cue.P, qa.f($$1, $$2));
-      $$0.a(cue.Q, qa.f($$1, $$2, false));
-      $$0.a(cue.R, qa.f($$1, $$2, true));
-      $$0.a(cue.S, qa.e($$1, $$2, false));
-      $$0.a(cue.T, qa.e($$1, $$2, true));
-      $$0.a(cue.U, qa.d($$1, $$2, false));
-      $$0.a(cue.V, qa.d($$1, $$2, true));
-      $$0.a(cue.W, qa.g($$1, $$2, false));
-      $$0.a(cue.X, qa.g($$1, $$2, true));
-      $$0.a(cue.Y, qa.e($$1, $$2));
-      $$0.a(cue.Z, qa.q($$1, $$2));
-      $$0.a(cue.aa, qa.p($$1, $$2));
-      $$0.a(cue.ab, qa.r($$1, $$2));
-      $$0.a(cue.ac, pz.a($$1, $$2));
-      $$0.a(cue.ad, pz.e($$1, $$2));
-      $$0.a(cue.ae, pz.d($$1, $$2));
-      $$0.a(cue.af, pz.b($$1, $$2));
-      $$0.a(cue.ag, pz.c($$1, $$2));
-      $$0.a(cue.ah, py.b($$1, $$2));
-      $$0.a(cue.ai, py.d($$1, $$2));
-      $$0.a(cue.aj, py.c($$1, $$2));
-      $$0.a(cue.ak, py.e($$1, $$2));
-      $$0.a(cue.al, py.a($$1, $$2));
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class px {
+   public static void a(pc<dyz> $$0) {
+      ii<cuh> $$1 = $$0.a(ke.at);
+      ii<eai> $$2 = $$0.a(ke.aG);
+      $$0.a(
+         dyt.H,
+         new eaz(
+            po.a($$1.b(asa.I), Arrays.stream(bmi.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new dzg(dzg.a.a, bij.c()))), dof.b.d, dzk.b),
+            $$2.b(pt.a),
+            Optional.empty(),
+            20,
+            dxj.a(dpd.a(-40), dpd.a(-20)),
+            false,
+            Optional.empty(),
+            116,
+            pt.d
+         )
+      );
    }
 }

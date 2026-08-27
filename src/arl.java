@@ -1,39 +1,59 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class arl<T> implements Iterable<arj<T>> {
-   private final ir<T> a;
-   private final Map<T, arj<T>> b = new IdentityHashMap<>();
-   private final vb c;
+public class arl {
+   public static final Codec<arl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ahd.a.fieldOf("sound_id").forGetter(arl::a), Codec.FLOAT.optionalFieldOf("range").forGetter(arl::b)).apply($$0, arl::a)
+   );
+   public static final Codec<ih<arl>> b = agz.a(ke.af, a);
+   private static final float c = 16.0F;
+   private final ahd d;
+   private final float e;
+   private final boolean f;
 
-   public arl(ir<T> $$0, vb $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   private static arl a(ahd $$0, Optional<Float> $$1) {
+      return $$1.<arl>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   public static arl a(ahd $$0) {
+      return new arl($$0, 16.0F, false);
    }
 
-   public arj<T> a(T $$0, ark $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new arj<>(this, (T)$$1x, $$1));
+   public static arl a(ahd $$0, float $$1) {
+      return new arl($$0, $$1, true);
    }
 
-   public ir<T> a() {
-      return this.a;
+   private arl(ahd $$0, float $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   @Override
-   public Iterator<arj<T>> iterator() {
-      return this.b.values().iterator();
+   public ahd a() {
+      return this.d;
    }
 
-   public arj<T> b(T $$0) {
-      return this.a($$0, ark.b);
+   public float a(float $$0) {
+      if (this.f) {
+         return this.e;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+      }
    }
 
-   public vb b() {
-      return this.c;
+   private Optional<Float> b() {
+      return this.f ? Optional.of(this.e) : Optional.empty();
+   }
+
+   public void a(ug $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b(), ug::a);
+   }
+
+   public static arl b(ug $$0) {
+      ahd $$1 = $$0.t();
+      Optional<Float> $$2 = $$0.b(ug::readFloat);
+      return a($$1, $$2);
    }
 }

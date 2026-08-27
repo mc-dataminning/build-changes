@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ekj extends egq {
+   float b(egp var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ekj {
+   default int a(egp $$0) {
+      return Math.round(this.b($$0));
+   }
+
+   eki b();
 }

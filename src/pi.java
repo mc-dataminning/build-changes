@@ -1,485 +1,318 @@
 import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
 
 public class pi {
-   private static final ags<ecm> M = a("empty");
-   public static final ags<ecm> a = a("zombie_plains");
-   public static final ags<ecm> b = a("zombie_savanna");
-   public static final ags<ecm> c = a("zombie_snowy");
-   public static final ags<ecm> d = a("zombie_taiga");
-   public static final ags<ecm> e = a("zombie_desert");
-   public static final ags<ecm> f = a("mossify_10_percent");
-   public static final ags<ecm> g = a("mossify_20_percent");
-   public static final ags<ecm> h = a("mossify_70_percent");
-   public static final ags<ecm> i = a("street_plains");
-   public static final ags<ecm> j = a("street_savanna");
-   public static final ags<ecm> k = a("street_snowy_or_taiga");
-   public static final ags<ecm> l = a("farm_plains");
-   public static final ags<ecm> m = a("farm_savanna");
-   public static final ags<ecm> n = a("farm_snowy");
-   public static final ags<ecm> o = a("farm_taiga");
-   public static final ags<ecm> p = a("farm_desert");
-   public static final ags<ecm> q = a("outpost_rot");
-   public static final ags<ecm> r = a("bottom_rampart");
-   public static final ags<ecm> s = a("treasure_rooms");
-   public static final ags<ecm> t = a("housing");
-   public static final ags<ecm> u = a("side_wall_degradation");
-   public static final ags<ecm> v = a("stable_degradation");
-   public static final ags<ecm> w = a("bastion_generic_degradation");
-   public static final ags<ecm> x = a("rampart_degradation");
-   public static final ags<ecm> y = a("entrance_replacement");
-   public static final ags<ecm> z = a("bridge");
-   public static final ags<ecm> A = a("roof");
-   public static final ags<ecm> B = a("high_wall");
-   public static final ags<ecm> C = a("high_rampart");
-   public static final ags<ecm> D = a("fossil_rot");
-   public static final ags<ecm> E = a("fossil_coal");
-   public static final ags<ecm> F = a("fossil_diamonds");
-   public static final ags<ecm> G = a("ancient_city_start_degradation");
-   public static final ags<ecm> H = a("ancient_city_generic_degradation");
-   public static final ags<ecm> I = a("ancient_city_walls_degradation");
-   public static final ags<ecm> J = a("trail_ruins_houses_archaeology");
-   public static final ags<ecm> K = a("trail_ruins_roads_archaeology");
-   public static final ags<ecm> L = a("trail_ruins_tower_top_archaeology");
+   public static final ahc<eai> a = pj.a("village/plains/town_centers");
+   private static final ahc<eai> b = pj.a("village/plains/terminators");
 
-   private static ags<ecm> a(String $$0) {
-      return ags.a(kc.aD, new agt($$0));
-   }
-
-   private static void a(pa<ecm> $$0, ags<ecm> $$1, List<ecl> $$2) {
-      $$0.a($$1, new ecm($$2));
-   }
-
-   public static void a(pa<ecm> $$0) {
-      ig<cvz> $$1 = $$0.a(kc.f);
-      ecd $$2 = new ecd(new ecf(cwb.pr, 0.01F), ebm.b, cwb.pC.o());
-      ecd $$3 = new ecd(new ecf(cwb.pC, 0.5F), ebm.b, cwb.pr.o());
-      a($$0, M, ImmutableList.of());
-      a(
-         $$0,
+   public static void a(pc<eai> $$0) {
+      ii<dyd> $$1 = $$0.a(ke.aC);
+      ih<dyd> $$2 = $$1.b(qz.f);
+      ih<dyd> $$3 = $$1.b(qz.k);
+      ih<dyd> $$4 = $$1.b(qz.a);
+      ii<ecx> $$5 = $$0.a(ke.aE);
+      ih<ecx> $$6 = $$5.b(pk.f);
+      ih<ecx> $$7 = $$5.b(pk.g);
+      ih<ecx> $$8 = $$5.b(pk.h);
+      ih<ecx> $$9 = $$5.b(pk.a);
+      ih<ecx> $$10 = $$5.b(pk.i);
+      ih<ecx> $$11 = $$5.b(pk.l);
+      ii<eai> $$12 = $$0.a(ke.aG);
+      ih<eai> $$13 = $$12.b(pj.a);
+      ih<eai> $$14 = $$12.b(b);
+      $$0.a(
          a,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.m, 0.8F), ebm.b, cwb.cn.o()),
-                  new ecd(new ecq(arr.p), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cp), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cq), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.m, 0.07F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.cn, 0.07F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.hj, 0.07F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.U, 0.05F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.n, 0.1F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.cu, 0.1F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.al, 0.02F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.eY, 0.5F), ebm.b, cwb.bs.o()),
-                  new ecd[]{
-                     new ecd(
-                        new ebt(cwb.eY.o().a(czz.a, Boolean.valueOf(true)).a(czz.c, Boolean.valueOf(true))),
-                        ebm.b,
-                        cwb.hL.o().a(czz.a, Boolean.valueOf(true)).a(czz.c, Boolean.valueOf(true))
-                     ),
-                     new ecd(
-                        new ebt(cwb.eY.o().a(czz.b, Boolean.valueOf(true)).a(czz.d, Boolean.valueOf(true))),
-                        ebm.b,
-                        cwb.hL.o().a(czz.b, Boolean.valueOf(true)).a(czz.d, Boolean.valueOf(true))
-                     ),
-                     new ecd(new ecf(cwb.cB, 0.3F), ebm.b, cwb.gt.o()),
-                     new ecd(new ecf(cwb.cB, 0.2F), ebm.b, cwb.gu.o()),
-                     new ecd(new ecf(cwb.cB, 0.1F), ebm.b, cwb.kD.o())
-                  }
-               )
-            )
+         new eai(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
+               Pair.of(eag.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
+               Pair.of(eag.a("village/plains/town_centers/plains_meeting_point_2"), 50),
+               Pair.of(eag.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
+               Pair.of(eag.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
+               Pair.of(eag.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
+               Pair.of(eag.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
+               Pair.of(eag.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
+            ),
+            eai.a.b
          )
       );
-      a(
+      pj.a(
          $$0,
+         "village/plains/streets",
+         new eai(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/streets/corner_01", $$10), 2),
+               Pair.of(eag.a("village/plains/streets/corner_02", $$10), 2),
+               Pair.of(eag.a("village/plains/streets/corner_03", $$10), 2),
+               Pair.of(eag.a("village/plains/streets/straight_01", $$10), 4),
+               Pair.of(eag.a("village/plains/streets/straight_02", $$10), 4),
+               Pair.of(eag.a("village/plains/streets/straight_03", $$10), 7),
+               Pair.of(eag.a("village/plains/streets/straight_04", $$10), 7),
+               Pair.of(eag.a("village/plains/streets/straight_05", $$10), 3),
+               Pair.of(eag.a("village/plains/streets/straight_06", $$10), 4),
+               Pair.of(eag.a("village/plains/streets/crossroad_01", $$10), 2),
+               Pair.of(eag.a("village/plains/streets/crossroad_02", $$10), 1),
+               Pair.of(eag.a("village/plains/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eag.a("village/plains/streets/crossroad_04", $$10), 2),
+                  Pair.of(eag.a("village/plains/streets/crossroad_05", $$10), 2),
+                  Pair.of(eag.a("village/plains/streets/crossroad_06", $$10), 2),
+                  Pair.of(eag.a("village/plains/streets/turn_01", $$10), 3)
+               }
+            ),
+            eai.a.a
+         )
+      );
+      pj.a(
+         $$0,
+         "village/plains/zombie/streets",
+         new eai(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/zombie/streets/corner_01", $$10), 2),
+               Pair.of(eag.a("village/plains/zombie/streets/corner_02", $$10), 2),
+               Pair.of(eag.a("village/plains/zombie/streets/corner_03", $$10), 2),
+               Pair.of(eag.a("village/plains/zombie/streets/straight_01", $$10), 4),
+               Pair.of(eag.a("village/plains/zombie/streets/straight_02", $$10), 4),
+               Pair.of(eag.a("village/plains/zombie/streets/straight_03", $$10), 7),
+               Pair.of(eag.a("village/plains/zombie/streets/straight_04", $$10), 7),
+               Pair.of(eag.a("village/plains/zombie/streets/straight_05", $$10), 3),
+               Pair.of(eag.a("village/plains/zombie/streets/straight_06", $$10), 4),
+               Pair.of(eag.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
+               Pair.of(eag.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(eag.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eag.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(eag.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(eag.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(eag.a("village/plains/zombie/streets/turn_01", $$10), 3)
+               }
+            ),
+            eai.a.a
+         )
+      );
+      pj.a(
+         $$0,
+         "village/plains/houses",
+         new eai(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/houses/plains_small_house_1", $$6), 2),
+               Pair.of(eag.a("village/plains/houses/plains_small_house_2", $$6), 2),
+               Pair.of(eag.a("village/plains/houses/plains_small_house_3", $$6), 2),
+               Pair.of(eag.a("village/plains/houses/plains_small_house_4", $$6), 2),
+               Pair.of(eag.a("village/plains/houses/plains_small_house_5", $$6), 2),
+               Pair.of(eag.a("village/plains/houses/plains_small_house_6", $$6), 1),
+               Pair.of(eag.a("village/plains/houses/plains_small_house_7", $$6), 2),
+               Pair.of(eag.a("village/plains/houses/plains_small_house_8", $$6), 3),
+               Pair.of(eag.a("village/plains/houses/plains_medium_house_1", $$6), 2),
+               Pair.of(eag.a("village/plains/houses/plains_medium_house_2", $$6), 2),
+               Pair.of(eag.a("village/plains/houses/plains_big_house_1", $$6), 2),
+               Pair.of(eag.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
+               new Pair[]{
+                  Pair.of(eag.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_shepherds_house_1"), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_tannery_1", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_cartographer_1", $$6), 1),
+                  Pair.of(eag.a("village/plains/houses/plains_library_1", $$6), 5),
+                  Pair.of(eag.a("village/plains/houses/plains_library_2", $$6), 1),
+                  Pair.of(eag.a("village/plains/houses/plains_masons_house_1", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_temple_3", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_temple_4", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_stable_1", $$6), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_stable_2"), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_large_farm_1", $$11), 4),
+                  Pair.of(eag.a("village/plains/houses/plains_small_farm_1", $$11), 4),
+                  Pair.of(eag.a("village/plains/houses/plains_animal_pen_1"), 1),
+                  Pair.of(eag.a("village/plains/houses/plains_animal_pen_2"), 1),
+                  Pair.of(eag.a("village/plains/houses/plains_animal_pen_3"), 5),
+                  Pair.of(eag.a("village/plains/houses/plains_accessory_1"), 1),
+                  Pair.of(eag.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
+                  Pair.of(eag.a("village/plains/houses/plains_meeting_point_5"), 1),
+                  Pair.of(eag.g(), 10)
+               }
+            ),
+            eai.a.b
+         )
+      );
+      pj.a(
+         $$0,
+         "village/plains/zombie/houses",
+         new eai(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
+               Pair.of(eag.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
+               Pair.of(eag.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(eag.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
+                  Pair.of(eag.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
+                  Pair.of(eag.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_tannery_1", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_cartographer_1", $$9), 1),
+                  Pair.of(eag.a("village/plains/houses/plains_library_1", $$9), 3),
+                  Pair.of(eag.a("village/plains/houses/plains_library_2", $$9), 1),
+                  Pair.of(eag.a("village/plains/houses/plains_masons_house_1", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_temple_3", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_temple_4", $$9), 2),
+                  Pair.of(eag.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_stable_2", $$9), 2),
+                  Pair.of(eag.a("village/plains/houses/plains_large_farm_1", $$9), 4),
+                  Pair.of(eag.a("village/plains/houses/plains_small_farm_1", $$9), 4),
+                  Pair.of(eag.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
+                  Pair.of(eag.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
+                  Pair.of(eag.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
+                  Pair.of(eag.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
+                  Pair.of(eag.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
+                  Pair.of(eag.g(), 10)
+               }
+            ),
+            eai.a.b
+         )
+      );
+      $$0.a(
          b,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecq(arr.p), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cp), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cq), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.r, 0.2F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.hP, 0.2F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.Y, 0.05F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.as, 0.05F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.hk, 0.05F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.hn, 0.05F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.hx, 0.05F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.eY, 0.5F), ebm.b, cwb.bs.o()),
-                  new ecd(
-                     new ebt(cwb.eY.o().a(czz.a, Boolean.valueOf(true)).a(czz.c, Boolean.valueOf(true))),
-                     ebm.b,
-                     cwb.hL.o().a(czz.a, Boolean.valueOf(true)).a(czz.c, Boolean.valueOf(true))
-                  ),
-                  new ecd[]{
-                     new ecd(
-                        new ebt(cwb.eY.o().a(czz.b, Boolean.valueOf(true)).a(czz.d, Boolean.valueOf(true))),
-                        ebm.b,
-                        cwb.hL.o().a(czz.b, Boolean.valueOf(true)).a(czz.d, Boolean.valueOf(true))
-                     ),
-                     new ecd(new ecf(cwb.cB, 0.1F), ebm.b, cwb.fe.o())
-                  }
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         c,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecq(arr.p), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cp), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cq), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.oe), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.o, 0.2F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.ju, 0.4F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.af, 0.05F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.ax, 0.05F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.eY, 0.5F), ebm.b, cwb.bs.o()),
-                  new ecd(
-                     new ebt(cwb.eY.o().a(czz.a, Boolean.valueOf(true)).a(czz.c, Boolean.valueOf(true))),
-                     ebm.b,
-                     cwb.hL.o().a(czz.a, Boolean.valueOf(true)).a(czz.c, Boolean.valueOf(true))
-                  ),
-                  new ecd(
-                     new ebt(cwb.eY.o().a(czz.b, Boolean.valueOf(true)).a(czz.d, Boolean.valueOf(true))),
-                     ebm.b,
-                     cwb.hL.o().a(czz.b, Boolean.valueOf(true)).a(czz.d, Boolean.valueOf(true))
-                  ),
-                  new ecd(new ecf(cwb.cB, 0.1F), ebm.b, cwb.gt.o()),
-                  new ecd[]{new ecd(new ecf(cwb.cB, 0.8F), ebm.b, cwb.gu.o())}
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         d,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.m, 0.8F), ebm.b, cwb.cn.o()),
-                  new ecd(new ecq(arr.p), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cp), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cq), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.og), ebm.b, cwb.og.o().a(cwn.c, Boolean.valueOf(false))),
-                  new ecd(new ecf(cwb.m, 0.08F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.V, 0.08F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.eY, 0.5F), ebm.b, cwb.bs.o()),
-                  new ecd(
-                     new ebt(cwb.eY.o().a(czz.a, Boolean.valueOf(true)).a(czz.c, Boolean.valueOf(true))),
-                     ebm.b,
-                     cwb.hL.o().a(czz.a, Boolean.valueOf(true)).a(czz.c, Boolean.valueOf(true))
-                  ),
-                  new ecd(
-                     new ebt(cwb.eY.o().a(czz.b, Boolean.valueOf(true)).a(czz.d, Boolean.valueOf(true))),
-                     ebm.b,
-                     cwb.hL.o().a(czz.b, Boolean.valueOf(true)).a(czz.d, Boolean.valueOf(true))
-                  ),
-                  new ecd(new ecf(cwb.cB, 0.3F), ebm.b, cwb.fd.o()),
-                  new ecd(new ecf(cwb.cB, 0.2F), ebm.b, cwb.gu.o()),
-                  new ecd[0]
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         e,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecq(arr.p), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cp), ebm.b, cwb.a.o()),
-                  new ecd(new ebr(cwb.cq), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.jS, 0.08F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.aX, 0.1F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.iA, 0.08F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.nl, 0.08F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.ny, 0.08F), ebm.b, cwb.bs.o()),
-                  new ecd(new ecf(cwb.cB, 0.2F), ebm.b, cwb.kD.o()),
-                  new ecd(new ecf(cwb.cB, 0.1F), ebm.b, cwb.fe.o())
-               )
-            )
-         )
-      );
-      a($$0, f, ImmutableList.of(new ech(ImmutableList.of(new ecd(new ecf(cwb.m, 0.1F), ebm.b, cwb.cn.o())))));
-      a($$0, g, ImmutableList.of(new ech(ImmutableList.of(new ecd(new ecf(cwb.m, 0.2F), ebm.b, cwb.cn.o())))));
-      a($$0, h, ImmutableList.of(new ech(ImmutableList.of(new ecd(new ecf(cwb.m, 0.7F), ebm.b, cwb.cn.o())))));
-      a(
-         $$0,
-         i,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ebr(cwb.kE), new ebr(cwb.G), cwb.n.o()),
-                  new ecd(new ecf(cwb.kE, 0.1F), ebm.b, cwb.i.o()),
-                  new ecd(new ebr(cwb.i), new ebr(cwb.G), cwb.G.o()),
-                  new ecd(new ebr(cwb.j), new ebr(cwb.G), cwb.G.o())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         j,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ebr(cwb.kE), new ebr(cwb.G), cwb.r.o()),
-                  new ecd(new ecf(cwb.kE, 0.2F), ebm.b, cwb.i.o()),
-                  new ecd(new ebr(cwb.i), new ebr(cwb.G), cwb.G.o()),
-                  new ecd(new ebr(cwb.j), new ebr(cwb.G), cwb.G.o())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         k,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ebr(cwb.kE), new ebr(cwb.G), cwb.o.o()),
-                  new ecd(new ebr(cwb.kE), new ebr(cwb.dO), cwb.o.o()),
-                  new ecd(new ecf(cwb.kE, 0.2F), ebm.b, cwb.i.o()),
-                  new ecd(new ebr(cwb.i), new ebr(cwb.G), cwb.G.o()),
-                  new ecd(new ebr(cwb.j), new ebr(cwb.G), cwb.G.o())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         l,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.cB, 0.3F), ebm.b, cwb.gt.o()),
-                  new ecd(new ecf(cwb.cB, 0.2F), ebm.b, cwb.gu.o()),
-                  new ecd(new ecf(cwb.cB, 0.1F), ebm.b, cwb.kD.o())
-               )
-            )
-         )
-      );
-      a($$0, m, ImmutableList.of(new ech(ImmutableList.of(new ecd(new ecf(cwb.cB, 0.1F), ebm.b, cwb.fe.o())))));
-      a(
-         $$0,
-         n,
-         ImmutableList.of(new ech(ImmutableList.of(new ecd(new ecf(cwb.cB, 0.1F), ebm.b, cwb.gt.o()), new ecd(new ecf(cwb.cB, 0.8F), ebm.b, cwb.gu.o()))))
-      );
-      a(
-         $$0,
-         o,
-         ImmutableList.of(new ech(ImmutableList.of(new ecd(new ecf(cwb.cB, 0.3F), ebm.b, cwb.fd.o()), new ecd(new ecf(cwb.cB, 0.2F), ebm.b, cwb.gu.o()))))
-      );
-      a(
-         $$0,
-         p,
-         ImmutableList.of(new ech(ImmutableList.of(new ecd(new ecf(cwb.cB, 0.2F), ebm.b, cwb.kD.o()), new ecd(new ecf(cwb.cB, 0.1F), ebm.b, cwb.fe.o()))))
-      );
-      a($$0, q, ImmutableList.of(new ebs(0.05F)));
-      a(
-         $$0,
-         r,
-         ImmutableList.of(
-            new ech(ImmutableList.of(new ecd(new ecf(cwb.kJ, 0.75F), ebm.b, cwb.px.o()), new ecd(new ecf(cwb.px, 0.15F), ebm.b, cwb.pw.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         s,
-         ImmutableList.of(
-            new ech(ImmutableList.of(new ecd(new ecf(cwb.pw, 0.35F), ebm.b, cwb.px.o()), new ecd(new ecf(cwb.py, 0.1F), ebm.b, cwb.px.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         t,
-         ImmutableList.of(
-            new ech(ImmutableList.of(new ecd(new ecf(cwb.pw, 0.3F), ebm.b, cwb.px.o()), new ecd(new ecf(cwb.pr, 1.0E-4F), ebm.b, cwb.a.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         u,
-         ImmutableList.of(
-            new ech(ImmutableList.of(new ecd(new ecf(cwb.py, 0.5F), ebm.b, cwb.a.o()), new ecd(new ecf(cwb.ch, 0.1F), ebm.b, cwb.px.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         v,
-         ImmutableList.of(
-            new ech(ImmutableList.of(new ecd(new ecf(cwb.pw, 0.1F), ebm.b, cwb.px.o()), new ecd(new ecf(cwb.pr, 1.0E-4F), ebm.b, cwb.a.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         w,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.pw, 0.3F), ebm.b, cwb.px.o()),
-                  new ecd(new ecf(cwb.pr, 1.0E-4F), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.ch, 0.3F), ebm.b, cwb.px.o()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         x,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.pw, 0.4F), ebm.b, cwb.px.o()),
-                  new ecd(new ecf(cwb.pr, 0.01F), ebm.b, cwb.px.o()),
-                  new ecd(new ecf(cwb.pw, 1.0E-4F), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.pr, 1.0E-4F), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.ch, 0.3F), ebm.b, cwb.px.o()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         y,
-         ImmutableList.of(
-            new ech(ImmutableList.of(new ecd(new ecf(cwb.py, 0.5F), ebm.b, cwb.a.o()), new ecd(new ecf(cwb.ch, 0.6F), ebm.b, cwb.px.o()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         z,
-         ImmutableList.of(new ech(ImmutableList.of(new ecd(new ecf(cwb.pw, 0.3F), ebm.b, cwb.px.o()), new ecd(new ecf(cwb.pr, 1.0E-4F), ebm.b, cwb.a.o()))))
-      );
-      a(
-         $$0,
-         A,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.pw, 0.3F), ebm.b, cwb.px.o()),
-                  new ecd(new ecf(cwb.pw, 0.15F), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.pw, 0.3F), ebm.b, cwb.pr.o())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         B,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.pw, 0.01F), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.pw, 0.5F), ebm.b, cwb.px.o()),
-                  new ecd(new ecf(cwb.pw, 0.3F), ebm.b, cwb.pr.o()),
-                  $$3
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         C,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(new ecd(new ecf(cwb.ch, 0.3F), ebm.b, cwb.px.o()), new ecd(ebm.b, ebm.b, new ebn(0.0F, 0.05F, 0, 100, ia.a.b), cwb.a.o()), $$3)
-            )
-         )
-      );
-      a($$0, D, ImmutableList.of(new ebs(0.9F), new ece(arr.bH)));
-      a($$0, E, ImmutableList.of(new ebs(0.1F), new ece(arr.bH)));
-      a($$0, F, ImmutableList.of(new ebs(0.1F), new ech(ImmutableList.of(new ecd(new ebr(cwb.R), ebm.b, cwb.cy.o()))), new ece(arr.bH)));
-      a(
-         $$0,
-         G,
-         ImmutableList.of(
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.sW, 0.3F), ebm.b, cwb.tb.o()),
-                  new ecd(new ecf(cwb.sS, 0.3F), ebm.b, cwb.tc.o()),
-                  new ecd(new ecf(cwb.of, 0.05F), ebm.b, cwb.a.o())
-               )
+         new eai(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(eag.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(eag.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(eag.a("village/plains/terminators/terminator_04", $$10), 1)
             ),
-            new ece(arr.bH)
+            eai.a.a
          )
       );
-      a(
+      pj.a($$0, "village/plains/trees", new eai($$13, ImmutableList.of(Pair.of(eag.a($$2), 1)), eai.a.b));
+      pj.a(
          $$0,
-         H,
-         ImmutableList.of(
-            new ebs($$1.b(arr.bN), 0.95F),
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.sW, 0.3F), ebm.b, cwb.tb.o()),
-                  new ecd(new ecf(cwb.sS, 0.3F), ebm.b, cwb.tc.o()),
-                  new ecd(new ecf(cwb.of, 0.05F), ebm.b, cwb.a.o())
-               )
+         "village/plains/decor",
+         new eai(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/plains_lamp_1"), 2), Pair.of(eag.a($$2), 1), Pair.of(eag.a($$3), 1), Pair.of(eag.a($$4), 1), Pair.of(eag.g(), 2)
             ),
-            new ece(arr.bH)
+            eai.a.b
          )
       );
-      a(
+      pj.a(
          $$0,
-         I,
-         ImmutableList.of(
-            new ebs($$1.b(arr.bN), 0.95F),
-            new ech(
-               ImmutableList.of(
-                  new ecd(new ecf(cwb.sW, 0.3F), ebm.b, cwb.tb.o()),
-                  new ecd(new ecf(cwb.sS, 0.3F), ebm.b, cwb.tc.o()),
-                  new ecd(new ecf(cwb.sU, 0.3F), ebm.b, cwb.a.o()),
-                  new ecd(new ecf(cwb.of, 0.05F), ebm.b, cwb.a.o())
-               )
+         "village/plains/zombie/decor",
+         new eai(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/plains_lamp_1", $$9), 1),
+               Pair.of(eag.a($$2), 1),
+               Pair.of(eag.a($$3), 1),
+               Pair.of(eag.a($$4), 1),
+               Pair.of(eag.g(), 2)
             ),
-            new ece(arr.bH)
+            eai.a.b
          )
       );
-      a(
+      pj.a(
          $$0,
-         J,
-         List.of(
-            new ech(
-               List.of(
-                  new ecd(new ecf(cwb.L, 0.2F), ebm.b, cwb.j.o()),
-                  new ecd(new ecf(cwb.L, 0.1F), ebm.b, cwb.k.o()),
-                  new ecd(new ecf(cwb.eM, 0.1F), ebm.b, cwb.eL.o())
-               )
+         "village/plains/villagers",
+         new eai(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eag.a("village/plains/villagers/nitwit"), 1),
+               Pair.of(eag.a("village/plains/villagers/baby"), 1),
+               Pair.of(eag.a("village/plains/villagers/unemployed"), 10)
             ),
-            a(egc.aQ, 6),
-            a(egc.aR, 3)
+            eai.a.b
          )
       );
-      a(
+      pj.a(
          $$0,
-         K,
-         List.of(
-            new ech(
-               List.of(
-                  new ecd(new ecf(cwb.L, 0.2F), ebm.b, cwb.j.o()),
-                  new ecd(new ecf(cwb.L, 0.1F), ebm.b, cwb.k.o()),
-                  new ecd(new ecf(cwb.eM, 0.1F), ebm.b, cwb.eL.o())
-               )
-            ),
-            a(egc.aQ, 2)
+         "village/plains/zombie/villagers",
+         new eai(
+            $$13,
+            ImmutableList.of(Pair.of(eag.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(eag.a("village/plains/zombie/villagers/unemployed"), 10)),
+            eai.a.b
          )
       );
-      a($$0, L, List.of(a(egc.aQ, 2)));
-   }
-
-   private static ebu a(agt $$0, int $$1) {
-      return new ebu(new ech(List.of(new ecd(new ecq(arr.cl), ebm.b, eca.b, cwb.M.o(), new ecs($$0)))), bin.a($$1));
+      pj.a(
+         $$0,
+         "village/common/animals",
+         new eai(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eag.a("village/common/animals/cows_1"), 7),
+               Pair.of(eag.a("village/common/animals/pigs_1"), 7),
+               Pair.of(eag.a("village/common/animals/horses_1"), 1),
+               Pair.of(eag.a("village/common/animals/horses_2"), 1),
+               Pair.of(eag.a("village/common/animals/horses_3"), 1),
+               Pair.of(eag.a("village/common/animals/horses_4"), 1),
+               Pair.of(eag.a("village/common/animals/horses_5"), 1),
+               Pair.of(eag.a("village/common/animals/sheep_1"), 1),
+               Pair.of(eag.a("village/common/animals/sheep_2"), 1),
+               Pair.of(eag.g(), 5)
+            ),
+            eai.a.b
+         )
+      );
+      pj.a(
+         $$0,
+         "village/common/sheep",
+         new eai($$13, ImmutableList.of(Pair.of(eag.a("village/common/animals/sheep_1"), 1), Pair.of(eag.a("village/common/animals/sheep_2"), 1)), eai.a.b)
+      );
+      pj.a(
+         $$0,
+         "village/common/cats",
+         new eai(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eag.a("village/common/animals/cat_black"), 1),
+               Pair.of(eag.a("village/common/animals/cat_british"), 1),
+               Pair.of(eag.a("village/common/animals/cat_calico"), 1),
+               Pair.of(eag.a("village/common/animals/cat_persian"), 1),
+               Pair.of(eag.a("village/common/animals/cat_ragdoll"), 1),
+               Pair.of(eag.a("village/common/animals/cat_red"), 1),
+               Pair.of(eag.a("village/common/animals/cat_siamese"), 1),
+               Pair.of(eag.a("village/common/animals/cat_tabby"), 1),
+               Pair.of(eag.a("village/common/animals/cat_white"), 1),
+               Pair.of(eag.a("village/common/animals/cat_jellie"), 1),
+               Pair.of(eag.g(), 3)
+            ),
+            eai.a.b
+         )
+      );
+      pj.a(
+         $$0,
+         "village/common/butcher_animals",
+         new eai(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eag.a("village/common/animals/cows_1"), 3),
+               Pair.of(eag.a("village/common/animals/pigs_1"), 3),
+               Pair.of(eag.a("village/common/animals/sheep_1"), 1),
+               Pair.of(eag.a("village/common/animals/sheep_2"), 1)
+            ),
+            eai.a.b
+         )
+      );
+      pj.a($$0, "village/common/iron_golem", new eai($$13, ImmutableList.of(Pair.of(eag.a("village/common/iron_golem"), 1)), eai.a.b));
+      pj.a($$0, "village/common/well_bottoms", new eai($$13, ImmutableList.of(Pair.of(eag.a("village/common/well_bottom"), 1)), eai.a.b));
    }
 }

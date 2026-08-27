@@ -1,79 +1,24 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.function.IntFunction;
+public class adl implements xd<adg> {
+   private final bjs a;
 
-public class adl implements wu<acw> {
-   private static final int a = 128;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final cht f;
-   private final cmh g;
-   private final Int2ObjectMap<cmh> h;
-
-   public adl(int $$0, int $$1, int $$2, int $$3, cht $$4, cmh $$5, Int2ObjectMap<cmh> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = Int2ObjectMaps.unmodifiable($$6);
+   public adl(bjs $$0) {
+      this.a = $$0;
    }
 
-   public adl(ue $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.n();
-      this.d = $$0.readShort();
-      this.e = $$0.readByte();
-      this.f = $$0.b(cht.class);
-      IntFunction<Int2ObjectOpenHashMap<cmh>> $$1 = ue.a(Int2ObjectOpenHashMap::new, 128);
-      this.h = Int2ObjectMaps.unmodifiable($$0.a($$1, $$0x -> Integer.valueOf($$0x.readShort()), ue::r));
-      this.g = $$0.r();
-   }
-
-   @Override
-   public void a(ue $$0) {
-      $$0.k(this.b);
-      $$0.c(this.c);
-      $$0.l(this.d);
-      $$0.k(this.e);
-      $$0.a(this.f);
-      $$0.a(this.h, ue::l, ue::a);
-      $$0.a(this.g);
-   }
-
-   public void a(acw $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.b;
+   public adl(ug $$0) {
+      this.a = bjs.a($$0.readUnsignedByte());
    }
 
-   public int d() {
-      return this.d;
+   @Override
+   public void a(ug $$0) {
+      $$0.k(this.a.a());
    }
 
-   public int e() {
-      return this.e;
-   }
-
-   public cmh f() {
-      return this.g;
-   }
-
-   public Int2ObjectMap<cmh> g() {
-      return this.h;
-   }
-
-   public cht h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.c;
+   public bjs a() {
+      return this.a;
    }
 }

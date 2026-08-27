@@ -1,29 +1,21 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class bpr {
-   private static final int a = 1;
+   public static bnx<bmf> a() {
+      return brj.a((Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$0 -> $$0.a((brm<bmf>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bnf<?> $$3 = $$1.dO();
+               cgj $$4 = $$0x.d($$1.dm());
+               if ($$4 == null || $$4.d() || $$4.f()) {
+                  $$3.b(cgn.b);
+                  $$3.a($$0x.Y(), $$0x.X());
+               }
 
-   public static bnn<blx> a(float $$0) {
-      return a($$1 -> $$0);
-   }
-
-   public static bnn<blx> a(Function<blv, Float> $$0) {
-      return bqz.a(
-         (Function<bqz.b<blx>, ? extends App<bqz.c<blx>, brc<blx>>>)($$1 -> $$1.group($$1.a(bux.m), $$1.a(bux.n), $$1.b(bux.o), $$1.a(bux.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     blv $$9 = $$1.b($$4);
-                     Optional<buz> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bno.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bnx($$9, true));
-                        $$2.a(new bva(new bnx($$9, false), $$0.apply($$7), 0));
-                     }
-
-                     return true;
-                  }))
-      );
+               return true;
+            }
+         }))));
    }
 }

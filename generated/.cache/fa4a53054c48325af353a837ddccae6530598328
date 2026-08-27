@@ -1,4 +1,4 @@
-// 23w45a	2026-08-28T00:56:56.0249241	vanilla/Tags for minecraft:item
+// 23w46a	2026-08-28T01:00:02.6300758	vanilla/Tags for minecraft:item
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\items\candles.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\items\jungle_logs.json
 642497f10f9b4cd17f0596ccd068a662779a5143 data\minecraft\tags\items\logs_that_burn.json
@@ -23,8 +23,8 @@ a99c319e7583b7c567fddf608bde6dff744103b2 data\minecraft\tags\items\walls.json
 1ae902776b0942fb7f6424ba52eb2150950f973c data\minecraft\tags\items\acacia_logs.json
 c3344f6e568a707914a420dacbf9b082a8ff1787 data\minecraft\tags\items\stone_bricks.json
 74f68e22bf93a751191e1ec35390adcf191a2880 data\minecraft\tags\items\fences.json
-30cba093322f9f2391402da95a9ae4b07afeea00 data\minecraft\tags\items\stone_crafting_materials.json
 bdb1ff9fc8b24f737e3d121d711574e8d779a3ff data\minecraft\tags\items\beacon_payment_items.json
+30cba093322f9f2391402da95a9ae4b07afeea00 data\minecraft\tags\items\stone_crafting_materials.json
 4b024c07991b0127a93c4927165b70cbc739df3f data\minecraft\tags\items\stairs.json
 002a1f0e0b109cd883572ac23180e47312fdd8bb data\minecraft\tags\items\tall_flowers.json
 002646611f726ba21cc4b5060d0258c405ae2291 data\minecraft\tags\items\lectern_books.json
@@ -67,8 +67,8 @@ b8301ea44cd37172345daf7b728de0a78e6ad149 data\minecraft\tags\items\bamboo_blocks
 64a5131137472b111eb62466b0b98a6cf19cd19c data\minecraft\tags\items\ignored_by_piglin_babies.json
 052ec512148521bd4450ec7d1115d15483c6d8e8 data\minecraft\tags\items\decorated_pot_sherds.json
 64cced731059717fbae6969a456ba5a8fe08d5ad data\minecraft\tags\items\bookshelf_books.json
-1414de47b2bc0b959544ff1a82317739d339fe79 data\minecraft\tags\items\slabs.json
 4d7b608c91d55324829c11f1861e797a47f33cb1 data\minecraft\tags\items\doors.json
+1414de47b2bc0b959544ff1a82317739d339fe79 data\minecraft\tags\items\slabs.json
 8a43b6a8e479edbb422584cf21be637710ab1e49 data\minecraft\tags\items\swords.json
 91c876271eaad016f609198a3c95f649ddc3344a data\minecraft\tags\items\hoes.json
 1c87ccc74dfac728b91e56665ae8157fe7811dd1 data\minecraft\tags\items\trim_templates.json

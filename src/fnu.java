@@ -1,37 +1,26 @@
-import java.util.Locale;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public enum fnu {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
+public interface fnu {
+   fnu a = new fnu() {
+      @Override
+      public CompletableFuture<Optional<cfd>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
+      }
 
-   private final String k;
-   private final vb l;
-   private final vb m;
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
 
-   private fnu(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = vb.c($$1);
-      this.m = vb.c($$1 + ".description");
+   static fnu a(UserApiService $$0, evp $$1, Path $$2) {
+      return (fnu)($$1.g() == evp.a.c ? new fnd($$0, $$1.b(), $$2) : a);
    }
 
-   public String a() {
-      return this.k;
-   }
+   CompletableFuture<Optional<cfd>> a();
 
-   public vb b() {
-      return this.l;
-   }
-
-   public vb c() {
-      return this.m;
-   }
+   boolean b();
 }

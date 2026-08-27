@@ -1,111 +1,59 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class dku<T> implements dlc<T> {
-   private final ik<T> a;
-   private final asv<T> b;
-   private final dld<T> c;
-   private final int d;
+public class dku implements AutoCloseable {
+   private final ctj a;
+   private final Long2ObjectMap<dli> b = new Long2ObjectOpenHashMap();
+   @Nullable
+   private dli c;
+   private long d;
 
-   public dku(ik<T> $$0, int $$1, dld<T> $$2, List<T> $$3) {
-      this($$0, $$1, $$2);
-      $$3.forEach(this.b::c);
-   }
-
-   public dku(ik<T> $$0, int $$1, dld<T> $$2) {
-      this($$0, $$1, $$2, asv.c(1 << $$1));
-   }
-
-   private dku(ik<T> $$0, int $$1, dld<T> $$2, asv<T> $$3) {
+   public dku(ctj $$0) {
       this.a = $$0;
-      this.d = $$1;
-      this.c = $$2;
-      this.b = $$3;
    }
 
-   public static <A> dlc<A> a(int $$0, ik<A> $$1, dld<A> $$2, List<A> $$3) {
-      return new dku<>($$1, $$0, $$2, $$3);
-   }
-
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.b.a($$0);
-      if ($$1 == -1) {
-         $$1 = this.b.c($$0);
-         if ($$1 >= 1 << this.d) {
-            $$1 = this.c.onResize(this.d + 1, $$0);
+   @Nullable
+   public dli a(hx $$0) {
+      int $$1 = this.a.e($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.am()) {
+         long $$2 = iz.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (dli)this.b.computeIfAbsent($$2, $$2x -> {
+               dkw $$3 = this.a.a(iz.a($$0.u()), iz.a($$0.w()));
+               dli $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
          }
-      }
 
-      return $$1;
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         if ($$0.test(this.b.a($$1))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         throw new dlb($$0);
+         return this.c;
       } else {
-         return $$1;
+         return null;
+      }
+   }
+
+   public dja b(hx $$0) {
+      dli $$1 = this.a($$0);
+      if ($$1 == null) {
+         return cwl.a.o();
+      } else {
+         int $$2 = iz.b($$0.u());
+         int $$3 = iz.b($$0.v());
+         int $$4 = iz.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
       }
    }
 
    @Override
-   public void a(ue $$0) {
-      this.b.a();
-      int $$1 = $$0.n();
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.b.c(this.a.b($$0.n()));
+      while (var1.hasNext()) {
+         dli $$0 = (dli)var1.next();
+         $$0.b();
       }
-   }
-
-   @Override
-   public void b(ue $$0) {
-      int $$1 = this.b();
-      $$0.c($$1);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.c(this.a.a(this.b.a($$2)));
-      }
-   }
-
-   @Override
-   public int a() {
-      int $$0 = us.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += us.a(this.a.a(this.b.a($$1)));
-      }
-
-      return $$0;
-   }
-
-   public List<T> d() {
-      ArrayList<T> $$0 = new ArrayList<>();
-      this.b.iterator().forEachRemaining($$0::add);
-      return $$0;
-   }
-
-   @Override
-   public int b() {
-      return this.b.b();
-   }
-
-   @Override
-   public dlc<T> c() {
-      return new dku<>(this.a, this.d, this.c, this.b.c());
    }
 }

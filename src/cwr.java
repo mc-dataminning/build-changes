@@ -1,34 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class cwr extends cxu {
-   public static final MapCodec<cwr> a = b(cwr::new);
-   private static final elu[] b = new elu[]{
-      cvz.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      cvz.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      cvz.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      cvz.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      cvz.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      cvz.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      cvz.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      cvz.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+public class cwr extends cvh {
+   public static final MapCodec<cwr> b = b(cwr::new);
+   public static final int c = 5;
+   private static final ic[] d = ic.values();
 
    @Override
    public MapCodec<cwr> a() {
-      return a;
+      return b;
    }
 
-   public cwr(dio.d $$0) {
+   public cwr(diz.d $$0) {
       super($$0);
    }
 
    @Override
-   protected csx d() {
-      return cmk.tY;
+   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if ($$3.a(5) == 0) {
+         ic $$4 = d[$$3.a(d.length)];
+         hx $$5 = $$2.a($$4);
+         dja $$6 = $$1.a_($$5);
+         cwj $$7 = null;
+         if (g($$6)) {
+            $$7 = cwl.qy;
+         } else if ($$6.a(cwl.qy) && $$6.c(cvi.d) == $$4) {
+            $$7 = cwl.qx;
+         } else if ($$6.a(cwl.qx) && $$6.c(cvi.d) == $$4) {
+            $$7 = cwl.qw;
+         } else if ($$6.a(cwl.qw) && $$6.c(cvi.d) == $$4) {
+            $$7 = cwl.qv;
+         }
+
+         if ($$7 != null) {
+            dja $$8 = $$7.o().a(cvi.d, $$4).a(cvi.c, Boolean.valueOf($$6.u().a() == eel.c));
+            $$1.b($$5, $$8);
+         }
+      }
    }
 
-   @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return b[this.g($$0)];
+   public static boolean g(dja $$0) {
+      return $$0.i() || $$0.a(cwl.G) && $$0.u().e() == 8;
    }
 }

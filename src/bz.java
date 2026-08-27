@@ -8,17 +8,17 @@ public class bz extends cv<bz.a> {
       return bz.a.a;
    }
 
-   public void a(amq $$0, cmh $$1, int $$2) {
+   public void a(ana $$0, cmr $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
    public static record a(Optional<bb> b, Optional<ca> c, ck.d d, ck.d e) implements cv.a {
       public static final Codec<bz.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atg.a(bp.b, "player").forGetter(bz.a::a),
-                  atg.a(ca.a, "item").forGetter(bz.a::b),
-                  atg.a(ck.d.d, "durability", ck.d.c).forGetter(bz.a::c),
-                  atg.a(ck.d.d, "delta", ck.d.c).forGetter(bz.a::d)
+                  atq.a(bp.b, "player").forGetter(bz.a::a),
+                  atq.a(ca.a, "item").forGetter(bz.a::b),
+                  atq.a(ck.d.d, "durability", ck.d.c).forGetter(bz.a::c),
+                  atq.a(ck.d.d, "delta", ck.d.c).forGetter(bz.a::d)
                )
                .apply($$0, bz.a::new)
       );
@@ -31,7 +31,7 @@ public class bz extends cv<bz.a> {
          return am.u.a(new bz.a($$0, $$1, $$2, ck.d.c));
       }
 
-      public boolean a(cmh $$0, int $$1) {
+      public boolean a(cmr $$0, int $$1) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else {

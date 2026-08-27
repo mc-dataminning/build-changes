@@ -1,141 +1,201 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eez implements efb {
-   private static final Logger b = LogUtils.getLogger();
-   private final csy c;
-   private final int d;
-   private final ArrayDeque<eez.c> e = new ArrayDeque<>();
-   private final List<eez.c> f = new ArrayList<>();
-   private int g = 0;
+public class eez {
+   private final List<eex> a;
+   @Nullable
+   private eez.a b;
+   private int c;
+   private final hx d;
+   private final float e;
+   private final boolean f;
 
-   public eez(csy $$0, int $$1) {
-      this.c = $$0;
+   public eez(List<eex> $$0, hx $$1, boolean $$2) {
+      this.a = $$0;
       this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
    }
 
-   @Override
-   public void a(ia $$0, dip $$1, hv $$2, hv $$3, int $$4, int $$5) {
-      this.a($$2, new eez.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
+   public void a() {
+      this.c++;
    }
 
-   @Override
-   public void a(hv $$0, cvz $$1, hv $$2) {
-      this.a($$0, new eez.e($$0, $$1, $$2.i()));
+   public boolean b() {
+      return this.c <= 0;
    }
 
-   @Override
-   public void a(dip $$0, hv $$1, cvz $$2, hv $$3, boolean $$4) {
-      this.a($$1, new eez.a($$0, $$1.i(), $$2, $$3.i(), $$4));
+   public boolean c() {
+      return this.c >= this.a.size();
    }
 
-   @Override
-   public void a(hv $$0, cvz $$1, @Nullable ia $$2) {
-      this.a($$0, new eez.b($$0.i(), $$1, $$2));
+   @Nullable
+   public eex d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
    }
 
-   private void a(hv $$0, eez.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
-         }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
+   public eex a(int $$0) {
+      return this.a.get($$0);
+   }
 
-      if (!$$2) {
-         this.a();
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
       }
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
+   public void a(int $$0, eex $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public elm a(blp $$0, int $$1) {
+      eex $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dg() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dg() + 1.0F)) * 0.5;
+      return new elm($$3, $$4, $$5);
+   }
+
+   public hx d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public elm a(blp $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public hx g() {
+      return this.a.get(this.c).a();
+   }
+
+   public eex h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public eex i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable eez $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            eex $$2 = this.a.get($$1);
+            eex $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
             }
-
-            this.f.clear();
-            eez.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
-   }
-
-   static record a(dip a, hv b, cvz c, hv d, boolean e) implements eez.c {
-      @Override
-      public boolean a(csy $$0) {
-         efb.a($$0, this.a, this.b, this.c, this.d, this.e);
-         return false;
-      }
-   }
-
-   static final class b implements eez.c {
-      private final hv a;
-      private final cvz b;
-      @Nullable
-      private final ia c;
-      private int d = 0;
-
-      b(hv $$0, cvz $$1, @Nullable ia $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         if (efb.a[this.d] == $$2) {
-            this.d++;
-         }
-      }
-
-      @Override
-      public boolean a(csy $$0) {
-         hv $$1 = this.a.a(efb.a[this.d++]);
-         dip $$2 = $$0.a_($$1);
-         efb.a($$0, $$2, $$1, this.b, this.a, false);
-         if (this.d < efb.a.length && efb.a[this.d] == this.c) {
-            this.d++;
          }
 
-         return this.d < efb.a.length;
+         return true;
       }
    }
 
-   interface c {
-      boolean a(csy var1);
+   public boolean j() {
+      return this.f;
    }
 
-   static record d(ia a, dip b, hv c, hv d, int e, int f) implements eez.c {
-      @Override
-      public boolean a(csy $$0) {
-         efb.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
-         return false;
+   @avn
+   void a(eex[] $$0, eex[] $$1, Set<efd> $$2) {
+      this.b = new eez.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public eez.a k() {
+      return this.b;
+   }
+
+   public void a(ug $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
       }
    }
 
-   static record e(hv a, cvz b, hv c) implements eez.c {
-      @Override
-      public boolean a(csy $$0) {
-         dip $$1 = $$0.a_(this.a);
-         efb.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
+   public static eez b(ug $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      hx $$3 = $$0.e();
+      List<eex> $$4 = $$0.a(eex::b);
+      eez.a $$5 = eez.a.b($$0);
+      eez $$6 = new eez($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public hx l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static eex[] c(ug $$0) {
+      eex[] $$1 = new eex[$$0.n()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = eex.b($$0);
+      }
+
+      return $$1;
+   }
+
+   static void a(ug $$0, eex[] $$1) {
+      $$0.c($$1.length);
+
+      for (eex $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public eez n() {
+      eez $$0 = new eez(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(eex[] a, eex[] b, Set<efd> c) {
+
+      public void a(ug $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         eez.a($$0, this.a);
+         eez.a($$0, this.b);
+      }
+
+      public static eez.a b(ug $$0) {
+         HashSet<efd> $$1 = $$0.a(HashSet::new, efd::c);
+         eex[] $$2 = eez.c($$0);
+         eex[] $$3 = eez.c($$0);
+         return new eez.a($$2, $$3, $$1);
       }
    }
 }

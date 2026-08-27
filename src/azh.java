@@ -1,3 +1,4 @@
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
@@ -5,46 +6,65 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public class azh extends DataFix {
-   private final Set<String> a;
-
-   public azh(Schema $$0, boolean $$1, Set<String> $$2) {
+   public azh(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbg.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbg.z.typeName(), bco.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped("ItemRemoveBlockEntityTagFix", $$0, $$3x -> {
-         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
-         if ($$4.isPresent() && this.a.contains($$4.get().getSecond())) {
-            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
-            if ($$5.isPresent()) {
-               Typed<?> $$6 = (Typed<?>)$$5.get();
-               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
-               if ($$7.isPresent()) {
-                  Optional<? extends Dynamic<?>> $$8 = $$6.write().result();
-                  Dynamic<?> $$9 = (Dynamic<?>)($$8.isPresent() ? $$8.get() : (Dynamic)$$6.get(DSL.remainderFinder()));
-                  Dynamic<?> $$10 = $$9.remove("BlockEntityTag");
-                  Optional<? extends Pair<? extends Typed<?>, ?>> $$11 = $$2.type().readTyped($$10).result();
-                  if ($$11.isEmpty()) {
-                     return $$3x;
-                  }
+   protected TypeRewriteRule makeRule() {
+      return this.a(this.getOutputSchema().getTypeRaw(bbq.F));
+   }
 
-                  return $$3x.set($$2, (Typed)$$11.get().getFirst());
-               }
-            }
+   private <R> TypeRewriteRule a(Type<R> $$0) {
+      Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1 = DSL.and(
+         DSL.optional(DSL.field("RecipesUsed", DSL.and(DSL.compoundList($$0, DSL.intType()), DSL.remainderType()))), DSL.remainderType()
+      );
+      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:furnace", this.getInputSchema().getChoiceType(bbq.s, "minecraft:furnace"));
+      OpticFinder<?> $$3 = DSL.namedChoice("minecraft:blast_furnace", this.getInputSchema().getChoiceType(bbq.s, "minecraft:blast_furnace"));
+      OpticFinder<?> $$4 = DSL.namedChoice("minecraft:smoker", this.getInputSchema().getChoiceType(bbq.s, "minecraft:smoker"));
+      Type<?> $$5 = this.getOutputSchema().getChoiceType(bbq.s, "minecraft:furnace");
+      Type<?> $$6 = this.getOutputSchema().getChoiceType(bbq.s, "minecraft:blast_furnace");
+      Type<?> $$7 = this.getOutputSchema().getChoiceType(bbq.s, "minecraft:smoker");
+      Type<?> $$8 = this.getInputSchema().getType(bbq.s);
+      Type<?> $$9 = this.getOutputSchema().getType(bbq.s);
+      return this.fixTypeEverywhereTyped(
+         "FurnaceRecipesFix",
+         $$8,
+         $$9,
+         $$8x -> $$8x.updateTyped($$2, $$5, $$2xx -> this.a($$0, $$1, $$2xx))
+               .updateTyped($$3, $$6, $$2xx -> this.a($$0, $$1, $$2xx))
+               .updateTyped($$4, $$7, $$2xx -> this.a($$0, $$1, $$2xx))
+      );
+   }
+
+   private <R> Typed<?> a(Type<R> $$0, Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1, Typed<?> $$2) {
+      Dynamic<?> $$3 = (Dynamic<?>)$$2.getOrCreate(DSL.remainderFinder());
+      int $$4 = $$3.get("RecipesUsedSize").asInt(0);
+      $$3 = $$3.remove("RecipesUsedSize");
+      List<Pair<R, Integer>> $$5 = Lists.newArrayList();
+
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         String $$7 = "RecipeLocation" + $$6;
+         String $$8 = "RecipeAmount" + $$6;
+         Optional<? extends Dynamic<?>> $$9 = $$3.get($$7).result();
+         int $$10 = $$3.get($$8).asInt(0);
+         if ($$10 > 0) {
+            $$9.ifPresent($$3x -> {
+               Optional<? extends Pair<R, ? extends Dynamic<?>>> $$4x = $$0.read($$3x).result();
+               $$4x.ifPresent($$2xx -> $$5.add(Pair.of($$2xx.getFirst(), $$10)));
+            });
          }
 
-         return $$3x;
-      });
+         $$3 = $$3.remove($$7).remove($$8);
+      }
+
+      return $$2.set(DSL.remainderFinder(), $$1, Pair.of(Either.left(Pair.of($$5, $$3.emptyMap())), $$3));
    }
 }

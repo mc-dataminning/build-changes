@@ -1,42 +1,100 @@
-public class fqy extends fpu {
-   private final blf a;
-   private int b;
-   private final int D;
-   private final jt E;
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   public fqy(fmt $$0, blf $$1, jt $$2) {
-      this($$0, $$1, $$2, 3);
+public class fqy extends frn {
+   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
+   private static final float F = 1.0472F;
+   private int G;
+
+   fqy(fnk $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.G = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
-   public fqy(fmt $$0, blf $$1, jt $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dp());
+   @Override
+   public float b(float $$0) {
+      return this.D * aui.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
    }
 
-   private fqy(fmt $$0, blf $$1, jt $$2, int $$3, elb $$4) {
-      super($$0, $$1.dr(), $$1.e(0.5), $$1.dx(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   @Override
+   public void a(epx $$0, eul $$1, float $$2) {
+      if (this.G <= 0) {
+         this.y = 1.0F - aui.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
+      }
+   }
+
+   private void a(epx $$0, eul $$1, float $$2, Consumer<Quaternionf> $$3) {
+      elm $$4 = $$1.b();
+      float $$5 = (float)(aui.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(aui.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(aui.d((double)$$2, this.f, this.i) - $$4.c());
+      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
+      $$3.accept($$8);
+      $$8.transform(b);
+      Vector3f[] $$9 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$10 = this.b($$2);
+
+      for (int $$11 = 0; $$11 < 4; $$11++) {
+         Vector3f $$12 = $$9[$$11];
+         $$12.rotate($$8);
+         $$12.mul($$10);
+         $$12.add($$5, $$6, $$7);
+      }
+
+      int $$13 = this.a($$2);
+      this.a($$0, $$9[0], this.d(), this.f(), $$13);
+      this.a($$0, $$9[1], this.d(), this.e(), $$13);
+      this.a($$0, $$9[2], this.c(), this.e(), $$13);
+      this.a($$0, $$9[3], this.c(), this.f(), $$13);
+   }
+
+   private void a(epx $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
+      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fqr b() {
+      return fqr.c;
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+      if (this.G > 0) {
+         this.G--;
+      } else {
+         super.a();
+      }
+   }
+
+   public static class a implements fqq<jz> {
+      private final fri a;
+
+      public a(fri $$0) {
+         this.a = $$0;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      public fqn a(jz $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqy $$8 = new fqy($$1, $$2, $$3, $$4, $$0.c());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

@@ -1,66 +1,33 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class erz extends gjl {
-   static final vb b = vb.c("mco.warning");
-   static final vb c = vb.c("mco.info");
-   private final erz.a v;
-   private final vb w;
-   private final vb x;
-   protected final BooleanConsumer a;
-   private final boolean y;
+public class erz {
+   public final eti a = new eti(ac.g(), TimeUnit.MILLISECONDS, ac.b);
+   private final List<eti.e<?>> h;
+   public final eti.e<List<eqz>> b;
+   public final eti.e<erz.a> c;
+   public final eti.e<Integer> d;
+   public final eti.e<Boolean> e;
+   public final eti.e<eqy> f;
+   public final esa g = new esa(new eto());
 
-   public erz(BooleanConsumer $$0, erz.a $$1, vb $$2, vb $$3, boolean $$4) {
-      super(euc.a);
-      this.a = $$0;
-      this.v = $$1;
-      this.w = $$2;
-      this.x = $$3;
-      this.y = $$4;
+   public erz(eqj $$0) {
+      this.c = this.a.a("server list", () -> {
+         erc $$1 = $$0.b();
+         return eqe.b() ? new erz.a($$1.a, $$0.c()) : new erz.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), etj.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), etj.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), etj.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), etj.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), etj.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
    }
 
-   @Override
-   public void aP_() {
-      if (this.y) {
-         this.d(ewh.a(va.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
-         this.d(ewh.a(va.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
-      } else {
-         this.d(ewh.a(va.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
-      }
+   public List<eti.e<?>> a() {
+      return this.h;
    }
 
-   @Override
-   public vb h() {
-      return va.b(this.v.d, this.w, this.x);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.a.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(evw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.v.d, this.g / 2, h(2), this.v.c);
-      $$0.a(this.i, this.w, this.g / 2, h(4), -1);
-      $$0.a(this.i, this.x, this.g / 2, h(6), -1);
-   }
-
-   public static enum a {
-      a(erz.b, -65536),
-      b(erz.c, 8226750);
-
-      public final int c;
-      public final vb d;
-
-      private a(vb $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
-      }
+   public static record a(List<era> a, List<era> b) {
    }
 }

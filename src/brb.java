@@ -1,53 +1,22 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public interface brb<F extends K1, Value> {
-   bux<Value> a();
+public class brb {
+   private static final int a = 36;
 
-   buy b();
+   public static bnx<bmf> a() {
+      return brj.a(
+         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$0 -> $$0.group($$0.a(bvh.x), $$0.a(bvh.y), $$0.a(bvh.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bmf>a($$2).filter($$1xx -> $$1xx.f((blp)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dO().a($$4.Y(), $$4.X());
+                     }
 
-   @Nullable
-   bra<F, Value> a(bmv<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(bux<Value> a) implements brb<Mu<Unit>, Value> {
-      @Override
-      public buy b() {
-         return buy.b;
-      }
-
-      @Override
-      public bra<Mu<Unit>, Value> a(bmv<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new bra<>($$0, this.a, Const.create(Unit.INSTANCE));
-      }
-   }
-
-   public static record b<Value>(bux<Value> a) implements brb<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public buy b() {
-         return buy.a;
-      }
-
-      @Override
-      public bra<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bmv<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new bra<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(bux<Value> a) implements brb<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public buy b() {
-         return buy.c;
-      }
-
-      @Override
-      public bra<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bmv<?> $$0, Optional<Value> $$1) {
-         return new bra<>($$0, this.a, OptionalBox.create($$1));
-      }
+                     return true;
+                  }))
+      );
    }
 }

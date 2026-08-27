@@ -1,12 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record gff(gfg d) {
-   public static final gff a = new gff(gfg.b);
-   public static final Codec<gff> b = RecordCodecBuilder.create($$0 -> $$0.group(atg.a(gfg.a, "scaling", gfg.b).forGetter(gff::a)).apply($$0, gff::new));
-   public static final aot<gff> c = aot.a("gui", b);
+public record gff(ahd a, @Nullable String b, @Nullable ahd c, @Nullable ahd d, gff.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public gfg a() {
-      return this.d;
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      public static gff.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
+
+      public String a() {
+         return this.c;
+      }
    }
 }

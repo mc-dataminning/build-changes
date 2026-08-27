@@ -1,85 +1,60 @@
-public class amg extends amr {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
+public class amg implements Comparable<amg> {
+   private final int a;
+   private final hx b;
+   private int c;
+   private int d;
 
-   public amg(amq $$0) {
-      super($$0);
+   public amg(int $$0, hx $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public hx b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      if ($$0 > 10) {
+         $$0 = 10;
+      }
+
+      this.c = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public void b(int $$0) {
+      this.d = $$0;
+   }
+
+   public int d() {
+      return this.d;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.W();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.c.b(new zt(zt.f, 0.0F));
-      }
-
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
-      }
-
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.c.b(new zt(zt.f, 104.0F));
-            } else {
-               this.d.a(vb.c("demo.day." + $$1));
-            }
-         }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.c.b(new zt(zt.f, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.c.b(new zt(zt.f, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.c.b(new zt(zt.f, 103.0F));
-         }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(vb.c("demo.day.warning"));
-      }
-   }
-
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(vb.c("demo.reminder"));
-         this.g = 0;
-      }
-   }
-
-   @Override
-   public void a(hv $$0, adz.a $$1, ia $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         amg $$1 = (amg)$$0;
+         return this.a == $$1.a;
       } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
+         return false;
       }
    }
 
    @Override
-   public bjl a(amq $$0, csy $$1, cmh $$2, bjk $$3) {
-      if (this.f) {
-         this.f();
-         return bjl.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
+   public int hashCode() {
+      return Integer.hashCode(this.a);
    }
 
-   @Override
-   public bjl a(amq $$0, csy $$1, cmh $$2, bjk $$3, ekx $$4) {
-      if (this.f) {
-         this.f();
-         return bjl.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public int a(amg $$0) {
+      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

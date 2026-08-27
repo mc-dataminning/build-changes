@@ -1,40 +1,31 @@
-public class abf implements wu<yo> {
-   private final double a;
-   private final double b;
-   private final long c;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public abf(dkg $$0) {
-      this.a = $$0.i();
-      this.b = $$0.k();
-      this.c = $$0.j();
+public class abf implements xd<yx> {
+   private final IntList a;
+
+   public abf(IntList $$0) {
+      this.a = new IntArrayList($$0);
    }
 
-   public abf(ue $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.o();
+   public abf(int... $$0) {
+      this.a = new IntArrayList($$0);
+   }
+
+   public abf(ug $$0) {
+      this.a = $$0.a();
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public IntList a() {
       return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public long e() {
-      return this.c;
    }
 }

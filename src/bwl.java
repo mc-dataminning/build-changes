@@ -1,25 +1,37 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
 public class bwl {
-   @Nullable
-   public static elb a(bme $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = bwo.a($$0, $$1);
-      return bwr.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   private final bmh a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
+
+   public bwl(bmh $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
-   public static hv a(bme $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      hv $$8 = bwr.a($$0.eg(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
+   public void a() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   public boolean a(blp $$0) {
+      int $$1 = $$0.aj();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
       } else {
-         hv $$9 = bwr.a($$0, $$1, $$0.eg(), $$8);
-         if (!bwo.a($$9, $$0) && !bwo.a($$7, $$0, $$9)) {
-            $$9 = bwr.a($$9, $$0.dM().ak(), $$1x -> bwo.c($$0, $$1x));
-            return bwo.b($$0, $$9) ? null : $$9;
+         this.a.dM().af().a("hasLineOfSight");
+         boolean $$2 = this.a.E($$0);
+         this.a.dM().af().c();
+         if ($$2) {
+            this.b.add($$1);
          } else {
-            return null;
+            this.c.add($$1);
          }
+
+         return $$2;
       }
    }
 }

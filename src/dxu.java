@@ -1,10 +1,30 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public abstract class dxu extends dxv {
-   @Override
-   public final Stream<hv> a_(dxt $$0, auf $$1, hv $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public enum dxu implements ave {
+   a(ic.b, 1, "ceiling"),
+   b(ic.a, -1, "floor");
+
+   public static final Codec<dxu> c = ave.a(dxu::values);
+   private final ic d;
+   private final int e;
+   private final String f;
+
+   private dxu(ic $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   protected abstract boolean a(dxt var1, auf var2, hv var3);
+   public ic a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
+   }
 }

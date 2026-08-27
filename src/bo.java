@@ -8,13 +8,13 @@ public class bo extends cv<bo.a> {
       return bo.a.a;
    }
 
-   public void a(amq $$0, bkd $$1, float $$2, float $$3, boolean $$4) {
+   public void a(ana $$0, bkn $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
    public static record a(Optional<bb> b, Optional<be> c) implements cv.a {
       public static final Codec<bo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atg.a(bp.b, "player").forGetter(bo.a::a), atg.a(be.a, "damage").forGetter(bo.a::c)).apply($$0, bo.a::new)
+         $$0 -> $$0.group(atq.a(bp.b, "player").forGetter(bo.a::a), atq.a(be.a, "damage").forGetter(bo.a::c)).apply($$0, bo.a::new)
       );
 
       public static an<bo.a> b() {
@@ -29,7 +29,7 @@ public class bo extends cv<bo.a> {
          return am.i.a(new bo.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(amq $$0, bkd $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(ana $$0, bkn $$1, float $$2, float $$3, boolean $$4) {
          return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

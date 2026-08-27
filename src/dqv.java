@@ -1,99 +1,66 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class dqv extends drc<dtn> {
-   private static final diy a = diy.a(cwb.I);
-   private final dip b = cwb.I.o();
-   private final dip c = cwb.jF.o();
-   private final dip d = cwb.aV.o();
-   private final dip an = cwb.G.o();
-
-   public dqv(Codec<dtn> $$0) {
+public class dqv extends drn<dti> {
+   public dqv(Codec<dti> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dre<dtn> $$0) {
-      ctt $$1 = $$0.b();
-      hv $$2 = $$0.e();
-      $$2 = $$2.c();
+   public boolean a(drp<dti> $$0) {
+      cud $$1 = $$0.b();
+      dti $$2 = $$0.f();
+      aup $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
 
-      while ($$1.t($$2) && $$2.v() > $$1.J_() + 2) {
-         $$2 = $$2.d();
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
       }
 
-      if (!a.a($$1.a_($$2))) {
+      if ($$6 == 0) {
          return false;
       } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.t($$2.b($$3, -1, $$4)) && $$1.t($$2.b($$3, -2, $$4))) {
-                  return false;
+         hx.a $$8 = $$0.e().j();
+         hx.a $$9 = $$8.j().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               dti.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
                }
             }
          }
 
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (ia $$8 : ia.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         hv $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (ia $$10 : ia.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<hv> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         auf $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
          return true;
       }
    }
 
-   private static void b(ctt $$0, hv $$1) {
-      $$0.a($$1, cwb.J.o(), 3);
-      $$0.a($$1, dgf.N).ifPresent($$1x -> $$1x.a(egc.aO, $$1.a()));
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
+      }
    }
 }

@@ -1,53 +1,56 @@
-public class fit<T extends blf> extends fjh<T> {
-   private final fly a;
-   private final fly b;
-   private final fly f;
-   private final fly g;
+public class fit extends fjy<bxn> {
+   private final fmp a;
+   private final fmp b;
+   private final fmp f;
+   private final fmp g;
+   private final fmp h;
+   private final fmp i;
+   private final fmp j;
+   private final fmp k;
 
-   public fit(fly $$0) {
+   public fit(fmp $$0) {
+      super(fth::d);
       this.a = $$0;
-      this.b = $$0.b("body");
-      this.f = this.b.b("tail");
-      this.g = this.f.b("tail_fin");
+      this.f = $$0.b("body");
+      this.b = $$0.b("head");
+      this.g = this.f.b("right_wing");
+      this.i = this.g.b("right_wing_tip");
+      this.h = this.f.b("left_wing");
+      this.j = this.h.b("left_wing_tip");
+      this.k = this.f.b("feet");
    }
 
-   public static fme b() {
-      fmg $$0 = new fmg();
-      fmh $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      fmh $$4 = $$1.a("body", fmd.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), fma.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", fmd.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), fma.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         fmd.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fma.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      $$4.a(
-         "right_fin",
-         fmd.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fma.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      fmh $$5 = $$4.a("tail", fmd.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), fma.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", fmd.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), fma.a(0.0F, 0.0F, 9.0F));
-      fmh $$6 = $$4.a("head", fmd.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), fma.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", fmd.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), fma.a);
-      return fme.a($$0, 64, 64);
+   public static fmv b() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      fmy $$2 = $$1.a("body", fmu.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), fmr.a(0.0F, 17.0F, 0.0F));
+      fmy $$3 = $$1.a("head", fmu.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), fmr.a(0.0F, 17.0F, 0.0F));
+      $$3.a("right_ear", fmu.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), fmr.a(-1.5F, -2.0F, 0.0F));
+      $$3.a("left_ear", fmu.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), fmr.a(1.1F, -3.0F, 0.0F));
+      fmy $$4 = $$2.a("right_wing", fmu.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fmr.a(-1.5F, 0.0F, 0.0F));
+      $$4.a("right_wing_tip", fmu.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fmr.a(-2.0F, 0.0F, 0.0F));
+      fmy $$5 = $$2.a("left_wing", fmu.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fmr.a(1.5F, 0.0F, 0.0F));
+      $$5.a("left_wing_tip", fmu.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fmr.a(2.0F, 0.0F, 0.0F));
+      $$2.a("feet", fmu.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), fmr.a(0.0F, 5.0F, 0.0F));
+      return fmv.a($$0, 32, 32);
    }
 
    @Override
-   public fly a() {
+   public fmp a() {
       return this.a;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.dp().i() > 1.0E-7) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * aty.b($$3 * 0.3F));
-         this.f.e = -0.1F * aty.b($$3 * 0.3F);
-         this.g.e = -0.2F * aty.b($$3 * 0.3F);
+   public void a(bxn $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fmp::c);
+      if ($$0.w()) {
+         this.a($$4);
       }
+
+      this.a($$0.d, evu.b, $$3, 1.0F);
+      this.a($$0.e, evu.a, $$3, 1.0F);
+   }
+
+   private void a(float $$0) {
+      this.b.f = $$0 * (float) (Math.PI / 180.0);
    }
 }

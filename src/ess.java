@@ -1,167 +1,167 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ess {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final auy d;
+public class ess extends gkc {
+   private static final ahd a = new ahd("icon/unseen_notification");
+   private static final ahd b = new ahd("icon/news");
+   private static final ahd c = new ahd("icon/invite");
+   private static final ahd v = new ahd("icon/trial_available");
+   private final CompletableFuture<Boolean> w = eqd.a().thenApply($$0 -> $$0.a() == eqd.b.a);
+   @Nullable
+   private eti.c x;
+   @Nullable
+   private ess.a y;
+   private volatile int z;
+   private static boolean A;
+   private static boolean B;
+   private static boolean C;
+   private final ess.a D = new ess.a() {
+      @Override
+      public eti.c a(erz $$0) {
+         eti.c $$1 = $$0.a.a();
+         ess.this.a($$0, $$1);
+         ess.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public ess(Executor $$0, TimeUnit $$1, auy $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final ess.a E = new ess.a() {
+      @Override
+      public eti.c a(erz $$0) {
+         eti.c $$1 = $$0.a.a();
+         ess.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public ess() {
+      super(eus.a);
    }
 
-   public <T> ess.e<T> a(String $$0, Callable<T> $$1, Duration $$2, est $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aN_() {
+      if (this.x != null) {
+         this.x.a();
+      }
+   }
+
+   @Override
+   public void aF_() {
+      super.aF_();
+      this.f.aX().b.a();
+   }
+
+   @Nullable
+   private ess.a C() {
+      boolean $$0 = this.E() && this.w.getNow(false);
+      if (!$$0) {
+         return null;
       } else {
-         return new ess.e<>($$0, $$1, $$4, $$3);
+         return this.D() ? this.D : this.E;
       }
    }
 
-   public ess.c a() {
-      return new ess.c();
-   }
-
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final ess.e<T> b;
-      private final Consumer<T> c;
-      private long d = -1L;
-
-      b(ess.e<T> $$0, Consumer<T> $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      void a(long $$0) {
-         this.b.a($$0);
-         this.a();
-      }
-
-      void a() {
-         ess.d<T> $$0 = this.b.g;
-         if ($$0 != null && this.d < $$0.b) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
+   @Override
+   public void d() {
+      ess.a $$0 = this.C();
+      if (!Objects.equals(this.y, $$0)) {
+         this.y = $$0;
+         if (this.y != null) {
+            this.x = this.y.a(this.f.aX());
+         } else {
+            this.x = null;
          }
       }
 
-      void b() {
-         ess.d<T> $$0 = this.b.g;
-         if ($$0 != null) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void c() {
-         this.b.a();
-         this.d = -1L;
+      if (this.x != null) {
+         this.x.b();
       }
    }
 
-   public class c {
-      private final List<ess.b<?>> b = new ArrayList<>();
+   private boolean D() {
+      return this.f.m.Q().c();
+   }
 
-      public <T> void a(ess.e<T> $$0, Consumer<T> $$1) {
-         ess.b<T> $$2 = ess.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
+   private boolean E() {
+      return this.f.y instanceof fcy;
+   }
+
+   @Override
+   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.w.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(ewm $$0) {
+      int $$1 = this.z;
+      int $$2 = 24;
+      int $$3 = this.h / 4 + 48;
+      int $$4 = this.g / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (C) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
       }
 
-      public void a() {
-         for (ess.b<?> $$0 : this.b) {
-            $$0.b();
+      if (this.y != null && this.y.a()) {
+         if (B) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
          }
-      }
 
-      public void b() {
-         for (ess.b<?> $$0 : this.b) {
-            $$0.a(ess.this.d.get(ess.this.c));
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
          }
-      }
 
-      public void c() {
-         for (ess.b<?> $$0 : this.b) {
-            $$0.c();
+         if (A) {
+            $$0.a(v, $$6 - 10, $$5 + 4, 8, 8);
          }
       }
    }
 
-   static record d<T>(T a, long b) {
+   void a(erz $$0, eti.c $$1) {
+      $$1.a($$0.d, $$0x -> this.z = $$0x);
+      $$1.a($$0.e, $$0x -> A = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.g.a($$1x);
+         B = $$0.g.a();
+      });
    }
 
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final est e;
-      @Nullable
-      private CompletableFuture<ess.a<T>> f;
-      @Nullable
-      ess.d<T> g;
-      private long h = -1L;
+   void b(erz $$0, eti.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         C = false;
 
-      e(String $$1, Callable<T> $$2, long $$3, est $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            ess.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
+         for (eqz $$1x : $$0x) {
+            if (!$$1x.a()) {
+               C = true;
+               break;
             }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new ess.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               ess.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
          }
+      });
+   }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = ess.this.d.get(ess.this.c);
-                  return new ess.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = ess.this.d.get(ess.this.c);
-                  return new ess.a<>(Either.right(var4x), $$3);
-               }
-            }, ess.this.b);
-         }
-      }
+   interface a {
+      eti.c a(erz var1);
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+      boolean a();
    }
 }

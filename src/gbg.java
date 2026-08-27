@@ -1,25 +1,16 @@
-public class gbg extends gbz<bxq, fit<bxq>> {
-   private final fse a;
+public class gbg extends gag {
+   private static final ahd a = new ahd("textures/entity/skeleton/wither_skeleton.png");
 
-   public gbg(fzj<bxq, fit<bxq>> $$0, fse $$1) {
-      super($$0);
-      this.a = $$1;
+   public gbg(fyf.a $$0) {
+      super($$0, fmo.bU, fmo.bV, fmo.bW);
    }
 
-   public void a(epd $$0, fsi $$1, int $$2, bxq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == blp.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = aty.e($$3.dE()) / 60.0F;
-      if ($$3.dE() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
-      }
+   @Override
+   public ahd a(cbs $$0) {
+      return a;
+   }
 
-      cmh $$14 = $$10 ? $$3.eT() : $$3.eU();
-      this.a.a($$3, $$14, cme.h, false, $$0, $$1, $$2);
-      $$0.b();
+   protected void a(cbs $$0, ept $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

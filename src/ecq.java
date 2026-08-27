@@ -1,20 +1,25 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecq extends eci {
-   public static final Codec<ecq> a = asg.a(kc.f).fieldOf("tag").xmap(ecq::new, $$0 -> $$0.b).codec();
-   private final asg<cvz> b;
+public class ecq extends ect {
+   public static final Codec<ecq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kd.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, ecq::new)
+   );
+   private final cwj b;
+   private final float d;
 
-   public ecq(asg<cvz> $$0) {
+   public ecq(cwj $$0, float $$1) {
       this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public boolean a(dip $$0, auf $$1) {
-      return $$0.a(this.b);
+   public boolean a(dja $$0, aup $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
    }
 
    @Override
-   protected ecj<?> a() {
-      return ecj.d;
+   protected ecu<?> a() {
+      return ecu.e;
    }
 }

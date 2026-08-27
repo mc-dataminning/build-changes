@@ -1,77 +1,108 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class bsd extends bsr {
-   private static final bwj d = bwj.b().a(8.0).d();
-   protected final bxi a;
-   private final Class<? extends bxi> e;
-   protected final csy b;
-   @Nullable
-   protected bxi c;
-   private int f;
-   private final double g;
+public class bsd implements bsa {
+   protected final bmh a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
 
-   public bsd(bxi $$0, double $$1) {
-      this($$0, $$1, (Class<? extends bxi>)$$0.getClass());
-   }
-
-   public bsd(bxi $$0, double $$1, Class<? extends bxi> $$2) {
+   public bsd(bmh $$0) {
       this.a = $$0;
-      this.b = $$0.dM();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(bsr.a.a, bsr.a.b));
    }
 
-   @Override
-   public boolean a() {
-      if (!this.a.gi()) {
-         return false;
+   public void a(elm $$0) {
+      this.a($$0.c, $$0.d, $$0.e);
+   }
+
+   public void a(blp $$0) {
+      this.a($$0.dr(), b($$0), $$0.dx());
+   }
+
+   public void a(blp $$0, float $$1, float $$2) {
+      this.a($$0.dr(), b($$0), $$0.dx(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.fH(), (float)this.a.aa());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
+   }
+
+   public void a() {
+      if (this.c()) {
+         this.a.s(0.0F);
+      }
+
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.aW = this.a(this.a.aW, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.s(this.a(this.a.dE(), $$0, this.c)));
       } else {
-         this.c = this.h();
-         return this.c != null;
+         this.a.aW = this.a(this.a.aW, this.a.aU, 10.0F);
+      }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.N().l()) {
+         this.a.aW = aui.c(this.a.aW, this.a.aU, (float)this.a.ab());
       }
    }
 
-   @Override
-   public boolean b() {
-      return this.c.bx() && this.c.gi() && this.f < 60 && !this.c.gb();
+   protected boolean c() {
+      return true;
    }
 
-   @Override
-   public void d() {
-      this.c = null;
-      this.f = 0;
+   public boolean d() {
+      return this.d > 0;
    }
 
-   @Override
-   public void e() {
-      this.a.I().a(this.c, 10.0F, (float)this.a.aa());
-      this.a.N().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
-         this.g();
-      }
+   public double e() {
+      return this.e;
    }
 
-   @Nullable
-   private bxi h() {
-      List<? extends bxi> $$0 = this.b.a(this.e, d, this.a, this.a.cH().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      bxi $$2 = null;
-
-      for (bxi $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gb() && this.a.f($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.f($$3);
-         }
-      }
-
-      return $$2;
+   public double f() {
+      return this.f;
    }
 
-   protected void g() {
-      this.a.a((amp)this.b, this.c);
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.dr();
+      double $$1 = this.f - this.a.dv();
+      double $$2 = this.g - this.a.dx();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(aui.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.dr();
+      double $$1 = this.g - this.a.dx();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(aui.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = aui.c($$0, $$1);
+      float $$4 = aui.a($$3, -$$2, $$2);
+      return $$0 + $$4;
+   }
+
+   private static double b(blp $$0) {
+      return $$0 instanceof bmf ? $$0.dv() : ($$0.cH().b + $$0.cH().e) / 2.0;
    }
 }

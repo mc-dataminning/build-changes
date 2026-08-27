@@ -1,28 +1,28 @@
-public class gbf extends gbz<frh, fkd<frh>> {
-   public gbf(fzj<frh, fkd<frh>> $$0) {
-      super($$0);
+public class gbf extends fzl<cbc, fmf<cbc>> {
+   private static final ahd a = new ahd("textures/entity/wither/wither_invulnerable.png");
+   private static final ahd i = new ahd("textures/entity/wither/wither.png");
+
+   public gbf(fyf.a $$0) {
+      super($$0, new fmf<>($$0.a(fmo.bS)), 1.0F);
+      this.a(new gde(this, $$0.f()));
    }
 
-   public void a(epd $$0, fsi $$1, int $$2, frh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ("deadmau5".equals($$3.ad().getString()) && !$$3.ce()) {
-         eph $$10 = $$1.getBuffer(fsq.c($$3.b().a()));
-         int $$11 = fyp.c($$3, 0.0F);
+   protected int a(cbc $$0, hx $$1) {
+      return 15;
+   }
 
-         for (int $$12 = 0; $$12 < 2; $$12++) {
-            float $$13 = aty.i($$6, $$3.N, $$3.dC()) - aty.i($$6, $$3.aV, $$3.aU);
-            float $$14 = aty.i($$6, $$3.O, $$3.dE());
-            $$0.a();
-            $$0.a(a.d.rotationDegrees($$13));
-            $$0.a(a.b.rotationDegrees($$14));
-            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
-            $$0.a(0.0F, -0.375F, 0.0F);
-            $$0.a(a.b.rotationDegrees(-$$14));
-            $$0.a(a.d.rotationDegrees(-$$13));
-            float $$15 = 1.3333334F;
-            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
-            this.c().a($$0, $$10, $$2, $$11);
-            $$0.b();
-         }
+   public ahd a(cbc $$0) {
+      int $$1 = $$0.A();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(cbc $$0, ept $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.A();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
       }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

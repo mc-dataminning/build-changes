@@ -1,45 +1,96 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cgg {
-   private final cgf a;
-   private final List<cgg.a> b = Lists.newArrayList();
-
-   public cgg(cgf $$0) {
-      this.a = $$0;
+public class cgg extends cfi implements cfq {
+   public cgg(blt<? extends cgg> $$0, cti $$1) {
+      super($$0, $$1);
    }
 
-   public cgg a(int $$0, cgd $$1) {
-      this.b.add(new cgg.a($$0, $$1));
-      return this;
+   public cgg(blt<? extends cgg> $$0, cdf $$1, cti $$2) {
+      super($$0, $$1.dr(), $$1.gf(), $$1.dx(), $$2);
+      this.b($$1);
    }
 
-   public cgf a() {
-      this.b.stream().map(cgg.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cgd $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   @Override
+   protected elh aq() {
+      float $$0 = this.ai().n().a / 2.0F;
+      float $$1 = this.ai().n().b;
+      float $$2 = 0.15F;
+      return new elh(
+         this.dk().c - (double)$$0,
+         this.dk().d - 0.15F,
+         this.dk().e - (double)$$0,
+         this.dk().c + (double)$$0,
+         this.dk().d - 0.15F + (double)$$1,
+         this.dk().e + (double)$$0
+      );
    }
 
-   static class a {
-      private final int a;
-      private final cgd b;
+   @Override
+   protected float a(bmr $$0, blq $$1) {
+      return 0.0F;
+   }
 
-      public a(int $$0, cgd $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public boolean h(blp $$0) {
+      return $$0 instanceof cgg ? false : super.h($$0);
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   protected boolean a(blp $$0) {
+      return $$0 instanceof cgg ? false : super.a($$0);
+   }
 
-      public cgd b() {
-         return this.b;
+   @Override
+   protected void a(elj $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         $$0.a().a(this.dN().a(this, this.w() instanceof bmf $$1 ? $$1 : null), 1.0F);
+         this.y();
       }
+   }
+
+   private void y() {
+      this.dM().a(this, null, null, this.dr(), this.dt(), this.dx(), (float)(3.0 + this.ag.j()), false, cti.a.e, jx.y, jx.z, arm.Be);
+   }
+
+   @Override
+   protected void a(eli $$0) {
+      super.a($$0);
+      this.y();
+      this.am();
+   }
+
+   @Override
+   protected void a(elk $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.am();
+      }
+   }
+
+   @Override
+   protected boolean s() {
+      return false;
+   }
+
+   @Override
+   public cmr q() {
+      return cmr.f;
+   }
+
+   @Override
+   protected float x() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   protected jv u() {
+      return null;
+   }
+
+   @Override
+   protected csr.a ag_() {
+      return csr.a.b;
    }
 }

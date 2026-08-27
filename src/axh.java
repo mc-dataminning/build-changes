@@ -5,61 +5,57 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.DynamicOps;
+import java.util.function.Function;
 
 public class axh extends DataFix {
-   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
-
    public axh(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
    protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = this.getInputSchema().getType(bbg.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bbg.z.typeName(), bco.a()));
-      OpticFinder<?> $$3 = $$1.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bbg.x), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bbg.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
-               Optional<Pair<String, String>> $$3x = $$2x.getOptional($$2);
-               if ($$3x.filter(a::contains).isPresent()) {
-                  Optional<? extends Typed<?>> $$4 = $$2x.getOptionalTyped($$3);
-                  if ($$4.isPresent()) {
-                     Dynamic<?> $$5 = (Dynamic<?>)$$4.get().get(DSL.remainderFinder());
-                     Typed<?> $$6 = $$4.get().set(DSL.remainderFinder(), $$5.update("CustomPotionEffects", this::b));
-                     return $$2x.set($$3, $$6);
-                  }
-               }
-
-               return $$2x;
-            })
-         }
-      );
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("FactorCalculationData", $$1 -> {
-         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
-         $$1 = $$1.remove("effect_changed_timestamp");
-         int $$3 = $$0.get("Duration").asInt(-1);
-         int $$4 = $$2 - $$3;
-         return $$1.set("ticks_active", $$1.createInt($$4));
+      Type<?> $$0 = this.getInputSchema().getType(bbq.c);
+      OpticFinder<?> $$1 = $$0.findField("Level");
+      OpticFinder<?> $$2 = $$1.type().findField("Structures");
+      Type<?> $$3 = this.getOutputSchema().getType(bbq.c);
+      Type<?> $$4 = $$3.findFieldType("structures");
+      return this.fixTypeEverywhereTyped("Chunk Renames; purge Level-tag", $$0, $$3, $$3x -> {
+         Typed<?> $$4x = $$3x.getTyped($$1);
+         Typed<?> $$5 = a($$4x);
+         $$5 = $$5.set(DSL.remainderFinder(), a($$3x, (Dynamic)$$4x.get(DSL.remainderFinder())));
+         $$5 = a($$5, "TileEntities", "block_entities");
+         $$5 = a($$5, "TileTicks", "block_ticks");
+         $$5 = a($$5, "Entities", "entities");
+         $$5 = a($$5, "Sections", "sections");
+         $$5 = $$5.updateTyped($$2, $$4, $$0xx -> a($$0xx, "Starts", "starts"));
+         $$5 = a($$5, "Structures", "structures");
+         return $$5.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("Level"));
       });
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.createList($$0.asStream().map(this::a));
+   private static Typed<?> a(Typed<?> $$0, String $$1, String $$2) {
+      return a($$0, $$1, $$2, $$0.getType().findFieldType($$1)).update(DSL.remainderFinder(), $$1x -> $$1x.remove($$1));
    }
 
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      $$0 = $$0.update("Effects", this::b);
-      $$0 = $$0.update("ActiveEffects", this::b);
-      return $$0.update("CustomPotionEffects", this::b);
+   private static <A> Typed<?> a(Typed<?> $$0, String $$1, String $$2, Type<A> $$3) {
+      Type<Either<A, Unit>> $$4 = DSL.optional(DSL.field($$1, $$3));
+      Type<Either<A, Unit>> $$5 = DSL.optional(DSL.field($$2, $$3));
+      return $$0.update($$4.finder(), $$5, Function.identity());
+   }
+
+   private static <A> Typed<Pair<String, A>> a(Typed<A> $$0) {
+      return new Typed(DSL.named("chunk", $$0.getType()), $$0.getOps(), Pair.of("chunk", $$0.getValue()));
+   }
+
+   private static <T> Dynamic<T> a(Typed<?> $$0, Dynamic<T> $$1) {
+      DynamicOps<T> $$2 = $$1.getOps();
+      Dynamic<T> $$3 = ((Dynamic)$$0.get(DSL.remainderFinder())).convert($$2);
+      DataResult<T> $$4 = $$2.getMap($$1.getValue()).flatMap($$2x -> $$2.mergeToMap($$3.getValue(), $$2x));
+      return $$4.result().map($$1x -> new Dynamic($$2, $$1x)).orElse($$1);
    }
 }

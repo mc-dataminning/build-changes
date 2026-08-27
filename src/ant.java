@@ -1,33 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import net.minecraft.server.MinecraftServer;
 
-public interface ant {
-   ant a = new ant() {
-      @Override
-      public void a() {
+public class ant implements afh {
+   private final MinecraftServer a;
+   private final ue b;
+
+   public ant(MinecraftServer $$0, ue $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public void a(afg $$0) {
+      if ($$0.f() != aff.b) {
+         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
+      } else {
+         this.b.a(aff.b);
+         this.b.a(new aoa(this.a, this.b));
       }
+   }
 
-      @Override
-      public void b() {
-      }
+   @Override
+   public void a(vd $$0) {
+   }
 
-      @Override
-      public CompletableFuture<ang> a(String $$0) {
-         return CompletableFuture.completedFuture(ang.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<ang>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(ang::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<ang> a(String var1);
-
-   CompletableFuture<List<ang>> a(List<String> var1);
+   @Override
+   public boolean c() {
+      return this.b.k();
+   }
 }

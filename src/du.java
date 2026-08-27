@@ -18,11 +18,11 @@ public interface du<T extends du<T>> {
 
    CommandDispatcher<T> x();
 
-   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable gp var4);
+   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable gr var4);
 
    boolean y();
 
-   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable gp $$2) {
+   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable gr $$2) {
       this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
    }
 

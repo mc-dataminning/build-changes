@@ -1,111 +1,61 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class ftp implements epx {
+   private final epx a;
+   private final gef b;
 
-public class ftp {
-   public static final ftp a = new ftp();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final ftp.a[] c;
-   private final agt[] d;
-
-   private ftp() {
-      this.c = new ftp.a[0];
-      this.d = new agt[0];
+   public ftp(epx $$0, gef $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public ftp(gft $$0, ftk $$1, List<fto> $$2) {
-      this.d = $$2.stream().flatMap(fto::b).map(fto.b::a).distinct().toArray(agt[]::new);
-      Object2IntMap<agt> $$3 = new Object2IntOpenHashMap();
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
-      }
-
-      List<ftp.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         fto $$7 = $$2.get($$6);
-         gfp $$8 = this.a($$0, $$1, $$7);
-         ftp.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new ftp.b($$2x, $$1x.b());
-         }).toArray(ftp.b[]::new);
-         $$5.add(new ftp.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new ftp.a[0]);
+   @Override
+   public epx a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Nullable
-   private gfp a(gft $$0, ftk $$1, fto $$2) {
-      gga $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gfq.a);
+   @Override
+   public epx a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
    }
 
-   @Nullable
-   public gfp a(gfp $$0, cmh $$1, @Nullable fmt $$2, @Nullable blv $$3, int $$4) {
-      if (this.c.length != 0) {
-         cmc $$5 = $$1.d();
-         int $$6 = this.d.length;
-         float[] $$7 = new float[$$6];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            agt $$9 = this.d[$$8];
-            gcw $$10 = gcv.a($$5, $$9);
-            if ($$10 != null) {
-               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
-            } else {
-               $$7[$$8] = Float.NEGATIVE_INFINITY;
-            }
-         }
-
-         for (ftp.a $$11 : this.c) {
-            if ($$11.a($$7)) {
-               gfp $$12 = $$11.b;
-               if ($$12 == null) {
-                  return $$0;
-               }
-
-               return $$12;
-            }
-         }
-      }
-
-      return $$0;
+   @Override
+   public epx a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
    }
 
-   static class a {
-      private final ftp.b[] a;
-      @Nullable
-      final gfp b;
-
-      a(ftp.b[] $$0, @Nullable gfp $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (ftp.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   @Override
+   public epx a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   static class b {
-      public final int a;
-      public final float b;
+   @Override
+   public epx b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
 
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public epx a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void l() {
+      this.a.l();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

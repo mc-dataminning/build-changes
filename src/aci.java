@@ -1,24 +1,38 @@
-public record aci(vb a, boolean b) implements wu<yo> {
-   public aci(ue $$0) {
-      this($$0.m(), $$0.readBoolean());
+import javax.annotation.Nullable;
+
+public record aci(String a, String b, int c, @Nullable vd d, @Nullable wt e) implements xd<yx> {
+   public aci(ug $$0) {
+      this($$0.s(), $$0.s(), $$0.n(), $$0.c(ug::m), $$0.c(wv::a));
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, ug::a);
+      $$0.a(this.e, wv::a);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public String d() {
+      return this.b;
    }
 
-   public boolean d() {
-      return this.b;
+   public int e() {
+      return this.c;
+   }
+
+   @Nullable
+   public vd f() {
+      return this.d;
+   }
+
+   @Nullable
+   public wt g() {
+      return this.e;
    }
 }

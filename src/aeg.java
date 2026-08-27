@@ -1,20 +1,20 @@
-public class aeg implements wu<acw> {
+public class aeg implements xd<adg> {
    private final int a;
 
    public aeg(int $$0) {
       this.a = $$0;
    }
 
-   public aeg(ue $$0) {
+   public aeg(ug $$0) {
       this.a = $$0.n();
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
       $$0.c(this.a);
    }
 
-   public void a(acw $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 

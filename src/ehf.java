@@ -1,41 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class ehf extends ehq {
-   public static final Codec<ehf> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ehf::new));
+public class ehf extends ehk {
+   public static final Codec<ehf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kd.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ehf::new)
+   );
+   private final ih<cmm> j;
 
-   private ehf(List<ejd> $$0) {
-      super($$0);
+   private ehf(ih<cmm> $$0, int $$1, int $$2, List<ejo> $$3, List<eic> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public ehs b() {
-      return eht.t;
+   public ehj a() {
+      return ehg.c;
    }
 
    @Override
-   public cmh a(cmh $$0, ege $$1) {
-      Float $$2 = $$1.c(eip.j);
-      if ($$2 != null) {
-         auf $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.L();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.f($$6);
-      }
-
-      return $$0;
+   public void a(Consumer<cmr> $$0, egp $$1) {
+      $$0.accept(new cmr(this.j));
    }
 
-   public static ehq.a<?> c() {
-      return a(ehf::new);
+   public static ehk.a<?> a(cth $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ehf($$0.k().j(), $$1, $$2, $$3, $$4));
    }
 }

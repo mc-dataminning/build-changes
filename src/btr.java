@@ -1,55 +1,39 @@
 import java.util.EnumSet;
 
-public class btr<T extends cbz & ccd> extends bsr {
-   private final T a;
-   private final double b;
+public class btr extends btb {
+   private final bmh a;
+   private bmf b;
    private int c;
-   private final float d;
-   private int e = -1;
-   private int f;
-   private boolean g;
-   private boolean h;
-   private int i = -1;
 
-   public btr(T $$0, double $$1, int $$2, float $$3) {
+   public btr(bmh $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3 * $$3;
-      this.a(EnumSet.of(bsr.a.a, bsr.a.b));
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
+      this.a(EnumSet.of(btb.a.a, btb.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.a.q() == null ? false : this.h();
-   }
-
-   protected boolean h() {
-      return this.a.b(cmk.or);
+      bmf $$0 = this.a.q();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
    public boolean b() {
-      return (this.a() || !this.a.N().l()) && this.h();
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.a.v(true);
+      if (!this.b.bx()) {
+         return false;
+      } else {
+         return this.a.f(this.b) > 225.0 ? false : !this.a.N().l() || this.a();
+      }
    }
 
    @Override
    public void d() {
-      super.d();
-      this.a.v(false);
-      this.f = 0;
-      this.e = -1;
-      this.a.ft();
+      this.b = null;
+      this.a.N().n();
    }
 
    @Override
@@ -59,71 +43,22 @@ public class btr<T extends cbz & ccd> extends bsr {
 
    @Override
    public void e() {
-      blv $$0 = this.a.q();
-      if ($$0 != null) {
-         double $$1 = this.a.i($$0.dr(), $$0.dt(), $$0.dx());
-         boolean $$2 = this.a.O().a($$0);
-         boolean $$3 = this.f > 0;
-         if ($$2 != $$3) {
-            this.f = 0;
-         }
+      this.a.I().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dg() * 2.0F * this.a.dg() * 2.0F);
+      double $$1 = this.a.i(this.b.dr(), this.b.dt(), this.b.dx());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
 
-         if ($$2) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         if (!($$1 > (double)this.d) && this.f >= 20) {
-            this.a.N().n();
-            this.i++;
-         } else {
-            this.a.N().a($$0, this.b);
-            this.i = -1;
-         }
-
-         if (this.i >= 20) {
-            if ((double)this.a.eg().i() < 0.3) {
-               this.g = !this.g;
-            }
-
-            if ((double)this.a.eg().i() < 0.3) {
-               this.h = !this.h;
-            }
-
-            this.i = 0;
-         }
-
-         if (this.i > -1) {
-            if ($$1 > (double)(this.d * 0.75F)) {
-               this.h = false;
-            } else if ($$1 < (double)(this.d * 0.25F)) {
-               this.h = true;
-            }
-
-            this.a.K().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
-            if (this.a.da() instanceof blx $$4) {
-               $$4.a($$0, 30.0F, 30.0F);
-            }
-
-            this.a.a($$0, 30.0F, 30.0F);
-         } else {
-            this.a.I().a($$0, 30.0F, 30.0F);
-         }
-
-         if (this.a.fn()) {
-            if (!$$2 && this.f < -60) {
-               this.a.ft();
-            } else if ($$2) {
-               int $$5 = this.a.fr();
-               if ($$5 >= 20) {
-                  this.a.ft();
-                  this.a.a($$0, ckf.a($$5));
-                  this.e = this.c;
-               }
-            }
-         } else if (--this.e <= 0 && this.f >= -60) {
-            this.a.c(cfk.a(this.a, cmk.or));
+      this.a.N().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
          }
       }
    }

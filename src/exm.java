@@ -1,104 +1,31 @@
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public abstract class exm extends ewh {
-   protected final agt a;
-   protected final int b;
-   protected final int c;
+public class exm extends bjl {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   exm(int $$0, int $$1, vb $$2, int $$3, int $$4, agt $$5, ewh.c $$6) {
-      super(0, 0, $$0, $$1, $$2, $$6, p);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public exm(UUID $$0, vd $$1, float $$2, bjl.a $$3, bjl.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.b();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
-   public static exm.a a(vb $$0, ewh.c $$1, boolean $$2) {
-      return new exm.a($$0, $$1, $$2);
+   @Override
+   public void a(float $$0) {
+      this.b = this.k();
+      this.h = $$0;
+      this.i = ac.b();
    }
 
-   public static class a {
-      private final vb a;
-      private final ewh.c b;
-      private final boolean c;
-      private int d = 150;
-      private int e = 20;
-      @Nullable
-      private agt f;
-      private int g;
-      private int h;
-
-      public a(vb $$0, ewh.c $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public exm.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public exm.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public exm.a a(agt $$0, int $$1, int $$2) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2;
-         return this;
-      }
-
-      public exm a() {
-         if (this.f == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (exm)(this.c
-               ? new exm.b(this.d, this.e, this.a, this.g, this.h, this.f, this.b)
-               : new exm.c(this.d, this.e, this.a, this.g, this.h, this.f, this.b));
-         }
-      }
-   }
-
-   public static class b extends exm {
-      protected b(int $$0, int $$1, vb $$2, int $$3, int $$4, agt $$5, ewh.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-
-      @Override
-      public void b(evw $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() / 2 - this.b / 2;
-         int $$5 = this.r() + this.i() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(evw $$0, evu $$1, int $$2) {
-      }
-   }
-
-   public static class c extends exm {
-      protected c(int $$0, int $$1, vb $$2, int $$3, int $$4, agt $$5, ewh.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-
-      @Override
-      public void b(evw $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() - this.b - 2;
-         int $$5 = this.r() + this.i() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(evw $$0, evu $$1, int $$2) {
-         int $$3 = this.p() + 2;
-         int $$4 = this.p() + this.k() - this.b - 4;
-         int $$5 = this.p() + this.k() / 2;
-         a($$0, $$1, this.l(), $$5, $$3, this.r(), $$4, this.r() + this.i(), $$2);
-      }
+   @Override
+   public float k() {
+      long $$0 = ac.b() - this.i;
+      float $$1 = aui.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return aui.i($$1, this.b, this.h);
    }
 }

@@ -1,32 +1,37 @@
-public class za implements wu<yo> {
-   private final bji a;
-   private final boolean b;
+public class za implements xd<yx> {
+   public static final int a = 0;
+   public static final int b = 2;
+   public static final int c = 3;
+   public static final int d = 4;
+   public static final int e = 5;
+   private final int f;
+   private final int g;
 
-   public za(bji $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public za(blp $$0, int $$1) {
+      this.f = $$0.aj();
+      this.g = $$1;
    }
 
-   public za(ue $$0) {
-      this.a = bji.a($$0.readUnsignedByte());
-      this.b = $$0.readBoolean();
+   public za(ug $$0) {
+      this.f = $$0.n();
+      this.g = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.k(this.a.a());
-      $$0.a(this.b);
+   public void a(ug $$0) {
+      $$0.c(this.f);
+      $$0.k(this.g);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
-      return this.b;
+   public int a() {
+      return this.f;
    }
 
-   public bji d() {
-      return this.a;
+   public int d() {
+      return this.g;
    }
 }

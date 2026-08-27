@@ -1,56 +1,52 @@
-public class aah implements wu<yo> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public aah(blf $$0) {
-      this.a = $$0.dr();
-      this.b = $$0.dt();
-      this.c = $$0.dx();
-      this.d = $$0.dC();
-      this.e = $$0.dE();
+public class aah implements xd<yx> {
+   private final int a;
+   private final int b;
+   private final aag c;
+   private final aal d;
+
+   public aah(dlh $$0, edz $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      csp $$4 = $$0.f();
+      this.a = $$4.e;
+      this.b = $$4.f;
+      this.c = new aag($$0);
+      this.d = new aal($$4, $$1, $$2, $$3);
    }
 
-   public aah(ue $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   public aah(ug $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = new aag($$0, this.a, this.b);
+      this.d = new aal($$0, this.a, this.b);
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   public void a(ug $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      this.c.a($$0);
+      this.d.a($$0);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public int a() {
       return this.a;
    }
 
-   public double d() {
+   public int d() {
       return this.b;
    }
 
-   public double e() {
+   public aag e() {
       return this.c;
    }
 
-   public float f() {
+   public aal f() {
       return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

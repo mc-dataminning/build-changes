@@ -1,29 +1,46 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dek extends czp {
-   public static final MapCodec<dek> b = b(dek::new);
+public interface dek {
+   List<dek.a> b();
 
-   protected dek(dio.d $$0) {
-      super($$0);
+   static List<dek> c() {
+      return kd.h.s().map(dek::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   @Override
-   protected MapCodec<? extends dek> a() {
-      return b;
+   @Nullable
+   static dek a(cth $$0) {
+      if ($$0.k() instanceof ckk $$1) {
+         cwj var6 = $$1.e();
+         if (var6 instanceof dek) {
+            return (dek)var6;
+         }
+      }
+
+      cmm $$2 = $$0.k();
+      return $$2 instanceof dek ? (dek)$$2 : null;
    }
 
-   @Override
-   public elu c(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return elr.a();
-   }
+   public static record a(bla c, int d) {
+      public static final Codec<dek.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(kd.d.q().fieldOf("id").forGetter(dek.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(dek.a::c)).apply($$0, dek.a::new)
+      );
+      public static final Codec<List<dek.a>> b = a.listOf();
 
-   @Override
-   public float d(dip $$0, cse $$1, hv $$2) {
-      return 1.0F;
-   }
+      public blc a() {
+         return new blc(this.c, this.d);
+      }
 
-   @Override
-   public boolean a_(dip $$0, cse $$1, hv $$2) {
-      return true;
+      public bla b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

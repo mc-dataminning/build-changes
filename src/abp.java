@@ -1,47 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
+public class abp implements xd<yx> {
+   private final double a;
+   private final double b;
+   private final long c;
 
-public record abp(int b, List<agc.b<?>> c) implements wu<yo> {
-   public static final int a = 255;
-
-   public abp(ue $$0) {
-      this($$0.n(), b($$0));
+   public abp(dkr $$0) {
+      this.a = $$0.i();
+      this.b = $$0.k();
+      this.c = $$0.j();
    }
 
-   private static void a(List<agc.b<?>> $$0, ue $$1) {
-      for (agc.b<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
-   }
-
-   private static List<agc.b<?>> b(ue $$0) {
-      List<agc.b<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(agc.b.a($$0, $$2));
-      }
-
-      return $$1;
+   public abp(ug $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.o();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.c(this.b);
-      a(this.c, $$0);
+   public void a(ug $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
+      return this.a;
+   }
+
+   public double d() {
       return this.b;
    }
 
-   public List<agc.b<?>> d() {
+   public long e() {
       return this.c;
    }
 }

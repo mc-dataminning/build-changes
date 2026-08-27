@@ -1,33 +1,47 @@
-public class bwo {
-   public static boolean a(blx $$0) {
-      return $$0.N() instanceof bve;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class bwo extends bwm<bmo> {
+   public static final int a = 10;
+   private static final bwt c = bwt.b().a(10.0).d();
+   private final cps d;
+
+   public bwo(cps $$0) {
+      this.d = $$0;
    }
 
-   public static boolean a(bme $$0, int $$1) {
-      return $$0.fQ() && $$0.fN().a($$0.dk(), (double)($$0.fO() + (float)$$1) + 1.0);
+   protected void a(amz $$0, bmo $$1) {
+      bnf<?> $$2 = $$1.dO();
+      List<cfb> $$3 = $$0.x()
+         .stream()
+         .filter(bls.f)
+         .filter($$1x -> c.a($$1, $$1x))
+         .filter($$1x -> $$1.a($$1x, 10.0))
+         .filter(this::a)
+         .filter($$1x -> !$$1.x($$1x))
+         .sorted(Comparator.comparingDouble($$1::f))
+         .collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         cfb $$4 = $$3.get(0);
+         $$2.a(bvh.N, $$4);
+      } else {
+         $$2.b(bvh.N);
+      }
    }
 
-   public static boolean a(hv $$0, bme $$1) {
-      return $$0.v() < $$1.dM().J_() || $$0.v() > $$1.dM().ak();
+   private boolean a(cfb $$0) {
+      return this.a($$0.eT()) || this.a($$0.eU());
    }
 
-   public static boolean a(boolean $$0, bme $$1, hv $$2) {
-      return $$0 && !$$1.a($$2);
+   private boolean a(cmr $$0) {
+      return this.d.a($$0);
    }
 
-   public static boolean a(bvf $$0, hv $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bme $$0, hv $$1) {
-      return $$0.dM().b_($$1).a(arw.a);
-   }
-
-   public static boolean b(bme $$0, hv $$1) {
-      return $$0.a(eet.a($$0.dM(), $$1.j())) != 0.0F;
-   }
-
-   public static boolean c(bme $$0, hv $$1) {
-      return $$0.dM().a_($$1).e();
+   @Override
+   public Set<bvh<?>> a() {
+      return ImmutableSet.of(bvh.N);
    }
 }

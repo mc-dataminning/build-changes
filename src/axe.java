@@ -1,18 +1,24 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 
 public class axe extends DataFix {
-   private static final String a = "minecraft:decorated_pot";
-
-   public axe(Schema $$0) {
-      super($$0, true);
+   public axe(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bbg.s, "minecraft:decorated_pot");
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bbg.s, "minecraft:decorated_pot");
-      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
+      Type<?> $$0 = this.getInputSchema().getType(bbq.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      return this.fixTypeEverywhereTyped(
+         "ChunkLightRemoveFix",
+         $$0,
+         this.getOutputSchema().getType(bbq.c),
+         $$1x -> $$1x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("isLightOn")))
+      );
    }
 }

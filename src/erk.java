@@ -1,40 +1,23 @@
-public class erk {
-   private final esy a;
-   private boolean b;
-   private String c;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-   public erk(esy $$0) {
+public class erk extends erp implements erj {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
+
+   public erk(String $$0, int $$1) {
       this.a = $$0;
-      esy.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
+      this.b = $$1;
    }
 
-   public boolean a() {
+   public int a() {
       return this.b;
    }
 
-   public String b() {
-      return this.c;
-   }
-
-   public void a(eqi $$0) {
-      esy.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private esy.a b(eqi $$0) {
-      esy.a $$1 = new esy.a();
-      $$1.a = $$0.a;
-      esy.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
-      }
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

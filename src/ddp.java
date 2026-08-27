@@ -1,46 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class ddp extends ddi {
-   protected ddp(dio.d $$0) {
+public class ddp extends cve {
+   public static final MapCodec<ddp> c = b(ddp::new);
+
+   @Override
+   public MapCodec<ddp> a() {
+      return c;
+   }
+
+   protected ddp(diz.d $$0) {
       super($$0);
    }
 
-   private static boolean b(dip $$0, ctb $$1, hv $$2) {
-      hv $$3 = $$2.c();
-      dip $$4 = $$1.a_($$3);
-      if ($$4.a(cwb.dN) && $$4.c(ddh.c) == 1) {
-         return true;
-      } else if ($$4.u().e() == 8) {
-         return false;
-      } else {
-         int $$5 = edq.a($$1, $$0, $$2, $$4, $$3, ia.b, $$4.b($$1, $$3));
-         return $$5 < $$1.N();
+   @Override
+   public dgo a(hx $$0, dja $$1) {
+      return new dia($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
+      return a($$0, $$2, dgq.B);
+   }
+
+   @Override
+   protected void a(cti $$0, hx $$1, cfb $$2) {
+      dgo $$3 = $$0.c_($$1);
+      if ($$3 instanceof dia) {
+         $$2.a((bjy)$$3);
+         $$2.a(arw.at);
       }
    }
 
    @Override
-   protected abstract MapCodec<? extends ddp> a();
-
-   private static boolean c(dip $$0, ctb $$1, hv $$2) {
-      hv $$3 = $$2.c();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(arw.a);
-   }
-
-   @Override
-   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, cwb.j.o());
-      } else {
-         if ($$1.z($$2.c()) >= 9) {
-            dip $$4 = this.o();
-
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               hv $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(cwb.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(cwb.dN))));
-               }
-            }
+   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, arm.xn, arn.e, 1.0F, 1.0F, false);
          }
+
+         $$1.a(jx.ab, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
       }
    }
 }

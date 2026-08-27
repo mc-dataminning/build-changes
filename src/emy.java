@@ -1,166 +1,126 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
-import org.slf4j.Logger;
 
-public class emy {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 4;
-   public static final int a = 1;
-   private final int d;
-   private final AtomicBoolean e = new AtomicBoolean(true);
-   private int f = 16384;
+public class emy<T> implements ene<T>, eng<T> {
+   private final Queue<end<T>> a = new PriorityQueue<>(end.a);
    @Nullable
-   private ghs g;
+   private List<enc<T>> b;
+   private final Set<end<?>> c = new ObjectOpenCustomHashSet(end.c);
+   @Nullable
+   private BiConsumer<emy<T>, end<T>> d;
 
-   @Nullable
-   static emy a() {
-      int[] $$0 = new int[1];
-      AL10.alGenSources($$0);
-      return enc.a("Allocate new source") ? null : new emy($$0[0]);
+   public emy() {
    }
 
-   private emy(int $$0) {
+   public emy(List<enc<T>> $$0) {
+      this.b = $$0;
+
+      for (enc<T> $$1 : $$0) {
+         this.c.add(end.a($$1.a(), $$1.b()));
+      }
+   }
+
+   public void a(@Nullable BiConsumer<emy<T>, end<T>> $$0) {
       this.d = $$0;
    }
 
-   public void b() {
-      if (this.e.compareAndSet(true, false)) {
-         AL10.alSourceStop(this.d);
-         enc.a("Stop");
-         if (this.g != null) {
-            try {
-               this.g.close();
-            } catch (IOException var2) {
-               b.error("Failed to close audio stream", var2);
-            }
-
-            this.l();
-            this.g = null;
-         }
-
-         AL10.alDeleteSources(new int[]{this.d});
-         enc.a("Cleanup");
-      }
+   @Nullable
+   public end<T> b() {
+      return this.a.peek();
    }
 
-   public void c() {
-      AL10.alSourcePlay(this.d);
-   }
-
-   private int k() {
-      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
-   }
-
-   public void d() {
-      if (this.k() == 4114) {
-         AL10.alSourcePause(this.d);
-      }
-   }
-
-   public void e() {
-      if (this.k() == 4115) {
-         AL10.alSourcePlay(this.d);
-      }
-   }
-
-   public void f() {
-      if (this.e.get()) {
-         AL10.alSourceStop(this.d);
-         enc.a("Stop");
-      }
-   }
-
-   public boolean g() {
-      return this.k() == 4114;
-   }
-
-   public boolean h() {
-      return this.k() == 4116;
-   }
-
-   public void a(elb $$0) {
-      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
-   }
-
-   public void a(float $$0) {
-      AL10.alSourcef(this.d, 4099, $$0);
-   }
-
-   public void a(boolean $$0) {
-      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
-   }
-
-   public void b(float $$0) {
-      AL10.alSourcef(this.d, 4106, $$0);
-   }
-
-   public void i() {
-      AL10.alSourcei(this.d, 53248, 0);
-   }
-
-   public void c(float $$0) {
-      AL10.alSourcei(this.d, 53248, 53251);
-      AL10.alSourcef(this.d, 4131, $$0);
-      AL10.alSourcef(this.d, 4129, 1.0F);
-      AL10.alSourcef(this.d, 4128, 0.0F);
-   }
-
-   public void b(boolean $$0) {
-      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
-   }
-
-   public void a(end $$0) {
-      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
-   }
-
-   public void a(ghs $$0) {
-      this.g = $$0;
-      AudioFormat $$1 = $$0.a();
-      this.f = a($$1, 1);
-      this.a(4);
-   }
-
-   private static int a(AudioFormat $$0, int $$1) {
-      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
-   }
-
-   private void a(int $$0) {
-      if (this.g != null) {
-         try {
-            for (int $$1 = 0; $$1 < $$0; $$1++) {
-               ByteBuffer $$2 = this.g.a(this.f);
-               if ($$2 != null) {
-                  new end($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
-               }
-            }
-         } catch (IOException var4) {
-            b.error("Failed to read from audio stream", var4);
-         }
-      }
-   }
-
-   public void j() {
-      if (this.g != null) {
-         int $$0 = this.l();
-         this.a($$0);
-      }
-   }
-
-   private int l() {
-      int $$0 = AL10.alGetSourcei(this.d, 4118);
-      if ($$0 > 0) {
-         int[] $$1 = new int[$$0];
-         AL10.alSourceUnqueueBuffers(this.d, $$1);
-         enc.a("Unqueue buffers");
-         AL10.alDeleteBuffers($$1);
-         enc.a("Remove processed buffers");
+   @Nullable
+   public end<T> c() {
+      end<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
       }
 
       return $$0;
+   }
+
+   @Override
+   public void a(end<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
+      }
+   }
+
+   private void b(end<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(hx $$0, T $$1) {
+      return this.c.contains(end.a($$1, $$0));
+   }
+
+   public void a(Predicate<end<T>> $$0) {
+      Iterator<end<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         end<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
+         }
+      }
+   }
+
+   public Stream<end<T>> d() {
+      return this.a.stream();
+   }
+
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
+   }
+
+   public sr a(long $$0, Function<T, String> $$1) {
+      sr $$2 = new sr();
+      if (this.b != null) {
+         for (enc<T> $$3 : this.b) {
+            $$2.add($$3.a($$1));
+         }
+      }
+
+      for (end<T> $$4 : this.a) {
+         $$2.add(enc.a($$4, $$1, $$0));
+      }
+
+      return $$2;
+   }
+
+   public void a(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (enc<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
+         }
+      }
+
+      this.b = null;
+   }
+
+   public static <T> emy<T> a(sr $$0, Function<String, Optional<T>> $$1, csp $$2) {
+      Builder<enc<T>> $$3 = ImmutableList.builder();
+      enc.a($$0, $$1, $$2, $$3::add);
+      return new emy<>($$3.build());
    }
 }

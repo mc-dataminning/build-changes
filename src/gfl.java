@@ -1,20 +1,26 @@
+import java.util.IllegalFormatException;
+
 public class gfl {
-   public static final gfm a = new gfm();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+   private static volatile sg a = sg.a();
 
-   public gfl(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private gfl() {
    }
 
-   public boolean a() {
-      return this.d;
+   static void a(sg $$0) {
+      a = $$0;
    }
 
-   public boolean b() {
-      return this.e;
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

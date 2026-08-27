@@ -1,113 +1,61 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
-
-public class amv extends amc {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<auq<amt<?>>> d = new Long2ObjectOpenHashMap();
-
-   public amv() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+public abstract class amv extends edw {
+   protected amv(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private auq<amt<?>> g(long $$0) {
-      return (auq<amt<?>>)this.d.computeIfAbsent($$0, $$0x -> auq.a(4));
-   }
-
-   private int a(auq<amt<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, amt<?> $$1) {
-      auq<amt<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
+   @Override
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  long $$6 = iz.a($$0, $$3, $$4, $$5);
+                  if ($$6 != $$0) {
+                     this.b($$0, $$6, $$1, $$2);
+                  }
+               }
+            }
+         }
       }
    }
 
-   public void b(long $$0, amt<?> $$1) {
-      auq<amt<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
 
-      this.b($$0, this.a($$2), false);
-   }
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               long $$7 = iz.a($$0, $$4, $$5, $$6);
+               if ($$7 == $$0) {
+                  $$7 = Long.MAX_VALUE;
+               }
 
-   public <T> void a(amu<T> $$0, csf $$1, int $$2, T $$3) {
-      this.a($$1.a(), new amt<>($$0, $$2, $$3));
-   }
+               if ($$7 != $$1) {
+                  int $$8 = this.b($$7, $$0, this.c($$7));
+                  if ($$3 > $$8) {
+                     $$3 = $$8;
+                  }
 
-   public <T> void b(amu<T> $$0, csf $$1, int $$2, T $$3) {
-      amt<T> $$4 = new amt<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<amt<csf>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<auq<amt<?>>> $$2 = (Entry<auq<amt<?>>>)var3.next();
-
-         for (amt<?> $$3 : (auq)$$2.getValue()) {
-            if ($$3.a() == amu.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
+                  if ($$3 == 0) {
+                     return $$3;
+                  }
+               }
             }
          }
       }
 
-      for (Pair<amt<csf>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         amt<csf> $$6 = (amt<csf>)$$4.getFirst();
-         this.b($$5, $$6);
-         csf $$7 = new csf($$5);
-         amu<csf> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
+      return $$3;
    }
 
    @Override
-   protected int b(long $$0) {
-      auq<amt<?>> $$1 = (auq<amt<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
+   protected int b(long $$0, long $$1, int $$2) {
+      return this.a($$0) ? this.b($$1) : $$2 + 1;
    }
 
-   public int a(csf $$0) {
-      return this.c($$0.a());
-   }
+   protected abstract int b(long var1);
 
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
-   }
-
-   public void a() {
-      this.b(Integer.MAX_VALUE);
-   }
-
-   public String d(long $$0) {
-      auq<amt<?>> $$1 = (auq<amt<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
    }
 }

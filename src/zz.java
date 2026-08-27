@@ -1,48 +1,35 @@
-public class zz implements wu<yo> {
-   private final int a;
-   private final hv b;
-   private final int c;
-   private final boolean d;
+import javax.annotation.Nullable;
 
-   public zz(int $$0, hv $$1, int $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
-      this.d = $$3;
+public class zz implements xd<yx> {
+   private final int a;
+   private final byte b;
+
+   public zz(blp $$0, byte $$1) {
+      this.a = $$0.aj();
+      this.b = $$1;
    }
 
-   public zz(ue $$0) {
+   public zz(ug $$0) {
       this.a = $$0.readInt();
-      this.b = $$0.e();
-      this.c = $$0.readInt();
-      this.d = $$0.readBoolean();
+      this.b = $$0.readByte();
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
       $$0.p(this.a);
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
+      $$0.k(this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
-      return this.d;
+   @Nullable
+   public blp a(cti $$0) {
+      return $$0.a(this.a);
    }
 
-   public int d() {
-      return this.a;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public hv f() {
+   public byte a() {
       return this.b;
    }
 }

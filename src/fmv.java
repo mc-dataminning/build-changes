@@ -1,13 +1,17 @@
-import java.util.List;
+public class fmv {
+   private final fmx a;
+   private final fmw b;
 
-public enum fmv {
-   a,
-   b;
+   private fmv(fmx $$0, fmw $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   private static final List<fmv> c = List.of(values());
-   private static final is.b d = is.a(kb.ar);
+   public fmp a() {
+      return this.a.a().a(this.b.a, this.b.b);
+   }
 
-   public static im<fmv> a() {
-      return new im<>(c).a(a, d);
+   public static fmv a(fmx $$0, int $$1, int $$2) {
+      return new fmv($$0, new fmw($$1, $$2));
    }
 }

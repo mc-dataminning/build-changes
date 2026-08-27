@@ -1,32 +1,14 @@
-public class acj implements wu<yo> {
-   private final vb a;
-   private final vb b;
-
-   public acj(vb $$0, vb $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public acj(ue $$0) {
-      this.a = $$0.m();
-      this.b = $$0.m();
+public record acj(int a) implements xd<yx> {
+   public acj(ug $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(ug $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
-   }
-
-   public vb a() {
-      return this.a;
-   }
-
-   public vb d() {
-      return this.b;
    }
 }

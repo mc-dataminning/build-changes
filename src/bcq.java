@@ -1,41 +1,22 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class bcq extends Schema {
-   public bcq(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bcq extends baq {
+   public bcq(Schema $$0, boolean $$1) {
+      super($$0, $$1, "WeaponSmithChestLootTableFix", bbq.s, "minecraft:chest");
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         bbg.t,
-         () -> DSL.hook(
-               DSL.optionalFields(
-                  "id",
-                  bbg.z.in($$0),
-                  "tag",
-                  DSL.optionalFields(
-                     "EntityTag",
-                     bbg.w.in($$0),
-                     "BlockEntityTag",
-                     bbg.s.in($$0),
-                     "CanDestroy",
-                     DSL.list(bbg.y.in($$0)),
-                     "CanPlaceOn",
-                     DSL.list(bbg.y.in($$0)),
-                     "Items",
-                     DSL.list(bbg.t.in($$0))
-                  )
-               ),
-               bfm.a,
-               HookFunction.IDENTITY
-            )
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            String $$1 = $$0x.get("LootTable").asString("");
+            return $$1.equals("minecraft:chests/village_blacksmith")
+               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
+               : $$0x;
+         }
       );
    }
 }

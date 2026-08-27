@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class chj {
+   final chm a;
+   final long b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface chj {
+   chj(chm $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
+   }
 }

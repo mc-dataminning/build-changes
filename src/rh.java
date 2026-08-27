@@ -1,20 +1,44 @@
+import java.util.Collection;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-class rh {
+public class rh {
+   public static final String a = "defaultBatch";
+   private final String b;
+   private final Collection<sc> c;
    @Nullable
-   public final Long a;
-   public final Runnable b;
+   private final Consumer<amz> d;
+   @Nullable
+   private final Consumer<amz> e;
 
-   private rh(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public rh(String $$0, Collection<sc> $$1, @Nullable Consumer<amz> $$2, @Nullable Consumer<amz> $$3) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+      }
    }
 
-   static rh a(Runnable $$0) {
-      return new rh(null, $$0);
+   public String a() {
+      return this.b;
    }
 
-   static rh a(long $$0, Runnable $$1) {
-      return new rh($$0, $$1);
+   public Collection<sc> b() {
+      return this.c;
+   }
+
+   public void a(amz $$0) {
+      if (this.d != null) {
+         this.d.accept($$0);
+      }
+   }
+
+   public void b(amz $$0) {
+      if (this.e != null) {
+         this.e.accept($$0);
+      }
    }
 }

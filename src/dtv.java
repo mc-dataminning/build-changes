@@ -1,26 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtv implements dtg {
+public class dtv implements dtr {
    public static final Codec<dtv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dip.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dip.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               biq.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
-            )
+      $$0 -> $$0.group(Codec.intRange(0, dmj.c).fieldOf("height").forGetter($$0x -> $$0x.b), dja.b.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, dtv::new)
    );
-   public final dip b;
-   public final dip c;
-   private final biq d;
+   public final int b;
+   public final dja c;
 
-   public dtv(dip $$0, dip $$1, biq $$2) {
+   public dtv(int $$0, dja $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-   }
-
-   public biq a() {
-      return this.d;
    }
 }

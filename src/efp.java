@@ -1,119 +1,44 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PushbackInputStream;
-import java.util.Map;
 import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 import org.slf4j.Logger;
 
-public class efp {
+public abstract class efp {
    private static final Logger a = LogUtils.getLogger();
-   private final Map<String, efe> b = Maps.newHashMap();
-   private final DataFixer c;
-   private final File d;
+   private boolean b;
 
-   public efp(File $$0, DataFixer $$1) {
-      this.c = $$1;
-      this.d = $$0;
+   public abstract sl a(sl var1);
+
+   public void c() {
+      this.a(true);
    }
 
-   private File a(String $$0) {
-      return new File(this.d, $$0 + ".dat");
+   public void a(boolean $$0) {
+      this.b = $$0;
    }
 
-   public <T extends efe> T a(efe.a<T> $$0, String $$1) {
-      T $$2 = this.b($$0, $$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         T $$3 = (T)$$0.a().get();
-         this.a($$1, $$3);
-         return $$3;
-      }
+   public boolean d() {
+      return this.b;
    }
 
-   @Nullable
-   public <T extends efe> T b(efe.a $$0, String $$1) {
-      efe $$2 = this.b.get($$1);
-      if ($$2 == null && !this.b.containsKey($$1)) {
-         $$2 = this.a($$0.b(), $$0.c(), $$1);
-         this.b.put($$1, $$2);
-      }
+   public void a(File $$0) {
+      if (this.d()) {
+         sl $$1 = new sl();
+         $$1.a("data", this.a(new sl()));
+         ta.g($$1);
 
-      return (T)$$2;
-   }
-
-   @Nullable
-   private <T extends efe> T a(Function<sj, T> $$0, avg $$1, String $$2) {
-      try {
-         File $$3 = this.a($$2);
-         if ($$3.exists()) {
-            sj $$4 = this.a($$2, $$1, aa.b().d().c());
-            return $$0.apply($$4.p("data"));
-         }
-      } catch (Exception var6) {
-         a.error("Error loading saved data: {}", $$2, var6);
-      }
-
-      return null;
-   }
-
-   public void a(String $$0, efe $$1) {
-      this.b.put($$0, $$1);
-   }
-
-   public sj a(String $$0, avg $$1, int $$2) throws IOException {
-      File $$3 = this.a($$0);
-
-      sj var9;
-      try (
-         FileInputStream $$4 = new FileInputStream($$3);
-         PushbackInputStream $$5 = new PushbackInputStream($$4, 2);
-      ) {
-         sj $$6;
-         if (this.a($$5)) {
-            $$6 = sw.a($$5, ss.a());
-         } else {
-            try (DataInputStream $$7 = new DataInputStream($$5)) {
-               $$6 = sw.a($$7);
-            }
+         try {
+            sy.a($$1, $$0.toPath());
+         } catch (IOException var4) {
+            a.error("Could not save data {}", this, var4);
          }
 
-         int $$10 = sy.b($$6, 1343);
-         var9 = $$1.a(this.c, $$6, $$10, $$2);
+         this.a(false);
       }
-
-      return var9;
    }
 
-   private boolean a(PushbackInputStream $$0) throws IOException {
-      byte[] $$1 = new byte[2];
-      boolean $$2 = false;
-      int $$3 = $$0.read($$1, 0, 2);
-      if ($$3 == 2) {
-         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
-         if ($$4 == 35615) {
-            $$2 = true;
-         }
-      }
-
-      if ($$3 != 0) {
-         $$0.unread($$1, 0, $$3);
-      }
-
-      return $$2;
-   }
-
-   public void a() {
-      this.b.forEach(($$0, $$1) -> {
-         if ($$1 != null) {
-            $$1.a(this.a($$0));
-         }
-      });
+   public static record a<T extends efp>(Supplier<T> a, Function<sl, T> b, avq c) {
    }
 }

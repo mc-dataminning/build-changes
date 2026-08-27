@@ -1,14 +1,12 @@
 import java.util.concurrent.CompletableFuture;
 
-public class om extends oc {
-   public om(kk $$0, CompletableFuture<ih.b> $$1, CompletableFuture<og.c<cmc>> $$2, CompletableFuture<og.c<cvz>> $$3) {
-      super($$0, $$1, $$2, $$3);
+public class om extends oi<bkp> {
+   public om(km $$0, CompletableFuture<ij.b> $$1) {
+      super($$0, ke.r, $$1);
    }
 
    @Override
-   protected void a(ih.b $$0) {
-      this.a(arz.H).a(cmk.o, cmk.t, cmk.x);
-      this.a(arz.I).a(cmk.n, cmk.s, cmk.w);
-      this.a(arz.J).a(cmk.p, cmk.u, cmk.y);
+   protected void a(ij.b $$0) {
+      this.b(asd.b).a(bkq.C, bkq.D);
    }
 }

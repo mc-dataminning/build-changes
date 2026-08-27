@@ -1,30 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dtd(dvp b, dpf c, biq d, int e) implements dtg {
-   public static final Codec<dtd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvp.a.fieldOf("state_provider").forGetter(dtd::a),
-               dpf.b.fieldOf("target").forGetter(dtd::b),
-               biq.b(0, 8).fieldOf("radius").forGetter(dtd::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dtd::d)
-            )
-            .apply($$0, dtd::new)
-   );
-
-   public dvp a() {
-      return this.b;
+public class dtd extends drn<dty> {
+   public dtd(Codec<dty> $$0) {
+      super($$0);
    }
 
-   public dpf b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(drp<dty> $$0) {
+      cud $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (ic $$3 : ic.values()) {
+            if ($$3 != ic.a && dfd.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, cwl.ff.o().a(dfd.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
 
-   public biq c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+         return false;
+      }
    }
 }

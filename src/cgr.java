@@ -1,118 +1,59 @@
-public class cgr extends cgj {
-   static final afz<String> c = agc.a(cgr.class, agb.e);
-   static final afz<vb> d = agc.a(cgr.class, agb.f);
-   private final crz e = new cgr.a();
-   private static final int i = 4;
-   private int j;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-   public cgr(blj<? extends cgr> $$0, csy $$1) {
-      super($$0, $$1);
+public class cgr {
+   private final List<cgo> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<cgo> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public cgr(csy $$0, double $$1, double $$2, double $$3) {
-      super(blj.t, $$0, $$1, $$2, $$3);
+   public cgr a(int $$0, float $$1) {
+      this.a.add(new cgo($$0, $$1));
+      this.b();
+      return this;
    }
 
-   @Override
-   protected cmc ah_() {
-      return cmk.nL;
+   public cgr a(Collection<cgo> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   @Override
-   protected void c_() {
-      super.c_();
-      this.an().a(c, "");
-      this.an().a(d, va.a);
+   private void b() {
+      Int2ObjectSortedMap<cgo> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   @Override
-   protected void a(sj $$0) {
-      super.a($$0);
-      this.e.b($$0);
-      this.an().b(c, this.C().m());
-      this.an().b(d, this.C().l());
-   }
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         cgo $$1 = this.a.get(this.b);
+         cgo $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   @Override
-   protected void b(sj $$0) {
-      super.b($$0);
-      this.e.a($$0);
-   }
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cgo $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
 
-   @Override
-   public cgj.a w() {
-      return cgj.a.g;
-   }
-
-   @Override
-   public dip y() {
-      return cwb.fN.o();
-   }
-
-   public crz C() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ah - this.j >= 4) {
-         this.C().a(this.dM());
-         this.j = this.ah;
-      }
-   }
-
-   @Override
-   public bjl a(cer $$0, bjk $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(afz<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.an().b(d));
-         } catch (Throwable var3) {
+            this.b = $$6;
+            $$5 = $$7.b();
          }
-      } else if (c.equals($$0)) {
-         this.e.a(this.an().b(c));
-      }
-   }
 
-   @Override
-   public boolean cM() {
-      return true;
-   }
-
-   public class a extends crz {
-      @Override
-      public amp e() {
-         return (amp)cgr.this.dM();
-      }
-
-      @Override
-      public void f() {
-         cgr.this.an().b(cgr.c, this.m());
-         cgr.this.an().b(cgr.d, this.l());
-      }
-
-      @Override
-      public elb g() {
-         return cgr.this.dk();
-      }
-
-      public cgr h() {
-         return cgr.this;
-      }
-
-      @Override
-      public ds i() {
-         return new ds(this, cgr.this.dk(), cgr.this.bG(), this.e(), 2, this.n().getString(), cgr.this.Q_(), this.e().n(), cgr.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cgr.this.dH();
+         return $$5;
       }
    }
 }

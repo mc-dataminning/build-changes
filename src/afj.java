@@ -1,18 +1,16 @@
-public record afj() implements wu<aff> {
-   public afj(ue $$0) {
-      this();
-   }
-
+public interface afj extends ub {
    @Override
-   public void a(ue $$0) {
+   default uf b() {
+      return uf.d;
    }
 
-   public void a(aff $$0) {
-      $$0.a(this);
-   }
+   void a(afm var1);
 
-   @Override
-   public ud c() {
-      return ud.e;
-   }
+   void a(afl var1);
+
+   void a(afo var1);
+
+   void a(afn var1);
+
+   void a(afk var1);
 }

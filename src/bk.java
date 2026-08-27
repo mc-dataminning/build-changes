@@ -3,18 +3,18 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import java.util.Optional;
 
-public record bk(Optional<ie<cqs>> b, ck.d c) {
+public record bk(Optional<ih<crc>> b, ck.d c) {
    public static final Codec<bk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atg.a(kb.f.r(), "enchantment").forGetter(bk::a), atg.a(ck.d.d, "levels", ck.d.c).forGetter(bk::b)).apply($$0, bk::new)
+      $$0 -> $$0.group(atq.a(kd.f.r(), "enchantment").forGetter(bk::a), atq.a(ck.d.d, "levels", ck.d.c).forGetter(bk::b)).apply($$0, bk::new)
    );
 
-   public bk(cqs $$0, ck.d $$1) {
+   public bk(crc $$0, ck.d $$1) {
       this(Optional.of($$0.j()), $$1);
    }
 
-   public boolean a(Map<cqs, Integer> $$0) {
+   public boolean a(Map<crc, Integer> $$0) {
       if (this.b.isPresent()) {
-         cqs $$1 = this.b.get().a();
+         crc $$1 = this.b.get().a();
          if (!$$0.containsKey($$1)) {
             return false;
          }
@@ -36,7 +36,7 @@ public record bk(Optional<ie<cqs>> b, ck.d c) {
       return true;
    }
 
-   public Optional<ie<cqs>> a() {
+   public Optional<ih<crc>> a() {
       return this.b;
    }
 

@@ -1,35 +1,13 @@
-public class byd extends bxh {
-   public byd(blj<? extends byd> $$0, csy $$1) {
-      super($$0, $$1);
+public record byd(ahd d) {
+   public static final byd a = a("temperate", "textures/entity/frog/temperate_frog.png");
+   public static final byd b = a("warm", "textures/entity/frog/warm_frog.png");
+   public static final byd c = a("cold", "textures/entity/frog/cold_frog.png");
+
+   private static byd a(String $$0, String $$1) {
+      return it.a(kd.al, $$0, new byd(new ahd($$1)));
    }
 
-   @Override
-   public int gg() {
-      return 5;
-   }
-
-   @Override
-   public cmh b() {
-      return new cmh(cmk.qD);
-   }
-
-   @Override
-   protected arb y() {
-      return arc.uI;
-   }
-
-   @Override
-   protected arb n_() {
-      return arc.uJ;
-   }
-
-   @Override
-   protected arb d(bkd $$0) {
-      return arc.uL;
-   }
-
-   @Override
-   protected arb gf() {
-      return arc.uK;
+   public ahd a() {
+      return this.d;
    }
 }

@@ -1,29 +1,32 @@
-public enum aev {
-   a,
-   b;
+public class aev implements xd<adg> {
+   private final int a;
+   private final cmr b;
 
-   private static final int c = 1;
-   private static final int d = 2;
+   public aev(int $$0, cmr $$1) {
+      this.a = $$0;
+      this.b = $$1.p();
+   }
 
-   public static aev a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public void a(adg $$0) {
+      $$0.a(this);
+   }
+
+   public aev(ug $$0) {
+      this.a = $$0.readShort();
+      this.b = $$0.r();
+   }
+
+   @Override
+   public void a(ug $$0) {
+      $$0.l(this.a);
+      $$0.a(this.b);
    }
 
    public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-      };
+      return this.a;
    }
 
-   public ud b() {
-      return switch (this) {
-         case a -> ud.c;
-         case b -> ud.d;
-      };
+   public cmr d() {
+      return this.b;
    }
 }

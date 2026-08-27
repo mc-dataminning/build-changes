@@ -1,27 +1,32 @@
-import javax.annotation.Nullable;
-
-public class abj implements wu<yo> {
+public class abj implements xd<yx> {
    private final int a;
+   private final byte b;
 
-   public abj(blf $$0) {
+   public abj(blp $$0, byte $$1) {
       this.a = $$0.aj();
+      this.b = $$1;
    }
 
-   public abj(ue $$0) {
+   public abj(ug $$0) {
       this.a = $$0.n();
+      this.b = $$0.readByte();
    }
 
    @Override
-   public void a(ue $$0) {
+   public void a(ug $$0) {
       $$0.c(this.a);
+      $$0.k(this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public blf a(csy $$0) {
+   public blp a(cti $$0) {
       return $$0.a(this.a);
+   }
+
+   public byte a() {
+      return this.b;
    }
 }

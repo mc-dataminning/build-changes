@@ -1,66 +1,127 @@
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public abstract class ewu extends ewf {
-   ewu(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, va.a);
+public abstract class ewu extends eww {
+   private static final ahd a = new ahd("widget/slider");
+   private static final ahd d = new ahd("widget/slider_highlighted");
+   private static final ahd e = new ahd("widget/slider_handle");
+   private static final ahd f = new ahd("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
+   private boolean o;
+
+   public ewu(int $$0, int $$1, int $$2, int $$3, vd $$4, double $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
    }
 
-   public static ewu a(int $$0, int $$1, agt $$2, int $$3, int $$4) {
-      return new ewu.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   private ahd d() {
+      return this.aI_() && !this.o ? d : a;
    }
 
-   public static ewu a(int $$0, int $$1, agt $$2) {
-      return new ewu.a(0, 0, $$0, $$1, $$2);
+   private ahd e() {
+      return !this.i && !this.o ? e : f;
    }
 
    @Override
-   protected void a(faa $$0) {
+   protected vr aK_() {
+      return vd.a("gui.narrate.slider", this.x());
    }
 
    @Override
-   public void a(gia $$0) {
+   public void a(far $$0) {
+      $$0.a(faq.a, this.aK_());
+      if (this.j) {
+         if (this.aI_()) {
+            $$0.a(faq.d, vd.c("narration.slider.usage.focused"));
+         } else {
+            $$0.a(faq.d, vd.c("narration.slider.usage.hovered"));
+         }
+      }
    }
 
    @Override
-   public boolean aL_() {
-      return false;
+   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+      eva $$4 = eva.N();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.enableDepthTest();
+      $$0.a(this.d(), this.B(), this.C(), this.w(), this.u());
+      $$0.a(this.e(), this.B() + (int)(this.c * (double)(this.g - 8)), this.C(), 8, this.u());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | aui.f(this.l * 255.0F) << 24);
    }
 
-   @Nullable
    @Override
-   public evt a(fag $$0) {
-      return null;
+   public void a(double $$0, double $$1) {
+      this.a($$0);
    }
 
-   static class a extends ewu {
-      private final agt a;
-
-      public a(int $$0, int $$1, int $$2, int $$3, agt $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (!$$0) {
+         this.o = false;
+      } else {
+         eux $$1 = eva.N().aT();
+         if ($$1 == eux.b || $$1 == eux.d) {
+            this.o = true;
+         }
       }
+   }
 
-      @Override
-      public void b(evw $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.p(), this.r(), this.k(), this.i());
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (faw.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
-   static class b extends ewu {
-      private final agt a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, int $$2, int $$3, agt $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
-      }
-
-      @Override
-      protected void b(evw $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.p(), this.r(), this.k(), this.i(), 0.0F, 0.0F, this.k(), this.i(), this.b, this.c);
-      }
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.B() + 4)) / (double)(this.g - 8));
    }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = aui.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
+      }
+
+      this.b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.a($$0);
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gir $$0) {
+   }
+
+   @Override
+   public void a_(double $$0, double $$1) {
+      super.a(eva.N().ah());
+   }
+
+   protected abstract void b();
+
+   protected abstract void a();
 }

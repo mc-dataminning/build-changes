@@ -1,108 +1,94 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-public class fsz {
-   protected final fsg a;
-   protected final csy b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   public fvh.b[] f;
-
-   public fsz(fvh $$0, csy $$1, int $$2, fsg $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
+public interface fsz {
+   static fsz.a a(epo $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   protected void a(fvh $$0) {
-      if (!euk.N().bq()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new fvh.b[$$1];
+   static fsz.a a(Map<fth, epo> $$0, epo $$1) {
+      return new fsz.a($$1, $$0);
+   }
 
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.J_() + $$3 * 16, $$4 * 16);
+   epx getBuffer(fth var1);
+
+   public static class a implements fsz {
+      protected final epo a;
+      protected final Map<fth, epo> b;
+      protected Optional<fth> c = Optional.empty();
+      protected final Set<epo> d = Sets.newHashSet();
+
+      protected a(epo $$0, Map<fth, epo> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public epx getBuffer(fth $$0) {
+         Optional<fth> $$1 = $$0.N();
+         epo $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
+            if (this.c.isPresent()) {
+               fth $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
+
+            if (this.d.add($$2)) {
+               $$2.a($$0.I(), $$0.H());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
+      }
+
+      private epo b(fth $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            fth $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
+         }
+      }
+
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            epx $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
+
+         for (fth $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(fth $$0) {
+         epo $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.N());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
                }
             }
          }
-      }
-   }
-
-   public void a() {
-      for (fvh.b $$0 : this.f) {
-         $$0.e();
-      }
-   }
-
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
-   }
-
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.al();
-      this.e = $$1;
-      this.g = $$0;
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public cta c() {
-      return this.b;
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = aty.c($$0);
-      int $$3 = aty.c($$1);
-
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         int $$5 = this.d * 16;
-         int $$6 = $$2 - 8 - $$5 / 2;
-         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
-
-         for (int $$8 = 0; $$8 < this.e; $$8++) {
-            int $$9 = this.e * 16;
-            int $$10 = $$3 - 8 - $$9 / 2;
-            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
-
-            for (int $$12 = 0; $$12 < this.c; $$12++) {
-               int $$13 = this.b.J_() + $$12 * 16;
-               fvh.b $$14 = this.f[this.a($$4, $$12, $$8)];
-               hv $$15 = $$14.f();
-               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
-                  $$14.a($$7, $$13, $$11);
-               }
-            }
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = Math.floorMod($$0, this.d);
-      int $$5 = Math.floorMod($$1 - this.b.am(), this.c);
-      int $$6 = Math.floorMod($$2, this.e);
-      fvh.b $$7 = this.f[this.a($$4, $$5, $$6)];
-      $$7.a($$3);
-   }
-
-   @Nullable
-   protected fvh.b a(hv $$0) {
-      int $$1 = aty.a($$0.v() - this.b.J_(), 16);
-      if ($$1 >= 0 && $$1 < this.c) {
-         int $$2 = aty.b(aty.a($$0.u(), 16), this.d);
-         int $$3 = aty.b(aty.a($$0.w(), 16), this.e);
-         return this.f[this.a($$2, $$1, $$3)];
-      } else {
-         return null;
       }
    }
 }

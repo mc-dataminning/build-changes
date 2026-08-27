@@ -1,6 +1,6 @@
-public class crr extends cqs {
-   public crr(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.b, $$1);
+public class crr extends crc {
+   public crr(crc.a $$0, blu... $$1) {
+      super($$0, crd.b, $$1);
    }
 
    @Override
@@ -14,12 +14,22 @@ public class crr extends cqs {
    }
 
    @Override
-   public int a() {
-      return 3;
+   public boolean b() {
+      return true;
    }
 
    @Override
-   public boolean a(cqs $$0) {
-      return super.a($$0) && $$0 != cqw.j;
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

@@ -1,101 +1,29 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.system.MemoryUtil.MemoryAllocator;
 
 public class eor {
-   private static final int a = 32768;
-   private final eor.a b;
-   private final String c;
-   private int d;
+   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
 
-   protected eor(eor.a $$0, int $$1, String $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
-   }
-
-   public void a(eot $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.glAttachShader($$0.a(), this.c());
-   }
-
-   public void a() {
-      if (this.d != -1) {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.d);
-         this.d = -1;
-         this.b.c().remove(this.c);
-      }
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public static eor a(eor.a $$0, String $$1, InputStream $$2, String $$3, eok $$4) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$5 = b($$0, $$1, $$2, $$3, $$4);
-      eor $$6 = new eor($$0, $$5, $$1);
-      $$0.c().put($$1, $$6);
-      return $$6;
-   }
-
-   protected static int b(eor.a $$0, String $$1, InputStream $$2, String $$3, eok $$4) throws IOException {
-      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
-      if ($$5 == null) {
-         throw new IOException("Could not load program " + $$0.a());
+   public static ByteBuffer a(int $$0) {
+      long $$1 = a.malloc((long)$$0);
+      if ($$1 == 0L) {
+         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
       } else {
-         int $$6 = GlStateManager.glCreateShader($$0.d());
-         GlStateManager.glShaderSource($$6, $$4.a($$5));
-         GlStateManager.glCompileShader($$6);
-         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
-            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
-            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
-         } else {
-            return $$6;
-         }
+         return MemoryUtil.memByteBuffer($$1, $$0);
       }
    }
 
-   protected int c() {
-      return this.d;
+   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
+      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
+      if ($$2 == 0L) {
+         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
+      } else {
+         return MemoryUtil.memByteBuffer($$2, $$1);
+      }
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
-
-      private final String c;
-      private final String d;
-      private final int e;
-      private final Map<String, eor> f = Maps.newHashMap();
-
-      private a(String $$0, String $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      public String a() {
-         return this.c;
-      }
-
-      public String b() {
-         return this.d;
-      }
-
-      int d() {
-         return this.e;
-      }
-
-      public Map<String, eor> c() {
-         return this.f;
-      }
+   public static void a(ByteBuffer $$0) {
+      a.free(MemoryUtil.memAddress0($$0));
    }
 }

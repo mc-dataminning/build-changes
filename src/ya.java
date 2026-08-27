@@ -1,18 +1,18 @@
-public record ya(hv b, int c) implements xo {
-   public static final agt a = new agt("debug/poi_ticket_count");
+public record ya(dno b, int c) implements xx {
+   public static final ahd a = new ahd("debug/game_event_listeners");
 
-   public ya(ue $$0) {
-      this($$0.e(), $$0.readInt());
+   public ya(ug $$0) {
+      this(dnp.c($$0), $$0.n());
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
+   public void a(ug $$0) {
+      dnp.a(this.b, $$0);
+      $$0.c(this.c);
    }
 
    @Override
-   public agt a() {
+   public ahd a() {
       return a;
    }
 }

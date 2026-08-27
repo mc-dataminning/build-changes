@@ -1,29 +1,38 @@
-public class fqx extends fqi {
-   fqx(fmt $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fqr $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
+public class fqx extends frn {
+   private final fri a;
+
+   fqx(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fri $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
       this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
    }
 
-   public static class a implements fpz<jy> {
-      private final fqr a;
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-      public a(fqr $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public fqr b() {
+      return fqr.c;
+   }
 
-      public fpw a(jy $$0, fmt $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqx($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(fri a) implements fqq<ka> {
+      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqx $$8 = new fqx($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.z.a(4) + 6);
+         return $$8;
       }
    }
 }

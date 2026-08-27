@@ -1,43 +1,40 @@
 import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class epf {
-   private static final int a = 786432;
-   private final eoy b;
-   @Nullable
-   private static epf c;
+public class epf extends eph {
+   private static final epa a = new epa() {
+      @Override
+      public String a(boolean $$0, String $$1) {
+         return "#error Import statement not supported";
+      }
+   };
+   private int b;
 
-   public static void a() {
-      RenderSystem.assertOnGameThreadOrInit();
-      if (c != null) {
-         throw new IllegalStateException("Tesselator has already been initialized");
-      } else {
-         c = new epf();
+   private epf(eph.a $$0, int $$1, String $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(epe $$0) {
+      RenderSystem.assertOnRenderThread();
+      this.b++;
+      this.a($$0);
+   }
+
+   @Override
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      this.b--;
+      if (this.b <= 0) {
+         super.a();
       }
    }
 
-   public static epf b() {
-      RenderSystem.assertOnGameThreadOrInit();
-      if (c == null) {
-         throw new IllegalStateException("Tesselator has not been initialized");
-      } else {
-         return c;
-      }
-   }
-
-   public epf(int $$0) {
-      this.b = new eoy($$0);
-   }
-
-   public epf() {
-      this(786432);
-   }
-
-   public void c() {
-      eoz.a(this.b.d());
-   }
-
-   public eoy d() {
-      return this.b;
+   public static epf a(eph.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$4 = b($$0, $$1, $$2, $$3, a);
+      epf $$5 = new epf($$0, $$4, $$1);
+      $$0.c().put($$1, $$5);
+      return $$5;
    }
 }

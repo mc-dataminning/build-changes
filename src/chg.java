@@ -1,117 +1,87 @@
-public class chg {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+public abstract class chg extends blp {
+   protected static final agj<Integer> f = agm.a(chg.class, agl.b);
+   protected static final agj<Integer> g = agm.a(chg.class, agl.b);
+   protected static final agj<Float> h = agm.a(chg.class, agl.d);
 
-   public chg() {
-      this.b = 5.0F;
+   public chg(blt<?> $$0, cti $$1) {
+      super($$0, $$1);
    }
 
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
-   }
-
-   public void a(cmc $$0, cmh $$1) {
-      if ($$0.u()) {
-         chh $$2 = $$0.v();
-         this.a($$2.a(), $$2.b());
-      }
-   }
-
-   public void a(cer $$0) {
-      bji $$1 = $$0.dM().aj();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bji.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dM().Y().b(csu.k);
-      if ($$2 && this.b > 0.0F && $$0.gd() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.b($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gd()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.b(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.ev() > 10.0F || $$1 == bji.d || $$0.ev() > 1.0F && $$1 == bji.c) {
-               $$0.a($$0.dN().i(), 1.0F);
-            }
-
-            this.d = 0;
-         }
+   @Override
+   public boolean a(bkn $$0, float $$1) {
+      if (this.dM().B || this.dH()) {
+         return true;
+      } else if (this.b($$0)) {
+         return false;
       } else {
-         this.d = 0;
+         this.m(-this.P());
+         this.d(10);
+         this.bq();
+         this.b(this.N() + $$1 * 10.0F);
+         this.a(dnk.o, $$0.d());
+         boolean $$2 = $$0.d() instanceof cfb && ((cfb)$$0.d()).fT().d;
+         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
+            if ($$2) {
+               this.am();
+            }
+         } else {
+            this.a($$0);
+         }
+
+         return true;
       }
    }
 
-   public void a(sj $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
+   boolean d(bkn $$0) {
+      return false;
+   }
+
+   public void b(cmm $$0) {
+      this.al();
+      if (this.dM().Z().b(cte.i)) {
+         cmr $$1 = new cmr($$0);
+         if (this.ae()) {
+            $$1.a(this.af());
+         }
+
+         this.b($$1);
       }
    }
 
-   public void b(sj $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
+   @Override
+   protected void c_() {
+      this.an.a(f, 0);
+      this.an.a(g, 1);
+      this.an.a(h, 0.0F);
    }
 
-   public int a() {
-      return this.a;
+   public void d(int $$0) {
+      this.an.b(f, $$0);
    }
 
-   public int b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
+   public void m(int $$0) {
+      this.an.b(g, $$0);
    }
 
    public void b(float $$0) {
-      this.b = $$0;
+      this.an.b(h, $$0);
    }
 
-   public void c(float $$0) {
-      this.c = $$0;
+   public float N() {
+      return this.an.b(h);
    }
+
+   public int O() {
+      return this.an.b(f);
+   }
+
+   public int P() {
+      return this.an.b(g);
+   }
+
+   protected void a(bkn $$0) {
+      this.b(this.ah_());
+   }
+
+   abstract cmm ah_();
 }

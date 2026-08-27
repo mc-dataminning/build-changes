@@ -1,68 +1,44 @@
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public class fmy extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter a = Splitter.on('\u0000').limit(6);
-   private final fof b;
-   private final fmy.a c;
+public class fmy {
+   private final List<fms> a;
+   private final fmr b;
+   private final Map<String, fmy> c = Maps.newHashMap();
 
-   public fmy(fof $$0, fmy.a $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   fmy(List<fms> $$0, fmr $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void channelActive(ChannelHandlerContext $$0) throws Exception {
-      super.channelActive($$0);
-      ByteBuf $$1 = $$0.alloc().buffer();
-
-      try {
-         $$1.writeByte(254);
-         $$1.writeByte(1);
-         $$1.writeByte(250);
-         anh.a($$1, "MC|PingHost");
-         int $$2 = $$1.writerIndex();
-         $$1.writeShort(0);
-         int $$3 = $$1.writerIndex();
-         $$1.writeByte(127);
-         anh.a($$1, this.b.a());
-         $$1.writeInt(this.b.b());
-         int $$4 = $$1.writerIndex() - $$3;
-         $$1.setShort($$2, $$4);
-         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
-         $$1.release();
-         throw var6;
-      }
-   }
-
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      short $$2 = $$1.readUnsignedByte();
-      if ($$2 == 255) {
-         String $$3 = anh.a($$1);
-         List<String> $$4 = a.splitToList($$3);
-         if ("§1".equals($$4.get(0))) {
-            int $$5 = aty.a($$4.get(1), 0);
-            String $$6 = $$4.get(2);
-            String $$7 = $$4.get(3);
-            int $$8 = aty.a($$4.get(4), -1);
-            int $$9 = aty.a($$4.get(5), -1);
-            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
-         }
+   public fmy a(String $$0, fmu $$1, fmr $$2) {
+      fmy $$3 = new fmy($$1.b(), $$2);
+      fmy $$4 = this.c.put($$0, $$3);
+      if ($$4 != null) {
+         $$3.c.putAll($$4.c);
       }
 
-      $$0.close();
+      return $$3;
    }
 
-   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      $$0.close();
+   public fmp a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, fmp> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fmy)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<fmp.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      fmp $$4 = new fmp($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void handleResponse(int var1, String var2, String var3, int var4, int var5);
+   public fmy a(String $$0) {
+      return this.c.get($$0);
    }
 }

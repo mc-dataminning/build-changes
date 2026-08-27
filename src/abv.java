@@ -1,58 +1,32 @@
-public class abv implements wu<yo> {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   private final String d;
-   private final vb e;
-   private final emd.a f;
-   private final int g;
+public class abv implements xd<yx> {
+   private final int a;
+   private final int b;
 
-   public abv(elx $$0, int $$1) {
-      this.d = $$0.b();
-      this.e = $$0.d();
-      this.f = $$0.f();
-      this.g = $$1;
+   public abv(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public abv(ue $$0) {
-      this.d = $$0.s();
-      this.g = $$0.readByte();
-      if (this.g != 0 && this.g != 2) {
-         this.e = va.a;
-         this.f = emd.a.a;
-      } else {
-         this.e = $$0.m();
-         this.f = $$0.b(emd.a.class);
-      }
+   public abv(ug $$0) {
+      this.a = $$0.n();
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.d);
-      $$0.k(this.g);
-      if (this.g == 0 || this.g == 2) {
-         $$0.a(this.e);
-         $$0.a(this.f);
-      }
+   public void a(ug $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.d;
+   public int a() {
+      return this.a;
    }
 
-   public vb d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.g;
-   }
-
-   public emd.a f() {
-      return this.f;
+   public int d() {
+      return this.b;
    }
 }

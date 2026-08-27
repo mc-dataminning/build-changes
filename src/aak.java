@@ -1,32 +1,43 @@
-public class aak implements wu<yo> {
-   private final hv a;
-   private final boolean b;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public aak(hv $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class aak implements xd<yx> {
+   private final int a;
+   private final int b;
+   private final aal c;
+
+   public aak(csp $$0, edz $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = $$0.e;
+      this.b = $$0.f;
+      this.c = new aal($$0, $$1, $$2, $$3);
    }
 
-   public aak(ue $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readBoolean();
+   public aak(ug $$0) {
+      this.a = $$0.n();
+      this.b = $$0.n();
+      this.c = new aal($$0, this.a, this.b);
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(ug $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
+      this.c.a($$0);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public hv a() {
+   public int a() {
       return this.a;
    }
 
-   public boolean d() {
+   public int d() {
       return this.b;
+   }
+
+   public aal e() {
+      return this.c;
    }
 }

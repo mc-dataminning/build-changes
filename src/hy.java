@@ -1,66 +1,34 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import javax.annotation.Nonnull;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DynamicOps;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class hy<T> extends in<T> implements hz<T> {
-   private final agt b;
-   private ie.c<T> c;
+public class hy<T> {
+   private final Codec<T> a;
 
-   public hy(String $$0, ags<? extends ir<T>> $$1, Lifecycle $$2, boolean $$3) {
-      super($$1, $$2, $$3);
-      this.b = new agt($$0);
+   hy(Codec<T> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public ie.c<T> a(int $$0, ags<T> $$1, T $$2, Lifecycle $$3) {
-      ie.c<T> $$4 = super.a($$0, $$1, $$2, $$3);
-      if (this.b.equals($$1.a())) {
-         this.c = $$4;
+   public T a(T $$0, ij.b $$1, ij.b $$2) {
+      DynamicOps<Object> $$3 = ahb.a(aub.a, $$1);
+      DynamicOps<Object> $$4 = ahb.a(aub.a, $$2);
+      Object $$5 = ac.a(this.a.encodeStart($$3, $$0), $$0x -> new IllegalStateException("Failed to encode: " + $$0x));
+      return ac.a(this.a.parse($$4, $$5), $$0x -> new IllegalStateException("Failed to decode: " + $$0x));
+   }
+
+   public static class a {
+      private final Map<ahc<? extends it<?>>, hy<?>> a = new HashMap<>();
+
+      public <T> hy.a a(ahc<? extends it<? extends T>> $$0, Codec<T> $$1) {
+         this.a.put($$0, new hy($$1));
+         return this;
       }
 
-      return $$4;
-   }
-
-   @Override
-   public int a(@Nullable T $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == -1 ? super.a(this.c.a()) : $$1;
-   }
-
-   @Nonnull
-   @Override
-   public agt b(T $$0) {
-      agt $$1 = super.b($$0);
-      return $$1 == null ? this.b : $$1;
-   }
-
-   @Nonnull
-   @Override
-   public T a(@Nullable agt $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
-
-   @Override
-   public Optional<T> b(@Nullable agt $$0) {
-      return Optional.ofNullable(super.a($$0));
-   }
-
-   @Nonnull
-   @Override
-   public T a(int $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
-
-   @Override
-   public Optional<ie.c<T>> a(auf $$0) {
-      return super.a($$0).or(() -> Optional.of(this.c));
-   }
-
-   @Override
-   public agt a() {
-      return this.b;
+      @Nullable
+      public <T> hy<T> a(ahc<? extends it<? extends T>> $$0) {
+         return (hy<T>)this.a.get($$0);
+      }
    }
 }

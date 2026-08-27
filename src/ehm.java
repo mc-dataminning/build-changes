@@ -1,40 +1,64 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class ehm extends ehq {
-   public static final Codec<ehm> a = RecordCodecBuilder.create($$0 -> a($$0).and(ege.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, ehm::new));
-   private final ege.b b;
+public class ehm extends ehb {
+   public static final Codec<ehm> a = a(ehm::new);
 
-   public ehm(List<ejd> $$0, ege.b $$1) {
-      super($$0);
-      this.b = $$1;
+   ehm(List<ehi> $$0, List<ejo> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ehs b() {
-      return eht.v;
+   public ehj a() {
+      return ehg.h;
    }
 
    @Override
-   public Set<eim<?>> a() {
-      return ImmutableSet.of(this.b.a());
+   protected eha a(List<? extends eha> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eha)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (eha $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public cmh a(cmh $$0, ege $$1) {
-      if ($$0.a(cmk.ug) && $$1.c(this.b.a()) instanceof cer $$2) {
-         GameProfile $$3 = $$2.fR();
-         $$0.w().a("SkullOwner", sy.a(new sj(), $$3));
+   public static ehm.a a(ehi.a<?>... $$0) {
+      return new ehm.a($$0);
+   }
+
+   public static class a extends ehi.a<ehm.a> {
+      private final Builder<ehi> a = ImmutableList.builder();
+
+      public a(ehi.a<?>... $$0) {
+         for (ehi.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return $$0;
-   }
+      protected ehm.a a() {
+         return this;
+      }
 
-   public static ehq.a<?> a(ege.b $$0) {
-      return a($$1 -> new ehm($$1, $$0));
+      @Override
+      public ehm.a c(ehi.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ehi b() {
+         return new ehm(this.a.build(), this.f());
+      }
    }
 }

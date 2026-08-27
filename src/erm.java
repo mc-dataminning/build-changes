@@ -1,164 +1,31 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-public class erm extends ewh {
-   private static final agt t = new agt("widget/slot_frame");
-   private static final agt u = new agt("icon/checkmark");
-   public static final agt a = new agt("textures/gui/realms/empty_frame.png");
-   public static final agt b = new agt("minecraft", "textures/gui/title/background/panorama_0.png");
-   public static final agt c = new agt("minecraft", "textures/gui/title/background/panorama_2.png");
-   public static final agt d = new agt("minecraft", "textures/gui/title/background/panorama_3.png");
-   private static final vb v = vb.c("mco.configure.world.slot.tooltip.active");
-   private static final vb w = vb.c("mco.configure.world.slot.tooltip.minigame");
-   private static final vb x = vb.c("mco.configure.world.slot.tooltip");
-   static final vb y = vb.c("mco.worldSlot.minigame");
-   private final int z;
-   @Nullable
-   private erm.b A;
-   @Nullable
-   private exs B;
+public class erm extends erp {
+   public long a;
+   public List<erl> b = Lists.newArrayList();
 
-   public erm(int $$0, int $$1, int $$2, int $$3, int $$4, ewh.c $$5) {
-      super($$0, $$1, $$2, $$3, va.a, $$5, p);
-      this.z = $$4;
-   }
+   public static erm a(String $$0) {
+      erm $$1 = new erm();
+      JsonParser $$2 = new JsonParser();
 
-   @Nullable
-   public erm.b a() {
-      return this.A;
-   }
-
-   public void a(eqk $$0) {
-      this.A = new erm.b($$0, this.z);
-      this.a(this.A, $$0.o);
-   }
-
-   private void a(erm.b $$0, String $$1) {
-      vb $$2 = switch ($$0.c) {
-         case c -> v;
-         case b -> $$0.b ? w : x;
-         default -> null;
-      };
-      if ($$2 == null) {
-         this.b(vb.b($$0.e));
-      } else {
-         this.B = exs.a($$2);
-         if ($$0.a) {
-            this.b($$2);
-         } else {
-            vp $$3 = $$2.f().b(va.a()).b(vb.b($$0.e));
-            if ($$0.b) {
-               $$3 = $$3.b(va.u).f($$1);
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = etm.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               erl $$8 = erl.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
             }
-
-            this.b($$3);
          }
+      } catch (Exception var10) {
       }
-   }
 
-   static erm.a a(eqk $$0, boolean $$1, boolean $$2) {
-      if ($$1 && !$$0.j && $$0.e != eqk.c.c) {
-         return erm.a.c;
-      } else {
-         return $$1 || $$2 && $$0.j ? erm.a.a : erm.a.b;
-      }
-   }
-
-   @Override
-   public void b(evw $$0, int $$1, int $$2, float $$3) {
-      if (this.A != null) {
-         int $$4 = this.p();
-         int $$5 = this.r();
-         boolean $$6 = this.n();
-         if (this.B != null) {
-            this.B.a(this.m(), this.aJ_(), this.s());
-         }
-
-         agt $$7;
-         if (this.A.b) {
-            $$7 = esz.a(String.valueOf(this.A.h), this.A.i);
-         } else if (this.A.a) {
-            $$7 = a;
-         } else if (this.A.i != null && this.A.h != -1L) {
-            $$7 = esz.a(String.valueOf(this.A.h), this.A.i);
-         } else if (this.z == 1) {
-            $$7 = b;
-         } else if (this.z == 2) {
-            $$7 = c;
-         } else if (this.z == 3) {
-            $$7 = d;
-         } else {
-            $$7 = a;
-         }
-
-         if (this.A.d) {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-         }
-
-         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
-         boolean $$14 = $$6 && this.A.c != erm.a.a;
-         if ($$14) {
-            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         } else if (this.A.d) {
-            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
-         } else {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-         }
-
-         $$0.a(t, $$4, $$5, 80, 80);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         if (this.A.d) {
-            RenderSystem.enableBlend();
-            $$0.a(u, $$4 + 67, $$5 + 4, 9, 8);
-            RenderSystem.disableBlend();
-         }
-
-         evu $$15 = euk.N().h;
-         $$0.a($$15, this.A.e, $$4 + 40, $$5 + 66, -1);
-         $$0.a($$15, epo.a(this.A.f, this.A.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
-
-   public static class b {
-      final boolean d;
-      final String e;
-      final String f;
-      final eqk.a g;
-      final long h;
-      @Nullable
-      final String i;
-      public final boolean a;
-      public final boolean b;
-      public final erm.a c;
-
-      public b(eqk $$0, int $$1) {
-         this.b = $$1 == 4;
-         if (this.b) {
-            this.d = $$0.m == eqk.d.b;
-            this.e = erm.y.getString();
-            this.h = (long)$$0.p;
-            this.i = $$0.q;
-            this.a = $$0.p == -1;
-            this.f = "";
-            this.g = eqk.a.a;
-         } else {
-            eqr $$2 = $$0.i.get($$1);
-            this.d = $$0.n == $$1 && $$0.m != eqk.d.b;
-            this.e = $$2.a($$1);
-            this.h = $$2.l;
-            this.i = $$2.m;
-            this.a = $$2.n;
-            this.f = $$2.j;
-            this.g = $$2.k;
-         }
-
-         this.c = erm.a($$0, this.d, this.b);
-      }
+      return $$1;
    }
 }

@@ -1,39 +1,55 @@
 import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageCodec;
+import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
-import io.netty.util.ReferenceCountUtil;
+import java.io.IOException;
 import java.util.List;
 import org.slf4j.Logger;
 
-public class uj extends MessageToMessageCodec<wu<?>, wu<?>> {
+public class uj extends ByteToMessageDecoder implements uo {
    private static final Logger a = LogUtils.getLogger();
-   private final AttributeKey<ud.a<?>> b;
-   private final AttributeKey<ud.a<?>> c;
+   private final AttributeKey<uf.a<?>> b;
 
-   public uj(AttributeKey<ud.a<?>> $$0, AttributeKey<ud.a<?>> $$1) {
+   public uj(AttributeKey<uf.a<?>> $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private static void a(ChannelHandlerContext $$0, wu<?> $$1, List<Object> $$2, AttributeKey<ud.a<?>> $$3) {
-      Attribute<ud.a<?>> $$4 = $$0.channel().attr($$3);
-      ud.a<?> $$5 = (ud.a<?>)$$4.get();
-      if (!$$5.b($$1)) {
-         a.error("Unrecognized packet in pipeline {}:{} - {}", new Object[]{$$5.a().a(), $$5.b(), $$1});
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         Attribute<uf.a<?>> $$4 = $$0.channel().attr(this.b);
+         uf.a<?> $$5 = (uf.a<?>)$$4.get();
+         ug $$6 = new ug($$1);
+         int $$7 = $$6.n();
+         xd<?> $$8 = $$5.a($$7, $$6);
+         if ($$8 == null) {
+            throw new IOException("Bad packet id " + $$7);
+         } else {
+            bgs.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
+            if ($$6.readableBytes() > 0) {
+               throw new IOException(
+                  "Packet "
+                     + $$5.a().a()
+                     + "/"
+                     + $$7
+                     + " ("
+                     + $$8.getClass().getSimpleName()
+                     + ") was larger than I expected, found "
+                     + $$6.readableBytes()
+                     + " bytes extra whilst reading packet "
+                     + $$7
+               );
+            } else {
+               $$2.add($$8);
+               if (a.isDebugEnabled()) {
+                  a.debug(ue.c, " IN: [{}:{}] {}", new Object[]{$$5.a().a(), $$7, $$8.getClass().getName()});
+               }
+
+               uo.a($$4, $$8);
+            }
+         }
       }
-
-      ReferenceCountUtil.retain($$1);
-      $$2.add($$1);
-      um.a($$4, $$1);
-   }
-
-   protected void a(ChannelHandlerContext $$0, wu<?> $$1, List<Object> $$2) throws Exception {
-      a($$0, $$1, $$2, this.b);
-   }
-
-   protected void b(ChannelHandlerContext $$0, wu<?> $$1, List<Object> $$2) throws Exception {
-      a($$0, $$1, $$2, this.c);
    }
 }

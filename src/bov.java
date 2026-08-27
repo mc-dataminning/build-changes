@@ -1,37 +1,101 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class bov {
-   public static box<blv> a(float $$0) {
-      return bqz.a((Function<bqz.b<blv>, ? extends App<bqz.c<blv>, brc<blv>>>)($$1 -> $$1.group($$1.c(bux.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.g($$3.dm())) {
-                  return false;
-               } else {
-                  Optional<elb> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new bva($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+public class bov extends bnw<bmh> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
+   private final float g;
+   @Nullable
+   private hx h;
+   private int i;
+   private int j;
+   private int k;
+
+   public bov(float $$0) {
+      super(ImmutableMap.of(bvh.w, bvi.a, bvh.m, bvi.b));
+      this.g = $$0;
    }
 
-   @Nullable
-   private static elb a(amp $$0, blv $$1) {
-      auf $$2 = $$1.eg();
-      hv $$3 = $$1.dm();
+   protected boolean a(amz $$0, bmh $$1) {
+      return $$1.o_() && this.b($$0, $$1);
+   }
 
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         hv $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return elb.c($$5);
+   protected void a(amz $$0, bmh $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.z.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
+   }
+
+   protected void b(amz $$0, bmh $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   protected boolean c(amz $$0, bmh $$1, long $$2) {
+      return $$1.o_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected void d(amz $$0, bmh $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
+      } else {
+         if (this.d($$0, $$1)) {
+            $$1.M().a();
+            this.j--;
+            this.k = 5;
          }
       }
-
-      return null;
    }
 
-   public static boolean a(amp $$0, blv $$1, hv $$2) {
-      return $$0.g($$2) && (double)$$0.a(dny.a.e, $$2).v() <= $$1.dt();
+   private void a(bmh $$0, hx $$1) {
+      $$0.dO().a(bvh.m, new bvk($$1, this.g, 0));
+   }
+
+   private boolean b(amz $$0, bmh $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
+   }
+
+   private boolean c(amz $$0, bmh $$1) {
+      hx $$2 = $$1.dm();
+      hx $$3 = $$2.d();
+      return this.a($$0, $$2) || this.a($$0, $$3);
+   }
+
+   private boolean d(amz $$0, bmh $$1) {
+      return this.a($$0, $$1.dm());
+   }
+
+   private boolean a(amz $$0, hx $$1) {
+      return $$0.a_($$1).a(asb.R);
+   }
+
+   private Optional<hx> a(bmh $$0) {
+      return $$0.dO().c(bvh.w);
+   }
+
+   private boolean e(amz $$0, bmh $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(amz $$0, bmh $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

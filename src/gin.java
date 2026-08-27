@@ -1,65 +1,56 @@
-import java.time.Duration;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class gin {
-   private final UUID a = UUID.randomUUID();
-   private final gii b;
-   private final gir c;
-   private final git d = new git();
-   private final giq e;
-   private final gis f;
+   private final aqf a;
+   private final Map<ahd, CompletableFuture<ent>> b = Maps.newHashMap();
 
-   public gin(gii $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new gir($$3);
-      this.e = new giq();
-      this.f = new gis($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(gil.i, this.a);
-      });
+   public gin(aqf $$0) {
+      this.a = $$0;
+   }
+
+   public CompletableFuture<ent> a(ahd $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               ent var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  enr $$2 = new enr($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new ent($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ac.f()));
+   }
+
+   public CompletableFuture<gij> a(ahd $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (gij)($$1 ? new gil(enr::new, $$2) : new enr($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
+         }
+      }, ac.f());
    }
 
    public void a() {
-      this.e.a(this.b);
+      this.b.values().forEach($$0 -> $$0.thenAccept(ent::b));
+      this.b.clear();
    }
 
-   public void a(csv $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
-   }
-
-   public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
-   }
-
-   public void a(long $$0) {
-      this.d.a($$0);
-   }
-
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
-      }
-   }
-
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
-   }
-
-   public void a(csy $$0, af $$1) {
-      agt $$2 = $$1.a();
-      if ($$1.b().g() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.W();
-         this.b.send(gij.f, $$2x -> {
-            $$2x.a(gil.D, $$2.toString());
-            $$2x.a(gil.E, $$3);
-         });
-      }
+   public CompletableFuture<?> a(Collection<ghk> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

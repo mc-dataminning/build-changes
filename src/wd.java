@@ -1,18 +1,17 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+public class wd extends Exception {
+   private final vd a;
 
-public interface wd {
-   MapCodec<wd> c = vd.a(new wd.a[]{we.b, wc.b, wl.b}, wd.a::a, wd::a, "source");
+   public wd(vd $$0) {
+      super($$0.getString());
+      this.a = $$0;
+   }
 
-   Stream<sj> a(ds var1) throws CommandSyntaxException;
+   public wd(vd $$0, Throwable $$1) {
+      super($$0.getString(), $$1);
+      this.a = $$0;
+   }
 
-   wd.a<?> a();
-
-   public static record a<T extends wd>(MapCodec<T> a, String b) implements aut {
-      @Override
-      public String c() {
-         return this.b;
-      }
+   public vd b() {
+      return this.a;
    }
 }

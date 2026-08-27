@@ -1,82 +1,55 @@
 import java.util.List;
 
 public class qi {
-   public static final ags<dqp<?, ?>> a = qf.a("ore_magma");
-   public static final ags<dqp<?, ?>> b = qf.a("ore_soul_sand");
-   public static final ags<dqp<?, ?>> c = qf.a("ore_nether_gold");
-   public static final ags<dqp<?, ?>> d = qf.a("ore_quartz");
-   public static final ags<dqp<?, ?>> e = qf.a("ore_gravel_nether");
-   public static final ags<dqp<?, ?>> f = qf.a("ore_blackstone");
-   public static final ags<dqp<?, ?>> g = qf.a("ore_dirt");
-   public static final ags<dqp<?, ?>> h = qf.a("ore_gravel");
-   public static final ags<dqp<?, ?>> i = qf.a("ore_granite");
-   public static final ags<dqp<?, ?>> j = qf.a("ore_diorite");
-   public static final ags<dqp<?, ?>> k = qf.a("ore_andesite");
-   public static final ags<dqp<?, ?>> l = qf.a("ore_tuff");
-   public static final ags<dqp<?, ?>> m = qf.a("ore_coal");
-   public static final ags<dqp<?, ?>> n = qf.a("ore_coal_buried");
-   public static final ags<dqp<?, ?>> o = qf.a("ore_iron");
-   public static final ags<dqp<?, ?>> p = qf.a("ore_iron_small");
-   public static final ags<dqp<?, ?>> q = qf.a("ore_gold");
-   public static final ags<dqp<?, ?>> r = qf.a("ore_gold_buried");
-   public static final ags<dqp<?, ?>> s = qf.a("ore_redstone");
-   public static final ags<dqp<?, ?>> t = qf.a("ore_diamond_small");
-   public static final ags<dqp<?, ?>> u = qf.a("ore_diamond_medium");
-   public static final ags<dqp<?, ?>> v = qf.a("ore_diamond_large");
-   public static final ags<dqp<?, ?>> w = qf.a("ore_diamond_buried");
-   public static final ags<dqp<?, ?>> x = qf.a("ore_lapis");
-   public static final ags<dqp<?, ?>> y = qf.a("ore_lapis_buried");
-   public static final ags<dqp<?, ?>> z = qf.a("ore_infested");
-   public static final ags<dqp<?, ?>> A = qf.a("ore_emerald");
-   public static final ags<dqp<?, ?>> B = qf.a("ore_ancient_debris_large");
-   public static final ags<dqp<?, ?>> C = qf.a("ore_ancient_debris_small");
-   public static final ags<dqp<?, ?>> D = qf.a("ore_copper_small");
-   public static final ags<dqp<?, ?>> E = qf.a("ore_copper_large");
-   public static final ags<dqp<?, ?>> F = qf.a("ore_clay");
+   public static final ahc<dra<?, ?>> a = qh.a("ice_spike");
+   public static final ahc<dra<?, ?>> b = qh.a("ice_patch");
+   public static final ahc<dra<?, ?>> c = qh.a("forest_rock");
+   public static final ahc<dra<?, ?>> d = qh.a("iceberg_packed");
+   public static final ahc<dra<?, ?>> e = qh.a("iceberg_blue");
+   public static final ahc<dra<?, ?>> f = qh.a("blue_ice");
+   public static final ahc<dra<?, ?>> g = qh.a("lake_lava");
+   public static final ahc<dra<?, ?>> h = qh.a("disk_clay");
+   public static final ahc<dra<?, ?>> i = qh.a("disk_gravel");
+   public static final ahc<dra<?, ?>> j = qh.a("disk_sand");
+   public static final ahc<dra<?, ?>> k = qh.a("freeze_top_layer");
+   public static final ahc<dra<?, ?>> l = qh.a("disk_grass");
+   public static final ahc<dra<?, ?>> m = qh.a("bonus_chest");
+   public static final ahc<dra<?, ?>> n = qh.a("void_start_platform");
+   public static final ahc<dra<?, ?>> o = qh.a("desert_well");
+   public static final ahc<dra<?, ?>> p = qh.a("spring_lava_overworld");
+   public static final ahc<dra<?, ?>> q = qh.a("spring_lava_frozen");
+   public static final ahc<dra<?, ?>> r = qh.a("spring_water");
 
-   public static void a(pa<dqp<?, ?>> $$0) {
-      eci $$1 = new ecq(arr.bd);
-      eci $$2 = new ecq(arr.be);
-      eci $$3 = new ecq(arr.bf);
-      eci $$4 = new ebr(cwb.dV);
-      eci $$5 = new ecq(arr.bg);
-      List<dto.a> $$6 = List.of(dto.a($$2, cwb.P.o()), dto.a($$3, cwb.Q.o()));
-      List<dto.a> $$7 = List.of(dto.a($$2, cwb.N.o()), dto.a($$3, cwb.O.o()));
-      List<dto.a> $$8 = List.of(dto.a($$2, cwb.cx.o()), dto.a($$3, cwb.cy.o()));
-      List<dto.a> $$9 = List.of(dto.a($$2, cwb.aR.o()), dto.a($$3, cwb.aS.o()));
-      List<dto.a> $$10 = List.of(dto.a($$2, cwb.ra.o()), dto.a($$3, cwb.rb.o()));
-      List<dto.a> $$11 = List.of(dto.a($$2, cwb.R.o()), dto.a($$3, cwb.S.o()));
-      qf.a($$0, a, drc.I, new dto($$4, cwb.kJ.o(), 33));
-      qf.a($$0, b, drc.I, new dto($$4, cwb.dW.o(), 12));
-      qf.a($$0, c, drc.I, new dto($$4, cwb.T.o(), 10));
-      qf.a($$0, d, drc.I, new dto($$4, cwb.hb.o(), 14));
-      qf.a($$0, e, drc.I, new dto($$4, cwb.L.o(), 33));
-      qf.a($$0, f, drc.I, new dto($$4, cwb.pr.o(), 33));
-      qf.a($$0, g, drc.I, new dto($$1, cwb.j.o(), 33));
-      qf.a($$0, h, drc.I, new dto($$1, cwb.L.o(), 33));
-      qf.a($$0, i, drc.I, new dto($$1, cwb.c.o(), 64));
-      qf.a($$0, j, drc.I, new dto($$1, cwb.e.o(), 64));
-      qf.a($$0, k, drc.I, new dto($$1, cwb.g.o(), 64));
-      qf.a($$0, l, drc.I, new dto($$1, cwb.qz.o(), 64));
-      qf.a($$0, m, drc.I, new dto($$11, 17));
-      qf.a($$0, n, drc.I, new dto($$11, 17, 0.5F));
-      qf.a($$0, o, drc.I, new dto($$6, 9));
-      qf.a($$0, p, drc.I, new dto($$6, 4));
-      qf.a($$0, q, drc.I, new dto($$7, 9));
-      qf.a($$0, r, drc.I, new dto($$7, 9, 0.5F));
-      qf.a($$0, s, drc.I, new dto(List.of(dto.a($$2, cwb.dI.o()), dto.a($$3, cwb.dJ.o())), 8));
-      qf.a($$0, t, drc.I, new dto($$8, 4, 0.5F));
-      qf.a($$0, v, drc.I, new dto($$8, 12, 0.7F));
-      qf.a($$0, w, drc.I, new dto($$8, 8, 1.0F));
-      qf.a($$0, u, drc.I, new dto($$8, 8, 0.5F));
-      qf.a($$0, x, drc.I, new dto($$9, 7));
-      qf.a($$0, y, drc.I, new dto($$9, 7, 1.0F));
-      qf.a($$0, z, drc.I, new dto(List.of(dto.a($$2, cwb.eN.o()), dto.a($$3, cwb.td.o())), 9));
-      qf.a($$0, A, drc.I, new dto(List.of(dto.a($$2, cwb.fE.o()), dto.a($$3, cwb.fF.o())), 3));
-      qf.a($$0, B, drc.ae, new dto($$5, cwb.pj.o(), 3, 1.0F));
-      qf.a($$0, C, drc.ae, new dto($$5, cwb.pj.o(), 2, 1.0F));
-      qf.a($$0, D, drc.I, new dto($$10, 10));
-      qf.a($$0, E, drc.I, new dto($$10, 20));
-      qf.a($$0, F, drc.I, new dto($$1, cwb.dR.o(), 33));
+   public static void a(pc<dra<?, ?>> $$0) {
+      qh.a($$0, a, drn.s);
+      qh.a($$0, b, drn.G, new dto(dwa.a(cwl.iC), dpq.c(List.of(cwl.j, cwl.i, cwl.l, cwl.k, cwl.fl, cwl.dP, cwl.dO)), bjg.a(2, 3), 1));
+      qh.a($$0, c, drn.F, new dtk(cwl.cn.o()));
+      qh.a($$0, d, drn.E, new dtk(cwl.iC.o()));
+      qh.a($$0, e, drn.E, new dtk(cwl.mW.o()));
+      qh.a($$0, f, drn.D);
+      qh.a($$0, g, drn.H, new dsc.a(dvs.a(cwl.H.o()), dvs.a(cwl.b.o())));
+      qh.a($$0, h, drn.G, new dto(dwa.a(cwl.dR), dpq.c(List.of(cwl.j, cwl.dR)), bjg.a(2, 3), 1));
+      qh.a($$0, i, drn.G, new dto(dwa.a(cwl.L), dpq.c(List.of(cwl.j, cwl.i)), bjg.a(2, 5), 2));
+      qh.a(
+         $$0, j, drn.G, new dto(new dwa(dvs.a(cwl.I), List.of(new dwa.a(dpq.a(ic.a.q(), cwl.a), dvs.a(cwl.aV)))), dpq.c(List.of(cwl.j, cwl.i)), bjg.a(2, 6), 2)
+      );
+      qh.a($$0, k, drn.u);
+      qh.a(
+         $$0,
+         l,
+         drn.G,
+         new dto(
+            new dwa(dvs.a(cwl.j), List.of(new dwa.a(dpq.a(dpq.b(dpq.b(ic.b.q()), dpq.a(ic.b.q(), eel.c))), dvs.a(cwl.i)))),
+            dpq.c(List.of(cwl.j, cwl.sI)),
+            bjg.a(2, 6),
+            2
+         )
+      );
+      qh.a($$0, m, drn.ac);
+      qh.a($$0, n, drn.n);
+      qh.a($$0, o, drn.o);
+      qh.a($$0, p, drn.k, new dum(eel.e.g(), true, 4, 1, il.a(cwj::r, cwl.b, cwl.c, cwl.e, cwl.g, cwl.sJ, cwl.qz, cwl.qN, cwl.j)));
+      qh.a($$0, q, drn.k, new dum(eel.e.g(), true, 4, 1, il.a(cwj::r, cwl.dP, cwl.qP, cwl.iC)));
+      qh.a($$0, r, drn.k, new dum(eel.c.g(), true, 4, 1, il.a(cwj::r, cwl.b, cwl.c, cwl.e, cwl.g, cwl.sJ, cwl.qz, cwl.qN, cwl.j, cwl.dP, cwl.qP, cwl.iC)));
    }
 }

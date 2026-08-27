@@ -1,24 +1,18 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
 
-public class bbb extends bah {
-   public bbb(Schema $$0) {
-      super($$0, true, "PrimedTnt BlockState fixer", bbg.x, "minecraft:tnt");
+public class bbb extends DataFix {
+   public bbb(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Fuse").get().result();
-      return $$1.isPresent() ? $$0.set("fuse", $$1.get()) : $$0;
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return $$0.set("block_state", $$0.createMap(Map.of($$0.createString("Name"), $$0.createString("minecraft:tnt"))));
-   }
-
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b(c($$0));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsForceVBOFix",
+         this.getInputSchema().getType(bbq.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("useVbo", $$0x.createString("true")))
+      );
    }
 }

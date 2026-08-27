@@ -1,44 +1,83 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class dqt extends dqr {
-   public dqt(Codec<dtn> $$0) {
+public class dqt extends drn<dty> {
+   public dqt(Codec<dty> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(csz $$0, auf $$1, hv $$2, dip $$3) {
-      hv.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
+   public boolean a(drp<dty> $$0) {
+      hx $$1 = $$0.e();
+      cud $$2 = $$0.b();
+      aup $$3 = $$0.d();
+      if ($$2.u($$1) && !$$2.u($$1.c())) {
+         hx.a $$4 = $$1.j();
+         hx.a $$5 = $$1.j();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
+         while ($$2.u($$4)) {
+            if ($$2.s($$4)) {
+               return true;
+            }
+
+            $$2.a($$4, cwl.dY.o(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ic.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ic.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ic.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ic.f));
+            $$4.c(ic.a);
          }
 
-         $$4.c(ia.b);
-      }
+         $$4.c(ic.b);
+         this.a($$2, $$3, $$5.a($$4, ic.c));
+         this.a($$2, $$3, $$5.a($$4, ic.d));
+         this.a($$2, $$3, $$5.a($$4, ic.e));
+         this.a($$2, $$3, $$5.a($$4, ic.f));
+         $$4.c(ic.a);
+         hx.a $$10 = new hx.a();
 
-      hv $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<ia> $$9 = ia.c.a.c($$1);
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = aui.a($$11) * aui.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
 
-      for (ia $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
+                  while ($$2.u($$5.a($$10, ic.a))) {
+                     $$10.c(ic.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
 
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(ia.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
+                  if (!$$2.u($$5.a($$10, ic.a))) {
+                     $$2.a($$10, cwl.dY.o(), 2);
+                  }
+               }
             }
          }
-      }
 
-      return true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(ctj $$0, aup $$1, hx $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, cwl.dY.o(), 2);
+      }
+   }
+
+   private boolean b(ctj $$0, aup $$1, hx $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, cwl.dY.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,28 +1,34 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bqi {
-   public static <E extends blv> box<E> a(List<Pair<? extends brc<? super E>, Integer>> $$0) {
-      return a($$0, boa.a.b, boa.b.a);
+   public static <E extends bmh> bnx<E> a(Function<E, Optional<? extends bmf>> $$0) {
+      return a($$0x -> true, $$0);
    }
 
-   public static <E extends blv> box<E> a(List<Pair<? extends brc<? super E>, Integer>> $$0, boa.a $$1, boa.b $$2) {
-      bpv<brc<? super E>> $$3 = new bpv<>();
-      $$0.forEach($$1x -> $$3.a((brc<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bqz.a((Function<bqz.b<E>, ? extends App<bqz.c<E>, brc<E>>>)($$3x -> $$3x.a((brc<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == boa.a.b) {
-               $$3.a();
-            }
-
-            for (brc<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == boa.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static <E extends bmh> bnx<E> a(Predicate<E> $$0, Function<E, Optional<? extends bmf>> $$1) {
+      return brj.a(
+         (Function<brj.b<E>, ? extends App<brj.c<E>, brm<E>>>)($$2 -> $$2.group($$2.c(bvh.o), $$2.a(bvh.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test((E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends bmf> $$7 = $$1.apply((E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        bmf $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
+                           $$3.b();
+                           return true;
+                        }
+                     }
+                  }
+               }))
+      );
    }
 }

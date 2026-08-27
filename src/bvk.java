@@ -1,19 +1,35 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class bvk {
+   private final bpk a;
+   private final float b;
+   private final int c;
 
-public class bvk extends bwc<bla> {
-   @Override
-   public Set<bux<?>> a() {
-      return ImmutableSet.of(bux.J, bux.h);
+   public bvk(hx $$0, float $$1, int $$2) {
+      this(new bnz($$0), $$1, $$2);
    }
 
-   protected void a(amp $$0, bla $$1) {
-      $$1.dO().c(bux.h).ifPresent($$1x -> this.a($$1, $$1x));
+   public bvk(elm $$0, float $$1, int $$2) {
+      this(new bnz(hx.a($$0)), $$1, $$2);
    }
 
-   private void a(bla $$0, buz $$1) {
-      Optional<bla> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.o_()).map(bla.class::cast);
-      $$0.dO().a(bux.J, $$2);
+   public bvk(blp $$0, float $$1, int $$2) {
+      this(new boh($$0, false), $$1, $$2);
+   }
+
+   public bvk(bpk $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public bpk a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

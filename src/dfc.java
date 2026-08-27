@@ -1,33 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dfc extends cxn implements dfb {
-   public static final MapCodec<dfc> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dfb.a.e.fieldOf("weathering_state").forGetter(dfc::g), u()).apply($$0, dfc::new)
-   );
-   private final dfb.a e;
+public class dfc extends czx {
+   public static final MapCodec<dfc> c = b(dfc::new);
+   public static final emf e = cwj.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
-   protected MapCodec<dfc> a() {
-      return d;
+   public MapCodec<dfc> a() {
+      return c;
    }
 
-   public dfc(dfb.a $$0, dio.d $$1) {
-      super($$1);
-      this.e = $$0;
+   public dfc(diz.d $$0) {
+      super($$0, ic.b, e, false);
    }
 
    @Override
-   public void b(dip $$0, amp $$1, hv $$2, auf $$3) {
-      this.a_($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean e_(dip $$0) {
-      return dfb.c($$0.b()).isPresent();
-   }
-
-   public dfb.a g() {
-      return this.e;
+   protected czy c() {
+      return (czy)cwl.oB;
    }
 }

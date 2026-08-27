@@ -1,26 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.LongFunction;
 
-public class dpi implements dpf {
-   private final iz e;
-   private final ia f;
-   public static final Codec<dpi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iz.v(16).optionalFieldOf("offset", iz.g).forGetter($$0x -> $$0x.e), ia.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, dpi::new)
-   );
+public class dpi extends dok {
+   private final aup d;
+   private int e;
 
-   public dpi(iz $$0, ia $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public dpi(aup $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   public boolean a(ctt $$0, hv $$1) {
-      hv $$2 = $$1.a(this.e);
-      return $$0.a_($$2).d($$0, $$2, this.f);
+   public int l() {
+      return this.e;
    }
 
    @Override
-   public dpg<?> a() {
-      return dpg.d;
+   public aup d() {
+      return this.d.d();
+   }
+
+   @Override
+   public dow e() {
+      return this.d.e();
+   }
+
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof dok $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
+
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
+
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static aup a(int $$0, int $$1, long $$2, long $$3) {
+      return aup.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(dok::new),
+      b(dpk::new);
+
+      private final LongFunction<aup> c;
+
+      private a(LongFunction<aup> $$0) {
+         this.c = $$0;
+      }
+
+      public aup a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

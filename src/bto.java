@@ -1,87 +1,122 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bto extends bsr {
-   public static final int a = 120;
-   protected final bme b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+public abstract class bto extends btb {
+   private static final int g = 1200;
+   private static final int h = 1200;
+   private static final int i = 200;
+   protected final bmo a;
+   public final double b;
+   protected int c;
+   protected int d;
+   private int j;
+   protected hx e = hx.b;
+   private boolean k;
+   private final int l;
+   private final int m;
+   protected int f;
 
-   public bto(bme $$0, double $$1) {
-      this($$0, $$1, 120);
+   public bto(bmo $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, 1);
    }
 
-   public bto(bme $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public bto(bme $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bsr.a.a));
+   public bto(bmo $$0, double $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.l = $$2;
+      this.f = 0;
+      this.m = $$3;
+      this.a(EnumSet.of(btb.a.a, btb.a.c));
    }
 
    @Override
    public boolean a() {
-      if (this.b.cO()) {
+      if (this.c > 0) {
+         this.c--;
          return false;
       } else {
-         if (!this.h) {
-            if (this.i && this.b.el() >= 100) {
-               return false;
-            }
-
-            if (this.b.eg().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         elb $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            this.h = false;
-            return true;
-         }
+         this.c = this.a(this.a);
+         return this.n();
       }
    }
 
-   @Nullable
-   protected elb h() {
-      return bwn.a(this.b, 10, 7);
+   protected int a(bmo $$0) {
+      return b(200 + $$0.eg().a(200));
    }
 
    @Override
    public boolean b() {
-      return !this.b.N().l() && !this.b.cO();
+      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dM(), this.e);
    }
 
    @Override
    public void c() {
-      this.b.N().a(this.c, this.d, this.e, this.f);
+      this.h();
+      this.d = 0;
+      this.j = this.a.eg().a(this.a.eg().a(1200) + 1200) + 1200;
+   }
+
+   protected void h() {
+      this.a.N().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
+   }
+
+   public double i() {
+      return 1.0;
+   }
+
+   protected hx k() {
+      return this.e.c();
    }
 
    @Override
-   public void d() {
-      this.b.N().n();
-      super.d();
+   public boolean T_() {
+      return true;
    }
 
-   public void i() {
-      this.h = true;
+   @Override
+   public void e() {
+      hx $$0 = this.k();
+      if (!$$0.a(this.a.dk(), this.i())) {
+         this.k = false;
+         this.d++;
+         if (this.l()) {
+            this.a.N().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
+         }
+      } else {
+         this.k = true;
+         this.d--;
+      }
    }
 
-   public void c(int $$0) {
-      this.g = $$0;
+   public boolean l() {
+      return this.d % 40 == 0;
    }
+
+   protected boolean m() {
+      return this.k;
+   }
+
+   protected boolean n() {
+      int $$0 = this.l;
+      int $$1 = this.m;
+      hx $$2 = this.a.dm();
+      hx.a $$3 = new hx.a();
+
+      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
+               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
+                  $$3.a($$2, $$6, $$4 - 1, $$7);
+                  if (this.a.a($$3) && this.a(this.a.dM(), $$3)) {
+                     this.e = $$3;
+                     return true;
+                  }
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   protected abstract boolean a(ctl var1, hx var2);
 }

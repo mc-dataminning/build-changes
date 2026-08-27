@@ -1,77 +1,60 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class foa implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<foa.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
+public enum foa implements ave {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   public void a(hv $$0, dip $$1, frk $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new foa.a(this.b, $$1, $$2.dk()));
+   public static final Codec<foa> d = ave.a(foa::values);
+   private final String e;
+
+   private foa(String $$0) {
+      this.e = $$0;
    }
 
-   public boolean a(hv $$0, dip $$1) {
-      foa.a $$2 = (foa.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
+   public static foa a(vt $$0, vd $$1, Instant $$2) {
+      if (!$$0.h() || $$0.b($$2)) {
+         return c;
       } else {
-         $$2.a($$1);
+         return a($$0, $$1) ? b : a;
+      }
+   }
+
+   private static boolean a(vt $$0, vd $$1) {
+      if (!$$1.getString().contains($$0.b())) {
          return true;
+      } else {
+         vd $$2 = $$0.m();
+         return $$2 == null ? false : a($$2);
       }
    }
 
-   public void a(int $$0, fmt $$1) {
-      ObjectIterator<Entry<foa.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<foa.a> $$3 = (Entry<foa.a>)$$2.next();
-         foa.a $$4 = (foa.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            hv $$5 = hv.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
-         }
-      }
+   private static boolean a(vd $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), wa.a).orElse(false);
    }
 
-   public foa a() {
-      this.b++;
-      this.c = true;
-      return this;
+   private static boolean a(wa $$0) {
+      return !$$0.k().equals(wa.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public euv a(vt $$0) {
+      return switch (this) {
+         case b -> euv.a($$0.b());
+         case c -> euv.c();
+         default -> null;
+      };
    }
 
    @Override
-   public void close() {
-      this.c = false;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final elb a;
-      int b;
-      dip c;
-
-      a(int $$0, dip $$1, elb $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
-      }
-
-      foa.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      void a(dip $$0) {
-         this.c = $$0;
-      }
+   public String c() {
+      return this.e;
    }
 }

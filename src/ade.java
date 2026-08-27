@@ -1,38 +1,93 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public record ade(String a, Instant b, long c, @Nullable vn d, vi.b e) implements wu<acw> {
-   public ade(ue $$0) {
-      this($$0.d(256), $$0.w(), $$0.readLong(), $$0.c(vn::a), new vi.b($$0));
+public class ade {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
+
+   public static String a(blp $$0) {
+      if ($$0 instanceof cfb) {
+         return $$0.ad().getString();
+      } else {
+         vd $$1 = $$0.af();
+         return $$1 != null ? $$1.getString() : a($$0.cw());
+      }
    }
 
-   @Override
-   public void a(ue $$0) {
-      $$0.a(this.a, 256);
-      $$0.a(this.b);
-      $$0.b(this.c);
-      $$0.a(this.d, vn::a);
-      this.e.a($$0);
+   public static String a(UUID $$0) {
+      aup $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
    }
 
-   public void a(acw $$0) {
-      $$0.a(this);
+   private static String a(aup $$0, String[] $$1) {
+      return ac.a($$1, $$0);
    }
 
-   public Instant d() {
-      return this.b;
-   }
-
-   public long e() {
-      return this.c;
-   }
-
-   @Nullable
-   public vn f() {
-      return this.d;
-   }
-
-   public vi.b g() {
-      return this.e;
+   private static aup b(UUID $$0) {
+      return aup.a((long)($$0.hashCode() >> 2));
    }
 }

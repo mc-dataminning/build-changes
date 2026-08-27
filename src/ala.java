@@ -1,51 +1,61 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ala {
-   public static void a(CommandDispatcher<ds> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vd.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vd.c("commands.summon.invalidPosition"));
+
+   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
-               .then(dt.a("clear").executes($$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).h())))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("summon").requires($$0x -> $$0x.c(2)))
             .then(
-               dt.a("set")
+               ((RequiredArgumentBuilder)dt.a("entity", er.a($$1, ke.u))
+                     .suggests(hn.d)
+                     .executes($$0x -> b((ds)$$0x.getSource(), er.e($$0x, "entity"), ((ds)$$0x.getSource()).d(), new sl(), true)))
                   .then(
-                     dt.a("warning_level", IntegerArgumentType.integer(0, 4))
-                        .executes(
-                           $$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
-                        )
+                     ((RequiredArgumentBuilder)dt.a("pos", ft.a())
+                           .executes($$0x -> b((ds)$$0x.getSource(), er.e($$0x, "entity"), ft.a($$0x, "pos"), new sl(), true)))
+                        .then(dt.a("nbt", ec.a()).executes($$0x -> b((ds)$$0x.getSource(), er.e($$0x, "entity"), ft.a($$0x, "pos"), ec.a($$0x, "nbt"), false)))
                   )
             )
       );
    }
 
-   private static int a(ds $$0, Collection<? extends cer> $$1, int $$2) {
-      for (cer $$3 : $$1) {
-         $$3.aa().ifPresent($$1x -> $$1x.a($$2));
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vb.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().Q_()), true);
+   public static blp a(ds $$0, ih.c<blt<?>> $$1, elm $$2, sl $$3, boolean $$4) throws CommandSyntaxException {
+      hx $$5 = hx.a($$2);
+      if (!cti.l($$5)) {
+         throw c.create();
       } else {
-         $$0.a(() -> vb.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
-      }
+         sl $$6 = $$3.h();
+         $$6.a("id", $$1.g().a().toString());
+         amz $$7 = $$0.e();
+         blp $$8 = blt.a($$6, $$7, $$1x -> {
+            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dC(), $$1x.dE());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
+         } else {
+            if ($$4 && $$8 instanceof bmh) {
+               ((bmh)$$8).a($$0.e(), $$0.e().d_($$8.dm()), bmj.n, null, null);
+            }
 
-      return $$1.size();
+            if (!$$7.e($$8)) {
+               throw b.create();
+            } else {
+               return $$8;
+            }
+         }
+      }
    }
 
-   private static int a(ds $$0, Collection<? extends cer> $$1) {
-      for (cer $$2 : $$1) {
-         $$2.aa().ifPresent(cdx::b);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vb.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vb.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int b(ds $$0, ih.c<blt<?>> $$1, elm $$2, sl $$3, boolean $$4) throws CommandSyntaxException {
+      blp $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> vd.a("commands.summon.success", $$5.Q_()), true);
+      return 1;
    }
 }

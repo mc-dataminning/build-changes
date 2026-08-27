@@ -1,64 +1,65 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.UnboundedMapCodec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 public class iv {
-   private static final Map<ags<? extends ir<?>>, iv.a<?>> b = ac.a(() -> {
-      Builder<ags<? extends ir<?>>, iv.a<?>> $$0 = ImmutableMap.builder();
-      a($$0, kc.as, ctx.b);
-      a($$0, kc.at, ux.a);
-      a($$0, kc.aI, com.a);
-      a($$0, kc.aH, cok.a);
-      a($$0, kc.ax, dly.h);
-      a($$0, kc.r, bkf.a);
-      return $$0.build();
-   });
-   public static final Codec<is> a = a();
-
-   private static <E> void a(Builder<ags<? extends ir<?>>, iv.a<?>> $$0, ags<? extends ir<E>> $$1, Codec<E> $$2) {
-      $$0.put($$1, new iv.a<>($$1, $$2));
-   }
-
-   private static Stream<is.d<?>> a(is $$0) {
-      return $$0.c().filter($$0x -> b.containsKey($$0x.a()));
-   }
-
-   private static <E> DataResult<? extends Codec<E>> a(ags<? extends ir<E>> $$0) {
-      return Optional.ofNullable(b.get($$0))
-         .map($$0x -> $$0x.b())
-         .<DataResult<? extends Codec<E>>>map(DataResult::success)
-         .orElseGet(() -> DataResult.error(() -> "Unknown or not serializable registry: " + $$0));
-   }
-
-   private static <E> Codec<is> a() {
-      Codec<ags<? extends ir<E>>> $$0 = agt.a.xmap(ags::a, ags::a);
-      Codec<ir<E>> $$1 = $$0.partialDispatch(
-         "type", $$0x -> DataResult.success($$0x.c()), $$0x -> a($$0x).map($$1x -> it.a($$0x, Lifecycle.experimental(), $$1x))
+   private static <T> MapCodec<iv.a<T>> a(ahc<? extends it<T>> $$0, MapCodec<T> $$1) {
+      return RecordCodecBuilder.mapCodec(
+         $$2 -> $$2.group(ahc.a($$0).fieldOf("name").forGetter(iv.a::a), Codec.INT.fieldOf("id").forGetter(iv.a::b), $$1.forGetter(iv.a::c))
+               .apply($$2, iv.a::new)
       );
-      UnboundedMapCodec<? extends ags<? extends ir<?>>, ? extends ir<?>> $$2 = Codec.unboundedMap($$0, $$1);
-      return a($$2);
    }
 
-   private static <K extends ags<? extends ir<?>>, V extends ir<?>> Codec<is> a(UnboundedMapCodec<K, V> $$0) {
-      return $$0.xmap(is.c::new, $$0x -> a($$0x).collect(ImmutableMap.toImmutableMap($$0xx -> $$0xx.a(), $$0xx -> $$0xx.b())));
+   public static <T> Codec<it<T>> a(ahc<? extends it<T>> $$0, Lifecycle $$1, Codec<T> $$2) {
+      return a($$0, $$2.fieldOf("element")).codec().listOf().xmap($$2x -> {
+         ip<T> $$3 = new ip<>($$0, $$1);
+
+         for (iv.a<T> $$4 : $$2x) {
+            $$3.a($$4.b(), $$4.a(), $$4.c(), $$1);
+         }
+
+         return $$3;
+      }, $$0x -> {
+         Builder<iv.a<T>> $$1x = ImmutableList.builder();
+
+         for (T $$2x : $$0x) {
+            $$1x.add(new iv.a((ahc<T>)$$0x.c($$2x).get(), $$0x.a($$2x), $$2x));
+         }
+
+         return $$1x.build();
+      });
    }
 
-   public static Stream<is.d<?>> a(im<ahc> $$0) {
-      return a($$0.c(ahc.b));
+   public static <E> Codec<it<E>> b(ahc<? extends it<E>> $$0, Lifecycle $$1, Codec<E> $$2) {
+      Codec<Map<ahc<E>, E>> $$3 = Codec.unboundedMap(ahc.a($$0), $$2);
+      return $$3.xmap($$2x -> {
+         jc<E> $$3x = new ip<>($$0, $$1);
+         $$2x.forEach(($$2xx, $$3xx) -> $$3x.a($$2xx, (E)$$3xx, $$1));
+         return $$3x.l();
+      }, $$0x -> ImmutableMap.copyOf($$0x.g()));
    }
 
-   public static Stream<is.d<?>> b(im<ahc> $$0) {
-      Stream<is.d<?>> $$1 = $$0.a(ahc.a).c();
-      Stream<is.d<?>> $$2 = a($$0);
-      return Stream.concat($$2, $$1);
+   public static <E> Codec<il<E>> a(ahc<? extends it<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, false);
    }
 
-   static record a<E>(ags<? extends ir<E>> a, Codec<E> b) {
+   public static <E> Codec<il<E>> a(ahc<? extends it<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return agx.a($$0, agz.a($$0, $$1), $$2);
+   }
+
+   public static <E> Codec<il<E>> a(ahc<? extends it<E>> $$0) {
+      return a($$0, false);
+   }
+
+   public static <E> Codec<il<E>> a(ahc<? extends it<E>> $$0, boolean $$1) {
+      return agx.a($$0, aha.a($$0), $$1);
+   }
+
+   static record a<T>(ahc<T> a, int b, T c) {
    }
 }

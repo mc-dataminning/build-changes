@@ -1,81 +1,71 @@
-public class acf implements wu<yo> {
-   public static final float a = 8.0F;
-   private final ie<arb> b;
-   private final ard c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final float g;
-   private final float h;
-   private final long i;
+import javax.annotation.Nullable;
 
-   public acf(ie<arb> $$0, ard $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = (int)($$2 * 8.0);
-      this.e = (int)($$3 * 8.0);
-      this.f = (int)($$4 * 8.0);
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+public class acf implements xd<yx> {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   private final String d;
+   private final vd e;
+   private final emt.a f;
+   @Nullable
+   private final wt g;
+   private final int h;
+
+   public acf(emi $$0, int $$1) {
+      this.d = $$0.b();
+      this.e = $$0.d();
+      this.f = $$0.h();
+      this.g = $$0.f();
+      this.h = $$1;
    }
 
-   public acf(ue $$0) {
-      this.b = $$0.a(kb.b.t(), arb::b);
-      this.c = $$0.b(ard.class);
-      this.d = $$0.readInt();
-      this.e = $$0.readInt();
-      this.f = $$0.readInt();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readLong();
+   public acf(ug $$0) {
+      this.d = $$0.s();
+      this.h = $$0.readByte();
+      if (this.h != 0 && this.h != 2) {
+         this.e = vc.a;
+         this.f = emt.a.a;
+         this.g = null;
+      } else {
+         this.e = $$0.m();
+         this.f = $$0.b(emt.a.class);
+         this.g = $$0.c(wv::a);
+      }
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(kb.b.t(), this.b, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.p(this.e);
-      $$0.p(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.b(this.i);
+   public void a(ug $$0) {
+      $$0.a(this.d);
+      $$0.k(this.h);
+      if (this.h == 0 || this.h == 2) {
+         $$0.a(this.e);
+         $$0.a(this.f);
+         $$0.a(this.g, wv::a);
+      }
    }
 
-   public ie<arb> a() {
-      return this.b;
+   public void a(yx $$0) {
+      $$0.a(this);
    }
 
-   public ard d() {
-      return this.c;
+   public String a() {
+      return this.d;
    }
 
-   public double e() {
-      return (double)((float)this.d / 8.0F);
+   public vd d() {
+      return this.e;
    }
 
-   public double f() {
-      return (double)((float)this.e / 8.0F);
-   }
-
-   public double g() {
-      return (double)((float)this.f / 8.0F);
-   }
-
-   public float h() {
-      return this.g;
-   }
-
-   public float i() {
+   public int e() {
       return this.h;
    }
 
-   public long j() {
-      return this.i;
+   public emt.a f() {
+      return this.f;
    }
 
-   public void a(yo $$0) {
-      $$0.a(this);
+   @Nullable
+   public wt g() {
+      return this.g;
    }
 }

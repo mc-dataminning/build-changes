@@ -1,21 +1,5 @@
-public class fri {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
+public interface fri {
+   gef a(int var1, int var2);
 
-   public void a(boolean $$0, float $$1) {
-   }
-
-   public ela a() {
-      return new ela(this.a, this.b);
-   }
-
-   public boolean b() {
-      return this.b > 1.0E-5F;
-   }
+   gef a(aup var1);
 }

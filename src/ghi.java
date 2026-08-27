@@ -1,63 +1,58 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-
-public class ghi implements apt {
-   public static final ghi.a<cmh> a = new ghi.a<>();
-   public static final ghi.a<cmh> b = new ghi.a<>();
-   public static final ghi.a<ffu> c = new ghi.a<>();
-   private final Map<ghi.a<?>, ghi.c<?>> d = new HashMap<>();
-
-   @Override
-   public void a(aps $$0) {
-      for (ghi.c<?> $$1 : this.d.values()) {
-         $$1.a();
-      }
+public class ghi extends ggv {
+   public ghi(arl $$0, arn $$1, float $$2, float $$3, aup $$4, hx $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
    }
 
-   public <T> void a(ghi.a<T> $$0, ghi.b<T> $$1) {
-      this.d.put($$0, new ghi.c<>($$1));
+   public static ghi a(arl $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
    }
 
-   private <T> ghi.c<T> b(ghi.a<T> $$0) {
-      ghi.c<T> $$1 = (ghi.c<T>)this.d.get($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tree builder not registered");
-      } else {
-         return $$1;
-      }
+   public static ghi a(ih<arl> $$0, float $$1) {
+      return a($$0.a(), $$1);
    }
 
-   public <T> void a(ghi.a<T> $$0, List<T> $$1) {
-      this.b($$0).a($$1);
+   public static ghi a(arl $$0, float $$1, float $$2) {
+      return new ghi($$0.a(), arn.a, $$2, $$1, ghn.t(), false, 0, ghn.a.a, 0.0, 0.0, 0.0, true);
    }
 
-   public <T> ghj<T> a(ghi.a<T> $$0) {
-      return this.b($$0).b;
+   public static ghi a(arl $$0) {
+      return new ghi($$0.a(), arn.b, 1.0F, 1.0F, ghn.t(), false, 0, ghn.a.a, 0.0, 0.0, 0.0, true);
    }
 
-   public static class a<T> {
+   public static ghi a(arl $$0, elm $$1) {
+      return new ghi($$0, arn.c, 4.0F, 1.0F, ghn.t(), false, 0, ghn.a.b, $$1.c, $$1.d, $$1.e);
    }
 
-   public interface b<T> extends Function<List<T>, ghg<T>> {
+   public static ghi b(arl $$0, float $$1, float $$2) {
+      return new ghi($$0.a(), arn.i, $$2, $$1, ghn.t(), false, 0, ghn.a.a, 0.0, 0.0, 0.0, true);
    }
 
-   static class c<T> {
-      private final ghi.b<T> a;
-      ghg<T> b = ghg.b();
+   public static ghi b(arl $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
 
-      c(ghi.b<T> $$0) {
-         this.a = $$0;
-      }
+   public static ghi a(arl $$0, aup $$1, double $$2, double $$3, double $$4) {
+      return new ghi($$0, arn.i, 1.0F, 1.0F, $$1, false, 0, ghn.a.b, $$2, $$3, $$4);
+   }
 
-      void a(List<T> $$0) {
-         this.b = this.a.apply($$0);
-         this.b.a();
-      }
+   public ghi(arl $$0, arn $$1, float $$2, float $$3, aup $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, ghn.a.b, $$5, $$6, $$7);
+   }
 
-      void a() {
-         this.b.a();
-      }
+   private ghi(arl $$0, arn $$1, float $$2, float $$3, aup $$4, boolean $$5, int $$6, ghn.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public ghi(ahd $$0, arn $$1, float $$2, float $$3, aup $$4, boolean $$5, int $$6, ghn.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

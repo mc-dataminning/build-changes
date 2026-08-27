@@ -1,3 +1,3 @@
 public interface eod {
-   eoc createMonitor(long var1);
+   void execute();
 }

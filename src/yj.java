@@ -1,16 +1,18 @@
-public record yj(is.b a) implements wu<yh> {
-   private static final agr<tg> b = agr.a(sx.a, is.a(kb.ar));
+public record yj(hx b, int c) implements xx {
+   public static final ahd a = new ahd("debug/poi_ticket_count");
 
-   public yj(ue $$0) {
-      this($$0.<is>a(b, iv.a).d());
+   public yj(ug $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(b, iv.a, this.a);
+   public void a(ug $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(yh $$0) {
-      $$0.a(this);
+   @Override
+   public ahd a() {
+      return a;
    }
 }

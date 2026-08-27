@@ -1,443 +1,240 @@
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.StringReader;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class ge {
-   private static final Map<String, ge.b> i = Maps.newHashMap();
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vb.b("argument.entity.options.unknown", $$0));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vb.b("argument.entity.options.inapplicable", $$0));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vb.c("argument.entity.options.distance.negative"));
-   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vb.c("argument.entity.options.level.negative"));
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vb.c("argument.entity.options.limit.toosmall"));
-   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> vb.b("argument.entity.options.sort.irreversible", $$0));
-   public static final DynamicCommandExceptionType g = new DynamicCommandExceptionType($$0 -> vb.b("argument.entity.options.mode.invalid", $$0));
-   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> vb.b("argument.entity.options.type.invalid", $$0));
+   public static final int a = Integer.MAX_VALUE;
+   public static final BiConsumer<elm, List<? extends blp>> b = ($$0, $$1) -> {
+   };
+   private static final dmy<blp, ?> c = new dmy<blp, blp>() {
+      public blp a(blp $$0) {
+         return $$0;
+      }
 
-   private static void a(String $$0, ge.a $$1, Predicate<gd> $$2, vb $$3) {
-      i.put($$0, new ge.b($$1, $$2, $$3));
+      @Override
+      public Class<? extends blp> a() {
+         return blp.class;
+      }
+   };
+   private final int d;
+   private final boolean e;
+   private final boolean f;
+   private final Predicate<blp> g;
+   private final ck.c h;
+   private final Function<elm, elm> i;
+   @Nullable
+   private final elh j;
+   private final BiConsumer<elm, List<? extends blp>> k;
+   private final boolean l;
+   @Nullable
+   private final String m;
+   @Nullable
+   private final UUID n;
+   private final dmy<blp, ?> o;
+   private final boolean p;
+
+   public ge(
+      int $$0,
+      boolean $$1,
+      boolean $$2,
+      Predicate<blp> $$3,
+      ck.c $$4,
+      Function<elm, elm> $$5,
+      @Nullable elh $$6,
+      BiConsumer<elm, List<? extends blp>> $$7,
+      boolean $$8,
+      @Nullable String $$9,
+      @Nullable UUID $$10,
+      @Nullable blt<?> $$11,
+      boolean $$12
+   ) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$8;
+      this.m = $$9;
+      this.n = $$10;
+      this.o = (dmy<blp, ?>)($$11 == null ? c : $$11);
+      this.p = $$12;
    }
 
-   public static void a() {
-      if (i.isEmpty()) {
-         a("name", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            boolean $$2 = $$0.e();
-            String $$3 = $$0.g().readString();
-            if ($$0.w() && !$$2) {
-               $$0.g().setCursor($$1);
-               throw b.createWithContext($$0.g(), "name");
-            } else {
-               if ($$2) {
-                  $$0.c(true);
-               } else {
-                  $$0.b(true);
-               }
+   public int a() {
+      return this.d;
+   }
 
-               $$0.a($$2x -> $$2x.ad().getString().equals($$3) != $$2);
-            }
-         }, $$0 -> !$$0.v(), vb.c("argument.entity.options.name.description"));
-         a("distance", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            ck.c $$2 = ck.c.a($$0.g());
-            if ((!$$2.a().isPresent() || !($$2.a().get() < 0.0)) && (!$$2.b().isPresent() || !($$2.b().get() < 0.0))) {
-               $$0.a($$2);
-               $$0.h();
-            } else {
-               $$0.g().setCursor($$1);
-               throw c.createWithContext($$0.g());
-            }
-         }, $$0 -> $$0.i().c(), vb.c("argument.entity.options.distance.description"));
-         a("level", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            ck.d $$2 = ck.d.a($$0.g());
-            if ((!$$2.a().isPresent() || $$2.a().get() >= 0) && (!$$2.b().isPresent() || $$2.b().get() >= 0)) {
-               $$0.a($$2);
-               $$0.a(false);
-            } else {
-               $$0.g().setCursor($$1);
-               throw d.createWithContext($$0.g());
-            }
-         }, $$0 -> $$0.j().c(), vb.c("argument.entity.options.level.description"));
-         a("x", $$0 -> {
-            $$0.h();
-            $$0.a($$0.g().readDouble());
-         }, $$0 -> $$0.m() == null, vb.c("argument.entity.options.x.description"));
-         a("y", $$0 -> {
-            $$0.h();
-            $$0.b($$0.g().readDouble());
-         }, $$0 -> $$0.n() == null, vb.c("argument.entity.options.y.description"));
-         a("z", $$0 -> {
-            $$0.h();
-            $$0.c($$0.g().readDouble());
-         }, $$0 -> $$0.o() == null, vb.c("argument.entity.options.z.description"));
-         a("dx", $$0 -> {
-            $$0.h();
-            $$0.d($$0.g().readDouble());
-         }, $$0 -> $$0.p() == null, vb.c("argument.entity.options.dx.description"));
-         a("dy", $$0 -> {
-            $$0.h();
-            $$0.e($$0.g().readDouble());
-         }, $$0 -> $$0.q() == null, vb.c("argument.entity.options.dy.description"));
-         a("dz", $$0 -> {
-            $$0.h();
-            $$0.f($$0.g().readDouble());
-         }, $$0 -> $$0.r() == null, vb.c("argument.entity.options.dz.description"));
-         a("x_rotation", $$0 -> $$0.a(di.a($$0.g(), true, aty::g)), $$0 -> $$0.k() == di.a, vb.c("argument.entity.options.x_rotation.description"));
-         a("y_rotation", $$0 -> $$0.b(di.a($$0.g(), true, aty::g)), $$0 -> $$0.l() == di.a, vb.c("argument.entity.options.y_rotation.description"));
-         a("limit", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            int $$2 = $$0.g().readInt();
-            if ($$2 < 1) {
-               $$0.g().setCursor($$1);
-               throw e.createWithContext($$0.g());
-            } else {
-               $$0.a($$2);
-               $$0.d(true);
-            }
-         }, $$0 -> !$$0.u() && !$$0.x(), vb.c("argument.entity.options.limit.description"));
-         a("sort", $$0 -> {
-            int $$1 = $$0.g().getCursor();
-            String $$2 = $$0.g().readUnquotedString();
-            $$0.a(($$0x, $$1x) -> dw.b(Arrays.asList("nearest", "furthest", "random", "arbitrary"), $$0x));
+   public boolean b() {
+      return this.e;
+   }
 
-            $$0.a(switch ($$2) {
-               case "nearest" -> gd.k;
-               case "furthest" -> gd.l;
-               case "random" -> gd.m;
-               case "arbitrary" -> gc.b;
-               default -> {
-                  $$0.g().setCursor($$1);
-                  throw f.createWithContext($$0.g(), $$2);
-               }
-            });
-            $$0.e(true);
-         }, $$0 -> !$$0.u() && !$$0.y(), vb.c("argument.entity.options.sort.description"));
-         a("gamemode", $$0 -> {
-            $$0.a(($$1x, $$2x) -> {
-               String $$3x = $$1x.getRemaining().toLowerCase(Locale.ROOT);
-               boolean $$4x = !$$0.A();
-               boolean $$5 = true;
-               if (!$$3x.isEmpty()) {
-                  if ($$3x.charAt(0) == '!') {
-                     $$4x = false;
-                     $$3x = $$3x.substring(1);
-                  } else {
-                     $$5 = false;
-                  }
-               }
+   public boolean c() {
+      return this.l;
+   }
 
-               for (csv $$6 : csv.values()) {
-                  if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
-                     if ($$5) {
-                        $$1x.suggest("!" + $$6.b());
-                     }
+   public boolean d() {
+      return this.f;
+   }
 
-                     if ($$4x) {
-                        $$1x.suggest($$6.b());
-                     }
-                  }
-               }
+   public boolean e() {
+      return this.p;
+   }
 
-               return $$1x.buildFuture();
-            });
-            int $$1 = $$0.g().getCursor();
-            boolean $$2 = $$0.e();
-            if ($$0.A() && !$$2) {
-               $$0.g().setCursor($$1);
-               throw b.createWithContext($$0.g(), "gamemode");
-            } else {
-               String $$3 = $$0.g().readUnquotedString();
-               csv $$4 = csv.a($$3, null);
-               if ($$4 == null) {
-                  $$0.g().setCursor($$1);
-                  throw g.createWithContext($$0.g(), $$3);
-               } else {
-                  $$0.a(false);
-                  $$0.a($$2x -> {
-                     if (!($$2x instanceof amq)) {
-                        return false;
-                     } else {
-                        csv $$3x = ((amq)$$2x).e.b();
-                        return $$2 ? $$3x != $$4 : $$3x == $$4;
-                     }
-                  });
-                  if ($$2) {
-                     $$0.g(true);
-                  } else {
-                     $$0.f(true);
-                  }
-               }
-            }
-         }, $$0 -> !$$0.z(), vb.c("argument.entity.options.gamemode.description"));
-         a("team", $$0 -> {
-            boolean $$1 = $$0.e();
-            String $$2 = $$0.g().readUnquotedString();
-            $$0.a($$2x -> {
-               if (!($$2x instanceof blv)) {
-                  return false;
-               } else {
-                  emc $$3 = $$2x.cg();
-                  String $$4 = $$3 == null ? "" : $$3.b();
-                  return $$4.equals($$2) != $$1;
-               }
-            });
-            if ($$1) {
-               $$0.i(true);
-            } else {
-               $$0.h(true);
-            }
-         }, $$0 -> !$$0.B(), vb.c("argument.entity.options.team.description"));
-         a("type", $$0 -> {
-            $$0.a(($$1x, $$2x) -> {
-               dw.a(kb.g.e(), $$1x, String.valueOf('!'));
-               dw.a(kb.g.j().map(asg::b), $$1x, "!#");
-               if (!$$0.F()) {
-                  dw.a(kb.g.e(), $$1x);
-                  dw.a(kb.g.j().map(asg::b), $$1x, String.valueOf('#'));
-               }
-
-               return $$1x.buildFuture();
-            });
-            int $$1 = $$0.g().getCursor();
-            boolean $$2 = $$0.e();
-            if ($$0.F() && !$$2) {
-               $$0.g().setCursor($$1);
-               throw b.createWithContext($$0.g(), "type");
-            } else {
-               if ($$2) {
-                  $$0.D();
-               }
-
-               if ($$0.f()) {
-                  asg<blj<?>> $$3 = asg.a(kc.u, agt.a($$0.g()));
-                  $$0.a($$2x -> $$2x.ai().a($$3) != $$2);
-               } else {
-                  agt $$4 = agt.a($$0.g());
-                  blj<?> $$5 = kb.g.b($$4).orElseThrow(() -> {
-                     $$0.g().setCursor($$1);
-                     return h.createWithContext($$0.g(), $$4.toString());
-                  });
-                  if (Objects.equals(blj.bv, $$5) && !$$2) {
-                     $$0.a(false);
-                  }
-
-                  $$0.a($$2x -> Objects.equals($$5, $$2x.ai()) != $$2);
-                  if (!$$2) {
-                     $$0.a($$5);
-                  }
-               }
-            }
-         }, $$0 -> !$$0.E(), vb.c("argument.entity.options.type.description"));
-         a("tag", $$0 -> {
-            boolean $$1 = $$0.e();
-            String $$2 = $$0.g().readUnquotedString();
-            $$0.a($$2x -> "".equals($$2) ? $$2x.ak().isEmpty() != $$1 : $$2x.ak().contains($$2) != $$1);
-         }, $$0 -> true, vb.c("argument.entity.options.tag.description"));
-         a("nbt", $$0 -> {
-            boolean $$1 = $$0.e();
-            sj $$2 = new th($$0.g()).f();
-            $$0.a($$2x -> {
-               sj $$3 = $$2x.f(new sj());
-               if ($$2x instanceof amq) {
-                  cmh $$4 = ((amq)$$2x).fS().f();
-                  if (!$$4.b()) {
-                     $$3.a("SelectedItem", $$4.b(new sj()));
-                  }
-               }
-
-               return sy.a($$2, $$3, true) != $$1;
-            });
-         }, $$0 -> true, vb.c("argument.entity.options.nbt.description"));
-         a("scores", $$0 -> {
-            StringReader $$1 = $$0.g();
-            Map<String, ck.d> $$2 = Maps.newHashMap();
-            $$1.expect('{');
-            $$1.skipWhitespace();
-
-            while ($$1.canRead() && $$1.peek() != '}') {
-               $$1.skipWhitespace();
-               String $$3 = $$1.readUnquotedString();
-               $$1.skipWhitespace();
-               $$1.expect('=');
-               $$1.skipWhitespace();
-               ck.d $$4 = ck.d.a($$1);
-               $$2.put($$3, $$4);
-               $$1.skipWhitespace();
-               if ($$1.canRead() && $$1.peek() == ',') {
-                  $$1.skip();
-               }
-            }
-
-            $$1.expect('}');
-            if (!$$2.isEmpty()) {
-               $$0.a($$1x -> {
-                  ema $$2x = $$1x.cL().aH();
-                  String $$3x = $$1x.cy();
-
-                  for (Entry<String, ck.d> $$4x : $$2.entrySet()) {
-                     elx $$5 = $$2x.b($$4x.getKey());
-                     if ($$5 == null) {
-                        return false;
-                     }
-
-                     if (!$$2x.b($$3x, $$5)) {
-                        return false;
-                     }
-
-                     elz $$6 = $$2x.c($$3x, $$5);
-                     int $$7 = $$6.b();
-                     if (!$$4x.getValue().d($$7)) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               });
-            }
-
-            $$0.j(true);
-         }, $$0 -> !$$0.G(), vb.c("argument.entity.options.scores.description"));
-         a("advancements", $$0 -> {
-            StringReader $$1 = $$0.g();
-            Map<agt, Predicate<ah>> $$2 = Maps.newHashMap();
-            $$1.expect('{');
-            $$1.skipWhitespace();
-
-            while ($$1.canRead() && $$1.peek() != '}') {
-               $$1.skipWhitespace();
-               agt $$3 = agt.a($$1);
-               $$1.skipWhitespace();
-               $$1.expect('=');
-               $$1.skipWhitespace();
-               if ($$1.canRead() && $$1.peek() == '{') {
-                  Map<String, Predicate<ao>> $$4 = Maps.newHashMap();
-                  $$1.skipWhitespace();
-                  $$1.expect('{');
-                  $$1.skipWhitespace();
-
-                  while ($$1.canRead() && $$1.peek() != '}') {
-                     $$1.skipWhitespace();
-                     String $$5 = $$1.readUnquotedString();
-                     $$1.skipWhitespace();
-                     $$1.expect('=');
-                     $$1.skipWhitespace();
-                     boolean $$6 = $$1.readBoolean();
-                     $$4.put($$5, $$1x -> $$1x.a() == $$6);
-                     $$1.skipWhitespace();
-                     if ($$1.canRead() && $$1.peek() == ',') {
-                        $$1.skip();
-                     }
-                  }
-
-                  $$1.skipWhitespace();
-                  $$1.expect('}');
-                  $$1.skipWhitespace();
-                  $$2.put($$3, $$1x -> {
-                     for (Entry<String, Predicate<ao>> $$2x : $$4.entrySet()) {
-                        ao $$3x = $$1x.c($$2x.getKey());
-                        if ($$3x == null || !$$2x.getValue().test($$3x)) {
-                           return false;
-                        }
-                     }
-
-                     return true;
-                  });
-               } else {
-                  boolean $$7 = $$1.readBoolean();
-                  $$2.put($$3, $$1x -> $$1x.a() == $$7);
-               }
-
-               $$1.skipWhitespace();
-               if ($$1.canRead() && $$1.peek() == ',') {
-                  $$1.skip();
-               }
-            }
-
-            $$1.expect('}');
-            if (!$$2.isEmpty()) {
-               $$0.a($$1x -> {
-                  if (!($$1x instanceof amq $$2x)) {
-                     return false;
-                  } else {
-                     ahb $$4 = $$2x.Q();
-                     ahf $$5x = $$2x.cL().aB();
-
-                     for (Entry<agt, Predicate<ah>> $$6x : $$2.entrySet()) {
-                        af $$7x = $$5x.a($$6x.getKey());
-                        if ($$7x == null || !$$6x.getValue().test($$4.b($$7x))) {
-                           return false;
-                        }
-                     }
-
-                     return true;
-                  }
-               });
-               $$0.a(false);
-            }
-
-            $$0.k(true);
-         }, $$0 -> !$$0.H(), vb.c("argument.entity.options.advancements.description"));
-         a("predicate", $$0 -> {
-            boolean $$1 = $$0.e();
-            agt $$2 = agt.a($$0.g());
-            $$0.a($$2x -> {
-               if (!($$2x.dM() instanceof amp)) {
-                  return false;
-               } else {
-                  amp $$3 = (amp)$$2x.dM();
-                  ejd $$4 = $$3.n().aJ().getElement(egj.a, $$2);
-                  if ($$4 == null) {
-                     return false;
-                  } else {
-                     egk $$5 = new egk.a($$3).a(eip.a, $$2x).a(eip.f, $$2x.dk()).a(eio.e);
-                     ege $$6 = new ege.a($$5).a(Optional.empty());
-                     $$6.b(ege.a($$4));
-                     return $$1 ^ $$4.test($$6);
-                  }
-               }
-            });
-         }, $$0 -> true, vb.c("argument.entity.options.predicate.description"));
+   private void e(ds $$0) throws CommandSyntaxException {
+      if (this.p && !$$0.c(2)) {
+         throw ef.f.create();
       }
    }
 
-   public static ge.a a(gd $$0, String $$1, int $$2) throws CommandSyntaxException {
-      ge.b $$3 = i.get($$1);
-      if ($$3 != null) {
-         if ($$3.b.test($$0)) {
-            return $$3.a;
-         } else {
-            throw b.createWithContext($$0.g(), $$1);
-         }
+   public blp a(ds $$0) throws CommandSyntaxException {
+      this.e($$0);
+      List<? extends blp> $$1 = this.b($$0);
+      if ($$1.isEmpty()) {
+         throw ef.d.create();
+      } else if ($$1.size() > 1) {
+         throw ef.a.create();
       } else {
-         $$0.g().setCursor($$2);
-         throw a.createWithContext($$0.g(), $$1);
+         return $$1.get(0);
       }
    }
 
-   public static void a(gd $$0, SuggestionsBuilder $$1) {
-      String $$2 = $$1.getRemaining().toLowerCase(Locale.ROOT);
+   public List<? extends blp> b(ds $$0) throws CommandSyntaxException {
+      return this.f($$0).stream().filter($$1 -> $$1.ai().a($$0.w())).toList();
+   }
 
-      for (Entry<String, ge.b> $$3 : i.entrySet()) {
-         if ($$3.getValue().b.test($$0) && $$3.getKey().toLowerCase(Locale.ROOT).startsWith($$2)) {
-            $$1.suggest($$3.getKey() + "=", $$3.getValue().c);
+   private List<? extends blp> f(ds $$0) throws CommandSyntaxException {
+      this.e($$0);
+      if (!this.e) {
+         return this.d($$0);
+      } else if (this.m != null) {
+         ana $$1 = $$0.l().ae().a(this.m);
+         return (List<? extends blp>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new ana[]{$$1}));
+      } else if (this.n != null) {
+         for (amz $$2 : $$0.l().H()) {
+            blp $$3 = $$2.a(this.n);
+            if ($$3 != null) {
+               return Lists.newArrayList(new blp[]{$$3});
+            }
+         }
+
+         return Collections.emptyList();
+      } else {
+         elm $$4 = this.i.apply($$0.d());
+         Predicate<blp> $$5 = this.a($$4);
+         if (this.l) {
+            return (List<? extends blp>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new blp[]{$$0.f()}) : Collections.emptyList());
+         } else {
+            List<blp> $$6 = Lists.newArrayList();
+            if (this.d()) {
+               this.a($$6, $$0.e(), $$4, $$5);
+            } else {
+               for (amz $$7 : $$0.l().H()) {
+                  this.a($$6, $$7, $$4, $$5);
+               }
+            }
+
+            return this.a($$4, $$6);
          }
       }
    }
 
-   public interface a {
-      void handle(gd var1) throws CommandSyntaxException;
+   private void a(List<blp> $$0, amz $$1, elm $$2, Predicate<blp> $$3) {
+      int $$4 = this.f();
+      if ($$0.size() < $$4) {
+         if (this.j != null) {
+            $$1.a(this.o, this.j.c($$2), $$3, $$0, $$4);
+         } else {
+            $$1.a(this.o, $$3, $$0, $$4);
+         }
+      }
    }
 
-   static record b(ge.a a, Predicate<gd> b, vb c) {
+   private int f() {
+      return this.k == b ? this.d : Integer.MAX_VALUE;
+   }
+
+   public ana c(ds $$0) throws CommandSyntaxException {
+      this.e($$0);
+      List<ana> $$1 = this.d($$0);
+      if ($$1.size() != 1) {
+         throw ef.e.create();
+      } else {
+         return $$1.get(0);
+      }
+   }
+
+   public List<ana> d(ds $$0) throws CommandSyntaxException {
+      this.e($$0);
+      if (this.m != null) {
+         ana $$1 = $$0.l().ae().a(this.m);
+         return (List<ana>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new ana[]{$$1}));
+      } else if (this.n != null) {
+         ana $$2 = $$0.l().ae().a(this.n);
+         return (List<ana>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new ana[]{$$2}));
+      } else {
+         elm $$3 = this.i.apply($$0.d());
+         Predicate<blp> $$4 = this.a($$3);
+         if (this.l) {
+            if ($$0.f() instanceof ana $$5 && $$4.test($$5)) {
+               return Lists.newArrayList(new ana[]{$$5});
+            }
+
+            return Collections.emptyList();
+         } else {
+            int $$6 = this.f();
+            List<ana> $$7;
+            if (this.d()) {
+               $$7 = $$0.e().a($$4, $$6);
+            } else {
+               $$7 = Lists.newArrayList();
+
+               for (ana $$9 : $$0.l().ae().t()) {
+                  if ($$4.test($$9)) {
+                     $$7.add($$9);
+                     if ($$7.size() >= $$6) {
+                        return $$7;
+                     }
+                  }
+               }
+            }
+
+            return this.a($$3, $$7);
+         }
+      }
+   }
+
+   private Predicate<blp> a(elm $$0) {
+      Predicate<blp> $$1 = this.g;
+      if (this.j != null) {
+         elh $$2 = this.j.c($$0);
+         $$1 = $$1.and($$1x -> $$2.c($$1x.cH()));
+      }
+
+      if (!this.h.c()) {
+         $$1 = $$1.and($$1x -> this.h.e($$1x.f($$0)));
+      }
+
+      return $$1;
+   }
+
+   private <T extends blp> List<T> a(elm $$0, List<T> $$1) {
+      if ($$1.size() > 1) {
+         this.k.accept($$0, $$1);
+      }
+
+      return $$1.subList(0, Math.min(this.d, $$1.size()));
+   }
+
+   public static vd a(List<? extends blp> $$0) {
+      return vg.b($$0, blp::Q_);
    }
 }

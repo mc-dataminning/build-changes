@@ -1,65 +1,85 @@
+import com.google.common.collect.Lists;
 import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-class aom extends FileStore {
-   private final String a;
+public class aom implements aoq {
+   private final aoq c;
+   private final List<aoq> d;
 
-   public aom(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String name() {
-      return this.a;
-   }
-
-   @Override
-   public String type() {
-      return "index";
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
-      return $$0 == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String $$0) {
-      return "basic".equals($$0);
+   public aom(aoq $$0, List<aoq> $$1) {
+      this.c = $$0;
+      List<aoq> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
    @Nullable
    @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
+   public apu<InputStream> a(String... $$0) {
+      return this.c.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public apu<InputStream> a(aor $$0, ahd $$1) {
+      for (aoq $$2 : this.d) {
+         apu<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
+         }
+      }
+
       return null;
    }
 
    @Override
-   public Object getAttribute(String $$0) throws IOException {
-      throw new UnsupportedOperationException();
+   public void a(aor $$0, String $$1, String $$2, aoq.a $$3) {
+      Map<ahd, apu<InputStream>> $$4 = new HashMap<>();
+
+      for (aoq $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
+      }
+
+      $$4.forEach($$3);
+   }
+
+   @Override
+   public Set<String> a(aor $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (aoq $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(apc<T> $$0) throws IOException {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public String a() {
+      return this.c.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.c.b();
+   }
+
+   @Override
+   public void close() {
+      this.d.forEach(aoq::close);
    }
 }

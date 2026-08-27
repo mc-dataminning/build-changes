@@ -1,20 +1,19 @@
-public class fyq extends fyu<bzk, fjr<bzk>> {
-   private static final agt a = new agt("textures/entity/llama/creamy.png");
-   private static final agt i = new agt("textures/entity/llama/white.png");
-   private static final agt j = new agt("textures/entity/llama/brown.png");
-   private static final agt k = new agt("textures/entity/llama/gray.png");
+public class fyq extends fzl<cce, fkc<cce>> {
+   private static final ahd a = new ahd("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public fyq(fxo.a $$0, flw $$1) {
-      super($$0, new fjr<>($$0.a($$1)), 0.7F);
-      this.a(new gbt(this, $$0.f()));
+   public fyq(fyf.a $$0, float $$1) {
+      super($$0, new fju($$0.a(fmo.ae)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gcj<>(this, $$0.d()));
+      this.a(new gcg<>(this, new fju($$0.a(fmo.af)), new fju($$0.a(fmo.ag)), $$0.g()));
    }
 
-   public agt a(bzk $$0) {
-      return switch ($$0.gq()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   protected void a(cce $$0, ept $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public ahd a(cce $$0) {
+      return a;
    }
 }

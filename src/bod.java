@@ -1,37 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bod {
-   public static bnn<cee> a(float $$0, int $$1) {
-      return bqz.a((Function<bqz.b<cee>, ? extends App<bqz.c<cee>, brc<cee>>>)($$2 -> $$2.group($$2.c(bux.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.b($$4.dm())) {
-                  return false;
-               } else {
-                  bww $$6 = $$3.x();
-                  int $$7 = $$6.a(ix.a($$4.dm()));
-                  elb $$8 = null;
+public class bod extends bnw<bzh> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     elb $$10 = bwq.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(ix.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(ix.a(hv.a($$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   public bod() {
+      super(ImmutableMap.of(bvh.m, bvi.b), 100);
+   }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   protected boolean a(amz $$0, bzh $$1) {
+      return $$1.ap() == bmr.a;
+   }
 
-                  if ($$8 != null) {
-                     $$2x.a(new bva($$8, $$0, $$1));
-                  }
+   protected boolean a(amz $$0, bzh $$1, long $$2) {
+      return this.e < 60;
+   }
 
-                  return true;
-               }
-            })));
+   protected void b(amz $$0, bzh $$1, long $$2) {
+      if (!$$1.bd()) {
+         $$1.b(bmr.i);
+         this.e = 0;
+      }
+   }
+
+   protected void c(amz $$0, bzh $$1, long $$2) {
+      $$1.b(bmr.a);
+   }
+
+   protected void d(amz $$0, bzh $$1, long $$2) {
+      this.e++;
    }
 }

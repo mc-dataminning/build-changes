@@ -1,288 +1,176 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class fvn implements fvt.a {
-   private static final boolean a = true;
-   private static final boolean b = true;
-   private static final boolean c = true;
-   private static final boolean d = true;
-   private static final boolean e = true;
-   private static final boolean f = false;
-   private static final boolean g = true;
-   private static final boolean h = true;
-   private static final boolean i = true;
-   private static final boolean j = true;
-   private static final boolean k = true;
-   private static final boolean l = true;
-   private static final boolean m = true;
-   private static final boolean n = true;
-   private static final int o = 30;
-   private static final int p = 30;
-   private static final int q = 8;
-   private static final int r = 20;
-   private static final float s = 0.02F;
-   private static final int t = -1;
-   private static final int u = -256;
-   private static final int v = -23296;
-   private static final int w = -16711936;
-   private static final int x = -3355444;
-   private static final int y = -98404;
-   private static final int z = -65536;
-   private final euk A;
-   private final Map<hv, fvn.a> B = new HashMap<>();
-   private final Map<UUID, xk.a> C = new HashMap<>();
-   @Nullable
-   private UUID D;
+public class fvn implements fuz<dhx> {
+   private static final String a = "stick";
+   private static final int b = -988212;
+   private static final int c = aui.h(16);
+   private static final float d = 0.6666667F;
+   private static final elm e = new elm(0.0, 0.33333334F, 0.046666667F);
+   private final Map<dkn, fvn.a> f;
+   private final ewk g;
 
-   public fvn(euk $$0) {
-      this.A = $$0;
+   public fvn(fva.a $$0) {
+      this.f = dkn.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new fvn.a($$0.a(fmo.a($$1)))));
+      this.g = $$0.f();
    }
 
-   @Override
-   public void a() {
-      this.B.clear();
-      this.C.clear();
-      this.D = null;
+   public void a(dhx $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
+      dja $$6 = $$0.r();
+      ddi $$7 = (ddi)$$6.b();
+      dkn $$8 = ddi.a($$7);
+      fvn.a $$9 = this.f.get($$8);
+      $$9.b.k = $$6.b() instanceof ded;
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public void a(xv.a $$0, long $$1) {
-      this.B.put($$0.a(), new fvn.a($$0, $$1));
+   public float b() {
+      return 0.6666667F;
    }
 
-   public void a(xk.a $$0) {
-      this.C.put($$0.b(), $$0);
+   public float c() {
+      return 0.6666667F;
    }
 
-   public void a(int $$0) {
-      this.C.values().removeIf($$1 -> $$1.c() == $$0);
+   void a(dhx $$0, ept $$1, fsz $$2, int $$3, int $$4, dja $$5, ddi $$6, dkn $$7, fkl $$8) {
+      $$1.a();
+      this.a($$1, -$$6.g($$5), $$5);
+      this.a($$1, $$2, $$3, $$4, $$7, $$8);
+      this.a($$0.aB_(), $$0.k(), $$1, $$2, $$3, $$0.c(), $$0.d(), true);
+      this.a($$0.aB_(), $$0.l(), $$1, $$2, $$3, $$0.c(), $$0.d(), false);
+      $$1.b();
    }
 
-   @Override
-   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
-      this.c();
-      this.b();
-      this.a($$0, $$1);
-      if (!this.A.s.P_()) {
-         this.g();
+   void a(ept $$0, float $$1, dja $$2) {
+      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
+      $$0.a(a.d.rotationDegrees($$1));
+      if (!($$2.b() instanceof ded)) {
+         $$0.a(0.0F, -0.3125F, -0.4375F);
       }
    }
 
-   private void b() {
-      this.C.entrySet().removeIf($$0 -> this.A.r.a($$0.getValue().c()) == null);
+   void a(ept $$0, fsz $$1, int $$2, int $$3, dkn $$4, fkl $$5) {
+      $$0.a();
+      float $$6 = this.b();
+      $$0.b($$6, -$$6, -$$6);
+      ggj $$7 = this.a($$4);
+      epx $$8 = $$7.a($$1, $$5::a);
+      this.a($$0, $$2, $$3, $$5, $$8);
+      $$0.b();
    }
 
-   private void c() {
-      long $$0 = this.A.r.W() - 20L;
-      this.B.entrySet().removeIf($$1 -> $$1.getValue().b() < $$0);
+   void a(ept $$0, int $$1, int $$2, fkl $$3, epx $$4) {
+      fvn.a $$5 = (fvn.a)$$3;
+      $$5.a.a($$0, $$4, $$1, $$2);
    }
 
-   private void a(epd $$0, fsi $$1) {
-      hv $$2 = this.e().c();
-      this.C.values().forEach($$2x -> {
-         if (this.c($$2x)) {
-            this.b($$0, $$1, $$2x);
-         }
-      });
-      this.b($$0, $$1);
-
-      for (hv $$3 : this.B.keySet()) {
-         if ($$2.a($$3, 30.0)) {
-            a($$0, $$1, $$3);
-         }
-      }
-
-      Map<hv, Set<UUID>> $$4 = this.d();
-      this.B.values().forEach($$4x -> {
-         if ($$2.a($$4x.a.a(), 30.0)) {
-            Set<UUID> $$5 = $$4.get($$4x.a.a());
-            this.a($$0, $$1, $$4x.a, (Collection<UUID>)($$5 == null ? Sets.newHashSet() : $$5));
-         }
-      });
-      this.f().forEach(($$3x, $$4x) -> {
-         if ($$2.a($$3x, 30.0)) {
-            this.a($$0, $$1, $$3x, (List<String>)$$4x);
-         }
-      });
+   ggj a(dkn $$0) {
+      return fto.a($$0);
    }
 
-   private Map<hv, Set<UUID>> d() {
-      Map<hv, Set<UUID>> $$0 = Maps.newHashMap();
-      this.C.values().forEach($$1 -> $$1.j().forEach($$2 -> $$0.computeIfAbsent($$2, $$0xxx -> Sets.newHashSet()).add($$1.b())));
-      return $$0;
-   }
-
-   private void b(epd $$0, fsi $$1) {
-      Map<hv, Set<UUID>> $$2 = Maps.newHashMap();
-      this.C.values().forEach($$1x -> {
-         if ($$1x.g() != null) {
-            $$2.computeIfAbsent($$1x.g(), $$0xx -> new HashSet<>()).add($$1x.b());
-         }
+   void a(hx $$0, dhy $$1, ept $$2, fsz $$3, int $$4, int $$5, int $$6, boolean $$7) {
+      $$2.a();
+      this.a($$2, $$7, this.d());
+      int $$8 = a($$1);
+      int $$9 = 4 * $$5 / 2;
+      atu[] $$10 = $$1.a(eva.N().aP(), $$1x -> {
+         List<atu> $$2x = this.g.c($$1x, $$6);
+         return $$2x.isEmpty() ? atu.a : $$2x.get(0);
       });
-      $$2.forEach(($$2x, $$3) -> {
-         Set<String> $$4 = $$3.stream().map(acu::a).collect(Collectors.toSet());
-         int $$5 = 1;
-         a($$0, $$1, $$4.toString(), $$2x, $$5++, -256);
-         a($$0, $$1, "Flower", $$2x, $$5++, -1);
-         float $$6 = 0.05F;
-         fvt.a($$0, $$1, $$2x, 0.05F, 0.8F, 0.8F, 0.0F, 0.3F);
-      });
-   }
-
-   private static String a(Collection<UUID> $$0) {
-      if ($$0.isEmpty()) {
-         return "-";
+      int $$11;
+      boolean $$12;
+      int $$13;
+      if ($$1.a()) {
+         $$11 = $$1.b().g();
+         $$12 = a($$0, $$11);
+         $$13 = 15728880;
       } else {
-         return $$0.size() > 3 ? $$0.size() + " bees" : $$0.stream().map(acu::a).collect(Collectors.toSet()).toString();
-      }
-   }
-
-   private static void a(epd $$0, fsi $$1, hv $$2) {
-      float $$3 = 0.05F;
-      fvt.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
-   }
-
-   private void a(epd $$0, fsi $$1, hv $$2, List<String> $$3) {
-      float $$4 = 0.05F;
-      fvt.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
-      a($$0, $$1, $$3 + "", $$2, 0, -256);
-      a($$0, $$1, "Ghost Hive", $$2, 1, -65536);
-   }
-
-   private void a(epd $$0, fsi $$1, xv.a $$2, Collection<UUID> $$3) {
-      int $$4 = 0;
-      if (!$$3.isEmpty()) {
-         a($$0, $$1, "Blacklisted by " + a($$3), $$2, $$4++, -65536);
+         $$11 = $$8;
+         $$12 = false;
+         $$13 = $$4;
       }
 
-      a($$0, $$1, "Out: " + a(this.a($$2.a())), $$2, $$4++, -3355444);
-      if ($$2.c() == 0) {
-         a($$0, $$1, "In: -", $$2, $$4++, -256);
-      } else if ($$2.c() == 1) {
-         a($$0, $$1, "In: 1 bee", $$2, $$4++, -256);
-      } else {
-         a($$0, $$1, "In: " + $$2.c() + " bees", $$2, $$4++, -256);
-      }
-
-      a($$0, $$1, "Honey: " + $$2.d(), $$2, $$4++, -23296);
-      a($$0, $$1, $$2.b() + ($$2.e() ? " (sedated)" : ""), $$2, $$4++, -1);
-   }
-
-   private void a(epd $$0, fsi $$1, xk.a $$2) {
-      if ($$2.e() != null) {
-         fwb.a($$0, $$1, $$2.e(), 0.5F, false, false, this.e().b().a(), this.e().b().b(), this.e().b().c());
-      }
-   }
-
-   private void b(epd $$0, fsi $$1, xk.a $$2) {
-      boolean $$3 = this.b($$2);
-      int $$4 = 0;
-      a($$0, $$1, $$2.d(), $$4++, $$2.toString(), -1, 0.03F);
-      if ($$2.f() == null) {
-         a($$0, $$1, $$2.d(), $$4++, "No hive", -98404, 0.02F);
-      } else {
-         a($$0, $$1, $$2.d(), $$4++, "Hive: " + this.a($$2, $$2.f()), -256, 0.02F);
-      }
-
-      if ($$2.g() == null) {
-         a($$0, $$1, $$2.d(), $$4++, "No flower", -98404, 0.02F);
-      } else {
-         a($$0, $$1, $$2.d(), $$4++, "Flower: " + this.a($$2, $$2.g()), -256, 0.02F);
-      }
-
-      for (String $$5 : $$2.i()) {
-         a($$0, $$1, $$2.d(), $$4++, $$5, -16711936, 0.02F);
-      }
-
-      if ($$3) {
-         this.a($$0, $$1, $$2);
-      }
-
-      if ($$2.h() > 0) {
-         int $$6 = $$2.h() < 600 ? -3355444 : -23296;
-         a($$0, $$1, $$2.d(), $$4++, "Travelling: " + $$2.h() + " ticks", $$6, 0.02F);
-      }
-   }
-
-   private static void a(epd $$0, fsi $$1, String $$2, xv.a $$3, int $$4, int $$5) {
-      a($$0, $$1, $$2, $$3.a(), $$4, $$5);
-   }
-
-   private static void a(epd $$0, fsi $$1, String $$2, hv $$3, int $$4, int $$5) {
-      double $$6 = 1.3;
-      double $$7 = 0.2;
-      double $$8 = (double)$$3.u() + 0.5;
-      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
-      double $$10 = (double)$$3.w() + 0.5;
-      fvt.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
-   }
-
-   private static void a(epd $$0, fsi $$1, ip $$2, int $$3, String $$4, int $$5, float $$6) {
-      double $$7 = 2.4;
-      double $$8 = 0.25;
-      hv $$9 = hv.a($$2);
-      double $$10 = (double)$$9.u() + 0.5;
-      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
-      double $$12 = (double)$$9.w() + 0.5;
-      float $$13 = 0.5F;
-      fvt.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
-   }
-
-   private etv e() {
-      return this.A.j.m();
-   }
-
-   private Set<String> a(xv.a $$0) {
-      return this.a($$0.a()).stream().map(acu::a).collect(Collectors.toSet());
-   }
-
-   private String a(xk.a $$0, hv $$1) {
-      double $$2 = Math.sqrt($$1.b($$0.d()));
-      double $$3 = (double)Math.round($$2 * 10.0) / 10.0;
-      return $$1.x() + " (dist " + $$3 + ")";
-   }
-
-   private boolean b(xk.a $$0) {
-      return Objects.equals(this.D, $$0.b());
-   }
-
-   private boolean c(xk.a $$0) {
-      cer $$1 = this.A.s;
-      hv $$2 = hv.a($$1.dr(), $$0.d().b(), $$1.dx());
-      hv $$3 = hv.a($$0.d());
-      return $$2.a($$3, 30.0);
-   }
-
-   private Collection<UUID> a(hv $$0) {
-      return this.C.values().stream().filter($$1 -> $$1.a($$0)).map(xk.a::b).collect(Collectors.toSet());
-   }
-
-   private Map<hv, List<String>> f() {
-      Map<hv, List<String>> $$0 = Maps.newHashMap();
-
-      for (xk.a $$1 : this.C.values()) {
-         if ($$1.f() != null && !this.B.containsKey($$1.f())) {
-            $$0.computeIfAbsent($$1.f(), $$0x -> Lists.newArrayList()).add($$1.a());
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         atu $$18 = $$10[$$17];
+         float $$19 = (float)(-this.g.a($$18) / 2);
+         if ($$12) {
+            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+         } else {
+            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, ewk.a.c, 0, $$13);
          }
       }
 
-      return $$0;
+      $$2.b();
    }
 
-   private void g() {
-      fvt.a(this.A.al(), 8).ifPresent($$0 -> this.D = $$0.cw());
+   private void a(ept $$0, boolean $$1, elm $$2) {
+      if (!$$1) {
+         $$0.a(a.d.rotationDegrees(180.0F));
+      }
+
+      float $$3 = 0.015625F * this.c();
+      $$0.a($$2.c, $$2.d, $$2.e);
+      $$0.b($$3, -$$3, $$3);
    }
 
-   static record a(xv.a a, long b) {
+   elm d() {
+      return e;
+   }
+
+   static boolean a(hx $$0, int $$1) {
+      if ($$1 == clf.p.g()) {
+         return true;
+      } else {
+         eva $$2 = eva.N();
+         fsb $$3 = $$2.s;
+         if ($$3 != null && $$2.m.ax().a() && $$3.gq()) {
+            return true;
+         } else {
+            blp $$4 = $$2.al();
+            return $$4 != null && $$4.f(elm.b($$0)) < (double)c;
+         }
+      }
+   }
+
+   public static int a(dhy $$0) {
+      int $$1 = $$0.b().g();
+      if ($$1 == clf.p.g() && $$0.a()) {
+         return -988212;
+      } else {
+         double $$2 = 0.4;
+         int $$3 = (int)((double)ats.b.b($$1) * 0.4);
+         int $$4 = (int)((double)ats.b.c($$1) * 0.4);
+         int $$5 = (int)((double)ats.b.d($$1) * 0.4);
+         return ats.b.a(0, $$3, $$4, $$5);
+      }
+   }
+
+   public static fvn.a a(fml $$0, dkn $$1) {
+      return new fvn.a($$0.a(fmo.a($$1)));
+   }
+
+   public static fmv f() {
+      fmx $$0 = new fmx();
+      fmy $$1 = $$0.a();
+      $$1.a("sign", fmu.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), fmr.a);
+      $$1.a("stick", fmu.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), fmr.a);
+      return fmv.a($$0, 64, 32);
+   }
+
+   public static final class a extends fkl {
+      public final fmp a;
+      public final fmp b;
+
+      public a(fmp $$0) {
+         super(fth::e);
+         this.a = $$0;
+         this.b = $$0.b("stick");
+      }
+
+      @Override
+      public void a(ept $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

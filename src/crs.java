@@ -1,15 +1,24 @@
-public class crs extends cqs {
-   public crs(cqs.a $$0, blk... $$1) {
-      super($$0, cqt.e, $$1);
+public class crs extends crc {
+   public crs(crc.a $$0, blu... $$1) {
+      super($$0, crd.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1;
+      return 5 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 40;
+      return this.a($$0) + 15;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

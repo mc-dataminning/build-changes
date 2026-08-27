@@ -1,42 +1,43 @@
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class bwa extends bwc<cee> {
-   private static final int a = 40;
-
-   public bwa() {
-      super(40);
+public class bwa extends bwm<cdl> {
+   @Override
+   public Set<bvh<?>> a() {
+      return ImmutableSet.of(bvh.h, bvh.av, bvh.ap, bvh.ao, bvh.ar, bvh.as, new bvh[0]);
    }
 
-   protected void a(amp $$0, cee $$1) {
-      ags<csy> $$2 = $$0.ad();
-      hv $$3 = $$1.dm();
-      List<id> $$4 = Lists.newArrayList();
-      int $$5 = 4;
+   protected void a(amz $$0, cdl $$1) {
+      bnf<?> $$2 = $$1.dO();
+      $$2.a(bvh.av, this.b($$0, $$1));
+      Optional<cdr> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cdl> $$5 = Lists.newArrayList();
+      bvj $$6 = $$2.c(bvh.h).orElse(bvj.a());
 
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               hv $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gp().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(id.a($$2, $$9));
-               }
+      for (bmf $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof cdr || $$0x instanceof cdl))) {
+         if ($$7 instanceof cdr $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
             }
+         }
+
+         if ($$7 instanceof cdl $$9) {
+            $$5.add($$9);
          }
       }
 
-      bmv<?> $$10 = $$1.dO();
-      if (!$$4.isEmpty()) {
-         $$10.a(bux.f, $$4);
-      } else {
-         $$10.b(bux.f);
-      }
+      $$2.a(bvh.ap, $$3);
+      $$2.a(bvh.ao, $$5);
+      $$2.a(bvh.ar, $$4);
+      $$2.a(bvh.as, $$5.size());
    }
 
-   @Override
-   public Set<bux<?>> a() {
-      return ImmutableSet.of(bux.f);
+   private Optional<hx> b(amz $$0, cdl $$1) {
+      return hx.a($$1.dm(), 8, 4, $$1x -> $$0.a_($$1x).a(asb.aR));
    }
 }

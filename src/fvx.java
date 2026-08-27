@@ -1,64 +1,76 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class fvx implements fvt.a {
-   private final euk a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class fvx {
+   private final Long2ObjectMap<fvx.a> a = new Long2ObjectOpenHashMap();
 
-   public fvx(euk $$0) {
-      this.a = $$0;
-   }
+   @Nullable
+   public fvw a(cti $$0, hx $$1, hx $$2, int $$3) {
+      int $$4 = iz.a($$1.u() - $$3);
+      int $$5 = iz.a($$1.w() - $$3);
+      int $$6 = iz.a($$2.u() + $$3);
+      int $$7 = iz.a($$2.w() + $$3);
+      fvx.a[][] $$8 = new fvx.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   @Override
-   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
-      csz $$5 = this.a.r;
-      eph $$6 = $$1.getBuffer(fsq.y());
-      hv $$7 = hv.a($$2, 0.0, $$4);
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (fvx.a)this.a.computeIfAbsent(csp.c($$9, $$10), $$1x -> new fvx.a($$0.d(csp.a($$1x), csp.b($$1x))));
+         }
+      }
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dkl $$10 = $$5.x($$7.b($$8 * 16, 0, $$9 * 16));
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         fvv[][] $$11 = new fvv[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-            for (Entry<dny.a, dny> $$11 : $$10.e()) {
-               dny.a $$12 = $$11.getKey();
-               csf $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = ix.a($$13.e, $$15);
-                     int $$18 = ix.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     fsg.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
             }
          }
+
+         return new fvw($$0, $$4, $$5, $$11);
       }
    }
 
-   private Vector3f a(dny.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   private static boolean a(hx $$0, hx $$1, int $$2, int $$3, fvx.a[][] $$4) {
+      int $$5 = iz.a($$0.u());
+      int $$6 = iz.a($$0.w());
+      int $$7 = iz.a($$1.u());
+      int $$8 = iz.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dlh $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   static final class a {
+      private final dlh a;
+      @Nullable
+      private fvv b;
+
+      a(dlh $$0) {
+         this.a = $$0;
+      }
+
+      public dlh a() {
+         return this.a;
+      }
+
+      public fvv b() {
+         if (this.b == null) {
+            this.b = new fvv(this.a);
+         }
+
+         return this.b;
+      }
    }
 }

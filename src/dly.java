@@ -1,232 +1,94 @@
+import com.mojang.datafixers.DataFixer;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
-import java.util.OptionalLong;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public record dly(
-   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, asg<cvz> v, agt w, float x, dly.a y
-) {
-   public static final int a = hv.c;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dly> h = atg.c(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atg.a(Codec.LONG.optionalFieldOf("fixed_time")).forGetter(dly::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dly::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dly::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dly::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dly::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dly::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dly::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dly::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dly::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dly::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dly::p),
-                  asg.b(kc.f).fieldOf("infiniburn").forGetter(dly::q),
-                  agt.a.fieldOf("effects").orElse(dlw.e).forGetter(dly::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dly::s),
-                  dly.a.a.forGetter(dly::t)
-               )
-               .apply($$0, dly::new)
-      )
-   );
-   private static final int z = 8;
-   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<ie<dly>> j = agp.a(kc.ax, h);
+public class dly implements AutoCloseable {
+   public static final int d = 1493;
+   private final dma a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile dyu b;
 
-   public dly(
-      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, asg<cvz> v, agt w, float x, dly.a y
-   ) {
-      if (t < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (s + t > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (u > t) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (s % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
-      } else {
-         this.k = k;
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
-      }
+   public dly(Path $$0, DataFixer $$1, boolean $$2) {
+      this.e = $$1;
+      this.a = new dma($$0, $$2, "chunk");
    }
 
-   @Deprecated
-   public static DataResult<ags<csy>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(csy.i);
-         }
+   public boolean b(csp $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-         if ($$2 == 0) {
-            return DataResult.success(csy.h);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(csy.j);
+   public sl a(ahc<cti> $$0, Supplier<ega> $$1, sl $$2, Optional<ahc<Codec<? extends dkx>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 < 1493) {
+         $$2 = avq.c.a(this.e, $$2, $$4, 1493);
+         if ($$2.p("Level").q("hasLegacyStructureData")) {
+            dyu $$5 = this.a($$0, $$1);
+            $$2 = $$5.a($$2);
          }
       }
 
-      return csy.g.parse($$0);
+      a($$2, $$0, $$3);
+      $$2 = avq.c.a(this.e, $$2, Math.max(1493, $$4));
+      if ($$4 < aa.b().d().c()) {
+         ta.g($$2);
+      }
+
+      $$2.r("__context");
+      return $$2;
    }
 
-   public static double a(dly $$0, dly $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
+   private dyu a(ahc<cti> $$0, Supplier<ega> $$1) {
+      dyu $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = dyu.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   public static Path a(ags<csy> $$0, Path $$1) {
-      if ($$0 == csy.h) {
-         return $$1;
-      } else if ($$0 == csy.j) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == csy.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
+   public static void a(sl $$0, ahc<cti> $$1, Optional<ahc<Codec<? extends dkx>>> $$2) {
+      sl $$3 = new sl();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   public static int a(sl $$0) {
+      return ta.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<sl>> e(csp $$0) {
+      return this.a.a($$0);
+   }
+
+   public void a(csp $$0, sl $$1) {
+      this.a.a($$0, $$1);
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   public boolean a() {
-      return this.k.isPresent();
+   public void o() {
+      this.a.a(true).join();
    }
 
-   public float a(long $$0) {
-      double $$1 = aty.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   @Override
+   public void close() throws IOException {
+      this.a.close();
    }
 
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
-   }
-
-   public boolean b() {
-      return this.y.a();
-   }
-
-   public boolean c() {
-      return this.y.b();
-   }
-
-   public biq d() {
-      return this.y.c();
-   }
-
-   public int e() {
-      return this.y.d();
-   }
-
-   public OptionalLong f() {
-      return this.k;
-   }
-
-   public boolean g() {
-      return this.l;
-   }
-
-   public boolean h() {
-      return this.m;
-   }
-
-   public boolean i() {
-      return this.n;
-   }
-
-   public boolean j() {
-      return this.o;
-   }
-
-   public double k() {
-      return this.p;
-   }
-
-   public boolean l() {
-      return this.q;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public int n() {
-      return this.s;
-   }
-
-   public int o() {
-      return this.t;
-   }
-
-   public int p() {
-      return this.u;
-   }
-
-   public asg<cvz> q() {
-      return this.v;
-   }
-
-   public agt r() {
-      return this.w;
-   }
-
-   public float s() {
-      return this.x;
-   }
-
-   public dly.a t() {
-      return this.y;
-   }
-
-   public static record a(boolean b, boolean c, biq d, int e) {
-      public static final MapCodec<dly.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dly.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dly.a::b),
-                  biq.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dly.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dly.a::d)
-               )
-               .apply($$0, dly.a::new)
-      );
-
-      public boolean a() {
-         return this.b;
-      }
-
-      public boolean b() {
-         return this.c;
-      }
-
-      public biq c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
+   public dlw p() {
+      return this.a;
    }
 }

@@ -1,27 +1,19 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class bbk {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:blue_coral", "minecraft:tube_coral_block")
-      .put("minecraft:pink_coral", "minecraft:brain_coral_block")
-      .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
-      .put("minecraft:red_coral", "minecraft:fire_coral_block")
-      .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
-      .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
-      .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
-      .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
-      .put("minecraft:red_coral_plant", "minecraft:fire_coral")
-      .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
-      .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
-      .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
-      .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
-      .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
-      .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
-      .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
-      .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
-      .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
-      .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
-      .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
-      .build();
+public class bbk extends avu {
+   private final Function<String, String> a;
+
+   public bbk(Schema $$0, String $$1, Function<String, String> $$2) {
+      super($$0, $$1);
+      this.a = $$2;
+   }
+
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   }
 }

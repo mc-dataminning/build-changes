@@ -1,40 +1,40 @@
-public class acl implements wu<yo> {
-   private final int a;
-   private final int b;
-   private final int c;
+public class acl implements xd<yx> {
+   private final long a;
+   private final long b;
 
-   public acl(int $$0, int $$1, int $$2) {
+   public acl(long $$0, long $$1, boolean $$2) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.b = $$3;
    }
 
-   public acl(ue $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
-      this.c = $$0.n();
+   public acl(ug $$0) {
+      this.a = $$0.readLong();
+      this.b = $$0.readLong();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public void a(ug $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public long a() {
       return this.a;
    }
 
-   public int d() {
+   public long d() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

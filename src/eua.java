@@ -1,29 +1,56 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class eua {
-   private final List<vg> a = Lists.newArrayList();
+public abstract class eua implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
 
-   public void a(vg $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public vg a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : vg.a(this.a);
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   public vg b() {
-      vg $$0 = this.a();
-      return $$0 != null ? $$0 : vg.b;
+   public static void a(fct $$0) {
+      eva $$1 = eva.N();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(vd $$0) {
+      this.b();
+      eva $$1 = eva.N();
+      $$1.execute(() -> $$1.a(new esn($$0, new eqe(new fcy()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof erw $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(vd.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(erw $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract vd a();
+
+   public boolean d() {
+      return this.c;
    }
 
    public void c() {
-      this.a.clear();
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

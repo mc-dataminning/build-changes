@@ -1,21 +1,96 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class bnk {
-   public static box<blx> a(int $$0, float $$1) {
-      return bqz.a(
-         (Function<bqz.b<blx>, ? extends App<bqz.c<blx>, brc<blx>>>)($$2 -> $$2.group($$2.c(bux.m), $$2.a(bux.n), $$2.b(bux.o), $$2.b(bux.h))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     blv $$9 = $$2.b($$5);
-                     if ($$9.a($$7, (double)$$0) && $$2.<buz>b($$6).a($$9)) {
-                        $$4.a(new bnx($$9, true));
-                        $$7.K().a(-$$1, 0.0F);
-                        $$7.r(aty.c($$7.dC(), $$7.aW, 0.0F));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   private final Map<bng, bnh> a;
+
+   public bnk(Map<bng, bnh> $$0) {
+      this.a = ImmutableMap.copyOf($$0);
+   }
+
+   private bnh d(bng $$0) {
+      bnh $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + kd.u.b($$0));
+      } else {
+         return $$1;
+      }
+   }
+
+   public double a(bng $$0) {
+      return this.d($$0).f();
+   }
+
+   public double b(bng $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(bng $$0, UUID $$1) {
+      bnj $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + kd.u.b($$0));
+      } else {
+         return $$2.c();
+      }
+   }
+
+   @Nullable
+   public bnh a(Consumer<bnh> $$0, bng $$1) {
+      bnh $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         bnh $$3 = new bnh($$1, $$0);
+         $$3.a($$2);
+         return $$3;
+      }
+   }
+
+   public static bnk.a a() {
+      return new bnk.a();
+   }
+
+   public boolean c(bng $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(bng $$0, UUID $$1) {
+      bnh $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Map<bng, bnh> a = Maps.newHashMap();
+      private boolean b;
+
+      private bnh b(bng $$0) {
+         bnh $$1 = new bnh($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + kd.u.b($$0));
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
+      }
+
+      public bnk.a a(bng $$0) {
+         this.b($$0);
+         return this;
+      }
+
+      public bnk.a a(bng $$0, double $$1) {
+         bnh $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public bnk a() {
+         this.b = true;
+         return new bnk(this.a);
+      }
    }
 }

@@ -1,19 +1,23 @@
-public class fvc implements fui<dhw> {
-   private final fxm a;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public fvc(fuj.a $$0) {
-      this.a = $$0.c();
+public class fvc<S extends dgo> implements cyq.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = fsx.a($$0.i(), $$0.aB_());
+         int $$4 = fsx.a($$1.i(), $$1.aB_());
+         int $$5 = fsy.a($$3);
+         int $$6 = fsy.a($$4);
+         int $$7 = fsy.b($$3);
+         int $$8 = fsy.b($$4);
+         return fsy.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public void a(dhw $$0, float $$1, epd $$2, fsi $$3, int $$4, int $$5) {
-      csy $$6 = $$0.i();
-      if ($$6 != null) {
-         dhz $$7 = $$0.d();
-         dib $$8 = $$7.c();
-         blf $$9 = $$8.a($$7, $$6, $$7.d());
-         if ($$9 != null) {
-            fuy.a($$1, $$2, $$3, $$4, $$9, this.a, $$8.e(), $$8.d());
-         }
-      }
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
+   }
+
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

@@ -1,136 +1,66 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class egk {
-   private final amp a;
-   private final Map<eim<?>, Object> b;
-   private final Map<agt, egk.b> c;
-   private final float d;
+public interface egk extends egm {
+   @Override
+   String g();
 
-   public egk(amp $$0, Map<eim<?>, Object> $$1, Map<agt, egk.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   void a(boolean var1);
+
+   int l();
+
+   void f(int var1);
+
+   void e(int var1);
+
+   int j();
+
+   @Override
+   default void a(p $$0, ctk $$1) {
+      egm.super.a($$0, $$1);
+      $$0.a("Level name", this::g);
+      $$0.a(
+         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
    }
 
-   public amp a() {
-      return this.a;
-   }
+   int h();
 
-   public boolean a(eim<?> $$0) {
-      return this.b.containsKey($$0);
-   }
+   void a(int var1);
 
-   public <T> T b(eim<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
-      } else {
-         return $$1;
-      }
-   }
+   int v();
+
+   void g(int var1);
+
+   int w();
+
+   void h(int var1);
 
    @Nullable
-   public <T> T c(eim<T> $$0) {
-      return (T)this.b.get($$0);
-   }
+   UUID x();
 
-   @Nullable
-   public <T> T d(eim<T> $$0) {
-      return (T)this.b.get($$0);
-   }
+   void a(UUID var1);
 
-   public void a(agt $$0, Consumer<cmh> $$1) {
-      egk.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
-   }
+   ctf m();
 
-   public float b() {
-      return this.d;
-   }
+   void a(dkr.c var1);
 
-   public static class a {
-      private final amp a;
-      private final Map<eim<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<agt, egk.b> c = Maps.newHashMap();
-      private float d;
+   dkr.c r();
 
-      public a(amp $$0) {
-         this.a = $$0;
-      }
+   boolean p();
 
-      public amp a() {
-         return this.a;
-      }
+   void c(boolean var1);
 
-      public <T> egk.a a(eim<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
+   boolean o();
 
-      public <T> egk.a b(eim<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
+   void a(ctf var1);
 
-         return this;
-      }
+   ekz<MinecraftServer> u();
 
-      public <T> T a(eim<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
-         } else {
-            return $$1;
-         }
-      }
+   void a(long var1);
 
-      @Nullable
-      public <T> T b(eim<T> $$0) {
-         return (T)this.b.get($$0);
-      }
-
-      public egk.a a(agt $$0, egk.b $$1) {
-         egk.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public egk.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public egk a(ein $$0) {
-         Set<eim<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<eim<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new egk(this.a, this.b, this.c, this.d);
-            }
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void add(Consumer<cmh> var1);
-   }
+   void b(long var1);
 }

@@ -1,54 +1,48 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-public class bij extends biq {
-   public static final Codec<bij> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  biq.c.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, bij::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.g < $$0.f
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final biq b;
-   private final int f;
-   private final int g;
+public class bij<E extends bih> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   public static bij a(biq $$0, int $$1, int $$2) {
-      return new bij($$0, $$1, $$2);
+   bij(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bii.a($$0);
    }
 
-   public bij(biq $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public static <E extends bih> bij<E> c() {
+      return new bij<>(ImmutableList.of());
    }
 
-   @Override
-   public int a(auf $$0) {
-      return aty.a(this.b.a($$0), this.f, this.g);
+   @SafeVarargs
+   public static <E extends bih> bij<E> a(E... $$0) {
+      return new bij<>(ImmutableList.copyOf($$0));
    }
 
-   @Override
-   public int a() {
-      return Math.max(this.f, this.b.a());
+   public static <E extends bih> bij<E> a(List<E> $$0) {
+      return new bij<>($$0);
    }
 
-   @Override
-   public int b() {
-      return Math.min(this.g, this.b.b());
+   public boolean d() {
+      return this.b.isEmpty();
    }
 
-   @Override
-   public bir<?> c() {
-      return bir.d;
+   public Optional<E> b(aup $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return bii.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
+      return this.b;
+   }
+
+   public static <E extends bih> Codec<bij<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bij::a, bij::e);
    }
 }

@@ -1,52 +1,50 @@
-public class cqh extends cpd {
-   public cqh(cpb $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public boolean a(cia $$0, csy $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
-               cmh $$4 = $$0.a($$2 + $$3 * $$0.f());
-               if ($$4.b()) {
-                  return false;
-               }
+public class cqh<T extends cpe> implements cpz<T> {
+   private final cpe.a<T> x;
+   private final Codec<T> y;
 
-               if ($$2 == 1 && $$3 == 1) {
-                  if (!$$4.a(cmk.vk)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cmk.os)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public cmh a(cia $$0, is $$1) {
-      cmh $$2 = $$0.a(1 + $$0.f());
-      if (!$$2.a(cmk.vk)) {
-         return cmh.f;
-      } else {
-         cmh $$3 = new cmh(cmk.vj, 8);
-         cog.a($$3, cog.d($$2));
-         cog.a($$3, cog.b($$2));
-         return $$3;
-      }
+   public cqh(cpe.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  atq.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                  cpk.d.fieldOf("category").orElse(cpk.c).forGetter($$0xx -> $$0xx.b),
+                  cps.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  kd.h.q().xmap(cmr::new, cmr::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
+               )
+               .apply($$2, $$0::create)
+      );
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   public Codec<T> a() {
+      return this.y;
    }
 
-   @Override
-   public cpp<?> ar_() {
-      return cpp.j;
+   public T b(ug $$0) {
+      String $$1 = $$0.s();
+      cpk $$2 = $$0.b(cpk.class);
+      cps $$3 = cps.b($$0);
+      cmr $$4 = $$0.r();
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.n();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public void a(ug $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      $$1.d.a($$0);
+      $$0.a($$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
+   }
+
+   public cpe a(String $$0, cpk $$1, cps $$2, cmr $$3, float $$4, int $$5) {
+      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

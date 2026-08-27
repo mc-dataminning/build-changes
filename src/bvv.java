@@ -1,29 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+public class bvv extends bwg {
+   public static final float a = 8.0F;
 
-public class bvv<T extends blv> extends bwc<T> {
    @Override
-   protected void a(amp $$0, T $$1) {
-      ekw $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<blv> $$3 = $$0.a(blv.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      bmv<?> $$4 = $$1.dO();
-      $$4.a(bux.g, $$3);
-      $$4.a(bux.h, new buz($$1, $$3));
+   protected boolean a(bmf $$0, bmf $$1) {
+      return this.f($$0, $$1) && $$1.bc() && (this.b($$1) || this.e($$0, $$1)) && bwm.c($$0, $$1);
    }
 
-   protected int b() {
-      return 16;
+   private boolean e(bmf $$0, bmf $$1) {
+      return !$$0.dO().a(bvh.T) && $$1.ai().a(ase.j);
    }
 
-   protected int c() {
-      return 16;
+   private boolean b(bmf $$0) {
+      return $$0.ai().a(ase.i);
+   }
+
+   private boolean f(bmf $$0, bmf $$1) {
+      return $$1.f((blp)$$0) <= 64.0;
    }
 
    @Override
-   public Set<bux<?>> a() {
-      return ImmutableSet.of(bux.g, bux.h);
+   protected bvh<bmf> b() {
+      return bvh.B;
    }
 }

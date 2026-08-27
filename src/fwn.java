@@ -1,45 +1,52 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class fwn extends fyp<cau, fhz> {
-   public static final agt a = new agt("textures/entity/armorstand/wood.png");
+public class fwn implements fwk.a {
+   private static final int a = 160;
+   private final eva b;
+   private final Int2ObjectMap<fwn.a> c = new Int2ObjectOpenHashMap();
 
-   public fwn(fxo.a $$0) {
-      super($$0, new fia($$0.a(flx.b)), 0.0F);
-      this.a(new gbp<>(this, new fhz($$0.a(flx.c)), new fhz($$0.a(flx.d)), $$0.g()));
-      this.a(new gbs<>(this, $$0.d()));
-      this.a(new gbi<>(this, $$0.f()));
-      this.a(new gbe<>(this, $$0.f(), $$0.d()));
+   @Override
+   public void a() {
+      this.c.clear();
    }
 
-   public agt a(cau $$0) {
-      return a;
+   public void a(int $$0, hx $$1, List<yd.a> $$2) {
+      this.c.put($$0, new fwn.a($$1, $$2));
    }
 
-   protected void a(cau $$0, epd $$1, float $$2, float $$3, float $$4) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$5 = (float)($$0.dM().W() - $$0.bJ) + $$4;
-      if ($$5 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(aty.a($$5 / 1.5F * (float) Math.PI) * 3.0F));
-      }
+   public void a(int $$0) {
+      this.c.remove($$0);
    }
 
-   protected boolean b(cau $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bX() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cB();
+   public fwn(eva $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   protected fsq a(cau $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.A()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         agt $$4 = this.a($$0);
-         if ($$2) {
-            return fsq.c($$4, false);
-         } else {
-            return $$1 ? fsq.a($$4, false) : null;
+   @Override
+   public void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4) {
+      eul $$5 = this.b.j.m();
+      hx $$6 = hx.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         fwn.a $$7 = (fwn.a)var11.next();
+         hx $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               yd.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               fwk.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
          }
       }
+   }
+
+   static record a(hx a, List<yd.a> b) {
    }
 }

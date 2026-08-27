@@ -1,38 +1,59 @@
-public class gjb implements gje {
-   private static final int a = 600;
-   private static final vb b = vb.c("tutorial.open_inventory.title");
-   private static final vb c = vb.a("tutorial.open_inventory.description", gjd.a("inventory"));
-   private final gjd d;
-   private eyr e;
-   private int f;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gjb(gjd $$0) {
+public class gjb implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final bfy d;
+   @Nullable
+   private CompletableFuture<Optional<gix>> e;
+
+   private gjb(bfy $$0) {
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gjf.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new eyr(eyr.a.d, b, c, false);
-            this.d.e().ax().a(this.e);
+   public static CompletableFuture<Optional<gjb>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            bfy $$1 = bfy.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new gjb($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
          }
+      }, ac.f());
+   }
+
+   public CompletableFuture<Optional<giy>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               bfy.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new gix($$1, ac.f()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
+            }
+         }, ac.f());
       }
+
+      return this.e.thenApply($$0 -> $$0.map(gix::a));
    }
 
    @Override
-   public void b() {
+   public void close() {
       if (this.e != null) {
-         this.e.c();
-         this.e = null;
+         this.e.thenAccept($$0 -> $$0.ifPresent(gix::close));
       }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(gjf.e);
    }
 }

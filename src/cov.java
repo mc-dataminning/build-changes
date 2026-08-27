@@ -1,71 +1,41 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cov extends cpd {
-   public cov(cpb $$0) {
-      super($$0);
+public record cov(String c, ih<cmm> d, float e, Map<ckd, String> f, vd g) {
+   public static final Codec<cov> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atq.x.fieldOf("asset_name").forGetter(cov::a),
+               aha.a(ke.F).fieldOf("ingredient").forGetter(cov::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cov::c),
+               Codec.unboundedMap(ckd.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cov::d),
+               vf.a.fieldOf("description").forGetter(cov::e)
+            )
+            .apply($$0, cov::new)
+   );
+   public static final Codec<ih<cov>> b = agz.a(ke.aI, a);
+
+   public static cov a(String $$0, cmm $$1, float $$2, vd $$3, Map<ckd, String> $$4) {
+      return new cov($$0, kd.h.d($$1), $$2, $$4, $$3);
    }
 
-   public boolean a(cia $$0, csy $$1) {
-      cmh $$2 = cmh.f;
-      List<cmh> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmh $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof ckz) {
-               if (!$$2.b()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.d() instanceof ckw)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.b() && !$$3.isEmpty();
+   public String a() {
+      return this.c;
    }
 
-   public cmh a(cia $$0, is $$1) {
-      List<ckw> $$2 = Lists.newArrayList();
-      cmh $$3 = cmh.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmh $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            cmc $$6 = $$5.d();
-            if ($$6 instanceof ckz) {
-               if (!$$3.b()) {
-                  return cmh.f;
-               }
-
-               $$3 = $$5.p();
-            } else {
-               if (!($$6 instanceof ckw)) {
-                  return cmh.f;
-               }
-
-               $$2.add((ckw)$$6);
-            }
-         }
-      }
-
-      return !$$3.b() && !$$2.isEmpty() ? ckz.a($$3, $$2) : cmh.f;
+   public ih<cmm> b() {
+      return this.d;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public float c() {
+      return this.e;
    }
 
-   @Override
-   public cpp<?> ar_() {
-      return cpp.c;
+   public Map<ckd, String> d() {
+      return this.f;
+   }
+
+   public vd e() {
+      return this.g;
    }
 }

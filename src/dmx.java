@@ -1,71 +1,63 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dmx implements dnd {
-   public static final Codec<dmx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iy.a.fieldOf("source_entity").forGetter(dmx::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.d))
-            .apply($$0, ($$0x, $$1) -> new dmx(Either.right(Either.left($$0x)), $$1))
-   );
-   private Either<blf, Either<UUID, Integer>> c;
-   final float d;
+public class dmx {
+   private Int2ObjectMap<blp> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<blp> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<blp> c;
 
-   public dmx(blf $$0, float $$1) {
-      this(Either.left($$0), $$1);
-   }
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
 
-   dmx(Either<blf, Either<UUID, Integer>> $$0, float $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+         while ($$1.hasNext()) {
+            Entry<blp> $$0 = (Entry<blp>)$$1.next();
+            this.b.put($$0.getIntKey(), (blp)$$0.getValue());
+         }
 
-   @Override
-   public Optional<elb> a(csy $$0) {
-      if (this.c.left().isEmpty()) {
-         this.b($$0);
+         Int2ObjectMap<blp> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
       }
-
-      return this.c.left().map($$0x -> $$0x.dk().b(0.0, (double)this.d, 0.0));
    }
 
-   private void b(csy $$0) {
-      ((Optional)this.c.map(Optional::of, $$1 -> Optional.ofNullable((blf)$$1.map($$1x -> $$0 instanceof amp $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.c = Either.left($$0x));
+   public void a(blp $$0) {
+      this.a();
+      this.a.put($$0.aj(), $$0);
    }
 
-   private UUID b() {
-      return (UUID)this.c.map(blf::cw, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
+   public void b(blp $$0) {
+      this.a();
+      this.a.remove($$0.aj());
    }
 
-   int c() {
-      return (Integer)this.c.map(blf::aj, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
+   public boolean c(blp $$0) {
+      return this.a.containsKey($$0.aj());
    }
 
-   @Override
-   public dne<?> a() {
-      return dne.b;
-   }
+   public void a(Consumer<blp> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
 
-   public static class a implements dne<dmx> {
-      public dmx a(ue $$0) {
-         return new dmx(Either.right(Either.right($$0.n())), $$0.readFloat());
-      }
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
 
-      public void a(ue $$0, dmx $$1) {
-         $$0.c($$1.c());
-         $$0.a($$1.d);
-      }
-
-      @Override
-      public Codec<dmx> a() {
-         return dmx.a;
+            while (var2.hasNext()) {
+               blp $$1 = (blp)var2.next();
+               $$0.accept($$1);
+            }
+         } finally {
+            this.c = null;
+         }
       }
    }
 }

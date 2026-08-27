@@ -1,41 +1,56 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class bwd<U extends bwc<?>> {
-   public static final bwd<bvn> a = a("dummy", bvn::new);
-   public static final bwd<bvu> b = a("nearest_items", bvu::new);
-   public static final bwd<bvv<blv>> c = a("nearest_living_entities", bvv::new);
-   public static final bwd<bvz> d = a("nearest_players", bvz::new);
-   public static final bwd<bvt> e = a("nearest_bed", bvt::new);
-   public static final bwd<bvr> f = a("hurt_by", bvr::new);
-   public static final bwd<bwg> g = a("villager_hostiles", bwg::new);
-   public static final bwd<bwf> h = a("villager_babies", bwf::new);
-   public static final bwd<bwa> i = a("secondary_pois", bwa::new);
-   public static final bwd<bvp> j = a("golem_detected", bvp::new);
-   public static final bwd<bvy> k = a("piglin_specific_sensor", bvy::new);
-   public static final bwd<bvx> l = a("piglin_brute_specific_sensor", bvx::new);
-   public static final bwd<bvq> m = a("hoglin_specific_sensor", bvq::new);
-   public static final bwd<bvk> n = a("nearest_adult", bvk::new);
-   public static final bwd<bvl> o = a("axolotl_attackables", bvl::new);
-   public static final bwd<bwe> p = a("axolotl_temptations", () -> new bwe(byq.a()));
-   public static final bwd<bwe> q = a("goat_temptations", () -> new bwe(bze.a()));
-   public static final bwd<bwe> r = a("frog_temptations", () -> new bwe(byy.a()));
-   public static final bwd<bwe> s = a("camel_temptations", () -> new bwe(byv.b()));
-   public static final bwd<bvo> t = a("frog_attackables", bvo::new);
-   public static final bwd<bvs> u = a("is_in_water", bvs::new);
-   public static final bwd<bwh> v = a("warden_entity_sensor", bwh::new);
-   public static final bwd<bwe> w = a("sniffer_temptations", () -> new bwe(bzv.a()));
-   public static final bwd<bvm> x = a("breeze_attack_entity_sensor", bvm::new);
-   private final Supplier<U> y;
+public class bwd extends bwm<bmh> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
 
-   private bwd(Supplier<U> $$0) {
-      this.y = $$0;
+   public bwd() {
+      super(20);
    }
 
-   public U a() {
-      return this.y.get();
+   @Override
+   public Set<bvh<?>> a() {
+      return ImmutableSet.of(bvh.w);
    }
 
-   private static <U extends bwc<?>> bwd<U> a(String $$0, Supplier<U> $$1) {
-      return ir.a(kb.C, new agt($$0), new bwd<>($$1));
+   protected void a(amz $$0, bmh $$1) {
+      if ($$1.o_()) {
+         this.f = 0;
+         this.g = $$0.X() + (long)$$0.F_().a(20);
+         bxg $$2 = $$0.y();
+         Predicate<hx> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<ih<bxj>, hx>> $$4 = $$2.b($$0x -> $$0x.a(bxk.n), $$3, $$1.dm(), 48, bxg.b.c).collect(Collectors.toSet());
+         eez $$5 = bnp.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            hx $$6 = $$5.l();
+            Optional<ih<bxj>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dO().a(bvh.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+         }
+      }
    }
 }

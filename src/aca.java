@@ -1,24 +1,34 @@
-public class aca implements wu<yo> {
-   private final vb a;
+import javax.annotation.Nullable;
 
-   public aca(vb $$0) {
-      this.a = $$0;
+public class aca implements xd<yx> {
+   private final int a;
+   private final int b;
+
+   public aca(blp $$0, @Nullable blp $$1) {
+      this.a = $$0.aj();
+      this.b = $$1 != null ? $$1.aj() : 0;
    }
 
-   public aca(ue $$0) {
-      this.a = $$0.m();
+   public aca(ug $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.a(this.a);
+   public void a(ug $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public vb a() {
+   public int a() {
       return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

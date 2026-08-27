@@ -1,8 +1,21 @@
-public interface afr extends ty, tz {
-   @Override
-   default ud b() {
-      return ud.c;
+import java.util.UUID;
+
+public record afr(String a, UUID b) implements xd<afp> {
+   public afr(ug $$0) {
+      this($$0.d(16), $$0.p());
    }
 
-   void a(aft var1);
+   @Override
+   public void a(ug $$0) {
+      $$0.a(this.a, 16);
+      $$0.a(this.b);
+   }
+
+   public void a(afp $$0) {
+      $$0.a(this);
+   }
+
+   public UUID d() {
+      return this.b;
+   }
 }

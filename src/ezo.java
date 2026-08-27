@@ -1,163 +1,115 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class ezo extends ezm {
-   private final ezo.b c;
-   private final List<ezo.a> d = new ArrayList<>();
-   private final ezu e = ezu.i();
+public class ezo extends gdq implements gdr {
+   private static final int e = 256;
+   private final ezp f;
+   private final boolean g;
+   private final ezo.a h;
 
-   public ezo(int $$0, int $$1, ezo.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
-
-   public ezo(int $$0, int $$1, int $$2, int $$3, ezo.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
+   public ezo(ezp $$0, boolean $$1) {
+      this.g = $$1;
+      this.h = new ezo.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? eou.b.a : eou.b.d, this.a(), 256, 256);
+      this.f = $$0;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
+   public void a(aqc $$0) {
+   }
 
-         for (ezo.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @Nullable
+   public ezr a(enx $$0) {
+      if ($$0.c() != this.g) {
+         return null;
+      } else {
+         ezo.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new ezr(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
          }
+      }
+   }
 
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<ezo.a> $$5 = this.d.iterator();
-         ezo.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
+   @Override
+   public void a(ahd $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   }
 
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               ezo.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private ezo.a e;
+      @Nullable
+      private ezo.a f;
+      private boolean g;
+
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Nullable
+      ezo.a a(enx $$0) {
+         if (this.e != null && this.f != null) {
+            ezo.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
+
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new ezo.a(this.a, this.b, $$2, this.d);
+                  this.f = new ezo.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new ezo.a(this.a, this.b, this.c, $$3);
+                  this.f = new ezo.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
+
+               return this.e.a($$0);
             }
          }
-
-         int $$9 = this.c.d(this);
-
-         for (ezo.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
-         }
-
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
-      }
-   }
-
-   @Override
-   public void b(Consumer<ezt> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public ezu b() {
-      return this.e.g();
-   }
-
-   public ezu c() {
-      return this.e;
-   }
-
-   public <T extends ezt> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends ezt> T a(T $$0, ezu $$1) {
-      this.d.add(new ezo.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends ezt> T a(T $$0, Consumer<ezu> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   static class a extends ezm.a {
-      protected a(ezt $$0, ezu $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(ezt $$0) {
-         return switch (this) {
-            case a -> $$0.k();
-            case b -> $$0.i();
-         };
-      }
-
-      int a(ezo.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
-      }
-
-      int b(ezt $$0) {
-         return switch (this) {
-            case a -> $$0.i();
-            case b -> $$0.k();
-         };
-      }
-
-      int b(ezo.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
-      }
-
-      void a(ezo.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
-         }
-      }
-
-      void a(ezo.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
-      }
-
-      int c(ezt $$0) {
-         return switch (this) {
-            case a -> $$0.p();
-            case b -> $$0.r();
-         };
-      }
-
-      int d(ezt $$0) {
-         return switch (this) {
-            case a -> $$0.r();
-            case b -> $$0.p();
-         };
       }
    }
 }

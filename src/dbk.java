@@ -1,33 +1,99 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dbk extends dey {
-   public static final MapCodec<dbk> b = b(dbk::new);
-   private static final Map<ia, elu> e = Maps.immutableEnumMap(
-      Map.of(
-         ia.c,
-         cvz.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         ia.d,
-         cvz.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         ia.f,
-         cvz.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         ia.e,
-         cvz.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
+public class dbk extends cws implements cwm {
+   public static final MapCodec<dbk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ahc.a(ke.aw).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dbk::new)
    );
+   protected static final float b = 3.0F;
+   protected static final emf c = cwj.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final ahc<dra<?, ?>> d;
 
    @Override
    public MapCodec<dbk> a() {
-      return b;
+      return a;
    }
 
-   public dbk(dio.d $$0) {
-      super(dda.b.h, $$0);
+   public dbk(ahc<dra<?, ?>> $$0, diz.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   public elu a(dip $$0, cse $$1, hv $$2, elg $$3) {
-      return e.get($$0.c(d));
+   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+      return c;
+   }
+
+   @Override
+   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
+
+         for (hx $$6 : hx.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
+         }
+
+         hx $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.u($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.u($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean b(dja $$0, cso $$1, hx $$2) {
+      return $$0.i($$1, $$2);
+   }
+
+   @Override
+   public boolean a(dja $$0, ctl $$1, hx $$2) {
+      hx $$3 = $$2.d();
+      dja $$4 = $$1.a_($$3);
+      return $$4.a(asb.aZ) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   }
+
+   public boolean a(amz $$0, hx $$1, dja $$2, aup $$3) {
+      Optional<? extends ih<dra<?, ?>>> $$4 = $$0.I_().d(ke.aw).b(this.d);
+      if ($$4.isEmpty()) {
+         return false;
+      } else {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
+            return false;
+         }
+      }
+   }
+
+   @Override
+   public boolean b(ctl $$0, hx $$1, dja $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cti $$0, aup $$1, hx $$2, dja $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(amz $$0, aup $$1, hx $$2, dja $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

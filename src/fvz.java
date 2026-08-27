@@ -1,151 +1,155 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
+import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
+import java.util.BitSet;
+import java.util.EnumSet;
+import java.util.Set;
 
-public class fvz implements fvt.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final euk e;
-   private final cth f;
-   private Instant g = Instant.now();
-   @Nullable
-   private fvz.a h;
+public class fvz {
+   private static final int a = 4;
+   private static final int b = 16;
+   private static final int c = 15;
+   private static final int d = 4096;
+   private static final int e = 0;
+   private static final int f = 4;
+   private static final int g = 8;
+   private static final int h = (int)Math.pow(16.0, 0.0);
+   private static final int i = (int)Math.pow(16.0, 1.0);
+   private static final int j = (int)Math.pow(16.0, 2.0);
+   private static final int k = -1;
+   private static final ic[] l = ic.values();
+   private final BitSet m = new BitSet(4096);
+   private static final int[] n = ac.a(new int[1352], $$0 -> {
+      int $$1 = 0;
+      int $$2 = 15;
+      int $$3 = 0;
 
-   public fvz(euk $$0, cth $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   @Override
-   public void a(epd $$0, fsi $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new fvz.a(this.e.r.z_(), ix.a(this.e.s.dm()), 10, this.f);
-      }
-
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      eph $$6 = $$1.getBuffer(fsq.A());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
-   }
-
-   private static void a(epd $$0, elk $$1, ix $$2, eph $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
-   }
-
-   private static void a(epd $$0, elk $$1, ix $$2, fsi $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         eph $$19 = $$3.getBuffer(fsq.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
-   }
-
-   private static void a(epd $$0, eph $$1, ia $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)ix.c($$6) - $$3);
-      float $$11 = (float)((double)ix.c($$7) - $$4);
-      float $$12 = (float)((double)ix.c($$8) - $$5);
-      float $$13 = $$10 + 16.0F;
-      float $$14 = $$11 + 16.0F;
-      float $$15 = $$12 + 16.0F;
-      float $$16 = $$9.x();
-      float $$17 = $$9.y();
-      float $$18 = $$9.z();
-      float $$19 = $$9.w();
-      Matrix4f $$20 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case b:
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case c:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case d:
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case e:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case f:
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-      }
-   }
-
-   private static void a(epd $$0, eph $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)ix.c($$5) - $$2);
-      float $$13 = (float)((double)ix.c($$6) - $$3);
-      float $$14 = (float)((double)ix.c($$7) - $$4);
-      float $$15 = (float)((double)ix.c($$8) - $$2);
-      float $$16 = (float)((double)ix.c($$9) - $$3);
-      float $$17 = (float)((double)ix.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-   }
-
-   static final class a {
-      final elk a;
-      final elk b;
-      final ix c;
-
-      a(edo $$0, ix $$1, int $$2, cth $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new ele($$4, $$4, $$4);
-         this.b = new ele($$4, $$4, $$4);
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  ix $$8 = ix.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  edn.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == edn.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == edn.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
+                  $$0[$$3++] = a($$4, $$5, $$6);
                }
             }
          }
+      }
+   });
+   private int o = 4096;
 
-         this.c = ix.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+   public void a(hx $$0) {
+      this.m.set(b($$0), true);
+      this.o--;
+   }
+
+   private static int b(hx $$0) {
+      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   }
+
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   }
+
+   public fwa a() {
+      fwa $$0 = new fwa();
+      if (4096 - this.o < 256) {
+         $$0.a(true);
+      } else if (this.o == 0) {
+         $$0.a(false);
+      } else {
+         for (int $$1 : n) {
+            if (!this.m.get($$1)) {
+               $$0.a(this.a($$1));
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   private Set<ic> a(int $$0) {
+      Set<ic> $$1 = EnumSet.noneOf(ic.class);
+      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
+      $$2.enqueue($$0);
+      this.m.set($$0, true);
+
+      while (!$$2.isEmpty()) {
+         int $$3 = $$2.dequeueInt();
+         this.a($$3, $$1);
+
+         for (ic $$4 : l) {
+            int $$5 = this.a($$3, $$4);
+            if ($$5 >= 0 && !this.m.get($$5)) {
+               this.m.set($$5, true);
+               $$2.enqueue($$5);
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(int $$0, Set<ic> $$1) {
+      int $$2 = $$0 >> 0 & 15;
+      if ($$2 == 0) {
+         $$1.add(ic.e);
+      } else if ($$2 == 15) {
+         $$1.add(ic.f);
+      }
+
+      int $$3 = $$0 >> 8 & 15;
+      if ($$3 == 0) {
+         $$1.add(ic.a);
+      } else if ($$3 == 15) {
+         $$1.add(ic.b);
+      }
+
+      int $$4 = $$0 >> 4 & 15;
+      if ($$4 == 0) {
+         $$1.add(ic.c);
+      } else if ($$4 == 15) {
+         $$1.add(ic.d);
+      }
+   }
+
+   private int a(int $$0, ic $$1) {
+      switch ($$1) {
+         case a:
+            if (($$0 >> 8 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - j;
+         case b:
+            if (($$0 >> 8 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + j;
+         case c:
+            if (($$0 >> 4 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - i;
+         case d:
+            if (($$0 >> 4 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + i;
+         case e:
+            if (($$0 >> 0 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - h;
+         case f:
+            if (($$0 >> 0 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + h;
+         default:
+            return -1;
       }
    }
 }

@@ -1,32 +1,32 @@
-public class acd implements wu<yo> {
-   private final int a;
+public class acd implements xd<yx> {
+   private final float a;
    private final int b;
    private final int c;
 
-   public acd(int $$0, int $$1, int $$2) {
+   public acd(float $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public acd(ue $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   public acd(ug $$0) {
+      this.a = $$0.readFloat();
+      this.c = $$0.n();
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
+   public void a(ug $$0) {
+      $$0.a(this.a);
+      $$0.c(this.c);
+      $$0.c(this.b);
    }
 
-   public void a(yo $$0) {
+   public void a(yx $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public float a() {
       return this.a;
    }
 

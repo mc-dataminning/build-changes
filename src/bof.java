@@ -1,28 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class bof {
-   private static hv a(blx $$0, hv $$1) {
-      auf $$2 = $$0.dM().z;
-      return $$1.b(a($$2), 0, a($$2));
-   }
-
-   private static int a(auf $$0) {
-      return $$0.a(3) - 1;
-   }
-
-   public static <E extends blx> box<E> a(bux<hv> $$0, int $$1, float $$2) {
-      return bqz.a(
-         (Function<bqz.b<E>, ? extends App<bqz.c<E>, brc<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(bux.o), $$3.c(bux.m), $$3.a(bux.n))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     hv $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dm(), (double)$$1);
-                     if (!$$8) {
-                        bno.a($$5x, a($$5x, $$7), $$2, $$1);
-                     }
-
+   public static <E extends bmf> bnx<E> a(int $$0, BiPredicate<E, blp> $$1) {
+      return brj.a((Function<brj.b<E>, ? extends App<brj.c<E>, brm<E>>>)($$2 -> $$2.group($$2.a(bvh.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               blp $$7 = $$5.cZ();
+               blp $$8 = $$2.<blp>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
+                  return false;
+               } else {
+                  blp $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.ac();
+                     $$3.b();
                      return true;
-                  }))
-      );
+                  }
+               }
+            })));
+   }
+
+   private static boolean a(bmf $$0, blp $$1, int $$2) {
+      return $$1.bx() && $$1.a($$0, (double)$$2) && $$1.dM() == $$0.dM();
    }
 }

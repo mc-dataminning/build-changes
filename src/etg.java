@@ -1,34 +1,31 @@
-public class etg extends etk {
-   private static final vb b = vb.c("mco.connect.connecting");
-   private final gji c;
-   private final eqk d;
-   private final eql e;
+import javax.annotation.Nullable;
 
-   public etg(fcc $$0, eqk $$1, eql $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gji($$0);
+public class etg {
+   public final int a;
+   @Nullable
+   public final String b;
+
+   etg(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void run() {
-      this.c.a(this.d, fof.a(this.e.a));
-   }
+   public static class a {
+      private int a = -1;
+      private String b;
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      euk.N().ab().a();
-   }
+      public etg.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
 
-   @Override
-   public void c() {
-      this.c.b();
-   }
+      public etg.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   @Override
-   public vb a() {
-      return b;
+      public etg a() {
+         return new etg(this.a, this.b);
+      }
    }
 }

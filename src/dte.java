@@ -1,46 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dte implements dtg {
-   public static final Codec<dte> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               biq.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               biq.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               biq.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bio.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bio.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, dte::new)
-   );
-   public final int b;
-   public final biq c;
-   public final biq d;
-   public final int e;
-   public final int f;
-   public final biq g;
-   public final bio h;
-   public final bio i;
-   public final float j;
-   public final int k;
-   public final int l;
+public class dte extends drn<dty> {
+   private static final hx a = new hx(8, 3, 8);
+   private static final csp b = new csp(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public dte(int $$0, biq $$1, biq $$2, int $$3, int $$4, biq $$5, bio $$6, bio $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   public dte(Codec<dty> $$0) {
+      super($$0);
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   }
+
+   @Override
+   public boolean a(drp<dty> $$0) {
+      cud $$1 = $$0.b();
+      csp $$2 = new csp($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
+      } else {
+         hx $$3 = a.h($$0.e().v() + a.v());
+         hx.a $$4 = new hx.a();
+
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, cwl.m.o(), 2);
+                  } else {
+                     $$1.a($$4, cwl.b.o(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

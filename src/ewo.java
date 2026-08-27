@@ -1,274 +1,147 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import org.joml.Matrix4f;
 
-public class ewo<T> extends evz {
-   public static final BooleanSupplier a = fcc::r;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final vb c;
-   private int d;
-   private T l;
-   private final ewo.c<T> m;
-   private final Function<T, vb> n;
-   private final Function<ewo<T>, vp> o;
-   private final ewo.b<T> p;
-   private final boolean q;
-   private final eun.l<T> r;
+public class ewo implements AutoCloseable {
+   private static final ahd a = new ahd("textures/map/map_icons.png");
+   static final fth b = fth.t(a);
+   private static final int c = 128;
+   private static final int d = 128;
+   final geg e;
+   private final Int2ObjectMap<ewo.a> f = new Int2ObjectOpenHashMap();
 
-   ewo(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      vb $$4,
-      vb $$5,
-      int $$6,
-      T $$7,
-      ewo.c<T> $$8,
-      Function<T, vb> $$9,
-      Function<ewo<T>, vp> $$10,
-      ewo.b<T> $$11,
-      eun.l<T> $$12,
-      boolean $$13
-   ) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.g();
+   public ewo(geg $$0) {
+      this.e = $$0;
    }
 
-   private void g() {
-      this.a(this.r.apply(this.l));
+   public void a(int $$0, efu $$1) {
+      this.b($$0, $$1).a();
    }
 
-   @Override
-   public void b() {
-      if (fcc.q()) {
-         this.a(-1);
-      } else {
-         this.a(1);
-      }
+   public void a(ept $$0, fsz $$1, int $$2, efu $$3, boolean $$4, int $$5) {
+      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
    }
 
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = aty.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
-   }
-
-   private T i(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(aty.b(this.d + $$0, $$1.size()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
-      }
-
-      return true;
-   }
-
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      vb $$1 = this.c($$0);
-      this.b($$1);
-      this.l = $$0;
-      this.g();
-   }
-
-   private vb c(T $$0) {
-      return (vb)(this.q ? this.n.apply($$0) : this.d($$0));
-   }
-
-   private vp d(T $$0) {
-      return va.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.l;
-   }
-
-   @Override
-   protected vp aM_() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(faa $$0) {
-      $$0.a(ezz.a, this.aM_());
-      if (this.i) {
-         T $$1 = this.i(1);
-         vb $$2 = this.c($$1);
-         if (this.aJ_()) {
-            $$0.a(ezz.d, vb.a("narration.cycle_button.usage.focused", $$2));
+   private ewo.a b(int $$0, efu $$1) {
+      return (ewo.a)this.f.compute($$0, ($$1x, $$2) -> {
+         if ($$2 == null) {
+            return new ewo.a($$1x, $$1);
          } else {
-            $$0.a(ezz.d, vb.a("narration.cycle_button.usage.hovered", $$2));
+            $$2.a($$1);
+            return $$2;
          }
-      }
+      });
    }
 
-   public vp e() {
-      return a((vb)(this.q ? this.d(this.l) : this.l()));
+   public void a() {
+      ObjectIterator var1 = this.f.values().iterator();
+
+      while (var1.hasNext()) {
+         ewo.a $$0 = (ewo.a)var1.next();
+         $$0.close();
+      }
+
+      this.f.clear();
    }
 
-   public static <T> ewo.a<T> a(Function<T, vb> $$0) {
-      return new ewo.a<>($$0);
+   @Override
+   public void close() {
+      this.a();
    }
 
-   public static ewo.a<Boolean> a(vb $$0, vb $$1) {
-      return new ewo.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
-   }
+   class a implements AutoCloseable {
+      private efu b;
+      private final gds c;
+      private final fth d;
+      private boolean e = true;
 
-   public static ewo.a<Boolean> f() {
-      return new ewo.a<Boolean>($$0 -> $$0 ? va.b : va.c).a(b);
-   }
-
-   public static ewo.a<Boolean> b(boolean $$0) {
-      return f().a($$0);
-   }
-
-   public static class a<T> {
-      private int a;
-      @Nullable
-      private T b;
-      private final Function<T, vb> c;
-      private eun.l<T> d = $$0x -> null;
-      private Function<ewo<T>, vp> e = ewo::e;
-      private ewo.c<T> f = ewo.c.a(ImmutableList.of());
-      private boolean g;
-
-      public a(Function<T, vb> $$0) {
-         this.c = $$0;
+      a(int $$0, efu $$1) {
+         this.b = $$1;
+         this.c = new gds(128, 128, true);
+         ahd $$2 = ewo.this.e.a("map/" + $$0, this.c);
+         this.d = fth.t($$2);
       }
 
-      public ewo.a<T> a(Collection<T> $$0) {
-         return this.a(ewo.c.a($$0));
-      }
-
-      @SafeVarargs
-      public final ewo.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public ewo.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(ewo.c.a(ewo.a, $$0, $$1));
-      }
-
-      public ewo.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(ewo.c.a($$0, $$1, $$2));
-      }
-
-      public ewo.a<T> a(ewo.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public ewo.a<T> a(eun.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ewo.a<T> a(T $$0) {
+      void a(efu $$0) {
+         boolean $$1 = this.b != $$0;
          this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
+         this.e |= $$1;
+      }
+
+      public void a() {
+         this.e = true;
+      }
+
+      private void b() {
+         for (int $$0 = 0; $$0 < 128; $$0++) {
+            for (int $$1 = 0; $$1 < 128; $$1++) {
+               int $$2 = $$1 + $$0 * 128;
+               this.c.e().a($$1, $$0, eeo.b(this.b.g[$$2]));
+            }
          }
 
-         return this;
+         this.c.d();
       }
 
-      public ewo.a<T> a(Function<ewo<T>, vp> $$0) {
-         this.e = $$0;
-         return this;
-      }
+      void a(ept $$0, fsz $$1, boolean $$2, int $$3) {
+         if (this.e) {
+            this.b();
+            this.e = false;
+         }
 
-      public ewo.a<T> a() {
-         this.g = true;
-         return this;
-      }
+         int $$4 = 0;
+         int $$5 = 0;
+         float $$6 = 0.0F;
+         Matrix4f $$7 = $$0.c().a();
+         epx $$8 = $$1.getBuffer(this.d);
+         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$3).e();
+         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$3).e();
+         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$3).e();
+         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$3).e();
+         int $$9 = 0;
 
-      public ewo<T> a(int $$0, int $$1, int $$2, int $$3, vb $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
+         for (efr $$10 : this.b.g()) {
+            if (!$$2 || $$10.b()) {
+               $$0.a();
+               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
+               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
+               $$0.b(4.0F, 4.0F, 3.0F);
+               $$0.a(-0.125F, 0.125F, 0.0F);
+               byte $$11 = $$10.a();
+               float $$12 = (float)($$11 % 16 + 0) / 16.0F;
+               float $$13 = (float)($$11 / 16 + 0) / 16.0F;
+               float $$14 = (float)($$11 % 16 + 1) / 16.0F;
+               float $$15 = (float)($$11 / 16 + 1) / 16.0F;
+               Matrix4f $$16 = $$0.c().a();
+               float $$17 = -0.001F;
+               epx $$18 = $$1.getBuffer(ewo.b);
+               $$18.a($$16, -1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$13).b($$3).e();
+               $$18.a($$16, 1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$13).b($$3).e();
+               $$18.a($$16, 1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$15).b($$3).e();
+               $$18.a($$16, -1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$15).b($$3).e();
+               $$0.b();
+               if ($$10.g() != null) {
+                  ewk $$19 = eva.N().h;
+                  vd $$20 = $$10.g();
+                  float $$21 = (float)$$19.a($$20);
+                  float $$22 = aui.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
+                  $$0.a();
+                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
+                  $$0.b($$22, $$22, 1.0F);
+                  $$0.a(0.0F, 0.0F, -0.1F);
+                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, ewk.a.a, Integer.MIN_VALUE, $$3);
+                  $$0.b();
+               }
 
-      public ewo<T> a(int $$0, int $$1, int $$2, int $$3, vb $$4, ewo.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
-         } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            vb $$8 = this.c.apply($$7);
-            vb $$9 = (vb)(this.g ? $$8 : va.a($$4, $$8));
-            return new ewo<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+               $$9++;
+            }
          }
       }
-   }
 
-   public interface b<T> {
-      void onValueChange(ewo<T> var1, T var2);
-   }
-
-   public interface c<T> {
-      List<T> a();
-
-      List<T> b();
-
-      static <T> ewo.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new ewo.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
-      }
-
-      static <T> ewo.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new ewo.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$3;
-            }
-         };
+      @Override
+      public void close() {
+         this.c.close();
       }
    }
 }

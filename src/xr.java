@@ -1,18 +1,24 @@
-public record xr(dnd b, int c) implements xo {
-   public static final agt a = new agt("debug/game_event_listeners");
+public class xr implements xd<xn> {
+   private final int a;
 
-   public xr(ue $$0) {
-      this(dne.c($$0), $$0.n());
+   public xr(int $$0) {
+      this.a = $$0;
+   }
+
+   public xr(ug $$0) {
+      this.a = $$0.readInt();
    }
 
    @Override
-   public void a(ue $$0) {
-      dne.a(this.b, $$0);
-      $$0.c(this.c);
+   public void a(ug $$0) {
+      $$0.p(this.a);
    }
 
-   @Override
-   public agt a() {
-      return a;
+   public void a(xn $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

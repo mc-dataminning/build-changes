@@ -1,109 +1,120 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dgx extends dgd implements bjp {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final auf k = auf.a();
-   private vb l;
+public class dgx extends dgo implements bjo {
+   public static final int c = 6;
+   private static final Logger d = LogUtils.getLogger();
+   private final iq<cmr> e = iq.a(6, cmr.f);
+   private int f = -1;
 
-   public dgx(hv $$0, dip $$1) {
-      super(dgf.m, $$0, $$1);
+   public dgx(hx $$0, dja $$1) {
+      super(dgq.M, $$0, $$1);
    }
 
-   @Override
-   protected void b(sj $$0) {
-      super.b($$0);
-      if (this.ae()) {
-         $$0.a("CustomName", vb.a.a(this.l));
-      }
-   }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         dja $$1 = this.r();
 
-   @Override
-   public void a(sj $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.l = vb.a.a($$0.l("CustomName"));
-      }
-   }
-
-   public static void a(csy $$0, hv $$1, dip $$2, dgx $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      cer $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dr() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dx() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)aty.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
-
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
+         for (int $$2 = 0; $$2 < cxn.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).b();
+            djr $$4 = cxn.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
          }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dnk.c, this.p, dnk.a.a($$1));
       } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
+         d.error("Expected slot 0-5, got {}", $$0);
       }
-
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = aty.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = aty.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
    }
 
    @Override
-   public vb ad() {
-      return (vb)(this.l != null ? this.l : vb.c("container.enchant"));
+   public void a(sl $$0) {
+      this.e.clear();
+      bjp.b($$0, this.e);
+      this.f = $$0.h("last_interacted_slot");
    }
 
-   public void a(@Nullable vb $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
    @Override
-   public vb af() {
-      return this.l;
+   protected void b(sl $$0) {
+      bjp.a($$0, this.e, true);
+      $$0.a("last_interacted_slot", this.f);
+   }
+
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(cmr::b)).count();
+   }
+
+   @Override
+   public void a() {
+      this.e.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean ai_() {
+      return this.e.stream().allMatch(cmr::b);
+   }
+
+   @Override
+   public cmr a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Override
+   public cmr a(int $$0, int $$1) {
+      cmr $$2 = Objects.requireNonNullElse(this.e.get($$0), cmr.f);
+      this.e.set($$0, cmr.f);
+      if (!$$2.b()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cmr b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cmr $$1) {
+      if ($$1.a(asj.av)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.b()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(bjo $$0, int $$1, cmr $$2) {
+      return $$0.a_($$2x -> $$2x.b() ? true : cmr.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.ak_()));
+   }
+
+   @Override
+   public int ak_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(cfb $$0) {
+      return bjo.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cmr $$1) {
+      return $$1.a(asj.av) && this.a($$0).b() && $$1.L() == this.ak_();
+   }
+
+   public int g() {
+      return this.f;
    }
 }

@@ -1,59 +1,54 @@
-import java.util.concurrent.locks.LockSupport;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class ghy extends bib<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public interface ghy<T> {
+   static <T> ghy<T> a() {
+      return new ghy<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
+         }
 
-   public ghy() {
-      super("Sound executor");
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
-   }
+   static <T> ghy<T> a(List<T> $$0, Function<T, Stream<ahd>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gib<T> $$2 = new gib<>();
+         final gib<T> $$3 = new gib<>();
 
-   @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
-   }
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
 
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
+         $$2.a();
+         $$3.a();
+         return new ghy<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
 
-   @Override
-   protected Thread aw() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.c(() -> this.b);
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
 
-   @Override
-   protected void bv() {
-      LockSupport.park("waiting for tasks");
-   }
+   List<T> a(String var1);
 
-   public void a() {
-      this.b = true;
-      this.a.interrupt();
-
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
-      }
-
-      this.bt();
-      this.b = false;
-      this.a = this.b();
-   }
+   List<T> b(String var1);
 }

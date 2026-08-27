@@ -1,34 +1,29 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
 public class dwu extends dwv {
-   public static final dwu a = new dwu(dos.a(0));
-   public static final Codec<dwu> b = atg.e(dos.a, dos.a.fieldOf("value").codec()).xmap(dwu::new, dwu::b);
-   private final dos d;
+   public static final Codec<dwu> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dwu::new));
 
-   public static dwu a(dos $$0) {
-      return new dwu($$0);
-   }
-
-   private dwu(dos $$0) {
-      this.d = $$0;
-   }
-
-   public dos b() {
-      return this.d;
+   public dwu(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(auf $$0, dov $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public dww<?> a() {
+   protected dww<?> a() {
       return dww.a;
    }
 
    @Override
-   public String toString() {
-      return this.d.toString();
+   public List<dvd.a> a(cto $$0, BiConsumer<hx, dja> $$1, aup $$2, int $$3, hx $$4, dun $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      }
+
+      return ImmutableList.of(new dvd.a($$4.b($$3), 0, false));
    }
 }

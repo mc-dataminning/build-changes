@@ -1,49 +1,42 @@
-import java.util.List;
+import java.util.function.Consumer;
 
-public class cke extends cmc {
-   public cke(cmc.a $$0) {
+public class cke extends cmm {
+   public cke(cmm.a $$0) {
       super($$0);
    }
 
    @Override
-   public bjm<cmh> a(csy $$0, cer $$1, bjk $$2) {
-      List<blc> $$3 = $$0.a(blc.class, $$1.cH().g(2.0), $$0x -> $$0x != null && $$0x.bx() && $$0x.s() instanceof bzy);
-      cmh $$4 = $$1.b($$2);
-      if (!$$3.isEmpty()) {
-         blc $$5 = $$3.get(0);
-         $$5.a($$5.h() - 0.5F);
-         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arc.cj, ard.g, 1.0F, 1.0F);
-         $$0.a($$1, dmz.y, $$1.dk());
-         if ($$1 instanceof amq $$6) {
-            am.R.a($$6, $$4, $$5);
-         }
-
-         return bjm.a(this.a($$4, $$1, new cmh(cmk.vg)), $$0.y_());
+   public bjv a(cpc $$0) {
+      ic $$1 = $$0.k();
+      if ($$1 == ic.a) {
+         return bjv.e;
       } else {
-         ekx $$7 = a($$0, $$1, csh.b.b);
-         if ($$7.c() == ekz.a.a) {
-            return bjm.c($$4);
-         } else {
-            if ($$7.c() == ekz.a.b) {
-               hv $$8 = $$7.a();
-               if (!$$0.a($$1, $$8)) {
-                  return bjm.c($$4);
+         cti $$2 = $$0.q();
+         cpa $$3 = new cpa($$0);
+         hx $$4 = $$3.a();
+         cmr $$5 = $$0.n();
+         elm $$6 = elm.c($$4);
+         elh $$7 = blt.d.n().a($$6.a(), $$6.b(), $$6.c());
+         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
+            if ($$2 instanceof amz $$8) {
+               Consumer<cbe> $$9 = blt.a($$8, $$5, $$0.o());
+               cbe $$10 = blt.d.b($$8, $$5.v(), $$9, $$4, bmj.m, true, true);
+               if ($$10 == null) {
+                  return bjv.e;
                }
 
-               if ($$0.b_($$8).a(arw.a)) {
-                  $$0.a($$1, $$1.dr(), $$1.dt(), $$1.dx(), arc.ci, ard.g, 1.0F, 1.0F);
-                  $$0.a($$1, dmz.y, $$8);
-                  return bjm.a(this.a($$4, $$1, cog.a(new cmh(cmk.sh), coh.c)), $$0.y_());
-               }
+               float $$11 = (float)aui.d((aui.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
+               $$10.b($$10.dr(), $$10.dt(), $$10.dx(), $$11, 0.0F);
+               $$8.a_($$10);
+               $$2.a(null, $$10.dr(), $$10.dt(), $$10.dx(), arm.ao, arn.e, 0.75F, 0.8F);
+               $$10.a(dnk.t, $$0.o());
             }
 
-            return bjm.c($$4);
+            $$5.h(1);
+            return bjv.a($$2.B);
+         } else {
+            return bjv.e;
          }
       }
-   }
-
-   protected cmh a(cmh $$0, cer $$1, cmh $$2) {
-      $$1.b(arm.c.b(this));
-      return cmj.a($$0, $$1, $$2);
    }
 }

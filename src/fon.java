@@ -1,59 +1,73 @@
-public class fon extends fqw {
-   private final fqr a;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected fon(
-      fmt $$0,
-      double $$1,
-      double $$2,
-      double $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      float $$10,
-      fqr $$11,
-      float $$12,
-      int $$13,
-      float $$14,
-      boolean $$15
-   ) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.u = $$14;
-      this.C = true;
-      this.a = $$11;
-      this.j *= (double)$$4;
-      this.k *= (double)$$5;
-      this.l *= (double)$$6;
-      this.j += $$7;
-      this.k += $$8;
-      this.l += $$9;
-      float $$16 = $$0.z.i() * $$12;
-      this.v = $$16;
-      this.w = $$16;
-      this.x = $$16;
-      this.D *= 0.75F * $$10;
-      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
-      this.t = Math.max(this.t, 1);
-      this.b($$11);
-      this.n = $$15;
+public final class fon {
+   private static final int a = 1024;
+   private final foe b;
+   private final fok c;
+   private final fnz d;
+   @Nullable
+   private foj e;
+
+   public fon(foe $$0, fok $$1, fnz $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public fqa b() {
-      return fqa.b;
+   public static fon a(fok $$0, UserApiService $$1) {
+      fnz $$2 = new fnz(1024);
+      foe $$3 = foe.a($$0, $$1);
+      return new fon($$3, $$0, $$2);
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * aty.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(eva $$0, fct $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         foj $$4 = this.e.b();
+         $$0.a(
+            new fbm(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               vd.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               vd.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               vd.c("gui.abuseReport.draft.edit"),
+               vd.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
+      }
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public foe a() {
+      return this.b;
+   }
+
+   public fnz b() {
+      return this.d;
+   }
+
+   public boolean a(fok $$0) {
+      return Objects.equals(this.c, $$0);
+   }
+
+   public void a(@Nullable foj $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

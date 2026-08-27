@@ -1,24 +1,21 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public record dqb<WC extends dpw>(dqd<WC> d, WC e) {
-   public static final Codec<dqb<?>> a = kb.P.q().dispatch($$0 -> $$0.d, dqd::c);
-   public static final Codec<ie<dqb<?>>> b = agp.a(kc.au, a);
-   public static final Codec<ij<dqb<?>>> c = it.a(kc.au, a);
+public abstract class dqb implements dpq {
+   protected final jb f;
 
-   public boolean a(auf $$0) {
-      return this.d.a(this.e, $$0);
+   protected static <P extends dqb> P1<Mu<P>, jb> a(Instance<P> $$0) {
+      return $$0.group(jb.v(16).optionalFieldOf("offset", jb.g).forGetter($$0x -> $$0x.f));
    }
 
-   public boolean a(dpy $$0, dkl $$1, Function<hv, ie<ctx>> $$2, auf $$3, dnk $$4, csf $$5, dkk $$6) {
-      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected dqb(jb $$0) {
+      this.f = $$0;
    }
 
-   public dqd<WC> a() {
-      return this.d;
+   public final boolean a(cud $$0, hx $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
 
-   public WC b() {
-      return this.e;
-   }
+   protected abstract boolean a(dja var1);
 }

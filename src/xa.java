@@ -1,24 +1,10 @@
-public class xa implements wu<wx> {
-   private final long a;
-
-   public xa(long $$0) {
-      this.a = $$0;
-   }
-
-   public xa(ue $$0) {
-      this.a = $$0.readLong();
+public class xa<T extends um> implements xd<T> {
+   @Override
+   public final void a(ug $$0) {
    }
 
    @Override
-   public void a(ue $$0) {
-      $$0.b(this.a);
-   }
-
-   public void a(wx $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 }
