@@ -1,19 +1,40 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cjn extends cja {
+   private static final int a = 32;
 
-public class cjn extends ckt {
-   public cjn(cjc.a $$0) {
+   public cjn(cja.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cjh $$0, @Nullable cpx $$1, List<tn> $$2, cky $$3) {
-      clg.a($$0, $$2, 0.25F);
+   public cjf a(cjf $$0, cpv $$1, bjg $$2) {
+      if ($$2 instanceof akr $$3) {
+         al.z.a($$3, $$0);
+         $$3.b(apn.c.b(this));
+      }
+
+      if ($$2 instanceof cbu && !((cbu)$$2).fS().d) {
+         $$0.h(1);
+      }
+
+      if (!$$1.B) {
+         $$2.eq();
+      }
+
+      return $$0.b() ? new cjf(cji.pK) : $$0;
    }
 
    @Override
-   public bhb<cjh> a(cpx $$0, cbw $$1, bgz $$2) {
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), apf.mv, apg.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public int b(cjf $$0) {
+      return 32;
+   }
+
+   @Override
+   public cky c(cjf $$0) {
+      return cky.c;
+   }
+
+   @Override
+   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
+      return cjh.a($$0, $$1, $$2);
    }
 }

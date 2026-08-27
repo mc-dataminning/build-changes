@@ -1,28 +1,47 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class gcm {
-   private final List<gcl> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gcm(List<gcl> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public List<gcl> a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
-   }
+public interface gcm {
+   aew a();
 
    @Nullable
-   public String c() {
-      return this.c;
+   gdr a(gdq var1);
+
+   gcj b();
+
+   ape c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   gcm.a k();
+
+   default boolean r() {
+      return false;
+   }
+
+   default boolean s() {
+      return true;
+   }
+
+   static asc t() {
+      return asc.a();
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

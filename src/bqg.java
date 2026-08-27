@@ -1,13 +1,36 @@
-import java.util.EnumSet;
+public class bqg extends bqb {
+   private final bvo a;
+   private akr b;
+   private boolean c;
 
-public class bqg extends bql {
-   public bqg(bjk $$0, Class<? extends bji> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(bqd.a.b, bqd.a.a));
+   public bqg(bvo $$0) {
+      this.a = $$0;
    }
 
-   public bqg(bjk $$0, Class<? extends bji> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(bqd.a.b, bqd.a.a));
+   @Override
+   public boolean a() {
+      akr $$0 = (akr)this.a.O_();
+      boolean $$1 = $$0 != null && !$$0.M_() && !$$0.fS().b && !$$0.aX() && !$$0.aA;
+      return !this.a.gd() && $$1 && this.a.gm();
+   }
+
+   @Override
+   public boolean P_() {
+      return !this.c;
+   }
+
+   @Override
+   public void c() {
+      this.b = (akr)this.a.O_();
+      this.c = false;
+   }
+
+   @Override
+   public void e() {
+      if (!this.c && !this.a.y() && !this.a.fR()) {
+         if (this.a.cG().c(this.b.cG())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

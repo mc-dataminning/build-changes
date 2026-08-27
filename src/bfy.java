@@ -3,52 +3,62 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public class bfy extends bgf {
+public class bfy extends bgd {
    public static final Codec<bfy> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  bgf.c.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
                )
                .apply($$0, bfy::new)
       )
       .comapFlatMap(
-         $$0 -> $$0.g < $$0.f
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
-               : DataResult.success($$0),
+         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
          Function.identity()
       );
-   private final bgf b;
-   private final int f;
+   private final float b;
+   private final float f;
    private final int g;
+   private final int h;
 
-   public static bfy a(bgf $$0, int $$1, int $$2) {
-      return new bfy($$0, $$1, $$2);
+   public static bfy a(float $$0, float $$1, int $$2, int $$3) {
+      return new bfy($$0, $$1, $$2, $$3);
    }
 
-   public bfy(bgf $$0, int $$1, int $$2) {
+   private bfy(float $$0, float $$1, int $$2, int $$3) {
       this.b = $$0;
       this.f = $$1;
       this.g = $$2;
+      this.h = $$3;
    }
 
    @Override
-   public int a(ase $$0) {
-      return ary.a(this.b.a($$0), this.f, this.g);
+   public int a(asc $$0) {
+      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   }
+
+   public static int a(asc $$0, float $$1, float $$2, float $$3, float $$4) {
+      return (int)arw.a(arw.c($$0, $$1, $$2), $$3, $$4);
    }
 
    @Override
    public int a() {
-      return Math.max(this.f, this.b.a());
+      return this.g;
    }
 
    @Override
    public int b() {
-      return Math.min(this.g, this.b.b());
+      return this.h;
    }
 
    @Override
-   public bgg<?> c() {
-      return bgg.d;
+   public bge<?> c() {
+      return bge.f;
+   }
+
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
    }
 }

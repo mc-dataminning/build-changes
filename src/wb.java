@@ -1,18 +1,16 @@
-public record wb(djz b, int c) implements vy {
-   public static final aey a = new aey("debug/game_event_listeners");
+public record wb() implements vw {
+   public static final aew a = new aew("debug/game_test_clear");
 
-   public wb(sq $$0) {
-      this(dka.c($$0), $$0.m());
+   public wb(so $$0) {
+      this();
    }
 
    @Override
-   public void a(sq $$0) {
-      dka.a(this.b, $$0);
-      $$0.c(this.c);
+   public void a(so $$0) {
    }
 
    @Override
-   public aey a() {
+   public aew a() {
       return a;
    }
 }

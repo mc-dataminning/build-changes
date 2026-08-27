@@ -1,96 +1,195 @@
-import java.util.ArrayList;
+import com.mojang.brigadier.ResultConsumer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class cow extends ArrayList<cov> {
-   public cow() {
+public abstract class cow implements ds {
+   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
+   private static final tl c = tl.b("@");
+   private long d = -1L;
+   private boolean e = true;
+   private int f;
+   private boolean g = true;
+   @Nullable
+   private tl h;
+   private String i = "";
+   private tl j = c;
+
+   public int k() {
+      return this.f;
    }
 
-   private cow(int $$0) {
-      super($$0);
+   public void a(int $$0) {
+      this.f = $$0;
    }
 
-   public cow(qy $$0) {
-      re $$1 = $$0.c("Recipes", 10);
+   public tl l() {
+      return this.h == null ? tk.a : this.h;
+   }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.add(new cov($$1.a($$2)));
+   public qw a(qw $$0) {
+      $$0.a("Command", this.i);
+      $$0.a("SuccessCount", this.f);
+      $$0.a("CustomName", tl.a.a(this.j));
+      $$0.a("TrackOutput", this.g);
+      if (this.h != null && this.g) {
+         $$0.a("LastOutput", tl.a.a(this.h));
+      }
+
+      $$0.a("UpdateLastExecution", this.e);
+      if (this.e && this.d > 0L) {
+         $$0.a("LastExecution", this.d);
+      }
+
+      return $$0;
+   }
+
+   public void b(qw $$0) {
+      this.i = $$0.l("Command");
+      this.f = $$0.h("SuccessCount");
+      if ($$0.b("CustomName", 8)) {
+         this.b(tl.a.a($$0.l("CustomName")));
+      }
+
+      if ($$0.b("TrackOutput", 1)) {
+         this.g = $$0.q("TrackOutput");
+      }
+
+      if ($$0.b("LastOutput", 8) && this.g) {
+         try {
+            this.h = tl.a.a($$0.l("LastOutput"));
+         } catch (Throwable var3) {
+            this.h = tl.b(var3.getMessage());
+         }
+      } else {
+         this.h = null;
+      }
+
+      if ($$0.e("UpdateLastExecution")) {
+         this.e = $$0.q("UpdateLastExecution");
+      }
+
+      if (this.e && $$0.e("LastExecution")) {
+         this.d = $$0.i("LastExecution");
+      } else {
+         this.d = -1L;
       }
    }
 
-   @Nullable
-   public cov a(cjh $$0, cjh $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         cov $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
+   public void a(String $$0) {
+      this.i = $$0;
+      this.f = 0;
+   }
+
+   public String m() {
+      return this.i;
+   }
+
+   public boolean a(cpv $$0) {
+      if ($$0.B || $$0.V() == this.d) {
+         return false;
+      } else if ("Searge".equalsIgnoreCase(this.i)) {
+         this.h = tl.b("#itzlipofutzli");
+         this.f = 1;
+         return true;
       } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            cov $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
+         this.f = 0;
+         MinecraftServer $$1 = this.e().n();
+         if ($$1.o() && !asq.b(this.i)) {
+            try {
+               this.h = null;
+               dt $$2 = this.i().a((ResultConsumer<dt>)(($$0x, $$1x, $$2x) -> {
+                  if ($$1x) {
+                     this.f++;
+                  }
+               }));
+               $$1.aC().a($$2, this.i);
+            } catch (Throwable var6) {
+               o $$4 = o.a(var6, "Executing command block");
+               p $$5 = $$4.a("Command to be executed");
+               $$5.a("Command", this::m);
+               $$5.a("Name", () -> this.n().getString());
+               throw new y($$4);
             }
          }
 
-         return null;
-      }
-   }
-
-   public void a(sq $$0) {
-      $$0.a(this, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.d());
-         $$0x.a($$1.c());
-         $$0x.a($$1.p());
-         $$0x.p($$1.g());
-         $$0x.p($$1.i());
-         $$0x.p($$1.o());
-         $$0x.p($$1.m());
-         $$0x.a($$1.n());
-         $$0x.p($$1.k());
-      });
-   }
-
-   public static cow b(sq $$0) {
-      return $$0.a(cow::new, $$0x -> {
-         cjh $$1 = $$0x.q();
-         cjh $$2 = $$0x.q();
-         cjh $$3 = $$0x.q();
-         boolean $$4 = $$0x.readBoolean();
-         int $$5 = $$0x.readInt();
-         int $$6 = $$0x.readInt();
-         int $$7 = $$0x.readInt();
-         int $$8 = $$0x.readInt();
-         float $$9 = $$0x.readFloat();
-         int $$10 = $$0x.readInt();
-         cov $$11 = new cov($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
-         if ($$4) {
-            $$11.q();
+         if (this.e) {
+            this.d = $$0.V();
+         } else {
+            this.d = -1L;
          }
 
-         $$11.b($$8);
-         return $$11;
-      });
-   }
-
-   public qy a() {
-      qy $$0 = new qy();
-      re $$1 = new re();
-
-      for (int $$2 = 0; $$2 < this.size(); $$2++) {
-         cov $$3 = this.get($$2);
-         $$1.add($$3.t());
+         return true;
       }
-
-      $$0.a("Recipes", $$1);
-      return $$0;
    }
 
-   public cow b() {
-      cow $$0 = new cow(this.size());
+   public tl n() {
+      return this.j;
+   }
 
-      for (cov $$1 : this) {
-         $$0.add($$1.u());
+   public void b(@Nullable tl $$0) {
+      if ($$0 != null) {
+         this.j = $$0;
+      } else {
+         this.j = c;
       }
-
-      return $$0;
    }
+
+   @Override
+   public void a(tl $$0) {
+      if (this.g) {
+         this.h = tl.b("[" + b.format(new Date()) + "] ").b($$0);
+         this.f();
+      }
+   }
+
+   public abstract akq e();
+
+   public abstract void f();
+
+   public void c(@Nullable tl $$0) {
+      this.h = $$0;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+   }
+
+   public boolean o() {
+      return this.g;
+   }
+
+   public bgy a(cbu $$0) {
+      if (!$$0.go()) {
+         return bgy.d;
+      } else {
+         if ($$0.cJ().B) {
+            $$0.a(this);
+         }
+
+         return bgy.a($$0.dL().B);
+      }
+   }
+
+   public abstract ehn g();
+
+   public abstract dt i();
+
+   @Override
+   public boolean j_() {
+      return this.e().X().b(cpr.o) && this.g;
+   }
+
+   @Override
+   public boolean v_() {
+      return this.g;
+   }
+
+   @Override
+   public boolean T_() {
+      return this.e().X().b(cpr.i);
+   }
+
+   public abstract boolean j();
 }

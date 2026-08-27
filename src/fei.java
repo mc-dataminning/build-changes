@@ -1,75 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
+public class fei extends ffm<bum> {
+   private final fic a;
+   private final fic b;
+   private final fic f;
+   private final fic g;
+   private final fic h;
+   private final fic i;
+   private final fic j;
 
-public class fei extends feh {
-   private static final String a = "right_body_stick";
-   private static final String b = "left_body_stick";
-   private static final String w = "shoulder_stick";
-   private static final String x = "base_plate";
-   private final fie y;
-   private final fie z;
-   private final fie A;
-   private final fie B;
-
-   public fei(fie $$0) {
-      super($$0);
-      this.y = $$0.b("right_body_stick");
-      this.z = $$0.b("left_body_stick");
-      this.A = $$0.b("shoulder_stick");
-      this.B = $$0.b("base_plate");
-      this.l.k = false;
+   public fei(fic $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.f = $$0.b("body");
+      this.g = this.f.b("right_wing");
+      this.i = this.g.b("right_wing_tip");
+      this.h = this.f.b("left_wing");
+      this.j = this.h.b("left_wing_tip");
    }
 
-   public static fik c() {
-      fim $$0 = ffs.a(fii.a, 0.0F);
-      fin $$1 = $$0.a();
-      $$1.a("head", fij.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), fig.a(0.0F, 1.0F, 0.0F));
-      $$1.a("body", fij.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), fig.a);
-      $$1.a("right_arm", fij.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fig.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fij.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fig.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fij.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fig.a(-1.9F, 12.0F, 0.0F));
-      $$1.a("left_leg", fij.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fig.a(1.9F, 12.0F, 0.0F));
-      $$1.a("right_body_stick", fij.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fig.a);
-      $$1.a("left_body_stick", fij.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fig.a);
-      $$1.a("shoulder_stick", fij.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), fig.a);
-      $$1.a("base_plate", fij.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), fig.a(0.0F, 12.0F, 0.0F));
-      return fik.a($$0, 64, 64);
-   }
-
-   public void a(byf $$0, float $$1, float $$2, float $$3) {
-      this.B.e = 0.0F;
-      this.B.f = (float) (Math.PI / 180.0) * -ary.j($$3, $$0.N, $$0.dB());
-      this.B.g = 0.0F;
+   public static fii b() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      fil $$2 = $$1.a("head", fih.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fie.a);
+      $$2.a("right_ear", fih.c().a(24, 0).a(-4.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fie.a);
+      $$2.a("left_ear", fih.c().a(24, 0).a().a(1.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fie.a);
+      fil $$3 = $$1.a("body", fih.c().a(0, 16).a(-3.0F, 4.0F, -3.0F, 6.0F, 12.0F, 6.0F).a(0, 34).a(-5.0F, 16.0F, 0.0F, 10.0F, 6.0F, 1.0F), fie.a);
+      fil $$4 = $$3.a("right_wing", fih.c().a(42, 0).a(-12.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fie.a);
+      $$4.a("right_wing_tip", fih.c().a(24, 16).a(-8.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fie.a(-12.0F, 1.0F, 1.5F));
+      fil $$5 = $$3.a("left_wing", fih.c().a(42, 0).a().a(2.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fie.a);
+      $$5.a("left_wing_tip", fih.c().a(24, 16).a().a(0.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fie.a(12.0F, 1.0F, 1.5F));
+      return fii.a($$0, 64, 64);
    }
 
    @Override
-   public void a(byf $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.o.k = $$0.t();
-      this.n.k = $$0.t();
-      this.B.k = !$$0.w();
-      this.y.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.y.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.y.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.z.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.z.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.z.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.A.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.A.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.A.g = (float) (Math.PI / 180.0) * $$0.A().d();
+   public fic a() {
+      return this.a;
    }
 
-   @Override
-   protected Iterable<fie> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.y, this.z, this.A, this.B));
-   }
-
-   @Override
-   public void a(bjc $$0, elr $$1) {
-      fie $$2 = this.a($$0);
-      boolean $$3 = $$2.k;
-      $$2.k = true;
-      super.a($$0, $$1);
-      $$2.k = $$3;
+   public void a(bum $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      if ($$0.t()) {
+         this.b.e = $$5 * (float) (Math.PI / 180.0);
+         this.b.f = (float) Math.PI - $$4 * (float) (Math.PI / 180.0);
+         this.b.g = (float) Math.PI;
+         this.b.a(0.0F, -2.0F, 0.0F);
+         this.g.a(-3.0F, 0.0F, 3.0F);
+         this.h.a(3.0F, 0.0F, 3.0F);
+         this.f.e = (float) Math.PI;
+         this.g.e = (float) (-Math.PI / 20);
+         this.g.f = (float) (-Math.PI * 2.0 / 5.0);
+         this.i.f = -1.7278761F;
+         this.h.e = this.g.e;
+         this.h.f = -this.g.f;
+         this.j.f = -this.i.f;
+      } else {
+         this.b.e = $$5 * (float) (Math.PI / 180.0);
+         this.b.f = $$4 * (float) (Math.PI / 180.0);
+         this.b.g = 0.0F;
+         this.b.a(0.0F, 0.0F, 0.0F);
+         this.g.a(0.0F, 0.0F, 0.0F);
+         this.h.a(0.0F, 0.0F, 0.0F);
+         this.f.e = (float) (Math.PI / 4) + arw.b($$3 * 0.1F) * 0.15F;
+         this.f.f = 0.0F;
+         this.g.f = arw.b($$3 * 74.48451F * (float) (Math.PI / 180.0)) * (float) Math.PI * 0.25F;
+         this.h.f = -this.g.f;
+         this.i.f = this.g.f * 0.5F;
+         this.j.f = -this.g.f * 0.5F;
+      }
    }
 }

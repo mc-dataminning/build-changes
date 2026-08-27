@@ -1,24 +1,24 @@
-public class acl implements vf<abe> {
-   private final String a;
+public class acl implements vd<abc> {
+   private final int a;
 
-   public acl(String $$0) {
+   public acl(int $$0) {
       this.a = $$0;
    }
 
-   public acl(sq $$0) {
-      this.a = $$0.r();
+   public acl(so $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public int a() {
       return this.a;
    }
 }

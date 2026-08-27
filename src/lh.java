@@ -1,17 +1,66 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Streams;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
-public class lh implements Supplier<JsonElement> {
-   private final aey a;
+public class lh {
+   private final Optional<aew> a;
+   private final Set<lk> b;
+   private final Optional<String> c;
 
-   public lh(aey $$0) {
+   public lh(Optional<aew> $$0, Optional<String> $$1, lk... $$2) {
       this.a = $$0;
+      this.c = $$1;
+      this.b = ImmutableSet.copyOf($$2);
    }
 
-   public JsonElement a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("parent", this.a.toString());
+   public aew a(csv $$0, lj $$1, BiConsumer<aew, Supplier<JsonElement>> $$2) {
+      return this.a(lg.a($$0, this.c.orElse("")), $$1, $$2);
+   }
+
+   public aew a(csv $$0, String $$1, lj $$2, BiConsumer<aew, Supplier<JsonElement>> $$3) {
+      return this.a(lg.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
+   }
+
+   public aew b(csv $$0, String $$1, lj $$2, BiConsumer<aew, Supplier<JsonElement>> $$3) {
+      return this.a(lg.a($$0, $$1), $$2, $$3);
+   }
+
+   public aew a(aew $$0, lj $$1, BiConsumer<aew, Supplier<JsonElement>> $$2) {
+      return this.a($$0, $$1, $$2, this::a);
+   }
+
+   public aew a(aew $$0, lj $$1, BiConsumer<aew, Supplier<JsonElement>> $$2, lh.a $$3) {
+      Map<lk, aew> $$4 = this.a($$1);
+      $$2.accept($$0, () -> $$3.create($$0, $$4));
       return $$0;
+   }
+
+   public JsonObject a(aew $$0, Map<lk, aew> $$1) {
+      JsonObject $$2 = new JsonObject();
+      this.a.ifPresent($$1x -> $$2.addProperty("parent", $$1x.toString()));
+      if (!$$1.isEmpty()) {
+         JsonObject $$3 = new JsonObject();
+         $$1.forEach(($$1x, $$2x) -> $$3.addProperty($$1x.a(), $$2x.toString()));
+         $$2.add("textures", $$3);
+      }
+
+      return $$2;
+   }
+
+   private Map<lk, aew> a(lj $$0) {
+      return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
+   }
+
+   public interface a {
+      JsonObject create(aew var1, Map<lk, aew> var2);
    }
 }

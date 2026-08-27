@@ -1,56 +1,74 @@
+import java.util.Comparator;
+
 public class eil {
-   private final eio a;
-   private final String b;
-   private final eir c;
-   private tn d;
-   private tn e;
-   private eir.a f;
+   public static final Comparator<eil> a = ($$0, $$1) -> {
+      if ($$0.b() > $$1.b()) {
+         return 1;
+      } else {
+         return $$0.b() < $$1.b() ? -1 : $$1.e().compareToIgnoreCase($$0.e());
+      }
+   };
+   private final eim b;
+   private final eij c;
+   private final String d;
+   private int e;
+   private boolean f;
+   private boolean g;
 
-   public eil(eio $$0, String $$1, eir $$2, tn $$3, eir.a $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.g();
-      this.f = $$4;
+   public eil(eim $$0, eij $$1, String $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = true;
+      this.g = true;
    }
 
-   public eio a() {
-      return this.a;
+   public void a(int $$0) {
+      if (this.c.c().e()) {
+         throw new IllegalStateException("Cannot modify read-only score");
+      } else {
+         this.b(this.b() + $$0);
+      }
    }
 
-   public String b() {
-      return this.b;
+   public void a() {
+      this.a(1);
    }
 
-   public eir c() {
-      return this.c;
-   }
-
-   public tn d() {
-      return this.d;
-   }
-
-   private tn g() {
-      return tp.a((tn)this.d.e().a($$0 -> $$0.a(new ts(ts.a.a, tn.b(this.b)))));
-   }
-
-   public tn e() {
+   public int b() {
       return this.e;
    }
 
-   public void a(tn $$0) {
-      this.d = $$0;
-      this.e = this.g();
-      this.a.b(this);
+   public void c() {
+      this.b(0);
    }
 
-   public eir.a f() {
+   public void b(int $$0) {
+      int $$1 = this.e;
+      this.e = $$0;
+      if ($$1 != $$0 || this.g) {
+         this.g = false;
+         this.f().a(this);
+      }
+   }
+
+   public eij d() {
+      return this.c;
+   }
+
+   public String e() {
+      return this.d;
+   }
+
+   public eim f() {
+      return this.b;
+   }
+
+   public boolean g() {
       return this.f;
    }
 
-   public void a(eir.a $$0) {
+   public void a(boolean $$0) {
       this.f = $$0;
-      this.a.b(this);
    }
 }

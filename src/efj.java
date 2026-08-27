@@ -1,58 +1,33 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.Set;
 
-public record efj(aey b) implements efr {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<efj> a = RecordCodecBuilder.create($$0 -> $$0.group(aey.a.fieldOf("name").forGetter(efj::c)).apply($$0, efj::new));
-
-   @Override
-   public efs b() {
-      return eft.q;
-   }
+public record efj(Optional<bf> b) implements efp {
+   public static final Codec<efj> a = RecordCodecBuilder.create($$0 -> $$0.group(arf.a(bf.a, "predicate").forGetter(efj::c)).apply($$0, efj::new));
 
    @Override
-   public void a(edb $$0) {
-      ecu<efr> $$1 = new ecu<>(ecx.a, this.b);
-      if ($$0.a($$1)) {
-         $$0.a("Condition " + this.b + " is recursively called");
-      } else {
-         efr.super.a($$0);
-         $$0.b()
-            .getElementOptional($$1)
-            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.a("Unknown condition table called " + this.b));
-      }
+   public efq b() {
+      return efr.n;
    }
 
-   public boolean a(ecs $$0) {
-      efr $$1 = $$0.a().getElement(ecx.a, this.b);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b);
-         return false;
-      } else {
-         ecs.c<?> $$2 = ecs.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
+   @Override
+   public Set<eey<?>> a() {
+      return ImmutableSet.of(efb.f, efb.c);
    }
 
-   public static efr.a a(aey $$0) {
-      return () -> new efj($$0);
+   public boolean a(ecq $$0) {
+      bho $$1 = $$0.c(efb.c);
+      ehn $$2 = $$0.c(efb.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public aey c() {
+   public static efp.a a(bf.a $$0) {
+      return () -> new efj(Optional.of($$0.b()));
+   }
+
+   public Optional<bf> c() {
       return this.b;
    }
 }

@@ -1,83 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+import java.util.stream.LongStream;
 
 public class dls {
-   public static final MapCodec<dls> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(dls::b),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dls::c),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dls::d),
-               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(dls::new))
-   );
-   public static final dls b = new dls((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
+   private long b;
+   private long c;
+   public static final Codec<dls> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dls($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   public dls(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   public dls(dlh.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   public static dls a() {
-      return new dls(f(), true, false);
-   }
-
-   private dls(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public long b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f.isPresent();
-   }
-
-   public dls a(boolean $$0) {
-      return new dls(this.c, this.d, $$0, this.f);
-   }
-
-   public dls b(boolean $$0) {
-      return new dls(this.c, $$0, this.e, this.f);
-   }
-
-   public dls a(OptionalLong $$0) {
-      return new dls($$0.orElse(f()), this.d, this.e, this.f);
-   }
-
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
-         }
+   public dls(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
       }
    }
 
-   public static long f() {
-      return ase.a().g();
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

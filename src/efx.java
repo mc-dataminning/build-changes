@@ -1,42 +1,60 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record efx(float b, float c) implements efr {
+public record efx(Optional<Long> b, ecp c) implements efp {
    public static final Codec<efx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(efx::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(efx::d)).apply($$0, efx::new)
+      $$0 -> $$0.group(arf.a(Codec.LONG, "period").forGetter(efx::c), ecp.a.fieldOf("value").forGetter(efx::d)).apply($$0, efx::new)
    );
 
    @Override
-   public efs b() {
-      return eft.f;
+   public efq b() {
+      return efr.r;
    }
 
    @Override
-   public Set<efa<?>> a() {
-      return ImmutableSet.of(efd.d);
+   public Set<eey<?>> a() {
+      return this.c.a();
    }
 
-   public boolean a(ecs $$0) {
-      bis $$1 = $$0.c(efd.d);
-      int $$2 = 0;
-      if ($$1 instanceof bji) {
-         $$2 = cns.h((bji)$$1);
+   public boolean a(ecq $$0) {
+      akq $$1 = $$0.d();
+      long $$2 = $$1.W();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
       }
 
-      return $$0.b().i() < this.b + (float)$$2 * this.c;
+      return this.c.b($$0, (int)$$2);
    }
 
-   public static efr.a a(float $$0, float $$1) {
-      return () -> new efx($$0, $$1);
+   public static efx.a a(ecp $$0) {
+      return new efx.a($$0);
    }
 
-   public float c() {
+   public Optional<Long> c() {
       return this.b;
    }
 
-   public float d() {
+   public ecp d() {
       return this.c;
+   }
+
+   public static class a implements efp.a {
+      private Optional<Long> a = Optional.empty();
+      private final ecp b;
+
+      public a(ecp $$0) {
+         this.b = $$0;
+      }
+
+      public efx.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public efx a() {
+         return new efx(this.a, this.b);
+      }
    }
 }

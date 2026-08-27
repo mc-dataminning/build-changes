@@ -1,17 +1,18 @@
-import java.util.HashSet;
-import java.util.Set;
-
-public record wu(Set<aey> a) implements vf<wr> {
-   public wu(sq $$0) {
-      this($$0.a(HashSet::new, sq::s));
+public record wu() implements vd<wt> {
+   public wu(so $$0) {
+      this();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a, sq::a);
+   public void a(so $$0) {
    }
 
-   public void a(wr $$0) {
+   public void a(wt $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public sn c() {
+      return sn.b;
    }
 }

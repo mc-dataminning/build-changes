@@ -1,80 +1,67 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.kinds.App;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class boi extends boj {
-   private static final List<cjc> c = ImmutableList.of(cjk.oH, cjk.ur);
+public class boi {
+   public static bky<cbh> a(float $$0) {
+      return boj.a(
+         (Function<boj.b<cbh>, ? extends App<boj.c<cbh>, bom<cbh>>>)($$1 -> $$1.group($$1.b(bsh.d), $$1.c(bsh.c), $$1.b(bsh.g), $$1.a(bsh.m), $$1.a(bsh.n))
+               .apply(
+                  $$1,
+                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                        if ($$7.m_()) {
+                           return false;
+                        } else if ($$7.go().b() != cbk.b) {
+                           return false;
+                        } else {
+                           gw $$9 = $$1.<hd>b($$2).b();
+                           Optional<he<bui>> $$10 = $$6x.w().c($$9);
+                           if ($$10.isEmpty()) {
+                              return true;
+                           } else {
+                              $$1.<List<bjg>>b($$4)
+                                 .stream()
+                                 .filter($$1xxx -> $$1xxx instanceof cbh && $$1xxx != $$7)
+                                 .map($$0xxxx -> (cbh)$$0xxxx)
+                                 .filter(bjg::bv)
+                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
+                                 .findFirst()
+                                 .ifPresent($$6xx -> {
+                                    $$5.b();
+                                    $$6.b();
+                                    $$2.b();
+                                    if ($$6xx.dN().c(bsh.c).isEmpty()) {
+                                       bkz.a($$6xx, $$9, $$0, 1);
+                                       $$6xx.dN().a(bsh.d, hd.a($$6x.ac(), $$9));
+                                       abb.c($$6x, $$9);
+                                    }
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
+   }
 
-   @Override
-   protected void a(aks $$0, cbj $$1) {
-      Optional<hf> $$2 = $$1.dN().c(bsj.c);
-      if (!$$2.isEmpty()) {
-         hf $$3 = $$2.get();
-         dfl $$4 = $$0.a_($$3.b());
-         if ($$4.a(csy.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
+   private static boolean a(he<bui> $$0, cbh $$1, gw $$2) {
+      boolean $$3 = $$1.dN().c(bsh.d).isPresent();
+      if ($$3) {
+         return false;
+      } else {
+         Optional<hd> $$4 = $$1.dN().c(bsh.c);
+         cbk $$5 = $$1.go().b();
+         if ($$5.b().test($$0)) {
+            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
+         } else {
+            return false;
          }
       }
    }
 
-   private void a(aks $$0, cbj $$1, hf $$2, dfl $$3) {
-      gw $$4 = $$2.b();
-      if ($$3.c(cug.d) == 8) {
-         $$3 = cug.a($$1, $$3, (cpx)$$0, $$4);
-      }
-
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bhh $$8 = $$1.y();
-      int $$9 = $$8.b();
-      dfl $$10 = $$3;
-
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         cjh $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.d());
-         if ($$13 != -1) {
-            int $$14 = $$12.L();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = cug.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(cug.d) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
-                  }
-               }
-            }
-         }
-      }
-
-      this.a($$0, $$3, $$4, $$10);
-   }
-
-   private void a(aks $$0, dfl $$1, gw $$2, dfl $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
-   }
-
-   private void a(cbj $$0) {
-      bhh $$1 = $$0.y();
-      if ($$1.a_(cjk.oJ) <= 36) {
-         int $$2 = $$1.a_(cjk.oI);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(cjk.oI, $$6);
-            cjh $$7 = $$1.a(new cjh(cjk.oJ, $$5));
-            if (!$$7.b()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
-      }
+   private static boolean a(bjp $$0, gw $$1, bui $$2) {
+      ebb $$3 = $$0.L().a($$1, $$2.c());
+      return $$3 != null && $$3.j();
    }
 }

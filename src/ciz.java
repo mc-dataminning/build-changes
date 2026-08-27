@@ -1,23 +1,27 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface ciz {
+   int a = 256;
+   int b = 140;
+   aev<cix> c = a("ponder_goat_horn");
+   aev<cix> d = a("sing_goat_horn");
+   aev<cix> e = a("seek_goat_horn");
+   aev<cix> f = a("feel_goat_horn");
+   aev<cix> g = a("admire_goat_horn");
+   aev<cix> h = a("call_goat_horn");
+   aev<cix> i = a("yearn_goat_horn");
+   aev<cix> j = a("dream_goat_horn");
 
-public record ciz(hg<ape> b, int c, float d) {
-   public static final Codec<ciz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ape.b.fieldOf("sound_event").forGetter(ciz::a), arh.j.fieldOf("use_duration").forGetter(ciz::b), arh.k.fieldOf("range").forGetter(ciz::c)
-            )
-            .apply($$0, ciz::new)
-   );
-
-   public hg<ape> a() {
-      return this.b;
+   private static aev<cix> a(String $$0) {
+      return aev.a(jc.B, new aew($$0));
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
+   static cix a(hq<cix> $$0) {
+      hq.a($$0, c, new cix((he<apc>)apd.ld.get(0), 140, 256.0F));
+      hq.a($$0, d, new cix((he<apc>)apd.ld.get(1), 140, 256.0F));
+      hq.a($$0, e, new cix((he<apc>)apd.ld.get(2), 140, 256.0F));
+      hq.a($$0, f, new cix((he<apc>)apd.ld.get(3), 140, 256.0F));
+      hq.a($$0, g, new cix((he<apc>)apd.ld.get(4), 140, 256.0F));
+      hq.a($$0, h, new cix((he<apc>)apd.ld.get(5), 140, 256.0F));
+      hq.a($$0, i, new cix((he<apc>)apd.ld.get(6), 140, 256.0F));
+      return hq.a($$0, j, new cix((he<apc>)apd.ld.get(7), 140, 256.0F));
    }
 }

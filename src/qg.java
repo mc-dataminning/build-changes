@@ -1,19 +1,19 @@
-public class qg {
-   private static qr a = new qi();
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public static void a(qr $$0) {
-      a = $$0;
+public class qg implements qp {
+   private static final Logger a = LogUtils.getLogger();
+
+   @Override
+   public void a(pw $$0) {
+      if ($$0.r()) {
+         a.error("{} failed! {}", $$0.c(), ac.c($$0.n()));
+      } else {
+         a.warn("(optional) {} failed. {}", $$0.c(), ac.c($$0.n()));
+      }
    }
 
-   public static void a(py $$0) {
-      a.a($$0);
-   }
-
-   public static void b(py $$0) {
-      a.b($$0);
-   }
-
-   public static void a() {
-      a.a();
+   @Override
+   public void b(pw $$0) {
    }
 }

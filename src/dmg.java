@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmg extends dmm {
-   final aqj<csx> a;
-   public static final Codec<dmg> e = RecordCodecBuilder.create($$0 -> a($$0).and(aqj.a(je.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dmg::new));
+class dmg extends dmk {
+   private final hi<eal> e;
+   public static final Codec<dmg> a = RecordCodecBuilder.create($$0 -> a($$0).and(hs.a(jc.w).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dmg::new));
 
-   protected dmg(ib $$0, aqj<csx> $$1) {
+   public dmg(hy $$0, hi<eal> $$1) {
       super($$0);
-      this.a = $$1;
+      this.e = $$1;
    }
 
    @Override
-   protected boolean a(dfl $$0) {
-      return $$0.a(this.a);
+   protected boolean a(dfj $$0) {
+      return $$0.u().a(this.e);
    }
 
    @Override
-   public dmc<?> a() {
-      return dmc.b;
+   public dma<?> a() {
+      return dma.c;
    }
 }

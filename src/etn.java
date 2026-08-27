@@ -1,356 +1,98 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class etn {
-   public static final int a = Integer.MAX_VALUE;
-   private static final int b = 2;
-   private final esf c;
-   private final List<etn.a> d = Lists.newArrayList();
-   private String e;
-   private int f;
-   private int g;
-   private boolean h;
-   private int i = Integer.MAX_VALUE;
-   private final int j;
-   private Consumer<String> k = $$0x -> {
-   };
-   private Runnable l = () -> {
-   };
-
-   public etn(esf $$0, int $$1) {
-      this.c = $$0;
-      this.j = $$1;
-      this.a("");
+public class etn extends esw<etn.a> {
+   public etn(eqv $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.k = false;
    }
 
-   public int a() {
-      return this.i;
+   public int a(eqy<?> $$0) {
+      return this.b(etn.a.a(this.c.m, this.e, $$0));
    }
 
-   public void a(int $$0) {
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Character limit cannot be negative");
-      } else {
-         this.i = $$0;
+   public void a(eqy<?> $$0, @Nullable eqy<?> $$1) {
+      this.b(etn.a.a(this.c.m, this.e, $$0, $$1));
+   }
+
+   public void a(eqy<?>[] $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         this.a($$0[$$1], $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null);
       }
    }
 
-   public boolean b() {
-      return this.i != Integer.MAX_VALUE;
+   @Override
+   public int b() {
+      return 400;
    }
 
-   public void a(Consumer<String> $$0) {
-      this.k = $$0;
+   @Override
+   protected int c() {
+      return super.c() + 32;
    }
 
-   public void a(Runnable $$0) {
-      this.l = $$0;
-   }
-
-   public void a(String $$0) {
-      this.e = this.c($$0);
-      this.f = this.e.length();
-      this.g = this.f;
-      this.n();
-   }
-
-   public String c() {
-      return this.e;
-   }
-
-   public void b(String $$0) {
-      if (!$$0.isEmpty() || this.i()) {
-         String $$1 = this.d(aa.a($$0, true));
-         etn.a $$2 = this.e();
-         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
-         this.f = $$2.a + $$1.length();
-         this.g = this.f;
-         this.n();
-      }
-   }
-
-   public void b(int $$0) {
-      if (!this.i()) {
-         this.g = ary.a(this.f + $$0, 0, this.e.length());
-      }
-
-      this.b("");
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.h = $$0;
-   }
-
-   public etn.a e() {
-      return new etn.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
-   }
-
-   public int f() {
-      return this.d.size();
-   }
-
-   public int g() {
-      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
-         etn.a $$1 = this.d.get($$0);
-         if (this.f >= $$1.a && this.f <= $$1.b) {
-            return $$0;
+   @Nullable
+   public eso b(eqy<?> $$0) {
+      for (etn.a $$1 : this.i()) {
+         eso $$2 = $$1.a.get($$0);
+         if ($$2 != null) {
+            return $$2;
          }
       }
 
-      return -1;
+      return null;
    }
 
-   public etn.a c(int $$0) {
-      return this.d.get(ary.a($$0, 0, this.d.size() - 1));
-   }
-
-   public void a(eud $$0, int $$1) {
-      switch ($$0) {
-         case a:
-            this.f = $$1;
-            break;
-         case b:
-            this.f += $$1;
-            break;
-         case c:
-            this.f = this.e.length() + $$1;
-      }
-
-      this.f = ary.a(this.f, 0, this.e.length());
-      this.l.run();
-      if (!this.h) {
-         this.g = this.f;
-      }
-   }
-
-   public void d(int $$0) {
-      if ($$0 != 0) {
-         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
-         etn.a $$2 = this.f($$0);
-         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
-         this.a(eud.a, $$2.a + $$3);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = ary.a($$0);
-      int $$3 = ary.a($$1 / 9.0);
-      etn.a $$4 = this.d.get(ary.a($$3, 0, this.d.size() - 1));
-      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
-      this.a(eud.a, $$4.a + $$5);
-   }
-
-   public boolean e(int $$0) {
-      this.h = eym.q();
-      if (eym.g($$0)) {
-         this.f = this.e.length();
-         this.g = 0;
-         return true;
-      } else if (eym.f($$0)) {
-         eqx.O().o.a(this.j());
-         return true;
-      } else if (eym.e($$0)) {
-         this.b(eqx.O().o.a());
-         return true;
-      } else if (eym.d($$0)) {
-         eqx.O().o.a(this.j());
-         this.b("");
-         return true;
-      } else {
-         switch ($$0) {
-            case 257:
-            case 335:
-               this.b("\n");
-               return true;
-            case 259:
-               if (eym.p()) {
-                  etn.a $$3 = this.k();
-                  this.b($$3.a - this.f);
-               } else {
-                  this.b(-1);
-               }
-
-               return true;
-            case 261:
-               if (eym.p()) {
-                  etn.a $$4 = this.l();
-                  this.b($$4.a - this.f);
-               } else {
-                  this.b(1);
-               }
-
-               return true;
-            case 262:
-               if (eym.p()) {
-                  etn.a $$2 = this.l();
-                  this.a(eud.a, $$2.a);
-               } else {
-                  this.a(eud.b, 1);
-               }
-
-               return true;
-            case 263:
-               if (eym.p()) {
-                  etn.a $$1 = this.k();
-                  this.a(eud.a, $$1.a);
-               } else {
-                  this.a(eud.b, -1);
-               }
-
-               return true;
-            case 264:
-               if (!eym.p()) {
-                  this.d(1);
-               }
-
-               return true;
-            case 265:
-               if (!eym.p()) {
-                  this.d(-1);
-               }
-
-               return true;
-            case 266:
-               this.a(eud.a, 0);
-               return true;
-            case 267:
-               this.a(eud.c, 0);
-               return true;
-            case 268:
-               if (eym.p()) {
-                  this.a(eud.a, 0);
-               } else {
-                  this.a(eud.a, this.m().a);
-               }
-
-               return true;
-            case 269:
-               if (eym.p()) {
-                  this.a(eud.c, 0);
-               } else {
-                  this.a(eud.a, this.m().b);
-               }
-
-               return true;
-            default:
-               return false;
+   public Optional<eso> c(double $$0, double $$1) {
+      for (etn.a $$2 : this.i()) {
+         for (eso $$3 : $$2.b) {
+            if ($$3.a_($$0, $$1)) {
+               return Optional.of($$3);
+            }
          }
       }
+
+      return Optional.empty();
    }
 
-   public Iterable<etn.a> h() {
-      return this.d;
-   }
+   protected static class a extends esw.a<etn.a> {
+      final Map<eqy<?>, eso> a;
+      final List<eso> b;
 
-   public boolean i() {
-      return this.g != this.f;
-   }
-
-   @VisibleForTesting
-   public String j() {
-      etn.a $$0 = this.e();
-      return this.e.substring($$0.a, $$0.b);
-   }
-
-   private etn.a m() {
-      return this.f(0);
-   }
-
-   private etn.a f(int $$0) {
-      int $$1 = this.g();
-      if ($$1 < 0) {
-         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
-      } else {
-         return this.d.get(ary.a($$1 + $$0, 0, this.d.size() - 1));
-      }
-   }
-
-   @VisibleForTesting
-   public etn.a k() {
-      if (this.e.isEmpty()) {
-         return etn.a.c;
-      } else {
-         int $$0 = ary.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         return new etn.a($$0, this.g($$0));
-      }
-   }
-
-   @VisibleForTesting
-   public etn.a l() {
-      if (this.e.isEmpty()) {
-         return etn.a.c;
-      } else {
-         int $$0 = ary.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         return new etn.a($$0, this.g($$0));
-      }
-   }
-
-   private int g(int $$0) {
-      int $$1 = $$0;
-
-      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
-         $$1++;
+      private a(Map<eqy<?>, eso> $$0) {
+         this.a = $$0;
+         this.b = ImmutableList.copyOf($$0.values());
       }
 
-      return $$1;
-   }
-
-   private void n() {
-      this.o();
-      this.k.accept(this.e);
-      this.l.run();
-   }
-
-   private void o() {
-      this.d.clear();
-      if (this.e.isEmpty()) {
-         this.d.add(etn.a.c);
-      } else {
-         this.c.b().a(this.e, this.j, uj.a, false, ($$0, $$1, $$2) -> this.d.add(new etn.a($$1, $$2)));
-         if (this.e.charAt(this.e.length() - 1) == '\n') {
-            this.d.add(new etn.a(this.e.length(), this.e.length()));
-         }
+      public static etn.a a(eqz $$0, int $$1, eqy<?> $$2) {
+         return new etn.a(ImmutableMap.of($$2, $$2.a($$0, $$1 / 2 - 155, 0, 310)));
       }
-   }
 
-   private String c(String $$0) {
-      return this.b() ? ass.a($$0, this.i, false) : $$0;
-   }
-
-   private String d(String $$0) {
-      if (this.b()) {
-         int $$1 = this.i - this.e.length();
-         return ass.a($$0, $$1, false);
-      } else {
-         return $$0;
+      public static etn.a a(eqz $$0, int $$1, eqy<?> $$2, @Nullable eqy<?> $$3) {
+         eso $$4 = $$2.a($$0, $$1 / 2 - 155, 0, 150);
+         return $$3 == null ? new etn.a(ImmutableMap.of($$2, $$4)) : new etn.a(ImmutableMap.of($$2, $$4, $$3, $$3.a($$0, $$1 / 2 - 155 + 160, 0, 150)));
       }
-   }
 
-   protected static record a(int a, int b) {
-      static final etn.a c = new etn.a(0, 0);
+      @Override
+      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.b.forEach($$5x -> {
+            $$5x.g($$2);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
+
+      @Override
+      public List<? extends euk> i() {
+         return this.b;
+      }
+
+      @Override
+      public List<? extends ewg> b() {
+         return this.b;
+      }
    }
 }

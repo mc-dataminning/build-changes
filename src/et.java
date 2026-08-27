@@ -16,30 +16,30 @@ import java.util.function.Predicate;
 
 public class et<T> implements ArgumentType<et.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tn.a("argument.resource_tag.not_found", $$0, $$1));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.resource_tag.not_found", $$0, $$1));
    private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tn.a("argument.resource_tag.invalid_type", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> tl.a("argument.resource_tag.invalid_type", $$0, $$1, $$2)
    );
-   private final hi<T> d;
-   final aex<? extends ht<T>> e;
+   private final hg<T> d;
+   final aev<? extends hq<T>> e;
 
-   public et(dn $$0, aex<? extends ht<T>> $$1) {
+   public et(dn $$0, aev<? extends hq<T>> $$1) {
       this.e = $$1;
       this.d = $$0.a($$1);
    }
 
-   public static <T> et<T> a(dn $$0, aex<? extends ht<T>> $$1) {
+   public static <T> et<T> a(dn $$0, aev<? extends hq<T>> $$1) {
       return new et<>($$0, $$1);
    }
 
-   public static <T> et.c<T> a(CommandContext<dt> $$0, String $$1, aex<ht<T>> $$2) throws CommandSyntaxException {
+   public static <T> et.c<T> a(CommandContext<dt> $$0, String $$1, aev<hq<T>> $$2) throws CommandSyntaxException {
       et.c<?> $$3 = (et.c<?>)$$0.getArgument($$1, et.c.class);
       Optional<et.c<T>> $$4 = $$3.a($$2);
       return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            aex<?> $$2x = $$1xx.g();
+            aev<?> $$2x = $$1xx.g();
             return eq.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            aqj<?> $$2x = $$1xx.f();
+            aqh<?> $$2x = $$1xx.f();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -50,25 +50,25 @@ public class et<T> implements ArgumentType<et.c<T>> {
 
          try {
             $$0.skip();
-            aey $$2 = aey.a($$0);
-            aqj<T> $$3 = aqj.a(this.e, $$2);
-            hk.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.create($$2, this.e.a()));
+            aew $$2 = aew.a($$0);
+            aqh<T> $$3 = aqh.a(this.e, $$2);
+            hi.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.create($$2, this.e.a()));
             return new et.d<>($$4);
          } catch (CommandSyntaxException var6) {
             $$0.setCursor($$1);
             throw var6;
          }
       } else {
-         aey $$6 = aey.a($$0);
-         aex<T> $$7 = aex.a(this.e, $$6);
-         hg.c<T> $$8 = this.d.a($$7).orElseThrow(() -> eq.a.create($$6, this.e.a()));
+         aew $$6 = aew.a($$0);
+         aev<T> $$7 = aev.a(this.e, $$6);
+         he.c<T> $$8 = this.d.a($$7).orElseThrow(() -> eq.a.create($$6, this.e.a()));
          return new et.b<>($$8);
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      dw.a(this.d.e().map(aqj::b), $$1, "#");
-      return dw.a(this.d.c().map(aex::a), $$1);
+      dw.a(this.d.e().map(aqh::b), $$1, "#");
+      return dw.a(this.d.c().map(aev::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -76,11 +76,11 @@ public class et<T> implements ArgumentType<et.c<T>> {
    }
 
    public static class a<T> implements gi<et<T>, et.a<T>.a> {
-      public void a(et.a<T>.a $$0, sq $$1) {
+      public void a(et.a<T>.a $$0, so $$1) {
          $$1.b($$0.b);
       }
 
-      public et.a<T>.a a(sq $$0) {
+      public et.a<T>.a a(so $$0) {
          return new et.a.a($$0.t());
       }
 
@@ -93,9 +93,9 @@ public class et<T> implements ArgumentType<et.c<T>> {
       }
 
       public final class a implements gi.a<et<T>> {
-         final aex<? extends ht<T>> b;
+         final aev<? extends hq<T>> b;
 
-         a(aex<? extends ht<T>> $$1) {
+         a(aev<? extends hq<T>> $$1) {
             this.b = $$1;
          }
 
@@ -110,18 +110,18 @@ public class et<T> implements ArgumentType<et.c<T>> {
       }
    }
 
-   static record b<T>(hg.c<T> a) implements et.c<T> {
+   static record b<T>(he.c<T> a) implements et.c<T> {
       @Override
-      public Either<hg.c<T>, hk.c<T>> a() {
+      public Either<he.c<T>, hi.c<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<et.c<E>> a(aex<? extends ht<E>> $$0) {
+      public <E> Optional<et.c<E>> a(aev<? extends hq<E>> $$0) {
          return this.a.g().b($$0) ? Optional.of((et.c<E>)this) : Optional.empty();
       }
 
-      public boolean a(hg<T> $$0) {
+      public boolean a(he<T> $$0) {
          return $$0.equals(this.a);
       }
 
@@ -130,31 +130,31 @@ public class et<T> implements ArgumentType<et.c<T>> {
          return this.a.g().a().toString();
       }
 
-      public hg.c<T> c() {
+      public he.c<T> c() {
          return this.a;
       }
    }
 
-   public interface c<T> extends Predicate<hg<T>> {
-      Either<hg.c<T>, hk.c<T>> a();
+   public interface c<T> extends Predicate<he<T>> {
+      Either<he.c<T>, hi.c<T>> a();
 
-      <E> Optional<et.c<E>> a(aex<? extends ht<E>> var1);
+      <E> Optional<et.c<E>> a(aev<? extends hq<E>> var1);
 
       String b();
    }
 
-   static record d<T>(hk.c<T> a) implements et.c<T> {
+   static record d<T>(hi.c<T> a) implements et.c<T> {
       @Override
-      public Either<hg.c<T>, hk.c<T>> a() {
+      public Either<he.c<T>, hi.c<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<et.c<E>> a(aex<? extends ht<E>> $$0) {
+      public <E> Optional<et.c<E>> a(aev<? extends hq<E>> $$0) {
          return this.a.f().c($$0) ? Optional.of((et.c<E>)this) : Optional.empty();
       }
 
-      public boolean a(hg<T> $$0) {
+      public boolean a(he<T> $$0) {
          return this.a.a($$0);
       }
 
@@ -163,7 +163,7 @@ public class et<T> implements ArgumentType<et.c<T>> {
          return "#" + this.a.f().b();
       }
 
-      public hk.c<T> c() {
+      public hi.c<T> c() {
          return this.a;
       }
    }

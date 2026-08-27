@@ -1,31 +1,55 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class vh {
-   private static final Logger a = LogUtils.getLogger();
+public record vh(vw a) implements vd<vg> {
+   private static final int b = 1048576;
+   private static final Map<aew, so.a<? extends vw>> c = ImmutableMap.builder()
+      .put(vv.a, vv::new)
+      .put(vt.a, vt::new)
+      .put(vu.a, vu::new)
+      .put(vy.a, vy::new)
+      .put(vz.a, vz::new)
+      .put(wa.a, wa::new)
+      .put(wb.a, wb::new)
+      .put(wc.a, wc::new)
+      .put(wd.a, wd::new)
+      .put(we.a, we::new)
+      .put(wf.a, wf::new)
+      .put(wg.a, wg::new)
+      .put(wh.a, wh::new)
+      .put(wi.a, wi::new)
+      .put(wj.a, wj::new)
+      .put(wk.a, wk::new)
+      .put(wl.a, wl::new)
+      .put(wm.a, wm::new)
+      .build();
 
-   public static <T extends sw> void a(vf<T> $$0, T $$1, aks $$2) throws afj {
-      a($$0, $$1, $$2.n());
+   public vh(so $$0) {
+      this(a($$0.s(), $$0));
    }
 
-   public static <T extends sw> void a(vf<T> $$0, T $$1, bfq<?> $$2) throws afj {
-      if (!$$2.bl()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var4) {
-                  if (var4 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
-                     throw var4;
-                  }
+   private static vw a(aew $$0, so $$1) {
+      so.a<? extends vw> $$2 = c.get($$0);
+      return (vw)($$2 != null ? $$2.apply($$1) : b($$0, $$1));
+   }
 
-                  a.error("Failed to handle packet {}, suppressing error", $$0, var4);
-               }
-            } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
-            }
-         });
-         throw afj.a;
+   private static vx b(aew $$0, so $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.j($$2);
+         return new vx($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
       }
+   }
+
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.a.a());
+      this.a.a($$0);
+   }
+
+   public void a(vg $$0) {
+      $$0.a(this);
    }
 }

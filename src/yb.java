@@ -1,108 +1,63 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class yb implements vf<wy> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final List<gw> e;
-   private final float f;
-   private final float g;
-   private final float h;
+public class yb implements vd<ww> {
+   public static final yb.a a = new yb.a(0);
+   public static final yb.a b = new yb.a(1);
+   public static final yb.a c = new yb.a(2);
+   public static final yb.a d = new yb.a(3);
+   public static final yb.a e = new yb.a(4);
+   public static final yb.a f = new yb.a(5);
+   public static final yb.a g = new yb.a(6);
+   public static final yb.a h = new yb.a(7);
+   public static final yb.a i = new yb.a(8);
+   public static final yb.a j = new yb.a(9);
+   public static final yb.a k = new yb.a(10);
+   public static final yb.a l = new yb.a(11);
+   public static final yb.a m = new yb.a(12);
+   public static final int n = 0;
+   public static final int o = 101;
+   public static final int p = 102;
+   public static final int q = 103;
+   public static final int r = 104;
+   private final yb.a s;
+   private final float t;
 
-   public yb(double $$0, double $$1, double $$2, float $$3, List<gw> $$4, @Nullable ehp $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = Lists.newArrayList($$4);
-      if ($$5 != null) {
-         this.f = (float)$$5.c;
-         this.g = (float)$$5.d;
-         this.h = (float)$$5.e;
-      } else {
-         this.f = 0.0F;
-         this.g = 0.0F;
-         this.h = 0.0F;
-      }
+   public yb(yb.a $$0, float $$1) {
+      this.s = $$0;
+      this.t = $$1;
    }
 
-   public yb(sq $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      int $$1 = ary.a(this.a);
-      int $$2 = ary.a(this.b);
-      int $$3 = ary.a(this.c);
-      this.e = $$0.a((sq.a<gw>)($$3x -> {
-         int $$4 = $$3x.readByte() + $$1;
-         int $$5 = $$3x.readByte() + $$2;
-         int $$6 = $$3x.readByte() + $$3;
-         return new gw($$4, $$5, $$6);
-      }));
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
+   public yb(so $$0) {
+      this.s = (yb.a)yb.a.a.get($$0.readUnsignedByte());
+      this.t = $$0.readFloat();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      int $$1 = ary.a(this.a);
-      int $$2 = ary.a(this.b);
-      int $$3 = ary.a(this.c);
-      $$0.a(this.e, ($$3x, $$4) -> {
-         int $$5 = $$4.u() - $$1;
-         int $$6 = $$4.v() - $$2;
-         int $$7 = $$4.w() - $$3;
-         $$3x.k($$5);
-         $$3x.k($$6);
-         $$3x.k($$7);
-      });
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+   public void a(so $$0) {
+      $$0.k(this.s.b);
+      $$0.a(this.t);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public float a() {
-      return this.f;
+   public yb.a a() {
+      return this.s;
    }
 
    public float d() {
-      return this.g;
+      return this.t;
    }
 
-   public float e() {
-      return this.h;
-   }
+   public static class a {
+      static final Int2ObjectMap<yb.a> a = new Int2ObjectOpenHashMap();
+      final int b;
 
-   public double f() {
-      return this.a;
-   }
-
-   public double g() {
-      return this.b;
-   }
-
-   public double h() {
-      return this.c;
-   }
-
-   public float i() {
-      return this.d;
-   }
-
-   public List<gw> j() {
-      return this.e;
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
+      }
    }
 }

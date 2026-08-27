@@ -1,29 +1,76 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class agj {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tn.a("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tn.a("clear.failed.multiple", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.damage.invulnerable"));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((dt)$$0x.getSource(), Collections.singleton(((dt)$$0x.getSource()).h()), $$0xx -> true, -1)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("damage").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)du.a("targets", ee.d()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), $$0xx -> true, -1)))
+               du.a("target", ee.a())
                   .then(
-                     ((RequiredArgumentBuilder)du.a("item", fz.a($$1)).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), fz.a($$0x, "item"), -1)))
+                     ((RequiredArgumentBuilder)du.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (dt)$$0x.getSource(), ee.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((dt)$$0x.getSource()).e().ag().n()
+                                 )
+                           ))
                         .then(
-                           du.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), fz.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("damageType", eq.a($$1, jc.p))
+                                    .executes(
+                                       $$0x -> a(
+                                             (dt)$$0x.getSource(),
+                                             ee.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new bho(eq.a($$0x, "damageType", jc.p))
+                                          )
+                                    ))
+                                 .then(
+                                    du.a("at")
+                                       .then(
+                                          du.a("location", fr.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dt)$$0x.getSource(),
+                                                      ee.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bho(eq.a($$0x, "damageType", jc.p), fr.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 du.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)du.a("entity", ee.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dt)$$0x.getSource(),
+                                                      ee.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bho(eq.a($$0x, "damageType", jc.p), ee.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             du.a("from")
+                                                .then(
+                                                   du.a("cause", ee.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (dt)$$0x.getSource(),
+                                                               ee.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new bho(eq.a($$0x, "damageType", jc.p), ee.a($$0x, "entity"), ee.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
                               )
                         )
                   )
@@ -31,36 +78,12 @@ public class agj {
       );
    }
 
-   private static int a(dt $$0, Collection<akt> $$1, Predicate<cjh> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (akt $$5 : $$1) {
-         $$4 += $$5.fR().a($$2, $$3, $$5.bR.q());
-         $$5.bS.d();
-         $$5.bR.a($$5.fR());
-      }
-
-      if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().ab());
-         } else {
-            throw b.create($$1.size());
-         }
+   private static int a(dt $$0, biq $$1, float $$2, bho $$3) throws CommandSyntaxException {
+      if ($$1.a($$3, $$2)) {
+         $$0.a(() -> tl.a("commands.damage.success", $$2, $$1.N_()), true);
+         return 1;
       } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> tn.a("commands.clear.test.single", $$6, $$1.iterator().next().N_()), true);
-            } else {
-               $$0.a(() -> tn.a("commands.clear.test.multiple", $$6, $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> tn.a("commands.clear.success.single", $$6, $$1.iterator().next().N_()), true);
-         } else {
-            $$0.a(() -> tn.a("commands.clear.success.multiple", $$6, $$1.size()), true);
-         }
-
-         return $$4;
+         throw a.create();
       }
    }
 }

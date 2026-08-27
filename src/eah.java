@@ -1,330 +1,212 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.HashCommon;
+import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import java.util.NoSuchElementException;
 
-public final class eah extends eaf<eai.a, eai> {
-   private static final long g = eaf.a.a(15);
-   private static final long h = eaf.a.a(15, hc.b);
-   private static final long i = eaf.a.a(15, false, hc.b);
-   private final gw.a j = new gw.a();
-   private final dzy k;
+public class eah extends LongLinkedOpenHashSet {
+   private final eah.a a;
 
-   public eah(dhv $$0) {
-      this($$0, new eai($$0));
-   }
-
-   @VisibleForTesting
-   protected eah(dhv $$0, eai $$1) {
+   public eah(int $$0, float $$1) {
       super($$0, $$1);
-      this.k = new dzy($$0.q());
+      this.a = new eah.a($$0 / 64, $$1);
    }
 
-   private static boolean a(int $$0) {
-      return $$0 == 15;
+   public boolean add(long $$0) {
+      return this.a.c($$0);
    }
 
-   private int a(int $$0, int $$1, int $$2) {
-      dzy $$3 = this.b(hz.a($$0), hz.a($$1));
-      return $$3 == null ? $$2 : $$3.a(hz.b($$0), hz.b($$1));
+   public boolean rem(long $$0) {
+      return this.a.d($$0);
    }
 
-   @Nullable
-   private dzy b(int $$0, int $$1) {
-      dhu $$2 = this.e.c($$0, $$1);
-      return $$2 != null ? $$2.B() : null;
+   public long removeFirstLong() {
+      return this.a.a();
    }
 
-   @Override
-   protected void a(long $$0) {
-      int $$1 = gw.a($$0);
-      int $$2 = gw.b($$0);
-      int $$3 = gw.c($$0);
-      long $$4 = hz.e($$0);
-      int $$5 = this.f.j($$4) ? this.a($$1, $$3, Integer.MAX_VALUE) : Integer.MAX_VALUE;
-      if ($$5 != Integer.MAX_VALUE) {
-         this.b($$1, $$3, $$5);
+   public int size() {
+      throw new UnsupportedOperationException();
+   }
+
+   public boolean isEmpty() {
+      return this.a.isEmpty();
+   }
+
+   protected static class a extends Long2LongLinkedOpenHashMap {
+      private static final int a = arw.f(60000000);
+      private static final int b = arw.f(60000000);
+      private static final int c = 64 - a - b;
+      private static final int d = 0;
+      private static final int e = c;
+      private static final int g = c + b;
+      private static final long h = 3L << g | 3L | 3L << e;
+      private int i = -1;
+      private long j;
+      private final int k;
+
+      public a(int $$0, float $$1) {
+         super($$0, $$1);
+         this.k = $$0;
       }
 
-      if (this.f.b($$4)) {
-         boolean $$6 = $$2 >= $$5;
-         if ($$6) {
-            this.b($$0, h);
-            this.c($$0, i);
+      static long a(long $$0) {
+         return $$0 & ~h;
+      }
+
+      static int b(long $$0) {
+         int $$1 = (int)($$0 >>> g & 3L);
+         int $$2 = (int)($$0 >>> 0 & 3L);
+         int $$3 = (int)($$0 >>> e & 3L);
+         return $$1 << 4 | $$3 << 2 | $$2;
+      }
+
+      static long a(long $$0, int $$1) {
+         $$0 |= (long)($$1 >>> 4 & 3) << g;
+         $$0 |= (long)($$1 >>> 2 & 3) << e;
+         return $$0 | (long)($$1 >>> 0 & 3) << 0;
+      }
+
+      public boolean c(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         int $$4;
+         if ($$1 == 0L) {
+            if (this.containsNullKey) {
+               return this.a(this.n, $$3);
+            }
+
+            this.containsNullKey = true;
+            $$4 = this.n;
          } else {
-            int $$7 = this.f.e($$0);
-            if ($$7 > 0) {
-               this.f.a($$0, 0);
-               this.b($$0, eaf.a.a($$7));
+            if (this.i != -1 && $$1 == this.j) {
+               return this.a(this.i, $$3);
+            }
+
+            long[] $$5 = this.key;
+            $$4 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
+               if ($$7 == $$1) {
+                  this.i = $$4;
+                  this.j = $$1;
+                  return this.a($$4, $$3);
+               }
+
+               $$4 = $$4 + 1 & this.mask;
+            }
+         }
+
+         this.key[$$4] = $$1;
+         this.value[$$4] = $$3;
+         if (this.size == 0) {
+            this.first = this.last = $$4;
+            this.link[$$4] = -1L;
+         } else {
+            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
+            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
+            this.last = $$4;
+         }
+
+         if (this.size++ >= this.maxFill) {
+            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
+         }
+
+         return false;
+      }
+
+      private boolean a(int $$0, long $$1) {
+         boolean $$2 = (this.value[$$0] & $$1) != 0L;
+         this.value[$$0] = this.value[$$0] | $$1;
+         return $$2;
+      }
+
+      public boolean d(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         if ($$1 == 0L) {
+            return this.containsNullKey ? this.e($$3) : false;
+         } else if (this.i != -1 && $$1 == this.j) {
+            return this.b(this.i, $$3);
+         } else {
+            long[] $$4 = this.key;
+            int $$5 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
+               if ($$1 == $$6) {
+                  this.i = $$5;
+                  this.j = $$1;
+                  return this.b($$5, $$3);
+               }
+
+               $$5 = $$5 + 1 & this.mask;
+            }
+
+            return false;
+         }
+      }
+
+      private boolean e(long $$0) {
+         if ((this.value[this.n] & $$0) == 0L) {
+            return false;
+         } else {
+            this.value[this.n] = this.value[this.n] & ~$$0;
+            if (this.value[this.n] != 0L) {
+               return true;
             } else {
-               this.b($$0, c);
+               this.containsNullKey = false;
+               this.size--;
+               this.fixPointers(this.n);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
             }
          }
       }
-   }
 
-   private void b(int $$0, int $$1, int $$2) {
-      int $$3 = hz.c(this.f.c());
-      this.a($$0, $$1, $$2, $$3);
-      this.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, int $$2, int $$3) {
-      if ($$2 > $$3) {
-         int $$4 = hz.a($$0);
-         int $$5 = hz.a($$1);
-         int $$6 = $$2 - 1;
-
-         for (int $$7 = hz.a($$6); this.f.a($$7); $$7--) {
-            if (this.f.b(hz.b($$4, $$7, $$5))) {
-               int $$8 = hz.c($$7);
-               int $$9 = $$8 + 15;
-
-               for (int $$10 = Math.min($$9, $$6); $$10 >= $$8; $$10--) {
-                  long $$11 = gw.a($$0, $$10, $$1);
-                  if (!a(this.f.e($$11))) {
-                     return;
-                  }
-
-                  this.f.a($$11, 0);
-                  this.b($$11, $$10 == $$2 - 1 ? g : h);
-               }
-            }
-         }
-      }
-   }
-
-   private void b(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = hz.a($$0);
-      int $$5 = hz.a($$1);
-      int $$6 = Math.max(
-         Math.max(this.a($$0 - 1, $$1, Integer.MIN_VALUE), this.a($$0 + 1, $$1, Integer.MIN_VALUE)),
-         Math.max(this.a($$0, $$1 - 1, Integer.MIN_VALUE), this.a($$0, $$1 + 1, Integer.MIN_VALUE))
-      );
-      int $$7 = Math.max($$2, $$3);
-
-      for (long $$8 = hz.b($$4, hz.a($$7), $$5); !this.f.l($$8); $$8 = hz.a($$8, hc.b)) {
-         if (this.f.b($$8)) {
-            int $$9 = hz.c(hz.c($$8));
-            int $$10 = $$9 + 15;
-
-            for (int $$11 = Math.max($$9, $$7); $$11 <= $$10; $$11++) {
-               long $$12 = gw.a($$0, $$11, $$1);
-               if (a(this.f.e($$12))) {
-                  return;
-               }
-
-               this.f.a($$12, 15);
-               if ($$11 < $$6 || $$11 == $$2) {
-                  this.c($$12, i);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dfl $$3 = null;
-      int $$4 = this.d($$0);
-
-      for (hc $$5 : d) {
-         if (eaf.a.a($$1, $$5)) {
-            long $$6 = gw.a($$0, $$5);
-            if (this.f.b(hz.e($$6))) {
-               int $$7 = this.f.e($$6);
-               int $$8 = $$2 - 1;
-               if ($$8 > $$7) {
-                  this.j.f($$6);
-                  dfl $$9 = this.c(this.j);
-                  int $$10 = $$2 - this.a($$9, this.j);
-                  if ($$10 > $$7) {
-                     if ($$3 == null) {
-                        $$3 = eaf.a.b($$1) ? csy.a.n() : this.c(this.j.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$6, $$9, $$5)) {
-                        this.f.a($$6, $$10);
-                        if ($$10 > 1) {
-                           this.c($$6, eaf.a.a($$10, a($$9), $$5.g()));
-                        }
-
-                        this.a($$6, $$5, $$10, true, $$4);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = this.d($$0);
-      int $$3 = eaf.a.a($$1);
-
-      for (hc $$4 : d) {
-         if (eaf.a.a($$1, $$4)) {
-            long $$5 = gw.a($$0, $$4);
-            if (this.f.b(hz.e($$5))) {
-               int $$6 = this.f.e($$5);
-               if ($$6 != 0) {
-                  if ($$6 <= $$3 - 1) {
-                     this.f.a($$5, 0);
-                     this.b($$5, eaf.a.a($$6, $$4.g()));
-                     this.a($$5, $$4, $$6, false, $$2);
-                  } else {
-                     this.c($$5, eaf.a.b($$6, false, $$4.g()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int d(long $$0) {
-      int $$1 = gw.b($$0);
-      int $$2 = hz.b($$1);
-      if ($$2 != 0) {
-         return 0;
-      } else {
-         int $$3 = gw.a($$0);
-         int $$4 = gw.c($$0);
-         int $$5 = hz.b($$3);
-         int $$6 = hz.b($$4);
-         if ($$5 != 0 && $$5 != 15 && $$6 != 0 && $$6 != 15) {
-            return 0;
+      private boolean b(int $$0, long $$1) {
+         if ((this.value[$$0] & $$1) == 0L) {
+            return false;
          } else {
-            int $$7 = hz.a($$3);
-            int $$8 = hz.a($$1);
-            int $$9 = hz.a($$4);
-            int $$10 = 0;
-
-            while (!this.f.b(hz.b($$7, $$8 - $$10 - 1, $$9)) && this.f.a($$8 - $$10 - 1)) {
-               $$10++;
-            }
-
-            return $$10;
-         }
-      }
-   }
-
-   private void a(long $$0, hc $$1, int $$2, boolean $$3, int $$4) {
-      if ($$4 != 0) {
-         int $$5 = gw.a($$0);
-         int $$6 = gw.c($$0);
-         if (a($$1, hz.b($$5), hz.b($$6))) {
-            int $$7 = gw.b($$0);
-            int $$8 = hz.a($$5);
-            int $$9 = hz.a($$6);
-            int $$10 = hz.a($$7) - 1;
-            int $$11 = $$10 - $$4 + 1;
-
-            while ($$10 >= $$11) {
-               if (!this.f.b(hz.b($$8, $$10, $$9))) {
-                  $$10--;
-               } else {
-                  int $$12 = hz.c($$10);
-
-                  for (int $$13 = 15; $$13 >= 0; $$13--) {
-                     long $$14 = gw.a($$5, $$12 + $$13, $$6);
-                     if ($$3) {
-                        this.f.a($$14, $$2);
-                        if ($$2 > 1) {
-                           this.c($$14, eaf.a.a($$2, true, $$1.g()));
-                        }
-                     } else {
-                        this.f.a($$14, 0);
-                        this.b($$14, eaf.a.a($$2, $$1.g()));
-                     }
-                  }
-
-                  $$10--;
+            this.value[$$0] = this.value[$$0] & ~$$1;
+            if (this.value[$$0] != 0L) {
+               return true;
+            } else {
+               this.i = -1;
+               this.size--;
+               this.fixPointers($$0);
+               this.shiftKeys($$0);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
                }
+
+               return true;
             }
          }
       }
-   }
 
-   private static boolean a(hc $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case c -> $$2 == 15;
-         case d -> $$2 == 0;
-         case e -> $$1 == 15;
-         case f -> $$1 == 0;
-         default -> false;
-      };
-   }
-
-   @Override
-   public void a(cpe $$0, boolean $$1) {
-      super.a($$0, $$1);
-      if ($$1) {
-         dzy $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-         int $$3 = $$2.a() - 1;
-         int $$4 = hz.a($$3) + 1;
-         long $$5 = hz.b($$0.e, $$0.f);
-         int $$6 = this.f.m($$5);
-         int $$7 = Math.max(this.f.c(), $$4);
-
-         for (int $$8 = $$6 - 1; $$8 >= $$7; $$8--) {
-            dhn $$9 = this.f.c(hz.b($$0.e, $$8, $$0.f));
-            if ($$9 != null && $$9.d()) {
-               $$9.a(15);
+      public long a() {
+         if (this.size == 0) {
+            throw new NoSuchElementException();
+         } else {
+            int $$0 = this.first;
+            long $$1 = this.key[$$0];
+            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
+            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
+            if (this.value[$$0] == 0L) {
+               this.removeFirstLong();
+               this.i = -1;
             }
+
+            return a($$1, $$2);
          }
       }
-   }
 
-   @Override
-   public void b(cpe $$0) {
-      long $$1 = hz.b($$0.e, $$0.f);
-      this.f.b($$1, true);
-      dzy $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-      dzy $$3 = Objects.requireNonNullElse(this.b($$0.e, $$0.f - 1), this.k);
-      dzy $$4 = Objects.requireNonNullElse(this.b($$0.e, $$0.f + 1), this.k);
-      dzy $$5 = Objects.requireNonNullElse(this.b($$0.e - 1, $$0.f), this.k);
-      dzy $$6 = Objects.requireNonNullElse(this.b($$0.e + 1, $$0.f), this.k);
-      int $$7 = this.f.m($$1);
-      int $$8 = this.f.c();
-      int $$9 = hz.c($$0.e);
-      int $$10 = hz.c($$0.f);
-
-      for (int $$11 = $$7 - 1; $$11 >= $$8; $$11--) {
-         long $$12 = hz.b($$0.e, $$11, $$0.f);
-         dhn $$13 = this.f.c($$12);
-         if ($$13 != null) {
-            int $$14 = hz.c($$11);
-            int $$15 = $$14 + 15;
-            boolean $$16 = false;
-
-            for (int $$17 = 0; $$17 < 16; $$17++) {
-               for (int $$18 = 0; $$18 < 16; $$18++) {
-                  int $$19 = $$2.a($$18, $$17);
-                  if ($$19 <= $$15) {
-                     int $$20 = $$17 == 0 ? $$3.a($$18, 15) : $$2.a($$18, $$17 - 1);
-                     int $$21 = $$17 == 15 ? $$4.a($$18, 0) : $$2.a($$18, $$17 + 1);
-                     int $$22 = $$18 == 0 ? $$5.a(15, $$17) : $$2.a($$18 - 1, $$17);
-                     int $$23 = $$18 == 15 ? $$6.a(0, $$17) : $$2.a($$18 + 1, $$17);
-                     int $$24 = Math.max(Math.max($$20, $$21), Math.max($$22, $$23));
-
-                     for (int $$25 = $$15; $$25 >= Math.max($$14, $$19); $$25--) {
-                        $$13.a($$18, hz.b($$25), $$17, 15);
-                        if ($$25 == $$19 || $$25 < $$24) {
-                           long $$26 = gw.a($$9 + $$18, $$25, $$10 + $$17);
-                           this.c($$26, eaf.a.a($$25 == $$19, $$25 < $$20, $$25 < $$21, $$25 < $$22, $$25 < $$23));
-                        }
-                     }
-
-                     if ($$19 < $$14) {
-                        $$16 = true;
-                     }
-                  }
-               }
-            }
-
-            if (!$$16) {
-               break;
-            }
+      protected void rehash(int $$0) {
+         if ($$0 > this.k) {
+            super.rehash($$0);
          }
       }
    }

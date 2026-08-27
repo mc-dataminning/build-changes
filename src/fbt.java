@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fbt {
+public class fbt extends fbs {
+   private static final tl i = tl.c("gui.recipebook.toggleRecipes.blastable");
+
+   @Override
+   protected tl d() {
+      return i;
+   }
+
+   @Override
+   protected Set<cja> b() {
+      return dck.f().keySet();
+   }
 }

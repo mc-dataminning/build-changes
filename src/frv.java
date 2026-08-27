@@ -1,151 +1,181 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-public class frv implements frp.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final eqx e;
-   private final cqg f;
-   private Instant g = Instant.now();
-   @Nullable
-   private frv.a h;
+public class frv implements frn.a {
+   private final Map<Integer, ebb> a = Maps.newHashMap();
+   private final Map<Integer, Float> b = Maps.newHashMap();
+   private final Map<Integer, Long> c = Maps.newHashMap();
+   private static final long d = 5000L;
+   private static final float e = 80.0F;
+   private static final boolean f = true;
+   private static final boolean g = false;
+   private static final boolean h = false;
+   private static final boolean i = true;
+   private static final boolean j = true;
+   private static final float k = 0.02F;
 
-   public frv(eqx $$0, cqg $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public void a(int $$0, ebb $$1, float $$2) {
+      this.a.put($$0, $$1);
+      this.c.put($$0, ac.b());
+      this.b.put($$0, $$2);
    }
 
    @Override
-   public void a(elr $$0, fog $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new frv.a(this.e.r.x_(), hz.a(this.e.s.dl()), 10, this.f);
-      }
+   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
+      if (!this.a.isEmpty()) {
+         long $$5 = ac.b();
 
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      elv $$6 = $$1.getBuffer(foo.B());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
-   }
+         for (Integer $$6 : this.a.keySet()) {
+            ebb $$7 = this.a.get($$6);
+            float $$8 = this.b.get($$6);
+            a($$0, $$1, $$7, $$8, true, true, $$2, $$3, $$4);
+         }
 
-   private static void a(elr $$0, ehy $$1, hz $$2, elv $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
-   }
-
-   private static void a(elr $$0, ehy $$1, hz $$2, fog $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         elv $$19 = $$3.getBuffer(foo.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
-   }
-
-   private static void a(elr $$0, elv $$1, hc $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)hz.c($$6) - $$3);
-      float $$11 = (float)((double)hz.c($$7) - $$4);
-      float $$12 = (float)((double)hz.c($$8) - $$5);
-      float $$13 = $$10 + 16.0F;
-      float $$14 = $$11 + 16.0F;
-      float $$15 = $$12 + 16.0F;
-      float $$16 = $$9.x();
-      float $$17 = $$9.y();
-      float $$18 = $$9.z();
-      float $$19 = $$9.w();
-      Matrix4f $$20 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case b:
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case c:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case d:
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case e:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case f:
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
+         for (Integer $$9 : this.c.keySet().toArray(new Integer[0])) {
+            if ($$5 - this.c.get($$9) > 5000L) {
+               this.a.remove($$9);
+               this.c.remove($$9);
+            }
+         }
       }
    }
 
-   private static void a(elr $$0, elv $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)hz.c($$5) - $$2);
-      float $$13 = (float)((double)hz.c($$6) - $$3);
-      float $$14 = (float)((double)hz.c($$7) - $$4);
-      float $$15 = (float)((double)hz.c($$8) - $$2);
-      float $$16 = (float)((double)hz.c($$9) - $$3);
-      float $$17 = (float)((double)hz.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-   }
+   public static void a(elp $$0, foe $$1, ebb $$2, float $$3, boolean $$4, boolean $$5, double $$6, double $$7, double $$8) {
+      a($$0, $$1.getBuffer(fom.a(6.0)), $$2, $$6, $$7, $$8);
+      gw $$9 = $$2.l();
+      if (a($$9, $$6, $$7, $$8) <= 80.0F) {
+         frn.a(
+            $$0,
+            $$1,
+            new ehi(
+                  (double)((float)$$9.u() + 0.25F),
+                  (double)((float)$$9.v() + 0.25F),
+                  (double)$$9.w() + 0.25,
+                  (double)((float)$$9.u() + 0.75F),
+                  (double)((float)$$9.v() + 0.75F),
+                  (double)((float)$$9.w() + 0.75F)
+               )
+               .d(-$$6, -$$7, -$$8),
+            0.0F,
+            1.0F,
+            0.0F,
+            0.5F
+         );
 
-   static final class a {
-      final ehy a;
-      final ehy b;
-      final hz c;
+         for (int $$10 = 0; $$10 < $$2.e(); $$10++) {
+            eaz $$11 = $$2.a($$10);
+            if (a($$11.a(), $$6, $$7, $$8) <= 80.0F) {
+               float $$12 = $$10 == $$2.f() ? 1.0F : 0.0F;
+               float $$13 = $$10 == $$2.f() ? 0.0F : 1.0F;
+               frn.a(
+                  $$0,
+                  $$1,
+                  new ehi(
+                        (double)((float)$$11.a + 0.5F - $$3),
+                        (double)((float)$$11.b + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F - $$3),
+                        (double)((float)$$11.a + 0.5F + $$3),
+                        (double)((float)$$11.b + 0.25F + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F + $$3)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  $$12,
+                  0.0F,
+                  $$13,
+                  0.5F
+               );
+            }
+         }
+      }
 
-      a(ead $$0, hz $$1, int $$2, cqg $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new ehs($$4, $$4, $$4);
-         this.b = new ehs($$4, $$4, $$4);
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  hz $$8 = hz.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  eac.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == eac.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == eac.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
+      ebb.a $$14 = $$2.k();
+      if ($$4 && $$14 != null) {
+         for (eaz $$15 : $$14.b()) {
+            if (a($$15.a(), $$6, $$7, $$8) <= 80.0F) {
+               frn.a(
+                  $$0,
+                  $$1,
+                  new ehi(
+                        (double)((float)$$15.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.b + 0.01F),
+                        (double)((float)$$15.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.a + 0.5F + $$3 / 2.0F),
+                        (double)$$15.b + 0.1,
+                        (double)((float)$$15.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  1.0F,
+                  0.8F,
+                  0.8F,
+                  0.5F
+               );
             }
          }
 
-         this.c = hz.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+         for (eaz $$16 : $$14.a()) {
+            if (a($$16.a(), $$6, $$7, $$8) <= 80.0F) {
+               frn.a(
+                  $$0,
+                  $$1,
+                  new ehi(
+                        (double)((float)$$16.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.b + 0.01F),
+                        (double)((float)$$16.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.a + 0.5F + $$3 / 2.0F),
+                        (double)$$16.b + 0.1,
+                        (double)((float)$$16.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  0.8F,
+                  1.0F,
+                  1.0F,
+                  0.5F
+               );
+            }
+         }
       }
+
+      if ($$5) {
+         for (int $$17 = 0; $$17 < $$2.e(); $$17++) {
+            eaz $$18 = $$2.a($$17);
+            if (a($$18.a(), $$6, $$7, $$8) <= 80.0F) {
+               frn.a($$0, $$1, String.valueOf($$18.l), (double)$$18.a + 0.5, (double)$$18.b + 0.75, (double)$$18.c + 0.5, -1, 0.02F, true, 0.0F, true);
+               frn.a(
+                  $$0,
+                  $$1,
+                  String.format(Locale.ROOT, "%.2f", $$18.k),
+                  (double)$$18.a + 0.5,
+                  (double)$$18.b + 0.25,
+                  (double)$$18.c + 0.5,
+                  -1,
+                  0.02F,
+                  true,
+                  0.0F,
+                  true
+               );
+            }
+         }
+      }
+   }
+
+   public static void a(elp $$0, elt $$1, ebb $$2, double $$3, double $$4, double $$5) {
+      for (int $$6 = 0; $$6 < $$2.e(); $$6++) {
+         eaz $$7 = $$2.a($$6);
+         if (!(a($$7.a(), $$3, $$4, $$5) > 80.0F)) {
+            float $$8 = (float)$$6 / (float)$$2.e() * 0.33F;
+            int $$9 = $$6 == 0 ? 0 : arw.h($$8, 0.9F, 0.9F);
+            int $$10 = $$9 >> 16 & 0xFF;
+            int $$11 = $$9 >> 8 & 0xFF;
+            int $$12 = $$9 & 0xFF;
+            $$1.a($$0.c().a(), (float)((double)$$7.a - $$3 + 0.5), (float)((double)$$7.b - $$4 + 0.5), (float)((double)$$7.c - $$5 + 0.5))
+               .a($$10, $$11, $$12, 255)
+               .e();
+         }
+      }
+   }
+
+   private static float a(gw $$0, double $$1, double $$2, double $$3) {
+      return (float)(Math.abs((double)$$0.u() - $$1) + Math.abs((double)$$0.v() - $$2) + Math.abs((double)$$0.w() - $$3));
    }
 }

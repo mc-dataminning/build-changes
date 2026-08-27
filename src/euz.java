@@ -1,37 +1,84 @@
-public interface euz {
-   Object b = new Object();
-   int c = 32;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   euz.a a(esh var1, eva var2, long var3);
+public class euz implements eux {
+   private static final aew g = new aew("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final euz.a h;
+   private final tl i;
+   @Nullable
+   private final tl j;
+   private eux.a k = eux.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   default Object d() {
-      return b;
+   public euz(euz.a $$0, tl $$1, @Nullable tl $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
-   default int a() {
-      return 160;
+   @Override
+   public eux.a a(esf $$0, euy $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+      }
+
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = arw.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
+         }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
+      }
+
+      return this.k;
    }
 
-   default int b() {
-      return 32;
+   public void c() {
+      this.k = eux.a.b;
    }
 
-   default int e() {
-      return ary.e(this.b(), 32);
+   public void a(float $$0) {
+      this.n = $$0;
    }
 
    public static enum a {
-      a(apf.yB),
-      b(apf.yC);
+      a(new aew("toast/movement_keys")),
+      b(new aew("toast/mouse")),
+      c(new aew("toast/tree")),
+      d(new aew("toast/recipe_book")),
+      e(new aew("toast/wooden_planks")),
+      f(new aew("toast/social_interactions")),
+      g(new aew("toast/right_click"));
 
-      private final ape c;
+      private final aew h;
 
-      private a(ape $$0) {
-         this.c = $$0;
+      private a(aew $$0) {
+         this.h = $$0;
       }
 
-      public void a(gds $$0) {
-         $$0.a(gcj.a(this.c, 1.0F, 1.0F));
+      public void a(esf $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
    }
 }

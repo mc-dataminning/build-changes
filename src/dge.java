@@ -1,20 +1,14 @@
-public enum dge implements asr {
-   a("compare"),
-   b("subtract");
-
-   private final String c;
-
-   private dge(String $$0) {
-      this.c = $$0;
-   }
+public enum dge implements asp {
+   a,
+   b;
 
    @Override
    public String toString() {
-      return this.c;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this == a ? "left" : "right";
    }
 }

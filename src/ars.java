@@ -1,12 +1,9 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+public class ars {
+   private static final long a = 6364136223846793005L;
+   private static final long b = 1442695040888963407L;
 
-public record ars<A>(Codec<A> a) {
-   public static <A> ars<A> a(Codec<A> $$0) {
-      return new ars<>($$0);
-   }
-
-   public static <A> ars<A> a(MapCodec<A> $$0) {
-      return new ars<>($$0.codec());
+   public static long a(long $$0, long $$1) {
+      $$0 *= $$0 * 6364136223846793005L + 1442695040888963407L;
+      return $$0 + $$1;
    }
 }

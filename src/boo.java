@@ -1,3 +1,8 @@
-public interface boo<E extends bji> {
-   boolean trigger(aks var1, E var2, long var3);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface boo {
 }

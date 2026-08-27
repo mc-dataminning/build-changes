@@ -1,11 +1,11 @@
-public class cnw extends cnq {
-   protected cnw(cnq.a $$0, cnr $$1, bix... $$2) {
-      super($$0, $$1, $$2);
+public class cnw extends cno {
+   protected cnw(cno.a $$0, biv... $$1) {
+      super($$0, cnp.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+      return 5 + 20 * ($$0 - 1);
    }
 
    @Override
@@ -15,6 +15,6 @@ public class cnw extends cnq {
 
    @Override
    public int a() {
-      return 3;
+      return 2;
    }
 }

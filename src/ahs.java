@@ -4,101 +4,126 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Optional;
 
 public class ahs {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("commands.particle.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.place.feature.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.place.jigsaw.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.place.structure.failed"));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.a("commands.place.template.invalid", $$0));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("commands.place.template.failed"));
+   private static final SuggestionProvider<dt> f = ($$0, $$1) -> {
+      dzc $$2 = ((dt)$$0.getSource()).e().p();
+      return dw.a($$2.a(), $$1);
+   };
 
-   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
+   public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("particle").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)du.a("name", eo.a($$1))
-                     .executes(
-                        $$0x -> a(
-                              (dt)$$0x.getSource(), eo.a($$0x, "name"), ((dt)$$0x.getSource()).d(), ehp.b, 0.0F, 0, false, ((dt)$$0x.getSource()).l().ac().t()
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("place")
+                        .requires($$0x -> $$0x.c(2)))
+                     .then(
+                        du.a("feature")
+                           .then(
+                              ((RequiredArgumentBuilder)du.a("feature", er.a(jc.as))
+                                    .executes($$0x -> a((dt)$$0x.getSource(), er.a($$0x, "feature"), gw.a(((dt)$$0x.getSource()).d()))))
+                                 .then(du.a("pos", fk.a()).executes($$0x -> a((dt)$$0x.getSource(), er.a($$0x, "feature"), fk.a($$0x, "pos"))))
                            )
                      ))
                   .then(
-                     ((RequiredArgumentBuilder)du.a("pos", fr.a())
-                           .executes(
-                              $$0x -> a((dt)$$0x.getSource(), eo.a($$0x, "name"), fr.a($$0x, "pos"), ehp.b, 0.0F, 0, false, ((dt)$$0x.getSource()).l().ac().t())
-                           ))
+                     du.a("jigsaw")
                         .then(
-                           du.a("delta", fr.a(false))
+                           du.a("pool", er.a(jc.aC))
                               .then(
-                                 du.a("speed", FloatArgumentType.floatArg(0.0F))
+                                 du.a("target", es.a())
                                     .then(
-                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("count", IntegerArgumentType.integer(0))
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (dt)$$0x.getSource(),
-                                                         eo.a($$0x, "name"),
-                                                         fr.a($$0x, "pos"),
-                                                         fr.a($$0x, "delta"),
-                                                         FloatArgumentType.getFloat($$0x, "speed"),
-                                                         IntegerArgumentType.getInteger($$0x, "count"),
-                                                         false,
-                                                         ((dt)$$0x.getSource()).l().ac().t()
-                                                      )
-                                                ))
-                                             .then(
-                                                ((LiteralArgumentBuilder)du.a("force")
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (dt)$$0x.getSource(),
-                                                               eo.a($$0x, "name"),
-                                                               fr.a($$0x, "pos"),
-                                                               fr.a($$0x, "delta"),
-                                                               FloatArgumentType.getFloat($$0x, "speed"),
-                                                               IntegerArgumentType.getInteger($$0x, "count"),
-                                                               true,
-                                                               ((dt)$$0x.getSource()).l().ac().t()
-                                                            )
-                                                      ))
-                                                   .then(
-                                                      du.a("viewers", ee.d())
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (dt)$$0x.getSource(),
-                                                                  eo.a($$0x, "name"),
-                                                                  fr.a($$0x, "pos"),
-                                                                  fr.a($$0x, "delta"),
-                                                                  FloatArgumentType.getFloat($$0x, "speed"),
-                                                                  IntegerArgumentType.getInteger($$0x, "count"),
-                                                                  true,
-                                                                  ee.f($$0x, "viewers")
-                                                               )
-                                                         )
+                                       ((RequiredArgumentBuilder)du.a("max_depth", IntegerArgumentType.integer(1, 7))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dt)$$0x.getSource(),
+                                                      er.c($$0x, "pool"),
+                                                      es.e($$0x, "target"),
+                                                      IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                      gw.a(((dt)$$0x.getSource()).d())
                                                    )
                                              ))
                                           .then(
-                                             ((LiteralArgumentBuilder)du.a("normal")
+                                             du.a("position", fk.a())
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (dt)$$0x.getSource(),
+                                                         er.c($$0x, "pool"),
+                                                         es.e($$0x, "target"),
+                                                         IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                         fk.a($$0x, "position")
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  ))
+               .then(
+                  du.a("structure")
+                     .then(
+                        ((RequiredArgumentBuilder)du.a("structure", er.a(jc.az))
+                              .executes($$0x -> b((dt)$$0x.getSource(), er.b($$0x, "structure"), gw.a(((dt)$$0x.getSource()).d()))))
+                           .then(du.a("pos", fk.a()).executes($$0x -> b((dt)$$0x.getSource(), er.b($$0x, "structure"), fk.a($$0x, "pos"))))
+                     )
+               ))
+            .then(
+               du.a("template")
+                  .then(
+                     ((RequiredArgumentBuilder)du.a("template", es.a())
+                           .suggests(f)
+                           .executes($$0x -> a((dt)$$0x.getSource(), es.e($$0x, "template"), gw.a(((dt)$$0x.getSource()).d()), czh.a, cxq.a, 1.0F, 0)))
+                        .then(
+                           ((RequiredArgumentBuilder)du.a("pos", fk.a())
+                                 .executes($$0x -> a((dt)$$0x.getSource(), es.e($$0x, "template"), fk.a($$0x, "pos"), czh.a, cxq.a, 1.0F, 0)))
+                              .then(
+                                 ((RequiredArgumentBuilder)du.a("rotation", fc.a())
+                                       .executes(
+                                          $$0x -> a((dt)$$0x.getSource(), es.e($$0x, "template"), fk.a($$0x, "pos"), fc.a($$0x, "rotation"), cxq.a, 1.0F, 0)
+                                       ))
+                                    .then(
+                                       ((RequiredArgumentBuilder)du.a("mirror", fb.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dt)$$0x.getSource(),
+                                                      es.e($$0x, "template"),
+                                                      fk.a($$0x, "pos"),
+                                                      fc.a($$0x, "rotation"),
+                                                      fb.a($$0x, "mirror"),
+                                                      1.0F,
+                                                      0
+                                                   )
+                                             ))
+                                          .then(
+                                             ((RequiredArgumentBuilder)du.a("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
                                                    .executes(
                                                       $$0x -> a(
                                                             (dt)$$0x.getSource(),
-                                                            eo.a($$0x, "name"),
-                                                            fr.a($$0x, "pos"),
-                                                            fr.a($$0x, "delta"),
-                                                            FloatArgumentType.getFloat($$0x, "speed"),
-                                                            IntegerArgumentType.getInteger($$0x, "count"),
-                                                            false,
-                                                            ((dt)$$0x.getSource()).l().ac().t()
+                                                            es.e($$0x, "template"),
+                                                            fk.a($$0x, "pos"),
+                                                            fc.a($$0x, "rotation"),
+                                                            fb.a($$0x, "mirror"),
+                                                            FloatArgumentType.getFloat($$0x, "integrity"),
+                                                            0
                                                          )
                                                    ))
                                                 .then(
-                                                   du.a("viewers", ee.d())
+                                                   du.a("seed", IntegerArgumentType.integer())
                                                       .executes(
                                                          $$0x -> a(
                                                                (dt)$$0x.getSource(),
-                                                               eo.a($$0x, "name"),
-                                                               fr.a($$0x, "pos"),
-                                                               fr.a($$0x, "delta"),
-                                                               FloatArgumentType.getFloat($$0x, "speed"),
-                                                               IntegerArgumentType.getInteger($$0x, "count"),
-                                                               false,
-                                                               ee.f($$0x, "viewers")
+                                                               es.e($$0x, "template"),
+                                                               fk.a($$0x, "pos"),
+                                                               fc.a($$0x, "rotation"),
+                                                               fb.a($$0x, "mirror"),
+                                                               FloatArgumentType.getFloat($$0x, "integrity"),
+                                                               IntegerArgumentType.getInteger($$0x, "seed")
                                                             )
                                                       )
                                                 )
@@ -111,20 +136,83 @@ public class ahs {
       );
    }
 
-   private static int a(dt $$0, iv $$1, ehp $$2, ehp $$3, float $$4, int $$5, boolean $$6, Collection<akt> $$7) throws CommandSyntaxException {
-      int $$8 = 0;
-
-      for (akt $$9 : $$7) {
-         if ($$0.e().a($$9, $$1, $$6, $$2.c, $$2.d, $$2.e, $$5, $$3.c, $$3.d, $$3.e, (double)$$4)) {
-            $$8++;
-         }
-      }
-
-      if ($$8 == 0) {
+   public static int a(dt $$0, he.c<dnj<?, ?>> $$1, gw $$2) throws CommandSyntaxException {
+      akq $$3 = $$0.e();
+      dnj<?, ?> $$4 = $$1.a();
+      cpc $$5 = new cpc($$2);
+      a($$3, new cpc($$5.e - 1, $$5.f - 1), new cpc($$5.e + 1, $$5.f + 1));
+      if (!$$4.a($$3, $$3.k().g(), $$3.D_(), $$2)) {
          throw a.create();
       } else {
-         $$0.a(() -> tn.a("commands.particle.success", jd.k.b($$1.b()).toString()), true);
-         return $$8;
+         String $$6 = $$1.g().a().toString();
+         $$0.a(() -> tl.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
+
+   public static int a(dt $$0, he<dwr> $$1, aew $$2, int $$3, gw $$4) throws CommandSyntaxException {
+      akq $$5 = $$0.e();
+      if (!dwl.a($$5, $$1, $$2, $$3, $$4, false)) {
+         throw b.create();
+      } else {
+         $$0.a(() -> tl.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
+         return 1;
+      }
+   }
+
+   public static int b(dt $$0, he.c<dvi> $$1, gw $$2) throws CommandSyntaxException {
+      akq $$3 = $$0.e();
+      dvi $$4 = $$1.a();
+      dhg $$5 = $$3.k().g();
+      dvq $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.k().i(), $$3.p(), $$3.A(), new cpc($$2), 0, $$3, $$0x -> true);
+      if (!$$6.b()) {
+         throw c.create();
+      } else {
+         dva $$7 = $$6.a();
+         cpc $$8 = new cpc(hw.a($$7.g()), hw.a($$7.i()));
+         cpc $$9 = new cpc(hw.a($$7.j()), hw.a($$7.l()));
+         a($$3, $$8, $$9);
+         cpc.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.D_(), new dva($$3x.d(), $$3.H_(), $$3x.e(), $$3x.f(), $$3.aj(), $$3x.g()), $$3x));
+         String $$10 = $$1.g().a().toString();
+         $$0.a(() -> tl.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
+
+   public static int a(dt $$0, aew $$1, gw $$2, czh $$3, cxq $$4, float $$5, int $$6) throws CommandSyntaxException {
+      akq $$7 = $$0.e();
+      dzc $$8 = $$7.p();
+
+      Optional<dzb> $$9;
+      try {
+         $$9 = $$8.b($$1);
+      } catch (z var13) {
+         throw d.create($$1);
+      }
+
+      if ($$9.isEmpty()) {
+         throw d.create($$1);
+      } else {
+         dzb $$12 = $$9.get();
+         a($$7, new cpc($$2), new cpc($$2.a($$12.a())));
+         dyx $$13 = new dyx().a($$4).a($$3);
+         if ($$5 < 1.0F) {
+            $$13.b().a(new dyf($$5)).a(dei.b((long)$$6));
+         }
+
+         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dei.b((long)$$6), 2);
+         if (!$$14) {
+            throw e.create();
+         } else {
+            $$0.a(() -> tl.a("commands.place.template.success", $$1, $$2.u(), $$2.v(), $$2.w()), true);
+            return 1;
+         }
+      }
+   }
+
+   private static void a(akq $$0, cpc $$1, cpc $$2) throws CommandSyntaxException {
+      if (cpc.a($$1, $$2).filter($$1x -> !$$0.o($$1x.l())).findAny().isPresent()) {
+         throw fk.a.create();
       }
    }
 }

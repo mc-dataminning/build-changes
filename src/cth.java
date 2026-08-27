@@ -1,90 +1,54 @@
-public class cth extends csx {
-   public static final dgl a = dgb.aw;
-   public static final int b = 15;
-   protected static final int c = 1;
-   protected static final eii d = csx.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   protected static final eii e = csx.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+import javax.annotation.Nullable;
 
-   protected cth(dfk.d $$0) {
+public class cth extends czo {
+   public static final dgd a = dfz.R;
+
+   public cth(dfi.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
+      this.k(this.n().a(a, ha.c));
+   }
+
+   @Nullable
+   @Override
+   public dcv a(gw $$0, dfj $$1) {
+      return new dda($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
+      return !$$0.B ? a($$2, dcx.J, ($$0x, $$1x, $$2x, $$3) -> dkc.c.a($$0x, $$3.gf(), $$3.gg())) : null;
+   }
+
+   @Nullable
+   @Override
+   public dfj a(cln $$0) {
+      return super.a($$0).a(a, $$0.g());
    }
 
    @Override
-   public void a(dfl $$0, aks $$1, gw $$2, ase $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   public int a(dfj $$0, cpb $$1, gw $$2, ha $$3) {
+      return $$3 != $$0.c(a) ? super.a($$0, $$1, $$2, $$3) : 0;
    }
 
    @Override
-   public void b(dfl $$0, aks $$1, gw $$2, ase $$3) {
-      gw $$4 = $$2.c();
-      if ($$1.t($$4)) {
-         int $$5 = 1;
-
-         while ($$1.a_($$2.c($$5)).a(this)) {
-            $$5++;
-         }
-
-         if ($$5 < 3) {
-            int $$6 = $$0.c(a);
-            if ($$6 == 15) {
-               $$1.b($$4, this.n());
-               dfl $$7 = $$0.a(a, Integer.valueOf(0));
-               $$1.a($$2, $$7, 4);
-               $$1.a($$7, $$4, this, $$2, false);
-            } else {
-               $$1.a($$2, $$0.a(a, Integer.valueOf($$6 + 1)), 4);
-            }
-         }
-      }
-   }
-
-   @Override
-   public eii c(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return d;
-   }
-
-   @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return e;
-   }
-
-   @Override
-   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfl $$0, cqa $$1, gw $$2) {
-      for (hc $$3 : hc.c.a) {
-         dfl $$4 = $$1.a_($$2.a($$3));
-         if ($$4.e() || $$1.b_($$2.a($$3)).a(apz.b)) {
-            return false;
-         }
-      }
-
-      dfl $$5 = $$1.a_($$2.d());
-      return ($$5.a(csy.dQ) || $$5.a(apu.H)) && !$$1.a_($$2.c()).k();
-   }
-
-   @Override
-   public void a(dfl $$0, cpx $$1, gw $$2, bis $$3) {
-      $$3.a($$1.ag().j(), 1.0F);
-   }
-
-   @Override
-   protected void a(dfm.a<csx, dfl> $$0) {
+   protected void a(dfk.a<csv, dfj> $$0) {
+      super.a($$0);
       $$0.a(a);
    }
 
    @Override
-   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
-      return false;
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   public int b() {
+      return 10;
    }
 }

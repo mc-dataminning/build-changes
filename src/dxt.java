@@ -1,32 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class dxt extends dvk {
-   public static final Codec<dxt> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, dxt::new)
-   );
-   public final boolean e;
+public class dxt extends dvi {
+   public static final Codec<dxt> d = a(dxt::new);
 
-   public dxt(dvk.c $$0, boolean $$1) {
+   public dxt(dvi.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<dvk.b> a(dvk.a $$0) {
-      dku.a $$1 = this.e ? dku.a.a : dku.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   public Optional<dvi.b> a(dvi.a $$0) {
+      return Optional.of(new dvi.b($$0.h().l(), (Consumer<dwa>)($$1 -> a($$1, $$0))));
    }
 
-   private void a(dwc $$0, dvk.a $$1) {
-      czj $$2 = czj.a($$1.f());
-      gw $$3 = new gw($$1.h().d(), 90, $$1.h().e());
-      dxs.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
+   private static void a(dwa $$0, dvi.a $$1) {
+      int $$2 = 0;
+
+      dxs.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
+         dxs.a();
+         $$3 = new dxs.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<dvm> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            dvm $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
+         }
+
+         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
    }
 
    @Override
-   public dvt<?> e() {
-      return dvt.m;
+   public dvr<?> e() {
+      return dvr.n;
    }
 }

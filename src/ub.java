@@ -1,35 +1,44 @@
-public interface ub {
-   tn a();
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
+import java.util.UUID;
 
-   void a(akt var1, boolean var2, tj.a var3);
-
-   static ub a(uc $$0) {
-      return (ub)($$0.g() ? new ub.a($$0.c()) : new ub.b($$0));
+public record ub(UUID a, cbx b) {
+   public ug a(Duration $$0) {
+      return new ug.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public static record a(tn a) implements ub {
-      @Override
-      public void a(akt $$0, boolean $$1, tj.a $$2) {
-         $$0.c.a(this.a, $$2);
-      }
+   public ue.b a(UUID $$0) {
+      return new ue($$0, this.a).a(this.b);
    }
 
-   public static record b(uc a) implements ub {
-      @Override
-      public tn a() {
-         return this.a.c();
+   public ub.a a() {
+      return new ub.a(this.a, this.b.b());
+   }
+
+   public boolean b() {
+      return this.b.b().a();
+   }
+
+   public UUID c() {
+      return this.a;
+   }
+
+   public cbx d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, cbx.a b) {
+      public static ub.a a(so $$0) {
+         return new ub.a($$0.o(), new cbx.a($$0));
       }
 
-      @Override
-      public void a(akt $$0, boolean $$1, tj.a $$2) {
-         uc $$3 = this.a.a($$1);
-         if (!$$3.i()) {
-            $$0.c.a($$3, $$2);
-         }
+      public static void a(so $$0, ub.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
 
-      public uc b() {
-         return this.a;
+      public ub a(GameProfile $$0, ash $$1) throws cbx.b {
+         return new ub(this.a, cbx.a($$1, $$0.getId(), this.b));
       }
    }
 }

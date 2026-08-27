@@ -1,24 +1,40 @@
-public class zw implements vf<wy> {
-   private final int a;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public zw(int $$0) {
+public class zw implements vd<ww> {
+   private final eii a;
+   private final String b;
+
+   public zw(eii $$0, @Nullable eij $$1) {
       this.a = $$0;
+      if ($$1 == null) {
+         this.b = "";
+      } else {
+         this.b = $$1.b();
+      }
    }
 
-   public zw(sq $$0) {
-      this.a = $$0.m();
+   public zw(so $$0) {
+      this.a = $$0.a(eii.u);
+      this.b = $$0.r();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
+   public void a(so $$0) {
+      $$0.a(eii::a, this.a);
+      $$0.a(this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public eii a() {
       return this.a;
+   }
+
+   @Nullable
+   public String d() {
+      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

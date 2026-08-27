@@ -1,26 +1,74 @@
-import java.util.IllegalFormatException;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gam {
-   private static volatile qt a = qt.a();
+public class gam implements anu {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gal b = new gal("US", "English", false);
+   private Map<String, gal> c = ImmutableMap.of("en_us", b);
+   private String d;
 
-   private gam() {
+   public gam(String $$0) {
+      this.d = $$0;
    }
 
-   static void a(qt $$0) {
-      a = $$0;
+   private static Map<String, gal> a(Stream<amh> $$0) {
+      Map<String, gal> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gay $$2 = $$1x.a(gay.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
    }
 
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
+   @Override
+   public void a(ant $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gal $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
       }
+
+      gai $$4 = gai.a($$0, $$1, $$2);
+      gak.a($$4);
+      qr.a($$4);
    }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   public void a(String $$0) {
+      this.d = $$0;
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public SortedMap<String, gal> b() {
+      return new TreeMap<>(this.c);
+   }
+
+   @Nullable
+   public gal b(String $$0) {
+      return this.c.get($$0);
    }
 }

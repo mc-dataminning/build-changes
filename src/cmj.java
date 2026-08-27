@@ -1,67 +1,51 @@
-public class cmj extends cmd {
-   public cmj(cma $$0) {
-      super($$0);
-   }
+public interface cmj<C extends bgr> {
+   boolean a(C var1, cpv var2);
 
-   public boolean a(cfb $$0, cpx $$1) {
-      int $$2 = 0;
-      cjh $$3 = cjh.b;
+   cjf a(C var1, hr var2);
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjh $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cjk.rf)) {
-               if (!$$3.b()) {
-                  return false;
-               }
+   boolean a(int var1, int var2);
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cjk.tp)) {
-                  return false;
-               }
+   cjf a(hr var1);
 
-               $$2++;
-            }
+   default hn<cjf> a(C $$0) {
+      hn<cjf> $$1 = hn.a($$0.b(), cjf.b);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cja $$3 = $$0.a($$2).d();
+         if ($$3.t()) {
+            $$1.set($$2, new cjf($$3.s()));
          }
       }
 
-      return !$$3.b() && $$2 > 0;
+      return $$1;
    }
 
-   public cjh a(cfb $$0, hu $$1) {
-      int $$2 = 0;
-      cjh $$3 = cjh.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjh $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cjk.rf)) {
-               if (!$$3.b()) {
-                  return cjh.b;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cjk.tp)) {
-                  return cjh.b;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cjh.b;
+   default hn<cmg> a() {
+      return hn.a();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   default boolean am_() {
+      return false;
    }
 
-   @Override
-   public cmo<?> an_() {
-      return cmo.e;
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default cjf g() {
+      return new cjf(csw.cA);
+   }
+
+   cmm<?> an_();
+
+   cmn<?> e();
+
+   default boolean i() {
+      hn<cmg> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

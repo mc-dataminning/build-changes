@@ -1,40 +1,39 @@
-public class aae implements vf<wy> {
-   private final float a;
-   private final int b;
-   private final float c;
+import java.util.List;
 
-   public aae(float $$0, int $$1, float $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class aae implements vd<ww> {
+   private final int a;
+   private final int[] b;
+
+   public aae(biq $$0) {
+      this.a = $$0.ah();
+      List<biq> $$1 = $$0.cP();
+      this.b = new int[$$1.size()];
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.b[$$2] = $$1.get($$2).ah();
+      }
    }
 
-   public aae(sq $$0) {
-      this.a = $$0.readFloat();
-      this.b = $$0.m();
-      this.c = $$0.readFloat();
+   public aae(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.c();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public float a() {
-      return this.a;
-   }
-
-   public int d() {
+   public int[] a() {
       return this.b;
    }
 
-   public float e() {
-      return this.c;
+   public int d() {
+      return this.a;
    }
 }

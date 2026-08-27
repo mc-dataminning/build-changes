@@ -1,159 +1,120 @@
-public class dde extends dea implements ddz {
-   private static final int c = 1;
-   private hp<cjh> f = hp.a(27, cjh.b);
-   private final ddk g = new ddk() {
-      @Override
-      protected void a(cpx $$0, gw $$1, dfl $$2) {
-         dde.a($$0, $$1, $$2, apf.ej);
-      }
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-      @Override
-      protected void b(cpx $$0, gw $$1, dfl $$2) {
-         dde.a($$0, $$1, $$2, apf.eh);
-      }
+public class dde extends dcv implements bgr {
+   public static final int c = 6;
+   private static final Logger d = LogUtils.getLogger();
+   private final hn<cjf> e = hn.a(6, cjf.b);
+   private int f = -1;
 
-      @Override
-      protected void a(cpx $$0, gw $$1, dfl $$2, int $$3, int $$4) {
-         dde.this.a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      protected boolean a(cbw $$0) {
-         if (!($$0.bS instanceof ceu)) {
-            return false;
-         } else {
-            bgt $$1 = ((ceu)$$0.bS).l();
-            return $$1 == dde.this || $$1 instanceof bgs && ((bgs)$$1).a(dde.this);
-         }
-      }
-   };
-   private final ddf j = new ddf();
-
-   protected dde(dcz<?> $$0, gw $$1, dfl $$2) {
-      super($$0, $$1, $$2);
+   public dde(gw $$0, dfj $$1) {
+      super(dcx.M, $$0, $$1);
    }
 
-   public dde(gw $$0, dfl $$1) {
-      this(dcz.b, $$0, $$1);
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         dfj $$1 = this.q();
+
+         for (int $$2 = 0; $$2 < cty.b.size(); $$2++) {
+            boolean $$3 = !this.a($$2).b();
+            dga $$4 = cty.b.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(djt.c, this.p, djt.a.a($$1));
+      } else {
+         d.error("Expected slot 0-5, got {}", $$0);
+      }
+   }
+
+   @Override
+   public void a(qw $$0) {
+      this.e.clear();
+      bgs.b($$0, this.e);
+      this.f = $$0.h("last_interacted_slot");
+   }
+
+   @Override
+   protected void b(qw $$0) {
+      bgs.a($$0, this.e, true);
+      $$0.a("last_interacted_slot", this.f);
+   }
+
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(cjf::b)).count();
+   }
+
+   @Override
+   public void a() {
+      this.e.clear();
    }
 
    @Override
    public int b() {
-      return 27;
+      return 6;
    }
 
    @Override
-   protected tn g() {
-      return tn.c("container.chest");
+   public boolean af_() {
+      return this.e.stream().allMatch(cjf::b);
    }
 
    @Override
-   public void a(qy $$0) {
-      super.a($$0);
-      this.f = hp.a(this.b(), cjh.b);
-      if (!this.d($$0)) {
-         bgu.b($$0, this.f);
+   public cjf a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Override
+   public cjf a(int $$0, int $$1) {
+      cjf $$2 = Objects.requireNonNullElse(this.e.get($$0), cjf.b);
+      this.e.set($$0, cjf.b);
+      if (!$$2.b()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cjf b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cjf $$1) {
+      if ($$1.a(aqa.av)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.b()) {
+         this.a($$0, 1);
       }
    }
 
    @Override
-   protected void b(qy $$0) {
-      super.b($$0);
-      if (!this.e($$0)) {
-         bgu.a($$0, this.f);
-      }
-   }
-
-   public static void a(cpx $$0, gw $$1, dfl $$2, dde $$3) {
-      $$3.j.a();
-   }
-
-   static void a(cpx $$0, gw $$1, dfl $$2, ape $$3) {
-      dgd $$4 = $$2.c(ctz.c);
-      if ($$4 != dgd.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dgd.c) {
-            hc $$8 = ctz.h($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, apg.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+   public boolean a(bgr $$0, int $$1, cjf $$2) {
+      return $$0.a_($$2x -> $$2x.b() ? true : cjf.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.ag_()));
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.j.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
+   public int ag_() {
+      return 1;
    }
 
    @Override
-   public void d_(cbw $$0) {
-      if (!this.q && !$$0.M_()) {
-         this.g.a($$0, this.k(), this.p(), this.q());
-      }
+   public boolean a(cbu $$0) {
+      return bgr.a(this, $$0);
    }
 
    @Override
-   public void c(cbw $$0) {
-      if (!this.q && !$$0.M_()) {
-         this.g.b($$0, this.k(), this.p(), this.q());
-      }
+   public boolean b(int $$0, cjf $$1) {
+      return $$1.a(aqa.av) && this.a($$0).b();
    }
 
-   @Override
-   protected hp<cjh> f() {
+   public int g() {
       return this.f;
-   }
-
-   @Override
-   protected void a(hp<cjh> $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.j.a($$0);
-   }
-
-   public static int a(cpd $$0, gw $$1) {
-      dfl $$2 = $$0.a_($$1);
-      if ($$2.t()) {
-         dcx $$3 = $$0.c_($$1);
-         if ($$3 instanceof dde) {
-            return ((dde)$$3).g.a();
-         }
-      }
-
-      return 0;
-   }
-
-   public static void a(dde $$0, dde $$1) {
-      hp<cjh> $$2 = $$0.f();
-      $$0.a($$1.f());
-      $$1.a($$2);
-   }
-
-   @Override
-   protected cen a(int $$0, cbv $$1) {
-      return ceu.a($$0, $$1, this);
-   }
-
-   public void i() {
-      if (!this.q) {
-         this.g.c(this.k(), this.p(), this.q());
-      }
-   }
-
-   protected void a(cpx $$0, gw $$1, dfl $$2, int $$3, int $$4) {
-      csx $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
    }
 }

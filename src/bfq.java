@@ -1,146 +1,50 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
+import com.mojang.datafixers.util.Either;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.locks.LockSupport;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
-public abstract class bfq<R extends Runnable> implements bey, bfs<R>, Executor {
-   private final String b;
-   private static final Logger c = LogUtils.getLogger();
-   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
-   private int e;
+public interface bfq<Msg> extends AutoCloseable {
+   String bn();
 
-   protected bfq(String $$0) {
-      this.b = $$0;
-      bew.a.a(this);
-   }
-
-   protected abstract R f(Runnable var1);
-
-   protected abstract boolean e(R var1);
-
-   public boolean bl() {
-      return Thread.currentThread() == this.au();
-   }
-
-   protected abstract Thread au();
-
-   protected boolean at() {
-      return !this.bl();
-   }
-
-   public int bm() {
-      return this.d.size();
-   }
+   void a(Msg var1);
 
    @Override
-   public String bn() {
-      return this.b;
+   default void close() {
    }
 
-   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
-      return this.at() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
+   default <Source> CompletableFuture<Source> b(Function<? super bfq<Source>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
+      this.a($$2);
+      return $$1;
    }
 
-   private CompletableFuture<Void> a(Runnable $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.run();
-         return null;
-      }, this);
+   default <Source> CompletableFuture<Source> c(Function<? super bfq<Either<Source, Exception>>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
+         $$1x.ifLeft($$1::complete);
+         $$1x.ifRight($$1::completeExceptionally);
+      }));
+      this.a($$2);
+      return $$1;
    }
 
-   public CompletableFuture<Void> g(Runnable $$0) {
-      if (this.at()) {
-         return this.a($$0);
-      } else {
-         $$0.run();
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   public void h(Runnable $$0) {
-      if (!this.bl()) {
-         this.a($$0).join();
-      } else {
-         $$0.run();
-      }
-   }
-
-   public void i(R $$0) {
-      this.d.add($$0);
-      LockSupport.unpark(this.au());
-   }
-
-   @Override
-   public void execute(Runnable $$0) {
-      if (this.at()) {
-         this.i(this.f($$0));
-      } else {
-         $$0.run();
-      }
-   }
-
-   public void c(Runnable $$0) {
-      this.execute($$0);
-   }
-
-   protected void bo() {
-      this.d.clear();
-   }
-
-   protected void bp() {
-      while (this.x()) {
-      }
-   }
-
-   public boolean x() {
-      R $$0 = this.d.peek();
-      if ($$0 == null) {
-         return false;
-      } else if (this.e == 0 && !this.e($$0)) {
-         return false;
-      } else {
-         this.d(this.d.remove());
-         return true;
-      }
-   }
-
-   public void c(BooleanSupplier $$0) {
-      this.e++;
-
-      try {
-         while (!$$0.getAsBoolean()) {
-            if (!this.x()) {
-               this.bq();
-            }
+   static <Msg> bfq<Msg> a(final String $$0, final Consumer<Msg> $$1) {
+      return new bfq<Msg>() {
+         @Override
+         public String bn() {
+            return $$0;
          }
-      } finally {
-         this.e--;
-      }
-   }
 
-   protected void bq() {
-      Thread.yield();
-      LockSupport.parkNanos("waiting for tasks", 100000L);
-   }
+         @Override
+         public void a(Msg $$0x) {
+            $$1.accept($$0);
+         }
 
-   protected void d(R $$0) {
-      try {
-         $$0.run();
-      } catch (Exception var3) {
-         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bn(), var3);
-         throw var3;
-      }
-   }
-
-   @Override
-   public List<bev> bk() {
-      return ImmutableList.of(bev.a(this.b + "-pending-tasks", beu.b, this::bm));
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

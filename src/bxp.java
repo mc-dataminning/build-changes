@@ -1,20 +1,25 @@
 import javax.annotation.Nullable;
 
-public class bxp extends bxl {
-   private static final btu b = btu.a().d();
+public class bxp extends bxj {
+   private static final bts b = bts.a().d();
    @Nullable
-   private ebd c;
+   private ebb c;
    @Nullable
-   private ehp d;
-   private boolean e;
+   private ehn d;
 
-   public bxp(bxj $$0) {
+   public bxp(bxh $$0) {
       super($$0);
    }
 
    @Override
-   public bxz<bxp> i() {
-      return bxz.a;
+   public bxx<bxp> i() {
+      return bxx.c;
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+      this.d = null;
    }
 
    @Override
@@ -25,83 +30,41 @@ public class bxp extends bxl {
       }
    }
 
-   @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
-   }
-
    @Nullable
    @Override
-   public ehp g() {
+   public ehn g() {
       return this.d;
    }
 
    private void j() {
-      if (this.c != null && this.c.c()) {
-         gw $$0 = this.a.dL().a(dku.a.f, new gw(dnx.a(this.a.s())));
-         int $$1 = this.a.gb() == null ? 0 : this.a.gb().e();
-         if (this.a.ef().a($$1 + 3) == 0) {
-            this.a.ga().a(bxz.c);
-            return;
-         }
-
-         cbw $$2 = this.a.dL().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-         double $$3;
-         if ($$2 != null) {
-            $$3 = $$0.b($$2.dj()) / 512.0;
-         } else {
-            $$3 = 64.0;
-         }
-
-         if ($$2 != null && (this.a.ef().a((int)($$3 + 2.0)) == 0 || this.a.ef().a($$1 + 2) == 0)) {
-            this.a($$2);
-            return;
-         }
-      }
-
       if (this.c == null || this.c.c()) {
-         int $$5 = this.a.y();
-         int $$6 = $$5;
-         if (this.a.ef().a(8) == 0) {
-            this.e = !this.e;
-            $$6 = $$5 + 6;
-         }
-
-         if (this.e) {
-            $$6++;
+         int $$0 = this.a.y();
+         gw $$1 = this.a.dL().a(dks.a.f, dnv.a(this.a.s()));
+         cbu $$2 = this.a.dL().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            ehn $$3 = new ehn($$2.dq(), 0.0, $$2.dw()).d();
+            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
          } else {
-            $$6--;
+            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
          }
 
-         if (this.a.gb() != null && this.a.gb().e() >= 0) {
-            $$6 %= 12;
-            if ($$6 < 0) {
-               $$6 += 12;
-            }
-         } else {
-            $$6 -= 12;
-            $$6 &= 7;
-            $$6 += 12;
-         }
-
-         this.c = this.a.a($$5, $$6, null);
+         eaz $$6 = new eaz($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
          if (this.c != null) {
             this.c.a();
          }
       }
 
       this.k();
-   }
-
-   private void a(cbw $$0) {
-      this.a.ga().a(bxz.b);
-      this.a.ga().b(bxz.b).a($$0);
+      if (this.c != null && this.c.c()) {
+         this.a.ga().a(bxx.d);
+      }
    }
 
    private void k() {
       if (this.c != null && !this.c.c()) {
-         ib $$0 = this.c.g();
+         hy $$0 = this.c.g();
          this.c.a();
          double $$1 = (double)$$0.u();
          double $$2 = (double)$$0.w();
@@ -111,14 +74,7 @@ public class bxp extends bxl {
             $$3 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
          } while ($$3 < (double)$$0.v());
 
-         this.d = new ehp($$1, $$3, $$2);
-      }
-   }
-
-   @Override
-   public void a(bxi $$0, gw $$1, bhq $$2, @Nullable cbw $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
+         this.d = new ehn($$1, $$3, $$2);
       }
    }
 }

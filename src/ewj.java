@@ -1,6 +1,3 @@
-public enum ewj {
-   a,
-   b,
-   c,
-   d;
+public interface ewj {
+   void b(ewi var1);
 }

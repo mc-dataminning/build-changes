@@ -1,53 +1,30 @@
-public class dbj extends cuo {
-   public static final int a = 2;
-   public static final dgl b = dgb.aq;
-   private static final float e = 3.0F;
-   private static final eii[] f = new eii[]{csx.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), csx.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
-   private static final int g = 1;
-
-   public dbj(dfk.d $$0) {
-      super($$0);
+public class dbj extends ctx {
+   public dbj(dfi.d $$0) {
+      super($$0, () -> dcx.c);
    }
 
    @Override
-   protected void a(dfm.a<csx, dfl> $$0) {
-      $$0.a(b);
+   public dcv a(gw $$0, dfj $$1) {
+      return new dem($$0, $$1);
    }
 
    @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return f[this.g($$0)];
+   protected apk<aew> b() {
+      return apn.i.b(apn.ai);
    }
 
    @Override
-   protected dgl a() {
-      return b;
+   public boolean f_(dfj $$0) {
+      return true;
    }
 
    @Override
-   public int b() {
-      return 2;
+   public int a(dfj $$0, cpb $$1, gw $$2, ha $$3) {
+      return arw.a(ddc.a($$1, $$2), 0, 15);
    }
 
    @Override
-   protected cpw c() {
-      return cjk.uo;
-   }
-
-   @Override
-   public dfl b(int $$0) {
-      return $$0 == 2 ? csy.bS.n() : super.b($$0);
-   }
-
-   @Override
-   public void b(dfl $$0, aks $$1, gw $$2, ase $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(cpx $$0) {
-      return 1;
+   public int b(dfj $$0, cpb $$1, gw $$2, ha $$3) {
+      return $$3 == ha.b ? $$0.b($$1, $$2, $$3) : 0;
    }
 }

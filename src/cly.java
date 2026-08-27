@@ -1,15 +1,18 @@
-public class cly extends clt {
-   public cly(String $$0, clz $$1, cmi $$2, cjh $$3, float $$4, int $$5) {
-      super(cmp.e, $$0, $$1, $$2, $$3, $$4, $$5);
+public enum cly implements asp {
+   a("building"),
+   b("redstone"),
+   c("equipment"),
+   d("misc");
+
+   public static final asp.a<cly> e = asp.a(cly::values);
+   private final String f;
+
+   private cly(String $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public cjh g() {
-      return new cjh(csy.og);
-   }
-
-   @Override
-   public cmo<?> an_() {
-      return cmo.s;
+   public String c() {
+      return this.f;
    }
 }

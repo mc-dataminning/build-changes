@@ -1,10 +1,8 @@
-public abstract class bun extends bjk {
-   protected bun(biw<? extends bun> $$0, cpx $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(cbw $$0) {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bun {
 }

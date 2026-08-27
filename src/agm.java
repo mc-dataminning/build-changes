@@ -1,170 +1,195 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Locale;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class agm {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tn.a("commands.datapack.unknown", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tn.a("commands.datapack.enable.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tn.a("commands.datapack.disable.failed", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> tn.a("commands.datapack.enable.failed.no_flags", $$0, $$1)
-   );
-   private static final SuggestionProvider<dt> e = ($$0, $$1) -> dw.b(
-         ((dt)$$0.getSource()).l().aB().d().stream().map(StringArgumentType::escapeIfRequired), $$1
-      );
-   private static final SuggestionProvider<dt> f = ($$0, $$1) -> {
-      ang $$2 = ((dt)$$0.getSource()).l().aB();
-      Collection<String> $$3 = $$2.d();
-      cee $$4 = ((dt)$$0.getSource()).w();
-      return dw.b(
-         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(and::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
-      );
-   };
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.debug.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.debug.alreadyRunning"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("datapack").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     du.a("enable")
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
-                                             "name", StringArgumentType.string()
-                                          )
-                                          .suggests(f)
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dt)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.i().a($$0xx, $$1, $$0xxx -> $$0xxx, false)
-                                                )
-                                          ))
-                                       .then(
-                                          du.a("after")
-                                             .then(
-                                                du.a("existing", StringArgumentType.string())
-                                                   .suggests(e)
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (dt)$$0x.getSource(),
-                                                            a($$0x, "name", true),
-                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
-                                                         )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       du.a("before")
-                                          .then(
-                                             du.a("existing", StringArgumentType.string())
-                                                .suggests(e)
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (dt)$$0x.getSource(),
-                                                         a($$0x, "name", true),
-                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(du.a("last").executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", true), List::add))))
-                              .then(du.a("first").executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
-                        )
-                  ))
-               .then(
-                  du.a("disable").then(du.a("name", StringArgumentType.string()).suggests(e).executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", false))))
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("debug").requires($$0x -> $$0x.c(3)))
+                  .then(du.a("start").executes($$0x -> a((dt)$$0x.getSource()))))
+               .then(du.a("stop").executes($$0x -> b((dt)$$0x.getSource()))))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("list").executes($$0x -> a((dt)$$0x.getSource())))
-                     .then(du.a("available").executes($$0x -> b((dt)$$0x.getSource()))))
-                  .then(du.a("enabled").executes($$0x -> c((dt)$$0x.getSource())))
+               ((LiteralArgumentBuilder)du.a("function").requires($$0x -> $$0x.c(3)))
+                  .then(du.a("name", fv.a()).suggests(aha.a).executes($$0x -> a((dt)$$0x.getSource(), fv.a($$0x, "name"))))
             )
       );
    }
 
-   private static int a(dt $$0, and $$1, agm.a $$2) throws CommandSyntaxException {
-      ang $$3 = $$0.l().aB();
-      List<and> $$4 = Lists.newArrayList($$3.f());
-      $$2.apply($$4, $$1);
-      $$0.a(() -> tn.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      aia.a($$4.stream().map(and::f).collect(Collectors.toList()), $$0);
-      return $$4.size();
-   }
-
-   private static int a(dt $$0, and $$1) {
-      ang $$2 = $$0.l().aB();
-      List<and> $$3 = Lists.newArrayList($$2.f());
-      $$3.remove($$1);
-      $$0.a(() -> tn.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      aia.a($$3.stream().map(and::f).collect(Collectors.toList()), $$0);
-      return $$3.size();
-   }
-
-   private static int a(dt $$0) {
-      return c($$0) + b($$0);
-   }
-
-   private static int b(dt $$0) {
-      ang $$1 = $$0.l().aB();
-      $$1.a();
-      Collection<and> $$2 = $$1.f();
-      Collection<and> $$3 = $$1.c();
-      cee $$4 = $$0.w();
-      List<and> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
-      if ($$5.isEmpty()) {
-         $$0.a(() -> tn.c("commands.datapack.list.available.none"), false);
+   private static int a(dt $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aZ()) {
+         throw c.create();
       } else {
-         $$0.a(() -> tn.a("commands.datapack.list.available.success", $$5.size(), tp.b($$5, $$0xx -> $$0xx.a(false))), false);
+         $$1.ba();
+         $$0.a(() -> tl.c("commands.debug.started"), true);
+         return 0;
       }
-
-      return $$5.size();
    }
 
-   private static int c(dt $$0) {
-      ang $$1 = $$0.l().aB();
-      $$1.a();
-      Collection<? extends and> $$2 = $$1.f();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> tn.c("commands.datapack.list.enabled.none"), false);
+   private static int b(dt $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aZ()) {
+         throw b.create();
       } else {
-         $$0.a(() -> tn.a("commands.datapack.list.enabled.success", $$2.size(), tp.b($$2, $$0xx -> $$0xx.a(true))), false);
+         bdo $$2 = $$1.bb();
+         double $$3 = (double)$$2.g() / (double)asu.a;
+         double $$4 = (double)$$2.f() / $$3;
+         $$0.a(() -> tl.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
+         return (int)$$4;
       }
-
-      return $$2.size();
    }
 
-   private static and a(CommandContext<dt> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
-      String $$3 = StringArgumentType.getString($$0, $$1);
-      ang $$4 = ((dt)$$0.getSource()).l().aB();
-      and $$5 = $$4.c($$3);
-      if ($$5 == null) {
-         throw a.create($$3);
-      } else {
-         boolean $$6 = $$4.f().contains($$5);
-         if ($$2 && $$6) {
-            throw b.create($$3);
-         } else if (!$$2 && !$$6) {
-            throw c.create($$3);
-         } else {
-            cee $$7 = ((dt)$$0.getSource()).w();
-            cee $$8 = $$5.d();
-            if (!$$8.a($$7)) {
-               throw d.create($$3, ceg.a($$7, $$8));
-            } else {
-               return $$5;
+   private static int a(dt $$0, Collection<dp> $$1) {
+      int $$2 = 0;
+      MinecraftServer $$3 = $$0.l();
+      String $$4 = "debug-trace-" + ac.e() + ".txt";
+
+      try {
+         Path $$5 = $$3.c("debug").toPath();
+         Files.createDirectories($$5);
+
+         try (Writer $$6 = Files.newBufferedWriter($$5.resolve($$4), StandardCharsets.UTF_8)) {
+            PrintWriter $$7 = new PrintWriter($$6);
+
+            for (dp $$8 : $$1) {
+               $$7.println($$8.a());
+               agm.a $$9 = new agm.a($$7);
+
+               try {
+                  $$2 += $$0.l().aA().a($$8, $$0.a($$9).b(2), $$9, null);
+               } catch (dv var13) {
+                  $$0.b(var13.a());
+               }
             }
          }
+      } catch (IOException | UncheckedIOException var15) {
+         a.warn("Tracing failed", var15);
+         $$0.b(tl.c("commands.debug.function.traceFailed"));
       }
+
+      int $$12 = $$2;
+      if ($$1.size() == 1) {
+         $$0.a(() -> tl.a("commands.debug.function.success.single", $$12, $$1.iterator().next().a(), $$4), true);
+      } else {
+         $$0.a(() -> tl.a("commands.debug.function.success.multiple", $$12, $$1.size(), $$4), true);
+      }
+
+      return $$2;
    }
 
-   interface a {
-      void apply(List<and> var1, and var2) throws CommandSyntaxException;
+   static class a implements afk.c, ds {
+      public static final int b = 1;
+      private final PrintWriter c;
+      private int d;
+      private boolean e;
+
+      a(PrintWriter $$0) {
+         this.c = $$0;
+      }
+
+      private void a(int $$0) {
+         this.b($$0);
+         this.d = $$0;
+      }
+
+      private void b(int $$0) {
+         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
+            this.c.write("    ");
+         }
+      }
+
+      private void e() {
+         if (this.e) {
+            this.c.println();
+            this.e = false;
+         }
+      }
+
+      @Override
+      public void a(int $$0, String $$1) {
+         this.e();
+         this.a($$0);
+         this.c.print("[C] ");
+         this.c.print($$1);
+         this.e = true;
+      }
+
+      @Override
+      public void a(int $$0, String $$1, int $$2) {
+         if (this.e) {
+            this.c.print(" -> ");
+            this.c.println($$2);
+            this.e = false;
+         } else {
+            this.a($$0);
+            this.c.print("[R = ");
+            this.c.print($$2);
+            this.c.print("] ");
+            this.c.println($$1);
+         }
+      }
+
+      @Override
+      public void a(int $$0, aew $$1, int $$2) {
+         this.e();
+         this.a($$0);
+         this.c.print("[F] ");
+         this.c.print($$1);
+         this.c.print(" size=");
+         this.c.println($$2);
+      }
+
+      @Override
+      public void b(int $$0, String $$1) {
+         this.e();
+         this.a($$0 + 1);
+         this.c.print("[E] ");
+         this.c.print($$1);
+      }
+
+      @Override
+      public void a(tl $$0) {
+         this.e();
+         this.b(this.d + 1);
+         this.c.print("[M] ");
+         this.c.println($$0.getString());
+      }
+
+      @Override
+      public boolean j_() {
+         return true;
+      }
+
+      @Override
+      public boolean v_() {
+         return true;
+      }
+
+      @Override
+      public boolean T_() {
+         return false;
+      }
+
+      @Override
+      public boolean k_() {
+         return true;
+      }
    }
 }

@@ -1,4 +1,15 @@
-@FunctionalInterface
 public interface djb {
-   void onChunkStatusChange(cpe var1, akl var2);
+   djb a = new djb() {
+      @Override
+      public void a() {
+      }
+
+      @Override
+      public void a(biq.c $$0) {
+      }
+   };
+
+   void a();
+
+   void a(biq.c var1);
 }

@@ -1,23 +1,24 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
 
-public class bnq {
-   public static bla<bjr> a(bsj<hf> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return bol.a(
-         (Function<bol.b<bjr>, ? extends App<bol.c<bjr>, boo<bjr>>>)($$5 -> $$5.group($$5.a(bsj.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  hf $$10 = $$5.b($$6);
-                  if ($$7.ac() != $$10.a() || !$$10.b().a($$8.dj(), (double)$$3)) {
-                     return false;
-                  } else if ($$9 <= $$4.getValue()) {
-                     return true;
-                  } else {
-                     $$5x.a(new bsm($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
-                     return true;
-                  }
-               }))
-      );
+public class bnq extends bkx<bji> {
+   private final float c;
+
+   public bnq(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
+   }
+
+   protected boolean a(akq $$0, bji $$1) {
+      return $$1.aX() && $$1.b(apx.a) > $$1.de() || $$1.bl();
+   }
+
+   protected boolean a(akq $$0, bji $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(akq $$0, bji $$1, long $$2) {
+      if ($$1.ef().i() < this.c) {
+         $$1.K().a();
+      }
    }
 }

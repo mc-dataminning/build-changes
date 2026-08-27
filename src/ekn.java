@@ -1,32 +1,25 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.system.MemoryUtil.MemoryAllocator;
 
 public class ekn {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, -1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
 
-   public static void a(Matrix4f $$0) {
-      RenderSystem.setupLevelDiffuseLighting(c, d, $$0);
+   public static ByteBuffer a(int $$0) {
+      long $$1 = a.malloc((long)$$0);
+      if ($$1 == 0L) {
+         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
+      } else {
+         return MemoryUtil.memByteBuffer($$1, $$0);
+      }
    }
 
-   public static void b(Matrix4f $$0) {
-      RenderSystem.setupLevelDiffuseLighting(a, b, $$0);
-   }
-
-   public static void a() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
-   }
-
-   public static void b() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
-   }
-
-   public static void c() {
-      RenderSystem.setShaderLights(e, f);
+   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
+      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
+      if ($$2 == 0L) {
+         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
+      } else {
+         return MemoryUtil.memByteBuffer($$2, $$1);
+      }
    }
 }

@@ -1,218 +1,92 @@
 import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
 
-public abstract class but extends bin {
-   protected static final int bV = 6000;
-   private int bT;
-   @Nullable
-   private UUID bU;
+public interface but {
+   boolean t();
 
-   protected but(biw<? extends but> $$0, cpx $$1) {
-      super($$0, $$1);
-      this.a(eaz.n, 16.0F);
-      this.a(eaz.o, -1.0F);
-   }
+   void w(boolean var1);
 
-   @Override
-   protected void X() {
-      if (this.h() != 0) {
-         this.bT = 0;
+   void l(cjf var1);
+
+   void c(qw var1);
+
+   cjf b();
+
+   apc y();
+
+   @Deprecated
+   static void a(bji $$0, cjf $$1) {
+      qw $$2 = $$1.w();
+      if ($$0.ac()) {
+         $$1.a($$0.ad());
       }
 
-      super.X();
-   }
-
-   @Override
-   public void b_() {
-      super.b_();
-      if (this.h() != 0) {
-         this.bT = 0;
+      if ($$0.fT()) {
+         $$2.a("NoAI", $$0.fT());
       }
 
-      if (this.bT > 0) {
-         this.bT--;
-         if (this.bT % 10 == 0) {
-            double $$0 = this.ag.k() * 0.02;
-            double $$1 = this.ag.k() * 0.02;
-            double $$2 = this.ag.k() * 0.02;
-            this.dL().a(ix.M, this.d(1.0), this.dt() + 0.5, this.g(1.0), $$0, $$1, $$2);
+      if ($$0.aS()) {
+         $$2.a("Silent", $$0.aS());
+      }
+
+      if ($$0.aT()) {
+         $$2.a("NoGravity", $$0.aT());
+      }
+
+      if ($$0.cb()) {
+         $$2.a("Glowing", $$0.cb());
+      }
+
+      if ($$0.cq()) {
+         $$2.a("Invulnerable", $$0.cq());
+      }
+
+      $$2.a("Health", $$0.eu());
+   }
+
+   @Deprecated
+   static void a(bji $$0, qw $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
+      }
+
+      if ($$1.e("Silent")) {
+         $$0.d($$1.q("Silent"));
+      }
+
+      if ($$1.e("NoGravity")) {
+         $$0.e($$1.q("NoGravity"));
+      }
+
+      if ($$1.e("Glowing")) {
+         $$0.i($$1.q("Glowing"));
+      }
+
+      if ($$1.e("Invulnerable")) {
+         $$0.m($$1.q("Invulnerable"));
+      }
+
+      if ($$1.b("Health", 99)) {
+         $$0.c($$1.j("Health"));
+      }
+   }
+
+   static <T extends bjg & but> Optional<bgy> a(cbu $$0, bgx $$1, T $$2) {
+      cjf $$3 = $$0.b($$1);
+      if ($$3.d() == cji.pL && $$2.bv()) {
+         $$2.a($$2.y(), 1.0F, 1.0F);
+         cjf $$4 = $$2.b();
+         $$2.l($$4);
+         cjf $$5 = cjh.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         cpv $$6 = $$2.dL();
+         if (!$$6.B) {
+            al.j.a((akr)$$0, $$4);
          }
-      }
-   }
 
-   @Override
-   public boolean a(bhq $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
+         $$2.ak();
+         return Optional.of(bgy.a($$6.B));
       } else {
-         this.bT = 0;
-         return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public float a(gw $$0, cqa $$1) {
-      return $$1.a_($$0.d()).a(csy.i) ? 10.0F : $$1.v($$0);
-   }
-
-   @Override
-   public void b(qy $$0) {
-      super.b($$0);
-      $$0.a("InLove", this.bT);
-      if (this.bU != null) {
-         $$0.a("LoveCause", this.bU);
-      }
-   }
-
-   @Override
-   public void a(qy $$0) {
-      super.a($$0);
-      this.bT = $$0.h("InLove");
-      this.bU = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
-   }
-
-   public static boolean b(biw<? extends but> $$0, cpy $$1, bjm $$2, gw $$3, ase $$4) {
-      return $$1.a_($$3.d()).a(apu.bP) && a($$1, $$3);
-   }
-
-   protected static boolean a(cpa $$0, gw $$1) {
-      return $$0.b($$1, 0) > 8;
-   }
-
-   @Override
-   public int O() {
-      return 120;
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
-   }
-
-   @Override
-   public int ed() {
-      return 1 + this.dL().z.a(3);
-   }
-
-   public boolean m(cjh $$0) {
-      return $$0.a(cjk.oI);
-   }
-
-   @Override
-   public bha b(cbw $$0, bgz $$1) {
-      cjh $$2 = $$0.b($$1);
-      if (this.m($$2)) {
-         int $$3 = this.h();
-         if (!this.dL().B && $$3 == 0 && this.ge()) {
-            this.a($$0, $$1, $$2);
-            this.g($$0);
-            return bha.a;
-         }
-
-         if (this.m_()) {
-            this.a($$0, $$1, $$2);
-            this.a(d_(-$$3), true);
-            return bha.a(this.dL().B);
-         }
-
-         if (this.dL().B) {
-            return bha.b;
-         }
-      }
-
-      return super.b($$0, $$1);
-   }
-
-   protected void a(cbw $$0, bgz $$1, cjh $$2) {
-      if (!$$0.fS().d) {
-         $$2.h(1);
-      }
-   }
-
-   public boolean ge() {
-      return this.bT <= 0;
-   }
-
-   public void g(@Nullable cbw $$0) {
-      this.bT = 600;
-      if ($$0 != null) {
-         this.bU = $$0.cv();
-      }
-
-      this.dL().a(this, (byte)18);
-   }
-
-   public void s(int $$0) {
-      this.bT = $$0;
-   }
-
-   public int gf() {
-      return this.bT;
-   }
-
-   @Nullable
-   public akt gg() {
-      if (this.bU == null) {
-         return null;
-      } else {
-         cbw $$0 = this.dL().b(this.bU);
-         return $$0 instanceof akt ? (akt)$$0 : null;
-      }
-   }
-
-   public boolean gh() {
-      return this.bT > 0;
-   }
-
-   public void gi() {
-      this.bT = 0;
-   }
-
-   public boolean a(but $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return $$0.getClass() != this.getClass() ? false : this.gh() && $$0.gh();
-      }
-   }
-
-   public void a(aks $$0, but $$1) {
-      bin $$2 = this.a($$0, (bin)$$1);
-      if ($$2 != null) {
-         $$2.a(true);
-         $$2.b(this.dq(), this.ds(), this.dw(), 0.0F, 0.0F);
-         this.a($$0, $$1, $$2);
-         $$0.a_($$2);
-      }
-   }
-
-   public void a(aks $$0, but $$1, @Nullable bin $$2) {
-      Optional.ofNullable(this.gg()).or(() -> Optional.ofNullable($$1.gg())).ifPresent($$2x -> {
-         $$2x.a(app.P);
-         al.o.a($$2x, this, $$1, $$2);
-      });
-      this.c_(6000);
-      $$1.c_(6000);
-      this.gi();
-      $$1.gi();
-      $$0.a(this, (byte)18);
-      if ($$0.X().b(cpt.f)) {
-         $$0.b(new biy($$0, this.dq(), this.ds(), this.dw(), this.ef().a(7) + 1));
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 18) {
-         for (int $$1 = 0; $$1 < 7; $$1++) {
-            double $$2 = this.ag.k() * 0.02;
-            double $$3 = this.ag.k() * 0.02;
-            double $$4 = this.ag.k() * 0.02;
-            this.dL().a(ix.M, this.d(1.0), this.dt() + 0.5, this.g(1.0), $$2, $$3, $$4);
-         }
-      } else {
-         super.b($$0);
+         return Optional.empty();
       }
    }
 }

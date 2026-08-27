@@ -1,162 +1,207 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
 public class elw {
-   private final ImmutableList<elx> a;
-   private final ImmutableMap<String, elx> b;
-   private final IntList c = new IntArrayList();
-   private final int d;
-   @Nullable
-   private elu e;
-
-   public elw(ImmutableMap<String, elx> $$0) {
-      this.b = $$0;
-      this.a = $$0.values().asList();
-      int $$1 = 0;
-      UnmodifiableIterator var3 = $$0.values().iterator();
-
-      while (var3.hasNext()) {
-         elx $$2 = (elx)var3.next();
-         this.c.add($$1);
-         $$1 += $$2.e();
-      }
-
-      this.d = $$1;
+   public static elt a() {
+      throw new IllegalArgumentException();
    }
 
-   @Override
-   public String toString() {
-      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
-   }
-
-   public int a() {
-      return this.b() / 4;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ImmutableList<elx> c() {
-      return this.a;
-   }
-
-   public ImmutableList<String> d() {
-      return this.b.keySet().asList();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         elw $$1 = (elw)$$0;
-         return this.d != $$1.d ? false : this.b.equals($$1.b);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::h);
-      } else {
-         this.h();
-      }
-   }
-
-   private void h() {
-      int $$0 = this.b();
-      List<elx> $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
-      }
-   }
-
-   public void f() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::i);
-      } else {
-         this.i();
-      }
-   }
-
-   private void i() {
-      ImmutableList<elx> $$0 = this.c();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         elx $$2 = (elx)$$0.get($$1);
-         $$2.a($$1);
-      }
-   }
-
-   public elu g() {
-      elu $$0 = this.e;
-      if ($$0 == null) {
-         this.e = $$0 = new elu(elu.a.b);
-      }
-
+   public static elt a(elt $$0) {
       return $$0;
    }
 
-   public static enum a {
-      a(5123, 2),
-      b(5125, 4);
+   public static elt a(elt $$0, elt $$1) {
+      return new elw.a($$0, $$1);
+   }
 
-      public final int c;
-      public final int d;
+   public static elt a(elt... $$0) {
+      return new elw.b($$0);
+   }
 
-      private a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   static class a implements elt {
+      private final elt a;
+      private final elt b;
+
+      public a(elt $$0, elt $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
+         }
       }
 
-      public static elw.a a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
+      @Override
+      public elt a(double $$0, double $$1, double $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public elt a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public elt a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public elt a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public elt b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public elt a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
+      }
+
+      @Override
+      public void e() {
+         this.a.e();
+         this.b.e();
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+         this.a.b($$0, $$1, $$2, $$3);
+         this.b.b($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public void k() {
+         this.a.k();
+         this.b.k();
       }
    }
 
-   public static enum b {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
+   static class b implements elt {
+      private final elt[] a;
 
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
+      public b(elt[] $$0) {
+         for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < $$0.length; $$2++) {
+               if ($$0[$$1] == $$0[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
+               }
+            }
+         }
 
-      private b(int $$0, int $$1, int $$2, boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
+         this.a = $$0;
       }
 
-      public int a(int $$0) {
-         return switch (this) {
-            case b, c, d, e, f, g -> $$0;
-            case a, h -> $$0 / 4 * 6;
-            default -> 0;
-         };
+      private void a(Consumer<elt> $$0) {
+         for (elt $$1 : this.a) {
+            $$0.accept($$1);
+         }
+      }
+
+      @Override
+      public elt a(double $$0, double $$1, double $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public elt a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      @Override
+      public elt a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public elt a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public elt b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public elt a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.a($$14 -> $$14.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13));
+      }
+
+      @Override
+      public void e() {
+         this.a(elt::e);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.b($$0, $$1, $$2, $$3));
+      }
+
+      @Override
+      public void k() {
+         this.a(elt::k);
       }
    }
 }

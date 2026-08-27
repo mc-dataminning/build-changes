@@ -1,30 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class dpd extends dny<dpx> {
-   public dpd(Codec<dpx> $$0) {
+public class dpd extends dnw<dqs> {
+   public dpd(Codec<dqs> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doa<dpx> $$0) {
-      int $$1 = 0;
-      ase $$2 = $$0.d();
-      cqr $$3 = $$0.b();
-      gw $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(dny<dqs> $$0) {
+      dqs $$1 = $$0.f();
+      cqp $$2 = $$0.b();
+      gw $$3 = $$0.e();
+      dfj $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof cuz) {
+            if (!$$2.t($$3.c())) {
+               return false;
+            }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dku.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         gw $$10 = new gw($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dfl $$11 = csy.mV.n().a(czu.b, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(csy.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+            cuz.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
          }
-      }
 
-      return $$1 > 0;
+         return true;
+      } else {
+         return false;
+      }
    }
 }

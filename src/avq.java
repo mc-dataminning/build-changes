@@ -1,38 +1,33 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
-public class avq extends awb {
+public class avq extends axz {
    public avq(Schema $$0, boolean $$1) {
-      super("EntityHorseSplitFix", $$0, $$1);
+      super($$0, $$1, "EntityItemFrameDirectionFix", ayx.x, "minecraft:item_frame");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("Facing", $$0.createByte(a($$0.get("Facing").asByte((byte)0))));
    }
 
    @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-      if (Objects.equals("EntityHorse", $$0)) {
-         int $$3 = $$2.get("Type").asInt(0);
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
 
-         String $$8 = switch ($$3) {
-            default -> "Horse";
-            case 1 -> "Donkey";
-            case 2 -> "Mule";
-            case 3 -> "ZombieHorse";
-            case 4 -> "SkeletonHorse";
-         };
-         $$2.remove("Type");
-         Type<?> $$9 = (Type<?>)this.getOutputSchema().findChoiceType(ayz.x).types().get($$8);
-         return Pair.of(
-            $$8,
-            (Typed)((Pair)$$1.write().flatMap($$9::readTyped).result().orElseThrow(() -> new IllegalStateException("Could not parse the new horse")))
-               .getFirst()
-         );
-      } else {
-         return Pair.of($$0, $$1);
+   private static byte a(byte $$0) {
+      switch ($$0) {
+         case 0:
+            return 3;
+         case 1:
+            return 4;
+         case 2:
+         default:
+            return 2;
+         case 3:
+            return 5;
       }
    }
 }

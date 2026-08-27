@@ -1,73 +1,122 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class blm extends bkz<bjr> {
-   public static final int c = 100;
-   public static final double d = 2.5;
-   public static final double e = 3.5;
-   private final Function<bji, Float> f;
-   private final Function<bji, Double> g;
+public class blm extends bkx<cbh> {
+   private static final int c = 5;
+   private static final int d = 600;
+   private static final int e = 6600;
+   private static final int f = 20;
+   private static final Map<cbk, aew> g = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cbk.c, eco.an);
+      $$0.put(cbk.d, eco.ao);
+      $$0.put(cbk.e, eco.ap);
+      $$0.put(cbk.f, eco.aq);
+      $$0.put(cbk.g, eco.ar);
+      $$0.put(cbk.h, eco.as);
+      $$0.put(cbk.i, eco.at);
+      $$0.put(cbk.j, eco.au);
+      $$0.put(cbk.k, eco.av);
+      $$0.put(cbk.l, eco.aw);
+      $$0.put(cbk.n, eco.ax);
+      $$0.put(cbk.o, eco.ay);
+      $$0.put(cbk.p, eco.az);
+   });
+   private static final float h = 0.5F;
+   private int i = 600;
+   private boolean j;
+   private long k;
 
-   public blm(Function<bji, Float> $$0) {
-      this($$0, $$0x -> 2.5);
+   public blm(int $$0) {
+      super(ImmutableMap.of(bsh.m, bsi.c, bsh.n, bsi.c, bsh.q, bsi.c, bsh.k, bsi.a), $$0);
    }
 
-   public blm(Function<bji, Float> $$0, Function<bji, Double> $$1) {
-      super(ac.a(() -> {
-         Builder<bsj<?>, bsk> $$0x = ImmutableMap.builder();
-         $$0x.put(bsj.n, bsk.c);
-         $$0x.put(bsj.m, bsk.c);
-         $$0x.put(bsj.O, bsk.b);
-         $$0x.put(bsj.Q, bsk.c);
-         $$0x.put(bsj.N, bsk.a);
-         $$0x.put(bsj.r, bsk.b);
-         $$0x.put(bsj.Y, bsk.b);
-         return $$0x.build();
-      }));
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   protected float a(bjr $$0) {
-      return this.f.apply($$0);
-   }
-
-   private Optional<cbw> b(bjr $$0) {
-      return $$0.dN().c(bsj.N);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected boolean a(aks $$0, bjr $$1, long $$2) {
-      return this.b($$1).isPresent() && !$$1.dN().a(bsj.r) && !$$1.dN().a(bsj.Y);
-   }
-
-   protected void b(aks $$0, bjr $$1, long $$2) {
-      $$1.dN().a(bsj.Q, true);
-   }
-
-   protected void c(aks $$0, bjr $$1, long $$2) {
-      bki<?> $$3 = $$1.dN();
-      $$3.a(bsj.O, 100);
-      $$3.a(bsj.Q, false);
-      $$3.b(bsj.m);
-      $$3.b(bsj.n);
-   }
-
-   protected void d(aks $$0, bjr $$1, long $$2) {
-      cbw $$3 = this.b($$1).get();
-      bki<?> $$4 = $$1.dN();
-      $$4.a(bsj.n, new blk($$3, true));
-      double $$5 = this.g.apply($$1);
-      if ($$1.f($$3) < ary.k($$5)) {
-         $$4.b(bsj.m);
+   protected boolean a(akq $$0, cbh $$1) {
+      if (!this.b($$1)) {
+         return false;
+      } else if (this.i > 0) {
+         this.i--;
+         return false;
       } else {
-         $$4.a(bsj.m, new bsm(new blk($$3, false), this.a($$1), 2));
+         return true;
       }
+   }
+
+   protected void a(akq $$0, cbh $$1, long $$2) {
+      this.j = false;
+      this.k = $$2;
+      cbu $$3 = this.c($$1).get();
+      $$1.dN().a(bsh.q, $$3);
+      bkz.a($$1, $$3);
+   }
+
+   protected boolean b(akq $$0, cbh $$1, long $$2) {
+      return this.b($$1) && !this.j;
+   }
+
+   protected void c(akq $$0, cbh $$1, long $$2) {
+      cbu $$3 = this.c($$1).get();
+      bkz.a($$1, $$3);
+      if (this.a($$1, $$3)) {
+         if ($$2 - this.k > 20L) {
+            this.a($$1, (bjg)$$3);
+            this.j = true;
+         }
+      } else {
+         bkz.a($$1, $$3, 0.5F, 5);
+      }
+   }
+
+   protected void d(akq $$0, cbh $$1, long $$2) {
+      this.i = a($$0);
+      $$1.dN().b(bsh.q);
+      $$1.dN().b(bsh.m);
+      $$1.dN().b(bsh.n);
+   }
+
+   private void a(cbh $$0, bjg $$1) {
+      for (cjf $$3 : this.a($$0)) {
+         bkz.a($$0, $$3, $$1.dj());
+      }
+   }
+
+   private List<cjf> a(cbh $$0) {
+      if ($$0.m_()) {
+         return ImmutableList.of(new cjf(cji.cP));
+      } else {
+         cbk $$1 = $$0.go().b();
+         if (g.containsKey($$1)) {
+            ecy $$2 = $$0.dL().n().aH().getLootTable(g.get($$1));
+            ecw $$3 = new ecw.a((akq)$$0.dL()).a(efb.f, $$0.dj()).a(efb.a, $$0).a(efa.i);
+            return $$2.a($$3);
+         } else {
+            return ImmutableList.of(new cjf(cji.oH));
+         }
+      }
+   }
+
+   private boolean b(cbh $$0) {
+      return this.c($$0).isPresent();
+   }
+
+   private Optional<cbu> c(cbh $$0) {
+      return $$0.dN().c(bsh.k).filter(this::a);
+   }
+
+   private boolean a(cbu $$0) {
+      return $$0.a(bif.F);
+   }
+
+   private boolean a(cbh $$0, cbu $$1) {
+      gw $$2 = $$1.dl();
+      gw $$3 = $$0.dl();
+      return $$3.a($$2, 5.0);
+   }
+
+   private static int a(akq $$0) {
+      return 600 + $$0.z.a(6001);
    }
 }

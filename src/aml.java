@@ -1,148 +1,183 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.FileSystemAlreadyExistsException;
+import java.nio.file.FileSystemNotFoundException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 import org.slf4j.Logger;
 
-public class aml extends amd {
-   private static final Logger c = LogUtils.getLogger();
-   private static final Joiner d = Joiner.on("/");
-   private final Path e;
+public class aml {
+   private static final Logger b = LogUtils.getLogger();
+   public static Consumer<aml> a = $$0 -> {
+   };
+   private static final Map<ami, Path> c = ac.a(() -> {
+      synchronized (amk.class) {
+         Builder<ami, Path> $$0 = ImmutableMap.builder();
 
-   public aml(String $$0, Path $$1, boolean $$2) {
-      super($$0, $$2);
-      this.e = $$1;
+         for (ami $$1 : ami.values()) {
+            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
+            URL $$3 = amk.class.getResource($$2);
+            if ($$3 == null) {
+               b.error("File {} does not exist in classpath", $$2);
+            } else {
+               try {
+                  URI $$4 = $$3.toURI();
+                  String $$5 = $$4.getScheme();
+                  if (!"jar".equals($$5) && !"file".equals($$5)) {
+                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
+                  }
+
+                  Path $$6 = a($$4);
+                  $$0.put($$1, $$6.getParent());
+               } catch (Exception var12) {
+                  b.error("Couldn't resolve path to vanilla assets", var12);
+               }
+            }
+         }
+
+         return $$0.build();
+      }
+   });
+   private final Set<Path> d = new LinkedHashSet<>();
+   private final Map<ami, Set<Path>> e = new EnumMap<>(ami.class);
+   private amc f = amc.a();
+   private final Set<String> g = new HashSet<>();
+
+   private static Path a(URI $$0) throws IOException {
+      try {
+         return Paths.get($$0);
+      } catch (FileSystemNotFoundException var3) {
+      } catch (Throwable var4) {
+         b.warn("Unable to get path for: {}", $$0, var4);
+      }
+
+      try {
+         FileSystems.newFileSystem($$0, Collections.emptyMap());
+      } catch (FileSystemAlreadyExistsException var2) {
+      }
+
+      return Paths.get($$0);
    }
 
-   @Nullable
-   @Override
-   public ann<InputStream> a(String... $$0) {
-      v.a($$0);
-      Path $$1 = v.a(this.e, List.of($$0));
-      return Files.exists($$1) ? ann.create($$1) : null;
+   private boolean b(Path $$0) {
+      if (!Files.exists($$0)) {
+         return false;
+      } else if (!Files.isDirectory($$0)) {
+         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
+      } else {
+         return true;
+      }
    }
 
-   public static boolean a(Path $$0) {
-      return true;
+   private void c(Path $$0) {
+      if (this.b($$0)) {
+         this.d.add($$0);
+      }
    }
 
-   @Nullable
-   @Override
-   public ann<InputStream> a(amk $$0, aey $$1) {
-      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
-      return a($$1, $$2);
+   private void b(ami $$0, Path $$1) {
+      if (this.b($$1)) {
+         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
+      }
    }
 
-   public static ann<InputStream> a(aey $$0, Path $$1) {
-      return (ann<InputStream>)v.c($$0.a()).get().map($$1x -> {
-         Path $$2 = v.a($$1, $$1x);
-         return b($$2);
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$0, $$1x.message());
-         return null;
+   public aml a() {
+      c.forEach(($$0, $$1) -> {
+         this.c($$1.getParent());
+         this.b($$0, $$1);
       });
+      return this;
    }
 
-   @Nullable
-   private static ann<InputStream> b(Path $$0) {
-      return Files.exists($$0) && a($$0) ? ann.create($$0) : null;
-   }
+   public aml a(ami $$0, Class<?> $$1) {
+      Enumeration<URL> $$2 = null;
 
-   @Override
-   public void a(amk $$0, String $$1, String $$2, amj.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
-         a($$1, $$4, $$3x, $$3);
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
+      try {
+         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
+      } catch (IOException var8) {
+      }
 
-   public static void a(String $$0, Path $$1, List<String> $$2, amj.a $$3) {
-      Path $$4 = v.a($$1, $$2);
+      while ($$2 != null && $$2.hasMoreElements()) {
+         URL $$3 = $$2.nextElement();
 
-      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-         $$5.forEach($$3x -> {
-            String $$4x = d.join($$1.relativize($$3x));
-            aey $$5x = aey.a($$0, $$4x);
-            if ($$5x == null) {
-               ac.a(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
-            } else {
-               $$3.accept($$5x, ann.create($$3x));
+         try {
+            URI $$4 = $$3.toURI();
+            if ("file".equals($$4.getScheme())) {
+               Path $$5 = Paths.get($$4);
+               this.c($$5.getParent());
+               this.b($$0, $$5);
             }
-         });
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$4, var11);
-      }
-   }
-
-   @Override
-   public Set<String> a(amk $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-      Path $$2 = this.e.resolve($$0.a());
-
-      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
-         for (Path $$4 : $$3) {
-            String $$5 = $$4.getFileName().toString();
-            if (aey.h($$5)) {
-               $$1.add($$5);
-            } else {
-               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
-            }
-         }
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$2, var11);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void close() {
-   }
-
-   public static class a implements and.c {
-      private final Path a;
-      private final boolean b;
-
-      public a(Path $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public amj a(String $$0) {
-         return new aml($$0, this.a, this.b);
-      }
-
-      @Override
-      public amj a(String $$0, and.a $$1) {
-         amj $$2 = this.a($$0);
-         List<String> $$3 = $$1.d();
-         if ($$3.isEmpty()) {
-            return $$2;
-         } else {
-            List<amj> $$4 = new ArrayList<>($$3.size());
-
-            for (String $$5 : $$3) {
-               Path $$6 = this.a.resolve($$5);
-               $$4.add(new aml($$0, $$6, this.b));
-            }
-
-            return new amf($$2, $$4);
+         } catch (Exception var7) {
+            b.error("Failed to extract path from {}", $$3, var7);
          }
       }
+
+      return this;
+   }
+
+   public aml b() {
+      a.accept(this);
+      return this;
+   }
+
+   public aml a(Path $$0) {
+      this.c($$0);
+
+      for (ami $$1 : ami.values()) {
+         this.b($$1, $$0.resolve($$1.a()));
+      }
+
+      return this;
+   }
+
+   public aml a(ami $$0, Path $$1) {
+      this.c($$1);
+      this.b($$0, $$1);
+      return this;
+   }
+
+   public aml a(amc $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public aml a(String... $$0) {
+      this.g.addAll(Arrays.asList($$0));
+      return this;
+   }
+
+   public amk c() {
+      Map<ami, List<Path>> $$0 = new EnumMap<>(ami.class);
+
+      for (ami $$1 : ami.values()) {
+         List<Path> $$2 = a(this.e.getOrDefault($$1, Set.of()));
+         $$0.put($$1, $$2);
+      }
+
+      return new amk(this.f, Set.copyOf(this.g), a(this.d), $$0);
+   }
+
+   private static List<Path> a(Collection<Path> $$0) {
+      List<Path> $$1 = new ArrayList<>($$0);
+      Collections.reverse($$1);
+      return List.copyOf($$1);
    }
 }

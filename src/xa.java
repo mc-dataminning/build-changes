@@ -1,56 +1,40 @@
-public class xa implements vf<wy> {
-   private final int a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final int e;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-   public xa(biy $$0) {
-      this.a = $$0.ah();
-      this.b = $$0.dq();
-      this.c = $$0.ds();
-      this.d = $$0.dw();
-      this.e = $$0.q();
+public class xa implements vd<ww> {
+   private final Object2IntMap<apk<?>> a;
+
+   public xa(Object2IntMap<apk<?>> $$0) {
+      this.a = $$0;
    }
 
-   public xa(sq $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readShort();
+   public xa(so $$0) {
+      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
+         apm<?> $$2 = $$1.a(jb.y);
+         return a($$0, $$2);
+      }, so::m);
    }
 
-   @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.l(this.e);
+   private static <T> apk<T> a(so $$0, apm<T> $$1) {
+      return $$1.b($$0.a($$1.a()));
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.a, xa::a, so::c);
+   }
+
+   private static <T> void a(so $$0, apk<T> $$1) {
+      $$0.a(jb.y, $$1.a());
+      $$0.a($$1.a().a(), $$1.b());
+   }
+
+   public Map<apk<?>, Integer> a() {
       return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
    }
 }

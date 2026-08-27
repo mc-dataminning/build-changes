@@ -1,197 +1,108 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class fov {
-   public static final aey a = new aey("textures/atlas/shulker_boxes.png");
-   public static final aey b = new aey("textures/atlas/beds.png");
-   public static final aey c = new aey("textures/atlas/banner_patterns.png");
-   public static final aey d = new aey("textures/atlas/shield_patterns.png");
-   public static final aey e = new aey("textures/atlas/signs.png");
-   public static final aey f = new aey("textures/atlas/chest.png");
-   public static final aey g = new aey("textures/atlas/armor_trims.png");
-   public static final aey h = new aey("textures/atlas/decorated_pot.png");
-   private static final foo A = foo.e(a);
-   private static final foo B = foo.c(b);
-   private static final foo C = foo.m(c);
-   private static final foo D = foo.m(d);
-   private static final foo E = foo.e(e);
-   private static final foo F = foo.d(f);
-   private static final foo G = foo.a(g);
-   private static final foo H = foo.b(g);
-   private static final foo I = foo.c(fzf.e);
-   private static final foo J = foo.d(fzf.e);
-   private static final foo K = foo.g(fzf.e);
-   private static final foo L = foo.h(fzf.e);
-   public static final gbk i = new gbk(a, new aey("entity/shulker/shulker"));
-   public static final List<gbk> j = Stream.of(
-         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
-      )
-      .map($$0 -> new gbk(a, new aey("entity/shulker/shulker_" + $$0)))
-      .collect(ImmutableList.toImmutableList());
-   public static final Map<dgy, gbk> k = dgy.a().collect(Collectors.toMap(Function.identity(), fov::c));
-   public static final Map<dgy, gbk> l = dgy.a().collect(Collectors.toMap(Function.identity(), fov::d));
-   public static final Map<aex<dco>, gbk> m = jd.al.f().stream().collect(Collectors.toMap(Function.identity(), fov::d));
-   public static final Map<aex<dco>, gbk> n = jd.al.f().stream().collect(Collectors.toMap(Function.identity(), fov::e));
-   public static final Map<aex<String>, gbk> o = jd.an.f().stream().collect(Collectors.toMap(Function.identity(), fov::f));
-   public static final gbk[] p = Arrays.stream(chv.values())
-      .sorted(Comparator.comparingInt(chv::a))
-      .map($$0 -> new gbk(b, new aey("entity/bed/" + $$0.b())))
-      .toArray(gbk[]::new);
-   public static final gbk q = a("trapped");
-   public static final gbk r = a("trapped_left");
-   public static final gbk s = a("trapped_right");
-   public static final gbk t = a("christmas");
-   public static final gbk u = a("christmas_left");
-   public static final gbk v = a("christmas_right");
-   public static final gbk w = a("normal");
-   public static final gbk x = a("normal_left");
-   public static final gbk y = a("normal_right");
-   public static final gbk z = a("ender");
+   protected final foc a;
+   protected final cpv b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public frc.b[] f;
 
-   public static foo a() {
-      return C;
+   public fov(frc $$0, cpv $$1, int $$2, foc $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
    }
 
-   public static foo b() {
-      return D;
-   }
+   protected void a(frc $$0) {
+      if (!eqv.O().bl()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new frc.b[$$1];
 
-   public static foo c() {
-      return B;
-   }
-
-   public static foo d() {
-      return A;
-   }
-
-   public static foo e() {
-      return E;
-   }
-
-   public static foo f() {
-      return E;
-   }
-
-   public static foo g() {
-      return F;
-   }
-
-   public static foo a(boolean $$0) {
-      return $$0 ? H : G;
-   }
-
-   public static foo h() {
-      return I;
-   }
-
-   public static foo i() {
-      return J;
-   }
-
-   public static foo j() {
-      return K;
-   }
-
-   public static foo k() {
-      return L;
-   }
-
-   public static void a(Consumer<gbk> $$0) {
-      $$0.accept(i);
-      j.forEach($$0);
-      m.values().forEach($$0);
-      n.values().forEach($$0);
-      k.values().forEach($$0);
-      l.values().forEach($$0);
-
-      for (gbk $$1 : p) {
-         $$0.accept($$1);
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.H_() + $$3 * 16, $$4 * 16);
+               }
+            }
+         }
       }
-
-      $$0.accept(q);
-      $$0.accept(r);
-      $$0.accept(s);
-      $$0.accept(t);
-      $$0.accept(u);
-      $$0.accept(v);
-      $$0.accept(w);
-      $$0.accept(x);
-      $$0.accept(y);
-      $$0.accept(z);
    }
 
-   private static gbk c(dgy $$0) {
-      return new gbk(e, new aey("entity/signs/" + $$0.b()));
+   public void a() {
+      for (frc.b $$0 : this.f) {
+         $$0.e();
+      }
    }
 
-   private static gbk d(dgy $$0) {
-      return new gbk(e, new aey("entity/signs/hanging/" + $$0.b()));
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
    }
 
-   public static gbk a(dgy $$0) {
-      return k.get($$0);
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.ak();
+      this.e = $$1;
+      this.g = $$0;
    }
 
-   public static gbk b(dgy $$0) {
-      return l.get($$0);
+   public int b() {
+      return this.g;
    }
 
-   private static gbk d(aex<dco> $$0) {
-      return new gbk(c, dco.a($$0, true));
+   public cpx c() {
+      return this.b;
    }
 
-   public static gbk a(aex<dco> $$0) {
-      return m.get($$0);
+   public void a(double $$0, double $$1) {
+      int $$2 = arw.c($$0);
+      int $$3 = arw.c($$1);
+
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
+
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
+
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.H_() + $$12 * 16;
+               frc.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               gw $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
+         }
+      }
    }
 
-   private static gbk e(aex<dco> $$0) {
-      return new gbk(d, dco.a($$0, false));
-   }
-
-   public static gbk b(aex<dco> $$0) {
-      return n.get($$0);
-   }
-
-   private static gbk a(String $$0) {
-      return new gbk(f, new aey("entity/chest/" + $$0));
-   }
-
-   private static gbk f(aex<String> $$0) {
-      return new gbk(h, ddn.a($$0));
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.al(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      frc.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
    }
 
    @Nullable
-   public static gbk c(@Nullable aex<String> $$0) {
-      return $$0 == null ? null : o.get($$0);
-   }
-
-   public static gbk a(dcx $$0, dgd $$1, boolean $$2) {
-      if ($$0 instanceof ddr) {
-         return z;
-      } else if ($$2) {
-         return a($$1, t, u, v);
+   protected frc.b a(gw $$0) {
+      int $$1 = arw.a($$0.v() - this.b.H_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = arw.b(arw.a($$0.u(), 16), this.d);
+         int $$3 = arw.b(arw.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
       } else {
-         return $$0 instanceof deo ? a($$1, q, r, s) : a($$1, w, x, y);
-      }
-   }
-
-   private static gbk a(dgd $$0, gbk $$1, gbk $$2, gbk $$3) {
-      switch ($$0) {
-         case b:
-            return $$2;
-         case c:
-            return $$3;
-         case a:
-         default:
-            return $$1;
+         return null;
       }
    }
 }

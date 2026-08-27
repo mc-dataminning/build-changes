@@ -1,76 +1,73 @@
-import org.joml.Matrix4f;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class evk {
-   private final evi a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public enum evk implements ejr {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   public evk(evi $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
-   }
+   final ekq c;
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, elv $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      int $$10 = 3;
-      float $$11 = $$1 + this.f;
-      float $$12 = $$1 + this.g;
-      float $$13 = this.h - 3.0F;
-      float $$14 = this.i - 3.0F;
-      float $$15 = $$2 + $$13;
-      float $$16 = $$2 + $$14;
-      float $$17 = $$0 ? 1.0F - 0.25F * $$13 : 0.0F;
-      float $$18 = $$0 ? 1.0F - 0.25F * $$14 : 0.0F;
-      $$4.a($$3, $$11 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
-      $$4.a($$3, $$11 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
-      $$4.a($$3, $$12 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
-      $$4.a($$3, $$12 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
-   }
+   private static ekq a(int $$0, int $$1, evk.a $$2) {
+      ekq $$3 = new ekq(ekq.a.a, $$0, $$1, false);
 
-   public void a(evk.a $$0, Matrix4f $$1, elv $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
-   }
-
-   public foo a(esf.a $$0) {
-      return this.a.a($$0);
-   }
-
-   public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final float f;
-      protected final float g;
-      protected final float h;
-      protected final float i;
-
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
       }
+
+      $$3.i();
+      return $$3;
+   }
+
+   private evk(Supplier<ekq> $$0) {
+      this.c = $$0.get();
+   }
+
+   @Override
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
+   }
+
+   @Override
+   public evi bake(Function<ejt, evi> $$0) {
+      return $$0.apply(new ejt() {
+         @Override
+         public int a() {
+            return evk.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return evk.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            evk.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

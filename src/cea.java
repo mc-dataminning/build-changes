@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cea {
+   final ced a;
+   final long b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cea {
+   cea(ced $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
+   }
 }

@@ -1,71 +1,61 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class afi {
+public class afi extends anx {
    private static final Logger a = LogUtils.getLogger();
-   private static final CompletableFuture<asz> b = CompletableFuture.completedFuture(asz.a);
-   private final dn.a c;
-   private final du d;
-   private final cmn e = new cmn();
-   private final aql f;
-   private final ecv g = new ecv();
-   private final afk h = new afk(this.g);
-   private final afl i;
+   private static final Gson b = new GsonBuilder().create();
+   private Map<aew, af> c = Map.of();
+   private ak d = new ak();
+   private final ect e;
 
-   public afi(hu.b $$0, cee $$1, du.a $$2, int $$3) {
-      this.f = new aql($$0);
-      this.c = dn.a((hu)$$0, $$1);
-      this.d = new du($$2, this.c);
-      this.c.a(dn.b.a);
-      this.i = new afl($$3, this.d.a());
+   public afi(ect $$0) {
+      super(b, "advancements");
+      this.e = $$0;
    }
 
-   public afl a() {
-      return this.i;
+   protected void a(Map<aew, JsonElement> $$0, ant $$1, bdp $$2) {
+      Builder<aew, af> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         try {
+            JsonObject $$3x = arn.m($$2x, "advancement");
+            ae $$4x = ae.a($$3x, new bg($$1x, this.e));
+            $$3.put($$1x, new af($$1x, $$4x));
+         } catch (Exception var6) {
+            a.error("Parsing error loading custom advancement {}: {}", $$1x, var6.getMessage());
+         }
+      });
+      this.c = $$3.buildOrThrow();
+      ak $$4 = new ak();
+      $$4.a(this.c.values());
+
+      for (ag $$5 : $$4.b()) {
+         if ($$5.b().b().d().isPresent()) {
+            as.a($$5);
+         }
+      }
+
+      this.d = $$4;
    }
 
-   public ecv b() {
-      return this.g;
+   @Nullable
+   public af a(aew $$0) {
+      return this.c.get($$0);
    }
 
-   public cmn c() {
-      return this.e;
-   }
-
-   public du d() {
+   public ak a() {
       return this.d;
    }
 
-   public afk e() {
-      return this.h;
-   }
-
-   public List<anp> f() {
-      return List.of(this.f, this.g, this.e, this.i, this.h);
-   }
-
-   public static CompletableFuture<afi> a(anv $$0, hu.b $$1, cee $$2, du.a $$3, int $$4, Executor $$5, Executor $$6) {
-      afi $$7 = new afi($$1, $$2, $$3, $$4);
-      return aob.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(dn.b.b)).thenApply($$1x -> $$7);
-   }
-
-   public void a(hu $$0) {
-      this.f.a().forEach($$1 -> a($$0, (aql.a<?>)$$1));
-      csy.a();
-   }
-
-   private static <T> void a(hu $$0, aql.a<T> $$1) {
-      aex<? extends ht<T>> $$2 = $$1.a();
-      Map<aqj<T>, List<hg<T>>> $$3 = $$1.b()
-         .entrySet()
-         .stream()
-         .collect(Collectors.toUnmodifiableMap($$1x -> aqj.a($$2, (aey)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends hg<T>>)$$0x.getValue())));
-      $$0.d($$2).a($$3);
+   public Collection<af> b() {
+      return this.c.values();
    }
 }

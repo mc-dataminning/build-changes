@@ -1,37 +1,98 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
+public class apn {
+   public static final apm<csv> a = a("mined", jb.f);
+   public static final apm<cja> b = a("crafted", jb.i);
+   public static final apm<cja> c = a("used", jb.i);
+   public static final apm<cja> d = a("broken", jb.i);
+   public static final apm<cja> e = a("picked_up", jb.i);
+   public static final apm<cja> f = a("dropped", jb.i);
+   public static final apm<biu<?>> g = a("killed", jb.h);
+   public static final apm<biu<?>> h = a("killed_by", jb.h);
+   public static final apm<aew> i = a("custom", jb.n);
+   public static final aew j = a("leave_game", apl.b);
+   public static final aew k = a("play_time", apl.e);
+   public static final aew l = a("total_world_time", apl.e);
+   public static final aew m = a("time_since_death", apl.e);
+   public static final aew n = a("time_since_rest", apl.e);
+   public static final aew o = a("sneak_time", apl.e);
+   public static final aew p = a("walk_one_cm", apl.d);
+   public static final aew q = a("crouch_one_cm", apl.d);
+   public static final aew r = a("sprint_one_cm", apl.d);
+   public static final aew s = a("walk_on_water_one_cm", apl.d);
+   public static final aew t = a("fall_one_cm", apl.d);
+   public static final aew u = a("climb_one_cm", apl.d);
+   public static final aew v = a("fly_one_cm", apl.d);
+   public static final aew w = a("walk_under_water_one_cm", apl.d);
+   public static final aew x = a("minecart_one_cm", apl.d);
+   public static final aew y = a("boat_one_cm", apl.d);
+   public static final aew z = a("pig_one_cm", apl.d);
+   public static final aew A = a("horse_one_cm", apl.d);
+   public static final aew B = a("aviate_one_cm", apl.d);
+   public static final aew C = a("swim_one_cm", apl.d);
+   public static final aew D = a("strider_one_cm", apl.d);
+   public static final aew E = a("jump", apl.b);
+   public static final aew F = a("drop", apl.b);
+   public static final aew G = a("damage_dealt", apl.c);
+   public static final aew H = a("damage_dealt_absorbed", apl.c);
+   public static final aew I = a("damage_dealt_resisted", apl.c);
+   public static final aew J = a("damage_taken", apl.c);
+   public static final aew K = a("damage_blocked_by_shield", apl.c);
+   public static final aew L = a("damage_absorbed", apl.c);
+   public static final aew M = a("damage_resisted", apl.c);
+   public static final aew N = a("deaths", apl.b);
+   public static final aew O = a("mob_kills", apl.b);
+   public static final aew P = a("animals_bred", apl.b);
+   public static final aew Q = a("player_kills", apl.b);
+   public static final aew R = a("fish_caught", apl.b);
+   public static final aew S = a("talked_to_villager", apl.b);
+   public static final aew T = a("traded_with_villager", apl.b);
+   public static final aew U = a("eat_cake_slice", apl.b);
+   public static final aew V = a("fill_cauldron", apl.b);
+   public static final aew W = a("use_cauldron", apl.b);
+   public static final aew X = a("clean_armor", apl.b);
+   public static final aew Y = a("clean_banner", apl.b);
+   public static final aew Z = a("clean_shulker_box", apl.b);
+   public static final aew aa = a("interact_with_brewingstand", apl.b);
+   public static final aew ab = a("interact_with_beacon", apl.b);
+   public static final aew ac = a("inspect_dropper", apl.b);
+   public static final aew ad = a("inspect_hopper", apl.b);
+   public static final aew ae = a("inspect_dispenser", apl.b);
+   public static final aew af = a("play_noteblock", apl.b);
+   public static final aew ag = a("tune_noteblock", apl.b);
+   public static final aew ah = a("pot_flower", apl.b);
+   public static final aew ai = a("trigger_trapped_chest", apl.b);
+   public static final aew aj = a("open_enderchest", apl.b);
+   public static final aew ak = a("enchant_item", apl.b);
+   public static final aew al = a("play_record", apl.b);
+   public static final aew am = a("interact_with_furnace", apl.b);
+   public static final aew an = a("interact_with_crafting_table", apl.b);
+   public static final aew ao = a("open_chest", apl.b);
+   public static final aew ap = a("sleep_in_bed", apl.b);
+   public static final aew aq = a("open_shulker_box", apl.b);
+   public static final aew ar = a("open_barrel", apl.b);
+   public static final aew as = a("interact_with_blast_furnace", apl.b);
+   public static final aew at = a("interact_with_smoker", apl.b);
+   public static final aew au = a("interact_with_lectern", apl.b);
+   public static final aew av = a("interact_with_campfire", apl.b);
+   public static final aew aw = a("interact_with_cartography_table", apl.b);
+   public static final aew ax = a("interact_with_loom", apl.b);
+   public static final aew ay = a("interact_with_stonecutter", apl.b);
+   public static final aew az = a("bell_ring", apl.b);
+   public static final aew aA = a("raid_trigger", apl.b);
+   public static final aew aB = a("raid_win", apl.b);
+   public static final aew aC = a("interact_with_anvil", apl.b);
+   public static final aew aD = a("interact_with_grindstone", apl.b);
+   public static final aew aE = a("target_hit", apl.b);
+   public static final aew aF = a("interact_with_smithing_table", apl.b);
 
-public interface apn {
-   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   apn b = NumberFormat.getIntegerInstance(Locale.US)::format;
-   apn c = $$0 -> a.format((double)$$0 * 0.1);
-   apn d = $$0 -> {
-      double $$1 = (double)$$0 / 100.0;
-      double $$2 = $$1 / 1000.0;
-      if ($$2 > 0.5) {
-         return a.format($$2) + " km";
-      } else {
-         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
-      }
-   };
-   apn e = $$0 -> {
-      double $$1 = (double)$$0 / 20.0;
-      double $$2 = $$1 / 60.0;
-      double $$3 = $$2 / 60.0;
-      double $$4 = $$3 / 24.0;
-      double $$5 = $$4 / 365.0;
-      if ($$5 > 0.5) {
-         return a.format($$5) + " y";
-      } else if ($$4 > 0.5) {
-         return a.format($$4) + " d";
-      } else if ($$3 > 0.5) {
-         return a.format($$3) + " h";
-      } else {
-         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
-      }
-   };
+   private static aew a(String $$0, apl $$1) {
+      aew $$2 = new aew($$0);
+      hq.a(jb.n, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
+   }
 
-   String format(int var1);
+   private static <T> apm<T> a(String $$0, hq<T> $$1) {
+      tl $$2 = tl.c("stat_type.minecraft." + $$0);
+      return hq.a(jb.y, $$0, new apm<>($$1, $$2));
+   }
 }

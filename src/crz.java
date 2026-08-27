@@ -1,65 +1,68 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Supplier;
+public class crz extends csv implements csx {
+   protected static final float a = 4.0F;
+   protected static final eig b = csv.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
-public class crz extends ctf {
-   public static final dgf a = cwq.aC;
-   protected static final float b = 2.0F;
-   private static final Map<hc, eii> c = Maps.newEnumMap(
-      ImmutableMap.of(
-         hc.d,
-         csx.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         hc.e,
-         csx.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         hc.c,
-         csx.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         hc.f,
-         csx.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final dau d;
-   private final Supplier<cjc> e;
-
-   protected crz(dau $$0, Supplier<cjc> $$1, dfk.d $$2) {
-      super($$2);
-      this.k(this.C.b().a(a, hc.c));
-      this.d = $$0;
-      this.e = $$1;
+   public crz(dfi.d $$0) {
+      super($$0);
    }
 
    @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return c.get($$0.c(a));
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      ehn $$4 = $$0.n($$1, $$2);
+      return b.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
-      return !$$2.a(this.d) && $$1 == $$0.c(a) ? this.d.a().n().a(dat.b, Integer.valueOf(7)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
+      if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
+         this.a($$1, $$2);
+      }
    }
 
    @Override
-   protected boolean d(dfl $$0, cpd $$1, gw $$2) {
-      return $$0.a(csy.cC);
+   public boolean a(dfj $$0, cpy $$1, gw $$2) {
+      return $$1.a_($$2.d()).a(aps.at);
    }
 
    @Override
-   public cjh a(cpd $$0, gw $$1, dfl $$2) {
-      return new cjh(this.e.get());
+   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return csw.a.n();
+      } else {
+         if ($$1 == ha.b && $$2.a(csw.mZ)) {
+            $$3.a($$4, csw.mZ.n(), 2);
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   public dfl a(dfl $$0, czj $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   public cjf a(cpb $$0, gw $$1, dfj $$2) {
+      return new cjf(cji.dv);
    }
 
    @Override
-   public dfl a(dfl $$0, cxs $$1) {
-      return $$0.a($$1.a($$0.c(a)));
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected void a(dfm.a<csx, dfl> $$0) {
-      $$0.a(a);
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
+      this.a($$0, $$2);
+   }
+
+   @Override
+   public float a(dfj $$0, cbu $$1, cpb $$2, gw $$3) {
+      return $$1.eS().d() instanceof ckq ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(cpv $$0, gw $$1) {
+      $$0.a($$1.c(), csw.mZ.n().a(csa.h, dfv.b), 3);
    }
 }

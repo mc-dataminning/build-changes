@@ -1,138 +1,279 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import java.util.Collections;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class rr implements rw {
-   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
-   private final StringBuilder b = new StringBuilder();
+public class rr {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.nbt.trailing"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("argument.nbt.expected.key"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("argument.nbt.expected.value"));
+   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.nbt.list.mixed", $$0, $$1));
+   public static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.nbt.array.mixed", $$0, $$1));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tl.a("argument.nbt.array.invalid", $$0));
+   public static final char g = ',';
+   public static final char h = ':';
+   private static final char j = '[';
+   private static final char k = ']';
+   private static final char l = '}';
+   private static final char m = '{';
+   private static final Pattern n = Pattern.compile("[-+]?(?:[0-9]+[.]|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?", 2);
+   private static final Pattern o = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?d", 2);
+   private static final Pattern p = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?f", 2);
+   private static final Pattern q = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)b", 2);
+   private static final Pattern r = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)l", 2);
+   private static final Pattern s = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)s", 2);
+   private static final Pattern t = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)");
+   public static final Codec<qw> i = Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(new rr(new StringReader($$0)).a(), Lifecycle.stable());
+      } catch (CommandSyntaxException var2) {
+         return DataResult.error(var2::getMessage);
+      }
+   }, qw::toString);
+   private final StringReader u;
 
-   public String a(rs $$0) {
-      $$0.a(this);
-      return this.b.toString();
+   public static qw a(String $$0) throws CommandSyntaxException {
+      return new rr(new StringReader($$0)).a();
    }
 
-   @Override
-   public void a(rq $$0) {
-      this.b.append(rq.b($$0.r_()));
+   @VisibleForTesting
+   qw a() throws CommandSyntaxException {
+      qw $$0 = this.f();
+      this.u.skipWhitespace();
+      if (this.u.canRead()) {
+         throw a.createWithContext(this.u);
+      } else {
+         return $$0;
+      }
    }
 
-   @Override
-   public void a(qw $$0) {
-      this.b.append($$0.l()).append('b');
+   public rr(StringReader $$0) {
+      this.u = $$0;
    }
 
-   @Override
-   public void a(rn $$0) {
-      this.b.append($$0.l()).append('s');
+   protected String b() throws CommandSyntaxException {
+      this.u.skipWhitespace();
+      if (!this.u.canRead()) {
+         throw b.createWithContext(this.u);
+      } else {
+         return this.u.readString();
+      }
    }
 
-   @Override
-   public void a(rd $$0) {
-      this.b.append($$0.l());
+   protected rq c() throws CommandSyntaxException {
+      this.u.skipWhitespace();
+      int $$0 = this.u.getCursor();
+      if (StringReader.isQuotedStringStart(this.u.peek())) {
+         return ro.a(this.u.readQuotedString());
+      } else {
+         String $$1 = this.u.readUnquotedString();
+         if ($$1.isEmpty()) {
+            this.u.setCursor($$0);
+            throw c.createWithContext(this.u);
+         } else {
+            return this.b($$1);
+         }
+      }
    }
 
-   @Override
-   public void a(rg $$0) {
-      this.b.append($$0.l()).append('L');
-   }
-
-   @Override
-   public void a(rb $$0) {
-      this.b.append($$0.k()).append('f');
-   }
-
-   @Override
-   public void a(qz $$0) {
-      this.b.append($$0.j()).append('d');
-   }
-
-   @Override
-   public void a(qv $$0) {
-      this.b.append("[B;");
-      byte[] $$1 = $$0.e();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
+   private rq b(String $$0) {
+      try {
+         if (p.matcher($$0).matches()) {
+            return qz.a(Float.parseFloat($$0.substring(0, $$0.length() - 1)));
          }
 
-         this.b.append($$1[$$2]).append('B');
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(rc $$0) {
-      this.b.append("[I;");
-      int[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
+         if (q.matcher($$0).matches()) {
+            return qu.a(Byte.parseByte($$0.substring(0, $$0.length() - 1)));
          }
 
-         this.b.append($$1[$$2]);
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(rf $$0) {
-      this.b.append("[L;");
-      long[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
+         if (r.matcher($$0).matches()) {
+            return re.a(Long.parseLong($$0.substring(0, $$0.length() - 1)));
          }
 
-         this.b.append($$1[$$2]).append('L');
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(re $$0) {
-      this.b.append('[');
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         if ($$1 != 0) {
-            this.b.append(',');
+         if (s.matcher($$0).matches()) {
+            return rl.a(Short.parseShort($$0.substring(0, $$0.length() - 1)));
          }
 
-         this.b.append(new rr().a($$0.k($$1)));
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(qy $$0) {
-      this.b.append('{');
-      List<String> $$1 = Lists.newArrayList($$0.e());
-      Collections.sort($$1);
-
-      for (String $$2 : $$1) {
-         if (this.b.length() != 1) {
-            this.b.append(',');
+         if (t.matcher($$0).matches()) {
+            return rb.a(Integer.parseInt($$0));
          }
 
-         this.b.append(a($$2)).append(':').append(new rr().a($$0.c($$2)));
+         if (o.matcher($$0).matches()) {
+            return qx.a(Double.parseDouble($$0.substring(0, $$0.length() - 1)));
+         }
+
+         if (n.matcher($$0).matches()) {
+            return qx.a(Double.parseDouble($$0));
+         }
+
+         if ("true".equalsIgnoreCase($$0)) {
+            return qu.c;
+         }
+
+         if ("false".equalsIgnoreCase($$0)) {
+            return qu.b;
+         }
+      } catch (NumberFormatException var3) {
       }
 
-      this.b.append('}');
+      return ro.a($$0);
    }
 
-   protected static String a(String $$0) {
-      return a.matcher($$0).matches() ? $$0 : rq.b($$0);
+   public rq d() throws CommandSyntaxException {
+      this.u.skipWhitespace();
+      if (!this.u.canRead()) {
+         throw c.createWithContext(this.u);
+      } else {
+         char $$0 = this.u.peek();
+         if ($$0 == '{') {
+            return this.f();
+         } else {
+            return $$0 == '[' ? this.e() : this.c();
+         }
+      }
    }
 
-   @Override
-   public void a(ra $$0) {
-      this.b.append("END");
+   protected rq e() throws CommandSyntaxException {
+      return this.u.canRead(3) && !StringReader.isQuotedStringStart(this.u.peek(1)) && this.u.peek(2) == ';' ? this.h() : this.g();
+   }
+
+   public qw f() throws CommandSyntaxException {
+      this.a('{');
+      qw $$0 = new qw();
+      this.u.skipWhitespace();
+
+      while (this.u.canRead() && this.u.peek() != '}') {
+         int $$1 = this.u.getCursor();
+         String $$2 = this.b();
+         if ($$2.isEmpty()) {
+            this.u.setCursor($$1);
+            throw b.createWithContext(this.u);
+         }
+
+         this.a(':');
+         $$0.a($$2, this.d());
+         if (!this.i()) {
+            break;
+         }
+
+         if (!this.u.canRead()) {
+            throw b.createWithContext(this.u);
+         }
+      }
+
+      this.a('}');
+      return $$0;
+   }
+
+   private rq g() throws CommandSyntaxException {
+      this.a('[');
+      this.u.skipWhitespace();
+      if (!this.u.canRead()) {
+         throw c.createWithContext(this.u);
+      } else {
+         rc $$0 = new rc();
+         rs<?> $$1 = null;
+
+         while (this.u.peek() != ']') {
+            int $$2 = this.u.getCursor();
+            rq $$3 = this.d();
+            rs<?> $$4 = $$3.c();
+            if ($$1 == null) {
+               $$1 = $$4;
+            } else if ($$4 != $$1) {
+               this.u.setCursor($$2);
+               throw d.createWithContext(this.u, $$4.b(), $$1.b());
+            }
+
+            $$0.add($$3);
+            if (!this.i()) {
+               break;
+            }
+
+            if (!this.u.canRead()) {
+               throw c.createWithContext(this.u);
+            }
+         }
+
+         this.a(']');
+         return $$0;
+      }
+   }
+
+   private rq h() throws CommandSyntaxException {
+      this.a('[');
+      int $$0 = this.u.getCursor();
+      char $$1 = this.u.read();
+      this.u.read();
+      this.u.skipWhitespace();
+      if (!this.u.canRead()) {
+         throw c.createWithContext(this.u);
+      } else if ($$1 == 'B') {
+         return new qt(this.a(qt.a, qu.a));
+      } else if ($$1 == 'L') {
+         return new rd(this.a(rd.a, re.a));
+      } else if ($$1 == 'I') {
+         return new ra(this.a(ra.a, rb.a));
+      } else {
+         this.u.setCursor($$0);
+         throw f.createWithContext(this.u, String.valueOf($$1));
+      }
+   }
+
+   private <T extends Number> List<T> a(rs<?> $$0, rs<?> $$1) throws CommandSyntaxException {
+      List<T> $$2 = Lists.newArrayList();
+
+      while (this.u.peek() != ']') {
+         int $$3 = this.u.getCursor();
+         rq $$4 = this.d();
+         rs<?> $$5 = $$4.c();
+         if ($$5 != $$1) {
+            this.u.setCursor($$3);
+            throw e.createWithContext(this.u, $$5.b(), $$0.b());
+         }
+
+         if ($$1 == qu.a) {
+            $$2.add((T)((rk)$$4).i());
+         } else if ($$1 == re.a) {
+            $$2.add((T)((rk)$$4).f());
+         } else {
+            $$2.add((T)((rk)$$4).g());
+         }
+
+         if (!this.i()) {
+            break;
+         }
+
+         if (!this.u.canRead()) {
+            throw c.createWithContext(this.u);
+         }
+      }
+
+      this.a(']');
+      return $$2;
+   }
+
+   private boolean i() {
+      this.u.skipWhitespace();
+      if (this.u.canRead() && this.u.peek() == ',') {
+         this.u.skip();
+         this.u.skipWhitespace();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(char $$0) throws CommandSyntaxException {
+      this.u.skipWhitespace();
+      this.u.expect($$0);
    }
 }

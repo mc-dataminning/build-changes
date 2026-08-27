@@ -1,14 +1,15 @@
-import java.util.stream.Stream;
+import java.util.Locale;
 
-public record uw(aey a) implements uo {
-   @Override
-   public Stream<qy> getData(dt $$0) {
-      qy $$1 = $$0.l().aG().a(this.a);
-      return Stream.of($$1);
+public class uw extends IllegalArgumentException {
+   public uw(uv $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   @Override
-   public String toString() {
-      return "storage=" + this.a;
+   public uw(uv $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
+
+   public uw(uv $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

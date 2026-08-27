@@ -1,28 +1,34 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class duh extends duv {
-   public static final Codec<duh> a = bgf.b(0, 256).fieldOf("count").xmap(duh::new, $$0 -> $$0.c).codec();
-   private final bgf c;
+public class duh extends dup {
+   public static final Codec<duh> a = RecordCodecBuilder.create($$0 -> $$0.group(dtp.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, duh::new));
+   private final dtp c;
 
-   private duh(bgf $$0) {
+   private duh(dtp $$0) {
       this.c = $$0;
    }
 
-   public static duh a(bgf $$0) {
+   public static duh a(dtp $$0) {
       return new duh($$0);
    }
 
-   public static duh a(int $$0) {
-      return a(bgc.a($$0));
+   public static duh a(dlm $$0, dlm $$1) {
+      return a(dts.a($$0, $$1));
+   }
+
+   public static duh b(dlm $$0, dlm $$1) {
+      return a(dtr.a($$0, $$1));
    }
 
    @Override
-   protected int a(ase $$0, gw $$1) {
-      return this.c.a($$0);
+   public Stream<gw> a_(dun $$0, asc $$1, gw $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
    }
 
    @Override
-   public dus<?> b() {
-      return dus.f;
+   public duq<?> b() {
+      return duq.l;
    }
 }

@@ -1,13 +1,5 @@
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public enum fjb {
-   a,
-   b;
-
-   private static final List<fjb> c = List.of(values());
-   private static final hu.b d = hu.a(jd.ap);
-
-   public static hn<fjb> a() {
-      return new hn<>(c).a(a, d);
-   }
+public record fjb(GameProfile a, ged b, hr.b c, cec d, @Nullable String e, @Nullable fjh f, @Nullable eyk g) {
 }

@@ -1,56 +1,40 @@
-public class ach implements vf<abe> {
-   private final int a;
-   private final ach.a b;
-   private final int c;
+public class ach implements vd<abc> {
+   private final cfw a;
+   private final boolean b;
+   private final boolean c;
 
-   public ach(bis $$0, ach.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public ach(bis $$0, ach.a $$1, int $$2) {
-      this.a = $$0.ah();
+   public ach(cfw $$0, boolean $$1, boolean $$2) {
+      this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public ach(sq $$0) {
-      this.a = $$0.m();
-      this.b = $$0.b(ach.a.class);
-      this.c = $$0.m();
+   public ach(so $$0) {
+      this.a = $$0.b(cfw.class);
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
+   public void a(so $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
-      $$0.c(this.c);
+      $$0.a(this.c);
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public cfw a() {
       return this.a;
    }
 
-   public ach.a d() {
+   public boolean d() {
       return this.b;
    }
 
-   public int e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

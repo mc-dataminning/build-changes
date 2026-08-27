@@ -1,17 +1,37 @@
-public class flr extends fmk {
-   protected flr(fiz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmr $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
+public class flr extends flu {
+   private final ffz a;
+   private final fom b = fom.i(fta.a);
+
+   flr(fix $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new ffk(eqv.O().aP().a(fib.P));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
-   public static class a implements flz<ja> {
-      private final fmr a;
+   @Override
+   public fly b() {
+      return fly.e;
+   }
 
-      public a(fmr $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public void a(elt $$0, eqg $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * arw.a($$3 * (float) Math.PI);
+      elp $$5 = new elp();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      foe.a $$6 = eqv.O().aO().b();
+      elt $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, fyv.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
+   }
 
-      public flw a(ja $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new flr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   public static class a implements flx<iy> {
+      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new flr($$1, $$2, $$3, $$4);
       }
    }
 }

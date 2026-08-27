@@ -1,23 +1,26 @@
-public enum bha {
-   a,
-   b,
-   c,
-   d,
-   e;
+import javax.annotation.concurrent.Immutable;
 
-   public boolean a() {
-      return this == a || this == b || this == c;
+@Immutable
+public class bha {
+   public static final bha a = new bha("");
+   public static final String b = "Lock";
+   private final String c;
+
+   public bha(String $$0) {
+      this.c = $$0;
    }
 
-   public boolean b() {
-      return this == a;
+   public boolean a(cjf $$0) {
+      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
    }
 
-   public boolean c() {
-      return this == a || this == b;
+   public void a(qw $$0) {
+      if (!this.c.isEmpty()) {
+         $$0.a("Lock", this.c);
+      }
    }
 
-   public static bha a(boolean $$0) {
-      return $$0 ? a : b;
+   public static bha b(qw $$0) {
+      return $$0.b("Lock", 8) ? new bha($$0.l("Lock")) : a;
    }
 }

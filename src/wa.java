@@ -1,18 +1,20 @@
-public record wa(aex<djv> b, ehp c) implements vy {
-   public static final aey a = new aey("debug/game_event");
+public record wa(gw b, int c, String d, int e) implements vw {
+   public static final aew a = new aew("debug/game_test_add_marker");
 
-   public wa(sq $$0) {
-      this($$0.a(je.z), $$0.k());
+   public wa(so $$0) {
+      this($$0.e(), $$0.readInt(), $$0.r(), $$0.readInt());
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.b(this.b);
-      $$0.a(this.c);
+   public void a(so $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public aey a() {
+   public aew a() {
       return a;
    }
 }

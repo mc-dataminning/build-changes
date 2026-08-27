@@ -1,70 +1,63 @@
+import java.util.Arrays;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import org.joml.Quaternionf;
 
-public class gbg implements AutoCloseable {
-   private final Map<aey, gbg.a> a;
+public enum gbg implements gbn {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public gbg(Map<aey, aey> $$0, fzh $$1) {
-      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
-         fzf $$2 = new fzf((aey)$$1x.getKey());
-         $$1.a((aey)$$1x.getKey(), $$2);
-         return new gbg.a($$2, (aey)$$1x.getValue());
-      }));
+   private static final int q = 360;
+   private static final Map<Integer, gbg> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gbg)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   public fzf a(aey $$0) {
-      return this.a.get($$0).a();
+   private gbg(int $$0, int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
+
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
+      }
+
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
+      }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
    @Override
-   public void close() {
-      this.a.values().forEach(gbg.a::close);
-      this.a.clear();
+   public j b() {
+      return this.s;
    }
 
-   public Map<aey, CompletableFuture<gbg.b>> a(anv $$0, int $$1, Executor $$2) {
-      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
-         gbg.a $$4 = $$3.getValue();
-         return fzb.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gbg.b($$4.a, $$1xx));
-      }));
+   public static gbg a(int $$0, int $$1) {
+      return r.get(b(arw.b($$0, 360), arw.b($$1, 360)));
    }
 
-   static record a(fzf a, aey b) implements AutoCloseable {
-
-      @Override
-      public void close() {
-         this.a.f();
-      }
-   }
-
-   public static class b {
-      private final fzf a;
-      private final fzb.a b;
-
-      public b(fzf $$0, fzb.a $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Nullable
-      public fzg a(aey $$0) {
-         return this.b.f().get($$0);
-      }
-
-      public fzg a() {
-         return this.b.e();
-      }
-
-      public CompletableFuture<Void> b() {
-         return this.b.g();
-      }
-
-      public void c() {
-         this.a.a(this.b);
-      }
+   public h a() {
+      return this.t;
    }
 }

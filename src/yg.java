@@ -1,80 +1,52 @@
-public class yg implements vf<wy> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final long e;
-   private final int f;
-   private final int g;
-   private final int h;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public yg(sq $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.n();
-      this.f = $$0.m();
-      this.g = $$0.m();
-      this.h = $$0.m();
+public class yg implements vd<ww> {
+   private final int a;
+   private final int b;
+   private final yf c;
+   private final yk d;
+
+   public yg(dhq $$0, eab $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      cpc $$4 = $$0.f();
+      this.a = $$4.e;
+      this.b = $$4.f;
+      this.c = new yf($$0);
+      this.d = new yk($$4, $$1, $$2, $$3);
    }
 
-   public yg(dhc $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
-      this.c = $$0.i();
-      this.d = $$0.k();
-      this.e = $$0.j();
-      this.f = $$0.m();
-      this.g = $$0.r();
-      this.h = $$0.q();
+   public yg(so $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = new yf($$0, this.a, this.b);
+      this.d = new yk($$0, this.a, this.b);
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.c(this.f);
-      $$0.c(this.g);
-      $$0.c(this.h);
+   public void a(so $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      this.c.a($$0);
+      this.d.a($$0);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public int a() {
       return this.a;
    }
 
-   public double d() {
+   public int d() {
       return this.b;
    }
 
-   public double e() {
-      return this.d;
-   }
-
-   public double f() {
+   public yf e() {
       return this.c;
    }
 
-   public long g() {
-      return this.e;
-   }
-
-   public int h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.h;
-   }
-
-   public int j() {
-      return this.g;
+   public yk f() {
+      return this.d;
    }
 }

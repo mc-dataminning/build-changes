@@ -1,51 +1,53 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-public abstract class geg {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
+public final class geg extends gee {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
-   }
-
-   public void a(gea $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
-      }
-
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
+   @Override
+   public void a(gdy $$0) {
+      if (eqv.O().A()) {
+         super.a($$0);
       }
    }
 
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
-   public boolean c() {
-      return this.c >= 10;
+   @Override
+   public void f() {
+      this.b.add((long)eqv.O().n());
+      this.h();
+      this.c.add(eqv.O().o());
    }
 
-   public void d() {
-      this.d = false;
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
    }
 
-   protected int e() {
-      return this.c;
+   @Override
+   public void b(gdy $$0) {
+      $$0.send(gdz.c, $$0x -> {
+         $$0x.a(geb.r, new LongArrayList(this.b));
+         $$0x.a(geb.s, new LongArrayList(this.c));
+         $$0x.a(geb.t, new LongArrayList(this.d));
+         $$0x.a(geb.u, this.e());
+         $$0x.a(geb.v, eqv.O().m.az());
+         $$0x.a(geb.w, (int)a);
+      });
+      this.g();
    }
 
-   public abstract void f();
-
-   public abstract void b(gea var1);
+   private static long a(long $$0) {
+      return $$0 / 1000L;
+   }
 }

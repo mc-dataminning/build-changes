@@ -1,16 +1,34 @@
-public class fwj extends fvk {
-   private static final aey a = new aey("textures/entity/skeleton/wither_skeleton.png");
+public class fwj extends fun<bvu, fht<bvu>> {
+   private static final aew a = new aew("textures/entity/wolf/wolf.png");
+   private static final aew i = new aew("textures/entity/wolf/wolf_tame.png");
+   private static final aew j = new aew("textures/entity/wolf/wolf_angry.png");
 
-   public fwj(ftj.a $$0) {
-      super($$0, fid.bQ, fid.bR, fid.bS);
+   public fwj(fth.a $$0) {
+      super($$0, new fht<>($$0.a(fib.bV)), 0.5F);
+      this.a(new fye(this));
    }
 
-   @Override
-   public aey a(byt $$0) {
-      return a;
+   protected float a(bvu $$0, float $$1) {
+      return $$0.gl();
    }
 
-   protected void a(byt $$0, elr $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
+   public void a(bvu $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
+      if ($$0.gk()) {
+         float $$6 = $$0.E($$2);
+         this.f.a($$6, $$6, $$6);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gk()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public aew a(bvu $$0) {
+      if ($$0.s()) {
+         return i;
+      } else {
+         return $$0.X_() ? j : a;
+      }
    }
 }

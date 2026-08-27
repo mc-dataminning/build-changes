@@ -1,69 +1,44 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class fmj extends fmu {
+   private final fmp a;
 
-public abstract class fmj extends flw {
-   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-
-   protected fmj(fiz $$0, double $$1, double $$2, double $$3) {
+   protected fmj(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmp $$7) {
       super($$0, $$1, $$2, $$3);
-   }
-
-   protected fmj(fiz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   @Override
-   public void a(elv $$0, eqi $$1, float $$2) {
-      ehp $$3 = $$1.b();
-      float $$4 = (float)(ary.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(ary.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(ary.d((double)$$2, this.f, this.i) - $$3.c());
-      Quaternionf $$7;
-      if (this.z == 0.0F) {
-         $$7 = $$1.f();
-      } else {
-         $$7 = new Quaternionf($$1.f());
-         $$7.rotateZ(ary.i($$2, this.A, this.z));
-      }
-
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
-
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$7);
-         $$12.mul($$10);
-         $$12.add($$4, $$5, $$6);
-      }
-
-      float $$13 = this.c();
-      float $$14 = this.d();
-      float $$15 = this.e();
-      float $$16 = this.f();
-      int $$17 = this.a($$2);
-      $$0.a((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z()).a($$14, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z()).a($$13, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z()).a($$13, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
-   }
-
-   public float b(float $$0) {
-      return this.D;
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   public flw d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   public fly b() {
+      return fly.b;
    }
 
-   protected abstract float c();
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
+   }
 
-   protected abstract float d();
+   public static class a implements flx<iy> {
+      private final fmp a;
 
-   protected abstract float e();
+      public a(fmp $$0) {
+         this.a = $$0;
+      }
 
-   protected abstract float f();
+      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmj $$8 = new fmj($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
+      }
+   }
 }

@@ -1,92 +1,79 @@
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class ddm extends ddy {
+   public static final int c = 9;
+   private hn<cjf> f = hn.a(9, cjf.b);
 
-public class ddm extends dcx {
-   public static final String a = "sherds";
-   private ddm.a b = ddm.a.a;
+   protected ddm(dcx<?> $$0, gw $$1, dfj $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   public ddm(gw $$0, dfl $$1) {
-      super(dcz.O, $$0, $$1);
+   public ddm(gw $$0, dfj $$1) {
+      this(dcx.f, $$0, $$1);
    }
 
    @Override
-   protected void b(qy $$0) {
-      super.b($$0);
-      this.b.a($$0);
+   public int b() {
+      return 9;
    }
 
-   @Override
-   public void a(qy $$0) {
-      super.a($$0);
-      this.b = ddm.a.b($$0);
-   }
+   public int a(asc $$0) {
+      this.e(null);
+      int $$1 = -1;
+      int $$2 = 1;
 
-   public xf c() {
-      return xf.a(this);
-   }
+      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
+         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
+         }
+      }
 
-   @Override
-   public qy as_() {
-      return this.o();
-   }
-
-   public hc d() {
-      return this.q().c(dgb.R);
-   }
-
-   public ddm.a f() {
-      return this.b;
-   }
-
-   public void a(cjh $$0) {
-      this.b = ddm.a.b(cha.a($$0));
-   }
-
-   public cjh g() {
-      return a(this.b);
-   }
-
-   public static cjh a(ddm.a $$0) {
-      cjh $$1 = cjk.eg.ai_();
-      qy $$2 = $$0.a(new qy());
-      cha.a($$1, dcz.O, $$2);
       return $$1;
    }
 
-   public static record a(cjc b, cjc c, cjc d, cjc e) {
-      public static final ddm.a a = new ddm.a(cjk.pX, cjk.pX, cjk.pX, cjk.pX);
-
-      public qy a(qy $$0) {
-         if (this.equals(a)) {
-            return $$0;
-         } else {
-            re $$1 = new re();
-            this.a().forEach($$1x -> $$1.add(rq.a(jd.i.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
+   public int a(cjf $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         if (this.f.get($$1).b()) {
+            this.a($$1, $$0);
+            return $$1;
          }
       }
 
-      public Stream<cjc> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
-      }
+      return -1;
+   }
 
-      public static ddm.a b(@Nullable qy $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            re $$1 = $$0.c("sherds", 8);
-            return new ddm.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
-      }
+   @Override
+   protected tl g() {
+      return tl.c("container.dispenser");
+   }
 
-      private static cjc a(re $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return cjk.pX;
-         } else {
-            rs $$2 = $$0.k($$1);
-            return jd.i.a(aey.a($$2.r_()));
-         }
+   @Override
+   public void a(qw $$0) {
+      super.a($$0);
+      this.f = hn.a(this.b(), cjf.b);
+      if (!this.d($$0)) {
+         bgs.b($$0, this.f);
       }
+   }
+
+   @Override
+   protected void b(qw $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgs.a($$0, this.f);
+      }
+   }
+
+   @Override
+   protected hn<cjf> f() {
+      return this.f;
+   }
+
+   @Override
+   protected void a(hn<cjf> $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   protected cel a(int $$0, cbt $$1) {
+      return new cfc($$0, $$1, this);
    }
 }

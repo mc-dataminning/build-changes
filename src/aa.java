@@ -10,15 +10,15 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3574;
+   public static final int b = 3575;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.20.2-pre3";
+   public static final String d = "1.20.2-pre4";
    @Deprecated
    public static final int e = 764;
    @Deprecated
-   public static final int f = 150;
+   public static final int f = 151;
    public static final int g = 3563;
    private static final int bj = 30;
    public static final boolean h = true;
@@ -178,17 +178,17 @@ public class aa {
    }
 
    public static int c() {
-      return 1073741974;
+      return 1073741975;
    }
 
-   public static boolean a(cpe $$0) {
+   public static boolean a(cpc $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !aq ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aU = atc.t;
+      aU = ata.t;
    }
 
    static {

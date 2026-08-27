@@ -1,29 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class duk extends dur {
-   public static final Codec<duk> a = RecordCodecBuilder.create($$0 -> $$0.group(dku.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, duk::new));
-   private final dku.a c;
+public class duk extends dut {
+   public static final Codec<duk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, duk::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
 
-   private duk(dku.a $$0) {
+   private duk(int $$0, double $$1, double $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static duk a(dku.a $$0) {
-      return new duk($$0);
-   }
-
-   @Override
-   public Stream<gw> a_(dup $$0, ase $$1, gw $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new gw($$3, $$5, $$4)) : Stream.of();
+   public static duk a(int $$0, double $$1, double $$2) {
+      return new duk($$0, $$1, $$2);
    }
 
    @Override
-   public dus<?> b() {
-      return dus.k;
+   protected int a(asc $$0, gw $$1) {
+      double $$2 = cqt.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   }
+
+   @Override
+   public duq<?> b() {
+      return duq.g;
    }
 }

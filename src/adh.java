@@ -1,36 +1,42 @@
-public record adh(int a, ads b) implements vf<adg> {
-   private static final int c = 1048576;
+import java.security.PublicKey;
 
-   public adh(sq $$0) {
-      this($$0.m(), a($$0.s(), $$0));
+public class adh implements vd<ade> {
+   private final String a;
+   private final byte[] b;
+   private final byte[] c;
+
+   public adh(String $$0, byte[] $$1, byte[] $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private static ads a(aey $$0, sq $$1) {
-      return b($$0, $$1);
-   }
-
-   private static adu b(aey $$0, sq $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.j($$2);
-         return new adu($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
+   public adh(so $$0) {
+      this.a = $$0.d(20);
+      this.b = $$0.b();
+      this.c = $$0.b();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b.a());
-      this.b.a($$0);
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(adg $$0) {
+   public void a(ade $$0) {
       $$0.a(this);
    }
 
-   public ads d() {
-      return this.b;
+   public String a() {
+      return this.a;
+   }
+
+   public PublicKey d() throws aqx {
+      return aqw.a(this.b);
+   }
+
+   public byte[] e() {
+      return this.c;
    }
 }

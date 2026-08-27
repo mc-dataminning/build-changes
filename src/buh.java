@@ -1,232 +1,139 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.nio.file.Path;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class buh extends diq<buj> {
-   public static final int a = 6;
-   public static final int b = 1;
-   private final buh.a d;
-   private final LongSet e = new LongOpenHashSet();
+public class buh {
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<bug> b = new Short2ObjectOpenHashMap();
+   private final Map<he<bui>, Set<bug>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   public buh(Path $$0, DataFixer $$1, boolean $$2, hu $$3, cpz $$4) {
-      super($$0, buj::a, buj::new, $$1, atc.q, $$2, $$3, $$4);
-      this.d = new buh.a();
+   public static Codec<buh> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     RecordCodecBuilder.point($$0),
+                     Codec.BOOL.optionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
+                     bug.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
+                  )
+                  .apply($$1, buh::new)
+         )
+         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new buh($$0, false, ImmutableList.of()));
    }
 
-   public void a(gw $$0, hg<buk> $$1) {
-      this.f(hz.c($$0)).a($$0, $$1);
+   public buh(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
+   }
+
+   private buh(Runnable $$0, boolean $$1, List<bug> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
+   }
+
+   public Stream<bug> a(Predicate<he<bui>> $$0, buf.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((he<bui>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
+   }
+
+   public void a(gw $$0, he<bui> $$1) {
+      if (this.a(new bug($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.e().map($$0x -> $$0x.a().toString()).orElse("[unregistered]"), $$0);
+         this.d.run();
+      }
+   }
+
+   private boolean a(bug $$0) {
+      gw $$1 = $$0.f();
+      he<bui> $$2 = $$0.g();
+      short $$3 = hw.b($$1);
+      bug $$4 = (bug)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.g())) {
+            return false;
+         }
+
+         ac.a("POI data mismatch: already registered at " + $$1);
+      }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
    }
 
    public void a(gw $$0) {
-      this.d(hz.c($$0)).ifPresent($$1 -> $$1.a($$0));
-   }
-
-   public long a(Predicate<hg<buk>> $$0, gw $$1, int $$2, buh.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).count();
-   }
-
-   public boolean a(aex<buk> $$0, gw $$1) {
-      return this.a($$1, (Predicate<hg<buk>>)($$1x -> $$1x.a($$0)));
-   }
-
-   public Stream<bui> b(Predicate<hg<buk>> $$0, gw $$1, int $$2, buh.b $$3) {
-      int $$4 = Math.floorDiv($$2, 16) + 1;
-      return cpe.a(new cpe($$1), $$4).flatMap($$2x -> this.a($$0, $$2x, $$3)).filter($$2x -> {
-         gw $$3x = $$2x.f();
-         return Math.abs($$3x.u() - $$1.u()) <= $$2 && Math.abs($$3x.w() - $$1.w()) <= $$2;
-      });
-   }
-
-   public Stream<bui> c(Predicate<hg<buk>> $$0, gw $$1, int $$2, buh.b $$3) {
-      int $$4 = $$2 * $$2;
-      return this.b($$0, $$1, $$2, $$3).filter($$2x -> $$2x.f().j($$1) <= (double)$$4);
-   }
-
-   @ata
-   public Stream<bui> a(Predicate<hg<buk>> $$0, cpe $$1, buh.b $$2) {
-      return IntStream.range(this.c.al(), this.c.am())
-         .boxed()
-         .map($$1x -> this.d(hz.a($$1, $$1x).s()))
-         .filter(Optional::isPresent)
-         .flatMap($$2x -> ((buj)$$2x.get()).a($$0, $$2));
-   }
-
-   public Stream<gw> a(Predicate<hg<buk>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buh.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).map(bui::f).filter($$1);
-   }
-
-   public Stream<Pair<hg<buk>, gw>> b(Predicate<hg<buk>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buh.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).filter($$1x -> $$1.test($$1x.f())).map($$0x -> Pair.of($$0x.g(), $$0x.f()));
-   }
-
-   public Stream<Pair<hg<buk>, gw>> c(Predicate<hg<buk>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buh.b $$4) {
-      return this.b($$0, $$1, $$2, $$3, $$4).sorted(Comparator.comparingDouble($$1x -> ((gw)$$1x.getSecond()).j($$2)));
-   }
-
-   public Optional<gw> d(Predicate<hg<buk>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buh.b $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4).findFirst();
-   }
-
-   public Optional<gw> d(Predicate<hg<buk>> $$0, gw $$1, int $$2, buh.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).map(bui::f).min(Comparator.comparingDouble($$1x -> $$1x.j($$1)));
-   }
-
-   public Optional<Pair<hg<buk>, gw>> e(Predicate<hg<buk>> $$0, gw $$1, int $$2, buh.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).min(Comparator.comparingDouble($$1x -> $$1x.f().j($$1))).map($$0x -> Pair.of($$0x.g(), $$0x.f()));
-   }
-
-   public Optional<gw> e(Predicate<hg<buk>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buh.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).map(bui::f).filter($$1).min(Comparator.comparingDouble($$1x -> $$1x.j($$2)));
-   }
-
-   public Optional<gw> a(Predicate<hg<buk>> $$0, BiPredicate<hg<buk>, gw> $$1, gw $$2, int $$3) {
-      return this.c($$0, $$2, $$3, buh.b.a).filter($$1x -> $$1.test($$1x.g(), $$1x.f())).findFirst().map($$0x -> {
-         $$0x.b();
-         return $$0x.f();
-      });
-   }
-
-   public Optional<gw> a(Predicate<hg<buk>> $$0, Predicate<gw> $$1, buh.b $$2, gw $$3, int $$4, ase $$5) {
-      List<bui> $$6 = ac.a(this.c($$0, $$3, $$4, $$2), $$5);
-      return $$6.stream().filter($$1x -> $$1.test($$1x.f())).findFirst().map(bui::f);
-   }
-
-   public boolean b(gw $$0) {
-      return this.d(hz.c($$0)).map($$1 -> $$1.c($$0)).orElseThrow(() -> ac.b(new IllegalStateException("POI never registered at " + $$0)));
-   }
-
-   public boolean a(gw $$0, Predicate<hg<buk>> $$1) {
-      return this.d(hz.c($$0)).map($$2 -> $$2.a($$0, $$1)).orElse(false);
-   }
-
-   public Optional<hg<buk>> c(gw $$0) {
-      return this.d(hz.c($$0)).flatMap($$1 -> $$1.d($$0));
+      bug $$1 = (bug)this.b.remove(hw.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
+      } else {
+         this.c.get($$1.g()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
+         this.d.run();
+      }
    }
 
    @Deprecated
-   @ata
-   public int d(gw $$0) {
-      return this.d(hz.c($$0)).map($$1 -> $$1.b($$0)).orElse(0);
+   @asy
+   public int b(gw $$0) {
+      return this.e($$0).map(bug::a).orElse(0);
    }
 
-   public int a(hz $$0) {
-      this.d.a();
-      return this.d.c($$0.s());
-   }
-
-   boolean g(long $$0) {
-      Optional<buj> $$1 = this.c($$0);
-      return $$1 == null ? false : $$1.<Boolean>map($$0x -> $$0x.a($$0xx -> $$0xx.a(aqe.b), buh.b.b).findAny().isPresent()).orElse(false);
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0) {
-      super.a($$0);
-      this.d.a();
-   }
-
-   @Override
-   protected void a(long $$0) {
-      super.a($$0);
-      this.d.b($$0, this.d.b($$0), false);
-   }
-
-   @Override
-   protected void b(long $$0) {
-      this.d.b($$0, this.d.b($$0), false);
-   }
-
-   public void a(hz $$0, dht $$1) {
-      ac.a(this.d($$0.s()), $$2 -> $$2.a($$2x -> {
-            if (a($$1)) {
-               this.a($$1, $$0, $$2x);
-            }
-         }), () -> {
-         if (a($$1)) {
-            buj $$2 = this.f($$0.s());
-            this.a($$1, $$0, $$2::a);
-         }
-      });
-   }
-
-   private static boolean a(dht $$0) {
-      return $$0.a(bul::b);
-   }
-
-   private void a(dht $$0, hz $$1, BiConsumer<gw, hg<buk>> $$2) {
-      $$1.t().forEach($$2x -> {
-         dfl $$3 = $$0.a(hz.b($$2x.u()), hz.b($$2x.v()), hz.b($$2x.w()));
-         bul.a($$3).ifPresent($$2xx -> $$2.accept($$2x, $$2xx));
-      });
-   }
-
-   public void a(cqa $$0, gw $$1, int $$2) {
-      hz.a(new cpe($$1), Math.floorDiv($$2, 16), this.c.al(), this.c.am())
-         .map($$0x -> Pair.of($$0x, this.d($$0x.s())))
-         .filter($$0x -> !((Optional)$$0x.getSecond()).<Boolean>map(buj::a).orElse(false))
-         .map($$0x -> ((hz)$$0x.getFirst()).r())
-         .filter($$0x -> this.e.add($$0x.a()))
-         .forEach($$1x -> $$0.a($$1x.e, $$1x.f, dhm.c));
-   }
-
-   final class a extends ako {
-      private final Long2ByteMap b = new Long2ByteOpenHashMap();
-
-      protected a() {
-         super(7, 16, 256);
-         this.b.defaultReturnValue((byte)7);
-      }
-
-      @Override
-      protected int b(long $$0) {
-         return buh.this.g($$0) ? 0 : 7;
-      }
-
-      @Override
-      protected int c(long $$0) {
-         return this.b.get($$0);
-      }
-
-      @Override
-      protected void a(long $$0, int $$1) {
-         if ($$1 > 6) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, (byte)$$1);
-         }
-      }
-
-      public void a() {
-         super.b(Integer.MAX_VALUE);
+   public boolean c(gw $$0) {
+      bug $$1 = (bug)this.b.get(hw.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
+      } else {
+         boolean $$2 = $$1.c();
+         this.d.run();
+         return $$2;
       }
    }
 
-   public static enum b {
-      a(bui::d),
-      b(bui::e),
-      c($$0 -> true);
+   public boolean a(gw $$0, Predicate<he<bui>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
+   }
 
-      private final Predicate<? super bui> d;
+   public Optional<he<bui>> d(gw $$0) {
+      return this.e($$0).map(bug::g);
+   }
 
-      private b(Predicate<? super bui> $$0) {
-         this.d = $$0;
+   private Optional<bug> e(gw $$0) {
+      return Optional.ofNullable((bug)this.b.get(hw.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<gw, he<bui>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<bug> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.b();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = hw.b($$1x);
+            bug $$4 = (bug)$$1.computeIfAbsent($$3, $$2x -> new bug($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
       }
+   }
 
-      public Predicate<? super bui> a() {
-         return this.d;
-      }
+   private void b() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   boolean a() {
+      return this.e;
    }
 }

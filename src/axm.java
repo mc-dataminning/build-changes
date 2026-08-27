@@ -1,35 +1,69 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import org.apache.commons.lang3.StringUtils;
 
-public class axm extends ath {
-   public axm(Schema $$0) {
-      super($$0, ayz.t);
+public class axm extends DataFix {
+   public axm(Schema $$0, boolean $$1) {
+      super($$0, $$1);
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("pages", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().map($$0xx -> $$0xx.map($$0xxx -> {
+               if ($$0xxx.asString().result().isEmpty()) {
+                  return $$0xxx;
+               } else {
+                  String $$1x = $$0xxx.asString("");
+                  tl $$2 = null;
+                  if (!"null".equals($$1x) && !StringUtils.isEmpty($$1x)) {
+                     if ($$1x.charAt(0) == '"' && $$1x.charAt($$1x.length() - 1) == '"' || $$1x.charAt(0) == '{' && $$1x.charAt($$1x.length() - 1) == '}') {
+                        try {
+                           $$2 = arn.b(atz.a, $$1x, tl.class, true);
+                           if ($$2 == null) {
+                              $$2 = tk.a;
+                           }
+                        } catch (Exception var6) {
+                        }
+
+                        if ($$2 == null) {
+                           try {
+                              $$2 = tl.a.a($$1x);
+                           } catch (Exception var5) {
+                           }
+                        }
+
+                        if ($$2 == null) {
+                           try {
+                              $$2 = tl.a.b($$1x);
+                           } catch (Exception var4) {
+                           }
+                        }
+
+                        if ($$2 == null) {
+                           $$2 = tl.b($$1x);
+                        }
+                     } else {
+                        $$2 = tl.b($$1x);
+                     }
+                  } else {
+                     $$2 = tk.a;
+                  }
+
+                  return $$0xxx.createString(tl.a.a($$2));
+               }
+            })).map($$0::createList).result(), $$0.emptyList()));
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(ayz.z.typeName(), bah.a()));
-      return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.a), $$1 -> {
-         OpticFinder<?> $$2 = $$1.getType().findField("tag");
-         return $$1.updateTyped($$2, $$2x -> $$2x.update(DSL.remainderFinder(), $$2xx -> {
-               $$2xx = this.b($$2xx);
-               if ($$1.getOptional($$0).map($$0xxxx -> "minecraft:player_head".equals($$0xxxx.getSecond())).orElse(false)) {
-                  $$2xx = this.c($$2xx);
-               }
-
-               return $$2xx;
-            }));
-      });
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("AttributeModifiers", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)c($$0xx, "UUID", "UUID").orElse($$0xx))));
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.update("SkullOwner", $$0x -> a($$0x, "Id", "Id").orElse($$0x));
+      Type<?> $$0 = this.getInputSchema().getType(ayx.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "ItemWrittenBookPagesStrictJsonFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
+      );
    }
 }

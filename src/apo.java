@@ -1,39 +1,28 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class apo<T> implements Iterable<apm<T>> {
-   private final ht<T> a;
-   private final Map<T, apm<T>> b = new IdentityHashMap<>();
-   private final tn c;
+public class apo {
+   protected final Object2IntMap<apk<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
 
-   public apo(ht<T> $$0, tn $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   public apo() {
+      this.a.defaultReturnValue(0);
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   public void b(cbu $$0, apk<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
    }
 
-   public apm<T> a(T $$0, apn $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new apm<>(this, (T)$$1x, $$1));
+   public void a(cbu $$0, apk<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
    }
 
-   public ht<T> a() {
-      return this.a;
+   public <T> int a(apm<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
    }
 
-   @Override
-   public Iterator<apm<T>> iterator() {
-      return this.b.values().iterator();
-   }
-
-   public apm<T> b(T $$0) {
-      return this.a($$0, apn.b);
-   }
-
-   public tn b() {
-      return this.c;
+   public int a(apk<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

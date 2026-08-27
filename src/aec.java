@@ -1,8 +1,15 @@
-public interface aec extends abf, abg {
-   @Override
-   default sp b() {
-      return sp.c;
+public class aec implements vd<aea> {
+   public aec() {
    }
 
-   void a(aee var1);
+   public aec(so $$0) {
+   }
+
+   @Override
+   public void a(so $$0) {
+   }
+
+   public void a(aea $$0) {
+      $$0.a(this);
+   }
 }

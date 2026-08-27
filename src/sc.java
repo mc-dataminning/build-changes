@@ -1,36 +1,42 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-public record sc(int a, Map<String, ru<?>> b, Map<String, sc> c) {
-   private sc(int $$0) {
-      this($$0, new HashMap<>(), new HashMap<>());
+public class sc extends ry {
+   private final Deque<sa> a = new ArrayDeque<>();
+
+   public sc(rz... $$0) {
+      sa $$1 = sa.a();
+
+      for (rz $$2 : $$0) {
+         $$1.a($$2);
+      }
+
+      this.a.push($$1);
    }
 
-   public static sc a() {
-      return new sc(1);
-   }
-
-   public void a(sb $$0) {
-      if (this.a <= $$0.a().size()) {
-         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new sc(this.a + 1)).a($$0);
+   @Override
+   public rn.a a(rs<?> $$0, String $$1) {
+      sa $$2 = this.a.element();
+      if ($$2.a($$0, $$1)) {
+         return rn.a.b;
       } else {
-         this.b.put($$0.c(), $$0.b());
+         if ($$0 == qw.b) {
+            sa $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.a.push($$3);
+            }
+         }
+
+         return super.a($$0, $$1);
       }
    }
 
-   public boolean a(ru<?> $$0, String $$1) {
-      return $$0.equals(this.c().get($$1));
-   }
+   @Override
+   public rn.b b() {
+      if (this.e() == this.a.element().b()) {
+         this.a.pop();
+      }
 
-   public int b() {
-      return this.a;
-   }
-
-   public Map<String, ru<?>> c() {
-      return this.b;
-   }
-
-   public Map<String, sc> d() {
-      return this.c;
+      return super.b();
    }
 }

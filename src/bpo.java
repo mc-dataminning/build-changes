@@ -1,62 +1,50 @@
 import java.util.EnumSet;
 
-public class bpo extends bqd {
-   private final bjr a;
+public class bpo extends bqo {
+   private final buu g;
 
-   public bpo(bjr $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bqd.a.a, bqd.a.b));
+   public bpo(buu $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(bqb.a.c, bqb.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.ch() < 140;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a();
-   }
-
-   @Override
-   public boolean P_() {
-      return false;
+      return this.g.s() && !this.g.gd() && !this.g.gl() && super.a();
    }
 
    @Override
    public void c() {
-      this.h();
+      super.c();
+      this.g.y(false);
    }
 
-   private void h() {
-      Iterable<gw> $$0 = gw.b(
-         ary.a(this.a.dq() - 1.0), this.a.dr(), ary.a(this.a.dw() - 1.0), ary.a(this.a.dq() + 1.0), ary.a(this.a.ds() + 8.0), ary.a(this.a.dw() + 1.0)
-      );
-      gw $$1 = null;
+   @Override
+   protected int a(bjp $$0) {
+      return 40;
+   }
 
-      for (gw $$2 : $$0) {
-         if (this.a(this.a.dL(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = gw.a(this.a.dq(), this.a.ds() + 8.0, this.a.dw());
-      }
-
-      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   @Override
+   public void d() {
+      super.d();
+      this.g.A(false);
    }
 
    @Override
    public void e() {
-      this.h();
-      this.a.a(0.02F, new ehp((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
-      this.a.a(bjo.a, this.a.do());
+      super.e();
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gl()) {
+         this.g.A(true);
+      }
    }
 
-   private boolean a(cqa $$0, gw $$1) {
-      dfl $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(csy.nd)) && $$2.a($$0, $$1, ebe.a);
+   @Override
+   protected boolean a(cpy $$0, gw $$1) {
+      return $$0.t($$1.c()) && $$0.a_($$1).a(aps.R);
    }
 }

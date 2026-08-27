@@ -1,56 +1,57 @@
-public class eoj extends gfd {
-   private static final tn a = tn.c("mco.configure.world.name");
-   private static final tn b = tn.c("mco.configure.world.description");
-   private static final int c = 10;
-   private static final int y = 210;
-   private final emy z;
-   private final emc A;
-   private final ewb B = new ewb(this);
-   private etb C;
-   private etb D;
+public class eoj extends gfb {
+   private final eyk a;
+   private final eoj.a b;
+   private etj c = etj.a;
 
-   public eoj(emy $$0, emc $$1) {
-      super(tn.c("mco.selectServer.create"));
-      this.z = $$0;
-      this.A = $$1;
+   public eoj(ens $$0, eyk $$1) {
+      super(eqn.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
+
+   public eoj(tl $$0, eyk $$1) {
+      super(eqn.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
+
+   public eoj(tl $$0, tl $$1, eyk $$2) {
+      super(eqn.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
+   }
+
+   private static eoj.a a(ens $$0) {
+      emh $$1 = $$0.a;
+      return a(tl.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
+
+   private static eoj.a a(tl $$0) {
+      return a(tl.c("mco.errorMessage.generic"), $$0);
+   }
+
+   private static eoj.a a(tl $$0, tl $$1) {
+      return new eoj.a($$0, $$1);
    }
 
    @Override
    public void aH_() {
-      this.B.a(new ety(this.e, this.i));
-      ewf $$0 = this.B.c(ewf.d()).a(10);
-      ess $$1 = ess.a(tn.c("mco.create.world"), $$0x -> this.D()).a();
-      $$1.i = false;
-      this.C = new etb(this.i, 210, 20, tn.c("mco.configure.world.name"));
-      this.C.b($$1x -> $$1.i = !ac.b($$1x));
-      this.D = new etb(this.i, 210, 20, tn.c("mco.configure.world.description"));
-      $$0.a(evx.a(this.i, this.C, a));
-      $$0.a(evx.a(this.i, this.D, b));
-      ewf $$2 = this.B.b(ewf.e().a(10));
-      $$2.a($$1);
-      $$2.a(ess.a(tm.e, $$0x -> this.az_()).a());
-      this.B.a($$1x -> {
-         esq var10000 = this.d($$1x);
-      });
-      this.b();
-      this.c(this.C);
+      this.d(esq.a(tk.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
+      this.c = etj.a(this.i, this.b.b, this.g * 3 / 4);
    }
 
    @Override
-   protected void b() {
-      this.B.a();
-   }
-
-   private void D() {
-      eow $$0 = eow.a(this.A, this.z, () -> this.f.execute(() -> {
-            this.A.e();
-            this.f.a(this.A);
-         }));
-      this.f.a(new eoo(this.A, new eqf(this.z.a, this.C.a(), this.D.a(), $$0)));
+   public tl g() {
+      return tl.h().b(this.b.a).f(": ").b(this.b.b);
    }
 
    @Override
-   public void az_() {
-      this.f.a(this.A);
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
+      this.c.a($$0, this.g / 2, 100, 9, -65536);
+   }
+
+   static record a(tl a, tl b) {
    }
 }

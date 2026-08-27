@@ -1,34 +1,159 @@
-import javax.annotation.Nullable;
+public class ddc extends ddy implements ddx {
+   private static final int c = 1;
+   private hn<cjf> f = hn.a(27, cjf.b);
+   private final ddi g = new ddi() {
+      @Override
+      protected void a(cpv $$0, gw $$1, dfj $$2) {
+         ddc.a($$0, $$1, $$2, apd.ej);
+      }
 
-public class ddc extends dec {
-   public ddc(gw $$0, dfl $$1) {
-      super(dcz.J, $$0, $$1);
+      @Override
+      protected void b(cpv $$0, gw $$1, dfj $$2) {
+         ddc.a($$0, $$1, $$2, apd.eh);
+      }
+
+      @Override
+      protected void a(cpv $$0, gw $$1, dfj $$2, int $$3, int $$4) {
+         ddc.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(cbu $$0) {
+         if (!($$0.bS instanceof ces)) {
+            return false;
+         } else {
+            bgr $$1 = ((ces)$$0.bS).l();
+            return $$1 == ddc.this || $$1 instanceof bgq && ((bgq)$$1).a(ddc.this);
+         }
+      }
+   };
+   private final ddd j = new ddd();
+
+   protected ddc(dcx<?> $$0, gw $$1, dfj $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public ddc(gw $$0, dfj $$1) {
+      this(dcx.b, $$0, $$1);
    }
 
    @Override
-   public dke.d c() {
-      return new ddc.a(this.p());
+   public int b() {
+      return 27;
    }
 
-   protected class a extends dec.a {
-      public a(gw $$1) {
-         super($$1);
+   @Override
+   protected tl g() {
+      return tl.c("container.chest");
+   }
+
+   @Override
+   public void a(qw $$0) {
+      super.a($$0);
+      this.f = hn.a(this.b(), cjf.b);
+      if (!this.d($$0)) {
+         bgs.b($$0, this.f);
+      }
+   }
+
+   @Override
+   protected void b(qw $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgs.a($$0, this.f);
+      }
+   }
+
+   public static void a(cpv $$0, gw $$1, dfj $$2, ddc $$3) {
+      $$3.j.a();
+   }
+
+   static void a(cpv $$0, gw $$1, dfj $$2, apc $$3) {
+      dgb $$4 = $$2.c(ctx.c);
+      if ($$4 != dgb.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dgb.c) {
+            ha $$8 = ctx.h($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, ape.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.j.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   @Override
+   public void d_(cbu $$0) {
+      if (!this.q && !$$0.M_()) {
+         this.g.a($$0, this.k(), this.p(), this.q());
+      }
+   }
+
+   @Override
+   public void c(cbu $$0) {
+      if (!this.q && !$$0.M_()) {
+         this.g.b($$0, this.k(), this.p(), this.q());
+      }
+   }
+
+   @Override
+   protected hn<cjf> f() {
+      return this.f;
+   }
+
+   @Override
+   protected void a(hn<cjf> $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.j.a($$0);
+   }
+
+   public static int a(cpb $$0, gw $$1) {
+      dfj $$2 = $$0.a_($$1);
+      if ($$2.t()) {
+         dcv $$3 = $$0.c_($$1);
+         if ($$3 instanceof ddc) {
+            return ((ddc)$$3).g.a();
+         }
       }
 
-      @Override
-      public int a() {
-         return 16;
-      }
+      return 0;
+   }
 
-      @Override
-      public boolean a(aks $$0, gw $$1, djv $$2, @Nullable djv.a $$3) {
-         int $$4 = this.a($$0, this.c, ddc.this.q());
-         return $$4 != 0 && dke.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
+   public static void a(ddc $$0, ddc $$1) {
+      hn<cjf> $$2 = $$0.f();
+      $$0.a($$1.f());
+      $$1.a($$2);
+   }
 
-      private int a(cpx $$0, gw $$1, dfl $$2) {
-         hc $$3 = $$2.c(ctj.a).g();
-         return $$0.c($$1.a($$3), $$3);
+   @Override
+   protected cel a(int $$0, cbt $$1) {
+      return ces.a($$0, $$1, this);
+   }
+
+   public void i() {
+      if (!this.q) {
+         this.g.c(this.k(), this.p(), this.q());
       }
+   }
+
+   protected void a(cpv $$0, gw $$1, dfj $$2, int $$3, int $$4) {
+      csv $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

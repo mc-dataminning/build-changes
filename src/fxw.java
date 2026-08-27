@@ -1,34 +1,33 @@
-public class fxw extends fxr<bvr, fhf<bvr>> {
-   private final fpa a;
-   private final fuh b;
+public class fxw<T extends bjg> extends fxp<T, fgi<T>> {
+   public static final aew a = new aew("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fic c;
 
-   public fxw(fve<bvr, fhf<bvr>> $$0, fpa $$1, fuh $$2) {
+   public fxw(fvc<T, fgi<T>> $$0, fhy $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      fic $$2 = $$1.a(fib.aT);
+      this.c = $$2.b("box");
    }
 
-   public void a(elr $$0, fog $$1, int $$2, bvr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.t()) {
-         boolean $$10 = eqx.O().b($$3) && $$3.cd();
-         if (!$$3.cd() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            cjh $$12 = new cjh(csy.ef);
-            if ($$10) {
-               dfl $$13 = csy.ef.n();
-               gbh $$14 = this.a.a($$13);
-               int $$15 = fuk.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(foo.q(fzf.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
-            } else {
-               this.b.a($$3, $$12, cje.f, false, $$0, $$1, $$3.dL(), $$2, fuk.c($$3, 0.0F), $$3.ah());
-            }
+   public static fii a() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      $$1.a("box", fih.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fie.a);
+      return fii.a($$0, 64, 64);
+   }
 
+   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fi()) {
+         elt $$10 = $$1.getBuffer(fom.e(a));
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, fyv.d);
             $$0.b();
          }
       }

@@ -1,12 +1,16 @@
-public interface wr extends vi {
-   @Override
-   default sp b() {
-      return sp.e;
+public record wr(hr.b a) implements vd<wp> {
+   private static final aeu<rq> b = aeu.a(ri.a, hr.a(jb.ap));
+
+   public wr(so $$0) {
+      this($$0.<hr>a(b, hu.a).c());
    }
 
-   void a(ws var1);
+   @Override
+   public void a(so $$0) {
+      $$0.a(b, hu.a, this.a);
+   }
 
-   void a(wt var1);
-
-   void a(wu var1);
+   public void a(wp $$0) {
+      $$0.a(this);
+   }
 }

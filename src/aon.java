@@ -1,129 +1,52 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import com.mojang.authlib.GameProfile;
+import java.util.Date;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class aon<K, V extends aom<K>> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
-   private final File c;
-   private final Map<String, V> d = Maps.newHashMap();
-
-   public aon(File $$0) {
-      this.c = $$0;
+public class aon extends aob<GameProfile> {
+   public aon(@Nullable GameProfile $$0) {
+      this($$0, null, null, null, null);
    }
 
-   public File b() {
-      return this.c;
+   public aon(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public void a(V $$0) {
-      this.d.put(this.a($$0.g()), $$0);
+   public aon(JsonObject $$0) {
+      super(b($$0), $$0);
+   }
 
-      try {
-         this.e();
-      } catch (IOException var3) {
-         a.warn("Could not save the list after adding a user.", var3);
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         super.a($$0);
       }
+   }
+
+   @Override
+   public tl e() {
+      GameProfile $$0 = this.g();
+      return $$0 != null ? tl.b($$0.getName()) : tl.c("commands.banlist.entry.unknown");
    }
 
    @Nullable
-   public V b(K $$0) {
-      this.g();
-      return this.d.get(this.a($$0));
-   }
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
 
-   public void c(K $$0) {
-      this.d.remove(this.a($$0));
-
-      try {
-         this.e();
-      } catch (IOException var3) {
-         a.warn("Could not save the list after removing a user.", var3);
-      }
-   }
-
-   public void b(aom<K> $$0) {
-      this.c($$0.g());
-   }
-
-   public String[] a() {
-      return this.d.keySet().toArray(new String[0]);
-   }
-
-   public boolean c() {
-      return this.d.size() < 1;
-   }
-
-   protected String a(K $$0) {
-      return $$0.toString();
-   }
-
-   protected boolean d(K $$0) {
-      return this.d.containsKey(this.a($$0));
-   }
-
-   private void g() {
-      List<K> $$0 = Lists.newArrayList();
-
-      for (V $$1 : this.d.values()) {
-         if ($$1.f()) {
-            $$0.add($$1.g());
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
          }
-      }
 
-      for (K $$2 : $$0) {
-         this.d.remove(this.a($$2));
-      }
-   }
-
-   protected abstract aom<K> a(JsonObject var1);
-
-   public Collection<V> d() {
-      return this.d.values();
-   }
-
-   public void e() throws IOException {
-      JsonArray $$0 = new JsonArray();
-      this.d.values().stream().map($$0x -> ac.a(new JsonObject(), $$0x::a)).forEach($$0::add);
-
-      try (BufferedWriter $$1 = Files.newWriter(this.c, StandardCharsets.UTF_8)) {
-         b.toJson($$0, $$1);
-      }
-   }
-
-   public void f() throws IOException {
-      if (this.c.exists()) {
-         try (BufferedReader $$0 = Files.newReader(this.c, StandardCharsets.UTF_8)) {
-            this.d.clear();
-            JsonArray $$1 = (JsonArray)b.fromJson($$0, JsonArray.class);
-            if ($$1 == null) {
-               return;
-            }
-
-            for (JsonElement $$2 : $$1) {
-               JsonObject $$3 = arp.m($$2, "entry");
-               aom<K> $$4 = this.a($$3);
-               if ($$4.g() != null) {
-                  this.d.put(this.a($$4.g()), (V)$$4);
-               }
-            }
-         }
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
       }
    }
 }

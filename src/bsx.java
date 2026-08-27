@@ -1,25 +1,22 @@
-public class bsx extends bth {
-   public static final float a = 8.0F;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+public class bsx extends btf {
+   public static final float a = 10.0F;
 
    @Override
-   protected boolean a(bji $$0, bji $$1) {
-      return this.f($$0, $$1) && $$1.ba() && (this.b($$1) || this.e($$0, $$1)) && btn.c($$0, $$1);
+   protected boolean a(bjg $$0, bjg $$1) {
+      return !$$0.dN().a(bsh.T) && btl.c($$0, $$1) && bwg.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
-   private boolean e(bji $$0, bji $$1) {
-      return !$$0.dN().a(bsj.T) && $$1.ag().a(apx.h);
-   }
-
-   private boolean b(bji $$0) {
-      return $$0.ag().a(apx.g);
-   }
-
-   private boolean f(bji $$0, bji $$1) {
-      return $$1.f((bis)$$0) <= 64.0;
+   private boolean e(bjg $$0, bjg $$1) {
+      List<UUID> $$2 = $$0.dN().c(bsh.Z).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cv());
    }
 
    @Override
-   protected bsj<bji> b() {
-      return bsj.B;
+   protected bsh<bjg> b() {
+      return bsh.B;
    }
 }

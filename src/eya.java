@@ -1,42 +1,57 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.compress.utils.Lists;
 
-public class eya extends eye {
-   private etp c;
+public class eya extends eym {
+   @Nullable
+   private final eqy<Unit> l;
 
-   private static era<?>[] a(erb $$0) {
-      return new era[]{$$0.c(), $$0.N(), $$0.C(), $$0.O(), $$0.V()};
+   public static eya a(eqv $$0, eyk $$1, eqz $$2) {
+      List<eqy<?>> $$3 = Lists.newArrayList();
+      $$3.add($$2.P());
+      $$3.add($$2.Q());
+      eqy<Unit> $$4 = x.a(
+         $$0.r,
+         $$0x -> {
+            bgv $$1x = $$0x.ai();
+            return new eqy<>(
+               "options.difficulty.online",
+               eqy.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new eqy.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$4 != null) {
+         $$3.add($$4);
+      }
+
+      return new eya($$1, $$2, $$3.toArray(new eqy[0]), $$4);
    }
 
-   public eya(eym $$0, erb $$1) {
-      super($$0, $$1, tn.c("options.mouse_settings.title"));
+   private eya(eyk $$0, eqz $$1, eqy<?>[] $$2, @Nullable eqy<Unit> $$3) {
+      super($$0, $$1, tl.c("options.online.title"), $$2);
+      this.l = $$3;
    }
 
    @Override
    protected void aH_() {
-      this.c = new etp(this.f, this.g, this.h, 32, this.h - 32, 25);
-      if (ekm.a()) {
-         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.D())).toArray(era[]::new));
-      } else {
-         this.c.a(a(this.b));
+      super.aH_();
+      if (this.l != null) {
+         eso $$0 = this.k.b(this.l);
+         if ($$0 != null) {
+            $$0.i = false;
+         }
       }
 
-      this.e(this.c);
-      this.d(ess.a(tm.d, $$0 -> {
-         this.b.ar();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
-
-   @Override
-   public void a(esh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
-   }
-
-   @Override
-   public void b(esh $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+      eso $$1 = this.k.b(this.b.ae());
+      if ($$1 != null) {
+         $$1.i = this.f.B();
+      }
    }
 }

@@ -1,6 +1,6 @@
-public class det extends der {
+public class det extends dep {
    @Override
-   protected aex<dnl<?, ?>> a(ase $$0, boolean $$1) {
-      return oy.w;
+   protected aev<dnj<?, ?>> a(asc $$0, boolean $$1) {
+      return $$1 ? ow.K : ow.z;
    }
 }

@@ -1,51 +1,54 @@
-public class ccs extends ccu {
-   public ccs(biw<? extends ccs> $$0, cpx $$1) {
+public abstract class ccs extends cct implements ccj {
+   private static final aee<cjf> b = aeh.a(ccs.class, aeg.h);
+
+   public ccs(biu<? extends ccs> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
-   public ccs(cpx $$0, bji $$1) {
-      super(biw.aP, $$1, $$0);
+   public ccs(biu<? extends ccs> $$0, double $$1, double $$2, double $$3, cpv $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public ccs(cpx $$0, double $$1, double $$2, double $$3) {
-      super(biw.aP, $$1, $$2, $$3, $$0);
+   public ccs(biu<? extends ccs> $$0, bjg $$1, cpv $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(cjf $$0) {
+      if (!$$0.a(this.s()) || $$0.u()) {
+         this.al().b(b, $$0.c(1));
+      }
+   }
+
+   protected abstract cja s();
+
+   protected cjf t() {
+      return this.al().b(b);
    }
 
    @Override
-   protected cjc s() {
-      return cjk.pO;
-   }
-
-   private iv x() {
-      cjh $$0 = this.t();
-      return (iv)($$0.b() ? ix.R : new it(ix.O, $$0));
+   public cjf q() {
+      cjf $$0 = this.t();
+      return $$0.b() ? new cjf(this.s()) : $$0;
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         iv $$1 = this.x();
+   protected void a_() {
+      this.al().a(b, cjf.b);
+   }
 
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dL().a($$1, this.dq(), this.ds(), this.dw(), 0.0, 0.0, 0.0);
-         }
+   @Override
+   public void b(qw $$0) {
+      super.b($$0);
+      cjf $$1 = this.t();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new qw()));
       }
    }
 
    @Override
-   protected void a(ehm $$0) {
+   public void a(qw $$0) {
       super.a($$0);
-      bis $$1 = $$0.a();
-      int $$2 = $$1 instanceof byu ? 3 : 0;
-      $$1.a(this.dM().b(this, this.v()), (float)$$2);
-   }
-
-   @Override
-   protected void a(ehn $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         this.dL().a(this, (byte)3);
-         this.ak();
-      }
+      cjf $$1 = cjf.a($$0.p("Item"));
+      this.a($$1);
    }
 }

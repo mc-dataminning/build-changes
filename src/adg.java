@@ -1,16 +1,31 @@
-public interface adg extends sl {
-   @Override
-   default sp b() {
-      return sp.d;
+import com.mojang.authlib.GameProfile;
+
+public class adg implements vd<ade> {
+   private final GameProfile a;
+
+   public adg(GameProfile $$0) {
+      this.a = $$0;
    }
 
-   void a(adj var1);
+   public adg(so $$0) {
+      this.a = $$0.z();
+   }
 
-   void a(adi var1);
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.a);
+   }
 
-   void a(adl var1);
+   public void a(ade $$0) {
+      $$0.a(this);
+   }
 
-   void a(adk var1);
+   public GameProfile a() {
+      return this.a;
+   }
 
-   void a(adh var1);
+   @Override
+   public sn c() {
+      return sn.e;
+   }
 }

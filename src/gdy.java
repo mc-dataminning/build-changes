@@ -1,33 +1,16 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class gdy implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bde<gdx> b;
-   private final bft<Runnable> c;
+@FunctionalInterface
+public interface gdy {
+   gdy a = ($$0, $$1) -> {
+   };
 
-   public gdy(FileChannel $$0, Executor $$1) {
-      this.b = new bde<>(gdx.a, $$0);
-      this.c = bft.a($$1, "telemetry-event-log");
-   }
-
-   public gdz a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
+   default gdy decorate(Consumer<gec.a> $$0) {
+      return ($$1, $$2) -> this.send($$1, $$2x -> {
+            $$2.accept($$2x);
+            $$0.accept($$2x);
          });
    }
 
-   @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
-   }
+   void send(gdz var1, Consumer<gec.a> var2);
 }

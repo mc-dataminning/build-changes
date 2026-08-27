@@ -1,16 +1,16 @@
 public interface dn {
-   <T> hi<T> a(aex<? extends ht<T>> var1);
+   <T> hg<T> a(aev<? extends hq<T>> var1);
 
-   static dn a(final hi.b $$0, final cee $$1) {
+   static dn a(final hg.b $$0, final cec $$1) {
       return new dn() {
          @Override
-         public <T> hi<T> a(aex<? extends ht<T>> $$0x) {
+         public <T> hg<T> a(aev<? extends hq<T>> $$0x) {
             return $$0.b($$0).a($$1);
          }
       };
    }
 
-   static dn.a a(final hu $$0, final cee $$1) {
+   static dn.a a(final hr $$0, final cec $$1) {
       return new dn.a() {
          dn.b c = dn.b.b;
 
@@ -20,13 +20,13 @@ public interface dn {
          }
 
          @Override
-         public <T> hi<T> a(aex<? extends ht<T>> $$0x) {
-            ht<T> $$1 = $$0.d($$0);
-            final hi.c<T> $$2 = $$1.p();
-            final hi.c<T> $$3 = $$1.u();
-            hi.c<T> $$4 = new hi.c.a<T>() {
+         public <T> hg<T> a(aev<? extends hq<T>> $$0x) {
+            hq<T> $$1 = $$0.d($$0);
+            final hg.c<T> $$2 = $$1.p();
+            final hg.c<T> $$3 = $$1.u();
+            hg.c<T> $$4 = new hg.c.a<T>() {
                @Override
-               protected hi.c<T> a() {
+               protected hg.c<T> a() {
                   return switch (c) {
                      case b -> $$2;
                      case a -> $$3;

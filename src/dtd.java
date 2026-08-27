@@ -4,7 +4,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class dtd extends dtg {
+public class dtd extends dte {
    public static final Codec<dtd> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtd::new));
 
    public dtd(int $$0, int $$1, int $$2) {
@@ -12,33 +12,18 @@ public class dtd extends dtg {
    }
 
    @Override
-   protected dth<?> a() {
-      return dth.c;
+   protected dtf<?> a() {
+      return dtf.a;
    }
 
    @Override
-   public List<dro.a> a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, int $$3, gw $$4, dqy $$5) {
-      gw $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      gw.a $$7 = new gw.a();
+   public List<drm.a> a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, int $$3, gw $$4, dqw $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
       }
 
-      return ImmutableList.of(new dro.a($$4.b($$3), 0, true));
-   }
-
-   private void a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, gw.a $$3, dqy $$4, gw $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+      return ImmutableList.of(new drm.a($$4.b($$3), 0, false));
    }
 }

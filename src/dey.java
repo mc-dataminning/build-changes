@@ -1,15 +1,11 @@
-import javax.annotation.Nullable;
-
-public class dey extends der {
-   private final float a;
-
-   public dey(float $$0) {
-      this.a = $$0;
+public class dey extends deo {
+   @Override
+   protected aev<dnj<?, ?>> a(asc $$0, boolean $$1) {
+      return ow.k;
    }
 
-   @Nullable
    @Override
-   protected aex<dnl<?, ?>> a(ase $$0, boolean $$1) {
-      return $$0.i() < this.a ? oy.y : oy.x;
+   protected aev<dnj<?, ?>> a(asc $$0) {
+      return $$0.h() ? ow.q : ow.r;
    }
 }

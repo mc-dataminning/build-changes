@@ -1,63 +1,40 @@
+import com.google.common.collect.ImmutableSet;
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
 
-public class edy extends eee {
-   public static final Codec<edy> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(egn.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, edy::new)
-   );
-   private final egm b;
-   private final boolean c;
+public class edy extends eec {
+   public static final Codec<edy> a = RecordCodecBuilder.create($$0 -> a($$0).and(ecq.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, edy::new));
+   private final ecq.b b;
 
-   edy(List<efr> $$0, egm $$1, boolean $$2) {
+   public edy(List<efp> $$0, ecq.b $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public eeg b() {
-      return eeh.d;
+   public eee b() {
+      return eef.v;
    }
 
    @Override
-   public Set<efa<?>> a() {
-      return this.b.a();
+   public Set<eey<?>> a() {
+      return ImmutableSet.of(this.b.a());
    }
 
    @Override
-   public cjh a(cjh $$0, ecs $$1) {
-      ase $$2 = $$1.b();
-      return cns.a($$2, $$0, this.b.a($$1), this.c);
+   public cjf a(cjf $$0, ecq $$1) {
+      if ($$0.a(cji.tt) && $$1.c(this.b.a()) instanceof cbu $$2) {
+         GameProfile $$3 = $$2.fQ();
+         $$0.w().a("SkullOwner", rj.a(new qw(), $$3));
+      }
+
+      return $$0;
    }
 
-   public static edy.a a(egm $$0) {
-      return new edy.a($$0);
-   }
-
-   public static class a extends eee.a<edy.a> {
-      private final egm a;
-      private boolean b;
-
-      public a(egm $$0) {
-         this.a = $$0;
-      }
-
-      protected edy.a a() {
-         return this;
-      }
-
-      public edy.a e() {
-         this.b = true;
-         return this;
-      }
-
-      @Override
-      public eef b() {
-         return new edy(this.g(), this.a, this.b);
-      }
+   public static eec.a<?> a(ecq.b $$0) {
+      return a($$1 -> new edy($$1, $$0));
    }
 }

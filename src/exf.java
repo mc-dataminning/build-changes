@@ -1,102 +1,108 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+import com.ibm.icu.text.Collator;
+import java.util.Comparator;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class exf extends eym {
-   private static final int k = 20;
-   private final tn l;
-   private etl m = etl.a;
-   protected tn a;
-   protected tn b;
-   private int n;
-   protected final BooleanConsumer c;
-   private final List<ess> o = Lists.newArrayList();
+public class exf extends eyk {
+   private static final tl a = tl.c("createWorld.customize.buffet.biome");
+   private final eyk b;
+   private final Consumer<he<cqt>> c;
+   final hq<cqt> k;
+   private exf.a l;
+   he<cqt> m;
+   private esq n;
 
-   public exf(BooleanConsumer $$0, tn $$1, tn $$2) {
-      this($$0, $$1, $$2, tm.f, tm.g);
-   }
-
-   public exf(BooleanConsumer $$0, tn $$1, tn $$2, tn $$3, tn $$4) {
-      super($$1);
-      this.c = $$0;
-      this.l = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public exf(eyk $$0, fdg $$1, Consumer<he<cqt>> $$2) {
+      super(tl.c("createWorld.customize.buffet.title"));
+      this.b = $$0;
+      this.c = $$2;
+      this.k = $$1.a().d(jc.ap);
+      he<cqt> $$3 = this.k.b(cra.b).or(() -> this.k.h().findAny()).orElseThrow();
+      this.m = $$1.d().a().c().c().stream().findFirst().orElse($$3);
    }
 
    @Override
-   public tn g() {
-      return tm.a(super.g(), this.l);
+   public void az_() {
+      this.f.a(this.b);
    }
 
    @Override
    protected void aH_() {
-      super.aH_();
-      this.m = etl.a(this.i, this.l, this.g - 50);
-      int $$0 = ary.a(this.D() + this.E() + 20, this.h / 6 + 96, this.h - 24);
-      this.o.clear();
-      this.a($$0);
+      this.l = new exf.a();
+      this.e(this.l);
+      this.n = this.d(esq.a(tk.d, $$0 -> {
+         this.c.accept(this.m);
+         this.f.a(this.b);
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
+      this.d(esq.a(tk.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.l.a(this.l.i().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
    }
 
-   protected void a(int $$0) {
-      this.a(ess.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 155, $$0, 150, 20).a());
-      this.a(ess.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 155 + 160, $$0, 150, 20).a());
-   }
-
-   protected void a(ess $$0) {
-      this.o.add(this.d($$0));
+   void l() {
+      this.n.i = this.l.f() != null;
    }
 
    @Override
-   public void a(esh $$0, int $$1, int $$2, float $$3) {
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.l(), 16777215);
-      this.m.a($$0, this.g / 2, this.D());
-   }
-
-   private int l() {
-      int $$0 = (this.h - this.E()) / 2;
-      return ary.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int D() {
-      return this.l() + 20;
-   }
-
-   private int E() {
-      return this.m.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
-
-      for (ess $$1 : this.o) {
-         $$1.i = false;
-      }
+      this.l.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      $$0.a(this.i, a, this.g / 2, 28, 10526880);
    }
 
    @Override
-   public void c() {
-      super.c();
-      if (--this.n == 0) {
-         for (ess $$0 : this.o) {
-            $$0.i = true;
+   public void b(esf $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   class a extends etm<exf.a.a> {
+      a() {
+         super(exf.this.f, exf.this.g, exf.this.h, 40, exf.this.h - 37, 16);
+         Collator $$0 = Collator.getInstance(Locale.getDefault());
+         exf.this.k.h().map($$0x -> new exf.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
+      }
+
+      public void a(@Nullable exf.a.a $$0) {
+         super.a($$0);
+         if ($$0 != null) {
+            exf.this.m = $$0.b;
          }
+
+         exf.this.l();
       }
-   }
 
-   @Override
-   public boolean ay_() {
-      return false;
-   }
+      class a extends etm.a<exf.a.a> {
+         final he.c<cqt> b;
+         final tl c;
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+         public a(he.c<cqt> $$0) {
+            this.b = $$0;
+            aew $$1 = $$0.g().a();
+            String $$2 = $$1.f("biome");
+            if (qr.a().b($$2)) {
+               this.c = tl.c($$2);
+            } else {
+               this.c = tl.b($$1.toString());
+            }
+         }
+
+         @Override
+         public tl a() {
+            return tl.a("narrator.select", this.c);
+         }
+
+         @Override
+         public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(exf.this.i, this.c, $$3 + 5, $$2 + 2, 16777215);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
       }
    }
 }

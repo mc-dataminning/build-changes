@@ -1,49 +1,161 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class abv implements vf<abe> {
-   public static final int a = 4;
-   private static final int b = 128;
-   private static final int c = 8192;
-   private static final int d = 200;
-   private final int e;
-   private final List<String> f;
-   private final Optional<String> g;
+public class abv implements vd<abc> {
+   private final int a;
+   private final abv.a b;
+   private final boolean c;
+   static final abv.a d = new abv.a() {
+      @Override
+      public abv.b a() {
+         return abv.b.b;
+      }
 
-   public abv(int $$0, List<String> $$1, Optional<String> $$2) {
-      this.e = $$0;
-      this.f = ImmutableList.copyOf($$1);
-      this.g = $$2;
+      @Override
+      public void a(abv.c $$0) {
+         $$0.a();
+      }
+
+      @Override
+      public void a(so $$0) {
+      }
+   };
+
+   private abv(int $$0, boolean $$1, abv.a $$2) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
    }
 
-   public abv(sq $$0) {
-      this.e = $$0.m();
-      this.f = $$0.a(sq.a(Lists::newArrayListWithCapacity, 200), $$0x -> $$0x.d(8192));
-      this.g = $$0.b((sq.a<String>)($$0x -> $$0x.d(128)));
+   public static abv a(biq $$0, boolean $$1) {
+      return new abv($$0.ah(), $$1, d);
+   }
+
+   public static abv a(biq $$0, boolean $$1, bgx $$2) {
+      return new abv($$0.ah(), $$1, new abv.d($$2));
+   }
+
+   public static abv a(biq $$0, boolean $$1, bgx $$2, ehn $$3) {
+      return new abv($$0.ah(), $$1, new abv.e($$2, $$3));
+   }
+
+   public abv(so $$0) {
+      this.a = $$0.m();
+      abv.b $$1 = $$0.b(abv.b.class);
+      this.b = $$1.d.apply($$0);
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.e);
-      $$0.a(this.f, ($$0x, $$1) -> $$0x.a($$1, 8192));
-      $$0.a(this.g, ($$0x, $$1) -> $$0x.a($$1, 128));
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b.a());
+      this.b.a($$0);
+      $$0.a(this.c);
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
-   public List<String> a() {
-      return this.f;
+   @Nullable
+   public biq a(akq $$0) {
+      return $$0.b(this.a);
    }
 
-   public Optional<String> d() {
-      return this.g;
+   public boolean a() {
+      return this.c;
    }
 
-   public int e() {
-      return this.e;
+   public void a(abv.c $$0) {
+      this.b.a($$0);
+   }
+
+   interface a {
+      abv.b a();
+
+      void a(abv.c var1);
+
+      void a(so var1);
+   }
+
+   static enum b {
+      a(abv.d::new),
+      b($$0 -> abv.d),
+      c(abv.e::new);
+
+      final Function<so, abv.a> d;
+
+      private b(Function<so, abv.a> $$0) {
+         this.d = $$0;
+      }
+   }
+
+   public interface c {
+      void a(bgx var1);
+
+      void a(bgx var1, ehn var2);
+
+      void a();
+   }
+
+   static class d implements abv.a {
+      private final bgx a;
+
+      d(bgx $$0) {
+         this.a = $$0;
+      }
+
+      private d(so $$0) {
+         this.a = $$0.b(bgx.class);
+      }
+
+      @Override
+      public abv.b a() {
+         return abv.b.a;
+      }
+
+      @Override
+      public void a(abv.c $$0) {
+         $$0.a(this.a);
+      }
+
+      @Override
+      public void a(so $$0) {
+         $$0.a(this.a);
+      }
+   }
+
+   static class e implements abv.a {
+      private final bgx a;
+      private final ehn b;
+
+      e(bgx $$0, ehn $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private e(so $$0) {
+         this.b = new ehn((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bgx.class);
+      }
+
+      @Override
+      public abv.b a() {
+         return abv.b.c;
+      }
+
+      @Override
+      public void a(abv.c $$0) {
+         $$0.a(this.a, this.b);
+      }
+
+      @Override
+      public void a(so $$0) {
+         $$0.a((float)this.b.c);
+         $$0.a((float)this.b.d);
+         $$0.a((float)this.b.e);
+         $$0.a(this.a);
+      }
    }
 }

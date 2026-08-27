@@ -1,5 +1,8 @@
-import java.time.Duration;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ber {
-   Duration a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ber {
 }

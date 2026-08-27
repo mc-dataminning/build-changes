@@ -1,21 +1,17 @@
-public enum dfx implements asr {
-   a("none"),
-   b("small"),
-   c("large");
+public enum dfx implements asp {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String d;
+   private final String e;
 
    private dfx(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
    }
 }

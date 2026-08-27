@@ -1,62 +1,59 @@
-public class acg implements vf<abe> {
-   private final gw a;
-   private final hc b;
-   private final acg.a c;
-   private final int d;
+public class acg implements vd<abc> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private final float c;
+   private final float d;
+   private final boolean e;
+   private final boolean f;
 
-   public acg(acg.a $$0, gw $$1, hc $$2, int $$3) {
+   public acg(float $$0, float $$1, boolean $$2, boolean $$3) {
       this.c = $$0;
-      this.a = $$1.i();
-      this.b = $$2;
-      this.d = $$3;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public acg(acg.a $$0, gw $$1, hc $$2) {
-      this($$0, $$1, $$2, 0);
-   }
-
-   public acg(sq $$0) {
-      this.c = $$0.b(acg.a.class);
-      this.a = $$0.e();
-      this.b = hc.a($$0.readUnsignedByte());
-      this.d = $$0.m();
+   public acg(so $$0) {
+      this.c = $$0.readFloat();
+      this.d = $$0.readFloat();
+      byte $$1 = $$0.readByte();
+      this.e = ($$1 & 1) > 0;
+      this.f = ($$1 & 2) > 0;
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.a(this.c);
-      $$0.a(this.a);
-      $$0.k(this.b.d());
-      $$0.c(this.d);
+      $$0.a(this.d);
+      byte $$1 = 0;
+      if (this.e) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.f) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
-   public gw a() {
-      return this.a;
-   }
-
-   public hc d() {
-      return this.b;
-   }
-
-   public acg.a e() {
+   public float a() {
       return this.c;
    }
 
-   public int f() {
+   public float d() {
       return this.d;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g;
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
    }
 }

@@ -1,30 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Objects;
+import java.util.Optional;
 
-public class ats extends ayb {
+public class ats extends DataFix {
    public ats(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBannerColorFix", ayz.s, "minecraft:banner");
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = $$0.update("Base", $$0x -> $$0x.createInt(15 - $$0x.asInt(0)));
-      return $$0.update(
-         "Patterns",
-         $$0x -> (Dynamic)DataFixUtils.orElse(
-               $$0x.asStreamOpt()
-                  .map($$0xx -> $$0xx.map($$0xxx -> $$0xxx.update("Color", $$0xxxx -> $$0xxxx.createInt(15 - $$0xxxx.asInt(0)))))
-                  .map($$0x::createList)
-                  .result(),
-               $$0x
-            )
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", baf.a());
+      return this.fixTypeEverywhereTyped(
+         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(ayx.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : avi.a($$2);
+            })
       );
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

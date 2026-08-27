@@ -1,30 +1,16 @@
-public class cvj extends czf {
-   protected cvj(dfk.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, hc.b));
+import javax.annotation.Nullable;
+
+public interface cvj {
+   @Nullable
+   dcv a(gw var1, dfj var2);
+
+   @Nullable
+   default <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
+      return null;
    }
 
-   @Override
-   public dfl a(clp $$0) {
-      hc $$1 = $$0.k();
-      dfl $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.n().a(a, $$1.g()) : this.n().a(a, $$1);
-   }
-
-   @Override
-   public void a(dfl $$0, cpx $$1, gw $$2, ase $$3) {
-      hc $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(ix.u, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
-      }
-   }
-
-   @Override
-   protected void a(dfm.a<csx, dfl> $$0) {
-      $$0.a(a);
+   @Nullable
+   default <T extends dcv> djv a(akq $$0, T $$1) {
+      return $$1 instanceof djv.b<?> $$2 ? $$2.d() : null;
    }
 }

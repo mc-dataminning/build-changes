@@ -14,12 +14,12 @@ import java.util.concurrent.CompletableFuture;
 
 public class ee implements ArgumentType<gc> {
    private static final Collection<String> g = Arrays.asList("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("argument.entity.toomany"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tn.c("argument.player.toomany"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tn.c("argument.player.entities"));
-   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tn.c("argument.entity.notfound.entity"));
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tn.c("argument.entity.notfound.player"));
-   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tn.c("argument.entity.selector.not_allowed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.entity.toomany"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("argument.player.toomany"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("argument.player.entities"));
+   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("argument.entity.notfound.entity"));
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("argument.entity.notfound.player"));
+   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tl.c("argument.entity.selector.not_allowed"));
    final boolean h;
    final boolean i;
 
@@ -32,7 +32,7 @@ public class ee implements ArgumentType<gc> {
       return new ee(true, false);
    }
 
-   public static bis a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static biq a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return ((gc)$$0.getArgument($$1, gc.class)).a((dt)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class ee implements ArgumentType<gc> {
       return new ee(false, false);
    }
 
-   public static Collection<? extends bis> b(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bis> $$2 = c($$0, $$1);
+   public static Collection<? extends biq> b(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends biq> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,11 +49,11 @@ public class ee implements ArgumentType<gc> {
       }
    }
 
-   public static Collection<? extends bis> c(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends biq> c(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return ((gc)$$0.getArgument($$1, gc.class)).b((dt)$$0.getSource());
    }
 
-   public static Collection<akt> d(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<akr> d(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return ((gc)$$0.getArgument($$1, gc.class)).d((dt)$$0.getSource());
    }
 
@@ -61,7 +61,7 @@ public class ee implements ArgumentType<gc> {
       return new ee(true, true);
    }
 
-   public static akt e(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static akr e(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return ((gc)$$0.getArgument($$1, gc.class)).c((dt)$$0.getSource());
    }
 
@@ -69,8 +69,8 @@ public class ee implements ArgumentType<gc> {
       return new ee(false, true);
    }
 
-   public static Collection<akt> f(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
-      List<akt> $$2 = ((gc)$$0.getArgument($$1, gc.class)).d((dt)$$0.getSource());
+   public static Collection<akr> f(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+      List<akr> $$2 = ((gc)$$0.getArgument($$1, gc.class)).d((dt)$$0.getSource());
       if ($$2.isEmpty()) {
          throw e.create();
       } else {
@@ -127,7 +127,7 @@ public class ee implements ArgumentType<gc> {
       private static final byte a = 1;
       private static final byte b = 2;
 
-      public void a(ee.a.a $$0, sq $$1) {
+      public void a(ee.a.a $$0, so $$1) {
          int $$2 = 0;
          if ($$0.b) {
             $$2 |= 1;
@@ -140,7 +140,7 @@ public class ee implements ArgumentType<gc> {
          $$1.k($$2);
       }
 
-      public ee.a.a a(sq $$0) {
+      public ee.a.a a(so $$0) {
          byte $$1 = $$0.readByte();
          return new ee.a.a(($$1 & 1) != 0, ($$1 & 2) != 0);
       }

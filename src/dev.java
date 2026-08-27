@@ -1,6 +1,11 @@
-public class dev extends der {
+public class dev extends deo {
    @Override
-   protected aex<dnl<?, ?>> a(ase $$0, boolean $$1) {
-      return $$1 ? oy.K : oy.z;
+   protected aev<dnj<?, ?>> a(asc $$0, boolean $$1) {
+      return ow.o;
+   }
+
+   @Override
+   protected aev<dnj<?, ?>> a(asc $$0) {
+      return ow.p;
    }
 }

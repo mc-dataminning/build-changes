@@ -1,11 +1,11 @@
 import java.util.function.IntFunction;
 
-public enum erc implements asa {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+public enum erc implements ary {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
 
-   private static final IntFunction<erc> d = aqt.a(erc::a, values(), aqt.a.b);
+   private static final IntFunction<erc> d = aqr.a(erc::a, values(), aqr.a.b);
    private final int e;
    private final String f;
 
@@ -15,13 +15,13 @@ public enum erc implements asa {
    }
 
    @Override
-   public String b() {
-      return this.f;
+   public int a() {
+      return this.e;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public String b() {
+      return this.f;
    }
 
    public static erc a(int $$0) {

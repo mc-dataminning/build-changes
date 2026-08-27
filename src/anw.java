@@ -1,17 +1,27 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public interface anw extends anp {
-   @Override
-   default CompletableFuture<Void> a(anp.a $$0, anv $$1, bdr $$2, bdr $$3, Executor $$4, Executor $$5) {
-      return $$0.a(asz.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+@FunctionalInterface
+public interface anw {
+   Optional<anr> getResource(aew var1);
+
+   default anr getResourceOrThrow(aew $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   void a(anv var1);
+   default InputStream open(aew $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
+   }
+
+   default BufferedReader openAsReader(aew $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
+   }
+
+   static anw fromMap(Map<aew, anr> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
+   }
 }

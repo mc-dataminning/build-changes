@@ -1,55 +1,50 @@
-import java.util.List;
+public class xs implements vd<ww> {
+   public static final int a = -1;
+   public static final int b = -2;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final cjf f;
 
-public class xs implements vf<wy> {
-   private final int a;
-   private final int b;
-   private final List<cjh> c;
-   private final cjh d;
-
-   public xs(int $$0, int $$1, hp<cjh> $$2, cjh $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = hp.a($$2.size(), cjh.b);
-
-      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
-         this.c.set($$4, $$2.get($$4).p());
-      }
-
-      this.d = $$3.p();
+   public xs(int $$0, int $$1, int $$2, cjf $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3.p();
    }
 
-   public xs(sq $$0) {
-      this.a = $$0.readUnsignedByte();
-      this.b = $$0.m();
-      this.c = $$0.a(hp::a, sq::q);
-      this.d = $$0.q();
+   public xs(so $$0) {
+      this.c = $$0.readByte();
+      this.d = $$0.m();
+      this.e = $$0.readShort();
+      this.f = $$0.q();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.k(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c, sq::a);
-      $$0.a(this.d);
+   public void a(so $$0) {
+      $$0.k(this.c);
+      $$0.c(this.d);
+      $$0.l(this.e);
+      $$0.a(this.f);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.a;
-   }
-
-   public List<cjh> d() {
       return this.c;
    }
 
-   public cjh e() {
-      return this.d;
+   public int d() {
+      return this.e;
+   }
+
+   public cjf e() {
+      return this.f;
    }
 
    public int f() {
-      return this.b;
+      return this.d;
    }
 }

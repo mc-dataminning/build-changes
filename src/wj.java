@@ -1,17 +1,19 @@
-public record wj(gw b) implements vy {
-   public static final aey a = new aey("debug/poi_removed");
+import java.util.List;
 
-   public wj(sq $$0) {
-      this($$0.e());
+public record wj(List<gw> b) implements vw {
+   public static final aew a = new aew("debug/raids");
+
+   public wj(so $$0) {
+      this($$0.a(so::e));
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.b);
+   public void a(so $$0) {
+      $$0.a(this.b, so::a);
    }
 
    @Override
-   public aey a() {
+   public aew a() {
       return a;
    }
 }

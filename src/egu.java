@@ -1,11 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface egu {
-   @Nullable
-   String a(ecs var1);
-
-   egt a();
-
-   Set<efa<?>> b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface egu {
 }

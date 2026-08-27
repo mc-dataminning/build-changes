@@ -1,122 +1,232 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class buf implements cpk {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private buf.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public class buf extends dio<buh> {
+   public static final int a = 6;
+   public static final int b = 1;
+   private final buf.a d;
+   private final LongSet e = new LongOpenHashSet();
 
-   public buf() {
-      this.c = buf.a.c;
+   public buf(Path $$0, DataFixer $$1, boolean $$2, hr $$3, cpx $$4) {
+      super($$0, buh::a, buh::new, $$1, ata.q, $$2, $$3, $$4);
+      this.d = new buf.a();
+   }
+
+   public void a(gw $$0, he<bui> $$1) {
+      this.f(hw.c($$0)).a($$0, $$1);
+   }
+
+   public void a(gw $$0) {
+      this.d(hw.c($$0)).ifPresent($$1 -> $$1.a($$0));
+   }
+
+   public long a(Predicate<he<bui>> $$0, gw $$1, int $$2, buf.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).count();
+   }
+
+   public boolean a(aev<bui> $$0, gw $$1) {
+      return this.a($$1, (Predicate<he<bui>>)($$1x -> $$1x.a($$0)));
+   }
+
+   public Stream<bug> b(Predicate<he<bui>> $$0, gw $$1, int $$2, buf.b $$3) {
+      int $$4 = Math.floorDiv($$2, 16) + 1;
+      return cpc.a(new cpc($$1), $$4).flatMap($$2x -> this.a($$0, $$2x, $$3)).filter($$2x -> {
+         gw $$3x = $$2x.f();
+         return Math.abs($$3x.u() - $$1.u()) <= $$2 && Math.abs($$3x.w() - $$1.w()) <= $$2;
+      });
+   }
+
+   public Stream<bug> c(Predicate<he<bui>> $$0, gw $$1, int $$2, buf.b $$3) {
+      int $$4 = $$2 * $$2;
+      return this.b($$0, $$1, $$2, $$3).filter($$2x -> $$2x.f().j($$1) <= (double)$$4);
+   }
+
+   @asy
+   public Stream<bug> a(Predicate<he<bui>> $$0, cpc $$1, buf.b $$2) {
+      return IntStream.range(this.c.al(), this.c.am())
+         .boxed()
+         .map($$1x -> this.d(hw.a($$1, $$1x).s()))
+         .filter(Optional::isPresent)
+         .flatMap($$2x -> ((buh)$$2x.get()).a($$0, $$2));
+   }
+
+   public Stream<gw> a(Predicate<he<bui>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buf.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).map(bug::f).filter($$1);
+   }
+
+   public Stream<Pair<he<bui>, gw>> b(Predicate<he<bui>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buf.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).filter($$1x -> $$1.test($$1x.f())).map($$0x -> Pair.of($$0x.g(), $$0x.f()));
+   }
+
+   public Stream<Pair<he<bui>, gw>> c(Predicate<he<bui>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buf.b $$4) {
+      return this.b($$0, $$1, $$2, $$3, $$4).sorted(Comparator.comparingDouble($$1x -> ((gw)$$1x.getSecond()).j($$2)));
+   }
+
+   public Optional<gw> d(Predicate<he<bui>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buf.b $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4).findFirst();
+   }
+
+   public Optional<gw> d(Predicate<he<bui>> $$0, gw $$1, int $$2, buf.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).map(bug::f).min(Comparator.comparingDouble($$1x -> $$1x.j($$1)));
+   }
+
+   public Optional<Pair<he<bui>, gw>> e(Predicate<he<bui>> $$0, gw $$1, int $$2, buf.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).min(Comparator.comparingDouble($$1x -> $$1x.f().j($$1))).map($$0x -> Pair.of($$0x.g(), $$0x.f()));
+   }
+
+   public Optional<gw> e(Predicate<he<bui>> $$0, Predicate<gw> $$1, gw $$2, int $$3, buf.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).map(bug::f).filter($$1).min(Comparator.comparingDouble($$1x -> $$1x.j($$2)));
+   }
+
+   public Optional<gw> a(Predicate<he<bui>> $$0, BiPredicate<he<bui>, gw> $$1, gw $$2, int $$3) {
+      return this.c($$0, $$2, $$3, buf.b.a).filter($$1x -> $$1.test($$1x.g(), $$1x.f())).findFirst().map($$0x -> {
+         $$0x.b();
+         return $$0x.f();
+      });
+   }
+
+   public Optional<gw> a(Predicate<he<bui>> $$0, Predicate<gw> $$1, buf.b $$2, gw $$3, int $$4, asc $$5) {
+      List<bug> $$6 = ac.a(this.c($$0, $$3, $$4, $$2), $$5);
+      return $$6.stream().filter($$1x -> $$1.test($$1x.f())).findFirst().map(bug::f);
+   }
+
+   public boolean b(gw $$0) {
+      return this.d(hw.c($$0)).map($$1 -> $$1.c($$0)).orElseThrow(() -> ac.b(new IllegalStateException("POI never registered at " + $$0)));
+   }
+
+   public boolean a(gw $$0, Predicate<he<bui>> $$1) {
+      return this.d(hw.c($$0)).map($$2 -> $$2.a($$0, $$1)).orElse(false);
+   }
+
+   public Optional<he<bui>> c(gw $$0) {
+      return this.d(hw.c($$0)).flatMap($$1 -> $$1.d($$0));
+   }
+
+   @Deprecated
+   @asy
+   public int d(gw $$0) {
+      return this.d(hw.c($$0)).map($$1 -> $$1.b($$0)).orElse(0);
+   }
+
+   public int a(hw $$0) {
+      this.d.a();
+      return this.d.c($$0.s());
+   }
+
+   boolean g(long $$0) {
+      Optional<buh> $$1 = this.c($$0);
+      return $$1 == null ? false : $$1.<Boolean>map($$0x -> $$0x.a($$0xx -> $$0xx.a(aqc.b), buf.b.b).findAny().isPresent()).orElse(false);
    }
 
    @Override
-   public int a(aks $$0, boolean $$1, boolean $$2) {
-      if (!$$0.N() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.z.a(10) == 0 ? buf.a.b : buf.a.c;
-         }
+   public void a(BooleanSupplier $$0) {
+      super.a($$0);
+      this.d.a();
+   }
 
-         if (this.c == buf.a.c) {
-            return 0;
+   @Override
+   protected void a(long $$0) {
+      super.a($$0);
+      this.d.b($$0, this.d.b($$0), false);
+   }
+
+   @Override
+   protected void b(long $$0) {
+      this.d.b($$0, this.d.b($$0), false);
+   }
+
+   public void a(hw $$0, dhr $$1) {
+      ac.a(this.d($$0.s()), $$2 -> $$2.a($$2x -> {
+            if (a($$1)) {
+               this.a($$1, $$0, $$2x);
+            }
+         }), () -> {
+         if (a($$1)) {
+            buh $$2 = this.f($$0.s());
+            this.a($$1, $$0, $$2::a);
+         }
+      });
+   }
+
+   private static boolean a(dhr $$0) {
+      return $$0.a(buj::b);
+   }
+
+   private void a(dhr $$0, hw $$1, BiConsumer<gw, he<bui>> $$2) {
+      $$1.t().forEach($$2x -> {
+         dfj $$3 = $$0.a(hw.b($$2x.u()), hw.b($$2x.v()), hw.b($$2x.w()));
+         buj.a($$3).ifPresent($$2xx -> $$2.accept($$2x, $$2xx));
+      });
+   }
+
+   public void a(cpy $$0, gw $$1, int $$2) {
+      hw.a(new cpc($$1), Math.floorDiv($$2, 16), this.c.al(), this.c.am())
+         .map($$0x -> Pair.of($$0x, this.d($$0x.s())))
+         .filter($$0x -> !((Optional)$$0x.getSecond()).<Boolean>map(buh::a).orElse(false))
+         .map($$0x -> ((hw)$$0x.getFirst()).r())
+         .filter($$0x -> this.e.add($$0x.a()))
+         .forEach($$1x -> $$0.a($$1x.e, $$1x.f, dhk.c));
+   }
+
+   final class a extends akm {
+      private final Long2ByteMap b = new Long2ByteOpenHashMap();
+
+      protected a() {
+         super(7, 16, 256);
+         this.b.defaultReturnValue((byte)7);
+      }
+
+      @Override
+      protected int b(long $$0) {
+         return buf.this.g($$0) ? 0 : 7;
+      }
+
+      @Override
+      protected int c(long $$0) {
+         return this.b.get($$0);
+      }
+
+      @Override
+      protected void a(long $$0, int $$1) {
+         if ($$1 > 6) {
+            this.b.remove($$0);
          } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = buf.a.c;
-               }
-
-               return 1;
-            }
-         }
-      } else {
-         this.c = buf.a.c;
-         this.b = false;
-         return 0;
-      }
-   }
-
-   private boolean a(aks $$0) {
-      for (cbw $$1 : $$0.v()) {
-         if (!$$1.M_()) {
-            gw $$2 = $$1.dl();
-            if ($$0.b($$2) && !$$0.s($$2).a(apt.ae)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + ary.d(ary.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + ary.d(ary.a($$4) * 32.0F);
-                  if (this.a($$0, new gw(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
-
-               return true;
-            }
+            this.b.put($$0, (byte)$$1);
          }
       }
 
-      return false;
-   }
-
-   private void b(aks $$0) {
-      ehp $$1 = this.a($$0, new gw(this.f, this.g, this.h));
-      if ($$1 != null) {
-         cad $$2;
-         try {
-            $$2 = new cad($$0);
-            $$2.a($$0, $$0.d_($$2.dl()), bjm.h, null, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
-
-         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
+      public void a() {
+         super.b(Integer.MAX_VALUE);
       }
    }
 
-   @Nullable
-   private ehp a(aks $$0, gw $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.z.a(16) - 8;
-         int $$4 = $$1.w() + $$0.z.a(16) - 8;
-         int $$5 = $$0.a(dku.a.b, $$3, $$4);
-         gw $$6 = new gw($$3, $$5, $$4);
-         if ($$0.b($$6) && bzk.b(biw.bp, $$0, bjm.h, $$6, $$0.z)) {
-            return ehp.c($$6);
-         }
+   public static enum b {
+      a(bug::d),
+      b(bug::e),
+      c($$0 -> true);
+
+      private final Predicate<? super bug> d;
+
+      private b(Predicate<? super bug> $$0) {
+         this.d = $$0;
       }
 
-      return null;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+      public Predicate<? super bug> a() {
+         return this.d;
+      }
    }
 }

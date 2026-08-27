@@ -1,195 +1,45 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMaps;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.time.Duration;
+import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
-import org.slf4j.Logger;
 
-public class bdk implements bdp {
-   private static final long a = Duration.ofMillis(100L).toNanos();
-   private static final Logger c = LogUtils.getLogger();
-   private final List<String> d = Lists.newArrayList();
-   private final LongList e = new LongArrayList();
-   private final Map<String, bdk.a> f = Maps.newHashMap();
-   private final IntSupplier g;
-   private final LongSupplier h;
-   private final long i;
-   private final int j;
-   private String k = "";
-   private boolean l;
-   @Nullable
-   private bdk.a m;
-   private final boolean n;
-   private final Set<Pair<String, beu>> o = new ObjectArraySet();
+public class bdk implements bdo {
+   public static final bdk a = new bdk();
 
-   public bdk(LongSupplier $$0, IntSupplier $$1, boolean $$2) {
-      this.i = $$0.getAsLong();
-      this.h = $$0;
-      this.j = $$1.getAsInt();
-      this.g = $$1;
-      this.n = $$2;
+   private bdk() {
    }
 
    @Override
-   public void a() {
-      if (this.l) {
-         c.error("Profiler tick already started - missing endTick()?");
-      } else {
-         this.l = true;
-         this.k = "";
-         this.d.clear();
-         this.a("root");
-      }
+   public List<bdr> a(String $$0) {
+      return Collections.emptyList();
    }
 
    @Override
-   public void b() {
-      if (!this.l) {
-         c.error("Profiler tick already ended - missing startTick()?");
-      } else {
-         this.c();
-         this.l = false;
-         if (!this.k.isEmpty()) {
-            c.error("Profiler tick ended before path was fully popped (remainder: '{}'). Mismatched push/pop?", LogUtils.defer(() -> bdq.b(this.k)));
-         }
-      }
+   public boolean a(Path $$0) {
+      return false;
    }
 
    @Override
-   public void a(String $$0) {
-      if (!this.l) {
-         c.error("Cannot push '{}' to profiler if profiler tick hasn't started - missing startTick()?", $$0);
-      } else {
-         if (!this.k.isEmpty()) {
-            this.k = this.k + "\u001e";
-         }
-
-         this.k = this.k + $$0;
-         this.d.add(this.k);
-         this.e.add(ac.c());
-         this.m = null;
-      }
+   public long a() {
+      return 0L;
    }
 
    @Override
-   public void a(Supplier<String> $$0) {
-      this.a($$0.get());
+   public int b() {
+      return 0;
    }
 
    @Override
-   public void a(beu $$0) {
-      this.o.add(Pair.of(this.k, $$0));
+   public long c() {
+      return 0L;
    }
 
    @Override
-   public void c() {
-      if (!this.l) {
-         c.error("Cannot pop from profiler if profiler tick hasn't started - missing startTick()?");
-      } else if (this.e.isEmpty()) {
-         c.error("Tried to pop one too many times! Mismatched push() and pop()?");
-      } else {
-         long $$0 = ac.c();
-         long $$1 = this.e.removeLong(this.e.size() - 1);
-         this.d.remove(this.d.size() - 1);
-         long $$2 = $$0 - $$1;
-         bdk.a $$3 = this.f();
-         $$3.c += $$2;
-         $$3.d++;
-         $$3.a = Math.max($$3.a, $$2);
-         $$3.b = Math.min($$3.b, $$2);
-         if (this.n && $$2 > a) {
-            c.warn("Something's taking too long! '{}' took aprox {} ms", LogUtils.defer(() -> bdq.b(this.k)), LogUtils.defer(() -> (double)$$2 / 1000000.0));
-         }
-
-         this.k = this.d.isEmpty() ? "" : this.d.get(this.d.size() - 1);
-         this.m = null;
-      }
+   public int d() {
+      return 0;
    }
 
    @Override
-   public void b(String $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   private bdk.a f() {
-      if (this.m == null) {
-         this.m = this.f.computeIfAbsent(this.k, $$0 -> new bdk.a());
-      }
-
-      return this.m;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-      this.f().e.addTo($$0, (long)$$1);
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-      this.f().e.addTo($$0.get(), (long)$$1);
-   }
-
-   @Override
-   public bdq d() {
-      return new bdn(this.f, this.i, this.j, this.h.getAsLong(), this.g.getAsInt());
-   }
-
-   @Nullable
-   @Override
-   public bdk.a c(String $$0) {
-      return this.f.get($$0);
-   }
-
-   @Override
-   public Set<Pair<String, beu>> e() {
-      return this.o;
-   }
-
-   public static class a implements bds {
-      long a = Long.MIN_VALUE;
-      long b = Long.MAX_VALUE;
-      long c;
-      long d;
-      final Object2LongOpenHashMap<String> e = new Object2LongOpenHashMap();
-
-      @Override
-      public long a() {
-         return this.c;
-      }
-
-      @Override
-      public long b() {
-         return this.a;
-      }
-
-      @Override
-      public long c() {
-         return this.d;
-      }
-
-      @Override
-      public Object2LongMap<String> d() {
-         return Object2LongMaps.unmodifiable(this.e);
-      }
+   public String e() {
+      return "";
    }
 }

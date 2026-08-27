@@ -1,424 +1,163 @@
-import com.mojang.logging.LogUtils;
-import java.util.OptionalInt;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
-import org.slf4j.Logger;
 
-public class byi extends byh {
-   private static final Logger f = LogUtils.getLogger();
-   private static final aeg<cjh> g = aej.a(byi.class, aei.h);
-   private static final aeg<Integer> h = aej.a(byi.class, aei.b);
-   public static final int e = 8;
-   private float i = 1.0F;
-   private boolean j;
+public class byi extends byf implements bke<he<byj>> {
+   private static final aee<he<byj>> f = aeh.a(byi.class, aeg.y);
+   private static final aev<byj> g = byk.a;
+   public static final String e = "variant";
 
-   public byi(biw<? extends byi> $$0, cpx $$1) {
+   private static he<byj> s() {
+      return jb.m.f(g);
+   }
+
+   public byi(biu<? extends byi> $$0, cpv $$1) {
       super($$0, $$1);
-   }
-
-   public byi(cpx $$0, gw $$1, hc $$2) {
-      this(biw.af, $$0, $$1, $$2);
-   }
-
-   public byi(biw<? extends byi> $$0, cpx $$1, gw $$2, hc $$3) {
-      super($$0, $$1, $$2);
-      this.a($$3);
-   }
-
-   @Override
-   protected float a(bju $$0, bit $$1) {
-      return 0.0F;
    }
 
    @Override
    protected void a_() {
-      this.al().a(g, cjh.b);
-      this.al().a(h, 0);
+      this.an.a(f, s());
    }
 
    @Override
-   protected void a(hc $$0) {
-      Validate.notNull($$0);
-      this.d = $$0;
-      if ($$0.o().d()) {
-         this.s(0.0F);
-         this.r((float)(this.d.e() * 90));
-      } else {
-         this.s((float)(-90 * $$0.f().a()));
-         this.r(0.0F);
+   public void a(aee<?> $$0) {
+      if (f.equals($$0)) {
+         this.y();
       }
-
-      this.O = this.dD();
-      this.N = this.dB();
-      this.y();
    }
 
-   @Override
-   protected void y() {
-      if (this.d != null) {
-         double $$0 = 0.46875;
-         double $$1 = (double)this.c.u() + 0.5 - (double)this.d.j() * 0.46875;
-         double $$2 = (double)this.c.v() + 0.5 - (double)this.d.k() * 0.46875;
-         double $$3 = (double)this.c.w() + 0.5 - (double)this.d.l() * 0.46875;
-         this.p($$1, $$2, $$3);
-         double $$4 = (double)this.A();
-         double $$5 = (double)this.B();
-         double $$6 = (double)this.A();
-         hc.a $$7 = this.d.o();
-         switch ($$7) {
-            case a:
-               $$4 = 1.0;
-               break;
-            case b:
-               $$5 = 1.0;
-               break;
-            case c:
-               $$6 = 1.0;
+   public void a(he<byj> $$0) {
+      this.an.b(f, $$0);
+   }
+
+   public he<byj> q() {
+      return this.an.b(f);
+   }
+
+   public static Optional<byi> a(cpv $$0, gw $$1, ha $$2) {
+      byi $$3 = new byi($$0, $$1);
+      List<he<byj>> $$4 = new ArrayList<>();
+      jb.m.c(aqb.a).forEach($$4::add);
+      if ($$4.isEmpty()) {
+         return Optional.empty();
+      } else {
+         $$3.a($$2);
+         $$4.removeIf($$1x -> {
+            $$3.a($$1x);
+            return !$$3.z();
+         });
+         if ($$4.isEmpty()) {
+            return Optional.empty();
+         } else {
+            int $$5 = $$4.stream().mapToInt(byi::b).max().orElse(0);
+            $$4.removeIf($$1x -> b($$1x) < $$5);
+            Optional<he<byj>> $$6 = ac.b($$4, $$3.ag);
+            if ($$6.isEmpty()) {
+               return Optional.empty();
+            } else {
+               $$3.a($$6.get());
+               $$3.a($$2);
+               return Optional.of($$3);
+            }
          }
-
-         $$4 /= 32.0;
-         $$5 /= 32.0;
-         $$6 /= 32.0;
-         this.a(new ehk($$1 - $$4, $$2 - $$5, $$3 - $$6, $$1 + $$4, $$2 + $$5, $$3 + $$6));
       }
    }
 
-   @Override
-   public boolean z() {
-      if (this.j) {
-         return true;
-      } else if (!this.dL().g(this)) {
-         return false;
-      } else {
-         dfl $$0 = this.dL().a_(this.c.a(this.d.g()));
-         return $$0.e() || this.d.o().d() && cuv.h($$0) ? this.dL().a(this, this.cG(), b).isEmpty() : false;
-      }
+   private static int b(he<byj> $$0) {
+      return $$0.a().a() * $$0.a().b();
+   }
+
+   private byi(cpv $$0, gw $$1) {
+      super(biu.ar, $$0, $$1);
+   }
+
+   public byi(cpv $$0, gw $$1, ha $$2, he<byj> $$3) {
+      this($$0, $$1);
+      this.a($$3);
+      this.a($$2);
    }
 
    @Override
-   public void a(bjo $$0, ehp $$1) {
-      if (!this.j) {
-         super.a($$0, $$1);
-      }
+   public void b(qw $$0) {
+      a($$0, this.q());
+      $$0.a("facing", (byte)this.d.e());
+      super.b($$0);
    }
 
    @Override
-   public void j(double $$0, double $$1, double $$2) {
-      if (!this.j) {
-         super.j($$0, $$1, $$2);
-      }
+   public void a(qw $$0) {
+      he<byj> $$1 = c($$0).orElseGet(byi::s);
+      this.a($$1);
+      this.d = ha.b($$0.f("facing"));
+      super.a($$0);
+      this.a(this.d);
    }
 
-   @Override
-   public float bD() {
-      return 0.0F;
+   public static void a(qw $$0, he<byj> $$1) {
+      $$0.a("variant", $$1.e().orElse(g).a().toString());
    }
 
-   @Override
-   public void aj() {
-      this.c(this.F());
-      super.aj();
-   }
-
-   @Override
-   public boolean a(bhq $$0, float $$1) {
-      if (this.j) {
-         return !$$0.a(apw.d) && !$$0.g() ? false : super.a($$0, $$1);
-      } else if (this.b($$0)) {
-         return false;
-      } else if (!$$0.a(apw.l) && !this.F().b()) {
-         if (!this.dL().B) {
-            this.b($$0.d(), false);
-            this.a(djv.c, $$0.d());
-            this.a(this.q(), 1.0F, 1.0F);
-         }
-
-         return true;
-      } else {
-         return super.a($$0, $$1);
-      }
-   }
-
-   public ape q() {
-      return apf.lX;
+   public static Optional<he<byj>> c(qw $$0) {
+      return Optional.ofNullable(aew.a($$0.l("variant"))).map($$0x -> aev.a(jc.P, $$0x)).flatMap(jb.m::b);
    }
 
    @Override
    public int A() {
-      return 12;
+      return this.q().a().a();
    }
 
    @Override
    public int B() {
-      return 12;
+      return this.q().a().b();
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = 16.0;
-      $$1 *= 64.0 * cz();
-      return $$0 < $$1 * $$1;
-   }
+   public void a(@Nullable biq $$0) {
+      if (this.dL().X().b(cpr.h)) {
+         this.a(apd.qI, 1.0F, 1.0F);
+         if ($$0 instanceof cbu $$1 && $$1.fS().d) {
+            return;
+         }
 
-   @Override
-   public void a(@Nullable bis $$0) {
-      this.a(this.s(), 1.0F, 1.0F);
-      this.b($$0, true);
-      this.a(djv.c, $$0);
-   }
-
-   public ape s() {
-      return apf.lV;
+         this.a(cji.pl);
+      }
    }
 
    @Override
    public void C() {
-      this.a(this.t(), 1.0F, 1.0F);
-   }
-
-   public ape t() {
-      return apf.lW;
-   }
-
-   private void b(@Nullable bis $$0, boolean $$1) {
-      if (!this.j) {
-         cjh $$2 = this.F();
-         this.a(cjh.b);
-         if (!this.dL().X().b(cpt.h)) {
-            if ($$0 == null) {
-               this.c($$2);
-            }
-         } else {
-            if ($$0 instanceof cbw $$3 && $$3.fS().d) {
-               this.c($$2);
-               return;
-            }
-
-            if ($$1) {
-               this.b(this.x());
-            }
-
-            if (!$$2.b()) {
-               $$2 = $$2.p();
-               this.c($$2);
-               if (this.ag.i() < this.i) {
-                  this.b($$2);
-               }
-            }
-         }
-      }
-   }
-
-   private void c(cjh $$0) {
-      this.G().ifPresent($$0x -> {
-         eby $$1 = cjo.a($$0x, this.dL());
-         if ($$1 != null) {
-            $$1.a(this.c, this.ah());
-            $$1.a(true);
-         }
-      });
-      $$0.a(null);
-   }
-
-   public cjh F() {
-      return this.al().b(g);
-   }
-
-   public OptionalInt G() {
-      cjh $$0 = this.F();
-      if ($$0.a(cjk.rf)) {
-         Integer $$1 = cjo.d($$0);
-         if ($$1 != null) {
-            return OptionalInt.of($$1);
-         }
-      }
-
-      return OptionalInt.empty();
-   }
-
-   public boolean H() {
-      return this.G().isPresent();
-   }
-
-   public void a(cjh $$0) {
-      this.a($$0, true);
-   }
-
-   public void a(cjh $$0, boolean $$1) {
-      if (!$$0.b()) {
-         $$0 = $$0.c(1);
-      }
-
-      this.d($$0);
-      this.al().b(g, $$0);
-      if (!$$0.b()) {
-         this.a(this.v(), 1.0F, 1.0F);
-      }
-
-      if ($$1 && this.c != null) {
-         this.dL().c(this.c, csy.a);
-      }
-   }
-
-   public ape v() {
-      return apf.lU;
+      this.a(apd.qJ, 1.0F, 1.0F);
    }
 
    @Override
-   public bka a_(int $$0) {
-      return $$0 == 0 ? new bka() {
-         @Override
-         public cjh a() {
-            return byi.this.F();
-         }
-
-         @Override
-         public boolean a(cjh $$0) {
-            byi.this.a($$0);
-            return true;
-         }
-      } : super.a_($$0);
+   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e($$0, $$1, $$2);
    }
 
    @Override
-   public void a(aeg<?> $$0) {
-      if ($$0.equals(g)) {
-         this.d(this.F());
-      }
-   }
-
-   private void d(cjh $$0) {
-      if (!$$0.b() && $$0.G() != this) {
-         $$0.a(this);
-      }
-
-      this.y();
-   }
-
-   public int I() {
-      return this.al().b(h);
-   }
-
-   public void b(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.al().b(h, $$0 % 8);
-      if ($$1 && this.c != null) {
-         this.dL().c(this.c, csy.a);
-      }
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.e($$0, $$1, $$2);
    }
 
    @Override
-   public void b(qy $$0) {
-      super.b($$0);
-      if (!this.F().b()) {
-         $$0.a("Item", this.F().b(new qy()));
-         $$0.a("ItemRotation", (byte)this.I());
-         $$0.a("ItemDropChance", this.i);
-      }
-
-      $$0.a("Facing", (byte)this.d.d());
-      $$0.a("Invisible", this.cd());
-      $$0.a("Fixed", this.j);
+   public ehn dk() {
+      return ehn.a(this.c);
    }
 
    @Override
-   public void a(qy $$0) {
+   public vd<ww> di() {
+      return new wx(this, this.d.d(), this.E());
+   }
+
+   @Override
+   public void a(wx $$0) {
       super.a($$0);
-      qy $$1 = $$0.p("Item");
-      if ($$1 != null && !$$1.g()) {
-         cjh $$2 = cjh.a($$1);
-         if ($$2.b()) {
-            f.warn("Unable to load item from: {}", $$1);
-         }
-
-         cjh $$3 = this.F();
-         if (!$$3.b() && !cjh.a($$2, $$3)) {
-            this.c($$3);
-         }
-
-         this.a($$2, false);
-         this.a($$0.f("ItemRotation"), false);
-         if ($$0.b("ItemDropChance", 99)) {
-            this.i = $$0.j("ItemDropChance");
-         }
-      }
-
-      this.a(hc.a($$0.f("Facing")));
-      this.j($$0.q("Invisible"));
-      this.j = $$0.q("Fixed");
+      this.a(ha.a($$0.o()));
    }
 
    @Override
-   public bha a(cbw $$0, bgz $$1) {
-      cjh $$2 = $$0.b($$1);
-      boolean $$3 = !this.F().b();
-      boolean $$4 = !$$2.b();
-      if (this.j) {
-         return bha.d;
-      } else if (!this.dL().B) {
-         if (!$$3) {
-            if ($$4 && !this.dG()) {
-               if ($$2.a(cjk.rf)) {
-                  eby $$5 = cjo.a($$2, this.dL());
-                  if ($$5 != null && $$5.b(256)) {
-                     return bha.e;
-                  }
-               }
-
-               this.a($$2);
-               this.a(djv.c, $$0);
-               if (!$$0.fS().d) {
-                  $$2.h(1);
-               }
-            }
-         } else {
-            this.a(this.w(), 1.0F, 1.0F);
-            this.b(this.I() + 1);
-            this.a(djv.c, $$0);
-         }
-
-         return bha.b;
-      } else {
-         return !$$3 && !$$4 ? bha.d : bha.a;
-      }
-   }
-
-   public ape w() {
-      return apf.lY;
-   }
-
-   public int K() {
-      return this.F().b() ? 0 : this.I() % 8 + 1;
-   }
-
-   @Override
-   public vf<wy> di() {
-      return new wz(this, this.d.d(), this.E());
-   }
-
-   @Override
-   public void a(wz $$0) {
-      super.a($$0);
-      this.a(hc.a($$0.o()));
-   }
-
-   @Override
-   public cjh dy() {
-      cjh $$0 = this.F();
-      return $$0.b() ? this.x() : $$0.p();
-   }
-
-   protected cjh x() {
-      return new cjh(cjk.ti);
-   }
-
-   @Override
-   public float dC() {
-      hc $$0 = this.cD();
-      int $$1 = $$0.o().b() ? 90 * $$0.f().a() : 0;
-      return (float)ary.b(180 + $$0.e() * 90 + this.I() * 45 + $$1);
+   public cjf dy() {
+      return new cjf(cji.pl);
    }
 }

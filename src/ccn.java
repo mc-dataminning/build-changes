@@ -1,76 +1,139 @@
-public class ccn extends cco {
-   public ccn(biw<? extends ccn> $$0, cpx $$1) {
-      super($$0, $$1);
+import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public final class ccn {
+   public static ehl a(biq $$0, Predicate<biq> $$1) {
+      ehn $$2 = $$0.do();
+      cpv $$3 = $$0.dL();
+      ehn $$4 = $$0.dj();
+      return a($$4, $$0, $$1, $$2, $$3);
    }
 
-   public ccn(cpx $$0, bwv $$1) {
-      this(biw.ak, $$0);
-      this.b($$1);
-      this.e(
-         $$1.dq() - (double)($$1.df() + 1.0F) * 0.5 * (double)ary.a($$1.aU * (float) (Math.PI / 180.0)),
-         $$1.du() - 0.1F,
-         $$1.dw() + (double)($$1.df() + 1.0F) * 0.5 * (double)ary.b($$1.aU * (float) (Math.PI / 180.0))
-      );
+   public static ehl a(biq $$0, Predicate<biq> $$1, double $$2) {
+      ehn $$3 = $$0.f(0.0F).a($$2);
+      cpv $$4 = $$0.dL();
+      ehn $$5 = $$0.bp();
+      return a($$5, $$0, $$1, $$3, $$4);
    }
 
-   @Override
-   public void l() {
-      super.l();
-      ehp $$0 = this.do();
-      ehn $$1 = ccp.a(this, this::a);
-      this.a($$1);
-      double $$2 = this.dq() + $$0.c;
-      double $$3 = this.ds() + $$0.d;
-      double $$4 = this.dw() + $$0.e;
-      this.H();
-      float $$5 = 0.99F;
-      float $$6 = 0.06F;
-      if (this.dL().a(this.cG()).noneMatch(dfk.a::i)) {
-         this.ak();
-      } else if (this.ba()) {
-         this.ak();
-      } else {
-         this.f($$0.a(0.99F));
-         if (!this.aT()) {
-            this.f(this.do().b(0.0, -0.06F, 0.0));
+   private static ehl a(ehn $$0, biq $$1, Predicate<biq> $$2, ehn $$3, cpv $$4) {
+      ehn $$5 = $$0.e($$3);
+      ehl $$6 = $$4.a(new cpe($$0, $$5, cpe.a.a, cpe.b.a, $$1));
+      if ($$6.c() != ehl.a.a) {
+         $$5 = $$6.e();
+      }
+
+      ehl $$7 = a($$4, $$1, $$0, $$5, $$1.cG().b($$3).g(1.0), $$2);
+      if ($$7 != null) {
+         $$6 = $$7;
+      }
+
+      return $$6;
+   }
+
+   @Nullable
+   public static ehk a(biq $$0, ehn $$1, ehn $$2, ehi $$3, Predicate<biq> $$4, double $$5) {
+      cpv $$6 = $$0.dL();
+      double $$7 = $$5;
+      biq $$8 = null;
+      ehn $$9 = null;
+
+      for (biq $$10 : $$6.a($$0, $$3, $$4)) {
+         ehi $$11 = $$10.cG().g((double)$$10.bD());
+         Optional<ehn> $$12 = $$11.b($$1, $$2);
+         if ($$11.d($$1)) {
+            if ($$7 >= 0.0) {
+               $$8 = $$10;
+               $$9 = $$12.orElse($$1);
+               $$7 = 0.0;
+            }
+         } else if ($$12.isPresent()) {
+            ehn $$13 = $$12.get();
+            double $$14 = $$1.g($$13);
+            if ($$14 < $$7 || $$7 == 0.0) {
+               if ($$10.cV() == $$0.cV()) {
+                  if ($$7 == 0.0) {
+                     $$8 = $$10;
+                     $$9 = $$13;
+                  }
+               } else {
+                  $$8 = $$10;
+                  $$9 = $$13;
+                  $$7 = $$14;
+               }
+            }
+         }
+      }
+
+      return $$8 == null ? null : new ehk($$8, $$9);
+   }
+
+   @Nullable
+   public static ehk a(cpv $$0, biq $$1, ehn $$2, ehn $$3, ehi $$4, Predicate<biq> $$5) {
+      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
+   }
+
+   @Nullable
+   public static ehk a(cpv $$0, biq $$1, ehn $$2, ehn $$3, ehi $$4, Predicate<biq> $$5, float $$6) {
+      double $$7 = Double.MAX_VALUE;
+      biq $$8 = null;
+
+      for (biq $$9 : $$0.a($$1, $$4, $$5)) {
+         ehi $$10 = $$9.cG().g((double)$$6);
+         Optional<ehn> $$11 = $$10.b($$2, $$3);
+         if ($$11.isPresent()) {
+            double $$12 = $$2.g($$11.get());
+            if ($$12 < $$7) {
+               $$8 = $$9;
+               $$7 = $$12;
+            }
+         }
+      }
+
+      return $$8 == null ? null : new ehk($$8);
+   }
+
+   public static void a(biq $$0, float $$1) {
+      ehn $$2 = $$0.do();
+      if ($$2.g() != 0.0) {
+         double $$3 = $$2.h();
+         $$0.r((float)(arw.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
+         $$0.s((float)(arw.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
+
+         while ($$0.dD() - $$0.O < -180.0F) {
+            $$0.O -= 360.0F;
          }
 
-         this.e($$2, $$3, $$4);
+         while ($$0.dD() - $$0.O >= 180.0F) {
+            $$0.O += 360.0F;
+         }
+
+         while ($$0.dB() - $$0.N < -180.0F) {
+            $$0.N -= 360.0F;
+         }
+
+         while ($$0.dB() - $$0.N >= 180.0F) {
+            $$0.N += 360.0F;
+         }
+
+         $$0.s(arw.i($$1, $$0.O, $$0.dD()));
+         $$0.r(arw.i($$1, $$0.N, $$0.dB()));
       }
    }
 
-   @Override
-   protected void a(ehm $$0) {
-      super.a($$0);
-      if (this.v() instanceof bji $$1) {
-         $$0.a().a(this.dM().a(this, $$1), 1.0F);
-      }
+   public static bgx a(bjg $$0, cja $$1) {
+      return $$0.eS().a($$1) ? bgx.a : bgx.b;
    }
 
-   @Override
-   protected void a(ehl $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         this.ak();
-      }
-   }
-
-   @Override
-   protected void a_() {
-   }
-
-   @Override
-   public void a(wz $$0) {
-      super.a($$0);
-      double $$1 = $$0.i();
-      double $$2 = $$0.j();
-      double $$3 = $$0.k();
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dL().a(ix.ab, this.dq(), this.ds(), this.dw(), $$1 * $$5, $$2, $$3 * $$5);
+   public static cca a(bjg $$0, cjf $$1, float $$2) {
+      cgt $$3 = (cgt)($$1.d() instanceof cgt ? $$1.d() : cji.nH);
+      cca $$4 = $$3.a($$0.dL(), $$1, $$0);
+      $$4.a($$0, $$2);
+      if ($$1.a(cji.uw) && $$4 instanceof ccc) {
+         ((ccc)$$4).a($$1);
       }
 
-      this.o($$1, $$2, $$3);
+      return $$4;
    }
 }

@@ -1,11 +1,49 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface alb {
-   void a(cpe var1);
+public class alb implements akz {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   void a(cpe var1, @Nullable dhm var2);
+   public alb(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.b = $$1 * $$1;
+   }
 
-   void a();
+   @Override
+   public void a(cpc $$0) {
+      this.e = ac.b();
+      this.d = this.e;
+   }
 
-   void b();
+   @Override
+   public void a(cpc $$0, @Nullable dhk $$1) {
+      if ($$1 == dhk.n) {
+         this.c++;
+      }
+
+      int $$2 = this.c();
+      if (ac.b() > this.e) {
+         this.e += 500L;
+         a.info(tl.a("menu.preparingSpawn", arw.a($$2, 0, 100)).getString());
+      }
+   }
+
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+      a.info("Time elapsed: {} ms", ac.b() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int c() {
+      return arw.d((float)this.c * 100.0F / (float)this.b);
+   }
 }

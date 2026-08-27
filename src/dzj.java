@@ -1,17 +1,11 @@
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public class dzj implements dzl {
-   private static final dzj b = new dzj();
-   public static final Codec<dzj> a = Codec.unit(b);
+public interface dzj {
+   Codec<dzj> c = jb.q.q().dispatch(dzj::a, dzk::codec);
 
-   @Override
-   public qy a(ase $$0, @Nullable qy $$1) {
-      return new qy();
-   }
+   @Nullable
+   qw a(asc var1, @Nullable qw var2);
 
-   @Override
-   public dzm<?> a() {
-      return dzm.a;
-   }
+   dzk<?> a();
 }

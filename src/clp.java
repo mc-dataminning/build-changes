@@ -1,77 +1,71 @@
 import javax.annotation.Nullable;
 
-public class clp extends clr {
-   private final gw b;
-   protected boolean a = true;
+public class clp {
+   @Nullable
+   private final cbu a;
+   private final bgx b;
+   private final ehj c;
+   private final cpv d;
+   private final cjf e;
 
-   public clp(cbw $$0, bgz $$1, cjh $$2, ehl $$3) {
-      this($$0.dL(), $$0, $$1, $$2, $$3);
+   public clp(cbu $$0, bgx $$1, ehj $$2) {
+      this($$0.dL(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public clp(clr $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   protected clp(cpv $$0, @Nullable cbu $$1, bgx $$2, cjf $$3, ehj $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   protected clp(cpx $$0, @Nullable cbw $$1, bgz $$2, cjh $$3, ehl $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
+   protected final ehj j() {
+      return this.c;
    }
 
-   public static clp a(clp $$0, gw $$1, hc $$2) {
-      return new clp(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new ehl(
-            new ehp((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
-   }
-
-   @Override
    public gw a() {
-      return this.a ? super.a() : this.b;
+      return this.c.a();
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
+   public ha k() {
+      return this.c.b();
    }
 
-   public boolean c() {
+   public ehn l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cjf n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cbu o() {
       return this.a;
    }
 
-   public hc d() {
-      return hc.a(this.o())[0];
+   public bgx p() {
+      return this.b;
    }
 
-   public hc e() {
-      return hc.a(this.o(), hc.a.b);
+   public cpv q() {
+      return this.d;
    }
 
-   public hc[] f() {
-      hc[] $$0 = hc.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         hc $$1 = this.k();
-         int $$2 = 0;
+   public ha g() {
+      return this.a == null ? ha.c : this.a.cD();
+   }
 
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
+   public boolean h() {
+      return this.a != null && this.a.fH();
+   }
 
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
-      }
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dB();
    }
 }

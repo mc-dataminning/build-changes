@@ -1,14 +1,21 @@
-public interface adm extends abf {
-   @Override
-   default sp b() {
-      return sp.d;
+import java.util.UUID;
+
+public record adm(String a, UUID b) implements vd<adk> {
+   public adm(so $$0) {
+      this($$0.d(16), $$0.o());
    }
 
-   void a(ado var1);
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.a, 16);
+      $$0.a(this.b);
+   }
 
-   void a(adp var1);
+   public void a(adk $$0) {
+      $$0.a(this);
+   }
 
-   void a(adn var1);
-
-   void a(adq var1);
+   public UUID d() {
+      return this.b;
+   }
 }

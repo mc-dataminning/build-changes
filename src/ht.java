@@ -1,204 +1,294 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Lifecycle;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
 
-public interface ht<T> extends Keyable, hl<T> {
-   aex<? extends ht<T>> c();
+public class ht {
+   private final List<ht.g<?>> a = new ArrayList<>();
 
-   default Codec<T> q() {
-      Codec<T> $$0 = aey.a
-         .flatXmap(
-            $$0x -> Optional.ofNullable(this.a($$0x))
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
-            $$0x -> this.c((T)$$0x)
-                  .map(aex::a)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
-         );
-      Codec<T> $$1 = arh.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
-      return arh.a(arh.b($$0, $$1), this::e, this::e);
+   static <T> hf<T> a(final hg.c<T> $$0) {
+      return new ht.c<T>($$0) {
+         @Override
+         public Optional<he.c<T>> a(aev<T> $$0x) {
+            return $$0.a($$0);
+         }
+      };
    }
 
-   default Codec<hg<T>> r() {
-      Codec<hg<T>> $$0 = aey.a
-         .flatXmap(
-            $$0x -> this.b(aex.a(this.c(), $$0x))
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
-            $$0x -> $$0x.e()
-                  .map(aex::a)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
-         );
-      return arh.a($$0, (Function<hg<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
+   public <T> ht a(aev<? extends hq<T>> $$0, Lifecycle $$1, ht.e<T> $$2) {
+      this.a.add(new ht.g<>($$0, $$1, $$2));
+      return this;
    }
 
-   default <U> Stream<U> keys(DynamicOps<U> $$0) {
-      return this.e().stream().map($$1 -> (U)$$0.createString($$1.toString()));
+   public <T> ht a(aev<? extends hq<T>> $$0, ht.e<T> $$1) {
+      return this.a($$0, Lifecycle.stable(), $$1);
    }
 
-   @Nullable
-   aey b(T var1);
-
-   Optional<aex<T>> c(T var1);
-
-   @Override
-   int a(@Nullable T var1);
-
-   @Nullable
-   T a(@Nullable aex<T> var1);
-
-   @Nullable
-   T a(@Nullable aey var1);
-
-   Lifecycle e(T var1);
-
-   Lifecycle d();
-
-   default Optional<T> b(@Nullable aey $$0) {
-      return Optional.ofNullable(this.a($$0));
+   private ht.a b(hr $$0) {
+      ht.a $$1 = ht.a.a($$0, this.a.stream().map(ht.g::a));
+      this.a.forEach($$1x -> $$1x.b($$1));
+      return $$1;
    }
 
-   default Optional<T> d(@Nullable aex<T> $$0) {
-      return Optional.ofNullable(this.a($$0));
+   public hg.b a(hr $$0) {
+      ht.a $$1 = this.b($$0);
+      Stream<hg.c<?>> $$2 = $$0.b().map($$0x -> $$0x.b().p());
+      Stream<hg.c<?>> $$3 = this.a.stream().map($$1x -> $$1x.a($$1).a());
+      hg.b $$4 = hg.b.a(Stream.concat($$2, $$3.peek($$1::a)));
+      $$1.b();
+      $$1.c();
+      return $$4;
    }
 
-   default T e(aex<T> $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
-      } else {
-         return $$1;
+   public hg.b a(hr $$0, hg.b $$1) {
+      ht.a $$2 = this.b($$0);
+      Map<aev<? extends hq<?>>, ht.f<?>> $$3 = new HashMap<>();
+      $$2.d().forEach($$1x -> $$3.put($$1x.a, $$1x));
+      this.a.stream().map($$1x -> $$1x.a($$2)).forEach($$1x -> $$3.put($$1x.a, $$1x));
+      Stream<hg.c<?>> $$4 = $$0.b().map($$0x -> $$0x.b().p());
+      hg.b $$5 = hg.b.a(Stream.concat($$4, $$3.values().stream().map(ht.f::a).peek($$2::a)));
+      $$2.a($$1);
+      $$2.b();
+      $$2.c();
+      return $$5;
+   }
+
+   static record a(ht.b a, ht.h b, Map<aew, hf<?>> c, Map<aev<?>, ht.d<?>> d, List<RuntimeException> e) {
+
+      public static ht.a a(hr $$0, Stream<aev<? extends hq<?>>> $$1) {
+         ht.b $$2 = new ht.b();
+         List<RuntimeException> $$3 = new ArrayList<>();
+         ht.h $$4 = new ht.h($$2);
+         Builder<aew, hf<?>> $$5 = ImmutableMap.builder();
+         $$0.b().forEach($$1x -> $$5.put($$1x.a().a(), ht.a($$1x.b().p())));
+         $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
+         return new ht.a($$2, $$4, $$5.build(), new HashMap<>(), $$3);
+      }
+
+      public <T> nr<T> a() {
+         return new nr<T>() {
+            @Override
+            public he.c<T> a(aev<T> $$0, T $$1, Lifecycle $$2) {
+               ht.d<?> $$3 = a.this.d.put($$0, new ht.d($$1, $$2));
+               if ($$3 != null) {
+                  a.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
+               }
+
+               return a.this.b.c($$0);
+            }
+
+            @Override
+            public <S> hf<S> a(aev<? extends hq<? extends S>> $$0) {
+               return (hf<S>)a.this.c.getOrDefault($$0.a(), a.this.b);
+            }
+         };
+      }
+
+      public void b() {
+         for (aev<Object> $$0 : this.b.a.keySet()) {
+            this.e.add(new IllegalStateException("Unreferenced key: " + $$0));
+         }
+
+         this.d.forEach(($$0x, $$1) -> this.e.add(new IllegalStateException("Orpaned value " + $$1.a + " for key " + $$0x)));
+      }
+
+      public void c() {
+         if (!this.e.isEmpty()) {
+            IllegalStateException $$0 = new IllegalStateException("Errors during registry creation");
+
+            for (RuntimeException $$1 : this.e) {
+               $$0.addSuppressed($$1);
+            }
+
+            throw $$0;
+         }
+      }
+
+      public void a(hh<?> $$0) {
+         this.a.b($$0);
+      }
+
+      public void a(hg.b $$0) {
+         Map<aew, Optional<? extends hg<Object>>> $$1 = new HashMap<>();
+         Iterator<Entry<aev<Object>, he.c<Object>>> $$2 = this.b.a.entrySet().iterator();
+
+         while ($$2.hasNext()) {
+            Entry<aev<Object>, he.c<Object>> $$3 = $$2.next();
+            aev<Object> $$4 = $$3.getKey();
+            he.c<Object> $$5 = $$3.getValue();
+            $$1.computeIfAbsent($$4.b(), $$1x -> $$0.a(aev.a($$1x))).flatMap($$1x -> $$1x.a($$4)).ifPresent($$2x -> {
+               $$5.b($$2x.a());
+               $$2.remove();
+            });
+         }
+      }
+
+      public Stream<ht.f<?>> d() {
+         return this.b.a.keySet().stream().map(aev::b).distinct().map($$0 -> new ht.f(aev.a($$0), Lifecycle.stable(), Map.of()));
+      }
+
+      public ht.b e() {
+         return this.a;
+      }
+
+      public ht.h f() {
+         return this.b;
+      }
+
+      public Map<aew, hf<?>> g() {
+         return this.c;
+      }
+
+      public Map<aev<?>, ht.d<?>> h() {
+         return this.d;
+      }
+
+      public List<RuntimeException> i() {
+         return this.e;
       }
    }
 
-   Set<aey> e();
+   static class b implements hh<Object> {
+      private final Set<hh<?>> a = Sets.newIdentityHashSet();
 
-   Set<Entry<aex<T>, T>> g();
+      @Override
+      public boolean a(hh<Object> $$0) {
+         return this.a.contains($$0);
+      }
 
-   Set<aex<T>> f();
-
-   Optional<hg.c<T>> a(ase var1);
-
-   default Stream<T> s() {
-      return StreamSupport.stream(this.spliterator(), false);
+      public void b(hh<?> $$0) {
+         this.a.add($$0);
+      }
    }
 
-   boolean c(aey var1);
+   abstract static class c<T> implements hf<T> {
+      protected final hh<T> b;
 
-   boolean c(aex<T> var1);
+      protected c(hh<T> $$0) {
+         this.b = $$0;
+      }
 
-   static <T> T a(ht<? super T> $$0, String $$1, T $$2) {
-      return a($$0, new aey($$1), $$2);
+      @Override
+      public Optional<hi.c<T>> a(aqh<T> $$0) {
+         return Optional.of(hi.a(this.b, $$0));
+      }
    }
 
-   static <V, T extends V> T a(ht<V> $$0, aey $$1, T $$2) {
-      return a($$0, aex.a($$0.c(), $$1), $$2);
+   static record d<T>(T a, Lifecycle b) {
    }
 
-   static <V, T extends V> T a(ht<V> $$0, aex<V> $$1, T $$2) {
-      ((ic)$$0).a($$1, (V)$$2, Lifecycle.stable());
-      return $$2;
+   @FunctionalInterface
+   public interface e<T> {
+      void run(nr<T> var1);
    }
 
-   static <T> hg.c<T> b(ht<T> $$0, aex<T> $$1, T $$2) {
-      return ((ic)$$0).a($$1, $$2, Lifecycle.stable());
+   static record f<T>(aev<? extends hq<? extends T>> a, Lifecycle b, Map<aev<T>, ht.i<T>> c) {
+
+      public hg.c<T> a() {
+         return new hg.c<T>() {
+            private final Map<aev<T>, he.c<T>> b = f.this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$0x -> {
+               ht.i<T> $$1 = (ht.i<T>)$$0x.getValue();
+               he.c<T> $$2 = $$1.b().orElseGet(() -> he.c.a(this, (aev<T>)$$0x.getKey()));
+               $$2.b($$1.a().a());
+               return $$2;
+            }));
+
+            @Override
+            public aev<? extends hq<? extends T>> f() {
+               return f.this.a;
+            }
+
+            @Override
+            public Lifecycle g() {
+               return f.this.b;
+            }
+
+            @Override
+            public Optional<he.c<T>> a(aev<T> $$0) {
+               return Optional.ofNullable(this.b.get($$0));
+            }
+
+            @Override
+            public Stream<he.c<T>> b() {
+               return this.b.values().stream();
+            }
+
+            @Override
+            public Optional<hi.c<T>> a(aqh<T> $$0) {
+               return Optional.empty();
+            }
+
+            @Override
+            public Stream<hi.c<T>> d() {
+               return Stream.empty();
+            }
+         };
+      }
+
+      public aev<? extends hq<? extends T>> b() {
+         return this.a;
+      }
+
+      public Lifecycle c() {
+         return this.b;
+      }
+
+      public Map<aev<T>, ht.i<T>> d() {
+         return this.c;
+      }
    }
 
-   static <T> hg.c<T> b(ht<T> $$0, aey $$1, T $$2) {
-      return b($$0, aex.a($$0.c(), $$1), $$2);
-   }
+   static record g<T>(aev<? extends hq<T>> a, Lifecycle b, ht.e<T> c) {
+      void b(ht.a $$0) {
+         this.c.run($$0.a());
+      }
 
-   ht<T> l();
+      public ht.f<T> a(ht.a $$0) {
+         Map<aev<T>, ht.i<T>> $$1 = new HashMap<>();
+         Iterator<Entry<aev<?>, ht.d<?>>> $$2 = $$0.d.entrySet().iterator();
 
-   hg.c<T> f(T var1);
-
-   Optional<hg.c<T>> c(int var1);
-
-   Optional<hg.c<T>> b(aex<T> var1);
-
-   hg<T> d(T var1);
-
-   default hg.c<T> f(aex<T> $$0) {
-      return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
-   }
-
-   Stream<hg.c<T>> h();
-
-   Optional<hk.c<T>> b(aqj<T> var1);
-
-   default Iterable<hg<T>> c(aqj<T> $$0) {
-      return (Iterable<hg<T>>)DataFixUtils.orElse(this.b($$0), List.of());
-   }
-
-   hk.c<T> a(aqj<T> var1);
-
-   Stream<Pair<aqj<T>, hk.c<T>>> i();
-
-   Stream<aqj<T>> j();
-
-   void m();
-
-   void a(Map<aqj<T>, List<hg<T>>> var1);
-
-   default hl<hg<T>> t() {
-      return new hl<hg<T>>() {
-         public int a(hg<T> $$0) {
-            return ht.this.a($$0.a());
+         while ($$2.hasNext()) {
+            Entry<aev<?>, ht.d<?>> $$3 = $$2.next();
+            aev<?> $$4 = $$3.getKey();
+            if ($$4.b(this.a)) {
+               ht.d<T> $$6 = (ht.d<T>)$$3.getValue();
+               he.c<T> $$7 = (he.c<T>)$$0.b.a.remove($$4);
+               $$1.put((aev<T>)$$4, new ht.i<>($$6, Optional.ofNullable($$7)));
+               $$2.remove();
+            }
          }
 
-         @Nullable
-         public hg<T> c(int $$0) {
-            return (hg<T>)ht.this.c($$0).orElse(null);
-         }
-
-         @Override
-         public int b() {
-            return ht.this.b();
-         }
-
-         @Override
-         public Iterator<hg<T>> iterator() {
-            return ht.this.h().map($$0 -> (hg<T>)$$0).iterator();
-         }
-      };
+         return new ht.f<>(this.a, this.b, $$1);
+      }
    }
 
-   hj<T> o();
+   static class h extends ht.c<Object> {
+      final Map<aev<Object>, he.c<Object>> a = new HashMap<>();
 
-   hi.c<T> p();
+      public h(hh<Object> $$0) {
+         super($$0);
+      }
 
-   default hi.c<T> u() {
-      return new hi.c.a<T>() {
-         @Override
-         protected hi.c<T> a() {
-            return ht.this.p();
-         }
+      @Override
+      public Optional<he.c<Object>> a(aev<Object> $$0) {
+         return Optional.of(this.c($$0));
+      }
 
-         @Override
-         public Optional<hk.c<T>> a(aqj<T> $$0) {
-            return Optional.of(this.b($$0));
-         }
+      <T> he.c<T> c(aev<T> $$0) {
+         return (he.c<T>)this.a.computeIfAbsent($$0, $$0x -> he.c.a(this.b, $$0x));
+      }
+   }
 
-         @Override
-         public hk.c<T> b(aqj<T> $$0) {
-            return ht.this.a($$0);
-         }
-      };
+   static record i<T>(ht.d<T> a, Optional<he.c<T>> b) {
    }
 }

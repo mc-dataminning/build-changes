@@ -1,54 +1,69 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
+import javax.annotation.Nullable;
 
-public class eiz<T> implements ejc<T>, eje<T> {
-   private final List<eja<T>> a = Lists.newArrayList();
-   private final Set<eja<?>> b = new ObjectOpenCustomHashSet(eja.a);
-
-   @Override
-   public void a(ejb<T> $$0) {
-      eja<T> $$1 = new eja<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
-   }
-
-   private void a(eja<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+public record eiz<T>(T d, gw e, long f, ejd g, long h) {
+   public static final Comparator<eiz<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
+      } else {
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
       }
-   }
-
-   @Override
-   public boolean a(gw $$0, T $$1) {
-      return this.b.contains(eja.a($$1, $$0));
-   }
-
-   @Override
-   public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public rs b(long $$0, Function<T, String> $$1) {
-      re $$2 = new re();
-
-      for (eja<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
+   };
+   public static final Comparator<eiz<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<eiz<?>> c = new Strategy<eiz<?>>() {
+      public int a(eiz<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
 
-      return $$2;
+      public boolean a(@Nullable eiz<?> $$0, @Nullable eiz<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+         }
+      }
+   };
+
+   public eiz(T $$0, gw $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, ejd.d, $$3);
    }
 
-   public List<eja<T>> b() {
-      return List.copyOf(this.a);
+   public eiz(T d, gw e, long f, ejd g, long h) {
+      e = e.i();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
    }
 
-   public static <T> eiz<T> a(re $$0, Function<String, Optional<T>> $$1, cpe $$2) {
-      eiz<T> $$3 = new eiz<>();
-      eja.a($$0, $$1, $$2, $$3::a);
-      return $$3;
+   public static <T> eiz<T> a(T $$0, gw $$1) {
+      return new eiz<>($$0, $$1, 0L, ejd.d, 0L);
+   }
+
+   public T a() {
+      return this.d;
+   }
+
+   public gw b() {
+      return this.e;
+   }
+
+   public long c() {
+      return this.f;
+   }
+
+   public ejd d() {
+      return this.g;
+   }
+
+   public long e() {
+      return this.h;
    }
 }

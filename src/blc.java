@@ -1,34 +1,18 @@
-public class blc implements bmm {
-   private final gw a;
-   private final ehp b;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public blc(gw $$0) {
-      this.a = $$0.i();
-      this.b = ehp.b($$0);
-   }
-
-   public blc(ehp $$0) {
-      this.a = gw.a($$0);
-      this.b = $$0;
-   }
-
-   @Override
-   public ehp a() {
-      return this.b;
-   }
-
-   @Override
-   public gw b() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(bji $$0) {
-      return true;
-   }
-
-   @Override
-   public String toString() {
-      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
+public class blc {
+   public static <E extends bjg, T> bky<E> a(Predicate<E> $$0, bsh<? extends T> $$1, bsh<T> $$2, bgj $$3) {
+      return boj.a(
+         (Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
+                  }
+               }))
+      );
    }
 }

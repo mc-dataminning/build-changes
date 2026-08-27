@@ -1,54 +1,64 @@
-public class ctr extends crq {
-   private static final float c = 0.05F;
-   private static final float d = 0.1F;
+public class ctr extends cwi implements csx, ctq {
+   private static final float f = 0.11F;
 
-   public ctr(dfk.d $$0) {
-      super($$0, id.a);
+   public ctr(dfi.d $$0) {
+      super($$0, ha.a, r_, false, 0.1);
+      this.k(this.C.b().a(d, Integer.valueOf(0)).a(s_, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean d(dfl $$0) {
-      return false;
-   }
-
-   protected static boolean a(cpx $$0, cqv.c $$1) {
-      if ($$1 == cqv.c.b) {
-         return $$0.D_().i() < 0.05F;
-      } else {
-         return $$1 == cqv.c.c ? $$0.D_().i() < 0.1F : false;
-      }
+   protected int a(asc $$0) {
+      return 1;
    }
 
    @Override
-   public void a(dfl $$0, cpx $$1, gw $$2, cqv.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == cqv.c.b) {
-            $$1.b($$2, csy.fu.n());
-            $$1.a(null, djv.c, $$2);
-         } else if ($$3 == cqv.c.c) {
-            $$1.b($$2, csy.fw.n());
-            $$1.a(null, djv.c, $$2);
-         }
-      }
+   protected boolean g(dfj $$0) {
+      return $$0.i();
    }
 
    @Override
-   protected boolean a(ean $$0) {
+   protected csv a() {
+      return csw.rv;
+   }
+
+   @Override
+   protected dfj a(dfj $$0, dfj $$1) {
+      return $$1.a(s_, $$0.c(s_));
+   }
+
+   @Override
+   protected dfj a(dfj $$0, asc $$1) {
+      return super.a($$0, $$1).a(s_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   public cjf a(cpb $$0, gw $$1, dfj $$2) {
+      return new cjf(cji.vw);
+   }
+
+   @Override
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      return ctq.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      super.a($$0);
+      $$0.a(s_);
+   }
+
+   @Override
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return !$$2.c(s_);
+   }
+
+   @Override
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
       return true;
    }
 
    @Override
-   protected void a(dfl $$0, cpx $$1, gw $$2, ean $$3) {
-      if ($$3 == eap.c) {
-         dfl $$4 = csy.fu.n();
-         $$1.b($$2, $$4);
-         $$1.a(djv.c, $$2, djv.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == eap.e) {
-         dfl $$5 = csy.fv.n();
-         $$1.b($$2, $$5);
-         $$1.a(djv.c, $$2, djv.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
+      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
    }
 }

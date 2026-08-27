@@ -1,78 +1,65 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
 
-@Deprecated
-public class dug extends dur {
-   public static final Codec<dug> a = bgf.b(0, 256).fieldOf("count").xmap(dug::new, $$0 -> $$0.c).codec();
-   private final bgf c;
+public class dug extends dup {
+   private final ha c;
+   private final dlz d;
+   private final dlz e;
+   private final int f;
+   public static final Codec<dug> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ha.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               dlz.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               dlz.b.optionalFieldOf("allowed_search_condition", dlz.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dug::new)
+   );
 
-   private dug(bgf $$0) {
+   private dug(ha $$0, dlz $$1, dlz $$2, int $$3) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public static dug a(bgf $$0) {
-      return new dug($$0);
+   public static dug a(ha $$0, dlz $$1, dlz $$2, int $$3) {
+      return new dug($$0, $$1, $$2, $$3);
    }
 
-   public static dug a(int $$0) {
-      return a(bgc.a($$0));
-   }
-
-   @Override
-   public Stream<gw> a_(dup $$0, ase $$1, gw $$2) {
-      Builder<gw> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(dku.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new gw($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
+   public static dug a(ha $$0, dlz $$1, int $$2) {
+      return a($$0, $$1, dlz.e(), $$2);
    }
 
    @Override
-   public dus<?> b() {
-      return dus.i;
-   }
-
-   private static int a(dup $$0, int $$1, int $$2, int $$3, int $$4) {
-      gw.a $$5 = new gw.a($$1, $$2, $$3);
-      int $$6 = 0;
-      dfl $$7 = $$0.a($$5);
-
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         dfl $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(csy.F)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
+   public Stream<gw> a_(dun $$0, asc $$1, gw $$2) {
+      gw.a $$3 = $$2.j();
+      cqp $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
             }
 
-            $$6++;
+            $$3.c(this.c);
+            if ($$4.d($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
          }
 
-         $$7 = $$9;
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
       }
-
-      return Integer.MAX_VALUE;
    }
 
-   private static boolean a(dfl $$0) {
-      return $$0.i() || $$0.a(csy.G) || $$0.a(csy.H);
+   @Override
+   public duq<?> b() {
+      return duq.j;
    }
 }

@@ -1,29 +1,22 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bnd {
-   private static final int a = 1;
-
-   public static bla<bjk> a(float $$0) {
-      return a($$1 -> $$0);
+   public static bmh<bjg> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
    }
 
-   public static bla<bjk> a(Function<bji, Float> $$0) {
-      return bol.a(
-         (Function<bol.b<bjk>, ? extends App<bol.c<bjk>, boo<bjk>>>)($$1 -> $$1.group($$1.a(bsj.m), $$1.a(bsj.n), $$1.b(bsj.o), $$1.a(bsj.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bji $$9 = $$1.b($$4);
-                     Optional<bsl> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && blb.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new blk($$9, true));
-                        $$2.a(new bsm(new blk($$9, false), $$0.apply($$7), 0));
-                     }
-
+   public static bmh<bjg> a(Predicate<bjg> $$0, Function<bjg, Float> $$1, int $$2) {
+      return boj.a(
+         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$3 -> $$3.group($$3.c(bsh.m), $$3.b(bsh.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
+                     return false;
+                  } else {
+                     $$4.a(new bsk($$3.b($$5), $$1.apply($$7), $$2));
                      return true;
-                  }))
+                  }
+               }))
       );
    }
 }

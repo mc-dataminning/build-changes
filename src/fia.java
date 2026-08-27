@@ -1,20 +1,37 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public final class fia {
+   private final aew a;
+   private final String b;
 
-public class fia implements anw {
-   private Map<fic, fik> a = ImmutableMap.of();
+   public fia(aew $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   public fie a(fic $$0) {
-      fik $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No model for layer " + $$0);
+   public aew a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         return $$1.a();
+         return !($$0 instanceof fia $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
       }
    }
 
    @Override
-   public void a(anv $$0) {
-      this.a = ImmutableMap.copyOf(fib.a());
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
    }
 }

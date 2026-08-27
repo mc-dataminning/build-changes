@@ -1,24 +1,30 @@
-import io.netty.buffer.ByteBuf;
-import java.nio.charset.StandardCharsets;
+import net.minecraft.server.MinecraftServer;
 
-public class alk {
-   public static final int a = 250;
-   public static final String b = "MC|PingHost";
-   public static final int c = 254;
-   public static final int d = 1;
-   public static final int e = 255;
-   public static final int f = 127;
+public class alk implements adc {
+   private final MinecraftServer a;
+   private final sm b;
 
-   public static void a(ByteBuf $$0, String $$1) {
-      $$0.writeShort($$1.length());
-      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
+   public alk(MinecraftServer $$0, sm $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static String a(ByteBuf $$0) {
-      int $$1 = $$0.readShort();
-      int $$2 = $$1 * 2;
-      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
-      $$0.skipBytes($$2);
-      return $$3;
+   @Override
+   public void a(adb $$0) {
+      if ($$0.f() != ada.b) {
+         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
+      } else {
+         this.b.a(ada.b);
+         this.b.a(new alr(this.a, this.b));
+      }
+   }
+
+   @Override
+   public void a(tl $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.b.k();
    }
 }

@@ -1,15 +1,13 @@
-import java.util.List;
+public final class afh extends RuntimeException {
+   public static final afh a = new afh();
 
-public enum afh {
-   a,
-   b,
-   c,
-   d;
+   private afh() {
+      this.setStackTrace(new StackTraceElement[0]);
+   }
 
-   private static final List<afh> e = List.of(values());
-   private static final hu.b f = hu.a(jd.ap);
-
-   public static hn<afh> a() {
-      return new hn<>(e).a(a, f);
+   @Override
+   public synchronized Throwable fillInStackTrace() {
+      this.setStackTrace(new StackTraceElement[0]);
+      return this;
    }
 }

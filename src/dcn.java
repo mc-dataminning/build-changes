@@ -1,162 +1,91 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import javax.annotation.Nullable;
+public class dcn {
+   public static final aev<dcm> a = a("base");
+   public static final aev<dcm> b = a("square_bottom_left");
+   public static final aev<dcm> c = a("square_bottom_right");
+   public static final aev<dcm> d = a("square_top_left");
+   public static final aev<dcm> e = a("square_top_right");
+   public static final aev<dcm> f = a("stripe_bottom");
+   public static final aev<dcm> g = a("stripe_top");
+   public static final aev<dcm> h = a("stripe_left");
+   public static final aev<dcm> i = a("stripe_right");
+   public static final aev<dcm> j = a("stripe_center");
+   public static final aev<dcm> k = a("stripe_middle");
+   public static final aev<dcm> l = a("stripe_downright");
+   public static final aev<dcm> m = a("stripe_downleft");
+   public static final aev<dcm> n = a("small_stripes");
+   public static final aev<dcm> o = a("cross");
+   public static final aev<dcm> p = a("straight_cross");
+   public static final aev<dcm> q = a("triangle_bottom");
+   public static final aev<dcm> r = a("triangle_top");
+   public static final aev<dcm> s = a("triangles_bottom");
+   public static final aev<dcm> t = a("triangles_top");
+   public static final aev<dcm> u = a("diagonal_left");
+   public static final aev<dcm> v = a("diagonal_up_right");
+   public static final aev<dcm> w = a("diagonal_up_left");
+   public static final aev<dcm> x = a("diagonal_right");
+   public static final aev<dcm> y = a("circle");
+   public static final aev<dcm> z = a("rhombus");
+   public static final aev<dcm> A = a("half_vertical");
+   public static final aev<dcm> B = a("half_horizontal");
+   public static final aev<dcm> C = a("half_vertical_right");
+   public static final aev<dcm> D = a("half_horizontal_bottom");
+   public static final aev<dcm> E = a("border");
+   public static final aev<dcm> F = a("curly_border");
+   public static final aev<dcm> G = a("gradient");
+   public static final aev<dcm> H = a("gradient_up");
+   public static final aev<dcm> I = a("bricks");
+   public static final aev<dcm> J = a("globe");
+   public static final aev<dcm> K = a("creeper");
+   public static final aev<dcm> L = a("skull");
+   public static final aev<dcm> M = a("flower");
+   public static final aev<dcm> N = a("mojang");
+   public static final aev<dcm> O = a("piglin");
 
-public class dcn extends dcx implements bhe {
-   public static final int a = 6;
-   public static final String b = "Patterns";
-   public static final String c = "Pattern";
-   public static final String d = "Color";
-   @Nullable
-   private tn e;
-   private chv f;
-   @Nullable
-   private re g;
-   @Nullable
-   private List<Pair<hg<dco>, chv>> h;
-
-   public dcn(gw $$0, dfl $$1) {
-      super(dcz.t, $$0, $$1);
-      this.f = ((cro)$$1.b()).a();
+   private static aev<dcm> a(String $$0) {
+      return aev.a(jc.c, new aew($$0));
    }
 
-   public dcn(gw $$0, dfl $$1, chv $$2) {
-      this($$0, $$1);
-      this.f = $$2;
-   }
-
-   @Nullable
-   public static re a(cjh $$0) {
-      re $$1 = null;
-      qy $$2 = cha.a($$0);
-      if ($$2 != null && $$2.b("Patterns", 9)) {
-         $$1 = $$2.c("Patterns", 10).e();
-      }
-
-      return $$1;
-   }
-
-   public void a(cjh $$0, chv $$1) {
-      this.f = $$1;
-      this.b($$0);
-   }
-
-   public void b(cjh $$0) {
-      this.g = a($$0);
-      this.h = null;
-      this.e = $$0.A() ? $$0.y() : null;
-   }
-
-   @Override
-   public tn ab() {
-      return (tn)(this.e != null ? this.e : tn.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public tn ad() {
-      return this.e;
-   }
-
-   public void a(tn $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(qy $$0) {
-      super.b($$0);
-      if (this.g != null) {
-         $$0.a("Patterns", this.g);
-      }
-
-      if (this.e != null) {
-         $$0.a("CustomName", tn.a.a(this.e));
-      }
-   }
-
-   @Override
-   public void a(qy $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = tn.a.a($$0.l("CustomName"));
-      }
-
-      this.g = $$0.c("Patterns", 10);
-      this.h = null;
-   }
-
-   public xf a() {
-      return xf.a(this);
-   }
-
-   @Override
-   public qy as_() {
-      return this.o();
-   }
-
-   public static int c(cjh $$0) {
-      qy $$1 = cha.a($$0);
-      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
-   }
-
-   public List<Pair<hg<dco>, chv>> c() {
-      if (this.h == null) {
-         this.h = a(this.f, this.g);
-      }
-
-      return this.h;
-   }
-
-   public static List<Pair<hg<dco>, chv>> a(chv $$0, @Nullable re $$1) {
-      List<Pair<hg<dco>, chv>> $$2 = Lists.newArrayList();
-      $$2.add(Pair.of(jd.al.f(dcp.a), $$0));
-      if ($$1 != null) {
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            qy $$4 = $$1.a($$3);
-            hg<dco> $$5 = dco.a($$4.l("Pattern"));
-            if ($$5 != null) {
-               int $$6 = $$4.h("Color");
-               $$2.add(Pair.of($$5, chv.a($$6)));
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   public static void d(cjh $$0) {
-      qy $$1 = cha.a($$0);
-      if ($$1 != null && $$1.b("Patterns", 9)) {
-         re $$2 = $$1.c("Patterns", 10);
-         if (!$$2.isEmpty()) {
-            $$2.c($$2.size() - 1);
-            if ($$2.isEmpty()) {
-               $$1.r("Patterns");
-            }
-         }
-
-         $$1.r("id");
-         cha.a($$0, dcz.t, $$1);
-      }
-   }
-
-   public cjh f() {
-      cjh $$0 = new cjh(csd.a(this.f));
-      if (this.g != null && !this.g.isEmpty()) {
-         qy $$1 = new qy();
-         $$1.a("Patterns", this.g.e());
-         cha.a($$0, this.u(), $$1);
-      }
-
-      if (this.e != null) {
-         $$0.a(this.e);
-      }
-
-      return $$0;
-   }
-
-   public chv g() {
-      return this.f;
+   public static dcm a(hq<dcm> $$0) {
+      hq.a($$0, a, new dcm("b"));
+      hq.a($$0, b, new dcm("bl"));
+      hq.a($$0, c, new dcm("br"));
+      hq.a($$0, d, new dcm("tl"));
+      hq.a($$0, e, new dcm("tr"));
+      hq.a($$0, f, new dcm("bs"));
+      hq.a($$0, g, new dcm("ts"));
+      hq.a($$0, h, new dcm("ls"));
+      hq.a($$0, i, new dcm("rs"));
+      hq.a($$0, j, new dcm("cs"));
+      hq.a($$0, k, new dcm("ms"));
+      hq.a($$0, l, new dcm("drs"));
+      hq.a($$0, m, new dcm("dls"));
+      hq.a($$0, n, new dcm("ss"));
+      hq.a($$0, o, new dcm("cr"));
+      hq.a($$0, p, new dcm("sc"));
+      hq.a($$0, q, new dcm("bt"));
+      hq.a($$0, r, new dcm("tt"));
+      hq.a($$0, s, new dcm("bts"));
+      hq.a($$0, t, new dcm("tts"));
+      hq.a($$0, u, new dcm("ld"));
+      hq.a($$0, v, new dcm("rd"));
+      hq.a($$0, w, new dcm("lud"));
+      hq.a($$0, x, new dcm("rud"));
+      hq.a($$0, y, new dcm("mc"));
+      hq.a($$0, z, new dcm("mr"));
+      hq.a($$0, A, new dcm("vh"));
+      hq.a($$0, B, new dcm("hh"));
+      hq.a($$0, C, new dcm("vhr"));
+      hq.a($$0, D, new dcm("hhb"));
+      hq.a($$0, E, new dcm("bo"));
+      hq.a($$0, F, new dcm("cbo"));
+      hq.a($$0, G, new dcm("gra"));
+      hq.a($$0, H, new dcm("gru"));
+      hq.a($$0, I, new dcm("bri"));
+      hq.a($$0, J, new dcm("glb"));
+      hq.a($$0, K, new dcm("cre"));
+      hq.a($$0, L, new dcm("sku"));
+      hq.a($$0, M, new dcm("flo"));
+      hq.a($$0, N, new dcm("moj"));
+      return hq.a($$0, O, new dcm("pig"));
    }
 }

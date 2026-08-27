@@ -1,72 +1,22 @@
-public class etc extends esm {
-   private final esf a;
-   private final etm b;
+public class etc extends esq {
+   protected final euc a;
 
-   public etc(int $$0, int $$1, int $$2, int $$3, tn $$4, esf $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.b = new etm($$4, $$5).j(this.l() - this.b());
+   public etc(int $$0, int $$1, int $$2, int $$3, euc $$4, esq.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, tk.a);
    }
 
-   public etc a(int $$0) {
-      this.b.i($$0);
-      return this;
+   public etc(int $$0, int $$1, int $$2, int $$3, euc $$4, esq.c $$5, tl $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, o);
+      this.a = $$4;
    }
 
-   @Override
-   public void d(int $$0) {
-      super.d($$0);
-      this.b.j(this.l() - this.b());
+   public etc(int $$0, int $$1, euc $$2, esq.c $$3, tl $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected int g() {
-      return this.b.i();
-   }
-
-   @Override
-   protected double h() {
-      return 9.0;
-   }
-
-   @Override
-   protected void b(esh $$0) {
-      if (this.e()) {
-         super.b($$0);
-      } else if (this.aC_()) {
-         this.a($$0, this.r() - this.a(), this.t() - this.a(), this.l() + this.b(), this.i() + this.b());
-      }
-   }
-
-   @Override
-   public void b(esh $$0, int $$1, int $$2, float $$3) {
-      if (this.j) {
-         if (!this.e()) {
-            this.b($$0);
-            $$0.c().a();
-            $$0.c().a((float)this.r(), (float)this.t(), 0.0F);
-            this.b.a($$0, $$1, $$2, $$3);
-            $$0.c().b();
-         } else {
-            super.b($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   public boolean v() {
-      return super.e();
-   }
-
-   @Override
-   protected void c(esh $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)(this.r() + this.a()), (float)(this.t() + this.a()), 0.0F);
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(ewk $$0) {
-      $$0.a(ewj.a, this.m());
+   public void b(esf $$0, int $$1, int $$2, float $$3) {
+      aew $$4 = this.a.a(this.aD_(), this.o());
+      $$0.a($$4, this.r(), this.t(), this.f, this.g);
    }
 }

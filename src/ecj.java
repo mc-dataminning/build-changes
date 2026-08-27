@@ -1,204 +1,66 @@
-import java.nio.file.Path;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class ecj implements Comparable<ecj> {
-   private final cqb a;
-   private final eck b;
-   private final String c;
-   private final boolean d;
-   private final boolean e;
-   private final boolean f;
-   private final Path g;
+public class ecj {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+
+   public ecj(ecg.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(ece.c).toFile();
+      this.c.mkdirs();
+   }
+
+   public void a(cbu $$0) {
+      try {
+         qw $$1 = $$0.f(new qw());
+         File $$2 = File.createTempFile($$0.cw() + "-", ".dat", this.c);
+         rh.a($$1, $$2);
+         File $$3 = new File(this.c, $$0.cw() + ".dat");
+         File $$4 = new File(this.c, $$0.cw() + ".dat_old");
+         ac.a($$3, $$2, $$4);
+      } catch (Exception var6) {
+         b.warn("Failed to save player data for {}", $$0.ab().getString());
+      }
+   }
+
    @Nullable
-   private tn h;
+   public qw b(cbu $$0) {
+      qw $$1 = null;
 
-   public ecj(cqb $$0, eck $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.d = $$3;
-   }
-
-   public String a() {
-      return this.c;
-   }
-
-   public String b() {
-      return StringUtils.isEmpty(this.a.a()) ? this.c : this.a.a();
-   }
-
-   public Path c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public long f() {
-      return this.b.b();
-   }
-
-   public int a(ecj $$0) {
-      if (this.f() < $$0.f()) {
-         return 1;
-      } else {
-         return this.f() > $$0.f() ? -1 : this.c.compareTo($$0.c);
-      }
-   }
-
-   public cqb g() {
-      return this.a;
-   }
-
-   public cpu h() {
-      return this.a.b();
-   }
-
-   public boolean i() {
-      return this.a.c();
-   }
-
-   public boolean j() {
-      return this.a.e();
-   }
-
-   public ua k() {
-      return ass.b(this.b.c()) ? tn.c("selectWorld.versionUnknown") : tn.b(this.b.c());
-   }
-
-   public eck l() {
-      return this.b;
-   }
-
-   public boolean m() {
-      return this.n() || !aa.b().g() && !this.b.e() || this.o().a();
-   }
-
-   public boolean n() {
-      return this.b.d().c() > aa.b().d().c();
-   }
-
-   public ecj.a o() {
-      ad $$0 = aa.b();
-      int $$1 = $$0.d().c();
-      int $$2 = this.b.d().c();
-      if (!$$0.g() && $$2 < $$1) {
-         return ecj.a.c;
-      } else {
-         return $$2 > $$1 ? ecj.a.b : ecj.a.a;
-      }
-   }
-
-   public boolean p() {
-      return this.e;
-   }
-
-   public boolean q() {
-      return !this.p() && !this.d() ? !this.r() : true;
-   }
-
-   public boolean r() {
-      return aa.b().d().a(this.b.d());
-   }
-
-   public tn s() {
-      if (this.h == null) {
-         this.h = this.t();
-      }
-
-      return this.h;
-   }
-
-   private tn t() {
-      if (this.p()) {
-         return tn.c("selectWorld.locked").a(n.m);
-      } else if (this.d()) {
-         return tn.c("selectWorld.conversion").a(n.m);
-      } else if (!this.r()) {
-         return tn.c("selectWorld.incompatible_series").a(n.m);
-      } else {
-         ua $$0 = this.i() ? tn.h().b(tn.c("gameMode.hardcore").a($$0x -> $$0x.a(-65536))) : tn.c("gameMode." + this.h().b());
-         if (this.j()) {
-            $$0.f(", ").b(tn.c("selectWorld.cheats"));
+      try {
+         File $$2 = new File(this.c, $$0.cw() + ".dat");
+         if ($$2.exists() && $$2.isFile()) {
+            $$1 = rh.a($$2);
          }
-
-         if (this.e()) {
-            $$0.f(", ").b(tn.c("selectWorld.experimental").a(n.o));
-         }
-
-         ua $$1 = this.k();
-         ua $$2 = tn.b(", ").b(tn.c("selectWorld.version")).b(tm.u);
-         if (this.m()) {
-            $$2.b($$1.a(this.n() ? n.m : n.u));
-         } else {
-            $$2.b($$1);
-         }
-
-         $$0.b($$2);
-         return $$0;
+      } catch (Exception var4) {
+         b.warn("Failed to load player data for {}", $$0.ab().getString());
       }
+
+      if ($$1 != null) {
+         int $$4 = rj.b($$1, -1);
+         $$0.g(ata.b.a(this.a, $$1, $$4));
+      }
+
+      return $$1;
    }
 
-   public static enum a {
-      a(false, false, ""),
-      b(true, true, "downgrade"),
-      c(true, false, "snapshot");
-
-      private final boolean d;
-      private final boolean e;
-      private final String f;
-
-      private a(boolean $$0, boolean $$1, String $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
+   public String[] a() {
+      String[] $$0 = this.c.list();
+      if ($$0 == null) {
+         $$0 = new String[0];
       }
 
-      public boolean a() {
-         return this.d;
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         if ($$0[$$1].endsWith(".dat")) {
+            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+         }
       }
 
-      public boolean b() {
-         return this.e;
-      }
-
-      public String c() {
-         return this.f;
-      }
-   }
-
-   public static class b extends ecj {
-      public b(String $$0, Path $$1) {
-         super(null, null, $$0, false, false, false, $$1);
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public tn s() {
-         return tn.c("symlink_warning.title").a($$0 -> $$0.a(-65536));
-      }
-
-      @Override
-      public long f() {
-         return -1L;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
+      return $$0;
    }
 }

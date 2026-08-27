@@ -1,36 +1,37 @@
-public enum dgp implements asr {
-   a("north_south"),
-   b("east_west"),
-   c("ascending_east"),
-   d("ascending_west"),
-   e("ascending_north"),
-   f("ascending_south"),
-   g("south_east"),
-   h("south_west"),
-   i("north_west"),
-   j("north_east");
+import java.util.Optional;
 
-   private final String k;
+public class dgp {
+   private static final asf a = new asf(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   private dgp(String $$0) {
-      this.k = $$0;
+   public static int a() {
+      return b;
    }
 
-   public String a() {
-      return this.k;
+   public static int a(ha $$0) {
+      return a.a($$0);
    }
 
-   @Override
-   public String toString() {
-      return this.k;
+   public static int a(float $$0) {
+      return a.b($$0);
    }
 
-   public boolean b() {
-      return this == e || this == c || this == f || this == d;
+   public static Optional<ha> a(int $$0) {
+      ha $$1 = switch ($$0) {
+         case 0 -> ha.c;
+         case 4 -> ha.f;
+         case 8 -> ha.d;
+         case 12 -> ha.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
    }
 
-   @Override
-   public String c() {
-      return this.k;
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

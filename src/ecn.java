@@ -1,66 +1,16 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public interface ecn extends ecd {
+   void b(int var1);
 
-public interface ecn extends ecp {
-   @Override
-   String g();
+   void c(int var1);
 
-   void a(boolean var1);
+   void d(int var1);
 
-   int l();
+   void a(float var1);
 
-   void f(int var1);
-
-   void e(int var1);
-
-   int j();
-
-   @Override
-   default void a(p $$0, cpz $$1) {
-      ecp.super.a($$0, $$1);
-      $$0.a("Level name", this::g);
-      $$0.a(
-         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   default void a(gw $$0, float $$1) {
+      this.b($$0.u());
+      this.c($$0.v());
+      this.d($$0.w());
+      this.a($$1);
    }
-
-   int h();
-
-   void a(int var1);
-
-   int v();
-
-   void g(int var1);
-
-   int w();
-
-   void h(int var1);
-
-   @Nullable
-   UUID x();
-
-   void a(UUID var1);
-
-   cpu m();
-
-   void a(dhc.c var1);
-
-   dhc.c r();
-
-   boolean p();
-
-   void c(boolean var1);
-
-   boolean o();
-
-   void a(cpu var1);
-
-   ehc<MinecraftServer> u();
-
-   void a(long var1);
-
-   void b(long var1);
 }

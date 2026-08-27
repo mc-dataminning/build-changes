@@ -1,24 +1,31 @@
-public class vs implements vf<vp> {
-   private final long a;
+public class vs implements vd<vn> {
+   private final vs.a a;
 
-   public vs(long $$0) {
+   public vs(vs.a $$0) {
       this.a = $$0;
    }
 
-   public void a(vp $$0) {
-      $$0.a(this);
-   }
-
-   public vs(sq $$0) {
-      this.a = $$0.readLong();
+   public vs(so $$0) {
+      this.a = $$0.b(vs.a.class);
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.b(this.a);
+   public void a(so $$0) {
+      $$0.a(this.a);
    }
 
-   public long a() {
+   public void a(vn $$0) {
+      $$0.a(this);
+   }
+
+   public vs.a a() {
       return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

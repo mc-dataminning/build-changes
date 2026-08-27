@@ -1,40 +1,32 @@
-public class xt implements vf<wy> {
-   private final int a;
+public class xt implements vd<ww> {
+   private final cja a;
    private final int b;
-   private final int c;
 
-   public xt(int $$0, int $$1, int $$2) {
+   public xt(cja $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public xt(sq $$0) {
-      this.a = $$0.readUnsignedByte();
-      this.b = $$0.readShort();
-      this.c = $$0.readShort();
+   public xt(so $$0) {
+      this.a = $$0.a(jb.i);
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.k(this.a);
-      $$0.l(this.b);
-      $$0.l(this.c);
+   public void a(so $$0) {
+      $$0.a(jb.i, this.a);
+      $$0.c(this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public cja a() {
       return this.a;
    }
 
    public int d() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

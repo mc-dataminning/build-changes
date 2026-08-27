@@ -1,40 +1,32 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public enum ekl {
-   a("icons"),
-   b("icons", "snapshot");
+public class ekl {
+   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
+   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
+   private static final Vector3f e = new Vector3f(0.2F, -1.0F, -1.0F).normalize();
+   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
 
-   private final String[] c;
-
-   private ekl(String... $$0) {
-      this.c = $$0;
+   public static void a(Matrix4f $$0) {
+      RenderSystem.setupLevelDiffuseLighting(c, d, $$0);
    }
 
-   public List<ann<InputStream>> a(amj $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
-      );
+   public static void b(Matrix4f $$0) {
+      RenderSystem.setupLevelDiffuseLighting(a, b, $$0);
    }
 
-   public ann<InputStream> b(amj $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
+   public static void a() {
+      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
    }
 
-   private ann<InputStream> a(amj $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      ann<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
-      } else {
-         return $$3;
-      }
+   public static void b() {
+      RenderSystem.setupGui3DDiffuseLighting(a, b);
+   }
+
+   public static void c() {
+      RenderSystem.setShaderLights(e, f);
    }
 }

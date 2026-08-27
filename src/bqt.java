@@ -1,65 +1,32 @@
-import java.util.EnumSet;
+public class bqt extends bps {
+   private final boolean a;
+   private int b;
 
-public class bqt extends bqd {
-   private final bjk a;
-   private bji b;
-   private int c;
-
-   public bqt(bjk $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bqd.a.a, bqd.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      bji $$0 = this.a.q();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
-      }
+   public bqt(bji $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
    public boolean b() {
-      if (!this.b.bv()) {
-         return false;
-      } else {
-         return this.a.f(this.b) > 225.0 ? false : !this.a.L().l() || this.a();
-      }
+      return this.a && this.b > 0 && super.b();
+   }
+
+   @Override
+   public void c() {
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.a.L().n();
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
+      this.a(false);
    }
 
    @Override
    public void e() {
-      this.a.G().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.df() * 2.0F * this.a.df() * 2.0F);
-      double $$1 = this.a.i(this.b.dq(), this.b.ds(), this.b.dw());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.L().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.C(this.b);
-         }
-      }
+      this.b--;
+      super.e();
    }
 }

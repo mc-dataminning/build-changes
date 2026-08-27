@@ -1,64 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class zf implements vf<wy> {
-   private final zf.a a;
-   private final List<aey> b;
-   private final List<aey> c;
-   private final apj d;
+public class zf implements vd<ww> {
+   private final int a;
+   private final bib b;
 
-   public zf(zf.a $$0, Collection<aey> $$1, Collection<aey> $$2, apj $$3) {
+   public zf(int $$0, bib $$1) {
       this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = ImmutableList.copyOf($$2);
-      this.d = $$3;
+      this.b = $$1;
    }
 
-   public zf(sq $$0) {
-      this.a = $$0.b(zf.a.class);
-      this.d = apj.a($$0);
-      this.b = $$0.a(sq::s);
-      if (this.a == zf.a.a) {
-         this.c = $$0.a(sq::s);
-      } else {
-         this.c = ImmutableList.of();
-      }
+   public zf(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.a(jb.e);
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
-      this.d.b($$0);
-      $$0.a(this.b, sq::a);
-      if (this.a == zf.a.a) {
-         $$0.a(this.c, sq::a);
-      }
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(jb.e, this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public List<aey> a() {
+   @Nullable
+   public biq a(cpv $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Nullable
+   public bib a() {
       return this.b;
-   }
-
-   public List<aey> d() {
-      return this.c;
-   }
-
-   public apj e() {
-      return this.d;
-   }
-
-   public zf.a f() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

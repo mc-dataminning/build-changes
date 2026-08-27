@@ -1,44 +1,29 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bmd extends bkz<cbj> {
-   private final float c;
-
-   public bmd(float $$0) {
-      super(ImmutableMap.of(bsj.m, bsk.c, bsj.n, bsk.c), Integer.MAX_VALUE);
-      this.c = $$0;
+public class bmd {
+   public static bmh<bji> a(int $$0) {
+      return boj.a(
+         (Function<boj.b<bji>, ? extends App<boj.c<bji>, bom<bji>>>)($$1 -> $$1.group($$1.a(bsh.n), $$1.b(bsh.o), $$1.c(bsh.p), $$1.b(bsh.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bjg $$9 = $$1.b($$3);
+                     if (!a($$7) && $$7.i($$9) && $$1.<bsj>b($$5).a($$9)) {
+                        $$2.a(new bli($$9, true));
+                        $$7.a(bgx.a);
+                        $$7.C($$9);
+                        $$4.a(true, (long)$$0);
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   protected boolean a(aks $$0, cbj $$1) {
-      cbw $$2 = $$1.gd();
-      return $$1.bv() && $$2 != null && !$$1.aX() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bS != null;
-   }
-
-   protected boolean a(aks $$0, cbj $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aks $$0, cbj $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(aks $$0, cbj $$1, long $$2) {
-      bki<?> $$3 = $$1.dN();
-      $$3.b(bsj.m);
-      $$3.b(bsj.n);
-   }
-
-   protected void d(aks $$0, cbj $$1, long $$2) {
-      this.a($$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   private void a(cbj $$0) {
-      bki<?> $$1 = $$0.dN();
-      $$1.a(bsj.m, new bsm(new blk($$0.gd(), false), this.c, 2));
-      $$1.a(bsj.n, new blk($$0.gd(), true));
+   private static boolean a(bji $$0) {
+      return $$0.b($$1 -> {
+         cja $$2 = $$1.d();
+         return $$2 instanceof cjv && $$0.a((cjv)$$2);
+      });
    }
 }

@@ -1,34 +1,48 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
 
-public class ir extends is {
-   public static final Vector3f a = ehp.a(16711680).j();
-   public static final ir b = new ir(a, 1.0F);
-   public static final Codec<ir> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arh.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, ir::new)
-   );
-   public static final iv.a<ir> d = new iv.a<ir>() {
-      public ir a(iw<ir> $$0, StringReader $$1) throws CommandSyntaxException {
-         Vector3f $$2 = is.a($$1);
+public class ir implements it {
+   public static final it.a<ir> a = new it.a<ir>() {
+      public ir a(iu<ir> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
-         float $$3 = $$1.readFloat();
-         return new ir($$2, $$3);
+         fy.a $$2 = fy.a(jb.i.p(), $$1);
+         cjf $$3 = new fx($$2.a(), $$2.b()).a(1, false);
+         return new ir($$0, $$3);
       }
 
-      public ir a(iw<ir> $$0, sq $$1) {
-         return new ir(is.b($$1), $$1.readFloat());
+      public ir a(iu<ir> $$0, so $$1) {
+         return new ir($$0, $$1.q());
       }
    };
+   private final iu<ir> b;
+   private final cjf c;
 
-   public ir(Vector3f $$0, float $$1) {
-      super($$0, $$1);
+   public static Codec<ir> a(iu<ir> $$0) {
+      return cjf.a.xmap($$1 -> new ir($$0, $$1), $$0x -> $$0x.c);
+   }
+
+   public ir(iu<ir> $$0, cjf $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public iw<ir> b() {
-      return ix.o;
+   public void a(so $$0) {
+      $$0.a(this.c);
+   }
+
+   @Override
+   public String a() {
+      return jb.k.b(this.b()) + " " + new fx(this.c.e(), this.c.v()).b();
+   }
+
+   @Override
+   public iu<ir> b() {
+      return this.b;
+   }
+
+   public cjf c() {
+      return this.c;
    }
 }

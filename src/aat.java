@@ -1,32 +1,40 @@
-public class aat implements vf<wy> {
-   private final tn a;
-   private final tn b;
+public class aat implements vd<ww> {
+   private final int a;
+   private final int b;
+   private final int c;
 
-   public aat(tn $$0, tn $$1) {
+   public aat(int $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public aat(sq $$0) {
-      this.a = $$0.l();
-      this.b = $$0.l();
+   public aat(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.m();
+      this.c = $$0.m();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public tn a() {
+   public int a() {
       return this.a;
    }
 
-   public tn d() {
+   public int d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

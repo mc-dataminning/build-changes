@@ -1,55 +1,52 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class ant {
-   private final amj a;
-   private final ann<InputStream> b;
-   private final ann<anx> c;
-   @Nullable
-   private anx d;
+public interface ant extends anw {
+   Set<String> a();
 
-   public ant(amj $$0, ann<InputStream> $$1, ann<anx> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   List<anr> a(aew var1);
 
-   public ant(amj $$0, ann<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = anx.b;
-      this.d = anx.a;
-   }
+   Map<aew, anr> b(String var1, Predicate<aew> var2);
 
-   public amj a() {
-      return this.a;
-   }
+   Map<aew, List<anr>> c(String var1, Predicate<aew> var2);
 
-   public String b() {
-      return this.a.a();
-   }
+   Stream<amh> b();
 
-   public boolean c() {
-      return this.a.b();
-   }
+   public static enum a implements ant {
+      a;
 
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
-
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public anx f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
+      @Override
+      public Set<String> a() {
+         return Set.of();
       }
 
-      return this.d;
+      @Override
+      public Optional<anr> getResource(aew $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<anr> a(aew $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<aew, anr> b(String $$0, Predicate<aew> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<aew, List<anr>> c(String $$0, Predicate<aew> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<amh> b() {
+         return Stream.of();
+      }
    }
 }

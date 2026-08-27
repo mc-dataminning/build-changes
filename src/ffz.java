@@ -1,37 +1,15 @@
-public class ffz<T extends bis> extends ffo<T> {
-   private static final String a = "main";
-   private final fie b;
+import java.util.function.Function;
 
-   public ffz(fie $$0) {
-      this.b = $$0;
+public abstract class ffz {
+   protected final Function<aew, fom> v;
+
+   public ffz(Function<aew, fom> $$0) {
+      this.v = $$0;
    }
 
-   public static fik b() {
-      fim $$0 = new fim();
-      fin $$1 = $$0.a();
-      int $$2 = 2;
-      $$1.a(
-         "main",
-         fij.c()
-            .a(0, 0)
-            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
-         fig.a
-      );
-      return fik.a($$0, 64, 32);
+   public final fom a(aew $$0) {
+      return this.v.apply($$0);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public fie a() {
-      return this.b;
-   }
+   public abstract void a(elp var1, elt var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

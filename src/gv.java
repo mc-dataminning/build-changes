@@ -9,16 +9,16 @@ import org.slf4j.Logger;
 
 public class gv {
    private static final Logger c = LogUtils.getLogger();
-   public static final Map<hc, j> a = ac.a(Maps.newEnumMap(hc.class), $$0 -> {
-      $$0.put(hc.d, j.a());
-      $$0.put(hc.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
-      $$0.put(hc.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
-      $$0.put(hc.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
-      $$0.put(hc.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
-      $$0.put(hc.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
+   public static final Map<ha, j> a = ac.a(Maps.newEnumMap(ha.class), $$0 -> {
+      $$0.put(ha.d, j.a());
+      $$0.put(ha.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
+      $$0.put(ha.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
+      $$0.put(ha.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
+      $$0.put(ha.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
+      $$0.put(ha.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
    });
-   public static final Map<hc, j> b = ac.a(Maps.newEnumMap(hc.class), $$0 -> {
-      for (hc $$1 : hc.values()) {
+   public static final Map<ha, j> b = ac.a(Maps.newEnumMap(ha.class), $$0 -> {
+      for (ha $$1 : ha.values()) {
          $$0.put($$1, a.get($$1).b());
       }
    });
@@ -37,8 +37,8 @@ public class gv {
       return new j($$1);
    }
 
-   public static j a(j $$0, hc $$1, Supplier<String> $$2) {
-      hc $$3 = hc.a($$0.c(), $$1);
+   public static j a(j $$0, ha $$1, Supplier<String> $$2) {
+      ha $$3 = ha.a($$0.c(), $$1);
       j $$4 = $$0.b();
       if ($$4 == null) {
          c.warn($$2.get());

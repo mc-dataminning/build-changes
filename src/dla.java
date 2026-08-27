@@ -1,110 +1,70 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public record dla(dkn b, dkn c, dkn d, dkn e, dkn f, dkn g, dkn h, dkn i, dkn j, dkn k, dkn l, dkn m, dkn n, dkn o, dkn p) {
+public record dla(int g, int h, int i, int j) {
    public static final Codec<dla> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", dla::a),
-               a("fluid_level_floodedness", dla::b),
-               a("fluid_level_spread", dla::c),
-               a("lava", dla::d),
-               a("temperature", dla::e),
-               a("vegetation", dla::f),
-               a("continents", dla::g),
-               a("erosion", dla::h),
-               a("depth", dla::i),
-               a("ridges", dla::j),
-               a("initial_density_without_jaggedness", dla::k),
-               a("final_density", dla::l),
-               a("vein_toggle", dla::m),
-               a("vein_ridged", dla::n),
-               a("vein_gap", dla::o)
-            )
-            .apply($$0, dla::new)
-   );
+         $$0 -> $$0.group(
+                  Codec.intRange(dis.e, dis.d).fieldOf("min_y").forGetter(dla::c),
+                  Codec.intRange(0, dis.c).fieldOf("height").forGetter(dla::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dla::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dla::f)
+               )
+               .apply($$0, dla::new)
+      )
+      .comapFlatMap(dla::a, Function.identity());
+   protected static final dla b = a(-64, 384, 1, 2);
+   protected static final dla c = a(0, 128, 1, 2);
+   protected static final dla d = a(0, 128, 2, 1);
+   protected static final dla e = a(-64, 192, 1, 2);
+   protected static final dla f = a(0, 256, 2, 1);
 
-   private static RecordCodecBuilder<dla, dkn> a(String $$0, Function<dla, dkn> $$1) {
-      return dkn.d.fieldOf($$0).forGetter($$1);
+   private static DataResult<dla> a(dla $$0) {
+      if ($$0.c() + $$0.d() > dis.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dis.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   public dla a(dkn.f $$0) {
-      return new dla(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   public static dla a(int $$0, int $$1, int $$2, int $$3) {
+      dla $$4 = new dla($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
    }
 
-   public dkn a() {
-      return this.b;
+   public int a() {
+      return hp.c(this.f());
    }
 
-   public dkn b() {
-      return this.c;
+   public int b() {
+      return hp.c(this.e());
    }
 
-   public dkn c() {
-      return this.d;
+   public dla a(cpx $$0) {
+      int $$1 = Math.max(this.g, $$0.H_());
+      int $$2 = Math.min(this.g + this.h, $$0.aj()) - $$1;
+      return new dla($$1, $$2, this.i, this.j);
    }
 
-   public dkn d() {
-      return this.e;
-   }
-
-   public dkn e() {
-      return this.f;
-   }
-
-   public dkn f() {
+   public int c() {
       return this.g;
    }
 
-   public dkn g() {
+   public int d() {
       return this.h;
    }
 
-   public dkn h() {
+   public int e() {
       return this.i;
    }
 
-   public dkn i() {
+   public int f() {
       return this.j;
-   }
-
-   public dkn j() {
-      return this.k;
-   }
-
-   public dkn k() {
-      return this.l;
-   }
-
-   public dkn l() {
-      return this.m;
-   }
-
-   public dkn m() {
-      return this.n;
-   }
-
-   public dkn n() {
-      return this.o;
-   }
-
-   public dkn o() {
-      return this.p;
    }
 }

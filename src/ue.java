@@ -1,64 +1,89 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record ue<S>(List<ue.a<S>> a) {
-   public static <S> ue<S> a(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<ue.a<S>> $$4 = a($$1, $$2);
+public class ue {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private uf b;
 
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null) {
-         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
-         if (!$$6) {
-            break;
-         }
-
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new ue<>($$4);
+   public ue(UUID $$0, UUID $$1) {
+      this.b = uf.a($$0, $$1);
    }
 
-   private static <S> List<ue.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<ue.a<S>> $$2 = new ArrayList<>();
+   public ue.c a(asi $$0) {
+      return $$1 -> {
+         uf $$2 = this.a();
+         return $$2 == null ? null : new tw($$0.sign($$2x -> ua.a($$2x, $$2, $$1)));
+      };
+   }
 
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof ex) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new ue.a<>($$4, $$6));
+   public ue.b a(cbx $$0) {
+      ash $$1 = $$0.a();
+      return ($$2, $$3) -> {
+         uf $$4 = this.a();
+         if ($$4 == null) {
+            throw new ue.a(tl.c("chat.disabled.chain_broken"), false);
+         } else if ($$0.b().a()) {
+            throw new ue.a(tl.c("chat.disabled.expiredProfileKey"), false);
+         } else {
+            ua $$5 = new ua($$4, $$2, $$3, null, to.c);
+            if (!$$5.a($$1)) {
+               throw new ue.a(tl.c("multiplayer.disconnect.unsigned_chat"), true);
+            } else {
+               if ($$5.a(Instant.now())) {
+                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
                }
+
+               return $$5;
             }
          }
-      }
-
-      return $$2;
+      };
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+   @Nullable
+   private uf a() {
+      uf $$0 = this.b;
+      if ($$0 != null) {
+         this.b = $$0.a();
       }
 
-      public ArgumentCommandNode<S, ?> b() {
+      return $$0;
+   }
+
+   public static class a extends uk {
+      private final boolean a;
+
+      public a(tl $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public boolean a() {
          return this.a;
       }
+   }
 
-      public String c() {
-         return this.b;
+   @FunctionalInterface
+   public interface b {
+      ue.b a = ($$0, $$1) -> {
+         throw new ue.a(tl.c("chat.disabled.missingProfileKey"), false);
+      };
+
+      static ue.b unsigned(UUID $$0) {
+         return ($$1, $$2) -> ua.a($$0, $$2.a());
       }
+
+      ua unpack(@Nullable tw var1, ud var2) throws ue.a;
+   }
+
+   @FunctionalInterface
+   public interface c {
+      ue.c a = $$0 -> null;
+
+      @Nullable
+      tw pack(ud var1);
    }
 }

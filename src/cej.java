@@ -1,117 +1,54 @@
 public class cej {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+   public static final cei a = new cei.a().a(4).a(0.3F).d();
+   public static final cei b = new cei.a().a(5).a(0.6F).d();
+   public static final cei c = new cei.a().a(3).a(0.3F).a().d();
+   public static final cei d = new cei.a().a(1).a(0.6F).d();
+   public static final cei e = a(6).d();
+   public static final cei f = new cei.a().a(5).a(0.6F).d();
+   public static final cei g = new cei.a().a(3).a(0.6F).d();
+   public static final cei h = new cei.a().a(2).a(0.3F).a(new bid(bif.q, 600, 0), 0.3F).a().d();
+   public static final cei i = new cei.a().a(4).a(0.3F).b().d();
+   public static final cei j = new cei.a().a(2).a(0.1F).d();
+   public static final cei k = new cei.a().a(8).a(0.8F).a().d();
+   public static final cei l = new cei.a().a(6).a(0.6F).a().d();
+   public static final cei m = new cei.a().a(5).a(0.6F).d();
+   public static final cei n = new cei.a().a(6).a(0.8F).a().d();
+   public static final cei o = new cei.a().a(8).a(0.8F).a().d();
+   public static final cei p = new cei.a().a(5).a(0.6F).a().d();
+   public static final cei q = new cei.a().a(6).a(0.8F).d();
+   public static final cei r = new cei.a().a(2).a(0.1F).d();
+   public static final cei s = new cei.a().a(1).a(0.3F).c().d();
+   public static final cei t = new cei.a()
+      .a(4)
+      .a(1.2F)
+      .a(new bid(bif.j, 400, 1), 1.0F)
+      .a(new bid(bif.k, 6000, 0), 1.0F)
+      .a(new bid(bif.l, 6000, 0), 1.0F)
+      .a(new bid(bif.v, 2400, 3), 1.0F)
+      .b()
+      .d();
+   public static final cei u = new cei.a().a(4).a(1.2F).a(new bid(bif.j, 100, 1), 1.0F).a(new bid(bif.v, 2400, 0), 1.0F).b().d();
+   public static final cei v = new cei.a().a(6).a(1.2F).d();
+   public static final cei w = new cei.a().a(6).a(0.1F).d();
+   public static final cei x = new cei.a().a(2).a(0.3F).d();
+   public static final cei y = a(6).d();
+   public static final cei z = new cei.a().a(2).a(0.3F).a().d();
+   public static final cei A = new cei.a().a(2).a(0.3F).a(new bid(bif.s, 100, 0), 0.6F).d();
+   public static final cei B = new cei.a().a(3).a(0.3F).a().d();
+   public static final cei C = new cei.a().a(1).a(0.3F).d();
+   public static final cei D = new cei.a().a(1).a(0.1F).a(new bid(bif.s, 1200, 1), 1.0F).a(new bid(bif.q, 300, 2), 1.0F).a(new bid(bif.i, 300, 0), 1.0F).d();
+   public static final cei E = new cei.a().a(8).a(0.3F).d();
+   public static final cei F = new cei.a().a(3).a(0.3F).a().d();
+   public static final cei G = a(10).d();
+   public static final cei H = new cei.a().a(4).a(0.1F).a(new bid(bif.q, 600, 0), 0.8F).a().d();
+   public static final cei I = new cei.a().a(2).a(0.1F).d();
+   public static final cei J = new cei.a().a(2).a(0.8F).a(new bid(bif.s, 100, 0), 1.0F).d();
+   public static final cei K = a(6).b().d();
+   public static final cei L = new cei.a().a(2).a(0.1F).d();
+   public static final cei M = new cei.a().a(2).a(0.1F).d();
+   public static final cei N = new cei.a().a(1).a(0.1F).d();
 
-   public cej() {
-      this.b = 5.0F;
-   }
-
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
-   }
-
-   public void a(cjc $$0, cjh $$1) {
-      if ($$0.u()) {
-         cek $$2 = $$0.v();
-         this.a($$2.a(), $$2.b());
-      }
-   }
-
-   public void a(cbw $$0) {
-      bgx $$1 = $$0.dL().ai();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bgx.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dL().X().b(cpt.j);
-      if ($$2 && this.b > 0.0F && $$0.gc() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.b($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gc()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.b(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.eu() > 10.0F || $$1 == bgx.d || $$0.eu() > 1.0F && $$1 == bgx.c) {
-               $$0.a($$0.dM().i(), 1.0F);
-            }
-
-            this.d = 0;
-         }
-      } else {
-         this.d = 0;
-      }
-   }
-
-   public void a(qy $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
-   }
-
-   public void b(qy $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(float $$0) {
-      this.b = $$0;
-   }
-
-   public void c(float $$0) {
-      this.c = $$0;
+   private static cei.a a(int $$0) {
+      return new cei.a().a($$0).a(0.6F);
    }
 }

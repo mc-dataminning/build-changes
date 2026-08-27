@@ -1,17 +1,19 @@
-public interface ewi extends eub, ewl {
-   ewi.a q();
+import com.google.common.collect.ImmutableList;
 
-   default boolean aD_() {
-      return true;
+public interface ewi {
+   default void a(ewh $$0, tl $$1) {
+      this.a($$0, ewk.a($$1.getString()));
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
+   default void a(ewh $$0, String $$1) {
+      this.a($$0, ewk.a($$1));
    }
+
+   default void a(ewh $$0, tl... $$1) {
+      this.a($$0, ewk.a(ImmutableList.copyOf($$1)));
+   }
+
+   void a(ewh var1, ewk<?> var2);
+
+   ewi a();
 }

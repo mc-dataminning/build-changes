@@ -1,24 +1,24 @@
-public class zq implements vf<wy> {
-   private final double a;
+public class zq implements vd<ww> {
+   private final int a;
 
-   public zq(dhc $$0) {
-      this.a = $$0.k();
+   public zq(dha $$0) {
+      this.a = $$0.r();
    }
 
-   public zq(sq $$0) {
-      this.a = $$0.readDouble();
+   public zq(so $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public int a() {
       return this.a;
    }
 }

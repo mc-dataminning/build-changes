@@ -1,21 +1,18 @@
-import java.util.UUID;
-
-public record ado(String a, UUID b) implements vf<adm> {
-   public ado(sq $$0) {
-      this($$0.d(16), $$0.o());
+public record ado() implements vd<adk> {
+   public ado(so $$0) {
+      this();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a, 16);
-      $$0.a(this.b);
+   public void a(so $$0) {
    }
 
-   public void a(adm $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   public UUID d() {
-      return this.b;
+   @Override
+   public sn c() {
+      return sn.e;
    }
 }

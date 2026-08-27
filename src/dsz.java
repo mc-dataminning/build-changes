@@ -1,115 +1,165 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public class dsz extends dtg {
-   private static final Codec<bgl> b = arh.a(
-      bgl.a,
-      (Function<bgl, DataResult<bgl>>)($$0 -> $$0.b() - $$0.a() < 1
-            ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-            : DataResult.success($$0))
-   );
-   public static final Codec<dsz> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bgf.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
-                  bgf.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
-                  bgf.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
-                  bgf.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, dsz::new)
-   );
-   private final bgf h;
-   private final bgf i;
-   private final bgl j;
-   private final bgl k;
-   private final bgf l;
+public class dsz extends dte {
+   public static final Codec<dsz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsz::new));
+   private static final double b = 0.618;
+   private static final double h = 1.382;
+   private static final double i = 0.381;
+   private static final double j = 0.328;
 
-   public dsz(int $$0, int $$1, int $$2, bgf $$3, bgf $$4, bgl $$5, bgf $$6) {
+   public dsz(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = bgl.a($$5.a(), $$5.b() - 1);
-      this.l = $$6;
    }
 
    @Override
-   protected dth<?> a() {
-      return dth.i;
+   protected dtf<?> a() {
+      return dtf.f;
    }
 
    @Override
-   public List<dro.a> a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, int $$3, gw $$4, dqy $$5) {
+   public List<drm.a> a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, int $$3, gw $$4, dqw $$5) {
+      int $$6 = 5;
+      int $$7 = $$3 + 2;
+      int $$8 = arw.a((double)$$7 * 0.618);
       a($$0, $$1, $$2, $$4.d(), $$5);
-      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
-      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
-      if ($$7 >= $$6) {
-         $$7++;
+      double $$9 = 1.0;
+      int $$10 = Math.min(1, arw.a(1.382 + Math.pow(1.0 * (double)$$7 / 13.0, 2.0)));
+      int $$11 = $$4.v() + $$8;
+      int $$12 = $$7 - 5;
+      List<dsz.a> $$13 = Lists.newArrayList();
+      $$13.add(new dsz.a($$4.b($$12), $$11));
+
+      for (; $$12 >= 0; $$12--) {
+         float $$14 = b($$7, $$12);
+         if (!($$14 < 0.0F)) {
+            for (int $$15 = 0; $$15 < $$10; $$15++) {
+               double $$16 = 1.0;
+               double $$17 = 1.0 * (double)$$14 * ((double)$$2.i() + 0.328);
+               double $$18 = (double)($$2.i() * 2.0F) * Math.PI;
+               double $$19 = $$17 * Math.sin($$18) + 0.5;
+               double $$20 = $$17 * Math.cos($$18) + 0.5;
+               gw $$21 = $$4.b(arw.a($$19), $$12 - 1, arw.a($$20));
+               gw $$22 = $$21.b(5);
+               if (this.a($$0, $$1, $$2, $$21, $$22, false, $$5)) {
+                  int $$23 = $$4.u() - $$21.u();
+                  int $$24 = $$4.w() - $$21.w();
+                  double $$25 = (double)$$21.v() - Math.sqrt((double)($$23 * $$23 + $$24 * $$24)) * 0.381;
+                  int $$26 = $$25 > (double)$$11 ? $$11 : (int)$$25;
+                  gw $$27 = new gw($$4.u(), $$26, $$4.w());
+                  if (this.a($$0, $$1, $$2, $$27, $$21, false, $$5)) {
+                     $$13.add(new dsz.a($$21, $$27.v()));
+                  }
+               }
+            }
+         }
       }
 
-      int $$8 = this.h.a($$2);
-      boolean $$9 = $$8 == 3;
-      boolean $$10 = $$8 >= 2;
-      int $$11;
-      if ($$9) {
-         $$11 = $$3;
-      } else if ($$10) {
-         $$11 = Math.max($$6, $$7) + 1;
-      } else {
-         $$11 = $$6 + 1;
+      this.a($$0, $$1, $$2, $$4, $$4.b($$8), true, $$5);
+      this.a($$0, $$1, $$2, $$7, $$4, $$13, $$5);
+      List<drm.a> $$28 = Lists.newArrayList();
+
+      for (dsz.a $$29 : $$13) {
+         if (this.a($$7, $$29.a() - $$4.v())) {
+            $$28.add($$29.a);
+         }
       }
 
-      for (int $$14 = 0; $$14 < $$11; $$14++) {
-         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
-      }
-
-      List<dro.a> $$15 = new ArrayList<>();
-      if ($$9) {
-         $$15.add(new dro.a($$4.b($$11), 0, false));
-      }
-
-      gw.a $$16 = new gw.a();
-      hc $$17 = hc.c.a.a($$2);
-      Function<dfl, dfl> $$18 = $$1x -> $$1x.b(czi.g, $$17.o());
-      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
-      if ($$10) {
-         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
-      }
-
-      return $$15;
+      return $$28;
    }
 
-   private dro.a a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, int $$3, gw $$4, dqy $$5, Function<dfl, dfl> $$6, hc $$7, int $$8, boolean $$9, gw.a $$10) {
-      $$10.g($$4).c(hc.b, $$8);
-      int $$11 = $$3 - 1 + this.l.a($$2);
-      boolean $$12 = $$9 || $$11 < $$8;
-      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
-      gw $$14 = $$4.a($$7, $$13).b($$11);
-      int $$15 = $$12 ? 2 : 1;
+   private boolean a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, gw $$3, gw $$4, boolean $$5, dqw $$6) {
+      if (!$$5 && Objects.equals($$3, $$4)) {
+         return true;
+      } else {
+         gw $$7 = $$4.b(-$$3.u(), -$$3.v(), -$$3.w());
+         int $$8 = this.a($$7);
+         float $$9 = (float)$$7.u() / (float)$$8;
+         float $$10 = (float)$$7.v() / (float)$$8;
+         float $$11 = (float)$$7.w() / (float)$$8;
 
-      for (int $$16 = 0; $$16 < $$15; $$16++) {
-         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
-      }
-
-      hc $$17 = $$14.v() > $$10.v() ? hc.b : hc.a;
-
-      while (true) {
-         int $$18 = $$10.k($$14);
-         if ($$18 == 0) {
-            return new dro.a($$14.c(), 0, false);
+         for (int $$12 = 0; $$12 <= $$8; $$12++) {
+            gw $$13 = $$3.b(arw.d(0.5F + (float)$$12 * $$9), arw.d(0.5F + (float)$$12 * $$10), arw.d(0.5F + (float)$$12 * $$11));
+            if ($$5) {
+               this.a($$0, $$1, $$2, $$13, $$6, $$2x -> $$2x.b(czg.g, this.a($$3, $$13)));
+            } else if (!this.b($$0, $$13)) {
+               return false;
+            }
          }
 
-         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
-         boolean $$20 = $$2.i() < $$19;
-         $$10.c($$20 ? $$17 : $$7);
-         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
+         return true;
+      }
+   }
+
+   private int a(gw $$0) {
+      int $$1 = arw.a($$0.u());
+      int $$2 = arw.a($$0.v());
+      int $$3 = arw.a($$0.w());
+      return Math.max($$1, Math.max($$2, $$3));
+   }
+
+   private ha.a a(gw $$0, gw $$1) {
+      ha.a $$2 = ha.a.b;
+      int $$3 = Math.abs($$1.u() - $$0.u());
+      int $$4 = Math.abs($$1.w() - $$0.w());
+      int $$5 = Math.max($$3, $$4);
+      if ($$5 > 0) {
+         if ($$3 == $$5) {
+            $$2 = ha.a.a;
+         } else {
+            $$2 = ha.a.c;
+         }
+      }
+
+      return $$2;
+   }
+
+   private boolean a(int $$0, int $$1) {
+      return (double)$$1 >= (double)$$0 * 0.2;
+   }
+
+   private void a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, int $$3, gw $$4, List<dsz.a> $$5, dqw $$6) {
+      for (dsz.a $$7 : $$5) {
+         int $$8 = $$7.a();
+         gw $$9 = new gw($$4.u(), $$8, $$4.w());
+         if (!$$9.equals($$7.a.a()) && this.a($$3, $$8 - $$4.v())) {
+            this.a($$0, $$1, $$2, $$9, $$7.a.a(), true, $$6);
+         }
+      }
+   }
+
+   private static float b(int $$0, int $$1) {
+      if ((float)$$1 < (float)$$0 * 0.3F) {
+         return -1.0F;
+      } else {
+         float $$2 = (float)$$0 / 2.0F;
+         float $$3 = $$2 - (float)$$1;
+         float $$4 = arw.c($$2 * $$2 - $$3 * $$3);
+         if ($$3 == 0.0F) {
+            $$4 = $$2;
+         } else if (Math.abs($$3) >= $$2) {
+            return 0.0F;
+         }
+
+         return $$4 * 0.5F;
+      }
+   }
+
+   static class a {
+      final drm.a a;
+      private final int b;
+
+      public a(gw $$0, int $$1) {
+         this.a = new drm.a($$0, 0, false);
+         this.b = $$1;
+      }
+
+      public int a() {
+         return this.b;
       }
    }
 }

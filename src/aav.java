@@ -1,40 +1,54 @@
-public class aav implements vf<wy> {
-   private final int a;
-   private final int b;
-   private final int c;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-   public aav(int $$0, int $$1, int $$2) {
+public class aav implements vd<ww> {
+   private final boolean a;
+   private final List<af> b;
+   private final Set<aew> c;
+   private final Map<aew, ah> d;
+
+   public aav(boolean $$0, Collection<af> $$1, Set<aew> $$2, Map<aew, ah> $$3) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      this.b = List.copyOf($$1);
+      this.c = Set.copyOf($$2);
+      this.d = Map.copyOf($$3);
    }
 
-   public aav(sq $$0) {
-      this.a = $$0.m();
-      this.b = $$0.m();
-      this.c = $$0.m();
+   public aav(so $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.a(af::b);
+      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, so::s);
+      this.d = $$0.a(so::s, ah::b);
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c, so::a);
+      $$0.a(this.d, so::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int d() {
+   public List<af> a() {
       return this.b;
    }
 
-   public int e() {
+   public Set<aew> d() {
       return this.c;
+   }
+
+   public Map<aew, ah> e() {
+      return this.d;
+   }
+
+   public boolean f() {
+      return this.a;
    }
 }

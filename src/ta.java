@@ -1,6 +1,3 @@
-public interface ta extends sw {
-   @Override
-   default vg a() {
-      return vg.a;
-   }
+public interface ta extends su {
+   void e();
 }

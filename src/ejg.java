@@ -1,29 +1,21 @@
-import java.util.function.Function;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
-public class ejg<T> implements eix<T> {
-   private final Function<gw, eje<T>> a;
-
-   public ejg(Function<gw, eje<T>> $$0) {
-      this.a = $$0;
+public class ejg {
+   public static void a(eka $$0, float $$1) {
+      ConcurrentLinkedQueue<ejz> $$2 = $$0.i();
    }
 
-   @Override
-   public boolean a(gw $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public static void b(eka $$0, float $$1) {
+      ConcurrentLinkedQueue<ejz> $$2 = $$0.j();
    }
 
-   @Override
-   public void a(ejb<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
    }
 
-   @Override
-   public boolean b(gw $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   public static double b() {
+      return GLFW.glfwGetTime();
    }
 }

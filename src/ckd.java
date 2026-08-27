@@ -1,66 +1,59 @@
-public class ckd extends cjc {
-   public ckd(cjc.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+
+public class ckd extends chp {
+   protected static final Map<csv, dfj> a = Maps.newHashMap(
+      new Builder()
+         .put(csw.i, csw.kE.n())
+         .put(csw.j, csw.kE.n())
+         .put(csw.l, csw.kE.n())
+         .put(csw.k, csw.kE.n())
+         .put(csw.fl, csw.kE.n())
+         .put(csw.rG, csw.kE.n())
+         .build()
+   );
+
+   public ckd(cks $$0, float $$1, float $$2, cja.a $$3) {
+      super($$1, $$2, $$0, aps.bC, $$3);
    }
 
    @Override
-   public boolean a(cjh $$0, cpx $$1, dfl $$2, gw $$3, bji $$4) {
-      if (!$$1.B && !$$2.a(apu.aJ)) {
-         $$0.a(1, $$4, $$0x -> $$0x.d(bix.a));
-      }
-
-      return !$$2.a(apu.O)
-            && !$$2.a(csy.bs)
-            && !$$2.a(csy.bt)
-            && !$$2.a(csy.bu)
-            && !$$2.a(csy.bv)
-            && !$$2.a(csy.rF)
-            && !$$2.a(csy.ff)
-            && !$$2.a(csy.fI)
-            && !$$2.a(apu.a)
-         ? super.a($$0, $$1, $$2, $$3, $$4)
-         : true;
-   }
-
-   @Override
-   public boolean a_(dfl $$0) {
-      return $$0.a(csy.bs) || $$0.a(csy.cw) || $$0.a(csy.fI);
-   }
-
-   @Override
-   public float a(cjh $$0, dfl $$1) {
-      if ($$1.a(csy.bs) || $$1.a(apu.O)) {
-         return 15.0F;
-      } else if ($$1.a(apu.a)) {
-         return 5.0F;
-      } else {
-         return !$$1.a(csy.ff) && !$$1.a(csy.fg) ? super.a($$0, $$1) : 2.0F;
-      }
-   }
-
-   @Override
-   public bha a(clr $$0) {
-      cpx $$1 = $$0.q();
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
       gw $$2 = $$0.a();
-      dfl $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof cwk $$5 && !$$5.o($$3)) {
-         cbw $$6 = $$0.o();
-         cjh $$7 = $$0.n();
-         if ($$6 instanceof akt) {
-            al.M.a((akt)$$6, $$2, $$7);
+      dfj $$3 = $$1.a_($$2);
+      if ($$0.k() == ha.a) {
+         return bgy.d;
+      } else {
+         cbu $$4 = $$0.o();
+         dfj $$5 = a.get($$3.b());
+         dfj $$6 = null;
+         if ($$5 != null && $$1.a_($$2.c()).i()) {
+            $$1.a($$4, $$2, apd.uX, ape.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof cti && $$3.c(cti.b)) {
+            if (!$$1.w_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
+
+            cti.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.a(cti.b, Boolean.valueOf(false));
          }
 
-         $$1.a($$6, $$2, apf.ki, apg.e, 1.0F, 1.0F);
-         dfl $$8 = $$5.n($$3);
-         $$1.b($$2, $$8);
-         $$1.a(djv.c, $$2, djv.a.a($$0.o(), $$8));
          if ($$6 != null) {
-            $$7.a(1, $$6, $$1x -> $$1x.d($$0.p()));
+            if (!$$1.B) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(djt.c, $$2, djt.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, $$1x -> $$1x.d($$0.p()));
+               }
+            }
+
+            return bgy.a($$1.B);
+         } else {
+            return bgy.d;
          }
-
-         return bha.a($$1.B);
       }
-
-      return super.a($$0);
    }
 }

@@ -1,13 +1,16 @@
-public abstract class fsg<T extends bws, M extends ffq<T>> extends fup<T, M> {
-   private final float a;
+public class fsg extends fun<bvv, fec> {
+   private static final aew a = new aew("textures/entity/allay/allay.png");
 
-   public fsg(ftj.a $$0, M $$1, float $$2) {
-      super($$0, $$1, 0.75F);
-      this.a = $$2;
+   public fsg(fth.a $$0) {
+      super($$0, new fec($$0.a(fib.a)), 0.4F);
+      this.a(new fxi<>(this, $$0.d()));
    }
 
-   protected void a(T $$0, elr $$1, float $$2) {
-      $$1.b(this.a, this.a, this.a);
-      super.a($$0, $$1, $$2);
+   public aew a(bvv $$0) {
+      return a;
+   }
+
+   protected int a(bvv $$0, gw $$1) {
+      return 15;
    }
 }

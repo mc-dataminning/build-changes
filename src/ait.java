@@ -1,44 +1,116 @@
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.Set;
 
 public class ait {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.tag.remove.failed"));
+
    public static void a(CommandDispatcher<dt> $$0) {
-      RequiredArgumentBuilder<dt, gc> $$1 = (RequiredArgumentBuilder<dt, gc>)((RequiredArgumentBuilder)du.a("targets", ee.d())
-            .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), null, null)))
-         .then(du.a("*").then(du.a("sound", es.a()).suggests(gm.c).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), null, es.e($$0x, "sound")))));
-
-      for (apg $$2 : apg.values()) {
-         $$1.then(
-            ((LiteralArgumentBuilder)du.a($$2.a()).executes($$1x -> a((dt)$$1x.getSource(), ee.f($$1x, "targets"), $$2, null)))
-               .then(du.a("sound", es.a()).suggests(gm.c).executes($$1x -> a((dt)$$1x.getSource(), ee.f($$1x, "targets"), $$2, es.e($$1x, "sound"))))
-         );
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("tag").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("targets", ee.b())
+                        .then(
+                           du.a("add")
+                              .then(
+                                 du.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        du.a("remove")
+                           .then(
+                              du.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> dw.b(a(ee.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((dt)$$0x.getSource(), ee.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(du.a("list").executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"))))
+            )
+      );
    }
 
-   private static int a(dt $$0, Collection<akt> $$1, @Nullable apg $$2, @Nullable aey $$3) {
-      aar $$4 = new aar($$3, $$2);
+   private static Collection<String> a(Collection<? extends biq> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
 
-      for (akt $$5 : $$1) {
-         $$5.c.b($$4);
+      for (biq $$2 : $$0) {
+         $$1.addAll($$2.ai());
       }
 
-      if ($$2 != null) {
-         if ($$3 != null) {
-            $$0.a(() -> tn.a("commands.stopsound.success.source.sound", $$3, $$2.a()), true);
-         } else {
-            $$0.a(() -> tn.a("commands.stopsound.success.source.any", $$2.a()), true);
+      return $$1;
+   }
+
+   private static int a(dt $$0, Collection<? extends biq> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (biq $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
          }
-      } else if ($$3 != null) {
-         $$0.a(() -> tn.a("commands.stopsound.success.sourceless.sound", $$3), true);
-      } else {
-         $$0.a(() -> tn.c("commands.stopsound.success.sourceless.any"), true);
       }
 
-      return $$1.size();
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> tl.a("commands.tag.add.success.single", $$2, $$1.iterator().next().N_()), true);
+         } else {
+            $$0.a(() -> tl.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int b(dt $$0, Collection<? extends biq> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (biq $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> tl.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().N_()), true);
+         } else {
+            $$0.a(() -> tl.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int a(dt $$0, Collection<? extends biq> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (biq $$3 : $$1) {
+         $$2.addAll($$3.ai());
+      }
+
+      if ($$1.size() == 1) {
+         biq $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> tl.a("commands.tag.list.single.empty", $$4.N_()), false);
+         } else {
+            $$0.a(() -> tl.a("commands.tag.list.single.success", $$4.N_(), $$2.size(), tn.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> tl.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> tl.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), tn.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 }

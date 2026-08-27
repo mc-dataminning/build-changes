@@ -1,11 +1,47 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface bds {
-   long a();
+public class bds {
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bdn f = bdm.a;
 
-   long b();
+   public bds(LongSupplier $$0, String $$1, long $$2) {
+      this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
+   }
 
-   long c();
+   public bdp a() {
+      this.f = new bdi(this.b, () -> this.d, false);
+      this.d++;
+      return this.f;
+   }
 
-   Object2LongMap<String> d();
+   public void b() {
+      if (this.f != bdm.a) {
+         bdo $$0 = this.f.d();
+         this.f = bdm.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
+      }
+   }
+
+   @Nullable
+   public static bds a(String $$0) {
+      return null;
+   }
+
+   public static bdp a(bdp $$0, @Nullable bds $$1) {
+      return $$1 != null ? bdp.a($$1.a(), $$0) : $$0;
+   }
 }

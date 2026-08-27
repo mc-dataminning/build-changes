@@ -1,371 +1,278 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.OptionalLong;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.lwjgl.openal.AL;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.ALC11;
-import org.lwjgl.openal.ALCCapabilities;
-import org.lwjgl.openal.ALCapabilities;
-import org.lwjgl.openal.ALUtil;
-import org.lwjgl.openal.SOFTHRTF;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.stb.STBVorbis;
+import org.lwjgl.stb.STBVorbisInfo;
 import org.lwjgl.system.MemoryStack;
-import org.slf4j.Logger;
+import org.lwjgl.system.MemoryUtil;
 
-public class ejn {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 0;
-   private static final int c = 30;
-   private long d;
-   private long e;
-   private boolean f;
-   @Nullable
-   private String g;
-   private static final ejn.a h = new ejn.a() {
-      @Nullable
-      @Override
-      public ejm a() {
-         return null;
-      }
+public class ejn implements gdi {
+   private static final int a = 8192;
+   private long b;
+   private final AudioFormat c;
+   private final InputStream d;
+   private ByteBuffer e = MemoryUtil.memAlloc(8192);
 
-      @Override
-      public boolean a(ejm $$0) {
-         return false;
-      }
+   public ejn(InputStream $$0) throws IOException {
+      this.d = $$0;
+      this.e.limit(0);
+      MemoryStack $$1 = MemoryStack.stackPush();
 
-      @Override
-      public void b() {
-      }
+      try {
+         IntBuffer $$2 = $$1.mallocInt(1);
+         IntBuffer $$3 = $$1.mallocInt(1);
 
-      @Override
-      public int c() {
-         return 0;
-      }
-
-      @Override
-      public int d() {
-         return 0;
-      }
-   };
-   private ejn.a i = h;
-   private ejn.a j = h;
-   private final ejo k = new ejo();
-
-   public ejn() {
-      this.g = a();
-   }
-
-   public void a(@Nullable String $$0, boolean $$1) {
-      this.d = a($$0);
-      this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
-      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
-      if (ejq.a(this.d, "Get capabilities")) {
-         throw new IllegalStateException("Failed to get OpenAL capabilities");
-      } else if (!$$2.OpenALC11) {
-         throw new IllegalStateException("OpenAL 1.1 not supported");
-      } else {
-         this.a($$2.ALC_SOFT_HRTF && $$1);
-         MemoryStack $$3 = MemoryStack.stackPush();
-
-         try {
-            IntBuffer $$4 = $$3.callocInt(3).put(6554).put(1).put(0).flip();
-            this.e = ALC10.alcCreateContext(this.d, $$4);
-         } catch (Throwable var9) {
-            if ($$3 != null) {
-               try {
-                  $$3.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
+         while (this.b == 0L) {
+            if (!this.c()) {
+               throw new IOException("Failed to find Ogg header");
             }
 
-            throw var9;
-         }
-
-         if ($$3 != null) {
-            $$3.close();
-         }
-
-         ALC10.alcMakeContextCurrent(this.e);
-         int $$5 = this.i();
-         int $$6 = ary.a((int)ary.c((float)$$5), 2, 8);
-         int $$7 = ary.a($$5 - $$6, 8, 255);
-         this.i = new ejn.b($$7);
-         this.j = new ejn.b($$6);
-         ALCapabilities $$8 = AL.createCapabilities($$2);
-         ejq.a("Initialization");
-         if (!$$8.AL_EXT_source_distance_model) {
-            throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
-         } else {
-            AL10.alEnable(512);
-            if (!$$8.AL_EXT_LINEAR_DISTANCE) {
-               throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
-            } else {
-               ejq.a("Enable per-source distance models");
-               a.info("OpenAL initialized on device {}", this.b());
+            int $$4 = this.e.position();
+            this.e.position(0);
+            this.b = STBVorbis.stb_vorbis_open_pushdata(this.e, $$2, $$3, null);
+            this.e.position($$4);
+            int $$5 = $$3.get(0);
+            if ($$5 == 1) {
+               this.d();
+            } else if ($$5 != 0) {
+               throw new IOException("Failed to read Ogg file " + $$5);
             }
          }
+
+         this.e.position(this.e.position() + $$2.get(0));
+         STBVorbisInfo $$6 = STBVorbisInfo.mallocStack($$1);
+         STBVorbis.stb_vorbis_get_info(this.b, $$6);
+         this.c = new AudioFormat((float)$$6.sample_rate(), 16, $$6.channels(), true, false);
+      } catch (Throwable var8) {
+         if ($$1 != null) {
+            try {
+               $$1.close();
+            } catch (Throwable var7) {
+               var8.addSuppressed(var7);
+            }
+         }
+
+         throw var8;
+      }
+
+      if ($$1 != null) {
+         $$1.close();
       }
    }
 
-   private void a(boolean $$0) {
-      int $$1 = ALC10.alcGetInteger(this.d, 6548);
-      if ($$1 > 0) {
-         MemoryStack $$2 = MemoryStack.stackPush();
-
-         try {
-            IntBuffer $$3 = $$2.callocInt(10).put(6546).put($$0 ? 1 : 0).put(6550).put(0).put(0).flip();
-            if (!SOFTHRTF.alcResetDeviceSOFT(this.d, $$3)) {
-               a.warn("Failed to reset device: {}", ALC10.alcGetString(this.d, ALC10.alcGetError(this.d)));
-            }
-         } catch (Throwable var7) {
-            if ($$2 != null) {
-               try {
-                  $$2.close();
-               } catch (Throwable var6) {
-                  var7.addSuppressed(var6);
-               }
-            }
-
-            throw var7;
-         }
-
-         if ($$2 != null) {
-            $$2.close();
-         }
-      }
-   }
-
-   private int i() {
-      MemoryStack $$0 = MemoryStack.stackPush();
-
-      int var7;
-      label58: {
-         try {
-            int $$1 = ALC10.alcGetInteger(this.d, 4098);
-            if (ejq.a(this.d, "Get attributes size")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
-
-            IntBuffer $$2 = $$0.mallocInt($$1);
-            ALC10.alcGetIntegerv(this.d, 4099, $$2);
-            if (ejq.a(this.d, "Get attributes")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
-
-            int $$3 = 0;
-
-            while ($$3 < $$1) {
-               int $$4 = $$2.get($$3++);
-               if ($$4 == 0) {
-                  break;
-               }
-
-               int $$5 = $$2.get($$3++);
-               if ($$4 == 4112) {
-                  var7 = $$5;
-                  break label58;
-               }
-            }
-         } catch (Throwable var9) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
-
-            throw var9;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return 30;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-
-      return var7;
-   }
-
-   @Nullable
-   public static String a() {
-      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
-         return null;
-      } else {
-         ALUtil.getStringList(0L, 4115);
-         return ALC10.alcGetString(0L, 4114);
-      }
-   }
-
-   public String b() {
-      String $$0 = ALC10.alcGetString(this.d, 4115);
-      if ($$0 == null) {
-         $$0 = ALC10.alcGetString(this.d, 4101);
-      }
-
-      if ($$0 == null) {
-         $$0 = "Unknown";
-      }
-
-      return $$0;
-   }
-
-   public synchronized boolean c() {
-      String $$0 = a();
-      if (Objects.equals(this.g, $$0)) {
-         return false;
-      } else {
-         this.g = $$0;
+   private boolean c() throws IOException {
+      int $$0 = this.e.limit();
+      int $$1 = this.e.capacity() - $$0;
+      if ($$1 == 0) {
          return true;
-      }
-   }
-
-   private static long a(@Nullable String $$0) {
-      OptionalLong $$1 = OptionalLong.empty();
-      if ($$0 != null) {
-         $$1 = b($$0);
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(a());
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(null);
-      }
-
-      if ($$1.isEmpty()) {
-         throw new IllegalStateException("Failed to open OpenAL device");
       } else {
-         return $$1.getAsLong();
-      }
-   }
-
-   private static OptionalLong b(@Nullable String $$0) {
-      long $$1 = ALC10.alcOpenDevice($$0);
-      return $$1 != 0L && !ejq.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
-   }
-
-   public void d() {
-      this.i.b();
-      this.j.b();
-      ALC10.alcDestroyContext(this.e);
-      if (this.d != 0L) {
-         ALC10.alcCloseDevice(this.d);
-      }
-   }
-
-   public ejo e() {
-      return this.k;
-   }
-
-   @Nullable
-   public ejm a(ejn.c $$0) {
-      return ($$0 == ejn.c.b ? this.j : this.i).a();
-   }
-
-   public void a(ejm $$0) {
-      if (!this.i.a($$0) && !this.j.a($$0)) {
-         throw new IllegalStateException("Tried to release unknown channel");
-      }
-   }
-
-   public String f() {
-      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
-   }
-
-   public List<String> g() {
-      List<String> $$0 = ALUtil.getStringList(0L, 4115);
-      return $$0 == null ? Collections.emptyList() : $$0;
-   }
-
-   public boolean h() {
-      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
-   }
-
-   interface a {
-      @Nullable
-      ejm a();
-
-      boolean a(ejm var1);
-
-      void b();
-
-      int c();
-
-      int d();
-   }
-
-   static class b implements ejn.a {
-      private final int a;
-      private final Set<ejm> b = Sets.newIdentityHashSet();
-
-      public b(int $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public ejm a() {
-         if (this.b.size() >= this.a) {
-            if (aa.aT) {
-               ejn.a.warn("Maximum sound pool size {} reached", this.a);
-            }
-
-            return null;
-         } else {
-            ejm $$0 = ejm.a();
-            if ($$0 != null) {
-               this.b.add($$0);
-            }
-
-            return $$0;
-         }
-      }
-
-      @Override
-      public boolean a(ejm $$0) {
-         if (!this.b.remove($$0)) {
+         byte[] $$2 = new byte[$$1];
+         int $$3 = this.d.read($$2);
+         if ($$3 == -1) {
             return false;
          } else {
-            $$0.b();
+            int $$4 = this.e.position();
+            this.e.limit($$0 + $$3);
+            this.e.position($$0);
+            this.e.put($$2, 0, $$3);
+            this.e.position($$4);
             return true;
          }
       }
+   }
 
-      @Override
-      public void b() {
-         this.b.forEach(ejm::b);
-         this.b.clear();
-      }
-
-      @Override
-      public int c() {
-         return this.a;
-      }
-
-      @Override
-      public int d() {
-         return this.b.size();
+   private void d() {
+      boolean $$0 = this.e.position() == 0;
+      boolean $$1 = this.e.position() == this.e.limit();
+      if ($$1 && !$$0) {
+         this.e.position(0);
+         this.e.limit(0);
+      } else {
+         ByteBuffer $$2 = MemoryUtil.memAlloc($$0 ? 2 * this.e.capacity() : this.e.capacity());
+         $$2.put(this.e);
+         MemoryUtil.memFree(this.e);
+         $$2.flip();
+         this.e = $$2;
       }
    }
 
-   public static enum c {
-      a,
-      b;
+   private boolean a(ejn.a $$0) throws IOException {
+      if (this.b == 0L) {
+         return false;
+      } else {
+         MemoryStack $$1 = MemoryStack.stackPush();
+
+         int $$5;
+         label79: {
+            boolean var15;
+            label80: {
+               try {
+                  PointerBuffer $$2 = $$1.mallocPointer(1);
+                  IntBuffer $$3 = $$1.mallocInt(1);
+                  IntBuffer $$4 = $$1.mallocInt(1);
+
+                  while (true) {
+                     $$5 = STBVorbis.stb_vorbis_decode_frame_pushdata(this.b, this.e, $$3, $$2, $$4);
+                     this.e.position(this.e.position() + $$5);
+                     int $$6 = STBVorbis.stb_vorbis_get_error(this.b);
+                     if ($$6 == 1) {
+                        this.d();
+                        if (!this.c()) {
+                           $$5 = 0;
+                           break label79;
+                        }
+                     } else {
+                        if ($$6 != 0) {
+                           throw new IOException("Failed to read Ogg file " + $$6);
+                        }
+
+                        int $$7 = $$4.get(0);
+                        if ($$7 != 0) {
+                           int $$8 = $$3.get(0);
+                           PointerBuffer $$9 = $$2.getPointerBuffer($$8);
+                           if ($$8 == 1) {
+                              this.a($$9.getFloatBuffer(0, $$7), $$0);
+                              var15 = true;
+                              break label80;
+                           }
+
+                           if ($$8 != 2) {
+                              throw new IllegalStateException("Invalid number of channels: " + $$8);
+                           }
+
+                           this.a($$9.getFloatBuffer(0, $$7), $$9.getFloatBuffer(1, $$7), $$0);
+                           var15 = true;
+                           break;
+                        }
+                     }
+                  }
+               } catch (Throwable var13) {
+                  if ($$1 != null) {
+                     try {
+                        $$1.close();
+                     } catch (Throwable var12) {
+                        var13.addSuppressed(var12);
+                     }
+                  }
+
+                  throw var13;
+               }
+
+               if ($$1 != null) {
+                  $$1.close();
+               }
+
+               return var15;
+            }
+
+            if ($$1 != null) {
+               $$1.close();
+            }
+
+            return var15;
+         }
+
+         if ($$1 != null) {
+            $$1.close();
+         }
+
+         return (boolean)$$5;
+      }
+   }
+
+   private void a(FloatBuffer $$0, ejn.a $$1) {
+      while ($$0.hasRemaining()) {
+         $$1.a($$0.get());
+      }
+   }
+
+   private void a(FloatBuffer $$0, FloatBuffer $$1, ejn.a $$2) {
+      while ($$0.hasRemaining() && $$1.hasRemaining()) {
+         $$2.a($$0.get());
+         $$2.a($$1.get());
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      if (this.b != 0L) {
+         STBVorbis.stb_vorbis_close(this.b);
+         this.b = 0L;
+      }
+
+      MemoryUtil.memFree(this.e);
+      this.d.close();
+   }
+
+   @Override
+   public AudioFormat a() {
+      return this.c;
+   }
+
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ejn.a $$1 = new ejn.a($$0 + 8192);
+
+      while (this.a($$1) && $$1.c < $$0) {
+      }
+
+      return $$1.a();
+   }
+
+   public ByteBuffer b() throws IOException {
+      ejn.a $$0 = new ejn.a(16384);
+
+      while (this.a($$0)) {
+      }
+
+      return $$0.a();
+   }
+
+   static class a {
+      private final List<ByteBuffer> a = Lists.newArrayList();
+      private final int b;
+      int c;
+      private ByteBuffer d;
+
+      public a(int $$0) {
+         this.b = $$0 + 1 & -2;
+         this.b();
+      }
+
+      private void b() {
+         this.d = BufferUtils.createByteBuffer(this.b);
+      }
+
+      public void a(float $$0) {
+         if (this.d.remaining() == 0) {
+            this.d.flip();
+            this.a.add(this.d);
+            this.b();
+         }
+
+         int $$1 = arw.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
+         this.d.putShort((short)$$1);
+         this.c += 2;
+      }
+
+      public ByteBuffer a() {
+         this.d.flip();
+         if (this.a.isEmpty()) {
+            return this.d;
+         } else {
+            ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
+            this.a.forEach($$0::put);
+            $$0.put(this.d);
+            $$0.flip();
+            return $$0;
+         }
+      }
    }
 }

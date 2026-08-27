@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class duc extends duq {
-   private static final duc c = new duc();
-   public static Codec<duc> a = Codec.unit(() -> c);
+public class duc extends dup {
+   public static final Codec<duc> a = dko.a.c.fieldOf("step").xmap(duc::new, $$0 -> $$0.c).codec();
+   private final dko.a c;
 
-   private duc() {
+   private duc(dko.a $$0) {
+      this.c = $$0;
    }
 
-   public static duc a() {
-      return c;
-   }
-
-   @Override
-   protected boolean a(dup $$0, ase $$1, gw $$2) {
-      duo $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      hg<cqv> $$4 = $$0.d().s($$2);
-      return $$0.f().a($$4).a($$3);
+   public static duc a(dko.a $$0) {
+      return new duc($$0);
    }
 
    @Override
-   public dus<?> b() {
-      return dus.e;
+   public Stream<gw> a_(dun $$0, asc $$1, gw $$2) {
+      cpc $$3 = new cpc($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public duq<?> b() {
+      return duq.o;
    }
 }

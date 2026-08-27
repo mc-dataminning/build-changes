@@ -1,60 +1,55 @@
-public class cvc extends cvp {
-   protected static final eii a = csx.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public cvc(dfk.d $$0) {
+public class cvc extends cuw {
+   private static final Logger c = LogUtils.getLogger();
+   private static final ih d = new ig();
+
+   public cvc(dfi.d $$0) {
       super($$0);
    }
 
    @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return a;
+   protected ih a(cjf $$0) {
+      return d;
    }
 
    @Override
-   public bha a(dfl $$0, cpx $$1, gw $$2, cbw $$3, bgz $$4, ehl $$5) {
-      this.d($$0, $$1, $$2);
-      return bha.a($$1.B);
+   public dcv a(gw $$0, dfj $$1) {
+      return new ddn($$0, $$1);
    }
 
    @Override
-   public void a(dfl $$0, cpx $$1, gw $$2, cbw $$3) {
-      this.d($$0, $$1, $$2);
-   }
-
-   private void d(dfl $$0, cpx $$1, gw $$2) {
-      dhc $$3 = $$1.B_();
-
-      for (int $$4 = 0; $$4 < 1000; $$4++) {
-         gw $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
-         if ($$1.a_($$5).i() && $$3.a($$5)) {
-            if ($$1.B) {
-               for (int $$6 = 0; $$6 < 128; $$6++) {
-                  double $$7 = $$1.z.j();
-                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
-                  double $$11 = ary.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
-                  double $$12 = ary.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
-                  double $$13 = ary.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
-                  $$1.a(ix.X, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+   protected void a(akq $$0, dfj $$1, gw $$2) {
+      ddm $$3 = $$0.a($$2, dcx.g).orElse(null);
+      if ($$3 == null) {
+         c.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+      } else {
+         id $$4 = new id($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cjf $$6 = $$3.a($$5);
+            if (!$$6.b()) {
+               ha $$7 = $$0.a_($$2).c(a);
+               bgr $$8 = ddt.a($$0, $$2.a($$7));
+               cjf $$9;
+               if ($$8 == null) {
+                  $$9 = d.dispense($$4, $$6);
+               } else {
+                  $$9 = ddt.a($$3, $$8, $$6.p().a(1), $$7.g());
+                  if ($$9.b()) {
+                     $$9 = $$6.p();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.p();
+                  }
                }
-            } else {
-               $$1.a($$5, $$0, 2);
-               $$1.a($$2, false);
-            }
 
-            return;
+               $$3.a($$5, $$9);
+            }
          }
       }
-   }
-
-   @Override
-   protected int a() {
-      return 5;
-   }
-
-   @Override
-   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
-      return false;
    }
 }

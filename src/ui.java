@@ -1,73 +1,73 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-@FunctionalInterface
-public interface ui {
-   Logger a = LogUtils.getLogger();
-   ui b = $$0 -> {
-      if ($$0.h()) {
-         a.error("Received chat message with signature from {}, but they have no chat session initialized", $$0.f());
-         return false;
+public class ui {
+   private final String a;
+   private final List<uh> b;
+   private final Int2IntFunction c;
+
+   private ui(String $$0, List<uh> $$1, Int2IntFunction $$2) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = $$2;
+   }
+
+   public String a() {
+      return this.a;
+   }
+
+   public List<arj> a(int $$0, int $$1, boolean $$2) {
+      if ($$1 == 0) {
+         return ImmutableList.of();
       } else {
-         return true;
-      }
-   };
-   ui c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.f());
-      return false;
-   };
+         List<arj> $$3 = Lists.newArrayList();
+         uh $$4 = this.b.get($$0);
+         int $$5 = $$0;
 
-   boolean updateAndValidate(uc var1);
-
-   public static class a implements ui {
-      private final asj d;
-      private final BooleanSupplier e;
-      @Nullable
-      private uc f;
-      private boolean g = true;
-
-      public a(asj $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      private boolean a(uc $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.j().a(this.f.j())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.f(), this.f.j().b(), this.f.j().d(), $$0.j().b(), $$0.j().d()}
-            );
-            return false;
-         } else {
-            return true;
+         for (int $$6 = 1; $$6 < $$1; $$6++) {
+            int $$7 = $$0 + $$6;
+            uh $$8 = this.b.get($$7);
+            if (!$$8.equals($$4)) {
+               String $$9 = this.a.substring($$5, $$7);
+               $$3.add($$2 ? arj.backward($$9, $$4, this.c) : arj.forward($$9, $$4));
+               $$4 = $$8;
+               $$5 = $$7;
+            }
          }
-      }
 
-      private boolean b(uc $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.f());
-            return false;
-         } else {
-            return this.a($$0);
+         if ($$5 < $$0 + $$1) {
+            String $$10 = this.a.substring($$5, $$0 + $$1);
+            $$3.add($$2 ? arj.backward($$10, $$4, this.c) : arj.forward($$10, $$4));
          }
-      }
 
-      @Override
-      public boolean updateAndValidate(uc $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return false;
-         } else {
-            this.f = $$0;
+         return $$2 ? Lists.reverse($$3) : $$3;
+      }
+   }
+
+   public static ui a(tp $$0) {
+      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   }
+
+   public static ui a(tp $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
+      StringBuilder $$3 = new StringBuilder();
+      List<uh> $$4 = Lists.newArrayList();
+      $$0.a(($$2x, $$3x) -> {
+         aso.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+            $$3.appendCodePoint($$4x);
+            int $$5 = Character.charCount($$4x);
+
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               $$4.add($$3xx);
+            }
+
             return true;
-         }
-      }
+         });
+         return Optional.empty();
+      }, uh.a);
+      return new ui($$2.apply($$3.toString()), $$4, $$1);
    }
 }

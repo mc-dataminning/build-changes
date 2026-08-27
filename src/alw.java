@@ -1,33 +1,15 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
-public interface alw {
-   alw a = new alw() {
-      @Override
-      public void a() {
-      }
+public class alw implements alg {
+   public static final alg.a a = new alg.a("join_world");
 
-      @Override
-      public void b() {
-      }
+   @Override
+   public void a(Consumer<vd<?>> $$0) {
+      $$0.accept(new wq());
+   }
 
-      @Override
-      public CompletableFuture<alj> a(String $$0) {
-         return CompletableFuture.completedFuture(alj.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<alj>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(alj::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<alj> a(String var1);
-
-   CompletableFuture<List<alj>> a(List<String> var1);
+   @Override
+   public alg.a a() {
+      return a;
+   }
 }

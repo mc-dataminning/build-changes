@@ -1,92 +1,27 @@
-import java.io.DataInput;
-import java.io.IOException;
+public interface ru {
+   void a(ro var1);
 
-public interface ru<T extends rs> {
-   T c(DataInput var1, rh var2) throws IOException;
+   void a(qu var1);
 
-   rp.b a(DataInput var1, rp var2, rh var3) throws IOException;
+   void a(rl var1);
 
-   default void b(DataInput $$0, rp $$1, rh $$2) throws IOException {
-      switch ($$1.b(this)) {
-         case a:
-            this.a($$0, $$1, $$2);
-         case c:
-         default:
-            break;
-         case b:
-            this.b($$0, $$2);
-      }
-   }
+   void a(rb var1);
 
-   void a(DataInput var1, int var2, rh var3) throws IOException;
+   void a(re var1);
 
-   void b(DataInput var1, rh var2) throws IOException;
+   void a(qz var1);
 
-   default boolean d() {
-      return false;
-   }
+   void a(qx var1);
 
-   String a();
+   void a(qt var1);
 
-   String b();
+   void a(ra var1);
 
-   static ru<ra> a(final int $$0) {
-      return new ru<ra>() {
-         private IOException c() {
-            return new IOException("Invalid tag id: " + $$0);
-         }
+   void a(rd var1);
 
-         public ra a(DataInput $$0x, rh $$1) throws IOException {
-            throw this.c();
-         }
+   void a(rc var1);
 
-         @Override
-         public rp.b a(DataInput $$0x, rp $$1, rh $$2) throws IOException {
-            throw this.c();
-         }
+   void a(qw var1);
 
-         @Override
-         public void a(DataInput $$0x, int $$1, rh $$2) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public void b(DataInput $$0x, rh $$1) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public String a() {
-            return "INVALID[" + $$0 + "]";
-         }
-
-         @Override
-         public String b() {
-            return "UNKNOWN_" + $$0;
-         }
-      };
-   }
-
-   public interface a<T extends rs> extends ru<T> {
-      @Override
-      default void b(DataInput $$0, rh $$1) throws IOException {
-         $$0.skipBytes(this.c());
-      }
-
-      @Override
-      default void a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         $$0.skipBytes(this.c() * $$1);
-      }
-
-      int c();
-   }
-
-   public interface b<T extends rs> extends ru<T> {
-      @Override
-      default void a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            this.b($$0, $$2);
-         }
-      }
-   }
+   void a(qy var1);
 }

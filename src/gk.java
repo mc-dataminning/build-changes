@@ -49,7 +49,7 @@ public class gk {
    private static <T extends ArgumentType<?>> void a(JsonObject $$0, T $$1) {
       gi.a<T> $$2 = gj.b($$1);
       $$0.addProperty("type", "argument");
-      $$0.addProperty("parser", jd.x.b($$2.a()).toString());
+      $$0.addProperty("parser", jb.x.b($$2.a()).toString());
       JsonObject $$3 = new JsonObject();
       a($$3, $$2);
       if ($$3.size() > 0) {

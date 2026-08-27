@@ -1,59 +1,77 @@
-public class fcn extends eym {
-   private static final tn a = tn.c("gui.abuseReport.title");
-   private static final tn b = tn.c("gui.abuseReport.message");
-   private static final tn c = tn.c("gui.abuseReport.type.chat");
-   private static final tn k = tn.c("gui.abuseReport.type.skin");
-   private static final tn l = tn.c("gui.abuseReport.type.name");
-   private static final int m = 6;
-   private final eym n;
-   private final fkb o;
-   private final fcr p;
-   private final ewf q = ewf.d().a(6);
+import java.util.UUID;
+import java.util.function.Supplier;
 
-   public fcn(eym $$0, fkb $$1, fcr $$2) {
-      super(a);
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
+public class fcn extends fcg<fka.a> {
+   private static final int s = 120;
+   private static final int t = 85;
+   private static final int u = 178;
+   private static final tl v = tl.c("gui.abuseReport.skin.title");
+   private final ewd w = ewd.d().a(8);
+   private eti x;
+   private esq y;
+   private esq z;
+
+   private fcn(eyk $$0, fjz $$1, fka.a $$2) {
+      super(v, $$0, $$1, $$2);
    }
 
-   @Override
-   public tn g() {
-      return tm.a(super.g(), b);
+   public fcn(eyk $$0, fjz $$1, UUID $$2, Supplier<gae> $$3) {
+      this($$0, $$1, new fka.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fcn(eyk $$0, fjz $$1, fka $$2) {
+      this($$0, $$1, new fka.a($$2, $$1.a().b()));
    }
 
    @Override
    protected void aH_() {
-      this.q.c().b();
-      this.q.a(new ety(this.e, this.i), this.q.b().e(6));
-      this.q.a(new etm(b, this.i).b(true), this.q.b().e(6));
-      ess $$0 = this.q.a(ess.a(c, $$0x -> this.f.a(new fcj(this.n, this.o, this.p.e()))).a());
-      if (!this.p.j()) {
-         $$0.i = false;
-         $$0.a(euc.a(tn.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.p.h()) {
-         $$0.i = false;
-         $$0.a(euc.a(tn.a("gui.socialInteractions.tooltip.report.no_messages", this.p.d())));
-      }
-
-      this.q.a(ess.a(k, $$0x -> this.f.a(new fcp(this.n, this.o, this.p.e(), this.p.f()))).a());
-      this.q.a(ess.a(l, $$0x -> this.f.a(new fcm(this.n, this.o, this.p.e(), this.p.d()))).a());
-      this.q.a(ewg.b(20));
-      this.q.a(ess.a(tm.e, $$0x -> this.az_()).a());
-      this.q.a($$1 -> {
-         esq var10000 = this.d($$1);
+      this.w.c().b();
+      this.w.a(new etw(this.e, this.i));
+      ewd $$0 = this.w.a(ewd.e().a(8));
+      $$0.c().e();
+      $$0.a(new etq(85, 120, this.f.aP(), this.q.e().a()));
+      ewd $$1 = $$0.a(ewd.d().a(8));
+      this.z = esq.a(c, $$0x -> this.f.a(new fcm(this, this.q.h(), $$0xx -> {
+            this.q.a($$0xx);
+            this.D();
+         }))).a(178).a();
+      $$1.a(evv.a(this.i, this.z, b));
+      this.x = this.a(178, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.D();
+      });
+      $$1.a(evv.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
+      ewd $$2 = this.w.a(ewd.e().a(8));
+      $$2.a(esq.a(tk.k, $$0x -> this.az_()).a(120).a());
+      this.y = $$2.a(esq.a(a, $$0x -> this.l()).a(120).a());
+      this.w.a($$1x -> {
+         eso var10000 = this.d($$1x);
       });
       this.b();
+      this.D();
    }
 
    @Override
    protected void b() {
-      this.q.a();
-      evz.a(this.q, this.s());
+      this.w.a();
+      evx.a(this.w, this.s());
+   }
+
+   private void D() {
+      fjx $$0 = this.q.h();
+      if ($$0 != null) {
+         this.z.b($$0.b());
+      } else {
+         this.z.b(c);
+      }
+
+      fjv.b $$1 = this.q.c();
+      this.y.i = $$1 == null;
+      this.y.a(x.a($$1, fjv.b::a));
    }
 
    @Override
-   public void az_() {
-      this.f.a(this.n);
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
    }
 }

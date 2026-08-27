@@ -1,112 +1,105 @@
+import com.google.common.collect.Comparators;
 import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import java.net.SocketAddress;
-import java.util.Locale;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 import org.slf4j.Logger;
 
-public class all extends ChannelInboundHandlerAdapter {
-   private static final Logger a = LogUtils.getLogger();
-   private final afn b;
+public class all {
+   private static final Logger c = LogUtils.getLogger();
+   public static final float a = 0.01F;
+   public static final float b = 64.0F;
+   private static final float d = 9.0F;
+   private static final int e = 10;
+   private final LongSet f = new LongOpenHashSet();
+   private final boolean g;
+   private float h = 9.0F;
+   private float i;
+   private int j;
+   private int k = 1;
 
-   public all(afn $$0) {
-      this.b = $$0;
+   public all(boolean $$0) {
+      this.g = $$0;
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      ByteBuf $$2 = (ByteBuf)$$1;
-      $$2.markReaderIndex();
-      boolean $$3 = true;
+   public void a(dhq $$0) {
+      this.f.add($$0.f().a());
+   }
 
-      try {
-         try {
-            if ($$2.readUnsignedByte() != 254) {
-               return;
-            }
+   public void a(akr $$0, cpc $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bv()) {
+         $$0.c.b(new ya($$1));
+      }
+   }
 
-            SocketAddress $$4 = $$0.channel().remoteAddress();
-            int $$5 = $$2.readableBytes();
-            if ($$5 == 0) {
-               a.debug("Ping: (<1.3.x) from {}", $$4);
-               String $$6 = a(this.b);
-               a($$0, a($$0.alloc(), $$6));
-            } else {
-               if ($$2.readUnsignedByte() != 1) {
-                  return;
-               }
+   public void a(akr $$0) {
+      if (this.j < this.k) {
+         float $$1 = Math.max(1.0F, this.h);
+         this.i = Math.min(this.i + this.h, $$1);
+         if (!(this.i < 1.0F)) {
+            if (!this.f.isEmpty()) {
+               akq $$2 = $$0.x();
+               aka $$3 = $$2.k().a;
+               List<dhq> $$4 = this.a($$3, $$0.dn());
+               if (!$$4.isEmpty()) {
+                  alp $$5 = $$0.c;
+                  this.j++;
+                  $$5.b(new xk());
 
-               if ($$2.isReadable()) {
-                  if (!a($$2)) {
-                     return;
+                  for (dhq $$6 : $$4) {
+                     a($$5, $$2, $$6);
                   }
 
-                  a.debug("Ping: (1.6) from {}", $$4);
-               } else {
-                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
+                  $$5.b(new xj($$4.size()));
+                  this.i = this.i - (float)$$4.size();
                }
-
-               String $$7 = b(this.b);
-               a($$0, a($$0.alloc(), $$7));
             }
-
-            $$2.release();
-            $$3 = false;
-         } catch (RuntimeException var11) {
-         }
-      } finally {
-         if ($$3) {
-            $$2.resetReaderIndex();
-            $$0.channel().pipeline().remove(this);
-            $$0.fireChannelRead($$1);
          }
       }
    }
 
-   private static boolean a(ByteBuf $$0) {
-      short $$1 = $$0.readUnsignedByte();
-      if ($$1 != 250) {
-         return false;
+   private static void a(alp $$0, akq $$1, dhq $$2) {
+      $$0.b(new yg($$2, $$1.x_(), null, null));
+      cpc $$3 = $$2.f();
+      abb.a($$1, $$3);
+   }
+
+   private List<dhq> a(aka $$0, cpc $$1) {
+      int $$2 = arw.d(this.i);
+      List<dhq> $$4;
+      if (!this.g && this.f.size() > $$2) {
+         $$4 = this.f
+            .stream()
+            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
+            .stream()
+            .mapToLong(Long::longValue)
+            .mapToObj($$0::d)
+            .filter(Objects::nonNull)
+            .toList();
       } else {
-         String $$2 = alk.a($$0);
-         if (!"MC|PingHost".equals($$2)) {
-            return false;
-         } else {
-            int $$3 = $$0.readUnsignedShort();
-            if ($$0.readableBytes() != $$3) {
-               return false;
-            } else {
-               short $$4 = $$0.readUnsignedByte();
-               if ($$4 < 73) {
-                  return false;
-               } else {
-                  String $$5 = alk.a($$0);
-                  int $$6 = $$0.readInt();
-                  return $$6 <= 65535;
-               }
-            }
-         }
+         $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
+
+      for (dhq $$5 : $$4) {
+         this.f.remove($$5.f().a());
+      }
+
+      return $$4;
    }
 
-   private static String a(afn $$0) {
-      return String.format(Locale.ROOT, "%s§%d§%d", $$0.aa(), $$0.H(), $$0.I());
+   public void a(float $$0) {
+      this.j--;
+      this.h = Double.isNaN((double)$$0) ? 0.01F : arw.a($$0, 0.01F, 64.0F);
+      if (this.j == 0) {
+         this.i = 1.0F;
+      }
+
+      this.k = 10;
    }
 
-   private static String b(afn $$0) {
-      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.G(), $$0.aa(), $$0.H(), $$0.I());
-   }
-
-   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
-   }
-
-   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
-      ByteBuf $$2 = $$0.buffer();
-      $$2.writeByte(255);
-      alk.a($$2, $$1);
-      return $$2;
+   public boolean a(long $$0) {
+      return this.f.contains($$0);
    }
 }

@@ -1,31 +1,56 @@
-public class acf implements vf<abe> {
-   private static final int a = 2;
-   private final boolean b;
+public class acf implements vd<abc> {
+   private final int a;
+   private final acf.a b;
+   private final int c;
 
-   public acf(cbt $$0) {
-      this.b = $$0.b;
+   public acf(biq $$0, acf.a $$1) {
+      this($$0, $$1, 0);
    }
 
-   public acf(sq $$0) {
-      byte $$1 = $$0.readByte();
-      this.b = ($$1 & 2) != 0;
+   public acf(biq $$0, acf.a $$1, int $$2) {
+      this.a = $$0.ah();
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public acf(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.b(acf.a.class);
+      this.c = $$0.m();
    }
 
    @Override
-   public void a(sq $$0) {
-      byte $$1 = 0;
-      if (this.b) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public int a() {
+      return this.a;
+   }
+
+   public acf.a d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

@@ -1,71 +1,72 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record tt(List<ty> d) {
-   public static final Codec<tt> a = ty.a.listOf().xmap(tt::new, tt::a);
-   public static tt b = new tt(List.of());
-   public static final int c = 20;
+public class tt {
+   private final int a;
+   private final ObjectList<tu> b = new ObjectArrayList();
+   @Nullable
+   private tw c;
 
-   public void a(asi.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
+   public tt(int $$0) {
+      this.a = $$0;
 
-      for (ty $$1 : this.d) {
-         $$0.update($$1.b());
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
       }
    }
 
-   public tt.a a(tz $$0) {
-      return new tt.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   public void a(tw $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new tu($$0, true));
+         this.c = $$0;
+      }
    }
 
-   public List<ty> a() {
-      return this.d;
+   public int a() {
+      return this.b.size();
    }
 
-   public static record a(List<ty.a> b) {
-      public static final tt.a a = new tt.a(List.of());
-
-      public a(sq $$0) {
-         this($$0.a(sq.a(ArrayList::new, 20), ty.a::a));
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public void a(sq $$0) {
-         $$0.a(this.b, ty.a::a);
-      }
+   public Optional<tr> a(tr.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<tw> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               tu $$4 = (tu)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
 
-      public Optional<tt> a(tz $$0) {
-         List<ty> $$1 = new ArrayList<>(this.b.size());
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
 
-         for (ty.a $$2 : this.b) {
-            Optional<ty> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
+                  this.b.set($$2, null);
+               }
             }
 
-            $$1.add($$3.get());
+            return Optional.of(new tr($$1));
          }
-
-         return Optional.of(new tt($$1));
-      }
-
-      public List<ty.a> a() {
-         return this.b;
-      }
-   }
-
-   public static record b(int a, BitSet b) {
-      public b(sq $$0) {
-         this($$0.m(), $$0.e(20));
-      }
-
-      public void a(sq $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
       }
    }
 }

@@ -1,78 +1,92 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
 
-public record dvz(List<dvo> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final aey c = new aey("jigsaw");
-   private static final Map<aey, aey> d = ImmutableMap.builder()
-      .put(new aey("nvi"), c)
-      .put(new aey("pcp"), c)
-      .put(new aey("bastionremnant"), c)
-      .put(new aey("runtime"), c)
-      .build();
+public interface dvz {
+   dvz a = a(dxe.a::new, "MSCorridor");
+   dvz b = a(dxe.b::new, "MSCrossing");
+   dvz c = a(dxe.d::new, "MSRoom");
+   dvz d = a(dxe.e::new, "MSStairs");
+   dvz e = a(dxg.a::new, "NeBCr");
+   dvz f = a(dxg.b::new, "NeBEF");
+   dvz g = a(dxg.c::new, "NeBS");
+   dvz h = a(dxg.d::new, "NeCCS");
+   dvz i = a(dxg.e::new, "NeCTB");
+   dvz j = a(dxg.f::new, "NeCE");
+   dvz k = a(dxg.g::new, "NeSCSC");
+   dvz l = a(dxg.h::new, "NeSCLT");
+   dvz m = a(dxg.i::new, "NeSC");
+   dvz n = a(dxg.j::new, "NeSCRT");
+   dvz o = a(dxg.k::new, "NeCSR");
+   dvz p = a(dxg.l::new, "NeMT");
+   dvz q = a(dxg.o::new, "NeRC");
+   dvz r = a(dxg.p::new, "NeSR");
+   dvz s = a(dxg.q::new, "NeStart");
+   dvz t = a(dxs.a::new, "SHCC");
+   dvz u = a(dxs.b::new, "SHFC");
+   dvz v = a(dxs.c::new, "SH5C");
+   dvz w = a(dxs.d::new, "SHLT");
+   dvz x = a(dxs.e::new, "SHLi");
+   dvz y = a(dxs.g::new, "SHPR");
+   dvz z = a(dxs.h::new, "SHPH");
+   dvz A = a(dxs.i::new, "SHRT");
+   dvz B = a(dxs.j::new, "SHRC");
+   dvz C = a(dxs.l::new, "SHSD");
+   dvz D = a(dxs.m::new, "SHStart");
+   dvz E = a(dxs.n::new, "SHS");
+   dvz F = a(dxs.o::new, "SHSSD");
+   dvz G = a(dxc::new, "TeJP");
+   dvz H = a(dxm.a::a, "ORP");
+   dvz I = a(dwz.a::new, "Iglu");
+   dvz J = a(dxo::new, "RUPO");
+   dvz K = a(dxu::new, "TeSH");
+   dvz L = a(dwv::new, "TeDP");
+   dvz M = a(dxk.h::new, "OMB");
+   dvz N = a(dxk.j::new, "OMCR");
+   dvz O = a(dxk.k::new, "OMDXR");
+   dvz P = a(dxk.l::new, "OMDXYR");
+   dvz Q = a(dxk.m::new, "OMDYR");
+   dvz R = a(dxk.n::new, "OMDYZR");
+   dvz S = a(dxk.o::new, "OMDZR");
+   dvz T = a(dxk.p::new, "OMEntry");
+   dvz U = a(dxk.q::new, "OMPenthouse");
+   dvz V = a(dxk.s::new, "OMSimple");
+   dvz W = a(dxk.t::new, "OMSimpleT");
+   dvz X = a(dxk.u::new, "OMWR");
+   dvz Y = a(dwx.a::new, "ECP");
+   dvz Z = a(dxw.i::new, "WMP");
+   dvz aa = a(dwt.a::new, "BTP");
+   dvz ab = a(dxq.a::new, "Shipwreck");
+   dvz ac = a(dxi.a::new, "NeFos");
+   dvz ad = a(dve::new, "jigsaw");
 
-   public dvz(List<dvo> a) {
-      this.a = List.copyOf(a);
+   dvm load(dvy var1, qw var2);
+
+   private static dvz a(dvz $$0, String $$1) {
+      return hq.a(jb.T, $$1.toLowerCase(Locale.ROOT), $$0);
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   private static dvz a(dvz.a $$0, String $$1) {
+      return a((dvz)$$0, $$1);
    }
 
-   public boolean a(gw $$0) {
-      for (dvo $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
+   private static dvz a(dvz.b $$0, String $$1) {
+      return a((dvz)$$0, $$1);
+   }
+
+   public interface a extends dvz {
+      dvm load(qw var1);
+
+      @Override
+      default dvm load(dvy $$0, qw $$1) {
+         return this.load($$1);
       }
-
-      return false;
    }
 
-   public rs a(dwa $$0) {
-      re $$1 = new re();
+   public interface b extends dvz {
+      dvm load(dzc var1, qw var2);
 
-      for (dvo $$2 : this.a) {
-         $$1.add($$2.a($$0));
+      @Override
+      default dvm load(dvy $$0, qw $$1) {
+         return this.load($$0.c(), $$1);
       }
-
-      return $$1;
-   }
-
-   public static dvz a(re $$0, dwa $$1) {
-      List<dvo> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         qy $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         aey $$6 = new aey($$5);
-         aey $$7 = d.getOrDefault($$6, $$6);
-         dwb $$8 = jd.T.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               dvo $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new dvz($$2);
-   }
-
-   public dvc b() {
-      return dvo.a(this.a.stream());
-   }
-
-   public List<dvo> c() {
-      return this.a;
    }
 }

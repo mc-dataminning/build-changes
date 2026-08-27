@@ -1,34 +1,103 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class cps extends ebt {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public enum cps implements asp {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public static ebt.a<cps> a() {
-      return new ebt.a<>(cps::new, cps::b, atc.i);
+   public static final cps e = a;
+   public static final asp.a<cps> f = asp.a(cps::values);
+   private static final IntFunction<cps> g = aqr.a(cps::a, values(), aqr.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final tl k;
+   private final tl l;
+
+   private cps(int $$0, String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = tl.c("selectWorld.gameMode." + $$1);
+      this.l = tl.c("gameMode." + $$1);
    }
 
-   private cps(LongSet $$0) {
-      this.c = $$0;
+   public int a() {
+      return this.i;
    }
 
-   public cps() {
-      this(new LongOpenHashSet());
-   }
-
-   public static cps b(qy $$0) {
-      return new cps(new LongOpenHashSet($$0.o("Forced")));
+   public String b() {
+      return this.j;
    }
 
    @Override
-   public qy a(qy $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public String c() {
+      return this.j;
    }
 
-   public LongSet b() {
-      return this.c;
+   public tl d() {
+      return this.l;
+   }
+
+   public tl e() {
+      return this.k;
+   }
+
+   public void a(cbr $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
+      }
+
+      $$0.e = !this.f();
+   }
+
+   public boolean f() {
+      return this == c || this == d;
+   }
+
+   public boolean g() {
+      return this == b;
+   }
+
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static cps a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static cps a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static cps a(String $$0, @Nullable cps $$1) {
+      cps $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable cps $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static cps b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

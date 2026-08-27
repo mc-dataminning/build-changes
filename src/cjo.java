@@ -1,386 +1,89 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.LinkedHashMultiset;
-import com.google.common.collect.Multiset;
-import com.google.common.collect.Multisets;
-import java.util.List;
-import javax.annotation.Nullable;
+public class cjo extends cja {
+   private static final ih a = new ig() {
+      private final ig c = new ig();
 
-public class cjo extends chm {
-   public static final int a = 128;
-   public static final int b = 128;
-   private static final int e = -12173266;
-   private static final String f = "map";
-   public static final String c = "map_scale_direction";
-   public static final String d = "map_to_lock";
-
-   public cjo(cjc.a $$0) {
-      super($$0);
-   }
-
-   public static cjh a(cpx $$0, int $$1, int $$2, byte $$3, boolean $$4, boolean $$5) {
-      cjh $$6 = new cjh(cjk.rf);
-      a($$6, $$0, $$1, $$2, $$3, $$4, $$5, $$0.ac());
-      return $$6;
-   }
-
-   @Nullable
-   public static eby a(@Nullable Integer $$0, cpx $$1) {
-      return $$0 == null ? null : $$1.a(a($$0));
-   }
-
-   @Nullable
-   public static eby a(cjh $$0, cpx $$1) {
-      Integer $$2 = d($$0);
-      return a($$2, $$1);
-   }
-
-   @Nullable
-   public static Integer d(cjh $$0) {
-      qy $$1 = $$0.v();
-      return $$1 != null && $$1.b("map", 99) ? $$1.h("map") : null;
-   }
-
-   private static int a(cpx $$0, int $$1, int $$2, int $$3, boolean $$4, boolean $$5, aex<cpx> $$6) {
-      eby $$7 = eby.a((double)$$1, (double)$$2, (byte)$$3, $$4, $$5, $$6);
-      int $$8 = $$0.t();
-      $$0.a(a($$8), $$7);
-      return $$8;
-   }
-
-   private static void a(cjh $$0, int $$1) {
-      $$0.w().a("map", $$1);
-   }
-
-   private static void a(cjh $$0, cpx $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, aex<cpx> $$7) {
-      int $$8 = a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      a($$0, $$8);
-   }
-
-   public static String a(int $$0) {
-      return "map_" + $$0;
-   }
-
-   public void a(cpx $$0, bis $$1, eby $$2) {
-      if ($$0.ac() == $$2.e && $$1 instanceof cbw) {
-         int $$3 = 1 << $$2.f;
-         int $$4 = $$2.c;
-         int $$5 = $$2.d;
-         int $$6 = ary.a($$1.dq() - (double)$$4) / $$3 + 64;
-         int $$7 = ary.a($$1.dw() - (double)$$5) / $$3 + 64;
-         int $$8 = 128 / $$3;
-         if ($$0.C_().h()) {
-            $$8 /= 2;
-         }
-
-         eby.a $$9 = $$2.a((cbw)$$1);
-         $$9.b++;
-         gw.a $$10 = new gw.a();
-         gw.a $$11 = new gw.a();
-         boolean $$12 = false;
-
-         for (int $$13 = $$6 - $$8 + 1; $$13 < $$6 + $$8; $$13++) {
-            if (($$13 & 15) == ($$9.b & 15) || $$12) {
-               $$12 = false;
-               double $$14 = 0.0;
-
-               for (int $$15 = $$7 - $$8 - 1; $$15 < $$7 + $$8; $$15++) {
-                  if ($$13 >= 0 && $$15 >= -1 && $$13 < 128 && $$15 < 128) {
-                     int $$16 = ary.h($$13 - $$6) + ary.h($$15 - $$7);
-                     boolean $$17 = $$16 > ($$8 - 2) * ($$8 - 2);
-                     int $$18 = ($$4 / $$3 + $$13 - 64) * $$3;
-                     int $$19 = ($$5 / $$3 + $$15 - 64) * $$3;
-                     Multiset<eas> $$20 = LinkedHashMultiset.create();
-                     dhs $$21 = $$0.d(hz.a($$18), hz.a($$19));
-                     if (!$$21.C()) {
-                        int $$22 = 0;
-                        double $$23 = 0.0;
-                        if ($$0.C_().h()) {
-                           int $$24 = $$18 + $$19 * 231871;
-                           $$24 = $$24 * $$24 * 31287121 + $$24 * 11;
-                           if (($$24 >> 20 & 1) == 0) {
-                              $$20.add(csy.j.n().d($$0, gw.b), 10);
-                           } else {
-                              $$20.add(csy.b.n().d($$0, gw.b), 100);
-                           }
-
-                           $$23 = 100.0;
-                        } else {
-                           for (int $$25 = 0; $$25 < $$3; $$25++) {
-                              for (int $$26 = 0; $$26 < $$3; $$26++) {
-                                 $$10.d($$18 + $$25, 0, $$19 + $$26);
-                                 int $$27 = $$21.a(dku.a.b, $$10.u(), $$10.w()) + 1;
-                                 dfl $$31;
-                                 if ($$27 <= $$0.H_() + 1) {
-                                    $$31 = csy.F.n();
-                                 } else {
-                                    do {
-                                       $$10.q(--$$27);
-                                       $$31 = $$21.a_($$10);
-                                    } while ($$31.d($$0, $$10) == eas.a && $$27 > $$0.H_());
-
-                                    if ($$27 > $$0.H_() && !$$31.u().c()) {
-                                       int $$29 = $$27 - 1;
-                                       $$11.g($$10);
-
-                                       dfl $$30;
-                                       do {
-                                          $$11.q($$29--);
-                                          $$30 = $$21.a_($$11);
-                                          $$22++;
-                                       } while ($$29 > $$0.H_() && !$$30.u().c());
-
-                                       $$31 = this.a($$0, $$31, $$10);
-                                    }
-                                 }
-
-                                 $$2.a($$0, $$10.u(), $$10.w());
-                                 $$23 += (double)$$27 / (double)($$3 * $$3);
-                                 $$20.add($$31.d($$0, $$10));
-                              }
-                           }
-                        }
-
-                        $$22 /= $$3 * $$3;
-                        eas $$32 = (eas)Iterables.getFirst(Multisets.copyHighestCountFirst($$20), eas.a);
-                        eas.a $$34;
-                        if ($$32 == eas.m) {
-                           double $$33 = (double)$$22 * 0.1 + (double)($$13 + $$15 & 1) * 0.2;
-                           if ($$33 < 0.5) {
-                              $$34 = eas.a.c;
-                           } else if ($$33 > 0.9) {
-                              $$34 = eas.a.a;
-                           } else {
-                              $$34 = eas.a.b;
-                           }
-                        } else {
-                           double $$37 = ($$23 - $$14) * 4.0 / (double)($$3 + 4) + ((double)($$13 + $$15 & 1) - 0.5) * 0.4;
-                           if ($$37 > 0.6) {
-                              $$34 = eas.a.c;
-                           } else if ($$37 < -0.6) {
-                              $$34 = eas.a.a;
-                           } else {
-                              $$34 = eas.a.b;
-                           }
-                        }
-
-                        $$14 = $$23;
-                        if ($$15 >= 0 && $$16 < $$8 * $$8 && (!$$17 || ($$13 + $$15 & 1) != 0)) {
-                           $$12 |= $$2.a($$13, $$15, $$32.b($$34));
-                        }
-                     }
-                  }
-               }
+      @Override
+      public cjf a(id $$0, cjf $$1) {
+         ha $$2 = $$0.d().c(cuw.a);
+         cpv $$3 = $$0.b();
+         ehn $$4 = $$0.a();
+         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
+         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
+         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
+         gw $$8 = $$0.c().a($$2);
+         dfj $$9 = $$3.a_($$8);
+         dgn $$10 = $$9.b() instanceof csl ? $$9.c(((csl)$$9.b()).b()) : dgn.a;
+         double $$11;
+         if ($$9.a(aps.N)) {
+            if ($$10.b()) {
+               $$11 = 0.6;
+            } else {
+               $$11 = 0.1;
             }
-         }
-      }
-   }
-
-   private dfl a(cpx $$0, dfl $$1, gw $$2) {
-      eao $$3 = $$1.u();
-      return !$$3.c() && !$$1.d($$0, $$2, hc.b) ? $$3.g() : $$1;
-   }
-
-   private static boolean a(boolean[] $$0, int $$1, int $$2) {
-      return $$0[$$2 * 128 + $$1];
-   }
-
-   public static void a(aks $$0, cjh $$1) {
-      eby $$2 = a($$1, $$0);
-      if ($$2 != null) {
-         if ($$0.ac() == $$2.e) {
-            int $$3 = 1 << $$2.f;
-            int $$4 = $$2.c;
-            int $$5 = $$2.d;
-            boolean[] $$6 = new boolean[16384];
-            int $$7 = $$4 / $$3 - 64;
-            int $$8 = $$5 / $$3 - 64;
-            gw.a $$9 = new gw.a();
-
-            for (int $$10 = 0; $$10 < 128; $$10++) {
-               for (int $$11 = 0; $$11 < 128; $$11++) {
-                  hg<cqv> $$12 = $$0.s($$9.d(($$7 + $$11) * $$3, 0, ($$8 + $$10) * $$3));
-                  $$6[$$10 * 128 + $$11] = $$12.a(apt.aa);
-               }
-            }
-
-            for (int $$13 = 1; $$13 < 127; $$13++) {
-               for (int $$14 = 1; $$14 < 127; $$14++) {
-                  int $$15 = 0;
-
-                  for (int $$16 = -1; $$16 < 2; $$16++) {
-                     for (int $$17 = -1; $$17 < 2; $$17++) {
-                        if (($$16 != 0 || $$17 != 0) && a($$6, $$13 + $$16, $$14 + $$17)) {
-                           $$15++;
-                        }
-                     }
-                  }
-
-                  eas.a $$18 = eas.a.d;
-                  eas $$19 = eas.a;
-                  if (a($$6, $$13, $$14)) {
-                     $$19 = eas.p;
-                     if ($$15 > 7 && $$14 % 2 == 0) {
-                        switch (($$13 + (int)(ary.a((float)$$14 + 0.0F) * 7.0F)) / 8 % 5) {
-                           case 0:
-                           case 4:
-                              $$18 = eas.a.a;
-                              break;
-                           case 1:
-                           case 3:
-                              $$18 = eas.a.b;
-                              break;
-                           case 2:
-                              $$18 = eas.a.c;
-                        }
-                     } else if ($$15 > 7) {
-                        $$19 = eas.a;
-                     } else if ($$15 > 5) {
-                        $$18 = eas.a.b;
-                     } else if ($$15 > 3) {
-                        $$18 = eas.a.a;
-                     } else if ($$15 > 1) {
-                        $$18 = eas.a.a;
-                     }
-                  } else if ($$15 > 0) {
-                     $$19 = eas.A;
-                     if ($$15 > 3) {
-                        $$18 = eas.a.b;
-                     } else {
-                        $$18 = eas.a.d;
-                     }
-                  }
-
-                  if ($$19 != eas.a) {
-                     $$2.b($$13, $$14, $$19.b($$18));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public void a(cjh $$0, cpx $$1, bis $$2, int $$3, boolean $$4) {
-      if (!$$1.B) {
-         eby $$5 = a($$0, $$1);
-         if ($$5 != null) {
-            if ($$2 instanceof cbw $$6) {
-               $$5.a($$6, $$0);
-            }
-
-            if (!$$5.h && ($$4 || $$2 instanceof cbw && ((cbw)$$2).eT() == $$0)) {
-               this.a($$1, $$2, $$5);
-            }
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public vf<?> a(cjh $$0, cpx $$1, cbw $$2) {
-      Integer $$3 = d($$0);
-      eby $$4 = a($$3, $$1);
-      return $$4 != null ? $$4.a($$3, $$2) : null;
-   }
-
-   @Override
-   public void b(cjh $$0, cpx $$1, cbw $$2) {
-      qy $$3 = $$0.v();
-      if ($$3 != null && $$3.b("map_scale_direction", 99)) {
-         a($$0, $$1, $$3.h("map_scale_direction"));
-         $$3.r("map_scale_direction");
-      } else if ($$3 != null && $$3.b("map_to_lock", 1) && $$3.q("map_to_lock")) {
-         a($$1, $$0);
-         $$3.r("map_to_lock");
-      }
-   }
-
-   private static void a(cjh $$0, cpx $$1, int $$2) {
-      eby $$3 = a($$0, $$1);
-      if ($$3 != null) {
-         int $$4 = $$1.t();
-         $$1.a(a($$4), $$3.a($$2));
-         a($$0, $$4);
-      }
-   }
-
-   public static void a(cpx $$0, cjh $$1) {
-      eby $$2 = a($$1, $$0);
-      if ($$2 != null) {
-         int $$3 = $$0.t();
-         String $$4 = a($$3);
-         eby $$5 = $$2.b();
-         $$0.a($$4, $$5);
-         a($$1, $$3);
-      }
-   }
-
-   @Override
-   public void a(cjh $$0, @Nullable cpx $$1, List<tn> $$2, cky $$3) {
-      Integer $$4 = d($$0);
-      eby $$5 = $$1 == null ? null : a($$4, $$1);
-      qy $$6 = $$0.v();
-      boolean $$7;
-      byte $$8;
-      if ($$6 != null) {
-         $$7 = $$6.q("map_to_lock");
-         $$8 = $$6.f("map_scale_direction");
-      } else {
-         $$7 = false;
-         $$8 = 0;
-      }
-
-      if ($$5 != null && ($$5.h || $$7)) {
-         $$2.add(tn.a("filled_map.locked", $$4).a(n.h));
-      }
-
-      if ($$3.a()) {
-         if ($$5 != null) {
-            if (!$$7 && $$8 == 0) {
-               $$2.add(c($$4));
-            }
-
-            int $$11 = Math.min($$5.f + $$8, 4);
-            $$2.add(tn.a("filled_map.scale", 1 << $$11).a(n.h));
-            $$2.add(tn.a("filled_map.level", $$11, 4).a(n.h));
          } else {
-            $$2.add(tn.c("filled_map.unknown").a(n.h));
-         }
-      }
-   }
+            if (!$$9.i() || !$$3.a_($$8.d()).a(aps.N)) {
+               return this.c.dispense($$0, $$1);
+            }
 
-   private static tn c(int $$0) {
-      return tn.a("filled_map.id", $$0).a(n.h);
-   }
-
-   public static tn k(cjh $$0) {
-      return c(d($$0));
-   }
-
-   public static int o(cjh $$0) {
-      qy $$1 = $$0.b("display");
-      if ($$1 != null && $$1.b("MapColor", 99)) {
-         int $$2 = $$1.h("MapColor");
-         return 0xFF000000 | $$2 & 16777215;
-      } else {
-         return -12173266;
-      }
-   }
-
-   @Override
-   public bha a(clr $$0) {
-      dfl $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(apu.G)) {
-         if (!$$0.q().B) {
-            eby $$2 = a($$0.n(), $$0.q());
-            if ($$2 != null && !$$2.a($$0.q(), $$0.a())) {
-               return bha.e;
+            dfj $$13 = $$3.a_($$8.d());
+            dgn $$14 = $$13.b() instanceof csl ? $$13.c(((csl)$$13.b()).b()) : dgn.a;
+            if ($$2 != ha.a && $$14.b()) {
+               $$11 = -0.4;
+            } else {
+               $$11 = -0.9;
             }
          }
 
-         return bha.a($$0.q().B);
+         cdl $$18 = cdl.a($$3, $$5, $$6 + $$11, $$7, ((cjo)$$1.d()).b);
+         if ($$1.A()) {
+            $$18.b($$1.y());
+         }
+
+         $$3.b($$18);
+         $$1.h(1);
+         return $$1;
+      }
+
+      @Override
+      protected void a(id $$0) {
+         $$0.b().c(1000, $$0.c(), 0);
+      }
+   };
+   final cdl.a b;
+
+   public cjo(cdl.a $$0, cja.a $$1) {
+      super($$1);
+      this.b = $$0;
+      cuw.a(this, a);
+   }
+
+   @Override
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfj $$3 = $$1.a_($$2);
+      if (!$$3.a(aps.N)) {
+         return bgy.e;
       } else {
-         return super.a($$0);
+         cjf $$4 = $$0.n();
+         if (!$$1.B) {
+            dgn $$5 = $$3.b() instanceof csl ? $$3.c(((csl)$$3.b()).b()) : dgn.a;
+            double $$6 = 0.0;
+            if ($$5.b()) {
+               $$6 = 0.5;
+            }
+
+            cdl $$7 = cdl.a($$1, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5, this.b);
+            if ($$4.A()) {
+               $$7.b($$4.y());
+            }
+
+            $$1.b($$7);
+            $$1.a(djt.t, $$2, djt.a.a($$0.o(), $$1.a_($$2.d())));
+         }
+
+         $$4.h(1);
+         return bgy.a($$1.B);
       }
    }
 }

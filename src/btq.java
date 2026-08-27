@@ -1,28 +1,35 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
-public class btq extends btn<bji> {
+public class btq extends bte<cay> {
    @Override
-   public Set<bsj<?>> a() {
-      return ImmutableSet.of(bsj.i);
+   public Set<bsh<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bsh.B)));
+   }
+
+   protected void a(akq $$0, cay $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ag() == biu.bt)
+         .or(() -> a($$1, $$0xx -> $$0xx.ag() != biu.bt))
+         .ifPresentOrElse($$1x -> $$1.dN().a(bsh.B, $$1x), () -> $$1.dN().b(bsh.B));
+   }
+
+   private static Optional<bjg> a(cay $$0, Predicate<bjg> $$1) {
+      return $$0.dN().c(bsh.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
    }
 
    @Override
-   protected void a(aks $$0, bji $$1) {
-      $$1.dN().a(bsj.i, this.a($$1));
+   protected int b() {
+      return 24;
    }
 
-   private List<bji> a(bji $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
-
-   private boolean b(bji $$0) {
-      return $$0.ag() == biw.bf && $$0.m_();
-   }
-
-   private bsl c(bji $$0) {
-      return $$0.dN().c(bsj.h).orElse(bsl.a());
+   @Override
+   protected int c() {
+      return 24;
    }
 }

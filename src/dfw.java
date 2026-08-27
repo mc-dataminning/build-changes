@@ -1,16 +1,20 @@
-public enum dfw implements asr {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+public enum dfw implements asp {
+   a("head"),
+   b("foot");
 
-   private final String d;
+   private final String c;
 
    private dfw(String $$0) {
-      this.d = $$0;
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

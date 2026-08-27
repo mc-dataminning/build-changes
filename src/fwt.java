@@ -1,16 +1,17 @@
-public class fwt extends fxr<buw, feq<buw>> {
-   private static final aey a = new aey("textures/entity/cat/cat_collar.png");
-   private final feq<buw> b;
+public class fwt<T extends bjg, M extends ffd<T>> extends fxp<T, M> {
+   private final foa a;
 
-   public fwt(fve<buw, feq<buw>> $$0, fia $$1) {
+   public fwt(fvc<T, M> $$0, foa $$1) {
       super($$0);
-      this.b = new feq<>($$1.a(fid.o));
+      this.a = $$1;
    }
 
-   public void a(elr $$0, fog $$1, int $$2, buw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s()) {
-         float[] $$10 = $$3.gn().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
-      }
+   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      cjf $$10 = $$3.c(biv.a);
+      this.a.a($$3, $$10, cjc.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

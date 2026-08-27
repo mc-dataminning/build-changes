@@ -1,39 +1,40 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class aho {
-   public static void a(CommandDispatcher<dt> $$0) {
-      LiteralCommandNode<dt> $$1 = $$0.register(
-         (LiteralArgumentBuilder)du.a("msg").then(du.a("targets", ee.d()).then(du.a("message", ei.a()).executes($$0x -> {
-            Collection<akt> $$1x = ee.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               ei.a($$0x, "message", $$2 -> a((dt)$$0x.getSource(), $$1x, $$2));
-            }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.pardon.failed"));
 
-            return $$1x.size();
-         })))
+   public static void a(CommandDispatcher<dt> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("pardon").requires($$0x -> $$0x.c(3)))
+            .then(
+               du.a("targets", eg.a())
+                  .suggests(($$0x, $$1) -> dw.a(((dt)$$0x.getSource()).l().ac().f().a(), $$1))
+                  .executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets")))
+            )
       );
-      $$0.register((LiteralArgumentBuilder)du.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)du.a("w").redirect($$1));
    }
 
-   private static void a(dt $$0, Collection<akt> $$1, uc $$2) {
-      tj.a $$3 = tj.a(tj.e, $$0);
-      ub $$4 = ub.a($$2);
-      boolean $$5 = false;
+   private static int a(dt $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aom $$2 = $$0.l().ac().f();
+      int $$3 = 0;
 
-      for (akt $$6 : $$1) {
-         tj.a $$7 = tj.a(tj.f, $$0).c($$6.N_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.i();
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            $$2.c($$4);
+            $$3++;
+            $$0.a(() -> tl.a("commands.pardon.success", tl.b($$4.getName())), true);
+         }
       }
 
-      if ($$5) {
-         $$0.a(aoi.f);
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         return $$3;
       }
    }
 }

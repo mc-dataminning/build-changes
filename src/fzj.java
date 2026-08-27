@@ -1,44 +1,75 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface fzj {
-   Logger a = LogUtils.getLogger();
+public class fzj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aep b = new aep("atlases", ".json");
+   private final List<fzi> c;
 
-   static fzj create(Collection<amv<?>> $$0) {
-      return ($$1, $$2) -> {
-         anx $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         eks $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = eks.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         gar $$11 = $$3.a(gar.a).orElse(gar.e);
-         gat $$12 = $$11.a($$7.a(), $$7.b());
-         if (ary.c($$7.a(), $$12.a()) && ary.c($$7.b(), $$12.b())) {
-            return new fza($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+   private fzj(List<fzi> $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   fza loadSprite(aey var1, ant var2);
+   public List<Function<fzh, fyy>> a(ant $$0) {
+      final Map<aew, fzi.b> $$1 = new HashMap<>();
+      fzi.a $$2 = new fzi.a() {
+         @Override
+         public void a(aew $$0, fzi.b $$1x) {
+            fzi.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
+         }
+
+         @Override
+         public void a(Predicate<aew> $$0) {
+            Iterator<Entry<aew, fzi.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<aew, fzi.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<fzh, fyy>> $$3 = ImmutableList.builder();
+      $$3.add((Function<fzh, fyy>)$$0x -> fyu.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static fzj a(ant $$0, aew $$1) {
+      aew $$2 = b.a($$1);
+      List<fzi> $$3 = new ArrayList<>();
+
+      for (anr $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends fzi>)fzl.h.parse($$6).getOrThrow(false, a::error));
+         } catch (Exception var11) {
+            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
+      }
+
+      return new fzj($$3);
+   }
 }

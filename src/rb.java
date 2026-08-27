@@ -2,22 +2,21 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class rb extends rm {
-   private static final int c = 12;
-   public static final rb a = new rb(0.0F);
-   public static final ru<rb> b = new ru.a<rb>() {
-      public rb a(DataInput $$0, rh $$1) throws IOException {
+public class rb extends rk {
+   private static final int b = 12;
+   public static final rs<rb> a = new rs.a<rb>() {
+      public rb a(DataInput $$0, rf $$1) throws IOException {
          return rb.a(d($$0, $$1));
       }
 
       @Override
-      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+      public rn.b a(DataInput $$0, rn $$1, rf $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static float d(DataInput $$0, rh $$1) throws IOException {
+      private static int d(DataInput $$0, rf $$1) throws IOException {
          $$1.b(12L);
-         return $$0.readFloat();
+         return $$0.readInt();
       }
 
       @Override
@@ -27,12 +26,12 @@ public class rb extends rm {
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "INT";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_Int";
       }
 
       @Override
@@ -40,19 +39,19 @@ public class rb extends rm {
          return true;
       }
    };
-   private final float w;
+   private final int c;
 
-   private rb(float $$0) {
-      this.w = $$0;
+   rb(int $$0) {
+      this.c = $$0;
    }
 
-   public static rb a(float $$0) {
-      return $$0 == 0.0F ? a : new rb($$0);
+   public static rb a(int $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? rb.a.a[$$0 - -128] : new rb($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+      $$0.writeInt(this.c);
    }
 
    @Override
@@ -62,12 +61,12 @@ public class rb extends rm {
 
    @Override
    public byte b() {
-      return 5;
+      return 3;
    }
 
    @Override
-   public ru<rb> c() {
-      return b;
+   public rs<rb> c() {
+      return a;
    }
 
    public rb e() {
@@ -76,56 +75,71 @@ public class rb extends rm {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof rb && this.w == ((rb)$$0).w;
+      return this == $$0 ? true : $$0 instanceof rb && this.c == ((rb)$$0).c;
    }
 
    @Override
    public int hashCode() {
-      return Float.floatToIntBits(this.w);
+      return this.c;
    }
 
    @Override
-   public void a(rw $$0) {
+   public void a(ru $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.w;
+      return (long)this.c;
    }
 
    @Override
    public int g() {
-      return ary.d(this.w);
+      return this.c;
    }
 
    @Override
    public short h() {
-      return (short)(ary.d(this.w) & 65535);
+      return (short)(this.c & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(ary.d(this.w) & 0xFF);
+      return (byte)(this.c & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.w;
+      return (double)this.c;
    }
 
    @Override
    public float k() {
-      return this.w;
+      return (float)this.c;
    }
 
    @Override
    public Number l() {
-      return this.w;
+      return this.c;
    }
 
    @Override
-   public rp.b a(rp $$0) {
-      return $$0.a(this.w);
+   public rn.b a(rn $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final rb[] a = new rb[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new rb(-128 + $$0);
+         }
+      }
    }
 }

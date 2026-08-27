@@ -1,66 +1,49 @@
-public class fku extends fmw {
-   private final float a;
-   private final float b;
-
-   fku(fiz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cjh $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public class fku extends fmu {
+   fku(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public fma b() {
-      return fma.a;
-   }
-
-   protected fku(fiz $$0, double $$1, double $$2, double $$3, cjh $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(eqx.O().aq().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements flz<it> {
-      public flw a(it $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fku($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k += 0.002;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.85F;
+         this.k *= 0.85F;
+         this.l *= 0.85F;
+         if (!this.c.b_(gw.a(this.g, this.h, this.i)).a(apx.a)) {
+            this.k();
+         }
       }
    }
 
-   public static class b implements flz<ja> {
-      public flw a(ja $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fku($$1, $$2, $$3, $$4, new cjh(cjk.qc));
-      }
+   @Override
+   public fly b() {
+      return fly.b;
    }
 
-   public static class c implements flz<ja> {
-      public flw a(ja $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fku($$1, $$2, $$3, $$4, new cjh(cjk.pO));
+   public static class a implements flx<iy> {
+      private final fmp a;
+
+      public a(fmp $$0) {
+         this.a = $$0;
+      }
+
+      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fku $$8 = new fku($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

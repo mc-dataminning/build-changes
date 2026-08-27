@@ -1,9 +1,22 @@
-import com.google.common.collect.ImmutableList;
-
 public class fim {
-   private final fin a = new fin(ImmutableList.of(), fig.a);
+   private final float a;
+   private final float b;
 
-   public fin a() {
+   public fim(float $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public float a() {
       return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "(" + this.a + "," + this.b + ")";
    }
 }

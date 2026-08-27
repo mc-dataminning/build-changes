@@ -1,111 +1,29 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
 
-public class dnu {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public class dnu extends dnw<dqh> {
+   public dnu(Codec<dqh> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(cqr $$0, gw $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+   @Override
+   public boolean a(dny<dqh> $$0) {
+      cqp $$1 = $$0.b();
+      asc $$2 = $$0.d();
+      gw $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(ary.b($$5) * (float)$$2);
-            int $$7 = (int)(ary.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = arw.d(-$$4); $$6 <= arw.f($$4); $$6++) {
+            for (int $$7 = arw.d(-$$4); $$7 <= arw.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), csw.fz.n());
+               }
             }
          }
 
-         return true;
-      }
-   }
-
-   protected static boolean a(cpy $$0, gw $$1) {
-      return $$0.a($$1, dnu::c);
-   }
-
-   protected static boolean b(cpy $$0, gw $$1) {
-      return $$0.a($$1, dnu::e);
-   }
-
-   protected static void a(hc $$0, int $$1, boolean $$2, Consumer<dfl> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dgi.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dgi.d));
-         }
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dgi.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dgi.a : dgi.b));
-      }
-   }
-
-   protected static void a(cpy $$0, gw $$1, hc $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         gw.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(csy.rs)) {
-               $$3x = $$3x.a(cyn.c, Boolean.valueOf($$0.y($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(cpy $$0, gw $$1) {
-      dfl $$2 = $$0.a_($$1);
-      if ($$2.a(apu.br)) {
-         $$0.a($$1, csy.rt.n(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static dfl a(hc $$0, dgi $$1) {
-      return csy.rs.n().a(cyn.a, $$0).a(cyn.b, $$1);
-   }
-
-   public static boolean a(dfl $$0) {
-      return b($$0) || $$0.a(csy.H);
-   }
-
-   public static boolean b(dfl $$0) {
-      return $$0.a(csy.rt) || $$0.a(apu.br);
-   }
-
-   public static boolean c(dfl $$0) {
-      return $$0.i() || $$0.a(csy.G);
-   }
-
-   public static boolean d(dfl $$0) {
-      return !$$0.i() && !$$0.a(csy.G);
-   }
-
-   public static boolean e(dfl $$0) {
-      return $$0.i() || $$0.a(csy.G) || $$0.a(csy.H);
+      return true;
    }
 }

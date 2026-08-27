@@ -1,160 +1,69 @@
-public class cwh extends cvn {
-   public static final eii a = csx.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
-   public static final eii b = csx.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
-   public static final eii c = csx.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
-   public static final eii d = csx.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
-   public static final eii e = eif.a(a, c);
-   public static final eii f = eif.a(b, d);
-   public static final eii g = eif.a(e, f);
-   public static final eii h = eif.a(g, csx.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
-   public static final eii i = csx.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
-   public static final eii j = csx.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
-   public static final eii k = csx.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
-   public static final eii l = csx.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
-   public static final eii m = eif.a(i, k);
-   public static final eii n = eif.a(j, l);
-   public static final eii D = eif.a(m, n);
-   public static final eii E = eif.a(D, csx.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
-   public static final eii F = csx.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
-   public static final eii G = csx.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
-   public static final eii H = csx.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
-   public static final eii J = csx.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
-   public static final eii K = eif.a(F, H);
-   public static final eii L = eif.a(G, J);
-   public static final eii M = eif.a(K, L);
-   public static final eii N = eif.a(M, csx.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
-   public static final eii O = csx.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
-   public static final eii P = csx.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
-   public static final eii Q = csx.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
-   public static final eii R = csx.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
-   public static final eii S = eif.a(O, Q);
-   public static final eii T = eif.a(P, R);
-   public static final eii U = eif.a(S, T);
-   public static final eii V = eif.a(U, csx.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
-   public static final eii W = csx.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
-   public static final eii X = csx.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
-   public static final eii Y = csx.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
-   public static final eii Z = csx.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
-   public static final eii aa = eif.a(W, Y);
-   public static final eii ab = eif.a(X, Z);
-   public static final eii ac = eif.a(aa, ab);
-   public static final eii ad = eif.a(ac, csx.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
-   public static final eii ae = csx.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
-   public static final eii af = csx.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
-   public static final eii ag = csx.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
-   public static final eii ah = csx.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
-   public static final eii ai = eif.a(ae, ag);
-   public static final eii aj = eif.a(af, ah);
-   public static final eii ak = eif.a(ai, aj);
-   public static final eii al = eif.a(ak, csx.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
-   public static final eii am = csx.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
-   public static final eii an = csx.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
-   public static final eii ao = csx.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
-   public static final eii ap = csx.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
-   public static final eii aq = eif.a(am, ao);
-   public static final eii ar = eif.a(an, ap);
-   public static final eii as = eif.a(aq, ar);
-   public static final eii at = eif.a(as, csx.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
-   public static final eii au = csx.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
-   public static final eii av = csx.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
-   public static final eii aw = csx.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
-   public static final eii ax = csx.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
-   public static final eii ay = eif.a(au, aw);
-   public static final eii az = eif.a(av, ax);
-   public static final eii aA = eif.a(ay, az);
-   public static final eii aB = eif.a(aA, csx.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
-   private static final tn aP = tn.c("container.grindstone_title");
+import java.util.Optional;
 
-   protected cwh(dfk.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(aC, hc.c).a(I, dfw.b));
+public abstract class cwh extends cwg implements csx {
+   protected cwh(dfi.d $$0, ha $$1, eig $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
+
+   protected dfj a(dfj $$0, dfj $$1) {
+      return $$1;
    }
 
    @Override
-   public czc b_(dfl $$0) {
-      return czc.c;
-   }
+   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
 
-   private eii n(dfl $$0) {
-      hc $$1 = $$0.c(aC);
-      switch ((dfw)$$0.c(I)) {
-         case a:
-            if ($$1 != hc.c && $$1 != hc.d) {
-               return E;
-            }
+      cwi $$6 = this.b();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
+      } else {
+         if (this.b) {
+            $$3.a($$4, ean.c, ean.c.a($$3));
+         }
 
-            return h;
-         case b:
-            if ($$1 == hc.c) {
-               return V;
-            } else if ($$1 == hc.d) {
-               return N;
-            } else {
-               if ($$1 == hc.f) {
-                  return al;
-               }
-
-               return ad;
-            }
-         case c:
-            if ($$1 != hc.c && $$1 != hc.d) {
-               return aB;
-            }
-
-            return at;
-         default:
-            return E;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   public eii c(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return this.n($$0);
+   public cjf a(cpb $$0, gw $$1, dfj $$2) {
+      return new cjf(this.b());
    }
 
    @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return this.n($$0);
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      Optional<gw> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.b().g($$0.a_($$3.get().a(this.a)));
    }
 
    @Override
-   public boolean a(dfl $$0, cqa $$1, gw $$2) {
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
       return true;
    }
 
    @Override
-   public bha a(dfl $$0, cpx $$1, gw $$2, cbw $$3, bgz $$4, ehl $$5) {
-      if ($$1.B) {
-         return bha.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(app.aD);
-         return bha.b;
+   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
+      Optional<gw> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dfj $$5 = $$0.a_($$4.get());
+         ((cwi)$$5.b()).a($$0, $$1, $$4.get(), $$5);
       }
    }
 
-   @Override
-   public bhd b(dfl $$0, cpx $$1, gw $$2) {
-      return new bhi(($$2x, $$3, $$4) -> new cfj($$2x, $$3, cey.a($$1, $$2)), aP);
+   private Optional<gw> a(cpb $$0, gw $$1, csv $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.b());
    }
 
    @Override
-   public dfl a(dfl $$0, czj $$1) {
-      return $$0.a(aC, $$1.a($$0.c(aC)));
+   public boolean a(dfj $$0, cln $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.b().k()) ? false : $$2;
    }
 
    @Override
-   public dfl a(dfl $$0, cxs $$1) {
-      return $$0.a($$1.a($$0.c(aC)));
-   }
-
-   @Override
-   protected void a(dfm.a<csx, dfl> $$0) {
-      $$0.a(aC, I);
-   }
-
-   @Override
-   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
-      return false;
+   protected csv a() {
+      return this;
    }
 }

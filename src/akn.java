@@ -1,52 +1,127 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Function;
 
-public class akn {
-   @Nullable
-   protected static gw a(aks $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.C_().h();
-      dhs $$4 = $$0.d(hz.a($$1), hz.a($$2));
-      int $$5 = $$3 ? $$0.k().g().a($$0) : $$4.a(dku.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.H_()) {
-         return null;
-      } else {
-         int $$6 = $$4.a(dku.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dku.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
-         } else {
-            gw.a $$7 = new gw.a();
+public class akn extends bgo {
+   private final Set<akr> h = Sets.newHashSet();
+   private final Set<akr> i = Collections.unmodifiableSet(this.h);
+   private boolean j = true;
 
-            for (int $$8 = $$5 + 1; $$8 >= $$0.H_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               dfl $$9 = $$0.a_($$7);
-               if (!$$9.u().c()) {
-                  break;
-               }
+   public akn(tl $$0, bgo.a $$1, bgo.b $$2) {
+      super(arw.a(), $$0, $$1, $$2);
+   }
 
-               if (csx.a($$9.k($$0, $$7), hc.b)) {
-                  return $$7.c().i();
-               }
-            }
+   @Override
+   public void a(float $$0) {
+      if ($$0 != this.b) {
+         super.a($$0);
+         this.a(xg::b);
+      }
+   }
 
-            return null;
+   @Override
+   public void a(bgo.a $$0) {
+      if ($$0 != this.c) {
+         super.a($$0);
+         this.a(xg::d);
+      }
+   }
+
+   @Override
+   public void a(bgo.b $$0) {
+      if ($$0 != this.d) {
+         super.a($$0);
+         this.a(xg::d);
+      }
+   }
+
+   @Override
+   public bgo a(boolean $$0) {
+      if ($$0 != this.e) {
+         super.a($$0);
+         this.a(xg::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public bgo b(boolean $$0) {
+      if ($$0 != this.f) {
+         super.b($$0);
+         this.a(xg::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public bgo c(boolean $$0) {
+      if ($$0 != this.g) {
+         super.c($$0);
+         this.a(xg::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void a(tl $$0) {
+      if (!Objects.equal($$0, this.a)) {
+         super.a($$0);
+         this.a(xg::c);
+      }
+   }
+
+   private void a(Function<bgo, xg> $$0) {
+      if (this.j) {
+         xg $$1 = $$0.apply(this);
+
+         for (akr $$2 : this.h) {
+            $$2.c.b($$1);
          }
       }
    }
 
-   @Nullable
-   public static gw a(aks $$0, cpe $$1) {
-      if (aa.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               gw $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
-               }
-            }
-         }
-
-         return null;
+   public void a(akr $$0) {
+      if (this.h.add($$0) && this.j) {
+         $$0.c.b(xg.a(this));
       }
+   }
+
+   public void b(akr $$0) {
+      if (this.h.remove($$0) && this.j) {
+         $$0.c.b(xg.a(this.i()));
+      }
+   }
+
+   public void b() {
+      if (!this.h.isEmpty()) {
+         for (akr $$0 : Lists.newArrayList(this.h)) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public boolean g() {
+      return this.j;
+   }
+
+   public void d(boolean $$0) {
+      if ($$0 != this.j) {
+         this.j = $$0;
+
+         for (akr $$1 : this.h) {
+            $$1.c.b($$0 ? xg.a(this) : xg.a(this.i()));
+         }
+      }
+   }
+
+   public Collection<akr> h() {
+      return this.i;
    }
 }

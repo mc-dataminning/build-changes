@@ -3,76 +3,145 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.ToIntFunction;
 
 public class agw {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tn.a("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tn.a("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tn.a("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tn.a("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tn.c("commands.enchant.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.experience.set.points.invalid"));
 
-   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("enchant").requires($$0x -> $$0x.c(2)))
-            .then(
-               du.a("targets", ee.b())
+   public static void a(CommandDispatcher<dt> $$0) {
+      LiteralCommandNode<dt> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("experience").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((RequiredArgumentBuilder)du.a("enchantment", eq.a($$1, je.r))
-                           .executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"), eq.g($$0x, "enchantment"), 1)))
+                     du.a("add")
                         .then(
-                           du.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (dt)$$0x.getSource(), ee.b($$0x, "targets"), eq.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
+                           du.a("targets", ee.d())
+                              .then(
+                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("amount", IntegerArgumentType.integer())
+                                          .executes(
+                                             $$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agw.a.a)
+                                          ))
+                                       .then(
+                                          du.a("points")
+                                             .executes(
+                                                $$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agw.a.a)
+                                             )
+                                       ))
+                                    .then(
+                                       du.a("levels")
+                                          .executes(
+                                             $$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agw.a.b)
+                                          )
                                     )
                               )
                         )
+                  ))
+               .then(
+                  du.a("set")
+                     .then(
+                        du.a("targets", ee.d())
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("amount", IntegerArgumentType.integer(0))
+                                       .executes(
+                                          $$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agw.a.a)
+                                       ))
+                                    .then(
+                                       du.a("points")
+                                          .executes(
+                                             $$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agw.a.a)
+                                          )
+                                    ))
+                                 .then(
+                                    du.a("levels")
+                                       .executes(
+                                          $$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), agw.a.b)
+                                       )
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               du.a("query")
+                  .then(
+                     ((RequiredArgumentBuilder)du.a("targets", ee.c())
+                           .then(du.a("points").executes($$0x -> a((dt)$$0x.getSource(), ee.e($$0x, "targets"), agw.a.a))))
+                        .then(du.a("levels").executes($$0x -> a((dt)$$0x.getSource(), ee.e($$0x, "targets"), agw.a.b)))
                   )
             )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(dt $$0, Collection<? extends bis> $$1, hg<cnq> $$2, int $$3) throws CommandSyntaxException {
-      cnq $$4 = $$2.a();
-      if ($$3 > $$4.a()) {
-         throw d.create($$3, $$4.a());
+   private static int a(dt $$0, akr $$1, agw.a $$2) {
+      int $$3 = $$2.f.applyAsInt($$1);
+      $$0.a(() -> tl.a("commands.experience.query." + $$2.e, $$1.N_(), $$3), false);
+      return $$3;
+   }
+
+   private static int a(dt $$0, Collection<? extends akr> $$1, int $$2, agw.a $$3) {
+      for (akr $$4 : $$1) {
+         $$3.c.accept($$4, $$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> tl.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().N_()), true);
       } else {
-         int $$5 = 0;
+         $$0.a(() -> tl.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+      }
 
-         for (bis $$6 : $$1) {
-            if ($$6 instanceof bji) {
-               bji $$7 = (bji)$$6;
-               cjh $$8 = $$7.eS();
-               if (!$$8.b()) {
-                  if ($$4.a($$8) && cns.a(cns.a($$8).keySet(), $$4)) {
-                     $$8.a($$4, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.d().m($$8).getString());
-                  }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.ab().getString());
-               }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.ab().getString());
-            }
+      return $$1.size();
+   }
+
+   private static int b(dt $$0, Collection<? extends akr> $$1, int $$2, agw.a $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (akr $$5 : $$1) {
+         if ($$3.d.test($$5, $$2)) {
+            $$4++;
          }
+      }
 
-         if ($$5 == 0) {
-            throw e.create();
+      if ($$4 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> tl.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().N_()), true);
          } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> tn.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().N_()), true);
-            } else {
-               $$0.a(() -> tn.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
-            }
-
-            return $$5;
+            $$0.a(() -> tl.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
          }
+
+         return $$1.size();
+      }
+   }
+
+   static enum a {
+      a("points", cbu::d, ($$0, $$1) -> {
+         if ($$1 >= $$0.ga()) {
+            return false;
+         } else {
+            $$0.a($$1);
+            return true;
+         }
+      }, $$0 -> arw.d($$0.ch * (float)$$0.ga())),
+      b("levels", akr::c, ($$0, $$1) -> {
+         $$0.b($$1);
+         return true;
+      }, $$0 -> $$0.cf);
+
+      public final BiConsumer<akr, Integer> c;
+      public final BiPredicate<akr, Integer> d;
+      public final String e;
+      final ToIntFunction<akr> f;
+
+      private a(String $$0, BiConsumer<akr, Integer> $$1, BiPredicate<akr, Integer> $$2, ToIntFunction<akr> $$3) {
+         this.c = $$1;
+         this.e = $$0;
+         this.d = $$2;
+         this.f = $$3;
       }
    }
 }

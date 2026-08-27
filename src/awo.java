@@ -1,17 +1,13 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public class awo extends azj {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
-
+public class awo extends axi {
    public awo(Schema $$0) {
-      super("EntityZombifiedPiglinRenameFix", $$0, true);
+      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.remove("filtered_title").remove("filtered_pages");
    }
 }

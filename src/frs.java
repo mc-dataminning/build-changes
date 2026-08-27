@@ -1,52 +1,41 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class frs implements frp.a {
-   private static final int a = 160;
-   private final eqx b;
-   private final Int2ObjectMap<frs.a> c = new Int2ObjectOpenHashMap();
+public class frs implements frn.a {
+   private final eqv a;
+   private static final int b = 10;
 
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public void a(int $$0, gw $$1, List<we.a> $$2) {
-      this.c.put($$0, new frs.a($$1, $$2));
-   }
-
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public frs(eqx $$0) {
-      this.b = $$0;
+   public frs(eqv $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(elr $$0, fog $$1, double $$2, double $$3, double $$4) {
-      eqi $$5 = this.b.j.m();
-      gw $$6 = gw.a($$5.b().c, 0.0, $$5.b().e);
-      ObjectIterator var11 = this.c.values().iterator();
+   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
+      cpv $$5 = this.a.r;
+      gw $$6 = gw.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      while (var11.hasNext()) {
-         frs.a $$7 = (frs.a)var11.next();
-         gw $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               we.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               frp.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
-            }
+      for (gw $$8 : gw.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(cqe.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = arw.h($$10, 0.9F, 0.9F);
+         long $$12 = hw.e($$8.a());
+         if ($$7.add($$12)) {
+            frn.a(
+               $$0,
+               $$1,
+               $$5.J().p().a(cqe.a, hw.a($$12)),
+               (double)hw.a(hw.b($$12), 8),
+               (double)hw.a(hw.c($$12), 8),
+               (double)hw.a(hw.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            frn.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
          }
       }
-   }
-
-   static record a(gw a, List<we.a> b) {
    }
 }

@@ -1,9 +1,14 @@
-public class xj extends vd<wy> {
-   public xj(Iterable<vf<wy>> $$0) {
-      super($$0);
+public record xj(int a) implements vd<ww> {
+   public xj(so $$0) {
+      this($$0.m());
    }
 
-   public void a(wy $$0) {
+   @Override
+   public void a(so $$0) {
+      $$0.c(this.a);
+   }
+
+   public void a(ww $$0) {
       $$0.a(this);
    }
 }

@@ -1,25 +1,33 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
 
-public class atr extends DataFix {
-   public atr(Schema $$0) {
-      super($$0, false);
+public class atr extends axz {
+   public atr(Schema $$0, boolean $$1) {
+      super($$0, $$1, "BlockEntityBlockStateFix", ayx.s, "minecraft:piston");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(ayz.c);
-      return this.fixTypeEverywhereTyped(
-         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
-      );
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      return $$2 ? $$0 : $$0.remove("blending_data");
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(ayx.s, "minecraft:piston");
+      Type<?> $$2 = $$1.findFieldType("blockState");
+      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
+      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      int $$5 = $$4.get("blockId").asInt(0);
+      $$4 = $$4.remove("blockId");
+      int $$6 = $$4.get("blockData").asInt(0) & 15;
+      $$4 = $$4.remove("blockData");
+      Dynamic<?> $$7 = aue.b($$5 << 4 | $$6);
+      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
+      return $$8.set(DSL.remainderFinder(), $$4)
+         .set(
+            $$3,
+            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
+               .getFirst()
+         );
    }
 }

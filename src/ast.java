@@ -1,22 +1,14 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 
 @FunctionalInterface
 public interface ast {
-   Logger a = LogUtils.getLogger();
+   long get(TimeUnit var1);
 
-   static ast immediate(Executor $$0) {
-      return $$1 -> $$1.submit($$0).exceptionally($$0xx -> {
-            a.error("Task failed", $$0xx);
-            return null;
-         });
-   }
-
-   void append(ast.a var1);
-
-   public interface a {
-      CompletableFuture<?> submit(Executor var1);
+   public interface a extends ast, LongSupplier {
+      @Override
+      default long get(TimeUnit $$0) {
+         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
+      }
    }
 }

@@ -1,36 +1,32 @@
-import javax.annotation.Nullable;
-
-public class zh implements vf<wy> {
+public class zh implements vd<ww> {
    private final int a;
-   private final bid b;
+   private final byte b;
 
-   public zh(int $$0, bid $$1) {
-      this.a = $$0;
+   public zh(biq $$0, byte $$1) {
+      this.a = $$0.ah();
       this.b = $$1;
    }
 
-   public zh(sq $$0) {
+   public zh(so $$0) {
       this.a = $$0.m();
-      this.b = $$0.a(jd.e);
+      this.b = $$0.readByte();
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.c(this.a);
-      $$0.a(jd.e, this.b);
+      $$0.k(this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bis a(cpx $$0) {
+   public biq a(cpv $$0) {
       return $$0.a(this.a);
    }
 
-   @Nullable
-   public bid a() {
+   public byte a() {
       return this.b;
    }
 }

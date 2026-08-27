@@ -1,6 +1,8 @@
-public record aft(anl a, afi b, hn<afh> c, eco d) implements AutoCloseable {
-   @Override
-   public void close() {
-      this.a.close();
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aft {
 }

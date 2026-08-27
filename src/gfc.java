@@ -1,63 +1,29 @@
-import java.util.Collection;
+import com.google.common.util.concurrent.RateLimiter;
+import java.time.Duration;
+import java.util.concurrent.atomic.AtomicReference;
 
-public abstract class gfc<E extends eto.a<E>> extends eto<E> {
-   protected gfc(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      super(eqx.O(), $$0, $$1, $$2, $$3, $$4);
+public class gfc {
+   private final float a;
+   private final AtomicReference<gfc.a> b = new AtomicReference<>();
+
+   public gfc(Duration $$0) {
+      this.a = 1000.0F / (float)$$0.toMillis();
    }
 
-   public void k(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.k() != 0) {
-         this.a(this.d($$0));
+   public void a(eqn $$0, tl $$1) {
+      gfc.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gfc.a($$1, RateLimiter.create((double)this.a)));
+      if ($$2.b.tryAcquire(1)) {
+         $$0.c($$1);
       }
    }
 
-   @Override
-   public void a(int $$0) {
-      this.k($$0);
-   }
+   static class a {
+      final tl a;
+      final RateLimiter b;
 
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int c() {
-      return this.o() + this.b();
-   }
-
-   @Override
-   public int b() {
-      return (int)((double)this.e * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int k() {
-      return super.k();
-   }
-
-   @Override
-   public int h(int $$0) {
-      return super.h($$0);
-   }
-
-   @Override
-   public int o() {
-      return super.o();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void w() {
-      this.j();
+      a(tl $$0, RateLimiter $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

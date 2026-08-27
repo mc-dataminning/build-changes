@@ -1,22 +1,46 @@
-import java.util.Set;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class esi extends gaj {
-   private static final Set<amv<?>> a = Set.of(gar.a, gax.c);
+public abstract class esi extends eso {
+   protected static final int e = 2;
+   private static final euc a = new euc(new aew("widget/button"), new aew("widget/button_disabled"), new aew("widget/button_highlighted"));
 
-   public esi(fzh $$0) {
-      super($$0, new aey("textures/atlas/gui.png"), new aey("gui"), a);
+   public esi(int $$0, int $$1, int $$2, int $$3, tl $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public abstract void c();
+
+   @Override
+   protected void b(esf $$0, int $$1, int $$2, float $$3) {
+      eqv $$4 = eqv.O();
+      $$0.a(1.0F, 1.0F, 1.0F, this.k);
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.i, this.o()), this.r(), this.t(), this.l(), this.i());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.i ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | arw.f(this.k * 255.0F) << 24);
+   }
+
+   public void a(esf $$0, esd $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
    @Override
-   public fzg a(aey $$0) {
-      return super.a($$0);
+   public void a(double $$0, double $$1) {
+      this.c();
    }
 
-   public gay a(fzg $$0) {
-      return this.b($$0).a();
-   }
-
-   private gax b(fzg $$0) {
-      return $$0.e().f().a(gax.c).orElse(gax.a);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.i || !this.j) {
+         return false;
+      } else if (ewn.a($$0)) {
+         this.a(eqv.O().ai());
+         this.c();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

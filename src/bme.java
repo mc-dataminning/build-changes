@@ -1,19 +1,27 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bme extends bkz<bjk> {
-   public bme(int $$0, int $$1) {
-      super(ImmutableMap.of(bsj.n, bsk.a), $$0, $$1);
-   }
+public class bme {
+   private static final int a = 1;
 
-   protected boolean a(aks $$0, bjk $$1, long $$2) {
-      return $$1.dN().c(bsj.n).filter($$1x -> $$1x.a($$1)).isPresent();
-   }
+   public static bky<bjg> a(float $$0) {
+      return boj.a(
+         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$1 -> $$1.group($$1.a(bsh.n), $$1.c(bsh.m), $$1.b(bsh.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bN()) {
+                        return false;
+                     } else {
+                        biq $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bli($$8, true));
+                           $$3.a(new bsk(new bli($$8, false), $$0, 1));
+                        }
 
-   protected void b(aks $$0, bjk $$1, long $$2) {
-      $$1.dN().b(bsj.n);
-   }
-
-   protected void c(aks $$0, bjk $$1, long $$2) {
-      $$1.dN().c(bsj.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

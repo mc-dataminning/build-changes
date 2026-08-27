@@ -1,80 +1,42 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface arl {
-   arl a = $$0 -> true;
+public class arl implements asr, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
+   private final Executor d;
+   private volatile boolean e;
 
-   boolean accept(arm var1);
-
-   static arl codepoint(int $$0, uj $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
+   public arl(Executor $$0) {
+      this.d = $$1 -> {
+         if (!this.e) {
+            $$0.execute($$1);
+         }
+      };
    }
 
-   static arl forward(String $$0, uj $$1) {
-      return $$0.isEmpty() ? a : $$2 -> asq.a($$0, $$1, $$2);
-   }
-
-   static arl forward(String $$0, uj $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> asq.a($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static arl backward(String $$0, uj $$1) {
-      return $$0.isEmpty() ? a : $$2 -> asq.b($$0, $$1, $$2);
-   }
-
-   static arl backward(String $$0, uj $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> asq.b($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static arm decorateOutput(arm $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
-   }
-
-   static arl composite() {
-      return a;
-   }
-
-   static arl composite(arl $$0) {
-      return $$0;
-   }
-
-   static arl composite(arl $$0, arl $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static arl composite(arl... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static arl composite(List<arl> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
-      }
-   }
-
-   static arl fromPair(arl $$0, arl $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
-   }
-
-   static arl fromList(List<arl> $$0) {
-      return $$1 -> {
-         for (arl $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
-            }
+   @Override
+   public void append(asr.a $$0) {
+      this.c = this.c.thenComposeAsync($$1 -> $$0.submit(this.d), this.d).exceptionally($$0x -> {
+         if ($$0x instanceof CompletionException $$1) {
+            $$0x = $$1.getCause();
          }
 
-         return true;
-      };
+         if ($$0x instanceof CancellationException $$2) {
+            throw $$2;
+         } else {
+            b.error("Chain link failed, continuing to next one", $$0x);
+            return null;
+         }
+      });
+   }
+
+   @Override
+   public void close() {
+      this.e = true;
    }
 }

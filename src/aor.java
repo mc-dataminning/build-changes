@@ -1,38 +1,46 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
-public class aor extends aom<GameProfile> {
-   public aor(GameProfile $$0) {
-      super($$0);
+public class aor {
+   private final ByteArrayOutputStream a;
+   private final DataOutputStream b;
+
+   public aor(int $$0) {
+      this.a = new ByteArrayOutputStream($$0);
+      this.b = new DataOutputStream(this.a);
    }
 
-   public aor(JsonObject $$0) {
-      super(b($$0));
+   public void a(byte[] $$0) throws IOException {
+      this.b.write($$0, 0, $$0.length);
    }
 
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-      }
+   public void a(String $$0) throws IOException {
+      this.b.writeBytes($$0);
+      this.b.write(0);
    }
 
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   public void a(int $$0) throws IOException {
+      this.b.write($$0);
+   }
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
+   public void a(short $$0) throws IOException {
+      this.b.writeShort(Short.reverseBytes($$0));
+   }
 
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
+   public void b(int $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes($$0));
+   }
+
+   public void a(float $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
+   }
+
+   public byte[] a() {
+      return this.a.toByteArray();
+   }
+
+   public void b() {
+      this.a.reset();
    }
 }

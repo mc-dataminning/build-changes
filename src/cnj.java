@@ -1,11 +1,11 @@
-public class cnj extends cnq {
-   public cnj(cnq.a $$0, bix... $$1) {
-      super($$0, cnr.k, $$1);
+public class cnj extends cno {
+   public cnj(cno.a $$0, biv... $$1) {
+      super($$0, cnp.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 20;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
@@ -14,7 +14,12 @@ public class cnj extends cnq {
    }
 
    @Override
-   public boolean a(cnq $$0) {
-      return $$0 instanceof coa ? false : super.a($$0);
+   public int a() {
+      return 4;
+   }
+
+   @Override
+   public boolean a(cno $$0) {
+      return super.a($$0) && $$0 != cns.I;
    }
 }

@@ -1,22 +1,10 @@
-public class dcb extends daa implements dbz {
-   private final dbz.a e;
-
-   public dcb(dbz.a $$0, dfk.d $$1) {
-      super($$1);
-      this.e = $$0;
+public class dcb extends csv {
+   public dcb(dfi.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void b(dfl $$0, aks $$1, gw $$2, ase $$3) {
-      this.a_($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean e_(dfl $$0) {
-      return dbz.c($$0.b()).isPresent();
-   }
-
-   public dbz.a g() {
-      return this.e;
+   public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
+      $$3.a($$0, new ehn(0.25, 0.05F, 0.25));
    }
 }

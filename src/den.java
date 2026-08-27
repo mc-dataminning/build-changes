@@ -1,9 +1,8 @@
-public interface den {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean b();
-
-   gw c();
-
-   String d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface den {
 }

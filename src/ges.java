@@ -1,110 +1,74 @@
-public class ges implements gew {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final tn f = tn.a("tutorial.move.title", gev.a("forward"), gev.a("left"), gev.a("back"), gev.a("right"));
-   private static final tn g = tn.a("tutorial.move.description", gev.a("jump"));
-   private static final tn h = tn.c("tutorial.look.title");
-   private static final tn i = tn.c("tutorial.look.description");
-   private final gev j;
-   private evb k;
-   private evb l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+public class ges implements geu {
+   private static final int a = 600;
+   private static final tl b = tl.c("tutorial.punch_tree.title");
+   private static final tl c = tl.a("tutorial.punch_tree.description", get.a("attack"));
+   private final get d;
+   private euz e;
+   private int f;
+   private int g;
 
-   public ges(gev $$0) {
-      this.j = $$0;
+   public ges(get $$0) {
+      this.d = $$0;
    }
 
    @Override
    public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gev.f);
+      } else {
+         if (this.f == 1) {
+            fng $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fR().a(aqa.r)) {
+                  this.d.a(gev.e);
+                  return;
+               }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
+               if (gep.a($$0)) {
+                  this.d.a(gev.e);
+                  return;
+               }
+            }
          }
 
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gex.b);
-         } else {
-            this.j.a(gex.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new evb(evb.a.a, f, g, true);
-            this.j.e().ay().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new evb(evb.a.b, h, i, true);
-            this.j.e().ay().a(this.l);
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new euz(euz.a.c, b, c, true);
+            this.d.e().ay().a(this.e);
          }
       }
    }
 
    @Override
    public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
       }
    }
 
    @Override
-   public void a(fng $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
+   public void a(fix $$0, gw $$1, dfj $$2, float $$3) {
+      boolean $$4 = $$2.a(aps.t);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(gev.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
       }
    }
 
    @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public void a(cjf $$0) {
+      if ($$0.a(aqa.r)) {
+         this.d.a(gev.e);
       }
    }
 }

@@ -1,33 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
-public class blz {
-   public static bmj<bji> a(int $$0, float $$1, int $$2) {
-      return bol.a(
-         (Function<bol.b<bji>, ? extends App<bol.c<bji>, boo<bji>>>)($$3 -> $$3.group(
-                  $$3.c(bsj.m), $$3.a(bsj.b), $$3.a(bsj.C), $$3.a(bsj.t), $$3.a(bsj.n), $$3.a(bsj.r), $$3.a(bsj.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.w()
-                           .d($$0xxxx -> $$0xxxx.a(bul.n), $$0xxxx -> true, $$12.dl(), $$2 + 1, buh.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.dj(), (double)$$2))
-                           .or(() -> $$11.w().a($$0xxxxx -> $$0xxxxx.a(bul.n), $$0xxxxx -> true, buh.b.c, $$12.dl(), $$0, $$12.ef()))
-                           .or(() -> $$3.<hf>a($$5).map(hf::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(hf.a($$11.ac(), $$10xx));
-                              if (!$$10xx.a($$12.dj(), (double)$$2)) {
-                                 $$4.a(new bsm($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+public class blz<E extends bji> extends bma<E> {
+   private final aqh<csv> m;
+   private final float n;
+   private final List<bma.a> o = new ArrayList<>();
+   private boolean p;
+
+   public blz(bgj $$0, int $$1, int $$2, float $$3, Function<E, apc> $$4, aqh<csv> $$5, float $$6, BiPredicate<E, gw> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
+   }
+
+   @Override
+   protected void a(akq $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.ef().i() < this.n;
+   }
+
+   @Override
+   protected Optional<bma.a> a(akq $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         gw.a $$1 = new gw.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<bma.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               bma.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), ha.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+      }
    }
 }

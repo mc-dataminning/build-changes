@@ -1,49 +1,38 @@
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
 
-public class fhh<T extends bis> extends ffo<T> {
-   private final fie[] a = new fie[8];
-   private final fie b;
+public class fhh<T extends bwj> extends feb<T> {
+   private final fic a;
+   private final fic b;
 
-   public fhh(fie $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+   public fhh(fic $$0) {
+      super(true, 8.0F, 3.35F);
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static fik b() {
-      fim $$0 = new fim();
-      fin $$1 = $$0.a();
-      fii $$2 = new fii(0.02F);
-      int $$3 = -16;
-      $$1.a("body", fij.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fig.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      fij $$5 = fij.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, fig.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return fik.a($$0, 64, 32);
+   public static fii c() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", fih.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fie.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", fih.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fie.a(0.0F, 22.0F, 0.0F));
+      return fii.a($$0, 16, 16);
    }
 
    @Override
+   protected Iterable<fic> a() {
+      return ImmutableList.of(this.a);
+   }
+
+   @Override
+   protected Iterable<fic> b() {
+      return ImmutableList.of(this.b);
+   }
+
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (fie $$6 : this.a) {
-         $$6.e = $$3;
-      }
-   }
-
-   @Override
-   public fie a() {
-      return this.b;
+      float $$6 = $$0.aX() ? 1.0F : 1.5F;
+      this.b.f = -$$6 * 0.25F * arw.a(0.3F * $$3);
    }
 }

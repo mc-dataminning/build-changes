@@ -1,87 +1,183 @@
-public class cuc extends cyj {
-   protected cuc(dfk.d $$0) {
-      super(0.3125F, $$0);
-      this.k(
-         this.C
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-      );
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public class cuc extends csi implements cvz {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dgd a = cuu.a;
+   public static final dga b = dfz.c;
+   private final boolean d;
+
+   public cuc(dfi.d $$0, boolean $$1) {
+      super($$0);
+      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
+      this.d = $$1;
    }
 
    @Override
-   public dfl a(clp $$0) {
-      return this.a($$0.q(), $$0.a());
-   }
-
-   public dfl a(cpd $$0, gw $$1) {
-      dfl $$2 = $$0.a_($$1.d());
-      dfl $$3 = $$0.a_($$1.c());
-      dfl $$4 = $$0.a_($$1.e());
-      dfl $$5 = $$0.a_($$1.h());
-      dfl $$6 = $$0.a_($$1.f());
-      dfl $$7 = $$0.a_($$1.g());
-      return this.n()
-         .a(f, Boolean.valueOf($$2.a(this) || $$2.a(csy.kv) || $$2.a(csy.fz)))
-         .a(e, Boolean.valueOf($$3.a(this) || $$3.a(csy.kv)))
-         .a(a, Boolean.valueOf($$4.a(this) || $$4.a(csy.kv)))
-         .a(b, Boolean.valueOf($$5.a(this) || $$5.a(csy.kv)))
-         .a(c, Boolean.valueOf($$6.a(this) || $$6.a(csy.kv)))
-         .a(d, Boolean.valueOf($$7.a(this) || $$7.a(csy.kv)));
+   public dcv a(gw $$0, dfj $$1) {
+      ddf $$2 = new ddf($$0, $$1);
+      $$2.b(this.d);
+      return $$2;
    }
 
    @Override
-   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         boolean $$6 = $$2.a(this) || $$2.a(csy.kv) || $$1 == hc.a && $$2.a(csy.fz);
-         return $$0.a(g.get($$1), Boolean.valueOf($$6));
-      }
-   }
-
-   @Override
-   public void a(dfl $$0, aks $$1, gw $$2, ase $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   public boolean a(dfl $$0, cqa $$1, gw $$2) {
-      dfl $$3 = $$1.a_($$2.d());
-      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
-
-      for (hc $$5 : hc.c.a) {
-         gw $$6 = $$2.a($$5);
-         dfl $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
-
-            dfl $$8 = $$1.a_($$6.d());
-            if ($$8.a(this) || $$8.a(csy.fz)) {
-               return true;
+   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
+      if (!$$1.B) {
+         if ($$1.c_($$2) instanceof ddf $$7) {
+            boolean $$8 = $$1.B($$2);
+            boolean $$9 = $$7.d();
+            $$7.a($$8);
+            if (!$$9 && !$$7.f() && $$7.v() != ddf.a.a) {
+               if ($$8) {
+                  $$7.j();
+                  $$1.a($$2, this, 1);
+               }
             }
          }
       }
-
-      return $$3.a(this) || $$3.a(csy.fz);
    }
 
    @Override
-   protected void a(dfm.a<csx, dfl> $$0) {
-      $$0.a(a, b, c, d, e, f);
+   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
+      if ($$1.c_($$2) instanceof ddf $$5) {
+         cow $$6 = $$5.c();
+         boolean $$7 = !asq.b($$6.m());
+         ddf.a $$8 = $$5.v();
+         boolean $$9 = $$5.i();
+         if ($$8 == ddf.a.b) {
+            $$5.j();
+            if ($$9) {
+               this.a($$0, $$1, $$2, $$6, $$7);
+            } else if ($$5.w()) {
+               $$6.a(0);
+            }
+
+            if ($$5.d() || $$5.f()) {
+               $$1.a($$2, this, 1);
+            }
+         } else if ($$8 == ddf.a.c) {
+            if ($$9) {
+               this.a($$0, $$1, $$2, $$6, $$7);
+            } else if ($$5.w()) {
+               $$6.a(0);
+            }
+         }
+
+         $$1.c($$2, this);
+      }
+   }
+
+   private void a(dfj $$0, cpv $$1, gw $$2, cow $$3, boolean $$4) {
+      if ($$4) {
+         $$3.a($$1);
+      } else {
+         $$3.a(0);
+      }
+
+      a($$1, $$2, $$0.c(a));
    }
 
    @Override
-   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
-      return false;
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      dcv $$6 = $$1.c_($$2);
+      if ($$6 instanceof ddf && $$3.go()) {
+         $$3.a((ddf)$$6);
+         return bgy.a($$1.B);
+      } else {
+         return bgy.d;
+      }
+   }
+
+   @Override
+   public boolean d_(dfj $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dfj $$0, cpv $$1, gw $$2) {
+      dcv $$3 = $$1.c_($$2);
+      return $$3 instanceof ddf ? ((ddf)$$3).c().k() : 0;
+   }
+
+   @Override
+   public void a(cpv $$0, gw $$1, dfj $$2, bjg $$3, cjf $$4) {
+      if ($$0.c_($$1) instanceof ddf $$6) {
+         cow $$7 = $$6.c();
+         if ($$4.A()) {
+            $$7.b($$4.y());
+         }
+
+         if (!$$0.B) {
+            if (cgy.a($$4) == null) {
+               $$7.a($$0.X().b(cpr.o));
+               $$6.b(this.d);
+            }
+
+            if ($$6.v() == ddf.a.a) {
+               boolean $$8 = $$0.B($$1);
+               $$6.a($$8);
+            }
+         }
+      }
+   }
+
+   @Override
+   public cza b_(dfj $$0) {
+      return cza.c;
+   }
+
+   @Override
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Override
+   public dfj a(cln $$0) {
+      return this.n().a(a, $$0.d().g());
+   }
+
+   private static void a(cpv $$0, gw $$1, ha $$2) {
+      gw.a $$3 = $$1.j();
+      cpr $$4 = $$0.X();
+      int $$5 = $$4.c(cpr.w);
+
+      while ($$5-- > 0) {
+         $$3.c($$2);
+         dfj $$6 = $$0.a_($$3);
+         csv $$7 = $$6.b();
+         if (!$$6.a(csw.kH) || !($$0.c_($$3) instanceof ddf $$9) || $$9.v() != ddf.a.a) {
+            break;
+         }
+
+         if ($$9.d() || $$9.f()) {
+            cow $$10 = $$9.c();
+            if ($$9.j()) {
+               if (!$$10.a($$0)) {
+                  break;
+               }
+
+               $$0.c($$3, $$7);
+            } else if ($$9.w()) {
+               $$10.a(0);
+            }
+         }
+
+         $$2 = $$6.c(a);
+      }
+
+      if ($$5 <= 0) {
+         int $$11 = Math.max($$4.c(cpr.w), 0);
+         c.warn("Command Block chain tried to execute more than {} steps!", $$11);
+      }
    }
 }

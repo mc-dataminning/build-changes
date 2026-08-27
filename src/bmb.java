@@ -1,48 +1,44 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bmb<E extends bjk> extends bmc<E> {
-   private final aqj<csx> m;
-   private final float n;
-   private final List<bmc.a> o = new ArrayList<>();
-   private boolean p;
+public class bmb extends bkx<cbh> {
+   private final float c;
 
-   public bmb(bgl $$0, int $$1, int $$2, float $$3, Function<E, ape> $$4, aqj<csx> $$5, float $$6, BiPredicate<E, gw> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public bmb(float $$0) {
+      super(ImmutableMap.of(bsh.m, bsi.c, bsh.n, bsi.c), Integer.MAX_VALUE);
+      this.c = $$0;
+   }
+
+   protected boolean a(akq $$0, cbh $$1) {
+      cbu $$2 = $$1.gd();
+      return $$1.bv() && $$2 != null && !$$1.aX() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bS != null;
+   }
+
+   protected boolean a(akq $$0, cbh $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(akq $$0, cbh $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(akq $$0, cbh $$1, long $$2) {
+      bkg<?> $$3 = $$1.dN();
+      $$3.b(bsh.m);
+      $$3.b(bsh.n);
+   }
+
+   protected void d(akq $$0, cbh $$1, long $$2) {
+      this.a($$1);
    }
 
    @Override
-   protected void a(aks $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.ef().i() < this.n;
+   protected boolean a(long $$0) {
+      return false;
    }
 
-   @Override
-   protected Optional<bmc.a> a(aks $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         gw.a $$1 = new gw.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<bmc.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bmc.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), hc.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+   private void a(cbh $$0) {
+      bkg<?> $$1 = $$0.dN();
+      $$1.a(bsh.m, new bsk(new bli($$0.gd(), false), this.c, 2));
+      $$1.a(bsh.n, new bli($$0.gd(), true));
    }
 }

@@ -1,44 +1,43 @@
-public class arb {
-   private static final int a = 2;
-   private static final int b = 6;
-   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
-   private arb() {
+public class arb<T> {
+   private final AtomicReferenceArray<T> a;
+   private final AtomicInteger b;
+
+   public arb(int $$0) {
+      this.a = new AtomicReferenceArray<>($$0);
+      this.b = new AtomicInteger(0);
    }
 
-   public static ehp a(ehp $$0, arb.a $$1) {
-      int $$2 = ary.a($$0.a());
-      int $$3 = ary.a($$0.b());
-      int $$4 = ary.a($$0.c());
-      double $$5 = $$0.a() - (double)$$2;
-      double $$6 = $$0.b() - (double)$$3;
-      double $$7 = $$0.c() - (double)$$4;
-      double $$8 = 0.0;
-      ehp $$9 = ehp.b;
+   public void a(T $$0) {
+      int $$1 = this.a.length();
 
-      for (int $$10 = 0; $$10 < 6; $$10++) {
-         double $$11 = ary.d($$5, c[$$10 + 1], c[$$10]);
-         int $$12 = $$2 - 2 + $$10;
+      int $$2;
+      int $$3;
+      do {
+         $$2 = this.b.get();
+         $$3 = ($$2 + 1) % $$1;
+      } while (!this.b.compareAndSet($$2, $$3));
 
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            double $$14 = ary.d($$6, c[$$13 + 1], c[$$13]);
-            int $$15 = $$3 - 2 + $$13;
+      this.a.set($$3, $$0);
+   }
 
-            for (int $$16 = 0; $$16 < 6; $$16++) {
-               double $$17 = ary.d($$7, c[$$16 + 1], c[$$16]);
-               int $$18 = $$4 - 2 + $$16;
-               double $$19 = $$11 * $$14 * $$17;
-               $$8 += $$19;
-               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).a($$19));
-            }
+   public List<T> a() {
+      int $$0 = this.b.get();
+      Builder<T> $$1 = ImmutableList.builder();
+
+      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
+         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
+         T $$4 = this.a.get($$3);
+         if ($$4 != null) {
+            $$1.add($$4);
          }
       }
 
-      return $$9.a(1.0 / $$8);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      ehp fetch(int var1, int var2, int var3);
+      return $$1.build();
    }
 }

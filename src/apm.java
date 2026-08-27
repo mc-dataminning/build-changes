@@ -1,50 +1,39 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-public class apm<T> extends eir {
-   private final apn n;
-   private final T o;
-   private final apo<T> p;
+public class apm<T> implements Iterable<apk<T>> {
+   private final hq<T> a;
+   private final Map<T, apk<T>> b = new IdentityHashMap<>();
+   private final tl c;
 
-   protected apm(apo<T> $$0, T $$1, apn $$2) {
-      super(a($$0, $$1));
-      this.p = $$0;
-      this.n = $$2;
-      this.o = $$1;
+   public apm(hq<T> $$0, tl $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   public static <T> String a(apo<T> $$0, T $$1) {
-      return a(jd.y.b($$0)) + ":" + a($$0.a().b($$1));
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
    }
 
-   private static <T> String a(@Nullable aey $$0) {
-      return $$0.toString().replace(':', '.');
+   public apk<T> a(T $$0, apl $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new apk<>(this, (T)$$1x, $$1));
    }
 
-   public apo<T> a() {
-      return this.p;
-   }
-
-   public T b() {
-      return this.o;
-   }
-
-   public String a(int $$0) {
-      return this.n.format($$0);
+   public hq<T> a() {
+      return this.a;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof apm && Objects.equals(this.d(), ((apm)$$0).d());
+   public Iterator<apk<T>> iterator() {
+      return this.b.values().iterator();
    }
 
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
+   public apk<T> b(T $$0) {
+      return this.a($$0, apl.b);
    }
 
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
+   public tl b() {
+      return this.c;
    }
 }

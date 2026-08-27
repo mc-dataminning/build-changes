@@ -1,35 +1,14 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public abstract class na extends mz<cjc> {
-   private final CompletableFuture<ne.c<csx>> d;
-   private final Map<aqj<csx>, aqj<cjc>> g = new HashMap<>();
-
-   public na(jm $$0, CompletableFuture<hi.b> $$1, CompletableFuture<ne.c<csx>> $$2) {
-      super($$0, je.D, $$1, $$0x -> $$0x.j().g());
-      this.d = $$2;
-   }
-
-   public na(jm $$0, CompletableFuture<hi.b> $$1, CompletableFuture<ne.c<cjc>> $$2, CompletableFuture<ne.c<csx>> $$3) {
-      super($$0, je.D, $$1, $$2, $$0x -> $$0x.j().g());
-      this.d = $$3;
-   }
-
-   protected void a(aqj<csx> $$0, aqj<cjc> $$1) {
-      this.g.put($$0, $$1);
+public class na extends nc<bui> {
+   public na(jk $$0, CompletableFuture<hg.b> $$1) {
+      super($$0, jc.S, $$1);
    }
 
    @Override
-   protected CompletableFuture<hi.b> b() {
-      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
-         this.g.forEach(($$1x, $$2) -> {
-            aqg $$3 = this.c((aqj<cjc>)$$2);
-            Optional<aqg> $$4 = $$1.apply($$1x);
-            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
-         });
-         return (hi.b)$$0;
-      });
+   protected void a(hg.b $$0) {
+      this.b(aqc.a).a(buj.a, buj.b, buj.c, buj.d, buj.e, buj.f, buj.g, buj.h, buj.i, buj.j, buj.k, buj.l, buj.m);
+      this.b(aqc.b).b(aqc.a).a(buj.n, buj.o);
+      this.b(aqc.c).a(buj.p, buj.q);
    }
 }

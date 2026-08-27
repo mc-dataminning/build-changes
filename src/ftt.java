@@ -1,19 +1,16 @@
-public class ftt extends fup<bze, ffj<bze>> {
-   private static final aey a = new aey("textures/entity/ghast/ghast.png");
-   private static final aey i = new aey("textures/entity/ghast/ghast_shooting.png");
+public class ftt extends fvo<biy> {
+   private static final aew a = new aew("textures/entity/squid/glow_squid.png");
 
-   public ftt(ftj.a $$0) {
-      super($$0, new ffj<>($$0.a(fid.aa)), 1.5F);
+   public ftt(fth.a $$0, fhf<biy> $$1) {
+      super($$0, $$1);
    }
 
-   public aey a(bze $$0) {
-      return $$0.s() ? i : a;
+   public aew a(biy $$0) {
+      return a;
    }
 
-   protected void a(bze $$0, elr $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   protected int a(biy $$0, gw $$1) {
+      int $$2 = (int)arw.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

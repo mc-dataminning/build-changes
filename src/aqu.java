@@ -1,78 +1,33 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import com.mojang.util.UndashedUuid;
+import java.util.UUID;
 
-public class aqu<T> extends AbstractCollection<T> {
-   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
-   private final Class<T> b;
-   private final List<T> c = Lists.newArrayList();
+public class aqu {
+   public static final String a = "https://aka.ms/MinecraftGDPR";
+   public static final String b = "https://aka.ms/MinecraftEULA";
+   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
+   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
+   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
+   public static final String f = "https://aka.ms/BuyMinecraftJava";
+   public static final String g = "https://aka.ms/JavaAccountSettings";
+   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
+   public static final String i = "https://aka.ms/javafeedback?ref=game";
+   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
+   public static final String k = "https://aka.ms/MinecraftJavaAccessibility";
+   public static final String l = "https://aka.ms/aboutjavareporting";
+   public static final String m = "https://aka.ms/mcjavamoderation";
+   public static final String n = "https://aka.ms/javablocking";
+   public static final String o = "https://aka.ms/MinecraftSymLinks";
+   public static final String p = "https://aka.ms/startjavarealmstrial";
+   public static final String q = "https://aka.ms/BuyJavaRealms";
+   public static final String r = "https://aka.ms/MinecraftRealmsTerms";
+   public static final String s = "https://aka.ms/MinecraftRealmsContentCreator";
+   public static final String t = "https://aka.ms/UpdateMojangAccount";
 
-   public aqu(Class<T> $$0) {
-      this.b = $$0;
-      this.a.put($$0, this.c);
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   @Override
-   public boolean add(T $$0) {
-      boolean $$1 = false;
-
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            $$1 |= $$2.getValue().add($$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean remove(Object $$0) {
-      boolean $$1 = false;
-
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            List<T> $$3 = $$2.getValue();
-            $$1 |= $$3.remove($$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      return this.a($$0.getClass()).contains($$0);
-   }
-
-   public <S> Collection<S> a(Class<S> $$0) {
-      if (!this.b.isAssignableFrom($$0)) {
-         throw new IllegalArgumentException("Don't know how to search for " + $$0);
-      } else {
-         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(Collectors.toList()));
-         return (Collection<S>)Collections.unmodifiableCollection($$1);
-      }
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
-   }
-
-   public List<T> a() {
-      return ImmutableList.copyOf(this.c);
-   }
-
-   @Override
-   public int size() {
-      return this.c.size();
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

@@ -1,108 +1,42 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class exh extends eyk {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final tl c = tl.c("credits_and_attribution.screen.title");
+   private static final tl k = tl.c("credits_and_attribution.button.credits");
+   private static final tl l = tl.c("credits_and_attribution.button.attribution");
+   private static final tl m = tl.c("credits_and_attribution.button.licenses");
+   private final eyk n;
+   private final evz o = new evz(this);
 
-public class exh extends eym {
-   private static final tn a = tn.c("createWorld.customize.buffet.biome");
-   private final eym b;
-   private final Consumer<hg<cqv>> c;
-   final ht<cqv> k;
-   private exh.a l;
-   hg<cqv> m;
-   private ess n;
-
-   public exh(eym $$0, fdi $$1, Consumer<hg<cqv>> $$2) {
-      super(tn.c("createWorld.customize.buffet.title"));
-      this.b = $$0;
-      this.c = $$2;
-      this.k = $$1.a().d(je.ap);
-      hg<cqv> $$3 = this.k.b(crc.b).or(() -> this.k.h().findAny()).orElseThrow();
-      this.m = $$1.d().a().c().c().stream().findFirst().orElse($$3);
-   }
-
-   @Override
-   public void az_() {
-      this.f.a(this.b);
+   public exh(eyk $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
    protected void aH_() {
-      this.l = new exh.a();
-      this.e(this.l);
-      this.n = this.d(ess.a(tm.d, $$0 -> {
-         this.c.accept(this.m);
-         this.f.a(this.b);
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(ess.a(tm.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-      this.l.a(this.l.i().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
-   }
-
-   void l() {
-      this.n.i = this.l.f() != null;
+      this.o.a(new etw(this.m(), this.i));
+      ewd $$0 = this.o.c(ewd.d()).a(8);
+      $$0.c().b();
+      $$0.a(esq.a(k, $$0x -> this.l()).a(210).a());
+      $$0.a(esq.a(l, exc.b("https://aka.ms/MinecraftJavaAttribution", this, true)).a(210).a());
+      $$0.a(esq.a(m, exc.b("https://aka.ms/MinecraftJavaLicenses", this, true)).a(210).a());
+      this.o.b(esq.a(tk.d, $$0x -> this.az_()).a());
+      this.o.a();
+      this.o.a(this::d);
    }
 
    @Override
-   public void a(esh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.l.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      $$0.a(this.i, a, this.g / 2, 28, 10526880);
+   protected void b() {
+      this.o.a();
+   }
+
+   private void l() {
+      this.f.a(new eyr(false, () -> this.f.a(this)));
    }
 
    @Override
-   public void b(esh $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   class a extends eto<exh.a.a> {
-      a() {
-         super(exh.this.f, exh.this.g, exh.this.h, 40, exh.this.h - 37, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         exh.this.k.h().map($$0x -> new exh.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
-      }
-
-      public void a(@Nullable exh.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            exh.this.m = $$0.b;
-         }
-
-         exh.this.l();
-      }
-
-      class a extends eto.a<exh.a.a> {
-         final hg.c<cqv> b;
-         final tn c;
-
-         public a(hg.c<cqv> $$0) {
-            this.b = $$0;
-            aey $$1 = $$0.g().a();
-            String $$2 = $$1.f("biome");
-            if (qt.a().b($$2)) {
-               this.c = tn.c($$2);
-            } else {
-               this.c = tn.b($$1.toString());
-            }
-         }
-
-         @Override
-         public tn a() {
-            return tn.a("narrator.select", this.c);
-         }
-
-         @Override
-         public void a(esh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(exh.this.i, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-      }
+   public void az_() {
+      this.f.a(this.n);
    }
 }

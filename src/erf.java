@@ -1,46 +1,99 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class erf {
    private static final Logger a = LogUtils.getLogger();
-   private final eqx b;
    @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+   private erf.c b;
+   private int c;
 
-   public erf(eqx $$0) {
-      this.b = $$0;
+   public void a(erf.b $$0, List<amh> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new erf.c($$0, $$1.stream().map(amh::a).collect(ImmutableList.toImmutableList()));
    }
 
-   public void a(eym $$0) {
-      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new fbj($$0));
-         this.d = true;
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new erf.c(erf.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new erf.a($$0);
+   }
+
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
+      } else {
+         this.b.d = true;
       }
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
       }
    }
 
-   private boolean b() {
-      try {
-         return emh.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (enu var2) {
-         return false;
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final erf.b a;
+      private final List<String> b;
+      @Nullable
+      erf.a c;
+      boolean d;
+
+      c(erf.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
       }
    }
 }

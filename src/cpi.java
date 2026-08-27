@@ -1,4 +1,3 @@
-@FunctionalInterface
 public interface cpi {
-   int getColor(cqv var1, double var2, double var4);
+   int a(akq var1, boolean var2, boolean var3);
 }

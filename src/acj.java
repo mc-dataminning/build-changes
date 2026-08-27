@@ -1,40 +1,24 @@
-public class acj implements vf<abe> {
-   private final cfy a;
-   private final boolean b;
-   private final boolean c;
+public class acj implements vd<abc> {
+   private final String a;
 
-   public acj(cfy $$0, boolean $$1, boolean $$2) {
+   public acj(String $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public acj(sq $$0) {
-      this.a = $$0.b(cfy.class);
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   public acj(so $$0) {
+      this.a = $$0.r();
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
-   public cfy a() {
+   public String a() {
       return this.a;
-   }
-
-   public boolean d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

@@ -1,148 +1,38 @@
-import com.google.common.base.MoreObjects;
-import java.util.Arrays;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import com.google.common.escape.Escaper;
+import com.google.common.escape.Escapers;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-class qk implements pz {
-   private final py c;
-   private final qe d;
-   private final gw e;
-   int a;
-   int b;
-
-   public qk(py $$0, qe $$1, gw $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.a = 0;
-      this.b = 0;
-   }
+public class qk implements qp {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Escaper b = Escapers.builder()
+      .addEscape('\'', "|'")
+      .addEscape('\n', "|n")
+      .addEscape('\r', "|r")
+      .addEscape('|', "||")
+      .addEscape('[', "|[")
+      .addEscape(']', "|]")
+      .build();
 
    @Override
-   public void a(py $$0) {
-      a(this.c, csy.er);
-      this.a++;
-   }
-
-   @Override
-   public void b(py $$0) {
-      this.b++;
-      if (!$$0.x()) {
-         a($$0, $$0.c() + " passed! (" + $$0.l() + "ms)");
+   public void a(pw $$0) {
+      String $$1 = b.escape($$0.c());
+      String $$2 = b.escape($$0.n().getMessage());
+      String $$3 = b.escape(ac.c($$0.n()));
+      a.info("##teamcity[testStarted name='{}']", $$1);
+      if ($$0.r()) {
+         a.info("##teamcity[testFailed name='{}' message='{}' details='{}']", new Object[]{$$1, $$2, $$3});
       } else {
-         if (this.b >= $$0.z()) {
-            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
-         } else {
-            a(this.c.g(), n.k, "Flaky test " + this.c + " succeeded, attempt: " + this.a + " successes: " + this.b);
-            this.a();
-         }
+         a.info("##teamcity[testIgnored name='{}' message='{}' details='{}']", new Object[]{$$1, $$2, $$3});
       }
+
+      a.info("##teamcity[testFinished name='{}' duration='{}']", $$1, $$0.l());
    }
 
    @Override
-   public void c(py $$0) {
-      if (!$$0.x()) {
-         a($$0, $$0.n());
-      } else {
-         qp $$1 = this.c.v();
-         String $$2 = "Flaky test " + this.c + " failed, attempt: " + this.a + "/" + $$1.i();
-         if ($$1.j() > 1) {
-            $$2 = $$2 + ", successes: " + this.b + " (" + $$1.j() + " required)";
-         }
-
-         a(this.c.g(), n.o, $$2);
-         if ($$0.y() - this.a + this.b >= $$0.z()) {
-            this.a();
-         } else {
-            a($$0, new pp(this.a, this.b, $$0));
-         }
-      }
-   }
-
-   public static void a(py $$0, String $$1) {
-      a($$0, csy.eo);
-      b($$0, $$1);
-   }
-
-   private static void b(py $$0, String $$1) {
-      a($$0.g(), n.k, $$1);
-      qg.b($$0);
-   }
-
-   protected static void a(py $$0, Throwable $$1) {
-      a($$0, $$0.r() ? csy.ex : csy.ek);
-      c($$0, ac.c($$1));
-      b($$0, $$1);
-   }
-
-   protected static void b(py $$0, Throwable $$1) {
-      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ac.c($$1.getCause()));
-      String $$3 = ($$0.r() ? "" : "(optional) ") + $$0.c() + " failed! " + $$2;
-      a($$0.g(), $$0.r() ? n.m : n.o, $$3);
-      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
-      if ($$4 instanceof ps $$5) {
-         a($$0.g(), $$5.c(), $$5.a());
-      }
-
-      qg.a($$0);
-   }
-
-   private void a() {
-      this.c.o();
-      py $$0 = new py(this.c.v(), this.c.u(), this.c.g());
-      $$0.a();
-      this.d.a($$0);
-      $$0.a(this);
-      $$0.a(this.e, 2);
-   }
-
-   protected static void a(py $$0, csx $$1) {
-      aks $$2 = $$0.g();
-      gw $$3 = $$0.d();
-      gw $$4 = new gw(-1, -1, -1);
-      gw $$5 = dzd.a($$3.a((ib)$$4), cxs.a, $$0.u(), $$3);
-      $$2.b($$5, csy.fO.n().a($$0.u()));
-      gw $$6 = $$5.b(0, 1, 0);
-      $$2.b($$6, $$1.n());
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            gw $$9 = $$5.b($$7, -1, $$8);
-            $$2.b($$9, csy.ci.n());
-         }
-      }
-   }
-
-   private static void c(py $$0, String $$1) {
-      aks $$2 = $$0.g();
-      gw $$3 = $$0.d();
-      gw $$4 = new gw(-1, 1, -1);
-      gw $$5 = dzd.a($$3.a((ib)$$4), cxs.a, $$0.u(), $$3);
-      $$2.b($$5, csy.oa.n().a($$0.u()));
-      dfl $$6 = $$2.a_($$5);
-      cjh $$7 = a($$0.c(), $$0.r(), $$1);
-      cxf.a(null, $$2, $$5, $$6, $$7);
-   }
-
-   private static cjh a(String $$0, boolean $$1, String $$2) {
-      cjh $$3 = new cjh(cjk.tg);
-      re $$4 = new re();
-      StringBuffer $$5 = new StringBuffer();
-      Arrays.stream($$0.split("\\.")).forEach($$1x -> $$5.append($$1x).append('\n'));
-      if (!$$1) {
-         $$5.append("(optional)\n");
-      }
-
-      $$5.append("-------------------\n");
-      $$4.add(rq.a($$5 + $$2));
-      $$3.a("pages", $$4);
-      return $$3;
-   }
-
-   protected static void a(aks $$0, n $$1, String $$2) {
-      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(tn.b($$2).a($$1)));
-   }
-
-   private static void a(aks $$0, gw $$1, String $$2) {
-      abd.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
+   public void b(pw $$0) {
+      String $$1 = b.escape($$0.c());
+      a.info("##teamcity[testStarted name='{}']", $$1);
+      a.info("##teamcity[testFinished name='{}' duration='{}']", $$1, $$0.l());
    }
 }

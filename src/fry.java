@@ -1,45 +1,107 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class fry implements frp.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final eqx c;
-   private Collection<gw> d = Lists.newArrayList();
+public class fry implements frn.a {
+   private final eqv a;
+   private final Map<aev<cpv>, Map<String, dva>> b = Maps.newIdentityHashMap();
+   private final Map<aev<cpv>, Map<String, wk.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   public fry(eqx $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<gw> $$0) {
-      this.d = $$0;
+   public fry(eqv $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(elr $$0, fog $$1, double $$2, double $$3, double $$4) {
-      gw $$5 = this.b().c();
+   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
+      eqg $$5 = this.a.j.m();
+      aev<cpv> $$6 = this.a.r.ac();
+      gw $$7 = gw.a($$5.b().c, 0.0, $$5.b().e);
+      elt $$8 = $$1.getBuffer(fom.x());
+      if (this.b.containsKey($$6)) {
+         for (dva $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.f(), 500.0)) {
+               foc.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.g() - $$2,
+                  (double)$$9.h() - $$3,
+                  (double)$$9.i() - $$4,
+                  (double)($$9.j() + 1) - $$2,
+                  (double)($$9.k() + 1) - $$3,
+                  (double)($$9.l() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
+         }
+      }
 
-      for (gw $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+      Map<String, wk.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (wk.a $$11 : $$10.values()) {
+            dva $$12 = $$11.a();
+            if ($$7.a($$12.f(), 500.0)) {
+               if ($$11.b()) {
+                  foc.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  foc.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
          }
       }
    }
 
-   private static void a(elr $$0, fog $$1, gw $$2) {
-      frp.a($$0, $$1, $$2.b(-1, -1, -1), $$2.b(1, 1, 1), 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
+   public void a(dva $$0, List<wk.a> $$1, aev<cpv> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, wk.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (wk.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
    }
 
-   private static void a(elr $$0, fog $$1, String $$2, gw $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      frp.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private eqi b() {
-      return this.c.j.m();
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

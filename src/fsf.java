@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public abstract class fsf<T extends cab, M extends fhu<T>> extends fty<T, M> {
+   private static final aew a = new aew("textures/entity/zombie/zombie.png");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fsf {
+   protected fsf(fth.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new fxf<>(this, $$2, $$3, $$0.g()));
+   }
+
+   public aew a(cab $$0) {
+      return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gk();
+   }
 }

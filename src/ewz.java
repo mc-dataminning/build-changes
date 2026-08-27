@@ -1,47 +1,91 @@
-public class ewz extends eym {
-   private static final int a = 90;
-   private final tn b;
-   private etl c = etl.a;
-   private final Runnable k;
-   private final tn l;
-   private final boolean m;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-   public ewz(Runnable $$0, tn $$1, tn $$2) {
-      this($$0, $$1, $$2, tm.k, true);
+public class ewz {
+   private static final tl b = tl.c("gui.banned.title.temporary").a(n.r);
+   private static final tl c = tl.c("gui.banned.title.permanent").a(n.r);
+   public static final tl a = tl.c("gui.banned.name.title").a(n.r);
+   private static final tl d = tl.c("gui.banned.skin.title").a(n.r);
+   private static final tl e = tl.a("gui.banned.skin.description", tl.b("https://aka.ms/mcjavamoderation"));
+
+   public static exc a(BooleanConsumer $$0, BanDetails $$1) {
+      return new exc($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", tk.m, true);
    }
 
-   public ewz(Runnable $$0, tn $$1, tn $$2, tn $$3, boolean $$4) {
-      super($$1);
-      this.k = $$0;
-      this.b = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public static exc a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new exc($$1x -> {
+         if ($$1x) {
+            ac.i().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", tk.m, true);
    }
 
-   @Override
-   public tn g() {
-      return tm.a(super.g(), this.b);
+   public static exc a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new exc($$1x -> {
+         if ($$1x) {
+            ac.i().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$1.run();
+      }, a, tl.a("gui.banned.name.description", tl.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", tk.m, true);
    }
 
-   @Override
-   protected void aH_() {
-      super.aH_();
-      this.c = etl.a(this.i, this.b, this.g - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = ary.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
-      int $$2 = 150;
-      this.d(ess.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
+   private static tl a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   @Override
-   public void a(esh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-      this.c.a($$0, this.g / 2, 90);
+   private static tl b(BanDetails $$0) {
+      return tl.a("gui.banned.description", c($$0), d($$0), tl.b("https://aka.ms/mcjavamoderation"));
    }
 
-   @Override
-   public boolean ay_() {
-      return this.m;
+   private static tl c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fjr $$4 = fjr.a($$3);
+         tl $$5;
+         if ($$4 != null) {
+            $$5 = tn.a($$4.a().e(), uh.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = tl.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = tl.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
+
+         return tl.a("gui.banned.description.reason", $$5);
+      } else {
+         return tl.c("gui.banned.description.unknownreason");
+      }
+   }
+
+   private static tl d(BanDetails $$0) {
+      if (f($$0)) {
+         tl $$1 = e($$0);
+         return tl.a("gui.banned.description.temporary", tl.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return tl.c("gui.banned.description.permanent").a(n.r);
+      }
+   }
+
+   private static tl e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return tk.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? tk.c($$1.toMinutes()) : tk.b($$1.toHours());
+      }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

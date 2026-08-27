@@ -3,11 +3,11 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
 public class gr implements gi<StringArgumentType, gr.a> {
-   public void a(gr.a $$0, sq $$1) {
+   public void a(gr.a $$0, so $$1) {
       $$1.a((Enum<?>)$$0.b);
    }
 
-   public gr.a a(sq $$0) {
+   public gr.a a(so $$0) {
       StringType $$1 = $$0.b(StringType.class);
       return new gr.a($$1);
    }

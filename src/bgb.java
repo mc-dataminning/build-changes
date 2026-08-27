@@ -1,44 +1,27 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-public class bgb extends bgd {
-   public static final bgb a = new bgb(0.0F);
-   public static final Codec<bgb> b = arh.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bgb::new, bgb::d);
-   private final float d;
+public abstract class bgb implements bgg {
+   private static final Codec<Either<Float, bgb>> a = Codec.either(Codec.FLOAT, jb.M.q().dispatch(bgb::c, bgc::codec));
+   public static final Codec<bgb> c = a.xmap(
+      $$0 -> (bgb)$$0.map(bfz::a, $$0x -> $$0x), $$0 -> $$0.c() == bgc.a ? Either.left(((bfz)$$0).d()) : Either.right($$0)
+   );
 
-   public static bgb a(float $$0) {
-      return $$0 == 0.0F ? a : new bgb($$0);
+   public static Codec<bgb> a(float $$0, float $$1) {
+      return arf.a(c, (Function<bgb, DataResult<bgb>>)($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      }));
    }
 
-   private bgb(float $$0) {
-      this.d = $$0;
-   }
+   public abstract float a();
 
-   public float d() {
-      return this.d;
-   }
+   public abstract float b();
 
-   @Override
-   public float a(ase $$0) {
-      return this.d;
-   }
-
-   @Override
-   public float a() {
-      return this.d;
-   }
-
-   @Override
-   public float b() {
-      return this.d + 1.0F;
-   }
-
-   @Override
-   public bge<?> c() {
-      return bge.a;
-   }
-
-   @Override
-   public String toString() {
-      return Float.toString(this.d);
-   }
+   public abstract bgc<?> c();
 }

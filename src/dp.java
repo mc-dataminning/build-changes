@@ -19,14 +19,14 @@ import javax.annotation.Nullable;
 
 public class dp {
    private final dp.d[] a;
-   final aey b;
+   final aew b;
 
-   public dp(aey $$0, dp.d[] $$1) {
+   public dp(aew $$0, dp.d[] $$1) {
       this.b = $$0;
       this.a = $$1;
    }
 
-   public aey a() {
+   public aew a() {
       return this.b;
    }
 
@@ -34,7 +34,7 @@ public class dp {
       return this.a;
    }
 
-   public dp a(@Nullable qy $$0, CommandDispatcher<dt> $$1, dt $$2) throws dv {
+   public dp a(@Nullable qw $$0, CommandDispatcher<dt> $$1, dt $$2) throws dv {
       return this;
    }
 
@@ -43,7 +43,7 @@ public class dp {
       return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
    }
 
-   public static dp a(aey $$0, CommandDispatcher<dt> $$1, dt $$2, List<String> $$3) {
+   public static dp a(aew $$0, CommandDispatcher<dt> $$1, dt $$2, List<String> $$3) {
       List<dp.d> $$4 = new ArrayList<>($$3.size());
       Set<String> $$5 = new ObjectArraySet();
 
@@ -159,13 +159,13 @@ public class dp {
    }
 
    public static class a {
-      public static final dp.a a = new dp.a((aey)null);
+      public static final dp.a a = new dp.a((aew)null);
       @Nullable
-      private final aey b;
+      private final aew b;
       private boolean c;
       private Optional<dp> d = Optional.empty();
 
-      public a(@Nullable aey $$0) {
+      public a(@Nullable aew $$0) {
          this.b = $$0;
       }
 
@@ -175,7 +175,7 @@ public class dp {
          this.d = Optional.of($$0);
       }
 
-      public Optional<dp> a(afm $$0) {
+      public Optional<dp> a(afk $$0) {
          if (!this.c) {
             if (this.b != null) {
                this.d = $$0.a(this.b);
@@ -188,8 +188,8 @@ public class dp {
       }
 
       @Nullable
-      public aey a() {
-         return this.d.<aey>map($$0 -> $$0.b).orElse(this.b);
+      public aew a() {
+         return this.d.<aew>map($$0 -> $$0.b).orElse(this.b);
       }
    }
 
@@ -201,7 +201,7 @@ public class dp {
       }
 
       @Override
-      public void execute(afm $$0, dt $$1, Deque<afm.b> $$2, int $$3, int $$4, @Nullable afm.c $$5) throws CommandSyntaxException {
+      public void execute(afk $$0, dt $$1, Deque<afk.b> $$2, int $$3, int $$4, @Nullable afk.c $$5) throws CommandSyntaxException {
          if ($$5 != null) {
             String $$6 = this.a.getReader().getString();
             $$5.a($$4, $$6);
@@ -212,7 +212,7 @@ public class dp {
          }
       }
 
-      private int a(afm $$0, dt $$1) throws CommandSyntaxException {
+      private int a(afk $$0, dt $$1) throws CommandSyntaxException {
          return $$0.b().execute(du.a(this.a, $$1x -> $$1));
       }
 
@@ -228,21 +228,21 @@ public class dp {
       private static final int c = 8;
       private final Object2ObjectLinkedOpenHashMap<List<String>, dp> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
 
-      public c(aey $$0, dp.d[] $$1, List<String> $$2) {
+      public c(aew $$0, dp.d[] $$1, List<String> $$2) {
          super($$0, $$1);
          this.b = $$2;
       }
 
       @Override
-      public dp a(@Nullable qy $$0, CommandDispatcher<dt> $$1, dt $$2) throws dv {
+      public dp a(@Nullable qw $$0, CommandDispatcher<dt> $$1, dt $$2) throws dv {
          if ($$0 == null) {
-            throw new dv(tn.a("commands.function.error.missing_arguments", this.a()));
+            throw new dv(tl.a("commands.function.error.missing_arguments", this.a()));
          } else {
             List<String> $$3 = new ArrayList<>(this.b.size());
 
             for (String $$4 : this.b) {
                if (!$$0.e($$4)) {
-                  throw new dv(tn.a("commands.function.error.missing_argument", this.a(), $$4));
+                  throw new dv(tl.a("commands.function.error.missing_argument", this.a(), $$4));
                }
 
                $$3.add(a($$0.c($$4)));
@@ -266,17 +266,17 @@ public class dp {
          }
       }
 
-      private static String a(rs $$0) {
-         if ($$0 instanceof rb $$1) {
+      private static String a(rq $$0) {
+         if ($$0 instanceof qz $$1) {
             return a.format((double)$$1.k());
-         } else if ($$0 instanceof qz $$2) {
+         } else if ($$0 instanceof qx $$2) {
             return a.format($$2.j());
-         } else if ($$0 instanceof qw $$3) {
+         } else if ($$0 instanceof qu $$3) {
             return String.valueOf($$3.i());
-         } else if ($$0 instanceof rn $$4) {
+         } else if ($$0 instanceof rl $$4) {
             return String.valueOf($$4.h());
          } else {
-            return $$0 instanceof rg $$5 ? String.valueOf($$5.f()) : $$0.r_();
+            return $$0 instanceof re $$5 ? String.valueOf($$5.f()) : $$0.r_();
          }
       }
 
@@ -306,13 +306,13 @@ public class dp {
 
                   $$4[$$5] = new dp.b($$12);
                } catch (CommandSyntaxException var13) {
-                  throw new dv(tn.a("commands.function.error.parse", this.a(), $$11, var13.getMessage()));
+                  throw new dv(tl.a("commands.function.error.parse", this.a(), $$11, var13.getMessage()));
                }
             }
          }
 
-         aey $$14 = this.a();
-         return new dp(new aey($$14.b(), $$14.a() + "/" + $$0.hashCode()), $$4);
+         aew $$14 = this.a();
+         return new dp(new aew($$14.b(), $$14.a() + "/" + $$0.hashCode()), $$4);
       }
 
       static {
@@ -323,7 +323,7 @@ public class dp {
 
    @FunctionalInterface
    public interface d {
-      void execute(afm var1, dt var2, Deque<afm.b> var3, int var4, int var5, @Nullable afm.c var6) throws CommandSyntaxException;
+      void execute(afk var1, dt var2, Deque<afk.b> var3, int var4, int var5, @Nullable afk.c var6) throws CommandSyntaxException;
    }
 
    public static class e implements dp.d {
@@ -334,7 +334,7 @@ public class dp {
       }
 
       @Override
-      public void execute(afm $$0, dt $$1, Deque<afm.b> $$2, int $$3, int $$4, @Nullable afm.c $$5) {
+      public void execute(afk $$0, dt $$1, Deque<afk.b> $$2, int $$3, int $$4, @Nullable afk.c $$5) {
          ac.a(this.a.a($$0), $$5x -> {
             dp.d[] $$6 = $$5x.b();
             if ($$5 != null) {
@@ -345,7 +345,7 @@ public class dp {
             int $$8 = Math.min($$6.length, $$7);
 
             for (int $$9 = $$8 - 1; $$9 >= 0; $$9--) {
-               $$2.addFirst(new afm.b($$1, $$4 + 1, $$6[$$9]));
+               $$2.addFirst(new afk.b($$1, $$4 + 1, $$6[$$9]));
             }
          }, () -> {
             if ($$5 != null) {
@@ -388,7 +388,7 @@ public class dp {
       }
 
       @Override
-      public void execute(afm $$0, dt $$1, Deque<afm.b> $$2, int $$3, int $$4, @Nullable afm.c $$5) throws CommandSyntaxException {
+      public void execute(afk $$0, dt $$1, Deque<afk.b> $$2, int $$3, int $$4, @Nullable afk.c $$5) throws CommandSyntaxException {
          throw new IllegalStateException("Tried to execute an uninstantiated macro");
       }
    }

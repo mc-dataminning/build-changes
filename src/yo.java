@@ -1,95 +1,145 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class yo implements vf<wy> {
-   private final int a;
-   private final byte b;
-   private final boolean c;
-   @Nullable
-   private final List<ebv> d;
-   @Nullable
-   private final eby.b e;
+public abstract class yo implements vd<ww> {
+   protected final int a;
+   protected final short b;
+   protected final short c;
+   protected final short d;
+   protected final byte e;
+   protected final byte f;
+   protected final boolean g;
+   protected final boolean h;
+   protected final boolean i;
 
-   public yo(int $$0, byte $$1, boolean $$2, @Nullable Collection<ebv> $$3, @Nullable eby.b $$4) {
+   protected yo(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3 != null ? Lists.newArrayList($$3) : null;
+      this.d = $$3;
       this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
-   public yo(sq $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readByte();
-      this.c = $$0.readBoolean();
-      this.d = $$0.c($$0x -> $$0x.a((sq.a)($$0xx -> {
-            ebv.a $$1x = $$0xx.b(ebv.a.class);
-            byte $$2x = $$0xx.readByte();
-            byte $$3x = $$0xx.readByte();
-            byte $$4x = (byte)($$0xx.readByte() & 15);
-            tn $$5x = $$0xx.c(sq::l);
-            return new ebv($$1x, $$2x, $$3x, $$4x, $$5x);
-         })));
-      int $$1 = $$0.readUnsignedByte();
-      if ($$1 > 0) {
-         int $$2 = $$0.readUnsignedByte();
-         int $$3 = $$0.readUnsignedByte();
-         int $$4 = $$0.readUnsignedByte();
-         byte[] $$5 = $$0.b();
-         this.e = new eby.b($$3, $$4, $$1, $$2, $$5);
-      } else {
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-      $$0.k(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$0x.a($$1, ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.c());
-            $$0xx.k($$1x.d());
-            $$0xx.k($$1x.e());
-            $$0xx.k($$1x.f() & 15);
-            $$0xx.a($$1x.g(), sq::a);
-         }));
-      if (this.e != null) {
-         $$0.k(this.e.c);
-         $$0.k(this.e.d);
-         $$0.k(this.e.a);
-         $$0.k(this.e.b);
-         $$0.a(this.e.e);
-      } else {
-         $$0.k(0);
-      }
-   }
-
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public String toString() {
+      return "Entity_" + super.toString();
    }
 
-   public void a(eby $$0) {
-      if (this.d != null) {
-         $$0.a(this.d);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
+   @Nullable
+   public biq a(cpv $$0) {
+      return $$0.a(this.a);
    }
 
-   public byte d() {
+   public short a() {
       return this.b;
    }
 
-   public boolean e() {
+   public short d() {
       return this.c;
+   }
+
+   public short e() {
+      return this.d;
+   }
+
+   public byte f() {
+      return this.e;
+   }
+
+   public byte g() {
+      return this.f;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public boolean i() {
+      return this.i;
+   }
+
+   public boolean j() {
+      return this.g;
+   }
+
+   public static class a extends yo {
+      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
+         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
+      }
+
+      public static yo.a b(so $$0) {
+         int $$1 = $$0.m();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         boolean $$5 = $$0.readBoolean();
+         return new yo.a($$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      public void a(so $$0) {
+         $$0.c(this.a);
+         $$0.l(this.b);
+         $$0.l(this.c);
+         $$0.l(this.d);
+         $$0.a(this.g);
+      }
+   }
+
+   public static class b extends yo {
+      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
+      }
+
+      public static yo.b b(so $$0) {
+         int $$1 = $$0.m();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         byte $$5 = $$0.readByte();
+         byte $$6 = $$0.readByte();
+         boolean $$7 = $$0.readBoolean();
+         return new yo.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void a(so $$0) {
+         $$0.c(this.a);
+         $$0.l(this.b);
+         $$0.l(this.c);
+         $$0.l(this.d);
+         $$0.k(this.e);
+         $$0.k(this.f);
+         $$0.a(this.g);
+      }
+   }
+
+   public static class c extends yo {
+      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
+         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
+      }
+
+      public static yo.c b(so $$0) {
+         int $$1 = $$0.m();
+         byte $$2 = $$0.readByte();
+         byte $$3 = $$0.readByte();
+         boolean $$4 = $$0.readBoolean();
+         return new yo.c($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void a(so $$0) {
+         $$0.c(this.a);
+         $$0.k(this.e);
+         $$0.k(this.f);
+         $$0.a(this.g);
+      }
    }
 }

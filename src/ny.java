@@ -1,42 +1,24 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
 
 public class ny {
-   public static final aex<dwt> a = oa.a("pillager_outpost/base_plates");
+   public static final aev<dwr> a = a("empty");
 
-   public static void a(nt<dwt> $$0) {
-      hh<dzb> $$1 = $$0.a(je.aA);
-      hg<dzb> $$2 = $$1.b(ob.q);
-      hh<dwt> $$3 = $$0.a(je.aC);
-      hg<dwt> $$4 = $$3.b(oa.a);
-      $$0.a(a, new dwt($$4, ImmutableList.of(Pair.of(dwr.a("pillager_outpost/base_plate"), 1)), dwt.a.b));
-      oa.a(
-         $$0,
-         "pillager_outpost/towers",
-         new dwt(
-            $$4,
-            ImmutableList.of(Pair.of(dwr.a(ImmutableList.of(dwr.a("pillager_outpost/watchtower"), dwr.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            dwt.a.b
-         )
-      );
-      oa.a($$0, "pillager_outpost/feature_plates", new dwt($$4, ImmutableList.of(Pair.of(dwr.a("pillager_outpost/feature_plate"), 1)), dwt.a.a));
-      oa.a(
-         $$0,
-         "pillager_outpost/features",
-         new dwt(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dwr.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(dwr.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(dwr.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(dwr.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(dwr.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(dwr.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(dwr.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(dwr.g(), 6)
-            ),
-            dwt.a.b
-         )
-      );
+   public static aev<dwr> a(String $$0) {
+      return aev.a(jc.aC, new aew($$0));
+   }
+
+   public static void a(nr<dwr> $$0, String $$1, dwr $$2) {
+      $$0.a(a($$1), $$2);
+   }
+
+   public static void a(nr<dwr> $$0) {
+      hf<dwr> $$1 = $$0.a(jc.aC);
+      he<dwr> $$2 = $$1.b(a);
+      $$0.a(a, new dwr($$2, ImmutableList.of(), dwr.a.b));
+      nn.a($$0);
+      nw.a($$0);
+      oi.a($$0);
+      ni.a($$0);
+      oh.a($$0);
    }
 }

@@ -1,19 +1,17 @@
-public record wh(int b, ebd c, float d) implements vy {
-   public static final aey a = new aey("debug/path");
+public record wh(gw b) implements vw {
+   public static final aew a = new aew("debug/poi_removed");
 
-   public wh(sq $$0) {
-      this($$0.readInt(), ebd.b($$0), $$0.readFloat());
+   public wh(so $$0) {
+      this($$0.e());
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.p(this.b);
-      this.c.a($$0);
-      $$0.a(this.d);
+   public void a(so $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public aey a() {
+   public aew a() {
       return a;
    }
 }

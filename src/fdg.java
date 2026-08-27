@@ -1,73 +1,59 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class fdg extends eym {
-   private static final Logger k = LogUtils.getLogger();
-   public static final dls a = new dls((long)"test1".hashCode(), true, false);
-   protected final eym b;
-   private ess l;
-   private ess m;
-   private ess n;
-   private ess o;
-   protected etb c;
-   private fdl p;
-
-   public fdg(eym $$0) {
-      super(tn.c("selectWorld.title"));
-      this.b = $$0;
+public record fdg(dlq a, hq<dit> b, dln c, hl<aff> d, afg e, cqo f) {
+   public fdg(dlo $$0, hl<aff> $$1, afg $$2, cqo $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   @Override
-   protected void aH_() {
-      this.c = new etb(this.i, this.g / 2 - 100, 22, 200, 20, this.c, tn.c("selectWorld.search"));
-      this.c.b($$0 -> this.p.a($$0));
-      this.p = new fdl(this, this.f, this.g, this.h, 48, this.h - 64, 36, this.c.a(), this.p);
-      this.e(this.c);
-      this.e(this.p);
-      this.m = this.d(ess.a(tn.c("selectWorld.select"), $$0 -> this.p.d().ifPresent(fdl.c::d)).a(this.g / 2 - 154, this.h - 52, 150, 20).a());
-      this.d(ess.a(tn.c("selectWorld.create"), $$0 -> fda.a(this.f, this)).a(this.g / 2 + 4, this.h - 52, 150, 20).a());
-      this.n = this.d(ess.a(tn.c("selectWorld.edit"), $$0 -> this.p.d().ifPresent(fdl.c::g)).a(this.g / 2 - 154, this.h - 28, 72, 20).a());
-      this.l = this.d(ess.a(tn.c("selectWorld.delete"), $$0 -> this.p.d().ifPresent(fdl.c::e)).a(this.g / 2 - 76, this.h - 28, 72, 20).a());
-      this.o = this.d(ess.a(tn.c("selectWorld.recreate"), $$0 -> this.p.d().ifPresent(fdl.c::h)).a(this.g / 2 + 4, this.h - 28, 72, 20).a());
-      this.d(ess.a(tm.k, $$0 -> this.f.a(this.b)).a(this.g / 2 + 82, this.h - 28, 72, 20).a());
-      this.a(false, false);
-      this.c(this.c);
+   public fdg(dlq $$0, dln $$1, hl<aff> $$2, afg $$3, cqo $$4) {
+      this($$0, $$2.a(aff.c).d(jc.aI), $$1, $$2.a(aff.c), $$3, $$4);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return super.a($$0, $$1, $$2) ? true : this.c.a($$0, $$1, $$2);
+   public fdg a(dlq $$0, dln $$1) {
+      return new fdg($$0, this.b, $$1, this.d, this.e, this.f);
    }
 
-   @Override
-   public void az_() {
-      this.f.a(this.b);
+   public fdg a(fdg.b $$0) {
+      return new fdg($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
    }
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.c.a($$0, $$1);
+   public fdg a(fdg.a $$0) {
+      return new fdg(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
    }
 
-   @Override
-   public void a(esh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.p.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+   public hr.b a() {
+      return this.d.a();
    }
 
-   public void a(boolean $$0, boolean $$1) {
-      this.m.i = $$0;
-      this.n.i = $$0;
-      this.o.i = $$0;
-      this.l.i = $$1;
+   public dlq b() {
+      return this.a;
    }
 
-   @Override
-   public void h() {
-      if (this.p != null) {
-         this.p.i().forEach(fdl.a::close);
-      }
+   public hq<dit> c() {
+      return this.b;
+   }
+
+   public dln d() {
+      return this.c;
+   }
+
+   public hl<aff> e() {
+      return this.d;
+   }
+
+   public afg f() {
+      return this.e;
+   }
+
+   public cqo g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<hr.b, dln, dln> {
+   }
+
+   public interface b extends UnaryOperator<dlq> {
    }
 }

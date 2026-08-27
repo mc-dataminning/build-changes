@@ -1,7 +1,29 @@
-public interface ejd<T> {
-   void a(ejb<T> var1);
+public enum ejd {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-   boolean a(gw var1, T var2);
+   private final int h;
 
-   int a();
+   private ejd(int $$0) {
+      this.h = $$0;
+   }
+
+   public static ejd a(int $$0) {
+      for (ejd $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
+   }
+
+   public int a() {
+      return this.h;
+   }
 }

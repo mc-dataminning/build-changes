@@ -1,106 +1,84 @@
-public class fho extends ffo<bzy> implements feg {
-   private final fie a;
-   private final fie b;
-   private final fie f;
-   private final fie g;
-   private final fie h;
-   private final fie i;
-   private final fie j;
+public class fho<T extends biq> extends ffm<T> implements ffl, fhn {
+   private final fic b;
+   private final fic f;
+   private final fic g;
+   private final fic h;
+   private final fic i;
+   private final fic j;
+   protected final fic a;
 
-   public fho(fie $$0) {
-      super(foo::i);
-      this.a = $$0.b("root");
-      this.b = this.a.b("body");
-      this.f = this.b.b("right_arm");
-      this.g = this.b.b("left_arm");
-      this.h = this.b.b("right_wing");
-      this.i = this.b.b("left_wing");
-      this.j = this.a.b("head");
+   public fho(fic $$0) {
+      this.b = $$0;
+      this.f = $$0.b("head");
+      this.g = this.f.b("hat");
+      this.h = this.g.b("hat_rim");
+      this.a = this.f.b("nose");
+      this.i = $$0.b("right_leg");
+      this.j = $$0.b("left_leg");
    }
 
    public static fik b() {
-      fim $$0 = new fim();
-      fin $$1 = $$0.a();
-      fin $$2 = $$1.a("root", fij.c(), fig.a(0.0F, -2.5F, 0.0F));
-      $$2.a("head", fij.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fii(0.0F)), fig.a(0.0F, 20.0F, 0.0F));
-      fin $$3 = $$2.a(
-         "body",
-         fij.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fii(0.0F)).a(0, 16).a(-1.5F, 1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fii(-0.2F)),
-         fig.a(0.0F, 20.0F, 0.0F)
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      float $$2 = 0.5F;
+      fil $$3 = $$1.a("head", fih.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fie.a);
+      fil $$4 = $$3.a("hat", fih.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fig(0.51F)), fie.a);
+      $$4.a("hat_rim", fih.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fie.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$3.a("nose", fih.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), fie.a(0.0F, -2.0F, 0.0F));
+      fil $$5 = $$1.a("body", fih.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), fie.a);
+      $$5.a("jacket", fih.c().a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fig(0.5F)), fie.a);
+      $$1.a(
+         "arms",
+         fih.c()
+            .a(44, 22)
+            .a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F)
+            .a(44, 22)
+            .a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, true)
+            .a(40, 38)
+            .a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
+         fie.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
       );
-      $$3.a("right_arm", fij.c().a(23, 0).a(-1.25F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fii(-0.1F)), fig.a(-1.75F, 0.25F, 0.0F));
-      $$3.a("left_arm", fij.c().a(23, 6).a(-0.75F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fii(-0.1F)), fig.a(1.75F, 0.25F, 0.0F));
-      $$3.a("left_wing", fij.c().a(16, 14).a().a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fii(0.0F)).a(false), fig.a(0.5F, 1.0F, 1.0F));
-      $$3.a("right_wing", fij.c().a(16, 14).a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fii(0.0F)), fig.a(-0.5F, 1.0F, 1.0F));
-      return fik.a($$0, 32, 32);
-   }
-
-   public void a(bzy $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fie::c);
-      this.j.f = $$4 * (float) (Math.PI / 180.0);
-      this.j.e = $$5 * (float) (Math.PI / 180.0);
-      float $$6 = ary.b($$3 * 5.5F * (float) (Math.PI / 180.0)) * 0.1F;
-      this.f.g = (float) (Math.PI / 5) + $$6;
-      this.g.g = -((float) (Math.PI / 5) + $$6);
-      if ($$0.gd()) {
-         this.b.e = 0.0F;
-         this.a($$0.eS(), $$0.eT(), $$6);
-      } else {
-         this.b.e = (float) (Math.PI / 20);
-      }
-
-      this.i.f = 1.0995574F + ary.b($$3 * 45.836624F * (float) (Math.PI / 180.0)) * (float) (Math.PI / 180.0) * 16.2F;
-      this.h.f = -this.i.f;
-      this.i.e = 0.47123888F;
-      this.i.g = -0.47123888F;
-      this.h.e = 0.47123888F;
-      this.h.g = 0.47123888F;
-   }
-
-   private void a(cjh $$0, cjh $$1, float $$2) {
-      if ($$0.b() && $$1.b()) {
-         this.f.e = -1.2217305F;
-         this.f.f = (float) (Math.PI / 12);
-         this.f.g = -0.47123888F - $$2;
-         this.g.e = -1.2217305F;
-         this.g.f = (float) (-Math.PI / 12);
-         this.g.g = 0.47123888F + $$2;
-      } else {
-         if (!$$0.b()) {
-            this.f.e = (float) (Math.PI * 7.0 / 6.0);
-            this.f.f = (float) (Math.PI / 12);
-            this.f.g = -0.47123888F - $$2;
-         }
-
-         if (!$$1.b()) {
-            this.g.e = (float) (Math.PI * 7.0 / 6.0);
-            this.g.f = (float) (-Math.PI / 12);
-            this.g.g = 0.47123888F + $$2;
-         }
-      }
+      $$1.a("right_leg", fih.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fie.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fih.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fie.a(2.0F, 12.0F, 0.0F));
+      return $$0;
    }
 
    @Override
-   public fie a() {
-      return this.a;
+   public fic a() {
+      return this.b;
    }
 
    @Override
-   public void a(bjc $$0, elr $$1) {
-      boolean $$2 = $$0 == bjc.b;
-      fie $$3 = $$2 ? this.f : this.g;
-      this.a.a($$1);
-      this.b.a($$1);
-      $$3.a($$1);
-      $$1.b(0.55F, 0.55F, 0.55F);
-      this.a($$1, $$2);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      boolean $$6 = false;
+      if ($$0 instanceof cbc) {
+         $$6 = ((cbc)$$0).s() > 0;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      if ($$6) {
+         this.f.g = 0.3F * arw.a(0.45F * $$3);
+         this.f.e = 0.4F;
+      } else {
+         this.f.g = 0.0F;
+      }
+
+      this.i.e = arw.b($$1 * 0.6662F) * 1.4F * $$2 * 0.5F;
+      this.j.e = arw.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2 * 0.5F;
+      this.i.f = 0.0F;
+      this.j.f = 0.0F;
    }
 
-   private void a(elr $$0, boolean $$1) {
-      if ($$1) {
-         $$0.a(0.046875, -0.15625, 0.078125);
-      } else {
-         $$0.a(-0.046875, -0.15625, 0.078125);
-      }
+   @Override
+   public fic d() {
+      return this.f;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.f.k = $$0;
+      this.g.k = $$0;
+      this.h.k = $$0;
    }
 }

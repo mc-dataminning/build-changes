@@ -1,32 +1,40 @@
-public class acc implements vf<abe> {
-   private final boolean a;
-   private final boolean b;
+public class acc implements vd<abc> {
+   private final int a;
+   private final aew b;
+   private final boolean c;
 
-   public acc(boolean $$0, boolean $$1) {
+   public acc(int $$0, cmk<?> $$1, boolean $$2) {
       this.a = $$0;
-      this.b = $$1;
+      this.b = $$1.a();
+      this.c = $$2;
    }
 
-   public acc(sq $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.readBoolean();
+   public acc(so $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.s();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.k(this.a);
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public int a() {
       return this.a;
    }
 
-   public boolean d() {
+   public aew d() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

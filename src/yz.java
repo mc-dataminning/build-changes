@@ -1,15 +1,17 @@
-public class yz implements vf<wy> {
-   public yz() {
-   }
+import java.util.List;
+import java.util.UUID;
 
-   public yz(sq $$0) {
+public record yz(List<UUID> a) implements vd<ww> {
+   public yz(so $$0) {
+      this($$0.a(so::o));
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
+      $$0.a(this.a, so::a);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 }

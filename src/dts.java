@@ -1,16 +1,50 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public interface dts<P extends dtr> {
-   dts<dtq> a = a("constant", dtq.b);
-   dts<dtu> b = a("uniform", dtu.a);
-   dts<dtp> c = a("biased_to_bottom", dtp.a);
-   dts<dtv> d = a("very_biased_to_bottom", dtv.a);
-   dts<dtt> e = a("trapezoid", dtt.a);
-   dts<dtw> f = a("weighted_list", dtw.a);
+public class dts extends dtp {
+   public static final Codec<dts> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dlm.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dlm.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dts::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dlm d;
+   private final dlm e;
+   private final LongSet f = new LongOpenHashSet();
 
-   Codec<P> codec();
+   private dts(dlm $$0, dlm $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   private static <P extends dtr> dts<P> a(String $$0, Codec<P> $$1) {
-      return ht.a(jd.O, $$0, () -> $$1);
+   public static dts a(dlm $$0, dlm $$1) {
+      return new dts($$0, $$1);
+   }
+
+   @Override
+   public int a(asc $$0, dlp $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
+         }
+
+         return $$2;
+      } else {
+         return arw.b($$0, $$2, $$3);
+      }
+   }
+
+   @Override
+   public dtq<?> a() {
+      return dtq.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

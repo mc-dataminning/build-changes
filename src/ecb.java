@@ -1,84 +1,210 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class ecb {
-   private static final String a = "command_storage_";
-   private final Map<String, ecb.a> b = Maps.newHashMap();
-   private final ece c;
+public class ecb implements ecl {
+   private final ecm a;
+   private final ecl b;
 
-   public ecb(ece $$0) {
-      this.c = $$0;
+   public ecb(ecm $$0, ecl $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private ecb.a a(String $$0) {
-      ecb.a $$1 = new ecb.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   @Override
+   public int a() {
+      return this.b.a();
    }
 
-   private ebt.a<ecb.a> b(String $$0) {
-      return new ebt.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), atc.h);
+   @Override
+   public int b() {
+      return this.b.b();
    }
 
-   public qy a(aey $$0) {
-      String $$1 = $$0.b();
-      ecb.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new qy();
+   @Override
+   public int c() {
+      return this.b.c();
    }
 
-   public void a(aey $$0, qy $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   @Override
+   public float d() {
+      return this.b.d();
    }
 
-   public Stream<aey> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   @Override
+   public long e() {
+      return this.b.e();
    }
 
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
+   @Override
+   public long f() {
+      return this.b.f();
    }
 
-   static class a extends ebt {
-      private static final String a = "contents";
-      private final Map<String, qy> b = Maps.newHashMap();
+   @Override
+   public String g() {
+      return this.a.g();
+   }
 
-      ecb.a b(qy $$0) {
-         qy $$1 = $$0.p("contents");
+   @Override
+   public int h() {
+      return this.b.h();
+   }
 
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
+   @Override
+   public void a(int $$0) {
+   }
 
-         return this;
-      }
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
 
-      @Override
-      public qy a(qy $$0) {
-         qy $$1 = new qy();
-         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
-         $$0.a("contents", $$1);
-         return $$0;
-      }
+   @Override
+   public int j() {
+      return this.b.j();
+   }
 
-      public qy a(String $$0) {
-         qy $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new qy();
-      }
+   @Override
+   public boolean k() {
+      return this.b.k();
+   }
 
-      public void a(String $$0, qy $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
+   @Override
+   public int l() {
+      return this.b.l();
+   }
 
-         this.c();
-      }
+   @Override
+   public cps m() {
+      return this.a.m();
+   }
 
-      public Stream<aey> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new aey($$0, $$1));
-      }
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public void a(float $$0) {
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(gw $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void f(int $$0) {
+   }
+
+   @Override
+   public void a(cps $$0) {
+   }
+
+   @Override
+   public boolean n() {
+      return this.a.n();
+   }
+
+   @Override
+   public boolean o() {
+      return this.a.o();
+   }
+
+   @Override
+   public boolean p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public cpr q() {
+      return this.a.q();
+   }
+
+   @Override
+   public dha.c r() {
+      return this.b.r();
+   }
+
+   @Override
+   public void a(dha.c $$0) {
+   }
+
+   @Override
+   public bgv s() {
+      return this.a.s();
+   }
+
+   @Override
+   public boolean t() {
+      return this.a.t();
+   }
+
+   @Override
+   public eha<MinecraftServer> u() {
+      return this.b.u();
+   }
+
+   @Override
+   public int v() {
+      return 0;
+   }
+
+   @Override
+   public void g(int $$0) {
+   }
+
+   @Override
+   public int w() {
+      return 0;
+   }
+
+   @Override
+   public void h(int $$0) {
+   }
+
+   @Override
+   public UUID x() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, cpx $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

@@ -1,64 +1,48 @@
-public class act implements vf<abe> {
-   private final gw a;
-   private final aey b;
-   private final aey c;
-   private final aey d;
-   private final String e;
-   private final ddw.a f;
+public class act implements vd<abc> {
+   private static final int a = 384;
+   private final gw b;
+   private final String[] c;
+   private final boolean d;
 
-   public act(gw $$0, aey $$1, aey $$2, aey $$3, String $$4, ddw.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public act(gw $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   public act(sq $$0) {
-      this.a = $$0.e();
-      this.b = $$0.s();
-      this.c = $$0.s();
-      this.d = $$0.s();
-      this.e = $$0.r();
-      this.f = ddw.a.a($$0.r()).orElse(ddw.a.b);
+   public act(so $$0) {
+      this.b = $$0.e();
+      this.d = $$0.readBoolean();
+      this.c = new String[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.c[$$1] = $$0.d(384);
+      }
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f.c());
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.c[$$1]);
+      }
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
    public gw a() {
-      return this.a;
-   }
-
-   public aey d() {
       return this.b;
    }
 
-   public aey e() {
-      return this.c;
-   }
-
-   public aey f() {
+   public boolean d() {
       return this.d;
    }
 
-   public String g() {
-      return this.e;
-   }
-
-   public ddw.a h() {
-      return this.f;
+   public String[] e() {
+      return this.c;
    }
 }

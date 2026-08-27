@@ -1,27 +1,13 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-@FunctionalInterface
-public interface any {
-   Optional<ant> getResource(aey var1);
-
-   default ant getResourceOrThrow(aey $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+public abstract class any<T> implements ann {
+   @Override
+   public final CompletableFuture<Void> a(ann.a $$0, ant $$1, bdp $$2, bdp $$3, Executor $$4, Executor $$5) {
+      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
    }
 
-   default InputStream open(aey $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
-   }
+   protected abstract T b(ant var1, bdp var2);
 
-   default BufferedReader openAsReader(aey $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
-
-   static any fromMap(Map<aey, ant> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
-   }
+   protected abstract void a(T var1, ant var2, bdp var3);
 }

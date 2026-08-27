@@ -1,74 +1,46 @@
-public enum bix implements asr {
-   a(bix.a.a, 0, 0, "mainhand"),
-   b(bix.a.a, 1, 5, "offhand"),
-   c(bix.a.b, 0, 1, "feet"),
-   d(bix.a.b, 1, 2, "legs"),
-   e(bix.a.b, 2, 3, "chest"),
-   f(bix.a.b, 3, 4, "head");
-
-   public static final asr.a<bix> g = asr.a(bix::values);
-   private final bix.a h;
-   private final int i;
-   private final int j;
-   private final String k;
-
-   private bix(bix.a $$0, int $$1, int $$2, String $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.k = $$3;
-   }
-
-   public bix.a a() {
-      return this.h;
-   }
-
-   public int b() {
-      return this.i;
-   }
-
-   public int a(int $$0) {
-      return $$0 + this.i;
-   }
-
-   public int d() {
-      return this.j;
-   }
-
-   public String e() {
-      return this.k;
-   }
-
-   public boolean f() {
-      return this.h == bix.a.b;
+public abstract class bix extends bji {
+   protected bix(biu<? extends bix> $$0, cpv $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.k;
+   protected void a(double $$0, boolean $$1, dfj $$2, gw $$3) {
    }
 
-   public static bix a(String $$0) {
-      bix $$1 = g.a($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
-      }
-   }
+   @Override
+   public void h(ehn $$0) {
+      if (this.cW()) {
+         if (this.aX()) {
+            this.a(0.02F, $$0);
+            this.a(bjm.a, this.do());
+            this.f(this.do().a(0.8F));
+         } else if (this.bl()) {
+            this.a(0.02F, $$0);
+            this.a(bjm.a, this.do());
+            this.f(this.do().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aA()) {
+               $$1 = this.dL().a_(this.aG()).b().h() * 0.91F;
+            }
 
-   public static bix a(bix.a $$0, int $$1) {
-      for (bix $$2 : values()) {
-         if ($$2.a() == $$0 && $$2.b() == $$1) {
-            return $$2;
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aA()) {
+               $$1 = this.dL().a_(this.aG()).b().h() * 0.91F;
+            }
+
+            this.a(this.aA() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bjm.a, this.do());
+            this.f(this.do().a((double)$$1));
          }
       }
 
-      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
+      this.q(false);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   public boolean c_() {
+      return false;
    }
 }

@@ -1,53 +1,36 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
-
-public class xf implements vf<wy> {
+public class xf implements vd<ww> {
    private final gw a;
-   private final dcz<?> b;
-   @Nullable
-   private final qy c;
+   private final dfj b;
 
-   public static xf a(dcx $$0, Function<dcx, qy> $$1) {
-      return new xf($$0.p(), $$0.u(), $$1.apply($$0));
-   }
-
-   public static xf a(dcx $$0) {
-      return a($$0, dcx::as_);
-   }
-
-   private xf(gw $$0, dcz<?> $$1, qy $$2) {
+   public xf(gw $$0, dfj $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2.g() ? null : $$2;
    }
 
-   public xf(sq $$0) {
+   public xf(cpb $$0, gw $$1) {
+      this($$1, $$0.a_($$1));
+   }
+
+   public xf(so $$0) {
       this.a = $$0.e();
-      this.b = $$0.a(jd.l);
-      this.c = $$0.p();
+      this.b = $$0.a(csv.o);
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
-      $$0.a(jd.l, this.b);
-      $$0.a((rs)this.c);
+      $$0.a(csv.o, this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public gw a() {
-      return this.a;
-   }
-
-   public dcz<?> d() {
+   public dfj a() {
       return this.b;
    }
 
-   @Nullable
-   public qy e() {
-      return this.c;
+   public gw d() {
+      return this.a;
    }
 }

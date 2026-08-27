@@ -1,33 +1,29 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum eql implements asa, asr {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+public class eql {
+   private final List<tp> a = Lists.newArrayList();
 
-   public static final Codec<eql> d = asr.a(eql::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private eql(int $$0, String $$1, String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public void a(tp $$0) {
+      this.a.add($$0);
    }
 
-   @Override
-   public String c() {
-      return this.f;
+   @Nullable
+   public tp a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : tp.a(this.a);
+      }
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public tp b() {
+      tp $$0 = this.a();
+      return $$0 != null ? $$0 : tp.b;
    }
 
-   @Override
-   public String b() {
-      return this.g;
+   public void c() {
+      this.a.clear();
    }
 }

@@ -1,7 +1,8 @@
-public record adt() implements adr {
-   public static final adt a = new adt();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public void a(sq $$0) {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface adt {
 }

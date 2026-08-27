@@ -1,29 +1,112 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class dtk {
-   public static final Codec<dtk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, diu.c).fieldOf("height").forGetter(dtk::a), jd.f.q().fieldOf("block").orElse(csy.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, dtk::new)
-   );
-   private final csx b;
-   private final int c;
+   public static final aev<dtj> a = a("classic_flat");
+   public static final aev<dtj> b = a("tunnelers_dream");
+   public static final aev<dtj> c = a("water_world");
+   public static final aev<dtj> d = a("overworld");
+   public static final aev<dtj> e = a("snowy_kingdom");
+   public static final aev<dtj> f = a("bottomless_pit");
+   public static final aev<dtj> g = a("desert");
+   public static final aev<dtj> h = a("redstone_ready");
+   public static final aev<dtj> i = a("the_void");
 
-   public dtk(int $$0, csx $$1) {
-      this.c = $$0;
-      this.b = $$1;
+   public static void a(nr<dtj> $$0) {
+      new dtk.a($$0).a();
    }
 
-   public int a() {
-      return this.c;
+   private static aev<dtj> a(String $$0) {
+      return aev.a(jc.av, new aew($$0));
    }
 
-   public dfl b() {
-      return this.b.n();
-   }
+   static class a {
+      private final nr<dtj> a;
 
-   @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + jd.f.b(this.b);
+      a(nr<dtj> $$0) {
+         this.a = $$0;
+      }
+
+      private void a(aev<dtj> $$0, cpu $$1, aev<cqt> $$2, Set<aev<dvo>> $$3, boolean $$4, boolean $$5, dti... $$6) {
+         hf<dvo> $$7 = this.a.a(jc.aB);
+         hf<dum> $$8 = this.a.a(jc.ay);
+         hf<cqt> $$9 = this.a.a(jc.ap);
+         hi.a<dvo> $$10 = hi.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         dtl $$11 = new dtl(Optional.of($$10), $$9.b($$2), dtl.b($$8));
+         if ($$4) {
+            $$11.a();
+         }
+
+         if ($$5) {
+            $$11.b();
+         }
+
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
+         }
+
+         this.a.a($$0, new dtj($$1.k().j(), $$11));
+      }
+
+      public void a() {
+         this.a(dtk.a, csw.i, cra.b, ImmutableSet.of(dvb.a), false, false, new dti(1, csw.i), new dti(2, csw.j), new dti(1, csw.F));
+         this.a(dtk.b, csw.b, cra.t, ImmutableSet.of(dvb.j, dvb.r), true, false, new dti(1, csw.i), new dti(5, csw.j), new dti(230, csw.b), new dti(1, csw.F));
+         this.a(
+            dtk.c,
+            cji.pL,
+            cra.T,
+            ImmutableSet.of(dvb.m, dvb.l, dvb.g),
+            false,
+            false,
+            new dti(90, csw.G),
+            new dti(5, csw.L),
+            new dti(5, csw.j),
+            new dti(5, csw.b),
+            new dti(64, csw.rI),
+            new dti(1, csw.F)
+         );
+         this.a(
+            dtk.d,
+            csw.bt,
+            cra.b,
+            ImmutableSet.of(dvb.a, dvb.j, dvb.f, dvb.k, dvb.r),
+            true,
+            true,
+            new dti(1, csw.i),
+            new dti(3, csw.j),
+            new dti(59, csw.b),
+            new dti(1, csw.F)
+         );
+         this.a(
+            dtk.e,
+            csw.dN,
+            cra.d,
+            ImmutableSet.of(dvb.a, dvb.c),
+            false,
+            false,
+            new dti(1, csw.dN),
+            new dti(1, csw.i),
+            new dti(3, csw.j),
+            new dti(59, csw.b),
+            new dti(1, csw.F)
+         );
+         this.a(dtk.f, cji.oF, cra.b, ImmutableSet.of(dvb.a), false, false, new dti(1, csw.i), new dti(3, csw.j), new dti(2, csw.m));
+         this.a(
+            dtk.g,
+            csw.I,
+            cra.f,
+            ImmutableSet.of(dvb.a, dvb.b, dvb.j, dvb.r),
+            true,
+            false,
+            new dti(8, csw.I),
+            new dti(52, csw.aV),
+            new dti(3, csw.b),
+            new dti(1, csw.F)
+         );
+         this.a(dtk.h, cji.ll, cra.f, ImmutableSet.of(), false, false, new dti(116, csw.aV), new dti(3, csw.b), new dti(1, csw.F));
+         this.a(dtk.i, csw.hW, cra.a, ImmutableSet.of(), true, false, new dti(1, csw.a));
+      }
    }
 }

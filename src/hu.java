@@ -1,106 +1,64 @@
 import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Lifecycle;
-import java.util.List;
+import com.mojang.serialization.codecs.UnboundedMapCodec;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public interface hu extends hi.b {
-   Logger a = LogUtils.getLogger();
-   hu.b b = new hu.c(Map.of()).c();
+public class hu {
+   private static final Map<aev<? extends hq<?>>, hu.a<?>> b = ac.a(() -> {
+      Builder<aev<? extends hq<?>>, hu.a<?>> $$0 = ImmutableMap.builder();
+      a($$0, jc.ap, cqt.b);
+      a($$0, jc.aq, th.a);
+      a($$0, jc.aE, clk.a);
+      a($$0, jc.aD, cli.a);
+      a($$0, jc.au, dis.h);
+      a($$0, jc.p, bhq.a);
+      return $$0.build();
+   });
+   public static final Codec<hr> a = a();
 
-   <E> Optional<ht<E>> c(aex<? extends ht<? extends E>> var1);
-
-   @Override
-   default <T> Optional<hi.c<T>> a(aex<? extends ht<? extends T>> $$0) {
-      return this.c($$0).map(ht::p);
+   private static <E> void a(Builder<aev<? extends hq<?>>, hu.a<?>> $$0, aev<? extends hq<E>> $$1, Codec<E> $$2) {
+      $$0.put($$1, new hu.a<>($$1, $$2));
    }
 
-   default <E> ht<E> d(aex<? extends ht<? extends E>> $$0) {
-      return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
+   private static Stream<hr.d<?>> a(hr $$0) {
+      return $$0.b().filter($$0x -> b.containsKey($$0x.a()));
    }
 
-   Stream<hu.d<?>> b();
-
-   static hu.b a(final ht<? extends ht<?>> $$0) {
-      return new hu.b() {
-         @Override
-         public <T> Optional<ht<T>> c(aex<? extends ht<? extends T>> $$0x) {
-            ht<ht<T>> $$1 = (ht<ht<T>>)$$0;
-            return $$1.d((aex<ht<T>>)$$0);
-         }
-
-         @Override
-         public Stream<hu.d<?>> b() {
-            return $$0.g().stream().map(hu.d::a);
-         }
-
-         @Override
-         public hu.b c() {
-            return this;
-         }
-      };
+   private static <E> DataResult<? extends Codec<E>> a(aev<? extends hq<E>> $$0) {
+      return Optional.ofNullable(b.get($$0))
+         .map($$0x -> $$0x.b())
+         .<DataResult<? extends Codec<E>>>map(DataResult::success)
+         .orElseGet(() -> DataResult.error(() -> "Unknown or not serializable registry: " + $$0));
    }
 
-   default hu.b c() {
-      class a extends hu.c implements hu.b {
-         protected a(Stream<hu.d<?>> $$1) {
-            super($$1);
-         }
-      }
-
-      return new a(this.b().map(hu.d::c));
+   private static <E> Codec<hr> a() {
+      Codec<aev<? extends hq<E>>> $$0 = aew.a.xmap(aev::a, aev::a);
+      Codec<hq<E>> $$1 = $$0.partialDispatch(
+         "type", $$0x -> DataResult.success($$0x.c()), $$0x -> a($$0x).map($$1x -> hs.a($$0x, Lifecycle.experimental(), $$1x))
+      );
+      UnboundedMapCodec<? extends aev<? extends hq<?>>, ? extends hq<?>> $$2 = Codec.unboundedMap($$0, $$1);
+      return a($$2);
    }
 
-   default Lifecycle d() {
-      return this.b().map($$0 -> $$0.b.d()).reduce(Lifecycle.stable(), Lifecycle::add);
+   private static <K extends aev<? extends hq<?>>, V extends hq<?>> Codec<hr> a(UnboundedMapCodec<K, V> $$0) {
+      return $$0.xmap(hr.c::new, $$0x -> a($$0x).collect(ImmutableMap.toImmutableMap($$0xx -> $$0xx.a(), $$0xx -> $$0xx.b())));
    }
 
-   public interface b extends hu {
+   public static Stream<hr.d<?>> a(hl<aff> $$0) {
+      return a($$0.c(aff.b));
    }
 
-   public static class c implements hu {
-      private final Map<? extends aex<? extends ht<?>>, ? extends ht<?>> c;
-
-      public c(List<? extends ht<?>> $$0) {
-         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(ht::c, $$0x -> $$0x));
-      }
-
-      public c(Map<? extends aex<? extends ht<?>>, ? extends ht<?>> $$0) {
-         this.c = Map.copyOf($$0);
-      }
-
-      public c(Stream<hu.d<?>> $$0) {
-         this.c = $$0.collect(ImmutableMap.toImmutableMap(hu.d::a, hu.d::b));
-      }
-
-      @Override
-      public <E> Optional<ht<E>> c(aex<? extends ht<? extends E>> $$0) {
-         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
-      }
-
-      @Override
-      public Stream<hu.d<?>> b() {
-         return this.c.entrySet().stream().map(hu.d::a);
-      }
+   public static Stream<hr.d<?>> b(hl<aff> $$0) {
+      Stream<hr.d<?>> $$1 = $$0.a(aff.a).b();
+      Stream<hr.d<?>> $$2 = a($$0);
+      return Stream.concat($$2, $$1);
    }
 
-   public static record d<T>(aex<? extends ht<T>> a, ht<T> b) {
-
-      private static <T, R extends ht<? extends T>> hu.d<T> a(Entry<? extends aex<? extends ht<?>>, R> $$0) {
-         return a((aex<? extends ht<?>>)$$0.getKey(), $$0.getValue());
-      }
-
-      private static <T> hu.d<T> a(aex<? extends ht<?>> $$0, ht<?> $$1) {
-         return new hu.d<>((aex<? extends ht<T>>)$$0, (ht<T>)$$1);
-      }
-
-      private hu.d<T> c() {
-         return new hu.d<>(this.a, this.b.l());
-      }
+   static record a<E>(aev<? extends hq<E>> a, Codec<E> b) {
    }
 }

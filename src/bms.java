@@ -2,15 +2,24 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bms {
-   public static bla<cbj> a() {
-      return bol.a((Function<bol.b<cbj>, ? extends App<bol.c<cbj>, boo<cbj>>>)($$0 -> $$0.group($$0.c(bsj.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               cbk $$3 = $$1.go();
-               if ($$3.b() != cbm.b && $$3.b() != cbm.m && $$1.t() == 0 && $$3.c() <= 1) {
-                  $$1.a($$1.go().a(cbm.b));
-                  $$1.c($$0xx);
-                  return true;
-               } else {
+   private static final float b = 0.95F;
+   public static final int a = 3;
+
+   public static bky<bjg> a() {
+      return boj.a((Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$0 -> $$0.group($$0.b(bsh.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.z.i() <= 0.95F) {
                   return false;
+               } else {
+                  gw $$5 = $$0.<hd>b($$1).b();
+                  if ($$5.a($$3.dl(), 3.0)) {
+                     dfj $$6 = $$2.a_($$5);
+                     if ($$6.a(csw.od)) {
+                        csr $$7 = (csr)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
+                     }
+                  }
+
+                  return true;
                }
             })));
    }

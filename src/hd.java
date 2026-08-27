@@ -1,38 +1,50 @@
-import com.google.common.collect.Sets;
-import java.util.Arrays;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-public enum hd {
-   a(hc.c),
-   b(hc.c, hc.f),
-   c(hc.f),
-   d(hc.d, hc.f),
-   e(hc.d),
-   f(hc.d, hc.e),
-   g(hc.e),
-   h(hc.c, hc.e);
+public final class hd {
+   public static final Codec<hd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cpv.g.fieldOf("dimension").forGetter(hd::a), gw.a.fieldOf("pos").forGetter(hd::b)).apply($$0, hd::a)
+   );
+   private final aev<cpv> b;
+   private final gw c;
 
-   private final Set<hc> i;
-   private final ib j;
+   private hd(aev<cpv> $$0, gw $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   private hd(hc... $$0) {
-      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
-      this.j = new ib(0, 0, 0);
+   public static hd a(aev<cpv> $$0, gw $$1) {
+      return new hd($$0, $$1);
+   }
 
-      for (hc $$1 : $$0) {
-         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
+   public aev<cpv> a() {
+      return this.b;
+   }
+
+   public gw b() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         hd $$1 = (hd)$$0;
+         return Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
+      } else {
+         return false;
       }
    }
 
-   public Set<hc> a() {
-      return this.i;
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
    }
 
-   public int b() {
-      return this.j.u();
-   }
-
-   public int c() {
-      return this.j.w();
+   @Override
+   public String toString() {
+      return this.b + " " + this.c;
    }
 }

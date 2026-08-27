@@ -1,78 +1,64 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-public class zd implements vf<wy> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final int d;
-   private final ed.a e;
-   private final ed.a f;
-   private final boolean g;
+public class zd implements vd<ww> {
+   private final zd.a a;
+   private final List<aew> b;
+   private final List<aew> c;
+   private final aph d;
 
-   public zd(ed.a $$0, double $$1, double $$2, double $$3) {
-      this.e = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = 0;
-      this.g = false;
-      this.f = null;
+   public zd(zd.a $$0, Collection<aew> $$1, Collection<aew> $$2, aph $$3) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = ImmutableList.copyOf($$2);
+      this.d = $$3;
    }
 
-   public zd(ed.a $$0, bis $$1, ed.a $$2) {
-      this.e = $$0;
-      this.d = $$1.ah();
-      this.f = $$2;
-      ehp $$3 = $$2.a($$1);
-      this.a = $$3.c;
-      this.b = $$3.d;
-      this.c = $$3.e;
-      this.g = true;
-   }
-
-   public zd(sq $$0) {
-      this.e = $$0.b(ed.a.class);
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.g = $$0.readBoolean();
-      if (this.g) {
-         this.d = $$0.m();
-         this.f = $$0.b(ed.a.class);
+   public zd(so $$0) {
+      this.a = $$0.b(zd.a.class);
+      this.d = aph.a($$0);
+      this.b = $$0.a(so::s);
+      if (this.a == zd.a.a) {
+         this.c = $$0.a(so::s);
       } else {
-         this.d = 0;
-         this.f = null;
+         this.c = ImmutableList.of();
       }
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.e);
+   public void a(so $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.g);
-      if (this.g) {
-         $$0.c(this.d);
-         $$0.a(this.f);
+      this.d.b($$0);
+      $$0.a(this.b, so::a);
+      if (this.a == zd.a.a) {
+         $$0.a(this.c, so::a);
       }
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public ed.a a() {
-      return this.e;
+   public List<aew> a() {
+      return this.b;
    }
 
-   @Nullable
-   public ehp a(cpx $$0) {
-      if (this.g) {
-         bis $$1 = $$0.a(this.d);
-         return $$1 == null ? new ehp(this.a, this.b, this.c) : this.f.a($$1);
-      } else {
-         return new ehp(this.a, this.b, this.c);
-      }
+   public List<aew> d() {
+      return this.c;
+   }
+
+   public aph e() {
+      return this.d;
+   }
+
+   public zd.a f() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

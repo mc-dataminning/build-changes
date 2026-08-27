@@ -1,29 +1,75 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.util.List;
 
-public class dsn extends dsd {
-   public static final Codec<dsn> b = bfk.b(dfl.b).comapFlatMap(dsn::a, $$0 -> $$0.c).fieldOf("entries").codec();
-   private final bfk<dfl> c;
+public class dsn extends dss {
+   public static final Codec<dsn> a = dsb.a.fieldOf("provider").xmap(dsn::new, $$0 -> $$0.b).codec();
+   private final dsb b;
 
-   private static DataResult<dsn> a(bfk<dfl> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new dsn($$0));
-   }
-
-   public dsn(bfk<dfl> $$0) {
-      this.c = $$0;
-   }
-
-   public dsn(bfk.a<dfl> $$0) {
-      this($$0.a());
+   public dsn(dsb $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected dse<?> a() {
-      return dse.b;
+   protected dst<?> a() {
+      return dst.e;
    }
 
    @Override
-   public dfl a(ase $$0, gw $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public void a(dss.a $$0) {
+      List<gw> $$1 = Lists.newArrayList();
+      List<gw> $$2 = $$0.e();
+      List<gw> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
+      }
+
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.g().e());
+            this.a($$0, $$1x.g(2).e());
+            this.a($$0, $$1x.g().e(2));
+            this.a($$0, $$1x.g(2).e(2));
+
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
+            }
+         });
+      }
+   }
+
+   private void a(dss.a $$0, gw $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
+      }
+   }
+
+   private void b(dss.a $$0, gw $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         gw $$3 = $$1.b($$2);
+         if (dnw.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
+      }
    }
 }

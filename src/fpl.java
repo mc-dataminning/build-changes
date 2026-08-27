@@ -1,255 +1,111 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import org.joml.Vector3f;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class fpl {
-   public static final List<String> a = Lists.newArrayList(new String[]{"layer0", "layer1", "layer2", "layer3", "layer4"});
-   private static final float b = 7.5F;
-   private static final float c = 8.5F;
+   public static final fpl a = new fpl();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final fpl.a[] c;
+   private final aew[] d;
 
-   public fpi a(Function<gbk, fzg> $$0, fpi $$1) {
-      Map<String, Either<gbk, String>> $$2 = Maps.newHashMap();
-      List<fpe> $$3 = Lists.newArrayList();
+   private fpl() {
+      this.c = new fpl.a[0];
+      this.d = new aew[0];
+   }
 
-      for (int $$4 = 0; $$4 < a.size(); $$4++) {
-         String $$5 = a.get($$4);
-         if (!$$1.b($$5)) {
-            break;
-         }
+   public fpl(gbj $$0, fpg $$1, List<fpk> $$2) {
+      this.d = $$2.stream().flatMap(fpk::b).map(fpk.b::a).distinct().toArray(aew[]::new);
+      Object2IntMap<aew> $$3 = new Object2IntOpenHashMap();
 
-         gbk $$6 = $$1.c($$5);
-         $$2.put($$5, Either.left($$6));
-         fza $$7 = $$0.apply($$6).e();
-         $$3.addAll(this.a($$4, $$5, $$7));
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
       }
 
-      $$2.put("particle", $$1.b("particle") ? Either.left($$1.c("particle")) : $$2.get("layer0"));
-      fpi $$8 = new fpi(null, $$3, $$2, false, $$1.c(), $$1.h(), $$1.e());
-      $$8.c = $$1.c;
-      return $$8;
-   }
+      List<fpl.a> $$5 = Lists.newArrayList();
 
-   private List<fpe> a(int $$0, String $$1, fza $$2) {
-      Map<hc, fpf> $$3 = Maps.newHashMap();
-      $$3.put(hc.d, new fpf(null, $$0, $$1, new fph(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)));
-      $$3.put(hc.c, new fpf(null, $$0, $$1, new fph(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0)));
-      List<fpe> $$4 = Lists.newArrayList();
-      $$4.add(new fpe(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3, null, true));
-      $$4.addAll(this.a($$2, $$1, $$0));
-      return $$4;
-   }
-
-   private List<fpe> a(fza $$0, String $$1, int $$2) {
-      float $$3 = (float)$$0.a();
-      float $$4 = (float)$$0.b();
-      List<fpe> $$5 = Lists.newArrayList();
-
-      for (fpl.a $$6 : this.a($$0)) {
-         float $$7 = 0.0F;
-         float $$8 = 0.0F;
-         float $$9 = 0.0F;
-         float $$10 = 0.0F;
-         float $$11 = 0.0F;
-         float $$12 = 0.0F;
-         float $$13 = 0.0F;
-         float $$14 = 0.0F;
-         float $$15 = 16.0F / $$3;
-         float $$16 = 16.0F / $$4;
-         float $$17 = (float)$$6.b();
-         float $$18 = (float)$$6.c();
-         float $$19 = (float)$$6.d();
-         fpl.b $$20 = $$6.a();
-         switch ($$20) {
-            case a:
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$13 = $$19;
-               $$8 = $$19;
-               $$10 = $$19;
-               $$14 = $$19 + 1.0F;
-               break;
-            case b:
-               $$13 = $$19;
-               $$14 = $$19 + 1.0F;
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$8 = $$19 + 1.0F;
-               $$10 = $$19 + 1.0F;
-               break;
-            case c:
-               $$11 = $$19;
-               $$7 = $$19;
-               $$9 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-               break;
-            case d:
-               $$11 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$7 = $$19 + 1.0F;
-               $$9 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-         }
-
-         $$7 *= $$15;
-         $$9 *= $$15;
-         $$8 *= $$16;
-         $$10 *= $$16;
-         $$8 = 16.0F - $$8;
-         $$10 = 16.0F - $$10;
-         $$11 *= $$15;
-         $$12 *= $$15;
-         $$13 *= $$16;
-         $$14 *= $$16;
-         Map<hc, fpf> $$21 = Maps.newHashMap();
-         $$21.put($$20.a(), new fpf(null, $$2, $$1, new fph(new float[]{$$11, $$13, $$12, $$14}, 0)));
-         switch ($$20) {
-            case a:
-               $$5.add(new fpe(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21, null, true));
-               break;
-            case b:
-               $$5.add(new fpe(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
-               break;
-            case c:
-               $$5.add(new fpe(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21, null, true));
-               break;
-            case d:
-               $$5.add(new fpe(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
-         }
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         fpk $$7 = $$2.get($$6);
+         gbf $$8 = this.a($$0, $$1, $$7);
+         fpl.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new fpl.b($$2x, $$1x.b());
+         }).toArray(fpl.b[]::new);
+         $$5.add(new fpl.a($$9, $$8));
       }
 
-      return $$5;
+      this.c = $$5.toArray(new fpl.a[0]);
    }
 
-   private List<fpl.a> a(fza $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      List<fpl.a> $$3 = Lists.newArrayList();
-      $$0.d().forEach($$4 -> {
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            for (int $$6 = 0; $$6 < $$1; $$6++) {
-               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
-               this.a(fpl.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(fpl.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(fpl.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(fpl.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+   @Nullable
+   private gbf a(gbj $$0, fpg $$1, fpk $$2) {
+      gbq $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gbg.a);
+   }
+
+   @Nullable
+   public gbf a(gbf $$0, cjf $$1, @Nullable fix $$2, @Nullable bjg $$3, int $$4) {
+      if (this.c.length != 0) {
+         cja $$5 = $$1.d();
+         int $$6 = this.d.length;
+         float[] $$7 = new float[$$6];
+
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            aew $$9 = this.d[$$8];
+            fym $$10 = fyl.a($$5, $$9);
+            if ($$10 != null) {
+               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
+            } else {
+               $$7[$$8] = Float.NEGATIVE_INFINITY;
             }
          }
-      });
-      return $$3;
-   }
 
-   private void a(fpl.b $$0, List<fpl.a> $$1, fza $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
-      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
-      if ($$9) {
-         this.a($$1, $$0, $$4, $$5);
-      }
-   }
+         for (fpl.a $$11 : this.c) {
+            if ($$11.a($$7)) {
+               gbf $$12 = $$11.b;
+               if ($$12 == null) {
+                  return $$0;
+               }
 
-   private void a(List<fpl.a> $$0, fpl.b $$1, int $$2, int $$3) {
-      fpl.a $$4 = null;
-
-      for (fpl.a $$5 : $$0) {
-         if ($$5.a() == $$1) {
-            int $$6 = $$1.d() ? $$3 : $$2;
-            if ($$5.d() == $$6) {
-               $$4 = $$5;
-               break;
+               return $$12;
             }
          }
       }
 
-      int $$7 = $$1.d() ? $$3 : $$2;
-      int $$8 = $$1.d() ? $$2 : $$3;
-      if ($$4 == null) {
-         $$0.add(new fpl.a($$1, $$8, $$7));
-      } else {
-         $$4.a($$8);
-      }
-   }
-
-   private boolean a(fza $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
+      return $$0;
    }
 
    static class a {
-      private final fpl.b a;
-      private int b;
-      private int c;
-      private final int d;
+      private final fpl.b[] a;
+      @Nullable
+      final gbf b;
 
-      public a(fpl.b $$0, int $$1, int $$2) {
+      a(fpl.b[] $$0, @Nullable gbf $$1) {
          this.a = $$0;
          this.b = $$1;
-         this.c = $$1;
-         this.d = $$2;
       }
 
-      public void a(int $$0) {
-         if ($$0 < this.b) {
-            this.b = $$0;
-         } else if ($$0 > this.c) {
-            this.c = $$0;
+      boolean a(float[] $$0) {
+         for (fpl.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
          }
-      }
 
-      public fpl.b a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public int c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.d;
+         return true;
       }
    }
 
-   static enum b {
-      a(hc.b, 0, -1),
-      b(hc.a, 0, 1),
-      c(hc.f, -1, 0),
-      d(hc.e, 1, 0);
+   static class b {
+      public final int a;
+      public final float b;
 
-      private final hc e;
-      private final int f;
-      private final int g;
-
-      private b(hc $$0, int $$1, int $$2) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-      }
-
-      public hc a() {
-         return this.e;
-      }
-
-      public int b() {
-         return this.f;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      boolean d() {
-         return this == b || this == a;
+      b(int $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

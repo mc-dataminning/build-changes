@@ -1,41 +1,45 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class fsc implements frp.a {
-   private static final int a = 60;
-   private final Set<hz> b = Sets.newHashSet();
+public class fsc implements frn.a {
+   private final List<gw> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
 
-   fsc() {
+   public void a(gw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
+      elt $$5 = $$1.getBuffer(fom.z());
 
-   public void a(hz $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(hz $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(elr $$0, fog $$1, double $$2, double $$3, double $$4) {
-      gw $$5 = gw.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
-         }
-      });
-   }
-
-   private static void a(elr $$0, fog $$1, hz $$2) {
-      int $$3 = 1;
-      gw $$4 = $$2.q();
-      gw $$5 = $$4.b(-1, -1, -1);
-      gw $$6 = $$4.b(1, 1, 1);
-      frp.a($$0, $$1, $$5, $$6, 0.2F, 1.0F, 0.2F, 0.15F);
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         gw $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         foc.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
+      }
    }
 }

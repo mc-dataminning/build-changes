@@ -1,69 +1,40 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
+import java.util.Locale;
+import java.util.Objects;
 
-public class azh extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("slot_0", "list")
-      .put("slot_1", "sidebar")
-      .put("slot_2", "below_name")
-      .put("slot_3", "sidebar.team.black")
-      .put("slot_4", "sidebar.team.dark_blue")
-      .put("slot_5", "sidebar.team.dark_green")
-      .put("slot_6", "sidebar.team.dark_aqua")
-      .put("slot_7", "sidebar.team.dark_red")
-      .put("slot_8", "sidebar.team.dark_purple")
-      .put("slot_9", "sidebar.team.gold")
-      .put("slot_10", "sidebar.team.gray")
-      .put("slot_11", "sidebar.team.dark_gray")
-      .put("slot_12", "sidebar.team.blue")
-      .put("slot_13", "sidebar.team.green")
-      .put("slot_14", "sidebar.team.aqua")
-      .put("slot_15", "sidebar.team.red")
-      .put("slot_16", "sidebar.team.light_purple")
-      .put("slot_17", "sidebar.team.yellow")
-      .put("slot_18", "sidebar.team.white")
-      .build();
+public abstract class azh extends DataFix {
+   private final String a;
 
-   public azh(Schema $$0) {
-      super($$0, false);
+   public azh(String $$0, Schema $$1, boolean $$2) {
+      super($$1, $$2);
+      this.a = $$0;
    }
 
-   @Nullable
-   private static String a(String $$0) {
-      return a.get($$0);
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(ayx.x);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(ayx.x);
+      Type<Pair<String, String>> $$2 = DSL.named(ayx.v.typeName(), baf.a());
+      if (!Objects.equals(this.getOutputSchema().getType(ayx.v), $$2)) {
+         throw new IllegalStateException("Entity name type is not what was expected.");
+      } else {
+         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
+                  String $$3 = this.a($$2xxx);
+                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
+                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
+                  if (!$$5.equals($$4, true, true)) {
+                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
+                  } else {
+                     return $$3;
+                  }
+               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
+      }
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayz.o);
-      OpticFinder<?> $$1 = $$0.findField("data");
-      return this.fixTypeEverywhereTyped(
-         "Scoreboard DisplaySlot rename",
-         $$0,
-         $$1x -> $$1x.updateTyped(
-               $$1,
-               $$0xx -> $$0xx.update(
-                     DSL.remainderFinder(),
-                     $$0xxx -> $$0xxx.update(
-                           "DisplaySlots",
-                           $$0xxxx -> $$0xxxx.updateMapValues(
-                                 $$0xxxxx -> $$0xxxxx.mapFirst(
-                                       $$0xxxxxx -> (Dynamic)DataFixUtils.orElse(
-                                             $$0xxxxxx.asString().result().map(azh::a).map($$0xxxxxx::createString), $$0xxxxxx
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
+   protected abstract String a(String var1);
 }

@@ -8,8 +8,8 @@ public class cq extends cw<cq.a> {
       return new cq.a($$1, $$3, $$4);
    }
 
-   public void a(akt $$0, cjh $$1, bis $$2) {
-      ecs $$3 = bq.b($$0, $$2);
+   public void a(akr $$0, cjf $$1, biq $$2) {
+      ecq $$3 = bq.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
@@ -31,7 +31,7 @@ public class cq extends cw<cq.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(cjh $$0, ecs $$1) {
+      public boolean a(cjf $$0, ecq $$1) {
          return this.a.isPresent() && !this.a.get().a($$0) ? false : this.b.isEmpty() || this.b.get().a($$1);
       }
 

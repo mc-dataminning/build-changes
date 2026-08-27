@@ -1,28 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class bli {
-   public static <E extends bji> bla<E> a(int $$0, BiPredicate<E, bis> $$1) {
-      return bol.a((Function<bol.b<E>, ? extends App<bol.c<E>, boo<E>>>)($$2 -> $$2.group($$2.a(bsj.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bis $$7 = $$5.cY();
-               bis $$8 = $$2.<bis>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bis $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.aa();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+public class bli implements bmk {
+   private final biq a;
+   private final boolean b;
+
+   public bli(biq $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static boolean a(bji $$0, bis $$1, int $$2) {
-      return $$1.bv() && $$1.a($$0, (double)$$2) && $$1.dL() == $$0.dL();
+   @Override
+   public ehn a() {
+      return this.b ? this.a.dj().b(0.0, (double)this.a.cH(), 0.0) : this.a.dj();
+   }
+
+   @Override
+   public gw b() {
+      return this.a.dl();
+   }
+
+   @Override
+   public boolean a(bjg $$0) {
+      if (this.a instanceof bjg $$1) {
+         if (!$$1.bv()) {
+            return false;
+         } else {
+            Optional<bsj> $$3 = $$0.dN().c(bsh.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public biq c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

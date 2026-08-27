@@ -1,52 +1,49 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Locale;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-public class arv implements TypeAdapterFactory {
-   @Nullable
-   public <T> TypeAdapter<T> create(Gson $$0, TypeToken<T> $$1) {
-      Class<T> $$2 = $$1.getRawType();
-      if (!$$2.isEnum()) {
-         return null;
+public record arv(arv.a a, String b) {
+   public static arv a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new arv(arv.a.c, $$2 + " brand changed to '" + $$4 + "'");
       } else {
-         final Map<String, T> $$3 = Maps.newHashMap();
-
-         for (T $$4 : $$2.getEnumConstants()) {
-            $$3.put(this.a($$4), $$4);
-         }
-
-         return new TypeAdapter<T>() {
-            public void write(JsonWriter $$0, T $$1) throws IOException {
-               if ($$1 == null) {
-                  $$0.nullValue();
-               } else {
-                  $$0.value(arv.this.a($$1));
-               }
-            }
-
-            @Nullable
-            public T read(JsonReader $$0) throws IOException {
-               if ($$0.peek() == JsonToken.NULL) {
-                  $$0.nextNull();
-                  return null;
-               } else {
-                  return $$3.get($$0.nextString());
-               }
-            }
-         };
+         return $$3.getSigners() == null
+            ? new arv(arv.a.b, $$2 + " jar signature invalidated")
+            : new arv(arv.a.a, $$2 + " jar signature and brand is untouched");
       }
    }
 
-   String a(Object $$0) {
-      return $$0 instanceof Enum ? ((Enum)$$0).name().toLowerCase(Locale.ROOT) : $$0.toString().toLowerCase(Locale.ROOT);
+   public boolean a() {
+      return this.a.e;
+   }
+
+   public arv a(arv $$0) {
+      return new arv((arv.a)ObjectUtils.max(new arv.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   }
+
+   public String b() {
+      return this.a.d + " " + this.b;
+   }
+
+   public arv.a c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(String $$0, boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
    }
 }

@@ -1,55 +1,33 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
 
-public abstract class anf<T> {
-   private final ehf a;
+public interface anf {
+   UnaryOperator<tl> a = UnaryOperator.identity();
+   anf b = a(a, true);
+   anf c = a(a("pack.source.builtin"), true);
+   anf d = a(a("pack.source.feature"), false);
+   anf e = a(a("pack.source.world"), true);
+   anf f = a(a("pack.source.server"), true);
 
-   protected anf(ehf $$0) {
-      this.a = $$0;
-   }
+   tl a(tl var1);
 
-   @Nullable
-   public T a(Path $$0, List<ehg> $$1) throws IOException {
-      Path $$2 = $$0;
+   boolean a();
 
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return null;
-      }
-
-      if ($$3.isSymbolicLink()) {
-         this.a.a($$0, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
+   static anf a(final UnaryOperator<tl> $$0, final boolean $$1) {
+      return new anf() {
+         @Override
+         public tl a(tl $$0x) {
+            return $$0.apply($$0);
          }
 
-         $$2 = Files.readSymbolicLink($$0);
-         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      }
-
-      if ($$3.isDirectory()) {
-         this.a.b($$2, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         } else {
-            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+         @Override
+         public boolean a() {
+            return $$1;
          }
-      } else {
-         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
-      }
+      };
    }
 
-   @Nullable
-   protected abstract T d(Path var1) throws IOException;
-
-   @Nullable
-   protected abstract T c(Path var1) throws IOException;
+   private static UnaryOperator<tl> a(String $$0) {
+      tl $$1 = tl.c($$0);
+      return $$1x -> tl.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   }
 }

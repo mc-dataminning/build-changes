@@ -1,100 +1,45 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import org.slf4j.Logger;
 
 public class clj {
-   public static final Codec<clj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(clk.b.fieldOf("material").forGetter(clj::b), clm.b.fieldOf("pattern").forGetter(clj::a)).apply($$0, clj::new)
-   );
-   private static final Logger c = LogUtils.getLogger();
-   public static final String b = "Trim";
-   private static final tn d = tn.c(ac.a("item", new aey("smithing_template.upgrade"))).a(n.h);
-   private final hg<clk> e;
-   private final hg<clm> f;
-   private final Function<cgs, aey> g;
-   private final Function<cgs, aey> h;
+   public static final aev<cli> a = a("quartz");
+   public static final aev<cli> b = a("iron");
+   public static final aev<cli> c = a("netherite");
+   public static final aev<cli> d = a("redstone");
+   public static final aev<cli> e = a("copper");
+   public static final aev<cli> f = a("gold");
+   public static final aev<cli> g = a("emerald");
+   public static final aev<cli> h = a("diamond");
+   public static final aev<cli> i = a("lapis");
+   public static final aev<cli> j = a("amethyst");
 
-   public clj(hg<clk> $$0, hg<clm> $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = ac.b($$1x -> {
-         aey $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
-      });
-      this.h = ac.b($$1x -> {
-         aey $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
-      });
+   public static void a(nr<cli> $$0) {
+      a($$0, a, cji.nN, uh.a.a(14931140), 0.1F);
+      a($$0, b, cji.nQ, uh.a.a(15527148), 0.2F, Map.of(cgr.c, "iron_darker"));
+      a($$0, c, cji.nV, uh.a.a(6445145), 0.3F, Map.of(cgr.g, "netherite_darker"));
+      a($$0, d, cji.ll, uh.a.a(9901575), 0.4F);
+      a($$0, e, cji.nS, uh.a.a(11823181), 0.5F);
+      a($$0, f, cji.nU, uh.a.a(14594349), 0.6F, Map.of(cgr.d, "gold_darker"));
+      a($$0, g, cji.nL, uh.a.a(1155126), 0.7F);
+      a($$0, h, cji.nK, uh.a.a(7269586), 0.8F, Map.of(cgr.e, "diamond_darker"));
+      a($$0, i, cji.nM, uh.a.a(4288151), 0.9F);
+      a($$0, j, cji.nO, uh.a.a(10116294), 1.0F);
    }
 
-   private String c(cgs $$0) {
-      Map<cgt, String> $$1 = this.e.a().d();
-      return $$0 instanceof cgt && $$1.containsKey($$0) ? $$1.get($$0) : this.e.a().a();
+   public static Optional<he.c<cli>> a(hr $$0, cjf $$1) {
+      return $$0.d(jc.aD).h().filter($$1x -> $$1.a(((cli)$$1x.a()).b())).findFirst();
    }
 
-   public boolean a(hg<clm> $$0, hg<clk> $$1) {
-      return $$0 == this.f && $$1 == this.e;
+   private static void a(nr<cli> $$0, aev<cli> $$1, cja $$2, uh $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   public hg<clm> a() {
-      return this.f;
+   private static void a(nr<cli> $$0, aev<cli> $$1, cja $$2, uh $$3, float $$4, Map<cgr, String> $$5) {
+      cli $$6 = cli.a($$1.a().a(), $$2, $$4, tl.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   public hg<clk> b() {
-      return this.e;
-   }
-
-   public aey a(cgs $$0) {
-      return this.g.apply($$0);
-   }
-
-   public aey b(cgs $$0) {
-      return this.h.apply($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof clj $$1) ? false : $$1.f == this.f && $$1.e == this.e;
-   }
-
-   public static boolean a(hu $$0, cjh $$1, clj $$2) {
-      if ($$1.a(aqc.aH)) {
-         $$1.w().a("Trim", (rs)a.encodeStart(aew.a(rk.a, $$0), $$2).result().orElseThrow());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static Optional<clj> a(hu $$0, cjh $$1, boolean $$2) {
-      if ($$1.a(aqc.aH) && $$1.v() != null && $$1.v().e("Trim")) {
-         qy $$3 = $$1.b("Trim");
-         clj $$4 = (clj)a.parse(aew.a(rk.a, $$0), $$3).resultOrPartial($$1x -> {
-            if (!$$2) {
-               c.warn($$1x);
-            }
-         }).orElse(null);
-         return Optional.ofNullable($$4);
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   public static void a(cjh $$0, hu $$1, List<tn> $$2) {
-      Optional<clj> $$3 = a($$1, $$0, true);
-      if ($$3.isPresent()) {
-         clj $$4 = $$3.get();
-         $$2.add(d);
-         $$2.add(tm.a().b($$4.a().a().a($$4.b())));
-         $$2.add(tm.a().b($$4.b().a().e()));
-      }
+   private static aev<cli> a(String $$0) {
+      return aev.a(jc.aD, new aew($$0));
    }
 }

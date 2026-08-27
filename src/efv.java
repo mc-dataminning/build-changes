@@ -1,29 +1,42 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public class efv implements efr {
-   private static final efv b = new efv();
-   public static final Codec<efv> a = Codec.unit(b);
+public record efv(float b, float c) implements efp {
+   public static final Codec<efv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(efv::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(efv::d)).apply($$0, efv::new)
+   );
 
-   private efv() {
+   @Override
+   public efq b() {
+      return efr.f;
    }
 
    @Override
-   public efs b() {
-      return eft.h;
+   public Set<eey<?>> a() {
+      return ImmutableSet.of(efb.d);
    }
 
-   @Override
-   public Set<efa<?>> a() {
-      return ImmutableSet.of(efd.b);
+   public boolean a(ecq $$0) {
+      biq $$1 = $$0.c(efb.d);
+      int $$2 = 0;
+      if ($$1 instanceof bjg) {
+         $$2 = cnq.h((bjg)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
    }
 
-   public boolean a(ecs $$0) {
-      return $$0.a(efd.b);
+   public static efp.a a(float $$0, float $$1) {
+      return () -> new efv($$0, $$1);
    }
 
-   public static efr.a c() {
-      return () -> b;
+   public float c() {
+      return this.b;
+   }
+
+   public float d() {
+      return this.c;
    }
 }

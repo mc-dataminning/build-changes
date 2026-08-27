@@ -1,118 +1,73 @@
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public abstract class bjp extends bji {
+   protected static final float bS = 0.0F;
 
-public interface bjp {
-   String a_ = "AngerTime";
-   String b_ = "AngryAt";
-
-   int a();
-
-   void a(int var1);
-
-   @Nullable
-   UUID b();
-
-   void a(@Nullable UUID var1);
-
-   void c();
-
-   default void c(qy $$0) {
-      $$0.a("AngerTime", this.a());
-      if (this.b() != null) {
-         $$0.a("AngryAt", this.b());
-      }
+   protected bjp(biu<? extends bjp> $$0, cpv $$1) {
+      super($$0, $$1);
    }
 
-   default void a(cpx $$0, qy $$1) {
-      this.a($$1.h("AngerTime"));
-      if ($$0 instanceof aks) {
-         if (!$$1.b("AngryAt")) {
-            this.a(null);
-         } else {
-            UUID $$2 = $$1.a("AngryAt");
-            this.a($$2);
-            bis $$3 = ((aks)$$0).a($$2);
-            if ($$3 != null) {
-               if ($$3 instanceof bjk) {
-                  this.a((bjk)$$3);
-               }
+   public float h(gw $$0) {
+      return this.a($$0, this.dL());
+   }
 
-               if ($$3.ag() == biw.bt) {
-                  this.c((cbw)$$3);
-               }
+   public float a(gw $$0, cpy $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public boolean a(cpw $$0, bjk $$1) {
+      return this.a(this.dl(), $$0) >= 0.0F;
+   }
+
+   public boolean fZ() {
+      return !this.L().l();
+   }
+
+   public boolean ga() {
+      return this.bz.a(bsh.Y) ? this.bz.c(bsh.Y).isPresent() : this.bO.c().anyMatch($$0 -> $$0.k() instanceof bqu);
+   }
+
+   @Override
+   protected void fQ() {
+      super.fQ();
+      biq $$0 = this.fS();
+      if ($$0 != null && $$0.dL() == this.dL()) {
+         this.a($$0.dl(), 5);
+         float $$1 = this.e($$0);
+         if (this instanceof bkb && ((bkb)this).y()) {
+            if ($$1 > 10.0F) {
+               this.a(true, true);
             }
+
+            return;
+         }
+
+         this.D($$1);
+         if ($$1 > 10.0F) {
+            this.a(true, true);
+            this.bO.a(bqb.a.a);
+         } else if ($$1 > 6.0F) {
+            double $$2 = ($$0.dq() - this.dq()) / (double)$$1;
+            double $$3 = ($$0.ds() - this.ds()) / (double)$$1;
+            double $$4 = ($$0.dw() - this.dw()) / (double)$$1;
+            this.f(this.do().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
+            this.cm();
+         } else if (this.gb() && !this.ga()) {
+            this.bO.b(bqb.a.a);
+            float $$5 = 2.0F;
+            ehn $$6 = new ehn($$0.dq() - this.dq(), $$0.ds() - this.ds(), $$0.dw() - this.dw()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
+            this.L().a(this.dq() + $$6.c, this.ds() + $$6.d, this.dw() + $$6.e, this.gc());
          }
       }
    }
 
-   default void a(aks $$0, boolean $$1) {
-      bji $$2 = this.q();
-      UUID $$3 = this.b();
-      if (($$2 == null || $$2.ev()) && $$3 != null && $$0.a($$3) instanceof bjk) {
-         this.U_();
-      } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cv())) {
-            this.a($$2.cv());
-            this.c();
-         }
-
-         if (this.a() > 0 && ($$2 == null || $$2.ag() != biw.bt || !$$1)) {
-            this.a(this.a() - 1);
-            if (this.a() == 0) {
-               this.U_();
-            }
-         }
-      }
+   protected boolean gb() {
+      return true;
    }
 
-   default boolean a_(bji $$0) {
-      if (!this.c($$0)) {
-         return false;
-      } else {
-         return $$0.ag() == biw.bt && this.a_($$0.dL()) ? true : $$0.cv().equals(this.b());
-      }
+   protected double gc() {
+      return 1.0;
    }
 
-   default boolean a_(cpx $$0) {
-      return $$0.X().b(cpt.K) && this.X_() && this.b() == null;
+   protected void D(float $$0) {
    }
-
-   default boolean X_() {
-      return this.a() > 0;
-   }
-
-   default void a_(cbw $$0) {
-      if ($$0.dL().X().b(cpt.J)) {
-         if ($$0.cv().equals(this.b())) {
-            this.U_();
-         }
-      }
-   }
-
-   default void Y_() {
-      this.U_();
-      this.c();
-   }
-
-   default void U_() {
-      this.a(null);
-      this.a(null);
-      this.h(null);
-      this.a(0);
-   }
-
-   @Nullable
-   bji eg();
-
-   void a(@Nullable bji var1);
-
-   void c(@Nullable cbw var1);
-
-   void h(@Nullable bji var1);
-
-   boolean c(bji var1);
-
-   @Nullable
-   bji q();
 }

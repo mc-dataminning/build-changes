@@ -1,68 +1,154 @@
-import com.mojang.brigadier.StringReader;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class uv implements to {
-   private static final Logger c = LogUtils.getLogger();
-   private final String d;
+public class uv implements tm {
+   public static final Object[] b = new Object[0];
+   private static final tp c = tp.e("%");
+   private static final tp d = tp.e("null");
+   private final String e;
    @Nullable
-   private final gc e;
-   protected final Optional<tn> b;
+   private final String f;
+   private final Object[] g;
+   @Nullable
+   private qr h;
+   private List<tp> i = ImmutableList.of();
+   private static final Pattern j = Pattern.compile("%(?:(\\d+)\\$)?([A-Za-z%]|$)");
 
-   public uv(String $$0, Optional<tn> $$1) {
-      this.d = $$0;
-      this.b = $$1;
-      this.e = a($$0);
+   public uv(String $$0, @Nullable String $$1, Object[] $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Nullable
-   private static gc a(String $$0) {
-      gc $$1 = null;
+   private void d() {
+      qr $$0 = qr.a();
+      if ($$0 != this.h) {
+         this.h = $$0;
+         String $$1 = this.f != null ? $$0.a(this.e, this.f) : $$0.a(this.e);
+
+         try {
+            Builder<tp> $$2 = ImmutableList.builder();
+            this.a($$1, $$2::add);
+            this.i = $$2.build();
+         } catch (uw var4) {
+            this.i = ImmutableList.of(tp.e($$1));
+         }
+      }
+   }
+
+   private void a(String $$0, Consumer<tp> $$1) {
+      Matcher $$2 = j.matcher($$0);
 
       try {
-         gd $$2 = new gd(new StringReader($$0));
-         $$1 = $$2.t();
-      } catch (CommandSyntaxException var3) {
-         c.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
+         int $$3 = 0;
+         int $$4 = 0;
+
+         while ($$2.find($$4)) {
+            int $$5 = $$2.start();
+            int $$6 = $$2.end();
+            if ($$5 > $$4) {
+               String $$7 = $$0.substring($$4, $$5);
+               if ($$7.indexOf(37) != -1) {
+                  throw new IllegalArgumentException();
+               }
+
+               $$1.accept(tp.e($$7));
+            }
+
+            String $$8 = $$2.group(2);
+            String $$9 = $$0.substring($$5, $$6);
+            if ("%".equals($$8) && "%%".equals($$9)) {
+               $$1.accept(c);
+            } else {
+               if (!"s".equals($$8)) {
+                  throw new uw(this, "Unsupported format: '" + $$9 + "'");
+               }
+
+               String $$10 = $$2.group(1);
+               int $$11 = $$10 != null ? Integer.parseInt($$10) - 1 : $$3++;
+               $$1.accept(this.a($$11));
+            }
+
+            $$4 = $$6;
+         }
+
+         if ($$4 < $$0.length()) {
+            String $$12 = $$0.substring($$4);
+            if ($$12.indexOf(37) != -1) {
+               throw new IllegalArgumentException();
+            }
+
+            $$1.accept(tp.e($$12));
+         }
+      } catch (IllegalArgumentException var12) {
+         throw new uw(this, var12);
       }
-
-      return $$1;
    }
 
-   public String a() {
-      return this.d;
-   }
-
-   @Nullable
-   public gc b() {
-      return this.e;
-   }
-
-   public Optional<tn> c() {
-      return this.b;
-   }
-
-   @Override
-   public ua a(@Nullable dt $$0, @Nullable bis $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.e != null) {
-         Optional<? extends tn> $$3 = tp.a($$0, this.b, $$1, $$2);
-         return tp.a(this.e.b($$0), $$3, bis::N_);
+   private tp a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.g.length) {
+         Object $$1 = this.g[$$0];
+         if ($$1 instanceof tl) {
+            return (tl)$$1;
+         } else {
+            return $$1 == null ? d : tp.e($$1.toString());
+         }
       } else {
-         return tn.h();
+         throw new uw(this, $$0);
       }
    }
 
    @Override
-   public <T> Optional<T> a(tr.b<T> $$0, uj $$1) {
-      return $$0.accept($$1, this.d);
+   public <T> Optional<T> a(tp.b<T> $$0, uh $$1) {
+      this.d();
+
+      for (tp $$2 : this.i) {
+         Optional<T> $$3 = $$2.a($$0, $$1);
+         if ($$3.isPresent()) {
+            return $$3;
+         }
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   public <T> Optional<T> a(tr.a<T> $$0) {
-      return $$0.accept(this.d);
+   public <T> Optional<T> a(tp.a<T> $$0) {
+      this.d();
+
+      for (tp $$1 : this.i) {
+         Optional<T> $$2 = $$1.a($$0);
+         if ($$2.isPresent()) {
+            return $$2;
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   @Override
+   public ty a(@Nullable dt $$0, @Nullable biq $$1, int $$2) throws CommandSyntaxException {
+      Object[] $$3 = new Object[this.g.length];
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         Object $$5 = this.g[$$4];
+         if ($$5 instanceof tl) {
+            $$3[$$4] = tn.a($$0, (tl)$$5, $$1, $$2);
+         } else {
+            $$3[$$4] = $$5;
+         }
+      }
+
+      return ty.a(new uv(this.e, this.f, $$3));
    }
 
    @Override
@@ -70,7 +156,7 @@ public class uv implements to {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof uv $$1 && this.d.equals($$1.d) && this.b.equals($$1.b)) {
+         if ($$0 instanceof uv $$1 && Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Arrays.equals(this.g, $$1.g)) {
             return true;
          }
 
@@ -80,12 +166,26 @@ public class uv implements to {
 
    @Override
    public int hashCode() {
-      int $$0 = this.d.hashCode();
-      return 31 * $$0 + this.b.hashCode();
+      int $$0 = Objects.hashCode(this.e);
+      $$0 = 31 * $$0 + Objects.hashCode(this.f);
+      return 31 * $$0 + Arrays.hashCode(this.g);
    }
 
    @Override
    public String toString() {
-      return "pattern{" + this.d + "}";
+      return "translation{key='" + this.e + "'" + (this.f != null ? ", fallback='" + this.f + "'" : "") + ", args=" + Arrays.toString(this.g) + "}";
+   }
+
+   public String a() {
+      return this.e;
+   }
+
+   @Nullable
+   public String b() {
+      return this.f;
+   }
+
+   public Object[] c() {
+      return this.g;
    }
 }

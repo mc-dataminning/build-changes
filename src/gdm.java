@@ -1,58 +1,56 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
+import com.google.common.collect.Maps;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class gdm implements gdk {
-   private final gdm.a a;
-   private gdk b;
-   private final BufferedInputStream c;
+public class gdm {
+   private final anw a;
+   private final Map<aew, CompletableFuture<ejp>> b = Maps.newHashMap();
 
-   public gdm(gdm.a $$0, InputStream $$1) throws IOException {
+   public gdm(anw $$0) {
       this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new gdm.b(this.c));
    }
 
-   @Override
-   public AudioFormat a() {
-      return this.b.a();
+   public CompletableFuture<ejp> a(aew $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               ejp var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  ejn $$2 = new ejn($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new ejp($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ac.f()));
    }
 
-   @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new gdm.b(this.c));
-         $$1 = this.b.a($$0);
-      }
-
-      return $$1;
+   public CompletableFuture<gdi> a(aew $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (gdi)($$1 ? new gdk(ejn::new, $$2) : new ejn($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
+         }
+      }, ac.f());
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
+   public void a() {
+      this.b.values().forEach($$0 -> $$0.thenAccept(ejp::b));
+      this.b.clear();
    }
 
-   @FunctionalInterface
-   public interface a {
-      gdk create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void close() {
-      }
+   public CompletableFuture<?> a(Collection<gcj> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

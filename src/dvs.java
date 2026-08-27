@@ -1,128 +1,101 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public final class dvs {
-   public static final String a = "INVALID";
-   public static final dvs b = new dvs(null, new cpe(0, 0), 0, new dvz(List.of()));
-   private static final Logger c = LogUtils.getLogger();
-   private final dvk d;
-   private final dvz e;
-   private final cpe f;
-   private int g;
-   @Nullable
-   private volatile dvc h;
+public abstract class dvs extends dvm {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected dzb b;
+   protected dyx c;
+   protected gw d;
 
-   public dvs(dvk $$0, cpe $$1, int $$2, dvz $$3) {
-      this.d = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.e = $$3;
+   public dvs(dvz $$0, int $$1, dzc $$2, aew $$3, String $$4, dyx $$5, gw $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(ha.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
    }
 
-   @Nullable
-   public static dvs a(dwa $$0, qy $$1, long $$2) {
-      String $$3 = $$1.l("id");
-      if ("INVALID".equals($$3)) {
-         return b;
-      } else {
-         ht<dvk> $$4 = $$0.b().d(je.az);
-         dvk $$5 = $$4.a(new aey($$3));
-         if ($$5 == null) {
-            c.error("Unknown stucture id: {}", $$3);
-            return null;
-         } else {
-            cpe $$6 = new cpe($$1.h("ChunkX"), $$1.h("ChunkZ"));
-            int $$7 = $$1.h("references");
-            re $$8 = $$1.c("Children", 10);
+   public dvs(dvz $$0, qw $$1, dzc $$2, Function<aew, dyx> $$3) {
+      super($$0, $$1);
+      this.a(ha.c);
+      this.a = $$1.l("Template");
+      this.d = new gw($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      aew $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
+   }
 
-            try {
-               dvz $$9 = dvz.a($$8, $$0);
-               if ($$5 instanceof dxn) {
-                  $$9 = dxn.a($$6, $$2, $$9);
+   protected aew b() {
+      return new aew(this.a);
+   }
+
+   @Override
+   protected void a(dvy $$0, qw $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
+   }
+
+   @Override
+   public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (dzb.c $$8 : this.b.a(this.d, this.c, csw.pa)) {
+            if ($$8.c() != null) {
+               dgt $$9 = dgt.valueOf($$8.c().l("mode"));
+               if ($$9 == dgt.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
+
+         for (dzb.c $$11 : this.b.a(this.d, this.c, csw.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dfj $$13 = csw.a.n();
+
+               try {
+                  $$13 = fi.a($$0.a(jc.e), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
                }
 
-               return new dvs($$5, $$6, $$7, $$9);
-            } catch (Exception var11) {
-               c.error("Failed Start with id {}", $$3, var11);
-               return null;
+               $$0.a($$11.a(), $$13, 3);
             }
          }
       }
    }
 
-   public dvc a() {
-      dvc $$0 = this.h;
-      if ($$0 == null) {
-         $$0 = this.d.a(this.e.b());
-         this.h = $$0;
-      }
+   protected abstract void a(String var1, gw var2, cqk var3, asc var4, dva var5);
 
-      return $$0;
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
-   public void a(cqr $$0, cqp $$1, dhi $$2, ase $$3, dvc $$4, cpe $$5) {
-      List<dvo> $$6 = this.e.c();
-      if (!$$6.isEmpty()) {
-         dvc $$7 = $$6.get(0).f;
-         gw $$8 = $$7.f();
-         gw $$9 = new gw($$8.u(), $$7.h(), $$8.w());
-
-         for (dvo $$10 : $$6) {
-            if ($$10.f().a($$4)) {
-               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
-            }
-         }
-
-         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
-      }
+   @Override
+   public czh a() {
+      return this.c.d();
    }
 
-   public qy a(dwa $$0, cpe $$1) {
-      qy $$2 = new qy();
-      if (this.b()) {
-         $$2.a("id", $$0.b().d(je.az).b(this.d).toString());
-         $$2.a("ChunkX", $$1.e);
-         $$2.a("ChunkZ", $$1.f);
-         $$2.a("references", this.g);
-         $$2.a("Children", this.e.a($$0));
-         return $$2;
-      } else {
-         $$2.a("id", "INVALID");
-         return $$2;
-      }
+   public dzb c() {
+      return this.b;
    }
 
-   public boolean b() {
-      return !this.e.a();
-   }
-
-   public cpe c() {
-      return this.f;
-   }
-
-   public boolean d() {
-      return this.g < this.g();
-   }
-
-   public void e() {
-      this.g++;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   protected int g() {
-      return 1;
-   }
-
-   public dvk h() {
+   public gw d() {
       return this.d;
    }
 
-   public List<dvo> i() {
-      return this.e.c();
+   public dyx e() {
+      return this.c;
    }
 }

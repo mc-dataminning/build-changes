@@ -1,38 +1,24 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public interface sx {
-   static sx a(final Runnable $$0) {
-      return new sx() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+public class sx extends sm {
+   private static final Logger j = LogUtils.getLogger();
+   private static final tl k = tl.c("disconnect.exceeded_packet_rate");
+   private final int l;
 
-         @Nullable
-         @Override
-         public vf<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   public sx(int $$0) {
+      super(ve.a);
+      this.l = $$0;
    }
 
-   static sx a(final Supplier<vf<?>> $$0) {
-      return new sx() {
-         @Nullable
-         @Override
-         public vf<?> b() {
-            return $$0.get();
-         }
-      };
-   }
-
-   default void a() {
-   }
-
-   @Nullable
-   default vf<?> b() {
-      return null;
+   @Override
+   protected void e() {
+      super.e();
+      float $$0 = this.q();
+      if ($$0 > (float)this.l) {
+         j.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new vi(k), sv.a(() -> this.a(k)));
+         this.o();
+      }
    }
 }

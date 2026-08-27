@@ -1,27 +1,65 @@
-public interface cjb {
-   int a = 256;
-   int b = 140;
-   aex<ciz> c = a("ponder_goat_horn");
-   aex<ciz> d = a("sing_goat_horn");
-   aex<ciz> e = a("seek_goat_horn");
-   aex<ciz> f = a("feel_goat_horn");
-   aex<ciz> g = a("admire_goat_horn");
-   aex<ciz> h = a("call_goat_horn");
-   aex<ciz> i = a("yearn_goat_horn");
-   aex<ciz> j = a("dream_goat_horn");
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-   private static aex<ciz> a(String $$0) {
-      return aex.a(je.B, new aey($$0));
+public class cjb {
+   private final Map<cja, cjb.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(cja $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   static ciz a(ht<ciz> $$0) {
-      ht.a($$0, c, new ciz((hg<ape>)apf.ld.get(0), 140, 256.0F));
-      ht.a($$0, d, new ciz((hg<ape>)apf.ld.get(1), 140, 256.0F));
-      ht.a($$0, e, new ciz((hg<ape>)apf.ld.get(2), 140, 256.0F));
-      ht.a($$0, f, new ciz((hg<ape>)apf.ld.get(3), 140, 256.0F));
-      ht.a($$0, g, new ciz((hg<ape>)apf.ld.get(4), 140, 256.0F));
-      ht.a($$0, h, new ciz((hg<ape>)apf.ld.get(5), 140, 256.0F));
-      ht.a($$0, i, new ciz((hg<ape>)apf.ld.get(6), 140, 256.0F));
-      return ht.a($$0, j, new ciz((hg<ape>)apf.ld.get(7), 140, 256.0F));
+   public float a(cja $$0, float $$1) {
+      cjb.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return arw.a($$4 / $$3, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
+      }
+   }
+
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<cja, cjb.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cja, cjb.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
+      }
+   }
+
+   public void a(cja $$0, int $$1) {
+      this.a.put($$0, new cjb.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(cja $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(cja $$0, int $$1) {
+   }
+
+   protected void c(cja $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

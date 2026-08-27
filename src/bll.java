@@ -1,16 +1,113 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class bll {
-   public static <E extends bji> bla<E> a(Predicate<E> $$0, bsj<?> $$1) {
-      return bol.a((Function<bol.b<E>, ? extends App<bol.c<E>, boo<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+public class bll<E extends bjg> implements bky<E> {
+   private final Map<bsh<?>, bsi> a;
+   private final Set<bsh<?>> b;
+   private final bll.a c;
+   private final bll.b d;
+   private final bnf<bky<? super E>> e = new bnf<>();
+   private bkx.a f = bkx.a.a;
+
+   public bll(Map<bsh<?>, bsi> $$0, Set<bsh<?>> $$1, bll.a $$2, bll.b $$3, List<Pair<? extends bky<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((bky<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
+   }
+
+   @Override
+   public bkx.a a() {
+      return this.f;
+   }
+
+   private boolean a(E $$0) {
+      for (Entry<bsh<?>, bsi> $$1 : this.a.entrySet()) {
+         bsh<?> $$2 = $$1.getKey();
+         bsi $$3 = $$1.getValue();
+         if (!$$0.dN().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public final boolean e(akq $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = bkx.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(akq $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == bkx.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == bkx.a.b)) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(akq $$0, E $$1, long $$2) {
+      this.f = bkx.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == bkx.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.dN()::b);
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   @Override
+   public String toString() {
+      Set<? extends bky<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bkx.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(bnf::a);
+
+      private final Consumer<bnf<?>> c;
+
+      private a(Consumer<bnf<?>> $$0) {
+         this.c = $$0;
+      }
+
+      public void a(bnf<?> $$0) {
+         this.c.accept($$0);
+      }
+   }
+
+   public static enum b {
+      a {
+         @Override
+         public <E extends bjg> void a(Stream<bky<? super E>> $$0, akq $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bkx.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+         }
+      },
+      b {
+         @Override
+         public <E extends bjg> void a(Stream<bky<? super E>> $$0, akq $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bkx.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
+
+      public abstract <E extends bjg> void a(Stream<bky<? super E>> var1, akq var2, E var3, long var4);
    }
 }

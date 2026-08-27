@@ -1,54 +1,50 @@
-public class cyd extends csx implements csz {
-   public cyd(dfk.d $$0) {
+public class cyd extends csv implements csx {
+   protected cyd(dfi.d $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(cqa $$0, gw $$1, dfl $$2) {
-      if (!$$0.a_($$1.c()).a((cpd)$$0, $$1)) {
-         return false;
-      } else {
-         for (gw $$3 : gw.a($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(apu.aK)) {
-               return true;
-            }
-         }
+   private static boolean b(dfj $$0, cpy $$1, gw $$2) {
+      gw $$3 = $$2.c();
+      dfj $$4 = $$1.a_($$3);
+      int $$5 = ead.a($$1, $$0, $$2, $$4, $$3, ha.b, $$4.b($$1, $$3));
+      return $$5 < $$1.M();
+   }
 
-         return false;
+   @Override
+   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, csw.dW.n());
       }
    }
 
    @Override
-   public boolean a(cpx $$0, ase $$1, gw $$2, dfl $$3) {
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
       return true;
    }
 
    @Override
-   public void a(aks $$0, ase $$1, gw $$2, dfl $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (gw $$6 : gw.a($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dfl $$7 = $$0.a_($$6);
-         if ($$7.a(csy.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(csy.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
+   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
+      dfj $$4 = $$0.a_($$2);
+      gw $$5 = $$2.c();
+      dhg $$6 = $$0.k().g();
+      hq<dnj<?, ?>> $$7 = $$0.G_().d(jc.as);
+      if ($$4.a(csw.ow)) {
+         this.a($$7, ot.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(csw.on)) {
+         this.a($$7, ot.j, $$0, $$6, $$1, $$5);
+         this.a($$7, ot.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, ot.n, $$0, $$6, $$1, $$5);
          }
       }
+   }
 
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? csy.on.n() : csy.ow.n(), 3);
-      } else if ($$5) {
-         $$0.a($$2, csy.on.n(), 3);
-      } else if ($$4) {
-         $$0.a($$2, csy.ow.n(), 3);
-      }
+   private void a(hq<dnj<?, ?>> $$0, aev<dnj<?, ?>> $$1, akq $$2, dhg $$3, asc $$4, gw $$5) {
+      $$0.b($$1).ifPresent($$4x -> ((dnj)$$4x.a()).a($$2, $$3, $$4, $$5));
    }
 }

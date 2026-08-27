@@ -1,22 +1,22 @@
-public class dcc extends dar implements dbz {
-   private final dbz.a F;
+public class dcc extends cwi {
+   protected static final eig f = csv.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
 
-   public dcc(dbz.a $$0, dfl $$1, dfk.d $$2) {
-      super($$1, $$2);
-      this.F = $$0;
+   public dcc(dfi.d $$0) {
+      super($$0, ha.a, f, false, 0.1);
    }
 
    @Override
-   public void b(dfl $$0, aks $$1, gw $$2, ase $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected int a(asc $$0) {
+      return cxz.a($$0);
    }
 
    @Override
-   public boolean e_(dfl $$0) {
-      return dbz.c($$0.b()).isPresent();
+   protected csv a() {
+      return csw.oA;
    }
 
-   public dbz.a g() {
-      return this.F;
+   @Override
+   protected boolean g(dfj $$0) {
+      return cxz.a($$0);
    }
 }

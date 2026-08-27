@@ -1,31 +1,24 @@
-import com.mojang.authlib.GameProfile;
+public class adi implements vd<ade> {
+   private final int a;
 
-public class adi implements vf<adg> {
-   private final GameProfile a;
-
-   public adi(GameProfile $$0) {
+   public adi(int $$0) {
       this.a = $$0;
    }
 
-   public adi(sq $$0) {
-      this.a = $$0.z();
+   public adi(so $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(adg $$0) {
+   public void a(ade $$0) {
       $$0.a(this);
    }
 
-   public GameProfile a() {
+   public int a() {
       return this.a;
-   }
-
-   @Override
-   public sp c() {
-      return sp.e;
    }
 }

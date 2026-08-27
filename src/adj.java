@@ -1,42 +1,24 @@
-import java.security.PublicKey;
+public class adj implements vd<ade> {
+   private final tl a;
 
-public class adj implements vf<adg> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
-
-   public adj(String $$0, byte[] $$1, byte[] $$2) {
+   public adj(tl $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public adj(sq $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
+   public adj(so $$0) {
+      this.a = tl.a.b($$0.d(262144));
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
    }
 
-   public void a(adg $$0) {
+   public void a(ade $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public tl a() {
       return this.a;
-   }
-
-   public PublicKey d() throws aqz {
-      return aqy.a(this.b);
-   }
-
-   public byte[] e() {
-      return this.c;
    }
 }

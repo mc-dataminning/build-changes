@@ -1,14 +1,8 @@
-public record aea(aeb a) implements vf<ady> {
-   public aea(sq $$0) {
-      this($$0.a(aeb.a));
-   }
-
+public interface aea extends abd, abe {
    @Override
-   public void a(sq $$0) {
-      $$0.a(aeb.a, this.a);
+   default sn b() {
+      return sn.c;
    }
 
-   public void a(ady $$0) {
-      $$0.a(this);
-   }
+   void a(aec var1);
 }

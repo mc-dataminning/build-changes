@@ -1,11 +1,37 @@
-public interface asd {
-   void a(tn var1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-   void b(tn var1);
+public class asd {
+   public static final Codec<asd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(arf.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), arf.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, asd::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<aew> f;
 
-   void c(tn var1);
+   private asd(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+   }
 
-   void a(int var1);
+   public Predicate<String> a() {
+      return this.c;
+   }
 
-   void a();
+   public Predicate<String> b() {
+      return this.e;
+   }
+
+   public Predicate<aew> c() {
+      return this.f;
+   }
 }

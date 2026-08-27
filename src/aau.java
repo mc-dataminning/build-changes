@@ -1,27 +1,45 @@
-import javax.annotation.Nullable;
-
-public class aau implements vf<wy> {
+public class aau implements vd<ww> {
    private final int a;
-   @Nullable
-   private final qy b;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final byte e;
+   private final byte f;
+   private final boolean g;
 
-   public aau(int $$0, @Nullable qy $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aau(biq $$0) {
+      this.a = $$0.ah();
+      ehn $$1 = $$0.dk();
+      this.b = $$1.c;
+      this.c = $$1.d;
+      this.d = $$1.e;
+      this.e = (byte)((int)($$0.dB() * 256.0F / 360.0F));
+      this.f = (byte)((int)($$0.dD() * 256.0F / 360.0F));
+      this.g = $$0.aA();
    }
 
-   public aau(sq $$0) {
+   public aau(so $$0) {
       this.a = $$0.m();
-      this.b = $$0.p();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readByte();
+      this.f = $$0.readByte();
+      this.g = $$0.readBoolean();
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.c(this.a);
-      $$0.a((rs)this.b);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.k(this.e);
+      $$0.k(this.f);
+      $$0.a(this.g);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
@@ -29,13 +47,27 @@ public class aau implements vf<wy> {
       return this.a;
    }
 
-   @Nullable
-   public qy d() {
+   public double d() {
       return this.b;
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public byte g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

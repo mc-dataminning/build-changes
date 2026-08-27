@@ -1,24 +1,27 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
 
-public class fxg extends fxr<bwu, ffq<bwu>> {
-   private static final Map<bww, aey> a = ac.a(Maps.newEnumMap(bww.class), $$0 -> {
-      $$0.put(bww.a, null);
-      $$0.put(bww.b, new aey("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(bww.c, new aey("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(bww.d, new aey("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(bww.e, new aey("textures/entity/horse/horse_markings_blackdots.png"));
-   });
+public class fxg extends fxp<bvd, ffs<bvd>> {
+   private static final Map<bvd.a, aew> a = ImmutableMap.of(
+      bvd.a.b,
+      new aew("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bvd.a.c,
+      new aew("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bvd.a.d,
+      new aew("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
 
-   public fxg(fve<bwu, ffq<bwu>> $$0) {
+   public fxg(fvc<bvd, ffs<bvd>> $$0) {
       super($$0);
    }
 
-   public void a(elr $$0, fog $$1, int $$2, bwu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      aey $$10 = a.get($$3.gd());
-      if ($$10 != null && !$$3.cd()) {
-         elv $$11 = $$1.getBuffer(foo.i($$10));
-         this.c().a($$0, $$11, $$2, fuk.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(elp $$0, foe $$1, int $$2, bvd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cd()) {
+         bvd.a $$10 = $$3.t();
+         if ($$10 != bvd.a.a) {
+            aew $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         }
       }
    }
 }

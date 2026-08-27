@@ -1,3 +1,3 @@
 public interface bjv {
-   boolean a();
+   void a(buc var1, biq var2);
 }

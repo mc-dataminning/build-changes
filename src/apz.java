@@ -1,11 +1,9 @@
-public final class apz {
-   public static final aqj<ean> a = a("water");
-   public static final aqj<ean> b = a("lava");
+public interface apz {
+   aqh<cix> a = a("regular_goat_horns");
+   aqh<cix> b = a("screaming_goat_horns");
+   aqh<cix> c = a("goat_horns");
 
-   private apz() {
-   }
-
-   private static aqj<ean> a(String $$0) {
-      return aqj.a(je.w, new aey($$0));
+   private static aqh<cix> a(String $$0) {
+      return aqh.a(jc.B, new aew($$0));
    }
 }

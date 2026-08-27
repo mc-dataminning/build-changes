@@ -1,46 +1,34 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.joml.Vector3f;
 
-public class ip implements iv {
-   public static final iv.a<ip> a = new iv.a<ip>() {
-      public ip a(iw<ip> $$0, StringReader $$1) throws CommandSyntaxException {
+public class ip extends iq {
+   public static final Vector3f a = ehn.a(16711680).j();
+   public static final ip b = new ip(a, 1.0F);
+   public static final Codec<ip> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(arf.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, ip::new)
+   );
+   public static final it.a<ip> d = new it.a<ip>() {
+      public ip a(iu<ip> $$0, StringReader $$1) throws CommandSyntaxException {
+         Vector3f $$2 = iq.a($$1);
          $$1.expect(' ');
-         return new ip($$0, fi.a(jd.f.p(), $$1, false).a());
+         float $$3 = $$1.readFloat();
+         return new ip($$2, $$3);
       }
 
-      public ip a(iw<ip> $$0, sq $$1) {
-         return new ip($$0, $$1.a(csx.o));
+      public ip a(iu<ip> $$0, so $$1) {
+         return new ip(iq.b($$1), $$1.readFloat());
       }
    };
-   private final iw<ip> b;
-   private final dfl c;
 
-   public static Codec<ip> a(iw<ip> $$0) {
-      return dfl.b.xmap($$1 -> new ip($$0, $$1), $$0x -> $$0x.c);
-   }
-
-   public ip(iw<ip> $$0, dfl $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ip(Vector3f $$0, float $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(csx.o, this.c);
-   }
-
-   @Override
-   public String a() {
-      return jd.k.b(this.b()) + " " + fi.a(this.c);
-   }
-
-   @Override
-   public iw<ip> b() {
-      return this.b;
-   }
-
-   public dfl c() {
-      return this.c;
+   public iu<ip> b() {
+      return iv.o;
    }
 }

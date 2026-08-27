@@ -1,86 +1,76 @@
-public class bgs implements bgt {
-   private final bgt c;
-   private final bgt d;
+import java.util.List;
+import java.util.function.Predicate;
 
-   public bgs(bgt $$0, bgt $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class bgs {
+   public static cjf a(List<cjf> $$0, int $$1, int $$2) {
+      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).b() && $$2 > 0 ? $$0.get($$1).a($$2) : cjf.b;
    }
 
-   @Override
-   public int b() {
-      return this.c.b() + this.d.b();
+   public static cjf a(List<cjf> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cjf.b) : cjf.b;
    }
 
-   @Override
-   public boolean af_() {
-      return this.c.af_() && this.d.af_();
+   public static qw a(qw $$0, hn<cjf> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public boolean a(bgt $$0) {
-      return this.c == $$0 || this.d == $$0;
+   public static qw a(qw $$0, hn<cjf> $$1, boolean $$2) {
+      rc $$3 = new rc();
+
+      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+         cjf $$5 = $$1.get($$4);
+         if (!$$5.b()) {
+            qw $$6 = new qw();
+            $$6.a("Slot", (byte)$$4);
+            $$5.b($$6);
+            $$3.add($$6);
+         }
+      }
+
+      if (!$$3.isEmpty() || $$2) {
+         $$0.a("Items", $$3);
+      }
+
+      return $$0;
    }
 
-   @Override
-   public cjh a(int $$0) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
-   }
+   public static void b(qw $$0, hn<cjf> $$1) {
+      rc $$2 = $$0.c("Items", 10);
 
-   @Override
-   public cjh a(int $$0, int $$1) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
-   }
-
-   @Override
-   public cjh b(int $$0) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cjh $$1) {
-      if ($$0 >= this.c.b()) {
-         this.d.a($$0 - this.c.b(), $$1);
-      } else {
-         this.c.a($$0, $$1);
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         qw $$4 = $$2.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < $$1.size()) {
+            $$1.set($$5, cjf.a($$4));
+         }
       }
    }
 
-   @Override
-   public int ag_() {
-      return this.c.ag_();
+   public static int a(bgr $$0, Predicate<cjf> $$1, int $$2, boolean $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         cjf $$6 = $$0.a($$5);
+         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
+         if ($$7 > 0 && !$$3 && $$6.b()) {
+            $$0.a($$5, cjf.b);
+         }
+
+         $$4 += $$7;
+      }
+
+      return $$4;
    }
 
-   @Override
-   public void e() {
-      this.c.e();
-      this.d.e();
-   }
-
-   @Override
-   public boolean a(cbw $$0) {
-      return this.c.a($$0) && this.d.a($$0);
-   }
-
-   @Override
-   public void d_(cbw $$0) {
-      this.c.d_($$0);
-      this.d.d_($$0);
-   }
-
-   @Override
-   public void c(cbw $$0) {
-      this.c.c($$0);
-      this.d.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cjh $$1) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.c.a();
-      this.d.a();
+   public static int a(cjf $$0, Predicate<cjf> $$1, int $$2, boolean $$3) {
+      if ($$0.b() || !$$1.test($$0)) {
+         return 0;
+      } else if ($$3) {
+         return $$0.L();
+      } else {
+         int $$4 = $$2 < 0 ? $$0.L() : Math.min($$2, $$0.L());
+         $$0.h($$4);
+         return $$4;
+      }
    }
 }

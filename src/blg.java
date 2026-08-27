@@ -1,34 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class blg extends bkz<bwi> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public blg() {
-      super(ImmutableMap.of(bsj.m, bsk.b), 100);
+public class blg {
+   public static <E extends bjg> bky<E> a(int $$0, BiPredicate<E, biq> $$1) {
+      return boj.a((Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$2 -> $$2.group($$2.a(bsh.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               biq $$7 = $$5.cY();
+               biq $$8 = $$2.<biq>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
+                  return false;
+               } else {
+                  biq $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.aa();
+                     $$3.b();
+                     return true;
+                  }
+               }
+            })));
    }
 
-   protected boolean a(aks $$0, bwi $$1) {
-      return $$1.an() == bju.a;
-   }
-
-   protected boolean a(aks $$0, bwi $$1, long $$2) {
-      return this.e < 60;
-   }
-
-   protected void b(aks $$0, bwi $$1, long $$2) {
-      if (!$$1.bb()) {
-         $$1.b(bju.i);
-         this.e = 0;
-      }
-   }
-
-   protected void c(aks $$0, bwi $$1, long $$2) {
-      $$1.b(bju.a);
-   }
-
-   protected void d(aks $$0, bwi $$1, long $$2) {
-      this.e++;
+   private static boolean a(bjg $$0, biq $$1, int $$2) {
+      return $$1.bv() && $$1.a($$0, (double)$$2) && $$1.dL() == $$0.dL();
    }
 }

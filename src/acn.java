@@ -1,20 +1,20 @@
-public class acn implements vf<abe> {
+public class acn implements vd<abc> {
    private final int a;
 
    public acn(int $$0) {
       this.a = $$0;
    }
 
-   public acn(sq $$0) {
-      this.a = $$0.m();
+   public acn(so $$0) {
+      this.a = $$0.readShort();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
+   public void a(so $$0) {
+      $$0.l(this.a);
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 

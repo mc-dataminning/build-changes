@@ -1,24 +1,70 @@
-public class bzf extends bzk {
-   public bzf(biw<? extends bzf> $$0, cpx $$1) {
+import org.joml.Vector3f;
+
+public class bzf extends cab {
+   public bzf(biu<? extends bzf> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected float b(bju $$0, bit $$1) {
-      return 10.440001F;
+   public static boolean a(biu<bzf> $$0, cqk $$1, bjk $$2, gw $$3, asc $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == bjk.c || $$1.g($$3));
    }
 
    @Override
-   protected float l(bis $$0) {
-      return -3.75F;
-   }
-
-   public static bkn.a s() {
-      return bzk.gj().a(bko.a, 100.0).a(bko.d, 0.5).a(bko.f, 50.0);
+   protected boolean ab_() {
+      return false;
    }
 
    @Override
-   public float a(gw $$0, cqa $$1) {
-      return $$1.v($$0);
+   protected apc w() {
+      return apd.lx;
+   }
+
+   @Override
+   protected apc d(bho $$0) {
+      return apd.lA;
+   }
+
+   @Override
+   protected apc l_() {
+      return apd.lz;
+   }
+
+   @Override
+   protected apc y() {
+      return apd.lB;
+   }
+
+   @Override
+   public boolean C(biq $$0) {
+      boolean $$1 = super.C($$0);
+      if ($$1 && this.eS().b() && $$0 instanceof bjg) {
+         float $$2 = this.dL().d_(this.dl()).b();
+         ((bjg)$$0).b(new bid(bif.q, 140 * (int)$$2), this);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   protected boolean ge() {
+      return true;
+   }
+
+   @Override
+   protected void gg() {
+      this.b(biu.bp);
+      if (!this.aS()) {
+         this.dL().a(null, 1041, this.dl(), 0);
+      }
+   }
+
+   @Override
+   protected cjf gd() {
+      return cjf.b;
+   }
+
+   @Override
+   protected Vector3f a(biq $$0, bir $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.125F * $$2, 0.0F);
    }
 }

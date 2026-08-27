@@ -1,315 +1,437 @@
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.List;
-import org.lwjgl.glfw.GLFWDropCallback;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.DoubleFunction;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eqy {
-   private final eqx a;
-   private boolean b;
-   private boolean c;
-   private boolean d;
-   private double e;
-   private double f;
-   private int g;
-   private int h = -1;
-   private boolean i = true;
-   private int j;
-   private double k;
-   private final asn l = new asn();
-   private final asn m = new asn();
-   private double n;
-   private double o;
-   private double p;
-   private double q;
-   private double r = Double.MIN_VALUE;
-   private boolean s;
+public final class eqy<T> {
+   private static final Logger c = LogUtils.getLogger();
+   public static final eqy.e<Boolean> a = new eqy.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
+   public static final eqy.b<Boolean> b = ($$0, $$1) -> $$1 ? tk.b : tk.c;
+   private final eqy.l<T> d;
+   final Function<T, tl> e;
+   private final eqy.n<T> f;
+   private final Codec<T> g;
+   private final T h;
+   private final Consumer<T> i;
+   final tl j;
+   T k;
 
-   public eqy(eqx $$0) {
-      this.a = $$0;
+   public static eqy<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
+      return a($$0, a(), $$1, $$2);
    }
 
-   private void a(long $$0, int $$1, int $$2, int $$3) {
-      if ($$0 == this.a.aM().i()) {
-         if (this.a.y != null) {
-            this.a.a(equ.b);
-         }
-
-         boolean $$4 = $$2 == 1;
-         if (eqx.a && $$1 == 0) {
-            if ($$4) {
-               if (($$3 & 2) == 2) {
-                  $$1 = 1;
-                  this.g++;
-               }
-            } else if (this.g > 0) {
-               $$1 = 1;
-               this.g--;
-            }
-         }
-
-         int $$5 = $$1;
-         if ($$4) {
-            if (this.a.m.V().c() && this.j++ > 0) {
-               return;
-            }
-
-            this.h = $$5;
-            this.k = eji.b();
-         } else if (this.h != -1) {
-            if (this.a.m.V().c() && --this.j > 0) {
-               return;
-            }
-
-            this.h = -1;
-         }
-
-         boolean[] $$6 = new boolean[]{false};
-         if (this.a.aJ() == null) {
-            if (this.a.y == null) {
-               if (!this.s && $$4) {
-                  this.i();
-               }
-            } else {
-               double $$7 = this.e * (double)this.a.aM().o() / (double)this.a.aM().m();
-               double $$8 = this.f * (double)this.a.aM().p() / (double)this.a.aM().n();
-               eym $$9 = this.a.y;
-               if ($$4) {
-                  $$9.x();
-                  eym.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
-               } else {
-                  eym.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
-               }
-            }
-         }
-
-         if (!$$6[0] && this.a.y == null && this.a.aJ() == null) {
-            if ($$5 == 0) {
-               this.b = $$4;
-            } else if ($$5 == 2) {
-               this.c = $$4;
-            } else if ($$5 == 1) {
-               this.d = $$4;
-            }
-
-            eqv.a(ekm.b.c.a($$5), $$4);
-            if ($$4) {
-               if (this.a.s.M_() && $$5 == 2) {
-                  this.a.l.g().b();
-               } else {
-                  eqv.a(ekm.b.c.a($$5));
-               }
-            }
-         }
-      }
+   public static eqy<Boolean> a(String $$0, boolean $$1) {
+      return a($$0, a(), $$1, $$0x -> {
+      });
    }
 
-   private void a(long $$0, double $$1, double $$2) {
-      if ($$0 == eqx.O().aM().i()) {
-         boolean $$3 = this.a.m.O().c();
-         double $$4 = this.a.m.C().c();
-         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
-         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
-         if (this.a.aJ() == null) {
-            if (this.a.y != null) {
-               double $$7 = this.e * (double)this.a.aM().o() / (double)this.a.aM().m();
-               double $$8 = this.f * (double)this.a.aM().p() / (double)this.a.aM().n();
-               this.a.y.a($$7, $$8, $$5, $$6);
-               this.a.y.x();
-            } else if (this.a.s != null) {
-               if (this.p != 0.0 && Math.signum($$5) != Math.signum(this.p)) {
-                  this.p = 0.0;
-               }
-
-               if (this.q != 0.0 && Math.signum($$6) != Math.signum(this.q)) {
-                  this.q = 0.0;
-               }
-
-               this.p += $$5;
-               this.q += $$6;
-               int $$9 = (int)this.p;
-               int $$10 = (int)this.q;
-               if ($$9 == 0 && $$10 == 0) {
-                  return;
-               }
-
-               this.p -= (double)$$9;
-               this.q -= (double)$$10;
-               int $$11 = $$10 == 0 ? -$$9 : $$10;
-               if (this.a.s.M_()) {
-                  if (this.a.l.g().a()) {
-                     this.a.l.g().b(-$$11);
-                  } else {
-                     float $$12 = ary.a(this.a.s.fS().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
-                     this.a.s.fS().a($$12);
-                  }
-               } else {
-                  this.a.s.fR().a((double)$$11);
-               }
-            }
-         }
-      }
+   public static eqy<Boolean> a(String $$0, eqy.l<Boolean> $$1, boolean $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   private void a(long $$0, List<Path> $$1) {
-      if (this.a.y != null) {
-         this.a.y.a($$1);
-      }
+   public static eqy<Boolean> a(String $$0, eqy.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
+      return a($$0, $$1, b, $$2, $$3);
    }
 
-   public void a(long $$0) {
-      ekm.a(
-         $$0,
-         ($$0x, $$1, $$2) -> this.a.execute(() -> this.b($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2, $$3) -> this.a.execute(() -> this.a($$0x, $$1, $$2, $$3)),
-         ($$0x, $$1, $$2) -> this.a.execute(() -> this.a($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2) -> {
-            Path[] $$3 = new Path[$$1];
-
-            for (int $$4 = 0; $$4 < $$1; $$4++) {
-               $$3[$$4] = Paths.get(GLFWDropCallback.getName($$2, $$4));
-            }
-
-            this.a.execute(() -> this.a($$0x, Arrays.asList($$3)));
-         }
-      );
+   public static eqy<Boolean> a(String $$0, eqy.l<Boolean> $$1, eqy.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
+      return new eqy<>($$0, $$1, $$2, a, $$3, $$4);
    }
 
-   private void b(long $$0, double $$1, double $$2) {
-      if ($$0 == eqx.O().aM().i()) {
-         if (this.i) {
-            this.e = $$1;
-            this.f = $$2;
-            this.i = false;
-         }
-
-         eym $$3 = this.a.y;
-         if ($$3 != null && this.a.aJ() == null) {
-            double $$4 = $$1 * (double)this.a.aM().o() / (double)this.a.aM().m();
-            double $$5 = $$2 * (double)this.a.aM().p() / (double)this.a.aM().n();
-            eym.a(() -> $$3.e($$4, $$5), "mouseMoved event handler", $$3.getClass().getCanonicalName());
-            if (this.h != -1 && this.k > 0.0) {
-               double $$6 = ($$1 - this.e) * (double)this.a.aM().o() / (double)this.a.aM().m();
-               double $$7 = ($$2 - this.f) * (double)this.a.aM().p() / (double)this.a.aM().n();
-               eym.a(() -> $$3.a($$4, $$5, this.h, $$6, $$7), "mouseDragged event handler", $$3.getClass().getCanonicalName());
-            }
-
-            $$3.w();
-         }
-
-         this.a.aG().a("mouse");
-         if (this.h() && this.a.aA()) {
-            this.n = this.n + ($$1 - this.e);
-            this.o = this.o + ($$2 - this.f);
-         }
-
-         this.a();
-         this.e = $$1;
-         this.f = $$2;
-         this.a.aG().c();
-      }
+   public eqy(String $$0, eqy.l<T> $$1, eqy.b<T> $$2, eqy.n<T> $$3, T $$4, Consumer<T> $$5) {
+      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
    }
 
-   public void a() {
-      double $$0 = eji.b();
-      double $$1 = $$0 - this.r;
-      this.r = $$0;
-      if (this.h() && this.a.aA()) {
-         double $$2 = this.a.m.c().c() * 0.6F + 0.2F;
-         double $$3 = $$2 * $$2 * $$2;
-         double $$4 = $$3 * 8.0;
-         double $$7;
-         double $$8;
-         if (this.a.m.ab) {
-            double $$5 = this.l.a(this.n * $$4, $$1 * $$4);
-            double $$6 = this.m.a(this.o * $$4, $$1 * $$4);
-            $$7 = $$5;
-            $$8 = $$6;
-         } else if (this.a.m.aw().a() && this.a.s.gp()) {
-            this.l.a();
-            this.m.a();
-            $$7 = this.n * $$3;
-            $$8 = this.o * $$3;
-         } else {
-            this.l.a();
-            this.m.a();
-            $$7 = this.n * $$4;
-            $$8 = this.o * $$4;
-         }
+   public eqy(String $$0, eqy.l<T> $$1, eqy.b<T> $$2, eqy.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
+      this.j = tl.c($$0);
+      this.d = $$1;
+      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.k = this.h;
+   }
 
-         this.n = 0.0;
-         this.o = 0.0;
-         int $$13 = 1;
-         if (this.a.m.N().c()) {
-            $$13 = -1;
-         }
+   public static <T> eqy.l<T> a() {
+      return $$0 -> null;
+   }
 
-         this.a.az().a($$7, $$8);
-         if (this.a.s != null) {
-            this.a.s.b($$7, $$8 * (double)$$13);
-         }
+   public static <T> eqy.l<T> a(tl $$0) {
+      return $$1 -> eua.a($$0);
+   }
+
+   public static <T extends ary> eqy.b<T> b() {
+      return ($$0, $$1) -> $$1.d();
+   }
+
+   public eso a(eqz $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, $$0x -> {
+      });
+   }
+
+   public eso a(eqz $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
+      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
+   }
+
+   public T c() {
+      return this.k;
+   }
+
+   public Codec<T> d() {
+      return this.g;
+   }
+
+   @Override
+   public String toString() {
+      return this.j.getString();
+   }
+
+   public void a(T $$0) {
+      T $$1 = this.f.a($$0).orElseGet(() -> {
+         c.error("Illegal option value " + $$0 + " for " + this.j);
+         return this.h;
+      });
+      if (!eqv.O().r()) {
+         this.k = $$1;
       } else {
-         this.n = 0.0;
-         this.o = 0.0;
+         if (!Objects.equals(this.k, $$1)) {
+            this.k = $$1;
+            this.i.accept(this.k);
+         }
       }
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public double e() {
-      return this.e;
-   }
-
-   public double f() {
+   public eqy.n<T> e() {
       return this.f;
    }
 
-   public void g() {
-      this.i = true;
+   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, eqy.d.a<T> d, Codec<T> e) implements eqy.d<T> {
+      @Override
+      public esx.c<T> a() {
+         return esx.c.a(this.c, this.a, this.b);
+      }
+
+      @Override
+      public Optional<T> a(T $$0) {
+         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      public List<T> c() {
+         return this.b;
+      }
+
+      public BooleanSupplier d() {
+         return this.c;
+      }
+
+      @Override
+      public eqy.d.a<T> e() {
+         return this.d;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.e;
+      }
    }
 
-   public boolean h() {
-      return this.s;
+   public interface b<T> {
+      tl toString(tl var1, T var2);
    }
 
-   public void i() {
-      if (this.a.aA()) {
-         if (!this.s) {
-            if (!eqx.a) {
-               eqv.a();
+   public static record c(int a, IntSupplier b, int c) implements eqy.g, eqy.j<Integer> {
+      public Optional<Integer> a(Integer $$0) {
+         return Optional.of(arw.a($$0, this.d(), this.b()));
+      }
+
+      @Override
+      public int b() {
+         return this.b.getAsInt();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return arf.a(
+            Codec.INT,
+            $$0 -> {
+               int $$1 = this.c + 1;
+               return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
+                  ? DataResult.success($$0)
+                  : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
+            }
+         );
+      }
+
+      @Override
+      public boolean c() {
+         return true;
+      }
+
+      @Override
+      public esx.c<Integer> a() {
+         return esx.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+
+      public IntSupplier g() {
+         return this.b;
+      }
+
+      public int h() {
+         return this.c;
+      }
+   }
+
+   interface d<T> extends eqy.n<T> {
+      esx.c<T> a();
+
+      default eqy.d.a<T> e() {
+         return eqy::a;
+      }
+
+      @Override
+      default Function<eqy<T>, eso> a(eqy.l<T> $$0, eqz $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> esx.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
+               this.e().set($$6, (T)$$4xx);
+               $$1.ar();
+               $$5.accept((T)$$4xx);
+            });
+      }
+
+      public interface a<T> {
+         void set(eqy<T> var1, T var2);
+      }
+   }
+
+   public static record e<T>(List<T> a, Codec<T> b) implements eqy.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public esx.c<T> a() {
+         return esx.c.a(this.a);
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.b;
+      }
+   }
+
+   public static record f(int a, int b) implements eqy.g {
+      public Optional<Integer> a(Integer $$0) {
+         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return Codec.intRange(this.a, this.b + 1);
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+   }
+
+   interface g extends eqy.k<Integer> {
+      int d();
+
+      int b();
+
+      default double b(Integer $$0) {
+         return (double)arw.c((float)$$0.intValue(), (float)this.d(), (float)this.b(), 0.0F, 1.0F);
+      }
+
+      default Integer a(double $$0) {
+         return arw.a(arw.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b()));
+      }
+
+      default <R> eqy.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
+         return new eqy.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
             }
 
-            this.s = true;
-            this.e = (double)(this.a.aM().m() / 2);
-            this.f = (double)(this.a.aM().n() / 2);
-            ekm.a(this.a.aM().i(), 212995, this.e, this.f);
-            this.a.a(null);
-            this.a.w = 10000;
-            this.i = true;
-         }
+            @Override
+            public double b(R $$0x) {
+               return g.this.b($$1.applyAsInt($$0));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(g.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
+            }
+         };
       }
    }
 
-   public void j() {
-      if (this.s) {
-         this.s = false;
-         this.e = (double)(this.a.aM().m() / 2);
-         this.f = (double)(this.a.aM().n() / 2);
-         ekm.a(this.a.aM().i(), 212993, this.e, this.f);
+   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements eqy.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public esx.c<T> a() {
+         return esx.c.a(this.a.get());
+      }
+
+      public Supplier<List<T>> b() {
+         return this.a;
+      }
+
+      public Function<T, Optional<T>> c() {
+         return this.b;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.c;
       }
    }
 
-   public void k() {
-      this.i = true;
+   static final class i<N> extends esj {
+      private final eqy<N> d;
+      private final eqy.k<N> e;
+      private final eqy.l<N> l;
+      private final Consumer<N> m;
+
+      i(eqz $$0, int $$1, int $$2, int $$3, int $$4, eqy<N> $$5, eqy.k<N> $$6, eqy.l<N> $$7, Consumer<N> $$8) {
+         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
+         this.d = $$5;
+         this.e = $$6;
+         this.l = $$7;
+         this.m = $$8;
+         this.b();
+      }
+
+      @Override
+      protected void b() {
+         this.b(this.d.e.apply(this.d.c()));
+         this.a(this.l.apply(this.e.b(this.c)));
+      }
+
+      @Override
+      protected void a() {
+         this.d.a(this.e.b(this.c));
+         this.a.ar();
+         this.m.accept(this.d.c());
+      }
+   }
+
+   interface j<T> extends eqy.d<T>, eqy.k<T> {
+      boolean c();
+
+      @Override
+      default Function<eqy<T>, eso> a(eqy.l<T> $$0, eqz $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return this.c() ? eqy.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : eqy.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   interface k<T> extends eqy.n<T> {
+      double b(T var1);
+
+      T b(double var1);
+
+      @Override
+      default Function<eqy<T>, eso> a(eqy.l<T> $$0, eqz $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> new eqy.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5);
+      }
+   }
+
+   @FunctionalInterface
+   public interface l<T> {
+      @Nullable
+      eua apply(T var1);
+   }
+
+   public static enum m implements eqy.k<Double> {
+      a;
+
+      public Optional<Double> a(Double $$0) {
+         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      public double b(Double $$0) {
+         return $$0;
+      }
+
+      public Double a(double $$0) {
+         return $$0;
+      }
+
+      public <R> eqy.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
+         return new eqy.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(m.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
+            }
+         };
+      }
+
+      @Override
+      public Codec<Double> f() {
+         return arf.a(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
+      }
+   }
+
+   interface n<T> {
+      Function<eqy<T>, eso> a(eqy.l<T> var1, eqz var2, int var3, int var4, int var5, Consumer<T> var6);
+
+      Optional<T> a(T var1);
+
+      Codec<T> f();
    }
 }

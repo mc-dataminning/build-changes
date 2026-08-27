@@ -1,21 +1,28 @@
-public class fsv extends fup<buz, fev<buz>> {
-   private static final aey a = new aey("textures/entity/fish/cod.png");
+public class fsv extends fun<byu, fex<byu>> {
+   private static final aew a = new aew("textures/entity/creeper/creeper.png");
 
-   public fsv(ftj.a $$0) {
-      super($$0, new fev<>($$0.a(fid.u)), 0.3F);
+   public fsv(fth.a $$0) {
+      super($$0, new fex<>($$0.a(fib.B)), 0.5F);
+      this.a(new fws(this, $$0.f()));
    }
 
-   public aey a(buz $$0) {
+   protected void a(byu $$0, elp $$1, float $$2) {
+      float $$3 = $$0.E($$2);
+      float $$4 = 1.0F + arw.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = arw.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
+   }
+
+   protected float a(byu $$0, float $$1) {
+      float $$2 = $$0.E($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : arw.a($$2, 0.5F, 1.0F);
+   }
+
+   public aew a(byu $$0) {
       return a;
-   }
-
-   protected void a(buz $$0, elr $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = 4.3F * ary.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$5));
-      if (!$$0.aX()) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
    }
 }

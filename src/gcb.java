@@ -1,65 +1,31 @@
-public abstract class gcb extends gbx {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final buu n;
-   private boolean r;
+public class gcb implements gbw {
+   private final fng a;
+   private boolean b;
+   private boolean c = true;
 
-   public gcb(buu $$0, ape $$1, apg $$2) {
-      super($$1, $$2, gco.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dq());
-      this.g = (double)((float)$$0.ds());
-      this.h = (double)((float)$$0.dw());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   public gcb(fng $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         eqx.O().ai().a((gcp)this.o());
-         this.r = true;
-      }
-
-      if (!this.n.dG() && !this.r) {
-         this.f = (double)((float)this.n.dq());
-         this.g = (double)((float)this.n.ds());
-         this.h = (double)((float)this.n.dw());
-         float $$1 = (float)this.n.do().h();
-         if ($$1 >= 0.01F) {
-            this.e = ary.i(ary.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = ary.i(ary.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
+   public void a() {
+      cpv $$0 = this.a.dL();
+      dfj $$1 = $$0.c(this.a.cG().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(csw.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(csw.nd) && !this.a.M_()) {
+            boolean $$2 = $$1.c(cta.a);
+            if ($$2) {
+               this.a.a(apd.cu, 1.0F, 1.0F);
+            } else {
+               this.a.a(apd.cs, 1.0F, 1.0F);
+            }
          }
+
+         this.b = true;
       } else {
-         this.n();
+         this.b = false;
       }
+
+      this.c = false;
    }
-
-   private float u() {
-      return this.n.m_() ? 1.1F : 0.7F;
-   }
-
-   private float v() {
-      return this.n.m_() ? 1.5F : 1.1F;
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public boolean s() {
-      return !this.n.aS();
-   }
-
-   protected abstract gbx o();
-
-   protected abstract boolean p();
 }

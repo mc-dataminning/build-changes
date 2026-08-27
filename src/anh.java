@@ -1,33 +1,50 @@
-import java.util.function.UnaryOperator;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface anh {
-   UnaryOperator<tn> a = UnaryOperator.identity();
-   anh b = a(a, true);
-   anh c = a(a("pack.source.builtin"), true);
-   anh d = a(a("pack.source.feature"), false);
-   anh e = a(a("pack.source.world"), true);
-   anh f = a(a("pack.source.server"), true);
+public class anh extends amz {
+   private static final amv b = new amv(tl.c("dataPack.vanilla.description"), aa.b().a(ami.b), Optional.empty());
+   private static final ame c = new ame(cee.g);
+   private static final amc d = amc.a(amv.b, b, ame.a, c);
+   private static final tl e = tl.c("dataPack.vanilla.name");
+   private static final aew f = new aew("minecraft", "datapacks");
 
-   tn a(tn var1);
-
-   boolean a();
-
-   static anh a(final UnaryOperator<tn> $$0, final boolean $$1) {
-      return new anh() {
-         @Override
-         public tn a(tn $$0x) {
-            return $$0.apply($$0);
-         }
-
-         @Override
-         public boolean a() {
-            return $$1;
-         }
-      };
+   public anh(ehd $$0) {
+      super(ami.b, b(), f, $$0);
    }
 
-   private static UnaryOperator<tn> a(String $$0) {
-      tn $$1 = tn.c($$0);
-      return $$1x -> tn.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   @VisibleForTesting
+   public static amk b() {
+      return new aml().a(d).a("minecraft").b().a().c();
+   }
+
+   @Override
+   protected tl a(String $$0) {
+      return tl.b($$0);
+   }
+
+   @Nullable
+   @Override
+   protected anb a(amh $$0) {
+      return anb.a("vanilla", e, false, b($$0), ami.b, anb.b.b, anf.c);
+   }
+
+   @Nullable
+   @Override
+   protected anb a(String $$0, anb.c $$1, tl $$2) {
+      return anb.a($$0, $$2, false, $$1, ami.b, anb.b.a, anf.d);
+   }
+
+   public static ane a(Path $$0, ehd $$1) {
+      return new ane(new anh($$1), new ana($$0, ami.b, anf.e, $$1));
+   }
+
+   public static ane c() {
+      return new ane(new anh(new ehd($$0 -> true)));
+   }
+
+   public static ane a(ecg.c $$0) {
+      return a($$0.a(ece.j), $$0.a().e());
    }
 }

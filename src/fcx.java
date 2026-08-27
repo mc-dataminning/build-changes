@@ -1,106 +1,123 @@
-import java.nio.file.Path;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
 
-public class fcx extends eym {
-   private static final int a = 8;
-   private static final tn b = tn.c("telemetry_info.screen.title");
-   private static final tn c = tn.c("telemetry_info.screen.description").a(n.h);
-   private static final tn k = tn.c("telemetry_info.button.privacy_statement");
-   private static final tn l = tn.c("telemetry_info.button.give_feedback");
-   private static final tn m = tn.c("telemetry_info.button.show_data");
-   private final eym n;
-   private final erb o;
-   private fcw p;
-   private double q;
+public class fcx extends eyk {
+   private static final tl a = tl.c("selectWorld.experimental.title");
+   private static final tl b = tl.c("selectWorld.experimental.message");
+   private static final tl c = tl.c("selectWorld.experimental.details");
+   private static final int k = 10;
+   private static final int l = 100;
+   private final BooleanConsumer m;
+   final Collection<anb> n;
+   private final evy o = new evy().a(10).b(20);
 
-   public fcx(eym $$0, erb $$1) {
-      super(b);
+   public fcx(Collection<anb> $$0, BooleanConsumer $$1) {
+      super(a);
       this.n = $$0;
-      this.o = $$1;
+      this.m = $$1;
    }
 
    @Override
-   public tn g() {
-      return tm.a(super.g(), c);
+   public tl g() {
+      return tk.a(super.g(), b);
    }
 
    @Override
    protected void aH_() {
-      evz $$0 = new evz();
-      $$0.c().a(8);
-      $$0.a(this.h);
-      ewf $$1 = $$0.a(ewf.d(), $$0.b().a(0.5F, 0.0F));
-      $$1.c().b().e(8);
-      $$1.a(new ety(this.m(), this.i));
-      $$1.a(new etm(c, this.i).j(this.g - 16).b(true));
-      ess $$2 = ess.a(k, this::b).a();
-      $$1.a($$2);
-      ewa $$3 = this.a(ess.a(l, this::c).a(), ess.a(m, this::d).a());
-      $$1.a($$3);
-      ewa $$4 = this.a(this.l(), ess.a(tm.d, this::a).a());
-      $$0.a($$4, $$0.b().a(0.5F, 1.0F));
-      $$0.a();
-      this.p = new fcw(0, 0, this.g - 40, $$4.t() - ($$3.t() + $$3.i()) - 16, this.f.h);
-      this.p.a(this.q);
-      this.p.a($$0x -> this.q = $$0x);
-      this.c(this.p);
-      $$1.a(this.p);
-      $$0.a();
-      evz.a($$0, 0, 0, this.g, this.h, 0.5F, 0.0F);
-      $$0.a($$1x -> {
-         esq var10000 = this.d($$1x);
+      super.aH_();
+      evy.b $$0 = this.o.d(2);
+      ewc $$1 = $$0.b().b();
+      $$0.a(new etw(this.e, this.i), 2, $$1);
+      etk $$2 = $$0.a(new etk(b, this.i).b(true), 2, $$1);
+      $$2.j(310);
+      $$0.a(esq.a(c, $$0x -> this.f.a(new fcx.a())).a(100).a(), 2, $$1);
+      $$0.a(esq.a(tk.i, $$0x -> this.m.accept(true)).a());
+      $$0.a(esq.a(tk.k, $$0x -> this.m.accept(false)).a());
+      this.o.a($$1x -> {
+         eso var10000 = this.d($$1x);
       });
+      this.o.a();
+      this.b();
    }
 
-   private esq l() {
-      esq $$0 = this.o.ae().a(this.o, 0, 0, 150, $$0x -> this.p.b($$0x));
-      $$0.i = this.f.B();
-      return $$0;
-   }
-
-   private void a(ess $$0) {
-      this.f.a(this.n);
-   }
-
-   private void b(ess $$0) {
-      this.f.a(new exe($$0x -> {
-         if ($$0x) {
-            ac.i().a("http://go.microsoft.com/fwlink/?LinkId=521839");
-         }
-
-         this.f.a(this);
-      }, "http://go.microsoft.com/fwlink/?LinkId=521839", true));
-   }
-
-   private void c(ess $$0) {
-      this.f.a(new exe($$0x -> {
-         if ($$0x) {
-            ac.i().a("https://aka.ms/javafeedback?ref=game");
-         }
-
-         this.f.a(this);
-      }, "https://aka.ms/javafeedback?ref=game", true));
-   }
-
-   private void d(ess $$0) {
-      Path $$1 = this.f.u().b();
-      ac.i().a($$1.toUri());
+   @Override
+   protected void b() {
+      evx.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
    }
 
    @Override
    public void az_() {
-      this.f.a(this.n);
+      this.m.accept(false);
    }
 
-   @Override
-   public void b(esh $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
+   class a extends eyk {
+      private fcx.a.a b;
 
-   private ewa a(esq $$0, esq $$1) {
-      ewa $$2 = new ewa();
-      $$2.c().b().f(4);
-      $$2.a($$0, 0, 0);
-      $$2.a($$1, 0, 1);
-      return $$2;
+      a() {
+         super(tl.c("selectWorld.experimental.details.title"));
+      }
+
+      @Override
+      public void az_() {
+         this.f.a(fcx.this);
+      }
+
+      @Override
+      protected void aH_() {
+         super.aH_();
+         this.d(esq.a(tk.k, $$0 -> this.az_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
+         this.b = new fcx.a.a(this.f, fcx.this.n);
+         this.e(this.b);
+      }
+
+      @Override
+      public void a(esf $$0, int $$1, int $$2, float $$3) {
+         super.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
+      }
+
+      class a extends etm<fcx.a.b> {
+         public a(eqv $$0, Collection<anb> $$1) {
+            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
+
+            for (anb $$2 : $$1) {
+               String $$3 = cee.a(cee.f, $$2.d());
+               if (!$$3.isEmpty()) {
+                  tl $$4 = tn.a($$2.a().e(), uh.a.a(true));
+                  tl $$5 = tl.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, etj.a(a.this.i, $$5, this.b())));
+               }
+            }
+         }
+
+         @Override
+         public int b() {
+            return this.e * 3 / 4;
+         }
+      }
+
+      class b extends etm.a<fcx.a.b> {
+         private final tl b;
+         private final tl c;
+         private final etj d;
+
+         b(tl $$0, tl $$1, etj $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
+            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
+         }
+
+         @Override
+         public tl a() {
+            return tl.a("narrator.select", tk.a(this.b, this.c));
+         }
+      }
    }
 }

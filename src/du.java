@@ -30,97 +30,97 @@ public class du {
    private final CommandDispatcher<dt> g = new CommandDispatcher();
 
    public du(du.a $$0, dn $$1) {
-      agc.a(this.g);
-      agd.a(this.g, $$1);
-      agx.a(this.g, $$1);
-      agh.a(this.g);
+      aga.a(this.g);
+      agb.a(this.g, $$1);
+      agv.a(this.g, $$1);
+      agf.a(this.g);
+      agh.a(this.g, $$1);
+      agi.a(this.g, $$1);
       agj.a(this.g, $$1);
-      agk.a(this.g, $$1);
-      agl.a(this.g, $$1);
-      ajj.a(this.g);
+      ajh.a(this.g);
+      agk.a(this.g);
       agm.a(this.g);
-      ago.a(this.g);
-      ags.a(this.g);
+      agq.a(this.g);
+      agr.a(this.g);
+      ags.a(this.g, $$1);
       agt.a(this.g);
       agu.a(this.g, $$1);
-      agv.a(this.g);
-      agw.a(this.g, $$1);
-      agy.a(this.g);
-      aha.a(this.g, $$1);
-      agz.a(this.g, $$1);
+      agw.a(this.g);
+      agy.a(this.g, $$1);
+      agx.a(this.g, $$1);
+      agz.a(this.g);
+      aha.a(this.g);
       ahb.a(this.g);
       ahc.a(this.g);
-      ahd.a(this.g);
+      ahd.a(this.g, $$1);
       ahe.a(this.g);
       ahf.a(this.g, $$1);
-      ahg.a(this.g);
-      ahh.a(this.g, $$1);
+      ahh.a(this.g);
+      ahi.a(this.g);
       ahj.a(this.g);
-      ahk.a(this.g);
-      ahl.a(this.g);
-      ahm.a(this.g, $$1);
-      ahn.a(this.g, $$1);
-      aho.a(this.g);
-      ahs.a(this.g, $$1);
-      ahu.a(this.g);
-      ahv.a(this.g);
+      ahk.a(this.g, $$1);
+      ahl.a(this.g, $$1);
+      ahm.a(this.g);
+      ahq.a(this.g, $$1);
+      ahs.a(this.g);
+      aht.a(this.g);
+      ahw.a(this.g);
       ahy.a(this.g);
+      ahx.a(this.g);
       aia.a(this.g);
-      ahz.a(this.g);
-      aic.a(this.g);
-      aid.a(this.g);
+      aib.a(this.g);
+      aif.a(this.g);
+      aig.a(this.g);
       aih.a(this.g);
-      aii.a(this.g);
-      aij.a(this.g);
-      aik.a(this.g, $$0 != du.a.c);
-      ail.a(this.g, $$1);
-      ain.a(this.g);
+      aii.a(this.g, $$0 != du.a.c);
+      aij.a(this.g, $$1);
+      ail.a(this.g);
+      aim.a(this.g);
       aio.a(this.g);
-      aiq.a(this.g);
+      aip.a(this.g);
       air.a(this.g);
+      ais.a(this.g, $$1);
       ait.a(this.g);
-      aiu.a(this.g, $$1);
+      aiu.a(this.g);
       aiv.a(this.g);
       aiw.a(this.g);
       aix.a(this.g);
       aiy.a(this.g);
       aiz.a(this.g);
       aja.a(this.g);
-      ajb.a(this.g);
       ajc.a(this.g);
       aje.a(this.g);
-      ajg.a(this.g);
-      if (bdx.e.d()) {
-         ahi.a(this.g);
+      if (bdv.e.d()) {
+         ahg.a(this.g);
       }
 
       if (aa.aT) {
-         qo.a(this.g);
-         aip.a(this.g);
+         qm.a(this.g);
+         ain.a(this.g);
          if ($$0.e) {
-            agp.a(this.g);
+            agn.a(this.g);
          }
       }
 
       if ($$0.e) {
+         agc.a(this.g);
+         agd.a(this.g);
          age.a(this.g);
-         agf.a(this.g);
-         agg.a(this.g);
-         agn.a(this.g);
+         agl.a(this.g);
+         ahn.a(this.g);
+         aho.a(this.g);
          ahp.a(this.g);
-         ahq.a(this.g);
          ahr.a(this.g);
-         aht.a(this.g);
+         aic.a(this.g);
+         aid.a(this.g);
          aie.a(this.g);
-         aif.a(this.g);
-         aig.a(this.g);
-         aim.a(this.g);
-         ais.a(this.g);
-         ajf.a(this.g);
+         aik.a(this.g);
+         aiq.a(this.g);
+         ajd.a(this.g);
       }
 
       if ($$0.d) {
-         ahw.a(this.g);
+         ahu.a(this.g);
       }
 
       this.g.setConsumer(($$0x, $$1x, $$2) -> ((dt)$$0x.getSource()).a($$0x, $$1x, $$2));
@@ -148,27 +148,27 @@ public class du {
          $$2.b(var13.a());
          return 0;
       } catch (CommandSyntaxException var14) {
-         $$2.b(tp.a(var14.getRawMessage()));
+         $$2.b(tn.a(var14.getRawMessage()));
          if (var14.getInput() != null && var14.getCursor() >= 0) {
             int $$5 = Math.min(var14.getInput().length(), var14.getCursor());
-            ua $$6 = tn.h().a(n.h).a($$1x -> $$1x.a(new tl(tl.a.d, "/" + $$1)));
+            ty $$6 = tl.h().a(n.h).a($$1x -> $$1x.a(new tj(tj.a.d, "/" + $$1)));
             if ($$5 > 10) {
-               $$6.b(tm.t);
+               $$6.b(tk.t);
             }
 
             $$6.f(var14.getInput().substring(Math.max(0, $$5 - 10), $$5));
             if ($$5 < var14.getInput().length()) {
-               tn $$7 = tn.b(var14.getInput().substring($$5)).a(n.m, n.t);
+               tl $$7 = tl.b(var14.getInput().substring($$5)).a(n.m, n.t);
                $$6.b($$7);
             }
 
-            $$6.b(tn.c("command.context.here").a(n.m, n.u));
+            $$6.b(tl.c("command.context.here").a(n.m, n.u));
             $$2.b($$6);
          }
 
          return 0;
       } catch (Exception var15) {
-         ua $$9 = tn.b(var15.getMessage() == null ? var15.getClass().getName() : var15.getMessage());
+         ty $$9 = tl.b(var15.getMessage() == null ? var15.getClass().getName() : var15.getMessage());
          if (f.isDebugEnabled()) {
             f.error("Command exception: /{}", $$1, var15);
             StackTraceElement[] $$10 = var15.getStackTrace();
@@ -178,9 +178,9 @@ public class du {
             }
          }
 
-         $$2.b(tn.c("command.failed").a($$1x -> $$1x.a(new ts(ts.a.a, $$9))));
+         $$2.b(tl.c("command.failed").a($$1x -> $$1x.a(new tq(tq.a.a, $$9))));
          if (aa.aT) {
-            $$2.b(tn.b(ac.c(var15)));
+            $$2.b(tl.b(ac.c(var15)));
             f.error("'/{}' threw an exception", $$1, var15);
          }
 
@@ -192,12 +192,12 @@ public class du {
       return var20;
    }
 
-   public void a(akt $$0) {
+   public void a(akr $$0) {
       Map<CommandNode<dt>, CommandNode<dw>> $$1 = Maps.newHashMap();
       RootCommandNode<dw> $$2 = new RootCommandNode();
       $$1.put(this.g.getRoot(), $$2);
       this.a(this.g.getRoot(), $$2, $$0.dc(), $$1);
-      $$0.c.b(new xq($$2));
+      $$0.c.b(new xo($$2));
    }
 
    private void a(CommandNode<dt> $$0, CommandNode<dw> $$1, dt $$2, Map<CommandNode<dt>, CommandNode<dw>> $$3) {
@@ -266,21 +266,21 @@ public class du {
       }
    }
 
-   public static dn a(final hi.b $$0) {
+   public static dn a(final hg.b $$0) {
       return new dn() {
          @Override
-         public <T> hi<T> a(aex<? extends ht<T>> $$0x) {
-            final hi.c<T> $$1 = $$0.b($$0);
-            return new hi.a<T>($$1) {
+         public <T> hg<T> a(aev<? extends hq<T>> $$0x) {
+            final hg.c<T> $$1 = $$0.b($$0);
+            return new hg.a<T>($$1) {
                @Override
-               public Optional<hk.c<T>> a(aqj<T> $$0x) {
+               public Optional<hi.c<T>> a(aqh<T> $$0x) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public hk.c<T> b(aqj<T> $$0x) {
-                  Optional<hk.c<T>> $$1 = $$1.a($$0);
-                  return $$1.orElseGet(() -> hk.a($$1, $$0));
+               public hi.c<T> b(aqh<T> $$0x) {
+                  Optional<hi.c<T>> $$1 = $$1.a($$0);
+                  return $$1.orElseGet(() -> hi.a($$1, $$0));
                }
             };
          }
@@ -288,7 +288,7 @@ public class du {
    }
 
    public static void b() {
-      dn $$0 = a(mj.a());
+      dn $$0 = a(mh.a());
       CommandDispatcher<dt> $$1 = new du(du.a.a, $$0).a();
       RootCommandNode<dt> $$2 = $$1.getRoot();
       $$1.findAmbiguities(

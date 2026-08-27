@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gbf {
+public interface gbf {
+   List<fpb> a(@Nullable dfj var1, @Nullable ha var2, asc var3);
+
+   boolean a();
+
+   boolean b();
+
+   boolean c();
+
+   boolean d();
+
+   fze e();
+
+   fpn f();
+
+   fpl g();
 }

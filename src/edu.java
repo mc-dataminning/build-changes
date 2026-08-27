@@ -1,93 +1,76 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 
-public class edu extends eee {
+public class edu extends eec {
    public static final Codec<edu> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  jd.f.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dgo::f).toList())
-               )
-            )
+            .and($$0.group(ege.a.fieldOf("source").forGetter($$0x -> $$0x.b), edu.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
             .apply($$0, edu::new)
    );
-   private final hg<csx> b;
-   private final Set<dgo<?>> c;
+   private final egd b;
+   private final List<edu.b> c;
 
-   edu(List<efr> $$0, hg<csx> $$1, Set<dgo<?>> $$2) {
+   edu(List<efp> $$0, egd $$1, List<edu.b> $$2) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
-   }
-
-   private edu(List<efr> $$0, hg<csx> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public eeg b() {
-      return eeh.x;
+   public eee b() {
+      return eef.w;
    }
 
    @Override
-   public Set<efa<?>> a() {
-      return ImmutableSet.of(efd.g);
+   public Set<eey<?>> a() {
+      return this.b.b();
    }
 
    @Override
-   protected cjh a(cjh $$0, ecs $$1) {
-      dfl $$2 = $$1.c(efd.g);
+   public cjf a(cjf $$0, ecq $$1) {
+      rq $$2 = this.b.a($$1);
       if ($$2 != null) {
-         qy $$3 = $$0.w();
-         qy $$4;
-         if ($$3.b("BlockStateTag", 10)) {
-            $$4 = $$3.p("BlockStateTag");
-         } else {
-            $$4 = new qy();
-            $$3.a("BlockStateTag", $$4);
-         }
-
-         for (dgo<?> $$6 : this.c) {
-            if ($$2.b($$6)) {
-               $$4.a($$6.f(), a($$2, $$6));
-            }
-         }
+         this.c.forEach($$2x -> $$2x.a($$0::w, $$2));
       }
 
       return $$0;
    }
 
-   public static edu.a a(csx $$0) {
+   public static edu.a a(egd $$0) {
       return new edu.a($$0);
    }
 
-   private static <T extends Comparable<T>> String a(dfl $$0, dgo<T> $$1) {
-      T $$2 = $$0.c($$1);
-      return $$1.a($$2);
+   public static edu.a a(ecq.b $$0) {
+      return new edu.a(egb.a($$0));
    }
 
-   public static class a extends eee.a<edu.a> {
-      private final hg<csx> a;
-      private final Builder<dgo<?>> b = ImmutableSet.builder();
+   public static class a extends eec.a<edu.a> {
+      private final egd a;
+      private final List<edu.b> b = Lists.newArrayList();
 
-      a(csx $$0) {
-         this.a = $$0.q();
+      a(egd $$0) {
+         this.a = $$0;
       }
 
-      public edu.a a(dgo<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
+      public edu.a a(String $$0, String $$1, edu.c $$2) {
+         try {
+            this.b.add(new edu.b(edu.d.a($$0), edu.d.a($$1), $$2));
             return this;
+         } catch (CommandSyntaxException var5) {
+            throw new IllegalArgumentException(var5);
          }
+      }
+
+      public edu.a a(String $$0, String $$1) {
+         return this.a($$0, $$1, edu.c.a);
       }
 
       protected edu.a a() {
@@ -95,8 +78,111 @@ public class edu extends eee {
       }
 
       @Override
-      public eef b() {
-         return new edu(this.g(), this.a, this.b.build());
+      public eed b() {
+         return new edu(this.g(), this.a, this.b);
+      }
+   }
+
+   static record b(edu.d b, edu.d c, edu.c d) {
+      public static final Codec<edu.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  edu.d.a.fieldOf("source").forGetter(edu.b::a), edu.d.a.fieldOf("target").forGetter(edu.b::b), edu.c.d.fieldOf("op").forGetter(edu.b::c)
+               )
+               .apply($$0, edu.b::new)
+      );
+
+      public void a(Supplier<rq> $$0, rq $$1) {
+         try {
+            List<rq> $$2 = this.b.b().a($$1);
+            if (!$$2.isEmpty()) {
+               this.d.a($$0.get(), this.c.b(), $$2);
+            }
+         } catch (CommandSyntaxException var4) {
+         }
+      }
+
+      public edu.d a() {
+         return this.b;
+      }
+
+      public edu.d b() {
+         return this.c;
+      }
+
+      public edu.c c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements asp {
+      a("replace") {
+         @Override
+         public void a(rq $$0, ej.g $$1, List<rq> $$2) throws CommandSyntaxException {
+            $$1.a($$0, (rq)Iterables.getLast($$2));
+         }
+      },
+      b("append") {
+         @Override
+         public void a(rq $$0, ej.g $$1, List<rq> $$2) throws CommandSyntaxException {
+            List<rq> $$3 = $$1.a($$0, rc::new);
+            $$3.forEach($$1x -> {
+               if ($$1x instanceof rc) {
+                  $$2.forEach($$1xx -> ((rc)$$1x).add($$1xx.d()));
+               }
+            });
+         }
+      },
+      c("merge") {
+         @Override
+         public void a(rq $$0, ej.g $$1, List<rq> $$2) throws CommandSyntaxException {
+            List<rq> $$3 = $$1.a($$0, qw::new);
+            $$3.forEach($$1x -> {
+               if ($$1x instanceof qw) {
+                  $$2.forEach($$1xx -> {
+                     if ($$1xx instanceof qw) {
+                        ((qw)$$1x).a((qw)$$1xx);
+                     }
+                  });
+               }
+            });
+         }
+      };
+
+      public static final Codec<edu.c> d = asp.a(edu.c::values);
+      private final String e;
+
+      public abstract void a(rq var1, ej.g var2, List<rq> var3) throws CommandSyntaxException;
+
+      c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+   }
+
+   static record d(String b, ej.g c) {
+      public static final Codec<edu.d> a = Codec.STRING.comapFlatMap($$0 -> {
+         try {
+            return DataResult.success(a($$0));
+         } catch (CommandSyntaxException var2) {
+            return DataResult.error(() -> "Failed to parse path " + $$0 + ": " + var2.getMessage());
+         }
+      }, edu.d::a);
+
+      public static edu.d a(String $$0) throws CommandSyntaxException {
+         ej.g $$1 = new ej().a(new StringReader($$0));
+         return new edu.d($$0, $$1);
+      }
+
+      public String a() {
+         return this.b;
+      }
+
+      public ej.g b() {
+         return this.c;
       }
    }
 }

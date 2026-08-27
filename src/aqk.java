@@ -1,130 +1,69 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class aqk<T> {
-   private static final Logger a = LogUtils.getLogger();
-   final Function<aey, Optional<? extends T>> b;
-   private final String c;
-
-   public aqk(Function<aey, Optional<? extends T>> $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class aqk {
+   public static Map<aev<? extends hq<?>>, aqk.a> a(hl<aff> $$0) {
+      return hu.b($$0)
+         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
+         .filter($$0x -> !((aqk.a)$$0x.getSecond()).a())
+         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
    }
 
-   public Map<aey, List<aqk.a>> a(anv $$0) {
-      Map<aey, List<aqk.a>> $$1 = Maps.newHashMap();
-      aer $$2 = aer.a(this.c);
+   private static <T> aqk.a a(hq<T> $$0) {
+      Map<aew, IntList> $$1 = new HashMap<>();
+      $$0.i().forEach($$2 -> {
+         hi<T> $$3 = (hi<T>)$$2.getSecond();
+         IntList $$4 = new IntArrayList($$3.b());
 
-      for (Entry<aey, List<ant>> $$3 : $$2.b($$0).entrySet()) {
-         aey $$4 = $$3.getKey();
-         aey $$5 = $$2.b($$4);
-
-         for (ant $$6 : $$3.getValue()) {
-            try (Reader $$7 = $$6.e()) {
-               JsonElement $$8 = JsonParser.parseReader($$7);
-               List<aqk.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
-               aqi $$10 = (aqi)aqi.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow(false, a::error);
-               if ($$10.b()) {
-                  $$9.clear();
-               }
-
-               String $$11 = $$6.b();
-               $$10.a().forEach($$2x -> $$9.add(new aqk.a($$2x, $$11)));
-            } catch (Exception var17) {
-               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
+         for (he<T> $$5 : $$3) {
+            if ($$5.f() != he.b.a) {
+               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
             }
-         }
-      }
 
-      return $$1;
-   }
-
-   private Either<Collection<aqk.a>, Collection<T>> a(aqh.a<T> $$0, List<aqk.a> $$1) {
-      Builder<T> $$2 = ImmutableSet.builder();
-      List<aqk.a> $$3 = new ArrayList<>();
-
-      for (aqk.a $$4 : $$1) {
-         if (!$$4.a().a($$0, $$2::add)) {
-            $$3.add($$4);
-         }
-      }
-
-      return $$3.isEmpty() ? Either.right($$2.build()) : Either.left($$3);
-   }
-
-   public Map<aey, Collection<T>> a(Map<aey, List<aqk.a>> $$0) {
-      final Map<aey, Collection<T>> $$1 = Maps.newHashMap();
-      aqh.a<T> $$2 = new aqh.a<T>() {
-         @Nullable
-         @Override
-         public T a(aey $$0) {
-            return (T)aqk.this.b.apply($$0).orElse(null);
+            $$4.add($$0.a($$5.a()));
          }
 
-         @Nullable
-         @Override
-         public Collection<T> b(aey $$0) {
-            return $$1.get($$0);
-         }
-      };
-      are<aey, aqk.b> $$3 = new are<>();
-      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new aqk.b($$2x)));
-      $$3.a(
-         ($$2x, $$3x) -> this.a($$2, $$3x.a)
-               .ifLeft(
-                  $$1xx -> a.error(
-                        "Couldn't load tag {} as it is missing following references: {}",
-                        $$2x,
-                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
-                     )
-               )
-               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
-      );
-      return $$1;
+         $$1.put(((aqh)$$2.getFirst()).b(), $$4);
+      });
+      return new aqk.a($$1);
    }
 
-   public Map<aey, Collection<T>> b(anv $$0) {
-      return this.a(this.a($$0));
+   public static <T> void a(aev<? extends hq<T>> $$0, hq<T> $$1, aqk.a $$2, aqk.b<T> $$3) {
+      $$2.a.forEach(($$3x, $$4) -> {
+         aqh<T> $$5 = aqh.a($$0, $$3x);
+         List<he<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
+         $$3.accept($$5, $$6);
+      });
    }
 
-   public static record a(aqh a, String b) {
+   public static final class a {
+      final Map<aew, IntList> a;
 
-      @Override
-      public String toString() {
-         return this.a + " (from " + this.b + ")";
+      a(Map<aew, IntList> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(so $$0) {
+         $$0.a(this.a, so::a, so::a);
+      }
+
+      public static aqk.a b(so $$0) {
+         return new aqk.a($$0.a(so::s, so::a));
+      }
+
+      public boolean a() {
+         return this.a.isEmpty();
       }
    }
 
-   static record b(List<aqk.a> a) implements are.a<aey> {
-
-      @Override
-      public void a(Consumer<aey> $$0) {
-         this.a.forEach($$1 -> $$1.a.a($$0));
-      }
-
-      @Override
-      public void b(Consumer<aey> $$0) {
-         this.a.forEach($$1 -> $$1.a.b($$0));
-      }
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(aqh<T> var1, List<he<T>> var2);
    }
 }

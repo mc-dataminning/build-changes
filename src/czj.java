@@ -1,105 +1,52 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public class czj extends ctd implements csx {
+   public static final dgj d = dfz.aU;
+   protected static final float e = 6.0F;
+   protected static final eig f = csv.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   private final dep a;
 
-public enum czj implements asr {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
-
-   public static final Codec<czj> e = asr.a(czj::values);
-   private final String f;
-   private final h g;
-
-   private czj(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   public czj a(czj $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public hc a(hc $$0) {
-      if ($$0.o() == hc.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static czj a(ase $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<czj> b(ase $$0) {
-      return ac.b(values(), $$0);
+   protected czj(dep $$0, dfi.d $$1) {
+      super($$1);
+      this.a = $$0;
+      this.k(this.C.b().a(d, Integer.valueOf(0)));
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return f;
+   }
+
+   @Override
+   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
+      if ($$1.z($$2.c()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
+      }
+   }
+
+   public void a(akq $$0, gw $$1, dfj $$2, asc $$3) {
+      if ($$2.c(d) == 0) {
+         $$0.a($$1, $$2.a(d), 4);
+      } else {
+         this.a.a($$0, $$0.k().g(), $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
+      return (double)$$0.z.i() < 0.45;
+   }
+
+   @Override
+   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(d);
    }
 }

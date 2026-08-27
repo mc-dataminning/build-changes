@@ -1,119 +1,35 @@
-import com.mojang.serialization.Codec;
-import java.util.BitSet;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
 public class tq {
-   public static final Codec<tq> a = asr.a(tq.a::values).dispatch(tq::c, tq.a::a);
-   public static final tq b = new tq(new BitSet(0), tq.a.b);
-   public static final tq c = new tq(new BitSet(0), tq.a.a);
-   public static final uj d = uj.a.a(n.i).a(new ts(ts.a.a, tn.c("chat.filtered")));
-   static final Codec<tq> e = Codec.unit(c);
-   static final Codec<tq> f = Codec.unit(b);
-   static final Codec<tq> g = arh.s.xmap(tq::new, tq::d);
-   private static final char h = '#';
-   private final BitSet i;
-   private final tq.a j;
+   static final Logger a = LogUtils.getLogger();
+   private final tq.a<?> b;
+   private final Object c;
 
-   private tq(BitSet $$0, tq.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public <T> tq(tq.a<T> $$0, T $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private tq(BitSet $$0) {
-      this.i = $$0;
-      this.j = tq.a.c;
-   }
-
-   public tq(int $$0) {
-      this(new BitSet($$0), tq.a.c);
-   }
-
-   private tq.a c() {
-      return this.j;
-   }
-
-   private BitSet d() {
-      return this.i;
-   }
-
-   public static tq a(sq $$0) {
-      tq.a $$1 = $$0.b(tq.a.class);
-
-      return switch ($$1) {
-         case a -> c;
-         case b -> b;
-         case c -> new tq($$0.y(), tq.a.c);
-      };
-   }
-
-   public static void a(sq $$0, tq $$1) {
-      $$0.a($$1.j);
-      if ($$1.j == tq.a.c) {
-         $$0.a($$1.i);
-      }
-   }
-
-   public void a(int $$0) {
-      this.i.set($$0);
+   public tq.a<?> a() {
+      return this.b;
    }
 
    @Nullable
-   public String a(String $$0) {
-      return switch (this.j) {
-         case a -> $$0;
-         case b -> null;
-         case c -> {
-            char[] $$1 = $$0.toCharArray();
-
-            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
-               if (this.i.get($$2)) {
-                  $$1[$$2] = '#';
-               }
-            }
-
-            yield new String($$1);
-         }
-      };
-   }
-
-   @Nullable
-   public tn b(String $$0) {
-      return switch (this.j) {
-         case a -> tn.b($$0);
-         case b -> null;
-         case c -> {
-            ua $$1 = tn.h();
-            int $$2 = 0;
-            boolean $$3 = this.i.get(0);
-
-            while (true) {
-               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
-               $$4 = $$4 < 0 ? $$0.length() : $$4;
-               if ($$4 == $$2) {
-                  yield $$1;
-               }
-
-               if ($$3) {
-                  $$1.b(tn.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
-               } else {
-                  $$1.f($$0.substring($$2, $$4));
-               }
-
-               $$3 = !$$3;
-               $$2 = $$4;
-            }
-         }
-      };
-   }
-
-   public boolean a() {
-      return this.j == tq.a.a;
-   }
-
-   public boolean b() {
-      return this.j == tq.a.b;
+   public <T> T a(tq.a<T> $$0) {
+      return this.b == $$0 ? $$0.b(this.c) : null;
    }
 
    @Override
@@ -122,38 +38,287 @@ public class tq {
          return true;
       } else if ($$0 != null && this.getClass() == $$0.getClass()) {
          tq $$1 = (tq)$$0;
-         return this.i.equals($$1.i) && this.j == $$1.j;
+         return this.b == $$1.b && Objects.equals(this.c, $$1.c);
       } else {
          return false;
       }
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.i.hashCode();
-      return 31 * $$0 + this.j.hashCode();
+   public String toString() {
+      return "HoverEvent{action=" + this.b + ", value='" + this.c + "'}";
    }
 
-   static enum a implements asr {
-      a("pass_through", () -> tq.e),
-      b("fully_filtered", () -> tq.f),
-      c("partially_filtered", () -> tq.g);
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + (this.c != null ? this.c.hashCode() : 0);
+   }
 
-      private final String d;
-      private final Supplier<Codec<tq>> e;
+   @Nullable
+   public static tq a(JsonObject $$0) {
+      String $$1 = arn.a($$0, "action", null);
+      if ($$1 == null) {
+         return null;
+      } else {
+         tq.a<?> $$2 = tq.a.a($$1);
+         if ($$2 == null) {
+            return null;
+         } else {
+            JsonElement $$3 = $$0.get("contents");
+            if ($$3 != null) {
+               return $$2.a($$3);
+            } else {
+               tl $$4 = tl.a.a($$0.get("value"));
+               return $$4 != null ? $$2.a($$4) : null;
+            }
+         }
+      }
+   }
 
-      private a(String $$0, Supplier<Codec<tq>> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+   public JsonObject b() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("action", this.b.b());
+      $$0.add("contents", this.b.a(this.c));
+      return $$0;
+   }
+
+   public static class a<T> {
+      public static final tq.a<tl> a = new tq.a<>("show_text", true, tl.a::a, tl.a::c, Function.identity());
+      public static final tq.a<tq.c> b = new tq.a<>("show_item", true, tq.c::a, tq.c::b, tq.c::a);
+      public static final tq.a<tq.b> c = new tq.a<>("show_entity", true, tq.b::a, tq.b::a, tq.b::a);
+      private static final Map<String, tq.a<?>> d = Stream.of(a, b, c).collect(ImmutableMap.toImmutableMap(tq.a::b, $$0 -> $$0));
+      private final String e;
+      private final boolean f;
+      private final Function<JsonElement, T> g;
+      private final Function<T, JsonElement> h;
+      private final Function<tl, T> i;
+
+      public a(String $$0, boolean $$1, Function<JsonElement, T> $$2, Function<T, JsonElement> $$3, Function<tl, T> $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+      }
+
+      public boolean a() {
+         return this.f;
+      }
+
+      public String b() {
+         return this.e;
+      }
+
+      @Nullable
+      public static tq.a<?> a(String $$0) {
+         return d.get($$0);
+      }
+
+      T b(Object $$0) {
+         return (T)$$0;
+      }
+
+      @Nullable
+      public tq a(JsonElement $$0) {
+         T $$1 = this.g.apply($$0);
+         return $$1 == null ? null : new tq(this, $$1);
+      }
+
+      @Nullable
+      public tq a(tl $$0) {
+         T $$1 = this.i.apply($$0);
+         return $$1 == null ? null : new tq(this, $$1);
+      }
+
+      public JsonElement a(Object $$0) {
+         return this.h.apply(this.b($$0));
       }
 
       @Override
-      public String c() {
+      public String toString() {
+         return "<action " + this.e + ">";
+      }
+   }
+
+   public static class b {
+      public final biu<?> a;
+      public final UUID b;
+      @Nullable
+      public final tl c;
+      @Nullable
+      private List<tl> d;
+
+      public b(biu<?> $$0, UUID $$1, @Nullable tl $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Nullable
+      public static tq.b a(JsonElement $$0) {
+         if (!$$0.isJsonObject()) {
+            return null;
+         } else {
+            JsonObject $$1 = $$0.getAsJsonObject();
+            biu<?> $$2 = jb.h.a(new aew(arn.i($$1, "type")));
+            UUID $$3 = UUID.fromString(arn.i($$1, "id"));
+            tl $$4 = tl.a.a($$1.get("name"));
+            return new tq.b($$2, $$3, $$4);
+         }
+      }
+
+      @Nullable
+      public static tq.b a(tl $$0) {
+         try {
+            qw $$1 = rr.a($$0.getString());
+            tl $$2 = tl.a.a($$1.l("name"));
+            biu<?> $$3 = jb.h.a(new aew($$1.l("type")));
+            UUID $$4 = UUID.fromString($$1.l("id"));
+            return new tq.b($$3, $$4, $$2);
+         } catch (Exception var5) {
+            return null;
+         }
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         $$0.addProperty("type", jb.h.b(this.a).toString());
+         $$0.addProperty("id", this.b.toString());
+         if (this.c != null) {
+            $$0.add("name", tl.a.c(this.c));
+         }
+
+         return $$0;
+      }
+
+      public List<tl> b() {
+         if (this.d == null) {
+            this.d = Lists.newArrayList();
+            if (this.c != null) {
+               this.d.add(this.c);
+            }
+
+            this.d.add(tl.a("gui.entity_tooltip.type", this.a.h()));
+            this.d.add(tl.b(this.b.toString()));
+         }
+
          return this.d;
       }
 
-      private Codec<tq> a() {
-         return this.e.get();
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            tq.b $$1 = (tq.b)$$0;
+            return this.a.equals($$1.a) && this.b.equals($$1.b) && Objects.equals(this.c, $$1.c);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a.hashCode();
+         $$0 = 31 * $$0 + this.b.hashCode();
+         return 31 * $$0 + (this.c != null ? this.c.hashCode() : 0);
+      }
+   }
+
+   public static class c {
+      private final cja a;
+      private final int b;
+      @Nullable
+      private final qw c;
+      @Nullable
+      private cjf d;
+
+      c(cja $$0, int $$1, @Nullable qw $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public c(cjf $$0) {
+         this($$0.d(), $$0.L(), $$0.v() != null ? $$0.v().h() : null);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            tq.c $$1 = (tq.c)$$0;
+            return this.b == $$1.b && this.a.equals($$1.a) && Objects.equals(this.c, $$1.c);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a.hashCode();
+         $$0 = 31 * $$0 + this.b;
+         return 31 * $$0 + (this.c != null ? this.c.hashCode() : 0);
+      }
+
+      public cjf a() {
+         if (this.d == null) {
+            this.d = new cjf(this.a, this.b);
+            if (this.c != null) {
+               this.d.c(this.c);
+            }
+         }
+
+         return this.d;
+      }
+
+      private static tq.c a(JsonElement $$0) {
+         if ($$0.isJsonPrimitive()) {
+            return new tq.c(jb.i.a(new aew($$0.getAsString())), 1, null);
+         } else {
+            JsonObject $$1 = arn.m($$0, "item");
+            cja $$2 = jb.i.a(new aew(arn.i($$1, "id")));
+            int $$3 = arn.a($$1, "count", 1);
+            if ($$1.has("tag")) {
+               String $$4 = arn.i($$1, "tag");
+
+               try {
+                  qw $$5 = rr.a($$4);
+                  return new tq.c($$2, $$3, $$5);
+               } catch (CommandSyntaxException var6) {
+                  tq.a.warn("Failed to parse tag: {}", $$4, var6);
+               }
+            }
+
+            return new tq.c($$2, $$3, null);
+         }
+      }
+
+      @Nullable
+      private static tq.c a(tl $$0) {
+         try {
+            qw $$1 = rr.a($$0.getString());
+            return new tq.c(cjf.a($$1));
+         } catch (CommandSyntaxException var2) {
+            tq.a.warn("Failed to parse item tag: {}", $$0, var2);
+            return null;
+         }
+      }
+
+      private JsonElement b() {
+         JsonObject $$0 = new JsonObject();
+         $$0.addProperty("id", jb.i.b(this.a).toString());
+         if (this.b != 1) {
+            $$0.addProperty("count", this.b);
+         }
+
+         if (this.c != null) {
+            $$0.addProperty("tag", this.c.toString());
+         }
+
+         return $$0;
       }
    }
 }

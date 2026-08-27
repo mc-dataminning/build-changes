@@ -1,13 +1,17 @@
-public class cxy extends dao {
-   public cxy(dfk.d $$0) {
+public class cxy extends ctd {
+   protected static final eig a = csv.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+
+   public cxy(dfi.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dfl $$0, cpx $$1, gw $$2, ase $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(ix.U, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return a;
+   }
+
+   @Override
+   protected boolean d(dfj $$0, cpb $$1, gw $$2) {
+      return $$0.a(aps.aK) || $$0.a(csw.dY) || super.d($$0, $$1, $$2);
    }
 }

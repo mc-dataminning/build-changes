@@ -1,40 +1,39 @@
-import java.util.EnumSet;
+import java.util.List;
 
-public class bsa extends bsd {
-   private final bkd a;
-   private bji b;
-   private int c;
+public class bsa<T extends bji & bjn> extends bqb {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public bsa(bkd $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(bqd.a.d));
+   public bsa(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    public boolean a() {
-      if (this.a.s() && !this.a.gd()) {
-         bji $$0 = this.a.O_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eg();
-            int $$1 = $$0.eh();
-            return $$1 != this.c && this.a(this.b, btu.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
+      return this.b.dL().X().b(cpr.K) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.eg() != null && this.b.eg().ag() == biu.bt && this.b.eh() > this.d;
    }
 
    @Override
    public void c() {
-      this.e.h(this.b);
-      bji $$0 = this.a.O_();
-      if ($$0 != null) {
-         this.c = $$0.eh();
+      this.d = this.b.eh();
+      this.b.Y_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bjn)$$0).forEach(bjn::Y_);
       }
 
       super.c();
+   }
+
+   private List<? extends bji> i() {
+      double $$0 = this.b.b(bkm.b);
+      ehi $$1 = ehi.a(this.b.dj()).c($$0, 10.0, $$0);
+      return this.b.dL().a((Class<? extends bji>)this.b.getClass(), $$1, bit.f);
    }
 }

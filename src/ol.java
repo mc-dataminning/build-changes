@@ -1,70 +1,203 @@
-public abstract class ol {
-   public static void a(nt<cqv> $$0) {
-      hh<duo> $$1 = $$0.a(je.ay);
-      hh<dmx<?>> $$2 = $$0.a(je.ar);
-      $$0.a(crc.a, oo.j($$1, $$2));
-      $$0.a(crc.b, oo.a($$1, $$2, false, false, false));
-      $$0.a(crc.c, oo.a($$1, $$2, true, false, false));
-      $$0.a(crc.d, oo.a($$1, $$2, false, true, false));
-      $$0.a(crc.e, oo.a($$1, $$2, false, true, true));
-      $$0.a(crc.f, oo.d($$1, $$2));
-      $$0.a(crc.g, oo.h($$1, $$2));
-      $$0.a(crc.h, oo.i($$1, $$2));
-      $$0.a(crc.i, oo.b($$1, $$2, false, false, false));
-      $$0.a(crc.j, oo.b($$1, $$2, false, false, true));
-      $$0.a(crc.k, oo.b($$1, $$2, true, false, false));
-      $$0.a(crc.l, oo.g($$1, $$2));
-      $$0.a(crc.m, oo.b($$1, $$2, true, true, false));
-      $$0.a(crc.n, oo.a($$1, $$2, false));
-      $$0.a(crc.o, oo.a($$1, $$2, true));
-      $$0.a(crc.p, oo.h($$1, $$2, false));
-      $$0.a(crc.q, oo.h($$1, $$2, true));
-      $$0.a(crc.r, oo.a($$1, $$2, false, false));
-      $$0.a(crc.s, oo.a($$1, $$2, false, true));
-      $$0.a(crc.t, oo.b($$1, $$2, false));
-      $$0.a(crc.u, oo.b($$1, $$2, false));
-      $$0.a(crc.v, oo.b($$1, $$2, true));
-      $$0.a(crc.w, oo.a($$1, $$2, true, false));
-      $$0.a(crc.x, oo.b($$1, $$2));
-      $$0.a(crc.y, oo.a($$1, $$2));
-      $$0.a(crc.z, oo.c($$1, $$2));
-      $$0.a(crc.A, oo.c($$1, $$2, false));
-      $$0.a(crc.B, oo.c($$1, $$2, false));
-      $$0.a(crc.C, oo.c($$1, $$2, true));
-      $$0.a(crc.D, oo.j($$1, $$2, false));
-      $$0.a(crc.E, oo.j($$1, $$2, true));
-      $$0.a(crc.F, oo.o($$1, $$2));
-      $$0.a(crc.G, oo.n($$1, $$2));
-      $$0.a(crc.H, oo.k($$1, $$2));
-      $$0.a(crc.I, oo.l($$1, $$2));
-      $$0.a(crc.J, oo.m($$1, $$2));
-      $$0.a(crc.K, oo.i($$1, $$2, false));
-      $$0.a(crc.L, oo.i($$1, $$2, true));
-      $$0.a(crc.M, oo.b($$1, $$2, false, false));
-      $$0.a(crc.N, oo.b($$1, $$2, true, false));
-      $$0.a(crc.O, oo.b($$1, $$2, false, true));
-      $$0.a(crc.P, oo.f($$1, $$2));
-      $$0.a(crc.Q, oo.f($$1, $$2, false));
-      $$0.a(crc.R, oo.f($$1, $$2, true));
-      $$0.a(crc.S, oo.e($$1, $$2, false));
-      $$0.a(crc.T, oo.e($$1, $$2, true));
-      $$0.a(crc.U, oo.d($$1, $$2, false));
-      $$0.a(crc.V, oo.d($$1, $$2, true));
-      $$0.a(crc.W, oo.g($$1, $$2, false));
-      $$0.a(crc.X, oo.g($$1, $$2, true));
-      $$0.a(crc.Y, oo.e($$1, $$2));
-      $$0.a(crc.Z, oo.q($$1, $$2));
-      $$0.a(crc.aa, oo.p($$1, $$2));
-      $$0.a(crc.ab, oo.r($$1, $$2));
-      $$0.a(crc.ac, on.a($$1, $$2));
-      $$0.a(crc.ad, on.e($$1, $$2));
-      $$0.a(crc.ae, on.d($$1, $$2));
-      $$0.a(crc.af, on.b($$1, $$2));
-      $$0.a(crc.ag, on.c($$1, $$2));
-      $$0.a(crc.ah, om.b($$1, $$2));
-      $$0.a(crc.ai, om.d($$1, $$2));
-      $$0.a(crc.aj, om.c($$1, $$2));
-      $$0.a(crc.ak, om.e($$1, $$2));
-      $$0.a(crc.al, om.a($$1, $$2));
+public class ol {
+   public static cqt a(hf<dum> $$0, hf<dmv<?>> $$1) {
+      crf $$2 = new crf.a()
+         .a(bjj.a, new crf.c(biu.Q, 50, 4, 4))
+         .a(bjj.a, new crf.c(biu.bs, 100, 4, 4))
+         .a(bjj.a, new crf.c(biu.al, 2, 4, 4))
+         .a(bjj.a, new crf.c(biu.E, 1, 4, 4))
+         .a(bjj.a, new crf.c(biu.aw, 15, 4, 4))
+         .a(bjj.b, new crf.c(biu.aV, 60, 1, 2))
+         .a();
+      cqu.a $$3 = new cqu.a($$0, $$1).a(dko.a.a, ns.d).a(dko.b.j, pd.p);
+      nq.ac($$3);
+      $$3.a(dko.b.h, pe.r)
+         .a(dko.b.h, pe.t)
+         .a(dko.b.h, pe.s)
+         .a(dko.b.h, pe.f)
+         .a(dko.b.h, pe.g)
+         .a(dko.b.h, pi.F)
+         .a(dko.b.h, pi.G)
+         .a(dko.b.h, pf.a)
+         .a(dko.b.h, pe.p);
+      nq.au($$3);
+      return new cqt.a()
+         .a(false)
+         .a(2.0F)
+         .b(0.0F)
+         .a(new cqz.a().b(4159204).c(329011).a(3344392).d(om.a(2.0F)).a(apd.p).a(new cqr(apd.q, 6000, 8, 2.0)).a(new cqq(apd.o, 0.0111)).a(apb.a(apd.oG)).a())
+         .a($$2)
+         .a($$3.a())
+         .a();
+   }
+
+   public static cqt b(hf<dum> $$0, hf<dmv<?>> $$1) {
+      double $$2 = 0.7;
+      double $$3 = 0.15;
+      crf $$4 = new crf.a()
+         .a(bjj.a, new crf.c(biu.aJ, 20, 5, 5))
+         .a(bjj.a, new crf.c(biu.Q, 50, 4, 4))
+         .a(bjj.a, new crf.c(biu.E, 1, 4, 4))
+         .a(bjj.b, new crf.c(biu.aV, 60, 1, 2))
+         .a(biu.aJ, 0.7, 0.15)
+         .a(biu.Q, 0.7, 0.15)
+         .a(biu.E, 0.7, 0.15)
+         .a(biu.aV, 0.7, 0.15)
+         .a();
+      cqu.a $$5 = new cqu.a($$0, $$1)
+         .a(dko.a.a, ns.d)
+         .a(dko.b.j, pd.p)
+         .a(dko.b.c, pe.n)
+         .a(dko.b.h, pe.r)
+         .a(dko.b.h, pe.t)
+         .a(dko.b.h, pe.s)
+         .a(dko.b.h, pe.f)
+         .a(dko.b.h, pe.g)
+         .a(dko.b.h, pe.m)
+         .a(dko.b.h, pf.a)
+         .a(dko.b.h, pe.p)
+         .a(dko.b.h, pf.b);
+      nq.au($$5);
+      return new cqt.a()
+         .a(false)
+         .a(2.0F)
+         .b(0.0F)
+         .a(
+            new cqz.a()
+               .b(4159204)
+               .c(329011)
+               .a(1787717)
+               .d(om.a(2.0F))
+               .a(new cqs(iv.au, 0.00625F))
+               .a(apd.s)
+               .a(new cqr(apd.t, 6000, 8, 2.0))
+               .a(new cqq(apd.r, 0.0111))
+               .a(apb.a(apd.oJ))
+               .a()
+         )
+         .a($$4)
+         .a($$5.a())
+         .a();
+   }
+
+   public static cqt c(hf<dum> $$0, hf<dmv<?>> $$1) {
+      crf $$2 = new crf.a().a(bjj.a, new crf.c(biu.Q, 40, 1, 1)).a(bjj.a, new crf.c(biu.al, 100, 2, 5)).a(bjj.b, new crf.c(biu.aV, 60, 1, 2)).a();
+      cqu.a $$3 = new cqu.a($$0, $$1)
+         .a(dko.a.a, ns.d)
+         .a(dko.b.e, pe.a)
+         .a(dko.b.e, pe.b)
+         .a(dko.b.e, pe.c)
+         .a(dko.b.h, pe.d)
+         .a(dko.b.h, pe.e)
+         .a(dko.b.h, pe.o)
+         .a(dko.b.h, pe.t)
+         .a(dko.b.h, pe.s)
+         .a(dko.b.h, pe.f)
+         .a(dko.b.h, pe.g)
+         .a(dko.b.h, pi.F)
+         .a(dko.b.h, pi.G)
+         .a(dko.b.h, pf.a)
+         .a(dko.b.h, pe.q)
+         .a(dko.b.h, pf.c)
+         .a(dko.b.h, pf.d);
+      nq.av($$3);
+      return new cqt.a()
+         .a(false)
+         .a(2.0F)
+         .b(0.0F)
+         .a(
+            new cqz.a()
+               .b(4159204)
+               .c(329011)
+               .a(6840176)
+               .d(om.a(2.0F))
+               .a(new cqs(iv.aC, 0.118093334F))
+               .a(apd.j)
+               .a(new cqr(apd.k, 6000, 8, 2.0))
+               .a(new cqq(apd.i, 0.0111))
+               .a(apb.a(apd.ou))
+               .a()
+         )
+         .a($$2)
+         .a($$3.a())
+         .a();
+   }
+
+   public static cqt d(hf<dum> $$0, hf<dmv<?>> $$1) {
+      crf $$2 = new crf.a()
+         .a(bjj.a, new crf.c(biu.bs, 1, 2, 4))
+         .a(bjj.a, new crf.c(biu.W, 9, 3, 4))
+         .a(bjj.a, new crf.c(biu.aw, 5, 3, 4))
+         .a(bjj.b, new crf.c(biu.aV, 60, 1, 2))
+         .a();
+      cqu.a $$3 = new cqu.a($$0, $$1).a(dko.a.a, ns.d).a(dko.b.j, pd.p);
+      nq.ac($$3);
+      $$3.a(dko.b.h, pe.r)
+         .a(dko.b.h, pe.t)
+         .a(dko.b.h, pe.f)
+         .a(dko.b.h, pe.g)
+         .a(dko.b.h, pf.a)
+         .a(dko.b.h, pe.p)
+         .a(dko.b.j, pe.l)
+         .a(dko.b.j, ph.a)
+         .a(dko.b.j, pe.h);
+      nq.au($$3);
+      return new cqt.a()
+         .a(false)
+         .a(2.0F)
+         .b(0.0F)
+         .a(
+            new cqz.a()
+               .b(4159204)
+               .c(329011)
+               .a(3343107)
+               .d(om.a(2.0F))
+               .a(new cqs(iv.av, 0.025F))
+               .a(apd.m)
+               .a(new cqr(apd.n, 6000, 8, 2.0))
+               .a(new cqq(apd.l, 0.0111))
+               .a(apb.a(apd.ov))
+               .a()
+         )
+         .a($$2)
+         .a($$3.a())
+         .a();
+   }
+
+   public static cqt e(hf<dum> $$0, hf<dmv<?>> $$1) {
+      crf $$2 = new crf.a().a(bjj.a, new crf.c(biu.E, 1, 4, 4)).a(bjj.b, new crf.c(biu.aV, 60, 1, 2)).a(biu.E, 1.0, 0.12).a();
+      cqu.a $$3 = new cqu.a($$0, $$1).a(dko.a.a, ns.d).a(dko.b.j, pd.p);
+      nq.ac($$3);
+      $$3.a(dko.b.h, pe.r)
+         .a(dko.b.h, pe.t)
+         .a(dko.b.h, pe.s)
+         .a(dko.b.h, pe.f)
+         .a(dko.b.h, pe.g)
+         .a(dko.b.h, pf.a)
+         .a(dko.b.h, pe.p)
+         .a(dko.b.j, ph.b)
+         .a(dko.b.j, pe.i)
+         .a(dko.b.j, pe.j)
+         .a(dko.b.j, pe.k);
+      nq.au($$3);
+      return new cqt.a()
+         .a(false)
+         .a(2.0F)
+         .b(0.0F)
+         .a(
+            new cqz.a()
+               .b(4159204)
+               .c(329011)
+               .a(1705242)
+               .d(om.a(2.0F))
+               .a(new cqs(iv.aw, 0.01428F))
+               .a(apd.v)
+               .a(new cqr(apd.w, 6000, 8, 2.0))
+               .a(new cqq(apd.u, 0.0111))
+               .a(apb.a(apd.oL))
+               .a()
+         )
+         .a($$2)
+         .a($$3.a())
+         .a();
    }
 }

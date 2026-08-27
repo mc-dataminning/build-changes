@@ -1,5 +1,5 @@
-public interface ads {
-   aey a();
-
-   void a(sq var1);
+public record ads(aew a) implements adq {
+   @Override
+   public void a(so $$0) {
+   }
 }

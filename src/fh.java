@@ -10,10 +10,10 @@ import java.util.concurrent.CompletableFuture;
 
 public class fh implements ArgumentType<ff> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
-   private final hi<csx> b;
+   private final hg<csv> b;
 
    public fh(dn $$0) {
-      this.b = $$0.a(je.e);
+      this.b = $$0.a(jc.e);
    }
 
    public static fh a(dn $$0) {

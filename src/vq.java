@@ -1,14 +1,24 @@
-public record vq(akh a) implements vf<vp> {
-   public vq(sq $$0) {
-      this(new akh($$0));
+public class vq implements vd<vn> {
+   private final long a;
+
+   public vq(long $$0) {
+      this.a = $$0;
+   }
+
+   public void a(vn $$0) {
+      $$0.a(this);
+   }
+
+   public vq(so $$0) {
+      this.a = $$0.readLong();
    }
 
    @Override
-   public void a(sq $$0) {
-      this.a.a($$0);
+   public void a(so $$0) {
+      $$0.b(this.a);
    }
 
-   public void a(vp $$0) {
-      $$0.a(this);
+   public long a() {
+      return this.a;
    }
 }

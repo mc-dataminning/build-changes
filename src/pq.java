@@ -1,24 +1,35 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import javax.annotation.Nullable;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface pq {
-   int a() default 100;
+public class pq extends pp {
+   private final gw a;
+   private final gw b;
+   private final long c;
 
-   String b() default "defaultBatch";
+   public pq(String $$0, gw $$1, gw $$2, long $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+   }
 
-   int c() default 0;
+   @Override
+   public String getMessage() {
+      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
+      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
+   }
 
-   boolean d() default true;
+   @Nullable
+   public String a() {
+      return super.getMessage();
+   }
 
-   String e() default "";
+   @Nullable
+   public gw b() {
+      return this.b;
+   }
 
-   long f() default 0L;
-
-   int g() default 1;
-
-   int h() default 1;
+   @Nullable
+   public gw c() {
+      return this.a;
+   }
 }

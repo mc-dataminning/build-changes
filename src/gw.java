@@ -18,13 +18,13 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 
 @Immutable
-public class gw extends ib {
+public class gw extends hy {
    public static final Codec<gw> a = Codec.INT_STREAM
       .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new gw($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
       .stable();
    private static final Logger d = LogUtils.getLogger();
    public static final gw b = new gw(0, 0, 0);
-   private static final int e = 1 + ary.f(ary.c(30000000));
+   private static final int e = 1 + arw.f(arw.c(30000000));
    private static final int h = e;
    public static final int c = 64 - e - h;
    private static final long i = (1L << e) - 1L;
@@ -38,11 +38,11 @@ public class gw extends ib {
       super($$0, $$1, $$2);
    }
 
-   public gw(ib $$0) {
+   public gw(hy $$0) {
       this($$0.u(), $$0.v(), $$0.w());
    }
 
-   public static long a(long $$0, hc $$1) {
+   public static long a(long $$0, ha $$1) {
       return a($$0, $$1.j(), $$1.k(), $$1.l());
    }
 
@@ -67,10 +67,10 @@ public class gw extends ib {
    }
 
    public static gw a(double $$0, double $$1, double $$2) {
-      return new gw(ary.a($$0), ary.a($$1), ary.a($$2));
+      return new gw(arw.a($$0), arw.a($$1), arw.a($$2));
    }
 
-   public static gw a(hq $$0) {
+   public static gw a(ho $$0) {
       return a($$0.a(), $$0.b(), $$0.c());
    }
 
@@ -93,15 +93,15 @@ public class gw extends ib {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new gw(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public ehp b() {
-      return ehp.b(this);
+   public ehn b() {
+      return ehn.b(this);
    }
 
-   public gw a(ib $$0) {
+   public gw a(hy $$0) {
       return this.b($$0.u(), $$0.v(), $$0.w());
    }
 
-   public gw b(ib $$0) {
+   public gw b(hy $$0) {
       return this.b(-$$0.u(), -$$0.v(), -$$0.w());
    }
 
@@ -114,73 +114,73 @@ public class gw extends ib {
    }
 
    public gw c() {
-      return this.a(hc.b);
+      return this.a(ha.b);
    }
 
    public gw b(int $$0) {
-      return this.a(hc.b, $$0);
+      return this.a(ha.b, $$0);
    }
 
    public gw d() {
-      return this.a(hc.a);
+      return this.a(ha.a);
    }
 
    public gw c(int $$0) {
-      return this.a(hc.a, $$0);
+      return this.a(ha.a, $$0);
    }
 
    public gw e() {
-      return this.a(hc.c);
+      return this.a(ha.c);
    }
 
    public gw d(int $$0) {
-      return this.a(hc.c, $$0);
+      return this.a(ha.c, $$0);
    }
 
    public gw f() {
-      return this.a(hc.d);
+      return this.a(ha.d);
    }
 
    public gw e(int $$0) {
-      return this.a(hc.d, $$0);
+      return this.a(ha.d, $$0);
    }
 
    public gw g() {
-      return this.a(hc.e);
+      return this.a(ha.e);
    }
 
    public gw f(int $$0) {
-      return this.a(hc.e, $$0);
+      return this.a(ha.e, $$0);
    }
 
    public gw h() {
-      return this.a(hc.f);
+      return this.a(ha.f);
    }
 
    public gw g(int $$0) {
-      return this.a(hc.f, $$0);
+      return this.a(ha.f, $$0);
    }
 
-   public gw a(hc $$0) {
+   public gw a(ha $$0) {
       return new gw(this.u() + $$0.j(), this.v() + $$0.k(), this.w() + $$0.l());
    }
 
-   public gw a(hc $$0, int $$1) {
+   public gw a(ha $$0, int $$1) {
       return $$1 == 0 ? this : new gw(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
    }
 
-   public gw a(hc.a $$0, int $$1) {
+   public gw a(ha.a $$0, int $$1) {
       if ($$1 == 0) {
          return this;
       } else {
-         int $$2 = $$0 == hc.a.a ? $$1 : 0;
-         int $$3 = $$0 == hc.a.b ? $$1 : 0;
-         int $$4 = $$0 == hc.a.c ? $$1 : 0;
+         int $$2 = $$0 == ha.a.a ? $$1 : 0;
+         int $$3 = $$0 == ha.a.b ? $$1 : 0;
+         int $$4 = $$0 == ha.a.c ? $$1 : 0;
          return new gw(this.u() + $$2, this.v() + $$3, this.w() + $$4);
       }
    }
 
-   public gw a(czj $$0) {
+   public gw a(czh $$0) {
       switch ($$0) {
          case a:
          default:
@@ -194,7 +194,7 @@ public class gw extends ib {
       }
    }
 
-   public gw c(ib $$0) {
+   public gw c(hy $$0) {
       return new gw(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
    }
 
@@ -210,7 +210,7 @@ public class gw extends ib {
       return new gw.a(this.u(), this.v(), this.w());
    }
 
-   public static Iterable<gw> a(ase $$0, int $$1, gw $$2, int $$3) {
+   public static Iterable<gw> a(asc $$0, int $$1, gw $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -219,7 +219,7 @@ public class gw extends ib {
       return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
    }
 
-   public static Iterable<gw> a(ase $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<gw> a(asc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -321,7 +321,7 @@ public class gw extends ib {
       return StreamSupport.stream(a($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<gw> a(dvc $$0) {
+   public static Stream<gw> a(dva $$0) {
       return a(
          Math.min($$0.g(), $$0.j()),
          Math.min($$0.h(), $$0.k()),
@@ -332,8 +332,8 @@ public class gw extends ib {
       );
    }
 
-   public static Stream<gw> a(ehk $$0) {
-      return a(ary.a($$0.a), ary.a($$0.b), ary.a($$0.c), ary.a($$0.d), ary.a($$0.e), ary.a($$0.f));
+   public static Stream<gw> a(ehi $$0) {
+      return a(arw.a($$0.a), arw.a($$0.b), arw.a($$0.c), arw.a($$0.d), arw.a($$0.e), arw.a($$0.f));
    }
 
    public static Stream<gw> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -364,10 +364,10 @@ public class gw extends ib {
          };
    }
 
-   public static Iterable<gw.a> a(gw $$0, int $$1, hc $$2, hc $$3) {
+   public static Iterable<gw.a> a(gw $$0, int $$1, ha $$2, ha $$3) {
       Validate.validState($$2.o() != $$3.o(), "The two directions cannot be on the same axis", new Object[0]);
       return () -> new AbstractIterator<gw.a>() {
-            private final hc[] e = new hc[]{$$2, $$3, $$2.g(), $$3.g()};
+            private final ha[] e = new ha[]{$$2, $$3, $$2.g(), $$3.g()};
             private final gw.a f = $$0.j().c($$3);
             private final int g = 4 * $$1;
             private int h = -1;
@@ -433,7 +433,7 @@ public class gw extends ib {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(ary.a($$0), ary.a($$1), ary.a($$2));
+         this(arw.a($$0), arw.a($$1), arw.a($$2));
       }
 
       @Override
@@ -447,17 +447,17 @@ public class gw extends ib {
       }
 
       @Override
-      public gw a(hc $$0, int $$1) {
+      public gw a(ha $$0, int $$1) {
          return super.a($$0, $$1).i();
       }
 
       @Override
-      public gw a(hc.a $$0, int $$1) {
+      public gw a(ha.a $$0, int $$1) {
          return super.a($$0, $$1).i();
       }
 
       @Override
-      public gw a(czj $$0) {
+      public gw a(czh $$0) {
          return super.a($$0).i();
       }
 
@@ -469,10 +469,10 @@ public class gw extends ib {
       }
 
       public gw.a b(double $$0, double $$1, double $$2) {
-         return this.d(ary.a($$0), ary.a($$1), ary.a($$2));
+         return this.d(arw.a($$0), arw.a($$1), arw.a($$2));
       }
 
-      public gw.a g(ib $$0) {
+      public gw.a g(hy $$0) {
          return this.d($$0.u(), $$0.v(), $$0.w());
       }
 
@@ -481,26 +481,26 @@ public class gw extends ib {
       }
 
       public gw.a a(gu $$0, int $$1, int $$2, int $$3) {
-         return this.d($$0.a($$1, $$2, $$3, hc.a.a), $$0.a($$1, $$2, $$3, hc.a.b), $$0.a($$1, $$2, $$3, hc.a.c));
+         return this.d($$0.a($$1, $$2, $$3, ha.a.a), $$0.a($$1, $$2, $$3, ha.a.b), $$0.a($$1, $$2, $$3, ha.a.c));
       }
 
-      public gw.a a(ib $$0, hc $$1) {
+      public gw.a a(hy $$0, ha $$1) {
          return this.d($$0.u() + $$1.j(), $$0.v() + $$1.k(), $$0.w() + $$1.l());
       }
 
-      public gw.a a(ib $$0, int $$1, int $$2, int $$3) {
+      public gw.a a(hy $$0, int $$1, int $$2, int $$3) {
          return this.d($$0.u() + $$1, $$0.v() + $$2, $$0.w() + $$3);
       }
 
-      public gw.a a(ib $$0, ib $$1) {
+      public gw.a a(hy $$0, hy $$1) {
          return this.d($$0.u() + $$1.u(), $$0.v() + $$1.v(), $$0.w() + $$1.w());
       }
 
-      public gw.a c(hc $$0) {
+      public gw.a c(ha $$0) {
          return this.c($$0, 1);
       }
 
-      public gw.a c(hc $$0, int $$1) {
+      public gw.a c(ha $$0, int $$1) {
          return this.d(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
       }
 
@@ -508,18 +508,18 @@ public class gw extends ib {
          return this.d(this.u() + $$0, this.v() + $$1, this.w() + $$2);
       }
 
-      public gw.a h(ib $$0) {
+      public gw.a h(hy $$0) {
          return this.d(this.u() + $$0.u(), this.v() + $$0.v(), this.w() + $$0.w());
       }
 
-      public gw.a a(hc.a $$0, int $$1, int $$2) {
+      public gw.a a(ha.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(ary.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(arw.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), ary.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), arw.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), ary.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), arw.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

@@ -1,17 +1,7 @@
-public class um extends Exception {
-   private final tn a;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.stream.Stream;
 
-   public um(tn $$0) {
-      super($$0.getString());
-      this.a = $$0;
-   }
-
-   public um(tn $$0, Throwable $$1) {
-      super($$0.getString(), $$1);
-      this.a = $$0;
-   }
-
-   public tn b() {
-      return this.a;
-   }
+@FunctionalInterface
+public interface um {
+   Stream<qw> getData(dt var1) throws CommandSyntaxException;
 }

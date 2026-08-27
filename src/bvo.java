@@ -1,35 +1,30 @@
-public class bvo extends bus {
-   public bvo(biw<? extends bvo> $$0, cpx $$1) {
+public abstract class bvo extends bkb {
+   private static final int bW = 100;
+   private int bX;
+
+   protected bvo(biu<? extends bvo> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public int gf() {
-      return 5;
+   public boolean b(akr $$0) {
+      qw $$1 = new qw();
+      $$1.a("id", this.bu());
+      this.f($$1);
+      if ($$0.h($$1)) {
+         this.ak();
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public cjh b() {
-      return new cjh(cjk.pS);
+   public void l() {
+      this.bX++;
+      super.l();
    }
 
-   @Override
-   protected ape w() {
-      return apf.tS;
-   }
-
-   @Override
-   protected ape l_() {
-      return apf.tT;
-   }
-
-   @Override
-   protected ape d(bhq $$0) {
-      return apf.tV;
-   }
-
-   @Override
-   protected ape ge() {
-      return apf.tU;
+   public boolean gm() {
+      return this.bX > 100;
    }
 }

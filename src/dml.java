@@ -1,21 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class dml extends dmm {
-   public static final Codec<dml> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dml::new));
+class dml implements dlz {
+   public static dml a = new dml();
+   public static final Codec<dml> e = Codec.unit(() -> a);
 
-   public dml(ib $$0) {
-      super($$0);
+   private dml() {
+   }
+
+   public boolean a(cqp $$0, gw $$1) {
+      return true;
    }
 
    @Override
-   protected boolean a(dfl $$0) {
-      return $$0.e();
-   }
-
-   @Override
-   public dmc<?> a() {
-      return dmc.e;
+   public dma<?> a() {
+      return dma.l;
    }
 }

@@ -1,23 +1,53 @@
-public class epr {
-   private final String a;
-   private final epl b;
-   private final boolean c;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public epr(String $$0, epl $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class epr extends epv {
+   private static final Logger b = LogUtils.getLogger();
+   private static final tl c = tl.c("mco.configure.world.closing");
+   private final emw d;
+   private final eof e;
+
+   public epr(emw $$0, eof $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public String a() {
-      return this.a;
+   @Override
+   public void run() {
+      emf $$0 = emf.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.e();
+               this.d.e = emw.b.a;
+               a(this.e);
+               break;
+            }
+         } catch (ent var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
-   public epl b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+   @Override
+   public tl a() {
+      return c;
    }
 }

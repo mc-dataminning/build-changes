@@ -1,29 +1,7 @@
-import java.nio.file.Path;
-import java.util.Map;
+import com.google.gson.JsonObject;
 
-interface amt {
-   amt a = new amt() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-   };
-   amt b = new amt() {
-      @Override
-      public String toString() {
-         return "relative";
-      }
-   };
+public interface amt<T> {
+   String a();
 
-   public static record a(Map<String, amq> c) implements amt {
-      public Map<String, amq> a() {
-         return this.c;
-      }
-   }
-
-   public static record b(Path c) implements amt {
-      public Path a() {
-         return this.c;
-      }
-   }
+   T a(JsonObject var1);
 }

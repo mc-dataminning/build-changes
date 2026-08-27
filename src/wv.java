@@ -1,8 +1,8 @@
-public interface wv extends vp {
-   @Override
-   default sp b() {
-      return sp.e;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ww var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface wv {
 }

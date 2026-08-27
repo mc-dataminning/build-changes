@@ -1,88 +1,51 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
 
-public class fok implements AutoCloseable {
-   private final fnw c;
-   public final ekd a;
-   public final ekd b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
+public class fok {
+   private final fop a = new fop();
+   private final SortedMap<fom, elk> b = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0 -> {
+      $$0.put(fot.h(), this.a.a(fom.c()));
+      $$0.put(fot.i(), this.a.a(fom.e()));
+      $$0.put(fot.a(), this.a.a(fom.d()));
+      $$0.put(fot.k(), this.a.a(fom.f()));
+      a($$0, fot.b());
+      a($$0, fot.c());
+      a($$0, fot.d());
+      a($$0, fot.e());
+      a($$0, fot.f());
+      a($$0, fot.g());
+      a($$0, fom.h());
+      a($$0, fom.k());
+      a($$0, fom.l());
+      a($$0, fom.n());
+      a($$0, fom.o());
+      a($$0, fom.m());
+      a($$0, fom.p());
+      a($$0, fom.q());
+      a($$0, fom.j());
+      gbk.l.forEach($$1 -> a($$0, $$1));
+   });
+   private final foe.a c = foe.a(this.b, new elk(256));
+   private final foe.a d = foe.a(new elk(256));
+   private final fof e = new fof(this.c);
 
-   public fok(anv $$0, String $$1, ekd $$2, ekd $$3) throws IOException {
-      this.c = new fnw($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   private static void a(Object2ObjectLinkedOpenHashMap<fom, elk> $$0, fom $$1) {
+      $$0.put($$1, new elk($$1.H()));
    }
 
-   @Override
-   public void close() {
-      this.c.close();
+   public fop a() {
+      return this.a;
    }
 
-   public final String a() {
-      return this.c.h();
-   }
-
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
-   }
-
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
-   }
-
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
-      }
-
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      eqx $$4 = eqx.O();
-      this.c.b("ScreenSize").a((float)$$4.aM().k(), (float)$$4.aM().l());
-      this.c.g();
-      this.b.b(eqx.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      elm $$5 = elt.a().c();
-      $$5.a(elw.b.h, elp.m);
-      $$5.a(0.0, 0.0, 500.0).e();
-      $$5.a((double)$$1, 0.0, 500.0).e();
-      $$5.a((double)$$1, (double)$$2, 500.0).e();
-      $$5.a(0.0, (double)$$2, 500.0).e();
-      eln.b($$5.d());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
-
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof ekd) {
-            ((ekd)$$6).d();
-         }
-      }
-   }
-
-   public fnw b() {
+   public foe.a b() {
       return this.c;
+   }
+
+   public foe.a c() {
+      return this.d;
+   }
+
+   public fof d() {
+      return this.e;
    }
 }

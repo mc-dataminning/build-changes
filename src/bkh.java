@@ -1,35 +1,32 @@
 public class bkh {
-   private float a;
-   private float b;
-   private float c;
+   public static final int a = 64;
+   private final double b;
+   private boolean c;
+   private final String d;
 
-   public void a(float $$0) {
-      this.b = $$0;
+   protected bkh(String $$0, double $$1) {
+      this.b = $$1;
+      this.d = $$0;
    }
 
-   public void a(float $$0, float $$1) {
-      this.a = this.b;
-      this.b = this.b + ($$0 - this.b) * $$1;
-      this.c = this.c + this.b;
-   }
-
-   public float a() {
+   public double a() {
       return this.b;
    }
 
-   public float b(float $$0) {
-      return ary.i($$0, this.a, this.b);
-   }
-
-   public float b() {
+   public boolean b() {
       return this.c;
    }
 
-   public float c(float $$0) {
-      return this.c - this.b * (1.0F - $$0);
+   public bkh a(boolean $$0) {
+      this.c = $$0;
+      return this;
    }
 
-   public boolean c() {
-      return this.b > 1.0E-5F;
+   public double a(double $$0) {
+      return $$0;
+   }
+
+   public String c() {
+      return this.d;
    }
 }

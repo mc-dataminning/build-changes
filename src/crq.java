@@ -1,74 +1,91 @@
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public abstract class crq extends csx {
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 3;
-   private static final int f = 2;
-   protected static final int a = 4;
-   private static final eii g = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final eii b = eif.a(
-      eif.b(), eif.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), g), eht.e
-   );
-   private final Map<cjc, id> h;
+public abstract class crq extends csi {
+   public static final dgd a = cwo.aC;
+   public static final dga b = dfz.r;
 
-   public crq(dfk.d $$0, Map<cjc, id> $$1) {
+   protected crq(dfi.d $$0) {
       super($$0);
-      this.h = $$1;
-   }
-
-   protected double b(dfl $$0) {
-      return 0.0;
-   }
-
-   protected boolean a(dfl $$0, gw $$1, bis $$2) {
-      return $$2.ds() < (double)$$1.v() + this.b($$0) && $$2.cG().e > (double)$$1.v() + 0.25;
+      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public bha a(dfl $$0, cpx $$1, gw $$2, cbw $$3, bgz $$4, ehl $$5) {
-      cjh $$6 = $$3.b($$4);
-      id $$7 = this.h.get($$6.d());
-      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if ($$1.B) {
+         return bgy.a;
+      } else {
+         this.a($$1, $$2, $$3);
+         return bgy.b;
+      }
+   }
+
+   protected abstract void a(cpv var1, gw var2, cbu var3);
+
+   @Override
+   public dfj a(cln $$0) {
+      return this.n().a(a, $$0.g().g());
    }
 
    @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return b;
-   }
-
-   @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2) {
-      return g;
-   }
-
-   @Override
-   public boolean d_(dfl $$0) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
-      return false;
-   }
-
-   public abstract boolean d(dfl var1);
-
-   @Override
-   public void a(dfl $$0, aks $$1, gw $$2, ase $$3) {
-      gw $$4 = cyn.a((cpx)$$1, $$2);
-      if ($$4 != null) {
-         ean $$5 = cyn.a($$1, $$4);
-         if ($$5 != eap.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
+   public void a(cpv $$0, gw $$1, dfj $$2, bjg $$3, cjf $$4) {
+      if ($$4.A()) {
+         dcv $$5 = $$0.c_($$1);
+         if ($$5 instanceof dck) {
+            ((dck)$$5).a($$4.y());
          }
       }
    }
 
-   protected boolean a(ean $$0) {
-      return false;
+   @Override
+   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dcv $$5 = $$1.c_($$2);
+         if ($$5 instanceof dck) {
+            if ($$1 instanceof akq) {
+               bgu.a($$1, $$2, (dck)$$5);
+               ((dck)$$5).a((akq)$$1, ehn.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
    }
 
-   protected void a(dfl $$0, cpx $$1, gw $$2, ean $$3) {
+   @Override
+   public boolean d_(dfj $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dfj $$0, cpv $$1, gw $$2) {
+      return cel.a($$1.c_($$2));
+   }
+
+   @Override
+   public cza b_(dfj $$0) {
+      return cza.c;
+   }
+
+   @Override
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dcv> dcw<T> a(cpv $$0, dcx<T> $$1, dcx<? extends dck> $$2) {
+      return $$0.B ? null : a($$1, $$2, dck::a);
    }
 }

@@ -1,43 +1,96 @@
 import com.mojang.serialization.Codec;
 
-public class dpp extends dny<dqj> {
-   private static final gw a = new gw(8, 3, 8);
-   private static final cpe b = new cpe(a);
-   private static final int c = 16;
-   private static final int d = 1;
+public class dpp extends dnw<dqh> {
+   private static final ha[] a = ha.values();
 
-   public dpp(Codec<dqj> $$0) {
+   public dpp(Codec<dqh> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   @Override
+   public boolean a(dny<dqh> $$0) {
+      cqp $$1 = $$0.b();
+      gw $$2 = $$0.e();
+      asc $$3 = $$0.d();
+      if (!$$1.t($$2)) {
+         return false;
+      } else {
+         dfj $$4 = $$1.a_($$2.c());
+         if (!$$4.a(csw.dW) && !$$4.a(csw.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
    }
 
-   @Override
-   public boolean a(doa<dqj> $$0) {
-      cqr $$1 = $$0.b();
-      cpe $$2 = new cpe($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         gw $$3 = a.h($$0.e().v() + a.v());
-         gw.a $$4 = new gw.a();
+   private void a(cpw $$0, asc $$1, gw $$2) {
+      $$0.a($$2, csw.kK.n(), 2);
+      gw.a $$3 = new gw.a();
+      gw.a $$4 = new gw.a();
 
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, csy.m.n(), 2);
-                  } else {
-                     $$1.a($$4, csy.b.n(), 2);
-                  }
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.t($$3)) {
+            int $$6 = 0;
+
+            for (ha $$7 : a) {
+               dfj $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(csw.dW) || $$8.a(csw.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
                }
             }
+
+            if ($$6 == 1) {
+               $$0.a($$3, csw.kK.n(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(cpw $$0, asc $$1, gw $$2) {
+      gw.a $$3 = new gw.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.t($$3)) {
+            dfj $$5 = $$0.a_($$3.c());
+            if ($$5.a(csw.dW) || $$5.a(csw.kK)) {
+               int $$6 = arw.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(cpw $$0, asc $$1, gw.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.t($$2)) {
+            if ($$6 == $$3 || !$$0.t($$2.d())) {
+               $$0.a($$2, csw.oz.n().a(cwi.d, Integer.valueOf(arw.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, csw.oA.n(), 2);
          }
 
-         return true;
+         $$2.c(ha.a);
       }
    }
 }

@@ -1,17 +1,17 @@
 import java.io.IOException;
+import java.io.InputStream;
 
-public class gab extends aoa<int[]> {
-   private static final aey a = new aey("textures/colormap/grass.png");
-
-   protected int[] a(anv $$0, bdr $$1) {
-      try {
-         return gad.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
+public class gab {
+   @Deprecated
+   public static int[] a(ant $$0, aew $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         ekq $$3 = ekq.a($$2);
+      ) {
+         var4 = $$3.e();
       }
-   }
 
-   protected void a(int[] $$0, anv $$1, bdr $$2) {
-      cpv.a($$0);
+      return var4;
    }
 }

@@ -6,12 +6,12 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public class l {
-   public static l.a a(gw $$0, hc.a $$1, int $$2, hc.a $$3, int $$4, Predicate<gw> $$5) {
+   public static l.a a(gw $$0, ha.a $$1, int $$2, ha.a $$3, int $$4, Predicate<gw> $$5) {
       gw.a $$6 = $$0.j();
-      hc $$7 = hc.a(hc.b.b, $$1);
-      hc $$8 = $$7.g();
-      hc $$9 = hc.a(hc.b.b, $$3);
-      hc $$10 = $$9.g();
+      ha $$7 = ha.a(ha.b.b, $$1);
+      ha $$8 = $$7.g();
+      ha $$9 = ha.a(ha.b.b, $$3);
+      ha $$10 = $$9.g();
       int $$11 = a($$5, $$6.g($$0), $$7, $$2);
       int $$12 = a($$5, $$6.g($$0), $$8, $$2);
       int $$13 = $$11;
@@ -58,7 +58,7 @@ public class l {
       return new l.a($$0.a($$1, $$20 - $$13).a($$3, $$21 - $$15), $$22, $$23);
    }
 
-   private static int a(Predicate<gw> $$0, gw.a $$1, hc $$2, int $$3) {
+   private static int a(Predicate<gw> $$0, gw.a $$1, ha $$2, int $$3) {
       int $$4 = 0;
 
       while ($$4 < $$3 && $$0.test($$1.c($$2))) {
@@ -103,10 +103,10 @@ public class l {
       return new Pair(new l.b($$1, $$2 - 1), $$3);
    }
 
-   public static Optional<gw> a(cpd $$0, gw $$1, csx $$2, hc $$3, csx $$4) {
+   public static Optional<gw> a(cpb $$0, gw $$1, csv $$2, ha $$3, csv $$4) {
       gw.a $$5 = $$1.j();
 
-      dfl $$6;
+      dfj $$6;
       do {
          $$5.c($$3);
          $$6 = $$0.a_($$5);

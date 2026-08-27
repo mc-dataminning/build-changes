@@ -1,54 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class dkq {
-   public static enum a implements asr {
-      a("air"),
-      b("liquid");
+   public static final Codec<dkq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dqb.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
+               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dkq::new)
+   );
+   public final double b;
+   public final double c;
+   public final int d;
 
-      public static final Codec<dkq.a> c = asr.a(dkq.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-   }
-
-   public static enum b implements asr {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
-
-      public static final Codec<dkq.b> l = asr.a(dkq.b::values);
-      private final String m;
-
-      private b(String $$0) {
-         this.m = $$0;
-      }
-
-      public String a() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.m;
-      }
+   public dkq(double $$0, double $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

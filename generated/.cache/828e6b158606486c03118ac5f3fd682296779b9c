@@ -1,4 +1,4 @@
-// 1.20.2 Pre-Release 3	2026-08-28T00:32:45.4902774	vanilla/Loot Tables
+// 1.20.2 Pre-Release 4	2026-08-28T00:35:12.6882116	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -373,8 +373,8 @@ a08def7e818a94901afab1a372cef256ab15c3cd data\minecraft\loot_tables\entities\str
 32ab1483b04b710d43e436c1adaddcbd4933f45c data\minecraft\loot_tables\blocks\orange_candle.json
 0e15f0ca95f7ccb909b31dfe1ba738b47392720c data\minecraft\loot_tables\blocks\oak_button.json
 c3611724c03a0e529f8c71dbd6802cf96425f305 data\minecraft\loot_tables\blocks\polished_diorite_slab.json
-87c1be3dc8e7eb5f4397c268efcf81470f629f63 data\minecraft\loot_tables\entities\silverfish.json
 1d97055c6b93bf1036536106dd2e5fdd12b50594 data\minecraft\loot_tables\blocks\detector_rail.json
+87c1be3dc8e7eb5f4397c268efcf81470f629f63 data\minecraft\loot_tables\entities\silverfish.json
 c95c4c4c74e4db1f81db80d074d5529879e5cafe data\minecraft\loot_tables\blocks\spruce_leaves.json
 e4f62b90803b05e2b0477d507e5563eaaa2ed23d data\minecraft\loot_tables\entities\turtle.json
 482423cd59621fdfb3effe413170b16be37213af data\minecraft\loot_tables\blocks\deepslate_tile_stairs.json
@@ -761,8 +761,8 @@ b308b3258a8e1fcbb0724a0e680e43780bb877ef data\minecraft\loot_tables\blocks\dead_
 a26ebbb8ff24e73c4bc7a98de20186e3c2b3b305 data\minecraft\loot_tables\blocks\polished_granite_slab.json
 69b9f1639063c2c51a19f5244c78e759605e0248 data\minecraft\loot_tables\entities\sheep\white.json
 b4e977718f68a9c592e1a21041451a9d94d54ac6 data\minecraft\loot_tables\blocks\blue_banner.json
-e386969f22b97a642671c15327451ffb156abf3e data\minecraft\loot_tables\blocks\acacia_slab.json
 60eab0dbcfc13370159e0edde267bd6830a5e980 data\minecraft\loot_tables\entities\chicken.json
+e386969f22b97a642671c15327451ffb156abf3e data\minecraft\loot_tables\blocks\acacia_slab.json
 1d6a5c5c1285cc95c7c55fc9d85f266bc686d26e data\minecraft\loot_tables\blocks\white_candle.json
 2a0670a0f9d88a471067c9e09071c441d544e6e8 data\minecraft\loot_tables\blocks\orange_tulip.json
 fff7828b72f8a4eba6d739ad85d8f9f12cbc90e1 data\minecraft\loot_tables\blocks\stripped_crimson_stem.json

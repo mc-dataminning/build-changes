@@ -1,23 +1,28 @@
-public class dax extends csx {
-   private static final double a = 5.0;
-   private static final eii b = csx.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public enum dax {
+   a {
+      @Override
+      public boolean a(dfj $$0, cpb $$1, gw $$2, ha $$3) {
+         return csv.a($$0.l($$1, $$2), $$3);
+      }
+   },
+   b {
+      private final int d = 1;
+      private final eig e = csv.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
 
-   protected dax(dfk.d $$0) {
-      super($$0);
-   }
+      @Override
+      public boolean a(dfj $$0, cpb $$1, gw $$2, ha $$3) {
+         return !eid.c($$0.l($$1, $$2).a($$3), this.e, ehr.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final eig e = eid.a(eid.b(), csv.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), ehr.e);
 
-   @Override
-   public czc b_(dfl $$0) {
-      return czc.a;
-   }
+      @Override
+      public boolean a(dfj $$0, cpb $$1, gw $$2, ha $$3) {
+         return !eid.c($$0.l($$1, $$2).a($$3), this.e, ehr.c);
+      }
+   };
 
-   @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return b;
-   }
-
-   @Override
-   public float b(dfl $$0, cpd $$1, gw $$2) {
-      return 1.0F;
-   }
+   public abstract boolean a(dfj var1, cpb var2, gw var3, ha var4);
 }

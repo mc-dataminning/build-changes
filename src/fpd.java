@@ -1,39 +1,49 @@
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
+
 public class fpd {
-   protected final int[] a;
-   protected final int b;
-   protected final hc c;
-   protected final fzg d;
-   private final boolean e;
+   public static final int a = -1;
+   public final ha b;
+   public final int c;
+   public final String d;
+   public final fpf e;
 
-   public fpd(int[] $$0, int $$1, hc $$2, fzg $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public fpd(@Nullable ha $$0, int $$1, String $$2, fpf $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public fzg a() {
-      return this.d;
-   }
+   protected static class a implements JsonDeserializer<fpd> {
+      private static final int a = -1;
 
-   public int[] b() {
-      return this.a;
-   }
+      public fpd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         ha $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         fpf $$7 = (fpf)$$2.deserialize($$3, fpf.class);
+         return new fpd($$4, $$5, $$6, $$7);
+      }
 
-   public boolean c() {
-      return this.b != -1;
-   }
+      protected int a(JsonObject $$0) {
+         return arn.a($$0, "tintindex", -1);
+      }
 
-   public int d() {
-      return this.b;
-   }
+      private String b(JsonObject $$0) {
+         return arn.i($$0, "texture");
+      }
 
-   public hc e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.e;
+      @Nullable
+      private ha c(JsonObject $$0) {
+         String $$1 = arn.a($$0, "cullface", "");
+         return ha.a($$1);
+      }
    }
 }

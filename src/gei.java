@@ -1,53 +1,22 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public final class gei extends geg {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class gei {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
 
-   @Override
-   public void a(gea $$0) {
-      if (eqx.O().A()) {
-         super.a($$0);
+   public gei(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
+   }
+
+   public void a(gdy $$0) {
+      if (this.b != null) {
+         $$0.send(gdz.d, $$0x -> {
+            $$0x.a(geb.x, (int)this.b.toMillis());
+            $$0x.a(geb.y, this.a);
+         });
       }
-   }
-
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
-   }
-
-   @Override
-   public void f() {
-      this.b.add((long)eqx.O().n());
-      this.h();
-      this.c.add(eqx.O().o());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(gea $$0) {
-      $$0.send(geb.c, $$0x -> {
-         $$0x.a(ged.r, new LongArrayList(this.b));
-         $$0x.a(ged.s, new LongArrayList(this.c));
-         $$0x.a(ged.t, new LongArrayList(this.d));
-         $$0x.a(ged.u, this.e());
-         $$0x.a(ged.v, eqx.O().m.az());
-         $$0x.a(ged.w, (int)a);
-      });
-      this.g();
-   }
-
-   private static long a(long $$0) {
-      return $$0 / 1000L;
    }
 }

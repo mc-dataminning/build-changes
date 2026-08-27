@@ -1,15 +1,16 @@
-public abstract class vd<T extends sw> implements vf<T> {
-   private final Iterable<vf<T>> a;
+import javax.annotation.Nullable;
 
-   protected vd(Iterable<vf<T>> $$0) {
-      this.a = $$0;
+public interface vd<T extends su> {
+   void a(so var1);
+
+   void a(T var1);
+
+   default boolean b() {
+      return false;
    }
 
-   public final Iterable<vf<T>> a() {
-      return this.a;
-   }
-
-   @Override
-   public final void a(sq $$0) {
+   @Nullable
+   default sn c() {
+      return null;
    }
 }

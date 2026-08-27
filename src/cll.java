@@ -1,45 +1,52 @@
-import java.util.Map;
 import java.util.Optional;
 
 public class cll {
-   public static final aex<clk> a = a("quartz");
-   public static final aex<clk> b = a("iron");
-   public static final aex<clk> c = a("netherite");
-   public static final aex<clk> d = a("redstone");
-   public static final aex<clk> e = a("copper");
-   public static final aex<clk> f = a("gold");
-   public static final aex<clk> g = a("emerald");
-   public static final aex<clk> h = a("diamond");
-   public static final aex<clk> i = a("lapis");
-   public static final aex<clk> j = a("amethyst");
+   public static final aev<clk> a = a("sentry");
+   public static final aev<clk> b = a("dune");
+   public static final aev<clk> c = a("coast");
+   public static final aev<clk> d = a("wild");
+   public static final aev<clk> e = a("ward");
+   public static final aev<clk> f = a("eye");
+   public static final aev<clk> g = a("vex");
+   public static final aev<clk> h = a("tide");
+   public static final aev<clk> i = a("snout");
+   public static final aev<clk> j = a("rib");
+   public static final aev<clk> k = a("spire");
+   public static final aev<clk> l = a("wayfinder");
+   public static final aev<clk> m = a("shaper");
+   public static final aev<clk> n = a("silence");
+   public static final aev<clk> o = a("raiser");
+   public static final aev<clk> p = a("host");
 
-   public static void a(nt<clk> $$0) {
-      a($$0, a, cjk.nN, uj.a.a(14931140), 0.1F);
-      a($$0, b, cjk.nQ, uj.a.a(15527148), 0.2F, Map.of(cgt.c, "iron_darker"));
-      a($$0, c, cjk.nV, uj.a.a(6445145), 0.3F, Map.of(cgt.g, "netherite_darker"));
-      a($$0, d, cjk.ll, uj.a.a(9901575), 0.4F);
-      a($$0, e, cjk.nS, uj.a.a(11823181), 0.5F);
-      a($$0, f, cjk.nU, uj.a.a(14594349), 0.6F, Map.of(cgt.d, "gold_darker"));
-      a($$0, g, cjk.nL, uj.a.a(1155126), 0.7F);
-      a($$0, h, cjk.nK, uj.a.a(7269586), 0.8F, Map.of(cgt.e, "diamond_darker"));
-      a($$0, i, cjk.nM, uj.a.a(4288151), 0.9F);
-      a($$0, j, cjk.nO, uj.a.a(10116294), 1.0F);
+   public static void a(nr<clk> $$0) {
+      a($$0, cji.wx, a);
+      a($$0, cji.wy, b);
+      a($$0, cji.wz, c);
+      a($$0, cji.wA, d);
+      a($$0, cji.wB, e);
+      a($$0, cji.wC, f);
+      a($$0, cji.wD, g);
+      a($$0, cji.wE, h);
+      a($$0, cji.wF, i);
+      a($$0, cji.wG, j);
+      a($$0, cji.wH, k);
+      a($$0, cji.wI, l);
+      a($$0, cji.wJ, m);
+      a($$0, cji.wK, n);
+      a($$0, cji.wL, o);
+      a($$0, cji.wM, p);
    }
 
-   public static Optional<hg.c<clk>> a(hu $$0, cjh $$1) {
-      return $$0.d(je.aD).h().filter($$1x -> $$1.a(((clk)$$1x.a()).b())).findFirst();
+   public static Optional<he.c<clk>> a(hr $$0, cjf $$1) {
+      return $$0.d(jc.aE).h().filter($$1x -> $$1.a(((clk)$$1x.a()).b())).findFirst();
    }
 
-   private static void a(nt<clk> $$0, aex<clk> $$1, cjc $$2, uj $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   private static void a(nr<clk> $$0, cja $$1, aev<clk> $$2) {
+      clk $$3 = new clk($$2.a(), jb.i.d($$1), tl.c(ac.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   private static void a(nt<clk> $$0, aex<clk> $$1, cjc $$2, uj $$3, float $$4, Map<cgt, String> $$5) {
-      clk $$6 = clk.a($$1.a().a(), $$2, $$4, tn.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
-   }
-
-   private static aex<clk> a(String $$0) {
-      return aex.a(je.aD, new aey($$0));
+   private static aev<clk> a(String $$0) {
+      return aev.a(jc.aE, new aew($$0));
    }
 }

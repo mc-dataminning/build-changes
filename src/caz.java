@@ -1,192 +1,153 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import com.mojang.serialization.Dynamic;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
 public class caz {
-   @VisibleForTesting
-   protected static final int a = 2;
-   @VisibleForTesting
-   protected static final int b = 150;
-   private static final int f = 1;
-   private int g = ary.b(ase.a(), 0, 2);
-   int h;
-   private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ia.a.fieldOf("uuid").forGetter(Pair::getFirst), arh.i.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = arw.f(100.0F);
+   public static final int a = arw.f(133.59999F);
+   public static final int b = arw.f(84.0F);
+   private static final int i = arw.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<btm<? extends btl<? super cay>>> k = List.of(btm.d, btm.v);
+   private static final List<bsh<?>> l = List.of(
+      bsh.g,
+      bsh.h,
+      bsh.k,
+      bsh.l,
+      bsh.L,
+      bsh.n,
+      bsh.m,
+      bsh.E,
+      bsh.t,
+      bsh.o,
+      bsh.p,
+      bsh.B,
+      bsh.ax,
+      bsh.ay,
+      bsh.az,
+      bsh.aA,
+      bsh.aB,
+      bsh.aC,
+      bsh.aD,
+      bsh.aE,
+      bsh.aF,
+      bsh.aG,
+      bsh.aH,
+      bsh.aI,
+      bsh.aJ,
+      bsh.aK
    );
-   private final Predicate<bis> j;
-   @VisibleForTesting
-   protected final ArrayList<bis> c;
-   private final caz.a k;
-   @VisibleForTesting
-   protected final Object2IntMap<bis> d;
-   @VisibleForTesting
-   protected final Object2IntMap<UUID> e;
-
-   public static Codec<caz> a(Predicate<bis> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(i.listOf().fieldOf("suspects").orElse(Collections.emptyList()).forGetter(caz::b)).apply($$1, $$1x -> new caz($$0, $$1x))
-      );
-   }
-
-   public caz(Predicate<bis> $$0, List<Pair<UUID, Integer>> $$1) {
-      this.j = $$0;
-      this.c = new ArrayList<>();
-      this.k = new caz.a(this);
-      this.d = new Object2IntOpenHashMap();
-      this.e = new Object2IntOpenHashMap($$1.size());
-      $$1.forEach($$0x -> this.e.put((UUID)$$0x.getFirst(), (Integer)$$0x.getSecond()));
-   }
-
-   private List<Pair<UUID, Integer>> b() {
-      return Streams.concat(
-            new Stream[]{
-               this.c.stream().map($$0 -> Pair.of($$0.cv(), this.d.getInt($$0))),
-               this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
-            }
-         )
-         .collect(Collectors.toList());
-   }
-
-   public void a(aks $$0, Predicate<bis> $$1) {
-      this.g--;
-      if (this.g <= 0) {
-         this.a($$0);
-         this.g = 2;
-      }
-
-      ObjectIterator<Entry<UUID>> $$2 = this.e.object2IntEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<UUID> $$3 = (Entry<UUID>)$$2.next();
-         int $$4 = $$3.getIntValue();
-         if ($$4 <= 1) {
-            $$2.remove();
-         } else {
-            $$3.setValue($$4 - 1);
-         }
-      }
-
-      ObjectIterator<Entry<bis>> $$5 = this.d.object2IntEntrySet().iterator();
-
-      while ($$5.hasNext()) {
-         Entry<bis> $$6 = (Entry<bis>)$$5.next();
-         int $$7 = $$6.getIntValue();
-         bis $$8 = (bis)$$6.getKey();
-         bis.c $$9 = $$8.dH();
-         if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
-            $$6.setValue($$7 - 1);
-         } else {
-            this.c.remove($$8);
-            $$5.remove();
-            if ($$7 > 1 && $$9 != null) {
-               switch ($$9) {
-                  case e:
-                  case c:
-                  case d:
-                     this.e.put($$8.cv(), $$7 - 1);
+   private static final bky<cay> m = boj.a(
+      (Function<boj.b<cay>, ? extends App<boj.c<cay>, bom<cay>>>)($$0 -> $$0.group($$0.a(bsh.aD)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(asx.a, 1200L);
                }
-            }
-         }
-      }
 
-      this.c();
+               return true;
+            }))
+   );
+
+   public static void a(cay $$0) {
+      $$0.dN().a(ImmutableList.of(cdf.y, cdf.z, cdf.x, cdf.k, cdf.w, cdf.v, cdf.b));
    }
 
-   private void c() {
-      this.h = 0;
-      this.c.sort(this.k);
-      if (this.c.size() == 1) {
-         this.h = this.d.getInt(this.c.get(0));
-      }
-   }
-
-   private void a(aks $$0) {
-      ObjectIterator<Entry<UUID>> $$1 = this.e.object2IntEntrySet().iterator();
-
-      while ($$1.hasNext()) {
-         Entry<UUID> $$2 = (Entry<UUID>)$$1.next();
-         int $$3 = $$2.getIntValue();
-         bis $$4 = $$0.a((UUID)$$2.getKey());
-         if ($$4 != null) {
-            this.d.put($$4, $$3);
-            this.c.add($$4);
-            $$1.remove();
-         }
-      }
-   }
-
-   public int a(bis $$0, int $$1) {
-      boolean $$2 = !this.d.containsKey($$0);
-      int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
-      if ($$2) {
-         int $$4 = this.e.removeInt($$0.cv());
-         $$3 += $$4;
-         this.d.put($$0, $$3);
-         this.c.add($$0);
-      }
-
-      this.c();
+   protected static bkg<?> a(cay $$0, Dynamic<?> $$1) {
+      bkg.b<cay> $$2 = bkg.a(l, k);
+      bkg<cay> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(cdf.a));
+      $$3.b(cdf.b);
+      $$3.f();
       return $$3;
    }
 
-   public void a(bis $$0) {
-      this.d.removeInt($$0);
-      this.c.remove($$0);
-      this.c();
+   private static void a(bkg<cay> $$0) {
+      $$0.a(cdf.a, 0, ImmutableList.of(new bnq(0.8F), bou.a(), new bmc(45, 90), new bmg()));
    }
 
-   @Nullable
-   private bis d() {
-      return this.c.stream().filter(this.j).findFirst().orElse(null);
+   private static void b(bkg<cay> $$0) {
+      $$0.a(cdf.y, 5, ImmutableList.of(new boq(a)), bsh.aB);
    }
 
-   public int b(@Nullable bis $$0) {
-      return $$0 == null ? this.h : this.d.getInt($$0);
+   private static void c(bkg<cay> $$0) {
+      $$0.a(cdf.z, ImmutableList.of(Pair.of(0, new bor()), Pair.of(1, new bop(h))), ImmutableSet.of(Pair.of(bsh.ax, bsi.b), Pair.of(bsh.aD, bsi.b)));
    }
 
-   public Optional<bji> a() {
-      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof bji).map($$0 -> (bji)$$0);
+   private static void d(bkg<cay> $$0) {
+      $$0.a(
+         cdf.b,
+         10,
+         ImmutableList.of(
+            bot.a(cay::gd), box.a(), new bmt(ImmutableMap.of(bsh.aA, bsi.b), ImmutableList.of(Pair.of(bmo.a(0.5F), 2), Pair.of(new blh(30, 60), 1)))
+         )
+      );
    }
 
-   @VisibleForTesting
-   protected static record a(caz a) implements Comparator<bis> {
-      public int a(bis $$0, bis $$1) {
-         if ($$0.equals($$1)) {
-            return 0;
-         } else {
-            int $$2 = this.a.d.getOrDefault($$0, 0);
-            int $$3 = this.a.d.getOrDefault($$1, 0);
-            this.a.h = Math.max(this.a.h, Math.max($$2, $$3));
-            boolean $$4 = cay.a($$2).d();
-            boolean $$5 = cay.a($$3).d();
-            if ($$4 != $$5) {
-               return $$4 ? -1 : 1;
-            } else {
-               boolean $$6 = $$0 instanceof cbw;
-               boolean $$7 = $$1 instanceof cbw;
-               if ($$6 != $$7) {
-                  return $$6 ? -1 : 1;
-               } else {
-                  return Integer.compare($$3, $$2);
-               }
-            }
-         }
+   private static void e(bkg<cay> $$0) {
+      $$0.a(cdf.w, 5, ImmutableList.of(bot.a(cay::gd), blq.a(bsh.ay, 2, 0.7F)), bsh.ay);
+   }
+
+   private static void f(bkg<cay> $$0) {
+      $$0.a(cdf.v, 5, ImmutableList.of(bot.a(cay::gd), new bov(i)), bsh.aA);
+   }
+
+   private static void g(bkg<cay> $$0) {
+      $$0.a(cdf.x, 10, ImmutableList.of(new bos()), bsh.ax);
+   }
+
+   private static void a(cay $$0, bkg<cay> $$1) {
+      $$1.a(
+         cdf.k,
+         10,
+         ImmutableList.of(
+            m, bnl.a($$1x -> !$$0.y().d() || !$$0.a($$1x), caz::b, false), bmv.a($$1x -> a($$0, $$1x), (float)$$0.b(bkm.b)), bnb.a(1.2F), new bow(), bmd.a(18)
+         ),
+         bsh.o
+      );
+   }
+
+   private static boolean a(cay $$0, bjg $$1) {
+      return $$0.dN().c(bsh.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void b(cay $$0, bjg $$1) {
+      if (!$$0.a($$1)) {
+         $$0.b($$1);
+      }
+
+      a((bjg)$$0);
+   }
+
+   public static void a(bjg $$0) {
+      if ($$0.dN().a(bsh.aD)) {
+         $$0.dN().a(bsh.aD, asx.a, 1200L);
+      }
+   }
+
+   public static void a(cay $$0, gw $$1) {
+      if ($$0.dL().B_().a($$1) && !$$0.gd().isPresent() && !$$0.dN().c(bsh.o).isPresent()) {
+         a((bjg)$$0);
+         $$0.dN().a(bsh.aF, asx.a, 100L);
+         $$0.dN().a(bsh.n, new bla($$1), 100L);
+         $$0.dN().a(bsh.ay, $$1, 100L);
+         $$0.dN().b(bsh.m);
       }
    }
 }

@@ -1,46 +1,45 @@
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import net.minecraft.server.MinecraftServer;
 
-public class aot {
-   private final ByteArrayOutputStream a;
-   private final DataOutputStream b;
+public class aot implements ds {
+   private static final String b = "Rcon";
+   private static final tl c = tl.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
 
-   public aot(int $$0) {
-      this.a = new ByteArrayOutputStream($$0);
-      this.b = new DataOutputStream(this.a);
+   public aot(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   public void a(byte[] $$0) throws IOException {
-      this.b.write($$0, 0, $$0.length);
+   public void e() {
+      this.d.setLength(0);
    }
 
-   public void a(String $$0) throws IOException {
-      this.b.writeBytes($$0);
-      this.b.write(0);
+   public String f() {
+      return this.d.toString();
    }
 
-   public void a(int $$0) throws IOException {
-      this.b.write($$0);
+   public dt g() {
+      akq $$0 = this.e.D();
+      return new dt(this, ehn.a($$0.R()), ehm.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
-   public void a(short $$0) throws IOException {
-      this.b.writeShort(Short.reverseBytes($$0));
+   @Override
+   public void a(tl $$0) {
+      this.d.append($$0.getString());
    }
 
-   public void b(int $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes($$0));
+   @Override
+   public boolean j_() {
+      return true;
    }
 
-   public void a(float $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
+   @Override
+   public boolean v_() {
+      return true;
    }
 
-   public byte[] a() {
-      return this.a.toByteArray();
-   }
-
-   public void b() {
-      this.a.reset();
+   @Override
+   public boolean T_() {
+      return this.e.k();
    }
 }

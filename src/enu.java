@@ -1,12 +1,8 @@
-public class enu extends Exception {
-   public final emj a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public enu(emj $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface enu {
 }

@@ -1,63 +1,100 @@
-public class cmf extends cmd {
-   private static final cmi a = cmi.a(cjk.qa);
-   private static final cmi b = cmi.a(cjk.oG);
-   private static final cmi c = cmi.a(cjk.tB);
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 
-   public cmf(cma $$0) {
+public class cmf extends cmb {
+   private static final cmg a = cmg.a(cji.tf, cji.oF, cji.rt, cji.tr, cji.ts, cji.tv, cji.tt, cji.tw, cji.tu, cji.tx);
+   private static final cmg b = cmg.a(cji.nK);
+   private static final cmg c = cmg.a(cji.qk);
+   private static final Map<cja, cij.a> d = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cji.tf, cij.a.b);
+      $$0.put(cji.oF, cij.a.e);
+      $$0.put(cji.rt, cij.a.c);
+      $$0.put(cji.tr, cij.a.d);
+      $$0.put(cji.ts, cij.a.d);
+      $$0.put(cji.tv, cij.a.d);
+      $$0.put(cji.tt, cij.a.d);
+      $$0.put(cji.tw, cij.a.d);
+      $$0.put(cji.tu, cij.a.d);
+      $$0.put(cji.tx, cij.a.d);
+   });
+   private static final cmg e = cmg.a(cji.oG);
+
+   public cmf(cly $$0) {
       super($$0);
    }
 
-   public boolean a(cfb $$0, cpx $$1) {
+   public boolean a(cez $$0, cpv $$1) {
       boolean $$2 = false;
-      int $$3 = 0;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+      boolean $$6 = false;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjh $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if (a.a($$5)) {
+      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
+         cjf $$8 = $$0.a($$7);
+         if (!$$8.b()) {
+            if (a.a($$8)) {
+               if ($$4) {
+                  return false;
+               }
+
+               $$4 = true;
+            } else if (c.a($$8)) {
+               if ($$6) {
+                  return false;
+               }
+
+               $$6 = true;
+            } else if (b.a($$8)) {
+               if ($$5) {
+                  return false;
+               }
+
+               $$5 = true;
+            } else if (e.a($$8)) {
                if ($$2) {
                   return false;
                }
 
                $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
+            } else {
+               if (!($$8.d() instanceof chu)) {
                   return false;
                }
-            } else if (!c.a($$5)) {
-               return false;
+
+               $$3 = true;
             }
          }
       }
 
-      return $$2 && $$3 >= 1;
+      return $$2 && $$3;
    }
 
-   public cjh a(cfb $$0, hu $$1) {
-      cjh $$2 = new cjh(cjk.tA, 3);
-      qy $$3 = $$2.a("Fireworks");
-      re $$4 = new re();
-      int $$5 = 0;
+   public cjf a(cez $$0, hr $$1) {
+      cjf $$2 = new cjf(cji.tB);
+      qw $$3 = $$2.a("Explosion");
+      cij.a $$4 = cij.a.a;
+      List<Integer> $$5 = Lists.newArrayList();
 
       for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cjh $$7 = $$0.a($$6);
+         cjf $$7 = $$0.a($$6);
          if (!$$7.b()) {
-            if (b.a($$7)) {
-               $$5++;
+            if (a.a($$7)) {
+               $$4 = d.get($$7.d());
             } else if (c.a($$7)) {
-               qy $$8 = $$7.b("Explosion");
-               if ($$8 != null) {
-                  $$4.add($$8);
-               }
+               $$3.a("Flicker", true);
+            } else if (b.a($$7)) {
+               $$3.a("Trail", true);
+            } else if ($$7.d() instanceof chu) {
+               $$5.add(((chu)$$7.d()).d().f());
             }
          }
       }
 
-      $$3.a("Flight", (byte)$$5);
-      if (!$$4.isEmpty()) {
-         $$3.a("Explosions", $$4);
-      }
-
+      $$3.b("Colors", $$5);
+      $$3.a("Type", (byte)$$4.a());
       return $$2;
    }
 
@@ -67,12 +104,12 @@ public class cmf extends cmd {
    }
 
    @Override
-   public cjh a(hu $$0) {
-      return new cjh(cjk.tA);
+   public cjf a(hr $$0) {
+      return new cjf(cji.tB);
    }
 
    @Override
-   public cmo<?> an_() {
-      return cmo.g;
+   public cmm<?> an_() {
+      return cmm.h;
    }
 }

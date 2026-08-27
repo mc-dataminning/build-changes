@@ -1,46 +1,35 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class fzq {
-   private final aey a;
-   private final ant b;
-   private final AtomicReference<eks> c = new AtomicReference<>();
-   private final AtomicInteger d;
+public class fzq implements fzi {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<fzq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aew.a.fieldOf("resource").forGetter($$0x -> $$0x.d), aew.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, fzq::new)
+   );
+   private final aew d;
+   private final Optional<aew> e;
 
-   public fzq(aey $$0, ant $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
+   public fzq(aew $$0, Optional<aew> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public eks a() throws IOException {
-      eks $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = eks.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
-            }
-         }
+   @Override
+   public void a(ant $$0, fzi.a $$1) {
+      aew $$2 = a.a(this.d);
+      Optional<anr> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
       }
-
-      return $$0;
    }
 
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         eks $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
-         }
-      }
+   @Override
+   public fzk a() {
+      return fzl.a;
    }
 }

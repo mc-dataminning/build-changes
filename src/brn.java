@@ -1,30 +1,16 @@
-public class brn extends bqd {
-   private final bjr a;
+import javax.annotation.Nullable;
 
-   public brn(bjr $$0) {
-      this.a = $$0;
+public class brn extends bro {
+   public brn(bjp $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      return this.a.aA() && !this.a.dL().b_(this.a.dl()).a(apz.a);
-   }
-
-   @Override
-   public void c() {
-      gw $$0 = null;
-
-      for (gw $$2 : gw.b(
-         ary.a(this.a.dq() - 2.0), ary.a(this.a.ds() - 2.0), ary.a(this.a.dw() - 2.0), ary.a(this.a.dq() + 2.0), this.a.dr(), ary.a(this.a.dw() + 2.0)
-      )) {
-         if (this.a.dL().b_($$2).a(apz.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   protected ehn h() {
+      ehn $$0 = this.b.f(0.0F);
+      int $$1 = 8;
+      ehn $$2 = bty.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : btu.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

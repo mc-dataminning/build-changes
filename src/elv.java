@@ -1,129 +1,182 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.lwjgl.system.MemoryStack;
+import com.mojang.blaze3d.platform.GlStateManager;
 
-public interface elv {
-   elv a(double var1, double var3, double var5);
+public class elv {
+   private final elv.a a;
+   private final elv.b b;
+   private final int c;
+   private final int d;
+   private final int e;
 
-   elv a(int var1, int var2, int var3, int var4);
-
-   elv a(float var1, float var2);
-
-   elv a(int var1, int var2);
-
-   elv b(int var1, int var2);
-
-   elv a(float var1, float var2, float var3);
-
-   void e();
-
-   default void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a((double)$$0, (double)$$1, (double)$$2);
-      this.a($$3, $$4, $$5, $$6);
-      this.a($$7, $$8);
-      this.c($$9);
-      this.b($$10);
-      this.a($$11, $$12, $$13);
-      this.e();
-   }
-
-   void b(int var1, int var2, int var3, int var4);
-
-   void k();
-
-   default elv a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
-   }
-
-   default elv a(int $$0) {
-      return this.a(arj.b.b($$0), arj.b.c($$0), arj.b.d($$0), arj.b.a($$0));
-   }
-
-   default elv b(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default elv c(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(elr.a $$0, fpd $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
-   }
-
-   default void a(elr.a $$0, fpd $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
-      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
-      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
-      int[] $$11 = $$1.b();
-      ib $$12 = $$1.e().q();
-      Matrix4f $$13 = $$0.a();
-      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
-      int $$15 = 8;
-      int $$16 = $$11.length / 8;
-      MemoryStack $$17 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$18 = $$17.malloc(elp.j.b());
-         IntBuffer $$19 = $$18.asIntBuffer();
-
-         for (int $$20 = 0; $$20 < $$16; $$20++) {
-            $$19.clear();
-            $$19.put($$11, $$20 * 8, 8);
-            float $$21 = $$18.getFloat(0);
-            float $$22 = $$18.getFloat(4);
-            float $$23 = $$18.getFloat(8);
-            float $$27;
-            float $$28;
-            float $$29;
-            if ($$8) {
-               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
-               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
-               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
-               $$27 = $$24 * $$9[$$20] * $$3;
-               $$28 = $$25 * $$9[$$20] * $$4;
-               $$29 = $$26 * $$9[$$20] * $$5;
-            } else {
-               $$27 = $$9[$$20] * $$3;
-               $$28 = $$9[$$20] * $$4;
-               $$29 = $$9[$$20] * $$5;
-            }
-
-            int $$33 = $$10[$$20];
-            float $$34 = $$18.getFloat(16);
-            float $$35 = $$18.getFloat(20);
-            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
-            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
-         }
-      } catch (Throwable var33) {
-         if ($$17 != null) {
-            try {
-               $$17.close();
-            } catch (Throwable var32) {
-               var33.addSuppressed(var32);
-            }
-         }
-
-         throw var33;
-      }
-
-      if ($$17 != null) {
-         $$17.close();
+   public elv(int $$0, elv.a $$1, elv.b $$2, int $$3) {
+      if (this.a($$0, $$2)) {
+         this.b = $$2;
+         this.a = $$1;
+         this.c = $$0;
+         this.d = $$3;
+         this.e = $$1.a() * this.d;
+      } else {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
       }
    }
 
-   default elv a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
-      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
+   private boolean a(int $$0, elv.b $$1) {
+      return $$0 == 0 || $$1 == elv.b.d;
    }
 
-   default elv a(Matrix3f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   public final elv.a a() {
+      return this.a;
+   }
+
+   public final elv.b b() {
+      return this.b;
+   }
+
+   public final int c() {
+      return this.d;
+   }
+
+   public final int d() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.d + "," + this.b.a() + "," + this.a.b();
+   }
+
+   public final int e() {
+      return this.e;
+   }
+
+   public final boolean f() {
+      return this.b == elv.b.a;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         elv $$1 = (elv)$$0;
+         if (this.d != $$1.d) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.a != $$1.a ? false : this.b == $$1.b;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + this.c;
+      return 31 * $$0 + this.d;
+   }
+
+   public void a(int $$0, long $$1, int $$2) {
+      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
+   }
+
+   public void a(int $$0) {
+      this.b.a(this.c, $$0);
+   }
+
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(int $$0, String $$1, int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      public String b() {
+         return this.i;
+      }
+
+      public int c() {
+         return this.j;
+      }
+   }
+
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+         } else {
+            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
+         }
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+      }, ($$0, $$1) -> {
+      }),
+      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
+
+      private final String g;
+      private final elv.b.b h;
+      private final elv.b.a i;
+
+      private b(String $$0, elv.b.b $$1, elv.b.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
+         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.i.clearBufferState($$0, $$1);
+      }
+
+      public String a() {
+         return this.g;
+      }
+
+      @FunctionalInterface
+      interface a {
+         void clearBufferState(int var1, int var2);
+      }
+
+      @FunctionalInterface
+      interface b {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
+      }
    }
 }

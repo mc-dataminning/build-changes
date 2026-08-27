@@ -1,62 +1,110 @@
-public enum dgm implements asr {
-   a("harp", apf.qp, dgm.a.a),
-   b("basedrum", apf.qj, dgm.a.a),
-   c("snare", apf.qs, dgm.a.a),
-   d("hat", apf.qq, dgm.a.a),
-   e("bass", apf.qk, dgm.a.a),
-   f("flute", apf.qn, dgm.a.a),
-   g("bell", apf.ql, dgm.a.a),
-   h("guitar", apf.qo, dgm.a.a),
-   i("chime", apf.qm, dgm.a.a),
-   j("xylophone", apf.qt, dgm.a.a),
-   k("iron_xylophone", apf.qu, dgm.a.a),
-   l("cow_bell", apf.qv, dgm.a.a),
-   m("didgeridoo", apf.qw, dgm.a.a),
-   n("bit", apf.qx, dgm.a.a),
-   o("banjo", apf.qy, dgm.a.a),
-   p("pling", apf.qr, dgm.a.a),
-   q("zombie", apf.qz, dgm.a.b),
-   r("skeleton", apf.qA, dgm.a.b),
-   s("creeper", apf.qB, dgm.a.b),
-   t("dragon", apf.qC, dgm.a.b),
-   u("wither_skeleton", apf.qD, dgm.a.b),
-   v("piglin", apf.qE, dgm.a.b),
-   w("custom_head", apf.yu, dgm.a.c);
+import com.google.common.base.MoreObjects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   private final String x;
-   private final hg<ape> y;
-   private final dgm.a z;
+public abstract class dgm<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
+   @Nullable
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::a
+      );
+   private final Codec<dgm.a<T>> e = this.d.xmap(this::b, dgm.a::b);
 
-   private dgm(String $$0, hg<ape> $$1, dgm.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   protected dgm(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
+   }
+
+   public dgm.a<T> b(T $$0) {
+      return new dgm.a<>(this, $$0);
+   }
+
+   public dgm.a<T> a(dfl<?, ?> $$0) {
+      return new dgm.a<>(this, $$0.c(this));
+   }
+
+   public Stream<dgm.a<T>> c() {
+      return this.a().stream().map(this::b);
+   }
+
+   public Codec<T> d() {
+      return this.d;
+   }
+
+   public Codec<dgm.a<T>> e() {
+      return this.e;
+   }
+
+   public String f() {
+      return this.b;
+   }
+
+   public Class<T> g() {
+      return this.a;
+   }
+
+   public abstract Collection<T> a();
+
+   public abstract String a(T var1);
+
+   public abstract Optional<T> b(String var1);
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dgm<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
    }
 
-   public hg<ape> a() {
-      return this.y;
+   @Override
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
+      }
+
+      return this.c;
    }
 
-   public boolean b() {
-      return this.z == dgm.a.a;
+   public int b() {
+      return 31 * this.a.hashCode() + this.b.hashCode();
    }
 
-   public boolean d() {
-      return this.z == dgm.a.c;
+   public <U, S extends dfl<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
    }
 
-   public boolean e() {
-      return this.z != dgm.a.a;
-   }
+   public static record a<T extends Comparable<T>>(dgm<T> a, T b) {
+      public a(dgm<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
+         }
+      }
 
-   static enum a {
-      a,
-      b,
-      c;
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.a(this.b);
+      }
    }
 }

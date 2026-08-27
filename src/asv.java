@@ -1,14 +1,50 @@
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-@FunctionalInterface
-public interface asv {
-   long get(TimeUnit var1);
+public interface asv<C> {
+   asv<Float> a = a($$0 -> $$0);
 
-   public interface a extends asv, LongSupplier {
-      @Override
-      default long get(TimeUnit $$0) {
-         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
-      }
+   float a(C var1);
+
+   float b();
+
+   float c();
+
+   static asv<Float> a(final Float2FloatFunction $$0) {
+      return new asv<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
+         }
+
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
+   }
+
+   default <C2> asv<C2> a(final Function<C2, C> $$0) {
+      final asv<C> $$1 = this;
+      return new asv<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
+
+         @Override
+         public float b() {
+            return $$1.b();
+         }
+
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

@@ -1,9 +1,30 @@
-public class fae extends ezl<cfh> {
-   private static final aey y = new aey("container/furnace/lit_progress");
-   private static final aey z = new aey("container/furnace/burn_progress");
-   private static final aey A = new aey("textures/gui/container/furnace.png");
+import org.joml.Vector3f;
 
-   public fae(cfh $$0, cbv $$1, tn $$2) {
-      super($$0, new fcf(), $$1, $$2, A, y, z);
+public class fae extends ezk {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int k = 16;
+   private static final int l = 16;
+   private final aew m = new aew("textures/gui/hanging_signs/" + this.a.b() + ".png");
+
+   public fae(ded $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, tl.c("hanging_sign.edit"));
+   }
+
+   @Override
+   protected void b(esf $$0, dfj $$1) {
+      $$0.c().a((float)this.g / 2.0F, 125.0F, 50.0F);
+   }
+
+   @Override
+   protected void a(esf $$0, dfj $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.m, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   }
+
+   @Override
+   protected Vector3f l() {
+      return c;
    }
 }

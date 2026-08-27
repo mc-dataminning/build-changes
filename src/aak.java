@@ -1,24 +1,24 @@
-public class aak implements vf<wy> {
-   private final tn a;
+public class aak implements vd<ww> {
+   private final tl a;
 
-   public aak(tn $$0) {
+   public aak(tl $$0) {
       this.a = $$0;
    }
 
-   public aak(sq $$0) {
+   public aak(so $$0) {
       this.a = $$0.l();
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public tn a() {
+   public tl a() {
       return this.a;
    }
 }

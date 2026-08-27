@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ejl
-@ejk
-interface ejs {
+public interface ejs extends AutoCloseable {
+   @Override
+   default void close() {
+   }
+
+   @Nullable
+   default ejr a(int $$0) {
+      return null;
+   }
+
+   IntSet a();
 }

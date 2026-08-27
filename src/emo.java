@@ -1,33 +1,28 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class emo extends enn {
-   private static final Logger b = LogUtils.getLogger();
-   public List<emn> a;
+public class emo extends enl {
+   public Set<String> a = Sets.newHashSet();
 
    public static emo a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      emo $$2 = new emo();
-      $$2.a = Lists.newArrayList();
+      emo $$1 = new emo();
+      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
-         if ($$3.isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$2.a.add(emn.a($$4.next()));
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         JsonElement $$5 = $$4.get("ops");
+         if ($$5.isJsonArray()) {
+            for (JsonElement $$6 : $$5.getAsJsonArray()) {
+               $$1.a.add($$6.getAsString());
             }
          }
-      } catch (Exception var5) {
-         b.error("Could not parse BackupList: {}", var5.getMessage());
+      } catch (Exception var8) {
       }
 
-      return $$2;
+      return $$1;
    }
 }

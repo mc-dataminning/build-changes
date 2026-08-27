@@ -1,95 +1,29 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dti extends dtg {
+public class dti {
    public static final Codec<dti> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bgf.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
-                  bgf.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
-                  hv.a(je.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
-               )
-            )
+      $$0 -> $$0.group(Codec.intRange(0, dis.c).fieldOf("height").forGetter(dti::a), jb.f.q().fieldOf("block").orElse(csw.a).forGetter($$0x -> $$0x.b().b()))
             .apply($$0, dti::new)
    );
-   private final bgf b;
-   private final float h;
-   private final bgf i;
-   private final hk<csx> j;
+   private final csv b;
+   private final int c;
 
-   public dti(int $$0, int $$1, int $$2, bgf $$3, float $$4, bgf $$5, hk<csx> $$6) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+   public dti(int $$0, csv $$1) {
+      this.c = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public dfj b() {
+      return this.b.n();
    }
 
    @Override
-   protected dth<?> a() {
-      return dth.h;
-   }
-
-   @Override
-   public List<dro.a> a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, int $$3, gw $$4, dqy $$5) {
-      List<dro.a> $$6 = Lists.newArrayList();
-      gw.a $$7 = new gw.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         int $$9 = $$4.v() + $$8;
-         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
-            hc $$10 = hc.c.a.a($$2);
-            int $$11 = this.i.a($$2);
-            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
-            int $$13 = this.b.a($$2);
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
-         }
-
-         if ($$8 == $$3 - 1) {
-            $$6.add(new dro.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
-         }
-      }
-
-      return $$6;
-   }
-
-   private void a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, int $$3, dqy $$4, List<dro.a> $$5, gw.a $$6, int $$7, hc $$8, int $$9, int $$10) {
-      int $$11 = $$7 + $$9;
-      int $$12 = $$6.u();
-      int $$13 = $$6.w();
-      int $$14 = $$9;
-
-      while ($$14 < $$3 && $$10 > 0) {
-         if ($$14 >= 1) {
-            int $$15 = $$7 + $$14;
-            $$12 += $$8.j();
-            $$13 += $$8.l();
-            $$11 = $$15;
-            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
-               $$11 = $$15 + 1;
-            }
-
-            $$5.add(new dro.a($$6.i(), 0, false));
-         }
-
-         $$14++;
-         $$10--;
-      }
-
-      if ($$11 - $$7 > 1) {
-         gw $$16 = new gw($$12, $$11, $$13);
-         $$5.add(new dro.a($$16, 0, false));
-         $$5.add(new dro.a($$16.c(2), 0, false));
-      }
-   }
-
-   @Override
-   protected boolean a(cqd $$0, gw $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + jb.f.b(this.b);
    }
 }

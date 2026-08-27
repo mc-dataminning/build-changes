@@ -1,55 +1,68 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eer extends eee {
+public class eer extends eec {
    private static final Logger b = LogUtils.getLogger();
    public static final Codec<eer> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(egn.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
-            .apply($$0, eer::new)
+      $$0 -> a($$0).and($$0.group(arf.a(arf.b, "name").forGetter($$0x -> $$0x.c), arf.a(ecq.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, eer::new)
    );
-   private final egm c;
-   private final boolean d;
+   private final Optional<tl> c;
+   private final Optional<ecq.b> d;
 
-   private eer(List<efr> $$0, egm $$1, boolean $$2) {
+   private eer(List<efp> $$0, Optional<tl> $$1, Optional<ecq.b> $$2) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
    }
 
    @Override
-   public eeg b() {
-      return eeh.j;
+   public eee b() {
+      return eef.l;
    }
 
    @Override
-   public Set<efa<?>> a() {
-      return this.c.a();
+   public Set<eey<?>> a() {
+      return this.d.<Set<eey<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
    }
 
-   @Override
-   public cjh a(cjh $$0, ecs $$1) {
-      if ($$0.i()) {
-         int $$2 = $$0.l();
-         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - ary.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(ary.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+   public static UnaryOperator<tl> a(ecq $$0, @Nullable ecq.b $$1) {
+      if ($$1 != null) {
+         biq $$2 = $$0.c($$1.a());
+         if ($$2 != null) {
+            dt $$3 = $$2.dc().a(2);
+            return $$2x -> {
+               try {
+                  return tn.a($$3, $$2x, $$2, 0);
+               } catch (CommandSyntaxException var4) {
+                  b.warn("Failed to resolve text component", var4);
+                  return $$2x;
+               }
+            };
+         }
       }
 
+      return $$0x -> $$0x;
+   }
+
+   @Override
+   public cjf a(cjf $$0, ecq $$1) {
+      this.c.ifPresent($$2 -> $$0.a(a($$1, this.d.orElse(null)).apply($$2)));
       return $$0;
    }
 
-   public static eee.a<?> a(egm $$0) {
-      return a($$1 -> new eer($$1, $$0, false));
+   public static eec.a<?> a(tl $$0) {
+      return a($$1 -> new eer($$1, Optional.of($$0), Optional.empty()));
    }
 
-   public static eee.a<?> a(egm $$0, boolean $$1) {
-      return a($$2 -> new eer($$2, $$0, $$1));
+   public static eec.a<?> a(tl $$0, ecq.b $$1) {
+      return a($$2 -> new eer($$2, Optional.of($$0), Optional.of($$1)));
    }
 }

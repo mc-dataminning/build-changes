@@ -1,65 +1,74 @@
-import java.time.Duration;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
 public class gef {
-   private final UUID a = UUID.randomUUID();
-   private final gea b;
-   private final gej c;
-   private final gel d = new gel();
-   private final gei e;
-   private final gek f;
+   public static final gef a = new gef(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<geb<gef.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   public gef(gea $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new gej($$3);
-      this.e = new gei();
-      this.f = new gek($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(ged.i, this.a);
-      });
+   protected gef(Ticker $$0) {
+      this.c = $$0;
    }
 
-   public void a() {
-      this.e.a(this.b);
+   public synchronized void a(geb<gef.a> $$0) {
+      this.a($$0, (Function<geb<gef.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
    }
 
-   public void a(cpu $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
+   public synchronized void a(geb<gef.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<geb<gef.a>, Stopwatch>)($$1x -> $$1));
    }
 
-   public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
+   private synchronized void a(geb<gef.a> $$0, Function<geb<gef.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
    }
 
-   public void a(long $$0) {
-      this.d.a($$0);
-   }
-
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
+   public synchronized void b(geb<gef.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
       }
    }
 
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
+   public void a(gdy $$0) {
+      $$0.send(gdz.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((geb<gef.a>)$$1, new gef.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gdz.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(geb.B, new gef.a((int)$$1)));
+            this.d.clear();
+         }
+      });
    }
 
-   public void a(cpx $$0, af $$1) {
-      aey $$2 = $$1.a();
-      if ($$1.b().h() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.V();
-         this.b.send(geb.f, $$2x -> {
-            $$2x.a(ged.D, $$2.toString());
-            $$2x.a(ged.E, $$3);
-         });
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
+   }
+
+   public static record a(int b) {
+      public static final Codec<gef.a> a = Codec.INT.xmap(gef.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
       }
    }
 }

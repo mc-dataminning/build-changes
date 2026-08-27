@@ -1,42 +1,87 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bqy extends bqd {
-   private final bjk a;
-   private double b;
-   private double c;
-   private int d;
+public class bqy extends bqb {
+   public static final int a = 120;
+   protected final bjp b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public bqy(bjk $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bqd.a.a, bqd.a.b));
+   public bqy(bjp $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public bqy(bjp $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public bqy(bjp $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(bqb.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.ef().i() < 0.02F;
+      if (this.b.cO()) {
+         return false;
+      } else {
+         if (!this.h) {
+            if (this.i && this.b.ek() >= 100) {
+               return false;
+            }
+
+            if (this.b.ef().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         ehn $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            this.h = false;
+            return true;
+         }
+      }
+   }
+
+   @Nullable
+   protected ehn h() {
+      return btw.a(this.b, 10, 7);
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      return !this.b.L().l() && !this.b.cO();
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.ef().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.ef().a(20);
+      this.b.L().a(this.c, this.d, this.e, this.f);
    }
 
    @Override
-   public boolean Q_() {
-      return true;
+   public void d() {
+      this.b.L().n();
+      super.d();
    }
 
-   @Override
-   public void e() {
-      this.d--;
-      this.a.G().a(this.a.dq() + this.b, this.a.du(), this.a.dw() + this.c);
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

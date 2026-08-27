@@ -1,10 +1,11 @@
 public class apy {
-   public static final aqj<dtl> a = a("visible");
+   public static final aqh<djt> a = a("vibrations");
+   public static final aqh<djt> b = a("warden_can_listen");
+   public static final aqh<djt> c = a("shrieker_can_listen");
+   public static final aqh<djt> d = a("ignore_vibrations_sneaking");
+   public static final aqh<djt> e = a("allay_can_listen");
 
-   private apy() {
-   }
-
-   private static aqj<dtl> a(String $$0) {
-      return aqj.a(je.av, new aey($$0));
+   private static aqh<djt> a(String $$0) {
+      return aqh.a(jc.z, new aew($$0));
    }
 }

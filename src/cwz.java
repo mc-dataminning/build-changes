@@ -1,32 +1,69 @@
 import javax.annotation.Nullable;
 
-public class cwz extends cwj implements cxl {
-   protected cwz(dfk.d $$0) {
-      super($$0, hc.b, eif.b(), true);
+public class cwz extends csv implements czw {
+   public static final dga a = dfz.j;
+   public static final dga b = dfz.C;
+   protected static final eig c = eid.a(csv.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), csv.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final eig d = eid.a(csv.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), csv.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+
+   public cwz(dfi.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dfj a(cln $$0) {
+      eam $$1 = $$0.q().b_($$0.a());
+
+      for (ha $$2 : $$0.f()) {
+         if ($$2.o() == ha.a.b) {
+            dfj $$3 = this.n().a(a, Boolean.valueOf($$2 == ha.b));
+            if ($$3.a((cpy)$$0.q(), $$0.a())) {
+               return $$3.a(b, Boolean.valueOf($$1.a() == ean.c));
+            }
+         }
+      }
+
+      return null;
    }
 
    @Override
-   protected cwk b() {
-      return (cwk)csy.mc;
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return $$0.c(a) ? d : c;
    }
 
    @Override
-   public eao c_(dfl $$0) {
-      return eap.c.a(false);
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a, b);
    }
 
    @Override
-   protected boolean h(dfl $$0) {
-      return this.b().h($$0);
+   public boolean a(dfj $$0, cpy $$1, gw $$2) {
+      ha $$3 = h($$0).g();
+      return csv.a($$1, $$2.a($$3), $$3.g());
+   }
+
+   protected static ha h(dfj $$0) {
+      return $$0.c(a) ? ha.a : ha.b;
    }
 
    @Override
-   public boolean a(@Nullable cbw $$0, cpd $$1, gw $$2, dfl $$3, ean $$4) {
-      return false;
+   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, ean.c, ean.c.a($$3));
+      }
+
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(cpy $$0, gw $$1, dfl $$2, eao $$3) {
+   public eam c_(dfj $$0) {
+      return $$0.c(b) ? ean.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
       return false;
    }
 }

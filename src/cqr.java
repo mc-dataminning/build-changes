@@ -1,13 +1,42 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface cqr extends cqm {
-   long A();
+public class cqr {
+   public static final Codec<cqr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               apc.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, cqr::new)
+   );
+   public static final cqr b = new cqr(apd.h, 6000, 8, 2.0);
+   private final he<apc> c;
+   private final int d;
+   private final int e;
+   private final double f;
 
-   default boolean f_(gw $$0) {
-      return true;
+   public cqr(he<apc> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   default void a(@Nullable Supplier<String> $$0) {
+   public he<apc> a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
    }
 }

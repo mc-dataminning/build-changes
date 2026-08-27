@@ -1,43 +1,32 @@
-import javax.annotation.Nullable;
-
-public class yt implements vf<wy> {
+public class yt implements vd<ww> {
    private final int a;
-   private final cfs<?> b;
-   private final tn c;
+   private final aew b;
 
-   public yt(int $$0, cfs<?> $$1, tn $$2) {
+   public yt(int $$0, cmk<?> $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      this.b = $$1.a();
    }
 
-   public yt(sq $$0) {
-      this.a = $$0.m();
-      this.b = $$0.a(jd.s);
-      this.c = $$0.l();
+   public yt(so $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.s();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-      $$0.a(jd.s, this.b);
-      $$0.a(this.c);
+   public void a(so $$0) {
+      $$0.k(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   @Nullable
-   public cfs<?> d() {
+   public aew a() {
       return this.b;
    }
 
-   public tn e() {
-      return this.c;
+   public int d() {
+      return this.a;
    }
 }

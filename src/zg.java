@@ -1,31 +1,31 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+public record zg(aaz d, byte e) implements vd<ww> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
-public class zg implements vf<wy> {
-   private final IntList a;
-
-   public zg(IntList $$0) {
-      this.a = new IntArrayList($$0);
-   }
-
-   public zg(int... $$0) {
-      this.a = new IntArrayList($$0);
-   }
-
-   public zg(sq $$0) {
-      this.a = $$0.a();
+   public zg(so $$0) {
+      this(new aaz($$0), $$0.readByte());
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
+   public void a(so $$0) {
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public IntList a() {
-      return this.a;
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
+   }
+
+   public aaz a() {
+      return this.d;
+   }
+
+   public byte d() {
+      return this.e;
    }
 }

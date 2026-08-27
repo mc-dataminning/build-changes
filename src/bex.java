@@ -1,6 +1,8 @@
-import java.util.Set;
-import java.util.function.Supplier;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bex {
-   Set<bev> a(Supplier<bdp> var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bex {
 }

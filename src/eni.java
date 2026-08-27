@@ -1,23 +1,31 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-public class eni extends enn implements enh {
-   @SerializedName("regionName")
-   private final String a;
-   @SerializedName("ping")
-   private final int b;
+public class eni extends enl {
+   public long a;
+   public List<enh> b = Lists.newArrayList();
 
-   public eni(String $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static eni a(String $$0) {
+      eni $$1 = new eni();
+      JsonParser $$2 = new JsonParser();
 
-   public int a() {
-      return this.b;
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = epi.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               enh $$8 = enh.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
+      }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+      return $$1;
    }
 }

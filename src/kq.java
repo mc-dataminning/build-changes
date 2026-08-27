@@ -1,33 +1,41 @@
-import java.util.function.BiConsumer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
-public class kq implements kf {
+public class kq implements ji {
+   private final jk d;
+   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
+
+   public kq(jk $$0) {
+      this.d = $$0;
+   }
+
+   public <T> kq a(amu<T> $$0, T $$1) {
+      this.e.put($$0.a(), () -> $$0.a($$1));
+      return this;
+   }
+
    @Override
-   public void generate(BiConsumer<aey, eda.a> $$0) {
-      $$0.accept(
-         ecq.aB,
-         eda.b()
-            .a(
-               ecz.a()
-                  .a(egk.a(1.0F))
-                  .a(edi.a(cjk.qb).a(5).a(new edx.a().a(cnu.l)))
-                  .a(edi.a(cjk.oV).a(8).a(new edx.a().a(cnu.l)))
-                  .a(edi.a(cjk.rv).a(8).a(eev.a(clh.n)))
-                  .a(edi.a(cjk.uu).a(8).a(eev.a(clh.n)))
-                  .a(edi.a(cjk.rv).a(10).a(eev.a(clh.c)))
-                  .a(edi.a(cjk.uB).a(10).a(eeq.a(egp.a(10.0F, 36.0F))))
-                  .a(edi.a(cjk.rq).a(10).a(eeq.a(egp.a(2.0F, 4.0F))))
-                  .a(edi.a(cjk.oE).a(20).a(eeq.a(egp.a(3.0F, 9.0F))))
-                  .a(edi.a(cjk.nN).a(20).a(eeq.a(egp.a(5.0F, 12.0F))))
-                  .a(edi.a(cjk.ei).a(40))
-                  .a(edi.a(cjk.vG).a(40).a(eeq.a(egp.a(1.0F, 3.0F))))
-                  .a(edi.a(cjk.tf).a(40))
-                  .a(edi.a(cjk.pP).a(40).a(eeq.a(egp.a(2.0F, 4.0F))))
-                  .a(edi.a(cjk.eS).a(40).a(eeq.a(egp.a(2.0F, 8.0F))))
-                  .a(edi.a(cjk.tD).a(40).a(eeq.a(egp.a(2.0F, 8.0F))))
-                  .a(edi.a(cjk.uv).a(40).a(eeq.a(egp.a(6.0F, 12.0F))))
-                  .a(edi.a(cjk.W).a(40).a(eeq.a(egp.a(8.0F, 16.0F))))
-                  .a(edi.a(cjk.vH).a(40).a(eeq.a(egp.a(8.0F, 16.0F))))
-            )
-      );
+   public CompletableFuture<?> a(jg $$0) {
+      JsonObject $$1 = new JsonObject();
+      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
+      return ji.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
+   }
+
+   @Override
+   public final String a() {
+      return "Pack Metadata";
+   }
+
+   public static kq a(jk $$0, tl $$1) {
+      return new kq($$0).a(amv.b, new amv($$1, t.a.a(ami.b), Optional.empty()));
+   }
+
+   public static kq a(jk $$0, tl $$1, cec $$2) {
+      return a($$0, $$1).a(ame.a, new ame($$2));
    }
 }

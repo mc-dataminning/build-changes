@@ -1,23 +1,35 @@
-public class eth extends esq {
-   private final esf a;
+public class eth {
+   public static final aew a = new aew("textures/gui/title/minecraft.png");
+   public static final aew b = new aew("textures/gui/title/minceraft.png");
+   public static final aew c = new aew("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)asc.a().i() < 1.0E-4;
+   private final boolean o;
 
-   public eth(esf $$0, tn $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public eth(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   protected void b(esh $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.r() + this.l() / 2;
-      int $$5 = this.t() + this.i() / 2;
-      tn $$6 = this.m();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = exx.a(ac.b());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   public void a(esf $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Override
-   protected void a(ewk $$0) {
-      $$0.a(ewj.a, this.m());
+   public void a(esf $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

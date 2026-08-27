@@ -1,13 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class mw extends mz<ean> {
-   public mw(jm $$0, CompletableFuture<hi.b> $$1) {
-      super($$0, je.w, $$1, $$0x -> $$0x.k().g());
+public class mw extends nc<cix> {
+   public mw(jk $$0, CompletableFuture<hg.b> $$1) {
+      super($$0, jc.B, $$1);
    }
 
    @Override
-   protected void a(hi.b $$0) {
-      this.a(apz.a).a(eap.c, eap.b);
-      this.a(apz.b).a(eap.e, eap.d);
+   protected void a(hg.b $$0) {
+      this.b(apz.a).a(ciz.c).a(ciz.d).a(ciz.e).a(ciz.f);
+      this.b(apz.b).a(ciz.g).a(ciz.h).a(ciz.i).a(ciz.j);
+      this.b(apz.c).b(apz.a).b(apz.b);
    }
 }

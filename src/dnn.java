@@ -1,52 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.List;
 
-public abstract class dnn extends dny<dqj> {
-   public dnn(Codec<dqj> $$0) {
+public class dnn extends dnl {
+   public dnn(Codec<dqh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doa<dqj> $$0) {
-      ase $$1 = $$0.d();
-      cqr $$2 = $$0.b();
-      gw $$3 = $$0.e();
-      Optional<csx> $$4 = jd.f.b(apu.ap).flatMap($$1x -> $$1x.a($$1)).map(hg::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().n());
-   }
+   protected boolean a(cpw $$0, asc $$1, gw $$2, dfj $$3) {
+      gw.a $$4 = $$2.j();
+      int $$5 = $$1.a(3) + 1;
 
-   protected abstract boolean a(cpy var1, ase var2, gw var3, dfl var4);
-
-   protected boolean b(cpy $$0, ase $$1, gw $$2, dfl $$3) {
-      gw $$4 = $$2.c();
-      dfl $$5 = $$0.a_($$2);
-      if (($$5.a(csy.G) || $$5.a(apu.as)) && $$0.a_($$4).a(csy.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            jd.f.b(apu.as).flatMap($$1x -> $$1x.a($$1)).map(hg::a).ifPresent($$2x -> $$0.a($$4, $$2x.n(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, csy.mV.n().a(czu.b, Integer.valueOf($$1.a(4) + 1)), 2);
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
          }
 
-         for (hc $$6 : hc.c.a) {
-            if ($$1.i() < 0.2F) {
-               gw $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(csy.G)) {
-                  jd.f.b(apu.aq).flatMap($$1x -> $$1x.a($$1)).map(hg::a).ifPresent($$3x -> {
-                     dfl $$4x = $$3x.n();
-                     if ($$4x.b(csj.a)) {
-                        $$4x = $$4x.a(csj.a, $$6);
-                     }
+         $$4.c(ha.b);
+      }
 
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
+      gw $$7 = $$4.i();
+      int $$8 = $$1.a(3) + 2;
+      List<ha> $$9 = ha.c.a.c($$1);
+
+      for (ha $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ha.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 }

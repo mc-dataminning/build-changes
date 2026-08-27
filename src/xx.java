@@ -1,63 +1,24 @@
-import java.util.Optional;
-
-public record xx(int a, int b, int c, int d, Optional<ehp> e) implements vf<wy> {
-   public xx(bis $$0, bhq $$1) {
-      this($$0.ah(), $$0.dL().G_().d(je.p).a($$1.j()), $$1.d() != null ? $$1.d().ah() : -1, $$1.c() != null ? $$1.c().ah() : -1, Optional.ofNullable($$1.i()));
-   }
-
-   public xx(sq $$0) {
-      this($$0.m(), $$0.m(), b($$0), b($$0), $$0.b((sq.a<ehp>)($$0x -> new ehp($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
-   }
-
-   private static void a(sq $$0, int $$1) {
-      $$0.c($$1 + 1);
-   }
-
-   private static int b(sq $$0) {
-      return $$0.m() - 1;
+public record xx(tl a, th.b b) implements vd<ww> {
+   public xx(so $$0) {
+      this($$0.l(), new th.b($$0));
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      a($$0, this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.b());
-         $$0x.a($$1.c());
-      });
+   public void a(so $$0) {
+      $$0.a(this.a);
+      this.b.a($$0);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public bhq a(cpx $$0) {
-      hg<bhs> $$1 = $$0.G_().d(je.p).c(this.b).get();
-      if (this.e.isPresent()) {
-         return new bhq($$1, this.e.get());
-      } else {
-         bis $$2 = $$0.a(this.c);
-         bis $$3 = $$0.a(this.d);
-         return new bhq($$1, $$3, $$2);
-      }
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public int d() {
+   public th.b d() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<ehp> g() {
-      return this.e;
    }
 }

@@ -1,8 +1,22 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.ImmutableMap;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface boq {
+public class boq<E extends cay> extends bkx<E> {
+   public boq(int $$0) {
+      super(ImmutableMap.of(bsh.aB, bsi.a, bsh.m, bsi.b, bsh.n, bsi.c), $$0);
+   }
+
+   protected boolean a(akq $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(akq $$0, E $$1, long $$2) {
+      $$1.b(bjs.n);
+      $$1.a(apd.zB, 5.0F, 1.0F);
+   }
+
+   protected void c(akq $$0, E $$1, long $$2) {
+      if ($$1.c(bjs.n)) {
+         $$1.b(bjs.a);
+      }
+   }
 }

@@ -1,239 +1,93 @@
-import javax.annotation.Nullable;
+public interface bhr {
+   aev<bhq> a = aev.a(jc.p, new aew("in_fire"));
+   aev<bhq> b = aev.a(jc.p, new aew("lightning_bolt"));
+   aev<bhq> c = aev.a(jc.p, new aew("on_fire"));
+   aev<bhq> d = aev.a(jc.p, new aew("lava"));
+   aev<bhq> e = aev.a(jc.p, new aew("hot_floor"));
+   aev<bhq> f = aev.a(jc.p, new aew("in_wall"));
+   aev<bhq> g = aev.a(jc.p, new aew("cramming"));
+   aev<bhq> h = aev.a(jc.p, new aew("drown"));
+   aev<bhq> i = aev.a(jc.p, new aew("starve"));
+   aev<bhq> j = aev.a(jc.p, new aew("cactus"));
+   aev<bhq> k = aev.a(jc.p, new aew("fall"));
+   aev<bhq> l = aev.a(jc.p, new aew("fly_into_wall"));
+   aev<bhq> m = aev.a(jc.p, new aew("out_of_world"));
+   aev<bhq> n = aev.a(jc.p, new aew("generic"));
+   aev<bhq> o = aev.a(jc.p, new aew("magic"));
+   aev<bhq> p = aev.a(jc.p, new aew("wither"));
+   aev<bhq> q = aev.a(jc.p, new aew("dragon_breath"));
+   aev<bhq> r = aev.a(jc.p, new aew("dry_out"));
+   aev<bhq> s = aev.a(jc.p, new aew("sweet_berry_bush"));
+   aev<bhq> t = aev.a(jc.p, new aew("freeze"));
+   aev<bhq> u = aev.a(jc.p, new aew("stalagmite"));
+   aev<bhq> v = aev.a(jc.p, new aew("falling_block"));
+   aev<bhq> w = aev.a(jc.p, new aew("falling_anvil"));
+   aev<bhq> x = aev.a(jc.p, new aew("falling_stalactite"));
+   aev<bhq> y = aev.a(jc.p, new aew("sting"));
+   aev<bhq> z = aev.a(jc.p, new aew("mob_attack"));
+   aev<bhq> A = aev.a(jc.p, new aew("mob_attack_no_aggro"));
+   aev<bhq> B = aev.a(jc.p, new aew("player_attack"));
+   aev<bhq> C = aev.a(jc.p, new aew("arrow"));
+   aev<bhq> D = aev.a(jc.p, new aew("trident"));
+   aev<bhq> E = aev.a(jc.p, new aew("mob_projectile"));
+   aev<bhq> F = aev.a(jc.p, new aew("fireworks"));
+   aev<bhq> G = aev.a(jc.p, new aew("fireball"));
+   aev<bhq> H = aev.a(jc.p, new aew("unattributed_fireball"));
+   aev<bhq> I = aev.a(jc.p, new aew("wither_skull"));
+   aev<bhq> J = aev.a(jc.p, new aew("thrown"));
+   aev<bhq> K = aev.a(jc.p, new aew("indirect_magic"));
+   aev<bhq> L = aev.a(jc.p, new aew("thorns"));
+   aev<bhq> M = aev.a(jc.p, new aew("explosion"));
+   aev<bhq> N = aev.a(jc.p, new aew("player_explosion"));
+   aev<bhq> O = aev.a(jc.p, new aew("sonic_boom"));
+   aev<bhq> P = aev.a(jc.p, new aew("bad_respawn_point"));
+   aev<bhq> Q = aev.a(jc.p, new aew("outside_border"));
+   aev<bhq> R = aev.a(jc.p, new aew("generic_kill"));
 
-public class bhr {
-   private final ht<bhs> a;
-   private final bhq b;
-   private final bhq c;
-   private final bhq d;
-   private final bhq e;
-   private final bhq f;
-   private final bhq g;
-   private final bhq h;
-   private final bhq i;
-   private final bhq j;
-   private final bhq k;
-   private final bhq l;
-   private final bhq m;
-   private final bhq n;
-   private final bhq o;
-   private final bhq p;
-   private final bhq q;
-   private final bhq r;
-   private final bhq s;
-   private final bhq t;
-   private final bhq u;
-   private final bhq v;
-   private final bhq w;
-   private final bhq x;
-
-   public bhr(hu $$0) {
-      this.a = $$0.d(je.p);
-      this.b = this.a(bht.a);
-      this.c = this.a(bht.b);
-      this.d = this.a(bht.c);
-      this.e = this.a(bht.d);
-      this.f = this.a(bht.e);
-      this.g = this.a(bht.f);
-      this.h = this.a(bht.g);
-      this.i = this.a(bht.h);
-      this.j = this.a(bht.i);
-      this.k = this.a(bht.j);
-      this.l = this.a(bht.k);
-      this.m = this.a(bht.l);
-      this.n = this.a(bht.m);
-      this.o = this.a(bht.n);
-      this.p = this.a(bht.o);
-      this.q = this.a(bht.p);
-      this.r = this.a(bht.q);
-      this.s = this.a(bht.r);
-      this.t = this.a(bht.s);
-      this.u = this.a(bht.t);
-      this.v = this.a(bht.u);
-      this.w = this.a(bht.Q);
-      this.x = this.a(bht.R);
-   }
-
-   private bhq a(aex<bhs> $$0) {
-      return new bhq(this.a.f($$0));
-   }
-
-   private bhq a(aex<bhs> $$0, @Nullable bis $$1) {
-      return new bhq(this.a.f($$0), $$1);
-   }
-
-   private bhq a(aex<bhs> $$0, @Nullable bis $$1, @Nullable bis $$2) {
-      return new bhq(this.a.f($$0), $$1, $$2);
-   }
-
-   public bhq a() {
-      return this.b;
-   }
-
-   public bhq b() {
-      return this.c;
-   }
-
-   public bhq c() {
-      return this.d;
-   }
-
-   public bhq d() {
-      return this.e;
-   }
-
-   public bhq e() {
-      return this.f;
-   }
-
-   public bhq f() {
-      return this.g;
-   }
-
-   public bhq g() {
-      return this.h;
-   }
-
-   public bhq h() {
-      return this.i;
-   }
-
-   public bhq i() {
-      return this.j;
-   }
-
-   public bhq j() {
-      return this.k;
-   }
-
-   public bhq k() {
-      return this.l;
-   }
-
-   public bhq l() {
-      return this.m;
-   }
-
-   public bhq m() {
-      return this.n;
-   }
-
-   public bhq n() {
-      return this.o;
-   }
-
-   public bhq o() {
-      return this.p;
-   }
-
-   public bhq p() {
-      return this.q;
-   }
-
-   public bhq q() {
-      return this.r;
-   }
-
-   public bhq r() {
-      return this.s;
-   }
-
-   public bhq s() {
-      return this.t;
-   }
-
-   public bhq t() {
-      return this.u;
-   }
-
-   public bhq u() {
-      return this.v;
-   }
-
-   public bhq a(bis $$0) {
-      return this.a(bht.v, $$0);
-   }
-
-   public bhq b(bis $$0) {
-      return this.a(bht.w, $$0);
-   }
-
-   public bhq c(bis $$0) {
-      return this.a(bht.x, $$0);
-   }
-
-   public bhq a(bji $$0) {
-      return this.a(bht.y, $$0);
-   }
-
-   public bhq b(bji $$0) {
-      return this.a(bht.z, $$0);
-   }
-
-   public bhq c(bji $$0) {
-      return this.a(bht.A, $$0);
-   }
-
-   public bhq a(cbw $$0) {
-      return this.a(bht.B, $$0);
-   }
-
-   public bhq a(ccc $$0, @Nullable bis $$1) {
-      return this.a(bht.C, $$0, $$1);
-   }
-
-   public bhq a(bis $$0, @Nullable bis $$1) {
-      return this.a(bht.D, $$0, $$1);
-   }
-
-   public bhq a(bis $$0, @Nullable bji $$1) {
-      return this.a(bht.E, $$0, $$1);
-   }
-
-   public bhq a(ccj $$0, @Nullable bis $$1) {
-      return this.a(bht.F, $$0, $$1);
-   }
-
-   public bhq a(cci $$0, @Nullable bis $$1) {
-      return $$1 == null ? this.a(bht.H, $$0) : this.a(bht.G, $$0, $$1);
-   }
-
-   public bhq a(cdb $$0, bis $$1) {
-      return this.a(bht.I, $$0, $$1);
-   }
-
-   public bhq b(bis $$0, @Nullable bis $$1) {
-      return this.a(bht.J, $$0, $$1);
-   }
-
-   public bhq c(bis $$0, @Nullable bis $$1) {
-      return this.a(bht.K, $$0, $$1);
-   }
-
-   public bhq d(bis $$0) {
-      return this.a(bht.L, $$0);
-   }
-
-   public bhq a(@Nullable cpp $$0) {
-      return $$0 != null ? this.d($$0.f(), $$0.e()) : this.d(null, null);
-   }
-
-   public bhq d(@Nullable bis $$0, @Nullable bis $$1) {
-      return this.a($$1 != null && $$0 != null ? bht.N : bht.M, $$0, $$1);
-   }
-
-   public bhq e(bis $$0) {
-      return this.a(bht.O, $$0);
-   }
-
-   public bhq a(ehp $$0) {
-      return new bhq(this.a.f(bht.P), $$0);
-   }
-
-   public bhq v() {
-      return this.w;
-   }
-
-   public bhq w() {
-      return this.x;
+   static void a(nr<bhq> $$0) {
+      $$0.a(a, new bhq("inFire", 0.1F, bhm.d));
+      $$0.a(b, new bhq("lightningBolt", 0.1F));
+      $$0.a(c, new bhq("onFire", 0.0F, bhm.d));
+      $$0.a(d, new bhq("lava", 0.1F, bhm.d));
+      $$0.a(e, new bhq("hotFloor", 0.1F, bhm.d));
+      $$0.a(f, new bhq("inWall", 0.0F));
+      $$0.a(g, new bhq("cramming", 0.0F));
+      $$0.a(h, new bhq("drown", 0.0F, bhm.c));
+      $$0.a(i, new bhq("starve", 0.0F));
+      $$0.a(j, new bhq("cactus", 0.1F));
+      $$0.a(k, new bhq("fall", bhn.b, 0.0F, bhm.a, bhs.b));
+      $$0.a(l, new bhq("flyIntoWall", 0.0F));
+      $$0.a(m, new bhq("outOfWorld", 0.0F));
+      $$0.a(n, new bhq("generic", 0.0F));
+      $$0.a(o, new bhq("magic", 0.0F));
+      $$0.a(p, new bhq("wither", 0.0F));
+      $$0.a(q, new bhq("dragonBreath", 0.0F));
+      $$0.a(r, new bhq("dryout", 0.1F));
+      $$0.a(s, new bhq("sweetBerryBush", 0.1F, bhm.e));
+      $$0.a(t, new bhq("freeze", 0.0F, bhm.f));
+      $$0.a(u, new bhq("stalagmite", 0.0F));
+      $$0.a(v, new bhq("fallingBlock", 0.1F));
+      $$0.a(w, new bhq("anvil", 0.1F));
+      $$0.a(x, new bhq("fallingStalactite", 0.1F));
+      $$0.a(y, new bhq("sting", 0.1F));
+      $$0.a(z, new bhq("mob", 0.1F));
+      $$0.a(A, new bhq("mob", 0.1F));
+      $$0.a(B, new bhq("player", 0.1F));
+      $$0.a(C, new bhq("arrow", 0.1F));
+      $$0.a(D, new bhq("trident", 0.1F));
+      $$0.a(E, new bhq("mob", 0.1F));
+      $$0.a(F, new bhq("fireworks", 0.1F));
+      $$0.a(H, new bhq("onFire", 0.1F, bhm.d));
+      $$0.a(G, new bhq("fireball", 0.1F, bhm.d));
+      $$0.a(I, new bhq("witherSkull", 0.1F));
+      $$0.a(J, new bhq("thrown", 0.1F));
+      $$0.a(K, new bhq("indirectMagic", 0.0F));
+      $$0.a(L, new bhq("thorns", 0.1F, bhm.b));
+      $$0.a(M, new bhq("explosion", bhn.c, 0.1F));
+      $$0.a(N, new bhq("explosion.player", bhn.c, 0.1F));
+      $$0.a(O, new bhq("sonic_boom", bhn.c, 0.0F));
+      $$0.a(P, new bhq("badRespawnPoint", bhn.c, 0.1F, bhm.a, bhs.c));
+      $$0.a(Q, new bhq("outsideBorder", 0.0F));
+      $$0.a(R, new bhq("genericKill", 0.0F));
    }
 }

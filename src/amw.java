@@ -1,28 +1,8 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface amw<T> extends amv<T> {
-   JsonObject a(T var1);
-
-   static <T> amw<T> a(final String $$0, final Codec<T> $$1) {
-      return new amw<T>() {
-         @Override
-         public String a() {
-            return $$0;
-         }
-
-         @Override
-         public T a(JsonObject $$0x) {
-            return ac.a($$1.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
-         }
-
-         @Override
-         public JsonObject a(T $$0x) {
-            return ac.<JsonElement, IllegalArgumentException>a($$1.encodeStart(JsonOps.INSTANCE, $$0), IllegalArgumentException::new).getAsJsonObject();
-         }
-      };
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface amw {
 }

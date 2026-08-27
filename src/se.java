@@ -1,42 +1,18 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class se extends sa {
-   private final Deque<sc> a = new ArrayDeque<>();
+public class se {
+   private final AtomicInteger a = new AtomicInteger();
+   private final ase b;
 
-   public se(sb... $$0) {
-      sc $$1 = sc.a();
-
-      for (sb $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
+   public se(ase $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public rp.a a(ru<?> $$0, String $$1) {
-      sc $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return rp.a.b;
-      } else {
-         if ($$0 == qy.b) {
-            sc $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
+   public void a(int $$0) {
+      this.a.getAndAdd($$0);
    }
 
-   @Override
-   public rp.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
-
-      return super.b();
+   public void a() {
+      this.b.a((long)this.a.getAndSet(0));
    }
 }

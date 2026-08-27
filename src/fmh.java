@@ -1,46 +1,31 @@
-import java.util.function.Consumer;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
-public class fmh extends fmw {
-   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
-   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
-   private static final float F = 1.0472F;
-   private int G;
+public abstract class fmh extends flu {
+   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
 
-   fmh(fiz $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.G = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
+   protected fmh(fix $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
+
+   protected fmh(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * ary.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a(elv $$0, eqi $$1, float $$2) {
-      if (this.G <= 0) {
-         this.y = 1.0F - ary.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
+   public void a(elt $$0, eqg $$1, float $$2) {
+      ehn $$3 = $$1.b();
+      float $$4 = (float)(arw.d((double)$$2, this.d, this.g) - $$3.a());
+      float $$5 = (float)(arw.d((double)$$2, this.e, this.h) - $$3.b());
+      float $$6 = (float)(arw.d((double)$$2, this.f, this.i) - $$3.c());
+      Quaternionf $$7;
+      if (this.z == 0.0F) {
+         $$7 = $$1.f();
+      } else {
+         $$7 = new Quaternionf($$1.f());
+         $$7.rotateZ(arw.i($$2, this.A, this.z));
       }
-   }
 
-   private void a(elv $$0, eqi $$1, float $$2, Consumer<Quaternionf> $$3) {
-      ehp $$4 = $$1.b();
-      float $$5 = (float)(ary.d((double)$$2, this.d, this.g) - $$4.a());
-      float $$6 = (float)(ary.d((double)$$2, this.e, this.h) - $$4.b());
-      float $$7 = (float)(ary.d((double)$$2, this.f, this.i) - $$4.c());
-      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
-      $$3.accept($$8);
-      $$8.transform(b);
       Vector3f[] $$9 = new Vector3f[]{
          new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
       };
@@ -48,53 +33,37 @@ public class fmh extends fmw {
 
       for (int $$11 = 0; $$11 < 4; $$11++) {
          Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$8);
+         $$12.rotate($$7);
          $$12.mul($$10);
-         $$12.add($$5, $$6, $$7);
+         $$12.add($$4, $$5, $$6);
       }
 
-      int $$13 = this.a($$2);
-      this.a($$0, $$9[0], this.d(), this.f(), $$13);
-      this.a($$0, $$9[1], this.d(), this.e(), $$13);
-      this.a($$0, $$9[2], this.c(), this.e(), $$13);
-      this.a($$0, $$9[3], this.c(), this.f(), $$13);
+      float $$13 = this.c();
+      float $$14 = this.d();
+      float $$15 = this.e();
+      float $$16 = this.f();
+      int $$17 = this.a($$2);
+      $$0.a((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
+      $$0.a((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z()).a($$14, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
+      $$0.a((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z()).a($$13, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
+      $$0.a((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z()).a($$13, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
    }
 
-   private void a(elv $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
-      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
+   public float b(float $$0) {
+      return this.D;
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
+   public flu d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
    }
 
-   @Override
-   public fma b() {
-      return fma.c;
-   }
+   protected abstract float c();
 
-   @Override
-   public void a() {
-      if (this.G > 0) {
-         this.G--;
-      } else {
-         super.a();
-      }
-   }
+   protected abstract float d();
 
-   public static class a implements flz<iz> {
-      private final fmr a;
+   protected abstract float e();
 
-      public a(fmr $$0) {
-         this.a = $$0;
-      }
-
-      public flw a(iz $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmh $$8 = new fmh($$1, $$2, $$3, $$4, $$0.c());
-         $$8.a(this.a);
-         $$8.e(1.0F);
-         return $$8;
-      }
-   }
+   protected abstract float f();
 }

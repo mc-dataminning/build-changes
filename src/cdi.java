@@ -1,17 +1,45 @@
-public class cdi {
-   private final int a;
-   private final float b;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-   public cdi(int $$0, float $$1) {
+public class cdi {
+   private final cdh a;
+   private final List<cdi.a> b = Lists.newArrayList();
+
+   public cdi(cdh $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public int a() {
+   public cdi a(int $$0, cdf $$1) {
+      this.b.add(new cdi.a($$0, $$1));
+      return this;
+   }
+
+   public cdh a() {
+      this.b.stream().map(cdi.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         cdf $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
       return this.a;
    }
 
-   public float b() {
-      return this.b;
+   static class a {
+      private final int a;
+      private final cdf b;
+
+      public a(int $$0, cdf $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public cdf b() {
+         return this.b;
+      }
    }
 }

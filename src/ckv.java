@@ -1,22 +1,23 @@
-public class ckv extends cjc {
-   private final cku a;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public ckv(cku $$0, cjc.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
-
-   public cku i() {
-      return this.a;
+public class ckv extends cgt {
+   public ckv(cja.a $$0) {
+      super($$0);
    }
 
    @Override
-   public int c() {
-      return this.a.e();
+   public cjf ai_() {
+      return cle.a(super.ai_(), clf.E);
    }
 
    @Override
-   public boolean a(cjh $$0, cjh $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+      cle.a($$0, $$2, 0.125F);
+   }
+
+   @Override
+   public String j(cjf $$0) {
+      return cle.d($$0).b(this.a() + ".effect.");
    }
 }

@@ -1,35 +1,61 @@
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
-
-public final class akm {
-   private final Object2BooleanMap<akt> a = new Object2BooleanOpenHashMap();
-
-   public Set<akt> a() {
-      return this.a.keySet();
+public abstract class akm extends dzy {
+   protected akm(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(akt $$0, boolean $$1) {
-      this.a.put($$0, $$1);
+   @Override
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  long $$6 = hw.a($$0, $$3, $$4, $$5);
+                  if ($$6 != $$0) {
+                     this.b($$0, $$6, $$1, $$2);
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public void a(akt $$0) {
-      this.a.removeBoolean($$0);
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               long $$7 = hw.a($$0, $$4, $$5, $$6);
+               if ($$7 == $$0) {
+                  $$7 = Long.MAX_VALUE;
+               }
+
+               if ($$7 != $$1) {
+                  int $$8 = this.b($$7, $$0, this.c($$7));
+                  if ($$3 > $$8) {
+                     $$3 = $$8;
+                  }
+
+                  if ($$3 == 0) {
+                     return $$3;
+                  }
+               }
+            }
+         }
+      }
+
+      return $$3;
    }
 
-   public void b(akt $$0) {
-      this.a.replace($$0, true);
+   @Override
+   protected int b(long $$0, long $$1, int $$2) {
+      return this.a($$0) ? this.b($$1) : $$2 + 1;
    }
 
-   public void c(akt $$0) {
-      this.a.replace($$0, false);
-   }
+   protected abstract int b(long var1);
 
-   public boolean d(akt $$0) {
-      return this.a.getOrDefault($$0, true);
-   }
-
-   public boolean e(akt $$0) {
-      return this.a.getBoolean($$0);
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
    }
 }

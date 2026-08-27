@@ -1,20 +1,21 @@
-public interface eht {
-   eht a = ($$0, $$1) -> false;
-   eht b = ($$0, $$1) -> !$$0 && !$$1;
-   eht c = ($$0, $$1) -> $$1 && !$$0;
-   eht d = ($$0, $$1) -> !$$0;
-   eht e = ($$0, $$1) -> $$0 && !$$1;
-   eht f = ($$0, $$1) -> !$$1;
-   eht g = ($$0, $$1) -> $$0 != $$1;
-   eht h = ($$0, $$1) -> !$$0 || !$$1;
-   eht i = ($$0, $$1) -> $$0 && $$1;
-   eht j = ($$0, $$1) -> $$0 == $$1;
-   eht k = ($$0, $$1) -> $$1;
-   eht l = ($$0, $$1) -> !$$0 || $$1;
-   eht m = ($$0, $$1) -> $$0;
-   eht n = ($$0, $$1) -> $$0 || !$$1;
-   eht o = ($$0, $$1) -> $$0 || $$1;
-   eht p = ($$0, $$1) -> true;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-   boolean apply(boolean var1, boolean var2);
+public class eht extends AbstractDoubleList {
+   private final int a;
+
+   eht(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
+   }
+
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
+   }
+
+   public int size() {
+      return this.a + 1;
+   }
 }

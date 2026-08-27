@@ -1,142 +1,30 @@
-public class fep<T extends bwf> extends ffo<T> {
-   private static final float a = 2.0F;
-   private static final float b = 2.5F;
-   private static final float f = 0.45F;
-   private static final float g = 29.35F;
-   private static final String h = "saddle";
-   private static final String i = "bridle";
-   private static final String j = "reins";
-   private final fie k;
-   private final fie l;
-   private final fie[] m;
-   private final fie[] n;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fep(fie $$0) {
-      this.k = $$0;
-      fie $$1 = $$0.b("body");
-      this.l = $$1.b("head");
-      this.m = new fie[]{$$1.b("saddle"), this.l.b("bridle")};
-      this.n = new fie[]{this.l.b("reins")};
-   }
+public class fep extends fel {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
 
-   public static fik b() {
-      fim $$0 = new fim();
-      fin $$1 = $$0.a();
-      fii $$2 = new fii(0.05F);
-      fin $$3 = $$1.a("body", fij.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), fig.a(0.0F, 4.0F, 9.5F));
-      $$3.a("hump", fij.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), fig.a(0.0F, -12.0F, -10.0F));
-      $$3.a("tail", fij.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), fig.a(0.0F, -9.0F, 3.5F));
-      fin $$4 = $$3.a(
-         "head",
-         fij.c()
-            .a(60, 24)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
-            .a(21, 0)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
-            .a(50, 0)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
-         fig.a(0.0F, -3.0F, -19.5F)
-      );
-      $$4.a("left_ear", fij.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fig.a(2.5F, -21.0F, -9.5F));
-      $$4.a("right_ear", fij.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fig.a(-2.5F, -21.0F, -9.5F));
-      $$1.a("left_hind_leg", fij.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fig.a(4.9F, 1.0F, 9.5F));
-      $$1.a("right_hind_leg", fij.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fig.a(-4.9F, 1.0F, 9.5F));
-      $$1.a("left_front_leg", fij.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fig.a(4.9F, 1.0F, -10.5F));
-      $$1.a("right_front_leg", fij.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fig.a(-4.9F, 1.0F, -10.5F));
-      $$3.a(
-         "saddle",
-         fij.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
-         fig.a(0.0F, 0.0F, 0.0F)
-      );
-      $$4.a(
-         "reins",
-         fij.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         fig.a(0.0F, 0.0F, 0.0F)
-      );
-      $$4.a(
-         "bridle",
-         fij.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         fig.a(0.0F, 0.0F, 0.0F)
-      );
-      return fik.a($$0, 128, 128);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fie::c);
-      this.a($$0, $$4, $$5, $$3);
-      this.a($$0);
-      this.a(err.a, $$1, $$2, 2.0F, 2.5F);
-      this.a($$0.ca, err.b, $$3, 1.0F);
-      this.a($$0.cb, err.c, $$3, 1.0F);
-      this.a($$0.cc, err.d, $$3, 1.0F);
-      this.a($$0.cd, err.f, $$3, 1.0F);
-      this.a($$0.ce, err.e, $$3, 1.0F);
-   }
-
-   private void a(T $$0, float $$1, float $$2, float $$3) {
-      $$1 = ary.a($$1, -30.0F, 30.0F);
-      $$2 = ary.a($$2, -25.0F, 45.0F);
-      if ($$0.aa_() > 0) {
-         float $$4 = $$3 - (float)$$0.ah;
-         float $$5 = 45.0F * ((float)$$0.aa_() - $$4) / 55.0F;
-         $$2 = ary.a($$2 + $$5, -25.0F, 70.0F);
-      }
-
-      this.l.f = $$1 * (float) (Math.PI / 180.0);
-      this.l.e = $$2 * (float) (Math.PI / 180.0);
-   }
-
-   private void a(T $$0) {
-      boolean $$1 = $$0.i();
-      boolean $$2 = $$0.bO();
-
-      for (fie $$3 : this.m) {
-         $$3.k = $$1;
-      }
-
-      for (fie $$4 : this.n) {
-         $$4.k = $$2 && $$1;
-      }
+   public fep(fic $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(elr $$0, elv $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(0.45F, 0.45F, 0.45F);
-         $$0.a(0.0F, 1.834375F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   protected Builder<fic> a(fic $$0) {
+      Builder<fic> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
    }
 
-   @Override
-   public fie a() {
-      return this.k;
+   public static fii e() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      fel.a($$1);
+      $$1.a("chest_bottom", fih.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fie.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fih.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fie.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fih.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fie.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fii.a($$0, 128, 128);
    }
 }

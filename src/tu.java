@@ -1,77 +1,13 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
-
-public class tu {
-   private final tw[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private ty d;
-
-   public tu(int $$0) {
-      this.a = new tw[$$0];
+public record tu(tw a, boolean b) {
+   public tu a() {
+      return this.b ? new tu(this.a, false) : this;
    }
 
-   public boolean a(ty $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new tw($$0, true) : null);
-         return true;
-      }
+   public tw b() {
+      return this.a;
    }
 
-   private void a(@Nullable tw $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
-   }
-
-   public void a(ty $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         tw $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
-   }
-
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public tu.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<ty> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         tw $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
-      }
-
-      tt $$6 = new tt($$2);
-      tt.b $$7 = new tt.b($$0, $$1);
-      return new tu.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(tt a, tt.b b) {
+   public boolean c() {
+      return this.b;
    }
 }

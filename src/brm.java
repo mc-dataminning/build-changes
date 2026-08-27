@@ -1,40 +1,41 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class brm extends bqd {
-   private final cbe a;
+public class brm<T extends bji> extends bqb {
+   private final T a;
+   private final cjf b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final apc d;
 
-   public brm(cbe $$0) {
+   public brm(T $$0, cjf $$1, @Nullable apc $$2, Predicate<? super T> $$3) {
       this.a = $$0;
-      this.a(EnumSet.of(bqd.a.c, bqd.a.a));
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bv()) {
-         return false;
-      } else if (this.a.aX()) {
-         return false;
-      } else if (!this.a.aA()) {
-         return false;
-      } else if (this.a.T) {
-         return false;
-      } else {
-         cbw $$0 = this.a.gd();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.f($$0) > 16.0 ? false : $$0.bS != null;
-         }
-      }
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.fm();
    }
 
    @Override
    public void c() {
-      this.a.L().n();
+      this.a.a(biv.a, this.b.p());
+      this.a.c(bgx.a);
    }
 
    @Override
    public void d() {
-      this.a.f(null);
+      this.a.a(biv.a, cjf.b);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.ef().i() * 0.2F + 0.9F);
+      }
    }
 }

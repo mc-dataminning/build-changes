@@ -1,12 +1,21 @@
-public class iu {
-   private final int b;
-   public static final iu a = new iu(1000);
+import com.mojang.serialization.Codec;
 
-   public iu(int $$0) {
-      this.b = $$0;
+public abstract class iu<T extends it> {
+   private final boolean a;
+   private final it.a<T> b;
+
+   protected iu(boolean $$0, it.a<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public int a() {
+   public boolean c() {
+      return this.a;
+   }
+
+   public it.a<T> d() {
       return this.b;
    }
+
+   public abstract Codec<T> e();
 }

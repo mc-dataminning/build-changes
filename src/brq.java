@@ -1,26 +1,32 @@
-import javax.annotation.Nullable;
+public class brq extends bql {
+   private final cab b;
+   private int c;
 
-public class brq extends bra {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public brq(bjr $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public brq(cab $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
-   public brq(bjr $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected ehp h() {
-      if (this.b.ba()) {
-         ehp $$0 = bub.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
+   public void c() {
+      super.c();
+      this.c = 0;
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.b.v(false);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
       } else {
-         return this.b.ef().i() >= this.j ? bub.a(this.b, 10, 7) : super.h();
+         this.b.v(false);
       }
    }
 }

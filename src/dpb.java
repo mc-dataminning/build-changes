@@ -1,44 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class dpb extends dny<dqk> {
-   private static final int a = 7;
-
-   dpb(Codec<dqk> $$0) {
+public class dpb extends dnw<dpv> {
+   public dpb(Codec<dpv> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doa<dqk> $$0) {
-      cqr $$1 = $$0.b();
-      ase $$2 = $$0.d();
-      dqk $$3 = $$0.f();
+   public boolean a(dny<dpv> $$0) {
+      int $$1 = 0;
+      asc $$2 = $$0.d();
+      cqp $$3 = $$0.b();
       gw $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      gw.a $$6 = new gw.a();
+      int $$5 = $$0.f().a().a($$2);
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dfl $$8 = $$1.a_($$6);
-
-         for (dqk.a $$9 : $$3.b) {
-            if (dot.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dks.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         gw $$10 = new gw($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dfj $$11 = csw.mV.n().a(czs.b, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(csw.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
       }
 
-      return true;
-   }
-
-   private void a(gw.a $$0, ase $$1, gw $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(ase $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+      return $$1 > 0;
    }
 }

@@ -3,43 +3,23 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public abstract class ede extends edl {
-   protected final List<edl> d;
-   private final edd a;
+public class ede extends edl {
+   public static final Codec<ede> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ede::new));
 
-   protected ede(List<edl> $$0, List<efr> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   private ede(int $$0, int $$1, List<efp> $$2, List<eed> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(edb $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.a("Empty children list");
-      }
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.b(".entry[" + $$1 + "]"));
-      }
+   public edk a() {
+      return edh.b;
    }
-
-   protected abstract edd a(List<? extends edd> var1);
 
    @Override
-   public final boolean expand(ecs $$0, Consumer<edk> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
+   public void a(Consumer<cjf> $$0, ecq $$1) {
    }
 
-   public static <T extends ede> Codec<T> a(ede.a<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(arh.a(edj.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
-
-   @FunctionalInterface
-   public interface a<T extends ede> {
-      T create(List<edl> var1, List<efr> var2);
+   public static edl.a<?> b() {
+      return a(ede::new);
    }
 }

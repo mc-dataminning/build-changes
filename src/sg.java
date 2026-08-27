@@ -1,18 +1,17 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.crypto.Cipher;
 
-public class sg {
-   private final AtomicInteger a = new AtomicInteger();
-   private final asg b;
+public class sg extends MessageToMessageDecoder<ByteBuf> {
+   private final sf a;
 
-   public sg(asg $$0) {
-      this.b = $$0;
+   public sg(Cipher $$0) {
+      this.a = new sf($$0);
    }
 
-   public void a(int $$0) {
-      this.a.getAndAdd($$0);
-   }
-
-   public void a() {
-      this.b.a((long)this.a.getAndSet(0));
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      $$2.add(this.a.a($$0, $$1));
    }
 }

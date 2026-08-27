@@ -1,19 +1,18 @@
-public record wi(gw b, String c, int d) implements vy {
-   public static final aey a = new aey("debug/poi_added");
+public record wi(gw b, int c) implements vw {
+   public static final aew a = new aew("debug/poi_ticket_count");
 
-   public wi(sq $$0) {
-      this($$0.e(), $$0.r(), $$0.readInt());
+   public wi(so $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.p(this.d);
+      $$0.p(this.c);
    }
 
    @Override
-   public aey a() {
+   public aew a() {
       return a;
    }
 }

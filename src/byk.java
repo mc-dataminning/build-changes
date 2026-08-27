@@ -1,163 +1,69 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class byk {
+   public static final aev<byj> a = a("kebab");
+   public static final aev<byj> b = a("aztec");
+   public static final aev<byj> c = a("alban");
+   public static final aev<byj> d = a("aztec2");
+   public static final aev<byj> e = a("bomb");
+   public static final aev<byj> f = a("plant");
+   public static final aev<byj> g = a("wasteland");
+   public static final aev<byj> h = a("pool");
+   public static final aev<byj> i = a("courbet");
+   public static final aev<byj> j = a("sea");
+   public static final aev<byj> k = a("sunset");
+   public static final aev<byj> l = a("creebet");
+   public static final aev<byj> m = a("wanderer");
+   public static final aev<byj> n = a("graham");
+   public static final aev<byj> o = a("match");
+   public static final aev<byj> p = a("bust");
+   public static final aev<byj> q = a("stage");
+   public static final aev<byj> r = a("void");
+   public static final aev<byj> s = a("skull_and_roses");
+   public static final aev<byj> t = a("wither");
+   public static final aev<byj> u = a("fighters");
+   public static final aev<byj> v = a("pointer");
+   public static final aev<byj> w = a("pigscene");
+   public static final aev<byj> x = a("burning_skull");
+   public static final aev<byj> y = a("skeleton");
+   public static final aev<byj> z = a("donkey_kong");
+   public static final aev<byj> A = a("earth");
+   public static final aev<byj> B = a("wind");
+   public static final aev<byj> C = a("water");
+   public static final aev<byj> D = a("fire");
 
-public class byk extends byh implements bkg<hg<byl>> {
-   private static final aeg<hg<byl>> f = aej.a(byk.class, aei.y);
-   private static final aex<byl> g = bym.a;
-   public static final String e = "variant";
-
-   private static hg<byl> s() {
-      return jd.m.f(g);
+   public static byj a(hq<byj> $$0) {
+      hq.a($$0, a, new byj(16, 16));
+      hq.a($$0, b, new byj(16, 16));
+      hq.a($$0, c, new byj(16, 16));
+      hq.a($$0, d, new byj(16, 16));
+      hq.a($$0, e, new byj(16, 16));
+      hq.a($$0, f, new byj(16, 16));
+      hq.a($$0, g, new byj(16, 16));
+      hq.a($$0, h, new byj(32, 16));
+      hq.a($$0, i, new byj(32, 16));
+      hq.a($$0, j, new byj(32, 16));
+      hq.a($$0, k, new byj(32, 16));
+      hq.a($$0, l, new byj(32, 16));
+      hq.a($$0, m, new byj(16, 32));
+      hq.a($$0, n, new byj(16, 32));
+      hq.a($$0, o, new byj(32, 32));
+      hq.a($$0, p, new byj(32, 32));
+      hq.a($$0, q, new byj(32, 32));
+      hq.a($$0, r, new byj(32, 32));
+      hq.a($$0, s, new byj(32, 32));
+      hq.a($$0, t, new byj(32, 32));
+      hq.a($$0, u, new byj(64, 32));
+      hq.a($$0, v, new byj(64, 64));
+      hq.a($$0, w, new byj(64, 64));
+      hq.a($$0, x, new byj(64, 64));
+      hq.a($$0, y, new byj(64, 48));
+      hq.a($$0, A, new byj(32, 32));
+      hq.a($$0, B, new byj(32, 32));
+      hq.a($$0, C, new byj(32, 32));
+      hq.a($$0, D, new byj(32, 32));
+      return hq.a($$0, z, new byj(64, 48));
    }
 
-   public byk(biw<? extends byk> $$0, cpx $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a_() {
-      this.an.a(f, s());
-   }
-
-   @Override
-   public void a(aeg<?> $$0) {
-      if (f.equals($$0)) {
-         this.y();
-      }
-   }
-
-   public void a(hg<byl> $$0) {
-      this.an.b(f, $$0);
-   }
-
-   public hg<byl> q() {
-      return this.an.b(f);
-   }
-
-   public static Optional<byk> a(cpx $$0, gw $$1, hc $$2) {
-      byk $$3 = new byk($$0, $$1);
-      List<hg<byl>> $$4 = new ArrayList<>();
-      jd.m.c(aqd.a).forEach($$4::add);
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         $$3.a($$2);
-         $$4.removeIf($$1x -> {
-            $$3.a($$1x);
-            return !$$3.z();
-         });
-         if ($$4.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$5 = $$4.stream().mapToInt(byk::b).max().orElse(0);
-            $$4.removeIf($$1x -> b($$1x) < $$5);
-            Optional<hg<byl>> $$6 = ac.b($$4, $$3.ag);
-            if ($$6.isEmpty()) {
-               return Optional.empty();
-            } else {
-               $$3.a($$6.get());
-               $$3.a($$2);
-               return Optional.of($$3);
-            }
-         }
-      }
-   }
-
-   private static int b(hg<byl> $$0) {
-      return $$0.a().a() * $$0.a().b();
-   }
-
-   private byk(cpx $$0, gw $$1) {
-      super(biw.ar, $$0, $$1);
-   }
-
-   public byk(cpx $$0, gw $$1, hc $$2, hg<byl> $$3) {
-      this($$0, $$1);
-      this.a($$3);
-      this.a($$2);
-   }
-
-   @Override
-   public void b(qy $$0) {
-      a($$0, this.q());
-      $$0.a("facing", (byte)this.d.e());
-      super.b($$0);
-   }
-
-   @Override
-   public void a(qy $$0) {
-      hg<byl> $$1 = c($$0).orElseGet(byk::s);
-      this.a($$1);
-      this.d = hc.b($$0.f("facing"));
-      super.a($$0);
-      this.a(this.d);
-   }
-
-   public static void a(qy $$0, hg<byl> $$1) {
-      $$0.a("variant", $$1.e().orElse(g).a().toString());
-   }
-
-   public static Optional<hg<byl>> c(qy $$0) {
-      return Optional.ofNullable(aey.a($$0.l("variant"))).map($$0x -> aex.a(je.P, $$0x)).flatMap(jd.m::b);
-   }
-
-   @Override
-   public int A() {
-      return this.q().a().a();
-   }
-
-   @Override
-   public int B() {
-      return this.q().a().b();
-   }
-
-   @Override
-   public void a(@Nullable bis $$0) {
-      if (this.dL().X().b(cpt.h)) {
-         this.a(apf.qI, 1.0F, 1.0F);
-         if ($$0 instanceof cbw $$1 && $$1.fS().d) {
-            return;
-         }
-
-         this.a(cjk.pl);
-      }
-   }
-
-   @Override
-   public void C() {
-      this.a(apf.qJ, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.e($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.e($$0, $$1, $$2);
-   }
-
-   @Override
-   public ehp dk() {
-      return ehp.a(this.c);
-   }
-
-   @Override
-   public vf<wy> di() {
-      return new wz(this, this.d.d(), this.E());
-   }
-
-   @Override
-   public void a(wz $$0) {
-      super.a($$0);
-      this.a(hc.a($$0.o()));
-   }
-
-   @Override
-   public cjh dy() {
-      return new cjh(cjk.pl);
+   private static aev<byj> a(String $$0) {
+      return aev.a(jc.P, new aew($$0));
    }
 }

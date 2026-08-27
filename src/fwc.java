@@ -1,17 +1,18 @@
-public class fwc extends fup<bzy, fho> {
-   private static final aey a = new aey("textures/entity/illager/vex.png");
-   private static final aey i = new aey("textures/entity/illager/vex_charging.png");
+public class fwc extends fua<bzx> {
+   private static final aew a = new aew("textures/entity/illager/vindicator.png");
 
-   public fwc(ftj.a $$0) {
-      super($$0, new fho($$0.a(fid.bI)), 0.3F);
-      this.a(new fxk<>(this, $$0.d()));
+   public fwc(fth.a $$0) {
+      super($$0, new ffr<>($$0.a(fib.bK)), 0.5F);
+      this.a(new fxi<bzx, ffr<bzx>>(this, $$0.d()) {
+         public void a(elp $$0, foe $$1, int $$2, bzx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.fV()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   protected int a(bzy $$0, gw $$1) {
-      return 15;
-   }
-
-   public aey a(bzy $$0) {
-      return $$0.gd() ? i : a;
+   public aew a(bzx $$0) {
+      return a;
    }
 }

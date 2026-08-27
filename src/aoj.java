@@ -1,29 +1,45 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.List;
 
-public class aoj extends aon<GameProfile, aok> {
-   public aoj(File $$0) {
-      super($$0);
+public class aoj {
+   private int a;
+   private int b;
+
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
    }
 
-   @Override
-   protected aom<GameProfile> a(JsonObject $$0) {
-      return new aok($$0);
+   public boolean a(int $$0, List<akr> $$1) {
+      int $$2 = (int)$$1.stream().filter(cbu::fU).count();
+      return $$2 >= this.b($$0);
    }
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(aom::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   public int b(int $$0) {
+      return Math.max(1, arw.f((float)(this.a * $$0) / 100.0F));
    }
 
-   public boolean a(GameProfile $$0) {
-      aok $$1 = this.b($$0);
-      return $$1 != null ? $$1.b() : false;
+   public void a() {
+      this.b = 0;
    }
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   public int b() {
+      return this.b;
+   }
+
+   public boolean a(List<akr> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
+
+      for (akr $$3 : $$0) {
+         if (!$$3.M_()) {
+            this.a++;
+            if ($$3.fC()) {
+               this.b++;
+            }
+         }
+      }
+
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

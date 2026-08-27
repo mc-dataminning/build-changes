@@ -1,285 +1,347 @@
 import com.google.common.collect.Lists;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class chn {
-   private final tn a;
-   String b = "items.png";
-   boolean c = true;
-   boolean d = true;
-   boolean e = false;
-   private final chn.f f;
-   private final int g;
-   private final chn.h h;
-   @Nullable
-   private cjh i;
-   private Collection<cjh> j = cji.a();
-   private Set<cjh> k = cji.a();
-   @Nullable
-   private Consumer<List<cjh>> l;
-   private final Supplier<cjh> m;
-   private final chn.b n;
+public class chn extends cjv implements ckz {
+   private static final String b = "Charged";
+   private static final String e = "ChargedProjectiles";
+   private static final int f = 25;
+   public static final int a = 8;
+   private boolean g = false;
+   private boolean h = false;
+   private static final float i = 0.2F;
+   private static final float j = 0.5F;
+   private static final float k = 3.15F;
+   private static final float r = 1.6F;
 
-   chn(chn.f $$0, int $$1, chn.h $$2, tn $$3, Supplier<cjh> $$4, chn.b $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.a = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.h = $$2;
+   public chn(cja.a $$0) {
+      super($$0);
    }
 
-   public static chn.a a(chn.f $$0, int $$1) {
-      return new chn.a($$0, $$1);
+   @Override
+   public Predicate<cjf> e() {
+      return d;
    }
 
-   public tn a() {
-      return this.a;
+   @Override
+   public Predicate<cjf> b() {
+      return c;
    }
 
-   public cjh b() {
-      if (this.i == null) {
-         this.i = this.m.get();
-      }
+   @Override
+   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
+      cjf $$3 = $$1.b($$2);
+      if (d($$3)) {
+         a($$0, $$1, $$2, $$3, o($$3), 1.0F);
+         a($$3, false);
+         return bgz.b($$3);
+      } else if (!$$1.g($$3).b()) {
+         if (!d($$3)) {
+            this.g = false;
+            this.h = false;
+            $$1.c($$2);
+         }
 
-      return this.i;
-   }
-
-   public String c() {
-      return this.b;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public chn.f g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return !this.j.isEmpty();
-   }
-
-   public boolean i() {
-      return this.h != chn.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.e;
-   }
-
-   public chn.h k() {
-      return this.h;
-   }
-
-   public void a(chn.d $$0) {
-      chn.c $$1 = new chn.c(this, $$0.a);
-      aex<chn> $$2 = jd.ao.c(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.j = $$1.a;
-      this.k = $$1.b;
-      this.n();
-   }
-
-   public Collection<cjh> l() {
-      return this.j;
-   }
-
-   public Collection<cjh> m() {
-      return this.k;
-   }
-
-   public boolean a(cjh $$0) {
-      return this.k.contains($$0);
-   }
-
-   public void a(Consumer<List<cjh>> $$0) {
-      this.l = $$0;
-   }
-
-   public void n() {
-      if (this.l != null) {
-         this.l.accept(Lists.newArrayList(this.k));
+         return bgz.b($$3);
+      } else {
+         return bgz.d($$3);
       }
    }
 
-   public static class a {
-      private static final chn.b a = ($$0, $$1) -> {
-      };
-      private final chn.f b;
-      private final int c;
-      private tn d = tn.h();
-      private Supplier<cjh> e = () -> cjh.b;
-      private chn.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private chn.h j = chn.h.a;
-      private String k = "items.png";
+   private static float o(cjf $$0) {
+      return a($$0, cji.tA) ? 1.6F : 3.15F;
+   }
 
-      public a(chn.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
+   @Override
+   public void a(cjf $$0, cpv $$1, bjg $$2, int $$3) {
+      int $$4 = this.b($$0) - $$3;
+      float $$5 = a($$4, $$0);
+      if ($$5 >= 1.0F && !d($$0) && a($$2, $$0)) {
+         a($$0, true);
+         ape $$6 = $$2 instanceof cbu ? ape.h : ape.f;
+         $$1.a(null, $$2.dq(), $$2.ds(), $$2.dw(), apd.fk, $$6, 1.0F, 1.0F / ($$1.D_().i() * 0.5F + 1.0F) + 0.2F);
+      }
+   }
+
+   private static boolean a(bjg $$0, cjf $$1) {
+      int $$2 = cnq.a(cns.I, $$1);
+      int $$3 = $$2 == 0 ? 1 : 3;
+      boolean $$4 = $$0 instanceof cbu && ((cbu)$$0).fS().d;
+      cjf $$5 = $$0.g($$1);
+      cjf $$6 = $$5.p();
+
+      for (int $$7 = 0; $$7 < $$3; $$7++) {
+         if ($$7 > 0) {
+            $$5 = $$6.p();
+         }
+
+         if ($$5.b() && $$4) {
+            $$5 = new cjf(cji.nH);
+            $$6 = $$5.p();
+         }
+
+         if (!a($$0, $$1, $$5, $$7 > 0, $$4)) {
+            return false;
+         }
       }
 
-      public chn.a a(tn $$0) {
-         this.d = $$0;
-         return this;
-      }
+      return true;
+   }
 
-      public chn.a a(Supplier<cjh> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public chn.a a(chn.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public chn.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public chn.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public chn.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected chn.a a(chn.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public chn.a a(String $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public chn d() {
-         if ((this.j == chn.h.c || this.j == chn.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
+   private static boolean a(bjg $$0, cjf $$1, cjf $$2, boolean $$3, boolean $$4) {
+      if ($$2.b()) {
+         return false;
+      } else {
+         boolean $$5 = $$4 && $$2.d() instanceof cgt;
+         cjf $$6;
+         if (!$$5 && !$$4 && !$$3) {
+            $$6 = $$2.a(1);
+            if ($$2.b() && $$0 instanceof cbu) {
+               ((cbu)$$0).fR().g($$2);
+            }
          } else {
-            chn $$0 = new chn(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.e = this.i;
-            $$0.d = this.h;
-            $$0.c = this.g;
-            $$0.b = this.k;
-            return $$0;
+            $$6 = $$2.p();
+         }
+
+         b($$1, $$6);
+         return true;
+      }
+   }
+
+   public static boolean d(cjf $$0) {
+      qw $$1 = $$0.v();
+      return $$1 != null && $$1.q("Charged");
+   }
+
+   public static void a(cjf $$0, boolean $$1) {
+      qw $$2 = $$0.w();
+      $$2.a("Charged", $$1);
+   }
+
+   private static void b(cjf $$0, cjf $$1) {
+      qw $$2 = $$0.w();
+      rc $$3;
+      if ($$2.b("ChargedProjectiles", 9)) {
+         $$3 = $$2.c("ChargedProjectiles", 10);
+      } else {
+         $$3 = new rc();
+      }
+
+      qw $$5 = new qw();
+      $$1.b($$5);
+      $$3.add($$5);
+      $$2.a("ChargedProjectiles", $$3);
+   }
+
+   private static List<cjf> p(cjf $$0) {
+      List<cjf> $$1 = Lists.newArrayList();
+      qw $$2 = $$0.v();
+      if ($$2 != null && $$2.b("ChargedProjectiles", 9)) {
+         rc $$3 = $$2.c("ChargedProjectiles", 10);
+         if ($$3 != null) {
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               qw $$5 = $$3.a($$4);
+               $$1.add(cjf.a($$5));
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private static void q(cjf $$0) {
+      qw $$1 = $$0.v();
+      if ($$1 != null) {
+         rc $$2 = $$1.c("ChargedProjectiles", 9);
+         $$2.clear();
+         $$1.a("ChargedProjectiles", $$2);
+      }
+   }
+
+   public static boolean a(cjf $$0, cja $$1) {
+      return p($$0).stream().anyMatch($$1x -> $$1x.a($$1));
+   }
+
+   private static void a(cpv $$0, bjg $$1, bgx $$2, cjf $$3, cjf $$4, float $$5, boolean $$6, float $$7, float $$8, float $$9) {
+      if (!$$0.B) {
+         boolean $$10 = $$4.a(cji.tA);
+         ccm $$11;
+         if ($$10) {
+            $$11 = new cch($$0, $$4, $$1, $$1.dq(), $$1.du() - 0.15F, $$1.dw(), true);
+         } else {
+            $$11 = a($$0, $$1, $$3, $$4);
+            if ($$6 || $$9 != 0.0F) {
+               ((cca)$$11).d = cca.a.c;
+            }
+         }
+
+         if ($$1 instanceof byv $$13) {
+            $$13.a($$13.q(), $$3, $$11, $$9);
+         } else {
+            ehn $$14 = $$1.i(1.0F);
+            Quaternionf $$15 = new Quaternionf().setAngleAxis((double)($$9 * (float) (Math.PI / 180.0)), $$14.c, $$14.d, $$14.e);
+            ehn $$16 = $$1.f(1.0F);
+            Vector3f $$17 = $$16.j().rotate($$15);
+            $$11.c((double)$$17.x(), (double)$$17.y(), (double)$$17.z(), $$7, $$8);
+         }
+
+         $$3.a($$10 ? 3 : 1, $$1, $$1x -> $$1x.d($$2));
+         $$0.b($$11);
+         $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), apd.fq, ape.h, 1.0F, $$5);
+      }
+   }
+
+   private static cca a(cpv $$0, bjg $$1, cjf $$2, cjf $$3) {
+      cgt $$4 = (cgt)($$3.d() instanceof cgt ? $$3.d() : cji.nH);
+      cca $$5 = $$4.a($$0, $$3, $$1);
+      if ($$1 instanceof cbu) {
+         $$5.a(true);
+      }
+
+      $$5.b(apd.fj);
+      $$5.q(true);
+      int $$6 = cnq.a(cns.K, $$2);
+      if ($$6 > 0) {
+         $$5.a((byte)$$6);
+      }
+
+      return $$5;
+   }
+
+   public static void a(cpv $$0, bjg $$1, bgx $$2, cjf $$3, float $$4, float $$5) {
+      List<cjf> $$6 = p($$3);
+      float[] $$7 = a($$1.ef());
+
+      for (int $$8 = 0; $$8 < $$6.size(); $$8++) {
+         cjf $$9 = $$6.get($$8);
+         boolean $$10 = $$1 instanceof cbu && ((cbu)$$1).fS().d;
+         if (!$$9.b()) {
+            if ($$8 == 0) {
+               a($$0, $$1, $$2, $$3, $$9, $$7[$$8], $$10, $$4, $$5, 0.0F);
+            } else if ($$8 == 1) {
+               a($$0, $$1, $$2, $$3, $$9, $$7[$$8], $$10, $$4, $$5, -10.0F);
+            } else if ($$8 == 2) {
+               a($$0, $$1, $$2, $$3, $$9, $$7[$$8], $$10, $$4, $$5, 10.0F);
+            }
+         }
+      }
+
+      a($$0, $$1, $$3);
+   }
+
+   private static float[] a(asc $$0) {
+      boolean $$1 = $$0.h();
+      return new float[]{1.0F, a($$1, $$0), a(!$$1, $$0)};
+   }
+
+   private static float a(boolean $$0, asc $$1) {
+      float $$2 = $$0 ? 0.63F : 0.43F;
+      return 1.0F / ($$1.i() * 0.5F + 1.8F) + $$2;
+   }
+
+   private static void a(cpv $$0, bjg $$1, cjf $$2) {
+      if ($$1 instanceof akr $$3) {
+         if (!$$0.B) {
+            al.F.a($$3, $$2);
+         }
+
+         $$3.b(apn.c.b($$2.d()));
+      }
+
+      q($$2);
+   }
+
+   @Override
+   public void a(cpv $$0, bjg $$1, cjf $$2, int $$3) {
+      if (!$$0.B) {
+         int $$4 = cnq.a(cns.J, $$2);
+         apc $$5 = this.a($$4);
+         apc $$6 = $$4 == 0 ? apd.fl : null;
+         float $$7 = (float)($$2.r() - $$3) / (float)k($$2);
+         if ($$7 < 0.2F) {
+            this.g = false;
+            this.h = false;
+         }
+
+         if ($$7 >= 0.2F && !this.g) {
+            this.g = true;
+            $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), $$5, ape.h, 0.5F, 1.0F);
+         }
+
+         if ($$7 >= 0.5F && $$6 != null && !this.h) {
+            this.h = true;
+            $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), $$6, ape.h, 0.5F, 1.0F);
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      void accept(chn.d var1, chn.e var2);
+   @Override
+   public int b(cjf $$0) {
+      return k($$0) + 3;
    }
 
-   static class c implements chn.e {
-      public final Collection<cjh> a = cji.a();
-      public final Set<cjh> b = cji.a();
-      private final chn c;
-      private final cee d;
+   public static int k(cjf $$0) {
+      int $$1 = cnq.a(cns.J, $$0);
+      return $$1 == 0 ? 25 : 25 - 5 * $$1;
+   }
 
-      public c(chn $$0, cee $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   @Override
+   public cky c(cjf $$0) {
+      return cky.g;
+   }
+
+   private apc a(int $$0) {
+      switch ($$0) {
+         case 1:
+            return apd.fn;
+         case 2:
+            return apd.fo;
+         case 3:
+            return apd.fp;
+         default:
+            return apd.fm;
+      }
+   }
+
+   private static float a(int $$0, cjf $$1) {
+      float $$2 = (float)$$0 / (float)k($$1);
+      if ($$2 > 1.0F) {
+         $$2 = 1.0F;
       }
 
-      @Override
-      public void a(cjh $$0, chn.g $$1) {
-         if ($$0.L() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != chn.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.d().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
-                  }
+      return $$2;
+   }
+
+   @Override
+   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+      List<cjf> $$4 = p($$0);
+      if (d($$0) && !$$4.isEmpty()) {
+         cjf $$5 = $$4.get(0);
+         $$2.add(tl.c("item.minecraft.crossbow.projectile").b(tk.u).b($$5.J()));
+         if ($$3.a() && $$5.a(cji.tA)) {
+            List<tl> $$6 = Lists.newArrayList();
+            cji.tA.a($$5, $$1, $$6, $$3);
+            if (!$$6.isEmpty()) {
+               for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
+                  $$6.set($$7, tl.b("  ").b($$6.get($$7)).a(n.h));
                }
+
+               $$2.addAll($$6);
             }
          }
       }
    }
 
-   public static record d(cee a, boolean b, hi.b c) {
-
-      public boolean a(cee $$0, boolean $$1, hi.b $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
-      }
+   @Override
+   public boolean l(cjf $$0) {
+      return $$0.a(this);
    }
 
-   public interface e {
-      void a(cjh var1, chn.g var2);
-
-      default void a(cjh $$0) {
-         this.a($$0, chn.g.a);
-      }
-
-      default void a(cpw $$0, chn.g $$1) {
-         this.a(new cjh($$0), $$1);
-      }
-
-      default void a(cpw $$0) {
-         this.a(new cjh($$0), chn.g.a);
-      }
-
-      default void a(Collection<cjh> $$0, chn.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<cjh> $$0) {
-         this.a($$0, chn.g.a);
-      }
-   }
-
-   public static enum f {
-      a,
-      b;
-   }
-
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
-
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public int d() {
+      return 8;
    }
 }

@@ -1,42 +1,31 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
-public abstract class gaj implements anp, AutoCloseable {
-   private final fzf a;
-   private final aey b;
-   private final Set<amv<?>> c;
+public class gaj {
+   public static arj a(tp $$0, boolean $$1) {
+      ui $$2 = ui.a($$0, UCharacter::getMirror, gaj::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<arj> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public gaj(fzh $$0, aey $$1, aey $$2) {
-      this($$0, $$1, $$2, fzb.a);
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      }
+
+      return arj.composite($$4);
    }
 
-   public gaj(fzh $$0, aey $$1, aey $$2, Set<amv<?>> $$3) {
-      this.b = $$2;
-      this.a = new fzf($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
-   }
-
-   protected fzg a(aey $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public final CompletableFuture<Void> a(anp.a $$0, anv $$1, bdr $$2, bdr $$3, Executor $$4, Executor $$5) {
-      return fzb.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(fzb.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(fzb.a $$0, bdr $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
-   }
-
-   @Override
-   public void close() {
-      this.a.f();
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

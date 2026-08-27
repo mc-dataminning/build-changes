@@ -1,106 +1,250 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class of {
-   private static dvk.c a(hk<cqv> $$0, Map<bjl, dvr> $$1, dkq.b $$2, dvv $$3) {
-      return new dvk.c($$0, $$1, $$2, $$3);
-   }
+   public static final aev<dwr> a = ny.a("village/taiga/town_centers");
+   private static final aev<dwr> b = ny.a("village/taiga/terminators");
 
-   private static dvk.c a(hk<cqv> $$0, dkq.b $$1, dvv $$2) {
-      return a($$0, Map.of(), $$1, $$2);
-   }
-
-   private static dvk.c a(hk<cqv> $$0, dvv $$1) {
-      return a($$0, Map.of(), dkq.b.e, $$1);
-   }
-
-   public static void a(nt<dvk> $$0) {
-      hh<cqv> $$1 = $$0.a(je.ap);
-      hh<dwt> $$2 = $$0.a(je.aC);
+   public static void a(nr<dwr> $$0) {
+      hf<dum> $$1 = $$0.a(jc.ay);
+      he<dum> $$2 = $$1.b(pj.h);
+      he<dum> $$3 = $$1.b(pj.i);
+      he<dum> $$4 = $$1.b(pj.e);
+      he<dum> $$5 = $$1.b(pj.l);
+      he<dum> $$6 = $$1.b(pj.m);
+      hf<dyz> $$7 = $$0.a(jc.aA);
+      he<dyz> $$8 = $$7.b(nz.f);
+      he<dyz> $$9 = $$7.b(nz.d);
+      he<dyz> $$10 = $$7.b(nz.k);
+      he<dyz> $$11 = $$7.b(nz.o);
+      hf<dwr> $$12 = $$0.a(jc.aC);
+      he<dwr> $$13 = $$12.b(ny.a);
+      he<dwr> $$14 = $$12.b(b);
       $$0.a(
-         dve.a,
-         new dxd(
-            a($$1.b(apt.y), Map.of(bjl.a, new dvr(dvr.a.b, bfo.a(new crh.c(biw.ay, 1, 1, 1)))), dkq.b.e, dvv.c), $$2.b(ny.a), 7, dtq.a(dlo.a(0)), true, dku.a.a
+         a,
+         new dwr(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/taiga/town_centers/taiga_meeting_point_1", $$8), 49),
+               Pair.of(dwp.a("village/taiga/town_centers/taiga_meeting_point_2", $$8), 49),
+               Pair.of(dwp.a("village/taiga/zombie/town_centers/taiga_meeting_point_1", $$9), 1),
+               Pair.of(dwp.a("village/taiga/zombie/town_centers/taiga_meeting_point_2", $$9), 1)
+            ),
+            dwr.a.b
          )
       );
-      $$0.a(dve.b, new dxh(a($$1.b(apt.t), dkq.b.d, dvv.a), dxh.a.a));
-      $$0.a(dve.c, new dxh(a($$1.b(apt.u), dkq.b.d, dvv.a), dxh.a.b));
-      $$0.a(dve.d, new dxz(a($$1.b(apt.P), dvv.a)));
-      $$0.a(dve.e, new dxf(a($$1.b(apt.s), dvv.a)));
-      $$0.a(dve.f, new dwy(a($$1.b(apt.q), dvv.a)));
-      $$0.a(dve.g, new dxc(a($$1.b(apt.r), dvv.a)));
-      $$0.a(dve.h, new dxt(a($$1.b(apt.G), dvv.a), false));
-      $$0.a(dve.i, new dxt(a($$1.b(apt.F), dvv.a), true));
-      $$0.a(
-         dve.j,
-         new dxx(
-            a(
-               $$1.b(apt.I),
-               Map.of(bjl.a, new dvr(dvr.a.a, bfo.a(new crh.c(biw.bj, 1, 1, 1))), bjl.b, new dvr(dvr.a.a, bfo.a(new crh.c(biw.m, 1, 1, 1)))),
-               dkq.b.e,
-               dvv.a
-            )
+      ny.a(
+         $$0,
+         "village/taiga/streets",
+         new dwr(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/taiga/streets/corner_01", $$10), 2),
+               Pair.of(dwp.a("village/taiga/streets/corner_02", $$10), 2),
+               Pair.of(dwp.a("village/taiga/streets/corner_03", $$10), 2),
+               Pair.of(dwp.a("village/taiga/streets/straight_01", $$10), 4),
+               Pair.of(dwp.a("village/taiga/streets/straight_02", $$10), 4),
+               Pair.of(dwp.a("village/taiga/streets/straight_03", $$10), 4),
+               Pair.of(dwp.a("village/taiga/streets/straight_04", $$10), 7),
+               Pair.of(dwp.a("village/taiga/streets/straight_05", $$10), 7),
+               Pair.of(dwp.a("village/taiga/streets/straight_06", $$10), 4),
+               Pair.of(dwp.a("village/taiga/streets/crossroad_01", $$10), 1),
+               Pair.of(dwp.a("village/taiga/streets/crossroad_02", $$10), 1),
+               Pair.of(dwp.a("village/taiga/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/taiga/streets/crossroad_04", $$10), 2),
+                  Pair.of(dwp.a("village/taiga/streets/crossroad_05", $$10), 2),
+                  Pair.of(dwp.a("village/taiga/streets/crossroad_06", $$10), 2),
+                  Pair.of(dwp.a("village/taiga/streets/turn_01", $$10), 3)
+               }
+            ),
+            dwr.a.a
          )
       );
-      $$0.a(dve.k, new dxv(a($$1.b(apt.H), dvv.b)));
-      $$0.a(
-         dve.l,
-         new dxn(
-            a(
-               $$1.b(apt.v),
-               Map.of(bjl.a, new dvr(dvr.a.b, bfo.a(new crh.c(biw.V, 1, 2, 4))), bjl.e, new dvr(dvr.a.b, crh.a), bjl.d, new dvr(dvr.a.b, crh.a)),
-               dkq.b.e,
-               dvv.a
-            )
+      ny.a(
+         $$0,
+         "village/taiga/zombie/streets",
+         new dwr(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/taiga/zombie/streets/corner_01", $$10), 2),
+               Pair.of(dwp.a("village/taiga/zombie/streets/corner_02", $$10), 2),
+               Pair.of(dwp.a("village/taiga/zombie/streets/corner_03", $$10), 2),
+               Pair.of(dwp.a("village/taiga/zombie/streets/straight_01", $$10), 4),
+               Pair.of(dwp.a("village/taiga/zombie/streets/straight_02", $$10), 4),
+               Pair.of(dwp.a("village/taiga/zombie/streets/straight_03", $$10), 4),
+               Pair.of(dwp.a("village/taiga/zombie/streets/straight_04", $$10), 7),
+               Pair.of(dwp.a("village/taiga/zombie/streets/straight_05", $$10), 7),
+               Pair.of(dwp.a("village/taiga/zombie/streets/straight_06", $$10), 4),
+               Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_01", $$10), 1),
+               Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(dwp.a("village/taiga/zombie/streets/turn_01", $$10), 3)
+               }
+            ),
+            dwr.a.a
          )
       );
-      $$0.a(dve.m, new dxp(a($$1.b(apt.w), dvv.a), dxp.a.b, 0.3F, 0.9F));
-      $$0.a(dve.n, new dxp(a($$1.b(apt.x), dvv.a), dxp.a.a, 0.3F, 0.9F));
-      $$0.a(dve.o, new dxj(a($$1.b(apt.Q), Map.of(bjl.a, new dvr(dvr.a.a, dxj.d)), dkq.b.h, dvv.a)));
-      $$0.a(dve.p, new dxl(a($$1.b(apt.R), dkq.b.h, dvv.c), dtu.a(dlo.a(32), dlo.c(2))));
-      $$0.a(dve.q, new dxa(a($$1.b(apt.V), dvv.a)));
-      $$0.a(dve.r, new dww(a($$1.b(apt.p), dkq.b.d, dvv.a)));
-      $$0.a(dve.s, new dxd(a($$1.b(apt.S), dvv.a), $$2.b(np.a), 6, dtq.a(dlo.a(33)), false));
-      $$0.a(dve.t, new dxd(a($$1.b(apt.K), dvv.c), $$2.b(nz.a), 6, dtq.a(dlo.a(0)), true, dku.a.a));
-      $$0.a(dve.u, new dxd(a($$1.b(apt.J), dvv.c), $$2.b(nv.a), 6, dtq.a(dlo.a(0)), true, dku.a.a));
-      $$0.a(dve.v, new dxd(a($$1.b(apt.L), dvv.c), $$2.b(oc.a), 6, dtq.a(dlo.a(0)), true, dku.a.a));
-      $$0.a(dve.w, new dxd(a($$1.b(apt.M), dvv.c), $$2.b(od.a), 6, dtq.a(dlo.a(0)), true, dku.a.a));
-      $$0.a(dve.x, new dxd(a($$1.b(apt.N), dvv.c), $$2.b(oh.a), 6, dtq.a(dlo.a(0)), true, dku.a.a));
-      $$0.a(
-         dve.y,
-         new dxr(
-            a($$1.b(apt.E), dvv.a),
-            List.of(new dxr.a(dxq.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new dxr.a(dxq.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      ny.a(
+         $$0,
+         "village/taiga/houses",
+         new dwr(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_1", $$8), 4),
+               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_2", $$8), 4),
+               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_3", $$8), 4),
+               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_4", $$8), 4),
+               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_5", $$8), 4),
+               Pair.of(dwp.a("village/taiga/houses/taiga_medium_house_1", $$8), 2),
+               Pair.of(dwp.a("village/taiga/houses/taiga_medium_house_2", $$8), 2),
+               Pair.of(dwp.a("village/taiga/houses/taiga_medium_house_3", $$8), 2),
+               Pair.of(dwp.a("village/taiga/houses/taiga_medium_house_4", $$8), 2),
+               Pair.of(dwp.a("village/taiga/houses/taiga_butcher_shop_1", $$8), 2),
+               Pair.of(dwp.a("village/taiga/houses/taiga_tool_smith_1", $$8), 2),
+               Pair.of(dwp.a("village/taiga/houses/taiga_fletcher_house_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/taiga/houses/taiga_shepherds_house_1", $$8), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_armorer_house_1", $$8), 1),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_armorer_2", $$8), 1),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_fisher_cottage_1", $$8), 3),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_tannery_1", $$8), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_cartographer_house_1", $$8), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_library_1", $$8), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_masons_house_1", $$8), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_weaponsmith_1", $$8), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_weaponsmith_2", $$8), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_temple_1", $$8), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_large_farm_1", $$11), 6),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_large_farm_2", $$11), 6),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_small_farm_1", $$8), 1),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_animal_pen_1", $$8), 2),
+                  Pair.of(dwp.g(), 6)
+               }
+            ),
+            dwr.a.b
          )
       );
-      $$0.a(dve.z, new dxr(a($$1.b(apt.z), dvv.a), new dxr.a(dxq.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
-      $$0.a(dve.A, new dxr(a($$1.b(apt.A), dvv.a), new dxr.a(dxq.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
-      $$0.a(dve.B, new dxr(a($$1.b(apt.C), dvv.a), new dxr.a(dxq.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
-      $$0.a(
-         dve.C,
-         new dxr(
-            a($$1.b(apt.D), dvv.a),
-            List.of(new dxr.a(dxq.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new dxr.a(dxq.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      ny.a(
+         $$0,
+         "village/taiga/zombie/houses",
+         new dwr(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_1", $$9), 4),
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_2", $$9), 4),
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_3", $$9), 4),
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_4", $$9), 4),
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_5", $$9), 4),
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_medium_house_1", $$9), 2),
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_medium_house_2", $$9), 2),
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_medium_house_3", $$9), 2),
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_medium_house_4", $$9), 2),
+               Pair.of(dwp.a("village/taiga/houses/taiga_butcher_shop_1", $$9), 2),
+               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_tool_smith_1", $$9), 2),
+               Pair.of(dwp.a("village/taiga/houses/taiga_fletcher_house_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_shepherds_house_1", $$9), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_armorer_house_1", $$9), 1),
+                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_fisher_cottage_1", $$9), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_tannery_1", $$9), 2),
+                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_cartographer_house_1", $$9), 2),
+                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_library_1", $$9), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_masons_house_1", $$9), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_weaponsmith_1", $$9), 2),
+                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_weaponsmith_2", $$9), 2),
+                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_temple_1", $$9), 2),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_large_farm_1", $$9), 6),
+                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_large_farm_2", $$9), 6),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_small_farm_1", $$9), 1),
+                  Pair.of(dwp.a("village/taiga/houses/taiga_animal_pen_1", $$9), 2),
+                  Pair.of(dwp.g(), 6)
+               }
+            ),
+            dwr.a.b
          )
       );
-      $$0.a(dve.D, new dxr(a($$1.b(apt.B), dvv.a), new dxr.a(dxq.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
-      $$0.a(dve.E, new dxr(a($$1.b(apt.U), dvv.a), new dxr.a(dxq.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
       $$0.a(
-         dve.F,
-         new dxd(
-            a($$1.b(apt.T), Arrays.stream(bjl.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new dvr(dvr.a.b, bfo.c()))), dkq.b.h, dvv.d),
-            $$2.b(nk.a),
-            Optional.of(new aey("city_anchor")),
-            7,
-            dtq.a(dlo.a(-27)),
-            false,
-            Optional.empty(),
-            116
+         b,
+         new dwr(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(dwp.a("village/plains/terminators/terminator_04", $$10), 1)
+            ),
+            dwr.a.a
          )
       );
-      $$0.a(dve.G, new dxd(a($$1.b(apt.O), Map.of(), dkq.b.d, dvv.b), $$2.b(oj.a), 7, dtq.a(dlo.a(-15)), false, dku.a.a));
+      ny.a(
+         $$0,
+         "village/taiga/decor",
+         new dwr(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/taiga/taiga_lamp_post_1"), 10),
+               Pair.of(dwp.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(dwp.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(dwp.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(dwp.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(dwp.a("village/taiga/taiga_decoration_5"), 2),
+               Pair.of(dwp.a("village/taiga/taiga_decoration_6"), 1),
+               Pair.of(dwp.a($$2), 4),
+               Pair.of(dwp.a($$3), 4),
+               Pair.of(dwp.a($$4), 2),
+               Pair.of(dwp.a($$5), 4),
+               Pair.of(dwp.a($$6), 1),
+               new Pair[]{Pair.of(dwp.g(), 4)}
+            ),
+            dwr.a.b
+         )
+      );
+      ny.a(
+         $$0,
+         "village/taiga/zombie/decor",
+         new dwr(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(dwp.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(dwp.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(dwp.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(dwp.a($$2), 4),
+               Pair.of(dwp.a($$3), 4),
+               Pair.of(dwp.a($$4), 2),
+               Pair.of(dwp.a($$5), 4),
+               Pair.of(dwp.a($$6), 1),
+               Pair.of(dwp.g(), 4)
+            ),
+            dwr.a.b
+         )
+      );
+      ny.a(
+         $$0,
+         "village/taiga/villagers",
+         new dwr(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dwp.a("village/taiga/villagers/nitwit"), 1),
+               Pair.of(dwp.a("village/taiga/villagers/baby"), 1),
+               Pair.of(dwp.a("village/taiga/villagers/unemployed"), 10)
+            ),
+            dwr.a.b
+         )
+      );
+      ny.a(
+         $$0,
+         "village/taiga/zombie/villagers",
+         new dwr(
+            $$13,
+            ImmutableList.of(Pair.of(dwp.a("village/taiga/zombie/villagers/nitwit"), 1), Pair.of(dwp.a("village/taiga/zombie/villagers/unemployed"), 10)),
+            dwr.a.b
+         )
+      );
    }
 }

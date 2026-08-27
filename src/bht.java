@@ -1,93 +1,46 @@
-public interface bht {
-   aex<bhs> a = aex.a(je.p, new aey("in_fire"));
-   aex<bhs> b = aex.a(je.p, new aey("lightning_bolt"));
-   aex<bhs> c = aex.a(je.p, new aey("on_fire"));
-   aex<bhs> d = aex.a(je.p, new aey("lava"));
-   aex<bhs> e = aex.a(je.p, new aey("hot_floor"));
-   aex<bhs> f = aex.a(je.p, new aey("in_wall"));
-   aex<bhs> g = aex.a(je.p, new aey("cramming"));
-   aex<bhs> h = aex.a(je.p, new aey("drown"));
-   aex<bhs> i = aex.a(je.p, new aey("starve"));
-   aex<bhs> j = aex.a(je.p, new aey("cactus"));
-   aex<bhs> k = aex.a(je.p, new aey("fall"));
-   aex<bhs> l = aex.a(je.p, new aey("fly_into_wall"));
-   aex<bhs> m = aex.a(je.p, new aey("out_of_world"));
-   aex<bhs> n = aex.a(je.p, new aey("generic"));
-   aex<bhs> o = aex.a(je.p, new aey("magic"));
-   aex<bhs> p = aex.a(je.p, new aey("wither"));
-   aex<bhs> q = aex.a(je.p, new aey("dragon_breath"));
-   aex<bhs> r = aex.a(je.p, new aey("dry_out"));
-   aex<bhs> s = aex.a(je.p, new aey("sweet_berry_bush"));
-   aex<bhs> t = aex.a(je.p, new aey("freeze"));
-   aex<bhs> u = aex.a(je.p, new aey("stalagmite"));
-   aex<bhs> v = aex.a(je.p, new aey("falling_block"));
-   aex<bhs> w = aex.a(je.p, new aey("falling_anvil"));
-   aex<bhs> x = aex.a(je.p, new aey("falling_stalactite"));
-   aex<bhs> y = aex.a(je.p, new aey("sting"));
-   aex<bhs> z = aex.a(je.p, new aey("mob_attack"));
-   aex<bhs> A = aex.a(je.p, new aey("mob_attack_no_aggro"));
-   aex<bhs> B = aex.a(je.p, new aey("player_attack"));
-   aex<bhs> C = aex.a(je.p, new aey("arrow"));
-   aex<bhs> D = aex.a(je.p, new aey("trident"));
-   aex<bhs> E = aex.a(je.p, new aey("mob_projectile"));
-   aex<bhs> F = aex.a(je.p, new aey("fireworks"));
-   aex<bhs> G = aex.a(je.p, new aey("fireball"));
-   aex<bhs> H = aex.a(je.p, new aey("unattributed_fireball"));
-   aex<bhs> I = aex.a(je.p, new aey("wither_skull"));
-   aex<bhs> J = aex.a(je.p, new aey("thrown"));
-   aex<bhs> K = aex.a(je.p, new aey("indirect_magic"));
-   aex<bhs> L = aex.a(je.p, new aey("thorns"));
-   aex<bhs> M = aex.a(je.p, new aey("explosion"));
-   aex<bhs> N = aex.a(je.p, new aey("player_explosion"));
-   aex<bhs> O = aex.a(je.p, new aey("sonic_boom"));
-   aex<bhs> P = aex.a(je.p, new aey("bad_respawn_point"));
-   aex<bhs> Q = aex.a(je.p, new aey("outside_border"));
-   aex<bhs> R = aex.a(je.p, new aey("generic_kill"));
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   static void a(nt<bhs> $$0) {
-      $$0.a(a, new bhs("inFire", 0.1F, bho.d));
-      $$0.a(b, new bhs("lightningBolt", 0.1F));
-      $$0.a(c, new bhs("onFire", 0.0F, bho.d));
-      $$0.a(d, new bhs("lava", 0.1F, bho.d));
-      $$0.a(e, new bhs("hotFloor", 0.1F, bho.d));
-      $$0.a(f, new bhs("inWall", 0.0F));
-      $$0.a(g, new bhs("cramming", 0.0F));
-      $$0.a(h, new bhs("drown", 0.0F, bho.c));
-      $$0.a(i, new bhs("starve", 0.0F));
-      $$0.a(j, new bhs("cactus", 0.1F));
-      $$0.a(k, new bhs("fall", bhp.b, 0.0F, bho.a, bhu.b));
-      $$0.a(l, new bhs("flyIntoWall", 0.0F));
-      $$0.a(m, new bhs("outOfWorld", 0.0F));
-      $$0.a(n, new bhs("generic", 0.0F));
-      $$0.a(o, new bhs("magic", 0.0F));
-      $$0.a(p, new bhs("wither", 0.0F));
-      $$0.a(q, new bhs("dragonBreath", 0.0F));
-      $$0.a(r, new bhs("dryout", 0.1F));
-      $$0.a(s, new bhs("sweetBerryBush", 0.1F, bho.e));
-      $$0.a(t, new bhs("freeze", 0.0F, bho.f));
-      $$0.a(u, new bhs("stalagmite", 0.0F));
-      $$0.a(v, new bhs("fallingBlock", 0.1F));
-      $$0.a(w, new bhs("anvil", 0.1F));
-      $$0.a(x, new bhs("fallingStalactite", 0.1F));
-      $$0.a(y, new bhs("sting", 0.1F));
-      $$0.a(z, new bhs("mob", 0.1F));
-      $$0.a(A, new bhs("mob", 0.1F));
-      $$0.a(B, new bhs("player", 0.1F));
-      $$0.a(C, new bhs("arrow", 0.1F));
-      $$0.a(D, new bhs("trident", 0.1F));
-      $$0.a(E, new bhs("mob", 0.1F));
-      $$0.a(F, new bhs("fireworks", 0.1F));
-      $$0.a(H, new bhs("onFire", 0.1F, bho.d));
-      $$0.a(G, new bhs("fireball", 0.1F, bho.d));
-      $$0.a(I, new bhs("witherSkull", 0.1F));
-      $$0.a(J, new bhs("thrown", 0.1F));
-      $$0.a(K, new bhs("indirectMagic", 0.0F));
-      $$0.a(L, new bhs("thorns", 0.1F, bho.b));
-      $$0.a(M, new bhs("explosion", bhp.c, 0.1F));
-      $$0.a(N, new bhs("explosion.player", bhp.c, 0.1F));
-      $$0.a(O, new bhs("sonic_boom", bhp.c, 0.0F));
-      $$0.a(P, new bhs("badRespawnPoint", bhp.c, 0.1F, bho.a, bhu.c));
-      $$0.a(Q, new bhs("outsideBorder", 0.0F));
-      $$0.a(R, new bhs("genericKill", 0.0F));
+public record bht(String i) {
+   public static final bht a = new bht("generic");
+   public static final bht b = new bht("ladder");
+   public static final bht c = new bht("vines");
+   public static final bht d = new bht("weeping_vines");
+   public static final bht e = new bht("twisting_vines");
+   public static final bht f = new bht("scaffolding");
+   public static final bht g = new bht("other_climbable");
+   public static final bht h = new bht("water");
+
+   public static bht a(dfj $$0) {
+      if ($$0.a(csw.cO) || $$0.a(aps.P)) {
+         return b;
+      } else if ($$0.a(csw.ff)) {
+         return c;
+      } else if ($$0.a(csw.oz) || $$0.a(csw.oA)) {
+         return d;
+      } else if ($$0.a(csw.oB) || $$0.a(csw.oC)) {
+         return e;
+      } else {
+         return $$0.a(csw.nS) ? f : g;
+      }
+   }
+
+   @Nullable
+   public static bht a(bjg $$0) {
+      Optional<gw> $$1 = $$0.eG();
+      if ($$1.isPresent()) {
+         dfj $$2 = $$0.dL().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.aX() ? h : null;
+      }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

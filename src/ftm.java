@@ -1,18 +1,28 @@
-public class ftm<T extends bzu> extends fuc<T> {
-   private static final aey a = new aey("textures/entity/illager/evoker.png");
+public class ftm extends ftg<bym> {
+   private final foy a;
 
-   public ftm(ftj.a $$0) {
-      super($$0, new fft<>($$0.a(fid.V)), 0.5F);
-      this.a(new fxk<T, fft<T>>(this, $$0.d()) {
-         public void a(elr $$0, fog $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gn()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public ftm(fth.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public aey a(T $$0) {
-      return a;
+   public void a(bym $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
+      dfj $$6 = $$0.t();
+      if ($$6.l() == cza.c) {
+         cpv $$7 = $$0.dL();
+         if ($$6 != $$7.a_($$0.dl()) && $$6.l() != cza.a) {
+            $$3.a();
+            gw $$8 = gw.a($$0.dq(), $$0.cG().e, $$0.dw());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fnz.b($$6)), false, asc.a(), $$6.a($$0.q()), fyv.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
+   }
+
+   public aew a(bym $$0) {
+      return fzd.e;
    }
 }

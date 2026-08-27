@@ -1,24 +1,40 @@
-public class zn implements vf<wy> {
-   private final tn a;
+public class zn implements vd<ww> {
+   private final double a;
+   private final double b;
+   private final long c;
 
-   public zn(tn $$0) {
-      this.a = $$0;
+   public zn(dha $$0) {
+      this.a = $$0.i();
+      this.b = $$0.k();
+      this.c = $$0.j();
    }
 
-   public zn(sq $$0) {
-      this.a = $$0.l();
+   public zn(so $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.n();
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public tn a() {
+   public double a() {
       return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public long e() {
+      return this.c;
    }
 }

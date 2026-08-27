@@ -1,24 +1,42 @@
-import java.util.OptionalLong;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class nw {
-   public static void a(nt<diu> $$0) {
-      $$0.a(
-         dis.a,
-         new diu(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, apu.ba, dis.e, 0.0F, new diu.a(false, true, bgl.a(0, 7), 0))
-      );
-      $$0.a(
-         dis.b,
-         new diu(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, apu.bb, dis.f, 0.1F, new diu.a(true, false, bgc.a(7), 15))
-      );
-      $$0.a(
-         dis.c,
-         new diu(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, apu.bc, dis.g, 0.0F, new diu.a(false, true, bgl.a(0, 7), 0)
+   public static final aev<dwr> a = ny.a("pillager_outpost/base_plates");
+
+   public static void a(nr<dwr> $$0) {
+      hf<dyz> $$1 = $$0.a(jc.aA);
+      he<dyz> $$2 = $$1.b(nz.q);
+      hf<dwr> $$3 = $$0.a(jc.aC);
+      he<dwr> $$4 = $$3.b(ny.a);
+      $$0.a(a, new dwr($$4, ImmutableList.of(Pair.of(dwp.a("pillager_outpost/base_plate"), 1)), dwr.a.b));
+      ny.a(
+         $$0,
+         "pillager_outpost/towers",
+         new dwr(
+            $$4,
+            ImmutableList.of(Pair.of(dwp.a(ImmutableList.of(dwp.a("pillager_outpost/watchtower"), dwp.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            dwr.a.b
          )
       );
-      $$0.a(
-         dis.d,
-         new diu(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, apu.ba, dis.e, 0.0F, new diu.a(false, true, bgl.a(0, 7), 0))
+      ny.a($$0, "pillager_outpost/feature_plates", new dwr($$4, ImmutableList.of(Pair.of(dwp.a("pillager_outpost/feature_plate"), 1)), dwr.a.a));
+      ny.a(
+         $$0,
+         "pillager_outpost/features",
+         new dwr(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dwp.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(dwp.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(dwp.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(dwp.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(dwp.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(dwp.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(dwp.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(dwp.g(), 6)
+            ),
+            dwr.a.b
+         )
       );
    }
 }

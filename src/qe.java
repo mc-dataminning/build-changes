@@ -1,20 +1,19 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-
 public class qe {
-   public static final qe a = new qe();
-   private final Collection<py> b = Lists.newCopyOnWriteArrayList();
+   private static qp a = new qg();
 
-   public void a(py $$0) {
-      this.b.add($$0);
+   public static void a(qp $$0) {
+      a = $$0;
    }
 
-   public void a() {
-      this.b.clear();
+   public static void a(pw $$0) {
+      a.a($$0);
    }
 
-   public void b() {
-      this.b.forEach(py::b);
-      this.b.removeIf(py::k);
+   public static void b(pw $$0) {
+      a.b($$0);
+   }
+
+   public static void a() {
+      a.a();
    }
 }

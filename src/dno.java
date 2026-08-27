@@ -1,34 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class dno extends dnn {
-   public dno(Codec<dqj> $$0) {
+public class dno extends dnw<dpw> {
+   private static final ImmutableList<csv> a = ImmutableList.of(csw.F, csw.fn, csw.fo, csw.fp, csw.fq, csw.cv, csw.ct);
+   private static final ha[] b = ha.values();
+   private static final double c = 0.9;
+
+   public dno(Codec<dpw> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(cpy $$0, ase $$1, gw $$2, dfl $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      gw.a $$8 = $$2.j();
+   public boolean a(dny<dpw> $$0) {
+      boolean $$1 = false;
+      asc $$2 = $$0.d();
+      cqp $$3 = $$0.b();
+      dpw $$4 = $$0.f();
+      gw $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(hc.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
+      for (gw $$13 : gw.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            gw $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
             }
          }
       }
 
-      return true;
+      return $$1;
+   }
+
+   private static boolean a(cpw $$0, gw $$1, dpw $$2) {
+      dfj $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (ha $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != ha.b || !$$5 && $$4 == ha.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

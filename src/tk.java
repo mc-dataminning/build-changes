@@ -1,92 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Collection;
 
-public record tk(String b, List<tk.a> c, uj d) {
-   public static final Codec<tk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(tk::a),
-               tk.a.d.listOf().fieldOf("parameters").forGetter(tk::b),
-               uj.b.optionalFieldOf("style", uj.a).forGetter(tk::c)
-            )
-            .apply($$0, tk::new)
-   );
+public class tk {
+   public static final tl a = tl.h();
+   public static final tl b = tl.c("options.on");
+   public static final tl c = tl.c("options.off");
+   public static final tl d = tl.c("gui.done");
+   public static final tl e = tl.c("gui.cancel");
+   public static final tl f = tl.c("gui.yes");
+   public static final tl g = tl.c("gui.no");
+   public static final tl h = tl.c("gui.ok");
+   public static final tl i = tl.c("gui.proceed");
+   public static final tl j = tl.c("gui.continue");
+   public static final tl k = tl.c("gui.back");
+   public static final tl l = tl.c("gui.toTitle");
+   public static final tl m = tl.c("gui.acknowledge");
+   public static final tl n = tl.c("chat.link.open");
+   public static final tl o = tl.c("gui.copy_link_to_clipboard");
+   public static final tl p = tl.c("menu.disconnect");
+   public static final tl q = tl.c("connect.failed");
+   public static final tl r = tl.b("\n");
+   public static final tl s = tl.b(". ");
+   public static final tl t = tl.b("...");
+   public static final tl u = a();
 
-   public static tk a(String $$0) {
-      return new tk($$0, List.of(tk.a.a, tk.a.c), uj.a);
+   public static ty a() {
+      return tl.b(" ");
    }
 
-   public static tk b(String $$0) {
-      uj $$1 = uj.a.a(n.h).b(true);
-      return new tk($$0, List.of(tk.a.a, tk.a.c), $$1);
+   public static ty a(long $$0) {
+      return tl.a("gui.days", $$0);
    }
 
-   public static tk c(String $$0) {
-      uj $$1 = uj.a.a(n.h).b(true);
-      return new tk($$0, List.of(tk.a.b, tk.a.c), $$1);
+   public static ty b(long $$0) {
+      return tl.a("gui.hours", $$0);
    }
 
-   public static tk d(String $$0) {
-      return new tk($$0, List.of(tk.a.b, tk.a.a, tk.a.c), uj.a);
+   public static ty c(long $$0) {
+      return tl.a("gui.minutes", $$0);
    }
 
-   public tn a(tn $$0, tj.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return tn.a(this.b, $$2).c(this.d);
+   public static tl a(boolean $$0) {
+      return $$0 ? b : c;
    }
 
-   private tn[] b(tn $$0, tj.a $$1) {
-      tn[] $$2 = new tn[this.c.size()];
+   public static ty a(tl $$0, boolean $$1) {
+      return tl.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   }
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         tk.a $$4 = this.c.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+   public static ty a(tl $$0, tl $$1) {
+      return tl.a("options.generic_value", $$0, $$1);
+   }
+
+   public static ty a(tl... $$0) {
+      ty $$1 = tl.h();
+
+      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+         $$1.b($$0[$$2]);
+         if ($$2 != $$0.length - 1) {
+            $$1.b(s);
+         }
       }
 
-      return $$2;
+      return $$1;
    }
 
-   public String a() {
-      return this.b;
+   public static tl b(tl... $$0) {
+      return a(Arrays.asList($$0));
    }
 
-   public List<tk.a> b() {
-      return this.c;
-   }
-
-   public uj c() {
-      return this.d;
-   }
-
-   public static enum a implements asr {
-      a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c()),
-      c("content", ($$0, $$1) -> $$0);
-
-      public static final Codec<tk.a> d = asr.a(tk.a::values);
-      private final String e;
-      private final tk.a.a f;
-
-      private a(String $$0, tk.a.a $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public tn a(tn $$0, tj.a $$1) {
-         tn $$2 = this.f.select($$0, $$1);
-         return Objects.requireNonNullElse($$2, tm.a);
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public interface a {
-         @Nullable
-         tn select(tn var1, tj.a var2);
-      }
+   public static tl a(Collection<? extends tl> $$0) {
+      return tn.a($$0, r);
    }
 }

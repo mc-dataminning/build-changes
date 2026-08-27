@@ -9,24 +9,24 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class eo implements ArgumentType<iv> {
+public class eo implements ArgumentType<it> {
    private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tn.a("particle.notFound", $$0));
-   private final hi<iw<?>> c;
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("particle.notFound", $$0));
+   private final hg<iu<?>> c;
 
    public eo(dn $$0) {
-      this.c = $$0.a(je.Q);
+      this.c = $$0.a(jc.Q);
    }
 
    public static eo a(dn $$0) {
       return new eo($$0);
    }
 
-   public static iv a(CommandContext<dt> $$0, String $$1) {
-      return (iv)$$0.getArgument($$1, iv.class);
+   public static it a(CommandContext<dt> $$0, String $$1) {
+      return (it)$$0.getArgument($$1, it.class);
    }
 
-   public iv a(StringReader $$0) throws CommandSyntaxException {
+   public it a(StringReader $$0) throws CommandSyntaxException {
       return a($$0, this.c);
    }
 
@@ -34,22 +34,22 @@ public class eo implements ArgumentType<iv> {
       return b;
    }
 
-   public static iv a(StringReader $$0, hi<iw<?>> $$1) throws CommandSyntaxException {
-      iw<?> $$2 = b($$0, $$1);
-      return a($$0, (iw<iv>)$$2);
+   public static it a(StringReader $$0, hg<iu<?>> $$1) throws CommandSyntaxException {
+      iu<?> $$2 = b($$0, $$1);
+      return a($$0, (iu<it>)$$2);
    }
 
-   private static iw<?> b(StringReader $$0, hi<iw<?>> $$1) throws CommandSyntaxException {
-      aey $$2 = aey.a($$0);
-      aex<iw<?>> $$3 = aex.a(je.Q, $$2);
+   private static iu<?> b(StringReader $$0, hg<iu<?>> $$1) throws CommandSyntaxException {
+      aew $$2 = aew.a($$0);
+      aev<iu<?>> $$3 = aev.a(jc.Q, $$2);
       return $$1.a($$3).orElseThrow(() -> a.create($$2)).a();
    }
 
-   private static <T extends iv> T a(StringReader $$0, iw<T> $$1) throws CommandSyntaxException {
+   private static <T extends it> T a(StringReader $$0, iu<T> $$1) throws CommandSyntaxException {
       return $$1.d().b($$1, $$0);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dw.a(this.c.c().map(aex::a), $$1);
+      return dw.a(this.c.c().map(aev::a), $$1);
    }
 }

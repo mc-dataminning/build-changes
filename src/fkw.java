@@ -1,12 +1,18 @@
-public class fkw extends fmw {
-   fkw(fiz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public class fkw extends fmu {
+   fkw(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
       super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
+
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
@@ -14,34 +20,49 @@ public class fkw extends fmw {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
          this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(gw.a(this.g, this.h, this.i)).a(apz.a)) {
-            this.k();
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
          }
+      } else {
+         this.k();
       }
    }
 
    @Override
-   public fma b() {
-      return fma.b;
+   public fly b() {
+      return fly.c;
    }
 
-   public static class a implements flz<ja> {
-      private final fmr a;
+   public static class a implements flx<iy> {
+      private final fmp a;
 
-      public a(fmr $$0) {
+      public a(fmp $$0) {
          this.a = $$0;
       }
 
-      public flw a(ja $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fkw $$8 = new fkw($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fkw $$8 = new fkw($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements flx<iy> {
+      private final fmp a;
+
+      public b(fmp $$0) {
+         this.a = $$0;
+      }
+
+      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fkw $$8 = new fkw($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
          $$8.a(this.a);
          return $$8;
       }

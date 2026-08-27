@@ -1,65 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.Collections;
 
 public class ail {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("commands.setblock.failed"));
-
-   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
+   public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("setblock").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((dt)$$0x.getSource(), Collections.singleton(((dt)$$0x.getSource()).h()), gw.a(((dt)$$0x.getSource()).d()), 0.0F)))
             .then(
-               du.a("pos", fk.a())
+               ((RequiredArgumentBuilder)du.a("targets", ee.d())
+                     .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), gw.a(((dt)$$0x.getSource()).d()), 0.0F)))
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("block", fh.a($$1))
-                                 .executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "pos"), fh.a($$0x, "block"), ail.b.a, null)))
-                              .then(du.a("destroy").executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "pos"), fh.a($$0x, "block"), ail.b.b, null))))
-                           .then(
-                              du.a("keep")
-                                 .executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "pos"), fh.a($$0x, "block"), ail.b.a, $$0xx -> $$0xx.c().t($$0xx.d())))
-                           ))
-                        .then(du.a("replace").executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "pos"), fh.a($$0x, "block"), ail.b.a, null)))
+                     ((RequiredArgumentBuilder)du.a("pos", fk.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), fk.c($$0x, "pos"), 0.0F)))
+                        .then(du.a("angle", dx.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), fk.c($$0x, "pos"), dx.a($$0x, "angle"))))
                   )
             )
       );
    }
 
-   private static int a(dt $$0, gw $$1, ff $$2, ail.b $$3, @Nullable Predicate<dfp> $$4) throws CommandSyntaxException {
-      aks $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dfp($$5, $$1, true))) {
-         throw a.create();
-      } else {
-         boolean $$6;
-         if ($$3 == ail.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().i() || !$$5.a_($$1).i();
-         } else {
-            dcx $$7 = $$5.c_($$1);
-            bgr.a_($$7);
-            $$6 = true;
-         }
+   private static int a(dt $$0, Collection<akr> $$1, gw $$2, float $$3) {
+      aev<cpv> $$4 = $$0.e().ac();
 
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> tn.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
+      for (akr $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
-   }
 
-   public interface a {
-      @Nullable
-      ff filter(dvc var1, gw var2, ff var3, aks var4);
-   }
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> tl.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().N_()), true);
+      } else {
+         $$0.a(() -> tl.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+      }
 
-   public static enum b {
-      a,
-      b;
+      return $$1.size();
    }
 }

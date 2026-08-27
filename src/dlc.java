@@ -1,70 +1,68 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+public final class dlc {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public record dlc(int g, int h, int i, int j) {
-   public static final Codec<dlc> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(diu.e, diu.d).fieldOf("min_y").forGetter(dlc::c),
-                  Codec.intRange(0, diu.c).fieldOf("height").forGetter(dlc::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dlc::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dlc::f)
-               )
-               .apply($$0, dlc::new)
-      )
-      .comapFlatMap(dlc::a, Function.identity());
-   protected static final dlc b = a(-64, 384, 1, 2);
-   protected static final dlc c = a(0, 128, 1, 2);
-   protected static final dlc d = a(0, 128, 2, 1);
-   protected static final dlc e = a(-64, 192, 1, 2);
-   protected static final dlc f = a(0, 256, 2, 1);
+   private dlc() {
+   }
 
-   private static DataResult<dlc> a(dlc $$0) {
-      if ($$0.c() + $$0.d() > diu.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (diu.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+   protected static dkw.c a(dkl $$0, dkl $$1, dkl $$2, dlf $$3) {
+      dfj $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dlc.a $$8 = $$6 > 0.0 ? dlc.a.a : dlc.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = arw.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               asc $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = arw.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
+   }
+
+   protected static enum a {
+      a(csw.qN.n(), csw.sf.n(), csw.c.n(), 0, 50),
+      b(csw.Q.n(), csw.se.n(), csw.qz.n(), -60, -8);
+
+      final dfj e;
+      final dfj f;
+      final dfj g;
+      protected final int c;
+      protected final int d;
+
+      private a(dfj $$0, dfj $$1, dfj $$2, int $$3, int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
-   }
-
-   public static dlc a(int $$0, int $$1, int $$2, int $$3) {
-      dlc $$4 = new dlc($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
-   }
-
-   public int a() {
-      return hs.c(this.f());
-   }
-
-   public int b() {
-      return hs.c(this.e());
-   }
-
-   public dlc a(cpz $$0) {
-      int $$1 = Math.max(this.g, $$0.H_());
-      int $$2 = Math.min(this.g + this.h, $$0.aj()) - $$1;
-      return new dlc($$1, $$2, this.i, this.j);
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public int e() {
-      return this.i;
-   }
-
-   public int f() {
-      return this.j;
    }
 }

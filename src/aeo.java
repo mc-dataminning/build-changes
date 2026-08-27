@@ -1,188 +1,163 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.Iterator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.ListBuilder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.ListBuilder.Builder;
+import com.mojang.serialization.RecordBuilder.MapBuilder;
+import java.nio.ByteBuffer;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class aeo<C extends bgt> implements aen<Integer> {
-   private static final Logger d = LogUtils.getLogger();
-   protected final cca a = new cca();
-   protected cbv b;
-   protected cfx<C> c;
+public abstract class aeo<T> implements DynamicOps<T> {
+   protected final DynamicOps<T> a;
 
-   public aeo(cfx<C> $$0) {
-      this.c = $$0;
+   protected aeo(DynamicOps<T> $$0) {
+      this.a = $$0;
    }
 
-   public void a(akt $$0, @Nullable cmm<? extends cml<C>> $$1, boolean $$2) {
-      if ($$1 != null && $$0.G().b($$1)) {
-         this.b = $$0.fR();
-         if (this.b() || $$0.f()) {
-            this.a.a();
-            $$0.fR().a(this.a);
-            this.c.a(this.a);
-            if (this.a.a((cml<?>)$$1.b(), null)) {
-               this.a($$1, $$2);
-            } else {
-               this.a();
-               $$0.c.b(new yv($$0.bS.j, $$1));
-            }
-
-            $$0.fR().e();
-         }
-      }
+   public T empty() {
+      return (T)this.a.empty();
    }
 
-   protected void a() {
-      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
-         if (this.c.e($$0)) {
-            cjh $$1 = this.c.b($$0).e().p();
-            this.b.a($$1, false);
-            this.c.b($$0).e($$1);
-         }
-      }
-
-      this.c.l();
+   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
+      return (U)this.a.convertTo($$0, $$1);
    }
 
-   protected void a(cmm<? extends cml<C>> $$0, boolean $$1) {
-      boolean $$2 = this.c.a($$0);
-      int $$3 = this.a.a($$0, null);
-      if ($$2) {
-         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               cjh $$5 = this.c.b($$4).e();
-               if (!$$5.b() && Math.min($$3, $$5.g()) < $$5.L() + 1) {
-                  return;
-               }
-            }
-         }
-      }
-
-      int $$6 = this.a($$1, $$3, $$2);
-      IntList $$7 = new IntArrayList();
-      if (this.a.a((cml<?>)$$0.b(), $$7, $$6)) {
-         int $$8 = $$6;
-         IntListIterator var8 = $$7.iterator();
-
-         while (var8.hasNext()) {
-            int $$9 = (Integer)var8.next();
-            int $$10 = cca.a($$9).g();
-            if ($$10 < $$8) {
-               $$8 = $$10;
-            }
-         }
-
-         if (this.a.a((cml<?>)$$0.b(), $$7, $$8)) {
-            this.a();
-            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
-         }
-      }
+   public DataResult<Number> getNumberValue(T $$0) {
+      return this.a.getNumberValue($$0);
    }
 
-   @Override
-   public void a(Iterator<Integer> $$0, int $$1, int $$2, int $$3, int $$4) {
-      cgf $$5 = this.c.b($$1);
-      cjh $$6 = cca.a($$0.next());
-      if (!$$6.b()) {
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            this.a($$5, $$6);
-         }
-      }
+   public T createNumeric(Number $$0) {
+      return (T)this.a.createNumeric($$0);
    }
 
-   protected int a(boolean $$0, int $$1, boolean $$2) {
-      int $$3 = 1;
-      if ($$0) {
-         $$3 = $$1;
-      } else if ($$2) {
-         $$3 = 64;
-
-         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               cjh $$5 = this.c.b($$4).e();
-               if (!$$5.b() && $$3 > $$5.L()) {
-                  $$3 = $$5.L();
-               }
-            }
-         }
-
-         if ($$3 < 64) {
-            $$3++;
-         }
-      }
-
-      return $$3;
+   public T createByte(byte $$0) {
+      return (T)this.a.createByte($$0);
    }
 
-   protected void a(cgf $$0, cjh $$1) {
-      int $$2 = this.b.c($$1);
-      if ($$2 != -1) {
-         cjh $$3 = this.b.a($$2);
-         if (!$$3.b()) {
-            if ($$3.L() > 1) {
-               this.b.a($$2, 1);
-            } else {
-               this.b.b($$2);
-            }
-
-            if ($$0.e().b()) {
-               $$0.e($$3.c(1));
-            } else {
-               $$0.e().g(1);
-            }
-         }
-      }
+   public T createShort(short $$0) {
+      return (T)this.a.createShort($$0);
    }
 
-   private boolean b() {
-      List<cjh> $$0 = Lists.newArrayList();
-      int $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
-         if ($$2 != this.c.m()) {
-            cjh $$3 = this.c.b($$2).e().p();
-            if (!$$3.b()) {
-               int $$4 = this.b.d($$3);
-               if ($$4 == -1 && $$0.size() <= $$1) {
-                  for (cjh $$5 : $$0) {
-                     if (cjh.b($$5, $$3) && $$5.L() != $$5.g() && $$5.L() + $$3.L() <= $$5.g()) {
-                        $$5.g($$3.L());
-                        $$3.f(0);
-                        break;
-                     }
-                  }
-
-                  if (!$$3.b()) {
-                     if ($$0.size() >= $$1) {
-                        return false;
-                     }
-
-                     $$0.add($$3);
-                  }
-               } else if ($$4 == -1) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      return true;
+   public T createInt(int $$0) {
+      return (T)this.a.createInt($$0);
    }
 
-   private int c() {
-      int $$0 = 0;
+   public T createLong(long $$0) {
+      return (T)this.a.createLong($$0);
+   }
 
-      for (cjh $$1 : this.b.i) {
-         if ($$1.b()) {
-            $$0++;
-         }
-      }
+   public T createFloat(float $$0) {
+      return (T)this.a.createFloat($$0);
+   }
 
-      return $$0;
+   public T createDouble(double $$0) {
+      return (T)this.a.createDouble($$0);
+   }
+
+   public DataResult<Boolean> getBooleanValue(T $$0) {
+      return this.a.getBooleanValue($$0);
+   }
+
+   public T createBoolean(boolean $$0) {
+      return (T)this.a.createBoolean($$0);
+   }
+
+   public DataResult<String> getStringValue(T $$0) {
+      return this.a.getStringValue($$0);
+   }
+
+   public T createString(String $$0) {
+      return (T)this.a.createString($$0);
+   }
+
+   public DataResult<T> mergeToList(T $$0, T $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
+      return this.a.mergeToMap($$0, $$1, $$2);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
+      return this.a.getMapValues($$0);
+   }
+
+   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
+      return this.a.getMapEntries($$0);
+   }
+
+   public T createMap(Stream<Pair<T, T>> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public DataResult<MapLike<T>> getMap(T $$0) {
+      return this.a.getMap($$0);
+   }
+
+   public DataResult<Stream<T>> getStream(T $$0) {
+      return this.a.getStream($$0);
+   }
+
+   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
+      return this.a.getList($$0);
+   }
+
+   public T createList(Stream<T> $$0) {
+      return (T)this.a.createList($$0);
+   }
+
+   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
+      return this.a.getByteBuffer($$0);
+   }
+
+   public T createByteList(ByteBuffer $$0) {
+      return (T)this.a.createByteList($$0);
+   }
+
+   public DataResult<IntStream> getIntStream(T $$0) {
+      return this.a.getIntStream($$0);
+   }
+
+   public T createIntList(IntStream $$0) {
+      return (T)this.a.createIntList($$0);
+   }
+
+   public DataResult<LongStream> getLongStream(T $$0) {
+      return this.a.getLongStream($$0);
+   }
+
+   public T createLongList(LongStream $$0) {
+      return (T)this.a.createLongList($$0);
+   }
+
+   public T remove(T $$0, String $$1) {
+      return (T)this.a.remove($$0, $$1);
+   }
+
+   public boolean compressMaps() {
+      return this.a.compressMaps();
+   }
+
+   public ListBuilder<T> listBuilder() {
+      return new Builder(this);
+   }
+
+   public RecordBuilder<T> mapBuilder() {
+      return new MapBuilder(this);
    }
 }

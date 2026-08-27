@@ -1,26 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 public class ahj {
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("kick").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)du.a("targets", ee.d())
-                     .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), tn.c("multiplayer.disconnect.kicked"))))
-                  .then(du.a("reason", ei.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ei.a($$0x, "reason"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("list").executes($$0x -> a((dt)$$0x.getSource())))
+            .then(du.a("uuids").executes($$0x -> b((dt)$$0x.getSource())))
       );
    }
 
-   private static int a(dt $$0, Collection<akt> $$1, tn $$2) {
-      for (akt $$3 : $$1) {
-         $$3.c.b($$2);
-         $$0.a(() -> tn.a("commands.kick.success", $$3.N_(), $$2), true);
-      }
+   private static int a(dt $$0) {
+      return a($$0, cbu::N_);
+   }
 
-      return $$1.size();
+   private static int b(dt $$0) {
+      return a($$0, $$0x -> tl.a("commands.list.nameAndId", $$0x.ab(), $$0x.fQ().getId()));
+   }
+
+   private static int a(dt $$0, Function<akr, tl> $$1) {
+      aog $$2 = $$0.l().ac();
+      List<akr> $$3 = $$2.t();
+      tl $$4 = tn.b($$3, $$1);
+      $$0.a(() -> tl.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

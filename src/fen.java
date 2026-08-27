@@ -1,88 +1,142 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+public class fen<T extends bwd> extends ffm<T> {
+   private static final float a = 2.0F;
+   private static final float b = 2.5F;
+   private static final float f = 0.45F;
+   private static final float g = 29.35F;
+   private static final String h = "saddle";
+   private static final String i = "bridle";
+   private static final String j = "reins";
+   private final fic k;
+   private final fic l;
+   private final fic[] m;
+   private final fic[] n;
 
-public class fen extends ffx<cdp> implements fhs {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "water_patch";
-   private static final String g = "bottom";
-   private static final String h = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-   private final fie l;
-   private final fie m;
-   private final fie n;
-   private final ImmutableList<fie> o;
-
-   public fen(fie $$0) {
-      this.l = $$0.b("left_paddle");
-      this.m = $$0.b("right_paddle");
-      this.n = $$0.b("water_patch");
-      this.o = this.a($$0).build();
+   public fen(fic $$0) {
+      this.k = $$0;
+      fic $$1 = $$0.b("body");
+      this.l = $$1.b("head");
+      this.m = new fic[]{$$1.b("saddle"), this.l.b("bridle")};
+      this.n = new fic[]{this.l.b("reins")};
    }
 
-   protected Builder<fie> a(fie $$0) {
-      Builder<fie> $$1 = new Builder();
-      $$1.add(new fie[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
-      return $$1;
-   }
-
-   public static void a(fin $$0) {
-      int $$1 = 32;
-      int $$2 = 6;
-      int $$3 = 20;
-      int $$4 = 4;
-      int $$5 = 28;
-      $$0.a("bottom", fij.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fig.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", fij.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fig.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", fij.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fig.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", fij.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fig.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", fij.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fig.a(0.0F, 4.0F, 9.0F));
-      int $$6 = 20;
-      int $$7 = 7;
-      int $$8 = 6;
-      float $$9 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fij.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fig.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+   public static fii b() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      fig $$2 = new fig(0.05F);
+      fil $$3 = $$1.a("body", fih.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), fie.a(0.0F, 4.0F, 9.5F));
+      $$3.a("hump", fih.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), fie.a(0.0F, -12.0F, -10.0F));
+      $$3.a("tail", fih.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), fie.a(0.0F, -9.0F, 3.5F));
+      fil $$4 = $$3.a(
+         "head",
+         fih.c()
+            .a(60, 24)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
+            .a(21, 0)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
+            .a(50, 0)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
+         fie.a(0.0F, -3.0F, -19.5F)
       );
-      $$0.a(
-         "right_paddle",
-         fij.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fig.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      $$4.a("left_ear", fih.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fie.a(2.5F, -21.0F, -9.5F));
+      $$4.a("right_ear", fih.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), fie.a(-2.5F, -21.0F, -9.5F));
+      $$1.a("left_hind_leg", fih.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fie.a(4.9F, 1.0F, 9.5F));
+      $$1.a("right_hind_leg", fih.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fie.a(-4.9F, 1.0F, 9.5F));
+      $$1.a("left_front_leg", fih.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fie.a(4.9F, 1.0F, -10.5F));
+      $$1.a("right_front_leg", fih.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), fie.a(-4.9F, 1.0F, -10.5F));
+      $$3.a(
+         "saddle",
+         fih.c()
+            .a(74, 64)
+            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
+            .a(92, 114)
+            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
+            .a(0, 89)
+            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
+         fie.a(0.0F, 0.0F, 0.0F)
       );
-      $$0.a("water_patch", fij.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fig.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$4.a(
+         "reins",
+         fih.c()
+            .a(98, 42)
+            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
+            .a(84, 57)
+            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
+            .a(98, 42)
+            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
+         fie.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a(
+         "bridle",
+         fih.c()
+            .a(60, 87)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
+            .a(21, 64)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
+            .a(50, 64)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
+            .a(74, 70)
+            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
+            .a(74, 70)
+            .a()
+            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
+         fie.a(0.0F, 0.0F, 0.0F)
+      );
+      return fii.a($$0, 128, 128);
    }
 
-   public static fik a() {
-      fim $$0 = new fim();
-      fin $$1 = $$0.a();
-      a($$1);
-      return fik.a($$0, 128, 64);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fic::c);
+      this.a($$0, $$4, $$5, $$3);
+      this.a($$0);
+      this.a(erp.a, $$1, $$2, 2.0F, 2.5F);
+      this.a($$0.ca, erp.b, $$3, 1.0F);
+      this.a($$0.cb, erp.c, $$3, 1.0F);
+      this.a($$0.cc, erp.d, $$3, 1.0F);
+      this.a($$0.cd, erp.f, $$3, 1.0F);
+      this.a($$0.ce, erp.e, $$3, 1.0F);
    }
 
-   public void a(cdp $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.l, $$1);
-      a($$0, 1, this.m, $$1);
+   private void a(T $$0, float $$1, float $$2, float $$3) {
+      $$1 = arw.a($$1, -30.0F, 30.0F);
+      $$2 = arw.a($$2, -25.0F, 45.0F);
+      if ($$0.aa_() > 0) {
+         float $$4 = $$3 - (float)$$0.ah;
+         float $$5 = 45.0F * ((float)$$0.aa_() - $$4) / 55.0F;
+         $$2 = arw.a($$2 + $$5, -25.0F, 70.0F);
+      }
+
+      this.l.f = $$1 * (float) (Math.PI / 180.0);
+      this.l.e = $$2 * (float) (Math.PI / 180.0);
    }
 
-   public ImmutableList<fie> b() {
-      return this.o;
+   private void a(T $$0) {
+      boolean $$1 = $$0.i();
+      boolean $$2 = $$0.bO();
+
+      for (fic $$3 : this.m) {
+         $$3.k = $$1;
+      }
+
+      for (fic $$4 : this.n) {
+         $$4.k = $$2 && $$1;
+      }
    }
 
    @Override
-   public fie c() {
-      return this.n;
+   public void a(elp $$0, elt $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(0.45F, 0.45F, 0.45F);
+         $$0.a(0.0F, 1.834375F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+      } else {
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 
-   private static void a(cdp $$0, int $$1, fie $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = ary.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ary.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = ary.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ary.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   @Override
+   public fic a() {
+      return this.k;
    }
 }

@@ -1,27 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class blt {
-   public static bla<bji> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
-   }
-
-   public static <E extends bji> bla<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return bol.a((Function<bol.b<E>, ? extends App<bol.c<E>, boo<E>>>)($$4 -> {
-         bol<E, ? extends bom<? extends K1, bsm>> $$5 = $$2 ? $$4.a(bsj.m) : $$4.c(bsj.m);
-         return $$4.group($$4.a(bsj.n), $$5, $$4.b(bsj.K), $$4.a(bsj.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               byp $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dL().B_().a($$11.dl())) {
-                  bsm $$12 = new bsm(new blk($$11, false), $$1, 0);
-                  $$4x.a(new blk($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   public static bky<bjp> a(float $$0) {
+      return boj.a(
+         (Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$1 -> $$1.group($$1.c(bsh.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.g($$3.dl())) {
+                           return false;
+                        } else {
+                           gw $$5 = $$3.dl();
+                           List<gw> $$6 = gw.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(gw::i).collect(Collectors.toList());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.g($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new bsk($$2x, $$0, 0)));
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

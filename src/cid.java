@@ -1,62 +1,49 @@
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class cid extends cjc {
-   public static final String a = "StoredEnchantments";
-
-   public cid(cjc.a $$0) {
+public class cid extends cja {
+   public cid(cja.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean i(cjh $$0) {
-      return true;
-   }
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfj $$3 = $$1.a_($$2);
+      if (!$$3.a(csw.co) && !$$3.a(csw.F)) {
+         return bgy.e;
+      } else {
+         gw $$4 = $$2.c();
+         if (!$$1.t($$4)) {
+            return bgy.e;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<biq> $$8 = $$1.a_(null, new ehi($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bgy.e;
+            } else {
+               if ($$1 instanceof akq) {
+                  bxg $$9 = new bxg($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), djt.t, $$4);
+                  div $$10 = ((akq)$$1).B();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-   @Override
-   public boolean d_(cjh $$0) {
-      return false;
-   }
-
-   public static re d(cjh $$0) {
-      qy $$1 = $$0.v();
-      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new re();
-   }
-
-   @Override
-   public void a(cjh $$0, @Nullable cpx $$1, List<tn> $$2, cky $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      cjh.a($$2, d($$0));
-   }
-
-   public static void a(cjh $$0, cnt $$1) {
-      re $$2 = d($$0);
-      boolean $$3 = true;
-      aey $$4 = cns.a($$1.a);
-
-      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
-         qy $$6 = $$2.a($$5);
-         aey $$7 = cns.b($$6);
-         if ($$7 != null && $$7.equals($$4)) {
-            if (cns.a($$6) < $$1.b) {
-               cns.a($$6, $$1.b);
+               $$0.n().h(1);
+               return bgy.a($$1.B);
             }
-
-            $$3 = false;
-            break;
          }
       }
-
-      if ($$3) {
-         $$2.add(cns.a($$4, $$1.b));
-      }
-
-      $$0.w().a("StoredEnchantments", $$2);
    }
 
-   public static cjh a(cnt $$0) {
-      cjh $$1 = new cjh(cjk.tC);
-      a($$1, $$0);
-      return $$1;
+   @Override
+   public boolean i(cjf $$0) {
+      return true;
    }
 }

@@ -1,14 +1,19 @@
-public class dit {
-   public static final int a = -64;
-   public static final int b = 384;
-   public static final int c = 384;
-   public static final int d = 384;
-   public static final int e = 0;
-   public static final int f = 256;
-   public static final int g = 128;
-   public static final int h = 128;
-   public static final int i = 0;
-   public static final int j = 256;
-   public static final int k = 128;
-   public static final int l = 256;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dit(he<dis> e, dhg f) {
+   public static final Codec<dit> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dis.j.fieldOf("type").forGetter(dit::a), dhg.a.fieldOf("generator").forGetter(dit::b)).apply($$0, $$0.stable(dit::new))
+   );
+   public static final aev<dit> b = aev.a(jc.aI, new aew("overworld"));
+   public static final aev<dit> c = aev.a(jc.aI, new aew("the_nether"));
+   public static final aev<dit> d = aev.a(jc.aI, new aew("the_end"));
+
+   public he<dis> a() {
+      return this.e;
+   }
+
+   public dhg b() {
+      return this.f;
+   }
 }

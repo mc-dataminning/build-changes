@@ -1,7 +1,4 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
 
-public interface edk {
-   int a(float var1);
-
-   void a(Consumer<cjh> var1, ecs var2);
+public record edk(Codec<? extends edj> a) {
 }

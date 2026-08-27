@@ -1,34 +1,44 @@
-public class gcg extends gbx {
+public class gcg extends gbv {
    private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final bzg r;
+   private static final float o = 0.75F;
+   private final cbu p;
+   private final cdl q;
+   private final boolean r;
 
-   public gcg(bzg $$0) {
-      super(apf.kl, apg.f, gco.t());
-      this.r = $$0;
-      this.k = gco.a.a;
+   public gcg(cbu $$0, cdl $$1, boolean $$2) {
+      super($$2 ? apd.ng : apd.nh, ape.g, gcm.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gcm.a.a;
       this.i = true;
       this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
    public boolean s() {
-      return !this.r.aS();
+      return !this.q.aS();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
    }
 
    @Override
    public void q() {
-      if (!this.r.dG() && this.r.q() == null) {
-         this.f = (double)((float)this.r.dq());
-         this.g = (double)((float)this.r.ds());
-         this.h = (double)((float)this.r.dw());
-         float $$0 = this.r.G(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
-      } else {
+      if (this.q.dG() || !this.p.bN() || this.p.cY() != this.q) {
          this.n();
+      } else if (this.r != this.p.bc()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.do().h();
+         if ($$0 >= 0.01F) {
+            this.d = arw.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
+         }
       }
    }
 }

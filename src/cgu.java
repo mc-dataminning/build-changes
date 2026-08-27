@@ -1,42 +1,78 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
 
-public class cgu extends cjc {
-   public cgu(cjc.a $$0) {
-      super($$0);
+public class cgu extends chp {
+   protected static final Map<csv, csv> a = new Builder()
+      .put(csw.ao, csw.aw)
+      .put(csw.U, csw.al)
+      .put(csw.au, csw.aC)
+      .put(csw.aa, csw.ak)
+      .put(csw.as, csw.aA)
+      .put(csw.Y, csw.ai)
+      .put(csw.at, csw.aB)
+      .put(csw.Z, csw.aj)
+      .put(csw.aq, csw.ay)
+      .put(csw.W, csw.ag)
+      .put(csw.ar, csw.az)
+      .put(csw.X, csw.ah)
+      .put(csw.ap, csw.ax)
+      .put(csw.V, csw.af)
+      .put(csw.oj, csw.ok)
+      .put(csw.ol, csw.om)
+      .put(csw.os, csw.ot)
+      .put(csw.ou, csw.ov)
+      .put(csw.av, csw.aD)
+      .put(csw.ab, csw.am)
+      .put(csw.ae, csw.an)
+      .build();
+
+   protected cgu(cks $$0, float $$1, float $$2, cja.a $$3) {
+      super($$1, $$2, $$0, aps.bz, $$3);
    }
 
    @Override
-   public bha a(clr $$0) {
-      hc $$1 = $$0.k();
-      if ($$1 == hc.a) {
-         return bha.e;
-      } else {
-         cpx $$2 = $$0.q();
-         clp $$3 = new clp($$0);
-         gw $$4 = $$3.a();
-         cjh $$5 = $$0.n();
-         ehp $$6 = ehp.c($$4);
-         ehk $$7 = biw.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof aks $$8) {
-               Consumer<byf> $$9 = biw.a($$8, $$5, $$0.o());
-               byf $$10 = biw.d.b($$8, $$5.v(), $$9, $$4, bjm.m, true, true);
-               if ($$10 == null) {
-                  return bha.e;
-               }
-
-               float $$11 = (float)ary.d((ary.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dq(), $$10.ds(), $$10.dw(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dq(), $$10.ds(), $$10.dw(), apf.ao, apg.e, 0.75F, 0.8F);
-               $$10.a(djv.t, $$0.o());
-            }
-
-            $$5.h(1);
-            return bha.a($$2.B);
-         } else {
-            return bha.e;
-         }
+   public bgy a(clp $$0) {
+      cpv $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      cbu $$3 = $$0.o();
+      dfj $$4 = $$1.a_($$2);
+      Optional<dfj> $$5 = this.b($$4);
+      Optional<dfj> $$6 = dbx.b($$4);
+      Optional<dfj> $$7 = Optional.ofNullable((csv)ciu.b.get().get($$4.b())).map($$1x -> $$1x.l($$4));
+      cjf $$8 = $$0.n();
+      Optional<dfj> $$9 = Optional.empty();
+      if ($$5.isPresent()) {
+         $$1.a($$3, $$2, apd.as, ape.e, 1.0F, 1.0F);
+         $$9 = $$5;
+      } else if ($$6.isPresent()) {
+         $$1.a($$3, $$2, apd.at, ape.e, 1.0F, 1.0F);
+         $$1.a($$3, 3005, $$2, 0);
+         $$9 = $$6;
+      } else if ($$7.isPresent()) {
+         $$1.a($$3, $$2, apd.au, ape.e, 1.0F, 1.0F);
+         $$1.a($$3, 3004, $$2, 0);
+         $$9 = $$7;
       }
+
+      if ($$9.isPresent()) {
+         if ($$3 instanceof akr) {
+            al.M.a((akr)$$3, $$2, $$8);
+         }
+
+         $$1.a($$2, $$9.get(), 11);
+         $$1.a(djt.c, $$2, djt.a.a($$3, $$9.get()));
+         if ($$3 != null) {
+            $$8.a(1, $$3, $$1x -> $$1x.d($$0.p()));
+         }
+
+         return bgy.a($$1.B);
+      } else {
+         return bgy.d;
+      }
+   }
+
+   private Optional<dfj> b(dfj $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.n().a(czg.g, $$0.c(czg.g)));
    }
 }

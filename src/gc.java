@@ -10,48 +10,48 @@ import javax.annotation.Nullable;
 
 public class gc {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<ehp, List<? extends bis>> b = ($$0, $$1) -> {
+   public static final BiConsumer<ehn, List<? extends biq>> b = ($$0, $$1) -> {
    };
-   private static final djj<bis, ?> c = new djj<bis, bis>() {
-      public bis a(bis $$0) {
+   private static final djh<biq, ?> c = new djh<biq, biq>() {
+      public biq a(biq $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends bis> a() {
-         return bis.class;
+      public Class<? extends biq> a() {
+         return biq.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final Predicate<bis> g;
+   private final Predicate<biq> g;
    private final cl.c h;
-   private final Function<ehp, ehp> i;
+   private final Function<ehn, ehn> i;
    @Nullable
-   private final ehk j;
-   private final BiConsumer<ehp, List<? extends bis>> k;
+   private final ehi j;
+   private final BiConsumer<ehn, List<? extends biq>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final djj<bis, ?> o;
+   private final djh<biq, ?> o;
    private final boolean p;
 
    public gc(
       int $$0,
       boolean $$1,
       boolean $$2,
-      Predicate<bis> $$3,
+      Predicate<biq> $$3,
       cl.c $$4,
-      Function<ehp, ehp> $$5,
-      @Nullable ehk $$6,
-      BiConsumer<ehp, List<? extends bis>> $$7,
+      Function<ehn, ehn> $$5,
+      @Nullable ehi $$6,
+      BiConsumer<ehn, List<? extends biq>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable biw<?> $$11,
+      @Nullable biu<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -65,7 +65,7 @@ public class gc {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (djj<bis, ?>)($$11 == null ? c : $$11);
+      this.o = (djh<biq, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -95,9 +95,9 @@ public class gc {
       }
    }
 
-   public bis a(dt $$0) throws CommandSyntaxException {
+   public biq a(dt $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends bis> $$1 = this.b($$0);
+      List<? extends biq> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw ee.d.create();
       } else if ($$1.size() > 1) {
@@ -107,37 +107,37 @@ public class gc {
       }
    }
 
-   public List<? extends bis> b(dt $$0) throws CommandSyntaxException {
+   public List<? extends biq> b(dt $$0) throws CommandSyntaxException {
       return this.f($$0).stream().filter($$1 -> $$1.ag().a($$0.w())).toList();
    }
 
-   private List<? extends bis> f(dt $$0) throws CommandSyntaxException {
+   private List<? extends biq> f(dt $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
       } else if (this.m != null) {
-         akt $$1 = $$0.l().ac().a(this.m);
-         return (List<? extends bis>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new akt[]{$$1}));
+         akr $$1 = $$0.l().ac().a(this.m);
+         return (List<? extends biq>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new akr[]{$$1}));
       } else if (this.n != null) {
-         for (aks $$2 : $$0.l().F()) {
-            bis $$3 = $$2.a(this.n);
+         for (akq $$2 : $$0.l().F()) {
+            biq $$3 = $$2.a(this.n);
             if ($$3 != null) {
-               return Lists.newArrayList(new bis[]{$$3});
+               return Lists.newArrayList(new biq[]{$$3});
             }
          }
 
          return Collections.emptyList();
       } else {
-         ehp $$4 = this.i.apply($$0.d());
-         Predicate<bis> $$5 = this.a($$4);
+         ehn $$4 = this.i.apply($$0.d());
+         Predicate<biq> $$5 = this.a($$4);
          if (this.l) {
-            return (List<? extends bis>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new bis[]{$$0.f()}) : Collections.emptyList());
+            return (List<? extends biq>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new biq[]{$$0.f()}) : Collections.emptyList());
          } else {
-            List<bis> $$6 = Lists.newArrayList();
+            List<biq> $$6 = Lists.newArrayList();
             if (this.d()) {
                this.a($$6, $$0.e(), $$4, $$5);
             } else {
-               for (aks $$7 : $$0.l().F()) {
+               for (akq $$7 : $$0.l().F()) {
                   this.a($$6, $$7, $$4, $$5);
                }
             }
@@ -147,7 +147,7 @@ public class gc {
       }
    }
 
-   private void a(List<bis> $$0, aks $$1, ehp $$2, Predicate<bis> $$3) {
+   private void a(List<biq> $$0, akq $$1, ehn $$2, Predicate<biq> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if (this.j != null) {
@@ -162,9 +162,9 @@ public class gc {
       return this.k == b ? this.d : Integer.MAX_VALUE;
    }
 
-   public akt c(dt $$0) throws CommandSyntaxException {
+   public akr c(dt $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<akt> $$1 = this.d($$0);
+      List<akr> $$1 = this.d($$0);
       if ($$1.size() != 1) {
          throw ee.e.create();
       } else {
@@ -172,32 +172,32 @@ public class gc {
       }
    }
 
-   public List<akt> d(dt $$0) throws CommandSyntaxException {
+   public List<akr> d(dt $$0) throws CommandSyntaxException {
       this.e($$0);
       if (this.m != null) {
-         akt $$1 = $$0.l().ac().a(this.m);
-         return (List<akt>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new akt[]{$$1}));
+         akr $$1 = $$0.l().ac().a(this.m);
+         return (List<akr>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new akr[]{$$1}));
       } else if (this.n != null) {
-         akt $$2 = $$0.l().ac().a(this.n);
-         return (List<akt>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new akt[]{$$2}));
+         akr $$2 = $$0.l().ac().a(this.n);
+         return (List<akr>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new akr[]{$$2}));
       } else {
-         ehp $$3 = this.i.apply($$0.d());
-         Predicate<bis> $$4 = this.a($$3);
+         ehn $$3 = this.i.apply($$0.d());
+         Predicate<biq> $$4 = this.a($$3);
          if (this.l) {
-            if ($$0.f() instanceof akt $$5 && $$4.test($$5)) {
-               return Lists.newArrayList(new akt[]{$$5});
+            if ($$0.f() instanceof akr $$5 && $$4.test($$5)) {
+               return Lists.newArrayList(new akr[]{$$5});
             }
 
             return Collections.emptyList();
          } else {
             int $$6 = this.f();
-            List<akt> $$7;
+            List<akr> $$7;
             if (this.d()) {
                $$7 = $$0.e().a($$4, $$6);
             } else {
                $$7 = Lists.newArrayList();
 
-               for (akt $$9 : $$0.l().ac().t()) {
+               for (akr $$9 : $$0.l().ac().t()) {
                   if ($$4.test($$9)) {
                      $$7.add($$9);
                      if ($$7.size() >= $$6) {
@@ -212,10 +212,10 @@ public class gc {
       }
    }
 
-   private Predicate<bis> a(ehp $$0) {
-      Predicate<bis> $$1 = this.g;
+   private Predicate<biq> a(ehn $$0) {
+      Predicate<biq> $$1 = this.g;
       if (this.j != null) {
-         ehk $$2 = this.j.c($$0);
+         ehi $$2 = this.j.c($$0);
          $$1 = $$1.and($$1x -> $$2.c($$1x.cG()));
       }
 
@@ -226,7 +226,7 @@ public class gc {
       return $$1;
    }
 
-   private <T extends bis> List<T> a(ehp $$0, List<T> $$1) {
+   private <T extends biq> List<T> a(ehn $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -234,7 +234,7 @@ public class gc {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static tn a(List<? extends bis> $$0) {
-      return tp.b($$0, bis::N_);
+   public static tl a(List<? extends biq> $$0) {
+      return tn.b($$0, biq::N_);
    }
 }

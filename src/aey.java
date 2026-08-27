@@ -1,241 +1,118 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.logging.LogUtils;
+import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public class aey implements Comparable<aey> {
-   public static final Codec<aey> a = Codec.STRING.comapFlatMap(aey::b, aey::toString).stable();
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tn.c("argument.id.invalid"));
-   public static final char b = ':';
-   public static final String c = "minecraft";
-   public static final String d = "realms";
-   private final String f;
-   private final String g;
+public class aey {
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-   protected aey(String $$0, String $$1, @Nullable aey.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   public aey(String $$0, String $$1) {
-      this(c($$0, $$1), d($$0, $$1), null);
-   }
-
-   private aey(String[] $$0) {
-      this($$0[0], $$0[1]);
-   }
-
-   public aey(String $$0) {
-      this(b($$0, ':'));
-   }
-
-   public static aey a(String $$0, char $$1) {
-      return new aey(b($$0, $$1));
-   }
-
-   @Nullable
-   public static aey a(String $$0) {
-      try {
-         return new aey($$0);
-      } catch (z var2) {
-         return null;
-      }
-   }
-
-   @Nullable
-   public static aey a(String $$0, String $$1) {
-      try {
-         return new aey($$0, $$1);
-      } catch (z var3) {
-         return null;
-      }
-   }
-
-   protected static String[] b(String $$0, char $$1) {
-      String[] $$2 = new String[]{"minecraft", $$0};
-      int $$3 = $$0.indexOf($$1);
-      if ($$3 >= 0) {
-         $$2[1] = $$0.substring($$3 + 1);
-         if ($$3 >= 1) {
-            $$2[0] = $$0.substring(0, $$3);
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (jb.ap.e().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
+         } else {
+            cvr.a();
+            cue.a();
+            if (biu.a(biu.bt) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
+            } else {
+               cld.a();
+               ge.a();
+               ih.c();
+               ia.b();
+               jb.a();
+               chm.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
+            }
          }
       }
-
-      return $$2;
    }
 
-   public static DataResult<aey> b(String $$0) {
-      try {
-         return DataResult.success(new aey($$0));
-      } catch (z var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.f;
-   }
-
-   public aey c(String $$0) {
-      return new aey(this.f, d(this.f, $$0), null);
-   }
-
-   public aey a(UnaryOperator<String> $$0) {
-      return this.c($$0.apply(this.g));
-   }
-
-   public aey d(String $$0) {
-      return this.c($$0 + this.g);
-   }
-
-   public aey e(String $$0) {
-      return this.c(this.g + $$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.f + ":" + this.g;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof aey $$1) ? false : this.f.equals($$1.f) && this.g.equals($$1.g);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.f.hashCode() + this.g.hashCode();
-   }
-
-   public int a(aey $$0) {
-      int $$1 = this.g.compareTo($$0.g);
-      if ($$1 == 0) {
-         $$1 = this.f.compareTo($$0.f);
-      }
-
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.f + "." + this.g;
-   }
-
-   public String e() {
-      return this.f.equals("minecraft") ? this.g : this.d();
-   }
-
-   public String f(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String b(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   public static aey a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-
-      try {
-         return new aey($$2);
-      } catch (z var4) {
-         $$0.setCursor($$1);
-         throw e.createWithContext($$0);
-      }
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean g(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      qr $$3 = qr.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
          }
-      }
-
-      return true;
+      });
    }
 
-   public static boolean h(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
+   private static void a(final Set<String> $$0) {
+      final qr $$1 = qr.a();
+      cpr.a(new cpr.c() {
+         @Override
+         public <T extends cpr.g<T>> void a(cpr.e<T> $$0x, cpr.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
          }
-      }
-
-      return true;
+      });
    }
 
-   private static String c(String $$0, String $$1) {
-      if (!h($$0)) {
-         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(jb.v, bkh::c, $$0);
+      a(jb.h, biu::g, $$0);
+      a(jb.e, bib::d, $$0);
+      a(jb.i, cja::a, $$0);
+      a(jb.g, cno::g, $$0);
+      a(jb.f, csv::f, $$0);
+      a(jb.n, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
+   }
+
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
+      }
+   }
+
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
+
+   public static void c() {
+      a(() -> "validate");
+      if (aa.aT) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         du.b();
+      }
+
+      bkn.a();
+   }
+
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new afb("STDERR", System.err));
+         System.setOut(new afb("STDOUT", a));
       } else {
-         return $$0;
+         System.setErr(new afd("STDERR", System.err));
+         System.setOut(new afd("STDOUT", a));
       }
    }
 
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   public static boolean i(String $$0) {
-      String[] $$1 = b($$0, ':');
-      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
-   }
-
-   private static String d(String $$0, String $$1) {
-      if (!g($$1)) {
-         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
-   }
-
-   protected interface a {
-   }
-
-   public static class b implements JsonDeserializer<aey>, JsonSerializer<aey> {
-      public aey a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new aey(arp.a($$0, "location"));
-      }
-
-      public JsonElement a(aey $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
-      }
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

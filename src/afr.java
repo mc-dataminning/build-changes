@@ -1,18 +1,6 @@
-public class afr implements Runnable {
-   private final int a;
-   private final Runnable b;
-
-   public afr(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.a;
-   }
-
+public record afr(anj a, afg b, hl<aff> c, ecm d) implements AutoCloseable {
    @Override
-   public void run() {
-      this.b.run();
+   public void close() {
+      this.a.close();
    }
 }

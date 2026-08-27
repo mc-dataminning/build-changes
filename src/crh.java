@@ -1,134 +1,89 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class crh {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bfo<crh.c> a = bfo.c();
-   public static final crh b = new crh.a().a();
-   public static final MapCodec<crh> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bjl.i, bfo.c(crh.c.a).promotePartial(ac.a("Spawn data: ", d::error)), asr.a(bjl.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(jd.h.q(), crh.b.a, jd.h).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, crh::new)
+   public static final Codec<crh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(crh.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), aeu.c(jc.ap)).apply($$0, crh::new)
    );
-   private final float f;
-   private final Map<bjl, bfo<crh.c>> g;
-   private final Map<biw<?>, crh.b> h;
+   public static final Codec<he<crh>> b = aes.a(jc.aG, a);
+   private final crh.a c;
+   private final crc.c<he<cqt>> d;
 
-   crh(float $$0, Map<bjl, bfo<crh.c>> $$1, Map<biw<?>, crh.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   public crh(crh.a $$0, hf<cqt> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   public bfo<crh.c> a(bjl $$0) {
-      return this.g.getOrDefault($$0, a);
+   public crc.c<he<cqt>> a() {
+      return this.d;
    }
 
-   @Nullable
-   public crh.b a(biw<?> $$0) {
-      return this.h.get($$0);
+   public static Map<crh.a, crc.c<aev<cqt>>> b() {
+      return crh.a.f.values().stream().collect(Collectors.toMap($$0 -> (crh.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   public float a() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Map<bjl, List<crh.c>> a = Stream.of(bjl.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<biw<?>, crh.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public crh.a a(bjl $$0, crh.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
-      }
-
-      public crh.a a(biw<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new crh.b($$2, $$1));
-         return this;
-      }
-
-      public crh.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public crh a() {
-         return new crh(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bfo.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
-   }
-
-   public static record b(double b, double c) {
-      public static final Codec<crh.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, crh.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static class c extends bfm.a {
-      public static final Codec<crh.c> a = arh.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     jd.h.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     bfl.a.fieldOf("weight").forGetter(bfm.a::a),
-                     arh.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     arh.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+   public static record a(aew d, crh.a.a e) {
+      public static final crh.a a = new crh.a(
+         new aew("nether"),
+         new crh.a.a() {
+            @Override
+            public <T> crc.c<T> apply(Function<aev<cqt>, T> $$0) {
+               return new crc.c<>(
+                  List.of(
+                     Pair.of(crc.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cra.ac)),
+                     Pair.of(crc.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cra.af)),
+                     Pair.of(crc.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cra.ae)),
+                     Pair.of(crc.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cra.ad)),
+                     Pair.of(crc.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cra.ag))
                   )
-                  .apply($$0, crh.c::new)
-         ),
-         (Function<crh.c, DataResult<crh.c>>)($$0 -> $$0.c > $$0.d
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success($$0))
+               );
+            }
+         }
       );
-      public final biw<?> b;
-      public final int c;
-      public final int d;
+      public static final crh.a b = new crh.a(new aew("overworld"), new crh.a.a() {
+         @Override
+         public <T> crc.c<T> apply(Function<aev<cqt>, T> $$0) {
+            return crh.a.a($$0);
+         }
+      });
+      static final Map<aew, crh.a> f = Stream.of(a, b).collect(Collectors.toMap(crh.a::b, $$0 -> (crh.a)$$0));
+      public static final Codec<crh.a> c = aew.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
 
-      public c(biw<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, bfl.a($$1), $$2, $$3);
+      static <T> crc.c<T> a(Function<aev<cqt>, T> $$0) {
+         Builder<Pair<crc.d, T>> $$1 = ImmutableList.builder();
+         new crj().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new crc.c<>($$1.build());
       }
 
-      public c(biw<?> $$0, bfl $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bjl.h ? biw.av : $$0;
-         this.c = $$2;
-         this.d = $$3;
+      public Stream<aev<cqt>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<aev<cqt>>map(Pair::getSecond).distinct();
       }
 
-      @Override
-      public String toString() {
-         return biw.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
+      public aew b() {
+         return this.d;
+      }
+
+      public crh.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> crc.c<T> apply(Function<aev<cqt>, T> var1);
       }
    }
 }

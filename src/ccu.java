@@ -1,54 +1,69 @@
-public abstract class ccu extends ccv implements ccl {
-   private static final aeg<cjh> b = aej.a(ccu.class, aei.h);
-
-   public ccu(biw<? extends ccu> $$0, cpx $$1) {
+public class ccu extends ccs {
+   public ccu(biu<? extends ccu> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
-   public ccu(biw<? extends ccu> $$0, double $$1, double $$2, double $$3, cpx $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public ccu(cpv $$0, bjg $$1) {
+      super(biu.z, $$1, $$0);
    }
 
-   public ccu(biw<? extends ccu> $$0, bji $$1, cpx $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(cjh $$0) {
-      if (!$$0.a(this.s()) || $$0.u()) {
-         this.al().b(b, $$0.c(1));
-      }
-   }
-
-   protected abstract cjc s();
-
-   protected cjh t() {
-      return this.al().b(b);
+   public ccu(cpv $$0, double $$1, double $$2, double $$3) {
+      super(biu.z, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public cjh q() {
-      cjh $$0 = this.t();
-      return $$0.b() ? new cjh(this.s()) : $$0;
-   }
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
 
-   @Override
-   protected void a_() {
-      this.al().a(b, cjh.b);
-   }
-
-   @Override
-   public void b(qy $$0) {
-      super.b($$0);
-      cjh $$1 = this.t();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new qy()));
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dL()
+               .a(
+                  new ir(iv.O, this.q()),
+                  this.dq(),
+                  this.ds(),
+                  this.dw(),
+                  ((double)this.ag.i() - 0.5) * 0.08,
+                  ((double)this.ag.i() - 0.5) * 0.08,
+                  ((double)this.ag.i() - 0.5) * 0.08
+               );
+         }
       }
    }
 
    @Override
-   public void a(qy $$0) {
+   protected void a(ehk $$0) {
       super.a($$0);
-      cjh $$1 = cjh.a($$0.p("Item"));
-      this.a($$1);
+      $$0.a().a(this.dM().b(this, this.v()), 0.0F);
+   }
+
+   @Override
+   protected void a(ehl $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         if (this.ag.a(8) == 0) {
+            int $$1 = 1;
+            if (this.ag.a(32) == 0) {
+               $$1 = 4;
+            }
+
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               buw $$3 = biu.q.a(this.dL());
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.dq(), this.ds(), this.dw(), this.dB(), 0.0F);
+                  this.dL().b($$3);
+               }
+            }
+         }
+
+         this.dL().a(this, (byte)3);
+         this.ak();
+      }
+   }
+
+   @Override
+   protected cja s() {
+      return cji.qd;
    }
 }

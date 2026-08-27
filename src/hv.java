@@ -1,65 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-
 public class hv {
-   private static <T> MapCodec<hv.a<T>> a(aex<? extends ht<T>> $$0, MapCodec<T> $$1) {
-      return RecordCodecBuilder.mapCodec(
-         $$2 -> $$2.group(aex.a($$0).fieldOf("name").forGetter(hv.a::a), Codec.INT.fieldOf("id").forGetter(hv.a::b), $$1.forGetter(hv.a::c))
-               .apply($$2, hv.a::new)
-      );
+   protected final float a;
+   protected final float b;
+   protected final float c;
+
+   public hv(float $$0, float $$1, float $$2) {
+      this.a = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
+      this.b = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
+      this.c = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   public static <T> Codec<ht<T>> a(aex<? extends ht<T>> $$0, Lifecycle $$1, Codec<T> $$2) {
-      return a($$0, $$2.fieldOf("element")).codec().listOf().xmap($$2x -> {
-         ho<T> $$3 = new ho<>($$0, $$1);
-
-         for (hv.a<T> $$4 : $$2x) {
-            $$3.a($$4.b(), $$4.a(), $$4.c(), $$1);
-         }
-
-         return $$3;
-      }, $$0x -> {
-         Builder<hv.a<T>> $$1x = ImmutableList.builder();
-
-         for (T $$2x : $$0x) {
-            $$1x.add(new hv.a((aex<T>)$$0x.c($$2x).get(), $$0x.a($$2x), $$2x));
-         }
-
-         return $$1x.build();
-      });
+   public hv(rc $$0) {
+      this($$0.i(0), $$0.i(1), $$0.i(2));
    }
 
-   public static <E> Codec<ht<E>> b(aex<? extends ht<E>> $$0, Lifecycle $$1, Codec<E> $$2) {
-      Codec<Map<aex<E>, E>> $$3 = Codec.unboundedMap(aex.a($$0), $$2);
-      return $$3.xmap($$2x -> {
-         ic<E> $$3x = new ho<>($$0, $$1);
-         $$2x.forEach(($$2xx, $$3xx) -> $$3x.a($$2xx, (E)$$3xx, $$1));
-         return $$3x.l();
-      }, $$0x -> ImmutableMap.copyOf($$0x.g()));
+   public rc a() {
+      rc $$0 = new rc();
+      $$0.add(qz.a(this.a));
+      $$0.add(qz.a(this.b));
+      $$0.add(qz.a(this.c));
+      return $$0;
    }
 
-   public static <E> Codec<hk<E>> a(aex<? extends ht<E>> $$0, Codec<E> $$1) {
-      return a($$0, $$1, false);
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof hv $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
-   public static <E> Codec<hk<E>> a(aex<? extends ht<E>> $$0, Codec<E> $$1, boolean $$2) {
-      return aes.a($$0, aeu.a($$0, $$1), $$2);
+   public float b() {
+      return this.a;
    }
 
-   public static <E> Codec<hk<E>> a(aex<? extends ht<E>> $$0) {
-      return a($$0, false);
+   public float c() {
+      return this.b;
    }
 
-   public static <E> Codec<hk<E>> a(aex<? extends ht<E>> $$0, boolean $$1) {
-      return aes.a($$0, aev.a($$0), $$1);
+   public float d() {
+      return this.c;
    }
 
-   static record a<T>(aex<T> a, int b, T c) {
+   public float e() {
+      return arw.g(this.a);
+   }
+
+   public float f() {
+      return arw.g(this.b);
+   }
+
+   public float g() {
+      return arw.g(this.c);
    }
 }

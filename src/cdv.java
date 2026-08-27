@@ -1,118 +1,106 @@
-public class cdv extends cdn {
-   static final aeg<String> c = aej.a(cdv.class, aei.e);
-   static final aeg<tn> d = aej.a(cdv.class, aei.f);
-   private final coy e = new cdv.a();
-   private static final int f = 4;
-   private int g;
+public class cdv extends cdm implements dds {
+   private boolean f = true;
 
-   public cdv(biw<? extends cdv> $$0, cpx $$1) {
+   public cdv(biu<? extends cdv> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
-   public cdv(cpx $$0, double $$1, double $$2, double $$3) {
-      super(biw.s, $$0, $$1, $$2, $$3);
+   public cdv(cpv $$0, double $$1, double $$2, double $$3) {
+      super(biu.X, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected cjc q() {
-      return cjk.na;
+   public cdl.a z() {
+      return cdl.a.f;
    }
 
    @Override
-   protected void a_() {
-      super.a_();
-      this.al().a(c, "");
-      this.al().a(d, tm.a);
+   public dfj B() {
+      return csw.hc.n();
    }
 
    @Override
-   protected void a(qy $$0) {
-      super.a($$0);
-      this.e.b($$0);
-      this.al().b(c, this.G().m());
-      this.al().b(d, this.G().l());
+   public int E() {
+      return 1;
    }
 
    @Override
-   protected void b(qy $$0) {
-      super.b($$0);
-      this.e.a($$0);
-   }
-
-   @Override
-   public cdn.a z() {
-      return cdn.a.g;
-   }
-
-   @Override
-   public dfl B() {
-      return csy.fN.n();
-   }
-
-   public coy G() {
-      return this.e;
+   public int b() {
+      return 5;
    }
 
    @Override
    public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ah - this.g >= 4) {
-         this.G().a(this.dL());
-         this.g = this.ah;
+      boolean $$4 = !$$3;
+      if ($$4 != this.L()) {
+         this.p($$4);
       }
    }
 
-   @Override
-   public bha a(cbw $$0, bgz $$1) {
-      return this.e.a($$0);
+   public boolean L() {
+      return this.f;
+   }
+
+   public void p(boolean $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public void a(aeg<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.al().b(d));
-         } catch (Throwable var3) {
+   public double M() {
+      return this.dq();
+   }
+
+   @Override
+   public double N() {
+      return this.ds() + 0.5;
+   }
+
+   @Override
+   public double O() {
+      return this.dw();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dL().B && this.bv() && this.L() && this.P()) {
+         this.e();
+      }
+   }
+
+   public boolean P() {
+      if (ddt.a(this.dL(), this)) {
+         return true;
+      } else {
+         for (byn $$1 : this.dL().a(byn.class, this.cG().c(0.25, 0.0, 0.25), bit.a)) {
+            if (ddt.a(this, $$1)) {
+               return true;
+            }
          }
-      } else if (c.equals($$0)) {
-         this.e.a(this.al().b(c));
+
+         return false;
       }
    }
 
    @Override
-   public boolean cM() {
-      return true;
+   protected cja q() {
+      return cji.ne;
    }
 
-   public class a extends coy {
-      @Override
-      public aks e() {
-         return (aks)cdv.this.dL();
-      }
+   @Override
+   protected void b(qw $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.f);
+   }
 
-      @Override
-      public void f() {
-         cdv.this.al().b(cdv.c, this.m());
-         cdv.this.al().b(cdv.d, this.l());
-      }
+   @Override
+   protected void a(qw $$0) {
+      super.a($$0);
+      this.f = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
 
-      @Override
-      public ehp g() {
-         return cdv.this.dj();
-      }
-
-      public cdv h() {
-         return cdv.this;
-      }
-
-      @Override
-      public dt i() {
-         return new dt(this, cdv.this.dj(), cdv.this.bF(), this.e(), 2, this.n().getString(), cdv.this.N_(), this.e().n(), cdv.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cdv.this.dG();
-      }
+   @Override
+   public cel a(int $$0, cbt $$1) {
+      return new cfi($$0, $$1, this);
    }
 }

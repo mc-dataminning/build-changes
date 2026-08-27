@@ -1,92 +1,172 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
+public abstract class bwp extends bwq {
+   private static final aee<Boolean> bU = aeh.a(bwp.class, aeg.k);
+   public static final int bT = 15;
 
-public class bwp {
-   public static final int a = 20;
-   public static final int b = 7;
-   private static final bgl i = bgl.a(5, 16);
-   private static final float j = 1.0F;
-   private static final float k = 1.0F;
-   private static final float l = 1.25F;
-   private static final float m = 1.25F;
-   private static final float n = 2.0F;
-   private static final float o = 1.25F;
-   private static final bgl p = bgl.a(600, 1200);
-   public static final int c = 5;
-   public static final int d = 5;
-   public static final float e = 1.5F;
-   private static final bgl q = bgl.a(600, 6000);
-   private static final bgl r = bgl.a(100, 300);
-   private static final btu s = btu.a().a($$0 -> !$$0.ag().equals(biw.U) && $$0.dL().B_().a($$0.cG()));
-   private static final float t = 3.0F;
-   public static final int f = 4;
-   public static final float g = 2.5F;
-   public static final float h = 1.0F;
-
-   protected static void a(bwo $$0, ase $$1) {
-      $$0.dN().a(bsj.R, p.a($$1));
-      $$0.dN().a(bsj.U, q.a($$1));
+   protected bwp(biu<? extends bwp> $$0, cpv $$1) {
+      super($$0, $$1);
+      this.ct = false;
    }
 
-   protected static bki<?> a(bki<bwo> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(cdh.a));
-      $$0.b(cdh.b);
-      $$0.f();
-      return $$0;
+   @Override
+   protected void a(asc $$0) {
+      this.a(bkm.a).a((double)a($$0::a));
    }
 
-   private static void b(bki<bwo> $$0) {
-      $$0.a(cdh.a, 0, ImmutableList.of(new bns(0.8F), new bku(2.0F), new bme(45, 90), new bmi(), new blf(bsj.O), new blf(bsj.R), new blf(bsj.U)));
+   @Override
+   protected void a_() {
+      super.a_();
+      this.an.a(bU, false);
    }
 
-   private static void c(bki<bwo> $$0) {
-      $$0.a(
-         cdh.b,
-         ImmutableList.of(
-            Pair.of(0, bmy.a(biw.bt, 6.0F, bgl.a(30, 60))),
-            Pair.of(0, new bkt(biw.U, 1.0F)),
-            Pair.of(1, new blm($$0x -> 1.25F)),
-            Pair.of(2, bkw.a(i, 1.25F)),
-            Pair.of(3, new bmv(ImmutableList.of(Pair.of(bmq.a(1.0F), 2), Pair.of(bnf.a(1.0F, 3), 2), Pair.of(new blj(30, 60), 1))))
-         ),
-         ImmutableSet.of(Pair.of(bsj.V, bsk.b), Pair.of(bsj.S, bsk.b))
-      );
+   public static bkl.a s() {
+      return gD().a(bkm.d, 0.175F).a(bkm.n, 0.5);
    }
 
-   private static void d(bki<bwo> $$0) {
-      $$0.a(
-         cdh.q,
-         ImmutableList.of(Pair.of(0, new bma(p, apf.jW)), Pair.of(1, new bmc<>(p, 5, 5, 1.5F, $$0x -> $$0x.gn() ? apf.jR : apf.jH))),
-         ImmutableSet.of(Pair.of(bsj.N, bsk.b), Pair.of(bsj.r, bsk.b), Pair.of(bsj.m, bsk.b), Pair.of(bsj.R, bsk.b))
-      );
+   public boolean t() {
+      return this.an.b(bU);
    }
 
-   private static void e(bki<bwo> $$0) {
-      $$0.a(
-         cdh.r,
-         ImmutableList.of(
-            Pair.of(
-               0,
-               new bmo(
-                  $$0x -> $$0x.gn() ? r : q, s, 3.0F, $$0x -> $$0x.m_() ? 1.0 : 2.5, $$0x -> $$0x.gn() ? apf.jU : apf.jK, $$0x -> $$0x.gn() ? apf.jV : apf.jL
-               )
-            ),
-            Pair.of(1, new bmn<>($$0x -> $$0x.gn() ? r.a() : q.a(), 4, 7, 1.25F, s, 20, $$0x -> $$0x.gn() ? apf.jT : apf.jJ))
-         ),
-         ImmutableSet.of(Pair.of(bsj.N, bsk.b), Pair.of(bsj.r, bsk.b), Pair.of(bsj.U, bsk.b))
-      );
+   public void w(boolean $$0) {
+      this.an.b(bU, $$0);
    }
 
-   public static void a(bwo $$0) {
-      $$0.dN().a(ImmutableList.of(cdh.r, cdh.q, cdh.b));
+   @Override
+   protected int Z_() {
+      return this.t() ? 17 : super.Z_();
    }
 
-   public static cmi a() {
-      return cmi.a(cjk.oI);
+   @Override
+   protected float a(bir $$0, float $$1) {
+      return $$0.b - (this.m_() ? 0.15625F : 0.3875F) * $$1;
+   }
+
+   @Override
+   protected void ex() {
+      super.ex();
+      if (this.t()) {
+         if (!this.dL().B) {
+            this.a(csw.cv);
+         }
+
+         this.w(false);
+      }
+   }
+
+   @Override
+   public void b(qw $$0) {
+      super.b($$0);
+      $$0.a("ChestedHorse", this.t());
+      if (this.t()) {
+         rc $$1 = new rc();
+
+         for (int $$2 = 2; $$2 < this.cp.b(); $$2++) {
+            cjf $$3 = this.cp.a($$2);
+            if (!$$3.b()) {
+               qw $$4 = new qw();
+               $$4.a("Slot", (byte)$$2);
+               $$3.b($$4);
+               $$1.add($$4);
+            }
+         }
+
+         $$0.a("Items", $$1);
+      }
+   }
+
+   @Override
+   public void a(qw $$0) {
+      super.a($$0);
+      this.w($$0.q("ChestedHorse"));
+      this.gz();
+      if (this.t()) {
+         rc $$1 = $$0.c("Items", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            qw $$3 = $$1.a($$2);
+            int $$4 = $$3.f("Slot") & 255;
+            if ($$4 >= 2 && $$4 < this.cp.b()) {
+               this.cp.a($$4, cjf.a($$3));
+            }
+         }
+      }
+
+      this.gA();
+   }
+
+   @Override
+   public bjy a_(int $$0) {
+      return $$0 == 499 ? new bjy() {
+         @Override
+         public cjf a() {
+            return bwp.this.t() ? new cjf(cji.er) : cjf.b;
+         }
+
+         @Override
+         public boolean a(cjf $$0) {
+            if ($$0.b()) {
+               if (bwp.this.t()) {
+                  bwp.this.w(false);
+                  bwp.this.gz();
+               }
+
+               return true;
+            } else if ($$0.a(cji.er)) {
+               if (!bwp.this.t()) {
+                  bwp.this.w(true);
+                  bwp.this.gz();
+               }
+
+               return true;
+            } else {
+               return false;
+            }
+         }
+      } : super.a_($$0);
+   }
+
+   @Override
+   public bgy b(cbu $$0, bgx $$1) {
+      boolean $$2 = !this.m_() && this.gs() && $$0.fH();
+      if (!this.bO() && !$$2) {
+         cjf $$3 = $$0.b($$1);
+         if (!$$3.b()) {
+            if (this.m($$3)) {
+               return this.c($$0, $$3);
+            }
+
+            if (!this.gs()) {
+               this.gJ();
+               return bgy.a(this.dL().B);
+            }
+
+            if (!this.t() && $$3.a(cji.er)) {
+               this.d($$0, $$3);
+               return bgy.a(this.dL().B);
+            }
+         }
+
+         return super.b($$0, $$1);
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   private void d(cbu $$0, cjf $$1) {
+      this.w(true);
+      this.gd();
+      if (!$$0.fS().d) {
+         $$1.h(1);
+      }
+
+      this.gz();
+   }
+
+   @Override
+   protected void gd() {
+      this.a(apd.gb, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
+   }
+
+   public int gl() {
+      return 5;
    }
 }

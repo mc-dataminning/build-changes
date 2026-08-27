@@ -1,54 +1,111 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class aja {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.trigger.failed.unprimed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.trigger.failed.invalid"));
+
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("time").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("set")
-                                    .then(du.a("day").executes($$0x -> a((dt)$$0x.getSource(), 1000))))
-                                 .then(du.a("noon").executes($$0x -> a((dt)$$0x.getSource(), 6000))))
-                              .then(du.a("night").executes($$0x -> a((dt)$$0x.getSource(), 13000))))
-                           .then(du.a("midnight").executes($$0x -> a((dt)$$0x.getSource(), 18000))))
-                        .then(du.a("time", fd.a()).executes($$0x -> a((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
-                  ))
-               .then(du.a("add").then(du.a("time", fd.a()).executes($$0x -> b((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+         (LiteralArgumentBuilder)du.a("trigger")
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("query")
-                        .then(du.a("daytime").executes($$0x -> c((dt)$$0x.getSource(), a(((dt)$$0x.getSource()).e())))))
-                     .then(du.a("gametime").executes($$0x -> c((dt)$$0x.getSource(), (int)(((dt)$$0x.getSource()).e().V() % 2147483647L)))))
-                  .then(du.a("day").executes($$0x -> c((dt)$$0x.getSource(), (int)(((dt)$$0x.getSource()).e().W() / 24000L % 2147483647L))))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("objective", el.a())
+                        .suggests(($$0x, $$1) -> a((dt)$$0x.getSource(), $$1))
+                        .executes($$0x -> a((dt)$$0x.getSource(), a(((dt)$$0x.getSource()).h(), el.a($$0x, "objective")))))
+                     .then(
+                        du.a("add")
+                           .then(
+                              du.a("value", IntegerArgumentType.integer())
+                                 .executes(
+                                    $$0x -> a(
+                                          (dt)$$0x.getSource(),
+                                          a(((dt)$$0x.getSource()).h(), el.a($$0x, "objective")),
+                                          IntegerArgumentType.getInteger($$0x, "value")
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(
+                     du.a("set")
+                        .then(
+                           du.a("value", IntegerArgumentType.integer())
+                              .executes(
+                                 $$0x -> b(
+                                       (dt)$$0x.getSource(),
+                                       a(((dt)$$0x.getSource()).h(), el.a($$0x, "objective")),
+                                       IntegerArgumentType.getInteger($$0x, "value")
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(aks $$0) {
-      return (int)($$0.W() % 24000L);
-   }
+   public static CompletableFuture<Suggestions> a(dt $$0, SuggestionsBuilder $$1) {
+      biq $$2 = $$0.f();
+      List<String> $$3 = Lists.newArrayList();
+      if ($$2 != null) {
+         eim $$4 = $$0.l().aF();
+         String $$5 = $$2.cx();
 
-   private static int c(dt $$0, int $$1) {
-      $$0.a(() -> tn.a("commands.time.query", $$1), false);
-      return $$1;
-   }
-
-   public static int a(dt $$0, int $$1) {
-      for (aks $$2 : $$0.l().F()) {
-         $$2.b((long)$$1);
+         for (eij $$6 : $$4.c()) {
+            if ($$6.c() == eip.b && $$4.b($$5, $$6)) {
+               eil $$7 = $$4.c($$5, $$6);
+               if (!$$7.g()) {
+                  $$3.add($$6.b());
+               }
+            }
+         }
       }
 
-      $$0.a(() -> tn.a("commands.time.set", $$1), true);
-      return a($$0.e());
+      return dw.b($$3, $$1);
    }
 
-   public static int b(dt $$0, int $$1) {
-      for (aks $$2 : $$0.l().F()) {
-         $$2.b($$2.W() + (long)$$1);
-      }
+   private static int a(dt $$0, eil $$1, int $$2) {
+      $$1.a($$2);
+      $$0.a(() -> tl.a("commands.trigger.add.success", $$1.d().e(), $$2), true);
+      return $$1.b();
+   }
 
-      int $$3 = a($$0.e());
-      $$0.a(() -> tn.a("commands.time.set", $$3), true);
-      return $$3;
+   private static int b(dt $$0, eil $$1, int $$2) {
+      $$1.b($$2);
+      $$0.a(() -> tl.a("commands.trigger.set.success", $$1.d().e(), $$2), true);
+      return $$2;
+   }
+
+   private static int a(dt $$0, eil $$1) {
+      $$1.a(1);
+      $$0.a(() -> tl.a("commands.trigger.simple.success", $$1.d().e()), true);
+      return $$1.b();
+   }
+
+   private static eil a(akr $$0, eij $$1) throws CommandSyntaxException {
+      if ($$1.c() != eip.b) {
+         throw b.create();
+      } else {
+         eim $$2 = $$0.gg();
+         String $$3 = $$0.cx();
+         if (!$$2.b($$3, $$1)) {
+            throw a.create();
+         } else {
+            eil $$4 = $$2.c($$3, $$1);
+            if ($$4.g()) {
+               throw a.create();
+            } else {
+               $$4.a(true);
+               return $$4;
+            }
+         }
+      }
    }
 }

@@ -1,55 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public record efz(Optional<Long> b, ecr c) implements efr {
+public record efz(Optional<Boolean> b, Optional<Boolean> c) implements efp {
    public static final Codec<efz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arh.a(Codec.LONG, "period").forGetter(efz::c), ecr.a.fieldOf("value").forGetter(efz::d)).apply($$0, efz::new)
+      $$0 -> $$0.group(arf.a(Codec.BOOL, "raining").forGetter(efz::d), arf.a(Codec.BOOL, "thundering").forGetter(efz::e)).apply($$0, efz::new)
    );
 
    @Override
-   public efs b() {
-      return eft.r;
+   public efq b() {
+      return efr.p;
    }
 
-   @Override
-   public Set<efa<?>> a() {
-      return this.c.a();
+   public boolean a(ecq $$0) {
+      akq $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.Z() ? false : !this.c.isPresent() || this.c.get() == $$1.Y();
    }
 
-   public boolean a(ecs $$0) {
-      aks $$1 = $$0.d();
-      long $$2 = $$1.W();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   public static efz.a c() {
+      return new efz.a();
    }
 
-   public static efz.a a(ecr $$0) {
-      return new efz.a($$0);
-   }
-
-   public Optional<Long> c() {
+   public Optional<Boolean> d() {
       return this.b;
    }
 
-   public ecr d() {
+   public Optional<Boolean> e() {
       return this.c;
    }
 
-   public static class a implements efr.a {
-      private Optional<Long> a = Optional.empty();
-      private final ecr b;
+   public static class a implements efp.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
 
-      public a(ecr $$0) {
-         this.b = $$0;
+      public efz.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
       }
 
-      public efz.a a(long $$0) {
-         this.a = Optional.of($$0);
+      public efz.a b(boolean $$0) {
+         this.b = Optional.of($$0);
          return this;
       }
 

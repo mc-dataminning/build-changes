@@ -1,21 +1,25 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dmm implements dmb {
-   protected final ib f;
+public class dmm implements dlz {
+   public static final Codec<dmm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hy.v(16).optionalFieldOf("offset", hy.g).forGetter($$0x -> $$0x.e), dfj.b.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, dmm::new)
+   );
+   private final hy e;
+   private final dfj f;
 
-   protected static <P extends dmm> P1<Mu<P>, ib> a(Instance<P> $$0) {
-      return $$0.group(ib.v(16).optionalFieldOf("offset", ib.g).forGetter($$0x -> $$0x.f));
+   protected dmm(hy $$0, dfj $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected dmm(ib $$0) {
-      this.f = $$0;
+   public boolean a(cqp $$0, gw $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
-   public final boolean a(cqr $$0, gw $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public dma<?> a() {
+      return dma.g;
    }
-
-   protected abstract boolean a(dfl var1);
 }

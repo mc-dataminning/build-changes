@@ -1,41 +1,37 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.List;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record un(String a, @Nullable fm b) implements uo {
+public record un(String a, @Nullable gc b) implements um {
    public un(String $$0) {
       this($$0, a($$0));
    }
 
    @Nullable
-   private static fm a(String $$0) {
+   private static gc a(String $$0) {
       try {
-         return fk.a().a(new StringReader($$0));
+         gd $$1 = new gd(new StringReader($$0));
+         return $$1.t();
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
    @Override
-   public Stream<qy> getData(dt $$0) {
+   public Stream<qw> getData(dt $$0) throws CommandSyntaxException {
       if (this.b != null) {
-         aks $$1 = $$0.e();
-         gw $$2 = this.b.c($$0);
-         if ($$1.o($$2)) {
-            dcx $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.m());
-            }
-         }
+         List<? extends biq> $$1 = this.b.b($$0);
+         return $$1.stream().map(cn::b);
+      } else {
+         return Stream.empty();
       }
-
-      return Stream.empty();
    }
 
    @Override
    public String toString() {
-      return "block=" + this.a;
+      return "entity=" + this.a;
    }
 
    @Override

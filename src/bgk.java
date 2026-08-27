@@ -1,57 +1,49 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
 
 public class bgk extends bgd {
    public static final Codec<bgk> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bgk::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
+      $$0 -> $$0.group(bfi.b(bgd.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bgk::new)
+   );
+   private final bfi<bgd> b;
+   private final int f;
+   private final int g;
 
-   private bgk(float $$0, float $$1) {
+   public bgk(bfi<bgd> $$0) {
       this.b = $$0;
-      this.d = $$1;
-   }
+      List<bfk.b<bgd>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
 
-   public static bgk b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bgk($$0, $$1);
+      for (bfk.b<bgd> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
       }
+
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public float a(ase $$0) {
-      return ary.b($$0, this.b, this.d);
+   public int a(asc $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
    }
 
    @Override
-   public float a() {
-      return this.b;
+   public int a() {
+      return this.f;
    }
 
    @Override
-   public float b() {
-      return this.d;
+   public int b() {
+      return this.g;
    }
 
    @Override
    public bge<?> c() {
-      return bge.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+      return bge.e;
    }
 }

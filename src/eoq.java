@@ -1,167 +1,231 @@
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eoq extends gfd {
-   private static final aey a = new aey("icon/unseen_notification");
-   private static final aey b = new aey("icon/news");
-   private static final aey c = new aey("icon/invite");
-   private static final aey y = new aey("icon/trial_available");
-   private final CompletableFuture<Boolean> z = emb.a().thenApply($$0 -> $$0.a() == emb.b.a);
+public class eoq extends gfb {
+   static final aew a = new aew("pending_invite/accept_highlighted");
+   static final aew b = new aew("pending_invite/accept");
+   static final aew c = new aew("pending_invite/reject_highlighted");
+   static final aew y = new aew("pending_invite/reject");
+   private static final Logger z = LogUtils.getLogger();
+   private static final tl A = tl.c("mco.invites.nopending");
+   static final tl B = tl.c("mco.invites.button.accept");
+   static final tl C = tl.c("mco.invites.button.reject");
+   private final eyk D;
+   private final CompletableFuture<List<emp>> E = CompletableFuture.supplyAsync(() -> {
+      try {
+         return emf.a().h().a;
+      } catch (ens var1x) {
+         z.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, ac.g());
    @Nullable
-   private epg.c A;
-   @Nullable
-   private eoq.a B;
-   private volatile int C;
-   private static boolean D;
-   private static boolean E;
-   private static boolean F;
-   private final eoq.a G = new eoq.a() {
-      @Override
-      public epg.c a(enx $$0) {
-         epg.c $$1 = $$0.a.a();
-         eoq.this.a($$0, $$1);
-         eoq.this.b($$0, $$1);
-         return $$1;
-      }
+   tl F;
+   eoq.b G;
+   int H = -1;
+   private esq I;
+   private esq J;
 
-      @Override
-      public boolean a() {
-         return true;
-      }
-   };
-   private final eoq.a H = new eoq.a() {
-      @Override
-      public epg.c a(enx $$0) {
-         epg.c $$1 = $$0.a.a();
-         eoq.this.b($$0, $$1);
-         return $$1;
-      }
-
-      @Override
-      public boolean a() {
-         return false;
-      }
-   };
-
-   public eoq() {
-      super(eqp.a);
+   public eoq(eyk $$0, tl $$1) {
+      super($$1);
+      this.D = $$0;
    }
 
    @Override
    public void aH_() {
-      if (this.A != null) {
-         this.A.a();
+      ema.d();
+      this.G = new eoq.b();
+      this.E.thenAcceptAsync($$0 -> {
+         List<eoq.a> $$1 = $$0.stream().map($$0x -> new eoq.a($$0x)).toList();
+         this.G.a($$1);
+      }, this.j);
+      this.d(this.G);
+      this.I = this.d(esq.a(B, $$0 -> {
+         this.a(this.H, true);
+         this.H = -1;
+         this.D();
+      }).a(this.g / 2 - 174, this.h - 32, 100, 20).a());
+      this.d(esq.a(tk.d, $$0 -> this.az_()).a(this.g / 2 - 50, this.h - 32, 100, 20).a());
+      this.J = this.d(esq.a(C, $$0 -> {
+         this.a(this.H, false);
+         this.H = -1;
+         this.D();
+      }).a(this.g / 2 + 74, this.h - 32, 100, 20).a());
+      this.D();
+   }
+
+   @Override
+   public void az_() {
+      this.f.a(this.D);
+   }
+
+   void a(int $$0, boolean $$1) {
+      if ($$0 < this.G.k()) {
+         String $$2 = this.G.i().get($$0).c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               emf $$2x = emf.a();
+               if ($$1) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
+               }
+
+               return true;
+            } catch (ens var3x) {
+               z.error("Couldn't handle invite", var3x);
+               return false;
+            }
+         }, ac.g()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.G.b($$0);
+               env $$3 = this.f.aY();
+               if ($$1) {
+                  $$3.c.a();
+               }
+
+               $$3.d.a();
+            }
+         }, this.j);
       }
    }
 
    @Override
-   public void aA_() {
-      super.aA_();
-      this.f.aY().b.a();
-   }
-
-   @Nullable
-   private eoq.a D() {
-      boolean $$0 = this.F() && this.z.getNow(false);
-      if (!$$0) {
-         return null;
-      } else {
-         return this.E() ? this.G : this.H;
-      }
-   }
-
-   @Override
-   public void c() {
-      eoq.a $$0 = this.D();
-      if (!Objects.equals(this.B, $$0)) {
-         this.B = $$0;
-         if (this.B != null) {
-            this.A = this.B.a(this.f.aY());
-         } else {
-            this.A = null;
-         }
-      }
-
-      if (this.A != null) {
-         this.A.b();
-      }
-   }
-
-   private boolean E() {
-      return this.f.m.P().c();
-   }
-
-   private boolean F() {
-      return this.f.y instanceof eyr;
-   }
-
-   @Override
-   public void a(esh $$0, int $$1, int $$2, float $$3) {
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.z.getNow(false)) {
-         this.c($$0);
+      this.F = null;
+      $$0.a(this.i, this.e, this.g / 2, 12, -1);
+      if (this.F != null) {
+         $$0.a(this.i, this.F, $$1, $$2);
+      }
+
+      if (this.E.isDone() && this.G.k() == 0) {
+         $$0.a(this.i, A, this.g / 2, this.h / 2 - 20, -1);
       }
    }
 
    @Override
-   public void b(esh $$0, int $$1, int $$2, float $$3) {
+   void D() {
+      this.I.j = this.a(this.H);
+      this.J.j = this.a(this.H);
    }
 
-   private void c(esh $$0) {
-      int $$1 = this.C;
-      int $$2 = 24;
-      int $$3 = this.h / 4 + 48;
-      int $$4 = this.g / 2 + 100;
-      int $$5 = $$3 + 48 + 2;
-      int $$6 = $$4 - 3;
-      if (F) {
-         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
-         $$6 -= 16;
+   private boolean a(int $$0) {
+      return $$0 != -1;
+   }
+
+   class a extends etm.a<eoq.a> {
+      private static final int b = 38;
+      final emp c;
+      private final List<enz> d;
+
+      a(emp $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new eoq.a.a(), new eoq.a.b());
       }
 
-      if (this.B != null && this.B.a()) {
-         if (E) {
-            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if ($$1 != 0) {
-            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if (D) {
-            $$0.a(y, $$6 - 10, $$5 + 4, 8, 8);
-         }
+      @Override
+      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
       }
-   }
 
-   void a(enx $$0, epg.c $$1) {
-      $$1.a($$0.d, $$0x -> this.C = $$0x);
-      $$1.a($$0.e, $$0x -> D = $$0x);
-      $$1.a($$0.f, $$1x -> {
-         $$0.g.a($$1x);
-         E = $$0.g.a();
-      });
-   }
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         enz.a(eoq.this.G, this, this.d, $$2, $$0, $$1);
+         return true;
+      }
 
-   void b(enx $$0, epg.c $$1) {
-      $$1.a($$0.b, $$0x -> {
-         F = false;
+      private void a(esf $$0, emp $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.a(eoq.this.i, $$1.b, $$2 + 38, $$3 + 1, -1, false);
+         $$0.a(eoq.this.i, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
+         $$0.a(eoq.this.i, epm.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
+         enz.a($$0, this.d, eoq.this.G, $$2, $$3, $$4, $$5);
+         epm.a($$0, $$2, $$3, 32, $$1.d);
+      }
 
-         for (emx $$1x : $$0x) {
-            if (!$$1x.a()) {
-               F = true;
-               break;
+      @Override
+      public tl a() {
+         tl $$0 = tk.b(tl.b(this.c.b), tl.b(this.c.c), epm.a(this.c.e));
+         return tl.a("narrator.select", $$0);
+      }
+
+      class a extends enz {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(esf $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? eoq.a : eoq.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               eoq.this.F = eoq.B;
             }
          }
-      });
+
+         @Override
+         public void a(int $$0) {
+            eoq.this.a($$0, true);
+         }
+      }
+
+      class b extends enz {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(esf $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? eoq.c : eoq.y, $$1, $$2, 18, 18);
+            if ($$3) {
+               eoq.this.F = eoq.C;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            eoq.this.a($$0, false);
+         }
+      }
    }
 
-   interface a {
-      epg.c a(enx var1);
+   class b extends gfa<eoq.a> {
+      public b() {
+         super(eoq.this.g, eoq.this.h, 32, eoq.this.h - 40, 36);
+      }
 
-      boolean a();
+      public void b(int $$0) {
+         this.j($$0);
+      }
+
+      @Override
+      public int a() {
+         return this.k() * 36;
+      }
+
+      @Override
+      public int b() {
+         return 260;
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         this.c($$0);
+      }
+
+      public void c(int $$0) {
+         eoq.this.H = $$0;
+         eoq.this.D();
+      }
+
+      public void a(@Nullable eoq.a $$0) {
+         super.a($$0);
+         eoq.this.H = this.i().indexOf($$0);
+         eoq.this.D();
+      }
    }
 }

@@ -1,58 +1,57 @@
-import com.google.common.collect.ImmutableList;
-
-public class fgy<T extends bzq> extends ffx<T> {
-   private static final String a = "lid";
-   private static final String b = "base";
-   private final fie f;
-   private final fie g;
-   private final fie h;
-
-   public fgy(fie $$0) {
-      super(foo::f);
-      this.g = $$0.b("lid");
-      this.f = $$0.b("base");
-      this.h = $$0.b("head");
+public class fgy<T extends bji & bzm> extends ffq<T> {
+   public fgy(fic $$0) {
+      super($$0);
    }
 
-   public static fik a() {
-      fim $$0 = new fim();
-      fin $$1 = $$0.a();
-      $$1.a("lid", fij.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fig.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", fij.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fig.a(0.0F, 24.0F, 0.0F));
-      $$1.a("head", fij.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fig.a(0.0F, 12.0F, 0.0F));
-      return fik.a($$0, 64, 64);
+   public static fii c() {
+      fik $$0 = ffq.a(fig.a, 0.0F);
+      fil $$1 = $$0.a();
+      $$1.a("right_arm", fih.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fie.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fih.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fie.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fih.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fie.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fih.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fie.a(2.0F, 12.0F, 0.0F));
+      return fii.a($$0, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = ffq.a.a;
+      this.r = ffq.a.a;
+      cjf $$4 = $$0.b(bgx.a);
+      if ($$4.a(cji.nG) && $$0.fV()) {
+         if ($$0.fl() == bja.b) {
+            this.s = ffq.a.d;
+         } else {
+            this.r = ffq.a.d;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ah;
-      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
-      float $$8 = -1.0F + ary.a($$7);
-      float $$9 = 0.0F;
-      if ($$7 > (float) Math.PI) {
-         $$9 = ary.a($$3 * 0.1F) * 0.7F;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      cjf $$6 = $$0.eS();
+      if ($$0.fV() && ($$6.b() || !$$6.a(cji.nG))) {
+         float $$7 = arw.a(this.c * (float) Math.PI);
+         float $$8 = arw.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
+         this.n.g = 0.0F;
+         this.o.g = 0.0F;
+         this.n.f = -(0.1F - $$7 * 0.6F);
+         this.o.f = 0.1F - $$7 * 0.6F;
+         this.n.e = (float) (-Math.PI / 2);
+         this.o.e = (float) (-Math.PI / 2);
+         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
+         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
+         fed.a(this.n, this.o, $$3);
       }
-
-      this.g.a(0.0F, 16.0F + ary.a($$7) * 8.0F + $$9, 0.0F);
-      if ($$0.E($$6) > 0.3F) {
-         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
-      } else {
-         this.g.f = 0.0F;
-      }
-
-      this.h.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.f = ($$0.aW - 180.0F - $$0.aU) * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public Iterable<fie> d() {
-      return ImmutableList.of(this.f, this.g);
-   }
-
-   public fie b() {
-      return this.g;
-   }
-
-   public fie c() {
-      return this.h;
+   public void a(bja $$0, elp $$1) {
+      float $$2 = $$0 == bja.b ? 1.0F : -1.0F;
+      fic $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
    }
 }

@@ -1,43 +1,19 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.google.gson.annotations.SerializedName;
 
-public class ene {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final Object[] d;
+public class ene extends enl implements enf {
+   @SerializedName("seed")
+   private final String a;
+   @SerializedName("worldTemplateId")
+   private final long b;
+   @SerializedName("levelType")
+   private final int c;
+   @SerializedName("generateStructures")
+   private final boolean d;
 
-   private ene(String $$0, @Nullable Object[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public tn a(tn $$0) {
-      if (!gam.a(this.c)) {
-         return $$0;
-      } else {
-         return this.d == null ? tn.c(this.c) : tn.a(this.c, this.d);
-      }
-   }
-
-   public static ene a(JsonObject $$0) {
-      String $$1 = epk.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
-
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
-         }
-      } else {
-         $$5 = null;
-      }
-
-      return new ene($$1, $$5);
+   public ene(String $$0, long $$1, int $$2, boolean $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 }

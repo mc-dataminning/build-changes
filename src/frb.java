@@ -1,71 +1,76 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-class frb {
-   private final Map<gw, dcx> a;
+public class frb {
+   private final Long2ObjectMap<frb.a> a = new Long2ObjectOpenHashMap();
+
    @Nullable
-   private final List<dia<dfl>> b;
-   private final boolean c;
-   private final dhs d;
+   public fra a(cpv $$0, gw $$1, gw $$2, int $$3) {
+      int $$4 = hw.a($$1.u() - $$3);
+      int $$5 = hw.a($$1.w() - $$3);
+      int $$6 = hw.a($$2.u() + $$3);
+      int $$7 = hw.a($$2.w() + $$3);
+      frb.a[][] $$8 = new frb.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   frb(dhs $$0) {
-      this.d = $$0;
-      this.c = $$0.F().af();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dho) {
-         this.b = null;
-      } else {
-         dht[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dht $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (frb.a)this.a.computeIfAbsent(cpc.c($$9, $$10), $$1x -> new frb.a($$0.d(cpc.a($$1x), cpc.b($$1x))));
          }
+      }
+
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         fqz[][] $$11 = new fqz[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
+         }
+
+         return new fra($$0, $$4, $$5, $$11);
       }
    }
 
-   @Nullable
-   public dcx a(gw $$0) {
-      return this.a.get($$0);
+   private static boolean a(gw $$0, gw $$1, int $$2, int $$3, frb.a[][] $$4) {
+      int $$5 = hw.a($$0.u());
+      int $$6 = hw.a($$0.w());
+      int $$7 = hw.a($$1.u());
+      int $$8 = hw.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dhq $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public dfl b(gw $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dfl $$4 = null;
-         if ($$2 == 60) {
-            $$4 = csy.hW.n();
+   static final class a {
+      private final dhq a;
+      @Nullable
+      private fqz b;
+
+      a(dhq $$0) {
+         this.a = $$0;
+      }
+
+      public dhq a() {
+         return this.a;
+      }
+
+      public fqz b() {
+         if (this.b == null) {
+            this.b = new fqz(this.a);
          }
 
-         if ($$2 == 70) {
-            $$4 = dkl.a($$1, $$3);
-         }
-
-         return $$4 == null ? csy.a.n() : $$4;
-      } else if (this.b == null) {
-         return csy.a.n();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dia<dfl> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return csy.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
-         }
+         return this.b;
       }
    }
 }

@@ -1,93 +1,186 @@
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.List;
 import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public abstract class anb implements ani {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "vanilla";
-   private final amk c;
-   private final amm d;
-   private final aey e;
-   private final ehf f;
+public class anb {
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final anb.c c;
+   private final tl d;
+   private final anb.a e;
+   private final anb.b f;
+   private final boolean g;
+   private final boolean h;
+   private final anf i;
 
-   public anb(amk $$0, amm $$1, aey $$2, ehf $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   @Nullable
+   public static anb a(String $$0, tl $$1, boolean $$2, anb.c $$3, ami $$4, anb.b $$5, anf $$6) {
+      int $$7 = aa.b().a($$4);
+      anb.a $$8 = a($$0, $$3, $$7);
+      return $$8 != null ? a($$0, $$1, $$2, $$3, $$8, $$5, false, $$6) : null;
    }
 
-   @Override
-   public void a(Consumer<and> $$0) {
-      and $$1 = this.a(this.d);
-      if ($$1 != null) {
-         $$0.accept($$1);
-      }
+   public static anb a(String $$0, tl $$1, boolean $$2, anb.c $$3, anb.a $$4, anb.b $$5, boolean $$6, anf $$7) {
+      return new anb($$0, $$2, $$3, $$1, $$4, $$5, $$6, $$7);
+   }
 
-      this.b($$0);
+   private anb(String $$0, boolean $$1, anb.c $$2, tl $$3, anb.a $$4, anb.b $$5, boolean $$6, anf $$7) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.g = $$1;
+      this.f = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
    @Nullable
-   protected abstract and a(amj var1);
+   public static anb.a a(String $$0, anb.c $$1, int $$2) {
+      try {
+         anb.a var11;
+         try (amh $$3 = $$1.a($$0)) {
+            amv $$4 = $$3.a(amv.b);
+            if ($$4 == null) {
+               a.warn("Missing metadata in pack {}", $$0);
+               return null;
+            }
 
-   protected abstract tn a(String var1);
+            ame $$5 = $$3.a(ame.a);
+            cec $$6 = $$5 != null ? $$5.a() : cec.a();
+            arp<Integer> $$7 = a($$0, $$4);
+            anc $$8 = anc.a($$7, $$2);
+            amg $$9 = $$3.a(amg.a);
+            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
+            var11 = new anb.a($$4.a(), $$8, $$6, $$10);
+         }
 
-   public amm a() {
+         return var11;
+      } catch (Exception var14) {
+         a.warn("Failed to read pack {} metadata", $$0, var14);
+         return null;
+      }
+   }
+
+   private static arp<Integer> a(String $$0, amv $$1) {
+      int $$2 = $$1.b();
+      if ($$1.c().isEmpty()) {
+         return new arp<>($$2);
+      } else {
+         arp<Integer> $$3 = $$1.c().get();
+         if (!$$3.a($$2)) {
+            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
+            return new arp<>($$2);
+         } else {
+            return $$3;
+         }
+      }
+   }
+
+   public tl a() {
       return this.d;
    }
 
-   private void b(Consumer<and> $$0) {
-      Map<String, Function<String, and>> $$1 = new HashMap<>();
-      this.a($$1::put);
-      $$1.forEach(($$1x, $$2) -> {
-         and $$3 = $$2.apply($$1x);
-         if ($$3 != null) {
-            $$0.accept($$3);
-         }
-      });
+   public tl b() {
+      return this.e.a();
    }
 
-   protected void a(BiConsumer<String, Function<String, and>> $$0) {
-      this.d.a(this.c, this.e, $$1 -> this.a($$1, $$0));
+   public tl a(boolean $$0) {
+      return tn.a(this.i.a(tl.b(this.b)))
+         .a($$1 -> $$1.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.b)).a(new tq(tq.a.a, tl.h().b(this.d).f("\n").b(this.e.a))));
    }
 
-   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, and>> $$1) {
-      if ($$0 != null && Files.isDirectory($$0)) {
-         try {
-            anc.a($$0, this.f, true, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
-         } catch (IOException var4) {
-            b.warn("Failed to discover packs in {}", $$0, var4);
-         }
+   public anc c() {
+      return this.e.b();
+   }
+
+   public cec d() {
+      return this.e.c();
+   }
+
+   public amh e() {
+      return this.c.a(this.b, this.e);
+   }
+
+   public String f() {
+      return this.b;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public anb.b i() {
+      return this.f;
+   }
+
+   public anf j() {
+      return this.i;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof anb $$1) ? false : this.b.equals($$1.b);
       }
    }
 
-   private static String a(Path $$0) {
-      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   @Nullable
-   protected abstract and a(String var1, and.c var2, tn var3);
+   public static record a(tl a, anc b, cec c, List<String> d) {
+   }
 
-   protected static and.c b(final amj $$0) {
-      return new and.c() {
-         @Override
-         public amj a(String $$0x) {
-            return $$0;
-         }
+   public static enum b {
+      a,
+      b;
 
-         @Override
-         public amj a(String $$0x, and.a $$1) {
-            return $$0;
+      public <T> int a(List<T> $$0, T $$1, Function<T, anb> $$2, boolean $$3) {
+         anb.b $$4 = $$3 ? this.a() : this;
+         if ($$4 == b) {
+            int $$5;
+            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
+               anb $$6 = $$2.apply($$0.get($$5));
+               if (!$$6.h() || $$6.i() != this) {
+                  break;
+               }
+            }
+
+            $$0.add($$5, $$1);
+            return $$5;
+         } else {
+            int $$7;
+            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
+               anb $$8 = $$2.apply($$0.get($$7));
+               if (!$$8.h() || $$8.i() != this) {
+                  break;
+               }
+            }
+
+            $$0.add($$7 + 1, $$1);
+            return $$7 + 1;
          }
-      };
+      }
+
+      public anb.b a() {
+         return this == a ? b : a;
+      }
+   }
+
+   public interface c {
+      amh a(String var1);
+
+      amh a(String var1, anb.a var2);
    }
 }

@@ -1,40 +1,34 @@
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class zy implements vf<wy> {
-   private final eik a;
-   private final String b;
+public class zy implements vd<ww> {
+   private final int a;
+   private final int b;
 
-   public zy(eik $$0, @Nullable eil $$1) {
-      this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
+   public zy(biq $$0, @Nullable biq $$1) {
+      this.a = $$0.ah();
+      this.b = $$1 != null ? $$1.ah() : 0;
    }
 
-   public zy(sq $$0) {
-      this.a = $$0.a(eik.u);
-      this.b = $$0.r();
+   public zy(so $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(eik::a, this.a);
-      $$0.a(this.b);
+   public void a(so $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public eik a() {
+   public int a() {
       return this.a;
    }
 
-   @Nullable
-   public String d() {
-      return Objects.equals(this.b, "") ? null : this.b;
+   public int d() {
+      return this.b;
    }
 }

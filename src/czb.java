@@ -1,76 +1,73 @@
-import javax.annotation.Nullable;
+public class czb extends cut {
+   public static final dga a = dfz.s;
+   public static final dgj d = dfz.aA;
 
-public class czb extends cza {
-   public static final dgf e = cwq.aC;
-   public static final dgc f = cza.a;
-
-   protected czb(dfk.d $$0) {
+   protected czb(dfi.d $$0) {
       super($$0);
-      this.k(this.C.b().a(e, hc.c).a(f, Boolean.valueOf(true)));
+      this.k(this.C.b().a(aC, ha.c).a(d, Integer.valueOf(1)).a(a, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public String f() {
-      return this.k().a();
-   }
-
-   @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return dbx.h($$0);
-   }
-
-   @Override
-   public boolean a(dfl $$0, cqa $$1, gw $$2) {
-      return csy.cq.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
-      return csy.cq.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dfl a(clp $$0) {
-      dfl $$1 = csy.cq.a($$0);
-      return $$1 == null ? null : this.n().a(e, $$1.c(e));
-   }
-
-   @Override
-   public void a(dfl $$0, cpx $$1, gw $$2, ase $$3) {
-      if ($$0.c(f)) {
-         hc $$4 = $$0.c(e).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(this.i, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+      if (!$$3.fS().e) {
+         return bgy.d;
+      } else {
+         $$1.a($$2, $$0.a(d), 3);
+         return bgy.a($$1.B);
       }
    }
 
    @Override
-   protected boolean a(cpx $$0, gw $$1, dfl $$2) {
-      hc $$3 = $$2.c(e).g();
-      return $$0.b($$1.a($$3), $$3);
+   protected int g(dfj $$0) {
+      return $$0.c(d) * 2;
    }
 
    @Override
-   public int a(dfl $$0, cpd $$1, gw $$2, hc $$3) {
-      return $$0.c(f) && $$0.c(e) != $$3 ? 15 : 0;
+   public dfj a(cln $$0) {
+      dfj $$1 = super.a($$0);
+      return $$1.a(a, Boolean.valueOf(this.b($$0.q(), $$0.a(), $$1)));
    }
 
    @Override
-   public dfl a(dfl $$0, czj $$1) {
-      return csy.cq.a($$0, $$1);
+   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$1 == ha.a && !this.a((cpy)$$3, $$5, $$2)) {
+         return csw.a.n();
+      } else {
+         return !$$3.w_() && $$1.o() != $$0.c(aC).o() ? $$0.a(a, Boolean.valueOf(this.b($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   public dfl a(dfl $$0, cxs $$1) {
-      return csy.cq.a($$0, $$1);
+   public boolean b(cpy $$0, gw $$1, dfj $$2) {
+      return this.a((cql)$$0, $$1, $$2) > 0;
    }
 
    @Override
-   protected void a(dfm.a<csx, dfl> $$0) {
-      $$0.a(e, f);
+   protected boolean a() {
+      return true;
+   }
+
+   @Override
+   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
+      if ($$0.c(c)) {
+         ha $$4 = $$0.c(aC);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(d) * 2 - 1);
+         }
+
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(ip.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(aC, d, a, c);
    }
 }

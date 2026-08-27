@@ -1,106 +1,84 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Locale;
-import org.slf4j.Logger;
+public abstract class dvg extends dvm {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public class dvg extends dvo {
-   private static final Logger d = LogUtils.getLogger();
-   protected final dwr a;
-   protected gw b;
-   private final int h;
-   protected final czj c;
-   private final List<dwm> i = Lists.newArrayList();
-   private final dze j;
-
-   public dvg(dze $$0, dwr $$1, gw $$2, int $$3, czj $$4, dvc $$5) {
-      super(dwb.ad, 0, $$5);
-      this.j = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.h = $$3;
-      this.c = $$4;
+   protected dvg(dvz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ha $$7) {
+      super($$0, 0, dvm.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
    }
 
-   public dvg(dwa $$0, qy $$1) {
-      super(dwb.ad, $$1);
-      this.j = $$0.c();
-      this.b = new gw($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
-      this.h = $$1.h("ground_level_delta");
-      DynamicOps<rs> $$2 = aew.a(rk.a, $$0.b());
-      this.a = (dwr)dwr.e
-         .parse($$2, $$1.p("pool_element"))
-         .resultOrPartial(d::error)
-         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
-      this.c = czj.valueOf($$1.l("rotation"));
-      this.f = this.a.a(this.j, this.b, this.c);
-      re $$3 = $$1.c("junctions", 10);
-      this.i.clear();
-      $$3.forEach($$1x -> this.i.add(dwm.a(new Dynamic($$2, $$1x))));
+   protected dvg(dvz $$0, qw $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
    }
 
    @Override
-   protected void a(dwa $$0, qy $$1) {
-      $$1.a("PosX", this.b.u());
-      $$1.a("PosY", this.b.v());
-      $$1.a("PosZ", this.b.w());
-      $$1.a("ground_level_delta", this.h);
-      DynamicOps<rs> $$2 = aew.a(rk.a, $$0.b());
-      dwr.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
-      $$1.a("rotation", this.c.name());
-      re $$3 = new re();
+   protected void a(dvy $$0, qw $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
+   }
 
-      for (dwm $$4 : this.i) {
-         $$3.add((rs)$$4.a($$2).getValue());
+   protected boolean a(cpw $$0, dva $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         gw.a $$5 = new gw.a();
+
+         for (int $$6 = this.f.i(); $$6 <= this.f.l(); $$6++) {
+            for (int $$7 = this.f.g(); $$7 <= this.f.j(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(dks.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.h() + $$2, 0);
+            return true;
+         }
       }
-
-      $$1.a("junctions", $$3);
    }
 
-   @Override
-   public void a(cqr $$0, cqp $$1, dhi $$2, ase $$3, dvc $$4, cpe $$5, gw $$6) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
-   }
+   protected boolean a(cpw $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.aj();
+         boolean $$3 = false;
+         gw.a $$4 = new gw.a();
 
-   public void a(cqr $$0, cqp $$1, dhi $$2, ase $$3, dvc $$4, gw $$5, boolean $$6) {
-      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
-   }
+         for (int $$5 = this.f.i(); $$5 <= this.f.l(); $$5++) {
+            for (int $$6 = this.f.g(); $$6 <= this.f.j(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(dks.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.b = this.b.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public czj a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
-   }
-
-   public dwr b() {
-      return this.a;
-   }
-
-   public gw c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(dwm $$0) {
-      this.i.add($$0);
-   }
-
-   public List<dwm> e() {
-      return this.i;
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.h() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

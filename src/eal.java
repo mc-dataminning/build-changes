@@ -1,61 +1,93 @@
-public class eal extends ean {
-   @Override
-   public cjc a() {
-      return cjk.a;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public abstract class eal {
+   public static final hk<eam> c = new hk<>();
+   protected final dfk<eal, eam> d;
+   private eam a;
+   private final he.c<eal> b = jb.d.f(this);
+
+   protected eal() {
+      dfk.a<eal, eam> $$0 = new dfk.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(eal::g, eam::new);
+      this.f(this.d.b());
    }
 
-   @Override
-   public boolean a(eao $$0, cpd $$1, gw $$2, ean $$3, hc $$4) {
-      return true;
+   protected void a(dfk.a<eal, eam> $$0) {
    }
 
-   @Override
-   public ehp a(cpd $$0, gw $$1, eao $$2) {
-      return ehp.b;
+   public dfk<eal, eam> f() {
+      return this.d;
    }
 
-   @Override
-   public int a(cqa $$0) {
-      return 0;
+   protected final void f(eam $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected boolean b() {
-      return true;
+   public final eam g() {
+      return this.a;
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
+   public abstract cja a();
+
+   protected void a(cpv $$0, gw $$1, eam $$2, asc $$3) {
    }
 
-   @Override
-   public float a(eao $$0, cpd $$1, gw $$2) {
-      return 0.0F;
+   protected void b(cpv $$0, gw $$1, eam $$2) {
    }
 
-   @Override
-   public float a(eao $$0) {
-      return 0.0F;
+   protected void b(cpv $$0, gw $$1, eam $$2, asc $$3) {
    }
 
-   @Override
-   protected dfl b(eao $$0) {
-      return csy.a.n();
+   @Nullable
+   protected it h() {
+      return null;
    }
 
-   @Override
-   public boolean c(eao $$0) {
+   protected abstract boolean a(eam var1, cpb var2, gw var3, eal var4, ha var5);
+
+   protected abstract ehn a(cpb var1, gw var2, eam var3);
+
+   public abstract int a(cpy var1);
+
+   protected boolean i() {
       return false;
    }
 
-   @Override
-   public int d(eao $$0) {
-      return 0;
+   protected boolean b() {
+      return false;
    }
 
-   @Override
-   public eii b(eao $$0, cpd $$1, gw $$2) {
-      return eif.a();
+   protected abstract float c();
+
+   public abstract float a(eam var1, cpb var2, gw var3);
+
+   public abstract float a(eam var1);
+
+   protected abstract dfj b(eam var1);
+
+   public abstract boolean c(eam var1);
+
+   public abstract int d(eam var1);
+
+   public boolean a(eal $$0) {
+      return $$0 == this;
+   }
+
+   @Deprecated
+   public boolean a(aqh<eal> $$0) {
+      return this.b.a($$0);
+   }
+
+   public abstract eig b(eam var1, cpb var2, gw var3);
+
+   public Optional<apc> j() {
+      return Optional.empty();
+   }
+
+   @Deprecated
+   public he.c<eal> k() {
+      return this.b;
    }
 }

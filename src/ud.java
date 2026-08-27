@@ -1,44 +1,71 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
+import java.util.Optional;
 
-public record ud(UUID a, cbz b) {
-   public ui a(Duration $$0) {
-      return new ui.a(this.b.a(), () -> this.b.b().a($$0));
+public record ud(String b, Instant c, long d, tr e) {
+   public static final MapCodec<ud> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(ud::a),
+               arf.m.fieldOf("time_stamp").forGetter(ud::b),
+               Codec.LONG.fieldOf("salt").forGetter(ud::c),
+               tr.a.optionalFieldOf("last_seen", tr.b).forGetter(ud::d)
+            )
+            .apply($$0, ud::new)
+   );
+
+   public static ud a(String $$0) {
+      return new ud($$0, Instant.now(), 0L, tr.b);
    }
 
-   public ug.b a(UUID $$0) {
-      return new ug($$0, this.a).a(this.b);
+   public void a(asg.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   public ud.a a() {
-      return new ud.a(this.a, this.b.b());
+   public ud.a a(tx $$0) {
+      return new ud.a(this.b, this.c, this.d, this.e.a($$0));
    }
 
-   public boolean b() {
-      return this.b.b().a();
-   }
-
-   public UUID c() {
-      return this.a;
-   }
-
-   public cbz d() {
+   public String a() {
       return this.b;
    }
 
-   public static record a(UUID a, cbz.a b) {
-      public static ud.a a(sq $$0) {
-         return new ud.a($$0.o(), new cbz.a($$0));
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public tr d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, tr.a d) {
+      public a(so $$0) {
+         this($$0.d(256), $$0.v(), $$0.readLong(), new tr.a($$0));
       }
 
-      public static void a(sq $$0, ud.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+      public void a(so $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
       }
 
-      public ud a(GameProfile $$0, asj $$1) throws cbz.b {
-         return new ud(this.a, cbz.a($$1, $$0.getId(), this.b));
+      public Optional<ud> a(tx $$0) {
+         return this.d.a($$0).map($$0x -> new ud(this.a, this.b, this.c, $$0x));
       }
    }
 }

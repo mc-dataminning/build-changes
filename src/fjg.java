@@ -1,17 +1,26 @@
-public class fjg {
-   private final fja a;
-   private final asg b;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-   public fjg(fja $$0, asg $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface fjg {
+   fjg a = new fjg() {
+      @Override
+      public CompletableFuture<Optional<cbw>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
+      }
+
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
+
+   static fjg a(UserApiService $$0, erk $$1, Path $$2) {
+      return (fjg)($$1.g() == erk.a.c ? new fiq($$0, $$1.b(), $$2) : a);
    }
 
-   public void a() {
-      this.a.b(new aed(ac.b()));
-   }
+   CompletableFuture<Optional<cbw>> a();
 
-   public void a(adz $$0) {
-      this.b.a(ac.b() - $$0.a());
-   }
+   boolean b();
 }

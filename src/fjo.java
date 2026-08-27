@@ -1,60 +1,119 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.time.Instant;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.UUID;
 
-public enum fjo implements asr {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
-
-   public static final Codec<fjo> d = asr.a(fjo::values);
-   private final String e;
-
-   private fjo(String $$0) {
-      this.e = $$0;
+public interface fjo extends fjn {
+   static fjo.a a(GameProfile $$0, ua $$1, fjm $$2) {
+      return new fjo.a($$0, $$1, $$2);
    }
 
-   public static fjo a(uc $$0, tn $$1, Instant $$2) {
-      if (!$$0.h() || $$0.b($$2)) {
-         return c;
-      } else {
-         return a($$0, $$1) ? b : a;
+   static fjo.b a(tl $$0, Instant $$1) {
+      return new fjo.b($$0, $$1);
+   }
+
+   tl b();
+
+   default tl c() {
+      return this.b();
+   }
+
+   boolean a(UUID var1);
+
+   public static record a(GameProfile c, ua d, fjm e) implements fjo {
+      public static final Codec<fjo.a> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  arf.u.fieldOf("profile").forGetter(fjo.a::f), ua.a.forGetter(fjo.a::g), fjm.d.optionalFieldOf("trust_level", fjm.a).forGetter(fjo.a::h)
+               )
+               .apply($$0, fjo.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+      @Override
+      public tl b() {
+         if (!this.d.n().a()) {
+            tl $$0 = this.d.n().b(this.d.b());
+            return (tl)($$0 != null ? $$0 : tl.h());
+         } else {
+            return this.d.c();
+         }
+      }
+
+      @Override
+      public tl c() {
+         tl $$0 = this.b();
+         tl $$1 = this.i();
+         return tl.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public tl d() {
+         tl $$0 = this.i();
+         return tl.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private tl i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.d(), ZoneOffset.systemDefault());
+         return tl.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public fjn.a a() {
+         return fjn.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public ua g() {
+         return this.d;
+      }
+
+      public fjm h() {
+         return this.e;
       }
    }
 
-   private static boolean a(uc $$0, tn $$1) {
-      if (!$$1.getString().contains($$0.b())) {
-         return true;
-      } else {
-         tn $$2 = $$0.m();
-         return $$2 == null ? false : a($$2);
+   public static record b(tl c, Instant d) implements fjo {
+      public static final Codec<fjo.b> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(arf.b.fieldOf("message").forGetter(fjo.b::d), arf.m.fieldOf("time_stamp").forGetter(fjo.b::e)).apply($$0, fjo.b::new)
+      );
+
+      @Override
+      public tl b() {
+         return this.c;
       }
-   }
 
-   private static boolean a(tn $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), uj.a).orElse(false);
-   }
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
 
-   private static boolean a(uj $$0) {
-      return !$$0.k().equals(uj.c);
-   }
+      @Override
+      public fjn.a a() {
+         return fjn.a.b;
+      }
 
-   public boolean a() {
-      return this == c;
-   }
+      public tl d() {
+         return this.c;
+      }
 
-   @Nullable
-   public eqs a(uc $$0) {
-      return switch (this) {
-         case b -> eqs.a($$0.b());
-         case c -> eqs.c();
-         default -> null;
-      };
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+      public Instant e() {
+         return this.d;
+      }
    }
 }

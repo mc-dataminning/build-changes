@@ -1,7 +1,7 @@
-public enum dgq implements asr {
-   a("up"),
-   b("side"),
-   c("none");
+public enum dgq implements asp {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 
@@ -11,15 +11,11 @@ public enum dgq implements asr {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override
    public String c() {
       return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
    }
 }

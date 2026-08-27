@@ -1,29 +1,30 @@
-public class bfb implements bfc {
-   public static final bfc a = new bfb();
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-   @Override
-   public void a() {
+public class bfb {
+   private final Set<String> a = new ObjectOpenHashSet();
+
+   public Set<bet> a(Supplier<bdn> $$0) {
+      Set<bet> $$1 = $$0.get()
+         .e()
+         .stream()
+         .filter($$0x -> !this.a.contains($$0x.getLeft()))
+         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bes)$$1x.getRight()))
+         .collect(Collectors.toSet());
+
+      for (bet $$2 : $$1) {
+         this.a.add($$2.d());
+      }
+
+      return $$1;
    }
 
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bdr f() {
-      return bdo.a;
-   }
-
-   @Override
-   public void d() {
+   private static bet a(Supplier<bdn> $$0, String $$1, bes $$2) {
+      return bet.a($$1, $$2, () -> {
+         bdi.a $$2x = $$0.get().c($$1);
+         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)asu.b;
+      });
    }
 }

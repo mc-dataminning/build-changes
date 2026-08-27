@@ -1,89 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class bui {
-   private final gw a;
-   private final hg<buk> b;
-   private int c;
-   private final Runnable d;
+public record bui(Set<dfj> b, int c, int d) {
+   public static final Predicate<he<bui>> a = $$0 -> false;
 
-   public static Codec<bui> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  gw.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
-                  aev.a(je.S).fieldOf("type").forGetter($$0xx -> $$0xx.b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
-                  RecordCodecBuilder.point($$0)
-               )
-               .apply($$1, bui::new)
-      );
+   public bui(Set<dfj> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   private bui(gw $$0, hg<buk> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.i();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public boolean a(dfj $$0) {
+      return this.b.contains($$0);
    }
 
-   public bui(gw $$0, hg<buk> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
-   }
-
-   @Deprecated
-   @ata
-   public int a() {
-      return this.c;
-   }
-
-   protected boolean b() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
-   }
-
-   protected boolean c() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean d() {
-      return this.c > 0;
-   }
-
-   public boolean e() {
-      return this.c != this.b.a().b();
-   }
-
-   public gw f() {
-      return this.a;
-   }
-
-   public hg<buk> g() {
+   public Set<dfj> a() {
       return this.b;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((bui)$$0).a) : false;
-      }
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public int c() {
+      return this.d;
    }
 }

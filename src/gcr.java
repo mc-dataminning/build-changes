@@ -1,52 +1,37 @@
-public class gcr {
-   public static class a extends gbx {
-      private final fni n;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-      protected a(fni $$0, ape $$1) {
-         super($$1, apg.i, gco.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+public class gcr<T> extends gcs<T> {
+   private final List<T> c;
+   private final Function<T, Stream<String>> d;
+   private gcv<T> e = gcv.a();
 
-      @Override
-      public void q() {
-         if (this.n.dG() || !this.n.bc()) {
-            this.n();
-         }
-      }
+   public gcr(Function<T, Stream<String>> $$0, Function<T, Stream<aew>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = $$2;
+      this.d = $$0;
    }
 
-   public static class b extends gbx {
-      public static final int n = 40;
-      private final fni o;
-      private int p;
+   @Override
+   public void a() {
+      super.a();
+      this.e = gcv.a(this.c, this.d);
+   }
 
-      public b(fni $$0) {
-         super(apf.z, apg.i, gco.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+   @Override
+   protected List<T> a(String $$0) {
+      return this.e.search($$0);
+   }
 
-      @Override
-      public void q() {
-         if (!this.o.dG() && this.p >= 0) {
-            if (this.o.bc()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
-      }
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.e.search($$1);
+      Iterator<T> $$5 = new gcu<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new gct<T>($$2.iterator(), $$5, this.a));
    }
 }

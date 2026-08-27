@@ -1,18 +1,10 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class avb extends DataFix {
-   private static final String a = "minecraft:decorated_pot";
-
-   public avb(Schema $$0) {
-      super($$0, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(ayz.s, "minecraft:decorated_pot");
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(ayz.s, "minecraft:decorated_pot");
-      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
-   }
+public class avb {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:cactus_green", "minecraft:green_dye")
+      .put("minecraft:rose_red", "minecraft:red_dye")
+      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
+      .build();
 }

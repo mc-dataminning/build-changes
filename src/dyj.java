@@ -1,64 +1,45 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dyj extends dza {
-   public static final Codec<dyj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dzc.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bgf.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, dyj::new)
-   );
-   private final dza b;
-   private final bgf c;
+public class dyj extends dyy {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<dyj> a = Codec.unit(() -> dyj.b);
+   public static final dyj b = new dyj();
 
-   public dyj(dza $$0, bgf $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private dyj() {
    }
 
+   @Nullable
    @Override
-   protected dzc<?> a() {
-      return dzc.o;
-   }
-
-   @Override
-   public final List<dzd.c> a(cqm $$0, gw $$1, gw $$2, List<dzd.c> $$3, List<dzd.c> $$4, dyz $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
+   public dzb.c a(cpy $$0, gw $$1, gw $$2, dzb.c $$3, dzb.c $$4, dyx $$5) {
+      dfj $$6 = $$4.b();
+      if ($$6.a(csw.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
             return $$4;
          } else {
-            ase $$6 = ase.a($$0.C().A()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
+            String $$7 = $$4.c().l("final_state");
 
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  dzd.c $$12 = $$3.get($$11);
-                  dzd.c $$13 = $$4.get($$11);
-                  dzd.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
+            dfj $$9;
+            try {
+               fi.a $$8 = fi.a($$0.a(jc.e), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               throw new RuntimeException(var11);
             }
+
+            return $$9.a(csw.kN) ? null : new dzb.c($$4.a(), $$9, null);
          }
       } else {
          return $$4;
       }
+   }
+
+   @Override
+   protected dza<?> a() {
+      return dza.h;
    }
 }

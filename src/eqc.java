@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eqc extends epx {
+public class eqc extends epv {
    private static final Logger b = LogUtils.getLogger();
-   private static final tn c = tn.c("mco.backup.restoring");
-   private final emn d;
-   private final long e;
-   private final eoh f;
+   private static final tl c = tl.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   public eqc(emn $$0, long $$1, eoh $$2) {
+   public eqc(long $$0, int $$1, Runnable $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,52 +16,37 @@ public class eqc extends epx {
 
    @Override
    public void run() {
-      emh $$0 = emh.a();
-      int $$1 = 0;
+      emf $$0 = emf.a();
 
-      while ($$1 < 25) {
+      for (int $$1 = 0; $$1 < 25; $$1++) {
          try {
             if (this.d()) {
                return;
             }
 
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
             }
-
-            a(this.f.f());
-            return;
-         } catch (env var4) {
+         } catch (ent var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-            $$1++;
-         } catch (enu var5) {
+         } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't restore backup", var5);
-            a(new eol(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
+            b.error("Couldn't switch world!");
+            this.a(var5);
          }
       }
    }
 
    @Override
-   public tn a() {
+   public tl a() {
       return c;
    }
 }

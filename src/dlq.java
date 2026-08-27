@@ -1,26 +1,83 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-public record dlq(dls b, dlp c) {
-   public static final Codec<dlq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dls.a.forGetter(dlq::a), dlp.a.forGetter(dlq::b)).apply($$0, $$0.stable(dlq::new))
+public class dlq {
+   public static final MapCodec<dlq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(dlq::b),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dlq::c),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dlq::d),
+               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(dlq::new))
    );
+   public static final dlq b = new dlq((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dls $$1, dlp $$2) {
-      return a.encodeStart($$0, new dlq($$1, $$2));
+   public dlq(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dls $$1, hu $$2) {
-      return a($$0, $$1, new dlp($$2.d(je.aI)));
+   public static dlq a() {
+      return new dlq(f(), true, false);
    }
 
-   public dls a() {
-      return this.b;
+   private dlq(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public dlp b() {
+   public long b() {
       return this.c;
+   }
+
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f.isPresent();
+   }
+
+   public dlq a(boolean $$0) {
+      return new dlq(this.c, this.d, $$0, this.f);
+   }
+
+   public dlq b(boolean $$0) {
+      return new dlq(this.c, $$0, this.e, this.f);
+   }
+
+   public dlq a(OptionalLong $$0) {
+      return new dlq($$0.orElse(f()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
+         }
+      }
+   }
+
+   public static long f() {
+      return asc.a().g();
    }
 }

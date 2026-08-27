@@ -1,17 +1,15 @@
-import java.io.IOException;
-import java.io.InputStream;
+public class gad extends gah {
+   private static final aew a = new aew("back");
 
-public class gad {
-   @Deprecated
-   public static int[] a(anv $$0, aey $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         eks $$3 = eks.a($$2);
-      ) {
-         var4 = $$3.e();
-      }
+   public gad(fzf $$0) {
+      super($$0, new aew("textures/atlas/paintings.png"), new aew("paintings"));
+   }
 
-      return var4;
+   public fze a(byj $$0) {
+      return this.a(jb.m.b($$0));
+   }
+
+   public fze a() {
+      return this.a(a);
    }
 }

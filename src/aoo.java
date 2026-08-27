@@ -3,13 +3,13 @@ import com.mojang.authlib.GameProfile;
 import java.io.File;
 import java.util.Objects;
 
-public class aoo extends aon<GameProfile, aop> {
+public class aoo extends aol<GameProfile, aop> {
    public aoo(File $$0) {
       super($$0);
    }
 
    @Override
-   protected aom<GameProfile> a(JsonObject $$0) {
+   protected aok<GameProfile> a(JsonObject $$0) {
       return new aop($$0);
    }
 
@@ -19,7 +19,7 @@ public class aoo extends aon<GameProfile, aop> {
 
    @Override
    public String[] a() {
-      return this.d().stream().map(aom::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+      return this.d().stream().map(aok::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
    protected String b(GameProfile $$0) {

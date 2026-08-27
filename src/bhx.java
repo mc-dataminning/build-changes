@@ -1,14 +1,6 @@
-class bhx extends bid {
-   protected bhx(bie $$0, int $$1) {
+class bhx extends bib {
+   protected bhx(bic $$0, int $$1) {
       super($$0, $$1);
-   }
-
-   @Override
-   public void a(bji $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0.fj() <= 0.0F && !$$0.dL().B) {
-         $$0.d(this);
-      }
    }
 
    @Override
@@ -17,8 +9,17 @@ class bhx extends bid {
    }
 
    @Override
-   public void b(bji $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.y(Math.max($$0.fj(), (float)(4 * (1 + $$1))));
+   public void a(bjg $$0, int $$1) {
+      super.a($$0, $$1);
+      if ($$0 instanceof akr $$2 && !$$0.M_()) {
+         akq $$3 = $$2.x();
+         if ($$3.ai() == bgv.a) {
+            return;
+         }
+
+         if ($$3.b($$0.dl())) {
+            $$3.x().a($$2);
+         }
+      }
    }
 }

@@ -1,38 +1,17 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
 import java.util.Objects;
 
-public class awm extends azi {
-   public awm(Schema $$0, boolean $$1) {
-      super("EntityZombieSplitFix", $$0, $$1);
+public class awm extends azh {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
+
+   public awm(Schema $$0) {
+      super("EntityZombifiedPiglinRenameFix", $$0, true);
    }
 
    @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      if (Objects.equals("Zombie", $$0)) {
-         String $$2 = "Zombie";
-         int $$3 = $$1.get("ZombieType").asInt(0);
-         switch ($$3) {
-            case 0:
-            default:
-               break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-               $$2 = "ZombieVillager";
-               $$1 = $$1.set("Profession", $$1.createInt($$3 - 1));
-               break;
-            case 6:
-               $$2 = "Husk";
-         }
-
-         $$1 = $$1.remove("ZombieType");
-         return Pair.of($$2, $$1);
-      } else {
-         return Pair.of($$0, $$1);
-      }
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
    }
 }

@@ -1,18 +1,28 @@
-public class bhm {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+import com.mojang.serialization.Codec;
 
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 2.0F + $$2 / 4.0F;
-      float $$4 = ary.a($$1 - $$0 / $$3, $$1 * 0.2F, 20.0F);
-      return $$0 * (1.0F - $$4 / 25.0F);
+public enum bhm implements asp {
+   a("hurt", apd.sz),
+   b("thorns", apd.xK),
+   c("drowning", apd.sA),
+   d("burning", apd.sC),
+   e("poking", apd.sD),
+   f("freezing", apd.sB);
+
+   public static final Codec<bhm> g = asp.a(bhm::values);
+   private final String h;
+   private final apc i;
+
+   private bhm(String $$0, apc $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   public static float a(float $$0, float $$1) {
-      float $$2 = ary.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
+   @Override
+   public String c() {
+      return this.h;
+   }
+
+   public apc a() {
+      return this.i;
    }
 }

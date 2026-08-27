@@ -1,381 +1,46 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableFloat;
-import org.apache.commons.lang3.mutable.MutableInt;
-
 public class cns {
-   private static final String a = "id";
-   private static final String b = "lvl";
-   private static final float c = 0.15F;
-
-   public static qy a(@Nullable aey $$0, int $$1) {
-      qy $$2 = new qy();
-      $$2.a("id", String.valueOf($$0));
-      $$2.a("lvl", (short)$$1);
-      return $$2;
-   }
-
-   public static void a(qy $$0, int $$1) {
-      $$0.a("lvl", (short)$$1);
-   }
-
-   public static int a(qy $$0) {
-      return ary.a($$0.h("lvl"), 0, 255);
-   }
-
-   @Nullable
-   public static aey b(qy $$0) {
-      return aey.a($$0.l("id"));
-   }
-
-   @Nullable
-   public static aey a(cnq $$0) {
-      return jd.g.b($$0);
-   }
-
-   public static int a(cnq $$0, cjh $$1) {
-      if ($$1.b()) {
-         return 0;
-      } else {
-         aey $$2 = a($$0);
-         re $$3 = $$1.x();
-
-         for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-            qy $$5 = $$3.a($$4);
-            aey $$6 = b($$5);
-            if ($$6 != null && $$6.equals($$2)) {
-               return a($$5);
-            }
-         }
-
-         return 0;
-      }
-   }
-
-   public static Map<cnq, Integer> a(cjh $$0) {
-      re $$1 = $$0.a(cjk.tC) ? cid.d($$0) : $$0.x();
-      return a($$1);
-   }
-
-   public static Map<cnq, Integer> a(re $$0) {
-      Map<cnq, Integer> $$1 = Maps.newLinkedHashMap();
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         qy $$3 = $$0.a($$2);
-         jd.g.b(b($$3)).ifPresent($$2x -> $$1.put($$2x, a($$3)));
-      }
-
-      return $$1;
-   }
-
-   public static void a(Map<cnq, Integer> $$0, cjh $$1) {
-      re $$2 = new re();
-
-      for (Entry<cnq, Integer> $$3 : $$0.entrySet()) {
-         cnq $$4 = $$3.getKey();
-         if ($$4 != null) {
-            int $$5 = $$3.getValue();
-            $$2.add(a(a($$4), $$5));
-            if ($$1.a(cjk.tC)) {
-               cid.a($$1, new cnt($$4, $$5));
-            }
-         }
-      }
-
-      if ($$2.isEmpty()) {
-         $$1.c("Enchantments");
-      } else if (!$$1.a(cjk.tC)) {
-         $$1.a("Enchantments", $$2);
-      }
-   }
-
-   private static void a(cns.a $$0, cjh $$1) {
-      if (!$$1.b()) {
-         re $$2 = $$1.x();
-
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            qy $$4 = $$2.a($$3);
-            jd.g.b(b($$4)).ifPresent($$2x -> $$0.accept($$2x, a($$4)));
-         }
-      }
-   }
-
-   private static void a(cns.a $$0, Iterable<cjh> $$1) {
-      for (cjh $$2 : $$1) {
-         a($$0, $$2);
-      }
-   }
-
-   public static int a(Iterable<cjh> $$0, bhq $$1) {
-      MutableInt $$2 = new MutableInt();
-      a(($$2x, $$3) -> $$2.add($$2x.a($$3, $$1)), $$0);
-      return $$2.intValue();
-   }
-
-   public static float a(cjh $$0, bjn $$1) {
-      MutableFloat $$2 = new MutableFloat();
-      a(($$2x, $$3) -> $$2.add($$2x.a($$3, $$1)), $$0);
-      return $$2.floatValue();
-   }
-
-   public static float a(bji $$0) {
-      int $$1 = a(cnu.t, $$0);
-      return $$1 > 0 ? cog.e($$1) : 0.0F;
-   }
-
-   public static void a(bji $$0, bis $$1) {
-      cns.a $$2 = ($$2x, $$3) -> $$2x.b($$0, $$1, $$3);
-      if ($$0 != null) {
-         a($$2, $$0.bL());
-      }
-
-      if ($$1 instanceof cbw) {
-         a($$2, $$0.eS());
-      }
-   }
-
-   public static void b(bji $$0, bis $$1) {
-      cns.a $$2 = ($$2x, $$3) -> $$2x.a($$0, $$1, $$3);
-      if ($$0 != null) {
-         a($$2, $$0.bL());
-      }
-
-      if ($$0 instanceof cbw) {
-         a($$2, $$0.eS());
-      }
-   }
-
-   public static int a(cnq $$0, bji $$1) {
-      Iterable<cjh> $$2 = $$0.a($$1).values();
-      if ($$2 == null) {
-         return 0;
-      } else {
-         int $$3 = 0;
-
-         for (cjh $$4 : $$2) {
-            int $$5 = a($$0, $$4);
-            if ($$5 > $$3) {
-               $$3 = $$5;
-            }
-         }
-
-         return $$3;
-      }
-   }
-
-   public static float b(bji $$0) {
-      return (float)a(cnu.m, $$0) * 0.15F;
-   }
-
-   public static int c(bji $$0) {
-      return a(cnu.q, $$0);
-   }
-
-   public static int d(bji $$0) {
-      return a(cnu.r, $$0);
-   }
-
-   public static int e(bji $$0) {
-      return a(cnu.f, $$0);
-   }
-
-   public static int f(bji $$0) {
-      return a(cnu.i, $$0);
-   }
-
-   public static int g(bji $$0) {
-      return a(cnu.u, $$0);
-   }
-
-   public static int b(cjh $$0) {
-      return a(cnu.C, $$0);
-   }
-
-   public static int c(cjh $$0) {
-      return a(cnu.D, $$0);
-   }
-
-   public static int h(bji $$0) {
-      return a(cnu.s, $$0);
-   }
-
-   public static boolean i(bji $$0) {
-      return a(cnu.g, $$0) > 0;
-   }
-
-   public static boolean j(bji $$0) {
-      return a(cnu.j, $$0) > 0;
-   }
-
-   public static boolean k(bji $$0) {
-      return a(cnu.l, $$0) > 0;
-   }
-
-   public static boolean d(cjh $$0) {
-      return a(cnu.k, $$0) > 0;
-   }
-
-   public static boolean e(cjh $$0) {
-      return a(cnu.M, $$0) > 0;
-   }
-
-   public static boolean f(cjh $$0) {
-      return a(cnu.v, $$0) > 0;
-   }
-
-   public static int g(cjh $$0) {
-      return a(cnu.E, $$0);
-   }
-
-   public static int h(cjh $$0) {
-      return a(cnu.G, $$0);
-   }
-
-   public static boolean i(cjh $$0) {
-      return a(cnu.H, $$0) > 0;
-   }
-
-   @Nullable
-   public static Entry<bix, cjh> b(cnq $$0, bji $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   @Nullable
-   public static Entry<bix, cjh> a(cnq $$0, bji $$1, Predicate<cjh> $$2) {
-      Map<bix, cjh> $$3 = $$0.a($$1);
-      if ($$3.isEmpty()) {
-         return null;
-      } else {
-         List<Entry<bix, cjh>> $$4 = Lists.newArrayList();
-
-         for (Entry<bix, cjh> $$5 : $$3.entrySet()) {
-            cjh $$6 = $$5.getValue();
-            if (!$$6.b() && a($$0, $$6) > 0 && $$2.test($$6)) {
-               $$4.add($$5);
-            }
-         }
-
-         return $$4.isEmpty() ? null : $$4.get($$1.ef().a($$4.size()));
-      }
-   }
-
-   public static int a(ase $$0, int $$1, int $$2, cjh $$3) {
-      cjc $$4 = $$3.d();
-      int $$5 = $$4.c();
-      if ($$5 <= 0) {
-         return 0;
-      } else {
-         if ($$2 > 15) {
-            $$2 = 15;
-         }
-
-         int $$6 = $$0.a(8) + 1 + ($$2 >> 1) + $$0.a($$2 + 1);
-         if ($$1 == 0) {
-            return Math.max($$6 / 3, 1);
-         } else {
-            return $$1 == 1 ? $$6 * 2 / 3 + 1 : Math.max($$6, $$2 * 2);
-         }
-      }
-   }
-
-   public static cjh a(ase $$0, cjh $$1, int $$2, boolean $$3) {
-      List<cnt> $$4 = b($$0, $$1, $$2, $$3);
-      boolean $$5 = $$1.a(cjk.qb);
-      if ($$5) {
-         $$1 = new cjh(cjk.tC);
-      }
-
-      for (cnt $$6 : $$4) {
-         if ($$5) {
-            cid.a($$1, $$6);
-         } else {
-            $$1.a($$6.a, $$6.b);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static List<cnt> b(ase $$0, cjh $$1, int $$2, boolean $$3) {
-      List<cnt> $$4 = Lists.newArrayList();
-      cjc $$5 = $$1.d();
-      int $$6 = $$5.c();
-      if ($$6 <= 0) {
-         return $$4;
-      } else {
-         $$2 += 1 + $$0.a($$6 / 4 + 1) + $$0.a($$6 / 4 + 1);
-         float $$7 = ($$0.i() + $$0.i() - 1.0F) * 0.15F;
-         $$2 = ary.a(Math.round((float)$$2 + (float)$$2 * $$7), 1, Integer.MAX_VALUE);
-         List<cnt> $$8 = a($$2, $$1, $$3);
-         if (!$$8.isEmpty()) {
-            bfn.a($$0, $$8).ifPresent($$4::add);
-
-            while ($$0.a(50) <= $$2) {
-               if (!$$4.isEmpty()) {
-                  a($$8, ac.a($$4));
-               }
-
-               if ($$8.isEmpty()) {
-                  break;
-               }
-
-               bfn.a($$0, $$8).ifPresent($$4::add);
-               $$2 /= 2;
-            }
-         }
-
-         return $$4;
-      }
-   }
-
-   public static void a(List<cnt> $$0, cnt $$1) {
-      Iterator<cnt> $$2 = $$0.iterator();
-
-      while ($$2.hasNext()) {
-         if (!$$1.a.b($$2.next().a)) {
-            $$2.remove();
-         }
-      }
-   }
-
-   public static boolean a(Collection<cnq> $$0, cnq $$1) {
-      for (cnq $$2 : $$0) {
-         if (!$$2.b($$1)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static List<cnt> a(int $$0, cjh $$1, boolean $$2) {
-      List<cnt> $$3 = Lists.newArrayList();
-      cjc $$4 = $$1.d();
-      boolean $$5 = $$1.a(cjk.qb);
-
-      for (cnq $$6 : jd.g) {
-         if ((!$$6.b() || $$2) && $$6.i() && ($$6.e.a($$4) || $$5)) {
-            for (int $$7 = $$6.a(); $$7 > $$6.e() - 1; $$7--) {
-               if ($$0 >= $$6.a($$7) && $$0 <= $$6.b($$7)) {
-                  $$3.add(new cnt($$6, $$7));
-                  break;
-               }
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   @FunctionalInterface
-   interface a {
-      void accept(cnq var1, int var2);
+   private static final biv[] N = new biv[]{biv.f, biv.e, biv.d, biv.c};
+   public static final cno a = a("protection", new cob(cno.a.a, cob.a.a, N));
+   public static final cno b = a("fire_protection", new cob(cno.a.b, cob.a.b, N));
+   public static final cno c = a("feather_falling", new cob(cno.a.b, cob.a.c, N));
+   public static final cno d = a("blast_protection", new cob(cno.a.c, cob.a.d, N));
+   public static final cno e = a("projectile_protection", new cob(cno.a.b, cob.a.e, N));
+   public static final cno f = a("respiration", new coa(cno.a.c, N));
+   public static final cno g = a("aqua_affinity", new cop(cno.a.c, N));
+   public static final cno h = a("thorns", new cog(cno.a.d, N));
+   public static final cno i = a("depth_strider", new coo(cno.a.c, N));
+   public static final cno j = a("frost_walker", new cnv(cno.a.c, biv.c));
+   public static final cno k = a("binding_curse", new cnk(cno.a.d, N));
+   public static final cno l = a("soul_speed", new cod(cno.a.d, biv.c));
+   public static final cno m = a("swift_sneak", new cof(cno.a.d, biv.d));
+   public static final cno n = a("sharpness", new cnl(cno.a.a, 0, biv.a));
+   public static final cno o = a("smite", new cnl(cno.a.b, 1, biv.a));
+   public static final cno p = a("bane_of_arthropods", new cnl(cno.a.b, 2, biv.a));
+   public static final cno q = a("knockback", new cnw(cno.a.b, biv.a));
+   public static final cno r = a("fire_aspect", new cnt(cno.a.c, biv.a));
+   public static final cno s = a("looting", new cnx(cno.a.c, cnp.f, biv.a));
+   public static final cno t = a("sweeping", new coe(cno.a.c, biv.a));
+   public static final cno u = a("efficiency", new cnn(cno.a.a, biv.a));
+   public static final cno v = a("silk_touch", new col(cno.a.d, biv.a));
+   public static final cno w = a("unbreaking", new cnm(cno.a.b, biv.a));
+   public static final cno x = a("fortune", new cnx(cno.a.c, cnp.g, biv.a));
+   public static final cno y = a("power", new cnf(cno.a.a, biv.a));
+   public static final cno z = a("punch", new cni(cno.a.c, biv.a));
+   public static final cno A = a("flame", new cng(cno.a.c, biv.a));
+   public static final cno B = a("infinity", new cnh(cno.a.d, biv.a));
+   public static final cno C = a("luck_of_the_sea", new cnx(cno.a.c, cnp.h, biv.a));
+   public static final cno D = a("lure", new cnu(cno.a.c, cnp.h, biv.a));
+   public static final cno E = a("loyalty", new coj(cno.a.b, biv.a));
+   public static final cno F = a("impaling", new coi(cno.a.c, biv.a));
+   public static final cno G = a("riptide", new cok(cno.a.c, biv.a));
+   public static final cno H = a("channeling", new coh(cno.a.d, biv.a));
+   public static final cno I = a("multishot", new cnz(cno.a.c, biv.a));
+   public static final cno J = a("quick_charge", new coc(cno.a.b, biv.a));
+   public static final cno K = a("piercing", new cnj(cno.a.a, biv.a));
+   public static final cno L = a("mending", new cny(cno.a.c, biv.values()));
+   public static final cno M = a("vanishing_curse", new com(cno.a.d, biv.values()));
+
+   private static cno a(String $$0, cno $$1) {
+      return hq.a(jb.g, $$0, $$1);
    }
 }

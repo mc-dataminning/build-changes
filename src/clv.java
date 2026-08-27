@@ -1,77 +1,78 @@
-public class clv extends cmd {
-   public clv(cma $$0) {
+public class clv extends cmb {
+   public clv(cly $$0) {
       super($$0);
    }
 
-   public boolean a(cfb $$0, cpx $$1) {
-      chv $$2 = null;
-      cjh $$3 = null;
-      cjh $$4 = null;
+   public boolean a(cez $$0, cpv $$1) {
+      int $$2 = 0;
+      cjf $$3 = cjf.b;
 
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cjh $$6 = $$0.a($$5);
-         if (!$$6.b()) {
-            cjc $$7 = $$6.d();
-            if (!($$7 instanceof cgx)) {
-               return false;
-            }
-
-            cgx $$8 = (cgx)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = dcn.c($$6);
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjf $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cji.th)) {
+               if (!$$3.b()) {
                   return false;
                }
 
-               $$3 = $$6;
+               $$3 = $$5;
             } else {
-               if ($$4 != null) {
+               if (!$$5.a(cji.tg)) {
                   return false;
                }
 
-               $$4 = $$6;
+               $$2++;
             }
          }
       }
 
-      return $$3 != null && $$4 != null;
+      return !$$3.b() && $$3.u() && $$2 > 0;
    }
 
-   public cjh a(cfb $$0, hu $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         cjh $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            int $$4 = dcn.c($$3);
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
+   public cjf a(cez $$0, hr $$1) {
+      int $$2 = 0;
+      cjf $$3 = cjf.b;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjf $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cji.th)) {
+               if (!$$3.b()) {
+                  return cjf.b;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cji.tg)) {
+                  return cjf.b;
+               }
+
+               $$2++;
             }
          }
       }
 
-      return cjh.b;
+      if (!$$3.b() && $$3.u() && $$2 >= 1 && clb.d($$3) < 2) {
+         cjf $$6 = new cjf(cji.th, $$2);
+         qw $$7 = $$3.v().h();
+         $$7.a("generation", clb.d($$3) + 1);
+         $$6.c($$7);
+         return $$6;
+      } else {
+         return cjf.b;
+      }
    }
 
-   public hp<cjh> a(cfb $$0) {
-      hp<cjh> $$1 = hp.a($$0.b(), cjh.b);
+   public hn<cjf> a(cez $$0) {
+      hn<cjf> $$1 = hn.a($$0.b(), cjf.b);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cjh $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            if ($$3.d().t()) {
-               $$1.set($$2, new cjh($$3.d().s()));
-            } else if ($$3.u() && dcn.c($$3) > 0) {
-               $$1.set($$2, $$3.c(1));
-            }
+         cjf $$3 = $$0.a($$2);
+         if ($$3.d().t()) {
+            $$1.set($$2, new cjf($$3.d().s()));
+         } else if ($$3.d() instanceof clb) {
+            $$1.set($$2, $$3.c(1));
+            break;
          }
       }
 
@@ -79,12 +80,12 @@ public class clv extends cmd {
    }
 
    @Override
-   public cmo<?> an_() {
-      return cmo.k;
+   public cmm<?> an_() {
+      return cmm.d;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return $$0 >= 3 && $$1 >= 3;
    }
 }

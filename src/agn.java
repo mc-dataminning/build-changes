@@ -1,41 +1,58 @@
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class agn {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("commands.deop.failed"));
-
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("deop").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(du.a("config").then(du.a("target", ee.c()).executes($$0x -> a((dt)$$0x.getSource(), ee.e($$0x, "target"))))))
             .then(
-               du.a("targets", eg.a())
-                  .suggests(($$0x, $$1) -> dw.a(((dt)$$0x.getSource()).l().ac().l(), $$1))
-                  .executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets")))
+               du.a("unconfig")
+                  .then(
+                     du.a("target", fe.a())
+                        .suggests(($$0x, $$1) -> dw.b(a(((dt)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((dt)$$0x.getSource(), fe.a($$0x, "target")))
+                  )
             )
       );
    }
 
-   private static int a(dt $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aoi $$2 = $$0.l().ac();
-      int $$3 = 0;
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.f($$4)) {
-            $$2.b($$4);
-            $$3++;
-            $$0.a(() -> tn.a("commands.deop.success", $$1.iterator().next().getName()), true);
+      for (sm $$2 : $$0.ad().e()) {
+         if ($$2.m() instanceof aln $$3) {
+            $$1.add($$3.k().getId().toString());
          }
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
+      return $$1;
+   }
+
+   private static int a(dt $$0, akr $$1) {
+      GameProfile $$2 = $$1.fQ();
+      $$1.c.o();
+      $$0.a(() -> tl.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
+   }
+
+   private static int a(dt $$0, UUID $$1) {
+      for (sm $$2 : $$0.l().ad().e()) {
+         su var5 = $$2.m();
+         if (var5 instanceof aln) {
+            aln $$3 = (aln)var5;
+            if ($$3.k().getId().equals($$1)) {
+               $$3.n();
+            }
+         }
       }
+
+      $$0.b(tl.b("Can't find player to unconfig"));
+      return 0;
    }
 }

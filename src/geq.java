@@ -1,65 +1,110 @@
-public class geq implements gew {
-   private static final int a = 1200;
-   private static final tn b = tn.c("tutorial.craft_planks.title");
-   private static final tn c = tn.c("tutorial.craft_planks.description");
-   private final gev d;
-   private evb e;
-   private int f;
+public class geq implements geu {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final tl f = tl.a("tutorial.move.title", get.a("forward"), get.a("left"), get.a("back"), get.a("right"));
+   private static final tl g = tl.a("tutorial.move.description", get.a("jump"));
+   private static final tl h = tl.c("tutorial.look.title");
+   private static final tl i = tl.c("tutorial.look.description");
+   private final get j;
+   private euz k;
+   private euz l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
 
-   public geq(gev $$0) {
-      this.d = $$0;
+   public geq(get $$0) {
+      this.j = $$0;
    }
 
    @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gex.f);
-      } else {
-         if (this.f == 1) {
-            fni $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fR().a(aqc.b)) {
-                  this.d.a(gex.f);
-                  return;
-               }
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
 
-               if (a($$0, aqc.b)) {
-                  this.d.a(gex.f);
-                  return;
-               }
-            }
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
+
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.c();
+            this.k = null;
          }
 
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new evb(evb.a.e, b, c, false);
-            this.d.e().ay().a(this.e);
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.c();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(gev.b);
+         } else {
+            this.j.a(gev.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         if (this.r == -1 && this.k == null) {
+            this.k = new euz(euz.a.a, f, g, true);
+            this.j.e().ay().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new euz(euz.a.b, h, i, true);
+            this.j.e().ay().a(this.l);
          }
       }
    }
 
    @Override
    public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+      if (this.k != null) {
+         this.k.c();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.c();
+         this.l = null;
       }
    }
 
    @Override
-   public void a(cjh $$0) {
-      if ($$0.a(aqc.b)) {
-         this.d.a(gex.f);
+   public void a(fne $$0) {
+      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
+         this.p = true;
       }
    }
 
-   public static boolean a(fni $$0, aqj<cjc> $$1) {
-      for (hg<cjc> $$2 : jd.i.c($$1)) {
-         if ($$0.j().a(app.b.b($$2.a())) > 0) {
-            return true;
-         }
+   @Override
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
       }
-
-      return false;
    }
 }

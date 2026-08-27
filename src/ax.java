@@ -5,24 +5,24 @@ import javax.annotation.Nullable;
 
 public class ax extends cw<ax.a> {
    public ax.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      cle $$3 = null;
+      clc $$3 = null;
       if ($$0.has("potion")) {
-         aey $$4 = new aey(arp.i($$0, "potion"));
-         $$3 = jd.j.b($$4).orElseThrow(() -> new JsonSyntaxException("Unknown potion '" + $$4 + "'"));
+         aew $$4 = new aew(arn.i($$0, "potion"));
+         $$3 = jb.j.b($$4).orElseThrow(() -> new JsonSyntaxException("Unknown potion '" + $$4 + "'"));
       }
 
       return new ax.a($$1, $$3);
    }
 
-   public void a(akt $$0, cle $$1) {
+   public void a(akr $$0, clc $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static class a extends at {
       @Nullable
-      private final cle a;
+      private final clc a;
 
-      public a(Optional<bc> $$0, @Nullable cle $$1) {
+      public a(Optional<bc> $$0, @Nullable clc $$1) {
          super($$0);
          this.a = $$1;
       }
@@ -31,7 +31,7 @@ public class ax extends cw<ax.a> {
          return al.k.a(new ax.a(Optional.empty(), null));
       }
 
-      public boolean a(cle $$0) {
+      public boolean a(clc $$0) {
          return this.a == null || this.a == $$0;
       }
 
@@ -39,7 +39,7 @@ public class ax extends cw<ax.a> {
       public JsonObject a() {
          JsonObject $$0 = super.a();
          if (this.a != null) {
-            $$0.addProperty("potion", jd.j.b(this.a).toString());
+            $$0.addProperty("potion", jb.j.b(this.a).toString());
          }
 
          return $$0;

@@ -1,294 +1,277 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Lifecycle;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.longs.LongConsumer;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-public class hw {
-   private final List<hw.g<?>> a = new ArrayList<>();
+public class hw extends hy {
+   public static final int a = 4;
+   public static final int b = 16;
+   public static final int c = 15;
+   public static final int d = 8;
+   public static final int e = 15;
+   private static final int h = 22;
+   private static final int i = 20;
+   private static final int j = 22;
+   private static final long k = 4194303L;
+   private static final long l = 1048575L;
+   private static final long m = 4194303L;
+   private static final int n = 0;
+   private static final int o = 20;
+   private static final int p = 42;
+   private static final int q = 8;
+   private static final int r = 0;
+   private static final int s = 4;
 
-   static <T> hh<T> a(final hi.c<T> $$0) {
-      return new hw.c<T>($$0) {
+   hw(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public static hw a(int $$0, int $$1, int $$2) {
+      return new hw($$0, $$1, $$2);
+   }
+
+   public static hw a(gw $$0) {
+      return new hw(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   public static hw a(cpc $$0, int $$1) {
+      return new hw($$0.e, $$1, $$0.f);
+   }
+
+   public static hw a(dja $$0) {
+      return a($$0.dl());
+   }
+
+   public static hw a(ho $$0) {
+      return new hw(b($$0.a()), b($$0.b()), b($$0.c()));
+   }
+
+   public static hw a(long $$0) {
+      return new hw(b($$0), c($$0), d($$0));
+   }
+
+   public static hw a(dhf $$0) {
+      return a($$0.f(), $$0.al());
+   }
+
+   public static long a(long $$0, ha $$1) {
+      return a($$0, $$1.j(), $$1.k(), $$1.l());
+   }
+
+   public static long a(long $$0, int $$1, int $$2, int $$3) {
+      return b(b($$0) + $$1, c($$0) + $$2, d($$0) + $$3);
+   }
+
+   public static int a(double $$0) {
+      return a(arw.a($$0));
+   }
+
+   public static int a(int $$0) {
+      return $$0 >> 4;
+   }
+
+   public static int b(double $$0) {
+      return arw.a($$0) >> 4;
+   }
+
+   public static int b(int $$0) {
+      return $$0 & 15;
+   }
+
+   public static short b(gw $$0) {
+      int $$1 = b($$0.u());
+      int $$2 = b($$0.v());
+      int $$3 = b($$0.w());
+      return (short)($$1 << 8 | $$3 << 4 | $$2 << 0);
+   }
+
+   public static int a(short $$0) {
+      return $$0 >>> 8 & 15;
+   }
+
+   public static int b(short $$0) {
+      return $$0 >>> 0 & 15;
+   }
+
+   public static int c(short $$0) {
+      return $$0 >>> 4 & 15;
+   }
+
+   public int d(short $$0) {
+      return this.d() + a($$0);
+   }
+
+   public int e(short $$0) {
+      return this.e() + b($$0);
+   }
+
+   public int f(short $$0) {
+      return this.f() + c($$0);
+   }
+
+   public gw g(short $$0) {
+      return new gw(this.d($$0), this.e($$0), this.f($$0));
+   }
+
+   public static int c(int $$0) {
+      return $$0 << 4;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return c($$0) + $$1;
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 << 0 >> 42);
+   }
+
+   public static int c(long $$0) {
+      return (int)($$0 << 44 >> 44);
+   }
+
+   public static int d(long $$0) {
+      return (int)($$0 << 22 >> 42);
+   }
+
+   public int a() {
+      return this.u();
+   }
+
+   public int b() {
+      return this.v();
+   }
+
+   public int c() {
+      return this.w();
+   }
+
+   public int d() {
+      return c(this.a());
+   }
+
+   public int e() {
+      return c(this.b());
+   }
+
+   public int f() {
+      return c(this.c());
+   }
+
+   public int g() {
+      return a(this.a(), 15);
+   }
+
+   public int h() {
+      return a(this.b(), 15);
+   }
+
+   public int i() {
+      return a(this.c(), 15);
+   }
+
+   public static long e(long $$0) {
+      return b(a(gw.a($$0)), a(gw.b($$0)), a(gw.c($$0)));
+   }
+
+   public static long b(int $$0, int $$1) {
+      return f(b($$0, 0, $$1));
+   }
+
+   public static long f(long $$0) {
+      return $$0 & -1048576L;
+   }
+
+   public gw j() {
+      return new gw(c(this.a()), c(this.b()), c(this.c()));
+   }
+
+   public gw q() {
+      int $$0 = 8;
+      return this.j().b(8, 8, 8);
+   }
+
+   public cpc r() {
+      return new cpc(this.a(), this.c());
+   }
+
+   public static long c(gw $$0) {
+      return b(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   public static long b(int $$0, int $$1, int $$2) {
+      long $$3 = 0L;
+      $$3 |= ((long)$$0 & 4194303L) << 42;
+      $$3 |= ((long)$$1 & 1048575L) << 0;
+      return $$3 | ((long)$$2 & 4194303L) << 20;
+   }
+
+   public long s() {
+      return b(this.a(), this.b(), this.c());
+   }
+
+   public hw d(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new hw(this.a() + $$0, this.b() + $$1, this.c() + $$2);
+   }
+
+   public Stream<gw> t() {
+      return gw.a(this.d(), this.e(), this.f(), this.g(), this.h(), this.i());
+   }
+
+   public static Stream<hw> a(hw $$0, int $$1) {
+      int $$2 = $$0.a();
+      int $$3 = $$0.b();
+      int $$4 = $$0.c();
+      return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
+   }
+
+   public static Stream<hw> a(cpc $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0.e;
+      int $$5 = $$0.f;
+      return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);
+   }
+
+   public static Stream<hw> a(final int $$0, final int $$1, final int $$2, final int $$3, final int $$4, final int $$5) {
+      return StreamSupport.stream(new AbstractSpliterator<hw>((long)(($$3 - $$0 + 1) * ($$4 - $$1 + 1) * ($$5 - $$2 + 1)), 64) {
+         final gx a = new gx($$0, $$1, $$2, $$3, $$4, $$5);
+
          @Override
-         public Optional<hg.c<T>> a(aex<T> $$0x) {
-            return $$0.a($$0);
+         public boolean tryAdvance(Consumer<? super hw> $$0x) {
+            if (this.a.a()) {
+               $$0.accept(new hw(this.a.b(), this.a.c(), this.a.d()));
+               return true;
+            } else {
+               return false;
+            }
          }
-      };
+      }, false);
    }
 
-   public <T> hw a(aex<? extends ht<T>> $$0, Lifecycle $$1, hw.e<T> $$2) {
-      this.a.add(new hw.g<>($$0, $$1, $$2));
-      return this;
+   public static void a(gw $$0, LongConsumer $$1) {
+      a($$0.u(), $$0.v(), $$0.w(), $$1);
    }
 
-   public <T> hw a(aex<? extends ht<T>> $$0, hw.e<T> $$1) {
-      return this.a($$0, Lifecycle.stable(), $$1);
+   public static void a(long $$0, LongConsumer $$1) {
+      a(gw.a($$0), gw.b($$0), gw.c($$0), $$1);
    }
 
-   private hw.a b(hu $$0) {
-      hw.a $$1 = hw.a.a($$0, this.a.stream().map(hw.g::a));
-      this.a.forEach($$1x -> $$1x.b($$1));
-      return $$1;
-   }
-
-   public hi.b a(hu $$0) {
-      hw.a $$1 = this.b($$0);
-      Stream<hi.c<?>> $$2 = $$0.b().map($$0x -> $$0x.b().p());
-      Stream<hi.c<?>> $$3 = this.a.stream().map($$1x -> $$1x.a($$1).a());
-      hi.b $$4 = hi.b.a(Stream.concat($$2, $$3.peek($$1::a)));
-      $$1.b();
-      $$1.c();
-      return $$4;
-   }
-
-   public hi.b a(hu $$0, hi.b $$1) {
-      hw.a $$2 = this.b($$0);
-      Map<aex<? extends ht<?>>, hw.f<?>> $$3 = new HashMap<>();
-      $$2.d().forEach($$1x -> $$3.put($$1x.a, $$1x));
-      this.a.stream().map($$1x -> $$1x.a($$2)).forEach($$1x -> $$3.put($$1x.a, $$1x));
-      Stream<hi.c<?>> $$4 = $$0.b().map($$0x -> $$0x.b().p());
-      hi.b $$5 = hi.b.a(Stream.concat($$4, $$3.values().stream().map(hw.f::a).peek($$2::a)));
-      $$2.a($$1);
-      $$2.b();
-      $$2.c();
-      return $$5;
-   }
-
-   static record a(hw.b a, hw.h b, Map<aey, hh<?>> c, Map<aex<?>, hw.d<?>> d, List<RuntimeException> e) {
-
-      public static hw.a a(hu $$0, Stream<aex<? extends ht<?>>> $$1) {
-         hw.b $$2 = new hw.b();
-         List<RuntimeException> $$3 = new ArrayList<>();
-         hw.h $$4 = new hw.h($$2);
-         Builder<aey, hh<?>> $$5 = ImmutableMap.builder();
-         $$0.b().forEach($$1x -> $$5.put($$1x.a().a(), hw.a($$1x.b().p())));
-         $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
-         return new hw.a($$2, $$4, $$5.build(), new HashMap<>(), $$3);
-      }
-
-      public <T> nt<T> a() {
-         return new nt<T>() {
-            @Override
-            public hg.c<T> a(aex<T> $$0, T $$1, Lifecycle $$2) {
-               hw.d<?> $$3 = a.this.d.put($$0, new hw.d($$1, $$2));
-               if ($$3 != null) {
-                  a.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
+   public static void a(int $$0, int $$1, int $$2, LongConsumer $$3) {
+      int $$4 = a($$0 - 1);
+      int $$5 = a($$0 + 1);
+      int $$6 = a($$1 - 1);
+      int $$7 = a($$1 + 1);
+      int $$8 = a($$2 - 1);
+      int $$9 = a($$2 + 1);
+      if ($$4 == $$5 && $$6 == $$7 && $$8 == $$9) {
+         $$3.accept(b($$4, $$6, $$8));
+      } else {
+         for (int $$10 = $$4; $$10 <= $$5; $$10++) {
+            for (int $$11 = $$6; $$11 <= $$7; $$11++) {
+               for (int $$12 = $$8; $$12 <= $$9; $$12++) {
+                  $$3.accept(b($$10, $$11, $$12));
                }
-
-               return a.this.b.c($$0);
-            }
-
-            @Override
-            public <S> hh<S> a(aex<? extends ht<? extends S>> $$0) {
-               return (hh<S>)a.this.c.getOrDefault($$0.a(), a.this.b);
-            }
-         };
-      }
-
-      public void b() {
-         for (aex<Object> $$0 : this.b.a.keySet()) {
-            this.e.add(new IllegalStateException("Unreferenced key: " + $$0));
-         }
-
-         this.d.forEach(($$0x, $$1) -> this.e.add(new IllegalStateException("Orpaned value " + $$1.a + " for key " + $$0x)));
-      }
-
-      public void c() {
-         if (!this.e.isEmpty()) {
-            IllegalStateException $$0 = new IllegalStateException("Errors during registry creation");
-
-            for (RuntimeException $$1 : this.e) {
-               $$0.addSuppressed($$1);
-            }
-
-            throw $$0;
-         }
-      }
-
-      public void a(hj<?> $$0) {
-         this.a.b($$0);
-      }
-
-      public void a(hi.b $$0) {
-         Map<aey, Optional<? extends hi<Object>>> $$1 = new HashMap<>();
-         Iterator<Entry<aex<Object>, hg.c<Object>>> $$2 = this.b.a.entrySet().iterator();
-
-         while ($$2.hasNext()) {
-            Entry<aex<Object>, hg.c<Object>> $$3 = $$2.next();
-            aex<Object> $$4 = $$3.getKey();
-            hg.c<Object> $$5 = $$3.getValue();
-            $$1.computeIfAbsent($$4.b(), $$1x -> $$0.a(aex.a($$1x))).flatMap($$1x -> $$1x.a($$4)).ifPresent($$2x -> {
-               $$5.b($$2x.a());
-               $$2.remove();
-            });
-         }
-      }
-
-      public Stream<hw.f<?>> d() {
-         return this.b.a.keySet().stream().map(aex::b).distinct().map($$0 -> new hw.f(aex.a($$0), Lifecycle.stable(), Map.of()));
-      }
-
-      public hw.b e() {
-         return this.a;
-      }
-
-      public hw.h f() {
-         return this.b;
-      }
-
-      public Map<aey, hh<?>> g() {
-         return this.c;
-      }
-
-      public Map<aex<?>, hw.d<?>> h() {
-         return this.d;
-      }
-
-      public List<RuntimeException> i() {
-         return this.e;
-      }
-   }
-
-   static class b implements hj<Object> {
-      private final Set<hj<?>> a = Sets.newIdentityHashSet();
-
-      @Override
-      public boolean a(hj<Object> $$0) {
-         return this.a.contains($$0);
-      }
-
-      public void b(hj<?> $$0) {
-         this.a.add($$0);
-      }
-   }
-
-   abstract static class c<T> implements hh<T> {
-      protected final hj<T> b;
-
-      protected c(hj<T> $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public Optional<hk.c<T>> a(aqj<T> $$0) {
-         return Optional.of(hk.a(this.b, $$0));
-      }
-   }
-
-   static record d<T>(T a, Lifecycle b) {
-   }
-
-   @FunctionalInterface
-   public interface e<T> {
-      void run(nt<T> var1);
-   }
-
-   static record f<T>(aex<? extends ht<? extends T>> a, Lifecycle b, Map<aex<T>, hw.i<T>> c) {
-
-      public hi.c<T> a() {
-         return new hi.c<T>() {
-            private final Map<aex<T>, hg.c<T>> b = f.this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$0x -> {
-               hw.i<T> $$1 = (hw.i<T>)$$0x.getValue();
-               hg.c<T> $$2 = $$1.b().orElseGet(() -> hg.c.a(this, (aex<T>)$$0x.getKey()));
-               $$2.b($$1.a().a());
-               return $$2;
-            }));
-
-            @Override
-            public aex<? extends ht<? extends T>> f() {
-               return f.this.a;
-            }
-
-            @Override
-            public Lifecycle g() {
-               return f.this.b;
-            }
-
-            @Override
-            public Optional<hg.c<T>> a(aex<T> $$0) {
-               return Optional.ofNullable(this.b.get($$0));
-            }
-
-            @Override
-            public Stream<hg.c<T>> b() {
-               return this.b.values().stream();
-            }
-
-            @Override
-            public Optional<hk.c<T>> a(aqj<T> $$0) {
-               return Optional.empty();
-            }
-
-            @Override
-            public Stream<hk.c<T>> d() {
-               return Stream.empty();
-            }
-         };
-      }
-
-      public aex<? extends ht<? extends T>> b() {
-         return this.a;
-      }
-
-      public Lifecycle c() {
-         return this.b;
-      }
-
-      public Map<aex<T>, hw.i<T>> d() {
-         return this.c;
-      }
-   }
-
-   static record g<T>(aex<? extends ht<T>> a, Lifecycle b, hw.e<T> c) {
-      void b(hw.a $$0) {
-         this.c.run($$0.a());
-      }
-
-      public hw.f<T> a(hw.a $$0) {
-         Map<aex<T>, hw.i<T>> $$1 = new HashMap<>();
-         Iterator<Entry<aex<?>, hw.d<?>>> $$2 = $$0.d.entrySet().iterator();
-
-         while ($$2.hasNext()) {
-            Entry<aex<?>, hw.d<?>> $$3 = $$2.next();
-            aex<?> $$4 = $$3.getKey();
-            if ($$4.b(this.a)) {
-               hw.d<T> $$6 = (hw.d<T>)$$3.getValue();
-               hg.c<T> $$7 = (hg.c<T>)$$0.b.a.remove($$4);
-               $$1.put((aex<T>)$$4, new hw.i<>($$6, Optional.ofNullable($$7)));
-               $$2.remove();
             }
          }
-
-         return new hw.f<>(this.a, this.b, $$1);
       }
-   }
-
-   static class h extends hw.c<Object> {
-      final Map<aex<Object>, hg.c<Object>> a = new HashMap<>();
-
-      public h(hj<Object> $$0) {
-         super($$0);
-      }
-
-      @Override
-      public Optional<hg.c<Object>> a(aex<Object> $$0) {
-         return Optional.of(this.c($$0));
-      }
-
-      <T> hg.c<T> c(aex<T> $$0) {
-         return (hg.c<T>)this.a.computeIfAbsent($$0, $$0x -> hg.c.a(this.b, $$0x));
-      }
-   }
-
-   static record i<T>(hw.d<T> a, Optional<hg.c<T>> b) {
    }
 }

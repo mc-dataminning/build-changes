@@ -1,26 +1,38 @@
-public class fgv<T extends bvp> extends fgp<T> {
-   private float j;
+public class fgv<T extends biq> extends ffm<T> {
+   private static final String a = "main";
+   private final fic b;
+   private final fic f;
 
-   public fgv(fie $$0) {
-      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+   public fgv(fic $$0) {
+      this.b = $$0;
+      this.f = $$0.b("main");
    }
 
-   public static fik c() {
-      fim $$0 = fgp.a(12, fii.a);
-      fin $$1 = $$0.a();
-      $$1.a("head", fij.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fig.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fij.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fig.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return fik.a($$0, 64, 32);
+   public static fii b() {
+      fik $$0 = new fik();
+      fil $$1 = $$0.a();
+      $$1.a(
+         "main",
+         fih.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
+            .a(0, 10)
+            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
+            .a(20, 0)
+            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
+         fie.a
+      );
+      return fii.a($$0, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.c = 6.0F + $$0.E($$3) * 9.0F;
-      this.j = $$0.F($$3);
+   @Override
+   public fic a() {
+      return this.b;
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.e = this.j;
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

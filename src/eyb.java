@@ -1,62 +1,105 @@
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class eyb extends eym {
-   private static final tn a = tn.c("symlink_warning.title.world").a(n.r);
-   private static final tn b = tn.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final tn c = tn.c("symlink_warning.title.pack").a(n.r);
-   private static final tn k = tn.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
-   private final tn l;
-   private final String m;
-   @Nullable
-   private final eym n;
-   private final ewa o = new ewa().b(10);
+public class eyb extends eyk {
+   private static final tl a = tl.c("options.skinCustomisation");
+   private static final tl b = tl.c("options.sounds");
+   private static final tl c = tl.c("options.video");
+   private static final tl k = tl.c("options.controls");
+   private static final tl l = tl.c("options.language");
+   private static final tl m = tl.c("options.chat");
+   private static final tl n = tl.c("options.resourcepack");
+   private static final tl o = tl.c("options.accessibility");
+   private static final tl p = tl.c("options.telemetry");
+   private static final tl q = tl.c("options.credits_and_attribution");
+   private static final int s = 2;
+   private final eyk t;
+   private final eqz u;
+   private esx<bgv> v;
+   private etg w;
 
-   public eyb(tn $$0, tn $$1, String $$2, @Nullable eym $$3) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-   }
-
-   public static eym a(@Nullable eym $$0) {
-      return new eyb(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
-   }
-
-   public static eym b(@Nullable eym $$0) {
-      return new eyb(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
+   public eyb(eyk $$0, eqz $$1) {
+      super(tl.c("options.title"));
+      this.t = $$0;
+      this.u = $$1;
    }
 
    @Override
    protected void aH_() {
-      super.aH_();
-      this.o.c().b();
-      ewa.b $$0 = this.o.d(1);
-      $$0.a(new ety(this.e, this.i));
-      $$0.a(new etm(this.l, this.i).j(this.g - 50).b(true));
-      int $$1 = 120;
-      ewa $$2 = new ewa().a(5);
-      ewa.b $$3 = $$2.d(3);
-      $$3.a(ess.a(tm.n, $$0x -> ac.i().a(this.m)).b(120, 20).a());
-      $$3.a(ess.a(tm.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
-      $$3.a(ess.a(tm.k, $$0x -> this.az_()).b(120, 20).a());
-      $$0.a($$2);
-      this.b();
-      this.o.a(this::d);
+      evy $$0 = new evy();
+      $$0.c().f(5).e(4).b();
+      evy.b $$1 = $$0.d(2);
+      $$1.a(this.u.ad().a(this.f.m, 0, 0, 150));
+      $$1.a(this.l());
+      $$1.a(ewe.b(26), 2);
+      $$1.a(this.a(a, () -> new eyn(this, this.u)));
+      $$1.a(this.a(b, () -> new eyo(this, this.u)));
+      $$1.a(this.a(c, () -> new eyq(this, this.u)));
+      $$1.a(this.a(k, () -> new ezb(this, this.u)));
+      $$1.a(this.a(l, () -> new ext(this, this.u, this.f.ae())));
+      $$1.a(this.a(m, () -> new exa(this, this.u)));
+      $$1.a(this.a(n, () -> new fbp(this.f.aa(), this::a, this.f.ad(), tl.c("resourcePack.title"))));
+      $$1.a(this.a(o, () -> new eww(this, this.u)));
+      $$1.a(this.a(p, () -> new fcv(this, this.u)));
+      $$1.a(this.a(q, () -> new exh(this)));
+      $$1.a(esq.a(tk.d, $$0x -> this.f.a(this.t)).a(200).a(), 2, $$1.b().c(6));
+      $$0.a();
+      evx.a($$0, 0, this.h / 6 - 12, this.g, this.h, 0.5F, 0.0F);
+      $$0.a(this::d);
+   }
+
+   private void a(ane $$0) {
+      this.u.a($$0);
+      this.f.a(this);
+   }
+
+   private ewb l() {
+      if (this.f.r != null && this.f.S()) {
+         this.v = a(0, 0, "options.difficulty", this.f);
+         if (!this.f.r.k().n()) {
+            this.w = new etg(0, 0, $$0x -> this.f.a(new exd(this::c, tl.c("difficulty.lock.title"), tl.a("difficulty.lock.question", this.f.r.k().s().b()))));
+            this.v.d(this.v.l() - this.w.l());
+            this.w.b(this.f.r.k().t());
+            this.w.i = !this.w.a();
+            this.v.i = !this.w.a();
+            evw $$0 = new evw(150, 0, evw.b.a);
+            $$0.a(this.v);
+            $$0.a(this.w);
+            return $$0;
+         } else {
+            this.v.i = false;
+            return this.v;
+         }
+      } else {
+         return esq.a(tl.c("options.online"), $$0x -> this.f.a(eya.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
+      }
+   }
+
+   public static esx<bgv> a(int $$0, int $$1, String $$2, eqv $$3) {
+      return esx.a(bgv::b).a(bgv.values()).a($$3.r.ai()).a($$0, $$1, 150, 20, tl.c($$2), ($$1x, $$2x) -> $$3.J().b(new abh($$2x)));
+   }
+
+   private void c(boolean $$0) {
+      this.f.a(this);
+      if ($$0 && this.f.r != null) {
+         this.f.J().b(new abx(true));
+         this.w.b(true);
+         this.w.i = false;
+         this.v.i = false;
+      }
    }
 
    @Override
-   protected void b() {
-      this.o.a();
-      evz.a(this.o, this.s());
+   public void h() {
+      this.u.ar();
    }
 
    @Override
-   public tn g() {
-      return tm.a(super.g(), this.l);
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 
-   @Override
-   public void az_() {
-      this.f.a(this.n);
+   private esq a(tl $$0, Supplier<eyk> $$1) {
+      return esq.a($$0, $$1x -> this.f.a($$1.get())).a();
    }
 }

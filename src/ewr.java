@@ -1,29 +1,24 @@
-public enum ewr {
-   a,
-   b;
-
-   public ewr a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
+public record ewr(int a, int b) {
+   public static ewr a(ewp $$0, int $$1, int $$2) {
+      return switch ($$0) {
+         case a -> new ewr($$1, $$2);
+         case b -> new ewr($$2, $$1);
       };
    }
 
-   public ews b() {
-      return switch (this) {
-         case a -> ews.d;
-         case b -> ews.b;
+   public ewr a(ewq $$0) {
+      return switch ($$0) {
+         case b -> new ewr(this.a, this.b + 1);
+         case a -> new ewr(this.a, this.b - 1);
+         case c -> new ewr(this.a - 1, this.b);
+         case d -> new ewr(this.a + 1, this.b);
       };
    }
 
-   public ews c() {
-      return switch (this) {
-         case a -> ews.c;
-         case b -> ews.a;
+   public int a(ewp $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
       };
-   }
-
-   public ews a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
    }
 }

@@ -1,465 +1,315 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.blaze3d.platform.TextureUtil;
 import java.nio.file.Path;
-import java.text.MessageFormat;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import org.lwjgl.glfw.GLFWDropCallback;
 
 public class eqw {
-   public static final int a = 10000;
-   private final eqx b;
-   private final ekg c = new ekg();
-   private long d = -1L;
-   private long e = -1L;
-   private long f = -1L;
-   private boolean g;
+   private final eqv a;
+   private boolean b;
+   private boolean c;
+   private boolean d;
+   private double e;
+   private double f;
+   private int g;
+   private int h = -1;
+   private boolean i = true;
+   private int j;
+   private double k;
+   private final asl l = new asl();
+   private final asl m = new asl();
+   private double n;
+   private double o;
+   private double p;
+   private double q;
+   private double r = Double.MIN_VALUE;
+   private boolean s;
 
-   public eqw(eqx $$0) {
-      this.b = $$0;
+   public eqw(eqv $$0) {
+      this.a = $$0;
    }
 
-   private boolean a(int $$0) {
-      switch ($$0) {
-         case 69:
-            this.b.B = !this.b.B;
-            this.c("SectionPath: {0}", this.b.B ? "shown" : "hidden");
-            return true;
-         case 76:
-            this.b.D = !this.b.D;
-            this.c("SmartCull: {0}", this.b.D ? "enabled" : "disabled");
-            return true;
-         case 85:
-            if (eym.q()) {
-               this.b.f.n();
-               this.c("Killed frustum");
-            } else {
-               this.b.f.m();
-               this.c("Captured frustum");
-            }
-
-            return true;
-         case 86:
-            this.b.C = !this.b.C;
-            this.c("SectionVisibility: {0}", this.b.C ? "enabled" : "disabled");
-            return true;
-         case 87:
-            this.b.A = !this.b.A;
-            this.c("WireFrame: {0}", this.b.A ? "enabled" : "disabled");
-            return true;
-         default:
-            return false;
-      }
-   }
-
-   private void a(n $$0, tn $$1) {
-      this.b.l.d().a(tn.h().b(tn.c("debug.prefix").a($$0, n.r)).b(tm.u).b($$1));
-   }
-
-   private void a(tn $$0) {
-      this.a(n.o, $$0);
-   }
-
-   private void a(String $$0, Object... $$1) {
-      this.a(tn.a($$0, $$1));
-   }
-
-   private void b(String $$0, Object... $$1) {
-      this.a(n.m, tn.a($$0, $$1));
-   }
-
-   private void c(String $$0, Object... $$1) {
-      this.a(tn.b(MessageFormat.format($$0, $$1)));
-   }
-
-   private boolean b(int $$0) {
-      if (this.d > 0L && this.d < ac.b() - 100L) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 49:
-               this.b.aN().j();
-               return true;
-            case 50:
-               this.b.aN().i();
-               return true;
-            case 51:
-               this.b.aN().h();
-               return true;
-            case 65:
-               this.b.f.f();
-               this.a("debug.reload_chunks.message");
-               return true;
-            case 66:
-               boolean $$1 = !this.b.ao().a();
-               this.b.ao().b($$1);
-               this.a($$1 ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
-               return true;
-            case 67:
-               if (this.b.s.gh()) {
-                  return false;
-               } else {
-                  fja $$7 = this.b.s.cn;
-                  if ($$7 == null) {
-                     return false;
-                  }
-
-                  this.a("debug.copy_location.message");
-                  this.a(
-                     String.format(
-                        Locale.ROOT,
-                        "/execute in %s run tp @s %.2f %.2f %.2f %.2f %.2f",
-                        this.b.s.dL().ac().a(),
-                        this.b.s.dq(),
-                        this.b.s.ds(),
-                        this.b.s.dw(),
-                        this.b.s.dB(),
-                        this.b.s.dD()
-                     )
-                  );
-                  return true;
-               }
-            case 68:
-               if (this.b.l != null) {
-                  this.b.l.d().a(false);
-               }
-
-               return true;
-            case 71:
-               boolean $$2 = this.b.k.b();
-               this.a($$2 ? "debug.chunk_boundaries.on" : "debug.chunk_boundaries.off");
-               return true;
-            case 72:
-               this.b.m.m = !this.b.m.m;
-               this.a(this.b.m.m ? "debug.advanced_tooltips.on" : "debug.advanced_tooltips.off");
-               this.b.m.ar();
-               return true;
-            case 73:
-               if (!this.b.s.gh()) {
-                  this.a(this.b.s.l(2), !eym.q());
-               }
-
-               return true;
-            case 76:
-               if (this.b.a(this::a)) {
-                  this.a("debug.profiling.start", 10);
-               }
-
-               return true;
-            case 78:
-               if (!this.b.s.l(2)) {
-                  this.a("debug.creative_spectator.error");
-               } else if (!this.b.s.M_()) {
-                  this.b.s.cn.d("gamemode spectator");
-               } else {
-                  this.b.s.cn.d("gamemode " + ((cpu)MoreObjects.firstNonNull(this.b.q.k(), cpu.b)).b());
-               }
-
-               return true;
-            case 80:
-               this.b.m.n = !this.b.m.n;
-               this.b.m.ar();
-               this.a(this.b.m.n ? "debug.pause_focus.on" : "debug.pause_focus.off");
-               return true;
-            case 81:
-               this.a("debug.help.message");
-               est $$3 = this.b.l.d();
-               $$3.a(tn.c("debug.reload_chunks.help"));
-               $$3.a(tn.c("debug.show_hitboxes.help"));
-               $$3.a(tn.c("debug.copy_location.help"));
-               $$3.a(tn.c("debug.clear_chat.help"));
-               $$3.a(tn.c("debug.chunk_boundaries.help"));
-               $$3.a(tn.c("debug.advanced_tooltips.help"));
-               $$3.a(tn.c("debug.inspect.help"));
-               $$3.a(tn.c("debug.profiling.help"));
-               $$3.a(tn.c("debug.creative_spectator.help"));
-               $$3.a(tn.c("debug.pause_focus.help"));
-               $$3.a(tn.c("debug.help.help"));
-               $$3.a(tn.c("debug.dump_dynamic_textures.help"));
-               $$3.a(tn.c("debug.reload_resourcepacks.help"));
-               $$3.a(tn.c("debug.pause.help"));
-               $$3.a(tn.c("debug.gamemodes.help"));
-               return true;
-            case 83:
-               Path $$4 = this.b.p.toPath().toAbsolutePath();
-               Path $$5 = TextureUtil.getDebugTexturePath($$4);
-               this.b.Y().a($$5);
-               tn $$6 = tn.b($$4.relativize($$5).toString()).a(n.t).a($$1x -> $$1x.a(new tl(tl.a.b, $$5.toFile().toString())));
-               this.a("debug.dump_dynamic_textures", $$6);
-               return true;
-            case 84:
-               this.a("debug.reload_resourcepacks.message");
-               this.b.k();
-               return true;
-            case 293:
-               if (!this.b.s.l(2)) {
-                  this.a("debug.gamemodes.error");
-               } else {
-                  this.b.a(new ezh());
-               }
-
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   private void a(boolean $$0, boolean $$1) {
-      ehn $$2 = this.b.v;
-      if ($$2 != null) {
-         switch ($$2.c()) {
-            case b:
-               gw $$3 = ((ehl)$$2).a();
-               dfl $$4 = this.b.s.dL().a_($$3);
-               if ($$0) {
-                  if ($$1) {
-                     this.b.s.cn.t().a($$3, $$2x -> {
-                        this.a($$4, $$3, $$2x);
-                        this.a("debug.inspect.server.block");
-                     });
-                  } else {
-                     dcx $$5 = this.b.s.dL().c_($$3);
-                     qy $$6 = $$5 != null ? $$5.o() : null;
-                     this.a($$4, $$3, $$6);
-                     this.a("debug.inspect.client.block");
-                  }
-               } else {
-                  this.a($$4, $$3, null);
-                  this.a("debug.inspect.client.block");
-               }
-               break;
-            case c:
-               bis $$7 = ((ehm)$$2).a();
-               aey $$8 = jd.h.b($$7.ag());
-               if ($$0) {
-                  if ($$1) {
-                     this.b.s.cn.t().a($$7.ah(), $$2x -> {
-                        this.a($$8, $$7.dj(), $$2x);
-                        this.a("debug.inspect.server.entity");
-                     });
-                  } else {
-                     qy $$9 = $$7.f(new qy());
-                     this.a($$8, $$7.dj(), $$9);
-                     this.a("debug.inspect.client.entity");
-                  }
-               } else {
-                  this.a($$8, $$7.dj(), null);
-                  this.a("debug.inspect.client.entity");
-               }
-         }
-      }
-   }
-
-   private void a(dfl $$0, gw $$1, @Nullable qy $$2) {
-      StringBuilder $$3 = new StringBuilder(fi.a($$0));
-      if ($$2 != null) {
-         $$3.append($$2);
-      }
-
-      String $$4 = String.format(Locale.ROOT, "/setblock %d %d %d %s", $$1.u(), $$1.v(), $$1.w(), $$3);
-      this.a($$4);
-   }
-
-   private void a(aey $$0, ehp $$1, @Nullable qy $$2) {
-      String $$4;
-      if ($$2 != null) {
-         $$2.r("UUID");
-         $$2.r("Pos");
-         $$2.r("Dimension");
-         String $$3 = rl.c((rs)$$2).getString();
-         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f %s", $$0, $$1.c, $$1.d, $$1.e, $$3);
-      } else {
-         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f", $$0, $$1.c, $$1.d, $$1.e);
-      }
-
-      this.a($$4);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3, int $$4) {
-      if ($$0 == this.b.aM().i()) {
-         boolean $$5 = ekm.a(eqx.O().aM().i(), 292);
-         if (this.d > 0L) {
-            if (!ekm.a(eqx.O().aM().i(), 67) || !$$5) {
-               this.d = -1L;
-            }
-         } else if (ekm.a(eqx.O().aM().i(), 67) && $$5) {
-            this.g = true;
-            this.d = ac.b();
-            this.e = ac.b();
-            this.f = 0L;
+   private void a(long $$0, int $$1, int $$2, int $$3) {
+      if ($$0 == this.a.aM().i()) {
+         if (this.a.y != null) {
+            this.a.a(eqs.b);
          }
 
-         eym $$6 = this.b.y;
-         if ($$6 != null) {
-            switch ($$1) {
-               case 258:
-                  this.b.a(equ.d);
-               case 259:
-               case 260:
-               case 261:
-               default:
-                  break;
-               case 262:
-               case 263:
-               case 264:
-               case 265:
-                  this.b.a(equ.c);
+         boolean $$4 = $$2 == 1;
+         if (eqv.a && $$1 == 0) {
+            if ($$4) {
+               if (($$3 & 2) == 2) {
+                  $$1 = 1;
+                  this.g++;
+               }
+            } else if (this.g > 0) {
+               $$1 = 1;
+               this.g--;
             }
          }
 
-         if ($$3 == 1 && (!(this.b.y instanceof ezf) || ((ezf)$$6).k <= ac.b() - 20L)) {
-            if (this.b.m.R.a($$1, $$2)) {
-               this.b.aM().h();
-               this.b.m.W().a(this.b.aM().j());
+         int $$5 = $$1;
+         if ($$4) {
+            if (this.a.m.V().c() && this.j++ > 0) {
                return;
             }
 
-            if (this.b.m.O.a($$1, $$2)) {
-               if (eym.p()) {
-               }
-
-               eri.a(this.b.p, this.b.g(), $$0x -> this.b.execute(() -> this.b.l.d().a($$0x)));
+            this.h = $$5;
+            this.k = ejg.b();
+         } else if (this.h != -1) {
+            if (this.a.m.V().c() && --this.j > 0) {
                return;
             }
+
+            this.h = -1;
          }
 
-         if (this.b.aV().a() && this.b.m.r().c()) {
-            boolean $$7 = $$6 == null || !($$6.t() instanceof etb) || !((etb)$$6.t()).e();
-            if ($$3 != 0 && $$1 == 66 && eym.p() && $$7) {
-               boolean $$8 = this.b.m.ao().c() == eqz.a;
-               this.b.m.ao().a(eqz.a(this.b.m.ao().c().a() + 1));
-               if ($$6 instanceof eyo) {
-                  ((eyo)$$6).l();
-               }
-
-               if ($$8 && $$6 != null) {
-                  $$6.B();
-               }
-            }
-         }
-
-         if ($$6 != null) {
-            boolean[] $$9 = new boolean[]{false};
-            eym.a(() -> {
-               if ($$3 == 1 || $$3 == 2) {
-                  $$6.y();
-                  $$9[0] = $$6.a($$1, $$2, $$4);
-               } else if ($$3 == 0) {
-                  $$9[0] = $$6.b($$1, $$2, $$4);
-               }
-            }, "keyPressed event handler", $$6.getClass().getCanonicalName());
-            if ($$9[0]) {
-               return;
-            }
-         }
-
-         if (this.b.y == null || this.b.y instanceof eyh $$10 && !$$10.l()) {
-            ekm.a $$11 = ekm.a($$1, $$2);
-            if ($$3 == 0) {
-               eqv.a($$11, false);
-               if ($$1 == 292) {
-                  if (this.g) {
-                     this.g = false;
-                  } else {
-                     this.b.aN().g();
-                  }
+         boolean[] $$6 = new boolean[]{false};
+         if (this.a.aJ() == null) {
+            if (this.a.y == null) {
+               if (!this.s && $$4) {
+                  this.i();
                }
             } else {
-               if ($$1 == 293 && this.b.j != null) {
-                  this.b.j.c();
-               }
-
-               boolean $$12 = false;
-               if ($$1 == 256) {
-                  this.b.c($$5);
-                  $$12 |= $$5;
-               }
-
-               $$12 |= $$5 && this.b($$1);
-               this.g |= $$12;
-               if ($$1 == 290) {
-                  this.b.m.Z = !this.b.m.Z;
-               }
-
-               if ($$12) {
-                  eqv.a($$11, false);
+               double $$7 = this.e * (double)this.a.aM().o() / (double)this.a.aM().m();
+               double $$8 = this.f * (double)this.a.aM().p() / (double)this.a.aM().n();
+               eyk $$9 = this.a.y;
+               if ($$4) {
+                  $$9.x();
+                  eyk.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
                } else {
-                  eqv.a($$11, true);
-                  eqv.a($$11);
+                  eyk.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
                }
+            }
+         }
 
-               if (this.b.aN().e() && !$$5 && $$1 >= 48 && $$1 <= 57) {
-                  this.b.a($$1 - 48);
+         if (!$$6[0] && this.a.y == null && this.a.aJ() == null) {
+            if ($$5 == 0) {
+               this.b = $$4;
+            } else if ($$5 == 2) {
+               this.c = $$4;
+            } else if ($$5 == 1) {
+               this.d = $$4;
+            }
+
+            eqt.a(ekk.b.c.a($$5), $$4);
+            if ($$4) {
+               if (this.a.s.M_() && $$5 == 2) {
+                  this.a.l.g().b();
+               } else {
+                  eqt.a(ekk.b.c.a($$5));
                }
             }
          }
       }
    }
 
-   private void a(long $$0, int $$1, int $$2) {
-      if ($$0 == this.b.aM().i()) {
-         eum $$3 = this.b.y;
-         if ($$3 != null && this.b.aJ() == null) {
-            if (Character.charCount($$1) == 1) {
-               eym.a(() -> $$3.a((char)$$1, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
-            } else {
-               for (char $$4 : Character.toChars($$1)) {
-                  eym.a(() -> $$3.a($$4, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
+   private void a(long $$0, double $$1, double $$2) {
+      if ($$0 == eqv.O().aM().i()) {
+         boolean $$3 = this.a.m.O().c();
+         double $$4 = this.a.m.C().c();
+         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
+         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
+         if (this.a.aJ() == null) {
+            if (this.a.y != null) {
+               double $$7 = this.e * (double)this.a.aM().o() / (double)this.a.aM().m();
+               double $$8 = this.f * (double)this.a.aM().p() / (double)this.a.aM().n();
+               this.a.y.a($$7, $$8, $$5, $$6);
+               this.a.y.x();
+            } else if (this.a.s != null) {
+               if (this.p != 0.0 && Math.signum($$5) != Math.signum(this.p)) {
+                  this.p = 0.0;
+               }
+
+               if (this.q != 0.0 && Math.signum($$6) != Math.signum(this.q)) {
+                  this.q = 0.0;
+               }
+
+               this.p += $$5;
+               this.q += $$6;
+               int $$9 = (int)this.p;
+               int $$10 = (int)this.q;
+               if ($$9 == 0 && $$10 == 0) {
+                  return;
+               }
+
+               this.p -= (double)$$9;
+               this.q -= (double)$$10;
+               int $$11 = $$10 == 0 ? -$$9 : $$10;
+               if (this.a.s.M_()) {
+                  if (this.a.l.g().a()) {
+                     this.a.l.g().b(-$$11);
+                  } else {
+                     float $$12 = arw.a(this.a.s.fS().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
+                     this.a.s.fS().a($$12);
+                  }
+               } else {
+                  this.a.s.fR().a((double)$$11);
                }
             }
          }
+      }
+   }
+
+   private void a(long $$0, List<Path> $$1) {
+      if (this.a.y != null) {
+         this.a.y.a($$1);
       }
    }
 
    public void a(long $$0) {
-      ekm.a(
+      ekk.a(
          $$0,
-         ($$0x, $$1, $$2, $$3, $$4) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3, $$4)),
-         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2))
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.b($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2, $$3) -> this.a.execute(() -> this.a($$0x, $$1, $$2, $$3)),
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.a($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2) -> {
+            Path[] $$3 = new Path[$$1];
+
+            for (int $$4 = 0; $$4 < $$1; $$4++) {
+               $$3[$$4] = Paths.get(GLFWDropCallback.getName($$2, $$4));
+            }
+
+            this.a.execute(() -> this.a($$0x, Arrays.asList($$3)));
+         }
       );
    }
 
-   public String a() {
-      return this.c.a(this.b.aM().i(), ($$0, $$1) -> {
-         if ($$0 != 65545) {
-            this.b.aM().a($$0, $$1);
+   private void b(long $$0, double $$1, double $$2) {
+      if ($$0 == eqv.O().aM().i()) {
+         if (this.i) {
+            this.e = $$1;
+            this.f = $$2;
+            this.i = false;
          }
-      });
-   }
 
-   public void a(String $$0) {
-      if (!$$0.isEmpty()) {
-         this.c.a(this.b.aM().i(), $$0);
+         eyk $$3 = this.a.y;
+         if ($$3 != null && this.a.aJ() == null) {
+            double $$4 = $$1 * (double)this.a.aM().o() / (double)this.a.aM().m();
+            double $$5 = $$2 * (double)this.a.aM().p() / (double)this.a.aM().n();
+            eyk.a(() -> $$3.e($$4, $$5), "mouseMoved event handler", $$3.getClass().getCanonicalName());
+            if (this.h != -1 && this.k > 0.0) {
+               double $$6 = ($$1 - this.e) * (double)this.a.aM().o() / (double)this.a.aM().m();
+               double $$7 = ($$2 - this.f) * (double)this.a.aM().p() / (double)this.a.aM().n();
+               eyk.a(() -> $$3.a($$4, $$5, this.h, $$6, $$7), "mouseDragged event handler", $$3.getClass().getCanonicalName());
+            }
+
+            $$3.w();
+         }
+
+         this.a.aG().a("mouse");
+         if (this.h() && this.a.aA()) {
+            this.n = this.n + ($$1 - this.e);
+            this.o = this.o + ($$2 - this.f);
+         }
+
+         this.a();
+         this.e = $$1;
+         this.f = $$2;
+         this.a.aG().c();
       }
    }
 
-   public void b() {
-      if (this.d > 0L) {
-         long $$0 = ac.b();
-         long $$1 = 10000L - ($$0 - this.d);
-         long $$2 = $$0 - this.e;
-         if ($$1 < 0L) {
-            if (eym.p()) {
-               eji.a();
-            }
-
-            String $$3 = "Manually triggered debug crash";
-            o $$4 = new o("Manually triggered debug crash", new Throwable("Manually triggered debug crash"));
-            p $$5 = $$4.a("Manual crash details");
-            arz.a($$5);
-            throw new y($$4);
+   public void a() {
+      double $$0 = ejg.b();
+      double $$1 = $$0 - this.r;
+      this.r = $$0;
+      if (this.h() && this.a.aA()) {
+         double $$2 = this.a.m.c().c() * 0.6F + 0.2F;
+         double $$3 = $$2 * $$2 * $$2;
+         double $$4 = $$3 * 8.0;
+         double $$7;
+         double $$8;
+         if (this.a.m.ab) {
+            double $$5 = this.l.a(this.n * $$4, $$1 * $$4);
+            double $$6 = this.m.a(this.o * $$4, $$1 * $$4);
+            $$7 = $$5;
+            $$8 = $$6;
+         } else if (this.a.m.aw().a() && this.a.s.gp()) {
+            this.l.a();
+            this.m.a();
+            $$7 = this.n * $$3;
+            $$8 = this.o * $$3;
+         } else {
+            this.l.a();
+            this.m.a();
+            $$7 = this.n * $$4;
+            $$8 = this.o * $$4;
          }
 
-         if ($$2 >= 1000L) {
-            if (this.f == 0L) {
-               this.a("debug.crash.message");
-            } else {
-               this.b("debug.crash.warning", ary.f((float)$$1 / 1000.0F));
+         this.n = 0.0;
+         this.o = 0.0;
+         int $$13 = 1;
+         if (this.a.m.N().c()) {
+            $$13 = -1;
+         }
+
+         this.a.az().a($$7, $$8);
+         if (this.a.s != null) {
+            this.a.s.b($$7, $$8 * (double)$$13);
+         }
+      } else {
+         this.n = 0.0;
+         this.o = 0.0;
+      }
+   }
+
+   public boolean b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public void g() {
+      this.i = true;
+   }
+
+   public boolean h() {
+      return this.s;
+   }
+
+   public void i() {
+      if (this.a.aA()) {
+         if (!this.s) {
+            if (!eqv.a) {
+               eqt.a();
             }
 
-            this.e = $$0;
-            this.f++;
+            this.s = true;
+            this.e = (double)(this.a.aM().m() / 2);
+            this.f = (double)(this.a.aM().n() / 2);
+            ekk.a(this.a.aM().i(), 212995, this.e, this.f);
+            this.a.a(null);
+            this.a.w = 10000;
+            this.i = true;
          }
       }
+   }
+
+   public void j() {
+      if (this.s) {
+         this.s = false;
+         this.e = (double)(this.a.aM().m() / 2);
+         this.f = (double)(this.a.aM().n() / 2);
+         ekk.a(this.a.aM().i(), 212993, this.e, this.f);
+      }
+   }
+
+   public void k() {
+      this.i = true;
    }
 }

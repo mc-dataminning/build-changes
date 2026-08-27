@@ -1,61 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmt {
-   public static final dmt a = new dmt(false, csy.gz.n(), csy.pL.n(), csy.ek.n(), csy.aQ.n());
-   public static final Codec<dmt> b = RecordCodecBuilder.create(
+public class dmt extends dmq {
+   public static final Codec<dmt> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dmt::a),
-               dfl.b.optionalFieldOf("air_state", a.b()).forGetter(dmt::b),
-               dfl.b.optionalFieldOf("water_state", a.b()).forGetter(dmt::c),
-               dfl.b.optionalFieldOf("lava_state", a.b()).forGetter(dmt::d),
-               dfl.b.optionalFieldOf("barrier_state", a.b()).forGetter(dmt::e)
+               dmq.d.forGetter($$0x -> $$0x),
+               bgb.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bgb.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bgb.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
             )
             .apply($$0, dmt::new)
    );
-   private final boolean c;
-   private final dfl d;
-   private final dfl e;
-   private final dfl f;
-   private final dfl g;
+   public final bgb b;
+   public final bgb c;
+   final bgb j;
 
-   public static dmt a(boolean $$0, dfl $$1, dfl $$2, dfl $$3, dfl $$4) {
-      return new dmt($$0, $$1, $$2, $$3, $$4);
+   public dmt(float $$0, dtp $$1, bgb $$2, dlm $$3, dmr $$4, hi<csv> $$5, bgb $$6, bgb $$7, bgb $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   public static dmt a(dfl $$0, dfl $$1, dfl $$2, dfl $$3) {
-      return new dmt(false, $$0, $$1, $$2, $$3);
+   public dmt(float $$0, dtp $$1, bgb $$2, dlm $$3, hi<csv> $$4, bgb $$5, bgb $$6, bgb $$7) {
+      this($$0, $$1, $$2, $$3, dmr.a, $$4, $$5, $$6, $$7);
    }
 
-   public static dmt a(boolean $$0, dfl $$1) {
-      return new dmt($$0, $$1, a.c(), a.d(), a.e());
-   }
-
-   private dmt(boolean $$0, dfl $$1, dfl $$2, dfl $$3, dfl $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a() {
-      return this.c;
-   }
-
-   public dfl b() {
-      return this.d;
-   }
-
-   public dfl c() {
-      return this.e;
-   }
-
-   public dfl d() {
-      return this.f;
-   }
-
-   public dfl e() {
-      return this.g;
+   public dmt(dmq $$0, bgb $$1, bgb $$2, bgb $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

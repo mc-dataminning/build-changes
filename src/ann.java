@@ -1,19 +1,14 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-@FunctionalInterface
-public interface ann<T> {
-   static ann<InputStream> create(Path $$0) {
-      return () -> Files.newInputStream($$0);
+public interface ann {
+   CompletableFuture<Void> a(ann.a var1, ant var2, bdp var3, bdp var4, Executor var5, Executor var6);
+
+   default String c() {
+      return this.getClass().getSimpleName();
    }
 
-   static ann<InputStream> create(ZipFile $$0, ZipEntry $$1) {
-      return () -> $$0.getInputStream($$1);
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
    }
-
-   T get() throws IOException;
 }

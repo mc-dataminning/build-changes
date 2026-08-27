@@ -1,22 +1,37 @@
-public class gfb implements etu {
-   private final tn a;
-   private final int b;
-   private final int c;
-   private final int d;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-   public gfb(tn $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public abstract class gfb extends eyk {
+   protected static final int k = 17;
+   protected static final int l = 7;
+   protected static final long m = 5368709120L;
+   protected static final int n = 5000268;
+   protected static final int o = 7105644;
+   protected static final int p = 8388479;
+   protected static final int q = 15553363;
+   protected static final int s = 13413468;
+   protected static final int t = -256;
+   protected static final int u = 3368635;
+   protected static final int v = 7107012;
+   protected static final int w = 8226750;
+   protected static final int x = 8;
+   private final List<gez> a = Lists.newArrayList();
+
+   public gfb(tl $$0) {
+      super($$0);
    }
 
-   @Override
-   public void a(esh $$0, int $$1, int $$2, float $$3) {
-      $$0.a(eqx.O().h, this.a, this.b, this.c, this.d);
+   protected static int h(int $$0) {
+      return 40 + $$0 * 13;
    }
 
-   public tn a() {
-      return this.a;
+   protected gez a(gez $$0) {
+      this.a.add($$0);
+      return this.a($$0);
+   }
+
+   public tl l() {
+      return tk.a(this.a.stream().map(gez::a).collect(Collectors.toList()));
    }
 }

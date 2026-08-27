@@ -1,23 +1,19 @@
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface djj<B, T extends B> {
-   static <B, T extends B> djj<B, T> a(final Class<T> $$0) {
-      return new djj<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
+public interface djj<T extends dja> {
+   @Nullable
+   T a(int var1);
 
    @Nullable
-   T a(B var1);
+   T a(UUID var1);
 
-   Class<? extends B> a();
+   Iterable<T> a();
+
+   <U extends T> void a(djh<T, U> var1, aqn<U> var2);
+
+   void a(ehi var1, Consumer<T> var2);
+
+   <U extends T> void a(djh<T, U> var1, ehi var2, aqn<U> var3);
 }

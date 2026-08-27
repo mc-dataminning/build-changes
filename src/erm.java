@@ -1,77 +1,34 @@
-import com.mojang.util.UndashedUuid;
-import java.util.Arrays;
-import java.util.Locale;
+import com.google.common.collect.Maps;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import org.apache.commons.compress.utils.Lists;
 
-public class erm {
-   private final String a;
-   private final UUID b;
-   private final String c;
-   private final Optional<String> d;
-   private final Optional<String> e;
-   private final erm.a f;
+public record erm(float a, boolean b, Map<String, List<erl>> c) {
+   public static class a {
+      private final float a;
+      private final Map<String, List<erl>> b = Maps.newHashMap();
+      private boolean c;
 
-   public erm(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, erm.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public String a() {
-      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
-   }
-
-   public UUID b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public Optional<String> e() {
-      return this.e;
-   }
-
-   public Optional<String> f() {
-      return this.d;
-   }
-
-   public erm.a g() {
-      return this.f;
-   }
-
-   public static enum a {
-      a("legacy"),
-      b("mojang"),
-      c("msa");
-
-      private static final Map<String, erm.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
-      private final String e;
-
-      private a(String $$0) {
-         this.e = $$0;
+      public static erm.a a(float $$0) {
+         return new erm.a($$0);
       }
 
-      @Nullable
-      public static erm.a a(String $$0) {
-         return d.get($$0.toLowerCase(Locale.ROOT));
+      private a(float $$0) {
+         this.a = $$0;
       }
 
-      public String a() {
-         return this.e;
+      public erm.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public erm.a a(String $$0, erl $$1) {
+         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
+
+      public erm b() {
+         return new erm(this.a, this.c, this.b);
       }
    }
 }

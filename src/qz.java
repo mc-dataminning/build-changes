@@ -2,37 +2,37 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class qz extends rm {
-   private static final int c = 16;
-   public static final qz a = new qz(0.0);
-   public static final ru<qz> b = new ru.a<qz>() {
-      public qz a(DataInput $$0, rh $$1) throws IOException {
+public class qz extends rk {
+   private static final int c = 12;
+   public static final qz a = new qz(0.0F);
+   public static final rs<qz> b = new rs.a<qz>() {
+      public qz a(DataInput $$0, rf $$1) throws IOException {
          return qz.a(d($$0, $$1));
       }
 
       @Override
-      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+      public rn.b a(DataInput $$0, rn $$1, rf $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static double d(DataInput $$0, rh $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readDouble();
+      private static float d(DataInput $$0, rf $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readFloat();
       }
 
       @Override
       public int c() {
-         return 8;
+         return 4;
       }
 
       @Override
       public String a() {
-         return "DOUBLE";
+         return "FLOAT";
       }
 
       @Override
       public String b() {
-         return "TAG_Double";
+         return "TAG_Float";
       }
 
       @Override
@@ -40,33 +40,33 @@ public class qz extends rm {
          return true;
       }
    };
-   private final double w;
+   private final float w;
 
-   private qz(double $$0) {
+   private qz(float $$0) {
       this.w = $$0;
    }
 
-   public static qz a(double $$0) {
-      return $$0 == 0.0 ? a : new qz($$0);
+   public static qz a(float $$0) {
+      return $$0 == 0.0F ? a : new qz($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
+      $$0.writeFloat(this.w);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 12;
    }
 
    @Override
    public byte b() {
-      return 6;
+      return 5;
    }
 
    @Override
-   public ru<qz> c() {
+   public rs<qz> c() {
       return b;
    }
 
@@ -81,43 +81,42 @@ public class qz extends rm {
 
    @Override
    public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
+      return Float.floatToIntBits(this.w);
    }
 
    @Override
-   public void a(rw $$0) {
+   public void a(ru $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)Math.floor(this.w);
+      return (long)this.w;
    }
 
    @Override
    public int g() {
-      return ary.a(this.w);
+      return arw.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(ary.a(this.w) & 65535);
+      return (short)(arw.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(ary.a(this.w) & 0xFF);
+      return (byte)(arw.d(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return this.w;
+      return (double)this.w;
    }
 
    @Override
    public float k() {
-      return (float)this.w;
+      return this.w;
    }
 
    @Override
@@ -126,7 +125,7 @@ public class qz extends rm {
    }
 
    @Override
-   public rp.b a(rp $$0) {
+   public rn.b a(rn $$0) {
       return $$0.a(this.w);
    }
 }

@@ -1,24 +1,45 @@
-public abstract class fxc<T extends bis & bjv, M extends fff<T>> extends fxr<T, M> {
-   public fxc(fve<T, M> $$0) {
+public class fxc extends fxp<bvb, fff<bvb>> {
+   private final foa a;
+
+   public fxc(fvc<bvb, fff<bvb>> $$0, foa $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(elr $$0, fog $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         fff<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         elv $$12 = $$1.getBuffer(foo.a(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, fyx.d, 0.5F, 0.5F, 0.5F, 1.0F);
+   public void a(elp $$0, foe $$1, int $$2, bvb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fC();
+      boolean $$11 = $$3.m_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
       }
+
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.E($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.m_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
+
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
+
+      cjf $$14 = $$3.c(biv.a);
+      this.a.a($$3, $$14, cjc.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract aey a();
-
-   protected abstract fff<T> b();
 }

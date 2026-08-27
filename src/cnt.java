@@ -1,10 +1,20 @@
-public class cnt extends bfm.a {
-   public final cnq a;
-   public final int b;
+public class cnt extends cno {
+   protected cnt(cno.a $$0, biv... $$1) {
+      super($$0, cnp.f, $$1);
+   }
 
-   public cnt(cnq $$0, int $$1) {
-      super($$0.d().a());
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public int a(int $$0) {
+      return 10 + 20 * ($$0 - 1);
+   }
+
+   @Override
+   public int b(int $$0) {
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 2;
    }
 }

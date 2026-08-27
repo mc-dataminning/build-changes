@@ -1,31 +1,28 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class dxa extends dvk {
+public class dxa extends dvi {
    public static final Codec<dxa> d = a(dxa::new);
 
-   public dxa(dvk.c $$0) {
+   public dxa(dvi.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<dvk.b> a(dvk.a $$0) {
-      czj $$1 = czj.a($$0.f());
-      gw $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dvk.b($$2, (Consumer<dwc>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   public Optional<dvi.b> a(dvi.a $$0) {
+      return a($$0, dks.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   private void a(dwc $$0, gw $$1, czj $$2, dvk.a $$3) {
-      List<dvo> $$4 = Lists.newArrayList();
-      dwz.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   private void a(dwa $$0, dvi.a $$1) {
+      cpc $$2 = $$1.h();
+      dlr $$3 = $$1.f();
+      gw $$4 = new gw($$2.d(), 90, $$2.e());
+      czh $$5 = czh.a($$3);
+      dwz.a($$1.e(), $$4, $$5, $$0, $$3);
    }
 
    @Override
-   public dvt<?> e() {
-      return dvt.c;
+   public dvr<?> e() {
+      return dvr.e;
    }
 }

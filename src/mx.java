@@ -1,60 +1,47 @@
-import com.google.common.annotations.VisibleForTesting;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class mx extends mz<djv> {
-   @VisibleForTesting
-   static final djv[] d = new djv[]{
-      djv.b,
-      djv.c,
-      djv.d,
-      djv.f,
-      djv.g,
-      djv.h,
-      djv.i,
-      djv.a,
-      djv.e,
-      djv.j,
-      djv.k,
-      djv.l,
-      djv.m,
-      djv.n,
-      djv.o,
-      djv.p,
-      djv.q,
-      djv.r,
-      djv.s,
-      djv.t,
-      djv.u,
-      djv.v,
-      djv.w,
-      djv.y,
-      djv.z,
-      djv.A,
-      djv.B,
-      djv.C,
-      djv.G,
-      djv.H,
-      djv.I,
-      djv.J,
-      djv.K,
-      djv.M,
-      djv.O,
-      djv.P,
-      djv.Q,
-      djv.R,
-      djv.S
-   };
+public abstract class mx<T> extends nc<T> {
+   private final Function<T, aev<T>> d;
 
-   public mx(jm $$0, CompletableFuture<hi.b> $$1) {
-      super($$0, je.z, $$1, $$0x -> $$0x.b().g());
+   public mx(jk $$0, aev<? extends hq<T>> $$1, CompletableFuture<hg.b> $$2, Function<T, aev<T>> $$3) {
+      super($$0, $$1, $$2);
+      this.d = $$3;
    }
 
-   @Override
-   protected void a(hi.b $$0) {
-      this.a(aqa.a).a(d).a(dke.d_).a(djv.x);
-      this.a(aqa.c).a(djv.L);
-      this.a(aqa.b).a(d).a(dke.d_).a(djv.N).a(aqa.c);
-      this.a(aqa.d).a(djv.A, djv.K, djv.P, djv.Q, djv.D, djv.C);
-      this.a(aqa.e).a(djv.H);
+   public mx(jk $$0, aev<? extends hq<T>> $$1, CompletableFuture<hg.b> $$2, CompletableFuture<nc.c<T>> $$3, Function<T, aev<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
+   }
+
+   protected mx.a<T> a(aqh<T> $$0) {
+      aqe $$1 = this.c($$0);
+      return new mx.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends nc.b<T> {
+      private final Function<T, aev<T>> a;
+
+      a(aqe $$0, Function<T, aev<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public mx.a<T> a(aqh<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final mx.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final mx.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

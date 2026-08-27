@@ -1,71 +1,59 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class fck {
-   private final fjn a;
-   private final fjv b;
-   private final Predicate<fjq.a> c;
-   @Nullable
-   private uh d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private uc g;
+public class fck extends fcg<fju.a> {
+   private static final int s = 120;
+   private static final tl t = tl.c("gui.abuseReport.name.title");
+   private final ewd u = ewd.d().a(8);
+   private eti v;
+   private esq w;
 
-   public fck(fkb $$0, Predicate<fjq.a> $$1) {
-      this.a = $$0.b();
-      this.b = new fjv($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   private fck(eyk $$0, fjz $$1, fju.a $$2) {
+      super(t, $$0, $$1, $$2);
    }
 
-   public void a(int $$0, fck.a $$1) {
-      int $$2 = 0;
-
-      while ($$2 < $$0) {
-         fjp $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
-
-         int $$4 = this.e--;
-         if ($$3 instanceof fjq.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(tn.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
-         }
-      }
+   public fck(eyk $$0, fjz $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new fju.a($$2, $$3, $$1.a().b()));
    }
 
-   private boolean a(fck.a $$0, fjq.a $$1) {
-      uc $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.j())) {
-            $$0.a(tn.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
-         }
-
-         this.d = $$2.j();
-         return true;
-      } else {
-         return $$3;
-      }
+   public fck(eyk $$0, fjz $$1, fju $$2) {
+      this($$0, $$1, new fju.a($$2, $$1.a().b()));
    }
 
-   public interface a {
-      void a(int var1, fjq.a var2);
+   @Override
+   protected void aH_() {
+      this.u.c().b();
+      this.u.a(new etw(this.e, this.i));
+      tl $$0 = tl.b(this.q.e().a()).a(n.o);
+      this.u.a(new etw(tl.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
+      this.v = this.a(280, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.D();
+      });
+      this.u.a(evv.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
+      ewd $$1 = this.u.a(ewd.e().a(8));
+      $$1.a(esq.a(tk.k, $$0x -> this.az_()).a(120).a());
+      this.w = $$1.a(esq.a(a, $$0x -> this.l()).a(120).a());
+      this.D();
+      this.u.a($$1x -> {
+         eso var10000 = this.d($$1x);
+      });
+      this.b();
+   }
 
-      void a(tn var1);
+   @Override
+   protected void b() {
+      this.u.a();
+      evx.a(this.u, this.s());
+   }
+
+   private void D() {
+      fjv.b $$0 = this.q.c();
+      this.w.i = $$0 == null;
+      this.w.a(x.a($$0, fjv.b::a));
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
    }
 }

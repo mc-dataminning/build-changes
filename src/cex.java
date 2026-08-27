@@ -1,7 +1,5 @@
 public interface cex {
-   int a(int var1);
+   void a(cel var1, int var2, cjf var3);
 
-   void a(int var1, int var2);
-
-   int a();
+   void a(cel var1, int var2, int var3);
 }

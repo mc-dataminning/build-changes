@@ -1,5 +1,3 @@
-public class dhx extends RuntimeException {
-   public dhx(int $$0) {
-      super("Missing Palette entry for index " + $$0 + ".");
-   }
+interface dhx<T> {
+   int onResize(int var1, T var2);
 }

@@ -1,39 +1,41 @@
-import javax.annotation.Nullable;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Arrays;
+import javax.crypto.SecretKey;
 
-public record adn(int a, @Nullable adr b) implements vf<adm> {
-   private static final int c = 1048576;
+public class adn implements vd<adk> {
+   private final byte[] a;
+   private final byte[] b;
 
-   public static adn b(sq $$0) {
-      int $$1 = $$0.m();
-      return new adn($$1, a($$1, $$0));
+   public adn(SecretKey $$0, PublicKey $$1, byte[] $$2) throws aqx {
+      this.a = aqw.a($$1, $$0.getEncoded());
+      this.b = aqw.a($$1, $$2);
    }
 
-   private static adr a(int $$0, sq $$1) {
-      return c($$1);
-   }
-
-   private static adr c(sq $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return adt.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
+   public adn(so $$0) {
+      this.a = $$0.b();
+      this.b = $$0.b();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(adm $$0) {
+   public void a(adk $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public adr d() {
-      return this.b;
+   public SecretKey a(PrivateKey $$0) throws aqx {
+      return aqw.a($$0, this.a);
+   }
+
+   public boolean a(byte[] $$0, PrivateKey $$1) {
+      try {
+         return Arrays.equals($$0, aqw.b($$1, this.b));
+      } catch (aqx var4) {
+         return false;
+      }
    }
 }

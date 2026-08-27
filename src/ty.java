@@ -1,36 +1,85 @@
-import com.google.common.base.Preconditions;
-import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public record ty(byte[] c) {
-   public static final Codec<ty> a = arh.n.xmap(ty::new, ty::b);
-   public static final int b = 256;
+public class ty implements tl {
+   private final tm c;
+   private final List<tl> d;
+   private uh e;
+   private arj f = arj.a;
+   @Nullable
+   private qr g;
 
-   public ty(byte[] c) {
-      Preconditions.checkState(c.length == 256, "Invalid message signature size");
-      this.c = c;
+   ty(tm $$0, List<tl> $$1, uh $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static ty a(sq $$0) {
-      byte[] $$1 = new byte[256];
-      $$0.b($$1);
-      return new ty($$1);
+   public static ty a(tm $$0) {
+      return new ty($$0, Lists.newArrayList(), uh.a);
    }
 
-   public static void a(sq $$0, ty $$1) {
-      $$0.c($$1.c);
+   @Override
+   public tm b() {
+      return this.c;
    }
 
-   public boolean a(asj $$0, asi $$1) {
-      return $$0.validate($$1, this.c);
+   @Override
+   public List<tl> c() {
+      return this.d;
    }
 
-   public ByteBuffer a() {
-      return ByteBuffer.wrap(this.c);
+   public ty b(uh $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public uh a() {
+      return this.e;
+   }
+
+   public ty f(String $$0) {
+      return this.b(tl.b($$0));
+   }
+
+   public ty b(tl $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public ty a(UnaryOperator<uh> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public ty c(uh $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public ty a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public ty a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   @Override
+   public arj f() {
+      qr $$0 = qr.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
+      }
+
+      return this.f;
    }
 
    @Override
@@ -38,67 +87,39 @@ public record ty(byte[] c) {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof ty $$1 && Arrays.equals(this.c, $$1.c)) {
-            return true;
-         }
-
-         return false;
+         return !($$0 instanceof ty $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
       }
    }
 
    @Override
    public int hashCode() {
-      return Arrays.hashCode(this.c);
+      return Objects.hash(this.c, this.e, this.d);
    }
 
    @Override
    public String toString() {
-      return Base64.getEncoder().encodeToString(this.c);
-   }
-
-   public ty.a a(tz $$0) {
-      int $$1 = $$0.a(this);
-      return $$1 != -1 ? new ty.a($$1) : new ty.a(this);
-   }
-
-   public byte[] b() {
-      return this.c;
-   }
-
-   public static record a(int b, @Nullable ty c) {
-      public static final int a = -1;
-
-      public a(ty $$0) {
-         this(-1, $$0);
-      }
-
-      public a(int $$0) {
-         this($$0, null);
-      }
-
-      public static ty.a a(sq $$0) {
-         int $$1 = $$0.m() - 1;
-         return $$1 == -1 ? new ty.a(ty.a($$0)) : new ty.a($$1);
-      }
-
-      public static void a(sq $$0, ty.a $$1) {
-         $$0.c($$1.a() + 1);
-         if ($$1.b() != null) {
-            ty.a($$0, $$1.b());
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.g();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
          }
+
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
       }
 
-      public Optional<ty> a(tz $$0) {
-         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      @Nullable
-      public ty b() {
-         return this.c;
-      }
+      return $$0.toString();
    }
 }

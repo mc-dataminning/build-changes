@@ -1,190 +1,154 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public class lx extends lr implements lt {
-   private final lu b;
-   private final cjc c;
-   private final int d;
-   private final List<String> e = Lists.newArrayList();
-   private final Map<Character, cmi> f = Maps.newLinkedHashMap();
-   private final Map<String, am<?>> g = new LinkedHashMap<>();
+public class lx implements lr {
+   private final ls b;
+   private final clx c;
+   private final cja d;
+   private final cmg e;
+   private final float f;
+   private final int g;
+   private final Map<String, am<?>> h = new LinkedHashMap<>();
    @Nullable
-   private String h;
-   private boolean i = true;
+   private String i;
+   private final cmm<? extends clr> j;
 
-   public lx(lu $$0, cpw $$1, int $$2) {
+   private lx(ls $$0, clx $$1, cpu $$2, cmg $$3, float $$4, int $$5, cmm<? extends clr> $$6) {
       this.b = $$0;
-      this.c = $$1.k();
-      this.d = $$2;
+      this.c = $$1;
+      this.d = $$2.k();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.j = $$6;
    }
 
-   public static lx a(lu $$0, cpw $$1) {
-      return a($$0, $$1, 1);
+   public static lx a(cmg $$0, ls $$1, cpu $$2, float $$3, int $$4, cmm<? extends clr> $$5) {
+      return new lx($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$5);
    }
 
-   public static lx a(lu $$0, cpw $$1, int $$2) {
-      return new lx($$0, $$1, $$2);
+   public static lx a(cmg $$0, ls $$1, cpu $$2, float $$3, int $$4) {
+      return new lx($$1, clx.a, $$2, $$0, $$3, $$4, cmm.s);
    }
 
-   public lx a(Character $$0, aqj<cjc> $$1) {
-      return this.a($$0, cmi.a($$1));
+   public static lx b(cmg $$0, ls $$1, cpu $$2, float $$3, int $$4) {
+      return new lx($$1, c($$2), $$2, $$0, $$3, $$4, cmm.q);
    }
 
-   public lx a(Character $$0, cpw $$1) {
-      return this.a($$0, cmi.a($$1));
+   public static lx c(cmg $$0, ls $$1, cpu $$2, float $$3, int $$4) {
+      return new lx($$1, b($$2), $$2, $$0, $$3, $$4, cmm.p);
    }
 
-   public lx a(Character $$0, cmi $$1) {
-      if (this.f.containsKey($$0)) {
-         throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
-      } else if ($$0 == ' ') {
-         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
-      } else {
-         this.f.put($$0, $$1);
-         return this;
-      }
-   }
-
-   public lx b(String $$0) {
-      if (!this.e.isEmpty() && $$0.length() != this.e.get(0).length()) {
-         throw new IllegalArgumentException("Pattern must be the same width on every line!");
-      } else {
-         this.e.add($$0);
-         return this;
-      }
+   public static lx d(cmg $$0, ls $$1, cpu $$2, float $$3, int $$4) {
+      return new lx($$1, clx.a, $$2, $$0, $$3, $$4, cmm.r);
    }
 
    public lx b(String $$0, am<?> $$1) {
-      this.g.put($$0, $$1);
+      this.h.put($$0, $$1);
       return this;
    }
 
-   public lx c(@Nullable String $$0) {
-      this.h = $$0;
-      return this;
-   }
-
-   public lx a(boolean $$0) {
+   public lx b(@Nullable String $$0) {
       this.i = $$0;
       return this;
    }
 
    @Override
-   public cjc a() {
-      return this.c;
+   public cja a() {
+      return this.d;
    }
 
    @Override
-   public void a(lv $$0, aey $$1) {
+   public void a(lt $$0, aew $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.g.forEach($$2::a);
-      $$0.a(new lx.a($$1, this.c, this.d, this.h == null ? "" : this.h, a(this.b), this.e, this.f, $$2.b($$1.d("recipes/" + this.b.a() + "/")), this.i));
+      this.h.forEach($$2::a);
+      $$0.a(new lx.a($$1, this.i == null ? "" : this.i, this.c, this.e, this.d, this.f, this.g, $$2.b($$1.d("recipes/" + this.b.a() + "/")), this.j));
    }
 
-   private void a(aey $$0) {
-      if (this.e.isEmpty()) {
-         throw new IllegalStateException("No pattern is defined for shaped recipe " + $$0 + "!");
+   private static clx b(cpu $$0) {
+      if ($$0.k().u()) {
+         return clx.a;
       } else {
-         Set<Character> $$1 = Sets.newHashSet(this.f.keySet());
-         $$1.remove(' ');
-
-         for (String $$2 : this.e) {
-            for (int $$3 = 0; $$3 < $$2.length(); $$3++) {
-               char $$4 = $$2.charAt($$3);
-               if (!this.f.containsKey($$4) && $$4 != ' ') {
-                  throw new IllegalStateException("Pattern in recipe " + $$0 + " uses undefined symbol '" + $$4 + "'");
-               }
-
-               $$1.remove($$4);
-            }
-         }
-
-         if (!$$1.isEmpty()) {
-            throw new IllegalStateException("Ingredients are defined but not used in pattern for recipe " + $$0);
-         } else if (this.e.size() == 1 && this.e.get(0).length() == 1) {
-            throw new IllegalStateException("Shaped recipe " + $$0 + " only takes in a single item - should it be a shapeless recipe instead?");
-         } else if (this.g.isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + $$0);
-         }
+         return $$0.k() instanceof cgy ? clx.b : clx.c;
       }
    }
 
-   static class a extends lr.a {
-      private final aey a;
-      private final cjc b;
-      private final int c;
-      private final String d;
-      private final List<String> e;
-      private final Map<Character, cmi> f;
-      private final af g;
-      private final boolean h;
+   private static clx c(cpu $$0) {
+      return $$0.k() instanceof cgy ? clx.b : clx.c;
+   }
 
-      public a(aey $$0, cjc $$1, int $$2, String $$3, cma $$4, List<String> $$5, Map<Character, cmi> $$6, af $$7, boolean $$8) {
-         super($$4);
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$5;
-         this.f = $$6;
-         this.g = $$7;
-         this.h = $$8;
+   private static clx a(cmm<? extends clr> $$0, cpu $$1) {
+      if ($$0 == cmm.p) {
+         return b($$1);
+      } else if ($$0 == cmm.q) {
+         return c($$1);
+      } else if ($$0 != cmm.r && $$0 != cmm.s) {
+         throw new IllegalStateException("Unknown cooking recipe type");
+      } else {
+         return clx.a;
       }
+   }
 
+   private void a(aew $$0) {
+      if (this.h.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0);
+      }
+   }
+
+   static record a(aew a, String b, clx c, cmg d, cja e, float f, int g, af h, cmm<? extends clr> i) implements lq {
       @Override
       public void a(JsonObject $$0) {
-         super.a($$0);
-         if (!this.d.isEmpty()) {
-            $$0.addProperty("group", this.d);
+         if (!this.b.isEmpty()) {
+            $$0.addProperty("group", this.b);
          }
 
-         JsonArray $$1 = new JsonArray();
-
-         for (String $$2 : this.e) {
-            $$1.add($$2);
-         }
-
-         $$0.add("pattern", $$1);
-         JsonObject $$3 = new JsonObject();
-
-         for (Entry<Character, cmi> $$4 : this.f.entrySet()) {
-            $$3.add(String.valueOf($$4.getKey()), $$4.getValue().a(false));
-         }
-
-         $$0.add("key", $$3);
-         JsonObject $$5 = new JsonObject();
-         $$5.addProperty("item", jd.i.b(this.b).toString());
-         if (this.c > 1) {
-            $$5.addProperty("count", this.c);
-         }
-
-         $$0.add("result", $$5);
-         $$0.addProperty("show_notification", this.h);
+         $$0.addProperty("category", this.c.c());
+         $$0.add("ingredient", this.d.a(false));
+         $$0.addProperty("result", jb.i.b(this.e).toString());
+         $$0.addProperty("experience", this.f);
+         $$0.addProperty("cookingtime", this.g);
       }
 
       @Override
-      public cmo<?> c() {
-         return cmo.a;
-      }
-
-      @Override
-      public aey b() {
+      public aew b() {
          return this.a;
+      }
+
+      public String e() {
+         return this.b;
+      }
+
+      public clx f() {
+         return this.c;
+      }
+
+      public cmg g() {
+         return this.d;
+      }
+
+      public cja h() {
+         return this.e;
+      }
+
+      public float i() {
+         return this.f;
+      }
+
+      public int j() {
+         return this.g;
       }
 
       @Override
       public af d() {
-         return this.g;
+         return this.h;
+      }
+
+      @Override
+      public cmm<? extends clr> c() {
+         return this.i;
       }
    }
 }

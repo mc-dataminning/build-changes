@@ -1,20 +1,15 @@
-public abstract class crt extends cwl {
-   protected crt(dfk.d $$0) {
+public class crt extends csv {
+   protected crt(dfi.d $$0) {
       super($$0);
    }
 
    @Override
-   public eii b(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return eif.a();
+   public cza b_(dfj $$0) {
+      return cza.a;
    }
 
    @Override
-   public float b(dfl $$0, cpd $$1, gw $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   public boolean c(dfl $$0, cpd $$1, gw $$2) {
-      return true;
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return eid.a();
    }
 }

@@ -1,45 +1,46 @@
-public class aaw implements vf<wy> {
-   private final int a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final byte e;
-   private final byte f;
-   private final boolean g;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 
-   public aaw(bis $$0) {
-      this.a = $$0.ah();
-      ehp $$1 = $$0.dk();
-      this.b = $$1.c;
-      this.c = $$1.d;
-      this.d = $$1.e;
-      this.e = (byte)((int)($$0.dB() * 256.0F / 360.0F));
-      this.f = (byte)((int)($$0.dD() * 256.0F / 360.0F));
-      this.g = $$0.aA();
+public class aaw implements vd<ww> {
+   private final int a;
+   private final List<aaw.a> b;
+
+   public aaw(int $$0, Collection<bki> $$1) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+
+      for (bki $$2 : $$1) {
+         this.b.add(new aaw.a($$2.a(), $$2.b(), $$2.c()));
+      }
    }
 
-   public aaw(sq $$0) {
+   public aaw(so $$0) {
       this.a = $$0.m();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readByte();
-      this.f = $$0.readByte();
-      this.g = $$0.readBoolean();
+      this.b = $$0.a((so.a<aaw.a>)($$0x -> {
+         aew $$1 = $$0x.s();
+         bkh $$2 = jb.v.a($$1);
+         double $$3 = $$0x.readDouble();
+         List<bkk> $$4 = $$0x.a((so.a<bkk>)($$0xx -> new bkk($$0xx.o(), "Unknown synced attribute modifier", $$0xx.readDouble(), bkk.a.a($$0xx.readByte()))));
+         return new aaw.a($$2, $$3, $$4);
+      }));
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.k(this.e);
-      $$0.k(this.f);
-      $$0.a(this.g);
+      $$0.a(this.b, ($$0x, $$1) -> {
+         $$0x.a(jb.v.b($$1.a()));
+         $$0x.a($$1.b());
+         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
+            $$0xx.a($$1x.a());
+            $$0xx.a($$1x.d());
+            $$0xx.k($$1x.c().a());
+         });
+      });
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
@@ -47,27 +48,31 @@ public class aaw implements vf<wy> {
       return this.a;
    }
 
-   public double d() {
+   public List<aaw.a> d() {
       return this.b;
    }
 
-   public double e() {
-      return this.c;
-   }
+   public static class a {
+      private final bkh a;
+      private final double b;
+      private final Collection<bkk> c;
 
-   public double f() {
-      return this.d;
-   }
+      public a(bkh $$0, double $$1, Collection<bkk> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   public byte g() {
-      return this.e;
-   }
+      public bkh a() {
+         return this.a;
+      }
 
-   public byte h() {
-      return this.f;
-   }
+      public double b() {
+         return this.b;
+      }
 
-   public boolean i() {
-      return this.g;
+      public Collection<bkk> c() {
+         return this.c;
+      }
    }
 }

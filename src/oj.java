@@ -1,168 +1,70 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-
-public class oj {
-   public static final aex<dwt> a = oa.a("trail_ruins/tower");
-
-   public static void a(nt<dwt> $$0) {
-      hh<dwt> $$1 = $$0.a(je.aC);
-      hg<dwt> $$2 = $$1.b(oa.a);
-      hh<dzb> $$3 = $$0.a(je.aA);
-      hg<dzb> $$4 = $$3.b(ob.J);
-      hg<dzb> $$5 = $$3.b(ob.K);
-      hg<dzb> $$6 = $$3.b(ob.L);
-      $$0.a(
-         a,
-         new dwt(
-            $$2,
-            List.of(
-               Pair.of(dwr.b("trail_ruins/tower/tower_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/tower_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/tower_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/tower_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/tower_5", $$4), 1)
-            ),
-            dwt.a.b
-         )
-      );
-      oa.a(
-         $$0,
-         "trail_ruins/tower/tower_top",
-         new dwt(
-            $$2,
-            List.of(
-               Pair.of(dwr.b("trail_ruins/tower/tower_top_1", $$6), 1),
-               Pair.of(dwr.b("trail_ruins/tower/tower_top_2", $$6), 1),
-               Pair.of(dwr.b("trail_ruins/tower/tower_top_3", $$6), 1),
-               Pair.of(dwr.b("trail_ruins/tower/tower_top_4", $$6), 1),
-               Pair.of(dwr.b("trail_ruins/tower/tower_top_5", $$6), 1)
-            ),
-            dwt.a.b
-         )
-      );
-      oa.a(
-         $$0,
-         "trail_ruins/tower/additions",
-         new dwt(
-            $$2,
-            List.of(
-               Pair.of(dwr.b("trail_ruins/tower/hall_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/hall_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/hall_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/hall_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/hall_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/large_hall_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/large_hall_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/large_hall_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/large_hall_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/large_hall_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/one_room_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/one_room_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/one_room_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/one_room_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/one_room_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/platform_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/platform_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/platform_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/platform_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/platform_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/stable_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/stable_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/stable_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/stable_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/tower/stable_5", $$4), 1)
-            ),
-            dwt.a.b
-         )
-      );
-      oa.a(
-         $$0,
-         "trail_ruins/roads",
-         new dwt(
-            $$2,
-            List.of(
-               Pair.of(dwr.b("trail_ruins/roads/long_road_end", $$5), 1),
-               Pair.of(dwr.b("trail_ruins/roads/road_end_1", $$5), 1),
-               Pair.of(dwr.b("trail_ruins/roads/road_section_1", $$5), 1),
-               Pair.of(dwr.b("trail_ruins/roads/road_section_2", $$5), 1),
-               Pair.of(dwr.b("trail_ruins/roads/road_section_3", $$5), 1),
-               Pair.of(dwr.b("trail_ruins/roads/road_section_4", $$5), 1),
-               Pair.of(dwr.b("trail_ruins/roads/road_spacer_1", $$5), 1)
-            ),
-            dwt.a.b
-         )
-      );
-      oa.a(
-         $$0,
-         "trail_ruins/buildings",
-         new dwt(
-            $$2,
-            List.of(
-               Pair.of(dwr.b("trail_ruins/buildings/group_hall_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_hall_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_hall_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_hall_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_hall_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/large_room_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/large_room_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/large_room_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/large_room_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/large_room_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/one_room_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/one_room_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/one_room_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/one_room_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/one_room_5", $$4), 1)
-            ),
-            dwt.a.b
-         )
-      );
-      oa.a(
-         $$0,
-         "trail_ruins/buildings/grouped",
-         new dwt(
-            $$2,
-            List.of(
-               Pair.of(dwr.b("trail_ruins/buildings/group_full_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_full_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_full_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_full_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_full_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_lower_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_lower_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_lower_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_lower_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_lower_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_upper_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_upper_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_upper_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_upper_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_upper_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_room_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_room_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_room_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_room_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/buildings/group_room_5", $$4), 1)
-            ),
-            dwt.a.b
-         )
-      );
-      oa.a(
-         $$0,
-         "trail_ruins/decor",
-         new dwt(
-            $$2,
-            List.of(
-               Pair.of(dwr.b("trail_ruins/decor/decor_1", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/decor/decor_2", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/decor/decor_3", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/decor/decor_4", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/decor/decor_5", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/decor/decor_6", $$4), 1),
-               Pair.of(dwr.b("trail_ruins/decor/decor_7", $$4), 1)
-            ),
-            dwt.a.b
-         )
-      );
+public abstract class oj {
+   public static void a(nr<cqt> $$0) {
+      hf<dum> $$1 = $$0.a(jc.ay);
+      hf<dmv<?>> $$2 = $$0.a(jc.ar);
+      $$0.a(cra.a, om.j($$1, $$2));
+      $$0.a(cra.b, om.a($$1, $$2, false, false, false));
+      $$0.a(cra.c, om.a($$1, $$2, true, false, false));
+      $$0.a(cra.d, om.a($$1, $$2, false, true, false));
+      $$0.a(cra.e, om.a($$1, $$2, false, true, true));
+      $$0.a(cra.f, om.d($$1, $$2));
+      $$0.a(cra.g, om.h($$1, $$2));
+      $$0.a(cra.h, om.i($$1, $$2));
+      $$0.a(cra.i, om.b($$1, $$2, false, false, false));
+      $$0.a(cra.j, om.b($$1, $$2, false, false, true));
+      $$0.a(cra.k, om.b($$1, $$2, true, false, false));
+      $$0.a(cra.l, om.g($$1, $$2));
+      $$0.a(cra.m, om.b($$1, $$2, true, true, false));
+      $$0.a(cra.n, om.a($$1, $$2, false));
+      $$0.a(cra.o, om.a($$1, $$2, true));
+      $$0.a(cra.p, om.h($$1, $$2, false));
+      $$0.a(cra.q, om.h($$1, $$2, true));
+      $$0.a(cra.r, om.a($$1, $$2, false, false));
+      $$0.a(cra.s, om.a($$1, $$2, false, true));
+      $$0.a(cra.t, om.b($$1, $$2, false));
+      $$0.a(cra.u, om.b($$1, $$2, false));
+      $$0.a(cra.v, om.b($$1, $$2, true));
+      $$0.a(cra.w, om.a($$1, $$2, true, false));
+      $$0.a(cra.x, om.b($$1, $$2));
+      $$0.a(cra.y, om.a($$1, $$2));
+      $$0.a(cra.z, om.c($$1, $$2));
+      $$0.a(cra.A, om.c($$1, $$2, false));
+      $$0.a(cra.B, om.c($$1, $$2, false));
+      $$0.a(cra.C, om.c($$1, $$2, true));
+      $$0.a(cra.D, om.j($$1, $$2, false));
+      $$0.a(cra.E, om.j($$1, $$2, true));
+      $$0.a(cra.F, om.o($$1, $$2));
+      $$0.a(cra.G, om.n($$1, $$2));
+      $$0.a(cra.H, om.k($$1, $$2));
+      $$0.a(cra.I, om.l($$1, $$2));
+      $$0.a(cra.J, om.m($$1, $$2));
+      $$0.a(cra.K, om.i($$1, $$2, false));
+      $$0.a(cra.L, om.i($$1, $$2, true));
+      $$0.a(cra.M, om.b($$1, $$2, false, false));
+      $$0.a(cra.N, om.b($$1, $$2, true, false));
+      $$0.a(cra.O, om.b($$1, $$2, false, true));
+      $$0.a(cra.P, om.f($$1, $$2));
+      $$0.a(cra.Q, om.f($$1, $$2, false));
+      $$0.a(cra.R, om.f($$1, $$2, true));
+      $$0.a(cra.S, om.e($$1, $$2, false));
+      $$0.a(cra.T, om.e($$1, $$2, true));
+      $$0.a(cra.U, om.d($$1, $$2, false));
+      $$0.a(cra.V, om.d($$1, $$2, true));
+      $$0.a(cra.W, om.g($$1, $$2, false));
+      $$0.a(cra.X, om.g($$1, $$2, true));
+      $$0.a(cra.Y, om.e($$1, $$2));
+      $$0.a(cra.Z, om.q($$1, $$2));
+      $$0.a(cra.aa, om.p($$1, $$2));
+      $$0.a(cra.ab, om.r($$1, $$2));
+      $$0.a(cra.ac, ol.a($$1, $$2));
+      $$0.a(cra.ad, ol.e($$1, $$2));
+      $$0.a(cra.ae, ol.d($$1, $$2));
+      $$0.a(cra.af, ol.b($$1, $$2));
+      $$0.a(cra.ag, ol.c($$1, $$2));
+      $$0.a(cra.ah, ok.b($$1, $$2));
+      $$0.a(cra.ai, ok.d($$1, $$2));
+      $$0.a(cra.aj, ok.c($$1, $$2));
+      $$0.a(cra.ak, ok.e($$1, $$2));
+      $$0.a(cra.al, ok.a($$1, $$2));
    }
 }

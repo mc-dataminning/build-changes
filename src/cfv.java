@@ -1,57 +1,28 @@
-public class cfv extends cgf {
-   private final cft a;
-   private final cbw b;
-   private int c;
-   private final cou h;
-
-   public cfv(cbw $$0, cou $$1, cft $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+public abstract class cfv<C extends bgr> extends cel {
+   public cfv(cfq<?> $$0, int $$1) {
+      super($$0, $$1);
    }
+
+   public void a(boolean $$0, cmk<?> $$1, akr $$2) {
+      new aem<>(this).a($$2, (cmk<? extends cmj<C>>)$$1, $$0);
+   }
+
+   public abstract void a(cby var1);
 
    @Override
-   public boolean a(cjh $$0) {
-      return false;
-   }
+   public abstract void l();
 
-   @Override
-   public cjh a(int $$0) {
-      if (this.f()) {
-         this.c = this.c + Math.min($$0, this.e().L());
-      }
+   public abstract boolean a(cmk<? extends cmj<C>> var1);
 
-      return super.a($$0);
-   }
+   public abstract int m();
 
-   @Override
-   protected void a(cjh $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
+   public abstract int n();
 
-   @Override
-   protected void b_(cjh $$0) {
-      $$0.a(this.b.dL(), this.b, this.c);
-      this.c = 0;
-   }
+   public abstract int o();
 
-   @Override
-   public void a(cbw $$0, cjh $$1) {
-      this.b_($$1);
-      cov $$2 = this.a.g();
-      if ($$2 != null) {
-         cjh $$3 = this.a.a(0);
-         cjh $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(app.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
-         }
+   public abstract int p();
 
-         this.h.t(this.h.t() + $$2.o());
-      }
-   }
+   public abstract cfw t();
+
+   public abstract boolean e(int var1);
 }

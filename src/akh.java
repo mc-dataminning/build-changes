@@ -1,22 +1,85 @@
-public record akh(String b, int c, cbu d, boolean e, int f, bjc g, boolean h, boolean i) {
-   public static final int a = 16;
+public class akh extends aks {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
 
-   public akh(sq $$0) {
-      this($$0.d(16), $$0.readByte(), $$0.b(cbu.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bjc.class), $$0.readBoolean(), $$0.readBoolean());
+   public akh(akr $$0) {
+      super($$0);
    }
 
-   public void a(sq $$0) {
-      $$0.a(this.b);
-      $$0.k(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
+   @Override
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.V();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.c.b(new yb(yb.f, 0.0F));
+      }
+
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
+
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.c.b(new yb(yb.f, 104.0F));
+            } else {
+               this.d.a(tl.c("demo.day." + $$1));
+            }
+         }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.c.b(new yb(yb.f, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.c.b(new yb(yb.f, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.c.b(new yb(yb.f, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(tl.c("demo.day.warning"));
+      }
    }
 
-   public static akh a() {
-      return new akh("en_us", 2, cbu.a, true, 0, cbw.bB, false, false);
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(tl.c("demo.reminder"));
+         this.g = 0;
+      }
+   }
+
+   @Override
+   public void a(gw $$0, ace.a $$1, ha $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public bgy a(akr $$0, cpv $$1, cjf $$2, bgx $$3) {
+      if (this.f) {
+         this.f();
+         return bgy.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public bgy a(akr $$0, cpv $$1, cjf $$2, bgx $$3, ehj $$4) {
+      if (this.f) {
+         this.f();
+         return bgy.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

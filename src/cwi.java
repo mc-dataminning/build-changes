@@ -1,52 +1,101 @@
-import javax.annotation.Nullable;
+public abstract class cwi extends cwg implements csx {
+   public static final dgj d = dfz.ax;
+   public static final int e = 25;
+   private final double f;
 
-public abstract class cwi extends csx {
-   protected final hc a;
-   protected final boolean b;
-   protected final eii c;
-
-   protected cwi(dfk.d $$0, hc $$1, eii $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.c = $$2;
-      this.b = $$3;
-   }
-
-   @Nullable
-   @Override
-   public dfl a(clp $$0) {
-      dfl $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.b()) && !$$1.a(this.a()) ? this.a($$0.q()) : this.a().n();
-   }
-
-   public dfl a(cpy $$0) {
-      return this.n();
+   protected cwi(dfi.d $$0, ha $$1, eig $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.f = $$4;
+      this.k(this.C.b().a(d, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean a(dfl $$0, cqa $$1, gw $$2) {
-      gw $$3 = $$2.a(this.a.g());
-      dfl $$4 = $$1.a_($$3);
-      return !this.h($$4) ? false : $$4.a(this.b()) || $$4.a(this.a()) || $$4.d($$1, $$3, this.a);
+   public dfj a(cpw $$0) {
+      return this.n().a(d, Integer.valueOf($$0.D_().a(25)));
    }
 
    @Override
-   public void a(dfl $$0, aks $$1, gw $$2, ase $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   public boolean e_(dfj $$0) {
+      return $$0.c(d) < 25;
+   }
+
+   @Override
+   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
+      if ($$0.c(d) < 25 && $$3.j() < this.f) {
+         gw $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
       }
    }
 
-   protected boolean h(dfl $$0) {
+   protected dfj a(dfj $$0, asc $$1) {
+      return $$0.a(d);
+   }
+
+   public dfj n(dfj $$0) {
+      return $$0.a(d, Integer.valueOf(25));
+   }
+
+   public boolean o(dfj $$0) {
+      return $$0.c(d) == 25;
+   }
+
+   protected dfj a(dfj $$0, dfj $$1) {
+      return $$1;
+   }
+
+   @Override
+   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.a())) {
+         if (this.b) {
+            $$3.a($$4, ean.c, ean.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.a().n());
+      }
+   }
+
+   @Override
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   public boolean a(cpy $$0, gw $$1, dfj $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
       return true;
    }
 
    @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return this.c;
+   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
+      gw $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(d) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(d, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
    }
 
-   protected abstract cwk b();
+   protected abstract int a(asc var1);
 
-   protected abstract csx a();
+   protected abstract boolean g(dfj var1);
+
+   @Override
+   protected cwi b() {
+      return this;
+   }
 }

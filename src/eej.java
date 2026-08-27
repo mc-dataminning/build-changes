@@ -1,40 +1,82 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
 
-public class eej implements eef {
+public class eej extends eec {
+   private static final Codec<Pair<he<dcm>, cht>> b = Codec.mapPair(jb.al.r().fieldOf("pattern"), cht.q.fieldOf("color")).codec();
    public static final Codec<eej> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eeh.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eej::new)
+      $$0 -> a($$0)
+            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
+            .apply($$0, eej::new)
    );
-   public static final Codec<eej> b = eeh.b.listOf().xmap(eej::new, $$0 -> $$0.c);
-   private final List<eef> c;
-   private final BiFunction<cjh, ecs, cjh> d;
+   private final List<Pair<he<dcm>, cht>> c;
+   private final boolean d;
 
-   private eej(List<eef> $$0) {
-      this.c = $$0;
-      this.d = eeh.a($$0);
-   }
-
-   public static eej a(List<eef> $$0) {
-      return new eej(List.copyOf($$0));
-   }
-
-   public cjh a(cjh $$0, ecs $$1) {
-      return this.d.apply($$0, $$1);
+   eej(List<efp> $$0, List<Pair<he<dcm>, cht>> $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public void a(edb $$0) {
-      eef.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".function[" + $$1 + "]"));
+   protected cjf a(cjf $$0, ecq $$1) {
+      qw $$2 = cgy.a($$0);
+      if ($$2 == null) {
+         $$2 = new qw();
       }
+
+      dcm.a $$3 = new dcm.a();
+      this.c.forEach($$3::a);
+      rc $$4 = $$3.a();
+      rc $$5;
+      if (this.d) {
+         $$5 = $$2.c("Patterns", 10).e();
+         $$5.addAll($$4);
+      } else {
+         $$5 = $$4;
+      }
+
+      $$2.a("Patterns", $$5);
+      cgy.a($$0, dcx.t, $$2);
+      return $$0;
    }
 
    @Override
-   public eeg b() {
-      return eeh.C;
+   public eee b() {
+      return eef.y;
+   }
+
+   public static eej.a a(boolean $$0) {
+      return new eej.a($$0);
+   }
+
+   public static class a extends eec.a<eej.a> {
+      private final Builder<Pair<he<dcm>, cht>> a = ImmutableList.builder();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected eej.a a() {
+         return this;
+      }
+
+      @Override
+      public eed b() {
+         return new eej(this.g(), this.a.build(), this.b);
+      }
+
+      public eej.a a(aev<dcm> $$0, cht $$1) {
+         return this.a(jb.al.f($$0), $$1);
+      }
+
+      public eej.a a(he<dcm> $$0, cht $$1) {
+         this.a.add(Pair.of($$0, $$1));
+         return this;
+      }
    }
 }

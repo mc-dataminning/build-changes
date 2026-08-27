@@ -1,41 +1,59 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class fru implements frp.a {
-   private final eqx a;
-   private static final int b = 10;
+public class fru implements frn.a {
+   private final eqv a;
+   private final Map<Long, Map<gw, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   public fru(eqx $$0) {
+   fru(eqv $$0) {
       this.a = $$0;
    }
 
+   public void a(long $$0, gw $$1) {
+      Map<gw, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
+   }
+
    @Override
-   public void a(elr $$0, fog $$1, double $$2, double $$3, double $$4) {
-      cpx $$5 = this.a.r;
-      gw $$6 = gw.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.V();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<gw> $$8 = Sets.newHashSet();
+      Map<gw, Integer> $$9 = Maps.newHashMap();
+      elt $$10 = $$1.getBuffer(fom.x());
+      Iterator<Entry<Long, Map<gw, Integer>>> $$11 = this.b.entrySet().iterator();
 
-      for (gw $$8 : gw.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(cqg.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = ary.h($$10, 0.9F, 0.9F);
-         long $$12 = hz.e($$8.a());
-         if ($$7.add($$12)) {
-            frp.a(
-               $$0,
-               $$1,
-               $$5.J().p().a(cqg.a, hz.a($$12)),
-               (double)hz.a(hz.b($$12), 8),
-               (double)hz.a(hz.c($$12), 8),
-               (double)hz.a(hz.d($$12), 8),
-               16711680,
-               0.3F
-            );
+      while ($$11.hasNext()) {
+         Entry<Long, Map<gw, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<gw, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<gw, Integer> $$16 : $$14.entrySet()) {
+               gw $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  ehi $$19 = new ehi(gw.b).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  foc.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
          }
+      }
 
-         if ($$9 != 15) {
-            frp.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
-         }
+      for (Entry<gw, Integer> $$20 : $$9.entrySet()) {
+         gw $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         frn.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
       }
    }
 }

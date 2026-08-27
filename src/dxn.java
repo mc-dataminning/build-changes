@@ -1,60 +1,62 @@
 import com.mojang.serialization.Codec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dxn extends dvk {
-   public static final Codec<dxn> d = a(dxn::new);
+public class dxn extends dvi {
+   public static final Codec<dxn> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a($$0),
+               dxn.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dxn::new)
+   );
+   public final dxn.a e;
+   public final float f;
+   public final float g;
 
-   public dxn(dvk.c $$0) {
+   public dxn(dvi.c $$0, dxn.a $$1, float $$2, float $$3) {
       super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public Optional<dvk.b> a(dvk.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
-
-      for (hg<cqv> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(apt.W)) {
-            return Optional.empty();
-         }
-      }
-
-      return a($$0, dku.a.c, $$1x -> a($$1x, $$0));
+   public Optional<dvi.b> a(dvi.a $$0) {
+      return a($$0, dks.a.c, $$1 -> this.a($$1, $$0));
    }
 
-   private static dvo a(cpe $$0, dlt $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      hc $$4 = hc.c.a.a($$1);
-      return new dxm.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(dwc $$0, dvk.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static dvz a(cpe $$0, long $$1, dvz $$2) {
-      if ($$2.a()) {
-         return $$2;
-      } else {
-         dlt $$3 = new dlt(new dkv(dlj.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         dvo $$4 = $$2.c().get(0);
-         dvc $$5 = $$4.f();
-         int $$6 = $$5.g();
-         int $$7 = $$5.i();
-         hc $$8 = hc.c.a.a($$3);
-         hc $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         dvo $$10 = new dxm.h($$3, $$6, $$7, $$9);
-         dwc $$11 = new dwc();
-         $$11.a($$10);
-         return $$11.a();
-      }
+   private void a(dwa $$0, dvi.a $$1) {
+      gw $$2 = new gw($$1.h().d(), 90, $$1.h().e());
+      czh $$3 = czh.a($$1.f());
+      dxm.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
    }
 
    @Override
-   public dvt<?> e() {
-      return dvt.j;
+   public dvr<?> e() {
+      return dvr.k;
+   }
+
+   public static enum a implements asp {
+      a("warm"),
+      b("cold");
+
+      public static final Codec<dxn.a> c = asp.a(dxn.a::values);
+      private final String d;
+
+      private a(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

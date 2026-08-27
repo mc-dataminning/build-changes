@@ -1,49 +1,68 @@
-public class cme extends cmd {
-   public cme(cma $$0) {
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class cme extends cmb {
+   private static final cmg a = cmg.a(cji.tB);
+
+   public cme(cly $$0) {
       super($$0);
    }
 
-   public boolean a(cfb $$0, cpx $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-            cjh $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(aqc.aM)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(cjk.a)) {
-                     return false;
-                  }
+   public boolean a(cez $$0, cpv $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjf $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.d() instanceof chu) {
+               $$2 = true;
+            } else {
+               if (!a.a($$5)) {
+                  return false;
+               }
+
+               if ($$3) {
+                  return false;
+               }
+
+               $$3 = true;
             }
          }
-
-         return true;
       }
+
+      return $$3 && $$2;
    }
 
-   public cjh a(cfb $$0, hu $$1) {
-      ddm.a $$2 = new ddm.a($$0.a(1).d(), $$0.a(3).d(), $$0.a(5).d(), $$0.a(7).d());
-      return ddm.a($$2);
+   public cjf a(cez $$0, hr $$1) {
+      List<Integer> $$2 = Lists.newArrayList();
+      cjf $$3 = null;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjf $$5 = $$0.a($$4);
+         cja $$6 = $$5.d();
+         if ($$6 instanceof chu) {
+            $$2.add(((chu)$$6).d().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
+         }
+      }
+
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a("Explosion").b("FadeColors", $$2);
+         return $$3;
+      } else {
+         return cjf.b;
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cmo<?> an_() {
-      return cmo.w;
+   public cmm<?> an_() {
+      return cmm.i;
    }
 }

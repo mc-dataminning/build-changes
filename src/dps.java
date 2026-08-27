@@ -1,20 +1,10 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dps {
-   public static final Codec<dps> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(duo.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, dps::new)
-   );
-   public final hg<duo> b;
-   public final float c;
+public class dps implements dqa {
+   public static final Codec<dps> a = dsb.a.fieldOf("state_provider").xmap(dps::new, $$0 -> $$0.b).codec();
+   public final dsb b;
 
-   public dps(hg<duo> $$0, float $$1) {
+   public dps(dsb $$0) {
       this.b = $$0;
-      this.c = $$1;
-   }
-
-   public boolean a(cqr $$0, dhi $$1, ase $$2, gw $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

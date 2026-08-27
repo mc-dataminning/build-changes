@@ -1,104 +1,59 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
-public class dju implements djy {
-   private final List<djx> b = Lists.newArrayList();
-   private final Set<djx> c = Sets.newHashSet();
-   private final List<djx> d = Lists.newArrayList();
-   private boolean e;
-   private final aks f;
-   private final int g;
-   private final dju.a h;
+public class dju {
+   private final akq a;
 
-   public dju(aks $$0, int $$1, dju.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public dju(akq $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public boolean a() {
-      return this.b.isEmpty();
-   }
+   public void a(djt $$0, ehn $$1, djt.a $$2) {
+      int $$3 = $$0.a();
+      gw $$4 = gw.a($$1);
+      int $$5 = hw.a($$4.u() - $$3);
+      int $$6 = hw.a($$4.v() - $$3);
+      int $$7 = hw.a($$4.w() - $$3);
+      int $$8 = hw.a($$4.u() + $$3);
+      int $$9 = hw.a($$4.v() + $$3);
+      int $$10 = hw.a($$4.w() + $$3);
+      List<djt.b> $$11 = new ArrayList<>();
+      djw.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == djv.a.b) {
+            $$11.add(new djt.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
+         }
+      };
+      boolean $$13 = false;
 
-   @Override
-   public void a(djx $$0) {
-      if (this.e) {
-         this.d.add($$0);
-      } else {
-         this.b.add($$0);
-      }
-
-      abd.a(this.f, $$0);
-   }
-
-   @Override
-   public void b(djx $$0) {
-      if (this.e) {
-         this.c.add($$0);
-      } else {
-         this.b.remove($$0);
-      }
-
-      if (this.b.isEmpty()) {
-         this.h.apply(this.g);
-      }
-   }
-
-   @Override
-   public boolean a(djv $$0, ehp $$1, djv.a $$2, djy.a $$3) {
-      this.e = true;
-      boolean $$4 = false;
-
-      try {
-         Iterator<djx> $$5 = this.b.iterator();
-
-         while ($$5.hasNext()) {
-            djx $$6 = $$5.next();
-            if (this.c.remove($$6)) {
-               $$5.remove();
-            } else {
-               Optional<ehp> $$7 = a(this.f, $$1, $$6);
-               if ($$7.isPresent()) {
-                  $$3.visit($$6, $$7.get());
-                  $$4 = true;
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dhf $$16 = this.a.k().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
                }
             }
          }
-      } finally {
-         this.e = false;
       }
 
-      if (!this.d.isEmpty()) {
-         this.b.addAll(this.d);
-         this.d.clear();
+      if (!$$11.isEmpty()) {
+         this.a($$11);
       }
 
-      if (!this.c.isEmpty()) {
-         this.b.removeAll(this.c);
-         this.c.clear();
-      }
-
-      return $$4;
-   }
-
-   private static Optional<ehp> a(aks $$0, ehp $$1, djx $$2) {
-      Optional<ehp> $$3 = $$2.a().a($$0);
-      if ($$3.isEmpty()) {
-         return Optional.empty();
-      } else {
-         double $$4 = gw.a($$3.get()).j(gw.a($$1));
-         int $$5 = $$2.b() * $$2.b();
-         return $$4 > (double)$$5 ? Optional.empty() : $$3;
+      if ($$13) {
+         abb.a(this.a, $$0, $$1);
       }
    }
 
-   @FunctionalInterface
-   public interface a {
-      void apply(int var1);
+   private void a(List<djt.b> $$0) {
+      Collections.sort($$0);
+
+      for (djt.b $$1 : $$0) {
+         djv $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+      }
    }
 }

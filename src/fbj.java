@@ -1,24 +1,50 @@
-public class fbj extends fbn {
-   private static final tn b = tn.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final tn c = tn.c("title.32bit.deprecation.realms");
-   private static final tn k = tn.c("title.32bit.deprecation.realms.check");
-   private static final tn l = b.e().f("\n").b(c);
-   private final eym m;
+public class fbj extends eyk {
+   private static final int a = 600;
+   private final sm b;
+   private esq c;
+   private int k;
+   private final ewd l = ewd.d();
 
-   public fbj(eym $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+   public fbj(tl $$0, sm $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(ess.a(tm.d, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.w = true;
-            this.f.m.ar();
-         }
+   public boolean ay_() {
+      return false;
+   }
 
-         this.f.a(this.m);
-      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
+   @Override
+   protected void aH_() {
+      this.l.c().b().a(10);
+      this.l.a(new etw(this.e, this.i));
+      this.c = this.l.a(esq.a(tk.p, $$0 -> this.b.a(exe.a)).a());
+      this.c.i = false;
+      this.l.a();
+      this.l.a($$1 -> {
+         eso var10000 = this.d($$1);
+      });
+      this.b();
+   }
+
+   @Override
+   protected void b() {
+      evx.a(this.l, this.s());
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      this.k++;
+      if (this.k == 600) {
+         this.c.i = true;
+      }
+
+      if (this.b.k()) {
+         this.b.d();
+      } else {
+         this.b.p();
+      }
    }
 }

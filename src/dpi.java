@@ -1,172 +1,197 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class dpi extends dny<dqw> {
-   public static final int a = 10;
-   private static final int b = 42;
-   private static final LoadingCache<Long, List<dpi.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new dpi.b());
+public class dpi extends dnw<dqw> {
+   private static final int a = 19;
 
    public dpi(Codec<dqw> $$0) {
       super($$0);
    }
 
-   public static List<dpi.a> a(cqr $$0) {
-      ase $$1 = ase.a($$0.A());
-      long $$2 = $$1.g() & 65535L;
-      return (List<dpi.a>)c.getUnchecked($$2);
+   private static boolean d(cqb $$0, gw $$1) {
+      return $$0.a($$1, $$0x -> $$0x.a(csw.ff));
    }
 
-   @Override
-   public boolean a(doa<dqw> $$0) {
-      dqw $$1 = $$0.f();
-      cqr $$2 = $$0.b();
-      ase $$3 = $$0.d();
-      gw $$4 = $$0.e();
-      List<dpi.a> $$5 = $$1.b();
-      if ($$5.isEmpty()) {
-         $$5 = a($$2);
-      }
-
-      for (dpi.a $$6 : $$5) {
-         if ($$6.a($$4)) {
-            this.a($$2, $$3, $$1, $$6);
-         }
-      }
-
-      return true;
+   public static boolean b(cqb $$0, gw $$1) {
+      return $$0.a($$1, $$0x -> $$0x.i() || $$0x.a(aps.O));
    }
 
-   private void a(cqm $$0, ase $$1, dqw $$2, dpi.a $$3) {
-      int $$4 = $$3.c();
+   private static void b(cqd $$0, gw $$1, dfj $$2) {
+      $$0.a($$1, $$2, 19);
+   }
 
-      for (gw $$5 : gw.a(new gw($$3.a() - $$4, $$0.H_(), $$3.b() - $$4), new gw($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
-         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
-            this.a($$0, $$5, csy.co.n());
-         } else if ($$5.v() > 65) {
-            this.a($$0, $$5, csy.a.n());
+   public static boolean c(cqb $$0, gw $$1) {
+      return $$0.a($$1, $$0x -> $$0x.i() || $$0x.a(aps.cf));
+   }
+
+   private boolean a(cqp $$0, asc $$1, gw $$2, BiConsumer<gw, dfj> $$3, BiConsumer<gw, dfj> $$4, drm.b $$5, dqw $$6) {
+      int $$7 = $$6.d.a($$1);
+      int $$8 = $$6.f.a($$1, $$7, $$6);
+      int $$9 = $$7 - $$8;
+      int $$10 = $$6.f.a($$1, $$9);
+      gw $$11 = $$6.g.<gw>map($$2x -> $$2x.a($$2, $$1)).orElse($$2);
+      int $$12 = Math.min($$2.v(), $$11.v());
+      int $$13 = Math.max($$2.v(), $$11.v()) + $$7 + 1;
+      if ($$12 >= $$0.H_() + 1 && $$13 <= $$0.aj()) {
+         OptionalInt $$14 = $$6.h.c();
+         int $$15 = this.a($$0, $$7, $$11, $$6);
+         if ($$15 >= $$7 || !$$14.isEmpty() && $$15 >= $$14.getAsInt()) {
+            if ($$6.g.isPresent() && !$$6.g.get().a($$0, $$3, $$1, $$2, $$11, $$6)) {
+               return false;
+            } else {
+               List<drm.a> $$16 = $$6.d.a($$0, $$4, $$1, $$15, $$11, $$6);
+               $$16.forEach($$7x -> $$6.f.a($$0, $$5, $$1, $$6, $$15, $$7x, $$8, $$10));
+               return true;
+            }
+         } else {
+            return false;
          }
+      } else {
+         return false;
       }
+   }
 
-      if ($$3.e()) {
-         int $$6 = -2;
-         int $$7 = 2;
-         int $$8 = 3;
-         gw.a $$9 = new gw.a();
+   private int a(cqb $$0, int $$1, gw $$2, dqw $$3) {
+      gw.a $$4 = new gw.a();
 
-         for (int $$10 = -2; $$10 <= 2; $$10++) {
-            for (int $$11 = -2; $$11 <= 2; $$11++) {
-               for (int $$12 = 0; $$12 <= 3; $$12++) {
-                  boolean $$13 = ary.a($$10) == 2;
-                  boolean $$14 = ary.a($$11) == 2;
-                  boolean $$15 = $$12 == 3;
-                  if ($$13 || $$14 || $$15) {
-                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
-                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
-                     dfl $$18 = csy.eX
-                        .n()
-                        .a(cwv.a, Boolean.valueOf($$16 && $$11 != -2))
-                        .a(cwv.c, Boolean.valueOf($$16 && $$11 != 2))
-                        .a(cwv.d, Boolean.valueOf($$17 && $$10 != -2))
-                        .a(cwv.b, Boolean.valueOf($$17 && $$10 != 2));
-                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
-                  }
+      for (int $$5 = 0; $$5 <= $$1 + 1; $$5++) {
+         int $$6 = $$3.h.a($$1, $$5);
+
+         for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+            for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+               $$4.a($$2, $$7, $$5, $$8);
+               if (!$$3.d.b($$0, $$4) || !$$3.j && d($$0, $$4)) {
+                  return $$5 - 2;
                }
             }
          }
       }
 
-      bxi $$19 = biw.B.a((cpx)$$0.C());
-      if ($$19 != null) {
-         $$19.a($$2.c());
-         $$19.m($$2.a());
-         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
-         $$0.b($$19);
-         gw $$20 = $$19.dl();
-         this.a($$0, $$20.d(), csy.F.n());
-         this.a($$0, $$20, cvt.a($$0, $$20));
-      }
+      return $$1;
    }
 
-   public static class a {
-      public static final Codec<dpi.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
-                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
-                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, dpi.a::new)
-      );
-      private final int b;
-      private final int c;
-      private final int d;
-      private final int e;
-      private final boolean f;
-      private final ehk g;
-
-      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = new ehk((double)($$0 - $$2), (double)diu.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)diu.d, (double)($$1 + $$2));
-      }
-
-      public boolean a(gw $$0) {
-         return hz.a($$0.u()) == hz.a(this.b) && hz.a($$0.w()) == hz.a(this.c);
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
-
-      public ehk f() {
-         return this.g;
-      }
+   @Override
+   protected void a(cqd $$0, gw $$1, dfj $$2) {
+      b($$0, $$1, $$2);
    }
 
-   static class b extends CacheLoader<Long, List<dpi.a>> {
-      public List<dpi.a> a(Long $$0) {
-         IntArrayList $$1 = ac.a(IntStream.range(0, 10), ase.a($$0));
-         List<dpi.a> $$2 = Lists.newArrayList();
-
-         for (int $$3 = 0; $$3 < 10; $$3++) {
-            int $$4 = ary.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
-            int $$5 = ary.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
-            int $$6 = $$1.get($$3);
-            int $$7 = 2 + $$6 / 3;
-            int $$8 = 76 + $$6 * 3;
-            boolean $$9 = $$6 == 1 || $$6 == 2;
-            $$2.add(new dpi.a($$4, $$5, $$7, $$8, $$9));
+   @Override
+   public final boolean a(dny<dqw> $$0) {
+      final cqp $$1 = $$0.b();
+      asc $$2 = $$0.d();
+      gw $$3 = $$0.e();
+      dqw $$4 = $$0.f();
+      Set<gw> $$5 = Sets.newHashSet();
+      Set<gw> $$6 = Sets.newHashSet();
+      final Set<gw> $$7 = Sets.newHashSet();
+      Set<gw> $$8 = Sets.newHashSet();
+      BiConsumer<gw, dfj> $$9 = ($$2x, $$3x) -> {
+         $$5.add($$2x.i());
+         $$1.a($$2x, $$3x, 19);
+      };
+      BiConsumer<gw, dfj> $$10 = ($$2x, $$3x) -> {
+         $$6.add($$2x.i());
+         $$1.a($$2x, $$3x, 19);
+      };
+      drm.b $$11 = new drm.b() {
+         @Override
+         public void a(gw $$0, dfj $$1x) {
+            $$7.add($$0.i());
+            $$1.a($$0, $$1, 19);
          }
 
-         return $$2;
+         @Override
+         public boolean a(gw $$0) {
+            return $$7.contains($$0);
+         }
+      };
+      BiConsumer<gw, dfj> $$12 = ($$2x, $$3x) -> {
+         $$8.add($$2x.i());
+         $$1.a($$2x, $$3x, 19);
+      };
+      boolean $$13 = this.a($$1, $$2, $$3, $$9, $$10, $$11, $$4);
+      if ($$13 && (!$$6.isEmpty() || !$$7.isEmpty())) {
+         if (!$$4.i.isEmpty()) {
+            dss.a $$14 = new dss.a($$1, $$12, $$2, $$6, $$7, $$5);
+            $$4.i.forEach($$1x -> $$1x.a($$14));
+         }
+
+         return dva.a(Iterables.concat($$5, $$6, $$7, $$8)).map($$4x -> {
+            ehw $$5x = a($$1, $$4x, $$6, $$8, $$5);
+            dzb.a($$1, 3, $$5x, $$4x.g(), $$4x.h(), $$4x.i());
+            return true;
+         }).orElse(false);
+      } else {
+         return false;
+      }
+   }
+
+   private static ehw a(cpw $$0, dva $$1, Set<gw> $$2, Set<gw> $$3, Set<gw> $$4) {
+      ehw $$5 = new ehq($$1.c(), $$1.d(), $$1.e());
+      int $$6 = 7;
+      List<Set<gw>> $$7 = Lists.newArrayList();
+
+      for (int $$8 = 0; $$8 < 7; $$8++) {
+         $$7.add(Sets.newHashSet());
+      }
+
+      for (gw $$9 : Lists.newArrayList(Sets.union($$3, $$4))) {
+         if ($$1.b($$9)) {
+            $$5.c($$9.u() - $$1.g(), $$9.v() - $$1.h(), $$9.w() - $$1.i());
+         }
+      }
+
+      gw.a $$10 = new gw.a();
+      int $$11 = 0;
+      $$7.get(0).addAll($$2);
+
+      while (true) {
+         while ($$11 >= 7 || !$$7.get($$11).isEmpty()) {
+            if ($$11 >= 7) {
+               return $$5;
+            }
+
+            Iterator<gw> $$12 = $$7.get($$11).iterator();
+            gw $$13 = $$12.next();
+            $$12.remove();
+            if ($$1.b($$13)) {
+               if ($$11 != 0) {
+                  dfj $$14 = $$0.a_($$13);
+                  b($$0, $$13, $$14.a(dfz.aC, Integer.valueOf($$11)));
+               }
+
+               $$5.c($$13.u() - $$1.g(), $$13.v() - $$1.h(), $$13.w() - $$1.i());
+
+               for (ha $$15 : ha.values()) {
+                  $$10.a($$13, $$15);
+                  if ($$1.b($$10)) {
+                     int $$16 = $$10.u() - $$1.g();
+                     int $$17 = $$10.v() - $$1.h();
+                     int $$18 = $$10.w() - $$1.i();
+                     if (!$$5.b($$16, $$17, $$18)) {
+                        dfj $$19 = $$0.a_($$10);
+                        OptionalInt $$20 = cxc.n($$19);
+                        if (!$$20.isEmpty()) {
+                           int $$21 = Math.min($$20.getAsInt(), $$11 + 1);
+                           if ($$21 < 7) {
+                              $$7.get($$21).add($$10.i());
+                              $$11 = Math.min($$11, $$21);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         $$11++;
       }
    }
 }

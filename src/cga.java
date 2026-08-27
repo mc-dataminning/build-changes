@@ -1,68 +1,69 @@
-import javax.annotation.Nullable;
+public class cga extends cel {
+   private static final int k = 27;
+   private final bgr l;
 
-public class cga implements bgt, cfz {
-   private final hp<cjh> c = hp.a(1, cjh.b);
-   @Nullable
-   private cmm<?> d;
-
-   @Override
-   public int b() {
-      return 1;
+   public cga(int $$0, cbt $$1) {
+      this($$0, $$1, new bhf(27));
    }
 
-   @Override
-   public boolean af_() {
-      for (cjh $$0 : this.c) {
-         if (!$$0.b()) {
-            return false;
+   public cga(int $$0, cbt $$1, bgr $$2) {
+      super(cfq.t, $$0);
+      a($$2, 27);
+      this.l = $$2;
+      $$2.d_($$1.m);
+      int $$3 = 3;
+      int $$4 = 9;
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cgb($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
          }
       }
 
-      return true;
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new cgd($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+         }
+      }
+
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new cgd($$1, $$9, 8 + $$9 * 18, 142));
+      }
    }
 
    @Override
-   public cjh a(int $$0) {
-      return this.c.get(0);
+   public boolean a(cbu $$0) {
+      return this.l.a($$0);
    }
 
    @Override
-   public cjh a(int $$0, int $$1) {
-      return bgu.a(this.c, 0);
+   public cjf a(cbu $$0, int $$1) {
+      cjf $$2 = cjf.b;
+      cgd $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         cjf $$4 = $$3.e();
+         $$2 = $$4.p();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return cjf.b;
+            }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return cjf.b;
+         }
+
+         if ($$4.b()) {
+            $$3.d(cjf.b);
+         } else {
+            $$3.d();
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public cjh b(int $$0) {
-      return bgu.a(this.c, 0);
-   }
-
-   @Override
-   public void a(int $$0, cjh $$1) {
-      this.c.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cbw $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   @Override
-   public void a(@Nullable cmm<?> $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   @Override
-   public cmm<?> d() {
-      return this.d;
+   public void b(cbu $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

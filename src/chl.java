@@ -1,111 +1,285 @@
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class chl extends cjc implements clb {
-   private static final Logger d = LogUtils.getLogger();
-   public static final String a = "LodestonePos";
-   public static final String b = "LodestoneDimension";
-   public static final String c = "LodestoneTracked";
-
-   public chl(cjc.a $$0) {
-      super($$0);
-   }
-
-   public static boolean d(cjh $$0) {
-      qy $$1 = $$0.v();
-      return $$1 != null && ($$1.e("LodestoneDimension") || $$1.e("LodestonePos"));
-   }
-
-   private static Optional<aex<cpx>> c(qy $$0) {
-      return cpx.g.parse(rk.a, $$0.c("LodestoneDimension")).result();
-   }
-
+public class chl {
+   private final tl a;
+   String b = "items.png";
+   boolean c = true;
+   boolean d = true;
+   boolean e = false;
+   private final chl.f f;
+   private final int g;
+   private final chl.h h;
    @Nullable
-   public static hf a(qy $$0) {
-      boolean $$1 = $$0.e("LodestonePos");
-      boolean $$2 = $$0.e("LodestoneDimension");
-      if ($$1 && $$2) {
-         Optional<aex<cpx>> $$3 = c($$0);
-         if ($$3.isPresent()) {
-            gw $$4 = rl.b($$0.p("LodestonePos"));
-            return hf.a($$3.get(), $$4);
-         }
+   private cjf i;
+   private Collection<cjf> j = cjg.a();
+   private Set<cjf> k = cjg.a();
+   @Nullable
+   private Consumer<List<cjf>> l;
+   private final Supplier<cjf> m;
+   private final chl.b n;
+
+   chl(chl.f $$0, int $$1, chl.h $$2, tl $$3, Supplier<cjf> $$4, chl.b $$5) {
+      this.f = $$0;
+      this.g = $$1;
+      this.a = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.h = $$2;
+   }
+
+   public static chl.a a(chl.f $$0, int $$1) {
+      return new chl.a($$0, $$1);
+   }
+
+   public tl a() {
+      return this.a;
+   }
+
+   public cjf b() {
+      if (this.i == null) {
+         this.i = this.m.get();
       }
 
-      return null;
+      return this.i;
    }
 
-   @Nullable
-   public static hf a(cpx $$0) {
-      return $$0.C_().j() ? hf.a($$0.ac(), $$0.R()) : null;
+   public String c() {
+      return this.b;
    }
 
-   @Override
-   public boolean i(cjh $$0) {
-      return d($$0) || super.i($$0);
+   public boolean d() {
+      return this.d;
    }
 
-   @Override
-   public void a(cjh $$0, cpx $$1, bis $$2, int $$3, boolean $$4) {
-      if (!$$1.B) {
-         if (d($$0)) {
-            qy $$5 = $$0.w();
-            if ($$5.e("LodestoneTracked") && !$$5.q("LodestoneTracked")) {
-               return;
-            }
+   public boolean e() {
+      return this.c;
+   }
 
-            Optional<aex<cpx>> $$6 = c($$5);
-            if ($$6.isPresent() && $$6.get() == $$1.ac() && $$5.e("LodestonePos")) {
-               gw $$7 = rl.b($$5.p("LodestonePos"));
-               if (!$$1.j($$7) || !((aks)$$1).w().a(bul.s, $$7)) {
-                  $$5.r("LodestonePos");
+   public int f() {
+      return this.g;
+   }
+
+   public chl.f g() {
+      return this.f;
+   }
+
+   public boolean h() {
+      return !this.j.isEmpty();
+   }
+
+   public boolean i() {
+      return this.h != chl.h.a || this.h();
+   }
+
+   public boolean j() {
+      return this.e;
+   }
+
+   public chl.h k() {
+      return this.h;
+   }
+
+   public void a(chl.d $$0) {
+      chl.c $$1 = new chl.c(this, $$0.a);
+      aev<chl> $$2 = jb.ao.c(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
+      this.n.accept($$0, $$1);
+      this.j = $$1.a;
+      this.k = $$1.b;
+      this.n();
+   }
+
+   public Collection<cjf> l() {
+      return this.j;
+   }
+
+   public Collection<cjf> m() {
+      return this.k;
+   }
+
+   public boolean a(cjf $$0) {
+      return this.k.contains($$0);
+   }
+
+   public void a(Consumer<List<cjf>> $$0) {
+      this.l = $$0;
+   }
+
+   public void n() {
+      if (this.l != null) {
+         this.l.accept(Lists.newArrayList(this.k));
+      }
+   }
+
+   public static class a {
+      private static final chl.b a = ($$0, $$1) -> {
+      };
+      private final chl.f b;
+      private final int c;
+      private tl d = tl.h();
+      private Supplier<cjf> e = () -> cjf.b;
+      private chl.b f = a;
+      private boolean g = true;
+      private boolean h = true;
+      private boolean i = false;
+      private chl.h j = chl.h.a;
+      private String k = "items.png";
+
+      public a(chl.f $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public chl.a a(tl $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public chl.a a(Supplier<cjf> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public chl.a a(chl.b $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public chl.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public chl.a b() {
+         this.h = false;
+         return this;
+      }
+
+      public chl.a c() {
+         this.g = false;
+         return this;
+      }
+
+      protected chl.a a(chl.h $$0) {
+         this.j = $$0;
+         return this;
+      }
+
+      public chl.a a(String $$0) {
+         this.k = $$0;
+         return this;
+      }
+
+      public chl d() {
+         if ((this.j == chl.h.c || this.j == chl.h.b) && this.f != a) {
+            throw new IllegalStateException("Special tabs can't have display items");
+         } else {
+            chl $$0 = new chl(this.b, this.c, this.j, this.d, this.e, this.f);
+            $$0.e = this.i;
+            $$0.d = this.h;
+            $$0.c = this.g;
+            $$0.b = this.k;
+            return $$0;
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void accept(chl.d var1, chl.e var2);
+   }
+
+   static class c implements chl.e {
+      public final Collection<cjf> a = cjg.a();
+      public final Set<cjf> b = cjg.a();
+      private final chl c;
+      private final cec d;
+
+      public c(chl $$0, cec $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(cjf $$0, chl.g $$1) {
+         if ($$0.L() != 1) {
+            throw new IllegalArgumentException("Stack size must be exactly 1");
+         } else {
+            boolean $$2 = this.a.contains($$0) && $$1 != chl.g.c;
+            if ($$2) {
+               throw new IllegalStateException(
+                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
+               );
+            } else {
+               if ($$0.d().a(this.d)) {
+                  switch ($$1) {
+                     case a:
+                        this.a.add($$0);
+                        this.b.add($$0);
+                        break;
+                     case b:
+                        this.a.add($$0);
+                        break;
+                     case c:
+                        this.b.add($$0);
+                  }
                }
             }
          }
       }
    }
 
-   @Override
-   public bha a(clr $$0) {
-      gw $$1 = $$0.a();
-      cpx $$2 = $$0.q();
-      if (!$$2.a_($$1).a(csy.pq)) {
-         return super.a($$0);
-      } else {
-         $$2.a(null, $$1, apf.mL, apg.h, 1.0F, 1.0F);
-         cbw $$3 = $$0.o();
-         cjh $$4 = $$0.n();
-         boolean $$5 = !$$3.fS().d && $$4.L() == 1;
-         if ($$5) {
-            this.a($$2.ac(), $$1, $$4.w());
-         } else {
-            cjh $$6 = new cjh(cjk.qe, 1);
-            qy $$7 = $$4.u() ? $$4.v().h() : new qy();
-            $$6.c($$7);
-            if (!$$3.fS().d) {
-               $$4.h(1);
-            }
+   public static record d(cec a, boolean b, hg.b c) {
 
-            this.a($$2.ac(), $$1, $$7);
-            if (!$$3.fR().e($$6)) {
-               $$3.a($$6, false);
-            }
-         }
-
-         return bha.a($$2.B);
+      public boolean a(cec $$0, boolean $$1, hg.b $$2) {
+         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
       }
    }
 
-   private void a(aex<cpx> $$0, gw $$1, qy $$2) {
-      $$2.a("LodestonePos", rl.a($$1));
-      cpx.g.encodeStart(rk.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
-      $$2.a("LodestoneTracked", true);
+   public interface e {
+      void a(cjf var1, chl.g var2);
+
+      default void a(cjf $$0) {
+         this.a($$0, chl.g.a);
+      }
+
+      default void a(cpu $$0, chl.g $$1) {
+         this.a(new cjf($$0), $$1);
+      }
+
+      default void a(cpu $$0) {
+         this.a(new cjf($$0), chl.g.a);
+      }
+
+      default void a(Collection<cjf> $$0, chl.g $$1) {
+         $$0.forEach($$1x -> this.a($$1x, $$1));
+      }
+
+      default void a(Collection<cjf> $$0) {
+         this.a($$0, chl.g.a);
+      }
    }
 
-   @Override
-   public String j(cjh $$0) {
-      return d($$0) ? "item.minecraft.lodestone_compass" : super.j($$0);
+   public static enum f {
+      a,
+      b;
+   }
+
+   protected static enum g {
+      a,
+      b,
+      c;
+   }
+
+   public static enum h {
+      a,
+      b,
+      c,
+      d;
    }
 }

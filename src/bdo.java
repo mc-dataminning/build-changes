@@ -1,68 +1,32 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.nio.file.Path;
+import java.util.List;
 
-public class bdo implements bdp {
-   public static final bdo a = new bdo();
+public interface bdo {
+   char d = '\u001e';
 
-   private bdo() {
+   List<bdr> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
    }
 
-   @Override
-   public void a() {
+   default int f() {
+      return this.d() - this.b();
    }
 
-   @Override
-   public void b() {
-   }
+   String e();
 
-   @Override
-   public void a(String $$0) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(beu $$0) {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void b(String $$0) {
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-   }
-
-   @Override
-   public bdq d() {
-      return bdm.a;
-   }
-
-   @Nullable
-   @Override
-   public bdk.a c(String $$0) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, beu>> e() {
-      return ImmutableSet.of();
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

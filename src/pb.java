@@ -1,8 +1,65 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class pb {
+   public static final aev<dum> a = pg.a("monster_room");
+   public static final aev<dum> b = pg.a("monster_room_deep");
+   public static final aev<dum> c = pg.a("fossil_upper");
+   public static final aev<dum> d = pg.a("fossil_lower");
+   public static final aev<dum> e = pg.a("dripstone_cluster");
+   public static final aev<dum> f = pg.a("large_dripstone");
+   public static final aev<dum> g = pg.a("pointed_dripstone");
+   public static final aev<dum> h = pg.a("underwater_magma");
+   public static final aev<dum> i = pg.a("glow_lichen");
+   public static final aev<dum> j = pg.a("rooted_azalea_tree");
+   public static final aev<dum> k = pg.a("cave_vines");
+   public static final aev<dum> l = pg.a("lush_caves_vegetation");
+   public static final aev<dum> m = pg.a("lush_caves_clay");
+   public static final aev<dum> n = pg.a("lush_caves_ceiling_vegetation");
+   public static final aev<dum> o = pg.a("spore_blossom");
+   public static final aev<dum> p = pg.a("classic_vines_cave_feature");
+   public static final aev<dum> q = pg.a("amethyst_geode");
+   public static final aev<dum> r = pg.a("sculk_patch_deep_dark");
+   public static final aev<dum> s = pg.a("sculk_patch_ancient_city");
+   public static final aev<dum> t = pg.a("sculk_vein");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface pb {
+   public static void a(nr<dum> $$0) {
+      hf<dnj<?, ?>> $$1 = $$0.a(jc.as);
+      he<dnj<?, ?>> $$2 = $$1.b(op.a);
+      he<dnj<?, ?>> $$3 = $$1.b(op.b);
+      he<dnj<?, ?>> $$4 = $$1.b(op.c);
+      he<dnj<?, ?>> $$5 = $$1.b(op.d);
+      he<dnj<?, ?>> $$6 = $$1.b(op.e);
+      he<dnj<?, ?>> $$7 = $$1.b(op.f);
+      he<dnj<?, ?>> $$8 = $$1.b(op.g);
+      he<dnj<?, ?>> $$9 = $$1.b(op.h);
+      he<dnj<?, ?>> $$10 = $$1.b(op.i);
+      he<dnj<?, ?>> $$11 = $$1.b(op.j);
+      he<dnj<?, ?>> $$12 = $$1.b(op.m);
+      he<dnj<?, ?>> $$13 = $$1.b(op.r);
+      he<dnj<?, ?>> $$14 = $$1.b(op.s);
+      he<dnj<?, ?>> $$15 = $$1.b(op.t);
+      he<dnj<?, ?>> $$16 = $$1.b(ox.c);
+      he<dnj<?, ?>> $$17 = $$1.b(op.u);
+      he<dnj<?, ?>> $$18 = $$1.b(op.v);
+      he<dnj<?, ?>> $$19 = $$1.b(op.w);
+      he<dnj<?, ?>> $$20 = $$1.b(op.x);
+      pg.a($$0, a, $$2, duf.a(10), duj.a(), duh.a(dlm.a(0), dlm.b()), dua.a());
+      pg.a($$0, b, $$2, duf.a(4), duj.a(), duh.a(dlm.b(6), dlm.a(-1)), dua.a());
+      pg.a($$0, c, $$3, dus.a(64), duj.a(), duh.a(dlm.a(0), dlm.b()), dua.a());
+      pg.a($$0, d, $$4, dus.a(64), duj.a(), duh.a(dlm.a(), dlm.a(-8)), dua.a());
+      pg.a($$0, e, $$5, duf.a(bgj.a(48, 96)), duj.a(), pg.i, dua.a());
+      pg.a($$0, f, $$6, duf.a(bgj.a(10, 48)), duj.a(), pg.i, dua.a());
+      pg.a($$0, g, $$7, duf.a(bgj.a(192, 256)), duj.a(), pg.i, duf.a(bgj.a(1, 5)), dur.a(bfy.a(0.0F, 3.0F, -10, 10), bfy.a(0.0F, 0.6F, -2, 2)), dua.a());
+      pg.a($$0, h, $$8, duf.a(bgj.a(44, 52)), duj.a(), pg.i, duu.a(dks.a.c, Integer.MIN_VALUE, -2), dua.a());
+      pg.a($$0, i, $$9, duf.a(bgj.a(104, 157)), pg.i, duj.a(), duu.a(dks.a.c, Integer.MIN_VALUE, -13), dua.a());
+      pg.a($$0, j, $$10, duf.a(bgj.a(1, 2)), duj.a(), pg.i, dug.a(ha.b, dlz.c(), dlz.c, 12), dur.a(bga.a(-1)), dua.a());
+      pg.a($$0, k, $$11, duf.a(188), duj.a(), pg.i, dug.a(ha.b, dlz.a(ha.a), dlz.c, 12), dur.a(bga.a(-1)), dua.a());
+      pg.a($$0, l, $$12, duf.a(125), duj.a(), pg.i, dug.a(ha.a, dlz.c(), dlz.c, 12), dur.a(bga.a(1)), dua.a());
+      pg.a($$0, m, $$13, duf.a(62), duj.a(), pg.i, dug.a(ha.a, dlz.c(), dlz.c, 12), dur.a(bga.a(1)), dua.a());
+      pg.a($$0, n, $$14, duf.a(125), duj.a(), pg.i, dug.a(ha.b, dlz.c(), dlz.c, 12), dur.a(bga.a(-1)), dua.a());
+      pg.a($$0, o, $$15, duf.a(25), duj.a(), pg.i, dug.a(ha.b, dlz.c(), dlz.c, 12), dur.a(bga.a(-1)), dua.a());
+      pg.a($$0, p, $$16, duf.a(256), duj.a(), pg.i, dua.a());
+      pg.a($$0, q, $$17, dus.a(24), duj.a(), duh.a(dlm.b(6), dlm.a(30)), dua.a());
+      pg.a($$0, r, $$18, duf.a(bga.a(256)), duj.a(), pg.i, dua.a());
+      pg.a($$0, s, $$19);
+      pg.a($$0, t, $$20, duf.a(bgj.a(204, 250)), duj.a(), pg.i, dua.a());
+   }
 }

@@ -14,14 +14,14 @@ public final class j {
    private final Matrix4f c;
    public static final Codec<j> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               arh.d.fieldOf("translation").forGetter($$0x -> $$0x.e),
-               arh.g.fieldOf("left_rotation").forGetter($$0x -> $$0x.f),
-               arh.d.fieldOf("scale").forGetter($$0x -> $$0x.g),
-               arh.g.fieldOf("right_rotation").forGetter($$0x -> $$0x.h)
+               arf.d.fieldOf("translation").forGetter($$0x -> $$0x.e),
+               arf.g.fieldOf("left_rotation").forGetter($$0x -> $$0x.f),
+               arf.d.fieldOf("scale").forGetter($$0x -> $$0x.g),
+               arf.g.fieldOf("right_rotation").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, j::new)
    );
-   public static final Codec<j> b = arh.e(a, arh.h.xmap(j::new, j::c));
+   public static final Codec<j> b = arf.e(a, arf.h.xmap(j::new, j::c));
    private boolean d;
    @Nullable
    private Vector3f e;

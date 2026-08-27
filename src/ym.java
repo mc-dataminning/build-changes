@@ -1,86 +1,95 @@
 import com.google.common.collect.Lists;
-import java.util.BitSet;
+import java.util.Collection;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class ym {
-   private final BitSet a;
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final List<byte[]> e;
-   private final List<byte[]> f;
+public class ym implements vd<ww> {
+   private final int a;
+   private final byte b;
+   private final boolean c;
+   @Nullable
+   private final List<ebt> d;
+   @Nullable
+   private final ebw.b e;
 
-   public ym(cpe $$0, ead $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.a = new BitSet();
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = Lists.newArrayList();
-      this.f = Lists.newArrayList();
+   public ym(int $$0, byte $$1, boolean $$2, @Nullable Collection<ebt> $$3, @Nullable ebw.b $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3 != null ? Lists.newArrayList($$3) : null;
+      this.e = $$4;
+   }
 
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, cqg.a, $$4, this.a, this.c, this.e);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, cqg.b, $$4, this.b, this.d, this.f);
-         }
+   public ym(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.readByte();
+      this.c = $$0.readBoolean();
+      this.d = $$0.c($$0x -> $$0x.a((so.a)($$0xx -> {
+            ebt.a $$1x = $$0xx.b(ebt.a.class);
+            byte $$2x = $$0xx.readByte();
+            byte $$3x = $$0xx.readByte();
+            byte $$4x = (byte)($$0xx.readByte() & 15);
+            tl $$5x = $$0xx.c(so::l);
+            return new ebt($$1x, $$2x, $$3x, $$4x, $$5x);
+         })));
+      int $$1 = $$0.readUnsignedByte();
+      if ($$1 > 0) {
+         int $$2 = $$0.readUnsignedByte();
+         int $$3 = $$0.readUnsignedByte();
+         int $$4 = $$0.readUnsignedByte();
+         byte[] $$5 = $$0.b();
+         this.e = new ebw.b($$3, $$4, $$1, $$2, $$5);
+      } else {
+         this.e = null;
       }
    }
 
-   public ym(sq $$0, int $$1, int $$2) {
-      this.a = $$0.y();
-      this.b = $$0.y();
-      this.c = $$0.y();
-      this.d = $$0.y();
-      this.e = $$0.a((sq.a<byte[]>)($$0x -> $$0x.a(2048)));
-      this.f = $$0.a((sq.a<byte[]>)($$0x -> $$0x.a(2048)));
-   }
-
-   public void a(sq $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   @Override
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.k(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, sq::a);
-      $$0.a(this.f, sq::a);
-   }
-
-   private void a(cpe $$0, ead $$1, cqg $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dhn $$7 = $$1.a($$2).a(hz.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
+      $$0.a(this.d, ($$0x, $$1) -> $$0x.a($$1, ($$0xx, $$1x) -> {
+            $$0xx.a($$1x.c());
+            $$0xx.k($$1x.d());
+            $$0xx.k($$1x.e());
+            $$0xx.k($$1x.f() & 15);
+            $$0xx.a($$1x.g(), so::a);
+         }));
+      if (this.e != null) {
+         $$0.k(this.e.c);
+         $$0.k(this.e.d);
+         $$0.k(this.e.a);
+         $$0.k(this.e.b);
+         $$0.a(this.e.e);
+      } else {
+         $$0.k(0);
       }
    }
 
-   public BitSet a() {
+   public void a(ww $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public BitSet b() {
-      return this.c;
+   public void a(ebw $$0) {
+      if (this.d != null) {
+         $$0.a(this.d);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0);
+      }
    }
 
-   public List<byte[]> c() {
-      return this.e;
-   }
-
-   public BitSet d() {
+   public byte d() {
       return this.b;
    }
 
-   public BitSet e() {
-      return this.d;
-   }
-
-   public List<byte[]> f() {
-      return this.f;
+   public boolean e() {
+      return this.c;
    }
 }

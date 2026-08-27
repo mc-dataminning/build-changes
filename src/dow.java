@@ -1,28 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dow extends dny<dqp> {
+public class dow extends dnw<dqp> {
    public dow(Codec<dqp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doa<dqp> $$0) {
+   public boolean a(dny<dqp> $$0) {
       dqp $$1 = $$0.f();
-      ase $$2 = $$0.d();
-      gw $$3 = $$0.e();
-      cqr $$4 = $$0.b();
-      int $$5 = 0;
-      gw.a $$6 = new gw.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+      cqp $$2 = $$0.b();
+      asc $$3 = $$0.d();
+      csv $$4 = $$1.b.b();
+      gw $$5 = a($$2, $$0.e().j().a(ha.a.b, $$2.H_() + 1, $$2.aj() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+         for (gw $$11 : gw.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dfj $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
          }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static gw a(cpw $$0, gw.a $$1, csv $$2) {
+      while ($$1.v() > $$0.H_() + 1) {
+         dfj $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ha.a);
       }
 
-      return $$5 > 0;
+      return null;
    }
 }

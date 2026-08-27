@@ -12,12 +12,12 @@ import java.util.Map;
 public class gj {
    private static final Map<Class<?>, gi<?, ?>> a = Maps.newHashMap();
 
-   private static <A extends ArgumentType<?>, T extends gi.a<A>> gi<A, T> a(ht<gi<?, ?>> $$0, String $$1, Class<? extends A> $$2, gi<A, T> $$3) {
+   private static <A extends ArgumentType<?>, T extends gi.a<A>> gi<A, T> a(hq<gi<?, ?>> $$0, String $$1, Class<? extends A> $$2, gi<A, T> $$3) {
       a.put($$2, $$3);
-      return ht.a($$0, $$1, $$3);
+      return hq.a($$0, $$1, $$3);
    }
 
-   public static gi<?, ?> a(ht<gi<?, ?>> $$0) {
+   public static gi<?, ?> a(hq<gi<?, ?>> $$0) {
       a($$0, "brigadier:bool", BoolArgumentType.class, gl.a(BoolArgumentType::bool));
       a($$0, "brigadier:float", FloatArgumentType.class, new go());
       a($$0, "brigadier:double", DoubleArgumentType.class, new gn());
@@ -67,8 +67,8 @@ public class gj {
       a($$0, "template_rotation", fc.class, gl.a(fc::a));
       a($$0, "heightmap", eh.class, gl.a(eh::a));
       if (aa.aT) {
-         a($$0, "test_argument", qq.class, gl.a(qq::a));
-         a($$0, "test_class", qn.class, gl.a(qn::a));
+         a($$0, "test_argument", qo.class, gl.a(qo::a));
+         a($$0, "test_class", ql.class, gl.a(ql::a));
       }
 
       return a($$0, "uuid", fe.class, gl.a(fe::a));

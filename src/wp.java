@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface wp extends vg {
+   @Override
+   default sn b() {
+      return sn.e;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface wp {
+   void a(wq var1);
+
+   void a(wr var1);
+
+   void a(ws var1);
 }

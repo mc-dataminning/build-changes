@@ -1,21 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dqn implements dqc {
+public record dqn(int b, int c, int d, he<dum> e) implements dqa {
    public static final Codec<dqn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(duo.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), duo.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, dqn::new)
+      $$0 -> $$0.group(
+               arf.j.fieldOf("tries").orElse(128).forGetter(dqn::a),
+               arf.i.fieldOf("xz_spread").orElse(7).forGetter(dqn::b),
+               arf.i.fieldOf("y_spread").orElse(3).forGetter(dqn::c),
+               dum.b.fieldOf("feature").forGetter(dqn::d)
+            )
+            .apply($$0, dqn::new)
    );
-   public final hg<duo> b;
-   public final hg<duo> c;
 
-   public dqn(hg<duo> $$0, hg<duo> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   public Stream<dnl<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public he<dum> d() {
+      return this.e;
    }
 }

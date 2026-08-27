@@ -1,29 +1,3 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-
-public record gdx(geb b, gee c) {
-   public static final Codec<gdx> a = geb.a.dispatchStable(gdx::a, geb::c);
-
-   public gdx(geb b, gee c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
-         }
-      });
-      this.b = b;
-      this.c = c;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
-   }
-
-   public geb a() {
-      return this.b;
-   }
-
-   public gee b() {
-      return this.c;
-   }
+public interface gdx {
+   void log(gdv var1);
 }

@@ -1,56 +1,59 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.concurrent.locks.LockSupport;
 
-public class gdo {
-   private final any a;
-   private final Map<aey, CompletableFuture<ejr>> b = Maps.newHashMap();
+public class gdo extends bfo<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
 
-   public gdo(any $$0) {
-      this.a = $$0;
+   public gdo() {
+      super("Sound executor");
    }
 
-   public CompletableFuture<ejr> a(aey $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               ejr var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  ejp $$2 = new ejp($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new ejr($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, ac.f()));
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
+      return $$0;
    }
 
-   public CompletableFuture<gdk> a(aey $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (gdk)($$1 ? new gdm(ejp::new, $$2) : new ejp($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
-         }
-      }, ac.f());
+   @Override
+   protected Runnable f(Runnable $$0) {
+      return $$0;
+   }
+
+   @Override
+   protected boolean e(Runnable $$0) {
+      return !this.b;
+   }
+
+   @Override
+   protected Thread au() {
+      return this.a;
+   }
+
+   private void c() {
+      while (!this.b) {
+         this.c(() -> this.b);
+      }
+   }
+
+   @Override
+   protected void bq() {
+      LockSupport.park("waiting for tasks");
    }
 
    public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(ejr::b));
-      this.b.clear();
-   }
+      this.b = true;
+      this.a.interrupt();
 
-   public CompletableFuture<?> a(Collection<gcl> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
+      }
+
+      this.bo();
+      this.b = false;
+      this.a = this.b();
    }
 }

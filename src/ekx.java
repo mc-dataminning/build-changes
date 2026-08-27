@@ -2,7 +2,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 // $VF: synthetic class
 @ParametersAreNonnullByDefault
-@ejl
-@ejk
+@ejj
+@eji
 interface ekx {
 }

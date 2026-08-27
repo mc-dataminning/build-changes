@@ -1,14 +1,18 @@
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 
 public interface anp {
-   CompletableFuture<Void> a(anp.a var1, anv var2, bdr var3, bdr var4, Executor var5, Executor var6);
+   CompletableFuture<?> a();
 
-   default String c() {
-      return this.getClass().getSimpleName();
+   float b();
+
+   default boolean c() {
+      return this.a().isDone();
    }
 
-   public interface a {
-      <T> CompletableFuture<T> a(T var1);
+   default void d() {
+      CompletableFuture<?> $$0 = this.a();
+      if ($$0.isCompletedExceptionally()) {
+         $$0.join();
+      }
    }
 }

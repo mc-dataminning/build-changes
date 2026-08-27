@@ -1,212 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.templates.List.ListType;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import java.util.ArrayList;
-import java.util.Comparator;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class azq extends DataFix {
-   private static final Map<String, azq.a> a = ImmutableMap.builder()
-      .put(
-         "mineshaft",
-         azq.a.a(
-            Map.of(List.of("minecraft:badlands", "minecraft:eroded_badlands", "minecraft:wooded_badlands"), "minecraft:mineshaft_mesa"), "minecraft:mineshaft"
-         )
-      )
-      .put("shipwreck", azq.a.a(Map.of(List.of("minecraft:beach", "minecraft:snowy_beach"), "minecraft:shipwreck_beached"), "minecraft:shipwreck"))
-      .put(
-         "ocean_ruin",
-         azq.a.a(
-            Map.of(List.of("minecraft:warm_ocean", "minecraft:lukewarm_ocean", "minecraft:deep_lukewarm_ocean"), "minecraft:ocean_ruin_warm"),
-            "minecraft:ocean_ruin_cold"
-         )
-      )
-      .put(
-         "village",
-         azq.a.a(
-            Map.of(
-               List.of("minecraft:desert"),
-               "minecraft:village_desert",
-               List.of("minecraft:savanna"),
-               "minecraft:village_savanna",
-               List.of("minecraft:snowy_plains"),
-               "minecraft:village_snowy",
-               List.of("minecraft:taiga"),
-               "minecraft:village_taiga"
-            ),
-            "minecraft:village_plains"
-         )
-      )
-      .put(
-         "ruined_portal",
-         azq.a.a(
-            Map.of(
-               List.of("minecraft:desert"),
-               "minecraft:ruined_portal_desert",
-               List.of(
-                  "minecraft:badlands",
-                  "minecraft:eroded_badlands",
-                  "minecraft:wooded_badlands",
-                  "minecraft:windswept_hills",
-                  "minecraft:windswept_forest",
-                  "minecraft:windswept_gravelly_hills",
-                  "minecraft:savanna_plateau",
-                  "minecraft:windswept_savanna",
-                  "minecraft:stony_shore",
-                  "minecraft:meadow",
-                  "minecraft:frozen_peaks",
-                  "minecraft:jagged_peaks",
-                  "minecraft:stony_peaks",
-                  "minecraft:snowy_slopes"
-               ),
-               "minecraft:ruined_portal_mountain",
-               List.of("minecraft:bamboo_jungle", "minecraft:jungle", "minecraft:sparse_jungle"),
-               "minecraft:ruined_portal_jungle",
-               List.of(
-                  "minecraft:deep_frozen_ocean",
-                  "minecraft:deep_cold_ocean",
-                  "minecraft:deep_ocean",
-                  "minecraft:deep_lukewarm_ocean",
-                  "minecraft:frozen_ocean",
-                  "minecraft:ocean",
-                  "minecraft:cold_ocean",
-                  "minecraft:lukewarm_ocean",
-                  "minecraft:warm_ocean"
-               ),
-               "minecraft:ruined_portal_ocean"
-            ),
-            "minecraft:ruined_portal"
-         )
-      )
-      .put("pillager_outpost", azq.a.a("minecraft:pillager_outpost"))
-      .put("mansion", azq.a.a("minecraft:mansion"))
-      .put("jungle_pyramid", azq.a.a("minecraft:jungle_pyramid"))
-      .put("desert_pyramid", azq.a.a("minecraft:desert_pyramid"))
-      .put("igloo", azq.a.a("minecraft:igloo"))
-      .put("swamp_hut", azq.a.a("minecraft:swamp_hut"))
-      .put("stronghold", azq.a.a("minecraft:stronghold"))
-      .put("monument", azq.a.a("minecraft:monument"))
-      .put("fortress", azq.a.a("minecraft:fortress"))
-      .put("endcity", azq.a.a("minecraft:end_city"))
-      .put("buried_treasure", azq.a.a("minecraft:buried_treasure"))
-      .put("nether_fossil", azq.a.a("minecraft:nether_fossil"))
-      .put("bastion_remnant", azq.a.a("minecraft:bastion_remnant"))
-      .build();
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 4096;
+   private static final short c = 12;
 
-   public azq(Schema $$0) {
-      super($$0, false);
+   public azq(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayz.c);
-      Type<?> $$1 = this.getInputSchema().getType(ayz.c);
-      return this.writeFixAndRead("StucturesToConfiguredStructures", $$0, $$1, this::a);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("structures", $$1 -> $$1.update("starts", $$1x -> this.a($$1x, $$0)).update("References", $$1x -> this.b($$1x, $$0)));
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1) {
-      Map<? extends Dynamic<?>, ? extends Dynamic<?>> $$2 = (Map<? extends Dynamic<?>, ? extends Dynamic<?>>)$$0.getMapValues().result().get();
-      List<Dynamic<?>> $$3 = new ArrayList<>();
-      $$2.forEach(($$1x, $$2x) -> {
-         if ($$2x.get("id").asString("INVALID").equals("INVALID")) {
-            $$3.add($$1x);
-         }
-      });
-
-      for (Dynamic<?> $$4 : $$3) {
-         $$0 = $$0.remove($$4.asString(""));
-      }
-
-      return $$0.updateMapValues($$1x -> this.a($$1x, $$1));
-   }
-
-   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0, Dynamic<?> $$1) {
-      Dynamic<?> $$2 = this.c($$0, $$1);
-      return new Pair($$2, ((Dynamic)$$0.getSecond()).set("id", $$2));
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0, Dynamic<?> $$1) {
-      Map<? extends Dynamic<?>, ? extends Dynamic<?>> $$2 = (Map<? extends Dynamic<?>, ? extends Dynamic<?>>)$$0.getMapValues().result().get();
-      List<Dynamic<?>> $$3 = new ArrayList<>();
-      $$2.forEach(($$1x, $$2x) -> {
-         if ($$2x.asLongStream().count() == 0L) {
-            $$3.add($$1x);
-         }
-      });
-
-      for (Dynamic<?> $$4 : $$3) {
-         $$0 = $$0.remove($$4.asString(""));
-      }
-
-      return $$0.updateMapValues($$1x -> this.b($$1x, $$1));
-   }
-
-   private Pair<Dynamic<?>, Dynamic<?>> b(Pair<Dynamic<?>, Dynamic<?>> $$0, Dynamic<?> $$1) {
-      return $$0.mapFirst($$2 -> this.c($$0, $$1));
-   }
-
-   private Dynamic<?> c(Pair<Dynamic<?>, Dynamic<?>> $$0, Dynamic<?> $$1) {
-      String $$2 = ((Dynamic)$$0.getFirst()).asString("UNKNOWN").toLowerCase(Locale.ROOT);
-      azq.a $$3 = a.get($$2);
-      if ($$3 == null) {
-         throw new IllegalStateException("Found unknown structure: " + $$2);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(ayx.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
+         throw new IllegalStateException("Tile entity type is not a list type.");
       } else {
-         Dynamic<?> $$4 = (Dynamic<?>)$$0.getSecond();
-         String $$5 = $$3.b;
-         if (!$$3.a().isEmpty()) {
-            Optional<String> $$6 = this.a($$1, $$3);
-            if ($$6.isPresent()) {
-               $$5 = $$6.get();
-            }
-         }
+         OpticFinder<? extends List<?>> $$4 = DSL.fieldFinder("TileEntities", $$3);
+         Type<?> $$5 = this.getInputSchema().getType(ayx.c);
+         OpticFinder<?> $$6 = $$5.findField("Level");
+         OpticFinder<?> $$7 = $$6.type().findField("Sections");
+         Type<?> $$8 = $$7.type();
+         if (!($$8 instanceof ListType)) {
+            throw new IllegalStateException("Expecting sections to be a list.");
+         } else {
+            Type<?> $$9 = ((ListType)$$8).getElement();
+            OpticFinder<?> $$10 = DSL.typeFinder($$9);
+            return TypeRewriteRule.seq(
+               new ath(this.getOutputSchema(), "AddTrappedChestFix", ayx.s).makeRule(),
+               this.fixTypeEverywhereTyped("Trapped Chest fix", $$5, $$4x -> $$4x.updateTyped($$6, $$3xx -> {
+                     Optional<? extends Typed<?>> $$4xx = $$3xx.getOptionalTyped($$7);
+                     if ($$4xx.isEmpty()) {
+                        return $$3xx;
+                     } else {
+                        List<? extends Typed<?>> $$5x = $$4xx.get().getAllTyped($$10);
+                        IntSet $$6x = new IntOpenHashSet();
 
-         return $$4.createString($$5);
+                        for (Typed<?> $$7x : $$5x) {
+                           azq.a $$8x = new azq.a($$7x, this.getInputSchema());
+                           if (!$$8x.b()) {
+                              for (int $$9x = 0; $$9x < 4096; $$9x++) {
+                                 int $$10x = $$8x.c($$9x);
+                                 if ($$8x.a($$10x)) {
+                                    $$6x.add($$8x.c() << 12 | $$9x);
+                                 }
+                              }
+                           }
+                        }
+
+                        Dynamic<?> $$11 = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
+                        int $$12 = $$11.get("xPos").asInt(0);
+                        int $$13 = $$11.get("zPos").asInt(0);
+                        TaggedChoiceType<String> $$14 = this.getInputSchema().findChoiceType(ayx.s);
+                        return $$3xx.updateTyped($$4, $$4xxx -> $$4xxx.updateTyped($$14.finder(), $$4xxxx -> {
+                              Dynamic<?> $$5xx = (Dynamic<?>)$$4xxxx.getOrCreate(DSL.remainderFinder());
+                              int $$6xx = $$5xx.get("x").asInt(0) - ($$12 << 4);
+                              int $$7xx = $$5xx.get("y").asInt(0);
+                              int $$8xx = $$5xx.get("z").asInt(0) - ($$13 << 4);
+                              return $$6x.contains(axp.a($$6xx, $$7xx, $$8xx)) ? $$4xxxx.update($$14.finder(), $$0xxxxx -> $$0xxxxx.mapFirst($$0xxxxxx -> {
+                                    if (!Objects.equals($$0xxxxxx, "minecraft:chest")) {
+                                       a.warn("Block Entity was expected to be a chest");
+                                    }
+
+                                    return "minecraft:trapped_chest";
+                                 })) : $$4xxxx;
+                           }));
+                     }
+                  }))
+            );
+         }
       }
    }
 
-   private Optional<String> a(Dynamic<?> $$0, azq.a $$1) {
-      Object2IntArrayMap<String> $$2 = new Object2IntArrayMap();
-      $$0.get("sections").asList(Function.identity()).forEach($$2x -> $$2x.get("biomes").get("palette").asList(Function.identity()).forEach($$2xx -> {
-            String $$3 = $$1.a().get($$2xx.asString(""));
-            if ($$3 != null) {
-               $$2.mergeInt($$3, 1, Integer::sum);
+   public static final class a extends axp.b {
+      @Nullable
+      private IntSet h;
+
+      public a(Typed<?> $$0, Schema $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      protected boolean a() {
+         this.h = new IntOpenHashSet();
+
+         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
+            Dynamic<?> $$1 = this.e.get($$0);
+            String $$2 = $$1.get("Name").asString("");
+            if (Objects.equals($$2, "minecraft:trapped_chest")) {
+               this.h.add($$0);
             }
-         }));
-      return $$2.object2IntEntrySet().stream().max(Comparator.comparingInt(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry::getIntValue)).map(Entry::getKey);
-   }
-
-   static record a(Map<String, String> a, String b) {
-
-      public static azq.a a(String $$0) {
-         return new azq.a(Map.of(), $$0);
-      }
-
-      public static azq.a a(Map<List<String>, String> $$0, String $$1) {
-         return new azq.a(a($$0), $$1);
-      }
-
-      private static Map<String, String> a(Map<List<String>, String> $$0) {
-         Builder<String, String> $$1 = ImmutableMap.builder();
-
-         for (Entry<List<String>, String> $$2 : $$0.entrySet()) {
-            $$2.getKey().forEach($$2x -> $$1.put($$2x, $$2.getValue()));
          }
 
-         return $$1.build();
+         return this.h.isEmpty();
+      }
+
+      public boolean a(int $$0) {
+         return this.h.contains($$0);
       }
    }
 }

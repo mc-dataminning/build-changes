@@ -1,16 +1,41 @@
-public class efd {
-   public static final efa<bis> a = a("this_entity");
-   public static final efa<cbw> b = a("last_damage_player");
-   public static final efa<bhq> c = a("damage_source");
-   public static final efa<bis> d = a("killer_entity");
-   public static final efa<bis> e = a("direct_killer_entity");
-   public static final efa<ehp> f = a("origin");
-   public static final efa<dfl> g = a("block_state");
-   public static final efa<dcx> h = a("block_entity");
-   public static final efa<cjh> i = a("tool");
-   public static final efa<Float> j = a("explosion_radius");
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   private static <T> efa<T> a(String $$0) {
-      return new efa<>(new aey($$0));
+public class efd extends efg {
+   public static final Codec<efd> a = a(efd::new);
+   public static final Codec<efd> b = b(efd::new);
+
+   efd(List<efp> $$0) {
+      super($$0, efr.a($$0));
+   }
+
+   public static efd a(List<efp> $$0) {
+      return new efd(List.copyOf($$0));
+   }
+
+   @Override
+   public efq b() {
+      return efr.d;
+   }
+
+   public static efd.a a(efp.a... $$0) {
+      return new efd.a($$0);
+   }
+
+   public static class a extends efg.a {
+      public a(efp.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public efd.a and(efp.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected efp a(List<efp> $$0) {
+         return new efd($$0);
+      }
    }
 }

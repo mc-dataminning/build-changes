@@ -1,40 +1,40 @@
-public class aal implements vf<wy> {
-   private final long a;
-   private final long b;
+public class aal implements vd<ww> {
+   private final int a;
+   private final int b;
+   private final int c;
 
-   public aal(long $$0, long $$1, boolean $$2) {
+   public aal(int $$0, int $$1, int $$2) {
       this.a = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.b = $$3;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public aal(sq $$0) {
-      this.a = $$0.readLong();
-      this.b = $$0.readLong();
+   public aal(so $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
+   public void a(so $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public long a() {
+   public int a() {
       return this.a;
    }
 
-   public long d() {
+   public int d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

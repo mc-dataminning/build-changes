@@ -12,15 +12,15 @@ public class p {
       this.a = $$0;
    }
 
-   public static String a(cpz $$0, double $$1, double $$2, double $$3) {
+   public static String a(cpx $$0, double $$1, double $$2, double $$3) {
       return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, gw.a($$1, $$2, $$3)));
    }
 
-   public static String a(cpz $$0, gw $$1) {
+   public static String a(cpx $$0, gw $$1) {
       return a($$0, $$1.u(), $$1.v(), $$1.w());
    }
 
-   public static String a(cpz $$0, int $$1, int $$2, int $$3) {
+   public static String a(cpx $$0, int $$1, int $$2, int $$3) {
       StringBuilder $$4 = new StringBuilder();
 
       try {
@@ -32,18 +32,18 @@ public class p {
       $$4.append(", ");
 
       try {
-         int $$6 = hz.a($$1);
-         int $$7 = hz.a($$2);
-         int $$8 = hz.a($$3);
+         int $$6 = hw.a($$1);
+         int $$7 = hw.a($$2);
+         int $$8 = hw.a($$3);
          int $$9 = $$1 & 15;
          int $$10 = $$2 & 15;
          int $$11 = $$3 & 15;
-         int $$12 = hz.c($$6);
+         int $$12 = hw.c($$6);
          int $$13 = $$0.H_();
-         int $$14 = hz.c($$8);
-         int $$15 = hz.c($$6 + 1) - 1;
+         int $$14 = hw.c($$8);
+         int $$15 = hw.c($$6 + 1) - 1;
          int $$16 = $$0.aj() - 1;
-         int $$17 = hz.c($$8 + 1) - 1;
+         int $$17 = hw.c($$8 + 1) - 1;
          $$4.append(
             String.format(
                Locale.ROOT,
@@ -190,7 +190,7 @@ public class p {
       return this.c;
    }
 
-   public static void a(p $$0, cpz $$1, gw $$2, @Nullable dfl $$3) {
+   public static void a(p $$0, cpx $$1, gw $$2, @Nullable dfj $$3) {
       if ($$3 != null) {
          $$0.a("Block", $$3::toString);
       }

@@ -1,42 +1,32 @@
-import java.util.Optional;
+public class zm implements vd<ww> {
+   private final double a;
+   private final double b;
 
-public class zm implements vf<wy> {
-   private final tn a;
-   private final Optional<byte[]> b;
-   private final boolean c;
-
-   public zm(tn $$0, Optional<byte[]> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public zm(dha $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
    }
 
-   public zm(sq $$0) {
-      this.a = $$0.l();
-      this.b = $$0.b(sq::b);
-      this.c = $$0.readBoolean();
+   public zm(so $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(sq $$0) {
+   public void a(so $$0) {
       $$0.a(this.a);
-      $$0.a(this.b, sq::a);
-      $$0.a(this.c);
+      $$0.a(this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public tn a() {
-      return this.a;
-   }
-
-   public Optional<byte[]> d() {
+   public double a() {
       return this.b;
    }
 
-   public boolean e() {
-      return this.c;
+   public double d() {
+      return this.a;
    }
 }

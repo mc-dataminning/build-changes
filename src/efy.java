@@ -1,32 +1,36 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record efy(Optional<cb> b) implements efr {
-   public static final Codec<efy> a = RecordCodecBuilder.create($$0 -> $$0.group(arh.a(cb.a, "predicate").forGetter(efy::c)).apply($$0, efy::new));
+public record efy(egk b, ecp c) implements efp {
+   public static final Codec<efy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(egl.a.fieldOf("value").forGetter(efy::c), ecp.a.fieldOf("range").forGetter(efy::d)).apply($$0, efy::new)
+   );
 
    @Override
-   public efs b() {
-      return eft.k;
+   public efq b() {
+      return efr.s;
    }
 
    @Override
-   public Set<efa<?>> a() {
-      return ImmutableSet.of(efd.i);
+   public Set<eey<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public boolean a(ecs $$0) {
-      cjh $$1 = $$0.c(efd.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   public boolean a(ecq $$0) {
+      return this.c.b($$0, this.b.a($$0));
    }
 
-   public static efr.a a(cb.a $$0) {
-      return () -> new efy(Optional.of($$0.b()));
+   public static efp.a a(egk $$0, ecp $$1) {
+      return () -> new efy($$0, $$1);
    }
 
-   public Optional<cb> c() {
+   public egk c() {
       return this.b;
+   }
+
+   public ecp d() {
+      return this.c;
    }
 }

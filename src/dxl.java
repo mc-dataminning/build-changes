@@ -1,48 +1,60 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class dxl extends dvk {
-   public static final Codec<dxl> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), dtr.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, dxl::new)
-   );
-   public final dtr e;
+public class dxl extends dvi {
+   public static final Codec<dxl> d = a(dxl::new);
 
-   public dxl(dvk.c $$0, dtr $$1) {
+   public dxl(dvi.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<dvk.b> a(dvk.a $$0) {
-      dlt $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dlr $$5 = new dlr($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      cqj $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      gw.a $$8 = new gw.a($$2, $$6, $$3);
+   public Optional<dvi.b> a(dvi.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
 
-      while ($$6 > $$4) {
-         dfl $$9 = $$7.a($$6);
-         dfl $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(csy.dX) || $$10.d(cpm.a, $$8.q($$6), hc.b))) {
-            break;
+      for (he<cqt> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(apr.W)) {
+            return Optional.empty();
          }
       }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
+      return a($$0, dks.a.c, $$1x -> a($$1x, $$0));
+   }
+
+   private static dvm a(cpc $$0, dlr $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      ha $$4 = ha.c.a.a($$1);
+      return new dxk.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(dwa $$0, dvi.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static dvx a(cpc $$0, long $$1, dvx $$2) {
+      if ($$2.a()) {
+         return $$2;
       } else {
-         gw $$11 = new gw($$2, $$6, $$3);
-         return Optional.of(new dvk.b($$11, (Consumer<dwc>)($$3x -> dxk.a($$0.e(), $$3x, $$1, $$11))));
+         dlr $$3 = new dlr(new dkt(dlh.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         dvm $$4 = $$2.c().get(0);
+         dva $$5 = $$4.f();
+         int $$6 = $$5.g();
+         int $$7 = $$5.i();
+         ha $$8 = ha.c.a.a($$3);
+         ha $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         dvm $$10 = new dxk.h($$3, $$6, $$7, $$9);
+         dwa $$11 = new dwa();
+         $$11.a($$10);
+         return $$11.a();
       }
    }
 
    @Override
-   public dvt<?> e() {
-      return dvt.i;
+   public dvr<?> e() {
+      return dvr.j;
    }
 }

@@ -7,7 +7,7 @@ public class ba extends cw<ba.a> {
       return new ba.a($$1, $$3);
    }
 
-   public void a(akt $$0, int $$1) {
+   public void a(akr $$0, int $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 

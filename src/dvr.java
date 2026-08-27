@@ -1,33 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dvr(dvr.a b, bfo<crh.c> c) {
-   public static final Codec<dvr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dvr.a.c.fieldOf("bounding_box").forGetter(dvr::a), bfo.c(crh.c.a).fieldOf("spawns").forGetter(dvr::b)).apply($$0, dvr::new)
-   );
+public interface dvr<S extends dvi> {
+   dvr<dwu> a = a("buried_treasure", dwu.d);
+   dvr<dww> b = a("desert_pyramid", dww.d);
+   dvr<dwy> c = a("end_city", dwy.d);
+   dvr<dxh> d = a("fortress", dxh.e);
+   dvr<dxa> e = a("igloo", dxa.d);
+   dvr<dxb> f = a("jigsaw", dxb.e);
+   dvr<dxd> g = a("jungle_temple", dxd.d);
+   dvr<dxf> h = a("mineshaft", dxf.d);
+   dvr<dxj> i = a("nether_fossil", dxj.d);
+   dvr<dxl> j = a("ocean_monument", dxl.d);
+   dvr<dxn> k = a("ocean_ruin", dxn.d);
+   dvr<dxp> l = a("ruined_portal", dxp.d);
+   dvr<dxr> m = a("shipwreck", dxr.d);
+   dvr<dxt> n = a("stronghold", dxt.d);
+   dvr<dxv> o = a("swamp_hut", dxv.d);
+   dvr<dxx> p = a("woodland_mansion", dxx.d);
 
-   public dvr.a a() {
-      return this.b;
-   }
+   Codec<S> codec();
 
-   public bfo<crh.c> b() {
-      return this.c;
-   }
-
-   public static enum a implements asr {
-      a("piece"),
-      b("full");
-
-      public static final Codec<dvr.a> c = asr.a(dvr.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   private static <S extends dvi> dvr<S> a(String $$0, Codec<S> $$1) {
+      return hq.a(jb.U, $$0, () -> $$1);
    }
 }

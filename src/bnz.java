@@ -1,11 +1,33 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bnz {
-   public static bla<bji> a() {
-      return bol.a((Function<bol.b<bji>, ? extends App<bol.c<bji>, boo<bji>>>)($$0 -> $$0.a((boo<bji>)(($$0x, $$1, $$2) -> {
-            $$1.dN().a($$0x.W(), $$0x.V());
-            return true;
-         }))));
+   private static final int a = 16;
+
+   public static bky<bjg> a(Predicate<he<bui>> $$0, bsh<hd> $$1) {
+      return boj.a((Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               hd $$6 = $$2.b($$2x);
+               gw $$7 = $$6.b();
+               if ($$3.ac() == $$6.a() && $$7.a($$4.dj(), 16.0)) {
+                  akq $$8 = $$3.n().a($$6.a());
+                  if ($$8 == null || !$$8.w().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     $$3.w().b($$7);
+                     abb.c($$3, $$7);
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
+   }
+
+   private static boolean a(akq $$0, gw $$1, bjg $$2) {
+      dfj $$3 = $$0.a_($$1);
+      return $$3.a(aps.R) && $$3.c(cso.b) && !$$2.fC();
    }
 }

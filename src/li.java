@@ -1,32 +1,162 @@
-import java.util.function.UnaryOperator;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class li {
-   @Deprecated
-   public static aey a(String $$0) {
-      return new aey("minecraft", "block/" + $$0);
+   public static final lh a = a("cube", lk.c, lk.j, lk.k, lk.l, lk.m, lk.n, lk.o);
+   public static final lh b = a("cube_directional", lk.c, lk.j, lk.k, lk.l, lk.m, lk.n, lk.o);
+   public static final lh c = a("cube_all", lk.a);
+   public static final lh d = a("cube_mirrored_all", "_mirrored", lk.a);
+   public static final lh e = a("cube_north_west_mirrored_all", "_north_west_mirrored", lk.a);
+   public static final lh f = a("cube_column_uv_locked_x", "_x", lk.d, lk.i);
+   public static final lh g = a("cube_column_uv_locked_y", "_y", lk.d, lk.i);
+   public static final lh h = a("cube_column_uv_locked_z", "_z", lk.d, lk.i);
+   public static final lh i = a("cube_column", lk.d, lk.i);
+   public static final lh j = a("cube_column_horizontal", "_horizontal", lk.d, lk.i);
+   public static final lh k = a("cube_column_mirrored", "_mirrored", lk.d, lk.i);
+   public static final lh l = a("cube_top", lk.f, lk.i);
+   public static final lh m = a("cube_bottom_top", lk.f, lk.e, lk.i);
+   public static final lh n = a("orientable", lk.f, lk.g, lk.i);
+   public static final lh o = a("orientable_with_bottom", lk.f, lk.e, lk.i, lk.g);
+   public static final lh p = a("orientable_vertical", "_vertical", lk.g, lk.i);
+   public static final lh q = a("button", lk.b);
+   public static final lh r = a("button_pressed", "_pressed", lk.b);
+   public static final lh s = a("button_inventory", "_inventory", lk.b);
+   public static final lh t = a("door_bottom_left", "_bottom_left", lk.f, lk.e);
+   public static final lh u = a("door_bottom_left_open", "_bottom_left_open", lk.f, lk.e);
+   public static final lh v = a("door_bottom_right", "_bottom_right", lk.f, lk.e);
+   public static final lh w = a("door_bottom_right_open", "_bottom_right_open", lk.f, lk.e);
+   public static final lh x = a("door_top_left", "_top_left", lk.f, lk.e);
+   public static final lh y = a("door_top_left_open", "_top_left_open", lk.f, lk.e);
+   public static final lh z = a("door_top_right", "_top_right", lk.f, lk.e);
+   public static final lh A = a("door_top_right_open", "_top_right_open", lk.f, lk.e);
+   public static final lh B = a("custom_fence_post", "_post", lk.b, lk.c);
+   public static final lh C = a("custom_fence_side_north", "_side_north", lk.b);
+   public static final lh D = a("custom_fence_side_east", "_side_east", lk.b);
+   public static final lh E = a("custom_fence_side_south", "_side_south", lk.b);
+   public static final lh F = a("custom_fence_side_west", "_side_west", lk.b);
+   public static final lh G = a("custom_fence_inventory", "_inventory", lk.b);
+   public static final lh H = a("fence_post", "_post", lk.b);
+   public static final lh I = a("fence_side", "_side", lk.b);
+   public static final lh J = a("fence_inventory", "_inventory", lk.b);
+   public static final lh K = a("template_wall_post", "_post", lk.r);
+   public static final lh L = a("template_wall_side", "_side", lk.r);
+   public static final lh M = a("template_wall_side_tall", "_side_tall", lk.r);
+   public static final lh N = a("wall_inventory", "_inventory", lk.r);
+   public static final lh O = a("template_custom_fence_gate", lk.b, lk.c);
+   public static final lh P = a("template_custom_fence_gate_open", "_open", lk.b, lk.c);
+   public static final lh Q = a("template_custom_fence_gate_wall", "_wall", lk.b, lk.c);
+   public static final lh R = a("template_custom_fence_gate_wall_open", "_wall_open", lk.b, lk.c);
+   public static final lh S = a("template_fence_gate", lk.b);
+   public static final lh T = a("template_fence_gate_open", "_open", lk.b);
+   public static final lh U = a("template_fence_gate_wall", "_wall", lk.b);
+   public static final lh V = a("template_fence_gate_wall_open", "_wall_open", lk.b);
+   public static final lh W = a("pressure_plate_up", lk.b);
+   public static final lh X = a("pressure_plate_down", "_down", lk.b);
+   public static final lh Y = a(lk.c);
+   public static final lh Z = a("slab", lk.e, lk.f, lk.i);
+   public static final lh aa = a("slab_top", "_top", lk.e, lk.f, lk.i);
+   public static final lh ab = a("leaves", lk.a);
+   public static final lh ac = a("stairs", lk.e, lk.f, lk.i);
+   public static final lh ad = a("inner_stairs", "_inner", lk.e, lk.f, lk.i);
+   public static final lh ae = a("outer_stairs", "_outer", lk.e, lk.f, lk.i);
+   public static final lh af = a("template_trapdoor_top", "_top", lk.b);
+   public static final lh ag = a("template_trapdoor_bottom", "_bottom", lk.b);
+   public static final lh ah = a("template_trapdoor_open", "_open", lk.b);
+   public static final lh ai = a("template_orientable_trapdoor_top", "_top", lk.b);
+   public static final lh aj = a("template_orientable_trapdoor_bottom", "_bottom", lk.b);
+   public static final lh ak = a("template_orientable_trapdoor_open", "_open", lk.b);
+   public static final lh al = a("pointed_dripstone", lk.p);
+   public static final lh am = a("cross", lk.p);
+   public static final lh an = a("tinted_cross", lk.p);
+   public static final lh ao = a("flower_pot_cross", lk.q);
+   public static final lh ap = a("tinted_flower_pot_cross", lk.q);
+   public static final lh aq = a("rail_flat", lk.s);
+   public static final lh ar = a("rail_curved", "_corner", lk.s);
+   public static final lh as = a("template_rail_raised_ne", "_raised_ne", lk.s);
+   public static final lh at = a("template_rail_raised_sw", "_raised_sw", lk.s);
+   public static final lh au = a("carpet", lk.t);
+   public static final lh av = a("flowerbed_1", "_1", lk.P, lk.y);
+   public static final lh aw = a("flowerbed_2", "_2", lk.P, lk.y);
+   public static final lh ax = a("flowerbed_3", "_3", lk.P, lk.y);
+   public static final lh ay = a("flowerbed_4", "_4", lk.P, lk.y);
+   public static final lh az = a("coral_fan", lk.x);
+   public static final lh aA = a("coral_wall_fan", lk.x);
+   public static final lh aB = a("template_glazed_terracotta", lk.u);
+   public static final lh aC = a("template_chorus_flower", lk.b);
+   public static final lh aD = a("template_daylight_detector", lk.f, lk.i);
+   public static final lh aE = a("template_glass_pane_noside", "_noside", lk.v);
+   public static final lh aF = a("template_glass_pane_noside_alt", "_noside_alt", lk.v);
+   public static final lh aG = a("template_glass_pane_post", "_post", lk.v, lk.w);
+   public static final lh aH = a("template_glass_pane_side", "_side", lk.v, lk.w);
+   public static final lh aI = a("template_glass_pane_side_alt", "_side_alt", lk.v, lk.w);
+   public static final lh aJ = a("template_command_block", lk.g, lk.h, lk.i);
+   public static final lh aK = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", lk.b);
+   public static final lh aL = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", lk.b);
+   public static final lh aM = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", lk.b);
+   public static final lh aN = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", lk.b);
+   public static final lh aO = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", lk.b);
+   public static final lh aP = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", lk.b);
+   public static final lh aQ = a("template_anvil", lk.f);
+   public static final lh[] aR = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, lk.y)).toArray(lh[]::new);
+   public static final lh aS = a("stem_fruit", lk.y, lk.z);
+   public static final lh aT = a("crop", lk.A);
+   public static final lh aU = a("template_farmland", lk.B, lk.f);
+   public static final lh aV = a("template_fire_floor", lk.C);
+   public static final lh aW = a("template_fire_side", lk.C);
+   public static final lh aX = a("template_fire_side_alt", lk.C);
+   public static final lh aY = a("template_fire_up", lk.C);
+   public static final lh aZ = a("template_fire_up_alt", lk.C);
+   public static final lh ba = a("template_campfire", lk.C, lk.K);
+   public static final lh bb = a("template_lantern", lk.D);
+   public static final lh bc = a("template_hanging_lantern", "_hanging", lk.D);
+   public static final lh bd = a("template_torch", lk.G);
+   public static final lh be = a("template_torch_wall", lk.G);
+   public static final lh bf = a("template_piston", lk.E, lk.e, lk.i);
+   public static final lh bg = a("template_piston_head", lk.E, lk.i, lk.F);
+   public static final lh bh = a("template_piston_head_short", lk.E, lk.i, lk.F);
+   public static final lh bi = a("template_seagrass", lk.b);
+   public static final lh bj = a("template_turtle_egg", lk.a);
+   public static final lh bk = a("template_two_turtle_eggs", lk.a);
+   public static final lh bl = a("template_three_turtle_eggs", lk.a);
+   public static final lh bm = a("template_four_turtle_eggs", lk.a);
+   public static final lh bn = a("template_single_face", lk.b);
+   public static final lh bo = a("template_cauldron_level1", lk.N, lk.M, lk.c, lk.f, lk.e, lk.i);
+   public static final lh bp = a("template_cauldron_level2", lk.N, lk.M, lk.c, lk.f, lk.e, lk.i);
+   public static final lh bq = a("template_cauldron_full", lk.N, lk.M, lk.c, lk.f, lk.e, lk.i);
+   public static final lh br = a("template_azalea", lk.f, lk.i);
+   public static final lh bs = a("template_potted_azalea_bush", lk.q, lk.f, lk.i);
+   public static final lh bt = a("template_potted_azalea_bush", lk.q, lk.f, lk.i);
+   public static final lh bu = a("sniffer_egg", lk.f, lk.e, lk.j, lk.k, lk.l, lk.m);
+   public static final lh bv = b("generated", lk.H);
+   public static final lh bw = b("template_music_disc", lk.H);
+   public static final lh bx = b("handheld", lk.H);
+   public static final lh by = b("handheld_rod", lk.H);
+   public static final lh bz = b("generated", lk.H, lk.I);
+   public static final lh bA = b("generated", lk.H, lk.I, lk.J);
+   public static final lh bB = b("template_shulker_box", lk.c);
+   public static final lh bC = b("template_bed", lk.c);
+   public static final lh bD = b("template_banner");
+   public static final lh bE = b("template_skull");
+   public static final lh bF = a("template_candle", lk.a, lk.c);
+   public static final lh bG = a("template_two_candles", lk.a, lk.c);
+   public static final lh bH = a("template_three_candles", lk.a, lk.c);
+   public static final lh bI = a("template_four_candles", lk.a, lk.c);
+   public static final lh bJ = a("template_cake_with_candle", lk.L, lk.e, lk.i, lk.f, lk.c);
+   public static final lh bK = a("template_sculk_shrieker", lk.e, lk.i, lk.f, lk.c, lk.O);
+
+   private static lh a(lk... $$0) {
+      return new lh(Optional.empty(), Optional.empty(), $$0);
    }
 
-   public static aey b(String $$0) {
-      return new aey("minecraft", "item/" + $$0);
+   private static lh a(String $$0, lk... $$1) {
+      return new lh(Optional.of(new aew("minecraft", "block/" + $$0)), Optional.empty(), $$1);
    }
 
-   public static aey a(csx $$0, String $$1) {
-      aey $$2 = jd.f.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   private static lh b(String $$0, lk... $$1) {
+      return new lh(Optional.of(new aew("minecraft", "item/" + $$0)), Optional.empty(), $$1);
    }
 
-   public static aey a(csx $$0) {
-      aey $$1 = jd.f.b($$0);
-      return $$1.d("block/");
-   }
-
-   public static aey a(cjc $$0) {
-      aey $$1 = jd.i.b($$0);
-      return $$1.d("item/");
-   }
-
-   public static aey a(cjc $$0, String $$1) {
-      aey $$2 = jd.i.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   private static lh a(String $$0, String $$1, lk... $$2) {
+      return new lh(Optional.of(new aew("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
    }
 }

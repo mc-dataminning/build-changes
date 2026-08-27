@@ -1,50 +1,23 @@
-@FunctionalInterface
-public interface fqh<T extends dcx> {
-   fqg<T> create(fqh.a var1);
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public static class a {
-      private final fqf a;
-      private final fpa b;
-      private final fuh c;
-      private final fth d;
-      private final fia e;
-      private final esf f;
+public class fqh<S extends dcv> implements cuy.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = foc.a($$0.k(), $$0.p());
+         int $$4 = foc.a($$1.k(), $$1.p());
+         int $$5 = fod.a($$3);
+         int $$6 = fod.a($$4);
+         int $$7 = fod.b($$3);
+         int $$8 = fod.b($$4);
+         return fod.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
+   }
 
-      public a(fqf $$0, fpa $$1, fuh $$2, fth $$3, fia $$4, esf $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-      }
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
+   }
 
-      public fqf a() {
-         return this.a;
-      }
-
-      public fpa b() {
-         return this.b;
-      }
-
-      public fth c() {
-         return this.d;
-      }
-
-      public fuh d() {
-         return this.c;
-      }
-
-      public fia e() {
-         return this.e;
-      }
-
-      public fie a(fic $$0) {
-         return this.e.a($$0);
-      }
-
-      public esf f() {
-         return this.f;
-      }
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

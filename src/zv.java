@@ -1,32 +1,32 @@
-public class zv implements vf<wy> {
-   private final int a;
-   private final int b;
+public class zv implements vd<ww> {
+   private final gw a;
+   private final float b;
 
-   public zv(int $$0, int $$1) {
+   public zv(gw $$0, float $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public zv(sq $$0) {
-      this.a = $$0.m();
-      this.b = $$0.m();
+   public zv(so $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readFloat();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public gw a() {
       return this.a;
    }
 
-   public int d() {
+   public float d() {
       return this.b;
    }
 }

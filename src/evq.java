@@ -1,18 +1,17 @@
 import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.io.IOException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface evq {
-   Codec<evq> b = evr.f.dispatch(evq::a, $$0 -> $$0.a().codec());
+public record evq(aew c) implements evo {
+   public static final MapCodec<evq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aew.a.fieldOf("id").forGetter(evq::c)).apply($$0, evq::new));
 
-   evr a();
-
-   Either<evq.a, evq.b> b();
-
-   public interface a {
-      eju load(anv var1) throws IOException;
+   @Override
+   public evp a() {
+      return evp.e;
    }
 
-   public static record b(aey a) {
+   @Override
+   public Either<evo.a, evo.b> b() {
+      return Either.right(new evo.b(this.c));
    }
 }

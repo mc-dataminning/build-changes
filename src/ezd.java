@@ -1,31 +1,79 @@
-public class ezd extends eye {
-   private static final int c = 24;
+import javax.annotation.Nullable;
 
-   public ezd(eym $$0, erb $$1) {
-      super($$0, $$1, tn.c("controls.title"));
+public class ezd extends eyc {
+   @Nullable
+   public eqt c;
+   public long k;
+   private ezc l;
+   private esq m;
+
+   public ezd(eyk $$0, eqz $$1) {
+      super($$0, $$1, tl.c("controls.keybinds.title"));
    }
 
    @Override
    protected void aH_() {
-      super.aH_();
-      int $$0 = this.g / 2 - 155;
-      int $$1 = $$0 + 160;
-      int $$2 = this.h / 6 - 12;
-      this.d(ess.a(tn.c("options.mouse_settings"), $$0x -> this.f.a(new eya(this, this.b))).a($$0, $$2, 150, 20).a());
-      this.d(ess.a(tn.c("controls.keybinds"), $$0x -> this.f.a(new ezf(this, this.b))).a($$1, $$2, 150, 20).a());
-      $$2 += 24;
-      this.d(this.b.Y().a(this.b, $$0, $$2, 150));
-      this.d(this.b.Z().a(this.b, $$1, $$2, 150));
-      $$2 += 24;
-      this.d(this.b.E().a(this.b, $$0, $$2, 150));
-      this.d(this.b.F().a(this.b, $$1, $$2, 150));
-      $$2 += 24;
-      this.d(ess.a(tm.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, $$2, 200, 20).a());
+      this.l = new ezc(this, this.f);
+      this.e(this.l);
+      this.m = this.d(esq.a(tl.c("controls.resetAll"), $$0 -> {
+         for (eqt $$1 : this.b.X) {
+            $$1.b($$1.i());
+         }
+
+         this.l.d();
+      }).a(this.g / 2 - 155, this.h - 29, 150, 20).a());
+      this.d(esq.a(tk.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 155 + 160, this.h - 29, 150, 20).a());
    }
 
    @Override
-   public void a(esh $$0, int $$1, int $$2, float $$3) {
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null) {
+         this.b.a(this.c, ekk.b.c.a($$2));
+         this.c = null;
+         this.l.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.c != null) {
+         if ($$0 == 256) {
+            this.b.a(this.c, ekk.bv);
+         } else {
+            this.b.a(this.c, ekk.a($$0, $$1));
+         }
+
+         this.c = null;
+         this.k = ac.b();
+         this.l.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+      this.l.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      boolean $$4 = false;
+
+      for (eqt $$5 : this.b.X) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.m.i = $$4;
+   }
+
+   @Override
+   public void b(esf $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

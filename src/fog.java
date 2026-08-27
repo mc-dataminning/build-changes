@@ -1,94 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+public class fog {
+   private final eqv a;
+   private final fns b;
+   private float c;
+   private float d;
 
-public interface fog {
-   static fog.a a(elm $$0) {
-      return a(ImmutableMap.of(), $$0);
+   public fog(fns $$0) {
+      this.b = $$0;
+      this.a = eqv.O();
    }
 
-   static fog.a a(Map<foo, elm> $$0, elm $$1) {
-      return new fog.a($$1, $$0);
+   public void a(float $$0, float $$1) {
+      float $$2 = (float)((double)$$0 * this.a.m.p().c());
+      this.c = b(this.c + $$2 * 0.1F, 360.0F);
+      this.d = b(this.d + $$2 * 0.001F, (float) (Math.PI * 2));
+      this.b.a(this.a, 10.0F, -this.c, $$1);
    }
 
-   elv getBuffer(foo var1);
-
-   public static class a implements fog {
-      protected final elm a;
-      protected final Map<foo, elm> b;
-      protected Optional<foo> c = Optional.empty();
-      protected final Set<elm> d = Sets.newHashSet();
-
-      protected a(elm $$0, Map<foo, elm> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public elv getBuffer(foo $$0) {
-         Optional<foo> $$1 = $$0.O();
-         elm $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.N()) {
-            if (this.c.isPresent()) {
-               foo $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
-
-            if (this.d.add($$2)) {
-               $$2.a($$0.J(), $$0.I());
-            }
-
-            this.c = $$1;
-         }
-
-         return $$2;
-      }
-
-      private elm b(foo $$0) {
-         return this.b.getOrDefault($$0, this.a);
-      }
-
-      public void a() {
-         if (this.c.isPresent()) {
-            foo $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
-      }
-
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            elv $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (foo $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(foo $$0) {
-         elm $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.O());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
-      }
+   private static float b(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

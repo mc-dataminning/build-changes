@@ -1,55 +1,45 @@
 import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public class byv extends bzv {
-   public byv(biw<? extends byv> $$0, cpx $$1) {
-      super($$0, $$1);
-   }
+public interface byv extends bzm {
+   void b(boolean var1);
 
-   public static bkn.a s() {
-      return bzv.t().a(bko.a, 12.0);
-   }
-
-   @Override
-   public boolean C(bis $$0) {
-      if (super.C($$0)) {
-         if ($$0 instanceof bji) {
-            int $$1 = 0;
-            if (this.dL().ai() == bgx.c) {
-               $$1 = 7;
-            } else if (this.dL().ai() == bgx.d) {
-               $$1 = 15;
-            }
-
-            if ($$1 > 0) {
-               ((bji)$$0).b(new bif(bih.s, $$1 * 20, 0), this);
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
+   void a(bjg var1, cjf var2, ccm var3, float var4);
 
    @Nullable
-   @Override
-   public bkb a(cqm $$0, bgy $$1, bjm $$2, @Nullable bkb $$3, @Nullable qy $$4) {
-      return $$3;
+   bjg q();
+
+   void a();
+
+   default void b(bjg $$0, float $$1) {
+      bgx $$2 = ccn.a($$0, cji.uZ);
+      cjf $$3 = $$0.b($$2);
+      if ($$0.b(cji.uZ)) {
+         chn.a($$0.dL(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dL().ai().a() * 4));
+      }
+
+      this.a();
    }
 
-   @Override
-   protected float b(bju $$0, bit $$1) {
-      return 0.45F;
+   default void a(bjg $$0, bjg $$1, ccm $$2, float $$3, float $$4) {
+      double $$5 = $$1.dq() - $$0.dq();
+      double $$6 = $$1.dw() - $$0.dw();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = $$1.e(0.3333333333333333) - $$2.ds() + $$7 * 0.2F;
+      Vector3f $$9 = this.a($$0, new ehn($$5, $$8, $$6), $$3);
+      $$2.c((double)$$9.x(), (double)$$9.y(), (double)$$9.z(), $$4, (float)(14 - $$0.dL().ai().a() * 4));
+      $$0.a(apd.fq, 1.0F, 1.0F / ($$0.ef().i() * 0.4F + 0.8F));
    }
 
-   @Override
-   protected Vector3f a(bis $$0, bit $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b, 0.0F);
-   }
+   default Vector3f a(bjg $$0, ehn $$1, float $$2) {
+      Vector3f $$3 = $$1.j().normalize();
+      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
+      if ((double)$$4.lengthSquared() <= 1.0E-7) {
+         ehn $$5 = $$0.i(1.0F);
+         $$4 = new Vector3f($$3).cross($$5.j());
+      }
 
-   @Override
-   protected float l(bis $$0) {
-      return $$0.df() <= this.df() ? -0.21875F : 0.0F;
+      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
+      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
    }
 }

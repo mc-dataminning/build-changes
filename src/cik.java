@@ -1,39 +1,55 @@
-public class cik extends cjc {
-   public cik(cjc.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cik extends cja {
+   public cik(cja.a $$0) {
       super($$0);
    }
 
    @Override
-   public bha a(clr $$0) {
-      cpx $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      dfl $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!ctk.h($$3) && !ctl.g($$3) && !ctm.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (csl.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, csl.a($$1, $$2));
-            $$1.a($$0.o(), djv.i, $$2);
-            $$4 = true;
-         }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(dgb.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), djv.c, $$2);
-         $$4 = true;
-      }
-
-      if ($$4) {
-         $$0.n().h(1);
-         return bha.a($$1.B);
-      } else {
-         return bha.e;
+   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+      qw $$4 = $$0.b("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
       }
    }
 
-   private void a(cpx $$0, gw $$1) {
-      ase $$2 = $$0.D_();
-      $$0.a(null, $$1, apf.hD, apg.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+   public static void a(qw $$0, List<tl> $$1) {
+      cij.a $$2 = cij.a.a($$0.f("Type"));
+      $$1.add(tl.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(tl.h().a(n.h), $$3));
+      }
+
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(tl.c("item.minecraft.firework_star.fade_to").b(tk.u).a(n.h), $$4));
+      }
+
+      if ($$0.q("Trail")) {
+         $$1.add(tl.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if ($$0.q("Flicker")) {
+         $$1.add(tl.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
+   }
+
+   private static tl a(ty $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
+         }
+
+         $$0.b(a($$1[$$2]));
+      }
+
+      return $$0;
+   }
+
+   private static tl a(int $$0) {
+      cht $$1 = cht.b($$0);
+      return $$1 == null ? tl.c("item.minecraft.firework_star.custom_color") : tl.c("item.minecraft.firework_star." + $$1.b());
    }
 }

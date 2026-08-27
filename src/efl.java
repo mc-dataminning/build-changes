@@ -1,33 +1,36 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record efl(Optional<bf> b) implements efr {
-   public static final Codec<efl> a = RecordCodecBuilder.create($$0 -> $$0.group(arh.a(bf.a, "predicate").forGetter(efl::c)).apply($$0, efl::new));
+public class efl implements efp {
+   private static final efl b = new efl();
+   public static final Codec<efl> a = Codec.unit(b);
 
-   @Override
-   public efs b() {
-      return eft.n;
+   private efl() {
    }
 
    @Override
-   public Set<efa<?>> a() {
-      return ImmutableSet.of(efd.f, efd.c);
+   public efq b() {
+      return efr.m;
    }
 
-   public boolean a(ecs $$0) {
-      bhq $$1 = $$0.c(efd.c);
-      ehp $$2 = $$0.c(efd.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   @Override
+   public Set<eey<?>> a() {
+      return ImmutableSet.of(efb.j);
    }
 
-   public static efr.a a(bf.a $$0) {
-      return () -> new efl(Optional.of($$0.b()));
+   public boolean a(ecq $$0) {
+      Float $$1 = $$0.c(efb.j);
+      if ($$1 != null) {
+         asc $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public Optional<bf> c() {
-      return this.b;
+   public static efp.a c() {
+      return () -> b;
    }
 }

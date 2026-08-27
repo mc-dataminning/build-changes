@@ -1,77 +1,77 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bpn extends bpu {
-   private static final int g = 240;
-   private final Predicate<bgx> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
+public class bpn extends bqb {
+   private static final bts d = bts.b().a(8.0).d();
+   protected final bur a;
+   private final Class<? extends bur> e;
+   protected final cpv b;
+   @Nullable
+   protected bur c;
+   private int f;
+   private final double g;
 
-   public bpn(bjk $$0, Predicate<bgx> $$1) {
-      super($$0);
-      this.h = $$1;
+   public bpn(bur $$0, double $$1) {
+      this($$0, $$1, (Class<? extends bur>)$$0.getClass());
    }
 
-   public bpn(bjk $$0, int $$1, Predicate<bgx> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
-   }
-
-   protected int f() {
-      return Math.max(240, this.c);
+   public bpn(bur $$0, double $$1, Class<? extends bur> $$2) {
+      this.a = $$0;
+      this.b = $$0.dL();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(bqb.a.a, bqb.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!super.a()) {
+      if (!this.a.gh()) {
          return false;
       } else {
-         return !this.d.dL().X().b(cpt.c) ? false : this.a(this.d.dL().ai()) && !this.h();
+         this.c = this.h();
+         return this.c != null;
       }
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.a = 0;
    }
 
    @Override
    public boolean b() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dj(), 2.0) && this.a(this.d.dL().ai());
+      return this.c.bv() && this.c.gh() && this.f < 60 && !this.c.ga();
    }
 
    @Override
    public void d() {
-      super.d();
-      this.d.dL().a(this.d.ah(), this.e, -1);
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void e() {
-      super.e();
-      if (this.d.ef().a(20) == 0) {
-         this.d.dL().c(1019, this.e, 0);
-         if (!this.d.aF) {
-            this.d.a(this.d.fn());
-         }
-      }
-
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dL().a(this.d.ah(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dL().ai())) {
-         this.d.dL().a(this.e, false);
-         this.d.dL().c(1021, this.e, 0);
-         this.d.dL().c(2001, this.e, csx.i(this.d.dL().a_(this.e)));
+      this.a.G().a(this.c, 10.0F, (float)this.a.Y());
+      this.a.L().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
+         this.g();
       }
    }
 
-   private boolean a(bgx $$0) {
-      return this.h.test($$0);
+   @Nullable
+   private bur h() {
+      List<? extends bur> $$0 = this.b.a(this.e, d, this.a, this.a.cG().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      bur $$2 = null;
+
+      for (bur $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.ga() && this.a.f($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.f($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((akq)this.b, this.c);
    }
 }

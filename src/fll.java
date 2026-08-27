@@ -1,65 +1,52 @@
-public class fll extends fme {
-   fll(fiz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+public class fll extends fmu {
+   fll(fix $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public fma b() {
-      return fma.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public fly b() {
+      return fly.b;
    }
 
    @Override
    public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+      return this.D * arw.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = ary.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
+   public static class a implements flx<iy> {
+      private final fmp a;
 
-      return $$3 | $$4 << 16;
-   }
-
-   public static class a implements flz<ja> {
-      private final fmr a;
-
-      public a(fmr $$0) {
+      public a(fmp $$0) {
          this.a = $$0;
       }
 
-      public flw a(ja $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fll $$8 = new fll($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fll $$8 = new fll($$1, $$2, $$3 + 0.5, $$4);
          $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
          return $$8;
       }
    }
 
-   public static class b implements flz<ja> {
-      private final fmr a;
+   public static class b implements flx<iy> {
+      private final fmp a;
 
-      public b(fmr $$0) {
+      public b(fmp $$0) {
          this.a = $$0;
       }
 
-      public flw a(ja $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fll $$8 = new fll($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fll $$8 = new fll($$1, $$2, $$3, $$4);
          $$8.a(this.a);
-         $$8.d(0.5F);
          return $$8;
       }
    }

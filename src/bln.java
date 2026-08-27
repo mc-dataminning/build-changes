@@ -1,113 +1,79 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bln<E extends bji> implements bla<E> {
-   private final Map<bsj<?>, bsk> a;
-   private final Set<bsj<?>> b;
-   private final bln.a c;
-   private final bln.b d;
-   private final bnh<bla<? super E>> e = new bnh<>();
-   private bkz.a f = bkz.a.a;
+public class bln<E extends bjg & cbf> extends bkx<E> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private final Function<bjg, Optional<bmk>> e;
+   private final float f;
 
-   public bln(Map<bsj<?>, bsk> $$0, Set<bsj<?>> $$1, bln.a $$2, bln.b $$3, List<Pair<? extends bla<? super E>, Integer>> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      $$4.forEach($$0x -> this.e.a((bla<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
+   public bln(Function<bjg, Optional<bmk>> $$0, float $$1, int $$2) {
+      super(Map.of(bsh.n, bsi.c, bsh.m, bsi.c, bsh.aO, bsi.c), $$2);
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public bkz.a a() {
-      return this.f;
+   protected boolean a(akq $$0, E $$1) {
+      return this.b($$1);
    }
 
-   private boolean a(E $$0) {
-      for (Entry<bsj<?>, bsk> $$1 : this.a.entrySet()) {
-         bsj<?> $$2 = $$1.getKey();
-         bsk $$3 = $$1.getValue();
-         if (!$$0.dN().a($$2, $$3)) {
-            return false;
+   @Override
+   protected boolean a(akq $$0, E $$1, long $$2) {
+      return this.b($$1);
+   }
+
+   @Override
+   protected void d(akq $$0, E $$1, long $$2) {
+      this.e.apply($$1).ifPresent($$1x -> bkz.a($$1, $$1x, this.f, 3));
+   }
+
+   @Override
+   protected void c(akq $$0, E $$1, long $$2) {
+      Optional<bmk> $$3 = this.e.apply($$1);
+      if (!$$3.isEmpty()) {
+         bmk $$4 = $$3.get();
+         double $$5 = $$4.a().f($$1.bp());
+         if ($$5 < 3.0) {
+            cjf $$6 = $$1.y().a(0, 1);
+            if (!$$6.b()) {
+               a($$1, $$6, a($$4));
+               if ($$1 instanceof bvv $$7) {
+                  bvw.a((bjg)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               }
+
+               $$1.dN().a(bsh.aO, 60);
+            }
          }
       }
-
-      return true;
    }
 
-   @Override
-   public final boolean e(aks $$0, E $$1, long $$2) {
-      if (this.a($$1)) {
-         this.f = bkz.a.b;
-         this.c.a(this.e);
-         this.d.a(this.e.b(), $$0, $$1, $$2);
-         return true;
-      } else {
+   private void a(bmk $$0, cjf $$1, akr $$2) {
+      gw $$3 = $$0.b().d();
+      al.X.a($$2, $$3, $$1);
+   }
+
+   private boolean b(E $$0) {
+      if ($$0.y().af_()) {
          return false;
+      } else {
+         Optional<bmk> $$1 = this.e.apply($$0);
+         return $$1.isPresent();
       }
    }
 
-   @Override
-   public final void f(aks $$0, E $$1, long $$2) {
-      this.e.b().filter($$0x -> $$0x.a() == bkz.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
-      if (this.e.b().noneMatch($$0x -> $$0x.a() == bkz.a.b)) {
-         this.g($$0, $$1, $$2);
+   private static ehn a(bmk $$0) {
+      return $$0.a().b(0.0, 1.0, 0.0);
+   }
+
+   public static void a(bjg $$0, cjf $$1, ehn $$2) {
+      ehn $$3 = new ehn(0.2F, 0.3F, 0.2F);
+      bkz.a($$0, $$1, $$2, $$3, 0.2F);
+      cpv $$4 = $$0.dL();
+      if ($$4.V() % 7L == 0L && $$4.z.j() < 0.9) {
+         float $$5 = ac.<Float>a(bvv.d, $$4.D_());
+         $$4.a(null, $$0, apd.g, ape.g, 1.0F, $$5);
       }
-   }
-
-   @Override
-   public final void g(aks $$0, E $$1, long $$2) {
-      this.f = bkz.a.a;
-      this.e.b().filter($$0x -> $$0x.a() == bkz.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
-      this.b.forEach($$1.dN()::b);
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   @Override
-   public String toString() {
-      Set<? extends bla<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bkz.a.b).collect(Collectors.toSet());
-      return "(" + this.getClass().getSimpleName() + "): " + $$0;
-   }
-
-   public static enum a {
-      a($$0 -> {
-      }),
-      b(bnh::a);
-
-      private final Consumer<bnh<?>> c;
-
-      private a(Consumer<bnh<?>> $$0) {
-         this.c = $$0;
-      }
-
-      public void a(bnh<?> $$0) {
-         this.c.accept($$0);
-      }
-   }
-
-   public static enum b {
-      a {
-         @Override
-         public <E extends bji> void a(Stream<bla<? super E>> $$0, aks $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == bkz.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
-         }
-      },
-      b {
-         @Override
-         public <E extends bji> void a(Stream<bla<? super E>> $$0, aks $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == bkz.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
-         }
-      };
-
-      public abstract <E extends bji> void a(Stream<bla<? super E>> var1, aks var2, E var3, long var4);
    }
 }

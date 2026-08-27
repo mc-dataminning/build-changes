@@ -1,102 +1,86 @@
-public class yk implements vf<wy> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final int h;
-   private final boolean i;
-   private final iv j;
+import com.google.common.collect.Lists;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public <T extends iv> yk(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.j = $$0;
-      this.i = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.f = $$7;
-      this.g = $$8;
-      this.h = $$9;
+public class yk {
+   private final BitSet a;
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final List<byte[]> e;
+   private final List<byte[]> f;
+
+   public yk(cpc $$0, eab $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = new BitSet();
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = Lists.newArrayList();
+      this.f = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, cqe.a, $$4, this.a, this.c, this.e);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, cqe.b, $$4, this.b, this.d, this.f);
+         }
+      }
    }
 
-   public yk(sq $$0) {
-      iw<?> $$1 = $$0.a(jd.k);
-      this.i = $$0.readBoolean();
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readInt();
-      this.j = this.a($$0, (iw<iv>)$$1);
+   public yk(so $$0, int $$1, int $$2) {
+      this.a = $$0.y();
+      this.b = $$0.y();
+      this.c = $$0.y();
+      this.d = $$0.y();
+      this.e = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
+      this.f = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
    }
 
-   private <T extends iv> T a(sq $$0, iw<T> $$1) {
-      return $$1.d().b($$1, $$0);
-   }
-
-   @Override
-   public void a(sq $$0) {
-      $$0.a(jd.k, this.j.b());
-      $$0.a(this.i);
+   public void a(so $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.p(this.h);
-      this.j.a($$0);
+      $$0.a(this.e, so::a);
+      $$0.a(this.f, so::a);
    }
 
-   public boolean a() {
-      return this.i;
+   private void a(cpc $$0, eab $$1, cqe $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dhl $$7 = $$1.a($$2).a(hw.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public double d() {
+   public BitSet a() {
       return this.a;
    }
 
-   public double e() {
-      return this.b;
-   }
-
-   public double f() {
+   public BitSet b() {
       return this.c;
    }
 
-   public float g() {
-      return this.d;
-   }
-
-   public float h() {
+   public List<byte[]> c() {
       return this.e;
    }
 
-   public float i() {
+   public BitSet d() {
+      return this.b;
+   }
+
+   public BitSet e() {
+      return this.d;
+   }
+
+   public List<byte[]> f() {
       return this.f;
-   }
-
-   public float j() {
-      return this.g;
-   }
-
-   public int k() {
-      return this.h;
-   }
-
-   public iv l() {
-      return this.j;
-   }
-
-   public void a(wy $$0) {
-      $$0.a(this);
    }
 }

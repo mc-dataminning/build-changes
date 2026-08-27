@@ -1,45 +1,53 @@
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
+import java.io.IOException;
 import java.util.List;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class sr extends MessageToMessageDecoder<vf<?>> {
-   @Nullable
-   private ve.a a;
-   @Nullable
-   private ve b;
-   private final AttributeKey<? extends ve.b> c;
+public class sr extends ByteToMessageDecoder implements sw {
+   private static final Logger a = LogUtils.getLogger();
+   private final AttributeKey<sn.a<?>> b;
 
-   public sr(AttributeKey<? extends ve.b> $$0) {
-      this.c = $$0;
+   public sr(AttributeKey<sn.a<?>> $$0) {
+      this.b = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, vf<?> $$1, List<Object> $$2) throws Exception {
-      ve.b $$3 = (ve.b)$$0.channel().attr(this.c).get();
-      if ($$3 == null) {
-         throw new DecoderException("Bundler not configured: " + $$1);
-      } else {
-         ve $$4 = $$3.c();
-         if (this.a != null) {
-            if (this.b != $$4) {
-               throw new DecoderException("Bundler handler changed during bundling");
-            }
-
-            vf<?> $$5 = this.a.a($$1);
-            if ($$5 != null) {
-               this.b = null;
-               this.a = null;
-               $$2.add($$5);
-            }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         Attribute<sn.a<?>> $$4 = $$0.channel().attr(this.b);
+         sn.a<?> $$5 = (sn.a<?>)$$4.get();
+         so $$6 = new so($$1);
+         int $$7 = $$6.m();
+         vd<?> $$8 = $$5.a($$7, $$6);
+         if ($$8 == null) {
+            throw new IOException("Bad packet id " + $$7);
          } else {
-            ve.a $$6 = $$4.a($$1);
-            if ($$6 != null) {
-               this.a = $$6;
-               this.b = $$4;
+            bdv.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
+            if ($$6.readableBytes() > 0) {
+               throw new IOException(
+                  "Packet "
+                     + $$5.a().a()
+                     + "/"
+                     + $$7
+                     + " ("
+                     + $$8.getClass().getSimpleName()
+                     + ") was larger than I expected, found "
+                     + $$6.readableBytes()
+                     + " bytes extra whilst reading packet "
+                     + $$7
+               );
             } else {
-               $$2.add($$1);
+               $$2.add($$8);
+               if (a.isDebugEnabled()) {
+                  a.debug(sm.c, " IN: [{}:{}] {}", new Object[]{$$5.a().a(), $$7, $$8.getClass().getName()});
+               }
+
+               sw.a($$4, $$8);
             }
          }
       }

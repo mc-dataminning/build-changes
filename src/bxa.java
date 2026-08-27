@@ -1,135 +1,56 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bxa extends bwv {
-   private int bU = 47999;
-
-   public bxa(biw<? extends bxa> $$0, cpx $$1) {
+public class bxa extends bwq {
+   public bxa(biu<? extends bxa> $$0, cpv $$1) {
       super($$0, $$1);
    }
 
+   public static bkl.a s() {
+      return gD().a(bkm.a, 15.0).a(bkm.d, 0.2F);
+   }
+
    @Override
-   public boolean gm() {
-      return true;
+   protected void a(asc $$0) {
+      this.a(bkm.n).a(a($$0::j));
+   }
+
+   @Override
+   public bjl eR() {
+      return bjl.b;
+   }
+
+   @Override
+   protected apc w() {
+      return apd.Bh;
+   }
+
+   @Override
+   protected apc l_() {
+      return apd.Bi;
+   }
+
+   @Override
+   protected apc d(bho $$0) {
+      return apd.Bj;
    }
 
    @Nullable
    @Override
-   protected bwv gr() {
-      return biw.ba.a(this.dL());
+   public bil a(akq $$0, bil $$1) {
+      return biu.bq.a((cpv)$$0);
    }
 
    @Override
-   public void b(qy $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bU);
+   public bgy b(cbu $$0, bgx $$1) {
+      return !this.gs() ? bgy.d : super.b($$0, $$1);
    }
 
    @Override
-   public void a(qy $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bU = $$0.h("DespawnDelay");
-      }
+   protected void gt() {
    }
 
    @Override
-   protected void z() {
-      super.z();
-      this.bO.a(1, new bqw(this, 2.0));
-      this.bP.a(1, new bxa.a(this));
-   }
-
-   @Override
-   public void w(int $$0) {
-      this.bU = $$0;
-   }
-
-   @Override
-   protected void f(cbw $$0) {
-      bis $$1 = this.fS();
-      if (!($$1 instanceof cbp)) {
-         super.f($$0);
-      }
-   }
-
-   @Override
-   public void b_() {
-      super.b_();
-      if (!this.dL().B) {
-         this.gT();
-      }
-   }
-
-   private void gT() {
-      if (this.gU()) {
-         this.bU = this.gV() ? ((cbp)this.fS()).gm() - 1 : this.bU - 1;
-         if (this.bU <= 0) {
-            this.a(true, false);
-            this.ak();
-         }
-      }
-   }
-
-   private boolean gU() {
-      return !this.gs() && !this.gW() && !this.cU();
-   }
-
-   private boolean gV() {
-      return this.fS() instanceof cbp;
-   }
-
-   private boolean gW() {
-      return this.fR() && !this.gV();
-   }
-
-   @Nullable
-   @Override
-   public bkb a(cqm $$0, bgy $$1, bjm $$2, @Nullable bkb $$3, @Nullable qy $$4) {
-      if ($$2 == bjm.h) {
-         this.c_(0);
-      }
-
-      if ($$3 == null) {
-         $$3 = new bin.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   protected static class a extends bsd {
-      private final bwv a;
-      private bji b;
-      private int c;
-
-      public a(bwv $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(bqd.a.d));
-      }
-
-      @Override
-      public boolean a() {
-         if (!this.a.fR()) {
-            return false;
-         } else if (!(this.a.fS() instanceof cbp $$1)) {
-            return false;
-         } else {
-            this.b = $$1.eg();
-            int $$2 = $$1.eh();
-            return $$2 != this.c && this.a(this.b, btu.a);
-         }
-      }
-
-      @Override
-      public void c() {
-         this.e.h(this.b);
-         bis $$0 = this.a.fS();
-         if ($$0 instanceof cbp) {
-            this.c = ((cbp)$$0).eh();
-         }
-
-         super.c();
-      }
+   protected float a(bir $$0, float $$1) {
+      return $$0.b - (this.m_() ? 0.03125F : 0.28125F) * $$1;
    }
 }

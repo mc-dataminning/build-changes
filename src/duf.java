@@ -1,30 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public enum duf implements asr {
-   a(hc.b, 1, "ceiling"),
-   b(hc.a, -1, "floor");
+public class duf extends dut {
+   public static final Codec<duf> a = bgd.b(0, 256).fieldOf("count").xmap(duf::new, $$0 -> $$0.c).codec();
+   private final bgd c;
 
-   public static final Codec<duf> c = asr.a(duf::values);
-   private final hc d;
-   private final int e;
-   private final String f;
-
-   private duf(hc $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private duf(bgd $$0) {
+      this.c = $$0;
    }
 
-   public hc a() {
-      return this.d;
+   public static duf a(bgd $$0) {
+      return new duf($$0);
    }
 
-   public int b() {
-      return this.e;
+   public static duf a(int $$0) {
+      return a(bga.a($$0));
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected int a(asc $$0, gw $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public duq<?> b() {
+      return duq.f;
    }
 }

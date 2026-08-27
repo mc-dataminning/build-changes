@@ -1,141 +1,44 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ebo implements ebq {
-   private static final Logger b = LogUtils.getLogger();
-   private final cpx c;
-   private final int d;
-   private final ArrayDeque<ebo.c> e = new ArrayDeque<>();
-   private final List<ebo.c> f = new ArrayList<>();
-   private int g = 0;
+public interface ebo {
+   ha[] a = new ha[]{ha.e, ha.f, ha.a, ha.b, ha.c, ha.d};
 
-   public ebo(cpx $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   void a(ha var1, dfj var2, gw var3, gw var4, int var5, int var6);
 
-   @Override
-   public void a(hc $$0, dfl $$1, gw $$2, gw $$3, int $$4, int $$5) {
-      this.a($$2, new ebo.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
-   }
+   void a(gw var1, csv var2, gw var3);
 
-   @Override
-   public void a(gw $$0, csx $$1, gw $$2) {
-      this.a($$0, new ebo.e($$0, $$1, $$2.i()));
-   }
+   void a(dfj var1, gw var2, csv var3, gw var4, boolean var5);
 
-   @Override
-   public void a(dfl $$0, gw $$1, csx $$2, gw $$3, boolean $$4) {
-      this.a($$1, new ebo.a($$0, $$1.i(), $$2, $$3.i(), $$4));
-   }
-
-   @Override
-   public void a(gw $$0, csx $$1, @Nullable hc $$2) {
-      this.a($$0, new ebo.b($$0.i(), $$1, $$2));
-   }
-
-   private void a(gw $$0, ebo.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
+   default void a(gw $$0, csv $$1, @Nullable ha $$2) {
+      for (ha $$3 : a) {
+         if ($$3 != $$2) {
+            this.a($$0.a($$3), $$1, $$0);
          }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
-
-      if (!$$2) {
-         this.a();
       }
    }
 
-   private void a() {
+   static void a(cpw $$0, ha $$1, dfj $$2, gw $$3, gw $$4, int $$5, int $$6) {
+      dfj $$7 = $$0.a_($$3);
+      dfj $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      csv.a($$7, $$8, $$0, $$3, $$5, $$6);
+   }
+
+   static void a(cpv $$0, dfj $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
       try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", jb.f.b($$3), $$3.f(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + jb.f.b($$3);
             }
-
-            this.f.clear();
-            ebo.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
-   }
-
-   static record a(dfl a, gw b, csx c, gw d, boolean e) implements ebo.c {
-      @Override
-      public boolean a(cpx $$0) {
-         ebq.a($$0, this.a, this.b, this.c, this.d, this.e);
-         return false;
-      }
-   }
-
-   static final class b implements ebo.c {
-      private final gw a;
-      private final csx b;
-      @Nullable
-      private final hc c;
-      private int d = 0;
-
-      b(gw $$0, csx $$1, @Nullable hc $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         if (ebq.a[this.d] == $$2) {
-            this.d++;
-         }
-      }
-
-      @Override
-      public boolean a(cpx $$0) {
-         gw $$1 = this.a.a(ebq.a[this.d++]);
-         dfl $$2 = $$0.a_($$1);
-         ebq.a($$0, $$2, $$1, this.b, this.a, false);
-         if (this.d < ebq.a.length && ebq.a[this.d] == this.c) {
-            this.d++;
-         }
-
-         return this.d < ebq.a.length;
-      }
-   }
-
-   interface c {
-      boolean a(cpx var1);
-   }
-
-   static record d(hc a, dfl b, gw c, gw d, int e, int f) implements ebo.c {
-      @Override
-      public boolean a(cpx $$0) {
-         ebq.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
-         return false;
-      }
-   }
-
-   static record e(gw a, csx b, gw c) implements ebo.c {
-      @Override
-      public boolean a(cpx $$0) {
-         dfl $$1 = $$0.a_(this.a);
-         ebq.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new y($$7);
       }
    }
 }

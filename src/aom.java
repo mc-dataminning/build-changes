@@ -1,22 +1,28 @@
 import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public abstract class aom<T> {
-   @Nullable
-   private final T a;
-
-   public aom(@Nullable T $$0) {
-      this.a = $$0;
+public class aom extends aol<GameProfile, aon> {
+   public aom(File $$0) {
+      super($$0);
    }
 
-   @Nullable
-   T g() {
-      return this.a;
+   @Override
+   protected aok<GameProfile> a(JsonObject $$0) {
+      return new aon($$0);
    }
 
-   boolean f() {
-      return false;
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
-   protected abstract void a(JsonObject var1);
+   @Override
+   public String[] a() {
+      return this.d().stream().map(aok::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   }
+
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
+   }
 }

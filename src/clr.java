@@ -1,71 +1,68 @@
-import javax.annotation.Nullable;
+public abstract class clr implements cmj<bgr> {
+   protected final cmn<?> a;
+   protected final clx b;
+   protected final String c;
+   protected final cmg d;
+   protected final cjf e;
+   protected final float f;
+   protected final int g;
 
-public class clr {
-   @Nullable
-   private final cbw a;
-   private final bgz b;
-   private final ehl c;
-   private final cpx d;
-   private final cjh e;
-
-   public clr(cbw $$0, bgz $$1, ehl $$2) {
-      this($$0.dL(), $$0, $$1, $$0.b($$1), $$2);
-   }
-
-   protected clr(cpx $$0, @Nullable cbw $$1, bgz $$2, cjh $$3, ehl $$4) {
-      this.a = $$1;
+   public clr(cmn<?> $$0, String $$1, clx $$2, cmg $$3, cjf $$4, float $$5, int $$6) {
+      this.a = $$0;
       this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   protected final ehl j() {
-      return this.c;
+   @Override
+   public boolean a(bgr $$0, cpv $$1) {
+      return this.d.a($$0.a(0));
    }
 
-   public gw a() {
-      return this.c.a();
+   @Override
+   public cjf a(bgr $$0, hr $$1) {
+      return this.e.p();
    }
 
-   public hc k() {
-      return this.c.b();
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
-   public ehp l() {
-      return this.c.e();
+   @Override
+   public hn<cmg> a() {
+      hn<cmg> $$0 = hn.a();
+      $$0.add(this.d);
+      return $$0;
    }
 
-   public boolean m() {
-      return this.c.d();
+   public float b() {
+      return this.f;
    }
 
-   public cjh n() {
+   @Override
+   public cjf a(hr $$0) {
       return this.e;
    }
 
-   @Nullable
-   public cbw o() {
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public cmn<?> e() {
       return this.a;
    }
 
-   public bgz p() {
+   public clx f() {
       return this.b;
-   }
-
-   public cpx q() {
-      return this.d;
-   }
-
-   public hc g() {
-      return this.a == null ? hc.c : this.a.cD();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fH();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dB();
    }
 }

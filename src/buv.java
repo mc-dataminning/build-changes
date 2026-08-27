@@ -1,92 +1,39 @@
-import java.util.Optional;
+public record buv(aew l) {
+   public static final aev<buv> a = a("tabby");
+   public static final aev<buv> b = a("black");
+   public static final aev<buv> c = a("red");
+   public static final aev<buv> d = a("siamese");
+   public static final aev<buv> e = a("british_shorthair");
+   public static final aev<buv> f = a("calico");
+   public static final aev<buv> g = a("persian");
+   public static final aev<buv> h = a("ragdoll");
+   public static final aev<buv> i = a("white");
+   public static final aev<buv> j = a("jellie");
+   public static final aev<buv> k = a("all_black");
 
-public interface buv {
-   boolean t();
-
-   void w(boolean var1);
-
-   void l(cjh var1);
-
-   void c(qy var1);
-
-   cjh b();
-
-   ape y();
-
-   @Deprecated
-   static void a(bjk $$0, cjh $$1) {
-      qy $$2 = $$1.w();
-      if ($$0.ac()) {
-         $$1.a($$0.ad());
-      }
-
-      if ($$0.fT()) {
-         $$2.a("NoAI", $$0.fT());
-      }
-
-      if ($$0.aS()) {
-         $$2.a("Silent", $$0.aS());
-      }
-
-      if ($$0.aT()) {
-         $$2.a("NoGravity", $$0.aT());
-      }
-
-      if ($$0.cb()) {
-         $$2.a("Glowing", $$0.cb());
-      }
-
-      if ($$0.cq()) {
-         $$2.a("Invulnerable", $$0.cq());
-      }
-
-      $$2.a("Health", $$0.eu());
+   private static aev<buv> a(String $$0) {
+      return aev.a(jc.j, new aew($$0));
    }
 
-   @Deprecated
-   static void a(bjk $$0, qy $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.t($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.d($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.e($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.i($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.m($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.c($$1.j("Health"));
-      }
+   public static buv a(hq<buv> $$0) {
+      a($$0, a, "textures/entity/cat/tabby.png");
+      a($$0, b, "textures/entity/cat/black.png");
+      a($$0, c, "textures/entity/cat/red.png");
+      a($$0, d, "textures/entity/cat/siamese.png");
+      a($$0, e, "textures/entity/cat/british_shorthair.png");
+      a($$0, f, "textures/entity/cat/calico.png");
+      a($$0, g, "textures/entity/cat/persian.png");
+      a($$0, h, "textures/entity/cat/ragdoll.png");
+      a($$0, i, "textures/entity/cat/white.png");
+      a($$0, j, "textures/entity/cat/jellie.png");
+      return a($$0, k, "textures/entity/cat/all_black.png");
    }
 
-   static <T extends bji & buv> Optional<bha> a(cbw $$0, bgz $$1, T $$2) {
-      cjh $$3 = $$0.b($$1);
-      if ($$3.d() == cjk.pL && $$2.bv()) {
-         $$2.a($$2.y(), 1.0F, 1.0F);
-         cjh $$4 = $$2.b();
-         $$2.l($$4);
-         cjh $$5 = cjj.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         cpx $$6 = $$2.dL();
-         if (!$$6.B) {
-            al.j.a((akt)$$0, $$4);
-         }
+   private static buv a(hq<buv> $$0, aev<buv> $$1, String $$2) {
+      return hq.a($$0, $$1, new buv(new aew($$2)));
+   }
 
-         $$2.ak();
-         return Optional.of(bha.a($$6.B));
-      } else {
-         return Optional.empty();
-      }
+   public aew a() {
+      return this.l;
    }
 }

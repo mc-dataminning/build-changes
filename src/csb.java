@@ -1,68 +1,53 @@
-public class csb extends csx implements csz {
-   protected static final float a = 4.0F;
-   protected static final eii b = csx.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public csb(dfk.d $$0) {
-      super($$0);
+public class csb extends crm {
+   public static final dgj a = dfz.ba;
+   private static final Map<cht, csv> b = Maps.newHashMap();
+   private static final eig c = csv.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+
+   public csb(cht $$0, dfi.d $$1) {
+      super($$0, $$1);
+      this.k(this.C.b().a(a, Integer.valueOf(0)));
+      b.put($$0, this);
    }
 
    @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      ehp $$4 = $$0.n($$1, $$2);
-      return b.a($$4.c, $$4.d, $$4.e);
+   public boolean a(dfj $$0, cpy $$1, gw $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   public void b(dfl $$0, aks $$1, gw $$2, ase $$3) {
-      if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return c;
    }
 
    @Override
-   public boolean a(dfl $$0, cqa $$1, gw $$2) {
-      return $$1.a_($$2.d()).a(apu.at);
+   public dfj a(cln $$0) {
+      return this.n().a(a, Integer.valueOf(dgp.a($$0.i() + 180.0F)));
    }
 
    @Override
-   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return csy.a.n();
-      } else {
-         if ($$1 == hc.b && $$2.a(csy.mZ)) {
-            $$3.a($$4, csy.mZ.n(), 2);
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      return $$1 == ha.a && !$$0.a($$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public cjh a(cpd $$0, gw $$1, dfl $$2) {
-      return new cjh(cjk.dv);
+   public dfj a(dfj $$0, czh $$1) {
+      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
    }
 
    @Override
-   public boolean a(cqa $$0, gw $$1, dfl $$2) {
-      return $$0.a_($$1.c()).i();
+   public dfj a(dfj $$0, cxq $$1) {
+      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
    }
 
    @Override
-   public boolean a(cpx $$0, ase $$1, gw $$2, dfl $$3) {
-      return true;
+   protected void a(dfk.a<csv, dfj> $$0) {
+      $$0.a(a);
    }
 
-   @Override
-   public void a(aks $$0, ase $$1, gw $$2, dfl $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   public float a(dfl $$0, cbw $$1, cpd $$2, gw $$3) {
-      return $$1.eS().d() instanceof cks ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(cpx $$0, gw $$1) {
-      $$0.a($$1.c(), csy.mZ.n().a(csc.h, dfx.b), 3);
+   public static csv a(cht $$0) {
+      return b.getOrDefault($$0, csw.iJ);
    }
 }

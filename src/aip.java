@@ -1,106 +1,312 @@
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.datafixers.util.Pair;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic4CommandExceptionType;
+import java.util.Collection;
+import java.util.Locale;
 import java.util.Map;
-import java.util.function.ToIntFunction;
+import java.util.Set;
 
 public class aip {
-   private static final Map<Pair<cgs, bix>, cjc> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(Pair.of(cgt.b, bix.f), cjk.oO);
-      $$0.put(Pair.of(cgt.b, bix.e), cjk.oP);
-      $$0.put(Pair.of(cgt.b, bix.d), cjk.oQ);
-      $$0.put(Pair.of(cgt.b, bix.c), cjk.oR);
-      $$0.put(Pair.of(cgt.c, bix.f), cjk.oS);
-      $$0.put(Pair.of(cgt.c, bix.e), cjk.oT);
-      $$0.put(Pair.of(cgt.c, bix.d), cjk.oU);
-      $$0.put(Pair.of(cgt.c, bix.c), cjk.oV);
-      $$0.put(Pair.of(cgt.d, bix.f), cjk.pa);
-      $$0.put(Pair.of(cgt.d, bix.e), cjk.pb);
-      $$0.put(Pair.of(cgt.d, bix.d), cjk.pc);
-      $$0.put(Pair.of(cgt.d, bix.c), cjk.pd);
-      $$0.put(Pair.of(cgt.g, bix.f), cjk.pe);
-      $$0.put(Pair.of(cgt.g, bix.e), cjk.pf);
-      $$0.put(Pair.of(cgt.g, bix.d), cjk.pg);
-      $$0.put(Pair.of(cgt.g, bix.c), cjk.ph);
-      $$0.put(Pair.of(cgt.e, bix.f), cjk.oW);
-      $$0.put(Pair.of(cgt.e, bix.e), cjk.oX);
-      $$0.put(Pair.of(cgt.e, bix.d), cjk.oY);
-      $$0.put(Pair.of(cgt.e, bix.c), cjk.oZ);
-      $$0.put(Pair.of(cgt.f, bix.f), cjk.nC);
-   });
-   private static final List<aex<clm>> b = List.of(
-      cln.a, cln.b, cln.c, cln.d, cln.e, cln.f, cln.g, cln.h, cln.i, cln.j, cln.k, cln.l, cln.m, cln.n, cln.o, cln.p
+   private static final int a = 10000;
+   private static final Dynamic4CommandExceptionType b = new Dynamic4CommandExceptionType(
+      ($$0, $$1, $$2, $$3) -> tl.a("commands.spreadplayers.failed.teams", $$0, $$1, $$2, $$3)
    );
-   private static final List<aex<clk>> c = List.of(cll.a, cll.b, cll.c, cll.d, cll.e, cll.f, cll.g, cll.h, cll.i, cll.j);
-   private static final ToIntFunction<aex<clm>> d = ac.e(b);
-   private static final ToIntFunction<aex<clk>> e = ac.e(c);
+   private static final Dynamic4CommandExceptionType c = new Dynamic4CommandExceptionType(
+      ($$0, $$1, $$2, $$3) -> tl.a("commands.spreadplayers.failed.entities", $$0, $$1, $$2, $$3)
+   );
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> tl.a("commands.spreadplayers.failed.invalid.height", $$0, $$1)
+   );
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("spawn_armor_trims").requires($$0x -> $$0x.c(2)))
-            .executes($$0x -> a((dt)$$0x.getSource(), ((dt)$$0x.getSource()).h()))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("spreadplayers").requires($$0x -> $$0x.c(2)))
+            .then(
+               du.a("center", fq.a())
+                  .then(
+                     du.a("spreadDistance", FloatArgumentType.floatArg(0.0F))
+                        .then(
+                           ((RequiredArgumentBuilder)du.a("maxRange", FloatArgumentType.floatArg(1.0F))
+                                 .then(
+                                    du.a("respectTeams", BoolArgumentType.bool())
+                                       .then(
+                                          du.a("targets", ee.b())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dt)$$0x.getSource(),
+                                                      fq.a($$0x, "center"),
+                                                      FloatArgumentType.getFloat($$0x, "spreadDistance"),
+                                                      FloatArgumentType.getFloat($$0x, "maxRange"),
+                                                      ((dt)$$0x.getSource()).e().aj(),
+                                                      BoolArgumentType.getBool($$0x, "respectTeams"),
+                                                      ee.b($$0x, "targets")
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 du.a("under")
+                                    .then(
+                                       du.a("maxHeight", IntegerArgumentType.integer())
+                                          .then(
+                                             du.a("respectTeams", BoolArgumentType.bool())
+                                                .then(
+                                                   du.a("targets", ee.b())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (dt)$$0x.getSource(),
+                                                               fq.a($$0x, "center"),
+                                                               FloatArgumentType.getFloat($$0x, "spreadDistance"),
+                                                               FloatArgumentType.getFloat($$0x, "maxRange"),
+                                                               IntegerArgumentType.getInteger($$0x, "maxHeight"),
+                                                               BoolArgumentType.getBool($$0x, "respectTeams"),
+                                                               ee.b($$0x, "targets")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(dt $$0, cbw $$1) {
-      cpx $$2 = $$1.dL();
-      hp<clj> $$3 = hp.a();
-      ht<clm> $$4 = $$2.G_().d(je.aE);
-      ht<clk> $$5 = $$2.G_().d(je.aD);
-      $$4.s()
-         .sorted(Comparator.comparing($$1x -> d.applyAsInt($$4.c($$1x).orElse(null))))
-         .forEachOrdered(
-            $$3x -> $$5.s()
-                  .sorted(Comparator.comparing($$1xx -> e.applyAsInt($$5.c($$1xx).orElse(null))))
-                  .forEachOrdered($$4x -> $$3.add(new clj($$5.d($$4x), $$4.d($$3x))))
+   private static int a(dt $$0, ehm $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends biq> $$6) throws CommandSyntaxException {
+      akq $$7 = $$0.e();
+      int $$8 = $$7.H_();
+      if ($$4 < $$8) {
+         throw d.create($$4, $$8);
+      } else {
+         asc $$9 = asc.a();
+         double $$10 = (double)($$1.i - $$3);
+         double $$11 = (double)($$1.j - $$3);
+         double $$12 = (double)($$1.i + $$3);
+         double $$13 = (double)($$1.j + $$3);
+         aip.a[] $$14 = a($$9, $$5 ? a($$6) : $$6.size(), $$10, $$11, $$12, $$13);
+         a($$1, (double)$$2, $$7, $$9, $$10, $$11, $$12, $$13, $$4, $$14, $$5);
+         double $$15 = a($$6, $$7, $$14, $$4, $$5);
+         $$0.a(
+            () -> tl.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
+            true
          );
-      gw $$6 = $$1.dl().a($$1.cD(), 5);
-      int $$7 = cgt.values().length - 1;
-      double $$8 = 3.0;
-      int $$9 = 0;
-      int $$10 = 0;
+         return $$14.length;
+      }
+   }
 
-      for (clj $$11 : $$3) {
-         for (cgs $$12 : cgt.values()) {
-            if ($$12 != cgt.a) {
-               double $$13 = (double)$$6.u() + 0.5 - (double)($$9 % $$5.b()) * 3.0;
-               double $$14 = (double)$$6.v() + 0.5 + (double)($$10 % $$7) * 3.0;
-               double $$15 = (double)$$6.w() + 0.5 + (double)($$9 / $$5.b() * 10);
-               byf $$16 = new byf($$2, $$13, $$14, $$15);
-               $$16.r(180.0F);
-               $$16.e(true);
+   private static int a(Collection<? extends biq> $$0) {
+      Set<eio> $$1 = Sets.newHashSet();
 
-               for (bix $$17 : bix.values()) {
-                  cjc $$18 = a.get(Pair.of($$12, $$17));
-                  if ($$18 != null) {
-                     cjh $$19 = new cjh($$18);
-                     clj.a($$2.G_(), $$19, $$11);
-                     $$16.a($$17, $$19);
-                     if ($$18 instanceof cgr) {
-                        cgr $$20 = (cgr)$$18;
-                        if ($$20.d() == cgt.f) {
-                           $$16.b($$11.a().a().a($$11.b()).e().f(" ").b($$11.b().a().e()));
-                           $$16.n(true);
-                           continue;
-                        }
-                     }
+      for (biq $$2 : $$0) {
+         if ($$2 instanceof cbu) {
+            $$1.add($$2.cf());
+         } else {
+            $$1.add(null);
+         }
+      }
 
-                     $$16.j(true);
+      return $$1.size();
+   }
+
+   private static void a(ehm $$0, double $$1, akq $$2, asc $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aip.a[] $$9, boolean $$10) throws CommandSyntaxException {
+      boolean $$11 = true;
+      double $$12 = Float.MAX_VALUE;
+
+      int $$13;
+      for ($$13 = 0; $$13 < 10000 && $$11; $$13++) {
+         $$11 = false;
+         $$12 = Float.MAX_VALUE;
+
+         for (int $$14 = 0; $$14 < $$9.length; $$14++) {
+            aip.a $$15 = $$9[$$14];
+            int $$16 = 0;
+            aip.a $$17 = new aip.a();
+
+            for (int $$18 = 0; $$18 < $$9.length; $$18++) {
+               if ($$14 != $$18) {
+                  aip.a $$19 = $$9[$$18];
+                  double $$20 = $$15.a($$19);
+                  $$12 = Math.min($$20, $$12);
+                  if ($$20 < $$1) {
+                     $$16++;
+                     $$17.a = $$17.a + ($$19.a - $$15.a);
+                     $$17.b = $$17.b + ($$19.b - $$15.b);
                   }
                }
+            }
 
-               $$2.b($$16);
-               $$10++;
+            if ($$16 > 0) {
+               $$17.a /= (double)$$16;
+               $$17.b /= (double)$$16;
+               double $$21 = $$17.b();
+               if ($$21 > 0.0) {
+                  $$17.a();
+                  $$15.b($$17);
+               } else {
+                  $$15.a($$3, $$4, $$5, $$6, $$7);
+               }
+
+               $$11 = true;
+            }
+
+            if ($$15.a($$4, $$5, $$6, $$7)) {
+               $$11 = true;
             }
          }
 
-         $$9++;
+         if (!$$11) {
+            for (aip.a $$22 : $$9) {
+               if (!$$22.b($$2, $$8)) {
+                  $$22.a($$3, $$4, $$5, $$6, $$7);
+                  $$11 = true;
+               }
+            }
+         }
       }
 
-      $$0.a(() -> tn.b("Armorstands with trimmed armor spawned around you"), true);
-      return 1;
+      if ($$12 == Float.MAX_VALUE) {
+         $$12 = 0.0;
+      }
+
+      if ($$13 >= 10000) {
+         if ($$10) {
+            throw b.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
+         } else {
+            throw c.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
+         }
+      }
+   }
+
+   private static double a(Collection<? extends biq> $$0, akq $$1, aip.a[] $$2, int $$3, boolean $$4) {
+      double $$5 = 0.0;
+      int $$6 = 0;
+      Map<eio, aip.a> $$7 = Maps.newHashMap();
+
+      for (biq $$8 : $$0) {
+         aip.a $$10;
+         if ($$4) {
+            eio $$9 = $$8 instanceof cbu ? $$8.cf() : null;
+            if (!$$7.containsKey($$9)) {
+               $$7.put($$9, $$2[$$6++]);
+            }
+
+            $$10 = $$7.get($$9);
+         } else {
+            $$10 = $$2[$$6++];
+         }
+
+         $$8.a($$1, (double)arw.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)arw.a($$10.b) + 0.5, Set.of(), $$8.dB(), $$8.dD());
+         double $$12 = Double.MAX_VALUE;
+
+         for (aip.a $$13 : $$2) {
+            if ($$10 != $$13) {
+               double $$14 = $$10.a($$13);
+               $$12 = Math.min($$14, $$12);
+            }
+         }
+
+         $$5 += $$12;
+      }
+
+      return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
+   }
+
+   private static aip.a[] a(asc $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
+      aip.a[] $$6 = new aip.a[$$1];
+
+      for (int $$7 = 0; $$7 < $$6.length; $$7++) {
+         aip.a $$8 = new aip.a();
+         $$8.a($$0, $$2, $$3, $$4, $$5);
+         $$6[$$7] = $$8;
+      }
+
+      return $$6;
+   }
+
+   static class a {
+      double a;
+      double b;
+
+      double a(aip.a $$0) {
+         double $$1 = this.a - $$0.a;
+         double $$2 = this.b - $$0.b;
+         return Math.sqrt($$1 * $$1 + $$2 * $$2);
+      }
+
+      void a() {
+         double $$0 = this.b();
+         this.a /= $$0;
+         this.b /= $$0;
+      }
+
+      double b() {
+         return Math.sqrt(this.a * this.a + this.b * this.b);
+      }
+
+      public void b(aip.a $$0) {
+         this.a = this.a - $$0.a;
+         this.b = this.b - $$0.b;
+      }
+
+      public boolean a(double $$0, double $$1, double $$2, double $$3) {
+         boolean $$4 = false;
+         if (this.a < $$0) {
+            this.a = $$0;
+            $$4 = true;
+         } else if (this.a > $$2) {
+            this.a = $$2;
+            $$4 = true;
+         }
+
+         if (this.b < $$1) {
+            this.b = $$1;
+            $$4 = true;
+         } else if (this.b > $$3) {
+            this.b = $$3;
+            $$4 = true;
+         }
+
+         return $$4;
+      }
+
+      public int a(cpb $$0, int $$1) {
+         gw.a $$2 = new gw.a(this.a, (double)($$1 + 1), this.b);
+         boolean $$3 = $$0.a_($$2).i();
+         $$2.c(ha.a);
+         boolean $$4 = $$0.a_($$2).i();
+
+         while ($$2.v() > $$0.H_()) {
+            $$2.c(ha.a);
+            boolean $$5 = $$0.a_($$2).i();
+            if (!$$5 && $$4 && $$3) {
+               return $$2.v() + 1;
+            }
+
+            $$3 = $$4;
+            $$4 = $$5;
+         }
+
+         return $$1 + 1;
+      }
+
+      public boolean b(cpb $$0, int $$1) {
+         gw $$2 = gw.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
+         dfj $$3 = $$0.a_($$2);
+         return $$2.v() < $$1 && !$$3.k() && !$$3.a(aps.aJ);
+      }
+
+      public void a(asc $$0, double $$1, double $$2, double $$3, double $$4) {
+         this.a = arw.a($$0, $$1, $$3);
+         this.b = arw.a($$0, $$2, $$4);
+      }
    }
 }

@@ -1,60 +1,47 @@
-public class cuh extends cvp {
-   private final dfl a;
+import javax.annotation.Nullable;
 
-   public cuh(csx $$0, dfk.d $$1) {
+public class cuh extends csv {
+   private final csv a;
+
+   public cuh(csv $$0, dfi.d $$1) {
       super($$1);
-      this.a = $$0.n();
+      this.a = $$0;
    }
 
    @Override
-   public void a(cpx $$0, gw $$1, dfl $$2, dfl $$3, byo $$4) {
-      if (b($$0, $$1, $$3)) {
-         $$0.a($$1, this.a, 3);
+   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.a.n(), 2);
       }
    }
 
    @Override
-   public dfl a(clp $$0) {
-      cpd $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      dfl $$3 = $$1.a_($$2);
-      return b($$1, $$2, $$3) ? this.a : super.a($$0);
+   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.D_().a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private static boolean b(cpd $$0, gw $$1, dfl $$2) {
-      return n($$2) || a($$0, $$1);
-   }
-
-   private static boolean a(cpd $$0, gw $$1) {
-      boolean $$2 = false;
-      gw.a $$3 = $$1.j();
-
-      for (hc $$4 : hc.values()) {
-         dfl $$5 = $$0.a_($$3);
-         if ($$4 != hc.a || n($$5)) {
-            $$3.a($$1, $$4);
-            $$5 = $$0.a_($$3);
-            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
-               $$2 = true;
-               break;
-            }
+   protected boolean a(cpb $$0, gw $$1) {
+      for (ha $$2 : ha.values()) {
+         eam $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(apx.a)) {
+            return true;
          }
       }
 
-      return $$2;
+      return false;
    }
 
-   private static boolean n(dfl $$0) {
-      return $$0.u().a(apz.a);
-   }
-
+   @Nullable
    @Override
-   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
-      return a($$3, $$4) ? this.a : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public dfj a(cln $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().D_().a(40));
+      }
 
-   @Override
-   public int d(dfl $$0, cpd $$1, gw $$2) {
-      return $$0.d($$1, $$2).ak;
+      return this.n();
    }
 }

@@ -1,131 +1,107 @@
-public abstract class ezj extends eym {
-   private static final tn m = tn.c("advMode.setCommand");
-   private static final tn n = tn.c("advMode.command");
-   private static final tn o = tn.c("advMode.previousOutput");
-   protected etb a;
-   protected etb b;
-   protected ess c;
-   protected ess k;
-   protected esz<Boolean> l;
-   esv p;
+public abstract class ezj<T extends cem> extends ezi<T> implements fcc {
+   public final fbs x;
+   private boolean y;
+   private final aew z;
+   private final aew A;
+   private final aew B;
 
-   public ezj() {
-      super(eqp.a);
+   public ezj(T $$0, fbs $$1, cbt $$2, tl $$3, aew $$4, aew $$5, aew $$6) {
+      super($$0, $$2, $$3);
+      this.x = $$1;
+      this.z = $$4;
+      this.A = $$5;
+      this.B = $$6;
    }
 
    @Override
-   public void c() {
-      if (!this.l().j()) {
-         this.az_();
-      }
-   }
-
-   abstract coy l();
-
-   abstract int D();
-
-   @Override
-   protected void aH_() {
-      this.c = this.d(ess.a(tm.d, $$0x -> this.E()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
-      this.k = this.d(ess.a(tm.e, $$0x -> this.az_()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.l().o();
-      this.l = this.d(esz.a(tn.b("O"), tn.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.D(), 20, 20, tn.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         coy $$2 = this.l();
-         $$2.a($$1);
-         this.c($$1);
+   public void aH_() {
+      super.aH_();
+      this.y = this.g < 379;
+      this.x.a(this.g, this.h, this.f, this.y, this.p);
+      this.t = this.x.a(this.g, this.c);
+      this.d(new etc(this.t + 20, this.h / 2 - 49, 20, 18, fbw.a, $$0 -> {
+         this.x.f();
+         this.t = this.x.a(this.g, this.c);
+         $$0.b(this.t + 20, this.h / 2 - 49);
       }));
-      this.a = new etb(this.i, this.g / 2 - 150, 50, 300, 20, tn.c("advMode.command")) {
-         @Override
-         protected ua aE_() {
-            return super.aE_().b(ezj.this.p.e());
-         }
-      };
-      this.a.l(32500);
-      this.a.b(this::a);
-      this.e(this.a);
-      this.b = new etb(this.i, this.g / 2 - 150, this.D(), 276, 20, tn.c("advMode.previousOutput"));
-      this.b.l(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.e(this.b);
-      this.c(this.a);
-      this.p = new esv(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.p.a(true);
-      this.p.d();
-      this.c($$0);
+      this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
    @Override
-   protected tn A() {
-      return this.p.a() ? this.p.b() : super.A();
+   public void D() {
+      super.D();
+      this.x.h();
    }
 
    @Override
-   public void a(eqx $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.p.d();
-   }
-
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.l().l().getString() : "-");
-   }
-
-   protected void E() {
-      coy $$0 = this.l();
-      this.a($$0);
-      if (!$$0.o()) {
-         $$0.c(null);
-      }
-
-      this.f.a(null);
-   }
-
-   protected abstract void a(coy var1);
-
-   private void a(String $$0) {
-      this.p.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.p.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      if (this.x.g() && this.y) {
+         this.b($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
       } else {
-         this.E();
-         return true;
+         super.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, this.t, this.u, true, $$3);
       }
+
+      this.a($$0, $$1, $$2);
+      this.x.a($$0, this.t, this.u, $$1, $$2);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   protected void a(esf $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.p.s()) {
+         int $$6 = 14;
+         int $$7 = arw.f(this.p.r() * 13.0F) + 1;
+         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+      }
+
+      int $$8 = 24;
+      int $$9 = arw.f(this.p.q() * 24.0F);
+      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
    }
 
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.y && this.x.g() ? true : super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   public void a(esh $$0, int $$1, int $$2, float $$3) {
+   protected void a(cgd $$0, int $$1, int $$2, ceu $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, m, this.g / 2, 20, 16777215);
-      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.D() - 135;
-         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
-      }
+      this.x.a($$0);
+   }
 
-      this.p.a($$0, $$1, $$2);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? false : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
+      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public void F() {
+      this.x.i();
+   }
+
+   @Override
+   public fbw G() {
+      return this.x;
    }
 }

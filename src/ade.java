@@ -1,8 +1,16 @@
-public interface ade extends abf {
+public interface ade extends sj {
    @Override
-   default sp b() {
-      return sp.a;
+   default sn b() {
+      return sn.d;
    }
 
-   void a(add var1);
+   void a(adh var1);
+
+   void a(adg var1);
+
+   void a(adj var1);
+
+   void a(adi var1);
+
+   void a(adf var1);
 }

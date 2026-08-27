@@ -1,7 +1,3 @@
-import java.util.List;
-
 public interface fdq {
-   List<fdr> a();
-
-   tn b();
+   void a(fdn var1);
 }

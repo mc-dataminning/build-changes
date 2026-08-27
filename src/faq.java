@@ -1,30 +1,21 @@
-public class faq extends ezj {
-   private final coy m;
+public class faq extends ezi<cga> {
+   private static final aew x = new aew("textures/gui/container/shulker_box.png");
 
-   public faq(coy $$0) {
-      this.m = $$0;
+   public faq(cga $$0, cbt $$1, tl $$2) {
+      super($$0, $$1, $$2);
+      this.k++;
    }
 
    @Override
-   public coy l() {
-      return this.m;
+   public void a(esf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   int D() {
-      return 150;
-   }
-
-   @Override
-   protected void aH_() {
-      super.aH_();
-      this.a.a(this.l().m());
-   }
-
-   @Override
-   protected void a(coy $$0) {
-      if ($$0 instanceof cdv.a $$1) {
-         this.f.J().b(new acr($$1.h().ah(), this.a.a(), $$0.o()));
-      }
+   protected void a(esf $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

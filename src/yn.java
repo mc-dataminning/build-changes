@@ -1,45 +1,52 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+public class yn implements vd<ww> {
+   private final int a;
+   private final cou b;
+   private final int c;
+   private final int d;
+   private final boolean e;
+   private final boolean f;
 
-public record yn(int a, boolean b, Set<aex<cpx>> c, int d, int e, int f, boolean g, boolean h, boolean i, abb j) implements vf<wy> {
-   public yn(sq $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(je.aH)),
-         $$0.m(),
-         $$0.m(),
-         $$0.m(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new abb($$0)
-      );
+   public yn(int $$0, cou $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1.b();
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public yn(so $$0) {
+      this.a = $$0.m();
+      this.b = cou.b($$0);
+      this.c = $$0.m();
+      this.d = $$0.m();
+      this.e = $$0.readBoolean();
+      this.f = $$0.readBoolean();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.p(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c, sq::b);
+   public void a(so $$0) {
+      $$0.c(this.a);
+      this.b.a($$0);
+      $$0.c(this.c);
       $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      this.j.a($$0);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public boolean d() {
+   public int a() {
+      return this.a;
+   }
+
+   public cou d() {
       return this.b;
    }
 
-   public Set<aex<cpx>> e() {
+   public int e() {
       return this.c;
    }
 
@@ -47,27 +54,11 @@ public record yn(int a, boolean b, Set<aex<cpx>> c, int d, int e, int f, boolean
       return this.d;
    }
 
-   public int g() {
+   public boolean g() {
       return this.e;
    }
 
-   public int h() {
+   public boolean h() {
       return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public abb l() {
-      return this.j;
    }
 }

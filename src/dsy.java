@@ -4,66 +4,69 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class dsy extends dtg {
-   public static final Codec<dsy> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  arh.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bgf.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, dsy::new)
-   );
-   private final int b;
-   private final bgf h;
+public class dsy extends dte {
+   public static final Codec<dsy> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsy::new));
 
-   public dsy(int $$0, int $$1, int $$2, int $$3, bgf $$4) {
+   public dsy(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
    }
 
    @Override
-   protected dth<?> a() {
-      return dth.g;
+   protected dtf<?> a() {
+      return dtf.e;
    }
 
    @Override
-   public List<dro.a> a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, int $$3, gw $$4, dqy $$5) {
-      hc $$6 = hc.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      gw.a $$8 = $$4.j();
-      gw $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<dro.a> $$10 = Lists.newArrayList();
+   public List<drm.a> a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, int $$3, gw $$4, dqw $$5) {
+      List<drm.a> $$6 = Lists.newArrayList();
+      gw $$7 = $$4.d();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.h(), $$5);
+      a($$0, $$1, $$2, $$7.f(), $$5);
+      a($$0, $$1, $$2, $$7.f().h(), $$5);
+      ha $$8 = ha.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
          }
 
-         if (dpk.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
+         int $$18 = $$12 + $$17;
+         gw $$19 = new gw($$14, $$18, $$15);
+         if (dpi.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.h(), $$5);
+            this.b($$0, $$1, $$2, $$19.f(), $$5);
+            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
          }
-
-         if ($$11 >= this.b) {
-            $$10.add(new dro.a($$8.i(), 0, false));
-         }
-
-         $$8.c(hc.b);
       }
 
-      int $$12 = this.h.a($$2);
+      $$6.add(new drm.a(new gw($$14, $$16, $$15), 0, true));
 
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (dpk.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
+
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new gw($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
+
+               $$6.add(new drm.a(new gw($$14 + $$20, $$16, $$15 + $$21), 0, false));
+            }
          }
-
-         $$10.add(new dro.a($$8.i(), 0, false));
-         $$8.c($$6);
       }
 
-      return $$10;
+      return $$6;
    }
 }

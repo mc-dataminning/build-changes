@@ -1,12 +1,12 @@
-public class fux extends fup<bvk, fgh<bvk>> {
-   private static final aey a = new aey("textures/entity/pig/pig.png");
+public class fux extends fua<bzl> {
+   private static final aew a = new aew("textures/entity/illager/pillager.png");
 
-   public fux(ftj.a $$0) {
-      super($$0, new fgh<>($$0.a(fid.aC)), 0.7F);
-      this.a(new fxs<>(this, new fgh<>($$0.a(fid.aK)), new aey("textures/entity/pig/pig_saddle.png")));
+   public fux(fth.a $$0) {
+      super($$0, new ffr<>($$0.a(fib.aL)), 0.5F);
+      this.a(new fxi<>(this, $$0.d()));
    }
 
-   public aey a(bvk $$0) {
+   public aew a(bzl $$0) {
       return a;
    }
 }

@@ -1,30 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dqp(int b, int c, int d, hg<duo> e) implements dqc {
+public class dqp implements dqa {
    public static final Codec<dqp> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               arh.j.fieldOf("tries").orElse(128).forGetter(dqp::a),
-               arh.i.fieldOf("xz_spread").orElse(7).forGetter(dqp::b),
-               arh.i.fieldOf("y_spread").orElse(3).forGetter(dqp::c),
-               duo.b.fieldOf("feature").forGetter(dqp::d)
+               dfj.b.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dfj.b.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bgd.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, dqp::new)
    );
+   public final dfj b;
+   public final dfj c;
+   private final bgd d;
 
-   public int a() {
-      return this.b;
+   public dqp(dfj $$0, dfj $$1, bgd $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
+   public bgd a() {
       return this.d;
-   }
-
-   public hg<duo> d() {
-      return this.e;
    }
 }

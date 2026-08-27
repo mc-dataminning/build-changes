@@ -1,76 +1,62 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+import org.apache.commons.lang3.Validate;
 
-public enum atc {
-   a(ayz.a),
-   b(ayz.b),
-   c(ayz.c),
-   d(ayz.d),
-   e(ayz.e),
-   f(ayz.f),
-   g(ayz.g),
-   h(ayz.h),
-   i(ayz.i),
-   j(ayz.j),
-   k(ayz.k),
-   l(ayz.l),
-   m(ayz.m),
-   n(ayz.o),
-   o(ayz.n),
-   p(ayz.p),
-   q(ayz.q),
-   r(ayz.I),
-   s(ayz.r);
+public class atc {
+   private static final int a = 6;
+   private final long[] b;
+   private final int c;
+   private final long d;
+   private final int e;
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private atc(TypeReference $$0) {
-      this.u = $$0;
+   public atc(int $$0, int $$1) {
+      this($$0, $$1, new long[arw.d($$1 * $$0, 64) / 64]);
    }
 
-   static int a() {
-      return aa.b().d().c();
+   public atc(int $$0, int $$1, long[] $$2) {
+      Validate.inclusiveBetween(1L, 32L, (long)$$0);
+      this.e = $$1;
+      this.c = $$0;
+      this.b = $$2;
+      this.d = (1L << $$0) - 1L;
+      int $$3 = arw.d($$1 * $$0, 64) / 64;
+      if ($$2.length != $$3) {
+         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
+      }
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(atc.a())));
-         }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = atc.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
+   public void a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, this.d, (long)$$1);
+      int $$2 = $$0 * this.c;
+      int $$3 = $$2 >> 6;
+      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$5 = $$2 ^ $$3 << 6;
+      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
+      if ($$3 != $$4) {
+         int $$6 = 64 - $$5;
+         int $$7 = this.c - $$6;
+         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
+      }
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      int $$1 = $$0 * this.c;
+      int $$2 = $$1 >> 6;
+      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$4 = $$1 ^ $$2 << 6;
+      if ($$2 == $$3) {
+         return (int)(this.b[$$2] >>> $$4 & this.d);
+      } else {
+         int $$5 = 64 - $$4;
+         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
+      }
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
+   public long[] a() {
+      return this.b;
    }
 
-   public qy a(DataFixer $$0, qy $$1, int $$2, int $$3) {
-      return (qy)this.a($$0, new Dynamic(rk.a, $$1), $$2, $$3).getValue();
-   }
-
-   public qy a(DataFixer $$0, qy $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+   public int b() {
+      return this.c;
    }
 }

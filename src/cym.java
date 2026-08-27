@@ -1,18 +1,26 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cym extends cum {
+   private static final eig[] a = new eig[]{
+      csv.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      csv.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
-public class cym extends dbw {
-   protected cym(dfk.d $$0) {
-      super(czz.b.c, $$0);
+   public cym(dfi.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cpx $$0, gw $$1, dfl $$2, @Nullable bji $$3, cjh $$4) {
-      csy.gK.a($$0, $$1, $$2, $$3, $$4);
+   protected cpu c() {
+      return cji.tm;
    }
 
    @Override
-   public List<cjh> a(dfl $$0, ecy.a $$1) {
-      return csy.gK.a($$0, $$1);
+   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+      return a[this.g($$0)];
    }
 }

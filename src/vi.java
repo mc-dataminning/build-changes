@@ -1,13 +1,24 @@
-public interface vi extends sl {
-   void a(vl var1);
+public class vi implements vd<vg> {
+   private final tl a;
 
-   void a(vm var1);
+   public vi(tl $$0) {
+      this.a = $$0;
+   }
 
-   void a(vj var1);
+   public vi(so $$0) {
+      this.a = $$0.l();
+   }
 
-   void a(vk var1);
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.a);
+   }
 
-   void a(vn var1);
+   public void a(vg $$0) {
+      $$0.a(this);
+   }
 
-   void a(vo var1);
+   public tl a() {
+      return this.a;
+   }
 }

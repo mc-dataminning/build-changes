@@ -1,19 +1,13 @@
 import com.mojang.serialization.Codec;
 
-public class dyp extends dyq {
-   public static final Codec<dyp> a = Codec.unit(() -> dyp.b);
-   public static final dyp b = new dyp();
+public interface dyp<P extends dyo> {
+   dyp<dyn> a = a("always_true", dyn.a);
+   dyp<dyl> b = a("linear_pos", dyl.a);
+   dyp<dya> c = a("axis_aligned_linear_pos", dya.a);
 
-   private dyp() {
-   }
+   Codec<P> codec();
 
-   @Override
-   public boolean a(gw $$0, gw $$1, gw $$2, ase $$3) {
-      return true;
-   }
-
-   @Override
-   protected dyr<?> a() {
-      return dyr.a;
+   static <P extends dyo> dyp<P> a(String $$0, Codec<P> $$1) {
+      return hq.a(jb.r, $$0, () -> $$1);
    }
 }

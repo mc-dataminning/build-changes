@@ -1,52 +1,47 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
 
 public class bfl {
-   public static final Codec<bfl> a = Codec.INT.xmap(bfl::a, bfl::a);
-   private static final bfl b = new bfl(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
-
-   private bfl(int $$0) {
-      this.d = $$0;
+   private bfl() {
    }
 
-   public static bfl a(int $$0) {
-      if ($$0 == 1) {
-         return b;
+   public static int a(List<? extends bfk> $$0) {
+      long $$1 = 0L;
+
+      for (bfk $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
       } else {
-         b($$0);
-         return new bfl($$0);
+         return (int)$$1;
       }
    }
 
-   public int a() {
-      return this.d;
+   public static <T extends bfk> Optional<T> a(asc $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
    }
 
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aT) {
-            c.warn("Found 0 weight, make sure this is intentional!");
+   public static <T extends bfk> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
          }
       }
+
+      return Optional.empty();
    }
 
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bfl && this.d == ((bfl)$$0).d;
+   public static <T extends bfk> Optional<T> a(asc $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

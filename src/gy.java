@@ -1,44 +1,66 @@
-public class gy implements gx {
-   private final aks a;
-   private final gw b;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-   public gy(aks $$0, gw $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class gy<T> extends hm<T> implements gz<T> {
+   private final aew b;
+   private he.c<T> c;
+
+   public gy(String $$0, aev<? extends hq<T>> $$1, Lifecycle $$2, boolean $$3) {
+      super($$1, $$2, $$3);
+      this.b = new aew($$0);
    }
 
    @Override
-   public aks g() {
-      return this.a;
+   public he.c<T> a(int $$0, aev<T> $$1, T $$2, Lifecycle $$3) {
+      he.c<T> $$4 = super.a($$0, $$1, $$2, $$3);
+      if (this.b.equals($$1.a())) {
+         this.c = $$4;
+      }
+
+      return $$4;
    }
 
    @Override
-   public double a() {
-      return (double)this.b.u() + 0.5;
+   public int a(@Nullable T $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == -1 ? super.a(this.c.a()) : $$1;
+   }
+
+   @Nonnull
+   @Override
+   public aew b(T $$0) {
+      aew $$1 = super.b($$0);
+      return $$1 == null ? this.b : $$1;
+   }
+
+   @Nonnull
+   @Override
+   public T a(@Nullable aew $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
    }
 
    @Override
-   public double b() {
-      return (double)this.b.v() + 0.5;
+   public Optional<T> b(@Nullable aew $$0) {
+      return Optional.ofNullable(super.a($$0));
+   }
+
+   @Nonnull
+   @Override
+   public T a(int $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
    }
 
    @Override
-   public double c() {
-      return (double)this.b.w() + 0.5;
+   public Optional<he.c<T>> a(asc $$0) {
+      return super.a($$0).or(() -> Optional.of(this.c));
    }
 
    @Override
-   public gw d() {
+   public aew a() {
       return this.b;
-   }
-
-   @Override
-   public dfl e() {
-      return this.a.a_(this.b);
-   }
-
-   @Override
-   public <T extends dcx> T f() {
-      return (T)this.a.c_(this.b);
    }
 }

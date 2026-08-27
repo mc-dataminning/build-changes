@@ -1,51 +1,5 @@
-import java.nio.file.Path;
+import java.util.function.Consumer;
 
-public class jm {
-   private final Path a;
-
-   public jm(Path $$0) {
-      this.a = $$0;
-   }
-
-   public Path a() {
-      return this.a;
-   }
-
-   public Path a(jm.b $$0) {
-      return this.a().resolve($$0.d);
-   }
-
-   public jm.a a(jm.b $$0, String $$1) {
-      return new jm.a(this, $$0, $$1);
-   }
-
-   public static class a {
-      private final Path a;
-      private final String b;
-
-      a(jm $$0, jm.b $$1, String $$2) {
-         this.a = $$0.a($$1);
-         this.b = $$2;
-      }
-
-      public Path a(aey $$0, String $$1) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
-      }
-
-      public Path a(aey $$0) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
-      }
-   }
-
-   public static enum b {
-      a("data"),
-      b("assets"),
-      c("reports");
-
-      final String d;
-
-      private b(String $$0) {
-         this.d = $$0;
-      }
-   }
+public interface jm {
+   void a(hg.b var1, Consumer<af> var2);
 }

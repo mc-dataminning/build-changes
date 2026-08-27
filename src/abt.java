@@ -1,79 +1,49 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class abt implements vf<abe> {
-   private static final int a = 128;
-   private final int b;
-   private final int c;
-   private final int d;
+public class abt implements vd<abc> {
+   public static final int a = 4;
+   private static final int b = 128;
+   private static final int c = 8192;
+   private static final int d = 200;
    private final int e;
-   private final cew f;
-   private final cjh g;
-   private final Int2ObjectMap<cjh> h;
+   private final List<String> f;
+   private final Optional<String> g;
 
-   public abt(int $$0, int $$1, int $$2, int $$3, cew $$4, cjh $$5, Int2ObjectMap<cjh> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = Int2ObjectMaps.unmodifiable($$6);
+   public abt(int $$0, List<String> $$1, Optional<String> $$2) {
+      this.e = $$0;
+      this.f = ImmutableList.copyOf($$1);
+      this.g = $$2;
    }
 
-   public abt(sq $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.m();
-      this.d = $$0.readShort();
-      this.e = $$0.readByte();
-      this.f = $$0.b(cew.class);
-      IntFunction<Int2ObjectOpenHashMap<cjh>> $$1 = sq.a(Int2ObjectOpenHashMap::new, 128);
-      this.h = Int2ObjectMaps.unmodifiable($$0.a($$1, $$0x -> Integer.valueOf($$0x.readShort()), sq::q));
-      this.g = $$0.q();
+   public abt(so $$0) {
+      this.e = $$0.m();
+      this.f = $$0.a(so.a(Lists::newArrayListWithCapacity, 200), $$0x -> $$0x.d(8192));
+      this.g = $$0.b((so.a<String>)($$0x -> $$0x.d(128)));
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.k(this.b);
-      $$0.c(this.c);
-      $$0.l(this.d);
-      $$0.k(this.e);
-      $$0.a(this.f);
-      $$0.a(this.h, sq::l, sq::a);
-      $$0.a(this.g);
+   public void a(so $$0) {
+      $$0.c(this.e);
+      $$0.a(this.f, ($$0x, $$1) -> $$0x.a($$1, 8192));
+      $$0.a(this.g, ($$0x, $$1) -> $$0x.a($$1, 128));
    }
 
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.b;
+   public List<String> a() {
+      return this.f;
    }
 
-   public int d() {
-      return this.d;
+   public Optional<String> d() {
+      return this.g;
    }
 
    public int e() {
       return this.e;
-   }
-
-   public cjh f() {
-      return this.g;
-   }
-
-   public Int2ObjectMap<cjh> g() {
-      return this.h;
-   }
-
-   public cew h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.c;
    }
 }

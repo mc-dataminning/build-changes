@@ -1,59 +1,46 @@
-import com.google.common.net.InetAddresses;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.List;
+import java.util.Collection;
 import javax.annotation.Nullable;
 
 public class age {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tn.c("commands.banip.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.ban.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("ban-ip").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("ban").requires($$0x -> $$0x.c(3)))
             .then(
-               ((RequiredArgumentBuilder)du.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((dt)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(du.a("reason", ei.a()).executes($$0x -> a((dt)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), ei.a($$0x, "reason"))))
+               ((RequiredArgumentBuilder)du.a("targets", eg.a()).executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets"), null)))
+                  .then(du.a("reason", ei.a()).executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets"), ei.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(dt $$0, String $$1, @Nullable tn $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
-      } else {
-         akt $$3 = $$0.l().ac().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.y(), $$2);
-         } else {
-            throw a.create();
+   private static int a(dt $$0, Collection<GameProfile> $$1, @Nullable tl $$2) throws CommandSyntaxException {
+      aom $$3 = $$0.l().ac().f();
+      int $$4 = 0;
+
+      for (GameProfile $$5 : $$1) {
+         if (!$$3.a($$5)) {
+            aon $$6 = new aon($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            $$3.a($$6);
+            $$4++;
+            $$0.a(() -> tl.a("commands.ban.success", tl.b($$5.getName()), $$6.d()), true);
+            akr $$7 = $$0.l().ac().a($$5.getId());
+            if ($$7 != null) {
+               $$7.c.b(tl.c("multiplayer.disconnect.banned"));
+            }
          }
       }
-   }
 
-   private static int b(dt $$0, String $$1, @Nullable tn $$2) throws CommandSyntaxException {
-      aof $$3 = $$0.l().ac().g();
-      if ($$3.a($$1)) {
-         throw b.create();
+      if ($$4 == 0) {
+         throw a.create();
       } else {
-         List<akt> $$4 = $$0.l().ac().b($$1);
-         aog $$5 = new aog($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> tn.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> tn.a("commands.banip.info", $$4.size(), gc.a($$4)), true);
-         }
-
-         for (akt $$6 : $$4) {
-            $$6.c.b(tn.c("multiplayer.disconnect.ip_banned"));
-         }
-
-         return $$4.size();
+         return $$4;
       }
    }
 }

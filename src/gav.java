@@ -1,12 +1,12 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gav implements amv<gau> {
-   public gau b(JsonObject $$0) {
-      return new gau(gau.a.a(arp.a($$0, "hat", "none")));
-   }
+public record gav(gaw d) {
+   public static final gav a = new gav(gaw.b);
+   public static final Codec<gav> b = RecordCodecBuilder.create($$0 -> $$0.group(arf.a(gaw.a, "scaling", gaw.b).forGetter(gav::a)).apply($$0, gav::new));
+   public static final amu<gav> c = amu.a("gui", b);
 
-   @Override
-   public String a() {
-      return "villager";
+   public gaw a() {
+      return this.d;
    }
 }

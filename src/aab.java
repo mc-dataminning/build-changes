@@ -1,44 +1,32 @@
-public class aab implements vf<wy> {
-   private final int a;
+public class aab implements vd<ww> {
+   private final float a;
    private final int b;
    private final int c;
-   private final int d;
 
-   public aab(bis $$0) {
-      this($$0.ah(), $$0.do());
-   }
-
-   public aab(int $$0, ehp $$1) {
+   public aab(float $$0, int $$1, int $$2) {
       this.a = $$0;
-      double $$2 = 3.9;
-      double $$3 = ary.a($$1.c, -3.9, 3.9);
-      double $$4 = ary.a($$1.d, -3.9, 3.9);
-      double $$5 = ary.a($$1.e, -3.9, 3.9);
-      this.b = (int)($$3 * 8000.0);
-      this.c = (int)($$4 * 8000.0);
-      this.d = (int)($$5 * 8000.0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public aab(sq $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readShort();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
+   public aab(so $$0) {
+      this.a = $$0.readFloat();
+      this.c = $$0.m();
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-      $$0.l(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
+   public void a(so $$0) {
+      $$0.a(this.a);
+      $$0.c(this.c);
+      $$0.c(this.b);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public float a() {
       return this.a;
    }
 
@@ -48,9 +36,5 @@ public class aab implements vf<wy> {
 
    public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

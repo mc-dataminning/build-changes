@@ -1,42 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class dxj extends dvk {
-   public static final bfo<crh.c> d = bfo.a(
-      new crh.c(biw.i, 10, 2, 3), new crh.c(biw.bs, 5, 4, 4), new crh.c(biw.bl, 8, 5, 5), new crh.c(biw.aJ, 2, 5, 5), new crh.c(biw.al, 3, 4, 4)
+public class dxj extends dvi {
+   public static final Codec<dxj> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), dtp.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, dxj::new)
    );
-   public static final Codec<dxj> e = a(dxj::new);
+   public final dtp e;
 
-   public dxj(dvk.c $$0) {
+   public dxj(dvi.c $$0, dtp $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<dvk.b> a(dvk.a $$0) {
-      cpe $$1 = $$0.h();
-      gw $$2 = new gw($$1.d(), 64, $$1.e());
-      return Optional.of(new dvk.b($$2, (Consumer<dwc>)($$1x -> a($$1x, $$0))));
-   }
+   public Optional<dvi.b> a(dvi.a $$0) {
+      dlr $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().e();
+      dlp $$5 = new dlp($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      cqh $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      gw.a $$8 = new gw.a($$2, $$6, $$3);
 
-   private static void a(dwc $$0, dvk.a $$1) {
-      dxi.q $$2 = new dxi.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<dvo> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         dvo $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
+      while ($$6 > $$4) {
+         dfj $$9 = $$7.a($$6);
+         dfj $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(csw.dX) || $$10.d(cpk.a, $$8.q($$6), ha.b))) {
+            break;
+         }
       }
 
-      $$0.a($$1.f(), 48, 70);
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         gw $$11 = new gw($$2, $$6, $$3);
+         return Optional.of(new dvi.b($$11, (Consumer<dwa>)($$3x -> dxi.a($$0.e(), $$3x, $$1, $$11))));
+      }
    }
 
    @Override
-   public dvt<?> e() {
-      return dvt.d;
+   public dvr<?> e() {
+      return dvr.i;
    }
 }

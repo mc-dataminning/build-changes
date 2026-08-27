@@ -1,52 +1,68 @@
-public class dch extends csx {
-   protected dch(dfk.d $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class dch extends czx {
+   @Nullable
+   private static dfo f;
+   @Nullable
+   private static dfo g;
+
+   protected dch(dfi.d $$0) {
+      super(czx.b.b, $$0);
    }
 
    @Override
-   public void b(dfl $$0, cpx $$1, gw $$2, dfl $$3, boolean $$4) {
-      if ($$1.C_().i()) {
-         $$1.a($$2, csy.aO.n(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, apf.hN, apg.e, 1.0F, (1.0F + $$1.D_().i() * 0.2F) * 0.7F);
+   public void a(cpv $$0, gw $$1, dfj $$2, @Nullable bjg $$3, cjf $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dcv $$5 = $$0.c_($$1);
+      if ($$5 instanceof def) {
+         a($$0, $$1, (def)$$5);
       }
    }
 
-   @Override
-   public void a(dfl $$0, cpx $$1, gw $$2, ase $$3) {
-      hc $$4 = hc.b($$3);
-      if ($$4 != hc.b) {
-         gw $$5 = $$2.a($$4);
-         dfl $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == hc.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == hc.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == hc.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
+   public static void a(cpv $$0, gw $$1, def $$2) {
+      if (!$$0.B) {
+         dfj $$3 = $$2.q();
+         boolean $$4 = $$3.a(csw.gG) || $$3.a(csw.gH);
+         if ($$4 && $$1.v() >= $$0.H_() && $$0.ai() != bgv.a) {
+            dfo.b $$5 = u().a($$0, $$1);
+            if ($$5 != null) {
+               byb $$6 = biu.bk.a($$0);
+               if ($$6 != null) {
+                  cto.a($$0, $$5);
+                  gw $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ha.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aU = $$5.b().o() == ha.a.a ? 0.0F : 90.0F;
+                  $$6.s();
+
+                  for (akr $$8 : $$0.a(akr.class, $$6.cG().g(50.0))) {
+                     al.n.a($$8, $$6);
                   }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == hc.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
+
+                  $$0.b($$6);
+                  cto.b($$0, $$5);
                }
             }
-
-            $$1.a(ix.m, $$7, $$8, $$9, 0.0, 0.0, 0.0);
          }
       }
+   }
+
+   public static boolean b(cpv $$0, gw $$1, cjf $$2) {
+      return $$2.a(cji.ts) && $$1.v() >= $$0.H_() + 2 && $$0.ai() != bgv.a && !$$0.B ? v().a($$0, $$1) != null : false;
+   }
+
+   private static dfo u() {
+      if (f == null) {
+         f = dfp.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(aps.aE)).a('^', dfn.a(dfs.a(csw.gG).or(dfs.a(csw.gH)))).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return f;
+   }
+
+   private static dfo v() {
+      if (g == null) {
+         g = dfp.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(aps.aE)).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return g;
    }
 }

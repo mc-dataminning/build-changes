@@ -1,45 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class dnh extends dny<dpu> {
-   public dnh(Codec<dpu> $$0) {
+public class dnh extends dnw<dqh> {
+   public dnh(Codec<dqh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doa<dpu> $$0) {
-      gw $$1 = $$0.e();
-      cqr $$2 = $$0.b();
-      ase $$3 = $$0.d();
-      dpu $$4 = $$0.f();
-      if ($$1.v() < $$2.H_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
+   public boolean a(dny<dqh> $$0) {
+      asc $$1 = $$0.d();
+      cqp $$2 = $$0.b();
+      cpc $$3 = new cpc($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      gw.a $$6 = new gw.a();
+      IntListIterator var8 = $$4.iterator();
 
-         for (gw $$7 : gw.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            gw $$9 = $$2.a(dks.a.f, $$6);
+            if ($$2.t($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, csw.cv.n(), 2);
+               ddy.a($$2, $$1, $$9, eco.b);
+               dfj $$10 = csw.cp.n();
+
+               for (ha $$11 : ha.c.a) {
+                  gw $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
             }
          }
-
-         return true;
       }
-   }
 
-   private boolean a(cpy $$0, gw $$1, ase $$2) {
-      gw $$3 = $$1.d();
-      dfl $$4 = $$0.a_($$3);
-      return $$4.a(csy.kE) ? $$2.h() : $$4.d($$0, $$3, hc.b);
-   }
-
-   private void a(cpy $$0, gw $$1, ase $$2, dpu $$3) {
-      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
-      }
+      return false;
    }
 }

@@ -1,24 +1,24 @@
-public class abh implements vf<abe> {
-   private final int a;
+public class abh implements vd<abc> {
+   private final bgv a;
 
-   public abh(int $$0) {
+   public abh(bgv $$0) {
       this.a = $$0;
    }
 
-   public abh(sq $$0) {
-      this.a = $$0.m();
-   }
-
-   @Override
-   public void a(sq $$0) {
-      $$0.c(this.a);
-   }
-
-   public void a(abe $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public abh(so $$0) {
+      this.a = bgv.a($$0.readUnsignedByte());
+   }
+
+   @Override
+   public void a(so $$0) {
+      $$0.k(this.a.a());
+   }
+
+   public bgv a() {
       return this.a;
    }
 }

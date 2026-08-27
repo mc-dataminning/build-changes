@@ -1,56 +1,42 @@
-public class czz extends cru {
-   public static final int b = dgr.a();
-   private static final int f = b + 1;
-   public static final dgl c = dgb.ba;
-   protected static final eii d = csx.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final eii e = csx.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
-
-   protected czz(czz.a $$0, dfk.d $$1) {
-      super($$0, $$1);
-      this.k(this.n().a(c, Integer.valueOf(0)));
+public class czz extends cwj {
+   public czz(dfi.d $$0) {
+      super($$0);
    }
 
    @Override
-   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
-      return this.a() == czz.b.f ? e : d;
+   public void a(cpv $$0, dfj $$1, gw $$2, biq $$3, float $$4) {
+      if ($$3.bT()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         $$3.a($$4, 0.0F, $$0.ag().k());
+      }
    }
 
    @Override
-   public eii f(dfl $$0, cpd $$1, gw $$2) {
-      return eif.a();
+   public void a(cpb $$0, biq $$1) {
+      if ($$1.bT()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(biq $$0) {
+      ehn $$1 = $$0.do();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof bjg ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
+      }
    }
 
    @Override
-   public dfl a(clp $$0) {
-      return super.a($$0).a(c, Integer.valueOf(dgr.a($$0.i())));
-   }
+   public void a(cpv $$0, gw $$1, dfj $$2, biq $$3) {
+      double $$4 = Math.abs($$3.do().d);
+      if ($$4 < 0.1 && !$$3.bS()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.f($$3.do().d($$5, 1.0, $$5));
+      }
 
-   @Override
-   public dfl a(dfl $$0, czj $$1) {
-      return $$0.a(c, Integer.valueOf($$1.a($$0.c(c), f)));
-   }
-
-   @Override
-   public dfl a(dfl $$0, cxs $$1) {
-      return $$0.a(c, Integer.valueOf($$1.a($$0.c(c), f)));
-   }
-
-   @Override
-   protected void a(dfm.a<csx, dfl> $$0) {
-      super.a($$0);
-      $$0.a(c);
-   }
-
-   public interface a {
-   }
-
-   public static enum b implements czz.a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

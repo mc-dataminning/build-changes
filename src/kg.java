@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
+import java.util.Set;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface kg {
+public class kg {
+   public static kc a(jk $$0) {
+      return new kc($$0, Set.of(), List.of(new kc.a(kf::new, efa.g)));
+   }
 }

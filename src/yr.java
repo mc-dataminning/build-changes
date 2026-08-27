@@ -1,56 +1,43 @@
-public class yr implements vf<wy> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+import javax.annotation.Nullable;
 
-   public yr(bis $$0) {
-      this.a = $$0.dq();
-      this.b = $$0.ds();
-      this.c = $$0.dw();
-      this.d = $$0.dB();
-      this.e = $$0.dD();
+public class yr implements vd<ww> {
+   private final int a;
+   private final cfq<?> b;
+   private final tl c;
+
+   public yr(int $$0, cfq<?> $$1, tl $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public yr(sq $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   public yr(so $$0) {
+      this.a = $$0.m();
+      this.b = $$0.a(jb.s);
+      this.c = $$0.l();
    }
 
    @Override
-   public void a(sq $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(jb.s, this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
    }
 
-   public void a(wy $$0) {
+   public void a(ww $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public int a() {
       return this.a;
    }
 
-   public double d() {
+   @Nullable
+   public cfq<?> d() {
       return this.b;
    }
 
-   public double e() {
+   public tl e() {
       return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

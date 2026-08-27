@@ -1,189 +1,136 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
-public class eip extends ebt {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final eio c;
+public class eip {
+   private static final Map<String, eip> n = Maps.newHashMap();
+   private static final Map<String, eip> o = Maps.newHashMap();
+   public static final eip a = b("dummy");
+   public static final eip b = b("trigger");
+   public static final eip c = b("deathCount");
+   public static final eip d = b("playerKillCount");
+   public static final eip e = b("totalKillCount");
+   public static final eip f = a("health", true, eip.a.b);
+   public static final eip g = a("food", true, eip.a.a);
+   public static final eip h = a("air", true, eip.a.a);
+   public static final eip i = a("armor", true, eip.a.a);
+   public static final eip j = a("xp", true, eip.a.a);
+   public static final eip k = a("level", true, eip.a.a);
+   public static final eip[] l = new eip[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
+   };
+   public static final eip[] m = new eip[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final eip.a r;
 
-   public eip(eio $$0) {
-      this.c = $$0;
+   private static eip a(String $$0, boolean $$1, eip.a $$2) {
+      eip $$3 = new eip($$0, $$1, $$2);
+      n.put($$0, $$3);
+      return $$3;
    }
 
-   public eip b(qy $$0) {
-      this.b($$0.c("Objectives", 10));
-      this.c.a($$0.c("PlayerScores", 10));
-      if ($$0.b("DisplaySlots", 10)) {
-         this.c($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10));
-      }
-
-      return this;
+   private static eip b(String $$0) {
+      return a($$0, false, eip.a.a);
    }
 
-   private void a(re $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         qy $$2 = $$0.a($$1);
-         String $$3 = $$2.l("Name");
-         eim $$4 = this.c.e($$3);
-         tn $$5 = tn.a.a($$2.l("DisplayName"));
-         if ($$5 != null) {
-            $$4.a($$5);
-         }
-
-         if ($$2.b("TeamColor", 8)) {
-            $$4.a(n.b($$2.l("TeamColor")));
-         }
-
-         if ($$2.b("AllowFriendlyFire", 99)) {
-            $$4.a($$2.q("AllowFriendlyFire"));
-         }
-
-         if ($$2.b("SeeFriendlyInvisibles", 99)) {
-            $$4.b($$2.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$2.b("MemberNamePrefix", 8)) {
-            tn $$6 = tn.a.a($$2.l("MemberNamePrefix"));
-            if ($$6 != null) {
-               $$4.b($$6);
-            }
-         }
-
-         if ($$2.b("MemberNameSuffix", 8)) {
-            tn $$7 = tn.a.a($$2.l("MemberNameSuffix"));
-            if ($$7 != null) {
-               $$4.c($$7);
-            }
-         }
-
-         if ($$2.b("NameTagVisibility", 8)) {
-            eiq.b $$8 = eiq.b.a($$2.l("NameTagVisibility"));
-            if ($$8 != null) {
-               $$4.a($$8);
-            }
-         }
-
-         if ($$2.b("DeathMessageVisibility", 8)) {
-            eiq.b $$9 = eiq.b.a($$2.l("DeathMessageVisibility"));
-            if ($$9 != null) {
-               $$4.b($$9);
-            }
-         }
-
-         if ($$2.b("CollisionRule", 8)) {
-            eiq.a $$10 = eiq.a.a($$2.l("CollisionRule"));
-            if ($$10 != null) {
-               $$4.a($$10);
-            }
-         }
-
-         this.a($$4, $$2.c("Players", 8));
-      }
+   protected eip(String $$0) {
+      this($$0, false, eip.a.a);
    }
 
-   private void a(eim $$0, re $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
+   protected eip(String $$0, boolean $$1, eip.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
    }
 
-   private void c(qy $$0) {
-      for (String $$1 : $$0.e()) {
-         eik $$2 = eik.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            eil $$4 = this.c.b($$3);
-            this.c.a($$2, $$4);
-         }
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(n.keySet());
+   }
+
+   public static Optional<eip> a(String $$0) {
+      eip $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : jb.y.b(aew.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, aew.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   private void b(re $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         qy $$2 = $$0.a($$1);
-         String $$3 = $$2.l("CriteriaName");
-         eir $$4 = eir.a($$3).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$3, eir.a.d());
-            return eir.a;
-         });
-         String $$5 = $$2.l("Name");
-         tn $$6 = tn.a.a($$2.l("DisplayName"));
-         eir.a $$7 = eir.a.a($$2.l("RenderType"));
-         this.c.a($$5, $$4, $$6, $$7);
-      }
+   private static <T> Optional<eip> a(apm<T> $$0, aew $$1) {
+      return $$0.a().b($$1).map($$0::b);
    }
 
-   @Override
-   public qy a(qy $$0) {
-      $$0.a("Objectives", this.b());
-      $$0.a("PlayerScores", this.c.h());
-      $$0.a("Teams", this.a());
-      this.d($$0);
-      return $$0;
+   public String d() {
+      return this.p;
    }
 
-   private re a() {
-      re $$0 = new re();
-
-      for (eim $$2 : this.c.g()) {
-         qy $$3 = new qy();
-         $$3.a("Name", $$2.b());
-         $$3.a("DisplayName", tn.a.a($$2.c()));
-         if ($$2.n().b() >= 0) {
-            $$3.a("TeamColor", $$2.n().g());
-         }
-
-         $$3.a("AllowFriendlyFire", $$2.h());
-         $$3.a("SeeFriendlyInvisibles", $$2.i());
-         $$3.a("MemberNamePrefix", tn.a.a($$2.e()));
-         $$3.a("MemberNameSuffix", tn.a.a($$2.f()));
-         $$3.a("NameTagVisibility", $$2.j().e);
-         $$3.a("DeathMessageVisibility", $$2.k().e);
-         $$3.a("CollisionRule", $$2.l().e);
-         re $$4 = new re();
-
-         for (String $$5 : $$2.g()) {
-            $$4.add(rq.a($$5));
-         }
-
-         $$3.a("Players", $$4);
-         $$0.add($$3);
-      }
-
-      return $$0;
+   public boolean e() {
+      return this.q;
    }
 
-   private void d(qy $$0) {
-      qy $$1 = new qy();
-
-      for (eik $$2 : eik.values()) {
-         eil $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
-      }
+   public eip.a f() {
+      return this.r;
    }
 
-   private re b() {
-      re $$0 = new re();
+   public static enum a implements asp {
+      a("integer"),
+      b("hearts");
 
-      for (eil $$2 : this.c.c()) {
-         qy $$3 = new qy();
-         $$3.a("Name", $$2.b());
-         $$3.a("CriteriaName", $$2.c().d());
-         $$3.a("DisplayName", tn.a.a($$2.d()));
-         $$3.a("RenderType", $$2.f().a());
-         $$0.add($$3);
+      private final String d;
+      public static final asp.a<eip.a> c = asp.a(eip.a::values);
+
+      private a(String $$0) {
+         this.d = $$0;
       }
 
-      return $$0;
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      public static eip.a a(String $$0) {
+         return c.a($$0, a);
+      }
    }
 }

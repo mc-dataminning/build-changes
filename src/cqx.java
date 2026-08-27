@@ -1,101 +1,141 @@
-import com.google.common.hash.Hashing;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cqx {
-   public static final int a = hs.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final cqx.a e;
-   private final long f;
+public abstract class cqx implements cqw {
+   public static final Codec<cqx> a = jb.ac.q().dispatchStable(cqx::a, Function.identity());
+   private final Supplier<Set<he<cqt>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   public cqx(cqx.a $$0, long $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected cqx() {
    }
 
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
+   protected abstract Codec<? extends cqx> a();
+
+   protected abstract Stream<he<cqt>> b();
+
+   public Set<he<cqt>> c() {
+      return this.b.get();
    }
 
-   public cqx a(cqx.a $$0) {
-      return new cqx($$0, this.f);
-   }
+   public Set<he<cqt>> a(int $$0, int $$1, int $$2, int $$3, crc.f $$4) {
+      int $$5 = hp.a($$0 - $$3);
+      int $$6 = hp.a($$1 - $$3);
+      int $$7 = hp.a($$2 - $$3);
+      int $$8 = hp.a($$0 + $$3);
+      int $$9 = hp.a($$1 + $$3);
+      int $$10 = hp.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<he<cqt>> $$14 = Sets.newHashSet();
 
-   public hg<cqv> a(gw $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
-
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
          }
       }
 
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
+      return $$14;
    }
 
-   public hg<cqv> a(double $$0, double $$1, double $$2) {
-      int $$3 = hs.a(ary.a($$0));
-      int $$4 = hs.a(ary.a($$1));
-      int $$5 = hs.a(ary.a($$2));
-      return this.a($$3, $$4, $$5);
+   @Nullable
+   public Pair<gw, he<cqt>> a(int $$0, int $$1, int $$2, int $$3, Predicate<he<cqt>> $$4, asc $$5, crc.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
    }
 
-   public hg<cqv> b(gw $$0) {
-      int $$1 = hs.a($$0.u());
-      int $$2 = hs.a($$0.v());
-      int $$3 = hs.a($$0.w());
-      return this.a($$1, $$2, $$3);
+   @Nullable
+   public Pair<gw, he<cqt>> a(gw $$0, int $$1, int $$2, int $$3, Predicate<he<cqt>> $$4, crc.f $$5, cpy $$6) {
+      Set<he<cqt>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = arw.a($$0.v(), $$6.H_() + 1, $$6.aj(), $$3).toArray();
+
+         for (gw.a $$10 : gw.a(gw.b, $$8, ha.f, ha.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = hp.a($$11);
+            int $$14 = hp.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = hp.a($$15);
+               he<cqt> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new gw($$11, $$15, $$12), $$17);
+               }
+            }
+         }
+
+         return null;
+      }
    }
 
-   public hg<cqv> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
+   @Nullable
+   public Pair<gw, he<cqt>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<he<cqt>> $$5, asc $$6, boolean $$7, crc.f $$8) {
+      int $$9 = hp.a($$0);
+      int $$10 = hp.a($$2);
+      int $$11 = hp.a($$3);
+      int $$12 = hp.a($$1);
+      Pair<gw, he<cqt>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.aq ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               he<cqt> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     gw $$24 = new gw(hp.c($$21), $$1, hp.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
+      }
+
+      return $$13;
    }
 
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = aru.a($$0, (long)$$1);
-      $$7 = aru.a($$7, (long)$$2);
-      $$7 = aru.a($$7, (long)$$3);
-      $$7 = aru.a($$7, (long)$$1);
-      $$7 = aru.a($$7, (long)$$2);
-      $$7 = aru.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = aru.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = aru.a($$7, $$0);
-      double $$10 = b($$7);
-      return ary.k($$6 + $$10) + ary.k($$5 + $$9) + ary.k($$4 + $$8);
-   }
+   @Override
+   public abstract he<cqt> getNoiseBiome(int var1, int var2, int var3, crc.f var4);
 
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
-   }
-
-   public interface a {
-      hg<cqv> getNoiseBiome(int var1, int var2, int var3);
+   public void a(List<String> $$0, gw $$1, crc.f $$2) {
    }
 }

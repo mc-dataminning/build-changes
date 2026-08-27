@@ -1,70 +1,37 @@
-public class fef {
-   public static void a(fie $$0, fie $$1, fie $$2, boolean $$3) {
-      fie $$4 = $$3 ? $$0 : $$1;
-      fie $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+public class fef extends ffq<byd> {
+   public fef(fic $$0) {
+      super($$0);
    }
 
-   public static void a(fie $$0, fie $$1, bji $$2, boolean $$3) {
-      fie $$4 = $$3 ? $$0 : $$1;
-      fie $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)chp.k($$2.fo());
-      float $$7 = ary.a((float)$$2.fq(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = ary.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = ary.i($$8, $$5.e, (float) (-Math.PI / 2));
+   public static fii a(fig $$0) {
+      fik $$1 = ffq.a($$0, 0.0F);
+      fil $$2 = $$1.a();
+      $$2.a("head", fih.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fie.a(0.0F, 1.0F, 0.0F));
+      $$2.a("hat", fih.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fie.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_leg", fih.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fie.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", fih.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fie.a(1.9F, 11.0F, 0.0F));
+      return fii.a($$1, 64, 32);
    }
 
-   public static <T extends bjk> void a(fie $$0, fie $$1, T $$2, float $$3, float $$4) {
-      float $$5 = ary.a($$3 * (float) Math.PI);
-      float $$6 = ary.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fl() == bjc.b) {
-         $$0.e = -1.8849558F + ary.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + ary.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + ary.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + ary.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
-      }
-
-      a($$0, $$1, $$4);
-   }
-
-   public static void a(fie $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (ary.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * ary.a($$1 * 0.067F) * 0.05F;
-   }
-
-   public static void a(fie $$0, fie $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(fie $$0, fie $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = ary.a($$3 * (float) Math.PI);
-      float $$6 = ary.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+   public void a(byd $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.k.e = (float) (Math.PI / 180.0) * $$0.z().b();
+      this.k.f = (float) (Math.PI / 180.0) * $$0.z().c();
+      this.k.g = (float) (Math.PI / 180.0) * $$0.z().d();
+      this.m.e = (float) (Math.PI / 180.0) * $$0.A().b();
+      this.m.f = (float) (Math.PI / 180.0) * $$0.A().c();
+      this.m.g = (float) (Math.PI / 180.0) * $$0.A().d();
+      this.o.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.n.e = (float) (Math.PI / 180.0) * $$0.C().b();
+      this.n.f = (float) (Math.PI / 180.0) * $$0.C().c();
+      this.n.g = (float) (Math.PI / 180.0) * $$0.C().d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
+      this.p.e = (float) (Math.PI / 180.0) * $$0.F().b();
+      this.p.f = (float) (Math.PI / 180.0) * $$0.F().c();
+      this.p.g = (float) (Math.PI / 180.0) * $$0.F().d();
+      this.l.a(this.k);
    }
 }

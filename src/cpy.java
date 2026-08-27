@@ -1,94 +1,199 @@
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface cpy extends cpj, cqe {
+public interface cpy extends coy, cpf, cql, cqv.a {
+   @Nullable
+   dhf a(int var1, int var2, dhk var3, boolean var4);
+
+   @Deprecated
+   boolean b(int var1, int var2);
+
+   int a(dks.a var1, int var2, int var3);
+
+   int A_();
+
+   cqv E_();
+
+   default he<cqt> s(gw $$0) {
+      return this.E_().a($$0);
+   }
+
+   default Stream<dfj> c(ehi $$0) {
+      int $$1 = arw.a($$0.a);
+      int $$2 = arw.a($$0.d);
+      int $$3 = arw.a($$0.b);
+      int $$4 = arw.a($$0.e);
+      int $$5 = arw.a($$0.c);
+      int $$6 = arw.a($$0.f);
+      return this.a($$1, $$3, $$5, $$2, $$4, $$6) ? this.a($$0) : Stream.empty();
+   }
+
    @Override
-   default long ah() {
-      return this.z_().f();
+   default int a(gw $$0, cpg $$1) {
+      return $$1.getColor(this.s($$0).a(), (double)$$0.u(), (double)$$0.w());
    }
 
-   long F_();
-
-   eix<csx> L();
-
-   private <T> ejb<T> a(gw $$0, T $$1, int $$2, ejf $$3) {
-      return new ejb<>($$1, $$0, this.z_().e() + (long)$$2, $$3, this.F_());
+   @Override
+   default he<cqt> getNoiseBiome(int $$0, int $$1, int $$2) {
+      dhf $$3 = this.a(hp.e($$0), hp.e($$2), dhk.f, false);
+      return $$3 != null ? $$3.getNoiseBiome($$0, $$1, $$2) : this.a($$0, $$1, $$2);
    }
 
-   private <T> ejb<T> a(gw $$0, T $$1, int $$2) {
-      return new ejb<>($$1, $$0, this.z_().e() + (long)$$2, this.F_());
+   he<cqt> a(int var1, int var2, int var3);
+
+   boolean w_();
+
+   @Deprecated
+   int y_();
+
+   dis C_();
+
+   @Override
+   default int H_() {
+      return this.C_().n();
    }
 
-   default void a(gw $$0, csx $$1, int $$2, ejf $$3) {
-      this.L().a(this.a($$0, $$1, $$2, $$3));
+   @Override
+   default int I_() {
+      return this.C_().o();
    }
 
-   default void a(gw $$0, csx $$1, int $$2) {
-      this.L().a(this.a($$0, $$1, $$2));
+   default gw a(dks.a $$0, gw $$1) {
+      return new gw($$1.u(), this.a($$0, $$1.u(), $$1.w()), $$1.w());
    }
 
-   eix<ean> K();
-
-   default void a(gw $$0, ean $$1, int $$2, ejf $$3) {
-      this.K().a(this.a($$0, $$1, $$2, $$3));
+   default boolean t(gw $$0) {
+      return this.a_($$0).i();
    }
 
-   default void a(gw $$0, ean $$1, int $$2) {
-      this.K().a(this.a($$0, $$1, $$2));
+   default boolean u(gw $$0) {
+      if ($$0.v() >= this.y_()) {
+         return this.g($$0);
+      } else {
+         gw $$1 = new gw($$0.u(), this.y_(), $$0.w());
+         if (!this.g($$1)) {
+            return false;
+         } else {
+            for (gw var4 = $$1.d(); var4.v() > $$0.v(); var4 = var4.d()) {
+               dfj $$2 = this.a_(var4);
+               if ($$2.b(this, var4) > 0 && !$$2.k()) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      }
    }
 
-   ecf z_();
+   default float v(gw $$0) {
+      return this.w($$0) - 0.5F;
+   }
 
-   bgy d_(gw var1);
+   @Deprecated
+   default float w(gw $$0) {
+      float $$1 = (float)this.z($$0) / 15.0F;
+      float $$2 = $$1 / (4.0F - 3.0F * $$1);
+      return arw.i(this.C_().s(), $$2, 1.0F);
+   }
+
+   default dhf x(gw $$0) {
+      return this.a(hw.a($$0.u()), hw.a($$0.w()));
+   }
+
+   default dhf a(int $$0, int $$1) {
+      return this.a($$0, $$1, dhk.n, true);
+   }
+
+   default dhf a(int $$0, int $$1, dhk $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
 
    @Nullable
-   MinecraftServer n();
-
-   default bgx ai() {
-      return this.z_().s();
-   }
-
-   dhl J();
-
    @Override
-   default boolean b(int $$0, int $$1) {
-      return this.J().b($$0, $$1);
+   default cpb c(int $$0, int $$1) {
+      return this.a($$0, $$1, dhk.c, false);
    }
 
-   ase D_();
-
-   default void b(gw $$0, csx $$1) {
+   default boolean y(gw $$0) {
+      return this.b_($$0).a(apx.a);
    }
 
-   default void a(hc $$0, dfl $$1, gw $$2, gw $$3, int $$4, int $$5) {
-      ebq.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   default boolean d(ehi $$0) {
+      int $$1 = arw.a($$0.a);
+      int $$2 = arw.c($$0.d);
+      int $$3 = arw.a($$0.b);
+      int $$4 = arw.c($$0.e);
+      int $$5 = arw.a($$0.c);
+      int $$6 = arw.c($$0.f);
+      gw.a $$7 = new gw.a();
+
+      for (int $$8 = $$1; $$8 < $$2; $$8++) {
+         for (int $$9 = $$3; $$9 < $$4; $$9++) {
+            for (int $$10 = $$5; $$10 < $$6; $$10++) {
+               dfj $$11 = this.a_($$7.d($$8, $$9, $$10));
+               if (!$$11.u().c()) {
+                  return true;
+               }
+            }
+         }
+      }
+
+      return false;
    }
 
-   default void a(@Nullable cbw $$0, gw $$1, ape $$2, apg $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
+   default int z(gw $$0) {
+      return this.c($$0, this.A_());
    }
 
-   void a(@Nullable cbw var1, gw var2, ape var3, apg var4, float var5, float var6);
-
-   void a(iv var1, double var2, double var4, double var6, double var8, double var10, double var12);
-
-   void a(@Nullable cbw var1, int var2, gw var3, int var4);
-
-   default void c(int $$0, gw $$1, int $$2) {
-      this.a(null, $$0, $$1, $$2);
+   default int c(gw $$0, int $$1) {
+      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000 ? this.b($$0, $$1) : 15;
    }
 
-   void a(djv var1, ehp var2, djv.a var3);
-
-   default void a(@Nullable bis $$0, djv $$1, ehp $$2) {
-      this.a($$1, $$2, new djv.a($$0, null));
+   @Deprecated
+   default boolean f(int $$0, int $$1) {
+      return this.b(hw.a($$0), hw.a($$1));
    }
 
-   default void a(@Nullable bis $$0, djv $$1, gw $$2) {
-      this.a($$1, $$2, new djv.a($$0, null));
+   @Deprecated
+   default boolean A(gw $$0) {
+      return this.f($$0.u(), $$0.w());
    }
 
-   default void a(djv $$0, gw $$1, djv.a $$2) {
-      this.a($$0, ehp.b($$1), $$2);
+   @Deprecated
+   default boolean a(gw $$0, gw $$1) {
+      return this.a($$0.u(), $$0.v(), $$0.w(), $$1.u(), $$1.v(), $$1.w());
+   }
+
+   @Deprecated
+   default boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$4 >= this.H_() && $$1 < this.aj() ? this.b($$0, $$2, $$3, $$5) : false;
+   }
+
+   @Deprecated
+   default boolean b(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = hw.a($$0);
+      int $$5 = hw.a($$2);
+      int $$6 = hw.a($$1);
+      int $$7 = hw.a($$3);
+
+      for (int $$8 = $$4; $$8 <= $$5; $$8++) {
+         for (int $$9 = $$6; $$9 <= $$7; $$9++) {
+            if (!this.b($$8, $$9)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   hr G_();
+
+   cec G();
+
+   default <T> hg<T> a(aev<? extends hq<? extends T>> $$0) {
+      hq<T> $$1 = this.G_().d($$0);
+      return $$1.p().a(this.G());
    }
 }

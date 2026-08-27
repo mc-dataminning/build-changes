@@ -1,17 +1,39 @@
-public interface afo extends afn {
-   ajq a();
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import java.io.File;
+import javax.annotation.Nullable;
 
-   String b();
+public record afo(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aoc d) {
+   private static final String e = "usercache.json";
 
-   int d();
+   public static afo a(YggdrasilAuthenticationService $$0, File $$1) {
+      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
+      GameProfileRepository $$3 = $$0.createProfileRepository();
+      aoc $$4 = new aoc($$3, new File($$1, "usercache.json"));
+      return new afo($$2, $$0.getServicesKeySet(), $$3, $$4);
+   }
 
-   String f();
+   @Nullable
+   public ash a() {
+      return ash.a(this.b, ServicesKeyType.PROFILE_KEY);
+   }
 
-   String[] J();
+   public MinecraftSessionService b() {
+      return this.a;
+   }
 
-   String q();
+   public ServicesKeySet c() {
+      return this.b;
+   }
 
-   String s();
+   public GameProfileRepository d() {
+      return this.c;
+   }
 
-   String a(String var1);
+   public aoc e() {
+      return this.d;
+   }
 }

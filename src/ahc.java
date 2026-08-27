@@ -1,95 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Collection;
-import java.util.function.IntConsumer;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
+import com.mojang.brigadier.context.CommandContext;
 
 public class ahc {
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tn.a("commands.function.error.argument_not_compound", $$0));
-   public static final SuggestionProvider<dt> a = ($$0, $$1) -> {
-      afm $$2 = ((dt)$$0.getSource()).l().aA();
-      dw.a($$2.f(), $$1, "#");
-      return dw.a($$2.e(), $$1);
-   };
-
    public static void a(CommandDispatcher<dt> $$0) {
-      LiteralArgumentBuilder<dt> $$1 = du.a("with");
-
-      for (ajj.c $$2 : ajj.c) {
-         $$2.a(
-            $$1,
-            $$1x -> $$1x.executes($$1xx -> a((dt)$$1xx.getSource(), fv.a($$1xx, "name"), $$2.a($$1xx).a()))
-                  .then(du.a("path", ej.a()).executes($$1xx -> a((dt)$$1xx.getSource(), fv.a($$1xx, "name"), a(ej.a($$1xx, "path"), $$2.a($$1xx)))))
-         );
-      }
-
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("function").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("name", fv.a())
-                        .suggests(a)
-                        .executes($$0x -> a((dt)$$0x.getSource(), fv.a($$0x, "name"), null)))
-                     .then(du.a("arguments", eb.a()).executes($$0x -> a((dt)$$0x.getSource(), fv.a($$0x, "name"), eb.a($$0x, "arguments")))))
-                  .then($$1)
-            )
-      );
-   }
-
-   private static qy a(ej.g $$0, aji $$1) throws CommandSyntaxException {
-      rs $$2 = ajj.a($$0, $$1);
-      if ($$2 instanceof qy) {
-         return (qy)$$2;
-      } else {
-         throw b.create($$2.c().a());
-      }
-   }
-
-   private static int a(dt $$0, Collection<dp> $$1, @Nullable qy $$2) {
-      int $$3 = 0;
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (dp $$6 : $$1) {
-         try {
-            ahc.a $$7 = a($$0, $$6, $$2);
-            $$3 += $$7.a();
-            $$4 |= $$7.b();
-            $$5 = true;
-         } catch (dv var9) {
-            $$0.b(var9.a());
-         }
-      }
-
-      if ($$5) {
-         int $$9 = $$3;
-         if ($$1.size() == 1) {
-            if ($$4) {
-               $$0.a(() -> tn.a("commands.function.success.single.result", $$9, $$1.iterator().next().a()), true);
-            } else {
-               $$0.a(() -> tn.a("commands.function.success.single", $$9, $$1.iterator().next().a()), true);
+      final LiteralArgumentBuilder<dt> $$1 = (LiteralArgumentBuilder<dt>)du.a("gamerule").requires($$0x -> $$0x.c(2));
+      cpr.a(
+         new cpr.c() {
+            @Override
+            public <T extends cpr.g<T>> void a(cpr.e<T> $$0, cpr.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)du.a($$0.a()).executes($$1xxx -> ahc.a((dt)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> ahc.a($$1xxx, $$0)))
+               );
             }
-         } else if ($$4) {
-            $$0.a(() -> tn.a("commands.function.success.multiple.result", $$1.size()), true);
-         } else {
-            $$0.a(() -> tn.a("commands.function.success.multiple", $$9, $$1.size()), true);
          }
-      }
-
-      return $$3;
+      );
+      $$0.register($$1);
    }
 
-   public static ahc.a a(dt $$0, dp $$1, @Nullable qy $$2) throws dv {
-      MutableObject<ahc.a> $$3 = new MutableObject();
-      int $$4 = $$0.l().aA().a($$1, $$0.a().b(2).a((IntConsumer)($$1x -> $$3.setValue(new ahc.a($$1x, true)))), null, $$2);
-      ahc.a $$5 = (ahc.a)$$3.getValue();
-      return $$5 != null ? $$5 : new ahc.a($$4, false);
+   static <T extends cpr.g<T>> int a(CommandContext<dt> $$0, cpr.e<T> $$1) {
+      dt $$2 = (dt)$$0.getSource();
+      T $$3 = $$2.l().aI().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> tl.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
    }
 
-   public static record a(int a, boolean b) {
+   static <T extends cpr.g<T>> int a(dt $$0, cpr.e<T> $$1) {
+      T $$2 = $$0.l().aI().a($$1);
+      $$0.a(() -> tl.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }
