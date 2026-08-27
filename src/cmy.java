@@ -23,7 +23,7 @@ public class cmy implements cmx {
    @Override
    public cjf a(bgr $$0, hu $$1) {
       cjf $$2 = this.d.p();
-      qx $$3 = $$0.a(1).v();
+      qy $$3 = $$0.a(1).v();
       if ($$3 != null) {
          $$2.c($$3.h());
       }
@@ -77,7 +77,7 @@ public class cmy implements cmx {
          return x;
       }
 
-      public cmy b(so $$0) {
+      public cmy b(sp $$0) {
          cmg $$1 = cmg.b($$0);
          cmg $$2 = cmg.b($$0);
          cmg $$3 = cmg.b($$0);
@@ -85,7 +85,7 @@ public class cmy implements cmx {
          return new cmy($$1, $$2, $$3, $$4);
       }
 
-      public void a(so $$0, cmy $$1) {
+      public void a(sp $$0, cmy $$1) {
          $$1.a.a($$0);
          $$1.b.a($$0);
          $$1.c.a($$0);

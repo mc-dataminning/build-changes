@@ -15,12 +15,12 @@ public abstract class bur extends bil {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       if (this.h() != 0) {
          this.bT = 0;
       }
 
-      super.Y();
+      super.X();
    }
 
    @Override
@@ -57,7 +57,7 @@ public abstract class bur extends bil {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("InLove", this.bT);
       if (this.bU != null) {
@@ -66,7 +66,7 @@ public abstract class bur extends bil {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.bT = $$0.h("InLove");
       this.bU = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
@@ -137,7 +137,7 @@ public abstract class bur extends bil {
    public void g(@Nullable cbu $$0) {
       this.bT = 600;
       if ($$0 != null) {
-         this.bU = $$0.cw();
+         this.bU = $$0.cv();
       }
 
       this.dL().a(this, (byte)18);

@@ -53,7 +53,7 @@ public class bzf extends cab {
    @Override
    protected void gg() {
       this.b(biu.bp);
-      if (!this.aT()) {
+      if (!this.aS()) {
          this.dL().a(null, 1041, this.dl(), 0);
       }
    }

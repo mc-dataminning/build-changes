@@ -4,12 +4,12 @@ public class dwt {
          super(dvz.aa, 0, new dva($$0));
       }
 
-      public a(qx $$0) {
+      public a(qy $$0) {
          super(dvz.aa, $$0);
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
       }
 
       @Override

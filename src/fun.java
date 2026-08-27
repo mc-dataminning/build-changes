@@ -8,7 +8,7 @@ public abstract class fun<T extends bji, M extends ffd<T>> extends fui<T, M> {
    }
 
    protected boolean a(T $$0) {
-      return super.b($$0) && ($$0.cC() || $$0.ad() && $$0 == this.c.c);
+      return super.b($$0) && ($$0.cB() || $$0.ac() && $$0 == this.c.c);
    }
 
    public boolean a(T $$0, frg $$1, double $$2, double $$3, double $$4) {

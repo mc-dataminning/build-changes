@@ -29,7 +29,7 @@ public class aiz {
    }
 
    private static int c(dt $$0, int $$1) {
-      $$0.a(() -> tl.a("commands.time.query", $$1), false);
+      $$0.a(() -> tm.a("commands.time.query", $$1), false);
       return $$1;
    }
 
@@ -38,7 +38,7 @@ public class aiz {
          $$2.b((long)$$1);
       }
 
-      $$0.a(() -> tl.a("commands.time.set", $$1), true);
+      $$0.a(() -> tm.a("commands.time.set", $$1), true);
       return a($$0.e());
    }
 
@@ -48,7 +48,7 @@ public class aiz {
       }
 
       int $$3 = a($$0.e());
-      $$0.a(() -> tl.a("commands.time.set", $$3), true);
+      $$0.a(() -> tm.a("commands.time.set", $$3), true);
       return $$3;
    }
 }

@@ -23,7 +23,7 @@ public class brt extends bsb {
       int $$0 = this.e.eh();
       bjg $$1 = this.e.eg();
       if ($$0 != this.d && $$1 != null) {
-         if ($$1.ah() == biu.bt && this.e.dL().X().b(cpr.K)) {
+         if ($$1.ag() == biu.bt && this.e.dL().X().b(cpr.K)) {
             return false;
          } else {
             for (Class<?> $$2 : this.i) {

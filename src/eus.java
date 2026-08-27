@@ -13,7 +13,7 @@ public class eus extends eui implements ets, euk, ewg {
    private static final int b = 400;
    private static final int c = 24;
    private static final int d = 14;
-   private static final tl e = tl.c("narration.tab_navigation.usage");
+   private static final tm e = tm.c("narration.tab_navigation.usage");
    private final evy f;
    private int g;
    private final eur h;
@@ -99,7 +99,7 @@ public class eus extends eui implements ets, euk, ewg {
       if (this.i.size() > 1) {
          int $$2 = this.j.indexOf($$1);
          if ($$2 != -1) {
-            $$0.a(ewh.b, tl.a("narrator.position.tab", $$2 + 1, this.i.size()));
+            $$0.a(ewh.b, tm.a("narrator.position.tab", $$2 + 1, this.i.size()));
          }
       }
    }

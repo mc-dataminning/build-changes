@@ -26,7 +26,7 @@ public interface cpm {
          return true;
       } else {
          for (biq $$2 : this.a_($$0, $$1.a())) {
-            if (!$$2.dG() && $$2.I && ($$0 == null || !$$2.y($$0)) && eid.c($$1, eid.a($$2.cH()), ehr.i)) {
+            if (!$$2.dG() && $$2.I && ($$0 == null || !$$2.y($$0)) && eid.c($$1, eid.a($$2.cG()), ehr.i)) {
                return false;
             }
          }
@@ -51,7 +51,7 @@ public interface cpm {
             Builder<eig> $$4 = ImmutableList.builderWithExpectedSize($$3.size());
 
             for (biq $$5 : $$3) {
-               $$4.add(eid.a($$5.cH()));
+               $$4.add(eid.a($$5.cG()));
             }
 
             return $$4.build();
@@ -168,7 +168,7 @@ public interface cpm {
    default cbu b(UUID $$0) {
       for (int $$1 = 0; $$1 < this.v().size(); $$1++) {
          cbu $$2 = this.v().get($$1);
-         if ($$0.equals($$2.cw())) {
+         if ($$0.equals($$2.cv())) {
             return $$2;
          }
       }

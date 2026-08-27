@@ -14,10 +14,10 @@ public class eer extends eec {
    public static final Codec<eer> a = RecordCodecBuilder.create(
       $$0 -> a($$0).and($$0.group(arg.a(arg.b, "name").forGetter($$0x -> $$0x.c), arg.a(ecq.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, eer::new)
    );
-   private final Optional<tl> c;
+   private final Optional<tm> c;
    private final Optional<ecq.b> d;
 
-   private eer(List<efp> $$0, Optional<tl> $$1, Optional<ecq.b> $$2) {
+   private eer(List<efp> $$0, Optional<tm> $$1, Optional<ecq.b> $$2) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
@@ -33,14 +33,14 @@ public class eer extends eec {
       return this.d.<Set<eey<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
    }
 
-   public static UnaryOperator<tl> a(ecq $$0, @Nullable ecq.b $$1) {
+   public static UnaryOperator<tm> a(ecq $$0, @Nullable ecq.b $$1) {
       if ($$1 != null) {
          biq $$2 = $$0.c($$1.a());
          if ($$2 != null) {
-            dt $$3 = $$2.dd().a(2);
+            dt $$3 = $$2.dc().a(2);
             return $$2x -> {
                try {
-                  return tn.a($$3, $$2x, $$2, 0);
+                  return to.a($$3, $$2x, $$2, 0);
                } catch (CommandSyntaxException var4) {
                   b.warn("Failed to resolve text component", var4);
                   return $$2x;
@@ -58,11 +58,11 @@ public class eer extends eec {
       return $$0;
    }
 
-   public static eec.a<?> a(tl $$0) {
+   public static eec.a<?> a(tm $$0) {
       return a($$1 -> new eer($$1, Optional.of($$0), Optional.empty()));
    }
 
-   public static eec.a<?> a(tl $$0, ecq.b $$1) {
+   public static eec.a<?> a(tm $$0, ecq.b $$1) {
       return a($$2 -> new eer($$2, Optional.of($$0), Optional.of($$1)));
    }
 }

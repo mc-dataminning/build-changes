@@ -4,8 +4,8 @@ import java.util.List;
 public class euv implements eux {
    private static final aex a = new aex("toast/recipe");
    private static final long d = 5000L;
-   private static final tl e = tl.c("recipe.toast.title");
-   private static final tl f = tl.c("recipe.toast.description");
+   private static final tm e = tm.c("recipe.toast.title");
+   private static final tm f = tm.c("recipe.toast.description");
    private final List<cmk<?>> g = Lists.newArrayList();
    private long h;
    private boolean i;

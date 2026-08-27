@@ -1,4 +1,4 @@
-public class xs implements vd<ww> {
+public class xs implements ve<wx> {
    private final int a;
    private final int b;
    private final int c;
@@ -9,20 +9,20 @@ public class xs implements vd<ww> {
       this.c = $$2;
    }
 
-   public xs(so $$0) {
+   public xs(sp $$0) {
       this.a = $$0.readUnsignedByte();
       this.b = $$0.readShort();
       this.c = $$0.readShort();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.a);
       $$0.l(this.b);
       $$0.l(this.c);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

@@ -15,7 +15,7 @@ public class ddv extends dcv implements bgp, eit {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("RecordItem", 10)) {
          this.d.set(0, cjf.a($$0.p("RecordItem")));
@@ -27,10 +27,10 @@ public class ddv extends dcv implements bgp, eit {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       if (!this.av_().b()) {
-         $$0.a("RecordItem", this.av_().b(new qx()));
+         $$0.a("RecordItem", this.av_().b(new qy()));
       }
 
       $$0.a("IsPlaying", this.h);

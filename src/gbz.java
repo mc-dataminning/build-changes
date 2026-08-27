@@ -56,7 +56,7 @@ public abstract class gbz extends gbv {
 
    @Override
    public boolean s() {
-      return !this.n.aT();
+      return !this.n.aS();
    }
 
    protected abstract gbv o();

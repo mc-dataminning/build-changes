@@ -1,7 +1,7 @@
 public interface aeb extends abe, abf {
    @Override
-   default sn b() {
-      return sn.c;
+   default so b() {
+      return so.c;
    }
 
    void a(aed var1);

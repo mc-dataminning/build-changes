@@ -6,8 +6,8 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import javax.annotation.Nullable;
 
 public class aq {
-   private final tl a;
-   private final tl b;
+   private final tm a;
+   private final tm b;
    private final cjf c;
    @Nullable
    private final aex d;
@@ -18,7 +18,7 @@ public class aq {
    private float i;
    private float j;
 
-   public aq(cjf $$0, tl $$1, tl $$2, @Nullable aex $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public aq(cjf $$0, tm $$1, tm $$2, @Nullable aex $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.a = $$1;
       this.b = $$2;
       this.c = $$0;
@@ -34,11 +34,11 @@ public class aq {
       this.j = $$1;
    }
 
-   public tl a() {
+   public tm a() {
       return this.a;
    }
 
-   public tl b() {
+   public tm b() {
       return this.b;
    }
 
@@ -76,8 +76,8 @@ public class aq {
    }
 
    public static aq a(JsonObject $$0) {
-      tl $$1 = tl.a.a($$0.get("title"));
-      tl $$2 = tl.a.a($$0.get("description"));
+      tm $$1 = tm.a.a($$0.get("title"));
+      tm $$2 = tm.a.a($$0.get("description"));
       if ($$1 != null && $$2 != null) {
          cjf $$3 = b(aro.u($$0, "icon"));
          aex $$4 = $$0.has("background") ? new aex(aro.i($$0, "background")) : null;
@@ -102,7 +102,7 @@ public class aq {
             cjf $$2 = new cjf($$1);
             if ($$0.has("nbt")) {
                try {
-                  qx $$3 = rr.a(aro.a($$0.get("nbt"), "nbt"));
+                  qy $$3 = rs.a(aro.a($$0.get("nbt"), "nbt"));
                   $$2.c($$3);
                } catch (CommandSyntaxException var4) {
                   throw new JsonSyntaxException("Invalid nbt tag: " + var4.getMessage());
@@ -114,7 +114,7 @@ public class aq {
       }
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
@@ -141,9 +141,9 @@ public class aq {
       $$0.a(this.j);
    }
 
-   public static aq b(so $$0) {
-      tl $$1 = $$0.l();
-      tl $$2 = $$0.l();
+   public static aq b(sp $$0) {
+      tm $$1 = $$0.l();
+      tm $$2 = $$0.l();
       cjf $$3 = $$0.q();
       ar $$4 = $$0.b(ar.class);
       int $$5 = $$0.readInt();
@@ -158,8 +158,8 @@ public class aq {
    public JsonElement k() {
       JsonObject $$0 = new JsonObject();
       $$0.add("icon", this.l());
-      $$0.add("title", tl.a.c(this.a));
-      $$0.add("description", tl.a.c(this.b));
+      $$0.add("title", tm.a.c(this.a));
+      $$0.add("description", tm.a.c(this.b));
       $$0.addProperty("frame", this.e.a());
       $$0.addProperty("show_toast", this.f);
       $$0.addProperty("announce_to_chat", this.g);

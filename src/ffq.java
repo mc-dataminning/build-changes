@@ -68,7 +68,7 @@ public class ffq<T extends bjg> extends feb<T> implements fee, ffl {
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       boolean $$6 = $$0.fw() > 4;
-      boolean $$7 = $$0.ca();
+      boolean $$7 = $$0.bZ();
       this.k.f = $$4 * (float) (Math.PI / 180.0);
       if ($$6) {
          this.k.e = (float) (-Math.PI / 4);
@@ -248,7 +248,7 @@ public class ffq<T extends bjg> extends feb<T> implements fee, ffl {
             this.n.f = 0.0F;
             break;
          case h:
-            this.n.e = arx.a(this.k.e - 1.9198622F - ($$0.bX() ? (float) (Math.PI / 12) : 0.0F), -2.4F, 3.3F);
+            this.n.e = arx.a(this.k.e - 1.9198622F - ($$0.bW() ? (float) (Math.PI / 12) : 0.0F), -2.4F, 3.3F);
             this.n.f = this.k.f - (float) (Math.PI / 12);
             break;
          case i:
@@ -291,7 +291,7 @@ public class ffq<T extends bjg> extends feb<T> implements fee, ffl {
             this.o.f = 0.0F;
             break;
          case h:
-            this.o.e = arx.a(this.k.e - 1.9198622F - ($$0.bX() ? (float) (Math.PI / 12) : 0.0F), -2.4F, 3.3F);
+            this.o.e = arx.a(this.k.e - 1.9198622F - ($$0.bW() ? (float) (Math.PI / 12) : 0.0F), -2.4F, 3.3F);
             this.o.f = this.k.f + (float) (Math.PI / 12);
             break;
          case i:

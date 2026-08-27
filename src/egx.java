@@ -20,11 +20,11 @@ public class egx implements egy<MinecraftServer> {
          super(new aex("function_tag"), egx.class);
       }
 
-      public void a(qx $$0, egx $$1) {
+      public void a(qy $$0, egx $$1) {
          $$0.a("Name", $$1.a.toString());
       }
 
-      public egx a(qx $$0) {
+      public egx a(qy $$0) {
          aex $$1 = new aex($$0.l("Name"));
          return new egx($$1);
       }

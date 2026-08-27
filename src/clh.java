@@ -14,7 +14,7 @@ public class clh {
    );
    private static final Logger c = LogUtils.getLogger();
    public static final String b = "Trim";
-   private static final tl d = tl.c(ac.a("item", new aex("smithing_template.upgrade"))).a(n.h);
+   private static final tm d = tm.c(ac.a("item", new aex("smithing_template.upgrade"))).a(n.h);
    private final hg<cli> e;
    private final hg<clk> f;
    private final Function<cgq, aex> g;
@@ -67,7 +67,7 @@ public class clh {
 
    public static boolean a(hu $$0, cjf $$1, clh $$2) {
       if ($$1.a(aqb.aH)) {
-         $$1.w().a("Trim", (rq)a.encodeStart(aev.a(ri.a, $$0), $$2).result().orElseThrow());
+         $$1.w().a("Trim", (rr)a.encodeStart(aev.a(rj.a, $$0), $$2).result().orElseThrow());
          return true;
       } else {
          return false;
@@ -76,8 +76,8 @@ public class clh {
 
    public static Optional<clh> a(hu $$0, cjf $$1, boolean $$2) {
       if ($$1.a(aqb.aH) && $$1.v() != null && $$1.v().e("Trim")) {
-         qx $$3 = $$1.b("Trim");
-         clh $$4 = (clh)a.parse(aev.a(ri.a, $$0), $$3).resultOrPartial($$1x -> {
+         qy $$3 = $$1.b("Trim");
+         clh $$4 = (clh)a.parse(aev.a(rj.a, $$0), $$3).resultOrPartial($$1x -> {
             if (!$$2) {
                c.warn($$1x);
             }
@@ -88,13 +88,13 @@ public class clh {
       }
    }
 
-   public static void a(cjf $$0, hu $$1, List<tl> $$2) {
+   public static void a(cjf $$0, hu $$1, List<tm> $$2) {
       Optional<clh> $$3 = a($$1, $$0, true);
       if ($$3.isPresent()) {
          clh $$4 = $$3.get();
          $$2.add(d);
-         $$2.add(tk.a().b($$4.a().a().a($$4.b())));
-         $$2.add(tk.a().b($$4.b().a().e()));
+         $$2.add(tl.a().b($$4.a().a().a($$4.b())));
+         $$2.add(tl.a().b($$4.b().a().e()));
       }
    }
 }

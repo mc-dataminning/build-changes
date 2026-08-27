@@ -13,16 +13,16 @@ import java.lang.reflect.Type;
 import org.apache.commons.lang3.StringUtils;
 
 public class atz extends axz {
-   public static final Gson a = new GsonBuilder().registerTypeAdapter(tl.class, new JsonDeserializer<tl>() {
-      public ty a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+   public static final Gson a = new GsonBuilder().registerTypeAdapter(tm.class, new JsonDeserializer<tm>() {
+      public tz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          if ($$0.isJsonPrimitive()) {
-            return tl.b($$0.getAsString());
+            return tm.b($$0.getAsString());
          } else if ($$0.isJsonArray()) {
             JsonArray $$3 = $$0.getAsJsonArray();
-            ty $$4 = null;
+            tz $$4 = null;
 
             for (JsonElement $$5 : $$3) {
-               ty $$6 = this.a($$5, $$5.getClass(), $$2);
+               tz $$6 = this.a($$5, $$5.getClass(), $$2);
                if ($$4 == null) {
                   $$4 = $$6;
                } else {
@@ -43,42 +43,42 @@ public class atz extends axz {
 
    private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
       String $$2 = $$0.get($$1).asString("");
-      tl $$3 = null;
+      tm $$3 = null;
       if (!"null".equals($$2) && !StringUtils.isEmpty($$2)) {
          if ($$2.charAt(0) == '"' && $$2.charAt($$2.length() - 1) == '"' || $$2.charAt(0) == '{' && $$2.charAt($$2.length() - 1) == '}') {
             try {
-               $$3 = aro.b(a, $$2, tl.class, true);
+               $$3 = aro.b(a, $$2, tm.class, true);
                if ($$3 == null) {
-                  $$3 = tk.a;
+                  $$3 = tl.a;
                }
             } catch (Exception var8) {
             }
 
             if ($$3 == null) {
                try {
-                  $$3 = tl.a.a($$2);
+                  $$3 = tm.a.a($$2);
                } catch (Exception var7) {
                }
             }
 
             if ($$3 == null) {
                try {
-                  $$3 = tl.a.b($$2);
+                  $$3 = tm.a.b($$2);
                } catch (Exception var6) {
                }
             }
 
             if ($$3 == null) {
-               $$3 = tl.b($$2);
+               $$3 = tm.b($$2);
             }
          } else {
-            $$3 = tl.b($$2);
+            $$3 = tm.b($$2);
          }
       } else {
-         $$3 = tk.a;
+         $$3 = tl.a;
       }
 
-      return $$0.set($$1, $$0.createString(tl.a.a($$3)));
+      return $$0.set($$1, $$0.createString(tm.a.a($$3)));
    }
 
    @Override

@@ -44,7 +44,7 @@ public class etx implements gdp {
 
          for (etx.a $$10 : this.c) {
             int $$11 = 255;
-            tl $$12 = $$10.a();
+            tm $$12 = $$10.a();
             ehn $$13 = $$10.c().d($$1).d();
             double $$14 = -$$4.b($$13);
             double $$15 = -$$2.b($$13);
@@ -79,7 +79,7 @@ public class etx implements gdp {
    @Override
    public void a(gcm $$0, gdr $$1) {
       if ($$1.a() != null) {
-         tl $$2 = $$1.a();
+         tm $$2 = $$1.a();
          if (!this.c.isEmpty()) {
             for (etx.a $$3 : this.c) {
                if ($$3.a().equals($$2)) {
@@ -94,17 +94,17 @@ public class etx implements gdp {
    }
 
    public static class a {
-      private final tl a;
+      private final tm a;
       private long b;
       private ehn c;
 
-      public a(tl $$0, ehn $$1) {
+      public a(tm $$0, ehn $$1) {
          this.a = $$0;
          this.c = $$1;
          this.b = ac.b();
       }
 
-      public tl a() {
+      public tm a() {
          return this.a;
       }
 

@@ -8,9 +8,9 @@ public interface dhw<T> {
 
    T a(int var1);
 
-   void a(so var1);
+   void a(sp var1);
 
-   void b(so var1);
+   void b(sp var1);
 
    int a();
 

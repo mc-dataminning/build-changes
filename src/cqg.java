@@ -29,11 +29,11 @@ public final class cqg {
             continue;
          }
 
-         bjj $$8 = $$6.ah().f();
+         bjj $$8 = $$6.ag().f();
          if ($$8 != bjj.h) {
             gw $$9 = $$6.dl();
             $$2.query(cpc.a($$9), $$6x -> {
-               crf.b $$7 = a($$9, $$6x).b().a($$6.ah());
+               crf.b $$7 = a($$9, $$6x).b().a($$6.ag());
                if ($$7 != null) {
                   $$4.a($$6.dl(), $$7.b());
                }
@@ -57,22 +57,6 @@ public final class cqg {
    public static void a(akr $$0, dhq $$1, cqg.d $$2, boolean $$3, boolean $$4, boolean $$5) {
       // $VF: Couldn't be decompiled
       // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:241)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.DoStatement.toJava(DoStatement.java:148)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
       //
       // Bytecode:
       // 00: aload 0
@@ -261,7 +245,7 @@ public final class cqg {
    }
 
    private static boolean a(akr $$0, bji $$1, double $$2) {
-      return $$2 > (double)($$1.ah().f().f() * $$1.ah().f().f()) && $$1.h($$2) ? false : $$1.a($$0, bjk.a) && $$1.a($$0);
+      return $$2 > (double)($$1.ag().f().f() * $$1.ag().f().f()) && $$1.h($$2) ? false : $$1.a($$0, bjk.a) && $$1.a($$0);
    }
 
    private static Optional<crf.c> a(akr $$0, cqn $$1, dhg $$2, bjj $$3, asc $$4, gw $$5) {
@@ -467,7 +451,7 @@ public final class cqg {
       }
 
       private void a(bji $$0, dhf $$1) {
-         biu<?> $$2 = $$0.ah();
+         biu<?> $$2 = $$0.ag();
          gw $$3 = $$0.dl();
          double $$4;
          if ($$3.equals(this.f) && $$2 == this.g) {

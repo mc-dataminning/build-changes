@@ -20,15 +20,15 @@ public class ahc {
    }
 
    private static void a(dt $$0, aks $$1, cps $$2) {
-      tl $$3 = tl.c("gameMode." + $$2.b());
+      tm $$3 = tm.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
-         $$0.a(() -> tl.a("commands.gamemode.success.self", $$3), true);
+         $$0.a(() -> tm.a("commands.gamemode.success.self", $$3), true);
       } else {
          if ($$0.e().X().b(cpr.o)) {
-            $$1.a(tl.a("gameMode.changed", $$3));
+            $$1.a(tm.a("gameMode.changed", $$3));
          }
 
-         $$0.a(() -> tl.a("commands.gamemode.success.other", $$1.N_(), $$3), true);
+         $$0.a(() -> tm.a("commands.gamemode.success.other", $$1.N_(), $$3), true);
       }
    }
 

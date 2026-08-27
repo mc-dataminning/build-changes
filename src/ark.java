@@ -8,23 +8,23 @@ public interface ark {
 
    boolean accept(arl var1);
 
-   static ark codepoint(int $$0, uh $$1) {
+   static ark codepoint(int $$0, ui $$1) {
       return $$2 -> $$2.accept(0, $$1, $$0);
    }
 
-   static ark forward(String $$0, uh $$1) {
+   static ark forward(String $$0, ui $$1) {
       return $$0.isEmpty() ? a : $$2 -> aso.a($$0, $$1, $$2);
    }
 
-   static ark forward(String $$0, uh $$1, Int2IntFunction $$2) {
+   static ark forward(String $$0, ui $$1, Int2IntFunction $$2) {
       return $$0.isEmpty() ? a : $$3 -> aso.a($$0, $$1, decorateOutput($$3, $$2));
    }
 
-   static ark backward(String $$0, uh $$1) {
+   static ark backward(String $$0, ui $$1) {
       return $$0.isEmpty() ? a : $$2 -> aso.b($$0, $$1, $$2);
    }
 
-   static ark backward(String $$0, uh $$1, Int2IntFunction $$2) {
+   static ark backward(String $$0, ui $$1, Int2IntFunction $$2) {
       return $$0.isEmpty() ? a : $$3 -> aso.b($$0, $$1, decorateOutput($$3, $$2));
    }
 

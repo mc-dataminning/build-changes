@@ -30,22 +30,22 @@ public class yl {
       }
    }
 
-   public yl(so $$0, int $$1, int $$2) {
+   public yl(sp $$0, int $$1, int $$2) {
       this.a = $$0.y();
       this.b = $$0.y();
       this.c = $$0.y();
       this.d = $$0.y();
-      this.e = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
-      this.f = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
+      this.e = $$0.a((sp.a<byte[]>)($$0x -> $$0x.a(2048)));
+      this.f = $$0.a((sp.a<byte[]>)($$0x -> $$0x.a(2048)));
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e, so::a);
-      $$0.a(this.f, so::a);
+      $$0.a(this.e, sp::a);
+      $$0.a(this.f, sp::a);
    }
 
    private void a(cpc $$0, eab $$1, cqe $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {

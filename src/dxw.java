@@ -946,7 +946,7 @@ public class dxw {
          super(dvz.Z, 0, $$0, a($$1), $$1, a($$4, $$3), $$2);
       }
 
-      public i(dzc $$0, qx $$1) {
+      public i(dzc $$0, qy $$1) {
          super(dvz.Z, $$1, $$0, $$1x -> a(cxq.valueOf($$1.l("Mi")), czh.valueOf($$1.l("Rot"))));
       }
 
@@ -964,7 +964,7 @@ public class dxw {
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
          super.a($$0, $$1);
          $$1.a("Rot", this.c.d().name());
          $$1.a("Mi", this.c.c().name());

@@ -17,7 +17,7 @@ public class ezs extends ezh {
    }
 
    @Override
-   int C() {
+   int D() {
       return 135;
    }
 
@@ -26,22 +26,22 @@ public class ezs extends ezh {
       super.aI_();
       this.n = this.d(esx.<ddf.a>a($$0 -> {
          return switch ($$0) {
-            case a -> tl.c("advMode.mode.sequence");
-            case b -> tl.c("advMode.mode.auto");
-            case c -> tl.c("advMode.mode.redstone");
+            case a -> tm.c("advMode.mode.sequence");
+            case b -> tm.c("advMode.mode.auto");
+            case c -> tm.c("advMode.mode.redstone");
          };
-      }).a(ddf.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, tl.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
+      }).a(ddf.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, tm.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
       this.o = this.d(
-         esx.a(tl.c("advMode.mode.conditional"), tl.c("advMode.mode.unconditional"))
+         esx.a(tm.c("advMode.mode.conditional"), tm.c("advMode.mode.unconditional"))
             .a()
             .a(this.s)
-            .a(this.g / 2 - 50, 165, 100, 20, tl.c("advMode.type"), ($$0, $$1) -> this.s = $$1)
+            .a(this.g / 2 - 50, 165, 100, 20, tm.c("advMode.type"), ($$0, $$1) -> this.s = $$1)
       );
       this.p = this.d(
-         esx.a(tl.c("advMode.mode.autoexec.bat"), tl.c("advMode.mode.redstoneTriggered"))
+         esx.a(tm.c("advMode.mode.autoexec.bat"), tm.c("advMode.mode.redstoneTriggered"))
             .a()
             .a(this.t)
-            .a(this.g / 2 + 50 + 4, 165, 100, 20, tl.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
+            .a(this.g / 2 + 50 + 4, 165, 100, 20, tm.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
       );
       this.e(false);
    }
@@ -54,7 +54,7 @@ public class ezs extends ezh {
       this.p.i = $$0;
    }
 
-   public void E() {
+   public void F() {
       cow $$0 = this.m.c();
       this.a.a($$0.m());
       boolean $$1 = $$0.o();

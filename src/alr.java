@@ -1,11 +1,11 @@
 import net.minecraft.server.MinecraftServer;
 
 public class alr implements add {
-   private static final tl a = tl.c("disconnect.ignoring_status_request");
+   private static final tm a = tm.c("disconnect.ignoring_status_request");
    private final MinecraftServer b;
-   private final sm c;
+   private final sn c;
 
-   public alr(MinecraftServer $$0, sm $$1) {
+   public alr(MinecraftServer $$0, sn $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -16,11 +16,11 @@ public class alr implements add {
          case b:
             this.c.a(adb.b);
             if ($$0.a() != aa.b().e()) {
-               tl $$1;
+               tm $$1;
                if ($$0.a() < 754) {
-                  $$1 = tl.a("multiplayer.disconnect.outdated_client", aa.b().c());
+                  $$1 = tm.a("multiplayer.disconnect.outdated_client", aa.b().c());
                } else {
-                  $$1 = tl.a("multiplayer.disconnect.incompatible", aa.b().c());
+                  $$1 = tm.a("multiplayer.disconnect.incompatible", aa.b().c());
                }
 
                this.c.a(new adk($$1));
@@ -44,7 +44,7 @@ public class alr implements add {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
    }
 
    @Override

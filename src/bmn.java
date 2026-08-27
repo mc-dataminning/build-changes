@@ -23,7 +23,7 @@ public class bmn extends bkx<bji> {
       float $$4 = arx.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
       float $$5 = arx.g($$1.dB() + 2.0F * $$3.i() * this.d - this.d);
       ehn $$6 = ehn.a($$4, $$5);
-      $$1.dN().a(bsh.n, new bla($$1.bq().e($$6)));
+      $$1.dN().a(bsh.n, new bla($$1.bp().e($$6)));
       $$1.dN().a(bsh.P, this.c.a($$3));
    }
 }

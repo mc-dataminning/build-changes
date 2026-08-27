@@ -7,11 +7,11 @@ public class bor extends bkx<bjg> {
 
    @Override
    protected boolean a(akr $$0, bjg $$1) {
-      return $$1.bO();
+      return $$1.bN();
    }
 
    @Override
    protected void d(akr $$0, bjg $$1, long $$2) {
-      $$1.af();
+      $$1.ae();
    }
 }

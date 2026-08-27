@@ -6,7 +6,7 @@ public class fye extends fxp<bvu, fht<bvu>> {
    }
 
    public void a(elp $$0, foe $$1, int $$2, bvu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s() && !$$3.ce()) {
+      if ($$3.s() && !$$3.cd()) {
          float[] $$10 = $$3.gm().d();
          a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
       }

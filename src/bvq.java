@@ -16,7 +16,7 @@ public class bvq extends bvt {
 
    public bvq(biu<? extends bvq> $$0, cpv $$1) {
       super($$0, $$1);
-      this.ag.b((long)this.ai());
+      this.ag.b((long)this.ah());
       this.bY = 1.0F / (this.ag.i() + 1.0F) * 0.2F;
    }
 
@@ -65,7 +65,7 @@ public class bvq extends bvt {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.c;
    }
 
@@ -90,7 +90,7 @@ public class bvq extends bvt {
          }
       }
 
-      if (this.bb()) {
+      if (this.ba()) {
          if (this.bT < (float) Math.PI) {
             float $$0 = this.bT / (float) Math.PI;
             this.bV = arx.a($$0 * $$0 * (float) Math.PI) * (float) Math.PI * 0.25F;
@@ -122,7 +122,7 @@ public class bvq extends bvt {
             double $$3 = this.do().d;
             if (this.a(bif.y)) {
                $$3 = 0.05 * (double)(this.b(bif.y).e() + 1);
-            } else if (!this.aU()) {
+            } else if (!this.aT()) {
                $$3 -= 0.08;
             }
 
@@ -199,7 +199,7 @@ public class bvq extends bvt {
       @Override
       public boolean a() {
          bjg $$0 = bvq.this.eg();
-         return bvq.this.aY() && $$0 != null ? bvq.this.f((biq)$$0) < 100.0 : false;
+         return bvq.this.aX() && $$0 != null ? bvq.this.f((biq)$$0) < 100.0 : false;
       }
 
       @Override

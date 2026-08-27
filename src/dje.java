@@ -23,7 +23,7 @@ public class dje<T extends dja> {
 
    public aqo.a a(ehi $$0, aqo<T> $$1) {
       for (T $$2 : this.b) {
-         if ($$2.cH().c($$0) && $$1.accept($$2).a()) {
+         if ($$2.cG().c($$0) && $$1.accept($$2).a()) {
             return aqo.a.b;
          }
       }
@@ -38,7 +38,7 @@ public class dje<T extends dja> {
       } else {
          for (T $$4 : $$3) {
             U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cH().c($$1) && $$2.accept($$5).a()) {
+            if ($$5 != null && $$4.cG().c($$1) && $$2.accept($$5).a()) {
                return aqo.a.b;
             }
          }

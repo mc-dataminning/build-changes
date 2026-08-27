@@ -10,7 +10,7 @@ public class blu {
 
    public static <E extends bjg, T extends bjg> bky<E> a(biu<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, bsh<T> $$4, float $$5, int $$6) {
       int $$7 = $$1 * $$1;
-      Predicate<bjg> $$8 = $$2x -> $$0.equals($$2x.ah()) && $$3.test((T)$$2x);
+      Predicate<bjg> $$8 = $$2x -> $$0.equals($$2x.ag()) && $$3.test((T)$$2x);
       return boj.a(
          (Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(bsh.n), $$6x.c(bsh.m), $$6x.b(bsh.h))
                .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {

@@ -22,7 +22,7 @@ public class can extends caj {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       cao.a(this);
       this.a($$0.D_(), $$1);
       return super.a($$0, $$1, $$2, $$3, $$4);
@@ -59,13 +59,13 @@ public class can extends caj {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("piglinBruteBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
       cao.b(this);
       cao.c(this);
-      super.Y();
+      super.X();
    }
 
    @Override

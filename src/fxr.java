@@ -9,7 +9,7 @@ public class fxr extends fxp<bvn, fgt<bvn>> {
 
    public void a(elp $$0, foe $$1, int $$2, bvn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
       if (!$$3.y()) {
-         if ($$3.ce()) {
+         if ($$3.cd()) {
             eqv $$10 = eqv.O();
             boolean $$11 = $$10.b($$3);
             if ($$11) {
@@ -23,9 +23,9 @@ public class fxr extends fxp<bvn, fgt<bvn>> {
             float $$21;
             float $$22;
             float $$23;
-            if ($$3.ad() && "jeb_".equals($$3.ac().getString())) {
+            if ($$3.ac() && "jeb_".equals($$3.ab().getString())) {
                int $$13 = 25;
-               int $$14 = $$3.ah / 25 + $$3.ai();
+               int $$14 = $$3.ah / 25 + $$3.ah();
                int $$15 = cht.values().length;
                int $$16 = $$14 % $$15;
                int $$17 = ($$14 + 1) % $$15;

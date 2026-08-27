@@ -16,9 +16,9 @@ import java.util.function.Predicate;
 
 public class et<T> implements ArgumentType<et.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.resource_tag.not_found", $$0, $$1));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("argument.resource_tag.not_found", $$0, $$1));
    private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tl.a("argument.resource_tag.invalid_type", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> tm.a("argument.resource_tag.invalid_type", $$0, $$1, $$2)
    );
    private final hi<T> d;
    final aew<? extends ht<T>> e;
@@ -76,11 +76,11 @@ public class et<T> implements ArgumentType<et.c<T>> {
    }
 
    public static class a<T> implements gi<et<T>, et.a<T>.a> {
-      public void a(et.a<T>.a $$0, so $$1) {
+      public void a(et.a<T>.a $$0, sp $$1) {
          $$1.b($$0.b);
       }
 
-      public et.a<T>.a a(so $$0) {
+      public et.a<T>.a a(sp $$0) {
          return new et.a.a($$0.t());
       }
 

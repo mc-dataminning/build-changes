@@ -7,7 +7,7 @@ public class cxl extends csv {
 
    @Override
    public void a(cpv $$0, gw $$1, dfj $$2, biq $$3) {
-      if (!$$3.bT() && $$3 instanceof bjg && !cnq.j((bjg)$$3)) {
+      if (!$$3.bS() && $$3 instanceof bjg && !cnq.j((bjg)$$3)) {
          $$3.a($$0.ag().e(), 1.0F);
       }
 

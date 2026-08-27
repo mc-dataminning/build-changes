@@ -1,6 +1,6 @@
 public class eoh extends gfb {
-   private static final tl a = tl.c("mco.configure.world.name");
-   private static final tl b = tl.c("mco.configure.world.description");
+   private static final tm a = tm.c("mco.configure.world.name");
+   private static final tm b = tm.c("mco.configure.world.description");
    private static final int c = 10;
    private static final int y = 210;
    private final emw z;
@@ -10,7 +10,7 @@ public class eoh extends gfb {
    private esz D;
 
    public eoh(emw $$0, ema $$1) {
-      super(tl.c("mco.selectServer.create"));
+      super(tm.c("mco.selectServer.create"));
       this.z = $$0;
       this.A = $$1;
    }
@@ -19,16 +19,16 @@ public class eoh extends gfb {
    public void aI_() {
       this.B.a(new etw(this.e, this.i));
       ewd $$0 = this.B.c(ewd.d()).a(10);
-      esq $$1 = esq.a(tl.c("mco.create.world"), $$0x -> this.C()).a();
+      esq $$1 = esq.a(tm.c("mco.create.world"), $$0x -> this.D()).a();
       $$1.i = false;
-      this.C = new esz(this.i, 210, 20, tl.c("mco.configure.world.name"));
+      this.C = new esz(this.i, 210, 20, tm.c("mco.configure.world.name"));
       this.C.b($$1x -> $$1.i = !ac.b($$1x));
-      this.D = new esz(this.i, 210, 20, tl.c("mco.configure.world.description"));
+      this.D = new esz(this.i, 210, 20, tm.c("mco.configure.world.description"));
       $$0.a(evv.a(this.i, this.C, a));
       $$0.a(evv.a(this.i, this.D, b));
       ewd $$2 = this.B.b(ewd.e().a(10));
       $$2.a($$1);
-      $$2.a(esq.a(tk.e, $$0x -> this.az_()).a());
+      $$2.a(esq.a(tl.e, $$0x -> this.az_()).a());
       this.B.a($$1x -> {
          eso var10000 = this.d($$1x);
       });
@@ -41,7 +41,7 @@ public class eoh extends gfb {
       this.B.a();
    }
 
-   private void C() {
+   private void D() {
       eou $$0 = eou.a(this.A, this.z, () -> this.f.execute(() -> {
             this.A.e();
             this.f.a(this.A.h());

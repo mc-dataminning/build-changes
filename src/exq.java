@@ -1,5 +1,5 @@
 public class exq extends eyk {
-   public exq(tl $$0) {
+   public exq(tm $$0) {
       super($$0);
    }
 

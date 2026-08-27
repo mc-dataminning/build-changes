@@ -1,8 +1,22 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record wn(gw b, float c, float d, float e, float f, float g) implements vx {
+   public static final aex a = new aex("debug/worldgen_attempt");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface wn {
+   public wn(sp $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   }
+
+   @Override
+   public void a(sp $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+   }
+
+   @Override
+   public aex a() {
+      return a;
+   }
 }

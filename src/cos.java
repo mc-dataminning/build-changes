@@ -27,7 +27,7 @@ public interface cos {
       return false;
    }
 
-   default void a(cbu $$0, tl $$1, int $$2) {
+   default void a(cbu $$0, tm $$1, int $$2) {
       OptionalInt $$3 = $$0.a(new bhg(($$0x, $$1x, $$2x) -> new cfs($$0x, $$1x, this), $$1));
       if ($$3.isPresent()) {
          cou $$4 = this.gf();

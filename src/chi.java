@@ -15,8 +15,8 @@ public class chi extends cja {
             double $$8 = $$2.dq() + ($$2.ef().j() - 0.5) * 16.0;
             double $$9 = arx.a($$2.ds() + (double)($$2.ef().a(16) - 8), (double)$$1.H_(), (double)($$1.H_() + ((akr)$$1).j() - 1));
             double $$10 = $$2.dw() + ($$2.ef().j() - 0.5) * 16.0;
-            if ($$2.bO()) {
-               $$2.ab();
+            if ($$2.bN()) {
+               $$2.aa();
             }
 
             ehn $$11 = $$2.dj();

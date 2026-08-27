@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public class ctn extends csv {
-   private static final tl a = tl.c("container.cartography_table");
+   private static final tm a = tm.c("container.cartography_table");
 
    protected ctn(dfi.d $$0) {
       super($$0);

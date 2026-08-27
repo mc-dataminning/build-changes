@@ -22,7 +22,7 @@ public abstract class ftg<T extends biq> {
    }
 
    protected int a(T $$0, gw $$1) {
-      return $$0.bN() ? 15 : $$0.dL().a(cqe.b, $$1);
+      return $$0.bM() ? 15 : $$0.dL().a(cqe.b, $$1);
    }
 
    public boolean a(T $$0, frg $$1, double $$2, double $$3, double $$4) {
@@ -51,7 +51,7 @@ public abstract class ftg<T extends biq> {
    }
 
    protected boolean b(T $$0) {
-      return $$0.cC() && $$0.ad();
+      return $$0.cB() && $$0.ac();
    }
 
    public abstract aex a(T var1);
@@ -60,11 +60,11 @@ public abstract class ftg<T extends biq> {
       return this.a;
    }
 
-   protected void a(T $$0, tl $$1, elp $$2, foe $$3, int $$4) {
+   protected void a(T $$0, tm $$1, elp $$2, foe $$3, int $$4) {
       double $$5 = this.c.b($$0);
       if (!($$5 > 4096.0)) {
-         boolean $$6 = !$$0.bV();
-         float $$7 = $$0.di();
+         boolean $$6 = !$$0.bU();
+         float $$7 = $$0.dh();
          int $$8 = "deadmau5".equals($$1.getString()) ? -10 : 0;
          $$2.a();
          $$2.a(0.0F, $$7, 0.0F);

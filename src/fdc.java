@@ -36,7 +36,7 @@ public class fdc extends eyk {
    }
 
    private fdc(BooleanConsumer $$0, DataFixer $$1, ecg.c $$2, cpz $$3, boolean $$4, ht<dit> $$5) {
-      super(tl.a("optimizeWorld.title", $$3.a()));
+      super(tm.a("optimizeWorld.title", $$3.a()));
       this.c = $$0;
       this.k = new bgm($$2, $$1, $$5, $$4);
    }
@@ -44,7 +44,7 @@ public class fdc extends eyk {
    @Override
    protected void aI_() {
       super.aI_();
-      this.d(esq.a(tk.e, $$0 -> {
+      this.d(esq.a(tl.e, $$0 -> {
          this.k.a();
          this.c.accept(false);
       }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
@@ -78,9 +78,9 @@ public class fdc extends eyk {
       $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
       if (this.k.e() > 0) {
          $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, tl.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, tl.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, tl.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         $$0.b(this.i, tm.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
+         $$0.b(this.i, tm.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.i, tm.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
          int $$8 = 0;
 
          for (aew<cpv> $$9 : this.k.c()) {
@@ -90,8 +90,8 @@ public class fdc extends eyk {
          }
 
          int $$11 = this.k.f() + this.k.g();
-         tl $$12 = tl.a("optimizeWorld.progress.counter", $$11, this.k.e());
-         tl $$13 = tl.a("optimizeWorld.progress.percentage", arx.d(this.k.d() * 100.0F));
+         tm $$12 = tm.a("optimizeWorld.progress.counter", $$11, this.k.e());
+         tm $$13 = tm.a("optimizeWorld.progress.percentage", arx.d(this.k.d() * 100.0F));
          $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
          $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
       }

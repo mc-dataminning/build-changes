@@ -2,7 +2,7 @@ import java.util.UUID;
 
 public abstract class bgo {
    private final UUID h;
-   protected tl a;
+   protected tm a;
    protected float b;
    protected bgo.a c;
    protected bgo.b d;
@@ -10,7 +10,7 @@ public abstract class bgo {
    protected boolean f;
    protected boolean g;
 
-   public bgo(UUID $$0, tl $$1, bgo.a $$2, bgo.b $$3) {
+   public bgo(UUID $$0, tm $$1, bgo.a $$2, bgo.b $$3) {
       this.h = $$0;
       this.a = $$1;
       this.c = $$2;
@@ -22,11 +22,11 @@ public abstract class bgo {
       return this.h;
    }
 
-   public tl j() {
+   public tm j() {
       return this.a;
    }
 
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       this.a = $$0;
    }
 

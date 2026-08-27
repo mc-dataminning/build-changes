@@ -1,4 +1,4 @@
-public class xj implements vd<ww> {
+public class xj implements ve<wx> {
    private final bgv a;
    private final boolean b;
 
@@ -7,18 +7,18 @@ public class xj implements vd<ww> {
       this.b = $$1;
    }
 
-   public xj(so $$0) {
+   public xj(sp $$0) {
       this.a = bgv.a($$0.readUnsignedByte());
       this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.a.a());
       $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

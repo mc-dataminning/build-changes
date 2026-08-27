@@ -11,18 +11,18 @@ public class eny extends esq {
    public static final aex b = new aex("minecraft", "textures/gui/title/background/panorama_0.png");
    public static final aex c = new aex("minecraft", "textures/gui/title/background/panorama_2.png");
    public static final aex d = new aex("minecraft", "textures/gui/title/background/panorama_3.png");
-   private static final tl u = tl.c("mco.configure.world.slot.tooltip.active");
-   private static final tl v = tl.c("mco.configure.world.slot.tooltip.minigame");
-   private static final tl w = tl.c("mco.configure.world.slot.tooltip");
-   private static final tl x = tl.c("mco.worldSlot.minigame");
+   private static final tm u = tm.c("mco.configure.world.slot.tooltip.active");
+   private static final tm v = tm.c("mco.configure.world.slot.tooltip.minigame");
+   private static final tm w = tm.c("mco.configure.world.slot.tooltip");
+   private static final tm x = tm.c("mco.worldSlot.minigame");
    private final Supplier<emw> y;
-   private final Consumer<tl> z;
+   private final Consumer<tm> z;
    private final int A;
    @Nullable
    private eny.b B;
 
-   public eny(int $$0, int $$1, int $$2, int $$3, Supplier<emw> $$4, Consumer<tl> $$5, int $$6, esq.c $$7) {
-      super($$0, $$1, $$2, $$3, tk.a, $$7, o);
+   public eny(int $$0, int $$1, int $$2, int $$3, Supplier<emw> $$4, Consumer<tm> $$5, int $$6, esq.c $$7) {
+      super($$0, $$1, $$2, $$3, tl.a, $$7, o);
       this.y = $$4;
       this.A = $$6;
       this.z = $$5;
@@ -58,9 +58,9 @@ public class eny extends esq {
          }
 
          eny.a $$13 = a($$0, $$3, $$2);
-         Pair<tl, tl> $$14 = this.a($$0, $$4, $$7, $$2, $$13);
-         this.B = new eny.b($$3, $$4, $$5, $$6, $$7, $$2, $$13, (tl)$$14.getFirst());
-         this.b((tl)$$14.getSecond());
+         Pair<tm, tm> $$14 = this.a($$0, $$4, $$7, $$2, $$13);
+         this.B = new eny.b($$3, $$4, $$5, $$6, $$7, $$2, $$13, (tm)$$14.getFirst());
+         this.b((tm)$$14.getSecond());
       }
    }
 
@@ -82,29 +82,29 @@ public class eny extends esq {
       return eny.a.a;
    }
 
-   private Pair<tl, tl> a(emw $$0, String $$1, boolean $$2, boolean $$3, eny.a $$4) {
+   private Pair<tm, tm> a(emw $$0, String $$1, boolean $$2, boolean $$3, eny.a $$4) {
       if ($$4 == eny.a.a) {
-         return Pair.of(null, tl.b($$1));
+         return Pair.of(null, tm.b($$1));
       } else {
-         tl $$5;
+         tm $$5;
          if ($$3) {
             if ($$2) {
-               $$5 = tk.a;
+               $$5 = tl.a;
             } else {
-               $$5 = tk.a().f($$1).b(tk.u).f($$0.o);
+               $$5 = tl.a().f($$1).b(tl.u).f($$0.o);
             }
          } else {
-            $$5 = tk.a().f($$1);
+            $$5 = tl.a().f($$1);
          }
 
-         tl $$8;
+         tm $$8;
          if ($$4 == eny.a.c) {
             $$8 = u;
          } else {
             $$8 = $$3 ? v : w;
          }
 
-         tl $$10 = $$8.e().b($$5);
+         tm $$10 = $$8.e().b($$5);
          return Pair.of($$8, $$10);
       }
    }
@@ -130,7 +130,7 @@ public class eny extends esq {
       boolean $$10,
       boolean $$11,
       eny.a $$12,
-      @Nullable tl $$13
+      @Nullable tm $$13
    ) {
       boolean $$14 = this.o();
       if (this.a_((double)$$3, (double)$$4) && $$13 != null) {
@@ -200,9 +200,9 @@ public class eny extends esq {
       public final boolean b;
       public final eny.a c;
       @Nullable
-      final tl h;
+      final tm h;
 
-      b(boolean $$0, String $$1, long $$2, @Nullable String $$3, boolean $$4, boolean $$5, eny.a $$6, @Nullable tl $$7) {
+      b(boolean $$0, String $$1, long $$2, @Nullable String $$3, boolean $$4, boolean $$5, eny.a $$6, @Nullable tm $$7) {
          this.d = $$0;
          this.e = $$1;
          this.f = $$2;

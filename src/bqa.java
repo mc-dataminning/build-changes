@@ -21,7 +21,7 @@ public class bqa extends bqb {
       if (this.d.h() >= 0) {
          return false;
       } else {
-         List<? extends bur> $$0 = this.d.dL().a((Class<? extends bur>)this.d.getClass(), this.d.cH().c(8.0, 4.0, 8.0));
+         List<? extends bur> $$0 = this.d.dL().a((Class<? extends bur>)this.d.getClass(), this.d.cG().c(8.0, 4.0, 8.0));
          bur $$1 = null;
          double $$2 = Double.MAX_VALUE;
 
@@ -50,7 +50,7 @@ public class bqa extends bqb {
    public boolean b() {
       if (this.d.h() >= 0) {
          return false;
-      } else if (!this.e.bw()) {
+      } else if (!this.e.bv()) {
          return false;
       } else {
          double $$0 = this.d.f(this.e);

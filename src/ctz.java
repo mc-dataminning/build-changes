@@ -206,7 +206,7 @@ public class ctz extends csv {
    @Override
    public void a(cpv $$0, dfj $$1, ehj $$2, ccm $$3) {
       gw $$4 = $$2.a();
-      if (!$$0.B && $$3.a($$0, $$4) && $$3.ah().a(apw.e)) {
+      if (!$$0.B && $$3.a($$0, $$4) && $$3.ag().a(apw.e)) {
          $$0.a($$4, true, $$3);
       }
    }

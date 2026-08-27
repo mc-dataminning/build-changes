@@ -35,9 +35,9 @@ public class eel extends eec {
       if ($$0.b()) {
          return $$0;
       } else {
-         qx $$2 = cgy.a($$0);
+         qy $$2 = cgy.a($$0);
          if ($$2 == null) {
-            $$2 = new qx();
+            $$2 = new qy();
          }
 
          $$2.a("LootTable", this.b.toString());

@@ -46,7 +46,7 @@ public class ftf implements anv {
          ftg<? extends cbu> $$3 = this.i.get($$2);
          return (ftg<? super T>)($$3 != null ? $$3 : this.i.get(gae.a.b));
       } else {
-         return (ftg<? super T>)this.h.get($$0.ah());
+         return (ftg<? super T>)this.h.get($$0.ag());
       }
    }
 
@@ -89,12 +89,12 @@ public class ftf implements anv {
          $$6.a();
          $$6.a($$11, $$12, $$13);
          $$9.a($$0, $$4, $$5, $$6, $$7, $$8);
-         if ($$0.cv()) {
+         if ($$0.cu()) {
             this.a($$6, $$7, $$0);
          }
 
          $$6.a(-$$10.a(), -$$10.b(), -$$10.c());
-         if (this.d.L().c() && this.q && $$9.d > 0.0F && !$$0.ce()) {
+         if (this.d.L().c() && this.q && $$9.d > 0.0F && !$$0.cd()) {
             double $$14 = this.a($$0.dq(), $$0.ds(), $$0.dw());
             float $$15 = (float)((1.0 - $$14 / 256.0) * (double)$$9.e);
             if ($$15 > 0.0F) {
@@ -102,7 +102,7 @@ public class ftf implements anv {
             }
          }
 
-         if (this.r && !$$0.ce() && !eqv.O().ax()) {
+         if (this.r && !$$0.cd() && !eqv.O().ax()) {
             a($$6, $$7.getBuffer(fom.x()), $$0, $$5);
          }
 
@@ -121,7 +121,7 @@ public class ftf implements anv {
    }
 
    private static void a(elp $$0, elt $$1, biq $$2, float $$3) {
-      ehi $$4 = $$2.cH().d(-$$2.dq(), -$$2.ds(), -$$2.dw());
+      ehi $$4 = $$2.cG().d(-$$2.dq(), -$$2.ds(), -$$2.dw());
       foc.a($$0, $$1, $$4, 1.0F, 1.0F, 1.0F, 1.0F);
       if ($$2 instanceof bxh) {
          double $$5 = -arx.d((double)$$3, $$2.ac, $$2.dq());
@@ -134,19 +134,19 @@ public class ftf implements anv {
             double $$10 = $$6 + arx.d((double)$$3, $$8.ad, $$8.ds());
             double $$11 = $$7 + arx.d((double)$$3, $$8.ae, $$8.dw());
             $$0.a($$9, $$10, $$11);
-            foc.a($$0, $$1, $$8.cH().d(-$$8.dq(), -$$8.ds(), -$$8.dw()), 0.25F, 1.0F, 0.0F, 1.0F);
+            foc.a($$0, $$1, $$8.cG().d(-$$8.dq(), -$$8.ds(), -$$8.dw()), 0.25F, 1.0F, 0.0F, 1.0F);
             $$0.b();
          }
       }
 
       if ($$2 instanceof bjg) {
          float $$12 = 0.01F;
-         foc.a($$0, $$1, $$4.a, (double)($$2.cI() - 0.01F), $$4.c, $$4.d, (double)($$2.cI() + 0.01F), $$4.f, 1.0F, 0.0F, 0.0F, 1.0F);
+         foc.a($$0, $$1, $$4.a, (double)($$2.cH() - 0.01F), $$4.c, $$4.d, (double)($$2.cH() + 0.01F), $$4.f, 1.0F, 0.0F, 0.0F, 1.0F);
       }
 
-      biq $$13 = $$2.cZ();
+      biq $$13 = $$2.cY();
       if ($$13 != null) {
-         float $$14 = Math.min($$13.dg(), $$2.dg()) / 2.0F;
+         float $$14 = Math.min($$13.df(), $$2.df()) / 2.0F;
          float $$15 = 0.0625F;
          ehn $$16 = $$13.m($$2).d($$2.dj());
          foc.a(
@@ -168,8 +168,8 @@ public class ftf implements anv {
       ehn $$17 = $$2.f($$3);
       Matrix4f $$18 = $$0.c().a();
       Matrix3f $$19 = $$0.c().b();
-      $$1.a($$18, 0.0F, $$2.cI(), 0.0F).a(0, 0, 255, 255).a($$19, (float)$$17.c, (float)$$17.d, (float)$$17.e).e();
-      $$1.a($$18, (float)($$17.c * 2.0), (float)((double)$$2.cI() + $$17.d * 2.0), (float)($$17.e * 2.0))
+      $$1.a($$18, 0.0F, $$2.cH(), 0.0F).a(0, 0, 255, 255).a($$19, (float)$$17.c, (float)$$17.d, (float)$$17.e).e();
+      $$1.a($$18, (float)($$17.c * 2.0), (float)((double)$$2.cH() + $$17.d * 2.0), (float)($$17.e * 2.0))
          .a(0, 0, 255, 255)
          .a($$19, (float)$$17.c, (float)$$17.d, (float)$$17.e)
          .e();
@@ -179,11 +179,11 @@ public class ftf implements anv {
       fze $$3 = gbk.a.c();
       fze $$4 = gbk.b.c();
       $$0.a();
-      float $$5 = $$2.dg() * 1.4F;
+      float $$5 = $$2.df() * 1.4F;
       $$0.b($$5, $$5, $$5);
       float $$6 = 0.5F;
       float $$7 = 0.0F;
-      float $$8 = $$2.dh() / $$5;
+      float $$8 = $$2.dg() / $$5;
       float $$9 = 0.0F;
       $$0.a(a.d.rotationDegrees(-this.b.e()));
       $$0.a(0.0F, 0.0F, -0.3F + (float)((int)$$8) * 0.02F);

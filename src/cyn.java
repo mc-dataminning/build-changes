@@ -47,7 +47,7 @@ public class cyn extends csv implements ctb {
 
       $$3.o(true);
       if (!$$1.B) {
-         if ($$3.bN() && ($$1.X().b(cpr.c) || $$3 instanceof cbu) && $$3.a($$1, $$2)) {
+         if ($$3.bM() && ($$1.X().b(cpr.c) || $$3 instanceof cbu) && $$3.a($$1, $$2)) {
             $$1.b($$2, false);
          }
 
@@ -89,7 +89,7 @@ public class cyn extends csv implements ctb {
    }
 
    public static boolean a(biq $$0) {
-      if ($$0.ah().a(apw.f)) {
+      if ($$0.ag().a(apw.f)) {
          return true;
       } else {
          return $$0 instanceof bjg ? ((bjg)$$0).c(biv.c).a(cji.oN) : false;

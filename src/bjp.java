@@ -50,7 +50,7 @@ public abstract class bjp extends bji {
             double $$3 = ($$0.ds() - this.ds()) / (double)$$1;
             double $$4 = ($$0.dw() - this.dw()) / (double)$$1;
             this.f(this.do().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.cn();
+            this.cm();
          } else if (this.gb() && !this.ga()) {
             this.bO.b(bqb.a.a);
             float $$5 = 2.0F;

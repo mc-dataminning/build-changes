@@ -7,10 +7,10 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
-public record aea(tl b, Optional<aea.b> c, Optional<aea.c> d, Optional<aea.a> e, boolean f) {
+public record aea(tm b, Optional<aea.b> c, Optional<aea.c> d, Optional<aea.a> e, boolean f) {
    public static final Codec<aea> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               arg.b.optionalFieldOf("description", tk.a).forGetter(aea::a),
+               arg.b.optionalFieldOf("description", tl.a).forGetter(aea::a),
                aea.b.a.optionalFieldOf("players").forGetter(aea::b),
                aea.c.a.optionalFieldOf("version").forGetter(aea::c),
                aea.a.a.optionalFieldOf("favicon").forGetter(aea::d),
@@ -19,7 +19,7 @@ public record aea(tl b, Optional<aea.b> c, Optional<aea.c> d, Optional<aea.a> e,
             .apply($$0, aea::new)
    );
 
-   public tl a() {
+   public tm a() {
       return this.b;
    }
 

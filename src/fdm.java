@@ -2,7 +2,7 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 public class fdm implements fdo {
-   private static final tl a = tl.c("spectatorMenu.root.prompt");
+   private static final tm a = tm.c("spectatorMenu.root.prompt");
    private final List<fdp> b = Lists.newArrayList();
 
    public fdm() {
@@ -16,7 +16,7 @@ public class fdm implements fdo {
    }
 
    @Override
-   public tl b() {
+   public tm b() {
       return a;
    }
 }

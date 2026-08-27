@@ -31,7 +31,7 @@ public class byz extends bzi {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.c;
    }
 
@@ -56,13 +56,13 @@ public class byz extends bzi {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.c = $$0.h("Lifetime");
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Lifetime", this.c);
    }
@@ -92,7 +92,7 @@ public class byz extends bzi {
          }
 
          if (this.c >= 2400) {
-            this.al();
+            this.ak();
          }
       }
    }

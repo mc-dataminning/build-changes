@@ -1,7 +1,7 @@
-public interface adx extends si, sj {
+public interface adx extends sj, sk {
    @Override
-   default sn b() {
-      return sn.c;
+   default so b() {
+      return so.c;
    }
 
    void a(adz var1);

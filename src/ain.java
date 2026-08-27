@@ -16,7 +16,7 @@ public class ain {
 
    private static int a(dt $$0, gw $$1, float $$2) {
       $$0.e().a($$1, $$2);
-      $$0.a(() -> tl.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
+      $$0.a(() -> tm.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
       return 1;
    }
 }

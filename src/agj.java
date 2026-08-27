@@ -13,9 +13,9 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class agj {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.clone.overlap"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.clone.toobig", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("commands.clone.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.clone.overlap"));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("commands.clone.toobig", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.c("commands.clone.failed"));
    public static final Predicate<dfn> a = $$0 -> !$$0.a().i();
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
@@ -123,7 +123,7 @@ public class agj {
                      if ($$4.test($$26)) {
                         dcv $$28 = $$12.c_($$24);
                         if ($$28 != null) {
-                           qx $$29 = $$28.o();
+                           qy $$29 = $$28.o();
                            $$17.add(new agj.a($$25, $$27, $$29));
                            $$19.addLast($$24);
                         } else if (!$$27.i($$12, $$24) && !$$27.r($$12, $$24)) {
@@ -189,7 +189,7 @@ public class agj {
                throw d.create();
             } else {
                int $$42 = $$37;
-               $$0.a(() -> tl.a("commands.clone.success", $$42), true);
+               $$0.a(() -> tm.a("commands.clone.success", $$42), true);
                return $$37;
             }
          } else {
@@ -202,9 +202,9 @@ public class agj {
       public final gw a;
       public final dfj b;
       @Nullable
-      public final qx c;
+      public final qy c;
 
-      public a(gw $$0, dfj $$1, @Nullable qx $$2) {
+      public a(gw $$0, dfj $$1, @Nullable qy $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

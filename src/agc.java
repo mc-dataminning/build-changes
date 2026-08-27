@@ -10,15 +10,15 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.UUID;
 
 public class agc {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("commands.attribute.failed.entity", $$0));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("commands.attribute.failed.entity", $$0));
    private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> tl.a("commands.attribute.failed.no_attribute", $$0, $$1)
+      ($$0, $$1) -> tm.a("commands.attribute.failed.no_attribute", $$0, $$1)
    );
    private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tl.a("commands.attribute.failed.no_modifier", $$1, $$0, $$2)
+      ($$0, $$1, $$2) -> tm.a("commands.attribute.failed.no_modifier", $$1, $$0, $$2)
    );
    private static final Dynamic3CommandExceptionType d = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tl.a("commands.attribute.failed.modifier_already_present", $$2, $$1, $$0)
+      ($$0, $$1, $$2) -> tm.a("commands.attribute.failed.modifier_already_present", $$2, $$1, $$0)
    );
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
@@ -171,7 +171,7 @@ public class agc {
    private static bki a(biq $$0, hg<bkh> $$1) throws CommandSyntaxException {
       bki $$2 = a($$0).eQ().a($$1);
       if ($$2 == null) {
-         throw b.create($$0.ac(), a($$1));
+         throw b.create($$0.ab(), a($$1));
       } else {
          return $$2;
       }
@@ -179,7 +179,7 @@ public class agc {
 
    private static bjg a(biq $$0) throws CommandSyntaxException {
       if (!($$0 instanceof bjg)) {
-         throw a.create($$0.ac());
+         throw a.create($$0.ab());
       } else {
          return (bjg)$$0;
       }
@@ -188,7 +188,7 @@ public class agc {
    private static bjg b(biq $$0, hg<bkh> $$1) throws CommandSyntaxException {
       bjg $$2 = a($$0);
       if (!$$2.eQ().b($$1)) {
-         throw b.create($$0.ac(), a($$1));
+         throw b.create($$0.ab(), a($$1));
       } else {
          return $$2;
       }
@@ -197,14 +197,14 @@ public class agc {
    private static int a(dt $$0, biq $$1, hg<bkh> $$2, double $$3) throws CommandSyntaxException {
       bjg $$4 = b($$1, $$2);
       double $$5 = $$4.a($$2);
-      $$0.a(() -> tl.a("commands.attribute.value.get.success", a($$2), $$1.ac(), $$5), false);
+      $$0.a(() -> tm.a("commands.attribute.value.get.success", a($$2), $$1.ab(), $$5), false);
       return (int)($$5 * $$3);
    }
 
    private static int b(dt $$0, biq $$1, hg<bkh> $$2, double $$3) throws CommandSyntaxException {
       bjg $$4 = b($$1, $$2);
       double $$5 = $$4.b($$2);
-      $$0.a(() -> tl.a("commands.attribute.base_value.get.success", a($$2), $$1.ac(), $$5), false);
+      $$0.a(() -> tm.a("commands.attribute.base_value.get.success", a($$2), $$1.ab(), $$5), false);
       return (int)($$5 * $$3);
    }
 
@@ -212,17 +212,17 @@ public class agc {
       bjg $$5 = b($$1, $$2);
       bkj $$6 = $$5.eQ();
       if (!$$6.a($$2, $$3)) {
-         throw c.create($$1.ac(), a($$2), $$3);
+         throw c.create($$1.ab(), a($$2), $$3);
       } else {
          double $$7 = $$6.b($$2, $$3);
-         $$0.a(() -> tl.a("commands.attribute.modifier.value.get.success", $$3, a($$2), $$1.ac(), $$7), false);
+         $$0.a(() -> tm.a("commands.attribute.modifier.value.get.success", $$3, a($$2), $$1.ab(), $$7), false);
          return (int)($$7 * $$4);
       }
    }
 
    private static int c(dt $$0, biq $$1, hg<bkh> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
-      $$0.a(() -> tl.a("commands.attribute.base_value.set.success", a($$2), $$1.ac(), $$3), false);
+      $$0.a(() -> tm.a("commands.attribute.base_value.set.success", a($$2), $$1.ab(), $$3), false);
       return 1;
    }
 
@@ -230,10 +230,10 @@ public class agc {
       bki $$7 = a($$1, $$2);
       bkk $$8 = new bkk($$3, $$4, $$5, $$6);
       if ($$7.a($$8)) {
-         throw d.create($$1.ac(), a($$2), $$3);
+         throw d.create($$1.ab(), a($$2), $$3);
       } else {
          $$7.c($$8);
-         $$0.a(() -> tl.a("commands.attribute.modifier.add.success", $$3, a($$2), $$1.ac()), false);
+         $$0.a(() -> tm.a("commands.attribute.modifier.add.success", $$3, a($$2), $$1.ab()), false);
          return 1;
       }
    }
@@ -241,14 +241,14 @@ public class agc {
    private static int a(dt $$0, biq $$1, hg<bkh> $$2, UUID $$3) throws CommandSyntaxException {
       bki $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
-         $$0.a(() -> tl.a("commands.attribute.modifier.remove.success", $$3, a($$2), $$1.ac()), false);
+         $$0.a(() -> tm.a("commands.attribute.modifier.remove.success", $$3, a($$2), $$1.ab()), false);
          return 1;
       } else {
-         throw c.create($$1.ac(), a($$2), $$3);
+         throw c.create($$1.ab(), a($$2), $$3);
       }
    }
 
-   private static tl a(hg<bkh> $$0) {
-      return tl.c($$0.a().c());
+   private static tm a(hg<bkh> $$0) {
+      return tm.c($$0.a().c());
    }
 }

@@ -47,28 +47,28 @@ public class bhe extends ebr {
    }
 
    @Override
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       $$0.a("salt", this.c);
       $$0.a("include_world_seed", this.d);
       $$0.a("include_sequence_id", this.e);
-      qx $$1 = new qx();
-      this.f.forEach(($$1x, $$2) -> $$1.a($$1x.toString(), (rq)bhd.a.encodeStart(ri.a, $$2).result().orElseThrow()));
+      qy $$1 = new qy();
+      this.f.forEach(($$1x, $$2) -> $$1.a($$1x.toString(), (rr)bhd.a.encodeStart(rj.a, $$2).result().orElseThrow()));
       $$0.a("sequences", $$1);
       return $$0;
    }
 
-   private static boolean a(qx $$0, String $$1, boolean $$2) {
+   private static boolean a(qy $$0, String $$1, boolean $$2) {
       return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
    }
 
-   public static bhe a(long $$0, qx $$1) {
+   public static bhe a(long $$0, qy $$1) {
       bhe $$2 = new bhe($$0);
       $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
-      qx $$3 = $$1.p("sequences");
+      qy $$3 = $$1.p("sequences");
 
       for (String $$5 : $$3.e()) {
          try {
-            bhd $$6 = (bhd)((Pair)bhd.a.decode(ri.a, $$3.c($$5)).result().get()).getFirst();
+            bhd $$6 = (bhd)((Pair)bhd.a.decode(rj.a, $$3.c($$5)).result().get()).getFirst();
             $$2.f.put(new aex($$5), $$6);
          } catch (Exception var9) {
             a.error("Failed to load random sequence {}", $$5, var9);

@@ -24,12 +24,12 @@ public abstract class is implements iv {
       return new Vector3f($$1, $$2, $$3);
    }
 
-   public static Vector3f b(so $$0) {
+   public static Vector3f b(sp $$0) {
       return new Vector3f($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.g.x());
       $$0.a(this.g.y());
       $$0.a(this.g.z());

@@ -51,12 +51,12 @@ public class dib<T> implements dhw<T> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       this.b = this.a.b($$0.m());
    }
 
    @Override
-   public void b(so $$0) {
+   public void b(sp $$0) {
       if (this.b == null) {
          throw new IllegalStateException("Use of an uninitialized palette");
       } else {
@@ -69,7 +69,7 @@ public class dib<T> implements dhw<T> {
       if (this.b == null) {
          throw new IllegalStateException("Use of an uninitialized palette");
       } else {
-         return tc.a(this.a.a(this.b));
+         return td.a(this.a.a(this.b));
       }
    }
 

@@ -44,21 +44,21 @@ public class dii implements djd<biq> {
                b.warn("Failed to parse chunk {} position info", $$0, var6);
             }
 
-            qx $$4 = this.b($$1.get());
-            rd $$5 = $$4.c("Entities", 10);
+            qy $$4 = this.b($$1.get());
+            re $$5 = $$4.c("Entities", 10);
             List<biq> $$6 = biu.a($$5, this.e).collect(ImmutableList.toImmutableList());
             return new diy<>($$0, $$6);
          }
       }, this.h::a);
    }
 
-   private static cpc a(qx $$0) {
+   private static cpc a(qy $$0) {
       int[] $$1 = $$0.n("Position");
       return new cpc($$1[0], $$1[1]);
    }
 
-   private static void a(qx $$0, cpc $$1) {
-      $$0.a("Position", new rb(new int[]{$$1.e, $$1.f}));
+   private static void a(qy $$0, cpc $$1) {
+      $$0.a("Position", new rc(new int[]{$$1.e, $$1.f}));
    }
 
    private static diy<biq> b(cpc $$0) {
@@ -73,14 +73,14 @@ public class dii implements djd<biq> {
             this.f.a($$1, null);
          }
       } else {
-         rd $$2 = new rd();
+         re $$2 = new re();
          $$0.b().forEach($$1x -> {
-            qx $$2x = new qx();
+            qy $$2x = new qy();
             if ($$1x.e($$2x)) {
                $$2.add($$2x);
             }
          });
-         qx $$3 = rj.g(new qx());
+         qy $$3 = rk.g(new qy());
          $$3.a("Entities", $$2);
          a($$3, $$1);
          this.f.a($$1, $$3).exceptionally($$1x -> {
@@ -97,8 +97,8 @@ public class dii implements djd<biq> {
       this.h.a();
    }
 
-   private qx b(qx $$0) {
-      int $$1 = rj.b($$0, -1);
+   private qy b(qy $$0) {
+      int $$1 = rk.b($$0, -1);
       return ata.s.a(this.a, $$0, $$1);
    }
 

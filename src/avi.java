@@ -24,6 +24,6 @@ public class avi extends DataFix {
 
    public static Dynamic<?> a(Dynamic<?> $$0) {
       String $$1 = $$0.get("CustomName").asString("");
-      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", $$0.createString(tl.a.a(tl.b($$1))));
+      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", $$0.createString(tm.a.a(tm.b($$1))));
    }
 }

@@ -27,7 +27,7 @@ public class bve extends buy implements bjx, bke<bve.a> {
 
    @Override
    public void a(akr $$0, bjf $$1) {
-      UUID $$2 = $$1.cw();
+      UUID $$2 = $$1.cv();
       if (!$$2.equals(this.bY)) {
          this.a(this.t() == bve.a.a ? bve.a.b : bve.a.a);
          this.bY = $$2;
@@ -111,20 +111,20 @@ public class bve extends buy implements bjx, bke<bve.a> {
          buy $$1 = biu.t.a(this.dL());
          if ($$1 != null) {
             ((akr)this.dL()).a(ix.x, this.dq(), this.e(0.5), this.dw(), 1, 0.0, 0.0, 0.0, 0.0);
-            this.al();
+            this.ak();
             $$1.b(this.dq(), this.ds(), this.dw(), this.dB(), this.dD());
             $$1.c(this.eu());
             $$1.aU = this.aU;
-            if (this.ad()) {
-               $$1.b(this.ae());
-               $$1.n(this.cB());
+            if (this.ac()) {
+               $$1.b(this.ad());
+               $$1.n(this.cA());
             }
 
             if (this.fK()) {
                $$1.fI();
             }
 
-            $$1.m(this.cr());
+            $$1.m(this.cq());
             this.dL().b($$1);
 
             for (int $$2 = 0; $$2 < 5; $$2++) {
@@ -136,24 +136,24 @@ public class bve extends buy implements bjx, bke<bve.a> {
 
    @Override
    public boolean a() {
-      return this.bw() && !this.m_();
+      return this.bv() && !this.m_();
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Type", this.t().c());
       if (this.bX != null) {
-         day.a.b.encodeStart(ri.a, this.bX).result().ifPresent($$1 -> $$0.a("stew_effects", $$1));
+         day.a.b.encodeStart(rj.a, this.bX).result().ifPresent($$1 -> $$0.a("stew_effects", $$1));
       }
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a(bve.a.a($$0.l("Type")));
       if ($$0.b("stew_effects", 9)) {
-         day.a.b.parse(ri.a, $$0.c("stew_effects")).result().ifPresent($$0x -> this.bX = $$0x);
+         day.a.b.parse(rj.a, $$0.c("stew_effects")).result().ifPresent($$0x -> this.bX = $$0x);
       }
    }
 

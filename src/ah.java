@@ -92,12 +92,12 @@ public class ah implements Comparable<ah> {
       return "AdvancementProgress{criteria=" + this.e + ", requirements=" + this.f + "}";
    }
 
-   public void a(so $$0) {
-      $$0.a(this.e, so::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(sp $$0) {
+      $$0.a(this.e, sp::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static ah b(so $$0) {
-      Map<String, an> $$1 = $$0.a(so::r, an::b);
+   public static ah b(sp $$0) {
+      Map<String, an> $$1 = $$0.a(sp::r, an::b);
       return new ah($$1);
    }
 
@@ -122,7 +122,7 @@ public class ah implements Comparable<ah> {
    }
 
    @Nullable
-   public tl d() {
+   public tm d() {
       if (this.e.isEmpty()) {
          return null;
       } else {
@@ -131,7 +131,7 @@ public class ah implements Comparable<ah> {
             return null;
          } else {
             int $$1 = this.h();
-            return tl.a("advancements.progress", $$1, $$0);
+            return tm.a("advancements.progress", $$1, $$0);
          }
       }
    }

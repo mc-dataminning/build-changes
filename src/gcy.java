@@ -6,21 +6,22 @@ import java.util.function.Function;
 public class gcy implements anv {
    public static final gcy.a<cjf> a = new gcy.a<>();
    public static final gcy.a<cjf> b = new gcy.a<>();
-   private final Map<gcy.a<?>, gcy.c<?>> c = new HashMap<>();
+   public static final gcy.a<fca> c = new gcy.a<>();
+   private final Map<gcy.a<?>, gcy.c<?>> d = new HashMap<>();
 
    @Override
    public void a(anu $$0) {
-      for (gcy.c<?> $$1 : this.c.values()) {
+      for (gcy.c<?> $$1 : this.d.values()) {
          $$1.a();
       }
    }
 
    public <T> void a(gcy.a<T> $$0, gcy.b<T> $$1) {
-      this.c.put($$0, new gcy.c<>($$1));
+      this.d.put($$0, new gcy.c<>($$1));
    }
 
    private <T> gcy.c<T> b(gcy.a<T> $$0) {
-      gcy.c<T> $$1 = (gcy.c<T>)this.c.get($$0);
+      gcy.c<T> $$1 = (gcy.c<T>)this.d.get($$0);
       if ($$1 == null) {
          throw new IllegalStateException("Tree builder not registered");
       } else {

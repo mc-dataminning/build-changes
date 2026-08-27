@@ -18,13 +18,13 @@ public abstract class bzs extends byq {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.b = $$0.h("SpellTicks");
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("SpellTicks", this.b);
    }
@@ -52,8 +52,8 @@ public abstract class bzs extends byq {
    }
 
    @Override
-   protected void Y() {
-      super.Y();
+   protected void X() {
+      super.X();
       if (this.b > 0) {
          this.b--;
       }
@@ -128,7 +128,7 @@ public abstract class bzs extends byq {
       @Override
       public void e() {
          if (bzs.this.q() != null) {
-            bzs.this.G().a(bzs.this.q(), (float)bzs.this.aa(), (float)bzs.this.Z());
+            bzs.this.G().a(bzs.this.q(), (float)bzs.this.Z(), (float)bzs.this.Y());
          }
       }
    }
@@ -140,7 +140,7 @@ public abstract class bzs extends byq {
       @Override
       public boolean a() {
          bjg $$0 = bzs.this.q();
-         if ($$0 == null || !$$0.bw()) {
+         if ($$0 == null || !$$0.bv()) {
             return false;
          } else {
             return bzs.this.gn() ? false : bzs.this.ah >= this.c;
@@ -150,7 +150,7 @@ public abstract class bzs extends byq {
       @Override
       public boolean b() {
          bjg $$0 = bzs.this.q();
-         return $$0 != null && $$0.bw() && this.b > 0;
+         return $$0 != null && $$0.bv() && this.b > 0;
       }
 
       @Override

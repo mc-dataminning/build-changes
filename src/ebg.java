@@ -31,7 +31,7 @@ public class ebg extends eba {
       int $$1 = this.b.dr();
       dfj $$2 = this.a.a_($$0.b(this.b.dq(), (double)$$1, this.b.dw()));
       if (!this.b.a($$2.u())) {
-         if (this.f() && this.b.aY()) {
+         if (this.f() && this.b.aX()) {
             while (true) {
                if (!$$2.a(csw.G) && $$2.u() != ean.c.a(false)) {
                   $$1--;
@@ -40,7 +40,7 @@ public class ebg extends eba {
 
                $$2 = this.a.a_($$0.b(this.b.dq(), (double)(++$$1), this.b.dw()));
             }
-         } else if (this.b.aB()) {
+         } else if (this.b.aA()) {
             $$1 = arx.a(this.b.ds() + 0.5);
          } else {
             gw $$3 = this.b.dl();
@@ -61,7 +61,7 @@ public class ebg extends eba {
 
       gw $$4 = this.b.dl();
       if (!this.a($$0.d($$4.u(), $$1, $$4.w()))) {
-         ehi $$5 = this.b.cH();
+         ehi $$5 = this.b.cG();
          if (this.a($$0.b($$5.a, (double)$$1, $$5.c))
             || this.a($$0.b($$5.a, (double)$$1, $$5.f))
             || this.a($$0.b($$5.d, (double)$$1, $$5.c))
@@ -156,7 +156,7 @@ public class ebg extends eba {
       } else if ($$2.b > $$0.b || $$1.b > $$0.b) {
          return false;
       } else if ($$1.l != eax.d && $$2.l != eax.d && $$3.l != eax.d) {
-         boolean $$4 = $$2.l == eax.h && $$1.l == eax.h && (double)this.b.dg() < 0.5;
+         boolean $$4 = $$2.l == eax.h && $$1.l == eax.h && (double)this.b.df() < 0.5;
          return $$3.k >= 0.0F && ($$2.b < $$0.b || $$2.k >= 0.0F || $$4) && ($$1.b < $$0.b || $$1.k >= 0.0F || $$4);
       } else {
          return false;
@@ -168,7 +168,7 @@ public class ebg extends eba {
    }
 
    private boolean b(eaz $$0) {
-      ehi $$1 = this.b.cH();
+      ehi $$1 = this.b.cG();
       ehn $$2 = new ehn((double)$$0.a - this.b.dq() + $$1.b() / 2.0, (double)$$0.b - this.b.ds() + $$1.c() / 2.0, (double)$$0.c - this.b.dw() + $$1.d() / 2.0);
       int $$3 = arx.c($$2.f() / $$1.a());
       $$2 = $$2.a((double)(1.0F / (float)$$3));
@@ -207,7 +207,7 @@ public class ebg extends eba {
       } else {
          eax $$10 = this.a(this.b, $$0, $$1, $$2);
          float $$11 = this.b.a($$10);
-         double $$12 = (double)this.b.dg() / 2.0;
+         double $$12 = (double)this.b.df() / 2.0;
          if ($$11 >= 0.0F) {
             $$7 = this.a($$0, $$1, $$2, $$10, $$11);
          }
@@ -219,7 +219,7 @@ public class ebg extends eba {
          if ($$10 != eax.c && (!this.c() || $$10 != eax.j)) {
             if (($$7 == null || $$7.k < 0.0F) && $$3 > 0 && ($$10 != eax.h || this.g()) && $$10 != eax.m && $$10 != eax.e && $$10 != eax.f) {
                $$7 = this.a($$0, $$1 + 1, $$2, $$3 - 1, $$4, $$5, $$6);
-               if ($$7 != null && ($$7.l == eax.b || $$7.l == eax.c) && this.b.dg() < 1.0F) {
+               if ($$7 != null && ($$7.l == eax.b || $$7.l == eax.c) && this.b.df() < 1.0F) {
                   double $$13 = (double)($$0 - $$5.j()) + 0.5;
                   double $$14 = (double)($$2 - $$5.l()) + 0.5;
                   ehi $$15 = new ehi(
@@ -227,7 +227,7 @@ public class ebg extends eba {
                      this.d($$8.b($$13, (double)($$1 + 1), $$14)) + 0.001,
                      $$14 - $$12,
                      $$13 + $$12,
-                     (double)this.b.dh() + this.d($$8.b((double)$$7.a, (double)$$7.b, (double)$$7.c)) - 0.002,
+                     (double)this.b.dg() + this.d($$8.b((double)$$7.a, (double)$$7.b, (double)$$7.c)) - 0.002,
                      $$14 + $$12
                   );
                   if (this.a($$15)) {
@@ -260,7 +260,7 @@ public class ebg extends eba {
                      return this.a($$0, $$17, $$2);
                   }
 
-                  if ($$16++ >= this.b.cu()) {
+                  if ($$16++ >= this.b.ct()) {
                      return this.a($$0, $$1, $$2);
                   }
 

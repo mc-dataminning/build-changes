@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public class aay implements vd<ww> {
+public class aay implements ve<wx> {
    private static final int a = 1;
    private static final int b = 2;
    private static final int c = 4;
@@ -34,26 +34,26 @@ public class aay implements vd<ww> {
       this.i = $$1.a().orElse(null);
    }
 
-   public aay(so $$0) {
+   public aay(sp $$0) {
       this.d = $$0.m();
       this.e = $$0.a(jd.e);
       this.f = $$0.readByte();
       this.g = $$0.m();
       this.h = $$0.readByte();
-      this.i = $$0.c($$0x -> $$0x.a(ri.a, bid.a.a));
+      this.i = $$0.c($$0x -> $$0x.a(rj.a, bid.a.a));
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.d);
       $$0.a(jd.e, this.e);
       $$0.k(this.f);
       $$0.c(this.g);
       $$0.k(this.h);
-      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(ri.a, bid.a.a, $$1));
+      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(rj.a, bid.a.a, $$1));
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

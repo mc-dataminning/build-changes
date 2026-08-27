@@ -18,14 +18,14 @@ public class eoi extends gfb {
    private static final int A = 1;
    private final eyk B;
    private final enm C;
-   private final tl D;
+   private final tm D;
    private final RateLimiter E;
    private esq F;
    private final String G;
    private final eoi.a H;
    @Nullable
-   private volatile tl I;
-   private volatile tl J = tl.c("mco.download.preparing");
+   private volatile tm I;
+   private volatile tm J = tm.c("mco.download.preparing");
    @Nullable
    private volatile String K;
    private volatile boolean L;
@@ -50,31 +50,31 @@ public class eoi extends gfb {
       this.G = $$2;
       this.C = $$1;
       this.H = new eoi.a();
-      this.D = tl.c("mco.download.title");
+      this.D = tm.c("mco.download.title");
       this.E = RateLimiter.create(0.1F);
    }
 
    @Override
    public void aI_() {
-      this.F = this.d(esq.a(tk.e, $$0 -> {
+      this.F = this.d(esq.a(tl.e, $$0 -> {
          this.L = true;
-         this.E();
+         this.F();
       }).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
-      this.C();
+      this.D();
    }
 
-   private void C() {
+   private void D() {
       if (!this.N) {
          if (!this.V && this.a(this.C.a) >= 5368709120L) {
-            tl $$0 = tl.a("mco.download.confirmation.line1", emb.b(5368709120L));
-            tl $$1 = tl.c("mco.download.confirmation.line2");
+            tm $$0 = tm.a("mco.download.confirmation.line1", emb.b(5368709120L));
+            tm $$1 = tm.c("mco.download.confirmation.line2");
             this.f.a(new eol($$0x -> {
                this.V = true;
                this.f.a(this);
-               this.F();
+               this.G();
             }, eol.a.a, $$0, $$1, false));
          } else {
-            this.F();
+            this.G();
          }
       }
    }
@@ -89,39 +89,39 @@ public class eoi extends gfb {
       super.c();
       this.S++;
       if (this.J != null && this.E.tryAcquire(1)) {
-         tl $$0 = this.D();
+         tm $$0 = this.E();
          this.f.aV().c($$0);
       }
    }
 
-   private tl D() {
-      List<tl> $$0 = Lists.newArrayList();
+   private tm E() {
+      List<tm> $$0 = Lists.newArrayList();
       $$0.add(this.D);
       $$0.add(this.J);
       if (this.K != null) {
-         $$0.add(tl.a("mco.download.percent", this.K));
-         $$0.add(tl.a("mco.download.speed.narration", emb.b(this.R)));
+         $$0.add(tm.a("mco.download.percent", this.K));
+         $$0.add(tm.a("mco.download.speed.narration", emb.b(this.R)));
       }
 
       if (this.I != null) {
          $$0.add(this.I);
       }
 
-      return tk.a($$0);
+      return tl.a($$0);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
          this.L = true;
-         this.E();
+         this.F();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
    }
 
-   private void E() {
+   private void F() {
       if (this.N && this.W != null && this.I == null) {
          this.W.accept(true);
       }
@@ -164,7 +164,7 @@ public class eoi extends gfb {
       int $$3 = $$2 + (int)Math.round(200.0 * $$1);
       $$0.a($$2 - 1, 79, $$3 + 1, 96, -2501934);
       $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.i, tl.a("mco.download.percent", this.K), this.g / 2, 84, 16777215);
+      $$0.a(this.i, tm.a("mco.download.percent", this.K), this.g / 2, 84, 16777215);
    }
 
    private void e(esf $$0) {
@@ -189,25 +189,25 @@ public class eoi extends gfb {
    private void a(esf $$0, long $$1) {
       if ($$1 > 0L) {
          int $$2 = this.i.b(this.K);
-         $$0.a(this.i, tl.a("mco.download.speed", emb.b($$1)), this.g / 2 + $$2 / 2 + 15, 84, 16777215, false);
+         $$0.a(this.i, tm.a("mco.download.speed", emb.b($$1)), this.g / 2 + $$2 / 2 + 15, 84, 16777215, false);
       }
    }
 
-   private void F() {
+   private void G() {
       new Thread(() -> {
          try {
             try {
                if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                  this.J = tl.c("mco.download.failed");
+                  this.J = tm.c("mco.download.failed");
                   return;
                }
 
                if (this.L) {
-                  this.G();
+                  this.H();
                   return;
                }
 
-               this.J = tl.a("mco.download.downloading", this.G);
+               this.J = tm.a("mco.download.downloading", this.G);
                emc $$0 = new emc();
                $$0.a(this.C.a);
                $$0.a(this.C, this.G, this.H, this.f.l());
@@ -215,14 +215,14 @@ public class eoi extends gfb {
                while (!$$0.b()) {
                   if ($$0.c()) {
                      $$0.a();
-                     this.I = tl.c("mco.download.failed");
-                     this.F.b(tk.d);
+                     this.I = tm.c("mco.download.failed");
+                     this.F.b(tl.d);
                      return;
                   }
 
                   if ($$0.d()) {
                      if (!this.O) {
-                        this.J = tl.c("mco.download.extracting");
+                        this.J = tm.c("mco.download.extracting");
                      }
 
                      this.O = true;
@@ -230,7 +230,7 @@ public class eoi extends gfb {
 
                   if (this.L) {
                      $$0.a();
-                     this.G();
+                     this.H();
                      return;
                   }
 
@@ -242,13 +242,13 @@ public class eoi extends gfb {
                }
 
                this.N = true;
-               this.J = tl.c("mco.download.done");
-               this.F.b(tk.d);
+               this.J = tm.c("mco.download.done");
+               this.F.b(tl.d);
                return;
             } catch (InterruptedException var9) {
                a.error("Could not acquire upload lock");
             } catch (Exception var10) {
-               this.I = tl.c("mco.download.failed");
+               this.I = tm.c("mco.download.failed");
                a.info("Exception while downloading world", var10);
             }
          } finally {
@@ -263,8 +263,8 @@ public class eoi extends gfb {
       }).start();
    }
 
-   private void G() {
-      this.J = tl.c("mco.download.cancelled");
+   private void H() {
+      this.J = tm.c("mco.download.cancelled");
    }
 
    public static class a {

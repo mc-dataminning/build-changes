@@ -14,7 +14,7 @@ public class esr {
    private static final int e = 4;
    private static final int f = 40;
    private static final int g = 60;
-   private static final tl h = tl.c("chat.deleted_marker").a(n.h, n.u);
+   private static final tm h = tm.c("chat.deleted_marker").a(n.h, n.u);
    private final eqv i;
    private final aqp<String> j = new aqp<>(100);
    private final List<eqp> k = Lists.newArrayList();
@@ -99,7 +99,7 @@ public class esr {
                $$0.c().a(0.0F, (float)$$10, 50.0F);
                $$0.a(-2, 0, $$8 + 4, 9, $$34 << 24);
                $$0.c().a(0.0F, 0.0F, 50.0F);
-               $$0.b(this.i.h, tl.a("chat.queue", $$32), 0, 1, 16777215 + ($$33 << 24));
+               $$0.b(this.i.h, tm.a("chat.queue", $$32), 0, 1, 16777215 + ($$33 << 24));
                $$0.c().b();
             }
 
@@ -155,16 +155,16 @@ public class esr {
       }
    }
 
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       this.a($$0, null, this.i.U() ? eqq.b() : eqq.a());
    }
 
-   public void a(tl $$0, @Nullable tw $$1, @Nullable eqq $$2) {
+   public void a(tm $$0, @Nullable tx $$1, @Nullable eqq $$2) {
       this.a($$0, $$2);
       this.a($$0, $$1, this.i.l.e(), $$2, false);
    }
 
-   private void a(tl $$0, @Nullable eqq $$1) {
+   private void a(tm $$0, @Nullable eqq $$1) {
       String $$2 = $$0.getString().replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n");
       String $$3 = x.a($$1, eqq::h);
       if ($$3 != null) {
@@ -174,7 +174,7 @@ public class esr {
       }
    }
 
-   private void a(tl $$0, @Nullable tw $$1, int $$2, @Nullable eqq $$3, boolean $$4) {
+   private void a(tm $$0, @Nullable tx $$1, int $$2, @Nullable eqq $$3, boolean $$4) {
       int $$5 = arx.a((double)this.e() / this.g());
       if ($$3 != null && $$3.f() != null) {
          $$5 -= $$3.f().c + 4 + 2;
@@ -212,7 +212,7 @@ public class esr {
       this.o.removeIf($$1 -> $$0 >= $$1.b() ? this.b($$1.a()) == null : false);
    }
 
-   public void a(tw $$0) {
+   public void a(tx $$0) {
       esr.a $$1 = this.b($$0);
       if ($$1 != null) {
          this.o.add($$1);
@@ -220,7 +220,7 @@ public class esr {
    }
 
    @Nullable
-   private esr.a b(tw $$0) {
+   private esr.a b(tx $$0) {
       int $$1 = this.i.l.e();
       ListIterator<eqp> $$2 = this.k.listIterator();
 
@@ -316,7 +316,7 @@ public class esr {
    }
 
    @Nullable
-   public uh b(double $$0, double $$1) {
+   public ui b(double $$0, double $$1) {
       double $$2 = this.c($$0);
       double $$3 = this.d($$1);
       int $$4 = this.e($$2, $$3);
@@ -447,6 +447,6 @@ public class esr {
       return (int)(9.0 * (this.i.m.n().c() + 1.0));
    }
 
-   static record a(tw a, int b) {
+   static record a(tx a, int b) {
    }
 }

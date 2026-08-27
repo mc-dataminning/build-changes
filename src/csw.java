@@ -163,8 +163,8 @@ public class csw {
    public static final csv cc = a("cornflower", new cvt(bif.h, 6, dfi.d.a().a(eaq.h).b().d().a(dai.d).a(dfi.c.b).a(ear.b)));
    public static final csv cd = a("wither_rose", new dcg(bif.t, dfi.d.a().a(eaq.h).b().d().a(dai.d).a(dfi.c.b).a(ear.b)));
    public static final csv ce = a("lily_of_the_valley", new cvt(bif.s, 12, dfi.d.a().a(eaq.h).b().d().a(dai.d).a(dfi.c.b).a(ear.b)));
-   public static final csv cf = a("brown_mushroom", new cxv(dfi.d.a().a(eaq.A).b().e().d().a(dai.d).a($$0x -> 1).d(csw::a).a(ear.b), ox.e));
-   public static final csv cg = a("red_mushroom", new cxv(dfi.d.a().a(eaq.C).b().e().d().a(dai.d).d(csw::a).a(ear.b), ox.f));
+   public static final csv cf = a("brown_mushroom", new cxv(dfi.d.a().a(eaq.A).b().e().d().a(dai.d).a($$0x -> 1).d(csw::a).a(ear.b), oy.e));
+   public static final csv cg = a("red_mushroom", new cxv(dfi.d.a().a(eaq.C).b().e().d().a(dai.d).d(csw::a).a(ear.b), oy.f));
    public static final csv ch = a("gold_block", new csv(dfi.d.a().a(eaq.E).a(dgk.g).m().a(3.0F, 6.0F).a(dai.g)));
    public static final csv ci = a("iron_block", new csv(dfi.d.a().a(eaq.g).a(dgk.k).m().a(5.0F, 6.0F).a(dai.g)));
    public static final csv cj = a("bricks", new csv(dfi.d.a().a(eaq.C).a(dgk.b).m().a(2.0F, 6.0F)));
@@ -800,7 +800,7 @@ public class csw {
    public static final csv ol = a("warped_hyphae", new czg(dfi.d.a().a(eaq.af).a(dgk.e).d(2.0F).a(dai.B)));
    public static final csv om = a("stripped_warped_hyphae", new czg(dfi.d.a().a(eaq.af).a(dgk.e).d(2.0F).a(dai.B)));
    public static final csv on = a("warped_nylium", new cyd(dfi.d.a().a(eaq.ad).a(dgk.b).m().d(0.4F).a(dai.C).e()));
-   public static final csv oo = a("warped_fungus", new cvx(dfi.d.a().a(eaq.x).d().b().a(dai.D).a(ear.b), ox.d, on));
+   public static final csv oo = a("warped_fungus", new cvx(dfi.d.a().a(eaq.x).d().b().a(dai.D).a(ear.b), oy.d, on));
    public static final csv op = a("warped_wart_block", new csv(dfi.d.a().a(eaq.ag).d(1.0F).a(dai.L)));
    public static final csv oq = a("warped_roots", new czf(dfi.d.a().a(eaq.x).o().b().d().a(dai.E).a(dfi.c.b).a(ear.b)));
    public static final csv or = a("nether_sprouts", new cxy(dfi.d.a().a(eaq.x).o().b().d().a(dai.O).a(dfi.c.b).a(ear.b)));
@@ -809,7 +809,7 @@ public class csw {
    public static final csv ou = a("crimson_hyphae", new czg(dfi.d.a().a(eaq.ac).a(dgk.e).d(2.0F).a(dai.B)));
    public static final csv ov = a("stripped_crimson_hyphae", new czg(dfi.d.a().a(eaq.ac).a(dgk.e).d(2.0F).a(dai.B)));
    public static final csv ow = a("crimson_nylium", new cyd(dfi.d.a().a(eaq.aa).a(dgk.b).m().d(0.4F).a(dai.C).e()));
-   public static final csv ox = a("crimson_fungus", new cvx(dfi.d.a().a(eaq.J).d().b().a(dai.D).a(ear.b), ox.b, ow));
+   public static final csv ox = a("crimson_fungus", new cvx(dfi.d.a().a(eaq.J).d().b().a(dai.D).a(ear.b), oy.b, ow));
    public static final csv oy = a("shroomlight", new csv(dfi.d.a().a(eaq.C).d(1.0F).a(dai.F).a($$0x -> 15)));
    public static final csv oz = a("weeping_vines", new dcc(dfi.d.a().a(eaq.J).e().b().d().a(dai.G).a(ear.b)));
    public static final csv oA = a("weeping_vines_plant", new dcd(dfi.d.a().a(eaq.J).b().d().a(dai.G).a(ear.b)));

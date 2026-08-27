@@ -1,7 +1,7 @@
 public class eox extends gfb {
    private static final int a = 212;
-   private static final tl b = tl.c("mco.configure.world.name");
-   private static final tl c = tl.c("mco.configure.world.description");
+   private static final tm b = tm.c("mco.configure.world.name");
+   private static final tm c = tm.c("mco.configure.world.description");
    private final eof y;
    private final emw z;
    private esq A;
@@ -9,7 +9,7 @@ public class eox extends gfb {
    private esz C;
 
    public eox(eof $$0, emw $$1) {
-      super(tl.c("mco.configure.world.settings.title"));
+      super(tm.c("mco.configure.world.settings.title"));
       this.y = $$0;
       this.z = $$1;
    }
@@ -22,13 +22,13 @@ public class eox extends gfb {
    @Override
    public void aI_() {
       int $$0 = this.g / 2 - 106;
-      this.A = this.d(esq.a(tl.c("mco.configure.world.buttons.done"), $$0x -> this.f()).a($$0 - 2, h(12), 106, 20).a());
-      this.d(esq.a(tk.e, $$0x -> this.f.a(this.y)).a(this.g / 2 + 2, h(12), 106, 20).a());
+      this.A = this.d(esq.a(tm.c("mco.configure.world.buttons.done"), $$0x -> this.f()).a($$0 - 2, h(12), 106, 20).a());
+      this.d(esq.a(tl.e, $$0x -> this.f.a(this.y)).a(this.g / 2 + 2, h(12), 106, 20).a());
       String $$1 = this.z.e == emw.b.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      esq $$2 = esq.a(tl.c($$1), $$0x -> {
+      esq $$2 = esq.a(tm.c($$1), $$0x -> {
          if (this.z.e == emw.b.b) {
-            tl $$1x = tl.c("mco.configure.world.close.question.line1");
-            tl $$2x = tl.c("mco.configure.world.close.question.line2");
+            tm $$1x = tm.c("mco.configure.world.close.question.line1");
+            tm $$2x = tm.c("mco.configure.world.close.question.line2");
             this.f.a(new eol($$0xx -> {
                if ($$0xx) {
                   this.y.a(this);
@@ -41,12 +41,12 @@ public class eox extends gfb {
          }
       }).a(this.g / 2 - 53, h(0), 106, 20).a();
       this.d($$2);
-      this.C = new esz(this.f.h, $$0, h(4), 212, 20, null, tl.c("mco.configure.world.name"));
+      this.C = new esz(this.f.h, $$0, h(4), 212, 20, null, tm.c("mco.configure.world.name"));
       this.C.l(32);
       this.C.a(this.z.b());
       this.e(this.C);
       this.b(this.C);
-      this.B = new esz(this.f.h, $$0, h(8), 212, 20, null, tl.c("mco.configure.world.description"));
+      this.B = new esz(this.f.h, $$0, h(8), 212, 20, null, tm.c("mco.configure.world.description"));
       this.B.l(32);
       this.B.a(this.z.a());
       this.e(this.B);

@@ -17,14 +17,14 @@ public interface bjn {
 
    void c();
 
-   default void c(qx $$0) {
+   default void c(qy $$0) {
       $$0.a("AngerTime", this.a());
       if (this.b() != null) {
          $$0.a("AngryAt", this.b());
       }
    }
 
-   default void a(cpv $$0, qx $$1) {
+   default void a(cpv $$0, qy $$1) {
       this.a($$1.h("AngerTime"));
       if ($$0 instanceof akr) {
          if (!$$1.b("AngryAt")) {
@@ -38,7 +38,7 @@ public interface bjn {
                   this.a((bji)$$3);
                }
 
-               if ($$3.ah() == biu.bt) {
+               if ($$3.ag() == biu.bt) {
                   this.c((cbu)$$3);
                }
             }
@@ -52,12 +52,12 @@ public interface bjn {
       if (($$2 == null || $$2.ev()) && $$3 != null && $$0.a($$3) instanceof bji) {
          this.U_();
       } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cw())) {
-            this.a($$2.cw());
+         if ($$2 != null && !Objects.equals($$3, $$2.cv())) {
+            this.a($$2.cv());
             this.c();
          }
 
-         if (this.a() > 0 && ($$2 == null || $$2.ah() != biu.bt || !$$1)) {
+         if (this.a() > 0 && ($$2 == null || $$2.ag() != biu.bt || !$$1)) {
             this.a(this.a() - 1);
             if (this.a() == 0) {
                this.U_();
@@ -70,7 +70,7 @@ public interface bjn {
       if (!this.c($$0)) {
          return false;
       } else {
-         return $$0.ah() == biu.bt && this.a_($$0.dL()) ? true : $$0.cw().equals(this.b());
+         return $$0.ag() == biu.bt && this.a_($$0.dL()) ? true : $$0.cv().equals(this.b());
       }
    }
 
@@ -84,7 +84,7 @@ public interface bjn {
 
    default void a_(cbu $$0) {
       if ($$0.dL().X().b(cpr.J)) {
-         if ($$0.cw().equals(this.b())) {
+         if ($$0.cv().equals(this.b())) {
             this.U_();
          }
       }

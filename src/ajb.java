@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ajb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.trigger.failed.invalid"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.trigger.failed.unprimed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.trigger.failed.invalid"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -56,7 +56,7 @@ public class ajb {
       List<String> $$3 = Lists.newArrayList();
       if ($$2 != null) {
          eim $$4 = $$0.l().aF();
-         String $$5 = $$2.cy();
+         String $$5 = $$2.cx();
 
          for (eij $$6 : $$4.c()) {
             if ($$6.c() == eip.b && $$4.b($$5, $$6)) {
@@ -73,19 +73,19 @@ public class ajb {
 
    private static int a(dt $$0, eil $$1, int $$2) {
       $$1.a($$2);
-      $$0.a(() -> tl.a("commands.trigger.add.success", $$1.d().e(), $$2), true);
+      $$0.a(() -> tm.a("commands.trigger.add.success", $$1.d().e(), $$2), true);
       return $$1.b();
    }
 
    private static int b(dt $$0, eil $$1, int $$2) {
       $$1.b($$2);
-      $$0.a(() -> tl.a("commands.trigger.set.success", $$1.d().e(), $$2), true);
+      $$0.a(() -> tm.a("commands.trigger.set.success", $$1.d().e(), $$2), true);
       return $$2;
    }
 
    private static int a(dt $$0, eil $$1) {
       $$1.a(1);
-      $$0.a(() -> tl.a("commands.trigger.simple.success", $$1.d().e()), true);
+      $$0.a(() -> tm.a("commands.trigger.simple.success", $$1.d().e()), true);
       return $$1.b();
    }
 
@@ -94,7 +94,7 @@ public class ajb {
          throw b.create();
       } else {
          eim $$2 = $$0.gg();
-         String $$3 = $$0.cy();
+         String $$3 = $$0.cx();
          if (!$$2.b($$3, $$1)) {
             throw a.create();
          } else {

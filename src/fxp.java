@@ -23,7 +23,7 @@ public abstract class fxp<T extends biq, M extends ffd<T>> {
       float $$14,
       float $$15
    ) {
-      if (!$$6.ce()) {
+      if (!$$6.cd()) {
          $$0.a($$1);
          $$1.a($$6, $$7, $$8, $$12);
          $$1.a($$6, $$7, $$8, $$9, $$10, $$11);

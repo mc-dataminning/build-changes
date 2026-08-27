@@ -90,8 +90,8 @@ public record geb<T>(String F, String G, Codec<T> H, geb.a<T> I) {
       }
    }
 
-   public ty a() {
-      return tl.c("telemetry.property." + this.F + ".title");
+   public tz a() {
+      return tm.c("telemetry.property." + this.F + ".title");
    }
 
    @Override

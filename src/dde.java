@@ -32,14 +32,14 @@ public class dde extends dcv implements bgr {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.e.clear();
       bgs.b($$0, this.e);
       this.f = $$0.h("last_interacted_slot");
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       bgs.a($$0, this.e, true);
       $$0.a("last_interacted_slot", this.f);
    }

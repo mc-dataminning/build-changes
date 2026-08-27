@@ -14,8 +14,8 @@ public class btq extends bte<cay> {
 
    protected void a(akr $$0, cay $$1) {
       super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ah() == biu.bt)
-         .or(() -> a($$1, $$0xx -> $$0xx.ah() != biu.bt))
+      a($$1, $$0x -> $$0x.ag() == biu.bt)
+         .or(() -> a($$1, $$0xx -> $$0xx.ag() != biu.bt))
          .ifPresentOrElse($$1x -> $$1.dN().a(bsh.B, $$1x), () -> $$1.dN().b(bsh.B));
    }
 

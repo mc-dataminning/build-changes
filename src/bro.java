@@ -16,7 +16,7 @@ public class bro extends bqy {
    @Nullable
    @Override
    protected ehn h() {
-      if (this.b.bb()) {
+      if (this.b.ba()) {
          ehn $$0 = btz.a(this.b, 15, 7);
          return $$0 == null ? super.h() : $$0;
       } else {

@@ -21,14 +21,14 @@ import org.slf4j.Logger;
 public final class eqy<T> {
    private static final Logger c = LogUtils.getLogger();
    public static final eqy.e<Boolean> a = new eqy.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
-   public static final eqy.b<Boolean> b = ($$0, $$1) -> $$1 ? tk.b : tk.c;
+   public static final eqy.b<Boolean> b = ($$0, $$1) -> $$1 ? tl.b : tl.c;
    private final eqy.l<T> d;
-   final Function<T, tl> e;
+   final Function<T, tm> e;
    private final eqy.n<T> f;
    private final Codec<T> g;
    private final T h;
    private final Consumer<T> i;
-   final tl j;
+   final tm j;
    T k;
 
    public static eqy<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
@@ -58,7 +58,7 @@ public final class eqy<T> {
    }
 
    public eqy(String $$0, eqy.l<T> $$1, eqy.b<T> $$2, eqy.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
-      this.j = tl.c($$0);
+      this.j = tm.c($$0);
       this.d = $$1;
       this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
       this.f = $$3;
@@ -72,7 +72,7 @@ public final class eqy<T> {
       return $$0 -> null;
    }
 
-   public static <T> eqy.l<T> a(tl $$0) {
+   public static <T> eqy.l<T> a(tm $$0) {
       return $$1 -> eua.a($$0);
    }
 
@@ -156,7 +156,7 @@ public final class eqy<T> {
    }
 
    public interface b<T> {
-      tl toString(tl var1, T var2);
+      tm toString(tm var1, T var2);
    }
 
    public static record c(int a, IntSupplier b, int c) implements eqy.g, eqy.j<Integer> {

@@ -16,7 +16,7 @@ public class cxa extends cro {
    @Override
    public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
       if (this.a($$0, $$2, $$3)) {
-         $$3.ax();
+         $$3.aw();
       }
    }
 

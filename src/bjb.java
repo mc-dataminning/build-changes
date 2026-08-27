@@ -33,7 +33,7 @@ public class bjb extends biq implements bio, bkc {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       if ($$0.b("width", 99)) {
          this.a($$0.j("width"));
       }
@@ -43,31 +43,31 @@ public class bjb extends biq implements bio, bkc {
       }
 
       if ($$0.e("attack")) {
-         bjb.a.a.decode(ri.a, $$0.c("attack")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.k = (bjb.a)$$0x.getFirst());
+         bjb.a.a.decode(rj.a, $$0.c("attack")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.k = (bjb.a)$$0x.getFirst());
       } else {
          this.k = null;
       }
 
       if ($$0.e("interaction")) {
-         bjb.a.a.decode(ri.a, $$0.c("interaction")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.l = (bjb.a)$$0x.getFirst());
+         bjb.a.a.decode(rj.a, $$0.c("interaction")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.l = (bjb.a)$$0x.getFirst());
       } else {
          this.l = null;
       }
 
       this.a($$0.q("response"));
-      this.a(this.ap());
+      this.a(this.ao());
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       $$0.a("width", this.s());
       $$0.a("height", this.t());
       if (this.k != null) {
-         bjb.a.a.encodeStart(ri.a, this.k).result().ifPresent($$1 -> $$0.a("attack", $$1));
+         bjb.a.a.encodeStart(rj.a, this.k).result().ifPresent($$1 -> $$0.a("attack", $$1));
       }
 
       if (this.l != null) {
-         bjb.a.a.encodeStart(ri.a, this.l).result().ifPresent($$1 -> $$0.a("interaction", $$1));
+         bjb.a.a.encodeStart(rj.a, this.l).result().ifPresent($$1 -> $$0.a("interaction", $$1));
       }
 
       $$0.a("response", this.v());
@@ -77,17 +77,17 @@ public class bjb extends biq implements bio, bkc {
    public void a(aef<?> $$0) {
       super.a($$0);
       if (d.equals($$0) || c.equals($$0)) {
-         this.a(this.ap());
+         this.a(this.ao());
       }
    }
 
    @Override
-   public boolean br() {
+   public boolean bq() {
       return false;
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return true;
    }
 
@@ -104,7 +104,7 @@ public class bjb extends biq implements bio, bkc {
    @Override
    public boolean u(biq $$0) {
       if ($$0 instanceof cbu $$1) {
-         this.k = new bjb.a($$1.cw(), this.dL().V());
+         this.k = new bjb.a($$1.cv(), this.dL().V());
          if ($$1 instanceof aks $$2) {
             al.g.a($$2, this, $$1.dM().n(), 1.0F, 1.0F, false);
          }
@@ -120,7 +120,7 @@ public class bjb extends biq implements bio, bkc {
       if (this.dL().B) {
          return this.v() ? bgy.a : bgy.b;
       } else {
-         this.l = new bjb.a($$0.cw(), this.dL().V());
+         this.l = new bjb.a($$0.cv(), this.dL().V());
          return bgy.b;
       }
    }
@@ -175,7 +175,7 @@ public class bjb extends biq implements bio, bkc {
    }
 
    @Override
-   protected ehi ap() {
+   protected ehi ao() {
       return this.w().a(this.dj());
    }
 

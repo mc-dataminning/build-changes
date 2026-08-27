@@ -7,8 +7,8 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import javax.annotation.Nullable;
 
 public class aip {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.spectate.self"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.spectate.not_spectator", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.spectate.not_spectator", $$0));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -29,9 +29,9 @@ public class aip {
       } else {
          $$2.c($$1);
          if ($$1 != null) {
-            $$0.a(() -> tl.a("commands.spectate.success.started", $$1.N_()), false);
+            $$0.a(() -> tm.a("commands.spectate.success.started", $$1.N_()), false);
          } else {
-            $$0.a(() -> tl.c("commands.spectate.success.stopped"), false);
+            $$0.a(() -> tm.c("commands.spectate.success.stopped"), false);
          }
 
          return 1;

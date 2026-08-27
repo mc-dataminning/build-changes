@@ -22,16 +22,16 @@ public interface fjq {
       return AbuseReportLimits.DEFAULTS;
    }
 
-   public static class a extends uk {
-      public a(tl $$0, Throwable $$1) {
+   public static class a extends ul {
+      public a(tm $$0, Throwable $$1) {
          super($$0, $$1);
       }
    }
 
    public static record b(fjw a, UserApiService b) implements fjq {
-      private static final tl c = tl.c("gui.abuseReport.send.service_unavailable");
-      private static final tl d = tl.c("gui.abuseReport.send.http_error");
-      private static final tl e = tl.c("gui.abuseReport.send.json_error");
+      private static final tm c = tm.c("gui.abuseReport.send.service_unavailable");
+      private static final tm d = tm.c("gui.abuseReport.send.http_error");
+      private static final tm e = tm.c("gui.abuseReport.send.json_error");
 
       @Override
       public CompletableFuture<Unit> a(UUID $$0, fjy $$1, AbuseReport $$2) {
@@ -42,10 +42,10 @@ public interface fjq {
                this.b.reportAbuse($$3);
                return Unit.INSTANCE;
             } catch (MinecraftClientHttpException var7) {
-               tl $$5 = this.a(var7);
+               tm $$5 = this.a(var7);
                throw new CompletionException(new fjq.a($$5, var7));
             } catch (MinecraftClientException var8) {
-               tl $$7 = this.a(var8);
+               tm $$7 = this.a(var8);
                throw new CompletionException(new fjq.a($$7, var8));
             }
          }, ac.g());
@@ -56,11 +56,11 @@ public interface fjq {
          return this.b.canSendReports();
       }
 
-      private tl a(MinecraftClientHttpException $$0) {
-         return tl.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      private tm a(MinecraftClientHttpException $$0) {
+         return tm.a("gui.abuseReport.send.error_message", $$0.getMessage());
       }
 
-      private tl a(MinecraftClientException $$0) {
+      private tm a(MinecraftClientException $$0) {
          return switch ($$0.getType()) {
             case SERVICE_UNAVAILABLE -> c;
             case HTTP_ERROR -> d;

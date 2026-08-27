@@ -1,15 +1,15 @@
 import java.util.function.Consumer;
 
 public class eup implements euq {
-   private final tl b;
+   private final tm b;
    protected final evy a = new evy();
 
-   public eup(tl $$0) {
+   public eup(tm $$0) {
       this.b = $$0;
    }
 
    @Override
-   public tl a() {
+   public tm a() {
       return this.b;
    }
 

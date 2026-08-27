@@ -11,7 +11,7 @@ public class cdr extends cdl {
    public bgy a(cbu $$0, bgx $$1) {
       if ($$0.fH()) {
          return bgy.d;
-      } else if (this.bP()) {
+      } else if (this.bO()) {
          return bgy.d;
       } else if (!this.dL().B) {
          return $$0.n(this) ? bgy.b : bgy.d;
@@ -28,15 +28,15 @@ public class cdr extends cdl {
    @Override
    public void a(int $$0, int $$1, int $$2, boolean $$3) {
       if ($$3) {
-         if (this.bP()) {
-            this.bB();
+         if (this.bO()) {
+            this.bA();
          }
 
          if (this.x() == 0) {
             this.d(-this.y());
             this.c(10);
             this.a(50.0F);
-            this.bp();
+            this.bo();
          }
       }
    }

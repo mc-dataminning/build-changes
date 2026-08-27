@@ -7,7 +7,7 @@ public class fap extends esq {
    private final boolean t;
 
    public fap(int $$0, int $$1, boolean $$2, esq.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, tk.a, $$3, o);
+      super($$0, $$1, 23, 13, tl.a, $$3, o);
       this.s = $$2;
       this.t = $$4;
    }

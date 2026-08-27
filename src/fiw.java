@@ -10,6 +10,8 @@ import com.mojang.logging.LogUtils;
 import java.math.BigInteger;
 import java.security.PublicKey;
 import java.time.Duration;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import javax.crypto.Cipher;
@@ -24,15 +26,16 @@ public class fiw implements adf {
    private final fjh c;
    @Nullable
    private final eyk d;
-   private final Consumer<tl> e;
-   private final sm f;
+   private final Consumer<tm> e;
+   private final sn f;
    private final boolean g;
    @Nullable
    private final Duration h;
    @Nullable
    private String i;
+   private final AtomicReference<fiw.a> j = new AtomicReference<>(fiw.a.a);
 
-   public fiw(sm $$0, eqv $$1, @Nullable fjh $$2, @Nullable eyk $$3, boolean $$4, @Nullable Duration $$5, Consumer<tl> $$6) {
+   public fiw(sn $$0, eqv $$1, @Nullable fjh $$2, @Nullable eyk $$3, boolean $$4, @Nullable Duration $$5, Consumer<tm> $$6) {
       this.f = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -42,8 +45,21 @@ public class fiw implements adf {
       this.h = $$5;
    }
 
+   private void a(fiw.a $$0) {
+      fiw.a $$1 = this.j.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
+         } else {
+            return $$0;
+         }
+      });
+      this.e.accept($$1.e);
+   }
+
    @Override
    public void a(adi $$0) {
+      this.a(fiw.a.b);
+
       Cipher $$4;
       Cipher $$5;
       String $$3;
@@ -60,9 +76,8 @@ public class fiw implements adf {
          throw new IllegalStateException("Protocol error", var9);
       }
 
-      this.e.accept(tl.c("connect.authorizing"));
       arp.a.submit(() -> {
-         tl $$4x = this.b($$3);
+         tm $$4x = this.b($$3);
          if ($$4x != null) {
             if (this.c == null || !this.c.d()) {
                this.f.a($$4x);
@@ -72,26 +87,26 @@ public class fiw implements adf {
             a.warn($$4x.getString());
          }
 
-         this.e.accept(tl.c("connect.encrypting"));
-         this.f.a($$7, sv.a(() -> this.f.a($$4, $$5)));
+         this.a(fiw.a.c);
+         this.f.a($$7, sw.a(() -> this.f.a($$4, $$5)));
       });
    }
 
    @Nullable
-   private tl b(String $$0) {
+   private tm b(String $$0) {
       try {
          this.e().joinServer(this.b.V().b(), this.b.V().d(), $$0);
          return null;
       } catch (AuthenticationUnavailableException var3) {
-         return tl.a("disconnect.loginFailedInfo", tl.c("disconnect.loginFailedInfo.serversUnavailable"));
+         return tm.a("disconnect.loginFailedInfo", tm.c("disconnect.loginFailedInfo.serversUnavailable"));
       } catch (InvalidCredentialsException var4) {
-         return tl.a("disconnect.loginFailedInfo", tl.c("disconnect.loginFailedInfo.invalidSession"));
+         return tm.a("disconnect.loginFailedInfo", tm.c("disconnect.loginFailedInfo.invalidSession"));
       } catch (InsufficientPrivilegesException var5) {
-         return tl.a("disconnect.loginFailedInfo", tl.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+         return tm.a("disconnect.loginFailedInfo", tm.c("disconnect.loginFailedInfo.insufficientPrivileges"));
       } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return tl.a("disconnect.loginFailedInfo", tl.c("disconnect.loginFailedInfo.userBanned"));
+         return tm.a("disconnect.loginFailedInfo", tm.c("disconnect.loginFailedInfo.userBanned"));
       } catch (AuthenticationException var7) {
-         return tl.a("disconnect.loginFailedInfo", var7.getMessage());
+         return tm.a("disconnect.loginFailedInfo", var7.getMessage());
       }
    }
 
@@ -101,20 +116,20 @@ public class fiw implements adf {
 
    @Override
    public void a(adh $$0) {
-      this.e.accept(tl.c("connect.joining"));
+      this.a(fiw.a.d);
       GameProfile $$1 = $$0.a();
       this.f.a(new adp());
       this.f.a(new fiv(this.b, this.f, new fjb($$1, this.b.u().a(this.g, this.h, this.i), fiz.a().a(), cee.g, null, this.c, this.d)));
-      this.f.a(new vp(new vv(ClientBrandRetriever.getClientModName())));
-      this.f.a(new vo(this.b.m.as()));
+      this.f.a(new vq(new vw(ClientBrandRetriever.getClientModName())));
+      this.f.a(new vp(this.b.m.as()));
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       if (this.c != null && this.c.e()) {
-         this.b.a(new gex(this.d, tk.q, $$0));
+         this.b.a(new gex(this.d, tl.q, $$0));
       } else {
-         this.b.a(new exm(this.d, tk.q, $$0));
+         this.b.a(new exm(this.d, tl.q, $$0));
       }
    }
 
@@ -137,11 +152,26 @@ public class fiw implements adf {
 
    @Override
    public void a(adg $$0) {
-      this.e.accept(tl.c("connect.negotiating"));
+      this.e.accept(tm.c("connect.negotiating"));
       this.f.a(new adm($$0.a(), null));
    }
 
    public void a(String $$0) {
       this.i = $$0;
+   }
+
+   static enum a {
+      a(tm.c("connect.connecting"), Set.of()),
+      b(tm.c("connect.authorizing"), Set.of(a)),
+      c(tm.c("connect.encrypting"), Set.of(b)),
+      d(tm.c("connect.joining"), Set.of(c, a));
+
+      final tm e;
+      final Set<fiw.a> f;
+
+      private a(tm $$0, Set<fiw.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
    }
 }

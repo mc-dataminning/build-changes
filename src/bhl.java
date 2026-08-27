@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 public class bhl {
    public static final int a = 100;
    public static final int b = 300;
-   private static final uh c = uh.a.a(new tj(tj.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new tq(tq.a.a, tl.b("MCPE-28723")));
+   private static final ui c = ui.a.a(new tk(tk.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new tr(tr.a.a, tm.b("MCPE-28723")));
    private final List<bhj> d = Lists.newArrayList();
    private final bjg e;
    private int f;
@@ -26,7 +26,7 @@ public class bhl {
       this.d.add($$3);
       this.f = this.e.ah;
       this.j = true;
-      if (!this.i && this.e.bw() && a($$0)) {
+      if (!this.i && this.e.bv() && a($$0)) {
          this.i = true;
          this.g = this.e.ah;
          this.h = this.g;
@@ -38,36 +38,36 @@ public class bhl {
       return $$0.d() instanceof bjg;
    }
 
-   private tl a(biq $$0, tl $$1, String $$2, String $$3) {
+   private tm a(biq $$0, tm $$1, String $$2, String $$3) {
       cjf $$5 = $$0 instanceof bjg $$4 ? $$4.eS() : cjf.b;
-      return !$$5.b() && $$5.A() ? tl.a($$2, this.e.N_(), $$1, $$5.J()) : tl.a($$3, this.e.N_(), $$1);
+      return !$$5.b() && $$5.A() ? tm.a($$2, this.e.N_(), $$1, $$5.J()) : tm.a($$3, this.e.N_(), $$1);
    }
 
-   private tl a(bhj $$0, @Nullable biq $$1) {
+   private tm a(bhj $$0, @Nullable biq $$1) {
       bho $$2 = $$0.a();
       if (!$$2.a(apv.m) && !$$2.a(apv.s)) {
-         tl $$4 = a($$1);
+         tm $$4 = a($$1);
          biq $$5 = $$2.d();
-         tl $$6 = a($$5);
+         tm $$6 = a($$5);
          if ($$6 != null && !$$6.equals($$4)) {
             return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
          } else {
-            return (tl)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : tl.a("death.fell.killer", this.e.N_()));
+            return (tm)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : tm.a("death.fell.killer", this.e.N_()));
          }
       } else {
          bht $$3 = Objects.requireNonNullElse($$0.c(), bht.a);
-         return tl.a($$3.a(), this.e.N_());
+         return tm.a($$3.a(), this.e.N_());
       }
    }
 
    @Nullable
-   private static tl a(@Nullable biq $$0) {
+   private static tm a(@Nullable biq $$0) {
       return $$0 == null ? null : $$0.N_();
    }
 
-   public tl a() {
+   public tm a() {
       if (this.d.isEmpty()) {
-         return tl.a("death.attack.generic", this.e.N_());
+         return tm.a("death.attack.generic", this.e.N_());
       } else {
          bhj $$0 = this.d.get(this.d.size() - 1);
          bho $$1 = $$0.a();
@@ -77,8 +77,8 @@ public class bhl {
             return this.a($$2, $$1.d());
          } else if ($$3 == bhs.c) {
             String $$4 = "death.attack." + $$1.e();
-            tl $$5 = tn.a((tl)tl.c($$4 + ".link")).c(c);
-            return tl.a($$4 + ".message", this.e.N_(), $$5);
+            tm $$5 = to.a((tm)tm.c($$4 + ".link")).c(c);
+            return tm.a($$4 + ".message", this.e.N_(), $$5);
          } else {
             return $$1.a(this.e);
          }
@@ -127,7 +127,7 @@ public class bhl {
 
    public void c() {
       int $$0 = this.i ? 300 : 100;
-      if (this.j && (!this.e.bw() || this.e.ah - this.f > $$0)) {
+      if (this.j && (!this.e.bv() || this.e.ah - this.f > $$0)) {
          boolean $$1 = this.i;
          this.j = false;
          this.i = false;

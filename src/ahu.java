@@ -7,7 +7,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class ahu {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.playsound.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.playsound.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       RequiredArgumentBuilder<dt, aex> $$1 = du.a("sound", es.a()).suggests(gm.c);
@@ -107,9 +107,9 @@ public class ahu {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.playsound.success.single", $$2, $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.playsound.success.single", $$2, $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.playsound.success.multiple", $$2, $$1.size()), true);
+            $$0.a(() -> tm.a("commands.playsound.success.multiple", $$2, $$1.size()), true);
          }
 
          return $$10;

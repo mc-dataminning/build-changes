@@ -25,7 +25,7 @@ public class cmt<T extends clr> implements cmm<T> {
       return this.y;
    }
 
-   public T b(so $$0) {
+   public T b(sp $$0) {
       String $$1 = $$0.r();
       clx $$2 = $$0.b(clx.class);
       cmg $$3 = cmg.b($$0);
@@ -35,7 +35,7 @@ public class cmt<T extends clr> implements cmm<T> {
       return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public void a(so $$0, T $$1) {
+   public void a(sp $$0, T $$1) {
       $$0.a($$1.c);
       $$0.a($$1.f());
       $$1.d.a($$0);

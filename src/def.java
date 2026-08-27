@@ -45,11 +45,11 @@ public class def extends dcv {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       if (this.g != null) {
-         qx $$1 = new qx();
-         rj.a($$1, this.g);
+         qy $$1 = new qy();
+         rk.a($$1, this.g);
          $$0.a("SkullOwner", $$1);
       }
 
@@ -59,10 +59,10 @@ public class def extends dcv {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("SkullOwner", 10)) {
-         this.a(rj.a($$0.p("SkullOwner")));
+         this.a(rk.a($$0.p("SkullOwner")));
       } else if ($$0.b("ExtraType", 8)) {
          String $$1 = $$0.l("ExtraType");
          if (!asq.b($$1)) {
@@ -103,7 +103,7 @@ public class def extends dcv {
    }
 
    @Override
-   public qx as_() {
+   public qy as_() {
       return this.o();
    }
 
@@ -127,9 +127,9 @@ public class def extends dcv {
    }
 
    @Nullable
-   public static GameProfile d(qx $$0) {
+   public static GameProfile d(qy $$0) {
       if ($$0.b("SkullOwner", 10)) {
-         return rj.a($$0.p("SkullOwner"));
+         return rk.a($$0.p("SkullOwner"));
       } else {
          if ($$0.b("SkullOwner", 8)) {
             String $$1 = $$0.l("SkullOwner");
@@ -143,15 +143,15 @@ public class def extends dcv {
       }
    }
 
-   public static void e(qx $$0) {
+   public static void e(qy $$0) {
       String $$1 = $$0.l("SkullOwner");
       if (!ac.b($$1)) {
          a($$0, $$1);
       }
    }
 
-   private static void a(qx $$0, String $$1) {
-      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", rj.a(new qx(), $$2.orElse(new GameProfile(ac.d, $$1)))));
+   private static void a(qy $$0, String $$1) {
+      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", rk.a(new qy(), $$2.orElse(new GameProfile(ac.d, $$1)))));
    }
 
    private static CompletableFuture<Optional<GameProfile>> a(String $$0) {

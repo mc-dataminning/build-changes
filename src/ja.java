@@ -7,7 +7,7 @@ public class ja extends iw<ja> implements iv {
          return (ja)$$0;
       }
 
-      public ja a(iw<ja> $$0, so $$1) {
+      public ja a(iw<ja> $$0, sp $$1) {
          return (ja)$$0;
       }
    };
@@ -27,7 +27,7 @@ public class ja extends iw<ja> implements iv {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
    }
 
    @Override

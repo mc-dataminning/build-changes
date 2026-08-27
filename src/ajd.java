@@ -29,19 +29,19 @@ public class ajd {
 
    private static int a(dt $$0, int $$1) {
       $$0.e().a(a($$0, $$1, akr.b), 0, false, false);
-      $$0.a(() -> tl.c("commands.weather.set.clear"), true);
+      $$0.a(() -> tm.c("commands.weather.set.clear"), true);
       return $$1;
    }
 
    private static int b(dt $$0, int $$1) {
       $$0.e().a(0, a($$0, $$1, akr.c), true, false);
-      $$0.a(() -> tl.c("commands.weather.set.rain"), true);
+      $$0.a(() -> tm.c("commands.weather.set.rain"), true);
       return $$1;
    }
 
    private static int c(dt $$0, int $$1) {
       $$0.e().a(0, a($$0, $$1, akr.d), true, true);
-      $$0.a(() -> tl.c("commands.weather.set.thunder"), true);
+      $$0.a(() -> tm.c("commands.weather.set.thunder"), true);
       return $$1;
    }
 }

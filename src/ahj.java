@@ -14,13 +14,13 @@ public class ahj {
 
    private static int a(dt $$0, Collection<? extends biq> $$1) {
       for (biq $$2 : $$1) {
-         $$2.ak();
+         $$2.aj();
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.kill.success.single", $$1.iterator().next().N_()), true);
+         $$0.a(() -> tm.a("commands.kill.success.single", $$1.iterator().next().N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.kill.success.multiple", $$1.size()), true);
+         $$0.a(() -> tm.a("commands.kill.success.multiple", $$1.size()), true);
       }
 
       return $$1.size();

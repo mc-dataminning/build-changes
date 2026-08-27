@@ -18,7 +18,7 @@ public abstract class ddy extends dcp {
       }
    }
 
-   protected boolean d(qx $$0) {
+   protected boolean d(qy $$0) {
       if ($$0.b("LootTable", 8)) {
          this.h = new aex($$0.l("LootTable"));
          this.i = $$0.i("LootTableSeed");
@@ -28,7 +28,7 @@ public abstract class ddy extends dcp {
       }
    }
 
-   protected boolean e(qx $$0) {
+   protected boolean e(qy $$0) {
       if (this.h == null) {
          return false;
       } else {

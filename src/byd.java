@@ -62,12 +62,12 @@ public class byd extends bjg {
    }
 
    private boolean G() {
-      return !this.y() && !this.aU();
+      return !this.y() && !this.aT();
    }
 
    @Override
-   public boolean cY() {
-      return super.cY() && this.G();
+   public boolean cX() {
+      return super.cX() && this.G();
    }
 
    @Override
@@ -83,12 +83,12 @@ public class byd extends bjg {
    }
 
    @Override
-   public Iterable<cjf> bK() {
+   public Iterable<cjf> bJ() {
       return this.bY;
    }
 
    @Override
-   public Iterable<cjf> bL() {
+   public Iterable<cjf> bK() {
       return this.bZ;
    }
 
@@ -123,12 +123,12 @@ public class byd extends bjg {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
-      rd $$1 = new rd();
+      re $$1 = new re();
 
       for (cjf $$2 : this.bZ) {
-         qx $$3 = new qx();
+         qy $$3 = new qy();
          if (!$$2.b()) {
             $$2.b($$3);
          }
@@ -137,10 +137,10 @@ public class byd extends bjg {
       }
 
       $$0.a("ArmorItems", $$1);
-      rd $$4 = new rd();
+      re $$4 = new re();
 
       for (cjf $$5 : this.bY) {
-         qx $$6 = new qx();
+         qy $$6 = new qy();
          if (!$$5.b()) {
             $$5.b($$6);
          }
@@ -149,7 +149,7 @@ public class byd extends bjg {
       }
 
       $$0.a("HandItems", $$4);
-      $$0.a("Invisible", this.ce());
+      $$0.a("Invisible", this.cd());
       $$0.a("Small", this.s());
       $$0.a("ShowArms", this.t());
       $$0.a("DisabledSlots", this.cb);
@@ -162,10 +162,10 @@ public class byd extends bjg {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("ArmorItems", 9)) {
-         rd $$1 = $$0.c("ArmorItems", 10);
+         re $$1 = $$0.c("ArmorItems", 10);
 
          for (int $$2 = 0; $$2 < this.bZ.size(); $$2++) {
             this.bZ.set($$2, cjf.a($$1.a($$2)));
@@ -173,7 +173,7 @@ public class byd extends bjg {
       }
 
       if ($$0.b("HandItems", 9)) {
-         rd $$3 = $$0.c("HandItems", 10);
+         re $$3 = $$0.c("HandItems", 10);
 
          for (int $$4 = 0; $$4 < this.bY.size(); $$4++) {
             this.bY.set($$4, cjf.a($$3.a($$4)));
@@ -187,27 +187,27 @@ public class byd extends bjg {
       this.s($$0.q("NoBasePlate"));
       this.u($$0.q("Marker"));
       this.af = !this.G();
-      qx $$5 = $$0.p("Pose");
+      qy $$5 = $$0.p("Pose");
       this.c($$5);
    }
 
-   private void c(qx $$0) {
-      rd $$1 = $$0.c("Head", 5);
+   private void c(qy $$0) {
+      re $$1 = $$0.c("Head", 5);
       this.a($$1.isEmpty() ? bL : new hy($$1));
-      rd $$2 = $$0.c("Body", 5);
+      re $$2 = $$0.c("Body", 5);
       this.b($$2.isEmpty() ? bM : new hy($$2));
-      rd $$3 = $$0.c("LeftArm", 5);
+      re $$3 = $$0.c("LeftArm", 5);
       this.c($$3.isEmpty() ? bN : new hy($$3));
-      rd $$4 = $$0.c("RightArm", 5);
+      re $$4 = $$0.c("RightArm", 5);
       this.d($$4.isEmpty() ? bO : new hy($$4));
-      rd $$5 = $$0.c("LeftLeg", 5);
+      re $$5 = $$0.c("LeftLeg", 5);
       this.e($$5.isEmpty() ? bP : new hy($$5));
-      rd $$6 = $$0.c("RightLeg", 5);
+      re $$6 = $$0.c("RightLeg", 5);
       this.f($$6.isEmpty() ? bQ : new hy($$6));
    }
 
-   private qx I() {
-      qx $$0 = new qx();
+   private qy I() {
+      qy $$0 = new qy();
       if (!bL.equals(this.cc)) {
          $$0.a("Head", this.cc.a());
       }
@@ -236,7 +236,7 @@ public class byd extends bjg {
    }
 
    @Override
-   public boolean bt() {
+   public boolean bs() {
       return false;
    }
 
@@ -246,7 +246,7 @@ public class byd extends bjg {
 
    @Override
    protected void fh() {
-      for (biq $$1 : this.dL().a(this, this.cH(), bX)) {
+      for (biq $$1 : this.dL().a(this, this.cG(), bX)) {
          if (this.f($$1) <= 0.2) {
             $$1.g(this);
          }
@@ -338,16 +338,16 @@ public class byd extends bjg {
       if (this.dL().B || this.dG()) {
          return false;
       } else if ($$0.a(apv.d)) {
-         this.ak();
+         this.aj();
          return false;
       } else if (this.b($$0) || this.ca || this.y()) {
          return false;
       } else if ($$0.a(apv.l)) {
          this.i($$0);
-         this.ak();
+         this.aj();
          return false;
       } else if ($$0.a(apv.u)) {
-         if (this.bN()) {
+         if (this.bM()) {
             this.g($$0, 0.15F);
          } else {
             this.g(5);
@@ -371,7 +371,7 @@ public class byd extends bjg {
             if ($$0.g()) {
                this.L();
                this.K();
-               this.ak();
+               this.aj();
                return $$3;
             } else {
                long $$6 = this.dL().V();
@@ -382,7 +382,7 @@ public class byd extends bjg {
                } else {
                   this.h($$0);
                   this.K();
-                  this.ak();
+                  this.aj();
                }
 
                return true;
@@ -395,7 +395,7 @@ public class byd extends bjg {
    public void b(byte $$0) {
       if ($$0 == 32) {
          if (this.dL().B) {
-            this.dL().a(this.dq(), this.ds(), this.dw(), ape.an, this.db(), 0.3F, 1.0F, false);
+            this.dL().a(this.dq(), this.ds(), this.dw(), ape.an, this.da(), 0.3F, 1.0F, false);
             this.bJ = this.dL().V();
          }
       } else {
@@ -405,7 +405,7 @@ public class byd extends bjg {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 4.0;
+      double $$1 = this.cG().a() * 4.0;
       if (Double.isNaN($$1) || $$1 == 0.0) {
          $$1 = 4.0;
       }
@@ -423,9 +423,9 @@ public class byd extends bjg {
                this.e(0.6666666666666666),
                this.dw(),
                10,
+               (double)(this.df() / 4.0F),
                (double)(this.dg() / 4.0F),
-               (double)(this.dh() / 4.0F),
-               (double)(this.dg() / 4.0F),
+               (double)(this.df() / 4.0F),
                0.05
             );
       }
@@ -436,7 +436,7 @@ public class byd extends bjg {
       $$2 -= $$1;
       if ($$2 <= 0.5F) {
          this.i($$0);
-         this.ak();
+         this.aj();
       } else {
          this.c($$2);
          this.a(djt.o, $$0.d());
@@ -445,8 +445,8 @@ public class byd extends bjg {
 
    private void h(bho $$0) {
       cjf $$1 = new cjf(cji.tL);
-      if (this.ad()) {
-         $$1.a(this.ae());
+      if (this.ac()) {
+         $$1.a(this.ad());
       }
 
       csv.a(this.dL(), this.dl(), $$1);
@@ -475,7 +475,7 @@ public class byd extends bjg {
    }
 
    private void L() {
-      this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.al, this.db(), 1.0F, 1.0F);
+      this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.al, this.da(), 1.0F, 1.0F);
    }
 
    @Override
@@ -560,14 +560,14 @@ public class byd extends bjg {
    }
 
    @Override
-   public void ak() {
+   public void aj() {
       this.a(biq.c.a);
       this.a(djt.p);
    }
 
    @Override
-   public boolean cM() {
-      return this.ce();
+   public boolean cL() {
+      return this.cd();
    }
 
    @Override
@@ -678,8 +678,8 @@ public class byd extends bjg {
    }
 
    @Override
-   public boolean bs() {
-      return super.bs() && !this.y();
+   public boolean br() {
+      return super.br() && !this.y();
    }
 
    @Override
@@ -742,7 +742,7 @@ public class byd extends bjg {
       if ($$0) {
          return bR;
       } else {
-         return this.m_() ? bS : this.ah().n();
+         return this.m_() ? bS : this.ag().n();
       }
    }
 
@@ -778,6 +778,6 @@ public class byd extends bjg {
 
    @Override
    public boolean eo() {
-      return !this.ce() && !this.y();
+      return !this.cd() && !this.y();
    }
 }

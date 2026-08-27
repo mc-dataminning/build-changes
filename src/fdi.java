@@ -68,7 +68,7 @@ public class fdi {
    private afs a(ecg.c $$0, boolean $$1, anf $$2) throws Exception {
       afr.d $$3 = this.b($$0, $$1, $$2);
       return this.a($$3, $$1x -> {
-         DynamicOps<rq> $$2x = aev.a(ri.a, $$1x.c());
+         DynamicOps<rr> $$2x = aev.a(rj.a, $$1x.c());
          ht<dit> $$3x = $$1x.d().d(je.aI);
          Pair<ecm, dln.b> $$4 = $$0.a($$2x, $$1x.b(), $$3x, $$1x.c().d());
          if ($$4 == null) {
@@ -87,7 +87,7 @@ public class fdi {
       }
 
       return this.a($$2, $$1x -> {
-         DynamicOps<rq> $$2x = aev.a(ri.a, $$1x.c());
+         DynamicOps<rr> $$2x = aev.a(rj.a, $$1x.c());
          ht<dit> $$3 = new ho<>(je.aI, Lifecycle.stable()).l();
          Pair<ecm, dln.b> $$4 = $$0.a($$2x, $$1x.b(), $$3, $$1x.c().d());
          if ($$4 == null) {
@@ -138,7 +138,7 @@ public class fdi {
                this.b
                   .a(
                      new ewx(
-                        () -> this.b.a(null), tl.c("datapackFailure.safeMode.failed.title"), tl.c("datapackFailure.safeMode.failed.description"), tk.l, true
+                        () -> this.b.a(null), tm.c("datapackFailure.safeMode.failed.title"), tm.c("datapackFailure.safeMode.failed.description"), tl.l, true
                      )
                   );
             }
@@ -176,7 +176,7 @@ public class fdi {
 
    private CompletableFuture<Boolean> a() {
       CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
-      this.b.a(new exd($$0::complete, tl.c("multiplayer.texturePrompt.failure.line1"), tl.c("multiplayer.texturePrompt.failure.line2"), tk.i, tk.e));
+      this.b.a(new exd($$0::complete, tm.c("multiplayer.texturePrompt.failure.line1"), tm.c("multiplayer.texturePrompt.failure.line2"), tl.i, tl.e));
       return $$0;
    }
 
@@ -189,14 +189,14 @@ public class fdi {
    }
 
    private void a(eyk $$0, String $$1, boolean $$2, Runnable $$3) {
-      tl $$4;
-      tl $$5;
+      tm $$4;
+      tm $$5;
       if ($$2) {
-         $$4 = tl.c("selectWorld.backupQuestion.customized");
-         $$5 = tl.c("selectWorld.backupWarning.customized");
+         $$4 = tm.c("selectWorld.backupQuestion.customized");
+         $$5 = tm.c("selectWorld.backupWarning.customized");
       } else {
-         $$4 = tl.c("selectWorld.backupQuestion.experimental");
-         $$5 = tl.c("selectWorld.backupWarning.experimental");
+         $$4 = tm.c("selectWorld.backupQuestion.experimental");
+         $$5 = tm.c("selectWorld.backupWarning.experimental");
       }
 
       this.b.a(new ewy($$0, ($$2x, $$3x) -> {
@@ -219,9 +219,9 @@ public class fdi {
       if ($$4 || $$2 == Lifecycle.stable()) {
          $$3.run();
       } else if ($$2 == Lifecycle.experimental()) {
-         $$0.a(new exd($$5, tl.c("selectWorld.warning.experimental.title"), tl.c("selectWorld.warning.experimental.question")));
+         $$0.a(new exd($$5, tm.c("selectWorld.warning.experimental.title"), tm.c("selectWorld.warning.experimental.question")));
       } else {
-         $$0.a(new exd($$5, tl.c("selectWorld.warning.deprecated.title"), tl.c("selectWorld.warning.deprecated.question")));
+         $$0.a(new exd($$5, tm.c("selectWorld.warning.deprecated.title"), tm.c("selectWorld.warning.deprecated.question")));
       }
    }
 }

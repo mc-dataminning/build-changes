@@ -16,8 +16,8 @@ public class ahm {
       ect $$2 = ((dt)$$0.getSource()).l().aH();
       return dw.a($$2.a(ecv.c), $$1);
    };
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.drop.no_held_items", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("commands.drop.no_loot_table", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.drop.no_held_items", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("commands.drop.no_loot_table", $$0));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -245,18 +245,18 @@ public class ahm {
    private static void a(dt $$0, List<cjf> $$1) {
       if ($$1.size() == 1) {
          cjf $$2 = $$1.get(0);
-         $$0.a(() -> tl.a("commands.drop.success.single", $$2.L(), $$2.J()), false);
+         $$0.a(() -> tm.a("commands.drop.success.single", $$2.L(), $$2.J()), false);
       } else {
-         $$0.a(() -> tl.a("commands.drop.success.multiple", $$1.size()), false);
+         $$0.a(() -> tm.a("commands.drop.success.multiple", $$1.size()), false);
       }
    }
 
    private static void a(dt $$0, List<cjf> $$1, aex $$2) {
       if ($$1.size() == 1) {
          cjf $$3 = $$1.get(0);
-         $$0.a(() -> tl.a("commands.drop.success.single_with_table", $$3.L(), $$3.J(), $$2), false);
+         $$0.a(() -> tm.a("commands.drop.success.single_with_table", $$3.L(), $$3.J(), $$2), false);
       } else {
-         $$0.a(() -> tl.a("commands.drop.success.multiple_with_table", $$1.size(), $$2), false);
+         $$0.a(() -> tm.a("commands.drop.success.multiple_with_table", $$1.size(), $$2), false);
       }
    }
 

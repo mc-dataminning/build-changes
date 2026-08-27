@@ -1,11 +1,11 @@
-public class aaa implements vd<ww> {
+public class aaa implements ve<wx> {
    private final int a;
    private final int b;
    private final int c;
    private final int d;
 
    public aaa(biq $$0) {
-      this($$0.ai(), $$0.do());
+      this($$0.ah(), $$0.do());
    }
 
    public aaa(int $$0, ehn $$1) {
@@ -19,7 +19,7 @@ public class aaa implements vd<ww> {
       this.d = (int)($$5 * 8000.0);
    }
 
-   public aaa(so $$0) {
+   public aaa(sp $$0) {
       this.a = $$0.m();
       this.b = $$0.readShort();
       this.c = $$0.readShort();
@@ -27,14 +27,14 @@ public class aaa implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.l(this.b);
       $$0.l(this.c);
       $$0.l(this.d);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

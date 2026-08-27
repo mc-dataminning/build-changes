@@ -10,17 +10,17 @@ public class bgs {
       return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cjf.b) : cjf.b;
    }
 
-   public static qx a(qx $$0, hp<cjf> $$1) {
+   public static qy a(qy $$0, hp<cjf> $$1) {
       return a($$0, $$1, true);
    }
 
-   public static qx a(qx $$0, hp<cjf> $$1, boolean $$2) {
-      rd $$3 = new rd();
+   public static qy a(qy $$0, hp<cjf> $$1, boolean $$2) {
+      re $$3 = new re();
 
       for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
          cjf $$5 = $$1.get($$4);
          if (!$$5.b()) {
-            qx $$6 = new qx();
+            qy $$6 = new qy();
             $$6.a("Slot", (byte)$$4);
             $$5.b($$6);
             $$3.add($$6);
@@ -34,11 +34,11 @@ public class bgs {
       return $$0;
    }
 
-   public static void b(qx $$0, hp<cjf> $$1) {
-      rd $$2 = $$0.c("Items", 10);
+   public static void b(qy $$0, hp<cjf> $$1) {
+      re $$2 = $$0.c("Items", 10);
 
       for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         qx $$4 = $$2.a($$3);
+         qy $$4 = $$2.a($$3);
          int $$5 = $$4.f("Slot") & 255;
          if ($$5 >= 0 && $$5 < $$1.size()) {
             $$1.set($$5, cjf.a($$4));

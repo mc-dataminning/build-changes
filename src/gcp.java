@@ -13,7 +13,7 @@ public class gcp {
 
       @Override
       public void q() {
-         if (this.n.dG() || !this.n.bd()) {
+         if (this.n.dG() || !this.n.bc()) {
             this.n();
          }
       }
@@ -36,7 +36,7 @@ public class gcp {
       @Override
       public void q() {
          if (!this.o.dG() && this.p >= 0) {
-            if (this.o.bd()) {
+            if (this.o.bc()) {
                this.p++;
             } else {
                this.p -= 2;

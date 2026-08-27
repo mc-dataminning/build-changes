@@ -46,9 +46,9 @@ public class fwu<T extends bjg, M extends ffd<T> & ffl> extends fxp<T, M> {
 
             GameProfile $$16 = null;
             if ($$10.u()) {
-               qx $$17 = $$10.v();
+               qy $$17 = $$10.v();
                if ($$17.b("SkullOwner", 10)) {
-                  $$16 = rj.a($$17.p("SkullOwner"));
+                  $$16 = rk.a($$17.p("SkullOwner"));
                }
             }
 
@@ -57,7 +57,7 @@ public class fwu<T extends bjg, M extends ffd<T> & ffl> extends fxp<T, M> {
             fha $$19 = this.d.get($$18);
             fom $$20 = fqt.a($$18, $$16);
             bkf $$22;
-            if ($$3.cZ() instanceof bjg $$21) {
+            if ($$3.cY() instanceof bjg $$21) {
                $$22 = $$21.aQ;
             } else {
                $$22 = $$3.aQ;

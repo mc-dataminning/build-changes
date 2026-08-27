@@ -1,547 +1,168 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.RecordBuilder.AbstractStringBuilder;
-import it.unimi.dsi.fastutil.bytes.ByteArrayList;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.io.BufferedOutputStream;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import javax.annotation.Nullable;
 
-public class ri implements DynamicOps<rq> {
-   public static final ri a = new ri();
-   private static final String b = "";
+public class ri {
+   public static qy a(File $$0) throws IOException {
+      qy var2;
+      try (InputStream $$1 = new FileInputStream($$0)) {
+         var2 = a($$1);
+      }
 
-   protected ri() {
+      return var2;
    }
 
-   public rq a() {
-      return qz.b;
+   private static DataInputStream b(InputStream $$0) throws IOException {
+      return new DataInputStream(new arh(new GZIPInputStream($$0)));
    }
 
-   public <U> U a(DynamicOps<U> $$0, rq $$1) {
-      switch ($$1.b()) {
-         case 0:
-            return (U)$$0.empty();
-         case 1:
-            return (U)$$0.createByte(((rk)$$1).i());
-         case 2:
-            return (U)$$0.createShort(((rk)$$1).h());
-         case 3:
-            return (U)$$0.createInt(((rk)$$1).g());
-         case 4:
-            return (U)$$0.createLong(((rk)$$1).f());
-         case 5:
-            return (U)$$0.createFloat(((rk)$$1).k());
-         case 6:
-            return (U)$$0.createDouble(((rk)$$1).j());
-         case 7:
-            return (U)$$0.createByteList(ByteBuffer.wrap(((qu)$$1).e()));
-         case 8:
-            return (U)$$0.createString($$1.r_());
-         case 9:
-            return (U)this.convertList($$0, $$1);
-         case 10:
-            return (U)this.convertMap($$0, $$1);
-         case 11:
-            return (U)$$0.createIntList(Arrays.stream(((rb)$$1).g()));
-         case 12:
-            return (U)$$0.createLongList(Arrays.stream(((re)$$1).g()));
-         default:
-            throw new IllegalStateException("Unknown tag type: " + $$1);
+   public static qy a(InputStream $$0) throws IOException {
+      qy var2;
+      try (DataInputStream $$1 = b($$0)) {
+         var2 = a($$1, rh.a);
+      }
+
+      return var2;
+   }
+
+   public static void a(File $$0, ro $$1) throws IOException {
+      try (InputStream $$2 = new FileInputStream($$0)) {
+         a($$2, $$1);
       }
    }
 
-   public DataResult<Number> a(rq $$0) {
-      return $$0 instanceof rk $$1 ? DataResult.success($$1.l()) : DataResult.error(() -> "Not a number");
+   public static void a(InputStream $$0, ro $$1) throws IOException {
+      try (DataInputStream $$2 = b($$0)) {
+         a((DataInput)$$2, $$1);
+      }
    }
 
-   public rq a(Number $$0) {
-      return qy.a($$0.doubleValue());
+   public static void a(qy $$0, File $$1) throws IOException {
+      try (OutputStream $$2 = new FileOutputStream($$1)) {
+         a($$0, $$2);
+      }
    }
 
-   public rq a(byte $$0) {
-      return qv.a($$0);
+   public static void a(qy $$0, OutputStream $$1) throws IOException {
+      try (DataOutputStream $$2 = new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$1)))) {
+         a($$0, (DataOutput)$$2);
+      }
    }
 
-   public rq a(short $$0) {
-      return rl.a($$0);
+   public static void b(qy $$0, File $$1) throws IOException {
+      try (
+         FileOutputStream $$2 = new FileOutputStream($$1);
+         DataOutputStream $$3 = new DataOutputStream($$2);
+      ) {
+         a($$0, (DataOutput)$$3);
+      }
    }
 
-   public rq a(int $$0) {
-      return rc.a($$0);
-   }
-
-   public rq a(long $$0) {
-      return rf.a($$0);
-   }
-
-   public rq a(float $$0) {
-      return ra.a($$0);
-   }
-
-   public rq a(double $$0) {
-      return qy.a($$0);
-   }
-
-   public rq a(boolean $$0) {
-      return qv.a($$0);
-   }
-
-   public DataResult<String> b(rq $$0) {
-      return $$0 instanceof ro $$1 ? DataResult.success($$1.r_()) : DataResult.error(() -> "Not a string");
-   }
-
-   public rq a(String $$0) {
-      return ro.a($$0);
-   }
-
-   public DataResult<rq> a(rq $$0, rq $$1) {
-      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
-   }
-
-   public DataResult<rq> a(rq $$0, List<rq> $$1) {
-      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
-   }
-
-   public DataResult<rq> a(rq $$0, rq $$1, rq $$2) {
-      if (!($$0 instanceof qx) && !($$0 instanceof qz)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
-      } else if (!($$1 instanceof ro)) {
-         return DataResult.error(() -> "key is not a string: " + $$1, $$0);
+   @Nullable
+   public static qy b(File $$0) throws IOException {
+      if (!$$0.exists()) {
+         return null;
       } else {
-         qx $$3 = new qx();
-         if ($$0 instanceof qx $$4) {
-            $$4.e().forEach($$2x -> $$3.a($$2x, $$4.c($$2x)));
+         qy var3;
+         try (
+            FileInputStream $$1 = new FileInputStream($$0);
+            DataInputStream $$2 = new DataInputStream($$1);
+         ) {
+            var3 = a($$2, rh.a);
          }
 
-         $$3.a($$1.r_(), $$2);
-         return DataResult.success($$3);
+         return var3;
       }
    }
 
-   public DataResult<rq> a(rq $$0, MapLike<rq> $$1) {
-      if (!($$0 instanceof qx) && !($$0 instanceof qz)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+   public static qy a(DataInput $$0) throws IOException {
+      return a($$0, rh.a);
+   }
+
+   public static qy a(DataInput $$0, rh $$1) throws IOException {
+      rr $$2 = a($$0, 0, $$1);
+      if ($$2 instanceof qy) {
+         return (qy)$$2;
       } else {
-         qx $$2 = new qx();
-         if ($$0 instanceof qx $$3) {
-            $$3.e().forEach($$2x -> $$2.a($$2x, $$3.c($$2x)));
-         }
-
-         List<rq> $$4 = Lists.newArrayList();
-         $$1.entries().forEach($$2x -> {
-            rq $$3 = (rq)$$2x.getFirst();
-            if (!($$3 instanceof ro)) {
-               $$4.add($$3);
-            } else {
-               $$2.a($$3.r_(), (rq)$$2x.getSecond());
-            }
-         });
-         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$2) : DataResult.success($$2);
+         throw new IOException("Root tag must be a named compound tag");
       }
    }
 
-   public DataResult<Stream<Pair<rq, rq>>> c(rq $$0) {
-      return $$0 instanceof qx $$1
-         ? DataResult.success($$1.e().stream().map($$1x -> Pair.of(this.a($$1x), $$1.c($$1x))))
-         : DataResult.error(() -> "Not a map: " + $$0);
+   public static void a(qy $$0, DataOutput $$1) throws IOException {
+      b($$0, $$1);
    }
 
-   public DataResult<Consumer<BiConsumer<rq, rq>>> d(rq $$0) {
-      return $$0 instanceof qx $$1
-         ? DataResult.success((Consumer<BiConsumer>)$$1x -> $$1.e().forEach($$2 -> $$1x.accept(this.a($$2), $$1.c($$2))))
-         : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public DataResult<MapLike<rq>> e(rq $$0) {
-      return $$0 instanceof qx $$1 ? DataResult.success(new MapLike<rq>() {
-         @Nullable
-         public rq a(rq $$0) {
-            return $$1.c($$0.r_());
+   public static void a(DataInput $$0, ro $$1) throws IOException {
+      rt<?> $$2 = ru.a($$0.readByte());
+      if ($$2 == ra.a) {
+         if ($$1.b(ra.a) == ro.b.a) {
+            $$1.a();
          }
-
-         @Nullable
-         public rq a(String $$0) {
-            return $$1.c($$0);
-         }
-
-         public Stream<Pair<rq, rq>> entries() {
-            return $$1.e().stream().map($$1xx -> Pair.of(ri.this.a($$1xx), $$1.c($$1xx)));
-         }
-
-         @Override
-         public String toString() {
-            return "MapLike[" + $$1 + "]";
-         }
-      }) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public rq a(Stream<Pair<rq, rq>> $$0) {
-      qx $$1 = new qx();
-      $$0.forEach($$1x -> $$1.a(((rq)$$1x.getFirst()).r_(), (rq)$$1x.getSecond()));
-      return $$1;
-   }
-
-   private static rq a(qx $$0) {
-      if ($$0.f() == 1) {
-         rq $$1 = $$0.c("");
-         if ($$1 != null) {
-            return $$1;
-         }
-      }
-
-      return $$0;
-   }
-
-   public DataResult<Stream<rq>> f(rq $$0) {
-      if ($$0 instanceof rd $$1) {
-         return $$1.f() == 10 ? DataResult.success($$1.stream().map($$0x -> a((qx)$$0x))) : DataResult.success($$1.stream());
       } else {
-         return $$0 instanceof qw<?> $$2 ? DataResult.success($$2.stream().map($$0x -> $$0x)) : DataResult.error(() -> "Not a list");
+         switch ($$1.b($$2)) {
+            case c:
+            default:
+               break;
+            case b:
+               rp.a($$0);
+               $$2.a($$0);
+               break;
+            case a:
+               rp.a($$0);
+               $$2.a($$0, $$1);
+         }
       }
    }
 
-   public DataResult<Consumer<Consumer<rq>>> g(rq $$0) {
-      if ($$0 instanceof rd $$1) {
-         return $$1.f() == 10
-            ? DataResult.success((Consumer<Consumer>)$$1x -> $$1.forEach($$1xx -> $$1.accept(a((qx)$$1xx))))
-            : DataResult.success($$1::forEach);
+   public static rr b(DataInput $$0, rh $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      return (rr)($$2 == 0 ? ra.b : a($$0, 0, $$1, $$2));
+   }
+
+   public static void a(rr $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$0.a($$1);
+      }
+   }
+
+   public static void b(rr $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$1.writeUTF("");
+         $$0.a($$1);
+      }
+   }
+
+   private static rr a(DataInput $$0, int $$1, rh $$2) throws IOException {
+      byte $$3 = $$0.readByte();
+      if ($$3 == 0) {
+         return ra.b;
       } else {
-         return $$0 instanceof qw<?> $$2 ? DataResult.success($$2::forEach) : DataResult.error(() -> "Not a list: " + $$0);
+         rp.a($$0);
+         return a($$0, $$1, $$2, $$3);
       }
    }
 
-   public DataResult<ByteBuffer> h(rq $$0) {
-      return $$0 instanceof qu $$1 ? DataResult.success(ByteBuffer.wrap($$1.e())) : super.getByteBuffer($$0);
-   }
-
-   public rq a(ByteBuffer $$0) {
-      return new qu(DataFixUtils.toArray($$0));
-   }
-
-   public DataResult<IntStream> i(rq $$0) {
-      return $$0 instanceof rb $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getIntStream($$0);
-   }
-
-   public rq a(IntStream $$0) {
-      return new rb($$0.toArray());
-   }
-
-   public DataResult<LongStream> j(rq $$0) {
-      return $$0 instanceof re $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getLongStream($$0);
-   }
-
-   public rq a(LongStream $$0) {
-      return new re($$0.toArray());
-   }
-
-   public rq b(Stream<rq> $$0) {
-      return ri.d.a.a($$0).a();
-   }
-
-   public rq a(rq $$0, String $$1) {
-      if ($$0 instanceof qx $$2) {
-         qx $$3 = new qx();
-         $$2.e().stream().filter($$1x -> !Objects.equals($$1x, $$1)).forEach($$2x -> $$3.a($$2x, $$2.c($$2x)));
-         return $$3;
-      } else {
-         return $$0;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "NBT";
-   }
-
-   public RecordBuilder<rq> mapBuilder() {
-      return new ri.h();
-   }
-
-   private static Optional<ri.f> k(rq $$0) {
-      if ($$0 instanceof qz) {
-         return Optional.of(ri.d.a);
-      } else {
-         if ($$0 instanceof qw<?> $$1) {
-            if ($$1.isEmpty()) {
-               return Optional.of(ri.d.a);
-            }
-
-            if ($$1 instanceof rd $$2) {
-               return switch ($$2.f()) {
-                  case 0 -> Optional.of(ri.d.a);
-                  case 10 -> Optional.of(new ri.b($$2));
-                  default -> Optional.of(new ri.c($$2));
-               };
-            }
-
-            if ($$1 instanceof qu $$3) {
-               return Optional.of(new ri.a($$3.e()));
-            }
-
-            if ($$1 instanceof rb $$4) {
-               return Optional.of(new ri.e($$4.g()));
-            }
-
-            if ($$1 instanceof re $$5) {
-               return Optional.of(new ri.g($$5.g()));
-            }
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   static class a implements ri.f {
-      private final ByteArrayList a = new ByteArrayList();
-
-      public a(byte $$0) {
-         this.a.add($$0);
-      }
-
-      public a(byte[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public ri.f a(rq $$0) {
-         if ($$0 instanceof qv $$1) {
-            this.a.add($$1.i());
-            return this;
-         } else {
-            return new ri.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public rq a() {
-         return new qu(this.a.toByteArray());
-      }
-   }
-
-   static class b implements ri.f {
-      private final rd a = new rd();
-
-      public b() {
-      }
-
-      public b(Collection<rq> $$0) {
-         this.a.addAll($$0);
-      }
-
-      public b(IntArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(rc.a($$0x))));
-      }
-
-      public b(ByteArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(qv.a($$0x))));
-      }
-
-      public b(LongArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(rf.a($$0x))));
-      }
-
-      private static boolean a(qx $$0) {
-         return $$0.f() == 1 && $$0.e("");
-      }
-
-      private static rq b(rq $$0) {
-         if ($$0 instanceof qx $$1 && !a($$1)) {
-            return $$1;
-         }
-
-         return c($$0);
-      }
-
-      private static qx c(rq $$0) {
-         qx $$1 = new qx();
-         $$1.a("", $$0);
-         return $$1;
-      }
-
-      @Override
-      public ri.f a(rq $$0) {
-         this.a.add(b($$0));
-         return this;
-      }
-
-      @Override
-      public rq a() {
-         return this.a;
-      }
-   }
-
-   static class c implements ri.f {
-      private final rd a = new rd();
-
-      c(rq $$0) {
-         this.a.add($$0);
-      }
-
-      c(rd $$0) {
-         this.a.addAll($$0);
-      }
-
-      @Override
-      public ri.f a(rq $$0) {
-         if ($$0.b() != this.a.f()) {
-            return new ri.b().a(this.a).a($$0);
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      @Override
-      public rq a() {
-         return this.a;
-      }
-   }
-
-   static class d implements ri.f {
-      public static final ri.d a = new ri.d();
-
-      private d() {
-      }
-
-      @Override
-      public ri.f a(rq $$0) {
-         if ($$0 instanceof qx $$1) {
-            return new ri.b().a($$1);
-         } else if ($$0 instanceof qv $$2) {
-            return new ri.a($$2.i());
-         } else if ($$0 instanceof rc $$3) {
-            return new ri.e($$3.g());
-         } else {
-            return (ri.f)($$0 instanceof rf $$4 ? new ri.g($$4.f()) : new ri.c($$0));
-         }
-      }
-
-      @Override
-      public rq a() {
-         return new rd();
-      }
-   }
-
-   static class e implements ri.f {
-      private final IntArrayList a = new IntArrayList();
-
-      public e(int $$0) {
-         this.a.add($$0);
-      }
-
-      public e(int[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public ri.f a(rq $$0) {
-         if ($$0 instanceof rc $$1) {
-            this.a.add($$1.g());
-            return this;
-         } else {
-            return new ri.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public rq a() {
-         return new rb(this.a.toIntArray());
-      }
-   }
-
-   interface f {
-      ri.f a(rq var1);
-
-      default ri.f a(Iterable<rq> $$0) {
-         ri.f $$1 = this;
-
-         for (rq $$2 : $$0) {
-            $$1 = $$1.a($$2);
-         }
-
-         return $$1;
-      }
-
-      default ri.f a(Stream<rq> $$0) {
-         return this.a($$0::iterator);
-      }
-
-      rq a();
-   }
-
-   static class g implements ri.f {
-      private final LongArrayList a = new LongArrayList();
-
-      public g(long $$0) {
-         this.a.add($$0);
-      }
-
-      public g(long[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public ri.f a(rq $$0) {
-         if ($$0 instanceof rf $$1) {
-            this.a.add($$1.f());
-            return this;
-         } else {
-            return new ri.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public rq a() {
-         return new re(this.a.toLongArray());
-      }
-   }
-
-   class h extends AbstractStringBuilder<rq, qx> {
-      protected h() {
-         super(ri.this);
-      }
-
-      protected qx a() {
-         return new qx();
-      }
-
-      protected qx a(String $$0, rq $$1, qx $$2) {
-         $$2.a($$0, $$1);
-         return $$2;
-      }
-
-      protected DataResult<rq> a(qx $$0, rq $$1) {
-         if ($$1 == null || $$1 == qz.b) {
-            return DataResult.success($$0);
-         } else if (!($$1 instanceof qx $$2)) {
-            return DataResult.error(() -> "mergeToMap called with not a map: " + $$1, $$1);
-         } else {
-            qx $$3 = new qx(Maps.newHashMap($$2.i()));
-
-            for (Entry<String, rq> $$4 : $$0.i().entrySet()) {
-               $$3.a($$4.getKey(), $$4.getValue());
-            }
-
-            return DataResult.success($$3);
-         }
+   private static rr a(DataInput $$0, int $$1, rh $$2, byte $$3) {
+      try {
+         return ru.a($$3).b($$0, $$1, $$2);
+      } catch (IOException var7) {
+         o $$5 = o.a(var7, "Loading NBT data");
+         p $$6 = $$5.a("NBT Tag");
+         $$6.a("Tag type", $$3);
+         throw new y($$5);
       }
    }
 }

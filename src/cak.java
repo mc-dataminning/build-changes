@@ -72,7 +72,7 @@ public class cak extends caj implements byv, cbf {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.m_()) {
          $$0.a("IsBaby", true);
@@ -86,7 +86,7 @@ public class cak extends caj implements byv, cbf {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a($$0.q("IsBaby"));
       this.y($$0.q("CannotHunt"));
@@ -145,7 +145,7 @@ public class cak extends caj implements byv, cbf {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       asc $$5 = $$0.D_();
       if ($$2 != bjk.d) {
          if ($$5.i() < 0.2F) {
@@ -162,7 +162,7 @@ public class cak extends caj implements byv, cbf {
    }
 
    @Override
-   protected boolean W() {
+   protected boolean V() {
       return false;
    }
 
@@ -223,7 +223,7 @@ public class cak extends caj implements byv, cbf {
 
    @Override
    public void a(boolean $$0) {
-      this.am().b(bV, $$0);
+      this.al().b(bV, $$0);
       if (!this.dL().B) {
          bki $$1 = this.a(bkm.d);
          $$1.b(bZ.a());
@@ -235,7 +235,7 @@ public class cak extends caj implements byv, cbf {
 
    @Override
    public boolean m_() {
-      return this.am().b(bV);
+      return this.al().b(bV);
    }
 
    private void y(boolean $$0) {
@@ -248,12 +248,12 @@ public class cak extends caj implements byv, cbf {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("piglinBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
       cal.a(this);
-      super.Y();
+      super.X();
    }
 
    @Override
@@ -387,7 +387,7 @@ public class cak extends caj implements byv, cbf {
 
    @Override
    public boolean a(biq $$0, boolean $$1) {
-      if (this.m_() && $$0.ah() == biu.W) {
+      if (this.m_() && $$0.ag() == biu.W) {
          $$0 = this.b($$0, 3);
       }
 
@@ -395,7 +395,7 @@ public class cak extends caj implements byv, cbf {
    }
 
    private biq b(biq $$0, int $$1) {
-      List<biq> $$2 = $$0.cQ();
+      List<biq> $$2 = $$0.cP();
       return $$1 != 1 && !$$2.isEmpty() ? this.b($$2.get(0), $$1 - 1) : $$0;
    }
 

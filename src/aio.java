@@ -57,7 +57,7 @@ public class aio {
                   .sorted(Comparator.comparing($$1xx -> e.applyAsInt($$5.c($$1xx).orElse(null))))
                   .forEachOrdered($$4x -> $$3.add(new clh($$5.d($$4x), $$4.d($$3x))))
          );
-      gw $$6 = $$1.dl().a($$1.cE(), 5);
+      gw $$6 = $$1.dl().a($$1.cD(), 5);
       int $$7 = cgr.values().length - 1;
       double $$8 = 3.0;
       int $$9 = 0;
@@ -100,7 +100,7 @@ public class aio {
          $$9++;
       }
 
-      $$0.a(() -> tl.b("Armorstands with trimmed armor spawned around you"), true);
+      $$0.a(() -> tm.b("Armorstands with trimmed armor spawned around you"), true);
       return 1;
    }
 }

@@ -5,7 +5,7 @@ public class ete extends bgo {
    protected float h;
    protected long i;
 
-   public ete(UUID $$0, tl $$1, float $$2, bgo.a $$3, bgo.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public ete(UUID $$0, tm $$1, float $$2, bgo.a $$3, bgo.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       super($$0, $$1, $$3, $$4);
       this.h = $$2;
       this.b = $$2;

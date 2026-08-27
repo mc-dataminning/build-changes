@@ -1,16 +1,16 @@
 public class exm extends eyk {
-   private static final tl a = tl.c("gui.toMenu");
-   private static final tl b = tl.c("gui.toTitle");
+   private static final tm a = tm.c("gui.toMenu");
+   private static final tm b = tm.c("gui.toTitle");
    private final eyk c;
-   private final tl k;
-   private final tl l;
+   private final tm k;
+   private final tm l;
    private final ewd m = ewd.d();
 
-   public exm(eyk $$0, tl $$1, tl $$2) {
+   public exm(eyk $$0, tm $$1, tm $$2) {
       this($$0, $$1, $$2, a);
    }
 
-   public exm(eyk $$0, tl $$1, tl $$2, tl $$3) {
+   public exm(eyk $$0, tm $$1, tm $$2, tm $$3) {
       super($$1);
       this.c = $$0;
       this.k = $$2;
@@ -41,8 +41,8 @@ public class exm extends eyk {
    }
 
    @Override
-   public tl g() {
-      return tk.a(this.e, this.k);
+   public tm g() {
+      return tl.a(this.e, this.k);
    }
 
    @Override

@@ -12,12 +12,12 @@ public class fah extends ezz<cfk> implements fcc {
    private boolean B;
 
    public fah(cbu $$0) {
-      super($$0.bR, $$0.fR(), tl.c("container.crafting"));
+      super($$0.bR, $$0.fR(), tm.c("container.crafting"));
       this.l = 97;
    }
 
    @Override
-   public void C() {
+   public void D() {
       if (this.f.q.g()) {
          this.f.a(new ezw(this.f.s, this.f.s.cn.x(), this.f.m.F().c()));
       } else {
@@ -94,7 +94,7 @@ public class fah extends ezz<cfk> implements fcc {
       $$9.s(-$$13 * 20.0F);
       $$9.aW = $$9.dB();
       $$9.aX = $$9.dB();
-      Vector3f $$21 = new Vector3f(0.0F, $$9.dh() / 2.0F + $$6, 0.0F);
+      Vector3f $$21 = new Vector3f(0.0F, $$9.dg() / 2.0F + $$6, 0.0F);
       a($$0, $$10, $$11, $$5, $$21, $$14, $$15, $$9);
       $$9.aU = $$16;
       $$9.r($$17);
@@ -163,12 +163,12 @@ public class fah extends ezz<cfk> implements fcc {
    }
 
    @Override
-   public void E() {
+   public void F() {
       this.z.i();
    }
 
    @Override
-   public fbw F() {
+   public fbw G() {
       return this.z;
    }
 }

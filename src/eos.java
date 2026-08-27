@@ -4,8 +4,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public class eos extends gfb {
-   private static final tl a = tl.c("mco.selectServer.popup");
-   private static final tl b = tl.c("mco.selectServer.close");
+   private static final tm a = tm.c("mco.selectServer.popup");
+   private static final tm b = tm.c("mco.selectServer.close");
    private static final aex c = new aex("popup/background");
    private static final aex y = new aex("icon/trial_available");
    private static final euc z = new euc(new aex("widget/cross_button"), new aex("widget/cross_button_highlighted"));
@@ -44,26 +44,26 @@ public class eos extends gfb {
    protected void aI_() {
       this.N.a(this.f, this.g, this.h);
       if (this.O) {
-         this.P = this.d(esq.a(tl.c("mco.selectServer.trial"), $$0x -> this.f.a(new exc($$0xx -> {
+         this.P = this.d(esq.a(tm.c("mco.selectServer.trial"), $$0x -> this.f.a(new exc($$0xx -> {
                if ($$0xx) {
                   ac.i().a("https://aka.ms/startjavarealmstrial");
                }
 
                this.f.a(this);
-            }, "https://aka.ms/startjavarealmstrial", true))).a(this.E() - 10 - 99, this.F() - 10 - 4 - 40, 99, 20).a());
+            }, "https://aka.ms/startjavarealmstrial", true))).a(this.F() - 10 - 99, this.G() - 10 - 4 - 40, 99, 20).a());
       }
 
-      this.a(this.d(esq.a(tl.c("mco.selectServer.buy"), $$0x -> this.f.a(new exc($$0xx -> {
+      this.a(this.d(esq.a(tm.c("mco.selectServer.buy"), $$0x -> this.f.a(new exc($$0xx -> {
             if ($$0xx) {
                ac.i().a("https://aka.ms/BuyJavaRealms");
             }
 
             this.f.a(this);
-         }, "https://aka.ms/BuyJavaRealms", true))).a(this.E() - 10 - 99, this.F() - 10 - 20, 99, 20).a()));
-      etc $$0 = this.d(new etc(this.C() + 4, this.D() + 4, 14, 14, z, $$0x -> this.az_(), b));
+         }, "https://aka.ms/BuyJavaRealms", true))).a(this.F() - 10 - 99, this.G() - 10 - 20, 99, 20).a()));
+      etc $$0 = this.d(new etc(this.D() + 4, this.E() + 4, 14, 14, z, $$0x -> this.az_(), b));
       $$0.a(eua.a(b));
       int $$1 = 142 - (this.O ? 40 : 20);
-      eta $$2 = new eta(this.E() - 10 - 100, this.D() + 10, 100, $$1, a, this.i);
+      eta $$2 = new eta(this.F() - 10 - 100, this.E() + 10, 100, $$1, a, this.i);
       if ($$2.v()) {
          $$2.d(100 - $$2.f());
       }
@@ -102,26 +102,26 @@ public class eos extends gfb {
       $$0.e();
       RenderSystem.clear(256, eqv.a);
       this.a($$0);
-      $$0.a(c, this.C(), this.D(), 320, 172);
+      $$0.a(c, this.D(), this.E(), 320, 172);
       if (!M.isEmpty()) {
-         $$0.a(M.get(this.Q), this.C() + 10, this.D() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
+         $$0.a(M.get(this.Q), this.D() + 10, this.E() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
       }
    }
 
-   private int C() {
+   private int D() {
       return (this.g - 320) / 2;
    }
 
-   private int D() {
+   private int E() {
       return (this.h - 172) / 2;
    }
 
-   private int E() {
-      return this.C() + 320;
+   private int F() {
+      return this.D() + 320;
    }
 
-   private int F() {
-      return this.D() + 172;
+   private int G() {
+      return this.E() + 172;
    }
 
    @Override

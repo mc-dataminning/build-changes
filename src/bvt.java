@@ -30,9 +30,9 @@ public abstract class bvt extends bjp {
    }
 
    protected void b(int $$0) {
-      if (this.bw() && !this.bb()) {
+      if (this.bv() && !this.ba()) {
          this.j($$0 - 1);
-         if (this.ci() == -20) {
+         if (this.ch() == -20) {
             this.j(0);
             this.a(this.dM().h(), 2.0F);
          }
@@ -42,14 +42,14 @@ public abstract class bvt extends bjp {
    }
 
    @Override
-   public void ar() {
-      int $$0 = this.ci();
-      super.ar();
+   public void aq() {
+      int $$0 = this.ch();
+      super.aq();
       this.b($$0);
    }
 
    @Override
-   public boolean cz() {
+   public boolean cy() {
       return false;
    }
 

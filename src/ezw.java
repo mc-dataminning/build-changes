@@ -58,7 +58,7 @@ public class ezw extends ezz<ezw.b> {
    private static final int J = 12;
    private static final int K = 15;
    static final bhf L = new bhf(45);
-   private static final tl M = tl.c("inventory.binSlot");
+   private static final tm M = tm.c("inventory.binSlot");
    private static final int N = 16777215;
    private static chl O = chm.b();
    private float P;
@@ -75,7 +75,7 @@ public class ezw extends ezz<ezw.b> {
    private final boolean Y;
 
    public ezw(cbu $$0, cec $$1, boolean $$2) {
-      super(new ezw.b($$0), $$0.fR(), tk.a);
+      super(new ezw.b($$0), $$0.fR(), tl.a);
       $$0.bS = this.p;
       this.k = 136;
       this.c = 195;
@@ -106,7 +106,7 @@ public class ezw extends ezz<ezw.b> {
       int $$1 = this.p.a(this.P);
       this.p.k.clear();
       if (O.k() == chl.h.d) {
-         this.F();
+         this.G();
       } else {
          this.p.k.addAll($$0);
       }
@@ -116,8 +116,8 @@ public class ezw extends ezz<ezw.b> {
    }
 
    @Override
-   public void C() {
-      super.C();
+   public void D() {
+      super.D();
       if (this.f != null) {
          if (this.f.s != null) {
             this.a(this.f.s.cn.x(), this.a(this.f.s), this.f.s.dL().G_());
@@ -260,7 +260,7 @@ public class ezw extends ezz<ezw.b> {
    protected void aI_() {
       if (this.f.q.g()) {
          super.aI_();
-         this.R = new esz(this.i, this.t + 82, this.u + 6, 80, 9, tl.c("itemGroup.search"));
+         this.R = new esz(this.i, this.t + 82, this.u + 6, 80, 9, tm.c("itemGroup.search"));
          this.R.l(50);
          this.R.d(false);
          this.R.g(false);
@@ -287,7 +287,7 @@ public class ezw extends ezz<ezw.b> {
       this.b($$0, $$1, $$2);
       this.R.a($$4);
       if (!this.R.a().isEmpty()) {
-         this.F();
+         this.G();
       }
 
       this.P = this.p.e($$3);
@@ -312,7 +312,7 @@ public class ezw extends ezz<ezw.b> {
          String $$2 = this.R.a();
          if (this.R.a($$0, $$1)) {
             if (!Objects.equals($$2, this.R.a())) {
-               this.F();
+               this.G();
             }
 
             return true;
@@ -343,7 +343,7 @@ public class ezw extends ezz<ezw.b> {
             String $$5 = this.R.a();
             if (this.R.a($$0, $$1, $$2)) {
                if (!Objects.equals($$5, this.R.a())) {
-                  this.F();
+                  this.G();
                }
 
                return true;
@@ -360,7 +360,7 @@ public class ezw extends ezz<ezw.b> {
       return super.b($$0, $$1, $$2);
    }
 
-   private void F() {
+   private void G() {
       this.p.k.clear();
       this.X.clear();
       String $$0 = this.R.a();
@@ -417,7 +417,7 @@ public class ezw extends ezz<ezw.b> {
          }
 
          if (O.k() != chl.h.b && this.a($$0, $$1)) {
-            this.Q = this.H();
+            this.Q = this.I();
             return true;
          }
       }
@@ -443,7 +443,7 @@ public class ezw extends ezz<ezw.b> {
       return super.b($$0, $$1, $$2);
    }
 
-   private boolean H() {
+   private boolean I() {
       return O.e() && this.p.m();
    }
 
@@ -463,9 +463,9 @@ public class ezw extends ezz<ezw.b> {
                   if ($$5 == $$3) {
                      cjf $$6 = new cjf(cji.qa);
                      $$6.a("CustomCreativeLock");
-                     tl $$7 = this.f.m.U[$$3].k();
-                     tl $$8 = this.f.m.V.k();
-                     $$6.a(tl.a("inventory.hotbarInfo", $$8, $$7));
+                     tm $$7 = this.f.m.U[$$3].k();
+                     tm $$8 = this.f.m.V.k();
+                     $$6.a(tm.a("inventory.hotbarInfo", $$8, $$7));
                      this.p.k.add($$6);
                   } else {
                      this.p.k.add(cjf.b);
@@ -534,7 +534,7 @@ public class ezw extends ezz<ezw.b> {
             this.R.a("");
          }
 
-         this.F();
+         this.G();
       } else {
          this.R.g(false);
          this.R.f(true);
@@ -548,7 +548,7 @@ public class ezw extends ezz<ezw.b> {
 
    @Override
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.H()) {
+      if (!this.I()) {
          return false;
       } else {
          this.P = this.p.a(this.P, $$3);
@@ -606,21 +606,21 @@ public class ezw extends ezz<ezw.b> {
    }
 
    @Override
-   public List<tl> a(cjf $$0) {
+   public List<tm> a(cjf $$0) {
       boolean $$1 = this.s != null && this.s instanceof ezw.a;
       boolean $$2 = O.k() == chl.h.a;
       boolean $$3 = O.k() == chl.h.d;
       ckw.a $$4 = this.f.m.m ? ckw.a.b : ckw.a.a;
       ckw $$5 = $$1 ? $$4.c() : $$4;
-      List<tl> $$6 = $$0.a(this.f.s, $$5);
+      List<tm> $$6 = $$0.a(this.f.s, $$5);
       if ($$2 && $$1) {
          return $$6;
       } else {
-         List<tl> $$7 = Lists.newArrayList($$6);
+         List<tm> $$7 = Lists.newArrayList($$6);
          if ($$3 && $$1) {
             this.X.forEach($$2x -> {
                if ($$0.a($$2x)) {
-                  $$7.add(1, tl.b("#" + $$2x.b()).a(n.f));
+                  $$7.add(1, tm.b("#" + $$2x.b()).a(n.f));
                }
             });
          }
@@ -651,7 +651,7 @@ public class ezw extends ezz<ezw.b> {
       int $$6 = this.u + 18;
       int $$7 = $$6 + 112;
       if (O.e()) {
-         aex $$8 = this.H() ? x : y;
+         aex $$8 = this.I() ? x : y;
          $$0.a($$8, $$5, $$6 + (int)((float)($$7 - $$6 - 17) * this.P), 12, 15);
       }
 
@@ -724,7 +724,7 @@ public class ezw extends ezz<ezw.b> {
       $$0.c().b();
    }
 
-   public boolean E() {
+   public boolean F() {
       return O.k() == chl.h.b;
    }
 
@@ -746,9 +746,9 @@ public class ezw extends ezz<ezw.b> {
             $$6.set($$10, $$4.fR().a($$10).p());
          }
 
-         tl $$11 = $$0.m.U[$$1].k();
-         tl $$12 = $$0.m.W.k();
-         tl $$13 = tl.a("inventory.hotbarSaved", $$12, $$11);
+         tm $$11 = $$0.m.U[$$1].k();
+         tm $$12 = $$0.m.W.k();
+         tm $$13 = tm.a("inventory.hotbarSaved", $$12, $$11);
          $$0.l.a($$13, false);
          $$0.aV().c($$13);
          $$5.a();

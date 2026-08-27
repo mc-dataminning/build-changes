@@ -151,25 +151,25 @@ public class dec extends ddy implements bhh {
    }
 
    @Override
-   protected tl g() {
-      return tl.c("container.shulkerBox");
+   protected tm g() {
+      return tm.c("container.shulkerBox");
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.f($$0);
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       if (!this.e($$0)) {
          bgs.a($$0, this.s, false);
       }
    }
 
-   public void f(qx $$0) {
+   public void f(qy $$0) {
       this.s = hp.a(this.b(), cjf.b);
       if (!this.d($$0) && $$0.b("Items", 9)) {
          bgs.b($$0, this.s);

@@ -27,8 +27,8 @@ import org.slf4j.Logger;
 public class fbp extends eyk {
    static final Logger a = LogUtils.getLogger();
    private static final int b = 200;
-   private static final tl c = tl.c("pack.dropInfo").a(n.h);
-   private static final tl k = tl.c("pack.folderInfo");
+   private static final tm c = tm.c("pack.dropInfo").a(n.h);
+   private static final tm k = tm.c("pack.folderInfo");
    private static final int l = 20;
    private static final aex m = new aex("textures/misc/unknown_pack.png");
    private final fbo n;
@@ -41,9 +41,9 @@ public class fbp extends eyk {
    private esq u;
    private final Map<String, aex> v = Maps.newHashMap();
 
-   public fbp(anf $$0, Consumer<anf> $$1, Path $$2, tl $$3) {
+   public fbp(anf $$0, Consumer<anf> $$1, Path $$2, tm $$3) {
       super($$3);
-      this.n = new fbo(this::D, this::a, $$0, $$1);
+      this.n = new fbo(this::E, this::a, $$0, $$1);
       this.t = $$2;
       this.o = fbp.a.a($$2);
    }
@@ -51,10 +51,10 @@ public class fbp extends eyk {
    @Override
    public void az_() {
       this.n.c();
-      this.C();
+      this.D();
    }
 
-   private void C() {
+   private void D() {
       if (this.o != null) {
          try {
             this.o.close();
@@ -66,15 +66,15 @@ public class fbp extends eyk {
 
    @Override
    protected void aI_() {
-      this.q = new fbq(this.f, this, 200, this.h, tl.c("pack.available.title"));
+      this.q = new fbq(this.f, this, 200, this.h, tm.c("pack.available.title"));
       this.q.f(this.g / 2 - 4 - 200);
       this.e(this.q);
-      this.s = new fbq(this.f, this, 200, this.h, tl.c("pack.selected.title"));
+      this.s = new fbq(this.f, this, 200, this.h, tm.c("pack.selected.title"));
       this.s.f(this.g / 2 + 4);
       this.e(this.s);
-      this.d(esq.a(tl.c("pack.openFolder"), $$0 -> ac.i().a(this.t.toUri())).a(this.g / 2 - 154, this.h - 48, 150, 20).a(eua.a(k)).a());
-      this.u = this.d(esq.a(tk.d, $$0 -> this.az_()).a(this.g / 2 + 4, this.h - 48, 150, 20).a());
-      this.E();
+      this.d(esq.a(tm.c("pack.openFolder"), $$0 -> ac.i().a(this.t.toUri())).a(this.g / 2 - 154, this.h - 48, 150, 20).a(eua.a(k)).a());
+      this.u = this.d(esq.a(tl.d, $$0 -> this.az_()).a(this.g / 2 + 4, this.h - 48, 150, 20).a());
+      this.F();
    }
 
    @Override
@@ -86,16 +86,16 @@ public class fbp extends eyk {
             }
          } catch (IOException var2) {
             a.warn("Failed to poll for directory {} changes, stopping", this.t);
-            this.C();
+            this.D();
          }
       }
 
       if (this.p > 0L && --this.p == 0L) {
-         this.E();
+         this.F();
       }
    }
 
-   private void D() {
+   private void E() {
       this.a(this.s, this.n.b());
       this.a(this.q, this.n.a());
       this.u.i = !this.s.i().isEmpty();
@@ -125,9 +125,9 @@ public class fbp extends eyk {
       this.q.a(null);
    }
 
-   private void E() {
+   private void F() {
       this.n.d();
-      this.D();
+      this.E();
       this.p = 0L;
       this.v.clear();
    }
@@ -207,18 +207,18 @@ public class fbp extends eyk {
 
             if (!$$2.isEmpty()) {
                a(this.f, $$2, this.t);
-               this.E();
+               this.F();
             }
 
             if (!$$3.isEmpty()) {
                String $$9 = a($$3).collect(Collectors.joining(", "));
-               this.f.a(new ewx(() -> this.f.a(this), tl.c("pack.dropRejected.title"), tl.a("pack.dropRejected.message", $$9)));
+               this.f.a(new ewx(() -> this.f.a(this), tm.c("pack.dropRejected.title"), tm.a("pack.dropRejected.message", $$9)));
                return;
             }
          }
 
          this.f.a(this);
-      }, tl.c("pack.dropConfirm"), tl.b($$1)));
+      }, tm.c("pack.dropConfirm"), tm.b($$1)));
    }
 
    private static Stream<String> a(Collection<Path> $$0) {

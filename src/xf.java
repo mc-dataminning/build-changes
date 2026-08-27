@@ -1,4 +1,4 @@
-public class xf implements vd<ww> {
+public class xf implements ve<wx> {
    private final gw a;
    private final int b;
    private final int c;
@@ -11,7 +11,7 @@ public class xf implements vd<ww> {
       this.c = $$3;
    }
 
-   public xf(so $$0) {
+   public xf(sp $$0) {
       this.a = $$0.e();
       this.b = $$0.readUnsignedByte();
       this.c = $$0.readUnsignedByte();
@@ -19,14 +19,14 @@ public class xf implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.k(this.b);
       $$0.k(this.c);
       $$0.a(jd.f, this.d);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

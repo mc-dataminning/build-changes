@@ -93,7 +93,7 @@ public class foa {
 
    public void a(bjg $$0, cjf $$1, cjc $$2, boolean $$3, elp $$4, foe $$5, int $$6) {
       if (!$$1.b()) {
-         this.aC.a($$0, $$1, $$2, $$3, $$4, $$5, $$0.dL(), $$6, fyv.d, $$0.ai() + $$2.ordinal());
+         this.aC.a($$0, $$1, $$2, $$3, $$4, $$5, $$0.dL(), $$6, fyv.d, $$0.ah() + $$2.ordinal());
       }
    }
 
@@ -123,7 +123,7 @@ public class foa {
    private void a(elp $$0, foe $$1, int $$2, float $$3, bja $$4, float $$5, cjf $$6) {
       float $$7 = $$4 == bja.b ? 1.0F : -1.0F;
       $$0.a($$7 * 0.125F, -0.125F, 0.0F);
-      if (!this.au.s.ce()) {
+      if (!this.au.s.cd()) {
          $$0.a();
          $$0.a(a.f.rotationDegrees($$7 * 10.0F));
          this.a($$0, $$1, $$2, $$3, $$5, $$4);
@@ -152,7 +152,7 @@ public class foa {
       float $$9 = this.a($$3);
       $$0.a(0.0F, 0.04F + $$4 * -1.2F + $$9 * -0.5F, -0.72F);
       $$0.a(a.b.rotationDegrees($$9 * -85.0F));
-      if (!this.au.s.ce()) {
+      if (!this.au.s.cd()) {
          $$0.a();
          $$0.a(a.d.rotationDegrees(90.0F));
          this.a($$0, $$1, $$2, bja.b);
@@ -328,7 +328,7 @@ public class foa {
          bja $$11 = $$10 ? $$0.fl() : $$0.fl().e();
          $$7.a();
          if ($$5.b()) {
-            if ($$10 && !$$0.ce()) {
+            if ($$10 && !$$0.cd()) {
                this.a($$7, $$8, $$9, $$6, $$4, $$11);
             }
          } else if ($$5.a(cji.rf)) {

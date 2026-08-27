@@ -58,7 +58,7 @@ public class ddu extends dcv {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("name", this.f.toString());
       $$0.a("target", this.g.toString());
@@ -68,7 +68,7 @@ public class ddu extends dcv {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.f = new aex($$0.l("name"));
       this.g = new aex($$0.l("target"));
@@ -82,7 +82,7 @@ public class ddu extends dcv {
    }
 
    @Override
-   public qx as_() {
+   public qy as_() {
       return this.o();
    }
 
@@ -112,8 +112,8 @@ public class ddu extends dcv {
          return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
       }
 
-      public tl a() {
-         return tl.c("jigsaw_block.joint." + this.c);
+      public tm a() {
+         return tm.c("jigsaw_block.joint." + this.c);
       }
    }
 }

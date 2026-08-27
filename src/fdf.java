@@ -37,7 +37,7 @@ class fdf {
          this.e++;
       }
 
-      public fdf.d a(tl $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+      public fdf.d a(tm $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
          fdf.d $$3 = new fdf.d($$0, $$1, $$2, 44);
          this.b.add($$3);
          return $$3;
@@ -103,16 +103,16 @@ class fdf {
    }
 
    public static class d {
-      private final tl a;
+      private final tm a;
       private final BooleanSupplier b;
       private final Consumer<Boolean> c;
       @Nullable
-      private tl d;
+      private tm d;
       @Nullable
       private BooleanSupplier e;
       private final int f;
 
-      d(tl $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+      d(tm $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -124,7 +124,7 @@ class fdf {
          return this;
       }
 
-      public fdf.d a(tl $$0) {
+      public fdf.d a(tm $$0) {
          this.d = $$0;
          return this;
       }
@@ -143,12 +143,12 @@ class fdf {
          }
 
          if (this.d != null && !$$6) {
-            $$5.a($$0x -> tk.a(this.a, $$0x.b(), this.d));
+            $$5.a($$0x -> tl.a(this.a, $$0x.b(), this.d));
          } else {
-            $$5.a($$0x -> tk.a(this.a, $$0x.b()));
+            $$5.a($$0x -> tl.a(this.a, $$0x.b()));
          }
 
-         esx<Boolean> $$8 = $$5.a(0, 0, this.f, 20, tl.h(), ($$0x, $$1x) -> this.c.accept($$1x));
+         esx<Boolean> $$8 = $$5.a(0, 0, this.f, 20, tm.h(), ($$0x, $$1x) -> this.c.accept($$1x));
          if (this.e != null) {
             $$8.i = this.e.getAsBoolean();
          }
@@ -156,7 +156,7 @@ class fdf {
          $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
          if (this.d != null) {
             $$4.ifPresent($$3x -> {
-               tl $$4x = this.d.e().a(n.h);
+               tm $$4x = this.d.e().a(n.h);
                esd $$5x = eqv.O().h;
                etk $$6x = new etk($$4x, $$5x);
                $$6x.j($$0.a - $$0.c - this.f);

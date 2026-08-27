@@ -8,17 +8,17 @@ public class fni extends ForwardingList<cjf> {
       return this.a;
    }
 
-   public rd a() {
-      rd $$0 = new rd();
+   public re a() {
+      re $$0 = new re();
 
       for (cjf $$1 : this.delegate()) {
-         $$0.add($$1.b(new qx()));
+         $$0.add($$1.b(new qy()));
       }
 
       return $$0;
    }
 
-   public void a(rd $$0) {
+   public void a(re $$0) {
       List<cjf> $$1 = this.delegate();
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

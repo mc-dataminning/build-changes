@@ -6,9 +6,9 @@ public class ff implements Predicate<dfn> {
    private final dfj a;
    private final Set<dgm<?>> b;
    @Nullable
-   private final qx c;
+   private final qy c;
 
-   public ff(dfj $$0, Set<dgm<?>> $$1, @Nullable qx $$2) {
+   public ff(dfj $$0, Set<dgm<?>> $$1, @Nullable qy $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -37,7 +37,7 @@ public class ff implements Predicate<dfn> {
             return true;
          } else {
             dcv $$3 = $$0.b();
-            return $$3 != null && rj.a(this.c, $$3.m(), true);
+            return $$3 != null && rk.a(this.c, $$3.m(), true);
          }
       }
    }

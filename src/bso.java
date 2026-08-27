@@ -14,7 +14,7 @@ public class bso extends bsp {
 
    @Override
    protected boolean a() {
-      return this.a.aB() || this.a.bc() || this.a.bO();
+      return this.a.aA() || this.a.bb() || this.a.bN();
    }
 
    @Override
@@ -61,7 +61,7 @@ public class bso extends bsp {
    }
 
    private int s() {
-      if (this.a.aY() && this.p()) {
+      if (this.a.aX() && this.p()) {
          int $$0 = this.a.dr();
          dfj $$1 = this.b.a_(gw.a(this.a.dq(), (double)$$0, this.a.dw()));
          int $$2 = 0;

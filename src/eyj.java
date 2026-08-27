@@ -1,5 +1,5 @@
 public class eyj extends eyk {
-   private static final tl a = tl.c("multiplayer.downloadingTerrain");
+   private static final tm a = tm.c("multiplayer.downloadingTerrain");
    private static final long b = 30000L;
    private boolean c = false;
    private boolean k = false;
@@ -42,7 +42,7 @@ public class eyj extends eyk {
 
             gw $$0 = this.f.s.dl();
             boolean $$1 = this.f.r != null && this.f.r.d($$0.v());
-            if ($$1 || this.f.f.a($$0) || this.f.s.M_() || !this.f.s.bw()) {
+            if ($$1 || this.f.f.a($$0) || this.f.s.M_() || !this.f.s.bv()) {
                this.az_();
             }
          } else {
@@ -53,7 +53,7 @@ public class eyj extends eyk {
 
    @Override
    public void az_() {
-      this.f.aV().c(tl.c("narrator.ready_to_play"));
+      this.f.aV().c(tm.c("narrator.ready_to_play"));
       super.az_();
    }
 

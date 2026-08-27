@@ -22,16 +22,16 @@ public class egz<C> {
       return (egy.a<C, T>)this.d.get($$0);
    }
 
-   public <T extends egy<C>> qx a(T $$0) {
+   public <T extends egy<C>> qy a(T $$0) {
       egy.a<C, T> $$1 = this.a($$0.getClass());
-      qx $$2 = new qx();
+      qy $$2 = new qy();
       $$1.a($$2, $$0);
       $$2.a("Type", $$1.a().toString());
       return $$2;
    }
 
    @Nullable
-   public egy<C> a(qx $$0) {
+   public egy<C> a(qy $$0) {
       aex $$1 = aex.a($$0.l("Type"));
       egy.a<C, ?> $$2 = this.c.get($$1);
       if ($$2 == null) {

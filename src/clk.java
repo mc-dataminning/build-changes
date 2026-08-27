@@ -1,7 +1,7 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record clk(aex c, hg<cja> d, tl e, boolean f) {
+public record clk(aex c, hg<cja> d, tm e, boolean f) {
    public static final Codec<clk> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                aex.a.fieldOf("asset_id").forGetter(clk::a),
@@ -13,7 +13,7 @@ public record clk(aex c, hg<cja> d, tl e, boolean f) {
    );
    public static final Codec<hg<clk>> b = aet.a(je.aE, a);
 
-   public tl a(hg<cli> $$0) {
+   public tm a(hg<cli> $$0) {
       return this.e.e().c($$0.a().e().a());
    }
 
@@ -25,7 +25,7 @@ public record clk(aex c, hg<cja> d, tl e, boolean f) {
       return this.d;
    }
 
-   public tl c() {
+   public tm c() {
       return this.e;
    }
 

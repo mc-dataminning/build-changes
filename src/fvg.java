@@ -15,7 +15,7 @@ public class fvg extends fun<bzo, fgw<bzo>> {
 
    public boolean a(bzo $$0, frg $$1, double $$2, double $$3, double $$4) {
       return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.F(0.0F).filter($$2x -> {
-         biu<?> $$3x = $$0.ah();
+         biu<?> $$3x = $$0.ag();
          float $$4x = $$3x.l() / 2.0F;
          float $$5 = $$3x.k() / 2.0F;
          ehn $$6 = ehn.c($$0.dl());

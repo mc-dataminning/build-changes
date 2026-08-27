@@ -10,8 +10,8 @@ public class aly implements alh {
    }
 
    @Override
-   public void a(Consumer<vd<?>> $$0) {
-      $$0.accept(new vl(this.b.a(), this.b.b(), this.b.c(), this.b.d()));
+   public void a(Consumer<ve<?>> $$0) {
+      $$0.accept(new vm(this.b.a(), this.b.b(), this.b.c(), this.b.d()));
    }
 
    @Override

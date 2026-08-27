@@ -9,11 +9,11 @@ public class esq extends esi {
    protected final esq.c p;
    protected final esq.b q;
 
-   public static esq.a a(tl $$0, esq.c $$1) {
+   public static esq.a a(tm $$0, esq.c $$1) {
       return new esq.a($$0, $$1);
    }
 
-   protected esq(int $$0, int $$1, int $$2, int $$3, tl $$4, esq.c $$5, esq.b $$6) {
+   protected esq(int $$0, int $$1, int $$2, int $$3, tm $$4, esq.c $$5, esq.b $$6) {
       super($$0, $$1, $$2, $$3, $$4);
       this.p = $$5;
       this.q = $$6;
@@ -25,7 +25,7 @@ public class esq extends esi {
    }
 
    @Override
-   protected ty aF_() {
+   protected tz aF_() {
       return this.q.createNarrationMessage(() -> super.aF_());
    }
 
@@ -35,7 +35,7 @@ public class esq extends esi {
    }
 
    public static class a {
-      private final tl a;
+      private final tm a;
       private final esq.c b;
       @Nullable
       private eua c;
@@ -45,7 +45,7 @@ public class esq extends esi {
       private int g = 20;
       private esq.b h = esq.o;
 
-      public a(tl $$0, esq.c $$1) {
+      public a(tm $$0, esq.c $$1) {
          this.a = $$0;
          this.b = $$1;
       }
@@ -89,7 +89,7 @@ public class esq extends esi {
    }
 
    public interface b {
-      ty createNarrationMessage(Supplier<ty> var1);
+      tz createNarrationMessage(Supplier<tz> var1);
    }
 
    public interface c {

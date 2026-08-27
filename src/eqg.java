@@ -42,7 +42,7 @@ public class eqg {
    public void a() {
       if (this.d != null) {
          this.o = this.n;
-         this.n = this.n + (this.d.cI() - this.n) * 0.5F;
+         this.n = this.n + (this.d.cH() - this.n) * 0.5F;
       }
    }
 

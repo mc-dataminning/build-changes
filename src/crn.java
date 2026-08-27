@@ -16,7 +16,7 @@ public abstract class crn extends csv {
 
    @Override
    public void a(cpv $$0, dfj $$1, ehj $$2, ccm $$3) {
-      if (!$$0.B && $$3.bN() && this.d($$1)) {
+      if (!$$0.B && $$3.bM() && this.d($$1)) {
          a($$0, $$1, $$2.a(), true);
       }
    }

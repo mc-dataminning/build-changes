@@ -1,16 +1,16 @@
 public class ewx extends eyk {
    private static final int a = 90;
-   private final tl b;
+   private final tm b;
    private etj c = etj.a;
    private final Runnable k;
-   private final tl l;
+   private final tm l;
    private final boolean m;
 
-   public ewx(Runnable $$0, tl $$1, tl $$2) {
-      this($$0, $$1, $$2, tk.k, true);
+   public ewx(Runnable $$0, tm $$1, tm $$2) {
+      this($$0, $$1, $$2, tl.k, true);
    }
 
-   public ewx(Runnable $$0, tl $$1, tl $$2, tl $$3, boolean $$4) {
+   public ewx(Runnable $$0, tm $$1, tm $$2, tm $$3, boolean $$4) {
       super($$1);
       this.k = $$0;
       this.b = $$2;
@@ -19,8 +19,8 @@ public class ewx extends eyk {
    }
 
    @Override
-   public tl g() {
-      return tk.a(super.g(), this.b);
+   public tm g() {
+      return tl.a(super.g(), this.b);
    }
 
    @Override

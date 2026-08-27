@@ -1,5 +1,5 @@
 public interface adr {
    aex a();
 
-   void a(so var1);
+   void a(sp var1);
 }

@@ -82,8 +82,8 @@ public abstract class cno {
       return this.f();
    }
 
-   public tl d(int $$0) {
-      ty $$1 = tl.c(this.g());
+   public tm d(int $$0) {
+      tz $$1 = tm.c(this.g());
       if (this.c()) {
          $$1.a(n.m);
       } else {
@@ -91,7 +91,7 @@ public abstract class cno {
       }
 
       if ($$0 != 1 || this.a() != 1) {
-         $$1.b(tk.u).b(tl.c("enchantment.level." + $$0));
+         $$1.b(tl.u).b(tm.c("enchantment.level." + $$0));
       }
 
       return $$1;

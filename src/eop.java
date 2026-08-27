@@ -1,5 +1,5 @@
 public class eop extends gfb {
-   private static final tl a = tl.c("mco.account.privacyinfo");
+   private static final tm a = tm.c("mco.account.privacyinfo");
    private final eyk b;
    private etj c = etj.a;
 
@@ -10,10 +10,10 @@ public class eop extends gfb {
 
    @Override
    public void aI_() {
-      tl $$0 = tl.c("mco.account.update");
-      tl $$1 = tk.k;
+      tm $$0 = tm.c("mco.account.update");
+      tm $$1 = tl.k;
       int $$2 = Math.max(this.i.a($$0), this.i.a($$1)) + 30;
-      tl $$3 = tl.c("mco.account.privacy.info");
+      tm $$3 = tm.c("mco.account.privacy.info");
       int $$4 = (int)((double)this.i.a($$3) * 1.2);
       this.d(esq.a($$3, $$0x -> ac.i().a("https://aka.ms/MinecraftGDPR")).a(this.g / 2 - $$4 / 2, h(11), $$4, 20).a());
       this.d(esq.a($$0, $$0x -> ac.i().a("https://aka.ms/UpdateMojangAccount")).a(this.g / 2 - ($$2 + 5), h(13), $$2, 20).a());
@@ -22,7 +22,7 @@ public class eop extends gfb {
    }
 
    @Override
-   public tl g() {
+   public tm g() {
       return a;
    }
 

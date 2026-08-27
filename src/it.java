@@ -11,7 +11,7 @@ public class it implements iv {
          return new it($$0, $$3);
       }
 
-      public it a(iw<it> $$0, so $$1) {
+      public it a(iw<it> $$0, sp $$1) {
          return new it($$0, $$1.q());
       }
    };
@@ -28,7 +28,7 @@ public class it implements iv {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.c);
    }
 

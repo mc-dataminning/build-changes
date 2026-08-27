@@ -10,7 +10,7 @@ public abstract class ccb extends ccm {
    public ccb(biu<? extends ccb> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cpv $$7) {
       this($$0, $$7);
       this.b($$1, $$2, $$3, this.dB(), this.dD());
-      this.aq();
+      this.ap();
       double $$8 = Math.sqrt($$4 * $$4 + $$5 * $$5 + $$6 * $$6);
       if ($$8 != 0.0) {
          this.b = $$4 / $$8 * 0.1;
@@ -31,7 +31,7 @@ public abstract class ccb extends ccm {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 4.0;
+      double $$1 = this.cG().a() * 4.0;
       if (Double.isNaN($$1)) {
          $$1 = 4.0;
       }
@@ -54,14 +54,14 @@ public abstract class ccb extends ccm {
             this.a($$1);
          }
 
-         this.aP();
+         this.aO();
          ehn $$2 = this.do();
          double $$3 = this.dq() + $$2.c;
          double $$4 = this.ds() + $$2.d;
          double $$5 = this.dw() + $$2.e;
          ccn.a(this, 0.2F);
          float $$6 = this.t();
-         if (this.aY()) {
+         if (this.aX()) {
             for (int $$7 = 0; $$7 < 4; $$7++) {
                float $$8 = 0.25F;
                this.dL().a(ix.e, $$3 - $$2.c * 0.25, $$4 - $$2.d * 0.25, $$5 - $$2.e * 0.25, $$2.c, $$2.d, $$2.e);
@@ -74,7 +74,7 @@ public abstract class ccb extends ccm {
          this.dL().a(this.s(), $$3, $$4 + 0.5, $$5, 0.0, 0.0, 0.0);
          this.e($$3, $$4, $$5);
       } else {
-         this.al();
+         this.ak();
       }
    }
 
@@ -96,16 +96,16 @@ public abstract class ccb extends ccm {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("power", this.a(new double[]{this.b, this.c, this.d}));
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("power", 9)) {
-         rd $$1 = $$0.c("power", 6);
+         re $$1 = $$0.c("power", 6);
          if ($$1.size() == 3) {
             this.b = $$1.h(0);
             this.c = $$1.h(1);
@@ -115,12 +115,12 @@ public abstract class ccb extends ccm {
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return true;
    }
 
    @Override
-   public float bE() {
+   public float bD() {
       return 1.0F;
    }
 
@@ -129,11 +129,11 @@ public abstract class ccb extends ccm {
       if (this.b($$0)) {
          return false;
       } else {
-         this.bp();
+         this.bo();
          biq $$2 = $$0.d();
          if ($$2 != null) {
             if (!this.dL().B) {
-               ehn $$3 = $$2.bF();
+               ehn $$3 = $$2.bE();
                this.f($$3);
                this.b = $$3.c * 0.1;
                this.c = $$3.d * 0.1;
@@ -149,19 +149,19 @@ public abstract class ccb extends ccm {
    }
 
    @Override
-   public float bn() {
+   public float bm() {
       return 1.0F;
    }
 
    @Override
-   public vd<ww> V() {
+   public ve<wx> di() {
       biq $$0 = this.v();
-      int $$1 = $$0 == null ? 0 : $$0.ai();
-      return new wx(this.ai(), this.cw(), this.dq(), this.ds(), this.dw(), this.dD(), this.dB(), this.ah(), $$1, new ehn(this.b, this.c, this.d), 0.0);
+      int $$1 = $$0 == null ? 0 : $$0.ah();
+      return new wy(this.ah(), this.cv(), this.dq(), this.ds(), this.dw(), this.dD(), this.dB(), this.ag(), $$1, new ehn(this.b, this.c, this.d), 0.0);
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       double $$1 = $$0.i();
       double $$2 = $$0.j();

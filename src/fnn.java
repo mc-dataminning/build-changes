@@ -1,13 +1,13 @@
 import java.util.concurrent.locks.ReentrantLock;
 
 public class fnn {
-   public static final tl a = tl.c("quickplay.error.title");
-   private static final tl b = tl.c("quickplay.error.invalid_identifier");
-   private static final tl c = tl.c("quickplay.error.realm_connect");
-   private static final tl d = tl.c("quickplay.error.realm_permission");
-   private static final tl e = tl.c("gui.toTitle");
-   private static final tl f = tl.c("gui.toWorld");
-   private static final tl g = tl.c("gui.toRealms");
+   public static final tm a = tm.c("quickplay.error.title");
+   private static final tm b = tm.c("quickplay.error.invalid_identifier");
+   private static final tm c = tm.c("quickplay.error.realm_connect");
+   private static final tm d = tm.c("quickplay.error.realm_permission");
+   private static final tm e = tm.c("gui.toTitle");
+   private static final tm f = tm.c("gui.toWorld");
+   private static final tm g = tm.c("gui.toRealms");
 
    public static void a(eqv $$0, fdw.c $$1, emf $$2) {
       String $$3 = $$1.c();
@@ -27,7 +27,7 @@ public class fnn {
          eyk $$2 = new fde(new eyp());
          $$0.a(new exm($$2, a, b, f));
       } else {
-         $$0.d(new exq(tl.c("selectWorld.data_read")));
+         $$0.d(new exq(tm.c("selectWorld.data_read")));
          $$0.y().a(new eyp(), $$1);
       }
    }

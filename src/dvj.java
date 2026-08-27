@@ -67,7 +67,7 @@ public class dvj {
 
    @Nullable
    private dvk a(cpc $$0, dvi $$1, boolean $$2, long $$3) {
-      rx $$4 = new rx(new rz(rc.a, "DataVersion"), new rz("Level", "Structures", qx.b, "Starts"), new rz("structures", qx.b, "starts"));
+      ry $$4 = new ry(new sa(rd.a, "DataVersion"), new sa("Level", "Structures", qy.b, "Starts"), new sa("structures", qy.b, "starts"));
 
       try {
          this.c.a($$0, $$4).join();
@@ -76,7 +76,7 @@ public class dvj {
          return dvk.c;
       }
 
-      if (!($$4.d() instanceof qx $$7)) {
+      if (!($$4.d() instanceof qy $$7)) {
          return null;
       } else {
          int $$8 = dih.a($$7);
@@ -85,7 +85,7 @@ public class dvj {
          } else {
             dih.a($$7, this.h, this.i.b());
 
-            qx $$9;
+            qy $$9;
             try {
                $$9 = ata.c.a(this.n, $$7, $$8);
             } catch (Exception var12) {
@@ -105,15 +105,15 @@ public class dvj {
    }
 
    @Nullable
-   private Object2IntMap<dvi> a(qx $$0) {
+   private Object2IntMap<dvi> a(qy $$0) {
       if (!$$0.b("structures", 10)) {
          return null;
       } else {
-         qx $$1 = $$0.p("structures");
+         qy $$1 = $$0.p("structures");
          if (!$$1.b("starts", 10)) {
             return null;
          } else {
-            qx $$2 = $$1.p("starts");
+            qy $$2 = $$1.p("starts");
             if ($$2.g()) {
                return Object2IntMaps.emptyMap();
             } else {
@@ -125,7 +125,7 @@ public class dvj {
                   if ($$6 != null) {
                      dvi $$7 = $$4.a($$6);
                      if ($$7 != null) {
-                        qx $$8 = $$2.p($$5);
+                        qy $$8 = $$2.p($$5);
                         if (!$$8.g()) {
                            String $$9 = $$8.l("id");
                            if (!"INVALID".equals($$9)) {

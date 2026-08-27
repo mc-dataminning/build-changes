@@ -44,7 +44,7 @@ public class ety extends eso {
 
    @Override
    protected void a(ewi $$0) {
-      $$0.a(ewh.a, tl.a("gui.narrate.tab", this.n.a()));
+      $$0.a(ewh.a, tm.a("gui.narrate.tab", this.n.a()));
    }
 
    @Override

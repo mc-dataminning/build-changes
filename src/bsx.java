@@ -12,7 +12,7 @@ public class bsx extends btf {
 
    private boolean e(bjg $$0, bjg $$1) {
       List<UUID> $$2 = $$0.dN().c(bsh.Z).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cw());
+      return $$2.contains($$1.cv());
    }
 
    @Override

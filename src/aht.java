@@ -10,11 +10,11 @@ import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Optional;
 
 public class aht {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.place.feature.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.place.jigsaw.failed"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.place.structure.failed"));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.a("commands.place.template.invalid", $$0));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("commands.place.template.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.place.feature.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.place.jigsaw.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.place.structure.failed"));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tm.a("commands.place.template.invalid", $$0));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("commands.place.template.failed"));
    private static final SuggestionProvider<dt> f = ($$0, $$1) -> {
       dzc $$2 = ((dt)$$0.getSource()).e().p();
       return dw.a($$2.a(), $$1);
@@ -145,7 +145,7 @@ public class aht {
          throw a.create();
       } else {
          String $$6 = $$1.g().a().toString();
-         $$0.a(() -> tl.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
+         $$0.a(() -> tm.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
          return 1;
       }
    }
@@ -155,7 +155,7 @@ public class aht {
       if (!dwl.a($$5, $$1, $$2, $$3, $$4, false)) {
          throw b.create();
       } else {
-         $$0.a(() -> tl.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
+         $$0.a(() -> tm.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
          return 1;
       }
    }
@@ -174,7 +174,7 @@ public class aht {
          a($$3, $$8, $$9);
          cpc.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.D_(), new dva($$3x.d(), $$3.H_(), $$3x.e(), $$3x.f(), $$3.aj(), $$3x.g()), $$3x));
          String $$10 = $$1.g().a().toString();
-         $$0.a(() -> tl.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
+         $$0.a(() -> tm.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
          return 1;
       }
    }
@@ -204,7 +204,7 @@ public class aht {
          if (!$$14) {
             throw e.create();
          } else {
-            $$0.a(() -> tl.a("commands.place.template.success", $$1, $$2.u(), $$2.v(), $$2.w()), true);
+            $$0.a(() -> tm.a("commands.place.template.success", $$1, $$2.u(), $$2.v(), $$2.w()), true);
             return 1;
          }
       }

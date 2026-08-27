@@ -8,7 +8,7 @@ import java.util.Collection;
 import javax.annotation.Nullable;
 
 public class agf {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.ban.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.ban.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -20,7 +20,7 @@ public class agf {
       );
    }
 
-   private static int a(dt $$0, Collection<GameProfile> $$1, @Nullable tl $$2) throws CommandSyntaxException {
+   private static int a(dt $$0, Collection<GameProfile> $$1, @Nullable tm $$2) throws CommandSyntaxException {
       aon $$3 = $$0.l().ac().f();
       int $$4 = 0;
 
@@ -29,10 +29,10 @@ public class agf {
             aoo $$6 = new aoo($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
             $$3.a($$6);
             $$4++;
-            $$0.a(() -> tl.a("commands.ban.success", tl.b($$5.getName()), $$6.d()), true);
+            $$0.a(() -> tm.a("commands.ban.success", tm.b($$5.getName()), $$6.d()), true);
             aks $$7 = $$0.l().ac().a($$5.getId());
             if ($$7 != null) {
-               $$7.c.b(tl.c("multiplayer.disconnect.banned"));
+               $$7.c.b(tm.c("multiplayer.disconnect.banned"));
             }
          }
       }

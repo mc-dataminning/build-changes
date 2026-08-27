@@ -164,7 +164,7 @@ public interface ij {
          protected cjf a(gx $$0, cjf $$1) {
             gw $$2 = $$0.d().a($$0.e().c(cuw.a));
 
-            for (bwq $$4 : $$0.g().a(bwq.class, new ehi($$2), $$0x -> $$0x.bw() && $$0x.gM())) {
+            for (bwq $$4 : $$0.g().a(bwq.class, new ehi($$2), $$0x -> $$0x.bv() && $$0x.gM())) {
                if ($$4.l($$1) && !$$4.gN() && $$4.gs()) {
                   $$4.a_(401).a($$1.a(1));
                   this.a(true);
@@ -200,7 +200,7 @@ public interface ij {
          public cjf a(gx $$0, cjf $$1) {
             gw $$2 = $$0.d().a($$0.e().c(cuw.a));
 
-            for (bwp $$4 : $$0.g().a(bwp.class, new ehi($$2), $$0x -> $$0x.bw() && !$$0x.t())) {
+            for (bwp $$4 : $$0.g().a(bwp.class, new ehi($$2), $$0x -> $$0x.bv() && !$$0x.t())) {
                if ($$4.gs() && $$4.a_(499).a($$1)) {
                   $$1.h(1);
                   this.a(true);
@@ -553,9 +553,9 @@ public interface ij {
 
    static void a(gx $$0, biq $$1, hc $$2) {
       $$1.e(
-         $$0.a() + (double)$$2.j() * (0.5000099999997474 - (double)$$1.dg() / 2.0),
-         $$0.b() + (double)$$2.k() * (0.5000099999997474 - (double)$$1.dh() / 2.0) - (double)$$1.dh() / 2.0,
-         $$0.c() + (double)$$2.l() * (0.5000099999997474 - (double)$$1.dg() / 2.0)
+         $$0.a() + (double)$$2.j() * (0.5000099999997474 - (double)$$1.df() / 2.0),
+         $$0.b() + (double)$$2.k() * (0.5000099999997474 - (double)$$1.dg() / 2.0) - (double)$$1.dg() / 2.0,
+         $$0.c() + (double)$$2.l() * (0.5000099999997474 - (double)$$1.df() / 2.0)
       );
    }
 }

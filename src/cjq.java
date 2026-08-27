@@ -6,7 +6,7 @@ public class cjq extends cja {
    @Override
    public bgy a(cjf $$0, cbu $$1, bjg $$2, bgx $$3) {
       if ($$0.A() && !($$2 instanceof cbu)) {
-         if (!$$1.dL().B && $$2.bw()) {
+         if (!$$1.dL().B && $$2.bv()) {
             $$2.b($$0.y());
             if ($$2 instanceof bji) {
                ((bji)$$2).fI();

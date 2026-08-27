@@ -46,14 +46,14 @@ public class apd {
       return this.f ? Optional.of(this.e) : Optional.empty();
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.d);
-      $$0.a(this.b(), so::a);
+      $$0.a(this.b(), sp::a);
    }
 
-   public static apd b(so $$0) {
+   public static apd b(sp $$0) {
       aex $$1 = $$0.s();
-      Optional<Float> $$2 = $$0.b(so::readFloat);
+      Optional<Float> $$2 = $$0.b(sp::readFloat);
       return a($$1, $$2);
    }
 }

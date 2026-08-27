@@ -1,32 +1,32 @@
-public class aas implements vd<ww> {
-   private final tl a;
-   private final tl b;
+public class aas implements ve<wx> {
+   private final tm a;
+   private final tm b;
 
-   public aas(tl $$0, tl $$1) {
+   public aas(tm $$0, tm $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public aas(so $$0) {
+   public aas(sp $$0) {
       this.a = $$0.l();
       this.b = $$0.l();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public tl a() {
+   public tm a() {
       return this.a;
    }
 
-   public tl d() {
+   public tm d() {
       return this.b;
    }
 }

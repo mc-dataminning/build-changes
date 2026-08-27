@@ -1,18 +1,18 @@
 import javax.annotation.Nullable;
 
 public interface bhc {
-   tl ac();
+   tm ab();
 
-   default boolean ad() {
-      return this.ae() != null;
+   default boolean ac() {
+      return this.ad() != null;
    }
 
-   default tl N_() {
-      return this.ac();
+   default tm N_() {
+      return this.ab();
    }
 
    @Nullable
-   default tl ae() {
+   default tm ad() {
       return null;
    }
 }

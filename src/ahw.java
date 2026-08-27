@@ -48,24 +48,24 @@ public class ahw {
       if ($$2 != null) {
          int $$3 = $$2.l();
          if ($$1 > $$3) {
-            $$0.b(tl.b("Sorry, the max bad omen level you can set is " + $$3));
+            $$0.b(tm.b("Sorry, the max bad omen level you can set is " + $$3));
          } else {
             int $$4 = $$2.m();
             $$2.a($$1);
-            $$0.a(() -> tl.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
+            $$0.a(() -> tm.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
          }
       } else {
-         $$0.b(tl.b("No raid found here"));
+         $$0.b(tm.b("No raid found here"));
       }
 
       return 1;
    }
 
    private static int b(dt $$0) {
-      $$0.a(() -> tl.b("Spawned a raid captain"), false);
+      $$0.a(() -> tm.b("Spawned a raid captain"), false);
       cdc $$1 = biu.ay.a((cpv)$$0.e());
       if ($$1 == null) {
-         $$0.b(tl.b("Pillager failed to spawn"));
+         $$0.b(tm.b("Pillager failed to spawn"));
          return 0;
       } else {
          $$1.w(true);
@@ -77,7 +77,7 @@ public class ahw {
       }
    }
 
-   private static int a(dt $$0, @Nullable tl $$1) {
+   private static int a(dt $$0, @Nullable tm $$1) {
       if ($$1 != null && $$1.getString().equals("local")) {
          akr $$2 = $$0.e();
          ehn $$3 = $$0.d().b(5.0, 0.0, 0.0);
@@ -91,7 +91,7 @@ public class ahw {
       aks $$2 = $$0.h();
       gw $$3 = $$2.dl();
       if ($$2.x().d($$3)) {
-         $$0.b(tl.b("Raid already started close by"));
+         $$0.b(tm.b("Raid already started close by"));
          return -1;
       } else {
          cdd $$4 = $$2.x().x();
@@ -99,9 +99,9 @@ public class ahw {
          if ($$5 != null) {
             $$5.a($$1);
             $$4.c();
-            $$0.a(() -> tl.b("Created a raid in your local village"), false);
+            $$0.a(() -> tm.b("Created a raid in your local village"), false);
          } else {
-            $$0.b(tl.b("Failed to create a raid in your local village"));
+            $$0.b(tm.b("Failed to create a raid in your local village"));
          }
 
          return 1;
@@ -114,10 +114,10 @@ public class ahw {
       cdb $$3 = $$1.x().c($$2);
       if ($$3 != null) {
          $$3.n();
-         $$0.a(() -> tl.b("Stopped raid"), false);
+         $$0.a(() -> tm.b("Stopped raid"), false);
          return 1;
       } else {
-         $$0.b(tl.b("No raid here"));
+         $$0.b(tm.b("No raid here"));
          return -1;
       }
    }
@@ -127,7 +127,7 @@ public class ahw {
       if ($$1 != null) {
          StringBuilder $$2 = new StringBuilder();
          $$2.append("Found a started raid! ");
-         $$0.a(() -> tl.b($$2.toString()), false);
+         $$0.a(() -> tm.b($$2.toString()), false);
          StringBuilder $$3 = new StringBuilder();
          $$3.append("Num groups spawned: ");
          $$3.append($$1.k());
@@ -139,10 +139,10 @@ public class ahw {
          $$3.append($$1.q());
          $$3.append(" / ");
          $$3.append($$1.g());
-         $$0.a(() -> tl.b($$3.toString()), false);
+         $$0.a(() -> tm.b($$3.toString()), false);
          return 1;
       } else {
-         $$0.b(tl.b("Found no started raids"));
+         $$0.b(tm.b("Found no started raids"));
          return 0;
       }
    }

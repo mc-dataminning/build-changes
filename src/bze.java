@@ -126,21 +126,21 @@ public class bze extends bzi {
 
    @Override
    protected apd w() {
-      return this.bb() ? ape.kj : ape.kk;
+      return this.ba() ? ape.kj : ape.kk;
    }
 
    @Override
    protected apd d(bho $$0) {
-      return this.bb() ? ape.kp : ape.kq;
+      return this.ba() ? ape.kp : ape.kq;
    }
 
    @Override
    protected apd l_() {
-      return this.bb() ? ape.km : ape.kn;
+      return this.ba() ? ape.km : ape.kn;
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.c;
    }
 
@@ -156,14 +156,14 @@ public class bze extends bzi {
 
    @Override
    public void b_() {
-      if (this.bw()) {
+      if (this.bv()) {
          if (this.dL().B) {
             this.bU = this.bT;
-            if (!this.aY()) {
+            if (!this.aX()) {
                this.bV = 2.0F;
                ehn $$0 = this.do();
-               if ($$0.d > 0.0 && this.ca && !this.aT()) {
-                  this.dL().a(this.dq(), this.ds(), this.dw(), this.y(), this.db(), 1.0F, 1.0F, false);
+               if ($$0.d > 0.0 && this.ca && !this.aS()) {
+                  this.dL().a(this.dq(), this.ds(), this.dw(), this.y(), this.da(), 1.0F, 1.0F, false);
                }
 
                this.ca = $$0.d < 0.0 && this.dL().a(this.dl().d(), this);
@@ -179,7 +179,7 @@ public class bze extends bzi {
 
             this.bT = this.bT + this.bV;
             this.bX = this.bW;
-            if (!this.bb()) {
+            if (!this.ba()) {
                this.bW = this.ag.i();
             } else if (this.ge()) {
                this.bW = this.bW + (0.0F - this.bW) * 0.25F;
@@ -187,7 +187,7 @@ public class bze extends bzi {
                this.bW = this.bW + (1.0F - this.bW) * 0.06F;
             }
 
-            if (this.ge() && this.aY()) {
+            if (this.ge() && this.aX()) {
                ehn $$1 = this.f(0.0F);
 
                for (int $$2 = 0; $$2 < 2; $$2++) {
@@ -222,9 +222,9 @@ public class bze extends bzi {
             }
          }
 
-         if (this.bb()) {
+         if (this.ba()) {
             this.j(300);
-         } else if (this.aB()) {
+         } else if (this.aA()) {
             this.f(this.do().b((double)((this.ag.i() * 2.0F - 1.0F) * 0.4F), 0.5, (double)((this.ag.i() * 2.0F - 1.0F) * 0.4F)));
             this.r(this.ag.i() * 360.0F);
             this.c(false);
@@ -286,13 +286,13 @@ public class bze extends bzi {
    }
 
    @Override
-   public int Z() {
+   public int Y() {
       return 180;
    }
 
    @Override
    public void h(ehn $$0) {
-      if (this.cX() && this.aY()) {
+      if (this.cW() && this.aX()) {
          this.a(0.1F, $$0);
          this.a(bjm.a, this.do());
          this.f(this.do().a(0.9));
@@ -323,7 +323,7 @@ public class bze extends bzi {
       @Override
       public boolean a() {
          bjg $$0 = this.a.q();
-         return $$0 != null && $$0.bw();
+         return $$0 != null && $$0.bv();
       }
 
       @Override
@@ -366,8 +366,8 @@ public class bze extends bzi {
             } else {
                this.b++;
                if (this.b == 0) {
-                  this.a.b($$0.ai());
-                  if (!this.a.aT()) {
+                  this.a.b($$0.ah());
+                  if (!this.a.aS()) {
                      this.a.dL().a(this.a, (byte)21);
                   }
                } else if (this.b >= this.a.t()) {
@@ -425,10 +425,10 @@ public class bze extends bzi {
             float $$6 = (float)(this.h * this.l.b(bkm.d));
             float $$7 = arx.i(0.125F, this.l.fe(), $$6);
             this.l.w($$7);
-            double $$8 = Math.sin((double)(this.l.ah + this.l.ai()) * 0.5) * 0.05;
+            double $$8 = Math.sin((double)(this.l.ah + this.l.ah()) * 0.5) * 0.05;
             double $$9 = Math.cos((double)(this.l.dB() * (float) (Math.PI / 180.0)));
             double $$10 = Math.sin((double)(this.l.dB() * (float) (Math.PI / 180.0)));
-            double $$11 = Math.sin((double)(this.l.ah + this.l.ai()) * 0.75) * 0.05;
+            double $$11 = Math.sin((double)(this.l.ah + this.l.ah()) * 0.75) * 0.05;
             this.l.f(this.l.do().b($$8 * $$9, $$11 * ($$10 + $$9) * 0.25 + (double)$$7 * $$3 * 0.1, $$8 * $$10));
             bpd $$12 = this.l.G();
             double $$13 = this.l.dq() + $$2 * 2.0;

@@ -21,13 +21,13 @@ import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fiy extends fiu implements ta, ww {
+public class fiy extends fiu implements tb, wx {
    private static final Logger g = LogUtils.getLogger();
-   private static final tl h = tl.c("multiplayer.unsecureserver.toast.title");
-   private static final tl i = tl.c("multiplayer.unsecureserver.toast");
-   private static final tl j = tl.c("multiplayer.disconnect.invalid_packet");
-   private static final tl k = tl.c("multiplayer.disconnect.chat_validation_failed");
-   private static final tl l = tl.c("connect.reconfiguring");
+   private static final tm h = tm.c("multiplayer.unsecureserver.toast.title");
+   private static final tm i = tm.c("multiplayer.unsecureserver.toast");
+   private static final tm j = tm.c("multiplayer.disconnect.invalid_packet");
+   private static final tm k = tm.c("multiplayer.disconnect.chat_validation_failed");
+   private static final tm l = tm.c("connect.reconfiguring");
    private static final int m = 64;
    private final GameProfile n;
    private fix o;
@@ -47,16 +47,16 @@ public class fiy extends fiu implements ta, ww {
    private final hu.b C;
    private final cec D;
    @Nullable
-   private tv E;
-   private ue.c F = ue.c.a;
-   private ts G = new ts(20);
-   private tx H = tx.a();
+   private tw E;
+   private uf.c F = uf.c.a;
+   private tt G = new tt(20);
+   private ty H = ty.a();
    private final fir I = new fir();
    private final fje J;
    private boolean K = false;
    private volatile boolean L;
 
-   public fiy(eqv $$0, sm $$1, fjb $$2) {
+   public fiy(eqv $$0, sn $$1, fjb $$2) {
       super($$0, $$1, $$2);
       this.n = $$2.a();
       this.C = $$2.c();
@@ -82,7 +82,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(ym $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.y();
       this.a.q = new fjd(this.a, this);
       aba $$1 = $$0.l();
@@ -103,15 +103,14 @@ public class fiy extends fiu implements ta, ww {
          this.a.s = this.a.q.a(this.o, new app(), new eqi());
          this.a.s.r(-180.0F);
          if (this.a.T() != null) {
-            this.a.T().a(this.a.s.cw());
+            this.a.T().a(this.a.s.cv());
          }
       }
 
       this.a.k.a();
       this.a.s.x();
-      int $$8 = $$0.a();
-      this.a.s.e($$8);
-      this.o.a($$8, (fnd)this.a.s);
+      this.a.s.e($$0.a());
+      this.o.c(this.a.s);
       this.a.s.co = new fnf(this.a.m);
       this.a.q.a(this.a.s);
       this.a.t = this.a.s;
@@ -124,8 +123,8 @@ public class fiy extends fiu implements ta, ww {
       this.a.q.a($$1.d(), $$1.e());
       this.a.m.b($$0.g());
       this.E = null;
-      this.G = new ts(20);
-      this.H = tx.a();
+      this.G = new tt(20);
+      this.H = ty.a();
       if (this.b.j()) {
          this.a.w().a().thenAcceptAsync($$0x -> $$0x.ifPresent(this::a), this.a);
       }
@@ -135,39 +134,53 @@ public class fiy extends fiu implements ta, ww {
    }
 
    @Override
-   public void a(wx $$0) {
-      vf.a($$0, this, this.a);
-      biu<?> $$1 = $$0.e();
-      biq $$2 = $$1.a((cpv)this.o);
-      if ($$2 != null) {
-         $$2.a($$0);
-         int $$3 = $$0.a();
-         this.o.a($$3, $$2);
-         this.a($$2);
+   public void a(wy $$0) {
+      vg.a($$0, this, this.a);
+      biq $$1 = this.b($$0);
+      if ($$1 != null) {
+         $$1.a($$0);
+         this.o.c($$1);
+         this.a($$1);
       } else {
-         g.warn("Skipping Entity with id {}", $$1);
+         g.warn("Skipping Entity with id {}", $$0.e());
+      }
+   }
+
+   @Nullable
+   private biq b(wy $$0) {
+      biu<?> $$1 = $$0.e();
+      if ($$1 == biu.bt) {
+         fjf $$2 = this.a($$0.d());
+         if ($$2 == null) {
+            g.warn("Server attempted to add player prior to sending player info (Player id {})", $$0.d());
+            return null;
+         } else {
+            return new fnh(this.o, $$2.a());
+         }
+      } else {
+         return $$1.a((cpv)this.o);
       }
    }
 
    private void a(biq $$0) {
-      if ($$0 instanceof cdl) {
-         this.a.ai().a((gcm)(new gcf((cdl)$$0)));
-      } else if ($$0 instanceof bus) {
-         boolean $$1 = ((bus)$$0).X_();
-         gbz $$2;
-         if ($$1) {
-            $$2 = new gbx((bus)$$0);
+      if ($$0 instanceof cdl $$1) {
+         this.a.ai().a((gcm)(new gcf($$1)));
+      } else if ($$0 instanceof bus $$2) {
+         boolean $$3 = $$2.X_();
+         gbz $$4;
+         if ($$3) {
+            $$4 = new gbx($$2);
          } else {
-            $$2 = new gby((bus)$$0);
+            $$4 = new gby($$2);
          }
 
-         this.a.ai().a((gcn)$$2);
+         this.a.ai().a((gcn)$$4);
       }
    }
 
    @Override
-   public void a(wy $$0) {
-      vf.a($$0, this, this.a);
+   public void a(wz $$0) {
+      vg.a($$0, this, this.a);
       double $$1 = $$0.d();
       double $$2 = $$0.e();
       double $$3 = $$0.f();
@@ -176,12 +189,12 @@ public class fiy extends fiu implements ta, ww {
       $$4.r(0.0F);
       $$4.s(0.0F);
       $$4.e($$0.a());
-      this.o.a($$0.a(), $$4);
+      this.o.c($$4);
    }
 
    @Override
    public void a(aaa $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 != null) {
          $$1.l((double)$$0.d() / 8000.0, (double)$$0.e() / 8000.0, (double)$$0.f() / 8000.0);
@@ -190,45 +203,23 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zy $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 != null) {
-         $$1.am().a($$0.d());
-      }
-   }
-
-   @Override
-   public void a(wz $$0) {
-      vf.a($$0, this, this.a);
-      fjf $$1 = this.a($$0.d());
-      if ($$1 == null) {
-         g.warn("Server attempted to add player prior to sending player info (Player id {})", $$0.d());
-      } else {
-         double $$2 = $$0.e();
-         double $$3 = $$0.f();
-         double $$4 = $$0.g();
-         float $$5 = (float)($$0.h() * 360) / 256.0F;
-         float $$6 = (float)($$0.i() * 360) / 256.0F;
-         int $$7 = $$0.a();
-         fnh $$8 = new fnh(this.a.r, $$1.a());
-         $$8.e($$7);
-         $$8.f($$2, $$3, $$4);
-         $$8.a($$2, $$3, $$4, $$5, $$6);
-         $$8.bo();
-         this.o.a($$7, (fnd)$$8);
+         $$1.al().a($$0.d());
       }
    }
 
    @Override
    public void a(aav $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 != null) {
          double $$2 = $$0.d();
          double $$3 = $$0.e();
          double $$4 = $$0.f();
          $$1.f($$2, $$3, $$4);
-         if (!$$1.cX()) {
+         if (!$$1.cW()) {
             float $$5 = (float)($$0.g() * 360) / 256.0F;
             float $$6 = (float)($$0.h() * 360) / 256.0F;
             $$1.a($$2, $$3, $$4, $$5, $$6, 3);
@@ -239,7 +230,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zt $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       if (cbt.d($$0.a())) {
          this.a.s.fR().l = $$0.a();
       }
@@ -247,12 +238,12 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yp $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = $$0.a(this.o);
       if ($$1 != null) {
-         if (!$$1.cX()) {
+         if (!$$1.cW()) {
             if ($$0.i()) {
-               acz $$2 = $$1.ag();
+               acz $$2 = $$1.af();
                ehn $$3 = $$2.a((long)$$0.a(), (long)$$0.d(), (long)$$0.e());
                $$2.e($$3);
                float $$4 = $$0.h() ? (float)($$0.f() * 360) / 256.0F : $$1.o_();
@@ -271,7 +262,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zi $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = $$0.a(this.o);
       if ($$1 != null) {
          float $$2 = (float)($$0.a() * 360) / 256.0F;
@@ -281,13 +272,13 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zf $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       $$0.a().forEach($$0x -> this.o.a($$0x, biq.c.b));
    }
 
    @Override
    public void a(zd $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cbu $$1 = this.a.s;
       ehn $$2 = $$1.do();
       boolean $$3 = $$0.i().contains(bju.a);
@@ -361,13 +352,13 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zj $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       $$0.a(($$0x, $$1) -> this.o.b($$0x, $$1, 19));
    }
 
    @Override
    public void a(yh $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       int $$1 = $$0.a();
       int $$2 = $$0.d();
       this.a($$1, $$2, $$0.e());
@@ -383,7 +374,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xm $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
 
       for (xm.a $$1 : $$0.a()) {
          this.o.i().a($$1.b().e, $$1.b().f, $$1.a());
@@ -423,7 +414,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yb $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.o.i().a($$0.a());
       this.b($$0);
    }
@@ -448,14 +439,14 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xg $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.o.b($$0.d(), $$0.a(), 19);
    }
 
    @Override
    public void a(aap $$0) {
       this.b.a();
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.c(new fbj(l, this.b));
       this.b.a(new fiv(this.a, this.b, new fjb(this.n, this.e, this.C, this.D, this.d, this.c, this.f)));
       this.b.b();
@@ -464,7 +455,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aau $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       bjg $$2 = (bjg)this.o.a($$0.d());
       if ($$2 == null) {
@@ -496,15 +487,15 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aar $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.aW().a($$0.a(), $$0.d());
    }
 
    @Override
    public void a(yw $$0) {
-      vf.a($$0, this, this.a);
-      Optional<ud> $$1 = $$0.f().a(this.H);
-      Optional<th.a> $$2 = $$0.i().a(this.C);
+      vg.a($$0, this, this.a);
+      Optional<ue> $$1 = $$0.f().a(this.H);
+      Optional<ti.a> $$2 = $$0.i().a(this.C);
       if (!$$1.isEmpty() && !$$2.isEmpty()) {
          UUID $$3 = $$0.a();
          fjf $$4 = this.a($$3);
@@ -512,15 +503,15 @@ public class fiy extends fiu implements ta, ww {
             g.error("Received player chat packet for unknown player with ID: {}", $$3);
             this.b.a(k);
          } else {
-            ub $$5 = $$4.b();
-            uf $$6;
+            uc $$5 = $$4.b();
+            ug $$6;
             if ($$5 != null) {
-               $$6 = new uf($$0.d(), $$3, $$5.c());
+               $$6 = new ug($$0.d(), $$3, $$5.c());
             } else {
-               $$6 = uf.a($$3);
+               $$6 = ug.a($$3);
             }
 
-            ua $$8 = new ua($$6, $$0.e(), $$1.get(), $$0.g(), $$0.h());
+            ub $$8 = new ub($$6, $$0.e(), $$1.get(), $$0.g(), $$0.h());
             if (!$$4.c().updateAndValidate($$8)) {
                this.a.aW().a($$3, $$2.get());
             } else {
@@ -535,8 +526,8 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xy $$0) {
-      vf.a($$0, this, this.a);
-      Optional<th.a> $$1 = $$0.d().a(this.C);
+      vg.a($$0, this, this.a);
+      Optional<ti.a> $$1 = $$0.d().a(this.C);
       if ($$1.isEmpty()) {
          this.b.a(j);
       } else {
@@ -546,8 +537,8 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xx $$0) {
-      vf.a($$0, this, this.a);
-      Optional<tw> $$1 = $$0.a().a(this.H);
+      vg.a($$0, this, this.a);
+      Optional<tx> $$1 = $$0.a().a(this.H);
       if ($$1.isEmpty()) {
          this.b.a(j);
       } else {
@@ -560,7 +551,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xa $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 != null) {
          if ($$0.d() == 0) {
@@ -582,7 +573,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(ye $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 != null) {
          $$1.m($$0.d());
@@ -591,7 +582,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aak $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.r.b($$0.a());
       this.a.r.c($$0.d());
       this.e.a($$0.a());
@@ -599,7 +590,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zw $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.r.a($$0.a(), $$0.d());
       if (this.a.y instanceof eyj $$1) {
          $$1.l();
@@ -608,13 +599,13 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aaf $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.d());
       if ($$1 == null) {
          g.warn("Received passengers for unknown entity");
       } else {
          boolean $$2 = $$1.z(this.a.s);
-         $$1.bB();
+         $$1.bA();
 
          for (int $$3 : $$0.a()) {
             biq $$4 = this.o.a($$3);
@@ -627,7 +618,7 @@ public class fiy extends fiu implements ta, ww {
                      this.a.s.n($$1.dB());
                   }
 
-                  tl $$5 = tl.a("mount.onboard", this.a.m.C.k());
+                  tm $$5 = tm.a("mount.onboard", this.a.m.C.k());
                   this.a.l.a($$5, false);
                   this.a.aV().c($$5);
                }
@@ -638,7 +629,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zz $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 instanceof bji) {
          ((bji)$$1).r($$0.d());
@@ -658,7 +649,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xz $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = $$0.a(this.o);
       if ($$1 != null) {
          switch ($$0.a()) {
@@ -668,7 +659,7 @@ public class fiy extends fiu implements ta, ww {
             case 35:
                int $$2 = 40;
                this.a.g.a($$1, ix.ae, 30);
-               this.o.a($$1.dq(), $$1.ds(), $$1.dw(), ape.xM, $$1.db(), 1.0F, 1.0F, false);
+               this.o.a($$1.dq(), $$1.ds(), $$1.dw(), ape.xM, $$1.da(), 1.0F, 1.0F, false);
                if ($$1 == this.a.s) {
                   this.a.j.a(a((cbu)this.a.s));
                }
@@ -684,7 +675,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xw $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 != null) {
          $$1.c($$0.a(this.o));
@@ -693,7 +684,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aad $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.s.D($$0.a());
       this.a.s.gb().a($$0.d());
       this.a.s.gb().b($$0.e());
@@ -701,28 +692,27 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aac $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.s.a($$0.a(), $$0.d(), $$0.e());
    }
 
    @Override
    public void a(zh $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       aba $$1 = $$0.a();
       aew<cpv> $$2 = $$1.b();
       hg<dis> $$3 = this.C.d(je.au).f($$1.a());
       fng $$4 = this.a.s;
-      int $$5 = $$4.ai();
       if ($$2 != $$4.dL().ac()) {
-         eim $$6 = this.o.I();
-         Map<String, ebw> $$7 = this.o.l();
-         boolean $$8 = $$1.f();
-         boolean $$9 = $$1.g();
-         fix.a $$10 = new fix.a(this.p.s(), this.p.n(), $$9);
-         this.p = $$10;
-         this.o = new fix(this, $$10, $$2, $$3, this.v, this.w, this.a::aG, this.a.f, $$8, $$1.c());
+         eim $$5 = this.o.I();
+         Map<String, ebw> $$6 = this.o.l();
+         boolean $$7 = $$1.f();
+         boolean $$8 = $$1.g();
+         fix.a $$9 = new fix.a(this.p.s(), this.p.n(), $$8);
+         this.p = $$9;
+         this.o = new fix(this, $$9, $$2, $$3, this.v, this.w, this.a::aG, this.a.f, $$7, $$1.c());
+         this.o.a($$5);
          this.o.a($$6);
-         this.o.a($$7);
          this.a.a(this.o);
          this.a.a(new eyj());
       }
@@ -732,42 +722,42 @@ public class fiy extends fiu implements ta, ww {
          $$4.q();
       }
 
-      fng $$11;
+      fng $$10;
       if ($$0.a((byte)2)) {
-         $$11 = this.a.q.a(this.o, $$4.j(), $$4.m(), $$4.bS(), $$4.bY());
+         $$10 = this.a.q.a(this.o, $$4.j(), $$4.m(), $$4.bR(), $$4.bX());
       } else {
-         $$11 = this.a.q.a(this.o, $$4.j(), $$4.m());
+         $$10 = this.a.q.a(this.o, $$4.j(), $$4.m());
       }
 
-      $$11.e($$5);
-      this.a.s = $$11;
+      $$10.e($$4.ah());
+      this.a.s = $$10;
       if ($$2 != $$4.dL().ac()) {
          this.a.s().b();
       }
 
-      this.a.t = $$11;
+      this.a.t = $$10;
       if ($$0.a((byte)2)) {
-         List<aei.b<?>> $$13 = $$4.am().c();
-         if ($$13 != null) {
-            $$11.am().a($$13);
+         List<aei.b<?>> $$12 = $$4.al().c();
+         if ($$12 != null) {
+            $$10.al().a($$12);
          }
       }
 
       if ($$0.a((byte)1)) {
-         $$11.eQ().a($$4.eQ());
+         $$10.eQ().a($$4.eQ());
       }
 
-      $$11.x();
-      this.o.a($$5, (fnd)$$11);
-      $$11.r(-180.0F);
-      $$11.co = new fnf(this.a.m);
-      this.a.q.a($$11);
-      $$11.u($$4.gh());
-      $$11.b($$4.o());
-      $$11.a($$1.h());
-      $$11.f($$1.i());
-      $$11.cv = $$4.cv;
-      $$11.cw = $$4.cw;
+      $$10.x();
+      this.o.c($$10);
+      $$10.r(-180.0F);
+      $$10.co = new fnf(this.a.m);
+      this.a.q.a($$10);
+      $$10.u($$4.gh());
+      $$10.b($$4.o());
+      $$10.a($$1.h());
+      $$10.f($$1.i());
+      $$10.cv = $$4.cv;
+      $$10.cw = $$4.cw;
       if (this.a.y instanceof exj || this.a.y instanceof exj.a) {
          this.a.a(null);
       }
@@ -777,7 +767,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(ya $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cpn $$1 = new cpn(this.a.r, null, $$0.f(), $$0.g(), $$0.h(), $$0.i(), $$0.j());
       $$1.a(true);
       this.a.s.f(this.a.s.do().b((double)$$0.a(), (double)$$0.d(), (double)$$0.e()));
@@ -785,7 +775,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yd $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       if (this.o.a($$0.e()) instanceof bwq $$2) {
          fng $$3 = this.a.s;
          bhf $$4 = new bhf($$0.d());
@@ -797,13 +787,13 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(ys $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       exx.a($$0.d(), this.a, $$0.a(), $$0.e());
    }
 
    @Override
    public void a(xt $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cbu $$1 = this.a.s;
       cjf $$2 = $$0.e();
       int $$3 = $$0.d();
@@ -817,7 +807,7 @@ public class fiy extends fiu implements ta, ww {
       } else {
          boolean $$4 = false;
          if (this.a.y instanceof ezw $$5) {
-            $$4 = !$$5.E();
+            $$4 = !$$5.F();
          }
 
          if ($$0.a() == 0 && cfk.f($$3)) {
@@ -837,7 +827,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xr $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cbu $$1 = this.a.s;
       if ($$0.a() == 0) {
          $$1.bR.a($$0.f(), $$0.d(), $$0.e());
@@ -848,7 +838,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yt $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       gw $$1 = $$0.a();
       if (this.o.c_($$1) instanceof ded $$2) {
          this.a.s.a($$2, $$0.d());
@@ -862,23 +852,23 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xe $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       gw $$1 = $$0.a();
       this.a.r.a($$1, $$0.d()).ifPresent($$1x -> {
-         qx $$2 = $$0.e();
+         qy $$2 = $$0.e();
          if ($$2 != null) {
             $$1x.a($$2);
          }
 
          if ($$1x instanceof ddf && this.a.y instanceof ezs) {
-            ((ezs)this.a.y).E();
+            ((ezs)this.a.y).F();
          }
       });
    }
 
    @Override
    public void a(xs $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cbu $$1 = this.a.s;
       if ($$1.bS != null && $$1.bS.j == $$0.a()) {
          $$1.bS.a($$0.d(), $$0.e());
@@ -887,7 +877,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aab $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 != null) {
          $$0.d().forEach($$1x -> $$1.a((biv)$$1x.getFirst(), (cjf)$$1x.getSecond()));
@@ -896,31 +886,31 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xq $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.s.e();
    }
 
    @Override
    public void a(xf $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.r.a($$0.a(), $$0.f(), $$0.d(), $$0.e());
    }
 
    @Override
    public void a(xd $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.r.a($$0.a(), $$0.d(), $$0.e());
    }
 
    @Override
    public void a(yc $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cbu $$1 = this.a.s;
       yc.a $$2 = $$0.a();
       float $$3 = $$0.d();
       int $$4 = arx.d($$3 + 0.5F);
       if ($$2 == yc.a) {
-         $$1.a(tl.c("block.minecraft.spawn.not_valid"), false);
+         $$1.a(tm.c("block.minecraft.spawn.not_valid"), false);
       } else if ($$2 == yc.b) {
          this.o.k().b(true);
          this.o.e(0.0F);
@@ -944,13 +934,13 @@ public class fiy extends fiu implements ta, ww {
          if ($$3 == 0.0F) {
             this.a.a(new exk());
          } else if ($$3 == 101.0F) {
-            this.a.l.d().a(tl.a("demo.help.movement", $$5.x.k(), $$5.y.k(), $$5.z.k(), $$5.A.k()));
+            this.a.l.d().a(tm.a("demo.help.movement", $$5.x.k(), $$5.y.k(), $$5.z.k(), $$5.A.k()));
          } else if ($$3 == 102.0F) {
-            this.a.l.d().a(tl.a("demo.help.jump", $$5.B.k()));
+            this.a.l.d().a(tm.a("demo.help.jump", $$5.B.k()));
          } else if ($$3 == 103.0F) {
-            this.a.l.d().a(tl.a("demo.help.inventory", $$5.E.k()));
+            this.a.l.d().a(tm.a("demo.help.inventory", $$5.E.k()));
          } else if ($$3 == 104.0F) {
-            this.a.l.d().a(tl.a("demo.day.6", $$5.O.k()));
+            this.a.l.d().a(tm.a("demo.day.6", $$5.O.k()));
          }
       } else if ($$2 == yc.g) {
          this.o.a($$1, $$1.dq(), $$1.du(), $$1.dw(), ape.aq, apf.h, 0.18F, 0.45F);
@@ -974,7 +964,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yn $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       esh $$1 = this.a.j.j();
       int $$2 = $$0.a();
       String $$3 = cjm.a($$2);
@@ -990,7 +980,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yi $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       if ($$0.a()) {
          this.a.r.b($$0.d(), $$0.f(), $$0.e());
       } else {
@@ -1000,13 +990,13 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aaw $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.s.a($$0);
    }
 
    @Override
    public void a(zk $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       aex $$1 = $$0.a();
       if ($$1 == null) {
          this.s.a(null, false);
@@ -1018,33 +1008,34 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xp $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.y = new CommandDispatcher($$0.a(dn.a((hi.b)this.C, this.D)));
    }
 
    @Override
    public void a(aaq $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.ai().a($$0.a(), $$0.d());
    }
 
    @Override
    public void a(xo $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.t.a($$0.a(), $$0.d());
    }
 
    @Override
    public void a(aaz $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.z.a($$0.a());
       eqi $$1 = this.a.s.m();
       $$1.a(this.z.b(), this.a.r.G_());
+      this.a.a(gcy.c, $$1.b());
    }
 
    @Override
    public void a(zc $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       ehn $$1 = $$0.a(this.o);
       if ($$1 != null) {
          this.a.s.a($$0.a(), $$1);
@@ -1053,7 +1044,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aat $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       if (!this.u.a($$0.a(), $$0.d())) {
          g.debug("Got unhandled response to tag query {}", $$0.a());
       }
@@ -1061,7 +1052,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xb $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
 
       for (Entry<apl<?>, Integer> $$1 : $$0.a().entrySet()) {
          apl<?> $$2 = $$1.getKey();
@@ -1070,13 +1061,13 @@ public class fiy extends fiu implements ta, ww {
       }
 
       if (this.a.y instanceof eyt) {
-         ((eyt)this.a.y).D();
+         ((eyt)this.a.y).E();
       }
    }
 
    @Override
    public void a(ze $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       eqi $$1 = this.a.s.m();
       $$1.a($$0.e());
       ze.a $$2 = $$0.f();
@@ -1109,13 +1100,13 @@ public class fiy extends fiu implements ta, ww {
 
       $$1.b().forEach($$1x -> $$1x.a($$1));
       if (this.a.y instanceof fcc) {
-         ((fcc)this.a.y).E();
+         ((fcc)this.a.y).F();
       }
    }
 
    @Override
    public void a(aay $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 instanceof bjg) {
          bib $$2 = $$0.d();
@@ -1127,7 +1118,7 @@ public class fiy extends fiu implements ta, ww {
    }
 
    @Override
-   public void a(vm $$0) {
+   public void a(vn $$0) {
       super.a($$0);
       this.y();
    }
@@ -1150,7 +1141,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yz $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 == this.a.s) {
          if (this.a.s.o()) {
@@ -1163,14 +1154,14 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xj $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.p.a($$0.d());
       this.p.a($$0.a());
    }
 
    @Override
    public void a(zs $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = $$0.a(this.o);
       if ($$1 != null) {
          this.a.a($$1);
@@ -1179,7 +1170,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yf $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       dha $$1 = this.o.B_();
       $$1.c($$0.a(), $$0.d());
       long $$2 = $$0.g();
@@ -1196,37 +1187,37 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zn $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.o.B_().c($$0.d(), $$0.a());
    }
 
    @Override
    public void a(zo $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.o.B_().a($$0.a(), $$0.d(), $$0.e());
    }
 
    @Override
    public void a(zp $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.o.B_().a($$0.a());
    }
 
    @Override
    public void a(zr $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.o.B_().c($$0.a());
    }
 
    @Override
    public void a(zq $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.o.B_().b($$0.a());
    }
 
    @Override
    public void a(xn $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.l.c();
       if ($$0.a()) {
          this.a.l.a();
@@ -1235,7 +1226,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zl $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       if (this.c != null) {
          this.c.d = $$0.a();
          $$0.d().ifPresent(this.c::a);
@@ -1251,44 +1242,44 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xv $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.t.a($$0.a(), $$0.d());
    }
 
    @Override
    public void a(zm $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.l.a($$0.a(), false);
    }
 
    @Override
    public void a(aal $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.l.c($$0.a());
    }
 
    @Override
    public void a(aaj $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.l.b($$0.a());
    }
 
    @Override
    public void a(aam $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.l.a($$0.a(), $$0.d(), $$0.e());
    }
 
    @Override
    public void a(aas $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.l.h().b($$0.a().getString().isEmpty() ? null : $$0.a());
       this.a.l.h().a($$0.d().getString().isEmpty() ? null : $$0.d());
    }
 
    @Override
    public void a(zg $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = $$0.a(this.o);
       if ($$1 instanceof bjg) {
          ((bjg)$$1).c($$0.a());
@@ -1297,7 +1288,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(za $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
 
       for (UUID $$1 : $$0.a()) {
          this.a.aK().f($$1);
@@ -1310,7 +1301,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zb $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
 
       for (zb.b $$1 : $$0.e()) {
          fjf $$2 = new fjf(Objects.requireNonNull($$1.b()), this.z());
@@ -1337,7 +1328,7 @@ public class fiy extends fiu implements ta, ww {
             this.a($$1, $$2);
             break;
          case c:
-            if ($$2.e() != $$1.e() && this.a.s != null && this.a.s.cw().equals($$1.a())) {
+            if ($$2.e() != $$1.e() && this.a.s != null && this.a.s.cv().equals($$1.a())) {
                this.a.s.a($$1.e());
             }
 
@@ -1365,10 +1356,10 @@ public class fiy extends fiu implements ta, ww {
          g.warn("Ignoring chat session from {} due to missing Services public key", $$2.getName());
          $$1.a(this.z());
       } else {
-         ub.a $$4 = $$0.g();
+         uc.a $$4 = $$0.g();
          if ($$4 != null) {
             try {
-               ub $$5 = $$4.a($$2, $$3);
+               uc $$5 = $$4.a($$2, $$3);
                $$1.a($$5);
             } catch (cbx.b var7) {
                g.error("Failed to validate profile key for player: '{}'", $$2.getName(), var7);
@@ -1386,7 +1377,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yv $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cbu $$1 = this.a.s;
       $$1.fS().b = $$0.d();
       $$1.fS().d = $$0.f();
@@ -1398,13 +1389,13 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aao $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.r.a(this.a.s, $$0.e(), $$0.f(), $$0.g(), $$0.a(), $$0.d(), $$0.h(), $$0.i(), $$0.j());
    }
 
    @Override
    public void a(aan $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.e());
       if ($$1 != null) {
          this.a.r.a(this.a.s, $$1, $$0.a(), $$0.d(), $$0.f(), $$0.g(), $$0.h());
@@ -1413,13 +1404,13 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(xh $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.a.l.j().a($$0);
    }
 
    @Override
    public void a(xu $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       if ($$0.d() == 0) {
          this.a.s.gm().b($$0.a());
       } else {
@@ -1429,9 +1420,9 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yq $$0) {
-      vf.a($$0, this, this.a);
-      biq $$1 = this.a.s.cW();
-      if ($$1 != this.a.s && $$1.cX()) {
+      vg.a($$0, this, this.a);
+      biq $$1 = this.a.s.cV();
+      if ($$1 != this.a.s && $$1.cW()) {
          $$1.a($$0.a(), $$0.d(), $$0.e(), $$0.f(), $$0.g());
          this.b.a(new aca($$1));
       }
@@ -1439,7 +1430,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yr $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cjf $$1 = this.a.s.b($$0.a());
       if ($$1.a(cji.th)) {
          this.a.a(new ezp(new ezp.c($$1)));
@@ -1447,56 +1438,56 @@ public class fiy extends fiu implements ta, ww {
    }
 
    @Override
-   public void a(vw $$0) {
-      if ($$0 instanceof wf $$1) {
+   public void a(vx $$0) {
+      if ($$0 instanceof wg $$1) {
          this.a.k.a.a($$1.b(), $$1.c(), $$1.d());
-      } else if ($$0 instanceof we $$2) {
+      } else if ($$0 instanceof wf $$2) {
          ((fru)this.a.k.g).a($$2.b(), $$2.c());
-      } else if ($$0 instanceof wk $$3) {
+      } else if ($$0 instanceof wl $$3) {
          this.a.k.h.a($$3.c(), $$3.d(), $$3.b());
-      } else if ($$0 instanceof wm $$4) {
+      } else if ($$0 instanceof wn $$4) {
          ((fsc)this.a.k.j).a($$4.b(), $$4.c(), $$4.d(), $$4.e(), $$4.f(), $$4.g());
-      } else if ($$0 instanceof wi $$5) {
+      } else if ($$0 instanceof wj $$5) {
          this.a.k.m.a($$5.b(), $$5.c());
-      } else if ($$0 instanceof wg $$6) {
+      } else if ($$0 instanceof wh $$6) {
          frj.a $$7 = new frj.a($$6.b(), $$6.c(), $$6.d());
          this.a.k.m.a($$7);
-      } else if ($$0 instanceof wh $$8) {
+      } else if ($$0 instanceof wi $$8) {
          this.a.k.m.a($$8.b());
-      } else if ($$0 instanceof wl $$9) {
+      } else if ($$0 instanceof wm $$9) {
          fsa $$10 = this.a.k.n;
          $$9.b().forEach($$10::a);
          $$9.c().forEach($$10::b);
-      } else if ($$0 instanceof wc $$11) {
+      } else if ($$0 instanceof wd $$11) {
          this.a.k.q.a($$11.b(), $$11.c(), $$11.d());
-      } else if ($$0 instanceof vu $$12) {
+      } else if ($$0 instanceof vv $$12) {
          this.a.k.m.a($$12.b());
-      } else if ($$0 instanceof vt $$13) {
+      } else if ($$0 instanceof vu $$13) {
          this.a.k.o.a($$13.b());
-      } else if ($$0 instanceof wd $$14) {
+      } else if ($$0 instanceof we $$14) {
          this.a.k.o.a($$14.b(), this.o.V());
-      } else if ($$0 instanceof wa $$15) {
+      } else if ($$0 instanceof wb $$15) {
          this.a.k.r.a($$15.b(), $$15.c(), $$15.d(), $$15.e());
-      } else if ($$0 instanceof wb) {
+      } else if ($$0 instanceof wc) {
          this.a.k.r.a();
-      } else if ($$0 instanceof wj $$16) {
+      } else if ($$0 instanceof wk $$16) {
          this.a.k.p.a($$16.b());
-      } else if ($$0 instanceof vy $$17) {
+      } else if ($$0 instanceof vz $$17) {
          this.a.k.s.a($$17.b(), $$17.c());
-      } else if ($$0 instanceof vz $$18) {
+      } else if ($$0 instanceof wa $$18) {
          this.a.k.s.a($$18.b(), $$18.c());
       } else {
          this.b($$0);
       }
    }
 
-   private void b(vw $$0) {
+   private void b(vx $$0) {
       g.warn("Unknown custom packet payload: {}", $$0.a());
    }
 
    @Override
    public void a(aae $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       eim $$1 = this.o.I();
       String $$2 = $$0.a();
       if ($$0.e() == 0) {
@@ -1516,7 +1507,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aah $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       eim $$1 = this.o.I();
       String $$2 = $$0.d();
       switch ($$0.f()) {
@@ -1536,7 +1527,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zx $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       eim $$1 = this.o.I();
       String $$2 = $$0.d();
       eij $$3 = $$2 == null ? null : $$1.b($$2);
@@ -1545,7 +1536,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aag $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       eim $$1 = this.o.I();
       aag.a $$2 = $$0.d();
       eik $$3;
@@ -1595,7 +1586,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yj $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       if ($$0.k() == 0) {
          double $$1 = (double)($$0.j() * $$0.g());
          double $$2 = (double)($$0.j() * $$0.h());
@@ -1627,7 +1618,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aax $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       biq $$1 = this.o.a($$0.a());
       if ($$1 != null) {
          if (!($$1 instanceof bjg)) {
@@ -1654,12 +1645,12 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yu $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cel $$1 = this.a.s.bS;
       if ($$1.j == $$0.d()) {
          this.z.a($$0.a()).ifPresent($$1x -> {
             if (this.a.y instanceof fcc) {
-               fbw $$2 = ((fcc)this.a.y).F();
+               fbw $$2 = ((fcc)this.a.y).G();
                $$2.a($$1x, $$1.i);
             }
          });
@@ -1668,7 +1659,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yk $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       int $$1 = $$0.a();
       int $$2 = $$0.d();
       yl $$3 = $$0.e();
@@ -1690,7 +1681,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(yo $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       cel $$1 = this.a.s.bS;
       if ($$0.a() == $$1.j && $$1 instanceof cfs $$2) {
          $$2.a(new cou($$0.d().a()));
@@ -1703,7 +1694,7 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(zv $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.v = $$0.a();
       this.a.m.b(this.v);
       this.o.i().a($$0.a());
@@ -1711,28 +1702,28 @@ public class fiy extends fiu implements ta, ww {
 
    @Override
    public void a(aai $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.w = $$0.a();
       this.o.h(this.w);
    }
 
    @Override
    public void a(zu $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.o.i().d($$0.a(), $$0.d());
    }
 
    @Override
    public void a(xc $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.o.b($$0.a());
    }
 
    @Override
    public void a(xi $$0) {
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
 
-      for (vd<ww> $$1 : $$0.a()) {
+      for (ve<wx> $$1 : $$0.a()) {
          $$1.a(this);
       }
    }
@@ -1765,7 +1756,7 @@ public class fiy extends fiu implements ta, ww {
       }
    }
 
-   public sm l() {
+   public sn l() {
       return this.b;
    }
 
@@ -1835,8 +1826,8 @@ public class fiy extends fiu implements ta, ww {
       return this.C;
    }
 
-   public void a(ua $$0, boolean $$1) {
-      tw $$2 = $$0.k();
+   public void a(ub $$0, boolean $$1) {
+      tx $$2 = $$0.k();
       if ($$2 != null && this.G.a($$2, $$1) && this.G.c() > 64) {
          this.A();
       }
@@ -1852,25 +1843,25 @@ public class fiy extends fiu implements ta, ww {
    public void b(String $$0) {
       Instant $$1 = Instant.now();
       long $$2 = aqx.c.a();
-      ts.a $$3 = this.G.b();
-      tw $$4 = this.F.pack(new ud($$0, $$1, $$2, $$3.a()));
+      tt.a $$3 = this.G.b();
+      tx $$4 = this.F.pack(new ue($$0, $$1, $$2, $$3.a()));
       this.b(new abl($$0, $$1, $$2, $$4, $$3.b()));
    }
 
    public void c(String $$0) {
       Instant $$1 = Instant.now();
       long $$2 = aqx.c.a();
-      ts.a $$3 = this.G.b();
-      dy $$4 = dy.a(uc.a(this.e($$0)), $$3x -> {
-         ud $$4x = new ud($$3x, $$1, $$2, $$3.a());
+      tt.a $$3 = this.G.b();
+      dy $$4 = dy.a(ud.a(this.e($$0)), $$3x -> {
+         ue $$4x = new ue($$3x, $$1, $$2, $$3.a());
          return this.F.pack($$4x);
       });
       this.b(new abk($$0, $$1, $$2, $$4, $$3.b()));
    }
 
    public boolean d(String $$0) {
-      if (uc.a(this.e($$0)).a().isEmpty()) {
-         ts.a $$1 = this.G.b();
+      if (ud.a(this.e($$0)).a().isEmpty()) {
+         tt.a $$1 = this.G.b();
          this.b(new abk($$0, Instant.now(), 0L, dy.a, $$1.b()));
          return true;
       } else {
@@ -1902,7 +1893,7 @@ public class fiy extends fiu implements ta, ww {
    public void a(cbw $$0) {
       if (this.a.b(this.n.getId())) {
          if (this.E == null || !this.E.c().equals($$0)) {
-            this.E = tv.a($$0);
+            this.E = tw.a($$0);
             this.F = this.E.a(this.n.getId());
             this.b(new abm(this.E.a().a()));
          }

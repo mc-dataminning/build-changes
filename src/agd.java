@@ -9,8 +9,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public class agd {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.banip.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.banip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.banip.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -23,7 +23,7 @@ public class agd {
       );
    }
 
-   private static int a(dt $$0, String $$1, @Nullable tl $$2) throws CommandSyntaxException {
+   private static int a(dt $$0, String $$1, @Nullable tm $$2) throws CommandSyntaxException {
       if (InetAddresses.isInetAddress($$1)) {
          return b($$0, $$1, $$2);
       } else {
@@ -36,7 +36,7 @@ public class agd {
       }
    }
 
-   private static int b(dt $$0, String $$1, @Nullable tl $$2) throws CommandSyntaxException {
+   private static int b(dt $$0, String $$1, @Nullable tm $$2) throws CommandSyntaxException {
       aoe $$3 = $$0.l().ac().g();
       if ($$3.a($$1)) {
          throw b.create();
@@ -44,13 +44,13 @@ public class agd {
          List<aks> $$4 = $$0.l().ac().b($$1);
          aof $$5 = new aof($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
          $$3.a($$5);
-         $$0.a(() -> tl.a("commands.banip.success", $$1, $$5.d()), true);
+         $$0.a(() -> tm.a("commands.banip.success", $$1, $$5.d()), true);
          if (!$$4.isEmpty()) {
-            $$0.a(() -> tl.a("commands.banip.info", $$4.size(), gc.a($$4)), true);
+            $$0.a(() -> tm.a("commands.banip.info", $$4.size(), gc.a($$4)), true);
          }
 
          for (aks $$6 : $$4) {
-            $$6.c.b(tl.c("multiplayer.disconnect.ip_banned"));
+            $$6.c.b(tm.c("multiplayer.disconnect.ip_banned"));
          }
 
          return $$4.size();

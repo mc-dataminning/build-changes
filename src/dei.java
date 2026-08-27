@@ -30,7 +30,7 @@ public class dei extends dcv {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("name", this.d());
       $$0.a("author", this.f);
@@ -53,7 +53,7 @@ public class dei extends dcv {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a($$0.l("name"));
       this.f = $$0.l("author");
@@ -114,7 +114,7 @@ public class dei extends dcv {
    }
 
    @Override
-   public qx as_() {
+   public qy as_() {
       return this.o();
    }
 
@@ -122,7 +122,7 @@ public class dei extends dcv {
       if (!$$0.go()) {
          return false;
       } else {
-         if ($$0.cK().B) {
+         if ($$0.cJ().B) {
             $$0.a(this);
          }
 
@@ -152,7 +152,7 @@ public class dei extends dcv {
    }
 
    public void a(bjg $$0) {
-      this.f = $$0.ac().getString();
+      this.f = $$0.ab().getString();
    }
 
    public gw i() {

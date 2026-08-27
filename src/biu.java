@@ -154,7 +154,7 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
    @Nullable
    private String bJ;
    @Nullable
-   private tl bK;
+   private tm bK;
    @Nullable
    private aex bL;
    private final bir bM;
@@ -189,7 +189,7 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
    @Nullable
    public T a(akr $$0, @Nullable cjf $$1, @Nullable cbu $$2, gw $$3, bjk $$4, boolean $$5, boolean $$6) {
       Consumer<T> $$8;
-      qx $$7;
+      qy $$7;
       if ($$1 != null) {
          $$7 = $$1.v();
          $$8 = a($$0, $$1, $$2);
@@ -216,17 +216,17 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
    }
 
    public static <T extends biq> Consumer<T> b(Consumer<T> $$0, akr $$1, cjf $$2, @Nullable cbu $$3) {
-      qx $$4 = $$2.v();
+      qy $$4 = $$2.v();
       return $$4 != null ? $$0.andThen($$3x -> a($$1, $$3, $$3x, $$4)) : $$0;
    }
 
    @Nullable
    public T a(akr $$0, gw $$1, bjk $$2) {
-      return this.a($$0, (qx)null, null, $$1, $$2, false, false);
+      return this.a($$0, (qy)null, null, $$1, $$2, false, false);
    }
 
    @Nullable
-   public T a(akr $$0, @Nullable qx $$1, @Nullable Consumer<T> $$2, gw $$3, bjk $$4, boolean $$5, boolean $$6) {
+   public T a(akr $$0, @Nullable qy $$1, @Nullable Consumer<T> $$2, gw $$3, bjk $$4, boolean $$5, boolean $$6) {
       T $$7 = this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       if ($$7 != null) {
          $$0.a_($$7);
@@ -236,7 +236,7 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
    }
 
    @Nullable
-   public T b(akr $$0, @Nullable qx $$1, @Nullable Consumer<T> $$2, gw $$3, bjk $$4, boolean $$5, boolean $$6) {
+   public T b(akr $$0, @Nullable qy $$1, @Nullable Consumer<T> $$2, gw $$3, bjk $$4, boolean $$5, boolean $$6) {
       T $$7 = this.a((cpv)$$0);
       if ($$7 == null) {
          return null;
@@ -244,7 +244,7 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
          double $$8;
          if ($$5) {
             $$7.e((double)$$3.u() + 0.5, (double)($$3.v() + 1), (double)$$3.w() + 0.5);
-            $$8 = a($$0, $$3, $$6, $$7.cH());
+            $$8 = a($$0, $$3, $$6, $$7.cG());
          } else {
             $$8 = 0.0;
          }
@@ -275,13 +275,13 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
       return 1.0 + eid.a(hc.a.b, $$3, $$5, $$2 ? -2.0 : -1.0);
    }
 
-   public static void a(cpv $$0, @Nullable cbu $$1, @Nullable biq $$2, @Nullable qx $$3) {
+   public static void a(cpv $$0, @Nullable cbu $$1, @Nullable biq $$2, @Nullable qy $$3) {
       if ($$3 != null && $$3.b("EntityTag", 10)) {
          MinecraftServer $$4 = $$0.n();
          if ($$4 != null && $$2 != null) {
-            if ($$0.B || !$$2.cN() || $$1 != null && $$4.ac().f($$1.fQ())) {
-               qx $$5 = $$2.f(new qx());
-               UUID $$6 = $$2.cw();
+            if ($$0.B || !$$2.cM() || $$1 != null && $$4.ac().f($$1.fQ())) {
+               qy $$5 = $$2.f(new qy());
+               UUID $$6 = $$2.cv();
                $$5.a($$3.p("EntityTag"));
                $$2.a_($$6);
                $$2.g($$5);
@@ -318,9 +318,9 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
       return this.bJ;
    }
 
-   public tl h() {
+   public tm h() {
       if (this.bK == null) {
-         this.bK = tl.c(this.g());
+         this.bK = tm.c(this.g());
       }
 
       return this.bK;
@@ -363,7 +363,7 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
       return !this.a($$0.G()) ? null : this.bA.create(this, $$0);
    }
 
-   public static Optional<biq> a(qx $$0, cpv $$1) {
+   public static Optional<biq> a(qy $$0, cpv $$1) {
       return ac.a(a($$0).map($$1x -> $$1x.a($$1)), $$1x -> $$1x.g($$0), () -> bw.warn("Skipping Entity with id {}", $$0.l("id")));
    }
 
@@ -384,15 +384,15 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
       return this.bM;
    }
 
-   public static Optional<biu<?>> a(qx $$0) {
+   public static Optional<biu<?>> a(qy $$0) {
       return jd.h.b(new aex($$0.l("id")));
    }
 
    @Nullable
-   public static biq a(qx $$0, cpv $$1, Function<biq, biq> $$2) {
+   public static biq a(qy $$0, cpv $$1, Function<biq, biq> $$2) {
       return b($$0, $$1).map($$2).map($$3 -> {
          if ($$0.b("Passengers", 9)) {
-            rd $$4 = $$0.c("Passengers", 10);
+            re $$4 = $$0.c("Passengers", 10);
 
             for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
                biq $$6 = a($$4.a($$5), $$1, $$2);
@@ -406,12 +406,12 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
       }).orElse(null);
    }
 
-   public static Stream<biq> a(final List<? extends rq> $$0, final cpv $$1) {
-      final Spliterator<? extends rq> $$2 = $$0.spliterator();
+   public static Stream<biq> a(final List<? extends rr> $$0, final cpv $$1) {
+      final Spliterator<? extends rr> $$2 = $$0.spliterator();
       return StreamSupport.stream(new Spliterator<biq>() {
          @Override
          public boolean tryAdvance(Consumer<? super biq> $$0x) {
-            return $$2.tryAdvance($$2xx -> biu.a((qx)$$2xx, $$1, $$1xxxx -> {
+            return $$2.tryAdvance($$2xx -> biu.a((qy)$$2xx, $$1, $$1xxxx -> {
                   $$0.accept($$1xxxx);
                   return $$1xxxx;
                }));
@@ -434,7 +434,7 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
       }, false);
    }
 
-   private static Optional<biq> b(qx $$0, cpv $$1) {
+   private static Optional<biq> b(qy $$0, cpv $$1) {
       try {
          return a($$0, $$1);
       } catch (RuntimeException var3) {
@@ -465,7 +465,7 @@ public class biu<T extends biq> implements cdz, djh<biq, T> {
 
    @Nullable
    public T a(biq $$0) {
-      return (T)($$0.ah() == this ? $$0 : null);
+      return (T)($$0.ag() == this ? $$0 : null);
    }
 
    @Override

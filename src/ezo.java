@@ -15,10 +15,10 @@ public class ezo extends eyk {
    private static final int b = 128;
    private static final int c = 192;
    private static final int k = 192;
-   private static final tl l = tl.c("book.editTitle");
-   private static final tl m = tl.c("book.finalizeWarning");
-   private static final ark n = ark.forward("_", uh.a.a(n.a));
-   private static final ark o = ark.forward("_", uh.a.a(n.h));
+   private static final tm l = tm.c("book.editTitle");
+   private static final tm m = tm.c("book.finalizeWarning");
+   private static final ark n = ark.forward("_", ui.a.a(n.a));
+   private static final ark o = ark.forward("_", ui.a.a(n.h));
    private final cbu p;
    private final cjf q;
    private boolean s;
@@ -27,7 +27,7 @@ public class ezo extends eyk {
    private int v;
    private final List<String> w = Lists.newArrayList();
    private String x = "";
-   private final evh y = new evh(this::M, this::b, this::l, this::a, $$0x -> $$0x.length() < 1024 && this.i.b($$0x, 114) <= 128);
+   private final evh y = new evh(this::N, this::b, this::l, this::a, $$0x -> $$0x.length() < 1024 && this.i.b($$0x, 114) <= 128);
    private final evh z = new evh(() -> this.x, $$0x -> this.x = $$0x, this::l, this::a, $$0x -> $$0x.length() < 16);
    private long A;
    private int B = -1;
@@ -40,15 +40,15 @@ public class ezo extends eyk {
    private final bgx I;
    @Nullable
    private ezo.a J = ezo.a.a;
-   private tl K = tk.a;
-   private final tl L;
+   private tm K = tl.a;
+   private final tm L;
 
    public ezo(cbu $$0, cjf $$1, bgx $$2) {
       super(eqn.a);
       this.p = $$0;
       this.q = $$1;
       this.I = $$2;
-      qx $$3 = $$1.v();
+      qy $$3 = $$1.v();
       if ($$3 != null) {
          ezp.a($$3, this.w::add);
       }
@@ -57,7 +57,7 @@ public class ezo extends eyk {
          this.w.add("");
       }
 
-      this.L = tl.a("book.byAuthor", $$0.ac()).a(n.i);
+      this.L = tm.a("book.byAuthor", $$0.ab()).a(n.i);
    }
 
    private void a(String $$0) {
@@ -70,7 +70,7 @@ public class ezo extends eyk {
       return this.f != null ? evh.b(this.f) : "";
    }
 
-   private int C() {
+   private int D() {
       return this.w.size();
    }
 
@@ -82,59 +82,59 @@ public class ezo extends eyk {
 
    @Override
    protected void aI_() {
-      this.O();
-      this.F = this.d((esq)esq.a(tl.c("book.signButton"), $$0x -> {
+      this.P();
+      this.F = this.d((esq)esq.a(tm.c("book.signButton"), $$0x -> {
          this.t = true;
-         this.F();
+         this.G();
       }).a(this.g / 2 - 100, 196, 98, 20).a());
-      this.E = this.d((esq)esq.a(tk.d, $$0x -> {
+      this.E = this.d((esq)esq.a(tl.d, $$0x -> {
          this.f.a(null);
          this.c(false);
       }).a(this.g / 2 + 2, 196, 98, 20).a());
-      this.G = this.d((esq)esq.a(tl.c("book.finalizeButton"), $$0x -> {
+      this.G = this.d((esq)esq.a(tm.c("book.finalizeButton"), $$0x -> {
          if (this.t) {
             this.c(true);
             this.f.a(null);
          }
       }).a(this.g / 2 - 100, 196, 98, 20).a());
-      this.H = this.d((esq)esq.a(tk.e, $$0x -> {
+      this.H = this.d((esq)esq.a(tl.e, $$0x -> {
          if (this.t) {
             this.t = false;
          }
 
-         this.F();
+         this.G();
       }).a(this.g / 2 + 2, 196, 98, 20).a());
       int $$0 = (this.g - 192) / 2;
       int $$1 = 2;
-      this.C = this.d(new fap($$0 + 116, 159, true, $$0x -> this.E(), true));
-      this.D = this.d(new fap($$0 + 43, 159, false, $$0x -> this.D(), true));
-      this.F();
+      this.C = this.d(new fap($$0 + 116, 159, true, $$0x -> this.F(), true));
+      this.D = this.d(new fap($$0 + 43, 159, false, $$0x -> this.E(), true));
+      this.G();
    }
 
-   private void D() {
+   private void E() {
       if (this.v > 0) {
          this.v--;
       }
 
-      this.F();
-      this.P();
+      this.G();
+      this.Q();
    }
 
-   private void E() {
-      if (this.v < this.C() - 1) {
+   private void F() {
+      if (this.v < this.D() - 1) {
          this.v++;
       } else {
-         this.H();
-         if (this.v < this.C() - 1) {
+         this.I();
+         if (this.v < this.D() - 1) {
             this.v++;
          }
       }
 
-      this.F();
-      this.P();
+      this.G();
+      this.Q();
    }
 
-   private void F() {
+   private void G() {
       this.D.j = !this.t && this.v > 0;
       this.C.j = !this.t;
       this.E.j = !this.t;
@@ -144,7 +144,7 @@ public class ezo extends eyk {
       this.G.i = !ac.b(this.x);
    }
 
-   private void G() {
+   private void H() {
       ListIterator<String> $$0 = this.w.listIterator(this.w.size());
 
       while ($$0.hasPrevious() && $$0.previous().isEmpty()) {
@@ -154,7 +154,7 @@ public class ezo extends eyk {
 
    private void c(boolean $$0) {
       if (this.s) {
-         this.G();
+         this.H();
          this.e($$0);
          int $$1 = this.I == bgx.a ? this.p.fR().l : 40;
          this.f.J().b(new abu($$1, this.w, $$0 ? Optional.of(this.x.trim()) : Optional.empty()));
@@ -162,20 +162,20 @@ public class ezo extends eyk {
    }
 
    private void e(boolean $$0) {
-      rd $$1 = new rd();
-      this.w.stream().map(ro::a).forEach($$1::add);
+      re $$1 = new re();
+      this.w.stream().map(rp::a).forEach($$1::add);
       if (!this.w.isEmpty()) {
          this.q.a("pages", $$1);
       }
 
       if ($$0) {
-         this.q.a("author", ro.a(this.p.fQ().getName()));
-         this.q.a("title", ro.a(this.x.trim()));
+         this.q.a("author", rp.a(this.p.fQ().getName()));
+         this.q.a("title", rp.a(this.x.trim()));
       }
    }
 
-   private void H() {
-      if (this.C() < 100) {
+   private void I() {
+      if (this.D() < 100) {
          this.w.add("");
          this.s = true;
       }
@@ -190,7 +190,7 @@ public class ezo extends eyk {
       } else {
          boolean $$3 = this.c($$0, $$1, $$2);
          if ($$3) {
-            this.O();
+            this.P();
             return true;
          } else {
             return false;
@@ -205,7 +205,7 @@ public class ezo extends eyk {
       } else if (this.t) {
          boolean $$2 = this.z.a($$0);
          if ($$2) {
-            this.F();
+            this.G();
             this.s = true;
             return true;
          } else {
@@ -213,7 +213,7 @@ public class ezo extends eyk {
          }
       } else if (aa.a($$0)) {
          this.y.a(Character.toString($$0));
-         this.O();
+         this.P();
          return true;
       } else {
          return false;
@@ -253,10 +253,10 @@ public class ezo extends eyk {
                this.y.a(-1, eyk.q(), $$3);
                return true;
             case 264:
-               this.J();
+               this.K();
                return true;
             case 265:
-               this.I();
+               this.J();
                return true;
             case 266:
                this.D.c();
@@ -265,10 +265,10 @@ public class ezo extends eyk {
                this.C.c();
                return true;
             case 268:
-               this.K();
+               this.L();
                return true;
             case 269:
-               this.L();
+               this.M();
                return true;
             default:
                return false;
@@ -276,35 +276,35 @@ public class ezo extends eyk {
       }
    }
 
-   private void I() {
+   private void J() {
       this.a(-1);
    }
 
-   private void J() {
+   private void K() {
       this.a(1);
    }
 
    private void a(int $$0) {
       int $$1 = this.y.g();
-      int $$2 = this.N().a($$1, $$0);
+      int $$2 = this.O().a($$1, $$0);
       this.y.c($$2, eyk.q());
-   }
-
-   private void K() {
-      if (eyk.p()) {
-         this.y.a(eyk.q());
-      } else {
-         int $$0 = this.y.g();
-         int $$1 = this.N().a($$0);
-         this.y.c($$1, eyk.q());
-      }
    }
 
    private void L() {
       if (eyk.p()) {
+         this.y.a(eyk.q());
+      } else {
+         int $$0 = this.y.g();
+         int $$1 = this.O().a($$0);
+         this.y.c($$1, eyk.q());
+      }
+   }
+
+   private void M() {
+      if (eyk.p()) {
          this.y.b(eyk.q());
       } else {
-         ezo.a $$0 = this.N();
+         ezo.a $$0 = this.O();
          int $$1 = this.y.g();
          int $$2 = $$0.b($$1);
          this.y.c($$2, eyk.q());
@@ -323,7 +323,7 @@ public class ezo extends eyk {
             return true;
          case 259:
             this.z.e(-1);
-            this.F();
+            this.G();
             this.s = true;
             return true;
          default:
@@ -331,7 +331,7 @@ public class ezo extends eyk {
       }
    }
 
-   private String M() {
+   private String N() {
       return this.v >= 0 && this.v < this.w.size() ? this.w.get(this.v) : "";
    }
 
@@ -339,7 +339,7 @@ public class ezo extends eyk {
       if (this.v >= 0 && this.v < this.w.size()) {
          this.w.set(this.v, $$0);
          this.s = true;
-         this.O();
+         this.P();
       }
    }
 
@@ -351,7 +351,7 @@ public class ezo extends eyk {
       int $$5 = 2;
       if (this.t) {
          boolean $$6 = this.u / 6 % 2 == 0;
-         ark $$7 = ark.composite(ark.forward(this.x, uh.a), $$6 ? n : o);
+         ark $$7 = ark.composite(ark.forward(this.x, ui.a), $$6 ? n : o);
          int $$8 = this.i.a(l);
          $$0.a(this.i, l, $$4 + 36 + (114 - $$8) / 2, 34, 0, false);
          int $$9 = this.i.a($$7);
@@ -362,7 +362,7 @@ public class ezo extends eyk {
       } else {
          int $$11 = this.i.a(this.K);
          $$0.a(this.i, this.K, $$4 - $$11 + 192 - 44, 18, 0, false);
-         ezo.a $$12 = this.N();
+         ezo.a $$12 = this.O();
 
          for (ezo.b $$13 : $$12.f) {
             $$0.a(this.i, $$13.c, $$13.d, $$13.e, -16777216, false);
@@ -415,7 +415,7 @@ public class ezo extends eyk {
       } else {
          if ($$2 == 0) {
             long $$3 = ac.b();
-            ezo.a $$4 = this.N();
+            ezo.a $$4 = this.O();
             int $$5 = $$4.a(this.i, this.a(new ezo.c((int)$$0, (int)$$1)));
             if ($$5 >= 0) {
                if ($$5 != this.B || $$3 - this.A >= 250L) {
@@ -426,7 +426,7 @@ public class ezo extends eyk {
                   this.y.d();
                }
 
-               this.O();
+               this.P();
             }
 
             this.B = $$5;
@@ -438,7 +438,7 @@ public class ezo extends eyk {
    }
 
    private void b(int $$0) {
-      String $$1 = this.M();
+      String $$1 = this.N();
       this.y.a(erh.a($$1, -1, $$0, false), erh.a($$1, 1, $$0, false));
    }
 
@@ -448,36 +448,36 @@ public class ezo extends eyk {
          return true;
       } else {
          if ($$2 == 0) {
-            ezo.a $$5 = this.N();
+            ezo.a $$5 = this.O();
             int $$6 = $$5.a(this.i, this.a(new ezo.c((int)$$0, (int)$$1)));
             this.y.c($$6, true);
-            this.O();
+            this.P();
          }
 
          return true;
       }
    }
 
-   private ezo.a N() {
+   private ezo.a O() {
       if (this.J == null) {
-         this.J = this.Q();
-         this.K = tl.a("book.pageIndicator", this.v + 1, this.C());
+         this.J = this.R();
+         this.K = tm.a("book.pageIndicator", this.v + 1, this.D());
       }
 
       return this.J;
    }
 
-   private void O() {
+   private void P() {
       this.J = null;
    }
 
-   private void P() {
+   private void Q() {
       this.y.f();
-      this.O();
+      this.P();
    }
 
-   private ezo.a Q() {
-      String $$0 = this.M();
+   private ezo.a R() {
+      String $$0 = this.N();
       if ($$0.isEmpty()) {
          return ezo.a.a;
       } else {
@@ -488,7 +488,7 @@ public class ezo extends eyk {
          MutableInt $$5 = new MutableInt();
          MutableBoolean $$6 = new MutableBoolean();
          erh $$7 = this.i.b();
-         $$7.a($$0, 114, uh.a, true, ($$5x, $$6x, $$7x) -> {
+         $$7.a($$0, 114, ui.a, true, ($$5x, $$6x, $$7x) -> {
             int $$8x = $$5.getAndIncrement();
             String $$9x = $$0.substring($$6x, $$7x);
             $$6.setValue($$9x.endsWith("\n"));
@@ -562,7 +562,7 @@ public class ezo extends eyk {
    }
 
    static class a {
-      static final ezo.a a = new ezo.a("", new ezo.c(0, 0), true, new int[]{0}, new ezo.b[]{new ezo.b(uh.a, "", 0, 0)}, new foj[0]);
+      static final ezo.a a = new ezo.a("", new ezo.c(0, 0), true, new int[]{0}, new ezo.b[]{new ezo.b(ui.a, "", 0, 0)}, new foj[0]);
       private final String b;
       final ezo.c c;
       final boolean d;
@@ -618,18 +618,18 @@ public class ezo extends eyk {
    }
 
    static class b {
-      final uh a;
+      final ui a;
       final String b;
-      final tl c;
+      final tm c;
       final int d;
       final int e;
 
-      public b(uh $$0, String $$1, int $$2, int $$3) {
+      public b(ui $$0, String $$1, int $$2, int $$3) {
          this.a = $$0;
          this.b = $$1;
          this.d = $$2;
          this.e = $$3;
-         this.c = tl.b($$1).b($$0);
+         this.c = tm.b($$1).b($$0);
       }
    }
 

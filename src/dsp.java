@@ -37,7 +37,7 @@ public class dsp extends dss {
                   int $$2x = 2 + $$1.a(2);
 
                   for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     qx $$4x = new qx();
+                     qy $$4x = new qy();
                      $$4x.a("id", jd.h.b(biu.h).toString());
                      $$1x.a($$4x, $$1.a(599), false);
                   }

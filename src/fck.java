@@ -2,7 +2,7 @@ import java.util.UUID;
 
 public class fck extends fcg<fju.a> {
    private static final int s = 120;
-   private static final tl t = tl.c("gui.abuseReport.name.title");
+   private static final tm t = tm.c("gui.abuseReport.name.title");
    private final ewd u = ewd.d().a(8);
    private eti v;
    private esq w;
@@ -23,17 +23,17 @@ public class fck extends fcg<fju.a> {
    protected void aI_() {
       this.u.c().b();
       this.u.a(new etw(this.e, this.i));
-      tl $$0 = tl.b(this.q.e().a()).a(n.o);
-      this.u.a(new etw(tl.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
+      tm $$0 = tm.b(this.q.e().a()).a(n.o);
+      this.u.a(new etw(tm.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
       this.v = this.a(280, 9 * 8, $$0x -> {
          this.q.a($$0x);
-         this.C();
+         this.D();
       });
       this.u.a(evv.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
       ewd $$1 = this.u.a(ewd.e().a(8));
-      $$1.a(esq.a(tk.k, $$0x -> this.az_()).a(120).a());
+      $$1.a(esq.a(tl.k, $$0x -> this.az_()).a(120).a());
       this.w = $$1.a(esq.a(a, $$0x -> this.l()).a(120).a());
-      this.C();
+      this.D();
       this.u.a($$1x -> {
          eso var10000 = this.d($$1x);
       });
@@ -46,7 +46,7 @@ public class fck extends fcg<fju.a> {
       evx.a(this.u, this.s());
    }
 
-   private void C() {
+   private void D() {
       fjv.b $$0 = this.q.c();
       this.w.i = $$0 == null;
       this.w.a(x.a($$0, fjv.b::a));

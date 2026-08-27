@@ -60,8 +60,8 @@ public class ebw extends ebr {
       return new ebw(0, 0, $$0, false, false, $$1, $$2);
    }
 
-   public static ebw b(qx $$0) {
-      aew<cpv> $$1 = (aew<cpv>)dis.a(new Dynamic(ri.a, $$0.c("dimension")))
+   public static ebw b(qy $$0) {
+      aew<cpv> $$1 = (aew<cpv>)dis.a(new Dynamic(rj.a, $$0.c("dimension")))
          .resultOrPartial(i::error)
          .orElseThrow(() -> new IllegalArgumentException("Invalid map dimension: " + $$0.c("dimension")));
       int $$2 = $$0.h("xCenter");
@@ -76,7 +76,7 @@ public class ebw extends ebr {
          $$8.g = $$9;
       }
 
-      rd $$10 = $$0.c("banners", 10);
+      re $$10 = $$0.c("banners", 10);
 
       for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
          ebs $$12 = ebs.a($$10.a($$11));
@@ -84,7 +84,7 @@ public class ebw extends ebr {
          $$8.a($$12.c(), null, $$12.f(), (double)$$12.a().u(), (double)$$12.a().w(), 180.0, $$12.d());
       }
 
-      rd $$13 = $$0.c("frames", 10);
+      re $$13 = $$0.c("frames", 10);
 
       for (int $$14 = 0; $$14 < $$13.size(); $$14++) {
          ebu $$15 = ebu.a($$13.a($$14));
@@ -96,8 +96,8 @@ public class ebw extends ebr {
    }
 
    @Override
-   public qx a(qx $$0) {
-      aex.a.encodeStart(ri.a, this.e.a()).resultOrPartial(i::error).ifPresent($$1x -> $$0.a("dimension", $$1x));
+   public qy a(qy $$0) {
+      aex.a.encodeStart(rj.a, this.e.a()).resultOrPartial(i::error).ifPresent($$1x -> $$0.a("dimension", $$1x));
       $$0.a("xCenter", this.c);
       $$0.a("zCenter", this.d);
       $$0.a("scale", this.f);
@@ -105,14 +105,14 @@ public class ebw extends ebr {
       $$0.a("trackingPosition", this.l);
       $$0.a("unlimitedTracking", this.m);
       $$0.a("locked", this.h);
-      rd $$1 = new rd();
+      re $$1 = new re();
 
       for (ebs $$2 : this.p.values()) {
          $$1.add($$2.e());
       }
 
       $$0.a("banners", $$1);
-      rd $$3 = new rd();
+      re $$3 = new re();
 
       for (ebu $$4 : this.r.values()) {
          $$3.add($$4.a());
@@ -144,12 +144,12 @@ public class ebw extends ebr {
       }
 
       if (!$$0.fR().h($$1)) {
-         this.a($$0.ac().getString());
+         this.a($$0.ab().getString());
       }
 
       for (int $$3 = 0; $$3 < this.n.size(); $$3++) {
          ebw.a $$4 = this.n.get($$3);
-         String $$5 = $$4.a.ac().getString();
+         String $$5 = $$4.a.ab().getString();
          if (!$$4.a.dG() && ($$4.a.fR().h($$1) || $$1.F())) {
             if (!$$1.F() && $$4.a.dL().ac() == this.e && this.l) {
                this.a(ebt.a.a, $$4.a.dL(), $$5, $$4.a.dq(), $$4.a.dw(), (double)$$4.a.dB(), null);
@@ -165,21 +165,21 @@ public class ebw extends ebr {
          byg $$6 = $$1.G();
          gw $$7 = $$6.E();
          ebu $$8 = this.r.get(ebu.a($$7));
-         if ($$8 != null && $$6.ai() != $$8.d() && this.r.containsKey($$8.e())) {
+         if ($$8 != null && $$6.ah() != $$8.d() && this.r.containsKey($$8.e())) {
             this.a("frame-" + $$8.d());
          }
 
-         ebu $$9 = new ebu($$7, $$6.cE().e() * 90, $$6.ai());
-         this.a(ebt.a.b, $$0.dL(), "frame-" + $$6.ai(), (double)$$7.u(), (double)$$7.w(), (double)($$6.cE().e() * 90), null);
+         ebu $$9 = new ebu($$7, $$6.cD().e() * 90, $$6.ah());
+         this.a(ebt.a.b, $$0.dL(), "frame-" + $$6.ah(), (double)$$7.u(), (double)$$7.w(), (double)($$6.cD().e() * 90), null);
          this.r.put($$9.e(), $$9);
       }
 
-      qx $$10 = $$1.v();
+      qy $$10 = $$1.v();
       if ($$10 != null && $$10.b("Decorations", 9)) {
-         rd $$11 = $$10.c("Decorations", 10);
+         re $$11 = $$10.c("Decorations", 10);
 
          for (int $$12 = 0; $$12 < $$11.size(); $$12++) {
-            qx $$13 = $$11.a($$12);
+            qy $$13 = $$11.a($$12);
             if (!this.q.containsKey($$13.l("id"))) {
                this.a(ebt.a.a($$13.f("type")), $$0.dL(), $$13.l("id"), $$13.k("x"), $$13.k("z"), $$13.k("rot"), null);
             }
@@ -197,15 +197,15 @@ public class ebw extends ebr {
    }
 
    public static void a(cjf $$0, gw $$1, String $$2, ebt.a $$3) {
-      rd $$4;
+      re $$4;
       if ($$0.u() && $$0.v().b("Decorations", 9)) {
          $$4 = $$0.v().c("Decorations", 10);
       } else {
-         $$4 = new rd();
+         $$4 = new re();
          $$0.a("Decorations", $$4);
       }
 
-      qx $$6 = new qx();
+      qy $$6 = new qy();
       $$6.a("type", $$3.a());
       $$6.a("id", $$2);
       $$6.a("x", (double)$$1.u());
@@ -213,12 +213,12 @@ public class ebw extends ebr {
       $$6.a("rot", 180.0);
       $$4.add($$6);
       if ($$3.e()) {
-         qx $$7 = $$0.a("display");
+         qy $$7 = $$0.a("display");
          $$7.a("MapColor", $$3.f());
       }
    }
 
-   private void a(ebt.a $$0, @Nullable cpw $$1, String $$2, double $$3, double $$4, double $$5, @Nullable tl $$6) {
+   private void a(ebt.a $$0, @Nullable cpw $$1, String $$2, double $$3, double $$4, double $$5, @Nullable tm $$6) {
       int $$7 = 1 << this.f;
       float $$8 = (float)($$3 - (double)this.c) / (float)$$7;
       float $$9 = (float)($$4 - (double)this.d) / (float)$$7;
@@ -285,7 +285,7 @@ public class ebw extends ebr {
    }
 
    @Nullable
-   public vd<?> a(int $$0, cbu $$1) {
+   public ve<?> a(int $$0, cbu $$1) {
       ebw.a $$2 = this.o.get($$1);
       return $$2 == null ? null : $$2.a($$0);
    }
@@ -444,7 +444,7 @@ public class ebw extends ebr {
       }
 
       @Nullable
-      vd<?> a(int $$0) {
+      ve<?> a(int $$0) {
          ebw.b $$1;
          if (this.d) {
             this.d = false;

@@ -10,9 +10,9 @@ import java.util.Collection;
 import javax.annotation.Nullable;
 
 public class agt {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.effect.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.effect.clear.everything.failed"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.effect.clear.specific.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.effect.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.effect.clear.everything.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.effect.clear.specific.failed"));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -137,9 +137,9 @@ public class agt {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.effect.give.success.single", $$6.e(), $$1.iterator().next().N_(), $$8 / 20), true);
+            $$0.a(() -> tm.a("commands.effect.give.success.single", $$6.e(), $$1.iterator().next().N_(), $$8 / 20), true);
          } else {
-            $$0.a(() -> tl.a("commands.effect.give.success.multiple", $$6.e(), $$1.size(), $$8 / 20), true);
+            $$0.a(() -> tm.a("commands.effect.give.success.multiple", $$6.e(), $$1.size(), $$8 / 20), true);
          }
 
          return $$7;
@@ -159,9 +159,9 @@ public class agt {
          throw b.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.effect.clear.everything.success.single", $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.effect.clear.everything.success.single", $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.effect.clear.everything.success.multiple", $$1.size()), true);
+            $$0.a(() -> tm.a("commands.effect.clear.everything.success.multiple", $$1.size()), true);
          }
 
          return $$2;
@@ -182,9 +182,9 @@ public class agt {
          throw c.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.effect.clear.specific.success.single", $$3.e(), $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.effect.clear.specific.success.single", $$3.e(), $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.effect.clear.specific.success.multiple", $$3.e(), $$1.size()), true);
+            $$0.a(() -> tm.a("commands.effect.clear.specific.success.multiple", $$3.e(), $$1.size()), true);
          }
 
          return $$4;

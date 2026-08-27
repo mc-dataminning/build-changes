@@ -26,7 +26,7 @@ public class biw extends biq {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.a;
    }
 
@@ -42,7 +42,7 @@ public class biw extends biq {
       this.M = this.dw();
       if (this.a(apy.a)) {
          this.v();
-      } else if (!this.aU()) {
+      } else if (!this.aT()) {
          this.f(this.do().b(0.0, -0.03, 0.0));
       }
 
@@ -50,8 +50,8 @@ public class biw extends biq {
          this.o((double)((this.ag.i() - this.ag.i()) * 0.2F), 0.2F, (double)((this.ag.i() - this.ag.i()) * 0.2F));
       }
 
-      if (!this.dL().b(this.cH())) {
-         this.m(this.dq(), (this.cH().b + this.cH().e) / 2.0, this.dw());
+      if (!this.dL().b(this.cG())) {
+         this.m(this.dq(), (this.cG().b + this.cG().e) / 2.0, this.dw());
       }
 
       if (this.ah % 20 == 1) {
@@ -63,7 +63,7 @@ public class biw extends biq {
       }
 
       if (this.k != null) {
-         ehn $$0 = new ehn(this.k.dq() - this.dq(), this.k.ds() + (double)this.k.cI() / 2.0 - this.ds(), this.k.dw() - this.dw());
+         ehn $$0 = new ehn(this.k.dq() - this.dq(), this.k.ds() + (double)this.k.cH() / 2.0 - this.ds(), this.k.dw() - this.dw());
          double $$1 = $$0.g();
          if ($$1 < 64.0) {
             double $$2 = 1.0 - Math.sqrt($$1) / 8.0;
@@ -73,23 +73,23 @@ public class biw extends biq {
 
       this.a(bjm.a, this.do());
       float $$3 = 0.98F;
-      if (this.aB()) {
-         $$3 = this.dL().a_(this.aH()).b().h() * 0.98F;
+      if (this.aA()) {
+         $$3 = this.dL().a_(this.aG()).b().h() * 0.98F;
       }
 
       this.f(this.do().d((double)$$3, 0.98, (double)$$3));
-      if (this.aB()) {
+      if (this.aA()) {
          this.f(this.do().d(1.0, -0.9, 1.0));
       }
 
       this.g++;
       if (this.g >= 6000) {
-         this.al();
+         this.ak();
       }
    }
 
    @Override
-   protected gw aH() {
+   protected gw aG() {
       return this.d(0.999999F);
    }
 
@@ -99,7 +99,7 @@ public class biw extends biq {
       }
 
       if (this.dL() instanceof akr) {
-         for (biw $$1 : this.dL().a(djh.a(biw.class), this.cH().g(0.5), this::a)) {
+         for (biw $$1 : this.dL().a(djh.a(biw.class), this.cG().g(0.5), this::a)) {
             this.b($$1);
          }
       }
@@ -130,17 +130,17 @@ public class biw extends biq {
    }
 
    private boolean a(biw $$0) {
-      return $$0 != this && a($$0, this.ai(), this.i);
+      return $$0 != this && a($$0, this.ah(), this.i);
    }
 
    private static boolean a(biw $$0, int $$1, int $$2) {
-      return !$$0.dG() && ($$0.ai() - $$1) % 40 == 0 && $$0.i == $$2;
+      return !$$0.dG() && ($$0.ah() - $$1) % 40 == 0 && $$0.i == $$2;
    }
 
    private void b(biw $$0) {
       this.j = this.j + $$0.j;
       this.g = Math.min(this.g, $$0.g);
-      $$0.al();
+      $$0.ak();
    }
 
    private void v() {
@@ -149,7 +149,7 @@ public class biw extends biq {
    }
 
    @Override
-   protected void bh() {
+   protected void bg() {
    }
 
    @Override
@@ -159,10 +159,10 @@ public class biw extends biq {
       } else if (this.dL().B) {
          return true;
       } else {
-         this.bp();
+         this.bo();
          this.h = (int)((float)this.h - $$1);
          if (this.h <= 0) {
-            this.al();
+            this.ak();
          }
 
          return true;
@@ -170,7 +170,7 @@ public class biw extends biq {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       $$0.a("Health", (short)this.h);
       $$0.a("Age", (short)this.g);
       $$0.a("Value", (short)this.i);
@@ -178,7 +178,7 @@ public class biw extends biq {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.h = $$0.g("Health");
       this.g = $$0.g("Age");
       this.i = $$0.g("Value");
@@ -198,7 +198,7 @@ public class biw extends biq {
 
             this.j--;
             if (this.j == 0) {
-               this.al();
+               this.ak();
             }
          }
       }
@@ -278,17 +278,17 @@ public class biw extends biq {
    }
 
    @Override
-   public boolean cq() {
+   public boolean cp() {
       return false;
    }
 
    @Override
-   public vd<ww> V() {
-      return new wy(this);
+   public ve<wx> di() {
+      return new wz(this);
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.i;
    }
 }

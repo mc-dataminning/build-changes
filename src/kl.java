@@ -210,7 +210,7 @@ public class kl implements kf {
                   .a(edg.a(cji.oL))
                   .a(edg.a(cji.pa))
                   .a(edg.a(cji.qh).a(5).a(edv.d()))
-                  .a(edg.a(cji.tp).a(10).a(edx.c().a(aqe.l).a(ebt.a.A).a((byte)1).a(false)).a(eer.a(tl.c("filled_map.buried_treasure"))))
+                  .a(edg.a(cji.tp).a(10).a(edx.c().a(aqe.l).a(ebt.a.A).a((byte)1).a(false)).a(eer.a(tm.c("filled_map.buried_treasure"))))
             )
       );
       $$0.accept(
@@ -231,7 +231,7 @@ public class kl implements kf {
                   .a(edg.a(cji.oL))
                   .a(edg.a(cji.pa))
                   .a(edg.a(cji.qh).a(5).a(edv.d()))
-                  .a(edg.a(cji.tp).a(5).a(edx.c().a(aqe.l).a(ebt.a.A).a((byte)1).a(false)).a(eer.a(tl.c("filled_map.buried_treasure"))))
+                  .a(edg.a(cji.tp).a(5).a(edx.c().a(aqe.l).a(ebt.a.A).a((byte)1).a(false)).a(eer.a(tm.c("filled_map.buried_treasure"))))
             )
       );
       $$0.accept(
@@ -571,7 +571,7 @@ public class kl implements kf {
 
    public static ecy.a b() {
       return ecy.b()
-         .a(ecx.a().a(egi.a(1.0F)).a(edg.a(cji.tp).a(edx.c().a(aqe.l).a(ebt.a.A).a((byte)1).a(false)).a(eer.a(tl.c("filled_map.buried_treasure")))))
+         .a(ecx.a().a(egi.a(1.0F)).a(edg.a(cji.tp).a(edx.c().a(aqe.l).a(ebt.a.A).a((byte)1).a(false)).a(eer.a(tm.c("filled_map.buried_treasure")))))
          .a(
             ecx.a()
                .a(egi.a(3.0F))

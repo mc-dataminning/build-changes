@@ -7,9 +7,9 @@ public class eoy extends gfb {
    public static final List<bgv> a = ImmutableList.of(bgv.a, bgv.b, bgv.c, bgv.d);
    private static final int z = 0;
    public static final List<cps> b = ImmutableList.of(cps.a, cps.b, cps.c);
-   private static final tl A = tl.c("mco.configure.world.edit.slot.name");
-   static final tl B = tl.c("mco.configure.world.spawnProtection");
-   private static final tl C = tl.c("mco.configure.world.spawn_toggle.title").a(n.m, n.r);
+   private static final tm A = tm.c("mco.configure.world.edit.slot.name");
+   static final tm B = tm.c("mco.configure.world.spawnProtection");
+   private static final tm C = tm.c("mco.configure.world.spawn_toggle.title").a(n.m, n.r);
    private esz D;
    protected final eof c;
    private int E;
@@ -30,7 +30,7 @@ public class eoy extends gfb {
    eoy.a T;
 
    public eoy(eof $$0, end $$1, emw.c $$2, int $$3) {
-      super(tl.c("mco.configure.world.buttons.options"));
+      super(tm.c("mco.configure.world.buttons.options"));
       this.c = $$0;
       this.G = $$1;
       this.H = $$2;
@@ -86,30 +86,30 @@ public class eoy extends gfb {
       this.E = this.g / 2 - this.F;
       int $$0 = this.g / 2 + 10;
       if (this.H != emw.c.a) {
-         tl $$1;
+         tm $$1;
          if (this.H == emw.c.c) {
-            $$1 = tl.c("mco.configure.world.edit.subscreen.adventuremap");
+            $$1 = tm.c("mco.configure.world.edit.subscreen.adventuremap");
          } else if (this.H == emw.c.e) {
-            $$1 = tl.c("mco.configure.world.edit.subscreen.inspiration");
+            $$1 = tm.c("mco.configure.world.edit.subscreen.inspiration");
          } else {
-            $$1 = tl.c("mco.configure.world.edit.subscreen.experience");
+            $$1 = tm.c("mco.configure.world.edit.subscreen.experience");
          }
 
          this.a(new gez($$1, this.g / 2, 26, 16711680));
       }
 
-      this.D = new esz(this.f.h, this.E, h(1), this.F, 20, null, tl.c("mco.configure.world.edit.slot.name"));
+      this.D = new esz(this.f.h, this.E, h(1), this.F, 20, null, tm.c("mco.configure.world.edit.slot.name"));
       this.D.l(10);
       this.D.a(this.L);
       this.D.b(this::a);
       this.b(this.D);
-      esx<Boolean> $$4 = this.d(esx.b(this.M).a($$0, h(1), this.F, 20, tl.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.M = $$1));
-      this.d(esx.a(cps::e).a(b).a(this.J).a(this.E, h(3), this.F, 20, tl.c("selectWorld.gameMode"), ($$0x, $$1) -> this.J = $$1));
-      tl $$5 = tl.c("mco.configure.world.spawn_toggle.message");
-      esx<Boolean> $$6 = this.d(esx.b(this.O).a($$0, h(3), this.F, 20, tl.c("mco.configure.world.spawnAnimals"), this.a($$5, $$0x -> this.O = $$0x)));
+      esx<Boolean> $$4 = this.d(esx.b(this.M).a($$0, h(1), this.F, 20, tm.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.M = $$1));
+      this.d(esx.a(cps::e).a(b).a(this.J).a(this.E, h(3), this.F, 20, tm.c("selectWorld.gameMode"), ($$0x, $$1) -> this.J = $$1));
+      tm $$5 = tm.c("mco.configure.world.spawn_toggle.message");
+      esx<Boolean> $$6 = this.d(esx.b(this.O).a($$0, h(3), this.F, 20, tm.c("mco.configure.world.spawnAnimals"), this.a($$5, $$0x -> this.O = $$0x)));
       esx<Boolean> $$7 = esx.b(this.I != bgv.a && this.P)
-         .a($$0, h(5), this.F, 20, tl.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.P = $$0x));
-      this.d(esx.a(bgv::b).a(a).a(this.I).a(this.E, h(5), this.F, 20, tl.c("options.difficulty"), ($$1, $$2) -> {
+         .a($$0, h(5), this.F, 20, tm.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.P = $$0x));
+      this.d(esx.a(bgv::b).a(a).a(this.I).a(this.E, h(5), this.F, 20, tm.c("options.difficulty"), ($$1, $$2) -> {
          this.I = $$2;
          if (this.H == emw.c.a) {
             boolean $$3 = this.I != bgv.a;
@@ -126,12 +126,12 @@ public class eoy extends gfb {
                h(7),
                this.F,
                20,
-               tl.c("mco.configure.world.spawnNPCs"),
-               this.a(tl.c("mco.configure.world.spawn_toggle.message.npc"), $$0x -> this.N = $$0x)
+               tm.c("mco.configure.world.spawnNPCs"),
+               this.a(tm.c("mco.configure.world.spawn_toggle.message.npc"), $$0x -> this.N = $$0x)
             )
       );
-      esx<Boolean> $$9 = this.d(esx.b(this.S).a(this.E, h(9), this.F, 20, tl.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.S = $$1));
-      esx<Boolean> $$10 = this.d(esx.b(this.R).a($$0, h(9), this.F, 20, tl.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.R = $$1));
+      esx<Boolean> $$9 = this.d(esx.b(this.S).a(this.E, h(9), this.F, 20, tm.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.S = $$1));
+      esx<Boolean> $$10 = this.d(esx.b(this.R).a($$0, h(9), this.F, 20, tm.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.R = $$1));
       if (this.H != emw.c.a) {
          $$4.i = false;
          $$6.i = false;
@@ -146,12 +146,12 @@ public class eoy extends gfb {
          $$7.i = false;
       }
 
-      this.d(esq.a(tl.c("mco.configure.world.buttons.done"), $$0x -> this.C()).a(this.E, h(13), this.F, 20).a());
-      this.d(esq.a(tk.e, $$0x -> this.f.a(this.c)).a($$0, h(13), this.F, 20).a());
+      this.d(esq.a(tm.c("mco.configure.world.buttons.done"), $$0x -> this.D()).a(this.E, h(13), this.F, 20).a());
+      this.d(esq.a(tl.e, $$0x -> this.f.a(this.c)).a($$0, h(13), this.F, 20).a());
       this.e(this.D);
    }
 
-   private esx.b<Boolean> a(tl $$0, Consumer<Boolean> $$1) {
+   private esx.b<Boolean> a(tm $$0, Consumer<Boolean> $$1) {
       return ($$2, $$3) -> {
          if ($$3) {
             $$1.accept(true);
@@ -162,14 +162,14 @@ public class eoy extends gfb {
                }
 
                this.f.a(this);
-            }, C, $$0, tk.i, tk.e));
+            }, C, $$0, tl.i, tl.e));
          }
       };
    }
 
    @Override
-   public tl g() {
-      return tk.a(this.m(), this.l());
+   public tm g() {
+      return tl.a(this.m(), this.l());
    }
 
    @Override
@@ -188,7 +188,7 @@ public class eoy extends gfb {
       }
    }
 
-   private void C() {
+   private void D() {
       int $$0 = a(a, this.I, 2);
       int $$1 = a(b, this.J, 0);
       if (this.H != emw.c.c && this.H != emw.c.d && this.H != emw.c.e) {
@@ -204,7 +204,7 @@ public class eoy extends gfb {
       private final double e;
 
       public a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5) {
-         super($$0, $$1, $$2, 20, tk.a, 0.0);
+         super($$0, $$1, $$2, 20, tl.a, 0.0);
          this.d = (double)$$4;
          this.e = (double)$$5;
          this.c = (double)((arx.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
@@ -220,7 +220,7 @@ public class eoy extends gfb {
 
       @Override
       protected void b() {
-         this.b(tk.a(eoy.B, (tl)(eoy.this.Q == 0 ? tk.c : tl.b(String.valueOf(eoy.this.Q)))));
+         this.b(tl.a(eoy.B, (tm)(eoy.this.Q == 0 ? tl.c : tm.b(String.valueOf(eoy.this.Q)))));
       }
 
       @Override

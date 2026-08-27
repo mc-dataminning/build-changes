@@ -63,9 +63,9 @@ public class bvn extends bur implements bjx {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.bY = this.bZ.h();
-      super.Y();
+      super.X();
    }
 
    @Override
@@ -90,7 +90,7 @@ public class bvn extends bur implements bjx {
    @Override
    public aex S() {
       if (this.y()) {
-         return this.ah().j();
+         return this.ag().j();
       } else {
          return switch (this.t()) {
             case a -> eco.S;
@@ -174,18 +174,18 @@ public class bvn extends bur implements bjx {
 
    @Override
    public boolean a() {
-      return this.bw() && !this.y() && !this.m_();
+      return this.bv() && !this.y() && !this.m_();
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Sheared", this.y());
       $$0.a("Color", (byte)this.t().a());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.w($$0.q("Sheared"));
       this.b(cht.a($$0.f("Color")));
@@ -269,7 +269,7 @@ public class bvn extends bur implements bjx {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       this.b(a($$0.D_()));
       return super.a($$0, $$1, $$2, $$3, $$4);
    }

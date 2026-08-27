@@ -15,12 +15,12 @@ public class cmu<T extends clz> implements cmm<T> {
       return this.y;
    }
 
-   public T b(so $$0) {
+   public T b(sp $$0) {
       cly $$1 = $$0.b(cly.class);
       return this.x.create($$1);
    }
 
-   public void a(so $$0, T $$1) {
+   public void a(sp $$0, T $$1) {
       $$0.a($$1.d());
    }
 

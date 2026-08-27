@@ -16,7 +16,7 @@ public abstract class ccm extends biq implements bkd {
 
    public void b(@Nullable biq $$0) {
       if ($$0 != null) {
-         this.b = $$0.cw();
+         this.b = $$0.cv();
          this.c = $$0;
       }
    }
@@ -39,7 +39,7 @@ public abstract class ccm extends biq implements bkd {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       if (this.b != null) {
          $$0.a("Owner", this.b);
       }
@@ -52,11 +52,11 @@ public abstract class ccm extends biq implements bkd {
    }
 
    protected boolean d(biq $$0) {
-      return $$0.cw().equals(this.b);
+      return $$0.cv().equals(this.b);
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       if ($$0.b("Owner")) {
          this.b = $$0.a("Owner");
          this.c = null;
@@ -83,8 +83,8 @@ public abstract class ccm extends biq implements bkd {
    private boolean s() {
       biq $$0 = this.v();
       if ($$0 != null) {
-         for (biq $$1 : this.dL().a(this, this.cH().b(this.do()).g(1.0), $$0x -> !$$0x.M_() && $$0x.bs())) {
-            if ($$1.cW() == $$0.cW()) {
+         for (biq $$1 : this.dL().a(this, this.cG().b(this.do()).g(1.0), $$0x -> !$$0x.M_() && $$0x.br())) {
+            if ($$1.cV() == $$0.cV()) {
                return false;
             }
          }
@@ -112,7 +112,7 @@ public abstract class ccm extends biq implements bkd {
       float $$8 = arx.b($$2 * (float) (Math.PI / 180.0)) * arx.b($$1 * (float) (Math.PI / 180.0));
       this.c((double)$$6, (double)$$7, (double)$$8, $$4, $$5);
       ehn $$9 = $$0.do();
-      this.f(this.do().b($$9.c, $$0.aB() ? 0.0 : $$9.d, $$9.e));
+      this.f(this.do().b($$9.c, $$0.aA() ? 0.0 : $$9.d, $$9.e));
    }
 
    protected void a(ehl $$0) {
@@ -150,7 +150,7 @@ public abstract class ccm extends biq implements bkd {
    }
 
    protected boolean a(biq $$0) {
-      if (!$$0.br()) {
+      if (!$$0.bq()) {
          return false;
       } else {
          biq $$1 = this.v();
@@ -178,13 +178,13 @@ public abstract class ccm extends biq implements bkd {
    }
 
    @Override
-   public vd<ww> V() {
+   public ve<wx> di() {
       biq $$0 = this.v();
-      return new wx(this, $$0 == null ? 0 : $$0.ai());
+      return new wy(this, $$0 == null ? 0 : $$0.ah());
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       biq $$1 = this.dL().a($$0.o());
       if ($$1 != null) {

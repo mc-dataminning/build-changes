@@ -13,7 +13,7 @@ public class ftm extends ftg<bym> {
          cpv $$7 = $$0.dL();
          if ($$6 != $$7.a_($$0.dl()) && $$6.l() != cza.a) {
             $$3.a();
-            gw $$8 = gw.a($$0.dq(), $$0.cH().e, $$0.dw());
+            gw $$8 = gw.a($$0.dq(), $$0.cG().e, $$0.dw());
             $$3.a(-0.5, 0.0, -0.5);
             this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fnz.b($$6)), false, asc.a(), $$6.a($$0.q()), fyv.d);
             $$3.b();

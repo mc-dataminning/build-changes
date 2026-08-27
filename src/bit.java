@@ -3,13 +3,13 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public final class bit {
-   public static final Predicate<biq> a = biq::bw;
-   public static final Predicate<biq> b = $$0 -> $$0.bw() && $$0 instanceof bjg;
-   public static final Predicate<biq> c = $$0 -> $$0.bw() && !$$0.bP() && !$$0.bO();
-   public static final Predicate<biq> d = $$0 -> $$0 instanceof bgr && $$0.bw();
+   public static final Predicate<biq> a = biq::bv;
+   public static final Predicate<biq> b = $$0 -> $$0.bv() && $$0 instanceof bjg;
+   public static final Predicate<biq> c = $$0 -> $$0.bv() && !$$0.bO() && !$$0.bN();
+   public static final Predicate<biq> d = $$0 -> $$0 instanceof bgr && $$0.bv();
    public static final Predicate<biq> e = $$0 -> !($$0 instanceof cbu) || !$$0.M_() && !((cbu)$$0).f();
    public static final Predicate<biq> f = $$0 -> !$$0.M_();
-   public static final Predicate<biq> g = f.and(biq::by);
+   public static final Predicate<biq> g = f.and(biq::bx);
 
    private bit() {
    }
@@ -20,13 +20,13 @@ public final class bit {
    }
 
    public static Predicate<biq> a(biq $$0) {
-      eio $$1 = $$0.cg();
+      eio $$1 = $$0.cf();
       eio.a $$2 = $$1 == null ? eio.a.a : $$1.l();
       return (Predicate<biq>)($$2 == eio.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bt()) {
+         if (!$$3.bs()) {
             return false;
          } else if (!$$0.dL().B || $$3 instanceof cbu && ((cbu)$$3).g()) {
-            eio $$4 = $$3.cg();
+            eio $$4 = $$3.cf();
             eio.a $$5 = $$4 == null ? eio.a.a : $$4.l();
             if ($$5 == eio.a.b) {
                return false;
@@ -42,8 +42,8 @@ public final class bit {
 
    public static Predicate<biq> b(biq $$0) {
       return $$1 -> {
-         while ($$1.bO()) {
-            $$1 = $$1.cZ();
+         while ($$1.bN()) {
+            $$1 = $$1.cY();
             if ($$1 == $$0) {
                return false;
             }
@@ -61,7 +61,7 @@ public final class bit {
       }
 
       public boolean a(@Nullable biq $$0) {
-         if (!$$0.bw()) {
+         if (!$$0.bv()) {
             return false;
          } else {
             return !($$0 instanceof bjg $$1) ? false : $$1.f(this.a);

@@ -16,7 +16,7 @@ public class etq extends eso {
    private float q = 30.0F;
 
    public etq(int $$0, int $$1, fhy $$2, Supplier<gae> $$3) {
-      super(0, 0, $$0, $$1, tk.a);
+      super(0, 0, $$0, $$1, tl.a);
       this.n = etq.a.a($$2);
       this.o = $$3;
    }

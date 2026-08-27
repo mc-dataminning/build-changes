@@ -47,7 +47,7 @@ public class alp {
    final MinecraftServer e;
    public volatile boolean c;
    private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
-   final List<sm> g = Collections.synchronizedList(Lists.newArrayList());
+   final List<sn> g = Collections.synchronizedList(Lists.newArrayList());
 
    public alp(MinecraftServer $$0) {
       this.e = $$0;
@@ -70,7 +70,7 @@ public class alp {
 
          this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
             protected void initChannel(Channel $$0) {
-               sm.a($$0);
+               sn.a($$0);
 
                try {
                   $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
@@ -78,9 +78,9 @@ public class alp {
                }
 
                ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30)).addLast("legacy_query", new alk(alp.this.d()));
-               sm.a($$1, ve.a, null);
+               sn.a($$1, vf.a, null);
                int $$2 = alp.this.e.m();
-               sm $$3 = (sm)($$2 > 0 ? new sx($$2) : new sm(ve.a));
+               sn $$3 = (sn)($$2 > 0 ? new sy($$2) : new sn(vf.a));
                alp.this.g.add($$3);
                $$3.a($$1);
                $$3.b(new alr(alp.this.e, $$3));
@@ -94,12 +94,12 @@ public class alp {
       synchronized (this.f) {
          $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
             protected void initChannel(Channel $$0) {
-               sm.a($$0);
-               sm $$1 = new sm(ve.a);
+               sn.a($$0);
+               sn $$1 = new sn(vf.a);
                $$1.b(new all(alp.this.e, $$1));
                alp.this.g.add($$1);
                ChannelPipeline $$2 = $$0.pipeline();
-               sm.a($$2, ve.a);
+               sn.a($$2, vf.a);
                $$1.a($$2);
             }
          }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
@@ -123,10 +123,10 @@ public class alp {
 
    public void c() {
       synchronized (this.g) {
-         Iterator<sm> $$0 = this.g.iterator();
+         Iterator<sn> $$0 = this.g.iterator();
 
          while ($$0.hasNext()) {
-            sm $$1 = $$0.next();
+            sn $$1 = $$0.next();
             if (!$$1.l()) {
                if ($$1.k()) {
                   try {
@@ -137,8 +137,8 @@ public class alp {
                      }
 
                      d.warn("Failed to handle packet for {}", $$1.a(this.e.be()), var7);
-                     tl $$3 = tl.b("Internal server error");
-                     $$1.a(new vi($$3), sv.a(() -> $$1.a($$3)));
+                     tm $$3 = tm.b("Internal server error");
+                     $$1.a(new vj($$3), sw.a(() -> $$1.a($$3)));
                      $$1.o();
                   }
                } else {
@@ -154,7 +154,7 @@ public class alp {
       return this.e;
    }
 
-   public List<sm> e() {
+   public List<sn> e() {
       return this.g;
    }
 

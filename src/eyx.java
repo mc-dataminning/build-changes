@@ -38,14 +38,14 @@ public class eyx {
       this.p = $$2;
       this.q = $$3;
       this.u = $$1;
-      this.r = qs.a().a($$1.h.a($$3.a(), 163));
+      this.r = qt.a().a($$1.h.a($$3.a(), 163));
       this.y = arx.d($$3.f() * 28.0F);
       this.z = arx.d($$3.g() * 27.0F);
       int $$4 = $$2.a().g().a();
       int $$5 = String.valueOf($$4).length();
       int $$6 = $$4 > 1 ? $$1.h.b("  ") + $$1.h.b("0") * $$5 * 2 + $$1.h.b("/") : 0;
       int $$7 = 29 + $$1.h.a(this.r) + $$6;
-      this.t = qs.a().a(this.a(tn.a($$3.b().e(), uh.a.a($$3.e().b())), $$7));
+      this.t = qt.a().a(this.a(to.a($$3.b().e(), ui.a.a($$3.e().b())), $$7));
 
       for (ark $$8 : this.t) {
          $$7 = Math.max($$7, $$1.h.a($$8));
@@ -54,17 +54,17 @@ public class eyx {
       this.s = $$7 + 3 + 5;
    }
 
-   private static float a(erh $$0, List<tp> $$1) {
+   private static float a(erh $$0, List<tq> $$1) {
       return (float)$$1.stream().mapToDouble($$0::a).max().orElse(0.0);
    }
 
-   private List<tp> a(tl $$0, int $$1) {
+   private List<tq> a(tm $$0, int $$1) {
       erh $$2 = this.u.h.b();
-      List<tp> $$3 = null;
+      List<tq> $$3 = null;
       float $$4 = Float.MAX_VALUE;
 
       for (int $$5 : n) {
-         List<tp> $$6 = $$2.b($$0, $$1 - $$5, uh.a);
+         List<tq> $$6 = $$2.b($$0, $$1 - $$5, ui.a);
          float $$7 = Math.abs(a($$2, $$6) - (float)$$1);
          if ($$7 <= 10.0F) {
             return $$6;
@@ -150,7 +150,7 @@ public class eyx {
 
    public void a(esf $$0, int $$1, int $$2, float $$3, int $$4, int $$5) {
       boolean $$6 = $$4 + $$1 + this.y + this.s + 26 >= this.o.f().g;
-      tl $$7 = this.x == null ? null : this.x.d();
+      tm $$7 = this.x == null ? null : this.x.d();
       int $$8 = $$7 == null ? 0 : this.u.h.a($$7);
       boolean $$9 = 113 - $$2 - this.z - 26 <= 6 + this.t.size() * 9;
       float $$10 = this.x == null ? 0.0F : this.x.c();

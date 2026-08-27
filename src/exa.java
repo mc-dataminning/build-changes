@@ -3,7 +3,7 @@ public class exa extends eym {
       super(
          $$0,
          $$1,
-         tl.c("options.chat.title"),
+         tm.c("options.chat.title"),
          new eqy[]{
             $$1.l(),
             $$1.H(),

@@ -90,7 +90,7 @@ public abstract class biq implements bhc, dja, ds {
    public boolean af;
    protected final asc ag = asc.a();
    public int ah;
-   private int aN = -this.dc();
+   private int aN = -this.db();
    protected boolean ai;
    protected Object2DoubleMap<aqi<eal>> aj = new Object2DoubleArrayMap(2);
    protected boolean ak;
@@ -107,7 +107,7 @@ public abstract class biq implements bhc, dja, ds {
    protected static final int aq = 6;
    protected static final int ar = 7;
    private static final aef<Integer> aT = aei.a(biq.class, aeh.b);
-   private static final aef<Optional<tl>> aU = aei.a(biq.class, aeh.g);
+   private static final aef<Optional<tm>> aU = aei.a(biq.class, aeh.g);
    private static final aef<Boolean> aV = aei.a(biq.class, aeh.k);
    private static final aef<Boolean> aW = aei.a(biq.class, aeh.k);
    private static final aef<Boolean> aX = aei.a(biq.class, aeh.k);
@@ -150,7 +150,7 @@ public abstract class biq implements bhc, dja, ds {
       this.aE = cpc.b;
       this.an = new aei(this);
       this.an.a(ao, (byte)0);
-      this.an.a(aT, this.ch());
+      this.an.a(aT, this.cg());
       this.an.a(aV, false);
       this.an.a(aU, Optional.empty());
       this.an.a(aW, false);
@@ -165,11 +165,11 @@ public abstract class biq implements bhc, dja, ds {
    public boolean a(gw $$0, dfj $$1) {
       eig $$2 = $$1.b(this.dL(), $$0, ehs.a(this));
       eig $$3 = $$2.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-      return eid.c($$3, eid.a(this.cH()), ehr.i);
+      return eid.c($$3, eid.a(this.cG()), ehr.i);
    }
 
    public int h_() {
-      eio $$0 = this.cg();
+      eio $$0 = this.cf();
       return $$0 != null && $$0.n().f() != null ? $$0.n().f() : 16777215;
    }
 
@@ -177,13 +177,13 @@ public abstract class biq implements bhc, dja, ds {
       return false;
    }
 
-   public final void af() {
-      if (this.bP()) {
-         this.bB();
+   public final void ae() {
+      if (this.bO()) {
+         this.bA();
       }
 
-      if (this.bO()) {
-         this.ab();
+      if (this.bN()) {
+         this.aa();
       }
    }
 
@@ -191,16 +191,16 @@ public abstract class biq implements bhc, dja, ds {
       this.ba.e(new ehn($$0, $$1, $$2));
    }
 
-   public acz ag() {
+   public acz af() {
       return this.ba;
    }
 
-   public biu<?> ah() {
+   public biu<?> ag() {
       return this.p;
    }
 
    @Override
-   public int ai() {
+   public int ah() {
       return this.q;
    }
 
@@ -208,7 +208,7 @@ public abstract class biq implements bhc, dja, ds {
       this.q = $$0;
    }
 
-   public Set<String> aj() {
+   public Set<String> ai() {
       return this.be;
    }
 
@@ -220,18 +220,18 @@ public abstract class biq implements bhc, dja, ds {
       return this.be.remove($$0);
    }
 
-   public void ak() {
+   public void aj() {
       this.a(biq.c.a);
       this.a(djt.p);
    }
 
-   public final void al() {
+   public final void ak() {
       this.a(biq.c.b);
    }
 
    protected abstract void a_();
 
-   public aei am() {
+   public aei al() {
       return this.an;
    }
 
@@ -249,19 +249,19 @@ public abstract class biq implements bhc, dja, ds {
       this.b($$0);
    }
 
-   public void an() {
+   public void am() {
    }
 
    public void b(bjs $$0) {
       this.an.b(as, $$0);
    }
 
-   public bjs ao() {
+   public bjs an() {
       return this.an.b(as);
    }
 
    public boolean c(bjs $$0) {
-      return this.ao() == $$0;
+      return this.an() == $$0;
    }
 
    public boolean a(biq $$0, double $$1) {
@@ -286,14 +286,14 @@ public abstract class biq implements bhc, dja, ds {
 
    public void e(double $$0, double $$1, double $$2) {
       this.p($$0, $$1, $$2);
-      this.a(this.ap());
+      this.a(this.ao());
    }
 
-   protected ehi ap() {
+   protected ehi ao() {
       return this.bh.a(this.u);
    }
 
-   protected void aq() {
+   protected void ap() {
       this.e(this.u.c, this.u.d, this.u.e);
    }
 
@@ -312,14 +312,14 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public void l() {
-      this.ar();
+      this.aq();
    }
 
-   public void ar() {
+   public void aq() {
       this.dL().ad().a("entityBaseTick");
       this.bn = null;
-      if (this.bO() && this.cZ().dG()) {
-         this.ab();
+      if (this.bN() && this.cY().dG()) {
+         this.aa();
       }
 
       if (this.J > 0) {
@@ -329,44 +329,44 @@ public abstract class biq implements bhc, dja, ds {
       this.X = this.Y;
       this.O = this.dD();
       this.N = this.dB();
-      this.bI();
-      if (this.bk()) {
-         this.bl();
+      this.bH();
+      if (this.bj()) {
+         this.bk();
       }
 
       this.aB = this.aA;
       this.aA = false;
-      this.bf();
-      this.z();
       this.be();
+      this.z();
+      this.bd();
       if (this.dL().B) {
-         this.az();
+         this.ay();
       } else if (this.aN > 0) {
-         if (this.aX()) {
+         if (this.aW()) {
             this.h(this.aN - 4);
             if (this.aN < 0) {
-               this.az();
+               this.ay();
             }
          } else {
-            if (this.aN % 20 == 0 && !this.bm()) {
+            if (this.aN % 20 == 0 && !this.bl()) {
                this.a(this.dM().c(), 1.0F);
             }
 
             this.h(this.aN - 1);
          }
 
-         if (this.cj() > 0) {
+         if (this.ci() > 0) {
             this.k(0);
             this.dL().a(null, 1009, this.v, 1);
          }
       }
 
-      if (this.bm()) {
-         this.ax();
+      if (this.bl()) {
+         this.aw();
          this.ab *= 0.5F;
       }
 
-      this.as();
+      this.ar();
       if (!this.dL().B) {
          this.a_(this.aN > 0);
       }
@@ -379,40 +379,40 @@ public abstract class biq implements bhc, dja, ds {
       this.b(0, $$0 || this.bm);
    }
 
-   public void as() {
+   public void ar() {
       if (this.ds() < (double)(this.dL().H_() - 64)) {
-         this.aA();
+         this.az();
       }
    }
 
-   public void at() {
-      this.bb = this.bJ();
+   public void as() {
+      this.bb = this.bI();
    }
 
    public void f(int $$0) {
       this.bb = $$0;
    }
 
-   public int au() {
+   public int at() {
       return this.bb;
    }
 
-   public boolean av() {
+   public boolean au() {
       return this.bb > 0;
    }
 
    protected void J() {
-      if (this.av()) {
+      if (this.au()) {
          this.bb--;
       }
    }
 
-   public int aw() {
+   public int av() {
       return 0;
    }
 
-   public void ax() {
-      if (!this.aX()) {
+   public void aw() {
+      if (!this.aW()) {
          this.g(15);
          if (this.a(this.dM().d(), 4.0F)) {
             this.a(ape.iT, 0.4F, 2.0F + this.ag.i() * 0.4F);
@@ -435,20 +435,20 @@ public abstract class biq implements bhc, dja, ds {
       this.aN = $$0;
    }
 
-   public int ay() {
+   public int ax() {
       return this.aN;
    }
 
-   public void az() {
+   public void ay() {
       this.h(0);
    }
 
-   protected void aA() {
-      this.al();
+   protected void az() {
+      this.ak();
    }
 
    public boolean g(double $$0, double $$1, double $$2) {
-      return this.b(this.cH().d($$0, $$1, $$2));
+      return this.b(this.cG().d($$0, $$1, $$2));
    }
 
    private boolean b(ehi $$0) {
@@ -471,7 +471,7 @@ public abstract class biq implements bhc, dja, ds {
 
    protected void b(boolean $$0, @Nullable ehn $$1) {
       if ($$0) {
-         ehi $$2 = this.cH();
+         ehi $$2 = this.cG();
          ehi $$3 = new ehi($$2.a, $$2.b - 1.0E-6, $$2.c, $$2.d, $$2.b, $$2.f);
          Optional<gw> $$4 = this.t.g(this, $$3);
          if ($$4.isPresent() || this.bj) {
@@ -491,7 +491,7 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public boolean aB() {
+   public boolean aA() {
       return this.aJ;
    }
 
@@ -499,7 +499,7 @@ public abstract class biq implements bhc, dja, ds {
       if (this.af) {
          this.e(this.dq() + $$1.c, this.ds() + $$1.d, this.dw() + $$1.e);
       } else {
-         this.aC = this.bN();
+         this.aC = this.bM();
          if ($$0 == bjm.c) {
             $$1 = this.c($$1);
             if ($$1.equals(ehn.b)) {
@@ -542,9 +542,9 @@ public abstract class biq implements bhc, dja, ds {
          }
 
          this.a(this.R, $$2);
-         gw $$7 = this.aG();
+         gw $$7 = this.aF();
          dfj $$8 = this.dL().a_($$7);
-         this.a($$2.d, this.aB(), $$8, $$7);
+         this.a($$2.d, this.aA(), $$8, $$7);
          if (this.dG()) {
             this.dL().ad().c();
          } else {
@@ -558,17 +558,17 @@ public abstract class biq implements bhc, dja, ds {
                $$10.a(this.dL(), this);
             }
 
-            if (this.aB()) {
+            if (this.aA()) {
                $$10.a(this.dL(), $$7, $$8, this);
             }
 
-            biq.b $$11 = this.aV();
-            if ($$11.a() && !this.bO()) {
+            biq.b $$11 = this.aU();
+            if ($$11.a() && !this.bN()) {
                double $$12 = $$2.c;
                double $$13 = $$2.d;
                double $$14 = $$2.e;
                this.aa = this.aa + (float)($$2.f() * 0.6);
-               gw $$15 = this.aI();
+               gw $$15 = this.aH();
                dfj $$16 = this.dL().a_($$15);
                boolean $$17 = this.c($$16);
                if (!$$17) {
@@ -585,11 +585,11 @@ public abstract class biq implements bhc, dja, ds {
                   }
 
                   if ($$19) {
-                     this.aL = this.aL();
-                  } else if (this.aY()) {
-                     this.aL = this.aL();
+                     this.aL = this.aK();
+                  } else if (this.aX()) {
+                     this.aL = this.aK();
                      if ($$11.c()) {
-                        this.aQ();
+                        this.aP();
                      }
 
                      if ($$11.b()) {
@@ -597,25 +597,25 @@ public abstract class biq implements bhc, dja, ds {
                      }
                   }
                } else if ($$16.i()) {
-                  this.aF();
+                  this.aE();
                }
             }
 
-            this.aC();
-            float $$20 = this.aK();
+            this.aB();
+            float $$20 = this.aJ();
             this.f(this.do().d((double)$$20, 1.0, (double)$$20));
-            if (this.dL().c(this.cH().h(1.0E-6)).noneMatch($$0x -> $$0x.a(apt.aJ) || $$0x.a(csw.H))) {
+            if (this.dL().c(this.cG().h(1.0E-6)).noneMatch($$0x -> $$0x.a(apt.aJ) || $$0x.a(csw.H))) {
                if (this.aN <= 0) {
-                  this.h(-this.dc());
+                  this.h(-this.db());
                }
 
-               if (this.aC && (this.aA || this.ba())) {
-                  this.aD();
+               if (this.aC && (this.aA || this.aZ())) {
+                  this.aC();
                }
             }
 
-            if (this.bN() && (this.aA || this.ba())) {
-               this.h(-this.dc());
+            if (this.bM() && (this.aA || this.aZ())) {
+               this.h(-this.db());
             }
 
             this.dL().ad().c();
@@ -632,7 +632,7 @@ public abstract class biq implements bhc, dja, ds {
          return false;
       } else {
          boolean $$5 = this.c($$1);
-         if ((this.aB() || $$5 || this.bX() && $$4.d == 0.0 || this.cf()) && !this.bZ()) {
+         if ((this.aA() || $$5 || this.bW() && $$4.d == 0.0 || this.ce()) && !this.bY()) {
             if ($$2) {
                this.c($$0, $$1);
             }
@@ -652,9 +652,9 @@ public abstract class biq implements bhc, dja, ds {
       return false;
    }
 
-   protected void aC() {
+   protected void aB() {
       try {
-         this.aP();
+         this.aO();
       } catch (Throwable var4) {
          o $$1 = o.a(var4, "Checking entity block collision");
          p $$2 = $$1.a("Entity being checked for collision");
@@ -663,37 +663,37 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   protected void aD() {
+   protected void aC() {
       this.a(ape.iY, 0.7F, 1.6F + (this.ag.i() - this.ag.i()) * 0.4F);
    }
 
-   public void aE() {
+   public void aD() {
       if (!this.dL().B && this.aC) {
-         this.aD();
+         this.aC();
       }
 
-      this.az();
+      this.ay();
    }
 
-   protected void aF() {
-      if (this.aS()) {
-         this.aR();
-         if (this.aV().b()) {
+   protected void aE() {
+      if (this.aR()) {
+         this.aQ();
+         if (this.aU().b()) {
             this.a(djt.x);
          }
       }
    }
 
    @Deprecated
-   public gw aG() {
+   public gw aF() {
       return this.d(0.2F);
    }
 
-   protected gw aH() {
+   protected gw aG() {
       return this.d(0.500001F);
    }
 
-   public gw aI() {
+   public gw aH() {
       return this.d(1.0E-5F);
    }
 
@@ -714,17 +714,17 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   protected float aJ() {
+   protected float aI() {
       float $$0 = this.dL().a_(this.dl()).b().j();
-      float $$1 = this.dL().a_(this.aH()).b().j();
+      float $$1 = this.dL().a_(this.aG()).b().j();
       return (double)$$0 == 1.0 ? $$1 : $$0;
    }
 
-   protected float aK() {
+   protected float aJ() {
       dfj $$0 = this.dL().a_(this.dl());
       float $$1 = $$0.b().i();
       if (!$$0.a(csw.G) && !$$0.a(csw.nd)) {
-         return (double)$$1 == 1.0 ? this.dL().a_(this.aH()).b().i() : $$1;
+         return (double)$$1 == 1.0 ? this.dL().a_(this.aG()).b().i() : $$1;
       } else {
          return $$1;
       }
@@ -768,13 +768,13 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    private ehn h(ehn $$0) {
-      ehi $$1 = this.cH();
+      ehi $$1 = this.cG();
       List<eig> $$2 = this.dL().c(this, $$1.b($$0));
       ehn $$3 = $$0.g() == 0.0 ? $$0 : a(this, $$0, $$1, this.dL(), $$2);
       boolean $$4 = $$0.c != $$3.c;
       boolean $$5 = $$0.d != $$3.d;
       boolean $$6 = $$0.e != $$3.e;
-      boolean $$7 = this.aB() || $$5 && $$0.d < 0.0;
+      boolean $$7 = this.aA() || $$5 && $$0.d < 0.0;
       if (this.dF() > 0.0F && $$7 && ($$4 || $$6)) {
          ehn $$8 = a(this, new ehn($$0.c, (double)this.dF(), $$0.e), $$1, this.dL(), $$2);
          ehn $$9 = a(this, new ehn(0.0, (double)this.dF(), 0.0), $$1.b($$0.c, 0.0, $$0.e), this.dL(), $$2);
@@ -846,24 +846,24 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   protected float aL() {
+   protected float aK() {
       return (float)((int)this.Z + 1);
    }
 
-   protected apd aM() {
+   protected apd aL() {
       return ape.jc;
+   }
+
+   protected apd aM() {
+      return ape.jb;
    }
 
    protected apd aN() {
       return ape.jb;
    }
 
-   protected apd aO() {
-      return ape.jb;
-   }
-
-   protected void aP() {
-      ehi $$0 = this.cH();
+   protected void aO() {
+      ehi $$0 = this.cG();
       gw $$1 = gw.a($$0.a + 1.0E-7, $$0.b + 1.0E-7, $$0.c + 1.0E-7);
       gw $$2 = gw.a($$0.d - 1.0E-7, $$0.e - 1.0E-7, $$0.f - 1.0E-7);
       if (this.dL().a($$1, $$2)) {
@@ -872,7 +872,7 @@ public abstract class biq implements bhc, dja, ds {
          for (int $$4 = $$1.u(); $$4 <= $$2.u(); $$4++) {
             for (int $$5 = $$1.v(); $$5 <= $$2.v(); $$5++) {
                for (int $$6 = $$1.w(); $$6 <= $$2.w(); $$6++) {
-                  if (!this.bw()) {
+                  if (!this.bv()) {
                      return;
                   }
 
@@ -912,8 +912,8 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   protected void aQ() {
-      biq $$0 = Objects.requireNonNullElse(this.cO(), this);
+   protected void aP() {
+      biq $$0 = Objects.requireNonNullElse(this.cN(), this);
       float $$1 = $$0 == this ? 0.35F : 0.4F;
       ehn $$2 = $$0.do();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.c * $$2.c * 0.2F + $$2.d * $$2.d + $$2.e * $$2.e * 0.2F) * $$1);
@@ -956,29 +956,29 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    protected void e(float $$0) {
-      this.a(this.aM(), $$0, 1.0F + (this.ag.i() - this.ag.i()) * 0.4F);
+      this.a(this.aL(), $$0, 1.0F + (this.ag.i() - this.ag.i()) * 0.4F);
    }
 
-   protected void aR() {
+   protected void aQ() {
    }
 
-   protected boolean aS() {
+   protected boolean aR() {
       return false;
    }
 
    public void a(apd $$0, float $$1, float $$2) {
-      if (!this.aT()) {
-         this.dL().a(null, this.dq(), this.ds(), this.dw(), $$0, this.db(), $$1, $$2);
+      if (!this.aS()) {
+         this.dL().a(null, this.dq(), this.ds(), this.dw(), $$0, this.da(), $$1, $$2);
       }
    }
 
    public void a(apd $$0) {
-      if (!this.aT()) {
+      if (!this.aS()) {
          this.a($$0, 1.0F, 1.0F);
       }
    }
 
-   public boolean aT() {
+   public boolean aS() {
       return this.an.b(aW);
    }
 
@@ -986,7 +986,7 @@ public abstract class biq implements bhc, dja, ds {
       this.an.b(aW, $$0);
    }
 
-   public boolean aU() {
+   public boolean aT() {
       return this.an.b(aX);
    }
 
@@ -994,11 +994,11 @@ public abstract class biq implements bhc, dja, ds {
       this.an.b(aX, $$0);
    }
 
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.d;
    }
 
-   public boolean aW() {
+   public boolean aV() {
       return false;
    }
 
@@ -1015,16 +1015,16 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public boolean aX() {
-      return this.ah().d();
+   public boolean aW() {
+      return this.ag().d();
    }
 
    public boolean a(float $$0, float $$1, bho $$2) {
       if (this.p.a(apw.l)) {
          return false;
       } else {
-         if (this.bP()) {
-            for (biq $$3 : this.cQ()) {
+         if (this.bO()) {
+            for (biq $$3 : this.cP()) {
                $$3.a($$0, $$1, $$2);
             }
          }
@@ -1033,69 +1033,69 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public boolean aY() {
+   public boolean aX() {
       return this.ai;
    }
 
    private boolean w() {
       gw $$0 = this.dl();
-      return this.dL().q($$0) || this.dL().q(gw.a((double)$$0.u(), this.cH().e, (double)$$0.w()));
+      return this.dL().q($$0) || this.dL().q(gw.a((double)$$0.u(), this.cG().e, (double)$$0.w()));
    }
 
    private boolean x() {
       return this.dL().a_(this.dl()).a(csw.nd);
    }
 
+   public boolean aY() {
+      return this.aX() || this.w();
+   }
+
    public boolean aZ() {
-      return this.aY() || this.w();
+      return this.aX() || this.w() || this.x();
    }
 
    public boolean ba() {
-      return this.aY() || this.w() || this.x();
+      return this.aX() || this.x();
    }
 
    public boolean bb() {
-      return this.aY() || this.x();
+      return this.ba() || this.bl();
    }
 
    public boolean bc() {
-      return this.bb() || this.bm();
+      return this.ak && this.aX();
    }
 
-   public boolean bd() {
-      return this.ak && this.aY();
-   }
-
-   public void be() {
-      if (this.bZ()) {
-         this.h(this.bY() && this.aY() && !this.bO());
+   public void bd() {
+      if (this.bY()) {
+         this.h(this.bX() && this.aX() && !this.bN());
       } else {
-         this.h(this.bY() && this.bd() && !this.bO() && this.dL().b_(this.v).a(apy.a));
+         this.h(this.bX() && this.bc() && !this.bN() && this.dL().b_(this.v).a(apy.a));
       }
    }
 
-   protected boolean bf() {
+   protected boolean be() {
       this.aj.clear();
-      this.bg();
+      this.bf();
       double $$0 = this.dL().C_().i() ? 0.007 : 0.0023333333333333335;
       boolean $$1 = this.a(apy.b, $$0);
-      return this.aY() || $$1;
+      return this.aX() || $$1;
    }
 
-   void bg() {
-      if (this.cZ() instanceof cdn $$0 && !$$0.bd()) {
+   void bf() {
+      if (this.cY() instanceof cdn $$0 && !$$0.bc()) {
          this.ai = false;
          return;
       }
 
       if (this.a(apy.a, 0.014)) {
          if (!this.ai && !this.am) {
-            this.bh();
+            this.bg();
          }
 
          this.n();
          this.ai = true;
-         this.az();
+         this.ay();
       } else {
          this.ai = false;
       }
@@ -1105,7 +1105,7 @@ public abstract class biq implements bhc, dja, ds {
       this.ak = this.a(apy.a);
       this.aO.clear();
       double $$0 = this.du() - 0.11111111F;
-      if (this.cZ() instanceof cdn $$2 && !$$2.bd() && $$2.cH().e >= $$0 && $$2.cH().b <= $$0) {
+      if (this.cY() instanceof cdn $$2 && !$$2.bc() && $$2.cG().e >= $$0 && $$2.cG().b <= $$0) {
          return;
       }
 
@@ -1117,15 +1117,15 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   protected void bh() {
-      biq $$0 = Objects.requireNonNullElse(this.cO(), this);
+   protected void bg() {
+      biq $$0 = Objects.requireNonNullElse(this.cN(), this);
       float $$1 = $$0 == this ? 0.2F : 0.9F;
       ehn $$2 = $$0.do();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.c * $$2.c * 0.2F + $$2.d * $$2.d + $$2.e * $$2.e * 0.2F) * $$1);
       if ($$3 < 0.25F) {
-         this.a(this.aN(), $$3, 1.0F + (this.ag.i() - this.ag.i()) * 0.4F);
+         this.a(this.aM(), $$3, 1.0F + (this.ag.i() - this.ag.i()) * 0.4F);
       } else {
-         this.a(this.aO(), $$3, 1.0F + (this.ag.i() - this.ag.i()) * 0.4F);
+         this.a(this.aN(), $$3, 1.0F + (this.ag.i() - this.ag.i()) * 0.4F);
       }
 
       float $$4 = (float)arx.a(this.ds());
@@ -1146,20 +1146,20 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    @Deprecated
-   protected dfj bi() {
-      return this.dL().a_(this.aG());
+   protected dfj bh() {
+      return this.dL().a_(this.aF());
    }
 
-   public dfj bj() {
-      return this.dL().a_(this.aI());
+   public dfj bi() {
+      return this.dL().a_(this.aH());
    }
 
-   public boolean bk() {
-      return this.bY() && !this.aY() && !this.M_() && !this.bX() && !this.bm() && this.bw();
+   public boolean bj() {
+      return this.bX() && !this.aX() && !this.M_() && !this.bW() && !this.bl() && this.bv();
    }
 
-   protected void bl() {
-      gw $$0 = this.aG();
+   protected void bk() {
+      gw $$0 = this.aF();
       dfj $$1 = this.dL().a_($$0);
       if ($$1.l() != cza.a) {
          ehn $$2 = this.do();
@@ -1182,7 +1182,7 @@ public abstract class biq implements bhc, dja, ds {
       return this.aO.contains($$0);
    }
 
-   public boolean bm() {
+   public boolean bl() {
       return !this.am && this.aj.getDouble(apy.b) > 0.0;
    }
 
@@ -1204,7 +1204,7 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    @Deprecated
-   public float bn() {
+   public float bm() {
       return this.dL().f(this.dp(), this.dv()) ? this.dL().w(gw.a(this.dq(), this.du(), this.dw())) : 0.0F;
    }
 
@@ -1241,11 +1241,11 @@ public abstract class biq implements bhc, dja, ds {
       this.p($$0, $$1, $$2);
       this.r($$3);
       this.s($$4);
-      this.bo();
-      this.aq();
+      this.bn();
+      this.ap();
    }
 
-   public final void bo() {
+   public final void bn() {
       double $$0 = this.dq();
       double $$1 = this.ds();
       double $$2 = this.dw();
@@ -1306,11 +1306,11 @@ public abstract class biq implements bhc, dja, ds {
                $$2 *= $$4;
                $$1 *= 0.05F;
                $$2 *= 0.05F;
-               if (!this.bP() && this.bt()) {
+               if (!this.bO() && this.bs()) {
                   this.j(-$$1, 0.0, -$$2);
                }
 
-               if (!$$0.bP() && $$0.bt()) {
+               if (!$$0.bO() && $$0.bs()) {
                   $$0.j($$1, 0.0, $$2);
                }
             }
@@ -1323,7 +1323,7 @@ public abstract class biq implements bhc, dja, ds {
       this.au = true;
    }
 
-   protected void bp() {
+   protected void bo() {
       this.T = true;
    }
 
@@ -1331,7 +1331,7 @@ public abstract class biq implements bhc, dja, ds {
       if (this.b($$0)) {
          return false;
       } else {
-         this.bp();
+         this.bo();
          return false;
       }
    }
@@ -1366,13 +1366,13 @@ public abstract class biq implements bhc, dja, ds {
       return this.b($$0 - 90.0F, $$1);
    }
 
-   public final ehn bq() {
+   public final ehn bp() {
       return new ehn(this.dq(), this.du(), this.dw());
    }
 
    public final ehn j(float $$0) {
       double $$1 = arx.d((double)$$0, this.K, this.dq());
-      double $$2 = arx.d((double)$$0, this.L, this.ds()) + (double)this.cI();
+      double $$2 = arx.d((double)$$0, this.L, this.ds()) + (double)this.cH();
       double $$3 = arx.d((double)$$0, this.M, this.dw());
       return new ehn($$1, $$2, $$3);
    }
@@ -1395,15 +1395,15 @@ public abstract class biq implements bhc, dja, ds {
       return this.dL().a(new cpe($$3, $$5, cpe.a.b, $$2 ? cpe.b.c : cpe.b.a, this));
    }
 
-   public boolean br() {
-      return this.bw() && this.bs();
+   public boolean bq() {
+      return this.bv() && this.br();
    }
 
-   public boolean bs() {
+   public boolean br() {
       return false;
    }
 
-   public boolean bt() {
+   public boolean bs() {
       return false;
    }
 
@@ -1422,7 +1422,7 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public boolean a(double $$0) {
-      double $$1 = this.cH().a();
+      double $$1 = this.cG().a();
       if (Double.isNaN($$1)) {
          $$1 = 1.0;
       }
@@ -1431,11 +1431,11 @@ public abstract class biq implements bhc, dja, ds {
       return $$0 < $$1 * $$1;
    }
 
-   public boolean d(qx $$0) {
+   public boolean d(qy $$0) {
       if (this.aK != null && !this.aK.b()) {
          return false;
       } else {
-         String $$1 = this.bv();
+         String $$1 = this.bu();
          if ($$1 == null) {
             return false;
          } else {
@@ -1446,11 +1446,11 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public boolean e(qx $$0) {
-      return this.bO() ? false : this.d($$0);
+   public boolean e(qy $$0) {
+      return this.bN() ? false : this.d($$0);
    }
 
-   public qx f(qx $$0) {
+   public qy f(qy $$0) {
       try {
          if (this.s != null) {
             $$0.a("Pos", this.a(this.s.dq(), this.ds(), this.s.dw()));
@@ -1463,35 +1463,35 @@ public abstract class biq implements bhc, dja, ds {
          $$0.a("Rotation", this.a(this.dB(), this.dD()));
          $$0.a("FallDistance", this.ab);
          $$0.a("Fire", (short)this.aN);
-         $$0.a("Air", (short)this.ci());
-         $$0.a("OnGround", this.aB());
+         $$0.a("Air", (short)this.ch());
+         $$0.a("OnGround", this.aA());
          $$0.a("Invulnerable", this.bc);
          $$0.a("PortalCooldown", this.bb);
-         $$0.a("UUID", this.cw());
-         tl $$2 = this.ae();
+         $$0.a("UUID", this.cv());
+         tm $$2 = this.ad();
          if ($$2 != null) {
-            $$0.a("CustomName", tl.a.a($$2));
+            $$0.a("CustomName", tm.a.a($$2));
          }
 
-         if (this.cB()) {
-            $$0.a("CustomNameVisible", this.cB());
+         if (this.cA()) {
+            $$0.a("CustomNameVisible", this.cA());
+         }
+
+         if (this.aS()) {
+            $$0.a("Silent", this.aS());
          }
 
          if (this.aT()) {
-            $$0.a("Silent", this.aT());
-         }
-
-         if (this.aU()) {
-            $$0.a("NoGravity", this.aU());
+            $$0.a("NoGravity", this.aT());
          }
 
          if (this.bd) {
             $$0.a("Glowing", true);
          }
 
-         int $$3 = this.cj();
+         int $$3 = this.ci();
          if ($$3 > 0) {
-            $$0.a("TicksFrozen", this.cj());
+            $$0.a("TicksFrozen", this.ci());
          }
 
          if (this.bm) {
@@ -1499,21 +1499,21 @@ public abstract class biq implements bhc, dja, ds {
          }
 
          if (!this.be.isEmpty()) {
-            rd $$4 = new rd();
+            re $$4 = new re();
 
             for (String $$5 : this.be) {
-               $$4.add(ro.a($$5));
+               $$4.add(rp.a($$5));
             }
 
             $$0.a("Tags", $$4);
          }
 
          this.b($$0);
-         if (this.bP()) {
-            rd $$6 = new rd();
+         if (this.bO()) {
+            re $$6 = new re();
 
-            for (biq $$7 : this.cQ()) {
-               qx $$8 = new qx();
+            for (biq $$7 : this.cP()) {
+               qy $$8 = new qy();
                if ($$7.d($$8)) {
                   $$6.add($$8);
                }
@@ -1533,11 +1533,11 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public void g(qx $$0) {
+   public void g(qy $$0) {
       try {
-         rd $$1 = $$0.c("Pos", 6);
-         rd $$2 = $$0.c("Motion", 6);
-         rd $$3 = $$0.c("Rotation", 5);
+         re $$1 = $$0.c("Pos", 6);
+         re $$2 = $$0.c("Motion", 6);
+         re $$3 = $$0.c("Rotation", 5);
          double $$4 = $$2.h(0);
          double $$5 = $$2.h(1);
          double $$6 = $$2.h(2);
@@ -1546,7 +1546,7 @@ public abstract class biq implements bhc, dja, ds {
          this.p(arx.a($$1.h(0), -3.0000512E7, 3.0000512E7), arx.a($$1.h(1), -2.0E7, 2.0E7), arx.a($$1.h(2), -3.0000512E7, 3.0000512E7));
          this.r($$3.i(0));
          this.s($$3.i(1));
-         this.bo();
+         this.bn();
          this.n(this.dB());
          this.o(this.dB());
          this.ab = $$0.j("FallDistance");
@@ -1566,13 +1566,13 @@ public abstract class biq implements bhc, dja, ds {
          if (!Double.isFinite(this.dq()) || !Double.isFinite(this.ds()) || !Double.isFinite(this.dw())) {
             throw new IllegalStateException("Entity has invalid position");
          } else if (Double.isFinite((double)this.dB()) && Double.isFinite((double)this.dD())) {
-            this.aq();
+            this.ap();
             this.a(this.dB(), this.dD());
             if ($$0.b("CustomName", 8)) {
                String $$8 = $$0.l("CustomName");
 
                try {
-                  this.b(tl.a.a($$8));
+                  this.b(tm.a.a($$8));
                } catch (Exception var16) {
                   c.warn("Failed to parse entity custom name {}", $$8, var16);
                }
@@ -1586,7 +1586,7 @@ public abstract class biq implements bhc, dja, ds {
             this.bm = $$0.q("HasVisualFire");
             if ($$0.b("Tags", 9)) {
                this.be.clear();
-               rd $$10 = $$0.c("Tags", 8);
+               re $$10 = $$0.c("Tags", 8);
                int $$11 = Math.min($$10.size(), 1024);
 
                for (int $$12 = 0; $$12 < $$11; $$12++) {
@@ -1595,8 +1595,8 @@ public abstract class biq implements bhc, dja, ds {
             }
 
             this.a($$0);
-            if (this.bu()) {
-               this.aq();
+            if (this.bt()) {
+               this.ap();
             }
          } else {
             throw new IllegalStateException("Entity has invalid rotation");
@@ -1609,36 +1609,36 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   protected boolean bu() {
+   protected boolean bt() {
       return true;
    }
 
    @Nullable
-   protected final String bv() {
-      biu<?> $$0 = this.ah();
+   protected final String bu() {
+      biu<?> $$0 = this.ag();
       aex $$1 = biu.a($$0);
       return $$0.b() && $$1 != null ? $$1.toString() : null;
    }
 
-   protected abstract void a(qx var1);
+   protected abstract void a(qy var1);
 
-   protected abstract void b(qx var1);
+   protected abstract void b(qy var1);
 
-   protected rd a(double... $$0) {
-      rd $$1 = new rd();
+   protected re a(double... $$0) {
+      re $$1 = new re();
 
       for (double $$2 : $$0) {
-         $$1.add(qy.a($$2));
+         $$1.add(qz.a($$2));
       }
 
       return $$1;
    }
 
-   protected rd a(float... $$0) {
-      rd $$1 = new rd();
+   protected re a(float... $$0) {
+      re $$1 = new re();
 
       for (float $$2 : $$0) {
-         $$1.add(ra.a($$2));
+         $$1.add(rb.a($$2));
       }
 
       return $$1;
@@ -1673,16 +1673,16 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public boolean bw() {
+   public boolean bv() {
       return !this.dG();
    }
 
-   public boolean bx() {
+   public boolean bw() {
       if (this.af) {
          return false;
       } else {
          float $$0 = this.bh.a * 0.8F;
-         ehi $$1 = ehi.a(this.bq(), (double)$$0, 1.0E-6, (double)$$0);
+         ehi $$1 = ehi.a(this.bp(), (double)$$0, 1.0E-6, (double)$$0);
          return gw.a($$1)
             .anyMatch(
                $$1x -> {
@@ -1700,18 +1700,18 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public boolean h(biq $$0) {
-      return $$0.by() && !this.y($$0);
+      return $$0.bx() && !this.y($$0);
    }
 
-   public boolean by() {
+   public boolean bx() {
       return false;
    }
 
-   public void bz() {
+   public void by() {
       this.f(ehn.b);
       this.l();
-      if (this.bO()) {
-         this.cZ().i(this);
+      if (this.bN()) {
+         this.cY().i(this);
       }
    }
 
@@ -1749,14 +1749,14 @@ public abstract class biq implements bhc, dja, ds {
       return this.a($$0, false);
    }
 
-   public boolean bA() {
+   public boolean bz() {
       return this instanceof bjg;
    }
 
    public boolean a(biq $$0, boolean $$1) {
       if ($$0 == this.s) {
          return false;
-      } else if (!$$0.bD()) {
+      } else if (!$$0.bC()) {
          return false;
       } else {
          for (biq $$2 = $$0; $$2.s != null; $$2 = $$2.s) {
@@ -1766,8 +1766,8 @@ public abstract class biq implements bhc, dja, ds {
          }
 
          if ($$1 || this.o($$0) && $$0.r(this)) {
-            if (this.bO()) {
-               this.ab();
+            if (this.bN()) {
+               this.aa();
             }
 
             this.b(bjs.a);
@@ -1782,16 +1782,16 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    protected boolean o(biq $$0) {
-      return !this.bS() && this.J <= 0;
+      return !this.bR() && this.J <= 0;
    }
 
-   public void bB() {
+   public void bA() {
       for (int $$0 = this.r.size() - 1; $$0 >= 0; $$0--) {
-         ((biq)this.r.get($$0)).ab();
+         ((biq)this.r.get($$0)).aa();
       }
    }
 
-   public void bC() {
+   public void bB() {
       if (this.s != null) {
          biq $$0 = this.s;
          this.s = null;
@@ -1799,19 +1799,19 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public void ab() {
-      this.bC();
+   public void aa() {
+      this.bB();
    }
 
    protected void p(biq $$0) {
-      if ($$0.cZ() != this) {
+      if ($$0.cY() != this) {
          throw new IllegalStateException("Use x.startRiding(y), not y.addPassenger(x)");
       } else {
          if (this.r.isEmpty()) {
             this.r = ImmutableList.of($$0);
          } else {
             List<biq> $$1 = Lists.newArrayList(this.r);
-            if (!this.dL().B && $$0 instanceof cbu && !(this.cR() instanceof cbu)) {
+            if (!this.dL().B && $$0 instanceof cbu && !(this.cQ() instanceof cbu)) {
                $$1.add(0, $$0);
             } else {
                $$1.add($$0);
@@ -1825,7 +1825,7 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    protected void q(biq $$0) {
-      if ($$0.cZ() == this) {
+      if ($$0.cY() == this) {
          throw new IllegalStateException("Use x.stopRiding(y), not y.removePassenger(x)");
       } else {
          if (this.r.size() == 1 && this.r.get(0) == $$0) {
@@ -1843,7 +1843,7 @@ public abstract class biq implements bhc, dja, ds {
       return this.r.isEmpty();
    }
 
-   protected boolean bD() {
+   protected boolean bC() {
       return true;
    }
 
@@ -1876,11 +1876,11 @@ public abstract class biq implements bhc, dja, ds {
       this.n($$0);
    }
 
-   public float bE() {
+   public float bD() {
       return 0.0F;
    }
 
-   public ehn bF() {
+   public ehn bE() {
       return this.b(this.dD(), this.dB());
    }
 
@@ -1894,17 +1894,17 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public ehm bG() {
+   public ehm bF() {
       return new ehm(this.dD(), this.dB());
    }
 
-   public ehn bH() {
-      return ehn.a(this.bG());
+   public ehn bG() {
+      return ehn.a(this.bF());
    }
 
    public void f(gw $$0) {
-      if (this.av()) {
-         this.at();
+      if (this.au()) {
+         this.as();
       } else {
          if (!this.dL().B && !$$0.equals(this.ax)) {
             this.ax = $$0.i();
@@ -1914,18 +1914,18 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   protected void bI() {
+   protected void bH() {
       if (this.dL() instanceof akr) {
-         int $$0 = this.aw();
+         int $$0 = this.av();
          akr $$1 = (akr)this.dL();
          if (this.av) {
             MinecraftServer $$2 = $$1.n();
             aew<cpv> $$3 = this.dL().ac() == cpv.i ? cpv.h : cpv.i;
             akr $$4 = $$2.a($$3);
-            if ($$4 != null && $$2.B() && !this.bO() && this.aw++ >= $$0) {
+            if ($$4 != null && $$2.B() && !this.bN() && this.aw++ >= $$0) {
                this.dL().ad().a("portal");
                this.aw = $$0;
-               this.at();
+               this.as();
                this.b($$4);
                this.dL().ad().c();
             }
@@ -1945,7 +1945,7 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public int bJ() {
+   public int bI() {
       return 300;
    }
 
@@ -1966,71 +1966,71 @@ public abstract class biq implements bhc, dja, ds {
    public void m(float $$0) {
    }
 
+   public Iterable<cjf> bJ() {
+      return e;
+   }
+
    public Iterable<cjf> bK() {
       return e;
    }
 
    public Iterable<cjf> bL() {
-      return e;
-   }
-
-   public Iterable<cjf> bM() {
-      return Iterables.concat(this.bK(), this.bL());
+      return Iterables.concat(this.bJ(), this.bK());
    }
 
    public void a(biv $$0, cjf $$1) {
    }
 
-   public boolean bN() {
+   public boolean bM() {
       boolean $$0 = this.dL() != null && this.dL().B;
-      return !this.aX() && (this.aN > 0 || $$0 && this.i(0));
+      return !this.aW() && (this.aN > 0 || $$0 && this.i(0));
+   }
+
+   public boolean bN() {
+      return this.cY() != null;
    }
 
    public boolean bO() {
-      return this.cZ() != null;
-   }
-
-   public boolean bP() {
       return !this.r.isEmpty();
    }
 
-   public boolean bQ() {
-      return this.ah().a(apw.m);
+   public boolean bP() {
+      return this.ag().a(apw.m);
    }
 
-   public boolean bR() {
-      return !this.ah().a(apw.n);
+   public boolean bQ() {
+      return !this.ag().a(apw.n);
    }
 
    public void f(boolean $$0) {
       this.b(1, $$0);
    }
 
-   public boolean bS() {
+   public boolean bR() {
       return this.i(1);
    }
 
+   public boolean bS() {
+      return this.bR();
+   }
+
    public boolean bT() {
-      return this.bS();
+      return this.bR();
    }
 
    public boolean bU() {
-      return this.bS();
+      return this.bR();
    }
 
    public boolean bV() {
-      return this.bS();
+      return this.bR();
    }
 
    public boolean bW() {
-      return this.bS();
-   }
-
-   public boolean bX() {
       return this.c(bjs.f);
    }
 
-   public boolean bY() {
+   public boolean bX() {
       return this.i(3);
    }
 
@@ -2038,36 +2038,36 @@ public abstract class biq implements bhc, dja, ds {
       this.b(3, $$0);
    }
 
-   public boolean bZ() {
+   public boolean bY() {
       return this.i(4);
    }
 
-   public boolean ca() {
+   public boolean bZ() {
       return this.c(bjs.d);
    }
 
-   public boolean cb() {
-      return this.ca() && !this.aY();
+   public boolean ca() {
+      return this.bZ() && !this.aX();
    }
 
    public void h(boolean $$0) {
       this.b(4, $$0);
    }
 
-   public final boolean cc() {
+   public final boolean cb() {
       return this.bd;
    }
 
    public final void i(boolean $$0) {
       this.bd = $$0;
-      this.b(6, this.cd());
+      this.b(6, this.cc());
    }
 
-   public boolean cd() {
+   public boolean cc() {
       return this.dL().w_() ? this.i(6) : this.bd;
    }
 
-   public boolean ce() {
+   public boolean cd() {
       return this.i(5);
    }
 
@@ -2075,12 +2075,12 @@ public abstract class biq implements bhc, dja, ds {
       if ($$0.M_()) {
          return false;
       } else {
-         eio $$1 = this.cg();
-         return $$1 != null && $$0 != null && $$0.cg() == $$1 && $$1.i() ? false : this.ce();
+         eio $$1 = this.cf();
+         return $$1 != null && $$0 != null && $$0.cf() == $$1 && $$1.i() ? false : this.cd();
       }
    }
 
-   public boolean cf() {
+   public boolean ce() {
       return false;
    }
 
@@ -2088,16 +2088,16 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    @Nullable
-   public eio cg() {
-      return this.dL().I().g(this.cy());
+   public eio cf() {
+      return this.dL().I().g(this.cx());
    }
 
    public boolean s(biq $$0) {
-      return this.a($$0.cg());
+      return this.a($$0.cf());
    }
 
    public boolean a(eio $$0) {
-      return this.cg() != null ? this.cg().a($$0) : false;
+      return this.cf() != null ? this.cf().a($$0) : false;
    }
 
    public void j(boolean $$0) {
@@ -2117,11 +2117,11 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public int ch() {
+   public int cg() {
       return 300;
    }
 
-   public int ci() {
+   public int ch() {
       return this.an.b(aT);
    }
 
@@ -2129,7 +2129,7 @@ public abstract class biq implements bhc, dja, ds {
       this.an.b(aT, $$0);
    }
 
-   public int cj() {
+   public int ci() {
       return this.an.b(aY);
    }
 
@@ -2137,16 +2137,16 @@ public abstract class biq implements bhc, dja, ds {
       this.an.b(aY, $$0);
    }
 
-   public float ck() {
-      int $$0 = this.cm();
-      return (float)Math.min(this.cj(), $$0) / (float)$$0;
+   public float cj() {
+      int $$0 = this.cl();
+      return (float)Math.min(this.ci(), $$0) / (float)$$0;
    }
 
-   public boolean cl() {
-      return this.cj() >= this.cm();
+   public boolean ck() {
+      return this.ci() >= this.cl();
    }
 
-   public int cm() {
+   public int cl() {
       return 140;
    }
 
@@ -2188,7 +2188,7 @@ public abstract class biq implements bhc, dja, ds {
       return true;
    }
 
-   public void cn() {
+   public void cm() {
       if (this.do().b() > -0.5 && this.ab > 1.0F) {
          this.ab = 1.0F;
       }
@@ -2234,10 +2234,10 @@ public abstract class biq implements bhc, dja, ds {
       this.U = $$1;
    }
 
-   private static tl c(tl $$0) {
-      ty $$1 = $$0.d().b($$0.a().a(null));
+   private static tm c(tm $$0) {
+      tz $$1 = $$0.d().b($$0.a().a(null));
 
-      for (tl $$2 : $$0.c()) {
+      for (tm $$2 : $$0.c()) {
          $$1.b(c($$2));
       }
 
@@ -2245,12 +2245,12 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    @Override
-   public tl ac() {
-      tl $$0 = this.ae();
-      return $$0 != null ? c($$0) : this.co();
+   public tm ab() {
+      tm $$0 = this.ad();
+      return $$0 != null ? c($$0) : this.cn();
    }
 
-   protected tl co() {
+   protected tm cn() {
       return this.p.h();
    }
 
@@ -2258,7 +2258,7 @@ public abstract class biq implements bhc, dja, ds {
       return this == $$0;
    }
 
-   public float cp() {
+   public float co() {
       return 0.0F;
    }
 
@@ -2268,7 +2268,7 @@ public abstract class biq implements bhc, dja, ds {
    public void o(float $$0) {
    }
 
-   public boolean cq() {
+   public boolean cp() {
       return true;
    }
 
@@ -2284,7 +2284,7 @@ public abstract class biq implements bhc, dja, ds {
             Locale.ROOT,
             "%s['%s'/%d, l='%s', x=%.2f, y=%.2f, z=%.2f, removed=%s]",
             this.getClass().getSimpleName(),
-            this.ac().getString(),
+            this.ab().getString(),
             this.q,
             $$0,
             this.dq(),
@@ -2296,7 +2296,7 @@ public abstract class biq implements bhc, dja, ds {
             Locale.ROOT,
             "%s['%s'/%d, l='%s', x=%.2f, y=%.2f, z=%.2f]",
             this.getClass().getSimpleName(),
-            this.ac().getString(),
+            this.ab().getString(),
             this.q,
             $$0,
             this.dq(),
@@ -2306,10 +2306,10 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public boolean b(bho $$0) {
-      return this.dG() || this.bc && !$$0.a(apv.d) && !$$0.g() || $$0.a(apv.i) && this.aX() || $$0.a(apv.m) && this.ah().a(apw.l);
+      return this.dG() || this.bc && !$$0.a(apv.d) && !$$0.g() || $$0.a(apv.i) && this.aW() || $$0.a(apv.m) && this.ag().a(apw.l);
    }
 
-   public boolean cr() {
+   public boolean cq() {
       return this.bc;
    }
 
@@ -2322,7 +2322,7 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public void w(biq $$0) {
-      qx $$1 = $$0.f(new qx());
+      qy $$1 = $$0.f(new qy());
       $$1.r("Dimension");
       this.g($$1);
       this.bb = $$0.bb;
@@ -2333,14 +2333,14 @@ public abstract class biq implements bhc, dja, ds {
    public biq b(akr $$0) {
       if (this.dL() instanceof akr && !this.dG()) {
          this.dL().ad().a("changeDimension");
-         this.af();
+         this.ae();
          this.dL().ad().a("reposition");
          ebj $$1 = this.a($$0);
          if ($$1 == null) {
             return null;
          } else {
             this.dL().ad().b("reloading");
-            biq $$2 = this.ah().a((cpv)$$0);
+            biq $$2 = this.ag().a((cpv)$$0);
             if ($$2 != null) {
                $$2.w(this);
                $$2.b($$1.a.c, $$1.a.d, $$1.a.e, $$1.c, $$2.dD());
@@ -2351,7 +2351,7 @@ public abstract class biq implements bhc, dja, ds {
                }
             }
 
-            this.cs();
+            this.cr();
             this.dL().ad().c();
             ((akr)this.dL()).g();
             $$0.g();
@@ -2363,7 +2363,7 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   protected void cs() {
+   protected void cr() {
       this.b(biq.c.e);
    }
 
@@ -2408,15 +2408,15 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    protected ehn a(hc.a $$0, l.a $$1) {
-      return ebk.a($$1, $$0, this.dj(), this.a(this.ao()));
+      return ebk.a($$1, $$0, this.dj(), this.a(this.an()));
    }
 
    protected Optional<l.a> a(akr $$0, gw $$1, boolean $$2, dha $$3) {
       return $$0.o().a($$1, $$2, $$3);
    }
 
-   public boolean ct() {
-      return !this.bO() && !this.bP();
+   public boolean cs() {
+      return !this.bN() && !this.bO();
    }
 
    public float a(cpn $$0, cpb $$1, gw $$2, dfj $$3, eam $$4, float $$5) {
@@ -2427,7 +2427,7 @@ public abstract class biq implements bhc, dja, ds {
       return true;
    }
 
-   public int cu() {
+   public int ct() {
       return 3;
    }
 
@@ -2436,19 +2436,19 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public void a(p $$0) {
-      $$0.a("Entity Type", () -> biu.a(this.ah()) + " (" + this.getClass().getCanonicalName() + ")");
+      $$0.a("Entity Type", () -> biu.a(this.ag()) + " (" + this.getClass().getCanonicalName() + ")");
       $$0.a("Entity ID", this.q);
-      $$0.a("Entity Name", () -> this.ac().getString());
+      $$0.a("Entity Name", () -> this.ab().getString());
       $$0.a("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.dq(), this.ds(), this.dw()));
       $$0.a("Entity's Block location", p.a(this.dL(), arx.a(this.dq()), arx.a(this.ds()), arx.a(this.dw())));
       ehn $$1 = this.do();
       $$0.a("Entity's Momentum", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", $$1.c, $$1.d, $$1.e));
-      $$0.a("Entity's Passengers", () -> this.cQ().toString());
-      $$0.a("Entity's Vehicle", () -> String.valueOf(this.cZ()));
+      $$0.a("Entity's Passengers", () -> this.cP().toString());
+      $$0.a("Entity's Vehicle", () -> String.valueOf(this.cY()));
    }
 
-   public boolean cv() {
-      return this.bN() && !this.M_();
+   public boolean cu() {
+      return this.bM() && !this.M_();
    }
 
    public void a_(UUID $$0) {
@@ -2457,23 +2457,23 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    @Override
-   public UUID cw() {
+   public UUID cv() {
       return this.ay;
+   }
+
+   public String cw() {
+      return this.az;
    }
 
    public String cx() {
       return this.az;
    }
 
-   public String cy() {
-      return this.az;
-   }
-
-   public boolean cz() {
+   public boolean cy() {
       return true;
    }
 
-   public static double cA() {
+   public static double cz() {
       return o;
    }
 
@@ -2482,22 +2482,22 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    @Override
-   public tl N_() {
-      return eik.a(this.cg(), this.ac()).a($$0 -> $$0.a(this.cG()).a(this.cx()));
+   public tm N_() {
+      return eik.a(this.cf(), this.ab()).a($$0 -> $$0.a(this.cF()).a(this.cw()));
    }
 
-   public void b(@Nullable tl $$0) {
+   public void b(@Nullable tm $$0) {
       this.an.b(aU, Optional.ofNullable($$0));
    }
 
    @Nullable
    @Override
-   public tl ae() {
+   public tm ad() {
       return this.an.b(aU).orElse(null);
    }
 
    @Override
-   public boolean ad() {
+   public boolean ac() {
       return this.an.b(aU).isPresent();
    }
 
@@ -2505,14 +2505,14 @@ public abstract class biq implements bhc, dja, ds {
       this.an.b(aV, $$0);
    }
 
-   public boolean cB() {
+   public boolean cA() {
       return this.an.b(aV);
    }
 
    public final void n(double $$0, double $$1, double $$2) {
       if (this.dL() instanceof akr) {
          cpc $$3 = new cpc(gw.a($$0, $$1, $$2));
-         ((akr)this.dL()).k().a(akw.g, $$3, 0, this.ai());
+         ((akr)this.dL()).k().a(akw.g, $$3, 0, this.ah());
          this.dL().d($$3.e, $$3.f);
          this.b($$0, $$1, $$2);
       }
@@ -2525,8 +2525,8 @@ public abstract class biq implements bhc, dja, ds {
          this.A();
          this.n($$5);
       } else {
-         this.af();
-         biq $$8 = this.ah().a((cpv)$$0);
+         this.ae();
+         biq $$8 = this.ag().a((cpv)$$0);
          if ($$8 == null) {
             return false;
          }
@@ -2553,7 +2553,7 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    private void A() {
-      this.cS().forEach($$0 -> {
+      this.cR().forEach($$0 -> {
          UnmodifiableIterator var1 = $$0.r.iterator();
 
          while (var1.hasNext()) {
@@ -2567,8 +2567,8 @@ public abstract class biq implements bhc, dja, ds {
       this.b(this.dq() + $$0, this.ds() + $$1, this.dw() + $$2);
    }
 
-   public boolean cC() {
-      return this.cB();
+   public boolean cB() {
+      return this.cA();
    }
 
    public void a(List<aei.b<?>> $$0) {
@@ -2581,8 +2581,8 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    @Deprecated
-   protected void cD() {
-      bjs $$0 = this.ao();
+   protected void cC() {
+      bjs $$0 = this.an();
       bir $$1 = this.a($$0);
       this.bh = $$1;
       this.bi = this.a($$0, $$1);
@@ -2590,11 +2590,11 @@ public abstract class biq implements bhc, dja, ds {
 
    public void i_() {
       bir $$0 = this.bh;
-      bjs $$1 = this.ao();
+      bjs $$1 = this.an();
       bir $$2 = this.a($$1);
       this.bh = $$2;
       this.bi = this.a($$1, $$2);
-      this.aq();
+      this.ap();
       boolean $$3 = (double)$$2.a <= 4.0 && (double)$$2.b <= 4.0;
       if (!this.dL().B && !this.am && !this.af && $$3 && ($$2.a > $$0.a || $$2.b > $$0.b) && !(this instanceof cbu)) {
          ehn $$4 = this.dj().b(0.0, (double)$$0.b / 2.0, 0.0);
@@ -2605,16 +2605,16 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public hc cE() {
+   public hc cD() {
       return hc.a((double)this.dB());
    }
 
-   public hc cF() {
-      return this.cE();
+   public hc cE() {
+      return this.cD();
    }
 
-   protected tq cG() {
-      return new tq(tq.a.c, new tq.b(this.ah(), this.cw(), this.ac()));
+   protected tr cF() {
+      return new tr(tr.a.c, new tr.b(this.ag(), this.cv(), this.ab()));
    }
 
    public boolean a(aks $$0) {
@@ -2622,12 +2622,12 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    @Override
-   public final ehi cH() {
+   public final ehi cG() {
       return this.aI;
    }
 
    public ehi g_() {
-      return this.cH();
+      return this.cG();
    }
 
    public final void a(ehi $$0) {
@@ -2642,16 +2642,16 @@ public abstract class biq implements bhc, dja, ds {
       return this.a($$0, this.a($$0));
    }
 
-   public final float cI() {
+   public final float cH() {
       return this.bi;
    }
 
    public ehn p(float $$0) {
-      return this.cJ();
+      return this.cI();
    }
 
-   protected ehn cJ() {
-      return new ehn(0.0, (double)this.cI(), (double)(this.dg() * 0.4F));
+   protected ehn cI() {
+      return new ehn(0.0, (double)this.cH(), (double)(this.df() * 0.4F));
    }
 
    public bjy a_(int $$0) {
@@ -2659,15 +2659,15 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
    }
 
-   public cpv cK() {
+   public cpv cJ() {
       return this.dL();
    }
 
    @Nullable
-   public MinecraftServer cL() {
+   public MinecraftServer cK() {
       return this.dL().n();
    }
 
@@ -2675,7 +2675,7 @@ public abstract class biq implements bhc, dja, ds {
       return bgy.d;
    }
 
-   public boolean cM() {
+   public boolean cL() {
       return false;
    }
 
@@ -2719,25 +2719,25 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public boolean cN() {
+   public boolean cM() {
       return false;
    }
 
    @Nullable
-   public bjg cO() {
+   public bjg cN() {
       return null;
    }
 
-   public final boolean cP() {
-      return this.cO() != null;
+   public final boolean cO() {
+      return this.cN() != null;
    }
 
-   public final List<biq> cQ() {
+   public final List<biq> cP() {
       return this.r;
    }
 
    @Nullable
-   public biq cR() {
+   public biq cQ() {
       return this.r.isEmpty() ? null : (biq)this.r.get(0);
    }
 
@@ -2759,55 +2759,55 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    private Stream<biq> B() {
-      return this.r.stream().flatMap(biq::cS);
+      return this.r.stream().flatMap(biq::cR);
    }
 
    @Override
-   public Stream<biq> cS() {
+   public Stream<biq> cR() {
       return Stream.concat(Stream.of(this), this.B());
    }
 
    @Override
-   public Stream<biq> cT() {
-      return Stream.concat(this.r.stream().flatMap(biq::cT), Stream.of(this));
+   public Stream<biq> cS() {
+      return Stream.concat(this.r.stream().flatMap(biq::cS), Stream.of(this));
    }
 
-   public Iterable<biq> cU() {
+   public Iterable<biq> cT() {
       return () -> this.B().iterator();
    }
 
-   public boolean cV() {
+   public boolean cU() {
       return this.B().filter($$0 -> $$0 instanceof cbu).count() == 1L;
    }
 
-   public biq cW() {
+   public biq cV() {
       biq $$0 = this;
 
-      while ($$0.bO()) {
-         $$0 = $$0.cZ();
+      while ($$0.bN()) {
+         $$0 = $$0.cY();
       }
 
       return $$0;
    }
 
    public boolean y(biq $$0) {
-      return this.cW() == $$0.cW();
+      return this.cV() == $$0.cV();
    }
 
    public boolean z(biq $$0) {
-      if (!$$0.bO()) {
+      if (!$$0.bN()) {
          return false;
       } else {
-         biq $$1 = $$0.cZ();
+         biq $$1 = $$0.cY();
          return $$1 == this ? true : this.z($$1);
       }
    }
 
-   public boolean cX() {
-      return this.cO() instanceof cbu $$0 ? $$0.g() : this.cY();
+   public boolean cW() {
+      return this.cN() instanceof cbu $$0 ? $$0.g() : this.cX();
    }
 
-   public boolean cY() {
+   public boolean cX() {
       return !this.dL().B;
    }
 
@@ -2820,34 +2820,34 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public ehn b(bjg $$0) {
-      return new ehn(this.dq(), this.cH().e, this.dw());
+      return new ehn(this.dq(), this.cG().e, this.dw());
    }
 
    @Nullable
-   public biq cZ() {
+   public biq cY() {
       return this.s;
    }
 
    @Nullable
-   public biq da() {
-      return this.s != null && this.s.cO() == this ? this.s : null;
+   public biq cZ() {
+      return this.s != null && this.s.cN() == this ? this.s : null;
    }
 
    public ear q_() {
       return ear.a;
    }
 
-   public apf db() {
+   public apf da() {
       return apf.g;
    }
 
-   protected int dc() {
+   protected int db() {
       return 1;
    }
 
-   public dt dd() {
+   public dt dc() {
       return new dt(
-         this, this.dj(), this.bG(), this.dL() instanceof akr ? (akr)this.dL() : null, this.D(), this.ac().getString(), this.N_(), this.dL().n(), this
+         this, this.dj(), this.bF(), this.dL() instanceof akr ? (akr)this.dL() : null, this.D(), this.ab().getString(), this.N_(), this.dL().n(), this
       );
    }
 
@@ -2888,10 +2888,10 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public boolean a(aqi<eal> $$0, double $$1) {
-      if (this.de()) {
+      if (this.dd()) {
          return false;
       } else {
-         ehi $$2 = this.cH().h(0.001);
+         ehi $$2 = this.cG().h(0.001);
          int $$3 = arx.a($$2.a);
          int $$4 = arx.c($$2.d);
          int $$5 = arx.a($$2.b);
@@ -2899,7 +2899,7 @@ public abstract class biq implements bhc, dja, ds {
          int $$7 = arx.a($$2.c);
          int $$8 = arx.c($$2.f);
          double $$9 = 0.0;
-         boolean $$10 = this.cz();
+         boolean $$10 = this.cy();
          boolean $$11 = false;
          ehn $$12 = ehn.b;
          int $$13 = 0;
@@ -2954,8 +2954,8 @@ public abstract class biq implements bhc, dja, ds {
       }
    }
 
-   public boolean de() {
-      ehi $$0 = this.cH().g(1.0);
+   public boolean dd() {
+      ehi $$0 = this.cG().g(1.0);
       int $$1 = arx.a($$0.a);
       int $$2 = arx.c($$0.d);
       int $$3 = arx.a($$0.c);
@@ -2967,24 +2967,24 @@ public abstract class biq implements bhc, dja, ds {
       return this.aj.getDouble($$0);
    }
 
-   public double df() {
-      return (double)this.cI() < 0.4 ? 0.0 : 0.4;
+   public double de() {
+      return (double)this.cH() < 0.4 ? 0.0 : 0.4;
    }
 
-   public final float dg() {
+   public final float df() {
       return this.bh.a;
    }
 
-   public final float dh() {
+   public final float dg() {
       return this.bh.b;
    }
 
-   public float di() {
-      return this.dh() + 0.5F;
+   public float dh() {
+      return this.dg() + 0.5F;
    }
 
-   public vd<ww> V() {
-      return new wx(this);
+   public ve<wx> di() {
+      return new wy(this);
    }
 
    public bir a(bjs $$0) {
@@ -3041,7 +3041,7 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public double c(double $$0) {
-      return this.u.c + (double)this.dg() * $$0;
+      return this.u.c + (double)this.df() * $$0;
    }
 
    public double d(double $$0) {
@@ -3057,7 +3057,7 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public double e(double $$0) {
-      return this.u.d + (double)this.dh() * $$0;
+      return this.u.d + (double)this.dg() * $$0;
    }
 
    public double dt() {
@@ -3077,7 +3077,7 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public double f(double $$0) {
-      return this.u.e + (double)this.dg() * $$0;
+      return this.u.e + (double)this.df() * $$0;
    }
 
    public double g(double $$0) {
@@ -3109,7 +3109,7 @@ public abstract class biq implements bhc, dja, ds {
       return this.l($$0).b(0.0, (double)this.bi * 0.7, 0.0);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       int $$1 = $$0.a();
       double $$2 = $$0.f();
       double $$3 = $$0.g();
@@ -3132,7 +3132,7 @@ public abstract class biq implements bhc, dja, ds {
    }
 
    public boolean dz() {
-      return !this.ah().a(apw.i);
+      return !this.ag().a(apw.i);
    }
 
    public boolean dA() {
@@ -3195,10 +3195,10 @@ public abstract class biq implements bhc, dja, ds {
       }
 
       if (this.aK.a()) {
-         this.ab();
+         this.aa();
       }
 
-      this.cQ().forEach(biq::ab);
+      this.cP().forEach(biq::aa);
       this.aZ.a($$0);
    }
 
@@ -3216,7 +3216,7 @@ public abstract class biq implements bhc, dja, ds {
       if (this.aK != null && !this.aK.b()) {
          return false;
       } else {
-         return this.bO() ? false : !this.bP() || !this.cV();
+         return this.bN() ? false : !this.bO() || !this.cU();
       }
    }
 

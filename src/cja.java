@@ -70,7 +70,7 @@ public class cja implements cdz, cpu {
    public void a(byn $$0) {
    }
 
-   public void b(qx $$0) {
+   public void b(qy $$0) {
    }
 
    public boolean a(dfj $$0, cpv $$1, gw $$2, cbu $$3) {
@@ -157,8 +157,8 @@ public class cja implements cdz, cpu {
       return bgy.d;
    }
 
-   public tl p() {
-      return tl.c(this.a());
+   public tm p() {
+      return tm.c(this.a());
    }
 
    @Override
@@ -220,15 +220,15 @@ public class cja implements cdz, cpu {
    public void a(cjf $$0, cpv $$1, bjg $$2, int $$3) {
    }
 
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
    }
 
    public Optional<cgl> h(cjf $$0) {
       return Optional.empty();
    }
 
-   public tl m(cjf $$0) {
-      return tl.c(this.j($$0));
+   public tm m(cjf $$0) {
+      return tm.c(this.j($$0));
    }
 
    public boolean i(cjf $$0) {
@@ -259,7 +259,7 @@ public class cja implements cdz, cpu {
    protected static ehj a(cpv $$0, cbu $$1, cpe.b $$2) {
       float $$3 = $$1.dD();
       float $$4 = $$1.dB();
-      ehn $$5 = $$1.bq();
+      ehn $$5 = $$1.bp();
       float $$6 = arx.b(-$$4 * (float) (Math.PI / 180.0) - (float) Math.PI);
       float $$7 = arx.a(-$$4 * (float) (Math.PI / 180.0) - (float) Math.PI);
       float $$8 = -arx.b(-$$3 * (float) (Math.PI / 180.0));

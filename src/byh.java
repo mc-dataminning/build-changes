@@ -16,8 +16,8 @@ public class byh extends byf {
    @Override
    protected void y() {
       this.p((double)this.c.u() + 0.5, (double)this.c.v() + 0.375, (double)this.c.w() + 0.5);
-      double $$0 = (double)this.ah().k() / 2.0;
-      double $$1 = (double)this.ah().l();
+      double $$0 = (double)this.ag().k() / 2.0;
+      double $$1 = (double)this.ag().l();
       this.a(new ehi(this.dq() - $$0, this.ds(), this.dw() - $$0, this.dq() + $$0, this.ds() + $$1, this.dw() + $$0));
    }
 
@@ -51,11 +51,11 @@ public class byh extends byf {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
    }
 
    @Override
@@ -76,7 +76,7 @@ public class byh extends byf {
 
          boolean $$6 = false;
          if (!$$2) {
-            this.al();
+            this.ak();
             if ($$0.fS().d) {
                for (bji $$7 : $$4) {
                   if ($$7.fR() && $$7.fS() == this) {
@@ -122,8 +122,8 @@ public class byh extends byf {
    }
 
    @Override
-   public vd<ww> V() {
-      return new wx(this, 0, this.E());
+   public ve<wx> di() {
+      return new wy(this, 0, this.E());
    }
 
    @Override

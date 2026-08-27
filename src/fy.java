@@ -11,9 +11,9 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class fy {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.item.tag.disallowed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("argument.item.id.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("arguments.item.tag.unknown", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("argument.item.tag.disallowed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("argument.item.id.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("arguments.item.tag.unknown", $$0));
    private static final char d = '{';
    private static final char e = '#';
    private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> f = SuggestionsBuilder::buildFuture;
@@ -22,7 +22,7 @@ public class fy {
    private final boolean i;
    private Either<hg<cja>, hk<cja>> j;
    @Nullable
-   private qx k;
+   private qy k;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = f;
 
    private fy(hi<cja> $$0, StringReader $$1, boolean $$2) {
@@ -98,7 +98,7 @@ public class fy {
    }
 
    private void c() throws CommandSyntaxException {
-      this.k = new rr(this.h).f();
+      this.k = new rs(this.h).f();
    }
 
    private void d() throws CommandSyntaxException {
@@ -142,9 +142,9 @@ public class fy {
       return this.c($$0);
    }
 
-   public static record a(hg<cja> a, @Nullable qx b) {
+   public static record a(hg<cja> a, @Nullable qy b) {
    }
 
-   public static record b(hk<cja> a, @Nullable qx b) {
+   public static record b(hk<cja> a, @Nullable qy b) {
    }
 }

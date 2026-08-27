@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 public class ccx extends ccs implements ccj {
    public static final double b = 4.0;
    private static final double d = 16.0;
-   public static final Predicate<bjg> c = $$0 -> $$0.ff() || $$0.bN();
+   public static final Predicate<bjg> c = $$0 -> $$0.ff() || $$0.bM();
 
    public ccx(biu<? extends ccx> $$0, cpv $$1) {
       super($$0, $$1);
@@ -71,12 +71,12 @@ public class ccx extends ccs implements ccj {
 
          int $$5 = $$2.b() ? 2007 : 2002;
          this.dL().c($$5, this.dl(), cle.c($$1));
-         this.al();
+         this.ak();
       }
    }
 
    private void x() {
-      ehi $$0 = this.cH().c(4.0, 2.0, 4.0);
+      ehi $$0 = this.cG().c(4.0, 2.0, 4.0);
 
       for (bjg $$2 : this.dL().a(bjg.class, $$0, c)) {
          double $$3 = this.f($$2);
@@ -85,8 +85,8 @@ public class ccx extends ccs implements ccj {
                $$2.a(this.dM().c(this, this.v()), 1.0F);
             }
 
-            if ($$2.bN() && $$2.bw()) {
-               $$2.aE();
+            if ($$2.bM() && $$2.bv()) {
+               $$2.aD();
             }
          }
       }
@@ -97,7 +97,7 @@ public class ccx extends ccs implements ccj {
    }
 
    private void a(List<bid> $$0, @Nullable biq $$1) {
-      ehi $$2 = this.cH().c(4.0, 2.0, 4.0);
+      ehi $$2 = this.cG().c(4.0, 2.0, 4.0);
       List<bjg> $$3 = this.dL().a(bjg.class, $$2);
       if (!$$3.isEmpty()) {
          biq $$4 = this.G();
@@ -148,7 +148,7 @@ public class ccx extends ccs implements ccj {
          $$2.a(new bid($$4));
       }
 
-      qx $$5 = $$0.v();
+      qy $$5 = $$0.v();
       if ($$5 != null && $$5.b("CustomPotionColor", 99)) {
          $$2.a($$5.h("CustomPotionColor"));
       }

@@ -75,8 +75,8 @@ public class hw {
          return new hw.a($$2, $$4, $$5.build(), new HashMap<>(), $$3);
       }
 
-      public <T> ns<T> a() {
-         return new ns<T>() {
+      public <T> nt<T> a() {
+         return new nt<T>() {
             @Override
             public hg.c<T> a(aew<T> $$0, T $$1, Lifecycle $$2) {
                hw.d<?> $$3 = a.this.d.put($$0, new hw.d($$1, $$2));
@@ -189,7 +189,7 @@ public class hw {
 
    @FunctionalInterface
    public interface e<T> {
-      void run(ns<T> var1);
+      void run(nt<T> var1);
    }
 
    static record f<T>(aew<? extends ht<? extends T>> a, Lifecycle b, Map<aew<T>, hw.i<T>> c) {

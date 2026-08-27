@@ -32,8 +32,8 @@ public class eha<T> {
       this.h.clear();
       this.g = UnsignedLong.ZERO;
       $$1.forEach($$0x -> {
-         rq $$1x = (rq)$$0x.convert(ri.a).getValue();
-         if ($$1x instanceof qx $$2) {
+         rr $$1x = (rr)$$0x.convert(rj.a).getValue();
+         if ($$1x instanceof qy $$2) {
             this.a($$2);
          } else {
             a.warn("Invalid format of events: {}", $$1x);
@@ -79,8 +79,8 @@ public class eha<T> {
       return Collections.unmodifiableSet(this.h.rowKeySet());
    }
 
-   private void a(qx $$0) {
-      qx $$1 = $$0.p("Callback");
+   private void a(qy $$0) {
+      qy $$1 = $$0.p("Callback");
       egy<T> $$2 = this.e.a($$1);
       if ($$2 != null) {
          String $$3 = $$0.l("Name");
@@ -89,16 +89,16 @@ public class eha<T> {
       }
    }
 
-   private qx a(eha.a<T> $$0) {
-      qx $$1 = new qx();
+   private qy a(eha.a<T> $$0) {
+      qy $$1 = new qy();
       $$1.a("Name", $$0.c);
       $$1.a("TriggerTime", $$0.a);
       $$1.a("Callback", this.e.a($$0.d));
       return $$1;
    }
 
-   public rd b() {
-      rd $$0 = new rd();
+   public re b() {
+      re $$0 = new re();
       this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
       return $$0;
    }

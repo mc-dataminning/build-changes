@@ -184,7 +184,7 @@ public class gdd extends MinecraftServer {
    public void a(boolean $$0) {
       this.h(() -> {
          for (aks $$1 : Lists.newArrayList(this.ac().t())) {
-            if (!$$1.cw().equals(this.u)) {
+            if (!$$1.cv().equals(this.u)) {
                this.ac().c($$1);
             }
          }

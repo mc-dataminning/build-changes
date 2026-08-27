@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.function.Function;
 
 public class ajg implements ajh {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.data.block.invalid"));
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.data.block.invalid"));
    public static final Function<String, aji.c> a = $$0 -> new aji.c() {
          @Override
          public ajh a(CommandContext<dt> $$0x) throws CommandSyntaxException {
@@ -33,7 +33,7 @@ public class ajg implements ajh {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       dfj $$1 = this.c.k().a_(this.d);
       this.c.a($$0);
       this.c.e();
@@ -41,22 +41,22 @@ public class ajg implements ajh {
    }
 
    @Override
-   public qx a() {
+   public qy a() {
       return this.c.m();
    }
 
    @Override
-   public tl b() {
-      return tl.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
+   public tm b() {
+      return tm.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
    }
 
    @Override
-   public tl a(rq $$0) {
-      return tl.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), rj.c($$0));
+   public tm a(rr $$0) {
+      return tm.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), rk.c($$0));
    }
 
    @Override
-   public tl a(ej.g $$0, double $$1, int $$2) {
-      return tl.a("commands.data.block.get", $$0, this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   public tm a(ej.g $$0, double $$1, int $$2) {
+      return tm.a("commands.data.block.get", $$0, this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

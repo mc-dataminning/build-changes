@@ -88,7 +88,7 @@ public class brj extends bqb {
 
    @Override
    public void e() {
-      this.a.G().a(this.b, (float)(this.a.aa() + 20), (float)this.a.Z());
+      this.a.G().a(this.b, (float)(this.a.Z() + 20), (float)this.a.Y());
       if (this.a.f(this.b) < 6.25) {
          this.a.L().n();
       } else {

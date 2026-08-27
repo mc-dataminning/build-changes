@@ -9,8 +9,8 @@ import java.util.Arrays;
 import java.util.UUID;
 
 public record cbx(cbx.a d) {
-   public static final tl a = tl.c("multiplayer.disconnect.expired_public_key");
-   private static final tl e = tl.c("multiplayer.disconnect.invalid_public_key_signature.new");
+   public static final tm a = tm.c("multiplayer.disconnect.expired_public_key");
+   private static final tm e = tm.c("multiplayer.disconnect.invalid_public_key_signature.new");
    public static final Duration b = Duration.ofHours(8L);
    public static final Codec<cbx> c = cbx.a.a.xmap(cbx::new, cbx::b);
 
@@ -39,11 +39,11 @@ public record cbx(cbx.a d) {
                .apply($$0, cbx.a::new)
       );
 
-      public a(so $$0) {
+      public a(sp $$0) {
          this($$0.v(), $$0.w(), $$0.a(4096));
       }
 
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.b);
          $$0.a(this.c);
          $$0.a(this.d);
@@ -75,8 +75,8 @@ public record cbx(cbx.a d) {
       }
    }
 
-   public static class b extends uk {
-      public b(tl $$0) {
+   public static class b extends ul {
+      public b(tm $$0) {
          super($$0);
       }
    }

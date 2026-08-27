@@ -59,8 +59,8 @@ public class jr implements jo {
       af $$2 = ae.a.a()
          .a(
             cji.tp,
-            tl.c("advancements.adventure.root.title"),
-            tl.c("advancements.adventure.root.description"),
+            tm.c("advancements.adventure.root.title"),
+            tm.c("advancements.adventure.root.description"),
             new aex("textures/gui/advancements/backgrounds/adventure.png"),
             ar.a,
             false,
@@ -73,21 +73,21 @@ public class jr implements jo {
          .a($$1, "adventure/root");
       af $$3 = ae.a.a()
          .a($$2)
-         .a(csw.bn, tl.c("advancements.adventure.sleep_in_bed.title"), tl.c("advancements.adventure.sleep_in_bed.description"), null, ar.a, true, true, false)
+         .a(csw.bn, tm.c("advancements.adventure.sleep_in_bed.title"), tm.c("advancements.adventure.sleep_in_bed.description"), null, ar.a, true, true, false)
          .a("slept_in_bed", cs.a.c())
          .a($$1, "adventure/sleep_in_bed");
       a($$1, $$3, crh.a.b);
       af $$4 = ae.a.a()
          .a($$2)
-         .a(cji.nL, tl.c("advancements.adventure.trade.title"), tl.c("advancements.adventure.trade.description"), null, ar.a, true, true, false)
+         .a(cji.nL, tm.c("advancements.adventure.trade.title"), tm.c("advancements.adventure.trade.description"), null, ar.a, true, true, false)
          .a("traded", df.a.c())
          .a($$1, "adventure/trade");
       ae.a.a()
          .a($$4)
          .a(
             cji.nL,
-            tl.c("advancements.adventure.trade_at_world_height.title"),
-            tl.c("advancements.adventure.trade_at_world_height.description"),
+            tm.c("advancements.adventure.trade_at_world_height.title"),
+            tm.c("advancements.adventure.trade_at_world_height.description"),
             null,
             ar.a,
             true,
@@ -98,30 +98,30 @@ public class jr implements jo {
          .a($$1, "adventure/trade_at_world_height");
       af $$5 = d(ae.a.a())
          .a($$2)
-         .a(cji.om, tl.c("advancements.adventure.kill_a_mob.title"), tl.c("advancements.adventure.kill_a_mob.description"), null, ar.a, true, true, false)
+         .a(cji.om, tm.c("advancements.adventure.kill_a_mob.title"), tm.c("advancements.adventure.kill_a_mob.description"), null, ar.a, true, true, false)
          .a(ai.a.b)
          .a($$1, "adventure/kill_a_mob");
       d(ae.a.a())
          .a($$5)
-         .a(cji.or, tl.c("advancements.adventure.kill_all_mobs.title"), tl.c("advancements.adventure.kill_all_mobs.description"), null, ar.b, true, true, false)
+         .a(cji.or, tm.c("advancements.adventure.kill_all_mobs.title"), tm.c("advancements.adventure.kill_all_mobs.description"), null, ar.b, true, true, false)
          .a(aj.a.a(100))
          .a($$1, "adventure/kill_all_mobs");
       af $$6 = ae.a.a()
          .a($$5)
-         .a(cji.nG, tl.c("advancements.adventure.shoot_arrow.title"), tl.c("advancements.adventure.shoot_arrow.description"), null, ar.a, true, true, false)
+         .a(cji.nG, tm.c("advancements.adventure.shoot_arrow.title"), tm.c("advancements.adventure.shoot_arrow.description"), null, ar.a, true, true, false)
          .a("shot_arrow", cp.a.a(be.a.a().a(bf.a.a().a(dc.a(apv.j)).a(bq.a.a().a(apw.d)))))
          .a($$1, "adventure/shoot_arrow");
       af $$7 = ae.a.a()
          .a($$5)
-         .a(cji.uV, tl.c("advancements.adventure.throw_trident.title"), tl.c("advancements.adventure.throw_trident.description"), null, ar.a, true, true, false)
+         .a(cji.uV, tm.c("advancements.adventure.throw_trident.title"), tm.c("advancements.adventure.throw_trident.description"), null, ar.a, true, true, false)
          .a("shot_trident", cp.a.a(be.a.a().a(bf.a.a().a(dc.a(apv.j)).a(bq.a.a().a(biu.bb)))))
          .a($$1, "adventure/throw_trident");
       ae.a.a()
          .a($$7)
          .a(
             cji.uV,
-            tl.c("advancements.adventure.very_very_frightening.title"),
-            tl.c("advancements.adventure.very_very_frightening.description"),
+            tm.c("advancements.adventure.very_very_frightening.title"),
+            tm.c("advancements.adventure.very_very_frightening.description"),
             null,
             ar.a,
             true,
@@ -134,8 +134,8 @@ public class jr implements jo {
          .a($$4)
          .a(
             csw.ef,
-            tl.c("advancements.adventure.summon_iron_golem.title"),
-            tl.c("advancements.adventure.summon_iron_golem.description"),
+            tm.c("advancements.adventure.summon_iron_golem.title"),
+            tm.c("advancements.adventure.summon_iron_golem.description"),
             null,
             ar.c,
             true,
@@ -146,7 +146,7 @@ public class jr implements jo {
          .a($$1, "adventure/summon_iron_golem");
       ae.a.a()
          .a($$6)
-         .a(cji.nH, tl.c("advancements.adventure.sniper_duel.title"), tl.c("advancements.adventure.sniper_duel.description"), null, ar.b, true, true, false)
+         .a(cji.nH, tm.c("advancements.adventure.sniper_duel.title"), tm.c("advancements.adventure.sniper_duel.description"), null, ar.b, true, true, false)
          .a(aj.a.a(50))
          .a("killed_skeleton", ce.a.a(bq.a.a().a(biu.aJ).a(bh.a(cl.c.b(50.0))), bf.a.a().a(dc.a(apv.j))))
          .a($$1, "adventure/sniper_duel");
@@ -154,8 +154,8 @@ public class jr implements jo {
          .a($$5)
          .a(
             cji.uz,
-            tl.c("advancements.adventure.totem_of_undying.title"),
-            tl.c("advancements.adventure.totem_of_undying.description"),
+            tm.c("advancements.adventure.totem_of_undying.title"),
+            tm.c("advancements.adventure.totem_of_undying.description"),
             null,
             ar.c,
             true,
@@ -166,15 +166,15 @@ public class jr implements jo {
          .a($$1, "adventure/totem_of_undying");
       af $$8 = ae.a.a()
          .a($$2)
-         .a(cji.uZ, tl.c("advancements.adventure.ol_betsy.title"), tl.c("advancements.adventure.ol_betsy.description"), null, ar.a, true, true, false)
+         .a(cji.uZ, tm.c("advancements.adventure.ol_betsy.title"), tm.c("advancements.adventure.ol_betsy.description"), null, ar.a, true, true, false)
          .a("shot_crossbow", cv.a.a(cji.uZ))
          .a($$1, "adventure/ol_betsy");
       ae.a.a()
          .a($$8)
          .a(
             cji.uZ,
-            tl.c("advancements.adventure.whos_the_pillager_now.title"),
-            tl.c("advancements.adventure.whos_the_pillager_now.description"),
+            tm.c("advancements.adventure.whos_the_pillager_now.title"),
+            tm.c("advancements.adventure.whos_the_pillager_now.description"),
             null,
             ar.a,
             true,
@@ -187,8 +187,8 @@ public class jr implements jo {
          .a($$8)
          .a(
             cji.uZ,
-            tl.c("advancements.adventure.two_birds_one_arrow.title"),
-            tl.c("advancements.adventure.two_birds_one_arrow.description"),
+            tm.c("advancements.adventure.two_birds_one_arrow.title"),
+            tm.c("advancements.adventure.two_birds_one_arrow.description"),
             null,
             ar.b,
             true,
@@ -200,7 +200,7 @@ public class jr implements jo {
          .a($$1, "adventure/two_birds_one_arrow");
       ae.a.a()
          .a($$8)
-         .a(cji.uZ, tl.c("advancements.adventure.arbalistic.title"), tl.c("advancements.adventure.arbalistic.description"), null, ar.b, true, true, true)
+         .a(cji.uZ, tm.c("advancements.adventure.arbalistic.title"), tm.c("advancements.adventure.arbalistic.description"), null, ar.b, true, true, true)
          .a(aj.a.a(85))
          .a("arbalistic", cd.a.a(cl.d.a(5)))
          .a($$1, "adventure/arbalistic");
@@ -208,8 +208,8 @@ public class jr implements jo {
          .a($$2)
          .a(
             cdb.s(),
-            tl.c("advancements.adventure.voluntary_exile.title"),
-            tl.c("advancements.adventure.voluntary_exile.description"),
+            tm.c("advancements.adventure.voluntary_exile.title"),
+            tm.c("advancements.adventure.voluntary_exile.description"),
             null,
             ar.a,
             true,
@@ -222,8 +222,8 @@ public class jr implements jo {
          .a($$9)
          .a(
             cdb.s(),
-            tl.c("advancements.adventure.hero_of_the_village.title"),
-            tl.c("advancements.adventure.hero_of_the_village.description"),
+            tm.c("advancements.adventure.hero_of_the_village.title"),
+            tm.c("advancements.adventure.hero_of_the_village.description"),
             null,
             ar.b,
             true,
@@ -237,8 +237,8 @@ public class jr implements jo {
          .a($$2)
          .a(
             csw.pg.k(),
-            tl.c("advancements.adventure.honey_block_slide.title"),
-            tl.c("advancements.adventure.honey_block_slide.description"),
+            tm.c("advancements.adventure.honey_block_slide.title"),
+            tm.c("advancements.adventure.honey_block_slide.description"),
             null,
             ar.a,
             true,
@@ -249,7 +249,7 @@ public class jr implements jo {
          .a($$1, "adventure/honey_block_slide");
       ae.a.a()
          .a($$6)
-         .a(csw.pd.k(), tl.c("advancements.adventure.bullseye.title"), tl.c("advancements.adventure.bullseye.description"), null, ar.b, true, true, false)
+         .a(csw.pd.k(), tm.c("advancements.adventure.bullseye.title"), tm.c("advancements.adventure.bullseye.description"), null, ar.b, true, true, false)
          .a(aj.a.a(50))
          .a("bullseye", de.a.a(cl.d.a(15), Optional.of(bq.a(bq.a.a().a(bh.a(cl.c.b(30.0)))))))
          .a($$1, "adventure/bullseye");
@@ -257,8 +257,8 @@ public class jr implements jo {
          .a($$3)
          .a(
             cji.oN,
-            tl.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.title"),
-            tl.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.description"),
+            tm.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.title"),
+            tm.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.description"),
             null,
             ar.a,
             true,
@@ -271,8 +271,8 @@ public class jr implements jo {
          .a($$2)
          .a(
             cji.lB,
-            tl.c("advancements.adventure.lightning_rod_with_villager_no_fire.title"),
-            tl.c("advancements.adventure.lightning_rod_with_villager_no_fire.description"),
+            tm.c("advancements.adventure.lightning_rod_with_villager_no_fire.title"),
+            tm.c("advancements.adventure.lightning_rod_with_villager_no_fire.description"),
             null,
             ar.a,
             true,
@@ -285,8 +285,8 @@ public class jr implements jo {
          .a($$2)
          .a(
             cji.qj,
-            tl.c("advancements.adventure.spyglass_at_parrot.title"),
-            tl.c("advancements.adventure.spyglass_at_parrot.description"),
+            tm.c("advancements.adventure.spyglass_at_parrot.title"),
+            tm.c("advancements.adventure.spyglass_at_parrot.description"),
             null,
             ar.a,
             true,
@@ -299,8 +299,8 @@ public class jr implements jo {
          .a($$10)
          .a(
             cji.qj,
-            tl.c("advancements.adventure.spyglass_at_ghast.title"),
-            tl.c("advancements.adventure.spyglass_at_ghast.description"),
+            tm.c("advancements.adventure.spyglass_at_ghast.title"),
+            tm.c("advancements.adventure.spyglass_at_ghast.description"),
             null,
             ar.a,
             true,
@@ -313,8 +313,8 @@ public class jr implements jo {
          .a($$3)
          .a(
             cji.eC,
-            tl.c("advancements.adventure.play_jukebox_in_meadows.title"),
-            tl.c("advancements.adventure.play_jukebox_in_meadows.description"),
+            tm.c("advancements.adventure.play_jukebox_in_meadows.title"),
+            tm.c("advancements.adventure.play_jukebox_in_meadows.description"),
             null,
             ar.a,
             true,
@@ -327,8 +327,8 @@ public class jr implements jo {
          .a($$11)
          .a(
             cji.qj,
-            tl.c("advancements.adventure.spyglass_at_dragon.title"),
-            tl.c("advancements.adventure.spyglass_at_dragon.description"),
+            tm.c("advancements.adventure.spyglass_at_dragon.title"),
+            tm.c("advancements.adventure.spyglass_at_dragon.description"),
             null,
             ar.a,
             true,
@@ -341,8 +341,8 @@ public class jr implements jo {
          .a($$2)
          .a(
             cji.pL,
-            tl.c("advancements.adventure.fall_from_world_height.title"),
-            tl.c("advancements.adventure.fall_from_world_height.description"),
+            tm.c("advancements.adventure.fall_from_world_height.title"),
+            tm.c("advancements.adventure.fall_from_world_height.description"),
             null,
             ar.a,
             true,
@@ -355,8 +355,8 @@ public class jr implements jo {
          .a($$5)
          .a(
             csw.qH,
-            tl.c("advancements.adventure.kill_mob_near_sculk_catalyst.title"),
-            tl.c("advancements.adventure.kill_mob_near_sculk_catalyst.description"),
+            tm.c("advancements.adventure.kill_mob_near_sculk_catalyst.title"),
+            tm.c("advancements.adventure.kill_mob_near_sculk_catalyst.description"),
             null,
             ar.b,
             true,
@@ -369,8 +369,8 @@ public class jr implements jo {
          .a($$2)
          .a(
             csw.qD,
-            tl.c("advancements.adventure.avoid_vibration.title"),
-            tl.c("advancements.adventure.avoid_vibration.description"),
+            tm.c("advancements.adventure.avoid_vibration.title"),
+            tm.c("advancements.adventure.avoid_vibration.description"),
             null,
             ar.a,
             true,
@@ -381,14 +381,14 @@ public class jr implements jo {
          .a($$1, "adventure/avoid_vibration");
       af $$12 = c(ae.a.a())
          .a($$2)
-         .a(cji.wv, tl.c("advancements.adventure.salvage_sherd.title"), tl.c("advancements.adventure.salvage_sherd.description"), null, ar.a, true, true, false)
+         .a(cji.wv, tm.c("advancements.adventure.salvage_sherd.title"), tm.c("advancements.adventure.salvage_sherd.description"), null, ar.a, true, true, false)
          .a($$1, "adventure/salvage_sherd");
       ae.a.a()
          .a($$12)
          .a(
             ddk.a(new ddk.a(cji.pX, cji.wW, cji.pX, cji.wU)),
-            tl.c("advancements.adventure.craft_decorated_pot_using_only_sherds.title"),
-            tl.c("advancements.adventure.craft_decorated_pot_using_only_sherds.description"),
+            tm.c("advancements.adventure.craft_decorated_pot_using_only_sherds.title"),
+            tm.c("advancements.adventure.craft_decorated_pot_using_only_sherds.description"),
             null,
             ar.a,
             true,
@@ -404,8 +404,8 @@ public class jr implements jo {
          .a($$2)
          .a(
             new cjf(cji.wy),
-            tl.c("advancements.adventure.trim_with_any_armor_pattern.title"),
-            tl.c("advancements.adventure.trim_with_any_armor_pattern.description"),
+            tm.c("advancements.adventure.trim_with_any_armor_pattern.title"),
+            tm.c("advancements.adventure.trim_with_any_armor_pattern.description"),
             null,
             ar.a,
             true,
@@ -417,8 +417,8 @@ public class jr implements jo {
          .a($$13)
          .a(
             new cjf(cji.wK),
-            tl.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.title"),
-            tl.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.description"),
+            tm.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.title"),
+            tm.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.description"),
             null,
             ar.b,
             true,
@@ -431,8 +431,8 @@ public class jr implements jo {
          .a($$2)
          .a(
             cji.ef,
-            tl.c("advancements.adventure.read_power_from_chiseled_bookshelf.title"),
-            tl.c("advancements.adventure.read_power_from_chiseled_bookshelf.description"),
+            tm.c("advancements.adventure.read_power_from_chiseled_bookshelf.title"),
+            tm.c("advancements.adventure.read_power_from_chiseled_bookshelf.description"),
             null,
             ar.a,
             true,
@@ -511,8 +511,8 @@ public class jr implements jo {
          .a($$1)
          .a(
             cji.oZ,
-            tl.c("advancements.adventure.adventuring_time.title"),
-            tl.c("advancements.adventure.adventuring_time.description"),
+            tm.c("advancements.adventure.adventuring_time.title"),
+            tm.c("advancements.adventure.adventuring_time.description"),
             null,
             ar.b,
             true,

@@ -35,13 +35,13 @@ public class fbk extends etm<fbk.a> {
       5, new ThreadFactoryBuilder().setNameFormat("Server Pinger #%d").setDaemon(true).setUncaughtExceptionHandler(new r(E)).build()
    );
    private static final aex G = new aex("textures/misc/unknown_server.png");
-   static final tl H = tl.c("lanServer.scanning");
-   static final tl I = tl.c("multiplayer.status.cannot_resolve").a($$0 -> $$0.a(-65536));
-   static final tl J = tl.c("multiplayer.status.cannot_connect").a($$0 -> $$0.a(-65536));
-   static final tl K = tl.c("multiplayer.status.incompatible");
-   static final tl L = tl.c("multiplayer.status.no_connection");
-   static final tl M = tl.c("multiplayer.status.pinging");
-   static final tl N = tl.c("multiplayer.status.online");
+   static final tm H = tm.c("lanServer.scanning");
+   static final tm I = tm.c("multiplayer.status.cannot_resolve").a($$0 -> $$0.a(-65536));
+   static final tm J = tm.c("multiplayer.status.cannot_connect").a($$0 -> $$0.a(-65536));
+   static final tm K = tm.c("multiplayer.status.incompatible");
+   static final tm L = tm.c("multiplayer.status.no_connection");
+   static final tm M = tm.c("multiplayer.status.pinging");
+   static final tm N = tm.c("multiplayer.status.online");
    private final fbg O;
    private final List<fbk.d> P = Lists.newArrayList();
    private final fbk.a Q = new fbk.b();
@@ -61,7 +61,7 @@ public class fbk extends etm<fbk.a> {
 
    public void a(@Nullable fbk.a $$0) {
       super.a($$0);
-      this.O.C();
+      this.O.D();
    }
 
    @Override
@@ -96,7 +96,7 @@ public class fbk extends etm<fbk.a> {
          int $$6 = this.h($$5);
          int $$7 = this.i($$5);
          if ($$7 >= this.g && $$6 <= this.h) {
-            this.c.aV().b(tl.a("multiplayer.lan.server_found", $$4.d()));
+            this.c.aV().b(tm.a("multiplayer.lan.server_found", $$4.d()));
          }
       }
    }
@@ -132,15 +132,15 @@ public class fbk extends etm<fbk.a> {
       }
 
       @Override
-      public tl a() {
+      public tm a() {
          return fbk.H;
       }
    }
 
    public static class c extends fbk.a {
       private static final int c = 32;
-      private static final tl d = tl.c("lanServer.title");
-      private static final tl e = tl.c("selectServer.hiddenAddress");
+      private static final tm d = tm.c("lanServer.title");
+      private static final tm e = tm.c("selectServer.hiddenAddress");
       private final fbg f;
       protected final eqv a;
       protected final gde b;
@@ -179,12 +179,12 @@ public class fbk extends etm<fbk.a> {
       }
 
       @Override
-      public tl a() {
-         return tl.a("narrator.select", this.d());
+      public tm a() {
+         return tm.a("narrator.select", this.d());
       }
 
-      public tl d() {
-         return tl.h().b(d).b(tk.u).f(this.b.a());
+      public tm d() {
+         return tm.h().b(d).b(tl.u).f(this.b.a());
       }
    }
 
@@ -212,11 +212,11 @@ public class fbk extends etm<fbk.a> {
          if (!this.g.i) {
             this.g.i = true;
             this.g.f = -2L;
-            this.g.d = tk.a;
-            this.g.c = tk.a;
+            this.g.d = tl.a;
+            this.g.c = tl.a;
             fbk.F.submit(() -> {
                try {
-                  this.e.D().a(this.g, () -> this.f.execute(this::b));
+                  this.e.E().a(this.g, () -> this.f.execute(this::b));
                } catch (UnknownHostException var2x) {
                   this.g.f = -1L;
                   this.g.d = fbk.I;
@@ -235,12 +235,12 @@ public class fbk extends etm<fbk.a> {
             $$0.a(this.f.h, $$11.get($$12), $$3 + 32 + 3, $$2 + 12 + 9 * $$12, -8355712, false);
          }
 
-         tl $$13 = (tl)($$10 ? this.g.h.e().a(n.m) : this.g.c);
+         tm $$13 = (tm)($$10 ? this.g.h.e().a(n.m) : this.g.c);
          int $$14 = this.f.h.a($$13);
          $$0.a(this.f.h, $$13, $$3 + $$4 - $$14 - 15 - 2, $$2 + 1, -8355712, false);
          aex $$15;
-         List<tl> $$17;
-         tl $$16;
+         List<tm> $$17;
+         tm $$16;
          if ($$10) {
             $$15 = fbk.a;
             $$16 = fbk.K;
@@ -264,7 +264,7 @@ public class fbk extends etm<fbk.a> {
                $$16 = fbk.L;
                $$17 = Collections.emptyList();
             } else {
-               $$16 = tl.a("multiplayer.status.ping", this.g.f);
+               $$16 = tm.a("multiplayer.status.ping", this.g.f);
                $$17 = this.g.j;
             }
          } else {
@@ -323,7 +323,7 @@ public class fbk extends etm<fbk.a> {
                }
             }
 
-            if ($$1 < this.e.E().c() - 1) {
+            if ($$1 < this.e.F().c() - 1) {
                if ($$35 < 16 && $$36 > 16) {
                   $$0.a(fbk.C, $$3, $$2, 32, 32);
                } else {
@@ -342,7 +342,7 @@ public class fbk extends etm<fbk.a> {
       }
 
       public void b() {
-         this.e.E().b();
+         this.e.F().b();
       }
 
       protected void a(esf $$0, int $$1, int $$2, aex $$3) {
@@ -379,7 +379,7 @@ public class fbk extends etm<fbk.a> {
                return true;
             }
 
-            if ($$0 == 264 && $$4 < this.e.E().c() - 1 || $$0 == 265 && $$4 > 0) {
+            if ($$0 == 264 && $$4 < this.e.F().c() - 1 || $$0 == 265 && $$4 > 0) {
                this.a($$4, $$0 == 264 ? $$4 + 1 : $$4 - 1);
                return true;
             }
@@ -389,8 +389,8 @@ public class fbk extends etm<fbk.a> {
       }
 
       private void a(int $$0, int $$1) {
-         this.e.E().a($$0, $$1);
-         this.e.l.a(this.e.E());
+         this.e.F().a($$0, $$1);
+         this.e.l.a(this.e.F());
          fbk.a $$2 = this.e.l.i().get($$1);
          this.e.l.a($$2);
          fbk.this.f($$2);
@@ -413,7 +413,7 @@ public class fbk extends etm<fbk.a> {
                return true;
             }
 
-            if ($$3 < 16.0 && $$4 > 16.0 && $$5 < this.e.E().c() - 1) {
+            if ($$3 < 16.0 && $$4 > 16.0 && $$5 < this.e.F().c() - 1) {
                this.a($$5, $$5 + 1);
                return true;
             }
@@ -433,31 +433,31 @@ public class fbk extends etm<fbk.a> {
       }
 
       @Override
-      public tl a() {
-         ty $$0 = tl.h();
-         $$0.b(tl.a("narrator.select", this.g.a));
-         $$0.b(tk.s);
+      public tm a() {
+         tz $$0 = tm.h();
+         $$0.b(tm.a("narrator.select", this.g.a));
+         $$0.b(tl.s);
          if (!this.f()) {
             $$0.b(fbk.K);
-            $$0.b(tk.s);
-            $$0.b(tl.a("multiplayer.status.version.narration", this.g.h));
-            $$0.b(tk.s);
-            $$0.b(tl.a("multiplayer.status.motd.narration", this.g.d));
+            $$0.b(tl.s);
+            $$0.b(tm.a("multiplayer.status.version.narration", this.g.h));
+            $$0.b(tl.s);
+            $$0.b(tm.a("multiplayer.status.motd.narration", this.g.d));
          } else if (this.g.f < 0L) {
             $$0.b(fbk.L);
          } else if (!this.e()) {
             $$0.b(fbk.M);
          } else {
             $$0.b(fbk.N);
-            $$0.b(tk.s);
-            $$0.b(tl.a("multiplayer.status.ping.narration", this.g.f));
-            $$0.b(tk.s);
-            $$0.b(tl.a("multiplayer.status.motd.narration", this.g.d));
+            $$0.b(tl.s);
+            $$0.b(tm.a("multiplayer.status.ping.narration", this.g.f));
+            $$0.b(tl.s);
+            $$0.b(tm.a("multiplayer.status.motd.narration", this.g.d));
             if (this.g.e != null) {
-               $$0.b(tk.s);
-               $$0.b(tl.a("multiplayer.status.player_count.narration", this.g.e.b(), this.g.e.a()));
-               $$0.b(tk.s);
-               $$0.b(tn.a(this.g.j, tl.b(", ")));
+               $$0.b(tl.s);
+               $$0.b(tm.a("multiplayer.status.player_count.narration", this.g.e.b(), this.g.e.a()));
+               $$0.b(tl.s);
+               $$0.b(to.a(this.g.j, tm.b(", ")));
             }
          }
 

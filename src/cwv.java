@@ -11,7 +11,7 @@ public class cwv extends csi {
    @Override
    public void a(cpv $$0, gw $$1, dfj $$2, @Nullable bjg $$3, cjf $$4) {
       super.a($$0, $$1, $$2, $$3, $$4);
-      qx $$5 = cgy.a($$4);
+      qy $$5 = cgy.a($$4);
       if ($$5 != null && $$5.e("RecordItem")) {
          $$0.a($$1, $$2.a(a, Boolean.valueOf(true)), 2);
       }

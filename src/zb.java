@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class zb implements vd<ww> {
+public class zb implements ve<wx> {
    private final EnumSet<zb.a> a;
    private final List<zb.b> b;
 
@@ -26,9 +26,9 @@ public class zb implements vd<ww> {
       return new zb($$1, $$0);
    }
 
-   public zb(so $$0) {
+   public zb(sp $$0) {
       this.a = $$0.a(zb.a.class);
-      this.b = $$0.a((so.a<zb.b>)($$0x -> {
+      this.b = $$0.a((sp.a<zb.b>)($$0x -> {
          zb.c $$1 = new zb.c($$0x.o());
 
          for (zb.a $$2 : this.a) {
@@ -40,7 +40,7 @@ public class zb implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a, zb.a.class);
       $$0.a(this.b, ($$0x, $$1) -> {
          $$0x.a($$1.a());
@@ -51,7 +51,7 @@ public class zb implements vd<ww> {
       });
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -82,11 +82,11 @@ public class zb implements vd<ww> {
          $$0.a($$2.getName(), 16);
          $$0.a($$2.getProperties());
       }),
-      b(($$0, $$1) -> $$0.g = $$1.c(ub.a::a), ($$0, $$1) -> $$0.a($$1.g, ub.a::a)),
+      b(($$0, $$1) -> $$0.g = $$1.c(uc.a::a), ($$0, $$1) -> $$0.a($$1.g, uc.a::a)),
       c(($$0, $$1) -> $$0.e = cps.a($$1.m()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.m(), ($$0, $$1) -> $$0.c($$1.d())),
-      f(($$0, $$1) -> $$0.f = $$1.c(so::l), ($$0, $$1) -> $$0.a($$1.f(), so::a));
+      f(($$0, $$1) -> $$0.f = $$1.c(sp::l), ($$0, $$1) -> $$0.a($$1.f(), sp::a));
 
       final zb.a.a g;
       final zb.a.b h;
@@ -97,18 +97,18 @@ public class zb implements vd<ww> {
       }
 
       public interface a {
-         void read(zb.c var1, so var2);
+         void read(zb.c var1, sp var2);
       }
 
       public interface b {
-         void write(so var1, zb.b var2);
+         void write(sp var1, zb.b var2);
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, cps e, @Nullable tl f, @Nullable ub.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, cps e, @Nullable tm f, @Nullable uc.a g) {
 
       b(aks $$0) {
-         this($$0.cw(), $$0.fQ(), true, $$0.c.l(), $$0.e.b(), $$0.L(), x.a($$0.aa(), ub::a));
+         this($$0.cv(), $$0.fQ(), true, $$0.c.l(), $$0.e.b(), $$0.L(), x.a($$0.Z(), uc::a));
       }
    }
 
@@ -120,9 +120,9 @@ public class zb implements vd<ww> {
       int d;
       cps e;
       @Nullable
-      tl f;
+      tm f;
       @Nullable
-      ub.a g;
+      uc.a g;
 
       c(UUID $$0) {
          this.e = cps.e;

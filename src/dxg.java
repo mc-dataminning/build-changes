@@ -73,11 +73,11 @@ public class dxg {
          this.a($$2);
       }
 
-      protected a(dvz $$0, qx $$1) {
+      protected a(dvz $$0, qy $$1) {
          super($$0, $$1);
       }
 
-      public a(qx $$0) {
+      public a(qy $$0) {
          this(dvz.e, $$0);
       }
 
@@ -145,7 +145,7 @@ public class dxg {
          this.d = $$1.f();
       }
 
-      public b(qx $$0) {
+      public b(qy $$0) {
          super(dvz.f, $$0);
          this.d = $$0.h("Seed");
       }
@@ -156,7 +156,7 @@ public class dxg {
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
          super.a($$0, $$1);
          $$1.a("Seed", this.d);
       }
@@ -201,7 +201,7 @@ public class dxg {
          this.a($$3);
       }
 
-      public c(qx $$0) {
+      public c(qy $$0) {
          super(dvz.g, $$0);
       }
 
@@ -257,7 +257,7 @@ public class dxg {
          this.a($$2);
       }
 
-      public d(qx $$0) {
+      public d(qy $$0) {
          super(dvz.h, $$0);
       }
 
@@ -313,7 +313,7 @@ public class dxg {
          this.a($$2);
       }
 
-      public e(qx $$0) {
+      public e(qy $$0) {
          super(dvz.i, $$0);
       }
 
@@ -378,7 +378,7 @@ public class dxg {
          this.a($$3);
       }
 
-      public f(qx $$0) {
+      public f(qy $$0) {
          super(dvz.j, $$0);
       }
 
@@ -478,7 +478,7 @@ public class dxg {
          this.a($$2);
       }
 
-      public g(qx $$0) {
+      public g(qy $$0) {
          super(dvz.k, $$0);
       }
 
@@ -524,13 +524,13 @@ public class dxg {
          this.d = $$1.a(3) == 0;
       }
 
-      public h(qx $$0) {
+      public h(qy $$0) {
          super(dvz.l, $$0);
          this.d = $$0.q("Chest");
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
          super.a($$0, $$1);
          $$1.a("Chest", this.d);
       }
@@ -583,7 +583,7 @@ public class dxg {
          this.a($$2);
       }
 
-      public i(qx $$0) {
+      public i(qy $$0) {
          super(dvz.m, $$0);
       }
 
@@ -630,13 +630,13 @@ public class dxg {
          this.d = $$1.a(3) == 0;
       }
 
-      public j(qx $$0) {
+      public j(qy $$0) {
          super(dvz.n, $$0);
          this.d = $$0.q("Chest");
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
          super.a($$0, $$1);
          $$1.a("Chest", this.d);
       }
@@ -689,7 +689,7 @@ public class dxg {
          this.a($$2);
       }
 
-      public k(qx $$0) {
+      public k(qy $$0) {
          super(dvz.o, $$0);
       }
 
@@ -830,13 +830,13 @@ public class dxg {
          this.a($$2);
       }
 
-      public l(qx $$0) {
+      public l(qy $$0) {
          super(dvz.p, $$0);
          this.d = $$0.q("Mob");
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
          super.a($$0, $$1);
          $$1.a("Mob", this.d);
       }
@@ -901,12 +901,12 @@ public class dxg {
          super($$0, $$1, $$2);
       }
 
-      public m(dvz $$0, qx $$1) {
+      public m(dvz $$0, qy $$1) {
          super($$0, $$1);
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
       }
 
       private int a(List<dxg.n> $$0) {
@@ -1075,7 +1075,7 @@ public class dxg {
          this.a($$2);
       }
 
-      public o(qx $$0) {
+      public o(qy $$0) {
          super(dvz.q, $$0);
       }
 
@@ -1132,7 +1132,7 @@ public class dxg {
          this.a($$2);
       }
 
-      public p(qx $$0) {
+      public p(qy $$0) {
          super(dvz.r, $$0);
       }
 
@@ -1201,7 +1201,7 @@ public class dxg {
          }
       }
 
-      public q(qx $$0) {
+      public q(qy $$0) {
          super(dvz.s, $$0);
       }
    }

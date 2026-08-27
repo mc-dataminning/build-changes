@@ -21,8 +21,8 @@ public class ftv extends fun<bze, ffk> {
          if ($$0.gf()) {
             bjg $$5 = $$0.gg();
             if ($$5 != null) {
-               ehn $$6 = this.a($$5, (double)$$5.dh() * 0.5, 1.0F);
-               ehn $$7 = this.a($$0, (double)$$0.cI(), 1.0F);
+               ehn $$6 = this.a($$5, (double)$$5.dg() * 0.5, 1.0F);
+               ehn $$7 = this.a($$0, (double)$$0.cH(), 1.0F);
                return $$1.a(new ehi($$7.c, $$7.d, $$7.e, $$6.c, $$6.d, $$6.e));
             }
          }
@@ -45,10 +45,10 @@ public class ftv extends fun<bze, ffk> {
          float $$7 = $$0.G($$2);
          float $$8 = $$0.gh() + $$2;
          float $$9 = $$8 * 0.5F % 1.0F;
-         float $$10 = $$0.cI();
+         float $$10 = $$0.cH();
          $$3.a();
          $$3.a(0.0F, $$10, 0.0F);
-         ehn $$11 = this.a($$6, (double)$$6.dh() * 0.5, $$2);
+         ehn $$11 = this.a($$6, (double)$$6.dg() * 0.5, $$2);
          ehn $$12 = this.a($$0, (double)$$10, $$2);
          ehn $$13 = $$11.d($$12);
          float $$14 = (float)($$13.f() + 1.0);

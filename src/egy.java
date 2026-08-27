@@ -19,8 +19,8 @@ public interface egy<T> {
          return this.b;
       }
 
-      public abstract void a(qx var1, C var2);
+      public abstract void a(qy var1, C var2);
 
-      public abstract C b(qx var1);
+      public abstract C b(qy var1);
    }
 }

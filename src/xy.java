@@ -1,15 +1,15 @@
-public record xy(tl a, th.b b) implements vd<ww> {
-   public xy(so $$0) {
-      this($$0.l(), new th.b($$0));
+public record xy(tm a, ti.b b) implements ve<wx> {
+   public xy(sp $$0) {
+      this($$0.l(), new ti.b($$0));
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       this.b.a($$0);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -18,7 +18,7 @@ public record xy(tl a, th.b b) implements vd<ww> {
       return true;
    }
 
-   public th.b d() {
+   public ti.b d() {
       return this.b;
    }
 }

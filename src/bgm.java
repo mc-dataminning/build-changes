@@ -38,7 +38,7 @@ public class bgm {
    private volatile int m;
    private volatile int n;
    private final Object2FloatMap<aew<cpv>> o = Object2FloatMaps.synchronize(new Object2FloatOpenCustomHashMap(ac.k()));
-   private volatile tl p = tl.c("optimizeWorld.stage.counting");
+   private volatile tm p = tm.c("optimizeWorld.stage.counting");
    private static final Pattern q = Pattern.compile("^r\\.(-?[0-9]+)\\.(-?[0-9]+)\\.mca$");
    private final ecc r;
 
@@ -52,7 +52,7 @@ public class bgm {
       this.g = b.newThread(this::i);
       this.g.setUncaughtExceptionHandler(($$0x, $$1x) -> {
          a.error("Error upgrading world", $$1x);
-         this.p = tl.c("optimizeWorld.stage.failed");
+         this.p = tm.c("optimizeWorld.stage.failed");
          this.j = true;
       });
       this.g.start();
@@ -91,7 +91,7 @@ public class bgm {
 
          ImmutableMap<aew<cpv>, dih> $$8 = $$5.build();
          long $$9 = ac.b();
-         this.p = tl.c("optimizeWorld.stage.upgrading");
+         this.p = tm.c("optimizeWorld.stage.upgrading");
 
          while (this.i) {
             boolean $$10 = false;
@@ -105,11 +105,11 @@ public class bgm {
                   boolean $$16 = false;
 
                   try {
-                     qx $$17 = $$14.e($$15).join().orElse(null);
+                     qy $$17 = $$14.e($$15).join().orElse(null);
                      if ($$17 != null) {
                         int $$18 = dih.a($$17);
                         dhg $$19 = this.c.e(je.b($$12)).b();
-                        qx $$20 = $$14.a($$12, () -> this.r, $$17, $$19.b());
+                        qy $$20 = $$14.a($$12, () -> this.r, $$17, $$19.b());
                         cpc $$21 = new cpc($$20.h("xPos"), $$20.h("zPos"));
                         if (!$$21.equals($$15)) {
                            a.warn("Chunk {} has invalid position {}", $$15, $$21);
@@ -121,10 +121,10 @@ public class bgm {
                            $$20.r("Heightmaps");
                            $$22 = $$22 || $$20.e("isLightOn");
                            $$20.r("isLightOn");
-                           rd $$23 = $$20.c("sections", 10);
+                           re $$23 = $$20.c("sections", 10);
 
                            for (int $$24 = 0; $$24 < $$23.size(); $$24++) {
-                              qx $$25 = $$23.a($$24);
+                              qy $$25 = $$23.a($$24);
                               $$22 = $$22 || $$25.e("BlockLight");
                               $$25.r("BlockLight");
                               $$22 = $$22 || $$25.e("SkyLight");
@@ -166,7 +166,7 @@ public class bgm {
             }
          }
 
-         this.p = tl.c("optimizeWorld.stage.finished");
+         this.p = tm.c("optimizeWorld.stage.finished");
          UnmodifiableIterator var33 = $$8.values().iterator();
 
          while (var33.hasNext()) {
@@ -247,7 +247,7 @@ public class bgm {
       return this.n;
    }
 
-   public tl h() {
+   public tm h() {
       return this.p;
    }
 }

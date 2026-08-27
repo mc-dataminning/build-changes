@@ -9,10 +9,10 @@ public class dcl extends dcv implements bhc {
    public static final String c = "Pattern";
    public static final String d = "Color";
    @Nullable
-   private tl e;
+   private tm e;
    private cht f;
    @Nullable
-   private rd g;
+   private re g;
    @Nullable
    private List<Pair<hg<dcm>, cht>> h;
 
@@ -27,9 +27,9 @@ public class dcl extends dcv implements bhc {
    }
 
    @Nullable
-   public static rd a(cjf $$0) {
-      rd $$1 = null;
-      qx $$2 = cgy.a($$0);
+   public static re a(cjf $$0) {
+      re $$1 = null;
+      qy $$2 = cgy.a($$0);
       if ($$2 != null && $$2.b("Patterns", 9)) {
          $$1 = $$2.c("Patterns", 10).e();
       }
@@ -49,37 +49,37 @@ public class dcl extends dcv implements bhc {
    }
 
    @Override
-   public tl ac() {
-      return (tl)(this.e != null ? this.e : tl.c("block.minecraft.banner"));
+   public tm ab() {
+      return (tm)(this.e != null ? this.e : tm.c("block.minecraft.banner"));
    }
 
    @Nullable
    @Override
-   public tl ae() {
+   public tm ad() {
       return this.e;
    }
 
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       this.e = $$0;
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       if (this.g != null) {
          $$0.a("Patterns", this.g);
       }
 
       if (this.e != null) {
-         $$0.a("CustomName", tl.a.a(this.e));
+         $$0.a("CustomName", tm.a.a(this.e));
       }
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("CustomName", 8)) {
-         this.e = tl.a.a($$0.l("CustomName"));
+         this.e = tm.a.a($$0.l("CustomName"));
       }
 
       this.g = $$0.c("Patterns", 10);
@@ -91,12 +91,12 @@ public class dcl extends dcv implements bhc {
    }
 
    @Override
-   public qx as_() {
+   public qy as_() {
       return this.o();
    }
 
    public static int c(cjf $$0) {
-      qx $$1 = cgy.a($$0);
+      qy $$1 = cgy.a($$0);
       return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
    }
 
@@ -108,12 +108,12 @@ public class dcl extends dcv implements bhc {
       return this.h;
    }
 
-   public static List<Pair<hg<dcm>, cht>> a(cht $$0, @Nullable rd $$1) {
+   public static List<Pair<hg<dcm>, cht>> a(cht $$0, @Nullable re $$1) {
       List<Pair<hg<dcm>, cht>> $$2 = Lists.newArrayList();
       $$2.add(Pair.of(jd.al.f(dcn.a), $$0));
       if ($$1 != null) {
          for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            qx $$4 = $$1.a($$3);
+            qy $$4 = $$1.a($$3);
             hg<dcm> $$5 = dcm.a($$4.l("Pattern"));
             if ($$5 != null) {
                int $$6 = $$4.h("Color");
@@ -126,9 +126,9 @@ public class dcl extends dcv implements bhc {
    }
 
    public static void d(cjf $$0) {
-      qx $$1 = cgy.a($$0);
+      qy $$1 = cgy.a($$0);
       if ($$1 != null && $$1.b("Patterns", 9)) {
-         rd $$2 = $$1.c("Patterns", 10);
+         re $$2 = $$1.c("Patterns", 10);
          if (!$$2.isEmpty()) {
             $$2.c($$2.size() - 1);
             if ($$2.isEmpty()) {
@@ -144,7 +144,7 @@ public class dcl extends dcv implements bhc {
    public cjf f() {
       cjf $$0 = new cjf(csb.a(this.f));
       if (this.g != null && !this.g.isEmpty()) {
-         qx $$1 = new qx();
+         qy $$1 = new qy();
          $$1.a("Patterns", this.g.e());
          cgy.a($$0, this.u(), $$1);
       }

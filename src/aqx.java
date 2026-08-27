@@ -198,7 +198,7 @@ public class aqx {
    public static record b(long b, byte[] c) {
       public static final aqx.b a = new aqx.b(0L, ByteArrays.EMPTY_ARRAY);
 
-      public b(so $$0) {
+      public b(sp $$0) {
          this($$0.readLong(), $$0.b());
       }
 
@@ -206,7 +206,7 @@ public class aqx {
          return this.c.length > 0;
       }
 
-      public static void a(so $$0, aqx.b $$1) {
+      public static void a(sp $$0, aqx.b $$1) {
          $$0.b($$1.b);
          $$0.a($$1.c);
       }

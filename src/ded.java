@@ -66,22 +66,22 @@ public class ded extends dcv {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
-      dee.a.encodeStart(ri.a, this.e).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("front_text", $$1));
-      dee.a.encodeStart(ri.a, this.f).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("back_text", $$1));
+      dee.a.encodeStart(rj.a, this.e).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("front_text", $$1));
+      dee.a.encodeStart(rj.a, this.f).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("back_text", $$1));
       $$0.a("is_waxed", this.g);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.e("front_text")) {
-         dee.a.parse(ri.a, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
+         dee.a.parse(rj.a, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
       }
 
       if ($$0.e("back_text")) {
-         dee.a.parse(ri.a, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
+         dee.a.parse(rj.a, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
       }
 
       this.g = $$0.q("is_waxed");
@@ -89,18 +89,18 @@ public class ded extends dcv {
 
    private dee a(dee $$0) {
       for (int $$1 = 0; $$1 < 4; $$1++) {
-         tl $$2 = this.a($$0.a($$1, false));
-         tl $$3 = this.a($$0.a($$1, true));
+         tm $$2 = this.a($$0.a($$1, false));
+         tm $$3 = this.a($$0.a($$1, true));
          $$0 = $$0.a($$1, $$2, $$3);
       }
 
       return $$0;
    }
 
-   private tl a(tl $$0) {
+   private tm a(tm $$0) {
       if (this.o instanceof akr $$1) {
          try {
-            return tn.a(a(null, $$1, this.p), $$0, null, 0);
+            return to.a(a(null, $$1, this.p), $$0, null, 0);
          } catch (CommandSyntaxException var4) {
          }
       }
@@ -109,12 +109,12 @@ public class ded extends dcv {
    }
 
    public void a(cbu $$0, boolean $$1, List<ali> $$2) {
-      if (!this.w() && $$0.cw().equals(this.v()) && this.o != null) {
+      if (!this.w() && $$0.cv().equals(this.v()) && this.o != null) {
          this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
          this.a(null);
          this.o.a(this.p(), this.q(), this.q(), 3);
       } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.ac().getString());
+         a.warn("Player {} just tried to change non-editable sign", $$0.ab().getString());
       }
    }
 
@@ -126,11 +126,11 @@ public class ded extends dcv {
    private dee a(cbu $$0, List<ali> $$1, dee $$2) {
       for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
          ali $$4 = $$1.get($$3);
-         uh $$5 = $$2.a($$3, $$0.X()).a();
-         if ($$0.X()) {
-            $$2 = $$2.a($$3, tl.b($$4.b()).b($$5));
+         ui $$5 = $$2.a($$3, $$0.W()).a();
+         if ($$0.W()) {
+            $$2 = $$2.a($$3, tm.b($$4.b()).b($$5));
          } else {
-            $$2 = $$2.a($$3, tl.b($$4.d()).b($$5), tl.b($$4.b()).b($$5));
+            $$2 = $$2.a($$3, tm.b($$4.d()).b($$5), tm.b($$4.b()).b($$5));
          }
       }
 
@@ -168,11 +168,11 @@ public class ded extends dcv {
    public boolean a(cbu $$0, cpv $$1, gw $$2, boolean $$3) {
       boolean $$4 = false;
 
-      for (tl $$5 : this.a($$3).b($$0.X())) {
-         uh $$6 = $$5.a();
-         tj $$7 = $$6.h();
-         if ($$7 != null && $$7.a() == tj.a.c) {
-            $$0.cL().aC().a(a($$0, $$1, $$2), $$7.b());
+      for (tm $$5 : this.a($$3).b($$0.W())) {
+         ui $$6 = $$5.a();
+         tk $$7 = $$6.h();
+         if ($$7 != null && $$7.a() == tk.a.c) {
+            $$0.cK().aC().a(a($$0, $$1, $$2), $$7.b());
             $$4 = true;
          }
       }
@@ -181,8 +181,8 @@ public class ded extends dcv {
    }
 
    private static dt a(@Nullable cbu $$0, cpv $$1, gw $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.ac().getString();
-      tl $$4 = (tl)($$0 == null ? tl.b("Sign") : $$0.N_());
+      String $$3 = $$0 == null ? "Sign" : $$0.ab().getString();
+      tm $$4 = (tm)($$0 == null ? tm.b("Sign") : $$0.N_());
       return new dt(ds.a, ehn.b($$2), ehm.a, (akr)$$1, 2, $$3, $$4, $$1.n(), $$0);
    }
 
@@ -191,7 +191,7 @@ public class ded extends dcv {
    }
 
    @Override
-   public qx as_() {
+   public qy as_() {
       return this.o();
    }
 

@@ -7,11 +7,11 @@ public abstract class bvo extends bkb {
    }
 
    public boolean b(aks $$0) {
-      qx $$1 = new qx();
-      $$1.a("id", this.bv());
+      qy $$1 = new qy();
+      $$1.a("id", this.bu());
       this.f($$1);
       if ($$0.h($$1)) {
-         this.al();
+         this.ak();
          return true;
       } else {
          return false;

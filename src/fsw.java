@@ -103,7 +103,7 @@ public abstract class fsw<T extends bip, S> extends ftg<T> {
 
       public void a(bip.g $$0, bip.g.a $$1, elp $$2, foe $$3, int $$4, float $$5) {
          $$2.a(a.d.rotation((float) Math.PI));
-         this.a.a($$1.a(), $$1.b(), $$4, fyv.d, $$2, $$3, $$0.dL(), $$0.ai());
+         this.a.a($$1.a(), $$1.b(), $$4, fyv.d, $$2, $$3, $$0.dL(), $$0.ah());
       }
    }
 
@@ -115,7 +115,7 @@ public abstract class fsw<T extends bip, S> extends ftg<T> {
          this.a = $$0.h();
       }
 
-      private bip.l.b a(tl $$0, int $$1) {
+      private bip.l.b a(tm $$0, int $$1) {
          List<ark> $$2 = this.a.c($$0, $$1);
          List<bip.l.c> $$3 = new ArrayList<>($$2.size());
          int $$4 = 0;

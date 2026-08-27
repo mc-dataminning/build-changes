@@ -30,7 +30,7 @@ public class ebf extends eaz {
       return this.o;
    }
 
-   public static ebf c(so $$0) {
+   public static ebf c(sp $$0) {
       ebf $$1 = new ebf($$0.readInt(), $$0.readInt(), $$0.readInt());
       a($$0, $$1);
       return $$1;

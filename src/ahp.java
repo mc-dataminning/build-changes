@@ -6,7 +6,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class ahp {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.pardon.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.pardon.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -27,7 +27,7 @@ public class ahp {
          if ($$2.a($$4)) {
             $$2.c($$4);
             $$3++;
-            $$0.a(() -> tl.a("commands.pardon.success", tl.b($$4.getName())), true);
+            $$0.a(() -> tm.a("commands.pardon.success", tm.b($$4.getName())), true);
          }
       }
 

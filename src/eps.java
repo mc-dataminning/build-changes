@@ -1,5 +1,5 @@
 public class eps extends epv {
-   private static final tl b = tl.c("mco.connect.connecting");
+   private static final tm b = tm.c("mco.connect.connecting");
    private final gey c;
    private final emw d;
    private final emx e;
@@ -28,7 +28,7 @@ public class eps extends epv {
    }
 
    @Override
-   public tl a() {
+   public tm a() {
       return b;
    }
 }

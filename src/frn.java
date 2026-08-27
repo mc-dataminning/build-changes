@@ -88,12 +88,12 @@ public class frn {
       if ($$0 == null) {
          return Optional.empty();
       } else {
-         ehn $$2 = $$0.bq();
+         ehn $$2 = $$0.bp();
          ehn $$3 = $$0.f(1.0F).a((double)$$1);
          ehn $$4 = $$2.e($$3);
-         ehi $$5 = $$0.cH().b($$3).g(1.0);
+         ehi $$5 = $$0.cG().b($$3).g(1.0);
          int $$6 = $$1 * $$1;
-         Predicate<biq> $$7 = $$0x -> !$$0x.M_() && $$0x.bs();
+         Predicate<biq> $$7 = $$0x -> !$$0x.M_() && $$0x.br();
          ehk $$8 = ccn.a($$0, $$2, $$4, $$5, $$7, (double)$$6);
          if ($$8 == null) {
             return Optional.empty();

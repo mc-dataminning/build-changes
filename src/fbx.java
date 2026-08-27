@@ -84,7 +84,7 @@ public class fbx {
 
    public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
       if (this.l > 1) {
-         tl $$6 = tl.a("gui.recipebook.page", this.m + 1, this.l);
+         tm $$6 = tm.a("gui.recipebook.page", this.m + 1, this.l);
          int $$7 = this.g.h.a($$6);
          $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
       }

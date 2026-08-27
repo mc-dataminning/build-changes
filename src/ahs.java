@@ -14,8 +14,8 @@ import org.slf4j.Logger;
 
 public class ahs {
    private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.perf.alreadyRunning"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -33,7 +33,7 @@ public class ahs {
          Consumer<bdo> $$2 = $$1x -> a($$0, $$1x);
          Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
          $$1.a($$2, $$3);
-         $$0.a(() -> tl.c("commands.perf.started"), false);
+         $$0.a(() -> tm.c("commands.perf.started"), false);
          return 0;
       }
    }
@@ -55,7 +55,7 @@ public class ahs {
       try {
          $$4 = v.a(bfe.a, $$3, ".zip");
       } catch (IOException var11) {
-         $$0.b(tl.c("commands.perf.reportFailed"));
+         $$0.b(tm.c("commands.perf.reportFailed"));
          a.error("Failed to create report name", var11);
          return;
       }
@@ -71,14 +71,14 @@ public class ahs {
          a.warn("Failed to delete temporary profiling file {}", $$1, var9);
       }
 
-      $$0.a(() -> tl.a("commands.perf.reportSaved", $$4), false);
+      $$0.a(() -> tm.a("commands.perf.reportSaved", $$4), false);
    }
 
    private static void a(dt $$0, bdo $$1) {
       if ($$1 != bdk.a) {
          int $$2 = $$1.f();
          double $$3 = (double)$$1.g() / (double)asu.a;
-         $$0.a(() -> tl.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         $$0.a(() -> tm.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
       }
    }
 }

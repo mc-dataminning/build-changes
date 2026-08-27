@@ -95,7 +95,7 @@ public class du {
       }
 
       if (aa.aT) {
-         qn.a(this.g);
+         qo.a(this.g);
          aio.a(this.g);
          if ($$0.e) {
             ago.a(this.g);
@@ -148,27 +148,27 @@ public class du {
          $$2.b(var13.a());
          return 0;
       } catch (CommandSyntaxException var14) {
-         $$2.b(tn.a(var14.getRawMessage()));
+         $$2.b(to.a(var14.getRawMessage()));
          if (var14.getInput() != null && var14.getCursor() >= 0) {
             int $$5 = Math.min(var14.getInput().length(), var14.getCursor());
-            ty $$6 = tl.h().a(n.h).a($$1x -> $$1x.a(new tj(tj.a.d, "/" + $$1)));
+            tz $$6 = tm.h().a(n.h).a($$1x -> $$1x.a(new tk(tk.a.d, "/" + $$1)));
             if ($$5 > 10) {
-               $$6.b(tk.t);
+               $$6.b(tl.t);
             }
 
             $$6.f(var14.getInput().substring(Math.max(0, $$5 - 10), $$5));
             if ($$5 < var14.getInput().length()) {
-               tl $$7 = tl.b(var14.getInput().substring($$5)).a(n.m, n.t);
+               tm $$7 = tm.b(var14.getInput().substring($$5)).a(n.m, n.t);
                $$6.b($$7);
             }
 
-            $$6.b(tl.c("command.context.here").a(n.m, n.u));
+            $$6.b(tm.c("command.context.here").a(n.m, n.u));
             $$2.b($$6);
          }
 
          return 0;
       } catch (Exception var15) {
-         ty $$9 = tl.b(var15.getMessage() == null ? var15.getClass().getName() : var15.getMessage());
+         tz $$9 = tm.b(var15.getMessage() == null ? var15.getClass().getName() : var15.getMessage());
          if (f.isDebugEnabled()) {
             f.error("Command exception: /{}", $$1, var15);
             StackTraceElement[] $$10 = var15.getStackTrace();
@@ -178,9 +178,9 @@ public class du {
             }
          }
 
-         $$2.b(tl.c("command.failed").a($$1x -> $$1x.a(new tq(tq.a.a, $$9))));
+         $$2.b(tm.c("command.failed").a($$1x -> $$1x.a(new tr(tr.a.a, $$9))));
          if (aa.aT) {
-            $$2.b(tl.b(ac.c(var15)));
+            $$2.b(tm.b(ac.c(var15)));
             f.error("'/{}' threw an exception", $$1, var15);
          }
 
@@ -196,7 +196,7 @@ public class du {
       Map<CommandNode<dt>, CommandNode<dw>> $$1 = Maps.newHashMap();
       RootCommandNode<dw> $$2 = new RootCommandNode();
       $$1.put(this.g.getRoot(), $$2);
-      this.a(this.g.getRoot(), $$2, $$0.dd(), $$1);
+      this.a(this.g.getRoot(), $$2, $$0.dc(), $$1);
       $$0.c.b(new xp($$2));
    }
 

@@ -46,14 +46,14 @@ public class exu extends eyk {
    @Override
    protected void b(ewi $$0) {
       if (this.k) {
-         $$0.a(ewh.a, tl.c("narrator.loading.done"));
+         $$0.a(ewh.a, tm.c("narrator.loading.done"));
       } else {
          $$0.a(ewh.a, this.l());
       }
    }
 
-   private tl l() {
-      return tl.a("loading.progress", arx.a(this.b.e(), 0, 100));
+   private tm l() {
+      return tm.a("loading.progress", arx.a(this.b.e(), 0, 100));
    }
 
    @Override

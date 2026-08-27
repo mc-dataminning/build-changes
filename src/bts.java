@@ -65,7 +65,7 @@ public class bts {
                return false;
             }
          } else {
-            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ah()) || $$0.s($$1))) {
+            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ag()) || $$0.s($$1))) {
                return false;
             }
 

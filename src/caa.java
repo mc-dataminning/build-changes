@@ -68,7 +68,7 @@ public class caa extends bzi implements bza, cag {
    }
 
    private boolean j(bjg $$0) {
-      biu<?> $$1 = $$0.ah();
+      biu<?> $$1 = $$0.ag();
       return $$1 != biu.bo && $$1 != biu.u && btl.c(this, $$0);
    }
 
@@ -162,7 +162,7 @@ public class caa extends bzi implements bza, cag {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("zoglinBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
@@ -171,7 +171,7 @@ public class caa extends bzi implements bza, cag {
 
    @Override
    public void a(boolean $$0) {
-      this.am().b(d, $$0);
+      this.al().b(d, $$0);
       if (!this.dL().B && $$0) {
          this.a(bkm.f).a(0.5);
       }
@@ -179,7 +179,7 @@ public class caa extends bzi implements bza, cag {
 
    @Override
    public boolean m_() {
-      return this.am().b(d);
+      return this.al().b(d);
    }
 
    @Override
@@ -235,8 +235,8 @@ public class caa extends bzi implements bza, cag {
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 
@@ -246,7 +246,7 @@ public class caa extends bzi implements bza, cag {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.m_()) {
          $$0.a("IsBaby", true);
@@ -254,7 +254,7 @@ public class caa extends bzi implements bza, cag {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.q("IsBaby")) {
          this.a(true);

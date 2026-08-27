@@ -31,7 +31,7 @@ public class bql extends bqb {
          bjg $$1 = this.a.q();
          if ($$1 == null) {
             return false;
-         } else if (!$$1.bw()) {
+         } else if (!$$1.bv()) {
             return false;
          } else {
             this.d = this.a.L().a($$1, 0);
@@ -45,7 +45,7 @@ public class bql extends bqb {
       bjg $$0 = this.a.q();
       if ($$0 == null) {
          return false;
-      } else if (!$$0.bw()) {
+      } else if (!$$0.bv()) {
          return false;
       } else if (!this.c) {
          return !this.a.L().l();

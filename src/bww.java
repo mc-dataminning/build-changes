@@ -40,9 +40,9 @@ public class bww extends bwq {
    }
 
    @Override
-   protected apd aM() {
-      if (this.aB()) {
-         if (!this.bP()) {
+   protected apd aL() {
+      if (this.aA()) {
+         if (!this.bO()) {
             return ape.vy;
          }
 
@@ -61,7 +61,7 @@ public class bww extends bwq {
 
    @Override
    protected void e(float $$0) {
-      if (this.aB()) {
+      if (this.aA()) {
          super.e(0.3F);
       } else {
          super.e(Math.min(0.1F, $$0 * 25.0F));
@@ -70,7 +70,7 @@ public class bww extends bwq {
 
    @Override
    protected void gK() {
-      if (this.aY()) {
+      if (this.aX()) {
          this.a(ape.vx, 0.4F, 1.0F);
       } else {
          super.gK();
@@ -91,19 +91,19 @@ public class bww extends bwq {
    public void b_() {
       super.b_();
       if (this.t() && this.bX++ >= 18000) {
-         this.al();
+         this.ak();
       }
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("SkeletonTrap", this.t());
       $$0.a("SkeletonTrapTime", this.bX);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.w($$0.q("SkeletonTrap"));
       this.bX = $$0.h("SkeletonTrapTime");

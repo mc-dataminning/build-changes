@@ -1,15 +1,15 @@
-public class yy implements vd<ww> {
+public class yy implements ve<wx> {
    public yy() {
    }
 
-   public yy(so $$0) {
+   public yy(sp $$0) {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 }

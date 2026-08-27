@@ -36,9 +36,9 @@ public abstract class dvm {
       this.f = $$2;
    }
 
-   public dvm(dvz $$0, qx $$1) {
+   public dvm(dvz $$0, qy $$1) {
       this(
-         $$0, $$1.h("GD"), (dva)dva.a.parse(ri.a, $$1.c("BB")).resultOrPartial(a::error).orElseThrow(() -> new IllegalArgumentException("Invalid boundingbox"))
+         $$0, $$1.h("GD"), (dva)dva.a.parse(rj.a, $$1.c("BB")).resultOrPartial(a::error).orElseThrow(() -> new IllegalArgumentException("Invalid boundingbox"))
       );
       int $$2 = $$1.h("O");
       this.a($$2 == -1 ? null : hc.b($$2));
@@ -54,10 +54,10 @@ public abstract class dvm {
       return hc.c.a.a($$0);
    }
 
-   public final qx a(dvy $$0) {
-      qx $$1 = new qx();
+   public final qy a(dvy $$0) {
+      qy $$1 = new qy();
       $$1.a("id", jd.T.b(this.k()).toString());
-      dva.a.encodeStart(ri.a, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$1.a("BB", $$1x));
+      dva.a.encodeStart(rj.a, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$1.a("BB", $$1x));
       hc $$2 = this.i();
       $$1.a("O", $$2 == null ? -1 : $$2.e());
       $$1.a("GD", this.g);
@@ -65,7 +65,7 @@ public abstract class dvm {
       return $$1;
    }
 
-   protected abstract void a(dvy var1, qx var2);
+   protected abstract void a(dvy var1, qy var2);
 
    public void a(dvm $$0, dvn $$1, asc $$2) {
    }

@@ -17,12 +17,12 @@ public class ewk<T> {
       return new ewk<>($$0, Consumer::accept);
    }
 
-   public static ewk<?> a(tl $$0) {
+   public static ewk<?> a(tm $$0) {
       return new ewk<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
    }
 
-   public static ewk<?> a(List<tl> $$0) {
-      return new ewk<>($$0, ($$1, $$2) -> $$0.stream().map(tl::getString).forEach($$1));
+   public static ewk<?> a(List<tm> $$0) {
+      return new ewk<>($$0, ($$1, $$2) -> $$0.stream().map(tm::getString).forEach($$1));
    }
 
    public void a(Consumer<String> $$0) {

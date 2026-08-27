@@ -28,17 +28,17 @@ public class byx extends bze {
 
    @Override
    protected apd w() {
-      return this.bb() ? ape.gH : ape.gI;
+      return this.ba() ? ape.gH : ape.gI;
    }
 
    @Override
    protected apd d(bho $$0) {
-      return this.bb() ? ape.gN : ape.gO;
+      return this.ba() ? ape.gN : ape.gO;
    }
 
    @Override
    protected apd l_() {
-      return this.bb() ? ape.gK : ape.gL;
+      return this.ba() ? ape.gK : ape.gL;
    }
 
    @Override
@@ -47,12 +47,12 @@ public class byx extends bze {
    }
 
    @Override
-   protected void Y() {
-      super.Y();
-      if ((this.ah + this.ai()) % 1200 == 0) {
+   protected void X() {
+      super.X();
+      if ((this.ah + this.ah()) % 1200 == 0) {
          bid $$0 = new bid(bif.d, 6000, 2);
          List<aks> $$1 = bie.a((akr)this.dL(), this, this.dj(), 50.0, $$0, 1200);
-         $$1.forEach($$0x -> $$0x.c.b(new yc(yc.k, this.aT() ? 0.0F : 1.0F)));
+         $$1.forEach($$0x -> $$0x.c.b(new yc(yc.k, this.aS() ? 0.0F : 1.0F)));
       }
 
       if (!this.fP()) {

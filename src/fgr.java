@@ -33,7 +33,7 @@ public class fgr<T extends biq> extends ffm<T> {
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       float $$6 = 1.0F;
       float $$7 = 1.0F;
-      if (!$$0.aY()) {
+      if (!$$0.aX()) {
          $$6 = 1.3F;
          $$7 = 1.7F;
       }

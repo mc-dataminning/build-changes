@@ -9,28 +9,28 @@ public abstract class bix extends bji {
 
    @Override
    public void h(ehn $$0) {
-      if (this.cX()) {
-         if (this.aY()) {
+      if (this.cW()) {
+         if (this.aX()) {
             this.a(0.02F, $$0);
             this.a(bjm.a, this.do());
             this.f(this.do().a(0.8F));
-         } else if (this.bm()) {
+         } else if (this.bl()) {
             this.a(0.02F, $$0);
             this.a(bjm.a, this.do());
             this.f(this.do().a(0.5));
          } else {
             float $$1 = 0.91F;
-            if (this.aB()) {
-               $$1 = this.dL().a_(this.aH()).b().h() * 0.91F;
+            if (this.aA()) {
+               $$1 = this.dL().a_(this.aG()).b().h() * 0.91F;
             }
 
             float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
             $$1 = 0.91F;
-            if (this.aB()) {
-               $$1 = this.dL().a_(this.aH()).b().h() * 0.91F;
+            if (this.aA()) {
+               $$1 = this.dL().a_(this.aG()).b().h() * 0.91F;
             }
 
-            this.a(this.aB() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(this.aA() ? 0.1F * $$2 : 0.02F, $$0);
             this.a(bjm.a, this.do());
             this.f(this.do().a((double)$$1));
          }

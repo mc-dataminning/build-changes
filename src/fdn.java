@@ -11,17 +11,17 @@ public class fdn {
    private static final fdp g = new fdn.b(1, true);
    private static final fdp h = new fdn.b(1, false);
    private static final int i = 8;
-   static final tl j = tl.c("spectatorMenu.close");
-   static final tl k = tl.c("spectatorMenu.previous_page");
-   static final tl l = tl.c("spectatorMenu.next_page");
+   static final tm j = tm.c("spectatorMenu.close");
+   static final tm k = tm.c("spectatorMenu.previous_page");
+   static final tm l = tm.c("spectatorMenu.next_page");
    public static final fdp a = new fdp() {
       @Override
       public void a(fdn $$0) {
       }
 
       @Override
-      public tl aJ_() {
-         return tk.a;
+      public tm aJ_() {
+         return tl.a;
       }
 
       @Override
@@ -110,7 +110,7 @@ public class fdn {
       }
 
       @Override
-      public tl aJ_() {
+      public tm aJ_() {
          return fdn.j;
       }
 
@@ -140,7 +140,7 @@ public class fdn {
       }
 
       @Override
-      public tl aJ_() {
+      public tm aJ_() {
          return this.a < 0 ? fdn.k : fdn.l;
       }
 

@@ -5,7 +5,7 @@ public class czz extends cwj {
 
    @Override
    public void a(cpv $$0, dfj $$1, gw $$2, biq $$3, float $$4) {
-      if ($$3.bU()) {
+      if ($$3.bT()) {
          super.a($$0, $$1, $$2, $$3, $$4);
       } else {
          $$3.a($$4, 0.0F, $$0.ag().k());
@@ -14,7 +14,7 @@ public class czz extends cwj {
 
    @Override
    public void a(cpb $$0, biq $$1) {
-      if ($$1.bU()) {
+      if ($$1.bT()) {
          super.a($$0, $$1);
       } else {
          this.a($$1);
@@ -32,7 +32,7 @@ public class czz extends cwj {
    @Override
    public void a(cpv $$0, gw $$1, dfj $$2, biq $$3) {
       double $$4 = Math.abs($$3.do().d);
-      if ($$4 < 0.1 && !$$3.bT()) {
+      if ($$4 < 0.1 && !$$3.bS()) {
          double $$5 = 0.4 + $$4 * 0.2;
          $$3.f($$3.do().d($$5, 1.0, $$5));
       }

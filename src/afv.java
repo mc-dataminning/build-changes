@@ -9,7 +9,7 @@ public class afv extends ako {
    private int j;
    private int k = 100;
 
-   public afv(aex $$0, tl $$1) {
+   public afv(aex $$0, tm $$1) {
       super($$1, bgo.a.g, bgo.b.a);
       this.h = $$0;
       this.a(0.0F);
@@ -22,7 +22,7 @@ public class afv extends ako {
    @Override
    public void a(aks $$0) {
       super.a($$0);
-      this.i.add($$0.cw());
+      this.i.add($$0.cv());
    }
 
    public void a(UUID $$0) {
@@ -32,7 +32,7 @@ public class afv extends ako {
    @Override
    public void b(aks $$0) {
       super.b($$0);
-      this.i.remove($$0.cw());
+      this.i.remove($$0.cv());
    }
 
    @Override
@@ -59,8 +59,8 @@ public class afv extends ako {
       this.a(arx.a((float)this.j / (float)$$0, 0.0F, 1.0F));
    }
 
-   public final tl e() {
-      return tn.a(this.j()).a($$0 -> $$0.a(this.l().a()).a(new tq(tq.a.a, tl.b(this.a().toString()))).a(this.a().toString()));
+   public final tm e() {
+      return to.a(this.j()).a($$0 -> $$0.a(this.l().a()).a(new tr(tr.a.a, tm.b(this.a().toString()))).a(this.a().toString()));
    }
 
    public boolean a(Collection<aks> $$0) {
@@ -71,7 +71,7 @@ public class afv extends ako {
          boolean $$4 = false;
 
          for (aks $$5 : $$0) {
-            if ($$5.cw().equals($$3)) {
+            if ($$5.cv().equals($$3)) {
                $$4 = true;
                break;
             }
@@ -86,7 +86,7 @@ public class afv extends ako {
          boolean $$7 = false;
 
          for (UUID $$8 : this.i) {
-            if ($$6.cw().equals($$8)) {
+            if ($$6.cv().equals($$8)) {
                $$7 = true;
                break;
             }
@@ -99,7 +99,7 @@ public class afv extends ako {
 
       for (UUID $$9 : $$1) {
          for (aks $$10 : this.h()) {
-            if ($$10.cw().equals($$9)) {
+            if ($$10.cv().equals($$9)) {
                this.b($$10);
                break;
             }
@@ -115,9 +115,9 @@ public class afv extends ako {
       return !$$1.isEmpty() || !$$2.isEmpty();
    }
 
-   public qx f() {
-      qx $$0 = new qx();
-      $$0.a("Name", tl.a.a(this.a));
+   public qy f() {
+      qy $$0 = new qy();
+      $$0.a("Name", tm.a.a(this.a));
       $$0.a("Visible", this.g());
       $$0.a("Value", this.j);
       $$0.a("Max", this.k);
@@ -126,18 +126,18 @@ public class afv extends ako {
       $$0.a("DarkenScreen", this.n());
       $$0.a("PlayBossMusic", this.o());
       $$0.a("CreateWorldFog", this.p());
-      rd $$1 = new rd();
+      re $$1 = new re();
 
       for (UUID $$2 : this.i) {
-         $$1.add(rj.a($$2));
+         $$1.add(rk.a($$2));
       }
 
       $$0.a("Players", $$1);
       return $$0;
    }
 
-   public static afv a(qx $$0, aex $$1) {
-      afv $$2 = new afv($$1, tl.a.a($$0.l("Name")));
+   public static afv a(qy $$0, aex $$1) {
+      afv $$2 = new afv($$1, tm.a.a($$0.l("Name")));
       $$2.d($$0.q("Visible"));
       $$2.a($$0.h("Value"));
       $$2.b($$0.h("Max"));
@@ -147,15 +147,15 @@ public class afv extends ako {
       $$2.b($$0.q("PlayBossMusic"));
       $$2.c($$0.q("CreateWorldFog"));
 
-      for (rq $$4 : $$0.c("Players", 11)) {
-         $$2.a(rj.a($$4));
+      for (rr $$4 : $$0.c("Players", 11)) {
+         $$2.a(rk.a($$4));
       }
 
       return $$2;
    }
 
    public void c(aks $$0) {
-      if (this.i.contains($$0.cw())) {
+      if (this.i.contains($$0.cv())) {
          this.a($$0);
       }
    }

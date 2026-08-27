@@ -22,7 +22,7 @@ public abstract class buo extends bvt implements but {
 
    @Override
    public boolean h(double $$0) {
-      return !this.t() && !this.ad();
+      return !this.t() && !this.ac();
    }
 
    @Override
@@ -47,13 +47,13 @@ public abstract class buo extends bvt implements but {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("FromBucket", this.t());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.w($$0.q("FromBucket"));
    }
@@ -73,7 +73,7 @@ public abstract class buo extends bvt implements but {
 
    @Override
    public void h(ehn $$0) {
-      if (this.cY() && this.aY()) {
+      if (this.cX() && this.aX()) {
          this.a(0.01F, $$0);
          this.a(bjm.a, this.do());
          this.f(this.do().a(0.9));
@@ -87,7 +87,7 @@ public abstract class buo extends bvt implements but {
 
    @Override
    public void b_() {
-      if (!this.aY() && this.aB() && this.Q) {
+      if (!this.aX() && this.aA() && this.Q) {
          this.f(this.do().b((double)((this.ag.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ag.i() * 2.0F - 1.0F) * 0.05F)));
          this.c(false);
          this.au = true;
@@ -108,7 +108,7 @@ public abstract class buo extends bvt implements but {
    }
 
    @Override
-   public void c(qx $$0) {
+   public void c(qy $$0) {
       but.a(this, $$0);
    }
 
@@ -124,7 +124,7 @@ public abstract class buo extends bvt implements but {
    protected abstract apd ge();
 
    @Override
-   protected apd aM() {
+   protected apd aL() {
       return ape.hO;
    }
 

@@ -14,12 +14,12 @@ import java.util.concurrent.CompletableFuture;
 
 public class ee implements ArgumentType<gc> {
    private static final Collection<String> g = Arrays.asList("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.entity.toomany"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("argument.player.toomany"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("argument.player.entities"));
-   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("argument.entity.notfound.entity"));
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("argument.entity.notfound.player"));
-   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tl.c("argument.entity.selector.not_allowed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("argument.entity.toomany"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("argument.player.toomany"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("argument.player.entities"));
+   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.c("argument.entity.notfound.entity"));
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("argument.entity.notfound.player"));
+   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tm.c("argument.entity.selector.not_allowed"));
    final boolean h;
    final boolean i;
 
@@ -127,7 +127,7 @@ public class ee implements ArgumentType<gc> {
       private static final byte a = 1;
       private static final byte b = 2;
 
-      public void a(ee.a.a $$0, so $$1) {
+      public void a(ee.a.a $$0, sp $$1) {
          int $$2 = 0;
          if ($$0.b) {
             $$2 |= 1;
@@ -140,7 +140,7 @@ public class ee implements ArgumentType<gc> {
          $$1.k($$2);
       }
 
-      public ee.a.a a(so $$0) {
+      public ee.a.a a(sp $$0) {
          byte $$1 = $$0.readByte();
          return new ee.a.a(($$1 & 1) != 0, ($$1 & 2) != 0);
       }

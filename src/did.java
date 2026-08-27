@@ -29,10 +29,10 @@ public class did {
       this.h = new int[$$0.ak()][];
    }
 
-   public did(qx $$0, cpx $$1) {
+   public did(qy $$0, cpx $$1) {
       this($$1);
       if ($$0.b("Indices", 10)) {
-         qx $$2 = $$0.p("Indices");
+         qy $$2 = $$0.p("Indices");
 
          for (int $$3 = 0; $$3 < this.h.length; $$3++) {
             String $$4 = String.valueOf($$3);
@@ -54,10 +54,10 @@ public class did {
       a($$0, "neighbor_fluid_ticks", $$0x -> jd.d.b(aex.a($$0x)).or(() -> Optional.of(ean.a)), this.g);
    }
 
-   private static <T> void a(qx $$0, String $$1, Function<String, Optional<T>> $$2, List<eiy<T>> $$3) {
+   private static <T> void a(qy $$0, String $$1, Function<String, Optional<T>> $$2, List<eiy<T>> $$3) {
       if ($$0.b($$1, 9)) {
-         for (rq $$5 : $$0.c($$1, 10)) {
-            eiy.a((qx)$$5, $$2).ifPresent($$3::add);
+         for (rr $$5 : $$0.c($$1, 10)) {
+            eiy.a((qy)$$5, $$2).ifPresent($$3::add);
          }
       }
    }
@@ -173,9 +173,9 @@ public class did {
       return this.e.isEmpty();
    }
 
-   public qx b() {
-      qx $$0 = new qx();
-      qx $$1 = new qx();
+   public qy b() {
+      qy $$0 = new qy();
+      qy $$1 = new qy();
 
       for (int $$2 = 0; $$2 < this.h.length; $$2++) {
          String $$3 = String.valueOf($$2);
@@ -196,13 +196,13 @@ public class did {
 
       $$0.a("Sides", (byte)$$4);
       if (!this.f.isEmpty()) {
-         rd $$6 = new rd();
+         re $$6 = new re();
          this.f.forEach($$1x -> $$6.add($$1x.a($$0xx -> jd.f.b($$0xx).toString())));
          $$0.a("neighbor_block_ticks", $$6);
       }
 
       if (!this.g.isEmpty()) {
-         rd $$7 = new rd();
+         re $$7 = new re();
          this.g.forEach($$1x -> $$7.add($$1x.a($$0xx -> jd.d.b($$0xx).toString())));
          $$0.a("neighbor_fluid_ticks", $$7);
       }

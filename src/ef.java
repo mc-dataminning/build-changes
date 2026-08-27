@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 public class ef implements ArgumentType<cps> {
    private static final Collection<String> a = Stream.of(cps.a, cps.b).map(cps::b).collect(Collectors.toList());
    private static final cps[] b = cps.values();
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("argument.gamemode.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("argument.gamemode.invalid", $$0));
 
    public cps a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();

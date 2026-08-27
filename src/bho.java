@@ -55,16 +55,16 @@ public class bho {
       return this.b;
    }
 
-   public tl a(bjg $$0) {
+   public tm a(bjg $$0) {
       String $$1 = "death.attack." + this.j().a();
       if (this.b == null && this.c == null) {
          bjg $$5 = $$0.eK();
          String $$6 = $$1 + ".player";
-         return $$5 != null ? tl.a($$6, $$0.N_(), $$5.N_()) : tl.a($$1, $$0.N_());
+         return $$5 != null ? tm.a($$6, $$0.N_(), $$5.N_()) : tm.a($$1, $$0.N_());
       } else {
-         tl $$2 = this.b == null ? this.c.N_() : this.b.N_();
+         tm $$2 = this.b == null ? this.c.N_() : this.b.N_();
          cjf $$4 = this.b instanceof bjg $$3 ? $$3.eS() : cjf.b;
-         return !$$4.b() && $$4.A() ? tl.a($$1 + ".item", $$0.N_(), $$2, $$4.J()) : tl.a($$1, $$0.N_(), $$2);
+         return !$$4.b() && $$4.A() ? tm.a($$1 + ".item", $$0.N_(), $$2, $$4.J()) : tm.a($$1, $$0.N_(), $$2);
       }
    }
 

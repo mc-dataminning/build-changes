@@ -34,13 +34,13 @@ public class fdj extends etm<fdj.a> {
    static final Logger u = LogUtils.getLogger();
    static final DateFormat v = new SimpleDateFormat();
    private static final aex w = new aex("textures/misc/unknown_server.png");
-   static final tl x = tl.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
-   static final tl y = tl.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
-   static final tl z = tl.c("selectWorld.tooltip.snapshot1").a(n.g);
-   static final tl A = tl.c("selectWorld.tooltip.snapshot2").a(n.g);
-   static final tl B = tl.c("selectWorld.locked").a(n.m);
-   static final tl C = tl.c("selectWorld.conversion.tooltip").a(n.m);
-   static final tl D = tl.c("selectWorld.experimental");
+   static final tm x = tm.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
+   static final tm y = tm.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
+   static final tm z = tm.c("selectWorld.tooltip.snapshot1").a(n.g);
+   static final tm A = tm.c("selectWorld.tooltip.snapshot2").a(n.g);
+   static final tm B = tm.c("selectWorld.locked").a(n.m);
+   static final tm C = tm.c("selectWorld.conversion.tooltip").a(n.m);
+   static final tm D = tm.c("selectWorld.experimental");
    private final fde E;
    private CompletableFuture<List<ech>> F;
    @Nullable
@@ -170,8 +170,8 @@ public class fdj extends etm<fdj.a> {
       this.E.d(true);
    }
 
-   private void a(tl $$0) {
-      this.c.a(new exo(tl.c("selectWorld.unable_to_load"), $$0));
+   private void a(tm $$0) {
+      this.c.a(new exo(tm.c("selectWorld.unable_to_load"), $$0));
    }
 
    @Override
@@ -216,7 +216,7 @@ public class fdj extends etm<fdj.a> {
    }
 
    public static class b extends fdj.a {
-      private static final tl a = tl.c("selectWorld.loading_list");
+      private static final tm a = tm.c("selectWorld.loading_list");
       private final eqv b;
 
       public b(eqv $$0) {
@@ -235,7 +235,7 @@ public class fdj extends etm<fdj.a> {
       }
 
       @Override
-      public tl a() {
+      public tm a() {
          return a;
       }
 
@@ -293,17 +293,17 @@ public class fdj extends etm<fdj.a> {
       }
 
       @Override
-      public tl a() {
-         tl $$0 = tl.a("narrator.select.world_info", this.f.b(), new Date(this.f.f()), this.f.s());
+      public tm a() {
+         tm $$0 = tm.a("narrator.select.world_info", this.f.b(), new Date(this.f.f()), this.f.s());
          if (this.f.p()) {
-            $$0 = tk.a($$0, fdj.B);
+            $$0 = tl.a($$0, fdj.B);
          }
 
          if (this.f.e()) {
-            $$0 = tk.a($$0, fdj.D);
+            $$0 = tl.a($$0, fdj.D);
          }
 
-         return tl.a("narrator.select", $$0);
+         return tm.a("narrator.select", $$0);
       }
 
       @Override
@@ -319,7 +319,7 @@ public class fdj extends etm<fdj.a> {
             $$10 = gak.a("selectWorld.world") + " " + ($$1 + 1);
          }
 
-         tl $$13 = this.f.s();
+         tm $$13 = this.f.s();
          $$0.a(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, 16777215, false);
          $$0.a(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712, false);
          $$0.a(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712, false);
@@ -397,12 +397,12 @@ public class fdj extends etm<fdj.a> {
                if ($$0.a()) {
                   String $$1 = "selectWorld.backupQuestion." + $$0.c();
                   String $$2 = "selectWorld.backupWarning." + $$0.c();
-                  ty $$3 = tl.c($$1);
+                  tz $$3 = tm.c($$1);
                   if ($$0.b()) {
                      $$3.a(n.r, n.m);
                   }
 
-                  tl $$4 = tl.a($$2, this.f.k(), aa.b().c());
+                  tm $$4 = tm.a($$2, this.f.k(), aa.b().c());
                   this.d.a(new ewy(this.e, ($$0x, $$1x) -> {
                      if ($$0x) {
                         String $$2x = this.f.a();
@@ -427,12 +427,12 @@ public class fdj extends etm<fdj.a> {
                            this.k();
                         } catch (Exception var3x) {
                            fdj.u.error("Failure to open 'future world'", var3x);
-                           this.d.a(new ewx(() -> this.d.a(this.e), tl.c("selectWorld.futureworld.error.title"), tl.c("selectWorld.futureworld.error.text")));
+                           this.d.a(new ewx(() -> this.d.a(this.e), tm.c("selectWorld.futureworld.error.title"), tm.c("selectWorld.futureworld.error.text")));
                         }
                      } else {
                         this.d.a(this.e);
                      }
-                  }, tl.c("selectWorld.versionQuestion"), tl.a("selectWorld.versionWarning", this.f.k()), tl.c("selectWorld.versionJoinButton"), tk.e));
+                  }, tm.c("selectWorld.versionQuestion"), tm.a("selectWorld.versionWarning", this.f.k()), tm.c("selectWorld.versionJoinButton"), tl.e));
                } else {
                   this.k();
                }
@@ -448,7 +448,7 @@ public class fdj extends etm<fdj.a> {
             }
 
             this.d.a(this.e);
-         }, tl.c("selectWorld.deleteQuestion"), tl.a("selectWorld.deleteWarning", this.f.b()), tl.c("selectWorld.deleteButton"), tk.e));
+         }, tm.c("selectWorld.deleteQuestion"), tm.a("selectWorld.deleteWarning", this.f.b()), tm.c("selectWorld.deleteButton"), tl.e));
       }
 
       public void f() {
@@ -514,10 +514,10 @@ public class fdj extends etm<fdj.a> {
                      .a(
                         new exd(
                            $$3x -> this.d.a((eyk)($$3x ? fcy.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
-                           tl.c("selectWorld.recreate.customized.title"),
-                           tl.c("selectWorld.recreate.customized.text"),
-                           tk.i,
-                           tk.e
+                           tm.c("selectWorld.recreate.customized.title"),
+                           tm.c("selectWorld.recreate.customized.text"),
+                           tl.i,
+                           tl.e
                         )
                      );
                } else {
@@ -528,7 +528,7 @@ public class fdj extends etm<fdj.a> {
                this.d.a(exz.a(this.e));
             } catch (Exception var9) {
                fdj.u.error("Unable to recreate world", var9);
-               this.d.a(new ewx(() -> this.d.a(this.e), tl.c("selectWorld.recreate.error.title"), tl.c("selectWorld.recreate.error.text")));
+               this.d.a(new ewx(() -> this.d.a(this.e), tm.c("selectWorld.recreate.error.title"), tm.c("selectWorld.recreate.error.text")));
             }
          }
       }
@@ -542,7 +542,7 @@ public class fdj extends etm<fdj.a> {
       }
 
       private void l() {
-         this.d.d(new exq(tl.c("selectWorld.data_read")));
+         this.d.d(new exq(tm.c("selectWorld.data_read")));
       }
 
       private void m() {

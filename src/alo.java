@@ -6,16 +6,16 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class alo extends aln implements ta, wt {
+public class alo extends aln implements tb, wu {
    private static final Logger d = LogUtils.getLogger();
-   private static final tl e = tl.c("multiplayer.disconnect.invalid_player_data");
+   private static final tm e = tm.c("multiplayer.disconnect.invalid_player_data");
    private final GameProfile f;
    private final Queue<alh> g = new ConcurrentLinkedQueue<>();
    @Nullable
    private alh h;
    private akg i;
 
-   public alo(MinecraftServer $$0, sm $$1, alg $$2) {
+   public alo(MinecraftServer $$0, sn $$1, alg $$2) {
       super($$0, $$1, $$2);
       this.f = $$2.a();
       this.i = $$2.c();
@@ -27,7 +27,7 @@ public class alo extends aln implements ta, wt {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       d.info("{} lost connection: {}", this.f, $$0.getString());
       super.a($$0);
    }
@@ -38,11 +38,11 @@ public class alo extends aln implements ta, wt {
    }
 
    public void m() {
-      this.b(new vh(new vv(this.b.getServerModName())));
+      this.b(new vi(new vw(this.b.getServerModName())));
       hn<afg> $$0 = this.b.aV();
-      this.b(new ws(cee.d.b(this.b.aT().M())));
-      this.b(new wr(new hu.c(hx.a($$0)).c()));
-      this.b(new vm(aql.a($$0)));
+      this.b(new wt(cee.d.b(this.b.aT().M())));
+      this.b(new ws(new hu.c(hx.a($$0)).c()));
+      this.b(new vn(aql.a($$0)));
       this.o();
       this.g.add(new alx());
       this.p();
@@ -58,22 +58,22 @@ public class alo extends aln implements ta, wt {
    }
 
    @Override
-   public void a(vo $$0) {
+   public void a(vp $$0) {
       this.i = $$0.a();
    }
 
    @Override
-   public void a(vs $$0) {
+   public void a(vt $$0) {
       super.a($$0);
-      if ($$0.a() != vs.a.d) {
+      if ($$0.a() != vt.a.d) {
          this.a(aly.a);
       }
    }
 
    @Override
-   public void a(wu $$0) {
+   public void a(wv $$0) {
       this.c.a();
-      vf.a($$0, this, this.b);
+      vg.a($$0, this, this.b);
       this.a(alx.a);
 
       try {
@@ -83,7 +83,7 @@ public class alo extends aln implements ta, wt {
             return;
          }
 
-         tl $$2 = $$1.a(this.c.f(), this.f);
+         tm $$2 = $$1.a(this.c.f(), this.f);
          if ($$2 != null) {
             this.b($$2);
             return;
@@ -94,7 +94,7 @@ public class alo extends aln implements ta, wt {
          this.c.b();
       } catch (Exception var5) {
          d.error("Couldn't place player in world", var5);
-         this.c.a(new vi(e));
+         this.c.a(new vj(e));
          this.c.a(e);
       }
    }

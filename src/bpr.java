@@ -14,7 +14,7 @@ public class bpr extends bqf {
       if (this.b.ef().a(this.c) != 0) {
          return false;
       } else {
-         hc $$0 = this.b.cF();
+         hc $$0 = this.b.cE();
          int $$1 = $$0.j();
          int $$2 = $$0.l();
          gw $$3 = this.b.dl();
@@ -41,7 +41,7 @@ public class bpr extends bqf {
    @Override
    public boolean b() {
       double $$0 = this.b.do().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dD() == 0.0F || !(Math.abs(this.b.dD()) < 10.0F) || !this.b.aY()) && !this.b.aB();
+      return (!($$0 * $$0 < 0.03F) || this.b.dD() == 0.0F || !(Math.abs(this.b.dD()) < 10.0F) || !this.b.aX()) && !this.b.aA();
    }
 
    @Override
@@ -51,7 +51,7 @@ public class bpr extends bqf {
 
    @Override
    public void c() {
-      hc $$0 = this.b.cF();
+      hc $$0 = this.b.cE();
       this.b.f(this.b.do().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
       this.b.L().n();
    }

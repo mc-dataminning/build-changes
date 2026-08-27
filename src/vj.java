@@ -1,24 +1,24 @@
-public class vj implements vd<vg> {
-   private final long a;
+public class vj implements ve<vh> {
+   private final tm a;
 
-   public vj(long $$0) {
+   public vj(tm $$0) {
       this.a = $$0;
    }
 
-   public vj(so $$0) {
-      this.a = $$0.readLong();
+   public vj(sp $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.b(this.a);
+   public void a(sp $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(vg $$0) {
+   public void a(vh $$0) {
       $$0.a(this);
    }
 
-   public long a() {
+   public tm a() {
       return this.a;
    }
 }

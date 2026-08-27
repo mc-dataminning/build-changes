@@ -58,14 +58,14 @@ public class cba {
             $$3.add($$2);
          }
 
-         if ($$3.stream().anyMatch($$0x -> $$0x.Z().map(cba::d).orElse(false))) {
+         if ($$3.stream().anyMatch($$0x -> $$0x.Y().map(cba::d).orElse(false))) {
             return OptionalInt.empty();
          } else {
-            Optional<cba> $$4 = $$3.stream().flatMap($$0x -> $$0x.Z().stream()).max(Comparator.comparingInt(cba::c));
+            Optional<cba> $$4 = $$3.stream().flatMap($$0x -> $$0x.Y().stream()).max(Comparator.comparingInt(cba::c));
             if ($$4.isPresent()) {
                cba $$5 = $$4.get();
                $$5.e();
-               $$3.forEach($$1x -> $$1x.Z().ifPresent($$1xx -> $$1xx.a($$5)));
+               $$3.forEach($$1x -> $$1x.Y().ifPresent($$1xx -> $$1xx.a($$5)));
                return OptionalInt.of($$5.h);
             } else {
                return OptionalInt.empty();
@@ -86,7 +86,7 @@ public class cba {
    private static List<aks> b(akr $$0, gw $$1) {
       ehn $$2 = ehn.b($$1);
       Predicate<aks> $$3 = $$1x -> $$1x.dj().a((hq)$$2, 16.0);
-      return $$0.a($$3.and(bjg::bw).and(bit.f));
+      return $$0.a($$3.and(bjg::bv).and(bit.f));
    }
 
    private void e() {

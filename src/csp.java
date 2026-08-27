@@ -190,12 +190,12 @@ public class csp extends csi {
          boolean $$8 = !$$5.d();
          if ($$8 || $$7 > 0) {
             if ($$8) {
-               qx $$9 = new qx();
+               qy $$9 = new qy();
                $$9.a("Bees", $$5.j());
                cgy.a($$6, dcx.H, $$9);
             }
 
-            qx $$10 = new qx();
+            qy $$10 = new qy();
             $$10.a("honey_level", $$7);
             $$6.a("BlockStateTag", $$10);
             byn $$11 = new byn($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$6);

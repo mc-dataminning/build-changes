@@ -49,7 +49,7 @@ public class bwh {
                4,
                new bmt(
                   ImmutableMap.of(bsh.m, bsi.b),
-                  ImmutableList.of(Pair.of(bmo.a(1.0F), 1), Pair.of(bnd.a(1.0F, 3), 1), Pair.of(new ble(), 3), Pair.of(boj.a(biq::aB), 2))
+                  ImmutableList.of(Pair.of(bmo.a(1.0F), 1), Pair.of(bnd.a(1.0F, 3), 1), Pair.of(new ble(), 3), Pair.of(boj.a(biq::aA), 2))
                )
             )
          ),
@@ -72,7 +72,7 @@ public class bwh {
                   ImmutableSet.of(),
                   bll.a.a,
                   bll.b.b,
-                  ImmutableList.of(Pair.of(bmo.c(0.75F), 1), Pair.of(bmo.a(1.0F, true), 1), Pair.of(bnd.a(1.0F, 3), 1), Pair.of(boj.a(biq::bb), 5))
+                  ImmutableList.of(Pair.of(bmo.c(0.75F), 1), Pair.of(bmo.a(1.0F, true), 1), Pair.of(bnd.a(1.0F, 3), 1), Pair.of(boj.a(biq::ba), 5))
                )
             )
          ),
@@ -88,7 +88,7 @@ public class bwh {
             Pair.of(1, bni.a(bwh::b, $$0x -> $$0x.dN().c(bsh.B))),
             Pair.of(2, bnu.a(8, 1.0F)),
             Pair.of(3, bnw.a(csw.sm)),
-            Pair.of(4, new bmt(ImmutableList.of(Pair.of(bmo.a(1.0F), 2), Pair.of(bnd.a(1.0F, 3), 1), Pair.of(new ble(), 2), Pair.of(boj.a(biq::aB), 1))))
+            Pair.of(4, new bmt(ImmutableList.of(Pair.of(bmo.a(1.0F), 2), Pair.of(bnd.a(1.0F, 3), 1), Pair.of(new ble(), 2), Pair.of(boj.a(biq::aA), 1))))
          ),
          ImmutableSet.of(Pair.of(bsh.S, bsi.b), Pair.of(bsh.X, bsi.a))
       );

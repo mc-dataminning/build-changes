@@ -11,9 +11,9 @@ public class eoq extends gfb {
    static final aex c = new aex("pending_invite/reject_highlighted");
    static final aex y = new aex("pending_invite/reject");
    private static final Logger z = LogUtils.getLogger();
-   private static final tl A = tl.c("mco.invites.nopending");
-   static final tl B = tl.c("mco.invites.button.accept");
-   static final tl C = tl.c("mco.invites.button.reject");
+   private static final tm A = tm.c("mco.invites.nopending");
+   static final tm B = tm.c("mco.invites.button.accept");
+   static final tm C = tm.c("mco.invites.button.reject");
    private final eyk D;
    private final CompletableFuture<List<emp>> E = CompletableFuture.supplyAsync(() -> {
       try {
@@ -24,13 +24,13 @@ public class eoq extends gfb {
       }
    }, ac.g());
    @Nullable
-   tl F;
+   tm F;
    eoq.b G;
    int H = -1;
    private esq I;
    private esq J;
 
-   public eoq(eyk $$0, tl $$1) {
+   public eoq(eyk $$0, tm $$1) {
       super($$1);
       this.D = $$0;
    }
@@ -47,15 +47,15 @@ public class eoq extends gfb {
       this.I = this.d(esq.a(B, $$0 -> {
          this.a(this.H, true);
          this.H = -1;
-         this.C();
+         this.D();
       }).a(this.g / 2 - 174, this.h - 32, 100, 20).a());
-      this.d(esq.a(tk.d, $$0 -> this.az_()).a(this.g / 2 - 50, this.h - 32, 100, 20).a());
+      this.d(esq.a(tl.d, $$0 -> this.az_()).a(this.g / 2 - 50, this.h - 32, 100, 20).a());
       this.J = this.d(esq.a(C, $$0 -> {
          this.a(this.H, false);
          this.H = -1;
-         this.C();
+         this.D();
       }).a(this.g / 2 + 74, this.h - 32, 100, 20).a());
-      this.C();
+      this.D();
    }
 
    @Override
@@ -109,7 +109,7 @@ public class eoq extends gfb {
    }
 
    @Override
-   void C() {
+   void D() {
       this.I.j = this.a(this.H);
       this.J.j = this.a(this.H);
    }
@@ -148,9 +148,9 @@ public class eoq extends gfb {
       }
 
       @Override
-      public tl a() {
-         tl $$0 = tk.b(tl.b(this.c.b), tl.b(this.c.c), epm.a(this.c.e));
-         return tl.a("narrator.select", $$0);
+      public tm a() {
+         tm $$0 = tl.b(tm.b(this.c.b), tm.b(this.c.c), epm.a(this.c.e));
+         return tm.a("narrator.select", $$0);
       }
 
       class a extends enz {
@@ -219,13 +219,13 @@ public class eoq extends gfb {
 
       public void c(int $$0) {
          eoq.this.H = $$0;
-         eoq.this.C();
+         eoq.this.D();
       }
 
       public void a(@Nullable eoq.a $$0) {
          super.a($$0);
          eoq.this.H = this.i().indexOf($$0);
-         eoq.this.C();
+         eoq.this.D();
       }
    }
 }

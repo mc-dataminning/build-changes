@@ -26,14 +26,14 @@ public class bzw extends bzi implements bkd {
    }
 
    @Override
-   public boolean aS() {
+   public boolean aR() {
       return this.ah % c == 0;
    }
 
    @Override
    public void a(bjm $$0, ehn $$1) {
       super.a($$0, $$1);
-      this.aP();
+      this.aO();
    }
 
    @Override
@@ -72,7 +72,7 @@ public class bzw extends bzi implements bkd {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.e("BoundX")) {
          this.bU = new gw($$0.h("BoundX"), $$0.h("BoundY"), $$0.h("BoundZ"));
@@ -84,7 +84,7 @@ public class bzw extends bzi implements bkd {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.bU != null) {
          $$0.a("BoundX", this.bU.u());
@@ -160,13 +160,13 @@ public class bzw extends bzi implements bkd {
    }
 
    @Override
-   public float bn() {
+   public float bm() {
       return 1.0F;
    }
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       asc $$5 = $$0.D_();
       this.a($$5, $$1);
       this.b($$5, $$1);
@@ -197,19 +197,19 @@ public class bzw extends bzi implements bkd {
       @Override
       public boolean a() {
          bjg $$0 = bzw.this.q();
-         return $$0 != null && $$0.bw() && !bzw.this.I().b() && bzw.this.ag.a(b(7)) == 0 ? bzw.this.f($$0) > 4.0 : false;
+         return $$0 != null && $$0.bv() && !bzw.this.I().b() && bzw.this.ag.a(b(7)) == 0 ? bzw.this.f($$0) > 4.0 : false;
       }
 
       @Override
       public boolean b() {
-         return bzw.this.I().b() && bzw.this.gd() && bzw.this.q() != null && bzw.this.q().bw();
+         return bzw.this.I().b() && bzw.this.gd() && bzw.this.q() != null && bzw.this.q().bv();
       }
 
       @Override
       public void c() {
          bjg $$0 = bzw.this.q();
          if ($$0 != null) {
-            ehn $$1 = $$0.bq();
+            ehn $$1 = $$0.bp();
             bzw.this.bL.a($$1.c, $$1.d, $$1.e, 1.0);
          }
 
@@ -231,13 +231,13 @@ public class bzw extends bzi implements bkd {
       public void e() {
          bjg $$0 = bzw.this.q();
          if ($$0 != null) {
-            if (bzw.this.cH().c($$0.cH())) {
+            if (bzw.this.cG().c($$0.cG())) {
                bzw.this.C($$0);
                bzw.this.w(false);
             } else {
                double $$1 = bzw.this.f($$0);
                if ($$1 < 9.0) {
-                  ehn $$2 = $$0.bq();
+                  ehn $$2 = $$0.bp();
                   bzw.this.bL.a($$2.c, $$2.d, $$2.e, 1.0);
                }
             }
@@ -274,7 +274,7 @@ public class bzw extends bzi implements bkd {
          if (this.k == bpe.a.b) {
             ehn $$0 = new ehn(this.e - bzw.this.dq(), this.f - bzw.this.ds(), this.g - bzw.this.dw());
             double $$1 = $$0.f();
-            if ($$1 < bzw.this.cH().a()) {
+            if ($$1 < bzw.this.cG().a()) {
                this.k = bpe.a.a;
                bzw.this.f(bzw.this.do().a(0.5));
             } else {

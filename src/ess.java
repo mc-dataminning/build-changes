@@ -9,11 +9,11 @@ public class ess extends esi {
    private boolean m;
    private final boolean n;
 
-   public ess(int $$0, int $$1, int $$2, int $$3, tl $$4, boolean $$5) {
+   public ess(int $$0, int $$1, int $$2, int $$3, tm $$4, boolean $$5) {
       this($$0, $$1, $$2, $$3, $$4, $$5, true);
    }
 
-   public ess(int $$0, int $$1, int $$2, int $$3, tl $$4, boolean $$5, boolean $$6) {
+   public ess(int $$0, int $$1, int $$2, int $$3, tm $$4, boolean $$5, boolean $$6) {
       super($$0, $$1, $$2, $$3, $$4);
       this.m = $$5;
       this.n = $$6;
@@ -33,9 +33,9 @@ public class ess extends esi {
       $$0.a(ewh.a, this.aF_());
       if (this.i) {
          if (this.aD_()) {
-            $$0.a(ewh.d, tl.c("narration.checkbox.usage.focused"));
+            $$0.a(ewh.d, tm.c("narration.checkbox.usage.focused"));
          } else {
-            $$0.a(ewh.d, tl.c("narration.checkbox.usage.hovered"));
+            $$0.a(ewh.d, tm.c("narration.checkbox.usage.hovered"));
          }
       }
    }

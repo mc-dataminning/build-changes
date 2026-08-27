@@ -50,11 +50,11 @@ public class ecc {
    }
 
    @Nullable
-   private <T extends ebr> T a(Function<qx, T> $$0, ata $$1, String $$2) {
+   private <T extends ebr> T a(Function<qy, T> $$0, ata $$1, String $$2) {
       try {
          File $$3 = this.a($$2);
          if ($$3.exists()) {
-            qx $$4 = this.a($$2, $$1, aa.b().d().c());
+            qy $$4 = this.a($$2, $$1, aa.b().d().c());
             return $$0.apply($$4.p("data"));
          }
       } catch (Exception var6) {
@@ -68,24 +68,24 @@ public class ecc {
       this.b.put($$0, $$1);
    }
 
-   public qx a(String $$0, ata $$1, int $$2) throws IOException {
+   public qy a(String $$0, ata $$1, int $$2) throws IOException {
       File $$3 = this.a($$0);
 
-      qx var9;
+      qy var9;
       try (
          FileInputStream $$4 = new FileInputStream($$3);
          PushbackInputStream $$5 = new PushbackInputStream($$4, 2);
       ) {
-         qx $$6;
+         qy $$6;
          if (this.a($$5)) {
-            $$6 = rh.a($$5);
+            $$6 = ri.a($$5);
          } else {
             try (DataInputStream $$7 = new DataInputStream($$5)) {
-               $$6 = rh.a((DataInput)$$7);
+               $$6 = ri.a((DataInput)$$7);
             }
          }
 
-         int $$10 = rj.b($$6, 1343);
+         int $$10 = rk.b($$6, 1343);
          var9 = $$1.a(this.c, $$6, $$10, $$2);
       }
 

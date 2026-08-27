@@ -4,19 +4,19 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public abstract class aln implements vn {
+public abstract class aln implements vo {
    private static final Logger d = LogUtils.getLogger();
    public static final int a = 15000;
-   private static final tl e = tl.c("disconnect.timeout");
+   private static final tm e = tm.c("disconnect.timeout");
    protected final MinecraftServer b;
-   protected final sm c;
+   protected final sn c;
    private long f;
    private boolean g;
    private long h;
    private int i;
    private volatile boolean j = false;
 
-   public aln(MinecraftServer $$0, sm $$1, alg $$2) {
+   public aln(MinecraftServer $$0, sn $$1, alg $$2) {
       this.b = $$0;
       this.c = $$1;
       this.f = ac.b();
@@ -24,7 +24,7 @@ public abstract class aln implements vn {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       if (this.i()) {
          d.info("Stopping singleplayer server as player logged out");
          this.b.a(false);
@@ -32,7 +32,7 @@ public abstract class aln implements vn {
    }
 
    @Override
-   public void a(vq $$0) {
+   public void a(vr $$0) {
       if (this.g && $$0.a() == this.h) {
          int $$1 = (int)(ac.b() - this.f);
          this.i = (this.i * 3 + $$1) / 4;
@@ -43,19 +43,19 @@ public abstract class aln implements vn {
    }
 
    @Override
-   public void a(vr $$0) {
-   }
-
-   @Override
-   public void a(vp $$0) {
-   }
-
-   @Override
    public void a(vs $$0) {
-      vf.a($$0, this, this.b);
-      if ($$0.a() == vs.a.b && this.b.T()) {
+   }
+
+   @Override
+   public void a(vq $$0) {
+   }
+
+   @Override
+   public void a(vt $$0) {
+      vg.a($$0, this, this.b);
+      if ($$0.a() == vt.a.b && this.b.T()) {
          d.info("Disconnecting {} due to resource pack rejection", this.j().getName());
-         this.b(tl.c("multiplayer.requiredTexturePrompt.disconnect"));
+         this.b(tm.c("multiplayer.requiredTexturePrompt.disconnect"));
       }
    }
 
@@ -69,7 +69,7 @@ public abstract class aln implements vn {
             this.g = true;
             this.f = $$0;
             this.h = $$0;
-            this.b(new vj(this.h));
+            this.b(new vk(this.h));
          }
       }
 
@@ -85,11 +85,11 @@ public abstract class aln implements vn {
       this.c.c();
    }
 
-   public void b(vd<?> $$0) {
+   public void b(ve<?> $$0) {
       this.a($$0, null);
    }
 
-   public void a(vd<?> $$0, @Nullable sv $$1) {
+   public void a(ve<?> $$0, @Nullable sw $$1) {
       boolean $$2 = !this.j || !this.b.bl();
 
       try {
@@ -102,8 +102,8 @@ public abstract class aln implements vn {
       }
    }
 
-   public void b(tl $$0) {
-      this.c.a(new vi($$0), sv.a(() -> this.c.a($$0)));
+   public void b(tm $$0) {
+      this.c.a(new vj($$0), sw.a(() -> this.c.a($$0)));
       this.c.o();
       this.b.h(this.c::p);
    }

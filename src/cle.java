@@ -11,7 +11,7 @@ public class cle {
    public static final String b = "CustomPotionColor";
    public static final String c = "Potion";
    private static final int d = 16253176;
-   private static final tl e = tl.c("effect.none").a(n.h);
+   private static final tm e = tm.c("effect.none").a(n.h);
 
    public static List<bid> a(cjf $$0) {
       return a($$0.v());
@@ -24,7 +24,7 @@ public class cle {
       return $$2;
    }
 
-   public static List<bid> a(@Nullable qx $$0) {
+   public static List<bid> a(@Nullable qy $$0) {
       List<bid> $$1 = Lists.newArrayList();
       $$1.addAll(c($$0).a());
       a($$0, $$1);
@@ -35,18 +35,18 @@ public class cle {
       return b($$0.v());
    }
 
-   public static List<bid> b(@Nullable qx $$0) {
+   public static List<bid> b(@Nullable qy $$0) {
       List<bid> $$1 = Lists.newArrayList();
       a($$0, $$1);
       return $$1;
    }
 
-   public static void a(@Nullable qx $$0, List<bid> $$1) {
+   public static void a(@Nullable qy $$0, List<bid> $$1) {
       if ($$0 != null && $$0.b("custom_potion_effects", 9)) {
-         rd $$2 = $$0.c("custom_potion_effects", 10);
+         re $$2 = $$0.c("custom_potion_effects", 10);
 
          for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            qx $$4 = $$2.a($$3);
+            qy $$4 = $$2.a($$3);
             bid $$5 = bid.b($$4);
             if ($$5 != null) {
                $$1.add($$5);
@@ -56,7 +56,7 @@ public class cle {
    }
 
    public static int c(cjf $$0) {
-      qx $$1 = $$0.v();
+      qy $$1 = $$0.v();
       if ($$1 != null && $$1.b("CustomPotionColor", 99)) {
          return $$1.h("CustomPotionColor");
       } else {
@@ -104,7 +104,7 @@ public class cle {
       return c($$0.v());
    }
 
-   public static clc c(@Nullable qx $$0) {
+   public static clc c(@Nullable qy $$0) {
       return $$0 == null ? clf.b : clc.a($$0.l("Potion"));
    }
 
@@ -123,11 +123,11 @@ public class cle {
       if ($$1.isEmpty()) {
          return $$0;
       } else {
-         qx $$2 = $$0.w();
-         rd $$3 = $$2.c("custom_potion_effects", 9);
+         qy $$2 = $$0.w();
+         re $$3 = $$2.c("custom_potion_effects", 9);
 
          for (bid $$4 : $$1) {
-            $$3.add($$4.a(new qx()));
+            $$3.add($$4.a(new qy()));
          }
 
          $$2.a("custom_potion_effects", $$3);
@@ -135,17 +135,17 @@ public class cle {
       }
    }
 
-   public static void a(cjf $$0, List<tl> $$1, float $$2) {
+   public static void a(cjf $$0, List<tm> $$1, float $$2) {
       a(a($$0), $$1, $$2);
    }
 
-   public static void a(List<bid> $$0, List<tl> $$1, float $$2) {
+   public static void a(List<bid> $$0, List<tm> $$1, float $$2) {
       List<Pair<bkh, bkk>> $$3 = Lists.newArrayList();
       if ($$0.isEmpty()) {
          $$1.add(e);
       } else {
          for (bid $$4 : $$0) {
-            ty $$5 = tl.c($$4.i());
+            tz $$5 = tm.c($$4.i());
             bib $$6 = $$4.c();
             Map<bkh, bhw> $$7 = $$6.h();
             if (!$$7.isEmpty()) {
@@ -155,11 +155,11 @@ public class cle {
             }
 
             if ($$4.e() > 0) {
-               $$5 = tl.a("potion.withAmplifier", $$5, tl.c("potion.potency." + $$4.e()));
+               $$5 = tm.a("potion.withAmplifier", $$5, tm.c("potion.potency." + $$4.e()));
             }
 
             if (!$$4.a(20)) {
-               $$5 = tl.a("potion.withDuration", $$5, bie.a($$4, $$2));
+               $$5 = tm.a("potion.withDuration", $$5, bie.a($$4, $$2));
             }
 
             $$1.add($$5.a($$6.f().a()));
@@ -167,8 +167,8 @@ public class cle {
       }
 
       if (!$$3.isEmpty()) {
-         $$1.add(tk.a);
-         $$1.add(tl.c("potion.whenDrank").a(n.f));
+         $$1.add(tl.a);
+         $$1.add(tm.c("potion.whenDrank").a(n.f));
 
          for (Pair<bkh, bkk> $$9 : $$3) {
             bkk $$10 = (bkk)$$9.getSecond();
@@ -181,10 +181,10 @@ public class cle {
             }
 
             if ($$11 > 0.0) {
-               $$1.add(tl.a("attribute.modifier.plus." + $$10.c().a(), cjf.c.format($$13), tl.c(((bkh)$$9.getFirst()).c())).a(n.j));
+               $$1.add(tm.a("attribute.modifier.plus." + $$10.c().a(), cjf.c.format($$13), tm.c(((bkh)$$9.getFirst()).c())).a(n.j));
             } else if ($$11 < 0.0) {
                $$13 *= -1.0;
-               $$1.add(tl.a("attribute.modifier.take." + $$10.c().a(), cjf.c.format($$13), tl.c(((bkh)$$9.getFirst()).c())).a(n.m));
+               $$1.add(tm.a("attribute.modifier.take." + $$10.c().a(), cjf.c.format($$13), tm.c(((bkh)$$9.getFirst()).c())).a(n.m));
             }
          }
       }

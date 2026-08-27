@@ -19,7 +19,7 @@ public class foo {
             b($$0, $$1);
          }
 
-         if ($$0.s.bN()) {
+         if ($$0.s.bM()) {
             c($$0, $$1);
          }
       }
@@ -30,9 +30,9 @@ public class foo {
       gw.a $$1 = new gw.a();
 
       for (int $$2 = 0; $$2 < 8; $$2++) {
-         double $$3 = $$0.dq() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dg() * 0.8F);
+         double $$3 = $$0.dq() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.df() * 0.8F);
          double $$4 = $$0.du() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F);
-         double $$5 = $$0.dw() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dg() * 0.8F);
+         double $$5 = $$0.dw() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.df() * 0.8F);
          $$1.b($$3, $$4, $$5);
          dfj $$6 = $$0.dL().a_($$1);
          if ($$6.l() != cza.a && $$6.p($$0.dL(), $$1)) {

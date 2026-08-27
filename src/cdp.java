@@ -26,7 +26,7 @@ public interface cdp extends bgr, bhb {
       return this.g();
    }
 
-   default void c(qx $$0) {
+   default void c(qy $$0) {
       if (this.G() != null) {
          $$0.a("LootTable", this.G().toString());
          if (this.H() != 0L) {
@@ -37,7 +37,7 @@ public interface cdp extends bgr, bhb {
       }
    }
 
-   default void b_(qx $$0) {
+   default void b_(qy $$0) {
       this.K();
       if ($$0.b("LootTable", 8)) {
          this.a(new aex($$0.l("LootTable")));
@@ -52,7 +52,7 @@ public interface cdp extends bgr, bhb {
          bgu.a($$1, $$2, this);
          if (!$$1.B) {
             biq $$3 = $$0.c();
-            if ($$3 != null && $$3.ah() == biu.bt) {
+            if ($$3 != null && $$3.ag() == biu.bt) {
                cal.a((cbu)$$3, true);
             }
          }

@@ -1,4 +1,4 @@
-public class acf implements vd<abd> {
+public class acf implements ve<abd> {
    private final gw a;
    private final hc b;
    private final acf.a c;
@@ -15,7 +15,7 @@ public class acf implements vd<abd> {
       this($$0, $$1, $$2, 0);
    }
 
-   public acf(so $$0) {
+   public acf(sp $$0) {
       this.c = $$0.b(acf.a.class);
       this.a = $$0.e();
       this.b = hc.a($$0.readUnsignedByte());
@@ -23,7 +23,7 @@ public class acf implements vd<abd> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.c);
       $$0.a(this.a);
       $$0.k(this.b.d());

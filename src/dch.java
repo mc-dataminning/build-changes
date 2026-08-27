@@ -34,7 +34,7 @@ public class dch extends czx {
                   $$6.aU = $$5.b().o() == hc.a.a ? 0.0F : 90.0F;
                   $$6.s();
 
-                  for (aks $$8 : $$0.a(aks.class, $$6.cH().g(50.0))) {
+                  for (aks $$8 : $$0.a(aks.class, $$6.cG().g(50.0))) {
                      al.n.a($$8, $$6);
                   }
 

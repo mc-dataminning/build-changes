@@ -13,13 +13,13 @@ public class exg extends eyk {
    protected final fcy a;
    private final Consumer<dtl> p;
    dtl q;
-   private tl s;
-   private tl t;
+   private tm s;
+   private tm t;
    private exg.a u;
    private esq v;
 
    public exg(fcy $$0, Consumer<dtl> $$1, dtl $$2) {
-      super(tl.c("createWorld.customize.flat.title"));
+      super(tm.c("createWorld.customize.flat.title"));
       this.a = $$0;
       this.p = $$1;
       this.q = $$2;
@@ -35,12 +35,12 @@ public class exg extends eyk {
 
    @Override
    protected void aI_() {
-      this.s = tl.c("createWorld.customize.flat.tile");
-      this.t = tl.c("createWorld.customize.flat.height");
+      this.s = tm.c("createWorld.customize.flat.tile");
+      this.t = tm.c("createWorld.customize.flat.height");
       this.u = new exg.a();
       this.e(this.u);
-      this.v = this.d(esq.a(tl.c("createWorld.customize.flat.removeLayer"), $$0 -> {
-         if (this.C()) {
+      this.v = this.d(esq.a(tm.c("createWorld.customize.flat.removeLayer"), $$0 -> {
+         if (this.D()) {
             List<dti> $$1 = this.q.e();
             int $$2 = this.u.i().indexOf(this.u.f());
             int $$3 = $$1.size() - $$2 - 1;
@@ -51,17 +51,17 @@ public class exg extends eyk {
             this.l();
          }
       }).a(this.g / 2 - 155, this.h - 52, 150, 20).a());
-      this.d(esq.a(tl.c("createWorld.customize.presets"), $$0 -> {
+      this.d(esq.a(tm.c("createWorld.customize.presets"), $$0 -> {
          this.f.a(new eyh(this));
          this.q.g();
          this.l();
       }).a(this.g / 2 + 5, this.h - 52, 150, 20).a());
-      this.d(esq.a(tk.d, $$0 -> {
+      this.d(esq.a(tl.d, $$0 -> {
          this.p.accept(this.q);
          this.f.a(this.a);
          this.q.g();
       }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(esq.a(tk.e, $$0 -> {
+      this.d(esq.a(tl.e, $$0 -> {
          this.f.a(this.a);
          this.q.g();
       }).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
@@ -70,10 +70,10 @@ public class exg extends eyk {
    }
 
    void l() {
-      this.v.i = this.C();
+      this.v.i = this.D();
    }
 
-   private boolean C() {
+   private boolean D() {
       return this.u.f() != null;
    }
 
@@ -135,13 +135,13 @@ public class exg extends eyk {
             cjf $$12 = this.a($$11);
             this.a($$0, $$3, $$2, $$12);
             $$0.a(exg.this.i, $$12.y(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
-            tl $$13;
+            tm $$13;
             if ($$1 == 0) {
-               $$13 = tl.a("createWorld.customize.flat.layer.top", $$10.a());
+               $$13 = tm.a("createWorld.customize.flat.layer.top", $$10.a());
             } else if ($$1 == exg.this.q.e().size() - 1) {
-               $$13 = tl.a("createWorld.customize.flat.layer.bottom", $$10.a());
+               $$13 = tm.a("createWorld.customize.flat.layer.bottom", $$10.a());
             } else {
-               $$13 = tl.a("createWorld.customize.flat.layer", $$10.a());
+               $$13 = tm.a("createWorld.customize.flat.layer", $$10.a());
             }
 
             $$0.a(exg.this.i, $$13, $$3 + 2 + 213 - exg.this.i.a($$13), $$2 + 3, 16777215, false);
@@ -161,10 +161,10 @@ public class exg extends eyk {
          }
 
          @Override
-         public tl a() {
+         public tm a() {
             dti $$0 = exg.this.q.e().get(exg.this.q.e().size() - a.this.i().indexOf(this) - 1);
             cjf $$1 = this.a($$0.b());
-            return (tl)(!$$1.b() ? tl.a("narrator.select", $$1.y()) : tk.a);
+            return (tm)(!$$1.b() ? tm.a("narrator.select", $$1.y()) : tl.a);
          }
 
          @Override

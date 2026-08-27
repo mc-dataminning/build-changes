@@ -34,7 +34,7 @@ public class byu extends bzi implements bjt {
    }
 
    @Override
-   public int cu() {
+   public int ct() {
       return this.q() == null ? 3 : 3 + (int)(this.eu() - 1.0F);
    }
 
@@ -58,7 +58,7 @@ public class byu extends bzi implements bjt {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.an.b(c)) {
          $$0.a("powered", true);
@@ -70,7 +70,7 @@ public class byu extends bzi implements bjt {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.an.b(c, $$0.q("powered"));
       if ($$0.b("Fuse", 99)) {
@@ -88,7 +88,7 @@ public class byu extends bzi implements bjt {
 
    @Override
    public void l() {
-      if (this.bw()) {
+      if (this.bv()) {
          this.e = this.bT;
          if (this.y()) {
             this.b(1);
@@ -174,7 +174,7 @@ public class byu extends bzi implements bjt {
       cjf $$2 = $$0.b($$1);
       if ($$2.a(aqb.aF)) {
          apd $$3 = $$2.a(cji.tf) ? ape.hD : ape.hS;
-         this.dL().a($$0, this.dq(), this.ds(), this.dw(), $$3, this.db(), 1.0F, this.ag.i() * 0.4F + 0.8F);
+         this.dL().a($$0, this.dq(), this.ds(), this.dw(), $$3, this.da(), 1.0F, this.ag.i() * 0.4F + 0.8F);
          if (!this.dL().B) {
             this.gd();
             if (!$$2.i()) {
@@ -195,7 +195,7 @@ public class byu extends bzi implements bjt {
          float $$0 = this.a() ? 2.0F : 1.0F;
          this.ba = true;
          this.dL().a(this, this.dq(), this.ds(), this.dw(), (float)this.bV * $$0, cpv.a.c);
-         this.al();
+         this.ak();
          this.gh();
       }
    }

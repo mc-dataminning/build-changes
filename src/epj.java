@@ -5,14 +5,14 @@ public enum epj {
    d(3, duy.d);
 
    private final int e;
-   private final tl f;
+   private final tm f;
 
    private epj(int $$0, aew<dux> $$1) {
       this.e = $$0;
-      this.f = tl.c($$1.a().f("generator"));
+      this.f = tm.c($$1.a().f("generator"));
    }
 
-   public tl a() {
+   public tm a() {
       return this.f;
    }
 

@@ -3,7 +3,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class exb extends eyk {
    public static final double a = 7.0;
-   private static final tl c = tl.c("chat_screen.usage");
+   private static final tm c = tm.c("chat_screen.usage");
    private static final int k = 210;
    private String l = "";
    private int m = -1;
@@ -12,17 +12,17 @@ public class exb extends eyk {
    est o;
 
    public exb(String $$0) {
-      super(tl.c("chat_screen.title"));
+      super(tm.c("chat_screen.title"));
       this.n = $$0;
    }
 
    @Override
    protected void aI_() {
       this.m = this.f.l.d().c().size();
-      this.b = new esz(this.f.i, 4, this.h - 12, this.g - 4, 12, tl.c("chat.editBox")) {
+      this.b = new esz(this.f.i, 4, this.h - 12, this.g - 4, 12, tm.c("chat.editBox")) {
          @Override
-         protected ty aF_() {
-            return super.aF_().b(exb.this.o.c());
+         protected tz aF_() {
+            return super.aF_().b(exb.this.o.e());
          }
       };
       this.b.l(256);
@@ -32,7 +32,8 @@ public class exb extends eyk {
       this.b.f(false);
       this.e(this.b);
       this.o = new est(this.f, this, this.b, this.i, false, false, 1, 10, true, -805306368);
-      this.o.b();
+      this.o.b(false);
+      this.o.d();
       this.c(this.b);
    }
 
@@ -41,7 +42,7 @@ public class exb extends eyk {
       String $$3 = this.b.a();
       this.b($$0, $$1, $$2);
       this.c($$3);
-      this.o.b();
+      this.o.d();
    }
 
    @Override
@@ -52,7 +53,7 @@ public class exb extends eyk {
    private void b(String $$0) {
       String $$1 = this.b.a();
       this.o.a(!$$1.equals(this.n));
-      this.o.b();
+      this.o.d();
    }
 
    @Override
@@ -113,7 +114,7 @@ public class exb extends eyk {
                return true;
             }
 
-            uh $$4 = this.a($$0, $$1);
+            ui $$4 = this.a($$0, $$1);
             if ($$4 != null && this.a($$4)) {
                this.n = this.b.a();
                return true;
@@ -163,7 +164,7 @@ public class exb extends eyk {
       if ($$4 != null && $$4.g() != null) {
          $$0.b(this.i, this.i.c($$4.g(), 210), $$1, $$2);
       } else {
-         uh $$5 = this.a((double)$$1, (double)$$2);
+         ui $$5 = this.a((double)$$1, (double)$$2);
          if ($$5 != null && $$5.i() != null) {
             $$0.a(this.i, $$5, $$1, $$2);
          }
@@ -189,12 +190,12 @@ public class exb extends eyk {
       $$0.a(ewh.d, c);
       String $$1 = this.b.a();
       if (!$$1.isEmpty()) {
-         $$0.a().a(ewh.a, tl.a("chat_screen.message", $$1));
+         $$0.a().a(ewh.a, tm.a("chat_screen.message", $$1));
       }
    }
 
    @Nullable
-   private uh a(double $$0, double $$1) {
+   private ui a(double $$0, double $$1) {
       return this.f.l.d().b($$0, $$1);
    }
 

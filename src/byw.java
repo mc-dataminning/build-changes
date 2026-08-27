@@ -33,7 +33,7 @@ public class byw extends cab implements bzm {
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       $$3 = super.a($$0, $$1, $$2, $$3, $$4);
       if (this.c(biv.b).b() && $$0.D_().i() < 0.03F) {
          this.a(biv.b, new cjf(cji.uX));
@@ -64,17 +64,17 @@ public class byw extends cab implements bzm {
 
    @Override
    protected apd w() {
-      return this.aY() ? ape.gx : ape.gw;
+      return this.aX() ? ape.gx : ape.gw;
    }
 
    @Override
    protected apd d(bho $$0) {
-      return this.aY() ? ape.gB : ape.gA;
+      return this.aX() ? ape.gB : ape.gA;
    }
 
    @Override
    protected apd l_() {
-      return this.aY() ? ape.gz : ape.gy;
+      return this.aX() ? ape.gz : ape.gy;
    }
 
    @Override
@@ -83,7 +83,7 @@ public class byw extends cab implements bzm {
    }
 
    @Override
-   protected apd aM() {
+   protected apd aL() {
       return ape.gE;
    }
 
@@ -126,12 +126,12 @@ public class byw extends cab implements bzm {
    }
 
    public boolean j(@Nullable bjg $$0) {
-      return $$0 != null ? !this.dL().N() || $$0.aY() : false;
+      return $$0 != null ? !this.dL().N() || $$0.aX() : false;
    }
 
    @Override
-   public boolean cz() {
-      return !this.bZ();
+   public boolean cy() {
+      return !this.bY();
    }
 
    boolean gn() {
@@ -139,13 +139,13 @@ public class byw extends cab implements bzm {
          return true;
       } else {
          bjg $$0 = this.q();
-         return $$0 != null && $$0.aY();
+         return $$0 != null && $$0.aX();
       }
    }
 
    @Override
    public void h(ehn $$0) {
-      if (this.cX() && this.aY() && this.gn()) {
+      if (this.cW() && this.aX() && this.gn()) {
          this.a(0.01F, $$0);
          this.a(bjm.a, this.do());
          this.f(this.do().a(0.9));
@@ -155,9 +155,9 @@ public class byw extends cab implements bzm {
    }
 
    @Override
-   public void be() {
+   public void bd() {
       if (!this.dL().B) {
-         if (this.cY() && this.aY() && this.gn()) {
+         if (this.cX() && this.aX() && this.gn()) {
             this.bN = this.c;
             this.h(true);
          } else {
@@ -168,8 +168,8 @@ public class byw extends cab implements bzm {
    }
 
    @Override
-   public boolean ca() {
-      return this.bZ();
+   public boolean bZ() {
+      return this.bY();
    }
 
    protected boolean gf() {
@@ -232,7 +232,7 @@ public class byw extends cab implements bzm {
 
       @Override
       public boolean a() {
-         return super.a() && !this.g.dL().N() && this.g.aY() && this.g.ds() >= (double)(this.g.dL().y_() - 3);
+         return super.a() && !this.g.dL().N() && this.g.aX() && this.g.ds() >= (double)(this.g.dL().y_() - 3);
       }
 
       @Override
@@ -278,7 +278,7 @@ public class byw extends cab implements bzm {
       public boolean a() {
          if (!this.f.N()) {
             return false;
-         } else if (this.a.aY()) {
+         } else if (this.a.aX()) {
             return false;
          } else {
             ehn $$0 = this.h();
@@ -330,7 +330,7 @@ public class byw extends cab implements bzm {
       @Override
       public void a() {
          bjg $$0 = this.l.q();
-         if (this.l.gn() && this.l.aY()) {
+         if (this.l.gn() && this.l.aX()) {
             if ($$0 != null && $$0.ds() > this.l.ds() || this.l.bX) {
                this.l.f(this.l.do().b(0.0, 0.002, 0.0));
             }
@@ -353,7 +353,7 @@ public class byw extends cab implements bzm {
             this.l.w($$7);
             this.l.f(this.l.do().b((double)$$7 * $$1 * 0.005, (double)$$7 * $$2 * 0.1, (double)$$7 * $$3 * 0.005));
          } else {
-            if (!this.l.aB()) {
+            if (!this.l.aA()) {
                this.l.f(this.l.do().b(0.0, -0.008, 0.0));
             }
 
@@ -376,7 +376,7 @@ public class byw extends cab implements bzm {
 
       @Override
       public boolean a() {
-         return !this.a.dL().N() && this.a.aY() && this.a.ds() < (double)(this.c - 2);
+         return !this.a.dL().N() && this.a.aX() && this.a.ds() < (double)(this.c - 2);
       }
 
       @Override

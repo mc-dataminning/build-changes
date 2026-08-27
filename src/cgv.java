@@ -11,17 +11,17 @@ public class cgv extends cko {
       Validate.isInstanceOf(crm.class, $$1);
    }
 
-   public static void a(cjf $$0, List<tl> $$1) {
-      qx $$2 = cgy.a($$0);
+   public static void a(cjf $$0, List<tm> $$1) {
+      qy $$2 = cgy.a($$0);
       if ($$2 != null && $$2.e("Patterns")) {
-         rd $$3 = $$2.c("Patterns", 10);
+         re $$3 = $$2.c("Patterns", 10);
 
          for (int $$4 = 0; $$4 < $$3.size() && $$4 < 6; $$4++) {
-            qx $$5 = $$3.a($$4);
+            qy $$5 = $$3.a($$4);
             cht $$6 = cht.a($$5.h("Color"));
             hg<dcm> $$7 = dcm.a($$5.l("Pattern"));
             if ($$7 != null) {
-               $$7.e().map($$0x -> $$0x.a().e()).ifPresent($$2x -> $$1.add(tl.c("block.minecraft.banner." + $$2x + "." + $$6.b()).a(n.h)));
+               $$7.e().map($$0x -> $$0x.a().e()).ifPresent($$2x -> $$1.add(tm.c("block.minecraft.banner." + $$2x + "." + $$6.b()).a(n.h)));
             }
          }
       }
@@ -32,7 +32,7 @@ public class cgv extends cko {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       a($$0, $$2);
    }
 }

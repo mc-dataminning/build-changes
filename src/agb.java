@@ -157,26 +157,26 @@ public class agb {
       if ($$4 == 0) {
          if ($$3.size() == 1) {
             if ($$1.size() == 1) {
-               throw new dq(tl.a($$2.a() + ".one.to.one.failure", ae.a($$3.iterator().next()), $$1.iterator().next().N_()));
+               throw new dq(tm.a($$2.a() + ".one.to.one.failure", ae.a($$3.iterator().next()), $$1.iterator().next().N_()));
             } else {
-               throw new dq(tl.a($$2.a() + ".one.to.many.failure", ae.a($$3.iterator().next()), $$1.size()));
+               throw new dq(tm.a($$2.a() + ".one.to.many.failure", ae.a($$3.iterator().next()), $$1.size()));
             }
          } else if ($$1.size() == 1) {
-            throw new dq(tl.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().N_()));
+            throw new dq(tm.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().N_()));
          } else {
-            throw new dq(tl.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
+            throw new dq(tm.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
          }
       } else {
          if ($$3.size() == 1) {
             if ($$1.size() == 1) {
-               $$0.a(() -> tl.a($$2.a() + ".one.to.one.success", ae.a($$3.iterator().next()), $$1.iterator().next().N_()), true);
+               $$0.a(() -> tm.a($$2.a() + ".one.to.one.success", ae.a($$3.iterator().next()), $$1.iterator().next().N_()), true);
             } else {
-               $$0.a(() -> tl.a($$2.a() + ".one.to.many.success", ae.a($$3.iterator().next()), $$1.size()), true);
+               $$0.a(() -> tm.a($$2.a() + ".one.to.many.success", ae.a($$3.iterator().next()), $$1.size()), true);
             }
          } else if ($$1.size() == 1) {
-            $$0.a(() -> tl.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
+            $$0.a(() -> tm.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
          }
 
          return $$4;
@@ -187,7 +187,7 @@ public class agb {
       int $$5 = 0;
       ae $$6 = $$3.b();
       if (!$$6.f().containsKey($$4)) {
-         throw new dq(tl.a("commands.advancement.criterionNotFound", ae.a($$3), $$4));
+         throw new dq(tm.a("commands.advancement.criterionNotFound", ae.a($$3), $$4));
       } else {
          for (aks $$7 : $$1) {
             if ($$2.a($$7, $$3, $$4)) {
@@ -197,15 +197,15 @@ public class agb {
 
          if ($$5 == 0) {
             if ($$1.size() == 1) {
-               throw new dq(tl.a($$2.a() + ".criterion.to.one.failure", $$4, ae.a($$3), $$1.iterator().next().N_()));
+               throw new dq(tm.a($$2.a() + ".criterion.to.one.failure", $$4, ae.a($$3), $$1.iterator().next().N_()));
             } else {
-               throw new dq(tl.a($$2.a() + ".criterion.to.many.failure", $$4, ae.a($$3), $$1.size()));
+               throw new dq(tm.a($$2.a() + ".criterion.to.many.failure", $$4, ae.a($$3), $$1.size()));
             }
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> tl.a($$2.a() + ".criterion.to.one.success", $$4, ae.a($$3), $$1.iterator().next().N_()), true);
+               $$0.a(() -> tm.a($$2.a() + ".criterion.to.one.success", $$4, ae.a($$3), $$1.iterator().next().N_()), true);
             } else {
-               $$0.a(() -> tl.a($$2.a() + ".criterion.to.many.success", $$4, ae.a($$3), $$1.size()), true);
+               $$0.a(() -> tm.a($$2.a() + ".criterion.to.many.success", $$4, ae.a($$3), $$1.size()), true);
             }
 
             return $$5;

@@ -81,7 +81,7 @@ public class dij implements dif, AutoCloseable {
          cpc $$3 = cpc.b($$0, $$1);
          BitSet $$4 = new BitSet();
          cpc.a($$2, $$3).forEach($$1xx -> {
-            rx $$2x = new rx(new rz(rc.a, "DataVersion"), new rz(qx.b, "blending_data"));
+            ry $$2x = new ry(new sa(rd.a, "DataVersion"), new sa(qy.b, "blending_data"));
 
             try {
                this.a($$1xx, $$2x).join();
@@ -90,7 +90,7 @@ public class dij implements dif, AutoCloseable {
                return;
             }
 
-            if ($$2x.d() instanceof qx $$5 && this.a($$5)) {
+            if ($$2x.d() instanceof qy $$5 && this.a($$5)) {
                int $$6 = $$1xx.k() * 32 + $$1xx.j();
                $$4.set($$6);
             }
@@ -99,11 +99,11 @@ public class dij implements dif, AutoCloseable {
       }, ac.f());
    }
 
-   private boolean a(qx $$0) {
+   private boolean a(qy $$0) {
       return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
    }
 
-   public CompletableFuture<Void> a(cpc $$0, @Nullable qx $$1) {
+   public CompletableFuture<Void> a(cpc $$0, @Nullable qy $$1) {
       return this.a(() -> {
          dij.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dij.a($$1));
          $$2.a = $$1;
@@ -111,14 +111,14 @@ public class dij implements dif, AutoCloseable {
       }).thenCompose(Function.identity());
    }
 
-   public CompletableFuture<Optional<qx>> a(cpc $$0) {
+   public CompletableFuture<Optional<qy>> a(cpc $$0) {
       return this.a(() -> {
          dij.a $$1 = this.e.get($$0);
          if ($$1 != null) {
             return Either.left(Optional.ofNullable($$1.a));
          } else {
             try {
-               qx $$2 = this.d.a($$0);
+               qy $$2 = this.d.a($$0);
                return Either.left(Optional.ofNullable($$2));
             } catch (Exception var4) {
                a.warn("Failed to read chunk {}", $$0, var4);
@@ -145,7 +145,7 @@ public class dij implements dif, AutoCloseable {
    }
 
    @Override
-   public CompletableFuture<Void> a(cpc $$0, rn $$1) {
+   public CompletableFuture<Void> a(cpc $$0, ro $$1) {
       return this.a(() -> {
          try {
             dij.a $$2 = this.e.get($$0);
@@ -215,10 +215,10 @@ public class dij implements dif, AutoCloseable {
 
    static class a {
       @Nullable
-      qx a;
+      qy a;
       final CompletableFuture<Void> b = new CompletableFuture<>();
 
-      public a(@Nullable qx $$0) {
+      public a(@Nullable qy $$0) {
          this.a = $$0;
       }
    }

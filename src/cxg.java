@@ -67,7 +67,7 @@ public class cxg extends csv implements czw {
 
    public static cjf a(cjf $$0, int $$1) {
       if ($$1 != 15) {
-         qx $$2 = new qx();
+         qy $$2 = new qy();
          $$2.a(b.f(), String.valueOf($$1));
          $$0.a("BlockStateTag", $$2);
       }

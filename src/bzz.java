@@ -52,7 +52,7 @@ public class bzz extends byr {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       bjz $$5 = super.a($$0, $$1, $$2, $$3, $$4);
       this.a(bkm.f).a(4.0);
       this.y();

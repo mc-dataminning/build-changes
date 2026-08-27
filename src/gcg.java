@@ -18,7 +18,7 @@ public class gcg extends gbv {
 
    @Override
    public boolean s() {
-      return !this.q.aT();
+      return !this.q.aS();
    }
 
    @Override
@@ -28,9 +28,9 @@ public class gcg extends gbv {
 
    @Override
    public void q() {
-      if (this.q.dG() || !this.p.bO() || this.p.cZ() != this.q) {
+      if (this.q.dG() || !this.p.bN() || this.p.cY() != this.q) {
          this.n();
-      } else if (this.r != this.p.bd()) {
+      } else if (this.r != this.p.bc()) {
          this.d = 0.0F;
       } else {
          float $$0 = (float)this.q.do().h();

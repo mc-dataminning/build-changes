@@ -16,7 +16,7 @@ public class ccd extends ccb {
       super.a($$0);
       if ($$0.c() != ehl.a.c || !this.d(((ehk)$$0).a())) {
          if (!this.dL().B) {
-            List<bjg> $$1 = this.dL().a(bjg.class, this.cH().c(4.0, 2.0, 4.0));
+            List<bjg> $$1 = this.dL().a(bjg.class, this.cG().c(4.0, 2.0, 4.0));
             bin $$2 = new bin(this.dL(), this.dq(), this.ds(), this.dw());
             biq $$3 = this.v();
             if ($$3 instanceof bjg) {
@@ -38,15 +38,15 @@ public class ccd extends ccb {
                }
             }
 
-            this.dL().c(2006, this.dl(), this.aT() ? -1 : 1);
+            this.dL().c(2006, this.dl(), this.aS() ? -1 : 1);
             this.dL().b($$2);
-            this.al();
+            this.ak();
          }
       }
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return false;
    }
 

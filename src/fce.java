@@ -1,10 +1,10 @@
 import java.util.Set;
 
 public class fce extends fbs {
-   private static final tl i = tl.c("gui.recipebook.toggleRecipes.smokable");
+   private static final tm i = tm.c("gui.recipebook.toggleRecipes.smokable");
 
    @Override
-   protected tl d() {
+   protected tm d() {
       return i;
    }
 

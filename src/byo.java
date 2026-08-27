@@ -29,36 +29,36 @@ public class byo extends biq implements bkd {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.a;
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return !this.dG();
    }
 
    @Override
    public void l() {
-      if (!this.aU()) {
+      if (!this.aT()) {
          this.f(this.do().b(0.0, -0.04, 0.0));
       }
 
       this.a(bjm.a, this.do());
       this.f(this.do().a(0.98));
-      if (this.aB()) {
+      if (this.aA()) {
          this.f(this.do().d(0.7, -0.5, 0.7));
       }
 
       int $$0 = this.s() - 1;
       this.b($$0);
       if ($$0 <= 0) {
-         this.al();
+         this.ak();
          if (!this.dL().B) {
             this.t();
          }
       } else {
-         this.bf();
+         this.be();
          if (this.dL().B) {
             this.dL().a(ix.Z, this.dq(), this.ds() + 0.5, this.dw(), 0.0, 0.0, 0.0);
          }
@@ -71,12 +71,12 @@ public class byo extends biq implements bkd {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       $$0.a("Fuse", (short)this.s());
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       this.b($$0.g("Fuse"));
    }
 

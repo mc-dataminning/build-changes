@@ -1,95 +1,71 @@
 import java.util.List;
 
 public class pi {
-   public static final aew<dum> a = ph.a("crimson_fungi");
-   public static final aew<dum> b = ph.a("warped_fungi");
-   public static final aew<dum> c = ph.a("oak_checked");
-   public static final aew<dum> d = ph.a("dark_oak_checked");
-   public static final aew<dum> e = ph.a("birch_checked");
-   public static final aew<dum> f = ph.a("acacia_checked");
-   public static final aew<dum> g = ph.a("spruce_checked");
-   public static final aew<dum> h = ph.a("mangrove_checked");
-   public static final aew<dum> i = ph.a("cherry_checked");
-   public static final aew<dum> j = ph.a("pine_on_snow");
-   public static final aew<dum> k = ph.a("spruce_on_snow");
-   public static final aew<dum> l = ph.a("pine_checked");
-   public static final aew<dum> m = ph.a("jungle_tree");
-   public static final aew<dum> n = ph.a("fancy_oak_checked");
-   public static final aew<dum> o = ph.a("mega_jungle_tree_checked");
-   public static final aew<dum> p = ph.a("mega_spruce_checked");
-   public static final aew<dum> q = ph.a("mega_pine_checked");
-   public static final aew<dum> r = ph.a("tall_mangrove_checked");
-   public static final aew<dum> s = ph.a("jungle_bush");
-   public static final aew<dum> t = ph.a("super_birch_bees_0002");
-   public static final aew<dum> u = ph.a("super_birch_bees");
-   public static final aew<dum> v = ph.a("oak_bees_0002");
-   public static final aew<dum> w = ph.a("oak_bees_002");
-   public static final aew<dum> x = ph.a("birch_bees_0002");
-   public static final aew<dum> y = ph.a("birch_bees_002");
-   public static final aew<dum> z = ph.a("fancy_oak_bees_0002");
-   public static final aew<dum> A = ph.a("fancy_oak_bees_002");
-   public static final aew<dum> B = ph.a("fancy_oak_bees");
-   public static final aew<dum> C = ph.a("cherry_bees_005");
+   public static final dup a = dui.a(dks.a.e);
+   public static final dup b = dui.a(dks.a.c);
+   public static final dup c = dui.a(dks.a.a);
+   public static final dup d = dui.a(dks.a.d);
+   public static final dup e = duh.a(dlm.a(), dlm.b());
+   public static final dup f = duh.a(dlm.b(10), dlm.c(10));
+   public static final dup g = duh.a(dlm.b(8), dlm.c(8));
+   public static final dup h = duh.a(dlm.b(4), dlm.c(4));
+   public static final dup i = duh.a(dlm.a(), dlm.a(256));
 
-   public static void a(ns<dum> $$0) {
-      hh<dnj<?, ?>> $$1 = $$0.a(je.as);
-      hg<dnj<?, ?>> $$2 = $$1.b(ox.a);
-      hg<dnj<?, ?>> $$3 = $$1.b(ox.c);
-      hg<dnj<?, ?>> $$4 = $$1.b(ox.g);
-      hg<dnj<?, ?>> $$5 = $$1.b(ox.h);
-      hg<dnj<?, ?>> $$6 = $$1.b(ox.i);
-      hg<dnj<?, ?>> $$7 = $$1.b(ox.j);
-      hg<dnj<?, ?>> $$8 = $$1.b(ox.k);
-      hg<dnj<?, ?>> $$9 = $$1.b(ox.x);
-      hg<dnj<?, ?>> $$10 = $$1.b(ox.z);
-      hg<dnj<?, ?>> $$11 = $$1.b(ox.l);
-      hg<dnj<?, ?>> $$12 = $$1.b(ox.m);
-      hg<dnj<?, ?>> $$13 = $$1.b(ox.n);
-      hg<dnj<?, ?>> $$14 = $$1.b(ox.p);
-      hg<dnj<?, ?>> $$15 = $$1.b(ox.q);
-      hg<dnj<?, ?>> $$16 = $$1.b(ox.r);
-      hg<dnj<?, ?>> $$17 = $$1.b(ox.y);
-      hg<dnj<?, ?>> $$18 = $$1.b(ox.v);
-      hg<dnj<?, ?>> $$19 = $$1.b(ox.s);
-      hg<dnj<?, ?>> $$20 = $$1.b(ox.t);
-      hg<dnj<?, ?>> $$21 = $$1.b(ox.A);
-      hg<dnj<?, ?>> $$22 = $$1.b(ox.B);
-      hg<dnj<?, ?>> $$23 = $$1.b(ox.D);
-      hg<dnj<?, ?>> $$24 = $$1.b(ox.E);
-      hg<dnj<?, ?>> $$25 = $$1.b(ox.G);
-      hg<dnj<?, ?>> $$26 = $$1.b(ox.H);
-      hg<dnj<?, ?>> $$27 = $$1.b(ox.J);
-      hg<dnj<?, ?>> $$28 = $$1.b(ox.K);
-      ph.a($$0, a, $$2, due.a(8), dua.a());
-      ph.a($$0, b, $$3, due.a(8), dua.a());
-      ph.a($$0, c, $$4, ph.a(csw.x));
-      ph.a($$0, d, $$5, ph.a(csw.D));
-      ph.a($$0, e, $$6, ph.a(csw.z));
-      ph.a($$0, f, $$7, ph.a(csw.B));
-      ph.a($$0, g, $$8, ph.a(csw.y));
-      ph.a($$0, h, $$9, ph.a(csw.E));
-      ph.a($$0, i, $$10, ph.a(csw.C));
-      dlz $$29 = dlz.a(hc.a.q(), csw.dP, csw.qC);
-      List<dup> $$30 = List.of(dug.a(hc.b, dlz.a(dlz.a(csw.qC)), 8), dub.a($$29));
-      ph.a($$0, j, $$11, $$30);
-      ph.a($$0, k, $$8, $$30);
-      ph.a($$0, l, $$11, ph.a(csw.y));
-      ph.a($$0, m, $$12, ph.a(csw.A));
-      ph.a($$0, n, $$13, ph.a(csw.x));
-      ph.a($$0, o, $$14, ph.a(csw.A));
-      ph.a($$0, p, $$15, ph.a(csw.y));
-      ph.a($$0, q, $$16, ph.a(csw.y));
-      ph.a($$0, r, $$17, ph.a(csw.E));
-      ph.a($$0, s, $$18, ph.a(csw.x));
-      ph.a($$0, t, $$19, ph.a(csw.z));
-      ph.a($$0, u, $$20, ph.a(csw.z));
-      ph.a($$0, v, $$21, ph.a(csw.x));
-      ph.a($$0, w, $$22, ph.a(csw.x));
-      ph.a($$0, x, $$23, ph.a(csw.z));
-      ph.a($$0, y, $$24, ph.a(csw.z));
-      ph.a($$0, z, $$25, ph.a(csw.x));
-      ph.a($$0, A, $$26, ph.a(csw.x));
-      ph.a($$0, B, $$27, ph.a(csw.x));
-      ph.a($$0, C, $$28, ph.a(csw.C));
+   public static void a(nt<dum> $$0) {
+      pc.a($$0);
+      pd.a($$0);
+      pe.a($$0);
+      pf.a($$0);
+      pg.a($$0);
+      ph.a($$0);
+      pj.a($$0);
+      pk.a($$0);
+      pl.a($$0);
+   }
+
+   public static aew<dum> a(String $$0) {
+      return aew.a(je.ay, new aex($$0));
+   }
+
+   public static void a(nt<dum> $$0, aew<dum> $$1, hg<dnj<?, ?>> $$2, List<dup> $$3) {
+      $$0.a($$1, new dum($$2, List.copyOf($$3)));
+   }
+
+   public static void a(nt<dum> $$0, aew<dum> $$1, hg<dnj<?, ?>> $$2, dup... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static dup a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bfi<bgd> $$4 = bfi.<bgd>a().a(bga.a($$0), (int)$$3 - 1).a(bga.a($$0 + $$2), 1).a();
+         return duf.a(new bgk($$4));
+      }
+   }
+
+   public static duo a() {
+      return dub.a(dlz.c);
+   }
+
+   public static dub a(csv $$0) {
+      return dub.a(dlz.a($$0.n(), gw.b));
+   }
+
+   public static hg<dum> a(hg<dnj<?, ?>> $$0, dup... $$1) {
+      return hg.a(new dum($$0, List.of($$1)));
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> hg<dum> a(F $$0, FC $$1, dup... $$2) {
+      return a(hg.a(new dnj($$0, $$1)), $$2);
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> hg<dum> a(F $$0, FC $$1) {
+      return a($$0, $$1, dlz.c);
+   }
+
+   public static <FC extends dqa, F extends dnw<FC>> hg<dum> a(F $$0, FC $$1, dlz $$2) {
+      return a($$0, $$1, dub.a($$2));
    }
 }

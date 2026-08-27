@@ -17,12 +17,12 @@ public class ccf extends biq implements ccj {
 
    public void a(cjf $$0) {
       if (!$$0.a(cji.rD) || $$0.u()) {
-         this.am().b(b, $$0.c(1));
+         this.al().b(b, $$0.c(1));
       }
    }
 
    private cjf s() {
-      return this.am().b(b);
+      return this.al().b(b);
    }
 
    @Override
@@ -33,12 +33,12 @@ public class ccf extends biq implements ccj {
 
    @Override
    protected void a_() {
-      this.am().a(b, cjf.b);
+      this.al().a(b, cjf.b);
    }
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 4.0;
+      double $$1 = this.cG().a() * 4.0;
       if (Double.isNaN($$1)) {
          $$1 = 4.0;
       }
@@ -108,7 +108,7 @@ public class ccf extends biq implements ccj {
       }
 
       float $$12 = 0.25F;
-      if (this.aY()) {
+      if (this.aX()) {
          for (int $$13 = 0; $$13 < 4; $$13++) {
             this.dL().a(ix.e, $$1 - $$0.c * 0.25, $$2 - $$0.d * 0.25, $$3 - $$0.e * 0.25, $$0.c, $$0.d, $$0.e);
          }
@@ -122,7 +122,7 @@ public class ccf extends biq implements ccj {
          this.f++;
          if (this.f > 80 && !this.dL().B) {
             this.a(ape.ha, 1.0F, 1.0F);
-            this.al();
+            this.ak();
             if (this.g) {
                this.dL().b(new byn(this.dL(), this.dq(), this.ds(), this.dw(), this.q()));
             } else {
@@ -135,26 +135,26 @@ public class ccf extends biq implements ccj {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       cjf $$1 = this.s();
       if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new qx()));
+         $$0.a("Item", $$1.b(new qy()));
       }
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       cjf $$1 = cjf.a($$0.p("Item"));
       this.a($$1);
    }
 
    @Override
-   public float bn() {
+   public float bm() {
       return 1.0F;
    }
 
    @Override
-   public boolean cq() {
+   public boolean cp() {
       return false;
    }
 }

@@ -1,19 +1,19 @@
 import javax.annotation.Nullable;
 
 public abstract class fbl extends eyk {
-   private final tl b;
+   private final tm b;
    @Nullable
-   private final tl c;
-   private final tl k;
+   private final tm c;
+   private final tm k;
    @Nullable
    protected ess a;
    private etj l = etj.a;
 
-   protected fbl(tl $$0, tl $$1, tl $$2) {
+   protected fbl(tm $$0, tm $$1, tm $$2) {
       this($$0, $$1, null, $$2);
    }
 
-   protected fbl(tl $$0, tl $$1, @Nullable tl $$2, tl $$3) {
+   protected fbl(tm $$0, tm $$1, @Nullable tm $$2, tm $$3) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
@@ -37,7 +37,7 @@ public abstract class fbl extends eyk {
    }
 
    @Override
-   public tl g() {
+   public tm g() {
       return this.k;
    }
 

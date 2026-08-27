@@ -1,7 +1,7 @@
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class yc implements vd<ww> {
+public class yc implements ve<wx> {
    public static final yc.a a = new yc.a(0);
    public static final yc.a b = new yc.a(1);
    public static final yc.a c = new yc.a(2);
@@ -28,18 +28,18 @@ public class yc implements vd<ww> {
       this.t = $$1;
    }
 
-   public yc(so $$0) {
+   public yc(sp $$0) {
       this.s = (yc.a)yc.a.a.get($$0.readUnsignedByte());
       this.t = $$0.readFloat();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.s.b);
       $$0.a(this.t);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

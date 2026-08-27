@@ -1,4 +1,4 @@
-public record adc(int a, String b, int c, adb d) implements vd<add> {
+public record adc(int a, String b, int c, adb d) implements ve<add> {
    private static final int e = 255;
 
    @Deprecated
@@ -9,12 +9,12 @@ public record adc(int a, String b, int c, adb d) implements vd<add> {
       this.d = d;
    }
 
-   public adc(so $$0) {
+   public adc(sp $$0) {
       this($$0.m(), $$0.d(255), $$0.readUnsignedShort(), adb.a($$0.m()));
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
       $$0.l(this.c);
@@ -26,7 +26,7 @@ public record adc(int a, String b, int c, adb d) implements vd<add> {
    }
 
    @Override
-   public sn c() {
+   public so c() {
       return this.d.b();
    }
 

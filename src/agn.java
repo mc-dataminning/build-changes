@@ -17,8 +17,8 @@ import org.slf4j.Logger;
 
 public class agn {
    private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.debug.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.debug.alreadyRunning"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.debug.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.debug.alreadyRunning"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -38,7 +38,7 @@ public class agn {
          throw c.create();
       } else {
          $$1.ba();
-         $$0.a(() -> tl.c("commands.debug.started"), true);
+         $$0.a(() -> tm.c("commands.debug.started"), true);
          return 0;
       }
    }
@@ -51,7 +51,7 @@ public class agn {
          bdo $$2 = $$1.bb();
          double $$3 = (double)$$2.g() / (double)asu.a;
          double $$4 = (double)$$2.f() / $$3;
-         $$0.a(() -> tl.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
+         $$0.a(() -> tm.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
          return (int)$$4;
       }
    }
@@ -81,14 +81,14 @@ public class agn {
          }
       } catch (IOException | UncheckedIOException var15) {
          a.warn("Tracing failed", var15);
-         $$0.b(tl.c("commands.debug.function.traceFailed"));
+         $$0.b(tm.c("commands.debug.function.traceFailed"));
       }
 
       int $$12 = $$2;
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.debug.function.success.single", $$12, $$1.iterator().next().a(), $$4), true);
+         $$0.a(() -> tm.a("commands.debug.function.success.single", $$12, $$1.iterator().next().a(), $$4), true);
       } else {
-         $$0.a(() -> tl.a("commands.debug.function.success.multiple", $$12, $$1.size(), $$4), true);
+         $$0.a(() -> tm.a("commands.debug.function.success.multiple", $$12, $$1.size(), $$4), true);
       }
 
       return $$2;
@@ -165,7 +165,7 @@ public class agn {
       }
 
       @Override
-      public void a(tl $$0) {
+      public void a(tm $$0) {
          this.e();
          this.b(this.d + 1);
          this.c.print("[M] ");

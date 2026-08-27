@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class yn implements vd<ww> {
+public class yn implements ve<wx> {
    private final int a;
    private final byte b;
    private final boolean c;
@@ -20,16 +20,16 @@ public class yn implements vd<ww> {
       this.e = $$4;
    }
 
-   public yn(so $$0) {
+   public yn(sp $$0) {
       this.a = $$0.m();
       this.b = $$0.readByte();
       this.c = $$0.readBoolean();
-      this.d = $$0.c($$0x -> $$0x.a((so.a)($$0xx -> {
+      this.d = $$0.c($$0x -> $$0x.a((sp.a)($$0xx -> {
             ebt.a $$1x = $$0xx.b(ebt.a.class);
             byte $$2x = $$0xx.readByte();
             byte $$3x = $$0xx.readByte();
             byte $$4x = (byte)($$0xx.readByte() & 15);
-            tl $$5x = $$0xx.c(so::l);
+            tm $$5x = $$0xx.c(sp::l);
             return new ebt($$1x, $$2x, $$3x, $$4x, $$5x);
          })));
       int $$1 = $$0.readUnsignedByte();
@@ -45,7 +45,7 @@ public class yn implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.k(this.b);
       $$0.a(this.c);
@@ -54,7 +54,7 @@ public class yn implements vd<ww> {
             $$0xx.k($$1x.d());
             $$0xx.k($$1x.e());
             $$0xx.k($$1x.f() & 15);
-            $$0xx.a($$1x.g(), so::a);
+            $$0xx.a($$1x.g(), sp::a);
          }));
       if (this.e != null) {
          $$0.k(this.e.c);
@@ -67,7 +67,7 @@ public class yn implements vd<ww> {
       }
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

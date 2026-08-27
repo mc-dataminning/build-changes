@@ -85,7 +85,7 @@ public class cbo implements cpi {
                   this.a($$0, $$8, 4);
                }
 
-               this.i.a($$8.cw());
+               this.i.a($$8.cv());
                $$8.u(48000);
                $$8.i($$6);
                $$8.a($$6, 16);

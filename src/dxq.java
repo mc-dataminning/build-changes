@@ -52,13 +52,13 @@ public class dxq {
          this.h = $$4;
       }
 
-      public a(dzc $$0, qx $$1) {
+      public a(dzc $$0, qy $$1) {
          super(dvz.ab, $$1, $$0, $$1x -> a(czh.valueOf($$1.l("Rot"))));
          this.h = $$1.q("isBeached");
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
          super.a($$0, $$1);
          $$1.a("isBeached", this.h);
          $$1.a("Rot", this.c.d().name());

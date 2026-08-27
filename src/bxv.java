@@ -57,7 +57,7 @@ public class bxv extends bxj {
                   double $$17 = this.g.dq() - $$14;
                   double $$18 = this.g.e(0.5) - $$15;
                   double $$19 = this.g.dw() - $$16;
-                  if (!this.a.aT()) {
+                  if (!this.a.aS()) {
                      this.a.dL().a(null, 1017, this.a.dl(), 0);
                   }
 

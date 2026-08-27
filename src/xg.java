@@ -1,4 +1,4 @@
-public class xg implements vd<ww> {
+public class xg implements ve<wx> {
    private final gw a;
    private final dfj b;
 
@@ -11,18 +11,18 @@ public class xg implements vd<ww> {
       this($$1, $$0.a_($$1));
    }
 
-   public xg(so $$0) {
+   public xg(sp $$0) {
       this.a = $$0.e();
       this.b = $$0.a(csv.o);
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(csv.o, this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

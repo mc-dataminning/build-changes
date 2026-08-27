@@ -61,7 +61,7 @@ public class fff<T extends bvb> extends feb<T> {
       this.b.g = 0.0F;
       this.f.a(-5.0F, 17.5F, 7.0F);
       this.g.a(-1.0F, 17.5F, 7.0F);
-      if ($$0.bX()) {
+      if ($$0.bW()) {
          this.b.e = 1.6755161F;
          float $$4 = $$0.F($$3);
          this.b.a(0.0F, 16.0F + $$0.F($$3), -6.0F);
@@ -116,7 +116,7 @@ public class fff<T extends bvb> extends feb<T> {
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      if (!$$0.fC() && !$$0.gd() && !$$0.bX()) {
+      if (!$$0.fC() && !$$0.gd() && !$$0.bW()) {
          this.a.e = $$5 * (float) (Math.PI / 180.0);
          this.a.f = $$4 * (float) (Math.PI / 180.0);
       }
@@ -127,7 +127,7 @@ public class fff<T extends bvb> extends feb<T> {
          this.a.g = arx.b($$3 * 0.027F) / 22.0F;
       }
 
-      if ($$0.bX()) {
+      if ($$0.bW()) {
          float $$6 = arx.b($$3) * 0.01F;
          this.b.f = $$6;
          this.f.g = $$6;

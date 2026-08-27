@@ -1,42 +1,89 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+public interface sc extends ro {
+   sc a = new sc() {
+   };
 
-public class sc extends ry {
-   private final Deque<sa> a = new ArrayDeque<>();
-
-   public sc(rz... $$0) {
-      sa $$1 = sa.a();
-
-      for (rz $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
+   @Override
+   default ro.b a() {
+      return ro.b.a;
    }
 
    @Override
-   public rn.a a(rs<?> $$0, String $$1) {
-      sa $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return rn.a.b;
-      } else {
-         if ($$0 == qx.b) {
-            sa $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
+   default ro.b a(String $$0) {
+      return ro.b.a;
    }
 
    @Override
-   public rn.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   default ro.b a(byte $$0) {
+      return ro.b.a;
+   }
 
-      return super.b();
+   @Override
+   default ro.b a(short $$0) {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.b a(int $$0) {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.b a(long $$0) {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.b a(float $$0) {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.b a(double $$0) {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.b a(byte[] $$0) {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.b a(int[] $$0) {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.b a(long[] $$0) {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.b a(rt<?> $$0, int $$1) {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.a b(rt<?> $$0, int $$1) {
+      return ro.a.b;
+   }
+
+   @Override
+   default ro.a a(rt<?> $$0) {
+      return ro.a.b;
+   }
+
+   @Override
+   default ro.a a(rt<?> $$0, String $$1) {
+      return ro.a.b;
+   }
+
+   @Override
+   default ro.b b() {
+      return ro.b.a;
+   }
+
+   @Override
+   default ro.b b(rt<?> $$0) {
+      return ro.b.a;
    }
 }

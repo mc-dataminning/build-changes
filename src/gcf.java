@@ -20,7 +20,7 @@ public class gcf extends gbv {
 
    @Override
    public boolean s() {
-      return !this.s.aT();
+      return !this.s.aS();
    }
 
    @Override

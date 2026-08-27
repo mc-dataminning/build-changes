@@ -1,12 +1,12 @@
-public class aed implements vd<aeb> {
+public class aed implements ve<aeb> {
    public aed() {
    }
 
-   public aed(so $$0) {
+   public aed(sp $$0) {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
    }
 
    public void a(aeb $$0) {

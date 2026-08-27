@@ -32,8 +32,8 @@ public class byg extends byf {
 
    @Override
    protected void a_() {
-      this.am().a(g, cjf.b);
-      this.am().a(h, 0);
+      this.al().a(g, cjf.b);
+      this.al().a(h, 0);
    }
 
    @Override
@@ -91,7 +91,7 @@ public class byg extends byf {
          return false;
       } else {
          dfj $$0 = this.dL().a_(this.c.a(this.d.g()));
-         return $$0.e() || this.d.o().d() && cut.h($$0) ? this.dL().a(this, this.cH(), b).isEmpty() : false;
+         return $$0.e() || this.d.o().d() && cut.h($$0) ? this.dL().a(this, this.cG(), b).isEmpty() : false;
       }
    }
 
@@ -110,14 +110,14 @@ public class byg extends byf {
    }
 
    @Override
-   public float bE() {
+   public float bD() {
       return 0.0F;
    }
 
    @Override
-   public void ak() {
+   public void aj() {
       this.c(this.F());
-      super.ak();
+      super.aj();
    }
 
    @Override
@@ -156,7 +156,7 @@ public class byg extends byf {
    @Override
    public boolean a(double $$0) {
       double $$1 = 16.0;
-      $$1 *= 64.0 * cA();
+      $$1 *= 64.0 * cz();
       return $$0 < $$1 * $$1;
    }
 
@@ -213,7 +213,7 @@ public class byg extends byf {
       this.G().ifPresent($$0x -> {
          ebw $$1 = cjm.a($$0x, this.dL());
          if ($$1 != null) {
-            $$1.a(this.c, this.ai());
+            $$1.a(this.c, this.ah());
             $$1.a(true);
          }
       });
@@ -221,7 +221,7 @@ public class byg extends byf {
    }
 
    public cjf F() {
-      return this.am().b(g);
+      return this.al().b(g);
    }
 
    public OptionalInt G() {
@@ -250,7 +250,7 @@ public class byg extends byf {
       }
 
       this.d($$0);
-      this.am().b(g, $$0);
+      this.al().b(g, $$0);
       if (!$$0.b()) {
          this.a(this.v(), 1.0F, 1.0F);
       }
@@ -296,7 +296,7 @@ public class byg extends byf {
    }
 
    public int I() {
-      return this.am().b(h);
+      return this.al().b(h);
    }
 
    public void b(int $$0) {
@@ -304,30 +304,30 @@ public class byg extends byf {
    }
 
    private void a(int $$0, boolean $$1) {
-      this.am().b(h, $$0 % 8);
+      this.al().b(h, $$0 % 8);
       if ($$1 && this.c != null) {
          this.dL().c(this.c, csw.a);
       }
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (!this.F().b()) {
-         $$0.a("Item", this.F().b(new qx()));
+         $$0.a("Item", this.F().b(new qy()));
          $$0.a("ItemRotation", (byte)this.I());
          $$0.a("ItemDropChance", this.i);
       }
 
       $$0.a("Facing", (byte)this.d.d());
-      $$0.a("Invisible", this.ce());
+      $$0.a("Invisible", this.cd());
       $$0.a("Fixed", this.j);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
-      qx $$1 = $$0.p("Item");
+      qy $$1 = $$0.p("Item");
       if ($$1 != null && !$$1.g()) {
          cjf $$2 = cjf.a($$1);
          if ($$2.b()) {
@@ -395,12 +395,12 @@ public class byg extends byf {
    }
 
    @Override
-   public vd<ww> V() {
-      return new wx(this, this.d.d(), this.E());
+   public ve<wx> di() {
+      return new wy(this, this.d.d(), this.E());
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       this.a(hc.a($$0.o()));
    }
@@ -417,7 +417,7 @@ public class byg extends byf {
 
    @Override
    public float dC() {
-      hc $$0 = this.cE();
+      hc $$0 = this.cD();
       int $$1 = $$0.o().b() ? 90 * $$0.f().a() : 0;
       return (float)arx.b(180 + $$0.e() * 90 + this.I() * 45 + $$1);
    }

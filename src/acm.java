@@ -1,16 +1,16 @@
-public class acm implements vd<abd> {
+public class acm implements ve<abd> {
    private final int a;
 
    public acm(int $$0) {
       this.a = $$0;
    }
 
-   public acm(so $$0) {
+   public acm(sp $$0) {
       this.a = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
    }
 

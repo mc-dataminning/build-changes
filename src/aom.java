@@ -110,8 +110,11 @@ public abstract class aom<K, V extends aol<K>> {
    public void f() throws IOException {
       if (this.c.exists()) {
          try (BufferedReader $$0 = Files.newReader(this.c, StandardCharsets.UTF_8)) {
-            JsonArray $$1 = (JsonArray)b.fromJson($$0, JsonArray.class);
             this.d.clear();
+            JsonArray $$1 = (JsonArray)b.fromJson($$0, JsonArray.class);
+            if ($$1 == null) {
+               return;
+            }
 
             for (JsonElement $$2 : $$1) {
                JsonObject $$3 = aro.m($$2, "entry");

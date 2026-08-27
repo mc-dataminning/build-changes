@@ -16,7 +16,7 @@ public class ftn extends ftg<cch> {
          $$3.a(a.b.rotationDegrees(90.0F));
       }
 
-      this.a.a($$0.q(), cjc.h, $$5, fyv.d, $$3, $$4, $$0.dL(), $$0.ai());
+      this.a.a($$0.q(), cjc.h, $$5, fyv.d, $$3, $$4, $$0.dL(), $$0.ah());
       $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }

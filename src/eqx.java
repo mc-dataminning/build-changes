@@ -8,18 +8,18 @@ public enum eqx {
 
    private static final IntFunction<eqx> e = aqs.a(eqx::a, values(), aqs.a.b);
    private final int f;
-   private final tl g;
+   private final tm g;
 
    private eqx(int $$0, String $$1) {
       this.f = $$0;
-      this.g = tl.c($$1);
+      this.g = tm.c($$1);
    }
 
    public int a() {
       return this.f;
    }
 
-   public tl b() {
+   public tm b() {
       return this.g;
    }
 

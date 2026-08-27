@@ -1,4 +1,4 @@
-public class abh implements vd<abd> {
+public class abh implements ve<abd> {
    private final int a;
    private final gw b;
 
@@ -7,13 +7,13 @@ public class abh implements vd<abd> {
       this.b = $$1;
    }
 
-   public abh(so $$0) {
+   public abh(sp $$0) {
       this.a = $$0.m();
       this.b = $$0.e();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
    }

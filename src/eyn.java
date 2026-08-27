@@ -1,6 +1,6 @@
 public class eyn extends eyc {
    public eyn(eyk $$0, eqz $$1) {
-      super($$0, $$1, tl.c("options.skinCustomisation.title"));
+      super($$0, $$1, tm.c("options.skinCustomisation.title"));
    }
 
    @Override
@@ -17,7 +17,7 @@ public class eyn extends eyc {
          $$0++;
       }
 
-      this.d(esq.a(tk.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h / 6 + 24 * ($$0 >> 1), 200, 20).a());
+      this.d(esq.a(tl.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h / 6 + 24 * ($$0 >> 1), 200, 20).a());
    }
 
    @Override

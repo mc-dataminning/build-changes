@@ -1,13 +1,13 @@
-public record xl() implements vd<ww> {
-   public xl(so $$0) {
+public record xl() implements ve<wx> {
+   public xl(sp $$0) {
       this();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 }

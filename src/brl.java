@@ -7,7 +7,7 @@ public class brl extends bqb {
 
    @Override
    public boolean a() {
-      return this.a.aB() && !this.a.dL().b_(this.a.dl()).a(apy.a);
+      return this.a.aA() && !this.a.dL().b_(this.a.dl()).a(apy.a);
    }
 
    @Override

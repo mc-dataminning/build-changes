@@ -23,11 +23,11 @@ public class bws extends bwq implements bke<bwz> {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Variant", this.gl());
       if (!this.cp.a(1).b()) {
-         $$0.a("ArmorItem", this.cp.a(1).b(new qx()));
+         $$0.a("ArmorItem", this.cp.a(1).b(new qy()));
       }
    }
 
@@ -41,7 +41,7 @@ public class bws extends bwq implements bke<bwz> {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.w($$0.h("Variant"));
       if ($$0.b("ArmorItem", 10)) {
@@ -147,7 +147,7 @@ public class bws extends bwq implements bke<bwz> {
    @Override
    public bgy b(cbu $$0, bgx $$1) {
       boolean $$2 = !this.m_() && this.gs() && $$0.fH();
-      if (!this.bP() && !$$2) {
+      if (!this.bO() && !$$2) {
          cjf $$3 = $$0.b($$1);
          if (!$$3.b()) {
             if (this.m($$3)) {
@@ -229,7 +229,7 @@ public class bws extends bwq implements bke<bwz> {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       asc $$5 = $$0.D_();
       bwz $$6;
       if ($$3 instanceof bws.a) {

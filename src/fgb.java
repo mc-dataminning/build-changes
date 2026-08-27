@@ -124,7 +124,7 @@ public class fgb<T extends biq> extends feb<T> {
       this.i.c = 18.0F;
       this.i.d = 5.0F;
       this.l.e = 0.9F;
-      if ($$0.bX()) {
+      if ($$0.bW()) {
          this.o.c++;
          this.n.c += 2.0F;
          this.l.c++;
@@ -133,7 +133,7 @@ public class fgb<T extends biq> extends feb<T> {
          this.l.e = (float) (Math.PI / 2);
          this.m.e = (float) (Math.PI / 2);
          this.p = 0;
-      } else if ($$0.bY()) {
+      } else if ($$0.bX()) {
          this.m.c = this.l.c;
          this.m.d += 2.0F;
          this.l.e = (float) (Math.PI / 2);

@@ -21,7 +21,7 @@ public class erh {
          return 0.0F;
       } else {
          MutableFloat $$1 = new MutableFloat();
-         aso.c($$0, uh.a, ($$1x, $$2, $$3) -> {
+         aso.c($$0, ui.a, ($$1x, $$2, $$3) -> {
             $$1.add(this.a.getWidth($$3, $$2));
             return true;
          });
@@ -29,9 +29,9 @@ public class erh {
       }
    }
 
-   public float a(tp $$0) {
+   public float a(tq $$0) {
       MutableFloat $$1 = new MutableFloat();
-      aso.a($$0, uh.a, ($$1x, $$2, $$3) -> {
+      aso.a($$0, ui.a, ($$1x, $$2, $$3) -> {
          $$1.add(this.a.getWidth($$3, $$2));
          return true;
       });
@@ -47,17 +47,17 @@ public class erh {
       return $$1.floatValue();
    }
 
-   public int a(String $$0, int $$1, uh $$2) {
+   public int a(String $$0, int $$1, ui $$2) {
       erh.e $$3 = new erh.e((float)$$1);
       aso.a($$0, $$2, $$3);
       return $$3.a();
    }
 
-   public String b(String $$0, int $$1, uh $$2) {
+   public String b(String $$0, int $$1, ui $$2) {
       return $$0.substring(0, this.a($$0, $$1, $$2));
    }
 
-   public String c(String $$0, int $$1, uh $$2) {
+   public String c(String $$0, int $$1, ui $$2) {
       MutableFloat $$3 = new MutableFloat();
       MutableInt $$4 = new MutableInt($$0.length());
       aso.b($$0, $$2, ($$3x, $$4x, $$5) -> {
@@ -72,22 +72,22 @@ public class erh {
       return $$0.substring($$4.intValue());
    }
 
-   public int d(String $$0, int $$1, uh $$2) {
+   public int d(String $$0, int $$1, ui $$2) {
       erh.e $$3 = new erh.e((float)$$1);
       aso.c($$0, $$2, $$3);
       return $$3.a();
    }
 
    @Nullable
-   public uh a(tp $$0, int $$1) {
+   public ui a(tq $$0, int $$1) {
       erh.e $$2 = new erh.e((float)$$1);
-      return $$0.<uh>a(($$1x, $$2x) -> aso.c($$2x, $$1x, $$2) ? Optional.empty() : Optional.of($$1x), uh.a).orElse(null);
+      return $$0.<ui>a(($$1x, $$2x) -> aso.c($$2x, $$1x, $$2) ? Optional.empty() : Optional.of($$1x), ui.a).orElse(null);
    }
 
    @Nullable
-   public uh a(ark $$0, int $$1) {
+   public ui a(ark $$0, int $$1) {
       erh.e $$2 = new erh.e((float)$$1);
-      MutableObject<uh> $$3 = new MutableObject();
+      MutableObject<ui> $$3 = new MutableObject();
       $$0.accept(($$2x, $$3x, $$4) -> {
          if (!$$2.accept($$2x, $$3x, $$4)) {
             $$3.setValue($$3x);
@@ -96,31 +96,31 @@ public class erh {
             return true;
          }
       });
-      return (uh)$$3.getValue();
+      return (ui)$$3.getValue();
    }
 
-   public String e(String $$0, int $$1, uh $$2) {
+   public String e(String $$0, int $$1, ui $$2) {
       return $$0.substring(0, this.d($$0, $$1, $$2));
    }
 
-   public tp a(tp $$0, int $$1, uh $$2) {
+   public tq a(tq $$0, int $$1, ui $$2) {
       final erh.e $$3 = new erh.e((float)$$1);
-      return $$0.a(new tp.b<tp>() {
+      return $$0.a(new tq.b<tq>() {
          private final eql c = new eql();
 
          @Override
-         public Optional<tp> accept(uh $$0, String $$1) {
+         public Optional<tq> accept(ui $$0, String $$1) {
             $$3.b();
             if (!aso.c($$1, $$0, $$3)) {
                String $$2 = $$1.substring(0, $$3.a());
                if (!$$2.isEmpty()) {
-                  this.c.a(tp.a($$2, $$0));
+                  this.c.a(tq.a($$2, $$0));
                }
 
                return Optional.of(this.c.b());
             } else {
                if (!$$1.isEmpty()) {
-                  this.c.a(tp.a($$1, $$0));
+                  this.c.a(tq.a($$1, $$0));
                }
 
                return Optional.empty();
@@ -129,7 +129,7 @@ public class erh {
       }, $$2).orElse($$0);
    }
 
-   public int f(String $$0, int $$1, uh $$2) {
+   public int f(String $$0, int $$1, ui $$2) {
       erh.b $$3 = new erh.b((float)$$1);
       aso.c($$0, $$2, $$3);
       return $$3.a();
@@ -176,10 +176,10 @@ public class erh {
       return $$4;
    }
 
-   public void a(String $$0, int $$1, uh $$2, boolean $$3, erh.d $$4) {
+   public void a(String $$0, int $$1, ui $$2, boolean $$3, erh.d $$4) {
       int $$5 = 0;
       int $$6 = $$0.length();
-      uh $$7 = $$2;
+      ui $$7 = $$2;
 
       while ($$5 < $$6) {
          erh.b $$8 = new erh.b((float)$$1);
@@ -198,25 +198,25 @@ public class erh {
       }
    }
 
-   public List<tp> g(String $$0, int $$1, uh $$2) {
-      List<tp> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, false, ($$2x, $$3x, $$4) -> $$3.add(tp.a($$0.substring($$3x, $$4), $$2x)));
+   public List<tq> g(String $$0, int $$1, ui $$2) {
+      List<tq> $$3 = Lists.newArrayList();
+      this.a($$0, $$1, $$2, false, ($$2x, $$3x, $$4) -> $$3.add(tq.a($$0.substring($$3x, $$4), $$2x)));
       return $$3;
    }
 
-   public List<tp> b(tp $$0, int $$1, uh $$2) {
-      List<tp> $$3 = Lists.newArrayList();
+   public List<tq> b(tq $$0, int $$1, ui $$2) {
+      List<tq> $$3 = Lists.newArrayList();
       this.a($$0, $$1, $$2, ($$1x, $$2x) -> $$3.add($$1x));
       return $$3;
    }
 
-   public List<tp> a(tp $$0, int $$1, uh $$2, tp $$3) {
-      List<tp> $$4 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$2x, $$3x) -> $$4.add($$3x ? tp.a($$3, $$2x) : $$2x));
+   public List<tq> a(tq $$0, int $$1, ui $$2, tq $$3) {
+      List<tq> $$4 = Lists.newArrayList();
+      this.a($$0, $$1, $$2, ($$2x, $$3x) -> $$4.add($$3x ? tq.a($$3, $$2x) : $$2x));
       return $$4;
    }
 
-   public void a(tp $$0, int $$1, uh $$2, BiConsumer<tp, Boolean> $$3) {
+   public void a(tq $$0, int $$1, ui $$2, BiConsumer<tq, Boolean> $$3) {
       List<erh.c> $$4 = Lists.newArrayList();
       $$0.a(($$1x, $$2x) -> {
          if (!$$2x.isEmpty()) {
@@ -238,12 +238,12 @@ public class erh {
             boolean $$11 = aso.a($$10.c, 0, $$10.d, $$2, $$9);
             if (!$$11) {
                int $$12 = $$9.a();
-               uh $$13 = $$9.b();
+               ui $$13 = $$9.b();
                char $$14 = $$5.a($$12);
                boolean $$15 = $$14 == '\n';
                boolean $$16 = $$15 || $$14 == ' ';
                $$7 = $$15;
-               tp $$17 = $$5.a($$12, $$16 ? 1 : 0, $$13);
+               tq $$17 = $$5.a($$12, $$16 ? 1 : 0, $$13);
                $$3.accept($$17, $$8);
                $$8 = !$$15;
                $$6 = true;
@@ -254,11 +254,11 @@ public class erh {
          }
       }
 
-      tp $$18 = $$5.a();
+      tq $$18 = $$5.a();
       if ($$18 != null) {
          $$3.accept($$18, $$8);
       } else if ($$7) {
-         $$3.accept(tp.b, false);
+         $$3.accept(tq.b, false);
       }
    }
 
@@ -275,7 +275,7 @@ public class erh {
          return this.b.charAt($$0);
       }
 
-      public tp a(int $$0, int $$1, uh $$2) {
+      public tq a(int $$0, int $$1, ui $$2) {
          eql $$3 = new eql();
          ListIterator<erh.c> $$4 = this.a.listIterator();
          int $$5 = $$0;
@@ -293,7 +293,7 @@ public class erh {
                } else {
                   String $$10 = $$8.substring(0, $$5);
                   if (!$$10.isEmpty()) {
-                     $$3.a(tp.a($$10, $$7.d));
+                     $$3.a(tq.a($$10, $$7.d));
                   }
 
                   $$5 += $$1;
@@ -322,7 +322,7 @@ public class erh {
       }
 
       @Nullable
-      public tp a() {
+      public tq a() {
          eql $$0 = new eql();
          this.a.forEach($$0::a);
          this.a.clear();
@@ -333,11 +333,11 @@ public class erh {
    class b implements arl {
       private final float b;
       private int c = -1;
-      private uh d = uh.a;
+      private ui d = ui.a;
       private boolean e;
       private float f;
       private int g = -1;
-      private uh h = uh.a;
+      private ui h = ui.a;
       private int i;
       private int j;
 
@@ -346,7 +346,7 @@ public class erh {
       }
 
       @Override
-      public boolean accept(int $$0, uh $$1, int $$2) {
+      public boolean accept(int $$0, ui $$1, int $$2) {
          int $$3 = $$0 + this.j;
          switch ($$2) {
             case 10:
@@ -367,7 +367,7 @@ public class erh {
          }
       }
 
-      private boolean a(int $$0, uh $$1) {
+      private boolean a(int $$0, ui $$1) {
          this.c = $$0;
          this.d = $$1;
          return false;
@@ -381,7 +381,7 @@ public class erh {
          return this.c() ? this.c : this.i;
       }
 
-      public uh b() {
+      public ui b() {
          return this.d;
       }
 
@@ -390,29 +390,29 @@ public class erh {
       }
    }
 
-   static class c implements tp {
+   static class c implements tq {
       final String c;
-      final uh d;
+      final ui d;
 
-      public c(String $$0, uh $$1) {
+      public c(String $$0, ui $$1) {
          this.c = $$0;
          this.d = $$1;
       }
 
       @Override
-      public <T> Optional<T> a(tp.a<T> $$0) {
+      public <T> Optional<T> a(tq.a<T> $$0) {
          return $$0.accept(this.c);
       }
 
       @Override
-      public <T> Optional<T> a(tp.b<T> $$0, uh $$1) {
+      public <T> Optional<T> a(tq.b<T> $$0, ui $$1) {
          return $$0.accept(this.d.a($$1), this.c);
       }
    }
 
    @FunctionalInterface
    public interface d {
-      void accept(uh var1, int var2, int var3);
+      void accept(ui var1, int var2, int var3);
    }
 
    class e implements arl {
@@ -424,7 +424,7 @@ public class erh {
       }
 
       @Override
-      public boolean accept(int $$0, uh $$1, int $$2) {
+      public boolean accept(int $$0, ui $$1, int $$2) {
          this.b = this.b - erh.this.a.getWidth($$2, $$1);
          if (this.b >= 0.0F) {
             this.c = $$0 + Character.charCount($$2);
@@ -445,6 +445,6 @@ public class erh {
 
    @FunctionalInterface
    public interface f {
-      float getWidth(int var1, uh var2);
+      float getWidth(int var1, ui var2);
    }
 }

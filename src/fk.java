@@ -12,9 +12,9 @@ import java.util.concurrent.CompletableFuture;
 
 public class fk implements ArgumentType<fm> {
    private static final Collection<String> d = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.pos.unloaded"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("argument.pos.outofworld"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("argument.pos.outofbounds"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("argument.pos.unloaded"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("argument.pos.outofworld"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("argument.pos.outofbounds"));
 
    public static fk a() {
       return new fk();

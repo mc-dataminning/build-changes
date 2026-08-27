@@ -154,7 +154,7 @@ public class cfo extends cel {
          }
 
          if ($$7 != null) {
-            qx $$13 = cgy.a($$1);
+            qy $$13 = cgy.a($$1);
             boolean $$14 = $$13 != null && $$13.b("Patterns", 9) && !$$1.b() && $$13.c("Patterns", 10).size() >= 6;
             if ($$14) {
                this.q.a(-1);
@@ -252,20 +252,20 @@ public class cfo extends cel {
       if (!$$1.b() && !$$2.b()) {
          $$3 = $$1.c(1);
          cht $$4 = ((chu)$$2.d()).d();
-         qx $$5 = cgy.a($$3);
-         rd $$6;
+         qy $$5 = cgy.a($$3);
+         re $$6;
          if ($$5 != null && $$5.b("Patterns", 9)) {
             $$6 = $$5.c("Patterns", 10);
          } else {
-            $$6 = new rd();
+            $$6 = new re();
             if ($$5 == null) {
-               $$5 = new qx();
+               $$5 = new qy();
             }
 
             $$5.a("Patterns", $$6);
          }
 
-         qx $$8 = new qx();
+         qy $$8 = new qy();
          $$8.a("Pattern", $$0.a().a());
          $$8.a("Color", $$4.a());
          $$6.add($$8);

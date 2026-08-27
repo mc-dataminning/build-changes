@@ -16,7 +16,7 @@ public class btk {
    }
 
    public boolean a(biq $$0) {
-      int $$1 = $$0.ai();
+      int $$1 = $$0.ah();
       if (this.b.contains($$1)) {
          return true;
       } else if (this.c.contains($$1)) {

@@ -102,7 +102,7 @@ public final class crj {
       dkm.w.a $$4 = new dkm.w.a($$2.b(dkz.e));
       dkm.w.a $$5 = new dkm.w.a($$2.b(dkz.g));
       $$0.accept(Pair.of(crc.a(this.o, this.o, this.o, this.o, crc.b.a(0.0F), this.o, 0.01F), cra.b));
-      if (oh.a($$4, $$5, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, asv.a) instanceof arb.e<?, ?> $$7) {
+      if (oi.a($$4, $$5, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, asv.a) instanceof arb.e<?, ?> $$7) {
          aew<cqt> $$8 = cra.f;
 
          for (float $$9 : $$7.e()) {
@@ -111,7 +111,7 @@ public final class crj {
          }
       }
 
-      if (oh.a($$3, $$4, $$5, false) instanceof arb.e<?, ?> $$11) {
+      if (oi.a($$3, $$4, $$5, false) instanceof arb.e<?, ?> $$11) {
          for (float $$12 : $$11.e()) {
             $$0.accept(Pair.of(crc.a(this.o, this.o, crc.b.a($$12), this.o, crc.b.a(0.0F), this.o, 0.0F), cra.q));
          }

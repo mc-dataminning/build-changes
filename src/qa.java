@@ -1,62 +1,148 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Streams;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
 public class qa {
-   private static final int e = 100;
-   public static final int a = 2;
-   public static final int b = 5;
-   public static final int c = 6;
-   public static final int d = 8;
+   private static final Collection<qp> a = Lists.newArrayList();
+   private static final Set<String> b = Sets.newHashSet();
+   private static final Map<String, Consumer<akr>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<akr>> d = Maps.newHashMap();
+   private static final Collection<qp> e = Sets.newHashSet();
 
-   public static void a(px $$0, gw $$1, qd $$2) {
-      $$0.a();
-      $$2.a($$0);
-      $$0.a(new qj($$0, $$2, $$1));
-      $$0.a($$1, 2);
+   public static void a(Class<?> $$0) {
+      Arrays.stream($$0.getDeclaredMethods()).forEach(qa::a);
    }
 
-   public static Collection<px> a(Collection<ps> $$0, gw $$1, czh $$2, akr $$3, qd $$4, int $$5) {
-      pt $$6 = new pt($$0, $$1, $$2, $$3, $$4, $$5);
-      $$6.b();
-      return $$6.a();
+   public static void a(Method $$0) {
+      String $$1 = $$0.getDeclaringClass().getSimpleName();
+      pq $$2 = $$0.getAnnotation(pq.class);
+      if ($$2 != null) {
+         a.add(c($$0));
+         b.add($$1);
+      }
+
+      pw $$3 = $$0.getAnnotation(pw.class);
+      if ($$3 != null) {
+         a.addAll(b($$0));
+         b.add($$1);
+      }
+
+      a($$0, po.class, po::a, c);
+      a($$0, pn.class, pn::a, d);
    }
 
-   public static Collection<px> b(Collection<qo> $$0, gw $$1, czh $$2, akr $$3, qd $$4, int $$5) {
-      return a(a($$0), $$1, $$2, $$3, $$4, $$5);
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<akr>> $$3) {
+      T $$4 = $$0.getAnnotation($$1);
+      if ($$4 != null) {
+         String $$5 = $$2.apply($$4);
+         Consumer<akr> $$6 = $$3.putIfAbsent($$5, (Consumer<akr>)d($$0));
+         if ($$6 != null) {
+            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
+         }
+      }
    }
 
-   public static Collection<ps> a(Collection<qo> $$0) {
-      Map<String, List<qo>> $$1 = $$0.stream().collect(Collectors.groupingBy(qo::e));
-      return $$1.entrySet().stream().flatMap($$0x -> {
-         String $$1x = (String)$$0x.getKey();
-         Consumer<akr> $$2 = pz.c($$1x);
-         Consumer<akr> $$3 = pz.d($$1x);
-         MutableInt $$4 = new MutableInt();
-         Collection<qo> $$5 = (Collection<qo>)$$0x.getValue();
-         return Streams.stream(Iterables.partition($$5, 100)).map($$4x -> new ps($$1x + ":" + $$4.incrementAndGet(), ImmutableList.copyOf($$4x), $$2, $$3));
-      }).collect(ImmutableList.toImmutableList());
+   public static Collection<qp> a(String $$0) {
+      return a.stream().filter($$1 -> a($$1, $$0)).collect(Collectors.toList());
    }
 
-   public static void a(akr $$0, gw $$1, qd $$2, int $$3) {
-      $$2.a();
-      gw $$4 = $$1.b(-$$3, 0, -$$3);
-      gw $$5 = $$1.b($$3, 0, $$3);
-      gw.b($$4, $$5).filter($$1x -> $$0.a_($$1x).a(csw.pa)).forEach($$1x -> {
-         dei $$2x = (dei)$$0.c_($$1x);
-         gw $$3x = $$2x.p();
-         dva $$4x = qk.b($$2x);
-         qk.a($$4x, $$3x.v(), $$0);
-      });
+   public static Collection<qp> a() {
+      return a;
    }
 
-   public static void a(akr $$0) {
-      abc.a($$0);
+   public static Collection<String> b() {
+      return b;
+   }
+
+   public static boolean b(String $$0) {
+      return b.contains($$0);
+   }
+
+   @Nullable
+   public static Consumer<akr> c(String $$0) {
+      return c.get($$0);
+   }
+
+   @Nullable
+   public static Consumer<akr> d(String $$0) {
+      return d.get($$0);
+   }
+
+   public static Optional<qp> e(String $$0) {
+      return a().stream().filter($$1 -> $$1.a().equalsIgnoreCase($$0)).findFirst();
+   }
+
+   public static qp f(String $$0) {
+      Optional<qp> $$1 = e($$0);
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Can't find the test function for " + $$0);
+      } else {
+         return $$1.get();
+      }
+   }
+
+   private static Collection<qp> b(Method $$0) {
+      try {
+         Object $$1 = $$0.getDeclaringClass().newInstance();
+         return (Collection<qp>)$$0.invoke($$1);
+      } catch (ReflectiveOperationException var2) {
+         throw new RuntimeException(var2);
+      }
+   }
+
+   private static qp c(Method $$0) {
+      pq $$1 = $$0.getAnnotation(pq.class);
+      String $$2 = $$0.getDeclaringClass().getSimpleName();
+      String $$3 = $$2.toLowerCase();
+      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
+      String $$5 = $$1.e().isEmpty() ? $$4 : $$3 + "." + $$1.e();
+      String $$6 = $$1.b();
+      czh $$7 = ql.a($$1.c());
+      return new qp($$6, $$4, $$5, $$7, $$1.a(), $$1.f(), $$1.d(), $$1.h(), $$1.g(), (Consumer<px>)d($$0));
+   }
+
+   private static Consumer<?> d(Method $$0) {
+      return $$1 -> {
+         try {
+            Object $$2 = $$0.getDeclaringClass().newInstance();
+            $$0.invoke($$2, $$1);
+         } catch (InvocationTargetException var3) {
+            if (var3.getCause() instanceof RuntimeException) {
+               throw (RuntimeException)var3.getCause();
+            } else {
+               throw new RuntimeException(var3.getCause());
+            }
+         } catch (ReflectiveOperationException var4) {
+            throw new RuntimeException(var4);
+         }
+      };
+   }
+
+   private static boolean a(qp $$0, String $$1) {
+      return $$0.a().toLowerCase().startsWith($$1.toLowerCase() + ".");
+   }
+
+   public static Collection<qp> c() {
+      return e;
+   }
+
+   public static void a(qp $$0) {
+      e.add($$0);
+   }
+
+   public static void d() {
+      e.clear();
    }
 }

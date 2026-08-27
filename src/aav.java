@@ -1,4 +1,4 @@
-public class aav implements vd<ww> {
+public class aav implements ve<wx> {
    private final int a;
    private final double b;
    private final double c;
@@ -8,17 +8,17 @@ public class aav implements vd<ww> {
    private final boolean g;
 
    public aav(biq $$0) {
-      this.a = $$0.ai();
+      this.a = $$0.ah();
       ehn $$1 = $$0.dk();
       this.b = $$1.c;
       this.c = $$1.d;
       this.d = $$1.e;
       this.e = (byte)((int)($$0.dB() * 256.0F / 360.0F));
       this.f = (byte)((int)($$0.dD() * 256.0F / 360.0F));
-      this.g = $$0.aB();
+      this.g = $$0.aA();
    }
 
-   public aav(so $$0) {
+   public aav(sp $$0) {
       this.a = $$0.m();
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
@@ -29,7 +29,7 @@ public class aav implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
@@ -39,7 +39,7 @@ public class aav implements vd<ww> {
       $$0.a(this.g);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

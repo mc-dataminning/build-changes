@@ -36,7 +36,7 @@ public class edu extends eec {
 
    @Override
    public cjf a(cjf $$0, ecq $$1) {
-      rq $$2 = this.b.a($$1);
+      rr $$2 = this.b.a($$1);
       if ($$2 != null) {
          this.c.forEach($$2x -> $$2x.a($$0::w, $$2));
       }
@@ -91,9 +91,9 @@ public class edu extends eec {
                .apply($$0, edu.b::new)
       );
 
-      public void a(Supplier<rq> $$0, rq $$1) {
+      public void a(Supplier<rr> $$0, rr $$1) {
          try {
-            List<rq> $$2 = this.b.b().a($$1);
+            List<rr> $$2 = this.b.b().a($$1);
             if (!$$2.isEmpty()) {
                this.d.a($$0.get(), this.c.b(), $$2);
             }
@@ -117,30 +117,30 @@ public class edu extends eec {
    public static enum c implements asp {
       a("replace") {
          @Override
-         public void a(rq $$0, ej.g $$1, List<rq> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (rq)Iterables.getLast($$2));
+         public void a(rr $$0, ej.g $$1, List<rr> $$2) throws CommandSyntaxException {
+            $$1.a($$0, (rr)Iterables.getLast($$2));
          }
       },
       b("append") {
          @Override
-         public void a(rq $$0, ej.g $$1, List<rq> $$2) throws CommandSyntaxException {
-            List<rq> $$3 = $$1.a($$0, rd::new);
+         public void a(rr $$0, ej.g $$1, List<rr> $$2) throws CommandSyntaxException {
+            List<rr> $$3 = $$1.a($$0, re::new);
             $$3.forEach($$1x -> {
-               if ($$1x instanceof rd) {
-                  $$2.forEach($$1xx -> ((rd)$$1x).add($$1xx.d()));
+               if ($$1x instanceof re) {
+                  $$2.forEach($$1xx -> ((re)$$1x).add($$1xx.d()));
                }
             });
          }
       },
       c("merge") {
          @Override
-         public void a(rq $$0, ej.g $$1, List<rq> $$2) throws CommandSyntaxException {
-            List<rq> $$3 = $$1.a($$0, qx::new);
+         public void a(rr $$0, ej.g $$1, List<rr> $$2) throws CommandSyntaxException {
+            List<rr> $$3 = $$1.a($$0, qy::new);
             $$3.forEach($$1x -> {
-               if ($$1x instanceof qx) {
+               if ($$1x instanceof qy) {
                   $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof qx) {
-                        ((qx)$$1x).a((qx)$$1xx);
+                     if ($$1xx instanceof qy) {
+                        ((qy)$$1x).a((qy)$$1xx);
                      }
                   });
                }
@@ -151,7 +151,7 @@ public class edu extends eec {
       public static final Codec<edu.c> d = asp.a(edu.c::values);
       private final String e;
 
-      public abstract void a(rq var1, ej.g var2, List<rq> var3) throws CommandSyntaxException;
+      public abstract void a(rr var1, ej.g var2, List<rr> var3) throws CommandSyntaxException;
 
       c(String $$0) {
          this.e = $$0;

@@ -1,6 +1,6 @@
 import java.util.Set;
 
-public class zd implements vd<ww> {
+public class zd implements ve<wx> {
    private final double a;
    private final double b;
    private final double c;
@@ -19,7 +19,7 @@ public class zd implements vd<ww> {
       this.g = $$6;
    }
 
-   public zd(so $$0) {
+   public zd(sp $$0) {
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
@@ -30,7 +30,7 @@ public class zd implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
@@ -40,7 +40,7 @@ public class zd implements vd<ww> {
       $$0.c(this.g);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

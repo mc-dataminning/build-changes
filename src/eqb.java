@@ -3,7 +3,7 @@ import org.slf4j.Logger;
 
 public class eqb extends epv {
    private static final Logger b = LogUtils.getLogger();
-   private static final tl c = tl.c("mco.minigame.world.starting.screen.title");
+   private static final tm c = tm.c("mco.minigame.world.starting.screen.title");
    private final long d;
    private final enn e;
    private final eof f;
@@ -46,7 +46,7 @@ public class eqb extends epv {
    }
 
    @Override
-   public tl a() {
+   public tm a() {
       return c;
    }
 }

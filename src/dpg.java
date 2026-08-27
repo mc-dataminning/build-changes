@@ -89,7 +89,9 @@ public class dpg extends dnw<dqu> {
          $$19.m($$2.a());
          $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
          $$0.b($$19);
-         this.a($$0, new gw($$3.a(), $$3.d(), $$3.b()), csw.F.n());
+         gw $$20 = $$19.dl();
+         this.a($$0, $$20.d(), csw.F.n());
+         this.a($$0, $$20, cvr.a($$0, $$20));
       }
    }
 

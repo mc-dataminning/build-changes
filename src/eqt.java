@@ -127,9 +127,9 @@ public class eqt implements Comparable<eqt> {
       return this.n.equals($$0.n) ? gak.a(this.l).compareTo(gak.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
    }
 
-   public static Supplier<tl> a(String $$0) {
+   public static Supplier<tm> a(String $$0) {
       eqt $$1 = h.get($$0);
-      return $$1 == null ? () -> tl.c($$0) : $$1::k;
+      return $$1 == null ? () -> tm.c($$0) : $$1::k;
    }
 
    public boolean b(eqt $$0) {
@@ -148,7 +148,7 @@ public class eqt implements Comparable<eqt> {
       return this.o.a() == ekk.b.c && this.o.b() == $$0;
    }
 
-   public tl k() {
+   public tm k() {
       return this.o.d();
    }
 

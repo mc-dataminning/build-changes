@@ -41,7 +41,7 @@ public class fnr implements anv {
       if ($$6 instanceof cgy) {
          csv $$7 = ((cgy)$$6).e();
          if ($$7 instanceof crs $$8) {
-            qx $$9 = $$0.v();
+            qy $$9 = $$0.v();
             GameProfile $$10 = $$9 != null ? def.d($$9) : null;
             fha $$11 = this.l.get($$8.a());
             fom $$12 = fqt.a($$8.a(), $$10);

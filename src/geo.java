@@ -1,7 +1,7 @@
 public class geo implements geu {
    private static final int a = 1200;
-   private static final tl b = tl.c("tutorial.craft_planks.title");
-   private static final tl c = tl.c("tutorial.craft_planks.description");
+   private static final tm b = tm.c("tutorial.craft_planks.title");
+   private static final tm c = tm.c("tutorial.craft_planks.description");
    private final get d;
    private euz e;
    private int f;

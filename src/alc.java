@@ -29,7 +29,7 @@ public class alc implements ala {
       int $$2 = this.c();
       if (ac.b() > this.e) {
          this.e += 500L;
-         a.info(tl.a("menu.preparingSpawn", arx.a($$2, 0, 100)).getString());
+         a.info(tm.a("menu.preparingSpawn", arx.a($$2, 0, 100)).getString());
       }
    }
 

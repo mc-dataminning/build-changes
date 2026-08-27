@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface qr {
+   void a(py var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface qr {
+   void b(py var1);
+
+   default void a() {
+   }
 }

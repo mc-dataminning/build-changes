@@ -1,18 +1,8 @@
-public record wu() implements vd<wt> {
-   public wu(so $$0) {
-      this();
-   }
-
+public interface wu extends vo {
    @Override
-   public void a(so $$0) {
+   default so b() {
+      return so.e;
    }
 
-   public void a(wt $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public sn c() {
-      return sn.b;
-   }
+   void a(wv var1);
 }

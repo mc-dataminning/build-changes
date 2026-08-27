@@ -18,7 +18,7 @@ public class bwn {
    public static final float e = 1.5F;
    private static final bgj q = bgj.a(600, 6000);
    private static final bgj r = bgj.a(100, 300);
-   private static final bts s = bts.a().a($$0 -> !$$0.ah().equals(biu.U) && $$0.dL().B_().a($$0.cH()));
+   private static final bts s = bts.a().a($$0 -> !$$0.ag().equals(biu.U) && $$0.dL().B_().a($$0.cG()));
    private static final float t = 3.0F;
    public static final int f = 4;
    public static final float g = 2.5F;

@@ -11,7 +11,7 @@ public class crw extends cvn {
    private static final eig h = csv.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
    private static final eig i = eid.a(b, c, d, e);
    private static final eig j = eid.a(b, f, g, h);
-   private static final tl k = tl.c("container.repair");
+   private static final tm k = tm.c("container.repair");
    private static final float l = 2.0F;
    private static final int m = 40;
 
@@ -55,14 +55,14 @@ public class crw extends cvn {
 
    @Override
    public void a(cpv $$0, gw $$1, dfj $$2, dfj $$3, bym $$4) {
-      if (!$$4.aT()) {
+      if (!$$4.aS()) {
          $$0.c(1031, $$1, 0);
       }
    }
 
    @Override
    public void a(cpv $$0, gw $$1, bym $$2) {
-      if (!$$2.aT()) {
+      if (!$$2.aS()) {
          $$0.c(1029, $$1, 0);
       }
    }

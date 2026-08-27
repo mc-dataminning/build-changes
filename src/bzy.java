@@ -17,7 +17,7 @@ public class bzy extends cdc implements bzm {
    @Override
    protected void z() {
       super.z();
-      this.bV = new brw<>(this, cdc.class, true, $$0 -> $$0 != null && this.gs() && $$0.ah() != biu.bj);
+      this.bV = new brw<>(this, cdc.class, true, $$0 -> $$0 != null && this.gs() && $$0.ag() != biu.bj);
       this.bW = new brv<>(this, cbu.class, 10, true, false, null);
       this.bO.a(1, new bpv(this));
       this.bO.a(2, new bra(this, 1.0, 60, 10.0F));
@@ -32,7 +32,7 @@ public class bzy extends cdc implements bzm {
    @Override
    protected void a_() {
       super.a_();
-      this.am().a(bT, false);
+      this.al().a(bT, false);
    }
 
    @Override
@@ -51,11 +51,11 @@ public class bzy extends cdc implements bzm {
    }
 
    public void y(boolean $$0) {
-      this.am().b(bT, $$0);
+      this.al().b(bT, $$0);
    }
 
    public boolean s() {
-      return this.am().b(bT);
+      return this.al().b(bT);
    }
 
    public static bkl.a t() {
@@ -64,7 +64,7 @@ public class bzy extends cdc implements bzm {
 
    @Override
    public void b_() {
-      if (!this.dL().B && this.bw()) {
+      if (!this.dL().B && this.bv()) {
          this.bV.k();
          if (this.bV.i() <= 0) {
             this.bW.a(true);
@@ -93,7 +93,7 @@ public class bzy extends cdc implements bzm {
             clc $$3 = null;
             if (this.ag.i() < 0.15F && this.a(apy.a) && !this.a(bif.m)) {
                $$3 = clf.y;
-            } else if (this.ag.i() < 0.15F && (this.bN() || this.ew() != null && this.ew().a(apv.i)) && !this.a(bif.l)) {
+            } else if (this.ag.i() < 0.15F && (this.bM() || this.ew() != null && this.ew().a(apv.i)) && !this.a(bif.l)) {
                $$3 = clf.n;
             } else if (this.ag.i() < 0.05F && this.eu() < this.eL()) {
                $$3 = clf.A;
@@ -105,8 +105,8 @@ public class bzy extends cdc implements bzm {
                this.a(biv.a, cle.a(new cjf(cji.rv), $$3));
                this.bU = this.eS().r();
                this.y(true);
-               if (!this.aT()) {
-                  this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.Ag, this.db(), 1.0F, 0.8F + this.ag.i() * 0.4F);
+               if (!this.aS()) {
+                  this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.Ag, this.da(), 1.0F, 0.8F + this.ag.i() * 0.4F);
                }
 
                bki $$4 = this.a(bkm.d);
@@ -132,7 +132,7 @@ public class bzy extends cdc implements bzm {
    public void b(byte $$0) {
       if ($$0 == 15) {
          for (int $$1 = 0; $$1 < this.ag.a(35) + 10; $$1++) {
-            this.dL().a(ix.ah, this.dq() + this.ag.k() * 0.13F, this.cH().e + 0.5 + this.ag.k() * 0.13F, this.dw() + this.ag.k() * 0.13F, 0.0, 0.0, 0.0);
+            this.dL().a(ix.ah, this.dq() + this.ag.k() * 0.13F, this.cG().e + 0.5 + this.ag.k() * 0.13F, this.dw() + this.ag.k() * 0.13F, 0.0, 0.0, 0.0);
          }
       } else {
          super.b($$0);
@@ -182,8 +182,8 @@ public class bzy extends cdc implements bzm {
          $$8.a(cle.a(new cjf(cji.uu), $$7));
          $$8.s($$8.dD() - -20.0F);
          $$8.c($$3, $$4 + $$6 * 0.2, $$5, 0.75F, 8.0F);
-         if (!this.aT()) {
-            this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.Ai, this.db(), 1.0F, 0.8F + this.ag.i() * 0.4F);
+         if (!this.aS()) {
+            this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.Ai, this.da(), 1.0F, 0.8F + this.ag.i() * 0.4F);
          }
 
          this.dL().b($$8);

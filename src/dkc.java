@@ -320,7 +320,7 @@ public interface dkc {
                   return false;
                }
 
-               if ($$2.bT() && $$0.a(apz.d)) {
+               if ($$2.bS() && $$0.a(apz.d)) {
                   if (this.d() && $$2 instanceof aks $$3) {
                      al.Y.a($$3);
                   }
@@ -328,7 +328,7 @@ public interface dkc {
                   return false;
                }
 
-               if ($$2.aW()) {
+               if ($$2.aV()) {
                   return false;
                }
             }

@@ -2,7 +2,7 @@ import com.mojang.text2speech.Narrator;
 import javax.annotation.Nullable;
 
 public class ewv extends eyk {
-   private static final tl a = tl.c("accessibility.onboarding.screen.narrator");
+   private static final tm a = tm.c("accessibility.onboarding.screen.narrator");
    private static final int b = 4;
    private static final int c = 16;
    private final fog k = new fog(eyp.b);
@@ -16,7 +16,7 @@ public class ewv extends eyk {
    private etb s;
 
    public ewv(eqz $$0, Runnable $$1) {
-      super(tl.c("accessibility.onboarding.screen.title"));
+      super(tm.c("accessibility.onboarding.screen.title"));
       this.m = $$0;
       this.q = $$1;
       this.l = new eth(true);
@@ -41,7 +41,7 @@ public class ewv extends eyk {
 
       $$2.a(esu.b(150, $$0x -> this.a(new eww(this, this.f.m)), false));
       $$2.a(esu.a(150, $$0x -> this.a(new ext(this, this.f.m, this.f.ae())), false));
-      $$1.a(esq.a(tk.j, $$0x -> this.az_()).a(), $$1.b().f().a(8));
+      $$1.a(esq.a(tl.j, $$0x -> this.az_()).a(), $$1.b().f().a(8));
       $$1.a();
       evx.a($$1, 0, $$0, this.g, this.h, 0.5F, 0.0F);
       $$1.a(this::d);
@@ -70,7 +70,7 @@ public class ewv extends eyk {
    @Override
    public void a(esf $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.C();
+      this.D();
       this.l.a($$0, this.g, 1.0F);
       if (this.s != null) {
          this.s.a($$0, $$1, $$2, $$3);
@@ -83,7 +83,7 @@ public class ewv extends eyk {
       $$0.a(0, 0, this.g, this.h, -1877995504);
    }
 
-   private void C() {
+   private void D() {
       if (!this.o && this.n) {
          if (this.p < 40.0F) {
             this.p++;

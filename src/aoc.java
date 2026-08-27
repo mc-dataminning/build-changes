@@ -63,7 +63,7 @@ public abstract class aoc<T> extends aol<T> {
       return this.f;
    }
 
-   public abstract tl e();
+   public abstract tm e();
 
    @Override
    boolean f() {

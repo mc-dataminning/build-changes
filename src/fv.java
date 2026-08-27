@@ -11,8 +11,8 @@ import java.util.Collections;
 
 public class fv implements ArgumentType<fv.a> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "#foo");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("arguments.function.tag.unknown", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("arguments.function.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("arguments.function.tag.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("arguments.function.unknown", $$0));
 
    public static fv a() {
       return new fv();

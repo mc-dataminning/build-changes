@@ -6,14 +6,14 @@ public class dxu extends dvg {
       super(dvz.K, $$1, 64, $$2, 7, 7, 9, a($$0));
    }
 
-   public dxu(qx $$0) {
+   public dxu(qy $$0) {
       super(dvz.K, $$0);
       this.h = $$0.q("Witch");
       this.i = $$0.q("Cat");
    }
 
    @Override
-   protected void a(dvy $$0, qx $$1) {
+   protected void a(dvy $$0, qy $$1) {
       super.a($$0, $$1);
       $$1.a("Witch", this.h);
       $$1.a("Cat", this.i);

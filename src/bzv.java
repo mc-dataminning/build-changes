@@ -56,13 +56,13 @@ public class bzv extends bur implements bjd, bjw {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       this.cd.a($$0);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.cd.b($$0);
    }
@@ -74,7 +74,7 @@ public class bzv extends bur implements bjd, bjw {
 
    @Override
    public boolean g() {
-      return this.bw() && !this.m_();
+      return this.bv() && !this.m_();
    }
 
    @Override
@@ -134,22 +134,22 @@ public class bzv extends bur implements bjd, bjw {
 
    @Nullable
    @Override
-   public bjg cO() {
-      return (bjg)(this.i() && this.cR() instanceof cbu $$0 && $$0.b(cji.ng) ? $$0 : super.cO());
+   public bjg cN() {
+      return (bjg)(this.i() && this.cQ() instanceof cbu $$0 && $$0.b(cji.ng) ? $$0 : super.cN());
    }
 
    @Override
    public ehn b(bjg $$0) {
       ehn[] $$1 = new ehn[]{
-         a((double)this.dg(), (double)$$0.dg(), $$0.dB()),
-         a((double)this.dg(), (double)$$0.dg(), $$0.dB() - 22.5F),
-         a((double)this.dg(), (double)$$0.dg(), $$0.dB() + 22.5F),
-         a((double)this.dg(), (double)$$0.dg(), $$0.dB() - 45.0F),
-         a((double)this.dg(), (double)$$0.dg(), $$0.dB() + 45.0F)
+         a((double)this.df(), (double)$$0.df(), $$0.dB()),
+         a((double)this.df(), (double)$$0.df(), $$0.dB() - 22.5F),
+         a((double)this.df(), (double)$$0.df(), $$0.dB() + 22.5F),
+         a((double)this.df(), (double)$$0.df(), $$0.dB() - 45.0F),
+         a((double)this.df(), (double)$$0.df(), $$0.dB() + 45.0F)
       };
       Set<gw> $$2 = Sets.newLinkedHashSet();
-      double $$3 = this.cH().e;
-      double $$4 = this.cH().b - 0.5;
+      double $$3 = this.cG().e;
+      double $$4 = this.cG().b - 0.5;
       gw.a $$5 = new gw.a();
 
       for (ehn $$6 : $$1) {
@@ -180,7 +180,7 @@ public class bzv extends bur implements bjd, bjw {
          }
       }
 
-      return new ehn(this.dq(), this.cH().e, this.dw());
+      return new ehn(this.dq(), this.cG().e, this.dw());
    }
 
    @Override
@@ -202,13 +202,13 @@ public class bzv extends bur implements bjd, bjw {
    }
 
    @Override
-   protected float aL() {
+   protected float aK() {
       return this.Z + 0.6F;
    }
 
    @Override
    protected void b(gw $$0, dfj $$1) {
-      this.a(this.bm() ? ape.wp : ape.wo, 1.0F, 1.0F);
+      this.a(this.bl() ? ape.wp : ape.wo, 1.0F, 1.0F);
    }
 
    @Override
@@ -218,8 +218,8 @@ public class bzv extends bur implements bjd, bjw {
 
    @Override
    protected void a(double $$0, boolean $$1, dfj $$2, gw $$3) {
-      this.aP();
-      if (this.bm()) {
+      this.aO();
+      if (this.bl()) {
          this.n();
       } else {
          super.a($$0, $$1, $$2, $$3);
@@ -239,9 +239,9 @@ public class bzv extends bur implements bjd, bjw {
          boolean var10000;
          label36: {
             dfj $$0 = this.dL().a_(this.dl());
-            dfj $$1 = this.bi();
+            dfj $$1 = this.bh();
             $$2 = $$0.a(apt.aT) || $$1.a(apt.aT) || this.b(apy.b) > 0.0;
-            if (this.cZ() instanceof bzv $$3 && $$3.s()) {
+            if (this.cY() instanceof bzv $$3 && $$3.s()) {
                var10000 = true;
                break label36;
             }
@@ -255,7 +255,7 @@ public class bzv extends bur implements bjd, bjw {
 
       super.l();
       this.gd();
-      this.aP();
+      this.aO();
    }
 
    private boolean y() {
@@ -268,7 +268,7 @@ public class bzv extends bur implements bjd, bjw {
    }
 
    private void gd() {
-      if (this.bm()) {
+      if (this.bl()) {
          ehs $$0 = ehs.a(this);
          if ($$0.a(cxi.c, this.dl(), true) && !this.dL().b_(this.dl().c()).a(apy.b)) {
             this.c(true);
@@ -299,7 +299,7 @@ public class bzv extends bur implements bjd, bjw {
 
    @Override
    protected boolean r(biq $$0) {
-      return !this.bP() && !this.a(apy.b);
+      return !this.bO() && !this.a(apy.b);
    }
 
    @Override
@@ -308,7 +308,7 @@ public class bzv extends bur implements bjd, bjw {
    }
 
    @Override
-   public boolean bN() {
+   public boolean bM() {
       return false;
    }
 
@@ -322,7 +322,7 @@ public class bzv extends bur implements bjd, bjw {
       if ($$1.a_($$0).u().a(apy.b)) {
          return 10.0F;
       } else {
-         return this.bm() ? Float.NEGATIVE_INFINITY : 0.0F;
+         return this.bl() ? Float.NEGATIVE_INFINITY : 0.0F;
       }
    }
 
@@ -347,7 +347,7 @@ public class bzv extends bur implements bjd, bjw {
    @Override
    public bgy b(cbu $$0, bgx $$1) {
       boolean $$2 = this.m($$0.b($$1));
-      if (!$$2 && this.i() && !this.bP() && !$$0.fH()) {
+      if (!$$2 && this.i() && !this.bO() && !$$0.fH()) {
          if (!this.dL().B) {
             $$0.n(this);
          }
@@ -359,8 +359,8 @@ public class bzv extends bur implements bjd, bjw {
             cjf $$4 = $$0.b($$1);
             return $$4.a(cji.mZ) ? $$4.a($$0, this, $$1) : bgy.d;
          } else {
-            if ($$2 && !this.aT()) {
-               this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.wq, this.db(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
+            if ($$2 && !this.aS()) {
+               this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.wq, this.da(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
             }
 
             return $$3;
@@ -369,13 +369,13 @@ public class bzv extends bur implements bjd, bjw {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.6F * this.cI()), (double)(this.dg() * 0.4F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.6F * this.cH()), (double)(this.df() * 0.4F));
    }
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if (this.m_()) {
          return super.a($$0, $$1, $$2, $$3, $$4);
       } else {
@@ -423,12 +423,12 @@ public class bzv extends bur implements bjd, bjw {
 
       @Override
       public boolean b() {
-         return !this.g.bm() && this.a(this.g.dL(), this.e);
+         return !this.g.bl() && this.a(this.g.dL(), this.e);
       }
 
       @Override
       public boolean a() {
-         return !this.g.bm() && super.a();
+         return !this.g.bl() && super.a();
       }
 
       @Override

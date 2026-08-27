@@ -15,7 +15,7 @@ public abstract class cct extends ccm {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 4.0;
+      double $$1 = this.cG().a() * 4.0;
       if (Double.isNaN($$1)) {
          $$1 = 4.0;
       }
@@ -49,14 +49,14 @@ public abstract class cct extends ccm {
          this.a($$0);
       }
 
-      this.aP();
+      this.aO();
       ehn $$5 = this.do();
       double $$6 = this.dq() + $$5.c;
       double $$7 = this.ds() + $$5.d;
       double $$8 = this.dw() + $$5.e;
       this.H();
       float $$11;
-      if (this.aY()) {
+      if (this.aX()) {
          for (int $$9 = 0; $$9 < 4; $$9++) {
             float $$10 = 0.25F;
             this.dL().a(ix.e, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
@@ -68,7 +68,7 @@ public abstract class cct extends ccm {
       }
 
       this.f($$5.a((double)$$11));
-      if (!this.aU()) {
+      if (!this.aT()) {
          ehn $$13 = this.do();
          this.o($$13.c, $$13.d - (double)this.w(), $$13.e);
       }

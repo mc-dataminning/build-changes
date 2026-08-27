@@ -5,9 +5,9 @@ import java.util.Map;
 public class apn<T> implements Iterable<apl<T>> {
    private final ht<T> a;
    private final Map<T, apl<T>> b = new IdentityHashMap<>();
-   private final tl c;
+   private final tm c;
 
-   public apn(ht<T> $$0, tl $$1) {
+   public apn(ht<T> $$0, tm $$1) {
       this.a = $$0;
       this.c = $$1;
    }
@@ -33,7 +33,7 @@ public class apn<T> implements Iterable<apl<T>> {
       return this.a($$0, apm.b);
    }
 
-   public tl b() {
+   public tm b() {
       return this.c;
    }
 }

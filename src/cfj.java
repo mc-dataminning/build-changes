@@ -57,7 +57,7 @@ public class cfj extends cel {
 
    @Override
    public boolean a(cbu $$0) {
-      return !this.l.b(this.k) && this.k.a($$0) && this.l.bw() && this.l.e($$0) < 8.0F;
+      return !this.l.b(this.k) && this.k.a($$0) && this.l.bv() && this.l.e($$0) < 8.0F;
    }
 
    private boolean a(bwq $$0) {

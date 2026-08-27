@@ -1,13 +1,13 @@
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 public interface ajh {
-   void a(qx var1) throws CommandSyntaxException;
+   void a(qy var1) throws CommandSyntaxException;
 
-   qx a() throws CommandSyntaxException;
+   qy a() throws CommandSyntaxException;
 
-   tl b();
+   tm b();
 
-   tl a(rq var1);
+   tm a(rr var1);
 
-   tl a(ej.g var1, double var2, int var4);
+   tm a(ej.g var1, double var2, int var4);
 }

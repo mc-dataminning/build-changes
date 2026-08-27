@@ -21,10 +21,10 @@ public class eeq extends eec {
             .apply($$0, eeq::new)
    );
    private final boolean b;
-   private final List<tl> c;
+   private final List<tm> c;
    private final Optional<ecq.b> d;
 
-   public eeq(List<efp> $$0, boolean $$1, List<tl> $$2, Optional<ecq.b> $$3) {
+   public eeq(List<efp> $$0, boolean $$1, List<tm> $$2, Optional<ecq.b> $$3) {
       super($$0);
       this.b = $$1;
       this.c = List.copyOf($$2);
@@ -43,22 +43,22 @@ public class eeq extends eec {
 
    @Override
    public cjf a(cjf $$0, ecq $$1) {
-      rd $$2 = this.a($$0, !this.c.isEmpty());
+      re $$2 = this.a($$0, !this.c.isEmpty());
       if ($$2 != null) {
          if (this.b) {
             $$2.clear();
          }
 
-         UnaryOperator<tl> $$3 = eer.a($$1, this.d.orElse(null));
-         this.c.stream().map($$3).map(tl.a::a).map(ro::a).forEach($$2::add);
+         UnaryOperator<tm> $$3 = eer.a($$1, this.d.orElse(null));
+         this.c.stream().map($$3).map(tm.a::a).map(rp::a).forEach($$2::add);
       }
 
       return $$0;
    }
 
    @Nullable
-   private rd a(cjf $$0, boolean $$1) {
-      qx $$2;
+   private re a(cjf $$0, boolean $$1) {
+      qy $$2;
       if ($$0.u()) {
          $$2 = $$0.v();
       } else {
@@ -66,11 +66,11 @@ public class eeq extends eec {
             return null;
          }
 
-         $$2 = new qx();
+         $$2 = new qy();
          $$0.c($$2);
       }
 
-      qx $$5;
+      qy $$5;
       if ($$2.b("display", 10)) {
          $$5 = $$2.p("display");
       } else {
@@ -78,14 +78,14 @@ public class eeq extends eec {
             return null;
          }
 
-         $$5 = new qx();
+         $$5 = new qy();
          $$2.a("display", $$5);
       }
 
       if ($$5.b("Lore", 9)) {
          return $$5.c("Lore", 8);
       } else if ($$1) {
-         rd $$8 = new rd();
+         re $$8 = new re();
          $$5.a("Lore", $$8);
          return $$8;
       } else {
@@ -100,7 +100,7 @@ public class eeq extends eec {
    public static class a extends eec.a<eeq.a> {
       private boolean a;
       private Optional<ecq.b> b = Optional.empty();
-      private final Builder<tl> c = ImmutableList.builder();
+      private final Builder<tm> c = ImmutableList.builder();
 
       public eeq.a a(boolean $$0) {
          this.a = $$0;
@@ -112,7 +112,7 @@ public class eeq extends eec {
          return this;
       }
 
-      public eeq.a a(tl $$0) {
+      public eeq.a a(tm $$0) {
          this.c.add($$0);
          return this;
       }

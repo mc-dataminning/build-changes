@@ -45,12 +45,12 @@ public class eds extends eec {
    protected cjf a(cjf $$0, ecq $$1) {
       dfj $$2 = $$1.c(efb.g);
       if ($$2 != null) {
-         qx $$3 = $$0.w();
-         qx $$4;
+         qy $$3 = $$0.w();
+         qy $$4;
          if ($$3.b("BlockStateTag", 10)) {
             $$4 = $$3.p("BlockStateTag");
          } else {
-            $$4 = new qx();
+            $$4 = new qy();
             $$3.a("BlockStateTag", $$4);
          }
 

@@ -11,7 +11,7 @@ public class bvs extends bur {
    private static final aef<Boolean> cb = aei.a(bvs.class, aeh.k);
    public static final cmg bT = cmg.a(csw.bw.k());
    int cc;
-   public static final Predicate<bjg> bU = $$0 -> $$0.m_() && !$$0.aY();
+   public static final Predicate<bjg> bU = $$0 -> $$0.m_() && !$$0.aX();
 
    public bvs(biu<? extends bvs> $$0, cpv $$1) {
       super($$0, $$1);
@@ -84,7 +84,7 @@ public class bvs extends bur {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("HomePosX", this.gd().u());
       $$0.a("HomePosY", this.gd().v());
@@ -96,7 +96,7 @@ public class bvs extends bur {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       int $$1 = $$0.h("HomePosX");
       int $$2 = $$0.h("HomePosY");
       int $$3 = $$0.h("HomePosZ");
@@ -111,7 +111,7 @@ public class bvs extends bur {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       this.i(this.dl());
       this.j(gw.b);
       return super.a($$0, $$1, $$2, $$3, $$4);
@@ -139,7 +139,7 @@ public class bvs extends bur {
    }
 
    @Override
-   public boolean cz() {
+   public boolean cy() {
       return false;
    }
 
@@ -161,7 +161,7 @@ public class bvs extends bur {
    @Nullable
    @Override
    protected apd w() {
-      return !this.aY() && this.aB() && !this.m_() ? ape.yi : super.w();
+      return !this.aX() && this.aA() && !this.m_() ? ape.yi : super.w();
    }
 
    @Override
@@ -170,7 +170,7 @@ public class bvs extends bur {
    }
 
    @Override
-   protected apd aM() {
+   protected apd aL() {
       return ape.yt;
    }
 
@@ -198,7 +198,7 @@ public class bvs extends bur {
    }
 
    @Override
-   protected float aL() {
+   protected float aK() {
       return this.Z + 0.15F;
    }
 
@@ -235,7 +235,7 @@ public class bvs extends bur {
    @Override
    public void b_() {
       super.b_();
-      if (this.bw() && this.t() && this.cc >= 1 && this.cc % 5 == 0) {
+      if (this.bv() && this.t() && this.cc >= 1 && this.cc % 5 == 0) {
          gw $$0 = this.dl();
          if (dbm.a(this.dL(), $$0)) {
             this.dL().c(2001, $$0, csv.i(this.dL().a_($$0.d())));
@@ -254,7 +254,7 @@ public class bvs extends bur {
 
    @Override
    public void h(ehn $$0) {
-      if (this.cX() && this.aY()) {
+      if (this.cW() && this.aX()) {
          this.a(0.1F, $$0);
          this.a(bjm.a, this.do());
          this.f(this.do().a(0.9));
@@ -399,15 +399,15 @@ public class bvs extends bur {
 
       @Override
       public boolean b() {
-         return !this.h.aY() && this.d <= 1200 && this.a(this.h.dL(), this.e);
+         return !this.h.aX() && this.d <= 1200 && this.a(this.h.dL(), this.e);
       }
 
       @Override
       public boolean a() {
-         if (this.h.m_() && !this.h.aY()) {
+         if (this.h.m_() && !this.h.aX()) {
             return super.a();
          } else {
-            return !this.h.gk() && !this.h.aY() && !this.h.s() ? super.a() : false;
+            return !this.h.gk() && !this.h.aX() && !this.h.s() ? super.a() : false;
          }
       }
 
@@ -444,7 +444,7 @@ public class bvs extends bur {
       public void e() {
          super.e();
          gw $$0 = this.g.dl();
-         if (!this.g.aY() && this.m()) {
+         if (!this.g.aX() && this.m()) {
             if (this.g.cc < 1) {
                this.g.x(true);
             } else if (this.g.cc > this.a(200)) {
@@ -480,7 +480,7 @@ public class bvs extends bur {
       }
 
       private void g() {
-         if (this.l.aY()) {
+         if (this.l.aX()) {
             this.l.f(this.l.do().b(0.0, 0.005, 0.0));
             if (!this.l.gd().a(this.l.dj(), 16.0)) {
                this.l.w(Math.max(this.l.fe() / 2.0F, 0.08F));
@@ -489,7 +489,7 @@ public class bvs extends bur {
             if (this.l.m_()) {
                this.l.w(Math.max(this.l.fe() / 3.0F, 0.06F));
             }
-         } else if (this.l.aB()) {
+         } else if (this.l.aA()) {
             this.l.w(Math.max(this.l.fe() / 2.0F, 0.06F));
          }
       }
@@ -567,7 +567,7 @@ public class bvs extends bur {
 
       @Override
       public boolean a() {
-         return !this.b.aY() && !this.i.gk() && !this.i.s() ? super.a() : false;
+         return !this.b.aX() && !this.i.gk() && !this.i.s() ? super.a() : false;
       }
    }
 
@@ -583,7 +583,7 @@ public class bvs extends bur {
 
       @Override
       public boolean a() {
-         return !this.a.gk() && !this.a.s() && this.a.aY();
+         return !this.a.gk() && !this.a.s() && this.a.aX();
       }
 
       @Override

@@ -116,7 +116,7 @@ public class eaz {
       return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.p(this.a);
       $$0.p(this.b);
       $$0.p(this.c);
@@ -127,13 +127,13 @@ public class eaz {
       $$0.a(this.g);
    }
 
-   public static eaz b(so $$0) {
+   public static eaz b(sp $$0) {
       eaz $$1 = new eaz($$0.readInt(), $$0.readInt(), $$0.readInt());
       a($$0, $$1);
       return $$1;
    }
 
-   protected static void a(so $$0, eaz $$1) {
+   protected static void a(sp $$0, eaz $$1) {
       $$1.j = $$0.readFloat();
       $$1.k = $$0.readFloat();
       $$1.i = $$0.readBoolean();

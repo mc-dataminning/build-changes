@@ -41,15 +41,15 @@ public interface ecm {
    }
 
    @Nullable
-   qx G();
+   qy G();
 
-   void a(@Nullable qx var1);
+   void a(@Nullable qy var1);
 
    ecl K();
 
    cpz L();
 
-   qx a(hu var1, @Nullable qx var2);
+   qy a(hu var1, @Nullable qy var2);
 
    boolean n();
 
@@ -74,7 +74,7 @@ public interface ecm {
    cpr q();
 
    @Nullable
-   qx y();
+   qy y();
 
    div.a E();
 

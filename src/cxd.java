@@ -50,7 +50,7 @@ public class cxd extends csi {
       cbu $$3 = $$0.o();
       boolean $$4 = false;
       if (!$$1.B && $$3 != null && $$3.go()) {
-         qx $$5 = cgy.a($$2);
+         qy $$5 = cgy.a($$2);
          if ($$5 != null && $$5.e("Book")) {
             $$4 = true;
          }

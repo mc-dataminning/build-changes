@@ -29,13 +29,13 @@ public class bvp extends bup implements bjx, bzm {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Pumpkin", this.t());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.e("Pumpkin")) {
          this.w($$0.q("Pumpkin"));
@@ -119,7 +119,7 @@ public class bvp extends bup implements bjx, bzm {
 
    @Override
    public boolean a() {
-      return this.bw() && this.t();
+      return this.bv() && this.t();
    }
 
    public boolean t() {
@@ -154,7 +154,7 @@ public class bvp extends bup implements bjx, bzm {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.75F * this.cI()), (double)(this.dg() * 0.4F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.75F * this.cH()), (double)(this.df() * 0.4F));
    }
 }

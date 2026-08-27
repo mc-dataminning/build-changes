@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class aag implements vd<ww> {
+public class aag implements ve<wx> {
    private static final int a = 0;
    private static final int b = 1;
    private static final int c = 2;
@@ -35,7 +35,7 @@ public class aag implements vd<ww> {
       return new aag($$0.b(), $$2 == aag.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
-   public aag(so $$0) {
+   public aag(sp $$0) {
       this.i = $$0.r();
       this.h = $$0.readByte();
       if (b(this.h)) {
@@ -45,14 +45,14 @@ public class aag implements vd<ww> {
       }
 
       if (a(this.h)) {
-         this.j = $$0.a(so::r);
+         this.j = $$0.a(sp::r);
       } else {
          this.j = ImmutableList.of();
       }
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.i);
       $$0.k(this.h);
       if (b(this.h)) {
@@ -60,7 +60,7 @@ public class aag implements vd<ww> {
       }
 
       if (a(this.h)) {
-         $$0.a(this.j, so::a);
+         $$0.a(this.j, sp::a);
       }
    }
 
@@ -99,7 +99,7 @@ public class aag implements vd<ww> {
       }
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -121,9 +121,9 @@ public class aag implements vd<ww> {
    }
 
    public static class b {
-      private final tl a;
-      private final tl b;
-      private final tl c;
+      private final tm a;
+      private final tm b;
+      private final tm c;
       private final String d;
       private final String e;
       private final n f;
@@ -139,7 +139,7 @@ public class aag implements vd<ww> {
          this.c = $$0.f();
       }
 
-      public b(so $$0) {
+      public b(sp $$0) {
          this.a = $$0.l();
          this.g = $$0.readByte();
          this.d = $$0.d(40);
@@ -149,7 +149,7 @@ public class aag implements vd<ww> {
          this.c = $$0.l();
       }
 
-      public tl a() {
+      public tm a() {
          return this.a;
       }
 
@@ -169,15 +169,15 @@ public class aag implements vd<ww> {
          return this.e;
       }
 
-      public tl f() {
+      public tm f() {
          return this.b;
       }
 
-      public tl g() {
+      public tm g() {
          return this.c;
       }
 
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
          $$0.k(this.g);
          $$0.a(this.d);

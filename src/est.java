@@ -27,9 +27,9 @@ import javax.annotation.Nullable;
 
 public class est {
    private static final Pattern a = Pattern.compile("(\\s+)");
-   private static final uh b = uh.a.a(n.m);
-   private static final uh c = uh.a.a(n.h);
-   private static final List<uh> d = Stream.of(n.l, n.o, n.k, n.n, n.g).map(uh.a::a).collect(ImmutableList.toImmutableList());
+   private static final ui b = ui.a.a(n.m);
+   private static final ui c = ui.a.a(n.h);
+   private static final List<ui> d = Stream.of(n.l, n.o, n.k, n.n, n.g).map(ui.a::a).collect(ImmutableList.toImmutableList());
    final eqv e;
    private final eyk f;
    final esz g;
@@ -51,6 +51,7 @@ public class est {
    private est.a t;
    private boolean u;
    boolean v;
+   private boolean w = true;
 
    public est(eqv $$0, eyk $$1, esz $$2, esd $$3, boolean $$4, boolean $$5, int $$6, int $$7, boolean $$8, int $$9) {
       this.e = $$0;
@@ -73,14 +74,19 @@ public class est {
       }
    }
 
+   public void b(boolean $$0) {
+      this.w = $$0;
+   }
+
    public boolean a(int $$0, int $$1, int $$2) {
-      if (this.t != null && this.t.b($$0, $$1, $$2)) {
+      boolean $$3 = this.t != null;
+      if ($$3 && this.t.b($$0, $$1, $$2)) {
          return true;
-      } else if (this.f.t() == this.g && $$0 == 258) {
-         this.b(true);
-         return true;
-      } else {
+      } else if (this.f.t() != this.g || $$0 != 258 || this.w && !$$3) {
          return false;
+      } else {
+         this.c(true);
+         return true;
       }
    }
 
@@ -92,7 +98,7 @@ public class est {
       return this.t != null && this.t.a((int)$$0, (int)$$1, $$2);
    }
 
-   public void b(boolean $$0) {
+   public void c(boolean $$0) {
       if (this.s != null && this.s.isDone()) {
          Suggestions $$1 = this.s.join();
          if (!$$1.isEmpty()) {
@@ -109,7 +115,19 @@ public class est {
       }
    }
 
-   public void a() {
+   public boolean a() {
+      return this.t != null;
+   }
+
+   public tm b() {
+      if (this.t != null && this.t.h) {
+         return this.w ? tm.c("narration.suggestion.usage.cycle.hidable") : tm.c("narration.suggestion.usage.cycle.fixed");
+      } else {
+         return this.w ? tm.c("narration.suggestion.usage.fill.hidable") : tm.c("narration.suggestion.usage.fill.fixed");
+      }
+   }
+
+   public void c() {
       this.t = null;
    }
 
@@ -132,7 +150,7 @@ public class est {
       return $$4;
    }
 
-   public void b() {
+   public void d() {
       String $$0 = this.g.a();
       if (this.r != null && !this.r.getReader().getString().equals($$0)) {
          this.r = null;
@@ -163,7 +181,7 @@ public class est {
             this.s = $$5.getCompletionSuggestions(this.r, $$4);
             this.s.thenRun(() -> {
                if (this.s.isDone()) {
-                  this.d();
+                  this.f();
                }
             });
          }
@@ -191,12 +209,12 @@ public class est {
    }
 
    private static ark a(CommandSyntaxException $$0) {
-      tl $$1 = tn.a($$0.getRawMessage());
+      tm $$1 = to.a($$0.getRawMessage());
       String $$2 = $$0.getContext();
-      return $$2 == null ? $$1.f() : tl.a("command.context.parse_error", $$1, $$0.getCursor(), $$2).f();
+      return $$2 == null ? $$1.f() : tm.a("command.context.parse_error", $$1, $$0.getCursor(), $$2).f();
    }
 
-   private void d() {
+   private void f() {
       boolean $$0 = false;
       if (this.g.f() == this.g.a().length()) {
          if (this.s.join().isEmpty() && !this.r.getExceptions().isEmpty()) {
@@ -227,7 +245,7 @@ public class est {
 
       this.t = null;
       if (this.u && this.e.m.G().c()) {
-         this.b(false);
+         this.c(false);
       }
    }
 
@@ -237,7 +255,7 @@ public class est {
       Map<CommandNode<dw>, String> $$3 = this.e.s.cn.r().getSmartUsage($$2.parent, this.e.s.cn.i());
       List<ark> $$4 = Lists.newArrayList();
       int $$5 = 0;
-      uh $$6 = uh.a.a($$0);
+      ui $$6 = ui.a.a($$0);
 
       for (Entry<CommandNode<dw>, String> $$7 : $$3.entrySet()) {
          if (!($$7.getKey() instanceof LiteralCommandNode)) {
@@ -257,7 +275,7 @@ public class est {
    }
 
    private ark a(String $$0, int $$1) {
-      return this.r != null ? a(this.r, $$0, $$1) : ark.forward($$0, uh.a);
+      return this.r != null ? a(this.r, $$0, $$1) : ark.forward($$0, ui.a);
    }
 
    @Nullable
@@ -329,8 +347,8 @@ public class est {
       }
    }
 
-   public tl c() {
-      return (tl)(this.t != null ? tk.r.e().b(this.t.b()) : tk.a);
+   public tm e() {
+      return (tm)(this.t != null ? tl.r.e().b(this.t.b()) : tl.a);
    }
 
    public class a {
@@ -340,7 +358,7 @@ public class est {
       private int e;
       private int f;
       private ehm g = ehm.a;
-      private boolean h;
+      boolean h;
       private int i;
 
       a(int $$1, int $$2, int $$3, List<Suggestion> $$4, boolean $$5) {
@@ -403,7 +421,7 @@ public class est {
          if ($$11) {
             Message $$14 = this.d.get(this.f).getTooltip();
             if ($$14 != null) {
-               $$0.a(est.this.h, tn.a($$14), $$1, $$2);
+               $$0.a(est.this.h, to.a($$14), $$1, $$2);
             }
          }
       }
@@ -450,7 +468,7 @@ public class est {
             this.a();
             return true;
          } else if ($$0 == 256) {
-            est.this.a();
+            est.this.c();
             return true;
          } else {
             return false;
@@ -497,13 +515,13 @@ public class est {
          this.h = true;
       }
 
-      tl b() {
+      tm b() {
          this.i = this.f;
          Suggestion $$0 = this.d.get(this.f);
          Message $$1 = $$0.getTooltip();
          return $$1 != null
-            ? tl.a("narration.suggestion.tooltip", this.f + 1, this.d.size(), $$0.getText(), $$1)
-            : tl.a("narration.suggestion", this.f + 1, this.d.size(), $$0.getText());
+            ? tm.a("narration.suggestion.tooltip", this.f + 1, this.d.size(), $$0.getText(), $$1)
+            : tm.a("narration.suggestion", this.f + 1, this.d.size(), $$0.getText());
       }
    }
 }

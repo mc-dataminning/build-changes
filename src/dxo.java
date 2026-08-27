@@ -20,22 +20,22 @@ public class dxo extends dvs {
       this.m = $$3;
    }
 
-   public dxo(dzc $$0, qx $$1) {
+   public dxo(dzc $$0, qy $$1) {
       super(dvz.J, $$1, $$0, $$2 -> a($$0, $$1, $$2));
       this.l = dxo.b.a($$1.l("VerticalPlacement"));
-      this.m = (dxo.a)dxo.a.a.parse(new Dynamic(ri.a, $$1.c("Properties"))).getOrThrow(true, h::error);
+      this.m = (dxo.a)dxo.a.a.parse(new Dynamic(rj.a, $$1.c("Properties"))).getOrThrow(true, h::error);
    }
 
    @Override
-   protected void a(dvy $$0, qx $$1) {
+   protected void a(dvy $$0, qy $$1) {
       super.a($$0, $$1);
       $$1.a("Rotation", this.c.d().name());
       $$1.a("Mirror", this.c.c().name());
       $$1.a("VerticalPlacement", this.l.a());
-      dxo.a.a.encodeStart(ri.a, this.m).resultOrPartial(h::error).ifPresent($$1x -> $$1.a("Properties", $$1x));
+      dxo.a.a.encodeStart(rj.a, this.m).resultOrPartial(h::error).ifPresent($$1x -> $$1.a("Properties", $$1x));
    }
 
-   private static dyx a(dzc $$0, qx $$1, aex $$2) {
+   private static dyx a(dzc $$0, qy $$1, aex $$2) {
       dzb $$3 = $$0.a($$2);
       gw $$4 = new gw($$3.a().u() / 2, 0, $$3.a().w() / 2);
       return a(
@@ -43,7 +43,7 @@ public class dxo extends dvs {
          czh.valueOf($$1.l("Rotation")),
          dxo.b.a($$1.l("VerticalPlacement")),
          $$4,
-         (dxo.a)dxo.a.a.parse(new Dynamic(ri.a, $$1.c("Properties"))).getOrThrow(true, h::error)
+         (dxo.a)dxo.a.a.parse(new Dynamic(rj.a, $$1.c("Properties"))).getOrThrow(true, h::error)
       );
    }
 

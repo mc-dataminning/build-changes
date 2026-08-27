@@ -106,10 +106,10 @@ public class fjs extends fjv {
       }
 
       private ReportChatMessage a(fjo.a $$0, boolean $$1) {
-         uf $$2 = $$0.g().j();
-         ud $$3 = $$0.g().l();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(tw::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().k(), tw::a);
+         ug $$2 = $$0.g().j();
+         ue $$3 = $$0.g().l();
+         List<ByteBuffer> $$4 = $$3.d().a().stream().map(tx::a).toList();
+         ByteBuffer $$5 = x.a($$0.g().k(), tx::a);
          return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
       }
 

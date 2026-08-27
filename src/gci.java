@@ -13,7 +13,7 @@ public class gci extends gbv {
 
    @Override
    public boolean s() {
-      return !this.p.aT();
+      return !this.p.aS();
    }
 
    @Override

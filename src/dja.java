@@ -2,19 +2,19 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 public interface dja {
-   int ai();
+   int ah();
 
-   UUID cw();
+   UUID cv();
 
    gw dl();
 
-   ehi cH();
+   ehi cG();
 
    void a(djb var1);
 
-   Stream<? extends dja> cS();
+   Stream<? extends dja> cR();
 
-   Stream<? extends dja> cT();
+   Stream<? extends dja> cS();
 
    void b(biq.c var1);
 

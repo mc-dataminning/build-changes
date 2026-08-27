@@ -8,7 +8,7 @@ public class bks extends bkx<bjp> {
    private static final int d = 120;
    private static final int e = 5;
    private static final int f = 4;
-   private static final Predicate<bjp> g = $$0 -> $$0.eg() != null || $$0.dA() || $$0.bN();
+   private static final Predicate<bjp> g = $$0 -> $$0.eg() != null || $$0.dA() || $$0.bM();
    private final float h;
    private final Predicate<bjp> i;
 
@@ -51,7 +51,7 @@ public class bks extends bkx<bjp> {
 
    @Nullable
    private ehn a(bjp $$0, akr $$1) {
-      if ($$0.bN()) {
+      if ($$0.bM()) {
          Optional<ehn> $$2 = this.a((cpb)$$1, (biq)$$0).map(ehn::c);
          if ($$2.isPresent()) {
             return $$2.get();
@@ -67,7 +67,7 @@ public class bks extends bkx<bjp> {
          return Optional.empty();
       } else {
          Predicate<gw> $$3;
-         if (arx.f($$1.dg()) == 2) {
+         if (arx.f($$1.df()) == 2) {
             $$3 = $$1x -> gw.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(apy.a));
          } else {
             $$3 = $$1x -> $$0.b_($$1x).a(apy.a);

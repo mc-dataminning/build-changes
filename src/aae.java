@@ -1,9 +1,9 @@
-public class aae implements vd<ww> {
+public class aae implements ve<wx> {
    public static final int a = 0;
    public static final int b = 1;
    public static final int c = 2;
    private final String d;
-   private final tl e;
+   private final tm e;
    private final eip.a f;
    private final int g;
 
@@ -14,11 +14,11 @@ public class aae implements vd<ww> {
       this.g = $$1;
    }
 
-   public aae(so $$0) {
+   public aae(sp $$0) {
       this.d = $$0.r();
       this.g = $$0.readByte();
       if (this.g != 0 && this.g != 2) {
-         this.e = tk.a;
+         this.e = tl.a;
          this.f = eip.a.a;
       } else {
          this.e = $$0.l();
@@ -27,7 +27,7 @@ public class aae implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.d);
       $$0.k(this.g);
       if (this.g == 0 || this.g == 2) {
@@ -36,7 +36,7 @@ public class aae implements vd<ww> {
       }
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -44,7 +44,7 @@ public class aae implements vd<ww> {
       return this.d;
    }
 
-   public tl d() {
+   public tm d() {
       return this.e;
    }
 

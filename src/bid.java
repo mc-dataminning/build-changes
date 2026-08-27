@@ -243,36 +243,36 @@ public class bid implements Comparable<bid> {
       return 31 * $$0 + (this.n ? 1 : 0);
    }
 
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       aex $$1 = jd.e.b(this.k);
       $$0.a("id", $$1.toString());
       this.c($$0);
       return $$0;
    }
 
-   private void c(qx $$0) {
+   private void c(qy $$0) {
       $$0.a("amplifier", (byte)this.e());
       $$0.a("duration", this.d());
       $$0.a("ambient", this.f());
       $$0.a("show_particles", this.g());
       $$0.a("show_icon", this.h());
       if (this.q != null) {
-         qx $$1 = new qx();
+         qy $$1 = new qy();
          this.q.a($$1);
          $$0.a("hidden_effect", $$1);
       }
 
-      this.r.ifPresent($$1x -> bid.a.a.encodeStart(ri.a, $$1x).resultOrPartial(b::error).ifPresent($$1xx -> $$0.a("factor_calculation_data", $$1xx)));
+      this.r.ifPresent($$1x -> bid.a.a.encodeStart(rj.a, $$1x).resultOrPartial(b::error).ifPresent($$1xx -> $$0.a("factor_calculation_data", $$1xx)));
    }
 
    @Nullable
-   public static bid b(qx $$0) {
+   public static bid b(qy $$0) {
       String $$1 = $$0.l("id");
       bib $$2 = jd.e.a(aex.a($$1));
       return $$2 == null ? null : a($$2, $$0);
    }
 
-   private static bid a(bib $$0, qx $$1) {
+   private static bid a(bib $$0, qy $$1) {
       int $$2 = $$1.f("amplifier");
       int $$3 = $$1.h("duration");
       boolean $$4 = $$1.q("ambient");
@@ -293,7 +293,7 @@ public class bid implements Comparable<bid> {
 
       Optional<bid.a> $$8;
       if ($$1.b("factor_calculation_data", 10)) {
-         $$8 = bid.a.a.parse(new Dynamic(ri.a, $$1.p("factor_calculation_data"))).resultOrPartial(b::error);
+         $$8 = bid.a.a.parse(new Dynamic(rj.a, $$1.p("factor_calculation_data"))).resultOrPartial(b::error);
       } else {
          $$8 = Optional.empty();
       }

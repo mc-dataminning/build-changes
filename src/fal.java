@@ -33,9 +33,9 @@ public class fal extends ezi<cfo> {
    private boolean X;
    private int Y;
 
-   public fal(cfo $$0, cbt $$1, tl $$2) {
+   public fal(cfo $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
-      $$0.a(this::F);
+      $$0.a(this::G);
       this.m -= 2;
    }
 
@@ -51,7 +51,7 @@ public class fal extends ezi<cfo> {
       this.a($$0, $$1, $$2);
    }
 
-   private int E() {
+   private int F() {
       return arx.e(this.p.l().size(), 4);
    }
 
@@ -132,8 +132,8 @@ public class fal extends ezi<cfo> {
    }
 
    private void a(esf $$0, hg<dcm> $$1, int $$2, int $$3) {
-      qx $$4 = new qx();
-      rd $$5 = new dcm.a().a(dcn.a, cht.h).a($$1, cht.a).a();
+      qy $$4 = new qy();
+      re $$5 = new dcm.a().a(dcn.a, cht.h).a($$1, cht.a).a();
       $$4.a("Patterns", $$5);
       cjf $$6 = new cjf(cji.uc);
       cgy.a($$6, dcx.t, $$4);
@@ -186,7 +186,7 @@ public class fal extends ezi<cfo> {
 
    @Override
    public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      int $$5 = this.E() - 4;
+      int $$5 = this.F() - 4;
       if (this.X && this.U && $$5 > 0) {
          int $$6 = this.u + 13;
          int $$7 = $$6 + 56;
@@ -201,7 +201,7 @@ public class fal extends ezi<cfo> {
 
    @Override
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      int $$4 = this.E() - 4;
+      int $$4 = this.F() - 4;
       if (this.U && $$4 > 0) {
          float $$5 = (float)$$3 / (float)$$4;
          this.W = arx.a(this.W - $$5, 0.0F, 1.0F);
@@ -216,7 +216,7 @@ public class fal extends ezi<cfo> {
       return $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
    }
 
-   private void F() {
+   private void G() {
       cjf $$0 = this.p.q().e();
       if ($$0.b()) {
          this.Q = null;
@@ -227,7 +227,7 @@ public class fal extends ezi<cfo> {
       cjf $$1 = this.p.n().e();
       cjf $$2 = this.p.o().e();
       cjf $$3 = this.p.p().e();
-      qx $$4 = cgy.a($$1);
+      qy $$4 = cgy.a($$1);
       this.V = $$4 != null && $$4.b("Patterns", 9) && !$$1.b() && $$4.c("Patterns", 10).size() >= 6;
       if (this.V) {
          this.Q = null;
@@ -237,7 +237,7 @@ public class fal extends ezi<cfo> {
          this.U = !$$1.b() && !$$2.b() && !this.V && !this.p.l().isEmpty();
       }
 
-      if (this.Y >= this.E()) {
+      if (this.Y >= this.F()) {
          this.Y = 0;
          this.W = 0.0F;
       }

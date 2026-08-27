@@ -11,7 +11,7 @@ public class ech implements Comparable<ech> {
    private final boolean f;
    private final Path g;
    @Nullable
-   private tl h;
+   private tm h;
 
    public ech(cpz $$0, eci $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
       this.a = $$0;
@@ -71,8 +71,8 @@ public class ech implements Comparable<ech> {
       return this.a.e();
    }
 
-   public ty k() {
-      return asq.b(this.b.c()) ? tl.c("selectWorld.versionUnknown") : tl.b(this.b.c());
+   public tz k() {
+      return asq.b(this.b.c()) ? tm.c("selectWorld.versionUnknown") : tm.b(this.b.c());
    }
 
    public eci l() {
@@ -110,7 +110,7 @@ public class ech implements Comparable<ech> {
       return aa.b().d().a(this.b.d());
    }
 
-   public tl s() {
+   public tm s() {
       if (this.h == null) {
          this.h = this.t();
       }
@@ -118,25 +118,25 @@ public class ech implements Comparable<ech> {
       return this.h;
    }
 
-   private tl t() {
+   private tm t() {
       if (this.p()) {
-         return tl.c("selectWorld.locked").a(n.m);
+         return tm.c("selectWorld.locked").a(n.m);
       } else if (this.d()) {
-         return tl.c("selectWorld.conversion").a(n.m);
+         return tm.c("selectWorld.conversion").a(n.m);
       } else if (!this.r()) {
-         return tl.c("selectWorld.incompatible_series").a(n.m);
+         return tm.c("selectWorld.incompatible_series").a(n.m);
       } else {
-         ty $$0 = this.i() ? tl.h().b(tl.c("gameMode.hardcore").a($$0x -> $$0x.a(-65536))) : tl.c("gameMode." + this.h().b());
+         tz $$0 = this.i() ? tm.h().b(tm.c("gameMode.hardcore").a($$0x -> $$0x.a(-65536))) : tm.c("gameMode." + this.h().b());
          if (this.j()) {
-            $$0.f(", ").b(tl.c("selectWorld.cheats"));
+            $$0.f(", ").b(tm.c("selectWorld.cheats"));
          }
 
          if (this.e()) {
-            $$0.f(", ").b(tl.c("selectWorld.experimental").a(n.o));
+            $$0.f(", ").b(tm.c("selectWorld.experimental").a(n.o));
          }
 
-         ty $$1 = this.k();
-         ty $$2 = tl.b(", ").b(tl.c("selectWorld.version")).b(tk.u);
+         tz $$1 = this.k();
+         tz $$2 = tm.b(", ").b(tm.c("selectWorld.version")).b(tl.u);
          if (this.m()) {
             $$2.b($$1.a(this.n() ? n.m : n.u));
          } else {
@@ -187,8 +187,8 @@ public class ech implements Comparable<ech> {
       }
 
       @Override
-      public tl s() {
-         return tl.c("symlink_warning.title").a($$0 -> $$0.a(-65536));
+      public tm s() {
+         return tm.c("symlink_warning.title").a($$0 -> $$0.a(-65536));
       }
 
       @Override

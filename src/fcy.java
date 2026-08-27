@@ -27,11 +27,11 @@ public class fcy extends eyk {
    private static final int m = 36;
    private static final Logger n = LogUtils.getLogger();
    private static final String o = "mcworld-";
-   static final tl p = tl.c("selectWorld.gameMode");
-   static final tl q = tl.c("selectWorld.enterName");
-   static final tl s = tl.c("selectWorld.experiments");
-   static final tl t = tl.c("selectWorld.allowCommands.info");
-   private static final tl u = tl.c("createWorld.preparing");
+   static final tm p = tm.c("selectWorld.gameMode");
+   static final tm q = tm.c("selectWorld.enterName");
+   static final tm s = tm.c("selectWorld.experiments");
+   static final tm t = tm.c("selectWorld.allowCommands.info");
+   private static final tm u = tm.c("createWorld.preparing");
    private static final int v = 10;
    private static final int w = 8;
    public static final aex a = new aex("textures/gui/header_separator.png");
@@ -86,7 +86,7 @@ public class fcy extends eyk {
    }
 
    private fcy(eqv $$0, @Nullable eyk $$1, fdg $$2, Optional<aew<dux>> $$3, OptionalLong $$4) {
-      super(tl.c("selectWorld.create"));
+      super(tm.c("selectWorld.create"));
       this.B = $$1;
       this.A = $$0.bb();
       this.x = new fdh($$0.l().c(), $$2, $$3, $$4);
@@ -102,8 +102,8 @@ public class fcy extends eyk {
       this.d(this.F);
       this.E = new evy().a(10);
       evy.b $$0 = this.E.d(2);
-      $$0.a(esq.a(tl.c("selectWorld.create"), $$0x -> this.D()).a());
-      $$0.a(esq.a(tk.e, $$0x -> this.C()).a());
+      $$0.a(esq.a(tm.c("selectWorld.create"), $$0x -> this.E()).a());
+      $$0.a(esq.a(tl.e, $$0x -> this.D()).a());
       this.E.a($$0x -> {
          $$0x.h(1);
          this.d($$0x);
@@ -126,11 +126,11 @@ public class fcy extends eyk {
       }
    }
 
-   private static void a(eqv $$0, tl $$1) {
+   private static void a(eqv $$0, tm $$1) {
       $$0.d(new exq($$1));
    }
 
-   private void D() {
+   private void E() {
       fdg $$0 = this.x.k();
       dln.b $$1 = $$0.d().a($$0.c());
       hn<afg> $$2 = $$0.e().a(afg.c, $$1.b());
@@ -143,9 +143,9 @@ public class fcy extends eyk {
 
    private void a(eck.a $$0, hn<afg> $$1, Lifecycle $$2) {
       a(this.f, u);
-      Optional<ecg.c> $$3 = this.G();
+      Optional<ecg.c> $$3 = this.H();
       if (!$$3.isEmpty()) {
-         this.F();
+         this.G();
          boolean $$4 = $$0 == eck.a.c;
          fdg $$5 = this.x.k();
          cpz $$6 = this.c($$4);
@@ -174,20 +174,20 @@ public class fcy extends eyk {
       } else if ($$0 != 257 && $$0 != 335) {
          return false;
       } else {
-         this.D();
+         this.E();
          return true;
       }
    }
 
    @Override
    public void az_() {
-      this.C();
+      this.D();
    }
 
    @Override
-   public void C() {
+   public void D() {
       this.f.a(this.B);
-      this.F();
+      this.G();
    }
 
    @Override
@@ -213,14 +213,14 @@ public class fcy extends eyk {
    }
 
    @Nullable
-   private Path E() {
+   private Path F() {
       if (this.C == null) {
          try {
             this.C = Files.createTempDirectory("mcworld-");
          } catch (IOException var2) {
             n.warn("Failed to create temporary dir", var2);
             euw.c(this.f, this.x.c());
-            this.C();
+            this.D();
          }
       }
 
@@ -237,7 +237,7 @@ public class fcy extends eyk {
    void b(cqo $$0) {
       Pair<Path, anf> $$1 = this.c($$0);
       if ($$1 != null) {
-         this.f.a(new fbp((anf)$$1.getSecond(), $$0x -> this.a($$0x, true, this::b), (Path)$$1.getFirst(), tl.c("dataPack.title")));
+         this.f.a(new fbp((anf)$$1.getSecond(), $$0x -> this.a($$0x, true, this::b), (Path)$$1.getFirst(), tm.c("dataPack.title")));
       }
    }
 
@@ -264,7 +264,7 @@ public class fcy extends eyk {
    }
 
    private void a(anf $$0, cqo $$1, Consumer<cqo> $$2) {
-      this.f.d(new exq(tl.c("dataPack.validation.working")));
+      this.f.d(new exq(tm.c("dataPack.validation.working")));
       afr.c $$3 = a($$0, $$1);
       afr.<fcy.a, fdg>a(
             $$3,
@@ -300,7 +300,7 @@ public class fcy extends eyk {
                   } else {
                      $$2.accept(cqo.c);
                   }
-               }, tl.c("dataPack.validation.failed"), tk.a, tl.c("dataPack.validation.back"), tl.c("dataPack.validation.reset")));
+               }, tm.c("dataPack.validation.failed"), tl.a, tm.c("dataPack.validation.back"), tm.c("dataPack.validation.reset")));
             } else {
                this.f.a(this);
             }
@@ -314,7 +314,7 @@ public class fcy extends eyk {
       return new afr.c($$2, du.a.c, 2);
    }
 
-   private void F() {
+   private void G() {
       if (this.C != null) {
          try (Stream<Path> $$0 = Files.walk(this.C)) {
             $$0.sorted(Comparator.reverseOrder()).forEach($$0x -> {
@@ -341,7 +341,7 @@ public class fcy extends eyk {
       }
    }
 
-   private Optional<ecg.c> G() {
+   private Optional<ecg.c> H() {
       String $$0 = this.x.c();
 
       try {
@@ -369,7 +369,7 @@ public class fcy extends eyk {
       }
 
       euw.c(this.f, $$0);
-      this.C();
+      this.D();
       return Optional.empty();
    }
 
@@ -404,7 +404,7 @@ public class fcy extends eyk {
 
    @Nullable
    private Pair<Path, anf> c(cqo $$0) {
-      Path $$1 = this.E();
+      Path $$1 = this.F();
       if ($$1 != null) {
          if (this.D == null) {
             this.D = ani.a($$1, this.A);
@@ -422,18 +422,18 @@ public class fcy extends eyk {
    }
 
    class b extends eup {
-      private static final tl c = tl.c("createWorld.tab.game.title");
-      private static final tl d = tl.c("selectWorld.allowCommands");
+      private static final tm c = tm.c("createWorld.tab.game.title");
+      private static final tm d = tm.c("selectWorld.allowCommands");
       private final esz e;
 
       b() {
          super(c);
          evy.b $$0 = this.a.b(8).d(1);
          ewc $$1 = $$0.b();
-         this.e = new esz(fcy.this.i, 208, 20, tl.c("selectWorld.enterName"));
+         this.e = new esz(fcy.this.i, 208, 20, tm.c("selectWorld.enterName"));
          this.e.a(fcy.this.x.b());
          this.e.b(fcy.this.x::a);
-         fcy.this.x.a($$0x -> this.e.a(eua.a(tl.a("selectWorld.targetFolder", tl.b($$0x.c()).a(n.u)))));
+         fcy.this.x.a($$0x -> this.e.a(eua.a(tm.a("selectWorld.targetFolder", tm.b($$0x.c()).a(n.u)))));
          fcy.this.c(this.e);
          $$0.a(evv.a(fcy.this.i, this.e, fcy.q), $$0.b().b());
          esx<fdh.a> $$2 = $$0.a(esx.<fdh.a>a($$0x -> $$0x.f).a(fdh.a.a, fdh.a.b, fdh.a.c).a(0, 0, 210, 20, fcy.p, ($$0x, $$1x) -> fcy.this.x.a($$1x)), $$1);
@@ -442,7 +442,7 @@ public class fcy extends eyk {
             $$2.i = !$$1x.l();
             $$2.a(eua.a($$1x.d().a()));
          });
-         esx<bgv> $$3 = $$0.a(esx.a(bgv::b).a(bgv.values()).a(0, 0, 210, 20, tl.c("options.difficulty"), ($$0x, $$1x) -> fcy.this.x.a($$1x)), $$1);
+         esx<bgv> $$3 = $$0.a(esx.a(bgv::b).a(bgv.values()).a(0, 0, 210, 20, tm.c("options.difficulty"), ($$0x, $$1x) -> fcy.this.x.a($$1x)), $$1);
          fcy.this.x.a($$1x -> {
             $$3.a(fcy.this.x.e());
             $$3.i = !fcy.this.x.f();
@@ -460,9 +460,9 @@ public class fcy extends eyk {
    }
 
    class c extends eup {
-      private static final tl c = tl.c("createWorld.tab.more.title");
-      private static final tl d = tl.c("selectWorld.gameRules");
-      private static final tl e = tl.c("selectWorld.dataPacks");
+      private static final tm c = tm.c("createWorld.tab.more.title");
+      private static final tm d = tm.c("selectWorld.gameRules");
+      private static final tm e = tm.c("selectWorld.dataPacks");
 
       c() {
          super(c);
@@ -481,13 +481,13 @@ public class fcy extends eyk {
    }
 
    class d extends eup {
-      private static final tl c = tl.c("createWorld.tab.world.title");
-      private static final tl d = tl.c("generator.minecraft.amplified.info");
-      private static final tl e = tl.c("selectWorld.mapFeatures");
-      private static final tl f = tl.c("selectWorld.mapFeatures.info");
-      private static final tl g = tl.c("selectWorld.bonusItems");
-      private static final tl h = tl.c("selectWorld.enterSeed");
-      static final tl i = tl.c("selectWorld.seedInfo").a(n.i);
+      private static final tm c = tm.c("createWorld.tab.world.title");
+      private static final tm d = tm.c("generator.minecraft.amplified.info");
+      private static final tm e = tm.c("selectWorld.mapFeatures");
+      private static final tm f = tm.c("selectWorld.mapFeatures.info");
+      private static final tm g = tm.c("selectWorld.bonusItems");
+      private static final tm h = tm.c("selectWorld.enterSeed");
+      static final tm i = tm.c("selectWorld.seedInfo").a(n.i);
       private static final int j = 310;
       private final esz k;
       private final esq l;
@@ -496,7 +496,7 @@ public class fcy extends eyk {
          super(c);
          evy.b $$0 = this.a.a(10).b(8).d(2);
          esx<fdh.b> $$1 = $$0.a(
-            esx.<fdh.b>a(fdh.b::a).a(this.c()).a(fcy.d::a).a(0, 0, 150, 20, tl.c("selectWorld.mapType"), ($$0x, $$1x) -> fcy.this.x.a($$1x))
+            esx.<fdh.b>a(fdh.b::a).a(this.c()).a(fcy.d::a).a(0, 0, 150, 20, tm.c("selectWorld.mapType"), ($$0x, $$1x) -> fcy.this.x.a($$1x))
          );
          $$1.a(fcy.this.x.m());
          fcy.this.x.a($$1x -> {
@@ -510,12 +510,12 @@ public class fcy extends eyk {
 
             $$1.i = fcy.this.x.m().c() != null;
          });
-         this.l = $$0.a(esq.a(tl.c("selectWorld.customizeType"), $$0x -> this.b()).a());
+         this.l = $$0.a(esq.a(tm.c("selectWorld.customizeType"), $$0x -> this.b()).a());
          fcy.this.x.a($$0x -> this.l.i = !$$0x.l() && $$0x.n() != null);
-         this.k = new esz(fcy.this.i, 308, 20, tl.c("selectWorld.enterSeed")) {
+         this.k = new esz(fcy.this.i, 308, 20, tm.c("selectWorld.enterSeed")) {
             @Override
-            protected ty aF_() {
-               return super.aF_().b(tk.s).b(fcy.d.i);
+            protected tz aF_() {
+               return super.aF_().b(tl.s).b(fcy.d.i);
             }
          };
          this.k.c(i);
@@ -550,8 +550,8 @@ public class fcy extends eyk {
          };
       }
 
-      private static ty a(esx<fdh.b> $$0) {
-         return $$0.a().b() ? tk.a($$0.b(), d) : $$0.b();
+      private static tz a(esx<fdh.b> $$0) {
+         return $$0.a().b() ? tl.a($$0.b(), d) : $$0.b();
       }
    }
 }

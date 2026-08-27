@@ -18,9 +18,9 @@ public class cac extends cab implements cbj {
    @Nullable
    private UUID cc;
    @Nullable
-   private rq cd;
+   private rr cd;
    @Nullable
-   private qx ce;
+   private qy ce;
    private int cf;
 
    public cac(biu<? extends cac> $$0, cpv $$1) {
@@ -36,9 +36,9 @@ public class cac extends cab implements cbj {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
-      cbi.c.encodeStart(ri.a, this.go()).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
+      cbi.c.encodeStart(rj.a, this.go()).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
       if (this.ce != null) {
          $$0.a("Offers", this.ce);
       }
@@ -56,10 +56,10 @@ public class cac extends cab implements cbj {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("VillagerData", 10)) {
-         DataResult<cbi> $$1 = cbi.c.parse(new Dynamic(ri.a, $$0.c("VillagerData")));
+         DataResult<cbi> $$1 = cbi.c.parse(new Dynamic(rj.a, $$0.c("VillagerData")));
          $$1.resultOrPartial(b::error).ifPresent(this::a);
       }
 
@@ -82,7 +82,7 @@ public class cac extends cab implements cbj {
 
    @Override
    public void l() {
-      if (!this.dL().B && this.bw() && this.gn()) {
+      if (!this.dL().B && this.bv() && this.gn()) {
          int $$0 = this.gq();
          this.cb -= $$0;
          if (this.cb <= 0) {
@@ -103,7 +103,7 @@ public class cac extends cab implements cbj {
             }
 
             if (!this.dL().B) {
-               this.a($$0.cw(), this.ag.a(2401) + 3600);
+               this.a($$0.cv(), this.ag.a(2401) + 3600);
             }
 
             return bgy.a;
@@ -126,13 +126,13 @@ public class cac extends cab implements cbj {
    }
 
    public boolean gn() {
-      return this.am().b(c);
+      return this.al().b(c);
    }
 
    private void a(@Nullable UUID $$0, int $$1) {
       this.cc = $$0;
       this.cb = $$1;
-      this.am().b(c, true);
+      this.al().b(c, true);
       this.d(bif.r);
       this.b(new bid(bif.e, $$1, Math.min(this.dL().ai().a() - 1, 0)));
       this.dL().a(this, (byte)16);
@@ -141,8 +141,8 @@ public class cac extends cab implements cbj {
    @Override
    public void b(byte $$0) {
       if ($$0 == 16) {
-         if (!this.aT()) {
-            this.dL().a(this.dq(), this.du(), this.dw(), ape.Bt, this.db(), 1.0F + this.ag.i(), this.ag.i() * 0.7F + 0.3F, false);
+         if (!this.aS()) {
+            this.dL().a(this.dq(), this.du(), this.dw(), ape.Bt, this.da(), 1.0F + this.ag.i(), this.ag.i() * 0.7F + 0.3F, false);
          }
       } else {
          super.b($$0);
@@ -187,7 +187,7 @@ public class cac extends cab implements cbj {
       }
 
       $$1.b(new bid(bif.i, 200, 0));
-      if (!this.aT()) {
+      if (!this.aS()) {
          $$0.a(null, 1027, this.dl(), 0);
       }
    }
@@ -247,17 +247,17 @@ public class cac extends cab implements cbj {
       return cjf.b;
    }
 
-   public void c(qx $$0) {
+   public void c(qy $$0) {
       this.ce = $$0;
    }
 
-   public void a(rq $$0) {
+   public void a(rr $$0) {
       this.cd = $$0;
    }
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       this.a(this.go().a(cbm.a($$0.s(this.dl()))));
       return super.a($$0, $$1, $$2, $$3, $$4);
    }

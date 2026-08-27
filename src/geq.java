@@ -4,10 +4,10 @@ public class geq implements geu {
    private static final int c = 100;
    private static final int d = 20;
    private static final int e = -1;
-   private static final tl f = tl.a("tutorial.move.title", get.a("forward"), get.a("left"), get.a("back"), get.a("right"));
-   private static final tl g = tl.a("tutorial.move.description", get.a("jump"));
-   private static final tl h = tl.c("tutorial.look.title");
-   private static final tl i = tl.c("tutorial.look.description");
+   private static final tm f = tm.a("tutorial.move.title", get.a("forward"), get.a("left"), get.a("back"), get.a("right"));
+   private static final tm g = tm.a("tutorial.move.description", get.a("jump"));
+   private static final tm h = tm.c("tutorial.look.title");
+   private static final tm i = tm.c("tutorial.look.description");
    private final get j;
    private euz k;
    private euz l;

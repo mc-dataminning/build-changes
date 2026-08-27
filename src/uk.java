@@ -1,17 +1,91 @@
-public class uk extends Exception {
-   private final tl a;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   public uk(tl $$0) {
-      super($$0.getString());
-      this.a = $$0;
+public final class uk {
+   private static final String b = "#";
+   public static final Codec<uk> a = Codec.STRING.comapFlatMap($$0 -> {
+      uk $$1 = a($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "String is not a valid color name or hex color code");
+   }, uk::b);
+   private static final Map<n, uk> c = Stream.of(n.values())
+      .filter(n::e)
+      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new uk($$0.f(), $$0.g())));
+   private static final Map<String, uk> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
+   private final int e;
+   @Nullable
+   private final String f;
+
+   private uk(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public uk(tl $$0, Throwable $$1) {
-      super($$0.getString(), $$1);
-      this.a = $$0;
+   private uk(int $$0) {
+      this.e = $$0;
+      this.f = null;
    }
 
-   public tl b() {
-      return this.a;
+   public int a() {
+      return this.e;
+   }
+
+   public String b() {
+      return this.f != null ? this.f : this.c();
+   }
+
+   private String c() {
+      return String.format(Locale.ROOT, "#%06X", this.e);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         uk $$1 = (uk)$$0;
+         return this.e == $$1.e;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.e, this.f);
+   }
+
+   @Override
+   public String toString() {
+      return this.f != null ? this.f : this.c();
+   }
+
+   @Nullable
+   public static uk a(n $$0) {
+      return c.get($$0);
+   }
+
+   public static uk a(int $$0) {
+      return new uk($$0);
+   }
+
+   @Nullable
+   public static uk a(String $$0) {
+      if ($$0.startsWith("#")) {
+         try {
+            int $$1 = Integer.parseInt($$0.substring(1), 16);
+            return a($$1);
+         } catch (NumberFormatException var2) {
+            return null;
+         }
+      } else {
+         return d.get($$0);
+      }
    }
 }

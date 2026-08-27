@@ -124,7 +124,7 @@ public class aia {
       a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
       long $$40 = System.currentTimeMillis() - $$17;
       $$0.a(
-         () -> tl.b(
+         () -> tm.b(
                String.format(
                   Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
                )

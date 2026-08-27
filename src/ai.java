@@ -11,11 +11,11 @@ import java.util.function.Predicate;
 public record ai(String[][] b) {
    public static final ai a = new ai(new String[0][]);
 
-   public ai(so $$0) {
+   public ai(sp $$0) {
       this(b($$0));
    }
 
-   private static String[][] b(so $$0) {
+   private static String[][] b(sp $$0) {
       String[][] $$1 = new String[$$0.m()][];
 
       for (int $$2 = 0; $$2 < $$1.length; $$2++) {
@@ -29,7 +29,7 @@ public record ai(String[][] b) {
       return $$1;
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.b.length);
 
       for (String[] $$1 : this.b) {

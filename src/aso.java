@@ -4,11 +4,11 @@ public class aso {
    private static final char a = '�';
    private static final Optional<Object> b = Optional.of(asx.a);
 
-   private static boolean a(uh $$0, arl $$1, int $$2, char $$3) {
+   private static boolean a(ui $$0, arl $$1, int $$2, char $$3) {
       return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
    }
 
-   public static boolean a(String $$0, uh $$1, arl $$2) {
+   public static boolean a(String $$0, ui $$1, arl $$2) {
       int $$3 = $$0.length();
 
       for (int $$4 = 0; $$4 < $$3; $$4++) {
@@ -39,7 +39,7 @@ public class aso {
       return true;
    }
 
-   public static boolean b(String $$0, uh $$1, arl $$2) {
+   public static boolean b(String $$0, ui $$1, arl $$2) {
       int $$3 = $$0.length();
 
       for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
@@ -68,17 +68,17 @@ public class aso {
       return true;
    }
 
-   public static boolean c(String $$0, uh $$1, arl $$2) {
+   public static boolean c(String $$0, ui $$1, arl $$2) {
       return a($$0, 0, $$1, $$2);
    }
 
-   public static boolean a(String $$0, int $$1, uh $$2, arl $$3) {
+   public static boolean a(String $$0, int $$1, ui $$2, arl $$3) {
       return a($$0, $$1, $$2, $$2, $$3);
    }
 
-   public static boolean a(String $$0, int $$1, uh $$2, uh $$3, arl $$4) {
+   public static boolean a(String $$0, int $$1, ui $$2, ui $$3, arl $$4) {
       int $$5 = $$0.length();
-      uh $$6 = $$2;
+      ui $$6 = $$2;
 
       for (int $$7 = $$1; $$7 < $$5; $$7++) {
          char $$8 = $$0.charAt($$7);
@@ -120,22 +120,22 @@ public class aso {
       return true;
    }
 
-   public static boolean a(tp $$0, uh $$1, arl $$2) {
+   public static boolean a(tq $$0, ui $$1, arl $$2) {
       return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
    }
 
    public static String a(String $$0) {
       StringBuilder $$1 = new StringBuilder();
-      a($$0, uh.a, ($$1x, $$2, $$3) -> {
+      a($$0, ui.a, ($$1x, $$2, $$3) -> {
          $$1.appendCodePoint($$3);
          return true;
       });
       return $$1.toString();
    }
 
-   public static String a(tp $$0) {
+   public static String a(tq $$0) {
       StringBuilder $$1 = new StringBuilder();
-      a($$0, uh.a, ($$1x, $$2, $$3) -> {
+      a($$0, ui.a, ($$1x, $$2, $$3) -> {
          $$1.appendCodePoint($$3);
          return true;
       });

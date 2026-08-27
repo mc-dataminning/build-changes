@@ -14,7 +14,7 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
    private static final aef<Integer> ca = aei.a(bvh.class, aeh.b);
    private static final Predicate<bji> cb = new Predicate<bji>() {
       public boolean a(@Nullable bji $$0) {
-         return $$0 != null && bvh.ce.containsKey($$0.ah());
+         return $$0 != null && bvh.ce.containsKey($$0.ag());
       }
    };
    private static final cja cc = cji.re;
@@ -75,7 +75,7 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       this.a(ac.a(bvh.b.values(), $$0.D_()));
       if ($$3 == null) {
          $$3 = new bil.a(false);
@@ -147,15 +147,15 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
    private void gn() {
       this.bZ = this.bW;
       this.bY = this.bX;
-      this.bX = this.bX + (float)(!this.aB() && !this.bO() ? 4 : -1) * 0.3F;
+      this.bX = this.bX + (float)(!this.aA() && !this.bN() ? 4 : -1) * 0.3F;
       this.bX = arx.a(this.bX, 0.0F, 1.0F);
-      if (!this.aB() && this.cf < 1.0F) {
+      if (!this.aA() && this.cf < 1.0F) {
          this.cf = 1.0F;
       }
 
       this.cf *= 0.9F;
       ehn $$0 = this.do();
-      if (!this.aB() && $$0.d < 0.0) {
+      if (!this.aA() && $$0.d < 0.0) {
          this.f($$0.d(1.0, 0.6, 1.0));
       }
 
@@ -163,13 +163,13 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
    }
 
    public static boolean a(cpv $$0, biq $$1) {
-      if ($$1.bw() && !$$1.aT() && $$0.z.a(2) == 0) {
-         List<bji> $$2 = $$0.a(bji.class, $$1.cH().g(20.0), cb);
+      if ($$1.bv() && !$$1.aS() && $$0.z.a(2) == 0) {
+         List<bji> $$2 = $$0.a(bji.class, $$1.cG().g(20.0), cb);
          if (!$$2.isEmpty()) {
             bji $$3 = $$2.get($$0.z.a($$2.size()));
-            if (!$$3.aT()) {
-               apd $$4 = b($$3.ah());
-               $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), $$4, $$1.db(), 0.7F, a($$0.z));
+            if (!$$3.aS()) {
+               apd $$4 = b($$3.ag());
+               $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), $$4, $$1.da(), 0.7F, a($$0.z));
                return true;
             }
          }
@@ -188,8 +188,8 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
             $$2.h(1);
          }
 
-         if (!this.aT()) {
-            this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.qX, this.db(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
+         if (!this.aS()) {
+            this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.qX, this.da(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
          }
 
          if (!this.dL().B) {
@@ -208,7 +208,7 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
          }
 
          this.b(new bid(bif.s, 900));
-         if ($$0.f() || !this.cr()) {
+         if ($$0.f() || !this.cq()) {
             this.a(this.dM().a($$0), Float.MAX_VALUE);
          }
 
@@ -288,12 +288,12 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
    }
 
    @Override
-   protected boolean aS() {
+   protected boolean aR() {
       return this.aa > this.cg;
    }
 
    @Override
-   protected void aR() {
+   protected void aQ() {
       this.a(ape.qY, 0.15F, 1.0F);
       this.cg = this.aa + this.bX / 2.0F;
    }
@@ -308,12 +308,12 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.g;
    }
 
    @Override
-   public boolean bt() {
+   public boolean bs() {
       return true;
    }
 
@@ -352,25 +352,25 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Variant", this.gl().h);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a(bvh.b.a($$0.h("Variant")));
    }
 
    @Override
    public boolean gq() {
-      return !this.aB();
+      return !this.aA();
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.5F * this.cI()), (double)(this.dg() * 0.4F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.5F * this.cH()), (double)(this.df() * 0.4F));
    }
 
    @Override
@@ -387,7 +387,7 @@ public class bvh extends bvo implements bke<bvh.b>, bva {
       @Override
       protected ehn h() {
          ehn $$0 = null;
-         if (this.b.aY()) {
+         if (this.b.aX()) {
             $$0 = btz.a(this.b, 15, 15);
          }
 

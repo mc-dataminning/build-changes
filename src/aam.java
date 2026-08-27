@@ -1,4 +1,4 @@
-public class aam implements vd<ww> {
+public class aam implements ve<wx> {
    private final int a;
    private final int b;
    private final int c;
@@ -9,20 +9,20 @@ public class aam implements vd<ww> {
       this.c = $$2;
    }
 
-   public aam(so $$0) {
+   public aam(sp $$0) {
       this.a = $$0.readInt();
       this.b = $$0.readInt();
       this.c = $$0.readInt();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.p(this.a);
       $$0.p(this.b);
       $$0.p(this.c);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

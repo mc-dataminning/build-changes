@@ -12,7 +12,7 @@ public abstract class dvg extends dvm {
       this.a($$7);
    }
 
-   protected dvg(dvz $$0, qx $$1) {
+   protected dvg(dvz $$0, qy $$1) {
       super($$0, $$1);
       this.a = $$1.h("Width");
       this.b = $$1.h("Height");
@@ -21,7 +21,7 @@ public abstract class dvg extends dvm {
    }
 
    @Override
-   protected void a(dvy $$0, qx $$1) {
+   protected void a(dvy $$0, qy $$1) {
       $$1.a("Width", this.a);
       $$1.a("Height", this.b);
       $$1.a("Depth", this.c);

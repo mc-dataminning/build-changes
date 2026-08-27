@@ -40,11 +40,11 @@ public class dcm {
          return this;
       }
 
-      public rd a() {
-         rd $$0 = new rd();
+      public re a() {
+         re $$0 = new re();
 
          for (Pair<hg<dcm>, cht> $$1 : this.a) {
-            qx $$2 = new qx();
+            qy $$2 = new qy();
             $$2.a("Pattern", ((dcm)((hg)$$1.getFirst()).a()).a);
             $$2.a("Color", ((cht)$$1.getSecond()).a());
             $$0.add($$2);

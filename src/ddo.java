@@ -12,25 +12,25 @@ public class ddo extends dcv implements bhc {
    public float i;
    public float j;
    private static final asc k = asc.a();
-   private tl l;
+   private tm l;
 
    public ddo(gw $$0, dfj $$1) {
       super(dcx.m, $$0, $$1);
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
-      if (this.ad()) {
-         $$0.a("CustomName", tl.a.a(this.l));
+      if (this.ac()) {
+         $$0.a("CustomName", tm.a.a(this.l));
       }
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("CustomName", 8)) {
-         this.l = tl.a.a($$0.l("CustomName"));
+         this.l = tm.a.a($$0.l("CustomName"));
       }
    }
 
@@ -93,17 +93,17 @@ public class ddo extends dcv implements bhc {
    }
 
    @Override
-   public tl ac() {
-      return (tl)(this.l != null ? this.l : tl.c("container.enchant"));
+   public tm ab() {
+      return (tm)(this.l != null ? this.l : tm.c("container.enchant"));
    }
 
-   public void a(@Nullable tl $$0) {
+   public void a(@Nullable tm $$0) {
       this.l = $$0;
    }
 
    @Nullable
    @Override
-   public tl ae() {
+   public tm ad() {
       return this.l;
    }
 }

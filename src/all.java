@@ -2,9 +2,9 @@ import net.minecraft.server.MinecraftServer;
 
 public class all implements add {
    private final MinecraftServer a;
-   private final sm b;
+   private final sn b;
 
-   public all(MinecraftServer $$0, sm $$1) {
+   public all(MinecraftServer $$0, sn $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -20,7 +20,7 @@ public class all implements add {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
    }
 
    @Override

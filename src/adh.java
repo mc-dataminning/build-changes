@@ -1,18 +1,18 @@
 import com.mojang.authlib.GameProfile;
 
-public class adh implements vd<adf> {
+public class adh implements ve<adf> {
    private final GameProfile a;
 
    public adh(GameProfile $$0) {
       this.a = $$0;
    }
 
-   public adh(so $$0) {
+   public adh(sp $$0) {
       this.a = $$0.z();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
    }
 
@@ -25,7 +25,7 @@ public class adh implements vd<adf> {
    }
 
    @Override
-   public sn c() {
-      return sn.e;
+   public so c() {
+      return so.e;
    }
 }

@@ -4,9 +4,9 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class agq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.b("Source is not a mob"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.b("Path not found"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.b("Target not reached"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.b("Target not reached"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -27,7 +27,7 @@ public class agq {
          } else if (!$$5.j()) {
             throw c.create();
          } else {
-            $$0.a(() -> tl.b("Made path"), true);
+            $$0.a(() -> tm.b("Made path"), true);
             return 1;
          }
       }

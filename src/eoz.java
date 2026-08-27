@@ -8,19 +8,19 @@ import org.slf4j.Logger;
 
 public class eoz extends gfb {
    static final Logger a = LogUtils.getLogger();
-   private static final tl b = tl.c("mco.configure.world.subscription.title");
-   private static final tl c = tl.c("mco.configure.world.subscription.start");
-   private static final tl y = tl.c("mco.configure.world.subscription.timeleft");
-   private static final tl z = tl.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final tl A = tl.c("mco.configure.world.subscription.expired");
-   private static final tl B = tl.c("mco.configure.world.subscription.less_than_a_day");
-   private static final tl C = tl.c("mco.configure.world.subscription.unknown");
-   private static final tl D = tl.c("mco.configure.world.subscription.recurring.info");
+   private static final tm b = tm.c("mco.configure.world.subscription.title");
+   private static final tm c = tm.c("mco.configure.world.subscription.start");
+   private static final tm y = tm.c("mco.configure.world.subscription.timeleft");
+   private static final tm z = tm.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final tm A = tm.c("mco.configure.world.subscription.expired");
+   private static final tm B = tm.c("mco.configure.world.subscription.less_than_a_day");
+   private static final tm C = tm.c("mco.configure.world.subscription.unknown");
+   private static final tm D = tm.c("mco.configure.world.subscription.recurring.info");
    private final eyk E;
    final emw F;
    final eyk G;
-   private tl H = C;
-   private tl I = C;
+   private tm H = C;
+   private tm I = C;
    @Nullable
    private enj.a J;
 
@@ -34,27 +34,27 @@ public class eoz extends gfb {
    @Override
    public void aI_() {
       this.a(this.F.a);
-      this.d(esq.a(tl.c("mco.configure.world.subscription.extend"), $$0 -> {
+      this.d(esq.a(tm.c("mco.configure.world.subscription.extend"), $$0 -> {
          String $$1 = aqv.a(this.F.b, this.f.V().b());
          this.f.o.a($$1);
          ac.i().a($$1);
       }).a(this.g / 2 - 100, h(6), 200, 20).a());
       if (this.F.j) {
-         this.d(esq.a(tl.c("mco.configure.world.delete.button"), $$0 -> {
-            tl $$1 = tl.c("mco.configure.world.delete.question.line1");
-            tl $$2 = tl.c("mco.configure.world.delete.question.line2");
+         this.d(esq.a(tm.c("mco.configure.world.delete.button"), $$0 -> {
+            tm $$1 = tm.c("mco.configure.world.delete.question.line1");
+            tm $$2 = tm.c("mco.configure.world.delete.question.line2");
             this.f.a(new eol(this::c, eol.a.a, $$1, $$2, true));
          }).a(this.g / 2 - 100, h(10), 200, 20).a());
       } else {
          this.d(new eta(this.g / 2 - 100, h(8), 200, 46, D, this.i).a(-6250336));
       }
 
-      this.d(esq.a(tk.k, $$0 -> this.f.a(this.E)).a(this.g / 2 - 100, h(12), 200, 20).a());
+      this.d(esq.a(tl.k, $$0 -> this.f.a(this.E)).a(this.g / 2 - 100, h(12), 200, 20).a());
    }
 
    @Override
-   public tl g() {
-      return tk.b(b, c, this.I, y, this.H);
+   public tm g() {
+      return tl.b(b, c, this.I, y, this.H);
    }
 
    private void c(boolean $$0) {
@@ -91,10 +91,10 @@ public class eoz extends gfb {
       }
    }
 
-   private static tl b(long $$0) {
+   private static tm b(long $$0) {
       Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
       $$1.setTimeInMillis($$0);
-      return tl.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+      return tm.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
    }
 
    @Override
@@ -123,7 +123,7 @@ public class eoz extends gfb {
       $$0.a(this.i, this.H, $$4, h(4), -1, false);
    }
 
-   private tl a(int $$0) {
+   private tm a(int $$0) {
       if ($$0 < 0 && this.F.j) {
          return A;
       } else if ($$0 <= 1) {
@@ -134,11 +134,11 @@ public class eoz extends gfb {
          boolean $$3 = $$1 > 0;
          boolean $$4 = $$2 > 0;
          if ($$3 && $$4) {
-            return tl.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+            return tm.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
          } else if ($$3) {
-            return tl.a("mco.configure.world.subscription.remaining.months", $$1);
+            return tm.a("mco.configure.world.subscription.remaining.months", $$1);
          } else {
-            return $$4 ? tl.a("mco.configure.world.subscription.remaining.days", $$2) : tl.h();
+            return $$4 ? tm.a("mco.configure.world.subscription.remaining.days", $$2) : tm.h();
          }
       }
    }

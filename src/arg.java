@@ -61,16 +61,16 @@ import org.joml.Vector3f;
 public class arg {
    public static final Codec<JsonElement> a = Codec.PASSTHROUGH
       .xmap($$0 -> (JsonElement)$$0.convert(JsonOps.INSTANCE).getValue(), $$0 -> new Dynamic(JsonOps.INSTANCE, $$0));
-   public static final Codec<tl> b = a(tl.a::a, tl.a::c);
-   public static final Codec<tl> c = Codec.STRING.flatXmap($$0 -> {
+   public static final Codec<tm> b = a(tm.a::a, tm.a::c);
+   public static final Codec<tm> c = Codec.STRING.flatXmap($$0 -> {
       try {
-         return DataResult.success(tl.a.a($$0));
+         return DataResult.success(tm.a.a($$0));
       } catch (JsonParseException var2) {
          return DataResult.error(var2::getMessage);
       }
    }, $$0 -> {
       try {
-         return DataResult.success(tl.a.a($$0));
+         return DataResult.success(tm.a.a($$0));
       } catch (IllegalArgumentException var2) {
          return DataResult.error(var2::getMessage);
       }

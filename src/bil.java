@@ -13,7 +13,7 @@ public abstract class bil extends bjp {
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if ($$3 == null) {
          $$3 = new bil.a(true);
       }
@@ -83,14 +83,14 @@ public abstract class bil extends bjp {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Age", this.h());
       $$0.a("ForcedAge", this.d);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.c_($$0.h("Age"));
       this.d = $$0.h("ForcedAge");
@@ -116,7 +116,7 @@ public abstract class bil extends bjp {
 
             this.e--;
          }
-      } else if (this.bw()) {
+      } else if (this.bv()) {
          int $$0 = this.h();
          if ($$0 < 0) {
             this.c_(++$$0);
@@ -127,8 +127,8 @@ public abstract class bil extends bjp {
    }
 
    protected void m() {
-      if (!this.m_() && this.bO() && this.cZ() instanceof cdn $$0 && !$$0.a((biq)this)) {
-         this.ab();
+      if (!this.m_() && this.bN() && this.cY() instanceof cdn $$0 && !$$0.a((biq)this)) {
+         this.aa();
       }
    }
 

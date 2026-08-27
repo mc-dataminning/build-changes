@@ -8,21 +8,21 @@ import javax.annotation.Nullable;
 
 public class yg {
    private static final int a = 2097152;
-   private final qx b;
+   private final qy b;
    private final byte[] c;
    private final List<yg.a> d;
 
    public yg(dhq $$0) {
-      this.b = new qx();
+      this.b = new qy();
 
       for (Entry<dks.a, dks> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
-            this.b.a($$1.getKey().a(), new re($$1.getValue().a()));
+            this.b.a($$1.getKey().a(), new rf($$1.getValue().a()));
          }
       }
 
       this.c = new byte[a($$0)];
-      a(new so(this.c()), $$0);
+      a(new sp(this.c()), $$0);
       this.d = Lists.newArrayList();
 
       for (Entry<gw, dcv> $$2 : $$0.G().entrySet()) {
@@ -30,7 +30,7 @@ public class yg {
       }
    }
 
-   public yg(so $$0, int $$1, int $$2) {
+   public yg(sp $$0, int $$1, int $$2) {
       this.b = $$0.p();
       if (this.b == null) {
          throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
@@ -46,8 +46,8 @@ public class yg {
       }
    }
 
-   public void a(so $$0) {
-      $$0.a((rq)this.b);
+   public void a(sp $$0) {
+      $$0.a((rr)this.b);
       $$0.c(this.c.length);
       $$0.c(this.c);
       $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
@@ -69,7 +69,7 @@ public class yg {
       return $$0;
    }
 
-   public static void a(so $$0, dhq $$1) {
+   public static void a(sp $$0, dhq $$1) {
       for (dhr $$2 : $$1.d()) {
          $$2.c($$0);
       }
@@ -92,11 +92,11 @@ public class yg {
       }
    }
 
-   public so a() {
-      return new so(Unpooled.wrappedBuffer(this.c));
+   public sp a() {
+      return new sp(Unpooled.wrappedBuffer(this.c));
    }
 
-   public qx b() {
+   public qy b() {
       return this.b;
    }
 
@@ -105,31 +105,31 @@ public class yg {
       final int b;
       final dcx<?> c;
       @Nullable
-      final qx d;
+      final qy d;
 
-      private a(int $$0, int $$1, dcx<?> $$2, @Nullable qx $$3) {
+      private a(int $$0, int $$1, dcx<?> $$2, @Nullable qy $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
          this.d = $$3;
       }
 
-      private a(so $$0) {
+      private a(sp $$0) {
          this.a = $$0.readByte();
          this.b = $$0.readShort();
          this.c = $$0.a(jd.l);
          this.d = $$0.p();
       }
 
-      void a(so $$0) {
+      void a(sp $$0) {
          $$0.k(this.a);
          $$0.l(this.b);
          $$0.a(jd.l, this.c);
-         $$0.a((rq)this.d);
+         $$0.a((rr)this.d);
       }
 
       static yg.a a(dcv $$0) {
-         qx $$1 = $$0.as_();
+         qy $$1 = $$0.as_();
          gw $$2 = $$0.p();
          int $$3 = hz.b($$2.u()) << 4 | hz.b($$2.w());
          return new yg.a($$3, $$2.v(), $$0.u(), $$1.g() ? null : $$1);
@@ -138,6 +138,6 @@ public class yg {
 
    @FunctionalInterface
    public interface b {
-      void accept(gw var1, dcx<?> var2, @Nullable qx var3);
+      void accept(gw var1, dcx<?> var2, @Nullable qy var3);
    }
 }

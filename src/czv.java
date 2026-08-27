@@ -81,7 +81,7 @@ public abstract class czv extends csi implements czw {
 
    private boolean b(cbu $$0, ded $$1, boolean $$2) {
       dee $$3 = $$1.a($$2);
-      return Arrays.stream($$3.b($$0.X())).allMatch($$0x -> $$0x.equals(tk.a) || $$0x.b() instanceof uq);
+      return Arrays.stream($$3.b($$0.W())).allMatch($$0x -> $$0x.equals(tl.a) || $$0x.b() instanceof ur);
    }
 
    public abstract float g(dfj var1);
@@ -111,13 +111,13 @@ public abstract class czv extends csi implements czw {
    }
 
    public void a(cbu $$0, ded $$1, boolean $$2) {
-      $$1.a($$0.cw());
+      $$1.a($$0.cv());
       $$0.a($$1, $$2);
    }
 
    private boolean a(cbu $$0, ded $$1) {
       UUID $$2 = $$1.v();
-      return $$2 != null && !$$2.equals($$0.cw());
+      return $$2 != null && !$$2.equals($$0.cv());
    }
 
    @Nullable

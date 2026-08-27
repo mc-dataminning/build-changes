@@ -25,7 +25,7 @@ public class iq extends is {
          return new iq($$2, $$4, $$3);
       }
 
-      public iq a(iw<iq> $$0, so $$1) {
+      public iq a(iw<iq> $$0, sp $$1) {
          Vector3f $$2 = is.b($$1);
          float $$3 = $$1.readFloat();
          Vector3f $$4 = is.b($$1);
@@ -48,7 +48,7 @@ public class iq extends is {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       super.a($$0);
       $$0.a(this.i.x());
       $$0.a(this.i.y());

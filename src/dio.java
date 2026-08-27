@@ -100,12 +100,12 @@ public class dio<R> implements AutoCloseable {
    }
 
    private void b(cpc $$0) {
-      Optional<qx> $$1 = this.c($$0).join();
-      aev<rq> $$2 = aev.a(ri.a, this.k);
+      Optional<qy> $$1 = this.c($$0).join();
+      aev<rr> $$2 = aev.a(rj.a, this.k);
       this.a($$0, $$2, $$1.orElse(null));
    }
 
-   private CompletableFuture<Optional<qx>> c(cpc $$0) {
+   private CompletableFuture<Optional<qy>> c(cpc $$0) {
       return this.d.a($$0).exceptionally($$1 -> {
          if ($$1 instanceof IOException $$2) {
             a.error("Error reading chunk {} data from disk", $$0, $$2);
@@ -144,11 +144,11 @@ public class dio<R> implements AutoCloseable {
    }
 
    private void d(cpc $$0) {
-      aev<rq> $$1 = aev.a(ri.a, this.k);
-      Dynamic<rq> $$2 = this.a($$0, $$1);
-      rq $$3 = (rq)$$2.getValue();
-      if ($$3 instanceof qx) {
-         this.d.a($$0, (qx)$$3);
+      aev<rr> $$1 = aev.a(rj.a, this.k);
+      Dynamic<rr> $$2 = this.a($$0, $$1);
+      rr $$3 = (rr)$$2.getValue();
+      if ($$3 instanceof qy) {
+         this.d.a($$0, (qy)$$3);
       } else {
          a.error("Expected compound tag, got {}", $$3);
       }

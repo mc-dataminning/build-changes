@@ -48,7 +48,7 @@ public abstract class bji extends bjg implements bkc {
    private biq ce;
    private int cf;
    @Nullable
-   private qx cg;
+   private qy cg;
    private gw ch = gw.b;
    private float ci = -1.0F;
 
@@ -88,7 +88,7 @@ public abstract class bji extends bjg implements bkc {
    public float a(eax $$0) {
       bji $$2;
       label17: {
-         if (this.da() instanceof bji $$1 && $$1.B()) {
+         if (this.cZ() instanceof bji $$1 && $$1.B()) {
             $$2 = $$1;
             break label17;
          }
@@ -120,7 +120,7 @@ public abstract class bji extends bjg implements bkc {
    }
 
    public bpe I() {
-      return this.da() instanceof bji $$0 ? $$0.I() : this.bL;
+      return this.cZ() instanceof bji $$0 ? $$0.I() : this.bL;
    }
 
    public bpc K() {
@@ -128,14 +128,14 @@ public abstract class bji extends bjg implements bkc {
    }
 
    public bsp L() {
-      return this.da() instanceof bji $$0 ? $$0.L() : this.bN;
+      return this.cZ() instanceof bji $$0 ? $$0.L() : this.bN;
    }
 
    @Nullable
    @Override
-   public bjg cO() {
-      biq $$0 = this.cR();
-      if (!this.fT() && $$0 instanceof bji $$1 && $$0.bR()) {
+   public bjg cN() {
+      biq $$0 = this.cQ();
+      if (!this.fT() && $$0 instanceof bji $$1 && $$0.bQ()) {
          return $$1;
       }
 
@@ -187,10 +187,10 @@ public abstract class bji extends bjg implements bkc {
    }
 
    @Override
-   public void ar() {
-      super.ar();
+   public void aq() {
+      super.aq();
       this.dL().ad().a("mobBaseTick");
-      if (this.bw() && this.ag.a(1000) < this.bI++) {
+      if (this.bv() && this.ag.a(1000) < this.bI++) {
          this.s();
          this.P();
       }
@@ -266,8 +266,8 @@ public abstract class bji extends bjg implements bkc {
    }
 
    protected void R() {
-      boolean $$0 = !(this.cO() instanceof bji);
-      boolean $$1 = !(this.cZ() instanceof cdn);
+      boolean $$0 = !(this.cN() instanceof bji);
+      boolean $$1 = !(this.cY() instanceof cdn);
       this.bO.a(bqb.a.a, $$0);
       this.bO.a(bqb.a.c, $$0 && $$1);
       this.bO.a(bqb.a.b, $$0);
@@ -285,14 +285,14 @@ public abstract class bji extends bjg implements bkc {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("CanPickUpLoot", this.fJ());
       $$0.a("PersistenceRequired", this.ca);
-      rd $$1 = new rd();
+      re $$1 = new re();
 
       for (cjf $$2 : this.bY) {
-         qx $$3 = new qx();
+         qy $$3 = new qy();
          if (!$$2.b()) {
             $$2.b($$3);
          }
@@ -301,10 +301,10 @@ public abstract class bji extends bjg implements bkc {
       }
 
       $$0.a("ArmorItems", $$1);
-      rd $$4 = new rd();
+      re $$4 = new re();
 
       for (cjf $$5 : this.bX) {
-         qx $$6 = new qx();
+         qy $$6 = new qy();
          if (!$$5.b()) {
             $$5.b($$6);
          }
@@ -313,24 +313,24 @@ public abstract class bji extends bjg implements bkc {
       }
 
       $$0.a("HandItems", $$4);
-      rd $$7 = new rd();
+      re $$7 = new re();
 
       for (float $$8 : this.bR) {
-         $$7.add(ra.a($$8));
+         $$7.add(rb.a($$8));
       }
 
       $$0.a("ArmorDropChances", $$7);
-      rd $$9 = new rd();
+      re $$9 = new re();
 
       for (float $$10 : this.bQ) {
-         $$9.add(ra.a($$10));
+         $$9.add(rb.a($$10));
       }
 
       $$0.a("HandDropChances", $$9);
       if (this.ce != null) {
-         qx $$11 = new qx();
+         qy $$11 = new qy();
          if (this.ce instanceof bjg) {
-            UUID $$12 = this.ce.cw();
+            UUID $$12 = this.ce.cv();
             $$11.a("UUID", $$12);
          } else if (this.ce instanceof byf) {
             gw $$13 = ((byf)this.ce).E();
@@ -358,7 +358,7 @@ public abstract class bji extends bjg implements bkc {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("CanPickUpLoot", 1)) {
          this.s($$0.q("CanPickUpLoot"));
@@ -366,7 +366,7 @@ public abstract class bji extends bjg implements bkc {
 
       this.ca = $$0.q("PersistenceRequired");
       if ($$0.b("ArmorItems", 9)) {
-         rd $$1 = $$0.c("ArmorItems", 10);
+         re $$1 = $$0.c("ArmorItems", 10);
 
          for (int $$2 = 0; $$2 < this.bY.size(); $$2++) {
             this.bY.set($$2, cjf.a($$1.a($$2)));
@@ -374,7 +374,7 @@ public abstract class bji extends bjg implements bkc {
       }
 
       if ($$0.b("HandItems", 9)) {
-         rd $$3 = $$0.c("HandItems", 10);
+         re $$3 = $$0.c("HandItems", 10);
 
          for (int $$4 = 0; $$4 < this.bX.size(); $$4++) {
             this.bX.set($$4, cjf.a($$3.a($$4)));
@@ -382,7 +382,7 @@ public abstract class bji extends bjg implements bkc {
       }
 
       if ($$0.b("ArmorDropChances", 9)) {
-         rd $$5 = $$0.c("ArmorDropChances", 5);
+         re $$5 = $$0.c("ArmorDropChances", 5);
 
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
             this.bR[$$6] = $$5.i($$6);
@@ -390,7 +390,7 @@ public abstract class bji extends bjg implements bkc {
       }
 
       if ($$0.b("HandDropChances", 9)) {
-         rd $$7 = $$0.c("HandDropChances", 5);
+         re $$7 = $$0.c("HandDropChances", 5);
 
          for (int $$8 = 0; $$8 < $$7.size(); $$8++) {
             this.bQ[$$8] = $$7.i($$8);
@@ -452,10 +452,10 @@ public abstract class bji extends bjg implements bkc {
    public void b_() {
       super.b_();
       this.dL().ad().a("looting");
-      if (!this.dL().B && this.fJ() && this.bw() && !this.ba && this.dL().X().b(cpr.c)) {
+      if (!this.dL().B && this.fJ() && this.bv() && !this.ba && this.dL().X().b(cpr.c)) {
          ib $$0 = this.T();
 
-         for (byn $$2 : this.dL().a(byn.class, this.cH().c((double)$$0.u(), (double)$$0.v(), (double)$$0.w()))) {
+         for (byn $$2 : this.dL().a(byn.class, this.cG().c((double)$$0.u(), (double)$$0.v(), (double)$$0.w()))) {
             if (!$$2.dG() && !$$2.q().b() && !$$2.y() && this.k($$2.q())) {
                this.b($$2);
             }
@@ -477,7 +477,7 @@ public abstract class bji extends bjg implements bkc {
          this.a($$0, $$2.L());
          $$1.h($$2.L());
          if ($$1.b()) {
-            $$0.al();
+            $$0.ak();
          }
       }
    }
@@ -599,31 +599,31 @@ public abstract class bji extends bjg implements bkc {
    }
 
    public boolean U() {
-      return this.bO();
+      return this.bN();
    }
 
-   protected boolean W() {
+   protected boolean V() {
       return false;
    }
 
    @Override
    public void dx() {
-      if (this.dL().ai() == bgv.a && this.W()) {
-         this.al();
+      if (this.dL().ai() == bgv.a && this.V()) {
+         this.ak();
       } else if (!this.fK() && !this.U()) {
          biq $$0 = this.dL().a(this, -1.0);
          if ($$0 != null) {
             double $$1 = $$0.f(this);
-            int $$2 = this.ah().f().f();
+            int $$2 = this.ag().f().f();
             int $$3 = $$2 * $$2;
             if ($$1 > (double)$$3 && this.h($$1)) {
-               this.al();
+               this.ak();
             }
 
-            int $$4 = this.ah().f().g();
+            int $$4 = this.ag().f().g();
             int $$5 = $$4 * $$4;
             if (this.bb > 600 && this.ag.a(800) == 0 && $$1 > (double)$$5 && this.h($$1)) {
-               this.al();
+               this.ak();
             } else if ($$1 < (double)$$5) {
                this.bb = 0;
             }
@@ -639,7 +639,7 @@ public abstract class bji extends bjg implements bkc {
       this.dL().ad().a("sensing");
       this.bW.a();
       this.dL().ad().c();
-      int $$0 = this.dL().n().ag() + this.ai();
+      int $$0 = this.dL().n().ag() + this.ah();
       if ($$0 % 2 != 0 && this.ah > 1) {
          this.dL().ad().a("targetSelector");
          this.bP.a(false);
@@ -660,7 +660,7 @@ public abstract class bji extends bjg implements bkc {
       this.bN.c();
       this.dL().ad().c();
       this.dL().ad().a("mob tick");
-      this.Y();
+      this.X();
       this.dL().ad().c();
       this.dL().ad().a("controls");
       this.dL().ad().a("move");
@@ -671,21 +671,21 @@ public abstract class bji extends bjg implements bkc {
       this.bM.b();
       this.dL().ad().c();
       this.dL().ad().c();
-      this.X();
+      this.W();
    }
 
-   protected void X() {
+   protected void W() {
       abc.a(this.dL(), this, this.bO);
    }
 
-   protected void Y() {
+   protected void X() {
    }
 
-   public int Z() {
+   public int Y() {
       return 40;
    }
 
-   public int aa() {
+   public int Z() {
       return 75;
    }
 
@@ -700,7 +700,7 @@ public abstract class bji extends bjg implements bkc {
       if ($$0 instanceof bjg $$5) {
          $$6 = $$5.du() - this.du();
       } else {
-         $$6 = ($$0.cH().b + $$0.cH().e) / 2.0 - this.du();
+         $$6 = ($$0.cG().b + $$0.cG().e) / 2.0 - this.du();
       }
 
       double $$8 = Math.sqrt($$3 * $$3 + $$4 * $$4);
@@ -733,7 +733,7 @@ public abstract class bji extends bjg implements bkc {
    }
 
    public boolean a(cpy $$0) {
-      return !$$0.d(this.cH()) && $$0.f(this);
+      return !$$0.d(this.cG()) && $$0.f(this);
    }
 
    public int fH() {
@@ -745,7 +745,7 @@ public abstract class bji extends bjg implements bkc {
    }
 
    @Override
-   public int cu() {
+   public int ct() {
       if (this.q() == null) {
          return 3;
       } else {
@@ -760,12 +760,12 @@ public abstract class bji extends bjg implements bkc {
    }
 
    @Override
-   public Iterable<cjf> bK() {
+   public Iterable<cjf> bJ() {
       return this.bX;
    }
 
    @Override
-   public Iterable<cjf> bL() {
+   public Iterable<cjf> bK() {
       return this.bY;
    }
 
@@ -938,7 +938,7 @@ public abstract class bji extends bjg implements bkc {
    }
 
    @Nullable
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       asc $$5 = $$0.D_();
       this.a(bkm.b).c(new bkk("Random spawn bonus", $$5.a(0.0, 0.11485000000000001), bkk.a.b));
       if ($$5.i() < 0.05F) {
@@ -984,7 +984,7 @@ public abstract class bji extends bjg implements bkc {
 
    @Override
    public final bgy a(cbu $$0, bgx $$1) {
-      if (!this.bw()) {
+      if (!this.bv()) {
          return bgy.d;
       } else if (this.fS() == $$0) {
          this.a(true, !$$0.fS().d);
@@ -1024,7 +1024,7 @@ public abstract class bji extends bjg implements bkc {
          if ($$2.d() instanceof ckk) {
             if (this.dL() instanceof akr) {
                ckk $$4 = (ckk)$$2.d();
-               Optional<bji> $$5 = $$4.a($$0, this, (biu<? extends bji>)this.ah(), (akr)this.dL(), this.dj(), $$2);
+               Optional<bji> $$5 = $$4.a($$0, this, (biu<? extends bji>)this.ag(), (akr)this.dL(), this.dj(), $$2);
                $$5.ifPresent($$1x -> this.a($$0, $$1x));
                return $$5.isPresent() ? bgy.a : bgy.d;
             } else {
@@ -1084,16 +1084,16 @@ public abstract class bji extends bjg implements bkc {
             $$2.v(this);
             $$2.a(this.m_());
             $$2.t(this.fT());
-            if (this.ad()) {
-               $$2.b(this.ae());
-               $$2.n(this.cB());
+            if (this.ac()) {
+               $$2.b(this.ad());
+               $$2.n(this.cA());
             }
 
             if (this.fK()) {
                $$2.fI();
             }
 
-            $$2.m(this.cr());
+            $$2.m(this.cq());
             if ($$1) {
                $$2.s(this.fJ());
 
@@ -1107,13 +1107,13 @@ public abstract class bji extends bjg implements bkc {
             }
 
             this.dL().b($$2);
-            if (this.bO()) {
-               biq $$5 = this.cZ();
-               this.ab();
+            if (this.bN()) {
+               biq $$5 = this.cY();
+               this.aa();
                $$2.a($$5, true);
             }
 
-            this.al();
+            this.ak();
             return $$2;
          }
       }
@@ -1125,7 +1125,7 @@ public abstract class bji extends bjg implements bkc {
       }
 
       if (this.ce != null) {
-         if (!this.bw() || !this.ce.bw()) {
+         if (!this.bv() || !this.ce.bv()) {
             this.a(true, true);
          }
       }
@@ -1169,8 +1169,8 @@ public abstract class bji extends bjg implements bkc {
          ((akr)this.dL()).k().b(this, new zz(this, this.ce));
       }
 
-      if (this.bO()) {
-         this.ab();
+      if (this.bN()) {
+         this.aa();
       }
    }
 
@@ -1199,7 +1199,7 @@ public abstract class bji extends bjg implements bkc {
                return;
             }
          } else if (this.cg.b("X", 99) && this.cg.b("Y", 99) && this.cg.b("Z", 99)) {
-            gw $$2 = rj.b(this.cg);
+            gw $$2 = rk.b(this.cg);
             this.b(byh.b(this.dL(), $$2), true);
             return;
          }
@@ -1212,8 +1212,8 @@ public abstract class bji extends bjg implements bkc {
    }
 
    @Override
-   public boolean cY() {
-      return super.cY() && !this.fT();
+   public boolean cX() {
+      return super.cX() && !this.fT();
    }
 
    public void t(boolean $$0) {
@@ -1256,14 +1256,14 @@ public abstract class bji extends bjg implements bkc {
    }
 
    protected ehi fW() {
-      biq $$0 = this.cZ();
+      biq $$0 = this.cY();
       ehi $$3;
       if ($$0 != null) {
-         ehi $$1 = $$0.cH();
-         ehi $$2 = this.cH();
+         ehi $$1 = $$0.cG();
+         ehi $$2 = this.cG();
          $$3 = new ehi(Math.min($$2.a, $$1.a), $$2.b, Math.min($$2.c, $$1.c), Math.max($$2.d, $$1.d), $$2.e, Math.max($$2.f, $$1.f));
       } else {
-         $$3 = this.cH();
+         $$3 = this.cG();
       }
 
       return $$3.c(bT, 0.0, bT);
@@ -1313,9 +1313,9 @@ public abstract class bji extends bjg implements bkc {
 
    protected boolean fX() {
       if (this.dL().N() && !this.dL().B) {
-         float $$0 = this.bn();
+         float $$0 = this.bm();
          gw $$1 = gw.a(this.dq(), this.du(), this.dw());
-         boolean $$2 = this.ba() || this.aA || this.aB;
+         boolean $$2 = this.aZ() || this.aA || this.aB;
          if ($$0 > 0.5F && this.ag.i() * 30.0F < ($$0 - 0.4F) * 2.0F && !$$2 && this.dL().g($$1)) {
             return true;
          }
@@ -1343,10 +1343,10 @@ public abstract class bji extends bjg implements bkc {
    }
 
    @Override
-   protected void cs() {
-      super.cs();
+   protected void cr() {
+      super.cr();
       this.a(true, false);
-      this.bM().forEach($$0 -> {
+      this.bL().forEach($$0 -> {
          if (!$$0.b()) {
             $$0.f(0);
          }
@@ -1356,7 +1356,7 @@ public abstract class bji extends bjg implements bkc {
    @Nullable
    @Override
    public cjf dy() {
-      ckk $$0 = ckk.a(this.ah());
+      ckk $$0 = ckk.a(this.ag());
       return $$0 == null ? null : new cjf($$0);
    }
 }

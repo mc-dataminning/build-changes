@@ -69,7 +69,7 @@ public class je {
    public static final aew<ht<cbm>> an = a("villager_type");
    public static final aew<ht<String>> ao = a("decorated_pot_patterns");
    public static final aew<ht<cqt>> ap = a("worldgen/biome");
-   public static final aew<ht<th>> aq = a("chat_type");
+   public static final aew<ht<ti>> aq = a("chat_type");
    public static final aew<ht<dmv<?>>> ar = a("worldgen/configured_carver");
    public static final aew<ht<dnj<?, ?>>> as = a("worldgen/configured_feature");
    public static final aew<ht<dkl>> at = a("worldgen/density_function");

@@ -1,12 +1,12 @@
 public class ecf extends RuntimeException {
-   private final tl a;
+   private final tm a;
 
-   public ecf(tl $$0) {
+   public ecf(tm $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
-   public tl a() {
+   public tm a() {
       return this.a;
    }
 }

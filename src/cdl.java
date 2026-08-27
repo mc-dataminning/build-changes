@@ -79,7 +79,7 @@ public abstract class cdl extends biq {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.c;
    }
 
@@ -99,7 +99,7 @@ public abstract class cdl extends biq {
    }
 
    @Override
-   public boolean bt() {
+   public boolean bs() {
       return true;
    }
 
@@ -115,7 +115,7 @@ public abstract class cdl extends biq {
 
    @Override
    public ehn b(bjg $$0) {
-      hc $$1 = this.cF();
+      hc $$1 = this.cE();
       if ($$1.o() == hc.a.b) {
          return super.b($$0);
       } else {
@@ -149,7 +149,7 @@ public abstract class cdl extends biq {
             }
          }
 
-         double $$14x = this.cH().e;
+         double $$14x = this.cG().e;
          $$4.b((double)$$3.u(), $$14x, (double)$$3.w());
          UnmodifiableIterator var22 = $$5.iterator();
 
@@ -177,14 +177,14 @@ public abstract class cdl extends biq {
       } else {
          this.d(-this.y());
          this.c(10);
-         this.bp();
+         this.bo();
          this.a(this.w() + $$1 * 10.0F);
          this.a(djt.o, $$0.d());
          boolean $$2 = $$0.d() instanceof cbu && ((cbu)$$0.d()).fS().d;
          if ($$2 || this.w() > 40.0F) {
-            this.bB();
-            if ($$2 && !this.ad()) {
-               this.al();
+            this.bA();
+            if ($$2 && !this.ac()) {
+               this.ak();
             } else {
                this.a($$0);
             }
@@ -195,17 +195,17 @@ public abstract class cdl extends biq {
    }
 
    @Override
-   protected float aK() {
+   protected float aJ() {
       dfj $$0 = this.dL().a_(this.dl());
-      return $$0.a(apt.N) ? 1.0F : super.aK();
+      return $$0.a(apt.N) ? 1.0F : super.aJ();
    }
 
    public void a(bho $$0) {
-      this.ak();
+      this.aj();
       if (this.dL().X().b(cpr.h)) {
          cjf $$1 = new cjf(this.q());
-         if (this.ad()) {
-            $$1.a(this.ae());
+         if (this.ac()) {
+            $$1.a(this.ad());
          }
 
          this.b($$1);
@@ -222,7 +222,7 @@ public abstract class cdl extends biq {
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return !this.dG();
    }
 
@@ -231,8 +231,8 @@ public abstract class cdl extends biq {
    }
 
    @Override
-   public hc cF() {
-      return this.j ? this.cE().g().h() : this.cE().h();
+   public hc cE() {
+      return this.j ? this.cD().g().h() : this.cD().h();
    }
 
    @Override
@@ -245,19 +245,19 @@ public abstract class cdl extends biq {
          this.a(this.w() - 1.0F);
       }
 
-      this.as();
-      this.bI();
+      this.ar();
+      this.bH();
       if (this.dL().B) {
          if (this.l > 0) {
             this.a(this.l, this.m, this.n, this.o, this.p, this.q);
             this.l--;
          } else {
-            this.aq();
+            this.ap();
             this.a(this.dB(), this.dD());
          }
       } else {
-         if (!this.aU()) {
-            double $$0 = this.aY() ? -0.005 : -0.04;
+         if (!this.aT()) {
+            double $$0 = this.aX() ? -0.005 : -0.04;
             this.f(this.do().b(0.0, $$0, 0.0));
          }
 
@@ -280,7 +280,7 @@ public abstract class cdl extends biq {
             this.t();
          }
 
-         this.aP();
+         this.aO();
          this.s(0.0F);
          double $$6 = this.K - this.dq();
          double $$7 = this.M - this.dw();
@@ -299,10 +299,10 @@ public abstract class cdl extends biq {
 
          this.a(this.dB(), this.dD());
          if (this.z() == cdl.a.a && this.do().i() > 0.01) {
-            List<biq> $$9 = this.dL().a(this, this.cH().c(0.2F, 0.0, 0.2F), bit.a(this));
+            List<biq> $$9 = this.dL().a(this, this.cG().c(0.2F, 0.0, 0.2F), bit.a(this));
             if (!$$9.isEmpty()) {
                for (biq $$10 : $$9) {
-                  if (!($$10 instanceof cbu) && !($$10 instanceof bvd) && !($$10 instanceof cdl) && !this.bP() && !$$10.bO()) {
+                  if (!($$10 instanceof cbu) && !($$10 instanceof bvd) && !($$10 instanceof cdl) && !this.bO() && !$$10.bN()) {
                      $$10.n(this);
                   } else {
                      $$10.g(this);
@@ -310,16 +310,16 @@ public abstract class cdl extends biq {
                }
             }
          } else {
-            for (biq $$11 : this.dL().a_(this, this.cH().c(0.2F, 0.0, 0.2F))) {
-               if (!this.x($$11) && $$11.bt() && $$11 instanceof cdl) {
+            for (biq $$11 : this.dL().a_(this, this.cG().c(0.2F, 0.0, 0.2F))) {
+               if (!this.x($$11) && $$11.bs() && $$11 instanceof cdl) {
                   $$11.g(this);
                }
             }
          }
 
-         this.bf();
-         if (this.bm()) {
-            this.ax();
+         this.be();
+         if (this.bl()) {
+            this.aw();
             this.ab *= 0.5F;
          }
 
@@ -328,7 +328,7 @@ public abstract class cdl extends biq {
    }
 
    protected double s() {
-      return (this.aY() ? 4.0 : 8.0) / 20.0;
+      return (this.aX() ? 4.0 : 8.0) / 20.0;
    }
 
    public void a(int $$0, int $$1, int $$2, boolean $$3) {
@@ -338,12 +338,12 @@ public abstract class cdl extends biq {
       double $$0 = this.s();
       ehn $$1 = this.do();
       this.o(arx.a($$1.c, -$$0, $$0), $$1.d, arx.a($$1.e, -$$0, $$0));
-      if (this.aB()) {
+      if (this.aA()) {
          this.f(this.do().a(0.5));
       }
 
       this.a(bjm.a, this.do());
-      if (!this.aB()) {
+      if (!this.aA()) {
          this.f(this.do().a(0.95));
       }
    }
@@ -364,7 +364,7 @@ public abstract class cdl extends biq {
       }
 
       double $$8 = 0.0078125;
-      if (this.aY()) {
+      if (this.aX()) {
          $$8 *= 0.2;
       }
 
@@ -404,7 +404,7 @@ public abstract class cdl extends biq {
       double $$18 = Math.min(2.0, $$9.h());
       $$9 = new ehn($$18 * $$14 / $$16, $$9.d, $$18 * $$15 / $$16);
       this.f($$9);
-      biq $$19 = this.cR();
+      biq $$19 = this.cQ();
       if ($$19 instanceof cbu) {
          ehn $$20 = $$19.do();
          double $$21 = $$20.i();
@@ -444,7 +444,7 @@ public abstract class cdl extends biq {
       $$2 = $$24 + $$14 * $$28;
       $$4 = $$25 + $$15 * $$28;
       this.e($$2, $$3, $$4);
-      double $$33 = this.bP() ? 0.75 : 1.0;
+      double $$33 = this.bO() ? 0.75 : 1.0;
       double $$34 = this.s();
       $$9 = this.do();
       this.a(bjm.a, new ehn(arx.a($$33 * $$9.c, -$$34, $$34), 0.0, arx.a($$33 * $$9.e, -$$34, $$34)));
@@ -509,7 +509,7 @@ public abstract class cdl extends biq {
    }
 
    @Override
-   public boolean cf() {
+   public boolean ce() {
       return this.k;
    }
 
@@ -518,10 +518,10 @@ public abstract class cdl extends biq {
    }
 
    protected void v() {
-      double $$0 = this.bP() ? 0.997 : 0.96;
+      double $$0 = this.bO() ? 0.997 : 0.96;
       ehn $$1 = this.do();
       $$1 = $$1.d($$0, 0.0, $$0);
-      if (this.aY()) {
+      if (this.aX()) {
          $$1 = $$1.a(0.95F);
       }
 
@@ -619,23 +619,23 @@ public abstract class cdl extends biq {
 
    @Override
    public ehi g_() {
-      ehi $$0 = this.cH();
+      ehi $$0 = this.cG();
       return this.F() ? $$0.g((double)Math.abs(this.C()) / 16.0) : $$0;
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       if ($$0.q("CustomDisplayTile")) {
-         this.c(rj.a(this.dL().a(je.e), $$0.p("DisplayState")));
+         this.c(rk.a(this.dL().a(je.e), $$0.p("DisplayState")));
          this.m($$0.h("DisplayOffset"));
       }
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       if (this.F()) {
          $$0.a("CustomDisplayTile", true);
-         $$0.a("DisplayState", rj.a(this.A()));
+         $$0.a("DisplayState", rk.a(this.A()));
          $$0.a("DisplayOffset", this.C());
       }
    }
@@ -714,27 +714,27 @@ public abstract class cdl extends biq {
 
    @Override
    public double n_() {
-      return this.m;
+      return this.l > 0 ? this.m : this.dq();
    }
 
    @Override
    public double K_() {
-      return this.n;
+      return this.l > 0 ? this.n : this.ds();
    }
 
    @Override
    public double L_() {
-      return this.o;
+      return this.l > 0 ? this.o : this.dw();
    }
 
    @Override
    public float d_() {
-      return (float)this.q;
+      return this.l > 0 ? (float)this.q : this.dD();
    }
 
    @Override
    public float o_() {
-      return (float)this.p;
+      return this.l > 0 ? (float)this.p : this.dB();
    }
 
    @Override
@@ -770,7 +770,7 @@ public abstract class cdl extends biq {
    public abstract cdl.a z();
 
    public dfj A() {
-      return !this.F() ? this.B() : csv.a(this.am().b(f));
+      return !this.F() ? this.B() : csv.a(this.al().b(f));
    }
 
    public dfj B() {
@@ -778,7 +778,7 @@ public abstract class cdl extends biq {
    }
 
    public int C() {
-      return !this.F() ? this.E() : this.am().b(g);
+      return !this.F() ? this.E() : this.al().b(g);
    }
 
    public int E() {
@@ -786,21 +786,21 @@ public abstract class cdl extends biq {
    }
 
    public void c(dfj $$0) {
-      this.am().b(f, csv.i($$0));
+      this.al().b(f, csv.i($$0));
       this.a(true);
    }
 
    public void m(int $$0) {
-      this.am().b(g, $$0);
+      this.al().b(g, $$0);
       this.a(true);
    }
 
    public boolean F() {
-      return this.am().b(h);
+      return this.al().b(h);
    }
 
    public void a(boolean $$0) {
-      this.am().b(h, $$0);
+      this.al().b(h, $$0);
    }
 
    @Override

@@ -1,201 +1,134 @@
-import com.google.common.base.Stopwatch;
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import java.net.Proxy;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public class qc extends MinecraftServer {
-   private static final Logger n = LogUtils.getLogger();
-   private static final int o = 20;
-   private static final afp p = new afp(null, ServicesKeySet.EMPTY, null, null);
-   private final List<ps> q;
-   private final gw r;
-   private static final cpr s = ac.a(new cpr(), $$0 -> {
-      $$0.a(cpr.e).a(false, null);
-      $$0.a(cpr.u).a(false, null);
-   });
-   private static final dlq t = new dlq(0L, false, false);
-   @Nullable
-   private qi u;
+public class qc {
+   final py a;
+   private final List<pv> b = Lists.newArrayList();
+   private long c;
 
-   public static qc a(Thread $$0, ecg.c $$1, anf $$2, Collection<ps> $$3, gw $$4) {
-      if ($$3.isEmpty()) {
-         throw new IllegalArgumentException("No test batches were given!");
-      } else {
-         $$2.a();
-         cqo $$5 = new cqo(new cpj(new ArrayList<>($$2.b()), List.of()), cee.d.a());
-         cpz $$6 = new cpz("Test Level", cps.b, false, bgv.c, true, s, $$5);
-         afr.d $$7 = new afr.d($$2, $$5, false, true);
-         afr.c $$8 = new afr.c($$7, du.a.b, 4);
-
-         try {
-            n.debug("Starting resource loading");
-            Stopwatch $$9 = Stopwatch.createStarted();
-            afs $$10 = ac.<afs>c($$2x -> afr.a($$8, $$1xx -> {
-                  ht<dit> $$2xx = new ho<>(je.aI, Lifecycle.stable()).l();
-                  dln.b $$3x = $$1xx.c().d(je.aF).f(duy.b).a().a().a($$2xx);
-                  return new afr.b<>(new eck($$6, t, $$3x.d(), $$3x.a()), $$3x.b());
-               }, afs::new, ac.f(), $$2x)).get();
-            $$9.stop();
-            n.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
-            return new qc($$0, $$1, $$2, $$10, $$3, $$4);
-         } catch (Exception var11) {
-            n.warn("Failed to load vanilla datapack, bit oops", var11);
-            System.exit(-1);
-            throw new IllegalStateException();
-         }
-      }
+   qc(py $$0) {
+      this.a = $$0;
+      this.c = $$0.p();
    }
 
-   private qc(Thread $$0, ecg.c $$1, anf $$2, afs $$3, Collection<ps> $$4, gw $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, atb.a(), p, alc::new);
-      this.q = Lists.newArrayList($$4);
-      this.r = $$5;
+   public qc a(Runnable $$0) {
+      this.b.add(pv.a($$0));
+      return this;
    }
 
-   @Override
-   public boolean e() {
-      this.a(new aoh(this, this.aV(), this.i, 1) {
+   public qc a(long $$0, Runnable $$1) {
+      this.b.add(pv.a($$0, $$1));
+      return this;
+   }
+
+   public qc a(int $$0) {
+      return this.a($$0, () -> {
       });
-      this.s_();
-      akr $$0 = this.D();
-      $$0.a(this.r, 0.0F);
-      int $$1 = 20000000;
-      $$0.a(20000000, 20000000, false, false);
-      n.info("Started game test server");
-      return true;
    }
 
-   @Override
-   public void a(BooleanSupplier $$0) {
-      super.a($$0);
-      akr $$1 = this.D();
-      if (!this.bf()) {
-         this.b($$1);
-      }
+   public qc b(Runnable $$0) {
+      this.b.add(pv.a(() -> this.c($$0)));
+      return this;
+   }
 
-      if ($$1.V() % 20L == 0L) {
-         n.info(this.u.j());
-      }
-
-      if (this.u.i()) {
-         this.a(false);
-         n.info(this.u.j());
-         qf.a();
-         n.info("========= {} GAME TESTS COMPLETE ======================", this.u.h());
-         if (this.u.d()) {
-            n.info("{} required tests failed :(", this.u.a());
-            this.u.f().forEach($$0x -> n.info("   - {}", $$0x.c()));
+   public qc a(int $$0, Runnable $$1) {
+      this.b.add(pv.a(() -> {
+         if (this.a.p() < this.c + (long)$$0) {
+            throw new pr("Waiting");
          } else {
-            n.info("All {} required tests passed :)", this.u.h());
+            this.c($$1);
          }
-
-         if (this.u.e()) {
-            n.info("{} optional tests failed", this.u.b());
-            this.u.g().forEach($$0x -> n.info("   - {}", $$0x.c()));
-         }
-
-         n.info("====================================================");
-      }
+      }));
+      return this;
    }
 
-   @Override
-   public void u_() {
-      this.bp();
+   public qc b(int $$0, Runnable $$1) {
+      this.b.add(pv.a(() -> {
+         if (this.a.p() < this.c + (long)$$0) {
+            this.c($$1);
+            throw new pr("Waiting");
+         }
+      }));
+      return this;
    }
 
-   @Override
-   public ab a(ab $$0) {
-      $$0.a("Type", "Game test server");
+   public void a() {
+      this.b.add(pv.a(this.a::m));
+   }
+
+   public void a(Supplier<Exception> $$0) {
+      this.b.add(pv.a(() -> this.a.a($$0.get())));
+   }
+
+   public qc.a b() {
+      qc.a $$0 = new qc.a();
+      this.b.add(pv.a(() -> $$0.a(this.a.p())));
       return $$0;
    }
 
-   @Override
-   public void g() {
-      super.g();
-      n.info("Game test server shutting down");
-      System.exit(this.u.a());
+   public void a(long $$0) {
+      try {
+         this.c($$0);
+      } catch (pr var4) {
+      }
    }
 
-   @Override
-   public void a(o $$0) {
-      super.a($$0);
-      n.error("Game test server crashed\n{}", $$0.e());
-      System.exit(1);
+   public void b(long $$0) {
+      try {
+         this.c($$0);
+      } catch (pr var4) {
+         this.a.a(var4);
+      }
    }
 
-   private void b(akr $$0) {
-      Collection<px> $$1 = qa.a(this.q, new gw(0, -60, 0), czh.a, $$0, qd.a, 8);
-      this.u = new qi($$1);
-      n.info("{} tests are now running!", this.u.h());
+   private void c(Runnable $$0) {
+      try {
+         $$0.run();
+      } catch (pr var3) {
+         this.a.a(var3);
+      }
    }
 
-   private boolean bf() {
-      return this.u != null;
+   private void c(long $$0) {
+      Iterator<pv> $$1 = this.b.iterator();
+
+      while ($$1.hasNext()) {
+         pv $$2 = $$1.next();
+         $$2.b.run();
+         $$1.remove();
+         long $$3 = $$0 - this.c;
+         long $$4 = this.c;
+         this.c = $$0;
+         if ($$2.a != null && $$2.a != $$3) {
+            this.a.a(new pr("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
+            break;
+         }
+      }
    }
 
-   @Override
-   public boolean h() {
-      return false;
-   }
+   public class a {
+      private static final long b = -1L;
+      private long c = -1L;
 
-   @Override
-   public int i() {
-      return 0;
-   }
+      void a(long $$0) {
+         if (this.c != -1L) {
+            throw new IllegalStateException("Condition already triggered at " + this.c);
+         } else {
+            this.c = $$0;
+         }
+      }
 
-   @Override
-   public int j() {
-      return 4;
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public boolean l() {
-      return false;
-   }
-
-   @Override
-   public int m() {
-      return 0;
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public boolean o() {
-      return true;
-   }
-
-   @Override
-   public boolean p() {
-      return false;
-   }
-
-   @Override
-   public boolean T_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return false;
+      public void a() {
+         long $$0 = qc.this.a.p();
+         if (this.c != $$0) {
+            if (this.c == -1L) {
+               throw new pr("Condition not triggered (t=" + $$0 + ")");
+            } else {
+               throw new pr("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
+            }
+         }
+      }
    }
 }

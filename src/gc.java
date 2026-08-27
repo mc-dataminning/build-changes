@@ -108,7 +108,7 @@ public class gc {
    }
 
    public List<? extends biq> b(dt $$0) throws CommandSyntaxException {
-      return this.f($$0).stream().filter($$1 -> $$1.ah().a($$0.w())).toList();
+      return this.f($$0).stream().filter($$1 -> $$1.ag().a($$0.w())).toList();
    }
 
    private List<? extends biq> f(dt $$0) throws CommandSyntaxException {
@@ -216,7 +216,7 @@ public class gc {
       Predicate<biq> $$1 = this.g;
       if (this.j != null) {
          ehi $$2 = this.j.c($$0);
-         $$1 = $$1.and($$1x -> $$2.c($$1x.cH()));
+         $$1 = $$1.and($$1x -> $$2.c($$1x.cG()));
       }
 
       if (!this.h.c()) {
@@ -234,7 +234,7 @@ public class gc {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static tl a(List<? extends biq> $$0) {
-      return tn.b($$0, biq::N_);
+   public static tm a(List<? extends biq> $$0) {
+      return to.b($$0, biq::N_);
    }
 }

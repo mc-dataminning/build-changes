@@ -12,8 +12,8 @@ public class aof extends aoc<String> {
    }
 
    @Override
-   public tl e() {
-      return tl.b(String.valueOf(this.g()));
+   public tm e() {
+      return tm.b(String.valueOf(this.g()));
    }
 
    public aof(JsonObject $$0) {

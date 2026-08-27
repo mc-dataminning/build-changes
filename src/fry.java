@@ -6,7 +6,7 @@ import java.util.Map;
 public class fry implements frn.a {
    private final eqv a;
    private final Map<aew<cpv>, Map<String, dva>> b = Maps.newIdentityHashMap();
-   private final Map<aew<cpv>, Map<String, wk.a>> c = Maps.newIdentityHashMap();
+   private final Map<aew<cpv>, Map<String, wl.a>> c = Maps.newIdentityHashMap();
    private static final int d = 500;
 
    public fry(eqv $$0) {
@@ -43,9 +43,9 @@ public class fry implements frn.a {
          }
       }
 
-      Map<String, wk.a> $$10 = this.c.get($$6);
+      Map<String, wl.a> $$10 = this.c.get($$6);
       if ($$10 != null) {
-         for (wk.a $$11 : $$10.values()) {
+         for (wl.a $$11 : $$10.values()) {
             dva $$12 = $$11.a();
             if ($$7.a($$12.f(), 500.0)) {
                if ($$11.b()) {
@@ -90,11 +90,11 @@ public class fry implements frn.a {
       }
    }
 
-   public void a(dva $$0, List<wk.a> $$1, aew<cpv> $$2) {
+   public void a(dva $$0, List<wl.a> $$1, aew<cpv> $$2) {
       this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, wk.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+      Map<String, wl.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
 
-      for (wk.a $$4 : $$1) {
+      for (wl.a $$4 : $$1) {
          $$3.put($$4.a().toString(), $$4);
       }
    }

@@ -5,7 +5,7 @@ public class ezq extends ezi<ceq> {
    private static final aex A = new aex("textures/gui/container/brewing_stand.png");
    private static final int[] B = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-   public ezq(ceq $$0, cbt $$1, tl $$2) {
+   public ezq(ceq $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
    }
 

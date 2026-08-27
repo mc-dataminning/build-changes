@@ -89,9 +89,9 @@ public class cgy extends cja {
 
    private dfj a(gw $$0, cpv $$1, cjf $$2, dfj $$3) {
       dfj $$4 = $$3;
-      qx $$5 = $$2.v();
+      qy $$5 = $$2.v();
       if ($$5 != null) {
-         qx $$6 = $$5.p("BlockStateTag");
+         qy $$6 = $$5.p("BlockStateTag");
          dfk<csv, dfj> $$7 = $$3.b().l();
 
          for (String $$8 : $$6.e()) {
@@ -133,7 +133,7 @@ public class cgy extends cja {
       if ($$4 == null) {
          return false;
       } else {
-         qx $$5 = a($$3);
+         qy $$5 = a($$3);
          if ($$5 != null) {
             dcv $$6 = $$0.c_($$2);
             if ($$6 != null) {
@@ -141,8 +141,8 @@ public class cgy extends cja {
                   return false;
                }
 
-               qx $$7 = $$6.o();
-               qx $$8 = $$7.h();
+               qy $$7 = $$6.o();
+               qy $$8 = $$7.h();
                $$7.a($$5);
                if (!$$7.equals($$8)) {
                   $$6.a($$7);
@@ -162,7 +162,7 @@ public class cgy extends cja {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.e().a($$0, $$1, $$2, $$3);
    }
@@ -184,20 +184,20 @@ public class cgy extends cja {
    public void a(byn $$0) {
       if (this.c instanceof czu) {
          cjf $$1 = $$0.q();
-         qx $$2 = a($$1);
+         qy $$2 = a($$1);
          if ($$2 != null && $$2.b("Items", 9)) {
-            rd $$3 = $$2.c("Items", 10);
-            cjh.a($$0, $$3.stream().map(qx.class::cast).map(cjf::a));
+            re $$3 = $$2.c("Items", 10);
+            cjh.a($$0, $$3.stream().map(qy.class::cast).map(cjf::a));
          }
       }
    }
 
    @Nullable
-   public static qx a(cjf $$0) {
+   public static qy a(cjf $$0) {
       return $$0.b("BlockEntityTag");
    }
 
-   public static void a(cjf $$0, dcx<?> $$1, qx $$2) {
+   public static void a(cjf $$0, dcx<?> $$1, qy $$2) {
       if ($$2.g()) {
          $$0.c("BlockEntityTag");
       } else {

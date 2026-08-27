@@ -17,7 +17,7 @@ public abstract class dcv {
       this.e = $$2;
    }
 
-   public static gw c(qx $$0) {
+   public static gw c(qy $$0) {
       return new gw($$0.h("x"), $$0.h("y"), $$0.h("z"));
    }
 
@@ -34,31 +34,31 @@ public abstract class dcv {
       return this.o != null;
    }
 
-   public void a(qx $$0) {
+   public void a(qy $$0) {
    }
 
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
    }
 
-   public final qx m() {
-      qx $$0 = this.o();
+   public final qy m() {
+      qy $$0 = this.o();
       this.e($$0);
       return $$0;
    }
 
-   public final qx n() {
-      qx $$0 = this.o();
+   public final qy n() {
+      qy $$0 = this.o();
       this.d($$0);
       return $$0;
    }
 
-   public final qx o() {
-      qx $$0 = new qx();
+   public final qy o() {
+      qy $$0 = new qy();
       this.b($$0);
       return $$0;
    }
 
-   private void d(qx $$0) {
+   private void d(qy $$0) {
       aex $$1 = dcx.a(this.u());
       if ($$1 == null) {
          throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
@@ -67,7 +67,7 @@ public abstract class dcv {
       }
    }
 
-   public static void a(qx $$0, dcx<?> $$1) {
+   public static void a(qy $$0, dcx<?> $$1) {
       $$0.a("id", dcx.a($$1).toString());
    }
 
@@ -75,7 +75,7 @@ public abstract class dcv {
       cgy.a($$0, this.u(), this.o());
    }
 
-   private void e(qx $$0) {
+   private void e(qy $$0) {
       this.d($$0);
       $$0.a("x", this.p.u());
       $$0.a("y", this.p.v());
@@ -83,7 +83,7 @@ public abstract class dcv {
    }
 
    @Nullable
-   public static dcv a(gw $$0, dfj $$1, qx $$2) {
+   public static dcv a(gw $$0, dfj $$1, qy $$2) {
       String $$3 = $$2.l("id");
       aex $$4 = aex.a($$3);
       if ($$4 == null) {
@@ -134,12 +134,12 @@ public abstract class dcv {
    }
 
    @Nullable
-   public vd<ww> h() {
+   public ve<wx> h() {
       return null;
    }
 
-   public qx as_() {
-      return new qx();
+   public qy as_() {
+      return new qy();
    }
 
    public boolean r() {

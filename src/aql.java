@@ -49,12 +49,12 @@ public class aql {
          this.a = $$0;
       }
 
-      public void a(so $$0) {
-         $$0.a(this.a, so::a, so::a);
+      public void a(sp $$0) {
+         $$0.a(this.a, sp::a, sp::a);
       }
 
-      public static aql.a b(so $$0) {
-         return new aql.a($$0.a(so::s, so::a));
+      public static aql.a b(sp $$0) {
+         return new aql.a($$0.a(sp::s, sp::a));
       }
 
       public boolean a() {

@@ -28,7 +28,7 @@ public class edy extends eec {
    public cjf a(cjf $$0, ecq $$1) {
       if ($$0.a(cji.tt) && $$1.c(this.b.a()) instanceof cbu $$2) {
          GameProfile $$3 = $$2.fQ();
-         $$0.w().a("SkullOwner", rj.a(new qx(), $$3));
+         $$0.w().a("SkullOwner", rk.a(new qy(), $$3));
       }
 
       return $$0;

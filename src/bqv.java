@@ -16,7 +16,7 @@ public class bqv<T extends cdc> extends bqb {
 
    @Override
    public boolean a() {
-      return this.c.q() == null && !this.c.cP() && this.c.gs() && !this.c.gr().a() && !((akr)this.c.dL()).b(this.c.dl());
+      return this.c.q() == null && !this.c.cO() && this.c.gs() && !this.c.gr().a() && !((akr)this.c.dL()).b(this.c.dl());
    }
 
    @Override
@@ -45,7 +45,7 @@ public class bqv<T extends cdc> extends bqb {
    private void a(cdb $$0) {
       if ($$0.v()) {
          Set<cdc> $$1 = Sets.newHashSet();
-         List<cdc> $$2 = this.c.dL().a(cdc.class, this.c.cH().g(16.0), $$1x -> !$$1x.gs() && cdd.a($$1x, $$0));
+         List<cdc> $$2 = this.c.dL().a(cdc.class, this.c.cG().g(16.0), $$1x -> !$$1x.gs() && cdd.a($$1x, $$0));
          $$1.addAll($$2);
 
          for (cdc $$3 : $$1) {

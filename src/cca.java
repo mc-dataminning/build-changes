@@ -49,12 +49,12 @@ public abstract class cca extends ccm {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 10.0;
+      double $$1 = this.cG().a() * 10.0;
       if (Double.isNaN($$1)) {
          $$1 = 1.0;
       }
 
-      $$1 *= 64.0 * cA();
+      $$1 *= 64.0 * cz();
       return $$0 < $$1 * $$1;
    }
 
@@ -115,8 +115,8 @@ public abstract class cca extends ccm {
          this.e--;
       }
 
-      if (this.aZ() || $$4.a(csw.qC)) {
-         this.az();
+      if (this.aY() || $$4.a(csw.qC)) {
+         this.ay();
       }
 
       if (this.b && !$$0) {
@@ -197,7 +197,7 @@ public abstract class cca extends ccm {
          this.r(d(this.N, this.dB()));
          float $$22 = 0.99F;
          float $$23 = 0.05F;
-         if (this.aY()) {
+         if (this.aX()) {
             for (int $$24 = 0; $$24 < 4; $$24++) {
                float $$25 = 0.25F;
                this.dL().a(ix.e, $$18 - $$14 * 0.25, $$19 - $$15 * 0.25, $$20 - $$16 * 0.25, $$14, $$15, $$16);
@@ -207,13 +207,13 @@ public abstract class cca extends ccm {
          }
 
          this.f($$1.a((double)$$22));
-         if (!this.aU() && !$$0) {
+         if (!this.aT() && !$$0) {
             ehn $$26 = this.do();
             this.o($$26.c, $$26.d - 0.05F, $$26.e);
          }
 
          this.e($$18, $$19, $$20);
-         this.aP();
+         this.aO();
       }
    }
 
@@ -239,7 +239,7 @@ public abstract class cca extends ccm {
    protected void q() {
       this.m++;
       if (this.m >= 1200) {
-         this.al();
+         this.ak();
       }
    }
 
@@ -269,11 +269,11 @@ public abstract class cca extends ccm {
          }
 
          if (this.q.size() >= this.B() + 1) {
-            this.al();
+            this.ak();
             return;
          }
 
-         this.q.add($$1.ai());
+         this.q.add($$1.ah());
       }
 
       if (this.z()) {
@@ -292,9 +292,9 @@ public abstract class cca extends ccm {
          }
       }
 
-      boolean $$8 = $$1.ah() == biu.E;
-      int $$9 = $$1.ay();
-      if (this.bN() && !$$8) {
+      boolean $$8 = $$1.ag() == biu.E;
+      int $$9 = $$1.ax();
+      if (this.bM() && !$$8) {
          $$1.g(5);
       }
 
@@ -322,18 +322,18 @@ public abstract class cca extends ccm {
             }
 
             this.a($$10);
-            if ($$5 != null && $$10 != $$5 && $$10 instanceof cbu && $$5 instanceof aks && !this.aT()) {
+            if ($$5 != null && $$10 != $$5 && $$10 instanceof cbu && $$5 instanceof aks && !this.aS()) {
                ((aks)$$5).c.b(new yc(yc.g, 0.0F));
             }
 
-            if (!$$1.bw() && this.r != null) {
+            if (!$$1.bv() && this.r != null) {
                this.r.add($$10);
             }
 
             if (!this.dL().B && $$5 instanceof aks $$13) {
                if (this.r != null && this.A()) {
                   al.G.a($$13, this.r);
-               } else if (!$$1.bw() && this.A()) {
+               } else if (!$$1.bv() && this.A()) {
                   al.G.a($$13, Arrays.asList($$1));
                }
             }
@@ -341,7 +341,7 @@ public abstract class cca extends ccm {
 
          this.a(this.p, 1.0F, 1.2F / (this.ag.i() * 0.2F + 0.9F));
          if (this.B() <= 0) {
-            this.al();
+            this.ak();
          }
       } else {
          $$1.h($$9);
@@ -353,7 +353,7 @@ public abstract class cca extends ccm {
                this.a(this.w(), 0.1F);
             }
 
-            this.al();
+            this.ak();
          }
       }
    }
@@ -389,20 +389,20 @@ public abstract class cca extends ccm {
 
    @Nullable
    protected ehk a(ehn $$0, ehn $$1) {
-      return ccn.a(this.dL(), this, $$0, $$1, this.cH().b(this.do()).g(1.0), this::a);
+      return ccn.a(this.dL(), this, $$0, $$1, this.cG().b(this.do()).g(1.0), this::a);
    }
 
    @Override
    protected boolean a(biq $$0) {
-      return super.a($$0) && (this.q == null || !this.q.contains($$0.ai()));
+      return super.a($$0) && (this.q == null || !this.q.contains($$0.ah()));
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("life", (short)this.m);
       if (this.l != null) {
-         $$0.a("inBlockState", rj.a(this.l));
+         $$0.a("inBlockState", rk.a(this.l));
       }
 
       $$0.a("shake", (byte)this.e);
@@ -416,11 +416,11 @@ public abstract class cca extends ccm {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.m = $$0.g("life");
       if ($$0.b("inBlockState", 10)) {
-         this.l = rj.a(this.dL().a(je.e), $$0.p("inBlockState"));
+         this.l = rk.a(this.dL().a(je.e), $$0.p("inBlockState"));
       }
 
       this.e = $$0.f("shake") & 255;
@@ -452,7 +452,7 @@ public abstract class cca extends ccm {
       if (!this.dL().B && (this.b || this.E()) && this.e <= 0) {
          if (this.a($$0)) {
             $$0.a(this, 1);
-            this.al();
+            this.ak();
          }
       }
    }
@@ -471,7 +471,7 @@ public abstract class cca extends ccm {
    protected abstract cjf w();
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.a;
    }
 
@@ -492,7 +492,7 @@ public abstract class cca extends ccm {
    }
 
    @Override
-   public boolean cq() {
+   public boolean cp() {
       return false;
    }
 

@@ -27,7 +27,7 @@ public class fhj<T extends biq> extends fev<T> {
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       float $$6 = 1.0F;
-      if (!$$0.aY()) {
+      if (!$$0.aX()) {
          $$6 = 1.5F;
       }
 

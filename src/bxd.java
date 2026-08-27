@@ -47,7 +47,7 @@ public class bxd extends bur {
    @Override
    public void C() {
       super.C();
-      if (this.bN() || this.aY()) {
+      if (this.bM() || this.aX()) {
          this.a(eax.j, 0.0F);
       }
    }
@@ -71,7 +71,7 @@ public class bxd extends bur {
    }
 
    public boolean gd() {
-      return !this.y() && !this.ga() && !this.aY() && !this.gh() && this.aB() && !this.bO() && !this.fR();
+      return !this.y() && !this.ga() && !this.aX() && !this.gh() && this.aA() && !this.bN() && !this.fR();
    }
 
    public boolean gj() {
@@ -84,7 +84,7 @@ public class bxd extends bur {
    }
 
    private ehn gn() {
-      return this.dj().e(this.bH().a(2.25));
+      return this.dj().e(this.bG().a(2.25));
    }
 
    private bxd.a go() {
@@ -175,7 +175,7 @@ public class bxd extends bur {
 
    public bxd w(boolean $$0) {
       if ($$0) {
-         this.j(this.aI());
+         this.j(this.aH());
       }
 
       return this;
@@ -193,7 +193,7 @@ public class bxd extends bur {
    }
 
    boolean gl() {
-      return !this.ga() && !this.y() && !this.m_() && !this.aY() && this.aB() && !this.bO() && this.i(this.gm().d());
+      return !this.ga() && !this.y() && !this.m_() && !this.aX() && this.aA() && !this.bN() && this.i(this.gm().d());
    }
 
    private boolean i(gw $$0) {
@@ -232,7 +232,7 @@ public class bxd extends bur {
             }
 
             if (this.ah % 10 == 0) {
-               this.dL().a(this.dq(), this.ds(), this.dw(), $$3.w().f(), this.db(), 0.5F, 0.5F, false);
+               this.dL().a(this.dq(), this.ds(), this.dw(), $$3.w().f(), this.da(), 0.5F, 0.5F, false);
             }
          }
       }
@@ -314,13 +314,13 @@ public class bxd extends bur {
    }
 
    @Override
-   public float di() {
-      return super.di() + 0.3F;
+   public float dh() {
+      return super.dh() + 0.3F;
    }
 
    private void gu() {
       if (this.dL().w_() && this.ah % 20 == 0) {
-         this.dL().a(this.dq(), this.ds(), this.dw(), ape.wG, this.db(), 1.0F, 1.0F, false);
+         this.dL().a(this.dq(), this.ds(), this.dw(), ape.wG, this.da(), 1.0F, 1.0F, false);
       }
    }
 
@@ -350,7 +350,7 @@ public class bxd extends bur {
    }
 
    @Override
-   public int aa() {
+   public int Z() {
       return 50;
    }
 
@@ -400,18 +400,18 @@ public class bxd extends bur {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("snifferBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().b("snifferActivityUpdate");
       bxe.a(this);
       this.dL().ad().c();
-      super.Y();
+      super.X();
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 

@@ -1,4 +1,4 @@
-public class yq implements vd<ww> {
+public class yq implements ve<wx> {
    private final double a;
    private final double b;
    private final double c;
@@ -13,7 +13,7 @@ public class yq implements vd<ww> {
       this.e = $$0.dD();
    }
 
-   public yq(so $$0) {
+   public yq(sp $$0) {
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
@@ -22,7 +22,7 @@ public class yq implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
@@ -30,7 +30,7 @@ public class yq implements vd<ww> {
       $$0.a(this.e);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

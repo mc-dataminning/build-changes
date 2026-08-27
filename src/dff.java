@@ -28,7 +28,7 @@ public class dff extends dcv {
    }
 
    @Override
-   public qx as_() {
+   public qy as_() {
       return this.o();
    }
 
@@ -125,7 +125,7 @@ public class dff extends dcv {
 
                for (ehi $$17 : $$9) {
                   ehi $$18 = dfe.a(a($$1, $$17, $$3), $$4, $$5);
-                  ehi $$19 = $$11.cH();
+                  ehi $$19 = $$11.cG();
                   if ($$18.c($$19)) {
                      $$16 = Math.max($$16, a($$18, $$4, $$19));
                      if ($$16 >= $$5) {
@@ -168,7 +168,7 @@ public class dff extends dcv {
    }
 
    private static boolean a(ehi $$0, biq $$1, gw $$2) {
-      return $$1.q_() == ear.a && $$1.aB() && ($$1.d($$2) || $$1.dq() >= $$0.a && $$1.dq() <= $$0.d && $$1.dw() >= $$0.c && $$1.dw() <= $$0.f);
+      return $$1.q_() == ear.a && $$1.aA() && ($$1.d($$2) || $$1.dq() >= $$0.a && $$1.dq() <= $$0.d && $$1.dw() >= $$0.c && $$1.dw() <= $$0.f);
    }
 
    private boolean x() {
@@ -203,7 +203,7 @@ public class dff extends dcv {
    }
 
    private static void a(gw $$0, biq $$1, hc $$2, double $$3) {
-      ehi $$4 = $$1.cH();
+      ehi $$4 = $$1.cG();
       ehi $$5 = eid.b().a().a($$0);
       if ($$4.c($$5)) {
          hc $$6 = $$2.g();
@@ -276,10 +276,10 @@ public class dff extends dcv {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       hh<csv> $$1 = (hh<csv>)(this.o != null ? this.o.a(je.e) : jd.f.p());
-      this.d = rj.a($$1, $$0.p("blockState"));
+      this.d = rk.a($$1, $$0.p("blockState"));
       this.e = hc.a($$0.h("facing"));
       this.i = $$0.j("progress");
       this.j = this.i;
@@ -288,9 +288,9 @@ public class dff extends dcv {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
-      $$0.a("blockState", rj.a(this.d));
+      $$0.a("blockState", rk.a(this.d));
       $$0.a("facing", this.e.d());
       $$0.a("progress", this.j);
       $$0.a("extending", this.f);

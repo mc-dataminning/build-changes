@@ -8,16 +8,16 @@ public class euz implements eux {
    public static final int e = 3;
    public static final int f = 28;
    private final euz.a h;
-   private final tl i;
+   private final tm i;
    @Nullable
-   private final tl j;
+   private final tm j;
    private eux.a k = eux.a.a;
    private long l;
    private float m;
    private float n;
    private final boolean o;
 
-   public euz(euz.a $$0, tl $$1, @Nullable tl $$2, boolean $$3) {
+   public euz(euz.a $$0, tm $$1, @Nullable tm $$2, boolean $$3) {
       this.h = $$0;
       this.i = $$1;
       this.j = $$2;

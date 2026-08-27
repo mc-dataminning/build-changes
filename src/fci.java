@@ -6,11 +6,11 @@ public class fci {
    private final fjt b;
    private final Predicate<fjo.a> c;
    @Nullable
-   private uf d = null;
+   private ug d = null;
    private int e;
    private int f;
    @Nullable
-   private ua g;
+   private ub g;
 
    public fci(fjz $$0, Predicate<fjo.a> $$1) {
       this.a = $$0.b();
@@ -32,7 +32,7 @@ public class fci {
          if ($$3 instanceof fjo.a $$5 && !$$5.g().equals(this.g)) {
             if (this.a($$1, $$5)) {
                if (this.f > 0) {
-                  $$1.a(tl.a("gui.chatSelection.fold", this.f));
+                  $$1.a(tm.a("gui.chatSelection.fold", this.f));
                   this.f = 0;
                }
 
@@ -48,12 +48,12 @@ public class fci {
    }
 
    private boolean a(fci.a $$0, fjo.a $$1) {
-      ua $$2 = $$1.g();
+      ub $$2 = $$1.g();
       boolean $$3 = this.b.b($$2);
       if (this.c.test($$1)) {
          this.b.a($$2);
          if (this.d != null && !this.d.a($$2.j())) {
-            $$0.a(tl.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
+            $$0.a(tm.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
          }
 
          this.d = $$2.j();
@@ -66,6 +66,6 @@ public class fci {
    public interface a {
       void a(int var1, fjo.a var2);
 
-      void a(tl var1);
+      void a(tm var1);
    }
 }

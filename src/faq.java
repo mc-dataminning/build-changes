@@ -1,7 +1,7 @@
 public class faq extends ezi<cga> {
    private static final aex x = new aex("textures/gui/container/shulker_box.png");
 
-   public faq(cga $$0, cbt $$1, tl $$2) {
+   public faq(cga $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
       this.k++;
    }

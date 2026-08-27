@@ -94,9 +94,9 @@ public abstract class csj extends csv {
 
    @Override
    public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
-      if (!$$3.aX()) {
-         $$3.h($$3.ay() + 1);
-         if ($$3.ay() == 0) {
+      if (!$$3.aW()) {
+         $$3.h($$3.ax() + 1);
+         if ($$3.ax() == 0) {
             $$3.g(8);
          }
       }

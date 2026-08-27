@@ -1,3 +1,3 @@
 public interface adq {
-   void a(so var1);
+   void a(sp var1);
 }

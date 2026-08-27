@@ -39,38 +39,38 @@ public final class dim implements AutoCloseable {
    }
 
    @Nullable
-   public qx a(cpc $$0) throws IOException {
+   public qy a(cpc $$0) throws IOException {
       dil $$1 = this.b($$0);
 
-      qx var4;
+      qy var4;
       try (DataInputStream $$2 = $$1.a($$0)) {
          if ($$2 == null) {
             return null;
          }
 
-         var4 = rh.a((DataInput)$$2);
+         var4 = ri.a((DataInput)$$2);
       }
 
       return var4;
    }
 
-   public void a(cpc $$0, rn $$1) throws IOException {
+   public void a(cpc $$0, ro $$1) throws IOException {
       dil $$2 = this.b($$0);
 
       try (DataInputStream $$3 = $$2.a($$0)) {
          if ($$3 != null) {
-            rh.a((DataInput)$$3, $$1);
+            ri.a((DataInput)$$3, $$1);
          }
       }
    }
 
-   protected void a(cpc $$0, @Nullable qx $$1) throws IOException {
+   protected void a(cpc $$0, @Nullable qy $$1) throws IOException {
       dil $$2 = this.b($$0);
       if ($$1 == null) {
          $$2.d($$0);
       } else {
          try (DataOutputStream $$3 = $$2.c($$0)) {
-            rh.a($$1, (DataOutput)$$3);
+            ri.a($$1, (DataOutput)$$3);
          }
       }
    }

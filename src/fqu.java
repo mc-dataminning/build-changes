@@ -12,7 +12,7 @@ public class fqu implements fqe<deh> {
       biq $$7 = $$6.a($$0.k(), $$0.k().D_(), $$0.p());
       if ($$7 != null) {
          float $$8 = 0.53125F;
-         float $$9 = Math.max($$7.dg(), $$7.dh());
+         float $$9 = Math.max($$7.df(), $$7.dg());
          if ((double)$$9 > 1.0) {
             $$8 /= $$9;
          }

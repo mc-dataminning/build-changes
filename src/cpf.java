@@ -20,7 +20,7 @@ public interface cpf extends cpb {
    }
 
    default boolean f(biq $$0) {
-      return this.a($$0, eid.a($$0.cH()));
+      return this.a($$0, eid.a($$0.cG()));
    }
 
    default boolean b(ehi $$0) {
@@ -28,7 +28,7 @@ public interface cpf extends cpb {
    }
 
    default boolean g(biq $$0) {
-      return this.a($$0, $$0.cH());
+      return this.a($$0, $$0.cG());
    }
 
    default boolean a(@Nullable biq $$0, ehi $$1) {

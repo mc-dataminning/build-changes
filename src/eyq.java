@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class eyq extends eyc {
-   private static final tl c = tl.c("options.graphics.fabulous").a(n.u);
-   private static final tl k = tl.a("options.graphics.warning.message", c, c);
-   private static final tl l = tl.c("options.graphics.warning.title").a(n.m);
-   private static final tl m = tl.c("options.graphics.warning.accept");
-   private static final tl n = tl.c("options.graphics.warning.cancel");
+   private static final tm c = tm.c("options.graphics.fabulous").a(n.u);
+   private static final tm k = tm.a("options.graphics.warning.message", c, c);
+   private static final tm l = tm.c("options.graphics.warning.title").a(n.m);
+   private static final tm m = tm.c("options.graphics.warning.accept");
+   private static final tm n = tm.c("options.graphics.warning.cancel");
    private etn o;
    private final fny p;
    private final int q;
@@ -41,7 +41,7 @@ public class eyq extends eyc {
    }
 
    public eyq(eyk $$0, eqz $$1) {
-      super($$0, $$1, tl.c("options.videoTitle"));
+      super($$0, $$1, tm.c("options.videoTitle"));
       this.p = $$0.f.ah();
       this.p.i();
       if ($$1.i().c() == eqo.c) {
@@ -67,9 +67,12 @@ public class eyq extends eyc {
 
       eqy<Integer> $$6 = new eqy<>("options.fullscreen.resolution", eqy.a(), ($$1x, $$2x) -> {
          if ($$2 == null) {
-            return tl.c("options.fullscreen.unavailable");
+            return tm.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return eqz.a($$1x, tm.c("options.fullscreen.current"));
          } else {
-            return $$2x == -1 ? eqz.a($$1x, tl.c("options.fullscreen.current")) : eqz.a($$1x, tl.b($$2.a($$2x).toString()));
+            eks $$3x = $$2.a($$2x);
+            return eqz.a($$1x, tm.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
          }
       }, new eqy.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
          if ($$2 != null) {
@@ -80,7 +83,7 @@ public class eyq extends eyc {
       this.o.a(this.b.B());
       this.o.a(a(this.b));
       this.e(this.o);
-      this.d(esq.a(tk.d, $$1x -> {
+      this.d(esq.a(tl.d, $$1x -> {
          this.f.m.ar();
          $$1.g();
          this.f.a(this.a);
@@ -106,23 +109,23 @@ public class eyq extends eyc {
          }
 
          if (this.p.g()) {
-            List<tl> $$4 = Lists.newArrayList(new tl[]{k, tk.r});
+            List<tm> $$4 = Lists.newArrayList(new tm[]{k, tl.r});
             String $$5 = this.p.j();
             if ($$5 != null) {
-               $$4.add(tk.r);
-               $$4.add(tl.a("options.graphics.warning.renderer", $$5).a(n.h));
+               $$4.add(tl.r);
+               $$4.add(tm.a("options.graphics.warning.renderer", $$5).a(n.h));
             }
 
             String $$6 = this.p.l();
             if ($$6 != null) {
-               $$4.add(tk.r);
-               $$4.add(tl.a("options.graphics.warning.vendor", $$6).a(n.h));
+               $$4.add(tl.r);
+               $$4.add(tm.a("options.graphics.warning.vendor", $$6).a(n.h));
             }
 
             String $$7 = this.p.k();
             if ($$7 != null) {
-               $$4.add(tk.r);
-               $$4.add(tl.a("options.graphics.warning.version", $$7).a(n.h));
+               $$4.add(tl.r);
+               $$4.add(tm.a("options.graphics.warning.version", $$7).a(n.h));
             }
 
             this.f.a(new eyg(l, $$4, ImmutableList.of(new eyg.a(m, $$0x -> {

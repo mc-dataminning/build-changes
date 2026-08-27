@@ -5,7 +5,7 @@ public interface dzj {
    Codec<dzj> c = jd.q.q().dispatch(dzj::a, dzk::codec);
 
    @Nullable
-   qx a(asc var1, @Nullable qx var2);
+   qy a(asc var1, @Nullable qy var2);
 
    dzk<?> a();
 }

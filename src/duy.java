@@ -9,7 +9,7 @@ public class duy {
    public static final aew<dux> e = a("single_biome_surface");
    public static final aew<dux> f = a("debug_all_block_states");
 
-   public static void a(ns<dux> $$0) {
+   public static void a(nt<dux> $$0) {
       new duy.a($$0).a();
    }
 
@@ -37,7 +37,7 @@ public class duy {
    }
 
    static class a {
-      private final ns<dux> a;
+      private final nt<dux> a;
       private final hh<dkx> b;
       private final hh<cqt> c;
       private final hh<dum> d;
@@ -47,7 +47,7 @@ public class duy {
       private final dit h;
       private final dit i;
 
-      a(ns<dux> $$0) {
+      a(nt<dux> $$0) {
          this.a = $$0;
          hh<dis> $$1 = $$0.a(je.au);
          this.b = $$0.a(je.aw);

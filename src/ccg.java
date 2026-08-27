@@ -15,12 +15,12 @@ public abstract class ccg extends ccb implements ccj {
 
    public void a(cjf $$0) {
       if (!$$0.a(cji.tf) || $$0.u()) {
-         this.am().b(e, $$0.c(1));
+         this.al().b(e, $$0.c(1));
       }
    }
 
    protected cjf w() {
-      return this.am().b(e);
+      return this.al().b(e);
    }
 
    @Override
@@ -31,20 +31,20 @@ public abstract class ccg extends ccb implements ccj {
 
    @Override
    protected void a_() {
-      this.am().a(e, cjf.b);
+      this.al().a(e, cjf.b);
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       cjf $$1 = this.w();
       if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new qx()));
+         $$0.a("Item", $$1.b(new qy()));
       }
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       cjf $$1 = cjf.a($$0.p("Item"));
       this.a($$1);

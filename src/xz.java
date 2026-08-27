@@ -1,26 +1,26 @@
 import javax.annotation.Nullable;
 
-public class xz implements vd<ww> {
+public class xz implements ve<wx> {
    private final int a;
    private final byte b;
 
    public xz(biq $$0, byte $$1) {
-      this.a = $$0.ai();
+      this.a = $$0.ah();
       this.b = $$1;
    }
 
-   public xz(so $$0) {
+   public xz(sp $$0) {
       this.a = $$0.readInt();
       this.b = $$0.readByte();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.p(this.a);
       $$0.k(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

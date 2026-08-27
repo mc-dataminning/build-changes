@@ -80,14 +80,14 @@ public class byi extends byf implements bke<hg<byj>> {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       a($$0, this.q());
       $$0.a("facing", (byte)this.d.e());
       super.b($$0);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       hg<byj> $$1 = c($$0).orElseGet(byi::s);
       this.a($$1);
       this.d = hc.b($$0.f("facing"));
@@ -95,11 +95,11 @@ public class byi extends byf implements bke<hg<byj>> {
       this.a(this.d);
    }
 
-   public static void a(qx $$0, hg<byj> $$1) {
+   public static void a(qy $$0, hg<byj> $$1) {
       $$0.a("variant", $$1.e().orElse(g).a().toString());
    }
 
-   public static Optional<hg<byj>> c(qx $$0) {
+   public static Optional<hg<byj>> c(qy $$0) {
       return Optional.ofNullable(aex.a($$0.l("variant"))).map($$0x -> aew.a(je.P, $$0x)).flatMap(jd.m::b);
    }
 
@@ -146,12 +146,12 @@ public class byi extends byf implements bke<hg<byj>> {
    }
 
    @Override
-   public vd<ww> V() {
-      return new wx(this, this.d.d(), this.E());
+   public ve<wx> di() {
+      return new wy(this, this.d.d(), this.E());
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       this.a(hc.a($$0.o()));
    }

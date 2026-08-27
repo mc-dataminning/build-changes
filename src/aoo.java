@@ -27,9 +27,9 @@ public class aoo extends aoc<GameProfile> {
    }
 
    @Override
-   public tl e() {
+   public tm e() {
       GameProfile $$0 = this.g();
-      return $$0 != null ? tl.b($$0.getName()) : tl.c("commands.banlist.entry.unknown");
+      return $$0 != null ? tm.b($$0.getName()) : tm.c("commands.banlist.entry.unknown");
    }
 
    @Nullable

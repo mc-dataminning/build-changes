@@ -41,7 +41,7 @@ public class bru<T extends bjg> extends bsb {
    }
 
    protected ehi a(double $$0) {
-      return this.e.cH().c($$0, 4.0, $$0);
+      return this.e.cG().c($$0, 4.0, $$0);
    }
 
    protected void h() {

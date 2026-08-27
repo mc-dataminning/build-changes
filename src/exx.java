@@ -8,7 +8,7 @@ public class exx {
    private static final Logger a = LogUtils.getLogger();
    private static final Map<cfq<?>, exx.a<?, ?>> b = Maps.newHashMap();
 
-   public static <T extends cel> void a(@Nullable cfq<T> $$0, eqv $$1, int $$2, tl $$3) {
+   public static <T extends cel> void a(@Nullable cfq<T> $$0, eqv $$1, int $$2, tm $$3) {
       if ($$0 == null) {
          a.warn("Trying to open invalid screen with name: {}", $$3.getString());
       } else {
@@ -74,12 +74,12 @@ public class exx {
    }
 
    interface a<T extends cel, U extends eyk & fam<T>> {
-      default void a(tl $$0, cfq<T> $$1, eqv $$2, int $$3) {
+      default void a(tm $$0, cfq<T> $$1, eqv $$2, int $$3) {
          U $$4 = this.create($$1.a($$3, $$2.s.fR()), $$2.s.fR(), $$0);
-         $$2.s.bS = $$4.D();
+         $$2.s.bS = $$4.E();
          $$2.a($$4);
       }
 
-      U create(T var1, cbt var2, tl var3);
+      U create(T var1, cbt var2, tm var3);
    }
 }

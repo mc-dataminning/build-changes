@@ -682,7 +682,7 @@ public abstract class cpv implements cpw, AutoCloseable {
 
    public abstract void a(int var1, gw var2, int var3);
 
-   public void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, @Nullable qx $$6) {
+   public void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, @Nullable qy $$6) {
    }
 
    public abstract eim I();
@@ -730,7 +730,7 @@ public abstract class cpv implements cpw, AutoCloseable {
       return this.G;
    }
 
-   public void a(vd<?> $$0) {
+   public void a(ve<?> $$0) {
       throw new UnsupportedOperationException("Can't send packets to server unless you're on the client.");
    }
 

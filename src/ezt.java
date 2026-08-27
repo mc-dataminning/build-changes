@@ -2,7 +2,7 @@ public class ezt extends ezi<ces> implements fam<ces> {
    private static final aex x = new aex("textures/gui/container/generic_54.png");
    private final int y;
 
-   public ezt(ces $$0, cbt $$1, tl $$2) {
+   public ezt(ces $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
       int $$3 = 222;
       int $$4 = 114;

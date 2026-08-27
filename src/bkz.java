@@ -19,11 +19,11 @@ public class bkz {
    }
 
    public static boolean a(bkg<?> $$0, bsh<? extends bjg> $$1, biu<?> $$2) {
-      return a($$0, $$1, $$1x -> $$1x.ah() == $$2);
+      return a($$0, $$1, $$1x -> $$1x.ag() == $$2);
    }
 
    private static boolean a(bkg<?> $$0, bsh<? extends bjg> $$1, Predicate<bjg> $$2) {
-      return $$0.c($$1).filter($$2).filter(bjg::bw).filter($$1x -> a($$0, $$1x)).isPresent();
+      return $$0.c($$1).filter($$2).filter(bjg::bv).filter($$1x -> a($$0, $$1x)).isPresent();
    }
 
    private static void c(bjg $$0, bjg $$1) {
@@ -63,7 +63,7 @@ public class bkz {
    public static void a(bjg $$0, cjf $$1, ehn $$2, ehn $$3, float $$4) {
       double $$5 = $$0.du() - (double)$$4;
       byn $$6 = new byn($$0.dL(), $$0.dq(), $$5, $$0.dw(), $$1);
-      $$6.c($$0.cw());
+      $$6.c($$0.cv());
       ehn $$7 = $$2.d($$0.dj());
       $$7 = $$7.d().d($$3.c, $$3.d, $$3.e);
       $$6.f($$7);

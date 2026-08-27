@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class alq extends aln implements abd, alt, ta {
+public class alq extends aln implements abd, alt, tb {
    static final Logger g = LogUtils.getLogger();
    public static final double d = arx.k(6.0);
    private static final int h = -1;
    private static final int i = 4096;
-   private static final tl j = tl.c("multiplayer.disconnect.chat_validation_failed");
+   private static final tm j = tm.c("multiplayer.disconnect.chat_validation_failed");
    public aks e;
    public final alm f;
    private int k;
@@ -68,21 +68,21 @@ public class alq extends aln implements abd, alt, ta {
    private int J;
    private final AtomicReference<Instant> K = new AtomicReference<>(Instant.EPOCH);
    @Nullable
-   private ub L;
-   private ue.b M;
-   private final tt N = new tt(20);
-   private final tx O = tx.a();
+   private uc L;
+   private uf.b M;
+   private final tu N = new tu(20);
+   private final ty O = ty.a();
    private final arm P;
    private boolean Q;
 
-   public alq(MinecraftServer $$0, sm $$1, aks $$2, alg $$3) {
+   public alq(MinecraftServer $$0, sn $$1, aks $$2, alg $$3) {
       super($$0, $$1, $$3);
       this.f = new alm($$1.g());
       $$1.a(this);
       this.e = $$2;
       $$2.c = this;
-      $$2.W().a();
-      this.M = $$0.aw() ? ue.b.a : ue.b.unsigned($$2.cw());
+      $$2.V().a();
+      this.M = $$0.aw() ? uf.b.a : uf.b.unsigned($$2.cv());
       this.P = new arm($$0);
    }
 
@@ -101,10 +101,10 @@ public class alq extends aln implements abd, alt, ta {
       this.e.a(this.o, this.p, this.q, this.e.dB(), this.e.dD());
       this.k++;
       this.J = this.I;
-      if (this.E && !this.e.fC() && !this.e.bO() && !this.e.ev()) {
+      if (this.E && !this.e.fC() && !this.e.bN() && !this.e.ev()) {
          if (++this.F > 80) {
-            g.warn("{} was kicked for floating too long!", this.e.ac().getString());
-            this.b(tl.c("multiplayer.disconnect.flying"));
+            g.warn("{} was kicked for floating too long!", this.e.ab().getString());
+            this.b(tm.c("multiplayer.disconnect.flying"));
             return;
          }
       } else {
@@ -112,18 +112,18 @@ public class alq extends aln implements abd, alt, ta {
          this.F = 0;
       }
 
-      this.u = this.e.cW();
-      if (this.u != this.e && this.u.cO() == this.e) {
+      this.u = this.e.cV();
+      if (this.u != this.e && this.u.cN() == this.e) {
          this.v = this.u.dq();
          this.w = this.u.ds();
          this.x = this.u.dw();
          this.y = this.u.dq();
          this.z = this.u.ds();
          this.A = this.u.dw();
-         if (this.G && this.e.cW().cO() == this.e) {
+         if (this.G && this.e.cV().cN() == this.e) {
             if (++this.H > 80) {
-               g.warn("{} was kicked for floating a vehicle too long!", this.e.ac().getString());
-               this.b(tl.c("multiplayer.disconnect.flying"));
+               g.warn("{} was kicked for floating a vehicle too long!", this.e.ab().getString());
+               this.b(tm.c("multiplayer.disconnect.flying"));
                return;
             }
          } else {
@@ -146,7 +146,7 @@ public class alq extends aln implements abd, alt, ta {
       }
 
       if (this.e.K() > 0L && this.b.al() > 0 && ac.b() - this.e.K() > (long)this.b.al() * 1000L * 60L) {
-         this.b(tl.c("multiplayer.disconnect.idling"));
+         this.b(tm.c("multiplayer.disconnect.idling"));
       }
    }
 
@@ -165,7 +165,7 @@ public class alq extends aln implements abd, alt, ta {
    }
 
    @Override
-   public boolean a(vd<?> $$0) {
+   public boolean a(ve<?> $$0) {
       return super.a($$0) ? true : this.Q && this.c.k() && $$0 instanceof abq;
    }
 
@@ -175,7 +175,7 @@ public class alq extends aln implements abd, alt, ta {
    }
 
    private <T, R> CompletableFuture<R> a(T $$0, BiFunction<alv, T, CompletableFuture<R>> $$1) {
-      return $$1.apply(this.e.W(), $$0).thenApply($$0x -> {
+      return $$1.apply(this.e.V(), $$0).thenApply($$0x -> {
          if (!this.c()) {
             g.debug("Ignoring packet due to disconnection");
             throw new CancellationException("disconnected");
@@ -195,7 +195,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(ach $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.a($$0.a(), $$0.d(), $$0.e(), $$0.f());
    }
 
@@ -213,12 +213,12 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(aca $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (b($$0.a(), $$0.d(), $$0.e(), $$0.f(), $$0.g())) {
-         this.b(tl.c("multiplayer.disconnect.invalid_vehicle_movement"));
+         this.b(tm.c("multiplayer.disconnect.invalid_vehicle_movement"));
       } else {
-         biq $$1 = this.e.cW();
-         if ($$1 != this.e && $$1.cO() == this.e && $$1 == this.u) {
+         biq $$1 = this.e.cV();
+         if ($$1 != this.e && $$1.cN() == this.e && $$1 == this.u) {
             akr $$2 = this.e.x();
             double $$3 = $$1.dq();
             double $$4 = $$1.ds();
@@ -234,12 +234,12 @@ public class alq extends aln implements abd, alt, ta {
             double $$14 = $$1.do().g();
             double $$15 = $$11 * $$11 + $$12 * $$12 + $$13 * $$13;
             if ($$15 - $$14 > 100.0 && !this.i()) {
-               g.warn("{} (vehicle of {}) moved too quickly! {},{},{}", new Object[]{$$1.ac().getString(), this.e.ac().getString(), $$11, $$12, $$13});
+               g.warn("{} (vehicle of {}) moved too quickly! {},{},{}", new Object[]{$$1.ab().getString(), this.e.ab().getString(), $$11, $$12, $$13});
                this.b(new yq($$1));
                return;
             }
 
-            boolean $$16 = $$2.a($$1, $$1.cH().h(0.0625));
+            boolean $$16 = $$2.a($$1, $$1.cG().h(0.0625));
             $$11 = $$6 - this.y;
             $$12 = $$7 - this.z - 1.0E-6;
             $$13 = $$8 - this.A;
@@ -260,11 +260,11 @@ public class alq extends aln implements abd, alt, ta {
             boolean $$20 = false;
             if ($$15 > 0.0625) {
                $$20 = true;
-               g.warn("{} (vehicle of {}) moved wrongly! {}", new Object[]{$$1.ac().getString(), this.e.ac().getString(), Math.sqrt($$15)});
+               g.warn("{} (vehicle of {}) moved wrongly! {}", new Object[]{$$1.ab().getString(), this.e.ab().getString(), Math.sqrt($$15)});
             }
 
             $$1.a($$6, $$7, $$8, $$9, $$10);
-            boolean $$21 = $$2.a($$1, $$1.cH().h(0.0625));
+            boolean $$21 = $$2.a($$1, $$1.cG().h(0.0625));
             if ($$16 && ($$20 || !$$21)) {
                $$1.a($$3, $$4, $$5, $$9, $$10);
                this.b(new yq($$1));
@@ -273,7 +273,7 @@ public class alq extends aln implements abd, alt, ta {
 
             this.e.x().k().a(this.e);
             this.e.r(this.e.dq() - $$3, this.e.ds() - $$4, this.e.dw() - $$5);
-            this.G = $$12 >= -0.03125 && !$$17 && !this.b.Z() && !$$1.aU() && this.a($$1);
+            this.G = $$12 >= -0.03125 && !$$17 && !this.b.Z() && !$$1.aT() && this.a($$1);
             this.y = $$1.dq();
             this.z = $$1.ds();
             this.A = $$1.dw();
@@ -282,15 +282,15 @@ public class alq extends aln implements abd, alt, ta {
    }
 
    private boolean a(biq $$0) {
-      return $$0.dL().a($$0.cH().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dfi.a::i);
+      return $$0.dL().a($$0.cG().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dfi.a::i);
    }
 
    @Override
    public void a(abg $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if ($$0.a() == this.C) {
          if (this.B == null) {
-            this.b(tl.c("multiplayer.disconnect.invalid_player_movement"));
+            this.b(tm.c("multiplayer.disconnect.invalid_player_movement"));
             return;
          }
 
@@ -308,19 +308,19 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acj $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.b.aE().a($$0.a()).ifPresent(this.e.G()::e);
    }
 
    @Override
    public void a(aci $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.G().a($$0.a(), $$0.d(), $$0.e());
    }
 
    @Override
    public void a(acl $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if ($$0.d() == acl.a.a) {
          aex $$1 = Objects.requireNonNull($$0.e());
          af $$2 = this.b.az().a($$1);
@@ -332,23 +332,23 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abp $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       StringReader $$1 = new StringReader($$0.d());
       if ($$1.canRead() && $$1.peek() == '/') {
          $$1.skip();
       }
 
-      ParseResults<dt> $$2 = this.b.aC().a().parse($$1, this.e.dd());
+      ParseResults<dt> $$2 = this.b.aC().a().parse($$1, this.e.dc());
       this.b.aC().a().getCompletionSuggestions($$2).thenAccept($$1x -> this.b(new xo($$0.a(), $$1x)));
    }
 
    @Override
    public void a(acp $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (!this.b.o()) {
-         this.e.a(tl.c("advMode.notEnabled"));
+         this.e.a(tm.c("advMode.notEnabled"));
       } else if (!this.e.go()) {
-         this.e.a(tl.c("advMode.notAllowed"));
+         this.e.a(tm.c("advMode.notAllowed"));
       } else {
          cow $$1 = null;
          ddf $$2 = null;
@@ -390,7 +390,7 @@ public class alq extends aln implements abd, alt, ta {
 
             $$1.f();
             if (!asq.b($$5)) {
-               this.e.a(tl.a("advMode.setCommand.success", $$5));
+               this.e.a(tm.a("advMode.setCommand.success", $$5));
             }
          }
       }
@@ -398,11 +398,11 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acq $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (!this.b.o()) {
-         this.e.a(tl.c("advMode.notEnabled"));
+         this.e.a(tm.c("advMode.notEnabled"));
       } else if (!this.e.go()) {
-         this.e.a(tl.c("advMode.notAllowed"));
+         this.e.a(tm.c("advMode.notAllowed"));
       } else {
          cow $$1 = $$0.a(this.e.dL());
          if ($$1 != null) {
@@ -413,14 +413,14 @@ public class alq extends aln implements abd, alt, ta {
             }
 
             $$1.f();
-            this.e.a(tl.a("advMode.setCommand.success", $$0.a()));
+            this.e.a(tm.a("advMode.setCommand.success", $$0.a()));
          }
       }
    }
 
    @Override
    public void a(acc $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.fR().c($$0.a());
       this.e.c.b(new xt(-2, 0, this.e.fR().l, this.e.fR().a(this.e.fR().l)));
       this.e.c.b(new xt(-2, 0, $$0.a(), this.e.fR().a($$0.a())));
@@ -429,7 +429,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(ack $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.bS instanceof cen $$1) {
          if (!$$1.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, $$1);
@@ -442,7 +442,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acn $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.bS instanceof ceo $$1) {
          if (!this.e.bS.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, this.e.bS);
@@ -455,7 +455,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(act $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.go()) {
          gw $$1 = $$0.a();
          dfj $$2 = this.e.dL().a_($$1);
@@ -476,27 +476,27 @@ public class alq extends aln implements abd, alt, ta {
                String $$5 = $$4.d();
                if ($$0.d() == dei.a.b) {
                   if ($$4.D()) {
-                     this.e.a(tl.a("structure_block.save_success", $$5), false);
+                     this.e.a(tm.a("structure_block.save_success", $$5), false);
                   } else {
-                     this.e.a(tl.a("structure_block.save_failure", $$5), false);
+                     this.e.a(tm.a("structure_block.save_failure", $$5), false);
                   }
                } else if ($$0.d() == dei.a.c) {
                   if (!$$4.F()) {
-                     this.e.a(tl.a("structure_block.load_not_found", $$5), false);
+                     this.e.a(tm.a("structure_block.load_not_found", $$5), false);
                   } else if ($$4.a(this.e.x())) {
-                     this.e.a(tl.a("structure_block.load_success", $$5), false);
+                     this.e.a(tm.a("structure_block.load_success", $$5), false);
                   } else {
-                     this.e.a(tl.a("structure_block.load_prepare", $$5), false);
+                     this.e.a(tm.a("structure_block.load_prepare", $$5), false);
                   }
                } else if ($$0.d() == dei.a.d) {
                   if ($$4.C()) {
-                     this.e.a(tl.a("structure_block.size_success", $$5), false);
+                     this.e.a(tm.a("structure_block.size_success", $$5), false);
                   } else {
-                     this.e.a(tl.c("structure_block.size_failure"), false);
+                     this.e.a(tm.c("structure_block.size_failure"), false);
                   }
                }
             } else {
-               this.e.a(tl.a("structure_block.invalid_structure_name", $$0.f()), false);
+               this.e.a(tm.a("structure_block.invalid_structure_name", $$0.f()), false);
             }
 
             $$4.e();
@@ -507,7 +507,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acs $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.go()) {
          gw $$1 = $$0.a();
          dfj $$2 = this.e.dL().a_($$1);
@@ -525,7 +525,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abx $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.go()) {
          gw $$1 = $$0.a();
          if (this.e.dL().c_($$1) instanceof ddu $$3) {
@@ -536,7 +536,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acm $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       int $$1 = $$0.a();
       if (this.e.bS instanceof cfs $$2) {
          if (!$$2.a(this.e)) {
@@ -573,36 +573,36 @@ public class alq extends aln implements abd, alt, ta {
       cjf $$3 = this.e.fR().a($$2);
       if ($$3.a(cji.tg)) {
          cjf $$4 = new cjf(cji.th);
-         qx $$5 = $$3.v();
+         qy $$5 = $$3.v();
          if ($$5 != null) {
             $$4.c($$5.h());
          }
 
-         $$4.a("author", ro.a(this.e.ac().getString()));
-         if (this.e.X()) {
-            $$4.a("title", ro.a($$0.b()));
+         $$4.a("author", rp.a(this.e.ab().getString()));
+         if (this.e.W()) {
+            $$4.a("title", rp.a($$0.b()));
          } else {
-            $$4.a("filtered_title", ro.a($$0.b()));
-            $$4.a("title", ro.a($$0.d()));
+            $$4.a("filtered_title", rp.a($$0.b()));
+            $$4.a("title", rp.a($$0.d()));
          }
 
-         this.a($$1, $$0x -> tl.a.a(tl.b($$0x)), $$4);
+         this.a($$1, $$0x -> tm.a.a(tm.b($$0x)), $$4);
          this.e.fR().a($$2, $$4);
       }
    }
 
    private void a(List<ali> $$0, UnaryOperator<String> $$1, cjf $$2) {
-      rd $$3 = new rd();
-      if (this.e.X()) {
-         $$0.stream().map($$1x -> ro.a($$1.apply($$1x.b()))).forEach($$3::add);
+      re $$3 = new re();
+      if (this.e.W()) {
+         $$0.stream().map($$1x -> rp.a($$1.apply($$1x.b()))).forEach($$3::add);
       } else {
-         qx $$4 = new qx();
+         qy $$4 = new qy();
          int $$5 = 0;
 
          for (int $$6 = $$0.size(); $$5 < $$6; $$5++) {
             ali $$7 = $$0.get($$5);
             String $$8 = $$7.d();
-            $$3.add(ro.a($$1.apply($$8)));
+            $$3.add(rp.a($$1.apply($$8)));
             if ($$7.c()) {
                $$4.a(String.valueOf($$5), $$1.apply($$7.b()));
             }
@@ -618,11 +618,11 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abv $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.l(2)) {
          biq $$1 = this.e.dL().a($$0.d());
          if ($$1 != null) {
-            qx $$2 = $$1.f(new qx());
+            qy $$2 = $$1.f(new qy());
             this.e.c.b(new aat($$0.a(), $$2));
          }
       }
@@ -630,19 +630,19 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abh $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.l(2)) {
          dcv $$1 = this.e.dL().c_($$0.d());
-         qx $$2 = $$1 != null ? $$1.o() : null;
+         qy $$2 = $$1 != null ? $$1.o() : null;
          this.e.c.b(new aat($$0.a(), $$2));
       }
    }
 
    @Override
    public void a(abz $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (b($$0.a(0.0), $$0.b(0.0), $$0.c(0.0), $$0.a(0.0F), $$0.b(0.0F))) {
-         this.b(tl.c("multiplayer.disconnect.invalid_player_movement"));
+         this.b(tm.c("multiplayer.disconnect.invalid_player_movement"));
       } else {
          akr $$1 = this.e.x();
          if (!this.e.f) {
@@ -662,7 +662,7 @@ public class alq extends aln implements abd, alt, ta {
                double $$4 = a($$0.c(this.e.dw()));
                float $$5 = arx.g($$0.a(this.e.dB()));
                float $$6 = arx.g($$0.b(this.e.dD()));
-               if (this.e.bO()) {
+               if (this.e.bN()) {
                   this.e.a(this.e.dq(), this.e.ds(), this.e.dw(), $$5, $$6);
                   this.e.x().k().a(this.e);
                } else {
@@ -682,25 +682,25 @@ public class alq extends aln implements abd, alt, ta {
                      this.I++;
                      int $$15 = this.I - this.J;
                      if ($$15 > 5) {
-                        g.debug("{} is sending move packets too frequently ({} packets since last tick)", this.e.ac().getString(), $$15);
+                        g.debug("{} is sending move packets too frequently ({} packets since last tick)", this.e.ab().getString(), $$15);
                         $$15 = 1;
                      }
 
                      if (!this.e.M() && (!this.e.dL().X().b(cpr.s) || !this.e.fv())) {
                         float $$16 = this.e.fv() ? 300.0F : 100.0F;
                         if ($$14 - $$13 > (double)($$16 * (float)$$15) && !this.i()) {
-                           g.warn("{} moved too quickly! {},{},{}", new Object[]{this.e.ac().getString(), $$10, $$11, $$12});
+                           g.warn("{} moved too quickly! {},{},{}", new Object[]{this.e.ab().getString(), $$10, $$11, $$12});
                            this.a(this.e.dq(), this.e.ds(), this.e.dw(), this.e.dB(), this.e.dD());
                            return;
                         }
                      }
 
-                     ehi $$17 = this.e.cH();
+                     ehi $$17 = this.e.cG();
                      $$10 = $$2 - this.r;
                      $$11 = $$3 - this.s;
                      $$12 = $$4 - this.t;
                      boolean $$18 = $$11 > 0.0;
-                     if (this.e.aB() && !$$0.a() && $$18) {
+                     if (this.e.aA() && !$$0.a() && $$18) {
                         this.e.fa();
                      }
 
@@ -717,7 +717,7 @@ public class alq extends aln implements abd, alt, ta {
                      boolean $$21 = false;
                      if (!this.e.M() && $$14 > 0.0625 && !this.e.fC() && !this.e.e.e() && this.e.e.b() != cps.d) {
                         $$21 = true;
-                        g.warn("{} moved wrongly!", this.e.ac().getString());
+                        g.warn("{} moved wrongly!", this.e.ab().getString());
                      }
 
                      if (this.e.af || this.e.fC() || (!$$21 || !$$1.a(this.e, $$17)) && !this.a($$1, $$17, $$2, $$3, $$4)) {
@@ -754,7 +754,7 @@ public class alq extends aln implements abd, alt, ta {
    }
 
    private boolean a(cpy $$0, ehi $$1, double $$2, double $$3, double $$4) {
-      ehi $$5 = this.e.cH().d($$2 - this.e.dq(), $$3 - this.e.ds(), $$4 - this.e.dw());
+      ehi $$5 = this.e.cG().d($$2 - this.e.dq(), $$3 - this.e.ds(), $$4 - this.e.dw());
       Iterable<eig> $$6 = $$0.d(this.e, $$5.h(1.0E-5F));
       eig $$7 = eid.a($$1.h(1.0E-5F));
 
@@ -789,7 +789,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acf $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       gw $$1 = $$0.a();
       this.e.E();
       acf.a $$2 = $$0.e();
@@ -840,7 +840,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acx $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.c.a($$0.e());
       akr $$1 = this.e.x();
       bgx $$2 = $$0.a();
@@ -850,7 +850,7 @@ public class alq extends aln implements abd, alt, ta {
          ehn $$5 = $$4.e();
          gw $$6 = $$4.a();
          ehn $$7 = ehn.b($$6);
-         if (!(this.e.bq().g($$7) > d)) {
+         if (!(this.e.bp().g($$7) > d)) {
             ehn $$8 = $$5.d($$7);
             double $$9 = 1.0000001;
             if (Math.abs($$8.a()) < 1.0000001 && Math.abs($$8.b()) < 1.0000001 && Math.abs($$8.c()) < 1.0000001) {
@@ -861,14 +861,14 @@ public class alq extends aln implements abd, alt, ta {
                   if (this.B == null && this.e.i((double)$$6.u() + 0.5, (double)$$6.v() + 0.5, (double)$$6.w() + 0.5) < 64.0 && $$1.a(this.e, $$6)) {
                      bgy $$12 = this.e.e.a(this.e, $$1, $$3, $$2, $$4);
                      if ($$10 == hc.b && !$$12.a() && $$6.v() >= $$11 - 1 && a(this.e, $$3)) {
-                        tl $$13 = tl.a("build.tooHigh", $$11 - 1).a(n.m);
+                        tm $$13 = tm.a("build.tooHigh", $$11 - 1).a(n.m);
                         this.e.b($$13, true);
                      } else if ($$12.b()) {
                         this.e.a($$2, true);
                      }
                   }
                } else {
-                  tl $$14 = tl.a("build.tooHigh", $$11 - 1).a(n.m);
+                  tm $$14 = tm.a("build.tooHigh", $$11 - 1).a(n.m);
                   this.e.b($$14, true);
                }
 
@@ -883,7 +883,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acy $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.a($$0.d());
       akr $$1 = this.e.x();
       bgx $$2 = $$0.a();
@@ -899,7 +899,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acw $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.M_()) {
          for (akr $$1 : this.b.F()) {
             biq $$2 = $$0.a($$1);
@@ -913,15 +913,15 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acb $$0) {
-      vf.a($$0, this, this.e.x());
-      if (this.e.da() instanceof cdn $$2) {
+      vg.a($$0, this, this.e.x());
+      if (this.e.cZ() instanceof cdn $$2) {
          $$2.a($$0.a(), $$0.d());
       }
    }
 
    @Override
-   public void a(tl $$0) {
-      g.info("{} lost connection: {}", this.e.ac().getString(), $$0.getString());
+   public void a(tm $$0) {
+      g.info("{} lost connection: {}", this.e.ab().getString(), $$0.getString());
       this.q();
       super.a($$0);
    }
@@ -929,10 +929,10 @@ public class alq extends aln implements abd, alt, ta {
    private void q() {
       this.P.close();
       this.b.ar();
-      this.b.ac().a(tl.a("multiplayer.player.left", this.e.N_()).a(n.o), false);
+      this.b.ac().a(tm.a("multiplayer.player.left", this.e.N_()).a(n.o), false);
       this.e.s();
       this.b.ac().c(this.e);
-      this.e.W().b();
+      this.e.V().b();
    }
 
    public void a(int $$0) {
@@ -945,7 +945,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(aco $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if ($$0.a() >= 0 && $$0.a() < cbt.g()) {
          if (this.e.fR().l != $$0.a() && this.e.fn() == bgx.a) {
             this.e.fs();
@@ -954,30 +954,30 @@ public class alq extends aln implements abd, alt, ta {
          this.e.fR().l = $$0.a();
          this.e.E();
       } else {
-         g.warn("{} tried to set an invalid carried item", this.e.ac().getString());
+         g.warn("{} tried to set an invalid carried item", this.e.ab().getString());
       }
    }
 
    @Override
    public void a(abl $$0) {
       if (c($$0.a())) {
-         this.b(tl.c("multiplayer.disconnect.illegal_characters"));
+         this.b(tm.c("multiplayer.disconnect.illegal_characters"));
       } else {
-         Optional<tr> $$1 = this.a($$0.a(), $$0.d(), $$0.g());
+         Optional<ts> $$1 = this.a($$0.a(), $$0.d(), $$0.g());
          if ($$1.isPresent()) {
             this.b.g(() -> {
-               ua $$2;
+               ub $$2;
                try {
                   $$2 = this.a($$0, $$1.get());
-               } catch (ue.a var6) {
+               } catch (uf.a var6) {
                   this.a(var6);
                   return;
                }
 
                CompletableFuture<ali> $$5 = this.a($$2.b());
-               tl $$6 = this.b.bd().decorate(this.e, $$2.c());
+               tm $$6 = this.b.bd().decorate(this.e, $$2.c());
                this.P.append($$3 -> $$5.thenAcceptAsync($$2x -> {
-                     ua $$3x = $$2.a($$6).a($$2x.e());
+                     ub $$3x = $$2.a($$6).a($$2x.e());
                      this.b($$3x);
                   }, $$3));
             });
@@ -988,9 +988,9 @@ public class alq extends aln implements abd, alt, ta {
    @Override
    public void a(abk $$0) {
       if (c($$0.a())) {
-         this.b(tl.c("multiplayer.disconnect.illegal_characters"));
+         this.b(tm.c("multiplayer.disconnect.illegal_characters"));
       } else {
-         Optional<tr> $$1 = this.a($$0.a(), $$0.d(), $$0.g());
+         Optional<ts> $$1 = this.a($$0.a(), $$0.d(), $$0.g());
          if ($$1.isPresent()) {
             this.b.g(() -> {
                this.a($$0, $$1.get());
@@ -1000,13 +1000,13 @@ public class alq extends aln implements abd, alt, ta {
       }
    }
 
-   private void a(abk $$0, tr $$1) {
+   private void a(abk $$0, ts $$1) {
       ParseResults<dt> $$2 = this.b($$0.a());
 
-      Map<String, ua> $$3;
+      Map<String, ub> $$3;
       try {
-         $$3 = this.a($$0, uc.a($$2), $$1);
-      } catch (ue.a var6) {
+         $$3 = this.a($$0, ud.a($$2), $$1);
+      } catch (uf.a var6) {
          this.a(var6);
          return;
       }
@@ -1016,7 +1016,7 @@ public class alq extends aln implements abd, alt, ta {
       this.b.aC().a($$2, $$0.a());
    }
 
-   private void a(ue.a $$0) {
+   private void a(uf.a $$0) {
       if ($$0.a()) {
          this.b($$0.b());
       } else {
@@ -1024,12 +1024,12 @@ public class alq extends aln implements abd, alt, ta {
       }
    }
 
-   private Map<String, ua> a(abk $$0, uc<?> $$1, tr $$2) throws ue.a {
-      Map<String, ua> $$3 = new Object2ObjectOpenHashMap();
+   private Map<String, ub> a(abk $$0, ud<?> $$1, ts $$2) throws uf.a {
+      Map<String, ub> $$3 = new Object2ObjectOpenHashMap();
 
-      for (uc.a<?> $$4 : $$1.a()) {
-         tw $$5 = $$0.f().a($$4.a());
-         ud $$6 = new ud($$4.c(), $$0.d(), $$0.e(), $$2);
+      for (ud.a<?> $$4 : $$1.a()) {
+         tx $$5 = $$0.f().a($$4.a());
+         ue $$6 = new ue($$4.c(), $$0.d(), $$0.e(), $$2);
          $$3.put($$4.a(), this.M.unpack($$5, $$6));
       }
 
@@ -1038,18 +1038,18 @@ public class alq extends aln implements abd, alt, ta {
 
    private ParseResults<dt> b(String $$0) {
       CommandDispatcher<dt> $$1 = this.b.aC().a();
-      return $$1.parse($$0, this.e.dd());
+      return $$1.parse($$0, this.e.dc());
    }
 
-   private Optional<tr> a(String $$0, Instant $$1, tr.b $$2) {
+   private Optional<ts> a(String $$0, Instant $$1, ts.b $$2) {
       if (!this.a($$1)) {
-         g.warn("{} sent out-of-order chat: '{}'", this.e.ac().getString(), $$0);
-         this.b(tl.c("multiplayer.disconnect.out_of_order_chat"));
+         g.warn("{} sent out-of-order chat: '{}'", this.e.ab().getString(), $$0);
+         this.b(tm.c("multiplayer.disconnect.out_of_order_chat"));
          return Optional.empty();
       } else {
-         Optional<tr> $$3 = this.a($$2);
+         Optional<ts> $$3 = this.a($$2);
          if (this.e.B() == cbs.c) {
-            this.b(new aar(tl.c("chat.disabled.options").a(n.m), false));
+            this.b(new aar(tm.c("chat.disabled.options").a(n.m), false));
             return Optional.empty();
          } else {
             this.e.E();
@@ -1058,11 +1058,11 @@ public class alq extends aln implements abd, alt, ta {
       }
    }
 
-   private Optional<tr> a(tr.b $$0) {
+   private Optional<ts> a(ts.b $$0) {
       synchronized (this.N) {
-         Optional<tr> $$1 = this.N.a($$0);
+         Optional<ts> $$1 = this.N.a($$0);
          if ($$1.isEmpty()) {
-            g.warn("Failed to validate message acknowledgements from {}", this.e.ac().getString());
+            g.warn("Failed to validate message acknowledgements from {}", this.e.ab().getString());
             this.b(j);
          }
 
@@ -1092,20 +1092,20 @@ public class alq extends aln implements abd, alt, ta {
       return false;
    }
 
-   private ua a(abl $$0, tr $$1) throws ue.a {
-      ud $$2 = new ud($$0.a(), $$0.d(), $$0.e(), $$1);
+   private ub a(abl $$0, ts $$1) throws uf.a {
+      ue $$2 = new ue($$0.a(), $$0.d(), $$0.e(), $$1);
       return this.M.unpack($$0.f(), $$2);
    }
 
-   private void b(ua $$0) {
-      this.b.ac().a($$0, this.e, th.a(th.c, this.e));
+   private void b(ub $$0) {
+      this.b.ac().a($$0, this.e, ti.a(ti.c, this.e));
       this.r();
    }
 
    private void r() {
       this.m += 20;
       if (this.m > 200 && !this.b.ac().f(this.e.fQ())) {
-         this.b(tl.c("disconnect.spam"));
+         this.b(tm.c("disconnect.spam"));
       }
    }
 
@@ -1113,7 +1113,7 @@ public class alq extends aln implements abd, alt, ta {
    public void a(abj $$0) {
       synchronized (this.N) {
          if (!this.N.a($$0.a())) {
-            g.warn("Failed to validate message acknowledgements from {}", this.e.ac().getString());
+            g.warn("Failed to validate message acknowledgements from {}", this.e.ab().getString());
             this.b(j);
          }
       }
@@ -1121,14 +1121,14 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acv $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.E();
       this.e.a($$0.a());
    }
 
    @Override
    public void a(acg $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.E();
       switch ($$0.d()) {
          case a:
@@ -1150,7 +1150,7 @@ public class alq extends aln implements abd, alt, ta {
             }
             break;
          case f:
-            if (this.e.da() instanceof bjr $$1) {
+            if (this.e.cZ() instanceof bjr $$1) {
                int $$2 = $$0.e();
                if ($$1.a() && $$2 > 0) {
                   $$1.c($$2);
@@ -1158,12 +1158,12 @@ public class alq extends aln implements abd, alt, ta {
             }
             break;
          case g:
-            if (this.e.da() instanceof bjr $$3) {
+            if (this.e.cZ() instanceof bjr $$3) {
                $$3.b();
             }
             break;
          case h:
-            if (this.e.cZ() instanceof biz $$4) {
+            if (this.e.cY() instanceof biz $$4) {
                $$4.b(this.e);
             }
             break;
@@ -1177,8 +1177,8 @@ public class alq extends aln implements abd, alt, ta {
       }
    }
 
-   public void a(ua $$0) {
-      tw $$1 = $$0.k();
+   public void a(ub $$0) {
+      tx $$1 = $$0.k();
       if ($$1 != null) {
          this.O.a($$0);
          int $$2;
@@ -1188,17 +1188,17 @@ public class alq extends aln implements abd, alt, ta {
          }
 
          if ($$2 > 4096) {
-            this.b(tl.c("multiplayer.disconnect.too_many_pending_chats"));
+            this.b(tm.c("multiplayer.disconnect.too_many_pending_chats"));
          }
       }
    }
 
-   public void a(ua $$0, th.a $$1) {
+   public void a(ub $$0, ti.a $$1) {
       this.b(new yw($$0.j().c(), $$0.j().b(), $$0.k(), $$0.l().a(this.O), $$0.m(), $$0.n(), $$1.a(this.e.dL().G_())));
       this.a($$0);
    }
 
-   public void a(tl $$0, th.a $$1) {
+   public void a(tm $$0, ti.a $$1) {
       this.b(new xy($$0, $$1.a(this.e.dL().G_())));
    }
 
@@ -1219,7 +1219,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abw $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       final akr $$1 = this.e.x();
       final biq $$2 = $$0.a($$1);
       this.e.E();
@@ -1229,8 +1229,8 @@ public class alq extends aln implements abd, alt, ta {
             return;
          }
 
-         ehi $$3 = $$2.cH();
-         if ($$3.e(this.e.bq()) < d) {
+         ehi $$3 = $$2.cG();
+         if ($$3.e(this.e.bp()) < d) {
             $$0.a(new abw.c() {
                private void a(bgx $$0, alq.a $$1x) {
                   cjf $$2 = alq.this.e.b($$0);
@@ -1264,8 +1264,8 @@ public class alq extends aln implements abd, alt, ta {
                         alq.this.e.d($$2);
                      }
                   } else {
-                     alq.this.b(tl.c("multiplayer.disconnect.invalid_entity_attacked"));
-                     alq.g.warn("Player {} tried to attack an invalid entity", alq.this.e.ac().getString());
+                     alq.this.b(tm.c("multiplayer.disconnect.invalid_entity_attacked"));
+                     alq.g.warn("Player {} tried to attack an invalid entity", alq.this.e.ab().getString());
                   }
                }
             });
@@ -1275,7 +1275,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abo $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.E();
       abo.a $$1 = $$0.a();
       switch ($$1) {
@@ -1303,13 +1303,13 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abt $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.r();
    }
 
    @Override
    public void a(abs $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.E();
       if (this.e.bS.j == $$0.a()) {
          if (this.e.M_()) {
@@ -1319,7 +1319,7 @@ public class alq extends aln implements abd, alt, ta {
          } else {
             int $$1 = $$0.d();
             if (!this.e.bS.a($$1)) {
-               g.debug("Player {} clicked invalid slot index: {}, available slots: {}", new Object[]{this.e.ac(), $$1, this.e.bS.i.size()});
+               g.debug("Player {} clicked invalid slot index: {}, available slots: {}", new Object[]{this.e.ab(), $$1, this.e.bS.i.size()});
             } else {
                boolean $$2 = $$0.i() != this.e.bS.j();
                this.e.bS.h();
@@ -1345,7 +1345,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acd $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.E();
       if (!this.e.M_() && this.e.bS.j == $$0.a() && this.e.bS instanceof cfv) {
          if (!this.e.bS.a(this.e)) {
@@ -1358,7 +1358,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abr $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.E();
       if (this.e.bS.j == $$0.a() && !this.e.M_()) {
          if (!this.e.bS.a(this.e)) {
@@ -1374,7 +1374,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(acr $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.e.e()) {
          boolean $$1 = $$0.a() < 0;
          cjf $$2 = $$0.d();
@@ -1382,7 +1382,7 @@ public class alq extends aln implements abd, alt, ta {
             return;
          }
 
-         qx $$3 = cgy.a($$2);
+         qy $$3 = cgy.a($$2);
          if (!$$2.b() && $$3 != null && $$3.e("x") && $$3.e("y") && $$3.e("z")) {
             gw $$4 = dcv.c($$3);
             if (this.e.dL().o($$4)) {
@@ -1426,19 +1426,19 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(ace $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.e.fS().b = $$0.a() && this.e.fS().c;
    }
 
    @Override
-   public void a(vo $$0) {
-      vf.a($$0, this, this.e.x());
+   public void a(vp $$0) {
+      vg.a($$0, this, this.e.x());
       this.e.a($$0.a());
    }
 
    @Override
    public void a(abi $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.l(2) || this.i()) {
          this.b.a($$0.a(), false);
       }
@@ -1446,7 +1446,7 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(aby $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       if (this.e.l(2) || this.i()) {
          this.b.b($$0.a());
       }
@@ -1454,8 +1454,8 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abm $$0) {
-      vf.a($$0, this, this.e.x());
-      ub.a $$1 = $$0.a();
+      vg.a($$0, this, this.e.x());
+      uc.a $$1 = $$0.a();
       cbx.a $$2 = this.L != null ? this.L.d().b() : null;
       cbx.a $$3 = $$1.b();
       if (!Objects.equals($$2, $$3)) {
@@ -1489,13 +1489,13 @@ public class alq extends aln implements abd, alt, ta {
 
    @Override
    public void a(abn $$0) {
-      vf.a($$0, this, this.e.x());
+      vg.a($$0, this, this.e.x());
       this.f.a($$0.a());
    }
 
-   private void a(ub $$0) {
+   private void a(uc $$0) {
       this.L = $$0;
-      this.M = $$0.a(this.e.cw());
+      this.M = $$0.a(this.e.cv());
       this.P.append($$1 -> {
          this.e.a($$0);
          this.b.ac().a(new zb(EnumSet.of(zb.a.b), List.of(this.e)));

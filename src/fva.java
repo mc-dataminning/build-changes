@@ -13,7 +13,7 @@ public class fva extends fun<bvl, fgo<bvl>> {
    }
 
    public aex a(bvl $$0) {
-      String $$1 = n.a($$0.ac().getString());
+      String $$1 = n.a($$0.ab().getString());
       if ("Toast".equals($$1)) {
          return n;
       } else {

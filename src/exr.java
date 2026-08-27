@@ -5,23 +5,23 @@ public class exr extends eyk {
    private static final int b = 120;
    private static final int c = 360;
    @Nullable
-   private final tl k;
-   private final tl l;
+   private final tm k;
+   private final tm l;
    private final Runnable m;
    @Nullable
    private etj n;
    private esq o;
    private int p;
 
-   public static exr a(tl $$0, tl $$1, Runnable $$2) {
+   public static exr a(tm $$0, tm $$1, Runnable $$2) {
       return new exr($$0, null, $$1, $$2, 0);
    }
 
-   public static exr a(tl $$0, tl $$1, tl $$2, Runnable $$3) {
+   public static exr a(tm $$0, tm $$1, tm $$2, Runnable $$3) {
       return new exr($$0, $$1, $$2, $$3, 20);
    }
 
-   protected exr(tl $$0, @Nullable tl $$1, tl $$2, Runnable $$3, int $$4) {
+   protected exr(tm $$0, @Nullable tm $$1, tm $$2, Runnable $$3, int $$4) {
       super($$0);
       this.k = $$1;
       this.l = $$2;
@@ -76,7 +76,7 @@ public class exr extends eyk {
    }
 
    @Override
-   public tl g() {
-      return tk.a(this.e, this.k != null ? this.k : tk.a);
+   public tm g() {
+      return tl.a(this.e, this.k != null ? this.k : tl.a);
    }
 }

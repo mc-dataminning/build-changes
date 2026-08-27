@@ -20,7 +20,7 @@ public abstract class bkb extends bur implements bjo {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.d() != null) {
          $$0.a("Owner", this.d());
@@ -30,14 +30,14 @@ public abstract class bkb extends bur implements bjo {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       UUID $$1;
       if ($$0.b("Owner")) {
          $$1 = $$0.a("Owner");
       } else {
          String $$2 = $$0.l("Owner");
-         $$1 = aog.a(this.cL(), $$2);
+         $$1 = aog.a(this.cK(), $$2);
       }
 
       if ($$1 != null) {
@@ -126,7 +126,7 @@ public abstract class bkb extends bur implements bjo {
 
    public void f(cbu $$0) {
       this.x(true);
-      this.b($$0.cw());
+      this.b($$0.cv());
       if ($$0 instanceof aks) {
          al.x.a((aks)$$0, this);
       }
@@ -146,15 +146,15 @@ public abstract class bkb extends bur implements bjo {
    }
 
    @Override
-   public eio cg() {
+   public eio cf() {
       if (this.s()) {
          bjg $$0 = this.O_();
          if ($$0 != null) {
-            return $$0.cg();
+            return $$0.cf();
          }
       }
 
-      return super.cg();
+      return super.cf();
    }
 
    @Override

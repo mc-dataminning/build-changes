@@ -30,10 +30,10 @@ public class bpy extends bqb {
 
    @Override
    public boolean a() {
-      List<bji> $$0 = this.a.dL().a(bji.class, this.a.cH().g((double)this.i), this.b);
+      List<bji> $$0 = this.a.dL().a(bji.class, this.a.cG().g((double)this.i), this.b);
       if (!$$0.isEmpty()) {
          for (bji $$1 : $$0) {
-            if (!$$1.ce()) {
+            if (!$$1.cd()) {
                this.c = $$1;
                return true;
             }
@@ -65,7 +65,7 @@ public class bpy extends bqb {
    @Override
    public void e() {
       if (this.c != null && !this.a.fR()) {
-         this.a.G().a(this.c, 10.0F, (float)this.a.Z());
+         this.a.G().a(this.c, 10.0F, (float)this.a.Y());
          if (--this.f <= 0) {
             this.f = this.a(10);
             double $$0 = this.a.dq() - this.c.dq();

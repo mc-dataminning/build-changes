@@ -61,7 +61,7 @@ public record cr(cl.d d, Optional<cps> e, List<cr.e<?>> f, Object2BooleanMap<aex
 
          if (!this.h.isEmpty()) {
             aff $$9 = $$3.O();
-            afj $$10 = $$3.cL().az();
+            afj $$10 = $$3.cK().az();
 
             for (java.util.Map.Entry<aex, cr.c> $$11 : this.h.entrySet()) {
                af $$12 = $$10.a($$11.getKey());
@@ -72,7 +72,7 @@ public record cr(cl.d d, Optional<cps> e, List<cr.e<?>> f, Object2BooleanMap<aex
          }
 
          if (this.i.isPresent()) {
-            ehn $$13 = $$3.bq();
+            ehn $$13 = $$3.bp();
             ehn $$14 = $$3.f(1.0F);
             ehn $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
             ehk $$16 = ccn.a($$3.dL(), $$3, $$13, $$15, new ehi($$13, $$15).g(1.0), $$0x -> !$$0x.M_(), 0.0F);

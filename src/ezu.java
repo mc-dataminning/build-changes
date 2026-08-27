@@ -3,7 +3,7 @@ public class ezu extends ezi<cfa> implements fcc {
    private final fbw y = new fbw();
    private boolean z;
 
-   public ezu(cfa $$0, cbt $$1, tl $$2) {
+   public ezu(cfa $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
    }
 
@@ -24,8 +24,8 @@ public class ezu extends ezi<cfa> implements fcc {
    }
 
    @Override
-   public void C() {
-      super.C();
+   public void D() {
+      super.D();
       this.y.h();
    }
 
@@ -79,12 +79,12 @@ public class ezu extends ezi<cfa> implements fcc {
    }
 
    @Override
-   public void E() {
+   public void F() {
       this.y.i();
    }
 
    @Override
-   public fbw F() {
+   public fbw G() {
       return this.y;
    }
 }

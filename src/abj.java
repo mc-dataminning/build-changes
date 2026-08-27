@@ -1,10 +1,10 @@
-public record abj(int a) implements vd<abd> {
-   public abj(so $$0) {
+public record abj(int a) implements ve<abd> {
+   public abj(sp $$0) {
       this($$0.m());
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
    }
 

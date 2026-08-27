@@ -16,7 +16,7 @@ public class fxe extends fxp<bws, ffo<bws>> {
 
    public void a(elp $$0, foe $$1, int $$2, bws $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
       aex $$10 = a.get($$3.gd());
-      if ($$10 != null && !$$3.ce()) {
+      if ($$10 != null && !$$3.cd()) {
          elt $$11 = $$1.getBuffer(fom.i($$10));
          this.c().a($$0, $$11, $$2, fui.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }

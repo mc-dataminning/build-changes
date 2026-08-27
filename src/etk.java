@@ -6,11 +6,11 @@ public class etk extends esn {
    private final ask<etk.a, etj> c;
    private boolean d = false;
 
-   public etk(tl $$0, esd $$1) {
+   public etk(tm $$0, esd $$1) {
       this(0, 0, $$0, $$1);
    }
 
-   public etk(int $$0, int $$1, tl $$2, esd $$3) {
+   public etk(int $$0, int $$1, tm $$2, esd $$3) {
       super($$0, $$1, 0, 0, $$2, $$3);
       this.c = ac.a($$1x -> $$1x.c.isPresent() ? etj.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : etj.a($$3, $$1x.a, $$1x.b));
       this.i = false;
@@ -64,6 +64,6 @@ public class etk extends esn {
       return new etk.a(this.m(), this.a.orElse(Integer.MAX_VALUE), this.b);
    }
 
-   static record a(tl a, int b, OptionalInt c) {
+   static record a(tm a, int b, OptionalInt c) {
    }
 }

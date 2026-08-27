@@ -1,23 +1,23 @@
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record yw(UUID a, int b, @Nullable tw c, ud.a d, @Nullable tl e, to f, th.b g) implements vd<ww> {
-   public yw(so $$0) {
-      this($$0.o(), $$0.m(), $$0.c(tw::a), new ud.a($$0), $$0.c(so::l), to.a($$0), new th.b($$0));
+public record yw(UUID a, int b, @Nullable tx c, ue.a d, @Nullable tm e, tp f, ti.b g) implements ve<wx> {
+   public yw(sp $$0) {
+      this($$0.o(), $$0.m(), $$0.c(tx::a), new ue.a($$0), $$0.c(sp::l), tp.a($$0), new ti.b($$0));
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.c(this.b);
-      $$0.a(this.c, tw::a);
+      $$0.a(this.c, tx::a);
       this.d.a($$0);
-      $$0.a(this.e, so::a);
-      to.a($$0, this.f);
+      $$0.a(this.e, sp::a);
+      tp.a($$0, this.f);
       this.g.a($$0);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -31,24 +31,24 @@ public record yw(UUID a, int b, @Nullable tw c, ud.a d, @Nullable tl e, to f, th
    }
 
    @Nullable
-   public tw e() {
+   public tx e() {
       return this.c;
    }
 
-   public ud.a f() {
+   public ue.a f() {
       return this.d;
    }
 
    @Nullable
-   public tl g() {
+   public tm g() {
       return this.e;
    }
 
-   public to h() {
+   public tp h() {
       return this.f;
    }
 
-   public th.b i() {
+   public ti.b i() {
       return this.g;
    }
 }

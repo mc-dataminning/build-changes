@@ -31,7 +31,7 @@ public class aki extends akt {
             if ($$1 == 6L) {
                this.d.c.b(new yc(yc.f, 104.0F));
             } else {
-               this.d.a(tl.c("demo.day." + $$1));
+               this.d.a(tm.c("demo.day." + $$1));
             }
          }
       } else if ($$1 == 1L) {
@@ -43,13 +43,13 @@ public class aki extends akt {
             this.d.c.b(new yc(yc.f, 103.0F));
          }
       } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(tl.c("demo.day.warning"));
+         this.d.a(tm.c("demo.day.warning"));
       }
    }
 
    private void f() {
       if (this.g > 100) {
-         this.d.a(tl.c("demo.reminder"));
+         this.d.a(tm.c("demo.reminder"));
          this.g = 0;
       }
    }

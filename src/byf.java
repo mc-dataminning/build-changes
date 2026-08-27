@@ -72,11 +72,11 @@ public abstract class byf extends biq {
    @Override
    public void l() {
       if (!this.dL().B) {
-         this.as();
+         this.ar();
          if (this.f++ == 100) {
             this.f = 0;
             if (!this.dG() && !this.z()) {
-               this.al();
+               this.ak();
                this.a(null);
             }
          }
@@ -105,12 +105,12 @@ public abstract class byf extends biq {
             }
          }
 
-         return this.dL().a(this, this.cH(), b).isEmpty();
+         return this.dL().a(this, this.cG(), b).isEmpty();
       }
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return true;
    }
 
@@ -124,7 +124,7 @@ public abstract class byf extends biq {
    }
 
    @Override
-   public hc cE() {
+   public hc cD() {
       return this.d;
    }
 
@@ -134,8 +134,8 @@ public abstract class byf extends biq {
          return false;
       } else {
          if (!this.dG() && !this.dL().B) {
-            this.ak();
-            this.bp();
+            this.aj();
+            this.bo();
             this.a($$0.d());
          }
 
@@ -146,7 +146,7 @@ public abstract class byf extends biq {
    @Override
    public void a(bjm $$0, ehn $$1) {
       if (!this.dL().B && !this.dG() && $$1.g() > 0.0) {
-         this.ak();
+         this.aj();
          this.a(null);
       }
    }
@@ -154,13 +154,13 @@ public abstract class byf extends biq {
    @Override
    public void j(double $$0, double $$1, double $$2) {
       if (!this.dL().B && !this.dG() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
-         this.ak();
+         this.aj();
          this.a(null);
       }
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       gw $$1 = this.E();
       $$0.a("TileX", $$1.u());
       $$0.a("TileY", $$1.v());
@@ -168,7 +168,7 @@ public abstract class byf extends biq {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       gw $$1 = new gw($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
       if (!$$1.a(this.dl(), 16.0)) {
          e.error("Hanging entity at invalid position: {}", $$1);
@@ -196,7 +196,7 @@ public abstract class byf extends biq {
    }
 
    @Override
-   protected boolean bu() {
+   protected boolean bt() {
       return false;
    }
 

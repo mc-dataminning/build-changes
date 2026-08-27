@@ -2,7 +2,7 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import java.util.List;
 
-public class aab implements vd<ww> {
+public class aab implements ve<wx> {
    private static final byte a = -128;
    private final int b;
    private final List<Pair<biv, cjf>> c;
@@ -12,7 +12,7 @@ public class aab implements vd<ww> {
       this.c = $$1;
    }
 
-   public aab(so $$0) {
+   public aab(sp $$0) {
       this.b = $$0.m();
       biv[] $$1 = biv.values();
       this.c = Lists.newArrayList();
@@ -27,7 +27,7 @@ public class aab implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.b);
       int $$1 = this.c.size();
 
@@ -41,7 +41,7 @@ public class aab implements vd<ww> {
       }
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

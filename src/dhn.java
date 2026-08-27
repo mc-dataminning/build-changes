@@ -34,11 +34,11 @@ public class dhn<T> implements dhw<T> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
    }
 
    @Override
-   public void b(so $$0) {
+   public void b(sp $$0) {
    }
 
    @Override

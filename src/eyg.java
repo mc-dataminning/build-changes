@@ -6,22 +6,22 @@ public class eyg extends eyk {
    private static final int a = 20;
    private static final int b = 5;
    private static final int c = 20;
-   private final tl k;
-   private final tp l;
+   private final tm k;
+   private final tq l;
    private final ImmutableList<eyg.a> m;
    private etj n = etj.a;
    private int o;
    private int p;
 
-   protected eyg(tl $$0, List<tl> $$1, ImmutableList<eyg.a> $$2) {
+   protected eyg(tm $$0, List<tm> $$1, ImmutableList<eyg.a> $$2) {
       super($$0);
-      this.l = tp.a($$1);
-      this.k = tk.a($$0, tn.a($$1, tk.a));
+      this.l = tq.a($$1);
+      this.k = tl.a($$0, to.a($$1, tl.a));
       this.m = $$2;
    }
 
    @Override
-   public tl g() {
+   public tm g() {
       return this.k;
    }
 
@@ -66,10 +66,10 @@ public class eyg extends eyk {
    }
 
    public static final class a {
-      final tl a;
+      final tm a;
       final esq.c b;
 
-      public a(tl $$0, esq.c $$1) {
+      public a(tm $$0, esq.c $$1) {
          this.a = $$0;
          this.b = $$1;
       }

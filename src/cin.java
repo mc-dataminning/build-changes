@@ -14,8 +14,8 @@ public class cin<T extends biq & bjd> extends cja {
       if ($$0.B) {
          return bgz.c($$3);
       } else {
-         biq $$4 = $$1.da();
-         if ($$1.bO() && $$4 instanceof bjd $$5 && $$4.ah() == this.a && $$5.a()) {
+         biq $$4 = $$1.cZ();
+         if ($$1.bN() && $$4 instanceof bjd $$5 && $$4.ag() == this.a && $$5.a()) {
             $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
             if ($$3.b()) {
                cjf $$6 = new cjf(cji.qh);

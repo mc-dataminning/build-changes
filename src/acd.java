@@ -1,4 +1,4 @@
-public class acd implements vd<abd> {
+public class acd implements ve<abd> {
    private final int a;
    private final aex b;
    private final boolean c;
@@ -9,14 +9,14 @@ public class acd implements vd<abd> {
       this.c = $$2;
    }
 
-   public acd(so $$0) {
+   public acd(sp $$0) {
       this.a = $$0.readByte();
       this.b = $$0.s();
       this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.a);
       $$0.a(this.b);
       $$0.a(this.c);

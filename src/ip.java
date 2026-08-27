@@ -9,7 +9,7 @@ public class ip implements iv {
          return new ip($$0, fi.a(jd.f.p(), $$1, false).a());
       }
 
-      public ip a(iw<ip> $$0, so $$1) {
+      public ip a(iw<ip> $$0, sp $$1) {
          return new ip($$0, $$1.a(csv.o));
       }
    };
@@ -26,7 +26,7 @@ public class ip implements iv {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(csv.o, this.c);
    }
 

@@ -26,25 +26,25 @@ public class ema extends gfb {
    static final Logger D = LogUtils.getLogger();
    private static final aex E = new aex("textures/gui/title/realms.png");
    private static final aex F = new aex("textures/gui/realms/no_realms.png");
-   private static final tl G = tl.c("menu.online");
-   private static final tl H = tl.c("mco.selectServer.loading");
-   static final tl I = tl.c("mco.selectServer.uninitialized").a(n.k);
-   static final tl J = tl.c("mco.selectServer.expiredList");
-   private static final tl K = tl.c("mco.selectServer.expiredRenew");
-   static final tl L = tl.c("mco.selectServer.expiredTrial");
-   static final tl M = tl.c("mco.selectServer.minigame").b(tk.u);
-   private static final tl N = tl.c("mco.selectServer.play");
-   private static final tl O = tl.c("mco.selectServer.leave");
-   private static final tl P = tl.c("mco.selectServer.configure");
-   static final tl Q = tl.c("mco.selectServer.expired");
-   static final tl R = tl.c("mco.selectServer.expires.soon");
-   static final tl S = tl.c("mco.selectServer.expires.day");
-   static final tl T = tl.c("mco.selectServer.open");
-   static final tl U = tl.c("mco.selectServer.closed");
-   static final tl V = tl.a("gui.narrate.button", I);
-   private static final tl W = tl.c("mco.selectServer.noRealms");
-   private static final eua X = eua.a(tl.c("mco.invites.nopending"));
-   private static final eua Y = eua.a(tl.c("mco.invites.pending"));
+   private static final tm G = tm.c("menu.online");
+   private static final tm H = tm.c("mco.selectServer.loading");
+   static final tm I = tm.c("mco.selectServer.uninitialized").a(n.k);
+   static final tm J = tm.c("mco.selectServer.expiredList");
+   private static final tm K = tm.c("mco.selectServer.expiredRenew");
+   static final tm L = tm.c("mco.selectServer.expiredTrial");
+   static final tm M = tm.c("mco.selectServer.minigame").b(tl.u);
+   private static final tm N = tm.c("mco.selectServer.play");
+   private static final tm O = tm.c("mco.selectServer.leave");
+   private static final tm P = tm.c("mco.selectServer.configure");
+   static final tm Q = tm.c("mco.selectServer.expired");
+   static final tm R = tm.c("mco.selectServer.expires.soon");
+   static final tm S = tm.c("mco.selectServer.expires.day");
+   static final tm T = tm.c("mco.selectServer.open");
+   static final tm U = tm.c("mco.selectServer.closed");
+   static final tm V = tm.a("gui.narrate.button", I);
+   private static final tm W = tm.c("mco.selectServer.noRealms");
+   private static final eua X = eua.a(tm.c("mco.invites.nopending"));
+   private static final eua Y = eua.a(tm.c("mco.invites.pending"));
    private static final int Z = 100;
    private static final int aa = 3;
    private static final int ab = 4;
@@ -94,9 +94,9 @@ public class ema extends gfb {
       this.aA = new ReentrantLock();
       this.aw = new enx(this.f);
       this.av = this.d(new ema.g());
-      tl $$0 = tl.c("mco.invites.title");
+      tm $$0 = tm.c("mco.invites.title");
       this.aD = new ema.e($$0, B, $$1x -> this.f.a(new eoq(this, $$0)));
-      tl $$1 = tl.c("mco.news");
+      tm $$1 = tm.c("mco.news");
       this.aE = new ema.e($$1, C, $$0x -> {
          if (this.ay != null) {
             exc.a(this.ay, this, true);
@@ -109,14 +109,14 @@ public class ema extends gfb {
          }
       });
       this.aE.a(eua.a($$1));
-      this.aq = esq.a(N, $$0x -> this.a(this.I(), this)).a(100).a();
-      this.at = esq.a(P, $$0x -> this.f(this.I())).a(100).a();
-      this.as = esq.a(K, $$0x -> this.e(this.I())).a(100).a();
-      this.au = esq.a(O, $$0x -> this.g(this.I())).a(100).a();
-      this.aC = esq.a(tl.c("mco.selectServer.purchase"), $$0x -> this.J()).b(100, 20).a();
-      this.ar = esq.a(tk.k, $$0x -> this.f.a(this.ap)).a(100).a();
+      this.aq = esq.a(N, $$0x -> this.a(this.J(), this)).a(100).a();
+      this.at = esq.a(P, $$0x -> this.f(this.J())).a(100).a();
+      this.as = esq.a(K, $$0x -> this.e(this.J())).a(100).a();
+      this.au = esq.a(O, $$0x -> this.g(this.J())).a(100).a();
+      this.aC = esq.a(tm.c("mco.selectServer.purchase"), $$0x -> this.K()).b(100, 20).a();
+      this.ar = esq.a(tl.k, $$0x -> this.f.a(this.ap)).a(100).a();
       this.a(ema.d.a);
-      this.E();
+      this.F();
       this.ak.thenAcceptAsync($$0x -> {
          eyk $$1x = $$0x.a(this.ap);
          if ($$1x == null) {
@@ -153,7 +153,7 @@ public class ema extends gfb {
    private evz b(ema.d $$0) {
       evz $$1 = new evz(this);
       $$1.b(44);
-      $$1.a(this.C());
+      $$1.a(this.D());
       ewa $$2 = this.c($$0);
       $$2.a();
       $$1.a($$2.i() + 20);
@@ -163,13 +163,13 @@ public class ema extends gfb {
             $$1.c(new etf(this.i, H));
             break;
          case b:
-            $$1.c(this.D());
+            $$1.c(this.E());
       }
 
       return $$1;
    }
 
-   private ewa C() {
+   private ewa D() {
       int $$0 = 90;
       ewd $$1 = ewd.e().a(4);
       $$1.c().e();
@@ -198,7 +198,7 @@ public class ema extends gfb {
       return $$1;
    }
 
-   private ewd D() {
+   private ewd E() {
       ewd $$0 = ewd.d().a(10);
       $$0.c().b();
       $$0.a(etd.a(130, 64, F, 130, 64));
@@ -207,8 +207,8 @@ public class ema extends gfb {
       return $$0;
    }
 
-   void E() {
-      emw $$0 = this.I();
+   void F() {
+      emw $$0 = this.J();
       this.aC.i = this.aF != ema.d.a;
       this.aq.i = this.a($$0);
       this.as.i = this.b($$0);
@@ -261,22 +261,22 @@ public class ema extends gfb {
          }
 
          this.a(this.aw.a() ? ema.d.b : ema.d.c);
-         this.F();
+         this.G();
          if (!an && $$1x) {
             an = true;
-            this.G();
+            this.H();
          }
       });
       a(emf::c, $$0x -> {
          this.aB.clear();
          this.aB.addAll($$0x);
-         this.F();
+         this.G();
       });
       $$1.a($$0.e, $$0x -> {
          this.aD.a($$0x);
          this.aD.a($$0x == 0 ? X : Y);
          if ($$0x > 0 && this.ao.tryAcquire(1)) {
-            this.f.aV().c(tl.a("mco.configure.world.invite.narration", $$0x));
+            this.f.aV().c(tm.a("mco.configure.world.invite.narration", $$0x));
          }
       });
       $$1.a($$0.f, $$0x -> this.ax = $$0x);
@@ -312,8 +312,8 @@ public class ema extends gfb {
       });
    }
 
-   private void F() {
-      emw $$0 = this.I();
+   private void G() {
+      emw $$0 = this.J();
       this.av.w();
       List<UUID> $$1 = new ArrayList<>();
 
@@ -339,7 +339,7 @@ public class ema extends gfb {
          }
       }
 
-      this.E();
+      this.F();
    }
 
    private void a(ema.g $$0, emv $$1) {
@@ -349,13 +349,13 @@ public class ema extends gfb {
       }
    }
 
-   private void G() {
+   private void H() {
       new Thread(() -> {
          List<eng> $$0 = eme.a();
          emf $$1 = emf.a();
          emr $$2 = new emr();
          $$2.a = $$0;
-         $$2.b = this.H();
+         $$2.b = this.I();
 
          try {
             $$1.a($$2);
@@ -365,7 +365,7 @@ public class ema extends gfb {
       }).start();
    }
 
-   private List<Long> H() {
+   private List<Long> I() {
       List<Long> $$0 = Lists.newArrayList();
 
       for (emw $$1 : this.aw) {
@@ -393,14 +393,14 @@ public class ema extends gfb {
 
    private void g(@Nullable emw $$0) {
       if ($$0 != null && !this.f.b($$0.g)) {
-         tl $$1 = tl.c("mco.configure.world.leave.question.line1");
-         tl $$2 = tl.c("mco.configure.world.leave.question.line2");
+         tm $$1 = tm.c("mco.configure.world.leave.question.line1");
+         tm $$2 = tm.c("mco.configure.world.leave.question.line2");
          this.f.a(new eol($$1x -> this.a($$1x, $$0), eol.a.b, $$1, $$2, true));
       }
    }
 
    @Nullable
-   private emw I() {
+   private emw J() {
       ema.c $$0 = this.av.f();
       return $$0 != null ? $$0.b() : null;
    }
@@ -432,7 +432,7 @@ public class ema extends gfb {
          return $$2 != null && $$2.a == $$0.a;
       });
       this.av.a(null);
-      this.E();
+      this.F();
    }
 
    void a(UUID $$0) {
@@ -441,7 +441,7 @@ public class ema extends gfb {
          return null;
       }, $$1 -> {
          this.aB.removeIf($$1x -> $$1x.b() && $$0.equals($$1x.c()));
-         this.F();
+         this.G();
       });
    }
 
@@ -450,10 +450,10 @@ public class ema extends gfb {
    }
 
    @Override
-   public tl g() {
-      return (tl)(switch (this.aF) {
-         case a -> tk.a(super.g(), H);
-         case b -> tk.a(super.g(), W);
+   public tm g() {
+      return (tm)(switch (this.aF) {
+         case a -> tl.a(super.g(), H);
+         case b -> tl.a(super.g(), W);
          case c -> super.g();
       });
    }
@@ -474,7 +474,7 @@ public class ema extends gfb {
       }
    }
 
-   private void J() {
+   private void K() {
       this.f.a(new eos(this, this.ax));
    }
 
@@ -545,7 +545,7 @@ public class ema extends gfb {
       }
 
       @Override
-      public tl a() {
+      public tm a() {
          return this.c.m();
       }
    }
@@ -553,7 +553,7 @@ public class ema extends gfb {
    static class b extends etc {
       private static final euc b = new euc(new aex("widget/cross_button"), new aex("widget/cross_button_highlighted"));
 
-      protected b(esq.c $$0, tl $$1) {
+      protected b(esq.c $$0, tm $$1) {
          super(0, 0, 14, 14, b, $$0);
          this.a(eua.a($$1));
       }
@@ -586,7 +586,7 @@ public class ema extends gfb {
       private static final int u = 14;
       private int v;
 
-      public e(tl $$0, aex $$1, esq.c $$2) {
+      public e(tm $$0, aex $$1, esq.c $$2) {
          super(20, 20, $$0, 14, 14, $$1, $$2);
       }
 
@@ -615,7 +615,7 @@ public class ema extends gfb {
       private static final int c = 40;
       private static final int d = 36;
       private static final int e = -12303292;
-      private final tl f;
+      private final tm f;
       private final List<eso> g = new ArrayList<>();
       @Nullable
       private final ema.b h;
@@ -624,7 +624,7 @@ public class ema extends gfb {
       private final evx k;
       private int l = -1;
 
-      public f(tl $$0, emv $$1) {
+      public f(tm $$0, emv $$1) {
          this.f = $$0;
          this.j = new evy();
          int $$2 = 7;
@@ -634,7 +634,7 @@ public class ema extends gfb {
          this.i = this.k.a(new etk($$0, ema.this.i).b(true).k(3), this.k.b().b().d());
          this.j.a(ewe.a(40), 0, 2);
          if ($$1.b()) {
-            this.h = this.j.a(new ema.b($$1x -> ema.this.a($$1.c()), tl.c("mco.notification.dismiss")), 0, 2, this.j.b().c().a(0, 7, 7, 0));
+            this.h = this.j.a(new ema.b($$1x -> ema.this.a($$1.c()), tm.c("mco.notification.dismiss")), 0, 2, this.j.b().c().a(0, 7, 7, 0));
          } else {
             this.h = null;
          }
@@ -684,7 +684,7 @@ public class ema extends gfb {
       }
 
       @Override
-      public tl a() {
+      public tm a() {
          return this.f;
       }
    }
@@ -696,7 +696,7 @@ public class ema extends gfb {
 
       public void a(@Nullable ema.c $$0) {
          super.a($$0);
-         ema.this.E();
+         ema.this.F();
       }
 
       @Override
@@ -741,12 +741,12 @@ public class ema extends gfb {
                   && $$7 <= $$2 + 10
                   && $$7 < ema.this.h - 40
                   && $$7 > 32) {
-                  ema.this.d(tl.b(this.d.r.b));
+                  ema.this.d(tm.b(this.d.r.b));
                }
             }
 
             if (ema.this.i(this.d) && this.d.j) {
-               tl $$14 = this.d.k ? ema.L : ema.J;
+               tm $$14 = this.d.k ? ema.L : ema.J;
                int $$15 = $$2 + 11 + 5;
                $$0.a(ema.this.i, $$14, $$3 + 36 + 2, $$15 + 1, 15553363, false);
             } else {
@@ -823,7 +823,7 @@ public class ema extends gfb {
                if ($$0.l <= 0) {
                   return ema.R;
                } else {
-                  return (tl)($$0.l == 1 ? ema.S : tl.a("mco.selectServer.expires.days", $$0.l));
+                  return (tm)($$0.l == 1 ? ema.S : tm.a("mco.selectServer.expires.days", $$0.l));
                }
             });
          } else if ($$0.e == emw.b.b) {
@@ -831,7 +831,7 @@ public class ema extends gfb {
          }
       }
 
-      private void a(esf $$0, int $$1, int $$2, int $$3, int $$4, aex $$5, Supplier<tl> $$6) {
+      private void a(esf $$0, int $$1, int $$2, int $$3, int $$4, aex $$5, Supplier<tm> $$6) {
          $$0.a($$5, $$1, $$2, 10, 28);
          if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27 && $$4 < ema.this.h - 40 && $$4 > 32) {
             ema.this.d($$6.get());
@@ -839,8 +839,8 @@ public class ema extends gfb {
       }
 
       @Override
-      public tl a() {
-         return (tl)(this.d.e == emw.b.c ? ema.V : tl.a("narrator.select", this.d.c));
+      public tm a() {
+         return (tm)(this.d.e == emw.b.c ? ema.V : tm.a("narrator.select", this.d.c));
       }
 
       @Nullable

@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public class aaq implements vd<ww> {
+public class aaq implements ve<wx> {
    private static final int a = 1;
    private static final int b = 2;
    @Nullable
@@ -13,7 +13,7 @@ public class aaq implements vd<ww> {
       this.d = $$1;
    }
 
-   public aaq(so $$0) {
+   public aaq(sp $$0) {
       int $$1 = $$0.readByte();
       if (($$1 & 1) > 0) {
          this.d = $$0.b(apf.class);
@@ -29,7 +29,7 @@ public class aaq implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       if (this.d != null) {
          if (this.c != null) {
             $$0.k(3);
@@ -57,7 +57,7 @@ public class aaq implements vd<ww> {
       return this.d;
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 }

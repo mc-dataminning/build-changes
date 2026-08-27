@@ -8,12 +8,12 @@ import javax.annotation.Nullable;
 public class esx<T> extends esi {
    public static final BooleanSupplier a = eyk::r;
    private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final tl c;
+   private final tm c;
    private int d;
    private T l;
    private final esx.c<T> m;
-   private final Function<T, tl> n;
-   private final Function<esx<T>, ty> o;
+   private final Function<T, tm> n;
+   private final Function<esx<T>, tz> o;
    private final esx.b<T> p;
    private final boolean q;
    private final eqy.l<T> s;
@@ -23,13 +23,13 @@ public class esx<T> extends esi {
       int $$1,
       int $$2,
       int $$3,
-      tl $$4,
-      tl $$5,
+      tm $$4,
+      tm $$5,
       int $$6,
       T $$7,
       esx.c<T> $$8,
-      Function<T, tl> $$9,
-      Function<esx<T>, ty> $$10,
+      Function<T, tm> $$9,
+      Function<esx<T>, tz> $$10,
       esx.b<T> $$11,
       eqy.l<T> $$12,
       boolean $$13
@@ -95,18 +95,18 @@ public class esx<T> extends esi {
    }
 
    private void b(T $$0) {
-      tl $$1 = this.c($$0);
+      tm $$1 = this.c($$0);
       this.b($$1);
       this.l = $$0;
       this.f();
    }
 
-   private tl c(T $$0) {
-      return (tl)(this.q ? this.n.apply($$0) : this.d($$0));
+   private tm c(T $$0) {
+      return (tm)(this.q ? this.n.apply($$0) : this.d($$0));
    }
 
-   private ty d(T $$0) {
-      return tk.a(this.c, this.n.apply($$0));
+   private tz d(T $$0) {
+      return tl.a(this.c, this.n.apply($$0));
    }
 
    public T a() {
@@ -114,7 +114,7 @@ public class esx<T> extends esi {
    }
 
    @Override
-   protected ty aF_() {
+   protected tz aF_() {
       return this.o.apply(this);
    }
 
@@ -123,29 +123,29 @@ public class esx<T> extends esi {
       $$0.a(ewh.a, this.aF_());
       if (this.i) {
          T $$1 = this.i(1);
-         tl $$2 = this.c($$1);
+         tm $$2 = this.c($$1);
          if (this.aD_()) {
-            $$0.a(ewh.d, tl.a("narration.cycle_button.usage.focused", $$2));
+            $$0.a(ewh.d, tm.a("narration.cycle_button.usage.focused", $$2));
          } else {
-            $$0.a(ewh.d, tl.a("narration.cycle_button.usage.hovered", $$2));
+            $$0.a(ewh.d, tm.a("narration.cycle_button.usage.hovered", $$2));
          }
       }
    }
 
-   public ty b() {
-      return a((tl)(this.q ? this.d(this.l) : this.m()));
+   public tz b() {
+      return a((tm)(this.q ? this.d(this.l) : this.m()));
    }
 
-   public static <T> esx.a<T> a(Function<T, tl> $$0) {
+   public static <T> esx.a<T> a(Function<T, tm> $$0) {
       return new esx.a<>($$0);
    }
 
-   public static esx.a<Boolean> a(tl $$0, tl $$1) {
+   public static esx.a<Boolean> a(tm $$0, tm $$1) {
       return new esx.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
    }
 
    public static esx.a<Boolean> e() {
-      return new esx.a<Boolean>($$0 -> $$0 ? tk.b : tk.c).a(b);
+      return new esx.a<Boolean>($$0 -> $$0 ? tl.b : tl.c).a(b);
    }
 
    public static esx.a<Boolean> b(boolean $$0) {
@@ -156,13 +156,13 @@ public class esx<T> extends esi {
       private int a;
       @Nullable
       private T b;
-      private final Function<T, tl> c;
+      private final Function<T, tm> c;
       private eqy.l<T> d = $$0x -> null;
-      private Function<esx<T>, ty> e = esx::b;
+      private Function<esx<T>, tz> e = esx::b;
       private esx.c<T> f = esx.c.a(ImmutableList.of());
       private boolean g;
 
-      public a(Function<T, tl> $$0) {
+      public a(Function<T, tm> $$0) {
          this.c = $$0;
       }
 
@@ -203,7 +203,7 @@ public class esx<T> extends esi {
          return this;
       }
 
-      public esx.a<T> a(Function<esx<T>, ty> $$0) {
+      public esx.a<T> a(Function<esx<T>, tz> $$0) {
          this.e = $$0;
          return this;
       }
@@ -213,19 +213,19 @@ public class esx<T> extends esi {
          return this;
       }
 
-      public esx<T> a(int $$0, int $$1, int $$2, int $$3, tl $$4) {
+      public esx<T> a(int $$0, int $$1, int $$2, int $$3, tm $$4) {
          return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
          });
       }
 
-      public esx<T> a(int $$0, int $$1, int $$2, int $$3, tl $$4, esx.b<T> $$5) {
+      public esx<T> a(int $$0, int $$1, int $$2, int $$3, tm $$4, esx.b<T> $$5) {
          List<T> $$6 = this.f.b();
          if ($$6.isEmpty()) {
             throw new IllegalStateException("No values for cycle button");
          } else {
             T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            tl $$8 = this.c.apply($$7);
-            tl $$9 = (tl)(this.g ? $$8 : tk.a($$4, $$8));
+            tm $$8 = this.c.apply($$7);
+            tm $$9 = (tm)(this.g ? $$8 : tl.a($$4, $$8));
             return new esx<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
          }
       }

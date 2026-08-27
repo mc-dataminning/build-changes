@@ -63,7 +63,7 @@ public class fej<T extends bus> extends feb<T> {
       this.s.e = 0.0F;
       this.t.e = 0.0F;
       this.l.e = 0.0F;
-      boolean $$6 = $$0.aB() && $$0.do().g() < 1.0E-7;
+      boolean $$6 = $$0.aA() && $$0.do().g() < 1.0E-7;
       if ($$6) {
          this.m.f = -0.2618F;
          this.m.g = 0.0F;

@@ -9,11 +9,11 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class agv {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("commands.enchant.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("commands.enchant.failed.entity", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.enchant.failed.itemless", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("commands.enchant.failed.incompatible", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("commands.enchant.failed.level", $$0, $$1));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("commands.enchant.failed"));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -55,10 +55,10 @@ public class agv {
                      throw c.create($$8.d().m($$8).getString());
                   }
                } else if ($$1.size() == 1) {
-                  throw b.create($$7.ac().getString());
+                  throw b.create($$7.ab().getString());
                }
             } else if ($$1.size() == 1) {
-               throw a.create($$6.ac().getString());
+               throw a.create($$6.ab().getString());
             }
          }
 
@@ -66,9 +66,9 @@ public class agv {
             throw e.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> tl.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().N_()), true);
+               $$0.a(() -> tm.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().N_()), true);
             } else {
-               $$0.a(() -> tl.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
+               $$0.a(() -> tm.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
             }
 
             return $$5;

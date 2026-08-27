@@ -32,7 +32,7 @@ public class cce extends biq implements bkd {
 
    public void a(@Nullable bjg $$0) {
       this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cw();
+      this.j = $$0 == null ? null : $$0.cv();
    }
 
    @Nullable
@@ -48,7 +48,7 @@ public class cce extends biq implements bkd {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       this.e = $$0.h("Warmup");
       if ($$0.b("Owner")) {
          this.j = $$0.a("Owner");
@@ -56,7 +56,7 @@ public class cce extends biq implements bkd {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       $$0.a("Warmup", this.e);
       if (this.j != null) {
          $$0.a("Owner", this.j);
@@ -71,9 +71,9 @@ public class cce extends biq implements bkd {
             this.g--;
             if (this.g == 14) {
                for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.dq() + (this.ag.j() * 2.0 - 1.0) * (double)this.dg() * 0.5;
+                  double $$1 = this.dq() + (this.ag.j() * 2.0 - 1.0) * (double)this.df() * 0.5;
                   double $$2 = this.ds() + 0.05 + this.ag.j();
-                  double $$3 = this.dw() + (this.ag.j() * 2.0 - 1.0) * (double)this.dg() * 0.5;
+                  double $$3 = this.dw() + (this.ag.j() * 2.0 - 1.0) * (double)this.df() * 0.5;
                   double $$4 = (this.ag.j() * 2.0 - 1.0) * 0.3;
                   double $$5 = 0.3 + this.ag.j() * 0.3;
                   double $$6 = (this.ag.j() * 2.0 - 1.0) * 0.3;
@@ -83,7 +83,7 @@ public class cce extends biq implements bkd {
          }
       } else if (--this.e < 0) {
          if (this.e == -8) {
-            for (bjg $$8 : this.dL().a(bjg.class, this.cH().c(0.2, 0.0, 0.2))) {
+            for (bjg $$8 : this.dL().a(bjg.class, this.cG().c(0.2, 0.0, 0.2))) {
                this.c($$8);
             }
          }
@@ -94,14 +94,14 @@ public class cce extends biq implements bkd {
          }
 
          if (--this.g < 0) {
-            this.al();
+            this.ak();
          }
       }
    }
 
    private void c(bjg $$0) {
       bjg $$1 = this.q();
-      if ($$0.bw() && !$$0.cr() && $$0 != $$1) {
+      if ($$0.bv() && !$$0.cq() && $$0 != $$1) {
          if ($$1 == null) {
             $$0.a(this.dM().o(), 6.0F);
          } else {
@@ -119,8 +119,8 @@ public class cce extends biq implements bkd {
       super.b($$0);
       if ($$0 == 4) {
          this.h = true;
-         if (!this.aT()) {
-            this.dL().a(this.dq(), this.ds(), this.dw(), ape.hu, this.db(), 1.0F, this.ag.i() * 0.2F + 0.85F, false);
+         if (!this.aS()) {
+            this.dL().a(this.dq(), this.ds(), this.dw(), ape.hu, this.da(), 1.0F, this.ag.i() * 0.2F + 0.85F, false);
          }
       }
    }

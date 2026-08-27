@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class fa implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "123");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("team.notFound", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("team.notFound", $$0));
 
    public static fa a() {
       return new fa();

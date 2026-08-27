@@ -1,7 +1,7 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class aah implements vd<ww> {
+public class aah implements ve<wx> {
    private final String a;
    @Nullable
    private final String b;
@@ -19,7 +19,7 @@ public class aah implements vd<ww> {
       }
    }
 
-   public aah(so $$0) {
+   public aah(sp $$0) {
       this.a = $$0.r();
       this.d = $$0.b(afo.a.class);
       String $$1 = $$0.r();
@@ -32,7 +32,7 @@ public class aah implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.d);
       $$0.a(this.b == null ? "" : this.b);
@@ -41,7 +41,7 @@ public class aah implements vd<ww> {
       }
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

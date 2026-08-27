@@ -36,8 +36,8 @@ public abstract class bsb extends bqb {
       } else if (!this.e.c($$0)) {
          return false;
       } else {
-         eio $$1 = this.e.cg();
-         eio $$2 = $$0.cg();
+         eio $$1 = this.e.cf();
+         eio $$2 = $$0.cf();
          if ($$1 != null && $$2 == $$1) {
             return false;
          } else {

@@ -87,12 +87,12 @@ public class emv {
          return new emv.a($$0, $$2, $$3, $$4);
       }
 
-      public tl d() {
-         return this.f.a(tl.c("mco.notification.visitUrl.message.default"));
+      public tm d() {
+         return this.f.a(tm.c("mco.notification.visitUrl.message.default"));
       }
 
       public esq a(eyk $$0) {
-         tl $$1 = this.e.a(tl.c("mco.notification.visitUrl.buttonText.default"));
+         tm $$1 = this.e.a(tm.c("mco.notification.visitUrl.buttonText.default"));
          return esq.a($$1, exc.b(this.d, $$0, true)).a();
       }
    }

@@ -12,7 +12,7 @@ public class dwv extends dvg {
       super(dvz.L, $$1, 64, $$2, 21, 15, 21, a($$0));
    }
 
-   public dwv(qx $$0) {
+   public dwv(qy $$0) {
       super(dvz.L, $$0);
       this.j[0] = $$0.q("hasPlacedChest0");
       this.j[1] = $$0.q("hasPlacedChest1");
@@ -21,7 +21,7 @@ public class dwv extends dvg {
    }
 
    @Override
-   protected void a(dvy $$0, qx $$1) {
+   protected void a(dvy $$0, qy $$1) {
       super.a($$0, $$1);
       $$1.a("hasPlacedChest0", this.j[0]);
       $$1.a("hasPlacedChest1", this.j[1]);

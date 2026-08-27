@@ -17,11 +17,11 @@ public class egw implements egy<MinecraftServer> {
          super(new aex("function"), egw.class);
       }
 
-      public void a(qx $$0, egw $$1) {
+      public void a(qy $$0, egw $$1) {
          $$0.a("Name", $$1.a.toString());
       }
 
-      public egw a(qx $$0) {
+      public egw a(qy $$0) {
          aex $$1 = new aex($$0.l("Name"));
          return new egw($$1);
       }

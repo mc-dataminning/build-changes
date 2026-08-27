@@ -17,9 +17,9 @@ public abstract class eba {
       this.a = $$0;
       this.b = $$1;
       this.c.clear();
-      this.d = arx.d($$1.dg() + 1.0F);
-      this.e = arx.d($$1.dh() + 1.0F);
-      this.f = arx.d($$1.dg() + 1.0F);
+      this.d = arx.d($$1.df() + 1.0F);
+      this.e = arx.d($$1.dg() + 1.0F);
+      this.f = arx.d($$1.df() + 1.0F);
    }
 
    public void b() {

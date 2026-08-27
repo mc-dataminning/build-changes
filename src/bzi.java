@@ -7,7 +7,7 @@ public abstract class bzi extends bjp implements bza {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.f;
    }
 
@@ -19,24 +19,24 @@ public abstract class bzi extends bjp implements bza {
    }
 
    protected void gi() {
-      float $$0 = this.bn();
+      float $$0 = this.bm();
       if ($$0 > 0.5F) {
          this.bb += 2;
       }
    }
 
    @Override
-   protected boolean W() {
+   protected boolean V() {
       return true;
    }
 
    @Override
-   protected apd aM() {
+   protected apd aL() {
       return ape.lw;
    }
 
    @Override
-   protected apd aN() {
+   protected apd aM() {
       return ape.lv;
    }
 

@@ -58,7 +58,7 @@ public class cpn {
    }
 
    public static float a(ehn $$0, biq $$1) {
-      ehi $$2 = $$1.cH();
+      ehi $$2 = $$1.cG();
       double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
       double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
       double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
@@ -149,7 +149,7 @@ public class cpn {
       ehn $$26 = new ehn(this.g, this.h, this.i);
 
       for (biq $$27 : $$25) {
-         if (!$$27.cM()) {
+         if (!$$27.cL()) {
             double $$28 = Math.sqrt($$27.e($$26)) / (double)$$18;
             if ($$28 <= 1.0) {
                double $$29 = $$27.dq() - this.g;

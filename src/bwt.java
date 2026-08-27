@@ -37,17 +37,17 @@ public class bwt extends bwp implements bke<bwt.d>, bzm {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Variant", this.gp().g);
       $$0.a("Strength", this.gn());
       if (!this.cp.a(1).b()) {
-         $$0.a("DecorItem", this.cp.a(1).b(new qx()));
+         $$0.a("DecorItem", this.cp.a(1).b(new qy()));
       }
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.w($$0.h("Strength"));
       super.a($$0);
       this.a(bwt.d.a($$0.h("Variant")));
@@ -146,10 +146,10 @@ public class bwt extends bwp implements bke<bwt.d>, bzm {
          }
       }
 
-      if ($$5 && !this.aT()) {
+      if ($$5 && !this.aS()) {
          apd $$6 = this.gk();
          if ($$6 != null) {
-            this.dL().a(null, this.dq(), this.ds(), this.dw(), this.gk(), this.db(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
+            this.dL().a(null, this.dq(), this.ds(), this.dw(), this.gk(), this.da(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
          }
       }
 
@@ -163,7 +163,7 @@ public class bwt extends bwp implements bke<bwt.d>, bzm {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       asc $$5 = $$0.D_();
       this.b($$5);
       bwt.d $$6;
@@ -318,8 +318,8 @@ public class bwt extends bwp implements bke<bwt.d>, bzm {
       double $$4 = $$0.dw() - this.dw();
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4) * 0.2F;
       $$1.c($$2, $$3 + $$5, $$4, 1.5F, 10.0F);
-      if (!this.aT()) {
-         this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.mC, this.db(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
+      if (!this.aS()) {
+         this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.mC, this.da(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
       }
 
       this.dL().b($$1);
@@ -338,8 +338,8 @@ public class bwt extends bwp implements bke<bwt.d>, bzm {
       } else {
          if ($$0 >= 6.0F) {
             this.a($$2, (float)$$3);
-            if (this.bP()) {
-               for (biq $$4 : this.cU()) {
+            if (this.bO()) {
+               for (biq $$4 : this.cT()) {
                   $$4.a($$2, (float)$$3);
                }
             }
@@ -399,8 +399,8 @@ public class bwt extends bwp implements bke<bwt.d>, bzm {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, 0.75 * (double)this.cI(), (double)this.dg() * 0.5);
+   public ehn cI() {
+      return new ehn(0.0, 0.75 * (double)this.cH(), (double)this.df() * 0.5);
    }
 
    @Override

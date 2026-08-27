@@ -3,11 +3,11 @@ public class etb extends etk {
    private static final int b = 4;
    private final boolean c;
 
-   public etb(int $$0, tl $$1, esd $$2) {
+   public etb(int $$0, tm $$1, esd $$2) {
       this($$0, $$1, $$2, true);
    }
 
-   public etb(int $$0, tl $$1, esd $$2, boolean $$3) {
+   public etb(int $$0, tm $$1, esd $$2, boolean $$3) {
       super($$1, $$2);
       this.j($$0);
       this.b(true);

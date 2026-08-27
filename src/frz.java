@@ -18,7 +18,7 @@ public class frz implements frn.a {
       if ($$5 - this.b > 1.0E8) {
          this.b = $$5;
          biq $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dL().a_($$6, $$6.cH().g(16.0)));
+         this.c = ImmutableList.copyOf($$6.dL().a_($$6, $$6.cG().g(16.0)));
       }
 
       cbu $$7 = this.a.s;
@@ -36,9 +36,9 @@ public class frz implements frn.a {
    private void a(elp $$0, foe $$1, double $$2, double $$3, double $$4, biq $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
       $$5.aD.ifPresent($$10 -> {
          double $$11 = $$6.getAsDouble();
-         gw $$12 = $$5.aI();
+         gw $$12 = $$5.aH();
          this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         gw $$13 = $$5.aG();
+         gw $$13 = $$5.aF();
          if (!$$13.equals($$12)) {
             this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
          }
@@ -46,7 +46,7 @@ public class frz implements frn.a {
    }
 
    private double a(biq $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ai() + 0.132453657).hashCode() % 1000) / 1000.0;
+      return 0.02 * (double)(String.valueOf((double)$$0.ah() + 0.132453657).hashCode() % 1000) / 1000.0;
    }
 
    private void a(gw $$0, elp $$1, double $$2, double $$3, double $$4, foe $$5, double $$6, float $$7, float $$8, float $$9) {

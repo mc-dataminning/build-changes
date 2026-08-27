@@ -1,7 +1,7 @@
 public class exo extends eyk {
-   private final tl a;
+   private final tm a;
 
-   public exo(tl $$0, tl $$1) {
+   public exo(tm $$0, tm $$1) {
       super($$0);
       this.a = $$1;
    }
@@ -9,7 +9,7 @@ public class exo extends eyk {
    @Override
    protected void aI_() {
       super.aI_();
-      this.d(esq.a(tk.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+      this.d(esq.a(tl.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
    }
 
    @Override

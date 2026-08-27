@@ -51,24 +51,24 @@ public class equ {
       }
    }
 
-   private void a(n $$0, tl $$1) {
-      this.b.l.d().a(tl.h().b(tl.c("debug.prefix").a($$0, n.r)).b(tk.u).b($$1));
+   private void a(n $$0, tm $$1) {
+      this.b.l.d().a(tm.h().b(tm.c("debug.prefix").a($$0, n.r)).b(tl.u).b($$1));
    }
 
-   private void a(tl $$0) {
+   private void a(tm $$0) {
       this.a(n.o, $$0);
    }
 
    private void a(String $$0, Object... $$1) {
-      this.a(tl.a($$0, $$1));
+      this.a(tm.a($$0, $$1));
    }
 
    private void b(String $$0, Object... $$1) {
-      this.a(n.m, tl.a($$0, $$1));
+      this.a(n.m, tm.a($$0, $$1));
    }
 
    private void c(String $$0, Object... $$1) {
-      this.a(tl.b(MessageFormat.format($$0, $$1)));
+      this.a(tm.b(MessageFormat.format($$0, $$1)));
    }
 
    private boolean b(int $$0) {
@@ -163,27 +163,27 @@ public class equ {
             case 81:
                this.a("debug.help.message");
                esr $$3 = this.b.l.d();
-               $$3.a(tl.c("debug.reload_chunks.help"));
-               $$3.a(tl.c("debug.show_hitboxes.help"));
-               $$3.a(tl.c("debug.copy_location.help"));
-               $$3.a(tl.c("debug.clear_chat.help"));
-               $$3.a(tl.c("debug.chunk_boundaries.help"));
-               $$3.a(tl.c("debug.advanced_tooltips.help"));
-               $$3.a(tl.c("debug.inspect.help"));
-               $$3.a(tl.c("debug.profiling.help"));
-               $$3.a(tl.c("debug.creative_spectator.help"));
-               $$3.a(tl.c("debug.pause_focus.help"));
-               $$3.a(tl.c("debug.help.help"));
-               $$3.a(tl.c("debug.dump_dynamic_textures.help"));
-               $$3.a(tl.c("debug.reload_resourcepacks.help"));
-               $$3.a(tl.c("debug.pause.help"));
-               $$3.a(tl.c("debug.gamemodes.help"));
+               $$3.a(tm.c("debug.reload_chunks.help"));
+               $$3.a(tm.c("debug.show_hitboxes.help"));
+               $$3.a(tm.c("debug.copy_location.help"));
+               $$3.a(tm.c("debug.clear_chat.help"));
+               $$3.a(tm.c("debug.chunk_boundaries.help"));
+               $$3.a(tm.c("debug.advanced_tooltips.help"));
+               $$3.a(tm.c("debug.inspect.help"));
+               $$3.a(tm.c("debug.profiling.help"));
+               $$3.a(tm.c("debug.creative_spectator.help"));
+               $$3.a(tm.c("debug.pause_focus.help"));
+               $$3.a(tm.c("debug.help.help"));
+               $$3.a(tm.c("debug.dump_dynamic_textures.help"));
+               $$3.a(tm.c("debug.reload_resourcepacks.help"));
+               $$3.a(tm.c("debug.pause.help"));
+               $$3.a(tm.c("debug.gamemodes.help"));
                return true;
             case 83:
                Path $$4 = this.b.p.toPath().toAbsolutePath();
                Path $$5 = TextureUtil.getDebugTexturePath($$4);
                this.b.Y().a($$5);
-               tl $$6 = tl.b($$4.relativize($$5).toString()).a(n.t).a($$1x -> $$1x.a(new tj(tj.a.b, $$5.toFile().toString())));
+               tm $$6 = tm.b($$4.relativize($$5).toString()).a(n.t).a($$1x -> $$1x.a(new tk(tk.a.b, $$5.toFile().toString())));
                this.a("debug.dump_dynamic_textures", $$6);
                return true;
             case 84:
@@ -219,7 +219,7 @@ public class equ {
                      });
                   } else {
                      dcv $$5 = this.b.s.dL().c_($$3);
-                     qx $$6 = $$5 != null ? $$5.o() : null;
+                     qy $$6 = $$5 != null ? $$5.o() : null;
                      this.a($$4, $$3, $$6);
                      this.a("debug.inspect.client.block");
                   }
@@ -230,15 +230,15 @@ public class equ {
                break;
             case c:
                biq $$7 = ((ehk)$$2).a();
-               aex $$8 = jd.h.b($$7.ah());
+               aex $$8 = jd.h.b($$7.ag());
                if ($$0) {
                   if ($$1) {
-                     this.b.s.cn.t().a($$7.ai(), $$2x -> {
+                     this.b.s.cn.t().a($$7.ah(), $$2x -> {
                         this.a($$8, $$7.dj(), $$2x);
                         this.a("debug.inspect.server.entity");
                      });
                   } else {
-                     qx $$9 = $$7.f(new qx());
+                     qy $$9 = $$7.f(new qy());
                      this.a($$8, $$7.dj(), $$9);
                      this.a("debug.inspect.client.entity");
                   }
@@ -250,7 +250,7 @@ public class equ {
       }
    }
 
-   private void a(dfj $$0, gw $$1, @Nullable qx $$2) {
+   private void a(dfj $$0, gw $$1, @Nullable qy $$2) {
       StringBuilder $$3 = new StringBuilder(fi.a($$0));
       if ($$2 != null) {
          $$3.append($$2);
@@ -260,13 +260,13 @@ public class equ {
       this.a($$4);
    }
 
-   private void a(aex $$0, ehn $$1, @Nullable qx $$2) {
+   private void a(aex $$0, ehn $$1, @Nullable qy $$2) {
       String $$4;
       if ($$2 != null) {
          $$2.r("UUID");
          $$2.r("Pos");
          $$2.r("Dimension");
-         String $$3 = rj.c((rq)$$2).getString();
+         String $$3 = rk.c((rr)$$2).getString();
          $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f %s", $$0, $$1.c, $$1.d, $$1.e, $$3);
       } else {
          $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f", $$0, $$1.c, $$1.d, $$1.e);
@@ -333,7 +333,7 @@ public class equ {
                }
 
                if ($$8 && $$6 != null) {
-                  $$6.A();
+                  $$6.B();
                }
             }
          }

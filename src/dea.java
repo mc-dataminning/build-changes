@@ -25,19 +25,19 @@ public class dea extends dcv implements djv.b<dkc.b>, dkc {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.g = $$0.h("last_vibration_frequency");
       if ($$0.b("listener", 10)) {
-         dkc.a.a.parse(new Dynamic(ri.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+         dkc.a.a.parse(new Dynamic(rj.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
       }
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("last_vibration_frequency", this.g);
-      dkc.a.a.encodeStart(ri.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
+      dkc.a.a.encodeStart(rj.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
    @Override

@@ -32,7 +32,7 @@ public class fhh<T extends bwj> extends feb<T> {
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$0.aY() ? 1.0F : 1.5F;
+      float $$6 = $$0.aX() ? 1.0F : 1.5F;
       this.b.f = -$$6 * 0.25F * arx.a(0.3F * $$3);
    }
 }

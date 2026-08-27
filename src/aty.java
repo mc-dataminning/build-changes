@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class aty extends axz {
    public static final String a = "_filtered_correct";
    private static final String b = "black";
-   private static final String c = tl.a.a(tk.a);
+   private static final String c = tm.a.a(tl.a);
 
    public aty(Schema $$0, String $$1, String $$2) {
       super($$0, false, $$1, ayx.s, $$2);

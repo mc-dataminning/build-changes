@@ -57,7 +57,7 @@ public class ffg<T extends bwg> extends ffm<T> {
       this.a($$0.bY, erq.c, $$3);
       this.a($$0.bZ, erq.a, $$3);
       this.a($$0.ca, erq.d, $$3);
-      if ($$0.bb()) {
+      if ($$0.ba()) {
          this.a(erq.e, $$1, $$2, 1.0F, 2.5F);
       } else {
          this.a(erq.b, $$1, $$2, 1.5F, 2.5F);

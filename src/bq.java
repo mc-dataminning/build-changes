@@ -103,7 +103,7 @@ public record bq(
    public boolean a(akr $$0, @Nullable ehn $$1, @Nullable biq $$2) {
       if ($$2 == null) {
          return false;
-      } else if (this.b.isPresent() && !this.b.get().b($$2.ah())) {
+      } else if (this.b.isPresent() && !this.b.get().b($$2.ag())) {
          return false;
       } else {
          if ($$1 == null) {
@@ -118,7 +118,7 @@ public record bq(
             return false;
          } else {
             if (this.e.isPresent()) {
-               ehn $$3 = ehn.b($$2.aI());
+               ehn $$3 = ehn.b($$2.aH());
                if (!this.e.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -134,15 +134,15 @@ public record bq(
                return false;
             } else if (this.j.isPresent() && !this.j.get().a($$2, $$0, $$1)) {
                return false;
-            } else if (this.k.isPresent() && !this.k.get().a($$0, $$1, $$2.cZ())) {
+            } else if (this.k.isPresent() && !this.k.get().a($$0, $$1, $$2.cY())) {
                return false;
-            } else if (this.l.isPresent() && $$2.cQ().stream().noneMatch($$2x -> this.l.get().a($$0, $$1, $$2x))) {
+            } else if (this.l.isPresent() && $$2.cP().stream().noneMatch($$2x -> this.l.get().a($$0, $$1, $$2x))) {
                return false;
             } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2 instanceof bji ? ((bji)$$2).q() : null)) {
                return false;
             } else {
                if (this.n.isPresent()) {
-                  eio $$4 = $$2.cg();
+                  eio $$4 = $$2.cf();
                   if ($$4 == null || !this.n.get().equals($$4.b())) {
                      return false;
                   }

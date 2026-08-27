@@ -26,7 +26,7 @@ public class dxi {
          super(dvz.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
       }
 
-      public a(dzc $$0, qx $$1) {
+      public a(dzc $$0, qy $$1) {
          super(dvz.ac, $$1, $$0, $$1x -> a(czh.valueOf($$1.l("Rot"))));
       }
 
@@ -35,7 +35,7 @@ public class dxi {
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
          super.a($$0, $$1);
          $$1.a("Rot", this.c.d().name());
       }

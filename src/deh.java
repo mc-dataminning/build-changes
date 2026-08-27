@@ -22,13 +22,13 @@ public class deh extends dcv {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a.a(this.o, this.p, $$0);
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       this.a.a($$0);
    }
@@ -46,8 +46,8 @@ public class deh extends dcv {
    }
 
    @Override
-   public qx as_() {
-      qx $$0 = this.o();
+   public qy as_() {
+      qy $$0 = this.o();
       $$0.r("SpawnPotentials");
       return $$0;
    }

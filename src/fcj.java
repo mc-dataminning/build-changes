@@ -9,8 +9,8 @@ import javax.annotation.Nullable;
 
 public class fcj extends eyk {
    static final aex a = new aex("icon/checkmark");
-   private static final tl b = tl.c("gui.chatSelection.title");
-   private static final tl c = tl.c("gui.chatSelection.context").a(n.h);
+   private static final tm b = tm.c("gui.chatSelection.title");
+   private static final tm c = tm.c("gui.chatSelection.context").a(n.h);
    @Nullable
    private final eyk k;
    private final fjz l;
@@ -36,12 +36,12 @@ public class fcj extends eyk {
       this.n = etj.a(this.i, c, this.g - 16);
       this.o = new fcj.a(this.f, (this.n.a() + 1) * 9);
       this.e(this.o);
-      this.d(esq.a(tk.k, $$0 -> this.az_()).a(this.g / 2 - 155, this.h - 32, 150, 20).a());
-      this.m = this.d(esq.a(tk.d, $$0 -> {
+      this.d(esq.a(tl.k, $$0 -> this.az_()).a(this.g / 2 - 155, this.h - 32, 150, 20).a());
+      this.m = this.d(esq.a(tl.d, $$0 -> {
          this.q.accept(this.p);
          this.az_();
       }).a(this.g / 2 - 155 + 160, this.h - 32, 150, 20).a());
-      this.D();
+      this.E();
       this.l();
       this.o.a((double)this.o.m());
    }
@@ -56,11 +56,11 @@ public class fcj extends eyk {
    }
 
    @Override
-   void C() {
+   void D() {
       this.l();
    }
 
-   void D() {
+   void E() {
       this.m.i = !this.p.a().isEmpty();
    }
 
@@ -72,7 +72,7 @@ public class fcj extends eyk {
       AbuseReportLimits $$4 = this.l.a().b();
       int $$5 = this.p.a().size();
       int $$6 = $$4.maxReportedMessageCount();
-      tl $$7 = tl.a("gui.chatSelection.selected", $$5, $$6);
+      tm $$7 = tm.a("gui.chatSelection.selected", $$5, $$6);
       $$0.a(this.i, $$7, this.g / 2, 16 + 9 * 3 / 2, 10526880);
       this.n.a($$0, this.g / 2, this.o.e());
    }
@@ -88,8 +88,8 @@ public class fcj extends eyk {
    }
 
    @Override
-   public tl g() {
-      return tk.a(super.g(), c);
+   public tm g() {
+      return tl.a(super.g(), c);
    }
 
    public class a extends etm<fcj.a.b> implements fci.a {
@@ -105,7 +105,7 @@ public class fcj extends eyk {
          double $$1 = this.l();
          super.a($$0);
          if ((float)this.m() > 1.0E-5F && $$0 <= 1.0E-5F && !arx.b($$0, $$1)) {
-            fcj.this.C();
+            fcj.this.D();
          }
       }
 
@@ -131,7 +131,7 @@ public class fcj extends eyk {
       }
 
       @Override
-      public void a(tl $$0) {
+      public void a(tm $$0) {
          this.c(new fcj.a.f());
          this.c(new fcj.a.a($$0));
          this.c(new fcj.a.f());
@@ -184,7 +184,7 @@ public class fcj extends eyk {
          super.a($$0);
          fcj.a.b $$1 = this.b(ewq.a);
          if ($$1 == null) {
-            fcj.this.C();
+            fcj.this.D();
          }
       }
 
@@ -200,9 +200,9 @@ public class fcj extends eyk {
 
       public class a extends fcj.a.b {
          private static final int c = -6250336;
-         private final tl d;
+         private final tm d;
 
-         public a(tl $$1) {
+         public a(tm $$1) {
             this.d = $$1;
          }
 
@@ -217,15 +217,15 @@ public class fcj extends eyk {
          }
 
          @Override
-         public tl a() {
+         public tm a() {
             return this.d;
          }
       }
 
       public abstract class b extends etm.a<fcj.a.b> {
          @Override
-         public tl a() {
-            return tk.a;
+         public tm a() {
+            return tl.a;
          }
 
          public boolean b() {
@@ -253,8 +253,8 @@ public class fcj extends eyk {
          private static final int e = 11;
          private static final int f = 4;
          private final int g;
-         private final tp h;
-         private final tl i;
+         private final tq h;
+         private final tm i;
          @Nullable
          private final List<ark> j;
          @Nullable
@@ -264,15 +264,15 @@ public class fcj extends eyk {
          private final boolean m;
          private final boolean n;
 
-         public d(int $$1, tl $$2, tl $$3, @Nullable eqq $$4, boolean $$5, boolean $$6) {
+         public d(int $$1, tm $$2, tm $$3, @Nullable eqq $$4, boolean $$5, boolean $$6) {
             this.g = $$1;
             this.k = x.a($$4, eqq::f);
             this.l = $$4 != null && $$4.g() != null ? fcj.this.i.c($$4.g(), a.this.b()) : null;
             this.m = $$5;
             this.n = $$6;
-            tp $$7 = fcj.this.i.a($$2, this.f() - fcj.this.i.a(tk.t));
+            tq $$7 = fcj.this.i.a($$2, this.f() - fcj.this.i.a(tl.t));
             if ($$2 != $$7) {
-               this.h = tp.a($$7, tk.t);
+               this.h = tq.a($$7, tl.t);
                this.j = fcj.this.i.c($$2, a.this.b());
             } else {
                this.h = $$2;
@@ -290,7 +290,7 @@ public class fcj extends eyk {
 
             int $$10 = $$3 + this.g();
             int $$11 = $$2 + 1 + ($$5 - 9) / 2;
-            $$0.b(fcj.this.i, qs.a().a(this.h), $$10, $$11, this.m ? -1 : -1593835521);
+            $$0.b(fcj.this.i, qt.a().a(this.h), $$10, $$11, this.m ? -1 : -1593835521);
             if (this.j != null && $$8) {
                fcj.this.b(this.j);
             }
@@ -326,8 +326,8 @@ public class fcj extends eyk {
          }
 
          @Override
-         public tl a() {
-            return (tl)(this.b() ? tl.a("narrator.select", this.i) : this.i);
+         public tm a() {
+            return (tm)(this.b() ? tm.a("narrator.select", this.i) : this.i);
          }
 
          @Override
@@ -359,7 +359,7 @@ public class fcj extends eyk {
          private boolean h() {
             if (this.m) {
                fcj.this.p.a(this.g);
-               fcj.this.D();
+               fcj.this.E();
                return true;
             } else {
                return false;
@@ -369,11 +369,11 @@ public class fcj extends eyk {
 
       public class e extends fcj.a.b {
          private static final int c = 12;
-         private final tl d;
+         private final tm d;
          private final Supplier<gae> e;
          private final boolean f;
 
-         public e(GameProfile $$1, tl $$2, boolean $$3) {
+         public e(GameProfile $$1, tm $$2, boolean $$3) {
             this.d = $$2;
             this.f = $$3;
             this.e = a.this.c.al().a($$1);

@@ -10,11 +10,11 @@ public class bop<E extends cay> extends bkx<E> {
    }
 
    protected boolean a(akr $$0, E $$1) {
-      return $$1.aB() || $$1.aY() || $$1.bm();
+      return $$1.aA() || $$1.aX() || $$1.bl();
    }
 
    protected void b(akr $$0, E $$1, long $$2) {
-      if ($$1.aB()) {
+      if ($$1.aA()) {
          $$1.b(bjs.o);
          $$1.a(ape.zA, 5.0F, 1.0F);
       } else {

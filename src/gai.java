@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.Map;
 import org.slf4j.Logger;
 
-public class gai extends qs {
+public class gai extends qt {
    private static final Logger b = LogUtils.getLogger();
    private final Map<String, String> c;
    private final boolean d;
@@ -40,7 +40,7 @@ public class gai extends qs {
    private static void a(String $$0, List<ans> $$1, Map<String, String> $$2) {
       for (ans $$3 : $$1) {
          try (InputStream $$4 = $$3.d()) {
-            qs.a($$4, $$2::put);
+            qt.a($$4, $$2::put);
          } catch (IOException var10) {
             b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
          }
@@ -63,7 +63,7 @@ public class gai extends qs {
    }
 
    @Override
-   public ark a(tp $$0) {
+   public ark a(tq $$0) {
       return gaj.a($$0, this.d);
    }
 }

@@ -1,28 +1,24 @@
-import java.util.List;
-
 public class pf {
-   public static final aew<dum> a = ph.a("delta");
-   public static final aew<dum> b = ph.a("small_basalt_columns");
-   public static final aew<dum> c = ph.a("large_basalt_columns");
-   public static final aew<dum> d = ph.a("basalt_blobs");
-   public static final aew<dum> e = ph.a("blackstone_blobs");
-   public static final aew<dum> f = ph.a("glowstone_extra");
-   public static final aew<dum> g = ph.a("glowstone");
-   public static final aew<dum> h = ph.a("crimson_forest_vegetation");
-   public static final aew<dum> i = ph.a("warped_forest_vegetation");
-   public static final aew<dum> j = ph.a("nether_sprouts");
-   public static final aew<dum> k = ph.a("twisting_vines");
-   public static final aew<dum> l = ph.a("weeping_vines");
-   public static final aew<dum> m = ph.a("patch_crimson_roots");
-   public static final aew<dum> n = ph.a("basalt_pillar");
-   public static final aew<dum> o = ph.a("spring_delta");
-   public static final aew<dum> p = ph.a("spring_closed");
-   public static final aew<dum> q = ph.a("spring_closed_double");
-   public static final aew<dum> r = ph.a("spring_open");
-   public static final aew<dum> s = ph.a("patch_soul_fire");
-   public static final aew<dum> t = ph.a("patch_fire");
+   public static final aew<dum> a = pi.a("ice_spike");
+   public static final aew<dum> b = pi.a("ice_patch");
+   public static final aew<dum> c = pi.a("forest_rock");
+   public static final aew<dum> d = pi.a("iceberg_packed");
+   public static final aew<dum> e = pi.a("iceberg_blue");
+   public static final aew<dum> f = pi.a("blue_ice");
+   public static final aew<dum> g = pi.a("lake_lava_underground");
+   public static final aew<dum> h = pi.a("lake_lava_surface");
+   public static final aew<dum> i = pi.a("disk_clay");
+   public static final aew<dum> j = pi.a("disk_gravel");
+   public static final aew<dum> k = pi.a("disk_sand");
+   public static final aew<dum> l = pi.a("disk_grass");
+   public static final aew<dum> m = pi.a("freeze_top_layer");
+   public static final aew<dum> n = pi.a("void_start_platform");
+   public static final aew<dum> o = pi.a("desert_well");
+   public static final aew<dum> p = pi.a("spring_lava");
+   public static final aew<dum> q = pi.a("spring_lava_frozen");
+   public static final aew<dum> r = pi.a("spring_water");
 
-   public static void a(ns<dum> $$0) {
+   public static void a(nt<dum> $$0) {
       hh<dnj<?, ?>> $$1 = $$0.a(je.as);
       hg<dnj<?, ?>> $$2 = $$1.b(ou.a);
       hg<dnj<?, ?>> $$3 = $$1.b(ou.b);
@@ -31,37 +27,43 @@ public class pf {
       hg<dnj<?, ?>> $$6 = $$1.b(ou.e);
       hg<dnj<?, ?>> $$7 = $$1.b(ou.f);
       hg<dnj<?, ?>> $$8 = $$1.b(ou.g);
-      hg<dnj<?, ?>> $$9 = $$1.b(ou.i);
-      hg<dnj<?, ?>> $$10 = $$1.b(ou.k);
-      hg<dnj<?, ?>> $$11 = $$1.b(ou.m);
-      hg<dnj<?, ?>> $$12 = $$1.b(ou.o);
-      hg<dnj<?, ?>> $$13 = $$1.b(ou.p);
-      hg<dnj<?, ?>> $$14 = $$1.b(ou.q);
-      hg<dnj<?, ?>> $$15 = $$1.b(ou.r);
-      hg<dnj<?, ?>> $$16 = $$1.b(ou.s);
-      hg<dnj<?, ?>> $$17 = $$1.b(ou.t);
-      hg<dnj<?, ?>> $$18 = $$1.b(ou.v);
-      hg<dnj<?, ?>> $$19 = $$1.b(ou.u);
-      ph.a($$0, a, $$2, due.a(40), dua.a());
-      ph.a($$0, b, $$3, due.a(4), dua.a());
-      ph.a($$0, c, $$4, due.a(2), dua.a());
-      ph.a($$0, d, $$5, duf.a(75), duj.a(), ph.e, dua.a());
-      ph.a($$0, e, $$6, duf.a(25), duj.a(), ph.e, dua.a());
-      ph.a($$0, f, $$7, duf.a(bfv.a(0, 9)), duj.a(), ph.h, dua.a());
-      ph.a($$0, g, $$7, duf.a(10), duj.a(), ph.e, dua.a());
-      ph.a($$0, h, $$8, due.a(6), dua.a());
-      ph.a($$0, i, $$9, due.a(5), dua.a());
-      ph.a($$0, j, $$10, due.a(4), dua.a());
-      ph.a($$0, k, $$11, duf.a(10), duj.a(), ph.e, dua.a());
-      ph.a($$0, l, $$12, duf.a(10), duj.a(), ph.e, dua.a());
-      ph.a($$0, m, $$13, ph.e, dua.a());
-      ph.a($$0, n, $$14, duf.a(10), duj.a(), ph.e, dua.a());
-      ph.a($$0, o, $$15, duf.a(16), duj.a(), ph.h, dua.a());
-      ph.a($$0, p, $$16, duf.a(16), duj.a(), ph.f, dua.a());
-      ph.a($$0, q, $$16, duf.a(32), duj.a(), ph.f, dua.a());
-      ph.a($$0, r, $$17, duf.a(8), duj.a(), ph.h, dua.a());
-      List<dup> $$20 = List.of(duf.a(bgj.a(0, 5)), duj.a(), ph.h, dua.a());
-      ph.a($$0, s, $$18, $$20);
-      ph.a($$0, t, $$19, $$20);
+      hg<dnj<?, ?>> $$9 = $$1.b(ou.h);
+      hg<dnj<?, ?>> $$10 = $$1.b(ou.i);
+      hg<dnj<?, ?>> $$11 = $$1.b(ou.j);
+      hg<dnj<?, ?>> $$12 = $$1.b(ou.l);
+      hg<dnj<?, ?>> $$13 = $$1.b(ou.k);
+      hg<dnj<?, ?>> $$14 = $$1.b(ou.n);
+      hg<dnj<?, ?>> $$15 = $$1.b(ou.o);
+      hg<dnj<?, ?>> $$16 = $$1.b(ou.p);
+      hg<dnj<?, ?>> $$17 = $$1.b(ou.q);
+      hg<dnj<?, ?>> $$18 = $$1.b(ou.r);
+      pi.a($$0, a, $$2, duf.a(3), duj.a(), pi.a, dua.a());
+      pi.a($$0, b, $$3, duf.a(2), duj.a(), pi.a, dur.a(bga.a(-1)), dub.a(dlz.a(csw.dP)), dua.a());
+      pi.a($$0, c, $$4, duf.a(2), duj.a(), pi.a, dua.a());
+      pi.a($$0, e, $$6, dus.a(200), duj.a(), dua.a());
+      pi.a($$0, d, $$5, dus.a(16), duj.a(), dua.a());
+      pi.a($$0, f, $$7, duf.a(bgj.a(0, 19)), duj.a(), duh.a(dlm.a(30), dlm.a(61)), dua.a());
+      pi.a(
+         $$0,
+         g,
+         $$8,
+         dus.a(9),
+         duj.a(),
+         duh.a(dts.a(dlm.a(0), dlm.b())),
+         dug.a(hc.a, dlz.a(dlz.a(dlz.c), dlz.d(new gw(0, -5, 0))), 32),
+         duu.a(dks.a.c, Integer.MIN_VALUE, -5),
+         dua.a()
+      );
+      pi.a($$0, h, $$8, dus.a(200), duj.a(), pi.c, dua.a());
+      pi.a($$0, i, $$9, duj.a(), pi.b, dub.a(dlz.a(ean.c)), dua.a());
+      pi.a($$0, j, $$10, duj.a(), pi.b, dub.a(dlz.a(ean.c)), dua.a());
+      pi.a($$0, k, $$11, duf.a(3), duj.a(), pi.b, dub.a(dlz.a(ean.c)), dua.a());
+      pi.a($$0, l, $$12, duf.a(1), duj.a(), pi.b, dur.a(bga.a(-1)), dub.a(dlz.a(csw.rH)), dua.a());
+      pi.a($$0, m, $$13, dua.a());
+      pi.a($$0, n, $$14, dua.a());
+      pi.a($$0, o, $$15, dus.a(1000), duj.a(), pi.a, dua.a());
+      pi.a($$0, p, $$16, duf.a(20), duj.a(), duh.a(dtt.a(dlm.a(), dlm.c(8), 8)), dua.a());
+      pi.a($$0, q, $$17, duf.a(20), duj.a(), duh.a(dtt.a(dlm.a(), dlm.c(8), 8)), dua.a());
+      pi.a($$0, r, $$18, duf.a(25), duj.a(), duh.a(dlm.a(), dlm.a(192)), dua.a());
    }
 }

@@ -2,9 +2,9 @@ import javax.annotation.Nullable;
 
 public class eyi extends eyk implements asb {
    @Nullable
-   private tl a;
+   private tm a;
    @Nullable
-   private tl b;
+   private tm b;
    private int c;
    private boolean k;
    private final boolean l;
@@ -25,18 +25,18 @@ public class eyi extends eyk implements asb {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       this.b($$0);
    }
 
    @Override
-   public void b(tl $$0) {
+   public void b(tm $$0) {
       this.a = $$0;
-      this.c(tl.c("menu.working"));
+      this.c(tm.c("menu.working"));
    }
 
    @Override
-   public void c(tl $$0) {
+   public void c(tm $$0) {
       this.b = $$0;
       this.a(0);
    }
@@ -64,7 +64,7 @@ public class eyi extends eyk implements asb {
          }
 
          if (this.b != null && this.c != 0) {
-            $$0.a(this.i, tl.h().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
+            $$0.a(this.i, tm.h().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
          }
       }
    }

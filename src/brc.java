@@ -32,7 +32,7 @@ public class brc<T extends bzi & bzm & byv> extends bqb {
    }
 
    private boolean i() {
-      return this.b.q() != null && this.b.q().bw();
+      return this.b.q() != null && this.b.q().bv();
    }
 
    @Override

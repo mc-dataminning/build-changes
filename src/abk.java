@@ -1,12 +1,12 @@
 import java.time.Instant;
 
-public record abk(String a, Instant b, long c, dy d, tr.b e) implements vd<abd> {
-   public abk(so $$0) {
-      this($$0.d(256), $$0.v(), $$0.readLong(), new dy($$0), new tr.b($$0));
+public record abk(String a, Instant b, long c, dy d, ts.b e) implements ve<abd> {
+   public abk(sp $$0) {
+      this($$0.d(256), $$0.v(), $$0.readLong(), new dy($$0), new ts.b($$0));
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a, 256);
       $$0.a(this.b);
       $$0.b(this.c);
@@ -30,7 +30,7 @@ public record abk(String a, Instant b, long c, dy d, tr.b e) implements vd<abd> 
       return this.d;
    }
 
-   public tr.b g() {
+   public ts.b g() {
       return this.e;
    }
 }

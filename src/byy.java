@@ -102,8 +102,8 @@ public class byy extends bzi implements bjn {
    public void t() {
       if (this.ah >= this.bX + 400) {
          this.bX = this.ah;
-         if (!this.aT()) {
-            this.dL().a(this.dq(), this.du(), this.dw(), ape.hg, this.db(), 2.5F, 1.0F, false);
+         if (!this.aS()) {
+            this.dL().a(this.dq(), this.du(), this.dw(), ape.hg, this.da(), 2.5F, 1.0F, false);
          }
       }
    }
@@ -118,22 +118,22 @@ public class byy extends bzi implements bjn {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       dfj $$1 = this.gd();
       if ($$1 != null) {
-         $$0.a("carriedBlockState", rj.a($$1));
+         $$0.a("carriedBlockState", rk.a($$1));
       }
 
       this.c($$0);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       dfj $$1 = null;
       if ($$0.b("carriedBlockState", 10)) {
-         $$1 = rj.a(this.dL().a(je.e), $$0.p("carriedBlockState"));
+         $$1 = rk.a(this.dL().a(je.e), $$0.p("carriedBlockState"));
          if ($$1.i()) {
             $$1 = null;
          }
@@ -189,20 +189,20 @@ public class byy extends bzi implements bjn {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       if (this.dL().N() && this.ah >= this.bY + 600) {
-         float $$0 = this.bn();
+         float $$0 = this.bm();
          if ($$0 > 0.5F && this.dL().g(this.dl()) && this.ag.i() * 30.0F < ($$0 - 0.4F) * 2.0F) {
             this.h(null);
             this.y();
          }
       }
 
-      super.Y();
+      super.X();
    }
 
    protected boolean y() {
-      if (!this.dL().w_() && this.bw()) {
+      if (!this.dL().w_() && this.bv()) {
          double $$0 = this.dq() + (this.ag.j() - 0.5) * 64.0;
          double $$1 = this.ds() + (double)(this.ag.a(64) - 32);
          double $$2 = this.dw() + (this.ag.j() - 0.5) * 64.0;
@@ -237,8 +237,8 @@ public class byy extends bzi implements bjn {
          boolean $$8 = this.b($$0, $$1, $$2, true);
          if ($$8) {
             this.dL().a(djt.R, $$7, djt.a.a(this));
-            if (!this.aT()) {
-               this.dL().a(null, this.K, this.L, this.M, ape.hh, this.db(), 1.0F, 1.0F);
+            if (!this.aS()) {
+               this.dL().a(null, this.K, this.L, this.M, ape.hh, this.da(), 1.0F, 1.0F);
                this.a(ape.hh, 1.0F, 1.0F);
             }
          }
@@ -488,7 +488,7 @@ public class byy extends bzi implements bjn {
                super.c();
             }
          } else {
-            if (this.c != null && !this.i.bO()) {
+            if (this.c != null && !this.i.bN()) {
                if (this.i.g((cbu)this.c)) {
                   if (this.c.f(this.i) < 16.0) {
                      this.i.y();

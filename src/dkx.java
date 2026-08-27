@@ -45,7 +45,7 @@ public record dkx(dla j, dfj k, dfj l, dky m, dlj.o n, List<crc.d> o, int p, boo
       return this.t ? dlr.a.a : dlr.a.b;
    }
 
-   public static void a(ns<dkx> $$0) {
+   public static void a(nt<dkx> $$0) {
       $$0.a(c, a($$0, false, false));
       $$0.a(d, a($$0, false, true));
       $$0.a(e, a($$0, true, false));
@@ -55,28 +55,28 @@ public record dkx(dla j, dfj k, dfj l, dky m, dlj.o n, List<crc.d> o, int p, boo
       $$0.a(i, e($$0));
    }
 
-   private static dkx b(ns<?> $$0) {
-      return new dkx(dla.d, csw.fz.n(), csw.a.n(), dkz.a($$0.a(je.at)), of.c(), List.of(), 0, true, false, false, true);
+   private static dkx b(nt<?> $$0) {
+      return new dkx(dla.d, csw.fz.n(), csw.a.n(), dkz.a($$0.a(je.at)), og.c(), List.of(), 0, true, false, false, true);
    }
 
-   private static dkx c(ns<?> $$0) {
-      return new dkx(dla.c, csw.dW.n(), csw.H.n(), dkz.a($$0.a(je.at), $$0.a(je.ax)), of.b(), List.of(), 32, false, false, false, true);
+   private static dkx c(nt<?> $$0) {
+      return new dkx(dla.c, csw.dW.n(), csw.H.n(), dkz.a($$0.a(je.at), $$0.a(je.ax)), og.b(), List.of(), 32, false, false, false, true);
    }
 
-   private static dkx a(ns<?> $$0, boolean $$1, boolean $$2) {
-      return new dkx(dla.b, csw.b.n(), csw.G.n(), dkz.a($$0.a(je.at), $$0.a(je.ax), $$2, $$1), of.a(), new crj().a(), 63, false, true, true, false);
+   private static dkx a(nt<?> $$0, boolean $$1, boolean $$2) {
+      return new dkx(dla.b, csw.b.n(), csw.G.n(), dkz.a($$0.a(je.at), $$0.a(je.ax), $$2, $$1), og.a(), new crj().a(), 63, false, true, true, false);
    }
 
-   private static dkx d(ns<?> $$0) {
-      return new dkx(dla.e, csw.b.n(), csw.G.n(), dkz.b($$0.a(je.at), $$0.a(je.ax)), of.a(false, true, true), List.of(), 32, false, false, false, true);
+   private static dkx d(nt<?> $$0) {
+      return new dkx(dla.e, csw.b.n(), csw.G.n(), dkz.b($$0.a(je.at), $$0.a(je.ax)), og.a(false, true, true), List.of(), 32, false, false, false, true);
    }
 
-   private static dkx e(ns<?> $$0) {
-      return new dkx(dla.f, csw.b.n(), csw.G.n(), dkz.c($$0.a(je.at), $$0.a(je.ax)), of.a(false, false, false), List.of(), -64, false, false, false, true);
+   private static dkx e(nt<?> $$0) {
+      return new dkx(dla.f, csw.b.n(), csw.G.n(), dkz.c($$0.a(je.at), $$0.a(je.ax)), og.a(false, false, false), List.of(), -64, false, false, false, true);
    }
 
    public static dkx e() {
-      return new dkx(dla.b, csw.b.n(), csw.a.n(), dkz.a(), of.d(), List.of(), 63, true, false, false, false);
+      return new dkx(dla.b, csw.b.n(), csw.a.n(), dkz.a(), og.d(), List.of(), 63, true, false, false, false);
    }
 
    public dla f() {

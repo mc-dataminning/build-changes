@@ -27,7 +27,7 @@ public class fvs<T extends biq & ccj> extends ftg<T> {
          $$3.b(this.g, this.g, this.g);
          $$3.a(this.c.b());
          $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.q(), cjc.h, $$5, fyv.d, $$3, $$4, $$0.dL(), $$0.ai());
+         this.f.a($$0.q(), cjc.h, $$5, fyv.d, $$3, $$4, $$0.dL(), $$0.ah());
          $$3.b();
          super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }

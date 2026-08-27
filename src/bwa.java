@@ -6,11 +6,11 @@ public class bwa extends bkx<bvy> {
    }
 
    protected boolean a(akr $$0, bvy $$1) {
-      return $$1.bb();
+      return $$1.ba();
    }
 
    protected boolean a(akr $$0, bvy $$1, long $$2) {
-      return $$1.bb() && $$1.dN().a(bsh.M);
+      return $$1.ba() && $$1.dN().a(bsh.M);
    }
 
    protected void b(akr $$0, bvy $$1, long $$2) {

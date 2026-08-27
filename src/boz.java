@@ -33,22 +33,22 @@ public class boz implements bpa {
    }
 
    private void b() {
-      this.a.aU = arx.c(this.a.aU, this.a.aW, (float)this.a.aa());
+      this.a.aU = arx.c(this.a.aU, this.a.aW, (float)this.a.Z());
    }
 
    private void c() {
-      this.a.aW = arx.c(this.a.aW, this.a.aU, (float)this.a.aa());
+      this.a.aW = arx.c(this.a.aW, this.a.aU, (float)this.a.Z());
    }
 
    private void d() {
       int $$0 = this.e - 10;
       float $$1 = arx.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.aa() * (1.0F - $$1);
+      float $$2 = (float)this.a.Z() * (1.0F - $$1);
       this.a.aU = arx.c(this.a.aU, this.a.aW, $$2);
    }
 
    private boolean e() {
-      return !(this.a.cR() instanceof bji);
+      return !(this.a.cQ() instanceof bji);
    }
 
    private boolean f() {

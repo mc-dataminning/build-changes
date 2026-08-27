@@ -51,7 +51,7 @@ public class cad extends cab implements bjn {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       bki $$0 = this.a(bkm.d);
       if (this.X_()) {
          if (!this.m_() && !$$0.a(d)) {
@@ -72,7 +72,7 @@ public class cad extends cab implements bjn {
          this.aZ = this.ah;
       }
 
-      super.Y();
+      super.X();
    }
 
    private void go() {
@@ -137,17 +137,17 @@ public class cad extends cab implements bjn {
 
    @Override
    public boolean a(cpy $$0) {
-      return $$0.f(this) && !$$0.d(this.cH());
+      return $$0.f(this) && !$$0.d(this.cG());
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       this.c($$0);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a(this.dL(), $$0);
    }

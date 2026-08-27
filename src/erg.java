@@ -19,11 +19,11 @@ public class erg {
    private final int g;
    private File h;
 
-   public static void a(File $$0, ekb $$1, Consumer<tl> $$2) {
+   public static void a(File $$0, ekb $$1, Consumer<tm> $$2) {
       a($$0, null, $$1, $$2);
    }
 
-   public static void a(File $$0, @Nullable String $$1, ekb $$2, Consumer<tl> $$3) {
+   public static void a(File $$0, @Nullable String $$1, ekb $$2, Consumer<tm> $$3) {
       if (!RenderSystem.isOnRenderThread()) {
          RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
       } else {
@@ -31,7 +31,7 @@ public class erg {
       }
    }
 
-   private static void b(File $$0, @Nullable String $$1, ekb $$2, Consumer<tl> $$3) {
+   private static void b(File $$0, @Nullable String $$1, ekb $$2, Consumer<tm> $$3) {
       ekq $$4 = a($$2);
       File $$5 = new File($$0, "screenshots");
       $$5.mkdir();
@@ -45,11 +45,11 @@ public class erg {
       ac.g().execute(() -> {
          try {
             $$4.a($$6);
-            tl $$3x = tl.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new tj(tj.a.b, $$6.getAbsolutePath())));
-            $$3.accept(tl.a("screenshot.success", $$3x));
+            tm $$3x = tm.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new tk(tk.a.b, $$6.getAbsolutePath())));
+            $$3.accept(tm.a("screenshot.success", $$3x));
          } catch (Exception var7) {
             b.warn("Couldn't save screenshot", var7);
-            $$3.accept(tl.a("screenshot.failure", var7.getMessage()));
+            $$3.accept(tm.a("screenshot.failure", var7.getMessage()));
          } finally {
             $$4.close();
          }

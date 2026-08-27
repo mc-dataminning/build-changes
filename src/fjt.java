@@ -33,11 +33,11 @@ public class fjt {
       }
    }
 
-   public void a(ua $$0) {
+   public void a(ub $$0) {
       this.b.add(new fjt.a($$0));
    }
 
-   public boolean b(ua $$0) {
+   public boolean b(ub $$0) {
       boolean $$1 = false;
       Iterator<fjt.a> $$2 = this.b.iterator();
 
@@ -59,17 +59,17 @@ public class fjt {
    }
 
    class a {
-      private final Set<tw> b;
-      private ua c;
+      private final Set<tx> b;
+      private ub c;
       private boolean d = true;
       private int e;
 
-      a(ua $$0) {
+      a(ub $$0) {
          this.b = new ObjectOpenHashSet($$0.l().d().a());
          this.c = $$0;
       }
 
-      boolean a(ua $$0) {
+      boolean a(ub $$0) {
          if ($$0.equals(this.c)) {
             return false;
          } else {

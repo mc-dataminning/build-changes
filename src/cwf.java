@@ -63,7 +63,7 @@ public class cwf extends cvl {
    public static final eig az = eid.a(av, ax);
    public static final eig aA = eid.a(ay, az);
    public static final eig aB = eid.a(aA, csv.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
-   private static final tl aP = tl.c("container.grindstone_title");
+   private static final tm aP = tm.c("container.grindstone_title");
 
    protected cwf(dfi.d $$0) {
       super($$0);

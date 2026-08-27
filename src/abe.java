@@ -1,4 +1,4 @@
-public interface abe extends sy {
+public interface abe extends sz {
    @Override
    default boolean d() {
       return false;

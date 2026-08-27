@@ -39,20 +39,20 @@ public interface etj {
       }
    };
 
-   static etj a(esd $$0, tp $$1, int $$2) {
+   static etj a(esd $$0, tq $$1, int $$2) {
       return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   static etj a(esd $$0, tp $$1, int $$2, int $$3) {
+   static etj a(esd $$0, tq $$1, int $$2, int $$3) {
       return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   static etj a(esd $$0, tl... $$1) {
-      return b($$0, Arrays.stream($$1).map(tl::f).map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   static etj a(esd $$0, tm... $$1) {
+      return b($$0, Arrays.stream($$1).map(tm::f).map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   static etj a(esd $$0, List<tl> $$1) {
-      return b($$0, $$1.stream().map(tl::f).map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   static etj a(esd $$0, List<tm> $$1) {
+      return b($$0, $$1.stream().map(tm::f).map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
    static etj b(final esd $$0, final List<etj.a> $$1) {

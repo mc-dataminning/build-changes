@@ -23,13 +23,13 @@ public class ahd {
       dt $$2 = (dt)$$0.getSource();
       T $$3 = $$2.l().aI().a($$1);
       $$3.b($$0, "value");
-      $$2.a(() -> tl.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      $$2.a(() -> tm.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
       return $$3.c();
    }
 
    static <T extends cpr.g<T>> int a(dt $$0, cpr.e<T> $$1) {
       T $$2 = $$0.l().aI().a($$1);
-      $$0.a(() -> tl.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      $$0.a(() -> tm.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
       return $$2.c();
    }
 }

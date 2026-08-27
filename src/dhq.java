@@ -262,7 +262,7 @@ public class dhq extends dhf {
    public dcv a(gw $$0, dhq.b $$1) {
       dcv $$2 = this.k.get($$0);
       if ($$2 == null) {
-         qx $$3 = this.j.remove($$0);
+         qy $$3 = this.j.remove($$0);
          if ($$3 != null) {
             dcv $$4 = this.a($$0, $$3);
             if ($$4 != null) {
@@ -324,14 +324,14 @@ public class dhq extends dhf {
 
    @Nullable
    @Override
-   public qx g(gw $$0) {
+   public qy g(gw $$0) {
       dcv $$1 = this.c_($$0);
       if ($$1 != null && !$$1.r()) {
-         qx $$2 = $$1.m();
+         qy $$2 = $$1.m();
          $$2.a("keepPacked", false);
          return $$2;
       } else {
-         qx $$3 = this.j.get($$0);
+         qy $$3 = this.j.get($$0);
          if ($$3 != null) {
             $$3 = $$3.h();
             $$3.a("keepPacked", true);
@@ -391,7 +391,7 @@ public class dhq extends dhf {
       return false;
    }
 
-   public void a(so $$0, qx $$1, Consumer<yg.b> $$2) {
+   public void a(sp $$0, qy $$1, Consumer<yg.b> $$2) {
       this.I();
 
       for (dhr $$3 : this.m) {
@@ -414,7 +414,7 @@ public class dhq extends dhf {
       });
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       for (dhr $$1 : this.m) {
          $$1.b($$0);
       }
@@ -470,7 +470,7 @@ public class dhq extends dhf {
    }
 
    @Nullable
-   private dcv a(gw $$0, qx $$1) {
+   private dcv a(gw $$0, qy $$1) {
       dfj $$2 = this.a_($$0);
       dcv $$3;
       if ("DUMMY".equals($$1.l("id"))) {

@@ -1,4 +1,4 @@
-public class abr implements vd<abd> {
+public class abr implements ve<abd> {
    private final int a;
    private final int b;
 
@@ -11,13 +11,13 @@ public class abr implements vd<abd> {
       $$0.a(this);
    }
 
-   public abr(so $$0) {
+   public abr(sp $$0) {
       this.a = $$0.readByte();
       this.b = $$0.readByte();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.a);
       $$0.k(this.b);
    }

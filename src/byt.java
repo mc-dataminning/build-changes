@@ -34,7 +34,7 @@ public class byt extends bzt {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       return $$3;
    }
 
@@ -50,6 +50,6 @@ public class byt extends bzt {
 
    @Override
    protected float l(biq $$0) {
-      return $$0.dg() <= this.dg() ? -0.21875F : 0.0F;
+      return $$0.df() <= this.df() ? -0.21875F : 0.0F;
    }
 }

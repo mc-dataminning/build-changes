@@ -1,15 +1,15 @@
 public class etw extends esn {
    private float a = 0.5F;
 
-   public etw(tl $$0, esd $$1) {
+   public etw(tm $$0, esd $$1) {
       this(0, 0, $$1.a($$0.f()), 9, $$0, $$1);
    }
 
-   public etw(int $$0, int $$1, tl $$2, esd $$3) {
+   public etw(int $$0, int $$1, tm $$2, esd $$3) {
       this(0, 0, $$0, $$1, $$2, $$3);
    }
 
-   public etw(int $$0, int $$1, int $$2, int $$3, tl $$4, esd $$5) {
+   public etw(int $$0, int $$1, int $$2, int $$3, tm $$4, esd $$5) {
       super($$0, $$1, $$2, $$3, $$4, $$5);
       this.i = false;
    }
@@ -38,7 +38,7 @@ public class etw extends esn {
 
    @Override
    public void b(esf $$0, int $$1, int $$2, float $$3) {
-      tl $$4 = this.m();
+      tm $$4 = this.m();
       esd $$5 = this.a();
       int $$6 = this.l();
       int $$7 = $$5.a($$4);
@@ -48,9 +48,9 @@ public class etw extends esn {
       $$0.b($$5, $$10, $$8, $$9, this.b());
    }
 
-   private ark a(tl $$0, int $$1) {
+   private ark a(tm $$0, int $$1) {
       esd $$2 = this.a();
-      tp $$3 = $$2.a($$0, $$1 - $$2.a(tk.t));
-      return qs.a().a(tp.a($$3, tk.t));
+      tq $$3 = $$2.a($$0, $$1 - $$2.a(tl.t));
+      return qt.a().a(tq.a($$3, tl.t));
    }
 }

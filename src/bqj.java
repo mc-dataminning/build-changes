@@ -49,7 +49,7 @@ public class bqj extends bqb {
          } else {
             this.c = this.b
                .dL()
-               .a(this.b.dL().a(this.f, this.b.cH().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dq(), this.b.du(), this.b.dw());
+               .a(this.b.dL().a(this.f, this.b.cG().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dq(), this.b.du(), this.b.dw());
          }
 
          return this.c != null;
@@ -58,7 +58,7 @@ public class bqj extends bqb {
 
    @Override
    public boolean b() {
-      if (!this.c.bw()) {
+      if (!this.c.bv()) {
          return false;
       } else {
          return this.b.f(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
@@ -77,7 +77,7 @@ public class bqj extends bqb {
 
    @Override
    public void e() {
-      if (this.c.bw()) {
+      if (this.c.bv()) {
          double $$0 = this.i ? this.b.du() : this.c.du();
          this.b.G().a(this.c.dq(), $$0, this.c.dw());
          this.h--;

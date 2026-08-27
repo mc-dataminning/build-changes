@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public class afl {
-   private static final tl a = tl.c("commands.debug.function.noRecursion");
+   private static final tm a = tm.c("commands.debug.function.noRecursion");
    private static final aex b = new aex("tick");
    private static final aex c = new aex("load");
    final MinecraftServer d;
@@ -64,7 +64,7 @@ public class afl {
       }
    }
 
-   public int a(dp $$0, dt $$1, @Nullable afl.c $$2, @Nullable qx $$3) throws dv {
+   public int a(dp $$0, dt $$1, @Nullable afl.c $$2, @Nullable qy $$3) throws dv {
       dp $$4 = $$0.a($$3, this.b(), $$1);
       if (this.e != null) {
          if ($$2 != null) {

@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 public class ec implements ArgumentType<aex> {
    private static final Collection<String> a = Stream.of(cpv.h, cpv.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("argument.dimension.invalid", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("argument.dimension.invalid", $$0));
 
    public aex a(StringReader $$0) throws CommandSyntaxException {
       return aex.a($$0);

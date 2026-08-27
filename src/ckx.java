@@ -37,7 +37,7 @@ public class ckx extends cja implements ckz {
          int $$5 = this.b($$0) - $$3;
          if ($$5 >= 10) {
             int $$6 = cnq.h($$0);
-            if ($$6 <= 0 || $$4.aZ()) {
+            if ($$6 <= 0 || $$4.aY()) {
                if (!$$1.B) {
                   $$0.a(1, $$4, $$1x -> $$1x.d($$2.fn()));
                   if ($$6 == 0) {
@@ -69,7 +69,7 @@ public class ckx extends cja implements ckz {
                   $$12 *= $$14 / $$13;
                   $$4.j((double)$$10, (double)$$11, (double)$$12);
                   $$4.t(20);
-                  if ($$4.aB()) {
+                  if ($$4.aA()) {
                      float $$15 = 1.1999999F;
                      $$4.a(bjm.a, new ehn(0.0, 1.1999999F, 0.0));
                   }
@@ -95,7 +95,7 @@ public class ckx extends cja implements ckz {
       cjf $$3 = $$1.b($$2);
       if ($$3.k() >= $$3.l() - 1) {
          return bgz.d($$3);
-      } else if (cnq.h($$3) > 0 && !$$1.aZ()) {
+      } else if (cnq.h($$3) > 0 && !$$1.aY()) {
          return bgz.d($$3);
       } else {
          $$1.c($$2);

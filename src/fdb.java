@@ -14,7 +14,7 @@ public class fdb extends eyk {
    private final Object2BooleanMap<anc> m = new Object2BooleanLinkedOpenHashMap();
 
    protected fdb(eyk $$0, anf $$1, Consumer<anf> $$2) {
-      super(tl.c("experiments_screen.title"));
+      super(tm.c("experiments_screen.title"));
       this.c = $$0;
       this.k = $$1;
       this.l = $$2;
@@ -28,24 +28,24 @@ public class fdb extends eyk {
 
    @Override
    protected void aI_() {
-      this.b.a(new etw(tl.c("selectWorld.experiments"), this.i));
+      this.b.a(new etw(tm.c("selectWorld.experiments"), this.i));
       ewd $$0 = this.b.c(ewd.d());
-      $$0.a(new etk(tl.c("selectWorld.experiments.info").a(n.m), this.i).j(310), $$0x -> $$0x.e(15));
+      $$0.a(new etk(tm.c("selectWorld.experiments.info").a(n.m), this.i).j(310), $$0x -> $$0x.e(15));
       fdf.a $$1 = fdf.a(310).a(2, true).b(4);
       this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
       $$1.a($$0::a);
       evy.b $$2 = this.b.b(new evy().a(10)).d(2);
-      $$2.a(esq.a(tk.d, $$0x -> this.l()).a());
-      $$2.a(esq.a(tk.e, $$0x -> this.az_()).a());
+      $$2.a(esq.a(tl.d, $$0x -> this.l()).a());
+      $$2.a(esq.a(tl.e, $$0x -> this.az_()).a());
       this.b.a($$1x -> {
          eso var10000 = this.d($$1x);
       });
       this.b();
    }
 
-   private static tl a(anc $$0) {
+   private static tm a(anc $$0) {
       String $$1 = "dataPack." + $$0.f() + ".name";
-      return (tl)(gak.a($$1) ? tl.c($$1) : $$0.a());
+      return (tm)(gak.a($$1) ? tm.c($$1) : $$0.a());
    }
 
    @Override

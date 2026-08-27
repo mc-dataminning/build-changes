@@ -13,7 +13,7 @@ public class bng extends bkx<bjg> {
 
    @Override
    protected boolean a(akr $$0, bjg $$1) {
-      if ($$1.bO()) {
+      if ($$1.bN()) {
          return false;
       } else {
          bkg<?> $$2 = $$1.dN();

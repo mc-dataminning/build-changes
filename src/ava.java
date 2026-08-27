@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public class ava extends axz {
-   private static final String a = tl.a.a(tk.a);
+   private static final String a = tm.a.a(tl.a);
    private static final String[] b = new String[]{
       "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
    };

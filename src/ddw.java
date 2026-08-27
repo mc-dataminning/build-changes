@@ -154,12 +154,12 @@ public class ddw extends dcv implements bgp, bhb {
 
    private dt a(@Nullable cbu $$0) {
       String $$1;
-      tl $$2;
+      tm $$2;
       if ($$0 == null) {
          $$1 = "Lectern";
-         $$2 = tl.b("Lectern");
+         $$2 = tm.b("Lectern");
       } else {
-         $$1 = $$0.ac().getString();
+         $$1 = $$0.ab().getString();
          $$2 = $$0.N_();
       }
 
@@ -173,7 +173,7 @@ public class ddw extends dcv implements bgp, bhb {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("Book", 10)) {
          this.g = this.b(cjf.a($$0.p("Book")), null);
@@ -186,10 +186,10 @@ public class ddw extends dcv implements bgp, bhb {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       if (!this.c().b()) {
-         $$0.a("Book", this.c().b(new qx()));
+         $$0.a("Book", this.c().b(new qy()));
          $$0.a("Page", this.h);
       }
    }
@@ -205,7 +205,7 @@ public class ddw extends dcv implements bgp, bhb {
    }
 
    @Override
-   public tl N_() {
-      return tl.c("container.lectern");
+   public tm N_() {
+      return tm.c("container.lectern");
    }
 }

@@ -30,27 +30,27 @@ public class ajk implements ajh {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.c.a(this.d, $$0);
    }
 
    @Override
-   public qx a() {
+   public qy a() {
       return this.c.a(this.d);
    }
 
    @Override
-   public tl b() {
-      return tl.a("commands.data.storage.modified", this.d);
+   public tm b() {
+      return tm.a("commands.data.storage.modified", this.d);
    }
 
    @Override
-   public tl a(rq $$0) {
-      return tl.a("commands.data.storage.query", this.d, rj.c($$0));
+   public tm a(rr $$0) {
+      return tm.a("commands.data.storage.query", this.d, rk.c($$0));
    }
 
    @Override
-   public tl a(ej.g $$0, double $$1, int $$2) {
-      return tl.a("commands.data.storage.get", $$0, this.d, String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   public tm a(ej.g $$0, double $$1, int $$2) {
+      return tm.a("commands.data.storage.get", $$0, this.d, String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

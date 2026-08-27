@@ -33,7 +33,7 @@ public class bkr extends bkx<bur> {
          return false;
       } else {
          bur $$3 = this.a($$1);
-         return $$3.bw() && $$1.a($$3) && bkz.a($$1.dN(), $$3) && $$2 <= this.h && !$$1.ga() && !$$3.ga();
+         return $$3.bv() && $$1.a($$3) && bkz.a($$1.dN(), $$3) && $$2 <= this.h && !$$1.ga() && !$$3.ga();
       }
    }
 
@@ -62,12 +62,12 @@ public class bkr extends bkx<bur> {
 
    private boolean b(bur $$0) {
       bkg<?> $$1 = $$0.dN();
-      return $$1.a(bsh.r) && $$1.c(bsh.r).get().ah() == this.f;
+      return $$1.a(bsh.r) && $$1.c(bsh.r).get().ag() == this.f;
    }
 
    private Optional<? extends bur> c(bur $$0) {
       return $$0.dN().c(bsh.h).get().a($$1 -> {
-         if ($$1.ah() == this.f && $$1 instanceof bur $$2 && $$0.a($$2) && !$$2.ga()) {
+         if ($$1.ag() == this.f && $$1 instanceof bur $$2 && $$0.a($$2) && !$$2.ga()) {
             return true;
          }
 

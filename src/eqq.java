@@ -1,11 +1,11 @@
 import javax.annotation.Nullable;
 
-public record eqq(int a, @Nullable eqq.a b, @Nullable tl c, @Nullable String d) {
-   private static final tl e = tl.c("chat.tag.system");
-   private static final tl f = tl.c("chat.tag.system_single_player");
-   private static final tl g = tl.c("chat.tag.not_secure");
-   private static final tl h = tl.c("chat.tag.modified");
-   private static final tl i = tl.c("chat.tag.error");
+public record eqq(int a, @Nullable eqq.a b, @Nullable tm c, @Nullable String d) {
+   private static final tm e = tm.c("chat.tag.system");
+   private static final tm f = tm.c("chat.tag.system_single_player");
+   private static final tm g = tm.c("chat.tag.not_secure");
+   private static final tm h = tm.c("chat.tag.modified");
+   private static final tm i = tm.c("chat.tag.error");
    private static final int j = 13684944;
    private static final int k = 6316128;
    private static final eqq l = new eqq(13684944, null, e, "System");
@@ -26,8 +26,8 @@ public record eqq(int a, @Nullable eqq.a b, @Nullable tl c, @Nullable String d) 
    }
 
    public static eqq a(String $$0) {
-      tl $$1 = tl.b($$0).a(n.h);
-      tl $$2 = tl.h().b(h).b(tk.r).b($$1);
+      tm $$1 = tm.b($$0).a(n.h);
+      tm $$2 = tm.h().b(h).b(tl.r).b($$1);
       return new eqq(6316128, eqq.a.a, $$2, "Modified");
    }
 
@@ -45,7 +45,7 @@ public record eqq(int a, @Nullable eqq.a b, @Nullable tl c, @Nullable String d) 
    }
 
    @Nullable
-   public tl g() {
+   public tm g() {
       return this.c;
    }
 

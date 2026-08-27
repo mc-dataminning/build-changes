@@ -1,8 +1,8 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record ym(int a, boolean b, Set<aew<cpv>> c, int d, int e, int f, boolean g, boolean h, boolean i, aba j) implements vd<ww> {
-   public ym(so $$0) {
+public record ym(int a, boolean b, Set<aew<cpv>> c, int d, int e, int f, boolean g, boolean h, boolean i, aba j) implements ve<wx> {
+   public ym(sp $$0) {
       this(
          $$0.readInt(),
          $$0.readBoolean(),
@@ -18,10 +18,10 @@ public record ym(int a, boolean b, Set<aew<cpv>> c, int d, int e, int f, boolean
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.p(this.a);
       $$0.a(this.b);
-      $$0.a(this.c, so::b);
+      $$0.a(this.c, sp::b);
       $$0.c(this.d);
       $$0.c(this.e);
       $$0.c(this.f);
@@ -31,7 +31,7 @@ public record ym(int a, boolean b, Set<aew<cpv>> c, int d, int e, int f, boolean
       this.j.a($$0);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

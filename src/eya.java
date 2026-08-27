@@ -35,7 +35,7 @@ public class eya extends eym {
    }
 
    private eya(eyk $$0, eqz $$1, eqy<?>[] $$2, @Nullable eqy<Unit> $$3) {
-      super($$0, $$1, tl.c("options.online.title"), $$2);
+      super($$0, $$1, tm.c("options.online.title"), $$2);
       this.l = $$3;
    }
 

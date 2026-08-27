@@ -79,7 +79,7 @@ public class fgh<T extends bji> extends fgi<T> {
                this.o.e = -0.9F;
             }
          }
-      } else if ($$0.ah() == biu.bs) {
+      } else if ($$0.ag() == biu.bs) {
          fed.a(this.o, this.n, $$0.fV(), this.c, $$3);
       }
 

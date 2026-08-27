@@ -11,7 +11,7 @@ public class ako extends bgo {
    private final Set<aks> i = Collections.unmodifiableSet(this.h);
    private boolean j = true;
 
-   public ako(tl $$0, bgo.a $$1, bgo.b $$2) {
+   public ako(tm $$0, bgo.a $$1, bgo.b $$2) {
       super(arx.a(), $$0, $$1, $$2);
    }
 
@@ -70,7 +70,7 @@ public class ako extends bgo {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       if (!Objects.equal($$0, this.a)) {
          super.a($$0);
          this.a(xh::c);

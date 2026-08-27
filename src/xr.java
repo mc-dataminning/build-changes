@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class xr implements vd<ww> {
+public class xr implements ve<wx> {
    private final int a;
    private final int b;
    private final List<cjf> c;
@@ -18,22 +18,22 @@ public class xr implements vd<ww> {
       this.d = $$3.p();
    }
 
-   public xr(so $$0) {
+   public xr(sp $$0) {
       this.a = $$0.readUnsignedByte();
       this.b = $$0.m();
-      this.c = $$0.a(hp::a, so::q);
+      this.c = $$0.a(hp::a, sp::q);
       this.d = $$0.q();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.a);
       $$0.c(this.b);
-      $$0.a(this.c, so::a);
+      $$0.a(this.c, sp::a);
       $$0.a(this.d);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

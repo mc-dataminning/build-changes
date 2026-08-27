@@ -1,7 +1,7 @@
 public class gep implements geu {
    private static final int a = 6000;
-   private static final tl b = tl.c("tutorial.find_tree.title");
-   private static final tl c = tl.c("tutorial.find_tree.description");
+   private static final tm b = tm.c("tutorial.find_tree.title");
+   private static final tm c = tm.c("tutorial.find_tree.description");
    private final get d;
    private euz e;
    private int f;

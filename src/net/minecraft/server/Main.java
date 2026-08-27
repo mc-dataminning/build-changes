@@ -113,7 +113,7 @@ public class Main {
             afr.c $$31 = a($$20.a(), $$27, $$29, $$30);
             $$32 = ac.<afs>c($$6x -> afr.a($$31, $$5xx -> {
                   ht<dit> $$6xx = $$5xx.d().d(je.aI);
-                  DynamicOps<rq> $$7x = aev.a(ri.a, $$5xx.c());
+                  DynamicOps<rr> $$7x = aev.a(rj.a, $$5xx.c());
                   Pair<ecm, dln.b> $$8x = $$27.a($$7x, $$5xx.b(), $$6xx, $$5xx.c().d());
                   if ($$8x != null) {
                      return new afr.b<>((ecm)$$8x.getFirst(), ((dln.b)$$8x.getSecond()).b());
@@ -202,10 +202,10 @@ public class Main {
    private static void a(ecg.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, ht<dit> $$4) {
       a.info("Forcing world upgrade!");
       bgm $$5 = new bgm($$0, $$1, $$4, $$2);
-      tl $$6 = null;
+      tm $$6 = null;
 
       while (!$$5.b()) {
-         tl $$7 = $$5.h();
+         tm $$7 = $$5.h();
          if ($$6 != $$7) {
             $$6 = $$7;
             a.info($$5.h().getString());

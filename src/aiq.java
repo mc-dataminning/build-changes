@@ -17,13 +17,13 @@ import java.util.Set;
 public class aiq {
    private static final int a = 10000;
    private static final Dynamic4CommandExceptionType b = new Dynamic4CommandExceptionType(
-      ($$0, $$1, $$2, $$3) -> tl.a("commands.spreadplayers.failed.teams", $$0, $$1, $$2, $$3)
+      ($$0, $$1, $$2, $$3) -> tm.a("commands.spreadplayers.failed.teams", $$0, $$1, $$2, $$3)
    );
    private static final Dynamic4CommandExceptionType c = new Dynamic4CommandExceptionType(
-      ($$0, $$1, $$2, $$3) -> tl.a("commands.spreadplayers.failed.entities", $$0, $$1, $$2, $$3)
+      ($$0, $$1, $$2, $$3) -> tm.a("commands.spreadplayers.failed.entities", $$0, $$1, $$2, $$3)
    );
    private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> tl.a("commands.spreadplayers.failed.invalid.height", $$0, $$1)
+      ($$0, $$1) -> tm.a("commands.spreadplayers.failed.invalid.height", $$0, $$1)
    );
 
    public static void a(CommandDispatcher<dt> $$0) {
@@ -96,7 +96,7 @@ public class aiq {
          a($$1, (double)$$2, $$7, $$9, $$10, $$11, $$12, $$13, $$4, $$14, $$5);
          double $$15 = a($$6, $$7, $$14, $$4, $$5);
          $$0.a(
-            () -> tl.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
+            () -> tm.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
             true
          );
          return $$14.length;
@@ -108,7 +108,7 @@ public class aiq {
 
       for (biq $$2 : $$0) {
          if ($$2 instanceof cbu) {
-            $$1.add($$2.cg());
+            $$1.add($$2.cf());
          } else {
             $$1.add(null);
          }
@@ -194,7 +194,7 @@ public class aiq {
       for (biq $$8 : $$0) {
          aiq.a $$10;
          if ($$4) {
-            eio $$9 = $$8 instanceof cbu ? $$8.cg() : null;
+            eio $$9 = $$8 instanceof cbu ? $$8.cf() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }

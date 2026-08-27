@@ -22,7 +22,7 @@ public class fcz extends eyk {
    private final cpr m;
 
    public fcz(cpr $$0, Consumer<Optional<cpr>> $$1) {
-      super(tl.c("editGamerule.title"));
+      super(tm.c("editGamerule.title"));
       this.m = $$0;
       this.a = $$1;
    }
@@ -32,8 +32,8 @@ public class fcz extends eyk {
       this.b = new fcz.g(this.m);
       this.e(this.b);
       evy.b $$0 = new evy().a(10).d(2);
-      this.k = $$0.a(esq.a(tk.d, $$0x -> this.a.accept(Optional.of(this.m))).a());
-      $$0.a(esq.a(tk.e, $$0x -> this.a.accept(Optional.empty())).a());
+      this.k = $$0.a(esq.a(tl.d, $$0x -> this.a.accept(Optional.of(this.m))).a());
+      $$0.a(esq.a(tl.e, $$0x -> this.a.accept(Optional.empty())).a());
       $$0.a().a($$1 -> {
          eso var10000 = this.d($$1);
       });
@@ -71,7 +71,7 @@ public class fcz extends eyk {
    public class a extends fcz.d {
       private final esx<Boolean> d;
 
-      public a(tl $$1, List<ark> $$2, String $$3, cpr.a $$4) {
+      public a(tm $$1, List<ark> $$2, String $$3, cpr.a $$4) {
          super($$2, $$1);
          this.d = esx.b($$4.a()).a().a($$1x -> $$1x.b().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
          this.b.add(this.d);
@@ -87,9 +87,9 @@ public class fcz extends eyk {
    }
 
    public class b extends fcz.f {
-      final tl b;
+      final tm b;
 
-      public b(tl $$1) {
+      public b(tm $$1) {
          super(null);
          this.b = $$1;
       }
@@ -122,14 +122,14 @@ public class fcz extends eyk {
 
    @FunctionalInterface
    interface c<T extends cpr.g<T>> {
-      fcz.f create(tl var1, List<ark> var2, String var3, T var4);
+      fcz.f create(tm var1, List<ark> var2, String var3, T var4);
    }
 
    public abstract class d extends fcz.f {
       private final List<ark> a;
       protected final List<eso> b = Lists.newArrayList();
 
-      public d(@Nullable List<ark> $$1, tl $$2) {
+      public d(@Nullable List<ark> $$1, tm $$2) {
          super($$1);
          this.a = fcz.this.f.h.c($$2, 175);
       }
@@ -157,7 +157,7 @@ public class fcz extends eyk {
    public class e extends fcz.d {
       private final esz d;
 
-      public e(tl $$1, List<ark> $$2, String $$3, cpr.d $$4) {
+      public e(tm $$1, List<ark> $$2, String $$3, cpr.d $$4) {
          super($$2, $$1);
          this.d = new esz(fcz.this.f.h, 10, 5, 44, 20, $$1.e().f("\n").f($$3).f("\n"));
          this.d.a(Integer.toString($$4.a()));
@@ -207,17 +207,17 @@ public class fcz extends eyk {
             }
 
             private <T extends cpr.g<T>> void a(cpr.e<T> $$0, fcz.c<T> $$1x) {
-               tl $$2 = tl.c($$0.b());
-               tl $$3 = tl.b($$0.a()).a(n.o);
+               tm $$2 = tm.c($$0.b());
+               tm $$3 = tm.b($$0.a()).a(n.o);
                T $$4 = $$1.a($$0);
                String $$5 = $$4.b();
-               tl $$6 = tl.a("editGamerule.default", tl.b($$5)).a(n.h);
+               tm $$6 = tm.a("editGamerule.default", tm.b($$5)).a(n.h);
                String $$7 = $$0.b() + ".description";
                List<ark> $$10;
                String $$11;
                if (gak.a($$7)) {
                   Builder<ark> $$8 = ImmutableList.builder().add($$3.f());
-                  tl $$9 = tl.c($$7);
+                  tm $$9 = tm.c($$7);
                   fcz.this.i.c($$9, 150).forEach($$8::add);
                   $$10 = $$8.add($$6.f()).build();
                   $$11 = $$9.getString() + "\n" + $$6.getString();
@@ -234,7 +234,7 @@ public class fcz extends eyk {
             .sorted(Entry.comparingByKey())
             .forEach(
                $$0x -> {
-                  this.b(fcz.this.new b(tl.c(((cpr.b)$$0x.getKey()).a()).a(n.r, n.o)));
+                  this.b(fcz.this.new b(tm.c(((cpr.b)$$0x.getKey()).a()).a(n.r, n.o)));
                   ((Map)$$0x.getValue())
                      .entrySet()
                      .stream()

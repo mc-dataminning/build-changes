@@ -110,7 +110,7 @@ public class bvl extends bur implements bke<bvl.g> {
    }
 
    @Override
-   public void Y() {
+   public void X() {
       if (this.ch > 0) {
          this.ch--;
       }
@@ -122,7 +122,7 @@ public class bvl extends bur implements bke<bvl.g> {
          }
       }
 
-      if (this.aB()) {
+      if (this.aA()) {
          if (!this.cg) {
             this.r(false);
             this.gm();
@@ -155,11 +155,11 @@ public class bvl extends bur implements bke<bvl.g> {
          }
       }
 
-      this.cg = this.aB();
+      this.cg = this.aA();
    }
 
    @Override
-   public boolean bk() {
+   public boolean bj() {
       return false;
    }
 
@@ -205,14 +205,14 @@ public class bvl extends bur implements bke<bvl.g> {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("RabbitType", this.gd().j);
       $$0.a("MoreCarrotTicks", this.ci);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a(bvl.g.a($$0.h("RabbitType")));
       this.ci = $$0.h("MoreCarrotTicks");
@@ -248,7 +248,7 @@ public class bvl extends bur implements bke<bvl.g> {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return this.gd() == bvl.g.g ? apf.f : apf.g;
    }
 
@@ -294,8 +294,8 @@ public class bvl extends bur implements bke<bvl.g> {
          this.bP.a(1, new brt(this).a());
          this.bP.a(2, new bru<>(this, cbu.class, true));
          this.bP.a(2, new bru<>(this, bvu.class, true));
-         if (!this.ad()) {
-            this.b(tl.c(ac.a("entity", cc)));
+         if (!this.ac()) {
+            this.b(tm.c(ac.a("entity", cc)));
          }
       }
 
@@ -304,7 +304,7 @@ public class bvl extends bur implements bke<bvl.g> {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       bvl.g $$5 = a($$0, this.dl());
       if ($$3 instanceof bvl.b) {
          $$5 = ((bvl.b)$$3).a;
@@ -339,7 +339,7 @@ public class bvl extends bur implements bke<bvl.g> {
    @Override
    public void b(byte $$0) {
       if ($$0 == 1) {
-         this.bl();
+         this.bk();
          this.cf = 10;
          this.ce = 0;
       } else {
@@ -348,8 +348,8 @@ public class bvl extends bur implements bke<bvl.g> {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.6F * this.cI()), (double)(this.dg() * 0.4F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.6F * this.cH()), (double)(this.df() * 0.4F));
    }
 
    static class a<T extends bjg> extends bpi<T> {
@@ -416,7 +416,7 @@ public class bvl extends bur implements bke<bvl.g> {
 
       @Override
       public void a() {
-         if (this.l.aB() && !this.l.bj && !((bvl.c)this.l.bM).c()) {
+         if (this.l.aA() && !this.l.bj && !((bvl.c)this.l.bM).c()) {
             this.l.i(0.0);
          } else if (this.b()) {
             this.l.i(this.m);
@@ -427,7 +427,7 @@ public class bvl extends bur implements bke<bvl.g> {
 
       @Override
       public void a(double $$0, double $$1, double $$2, double $$3) {
-         if (this.l.aY()) {
+         if (this.l.aX()) {
             $$3 = 1.5;
          }
 
@@ -485,7 +485,7 @@ public class bvl extends bur implements bke<bvl.g> {
       @Override
       public void e() {
          super.e();
-         this.g.G().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, 10.0F, (float)this.g.Z());
+         this.g.G().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, 10.0F, (float)this.g.Y());
          if (this.m()) {
             cpv $$0 = this.g.dL();
             gw $$1 = this.e.c();

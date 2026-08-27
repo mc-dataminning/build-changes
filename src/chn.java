@@ -112,25 +112,25 @@ public class chn extends cjv implements ckz {
    }
 
    public static boolean d(cjf $$0) {
-      qx $$1 = $$0.v();
+      qy $$1 = $$0.v();
       return $$1 != null && $$1.q("Charged");
    }
 
    public static void a(cjf $$0, boolean $$1) {
-      qx $$2 = $$0.w();
+      qy $$2 = $$0.w();
       $$2.a("Charged", $$1);
    }
 
    private static void b(cjf $$0, cjf $$1) {
-      qx $$2 = $$0.w();
-      rd $$3;
+      qy $$2 = $$0.w();
+      re $$3;
       if ($$2.b("ChargedProjectiles", 9)) {
          $$3 = $$2.c("ChargedProjectiles", 10);
       } else {
-         $$3 = new rd();
+         $$3 = new re();
       }
 
-      qx $$5 = new qx();
+      qy $$5 = new qy();
       $$1.b($$5);
       $$3.add($$5);
       $$2.a("ChargedProjectiles", $$3);
@@ -138,12 +138,12 @@ public class chn extends cjv implements ckz {
 
    private static List<cjf> p(cjf $$0) {
       List<cjf> $$1 = Lists.newArrayList();
-      qx $$2 = $$0.v();
+      qy $$2 = $$0.v();
       if ($$2 != null && $$2.b("ChargedProjectiles", 9)) {
-         rd $$3 = $$2.c("ChargedProjectiles", 10);
+         re $$3 = $$2.c("ChargedProjectiles", 10);
          if ($$3 != null) {
             for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               qx $$5 = $$3.a($$4);
+               qy $$5 = $$3.a($$4);
                $$1.add(cjf.a($$5));
             }
          }
@@ -153,9 +153,9 @@ public class chn extends cjv implements ckz {
    }
 
    private static void q(cjf $$0) {
-      qx $$1 = $$0.v();
+      qy $$1 = $$0.v();
       if ($$1 != null) {
-         rd $$2 = $$1.c("ChargedProjectiles", 9);
+         re $$2 = $$1.c("ChargedProjectiles", 9);
          $$2.clear();
          $$1.a("ChargedProjectiles", $$2);
       }
@@ -316,17 +316,17 @@ public class chn extends cjv implements ckz {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       List<cjf> $$4 = p($$0);
       if (d($$0) && !$$4.isEmpty()) {
          cjf $$5 = $$4.get(0);
-         $$2.add(tl.c("item.minecraft.crossbow.projectile").b(tk.u).b($$5.J()));
+         $$2.add(tm.c("item.minecraft.crossbow.projectile").b(tl.u).b($$5.J()));
          if ($$3.a() && $$5.a(cji.tA)) {
-            List<tl> $$6 = Lists.newArrayList();
+            List<tm> $$6 = Lists.newArrayList();
             cji.tA.a($$5, $$1, $$6, $$3);
             if (!$$6.isEmpty()) {
                for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
-                  $$6.set($$7, tl.b("  ").b($$6.get($$7)).a(n.h));
+                  $$6.set($$7, tm.b("  ").b($$6.get($$7)).a(n.h));
                }
 
                $$2.addAll($$6);

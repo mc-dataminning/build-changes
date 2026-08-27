@@ -13,7 +13,7 @@ public class chu extends cja implements cke {
 
    @Override
    public bgy a(cjf $$0, cbu $$1, bjg $$2, bgx $$3) {
-      if ($$2 instanceof bvn $$4 && $$4.bw() && !$$4.y() && $$4.t() != this.b) {
+      if ($$2 instanceof bvn $$4 && $$4.bv() && !$$4.y() && $$4.t() != this.b) {
          $$4.dL().a($$1, $$4, ape.gF, apf.h, 1.0F, 1.0F);
          if (!$$1.dL().B) {
             $$4.b(this.b);

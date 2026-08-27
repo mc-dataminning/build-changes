@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class aaw implements vd<ww> {
+public class aaw implements ve<wx> {
    private final boolean a;
    private final List<af> b;
    private final Set<aex> c;
@@ -17,22 +17,22 @@ public class aaw implements vd<ww> {
       this.d = Map.copyOf($$3);
    }
 
-   public aaw(so $$0) {
+   public aaw(sp $$0) {
       this.a = $$0.readBoolean();
       this.b = $$0.a(af::b);
-      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, so::s);
-      this.d = $$0.a(so::s, ah::b);
+      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, sp::s);
+      this.d = $$0.a(sp::s, ah::b);
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c, so::a);
-      $$0.a(this.d, so::a, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c, sp::a);
+      $$0.a(this.d, sp::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

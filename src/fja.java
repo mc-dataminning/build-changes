@@ -49,7 +49,7 @@ public class fja implements dw {
 
    @Override
    public Collection<String> y() {
-      return (Collection<String>)(this.b.v != null && this.b.v.c() == ehl.a.c ? Collections.singleton(((ehk)this.b.v).a().cx()) : Collections.emptyList());
+      return (Collection<String>)(this.b.v != null && this.b.v.c() == ehl.a.c ? Collections.singleton(((ehk)this.b.v).a().cw()) : Collections.emptyList());
    }
 
    @Override

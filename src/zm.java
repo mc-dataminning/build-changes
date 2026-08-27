@@ -1,24 +1,24 @@
-public class zm implements vd<ww> {
-   private final tl a;
+public class zm implements ve<wx> {
+   private final tm a;
 
-   public zm(tl $$0) {
+   public zm(tm $$0) {
       this.a = $$0;
    }
 
-   public zm(so $$0) {
+   public zm(sp $$0) {
       this.a = $$0.l();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public tl a() {
+   public tm a() {
       return this.a;
    }
 }

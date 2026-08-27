@@ -28,12 +28,12 @@ public abstract class fui<T extends bjg, M extends ffd<T>> extends ftg<T> implem
    public void a(T $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
       $$3.a();
       this.f.c = this.d($$0, $$2);
-      this.f.d = $$0.bO();
+      this.f.d = $$0.bN();
       this.f.e = $$0.m_();
       float $$6 = arx.j($$2, $$0.aV, $$0.aU);
       float $$7 = arx.j($$2, $$0.aX, $$0.aW);
       float $$8 = $$7 - $$6;
-      if ($$0.bO() && $$0.cZ() instanceof bjg $$9) {
+      if ($$0.bN() && $$0.cY() instanceof bjg $$9) {
          $$6 = arx.j($$2, $$9.aV, $$9.aU);
          $$8 = $$7 - $$6;
          float $$10 = arx.g($$8);
@@ -74,7 +74,7 @@ public abstract class fui<T extends bjg, M extends ffd<T>> extends ftg<T> implem
       $$3.a(0.0F, -1.501F, 0.0F);
       float $$15 = 0.0F;
       float $$16 = 0.0F;
-      if (!$$0.bO() && $$0.bw()) {
+      if (!$$0.bN() && $$0.bv()) {
          $$15 = $$0.aQ.b($$2);
          $$16 = $$0.aQ.c($$2);
          if ($$0.m_()) {
@@ -126,7 +126,7 @@ public abstract class fui<T extends bjg, M extends ffd<T>> extends ftg<T> implem
    }
 
    protected boolean d(T $$0) {
-      return !$$0.ce();
+      return !$$0.cd();
    }
 
    private static float a(hc $$0) {
@@ -145,7 +145,7 @@ public abstract class fui<T extends bjg, M extends ffd<T>> extends ftg<T> implem
    }
 
    protected boolean a(T $$0) {
-      return $$0.cl();
+      return $$0.ck();
    }
 
    protected void a(T $$0, elp $$1, float $$2, float $$3, float $$4) {
@@ -175,7 +175,7 @@ public abstract class fui<T extends bjg, M extends ffd<T>> extends ftg<T> implem
          $$1.a(a.f.rotationDegrees(this.c($$0)));
          $$1.a(a.d.rotationDegrees(270.0F));
       } else if (e($$0)) {
-         $$1.a(0.0F, $$0.dh() + 0.1F, 0.0F);
+         $$1.a(0.0F, $$0.dg() + 0.1F, 0.0F);
          $$1.a(a.f.rotationDegrees(180.0F));
       }
    }
@@ -201,7 +201,7 @@ public abstract class fui<T extends bjg, M extends ffd<T>> extends ftg<T> implem
 
    protected boolean b(T $$0) {
       double $$1 = this.c.b($$0);
-      float $$2 = $$0.bV() ? 32.0F : 64.0F;
+      float $$2 = $$0.bU() ? 32.0F : 64.0F;
       if ($$1 >= (double)($$2 * $$2)) {
          return false;
       } else {
@@ -209,8 +209,8 @@ public abstract class fui<T extends bjg, M extends ffd<T>> extends ftg<T> implem
          fng $$4 = $$3.s;
          boolean $$5 = !$$0.d($$4);
          if ($$0 != $$4) {
-            eio $$6 = $$0.cg();
-            eio $$7 = $$4.cg();
+            eio $$6 = $$0.cf();
+            eio $$7 = $$4.cf();
             if ($$6 != null) {
                eio.b $$8 = $$6.j();
                switch ($$8) {
@@ -228,13 +228,13 @@ public abstract class fui<T extends bjg, M extends ffd<T>> extends ftg<T> implem
             }
          }
 
-         return eqv.K() && $$0 != $$3.am() && $$5 && !$$0.bP();
+         return eqv.K() && $$0 != $$3.am() && $$5 && !$$0.bO();
       }
    }
 
    public static boolean e(bjg $$0) {
-      if ($$0 instanceof cbu || $$0.ad()) {
-         String $$1 = n.a($$0.ac().getString());
+      if ($$0 instanceof cbu || $$0.ac()) {
+         String $$1 = n.a($$0.ab().getString());
          if ("Dinnerbone".equals($$1) || "Grumm".equals($$1)) {
             return !($$0 instanceof cbu) || ((cbu)$$0).a(cbv.a);
          }

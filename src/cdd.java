@@ -51,7 +51,7 @@ public class cdd extends ebr {
    }
 
    public static boolean a(cdc $$0, cdb $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bw() && $$0.gq() && $$0.ek() <= 2400 && $$0.dL().C_() == $$1.i().C_() : false;
+      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bv() && $$0.gq() && $$0.ek() <= 2400 && $$0.dL().C_() == $$1.i().C_() : false;
    }
 
    @Nullable
@@ -119,14 +119,14 @@ public class cdd extends ebr {
       return $$2 != null ? $$2 : new cdb(this.b(), $$0, $$1);
    }
 
-   public static cdd a(akr $$0, qx $$1) {
+   public static cdd a(akr $$0, qy $$1) {
       cdd $$2 = new cdd($$0);
       $$2.d = $$1.h("NextAvailableID");
       $$2.e = $$1.h("Tick");
-      rd $$3 = $$1.c("Raids", 10);
+      re $$3 = $$1.c("Raids", 10);
 
       for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         qx $$5 = $$3.a($$4);
+         qy $$5 = $$3.a($$4);
          cdb $$6 = new cdb($$0, $$5);
          $$2.b.put($$6.u(), $$6);
       }
@@ -135,13 +135,13 @@ public class cdd extends ebr {
    }
 
    @Override
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       $$0.a("NextAvailableID", this.d);
       $$0.a("Tick", this.e);
-      rd $$1 = new rd();
+      re $$1 = new re();
 
       for (cdb $$2 : this.b.values()) {
-         qx $$3 = new qx();
+         qy $$3 = new qy();
          $$2.a($$3);
          $$1.add($$3);
       }

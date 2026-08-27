@@ -62,18 +62,18 @@ public class eoo extends gfb {
    }
 
    @Nullable
-   private eoo.a C() {
-      boolean $$0 = this.E() && this.z.getNow(false);
+   private eoo.a D() {
+      boolean $$0 = this.F() && this.z.getNow(false);
       if (!$$0) {
          return null;
       } else {
-         return this.D() ? this.G : this.H;
+         return this.E() ? this.G : this.H;
       }
    }
 
    @Override
    public void c() {
-      eoo.a $$0 = this.C();
+      eoo.a $$0 = this.D();
       if (!Objects.equals(this.B, $$0)) {
          this.B = $$0;
          if (this.B != null) {
@@ -88,11 +88,11 @@ public class eoo extends gfb {
       }
    }
 
-   private boolean D() {
+   private boolean E() {
       return this.f.m.P().c();
    }
 
-   private boolean E() {
+   private boolean F() {
       return this.f.y instanceof eyp;
    }
 

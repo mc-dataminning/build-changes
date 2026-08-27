@@ -2,15 +2,15 @@ public class eyd extends eyk {
    private etj a;
 
    public eyd() {
-      super(tl.c("outOfMemory.title"));
+      super(tm.c("outOfMemory.title"));
       this.a = etj.a;
    }
 
    @Override
    protected void aI_() {
-      this.d(esq.a(tk.l, $$0 -> this.f.a(new eyp())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
-      this.d(esq.a(tl.c("menu.quit"), $$0 -> this.f.q()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
-      this.a = etj.a(this.i, tl.c("outOfMemory.message"), 295);
+      this.d(esq.a(tl.l, $$0 -> this.f.a(new eyp())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
+      this.d(esq.a(tm.c("menu.quit"), $$0 -> this.f.q()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
+      this.a = etj.a(this.i, tm.c("outOfMemory.message"), 295);
    }
 
    @Override

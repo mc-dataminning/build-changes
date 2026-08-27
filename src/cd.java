@@ -19,7 +19,7 @@ public class cd extends cw<cd.a> {
       Set<biu<?>> $$3 = Sets.newHashSet();
 
       for (biq $$4 : $$1) {
-         $$3.add($$4.ah());
+         $$3.add($$4.ag());
          $$2.add(bq.b($$0, $$4));
       }
 

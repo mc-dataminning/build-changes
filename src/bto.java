@@ -19,7 +19,7 @@ public class bto extends btl<bjg> {
    }
 
    private boolean b(bjg $$0) {
-      return $$0.ah() == biu.bf && $$0.m_();
+      return $$0.ag() == biu.bf && $$0.m_();
    }
 
    private bsj c(bjg $$0) {

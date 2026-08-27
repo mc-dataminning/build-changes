@@ -157,12 +157,12 @@ public class bki {
       this.d();
    }
 
-   public qx g() {
-      qx $$0 = new qx();
+   public qy g() {
+      qy $$0 = new qy();
       $$0.a("Name", jd.v.b(this.a).toString());
       $$0.a("Base", this.e);
       if (!this.d.isEmpty()) {
-         rd $$1 = new rd();
+         re $$1 = new re();
 
          for (bkk $$2 : this.d) {
             $$1.add($$2.e());
@@ -174,10 +174,10 @@ public class bki {
       return $$0;
    }
 
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.e = $$0.k("Base");
       if ($$0.b("Modifiers", 9)) {
-         rd $$1 = $$0.c("Modifiers", 10);
+         re $$1 = $$0.c("Modifiers", 10);
 
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
             bkk $$3 = bkk.a($$1.a($$2));

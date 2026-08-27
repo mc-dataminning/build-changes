@@ -1,7 +1,7 @@
 public interface adl extends abe {
    @Override
-   default sn b() {
-      return sn.d;
+   default so b() {
+      return so.d;
    }
 
    void a(adn var1);

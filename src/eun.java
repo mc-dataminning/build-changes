@@ -74,7 +74,7 @@ public class eun implements fdq {
          $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
          $$0.c().b();
          if ($$6 > 3 && $$5.aK_()) {
-            tl $$8 = this.e.m.U[$$1].k();
+            tm $$8 = this.e.m.U[$$1].k();
             $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
          }
       }
@@ -84,7 +84,7 @@ public class eun implements fdq {
       int $$1 = (int)(this.c() * 255.0F);
       if ($$1 > 3 && this.g != null) {
          fdp $$2 = this.g.b();
-         tl $$3 = $$2 == fdn.a ? this.g.c().b() : $$2.aJ_();
+         tm $$3 = $$2 == fdn.a ? this.g.c().b() : $$2.aJ_();
          if ($$3 != null) {
             int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
             int $$5 = $$0.b() - 35;

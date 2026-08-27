@@ -16,13 +16,13 @@ public class eod extends gfb {
    @Nullable
    private emw A;
    private final long B;
-   private final tl[] C = new tl[]{tl.c("mco.brokenworld.message.line1"), tl.c("mco.brokenworld.message.line2")};
+   private final tm[] C = new tm[]{tm.c("mco.brokenworld.message.line1"), tm.c("mco.brokenworld.message.line2")};
    private int D;
    private final List<Integer> E = Lists.newArrayList();
    private int F;
 
    public eod(eyk $$0, ema $$1, long $$2, boolean $$3) {
-      super($$3 ? tl.c("mco.brokenworld.minigame.title") : tl.c("mco.brokenworld.title"));
+      super($$3 ? tm.c("mco.brokenworld.minigame.title") : tm.c("mco.brokenworld.title"));
       this.y = $$0;
       this.z = $$1;
       this.B = $$2;
@@ -31,31 +31,31 @@ public class eod extends gfb {
    @Override
    public void aI_() {
       this.D = this.g / 2 - 150;
-      this.d(esq.a(tk.k, $$0 -> this.az_()).a((this.g - 150) / 2, h(13) - 5, 150, 20).a());
+      this.d(esq.a(tl.k, $$0 -> this.az_()).a((this.g - 150) / 2, h(13) - 5, 150, 20).a());
       if (this.A == null) {
          this.a(this.B);
       } else {
-         this.C();
+         this.D();
       }
    }
 
    @Override
-   public tl g() {
-      return tn.a(Stream.concat(Stream.of(this.e), Stream.of(this.C)).collect(Collectors.toList()), tk.u);
+   public tm g() {
+      return to.a(Stream.concat(Stream.of(this.e), Stream.of(this.C)).collect(Collectors.toList()), tl.u);
    }
 
-   private void C() {
+   private void D() {
       for (Entry<Integer, end> $$0 : this.A.i.entrySet()) {
          int $$1 = $$0.getKey();
          boolean $$2 = $$1 != this.A.n || this.A.m == emw.c.b;
          esq $$3;
          if ($$2) {
-            $$3 = esq.a(tl.c("mco.brokenworld.play"), $$1x -> this.f.a(new eom(this.y, new eqc(this.A.a, $$1, this::e)))).a(this.a($$1), h(8), 80, 20).a();
+            $$3 = esq.a(tm.c("mco.brokenworld.play"), $$1x -> this.f.a(new eom(this.y, new eqc(this.A.a, $$1, this::e)))).a(this.a($$1), h(8), 80, 20).a();
             $$3.i = !this.A.i.get($$1).l;
          } else {
-            $$3 = esq.a(tl.c("mco.brokenworld.download"), $$1x -> {
-               tl $$2x = tl.c("mco.configure.world.restore.download.question.line1");
-               tl $$3x = tl.c("mco.configure.world.restore.download.question.line2");
+            $$3 = esq.a(tm.c("mco.brokenworld.download"), $$1x -> {
+               tm $$2x = tm.c("mco.configure.world.restore.download.question.line1");
+               tm $$3x = tm.c("mco.configure.world.restore.download.question.line2");
                this.f.a(new eol($$1xx -> {
                   if ($$1xx) {
                      this.b($$1);
@@ -68,7 +68,7 @@ public class eod extends gfb {
 
          if (this.E.contains($$1)) {
             $$3.i = false;
-            $$3.b(tl.c("mco.brokenworld.downloaded"));
+            $$3.b(tm.c("mco.brokenworld.downloaded"));
          }
 
          this.d($$3);
@@ -98,7 +98,7 @@ public class eod extends gfb {
                   h(1) + 5,
                   $$1,
                   $$2,
-                  this.A.n == $$5.getKey() && !this.D(),
+                  this.A.n == $$5.getKey() && !this.E(),
                   $$5.getValue().a($$5.getKey()),
                   $$5.getKey(),
                   $$5.getValue().j,
@@ -112,7 +112,7 @@ public class eod extends gfb {
                   h(1) + 5,
                   $$1,
                   $$2,
-                  this.A.n == $$5.getKey() && !this.D(),
+                  this.A.n == $$5.getKey() && !this.E(),
                   $$5.getValue().a($$5.getKey()),
                   $$5.getKey(),
                   -1L,
@@ -134,7 +134,7 @@ public class eod extends gfb {
 
          try {
             this.A = $$1.a($$0);
-            this.C();
+            this.D();
          } catch (ens var5) {
             b.error("Couldn't get own world", var5);
             this.f.a(new eoj(var5, this.y));
@@ -168,7 +168,7 @@ public class eod extends gfb {
             if ($$1x) {
                this.E.add($$0);
                this.n();
-               this.C();
+               this.D();
             } else {
                this.f.a(this);
             }
@@ -185,7 +185,7 @@ public class eod extends gfb {
       this.f.a(this.y);
    }
 
-   private boolean D() {
+   private boolean E() {
       return this.A != null && this.A.m == emw.c.b;
    }
 

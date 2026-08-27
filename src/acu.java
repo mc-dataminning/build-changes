@@ -1,4 +1,4 @@
-public class acu implements vd<abd> {
+public class acu implements ve<abd> {
    private static final int a = 384;
    private final gw b;
    private final String[] c;
@@ -10,7 +10,7 @@ public class acu implements vd<abd> {
       this.c = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   public acu(so $$0) {
+   public acu(sp $$0) {
       this.b = $$0.e();
       this.d = $$0.readBoolean();
       this.c = new String[4];
@@ -21,7 +21,7 @@ public class acu implements vd<abd> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.b);
       $$0.a(this.d);
 

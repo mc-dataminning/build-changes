@@ -12,7 +12,7 @@ public class ahz {
    public static void a(Collection<String> $$0, dt $$1) {
       $$1.l().a($$0).exceptionally($$1x -> {
          a.warn("Failed to execute reload", $$1x);
-         $$1.b(tl.c("commands.reload.failure"));
+         $$1.b(tm.c("commands.reload.failure"));
          return null;
       });
    }
@@ -39,7 +39,7 @@ public class ahz {
          ecm $$4 = $$2.aT();
          Collection<String> $$5 = $$3.d();
          Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> tl.c("commands.reload.success"), true);
+         $$1.a(() -> tm.c("commands.reload.success"), true);
          a($$6, $$1);
          return 0;
       }));

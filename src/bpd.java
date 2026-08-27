@@ -26,7 +26,7 @@ public class bpd implements bpa {
    }
 
    public void a(double $$0, double $$1, double $$2) {
-      this.a($$0, $$1, $$2, (float)this.a.fG(), (float)this.a.Z());
+      this.a($$0, $$1, $$2, (float)this.a.fG(), (float)this.a.Y());
    }
 
    public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
@@ -56,7 +56,7 @@ public class bpd implements bpa {
 
    protected void b() {
       if (!this.a.L().l()) {
-         this.a.aW = arx.c(this.a.aW, this.a.aU, (float)this.a.aa());
+         this.a.aW = arx.c(this.a.aW, this.a.aU, (float)this.a.Z());
       }
    }
 
@@ -103,6 +103,6 @@ public class bpd implements bpa {
    }
 
    private static double b(biq $$0) {
-      return $$0 instanceof bjg ? $$0.du() : ($$0.cH().b + $$0.cH().e) / 2.0;
+      return $$0 instanceof bjg ? $$0.du() : ($$0.cG().b + $$0.cG().e) / 2.0;
    }
 }

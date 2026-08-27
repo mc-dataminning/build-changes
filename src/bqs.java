@@ -19,7 +19,7 @@ public class bqs extends bqb {
       } else if (this.c.ef().a(8000) != 0) {
          return false;
       } else {
-         this.d = this.c.dL().a(cbh.class, b, this.c, this.c.dq(), this.c.ds(), this.c.dw(), this.c.cH().c(6.0, 2.0, 6.0));
+         this.d = this.c.dL().a(cbh.class, b, this.c, this.c.dq(), this.c.ds(), this.c.dw(), this.c.cG().c(6.0, 2.0, 6.0));
          return this.d != null;
       }
    }

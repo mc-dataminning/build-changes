@@ -1,14 +1,14 @@
-public record xx(tw.a a) implements vd<ww> {
-   public xx(so $$0) {
-      this(tw.a.a($$0));
+public record xx(tx.a a) implements ve<wx> {
+   public xx(sp $$0) {
+      this(tx.a.a($$0));
    }
 
    @Override
-   public void a(so $$0) {
-      tw.a.a($$0, this.a);
+   public void a(sp $$0) {
+      tx.a.a($$0, this.a);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 }

@@ -70,7 +70,7 @@ public class feh<T extends bvy & bje> extends feb<T> {
          this.a($$0);
       } else {
          boolean $$6 = $$2 > 1.0E-5F || $$0.dD() != $$0.O || $$0.dB() != $$0.N;
-         if ($$0.bb()) {
+         if ($$0.ba()) {
             if ($$6) {
                this.d($$3, $$5);
             } else {
@@ -79,7 +79,7 @@ public class feh<T extends bvy & bje> extends feb<T> {
 
             this.a($$0);
          } else {
-            if ($$0.aB()) {
+            if ($$0.aA()) {
                if ($$6) {
                   this.c($$3, $$4);
                } else {

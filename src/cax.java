@@ -56,7 +56,7 @@ public class cax {
    private List<Pair<UUID, Integer>> b() {
       return Streams.concat(
             new Stream[]{
-               this.c.stream().map($$0 -> Pair.of($$0.cw(), this.d.getInt($$0))),
+               this.c.stream().map($$0 -> Pair.of($$0.cv(), this.d.getInt($$0))),
                this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
             }
          )
@@ -99,7 +99,7 @@ public class cax {
                   case e:
                   case c:
                   case d:
-                     this.e.put($$8.cw(), $$7 - 1);
+                     this.e.put($$8.cv(), $$7 - 1);
                }
             }
          }
@@ -135,7 +135,7 @@ public class cax {
       boolean $$2 = !this.d.containsKey($$0);
       int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
       if ($$2) {
-         int $$4 = this.e.removeInt($$0.cw());
+         int $$4 = this.e.removeInt($$0.cv());
          $$3 += $$4;
          this.d.put($$0, $$3);
          this.c.add($$0);

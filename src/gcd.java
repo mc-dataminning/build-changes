@@ -13,7 +13,7 @@ public class gcd extends gbv {
 
    @Override
    public boolean s() {
-      return !this.n.aT();
+      return !this.n.aS();
    }
 
    @Override

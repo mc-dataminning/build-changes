@@ -39,7 +39,7 @@ public abstract class dhf implements cpb, cqv.a, dhs, dic {
    protected dzw i;
    private final Map<dvi, dvq> s = Maps.newHashMap();
    private final Map<dvi, LongSet> t = Maps.newHashMap();
-   protected final Map<gw, qx> j = Maps.newHashMap();
+   protected final Map<gw, qy> j = Maps.newHashMap();
    protected final Map<gw, dcv> k = Maps.newHashMap();
    protected final cpx l;
    protected final dhr[] m;
@@ -250,17 +250,17 @@ public abstract class dhf implements cpb, cqv.a, dhs, dic {
       a(this.n(), $$1).add($$0);
    }
 
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.j.put(dcv.c($$0), $$0);
    }
 
    @Nullable
-   public qx f(gw $$0) {
+   public qy f(gw $$0) {
       return this.j.get($$0);
    }
 
    @Nullable
-   public abstract qx g(gw var1);
+   public abstract qy g(gw var1);
 
    @Override
    public final void a(BiConsumer<gw, dfj> $$0) {

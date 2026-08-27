@@ -10,7 +10,7 @@ public interface dhz<T> {
 
    void a(Consumer<T> var1);
 
-   void b(so var1);
+   void b(sp var1);
 
    int c();
 

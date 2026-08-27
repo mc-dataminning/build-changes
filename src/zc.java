@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public class zc implements vd<ww> {
+public class zc implements ve<wx> {
    private final double a;
    private final double b;
    private final double c;
@@ -21,7 +21,7 @@ public class zc implements vd<ww> {
 
    public zc(ed.a $$0, biq $$1, ed.a $$2) {
       this.e = $$0;
-      this.d = $$1.ai();
+      this.d = $$1.ah();
       this.f = $$2;
       ehn $$3 = $$2.a($$1);
       this.a = $$3.c;
@@ -30,7 +30,7 @@ public class zc implements vd<ww> {
       this.g = true;
    }
 
-   public zc(so $$0) {
+   public zc(sp $$0) {
       this.e = $$0.b(ed.a.class);
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
@@ -46,7 +46,7 @@ public class zc implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.e);
       $$0.a(this.a);
       $$0.a(this.b);
@@ -58,7 +58,7 @@ public class zc implements vd<ww> {
       }
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

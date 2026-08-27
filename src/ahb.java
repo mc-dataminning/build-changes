@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableObject;
 
 public class ahb {
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.function.error.argument_not_compound", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.function.error.argument_not_compound", $$0));
    public static final SuggestionProvider<dt> a = ($$0, $$1) -> {
       afl $$2 = ((dt)$$0.getSource()).l().aA();
       dw.a($$2.f(), $$1, "#");
@@ -40,16 +40,16 @@ public class ahb {
       );
    }
 
-   private static qx a(ej.g $$0, ajh $$1) throws CommandSyntaxException {
-      rq $$2 = aji.a($$0, $$1);
-      if ($$2 instanceof qx) {
-         return (qx)$$2;
+   private static qy a(ej.g $$0, ajh $$1) throws CommandSyntaxException {
+      rr $$2 = aji.a($$0, $$1);
+      if ($$2 instanceof qy) {
+         return (qy)$$2;
       } else {
          throw b.create($$2.c().a());
       }
    }
 
-   private static int a(dt $$0, Collection<dp> $$1, @Nullable qx $$2) {
+   private static int a(dt $$0, Collection<dp> $$1, @Nullable qy $$2) {
       int $$3 = 0;
       boolean $$4 = false;
       boolean $$5 = false;
@@ -69,21 +69,21 @@ public class ahb {
          int $$9 = $$3;
          if ($$1.size() == 1) {
             if ($$4) {
-               $$0.a(() -> tl.a("commands.function.success.single.result", $$9, $$1.iterator().next().a()), true);
+               $$0.a(() -> tm.a("commands.function.success.single.result", $$9, $$1.iterator().next().a()), true);
             } else {
-               $$0.a(() -> tl.a("commands.function.success.single", $$9, $$1.iterator().next().a()), true);
+               $$0.a(() -> tm.a("commands.function.success.single", $$9, $$1.iterator().next().a()), true);
             }
          } else if ($$4) {
-            $$0.a(() -> tl.a("commands.function.success.multiple.result", $$1.size()), true);
+            $$0.a(() -> tm.a("commands.function.success.multiple.result", $$1.size()), true);
          } else {
-            $$0.a(() -> tl.a("commands.function.success.multiple", $$9, $$1.size()), true);
+            $$0.a(() -> tm.a("commands.function.success.multiple", $$9, $$1.size()), true);
          }
       }
 
       return $$3;
    }
 
-   public static ahb.a a(dt $$0, dp $$1, @Nullable qx $$2) throws dv {
+   public static ahb.a a(dt $$0, dp $$1, @Nullable qy $$2) throws dv {
       MutableObject<ahb.a> $$3 = new MutableObject();
       int $$4 = $$0.l().aA().a($$1, $$0.a().b(2).a((IntConsumer)($$1x -> $$3.setValue(new ahb.a($$1x, true)))), null, $$2);
       ahb.a $$5 = (ahb.a)$$3.getValue();

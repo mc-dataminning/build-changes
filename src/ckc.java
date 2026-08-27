@@ -17,7 +17,7 @@ public class ckc extends cja implements cig {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       cgv.a($$0, $$2);
    }
 
@@ -44,7 +44,7 @@ public class ckc extends cja implements cig {
    }
 
    public static cht d(cjf $$0) {
-      qx $$1 = cgy.a($$0);
+      qy $$1 = cgy.a($$0);
       return $$1 != null ? cht.a($$1.h("Base")) : cht.a;
    }
 

@@ -18,13 +18,6 @@ public class nd extends ne<dvi> {
       this.b(aqe.b).b(aqe.s).b(aqe.q);
       this.b(aqe.c).a(dvc.d);
       this.b(aqe.d).a(dvc.l);
-      this.b(aqe.e).a(dvc.v);
-      this.b(aqe.f).a(dvc.u);
-      this.b(aqe.g).a(dvc.t);
-      this.b(aqe.h).a(dvc.x);
-      this.b(aqe.i).a(dvc.w);
-      this.b(aqe.k).a(dvc.j);
-      this.b(aqe.j).a(dvc.e);
       this.b(aqe.l).a(dvc.r);
    }
 }

@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 
 public record dj(@Nullable Float c, @Nullable Float d) {
    public static final dj a = new dj(null, null);
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("argument.range.ints"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("argument.range.ints"));
 
    public static dj a(float $$0) {
       return new dj($$0, $$0);

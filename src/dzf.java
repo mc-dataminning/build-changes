@@ -14,9 +14,9 @@ public class dzf implements dzj {
    }
 
    @Override
-   public qx a(asc $$0, @Nullable qx $$1) {
-      qx $$2 = $$1 == null ? new qx() : $$1.h();
-      aex.a.encodeStart(ri.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
+   public qy a(asc $$0, @Nullable qy $$1) {
+      qy $$2 = $$1 == null ? new qy() : $$1.h();
+      aex.a.encodeStart(rj.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
       $$2.a("LootTableSeed", $$0.g());
       return $$2;
    }

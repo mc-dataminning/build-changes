@@ -31,7 +31,7 @@ public class ahe {
       int $$5 = $$4 * 100;
       cjf $$6 = $$1.a($$3, false);
       if ($$3 > $$5) {
-         $$0.b(tl.a("commands.give.failed.toomanyitems", $$5, $$6.J()));
+         $$0.b(tm.a("commands.give.failed.toomanyitems", $$5, $$6.J()));
          return 0;
       } else {
          for (aks $$7 : $$2) {
@@ -55,16 +55,16 @@ public class ahe {
                   byn $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.w();
-                     $$12.b($$7.cw());
+                     $$12.b($$7.cv());
                   }
                }
             }
          }
 
          if ($$2.size() == 1) {
-            $$0.a(() -> tl.a("commands.give.success.single", $$3, $$6.J(), $$2.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.give.success.single", $$3, $$6.J(), $$2.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.give.success.single", $$3, $$6.J(), $$2.size()), true);
+            $$0.a(() -> tm.a("commands.give.success.single", $$3, $$6.J(), $$2.size()), true);
          }
 
          return $$2.size();

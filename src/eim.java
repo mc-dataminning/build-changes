@@ -24,7 +24,7 @@ public class eim {
       return this.b.get($$0);
    }
 
-   public eij a(String $$0, eip $$1, tl $$2, eip.a $$3) {
+   public eij a(String $$0, eip $$1, tm $$2, eip.a $$3) {
       if (this.b.containsKey($$0)) {
          throw new IllegalArgumentException("An objective with the name '" + $$0 + "' already exists!");
       } else {
@@ -243,17 +243,17 @@ public class eim {
    }
 
    public void a(biq $$0) {
-      if (!($$0 instanceof cbu) && !$$0.bw()) {
-         String $$1 = $$0.cx();
+      if (!($$0 instanceof cbu) && !$$0.bv()) {
+         String $$1 = $$0.cw();
          this.d($$1, null);
          this.f($$1);
       }
    }
 
-   protected rd h() {
-      rd $$0 = new rd();
+   protected re h() {
+      re $$0 = new re();
       this.d.values().stream().map(Map::values).forEach($$1 -> $$1.forEach($$1x -> {
-            qx $$2 = new qx();
+            qy $$2 = new qy();
             $$2.a("Name", $$1x.e());
             $$2.a("Objective", $$1x.d().b());
             $$2.a("Score", $$1x.b());
@@ -263,9 +263,9 @@ public class eim {
       return $$0;
    }
 
-   protected void a(rd $$0) {
+   protected void a(re $$0) {
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         qx $$2 = $$0.a($$1);
+         qy $$2 = $$0.a($$1);
          String $$3 = $$2.l("Name");
          String $$4 = $$2.l("Objective");
          eij $$5 = this.b($$4);

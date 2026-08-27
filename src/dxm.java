@@ -155,7 +155,7 @@ public class dxm {
          this.j = $$6;
       }
 
-      private a(dzc $$0, qx $$1, czh $$2, float $$3, dxn.a $$4, boolean $$5) {
+      private a(dzc $$0, qy $$1, czh $$2, float $$3, dxn.a $$4, boolean $$5) {
          super(dvz.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
          this.i = $$3;
          this.h = $$4;
@@ -167,7 +167,7 @@ public class dxm {
          return new dyx().a($$0).a(cxq.a).a(new dyf($$1)).a(dyd.d).a($$3);
       }
 
-      public static dxm.a a(dzc $$0, qx $$1) {
+      public static dxm.a a(dzc $$0, qy $$1) {
          czh $$2 = czh.valueOf($$1.l("Rot"));
          float $$3 = $$1.j("Integrity");
          dxn.a $$4 = dxn.a.valueOf($$1.l("BiomeType"));
@@ -176,7 +176,7 @@ public class dxm {
       }
 
       @Override
-      protected void a(dvy $$0, qx $$1) {
+      protected void a(dvy $$0, qy $$1) {
          super.a($$0, $$1);
          $$1.a("Rot", this.c.d().name());
          $$1.a("Integrity", this.i);

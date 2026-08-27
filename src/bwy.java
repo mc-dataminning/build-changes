@@ -20,13 +20,13 @@ public class bwy extends bwt {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("DespawnDelay", this.bU);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("DespawnDelay", 99)) {
          this.bU = $$0.h("DespawnDelay");
@@ -66,13 +66,13 @@ public class bwy extends bwt {
          this.bU = this.gV() ? ((cbn)this.fS()).gm() - 1 : this.bU - 1;
          if (this.bU <= 0) {
             this.a(true, false);
-            this.al();
+            this.ak();
          }
       }
    }
 
    private boolean gU() {
-      return !this.gs() && !this.gW() && !this.cV();
+      return !this.gs() && !this.gW() && !this.cU();
    }
 
    private boolean gV() {
@@ -85,7 +85,7 @@ public class bwy extends bwt {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if ($$2 == bjk.h) {
          this.c_(0);
       }

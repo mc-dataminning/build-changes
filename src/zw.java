@@ -1,4 +1,4 @@
-public class zw implements vd<ww> {
+public class zw implements ve<wx> {
    private final gw a;
    private final float b;
 
@@ -7,18 +7,18 @@ public class zw implements vd<ww> {
       this.b = $$1;
    }
 
-   public zw(so $$0) {
+   public zw(sp $$0) {
       this.a = $$0.e();
       this.b = $$0.readFloat();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

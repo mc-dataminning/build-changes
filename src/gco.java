@@ -15,7 +15,7 @@ public class gco implements gbw {
    @Override
    public void a() {
       this.g--;
-      if (this.g <= 0 && this.e.bd()) {
+      if (this.g <= 0 && this.e.bc()) {
          float $$0 = this.e.dL().z.i();
          if ($$0 < 1.0E-4F) {
             this.g = 0;

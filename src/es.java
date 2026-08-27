@@ -8,10 +8,10 @@ import java.util.Collection;
 
 public class es implements ArgumentType<aex> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("advancement.advancementNotFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("recipe.notFound", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.a("predicate.unknown", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tl.a("item_modifier.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("advancement.advancementNotFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("recipe.notFound", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tm.a("predicate.unknown", $$0));
+   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tm.a("item_modifier.unknown", $$0));
 
    public static es a() {
       return new es();

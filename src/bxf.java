@@ -6,7 +6,7 @@ public class bxf extends biq {
    private final bir d;
 
    public bxf(bxh $$0, String $$1, float $$2, float $$3) {
-      super($$0.ah(), $$0.dL());
+      super($$0.ag(), $$0.dL());
       this.d = bir.b($$2, $$3);
       this.i_();
       this.b = $$0;
@@ -18,15 +18,15 @@ public class bxf extends biq {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return true;
    }
 
@@ -47,7 +47,7 @@ public class bxf extends biq {
    }
 
    @Override
-   public vd<ww> V() {
+   public ve<wx> di() {
       throw new UnsupportedOperationException();
    }
 

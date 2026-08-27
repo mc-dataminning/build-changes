@@ -56,7 +56,7 @@ public class cso extends cwo implements cvj {
             return bgy.a;
          } else if ($$0.c(b)) {
             if (!this.a($$1, $$2)) {
-               $$3.a(tl.c("block.minecraft.bed.occupied"), true);
+               $$3.a(tm.c("block.minecraft.bed.occupied"), true);
             }
 
             return bgy.a;
@@ -92,7 +92,7 @@ public class cso extends cwo implements cvj {
 
    @Override
    public void a(cpb $$0, biq $$1) {
-      if ($$1.bU()) {
+      if ($$1.bT()) {
          super.a($$0, $$1);
       } else {
          this.a($$1);

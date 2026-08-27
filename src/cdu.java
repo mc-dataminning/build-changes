@@ -47,7 +47,7 @@ public class cdu extends cdl {
 
    @Override
    protected double s() {
-      return (this.aY() ? 3.0 : 4.0) / 20.0;
+      return (this.aX() ? 3.0 : 4.0) / 20.0;
    }
 
    @Override
@@ -79,7 +79,7 @@ public class cdu extends cdl {
          this.c /= $$0;
          this.d /= $$0;
          ehn $$1 = this.do().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.aY()) {
+         if (this.aX()) {
             $$1 = $$1.a(0.1);
          }
 
@@ -111,7 +111,7 @@ public class cdu extends cdl {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("PushX", this.c);
       $$0.a("PushZ", this.d);
@@ -119,7 +119,7 @@ public class cdu extends cdl {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       super.a($$0);
       this.c = $$0.k("PushX");
       this.d = $$0.k("PushZ");

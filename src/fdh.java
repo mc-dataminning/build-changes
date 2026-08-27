@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class fdh {
-   private static final tl a = tl.c("selectWorld.newWorld");
+   private static final tm a = tm.c("selectWorld.newWorld");
    private final List<Consumer<fdh>> b = new ArrayList<>();
    private String c = a.getString();
    private fdh.a d = fdh.a.a;
@@ -241,25 +241,25 @@ public class fdh {
       d("spectator", cps.d);
 
       public final cps e;
-      public final tl f;
-      private final tl g;
+      public final tm f;
+      private final tm g;
 
       private a(String $$0, cps $$1) {
          this.e = $$1;
-         this.f = tl.c("selectWorld.gameMode." + $$0);
-         this.g = tl.c("selectWorld.gameMode." + $$0 + ".info");
+         this.f = tm.c("selectWorld.gameMode." + $$0);
+         this.g = tm.c("selectWorld.gameMode." + $$0 + ".info");
       }
 
-      public tl a() {
+      public tm a() {
          return this.g;
       }
    }
 
    public static record b(@Nullable hg<dux> a) {
-      private static final tl b = tl.c("generator.custom");
+      private static final tm b = tm.c("generator.custom");
 
-      public tl a() {
-         return Optional.ofNullable(this.a).flatMap(hg::e).map($$0 -> tl.c($$0.a().f("generator"))).orElse(b);
+      public tm a() {
+         return Optional.ofNullable(this.a).flatMap(hg::e).map($$0 -> tm.c($$0.a().f("generator"))).orElse(b);
       }
 
       public boolean b() {

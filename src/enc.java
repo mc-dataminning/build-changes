@@ -15,11 +15,11 @@ public class enc {
       this.d = $$1;
    }
 
-   public tl a(tl $$0) {
+   public tm a(tm $$0) {
       if (!gak.a(this.c)) {
          return $$0;
       } else {
-         return this.d == null ? tl.c(this.c) : tl.a(this.c, this.d);
+         return this.d == null ? tm.c(this.c) : tm.a(this.c, this.d);
       }
    }
 

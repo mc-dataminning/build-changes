@@ -34,8 +34,8 @@ public class cxb extends cro {
 
    @Override
    public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
-      if (!$$1.B && $$3.bN() && this.a($$0, $$2, $$3)) {
-         $$3.az();
+      if (!$$1.B && $$3.bM() && this.a($$0, $$2, $$3)) {
+         $$3.ay();
          if ($$3.a($$1, $$2)) {
             this.d($$0, $$1, $$2);
          }

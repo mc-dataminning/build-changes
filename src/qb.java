@@ -1,134 +1,62 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Streams;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class qb {
-   final px a;
-   private final List<pu> b = Lists.newArrayList();
-   private long c;
+   private static final int e = 100;
+   public static final int a = 2;
+   public static final int b = 5;
+   public static final int c = 6;
+   public static final int d = 8;
 
-   qb(px $$0) {
-      this.a = $$0;
-      this.c = $$0.p();
+   public static void a(py $$0, gw $$1, qe $$2) {
+      $$0.a();
+      $$2.a($$0);
+      $$0.a(new qk($$0, $$2, $$1));
+      $$0.a($$1, 2);
    }
 
-   public qb a(Runnable $$0) {
-      this.b.add(pu.a($$0));
-      return this;
+   public static Collection<py> a(Collection<pt> $$0, gw $$1, czh $$2, akr $$3, qe $$4, int $$5) {
+      pu $$6 = new pu($$0, $$1, $$2, $$3, $$4, $$5);
+      $$6.b();
+      return $$6.a();
    }
 
-   public qb a(long $$0, Runnable $$1) {
-      this.b.add(pu.a($$0, $$1));
-      return this;
+   public static Collection<py> b(Collection<qp> $$0, gw $$1, czh $$2, akr $$3, qe $$4, int $$5) {
+      return a(a($$0), $$1, $$2, $$3, $$4, $$5);
    }
 
-   public qb a(int $$0) {
-      return this.a($$0, () -> {
+   public static Collection<pt> a(Collection<qp> $$0) {
+      Map<String, List<qp>> $$1 = $$0.stream().collect(Collectors.groupingBy(qp::e));
+      return $$1.entrySet().stream().flatMap($$0x -> {
+         String $$1x = (String)$$0x.getKey();
+         Consumer<akr> $$2 = qa.c($$1x);
+         Consumer<akr> $$3 = qa.d($$1x);
+         MutableInt $$4 = new MutableInt();
+         Collection<qp> $$5 = (Collection<qp>)$$0x.getValue();
+         return Streams.stream(Iterables.partition($$5, 100)).map($$4x -> new pt($$1x + ":" + $$4.incrementAndGet(), ImmutableList.copyOf($$4x), $$2, $$3));
+      }).collect(ImmutableList.toImmutableList());
+   }
+
+   public static void a(akr $$0, gw $$1, qe $$2, int $$3) {
+      $$2.a();
+      gw $$4 = $$1.b(-$$3, 0, -$$3);
+      gw $$5 = $$1.b($$3, 0, $$3);
+      gw.b($$4, $$5).filter($$1x -> $$0.a_($$1x).a(csw.pa)).forEach($$1x -> {
+         dei $$2x = (dei)$$0.c_($$1x);
+         gw $$3x = $$2x.p();
+         dva $$4x = ql.b($$2x);
+         ql.a($$4x, $$3x.v(), $$0);
       });
    }
 
-   public qb b(Runnable $$0) {
-      this.b.add(pu.a(() -> this.c($$0)));
-      return this;
-   }
-
-   public qb a(int $$0, Runnable $$1) {
-      this.b.add(pu.a(() -> {
-         if (this.a.p() < this.c + (long)$$0) {
-            throw new pq("Waiting");
-         } else {
-            this.c($$1);
-         }
-      }));
-      return this;
-   }
-
-   public qb b(int $$0, Runnable $$1) {
-      this.b.add(pu.a(() -> {
-         if (this.a.p() < this.c + (long)$$0) {
-            this.c($$1);
-            throw new pq("Waiting");
-         }
-      }));
-      return this;
-   }
-
-   public void a() {
-      this.b.add(pu.a(this.a::m));
-   }
-
-   public void a(Supplier<Exception> $$0) {
-      this.b.add(pu.a(() -> this.a.a($$0.get())));
-   }
-
-   public qb.a b() {
-      qb.a $$0 = new qb.a();
-      this.b.add(pu.a(() -> $$0.a(this.a.p())));
-      return $$0;
-   }
-
-   public void a(long $$0) {
-      try {
-         this.c($$0);
-      } catch (pq var4) {
-      }
-   }
-
-   public void b(long $$0) {
-      try {
-         this.c($$0);
-      } catch (pq var4) {
-         this.a.a(var4);
-      }
-   }
-
-   private void c(Runnable $$0) {
-      try {
-         $$0.run();
-      } catch (pq var3) {
-         this.a.a(var3);
-      }
-   }
-
-   private void c(long $$0) {
-      Iterator<pu> $$1 = this.b.iterator();
-
-      while ($$1.hasNext()) {
-         pu $$2 = $$1.next();
-         $$2.b.run();
-         $$1.remove();
-         long $$3 = $$0 - this.c;
-         long $$4 = this.c;
-         this.c = $$0;
-         if ($$2.a != null && $$2.a != $$3) {
-            this.a.a(new pq("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
-            break;
-         }
-      }
-   }
-
-   public class a {
-      private static final long b = -1L;
-      private long c = -1L;
-
-      void a(long $$0) {
-         if (this.c != -1L) {
-            throw new IllegalStateException("Condition already triggered at " + this.c);
-         } else {
-            this.c = $$0;
-         }
-      }
-
-      public void a() {
-         long $$0 = qb.this.a.p();
-         if (this.c != $$0) {
-            if (this.c == -1L) {
-               throw new pq("Condition not triggered (t=" + $$0 + ")");
-            } else {
-               throw new pq("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
-            }
-         }
-      }
+   public static void a(akr $$0) {
+      abc.a($$0);
    }
 }

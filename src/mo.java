@@ -5,20 +5,20 @@ public class mo implements mn.a {
    private static final Logger a = LogUtils.getLogger();
 
    @Override
-   public qx apply(String $$0, qx $$1) {
+   public qy apply(String $$0, qy $$1) {
       return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
    }
 
-   public static qx a(String $$0, qx $$1) {
+   public static qy a(String $$0, qy $$1) {
       dzb $$2 = new dzb();
-      int $$3 = rj.b($$1, 500);
+      int $$3 = rk.b($$1, 500);
       int $$4 = 3563;
       if ($$3 < 3563) {
          a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3563, $$0});
       }
 
-      qx $$5 = ata.f.a(atb.a(), $$1, $$3);
+      qy $$5 = ata.f.a(atb.a(), $$1, $$3);
       $$2.a(jd.f.p(), $$5);
-      return $$2.a(new qx());
+      return $$2.a(new qy());
    }
 }

@@ -1,7 +1,7 @@
 import java.util.function.Consumer;
 
 public interface alh {
-   void a(Consumer<vd<?>> var1);
+   void a(Consumer<ve<?>> var1);
 
    alh.a a();
 

@@ -34,7 +34,7 @@ public class bwk {
                   ImmutableSet.of(),
                   bll.a.a,
                   bll.b.b,
-                  ImmutableList.of(Pair.of(bmo.c(0.5F), 2), Pair.of(bnd.a(0.5F, 3), 3), Pair.of(boj.a(biq::bb), 5))
+                  ImmutableList.of(Pair.of(bmo.c(0.5F), 2), Pair.of(bnd.a(0.5F, 3), 3), Pair.of(boj.a(biq::ba), 5))
                )
             )
          )

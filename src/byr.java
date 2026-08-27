@@ -79,9 +79,9 @@ public abstract class byr extends bzi implements bzm {
    }
 
    @Override
-   public void bz() {
-      super.bz();
-      if (this.da() instanceof bjp $$0) {
+   public void by() {
+      super.by();
+      if (this.cZ() instanceof bjp $$0) {
          this.aU = $$0.aU;
       }
    }
@@ -94,7 +94,7 @@ public abstract class byr extends bzi implements bzm {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       $$3 = super.a($$0, $$1, $$2, $$3, $$4);
       asc $$5 = $$0.D_();
       this.a($$5, $$1);
@@ -156,7 +156,7 @@ public abstract class byr extends bzi implements bzm {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.y();
    }
@@ -180,6 +180,6 @@ public abstract class byr extends bzi implements bzm {
    }
 
    public boolean gd() {
-      return this.cl();
+      return this.ck();
    }
 }

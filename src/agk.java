@@ -6,7 +6,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class agk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.damage.invulnerable"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.damage.invulnerable"));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -80,7 +80,7 @@ public class agk {
 
    private static int a(dt $$0, biq $$1, float $$2, bho $$3) throws CommandSyntaxException {
       if ($$1.a($$3, $$2)) {
-         $$0.a(() -> tl.a("commands.damage.success", $$2, $$1.N_()), true);
+         $$0.a(() -> tm.a("commands.damage.success", $$2, $$1.N_()), true);
          return 1;
       } else {
          throw a.create();

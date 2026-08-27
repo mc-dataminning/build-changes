@@ -26,7 +26,7 @@ public class ebe extends eba {
 
    @Override
    public eaz a() {
-      return this.b(arx.a(this.b.cH().a), arx.a(this.b.cH().b + 0.5), arx.a(this.b.cH().c));
+      return this.b(arx.a(this.b.cG().a), arx.a(this.b.cG().b + 0.5), arx.a(this.b.cG().c));
    }
 
    @Override

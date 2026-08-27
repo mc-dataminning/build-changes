@@ -69,9 +69,9 @@ public class aja {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.title.cleared.single", $$1.iterator().next().N_()), true);
+         $$0.a(() -> tm.a("commands.title.cleared.single", $$1.iterator().next().N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.title.cleared.multiple", $$1.size()), true);
+         $$0.a(() -> tm.a("commands.title.cleared.multiple", $$1.size()), true);
       }
 
       return $$1.size();
@@ -85,23 +85,23 @@ public class aja {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.title.reset.single", $$1.iterator().next().N_()), true);
+         $$0.a(() -> tm.a("commands.title.reset.single", $$1.iterator().next().N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.title.reset.multiple", $$1.size()), true);
+         $$0.a(() -> tm.a("commands.title.reset.multiple", $$1.size()), true);
       }
 
       return $$1.size();
    }
 
-   private static int a(dt $$0, Collection<aks> $$1, tl $$2, String $$3, Function<tl, vd<?>> $$4) throws CommandSyntaxException {
+   private static int a(dt $$0, Collection<aks> $$1, tm $$2, String $$3, Function<tm, ve<?>> $$4) throws CommandSyntaxException {
       for (aks $$5 : $$1) {
-         $$5.c.b($$4.apply(tn.a($$0, $$2, $$5, 0)));
+         $$5.c.b($$4.apply(to.a($$0, $$2, $$5, 0)));
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().N_()), true);
+         $$0.a(() -> tm.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+         $$0.a(() -> tm.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
       }
 
       return $$1.size();
@@ -115,9 +115,9 @@ public class aja {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.title.times.single", $$1.iterator().next().N_()), true);
+         $$0.a(() -> tm.a("commands.title.times.single", $$1.iterator().next().N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.title.times.multiple", $$1.size()), true);
+         $$0.a(() -> tm.a("commands.title.times.multiple", $$1.size()), true);
       }
 
       return $$1.size();

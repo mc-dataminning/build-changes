@@ -18,7 +18,7 @@ public class ir extends is {
          return new ir($$2, $$3);
       }
 
-      public ir a(iw<ir> $$0, so $$1) {
+      public ir a(iw<ir> $$0, sp $$1) {
          return new ir(is.b($$1), $$1.readFloat());
       }
    };

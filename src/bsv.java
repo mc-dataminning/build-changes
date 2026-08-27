@@ -3,15 +3,15 @@ public class bsv extends btf {
 
    @Override
    protected boolean a(bjg $$0, bjg $$1) {
-      return this.f($$0, $$1) && $$1.bb() && (this.b($$1) || this.e($$0, $$1)) && btl.c($$0, $$1);
+      return this.f($$0, $$1) && $$1.ba() && (this.b($$1) || this.e($$0, $$1)) && btl.c($$0, $$1);
    }
 
    private boolean e(bjg $$0, bjg $$1) {
-      return !$$0.dN().a(bsh.T) && $$1.ah().a(apw.h);
+      return !$$0.dN().a(bsh.T) && $$1.ag().a(apw.h);
    }
 
    private boolean b(bjg $$0) {
-      return $$0.ah().a(apw.g);
+      return $$0.ag().a(apw.g);
    }
 
    private boolean f(bjg $$0, bjg $$1) {

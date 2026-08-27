@@ -131,7 +131,7 @@ public class cfd extends cel {
                   boolean $$9 = $$2.a(cji.qb);
                   if ($$9) {
                      $$7 = new cjf(cji.tC);
-                     qx $$10 = $$2.v();
+                     qy $$10 = $$2.v();
                      if ($$10 != null) {
                         $$7.c($$10.h());
                      }
@@ -168,7 +168,7 @@ public class cfd extends cel {
             return true;
          }
       } else {
-         ac.a($$0.ac() + " pressed invalid button id: " + $$1);
+         ac.a($$0.ab() + " pressed invalid button id: " + $$1);
          return false;
       }
    }

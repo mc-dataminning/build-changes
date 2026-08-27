@@ -3,7 +3,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import java.util.function.IntFunction;
 
-public class abs implements vd<abd> {
+public class abs implements ve<abd> {
    private static final int a = 128;
    private final int b;
    private final int c;
@@ -23,25 +23,25 @@ public class abs implements vd<abd> {
       this.h = Int2ObjectMaps.unmodifiable($$6);
    }
 
-   public abs(so $$0) {
+   public abs(sp $$0) {
       this.b = $$0.readByte();
       this.c = $$0.m();
       this.d = $$0.readShort();
       this.e = $$0.readByte();
       this.f = $$0.b(ceu.class);
-      IntFunction<Int2ObjectOpenHashMap<cjf>> $$1 = so.a(Int2ObjectOpenHashMap::new, 128);
-      this.h = Int2ObjectMaps.unmodifiable($$0.a($$1, $$0x -> Integer.valueOf($$0x.readShort()), so::q));
+      IntFunction<Int2ObjectOpenHashMap<cjf>> $$1 = sp.a(Int2ObjectOpenHashMap::new, 128);
+      this.h = Int2ObjectMaps.unmodifiable($$0.a($$1, $$0x -> Integer.valueOf($$0x.readShort()), sp::q));
       this.g = $$0.q();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.b);
       $$0.c(this.c);
       $$0.l(this.d);
       $$0.k(this.e);
       $$0.a(this.f);
-      $$0.a(this.h, so::l, so::a);
+      $$0.a(this.h, sp::l, sp::a);
       $$0.a(this.g);
    }
 

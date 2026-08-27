@@ -24,7 +24,7 @@ public class azp extends DataFix {
             $$0x -> $$0xx -> $$0xx.mapSecond(
                      $$0xxx -> $$0xxx.update(
                            "DisplayName",
-                           $$1 -> (Dynamic)DataFixUtils.orElse($$1.asString().map($$0xxxxx -> tl.a.a(tl.b($$0xxxxx))).map($$0xxx::createString).result(), $$1)
+                           $$1 -> (Dynamic)DataFixUtils.orElse($$1.asString().map($$0xxxxx -> tm.a.a(tm.b($$0xxxxx))).map($$0xxx::createString).result(), $$1)
                         )
                   )
          );

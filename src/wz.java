@@ -1,46 +1,36 @@
-import java.util.UUID;
-
-public class wz implements vd<ww> {
+public class wz implements ve<wx> {
    private final int a;
-   private final UUID b;
+   private final double b;
    private final double c;
    private final double d;
-   private final double e;
-   private final byte f;
-   private final byte g;
+   private final int e;
 
-   public wz(cbu $$0) {
-      this.a = $$0.ai();
-      this.b = $$0.fQ().getId();
-      this.c = $$0.dq();
-      this.d = $$0.ds();
-      this.e = $$0.dw();
-      this.f = (byte)((int)($$0.dB() * 256.0F / 360.0F));
-      this.g = (byte)((int)($$0.dD() * 256.0F / 360.0F));
+   public wz(biw $$0) {
+      this.a = $$0.ah();
+      this.b = $$0.dq();
+      this.c = $$0.ds();
+      this.d = $$0.dw();
+      this.e = $$0.q();
    }
 
-   public wz(so $$0) {
+   public wz(sp $$0) {
       this.a = $$0.m();
-      this.b = $$0.o();
+      this.b = $$0.readDouble();
       this.c = $$0.readDouble();
       this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.readByte();
-      this.g = $$0.readByte();
+      this.e = $$0.readShort();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(this.f);
-      $$0.k(this.g);
+      $$0.l(this.e);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -48,7 +38,7 @@ public class wz implements vd<ww> {
       return this.a;
    }
 
-   public UUID d() {
+   public double d() {
       return this.b;
    }
 
@@ -60,15 +50,7 @@ public class wz implements vd<ww> {
       return this.d;
    }
 
-   public double g() {
+   public int g() {
       return this.e;
-   }
-
-   public byte h() {
-      return this.f;
-   }
-
-   public byte i() {
-      return this.g;
    }
 }

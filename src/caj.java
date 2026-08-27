@@ -39,11 +39,11 @@ public abstract class caj extends bzi {
    protected abstract boolean s();
 
    public void w(boolean $$0) {
-      this.am().b(b, $$0);
+      this.al().b(b, $$0);
    }
 
    protected boolean t() {
-      return this.am().b(b);
+      return this.al().b(b);
    }
 
    @Override
@@ -53,7 +53,7 @@ public abstract class caj extends bzi {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.t()) {
          $$0.a("IsImmuneToZombification", true);
@@ -63,15 +63,15 @@ public abstract class caj extends bzi {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.w($$0.q("IsImmuneToZombification"));
       this.e = $$0.h("TimeInOverworld");
    }
 
    @Override
-   protected void Y() {
-      super.Y();
+   protected void X() {
+      super.X();
       if (this.gd()) {
          this.e++;
       } else {
@@ -119,8 +119,8 @@ public abstract class caj extends bzi {
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 

@@ -1,31 +1,24 @@
-public class vs implements vd<vn> {
-   private final vs.a a;
+public class vs implements ve<vo> {
+   private final int a;
 
-   public vs(vs.a $$0) {
+   public vs(int $$0) {
       this.a = $$0;
    }
 
-   public vs(so $$0) {
-      this.a = $$0.b(vs.a.class);
+   public vs(sp $$0) {
+      this.a = $$0.readInt();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
+   public void a(sp $$0) {
+      $$0.p(this.a);
    }
 
-   public void a(vn $$0) {
+   public void a(vo $$0) {
       $$0.a(this);
    }
 
-   public vs.a a() {
+   public int a() {
       return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

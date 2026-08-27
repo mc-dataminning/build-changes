@@ -20,12 +20,12 @@ public class dvl extends ebr {
       this(new LongOpenHashSet(), new LongOpenHashSet());
    }
 
-   public static dvl b(qx $$0) {
+   public static dvl b(qy $$0) {
       return new dvl(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
    }
 
    @Override
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       $$0.a("All", this.c.toLongArray());
       $$0.a("Remaining", this.d.toLongArray());
       return $$0;

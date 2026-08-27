@@ -38,13 +38,13 @@ public class bwd extends bwq implements bjr, bjw {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("LastPoseTick", this.an.b(bZ));
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       long $$1 = $$0.i("LastPoseTick");
       if ($$1 < 0L) {
@@ -66,7 +66,7 @@ public class bwd extends bwq implements bjr, bjw {
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       bwe.a(this, $$0.D_());
       this.b($$0.C().V());
       return super.a($$0, $$1, $$2, $$3, $$4);
@@ -97,7 +97,7 @@ public class bwd extends bwq implements bjr, bjw {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("camelBrain");
       bkg<?> $$0 = this.dN();
       ((bkg<bwd>)$$0).a((akr)this.dL(), this);
@@ -105,13 +105,13 @@ public class bwd extends bwq implements bjr, bjw {
       this.dL().ad().a("camelActivityUpdate");
       bwe.a(this);
       this.dL().ad().c();
-      super.Y();
+      super.X();
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.y() && this.cE < 50 && (this.aB() || this.bc() || this.bO())) {
+      if (this.y() && this.cE < 50 && (this.aA() || this.bb() || this.bN())) {
          this.w(false);
       }
 
@@ -130,7 +130,7 @@ public class bwd extends bwq implements bjr, bjw {
          this.a(this, 30.0F);
       }
 
-      if (this.gl() && this.aY()) {
+      if (this.gl() && this.aX()) {
          this.gq();
       }
    }
@@ -164,7 +164,7 @@ public class bwd extends bwq implements bjr, bjw {
    @Override
    protected void v(float $$0) {
       float $$1;
-      if (this.ao() == bjs.a && !this.ce.c()) {
+      if (this.an() == bjs.a && !this.ce.c()) {
          $$1 = Math.min($$0 * 6.0F, 1.0F);
       } else {
          $$1 = 0.0F;
@@ -175,7 +175,7 @@ public class bwd extends bwq implements bjr, bjw {
 
    @Override
    public void h(ehn $$0) {
-      if (this.t() && this.aB()) {
+      if (this.t() && this.aA()) {
          this.f(this.do().d(0.0, 1.0, 0.0));
          $$0 = $$0.d(0.0, 1.0, 0.0);
       }
@@ -197,7 +197,7 @@ public class bwd extends bwq implements bjr, bjw {
 
    @Override
    protected float e(cbu $$0) {
-      float $$1 = $$0.bY() && this.aa_() == 0 ? 0.1F : 0.0F;
+      float $$1 = $$0.bX() && this.aa_() == 0 ? 0.1F : 0.0F;
       return (float)this.b(bkm.d) + $$1;
    }
 
@@ -218,7 +218,7 @@ public class bwd extends bwq implements bjr, bjw {
 
    @Override
    public void b(int $$0) {
-      if (this.i() && this.cE <= 0 && this.aB()) {
+      if (this.i() && this.cE <= 0 && this.aA()) {
          super.b($$0);
       }
    }
@@ -230,8 +230,8 @@ public class bwd extends bwq implements bjr, bjw {
 
    @Override
    protected void b(float $$0, ehn $$1) {
-      double $$2 = this.b(bkm.n) * (double)this.aJ() + (double)this.eZ();
-      this.g(this.bF().d(1.0, 0.0, 1.0).d().a((double)(22.2222F * $$0) * this.b(bkm.d) * (double)this.aK()).b(0.0, (double)(1.4285F * $$0) * $$2, 0.0));
+      double $$2 = this.b(bkm.n) * (double)this.aI() + (double)this.eZ();
+      this.g(this.bE().d(1.0, 0.0, 1.0).d().a((double)(22.2222F * $$0) * this.b(bkm.d) * (double)this.aJ()).b(0.0, (double)(1.4285F * $$0) * $$2, 0.0));
       this.cE = 55;
       this.w(true);
       this.au = true;
@@ -303,7 +303,7 @@ public class bwd extends bwq implements bjr, bjw {
          } else if (this.m($$2)) {
             return this.c($$0, $$2);
          } else {
-            if (this.cQ().size() < 2 && !this.m_()) {
+            if (this.cP().size() < 2 && !this.m_()) {
                this.f($$0);
             }
 
@@ -349,10 +349,10 @@ public class bwd extends bwq implements bjr, bjw {
          if (!$$2 && !$$3 && !$$4) {
             return false;
          } else {
-            if (!this.aT()) {
+            if (!this.aS()) {
                apd $$5 = this.gk();
                if ($$5 != null) {
-                  this.dL().a(null, this.dq(), this.ds(), this.dw(), $$5, this.db(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
+                  this.dL().a(null, this.dq(), this.ds(), this.dw(), $$5, this.da(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
                }
             }
 
@@ -395,11 +395,11 @@ public class bwd extends bwq implements bjr, bjw {
 
    @Override
    protected Vector3f a(biq $$0, bir $$1, float $$2) {
-      int $$3 = Math.max(this.cQ().indexOf($$0), 0);
+      int $$3 = Math.max(this.cP().indexOf($$0), 0);
       boolean $$4 = $$3 == 0;
       float $$5 = 0.5F;
       float $$6 = (float)(this.dG() ? 0.01F : this.a($$4, 0.0F, $$1, $$2));
-      if (this.cQ().size() > 1) {
+      if (this.cP().size() > 1) {
          if (!$$4) {
             $$5 = -0.7F;
          }
@@ -452,13 +452,13 @@ public class bwd extends bwq implements bjr, bjw {
 
    @Override
    public ehn p(float $$0) {
-      bir $$1 = this.a(this.ao());
+      bir $$1 = this.a(this.an());
       float $$2 = this.dY();
       return new ehn(0.0, this.a(true, $$0, $$1, $$2) - (double)(0.2F * $$2), (double)($$1.a * 0.56F));
    }
 
    private void a(biq $$0, float $$1) {
-      float $$2 = $$0.cp();
+      float $$2 = $$0.co();
       float $$3 = arx.g(this.aU - $$2);
       float $$4 = arx.a(arx.g(this.aU - $$2), -$$1, $$1);
       float $$5 = $$2 + $$3 - $$4;
@@ -466,18 +466,18 @@ public class bwd extends bwq implements bjr, bjw {
    }
 
    @Override
-   public int aa() {
+   public int Z() {
       return 30;
    }
 
    @Override
    protected boolean r(biq $$0) {
-      return this.cQ().size() <= 2;
+      return this.cP().size() <= 2;
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 
@@ -586,7 +586,7 @@ public class bwd extends bwq implements bjr, bjw {
 
       @Override
       public void a() {
-         if (!bwd.this.cP()) {
+         if (!bwd.this.cO()) {
             super.a();
          }
       }

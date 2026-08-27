@@ -12,8 +12,8 @@ public class eys extends eyk implements eyt {
    static final aex k = new aex("statistics/header");
    static final aex l = new aex("statistics/sort_up");
    static final aex m = new aex("statistics/sort_down");
-   private static final tl n = tl.c("multiplayer.downloadingStats");
-   static final tl o = tl.c("stats.none");
+   private static final tm n = tm.c("multiplayer.downloadingStats");
+   static final tm o = tm.c("stats.none");
    protected final eyk a;
    private eys.a p;
    eys.b q;
@@ -35,7 +35,7 @@ public class eys extends eyk implements eyt {
    private static final int G = 1;
 
    public eys(eyk $$0, app $$1) {
-      super(tl.c("gui.stats"));
+      super(tm.c("gui.stats"));
       this.a = $$0;
       this.t = $$1;
    }
@@ -53,11 +53,11 @@ public class eys extends eyk implements eyt {
    }
 
    @Override
-   public void C() {
-      this.d((esq)esq.a(tl.c("stat.generalButton"), $$0x -> this.a(this.p)).a(this.g / 2 - 120, this.h - 52, 80, 20).a());
-      esq $$0 = this.d((esq)esq.a(tl.c("stat.itemsButton"), $$0x -> this.a(this.q)).a(this.g / 2 - 40, this.h - 52, 80, 20).a());
-      esq $$1 = this.d((esq)esq.a(tl.c("stat.mobsButton"), $$0x -> this.a(this.s)).a(this.g / 2 + 40, this.h - 52, 80, 20).a());
-      this.d((esq)esq.a(tk.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 28, 200, 20).a());
+   public void D() {
+      this.d((esq)esq.a(tm.c("stat.generalButton"), $$0x -> this.a(this.p)).a(this.g / 2 - 120, this.h - 52, 80, 20).a());
+      esq $$0 = this.d((esq)esq.a(tm.c("stat.itemsButton"), $$0x -> this.a(this.q)).a(this.g / 2 - 40, this.h - 52, 80, 20).a());
+      esq $$1 = this.d((esq)esq.a(tm.c("stat.mobsButton"), $$0x -> this.a(this.s)).a(this.g / 2 + 40, this.h - 52, 80, 20).a());
+      this.d((esq)esq.a(tl.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 28, 200, 20).a());
       if (this.q.i().isEmpty()) {
          $$0.i = false;
       }
@@ -75,7 +75,7 @@ public class eys extends eyk implements eyt {
          $$0.a(this.i, b[(int)(ac.b() / 150L % (long)b.length)], this.g / 2, this.h / 2 + 9 * 2, 16777215);
       } else {
          super.a($$0, $$1, $$2, $$3);
-         this.E().a($$0, $$1, $$2, $$3);
+         this.F().a($$0, $$1, $$2, $$3);
          $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
       }
    }
@@ -86,10 +86,10 @@ public class eys extends eyk implements eyt {
    }
 
    @Override
-   public void D() {
+   public void E() {
       if (this.v) {
          this.l();
-         this.C();
+         this.D();
          this.a(this.p);
          this.v = false;
       }
@@ -101,7 +101,7 @@ public class eys extends eyk implements eyt {
    }
 
    @Nullable
-   public etm<?> E() {
+   public etm<?> F() {
       return this.u;
    }
 
@@ -148,11 +148,11 @@ public class eys extends eyk implements eyt {
 
       class a extends etm.a<eys.a.a> {
          private final apl<aex> b;
-         private final tl c;
+         private final tm c;
 
          a(apl<aex> $$0) {
             this.b = $$0;
-            this.c = tl.c(eys.a($$0));
+            this.c = tm.c(eys.a($$0));
          }
 
          private String b() {
@@ -167,8 +167,8 @@ public class eys extends eyk implements eyt {
          }
 
          @Override
-         public tl a() {
-            return tl.a("narrator.select", tl.h().b(this.c).b(tk.u).f(this.b()));
+         public tm a() {
+            return tm.a("narrator.select", tm.h().b(this.c).b(tl.u).f(this.b()));
          }
       }
    }
@@ -311,7 +311,7 @@ public class eys extends eyk implements eyt {
                cja $$5 = $$3.b();
                $$0.a(eys.this.i, this.a($$5), $$1, $$2);
             } else {
-               tl $$6 = null;
+               tm $$6 = null;
                int $$7 = $$1 - $$4;
 
                for (int $$8 = 0; $$8 < this.t.length; $$8++) {
@@ -329,7 +329,7 @@ public class eys extends eyk implements eyt {
          }
       }
 
-      protected tl a(cja $$0) {
+      protected tm a(cja $$0) {
          return $$0.p();
       }
 
@@ -379,13 +379,13 @@ public class eys extends eyk implements eyt {
          }
 
          protected void a(esf $$0, @Nullable apl<?> $$1, int $$2, int $$3, boolean $$4) {
-            tl $$5 = (tl)($$1 == null ? eys.o : tl.b($$1.a(eys.this.t.a($$1))));
+            tm $$5 = (tm)($$1 == null ? eys.o : tm.b($$1.a(eys.this.t.a($$1))));
             $$0.b(eys.this.i, $$5, $$2 - eys.this.i.a($$5), $$3 + 5, $$4 ? 16777215 : 9474192);
          }
 
          @Override
-         public tl a() {
-            return tl.a("narrator.select", this.b.p());
+         public tm a() {
+            return tm.a("narrator.select", this.b.p());
          }
       }
 
@@ -425,29 +425,29 @@ public class eys extends eyk implements eyt {
       }
 
       class a extends etm.a<eys.c.a> {
-         private final tl b;
-         private final tl c;
+         private final tm b;
+         private final tm c;
          private final boolean d;
-         private final tl e;
+         private final tm e;
          private final boolean f;
 
          public a(biu<?> $$0) {
             this.b = $$0.h();
             int $$1 = eys.this.t.a(apo.g.b($$0));
             if ($$1 == 0) {
-               this.c = tl.a("stat_type.minecraft.killed.none", this.b);
+               this.c = tm.a("stat_type.minecraft.killed.none", this.b);
                this.d = false;
             } else {
-               this.c = tl.a("stat_type.minecraft.killed", $$1, this.b);
+               this.c = tm.a("stat_type.minecraft.killed", $$1, this.b);
                this.d = true;
             }
 
             int $$2 = eys.this.t.a(apo.h.b($$0));
             if ($$2 == 0) {
-               this.e = tl.a("stat_type.minecraft.killed_by.none", this.b);
+               this.e = tm.a("stat_type.minecraft.killed_by.none", this.b);
                this.f = false;
             } else {
-               this.e = tl.a("stat_type.minecraft.killed_by", this.b, $$2);
+               this.e = tm.a("stat_type.minecraft.killed_by", this.b, $$2);
                this.f = true;
             }
          }
@@ -460,8 +460,8 @@ public class eys extends eyk implements eyt {
          }
 
          @Override
-         public tl a() {
-            return tl.a("narrator.select", tk.a(this.c, this.e));
+         public tm a() {
+            return tm.a("narrator.select", tl.a(this.c, this.e));
          }
       }
    }

@@ -8,11 +8,11 @@ public class eti extends esk {
    private static final int e = -857677600;
    private static final int l = 300;
    private final esd m;
-   private final tl n;
+   private final tm n;
    private final etl o;
    private long p = ac.b();
 
-   public eti(esd $$0, int $$1, int $$2, int $$3, int $$4, tl $$5, tl $$6) {
+   public eti(esd $$0, int $$1, int $$2, int $$3, int $$4, tm $$5, tm $$6) {
       super($$1, $$2, $$3, $$4, $$6);
       this.m = $$0;
       this.n = $$5;
@@ -38,19 +38,17 @@ public class eti extends esk {
 
    @Override
    public void a(ewi $$0) {
-      $$0.a(ewh.a, tl.a("gui.narrate.editBox", this.m(), this.v()));
+      $$0.a(ewh.a, tm.a("gui.narrate.editBox", this.m(), this.v()));
    }
 
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if (this.c($$0, $$1) && $$2 == 0) {
+      if (this.c($$0, $$1) && $$2 == 0) {
          this.o.a(eyk.q());
          this.f($$0, $$1);
          return true;
       } else {
-         return false;
+         return super.a($$0, $$1, $$2);
       }
    }
 
@@ -156,7 +154,7 @@ public class eti extends esk {
       super.a($$0);
       if (this.o.b()) {
          int $$1 = this.o.a();
-         tl $$2 = tl.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
+         tm $$2 = tm.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
          $$0.b(this.m, $$2, this.r() + this.f - this.m.a($$2), this.t() + this.g + 4, 10526880);
       }
    }

@@ -43,20 +43,20 @@ public class buw extends bur {
       super.b_();
       this.bX = this.bT;
       this.bW = this.bU;
-      this.bU = this.bU + (this.aB() ? -1.0F : 4.0F) * 0.3F;
+      this.bU = this.bU + (this.aA() ? -1.0F : 4.0F) * 0.3F;
       this.bU = arx.a(this.bU, 0.0F, 1.0F);
-      if (!this.aB() && this.bY < 1.0F) {
+      if (!this.aA() && this.bY < 1.0F) {
          this.bY = 1.0F;
       }
 
       this.bY *= 0.9F;
       ehn $$0 = this.do();
-      if (!this.aB() && $$0.d < 0.0) {
+      if (!this.aA() && $$0.d < 0.0) {
          this.f($$0.d(1.0, 0.6, 1.0));
       }
 
       this.bT = this.bT + this.bY * 2.0F;
-      if (!this.dL().B && this.bw() && !this.m_() && !this.t() && --this.bZ <= 0) {
+      if (!this.dL().B && this.bv() && !this.m_() && !this.t() && --this.bZ <= 0) {
          this.a(ape.em, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
          this.a(cji.qd);
          this.a(djt.t);
@@ -65,12 +65,12 @@ public class buw extends bur {
    }
 
    @Override
-   protected boolean aS() {
+   protected boolean aR() {
       return this.aa > this.cc;
    }
 
    @Override
-   protected void aR() {
+   protected void aQ() {
       this.cc = this.aa + this.bU / 2.0F;
    }
 
@@ -110,7 +110,7 @@ public class buw extends bur {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.ca = $$0.q("IsChickenJockey");
       if ($$0.e("EggLayTime")) {
@@ -119,7 +119,7 @@ public class buw extends bur {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("IsChickenJockey", this.ca);
       $$0.a("EggLayTime", this.bZ);

@@ -12,9 +12,9 @@ public class cyj extends czx {
       if ($$0.c_($$1) instanceof def $$6) {
          GameProfile $$7 = null;
          if ($$4.u()) {
-            qx $$8 = $$4.v();
+            qy $$8 = $$4.v();
             if ($$8.b("SkullOwner", 10)) {
-               $$7 = rj.a($$8.p("SkullOwner"));
+               $$7 = rk.a($$8.p("SkullOwner"));
             } else if ($$8.b("SkullOwner", 8) && !ac.b($$8.l("SkullOwner"))) {
                $$7 = new GameProfile(ac.d, $$8.l("SkullOwner"));
             }

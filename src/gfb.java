@@ -18,7 +18,7 @@ public abstract class gfb extends eyk {
    protected static final int x = 8;
    private final List<gez> a = Lists.newArrayList();
 
-   public gfb(tl $$0) {
+   public gfb(tm $$0) {
       super($$0);
    }
 
@@ -31,7 +31,7 @@ public abstract class gfb extends eyk {
       return this.a($$0);
    }
 
-   public tl l() {
-      return tk.a(this.a.stream().map(gez::a).collect(Collectors.toList()));
+   public tm l() {
+      return tl.a(this.a.stream().map(gez::a).collect(Collectors.toList()));
    }
 }

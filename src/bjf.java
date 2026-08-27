@@ -31,7 +31,7 @@ public class bjf extends biq {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.d;
    }
 
@@ -79,7 +79,7 @@ public class bjf extends biq {
                   .a(
                      this,
                      new ehi(this.dq() - 15.0, this.ds() - 15.0, this.dw() - 15.0, this.dq() + 15.0, this.ds() + 6.0 + 15.0, this.dw() + 15.0),
-                     $$0 -> $$0.bw() && !this.j.contains($$0)
+                     $$0 -> $$0.bv() && !this.j.contains($$0)
                   );
 
                for (aks $$2 : ((akr)this.dL()).a($$0 -> $$0.e(this) < 256.0F)) {
@@ -87,7 +87,7 @@ public class bjf extends biq {
                }
             }
 
-            this.al();
+            this.ak();
          } else if (this.f < -this.ag.a(10)) {
             this.g--;
             this.f = 1;
@@ -101,7 +101,7 @@ public class bjf extends biq {
             this.dL().c(2);
          } else if (!this.h) {
             List<biq> $$3 = this.dL()
-               .a(this, new ehi(this.dq() - 3.0, this.ds() - 3.0, this.dw() - 3.0, this.dq() + 3.0, this.ds() + 6.0 + 3.0, this.dw() + 3.0), biq::bw);
+               .a(this, new ehi(this.dq() - 3.0, this.ds() - 3.0, this.dw() - 3.0, this.dq() + 3.0, this.ds() + 6.0 + 3.0, this.dw() + 3.0), biq::bv);
 
             for (biq $$4 : $$3) {
                $$4.a((akr)this.dL(), this);
@@ -192,7 +192,7 @@ public class bjf extends biq {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = 64.0 * cA();
+      double $$1 = 64.0 * cz();
       return $$0 < $$1 * $$1;
    }
 
@@ -201,11 +201,11 @@ public class bjf extends biq {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
    }
 
    public int s() {
@@ -213,6 +213,6 @@ public class bjf extends biq {
    }
 
    public Stream<biq> t() {
-      return this.j.stream().filter(biq::bw);
+      return this.j.stream().filter(biq::bv);
    }
 }

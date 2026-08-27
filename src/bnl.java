@@ -25,7 +25,7 @@ public class bnl {
       return boj.a(
          (Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$3 -> $$3.group($$3.b(bsh.o), $$3.a(bsh.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
                   bjg $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bw() && $$9.dL() == $$7.dL() && !$$0.test($$9)) {
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bv() && $$9.dL() == $$7.dL() && !$$0.test($$9)) {
                      return true;
                   } else {
                      $$1.accept((E)$$7, $$9);

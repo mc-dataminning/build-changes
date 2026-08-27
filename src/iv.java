@@ -4,7 +4,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 public interface iv {
    iw<?> b();
 
-   void a(so var1);
+   void a(sp var1);
 
    String a();
 
@@ -12,6 +12,6 @@ public interface iv {
    public interface a<T extends iv> {
       T b(iw<T> var1, StringReader var2) throws CommandSyntaxException;
 
-      T b(iw<T> var1, so var2);
+      T b(iw<T> var1, sp var2);
    }
 }

@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class cgz extends cja {
-   private static final Predicate<biq> a = bit.f.and(biq::bs);
+   private static final Predicate<biq> a = bit.f.and(biq::br);
    private final cdn.b b;
    private final boolean c;
 
@@ -21,12 +21,12 @@ public class cgz extends cja {
       } else {
          ehn $$5 = $$1.f(1.0F);
          double $$6 = 5.0;
-         List<biq> $$7 = $$0.a($$1, $$1.cH().b($$5.a(5.0)).g(1.0), a);
+         List<biq> $$7 = $$0.a($$1, $$1.cG().b($$5.a(5.0)).g(1.0), a);
          if (!$$7.isEmpty()) {
-            ehn $$8 = $$1.bq();
+            ehn $$8 = $$1.bp();
 
             for (biq $$9 : $$7) {
-               ehi $$10 = $$9.cH().g((double)$$9.bE());
+               ehi $$10 = $$9.cG().g((double)$$9.bD());
                if ($$10.d($$8)) {
                   return bgz.c($$3);
                }
@@ -37,7 +37,7 @@ public class cgz extends cja {
             cdn $$11 = this.a($$0, $$4);
             $$11.a(this.b);
             $$11.r($$1.dB());
-            if (!$$0.a($$11, $$11.cH())) {
+            if (!$$0.a($$11, $$11.cG())) {
                return bgz.d($$3);
             } else {
                if (!$$0.B) {

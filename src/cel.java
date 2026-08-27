@@ -505,7 +505,7 @@ public abstract class cel {
       if ($$0 instanceof aks) {
          cjf $$1 = this.g();
          if (!$$1.b()) {
-            if ($$0.bw() && !((aks)$$0).t()) {
+            if ($$0.bv() && !((aks)$$0).t()) {
                $$0.fR().f($$1);
             } else {
                $$0.a($$1, false);
@@ -517,7 +517,7 @@ public abstract class cel {
    }
 
    protected void a(cbu $$0, bgr $$1) {
-      if (!$$0.bw() || $$0 instanceof aks && ((aks)$$0).t()) {
+      if (!$$0.bv() || $$0 instanceof aks && ((aks)$$0).t()) {
          for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
             $$0.a($$1.b($$2), false);
          }

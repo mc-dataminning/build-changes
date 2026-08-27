@@ -1,11 +1,11 @@
 public class fbj extends eyk {
    private static final int a = 600;
-   private final sm b;
+   private final sn b;
    private esq c;
    private int k;
    private final ewd l = ewd.d();
 
-   public fbj(tl $$0, sm $$1) {
+   public fbj(tm $$0, sn $$1) {
       super($$0);
       this.b = $$1;
    }
@@ -19,7 +19,7 @@ public class fbj extends eyk {
    protected void aI_() {
       this.l.c().b().a(10);
       this.l.a(new etw(this.e, this.i));
-      this.c = this.l.a(esq.a(tk.p, $$0 -> this.b.a(exe.a)).a());
+      this.c = this.l.a(esq.a(tl.p, $$0 -> this.b.a(exe.a)).a());
       this.c.i = false;
       this.l.a();
       this.l.a($$1 -> {

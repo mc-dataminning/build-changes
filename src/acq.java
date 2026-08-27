@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public class acq implements vd<abd> {
+public class acq implements ve<abd> {
    private final int a;
    private final String b;
    private final boolean c;
@@ -11,14 +11,14 @@ public class acq implements vd<abd> {
       this.c = $$2;
    }
 
-   public acq(so $$0) {
+   public acq(sp $$0) {
       this.a = $$0.m();
       this.b = $$0.r();
       this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
       $$0.a(this.c);

@@ -26,7 +26,7 @@ public class fab extends ezi<cfd> {
    public float D;
    private cjf N = cjf.b;
 
-   public fab(cfd $$0, cbt $$1, tl $$2) {
+   public fab(cfd $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
    }
 
@@ -37,9 +37,9 @@ public class fab extends ezi<cfd> {
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.E();
+   public void D() {
+      super.D();
+      this.F();
    }
 
    @Override
@@ -77,7 +77,7 @@ public class fab extends ezi<cfd> {
          } else {
             String $$11 = $$10 + "";
             int $$12 = 86 - this.i.b($$11);
-            tp $$13 = faa.a().a(this.i, $$12);
+            tq $$13 = faa.a().a(this.i, $$12);
             int $$14 = 6839882;
             if (($$6 < $$7 + 1 || this.f.s.cf < $$10) && !this.f.s.fS().d) {
                $$0.a(G, $$8, $$5 + 14 + 19 * $$7, 108, 19);
@@ -141,26 +141,26 @@ public class fab extends ezi<cfd> {
          int $$9 = this.p.m[$$6];
          int $$10 = $$6 + 1;
          if (this.a(60, 14 + 19 * $$6, 108, 17, (double)$$1, (double)$$2) && $$7 > 0 && $$9 >= 0 && $$8 != null) {
-            List<tl> $$11 = Lists.newArrayList();
-            $$11.add(tl.a("container.enchant.clue", $$8.d($$9)).a(n.p));
+            List<tm> $$11 = Lists.newArrayList();
+            $$11.add(tm.a("container.enchant.clue", $$8.d($$9)).a(n.p));
             if (!$$4) {
-               $$11.add(tk.a);
+               $$11.add(tl.a);
                if (this.f.s.cf < $$7) {
-                  $$11.add(tl.a("container.enchant.level.requirement", this.p.k[$$6]).a(n.m));
+                  $$11.add(tm.a("container.enchant.level.requirement", this.p.k[$$6]).a(n.m));
                } else {
-                  ty $$12;
+                  tz $$12;
                   if ($$10 == 1) {
-                     $$12 = tl.c("container.enchant.lapis.one");
+                     $$12 = tm.c("container.enchant.lapis.one");
                   } else {
-                     $$12 = tl.a("container.enchant.lapis.many", $$10);
+                     $$12 = tm.a("container.enchant.lapis.many", $$10);
                   }
 
                   $$11.add($$12.a($$5 >= $$10 ? n.h : n.m));
-                  ty $$14;
+                  tz $$14;
                   if ($$10 == 1) {
-                     $$14 = tl.c("container.enchant.level.one");
+                     $$14 = tm.c("container.enchant.level.one");
                   } else {
-                     $$14 = tl.a("container.enchant.level.many", $$10);
+                     $$14 = tm.a("container.enchant.level.many", $$10);
                   }
 
                   $$11.add($$14.a(n.h));
@@ -173,7 +173,7 @@ public class fab extends ezi<cfd> {
       }
    }
 
-   public void E() {
+   public void F() {
       cjf $$0 = this.p.b(0).e();
       if (!cjf.a($$0, this.N)) {
          this.N = $$0;

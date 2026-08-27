@@ -1,16 +1,16 @@
 import java.util.function.Supplier;
 
 public class eyb extends eyk {
-   private static final tl a = tl.c("options.skinCustomisation");
-   private static final tl b = tl.c("options.sounds");
-   private static final tl c = tl.c("options.video");
-   private static final tl k = tl.c("options.controls");
-   private static final tl l = tl.c("options.language");
-   private static final tl m = tl.c("options.chat.title");
-   private static final tl n = tl.c("options.resourcepack");
-   private static final tl o = tl.c("options.accessibility.title");
-   private static final tl p = tl.c("options.telemetry");
-   private static final tl q = tl.c("options.credits_and_attribution");
+   private static final tm a = tm.c("options.skinCustomisation");
+   private static final tm b = tm.c("options.sounds");
+   private static final tm c = tm.c("options.video");
+   private static final tm k = tm.c("options.controls");
+   private static final tm l = tm.c("options.language");
+   private static final tm m = tm.c("options.chat");
+   private static final tm n = tm.c("options.resourcepack");
+   private static final tm o = tm.c("options.accessibility");
+   private static final tm p = tm.c("options.telemetry");
+   private static final tm q = tm.c("options.credits_and_attribution");
    private static final int s = 2;
    private final eyk t;
    private final eqz u;
@@ -18,7 +18,7 @@ public class eyb extends eyk {
    private etg w;
 
    public eyb(eyk $$0, eqz $$1) {
-      super(tl.c("options.title"));
+      super(tm.c("options.title"));
       this.t = $$0;
       this.u = $$1;
    }
@@ -37,11 +37,11 @@ public class eyb extends eyk {
       $$1.a(this.a(k, () -> new ezb(this, this.u)));
       $$1.a(this.a(l, () -> new ext(this, this.u, this.f.ae())));
       $$1.a(this.a(m, () -> new exa(this, this.u)));
-      $$1.a(this.a(n, () -> new fbp(this.f.aa(), this::a, this.f.ad(), tl.c("resourcePack.title"))));
+      $$1.a(this.a(n, () -> new fbp(this.f.aa(), this::a, this.f.ad(), tm.c("resourcePack.title"))));
       $$1.a(this.a(o, () -> new eww(this, this.u)));
       $$1.a(this.a(p, () -> new fcv(this, this.u)));
       $$1.a(this.a(q, () -> new exh(this)));
-      $$1.a(esq.a(tk.d, $$0x -> this.f.a(this.t)).a(200).a(), 2, $$1.b().c(6));
+      $$1.a(esq.a(tl.d, $$0x -> this.f.a(this.t)).a(200).a(), 2, $$1.b().c(6));
       $$0.a();
       evx.a($$0, 0, this.h / 6 - 12, this.g, this.h, 0.5F, 0.0F);
       $$0.a(this::d);
@@ -56,7 +56,7 @@ public class eyb extends eyk {
       if (this.f.r != null && this.f.S()) {
          this.v = a(0, 0, "options.difficulty", this.f);
          if (!this.f.r.k().n()) {
-            this.w = new etg(0, 0, $$0x -> this.f.a(new exd(this::c, tl.c("difficulty.lock.title"), tl.a("difficulty.lock.question", this.f.r.k().s().b()))));
+            this.w = new etg(0, 0, $$0x -> this.f.a(new exd(this::c, tm.c("difficulty.lock.title"), tm.a("difficulty.lock.question", this.f.r.k().s().b()))));
             this.v.d(this.v.l() - this.w.l());
             this.w.b(this.f.r.k().t());
             this.w.i = !this.w.a();
@@ -70,12 +70,12 @@ public class eyb extends eyk {
             return this.v;
          }
       } else {
-         return esq.a(tl.c("options.online"), $$0x -> this.f.a(eya.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
+         return esq.a(tm.c("options.online"), $$0x -> this.f.a(eya.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
       }
    }
 
    public static esx<bgv> a(int $$0, int $$1, String $$2, eqv $$3) {
-      return esx.a(bgv::b).a(bgv.values()).a($$3.r.ai()).a($$0, $$1, 150, 20, tl.c($$2), ($$1x, $$2x) -> $$3.J().b(new abi($$2x)));
+      return esx.a(bgv::b).a(bgv.values()).a($$3.r.ai()).a($$0, $$1, 150, 20, tm.c($$2), ($$1x, $$2x) -> $$3.J().b(new abi($$2x)));
    }
 
    private void c(boolean $$0) {
@@ -99,7 +99,7 @@ public class eyb extends eyk {
       $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 
-   private esq a(tl $$0, Supplier<eyk> $$1) {
+   private esq a(tm $$0, Supplier<eyk> $$1) {
       return esq.a($$0, $$1x -> this.f.a($$1.get())).a();
    }
 }

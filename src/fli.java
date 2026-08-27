@@ -111,10 +111,10 @@ public class fli {
    public static class e extends fls {
       private int a;
       private final flw b;
-      private rd D;
+      private re D;
       private boolean E;
 
-      public e(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, flw $$7, @Nullable qx $$8) {
+      public e(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, flw $$7, @Nullable qy $$8) {
          super($$0, $$1, $$2, $$3);
          this.j = $$4;
          this.k = $$5;
@@ -129,7 +129,7 @@ public class fli {
                this.t = this.D.size() * 2 - 1;
 
                for (int $$9 = 0; $$9 < this.D.size(); $$9++) {
-                  qx $$10 = this.D.a($$9);
+                  qy $$10 = this.D.a($$9);
                   if ($$10.q("Flicker")) {
                      this.E = true;
                      this.t += 15;
@@ -149,7 +149,7 @@ public class fli {
                $$1 = true;
             } else {
                for (int $$2 = 0; $$2 < this.D.size(); $$2++) {
-                  qx $$3 = this.D.a($$2);
+                  qy $$3 = this.D.a($$2);
                   if (cij.a.a($$3.f("Type")) == cij.a.b) {
                      $$1 = true;
                      break;
@@ -169,7 +169,7 @@ public class fli {
 
          if (this.a % 2 == 0 && this.D != null && this.a / 2 < this.D.size()) {
             int $$6 = this.a / 2;
-            qx $$7 = this.D.a($$6);
+            qy $$7 = this.D.a($$6);
             cij.a $$8 = cij.a.a($$7.f("Type"));
             boolean $$9 = $$7.q("Trail");
             boolean $$10 = $$7.q("Flicker");

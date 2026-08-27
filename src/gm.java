@@ -15,7 +15,7 @@ public class gm {
    public static final SuggestionProvider<dt> c = a(new aex("available_sounds"), ($$0, $$1) -> dw.a(((dw)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<dt> d = a(
       new aex("summonable_entities"),
-      ($$0, $$1) -> dw.a(jd.h.s().filter($$1x -> $$1x.a(((dw)$$0.getSource()).w()) && $$1x.c()), $$1, biu::a, $$0x -> tl.c(ac.a("entity", biu.a($$0x))))
+      ($$0, $$1) -> dw.a(jd.h.s().filter($$1x -> $$1x.a(((dw)$$0.getSource()).w()) && $$1x.c()), $$1, biu::a, $$0x -> tm.c(ac.a("entity", biu.a($$0x))))
    );
 
    public static <S extends dw> SuggestionProvider<S> a(aex $$0, SuggestionProvider<dw> $$1) {

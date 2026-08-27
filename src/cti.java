@@ -143,7 +143,7 @@ public class cti extends csi implements czw {
    @Override
    public void a(cpv $$0, dfj $$1, ehj $$2, ccm $$3) {
       gw $$4 = $$2.a();
-      if (!$$0.B && $$3.bN() && $$3.a($$0, $$4) && !$$1.c(b) && !$$1.c(d)) {
+      if (!$$0.B && $$3.bM() && $$3.a($$0, $$4) && !$$1.c(b) && !$$1.c(d)) {
          $$0.a($$4, $$1.a(dfz.r, Boolean.valueOf(true)), 11);
       }
    }

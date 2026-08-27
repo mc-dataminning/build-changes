@@ -168,7 +168,7 @@ public class css extends cwo implements csx, czw {
    }
 
    private static boolean a(gw $$0, biq $$1) {
-      return $$1.aB() && $$1.dj().d > (double)((float)$$0.v() + 0.6875F);
+      return $$1.aA() && $$1.dj().d > (double)((float)$$0.v() + 0.6875F);
    }
 
    private void a(dfj $$0, cpv $$1, gw $$2, dgu $$3, @Nullable apd $$4) {

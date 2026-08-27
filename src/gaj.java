@@ -6,8 +6,8 @@ import com.ibm.icu.text.BidiRun;
 import java.util.List;
 
 public class gaj {
-   public static ark a(tp $$0, boolean $$1) {
-      ui $$2 = ui.a($$0, UCharacter::getMirror, gaj::a);
+   public static ark a(tq $$0, boolean $$1) {
+      uj $$2 = uj.a($$0, UCharacter::getMirror, gaj::a);
       Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
       $$3.setReorderingMode(0);
       List<ark> $$4 = Lists.newArrayList();

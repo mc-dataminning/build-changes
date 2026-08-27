@@ -17,9 +17,9 @@ public interface bdv {
 
    void a(float var1);
 
-   void a(sn var1, int var2, SocketAddress var3, int var4);
+   void a(so var1, int var2, SocketAddress var3, int var4);
 
-   void b(sn var1, int var2, SocketAddress var3, int var4);
+   void b(so var1, int var2, SocketAddress var3, int var4);
 
    @Nullable
    bdy e();
@@ -54,11 +54,11 @@ public interface bdv {
       }
 
       @Override
-      public void a(sn $$0, int $$1, SocketAddress $$2, int $$3) {
+      public void a(so $$0, int $$1, SocketAddress $$2, int $$3) {
       }
 
       @Override
-      public void b(sn $$0, int $$1, SocketAddress $$2, int $$3) {
+      public void b(so $$0, int $$1, SocketAddress $$2, int $$3) {
       }
 
       @Override

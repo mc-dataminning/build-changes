@@ -5,23 +5,23 @@ import org.slf4j.Logger;
 public class eou extends gfb {
    static final Logger c = LogUtils.getLogger();
    static final aex y = new aex("widget/slot_frame");
-   private static final tl z = tl.c("mco.selectServer.create");
-   private static final tl A = tl.c("mco.selectServer.create.subtitle");
-   private static final tl B = tl.c("mco.configure.world.switch.slot");
-   private static final tl C = tl.c("mco.configure.world.switch.slot.subtitle");
-   private static final tl D = tl.c("mco.reset.world.title");
-   private static final tl E = tl.c("mco.reset.world.warning");
-   public static final tl a = tl.c("mco.create.world.reset.title");
-   private static final tl F = tl.c("mco.reset.world.resetting.screen.title");
-   private static final tl G = tl.c("mco.reset.world.template");
-   private static final tl H = tl.c("mco.reset.world.adventure");
-   private static final tl I = tl.c("mco.reset.world.experience");
-   private static final tl J = tl.c("mco.reset.world.inspiration");
+   private static final tm z = tm.c("mco.selectServer.create");
+   private static final tm A = tm.c("mco.selectServer.create.subtitle");
+   private static final tm B = tm.c("mco.configure.world.switch.slot");
+   private static final tm C = tm.c("mco.configure.world.switch.slot.subtitle");
+   private static final tm D = tm.c("mco.reset.world.title");
+   private static final tm E = tm.c("mco.reset.world.warning");
+   public static final tm a = tm.c("mco.create.world.reset.title");
+   private static final tm F = tm.c("mco.reset.world.resetting.screen.title");
+   private static final tm G = tm.c("mco.reset.world.template");
+   private static final tm H = tm.c("mco.reset.world.adventure");
+   private static final tm I = tm.c("mco.reset.world.experience");
+   private static final tm J = tm.c("mco.reset.world.inspiration");
    private final eyk K;
    private final emw L;
-   private final tl M;
+   private final tm M;
    private final int N;
-   private final tl O;
+   private final tm O;
    private static final aex P = new aex("textures/gui/realms/upload.png");
    private static final aex Q = new aex("textures/gui/realms/adventure.png");
    private static final aex R = new aex("textures/gui/realms/survival_spawn.png");
@@ -36,7 +36,7 @@ public class eou extends gfb {
    private final Runnable Z;
    private final evz aa = new evz(this);
 
-   private eou(eyk $$0, emw $$1, int $$2, tl $$3, tl $$4, int $$5, tl $$6, Runnable $$7) {
+   private eou(eyk $$0, emw $$1, int $$2, tm $$3, tm $$4, int $$5, tm $$6, Runnable $$7) {
       super($$3);
       this.K = $$0;
       this.L = $$1;
@@ -93,7 +93,7 @@ public class eou extends gfb {
       this.d(new eou.a(this.a(1), h(6) + 20, H, Q, $$0x -> this.f.a(new eow(H, this::a, emw.c.c, this.W))));
       this.d(new eou.a(this.a(2), h(6) + 20, I, T, $$0x -> this.f.a(new eow(I, this::a, emw.c.d, this.X))));
       this.d(new eou.a(this.a(3), h(6) + 20, J, U, $$0x -> this.f.a(new eow(J, this::a, emw.c.e, this.Y))));
-      this.aa.b(esq.a(tk.k, $$0x -> this.az_()).a());
+      this.aa.b(esq.a(tl.k, $$0x -> this.az_()).a());
       this.aa.a($$1 -> {
          eso var10000 = this.d($$1);
       });
@@ -101,8 +101,8 @@ public class eou extends gfb {
    }
 
    @Override
-   public tl g() {
-      return tk.a(this.m(), this.M);
+   public tm g() {
+      return tl.a(this.m(), this.M);
    }
 
    @Override
@@ -151,7 +151,7 @@ public class eou extends gfb {
       private static final int d = 56;
       private final aex s;
 
-      a(int $$0, int $$1, tl $$2, aex $$3, esq.c $$4) {
+      a(int $$0, int $$1, tm $$2, aex $$3, esq.c $$4) {
          super($$0, $$1, 60, 72, $$2, $$4, o);
          this.s = $$3;
       }

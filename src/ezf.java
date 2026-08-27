@@ -13,7 +13,7 @@ public class ezf extends eyk {
    private static final int o = 31;
    private static final int p = 5;
    private static final int q = ezf.a.values().length * 31 - 5;
-   private static final tl s = tl.a("debug.gamemodes.select_next", tl.c("debug.gamemodes.press_f4").a(n.l));
+   private static final tm s = tm.a("debug.gamemodes.select_next", tm.c("debug.gamemodes.press_f4").a(n.l));
    private final ezf.a t;
    private ezf.a u;
    private int v;
@@ -50,7 +50,7 @@ public class ezf extends eyk {
 
    @Override
    public void a(esf $$0, int $$1, int $$2, float $$3) {
-      if (!this.D()) {
+      if (!this.E()) {
          $$0.c().a();
          RenderSystem.enableBlend();
          int $$4 = this.g / 2 - 62;
@@ -82,7 +82,7 @@ public class ezf extends eyk {
    public void b(esf $$0, int $$1, int $$2, float $$3) {
    }
 
-   private void C() {
+   private void D() {
       a(this.f, this.u);
    }
 
@@ -95,9 +95,9 @@ public class ezf extends eyk {
       }
    }
 
-   private boolean D() {
+   private boolean E() {
       if (!ekk.a(this.f.aM().i(), 292)) {
-         this.C();
+         this.D();
          this.f.a(null);
          return true;
       } else {
@@ -122,19 +122,19 @@ public class ezf extends eyk {
    }
 
    static enum a {
-      a(tl.c("gameMode.creative"), "gamemode creative", new cjf(csw.i)),
-      b(tl.c("gameMode.survival"), "gamemode survival", new cjf(cji.om)),
-      c(tl.c("gameMode.adventure"), "gamemode adventure", new cjf(cji.tp)),
-      d(tl.c("gameMode.spectator"), "gamemode spectator", new cjf(cji.rD));
+      a(tm.c("gameMode.creative"), "gamemode creative", new cjf(csw.i)),
+      b(tm.c("gameMode.survival"), "gamemode survival", new cjf(cji.om)),
+      c(tm.c("gameMode.adventure"), "gamemode adventure", new cjf(cji.tp)),
+      d(tm.c("gameMode.spectator"), "gamemode spectator", new cjf(cji.rD));
 
       protected static final ezf.a[] e = values();
       private static final int j = 16;
       protected static final int f = 5;
-      final tl g;
+      final tm g;
       final String h;
       final cjf i;
 
-      private a(tl $$0, String $$1, cjf $$2) {
+      private a(tm $$0, String $$1, cjf $$2) {
          this.g = $$0;
          this.h = $$1;
          this.i = $$2;
@@ -144,7 +144,7 @@ public class ezf extends eyk {
          $$0.a(this.i, $$1, $$2);
       }
 
-      tl a() {
+      tm a() {
          return this.g;
       }
 

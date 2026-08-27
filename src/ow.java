@@ -1,15 +1,82 @@
-public class ow {
-   public static final aew<dnj<?, ?>> a = os.a("pile_hay");
-   public static final aew<dnj<?, ?>> b = os.a("pile_melon");
-   public static final aew<dnj<?, ?>> c = os.a("pile_snow");
-   public static final aew<dnj<?, ?>> d = os.a("pile_ice");
-   public static final aew<dnj<?, ?>> e = os.a("pile_pumpkin");
+import java.util.List;
 
-   public static void a(ns<dnj<?, ?>> $$0) {
-      os.a($$0, a, dnw.j, new dps(new dsi(csw.ij)));
-      os.a($$0, b, dnw.j, new dps(dsb.a(csw.fa)));
-      os.a($$0, c, dnw.j, new dps(dsb.a(csw.dN)));
-      os.a($$0, d, dnw.j, new dps(new dsl(bfi.<dfj>a().a(csw.mW.n(), 1).a(csw.iC.n(), 5))));
-      os.a($$0, e, dnw.j, new dps(new dsl(bfi.<dfj>a().a(csw.dV.n(), 19).a(csw.eg.n(), 1))));
+public class ow {
+   public static final aew<dnj<?, ?>> a = ot.a("ore_magma");
+   public static final aew<dnj<?, ?>> b = ot.a("ore_soul_sand");
+   public static final aew<dnj<?, ?>> c = ot.a("ore_nether_gold");
+   public static final aew<dnj<?, ?>> d = ot.a("ore_quartz");
+   public static final aew<dnj<?, ?>> e = ot.a("ore_gravel_nether");
+   public static final aew<dnj<?, ?>> f = ot.a("ore_blackstone");
+   public static final aew<dnj<?, ?>> g = ot.a("ore_dirt");
+   public static final aew<dnj<?, ?>> h = ot.a("ore_gravel");
+   public static final aew<dnj<?, ?>> i = ot.a("ore_granite");
+   public static final aew<dnj<?, ?>> j = ot.a("ore_diorite");
+   public static final aew<dnj<?, ?>> k = ot.a("ore_andesite");
+   public static final aew<dnj<?, ?>> l = ot.a("ore_tuff");
+   public static final aew<dnj<?, ?>> m = ot.a("ore_coal");
+   public static final aew<dnj<?, ?>> n = ot.a("ore_coal_buried");
+   public static final aew<dnj<?, ?>> o = ot.a("ore_iron");
+   public static final aew<dnj<?, ?>> p = ot.a("ore_iron_small");
+   public static final aew<dnj<?, ?>> q = ot.a("ore_gold");
+   public static final aew<dnj<?, ?>> r = ot.a("ore_gold_buried");
+   public static final aew<dnj<?, ?>> s = ot.a("ore_redstone");
+   public static final aew<dnj<?, ?>> t = ot.a("ore_diamond_small");
+   public static final aew<dnj<?, ?>> u = ot.a("ore_diamond_medium");
+   public static final aew<dnj<?, ?>> v = ot.a("ore_diamond_large");
+   public static final aew<dnj<?, ?>> w = ot.a("ore_diamond_buried");
+   public static final aew<dnj<?, ?>> x = ot.a("ore_lapis");
+   public static final aew<dnj<?, ?>> y = ot.a("ore_lapis_buried");
+   public static final aew<dnj<?, ?>> z = ot.a("ore_infested");
+   public static final aew<dnj<?, ?>> A = ot.a("ore_emerald");
+   public static final aew<dnj<?, ?>> B = ot.a("ore_ancient_debris_large");
+   public static final aew<dnj<?, ?>> C = ot.a("ore_ancient_debris_small");
+   public static final aew<dnj<?, ?>> D = ot.a("ore_copper_small");
+   public static final aew<dnj<?, ?>> E = ot.a("ore_copper_large");
+   public static final aew<dnj<?, ?>> F = ot.a("ore_clay");
+
+   public static void a(nt<dnj<?, ?>> $$0) {
+      dyv $$1 = new dzd(apt.bd);
+      dyv $$2 = new dzd(apt.be);
+      dyv $$3 = new dzd(apt.bf);
+      dyv $$4 = new dye(csw.dW);
+      dyv $$5 = new dzd(apt.bg);
+      List<dqi.a> $$6 = List.of(dqi.a($$2, csw.P.n()), dqi.a($$3, csw.Q.n()));
+      List<dqi.a> $$7 = List.of(dqi.a($$2, csw.N.n()), dqi.a($$3, csw.O.n()));
+      List<dqi.a> $$8 = List.of(dqi.a($$2, csw.cx.n()), dqi.a($$3, csw.cy.n()));
+      List<dqi.a> $$9 = List.of(dqi.a($$2, csw.aR.n()), dqi.a($$3, csw.aS.n()));
+      List<dqi.a> $$10 = List.of(dqi.a($$2, csw.qN.n()), dqi.a($$3, csw.qO.n()));
+      List<dqi.a> $$11 = List.of(dqi.a($$2, csw.R.n()), dqi.a($$3, csw.S.n()));
+      ot.a($$0, a, dnw.I, new dqi($$4, csw.kJ.n(), 33));
+      ot.a($$0, b, dnw.I, new dqi($$4, csw.dX.n(), 12));
+      ot.a($$0, c, dnw.I, new dqi($$4, csw.T.n(), 10));
+      ot.a($$0, d, dnw.I, new dqi($$4, csw.hb.n(), 14));
+      ot.a($$0, e, dnw.I, new dqi($$4, csw.L.n(), 33));
+      ot.a($$0, f, dnw.I, new dqi($$4, csw.pr.n(), 33));
+      ot.a($$0, g, dnw.I, new dqi($$1, csw.j.n(), 33));
+      ot.a($$0, h, dnw.I, new dqi($$1, csw.L.n(), 33));
+      ot.a($$0, i, dnw.I, new dqi($$1, csw.c.n(), 64));
+      ot.a($$0, j, dnw.I, new dqi($$1, csw.e.n(), 64));
+      ot.a($$0, k, dnw.I, new dqi($$1, csw.g.n(), 64));
+      ot.a($$0, l, dnw.I, new dqi($$1, csw.qz.n(), 64));
+      ot.a($$0, m, dnw.I, new dqi($$11, 17));
+      ot.a($$0, n, dnw.I, new dqi($$11, 17, 0.5F));
+      ot.a($$0, o, dnw.I, new dqi($$6, 9));
+      ot.a($$0, p, dnw.I, new dqi($$6, 4));
+      ot.a($$0, q, dnw.I, new dqi($$7, 9));
+      ot.a($$0, r, dnw.I, new dqi($$7, 9, 0.5F));
+      ot.a($$0, s, dnw.I, new dqi(List.of(dqi.a($$2, csw.dI.n()), dqi.a($$3, csw.dJ.n())), 8));
+      ot.a($$0, t, dnw.I, new dqi($$8, 4, 0.5F));
+      ot.a($$0, v, dnw.I, new dqi($$8, 12, 0.7F));
+      ot.a($$0, w, dnw.I, new dqi($$8, 8, 1.0F));
+      ot.a($$0, u, dnw.I, new dqi($$8, 8, 0.5F));
+      ot.a($$0, x, dnw.I, new dqi($$9, 7));
+      ot.a($$0, y, dnw.I, new dqi($$9, 7, 1.0F));
+      ot.a($$0, z, dnw.I, new dqi(List.of(dqi.a($$2, csw.eO.n()), dqi.a($$3, csw.sc.n())), 9));
+      ot.a($$0, A, dnw.I, new dqi(List.of(dqi.a($$2, csw.fE.n()), dqi.a($$3, csw.fF.n())), 3));
+      ot.a($$0, B, dnw.ae, new dqi($$5, csw.pj.n(), 3, 1.0F));
+      ot.a($$0, C, dnw.ae, new dqi($$5, csw.pj.n(), 2, 1.0F));
+      ot.a($$0, D, dnw.I, new dqi($$10, 10));
+      ot.a($$0, E, dnw.I, new dqi($$10, 20));
+      ot.a($$0, F, dnw.I, new dqi($$1, csw.dR.n(), 33));
    }
 }

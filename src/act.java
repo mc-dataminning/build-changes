@@ -1,4 +1,4 @@
-public class act implements vd<abd> {
+public class act implements ve<abd> {
    private static final int a = 1;
    private static final int b = 2;
    private static final int c = 4;
@@ -36,7 +36,7 @@ public class act implements vd<abd> {
       this.q = $$13;
    }
 
-   public act(so $$0) {
+   public act(sp $$0) {
       this.d = $$0.e();
       this.e = $$0.b(dei.a.class);
       this.f = $$0.b(dgt.class);
@@ -57,7 +57,7 @@ public class act implements vd<abd> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.d);
       $$0.a(this.e);
       $$0.a(this.f);

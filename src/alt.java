@@ -1,5 +1,5 @@
 public interface alt {
    aks p();
 
-   void b(vd<?> var1);
+   void b(ve<?> var1);
 }

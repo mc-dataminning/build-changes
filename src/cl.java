@@ -15,8 +15,8 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public interface cl<T extends Number> {
-   SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.range.empty"));
-   SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("argument.range.swapped"));
+   SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("argument.range.empty"));
+   SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("argument.range.swapped"));
 
    Optional<T> a();
 

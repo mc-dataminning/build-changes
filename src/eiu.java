@@ -91,8 +91,8 @@ public class eiu<T> implements eja<T>, ejc<T> {
       return this.a.size() + (this.b != null ? this.b.size() : 0);
    }
 
-   public rd a(long $$0, Function<T, String> $$1) {
-      rd $$2 = new rd();
+   public re a(long $$0, Function<T, String> $$1) {
+      re $$2 = new re();
       if (this.b != null) {
          for (eiy<T> $$3 : this.b) {
             $$2.add($$3.a($$1));
@@ -118,7 +118,7 @@ public class eiu<T> implements eja<T>, ejc<T> {
       this.b = null;
    }
 
-   public static <T> eiu<T> a(rd $$0, Function<String, Optional<T>> $$1, cpc $$2) {
+   public static <T> eiu<T> a(re $$0, Function<String, Optional<T>> $$1, cpc $$2) {
       Builder<eiy<T>> $$3 = ImmutableList.builder();
       eiy.a($$0, $$1, $$2, $$3::add);
       return new eiu<>($$3.build());

@@ -1,8 +1,18 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record wv() implements ve<wu> {
+   public wv(sp $$0) {
+      this();
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface wv {
+   @Override
+   public void a(sp $$0) {
+   }
+
+   public void a(wu $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public so c() {
+      return so.b;
+   }
 }

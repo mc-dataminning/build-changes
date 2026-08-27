@@ -2,7 +2,7 @@ public class fad extends ezi<cfh> {
    private static final aex x = new aex("container/grindstone/error");
    private static final aex y = new aex("textures/gui/container/grindstone.png");
 
-   public fad(cfh $$0, cbt $$1, tl $$2) {
+   public fad(cfh $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
    }
 

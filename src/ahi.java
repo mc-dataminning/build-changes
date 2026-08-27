@@ -9,16 +9,16 @@ public class ahi {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("kick").requires($$0x -> $$0x.c(3)))
             .then(
                ((RequiredArgumentBuilder)du.a("targets", ee.d())
-                     .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), tl.c("multiplayer.disconnect.kicked"))))
+                     .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), tm.c("multiplayer.disconnect.kicked"))))
                   .then(du.a("reason", ei.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ei.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(dt $$0, Collection<aks> $$1, tl $$2) {
+   private static int a(dt $$0, Collection<aks> $$1, tm $$2) {
       for (aks $$3 : $$1) {
          $$3.c.b($$2);
-         $$0.a(() -> tl.a("commands.kick.success", $$3.N_(), $$2), true);
+         $$0.a(() -> tm.a("commands.kick.success", $$3.N_(), $$2), true);
       }
 
       return $$1.size();

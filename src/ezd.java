@@ -8,21 +8,21 @@ public class ezd extends eyc {
    private esq m;
 
    public ezd(eyk $$0, eqz $$1) {
-      super($$0, $$1, tl.c("controls.keybinds.title"));
+      super($$0, $$1, tm.c("controls.keybinds.title"));
    }
 
    @Override
    protected void aI_() {
       this.l = new ezc(this, this.f);
       this.e(this.l);
-      this.m = this.d(esq.a(tl.c("controls.resetAll"), $$0 -> {
+      this.m = this.d(esq.a(tm.c("controls.resetAll"), $$0 -> {
          for (eqt $$1 : this.b.X) {
             $$1.b($$1.i());
          }
 
          this.l.d();
       }).a(this.g / 2 - 155, this.h - 29, 150, 20).a());
-      this.d(esq.a(tk.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 155 + 160, this.h - 29, 150, 20).a());
+      this.d(esq.a(tl.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 155 + 160, this.h - 29, 150, 20).a());
    }
 
    @Override

@@ -108,8 +108,8 @@ public class bkj {
       });
    }
 
-   public rd c() {
-      rd $$0 = new rd();
+   public re c() {
+      re $$0 = new re();
 
       for (bki $$1 : this.b.values()) {
          $$0.add($$1.g());
@@ -118,9 +118,9 @@ public class bkj {
       return $$0;
    }
 
-   public void a(rd $$0) {
+   public void a(re $$0) {
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         qx $$2 = $$0.a($$1);
+         qy $$2 = $$0.a($$1);
          String $$3 = $$2.l("Name");
          ac.a(jd.v.b(aex.a($$3)), $$1x -> {
             bki $$2x = this.a($$1x);

@@ -16,12 +16,12 @@ import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
 
 public class aii {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.scoreboard.objectives.add.duplicate"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.scoreboard.objectives.display.alreadyEmpty"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.scoreboard.objectives.display.alreadySet"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("commands.scoreboard.players.enable.failed"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("commands.scoreboard.players.enable.invalid"));
-   private static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.scoreboard.players.get.null", $$0, $$1));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.scoreboard.objectives.add.duplicate"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.scoreboard.objectives.display.alreadyEmpty"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.scoreboard.objectives.display.alreadySet"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.c("commands.scoreboard.players.enable.failed"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("commands.scoreboard.players.enable.invalid"));
+   private static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("commands.scoreboard.players.get.null", $$0, $$1));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -40,7 +40,7 @@ public class aii {
                                                             (dt)$$0x.getSource(),
                                                             StringArgumentType.getString($$0x, "objective"),
                                                             em.a($$0x, "criteria"),
-                                                            tl.b(StringArgumentType.getString($$0x, "objective"))
+                                                            tm.b(StringArgumentType.getString($$0x, "objective"))
                                                          )
                                                    ))
                                                 .then(
@@ -257,7 +257,7 @@ public class aii {
          throw f.create($$2.b(), $$1);
       } else {
          eil $$4 = $$3.c($$1, $$2);
-         $$0.a(() -> tl.a("commands.scoreboard.players.get.success", $$1, $$4.b(), $$2.e()), false);
+         $$0.a(() -> tm.a("commands.scoreboard.players.get.success", $$1, $$4.b(), $$2.e()), false);
          return $$4.b();
       }
    }
@@ -279,9 +279,9 @@ public class aii {
 
       if ($$1.size() == 1) {
          int $$12 = $$7;
-         $$0.a(() -> tl.a("commands.scoreboard.players.operation.success.single", $$2.e(), $$1.iterator().next(), $$12), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.operation.success.single", $$2.e(), $$1.iterator().next(), $$12), true);
       } else {
-         $$0.a(() -> tl.a("commands.scoreboard.players.operation.success.multiple", $$2.e(), $$1.size()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.operation.success.multiple", $$2.e(), $$1.size()), true);
       }
 
       return $$7;
@@ -306,9 +306,9 @@ public class aii {
             throw d.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> tl.a("commands.scoreboard.players.enable.success.single", $$2.e(), $$1.iterator().next()), true);
+               $$0.a(() -> tm.a("commands.scoreboard.players.enable.success.single", $$2.e(), $$1.iterator().next()), true);
             } else {
-               $$0.a(() -> tl.a("commands.scoreboard.players.enable.success.multiple", $$2.e(), $$1.size()), true);
+               $$0.a(() -> tm.a("commands.scoreboard.players.enable.success.multiple", $$2.e(), $$1.size()), true);
             }
 
             return $$4;
@@ -324,9 +324,9 @@ public class aii {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.scoreboard.players.reset.all.single", $$1.iterator().next()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.reset.all.single", $$1.iterator().next()), true);
       } else {
-         $$0.a(() -> tl.a("commands.scoreboard.players.reset.all.multiple", $$1.size()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.reset.all.multiple", $$1.size()), true);
       }
 
       return $$1.size();
@@ -340,9 +340,9 @@ public class aii {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.scoreboard.players.reset.specific.single", $$2.e(), $$1.iterator().next()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.reset.specific.single", $$2.e(), $$1.iterator().next()), true);
       } else {
-         $$0.a(() -> tl.a("commands.scoreboard.players.reset.specific.multiple", $$2.e(), $$1.size()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.reset.specific.multiple", $$2.e(), $$1.size()), true);
       }
 
       return $$1.size();
@@ -357,9 +357,9 @@ public class aii {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.scoreboard.players.set.success.single", $$2.e(), $$1.iterator().next(), $$3), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.set.success.single", $$2.e(), $$1.iterator().next(), $$3), true);
       } else {
-         $$0.a(() -> tl.a("commands.scoreboard.players.set.success.multiple", $$2.e(), $$1.size(), $$3), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.set.success.multiple", $$2.e(), $$1.size(), $$3), true);
       }
 
       return $$3 * $$1.size();
@@ -377,9 +377,9 @@ public class aii {
 
       if ($$1.size() == 1) {
          int $$8 = $$5;
-         $$0.a(() -> tl.a("commands.scoreboard.players.add.success.single", $$3, $$2.e(), $$1.iterator().next(), $$8), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.add.success.single", $$3, $$2.e(), $$1.iterator().next(), $$8), true);
       } else {
-         $$0.a(() -> tl.a("commands.scoreboard.players.add.success.multiple", $$3, $$2.e(), $$1.size()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.add.success.multiple", $$3, $$2.e(), $$1.size()), true);
       }
 
       return $$5;
@@ -397,9 +397,9 @@ public class aii {
 
       if ($$1.size() == 1) {
          int $$8 = $$5;
-         $$0.a(() -> tl.a("commands.scoreboard.players.remove.success.single", $$3, $$2.e(), $$1.iterator().next(), $$8), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.remove.success.single", $$3, $$2.e(), $$1.iterator().next(), $$8), true);
       } else {
-         $$0.a(() -> tl.a("commands.scoreboard.players.remove.success.multiple", $$3, $$2.e(), $$1.size()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.players.remove.success.multiple", $$3, $$2.e(), $$1.size()), true);
       }
 
       return $$5;
@@ -408,9 +408,9 @@ public class aii {
    private static int a(dt $$0) {
       Collection<String> $$1 = $$0.l().aF().e();
       if ($$1.isEmpty()) {
-         $$0.a(() -> tl.c("commands.scoreboard.players.list.empty"), false);
+         $$0.a(() -> tm.c("commands.scoreboard.players.list.empty"), false);
       } else {
-         $$0.a(() -> tl.a("commands.scoreboard.players.list.success", $$1.size(), tn.a($$1)), false);
+         $$0.a(() -> tm.a("commands.scoreboard.players.list.success", $$1.size(), to.a($$1)), false);
       }
 
       return $$1.size();
@@ -419,12 +419,12 @@ public class aii {
    private static int a(dt $$0, String $$1) {
       Map<eij, eil> $$2 = $$0.l().aF().c($$1);
       if ($$2.isEmpty()) {
-         $$0.a(() -> tl.a("commands.scoreboard.players.list.entity.empty", $$1), false);
+         $$0.a(() -> tm.a("commands.scoreboard.players.list.entity.empty", $$1), false);
       } else {
-         $$0.a(() -> tl.a("commands.scoreboard.players.list.entity.success", $$1, $$2.size()), false);
+         $$0.a(() -> tm.a("commands.scoreboard.players.list.entity.success", $$1, $$2.size()), false);
 
          for (Entry<eij, eil> $$3 : $$2.entrySet()) {
-            $$0.a(() -> tl.a("commands.scoreboard.players.list.entity.entry", $$3.getKey().e(), $$3.getValue().b()), false);
+            $$0.a(() -> tm.a("commands.scoreboard.players.list.entity.entry", $$3.getKey().e(), $$3.getValue().b()), false);
          }
       }
 
@@ -437,7 +437,7 @@ public class aii {
          throw b.create();
       } else {
          $$2.a($$1, null);
-         $$0.a(() -> tl.a("commands.scoreboard.objectives.display.cleared", $$1.c()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.objectives.display.cleared", $$1.c()), true);
          return 0;
       }
    }
@@ -448,15 +448,15 @@ public class aii {
          throw c.create();
       } else {
          $$3.a($$1, $$2);
-         $$0.a(() -> tl.a("commands.scoreboard.objectives.display.set", $$1.c(), $$2.d()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.objectives.display.set", $$1.c(), $$2.d()), true);
          return 0;
       }
    }
 
-   private static int a(dt $$0, eij $$1, tl $$2) {
+   private static int a(dt $$0, eij $$1, tm $$2) {
       if (!$$1.d().equals($$2)) {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.e()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.e()), true);
       }
 
       return 0;
@@ -465,7 +465,7 @@ public class aii {
    private static int a(dt $$0, eij $$1, eip.a $$2) {
       if ($$1.f() != $$2) {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.scoreboard.objectives.modify.rendertype", $$1.e()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.objectives.modify.rendertype", $$1.e()), true);
       }
 
       return 0;
@@ -474,18 +474,18 @@ public class aii {
    private static int a(dt $$0, eij $$1) {
       eim $$2 = $$0.l().aF();
       $$2.j($$1);
-      $$0.a(() -> tl.a("commands.scoreboard.objectives.remove.success", $$1.e()), true);
+      $$0.a(() -> tm.a("commands.scoreboard.objectives.remove.success", $$1.e()), true);
       return $$2.c().size();
    }
 
-   private static int a(dt $$0, String $$1, eip $$2, tl $$3) throws CommandSyntaxException {
+   private static int a(dt $$0, String $$1, eip $$2, tm $$3) throws CommandSyntaxException {
       eim $$4 = $$0.l().aF();
       if ($$4.b($$1) != null) {
          throw a.create();
       } else {
          $$4.a($$1, $$2, $$3, $$2.f());
          eij $$5 = $$4.b($$1);
-         $$0.a(() -> tl.a("commands.scoreboard.objectives.add.success", $$5.e()), true);
+         $$0.a(() -> tm.a("commands.scoreboard.objectives.add.success", $$5.e()), true);
          return $$4.c().size();
       }
    }
@@ -493,9 +493,9 @@ public class aii {
    private static int b(dt $$0) {
       Collection<eij> $$1 = $$0.l().aF().c();
       if ($$1.isEmpty()) {
-         $$0.a(() -> tl.c("commands.scoreboard.objectives.list.empty"), false);
+         $$0.a(() -> tm.c("commands.scoreboard.objectives.list.empty"), false);
       } else {
-         $$0.a(() -> tl.a("commands.scoreboard.objectives.list.success", $$1.size(), tn.b($$1, eij::e)), false);
+         $$0.a(() -> tm.a("commands.scoreboard.objectives.list.success", $$1.size(), to.b($$1, eij::e)), false);
       }
 
       return $$1.size();

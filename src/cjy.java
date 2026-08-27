@@ -5,7 +5,7 @@ public class cjy extends cja {
 
    @Override
    public bgy a(cjf $$0, cbu $$1, bjg $$2, bgx $$3) {
-      if ($$2 instanceof bjw $$4 && $$2.bw() && !$$4.i() && $$4.g()) {
+      if ($$2 instanceof bjw $$4 && $$2.bv() && !$$4.i() && $$4.g()) {
          if (!$$1.dL().B) {
             $$4.a(apf.g);
             $$2.dL().a($$2, djt.v, $$2.dj());

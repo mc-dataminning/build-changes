@@ -184,7 +184,7 @@ public abstract class bsp {
          } else if (this.c != null && !this.c.c()) {
             ehn $$0 = this.b();
             ehn $$1 = this.c.a(this.a);
-            if ($$0.d > $$1.d && !this.a.aB() && arx.a($$0.c) == arx.a($$1.c) && arx.a($$0.e) == arx.a($$1.e)) {
+            if ($$0.d > $$1.d && !this.a.aA() && arx.a($$0.c) == arx.a($$1.c) && arx.a($$0.e) == arx.a($$1.e)) {
                this.c.a();
             }
          }
@@ -204,7 +204,7 @@ public abstract class bsp {
 
    protected void k() {
       ehn $$0 = this.b();
-      this.l = this.a.dg() > 0.75F ? this.a.dg() / 2.0F : 0.75F - this.a.dg() / 2.0F;
+      this.l = this.a.df() > 0.75F ? this.a.df() / 2.0F : 0.75F - this.a.df() / 2.0F;
       ib $$1 = this.c.g();
       double $$2 = Math.abs(this.a.dq() - ((double)$$1.u() + 0.5));
       double $$3 = Math.abs(this.a.ds() - (double)$$1.v());
@@ -332,7 +332,7 @@ public abstract class bsp {
    }
 
    protected static boolean a(bji $$0, ehn $$1, ehn $$2, boolean $$3) {
-      ehn $$4 = new ehn($$2.c, $$2.d + (double)$$0.dh() * 0.5, $$2.e);
+      ehn $$4 = new ehn($$2.c, $$2.d + (double)$$0.dg() * 0.5, $$2.e);
       return $$0.dL().a(new cpe($$1, $$4, cpe.a.a, $$3 ? cpe.b.c : cpe.b.a, $$0)).c() == ehl.a.a;
    }
 

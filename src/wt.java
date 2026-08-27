@@ -1,8 +1,17 @@
-public interface wt extends vn {
-   @Override
-   default sn b() {
-      return sn.e;
+import java.util.HashSet;
+import java.util.Set;
+
+public record wt(Set<aex> a) implements ve<wq> {
+   public wt(sp $$0) {
+      this($$0.a(HashSet::new, sp::s));
    }
 
-   void a(wu var1);
+   @Override
+   public void a(sp $$0) {
+      $$0.a(this.a, sp::a);
+   }
+
+   public void a(wq $$0) {
+      $$0.a(this);
+   }
 }

@@ -8,8 +8,8 @@ public class fas extends fai<cge> {
    private static final aex x = new aex("container/smithing/error");
    private static final aex y = new aex("item/empty_slot_smithing_template_armor_trim");
    private static final aex z = new aex("item/empty_slot_smithing_template_netherite_upgrade");
-   private static final tl A = tl.c("container.upgrade.missing_template_tooltip");
-   private static final tl B = tl.c("container.upgrade.error_tooltip");
+   private static final tm A = tm.c("container.upgrade.missing_template_tooltip");
+   private static final tm B = tm.c("container.upgrade.error_tooltip");
    private static final List<aex> C = List.of(y, z);
    private static final int D = 44;
    private static final int E = 15;
@@ -31,14 +31,14 @@ public class fas extends fai<cge> {
    @Nullable
    private byd U;
 
-   public fas(cge $$0, cbt $$1, tl $$2) {
+   public fas(cge $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2, new aex("textures/gui/container/smithing.png"));
       this.l = 44;
       this.m = 15;
    }
 
    @Override
-   protected void E() {
+   protected void F() {
       this.U = new byd(this.f.r, 0.0, 0.0, 0.0);
       this.U.s(true);
       this.U.a(true);
@@ -50,15 +50,15 @@ public class fas extends fai<cge> {
    }
 
    @Override
-   public void C() {
-      super.C();
-      Optional<ckh> $$0 = this.F();
+   public void D() {
+      super.D();
+      Optional<ckh> $$0 = this.G();
       this.R.a(C);
       this.S.a($$0.map(ckh::y).orElse(List.of()));
       this.T.a($$0.map(ckh::z).orElse(List.of()));
    }
 
-   private Optional<ckh> F() {
+   private Optional<ckh> G() {
       cjf $$0 = this.p.b(0).e();
       return !$$0.b() && $$0.d() instanceof ckh $$1 ? Optional.of($$1) : Optional.empty();
    }
@@ -104,14 +104,14 @@ public class fas extends fai<cge> {
 
    @Override
    protected void c(esf $$0, int $$1, int $$2) {
-      if (this.G()) {
+      if (this.H()) {
          $$0.a(x, $$1 + 65, $$2 + 46, 28, 21);
       }
    }
 
    private void d(esf $$0, int $$1, int $$2) {
-      Optional<tl> $$3 = Optional.empty();
-      if (this.G() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+      Optional<tm> $$3 = Optional.empty();
+      if (this.H() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
          $$3 = Optional.of(B);
       }
 
@@ -134,7 +134,7 @@ public class fas extends fai<cge> {
       $$3.ifPresent($$3x -> $$0.b(this.i, this.i.c($$3x, 115), $$1, $$2));
    }
 
-   private boolean G() {
+   private boolean H() {
       return this.p.b(0).f() && this.p.b(1).f() && this.p.b(2).f() && !this.p.b(this.p.o()).f();
    }
 }

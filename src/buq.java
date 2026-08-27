@@ -32,7 +32,7 @@ public abstract class buq extends buo {
    }
 
    public boolean gg() {
-      return this.b != null && this.b.bw();
+      return this.b != null && this.b.bv();
    }
 
    public buq a(buq $$0) {
@@ -62,7 +62,7 @@ public abstract class buq extends buo {
    public void l() {
       super.l();
       if (this.gj() && this.dL().z.a(200) == 1) {
-         List<? extends buo> $$0 = this.dL().a((Class<? extends buo>)this.getClass(), this.cH().c(8.0, 8.0, 8.0));
+         List<? extends buo> $$0 = this.dL().a((Class<? extends buo>)this.getClass(), this.cG().c(8.0, 8.0, 8.0));
          if ($$0.size() <= 1) {
             this.c = 1;
          }
@@ -89,7 +89,7 @@ public abstract class buq extends buo {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       super.a($$0, $$1, $$2, $$3, $$4);
       if ($$3 == null) {
          $$3 = new buq.a(this);

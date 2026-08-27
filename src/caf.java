@@ -86,7 +86,7 @@ public class caf {
 
    protected static void a(cae $$0, bjg $$1) {
       if (!$$0.m_()) {
-         if ($$1.ah() == biu.aw && f($$0)) {
+         if ($$1.ag() == biu.aw && f($$0)) {
             e($$0, $$1);
             c($$0, $$1);
          } else {
@@ -147,8 +147,8 @@ public class caf {
    }
 
    private static void f(cae $$0, bjg $$1) {
-      if (!$$0.dN().c(cdf.n) || $$1.ah() != biu.aw) {
-         if ($$1.ah() != biu.W) {
+      if (!$$0.dN().c(cdf.n) || $$1.ag() != biu.aw) {
+         if ($$1.ag() != biu.W) {
             if (!bkz.a($$0, $$1, 4.0)) {
                if (btl.c($$0, $$1)) {
                   g($$0, $$1);

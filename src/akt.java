@@ -79,7 +79,7 @@ public class akt {
       } else if (this.f) {
          dfj $$2 = this.c.a_(this.h);
          if ($$2.i()) {
-            this.c.a(this.d.ai(), this.h, -1);
+            this.c.a(this.d.ah(), this.h, -1);
             this.m = -1;
             this.f = false;
          } else {
@@ -93,7 +93,7 @@ public class akt {
       float $$4 = $$0.a(this.d, this.d.dL(), $$1) * (float)($$3 + 1);
       int $$5 = (int)($$4 * 10.0F);
       if ($$5 != this.m) {
-         this.c.a(this.d.ai(), $$1, $$5);
+         this.c.a(this.d.ah(), $$1, $$5);
          this.m = $$5;
       }
 
@@ -104,7 +104,7 @@ public class akt {
    }
 
    public void a(gw $$0, acf.a $$1, hc $$2, int $$3, int $$4) {
-      if (this.d.bq().g(ehn.b($$0)) > alq.d) {
+      if (this.d.bp().g(ehn.b($$0)) > alq.d) {
          this.a($$0, false, $$4, "too far");
       } else if ($$0.v() >= $$3) {
          this.d.c.b(new xg($$0, this.c.a_($$0)));
@@ -147,7 +147,7 @@ public class akt {
                this.f = true;
                this.h = $$0.i();
                int $$7 = (int)($$5 * 10.0F);
-               this.c.a(this.d.ai(), $$0, $$7);
+               this.c.a(this.d.ah(), $$0, $$7);
                this.a($$0, true, $$4, "actual start of destroying");
                this.m = $$7;
             }
@@ -159,7 +159,7 @@ public class akt {
                   float $$10 = $$9.a(this.d, this.d.dL(), $$0) * (float)($$8 + 1);
                   if ($$10 >= 0.7F) {
                      this.f = false;
-                     this.c.a(this.d.ai(), $$0, -1);
+                     this.c.a(this.d.ah(), $$0, -1);
                      this.a($$0, $$4, "destroyed");
                      return;
                   }
@@ -178,11 +178,11 @@ public class akt {
             this.f = false;
             if (!Objects.equals(this.h, $$0)) {
                a.warn("Mismatch in destroy block pos: {} {}", this.h, $$0);
-               this.c.a(this.d.ai(), this.h, -1);
+               this.c.a(this.d.ah(), this.h, -1);
                this.a($$0, true, $$4, "aborted mismatched destroying");
             }
 
-            this.c.a(this.d.ai(), $$0, -1);
+            this.c.a(this.d.ah(), $$0, -1);
             this.a($$0, true, $$4, "aborted destroying");
          }
       }

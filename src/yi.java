@@ -1,4 +1,4 @@
-public class yi implements vd<ww> {
+public class yi implements ve<wx> {
    private final int a;
    private final gw b;
    private final int c;
@@ -11,7 +11,7 @@ public class yi implements vd<ww> {
       this.d = $$3;
    }
 
-   public yi(so $$0) {
+   public yi(sp $$0) {
       this.a = $$0.readInt();
       this.b = $$0.e();
       this.c = $$0.readInt();
@@ -19,14 +19,14 @@ public class yi implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.p(this.a);
       $$0.a(this.b);
       $$0.p(this.c);
       $$0.a(this.d);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

@@ -1,27 +1,7 @@
-public interface ru {
-   void a(ro var1);
+public class ru {
+   private static final rt<?>[] a = new rt[]{ra.a, qw.a, rm.a, rd.a, rg.a, rb.b, qz.b, qv.a, rp.a, re.a, qy.b, rc.a, rf.a};
 
-   void a(qv var1);
-
-   void a(rl var1);
-
-   void a(rc var1);
-
-   void a(rf var1);
-
-   void a(ra var1);
-
-   void a(qy var1);
-
-   void a(qu var1);
-
-   void a(rb var1);
-
-   void a(re var1);
-
-   void a(rd var1);
-
-   void a(qx var1);
-
-   void a(qz var1);
+   public static rt<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : rt.a($$0);
+   }
 }

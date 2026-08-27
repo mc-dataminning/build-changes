@@ -1,6 +1,6 @@
 public class faa {
    private static final aex a = new aex("minecraft", "alt");
-   private static final uh b = uh.a.a(a);
+   private static final ui b = ui.a.a(a);
    private static final faa c = new faa();
    private final asc d = asc.a();
    private final String[] e = new String[]{
@@ -75,7 +75,7 @@ public class faa {
       return c;
    }
 
-   public tp a(esd $$0, int $$1) {
+   public tq a(esd $$0, int $$1) {
       StringBuilder $$2 = new StringBuilder();
       int $$3 = this.d.a(2) + 3;
 
@@ -87,7 +87,7 @@ public class faa {
          $$2.append(ac.a(this.e, this.d));
       }
 
-      return $$0.b().a(tl.b($$2.toString()).c(b), $$1, uh.a);
+      return $$0.b().a(tm.b($$2.toString()).c(b), $$1, ui.a);
    }
 
    public void a(long $$0) {

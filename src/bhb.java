@@ -1,3 +1,3 @@
 public interface bhb extends cfp {
-   tl N_();
+   tm N_();
 }

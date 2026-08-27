@@ -1,7 +1,7 @@
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
 public class exl extends eyk {
-   private static final tl a = tl.c("addServer.enterIp");
+   private static final tm a = tm.c("addServer.enterIp");
    private esq b;
    private final fjh c;
    private esz k;
@@ -9,7 +9,7 @@ public class exl extends eyk {
    private final eyk m;
 
    public exl(eyk $$0, BooleanConsumer $$1, fjh $$2) {
-      super(tl.c("selectServer.direct"));
+      super(tm.c("selectServer.direct"));
       this.m = $$0;
       this.c = $$2;
       this.l = $$1;
@@ -27,15 +27,15 @@ public class exl extends eyk {
 
    @Override
    protected void aI_() {
-      this.k = new esz(this.i, this.g / 2 - 100, 116, 200, 20, tl.c("addServer.enterIp"));
+      this.k = new esz(this.i, this.g / 2 - 100, 116, 200, 20, tm.c("addServer.enterIp"));
       this.k.l(128);
       this.k.a(this.f.m.aa);
-      this.k.b($$0 -> this.C());
+      this.k.b($$0 -> this.D());
       this.e(this.k);
-      this.b = this.d(esq.a(tl.c("selectServer.select"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
-      this.d(esq.a(tk.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
+      this.b = this.d(esq.a(tm.c("selectServer.select"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
+      this.d(esq.a(tl.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
       this.c(this.k);
-      this.C();
+      this.D();
    }
 
    @Override
@@ -61,7 +61,7 @@ public class exl extends eyk {
       this.f.m.ar();
    }
 
-   private void C() {
+   private void D() {
       this.b.i = fki.b(this.k.a());
    }
 

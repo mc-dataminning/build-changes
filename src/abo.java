@@ -1,16 +1,16 @@
-public class abo implements vd<abd> {
+public class abo implements ve<abd> {
    private final abo.a a;
 
    public abo(abo.a $$0) {
       this.a = $$0;
    }
 
-   public abo(so $$0) {
+   public abo(sp $$0) {
       this.a = $$0.b(abo.a.class);
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
    }
 

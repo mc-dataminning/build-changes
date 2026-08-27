@@ -10,10 +10,10 @@ public class fjf {
    private cps c = cps.e;
    private int d;
    @Nullable
-   private tl e;
+   private tm e;
    @Nullable
-   private ub f;
-   private ug g;
+   private uc f;
+   private uh g;
 
    public fjf(GameProfile $$0, boolean $$1) {
       this.a = $$0;
@@ -39,11 +39,11 @@ public class fjf {
    }
 
    @Nullable
-   public ub b() {
+   public uc b() {
       return this.f;
    }
 
-   public ug c() {
+   public uh c() {
       return this.g;
    }
 
@@ -51,7 +51,7 @@ public class fjf {
       return this.f != null;
    }
 
-   protected void a(ub $$0) {
+   protected void a(uc $$0) {
       this.f = $$0;
       this.g = $$0.a(cbx.b);
    }
@@ -61,8 +61,8 @@ public class fjf {
       this.g = b($$0);
    }
 
-   private static ug b(boolean $$0) {
-      return $$0 ? ug.c : ug.b;
+   private static uh b(boolean $$0) {
+      return $$0 ? uh.c : uh.b;
    }
 
    public cps e() {
@@ -90,12 +90,12 @@ public class fjf {
       return eqv.O().r.I().g(this.a().getName());
    }
 
-   public void a(@Nullable tl $$0) {
+   public void a(@Nullable tm $$0) {
       this.e = $$0;
    }
 
    @Nullable
-   public tl i() {
+   public tm i() {
       return this.e;
    }
 }

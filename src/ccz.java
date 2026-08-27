@@ -15,7 +15,7 @@ public class ccz extends ccb {
    }
 
    @Override
-   public boolean bN() {
+   public boolean bM() {
       return false;
    }
 
@@ -33,7 +33,7 @@ public class ccz extends ccb {
          if (this.v() instanceof bjg $$3) {
             $$4 = $$1.a(this.dM().a(this, $$3), 8.0F);
             if ($$4) {
-               if ($$1.bw()) {
+               if ($$1.bv()) {
                   this.a($$3, $$1);
                } else {
                   $$3.b(5.0F);
@@ -63,12 +63,12 @@ public class ccz extends ccb {
       super.a($$0);
       if (!this.dL().B) {
          this.dL().a(this, this.dq(), this.ds(), this.dw(), 1.0F, false, cpv.a.c);
-         this.al();
+         this.ak();
       }
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return false;
    }
 

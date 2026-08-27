@@ -12,12 +12,12 @@ public class fnh extends fnd {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 10.0;
+      double $$1 = this.cG().a() * 10.0;
       if (Double.isNaN($$1)) {
          $$1 = 1.0;
       }
 
-      $$1 *= 64.0 * cA();
+      $$1 *= 64.0 * cz();
       return $$0 < $$1 * $$1;
    }
 
@@ -52,7 +52,7 @@ public class fnh extends fnd {
       this.bV = this.bW;
       this.eP();
       float $$1;
-      if (this.aB() && !this.ev()) {
+      if (this.aA() && !this.ev()) {
          $$1 = (float)Math.min(0.1, this.do().h());
       } else {
          $$1 = 0.0F;
@@ -67,7 +67,7 @@ public class fnh extends fnd {
    @Override
    public void l(double $$0, double $$1, double $$2) {
       this.cm = new ehn($$0, $$1, $$2);
-      this.cn = this.ah().p() + 1;
+      this.cn = this.ag().p() + 1;
    }
 
    @Override
@@ -75,8 +75,14 @@ public class fnh extends fnd {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       eqv $$1 = eqv.O();
       $$1.l.d().a($$0);
+   }
+
+   @Override
+   public void a(wy $$0) {
+      super.a($$0);
+      this.bn();
    }
 }

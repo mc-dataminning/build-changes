@@ -58,11 +58,11 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
    }
 
    public static class a<T> implements gi<eu<T>, eu.a<T>.a> {
-      public void a(eu.a<T>.a $$0, so $$1) {
+      public void a(eu.a<T>.a $$0, sp $$1) {
          $$1.b($$0.b);
       }
 
-      public eu.a<T>.a a(so $$0) {
+      public eu.a<T>.a a(sp $$0) {
          return new eu.a.a($$0.t());
       }
 

@@ -14,7 +14,7 @@ public class bmo {
    }
 
    public static bmh<bjp> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> btz.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bb());
+      return a($$0, $$0x -> btz.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.ba());
    }
 
    public static bky<bjp> a(float $$0, int $$1, int $$2) {
@@ -26,7 +26,7 @@ public class bmo {
    }
 
    public static bky<bjp> c(float $$0) {
-      return a($$0, bmo::a, biq::bb);
+      return a($$0, bmo::a, biq::ba);
    }
 
    private static bmh<bjp> a(float $$0, Function<bjp, ehn> $$1, Predicate<bjp> $$2) {

@@ -55,14 +55,14 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Variant", this.gd().a());
       $$0.a("FromBucket", this.t());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a(bvy.d.a($$0.h("Variant")));
       this.w($$0.q("FromBucket"));
@@ -76,7 +76,7 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       boolean $$5 = false;
       if ($$2 == bjk.l) {
          return $$3;
@@ -100,34 +100,34 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    }
 
    @Override
-   public void ar() {
-      int $$0 = this.ci();
-      super.ar();
+   public void aq() {
+      int $$0 = this.ch();
+      super.aq();
       if (!this.fT()) {
          this.t($$0);
       }
    }
 
    protected void t(int $$0) {
-      if (this.bw() && !this.ba()) {
+      if (this.bv() && !this.aZ()) {
          this.j($$0 - 1);
-         if (this.ci() == -20) {
+         if (this.ch() == -20) {
             this.j(0);
             this.a(this.dM().r(), 2.0F);
          }
       } else {
-         this.j(this.ch());
+         this.j(this.cg());
       }
    }
 
    @Override
    public void s() {
-      int $$0 = this.ci() + 1800;
-      this.j(Math.min($$0, this.ch()));
+      int $$0 = this.ch() + 1800;
+      this.j(Math.min($$0, this.cg()));
    }
 
    @Override
-   public int ch() {
+   public int cg() {
       return 6000;
    }
 
@@ -154,7 +154,7 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    }
 
    @Override
-   public boolean cz() {
+   public boolean cy() {
       return false;
    }
 
@@ -211,7 +211,7 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("axolotlBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
@@ -252,7 +252,7 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
          && this.dL().z.a(3) == 0
          && ((float)this.dL().z.a(3) < $$1 || $$2 / this.eL() < 0.5F)
          && $$1 < $$2
-         && this.aY()
+         && this.aX()
          && ($$0.d() != null || $$0.c() != null)
          && !this.gj()) {
          this.bz.a(bsh.M, 200);
@@ -267,12 +267,12 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    }
 
    @Override
-   public int Z() {
+   public int Y() {
       return 1;
    }
 
    @Override
-   public int aa() {
+   public int Z() {
       return 1;
    }
 
@@ -284,7 +284,7 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    @Override
    public void l(cjf $$0) {
       but.a(this, $$0);
-      qx $$1 = $$0.w();
+      qy $$1 = $$0.w();
       $$1.a("Variant", this.gd().a());
       $$1.a("Age", this.h());
       bkg<?> $$2 = this.dN();
@@ -294,7 +294,7 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    }
 
    @Override
-   public void c(qx $$0) {
+   public void c(qy $$0) {
       but.a(this, $$0);
       this.a(bvy.d.a($$0.h("Variant")));
       if ($$0.e("Age")) {
@@ -327,9 +327,9 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
          bho $$3 = $$1.ew();
          if ($$3 != null) {
             biq $$4 = $$3.d();
-            if ($$4 != null && $$4.ah() == biu.bt) {
+            if ($$4 != null && $$4.ag() == biu.bt) {
                cbu $$5 = (cbu)$$4;
-               List<cbu> $$6 = $$2.a(cbu.class, $$0.cH().g(20.0));
+               List<cbu> $$6 = $$2.a(cbu.class, $$0.cG().g(20.0));
                if ($$6.contains($$5)) {
                   $$0.f($$5);
                }
@@ -368,16 +368,16 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    @Nullable
    @Override
    protected apd w() {
-      return this.aY() ? ape.az : ape.ay;
-   }
-
-   @Override
-   protected apd aN() {
-      return ape.aA;
+      return this.aX() ? ape.az : ape.ay;
    }
 
    @Override
    protected apd aM() {
+      return ape.aA;
+   }
+
+   @Override
+   protected apd aL() {
       return ape.aB;
    }
 
@@ -397,14 +397,14 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 
    @Override
    public void h(ehn $$0) {
-      if (this.cX() && this.aY()) {
+      if (this.cW() && this.aX()) {
          this.a(this.fe(), $$0);
          this.a(bjm.a, this.do());
          this.f(this.do().a(0.9));
@@ -424,7 +424,7 @@ public class bvy extends bur implements bje, bke<bvy.d>, but {
 
    @Override
    public boolean h(double $$0) {
-      return !this.t() && !this.ad();
+      return !this.t() && !this.ac();
    }
 
    public static boolean a(biu<? extends bjg> $$0, cqk $$1, bjk $$2, gw $$3, asc $$4) {

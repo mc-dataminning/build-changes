@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public class acl implements vd<abd> {
+public class acl implements ve<abd> {
    private final acl.a a;
    @Nullable
    private final aex b;
@@ -18,7 +18,7 @@ public class acl implements vd<abd> {
       return new acl(acl.a.b, null);
    }
 
-   public acl(so $$0) {
+   public acl(sp $$0) {
       this.a = $$0.b(acl.a.class);
       if (this.a == acl.a.a) {
          this.b = $$0.s();
@@ -28,7 +28,7 @@ public class acl implements vd<abd> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       if (this.a == acl.a.a) {
          $$0.a(this.b);

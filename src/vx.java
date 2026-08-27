@@ -1,5 +1,5 @@
-public record vx(aex a) implements vw {
-   @Override
-   public void a(so $$0) {
-   }
+public interface vx {
+   void a(sp var1);
+
+   aex a();
 }

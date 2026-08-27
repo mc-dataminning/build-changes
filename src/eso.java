@@ -8,7 +8,7 @@ public abstract class eso implements ets, euk, ewb, ewg {
    protected int g;
    private int c;
    private int d;
-   private tl e;
+   private tm e;
    protected boolean h;
    public boolean i = true;
    public boolean j = true;
@@ -21,7 +21,7 @@ public abstract class eso implements ets, euk, ewb, ewg {
    private long p;
    private boolean q;
 
-   public eso(int $$0, int $$1, int $$2, int $$3, tl $$4) {
+   public eso(int $$0, int $$1, int $$2, int $$3, tm $$4) {
       this.c = $$0;
       this.d = $$1;
       this.f = $$2;
@@ -80,21 +80,21 @@ public abstract class eso implements ets, euk, ewb, ewg {
       this.o = $$0;
    }
 
-   protected ty aF_() {
+   protected tz aF_() {
       return a(this.m());
    }
 
-   public static ty a(tl $$0) {
-      return tl.a("gui.narrate.button", $$0);
+   public static tz a(tm $$0) {
+      return tm.a("gui.narrate.button", $$0);
    }
 
    protected abstract void b(esf var1, int var2, int var3, float var4);
 
-   protected static void a(esf $$0, esd $$1, tl $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   protected static void a(esf $$0, esd $$1, tm $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   protected static void a(esf $$0, esd $$1, tl $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+   protected static void a(esf $$0, esd $$1, tm $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
       int $$9 = $$1.a($$2);
       int $$10 = ($$5 + $$7 - 9) / 2 + 1;
       int $$11 = $$6 - $$4;
@@ -210,11 +210,11 @@ public abstract class eso implements ets, euk, ewb, ewg {
       this.k = $$0;
    }
 
-   public void b(tl $$0) {
+   public void b(tm $$0) {
       this.e = $$0;
    }
 
-   public tl m() {
+   public tm m() {
       return this.e;
    }
 
@@ -264,9 +264,9 @@ public abstract class eso implements ets, euk, ewb, ewg {
       $$0.a(ewh.a, this.aF_());
       if (this.i) {
          if (this.aD_()) {
-            $$0.a(ewh.d, tl.c("narration.button.usage.focused"));
+            $$0.a(ewh.d, tm.c("narration.button.usage.focused"));
          } else {
-            $$0.a(ewh.d, tl.c("narration.button.usage.hovered"));
+            $$0.a(ewh.d, tm.c("narration.button.usage.hovered"));
          }
       }
    }

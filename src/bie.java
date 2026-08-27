@@ -2,12 +2,12 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public final class bie {
-   public static tl a(bid $$0, float $$1) {
+   public static tm a(bid $$0, float $$1) {
       if ($$0.b()) {
-         return tl.c("effect.duration.infinite");
+         return tm.c("effect.duration.infinite");
       } else {
          int $$2 = arx.d((float)$$0.d() * $$1);
-         return tl.b(asq.a($$2));
+         return tm.b(asq.a($$2));
       }
    }
 

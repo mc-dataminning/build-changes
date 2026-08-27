@@ -164,7 +164,7 @@ public class alw implements AutoCloseable {
                   return ali.b($$1);
                } else {
                   JsonArray $$7 = aro.v($$4, "hashes");
-                  to $$8 = this.a($$1, $$7, $$2);
+                  tp $$8 = this.a($$1, $$7, $$2);
                   return new ali($$1, $$8);
                }
             }
@@ -175,13 +175,13 @@ public class alw implements AutoCloseable {
       }, $$3);
    }
 
-   private to a(String $$0, JsonArray $$1, alw.a $$2) {
+   private tp a(String $$0, JsonArray $$1, alw.a $$2) {
       if ($$1.isEmpty()) {
-         return to.c;
+         return tp.c;
       } else if ($$2.shouldIgnore($$0, $$1.size())) {
-         return to.b;
+         return tp.b;
       } else {
-         to $$3 = new to($$0.length());
+         tp $$3 = new tp($$0.length());
 
          for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
             $$3.a($$1.get($$4).getAsInt());

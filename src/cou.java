@@ -9,8 +9,8 @@ public class cou extends ArrayList<cot> {
       super($$0);
    }
 
-   public cou(qx $$0) {
-      rd $$1 = $$0.c("Recipes", 10);
+   public cou(qy $$0) {
+      re $$1 = $$0.c("Recipes", 10);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
          this.add(new cot($$1.a($$2)));
@@ -34,7 +34,7 @@ public class cou extends ArrayList<cot> {
       }
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this, ($$0x, $$1) -> {
          $$0x.a($$1.a());
          $$0x.a($$1.d());
@@ -49,7 +49,7 @@ public class cou extends ArrayList<cot> {
       });
    }
 
-   public static cou b(so $$0) {
+   public static cou b(sp $$0) {
       return $$0.a(cou::new, $$0x -> {
          cjf $$1 = $$0x.q();
          cjf $$2 = $$0x.q();
@@ -71,9 +71,9 @@ public class cou extends ArrayList<cot> {
       });
    }
 
-   public qx a() {
-      qx $$0 = new qx();
-      rd $$1 = new rd();
+   public qy a() {
+      qy $$0 = new qy();
+      re $$1 = new re();
 
       for (int $$2 = 0; $$2 < this.size(); $$2++) {
          cot $$3 = this.get($$2);

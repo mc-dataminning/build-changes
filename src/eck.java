@@ -33,7 +33,7 @@ public class eck implements ecl, ecm {
    private final int q;
    private boolean r;
    @Nullable
-   private qx s;
+   private qy s;
    private final int t;
    private int u;
    private boolean v;
@@ -45,7 +45,7 @@ public class eck implements ecl, ecm {
    private dha.c B;
    private div.a C;
    @Nullable
-   private qx D;
+   private qy D;
    private int E;
    private int F;
    @Nullable
@@ -58,7 +58,7 @@ public class eck implements ecl, ecm {
    private eck(
       @Nullable DataFixer $$0,
       int $$1,
-      @Nullable qx $$2,
+      @Nullable qy $$2,
       boolean $$3,
       int $$4,
       int $$5,
@@ -81,7 +81,7 @@ public class eck implements ecl, ecm {
       Set<String> $$22,
       Set<String> $$23,
       eha<MinecraftServer> $$24,
-      @Nullable qx $$25,
+      @Nullable qy $$25,
       div.a $$26,
       cpz $$27,
       dlq $$28,
@@ -157,7 +157,7 @@ public class eck implements ecl, ecm {
       );
    }
 
-   public static <T> eck a(Dynamic<T> $$0, DataFixer $$1, int $$2, @Nullable qx $$3, cpz $$4, eci $$5, eck.a $$6, dlq $$7, Lifecycle $$8) {
+   public static <T> eck a(Dynamic<T> $$0, DataFixer $$1, int $$2, @Nullable qy $$3, cpz $$4, eci $$5, eck.a $$6, dlq $$7, Lifecycle $$8) {
       long $$9 = $$0.get("Time").asLong(0L);
       return new eck(
          $$1,
@@ -185,7 +185,7 @@ public class eck implements ecl, ecm {
          $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
          $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
          new eha<>(egz.a, $$0.get("ScheduledEvents").asStream()),
-         (qx)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
+         (qy)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
          $$0.get("DragonFight").read(div.a.a).resultOrPartial(e::error).orElse(div.a.b),
          $$4,
          $$7,
@@ -195,32 +195,32 @@ public class eck implements ecl, ecm {
    }
 
    @Override
-   public qx a(hu $$0, @Nullable qx $$1) {
+   public qy a(hu $$0, @Nullable qy $$1) {
       this.N();
       if ($$1 == null) {
          $$1 = this.s;
       }
 
-      qx $$2 = new qx();
+      qy $$2 = new qy();
       this.a($$0, $$2, $$1);
       return $$2;
    }
 
-   private void a(hu $$0, qx $$1, @Nullable qx $$2) {
+   private void a(hu $$0, qy $$1, @Nullable qy $$2) {
       $$1.a("ServerBrands", a(this.H));
       $$1.a("WasModded", this.I);
       if (!this.J.isEmpty()) {
          $$1.a("removed_features", a(this.J));
       }
 
-      qx $$3 = new qx();
+      qy $$3 = new qy();
       $$3.a("Name", aa.b().c());
       $$3.a("Id", aa.b().d().c());
       $$3.a("Snapshot", !aa.b().g());
       $$3.a("Series", aa.b().d().b());
       $$1.a("Version", $$3);
-      rj.g($$1);
-      DynamicOps<rq> $$4 = aev.a(ri.a, $$0);
+      rk.g($$1);
+      DynamicOps<rr> $$4 = aev.a(rj.a, $$0);
       dlo.a($$4, this.g, $$0).resultOrPartial(ac.a("WorldGenSettings: ", e::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
       $$1.a("GameType", this.f.b().a());
       $$1.a("SpawnX", this.j);
@@ -244,13 +244,13 @@ public class eck implements ecl, ecm {
       $$1.a("Difficulty", (byte)this.f.d().a());
       $$1.a("DifficultyLocked", this.A);
       $$1.a("GameRules", this.f.f().a());
-      $$1.a("DragonFight", ac.a(div.a.a.encodeStart(ri.a, this.C), IllegalStateException::new));
+      $$1.a("DragonFight", ac.a(div.a.a.encodeStart(rj.a, this.C), IllegalStateException::new));
       if ($$2 != null) {
          $$1.a("Player", $$2);
       }
 
-      DataResult<rq> $$5 = cqo.b.encodeStart(ri.a, this.f.g());
-      $$5.get().ifLeft($$1x -> $$1.a((qx)$$1x)).ifRight($$0x -> e.warn("Failed to encode configuration {}", $$0x.message()));
+      DataResult<rr> $$5 = cqo.b.encodeStart(rj.a, this.f.g());
+      $$5.get().ifLeft($$1x -> $$1.a((qy)$$1x)).ifRight($$0x -> e.warn("Failed to encode configuration {}", $$0x.message()));
       if (this.D != null) {
          $$1.a("CustomBossEvents", this.D);
       }
@@ -263,9 +263,9 @@ public class eck implements ecl, ecm {
       }
    }
 
-   private static rd a(Set<String> $$0) {
-      rd $$1 = new rd();
-      $$0.stream().map(ro::a).forEach($$1::add);
+   private static re a(Set<String> $$0) {
+      re $$1 = new re();
+      $$0.stream().map(rp::a).forEach($$1::add);
       return $$1;
    }
 
@@ -314,7 +314,7 @@ public class eck implements ecl, ecm {
    }
 
    @Override
-   public qx y() {
+   public qy y() {
       this.N();
       return this.s;
    }
@@ -535,12 +535,12 @@ public class eck implements ecl, ecm {
 
    @Nullable
    @Override
-   public qx G() {
+   public qy G() {
       return this.D;
    }
 
    @Override
-   public void a(@Nullable qx $$0) {
+   public void a(@Nullable qy $$0) {
       this.D = $$0;
    }
 

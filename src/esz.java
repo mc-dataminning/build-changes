@@ -29,20 +29,20 @@ public class esz extends eso implements ets {
    @Nullable
    private Consumer<String> B;
    private Predicate<String> C = Objects::nonNull;
-   private BiFunction<String, Integer, ark> D = ($$0x, $$1x) -> ark.forward($$0x, uh.a);
+   private BiFunction<String, Integer, ark> D = ($$0x, $$1x) -> ark.forward($$0x, ui.a);
    @Nullable
-   private tl E;
+   private tm E;
    private long F = ac.b();
 
-   public esz(esd $$0, int $$1, int $$2, tl $$3) {
+   public esz(esd $$0, int $$1, int $$2, tm $$3) {
       this($$0, 0, 0, $$1, $$2, $$3);
    }
 
-   public esz(esd $$0, int $$1, int $$2, int $$3, int $$4, tl $$5) {
+   public esz(esd $$0, int $$1, int $$2, int $$3, int $$4, tm $$5) {
       this($$0, $$1, $$2, $$3, $$4, null, $$5);
    }
 
-   public esz(esd $$0, int $$1, int $$2, int $$3, int $$4, @Nullable esz $$5, tl $$6) {
+   public esz(esd $$0, int $$1, int $$2, int $$3, int $$4, @Nullable esz $$5, tm $$6) {
       super($$1, $$2, $$3, $$4, $$6);
       this.o = $$0;
       if ($$5 != null) {
@@ -59,9 +59,9 @@ public class esz extends eso implements ets {
    }
 
    @Override
-   protected ty aF_() {
-      tl $$0 = this.m();
-      return tl.a("gui.narrate.editBox", $$0, this.p);
+   protected tz aF_() {
+      tm $$0 = this.m();
+      return tm.a("gui.narrate.editBox", $$0, this.p);
    }
 
    public void a(String $$0) {
@@ -525,7 +525,7 @@ public class esz extends eso implements ets {
       $$0.a(ewh.a, this.aF_());
    }
 
-   public void c(tl $$0) {
+   public void c(tm $$0) {
       this.E = $$0;
    }
 }

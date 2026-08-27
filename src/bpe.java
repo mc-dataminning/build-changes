@@ -84,14 +84,14 @@ public class bpe implements bpa {
          gw $$14 = this.d.dl();
          dfj $$15 = this.d.dL().a_($$14);
          eig $$16 = $$15.k(this.d.dL(), $$14);
-         if ($$11 > (double)this.d.dF() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dg())
+         if ($$11 > (double)this.d.dF() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.df())
             || !$$16.c() && this.d.ds() < $$16.c(hc.a.b) + (double)$$14.v() && !$$15.a(apt.p) && !$$15.a(apt.S)) {
             this.d.K().a();
             this.k = bpe.a.d;
          }
       } else if (this.k == bpe.a.d) {
          this.d.w((float)(this.h * this.d.b(bkm.d)));
-         if (this.d.aB()) {
+         if (this.d.aA()) {
             this.k = bpe.a.a;
          }
       } else {

@@ -1,6 +1,3 @@
-public interface sj extends su {
-   @Override
-   default ve a() {
-      return ve.b;
-   }
+public interface sj extends sv {
+   void a(ady var1);
 }

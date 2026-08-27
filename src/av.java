@@ -83,7 +83,7 @@ public record av(Optional<aqi<csv>> b, Optional<hk<csv>> c, Optional<da> d, Opti
          return this;
       }
 
-      public av.a a(qx $$0) {
+      public av.a a(qy $$0) {
          this.d = Optional.of(new cn($$0));
          return this;
       }

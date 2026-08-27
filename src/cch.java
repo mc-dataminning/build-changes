@@ -35,7 +35,7 @@ public class cch extends ccm implements ccj {
 
    public cch(cpv $$0, cjf $$1, bjg $$2) {
       this($$0, $$2, $$2.dq(), $$2.ds(), $$2.dw(), $$1);
-      this.an.b(c, OptionalInt.of($$2.ai()));
+      this.an.b(c, OptionalInt.of($$2.ah()));
       this.g = $$2;
    }
 
@@ -82,7 +82,7 @@ public class cch extends ccm implements ccj {
          if (this.g != null) {
             ehn $$4;
             if (this.g.fv()) {
-               ehn $$0 = this.g.bF();
+               ehn $$0 = this.g.bE();
                double $$1 = 1.5;
                double $$2 = 0.1;
                ehn $$3 = this.g.do();
@@ -113,7 +113,7 @@ public class cch extends ccm implements ccj {
       }
 
       this.H();
-      if (this.e == 0 && !this.aT()) {
+      if (this.e == 0 && !this.aS()) {
          this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.hI, apf.i, 3.0F, 1.0F);
       }
 
@@ -131,7 +131,7 @@ public class cch extends ccm implements ccj {
       this.dL().a(this, (byte)17);
       this.a(djt.w, this.v());
       this.x();
-      this.al();
+      this.ak();
    }
 
    @Override
@@ -155,16 +155,16 @@ public class cch extends ccm implements ccj {
 
    private boolean w() {
       cjf $$0 = this.an.b(b);
-      qx $$1 = $$0.b() ? null : $$0.b("Fireworks");
-      rd $$2 = $$1 != null ? $$1.c("Explosions", 10) : null;
+      qy $$1 = $$0.b() ? null : $$0.b("Fireworks");
+      re $$2 = $$1 != null ? $$1.c("Explosions", 10) : null;
       return $$2 != null && !$$2.isEmpty();
    }
 
    private void x() {
       float $$0 = 0.0F;
       cjf $$1 = this.an.b(b);
-      qx $$2 = $$1.b() ? null : $$1.b("Fireworks");
-      rd $$3 = $$2 != null ? $$2.c("Explosions", 10) : null;
+      qy $$2 = $$1.b() ? null : $$1.b("Fireworks");
+      re $$3 = $$2 != null ? $$2.c("Explosions", 10) : null;
       if ($$3 != null && !$$3.isEmpty()) {
          $$0 = 5.0F + (float)($$3.size() * 2);
       }
@@ -177,7 +177,7 @@ public class cch extends ccm implements ccj {
          double $$4 = 5.0;
          ehn $$5 = this.dj();
 
-         for (bjg $$7 : this.dL().a(bjg.class, this.cH().g(5.0))) {
+         for (bjg $$7 : this.dL().a(bjg.class, this.cG().g(5.0))) {
             if ($$7 != this.g && !(this.f($$7) > 25.0)) {
                boolean $$8 = false;
 
@@ -217,7 +217,7 @@ public class cch extends ccm implements ccj {
             }
          } else {
             cjf $$2 = this.an.b(b);
-            qx $$3 = $$2.b() ? null : $$2.b("Fireworks");
+            qy $$3 = $$2.b() ? null : $$2.b("Fireworks");
             ehn $$4 = this.do();
             this.dL().a(this.dq(), this.ds(), this.dw(), $$4.c, $$4.d, $$4.e, $$3);
          }
@@ -227,20 +227,20 @@ public class cch extends ccm implements ccj {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Life", this.e);
       $$0.a("LifeTime", this.f);
       cjf $$1 = this.an.b(b);
       if (!$$1.b()) {
-         $$0.a("FireworksItem", $$1.b(new qx()));
+         $$0.a("FireworksItem", $$1.b(new qy()));
       }
 
       $$0.a("ShotAtAngle", this.an.b(d));
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.e = $$0.h("Life");
       this.f = $$0.h("LifeTime");
@@ -261,7 +261,7 @@ public class cch extends ccm implements ccj {
    }
 
    @Override
-   public boolean cq() {
+   public boolean cp() {
       return false;
    }
 }

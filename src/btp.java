@@ -21,7 +21,7 @@ public class btp extends btf {
    }
 
    private boolean e(bjg $$0, bjg $$1) {
-      float $$2 = (Float)a.get($$1.ah());
+      float $$2 = (Float)a.get($$1.ag());
       return $$1.f((biq)$$0) <= (double)($$2 * $$2);
    }
 
@@ -31,6 +31,6 @@ public class btp extends btf {
    }
 
    private boolean b(bjg $$0) {
-      return a.containsKey($$0.ah());
+      return a.containsKey($$0.ag());
    }
 }

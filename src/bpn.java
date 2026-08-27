@@ -36,7 +36,7 @@ public class bpn extends bqb {
 
    @Override
    public boolean b() {
-      return this.c.bw() && this.c.gh() && this.f < 60 && !this.c.ga();
+      return this.c.bv() && this.c.gh() && this.f < 60 && !this.c.ga();
    }
 
    @Override
@@ -47,7 +47,7 @@ public class bpn extends bqb {
 
    @Override
    public void e() {
-      this.a.G().a(this.c, 10.0F, (float)this.a.Z());
+      this.a.G().a(this.c, 10.0F, (float)this.a.Y());
       this.a.L().a(this.c, this.g);
       this.f++;
       if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
@@ -57,7 +57,7 @@ public class bpn extends bqb {
 
    @Nullable
    private bur h() {
-      List<? extends bur> $$0 = this.b.a(this.e, d, this.a, this.a.cH().g(8.0));
+      List<? extends bur> $$0 = this.b.a(this.e, d, this.a, this.a.cG().g(8.0));
       double $$1 = Double.MAX_VALUE;
       bur $$2 = null;
 

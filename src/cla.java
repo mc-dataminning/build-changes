@@ -25,13 +25,13 @@ public class cla extends cja {
       return bgz.a($$3, $$0.w_());
    }
 
-   public static boolean a(@Nullable qx $$0) {
+   public static boolean a(@Nullable qy $$0) {
       if ($$0 == null) {
          return false;
       } else if (!$$0.b("pages", 9)) {
          return false;
       } else {
-         rd $$1 = $$0.c("pages", 8);
+         re $$1 = $$0.c("pages", 8);
 
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
             String $$3 = $$1.j($$2);

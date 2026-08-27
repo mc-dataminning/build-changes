@@ -12,7 +12,7 @@ public class ail {
 
    private static int a(dt $$0, int $$1) {
       $$0.l().c($$1);
-      $$0.a(() -> tl.a("commands.setidletimeout.success", $$1), true);
+      $$0.a(() -> tm.a("commands.setidletimeout.success", $$1), true);
       return $$1;
    }
 }

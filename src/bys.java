@@ -51,19 +51,19 @@ public class bys extends bzi {
    }
 
    @Override
-   public float bn() {
+   public float bm() {
       return 1.0F;
    }
 
    @Override
    public void b_() {
-      if (!this.aB() && this.do().d < 0.0) {
+      if (!this.aA() && this.do().d < 0.0) {
          this.f(this.do().d(1.0, 0.6, 1.0));
       }
 
       if (this.dL().B) {
-         if (this.ag.a(24) == 0 && !this.aT()) {
-            this.dL().a(this.dq() + 0.5, this.ds() + 0.5, this.dw() + 0.5, ape.bS, this.db(), 1.0F + this.ag.i(), this.ag.i() * 0.7F + 0.3F, false);
+         if (this.ag.a(24) == 0 && !this.aS()) {
+            this.dL().a(this.dq() + 0.5, this.ds() + 0.5, this.dw() + 0.5, ape.bS, this.da(), 1.0F + this.ag.i(), this.ag.i() * 0.7F + 0.3F, false);
          }
 
          for (int $$0 = 0; $$0 < 2; $$0++) {
@@ -80,7 +80,7 @@ public class bys extends bzi {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.c--;
       if (this.c <= 0) {
          this.c = 100;
@@ -94,11 +94,11 @@ public class bys extends bzi {
          this.au = true;
       }
 
-      super.Y();
+      super.X();
    }
 
    @Override
-   public boolean bN() {
+   public boolean bM() {
       return this.t();
    }
 
@@ -131,7 +131,7 @@ public class bys extends bzi {
       @Override
       public boolean a() {
          bjg $$0 = this.a.q();
-         return $$0 != null && $$0.bw() && this.a.c($$0);
+         return $$0 != null && $$0.bv() && this.a.c($$0);
       }
 
       @Override
@@ -193,7 +193,7 @@ public class bys extends bzi {
 
                   if (this.b > 1) {
                      double $$6 = Math.sqrt(Math.sqrt($$2)) * 0.5;
-                     if (!this.a.aT()) {
+                     if (!this.a.aS()) {
                         this.a.dL().a(null, 1018, this.a.dl(), 0);
                      }
 

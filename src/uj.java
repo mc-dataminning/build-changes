@@ -1,91 +1,73 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public final class uj {
-   private static final String b = "#";
-   public static final Codec<uj> a = Codec.STRING.comapFlatMap($$0 -> {
-      uj $$1 = a($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "String is not a valid color name or hex color code");
-   }, uj::b);
-   private static final Map<n, uj> c = Stream.of(n.values())
-      .filter(n::e)
-      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new uj($$0.f(), $$0.g())));
-   private static final Map<String, uj> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
-   private final int e;
-   @Nullable
-   private final String f;
+public class uj {
+   private final String a;
+   private final List<ui> b;
+   private final Int2IntFunction c;
 
-   private uj(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private uj(String $$0, List<ui> $$1, Int2IntFunction $$2) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = $$2;
    }
 
-   private uj(int $$0) {
-      this.e = $$0;
-      this.f = null;
+   public String a() {
+      return this.a;
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public String b() {
-      return this.f != null ? this.f : this.c();
-   }
-
-   private String c() {
-      return String.format(Locale.ROOT, "#%06X", this.e);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         uj $$1 = (uj)$$0;
-         return this.e == $$1.e;
+   public List<ark> a(int $$0, int $$1, boolean $$2) {
+      if ($$1 == 0) {
+         return ImmutableList.of();
       } else {
-         return false;
-      }
-   }
+         List<ark> $$3 = Lists.newArrayList();
+         ui $$4 = this.b.get($$0);
+         int $$5 = $$0;
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.e, this.f);
-   }
-
-   @Override
-   public String toString() {
-      return this.f != null ? this.f : this.c();
-   }
-
-   @Nullable
-   public static uj a(n $$0) {
-      return c.get($$0);
-   }
-
-   public static uj a(int $$0) {
-      return new uj($$0);
-   }
-
-   @Nullable
-   public static uj a(String $$0) {
-      if ($$0.startsWith("#")) {
-         try {
-            int $$1 = Integer.parseInt($$0.substring(1), 16);
-            return a($$1);
-         } catch (NumberFormatException var2) {
-            return null;
+         for (int $$6 = 1; $$6 < $$1; $$6++) {
+            int $$7 = $$0 + $$6;
+            ui $$8 = this.b.get($$7);
+            if (!$$8.equals($$4)) {
+               String $$9 = this.a.substring($$5, $$7);
+               $$3.add($$2 ? ark.backward($$9, $$4, this.c) : ark.forward($$9, $$4));
+               $$4 = $$8;
+               $$5 = $$7;
+            }
          }
-      } else {
-         return d.get($$0);
+
+         if ($$5 < $$0 + $$1) {
+            String $$10 = this.a.substring($$5, $$0 + $$1);
+            $$3.add($$2 ? ark.backward($$10, $$4, this.c) : ark.forward($$10, $$4));
+         }
+
+         return $$2 ? Lists.reverse($$3) : $$3;
       }
+   }
+
+   public static uj a(tq $$0) {
+      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   }
+
+   public static uj a(tq $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
+      StringBuilder $$3 = new StringBuilder();
+      List<ui> $$4 = Lists.newArrayList();
+      $$0.a(($$2x, $$3x) -> {
+         aso.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+            $$3.appendCodePoint($$4x);
+            int $$5 = Character.charCount($$4x);
+
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               $$4.add($$3xx);
+            }
+
+            return true;
+         });
+         return Optional.empty();
+      }, ui.a);
+      return new uj($$2.apply($$3.toString()), $$4, $$1);
    }
 }

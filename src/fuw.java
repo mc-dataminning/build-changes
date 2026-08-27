@@ -27,9 +27,9 @@ public class fuw extends fty<bji, fgh<bji>> {
    }
 
    public aex b(bji $$0) {
-      aex $$1 = a.get($$0.ah());
+      aex $$1 = a.get($$0.ag());
       if ($$1 == null) {
-         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ah());
+         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ag());
       } else {
          return $$1;
       }

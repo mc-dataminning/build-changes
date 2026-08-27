@@ -92,7 +92,7 @@ public class apo {
    }
 
    private static <T> apn<T> a(String $$0, ht<T> $$1) {
-      tl $$2 = tl.c("stat_type.minecraft." + $$0);
+      tm $$2 = tm.c("stat_type.minecraft." + $$0);
       return ht.a(jd.y, $$0, new apn<>($$1, $$2));
    }
 }

@@ -29,7 +29,7 @@ public class bpx extends bqb {
       } else {
          this.d = this.a(this.b);
          Predicate<buq> $$0 = $$0x -> $$0x.gi() || !$$0x.gg();
-         List<? extends buq> $$1 = this.b.dL().a((Class<? extends buq>)this.b.getClass(), this.b.cH().c(8.0, 8.0, 8.0), $$0);
+         List<? extends buq> $$1 = this.b.dL().a((Class<? extends buq>)this.b.getClass(), this.b.cG().c(8.0, 8.0, 8.0), $$0);
          buq $$2 = (buq)DataFixUtils.orElse($$1.stream().filter(buq::gi).findAny(), this.b);
          $$2.a($$1.stream().filter($$0x -> !$$0x.gg()));
          return this.b.gg();

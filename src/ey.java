@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ey implements ArgumentType<Integer> {
    private static final Collection<String> a = Arrays.asList("container.5", "12", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("slot.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("slot.unknown", $$0));
    private static final Map<String, Integer> c = ac.a(Maps.newHashMap(), $$0 -> {
       for (int $$1 = 0; $$1 < 54; $$1++) {
          $$0.put("container." + $$1, $$1);

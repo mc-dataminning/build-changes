@@ -8,7 +8,7 @@ public class eom extends gfb {
    private static final gfc b = new gfc(Duration.ofSeconds(5L));
    private epv c;
    private final eyk y;
-   private volatile tl z = tk.a;
+   private volatile tm z = tl.a;
    private final ewd A = ewd.d();
    @Nullable
    private etf B;
@@ -44,7 +44,7 @@ public class eom extends gfb {
       this.A.c().b();
       this.B = new etf(this.i, this.z);
       this.A.a(this.B, $$0 -> $$0.e(30));
-      this.A.a(esq.a(tk.e, $$0 -> this.e()).a());
+      this.A.a(esq.a(tl.e, $$0 -> this.e()).a());
       this.A.a($$1 -> {
          eso var10000 = this.d($$1);
       });
@@ -62,7 +62,7 @@ public class eom extends gfb {
       this.f.a(this.y);
    }
 
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       if (this.B != null) {
          this.B.b($$0);
       }

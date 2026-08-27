@@ -2,7 +2,7 @@ import com.google.common.collect.Lists;
 import java.util.Collection;
 import java.util.List;
 
-public class aax implements vd<ww> {
+public class aax implements ve<wx> {
    private final int a;
    private final List<aax.a> b;
 
@@ -15,19 +15,19 @@ public class aax implements vd<ww> {
       }
    }
 
-   public aax(so $$0) {
+   public aax(sp $$0) {
       this.a = $$0.m();
-      this.b = $$0.a((so.a<aax.a>)($$0x -> {
+      this.b = $$0.a((sp.a<aax.a>)($$0x -> {
          aex $$1 = $$0x.s();
          bkh $$2 = jd.v.a($$1);
          double $$3 = $$0x.readDouble();
-         List<bkk> $$4 = $$0x.a((so.a<bkk>)($$0xx -> new bkk($$0xx.o(), "Unknown synced attribute modifier", $$0xx.readDouble(), bkk.a.a($$0xx.readByte()))));
+         List<bkk> $$4 = $$0x.a((sp.a<bkk>)($$0xx -> new bkk($$0xx.o(), "Unknown synced attribute modifier", $$0xx.readDouble(), bkk.a.a($$0xx.readByte()))));
          return new aax.a($$2, $$3, $$4);
       }));
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b, ($$0x, $$1) -> {
          $$0x.a(jd.v.b($$1.a()));
@@ -40,7 +40,7 @@ public class aax implements vd<ww> {
       });
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

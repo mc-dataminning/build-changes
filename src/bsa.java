@@ -17,7 +17,7 @@ public class bsa<T extends bji & bjn> extends bqb {
    }
 
    private boolean h() {
-      return this.b.eg() != null && this.b.eg().ah() == biu.bt && this.b.eh() > this.d;
+      return this.b.eg() != null && this.b.eg().ag() == biu.bt && this.b.eh() > this.d;
    }
 
    @Override

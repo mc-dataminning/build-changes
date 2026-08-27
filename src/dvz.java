@@ -58,7 +58,7 @@ public interface dvz {
    dvz ac = a(dxi.a::new, "NeFos");
    dvz ad = a(dve::new, "jigsaw");
 
-   dvm load(dvy var1, qx var2);
+   dvm load(dvy var1, qy var2);
 
    private static dvz a(dvz $$0, String $$1) {
       return ht.a(jd.T, $$1.toLowerCase(Locale.ROOT), $$0);
@@ -73,19 +73,19 @@ public interface dvz {
    }
 
    public interface a extends dvz {
-      dvm load(qx var1);
+      dvm load(qy var1);
 
       @Override
-      default dvm load(dvy $$0, qx $$1) {
+      default dvm load(dvy $$0, qy $$1) {
          return this.load($$1);
       }
    }
 
    public interface b extends dvz {
-      dvm load(dzc var1, qx var2);
+      dvm load(dzc var1, qy var2);
 
       @Override
-      default dvm load(dvy $$0, qx $$1) {
+      default dvm load(dvy $$0, qy $$1) {
          return this.load($$0.c(), $$1);
       }
    }

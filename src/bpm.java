@@ -10,7 +10,7 @@ public class bpm extends bqb {
 
    @Override
    public boolean a() {
-      return this.a.ci() < 140;
+      return this.a.ch() < 140;
    }
 
    @Override

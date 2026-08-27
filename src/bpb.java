@@ -26,7 +26,7 @@ public class bpb extends bpe {
          float $$4 = (float)(arx.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
          this.d.r(this.a(this.d.dB(), $$4, 90.0F));
          float $$5;
-         if (this.d.aB()) {
+         if (this.d.aA()) {
             $$5 = (float)(this.h * this.d.b(bkm.d));
          } else {
             $$5 = (float)(this.h * this.d.b(bkm.e));

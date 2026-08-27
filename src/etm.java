@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public abstract class etm<E extends etm.a<E>> extends esl<E> {
-   private static final tl a = tl.c("narration.selection.usage");
+   private static final tm a = tm.c("narration.selection.usage");
 
    public etm(eqv $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
       super($$0, $$1, $$2, $$3, $$4, $$5);
@@ -47,7 +47,7 @@ public abstract class etm<E extends etm.a<E>> extends esl<E> {
    }
 
    public abstract static class a<E extends etm.a<E>> extends esl.a<E> implements ewj {
-      public abstract tl a();
+      public abstract tm a();
 
       @Override
       public void b(ewi $$0) {

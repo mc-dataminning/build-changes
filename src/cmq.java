@@ -87,7 +87,7 @@ public class cmq implements clz {
          return x;
       }
 
-      public cmq b(so $$0) {
+      public cmq b(sp $$0) {
          String $$1 = $$0.r();
          cly $$2 = $$0.b(cly.class);
          int $$3 = $$0.m();
@@ -101,7 +101,7 @@ public class cmq implements clz {
          return new cmq($$1, $$2, $$6, $$4);
       }
 
-      public void a(so $$0, cmq $$1) {
+      public void a(sp $$0, cmq $$1) {
          $$0.a($$1.a);
          $$0.a($$1.b);
          $$0.c($$1.d.size());

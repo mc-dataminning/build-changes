@@ -139,7 +139,7 @@ public class dcz extends dcv {
       }
    }
 
-   private boolean d(qx $$0) {
+   private boolean d(qy $$0) {
       if ($$0.b("LootTable", 8)) {
          this.n = new aex($$0.l("LootTable"));
          this.r = $$0.i("LootTableSeed");
@@ -149,7 +149,7 @@ public class dcz extends dcv {
       }
    }
 
-   private boolean e(qx $$0) {
+   private boolean e(qy $$0) {
       if (this.n == null) {
          return false;
       } else {
@@ -163,13 +163,13 @@ public class dcz extends dcv {
    }
 
    @Override
-   public qx as_() {
-      qx $$0 = super.as_();
+   public qy as_() {
+      qy $$0 = super.as_();
       if (this.m != null) {
          $$0.a("hit_direction", this.m.ordinal());
       }
 
-      $$0.a("item", this.l.b(new qx()));
+      $$0.a("item", this.l.b(new qy()));
       return $$0;
    }
 
@@ -178,7 +178,7 @@ public class dcz extends dcv {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       if (!this.d($$0) && $$0.e("item")) {
          this.l = cjf.a($$0.p("item"));
       }
@@ -189,9 +189,9 @@ public class dcz extends dcv {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       if (!this.e($$0)) {
-         $$0.a("item", this.l.b(new qx()));
+         $$0.a("item", this.l.b(new qy()));
       }
    }
 

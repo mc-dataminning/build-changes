@@ -6,8 +6,8 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ahq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.pardonip.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.pardonip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.pardonip.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -29,7 +29,7 @@ public class ahq {
             throw b.create();
          } else {
             $$2.c($$1);
-            $$0.a(() -> tl.a("commands.pardonip.success", $$1), true);
+            $$0.a(() -> tm.a("commands.pardonip.success", $$1), true);
             return 1;
          }
       }

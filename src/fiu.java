@@ -14,11 +14,11 @@ import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class fiu implements vg {
-   private static final tl g = tl.c("disconnect.lost");
+public abstract class fiu implements vh {
+   private static final tm g = tm.c("disconnect.lost");
    private static final Logger h = LogUtils.getLogger();
    protected final eqv a;
-   protected final sm b;
+   protected final sn b;
    @Nullable
    protected final fjh c;
    @Nullable
@@ -28,7 +28,7 @@ public abstract class fiu implements vg {
    protected final eyk f;
    private final List<fiu.a> i = new ArrayList<>();
 
-   protected fiu(eqv $$0, sm $$1, fjb $$2) {
+   protected fiu(eqv $$0, sn $$1, fjb $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2.f();
@@ -38,22 +38,22 @@ public abstract class fiu implements vg {
    }
 
    @Override
-   public void a(vj $$0) {
-      this.a(new vq($$0.a()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
-   }
-
-   @Override
    public void a(vk $$0) {
-      vf.a($$0, this, this.a);
-      this.b(new vr($$0.a()));
+      this.a(new vr($$0.a()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
    }
 
    @Override
-   public void a(vh $$0) {
-      vw $$1 = $$0.a();
-      if (!($$1 instanceof vx)) {
-         vf.a($$0, this, this.a);
-         if ($$1 instanceof vv $$2) {
+   public void a(vl $$0) {
+      vg.a($$0, this, this.a);
+      this.b(new vs($$0.a()));
+   }
+
+   @Override
+   public void a(vi $$0) {
+      vx $$1 = $$0.a();
+      if (!($$1 instanceof vy)) {
+         vg.a($$0, this, this.a);
+         if ($$1 instanceof vw $$2) {
             this.d = $$2.b();
             this.e.a($$2.b());
          } else {
@@ -62,25 +62,25 @@ public abstract class fiu implements vg {
       }
    }
 
-   protected abstract void a(vw var1);
+   protected abstract void a(vx var1);
 
    protected abstract hu.b f();
 
    @Override
-   public void a(vl $$0) {
+   public void a(vm $$0) {
       URL $$1 = a($$0.a());
       if ($$1 == null) {
-         this.a(vs.a.c);
+         this.a(vt.a.c);
       } else {
          String $$2 = $$0.d();
          boolean $$3 = $$0.e();
          if (this.c != null && this.c.b() == fjh.a.a) {
-            this.a(vs.a.d);
+            this.a(vt.a.d);
             this.a(this.a.ac().a($$1, $$2, true));
          } else if (this.c != null && this.c.b() != fjh.a.c && (!$$3 || this.c.b() != fjh.a.b)) {
-            this.a(vs.a.b);
+            this.a(vt.a.b);
             if ($$3) {
-               this.b.a(tl.c("multiplayer.requiredTexturePrompt.disconnect"));
+               this.b.a(tm.c("multiplayer.requiredTexturePrompt.disconnect"));
             }
          } else {
             this.a.execute(() -> this.a($$1, $$2, $$3, $$0.f()));
@@ -88,7 +88,7 @@ public abstract class fiu implements vg {
       }
    }
 
-   private void a(URL $$0, String $$1, boolean $$2, @Nullable tl $$3) {
+   private void a(URL $$0, String $$1, boolean $$2, @Nullable tm $$3) {
       eyk $$4 = this.a.y;
       this.a
          .a(
@@ -100,12 +100,12 @@ public abstract class fiu implements vg {
                         this.c.a(fjh.a.a);
                      }
 
-                     this.a(vs.a.d);
+                     this.a(vt.a.d);
                      this.a(this.a.ac().a($$0, $$1, true));
                   } else {
-                     this.a(vs.a.b);
+                     this.a(vt.a.b);
                      if ($$2) {
-                        this.b.a(tl.c("multiplayer.requiredTexturePrompt.disconnect"));
+                        this.b.a(tm.c("multiplayer.requiredTexturePrompt.disconnect"));
                      } else if (this.c != null) {
                         this.c.a(fjh.a.b);
                      }
@@ -115,16 +115,16 @@ public abstract class fiu implements vg {
                      fji.b(this.c);
                   }
                },
-               $$2 ? tl.c("multiplayer.requiredTexturePrompt.line1") : tl.c("multiplayer.texturePrompt.line1"),
-               a($$2 ? tl.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : tl.c("multiplayer.texturePrompt.line2"), $$3),
-               $$2 ? tk.i : tk.f,
-               (tl)($$2 ? tl.c("menu.disconnect") : tk.g)
+               $$2 ? tm.c("multiplayer.requiredTexturePrompt.line1") : tm.c("multiplayer.texturePrompt.line1"),
+               a($$2 ? tm.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : tm.c("multiplayer.texturePrompt.line2"), $$3),
+               $$2 ? tl.i : tl.f,
+               (tm)($$2 ? tm.c("menu.disconnect") : tl.g)
             )
          );
    }
 
-   private static tl a(tl $$0, @Nullable tl $$1) {
-      return (tl)($$1 == null ? $$0 : tl.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
+   private static tm a(tm $$0, @Nullable tm $$1) {
+      return (tm)($$1 == null ? $$0 : tm.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
    }
 
    @Nullable
@@ -139,15 +139,15 @@ public abstract class fiu implements vg {
    }
 
    private void a(CompletableFuture<?> $$0) {
-      $$0.thenRun(() -> this.a(vs.a.a)).exceptionally($$0x -> {
-         this.a(vs.a.c);
+      $$0.thenRun(() -> this.a(vt.a.a)).exceptionally($$0x -> {
+         this.a(vt.a.c);
          return null;
       });
    }
 
    @Override
-   public void a(vm $$0) {
-      vf.a($$0, this, this.a);
+   public void a(vn $$0) {
+      vg.a($$0, this, this.a);
       $$0.a().forEach(this::a);
    }
 
@@ -160,12 +160,12 @@ public abstract class fiu implements vg {
       }
    }
 
-   private void a(vs.a $$0) {
-      this.b.a(new vs($$0));
+   private void a(vt.a $$0) {
+      this.b.a(new vt($$0));
    }
 
    @Override
-   public void a(vi $$0) {
+   public void a(vj $$0) {
       this.b.a($$0.a());
    }
 
@@ -183,18 +183,18 @@ public abstract class fiu implements vg {
       }
    }
 
-   public void b(vd<?> $$0) {
+   public void b(ve<?> $$0) {
       this.b.a($$0);
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       this.e.c();
       this.a.b(this.b($$0));
       h.warn("Client disconnected with reason: {}", $$0.getString());
    }
 
-   protected eyk b(tl $$0) {
+   protected eyk b(tm $$0) {
       eyk $$1 = Objects.requireNonNullElseGet(this.f, () -> new fbg(new eyp()));
       return (eyk)(this.c != null && this.c.e() ? new gex($$1, g, $$0) : new exm($$1, g, $$0));
    }
@@ -204,7 +204,7 @@ public abstract class fiu implements vg {
       return this.d;
    }
 
-   private void a(vd<? extends sy> $$0, BooleanSupplier $$1, Duration $$2) {
+   private void a(ve<? extends sz> $$0, BooleanSupplier $$1, Duration $$2) {
       if ($$1.getAsBoolean()) {
          this.b($$0);
       } else {
@@ -212,6 +212,6 @@ public abstract class fiu implements vg {
       }
    }
 
-   static record a(vd<? extends sy> a, BooleanSupplier b, long c) {
+   static record a(ve<? extends sz> a, BooleanSupplier b, long c) {
    }
 }

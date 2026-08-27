@@ -25,7 +25,7 @@ public class edt extends eec {
 
    @Override
    public cjf a(cjf $$0, ecq $$1) {
-      if ($$1.c(this.b.g) instanceof bhc $$3 && $$3.ad()) {
+      if ($$1.c(this.b.g) instanceof bhc $$3 && $$3.ac()) {
          $$0.a($$3.N_());
       }
 

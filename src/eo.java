@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class eo implements ArgumentType<iv> {
    private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("particle.notFound", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("particle.notFound", $$0));
    private final hi<iw<?>> c;
 
    public eo(dn $$0) {

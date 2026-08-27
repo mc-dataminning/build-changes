@@ -97,7 +97,7 @@ public class bwe {
       }
 
       protected boolean a(akr $$0, bwd $$1) {
-         return !$$1.aY() && $$1.gr() >= (long)this.c && !$$1.fR() && $$1.aB() && !$$1.cP() && $$1.gd();
+         return !$$1.aX() && $$1.gr() >= (long)this.c && !$$1.fR() && $$1.aA() && !$$1.cO() && $$1.gd();
       }
 
       protected void a(akr $$0, bwd $$1, long $$2) {

@@ -3,21 +3,21 @@ public class ezl extends fai<cen> {
    private static final aex y = new aex("container/anvil/text_field_disabled");
    private static final aex z = new aex("container/anvil/error");
    private static final aex A = new aex("textures/gui/container/anvil.png");
-   private static final tl B = tl.c("container.repair.expensive");
+   private static final tm B = tm.c("container.repair.expensive");
    private esz C;
    private final cbu D;
 
-   public ezl(cen $$0, cbt $$1, tl $$2) {
+   public ezl(cen $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2, A);
       this.D = $$1.m;
       this.l = 60;
    }
 
    @Override
-   protected void E() {
+   protected void F() {
       int $$0 = (this.g - this.c) / 2;
       int $$1 = (this.h - this.k) / 2;
-      this.C = new esz(this.i, $$0 + 62, $$1 + 24, 103, 12, tl.c("container.repair"));
+      this.C = new esz(this.i, $$0 + 62, $$1 + 24, 103, 12, tm.c("container.repair"));
       this.C.f(false);
       this.C.m(-1);
       this.C.n(-1);
@@ -66,14 +66,14 @@ public class ezl extends fai<cen> {
       int $$3 = this.p.n();
       if ($$3 > 0) {
          int $$4 = 8453920;
-         tl $$5;
+         tm $$5;
          if ($$3 >= 40 && !this.f.s.fS().d) {
             $$5 = B;
             $$4 = 16736352;
          } else if (!this.p.b(2).f()) {
             $$5 = null;
          } else {
-            $$5 = tl.a("container.repair.cost", $$3);
+            $$5 = tm.a("container.repair.cost", $$3);
             if (!this.p.b(2).a(this.D)) {
                $$4 = 16736352;
             }

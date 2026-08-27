@@ -18,9 +18,9 @@ public class eyz extends eyk implements fis.a {
    public static final int n = 14;
    public static final int o = 7;
    private static final double v = 16.0;
-   private static final tl w = tl.c("advancements.sad_label");
-   private static final tl x = tl.c("advancements.empty");
-   private static final tl y = tl.c("gui.advancements");
+   private static final tm w = tm.c("advancements.sad_label");
+   private static final tm x = tm.c("advancements.empty");
+   private static final tm y = tm.c("gui.advancements");
    private final fis z;
    private final Map<af, eyv> A = Maps.newLinkedHashMap();
    @Nullable

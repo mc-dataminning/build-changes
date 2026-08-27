@@ -25,8 +25,8 @@ public class fsh extends fui<byd, fef> {
 
    protected boolean b(byd $$0) {
       double $$1 = this.c.b($$0);
-      float $$2 = $$0.bX() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cB();
+      float $$2 = $$0.bW() ? 32.0F : 64.0F;
+      return $$1 >= (double)($$2 * $$2) ? false : $$0.cA();
    }
 
    @Nullable

@@ -2,7 +2,7 @@ import it.unimi.dsi.fastutil.shorts.ShortIterator;
 import it.unimi.dsi.fastutil.shorts.ShortSet;
 import java.util.function.BiConsumer;
 
-public class zj implements vd<ww> {
+public class zj implements ve<wx> {
    private static final int a = 12;
    private final hz b;
    private final short[] c;
@@ -22,7 +22,7 @@ public class zj implements vd<ww> {
       }
    }
 
-   public zj(so $$0) {
+   public zj(sp $$0) {
       this.b = hz.a($$0.readLong());
       int $$1 = $$0.m();
       this.c = new short[$$1];
@@ -36,7 +36,7 @@ public class zj implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.b(this.b.s());
       $$0.c(this.c.length);
 
@@ -45,7 +45,7 @@ public class zj implements vd<ww> {
       }
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

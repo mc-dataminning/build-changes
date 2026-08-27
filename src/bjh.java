@@ -1,6 +1,6 @@
 public class bjh extends biq {
    private static final String b = "data";
-   private qx c = new qx();
+   private qy c = new qy();
 
    public bjh(biu<?> $$0, cpv $$1) {
       super($$0, $$1);
@@ -16,17 +16,17 @@ public class bjh extends biq {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       this.c = $$0.p("data");
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       $$0.a("data", this.c.h());
    }
 
    @Override
-   public vd<ww> V() {
+   public ve<wx> di() {
       throw new IllegalStateException("Markers should never be sent");
    }
 
@@ -36,7 +36,7 @@ public class bjh extends biq {
    }
 
    @Override
-   protected boolean bD() {
+   protected boolean bC() {
       return false;
    }
 

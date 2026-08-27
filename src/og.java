@@ -1,250 +1,202 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList.Builder;
 
 public class og {
-   public static final aew<dwr> a = nz.a("village/taiga/town_centers");
-   private static final aew<dwr> b = nz.a("village/taiga/terminators");
+   private static final dlj.o a = a(csw.a);
+   private static final dlj.o b = a(csw.F);
+   private static final dlj.o c = a(csw.hj);
+   private static final dlj.o d = a(csw.hk);
+   private static final dlj.o e = a(csw.iA);
+   private static final dlj.o f = a(csw.K);
+   private static final dlj.o g = a(csw.jp);
+   private static final dlj.o h = a(csw.b);
+   private static final dlj.o i = a(csw.rI);
+   private static final dlj.o j = a(csw.j);
+   private static final dlj.o k = a(csw.l);
+   private static final dlj.o l = a(csw.k);
+   private static final dlj.o m = a(csw.fl);
+   private static final dlj.o n = a(csw.i);
+   private static final dlj.o o = a(csw.qA);
+   private static final dlj.o p = a(csw.L);
+   private static final dlj.o q = a(csw.I);
+   private static final dlj.o r = a(csw.aV);
+   private static final dlj.o s = a(csw.iC);
+   private static final dlj.o t = a(csw.dP);
+   private static final dlj.o u = a(csw.rH);
+   private static final dlj.o v = a(csw.qC);
+   private static final dlj.o w = a(csw.dO);
+   private static final dlj.o x = a(csw.G);
+   private static final dlj.o y = a(csw.H);
+   private static final dlj.o z = a(csw.dW);
+   private static final dlj.o A = a(csw.dX);
+   private static final dlj.o B = a(csw.dY);
+   private static final dlj.o C = a(csw.dZ);
+   private static final dlj.o D = a(csw.pr);
+   private static final dlj.o E = a(csw.op);
+   private static final dlj.o F = a(csw.on);
+   private static final dlj.o G = a(csw.kK);
+   private static final dlj.o H = a(csw.ow);
+   private static final dlj.o I = a(csw.fz);
 
-   public static void a(ns<dwr> $$0) {
-      hh<dum> $$1 = $$0.a(je.ay);
-      hg<dum> $$2 = $$1.b(pk.h);
-      hg<dum> $$3 = $$1.b(pk.i);
-      hg<dum> $$4 = $$1.b(pk.e);
-      hg<dum> $$5 = $$1.b(pk.l);
-      hg<dum> $$6 = $$1.b(pk.m);
-      hh<dyz> $$7 = $$0.a(je.aA);
-      hg<dyz> $$8 = $$7.b(oa.f);
-      hg<dyz> $$9 = $$7.b(oa.d);
-      hg<dyz> $$10 = $$7.b(oa.k);
-      hg<dyz> $$11 = $$7.b(oa.o);
-      hh<dwr> $$12 = $$0.a(je.aC);
-      hg<dwr> $$13 = $$12.b(nz.a);
-      hg<dwr> $$14 = $$12.b(b);
-      $$0.a(
-         a,
-         new dwr(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dwp.a("village/taiga/town_centers/taiga_meeting_point_1", $$8), 49),
-               Pair.of(dwp.a("village/taiga/town_centers/taiga_meeting_point_2", $$8), 49),
-               Pair.of(dwp.a("village/taiga/zombie/town_centers/taiga_meeting_point_1", $$9), 1),
-               Pair.of(dwp.a("village/taiga/zombie/town_centers/taiga_meeting_point_2", $$9), 1)
-            ),
-            dwr.a.b
-         )
+   private static dlj.o a(csv $$0) {
+      return dlj.a($$0.n());
+   }
+
+   public static dlj.o a() {
+      return a(true, false, true);
+   }
+
+   public static dlj.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dlj.f $$3 = dlj.a(dlm.a(97), 2);
+      dlj.f $$4 = dlj.a(dlm.a(256), 0);
+      dlj.f $$5 = dlj.b(dlm.a(63), -1);
+      dlj.f $$6 = dlj.b(dlm.a(74), 1);
+      dlj.f $$7 = dlj.a(dlm.a(60), 0);
+      dlj.f $$8 = dlj.a(dlm.a(62), 0);
+      dlj.f $$9 = dlj.a(dlm.a(63), 0);
+      dlj.f $$10 = dlj.a(-1, 0);
+      dlj.f $$11 = dlj.a(0, 0);
+      dlj.f $$12 = dlj.b(-6, -1);
+      dlj.f $$13 = dlj.b();
+      dlj.f $$14 = dlj.a(cra.W, cra.X);
+      dlj.f $$15 = dlj.a();
+      dlj.o $$16 = dlj.a(dlj.a($$11, n), j);
+      dlj.o $$17 = dlj.a(dlj.a(dlj.e, r), q);
+      dlj.o $$18 = dlj.a(dlj.a(dlj.e, h), p);
+      dlj.f $$19 = dlj.a(cra.P, cra.M, cra.N);
+      dlj.f $$20 = dlj.a(cra.f);
+      dlj.o $$21 = dlj.a(
+         dlj.a(dlj.a(cra.J), dlj.a(dlj.a(dlj.a(dlb.X, -0.0125, 0.0125), o), h)),
+         dlj.a(dlj.a(cra.O), dlj.a(dlj.a(dlj.a(dlb.Y, -0.05, 0.05), $$18), h)),
+         dlj.a(dlj.a(cra.t), dlj.a(a(1.0), h)),
+         dlj.a($$19, $$17),
+         dlj.a($$20, $$17),
+         dlj.a(dlj.a(cra.Z), h)
       );
-      nz.a(
-         $$0,
-         "village/taiga/streets",
-         new dwr(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dwp.a("village/taiga/streets/corner_01", $$10), 2),
-               Pair.of(dwp.a("village/taiga/streets/corner_02", $$10), 2),
-               Pair.of(dwp.a("village/taiga/streets/corner_03", $$10), 2),
-               Pair.of(dwp.a("village/taiga/streets/straight_01", $$10), 4),
-               Pair.of(dwp.a("village/taiga/streets/straight_02", $$10), 4),
-               Pair.of(dwp.a("village/taiga/streets/straight_03", $$10), 4),
-               Pair.of(dwp.a("village/taiga/streets/straight_04", $$10), 7),
-               Pair.of(dwp.a("village/taiga/streets/straight_05", $$10), 7),
-               Pair.of(dwp.a("village/taiga/streets/straight_06", $$10), 4),
-               Pair.of(dwp.a("village/taiga/streets/crossroad_01", $$10), 1),
-               Pair.of(dwp.a("village/taiga/streets/crossroad_02", $$10), 1),
-               Pair.of(dwp.a("village/taiga/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(dwp.a("village/taiga/streets/crossroad_04", $$10), 2),
-                  Pair.of(dwp.a("village/taiga/streets/crossroad_05", $$10), 2),
-                  Pair.of(dwp.a("village/taiga/streets/crossroad_06", $$10), 2),
-                  Pair.of(dwp.a("village/taiga/streets/turn_01", $$10), 3)
-               }
-            ),
-            dwr.a.a
-         )
+      dlj.o $$22 = dlj.a(dlj.a(dlb.Z, 0.45, 0.58), dlj.a($$11, v));
+      dlj.o $$23 = dlj.a(dlj.a(dlb.Z, 0.35, 0.6), dlj.a($$11, v));
+      dlj.o $$24 = dlj.a(
+         dlj.a(dlj.a(cra.H), dlj.a(dlj.a($$15, s), dlj.a(dlj.a(dlb.aa, -0.5, 0.2), s), dlj.a(dlj.a(dlb.ab, -0.0625, 0.025), w), dlj.a($$11, t))),
+         dlj.a(dlj.a(cra.G), dlj.a(dlj.a($$15, h), $$22, dlj.a($$11, t))),
+         dlj.a(dlj.a(cra.I), h),
+         dlj.a(dlj.a(cra.F), dlj.a($$22, j)),
+         $$21,
+         dlj.a(dlj.a(cra.w), dlj.a(a(1.75), h)),
+         dlj.a(dlj.a(cra.u), dlj.a(dlj.a(a(2.0), $$18), dlj.a(a(1.0), h), dlj.a(a(-1.0), j), $$18)),
+         dlj.a(dlj.a(cra.h), u),
+         j
       );
-      nz.a(
-         $$0,
-         "village/taiga/zombie/streets",
-         new dwr(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dwp.a("village/taiga/zombie/streets/corner_01", $$10), 2),
-               Pair.of(dwp.a("village/taiga/zombie/streets/corner_02", $$10), 2),
-               Pair.of(dwp.a("village/taiga/zombie/streets/corner_03", $$10), 2),
-               Pair.of(dwp.a("village/taiga/zombie/streets/straight_01", $$10), 4),
-               Pair.of(dwp.a("village/taiga/zombie/streets/straight_02", $$10), 4),
-               Pair.of(dwp.a("village/taiga/zombie/streets/straight_03", $$10), 4),
-               Pair.of(dwp.a("village/taiga/zombie/streets/straight_04", $$10), 7),
-               Pair.of(dwp.a("village/taiga/zombie/streets/straight_05", $$10), 7),
-               Pair.of(dwp.a("village/taiga/zombie/streets/straight_06", $$10), 4),
-               Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_01", $$10), 1),
-               Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_02", $$10), 1),
-               Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_04", $$10), 2),
-                  Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_05", $$10), 2),
-                  Pair.of(dwp.a("village/taiga/zombie/streets/crossroad_06", $$10), 2),
-                  Pair.of(dwp.a("village/taiga/zombie/streets/turn_01", $$10), 3)
-               }
-            ),
-            dwr.a.a
-         )
+      dlj.o $$25 = dlj.a(
+         dlj.a(dlj.a(cra.H), dlj.a(dlj.a($$15, s), dlj.a(dlj.a(dlb.aa, 0.0, 0.2), s), dlj.a(dlj.a(dlb.ab, 0.0, 0.025), w), dlj.a($$11, t))),
+         dlj.a(dlj.a(cra.G), dlj.a(dlj.a($$15, h), $$23, dlj.a($$11, t))),
+         dlj.a(dlj.a(cra.I), dlj.a(dlj.a($$15, h), dlj.a($$11, t))),
+         dlj.a(dlj.a(cra.F), dlj.a($$23, dlj.a($$11, t))),
+         $$21,
+         dlj.a(dlj.a(cra.w), dlj.a(dlj.a(a(1.75), h), dlj.a(a(-0.5), l))),
+         dlj.a(dlj.a(cra.u), dlj.a(dlj.a(a(2.0), $$18), dlj.a(a(1.0), h), dlj.a(a(-1.0), $$16), $$18)),
+         dlj.a(dlj.a(cra.n, cra.o), dlj.a(dlj.a(a(1.75), l), dlj.a(a(-0.95), k))),
+         dlj.a(dlj.a(cra.e), dlj.a($$11, t)),
+         dlj.a(dlj.a(cra.h), u),
+         dlj.a(dlj.a(cra.Y), m),
+         $$16
       );
-      nz.a(
-         $$0,
-         "village/taiga/houses",
-         new dwr(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_1", $$8), 4),
-               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_2", $$8), 4),
-               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_3", $$8), 4),
-               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_4", $$8), 4),
-               Pair.of(dwp.a("village/taiga/houses/taiga_small_house_5", $$8), 4),
-               Pair.of(dwp.a("village/taiga/houses/taiga_medium_house_1", $$8), 2),
-               Pair.of(dwp.a("village/taiga/houses/taiga_medium_house_2", $$8), 2),
-               Pair.of(dwp.a("village/taiga/houses/taiga_medium_house_3", $$8), 2),
-               Pair.of(dwp.a("village/taiga/houses/taiga_medium_house_4", $$8), 2),
-               Pair.of(dwp.a("village/taiga/houses/taiga_butcher_shop_1", $$8), 2),
-               Pair.of(dwp.a("village/taiga/houses/taiga_tool_smith_1", $$8), 2),
-               Pair.of(dwp.a("village/taiga/houses/taiga_fletcher_house_1", $$8), 2),
-               new Pair[]{
-                  Pair.of(dwp.a("village/taiga/houses/taiga_shepherds_house_1", $$8), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_armorer_house_1", $$8), 1),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_armorer_2", $$8), 1),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_fisher_cottage_1", $$8), 3),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_tannery_1", $$8), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_cartographer_house_1", $$8), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_library_1", $$8), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_masons_house_1", $$8), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_weaponsmith_1", $$8), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_weaponsmith_2", $$8), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_temple_1", $$8), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_large_farm_1", $$11), 6),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_large_farm_2", $$11), 6),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_small_farm_1", $$8), 1),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_animal_pen_1", $$8), 2),
-                  Pair.of(dwp.g(), 6)
-               }
-            ),
-            dwr.a.b
-         )
+      dlj.f $$26 = dlj.a(dlb.N, -0.909, -0.5454);
+      dlj.f $$27 = dlj.a(dlb.N, -0.1818, 0.1818);
+      dlj.f $$28 = dlj.a(dlb.N, 0.5454, 0.909);
+      dlj.o $$29 = dlj.a(
+         dlj.a(
+            dlj.a,
+            dlj.a(
+               dlj.a(dlj.a(cra.C), dlj.a($$3, dlj.a(dlj.a($$26, l), dlj.a($$27, l), dlj.a($$28, l), $$16))),
+               dlj.a(dlj.a(cra.g), dlj.a($$8, dlj.a(dlj.a($$9), dlj.a(dlj.a(dlb.W, 0.0), x)))),
+               dlj.a(dlj.a(cra.h), dlj.a($$7, dlj.a(dlj.a($$9), dlj.a(dlj.a(dlb.W, 0.0), x))))
+            )
+         ),
+         dlj.a(
+            dlj.a(cra.A, cra.B, cra.C),
+            dlj.a(
+               dlj.a(
+                  dlj.a,
+                  dlj.a(
+                     dlj.a($$4, d),
+                     dlj.a($$6, dlj.a(dlj.a($$26, e), dlj.a($$27, e), dlj.a($$28, e), dlj.e())),
+                     dlj.a($$10, dlj.a(dlj.a(dlj.e, g), f)),
+                     dlj.a(dlj.a($$13), d),
+                     dlj.a($$12, c),
+                     $$18
+                  )
+               ),
+               dlj.a($$5, dlj.a(dlj.a($$9, dlj.a(dlj.a($$6), d)), dlj.e())),
+               dlj.a(dlj.b, dlj.a($$12, c))
+            )
+         ),
+         dlj.a(dlj.a, dlj.a($$10, dlj.a(dlj.a($$14, dlj.a($$13, dlj.a(dlj.a($$11, a), dlj.a(dlj.d(), w), x))), $$25))),
+         dlj.a($$12, dlj.a(dlj.a(dlj.a, dlj.a($$14, dlj.a($$13, x))), dlj.a(dlj.b, $$24), dlj.a($$19, dlj.a(dlj.c, r)), dlj.a($$20, dlj.a(dlj.d, r)))),
+         dlj.a(dlj.a, dlj.a(dlj.a(dlj.a(cra.H, cra.I), h), dlj.a(dlj.a(cra.P, cra.Q, cra.R), $$17), $$18))
       );
-      nz.a(
-         $$0,
-         "village/taiga/zombie/houses",
-         new dwr(
-            $$14,
-            ImmutableList.of(
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_1", $$9), 4),
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_2", $$9), 4),
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_3", $$9), 4),
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_4", $$9), 4),
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_small_house_5", $$9), 4),
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_medium_house_1", $$9), 2),
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_medium_house_2", $$9), 2),
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_medium_house_3", $$9), 2),
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_medium_house_4", $$9), 2),
-               Pair.of(dwp.a("village/taiga/houses/taiga_butcher_shop_1", $$9), 2),
-               Pair.of(dwp.a("village/taiga/zombie/houses/taiga_tool_smith_1", $$9), 2),
-               Pair.of(dwp.a("village/taiga/houses/taiga_fletcher_house_1", $$9), 2),
-               new Pair[]{
-                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_shepherds_house_1", $$9), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_armorer_house_1", $$9), 1),
-                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_fisher_cottage_1", $$9), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_tannery_1", $$9), 2),
-                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_cartographer_house_1", $$9), 2),
-                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_library_1", $$9), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_masons_house_1", $$9), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_weaponsmith_1", $$9), 2),
-                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_weaponsmith_2", $$9), 2),
-                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_temple_1", $$9), 2),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_large_farm_1", $$9), 6),
-                  Pair.of(dwp.a("village/taiga/zombie/houses/taiga_large_farm_2", $$9), 6),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_small_farm_1", $$9), 1),
-                  Pair.of(dwp.a("village/taiga/houses/taiga_animal_pen_1", $$9), 2),
-                  Pair.of(dwp.g(), 6)
-               }
-            ),
-            dwr.a.b
-         )
+      Builder<dlj.o> $$30 = ImmutableList.builder();
+      if ($$1) {
+         $$30.add(dlj.a(dlj.a(dlj.a("bedrock_roof", dlm.c(5), dlm.b())), b));
+      }
+
+      if ($$2) {
+         $$30.add(dlj.a(dlj.a("bedrock_floor", dlm.a(), dlm.b(5)), b));
+      }
+
+      dlj.o $$31 = dlj.a(dlj.c(), $$29);
+      $$30.add($$0 ? $$31 : $$29);
+      $$30.add(dlj.a(dlj.a("deepslate", dlm.a(0), dlm.a(8)), i));
+      return dlj.a((dlj.o[])$$30.build().toArray(dlj.o[]::new));
+   }
+
+   public static dlj.o b() {
+      dlj.f $$0 = dlj.a(dlm.a(31), 0);
+      dlj.f $$1 = dlj.a(dlm.a(32), 0);
+      dlj.f $$2 = dlj.b(dlm.a(30), 0);
+      dlj.f $$3 = dlj.a(dlj.b(dlm.a(35), 0));
+      dlj.f $$4 = dlj.a(dlm.c(5), 0);
+      dlj.f $$5 = dlj.b();
+      dlj.f $$6 = dlj.a(dlb.ac, -0.012);
+      dlj.f $$7 = dlj.a(dlb.ad, -0.012);
+      dlj.f $$8 = dlj.a(dlb.ae, -0.012);
+      dlj.f $$9 = dlj.a(dlb.af, 0.54);
+      dlj.f $$10 = dlj.a(dlb.ag, 1.17);
+      dlj.f $$11 = dlj.a(dlb.ah, 0.0);
+      dlj.o $$12 = dlj.a($$8, dlj.a($$2, dlj.a($$3, p)));
+      return dlj.a(
+         dlj.a(dlj.a("bedrock_floor", dlm.a(), dlm.b(5)), b),
+         dlj.a(dlj.a(dlj.a("bedrock_roof", dlm.c(5), dlm.b())), b),
+         dlj.a($$4, z),
+         dlj.a(dlj.a(cra.ag), dlj.a(dlj.a(dlj.f, C), dlj.a(dlj.b, dlj.a($$12, dlj.a($$11, C), D)))),
+         dlj.a(dlj.a(cra.af), dlj.a(dlj.a(dlj.f, dlj.a(dlj.a($$11, A), B)), dlj.a(dlj.b, dlj.a($$12, dlj.a($$11, A), B)))),
+         dlj.a(
+            dlj.a,
+            dlj.a(
+               dlj.a(dlj.a($$1), dlj.a($$5, y)),
+               dlj.a(dlj.a(cra.ad), dlj.a(dlj.a($$9), dlj.a($$0, dlj.a(dlj.a($$10, E), F)))),
+               dlj.a(dlj.a(cra.ae), dlj.a(dlj.a($$9), dlj.a($$0, dlj.a(dlj.a($$10, G), H))))
+            )
+         ),
+         dlj.a(
+            dlj.a(cra.ac),
+            dlj.a(
+               dlj.a(dlj.b, dlj.a($$6, dlj.a(dlj.a(dlj.a($$5), dlj.a($$2, dlj.a($$3, A))), z))),
+               dlj.a(dlj.a, dlj.a($$0, dlj.a($$3, dlj.a($$7, dlj.a(dlj.a($$1, p), dlj.a(dlj.a($$5), p))))))
+            )
+         ),
+         z
       );
-      $$0.a(
-         b,
-         new dwr(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dwp.a("village/plains/terminators/terminator_01", $$10), 1),
-               Pair.of(dwp.a("village/plains/terminators/terminator_02", $$10), 1),
-               Pair.of(dwp.a("village/plains/terminators/terminator_03", $$10), 1),
-               Pair.of(dwp.a("village/plains/terminators/terminator_04", $$10), 1)
-            ),
-            dwr.a.a
-         )
-      );
-      nz.a(
-         $$0,
-         "village/taiga/decor",
-         new dwr(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dwp.a("village/taiga/taiga_lamp_post_1"), 10),
-               Pair.of(dwp.a("village/taiga/taiga_decoration_1"), 4),
-               Pair.of(dwp.a("village/taiga/taiga_decoration_2"), 1),
-               Pair.of(dwp.a("village/taiga/taiga_decoration_3"), 1),
-               Pair.of(dwp.a("village/taiga/taiga_decoration_4"), 1),
-               Pair.of(dwp.a("village/taiga/taiga_decoration_5"), 2),
-               Pair.of(dwp.a("village/taiga/taiga_decoration_6"), 1),
-               Pair.of(dwp.a($$2), 4),
-               Pair.of(dwp.a($$3), 4),
-               Pair.of(dwp.a($$4), 2),
-               Pair.of(dwp.a($$5), 4),
-               Pair.of(dwp.a($$6), 1),
-               new Pair[]{Pair.of(dwp.g(), 4)}
-            ),
-            dwr.a.b
-         )
-      );
-      nz.a(
-         $$0,
-         "village/taiga/zombie/decor",
-         new dwr(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dwp.a("village/taiga/taiga_decoration_1"), 4),
-               Pair.of(dwp.a("village/taiga/taiga_decoration_2"), 1),
-               Pair.of(dwp.a("village/taiga/taiga_decoration_3"), 1),
-               Pair.of(dwp.a("village/taiga/taiga_decoration_4"), 1),
-               Pair.of(dwp.a($$2), 4),
-               Pair.of(dwp.a($$3), 4),
-               Pair.of(dwp.a($$4), 2),
-               Pair.of(dwp.a($$5), 4),
-               Pair.of(dwp.a($$6), 1),
-               Pair.of(dwp.g(), 4)
-            ),
-            dwr.a.b
-         )
-      );
-      nz.a(
-         $$0,
-         "village/taiga/villagers",
-         new dwr(
-            $$13,
-            ImmutableList.of(
-               Pair.of(dwp.a("village/taiga/villagers/nitwit"), 1),
-               Pair.of(dwp.a("village/taiga/villagers/baby"), 1),
-               Pair.of(dwp.a("village/taiga/villagers/unemployed"), 10)
-            ),
-            dwr.a.b
-         )
-      );
-      nz.a(
-         $$0,
-         "village/taiga/zombie/villagers",
-         new dwr(
-            $$13,
-            ImmutableList.of(Pair.of(dwp.a("village/taiga/zombie/villagers/nitwit"), 1), Pair.of(dwp.a("village/taiga/zombie/villagers/unemployed"), 10)),
-            dwr.a.b
-         )
-      );
+   }
+
+   public static dlj.o c() {
+      return I;
+   }
+
+   public static dlj.o d() {
+      return a;
+   }
+
+   private static dlj.f a(double $$0) {
+      return dlj.a(dlb.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

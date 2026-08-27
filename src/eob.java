@@ -1,8 +1,8 @@
 import java.util.Locale;
 
 public class eob extends gfb {
-   private static final tl a = tl.c("mco.backup.info.title");
-   private static final tl b = tl.c("mco.backup.unknown");
+   private static final tm a = tm.c("mco.backup.info.title");
+   private static final tm b = tm.c("mco.backup.unknown");
    private final eyk c;
    final eml y;
    final evz z = new evz(this);
@@ -19,7 +19,7 @@ public class eob extends gfb {
       this.z.a(new etw(a, this.i));
       this.A = new eob.a(this.f);
       this.d(this.A);
-      this.z.b(esq.a(tk.k, $$0 -> this.az_()).a());
+      this.z.b(esq.a(tl.k, $$0 -> this.az_()).a());
       this.z.a();
       this.z.a($$1 -> {
          eso var10000 = this.d($$1);
@@ -37,16 +37,16 @@ public class eob extends gfb {
       this.f.a(this.c);
    }
 
-   tl a(String $$0, String $$1) {
+   tm a(String $$0, String $$1) {
       String $$2 = $$0.toLowerCase(Locale.ROOT);
       if ($$2.contains("game") && $$2.contains("mode")) {
          return this.b($$1);
       } else {
-         return (tl)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : tl.b($$1));
+         return (tm)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : tm.b($$1));
       }
    }
 
-   private tl a(String $$0) {
+   private tm a(String $$0) {
       try {
          return eoy.a.get(Integer.parseInt($$0)).b();
       } catch (Exception var3) {
@@ -54,7 +54,7 @@ public class eob extends gfb {
       }
    }
 
-   private tl b(String $$0) {
+   private tm b(String $$0) {
       try {
          return eoy.b.get(Integer.parseInt($$0)).e();
       } catch (Exception var3) {
@@ -72,17 +72,17 @@ public class eob extends gfb {
    }
 
    class b extends etm.a<eob.b> {
-      private static final tl b = tl.c("mco.backup.entry.templateName");
-      private static final tl c = tl.c("mco.backup.entry.gameDifficulty");
-      private static final tl d = tl.c("mco.backup.entry.name");
-      private static final tl e = tl.c("mco.backup.entry.gameServerVersion");
-      private static final tl f = tl.c("mco.backup.entry.uploaded");
-      private static final tl g = tl.c("mco.backup.entry.enabledPack");
-      private static final tl h = tl.c("mco.backup.entry.description");
-      private static final tl i = tl.c("mco.backup.entry.gameMode");
-      private static final tl j = tl.c("mco.backup.entry.seed");
-      private static final tl k = tl.c("mco.backup.entry.worldType");
-      private static final tl l = tl.c("mco.backup.entry.undefined");
+      private static final tm b = tm.c("mco.backup.entry.templateName");
+      private static final tm c = tm.c("mco.backup.entry.gameDifficulty");
+      private static final tm d = tm.c("mco.backup.entry.name");
+      private static final tm e = tm.c("mco.backup.entry.gameServerVersion");
+      private static final tm f = tm.c("mco.backup.entry.uploaded");
+      private static final tm g = tm.c("mco.backup.entry.enabledPack");
+      private static final tm h = tm.c("mco.backup.entry.description");
+      private static final tm i = tm.c("mco.backup.entry.gameMode");
+      private static final tm j = tm.c("mco.backup.entry.seed");
+      private static final tm k = tm.c("mco.backup.entry.worldType");
+      private static final tm l = tm.c("mco.backup.entry.undefined");
       private final String m;
       private final String n;
 
@@ -97,7 +97,7 @@ public class eob extends gfb {
          $$0.b(eob.this.i, eob.this.a(this.m, this.n), $$3, $$2 + 12, -1);
       }
 
-      private tl a(String $$0) {
+      private tm a(String $$0) {
          return switch ($$0) {
             case "template_name" -> b;
             case "game_difficulty" -> c;
@@ -114,8 +114,8 @@ public class eob extends gfb {
       }
 
       @Override
-      public tl a() {
-         return tl.a("narrator.select", this.m + " " + this.n);
+      public tm a() {
+         return tm.a("narrator.select", this.m + " " + this.n);
       }
    }
 }

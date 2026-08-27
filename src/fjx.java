@@ -13,25 +13,25 @@ public enum fjx {
    j("non_consensual_intimate_imagery");
 
    private final String k;
-   private final tl l;
-   private final tl m;
+   private final tm l;
+   private final tm m;
 
    private fjx(String $$0) {
       this.k = $$0.toUpperCase(Locale.ROOT);
       String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = tl.c($$1);
-      this.m = tl.c($$1 + ".description");
+      this.l = tm.c($$1);
+      this.m = tm.c($$1 + ".description");
    }
 
    public String a() {
       return this.k;
    }
 
-   public tl b() {
+   public tm b() {
       return this.l;
    }
 
-   public tl c() {
+   public tm c() {
       return this.m;
    }
 }

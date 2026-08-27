@@ -11,9 +11,9 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class agz {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.fill.toobig", $$0, $$1));
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("commands.fill.toobig", $$0, $$1));
    static final ff b = new ff(csw.a.n(), Collections.emptySet(), null);
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.fill.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -120,7 +120,7 @@ public class agz {
             throw c.create();
          } else {
             int $$15 = $$9;
-            $$0.a(() -> tl.a("commands.fill.success", $$15), true);
+            $$0.a(() -> tm.a("commands.fill.success", $$15), true);
             return $$9;
          }
       }

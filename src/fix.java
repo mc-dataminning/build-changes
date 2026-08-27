@@ -162,7 +162,7 @@ public class fix extends cpv {
       bdp $$0 = this.ad();
       $$0.a("entities");
       this.e.a($$0x -> {
-         if (!$$0x.dG() && !$$0x.bO()) {
+         if (!$$0x.dG() && !$$0x.bN()) {
             this.a(this::a, $$0x);
          }
       });
@@ -176,26 +176,26 @@ public class fix extends cpv {
    }
 
    public void a(biq $$0) {
-      $$0.bo();
+      $$0.bn();
       $$0.ah++;
-      this.ad().a(() -> jd.h.b($$0.ah()).toString());
+      this.ad().a(() -> jd.h.b($$0.ag()).toString());
       $$0.l();
       this.ad().c();
 
-      for (biq $$1 : $$0.cQ()) {
+      for (biq $$1 : $$0.cP()) {
          this.a($$0, $$1);
       }
    }
 
    private void a(biq $$0, biq $$1) {
-      if ($$1.dG() || $$1.cZ() != $$0) {
-         $$1.ab();
+      if ($$1.dG() || $$1.cY() != $$0) {
+         $$1.aa();
       } else if ($$1 instanceof cbu || this.e.c($$1)) {
-         $$1.bo();
+         $$1.bn();
          $$1.ah++;
-         $$1.bz();
+         $$1.by();
 
-         for (biq $$2 : $$1.cQ()) {
+         for (biq $$2 : $$1.cP()) {
             this.a($$1, $$2);
          }
       }
@@ -226,24 +226,16 @@ public class fix extends cpv {
       return this.f.b();
    }
 
-   public void a(int $$0, fnd $$1) {
-      this.b($$0, $$1);
-   }
-
-   public void a(int $$0, biq $$1) {
-      this.b($$0, $$1);
-   }
-
-   private void b(int $$0, biq $$1) {
-      this.a($$0, biq.c.b);
-      this.f.a($$1);
+   public void c(biq $$0) {
+      this.a($$0.ah(), biq.c.b);
+      this.f.a($$0);
    }
 
    public void a(int $$0, biq.c $$1) {
       biq $$2 = this.E().a($$0);
       if ($$2 != null) {
          $$2.b($$1);
-         $$2.an();
+         $$2.am();
       }
    }
 
@@ -255,7 +247,7 @@ public class fix extends cpv {
 
    @Override
    public void U() {
-      this.D.l().a(tl.c("multiplayer.status.quitting"));
+      this.D.l().a(tm.c("multiplayer.status.quitting"));
    }
 
    public void b(int $$0, int $$1, int $$2) {
@@ -386,12 +378,12 @@ public class fix extends cpv {
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, @Nullable qx $$6) {
+   public void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, @Nullable qy $$6) {
       this.H.g.a(new fli.e(this, $$0, $$1, $$2, $$3, $$4, $$5, this.H.g, $$6));
    }
 
    @Override
-   public void a(vd<?> $$0) {
+   public void a(ve<?> $$0) {
       this.D.b($$0);
    }
 
@@ -884,7 +876,7 @@ public class fix extends cpv {
       }
 
       public void f(biq $$0) {
-         $$0.af();
+         $$0.ae();
          fix.this.I.remove($$0);
       }
 

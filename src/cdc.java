@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 public abstract class cdc extends bzj {
    protected static final aef<Boolean> c = aei.a(cdc.class, aeh.k);
-   static final Predicate<byn> b = $$0 -> !$$0.y() && $$0.bw() && cjf.a($$0.q(), cdb.s());
+   static final Predicate<byn> b = $$0 -> !$$0.y() && $$0.bv() && cjf.a($$0.q(), cdb.s());
    @Nullable
    protected cdb d;
    private int e;
@@ -46,7 +46,7 @@ public abstract class cdc extends bzj {
 
    @Override
    public void b_() {
-      if (this.dL() instanceof akr && this.bw()) {
+      if (this.dL() instanceof akr && this.bv()) {
          cdb $$0 = this.gr();
          if (this.gq()) {
             if ($$0 == null) {
@@ -58,7 +58,7 @@ public abstract class cdc extends bzj {
                }
             } else {
                bjg $$2 = this.q();
-               if ($$2 != null && ($$2.ah() == biu.bt || $$2.ah() == biu.ac)) {
+               if ($$2 != null && ($$2.ag() == biu.bt || $$2.ag() == biu.ac)) {
                   this.bb = 0;
                }
             }
@@ -83,7 +83,7 @@ public abstract class cdc extends bzj {
                $$2.c(this.gt());
             }
 
-            if ($$1 != null && $$1.ah() == biu.bt) {
+            if ($$1 != null && $$1.ag() == biu.bt) {
                $$2.a($$1);
             }
 
@@ -159,7 +159,7 @@ public abstract class cdc extends bzj {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Wave", this.e);
       $$0.a("CanJoinRaid", this.bT);
@@ -169,7 +169,7 @@ public abstract class cdc extends bzj {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.e = $$0.h("Wave");
       this.bT = $$0.q("CanJoinRaid");
@@ -202,7 +202,7 @@ public abstract class cdc extends bzj {
          this.a($$0);
          this.a($$3, $$1);
          this.a($$0, $$1.L());
-         $$0.al();
+         $$0.ak();
          this.gr().a(this.gt(), this);
          this.w(true);
       } else {
@@ -239,8 +239,8 @@ public abstract class cdc extends bzj {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
-      this.z(this.ah() != biu.bj || $$2 != bjk.a);
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
+      this.z(this.ag() != biu.bj || $$2 != bjk.a);
       return super.a($$0, $$1, $$2, $$3, $$4);
    }
 
@@ -260,7 +260,7 @@ public abstract class cdc extends bzj {
       @Override
       public boolean a() {
          bjg $$0 = this.c.eg();
-         return this.c.gr() == null && this.c.gm() && this.c.q() != null && !this.c.fV() && ($$0 == null || $$0.ah() != biu.bt);
+         return this.c.gr() == null && this.c.gm() && this.c.q() != null && !this.c.fV() && ($$0 == null || $$0.ag() != biu.bt);
       }
 
       @Override
@@ -268,7 +268,7 @@ public abstract class cdc extends bzj {
          super.c();
          this.c.L().n();
 
-         for (cdc $$1 : this.c.dL().a(cdc.class, this.a, this.c, this.c.cH().c(8.0, 8.0, 8.0))) {
+         for (cdc $$1 : this.c.dL().a(cdc.class, this.a, this.c, this.c.cG().c(8.0, 8.0, 8.0))) {
             $$1.h(this.c.q());
          }
       }
@@ -278,7 +278,7 @@ public abstract class cdc extends bzj {
          super.d();
          bjg $$0 = this.c.q();
          if ($$0 != null) {
-            for (cdc $$2 : this.c.dL().a(cdc.class, this.a, this.c, this.c.cH().c(8.0, 8.0, 8.0))) {
+            for (cdc $$2 : this.c.dL().a(cdc.class, this.a, this.c, this.c.cG().c(8.0, 8.0, 8.0))) {
                $$2.h($$0);
                $$2.v(true);
             }
@@ -323,8 +323,8 @@ public abstract class cdc extends bzj {
          cdb $$0 = this.b.gr();
          if (this.b.gs() && !this.b.gr().a() && this.b.ge() && !cjf.a(this.b.c(biv.f), cdb.s())) {
             cdc $$1 = $$0.b(this.b.gt());
-            if ($$1 == null || !$$1.bw()) {
-               List<byn> $$2 = this.b.dL().a(byn.class, this.b.cH().c(16.0, 8.0, 16.0), cdc.b);
+            if ($$1 == null || !$$1.bv()) {
+               List<byn> $$2 = this.b.dL().a(byn.class, this.b.cG().c(16.0, 8.0, 16.0), cdc.b);
                if (!$$2.isEmpty()) {
                   return this.b.L().a($$2.get(0), 1.15F);
                }
@@ -339,7 +339,7 @@ public abstract class cdc extends bzj {
       @Override
       public void e() {
          if (this.b.L().h().a(this.b.dj(), 1.414)) {
-            List<byn> $$0 = this.b.dL().a(byn.class, this.b.cH().c(4.0, 4.0, 4.0), cdc.b);
+            List<byn> $$0 = this.b.dL().a(byn.class, this.b.cG().c(4.0, 4.0, 4.0), cdc.b);
             if (!$$0.isEmpty()) {
                this.b.b($$0.get(0));
             }
@@ -358,7 +358,7 @@ public abstract class cdc extends bzj {
       @Override
       public boolean a() {
          cdb $$0 = this.b.gr();
-         return this.b.bw() && this.b.q() == null && $$0 != null && $$0.f();
+         return this.b.bv() && this.b.q() == null && $$0 != null && $$0.f();
       }
 
       @Override
@@ -375,11 +375,11 @@ public abstract class cdc extends bzj {
 
       @Override
       public void e() {
-         if (!this.b.aT() && this.b.ag.a(this.a(100)) == 0) {
+         if (!this.b.aS() && this.b.ag.a(this.a(100)) == 0) {
             cdc.this.a(cdc.this.ac_(), cdc.this.eV(), cdc.this.eW());
          }
 
-         if (!this.b.bO() && this.b.ag.a(this.a(50)) == 0) {
+         if (!this.b.bN() && this.b.ag.a(this.a(50)) == 0) {
             this.b.K().a();
          }
 
@@ -426,7 +426,7 @@ public abstract class cdc extends bzj {
 
       @Override
       public boolean b() {
-         return this.a.L().l() ? false : this.a.q() == null && !this.c.a(this.a.dj(), (double)(this.a.dg() + (float)this.e)) && !this.f;
+         return this.a.L().l() ? false : this.a.q() == null && !this.c.a(this.a.dj(), (double)(this.a.df() + (float)this.e)) && !this.f;
       }
 
       @Override

@@ -1,5 +1,10 @@
-class po extends Throwable {
-   public po(int $$0, int $$1, px $$2) {
-      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.z() + ". max attempts: " + $$2.y() + ".", $$2.n());
-   }
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface po {
+   String a();
 }

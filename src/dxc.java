@@ -11,7 +11,7 @@ public class dxc extends dvg {
       super(dvz.G, $$1, 64, $$2, 12, 10, 15, a($$0));
    }
 
-   public dxc(qx $$0) {
+   public dxc(qy $$0) {
       super(dvz.G, $$0);
       this.j = $$0.q("placedMainChest");
       this.k = $$0.q("placedHiddenChest");
@@ -20,7 +20,7 @@ public class dxc extends dvg {
    }
 
    @Override
-   protected void a(dvy $$0, qx $$1) {
+   protected void a(dvy $$0, qy $$1) {
       super.a($$0, $$1);
       $$1.a("placedMainChest", this.j);
       $$1.a("placedHiddenChest", this.k);

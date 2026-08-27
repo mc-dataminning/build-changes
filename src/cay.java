@@ -64,12 +64,12 @@ public class cay extends bzi implements dkc {
    }
 
    @Override
-   public vd<ww> V() {
-      return new wx(this, this.c(bjs.n) ? 1 : 0);
+   public ve<wx> di() {
+      return new wy(this, this.c(bjs.n) ? 1 : 0);
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       if ($$0.o() == 1) {
          this.b(bjs.n);
@@ -78,7 +78,7 @@ public class cay extends bzi implements dkc {
 
    @Override
    public boolean a(cpy $$0) {
-      return super.a($$0) && $$0.a(this, this.ah().n().a(this.dj()));
+      return super.a($$0) && $$0.a(this, this.ag().n().a(this.dj()));
    }
 
    @Override
@@ -106,7 +106,7 @@ public class cay extends bzi implements dkc {
    }
 
    @Override
-   protected float aL() {
+   protected float aK() {
       return this.Z + 0.55F;
    }
 
@@ -115,7 +115,7 @@ public class cay extends bzi implements dkc {
    }
 
    @Override
-   public boolean aW() {
+   public boolean aV() {
       return true;
    }
 
@@ -180,8 +180,8 @@ public class cay extends bzi implements dkc {
       if (this.dL().w_()) {
          if (this.ah % this.gl() == 0) {
             this.cu = 10;
-            if (!this.aT()) {
-               this.dL().a(this.dq(), this.ds(), this.dw(), ape.zC, this.db(), 5.0F, this.eW(), false);
+            if (!this.aS()) {
+               this.dL().a(this.dq(), this.ds(), this.dw(), ape.zC, this.da(), 5.0F, this.eW(), false);
             }
          }
 
@@ -195,7 +195,7 @@ public class cay extends bzi implements dkc {
             this.cu--;
          }
 
-         switch (this.ao()) {
+         switch (this.an()) {
             case n:
                this.a(this.d);
                break;
@@ -206,13 +206,13 @@ public class cay extends bzi implements dkc {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       akr $$0 = (akr)this.dL();
       $$0.ad().a("wardenBrain");
       this.dN().a($$0, this);
       this.dL().ad().c();
-      super.Y();
-      if ((this.ah + this.ai()) % 120 == 0) {
+      super.X();
+      if ((this.ah + this.ah()) % 120 == 0) {
          a($$0, this.dj(), this, 20);
       }
 
@@ -254,7 +254,7 @@ public class cay extends bzi implements dkc {
    private void a(bim $$0) {
       if ((float)$$0.b() < 4500.0F) {
          asc $$1 = this.ef();
-         dfj $$2 = this.bj();
+         dfj $$2 = this.bi();
          if ($$2.l() != cza.a) {
             for (int $$3 = 0; $$3 < 30; $$3++) {
                double $$4 = this.dq() + (double)arx.b($$1, -0.7F, 0.7F);
@@ -269,7 +269,7 @@ public class cay extends bzi implements dkc {
    @Override
    public void a(aef<?> $$0) {
       if (as.equals($$0)) {
-         switch (this.ao()) {
+         switch (this.an()) {
             case n:
                this.d.a(this.ah);
                break;
@@ -288,7 +288,7 @@ public class cay extends bzi implements dkc {
    }
 
    @Override
-   public boolean cM() {
+   public boolean cL() {
       return this.gh();
    }
 
@@ -303,8 +303,8 @@ public class cay extends bzi implements dkc {
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 
@@ -321,11 +321,11 @@ public class cay extends bzi implements dkc {
          && this.dL() == $$0.dL()
          && bit.e.test($$0)
          && !this.s($$0)
-         && $$1.ah() != biu.d
-         && $$1.ah() != biu.bi
-         && !$$1.cr()
+         && $$1.ag() != biu.d
+         && $$1.ag() != biu.bi
+         && !$$1.cq()
          && !$$1.ev()
-         && this.dL().B_().a($$1.cH())) {
+         && this.dL().B_().a($$1.cG())) {
          return true;
       }
 
@@ -338,22 +338,22 @@ public class cay extends bzi implements dkc {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
-      cax.a(this::a).encodeStart(ri.a, this.cz).resultOrPartial(bV::error).ifPresent($$1 -> $$0.a("anger", $$1));
-      dkc.a.a.encodeStart(ri.a, this.cy).resultOrPartial(bV::error).ifPresent($$1 -> $$0.a("listener", $$1));
+      cax.a(this::a).encodeStart(rj.a, this.cz).resultOrPartial(bV::error).ifPresent($$1 -> $$0.a("anger", $$1));
+      dkc.a.a.encodeStart(rj.a, this.cy).resultOrPartial(bV::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.e("anger")) {
-         cax.a(this::a).parse(new Dynamic(ri.a, $$0.c("anger"))).resultOrPartial(bV::error).ifPresent($$0x -> this.cz = $$0x);
+         cax.a(this::a).parse(new Dynamic(rj.a, $$0.c("anger"))).resultOrPartial(bV::error).ifPresent($$0x -> this.cz = $$0x);
          this.gk();
       }
 
       if ($$0.b("listener", 10)) {
-         dkc.a.a.parse(new Dynamic(ri.a, $$0.p("listener"))).resultOrPartial(bV::error).ifPresent($$0x -> this.cy = $$0x);
+         dkc.a.a.parse(new Dynamic(rj.a, $$0.p("listener"))).resultOrPartial(bV::error).ifPresent($$0x -> this.cy = $$0x);
       }
    }
 
@@ -412,7 +412,7 @@ public class cay extends bzi implements dkc {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       this.dN().a(bsh.aD, asx.a, 1200L);
       if ($$2 == bjk.k) {
          this.b(bjs.n);
@@ -451,8 +451,8 @@ public class cay extends bzi implements dkc {
    }
 
    @Override
-   public boolean bt() {
-      return !this.gh() && super.bt();
+   public boolean bs() {
+      return !this.gh() && super.bs();
    }
 
    @Override
@@ -505,7 +505,7 @@ public class cay extends bzi implements dkc {
 
    class a implements dkc.d {
       private static final int b = 16;
-      private final djx c = new djr(cay.this, cay.this.cI());
+      private final djx c = new djr(cay.this, cay.this.cH());
 
       @Override
       public int a() {

@@ -32,8 +32,8 @@ public class eix<T> implements eja<T>, ejc<T> {
    }
 
    @Override
-   public rq b(long $$0, Function<T, String> $$1) {
-      rd $$2 = new rd();
+   public rr b(long $$0, Function<T, String> $$1) {
+      re $$2 = new re();
 
       for (eiy<T> $$3 : this.a) {
          $$2.add($$3.a($$1));
@@ -46,7 +46,7 @@ public class eix<T> implements eja<T>, ejc<T> {
       return List.copyOf(this.a);
    }
 
-   public static <T> eix<T> a(rd $$0, Function<String, Optional<T>> $$1, cpc $$2) {
+   public static <T> eix<T> a(re $$0, Function<String, Optional<T>> $$1, cpc $$2) {
       eix<T> $$3 = new eix<>();
       eiy.a($$0, $$1, $$2, $$3::a);
       return $$3;

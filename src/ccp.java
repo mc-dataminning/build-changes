@@ -17,7 +17,7 @@ public class ccp extends ccg {
       if (!this.dL().B) {
          biq $$1 = $$0.a();
          biq $$2 = this.v();
-         int $$3 = $$1.ay();
+         int $$3 = $$1.ax();
          $$1.g(5);
          if (!$$1.a(this.dM().a((ccg)this, $$2), 5.0F)) {
             $$1.h($$3);
@@ -45,12 +45,12 @@ public class ccp extends ccg {
    protected void a(ehl $$0) {
       super.a($$0);
       if (!this.dL().B) {
-         this.al();
+         this.ak();
       }
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return false;
    }
 

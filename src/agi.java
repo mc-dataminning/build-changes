@@ -9,8 +9,8 @@ import java.util.Collections;
 import java.util.function.Predicate;
 
 public class agi {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("clear.failed.multiple", $$0));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("clear.failed.single", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("clear.failed.multiple", $$0));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -42,7 +42,7 @@ public class agi {
 
       if ($$4 == 0) {
          if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().ac());
+            throw a.create($$1.iterator().next().ab());
          } else {
             throw b.create($$1.size());
          }
@@ -50,14 +50,14 @@ public class agi {
          int $$6 = $$4;
          if ($$3 == 0) {
             if ($$1.size() == 1) {
-               $$0.a(() -> tl.a("commands.clear.test.single", $$6, $$1.iterator().next().N_()), true);
+               $$0.a(() -> tm.a("commands.clear.test.single", $$6, $$1.iterator().next().N_()), true);
             } else {
-               $$0.a(() -> tl.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+               $$0.a(() -> tm.a("commands.clear.test.multiple", $$6, $$1.size()), true);
             }
          } else if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.clear.success.single", $$6, $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.clear.success.single", $$6, $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+            $$0.a(() -> tm.a("commands.clear.success.multiple", $$6, $$1.size()), true);
          }
 
          return $$4;

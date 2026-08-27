@@ -23,7 +23,7 @@ public class bne extends bkx<cbh> {
          return false;
       } else {
          bjg $$3 = $$2.c(bsh.q).get();
-         return $$3.ah() == biu.bt && $$1.bw() && $$3.bw() && !$$1.m_() && $$1.f($$3) <= 17.0;
+         return $$3.ag() == biu.bt && $$1.bv() && $$3.bv() && !$$1.m_() && $$1.f($$3) <= 17.0;
       }
    }
 

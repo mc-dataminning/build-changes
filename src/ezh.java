@@ -1,7 +1,7 @@
 public abstract class ezh extends eyk {
-   private static final tl m = tl.c("advMode.setCommand");
-   private static final tl n = tl.c("advMode.command");
-   private static final tl o = tl.c("advMode.previousOutput");
+   private static final tm m = tm.c("advMode.setCommand");
+   private static final tm n = tm.c("advMode.command");
+   private static final tm o = tm.c("advMode.previousOutput");
    protected esz a;
    protected esz b;
    protected esq c;
@@ -22,28 +22,28 @@ public abstract class ezh extends eyk {
 
    abstract cow l();
 
-   abstract int C();
+   abstract int D();
 
    @Override
    protected void aI_() {
-      this.c = this.d(esq.a(tk.d, $$0x -> this.D()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
-      this.k = this.d(esq.a(tk.e, $$0x -> this.az_()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
+      this.c = this.d(esq.a(tl.d, $$0x -> this.E()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
+      this.k = this.d(esq.a(tl.e, $$0x -> this.az_()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
       boolean $$0 = this.l().o();
-      this.l = this.d(esx.a(tl.b("O"), tl.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.C(), 20, 20, tl.c("advMode.trackOutput"), ($$0x, $$1) -> {
+      this.l = this.d(esx.a(tm.b("O"), tm.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.D(), 20, 20, tm.c("advMode.trackOutput"), ($$0x, $$1) -> {
          cow $$2 = this.l();
          $$2.a($$1);
          this.c($$1);
       }));
-      this.a = new esz(this.i, this.g / 2 - 150, 50, 300, 20, tl.c("advMode.command")) {
+      this.a = new esz(this.i, this.g / 2 - 150, 50, 300, 20, tm.c("advMode.command")) {
          @Override
-         protected ty aF_() {
-            return super.aF_().b(ezh.this.p.c());
+         protected tz aF_() {
+            return super.aF_().b(ezh.this.p.e());
          }
       };
       this.a.l(32500);
       this.a.b(this::a);
       this.e(this.a);
-      this.b = new esz(this.i, this.g / 2 - 150, this.C(), 276, 20, tl.c("advMode.previousOutput"));
+      this.b = new esz(this.i, this.g / 2 - 150, this.D(), 276, 20, tm.c("advMode.previousOutput"));
       this.b.l(32500);
       this.b.e(false);
       this.b.a("-");
@@ -51,8 +51,13 @@ public abstract class ezh extends eyk {
       this.c(this.a);
       this.p = new est(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
       this.p.a(true);
-      this.p.b();
+      this.p.d();
       this.c($$0);
+   }
+
+   @Override
+   protected tm A() {
+      return this.p.a() ? this.p.b() : super.A();
    }
 
    @Override
@@ -60,7 +65,7 @@ public abstract class ezh extends eyk {
       String $$3 = this.a.a();
       this.b($$0, $$1, $$2);
       this.a.a($$3);
-      this.p.b();
+      this.p.d();
    }
 
    @Override
@@ -68,7 +73,7 @@ public abstract class ezh extends eyk {
       this.b.a($$0 ? this.l().l().getString() : "-");
    }
 
-   protected void D() {
+   protected void E() {
       cow $$0 = this.l();
       this.a($$0);
       if (!$$0.o()) {
@@ -81,7 +86,7 @@ public abstract class ezh extends eyk {
    protected abstract void a(cow var1);
 
    private void a(String $$0) {
-      this.p.b();
+      this.p.d();
    }
 
    @Override
@@ -93,7 +98,7 @@ public abstract class ezh extends eyk {
       } else if ($$0 != 257 && $$0 != 335) {
          return false;
       } else {
-         this.D();
+         this.E();
          return true;
       }
    }
@@ -116,7 +121,7 @@ public abstract class ezh extends eyk {
       this.a.a($$0, $$1, $$2, $$3);
       int $$4 = 75;
       if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.C() - 135;
+         $$4 += 5 * 9 + 1 + this.D() - 135;
          $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
          this.b.a($$0, $$1, $$2, $$3);
       }

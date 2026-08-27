@@ -11,15 +11,15 @@ public class ezm extends ezi<ceo> {
    static final aex B = new aex("container/beacon/button");
    static final aex C = new aex("container/beacon/confirm");
    static final aex D = new aex("container/beacon/cancel");
-   private static final tl E = tl.c("block.minecraft.beacon.primary");
-   private static final tl F = tl.c("block.minecraft.beacon.secondary");
+   private static final tm E = tm.c("block.minecraft.beacon.primary");
+   private static final tm F = tm.c("block.minecraft.beacon.secondary");
    private final List<ezm.a> G = Lists.newArrayList();
    @Nullable
    bib H;
    @Nullable
    bib I;
 
-   public ezm(final ceo $$0, cbt $$1, tl $$2) {
+   public ezm(final ceo $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
       this.c = 230;
       this.k = 219;
@@ -77,12 +77,12 @@ public class ezm extends ezi<ceo> {
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.E();
+   public void D() {
+      super.D();
+      this.F();
    }
 
-   void E() {
+   void F() {
       int $$0 = this.p.l();
       this.G.forEach($$1 -> $$1.a($$0));
    }
@@ -120,7 +120,7 @@ public class ezm extends ezi<ceo> {
 
    class b extends ezm.f {
       public b(int $$0, int $$1) {
-         super($$0, $$1, ezm.D, tk.e);
+         super($$0, $$1, ezm.D, tl.e);
       }
 
       @Override
@@ -135,7 +135,7 @@ public class ezm extends ezi<ceo> {
 
    class c extends ezm.f {
       public c(int $$0, int $$1) {
-         super($$0, $$1, ezm.C, tk.d);
+         super($$0, $$1, ezm.C, tl.d);
       }
 
       @Override
@@ -169,8 +169,8 @@ public class ezm extends ezi<ceo> {
          this.a(eua.a(this.b($$0), null));
       }
 
-      protected ty b(bib $$0) {
-         return tl.c($$0.d());
+      protected tz b(bib $$0) {
+         return tm.c($$0.d());
       }
 
       @Override
@@ -182,7 +182,7 @@ public class ezm extends ezi<ceo> {
                ezm.this.I = this.d;
             }
 
-            ezm.this.E();
+            ezm.this.F();
          }
       }
 
@@ -198,7 +198,7 @@ public class ezm extends ezi<ceo> {
       }
 
       @Override
-      protected ty aF_() {
+      protected tz aF_() {
          return this.b(this.d);
       }
    }
@@ -207,10 +207,10 @@ public class ezm extends ezi<ceo> {
       private boolean a;
 
       protected e(int $$0, int $$1) {
-         super($$0, $$1, 22, 22, tk.a);
+         super($$0, $$1, 22, 22, tl.a);
       }
 
-      protected e(int $$0, int $$1, tl $$2) {
+      protected e(int $$0, int $$1, tm $$2) {
          super($$0, $$1, 22, 22, $$2);
       }
 
@@ -250,7 +250,7 @@ public class ezm extends ezi<ceo> {
    abstract static class f extends ezm.e {
       private final aex a;
 
-      protected f(int $$0, int $$1, aex $$2, tl $$3) {
+      protected f(int $$0, int $$1, aex $$2, tm $$3) {
          super($$0, $$1, $$3);
          this.a = $$2;
       }
@@ -267,8 +267,8 @@ public class ezm extends ezi<ceo> {
       }
 
       @Override
-      protected ty b(bib $$0) {
-         return tl.c($$0.d()).f(" II");
+      protected tz b(bib $$0) {
+         return tm.c($$0.d()).f(" II");
       }
 
       @Override

@@ -1,7 +1,7 @@
 public class faf extends ezi<cfi> {
    private static final aex x = new aex("textures/gui/container/hopper.png");
 
-   public faf(cfi $$0, cbt $$1, tl $$2) {
+   public faf(cfi $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
       this.k = 133;
       this.o = this.k - 94;

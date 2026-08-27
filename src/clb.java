@@ -20,7 +20,7 @@ public class clb extends cja {
       super($$0);
    }
 
-   public static boolean a(@Nullable qx $$0) {
+   public static boolean a(@Nullable qy $$0) {
       if (!cla.a($$0)) {
          return false;
       } else if (!$$0.b("title", 8)) {
@@ -36,17 +36,17 @@ public class clb extends cja {
    }
 
    public static int k(cjf $$0) {
-      qx $$1 = $$0.v();
+      qy $$1 = $$0.v();
       return $$1 != null ? $$1.c("pages", 8).size() : 0;
    }
 
    @Override
-   public tl m(cjf $$0) {
-      qx $$1 = $$0.v();
+   public tm m(cjf $$0) {
+      qy $$1 = $$0.v();
       if ($$1 != null) {
          String $$2 = $$1.l("title");
          if (!asq.b($$2)) {
-            return tl.b($$2);
+            return tm.b($$2);
          }
       }
 
@@ -54,15 +54,15 @@ public class clb extends cja {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       if ($$0.u()) {
-         qx $$4 = $$0.v();
+         qy $$4 = $$0.v();
          String $$5 = $$4.l("author");
          if (!asq.b($$5)) {
-            $$2.add(tl.a("book.byAuthor", $$5).a(n.h));
+            $$2.add(tm.a("book.byAuthor", $$5).a(n.h));
          }
 
-         $$2.add(tl.c("book.generation." + $$4.h("generation")).a(n.h));
+         $$2.add(tm.c("book.generation." + $$4.h("generation")).a(n.h));
       }
    }
 
@@ -87,14 +87,14 @@ public class clb extends cja {
    }
 
    public static boolean a(cjf $$0, @Nullable dt $$1, @Nullable cbu $$2) {
-      qx $$3 = $$0.v();
+      qy $$3 = $$0.v();
       if ($$3 != null && !$$3.q("resolved")) {
          $$3.a("resolved", true);
          if (!a($$3)) {
             return false;
          } else {
-            rd $$4 = $$3.c("pages", 8);
-            rd $$5 = new rd();
+            re $$4 = $$3.c("pages", 8);
+            re $$5 = new re();
 
             for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
                String $$7 = a($$1, $$2, $$4.j($$6));
@@ -102,12 +102,12 @@ public class clb extends cja {
                   return false;
                }
 
-               $$5.c($$6, ro.a($$7));
+               $$5.c($$6, rp.a($$7));
             }
 
             if ($$3.b("filtered_pages", 10)) {
-               qx $$8 = $$3.p("filtered_pages");
-               qx $$9 = new qx();
+               qy $$8 = $$3.p("filtered_pages");
+               qy $$9 = new qy();
 
                for (String $$10 : $$8.e()) {
                   String $$11 = a($$1, $$2, $$8.l($$10));
@@ -130,15 +130,15 @@ public class clb extends cja {
    }
 
    private static String a(@Nullable dt $$0, @Nullable cbu $$1, String $$2) {
-      tl $$5;
+      tm $$5;
       try {
-         $$5 = tl.a.b($$2);
-         $$5 = tn.a($$0, $$5, $$1, 0);
+         $$5 = tm.a.b($$2);
+         $$5 = to.a($$0, $$5, $$1, 0);
       } catch (Exception var5) {
-         $$5 = tl.b($$2);
+         $$5 = tm.b($$2);
       }
 
-      return tl.a.a($$5);
+      return tm.a.a($$5);
    }
 
    @Override

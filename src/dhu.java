@@ -74,7 +74,7 @@ public class dhu<T> implements dhw<T> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       this.e = $$0.m();
 
       for (int $$1 = 0; $$1 < this.e; $$1++) {
@@ -83,7 +83,7 @@ public class dhu<T> implements dhw<T> {
    }
 
    @Override
-   public void b(so $$0) {
+   public void b(sp $$0) {
       $$0.c(this.e);
 
       for (int $$1 = 0; $$1 < this.e; $$1++) {
@@ -93,10 +93,10 @@ public class dhu<T> implements dhw<T> {
 
    @Override
    public int a() {
-      int $$0 = tc.a(this.b());
+      int $$0 = td.a(this.b());
 
       for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += tc.a(this.a.a(this.b[$$1]));
+         $$0 += td.a(this.a.a(this.b[$$1]));
       }
 
       return $$0;

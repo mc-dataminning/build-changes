@@ -36,7 +36,7 @@ public class bra extends bqb {
    @Override
    public boolean a() {
       bjg $$0 = this.a.q();
-      if ($$0 != null && $$0.bw()) {
+      if ($$0 != null && $$0.bv()) {
          this.c = $$0;
          return true;
       } else {
@@ -46,7 +46,7 @@ public class bra extends bqb {
 
    @Override
    public boolean b() {
-      return this.a() || this.c.bw() && !this.a.L().l();
+      return this.a() || this.c.bv() && !this.a.L().l();
    }
 
    @Override

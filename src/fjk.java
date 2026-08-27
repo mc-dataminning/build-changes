@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
 public class fjk {
-   private static final tl a = tl.c("chat.validation_error").a(n.m, n.u);
+   private static final tm a = tm.c("chat.validation_error").a(n.m, n.u);
    private final eqv b;
    private final Deque<fjk.a> c = Queues.newArrayDeque();
    private long d;
@@ -53,7 +53,7 @@ public class fjk {
       this.c.clear();
    }
 
-   public boolean a(tw $$0) {
+   public boolean a(tx $$0) {
       return this.c.removeIf($$1 -> $$0.equals($$1.b()));
    }
 
@@ -61,7 +61,7 @@ public class fjk {
       return this.d > 0L && ac.b() < this.e + this.d;
    }
 
-   private void a(@Nullable tw $$0, BooleanSupplier $$1) {
+   private void a(@Nullable tx $$0, BooleanSupplier $$1) {
       if (this.e()) {
          this.c.add(new fjk.a($$0, $$1));
       } else {
@@ -69,10 +69,10 @@ public class fjk {
       }
    }
 
-   public void a(ua $$0, GameProfile $$1, th.a $$2) {
+   public void a(ub $$0, GameProfile $$1, ti.a $$2) {
       boolean $$3 = this.b.m.ac().c();
-      ua $$4 = $$3 ? $$0.a() : $$0;
-      tl $$5 = $$2.a($$4.c());
+      ub $$4 = $$3 ? $$0.a() : $$0;
+      tm $$5 = $$2.a($$4.c());
       Instant $$6 = Instant.now();
       this.a($$0.k(), () -> {
          boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
@@ -85,12 +85,12 @@ public class fjk {
       });
    }
 
-   public void a(UUID $$0, th.a $$1) {
+   public void a(UUID $$0, ti.a $$1) {
       this.a(null, () -> {
          if (this.b.a($$0)) {
             return false;
          } else {
-            tl $$2 = $$1.a(a);
+            tm $$2 = $$1.a(a);
             this.b.l.d().a($$2, null, eqq.d());
             this.e = ac.b();
             return true;
@@ -98,10 +98,10 @@ public class fjk {
       });
    }
 
-   public void a(tl $$0, th.a $$1) {
+   public void a(tm $$0, ti.a $$1) {
       Instant $$2 = Instant.now();
       this.a(null, () -> {
-         tl $$3 = $$1.a($$0);
+         tm $$3 = $$1.a($$0);
          this.b.l.d().a($$3);
          this.a($$1, $$0);
          this.a($$3, $$2);
@@ -110,19 +110,19 @@ public class fjk {
       });
    }
 
-   private boolean a(th.a $$0, ua $$1, tl $$2, GameProfile $$3, boolean $$4, Instant $$5) {
+   private boolean a(ti.a $$0, ub $$1, tm $$2, GameProfile $$3, boolean $$4, Instant $$5) {
       fjm $$6 = this.a($$1, $$2, $$5);
       if ($$4 && $$6.a()) {
          return false;
       } else if (!this.b.a($$1.f()) && !$$1.i()) {
          eqq $$7 = $$6.a($$1);
-         tw $$8 = $$1.k();
-         to $$9 = $$1.n();
+         tx $$8 = $$1.k();
+         tp $$9 = $$1.n();
          if ($$9.a()) {
             this.b.l.d().a($$2, $$8, $$7);
             this.a($$0, $$1.c());
          } else {
-            tl $$10 = $$9.b($$1.b());
+            tm $$10 = $$9.b($$1.b());
             if ($$10 != null) {
                this.b.l.d().a($$0.a($$10), $$8, $$7);
                this.a($$0, $$10);
@@ -137,25 +137,25 @@ public class fjk {
       }
    }
 
-   private void a(th.a $$0, tl $$1) {
+   private void a(ti.a $$0, tm $$1) {
       this.b.aV().a($$0.b($$1));
    }
 
-   private fjm a(ua $$0, tl $$1, Instant $$2) {
+   private fjm a(ub $$0, tm $$1, Instant $$2) {
       return this.a($$0.f()) ? fjm.a : fjm.a($$0, $$1, $$2);
    }
 
-   private void a(ua $$0, th.a $$1, GameProfile $$2, fjm $$3) {
+   private void a(ub $$0, ti.a $$1, GameProfile $$2, fjm $$3) {
       fjl $$4 = this.b.aX().b();
       $$4.a(fjo.a($$2, $$0, $$3));
    }
 
-   private void a(tl $$0, Instant $$1) {
+   private void a(tm $$0, Instant $$1) {
       fjl $$2 = this.b.aX().b();
       $$2.a(fjo.a($$0, $$1));
    }
 
-   public void a(tl $$0, boolean $$1) {
+   public void a(tm $$0, boolean $$1) {
       if (!this.b.m.aa().c() || !this.b.a(this.a($$0))) {
          if ($$1) {
             this.b.l.a($$0, false);
@@ -168,7 +168,7 @@ public class fjk {
       }
    }
 
-   private UUID a(tl $$0) {
+   private UUID a(tm $$0) {
       String $$1 = aso.a($$0);
       String $$2 = StringUtils.substringBetween($$1, "<", ">");
       return $$2 == null ? ac.d : this.b.aK().a($$2);
@@ -183,13 +183,13 @@ public class fjk {
       }
    }
 
-   static record a(@Nullable tw a, BooleanSupplier b) {
+   static record a(@Nullable tx a, BooleanSupplier b) {
       public boolean a() {
          return this.b.getAsBoolean();
       }
 
       @Nullable
-      public tw b() {
+      public tx b() {
          return this.a;
       }
 

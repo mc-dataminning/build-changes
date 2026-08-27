@@ -1,8 +1,8 @@
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
 public class exn extends eyk {
-   private static final tl a = tl.c("addServer.enterName");
-   private static final tl b = tl.c("addServer.enterIp");
+   private static final tm a = tm.c("addServer.enterName");
+   private static final tm b = tm.c("addServer.enterIp");
    private esq c;
    private final BooleanConsumer k;
    private final fjh l;
@@ -11,7 +11,7 @@ public class exn extends eyk {
    private final eyk o;
 
    public exn(eyk $$0, BooleanConsumer $$1, fjh $$2) {
-      super(tl.c("addServer.title"));
+      super(tm.c("addServer.title"));
       this.o = $$0;
       this.k = $$1;
       this.l = $$2;
@@ -19,25 +19,25 @@ public class exn extends eyk {
 
    @Override
    protected void aI_() {
-      this.n = new esz(this.i, this.g / 2 - 100, 66, 200, 20, tl.c("addServer.enterName"));
+      this.n = new esz(this.i, this.g / 2 - 100, 66, 200, 20, tm.c("addServer.enterName"));
       this.n.a(this.l.a);
-      this.n.b($$0 -> this.C());
+      this.n.b($$0 -> this.D());
       this.e(this.n);
-      this.m = new esz(this.i, this.g / 2 - 100, 106, 200, 20, tl.c("addServer.enterIp"));
+      this.m = new esz(this.i, this.g / 2 - 100, 106, 200, 20, tm.c("addServer.enterIp"));
       this.m.l(128);
       this.m.a(this.l.b);
-      this.m.b($$0 -> this.C());
+      this.m.b($$0 -> this.D());
       this.e(this.m);
       this.d(
          esx.a(fjh.a::a)
             .a(fjh.a.values())
             .a(this.l.b())
-            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, tl.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
+            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, tm.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
       );
-      this.c = this.d(esq.a(tl.c("addServer.add"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
-      this.d(esq.a(tk.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
+      this.c = this.d(esq.a(tm.c("addServer.add"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
+      this.d(esq.a(tl.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
       this.c(this.n);
-      this.C();
+      this.D();
    }
 
    @Override
@@ -60,7 +60,7 @@ public class exn extends eyk {
       this.f.a(this.o);
    }
 
-   private void C() {
+   private void D() {
       this.c.i = fki.b(this.m.a()) && !this.n.a().isEmpty();
    }
 

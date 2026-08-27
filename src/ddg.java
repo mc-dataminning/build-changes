@@ -6,13 +6,13 @@ public class ddg extends dcv {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("OutputSignal", this.a);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a = $$0.h("OutputSignal");
    }

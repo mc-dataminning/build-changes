@@ -47,7 +47,7 @@ public final class bem {
       }
    }
 
-   public static record b(ve a, String b, int c) {
+   public static record b(vf a, String b, int c) {
       private static final Map<bem.b, String> d;
 
       public String a() {
@@ -55,10 +55,10 @@ public final class bem {
       }
 
       public static bem.b a(RecordedEvent $$0) {
-         return new bem.b($$0.getEventType().getName().equals("minecraft.PacketSent") ? ve.b : ve.a, $$0.getString("protocolId"), $$0.getInt("packetId"));
+         return new bem.b($$0.getEventType().getName().equals("minecraft.PacketSent") ? vf.b : vf.a, $$0.getString("protocolId"), $$0.getInt("packetId"));
       }
 
-      public ve b() {
+      public vf b() {
          return this.a;
       }
 
@@ -73,9 +73,9 @@ public final class bem {
       static {
          Builder<bem.b, String> $$0 = ImmutableMap.builder();
 
-         for (sn $$1 : sn.values()) {
-            for (ve $$2 : ve.values()) {
-               Int2ObjectMap<Class<? extends vd<?>>> $$3 = $$1.a($$2);
+         for (so $$1 : so.values()) {
+            for (vf $$2 : vf.values()) {
+               Int2ObjectMap<Class<? extends ve<?>>> $$3 = $$1.a($$2);
                $$3.forEach(($$3x, $$4) -> $$0.put(new bem.b($$2, $$1.a(), $$3x), $$4.getSimpleName()));
             }
          }

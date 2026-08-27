@@ -7,12 +7,12 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public interface emh {
-   tl a = tl.c("mco.errorMessage.noDetails");
+   tm a = tm.c("mco.errorMessage.noDetails");
    Logger b = LogUtils.getLogger();
 
    int a();
 
-   tl b();
+   tm b();
 
    String c();
 
@@ -47,8 +47,8 @@ public interface emh {
       }
 
       @Override
-      public tl b() {
-         return tl.b(this.d);
+      public tm b() {
+         return tm.b(this.d);
       }
 
       @Override
@@ -57,16 +57,16 @@ public interface emh {
       }
    }
 
-   public static record b(int e, @Nullable tl f) implements emh {
-      public static final emh.b c = new emh.b(429, tl.c("mco.errorMessage.serviceBusy"));
-      public static final tl d = tl.c("mco.errorMessage.retry");
+   public static record b(int e, @Nullable tm f) implements emh {
+      public static final emh.b c = new emh.b(429, tm.c("mco.errorMessage.serviceBusy"));
+      public static final tm d = tm.c("mco.errorMessage.retry");
 
       public static emh.b a(String $$0) {
-         return new emh.b(500, tl.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
+         return new emh.b(500, tm.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
       }
 
       public static emh.b a(enr $$0) {
-         return new emh.b(500, tl.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
+         return new emh.b(500, tm.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
       }
 
       public static emh.b a(int $$0) {
@@ -83,7 +83,7 @@ public interface emh {
       }
 
       @Override
-      public tl b() {
+      public tm b() {
          return this.f != null ? this.f : a;
       }
 
@@ -99,7 +99,7 @@ public interface emh {
       }
 
       @Nullable
-      public tl e() {
+      public tm e() {
          return this.f;
       }
    }
@@ -111,19 +111,19 @@ public interface emh {
       }
 
       @Override
-      public tl b() {
+      public tm b() {
          String $$0 = "mco.errorMessage." + this.d;
          if (gak.a($$0)) {
-            return tl.c($$0);
+            return tm.c($$0);
          } else {
             if (this.e != null) {
                String $$1 = "mco.errorReason." + this.e;
                if (gak.a($$1)) {
-                  return tl.c($$1);
+                  return tm.c($$1);
                }
             }
 
-            return (tl)(this.f != null ? tl.b(this.f) : a);
+            return (tm)(this.f != null ? tm.b(this.f) : a);
          }
       }
 
@@ -158,8 +158,8 @@ public interface emh {
       }
 
       @Override
-      public tl b() {
-         return tl.b(this.d);
+      public tm b() {
+         return tm.b(this.d);
       }
 
       @Override

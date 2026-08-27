@@ -10,7 +10,7 @@ public class esa {
          if ($$1x != 1) {
             return -1;
          } else {
-            qx $$2x = $$0x.b("Explosion");
+            qy $$2x = $$0x.b("Explosion");
             int[] $$3 = $$2x != null && $$2x.b("Colors", 11) ? $$2x.n("Colors") : null;
             if ($$3 != null && $$3.length != 0) {
                if ($$3.length == 1) {

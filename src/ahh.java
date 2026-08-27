@@ -7,8 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ahh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.jfr.start.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.jfr.dump.failed", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.jfr.dump.failed", $$0));
 
    private ahh() {
    }
@@ -26,7 +26,7 @@ public class ahh {
       if (!bdv.e.a($$1)) {
          throw a.create();
       } else {
-         $$0.a(() -> tl.c("commands.jfr.started"), false);
+         $$0.a(() -> tm.c("commands.jfr.started"), false);
          return 1;
       }
    }
@@ -35,8 +35,8 @@ public class ahh {
       try {
          Path $$1 = Paths.get(".").relativize(bdv.e.b().normalize());
          Path $$2 = $$0.l().p() && !aa.aT ? $$1 : $$1.toAbsolutePath();
-         tl $$3 = tl.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new tj(tj.a.f, $$2.toString())).a(new tq(tq.a.a, tl.c("chat.copy.click"))));
-         $$0.a(() -> tl.a("commands.jfr.stopped", $$3), false);
+         tm $$3 = tm.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new tk(tk.a.f, $$2.toString())).a(new tr(tr.a.a, tm.c("chat.copy.click"))));
+         $$0.a(() -> tm.a("commands.jfr.stopped", $$3), false);
          return 1;
       } catch (Throwable var4) {
          throw b.create(var4.getMessage());

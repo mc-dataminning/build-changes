@@ -7,8 +7,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class ahy {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.recipe.take.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.recipe.take.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -51,9 +51,9 @@ public class ahy {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+            $$0.a(() -> tm.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
          }
 
          return $$3;
@@ -71,9 +71,9 @@ public class ahy {
          throw b.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+            $$0.a(() -> tm.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
          }
 
          return $$3;

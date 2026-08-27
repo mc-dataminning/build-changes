@@ -3,7 +3,7 @@ import javax.annotation.Nullable;
 
 public interface egd {
    @Nullable
-   rq a(ecq var1);
+   rr a(ecq var1);
 
    Set<eey<?>> b();
 

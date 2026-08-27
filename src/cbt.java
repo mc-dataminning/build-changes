@@ -356,10 +356,10 @@ public class cbt implements bgr, bhc {
       return this.i.get(this.l).a($$0);
    }
 
-   public rd a(rd $$0) {
+   public re a(re $$0) {
       for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
          if (!this.i.get($$1).b()) {
-            qx $$2 = new qx();
+            qy $$2 = new qy();
             $$2.a("Slot", (byte)$$1);
             this.i.get($$1).b($$2);
             $$0.add($$2);
@@ -368,7 +368,7 @@ public class cbt implements bgr, bhc {
 
       for (int $$3 = 0; $$3 < this.j.size(); $$3++) {
          if (!this.j.get($$3).b()) {
-            qx $$4 = new qx();
+            qy $$4 = new qy();
             $$4.a("Slot", (byte)($$3 + 100));
             this.j.get($$3).b($$4);
             $$0.add($$4);
@@ -377,7 +377,7 @@ public class cbt implements bgr, bhc {
 
       for (int $$5 = 0; $$5 < this.k.size(); $$5++) {
          if (!this.k.get($$5).b()) {
-            qx $$6 = new qx();
+            qy $$6 = new qy();
             $$6.a("Slot", (byte)($$5 + 150));
             this.k.get($$5).b($$6);
             $$0.add($$6);
@@ -387,13 +387,13 @@ public class cbt implements bgr, bhc {
       return $$0;
    }
 
-   public void b(rd $$0) {
+   public void b(re $$0) {
       this.i.clear();
       this.j.clear();
       this.k.clear();
 
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         qx $$2 = $$0.a($$1);
+         qy $$2 = $$0.a($$1);
          int $$3 = $$2.f("Slot") & 255;
          cjf $$4 = cjf.a($$2);
          if (!$$4.b()) {
@@ -453,8 +453,8 @@ public class cbt implements bgr, bhc {
    }
 
    @Override
-   public tl ac() {
-      return tl.c("container.inventory");
+   public tm ab() {
+      return tm.c("container.inventory");
    }
 
    public cjf e(int $$0) {

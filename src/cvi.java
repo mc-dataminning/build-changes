@@ -4,7 +4,7 @@ public class cvi extends crp<ddp> implements czw {
    public static final dgd b = cwo.aC;
    public static final dga c = dfz.C;
    protected static final eig d = csv.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final tl e = tl.c("container.enderchest");
+   private static final tm e = tm.c("container.enderchest");
 
    protected cvi(dfi.d $$0) {
       super($$0, () -> dcx.d);

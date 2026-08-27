@@ -4,17 +4,17 @@ import javax.annotation.Nullable;
 public class ckh extends cja {
    private static final n a = n.h;
    private static final n b = n.j;
-   private static final tl c = tl.c(ac.a("item", new aex("smithing_template.ingredients"))).a(a);
-   private static final tl d = tl.c(ac.a("item", new aex("smithing_template.applies_to"))).a(a);
-   private static final tl e = tl.c(ac.a("upgrade", new aex("netherite_upgrade"))).a(a);
-   private static final tl f = tl.c(ac.a("item", new aex("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final tl g = tl.c(ac.a("item", new aex("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final tl h = tl.c(ac.a("item", new aex("smithing_template.armor_trim.base_slot_description")));
-   private static final tl i = tl.c(ac.a("item", new aex("smithing_template.armor_trim.additions_slot_description")));
-   private static final tl j = tl.c(ac.a("item", new aex("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final tl k = tl.c(ac.a("item", new aex("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final tl r = tl.c(ac.a("item", new aex("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final tl s = tl.c(ac.a("item", new aex("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final tm c = tm.c(ac.a("item", new aex("smithing_template.ingredients"))).a(a);
+   private static final tm d = tm.c(ac.a("item", new aex("smithing_template.applies_to"))).a(a);
+   private static final tm e = tm.c(ac.a("upgrade", new aex("netherite_upgrade"))).a(a);
+   private static final tm f = tm.c(ac.a("item", new aex("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final tm g = tm.c(ac.a("item", new aex("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final tm h = tm.c(ac.a("item", new aex("smithing_template.armor_trim.base_slot_description")));
+   private static final tm i = tm.c(ac.a("item", new aex("smithing_template.armor_trim.additions_slot_description")));
+   private static final tm j = tm.c(ac.a("item", new aex("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final tm k = tm.c(ac.a("item", new aex("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final tm r = tm.c(ac.a("item", new aex("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final tm s = tm.c(ac.a("item", new aex("smithing_template.netherite_upgrade.additions_slot_description")));
    private static final aex t = new aex("item/empty_armor_slot_helmet");
    private static final aex u = new aex("item/empty_armor_slot_chestplate");
    private static final aex v = new aex("item/empty_armor_slot_leggings");
@@ -31,15 +31,15 @@ public class ckh extends cja {
    private static final aex G = new aex("item/empty_slot_diamond");
    private static final aex H = new aex("item/empty_slot_lapis_lazuli");
    private static final aex I = new aex("item/empty_slot_amethyst_shard");
-   private final tl J;
-   private final tl K;
-   private final tl L;
-   private final tl M;
-   private final tl N;
+   private final tm J;
+   private final tm K;
+   private final tm L;
+   private final tm M;
+   private final tm N;
    private final List<aex> O;
    private final List<aex> P;
 
-   public ckh(tl $$0, tl $$1, tl $$2, tl $$3, tl $$4, List<aex> $$5, List<aex> $$6) {
+   public ckh(tm $$0, tm $$1, tm $$2, tm $$3, tm $$4, List<aex> $$5, List<aex> $$6) {
       super(new cja.a());
       this.J = $$0;
       this.K = $$1;
@@ -55,7 +55,7 @@ public class ckh extends cja {
    }
 
    public static ckh a(aex $$0) {
-      return new ckh(f, g, tl.c(ac.a("trim_pattern", $$0)).a(a), h, i, A(), B());
+      return new ckh(f, g, tm.c(ac.a("trim_pattern", $$0)).a(a), h, i, A(), B());
    }
 
    public static ckh h() {
@@ -79,21 +79,21 @@ public class ckh extends cja {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       super.a($$0, $$1, $$2, $$3);
       $$2.add(this.L);
-      $$2.add(tk.a);
+      $$2.add(tl.a);
       $$2.add(d);
-      $$2.add(tk.a().b(this.J));
+      $$2.add(tl.a().b(this.J));
       $$2.add(c);
-      $$2.add(tk.a().b(this.K));
+      $$2.add(tl.a().b(this.K));
    }
 
-   public tl i() {
+   public tm i() {
       return this.M;
    }
 
-   public tl x() {
+   public tm x() {
       return this.N;
    }
 

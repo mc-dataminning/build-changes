@@ -9,8 +9,8 @@ public class fxk<T extends bve> extends fxp<T, few<T>> {
    public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
       if (!$$3.m_()) {
          eqv $$10 = eqv.O();
-         boolean $$11 = $$10.b($$3) && $$3.ce();
-         if (!$$3.ce() || $$11) {
+         boolean $$11 = $$10.b($$3) && $$3.cd();
+         if (!$$3.cd() || $$11) {
             dfj $$12 = $$3.t().a();
             int $$13 = fui.c($$3, 0.0F);
             gbf $$14 = this.a.a($$12);

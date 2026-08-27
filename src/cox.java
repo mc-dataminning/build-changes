@@ -64,14 +64,14 @@ public abstract class cox {
             cqm $$4 = this.b($$0, $$3, $$1);
 
             for (int $$5 = 0; $$5 < this.k; $$5++) {
-               qx $$6 = $$4.a();
+               qy $$6 = $$4.a();
                Optional<biu<?>> $$7 = biu.a($$6);
                if ($$7.isEmpty()) {
                   this.c($$0, $$1);
                   return;
                }
 
-               rd $$8 = $$6.c("Pos", 6);
+               re $$8 = $$6.c("Pos", 6);
                int $$9 = $$8.size();
                double $$10 = $$9 >= 1 ? $$8.h(0) : (double)$$1.u() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
                double $$11 = $$9 >= 2 ? $$8.h(1) : (double)($$1.v() + $$3.a(3) - 1);
@@ -156,18 +156,18 @@ public abstract class cox {
       this.a($$0, $$1, 1);
    }
 
-   public void a(@Nullable cpv $$0, gw $$1, qx $$2) {
+   public void a(@Nullable cpv $$0, gw $$1, qy $$2) {
       this.d = $$2.g("Delay");
       boolean $$3 = $$2.b("SpawnData", 10);
       if ($$3) {
-         cqm $$4 = cqm.b.parse(ri.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(cqm::new);
+         cqm $$4 = cqm.b.parse(rj.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(cqm::new);
          this.a($$0, $$1, $$4);
       }
 
       boolean $$5 = $$2.b("SpawnPotentials", 9);
       if ($$5) {
-         rd $$6 = $$2.c("SpawnPotentials", 10);
-         this.e = cqm.c.parse(ri.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(bfi::b);
+         re $$6 = $$2.c("SpawnPotentials", 10);
+         this.e = cqm.c.parse(rj.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(bfi::b);
       } else {
          this.e = bfi.a(this.f != null ? this.f : new cqm());
       }
@@ -190,7 +190,7 @@ public abstract class cox {
       this.l = null;
    }
 
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       $$0.a("Delay", (short)this.d);
       $$0.a("MinSpawnDelay", (short)this.i);
       $$0.a("MaxSpawnDelay", (short)this.j);
@@ -199,17 +199,17 @@ public abstract class cox {
       $$0.a("RequiredPlayerRange", (short)this.n);
       $$0.a("SpawnRange", (short)this.o);
       if (this.f != null) {
-         $$0.a("SpawnData", (rq)cqm.b.encodeStart(ri.a, this.f).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData")));
+         $$0.a("SpawnData", (rr)cqm.b.encodeStart(rj.a, this.f).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData")));
       }
 
-      $$0.a("SpawnPotentials", (rq)cqm.c.encodeStart(ri.a, this.e).result().orElseThrow());
+      $$0.a("SpawnPotentials", (rr)cqm.c.encodeStart(rj.a, this.e).result().orElseThrow());
       return $$0;
    }
 
    @Nullable
    public biq a(cpv $$0, asc $$1, gw $$2) {
       if (this.l == null) {
-         qx $$3 = this.b($$0, $$1, $$2).a();
+         qy $$3 = this.b($$0, $$1, $$2).a();
          if (!$$3.b("id", 8)) {
             return null;
          }

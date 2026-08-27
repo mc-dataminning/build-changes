@@ -27,7 +27,7 @@ public class ddh extends dcv {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("Target")) {
          this.n = $$0.a("Target");
@@ -37,10 +37,10 @@ public class ddh extends dcv {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       if (this.m != null) {
-         $$0.a("Target", this.m.cw());
+         $$0.a("Target", this.m.cv());
       }
    }
 
@@ -49,7 +49,7 @@ public class ddh extends dcv {
    }
 
    @Override
-   public qx as_() {
+   public qy as_() {
       return this.o();
    }
 
@@ -154,7 +154,7 @@ public class ddh extends dcv {
       List<cbu> $$9 = $$0.a(cbu.class, $$8);
       if (!$$9.isEmpty()) {
          for (cbu $$10 : $$9) {
-            if ($$1.a($$10.dl(), (double)$$4) && $$10.aZ()) {
+            if ($$1.a($$10.dl(), (double)$$4) && $$10.aY()) {
                $$10.b(new bid(bif.C, 260, 0, true, true));
             }
          }
@@ -170,11 +170,11 @@ public class ddh extends dcv {
          $$4.m = a($$0, $$1, $$4.n);
          $$4.n = null;
       } else if ($$4.m == null) {
-         List<bjg> $$7 = $$0.a(bjg.class, a($$1), $$0x -> $$0x instanceof bza && $$0x.aZ());
+         List<bjg> $$7 = $$0.a(bjg.class, a($$1), $$0x -> $$0x instanceof bza && $$0x.aY());
          if (!$$7.isEmpty()) {
             $$4.m = $$7.get($$0.z.a($$7.size()));
          }
-      } else if (!$$4.m.bw() || !$$1.a($$4.m.dl(), 8.0)) {
+      } else if (!$$4.m.bv() || !$$1.a($$4.m.dl(), 8.0)) {
          $$4.m = null;
       }
 
@@ -191,7 +191,7 @@ public class ddh extends dcv {
    private static void a(cpv $$0, gw $$1, ddh $$2) {
       if ($$2.n == null) {
          $$2.m = null;
-      } else if ($$2.m == null || !$$2.m.cw().equals($$2.n)) {
+      } else if ($$2.m == null || !$$2.m.cv().equals($$2.n)) {
          $$2.m = a($$0, $$1, $$2.n);
          if ($$2.m == null) {
             $$2.n = null;
@@ -208,7 +208,7 @@ public class ddh extends dcv {
 
    @Nullable
    private static bjg a(cpv $$0, gw $$1, UUID $$2) {
-      List<bjg> $$3 = $$0.a(bjg.class, a($$1), $$1x -> $$1x.cw().equals($$2));
+      List<bjg> $$3 = $$0.a(bjg.class, a($$1), $$1x -> $$1x.cv().equals($$2));
       return $$3.size() == 1 ? $$3.get(0) : null;
    }
 
@@ -230,9 +230,9 @@ public class ddh extends dcv {
 
       if ($$3 != null) {
          ehn $$13 = new ehn($$3.dq(), $$3.du(), $$3.dw());
-         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dg());
-         float $$15 = -1.0F + $$5.i() * $$3.dh();
-         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dg());
+         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.df());
+         float $$15 = -1.0F + $$5.i() * $$3.dg();
+         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.df());
          ehn $$17 = new ehn((double)$$14, (double)$$15, (double)$$16);
          $$0.a(ix.al, $$13.c, $$13.d, $$13.e, $$17.c, $$17.d, $$17.e);
       }

@@ -1,14 +1,13 @@
-public record wi(gw b, int c) implements vw {
-   public static final aex a = new aex("debug/poi_ticket_count");
+public record wi(gw b) implements vx {
+   public static final aex a = new aex("debug/poi_removed");
 
-   public wi(so $$0) {
-      this($$0.e(), $$0.readInt());
+   public wi(sp $$0) {
+      this($$0.e());
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.b);
-      $$0.p(this.c);
    }
 
    @Override

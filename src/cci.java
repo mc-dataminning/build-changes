@@ -60,19 +60,19 @@ public class cci extends ccm {
 
    @Override
    protected void a_() {
-      this.am().a(g, 0);
-      this.am().a(h, false);
+      this.al().a(g, 0);
+      this.al().a(h, false);
    }
 
    @Override
    public void a(aef<?> $$0) {
       if (g.equals($$0)) {
-         int $$1 = this.am().b(g);
+         int $$1 = this.al().b(g);
          this.o = $$1 > 0 ? this.dL().a($$1 - 1) : null;
       }
 
       if (h.equals($$0)) {
-         this.d = this.am().b(h);
+         this.d = this.al().b(h);
          if (this.d) {
             this.o(this.do().c, (double)(-0.4F * arx.a(this.c, 0.6F, 1.0F)), this.do().e);
          }
@@ -93,16 +93,16 @@ public class cci extends ccm {
 
    @Override
    public void l() {
-      this.c.b(this.cw().getLeastSignificantBits() ^ this.dL().V());
+      this.c.b(this.cv().getLeastSignificantBits() ^ this.dL().V());
       super.l();
       cbu $$0 = this.s();
       if ($$0 == null) {
-         this.al();
+         this.ak();
       } else if (this.dL().B || !this.a($$0)) {
-         if (this.aB()) {
+         if (this.aA()) {
             this.i++;
             if (this.i >= 1200) {
-               this.al();
+               this.ak();
                return;
             }
          } else {
@@ -180,13 +180,13 @@ public class cci extends ccm {
 
          this.a(bjm.a, this.do());
          this.H();
-         if (this.p == cci.a.a && (this.aB() || this.P)) {
+         if (this.p == cci.a.a && (this.aA() || this.P)) {
             this.f(ehn.b);
          }
 
          double $$7 = 0.92;
          this.f(this.do().a(0.92));
-         this.aq();
+         this.ap();
       }
    }
 
@@ -195,10 +195,10 @@ public class cci extends ccm {
       cjf $$2 = $$0.eT();
       boolean $$3 = $$1.a(cji.qh);
       boolean $$4 = $$2.a(cji.qh);
-      if (!$$0.dG() && $$0.bw() && ($$3 || $$4) && !(this.f($$0) > 1024.0)) {
+      if (!$$0.dG() && $$0.bv() && ($$3 || $$4) && !(this.f($$0) > 1024.0)) {
          return false;
       } else {
-         this.al();
+         this.ak();
          return true;
       }
    }
@@ -210,7 +210,7 @@ public class cci extends ccm {
 
    @Override
    protected boolean a(biq $$0) {
-      return super.a($$0) || $$0.bw() && $$0 instanceof byn;
+      return super.a($$0) || $$0.bv() && $$0 instanceof byn;
    }
 
    @Override
@@ -229,7 +229,7 @@ public class cci extends ccm {
 
    private void A(@Nullable biq $$0) {
       this.o = $$0;
-      this.am().b(g, $$0 == null ? 0 : $$0.ai() + 1);
+      this.al().b(g, $$0 == null ? 0 : $$0.ah() + 1);
    }
 
    private void a(gw $$0) {
@@ -249,7 +249,7 @@ public class cci extends ccm {
          if (this.j <= 0) {
             this.k = 0;
             this.l = 0;
-            this.am().b(h, false);
+            this.al().b(h, false);
          }
       } else if (this.l > 0) {
          this.l -= $$2;
@@ -275,10 +275,10 @@ public class cci extends ccm {
          } else {
             this.a(ape.hQ, 0.25F, 1.0F + (this.ag.i() - this.ag.i()) * 0.4F);
             double $$13 = this.ds() + 0.5;
-            $$1.a(ix.e, this.dq(), $$13, this.dw(), (int)(1.0F + this.dg() * 20.0F), (double)this.dg(), 0.0, (double)this.dg(), 0.2F);
-            $$1.a(ix.B, this.dq(), $$13, this.dw(), (int)(1.0F + this.dg() * 20.0F), (double)this.dg(), 0.0, (double)this.dg(), 0.2F);
+            $$1.a(ix.e, this.dq(), $$13, this.dw(), (int)(1.0F + this.df() * 20.0F), (double)this.df(), 0.0, (double)this.df(), 0.2F);
+            $$1.a(ix.B, this.dq(), $$13, this.dw(), (int)(1.0F + this.df() * 20.0F), (double)this.df(), 0.0, (double)this.df(), 0.2F);
             this.j = arx.a(this.ag, 20, 40);
-            this.am().b(h, true);
+            this.al().b(h, true);
          }
       } else if (this.k > 0) {
          this.k -= $$2;
@@ -357,11 +357,11 @@ public class cci extends ccm {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
    }
 
    public int a(cjf $$0) {
@@ -396,11 +396,11 @@ public class cci extends ccm {
             $$2 = 1;
          }
 
-         if (this.aB()) {
+         if (this.aA()) {
             $$2 = 2;
          }
 
-         this.al();
+         this.ak();
          return $$2;
       } else {
          return 0;
@@ -425,7 +425,7 @@ public class cci extends ccm {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.a;
    }
 
@@ -436,7 +436,7 @@ public class cci extends ccm {
    }
 
    @Override
-   public void an() {
+   public void am() {
       this.a(null);
    }
 
@@ -465,23 +465,23 @@ public class cci extends ccm {
    }
 
    @Override
-   public boolean ct() {
+   public boolean cs() {
       return false;
    }
 
    @Override
-   public vd<ww> V() {
+   public ve<wx> di() {
       biq $$0 = this.v();
-      return new wx(this, $$0 == null ? this.ai() : $$0.ai());
+      return new wy(this, $$0 == null ? this.ah() : $$0.ah());
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       if (this.s() == null) {
          int $$1 = $$0.o();
          b.error("Failed to recreate fishing hook on client. {} (id: {}) is not a valid owner.", this.dL().a($$1), $$1);
-         this.ak();
+         this.aj();
       }
    }
 

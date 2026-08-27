@@ -47,7 +47,7 @@ public class ccc extends cca {
    }
 
    public static int c(cjf $$0) {
-      qx $$1 = $$0.v();
+      qy $$1 = $$0.v();
       return $$1 != null && $$1.b("CustomPotionColor", 99) ? $$1.h("CustomPotionColor") : -1;
    }
 
@@ -62,7 +62,7 @@ public class ccc extends cca {
 
    public void a(bid $$0) {
       this.k.add($$0);
-      this.am().b(h, cle.a(cle.a(this.j, this.k)));
+      this.al().b(h, cle.a(cle.a(this.j, this.k)));
    }
 
    @Override
@@ -113,7 +113,7 @@ public class ccc extends cca {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.j != clf.b) {
          $$0.a("Potion", jd.j.b(this.j).toString());
@@ -124,10 +124,10 @@ public class ccc extends cca {
       }
 
       if (!this.k.isEmpty()) {
-         rd $$1 = new rd();
+         re $$1 = new re();
 
          for (bid $$2 : this.k) {
-            $$1.add($$2.a(new qx()));
+            $$1.add($$2.a(new qy()));
          }
 
          $$0.a("custom_potion_effects", $$1);
@@ -135,7 +135,7 @@ public class ccc extends cca {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("Potion", 8)) {
          this.j = cle.c($$0);

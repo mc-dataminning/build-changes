@@ -31,7 +31,7 @@ public abstract class fnd extends cbu {
    @Nullable
    protected fjf a() {
       if (this.cm == null) {
-         this.cm = eqv.O().J().a(this.cw());
+         this.cm = eqv.O().J().a(this.cv());
       }
 
       return this.cm;
@@ -49,7 +49,7 @@ public abstract class fnd extends cbu {
 
    public gae b() {
       fjf $$0 = this.a();
-      return $$0 == null ? fzw.a(this.cw()) : $$0.g();
+      return $$0 == null ? fzw.a(this.cv()) : $$0.g();
    }
 
    public float c() {

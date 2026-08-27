@@ -19,13 +19,13 @@ public class ahn {
       $$0.register((LiteralArgumentBuilder)du.a("w").redirect($$1));
    }
 
-   private static void a(dt $$0, Collection<aks> $$1, ua $$2) {
-      th.a $$3 = th.a(th.e, $$0);
-      tz $$4 = tz.a($$2);
+   private static void a(dt $$0, Collection<aks> $$1, ub $$2) {
+      ti.a $$3 = ti.a(ti.e, $$0);
+      ua $$4 = ua.a($$2);
       boolean $$5 = false;
 
       for (aks $$6 : $$1) {
-         th.a $$7 = th.a(th.f, $$0).c($$6.N_());
+         ti.a $$7 = ti.a(ti.f, $$0).c($$6.N_());
          $$0.a($$4, false, $$7);
          boolean $$8 = $$0.a($$6);
          $$6.a($$4, $$8, $$3);

@@ -35,8 +35,8 @@ public class cmd extends cmb {
 
    public cjf a(cez $$0, hu $$1) {
       cjf $$2 = new cjf(cji.tA, 3);
-      qx $$3 = $$2.a("Fireworks");
-      rd $$4 = new rd();
+      qy $$3 = $$2.a("Fireworks");
+      re $$4 = new re();
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
@@ -45,7 +45,7 @@ public class cmd extends cmb {
             if (b.a($$7)) {
                $$5++;
             } else if (c.a($$7)) {
-               qx $$8 = $$7.b("Explosion");
+               qy $$8 = $$7.b("Explosion");
                if ($$8 != null) {
                   $$4.add($$8);
                }

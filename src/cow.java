@@ -6,15 +6,15 @@ import net.minecraft.server.MinecraftServer;
 
 public abstract class cow implements ds {
    private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
-   private static final tl c = tl.b("@");
+   private static final tm c = tm.b("@");
    private long d = -1L;
    private boolean e = true;
    private int f;
    private boolean g = true;
    @Nullable
-   private tl h;
+   private tm h;
    private String i = "";
-   private tl j = c;
+   private tm j = c;
 
    public int k() {
       return this.f;
@@ -24,17 +24,17 @@ public abstract class cow implements ds {
       this.f = $$0;
    }
 
-   public tl l() {
-      return this.h == null ? tk.a : this.h;
+   public tm l() {
+      return this.h == null ? tl.a : this.h;
    }
 
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       $$0.a("Command", this.i);
       $$0.a("SuccessCount", this.f);
-      $$0.a("CustomName", tl.a.a(this.j));
+      $$0.a("CustomName", tm.a.a(this.j));
       $$0.a("TrackOutput", this.g);
       if (this.h != null && this.g) {
-         $$0.a("LastOutput", tl.a.a(this.h));
+         $$0.a("LastOutput", tm.a.a(this.h));
       }
 
       $$0.a("UpdateLastExecution", this.e);
@@ -45,11 +45,11 @@ public abstract class cow implements ds {
       return $$0;
    }
 
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       this.i = $$0.l("Command");
       this.f = $$0.h("SuccessCount");
       if ($$0.b("CustomName", 8)) {
-         this.b(tl.a.a($$0.l("CustomName")));
+         this.b(tm.a.a($$0.l("CustomName")));
       }
 
       if ($$0.b("TrackOutput", 1)) {
@@ -58,9 +58,9 @@ public abstract class cow implements ds {
 
       if ($$0.b("LastOutput", 8) && this.g) {
          try {
-            this.h = tl.a.a($$0.l("LastOutput"));
+            this.h = tm.a.a($$0.l("LastOutput"));
          } catch (Throwable var3) {
-            this.h = tl.b(var3.getMessage());
+            this.h = tm.b(var3.getMessage());
          }
       } else {
          this.h = null;
@@ -90,7 +90,7 @@ public abstract class cow implements ds {
       if ($$0.B || $$0.V() == this.d) {
          return false;
       } else if ("Searge".equalsIgnoreCase(this.i)) {
-         this.h = tl.b("#itzlipofutzli");
+         this.h = tm.b("#itzlipofutzli");
          this.f = 1;
          return true;
       } else {
@@ -124,11 +124,11 @@ public abstract class cow implements ds {
       }
    }
 
-   public tl n() {
+   public tm n() {
       return this.j;
    }
 
-   public void b(@Nullable tl $$0) {
+   public void b(@Nullable tm $$0) {
       if ($$0 != null) {
          this.j = $$0;
       } else {
@@ -137,9 +137,9 @@ public abstract class cow implements ds {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       if (this.g) {
-         this.h = tl.b("[" + b.format(new Date()) + "] ").b($$0);
+         this.h = tm.b("[" + b.format(new Date()) + "] ").b($$0);
          this.f();
       }
    }
@@ -148,7 +148,7 @@ public abstract class cow implements ds {
 
    public abstract void f();
 
-   public void c(@Nullable tl $$0) {
+   public void c(@Nullable tm $$0) {
       this.h = $$0;
    }
 
@@ -164,7 +164,7 @@ public abstract class cow implements ds {
       if (!$$0.go()) {
          return bgy.d;
       } else {
-         if ($$0.cK().B) {
+         if ($$0.cJ().B) {
             $$0.a(this);
          }
 

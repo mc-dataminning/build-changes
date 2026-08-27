@@ -15,13 +15,13 @@ public enum fjr {
    l("extreme_violence_or_gore"),
    m("imminent_harm_to_person_or_property");
 
-   private final tl n;
+   private final tm n;
 
    private fjr(String $$0) {
-      this.n = tl.c("gui.banned.reason." + $$0);
+      this.n = tm.c("gui.banned.reason." + $$0);
    }
 
-   public tl a() {
+   public tm a() {
       return this.n;
    }
 

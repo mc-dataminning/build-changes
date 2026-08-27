@@ -113,7 +113,7 @@ public class fjd {
                   this.e = this.b.s.eS();
                   this.f = 0.0F;
                   this.g = 0.0F;
-                  this.b.r.a(this.b.s.ai(), this.d, this.n());
+                  this.b.r.a(this.b.s.ah(), this.d, this.n());
                }
 
                return new acf(acf.a.a, $$0, $$1, $$3x);
@@ -131,7 +131,7 @@ public class fjd {
          this.c.b(new acf(acf.a.b, this.d, hc.a));
          this.i = false;
          this.f = 0.0F;
-         this.b.r.a(this.b.s.ai(), this.d, -1);
+         this.b.r.a(this.b.s.ah(), this.d, -1);
          this.b.s.gl();
       }
    }
@@ -175,7 +175,7 @@ public class fjd {
                this.h = 5;
             }
 
-            this.b.r.a(this.b.s.ai(), this.d, this.n());
+            this.b.r.a(this.b.s.ah(), this.d, this.n());
             return true;
          }
       } else {
@@ -186,7 +186,7 @@ public class fjd {
    private void a(fix $$0, fke $$1) {
       try (fkd $$2 = $$0.a().a()) {
          int $$3 = $$2.b();
-         vd<abd> $$4 = $$1.predict($$3);
+         ve<abd> $$4 = $$1.predict($$3);
          this.c.b($$4);
       }
    }
@@ -274,7 +274,7 @@ public class fjd {
          return bgy.d;
       } else {
          this.o();
-         this.c.b(new abz.b($$0.dq(), $$0.ds(), $$0.dw(), $$0.dB(), $$0.dD(), $$0.aB()));
+         this.c.b(new abz.b($$0.dq(), $$0.ds(), $$0.dw(), $$0.dB(), $$0.dD(), $$0.aA()));
          MutableObject<bgy> $$2 = new MutableObject();
          this.a(this.b.r, $$3 -> {
             acy $$4 = new acy($$1, $$3);
@@ -307,7 +307,7 @@ public class fjd {
 
    public void a(cbu $$0, biq $$1) {
       this.o();
-      this.c.b(abw.a($$1, $$0.bS()));
+      this.c.b(abw.a($$1, $$0.bR()));
       if (this.j != cps.d) {
          $$0.d($$1);
          $$0.gl();
@@ -316,14 +316,14 @@ public class fjd {
 
    public bgy a(cbu $$0, biq $$1, bgx $$2) {
       this.o();
-      this.c.b(abw.a($$1, $$0.bS(), $$2));
+      this.c.b(abw.a($$1, $$0.bR(), $$2));
       return this.j == cps.d ? bgy.d : $$0.a($$1, $$2);
    }
 
    public bgy a(cbu $$0, biq $$1, ehk $$2, bgx $$3) {
       this.o();
       ehn $$4 = $$2.e().a($$1.dq(), $$1.ds(), $$1.dw());
-      this.c.b(abw.a($$1, $$0.bS(), $$3, $$4));
+      this.c.b(abw.a($$1, $$0.bR(), $$3, $$4));
       return this.j == cps.d ? bgy.d : $$1.a($$0, $$4, $$3);
    }
 
@@ -398,7 +398,7 @@ public class fjd {
    }
 
    public boolean i() {
-      return this.b.s.bO() && this.b.s.cZ() instanceof biz;
+      return this.b.s.bN() && this.b.s.cY() instanceof biz;
    }
 
    public boolean j() {

@@ -3,7 +3,7 @@ public class exi extends eyk {
    private final Runnable b;
 
    public exi(Runnable $$0) {
-      super(tl.c("datapackFailure.title"));
+      super(tm.c("datapackFailure.title"));
       this.a = etj.a;
       this.b = $$0;
    }
@@ -12,8 +12,8 @@ public class exi extends eyk {
    protected void aI_() {
       super.aI_();
       this.a = etj.a(this.i, this.m(), this.g - 50);
-      this.d(esq.a(tl.c("datapackFailure.safeMode"), $$0 -> this.b.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
-      this.d(esq.a(tk.l, $$0 -> this.f.a(null)).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
+      this.d(esq.a(tm.c("datapackFailure.safeMode"), $$0 -> this.b.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
+      this.d(esq.a(tl.l, $$0 -> this.f.a(null)).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
    }
 
    @Override

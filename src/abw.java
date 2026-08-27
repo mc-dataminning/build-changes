@@ -1,7 +1,7 @@
 import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class abw implements vd<abd> {
+public class abw implements ve<abd> {
    private final int a;
    private final abw.a b;
    private final boolean c;
@@ -17,7 +17,7 @@ public class abw implements vd<abd> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
       }
    };
 
@@ -28,18 +28,18 @@ public class abw implements vd<abd> {
    }
 
    public static abw a(biq $$0, boolean $$1) {
-      return new abw($$0.ai(), $$1, d);
+      return new abw($$0.ah(), $$1, d);
    }
 
    public static abw a(biq $$0, boolean $$1, bgx $$2) {
-      return new abw($$0.ai(), $$1, new abw.d($$2));
+      return new abw($$0.ah(), $$1, new abw.d($$2));
    }
 
    public static abw a(biq $$0, boolean $$1, bgx $$2, ehn $$3) {
-      return new abw($$0.ai(), $$1, new abw.e($$2, $$3));
+      return new abw($$0.ah(), $$1, new abw.e($$2, $$3));
    }
 
-   public abw(so $$0) {
+   public abw(sp $$0) {
       this.a = $$0.m();
       abw.b $$1 = $$0.b(abw.b.class);
       this.b = $$1.d.apply($$0);
@@ -47,7 +47,7 @@ public class abw implements vd<abd> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b.a());
       this.b.a($$0);
@@ -76,7 +76,7 @@ public class abw implements vd<abd> {
 
       void a(abw.c var1);
 
-      void a(so var1);
+      void a(sp var1);
    }
 
    static enum b {
@@ -84,9 +84,9 @@ public class abw implements vd<abd> {
       b($$0 -> abw.d),
       c(abw.e::new);
 
-      final Function<so, abw.a> d;
+      final Function<sp, abw.a> d;
 
-      private b(Function<so, abw.a> $$0) {
+      private b(Function<sp, abw.a> $$0) {
          this.d = $$0;
       }
    }
@@ -106,7 +106,7 @@ public class abw implements vd<abd> {
          this.a = $$0;
       }
 
-      private d(so $$0) {
+      private d(sp $$0) {
          this.a = $$0.b(bgx.class);
       }
 
@@ -121,7 +121,7 @@ public class abw implements vd<abd> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
       }
    }
@@ -135,7 +135,7 @@ public class abw implements vd<abd> {
          this.b = $$1;
       }
 
-      private e(so $$0) {
+      private e(sp $$0) {
          this.b = new ehn((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
          this.a = $$0.b(bgx.class);
       }
@@ -151,7 +151,7 @@ public class abw implements vd<abd> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a((float)this.b.c);
          $$0.a((float)this.b.d);
          $$0.a((float)this.b.e);

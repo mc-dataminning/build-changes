@@ -24,7 +24,7 @@ public class cnv extends cno {
    }
 
    public static void a(bjg $$0, cpv $$1, gw $$2, int $$3) {
-      if ($$0.aB()) {
+      if ($$0.aA()) {
          dfj $$4 = csw.kI.n();
          int $$5 = Math.min(16, 2 + $$3);
          gw.a $$6 = new gw.a();

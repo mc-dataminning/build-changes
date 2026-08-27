@@ -21,9 +21,9 @@ public class fau extends ezi<cgh> {
    private int O;
    private boolean P;
 
-   public fau(cgh $$0, cbt $$1, tl $$2) {
+   public fau(cgh $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
-      $$0.a(this::G);
+      $$0.a(this::H);
       this.m--;
    }
 
@@ -39,7 +39,7 @@ public class fau extends ezi<cgh> {
       int $$5 = this.u;
       $$0.a(C, $$4, $$5, 0, 0, this.c, this.k);
       int $$6 = (int)(41.0F * this.M);
-      aex $$7 = this.F() ? x : y;
+      aex $$7 = this.G() ? x : y;
       $$0.a($$7, $$4 + 119, $$5 + 15 + $$6, 12, 15);
       int $$8 = this.t + 52;
       int $$9 = this.u + 14;
@@ -130,12 +130,12 @@ public class fau extends ezi<cgh> {
 
    @Override
    public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.N && this.F()) {
+      if (this.N && this.G()) {
          int $$5 = this.u + 14;
          int $$6 = $$5 + 54;
          this.M = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
          this.M = arx.a(this.M, 0.0F, 1.0F);
-         this.O = (int)((double)(this.M * (float)this.E()) + 0.5) * 4;
+         this.O = (int)((double)(this.M * (float)this.F()) + 0.5) * 4;
          return true;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
@@ -144,8 +144,8 @@ public class fau extends ezi<cgh> {
 
    @Override
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.F()) {
-         int $$4 = this.E();
+      if (this.G()) {
+         int $$4 = this.F();
          float $$5 = (float)$$3 / (float)$$4;
          this.M = arx.a(this.M - $$5, 0.0F, 1.0F);
          this.O = (int)((double)(this.M * (float)$$4) + 0.5) * 4;
@@ -154,15 +154,15 @@ public class fau extends ezi<cgh> {
       return true;
    }
 
-   private boolean F() {
+   private boolean G() {
       return this.P && this.p.n() > 12;
    }
 
-   protected int E() {
+   protected int F() {
       return (this.p.n() + 4 - 1) / 4 - 3;
    }
 
-   private void G() {
+   private void H() {
       this.P = this.p.o();
       if (!this.P) {
          this.M = 0.0F;

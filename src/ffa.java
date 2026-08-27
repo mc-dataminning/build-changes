@@ -51,7 +51,7 @@ public class ffa<T extends bjg> extends feb<T> {
 
          $$6 = $$10 * (float) (Math.PI / 9) + (1.0F - $$10) * $$6;
          $$7 = $$10 * (float) (-Math.PI / 2) + (1.0F - $$10) * $$7;
-      } else if ($$0.bX()) {
+      } else if ($$0.bW()) {
          $$6 = (float) (Math.PI * 2.0 / 9.0);
          $$7 = (float) (-Math.PI / 4);
          $$8 = 3.0F;

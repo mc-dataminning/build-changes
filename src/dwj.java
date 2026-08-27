@@ -6,7 +6,7 @@ import java.util.List;
 public class dwj extends dwp {
    public static final Codec<dwj> a = RecordCodecBuilder.create($$0 -> $$0.group(dum.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, dwj::new));
    private final hg<dum> b;
-   private final qx c;
+   private final qy c;
 
    protected dwj(hg<dum> $$0, dwr.a $$1) {
       super($$1);
@@ -14,8 +14,8 @@ public class dwj extends dwp {
       this.c = this.b();
    }
 
-   private qx b() {
-      qx $$0 = new qx();
+   private qy b() {
+      qy $$0 = new qy();
       $$0.a("name", "minecraft:bottom");
       $$0.a("final_state", "minecraft:air");
       $$0.a("pool", "minecraft:empty");

@@ -6,8 +6,8 @@ public class dzh implements dzj {
    public static final Codec<dzh> a = Codec.unit(b);
 
    @Override
-   public qx a(asc $$0, @Nullable qx $$1) {
-      return new qx();
+   public qy a(asc $$0, @Nullable qy $$1) {
+      return new qy();
    }
 
    @Override

@@ -5,10 +5,10 @@ import javax.annotation.Nullable;
 public class gdr implements gds<gcj> {
    private final List<gds<gcj>> a = Lists.newArrayList();
    @Nullable
-   private final tl b;
+   private final tm b;
 
    public gdr(aex $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : tl.c($$1);
+      this.b = $$1 == null ? null : tm.c($$1);
    }
 
    @Override
@@ -45,7 +45,7 @@ public class gdr implements gds<gcj> {
    }
 
    @Nullable
-   public tl a() {
+   public tm a() {
       return this.b;
    }
 

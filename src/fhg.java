@@ -46,7 +46,7 @@ public class fhg<T extends bzv> extends ffm<T> {
 
    public void a(bzv $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       $$2 = Math.min(0.25F, $$2);
-      if (!$$0.bP()) {
+      if (!$$0.bO()) {
          this.m.e = $$5 * (float) (Math.PI / 180.0);
          this.m.f = $$4 * (float) (Math.PI / 180.0);
       } else {

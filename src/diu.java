@@ -68,7 +68,7 @@ public enum diu {
             for (bxg $$5 : $$2) {
                $$5.a(null);
                $$0.a($$5, $$5.dq(), $$5.ds(), $$5.dw(), 6.0F, cpv.a.a);
-               $$5.al();
+               $$5.ak();
             }
          } else if ($$3 >= 80) {
             $$0.c(3001, new gw(0, 128, 0), 0);

@@ -34,7 +34,7 @@ public class bow extends bkx<cay> {
          $$1.dN().a(bsh.aJ, asx.a, (long)(i - h));
          $$1.dN().c(bsh.o).filter($$1::a).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
             ehn $$3 = $$1.dj().b(0.0, 1.6F, 0.0);
-            ehn $$4 = $$2x.bq().d($$3);
+            ehn $$4 = $$2x.bp().d($$3);
             ehn $$5 = $$4.d();
 
             for (int $$6 = 1; $$6 < arx.a($$4.f()) + 7; $$6++) {

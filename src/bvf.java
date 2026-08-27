@@ -27,13 +27,13 @@ public class bvf extends bur {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Trusting", this.y());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.w($$0.q("Trusting"));
    }
@@ -59,7 +59,7 @@ public class bvf extends bur {
    }
 
    @Override
-   public void Y() {
+   public void X() {
       if (this.I().b()) {
          double $$0 = this.I().c();
          if ($$0 == 0.6) {
@@ -191,7 +191,7 @@ public class bvf extends bur {
 
    @Override
    public boolean a(cpy $$0) {
-      if ($$0.f(this) && !$$0.d(this.cH())) {
+      if ($$0.f(this) && !$$0.d(this.cG())) {
          gw $$1 = this.dl();
          if ($$1.v() < $$0.y_()) {
             return false;
@@ -208,7 +208,7 @@ public class bvf extends bur {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if ($$3 == null) {
          $$3 = new bil.a(1.0F);
       }
@@ -217,13 +217,13 @@ public class bvf extends bur {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.5F * this.cI()), (double)(this.dg() * 0.4F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.5F * this.cH()), (double)(this.df() * 0.4F));
    }
 
    @Override
-   public boolean bT() {
-      return this.bX() || super.bT();
+   public boolean bS() {
+      return this.bW() || super.bS();
    }
 
    @Override

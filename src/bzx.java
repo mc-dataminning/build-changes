@@ -32,13 +32,13 @@ public class bzx extends byq {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       if (!this.fT() && btx.a(this)) {
          boolean $$0 = ((akr)this.dL()).d(this.dl());
          ((bso)this.L()).b($$0);
       }
 
-      super.Y();
+      super.X();
    }
 
    public static bkl.a t() {
@@ -46,7 +46,7 @@ public class bzx extends byq {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.bT) {
          $$0.a("Johnny", true);
@@ -63,7 +63,7 @@ public class bzx extends byq {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("Johnny", 99)) {
          this.bT = $$0.q("Johnny");
@@ -77,7 +77,7 @@ public class bzx extends byq {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       bjz $$5 = super.a($$0, $$1, $$2, $$3, $$4);
       ((bso)this.L()).b(true);
       asc $$6 = $$0.D_();
@@ -98,12 +98,12 @@ public class bzx extends byq {
       if (super.s($$0)) {
          return true;
       } else {
-         return $$0 instanceof bjg && ((bjg)$$0).eR() == bjl.d ? this.cg() == null && $$0.cg() == null : false;
+         return $$0 instanceof bjg && ((bjg)$$0).eR() == bjl.d ? this.cf() == null && $$0.cf() == null : false;
       }
    }
 
    @Override
-   public void b(@Nullable tl $$0) {
+   public void b(@Nullable tm $$0) {
       super.b($$0);
       if (!this.bT && $$0 != null && $$0.getString().equals("Johnny")) {
          this.bT = true;

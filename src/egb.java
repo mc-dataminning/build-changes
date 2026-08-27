@@ -8,7 +8,7 @@ public class egb implements egd {
    private static final String d = "block_entity";
    private static final egb.a e = new egb.a() {
       @Override
-      public rq a(ecq $$0) {
+      public rr a(ecq $$0) {
          dcv $$1 = $$0.c(efb.h);
          return $$1 != null ? $$1.m() : null;
       }
@@ -40,7 +40,7 @@ public class egb implements egd {
       return new egb.a() {
          @Nullable
          @Override
-         public rq a(ecq $$0x) {
+         public rr a(ecq $$0x) {
             biq $$1 = $$0.c($$0.a());
             return $$1 != null ? cn.b($$1) : null;
          }
@@ -68,7 +68,7 @@ public class egb implements egd {
 
    @Nullable
    @Override
-   public rq a(ecq $$0) {
+   public rr a(ecq $$0) {
       return this.g.a($$0);
    }
 
@@ -83,7 +83,7 @@ public class egb implements egd {
 
    interface a {
       @Nullable
-      rq a(ecq var1);
+      rr a(ecq var1);
 
       String a();
 

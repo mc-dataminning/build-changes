@@ -85,7 +85,7 @@ public class dbf extends csv {
       if (!$$0.B) {
          gw $$4 = $$2.a();
          biq $$5 = $$3.v();
-         if ($$3.bN() && $$3.a($$0, $$4)) {
+         if ($$3.bM() && $$3.a($$0, $$4)) {
             a($$0, $$4, $$5 instanceof bjg ? (bjg)$$5 : null);
             $$0.a($$4, false);
          }

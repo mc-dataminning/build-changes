@@ -32,9 +32,9 @@ public class cjp extends chg {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       if (this.a == biu.bc) {
-         qx $$4 = $$0.v();
+         qy $$4 = $$0.v();
          if ($$4 != null && $$4.b("BucketVariantTag", 3)) {
             int $$5 = $$4.h("BucketVariantTag");
             n[] $$6 = new n[]{n.u, n.h};
@@ -43,15 +43,15 @@ public class cjp extends chg {
 
             for (int $$9 = 0; $$9 < bvr.c.size(); $$9++) {
                if ($$5 == bvr.c.get($$9).a()) {
-                  $$2.add(tl.c(bvr.c($$9)).a($$6));
+                  $$2.add(tm.c(bvr.c($$9)).a($$6));
                   return;
                }
             }
 
             $$2.add(bvr.u($$5).d().d().a($$6));
-            ty $$10 = tl.c($$7);
+            tz $$10 = tm.c($$7);
             if (!$$7.equals($$8)) {
-               $$10.f(", ").b(tl.c($$8));
+               $$10.f(", ").b(tm.c($$8));
             }
 
             $$10.a($$6);

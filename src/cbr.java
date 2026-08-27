@@ -7,8 +7,8 @@ public class cbr {
    private float f = 0.05F;
    private float g = 0.1F;
 
-   public void a(qx $$0) {
-      qx $$1 = new qx();
+   public void a(qy $$0) {
+      qy $$1 = new qy();
       $$1.a("invulnerable", this.a);
       $$1.a("flying", this.b);
       $$1.a("mayfly", this.c);
@@ -19,9 +19,9 @@ public class cbr {
       $$0.a("abilities", $$1);
    }
 
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       if ($$0.b("abilities", 10)) {
-         qx $$1 = $$0.p("abilities");
+         qy $$1 = $$0.p("abilities");
          this.a = $$1.q("invulnerable");
          this.b = $$1.q("flying");
          this.c = $$1.q("mayfly");

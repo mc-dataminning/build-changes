@@ -16,7 +16,7 @@ public class ddt extends ddy implements dds {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.j = hp.a(this.b(), cjf.b);
       if (!this.d($$0)) {
@@ -27,7 +27,7 @@ public class ddt extends ddy implements dds {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       if (!this.e($$0)) {
          bgs.a($$0, this.j);
@@ -57,8 +57,8 @@ public class ddt extends ddy implements dds {
    }
 
    @Override
-   protected tl g() {
-      return tl.c("container.hopper");
+   protected tm g() {
+      return tm.c("container.hopper");
    }
 
    public static void a(cpv $$0, gw $$1, dfj $$2, ddt $$3) {
@@ -186,7 +186,7 @@ public class ddt extends ddy implements dds {
       if ($$4.b()) {
          $$2 = true;
          $$1.a(cjf.b);
-         $$1.al();
+         $$1.ak();
       } else {
          $$1.a($$4);
       }
@@ -366,7 +366,7 @@ public class ddt extends ddy implements dds {
    }
 
    public static void a(cpv $$0, gw $$1, dfj $$2, biq $$3, ddt $$4) {
-      if ($$3 instanceof byn $$5 && !$$5.q().b() && eid.c(eid.a($$3.cH().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w()))), $$4.au_(), ehr.i)) {
+      if ($$3 instanceof byn $$5 && !$$5.q().b() && eid.c(eid.a($$3.cG().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w()))), $$4.au_(), ehr.i)) {
          a($$0, $$1, $$2, $$4, () -> a((bgr)$$4, $$5));
       }
    }

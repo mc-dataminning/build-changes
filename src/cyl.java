@@ -228,7 +228,7 @@ public class cyl extends csv implements cvm, czw {
 
    @Override
    public void a(cpv $$0, gw $$1, bym $$2) {
-      if (!$$2.aT()) {
+      if (!$$2.aS()) {
          $$0.c(1045, $$1, 0);
       }
    }

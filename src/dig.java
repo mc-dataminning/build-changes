@@ -28,7 +28,7 @@ public class dig {
    public static final String f = "BlockLight";
    public static final String g = "SkyLight";
 
-   public static dia a(akr $$0, buf $$1, cpc $$2, qx $$3) {
+   public static dia a(akr $$0, buf $$1, cpc $$2, qy $$3) {
       cpc $$4 = new cpc($$3.h("xPos"), $$3.h("zPos"));
       if (!Objects.equals($$2, $$4)) {
          i.error("Chunk file at {} is in the wrong location; relocating. (Expected {}, got {})", new Object[]{$$2, $$2, $$4});
@@ -36,7 +36,7 @@ public class dig {
 
       did $$5 = $$3.b("UpgradeData", 10) ? new did($$3.p("UpgradeData"), $$0) : did.a;
       boolean $$6 = $$3.q("isLightOn");
-      rd $$7 = $$3.c("sections", 10);
+      re $$7 = $$3.c("sections", 10);
       int $$8 = $$0.ak();
       dhr[] $$9 = new dhr[$$8];
       boolean $$10 = $$0.C_().g();
@@ -47,20 +47,20 @@ public class dig {
       boolean $$15 = false;
 
       for (int $$16 = 0; $$16 < $$7.size(); $$16++) {
-         qx $$17 = $$7.a($$16);
+         qy $$17 = $$7.a($$16);
          int $$18 = $$17.f("Y");
          int $$19 = $$0.f($$18);
          if ($$19 >= 0 && $$19 < $$9.length) {
             dhy<dfj> $$20;
             if ($$17.b("block_states", 10)) {
-               $$20 = (dhy<dfj>)h.parse(ri.a, $$17.p("block_states")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(false, i::error);
+               $$20 = (dhy<dfj>)h.parse(rj.a, $$17.p("block_states")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(false, i::error);
             } else {
                $$20 = new dhy<>(csv.o, csw.a.n(), dhy.d.d);
             }
 
             dhz<hg<cqt>> $$22;
             if ($$17.b("biomes", 10)) {
-               $$22 = (dhz<hg<cqt>>)$$14.parse(ri.a, $$17.p("biomes")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(false, i::error);
+               $$22 = (dhz<hg<cqt>>)$$14.parse(rj.a, $$17.p("biomes")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(false, i::error);
             } else {
                $$22 = new dhy<>($$13.t(), $$13.f(cra.b), dhy.d.e);
             }
@@ -93,7 +93,7 @@ public class dig {
       dhk.a $$29 = a($$3);
       dlv $$30;
       if ($$3.b("blending_data", 10)) {
-         $$30 = (dlv)dlv.e.parse(new Dynamic(ri.a, $$3.p("blending_data"))).resultOrPartial(i::error).orElse(null);
+         $$30 = (dlv)dlv.e.parse(new Dynamic(rj.a, $$3.p("blending_data"))).resultOrPartial(i::error).orElse(null);
       } else {
          $$30 = null;
       }
@@ -110,7 +110,7 @@ public class dig {
          $$34 = $$37;
          $$37.b($$28);
          if ($$3.b("below_zero_retrogen", 10)) {
-            dkg.a.parse(new Dynamic(ri.a, $$3.p("below_zero_retrogen"))).resultOrPartial(i::error).ifPresent($$37::a);
+            dkg.a.parse(new Dynamic(rj.a, $$3.p("below_zero_retrogen"))).resultOrPartial(i::error).ifPresent($$37::a);
          }
 
          dhk $$39 = dhk.a($$3.l("Status"));
@@ -121,7 +121,7 @@ public class dig {
       }
 
       $$34.b($$6);
-      qx $$40 = $$3.p("Heightmaps");
+      qy $$40 = $$3.p("Heightmaps");
       EnumSet<dks.a> $$41 = EnumSet.noneOf(dks.a.class);
 
       for (dks.a $$42 : $$34.j().h()) {
@@ -134,17 +134,17 @@ public class dig {
       }
 
       dks.a($$34, $$41);
-      qx $$44 = $$3.p("structures");
+      qy $$44 = $$3.p("structures");
       $$34.a(a(dvy.a($$0), $$44, $$0.A()));
       $$34.b(a($$0.G_(), $$2, $$44));
       if ($$3.q("shouldSave")) {
          $$34.a(true);
       }
 
-      rd $$45 = $$3.c("PostProcessing", 9);
+      re $$45 = $$3.c("PostProcessing", 9);
 
       for (int $$46 = 0; $$46 < $$45.size(); $$46++) {
-         rd $$47 = $$45.b($$46);
+         re $$47 = $$45.b($$46);
 
          for (int $$48 = 0; $$48 < $$47.size(); $$48++) {
             $$34.a($$47.d($$48), $$46);
@@ -155,20 +155,20 @@ public class dig {
          return new dhp((dhq)$$34, false);
       } else {
          dia $$49 = (dia)$$34;
-         rd $$50 = $$3.c("entities", 10);
+         re $$50 = $$3.c("entities", 10);
 
          for (int $$51 = 0; $$51 < $$50.size(); $$51++) {
             $$49.b($$50.a($$51));
          }
 
-         rd $$52 = $$3.c("block_entities", 10);
+         re $$52 = $$3.c("block_entities", 10);
 
          for (int $$53 = 0; $$53 < $$52.size(); $$53++) {
-            qx $$54 = $$52.a($$53);
+            qy $$54 = $$52.a($$53);
             $$34.a($$54);
          }
 
-         qx $$55 = $$3.p("CarvingMasks");
+         qy $$55 = $$3.p("CarvingMasks");
 
          for (String $$56 : $$55.e()) {
             dko.a $$57 = dko.a.valueOf($$56);
@@ -187,9 +187,9 @@ public class dig {
       return dhy.b($$0.t(), $$0.r(), dhy.d.e, $$0.f(cra.b));
    }
 
-   public static qx a(akr $$0, dhf $$1) {
+   public static qy a(akr $$0, dhf $$1) {
       cpc $$2 = $$1.f();
-      qx $$3 = rj.g(new qx());
+      qy $$3 = rk.g(new qy());
       $$3.a("xPos", $$2.e);
       $$3.a("yPos", $$1.al());
       $$3.a("zPos", $$2.f);
@@ -198,12 +198,12 @@ public class dig {
       $$3.a("Status", jd.o.b($$1.j()).toString());
       dlv $$4 = $$1.t();
       if ($$4 != null) {
-         dlv.e.encodeStart(ri.a, $$4).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("blending_data", $$1x));
+         dlv.e.encodeStart(rj.a, $$4).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("blending_data", $$1x));
       }
 
       dkg $$5 = $$1.x();
       if ($$5 != null) {
-         dkg.a.encodeStart(ri.a, $$5).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("below_zero_retrogen", $$1x));
+         dkg.a.encodeStart(rj.a, $$5).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("below_zero_retrogen", $$1x));
       }
 
       did $$6 = $$1.r();
@@ -212,7 +212,7 @@ public class dig {
       }
 
       dhr[] $$7 = $$1.d();
-      rd $$8 = new rd();
+      re $$8 = new re();
       eab $$9 = $$0.k().a();
       ht<cqt> $$10 = $$0.G_().d(je.ap);
       Codec<dhz<hg<cqt>>> $$11 = a($$10);
@@ -224,11 +224,11 @@ public class dig {
          dhl $$16 = $$9.a(cqe.b).a(hz.a($$2, $$13));
          dhl $$17 = $$9.a(cqe.a).a(hz.a($$2, $$13));
          if ($$15 || $$16 != null || $$17 != null) {
-            qx $$18 = new qx();
+            qy $$18 = new qy();
             if ($$15) {
                dhr $$19 = $$7[$$14];
-               $$18.a("block_states", (rq)h.encodeStart(ri.a, $$19.h()).getOrThrow(false, i::error));
-               $$18.a("biomes", (rq)$$11.encodeStart(ri.a, $$19.i()).getOrThrow(false, i::error));
+               $$18.a("block_states", (rr)h.encodeStart(rj.a, $$19.h()).getOrThrow(false, i::error));
+               $$18.a("biomes", (rr)$$11.encodeStart(rj.a, $$19.i()).getOrThrow(false, i::error));
             }
 
             if ($$16 != null && !$$16.d()) {
@@ -251,10 +251,10 @@ public class dig {
          $$3.a("isLightOn", true);
       }
 
-      rd $$20 = new rd();
+      re $$20 = new re();
 
       for (gw $$21 : $$1.c()) {
-         qx $$22 = $$1.g($$21);
+         qy $$22 = $$1.g($$21);
          if ($$22 != null) {
             $$20.add($$22);
          }
@@ -263,10 +263,10 @@ public class dig {
       $$3.a("block_entities", $$20);
       if ($$1.j().g() == dhk.a.a) {
          dia $$23 = (dia)$$1;
-         rd $$24 = new rd();
+         re $$24 = new re();
          $$24.addAll($$23.E());
          $$3.a("entities", $$24);
-         qx $$25 = new qx();
+         qy $$25 = new qy();
 
          for (dko.a $$26 : dko.a.values()) {
             dhe $$27 = $$23.a($$26);
@@ -280,11 +280,11 @@ public class dig {
 
       a($$0, $$3, $$1.q());
       $$3.a("PostProcessing", a($$1.n()));
-      qx $$28 = new qx();
+      qy $$28 = new qy();
 
       for (Entry<dks.a, dks> $$29 : $$1.e()) {
          if ($$1.j().h().contains($$29.getKey())) {
-            $$28.a($$29.getKey().a(), new re($$29.getValue().a()));
+            $$28.a($$29.getKey().a(), new rf($$29.getValue().a()));
          }
       }
 
@@ -293,20 +293,20 @@ public class dig {
       return $$3;
    }
 
-   private static void a(akr $$0, qx $$1, dhf.a $$2) {
+   private static void a(akr $$0, qy $$1, dhf.a $$2) {
       long $$3 = $$0.z_().e();
       $$1.a("block_ticks", $$2.a().b($$3, $$0x -> jd.f.b($$0x).toString()));
       $$1.a("fluid_ticks", $$2.b().b($$3, $$0x -> jd.d.b($$0x).toString()));
    }
 
-   public static dhk.a a(@Nullable qx $$0) {
+   public static dhk.a a(@Nullable qy $$0) {
       return $$0 != null ? dhk.a($$0.l("Status")).g() : dhk.a.a;
    }
 
    @Nullable
-   private static dhq.c a(akr $$0, qx $$1) {
-      rd $$2 = a($$1, "entities");
-      rd $$3 = a($$1, "block_entities");
+   private static dhq.c a(akr $$0, qy $$1) {
+      re $$2 = a($$1, "entities");
+      re $$3 = a($$1, "block_entities");
       return $$2 == null && $$3 == null ? null : $$3x -> {
          if ($$2 != null) {
             $$0.a(biu.a($$2, $$0));
@@ -314,7 +314,7 @@ public class dig {
 
          if ($$3 != null) {
             for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               qx $$5 = $$3.a($$4);
+               qy $$5 = $$3.a($$4);
                boolean $$6 = $$5.q("keepPacked");
                if ($$6) {
                   $$3x.a($$5);
@@ -331,14 +331,14 @@ public class dig {
    }
 
    @Nullable
-   private static rd a(qx $$0, String $$1) {
-      rd $$2 = $$0.c($$1, 10);
+   private static re a(qy $$0, String $$1) {
+      re $$2 = $$0.c($$1, 10);
       return $$2.isEmpty() ? null : $$2;
    }
 
-   private static qx a(dvy $$0, cpc $$1, Map<dvi, dvq> $$2, Map<dvi, LongSet> $$3) {
-      qx $$4 = new qx();
-      qx $$5 = new qx();
+   private static qy a(dvy $$0, cpc $$1, Map<dvi, dvq> $$2, Map<dvi, LongSet> $$3) {
+      qy $$4 = new qy();
+      qy $$5 = new qy();
       ht<dvi> $$6 = $$0.b().d(je.az);
 
       for (Entry<dvi, dvq> $$7 : $$2.entrySet()) {
@@ -347,12 +347,12 @@ public class dig {
       }
 
       $$4.a("starts", $$5);
-      qx $$9 = new qx();
+      qy $$9 = new qy();
 
       for (Entry<dvi, LongSet> $$10 : $$3.entrySet()) {
          if (!$$10.getValue().isEmpty()) {
             aex $$11 = $$6.b($$10.getKey());
-            $$9.a($$11.toString(), new re($$10.getValue()));
+            $$9.a($$11.toString(), new rf($$10.getValue()));
          }
       }
 
@@ -360,10 +360,10 @@ public class dig {
       return $$4;
    }
 
-   private static Map<dvi, dvq> a(dvy $$0, qx $$1, long $$2) {
+   private static Map<dvi, dvq> a(dvy $$0, qy $$1, long $$2) {
       Map<dvi, dvq> $$3 = Maps.newHashMap();
       ht<dvi> $$4 = $$0.b().d(je.az);
-      qx $$5 = $$1.p("starts");
+      qy $$5 = $$1.p("starts");
 
       for (String $$6 : $$5.e()) {
          aex $$7 = aex.a($$6);
@@ -381,10 +381,10 @@ public class dig {
       return $$3;
    }
 
-   private static Map<dvi, LongSet> a(hu $$0, cpc $$1, qx $$2) {
+   private static Map<dvi, LongSet> a(hu $$0, cpc $$1, qy $$2) {
       Map<dvi, LongSet> $$3 = Maps.newHashMap();
       ht<dvi> $$4 = $$0.d(je.az);
-      qx $$5 = $$2.p("References");
+      qy $$5 = $$2.p("References");
 
       for (String $$6 : $$5.e()) {
          aex $$7 = aex.a($$6);
@@ -410,17 +410,17 @@ public class dig {
       return $$3;
    }
 
-   public static rd a(ShortList[] $$0) {
-      rd $$1 = new rd();
+   public static re a(ShortList[] $$0) {
+      re $$1 = new re();
 
       for (ShortList $$2 : $$0) {
-         rd $$3 = new rd();
+         re $$3 = new re();
          if ($$2 != null) {
             ShortListIterator var7 = $$2.iterator();
 
             while (var7.hasNext()) {
                Short $$4 = (Short)var7.next();
-               $$3.add(rl.a($$4));
+               $$3.add(rm.a($$4));
             }
          }
 

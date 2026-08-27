@@ -59,13 +59,13 @@ public class cab extends bzi {
    @Override
    protected void a_() {
       super.a_();
-      this.am().a(d, false);
-      this.am().a(bX, 0);
-      this.am().a(bY, false);
+      this.al().a(d, false);
+      this.al().a(bX, 0);
+      this.al().a(bY, false);
    }
 
    public boolean gk() {
-      return this.am().b(bY);
+      return this.al().b(bY);
    }
 
    public boolean gl() {
@@ -95,7 +95,7 @@ public class cab extends bzi {
 
    @Override
    public boolean m_() {
-      return this.am().b(d);
+      return this.al().b(d);
    }
 
    @Override
@@ -109,7 +109,7 @@ public class cab extends bzi {
 
    @Override
    public void a(boolean $$0) {
-      this.am().b(d, $$0);
+      this.al().b(d, $$0);
       if (this.dL() != null && !this.dL().B) {
          bki $$1 = this.a(bkm.d);
          $$1.b(c.a());
@@ -134,7 +134,7 @@ public class cab extends bzi {
 
    @Override
    public void l() {
-      if (!this.dL().B && this.bw() && !this.fT()) {
+      if (!this.dL().B && this.bv() && !this.fT()) {
          if (this.gk()) {
             this.ce--;
             if (this.ce < 0) {
@@ -157,7 +157,7 @@ public class cab extends bzi {
 
    @Override
    public void b_() {
-      if (this.bw()) {
+      if (this.bv()) {
          boolean $$0 = this.ab_() && this.fX();
          if ($$0) {
             cjf $$1 = this.c(biv.f);
@@ -184,12 +184,12 @@ public class cab extends bzi {
 
    private void b(int $$0) {
       this.ce = $$0;
-      this.am().b(bY, true);
+      this.al().b(bY, true);
    }
 
    protected void gg() {
       this.b(biu.y);
-      if (!this.aT()) {
+      if (!this.aS()) {
          this.dL().a(null, 1040, this.dl(), 0);
       }
    }
@@ -230,11 +230,11 @@ public class cab extends bzi {
                int $$10 = $$5 + arx.a(this.ag, 7, 40) * arx.a(this.ag, -1, 1);
                int $$11 = $$6 + arx.a(this.ag, 7, 40) * arx.a(this.ag, -1, 1);
                gw $$12 = new gw($$9, $$10, $$11);
-               biu<?> $$13 = $$7.ah();
+               biu<?> $$13 = $$7.ag();
                bka.c $$14 = bka.a($$13);
                if (cqg.a($$14, this.dL(), $$12, $$13) && bka.a($$13, $$2, bjk.j, $$12, this.dL().z)) {
                   $$7.e((double)$$9, (double)$$10, (double)$$11);
-                  if (!this.dL().a((double)$$9, (double)$$10, (double)$$11, 7.0) && this.dL().f($$7) && this.dL().g($$7) && !this.dL().d($$7.cH())) {
+                  if (!this.dL().a((double)$$9, (double)$$10, (double)$$11, 7.0) && this.dL().f($$7) && this.dL().g($$7) && !this.dL().d($$7.cG())) {
                      $$7.h($$3);
                      $$7.a($$2, this.dL().d_($$7.dl()), bjk.j, null, null);
                      $$2.a_($$7);
@@ -255,7 +255,7 @@ public class cab extends bzi {
       boolean $$1 = super.C($$0);
       if ($$1) {
          float $$2 = this.dL().d_(this.dl()).b();
-         if (this.eS().b() && this.bN() && this.ag.i() < $$2 * 0.3F) {
+         if (this.eS().b() && this.bM() && this.ag.i() < $$2 * 0.3F) {
             $$0.g(2 * (int)$$2);
          }
       }
@@ -306,16 +306,16 @@ public class cab extends bzi {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("IsBaby", this.m_());
       $$0.a("CanBreakDoors", this.gl());
-      $$0.a("InWaterTime", this.aY() ? this.cd : -1);
+      $$0.a("InWaterTime", this.aX() ? this.cd : -1);
       $$0.a("DrownedConversionTime", this.gk() ? this.ce : -1);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a($$0.q("IsBaby"));
       this.x($$0.q("CanBreakDoors"));
@@ -337,10 +337,10 @@ public class cab extends bzi {
          if ($$4 != null) {
             $$4.a($$0, $$0.d_($$4.dl()), bjk.i, new cab.b(false, true), null);
             $$4.a($$3.go());
-            $$4.a($$3.gy().a(ri.a));
+            $$4.a($$3.gy().a(rj.a));
             $$4.c($$3.gf().a());
             $$4.b($$3.t());
-            if (!this.aT()) {
+            if (!this.aS()) {
                $$0.a(null, 1026, this.dl(), 0);
             }
 
@@ -358,7 +358,7 @@ public class cab extends bzi {
 
    @Override
    public boolean j(cjf $$0) {
-      return $$0.a(cji.qd) && this.m_() && this.bO() ? false : super.j($$0);
+      return $$0.a(cji.qd) && this.m_() && this.bN() ? false : super.j($$0);
    }
 
    @Override
@@ -368,7 +368,7 @@ public class cab extends bzi {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       asc $$5 = $$0.D_();
       $$3 = super.a($$0, $$1, $$2, $$3, $$4);
       float $$6 = $$1.d();
@@ -382,7 +382,7 @@ public class cab extends bzi {
             this.a(true);
             if ($$7.b) {
                if ((double)$$5.i() < 0.05) {
-                  List<buw> $$8 = $$0.a(buw.class, this.cH().c(5.0, 3.0, 5.0), bit.c);
+                  List<buw> $$8 = $$0.a(buw.class, this.cG().c(5.0, 3.0, 5.0), bit.c);
                   if (!$$8.isEmpty()) {
                      buw $$9 = $$8.get(0);
                      $$9.w(true);

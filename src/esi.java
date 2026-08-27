@@ -4,7 +4,7 @@ public abstract class esi extends eso {
    protected static final int e = 2;
    private static final euc a = new euc(new aex("widget/button"), new aex("widget/button_disabled"), new aex("widget/button_highlighted"));
 
-   public esi(int $$0, int $$1, int $$2, int $$3, tl $$4) {
+   public esi(int $$0, int $$1, int $$2, int $$3, tm $$4) {
       super($$0, $$1, $$2, $$3, $$4);
    }
 

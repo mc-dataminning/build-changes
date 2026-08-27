@@ -5,7 +5,7 @@ public class bvk extends buo {
    private static final aef<Integer> e = aei.a(bvk.class, aeh.b);
    int bT;
    int bU;
-   private static final Predicate<bjg> bV = $$0 -> $$0 instanceof cbu && ((cbu)$$0).f() ? false : $$0.ah() == biu.f || $$0.eR() != bjl.e;
+   private static final Predicate<bjg> bV = $$0 -> $$0 instanceof cbu && ((cbu)$$0).f() ? false : $$0.ag() == biu.f || $$0.eR() != bjl.e;
    static final bts bW = bts.b().e().d().a(bV);
    public static final int b = 0;
    public static final int c = 1;
@@ -40,13 +40,13 @@ public class bvk extends buo {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("PuffState", this.gf());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.c(Math.min($$0.h("PuffState"), 2));
    }
@@ -64,7 +64,7 @@ public class bvk extends buo {
 
    @Override
    public void l() {
-      if (!this.dL().B && this.bw() && this.cY()) {
+      if (!this.dL().B && this.bv() && this.cX()) {
          if (this.bT > 0) {
             if (this.gf() == 0) {
                this.a(ape.te, this.eV(), this.eW());
@@ -94,9 +94,9 @@ public class bvk extends buo {
    @Override
    public void b_() {
       super.b_();
-      if (this.bw() && this.gf() > 0) {
-         for (bji $$1 : this.dL().a(bji.class, this.cH().g(0.3), $$0 -> bW.a(this, $$0))) {
-            if ($$1.bw()) {
+      if (this.bv() && this.gf() > 0) {
+         for (bji $$1 : this.dL().a(bji.class, this.cG().g(0.3), $$0 -> bW.a(this, $$0))) {
+            if ($$1.bv()) {
                this.a($$1);
             }
          }
@@ -115,7 +115,7 @@ public class bvk extends buo {
    public void b_(cbu $$0) {
       int $$1 = this.gf();
       if ($$0 instanceof aks && $$1 > 0 && $$0.a(this.dM().b((bjg)this), (float)(1 + $$1))) {
-         if (!this.aT()) {
+         if (!this.aS()) {
             ((aks)$$0).c.b(new yc(yc.j, 0.0F));
          }
 
@@ -168,7 +168,7 @@ public class bvk extends buo {
 
       @Override
       public boolean a() {
-         List<bjg> $$0 = this.a.dL().a(bjg.class, this.a.cH().g(2.0), $$0x -> bvk.bW.a(this.a, $$0x));
+         List<bjg> $$0 = this.a.dL().a(bjg.class, this.a.cG().g(2.0), $$0x -> bvk.bW.a(this.a, $$0x));
          return !$$0.isEmpty();
       }
 

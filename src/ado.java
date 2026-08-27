@@ -3,7 +3,7 @@ import java.security.PublicKey;
 import java.util.Arrays;
 import javax.crypto.SecretKey;
 
-public class ado implements vd<adl> {
+public class ado implements ve<adl> {
    private final byte[] a;
    private final byte[] b;
 
@@ -12,13 +12,13 @@ public class ado implements vd<adl> {
       this.b = aqx.a($$1, $$2);
    }
 
-   public ado(so $$0) {
+   public ado(sp $$0) {
       this.a = $$0.b();
       this.b = $$0.b();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
    }

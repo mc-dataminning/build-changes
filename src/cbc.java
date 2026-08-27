@@ -19,7 +19,7 @@ public abstract class cbc extends bil implements cbf, cbg, cos {
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if ($$3 == null) {
          $$3 = new bil.a(false);
       }
@@ -123,7 +123,7 @@ public abstract class cbc extends bil implements cbf, cbg, cos {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       cou $$1 = this.gf();
       if (!$$1.isEmpty()) {
@@ -134,7 +134,7 @@ public abstract class cbc extends bil implements cbf, cbg, cos {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("Offers", 10)) {
          this.bU = new cou($$0.p("Offers"));
@@ -203,7 +203,7 @@ public abstract class cbc extends bil implements cbf, cbg, cos {
    @Override
    public ehn q(float $$0) {
       float $$1 = arx.i($$0, this.aV, this.aU) * (float) (Math.PI / 180.0);
-      ehn $$2 = new ehn(0.0, this.cH().c() - 1.0, 0.2);
+      ehn $$2 = new ehn(0.0, this.cG().c() - 1.0, 0.2);
       return this.l($$0).e($$2.b(-$$1));
    }
 

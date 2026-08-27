@@ -63,13 +63,13 @@ public class bvr extends buq implements bke<bvr.b> {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Variant", this.gp());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.v($$0.h("Variant"));
    }
@@ -109,7 +109,7 @@ public class bvr extends buq implements bke<bvr.b> {
    @Override
    public void l(cjf $$0) {
       super.l($$0);
-      qx $$1 = $$0.w();
+      qy $$1 = $$0.w();
       $$1.a("BucketVariantTag", this.gp());
    }
 
@@ -140,7 +140,7 @@ public class bvr extends buq implements bke<bvr.b> {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       $$3 = super.a($$0, $$1, $$2, $$3, $$4);
       if ($$2 == bjk.l && $$4 != null && $$4.b("BucketVariantTag", 3)) {
          this.v($$4.h("BucketVariantTag"));
@@ -200,7 +200,7 @@ public class bvr extends buq implements bke<bvr.b> {
       public static final Codec<bvr.b> m = asp.a(bvr.b::values);
       private static final IntFunction<bvr.b> n = aqs.a(bvr.b::b, values(), a);
       private final String o;
-      private final tl p;
+      private final tm p;
       private final bvr.a q;
       private final int r;
 
@@ -208,7 +208,7 @@ public class bvr extends buq implements bke<bvr.b> {
          this.o = $$0;
          this.q = $$1;
          this.r = $$1.c | $$2 << 8;
-         this.p = tl.c("entity.minecraft.tropical_fish.type." + this.o);
+         this.p = tm.c("entity.minecraft.tropical_fish.type." + this.o);
       }
 
       public static bvr.b a(int $$0) {
@@ -228,7 +228,7 @@ public class bvr extends buq implements bke<bvr.b> {
          return this.o;
       }
 
-      public tl d() {
+      public tm d() {
          return this.p;
       }
    }

@@ -14,7 +14,7 @@ public class dtk {
    public static final aew<dtj> h = a("redstone_ready");
    public static final aew<dtj> i = a("the_void");
 
-   public static void a(ns<dtj> $$0) {
+   public static void a(nt<dtj> $$0) {
       new dtk.a($$0).a();
    }
 
@@ -23,9 +23,9 @@ public class dtk {
    }
 
    static class a {
-      private final ns<dtj> a;
+      private final nt<dtj> a;
 
-      a(ns<dtj> $$0) {
+      a(nt<dtj> $$0) {
          this.a = $$0;
       }
 

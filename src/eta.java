@@ -2,7 +2,7 @@ public class eta extends esk {
    private final esd a;
    private final etk b;
 
-   public eta(int $$0, int $$1, int $$2, int $$3, tl $$4, esd $$5) {
+   public eta(int $$0, int $$1, int $$2, int $$3, tm $$4, esd $$5) {
       super($$0, $$1, $$2, $$3, $$4);
       this.a = $$5;
       this.b = new etk($$4, $$5).j(this.l() - this.b());

@@ -10,11 +10,11 @@ public class brk extends bqb {
 
    @Override
    public boolean a() {
-      if (!this.a.bw()) {
+      if (!this.a.bv()) {
          return false;
-      } else if (this.a.aY()) {
+      } else if (this.a.aX()) {
          return false;
-      } else if (!this.a.aB()) {
+      } else if (!this.a.aA()) {
          return false;
       } else if (this.a.T) {
          return false;

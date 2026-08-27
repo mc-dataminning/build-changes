@@ -63,7 +63,7 @@ public class ceh {
       }
    }
 
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       if ($$0.b("foodLevel", 99)) {
          this.a = $$0.h("foodLevel");
          this.d = $$0.h("foodTickTimer");
@@ -72,7 +72,7 @@ public class ceh {
       }
    }
 
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       $$0.a("foodLevel", this.a);
       $$0.a("foodTickTimer", this.d);
       $$0.a("foodSaturationLevel", this.b);

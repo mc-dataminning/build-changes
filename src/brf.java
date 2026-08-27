@@ -15,7 +15,7 @@ public class brf extends bqb {
 
    @Override
    public boolean a() {
-      if (!this.a.gs() && this.a.bP()) {
+      if (!this.a.gs() && this.a.bO()) {
          ehn $$0 = btw.a(this.a, 5, 4);
          if ($$0 == null) {
             return false;
@@ -37,13 +37,13 @@ public class brf extends bqb {
 
    @Override
    public boolean b() {
-      return !this.a.gs() && !this.a.L().l() && this.a.bP();
+      return !this.a.gs() && !this.a.L().l() && this.a.bO();
    }
 
    @Override
    public void e() {
       if (!this.a.gs() && this.a.ef().a(this.a(50)) == 0) {
-         biq $$0 = this.a.cR();
+         biq $$0 = this.a.cQ();
          if ($$0 == null) {
             return;
          }
@@ -59,7 +59,7 @@ public class brf extends bqb {
             this.a.v(5);
          }
 
-         this.a.bB();
+         this.a.bA();
          this.a.gJ();
          this.a.dL().a(this.a, (byte)6);
       }

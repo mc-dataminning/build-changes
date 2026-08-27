@@ -10,7 +10,7 @@ public class gfc {
       this.a = 1000.0F / (float)$$0.toMillis();
    }
 
-   public void a(eqn $$0, tl $$1) {
+   public void a(eqn $$0, tm $$1) {
       gfc.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gfc.a($$1, RateLimiter.create((double)this.a)));
       if ($$2.b.tryAcquire(1)) {
          $$0.c($$1);
@@ -18,10 +18,10 @@ public class gfc {
    }
 
    static class a {
-      final tl a;
+      final tm a;
       final RateLimiter b;
 
-      a(tl $$0, RateLimiter $$1) {
+      a(tm $$0, RateLimiter $$1) {
          this.a = $$0;
          this.b = $$1;
       }

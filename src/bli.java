@@ -11,7 +11,7 @@ public class bli implements bmk {
 
    @Override
    public ehn a() {
-      return this.b ? this.a.dj().b(0.0, (double)this.a.cI(), 0.0) : this.a.dj();
+      return this.b ? this.a.dj().b(0.0, (double)this.a.cH(), 0.0) : this.a.dj();
    }
 
    @Override
@@ -22,7 +22,7 @@ public class bli implements bmk {
    @Override
    public boolean a(bjg $$0) {
       if (this.a instanceof bjg $$1) {
-         if (!$$1.bw()) {
+         if (!$$1.bv()) {
             return false;
          } else {
             Optional<bsj> $$3 = $$0.dN().c(bsh.h);

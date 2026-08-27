@@ -85,7 +85,7 @@ public class cae extends bur implements bza, cag {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("hoglinBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
@@ -127,7 +127,7 @@ public class cae extends bur implements bza, cag {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if ($$0.D_().i() < 0.2F) {
          this.a(true);
       }
@@ -212,7 +212,7 @@ public class cae extends bur implements bza, cag {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.gk()) {
          $$0.a("IsImmuneToZombification", true);
@@ -225,7 +225,7 @@ public class cae extends bur implements bza, cag {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.w($$0.q("IsImmuneToZombification"));
       this.cg = $$0.h("TimeInOverworld");
@@ -233,11 +233,11 @@ public class cae extends bur implements bza, cag {
    }
 
    public void w(boolean $$0) {
-      this.am().b(bW, $$0);
+      this.al().b(bW, $$0);
    }
 
    private boolean gk() {
-      return this.am().b(bW);
+      return this.al().b(bW);
    }
 
    public boolean y() {
@@ -269,7 +269,7 @@ public class cae extends bur implements bza, cag {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.f;
    }
 
@@ -289,12 +289,12 @@ public class cae extends bur implements bza, cag {
    }
 
    @Override
-   protected apd aM() {
+   protected apd aL() {
       return ape.lw;
    }
 
    @Override
-   protected apd aN() {
+   protected apd aM() {
       return ape.lv;
    }
 
@@ -308,8 +308,8 @@ public class cae extends bur implements bza, cag {
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 }

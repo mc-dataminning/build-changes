@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class el implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("arguments.objective.readonly", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("arguments.objective.notFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("arguments.objective.readonly", $$0));
 
    public static el a() {
       return new el();

@@ -1,11 +1,26 @@
-public interface vn extends abe {
-   void a(vq var1);
+import java.util.Map;
 
-   void a(vr var1);
+public class vn implements ve<vh> {
+   private final Map<aew<? extends ht<?>>, aql.a> a;
 
-   void a(vp var1);
+   public vn(Map<aew<? extends ht<?>>, aql.a> $$0) {
+      this.a = $$0;
+   }
 
-   void a(vs var1);
+   public vn(sp $$0) {
+      this.a = $$0.a(sp::t, aql.a::b);
+   }
 
-   void a(vo var1);
+   @Override
+   public void a(sp $$0) {
+      $$0.a(this.a, sp::b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   public void a(vh $$0) {
+      $$0.a(this);
+   }
+
+   public Map<aew<? extends ht<?>>, aql.a> a() {
+      return this.a;
+   }
 }

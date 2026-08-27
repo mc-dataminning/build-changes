@@ -1,15 +1,15 @@
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
 public class eol extends gfb {
-   static final tl b = tl.c("mco.warning");
-   static final tl c = tl.c("mco.info");
+   static final tm b = tm.c("mco.warning");
+   static final tm c = tm.c("mco.info");
    private final eol.a y;
-   private final tl z;
-   private final tl A;
+   private final tm z;
+   private final tm A;
    protected final BooleanConsumer a;
    private final boolean B;
 
-   public eol(BooleanConsumer $$0, eol.a $$1, tl $$2, tl $$3, boolean $$4) {
+   public eol(BooleanConsumer $$0, eol.a $$1, tm $$2, tm $$3, boolean $$4) {
       super(eqn.a);
       this.a = $$0;
       this.y = $$1;
@@ -21,16 +21,16 @@ public class eol extends gfb {
    @Override
    public void aI_() {
       if (this.B) {
-         this.d(esq.a(tk.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
-         this.d(esq.a(tk.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
+         this.d(esq.a(tl.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
+         this.d(esq.a(tl.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
       } else {
-         this.d(esq.a(tk.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
+         this.d(esq.a(tl.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
       }
    }
 
    @Override
-   public tl g() {
-      return tk.b(this.y.d, this.z, this.A);
+   public tm g() {
+      return tl.b(this.y.d, this.z, this.A);
    }
 
    @Override
@@ -56,9 +56,9 @@ public class eol extends gfb {
       b(eol.c, 8226750);
 
       public final int c;
-      public final tl d;
+      public final tm d;
 
-      private a(tl $$0, int $$1) {
+      private a(tm $$0, int $$1) {
          this.d = $$0;
          this.c = $$1;
       }

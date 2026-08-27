@@ -132,7 +132,7 @@ public class dhr {
       return this.i;
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       this.e = $$0.readShort();
       this.h.a($$0);
       dhy<hg<cqt>> $$1 = this.i.e();
@@ -140,13 +140,13 @@ public class dhr {
       this.i = $$1;
    }
 
-   public void b(so $$0) {
+   public void b(sp $$0) {
       dhy<hg<cqt>> $$1 = this.i.e();
       $$1.a($$0);
       this.i = $$1;
    }
 
-   public void c(so $$0) {
+   public void c(sp $$0) {
       $$0.l(this.e);
       this.h.b($$0);
       this.i.b($$0);

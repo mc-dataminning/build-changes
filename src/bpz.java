@@ -57,7 +57,7 @@ public class bpz extends bqb {
    }
 
    private boolean h() {
-      return this.e.gd() || this.e.bO() || this.e.fR();
+      return this.e.gd() || this.e.bN() || this.e.fR();
    }
 
    @Override
@@ -76,7 +76,7 @@ public class bpz extends bqb {
 
    @Override
    public void e() {
-      this.e.G().a(this.f, 10.0F, (float)this.e.Z());
+      this.e.G().a(this.f, 10.0F, (float)this.e.Y());
       if (--this.j <= 0) {
          this.j = this.a(10);
          if (this.e.f(this.f) >= 144.0) {
@@ -123,7 +123,7 @@ public class bpz extends bqb {
             return false;
          } else {
             gw $$3 = $$0.b(this.e.dl());
-            return this.g.a(this.e, this.e.cH().a($$3));
+            return this.g.a(this.e, this.e.cG().a($$3));
          }
       }
    }

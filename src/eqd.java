@@ -3,7 +3,7 @@ import org.slf4j.Logger;
 
 public class eqd extends epv {
    private static final Logger b = LogUtils.getLogger();
-   private static final tl c = tl.c("mco.create.world.wait");
+   private static final tm c = tm.c("mco.create.world.wait");
    private final String d;
    private final String e;
    private final long f;
@@ -33,7 +33,7 @@ public class eqd extends epv {
    }
 
    @Override
-   public tl a() {
+   public tm a() {
       return c;
    }
 }

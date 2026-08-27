@@ -1,7 +1,7 @@
 import java.util.UUID;
 import java.util.function.Function;
 
-public class xh implements vd<ww> {
+public class xh implements ve<wx> {
    private static final int a = 1;
    private static final int b = 2;
    private static final int c = 4;
@@ -19,7 +19,7 @@ public class xh implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
       }
    };
 
@@ -28,7 +28,7 @@ public class xh implements vd<ww> {
       this.e = $$1;
    }
 
-   public xh(so $$0) {
+   public xh(sp $$0) {
       this.d = $$0.o();
       xh.d $$1 = $$0.b(xh.d.class);
       this.e = $$1.g.apply($$0);
@@ -59,7 +59,7 @@ public class xh implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.d);
       $$0.a(this.e.a());
       this.e.a($$0);
@@ -82,7 +82,7 @@ public class xh implements vd<ww> {
       return $$3;
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -91,7 +91,7 @@ public class xh implements vd<ww> {
    }
 
    static class a implements xh.c {
-      private final tl a;
+      private final tm a;
       private final float b;
       private final bgo.a c;
       private final bgo.b d;
@@ -109,7 +109,7 @@ public class xh implements vd<ww> {
          this.g = $$0.p();
       }
 
-      private a(so $$0) {
+      private a(sp $$0) {
          this.a = $$0.l();
          this.b = $$0.readFloat();
          this.c = $$0.b(bgo.a.class);
@@ -131,7 +131,7 @@ public class xh implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
          $$0.a(this.b);
          $$0.a(this.c);
@@ -141,7 +141,7 @@ public class xh implements vd<ww> {
    }
 
    public interface b {
-      default void a(UUID $$0, tl $$1, float $$2, bgo.a $$3, bgo.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, tm $$1, float $$2, bgo.a $$3, bgo.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -150,7 +150,7 @@ public class xh implements vd<ww> {
       default void a(UUID $$0, float $$1) {
       }
 
-      default void a(UUID $$0, tl $$1) {
+      default void a(UUID $$0, tm $$1) {
       }
 
       default void a(UUID $$0, bgo.a $$1, bgo.b $$2) {
@@ -165,7 +165,7 @@ public class xh implements vd<ww> {
 
       void a(UUID var1, xh.b var2);
 
-      void a(so var1);
+      void a(sp var1);
    }
 
    static enum d {
@@ -176,21 +176,21 @@ public class xh implements vd<ww> {
       e(xh.h::new),
       f(xh.g::new);
 
-      final Function<so, xh.c> g;
+      final Function<sp, xh.c> g;
 
-      private d(Function<so, xh.c> $$0) {
+      private d(Function<sp, xh.c> $$0) {
          this.g = $$0;
       }
    }
 
    static class e implements xh.c {
-      private final tl a;
+      private final tm a;
 
-      e(tl $$0) {
+      e(tm $$0) {
          this.a = $$0;
       }
 
-      private e(so $$0) {
+      private e(sp $$0) {
          this.a = $$0.l();
       }
 
@@ -205,7 +205,7 @@ public class xh implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
       }
    }
@@ -217,7 +217,7 @@ public class xh implements vd<ww> {
          this.a = $$0;
       }
 
-      private f(so $$0) {
+      private f(sp $$0) {
          this.a = $$0.readFloat();
       }
 
@@ -232,7 +232,7 @@ public class xh implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
       }
    }
@@ -248,7 +248,7 @@ public class xh implements vd<ww> {
          this.c = $$2;
       }
 
-      private g(so $$0) {
+      private g(sp $$0) {
          int $$1 = $$0.readUnsignedByte();
          this.a = ($$1 & 1) > 0;
          this.b = ($$1 & 2) > 0;
@@ -266,7 +266,7 @@ public class xh implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.k(xh.a(this.a, this.b, this.c));
       }
    }
@@ -280,7 +280,7 @@ public class xh implements vd<ww> {
          this.b = $$1;
       }
 
-      private h(so $$0) {
+      private h(sp $$0) {
          this.a = $$0.b(bgo.a.class);
          this.b = $$0.b(bgo.b.class);
       }
@@ -296,7 +296,7 @@ public class xh implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
          $$0.a(this.b);
       }

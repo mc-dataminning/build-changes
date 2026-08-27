@@ -19,7 +19,7 @@ public class bum extends bul {
    }
 
    @Override
-   public boolean aS() {
+   public boolean aR() {
       return !this.t() && this.ah % c == 0;
    }
 
@@ -56,7 +56,7 @@ public class bum extends bul {
    }
 
    @Override
-   public boolean bt() {
+   public boolean bs() {
       return false;
    }
 
@@ -90,19 +90,19 @@ public class bum extends bul {
       super.l();
       if (this.t()) {
          this.f(ehn.b);
-         this.p(this.dq(), (double)arx.a(this.ds()) + 1.0 - (double)this.dh(), this.dw());
+         this.p(this.dq(), (double)arx.a(this.ds()) + 1.0 - (double)this.dg(), this.dw());
       } else {
          this.f(this.do().d(1.0, 0.6, 1.0));
       }
    }
 
    @Override
-   protected void Y() {
-      super.Y();
+   protected void X() {
+      super.X();
       gw $$0 = this.dl();
       gw $$1 = $$0.c();
       if (this.t()) {
-         boolean $$2 = this.aT();
+         boolean $$2 = this.aS();
          if (this.dL().a_($$1).g(this.dL(), $$0)) {
             if (this.ag.a(200) == 0) {
                this.aW = (float)this.ag.a(360);
@@ -150,7 +150,7 @@ public class bum extends bul {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.c;
    }
 
@@ -177,13 +177,13 @@ public class bum extends bul {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.an.b(d, $$0.f("BatFlags"));
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("BatFlags", this.an.b(d));
    }

@@ -3,7 +3,7 @@ import org.slf4j.Logger;
 
 public class ept extends epv {
    private static final Logger b = LogUtils.getLogger();
-   private static final tl c = tl.c("mco.download.preparing");
+   private static final tm c = tm.c("mco.download.preparing");
    private final long d;
    private final int e;
    private final eyk f;
@@ -64,7 +64,7 @@ public class ept extends epv {
    }
 
    @Override
-   public tl a() {
+   public tm a() {
       return c;
    }
 }

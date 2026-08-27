@@ -44,14 +44,14 @@ public class bwj extends buo {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("tadpoleBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
       this.dL().ad().a("tadpoleActivityUpdate");
       bwk.a(this);
       this.dL().ad().c();
-      super.Y();
+      super.X();
    }
 
    public static bkl.a gf() {
@@ -67,13 +67,13 @@ public class bwj extends buo {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Age", this.bU);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.s($$0.h("Age"));
    }
@@ -108,8 +108,8 @@ public class bwj extends buo {
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 
@@ -125,12 +125,12 @@ public class bwj extends buo {
    @Override
    public void l(cjf $$0) {
       but.a(this, $$0);
-      qx $$1 = $$0.w();
+      qy $$1 = $$0.w();
       $$1.a("Age", this.gg());
    }
 
    @Override
-   public void c(qx $$0) {
+   public void c(qy $$0) {
       but.a(this, $$0);
       if ($$0.e("Age")) {
          this.s($$0.h("Age"));
@@ -185,15 +185,15 @@ public class bwj extends buo {
             $$1.b(this.dq(), this.ds(), this.dw(), this.dB(), this.dD());
             $$1.a($$0, this.dL().d_($$1.dl()), bjk.i, null, null);
             $$1.t(this.fT());
-            if (this.ad()) {
-               $$1.b(this.ae());
-               $$1.n(this.cB());
+            if (this.ac()) {
+               $$1.b(this.ad());
+               $$1.n(this.cA());
             }
 
             $$1.fI();
             this.a(ape.xI, 0.15F, 1.0F);
             $$0.a_($$1);
-            this.al();
+            this.ak();
          }
       }
    }

@@ -1,7 +1,7 @@
 public class ger implements geu {
    private static final int a = 600;
-   private static final tl b = tl.c("tutorial.open_inventory.title");
-   private static final tl c = tl.a("tutorial.open_inventory.description", get.a("inventory"));
+   private static final tm b = tm.c("tutorial.open_inventory.title");
+   private static final tm c = tm.a("tutorial.open_inventory.description", get.a("inventory"));
    private final get d;
    private euz e;
    private int f;

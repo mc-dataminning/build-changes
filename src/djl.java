@@ -51,7 +51,7 @@ public class djl<T extends dja> implements AutoCloseable {
    }
 
    private boolean b(T $$0) {
-      if (!this.b.add($$0.cw())) {
+      if (!this.b.add($$0.cv())) {
          a.warn("UUID of added entity already exists: {}", $$0);
          return false;
       } else {
@@ -196,7 +196,7 @@ public class djl<T extends dja> implements AutoCloseable {
    }
 
    private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.cT().forEach(this::g));
+      boolean $$1 = this.a($$0, $$0x -> $$0x.cS().forEach(this::g));
       if (!$$1) {
          return false;
       } else {
@@ -396,7 +396,7 @@ public class djl<T extends dja> implements AutoCloseable {
             djl.this.c.f(this.c);
          }
 
-         djl.this.b.remove(this.c.cw());
+         djl.this.b.remove(this.c.cv());
          this.c.a(a);
          djl.this.a(this.d, this.e);
       }

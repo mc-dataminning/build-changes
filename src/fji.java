@@ -21,15 +21,15 @@ public class fji {
       try {
          this.e.clear();
          this.f.clear();
-         qx $$0 = rh.b(new File(this.d.p, "servers.dat"));
+         qy $$0 = ri.b(new File(this.d.p, "servers.dat"));
          if ($$0 == null) {
             return;
          }
 
-         rd $$1 = $$0.c("servers", 10);
+         re $$1 = $$0.c("servers", 10);
 
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            qx $$3 = $$1.a($$2);
+            qy $$3 = $$1.a($$2);
             fjh $$4 = fjh.a($$3);
             if ($$3.q("hidden")) {
                this.f.add($$4);
@@ -44,24 +44,24 @@ public class fji {
 
    public void b() {
       try {
-         rd $$0 = new rd();
+         re $$0 = new re();
 
          for (fjh $$1 : this.e) {
-            qx $$2 = $$1.a();
+            qy $$2 = $$1.a();
             $$2.a("hidden", false);
             $$0.add($$2);
          }
 
          for (fjh $$3 : this.f) {
-            qx $$4 = $$3.a();
+            qy $$4 = $$3.a();
             $$4.a("hidden", true);
             $$0.add($$4);
          }
 
-         qx $$5 = new qx();
+         qy $$5 = new qy();
          $$5.a("servers", $$0);
          File $$6 = File.createTempFile("servers", ".dat", this.d.p);
-         rh.b($$5, $$6);
+         ri.b($$5, $$6);
          File $$7 = new File(this.d.p, "servers.dat_old");
          File $$8 = new File(this.d.p, "servers.dat");
          ac.a($$8, $$6, $$7);

@@ -9,15 +9,15 @@ public class fjh {
    private static final Logger k = LogUtils.getLogger();
    public String a;
    public String b;
-   public tl c;
-   public tl d;
+   public tm c;
+   public tm d;
    @Nullable
    public aea.b e;
    public long f;
    public int g = aa.b().e();
-   public tl h = tl.b(aa.b().c());
+   public tm h = tm.b(aa.b().c());
    public boolean i;
-   public List<tl> j = Collections.emptyList();
+   public List<tm> j = Collections.emptyList();
    private fjh.a l = fjh.a.c;
    @Nullable
    private byte[] m;
@@ -30,8 +30,8 @@ public class fjh {
       this.n = $$2;
    }
 
-   public qx a() {
-      qx $$0 = new qx();
+   public qy a() {
+      qy $$0 = new qy();
       $$0.a("name", this.a);
       $$0.a("ip", this.b);
       if (this.m != null) {
@@ -55,7 +55,7 @@ public class fjh {
       this.l = $$0;
    }
 
-   public static fjh a(qx $$0) {
+   public static fjh a(qy $$0) {
       fjh $$1 = new fjh($$0.l("name"), $$0.l("ip"), fjh.b.c);
       if ($$0.b("icon", 8)) {
          try {
@@ -121,13 +121,13 @@ public class fjh {
       b("disabled"),
       c("prompt");
 
-      private final tl d;
+      private final tm d;
 
       private a(String $$0) {
-         this.d = tl.c("addServer.resourcePack." + $$0);
+         this.d = tm.c("addServer.resourcePack." + $$0);
       }
 
-      public tl a() {
+      public tm a() {
          return this.d;
       }
    }

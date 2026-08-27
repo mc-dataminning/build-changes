@@ -25,7 +25,7 @@ public class ago {
    private static Iterable<String> a(MinecraftServer $$0) {
       Set<String> $$1 = new HashSet<>();
 
-      for (sm $$2 : $$0.ad().e()) {
+      for (sn $$2 : $$0.ad().e()) {
          if ($$2.m() instanceof alo $$3) {
             $$1.add($$3.k().getId().toString());
          }
@@ -37,13 +37,13 @@ public class ago {
    private static int a(dt $$0, aks $$1) {
       GameProfile $$2 = $$1.fQ();
       $$1.c.o();
-      $$0.a(() -> tl.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      $$0.a(() -> tm.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
       return 1;
    }
 
    private static int a(dt $$0, UUID $$1) {
-      for (sm $$2 : $$0.l().ad().e()) {
-         su var5 = $$2.m();
+      for (sn $$2 : $$0.l().ad().e()) {
+         sv var5 = $$2.m();
          if (var5 instanceof alo) {
             alo $$3 = (alo)var5;
             if ($$3.k().getId().equals($$1)) {
@@ -52,7 +52,7 @@ public class ago {
          }
       }
 
-      $$0.b(tl.b("Can't find player to unconfig"));
+      $$0.b(tm.b("Can't find player to unconfig"));
       return 0;
    }
 }

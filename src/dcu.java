@@ -4,8 +4,8 @@ public class dcu extends dck {
    }
 
    @Override
-   protected tl g() {
-      return tl.c("container.blast_furnace");
+   protected tm g() {
+      return tm.c("container.blast_furnace");
    }
 
    @Override

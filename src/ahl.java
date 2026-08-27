@@ -11,10 +11,10 @@ import org.slf4j.Logger;
 
 public class ahl {
    private static final Logger a = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.locate.structure.not_found", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("commands.locate.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.a("commands.locate.biome.not_found", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tl.a("commands.locate.poi.not_found", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.locate.structure.not_found", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("commands.locate.structure.invalid", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tm.a("commands.locate.biome.not_found", $$0));
+   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tm.a("commands.locate.poi.not_found", $$0));
    private static final int f = 100;
    private static final int g = 6400;
    private static final int h = 32;
@@ -92,9 +92,9 @@ public class ahl {
       gw $$7 = (gw)$$2.getFirst();
       int $$8 = $$4 ? arx.d(arx.c((float)$$1.j($$7))) : arx.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
       String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
-      tl $$10 = tn.a((tl)tl.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
-         .a($$2x -> $$2x.a(n.k).a(new tj(tj.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new tq(tq.a.a, tl.c("chat.coordinates.tooltip"))));
-      $$0.a(() -> tl.a($$3, $$5, $$10, $$8), false);
+      tm $$10 = to.a((tm)tm.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
+         .a($$2x -> $$2x.a(n.k).a(new tk(tk.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new tr(tr.a.a, tm.c("chat.coordinates.tooltip"))));
+      $$0.a(() -> tm.a($$3, $$5, $$10, $$8), false);
       a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
       return $$8;
    }

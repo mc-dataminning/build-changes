@@ -30,7 +30,7 @@ public class bqy extends bqb {
 
    @Override
    public boolean a() {
-      if (this.b.cP()) {
+      if (this.b.cO()) {
          return false;
       } else {
          if (!this.h) {
@@ -63,7 +63,7 @@ public class bqy extends bqb {
 
    @Override
    public boolean b() {
-      return !this.b.L().l() && !this.b.cP();
+      return !this.b.L().l() && !this.b.cO();
    }
 
    @Override

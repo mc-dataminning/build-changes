@@ -6,8 +6,8 @@ import java.util.function.Supplier;
 
 public class fdt implements fdo, fdp {
    private static final aex a = new aex("spectator/teleport_to_team");
-   private static final tl b = tl.c("spectatorMenu.team_teleport");
-   private static final tl c = tl.c("spectatorMenu.team_teleport.prompt");
+   private static final tm b = tm.c("spectatorMenu.team_teleport");
+   private static final tm c = tm.c("spectatorMenu.team_teleport.prompt");
    private final List<fdp> d;
 
    public fdt() {
@@ -25,7 +25,7 @@ public class fdt implements fdo, fdp {
    }
 
    @Override
-   public tl b() {
+   public tm b() {
       return c;
    }
 
@@ -35,7 +35,7 @@ public class fdt implements fdo, fdp {
    }
 
    @Override
-   public tl aJ_() {
+   public tm aJ_() {
       return b;
    }
 
@@ -85,7 +85,7 @@ public class fdt implements fdo, fdp {
       }
 
       @Override
-      public tl aJ_() {
+      public tm aJ_() {
          return this.a.c();
       }
 

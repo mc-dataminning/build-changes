@@ -27,7 +27,7 @@ public class div {
    private static final int i = 96;
    public static final int c = 128;
    private final Predicate<biq> j;
-   private final ako k = (ako)new ako(tl.c("entity.minecraft.ender_dragon"), bgo.a.a, bgo.b.a).b(true).c(true);
+   private final ako k = (ako)new ako(tm.c("entity.minecraft.ender_dragon"), bgo.a.a, bgo.b.a).b(true).c(true);
    private final akr l;
    private final gw m;
    private final ObjectArrayList<Integer> n = new ObjectArrayList();
@@ -151,12 +151,12 @@ public class div {
          this.t = true;
       } else {
          bxh $$2 = $$1.get(0);
-         this.w = $$2.cw();
+         this.w = $$2.cv();
          d.info("Found that there's a dragon still alive ({})", $$2);
          this.t = false;
          if (!$$0) {
             d.info("But we didn't have a portal, let's remove it.");
-            $$2.al();
+            $$2.ak();
             this.w = null;
          }
       }
@@ -173,7 +173,7 @@ public class div {
          this.r();
       } else {
          d.debug("Haven't seen our dragon, but found another one to use.");
-         this.w = $$0.get(0).cw();
+         this.w = $$0.get(0).cv();
       }
    }
 
@@ -306,7 +306,7 @@ public class div {
    }
 
    public void a(bxh $$0) {
-      if ($$0.cw().equals(this.w)) {
+      if ($$0.cv().equals(this.w)) {
          this.k.a(0.0F);
          this.k.d(false);
          this.a(true);
@@ -337,7 +337,7 @@ public class div {
 
    private void a(gw $$0) {
       this.l.c(3000, $$0, 0);
-      this.l.G_().c(je.as).flatMap($$0x -> $$0x.b(or.c)).ifPresent($$1 -> $$1.a().a(this.l, this.l.k().g(), asc.a(), $$0));
+      this.l.G_().c(je.as).flatMap($$0x -> $$0x.b(os.c)).ifPresent($$1 -> $$1.a().a(this.l, this.l.k().g(), asc.a(), $$0));
    }
 
    private void a(boolean $$0) {
@@ -366,17 +366,17 @@ public class div {
          $$0.ga().a(bxx.a);
          $$0.b((double)this.m.u(), (double)(128 + this.m.v()), (double)this.m.w(), this.l.z.i() * 360.0F, 0.0F);
          this.l.b($$0);
-         this.w = $$0.cw();
+         this.w = $$0.cv();
       }
 
       return $$0;
    }
 
    public void b(bxh $$0) {
-      if ($$0.cw().equals(this.w)) {
+      if ($$0.cv().equals(this.w)) {
          this.k.a($$0.eu() / $$0.eL());
          this.p = 0;
-         if ($$0.ad()) {
+         if ($$0.ac()) {
             this.k.a($$0.N_());
          }
       }

@@ -9,8 +9,8 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import javax.annotation.Nullable;
 
 public class ahv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.publish.alreadyPublished", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.publish.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.publish.alreadyPublished", $$0));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -49,8 +49,8 @@ public class ahv {
       }
    }
 
-   public static ty a(int $$0) {
-      tl $$1 = tn.a(String.valueOf($$0));
-      return tl.a("commands.publish.started", $$1);
+   public static tz a(int $$0) {
+      tm $$1 = to.a(String.valueOf($$0));
+      return tm.a("commands.publish.started", $$1);
    }
 }

@@ -8,14 +8,14 @@ public class fcu extends esk {
    private static final int a = 32;
    private static final String b = "telemetry.event.required";
    private static final String c = "telemetry.event.optional";
-   private static final tl d = tl.c("telemetry_info.property_title").a(n.t);
+   private static final tm d = tm.c("telemetry_info.property_title").a(n.t);
    private final esd e;
    private fcu.a l;
    @Nullable
    private DoubleConsumer m;
 
    public fcu(int $$0, int $$1, int $$2, int $$3, esd $$4) {
-      super($$0, $$1, $$2, $$3, tl.h());
+      super($$0, $$1, $$2, $$3, tm.h());
       this.e = $$4;
       this.l = this.c(eqv.O().A());
    }
@@ -83,7 +83,7 @@ public class fcu extends esk {
 
    private void a(fcu.b $$0, gdz $$1) {
       String $$2 = $$1.d() ? "telemetry.event.optional" : "telemetry.event.required";
-      $$0.b(this.e, tl.a($$2, $$1.e()));
+      $$0.b(this.e, tm.a($$2, $$1.e()));
       $$0.b(this.e, $$1.f().a(n.h));
       $$0.a(9 / 2);
       $$0.a(this.e, d, 2);
@@ -100,13 +100,13 @@ public class fcu extends esk {
       return this.f - this.b();
    }
 
-   static record a(ewa a, tl b) {
+   static record a(ewa a, tm b) {
    }
 
    static class b {
       private final int a;
       private final ewd b;
-      private final ty c = tl.h();
+      private final tz c = tm.h();
 
       public b(int $$0) {
          this.a = $$0;
@@ -115,16 +115,16 @@ public class fcu extends esk {
          this.b.a(ewe.a($$0));
       }
 
-      public void a(esd $$0, tl $$1) {
+      public void a(esd $$0, tm $$1) {
          this.a($$0, $$1, 0);
       }
 
-      public void a(esd $$0, tl $$1, int $$2) {
+      public void a(esd $$0, tm $$1, int $$2) {
          this.b.a(new etk($$1, $$0).j(this.a), $$1x -> $$1x.e($$2));
          this.c.b($$1).f("\n");
       }
 
-      public void b(esd $$0, tl $$1) {
+      public void b(esd $$0, tm $$1) {
          this.b.a(new etk($$1, $$0).j(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
          this.c.b($$1).f("\n");
       }

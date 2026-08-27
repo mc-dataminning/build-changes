@@ -1,65 +1,46 @@
-public class pc {
-   public static final aew<dum> a = ph.a("monster_room");
-   public static final aew<dum> b = ph.a("monster_room_deep");
-   public static final aew<dum> c = ph.a("fossil_upper");
-   public static final aew<dum> d = ph.a("fossil_lower");
-   public static final aew<dum> e = ph.a("dripstone_cluster");
-   public static final aew<dum> f = ph.a("large_dripstone");
-   public static final aew<dum> g = ph.a("pointed_dripstone");
-   public static final aew<dum> h = ph.a("underwater_magma");
-   public static final aew<dum> i = ph.a("glow_lichen");
-   public static final aew<dum> j = ph.a("rooted_azalea_tree");
-   public static final aew<dum> k = ph.a("cave_vines");
-   public static final aew<dum> l = ph.a("lush_caves_vegetation");
-   public static final aew<dum> m = ph.a("lush_caves_clay");
-   public static final aew<dum> n = ph.a("lush_caves_ceiling_vegetation");
-   public static final aew<dum> o = ph.a("spore_blossom");
-   public static final aew<dum> p = ph.a("classic_vines_cave_feature");
-   public static final aew<dum> q = ph.a("amethyst_geode");
-   public static final aew<dum> r = ph.a("sculk_patch_deep_dark");
-   public static final aew<dum> s = ph.a("sculk_patch_ancient_city");
-   public static final aew<dum> t = ph.a("sculk_vein");
+import java.util.List;
 
-   public static void a(ns<dum> $$0) {
+public class pc {
+   public static final aew<dum> a = pi.a("seagrass_warm");
+   public static final aew<dum> b = pi.a("seagrass_normal");
+   public static final aew<dum> c = pi.a("seagrass_cold");
+   public static final aew<dum> d = pi.a("seagrass_river");
+   public static final aew<dum> e = pi.a("seagrass_swamp");
+   public static final aew<dum> f = pi.a("seagrass_deep_warm");
+   public static final aew<dum> g = pi.a("seagrass_deep");
+   public static final aew<dum> h = pi.a("seagrass_deep_cold");
+   public static final aew<dum> i = pi.a("seagrass_simple");
+   public static final aew<dum> j = pi.a("sea_pickle");
+   public static final aew<dum> k = pi.a("kelp_cold");
+   public static final aew<dum> l = pi.a("kelp_warm");
+   public static final aew<dum> m = pi.a("warm_ocean_vegetation");
+
+   private static List<dup> a(int $$0) {
+      return List.of(duj.a(), pi.b, duf.a($$0), dua.a());
+   }
+
+   public static void a(nt<dum> $$0) {
       hh<dnj<?, ?>> $$1 = $$0.a(je.as);
-      hg<dnj<?, ?>> $$2 = $$1.b(oq.a);
-      hg<dnj<?, ?>> $$3 = $$1.b(oq.b);
-      hg<dnj<?, ?>> $$4 = $$1.b(oq.c);
-      hg<dnj<?, ?>> $$5 = $$1.b(oq.d);
-      hg<dnj<?, ?>> $$6 = $$1.b(oq.e);
-      hg<dnj<?, ?>> $$7 = $$1.b(oq.f);
-      hg<dnj<?, ?>> $$8 = $$1.b(oq.g);
-      hg<dnj<?, ?>> $$9 = $$1.b(oq.h);
-      hg<dnj<?, ?>> $$10 = $$1.b(oq.i);
-      hg<dnj<?, ?>> $$11 = $$1.b(oq.j);
-      hg<dnj<?, ?>> $$12 = $$1.b(oq.m);
-      hg<dnj<?, ?>> $$13 = $$1.b(oq.r);
-      hg<dnj<?, ?>> $$14 = $$1.b(oq.s);
-      hg<dnj<?, ?>> $$15 = $$1.b(oq.t);
-      hg<dnj<?, ?>> $$16 = $$1.b(oy.c);
-      hg<dnj<?, ?>> $$17 = $$1.b(oq.u);
-      hg<dnj<?, ?>> $$18 = $$1.b(oq.v);
-      hg<dnj<?, ?>> $$19 = $$1.b(oq.w);
-      hg<dnj<?, ?>> $$20 = $$1.b(oq.x);
-      ph.a($$0, a, $$2, duf.a(10), duj.a(), duh.a(dlm.a(0), dlm.b()), dua.a());
-      ph.a($$0, b, $$2, duf.a(4), duj.a(), duh.a(dlm.b(6), dlm.a(-1)), dua.a());
-      ph.a($$0, c, $$3, dus.a(64), duj.a(), duh.a(dlm.a(0), dlm.b()), dua.a());
-      ph.a($$0, d, $$4, dus.a(64), duj.a(), duh.a(dlm.a(), dlm.a(-8)), dua.a());
-      ph.a($$0, e, $$5, duf.a(bgj.a(48, 96)), duj.a(), ph.i, dua.a());
-      ph.a($$0, f, $$6, duf.a(bgj.a(10, 48)), duj.a(), ph.i, dua.a());
-      ph.a($$0, g, $$7, duf.a(bgj.a(192, 256)), duj.a(), ph.i, duf.a(bgj.a(1, 5)), dur.a(bfy.a(0.0F, 3.0F, -10, 10), bfy.a(0.0F, 0.6F, -2, 2)), dua.a());
-      ph.a($$0, h, $$8, duf.a(bgj.a(44, 52)), duj.a(), ph.i, duu.a(dks.a.c, Integer.MIN_VALUE, -2), dua.a());
-      ph.a($$0, i, $$9, duf.a(bgj.a(104, 157)), ph.i, duj.a(), duu.a(dks.a.c, Integer.MIN_VALUE, -13), dua.a());
-      ph.a($$0, j, $$10, duf.a(bgj.a(1, 2)), duj.a(), ph.i, dug.a(hc.b, dlz.c(), dlz.c, 12), dur.a(bga.a(-1)), dua.a());
-      ph.a($$0, k, $$11, duf.a(188), duj.a(), ph.i, dug.a(hc.b, dlz.a(hc.a), dlz.c, 12), dur.a(bga.a(-1)), dua.a());
-      ph.a($$0, l, $$12, duf.a(125), duj.a(), ph.i, dug.a(hc.a, dlz.c(), dlz.c, 12), dur.a(bga.a(1)), dua.a());
-      ph.a($$0, m, $$13, duf.a(62), duj.a(), ph.i, dug.a(hc.a, dlz.c(), dlz.c, 12), dur.a(bga.a(1)), dua.a());
-      ph.a($$0, n, $$14, duf.a(125), duj.a(), ph.i, dug.a(hc.b, dlz.c(), dlz.c, 12), dur.a(bga.a(-1)), dua.a());
-      ph.a($$0, o, $$15, duf.a(25), duj.a(), ph.i, dug.a(hc.b, dlz.c(), dlz.c, 12), dur.a(bga.a(-1)), dua.a());
-      ph.a($$0, p, $$16, duf.a(256), duj.a(), ph.i, dua.a());
-      ph.a($$0, q, $$17, dus.a(24), duj.a(), duh.a(dlm.b(6), dlm.a(30)), dua.a());
-      ph.a($$0, r, $$18, duf.a(bga.a(256)), duj.a(), ph.i, dua.a());
-      ph.a($$0, s, $$19);
-      ph.a($$0, t, $$20, duf.a(bgj.a(204, 250)), duj.a(), ph.i, dua.a());
+      hg.c<dnj<?, ?>> $$2 = $$1.b(oq.a);
+      hg.c<dnj<?, ?>> $$3 = $$1.b(oq.b);
+      hg.c<dnj<?, ?>> $$4 = $$1.b(oq.c);
+      hg.c<dnj<?, ?>> $$5 = $$1.b(oq.d);
+      hg.c<dnj<?, ?>> $$6 = $$1.b(oq.f);
+      hg.c<dnj<?, ?>> $$7 = $$1.b(oq.e);
+      hg.c<dnj<?, ?>> $$8 = $$1.b(oq.g);
+      hg.c<dnj<?, ?>> $$9 = $$1.b(oq.h);
+      pi.a($$0, a, $$2, a(80));
+      pi.a($$0, b, $$2, a(48));
+      pi.a($$0, c, $$2, a(32));
+      pi.a($$0, d, $$3, a(48));
+      pi.a($$0, e, $$4, a(64));
+      pi.a($$0, f, $$5, a(80));
+      pi.a($$0, g, $$5, a(48));
+      pi.a($$0, h, $$5, a(40));
+      pi.a($$0, i, $$6, duc.a(dko.a.b), dus.a(10), dub.a(dlz.a(dlz.a(hc.a.q(), csw.b), dlz.a(gw.b, csw.G), dlz.a(hc.b.q(), csw.G))), dua.a());
+      pi.a($$0, j, $$7, dus.a(16), duj.a(), pi.b, dua.a());
+      pi.a($$0, k, $$8, duk.a(120, 80.0, 0.0), duj.a(), pi.b, dua.a());
+      pi.a($$0, l, $$8, duk.a(80, 80.0, 0.0), duj.a(), pi.b, dua.a());
+      pi.a($$0, m, $$9, duk.a(20, 400.0, 0.0), duj.a(), pi.b, dua.a());
    }
 }

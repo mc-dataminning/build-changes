@@ -11,7 +11,7 @@ public abstract class eio {
 
    public abstract String b();
 
-   public abstract ty d(tl var1);
+   public abstract tz d(tm var1);
 
    public abstract boolean i();
 
@@ -47,8 +47,8 @@ public abstract class eio {
          this.f = $$1;
       }
 
-      public tl a() {
-         return tl.c("team.collision." + this.e);
+      public tm a() {
+         return tm.c("team.collision." + this.e);
       }
    }
 
@@ -76,8 +76,8 @@ public abstract class eio {
          this.f = $$1;
       }
 
-      public tl b() {
-         return tl.c("team.visibility." + this.e);
+      public tm b() {
+         return tm.c("team.visibility." + this.e);
       }
    }
 }

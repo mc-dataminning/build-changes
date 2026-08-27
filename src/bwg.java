@@ -63,7 +63,7 @@ public class bwg extends bur implements bke<bvc> {
 
    @Override
    public void a(biq $$0) {
-      this.an.b(cd, OptionalInt.of($$0.ai()));
+      this.an.b(cd, OptionalInt.of($$0.ah()));
    }
 
    @Override
@@ -72,7 +72,7 @@ public class bwg extends bur implements bke<bvc> {
    }
 
    @Override
-   public int aa() {
+   public int Z() {
       return 5;
    }
 
@@ -85,13 +85,13 @@ public class bwg extends bur implements bke<bvc> {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("variant", jd.ak.b(this.y()).toString());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       bvc $$1 = jd.ak.a(aex.a($$0.l("variant")));
       if ($$1 != null) {
@@ -105,20 +105,20 @@ public class bwg extends bur implements bke<bvc> {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("frogBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
       this.dL().ad().a("frogActivityUpdate");
       bwh.a(this);
       this.dL().ad().c();
-      super.Y();
+      super.X();
    }
 
    @Override
    public void l() {
       if (this.dL().w_()) {
-         this.cb.a(this.bb() && !this.aQ.c(), this.ah);
+         this.cb.a(this.ba() && !this.aQ.c(), this.ah);
       }
 
       super.l();
@@ -127,7 +127,7 @@ public class bwg extends bur implements bke<bvc> {
    @Override
    public void a(aef<?> $$0) {
       if (as.equals($$0)) {
-         bjs $$1 = this.ao();
+         bjs $$1 = this.an();
          if ($$1 == bjs.g) {
             this.bY.a(this.ah);
          } else {
@@ -189,7 +189,7 @@ public class bwg extends bur implements bke<bvc> {
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       hg<cqt> $$5 = $$0.s(this.dl());
       if ($$5.a(aps.ah)) {
          this.a(bvc.c);
@@ -231,13 +231,13 @@ public class bwg extends bur implements bke<bvc> {
    }
 
    @Override
-   public boolean cz() {
+   public boolean cy() {
       return false;
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 
@@ -248,7 +248,7 @@ public class bwg extends bur implements bke<bvc> {
 
    @Override
    public void h(ehn $$0) {
-      if (this.cX() && this.aY()) {
+      if (this.cW() && this.aX()) {
          this.a(this.fe(), $$0);
          this.a(bjm.a, this.do());
          this.f(this.do().a(0.9));
@@ -262,7 +262,7 @@ public class bwg extends bur implements bke<bvc> {
          return false;
       }
 
-      return $$0.ah().a(apw.k);
+      return $$0.ag().a(apw.k);
    }
 
    @Override
@@ -304,7 +304,7 @@ public class bwg extends bur implements bke<bvc> {
 
       @Override
       public eaz a() {
-         return !this.b.aY() ? super.a() : this.c(new gw(arx.a(this.b.cH().a), arx.a(this.b.cH().b), arx.a(this.b.cH().c)));
+         return !this.b.aX() ? super.a() : this.c(new gw(arx.a(this.b.cG().a), arx.a(this.b.cG().b), arx.a(this.b.cG().c)));
       }
 
       @Override

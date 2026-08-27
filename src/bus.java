@@ -103,14 +103,14 @@ public class bus extends bur implements bjn, bva {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.gk()) {
-         $$0.a("HivePos", rj.a(this.gl()));
+         $$0.a("HivePos", rk.a(this.gl()));
       }
 
       if (this.t()) {
-         $$0.a("FlowerPos", rj.a(this.s()));
+         $$0.a("FlowerPos", rk.a(this.s()));
       }
 
       $$0.a("HasNectar", this.gn());
@@ -122,15 +122,15 @@ public class bus extends bur implements bjn, bva {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.cG = null;
       if ($$0.e("HivePos")) {
-         this.cG = rj.b($$0.p("HivePos"));
+         this.cG = rk.b($$0.p("HivePos"));
       }
 
       this.cF = null;
       if ($$0.e("FlowerPos")) {
-         this.cF = rj.b($$0.p("FlowerPos"));
+         this.cF = rk.b($$0.p("FlowerPos"));
       }
 
       super.a($$0);
@@ -265,9 +265,9 @@ public class bus extends bur implements bjn, bva {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       boolean $$0 = this.go();
-      if (this.bb()) {
+      if (this.ba()) {
          this.cK++;
       } else {
          this.cK = 0;
@@ -354,8 +354,8 @@ public class bus extends bur implements bjn, bva {
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 
@@ -523,13 +523,13 @@ public class bus extends bur implements bjn, bva {
    }
 
    @Override
-   public boolean aS() {
+   public boolean aR() {
       return this.gq() && this.ah % bU == 0;
    }
 
    @Override
    public boolean gq() {
-      return !this.aB();
+      return !this.aA();
    }
 
    public void gr() {
@@ -561,8 +561,8 @@ public class bus extends bur implements bjn, bva {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.5F * this.cI()), (double)(this.dg() * 0.2F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.5F * this.cH()), (double)(this.df() * 0.2F));
    }
 
    boolean b(gw $$0, int $$1) {

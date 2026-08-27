@@ -9,7 +9,7 @@ public class exy extends eyc {
    }
 
    public exy(eyk $$0, eqz $$1) {
-      super($$0, $$1, tl.c("options.mouse_settings.title"));
+      super($$0, $$1, tm.c("options.mouse_settings.title"));
    }
 
    @Override
@@ -22,7 +22,7 @@ public class exy extends eyc {
       }
 
       this.e(this.c);
-      this.d(esq.a(tk.d, $$0 -> {
+      this.d(esq.a(tl.d, $$0 -> {
          this.b.ar();
          this.f.a(this.a);
       }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());

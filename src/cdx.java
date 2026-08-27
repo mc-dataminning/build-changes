@@ -42,7 +42,7 @@ public class cdx extends cdl {
 
    @Override
    public boolean a(bho $$0, float $$1) {
-      if ($$0.c() instanceof cca $$3 && $$3.bN()) {
+      if ($$0.c() instanceof cca $$3 && $$3.bM()) {
          bho $$4 = this.dM().d(this, $$0.d());
          this.a($$4, $$3.do().g());
       }
@@ -80,7 +80,7 @@ public class cdx extends cdl {
          }
 
          this.dL().a(this, $$0, null, this.dq(), this.ds(), this.dw(), (float)(4.0 + this.ag.j() * 1.5 * $$2), false, cpv.a.d);
-         this.al();
+         this.ak();
       }
    }
 
@@ -114,7 +114,7 @@ public class cdx extends cdl {
       this.d = 80;
       if (!this.dL().B) {
          this.dL().a(this, (byte)10);
-         if (!this.aT()) {
+         if (!this.aS()) {
             this.dL().a(null, this.dq(), this.ds(), this.dw(), ape.xL, apf.e, 1.0F, 1.0F);
          }
       }
@@ -139,7 +139,7 @@ public class cdx extends cdl {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       super.a($$0);
       if ($$0.b("TNTFuse", 99)) {
          this.d = $$0.h("TNTFuse");
@@ -147,7 +147,7 @@ public class cdx extends cdl {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("TNTFuse", this.d);
    }

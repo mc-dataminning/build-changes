@@ -1,4 +1,4 @@
-public class yj implements vd<ww> {
+public class yj implements ve<wx> {
    private final double a;
    private final double b;
    private final double c;
@@ -23,7 +23,7 @@ public class yj implements vd<ww> {
       this.h = $$9;
    }
 
-   public yj(so $$0) {
+   public yj(sp $$0) {
       iw<?> $$1 = $$0.a(jd.k);
       this.i = $$0.readBoolean();
       this.a = $$0.readDouble();
@@ -37,12 +37,12 @@ public class yj implements vd<ww> {
       this.j = this.a($$0, (iw<iv>)$$1);
    }
 
-   private <T extends iv> T a(so $$0, iw<T> $$1) {
+   private <T extends iv> T a(sp $$0, iw<T> $$1) {
       return $$1.d().b($$1, $$0);
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(jd.k, this.j.b());
       $$0.a(this.i);
       $$0.a(this.a);
@@ -96,7 +96,7 @@ public class yj implements vd<ww> {
       return this.j;
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 }

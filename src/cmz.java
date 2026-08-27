@@ -98,14 +98,14 @@ public class cmz implements cmx {
          return x;
       }
 
-      public cmz b(so $$0) {
+      public cmz b(sp $$0) {
          cmg $$1 = cmg.b($$0);
          cmg $$2 = cmg.b($$0);
          cmg $$3 = cmg.b($$0);
          return new cmz($$1, $$2, $$3);
       }
 
-      public void a(so $$0, cmz $$1) {
+      public void a(sp $$0, cmz $$1) {
          $$1.a.a($$0);
          $$1.b.a($$0);
          $$1.c.a($$0);

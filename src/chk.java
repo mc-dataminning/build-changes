@@ -11,7 +11,7 @@ public class chk extends cja {
    }
 
    @Nullable
-   public vd<?> a(cjf $$0, cpv $$1, cbu $$2) {
+   public ve<?> a(cjf $$0, cpv $$1, cbu $$2) {
       return null;
    }
 }

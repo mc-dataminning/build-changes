@@ -42,7 +42,7 @@ public class bpi<T extends bjg> extends bqb {
    public boolean a() {
       this.b = this.a
          .dL()
-         .a(this.a.dL().a(this.f, this.a.cH().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dq(), this.a.ds(), this.a.dw());
+         .a(this.a.dL().a(this.f, this.a.cG().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dq(), this.a.ds(), this.a.dw());
       if (this.b == null) {
          return false;
       } else {

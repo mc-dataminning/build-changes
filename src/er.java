@@ -13,9 +13,9 @@ import java.util.concurrent.CompletableFuture;
 
 public class er<T> implements ArgumentType<aew<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.place.feature.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("commands.place.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.a("commands.place.jigsaw.invalid", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.place.feature.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("commands.place.structure.invalid", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tm.a("commands.place.jigsaw.invalid", $$0));
    final aew<? extends ht<T>> e;
 
    public er(aew<? extends ht<T>> $$0) {
@@ -67,11 +67,11 @@ public class er<T> implements ArgumentType<aew<T>> {
    }
 
    public static class a<T> implements gi<er<T>, er.a<T>.a> {
-      public void a(er.a<T>.a $$0, so $$1) {
+      public void a(er.a<T>.a $$0, sp $$1) {
          $$1.b($$0.b);
       }
 
-      public er.a<T>.a a(so $$0) {
+      public er.a<T>.a a(sp $$0) {
          return new er.a.a($$0.t());
       }
 

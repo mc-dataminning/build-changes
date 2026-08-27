@@ -1,7 +1,7 @@
 public class ges implements geu {
    private static final int a = 600;
-   private static final tl b = tl.c("tutorial.punch_tree.title");
-   private static final tl c = tl.a("tutorial.punch_tree.description", get.a("attack"));
+   private static final tm b = tm.c("tutorial.punch_tree.title");
+   private static final tm c = tm.a("tutorial.punch_tree.description", get.a("attack"));
    private final get d;
    private euz e;
    private int f;

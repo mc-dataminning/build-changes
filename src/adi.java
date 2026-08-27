@@ -1,6 +1,6 @@
 import java.security.PublicKey;
 
-public class adi implements vd<adf> {
+public class adi implements ve<adf> {
    private final String a;
    private final byte[] b;
    private final byte[] c;
@@ -11,14 +11,14 @@ public class adi implements vd<adf> {
       this.c = $$2;
    }
 
-   public adi(so $$0) {
+   public adi(sp $$0) {
       this.a = $$0.d(20);
       this.b = $$0.b();
       this.c = $$0.b();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);

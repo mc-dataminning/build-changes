@@ -26,7 +26,7 @@ public class bpj extends bqb {
 
    @Override
    public boolean b() {
-      if (!this.b.bw()) {
+      if (!this.b.bv()) {
          return false;
       } else {
          return this.a.f((biq)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
@@ -47,7 +47,7 @@ public class bpj extends bqb {
 
    @Override
    public void e() {
-      this.a.G().a(this.b.dq(), this.b.du(), this.b.dw(), 10.0F, (float)this.a.Z());
+      this.a.G().a(this.b.dq(), this.b.du(), this.b.dw(), 10.0F, (float)this.a.Y());
       this.e--;
    }
 

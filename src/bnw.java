@@ -6,7 +6,7 @@ public class bnw {
       return boj.a(
          (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$1 -> $$1.group($$1.c(bsh.o), $$1.b(bsh.m), $$1.b(bsh.X))
                .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.aY() && $$3x.aB()) {
+                     if (!$$3x.aX() && $$3x.aA()) {
                         gw $$5 = $$3x.dl().d();
 
                         for (hc $$6 : hc.c.a) {

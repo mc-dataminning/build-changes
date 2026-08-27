@@ -14,7 +14,7 @@ public class cyv extends csv {
 
    @Override
    public void a(cpv $$0, gw $$1, dfj $$2, biq $$3) {
-      if (!$$3.bT()) {
+      if (!$$3.bS()) {
          d($$2, $$0, $$1);
       }
 

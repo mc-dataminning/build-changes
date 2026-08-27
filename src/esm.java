@@ -11,7 +11,7 @@ public abstract class esm extends eso {
    protected double c;
    private boolean o;
 
-   public esm(int $$0, int $$1, int $$2, int $$3, tl $$4, double $$5) {
+   public esm(int $$0, int $$1, int $$2, int $$3, tm $$4, double $$5) {
       super($$0, $$1, $$2, $$3, $$4);
       this.c = $$5;
    }
@@ -25,8 +25,8 @@ public abstract class esm extends eso {
    }
 
    @Override
-   protected ty aF_() {
-      return tl.a("gui.narrate.slider", this.m());
+   protected tz aF_() {
+      return tm.a("gui.narrate.slider", this.m());
    }
 
    @Override
@@ -34,9 +34,9 @@ public abstract class esm extends eso {
       $$0.a(ewh.a, this.aF_());
       if (this.i) {
          if (this.aD_()) {
-            $$0.a(ewh.d, tl.c("narration.slider.usage.focused"));
+            $$0.a(ewh.d, tm.c("narration.slider.usage.focused"));
          } else {
-            $$0.a(ewh.d, tl.c("narration.slider.usage.hovered"));
+            $$0.a(ewh.d, tm.c("narration.slider.usage.hovered"));
          }
       }
    }

@@ -50,7 +50,7 @@ public class czo extends csi implements czw {
 
    @Override
    public void a(cpv $$0, gw $$1, dfj $$2, biq $$3) {
-      if (!$$0.w_() && n($$2) && $$3.ah() != biu.bi && $$0.c_($$1) instanceof dea $$5 && $$0 instanceof akr $$6 && $$5.gg().a($$6, $$1, djt.P, djt.a.a($$2))) {
+      if (!$$0.w_() && n($$2) && $$3.ag() != biu.bi && $$0.c_($$1) instanceof dea $$5 && $$0 instanceof akr $$6 && $$5.gg().a($$6, $$1, djt.P, djt.a.a($$2))) {
          $$5.g().b($$6, djt.P, djt.a.a($$3), $$3.dj());
       }
 

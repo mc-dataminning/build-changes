@@ -1,16 +1,16 @@
-public class acj implements vd<abd> {
+public class acj implements ve<abd> {
    private final aex a;
 
    public acj(cmk<?> $$0) {
       this.a = $$0.a();
    }
 
-   public acj(so $$0) {
+   public acj(sp $$0) {
       this.a = $$0.s();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
    }
 

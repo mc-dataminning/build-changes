@@ -20,10 +20,10 @@ public enum adb {
       };
    }
 
-   public sn b() {
+   public so b() {
       return switch (this) {
-         case a -> sn.c;
-         case b -> sn.d;
+         case a -> so.c;
+         case b -> so.d;
       };
    }
 }

@@ -28,7 +28,7 @@ public class eav extends ebg {
 
    @Override
    public eaz a() {
-      return !this.b.aY() ? super.a() : this.c(new gw(arx.a(this.b.cH().a), arx.a(this.b.cH().b + 0.5), arx.a(this.b.cH().c)));
+      return !this.b.aX() ? super.a() : this.c(new gw(arx.a(this.b.cG().a), arx.a(this.b.cG().b + 0.5), arx.a(this.b.cG().c)));
    }
 
    @Override

@@ -5,9 +5,9 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ait {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.summon.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.summon.invalidPosition"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.summon.invalidPosition"));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -15,22 +15,22 @@ public class ait {
             .then(
                ((RequiredArgumentBuilder)du.a("entity", eq.a($$1, je.s))
                      .suggests(gm.d)
-                     .executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), ((dt)$$0x.getSource()).d(), new qx(), true)))
+                     .executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), ((dt)$$0x.getSource()).d(), new qy(), true)))
                   .then(
                      ((RequiredArgumentBuilder)du.a("pos", fr.a())
-                           .executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), fr.a($$0x, "pos"), new qx(), true)))
+                           .executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), fr.a($$0x, "pos"), new qy(), true)))
                         .then(du.a("nbt", eb.a()).executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), fr.a($$0x, "pos"), eb.a($$0x, "nbt"), false)))
                   )
             )
       );
    }
 
-   public static biq a(dt $$0, hg.c<biu<?>> $$1, ehn $$2, qx $$3, boolean $$4) throws CommandSyntaxException {
+   public static biq a(dt $$0, hg.c<biu<?>> $$1, ehn $$2, qy $$3, boolean $$4) throws CommandSyntaxException {
       gw $$5 = gw.a($$2);
       if (!cpv.k($$5)) {
          throw c.create();
       } else {
-         qx $$6 = $$3.h();
+         qy $$6 = $$3.h();
          $$6.a("id", $$1.g().a().toString());
          akr $$7 = $$0.e();
          biq $$8 = biu.a($$6, $$7, $$1x -> {
@@ -53,9 +53,9 @@ public class ait {
       }
    }
 
-   private static int b(dt $$0, hg.c<biu<?>> $$1, ehn $$2, qx $$3, boolean $$4) throws CommandSyntaxException {
+   private static int b(dt $$0, hg.c<biu<?>> $$1, ehn $$2, qy $$3, boolean $$4) throws CommandSyntaxException {
       biq $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> tl.a("commands.summon.success", $$5.N_()), true);
+      $$0.a(() -> tm.a("commands.summon.success", $$5.N_()), true);
       return 1;
    }
 }

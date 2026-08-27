@@ -19,7 +19,7 @@ public abstract class dvs extends dvm {
       this.c = $$5;
    }
 
-   public dvs(dvz $$0, qx $$1, dzc $$2, Function<aex, dyx> $$3) {
+   public dvs(dvz $$0, qy $$1, dzc $$2, Function<aex, dyx> $$3) {
       super($$0, $$1);
       this.a(hc.c);
       this.a = $$1.l("Template");
@@ -35,7 +35,7 @@ public abstract class dvs extends dvm {
    }
 
    @Override
-   protected void a(dvy $$0, qx $$1) {
+   protected void a(dvy $$0, qy $$1) {
       $$1.a("TPX", this.d.u());
       $$1.a("TPY", this.d.v());
       $$1.a("TPZ", this.d.w());

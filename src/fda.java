@@ -8,37 +8,37 @@ import org.slf4j.Logger;
 
 public class fda extends eyk {
    private static final Logger a = LogUtils.getLogger();
-   private static final tl b = tl.c("selectWorld.enterName");
+   private static final tm b = tm.c("selectWorld.enterName");
    private esq c;
    private final BooleanConsumer k;
    private esz l;
    private final ecg.c m;
 
    public fda(BooleanConsumer $$0, ecg.c $$1) {
-      super(tl.c("selectWorld.edit.title"));
+      super(tm.c("selectWorld.edit.title"));
       this.k = $$0;
       this.m = $$1;
    }
 
    @Override
    protected void aI_() {
-      this.c = esq.a(tl.c("selectWorld.edit.save"), $$0x -> this.l()).a(this.g / 2 - 100, this.h / 4 + 144 + 5, 98, 20).a();
-      this.l = new esz(this.i, this.g / 2 - 100, 38, 200, 20, tl.c("selectWorld.enterName"));
+      this.c = esq.a(tm.c("selectWorld.edit.save"), $$0x -> this.l()).a(this.g / 2 - 100, this.h / 4 + 144 + 5, 98, 20).a();
+      this.l = new esz(this.i, this.g / 2 - 100, 38, 200, 20, tm.c("selectWorld.enterName"));
       ech $$0 = this.m.d();
       String $$1 = $$0 == null ? "" : $$0.b();
       this.l.a($$1);
       this.l.b($$0x -> this.c.i = !ac.b($$0x));
       this.e(this.l);
-      esq $$2 = this.d(esq.a(tl.c("selectWorld.edit.resetIcon"), $$0x -> {
+      esq $$2 = this.d(esq.a(tm.c("selectWorld.edit.resetIcon"), $$0x -> {
          this.m.f().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
          $$0x.i = false;
       }).a(this.g / 2 - 100, this.h / 4 + 0 + 5, 200, 20).a());
-      this.d(esq.a(tl.c("selectWorld.edit.openFolder"), $$0x -> ac.i().a(this.m.a(ece.l).toFile())).a(this.g / 2 - 100, this.h / 4 + 24 + 5, 200, 20).a());
-      this.d(esq.a(tl.c("selectWorld.edit.backup"), $$0x -> {
+      this.d(esq.a(tm.c("selectWorld.edit.openFolder"), $$0x -> ac.i().a(this.m.a(ece.l).toFile())).a(this.g / 2 - 100, this.h / 4 + 24 + 5, 200, 20).a());
+      this.d(esq.a(tm.c("selectWorld.edit.backup"), $$0x -> {
          boolean $$1x = a(this.m);
          this.k.accept(!$$1x);
       }).a(this.g / 2 - 100, this.h / 4 + 48 + 5, 200, 20).a());
-      this.d(esq.a(tl.c("selectWorld.edit.backupFolder"), $$0x -> {
+      this.d(esq.a(tm.c("selectWorld.edit.backupFolder"), $$0x -> {
          ecg $$1x = this.f.l();
          Path $$2x = $$1x.d();
 
@@ -50,15 +50,15 @@ public class fda extends eyk {
 
          ac.i().a($$2x.toFile());
       }).a(this.g / 2 - 100, this.h / 4 + 72 + 5, 200, 20).a());
-      this.d(esq.a(tl.c("selectWorld.edit.optimize"), $$0x -> this.f.a(new ewy(this, ($$0xx, $$1x) -> {
+      this.d(esq.a(tm.c("selectWorld.edit.optimize"), $$0x -> this.f.a(new ewy(this, ($$0xx, $$1x) -> {
             if ($$0xx) {
                a(this.m);
             }
 
             this.f.a(fdc.a(this.f, this.k, this.f.ar(), this.m, $$1x));
-         }, tl.c("optimizeWorld.confirm.title"), tl.c("optimizeWorld.confirm.description"), true))).a(this.g / 2 - 100, this.h / 4 + 96 + 5, 200, 20).a());
+         }, tm.c("optimizeWorld.confirm.title"), tm.c("optimizeWorld.confirm.description"), true))).a(this.g / 2 - 100, this.h / 4 + 96 + 5, 200, 20).a());
       this.d(this.c);
-      this.d(esq.a(tk.e, $$0x -> this.k.accept(false)).a(this.g / 2 + 2, this.h / 4 + 144 + 5, 98, 20).a());
+      this.d(esq.a(tl.e, $$0x -> this.k.accept(false)).a(this.g / 2 + 2, this.h / 4 + 144 + 5, 98, 20).a());
       $$2.i = this.m.f().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
       this.c(this.l);
    }
@@ -115,13 +115,13 @@ public class fda extends eyk {
       }
 
       if ($$2 != null) {
-         tl $$4 = tl.c("selectWorld.edit.backupFailed");
-         tl $$5 = tl.b($$2.getMessage());
+         tm $$4 = tm.c("selectWorld.edit.backupFailed");
+         tm $$5 = tm.b($$2.getMessage());
          eqv.O().ay().a(new euw(euw.a.c, $$4, $$5));
          return false;
       } else {
-         tl $$6 = tl.a("selectWorld.edit.backupCreated", $$0.b());
-         tl $$7 = tl.a("selectWorld.edit.backupSize", arx.c((double)$$1 / 1048576.0));
+         tm $$6 = tm.a("selectWorld.edit.backupCreated", $$0.b());
+         tm $$7 = tm.a("selectWorld.edit.backupSize", arx.c((double)$$1 / 1048576.0));
          eqv.O().ay().a(new euw(euw.a.c, $$6, $$7));
          return true;
       }

@@ -17,9 +17,9 @@ public class brg extends bqb {
    public boolean a() {
       if (!this.a.s()) {
          return false;
-      } else if (this.a.bb()) {
+      } else if (this.a.ba()) {
          return false;
-      } else if (!this.a.aB()) {
+      } else if (!this.a.aA()) {
          return false;
       } else {
          bjg $$0 = this.a.O_();

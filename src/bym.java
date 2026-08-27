@@ -13,7 +13,7 @@ public class bym extends biq {
    private int j = 40;
    private float k;
    @Nullable
-   public qx d;
+   public qy d;
    protected static final aef<gw> e = aei.a(bym.class, aeh.n);
 
    public bym(biu<? extends bym> $$0, cpv $$1) {
@@ -40,7 +40,7 @@ public class bym extends biq {
    }
 
    @Override
-   public boolean cq() {
+   public boolean cp() {
       return false;
    }
 
@@ -53,7 +53,7 @@ public class bym extends biq {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.a;
    }
 
@@ -63,18 +63,18 @@ public class bym extends biq {
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return !this.dG();
    }
 
    @Override
    public void l() {
       if (this.g.i()) {
-         this.al();
+         this.ak();
       } else {
          csv $$0 = this.g.b();
          this.b++;
-         if (!this.aU()) {
+         if (!this.aT()) {
             this.f(this.do().b(0.0, -0.04, 0.0));
          }
 
@@ -92,7 +92,7 @@ public class bym extends biq {
                }
             }
 
-            if (this.aB() || $$3) {
+            if (this.aA() || $$3) {
                dfj $$6 = this.dL().a_($$1);
                this.f(this.do().d(0.7, -0.5, 0.7));
                if (!$$6.a(csw.bQ)) {
@@ -107,7 +107,7 @@ public class bym extends biq {
 
                         if (this.dL().a($$1, this.g, 3)) {
                            ((akr)this.dL()).k().a.a(this, new xg($$1, this.dL().a_($$1)));
-                           this.al();
+                           this.ak();
                            if ($$0 instanceof cvm) {
                               ((cvm)$$0).a(this.dL(), $$1, this.g, $$6, this);
                            }
@@ -115,7 +115,7 @@ public class bym extends biq {
                            if (this.d != null && this.g.t()) {
                               dcv $$10 = this.dL().c_($$1);
                               if ($$10 != null) {
-                                 qx $$11 = $$10.o();
+                                 qy $$11 = $$10.o();
 
                                  for (String $$12 : this.d.e()) {
                                     $$11.a($$12, this.d.c($$12).d());
@@ -131,19 +131,19 @@ public class bym extends biq {
                               }
                            }
                         } else if (this.c && this.dL().X().b(cpr.h)) {
-                           this.al();
+                           this.ak();
                            this.a($$0, $$1);
                            this.a($$0);
                         }
                      } else {
-                        this.al();
+                        this.ak();
                         if (this.c && this.dL().X().b(cpr.h)) {
                            this.a($$0, $$1);
                            this.a($$0);
                         }
                      }
                   } else {
-                     this.al();
+                     this.ak();
                      this.a($$0, $$1);
                   }
                }
@@ -152,7 +152,7 @@ public class bym extends biq {
                   this.a($$0);
                }
 
-               this.al();
+               this.ak();
             }
          }
 
@@ -178,7 +178,7 @@ public class bym extends biq {
             Predicate<biq> $$4 = bit.e.and(bit.b);
             bho $$6 = this.g.b() instanceof cvm $$5 ? $$5.a(this) : this.dM().a(this);
             float $$7 = (float)Math.min(arx.d((float)$$3 * this.k), this.j);
-            this.dL().a(this, this.cH(), $$4).forEach($$2x -> $$2x.a($$6, $$7));
+            this.dL().a(this, this.cG(), $$4).forEach($$2x -> $$2x.a($$6, $$7));
             boolean $$8 = this.g.a(apt.M);
             if ($$8 && $$7 > 0.0F && this.ag.i() < 0.05F + (float)$$3 * 0.05F) {
                dfj $$9 = crw.e(this.g);
@@ -195,8 +195,8 @@ public class bym extends biq {
    }
 
    @Override
-   protected void b(qx $$0) {
-      $$0.a("BlockState", rj.a(this.g));
+   protected void b(qy $$0) {
+      $$0.a("BlockState", rk.a(this.g));
       $$0.a("Time", this.b);
       $$0.a("DropItem", this.c);
       $$0.a("HurtEntities", this.i);
@@ -210,8 +210,8 @@ public class bym extends biq {
    }
 
    @Override
-   protected void a(qx $$0) {
-      this.g = rj.a(this.dL().a(je.e), $$0.p("BlockState"));
+   protected void a(qy $$0) {
+      this.g = rk.a(this.dL().a(je.e), $$0.p("BlockState"));
       this.b = $$0.h("Time");
       if ($$0.b("HurtEntities", 99)) {
          this.i = $$0.q("HurtEntities");
@@ -247,7 +247,7 @@ public class bym extends biq {
    }
 
    @Override
-   public boolean cv() {
+   public boolean cu() {
       return false;
    }
 
@@ -262,22 +262,22 @@ public class bym extends biq {
    }
 
    @Override
-   protected tl co() {
-      return tl.a("entity.minecraft.falling_block_type", this.g.b().e());
+   protected tm cn() {
+      return tm.a("entity.minecraft.falling_block_type", this.g.b().e());
    }
 
    @Override
-   public boolean cN() {
+   public boolean cM() {
       return true;
    }
 
    @Override
-   public vd<ww> V() {
-      return new wx(this, csv.i(this.t()));
+   public ve<wx> di() {
+      return new wy(this, csv.i(this.t()));
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       this.g = csv.a($$0.o());
       this.I = true;

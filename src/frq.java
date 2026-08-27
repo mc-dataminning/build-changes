@@ -13,7 +13,7 @@ public class frq implements frn.a {
       this.c.clear();
    }
 
-   public void a(int $$0, gw $$1, List<wc.a> $$2) {
+   public void a(int $$0, gw $$1, List<wd.a> $$2) {
       this.c.put($$0, new frq.a($$1, $$2));
    }
 
@@ -36,7 +36,7 @@ public class frq implements frn.a {
          gw $$8 = $$7.a;
          if ($$6.a($$8, 160.0)) {
             for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               wc.a $$10 = $$7.b.get($$9);
+               wd.a $$10 = $$7.b.get($$9);
                double $$11 = (double)$$8.u() + 0.5;
                double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
                double $$13 = (double)$$8.w() + 0.5;
@@ -47,6 +47,6 @@ public class frq implements frn.a {
       }
    }
 
-   static record a(gw a, List<wc.a> b) {
+   static record a(gw a, List<wd.a> b) {
    }
 }

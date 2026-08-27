@@ -1,7 +1,7 @@
 public class epx extends epz {
    private final epp b;
 
-   public epx(epp $$0, long $$1, tl $$2, Runnable $$3) {
+   public epx(epp $$0, long $$1, tm $$2, Runnable $$3) {
       super($$1, $$2, $$3);
       this.b = $$0;
    }

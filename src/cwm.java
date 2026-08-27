@@ -42,7 +42,7 @@ public class cwm extends cwj {
    }
 
    private boolean a(gw $$0, biq $$1) {
-      if ($$1.aB()) {
+      if ($$1.aA()) {
          return false;
       } else if ($$1.ds() > (double)$$0.v() + 0.9375 - 1.0E-7) {
          return false;
@@ -51,7 +51,7 @@ public class cwm extends cwj {
       } else {
          double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dq());
          double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dw());
-         double $$4 = 0.4375 + (double)($$1.dg() / 2.0F);
+         double $$4 = 0.4375 + (double)($$1.df() / 2.0F);
          return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
       }
    }

@@ -1,24 +1,24 @@
-public class yz implements vd<ww> {
+public class yz implements ve<wx> {
    private final int a;
-   private final tl b;
+   private final tm b;
 
-   public yz(int $$0, tl $$1) {
+   public yz(int $$0, tm $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public yz(so $$0) {
+   public yz(sp $$0) {
       this.a = $$0.m();
       this.b = $$0.l();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -31,7 +31,7 @@ public class yz implements vd<ww> {
       return this.a;
    }
 
-   public tl d() {
+   public tm d() {
       return this.b;
    }
 }

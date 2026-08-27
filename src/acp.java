@@ -1,4 +1,4 @@
-public class acp implements vd<abd> {
+public class acp implements ve<abd> {
    private static final int a = 1;
    private static final int b = 2;
    private static final int c = 4;
@@ -18,7 +18,7 @@ public class acp implements vd<abd> {
       this.i = $$2;
    }
 
-   public acp(so $$0) {
+   public acp(sp $$0) {
       this.d = $$0.e();
       this.e = $$0.r();
       this.i = $$0.b(ddf.a.class);
@@ -29,7 +29,7 @@ public class acp implements vd<abd> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.d);
       $$0.a(this.e);
       $$0.a(this.i);

@@ -10,7 +10,7 @@ public class ein extends ebr {
       this.c = $$0;
    }
 
-   public ein b(qx $$0) {
+   public ein b(qy $$0) {
       this.b($$0.c("Objectives", 10));
       this.c.a($$0.c("PlayerScores", 10));
       if ($$0.b("DisplaySlots", 10)) {
@@ -24,12 +24,12 @@ public class ein extends ebr {
       return this;
    }
 
-   private void a(rd $$0) {
+   private void a(re $$0) {
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         qx $$2 = $$0.a($$1);
+         qy $$2 = $$0.a($$1);
          String $$3 = $$2.l("Name");
          eik $$4 = this.c.e($$3);
-         tl $$5 = tl.a.a($$2.l("DisplayName"));
+         tm $$5 = tm.a.a($$2.l("DisplayName"));
          if ($$5 != null) {
             $$4.a($$5);
          }
@@ -47,14 +47,14 @@ public class ein extends ebr {
          }
 
          if ($$2.b("MemberNamePrefix", 8)) {
-            tl $$6 = tl.a.a($$2.l("MemberNamePrefix"));
+            tm $$6 = tm.a.a($$2.l("MemberNamePrefix"));
             if ($$6 != null) {
                $$4.b($$6);
             }
          }
 
          if ($$2.b("MemberNameSuffix", 8)) {
-            tl $$7 = tl.a.a($$2.l("MemberNameSuffix"));
+            tm $$7 = tm.a.a($$2.l("MemberNameSuffix"));
             if ($$7 != null) {
                $$4.c($$7);
             }
@@ -85,13 +85,13 @@ public class ein extends ebr {
       }
    }
 
-   private void a(eik $$0, rd $$1) {
+   private void a(eik $$0, re $$1) {
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
          this.c.a($$1.j($$2), $$0);
       }
    }
 
-   private void c(qx $$0) {
+   private void c(qy $$0) {
       for (String $$1 : $$0.e()) {
          eii $$2 = eii.t.a($$1);
          if ($$2 != null) {
@@ -102,23 +102,23 @@ public class ein extends ebr {
       }
    }
 
-   private void b(rd $$0) {
+   private void b(re $$0) {
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         qx $$2 = $$0.a($$1);
+         qy $$2 = $$0.a($$1);
          String $$3 = $$2.l("CriteriaName");
          eip $$4 = eip.a($$3).orElseGet(() -> {
             b.warn("Unknown scoreboard criteria {}, replacing with {}", $$3, eip.a.d());
             return eip.a;
          });
          String $$5 = $$2.l("Name");
-         tl $$6 = tl.a.a($$2.l("DisplayName"));
+         tm $$6 = tm.a.a($$2.l("DisplayName"));
          eip.a $$7 = eip.a.a($$2.l("RenderType"));
          this.c.a($$5, $$4, $$6, $$7);
       }
    }
 
    @Override
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       $$0.a("Objectives", this.b());
       $$0.a("PlayerScores", this.c.h());
       $$0.a("Teams", this.a());
@@ -126,28 +126,28 @@ public class ein extends ebr {
       return $$0;
    }
 
-   private rd a() {
-      rd $$0 = new rd();
+   private re a() {
+      re $$0 = new re();
 
       for (eik $$2 : this.c.g()) {
-         qx $$3 = new qx();
+         qy $$3 = new qy();
          $$3.a("Name", $$2.b());
-         $$3.a("DisplayName", tl.a.a($$2.c()));
+         $$3.a("DisplayName", tm.a.a($$2.c()));
          if ($$2.n().b() >= 0) {
             $$3.a("TeamColor", $$2.n().g());
          }
 
          $$3.a("AllowFriendlyFire", $$2.h());
          $$3.a("SeeFriendlyInvisibles", $$2.i());
-         $$3.a("MemberNamePrefix", tl.a.a($$2.e()));
-         $$3.a("MemberNameSuffix", tl.a.a($$2.f()));
+         $$3.a("MemberNamePrefix", tm.a.a($$2.e()));
+         $$3.a("MemberNameSuffix", tm.a.a($$2.f()));
          $$3.a("NameTagVisibility", $$2.j().e);
          $$3.a("DeathMessageVisibility", $$2.k().e);
          $$3.a("CollisionRule", $$2.l().e);
-         rd $$4 = new rd();
+         re $$4 = new re();
 
          for (String $$5 : $$2.g()) {
-            $$4.add(ro.a($$5));
+            $$4.add(rp.a($$5));
          }
 
          $$3.a("Players", $$4);
@@ -157,8 +157,8 @@ public class ein extends ebr {
       return $$0;
    }
 
-   private void d(qx $$0) {
-      qx $$1 = new qx();
+   private void d(qy $$0) {
+      qy $$1 = new qy();
 
       for (eii $$2 : eii.values()) {
          eij $$3 = this.c.a($$2);
@@ -172,14 +172,14 @@ public class ein extends ebr {
       }
    }
 
-   private rd b() {
-      rd $$0 = new rd();
+   private re b() {
+      re $$0 = new re();
 
       for (eij $$2 : this.c.c()) {
-         qx $$3 = new qx();
+         qy $$3 = new qy();
          $$3.a("Name", $$2.b());
          $$3.a("CriteriaName", $$2.c().d());
-         $$3.a("DisplayName", tl.a.a($$2.d()));
+         $$3.a("DisplayName", tm.a.a($$2.d()));
          $$3.a("RenderType", $$2.f().a());
          $$0.add($$3);
       }

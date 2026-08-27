@@ -90,11 +90,11 @@ public class cur extends csi implements czw {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpb $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpb $$1, List<tm> $$2, ckw $$3) {
       super.a($$0, $$1, $$2, $$3);
       ddk.a $$4 = ddk.a.b(cgy.a($$0));
       if (!$$4.equals(ddk.a.a)) {
-         $$2.add(tk.a);
+         $$2.add(tl.a);
          Stream.of($$4.e(), $$4.c(), $$4.d(), $$4.b()).forEach($$1x -> $$2.add(new cjf($$1x, 1).y().d().a(n.h)));
       }
    }

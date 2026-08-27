@@ -1,12 +1,12 @@
 import java.util.IllegalFormatException;
 
 public class gak {
-   private static volatile qs a = qs.a();
+   private static volatile qt a = qt.a();
 
    private gak() {
    }
 
-   static void a(qs $$0) {
+   static void a(qt $$0) {
       a = $$0;
    }
 

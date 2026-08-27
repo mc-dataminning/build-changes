@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class en implements ArgumentType<en.a> {
    private static final Collection<String> a = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("arguments.operation.invalid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("arguments.operation.div0"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("arguments.operation.div0"));
 
    public static en a() {
       return new en();

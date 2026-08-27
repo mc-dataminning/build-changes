@@ -37,13 +37,13 @@ public class biy extends bvq {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("DarkTicksRemaining", this.y());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.c($$0.h("DarkTicksRemaining"));
    }

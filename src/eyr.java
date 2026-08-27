@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 public class eyr extends eyk {
    private static final Logger a = LogUtils.getLogger();
    private static final aex b = new aex("textures/misc/vignette.png");
-   private static final tl c = tl.b("============").a(n.p);
+   private static final tm c = tm.b("============").a(n.p);
    private static final String k = "           ";
    private static final String l = "" + n.p + n.q + n.k + n.l;
    private static final float m = 5.0F;
@@ -59,7 +59,7 @@ public class eyr extends eyk {
       this.f.ai().a(false);
       float $$0 = (float)(this.u + this.h + this.h + 24);
       if (this.q > $$0) {
-         this.C();
+         this.D();
       }
    }
 
@@ -95,10 +95,10 @@ public class eyr extends eyk {
 
    @Override
    public void az_() {
-      this.C();
+      this.D();
    }
 
-   private void C() {
+   private void D() {
       this.p.run();
    }
 
@@ -144,11 +144,11 @@ public class eyr extends eyk {
          }
 
          this.a($$3);
-         this.D();
+         this.E();
       }
 
       for (int $$7 = 0; $$7 < 8; $$7++) {
-         this.D();
+         this.E();
       }
    }
 
@@ -157,47 +157,47 @@ public class eyr extends eyk {
          JsonObject $$3 = $$2.getAsJsonObject();
          String $$4 = $$3.get("section").getAsString();
          this.a(c, true);
-         this.a(tl.b($$4).a(n.o), true);
+         this.a(tm.b($$4).a(n.o), true);
          this.a(c, true);
-         this.D();
-         this.D();
+         this.E();
+         this.E();
 
          for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
             JsonObject $$7 = $$6.getAsJsonObject();
             String $$8 = $$7.get("discipline").getAsString();
             if (StringUtils.isNotEmpty($$8)) {
-               this.a(tl.b($$8).a(n.o), true);
-               this.D();
-               this.D();
+               this.a(tm.b($$8).a(n.o), true);
+               this.E();
+               this.E();
             }
 
             for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
                JsonObject $$11 = $$10.getAsJsonObject();
                String $$12 = $$11.get("title").getAsString();
                JsonArray $$13 = $$11.getAsJsonArray("names");
-               this.a(tl.b($$12).a(n.h), false);
+               this.a(tm.b($$12).a(n.h), false);
 
                for (JsonElement $$14 : $$13) {
                   String $$15 = $$14.getAsString();
-                  this.a(tl.b("           ").f($$15).a(n.p), false);
+                  this.a(tm.b("           ").f($$15).a(n.p), false);
                }
 
-               this.D();
-               this.D();
+               this.E();
+               this.E();
             }
          }
       }
    }
 
-   private void D() {
+   private void E() {
       this.s.add(ark.a);
    }
 
    private void a(String $$0) {
-      this.s.addAll(this.f.h.c(tl.b($$0), 256));
+      this.s.addAll(this.f.h.c(tm.b($$0), 256));
    }
 
-   private void a(tl $$0, boolean $$1) {
+   private void a(tm $$0, boolean $$1) {
       if ($$1) {
          this.t.add(this.s.size());
       }
@@ -275,7 +275,7 @@ public class eyr extends eyk {
    }
 
    @Override
-   public apb B() {
+   public apb C() {
       return apc.c;
    }
 

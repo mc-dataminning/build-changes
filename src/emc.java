@@ -315,10 +315,10 @@ public class emc {
    private static void a(File $$0) {
       if ($$0.exists()) {
          try {
-            qx $$1 = rh.a($$0);
-            qx $$2 = $$1.p("Data");
+            qy $$1 = ri.a($$0);
+            qy $$2 = $$1.p("Data");
             $$2.r("Player");
-            rh.a($$1, $$0);
+            ri.a($$1, $$0);
          } catch (Exception var3) {
             a.info("Exception while removing player tag", var3);
          }

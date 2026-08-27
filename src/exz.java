@@ -1,17 +1,17 @@
 import javax.annotation.Nullable;
 
 public class exz extends eyk {
-   private static final tl a = tl.c("symlink_warning.title.world").a(n.r);
-   private static final tl b = tl.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final tl c = tl.c("symlink_warning.title.pack").a(n.r);
-   private static final tl k = tl.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
-   private final tl l;
+   private static final tm a = tm.c("symlink_warning.title.world").a(n.r);
+   private static final tm b = tm.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final tm c = tm.c("symlink_warning.title.pack").a(n.r);
+   private static final tm k = tm.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final tm l;
    private final String m;
    @Nullable
    private final eyk n;
    private final evy o = new evy().b(10);
 
-   public exz(tl $$0, tl $$1, String $$2, @Nullable eyk $$3) {
+   public exz(tm $$0, tm $$1, String $$2, @Nullable eyk $$3) {
       super($$0);
       this.l = $$1;
       this.m = $$2;
@@ -36,9 +36,9 @@ public class exz extends eyk {
       int $$1 = 120;
       evy $$2 = new evy().a(5);
       evy.b $$3 = $$2.d(3);
-      $$3.a(esq.a(tk.n, $$0x -> ac.i().a(this.m)).b(120, 20).a());
-      $$3.a(esq.a(tk.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
-      $$3.a(esq.a(tk.k, $$0x -> this.az_()).b(120, 20).a());
+      $$3.a(esq.a(tl.n, $$0x -> ac.i().a(this.m)).b(120, 20).a());
+      $$3.a(esq.a(tl.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
+      $$3.a(esq.a(tl.k, $$0x -> this.az_()).b(120, 20).a());
       $$0.a($$2);
       this.b();
       this.o.a(this::d);
@@ -51,8 +51,8 @@ public class exz extends eyk {
    }
 
    @Override
-   public tl g() {
-      return tk.a(super.g(), this.l);
+   public tm g() {
+      return tl.a(super.g(), this.l);
    }
 
    @Override

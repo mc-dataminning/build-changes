@@ -10,17 +10,17 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class aiv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.team.add.duplicate"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.team.empty.unchanged"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.team.option.name.unchanged"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("commands.team.option.color.unchanged"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("commands.team.option.friendlyfire.alreadyEnabled"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tl.c("commands.team.option.friendlyfire.alreadyDisabled"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tl.c("commands.team.option.seeFriendlyInvisibles.alreadyEnabled"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tl.c("commands.team.option.seeFriendlyInvisibles.alreadyDisabled"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tl.c("commands.team.option.nametagVisibility.unchanged"));
-   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(tl.c("commands.team.option.deathMessageVisibility.unchanged"));
-   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(tl.c("commands.team.option.collisionRule.unchanged"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.team.add.duplicate"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.team.empty.unchanged"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.team.option.name.unchanged"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.c("commands.team.option.color.unchanged"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("commands.team.option.friendlyfire.alreadyEnabled"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tm.c("commands.team.option.friendlyfire.alreadyDisabled"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tm.c("commands.team.option.seeFriendlyInvisibles.alreadyEnabled"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tm.c("commands.team.option.seeFriendlyInvisibles.alreadyDisabled"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tm.c("commands.team.option.nametagVisibility.unchanged"));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(tm.c("commands.team.option.deathMessageVisibility.unchanged"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(tm.c("commands.team.option.collisionRule.unchanged"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -49,7 +49,7 @@ public class aiv {
                      du.a("join")
                         .then(
                            ((RequiredArgumentBuilder)du.a("team", fa.a())
-                                 .executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), Collections.singleton(((dt)$$0x.getSource()).g().cy()))))
+                                 .executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), Collections.singleton(((dt)$$0x.getSource()).g().cx()))))
                               .then(du.a("members", ev.b()).suggests(ev.a).executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), ev.c($$0x, "members"))))
                         )
                   ))
@@ -125,9 +125,9 @@ public class aiv {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.team.leave.success.single", $$1.iterator().next()), true);
+         $$0.a(() -> tm.a("commands.team.leave.success.single", $$1.iterator().next()), true);
       } else {
-         $$0.a(() -> tl.a("commands.team.leave.success.multiple", $$1.size()), true);
+         $$0.a(() -> tm.a("commands.team.leave.success.multiple", $$1.size()), true);
       }
 
       return $$1.size();
@@ -141,9 +141,9 @@ public class aiv {
       }
 
       if ($$2.size() == 1) {
-         $$0.a(() -> tl.a("commands.team.join.success.single", $$2.iterator().next(), $$1.d()), true);
+         $$0.a(() -> tm.a("commands.team.join.success.single", $$2.iterator().next(), $$1.d()), true);
       } else {
-         $$0.a(() -> tl.a("commands.team.join.success.multiple", $$2.size(), $$1.d()), true);
+         $$0.a(() -> tm.a("commands.team.join.success.multiple", $$2.size(), $$1.d()), true);
       }
 
       return $$2.size();
@@ -154,7 +154,7 @@ public class aiv {
          throw i.create();
       } else {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.team.option.nametagVisibility.success", $$1.d(), $$2.b()), true);
+         $$0.a(() -> tm.a("commands.team.option.nametagVisibility.success", $$1.d(), $$2.b()), true);
          return 0;
       }
    }
@@ -164,7 +164,7 @@ public class aiv {
          throw j.create();
       } else {
          $$1.b($$2);
-         $$0.a(() -> tl.a("commands.team.option.deathMessageVisibility.success", $$1.d(), $$2.b()), true);
+         $$0.a(() -> tm.a("commands.team.option.deathMessageVisibility.success", $$1.d(), $$2.b()), true);
          return 0;
       }
    }
@@ -174,7 +174,7 @@ public class aiv {
          throw k.create();
       } else {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.team.option.collisionRule.success", $$1.d(), $$2.a()), true);
+         $$0.a(() -> tm.a("commands.team.option.collisionRule.success", $$1.d(), $$2.a()), true);
          return 0;
       }
    }
@@ -188,7 +188,7 @@ public class aiv {
          }
       } else {
          $$1.b($$2);
-         $$0.a(() -> tl.a("commands.team.option.seeFriendlyInvisibles." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
+         $$0.a(() -> tm.a("commands.team.option.seeFriendlyInvisibles." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
          return 0;
       }
    }
@@ -202,17 +202,17 @@ public class aiv {
          }
       } else {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.team.option.friendlyfire." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
+         $$0.a(() -> tm.a("commands.team.option.friendlyfire." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
          return 0;
       }
    }
 
-   private static int a(dt $$0, eik $$1, tl $$2) throws CommandSyntaxException {
+   private static int a(dt $$0, eik $$1, tm $$2) throws CommandSyntaxException {
       if ($$1.c().equals($$2)) {
          throw c.create();
       } else {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.team.option.name.success", $$1.d()), true);
+         $$0.a(() -> tm.a("commands.team.option.name.success", $$1.d()), true);
          return 0;
       }
    }
@@ -222,7 +222,7 @@ public class aiv {
          throw d.create();
       } else {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.team.option.color.success", $$1.d(), $$2.g()), true);
+         $$0.a(() -> tm.a("commands.team.option.color.success", $$1.d(), $$2.g()), true);
          return 0;
       }
    }
@@ -237,7 +237,7 @@ public class aiv {
             $$2.b($$4, $$1);
          }
 
-         $$0.a(() -> tl.a("commands.team.empty.success", $$3.size(), $$1.d()), true);
+         $$0.a(() -> tm.a("commands.team.empty.success", $$3.size(), $$1.d()), true);
          return $$3.size();
       }
    }
@@ -245,22 +245,22 @@ public class aiv {
    private static int b(dt $$0, eik $$1) {
       eim $$2 = $$0.l().aF();
       $$2.d($$1);
-      $$0.a(() -> tl.a("commands.team.remove.success", $$1.d()), true);
+      $$0.a(() -> tm.a("commands.team.remove.success", $$1.d()), true);
       return $$2.g().size();
    }
 
    private static int a(dt $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, tl.b($$1));
+      return a($$0, $$1, tm.b($$1));
    }
 
-   private static int a(dt $$0, String $$1, tl $$2) throws CommandSyntaxException {
+   private static int a(dt $$0, String $$1, tm $$2) throws CommandSyntaxException {
       eim $$3 = $$0.l().aF();
       if ($$3.d($$1) != null) {
          throw a.create();
       } else {
          eik $$4 = $$3.e($$1);
          $$4.a($$2);
-         $$0.a(() -> tl.a("commands.team.add.success", $$4.d()), true);
+         $$0.a(() -> tm.a("commands.team.add.success", $$4.d()), true);
          return $$3.g().size();
       }
    }
@@ -268,9 +268,9 @@ public class aiv {
    private static int c(dt $$0, eik $$1) {
       Collection<String> $$2 = $$1.g();
       if ($$2.isEmpty()) {
-         $$0.a(() -> tl.a("commands.team.list.members.empty", $$1.d()), false);
+         $$0.a(() -> tm.a("commands.team.list.members.empty", $$1.d()), false);
       } else {
-         $$0.a(() -> tl.a("commands.team.list.members.success", $$1.d(), $$2.size(), tn.a($$2)), false);
+         $$0.a(() -> tm.a("commands.team.list.members.success", $$1.d(), $$2.size(), to.a($$2)), false);
       }
 
       return $$2.size();
@@ -279,23 +279,23 @@ public class aiv {
    private static int a(dt $$0) {
       Collection<eik> $$1 = $$0.l().aF().g();
       if ($$1.isEmpty()) {
-         $$0.a(() -> tl.c("commands.team.list.teams.empty"), false);
+         $$0.a(() -> tm.c("commands.team.list.teams.empty"), false);
       } else {
-         $$0.a(() -> tl.a("commands.team.list.teams.success", $$1.size(), tn.b($$1, eik::d)), false);
+         $$0.a(() -> tm.a("commands.team.list.teams.success", $$1.size(), to.b($$1, eik::d)), false);
       }
 
       return $$1.size();
    }
 
-   private static int b(dt $$0, eik $$1, tl $$2) {
+   private static int b(dt $$0, eik $$1, tm $$2) {
       $$1.b($$2);
-      $$0.a(() -> tl.a("commands.team.option.prefix.success", $$2), false);
+      $$0.a(() -> tm.a("commands.team.option.prefix.success", $$2), false);
       return 1;
    }
 
-   private static int c(dt $$0, eik $$1, tl $$2) {
+   private static int c(dt $$0, eik $$1, tm $$2) {
       $$1.c($$2);
-      $$0.a(() -> tl.a("commands.team.option.suffix.success", $$2), false);
+      $$0.a(() -> tm.a("commands.team.option.suffix.success", $$2), false);
       return 1;
    }
 }

@@ -1,36 +1,89 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
 import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record uf(int b, UUID c, UUID d) {
-   public static final Codec<uf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arg.i.fieldOf("index").forGetter(uf::b), ia.a.fieldOf("sender").forGetter(uf::c), ia.a.fieldOf("session_id").forGetter(uf::d))
-            .apply($$0, uf::new)
-   );
+public class uf {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private ug b;
 
-   public static uf a(UUID $$0) {
-      return a($$0, ac.d);
+   public uf(UUID $$0, UUID $$1) {
+      this.b = ug.a($$0, $$1);
    }
 
-   public static uf a(UUID $$0, UUID $$1) {
-      return new uf(0, $$0, $$1);
+   public uf.c a(asi $$0) {
+      return $$1 -> {
+         ug $$2 = this.a();
+         return $$2 == null ? null : new tx($$0.sign($$2x -> ub.a($$2x, $$2, $$1)));
+      };
    }
 
-   public void a(asg.a $$0) throws SignatureException {
-      $$0.update(ia.b(this.c));
-      $$0.update(ia.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
-   }
+   public uf.b a(cbx $$0) {
+      ash $$1 = $$0.a();
+      return ($$2, $$3) -> {
+         ug $$4 = this.a();
+         if ($$4 == null) {
+            throw new uf.a(tm.c("chat.disabled.chain_broken"), false);
+         } else if ($$0.b().a()) {
+            throw new uf.a(tm.c("chat.disabled.expiredProfileKey"), false);
+         } else {
+            ub $$5 = new ub($$4, $$2, $$3, null, tp.c);
+            if (!$$5.a($$1)) {
+               throw new uf.a(tm.c("multiplayer.disconnect.unsigned_chat"), true);
+            } else {
+               if ($$5.a(Instant.now())) {
+                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
+               }
 
-   public boolean a(uf $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+               return $$5;
+            }
+         }
+      };
    }
 
    @Nullable
-   public uf a() {
-      return this.b == Integer.MAX_VALUE ? null : new uf(this.b + 1, this.c, this.d);
+   private ug a() {
+      ug $$0 = this.b;
+      if ($$0 != null) {
+         this.b = $$0.a();
+      }
+
+      return $$0;
+   }
+
+   public static class a extends ul {
+      private final boolean a;
+
+      public a(tm $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public boolean a() {
+         return this.a;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      uf.b a = ($$0, $$1) -> {
+         throw new uf.a(tm.c("chat.disabled.missingProfileKey"), false);
+      };
+
+      static uf.b unsigned(UUID $$0) {
+         return ($$1, $$2) -> ub.a($$0, $$2.a());
+      }
+
+      ub unpack(@Nullable tx var1, ue var2) throws uf.a;
+   }
+
+   @FunctionalInterface
+   public interface c {
+      uf.c a = $$0 -> null;
+
+      @Nullable
+      tx pack(ue var1);
    }
 }

@@ -45,7 +45,7 @@ public class fhl<T extends bvs> extends fgn<T> {
       this.i.f = 0.0F;
       this.f.f = 0.0F;
       this.g.f = 0.0F;
-      if (!$$0.aY() && $$0.aB()) {
+      if (!$$0.aX() && $$0.aA()) {
          float $$6 = $$0.t() ? 4.0F : 1.0F;
          float $$7 = $$0.t() ? 2.0F : 1.0F;
          float $$8 = 5.0F;

@@ -57,13 +57,13 @@ public class fbo {
 
       String c();
 
-      tl d();
+      tm d();
 
-      tl e();
+      tm e();
 
       ang f();
 
-      default tl g() {
+      default tm g() {
          return this.f().a(this.e());
       }
 
@@ -121,12 +121,12 @@ public class fbo {
       }
 
       @Override
-      public tl d() {
+      public tm d() {
          return this.b.a();
       }
 
       @Override
-      public tl e() {
+      public tm e() {
          return this.b.b();
       }
 

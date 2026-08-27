@@ -1,17 +1,16 @@
-import java.util.HashSet;
-import java.util.Set;
+public record ws(hu.b a) implements ve<wq> {
+   private static final aev<rr> b = aev.a(rj.a, hu.a(jd.ap));
 
-public record ws(Set<aex> a) implements vd<wp> {
-   public ws(so $$0) {
-      this($$0.a(HashSet::new, so::s));
+   public ws(sp $$0) {
+      this($$0.<hu>a(b, hx.a).c());
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a, so::a);
+   public void a(sp $$0) {
+      $$0.a(b, hx.a, this.a);
    }
 
-   public void a(wp $$0) {
+   public void a(wq $$0) {
       $$0.a(this);
    }
 }

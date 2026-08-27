@@ -27,8 +27,8 @@ public class fzx implements anh {
    private static final int c = 262144000;
    private static final int d = 10;
    private static final String e = "server";
-   private static final tl f = tl.c("resourcePack.server.name");
-   private static final tl g = tl.c("multiplayer.applyingPack");
+   private static final tm f = tm.c("resourcePack.server.name");
+   private static final tm g = tm.c("multiplayer.applyingPack");
    private final File h;
    private final ReentrantLock i = new ReentrantLock();
    @Nullable
@@ -104,10 +104,10 @@ public class fzx implements anh {
                      } else {
                         fiy $$2xx = $$5.J();
                         if ($$2xx != null) {
-                           $$2xx.l().a(tl.c("connect.aborted"));
+                           $$2xx.l().a(tm.c("connect.aborted"));
                         }
                      }
-                  }, tl.c("multiplayer.texturePrompt.failure.line1"), tl.c("multiplayer.texturePrompt.failure.line2"), tk.i, tl.c("menu.disconnect"))), $$5))
+                  }, tm.c("multiplayer.texturePrompt.failure.line1"), tm.c("multiplayer.texturePrompt.failure.line2"), tl.i, tm.c("menu.disconnect"))), $$5))
             .thenAcceptAsync($$0x -> this.c(), ac.g());
          var14 = this.j;
       } finally {

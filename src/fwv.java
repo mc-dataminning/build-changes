@@ -4,7 +4,7 @@ public class fwv extends fxp<fnd, fgi<fnd>> {
    }
 
    public void a(elp $$0, foe $$1, int $$2, fnd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ("deadmau5".equals($$3.ac().getString()) && !$$3.ce()) {
+      if ("deadmau5".equals($$3.ab().getString()) && !$$3.cd()) {
          elt $$10 = $$1.getBuffer(fom.c($$3.b().a()));
          int $$11 = fui.c($$3, 0.0F);
 

@@ -51,7 +51,7 @@ public class dkz {
       return aew.a(je.at, new aex($$0));
    }
 
-   public static hg<? extends dkl> a(ns<dkl> $$0) {
+   public static hg<? extends dkl> a(nt<dkl> $$0) {
       hh<dzp.a> $$1 = $$0.a(je.ax);
       hh<dkl> $$2 = $$0.a(je.at);
       $$0.a(u, dkm.a());
@@ -83,22 +83,22 @@ public class dkz {
    }
 
    private static void a(
-      ns<dkl> $$0, hh<dkl> $$1, dkl $$2, hg<dkl> $$3, hg<dkl> $$4, aew<dkl> $$5, aew<dkl> $$6, aew<dkl> $$7, aew<dkl> $$8, aew<dkl> $$9, boolean $$10
+      nt<dkl> $$0, hh<dkl> $$1, dkl $$2, hg<dkl> $$3, hg<dkl> $$4, aew<dkl> $$5, aew<dkl> $$6, aew<dkl> $$7, aew<dkl> $$8, aew<dkl> $$9, boolean $$10
    ) {
       dkm.w.a $$11 = new dkm.w.a($$3);
       dkm.w.a $$12 = new dkm.w.a($$4);
       dkm.w.a $$13 = new dkm.w.a($$1.b(f));
       dkm.w.a $$14 = new dkm.w.a($$1.b(g));
-      dkl $$15 = a($$0, $$5, a(dkm.a(dkm.a(-0.50375F), dkm.a(oh.a($$11, $$12, $$14, $$10))), dkm.c()));
-      dkl $$16 = a($$0, $$6, a(dkm.a(oh.a($$11, $$12, $$13, $$14, $$10)), s));
+      dkl $$15 = a($$0, $$5, a(dkm.a(dkm.a(-0.50375F), dkm.a(oi.a($$11, $$12, $$14, $$10))), dkm.c()));
+      dkl $$16 = a($$0, $$6, a(dkm.a(oi.a($$11, $$12, $$13, $$14, $$10)), s));
       dkl $$17 = a($$0, $$8, dkm.a(dkm.a(-64, 320, 1.5, -1.5), $$15));
-      dkl $$18 = a($$0, $$7, a(dkm.a(oh.b($$11, $$12, $$13, $$14, $$10)), t));
+      dkl $$18 = a($$0, $$7, a(dkm.a(oi.b($$11, $$12, $$13, $$14, $$10)), t));
       dkl $$19 = dkm.b($$18, $$2.g());
       dkl $$20 = b($$16, dkm.a($$17, $$19));
       $$0.a($$9, dkm.a($$20, a($$1, y)));
    }
 
-   private static dkl a(ns<dkl> $$0, aew<dkl> $$1, dkl $$2) {
+   private static dkl a(nt<dkl> $$0, aew<dkl> $$1, dkl $$2) {
       return new dkm.j($$0.a($$1, $$2));
    }
 

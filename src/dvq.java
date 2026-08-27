@@ -22,7 +22,7 @@ public final class dvq {
    }
 
    @Nullable
-   public static dvq a(dvy $$0, qx $$1, long $$2) {
+   public static dvq a(dvy $$0, qy $$1, long $$2) {
       String $$3 = $$1.l("id");
       if ("INVALID".equals($$3)) {
          return b;
@@ -35,7 +35,7 @@ public final class dvq {
          } else {
             cpc $$6 = new cpc($$1.h("ChunkX"), $$1.h("ChunkZ"));
             int $$7 = $$1.h("references");
-            rd $$8 = $$1.c("Children", 10);
+            re $$8 = $$1.c("Children", 10);
 
             try {
                dvx $$9 = dvx.a($$8, $$0);
@@ -79,8 +79,8 @@ public final class dvq {
       }
    }
 
-   public qx a(dvy $$0, cpc $$1) {
-      qx $$2 = new qx();
+   public qy a(dvy $$0, cpc $$1) {
+      qy $$2 = new qy();
       if (this.b()) {
          $$2.a("id", $$0.b().d(je.az).b(this.d).toString());
          $$2.a("ChunkX", $$1.e);

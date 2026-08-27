@@ -16,7 +16,7 @@ public class bnj {
                         }
 
                         $$5.a($$10.dl(), (long)$$0);
-                        if ($$10.ah() != biu.bt || $$7.X().b(cpr.J)) {
+                        if ($$10.ag() != biu.bt || $$7.X().b(cpr.J)) {
                            $$3.b();
                            $$4.b();
                         }

@@ -1,7 +1,7 @@
-public interface abd extends abf, vn {
+public interface abd extends abf, vo {
    @Override
-   default sn b() {
-      return sn.b;
+   default so b() {
+      return so.b;
    }
 
    void a(acv var1);

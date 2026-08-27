@@ -517,7 +517,7 @@ public class akb extends dih implements ajz.d {
       }, this.s).exceptionallyAsync($$1 -> this.a($$1, $$0), this.s);
    }
 
-   private static boolean b(qx $$0) {
+   private static boolean b(qy $$0) {
       return $$0.b("Status", 8);
    }
 
@@ -600,7 +600,7 @@ public class akb extends dih implements ajz.d {
       return $$2;
    }
 
-   private static void a(akr $$0, List<qx> $$1) {
+   private static void a(akr $$0, List<qy> $$1) {
       if (!$$1.isEmpty()) {
          $$0.b(biu.a($$1, $$0));
       }
@@ -721,7 +721,7 @@ public class akb extends dih implements ajz.d {
             }
 
             this.q.ad().d("chunkSave");
-            qx $$3 = dig.a(this.q, $$0);
+            qy $$3 = dig.a(this.q, $$0);
             this.a($$1, $$3);
             this.a($$1, $$2.g());
             return true;
@@ -737,7 +737,7 @@ public class akb extends dih implements ajz.d {
       if ($$1 != 0) {
          return $$1 == 1;
       } else {
-         qx $$2;
+         qy $$2;
          try {
             $$2 = this.j($$0).join().orElse(null);
             if ($$2 == null) {
@@ -865,11 +865,11 @@ public class akb extends dih implements ajz.d {
       }
    }
 
-   private CompletableFuture<Optional<qx>> j(cpc $$0) {
+   private CompletableFuture<Optional<qy>> j(cpc $$0) {
       return this.e($$0).thenApplyAsync($$0x -> $$0x.map(this::c), ac.f());
    }
 
-   private qx c(qx $$0) {
+   private qy c(qy $$0) {
       return this.a(this.q.ac(), this.w, $$0, this.t.b());
    }
 
@@ -1022,15 +1022,15 @@ public class akb extends dih implements ajz.d {
 
    protected void a(biq $$0) {
       if (!($$0 instanceof bxf)) {
-         biu<?> $$1 = $$0.ah();
+         biu<?> $$1 = $$0.ag();
          int $$2 = $$1.o() * 16;
          if ($$2 != 0) {
             int $$3 = $$1.p();
-            if (this.K.containsKey($$0.ai())) {
+            if (this.K.containsKey($$0.ah())) {
                throw (IllegalStateException)ac.b(new IllegalStateException("Entity is already tracked!"));
             } else {
                akb.b $$4 = new akb.b($$0, $$2, $$3, $$1.q());
-               this.K.put($$0.ai(), $$4);
+               this.K.put($$0.ah(), $$4);
                $$4.a(this.q.v());
                if ($$0 instanceof aks $$5) {
                   this.a($$5, true);
@@ -1059,7 +1059,7 @@ public class akb extends dih implements ajz.d {
          }
       }
 
-      akb.b $$3 = (akb.b)this.K.remove($$0.ai());
+      akb.b $$3 = (akb.b)this.K.remove($$0.ah());
       if ($$3 != null) {
          $$3.a();
       }
@@ -1104,15 +1104,15 @@ public class akb extends dih implements ajz.d {
       }
    }
 
-   public void a(biq $$0, vd<?> $$1) {
-      akb.b $$2 = (akb.b)this.K.get($$0.ai());
+   public void a(biq $$0, ve<?> $$1) {
+      akb.b $$2 = (akb.b)this.K.get($$0.ah());
       if ($$2 != null) {
          $$2.a($$1);
       }
    }
 
-   protected void b(biq $$0, vd<?> $$1) {
-      akb.b $$2 = (akb.b)this.K.get($$0.ai());
+   protected void b(biq $$0, ve<?> $$1) {
+      akb.b $$2 = (akb.b)this.K.get($$0.ah());
       if ($$2 != null) {
          $$2.b($$1);
       }
@@ -1199,21 +1199,21 @@ public class akb extends dih implements ajz.d {
 
       @Override
       public boolean equals(Object $$0) {
-         return $$0 instanceof akb.b ? ((akb.b)$$0).c.ai() == this.c.ai() : false;
+         return $$0 instanceof akb.b ? ((akb.b)$$0).c.ah() == this.c.ah() : false;
       }
 
       @Override
       public int hashCode() {
-         return this.c.ai();
+         return this.c.ah();
       }
 
-      public void a(vd<?> $$0) {
+      public void a(ve<?> $$0) {
          for (alt $$1 : this.f) {
             $$1.b($$0);
          }
       }
 
-      public void b(vd<?> $$0) {
+      public void b(ve<?> $$0) {
          this.a($$0);
          if (this.c instanceof aks) {
             ((aks)this.c).c.b($$0);
@@ -1257,8 +1257,8 @@ public class akb extends dih implements ajz.d {
       private int b() {
          int $$0 = this.d;
 
-         for (biq $$1 : this.c.cU()) {
-            int $$2 = $$1.ah().o() * 16;
+         for (biq $$1 : this.c.cT()) {
+            int $$2 = $$1.ag().o() * 16;
             if ($$2 > $$0) {
                $$0 = $$2;
             }

@@ -42,7 +42,7 @@ public class fmm extends fmu {
    private boolean g() {
       eqv $$0 = eqv.O();
       fng $$1 = $$0.s;
-      return $$1 != null && $$1.bq().c(this.g, this.h, this.i) <= 9.0 && $$0.m.aw().a() && $$1.gp();
+      return $$1 != null && $$1.bp().c(this.g, this.h, this.i) <= 9.0 && $$0.m.aw().a() && $$1.gp();
    }
 
    public static class a implements flx<ja> {

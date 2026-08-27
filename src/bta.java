@@ -22,7 +22,7 @@ public class bta extends btl<bjg> {
       }
 
       $$2.c(bsh.y).ifPresent($$2x -> {
-         if (!$$2x.bw() || $$2x.dL() != $$0) {
+         if (!$$2x.bv() || $$2x.dL() != $$0) {
             $$2.b(bsh.y);
          }
       });

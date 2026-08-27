@@ -22,12 +22,12 @@ public class eqr {
 
    private void b() {
       try {
-         qx $$0 = rh.b(this.c);
+         qy $$0 = ri.b(this.c);
          if ($$0 == null) {
             return;
          }
 
-         int $$1 = rj.b($$0, 1343);
+         int $$1 = rk.b($$0, 1343);
          $$0 = ata.d.a(this.d, $$0, $$1);
 
          for (int $$2 = 0; $$2 < 9; $$2++) {
@@ -40,13 +40,13 @@ public class eqr {
 
    public void a() {
       try {
-         qx $$0 = rj.g(new qx());
+         qy $$0 = rk.g(new qy());
 
          for (int $$1 = 0; $$1 < 9; $$1++) {
             $$0.a(String.valueOf($$1), this.a($$1).a());
          }
 
-         rh.b($$0, this.c);
+         ri.b($$0, this.c);
       } catch (Exception var3) {
          b.error("Failed to save creative mode options", var3);
       }

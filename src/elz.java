@@ -54,7 +54,7 @@ public class elz {
             case a -> null;
             case b -> new eoe($$0);
             case c -> new eop($$0);
-            case d -> new eoj(tl.c("mco.error.invalid.session.title"), tl.c("mco.error.invalid.session.message"), $$0);
+            case d -> new eoj(tm.c("mco.error.invalid.session.title"), tm.c("mco.error.invalid.session.message"), $$0);
             case e -> new eoj(Objects.requireNonNull(this.b), $$0);
          });
       }

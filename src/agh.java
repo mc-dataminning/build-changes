@@ -66,13 +66,13 @@ public class agh {
    private static int a(dt $$0) {
       if (h != null) {
          h.b();
-         $$0.a(() -> tl.b("You have now stopped chasing"), false);
+         $$0.a(() -> tm.b("You have now stopped chasing"), false);
          h = null;
       }
 
       if (g != null) {
          g.b();
-         $$0.a(() -> tl.b("You are no longer being chased"), false);
+         $$0.a(() -> tm.b("You are no longer being chased"), false);
          g = null;
       }
 
@@ -81,10 +81,10 @@ public class agh {
 
    private static boolean b(dt $$0) {
       if (g != null) {
-         $$0.b(tl.b("Chase server is already running. Stop it using /chase stop"));
+         $$0.b(tm.b("Chase server is already running. Stop it using /chase stop"));
          return true;
       } else if (h != null) {
-         $$0.b(tl.b("You are already chasing someone. Stop it using /chase stop"));
+         $$0.b(tm.b("You are already chasing someone. Stop it using /chase stop"));
          return true;
       } else {
          return false;
@@ -99,10 +99,10 @@ public class agh {
 
          try {
             g.a();
-            $$0.a(() -> tl.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+            $$0.a(() -> tm.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
          } catch (IOException var4) {
             b.error("Failed to start chase server", var4);
-            $$0.b(tl.b("Failed to start chase server on port " + $$2));
+            $$0.b(tm.b("Failed to start chase server on port " + $$2));
             g = null;
          }
 
@@ -117,7 +117,7 @@ public class agh {
          h = new afy($$1, $$2, $$0.l());
          h.a();
          $$0.a(
-            () -> tl.b(
+            () -> tm.b(
                   "You are now chasing "
                      + $$1
                      + ":"

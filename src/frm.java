@@ -17,7 +17,7 @@ public class frm implements frn.a {
       if ($$5 - this.b > 1.0E8) {
          this.b = $$5;
          biq $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dL().d($$6, $$6.cH().g(6.0)));
+         this.c = ImmutableList.copyOf($$6.dL().d($$6, $$6.cG().g(6.0)));
       }
 
       elt $$7 = $$1.getBuffer(fom.x());

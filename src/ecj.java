@@ -17,32 +17,32 @@ public class ecj {
 
    public void a(cbu $$0) {
       try {
-         qx $$1 = $$0.f(new qx());
-         File $$2 = File.createTempFile($$0.cx() + "-", ".dat", this.c);
-         rh.a($$1, $$2);
-         File $$3 = new File(this.c, $$0.cx() + ".dat");
-         File $$4 = new File(this.c, $$0.cx() + ".dat_old");
+         qy $$1 = $$0.f(new qy());
+         File $$2 = File.createTempFile($$0.cw() + "-", ".dat", this.c);
+         ri.a($$1, $$2);
+         File $$3 = new File(this.c, $$0.cw() + ".dat");
+         File $$4 = new File(this.c, $$0.cw() + ".dat_old");
          ac.a($$3, $$2, $$4);
       } catch (Exception var6) {
-         b.warn("Failed to save player data for {}", $$0.ac().getString());
+         b.warn("Failed to save player data for {}", $$0.ab().getString());
       }
    }
 
    @Nullable
-   public qx b(cbu $$0) {
-      qx $$1 = null;
+   public qy b(cbu $$0) {
+      qy $$1 = null;
 
       try {
-         File $$2 = new File(this.c, $$0.cx() + ".dat");
+         File $$2 = new File(this.c, $$0.cw() + ".dat");
          if ($$2.exists() && $$2.isFile()) {
-            $$1 = rh.a($$2);
+            $$1 = ri.a($$2);
          }
       } catch (Exception var4) {
-         b.warn("Failed to load player data for {}", $$0.ac().getString());
+         b.warn("Failed to load player data for {}", $$0.ab().getString());
       }
 
       if ($$1 != null) {
-         int $$4 = rj.b($$1, -1);
+         int $$4 = rk.b($$1, -1);
          $$0.g(ata.b.a(this.a, $$1, $$4));
       }
 

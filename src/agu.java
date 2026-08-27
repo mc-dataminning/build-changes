@@ -7,7 +7,7 @@ public class agu {
          ei.a($$0x, "action", $$1 -> {
             dt $$2 = (dt)$$0x.getSource();
             aoh $$3 = $$2.l().ac();
-            $$3.a($$1, $$2, th.a(th.i, $$2));
+            $$3.a($$1, $$2, ti.a(ti.i, $$2));
          });
          return 1;
       })));

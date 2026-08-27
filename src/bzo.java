@@ -46,12 +46,12 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.a;
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.f;
    }
 
@@ -95,7 +95,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a(hc.a($$0.f("AttachFace")));
       this.an.b(c, $$0.f("Peek"));
@@ -105,7 +105,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("AttachFace", (byte)this.y().d());
       $$0.a("Peek", this.an.b(c));
@@ -115,7 +115,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    @Override
    public void l() {
       super.l();
-      if (!this.dL().B && !this.bO() && !this.a(this.dl(), this.y())) {
+      if (!this.dL().B && !this.bN() && !this.a(this.dl(), this.y())) {
          this.gf();
       }
 
@@ -142,10 +142,10 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    @Override
-   protected ehi ap() {
+   protected ehi ao() {
       float $$0 = G(this.cd);
       hc $$1 = this.y().g();
-      float $$2 = this.ah().k() / 2.0F;
+      float $$2 = this.ag().k() / 2.0F;
       return a($$1, $$0).d(this.dq() - (double)$$2, this.ds(), this.dw() - (double)$$2);
    }
 
@@ -170,7 +170,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    private void gh() {
-      this.aq();
+      this.ap();
       float $$0 = G(this.cd);
       float $$1 = G(this.cc);
       hc $$2 = this.y().g();
@@ -208,8 +208,8 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    @Override
-   public void ab() {
-      super.ab();
+   public void aa() {
+      super.aa();
       if (this.dL().B) {
          this.ce = this.dl();
       }
@@ -220,10 +220,10 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       this.r(0.0F);
       this.aW = this.dB();
-      this.bo();
+      this.bn();
       return super.a($$0, $$1, $$2, $$3, $$4);
    }
 
@@ -248,7 +248,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    @Override
    public void e(double $$0, double $$1, double $$2) {
       gw $$3 = this.dl();
-      if (this.bO()) {
+      if (this.bN()) {
          super.e($$0, $$1, $$2);
       } else {
          super.e((double)arx.a($$0) + 0.5, (double)arx.a($$1 + 0.5), (double)arx.a($$2) + 0.5);
@@ -259,7 +259,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
          if (!$$4.equals($$3)) {
             this.an.b(c, (byte)0);
             this.au = true;
-            if (this.dL().B && !this.bO() && !$$4.equals(this.ce)) {
+            if (this.dL().B && !this.bN() && !$$4.equals(this.ce)) {
                this.ce = $$3;
                this.cf = 6;
                this.ac = this.dq();
@@ -306,7 +306,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    protected boolean t() {
-      if (!this.fT() && this.bw()) {
+      if (!this.fT() && this.bv()) {
          gw $$0 = this.dl();
 
          for (int $$1 = 0; $$1 < 5; $$1++) {
@@ -314,7 +314,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
             if ($$2.v() > this.dL().H_() && this.dL().t($$2) && this.dL().B_().a($$2) && this.dL().a(this, new ehi($$2).h(1.0E-6))) {
                hc $$3 = this.i($$2);
                if ($$3 != null) {
-                  this.af();
+                  this.ae();
                   this.a($$3);
                   this.a(ape.vj, 1.0F, 1.0F);
                   this.e((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5);
@@ -340,31 +340,6 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    @Override
-   public double n_() {
-      return this.dq();
-   }
-
-   @Override
-   public double K_() {
-      return this.ds();
-   }
-
-   @Override
-   public double L_() {
-      return this.dw();
-   }
-
-   @Override
-   public float d_() {
-      return this.dD();
-   }
-
-   @Override
-   public float o_() {
-      return this.dB();
-   }
-
-   @Override
    public boolean a(bho $$0, float $$1) {
       if (this.gi()) {
          biq $$2 = $$0.c();
@@ -380,7 +355,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
             this.t();
          } else if ($$0.a(apv.j)) {
             biq $$3 = $$0.c();
-            if ($$3 != null && $$3.ah() == biu.aH) {
+            if ($$3 != null && $$3.ag() == biu.aH) {
                this.gj();
             }
          }
@@ -395,9 +370,9 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
 
    private void gj() {
       ehn $$0 = this.dj();
-      ehi $$1 = this.cH();
+      ehi $$1 = this.cG();
       if (!this.gi() && this.t()) {
-         int $$2 = this.dL().a(biu.aG, $$1.g(8.0), biq::bw).size();
+         int $$2 = this.dL().a(biu.aG, $$1.g(8.0), biq::bv).size();
          float $$3 = (float)($$2 - 1) / 5.0F;
          if (!(this.dL().z.i() < $$3)) {
             bzo $$4 = biu.aG.a(this.dL());
@@ -411,8 +386,8 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    @Override
-   public boolean by() {
-      return this.bw();
+   public boolean bx() {
+      return this.bv();
    }
 
    public hc y() {
@@ -426,7 +401,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    @Override
    public void a(aef<?> $$0) {
       if (b.equals($$0)) {
-         this.a(this.ap());
+         this.a(this.ao());
       }
 
       super.a($$0);
@@ -462,10 +437,15 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       this.aU = 0.0F;
       this.aV = 0.0F;
+   }
+
+   @Override
+   public int Y() {
+      return 180;
    }
 
    @Override
@@ -474,16 +454,11 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
    }
 
    @Override
-   public int aa() {
-      return 180;
-   }
-
-   @Override
    public void g(biq $$0) {
    }
 
    @Override
-   public float bE() {
+   public float bD() {
       return 0.0F;
    }
 
@@ -525,7 +500,7 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
       @Override
       public boolean a() {
          bjg $$0 = bzo.this.q();
-         return $$0 != null && $$0.bw() ? bzo.this.dL().ai() != bgv.a : false;
+         return $$0 != null && $$0.bv() ? bzo.this.dL().ai() != bgv.a : false;
       }
 
       @Override
@@ -585,16 +560,16 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
 
       @Override
       public boolean a() {
-         return this.e.cg() == null ? false : super.a();
+         return this.e.cf() == null ? false : super.a();
       }
 
       @Override
       protected ehi a(double $$0) {
          hc $$1 = ((bzo)this.e).y();
          if ($$1.o() == hc.a.a) {
-            return this.e.cH().c(4.0, $$0, $$0);
+            return this.e.cG().c(4.0, $$0, $$0);
          } else {
-            return $$1.o() == hc.a.c ? this.e.cH().c($$0, $$0, 4.0) : this.e.cH().c($$0, 4.0, $$0);
+            return $$1.o() == hc.a.c ? this.e.cG().c($$0, $$0, 4.0) : this.e.cG().c($$0, 4.0, $$0);
          }
       }
    }
@@ -646,9 +621,9 @@ public class bzo extends bup implements bke<Optional<cht>>, bza {
       protected ehi a(double $$0) {
          hc $$1 = ((bzo)this.e).y();
          if ($$1.o() == hc.a.a) {
-            return this.e.cH().c(4.0, $$0, $$0);
+            return this.e.cG().c(4.0, $$0, $$0);
          } else {
-            return $$1.o() == hc.a.c ? this.e.cH().c($$0, $$0, 4.0) : this.e.cH().c($$0, 4.0, $$0);
+            return $$1.o() == hc.a.c ? this.e.cG().c($$0, $$0, 4.0) : this.e.cG().c($$0, 4.0, $$0);
          }
       }
    }

@@ -24,7 +24,7 @@ public class fhr<T extends biq> extends fho<T> {
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
       this.a.a(0.0F, -2.0F, 0.0F);
-      float $$6 = 0.01F * (float)($$0.ai() % 10);
+      float $$6 = 0.01F * (float)($$0.ah() % 10);
       this.a.e = arx.a((float)$$0.ah * $$6) * 4.5F * (float) (Math.PI / 180.0);
       this.a.f = 0.0F;
       this.a.g = arx.b((float)$$0.ah * $$6) * 2.5F * (float) (Math.PI / 180.0);

@@ -51,8 +51,8 @@ public class dcy extends dcp implements bhh {
    }
 
    @Override
-   protected tl g() {
-      return tl.c("container.brewing");
+   protected tm g() {
+      return tm.c("container.brewing");
    }
 
    @Override
@@ -167,7 +167,7 @@ public class dcy extends dcp implements bhh {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.m = hp.a(this.b(), cjf.b);
       bgs.b($$0, this.m);
@@ -176,7 +176,7 @@ public class dcy extends dcp implements bhh {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("BrewTime", (short)this.n);
       bgs.a($$0, this.m);

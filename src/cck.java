@@ -16,7 +16,7 @@ public class cck extends ccg {
       if (!this.dL().B) {
          boolean $$1 = this.dL().X().b(cpr.c);
          this.dL().a(this, this.dq(), this.ds(), this.dw(), (float)this.e, $$1, cpv.a.c);
-         this.al();
+         this.ak();
       }
    }
 
@@ -34,13 +34,13 @@ public class cck extends ccg {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("ExplosionPower", (byte)this.e);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("ExplosionPower", 99)) {
          this.e = $$0.f("ExplosionPower");

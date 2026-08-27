@@ -8,12 +8,12 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class fzv extends ana {
-   private static final amw c = new amw(tl.c("resourcePack.vanilla.description"), aa.b().a(amj.a), Optional.empty());
+   private static final amw c = new amw(tm.c("resourcePack.vanilla.description"), aa.b().a(amj.a), Optional.empty());
    private static final amd d = amd.a(amw.b, c);
-   private static final tl e = tl.c("resourcePack.vanilla.name");
+   private static final tm e = tm.c("resourcePack.vanilla.name");
    public static final String b = "high_contrast";
-   private static final Map<String, tl> f = Map.of(
-      "programmer_art", tl.c("resourcePack.programmer_art.name"), "high_contrast", tl.c("resourcePack.high_contrast.name")
+   private static final Map<String, tm> f = Map.of(
+      "programmer_art", tm.c("resourcePack.programmer_art.name"), "high_contrast", tm.c("resourcePack.high_contrast.name")
    );
    private static final aex g = new aex("minecraft", "resourcepacks");
    @Nullable
@@ -42,9 +42,9 @@ public class fzv extends ana {
    }
 
    @Override
-   protected tl a(String $$0) {
-      tl $$1 = f.get($$0);
-      return (tl)($$1 != null ? $$1 : tl.b($$0));
+   protected tm a(String $$0) {
+      tm $$1 = f.get($$0);
+      return (tm)($$1 != null ? $$1 : tm.b($$0));
    }
 
    @Nullable
@@ -55,7 +55,7 @@ public class fzv extends ana {
 
    @Nullable
    @Override
-   protected anc a(String $$0, anc.c $$1, tl $$2) {
+   protected anc a(String $$0, anc.c $$1, tm $$2) {
       return anc.a($$0, $$2, false, $$1, amj.a, anc.b.a, ang.c);
    }
 

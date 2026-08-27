@@ -19,10 +19,10 @@ public abstract class bzj extends bzi {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       if (this.b != null) {
-         $$0.a("PatrolTarget", rj.a(this.b));
+         $$0.a("PatrolTarget", rk.a(this.b));
       }
 
       $$0.a("PatrolLeader", this.c);
@@ -30,10 +30,10 @@ public abstract class bzj extends bzi {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.e("PatrolTarget")) {
-         this.b = rj.b($$0.p("PatrolTarget"));
+         this.b = rk.b($$0.p("PatrolTarget"));
       }
 
       this.c = $$0.q("PatrolLeader");
@@ -46,7 +46,7 @@ public abstract class bzj extends bzi {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if ($$2 != bjk.p && $$2 != bjk.h && $$2 != bjk.d && $$0.D_().i() < 0.06F && this.ge()) {
          this.c = true;
       }
@@ -129,7 +129,7 @@ public abstract class bzj extends bzi {
       @Override
       public boolean a() {
          boolean $$0 = this.b.dL().V() < this.e;
-         return this.b.gm() && this.b.q() == null && !this.b.cP() && this.b.gg() && !$$0;
+         return this.b.gm() && this.b.q() == null && !this.b.cO() && this.b.gg() && !$$0;
       }
 
       @Override
@@ -171,7 +171,7 @@ public abstract class bzj extends bzi {
       }
 
       private List<bzj> h() {
-         return this.b.dL().a(bzj.class, this.b.cH().g(16.0), $$0 -> $$0.gk() && !$$0.t(this.b));
+         return this.b.dL().a(bzj.class, this.b.cG().g(16.0), $$0 -> $$0.gk() && !$$0.t(this.b));
       }
 
       private boolean i() {

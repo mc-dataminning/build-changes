@@ -14,10 +14,10 @@ import java.util.concurrent.CompletableFuture;
 
 public class eq<T> implements ArgumentType<hg.c<T>> {
    private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.a("entity.not_summonable", $$0));
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.resource.not_found", $$0, $$1));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tm.a("entity.not_summonable", $$0));
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("argument.resource.not_found", $$0, $$1));
    public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tl.a("argument.resource.invalid_type", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> tm.a("argument.resource.invalid_type", $$0, $$1, $$2)
    );
    final aew<? extends ht<T>> e;
    private final hi<T> f;
@@ -89,11 +89,11 @@ public class eq<T> implements ArgumentType<hg.c<T>> {
    }
 
    public static class a<T> implements gi<eq<T>, eq.a<T>.a> {
-      public void a(eq.a<T>.a $$0, so $$1) {
+      public void a(eq.a<T>.a $$0, sp $$1) {
          $$1.b($$0.b);
       }
 
-      public eq.a<T>.a a(so $$0) {
+      public eq.a<T>.a a(sp $$0) {
          return new eq.a.a($$0.t());
       }
 

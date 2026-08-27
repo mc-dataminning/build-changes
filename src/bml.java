@@ -43,7 +43,7 @@ public class bml<E extends bjp> extends bkx<E> {
    }
 
    protected boolean c(akr $$0, bjp $$1, long $$2) {
-      return this.l.isPresent() && this.l.get().c().bw();
+      return this.l.isPresent() && this.l.get().c().bv();
    }
 
    protected void d(akr $$0, E $$1, long $$2) {

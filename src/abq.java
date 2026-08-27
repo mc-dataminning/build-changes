@@ -1,10 +1,10 @@
-public record abq() implements vd<abd> {
-   public abq(so $$0) {
+public record abq() implements ve<abd> {
+   public abq(sp $$0) {
       this();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
    }
 
    public void a(abd $$0) {
@@ -12,7 +12,7 @@ public record abq() implements vd<abd> {
    }
 
    @Override
-   public sn c() {
-      return sn.e;
+   public so c() {
+      return so.e;
    }
 }

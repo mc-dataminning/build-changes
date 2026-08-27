@@ -44,7 +44,7 @@ public interface bhr {
    aew<bhq> Q = aew.a(je.p, new aex("outside_border"));
    aew<bhq> R = aew.a(je.p, new aex("generic_kill"));
 
-   static void a(ns<bhq> $$0) {
+   static void a(nt<bhq> $$0) {
       $$0.a(a, new bhq("inFire", 0.1F, bhm.d));
       $$0.a(b, new bhq("lightningBolt", 0.1F));
       $$0.a(c, new bhq("onFire", 0.0F, bhm.d));

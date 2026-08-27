@@ -52,19 +52,19 @@ public class fca {
       }
    }
 
-   public void a(cby $$0, int $$1, int $$2, aph $$3, boolean $$4) {
-      for (cmk<?> $$5 : this.b) {
-         boolean $$6 = $$5.b().a($$1, $$2) && (!$$4 || $$3.b($$5));
-         if ($$6) {
-            this.e.add($$5);
+   public void a(cby $$0, int $$1, int $$2, aph $$3) {
+      for (cmk<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
          } else {
-            this.e.remove($$5);
+            this.e.remove($$4);
          }
 
-         if ($$6 && $$0.a($$5.b(), null)) {
-            this.d.add($$5);
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
          } else {
-            this.d.remove($$5);
+            this.d.remove($$4);
          }
       }
    }

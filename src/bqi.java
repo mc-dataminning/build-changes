@@ -16,8 +16,8 @@ public class bqi extends bqb {
    @Override
    public boolean a() {
       if (!this.a.fR() && !this.a.gR()) {
-         List<biq> $$0 = this.a.dL().a(this.a, this.a.cH().c(9.0, 4.0, 9.0), $$0x -> {
-            biu<?> $$1x = $$0x.ah();
+         List<biq> $$0 = this.a.dL().a(this.a, this.a.cG().c(9.0, 4.0, 9.0), $$0x -> {
+            biu<?> $$1x = $$0x.ag();
             return $$1x == biu.aj || $$1x == biu.ba;
          });
          bwt $$1 = null;
@@ -64,7 +64,7 @@ public class bqi extends bqb {
 
    @Override
    public boolean b() {
-      if (this.a.gR() && this.a.gS().bw() && this.a(this.a, 0)) {
+      if (this.a.gR() && this.a.gS().bv() && this.a(this.a, 0)) {
          double $$0 = this.a.f(this.a.gS());
          if ($$0 > 676.0) {
             if (this.b <= 3.0) {

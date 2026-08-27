@@ -4,8 +4,8 @@ public class deg extends dck {
    }
 
    @Override
-   protected tl g() {
-      return tl.c("container.smoker");
+   protected tm g() {
+      return tm.c("container.smoker");
    }
 
    @Override

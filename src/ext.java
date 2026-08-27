@@ -1,10 +1,10 @@
 public class ext extends eyc {
-   private static final tl c = tl.c("options.languageAccuracyWarning").a(n.h);
+   private static final tm c = tm.c("options.languageAccuracyWarning").a(n.h);
    private ext.a k;
    final gam l;
 
    public ext(eyk $$0, eqz $$1, gam $$2) {
-      super($$0, $$1, tl.c("options.language"));
+      super($$0, $$1, tm.c("options.language.title"));
       this.l = $$2;
    }
 
@@ -13,7 +13,7 @@ public class ext extends eyc {
       this.k = new ext.a(this.f);
       this.e(this.k);
       this.d(this.b.M().a(this.b, this.g / 2 - 155, this.h - 38, 150));
-      this.d(esq.a(tk.d, $$0 -> this.l()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
+      this.d(esq.a(tl.d, $$0 -> this.l()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
       super.aI_();
    }
 
@@ -84,7 +84,7 @@ public class ext extends eyc {
 
       public class a extends etm.a<ext.a.a> {
          final String b;
-         private final tl c;
+         private final tm c;
          private long d;
 
          public a(String $$1, gal $$2) {
@@ -113,8 +113,8 @@ public class ext extends eyc {
          }
 
          @Override
-         public tl a() {
-            return tl.a("narrator.select", this.c);
+         public tm a() {
+            return tm.a("narrator.select", this.c);
          }
       }
    }

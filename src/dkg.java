@@ -43,7 +43,7 @@ public final class dkg {
    }
 
    @Nullable
-   public static dkg a(qx $$0) {
+   public static dkg a(qy $$0) {
       dhk $$1 = dhk.a($$0.l("target_status"));
       return $$1 == dhk.c ? null : new dkg($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
    }

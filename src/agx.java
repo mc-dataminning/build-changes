@@ -11,7 +11,7 @@ import java.util.function.BiPredicate;
 import java.util.function.ToIntFunction;
 
 public class agx {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.experience.set.points.invalid"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.experience.set.points.invalid"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       LiteralCommandNode<dt> $$1 = $$0.register(
@@ -78,7 +78,7 @@ public class agx {
 
    private static int a(dt $$0, aks $$1, agx.a $$2) {
       int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> tl.a("commands.experience.query." + $$2.e, $$1.N_(), $$3), false);
+      $$0.a(() -> tm.a("commands.experience.query." + $$2.e, $$1.N_(), $$3), false);
       return $$3;
    }
 
@@ -88,9 +88,9 @@ public class agx {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().N_()), true);
+         $$0.a(() -> tm.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+         $$0.a(() -> tm.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
       }
 
       return $$1.size();
@@ -109,9 +109,9 @@ public class agx {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+            $$0.a(() -> tm.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
          }
 
          return $$1.size();

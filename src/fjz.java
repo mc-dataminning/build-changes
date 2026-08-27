@@ -36,10 +36,10 @@ public final class fjz {
                      $$2.run();
                   }
                },
-               tl.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               tl.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               tl.c("gui.abuseReport.draft.edit"),
-               tl.c("gui.abuseReport.draft.discard")
+               tm.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               tm.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               tm.c("gui.abuseReport.draft.edit"),
+               tm.c("gui.abuseReport.draft.discard")
             )
          );
       } else {

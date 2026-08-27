@@ -4,19 +4,19 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record cqm(qx d, Optional<cqm.a> e) {
+public record cqm(qy d, Optional<cqm.a> e) {
    public static final String a = "entity";
    public static final Codec<cqm> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(qx.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cqm.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
+      $$0 -> $$0.group(qy.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cqm.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
             .apply($$0, cqm::new)
    );
    public static final Codec<bfi<cqm>> c = bfi.a(b);
 
    public cqm() {
-      this(new qx(), Optional.empty());
+      this(new qy(), Optional.empty());
    }
 
-   public cqm(qx d, Optional<cqm.a> e) {
+   public cqm(qy d, Optional<cqm.a> e) {
       if (d.e("id")) {
          aex $$2 = aex.a(d.l("id"));
          if ($$2 != null) {
@@ -30,7 +30,7 @@ public record cqm(qx d, Optional<cqm.a> e) {
       this.e = e;
    }
 
-   public qx a() {
+   public qy a() {
       return this.d;
    }
 
@@ -38,7 +38,7 @@ public record cqm(qx d, Optional<cqm.a> e) {
       return this.e;
    }
 
-   public qx c() {
+   public qy c() {
       return this.d;
    }
 

@@ -50,7 +50,7 @@ public class dwo extends dwp {
       List<dzb.c> $$6 = Lists.newArrayList();
 
       for (dzb.c $$7 : $$5) {
-         qx $$8 = $$7.c();
+         qy $$8 = $$7.c();
          if ($$8 != null) {
             dgt $$9 = dgt.valueOf($$8.l("mode"));
             if ($$9 == dgt.d) {

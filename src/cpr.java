@@ -110,8 +110,8 @@ public class cpr {
       return (T)this.X.get($$0);
    }
 
-   public qx a() {
-      qx $$0 = new qx();
+   public qy a() {
+      qy $$0 = new qy();
       this.X.forEach(($$1, $$2) -> $$0.a($$1.a, $$2.b()));
       return $$0;
    }

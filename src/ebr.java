@@ -9,7 +9,7 @@ public abstract class ebr {
    private static final Logger a = LogUtils.getLogger();
    private boolean b;
 
-   public abstract qx a(qx var1);
+   public abstract qy a(qy var1);
 
    public void c() {
       this.a(true);
@@ -25,12 +25,12 @@ public abstract class ebr {
 
    public void a(File $$0) {
       if (this.d()) {
-         qx $$1 = new qx();
-         $$1.a("data", this.a(new qx()));
-         rj.g($$1);
+         qy $$1 = new qy();
+         $$1.a("data", this.a(new qy()));
+         rk.g($$1);
 
          try {
-            rh.a($$1, $$0);
+            ri.a($$1, $$0);
          } catch (IOException var4) {
             a.error("Could not save data {}", this, var4);
          }
@@ -39,6 +39,6 @@ public abstract class ebr {
       }
    }
 
-   public static record a<T extends ebr>(Supplier<T> a, Function<qx, T> b, ata c) {
+   public static record a<T extends ebr>(Supplier<T> a, Function<qy, T> b, ata c) {
    }
 }

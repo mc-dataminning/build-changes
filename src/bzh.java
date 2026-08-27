@@ -13,7 +13,7 @@ public class bzh extends bzr {
 
    @Override
    public boolean a(cpy $$0) {
-      return $$0.f(this) && !$$0.d(this.cH());
+      return $$0.f(this) && !$$0.d(this.cG());
    }
 
    @Override
@@ -23,7 +23,7 @@ public class bzh extends bzr {
    }
 
    @Override
-   public float bn() {
+   public float bm() {
       return 1.0F;
    }
 
@@ -33,7 +33,7 @@ public class bzh extends bzr {
    }
 
    @Override
-   public boolean bN() {
+   public boolean bM() {
       return false;
    }
 
@@ -68,7 +68,7 @@ public class bzh extends bzr {
 
    @Override
    protected boolean ga() {
-      return this.cY();
+      return this.cX();
    }
 
    @Override

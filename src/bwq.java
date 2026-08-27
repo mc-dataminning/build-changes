@@ -150,7 +150,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
 
    @Override
    public boolean g() {
-      return this.bw() && !this.m_() && this.gs();
+      return this.bv() && !this.m_() && this.gs();
    }
 
    @Override
@@ -187,16 +187,16 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
    }
 
    @Override
-   public boolean bt() {
-      return !this.bP();
+   public boolean bs() {
+      return !this.bO();
    }
 
    private void s() {
       this.gd();
-      if (!this.aT()) {
+      if (!this.aS()) {
          apd $$0 = this.gk();
          if ($$0 != null) {
-            this.dL().a(null, this.dq(), this.ds(), this.dw(), $$0, this.db(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
+            this.dL().a(null, this.dq(), this.ds(), this.dw(), $$0, this.da(), 1.0F, 1.0F + (this.ag.i() - this.ag.i()) * 0.2F);
          }
       }
    }
@@ -212,8 +212,8 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
          return false;
       } else {
          this.a($$2, (float)$$3);
-         if (this.bP()) {
-            for (biq $$4 : this.cU()) {
+         if (this.bO()) {
+            for (biq $$4 : this.cT()) {
                $$4.a($$2, (float)$$3);
             }
          }
@@ -303,7 +303,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
             $$3 = $$2.w();
          }
 
-         if (this.bP() && this.ct) {
+         if (this.bO() && this.ct) {
             this.cu++;
             if (this.cu > 5 && this.cu % 3 == 0) {
                this.a($$3);
@@ -351,7 +351,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
 
    @Override
    public void b(cbu $$0) {
-      if (!this.dL().B && (!this.bP() || this.x($$0)) && this.gs()) {
+      if (!this.dL().B && (!this.bO() || this.x($$0)) && this.gs()) {
          $$0.a(this, this.cp);
       }
    }
@@ -448,7 +448,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
 
    @Override
    public boolean eX() {
-      return super.eX() && this.bP() && this.i() || this.gv() || this.gw();
+      return super.eX() && this.bO() && this.i() || this.gv() || this.gw();
    }
 
    @Override
@@ -480,13 +480,13 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
       }
 
       super.b_();
-      if (!this.dL().B && this.bw()) {
+      if (!this.dL().B && this.bv()) {
          if (this.ag.a(900) == 0 && this.aM == 0) {
             this.b(1.0F);
          }
 
          if (this.gG()) {
-            if (!this.gv() && !this.bP() && this.ag.a(300) == 0 && this.dL().a_(this.dl().d()).a(csw.i)) {
+            if (!this.gv() && !this.bO() && this.ag.a(300) == 0 && this.dL().a_(this.dl().d()).a(csw.i)) {
                this.A(true);
             }
 
@@ -502,7 +502,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
 
    protected void gF() {
       if (this.gx() && this.m_() && !this.gv()) {
-         bjg $$0 = this.dL().a(bwq.class, cd, this, this.dq(), this.ds(), this.dw(), this.cH().g(16.0));
+         bjg $$0 = this.dL().a(bwq.class, cd, this, this.dq(), this.ds(), this.dw(), this.cG().g(16.0));
          if ($$0 != null && this.f($$0) > 4.0) {
             this.bN.a($$0, 0);
          }
@@ -521,7 +521,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
          this.d(64, false);
       }
 
-      if (this.cY() && this.cE > 0 && ++this.cE > 20) {
+      if (this.cX() && this.cE > 0 && ++this.cE > 20) {
          this.cE = 0;
          this.B(false);
       }
@@ -582,7 +582,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
 
    @Override
    public bgy b(cbu $$0, bgx $$1) {
-      if (this.bP() || this.m_()) {
+      if (this.bO() || this.m_()) {
          return super.b($$0, $$1);
       } else if (this.gs() && $$0.fH()) {
          this.b($$0);
@@ -631,7 +631,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
    }
 
    public void gI() {
-      if (this.gj() && this.cY()) {
+      if (this.gj() && this.cX()) {
          this.cE = 1;
          this.B(true);
       }
@@ -648,7 +648,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
    }
 
    public boolean h(cbu $$0) {
-      this.b($$0.cw());
+      this.b($$0.cv());
       this.x(true);
       if ($$0 instanceof aks) {
          al.x.a((aks)$$0, this);
@@ -664,12 +664,12 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
       ehm $$2 = this.j($$0);
       this.a($$2.j, $$2.i);
       this.N = this.aU = this.aW = this.dB();
-      if (this.cX()) {
+      if (this.cW()) {
          if ($$1.e <= 0.0) {
             this.cu = 0;
          }
 
-         if (this.aB()) {
+         if (this.aA()) {
             this.y(false);
             if (this.cr > 0.0F && !this.gu()) {
                this.b(this.cr, $$1);
@@ -686,7 +686,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
 
    @Override
    protected ehn b(cbu $$0, ehn $$1) {
-      if (this.aB() && this.cr == 0.0F && this.gw() && !this.cs) {
+      if (this.aA() && this.cr == 0.0F && this.gw() && !this.cs) {
          return ehn.b;
       } else {
          float $$2 = $$0.bk * 0.5F;
@@ -705,7 +705,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
    }
 
    protected void b(float $$0, ehn $$1) {
-      double $$2 = this.gB() * (double)$$0 * (double)this.aJ();
+      double $$2 = this.gB() * (double)$$0 * (double)this.aI();
       double $$3 = $$2 + (double)this.eZ();
       ehn $$4 = this.do();
       this.o($$4.c, $$3, $$4.e);
@@ -723,7 +723,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("EatingHaystack", this.gv());
       $$0.a("Bred", this.gx());
@@ -734,12 +734,12 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
       }
 
       if (!this.cp.a(0).b()) {
-         $$0.a("SaddleItem", this.cp.a(0).b(new qx()));
+         $$0.a("SaddleItem", this.cp.a(0).b(new qy()));
       }
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.A($$0.q("EatingHaystack"));
       this.z($$0.q("Bred"));
@@ -750,7 +750,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
          $$1 = $$0.a("Owner");
       } else {
          String $$2 = $$0.l("Owner");
-         $$1 = aog.a(this.cL(), $$2);
+         $$1 = aog.a(this.cK(), $$2);
       }
 
       if ($$1 != null) {
@@ -773,7 +773,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
    }
 
    protected boolean gL() {
-      return !this.bP() && !this.bO() && this.gs() && !this.m_() && this.eu() >= this.eL() && this.gh();
+      return !this.bO() && !this.bN() && this.gs() && !this.m_() && this.eu() >= this.eL() && this.gh();
    }
 
    @Nullable
@@ -969,21 +969,21 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
 
    @Nullable
    @Override
-   public bjg cO() {
+   public bjg cN() {
       if (this.i()) {
-         biq var2 = this.cR();
+         biq var2 = this.cQ();
          if (var2 instanceof cbu) {
             return (cbu)var2;
          }
       }
 
-      return super.cO();
+      return super.cN();
    }
 
    @Nullable
    private ehn a(ehn $$0, bjg $$1) {
       double $$2 = this.dq() + $$0.c;
-      double $$3 = this.cH().b;
+      double $$3 = this.cG().b;
       double $$4 = this.dw() + $$0.e;
       gw.a $$5 = new gw.a();
       UnmodifiableIterator var10 = $$1.fz().iterator();
@@ -991,7 +991,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
       while (var10.hasNext()) {
          bjs $$6 = (bjs)var10.next();
          $$5.b($$2, $$3, $$4);
-         double $$7 = this.cH().e + 0.75;
+         double $$7 = this.cG().e + 0.75;
 
          do {
             double $$8 = this.dL().i($$5);
@@ -1017,12 +1017,12 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
 
    @Override
    public ehn b(bjg $$0) {
-      ehn $$1 = a((double)this.dg(), (double)$$0.dg(), this.dB() + ($$0.fl() == bja.b ? 90.0F : -90.0F));
+      ehn $$1 = a((double)this.df(), (double)$$0.df(), this.dB() + ($$0.fl() == bja.b ? 90.0F : -90.0F));
       ehn $$2 = this.a($$1, $$0);
       if ($$2 != null) {
          return $$2;
       } else {
-         ehn $$3 = a((double)this.dg(), (double)$$0.dg(), this.dB() + ($$0.fl() == bja.a ? 90.0F : -90.0F));
+         ehn $$3 = a((double)this.df(), (double)$$0.df(), this.dB() + ($$0.fl() == bja.a ? 90.0F : -90.0F));
          ehn $$4 = this.a($$3, $$0);
          return $$4 != null ? $$4 : this.dj();
       }
@@ -1033,7 +1033,7 @@ public abstract class bwq extends bur implements bgt, biz, bjo, bjr, bjw {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if ($$3 == null) {
          $$3 = new bil.a(0.2F);
       }

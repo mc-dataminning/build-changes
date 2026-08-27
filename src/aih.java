@@ -13,8 +13,8 @@ import java.util.Collection;
 import net.minecraft.server.MinecraftServer;
 
 public class aih {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.schedule.cleared.failure", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.schedule.same_tick"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.schedule.cleared.failure", $$0));
    private static final SuggestionProvider<dt> c = ($$0, $$1) -> dw.b(((dt)$$0.getSource()).l().aT().K().u().a(), $$1);
 
    public static void a(CommandDispatcher<dt> $$0) {
@@ -66,7 +66,7 @@ public class aih {
             }
 
             $$6.a($$7, $$4, new egw($$5));
-            $$0.a(() -> tl.a("commands.schedule.created.function", $$5, $$2, $$4), true);
+            $$0.a(() -> tm.a("commands.schedule.created.function", $$5, $$2, $$4), true);
          }).ifRight($$6x -> {
             String $$7 = "#" + $$5;
             if ($$3) {
@@ -74,7 +74,7 @@ public class aih {
             }
 
             $$6.a($$7, $$4, new egx($$5));
-            $$0.a(() -> tl.a("commands.schedule.created.tag", $$5, $$2, $$4), true);
+            $$0.a(() -> tm.a("commands.schedule.created.tag", $$5, $$2, $$4), true);
          });
          return Math.floorMod($$4, Integer.MAX_VALUE);
       }
@@ -85,7 +85,7 @@ public class aih {
       if ($$2 == 0) {
          throw b.create($$1);
       } else {
-         $$0.a(() -> tl.a("commands.schedule.cleared.success", $$2, $$1), true);
+         $$0.a(() -> tm.a("commands.schedule.cleared.success", $$2, $$1), true);
          return $$2;
       }
    }

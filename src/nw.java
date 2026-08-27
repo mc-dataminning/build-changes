@@ -1,72 +1,24 @@
+import java.util.OptionalLong;
+
 public class nw {
-   @Deprecated
-   public static final dzp.a a = new dzp.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(ns<dzp.a> $$0) {
-      a($$0, 0, dlb.a, dlb.b, dlb.c, dlb.d);
-      a($$0, -2, dlb.e, dlb.f, dlb.g, dlb.h);
-      a($$0, dlb.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dlb.j, a);
-      a($$0, dlb.k, -3, 1.0);
-      a($$0, dlb.l, -7, 1.0);
-      a($$0, dlb.m, -1, 1.0);
-      a($$0, dlb.n, -5, 1.0);
-      a($$0, dlb.o, -7, 1.0, 1.0);
-      a($$0, dlb.p, -8, 1.0);
-      a($$0, dlb.q, -8, 1.0);
-      a($$0, dlb.r, -7, 1.0);
-      a($$0, dlb.s, -8, 1.0);
-      a($$0, dlb.t, -11, 1.0);
-      a($$0, dlb.u, -11, 1.0);
-      a($$0, dlb.v, -7, 1.0);
-      a($$0, dlb.w, -7, 1.0);
-      a($$0, dlb.x, -11, 1.0);
-      a($$0, dlb.y, -8, 1.0);
-      a($$0, dlb.z, -5, 1.0);
-      a($$0, dlb.A, -8, 1.0);
-      a($$0, dlb.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dlb.C, -8, 1.0);
-      a($$0, dlb.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dlb.E, -8, 1.0);
-      a($$0, dlb.F, -7, 1.0);
-      a($$0, dlb.G, -7, 1.0);
-      a($$0, dlb.H, -5, 1.0);
-      a($$0, dlb.I, -8, 1.0);
-      a($$0, dlb.J, -8, 1.0);
-      a($$0, dlb.K, -7, 1.0);
-      a($$0, dlb.L, -7, 1.0);
-      a($$0, dlb.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlb.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dlb.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dlb.P, -8, 1.0);
-      a($$0, dlb.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlb.R, -8, 1.0);
-      a($$0, dlb.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dlb.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlb.U, -3, 1.0);
-      a($$0, dlb.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dlb.W, -2, 1.0);
-      a($$0, dlb.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlb.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlb.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlb.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlb.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlb.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dlb.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dlb.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dlb.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dlb.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dlb.ah, -4, 1.0);
-   }
-
-   private static void a(ns<dzp.a> $$0, int $$1, aew<dzp.a> $$2, aew<dzp.a> $$3, aew<dzp.a> $$4, aew<dzp.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(ns<dzp.a> $$0, aew<dzp.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new dzp.a($$2, $$3, $$4));
+   public static void a(nt<dis> $$0) {
+      $$0.a(
+         diq.a,
+         new dis(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, apt.ba, diq.e, 0.0F, new dis.a(false, true, bgj.a(0, 7), 0))
+      );
+      $$0.a(
+         diq.b,
+         new dis(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, apt.bb, diq.f, 0.1F, new dis.a(true, false, bga.a(7), 15))
+      );
+      $$0.a(
+         diq.c,
+         new dis(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, apt.bc, diq.g, 0.0F, new dis.a(false, true, bgj.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         diq.d,
+         new dis(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, apt.ba, diq.e, 0.0F, new dis.a(false, true, bgj.a(0, 7), 0))
+      );
    }
 }

@@ -8,18 +8,18 @@ public class eyf extends eyk {
    private static final int k = 4;
    private static final int l = 204;
    private static final int m = 98;
-   private static final tl n = tl.c("menu.returnToGame");
-   private static final tl o = tl.c("gui.advancements");
-   private static final tl p = tl.c("gui.stats");
-   private static final tl q = tl.c("menu.sendFeedback");
-   private static final tl s = tl.c("menu.reportBugs");
-   private static final tl t = tl.c("menu.options");
-   private static final tl u = tl.c("menu.shareToLan");
-   private static final tl v = tl.c("menu.playerReporting");
-   private static final tl w = tl.c("menu.returnToMenu");
-   private static final tl x = tl.c("menu.savingLevel");
-   private static final tl y = tl.c("menu.game");
-   private static final tl z = tl.c("menu.paused");
+   private static final tm n = tm.c("menu.returnToGame");
+   private static final tm o = tm.c("gui.advancements");
+   private static final tm p = tm.c("gui.stats");
+   private static final tm q = tm.c("menu.sendFeedback");
+   private static final tm s = tm.c("menu.reportBugs");
+   private static final tm t = tm.c("menu.options");
+   private static final tm u = tm.c("menu.shareToLan");
+   private static final tm v = tm.c("menu.playerReporting");
+   private static final tm w = tm.c("menu.returnToMenu");
+   private static final tm x = tm.c("menu.savingLevel");
+   private static final tm y = tm.c("menu.game");
+   private static final tm z = tm.c("menu.paused");
    private final boolean A;
    @Nullable
    private esq B;
@@ -36,13 +36,13 @@ public class eyf extends eyk {
    @Override
    protected void aI_() {
       if (this.A) {
-         this.C();
+         this.D();
       }
 
       this.d(new etw(0, this.A ? 40 : 10, this.g, 9, this.e, this.i));
    }
 
-   private void C() {
+   private void D() {
       evy $$0 = new evy();
       $$0.c().a(4, 4, 4, 0);
       evy.b $$1 = $$0.d(2);
@@ -61,17 +61,17 @@ public class eyf extends eyk {
          $$1.a(this.a(v, fcs::new));
       }
 
-      tl $$2 = this.f.R() ? w : tk.p;
+      tm $$2 = this.f.R() ? w : tl.p;
       this.B = $$1.a(esq.a($$2, $$0x -> {
          $$0x.i = false;
-         this.f.aX().a(this.f, this, this::D, true);
+         this.f.aX().a(this.f, this, this::E, true);
       }).a(204).a(), 2);
       $$0.a();
       evx.a($$0, 0, 0, this.g, this.h, 0.5F, 0.25F);
       $$0.a(this::d);
    }
 
-   private void D() {
+   private void E() {
       boolean $$0 = this.f.R();
       fjh $$1 = this.f.Q();
       this.f.r.U();
@@ -111,11 +111,11 @@ public class eyf extends eyk {
       }
    }
 
-   private esq a(tl $$0, Supplier<eyk> $$1) {
+   private esq a(tm $$0, Supplier<eyk> $$1) {
       return esq.a($$0, $$1x -> this.f.a($$1.get())).a(98).a();
    }
 
-   private esq a(tl $$0, String $$1) {
+   private esq a(tm $$0, String $$1) {
       return this.a($$0, () -> new exc($$1x -> {
             if ($$1x) {
                ac.i().a($$1);

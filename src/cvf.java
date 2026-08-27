@@ -17,7 +17,7 @@ public class cvf extends csi {
 
    @Override
    public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
-      if ($$1 instanceof akr && $$3.ct() && eid.c(eid.a($$3.cH().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), ehr.i)) {
+      if ($$1 instanceof akr && $$3.cs() && eid.c(eid.a($$3.cG().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), ehr.i)) {
          aew<cpv> $$4 = $$1.ac() == cpv.j ? cpv.h : cpv.j;
          akr $$5 = ((akr)$$1).n().a($$4);
          if ($$5 == null) {

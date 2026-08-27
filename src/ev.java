@@ -26,7 +26,7 @@ public class ev implements ArgumentType<ev.b> {
       return $$3.a($$1, $$1x -> dw.b(((dt)$$0.getSource()).q(), $$1x));
    };
    private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("argument.scoreHolder.empty"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("argument.scoreHolder.empty"));
    final boolean d;
 
    public ev(boolean $$0) {
@@ -102,7 +102,7 @@ public class ev implements ArgumentType<ev.b> {
    public static class a implements gi<ev, ev.a.a> {
       private static final byte a = 1;
 
-      public void a(ev.a.a $$0, so $$1) {
+      public void a(ev.a.a $$0, sp $$1) {
          int $$2 = 0;
          if ($$0.b) {
             $$2 |= 1;
@@ -111,7 +111,7 @@ public class ev implements ArgumentType<ev.b> {
          $$1.k($$2);
       }
 
-      public ev.a.a a(so $$0) {
+      public ev.a.a a(sp $$0) {
          byte $$1 = $$0.readByte();
          boolean $$2 = ($$1 & 1) != 0;
          return new ev.a.a($$2);
@@ -164,7 +164,7 @@ public class ev implements ArgumentType<ev.b> {
             List<String> $$3 = Lists.newArrayList();
 
             for (biq $$4 : $$2) {
-               $$3.add($$4.cy());
+               $$3.add($$4.cx());
             }
 
             return $$3;

@@ -17,16 +17,16 @@ import java.util.Map.Entry;
 
 public class ahg {
    static final Dynamic3CommandExceptionType a = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tl.a("commands.item.target.not_a_container", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> tm.a("commands.item.target.not_a_container", $$0, $$1, $$2)
    );
    private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tl.a("commands.item.source.not_a_container", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> tm.a("commands.item.source.not_a_container", $$0, $$1, $$2)
    );
-   static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.item.target.no_such_slot", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.a("commands.item.source.no_such_slot", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tl.a("commands.item.target.no_changes", $$0));
+   static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.item.target.no_such_slot", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tm.a("commands.item.source.no_such_slot", $$0));
+   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tm.a("commands.item.target.no_changes", $$0));
    private static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> tl.a("commands.item.target.no_changed.known_item", $$0, $$1)
+      ($$0, $$1) -> tm.a("commands.item.target.no_changed.known_item", $$0, $$1)
    );
    private static final SuggestionProvider<dt> g = ($$0, $$1) -> {
       ect $$2 = ((dt)$$0.getSource()).l().aH();
@@ -280,7 +280,7 @@ public class ahg {
       if ($$2 >= 0 && $$2 < $$4.b()) {
          cjf $$5 = a($$0, $$3, $$4.a($$2));
          $$4.a($$2, $$5);
-         $$0.a(() -> tl.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$5.J()), true);
+         $$0.a(() -> tm.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$5.J()), true);
          return 1;
       } else {
          throw b.create($$2);
@@ -308,9 +308,9 @@ public class ahg {
       } else {
          if ($$4.size() == 1) {
             Entry<biq, cjf> $$8 = $$4.entrySet().iterator().next();
-            $$0.a(() -> tl.a("commands.item.entity.set.success.single", $$8.getKey().N_(), $$8.getValue().J()), true);
+            $$0.a(() -> tm.a("commands.item.entity.set.success.single", $$8.getKey().N_(), $$8.getValue().J()), true);
          } else {
-            $$0.a(() -> tl.a("commands.item.entity.set.success.multiple", $$4.size()), true);
+            $$0.a(() -> tm.a("commands.item.entity.set.success.multiple", $$4.size()), true);
          }
 
          return $$4.size();
@@ -321,7 +321,7 @@ public class ahg {
       bgr $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
          $$4.a($$2, $$3);
-         $$0.a(() -> tl.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$3.J()), true);
+         $$0.a(() -> tm.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$3.J()), true);
          return 1;
       } else {
          throw b.create($$2);
@@ -354,9 +354,9 @@ public class ahg {
          throw f.create($$3.J(), $$2);
       } else {
          if ($$4.size() == 1) {
-            $$0.a(() -> tl.a("commands.item.entity.set.success.single", $$4.iterator().next().N_(), $$3.J()), true);
+            $$0.a(() -> tm.a("commands.item.entity.set.success.single", $$4.iterator().next().N_(), $$3.J()), true);
          } else {
-            $$0.a(() -> tl.a("commands.item.entity.set.success.multiple", $$4.size(), $$3.J()), true);
+            $$0.a(() -> tm.a("commands.item.entity.set.success.multiple", $$4.size(), $$3.J()), true);
          }
 
          return $$4.size();

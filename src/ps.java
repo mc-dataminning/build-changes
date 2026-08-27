@@ -1,44 +1,35 @@
-import java.util.Collection;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class ps {
-   public static final String a = "defaultBatch";
-   private final String b;
-   private final Collection<qo> c;
-   @Nullable
-   private final Consumer<akr> d;
-   @Nullable
-   private final Consumer<akr> e;
+public class ps extends pr {
+   private final gw a;
+   private final gw b;
+   private final long c;
 
-   public ps(String $$0, Collection<qo> $$1, @Nullable Consumer<akr> $$2, @Nullable Consumer<akr> $$3) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
+   public ps(String $$0, gw $$1, gw $$2, long $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
+   @Override
+   public String getMessage() {
+      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
+      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
+   }
+
+   @Nullable
    public String a() {
+      return super.getMessage();
+   }
+
+   @Nullable
+   public gw b() {
       return this.b;
    }
 
-   public Collection<qo> b() {
-      return this.c;
-   }
-
-   public void a(akr $$0) {
-      if (this.d != null) {
-         this.d.accept($$0);
-      }
-   }
-
-   public void b(akr $$0) {
-      if (this.e != null) {
-         this.e.accept($$0);
-      }
+   @Nullable
+   public gw c() {
+      return this.a;
    }
 }

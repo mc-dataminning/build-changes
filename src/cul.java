@@ -1,5 +1,5 @@
 public class cul extends csv {
-   private static final tl a = tl.c("container.crafting");
+   private static final tm a = tm.c("container.crafting");
 
    protected cul(dfi.d $$0) {
       super($$0);

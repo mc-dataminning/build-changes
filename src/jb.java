@@ -23,7 +23,7 @@ public class jb implements iv {
          return new jb(new djp($$6), $$5);
       }
 
-      public jb a(iw<jb> $$0, so $$1) {
+      public jb a(iw<jb> $$0, sp $$1) {
          djx $$2 = djy.c($$1);
          int $$3 = $$1.m();
          return new jb($$2, $$3);
@@ -38,7 +38,7 @@ public class jb implements iv {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       djy.a(this.c, $$0);
       $$0.c(this.d);
    }

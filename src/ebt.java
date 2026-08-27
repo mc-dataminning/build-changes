@@ -1,7 +1,7 @@
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public record ebt(ebt.a a, byte b, byte c, byte d, @Nullable tl e) {
+public record ebt(ebt.a a, byte b, byte c, byte d, @Nullable tm e) {
    public byte a() {
       return this.a.a();
    }
@@ -27,7 +27,7 @@ public record ebt(ebt.a a, byte b, byte c, byte d, @Nullable tl e) {
    }
 
    @Nullable
-   public tl g() {
+   public tm g() {
       return this.e;
    }
 

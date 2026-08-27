@@ -17,7 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class aex implements Comparable<aex> {
    public static final Codec<aex> a = Codec.STRING.comapFlatMap(aex::b, aex::toString).stable();
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("argument.id.invalid"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("argument.id.invalid"));
    public static final char b = ':';
    public static final String c = "minecraft";
    public static final String d = "realms";

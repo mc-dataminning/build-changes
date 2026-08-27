@@ -102,7 +102,7 @@ public class brb<T extends bzi & bzm> extends bqb {
             }
 
             this.a.I().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
-            if (this.a.da() instanceof bji $$4) {
+            if (this.a.cZ() instanceof bji $$4) {
                $$4.a($$0, 30.0F, 30.0F);
             }
 

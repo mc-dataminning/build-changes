@@ -9,7 +9,7 @@ public class btb extends btl<bjg> {
 
    @Override
    protected void a(akr $$0, bjg $$1) {
-      if ($$1.aY()) {
+      if ($$1.aX()) {
          $$1.dN().a(bsh.W, asx.a);
       } else {
          $$1.dN().b(bsh.W);

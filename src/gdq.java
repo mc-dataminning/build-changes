@@ -20,7 +20,7 @@ public class gdq extends anz<gdq.a> {
    public static final gcj d = new gcj(b.toString(), bfz.a(1.0F), bfz.a(1.0F), 1, gcj.a.a, false, false, 16);
    static final Logger e = LogUtils.getLogger();
    private static final String f = "sounds.json";
-   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(tl.class, new tl.a()).registerTypeAdapter(gck.class, new gcl()).create();
+   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(tm.class, new tm.a()).registerTypeAdapter(gck.class, new gcl()).create();
    private static final TypeToken<Map<String, gck>> h = new TypeToken<Map<String, gck>>() {
    };
    private final Map<aex, gdr> i = Maps.newHashMap();
@@ -76,7 +76,7 @@ public class gdq extends anz<gdq.a> {
       if (aa.aT) {
          for (aex $$3 : this.i.keySet()) {
             gdr $$4 = this.i.get($$3);
-            if (!tn.b($$4.a()) && jd.c.c($$3)) {
+            if (!to.b($$4.a()) && jd.c.c($$3)) {
                e.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
             }
          }

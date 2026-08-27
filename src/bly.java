@@ -12,7 +12,7 @@ public class bly extends bkx<bji> {
    }
 
    protected boolean a(akr $$0, bji $$1, long $$2) {
-      return !$$1.aB();
+      return !$$1.aA();
    }
 
    protected void b(akr $$0, bji $$1, long $$2) {
@@ -21,7 +21,7 @@ public class bly extends bkx<bji> {
    }
 
    protected void c(akr $$0, bji $$1, long $$2) {
-      if ($$1.aB()) {
+      if ($$1.aA()) {
          $$1.f($$1.do().d(0.1F, 1.0, 0.1F));
          $$0.a(null, $$1, this.e, apf.g, 2.0F, 1.0F);
       }

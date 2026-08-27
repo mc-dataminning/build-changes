@@ -64,7 +64,7 @@ public class bod extends bkx<cbh> {
 
    private boolean a(cbh $$0) {
       bkg<cbh> $$1 = $$0.dN();
-      Optional<bil> $$2 = $$1.c(bsh.r).filter($$0x -> $$0x.ah() == biu.bf);
+      Optional<bil> $$2 = $$1.c(bsh.r).filter($$0x -> $$0x.ag() == biu.bf);
       return $$2.isEmpty() ? false : bkz.a($$1, bsh.r, biu.bf) && $$0.V_() && $$2.get().V_();
    }
 

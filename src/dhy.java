@@ -138,7 +138,7 @@ public class dhy<T> implements dhx<T>, dhz<T> {
       $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       this.a();
 
       try {
@@ -153,7 +153,7 @@ public class dhy<T> implements dhx<T>, dhz<T> {
    }
 
    @Override
-   public void b(so $$0) {
+   public void b(sp $$0) {
       this.a();
 
       try {
@@ -294,10 +294,10 @@ public class dhy<T> implements dhx<T>, dhz<T> {
       }
 
       public int a() {
-         return 1 + this.c.a() + tc.a(this.b.a().length) + this.b.a().length * 8;
+         return 1 + this.c.a() + td.a(this.b.a().length) + this.b.a().length * 8;
       }
 
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.k(this.b.c());
          this.c.b($$0);
          $$0.a(this.b.a());

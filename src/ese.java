@@ -46,8 +46,8 @@ public class ese {
    private static final aex H = new aex("textures/misc/pumpkinblur.png");
    private static final aex I = new aex("textures/misc/spyglass_scope.png");
    private static final aex J = new aex("textures/misc/powder_snow_outline.png");
-   private static final tl K = tl.c("demo.demoExpired");
-   private static final tl L = tl.c("menu.savingLevel");
+   private static final tm K = tm.c("demo.demoExpired");
+   private static final tm L = tm.c("menu.savingLevel");
    private static final int M = 16777215;
    private static final float N = 5.0F;
    private static final int O = 10;
@@ -63,7 +63,7 @@ public class ese {
    private final esr Y;
    private int Z;
    @Nullable
-   private tl aa;
+   private tm aa;
    private int ab;
    private boolean ac;
    private boolean ad;
@@ -77,9 +77,9 @@ public class ese {
    private final esp ak;
    private int al;
    @Nullable
-   private tl am;
+   private tm am;
    @Nullable
-   private tl an;
+   private tm an;
    private int ao;
    private int ap;
    private int aq;
@@ -137,8 +137,8 @@ public class ese {
          }
       }
 
-      if (this.W.s.cj() > 0) {
-         this.a($$0, J, this.W.s.ck());
+      if (this.W.s.ci() > 0) {
+         this.a($$0, J, this.W.s.cj());
       }
 
       float $$6 = arx.i($$1, this.W.s.cw, this.W.s.cv);
@@ -272,7 +272,7 @@ public class ese {
          this.ah.a($$0);
          eim $$23 = this.W.r.I();
          eij $$24 = null;
-         eik $$25 = $$23.g(this.W.s.cy());
+         eik $$25 = $$23.g(this.W.s.cx());
          if ($$25 != null) {
             eii $$26 = eii.a($$25.n());
             if ($$26 != null) {
@@ -342,7 +342,7 @@ public class ese {
                   boolean $$6 = false;
                   if (this.W.u != null && this.W.u instanceof bjg && $$5 >= 1.0F) {
                      $$6 = this.W.s.gk() > 5.0F;
-                     $$6 &= this.W.u.bw();
+                     $$6 &= this.W.u.bv();
                   }
 
                   int $$7 = this.aw / 2 - 7 + 16;
@@ -379,7 +379,7 @@ public class ese {
    protected void a(esf $$0) {
       Collection<bid> $$1 = this.W.s.er();
       if (!$$1.isEmpty()) {
-         if (this.W.y instanceof ezz $$2 && $$2.G()) {
+         if (this.W.y instanceof ezz $$2 && $$2.H()) {
             return;
          }
 
@@ -541,7 +541,7 @@ public class ese {
    public void b(esf $$0) {
       this.W.aG().a("selectedItemName");
       if (this.ae > 0 && !this.af.b()) {
-         ty $$1 = tl.h().b(this.af.y()).a(this.af.C().e);
+         tz $$1 = tm.h().b(this.af.y()).a(this.af.C().e);
          if (this.af.A()) {
             $$1.a(n.u);
          }
@@ -569,11 +569,11 @@ public class ese {
 
    public void c(esf $$0) {
       this.W.aG().a("demo");
-      tl $$1;
+      tm $$1;
       if (this.W.r.V() >= 120500L) {
          $$1 = K;
       } else {
-         $$1 = tl.a("demo.remainingTime", asq.a((int)(120500L - this.W.r.V())));
+         $$1 = tm.a("demo.remainingTime", asq.a((int)(120500L - this.W.r.V())));
       }
 
       int $$3 = this.f().a($$1);
@@ -591,15 +591,15 @@ public class ese {
          $$3 = $$4;
       }
 
-      List<Pair<eil, tl>> $$5 = Lists.newArrayListWithCapacity($$3.size());
-      tl $$6 = $$1.d();
+      List<Pair<eil, tm>> $$5 = Lists.newArrayListWithCapacity($$3.size());
+      tm $$6 = $$1.d();
       int $$7 = this.f().a($$6);
       int $$8 = $$7;
       int $$9 = this.f().b(": ");
 
       for (eil $$10 : $$3) {
          eik $$11 = $$2.g($$10.e());
-         tl $$12 = eik.a($$11, tl.b($$10.e()));
+         tm $$12 = eik.a($$11, tm.b($$10.e()));
          $$5.add(Pair.of($$10, $$12));
          $$8 = Math.max($$8, this.f().a($$12) + $$9 + this.f().b(Integer.toString($$10.b())));
       }
@@ -612,10 +612,10 @@ public class ese {
       int $$18 = this.W.m.b(0.3F);
       int $$19 = this.W.m.b(0.4F);
 
-      for (Pair<eil, tl> $$20 : $$5) {
+      for (Pair<eil, tm> $$20 : $$5) {
          $$17++;
          eil $$21 = (eil)$$20.getFirst();
-         tl $$22 = (tl)$$20.getSecond();
+         tm $$22 = (tm)$$20.getSecond();
          String $$23 = "" + n.m + $$21.b();
          int $$25 = $$14 - $$17 * 9;
          int $$26 = this.av - 3 + 2;
@@ -637,7 +637,7 @@ public class ese {
    private bjg n() {
       cbu $$0 = this.m();
       if ($$0 != null) {
-         biq $$1 = $$0.cZ();
+         biq $$1 = $$0.cY();
          if ($$1 == null) {
             return null;
          }
@@ -651,7 +651,7 @@ public class ese {
    }
 
    private int a(bjg $$0) {
-      if ($$0 != null && $$0.bA()) {
+      if ($$0 != null && $$0.bz()) {
          float $$1 = $$0.eL();
          int $$2 = (int)($$1 + 0.5F) / 2;
          if ($$2 > 30) {
@@ -768,8 +768,8 @@ public class ese {
          }
 
          this.W.aG().b("air");
-         int $$32 = $$1.ch();
-         int $$33 = Math.min($$1.ci(), $$32);
+         int $$32 = $$1.cg();
+         int $$33 = Math.min($$1.ch(), $$32);
          if ($$1.a(apy.a) || $$33 < $$32) {
             int $$34 = this.a($$22) - 1;
             $$16 -= $$34 * 10;
@@ -1022,13 +1022,13 @@ public class ese {
       this.ax = arx.i(0.2F, this.ax, $$1 ? 1.0F : 0.0F);
    }
 
-   public void a(tl $$0) {
-      tl $$1 = tl.a("record.nowPlaying", $$0);
+   public void a(tm $$0) {
+      tm $$1 = tm.a("record.nowPlaying", $$0);
       this.a($$1, true);
       this.W.aV().c($$1);
    }
 
-   public void a(tl $$0, boolean $$1) {
+   public void a(tm $$0, boolean $$1) {
       this.b(false);
       this.aa = $$0;
       this.ab = 60;
@@ -1061,11 +1061,11 @@ public class ese {
       }
    }
 
-   public void b(tl $$0) {
+   public void b(tm $$0) {
       this.an = $$0;
    }
 
-   public void c(tl $$0) {
+   public void c(tm $$0) {
       this.am = $$0;
       this.al = this.ao + this.ap + this.aq;
    }
@@ -1230,7 +1230,7 @@ public class ese {
             $$1 = c;
          } else if ($$0.a(bif.t)) {
             $$1 = d;
-         } else if ($$0.cl()) {
+         } else if ($$0.ck()) {
             $$1 = f;
          } else {
             $$1 = b;

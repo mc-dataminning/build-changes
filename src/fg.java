@@ -49,9 +49,9 @@ public class fg implements ArgumentType<fg.b> {
       private final dfj a;
       private final Set<dgm<?>> b;
       @Nullable
-      private final qx c;
+      private final qy c;
 
-      public a(dfj $$0, Set<dgm<?>> $$1, @Nullable qx $$2) {
+      public a(dfj $$0, Set<dgm<?>> $$1, @Nullable qy $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -72,7 +72,7 @@ public class fg implements ArgumentType<fg.b> {
                return true;
             } else {
                dcv $$3 = $$0.b();
-               return $$3 != null && rj.a(this.c, $$3.m(), true);
+               return $$3 != null && rk.a(this.c, $$3.m(), true);
             }
          }
       }
@@ -90,10 +90,10 @@ public class fg implements ArgumentType<fg.b> {
    static class c implements fg.b {
       private final hk<csv> a;
       @Nullable
-      private final qx b;
+      private final qy b;
       private final Map<String, String> c;
 
-      c(hk<csv> $$0, Map<String, String> $$1, @Nullable qx $$2) {
+      c(hk<csv> $$0, Map<String, String> $$1, @Nullable qy $$2) {
          this.a = $$0;
          this.c = $$1;
          this.b = $$2;
@@ -124,7 +124,7 @@ public class fg implements ArgumentType<fg.b> {
                return true;
             } else {
                dcv $$5 = $$0.b();
-               return $$5 != null && rj.a(this.b, $$5.m(), true);
+               return $$5 != null && rk.a(this.b, $$5.m(), true);
             }
          }
       }

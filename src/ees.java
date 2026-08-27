@@ -3,10 +3,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
 public class ees extends eec {
-   public static final Codec<ees> a = RecordCodecBuilder.create($$0 -> a($$0).and(rr.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, ees::new));
-   private final qx b;
+   public static final Codec<ees> a = RecordCodecBuilder.create($$0 -> a($$0).and(rs.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, ees::new));
+   private final qy b;
 
-   private ees(List<efp> $$0, qx $$1) {
+   private ees(List<efp> $$0, qy $$1) {
       super($$0);
       this.b = $$1;
    }
@@ -23,7 +23,7 @@ public class ees extends eec {
    }
 
    @Deprecated
-   public static eec.a<?> a(qx $$0) {
+   public static eec.a<?> a(qy $$0) {
       return a($$1 -> new ees($$1, $$0));
    }
 }

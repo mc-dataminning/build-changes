@@ -18,14 +18,14 @@ public class bxg extends biq {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.a;
    }
 
    @Override
    protected void a_() {
-      this.am().a(c, Optional.empty());
-      this.am().a(d, true);
+      this.al().a(c, Optional.empty());
+      this.al().a(d, true);
    }
 
    @Override
@@ -40,18 +40,18 @@ public class bxg extends biq {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       if (this.q() != null) {
-         $$0.a("BeamTarget", rj.a(this.q()));
+         $$0.a("BeamTarget", rk.a(this.q()));
       }
 
       $$0.a("ShowBottom", this.s());
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       if ($$0.b("BeamTarget", 10)) {
-         this.a(rj.b($$0.p("BeamTarget")));
+         this.a(rk.b($$0.p("BeamTarget")));
       }
 
       if ($$0.b("ShowBottom", 1)) {
@@ -60,7 +60,7 @@ public class bxg extends biq {
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return true;
    }
 
@@ -86,9 +86,9 @@ public class bxg extends biq {
    }
 
    @Override
-   public void ak() {
+   public void aj() {
       this.a(this.dM().n());
-      super.ak();
+      super.aj();
    }
 
    private void a(bho $$0) {
@@ -101,20 +101,20 @@ public class bxg extends biq {
    }
 
    public void a(@Nullable gw $$0) {
-      this.am().b(c, Optional.ofNullable($$0));
+      this.al().b(c, Optional.ofNullable($$0));
    }
 
    @Nullable
    public gw q() {
-      return this.am().b(c).orElse(null);
+      return this.al().b(c).orElse(null);
    }
 
    public void a(boolean $$0) {
-      this.am().b(d, $$0);
+      this.al().b(d, $$0);
    }
 
    public boolean s() {
-      return this.am().b(d);
+      return this.al().b(d);
    }
 
    @Override

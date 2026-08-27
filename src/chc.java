@@ -7,7 +7,7 @@ public class chc extends cja {
 
    @Override
    public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      List<bin> $$3 = $$0.a(bin.class, $$1.cH().g(2.0), $$0x -> $$0x != null && $$0x.bw() && $$0x.s() instanceof bxh);
+      List<bin> $$3 = $$0.a(bin.class, $$1.cG().g(2.0), $$0x -> $$0x != null && $$0x.bv() && $$0x.s() instanceof bxh);
       cjf $$4 = $$1.b($$2);
       if (!$$3.isEmpty()) {
          bin $$5 = $$3.get(0);

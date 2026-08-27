@@ -1,10 +1,10 @@
-public record adp() implements vd<adl> {
-   public adp(so $$0) {
+public record adp() implements ve<adl> {
+   public adp(sp $$0) {
       this();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
    }
 
    public void a(adl $$0) {
@@ -12,7 +12,7 @@ public record adp() implements vd<adl> {
    }
 
    @Override
-   public sn c() {
-      return sn.e;
+   public so c() {
+      return so.e;
    }
 }

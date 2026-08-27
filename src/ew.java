@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ew implements ArgumentType<eii> {
    private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("argument.scoreboardDisplaySlot.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("argument.scoreboardDisplaySlot.invalid", $$0));
 
    private ew() {
    }

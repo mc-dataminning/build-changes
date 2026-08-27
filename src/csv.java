@@ -72,7 +72,7 @@ public class csv extends dfi implements cpu {
          return $$1;
       } else {
          for (biq $$6 : $$2.a_(null, $$4.a())) {
-            double $$7 = eid.a(hc.a.b, $$6.cH().d(0.0, 1.0, 0.0), List.of($$4), -1.0);
+            double $$7 = eid.a(hc.a.b, $$6.cG().d(0.0, 1.0, 0.0), List.of($$4), -1.0);
             $$6.c(0.0, 1.0 + $$7, 0.0);
          }
 
@@ -288,8 +288,8 @@ public class csv extends dfi implements cpu {
       return !$$0.e() && !$$0.k();
    }
 
-   public ty e() {
-      return tl.c(this.f());
+   public tz e() {
+      return tm.c(this.f());
    }
 
    public String f() {
@@ -397,7 +397,7 @@ public class csv extends dfi implements cpu {
       return "Block{" + jd.f.b(this) + "}";
    }
 
-   public void a(cjf $$0, @Nullable cpb $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpb $$1, List<tm> $$2, ckw $$3) {
    }
 
    @Override

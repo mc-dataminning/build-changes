@@ -6,7 +6,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class aho {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.op.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.op.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -25,7 +25,7 @@ public class aho {
          if (!$$2.f($$4)) {
             $$2.a($$4);
             $$3++;
-            $$0.a(() -> tl.a("commands.op.success", $$1.iterator().next().getName()), true);
+            $$0.a(() -> tm.a("commands.op.success", $$1.iterator().next().getName()), true);
          }
       }
 

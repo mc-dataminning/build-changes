@@ -8,7 +8,7 @@ public class fae extends ezk {
    private final aex m = new aex("textures/gui/hanging_signs/" + this.a.b() + ".png");
 
    public fae(ded $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, tl.c("hanging_sign.edit"));
+      super($$0, $$1, $$2, tm.c("hanging_sign.edit"));
    }
 
    @Override

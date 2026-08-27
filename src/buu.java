@@ -90,14 +90,14 @@ public class buu extends bkb implements bke<buv> {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("variant", jd.aj.b(this.gk()).toString());
       $$0.a("CollarColor", (byte)this.gn().a());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       buv $$1 = jd.aj.a(aex.a($$0.l("variant")));
       if ($$1 != null) {
@@ -110,7 +110,7 @@ public class buu extends bkb implements bke<buv> {
    }
 
    @Override
-   public void Y() {
+   public void X() {
       if (this.I().b()) {
          double $$0 = this.I().c();
          if ($$0 == 0.6) {
@@ -271,7 +271,7 @@ public class buu extends bkb implements bke<buv> {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       $$3 = super.a($$0, $$1, $$2, $$3, $$4);
       boolean $$5 = $$0.an() > 0.9F;
       aqi<buv> $$6 = $$5 ? apu.b : apu.a;
@@ -375,8 +375,8 @@ public class buu extends bkb implements bke<buv> {
    }
 
    @Override
-   public boolean bT() {
-      return this.bX() || super.bT();
+   public boolean bS() {
+      return this.bW() || super.bS();
    }
 
    @Override

@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class ez<T extends Enum<T> & asp> implements ArgumentType<T> {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("argument.enum.invalid", $$0));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("argument.enum.invalid", $$0));
    private final Codec<T> b;
    private final Supplier<T[]> c;
 

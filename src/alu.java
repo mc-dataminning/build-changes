@@ -1,16 +1,16 @@
 public class alu implements aeb {
-   private static final tl a = tl.c("multiplayer.status.request_handled");
+   private static final tm a = tm.c("multiplayer.status.request_handled");
    private final aea b;
-   private final sm c;
+   private final sn c;
    private boolean d;
 
-   public alu(aea $$0, sm $$1) {
+   public alu(aea $$0, sn $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
    }
 
    @Override

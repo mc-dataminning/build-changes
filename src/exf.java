@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class exf extends eyk {
-   private static final tl a = tl.c("createWorld.customize.buffet.biome");
+   private static final tm a = tm.c("createWorld.customize.buffet.biome");
    private final eyk b;
    private final Consumer<hg<cqt>> c;
    final ht<cqt> k;
@@ -15,7 +15,7 @@ public class exf extends eyk {
    private esq n;
 
    public exf(eyk $$0, fdg $$1, Consumer<hg<cqt>> $$2) {
-      super(tl.c("createWorld.customize.buffet.title"));
+      super(tm.c("createWorld.customize.buffet.title"));
       this.b = $$0;
       this.c = $$2;
       this.k = $$1.a().d(je.ap);
@@ -32,11 +32,11 @@ public class exf extends eyk {
    protected void aI_() {
       this.l = new exf.a();
       this.e(this.l);
-      this.n = this.d(esq.a(tk.d, $$0 -> {
+      this.n = this.d(esq.a(tl.d, $$0 -> {
          this.c.accept(this.m);
          this.f.a(this.b);
       }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(esq.a(tk.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.d(esq.a(tl.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
       this.l.a(this.l.i().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
    }
 
@@ -75,22 +75,22 @@ public class exf extends eyk {
 
       class a extends etm.a<exf.a.a> {
          final hg.c<cqt> b;
-         final tl c;
+         final tm c;
 
          public a(hg.c<cqt> $$0) {
             this.b = $$0;
             aex $$1 = $$0.g().a();
             String $$2 = $$1.f("biome");
-            if (qs.a().b($$2)) {
-               this.c = tl.c($$2);
+            if (qt.a().b($$2)) {
+               this.c = tm.c($$2);
             } else {
-               this.c = tl.b($$1.toString());
+               this.c = tm.b($$1.toString());
             }
          }
 
          @Override
-         public tl a() {
-            return tl.a("narrator.select", this.c);
+         public tm a() {
+            return tm.a("narrator.select", this.c);
          }
 
          @Override

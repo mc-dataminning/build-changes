@@ -32,7 +32,7 @@ public class bzc extends bix implements bza {
    }
 
    @Override
-   protected boolean W() {
+   protected boolean V() {
       return true;
    }
 
@@ -66,7 +66,7 @@ public class bzc extends bix implements bza {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.f;
    }
 
@@ -110,13 +110,13 @@ public class bzc extends bix implements bza {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("ExplosionPower", (byte)this.c);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("ExplosionPower", 99)) {
          this.c = $$0.f("ExplosionPower");
@@ -192,7 +192,7 @@ public class bzc extends bix implements bza {
       }
 
       private boolean a(ehn $$0, int $$1) {
-         ehi $$2 = this.l.cH();
+         ehi $$2 = this.l.cG();
 
          for (int $$3 = 1; $$3 < $$1; $$3++) {
             $$2 = $$2.c($$0);
@@ -241,7 +241,7 @@ public class bzc extends bix implements bza {
             if ($$0.f(this.b) < 4096.0 && this.b.E($$0)) {
                cpv $$2 = this.b.dL();
                this.a++;
-               if (this.a == 10 && !this.b.aT()) {
+               if (this.a == 10 && !this.b.aS()) {
                   $$2.a(null, 1015, this.b.dl(), 0);
                }
 
@@ -251,7 +251,7 @@ public class bzc extends bix implements bza {
                   double $$5 = $$0.dq() - (this.b.dq() + $$4.c * 4.0);
                   double $$6 = $$0.e(0.5) - (0.5 + this.b.e(0.5));
                   double $$7 = $$0.dw() - (this.b.dw() + $$4.e * 4.0);
-                  if (!this.b.aT()) {
+                  if (!this.b.aS()) {
                      $$2.a(null, 1016, this.b.dl(), 0);
                   }
 

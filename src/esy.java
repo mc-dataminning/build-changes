@@ -155,7 +155,7 @@ public class esy {
    protected List<String> b() {
       gdd $$0 = this.f.T();
       fiy $$1 = this.f.J();
-      sm $$2 = $$1.l();
+      sn $$2 = $$1.l();
       float $$3 = $$2.r();
       float $$4 = $$2.q();
       String $$5;
@@ -182,7 +182,7 @@ public class esy {
          );
       } else {
          biq $$8 = this.f.am();
-         hc $$9 = $$8.cE();
+         hc $$9 = $$8.cD();
 
          String $$14 = switch ($$9) {
             case c -> "Towards negative Z";
@@ -414,7 +414,7 @@ public class esy {
          if ($$11 != null) {
             $$4.add("");
             $$4.add(n.t + "Targeted Entity");
-            $$4.add(String.valueOf(jd.h.b($$11.ah())));
+            $$4.add(String.valueOf(jd.h.b($$11.ag())));
          }
 
          return $$4;

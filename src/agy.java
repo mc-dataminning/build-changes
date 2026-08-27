@@ -10,8 +10,8 @@ import java.util.function.Predicate;
 import org.apache.commons.lang3.mutable.MutableInt;
 
 public class agy {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.fillbiome.toobig", $$0, $$1));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("argument.pos.unloaded"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("commands.fillbiome.toobig", $$0, $$1));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -98,7 +98,7 @@ public class agy {
          }
 
          $$10.k().a.a($$11);
-         $$0.a(() -> tl.a("commands.fillbiome.success.count", $$15.getValue(), $$7.g(), $$7.h(), $$7.i(), $$7.j(), $$7.k(), $$7.l()), true);
+         $$0.a(() -> tm.a("commands.fillbiome.success.count", $$15.getValue(), $$7.g(), $$7.h(), $$7.i(), $$7.j(), $$7.k(), $$7.l()), true);
          return $$15.getValue();
       }
    }

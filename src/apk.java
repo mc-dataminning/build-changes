@@ -72,13 +72,13 @@ public class apk extends app {
                $$2.setLenient(false);
                JsonElement $$3 = Streams.parse($$2);
                if (!$$3.isJsonNull()) {
-                  qx $$4 = a($$3.getAsJsonObject());
-                  $$4 = ata.g.a($$0, $$4, rj.b($$4, 1343));
+                  qy $$4 = a($$3.getAsJsonObject());
+                  $$4 = ata.g.a($$0, $$4, rk.b($$4, 1343));
                   if (!$$4.b("stats", 10)) {
                      break label47;
                   }
 
-                  qx $$5 = $$4.p("stats");
+                  qy $$5 = $$4.p("stats");
                   Iterator var7 = $$5.e().iterator();
 
                   while (true) {
@@ -91,7 +91,7 @@ public class apk extends app {
                         ac.a(
                            jd.y.b(new aex($$6)),
                            $$2x -> {
-                              qx $$3x = $$5.p($$6);
+                              qy $$3x = $$5.p($$6);
 
                               for (String $$4x : $$3x.e()) {
                                  if ($$3x.b($$4x, 99)) {
@@ -136,8 +136,8 @@ public class apk extends app {
       return Optional.ofNullable(aex.a($$1)).flatMap($$0.a()::b).map($$0::b);
    }
 
-   private static qx a(JsonObject $$0) {
-      qx $$1 = new qx();
+   private static qy a(JsonObject $$0) {
+      qy $$1 = new qy();
 
       for (Entry<String, JsonElement> $$2 : $$0.entrySet()) {
          JsonElement $$3 = $$2.getValue();

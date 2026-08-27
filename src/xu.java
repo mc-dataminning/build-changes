@@ -1,4 +1,4 @@
-public class xu implements vd<ww> {
+public class xu implements ve<wx> {
    private final cja a;
    private final int b;
 
@@ -7,18 +7,18 @@ public class xu implements vd<ww> {
       this.b = $$1;
    }
 
-   public xu(so $$0) {
+   public xu(sp $$0) {
       this.a = $$0.a(jd.i);
       this.b = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(jd.i, this.a);
       $$0.c(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

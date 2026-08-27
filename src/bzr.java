@@ -14,7 +14,7 @@ public class bzr extends bji implements bza {
 
    public bzr(biu<? extends bzr> $$0, cpv $$1) {
       super($$0, $$1);
-      this.cD();
+      this.cC();
       this.bL = new bzr.d(this);
    }
 
@@ -29,7 +29,7 @@ public class bzr extends bji implements bza {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.f;
    }
 
@@ -43,7 +43,7 @@ public class bzr extends bji implements bza {
    public void a(int $$0, boolean $$1) {
       int $$2 = arx.a($$0, 1, 127);
       this.an.b(bT, $$2);
-      this.aq();
+      this.ap();
       this.i_();
       this.a(bkm.a).a((double)($$2 * $$2));
       this.a(bkm.d).a((double)(0.2F + 0.1F * (float)$$2));
@@ -60,14 +60,14 @@ public class bzr extends bji implements bza {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Size", this.ge() - 1);
       $$0.a("wasOnGround", this.bU);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.a($$0.h("Size") + 1, false);
       super.a($$0);
       this.bU = $$0.q("wasOnGround");
@@ -82,7 +82,7 @@ public class bzr extends bji implements bza {
    }
 
    @Override
-   protected boolean W() {
+   protected boolean V() {
       return this.ge() > 0;
    }
 
@@ -91,7 +91,7 @@ public class bzr extends bji implements bza {
       this.e = this.e + (this.d - this.e) * 0.5F;
       this.bS = this.e;
       super.l();
-      if (this.aB() && !this.bU) {
+      if (this.aA() && !this.bU) {
          int $$0 = this.ge();
 
          for (int $$1 = 0; $$1 < $$0 * 8; $$1++) {
@@ -104,11 +104,11 @@ public class bzr extends bji implements bza {
 
          this.a(this.gc(), this.eV(), ((this.ag.i() - this.ag.i()) * 0.2F + 1.0F) / 0.8F);
          this.d = -0.5F;
-      } else if (!this.aB() && this.bU) {
+      } else if (!this.aA() && this.bU) {
          this.d = 1.0F;
       }
 
-      this.bU = this.aB();
+      this.bU = this.aA();
       this.fZ();
    }
 
@@ -136,8 +136,8 @@ public class bzr extends bji implements bza {
          this.i_();
          this.r(this.aW);
          this.aU = this.aW;
-         if (this.aY() && this.ag.a(20) == 0) {
-            this.bh();
+         if (this.aX() && this.ag.a(20) == 0) {
+            this.bg();
          }
       }
 
@@ -145,15 +145,15 @@ public class bzr extends bji implements bza {
    }
 
    @Override
-   public biu<? extends bzr> ah() {
-      return (biu<? extends bzr>)super.ah();
+   public biu<? extends bzr> ag() {
+      return (biu<? extends bzr>)super.ag();
    }
 
    @Override
    public void a(biq.c $$0) {
       int $$1 = this.ge();
       if (!this.dL().B && $$1 > 1 && this.ev()) {
-         tl $$2 = this.ae();
+         tm $$2 = this.ad();
          boolean $$3 = this.fT();
          float $$4 = (float)$$1 / 4.0F;
          int $$5 = $$1 / 2;
@@ -162,7 +162,7 @@ public class bzr extends bji implements bza {
          for (int $$7 = 0; $$7 < $$6; $$7++) {
             float $$8 = ((float)($$7 % 2) - 0.5F) * $$4;
             float $$9 = ((float)($$7 / 2) - 0.5F) * $$4;
-            bzr $$10 = this.ah().a(this.dL());
+            bzr $$10 = this.ag().a(this.dL());
             if ($$10 != null) {
                if (this.fK()) {
                   $$10.fI();
@@ -170,7 +170,7 @@ public class bzr extends bji implements bza {
 
                $$10.b($$2);
                $$10.t($$3);
-               $$10.m(this.cr());
+               $$10.m(this.cq());
                $$10.a($$5, true);
                $$10.b(this.dq() + (double)$$8, this.ds() + 0.5, this.dw() + (double)$$9, this.ag.i() * 360.0F, 0.0F);
                this.dL().b($$10);
@@ -197,7 +197,7 @@ public class bzr extends bji implements bza {
    }
 
    protected void j(bjg $$0) {
-      if (this.bw()) {
+      if (this.bv()) {
          int $$1 = this.ge();
          if (this.f((biq)$$0) < 0.6 * (double)$$1 * 0.6 * (double)$$1 && this.E($$0) && $$0.a(this.dM().b((bjg)this), this.gb())) {
             this.a(ape.vC, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
@@ -217,7 +217,7 @@ public class bzr extends bji implements bza {
    }
 
    protected boolean ga() {
-      return !this.gf() && this.cY();
+      return !this.gf() && this.cX();
    }
 
    protected float gb() {
@@ -264,7 +264,7 @@ public class bzr extends bji implements bza {
    }
 
    @Override
-   public int Z() {
+   public int Y() {
       return 0;
    }
 
@@ -281,7 +281,7 @@ public class bzr extends bji implements bza {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       asc $$5 = $$0.D_();
       int $$6 = $$5.a(3);
       if ($$6 < 2 && $$5.i() < 0.5F * $$1.d()) {
@@ -371,7 +371,7 @@ public class bzr extends bji implements bza {
 
       @Override
       public boolean a() {
-         return (this.a.aY() || this.a.bm()) && this.a.I() instanceof bzr.d;
+         return (this.a.aX() || this.a.bl()) && this.a.I() instanceof bzr.d;
       }
 
       @Override
@@ -401,7 +401,7 @@ public class bzr extends bji implements bza {
 
       @Override
       public boolean a() {
-         return !this.a.bO();
+         return !this.a.bN();
       }
 
       @Override
@@ -443,7 +443,7 @@ public class bzr extends bji implements bza {
             this.d.A(0.0F);
          } else {
             this.k = bpe.a.a;
-            if (this.d.aB()) {
+            if (this.d.aA()) {
                this.d.w((float)(this.h * this.d.b(bkm.d)));
                if (this.m-- <= 0) {
                   this.m = this.n.y();
@@ -479,7 +479,7 @@ public class bzr extends bji implements bza {
 
       @Override
       public boolean a() {
-         return this.a.q() == null && (this.a.aB() || this.a.aY() || this.a.bm() || this.a.a(bif.y)) && this.a.I() instanceof bzr.d;
+         return this.a.q() == null && (this.a.aA() || this.a.aX() || this.a.bl() || this.a.a(bif.y)) && this.a.I() instanceof bzr.d;
       }
 
       @Override

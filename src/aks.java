@@ -110,7 +110,7 @@ public class aks extends cbu {
       }
    };
    @Nullable
-   private ub dc;
+   private uc dc;
    private int dd;
    public boolean f;
 
@@ -171,14 +171,14 @@ public class aks extends cbu {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("warden_spawn_tracker", 10)) {
-         cba.a.parse(new Dynamic(ri.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(b::error).ifPresent($$0x -> this.cZ = $$0x);
+         cba.a.parse(new Dynamic(rj.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(b::error).ifPresent($$0x -> this.cZ = $$0x);
       }
 
       if ($$0.b("enteredNetherPosition", 10)) {
-         qx $$1 = $$0.p("enteredNetherPosition");
+         qy $$1 = $$0.p("enteredNetherPosition");
          this.cO = new ehn($$1.k("x"), $$1.k("y"), $$1.k("z"));
       }
 
@@ -196,32 +196,32 @@ public class aks extends cbu {
          this.cU = $$0.q("SpawnForced");
          this.cV = $$0.j("SpawnAngle");
          if ($$0.e("SpawnDimension")) {
-            this.cS = cpv.g.parse(ri.a, $$0.c("SpawnDimension")).resultOrPartial(b::error).orElse(cpv.h);
+            this.cS = cpv.g.parse(rj.a, $$0.c("SpawnDimension")).resultOrPartial(b::error).orElse(cpv.h);
          }
       }
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
-      cba.a.encodeStart(ri.a, this.cZ).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("warden_spawn_tracker", $$1));
+      cba.a.encodeStart(rj.a, this.cZ).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("warden_spawn_tracker", $$1));
       this.k($$0);
       $$0.a("seenCredits", this.cG);
       if (this.cO != null) {
-         qx $$1 = new qx();
+         qy $$1 = new qy();
          $$1.a("x", this.cO.c);
          $$1.a("y", this.cO.d);
          $$1.a("z", this.cO.e);
          $$0.a("enteredNetherPosition", $$1);
       }
 
-      biq $$2 = this.cW();
-      biq $$3 = this.cZ();
-      if ($$3 != null && $$2 != this && $$2.cV()) {
-         qx $$4 = new qx();
-         qx $$5 = new qx();
+      biq $$2 = this.cV();
+      biq $$3 = this.cY();
+      if ($$3 != null && $$2 != this && $$2.cU()) {
+         qy $$4 = new qy();
+         qy $$5 = new qy();
          $$2.e($$5);
-         $$4.a("Attach", $$3.cw());
+         $$4.a("Attach", $$3.cv());
          $$4.a("Entity", $$5);
          $$0.a("RootVehicle", $$4);
       }
@@ -234,7 +234,7 @@ public class aks extends cbu {
          $$0.a("SpawnZ", this.cT.w());
          $$0.a("SpawnForced", this.cU);
          $$0.a("SpawnAngle", this.cV);
-         aex.a.encodeStart(ri.a, this.cS.a()).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("SpawnDimension", $$1));
+         aex.a.encodeStart(rj.a, this.cS.a()).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("SpawnDimension", $$1));
       }
    }
 
@@ -310,7 +310,7 @@ public class aks extends cbu {
 
       biq $$0 = this.I();
       if ($$0 != this) {
-         if ($$0.bw()) {
+         if ($$0.bv()) {
             this.a($$0.dq(), $$0.ds(), $$0.dw(), $$0.dB(), $$0.dD());
             this.x().k().a(this);
             if (this.fI()) {
@@ -333,14 +333,14 @@ public class aks extends cbu {
 
    public void m() {
       try {
-         if (!this.M_() || !this.de()) {
+         if (!this.M_() || !this.dd()) {
             super.l();
          }
 
          for (int $$0 = 0; $$0 < this.fR().b(); $$0++) {
             cjf $$1 = this.fR().a($$0);
             if ($$1.d().ah_()) {
-               vd<?> $$2 = ((chk)$$1.d()).a($$1, this.dL(), this);
+               ve<?> $$2 = ((chk)$$1.d()).a($$1, this.dL(), this);
                if ($$2 != null) {
                   this.c.b($$2);
                }
@@ -364,8 +364,8 @@ public class aks extends cbu {
             this.a(eip.g, arx.f((float)this.cr));
          }
 
-         if (this.ci() != this.cs) {
-            this.cs = this.ci();
+         if (this.ch() != this.cs) {
+            this.cs = this.ch();
             this.a(eip.h, arx.f((float)this.cs));
          }
 
@@ -417,7 +417,7 @@ public class aks extends cbu {
    }
 
    public void p() {
-      if (this.cZ() != null && this.cZ().bm()) {
+      if (this.cY() != null && this.cY().bl()) {
          if (this.cP == null) {
             this.cP = this.dj();
          } else {
@@ -425,13 +425,13 @@ public class aks extends cbu {
          }
       }
 
-      if (this.cP != null && (this.cZ() == null || !this.cZ().bm())) {
+      if (this.cP != null && (this.cY() == null || !this.cY().bl())) {
          this.cP = null;
       }
    }
 
    private void a(eip $$0, int $$1) {
-      this.gg().a($$0, this.cy(), $$1x -> $$1x.b($$1));
+      this.gg().a($$0, this.cx(), $$1x -> $$1x.b($$1));
    }
 
    @Override
@@ -439,15 +439,15 @@ public class aks extends cbu {
       this.a(djt.p);
       boolean $$1 = this.dL().X().b(cpr.m);
       if ($$1) {
-         tl $$2 = this.eJ().a();
-         this.c.a(new yz(this.ai(), $$2), sv.a(() -> {
+         tm $$2 = this.eJ().a();
+         this.c.a(new yz(this.ah(), $$2), sw.a(() -> {
             int $$1x = 256;
             String $$2x = $$2.a(256);
-            tl $$3x = tl.a("death.attack.message_too_long", tl.b($$2x).a(n.o));
-            tl $$4x = tl.a("death.attack.even_more_magic", this.N_()).a($$1xx -> $$1xx.a(new tq(tq.a.a, $$3x)));
-            return new yz(this.ai(), $$4x);
+            tm $$3x = tm.a("death.attack.message_too_long", tm.b($$2x).a(n.o));
+            tm $$4x = tm.a("death.attack.even_more_magic", this.N_()).a($$1xx -> $$1xx.a(new tr(tr.a.a, $$3x)));
+            return new yz(this.ah(), $$4x);
          }));
-         eio $$3 = this.cg();
+         eio $$3 = this.cf();
          if ($$3 == null || $$3.k() == eio.b.a) {
             this.d.ac().a($$2, false);
          } else if ($$3.k() == eio.b.c) {
@@ -456,7 +456,7 @@ public class aks extends cbu {
             this.d.ac().b(this, $$2);
          }
       } else {
-         this.c.b(new yz(this.ai(), tk.a));
+         this.c.b(new yz(this.ah(), tl.a));
       }
 
       this.gf();
@@ -468,10 +468,10 @@ public class aks extends cbu {
          this.g($$0);
       }
 
-      this.gg().a(eip.c, this.cy(), eil::a);
+      this.gg().a(eip.c, this.cx(), eil::a);
       bjg $$4 = this.eK();
       if ($$4 != null) {
-         this.b(apo.h.b($$4.ah()));
+         this.b(apo.h.b($$4.ag()));
          $$4.a(this, this.bh, $$0);
          this.f($$4);
       }
@@ -480,7 +480,7 @@ public class aks extends cbu {
       this.a(apo.N);
       this.a(apo.i.b(apo.m));
       this.a(apo.i.b(apo.n));
-      this.az();
+      this.ay();
       this.k(0);
       this.a_(false);
       this.eJ().c();
@@ -497,8 +497,8 @@ public class aks extends cbu {
       if ($$0 != this) {
          super.a($$0, $$1, $$2);
          this.s($$1);
-         String $$3 = this.cy();
-         String $$4 = $$0.cy();
+         String $$3 = this.cx();
+         String $$4 = $$0.cx();
          this.gg().a(eip.e, $$3, eil::a);
          if ($$0 instanceof cbu) {
             this.a(apo.Q);
@@ -574,7 +574,7 @@ public class aks extends cbu {
       akr $$1 = this.x();
       aew<cpv> $$2 = $$1.ac();
       if ($$2 == cpv.j && $$0.ac() == cpv.h) {
-         this.af();
+         this.ae();
          this.x().a(this, biq.c.e);
          if (!this.f) {
             this.f = true;
@@ -613,7 +613,7 @@ public class aks extends cbu {
             $$4.e(this);
 
             for (bid $$6 : this.er()) {
-               this.c.b(new aay(this.ai(), $$6));
+               this.c.b(new aay(this.ah(), $$6));
             }
 
             this.c.b(new yi(1032, gw.b, 0, false));
@@ -686,7 +686,7 @@ public class aks extends cbu {
    @Override
    public Either<cbu.a, asx> a(gw $$0) {
       hc $$1 = this.dL().a_($$0).c(cwo.aC);
-      if (this.fC() || !this.bw()) {
+      if (this.fC() || !this.bv()) {
          return Either.left(cbu.a.e);
       } else if (!this.dL().C_().j()) {
          return Either.left(cbu.a.a);
@@ -715,7 +715,7 @@ public class aks extends cbu {
                al.q.a(this);
             });
             if (!this.x().d()) {
-               this.a(tl.c("sleep.not_possible"), true);
+               this.a(tm.c("sleep.not_possible"), true);
             }
 
             ((akr)this.dL()).e();
@@ -758,7 +758,7 @@ public class aks extends cbu {
 
    @Override
    public void a(double $$0, double $$1, double $$2) {
-      this.bC();
+      this.bB();
       this.e($$0, $$1, $$2);
    }
 
@@ -779,9 +779,9 @@ public class aks extends cbu {
    }
 
    public void a(double $$0, double $$1, double $$2, boolean $$3) {
-      if (!this.de()) {
+      if (!this.dd()) {
          this.b($$3, new ehn($$0, $$1, $$2));
-         gw $$4 = this.aG();
+         gw $$4 = this.aF();
          super.a($$1, $$3, this.dL().a_($$4), $$4);
       }
    }
@@ -809,7 +809,7 @@ public class aks extends cbu {
          cel $$1 = $$0.createMenu(this.dd, this.fR(), this);
          if ($$1 == null) {
             if (this.M_()) {
-               this.a(tl.c("container.spectatorCantOpen").a(n.m), true);
+               this.a(tm.c("container.spectatorCantOpen").a(n.m), true);
             }
 
             return OptionalInt.empty();
@@ -834,7 +834,7 @@ public class aks extends cbu {
       }
 
       this.gt();
-      this.c.b(new yd(this.dd, $$1.b(), $$0.ai()));
+      this.c.b(new yd(this.dd, $$1.b(), $$0.ah()));
       this.bS = new cfj(this.dd, this.fR(), $$1, $$0);
       this.a(this.bS);
    }
@@ -842,7 +842,7 @@ public class aks extends cbu {
    @Override
    public void a(cjf $$0, bgx $$1) {
       if ($$0.a(cji.th)) {
-         if (clb.a($$0, this.dd(), this)) {
+         if (clb.a($$0, this.dc(), this)) {
             this.bS.d();
          }
 
@@ -869,7 +869,7 @@ public class aks extends cbu {
    }
 
    public void a(float $$0, float $$1, boolean $$2, boolean $$3) {
-      if (this.bO()) {
+      if (this.bN()) {
          if ($$0 >= -1.0F && $$0 <= 1.0F) {
             this.bk = $$0;
          }
@@ -886,13 +886,13 @@ public class aks extends cbu {
    @Override
    public void a(apl<?> $$0, int $$1) {
       this.cp.b(this, $$0, $$1);
-      this.gg().a($$0, this.cy(), $$1x -> $$1x.a($$1));
+      this.gg().a($$0, this.cx(), $$1x -> $$1x.a($$1));
    }
 
    @Override
    public void a(apl<?> $$0) {
       this.cp.a(this, $$0, 0);
-      this.gg().a($$0, this.cy(), eil::c);
+      this.gg().a($$0, this.cx(), eil::c);
    }
 
    @Override
@@ -930,7 +930,7 @@ public class aks extends cbu {
    @Override
    public void s() {
       this.cK = true;
-      this.bB();
+      this.bA();
       if (this.fC()) {
          this.a(true, false);
       }
@@ -945,7 +945,7 @@ public class aks extends cbu {
    }
 
    @Override
-   public void a(tl $$0, boolean $$1) {
+   public void a(tm $$0, boolean $$1) {
       this.b($$0, $$1);
    }
 
@@ -993,7 +993,7 @@ public class aks extends cbu {
 
       this.ci = $$0.ci;
       this.bQ = $$0.bQ;
-      this.am().b(bM, $$0.am().b(bM));
+      this.al().b(bM, $$0.al().b(bM));
       this.cz = -1;
       this.cw = -1.0F;
       this.cx = -1;
@@ -1009,7 +1009,7 @@ public class aks extends cbu {
    @Override
    protected void a(bid $$0, @Nullable biq $$1) {
       super.a($$0, $$1);
-      this.c.b(new aay(this.ai(), $$0));
+      this.c.b(new aay(this.ah(), $$0));
       if ($$0.c() == bif.y) {
          this.cJ = this.ah;
          this.cI = this.dj();
@@ -1021,14 +1021,14 @@ public class aks extends cbu {
    @Override
    protected void a(bid $$0, boolean $$1, @Nullable biq $$2) {
       super.a($$0, $$1, $$2);
-      this.c.b(new aay(this.ai(), $$0));
+      this.c.b(new aay(this.ah(), $$0));
       al.A.a(this, $$2);
    }
 
    @Override
    protected void a(bid $$0) {
       super.a($$0);
-      this.c.b(new zg(this.ai(), $$0.c()));
+      this.c.b(new zg(this.ah(), $$0.c()));
       if ($$0.c() == bif.y) {
          this.cI = null;
       }
@@ -1049,8 +1049,8 @@ public class aks extends cbu {
    @Override
    public boolean a(akr $$0, double $$1, double $$2, double $$3, Set<bju> $$4, float $$5, float $$6) {
       cpc $$7 = new cpc(gw.a($$1, $$2, $$3));
-      $$0.k().a(akw.g, $$7, 1, this.ai());
-      this.ab();
+      $$0.k().a(akw.g, $$7, 1, this.ah());
+      this.aa();
       if (this.fC()) {
          this.a(true, true);
       }
@@ -1100,7 +1100,7 @@ public class aks extends cbu {
          this.c.b(new yc(yc.d, (float)$$0.a()));
          if ($$0 == cps.d) {
             this.gf();
-            this.ab();
+            this.aa();
          } else {
             this.c(this);
          }
@@ -1122,18 +1122,18 @@ public class aks extends cbu {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       this.b($$0, false);
    }
 
-   public void b(tl $$0, boolean $$1) {
+   public void b(tm $$0, boolean $$1) {
       if (this.v($$1)) {
-         this.c.a(new aar($$0, $$1), sv.a(() -> {
+         this.c.a(new aar($$0, $$1), sw.a(() -> {
             if (this.v(false)) {
                int $$1x = 256;
                String $$2 = $$0.a(256);
-               tl $$3 = tl.b($$2).a(n.o);
-               return new aar(tl.a("multiplayer.message_not_delivered", $$3).a(n.m), false);
+               tm $$3 = tm.b($$2).a(n.o);
+               return new aar(tm.a("multiplayer.message_not_delivered", $$3).a(n.m), false);
             } else {
                return null;
             }
@@ -1141,7 +1141,7 @@ public class aks extends cbu {
       }
    }
 
-   public void a(tz $$0, boolean $$1, th.a $$2) {
+   public void a(ua $$0, boolean $$1, ti.a $$2) {
       if (this.gu()) {
          $$0.a(this, $$1, $$2);
       }
@@ -1158,13 +1158,13 @@ public class aks extends cbu {
       this.cC = $$0.e();
       this.cX = $$0.h();
       this.cY = $$0.i();
-      this.am().b(bM, (byte)$$0.f());
-      this.am().b(bN, (byte)$$0.g().a());
+      this.al().b(bM, (byte)$$0.f());
+      this.al().b(bN, (byte)$$0.g().a());
    }
 
    public akg z() {
-      int $$0 = this.am().b(bM);
-      bja $$1 = bja.d.apply(this.am().b(bN));
+      int $$0 = this.al().b(bM);
+      bja $$1 = bja.d.apply(this.al().b(bN));
       return new akg(this.cM, this.cL, this.cB, this.cC, $$0, $$1, this.cX, this.cY);
    }
 
@@ -1262,7 +1262,7 @@ public class aks extends cbu {
    }
 
    @Nullable
-   public tl L() {
+   public tm L() {
       return null;
    }
 
@@ -1286,7 +1286,7 @@ public class aks extends cbu {
 
    public void a(akr $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
       this.c(this);
-      this.ab();
+      this.aa();
       if ($$0 == this.dL()) {
          this.c.a($$1, $$2, $$3, $$4, $$5);
       } else {
@@ -1328,7 +1328,7 @@ public class aks extends cbu {
       if ($$1 != null) {
          boolean $$5 = $$1.equals(this.cT) && $$0.equals(this.cS);
          if ($$4 && !$$5) {
-            this.a(tl.c("block.minecraft.set_spawn"));
+            this.a(tm.c("block.minecraft.set_spawn"));
          }
 
          this.cT = $$1;
@@ -1365,11 +1365,6 @@ public class aks extends cbu {
    }
 
    @Override
-   public vd<ww> V() {
-      return new wz(this);
-   }
-
-   @Override
    public byn a(cjf $$0, boolean $$1, boolean $$2) {
       byn $$3 = super.a($$0, $$1, $$2);
       if ($$3 == null) {
@@ -1389,7 +1384,7 @@ public class aks extends cbu {
       }
    }
 
-   public alv W() {
+   public alv V() {
       return this.cW;
    }
 
@@ -1399,7 +1394,7 @@ public class aks extends cbu {
    }
 
    @Nullable
-   private static cps a(@Nullable qx $$0, String $$1) {
+   private static cps a(@Nullable qy $$0, String $$1) {
       return $$0 != null && $$0.b($$1, 99) ? cps.a($$0.h($$1)) : null;
    }
 
@@ -1413,11 +1408,11 @@ public class aks extends cbu {
    }
 
    @Override
-   public void c(@Nullable qx $$0) {
+   public void c(@Nullable qy $$0) {
       this.e.a(this.b(a($$0, "playerGameType")), a($$0, "previousPlayerGameType"));
    }
 
-   private void k(qx $$0) {
+   private void k(qy $$0) {
       $$0.a("playerGameType", this.e.b().a());
       cps $$1 = this.e.c();
       if ($$1 != null) {
@@ -1426,7 +1421,7 @@ public class aks extends cbu {
    }
 
    @Override
-   public boolean X() {
+   public boolean W() {
       return this.cX;
    }
 
@@ -1452,12 +1447,12 @@ public class aks extends cbu {
       return this.a($$2, false, true) != null;
    }
 
-   public boolean Y() {
+   public boolean X() {
       return this.cY;
    }
 
    @Override
-   public Optional<cba> Z() {
+   public Optional<cba> Y() {
       return Optional.of(this.cZ);
    }
 
@@ -1470,12 +1465,12 @@ public class aks extends cbu {
       }
    }
 
-   public void a(ub $$0) {
+   public void a(uc $$0) {
       this.dc = $$0;
    }
 
    @Nullable
-   public ub aa() {
+   public uc Z() {
       return this.dc != null && this.dc.b() ? null : this.dc;
    }
 
@@ -1494,7 +1489,7 @@ public class aks extends cbu {
          this.c.a(this.dq(), this.ds(), this.dw(), this.dB(), this.dD());
          if ($$0 instanceof bjg $$2) {
             for (bid $$3 : $$2.er()) {
-               this.c.b(new aay($$0.ai(), $$3));
+               this.c.b(new aay($$0.ah(), $$3));
             }
          }
 
@@ -1503,17 +1498,17 @@ public class aks extends cbu {
    }
 
    @Override
-   public void ab() {
-      biq $$0 = this.cZ();
-      super.ab();
+   public void aa() {
+      biq $$0 = this.cY();
+      super.aa();
       if ($$0 instanceof bjg $$1) {
          for (bid $$2 : $$1.er()) {
-            this.c.b(new zg($$0.ai(), $$2.c()));
+            this.c.b(new zg($$0.ah(), $$2.c()));
          }
       }
    }
 
    public aba d(akr $$0) {
-      return new aba($$0.aa(), $$0.ac(), cqv.a($$0.A()), this.e.b(), this.e.c(), $$0.af(), $$0.z(), this.gq(), this.au());
+      return new aba($$0.aa(), $$0.ac(), cqv.a($$0.A()), this.e.b(), this.e.c(), $$0.af(), $$0.z(), this.gq(), this.at());
    }
 }

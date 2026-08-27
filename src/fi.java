@@ -18,16 +18,16 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class fi {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.block.tag.disallowed"));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("argument.block.id.invalid", $$0));
-   public static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.block.property.unknown", $$0, $$1));
-   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.block.property.duplicate", $$1, $$0));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("argument.block.tag.disallowed"));
+   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("argument.block.id.invalid", $$0));
+   public static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("argument.block.property.unknown", $$0, $$1));
+   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("argument.block.property.duplicate", $$1, $$0));
    public static final Dynamic3CommandExceptionType e = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tl.a("argument.block.property.invalid", $$0, $$2, $$1)
+      ($$0, $$1, $$2) -> tm.a("argument.block.property.invalid", $$0, $$2, $$1)
    );
-   public static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.block.property.novalue", $$0, $$1));
-   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tl.c("argument.block.property.unclosed"));
-   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> tl.a("arguments.block.tag.unknown", $$0));
+   public static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("argument.block.property.novalue", $$0, $$1));
+   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tm.c("argument.block.property.unclosed"));
+   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> tm.a("arguments.block.tag.unknown", $$0));
    private static final char i = '[';
    private static final char j = '{';
    private static final char k = ']';
@@ -47,7 +47,7 @@ public class fi {
    @Nullable
    private dfj x;
    @Nullable
-   private qx y;
+   private qy y;
    @Nullable
    private hk<csv> z;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> A = o;
@@ -450,7 +450,7 @@ public class fi {
    }
 
    private void g() throws CommandSyntaxException {
-      this.y = new rr(this.q).f();
+      this.y = new rs(this.q).f();
    }
 
    private <T extends Comparable<T>> void a(dgm<T> $$0, String $$1, int $$2) throws CommandSyntaxException {
@@ -491,9 +491,9 @@ public class fi {
       $$0.append($$1.a((T)$$2));
    }
 
-   public static record a(dfj a, Map<dgm<?>, Comparable<?>> b, @Nullable qx c) {
+   public static record a(dfj a, Map<dgm<?>, Comparable<?>> b, @Nullable qy c) {
    }
 
-   public static record b(hk<csv> a, Map<String, String> b, @Nullable qx c) {
+   public static record b(hk<csv> a, Map<String, String> b, @Nullable qy c) {
    }
 }

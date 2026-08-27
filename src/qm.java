@@ -1,41 +1,38 @@
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.escape.Escaper;
+import com.google.common.escape.Escapers;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class qm implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
+public class qm implements qr {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Escaper b = Escapers.builder()
+      .addEscape('\'', "|'")
+      .addEscape('\n', "|n")
+      .addEscape('\r', "|r")
+      .addEscape('|', "||")
+      .addEscape('[', "|[")
+      .addEscape(']', "|]")
+      .build();
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      if (pz.b($$1)) {
-         return $$1;
+   @Override
+   public void a(py $$0) {
+      String $$1 = b.escape($$0.c());
+      String $$2 = b.escape($$0.n().getMessage());
+      String $$3 = b.escape(ac.c($$0.n()));
+      a.info("##teamcity[testStarted name='{}']", $$1);
+      if ($$0.r()) {
+         a.info("##teamcity[testFailed name='{}' message='{}' details='{}']", new Object[]{$$1, $$2, $$3});
       } else {
-         Message $$2 = tl.b("No such test class: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
+         a.info("##teamcity[testIgnored name='{}' message='{}' details='{}']", new Object[]{$$1, $$2, $$3});
       }
+
+      a.info("##teamcity[testFinished name='{}' duration='{}']", $$1, $$0.l());
    }
 
-   public static qm a() {
-      return new qm();
-   }
-
-   public static String a(CommandContext<dt> $$0, String $$1) {
-      return (String)$$0.getArgument($$1, String.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dw.b(pz.b().stream(), $$1);
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   @Override
+   public void b(py $$0) {
+      String $$1 = b.escape($$0.c());
+      a.info("##teamcity[testStarted name='{}']", $$1);
+      a.info("##teamcity[testFinished name='{}' duration='{}']", $$1, $$0.l());
    }
 }

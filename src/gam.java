@@ -52,7 +52,7 @@ public class gam implements anv {
 
       gai $$4 = gai.a($$0, $$1, $$2);
       gak.a($$4);
-      qs.a($$4);
+      qt.a($$4);
    }
 
    public void a(String $$0) {

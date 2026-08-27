@@ -1,4 +1,4 @@
-public class aca implements vd<abd> {
+public class aca implements ve<abd> {
    private final double a;
    private final double b;
    private final double c;
@@ -13,7 +13,7 @@ public class aca implements vd<abd> {
       this.e = $$0.dD();
    }
 
-   public aca(so $$0) {
+   public aca(sp $$0) {
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
@@ -22,7 +22,7 @@ public class aca implements vd<abd> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);

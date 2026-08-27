@@ -1,6 +1,6 @@
-// 1.20.2 Pre-release 1	2026-08-28T00:28:10.7060525	vanilla/Advancements
+// 1.20.2 Pre-release 2	2026-08-28T00:30:35.4373655	vanilla/Advancements
 197427a3f35bcda2ea28c52afe625201c867f4ee data\minecraft\advancements\husbandry\breed_an_animal.json
-463520faec94ca0be5d8fc9712e3d3ebafd5b61c data\minecraft\advancements\adventure\salvage_sherd.json
+3725c3ec7e71f59450dd86cdb641f146a25c18ab data\minecraft\advancements\adventure\salvage_sherd.json
 331042a4245f4e2a09671d30cbea3166ddc2c045 data\minecraft\advancements\husbandry\plant_any_sniffer_seed.json
 94b016f8253c6091b1446d0e4f978b355b750957 data\minecraft\advancements\adventure\very_very_frightening.json
 e73df4d4429f00030094b3a8fa12f25345d5f880 data\minecraft\advancements\husbandry\obtain_sniffer_egg.json
@@ -75,7 +75,7 @@ b6781b829f9bfb62a99497606556770f726a4e93 data\minecraft\advancements\story\cure_
 a0a61ca93ce4c7a7ba7cdd9b57016ffd8bc9ebae data\minecraft\advancements\nether\uneasy_alliance.json
 1ea39d110dddd329745f58224dc0633478f8d1f4 data\minecraft\advancements\adventure\adventuring_time.json
 d0406790324ae10790846d9b9383124c6c150972 data\minecraft\advancements\husbandry\ride_a_boat_with_a_goat.json
-efe343450645dba05f1c744373e725adacf8560f data\minecraft\advancements\adventure\trim_with_any_armor_pattern.json
+fa2717a8359e34f5e6cf17e66371829b3dc06819 data\minecraft\advancements\adventure\trim_with_any_armor_pattern.json
 f823f55de1ca4cc137b739d5c03505ca8bb72e56 data\minecraft\advancements\husbandry\wax_on.json
 2f0ef3d7f191d8b7aa7bb4a0012035d2d6a051b1 data\minecraft\advancements\adventure\lightning_rod_with_villager_no_fire.json
 3e534e53889219aa826645ea639257e3001897cf data\minecraft\advancements\adventure\spyglass_at_parrot.json

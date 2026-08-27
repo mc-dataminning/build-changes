@@ -10,7 +10,7 @@ public class cot {
    private float i;
    private int j = 1;
 
-   public cot(qx $$0) {
+   public cot(qy $$0) {
       this.a = cjf.a($$0.p("buy"));
       this.b = cjf.a($$0.p("buyB"));
       this.c = cjf.a($$0.p("sell"));
@@ -150,11 +150,11 @@ public class cot {
       return this.f;
    }
 
-   public qx t() {
-      qx $$0 = new qx();
-      $$0.a("buy", this.a.b(new qx()));
-      $$0.a("sell", this.c.b(new qx()));
-      $$0.a("buyB", this.b.b(new qx()));
+   public qy t() {
+      qy $$0 = new qy();
+      $$0.a("buy", this.a.b(new qy()));
+      $$0.a("sell", this.c.b(new qy()));
+      $$0.a("buyB", this.b.b(new qy()));
       $$0.a("uses", this.d);
       $$0.a("maxUses", this.e);
       $$0.a("rewardExp", this.f);
@@ -178,7 +178,7 @@ public class cot {
             $$2.b($$2.k());
          }
 
-         return cjf.b($$2, $$1) && (!$$1.u() || $$2.u() && rj.a($$1.v(), $$2.v(), false));
+         return cjf.b($$2, $$1) && (!$$1.u() || $$2.u() && rk.a($$1.v(), $$2.v(), false));
       }
    }
 

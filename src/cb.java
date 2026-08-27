@@ -122,7 +122,7 @@ public record cb(Optional<aqi<cja>> b, Optional<hk<cja>> c, cl.d d, cl.d e, List
          return this;
       }
 
-      public cb.a a(qx $$0) {
+      public cb.a a(qy $$0) {
          this.h = Optional.of(new cn($$0));
          return this;
       }

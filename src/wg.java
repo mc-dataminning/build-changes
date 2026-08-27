@@ -1,15 +1,15 @@
-public record wg(gw b, String c, int d) implements vw {
-   public static final aex a = new aex("debug/poi_added");
+public record wg(int b, ebb c, float d) implements vx {
+   public static final aex a = new aex("debug/path");
 
-   public wg(so $$0) {
-      this($$0.e(), $$0.r(), $$0.readInt());
+   public wg(sp $$0) {
+      this($$0.readInt(), ebb.b($$0), $$0.readFloat());
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.p(this.d);
+   public void a(sp $$0) {
+      $$0.p(this.b);
+      this.c.a($$0);
+      $$0.a(this.d);
    }
 
    @Override

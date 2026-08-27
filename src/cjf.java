@@ -25,7 +25,7 @@ public final class cjf {
       $$0 -> $$0.group(
                jd.i.q().fieldOf("id").forGetter(cjf::d),
                Codec.INT.fieldOf("Count").forGetter(cjf::L),
-               qx.a.optionalFieldOf("tag").forGetter($$0x -> Optional.ofNullable($$0x.v()))
+               qy.a.optionalFieldOf("tag").forGetter($$0x -> Optional.ofNullable($$0x.v()))
             )
             .apply($$0, cjf::new)
    );
@@ -43,16 +43,16 @@ public final class cjf {
    private static final String m = "CanDestroy";
    private static final String n = "CanPlaceOn";
    private static final String o = "HideFlags";
-   private static final tl p = tl.c("item.disabled").a(n.m);
+   private static final tm p = tm.c("item.disabled").a(n.m);
    private static final int q = 0;
-   private static final uh r = uh.a.a(n.f).b(true);
+   private static final ui r = ui.a.a(n.f).b(true);
    private int s;
    private int t;
    @Deprecated
    @Nullable
    private final cja u;
    @Nullable
-   private qx v;
+   private qy v;
    @Nullable
    private biq w;
    @Nullable
@@ -72,7 +72,7 @@ public final class cjf {
       this($$0.a(), 1);
    }
 
-   private cjf(cpu $$0, int $$1, Optional<qx> $$2) {
+   private cjf(cpu $$0, int $$1, Optional<qy> $$2) {
       this($$0, $$1);
       $$2.ifPresent(this::c);
    }
@@ -93,7 +93,7 @@ public final class cjf {
       this.u = null;
    }
 
-   private cjf(qx $$0) {
+   private cjf(qy $$0) {
       this.u = jd.i.a(new aex($$0.l("id")));
       this.s = $$0.f("Count");
       if ($$0.b("tag", 10)) {
@@ -106,7 +106,7 @@ public final class cjf {
       }
    }
 
-   public static cjf a(qx $$0) {
+   public static cjf a(qy $$0) {
       try {
          return new cjf($$0);
       } catch (RuntimeException var2) {
@@ -201,7 +201,7 @@ public final class cjf {
       return this.d().a(this, $$0, $$1);
    }
 
-   public qx b(qx $$0) {
+   public qy b(qy $$0) {
       aex $$1 = jd.i.b(this.d());
       $$0.a("id", $$1 == null ? "minecraft:air" : $$1.toString());
       $$0.a("Count", (byte)this.s);
@@ -222,7 +222,7 @@ public final class cjf {
 
    public boolean i() {
       if (!this.b() && this.d().n() > 0) {
-         qx $$0 = this.v();
+         qy $$0 = this.v();
          return $$0 == null || !$$0.q("Unbreakable");
       } else {
          return false;
@@ -423,30 +423,30 @@ public final class cjf {
    }
 
    @Nullable
-   public qx v() {
+   public qy v() {
       return this.v;
    }
 
-   public qx w() {
+   public qy w() {
       if (this.v == null) {
-         this.c(new qx());
+         this.c(new qy());
       }
 
       return this.v;
    }
 
-   public qx a(String $$0) {
+   public qy a(String $$0) {
       if (this.v != null && this.v.b($$0, 10)) {
          return this.v.p($$0);
       } else {
-         qx $$1 = new qx();
+         qy $$1 = new qy();
          this.a($$0, $$1);
          return $$1;
       }
    }
 
    @Nullable
-   public qx b(String $$0) {
+   public qy b(String $$0) {
       return this.v != null && this.v.b($$0, 10) ? this.v.p($$0) : null;
    }
 
@@ -459,11 +459,11 @@ public final class cjf {
       }
    }
 
-   public rd x() {
-      return this.v != null ? this.v.c("Enchantments", 10) : new rd();
+   public re x() {
+      return this.v != null ? this.v.c("Enchantments", 10) : new re();
    }
 
-   public void c(@Nullable qx $$0) {
+   public void c(@Nullable qy $$0) {
       this.v = $$0;
       if (this.d().o()) {
          this.b(this.k());
@@ -474,11 +474,11 @@ public final class cjf {
       }
    }
 
-   public tl y() {
-      qx $$0 = this.b("display");
+   public tm y() {
+      qy $$0 = this.b("display");
       if ($$0 != null && $$0.b("Name", 8)) {
          try {
-            tl $$1 = tl.a.a($$0.l("Name"));
+            tm $$1 = tm.a.a($$0.l("Name"));
             if ($$1 != null) {
                return $$1;
             }
@@ -492,10 +492,10 @@ public final class cjf {
       return this.d().m(this);
    }
 
-   public cjf a(@Nullable tl $$0) {
-      qx $$1 = this.a("display");
+   public cjf a(@Nullable tm $$0) {
+      qy $$1 = this.a("display");
       if ($$0 != null) {
-         $$1.a("Name", tl.a.a($$0));
+         $$1.a("Name", tm.a.a($$0));
       } else {
          $$1.r("Name");
       }
@@ -504,7 +504,7 @@ public final class cjf {
    }
 
    public void z() {
-      qx $$0 = this.b("display");
+      qy $$0 = this.b("display");
       if ($$0 != null) {
          $$0.r("Name");
          if ($$0.g()) {
@@ -518,13 +518,13 @@ public final class cjf {
    }
 
    public boolean A() {
-      qx $$0 = this.b("display");
+      qy $$0 = this.b("display");
       return $$0 != null && $$0.b("Name", 8);
    }
 
-   public List<tl> a(@Nullable cbu $$0, ckw $$1) {
-      List<tl> $$2 = Lists.newArrayList();
-      ty $$3 = tl.h().b(this.y()).a(this.C().e);
+   public List<tm> a(@Nullable cbu $$0, ckw $$1) {
+      List<tm> $$2 = Lists.newArrayList();
+      tz $$3 = tm.h().b(this.y()).a(this.C().e);
       if (this.A()) {
          $$3.a(n.u);
       }
@@ -552,25 +552,25 @@ public final class cjf {
          }
 
          if (this.v.b("display", 10)) {
-            qx $$6 = this.v.p("display");
+            qy $$6 = this.v.p("display");
             if (a($$5, cjf.a.g) && $$6.b("color", 99)) {
                if ($$1.a()) {
-                  $$2.add(tl.a("item.color", String.format(Locale.ROOT, "#%06X", $$6.h("color"))).a(n.h));
+                  $$2.add(tm.a("item.color", String.format(Locale.ROOT, "#%06X", $$6.h("color"))).a(n.h));
                } else {
-                  $$2.add(tl.c("item.dyed").a(n.h, n.u));
+                  $$2.add(tm.c("item.dyed").a(n.h, n.u));
                }
             }
 
             if ($$6.d("Lore") == 9) {
-               rd $$7 = $$6.c("Lore", 8);
+               re $$7 = $$6.c("Lore", 8);
 
                for (int $$8 = 0; $$8 < $$7.size(); $$8++) {
                   String $$9 = $$7.j($$8);
 
                   try {
-                     ty $$10 = tl.a.a($$9);
+                     tz $$10 = tm.a.a($$9);
                      if ($$10 != null) {
-                        $$2.add(tn.a($$10, r));
+                        $$2.add(to.a($$10, r));
                      }
                   } catch (Exception var19) {
                      $$6.r("Lore");
@@ -584,8 +584,8 @@ public final class cjf {
          for (biv $$12 : biv.values()) {
             Multimap<bkh, bkk> $$13 = this.a($$12);
             if (!$$13.isEmpty()) {
-               $$2.add(tk.a);
-               $$2.add(tl.c("item.modifiers." + $$12.e()).a(n.h));
+               $$2.add(tl.a);
+               $$2.add(tm.c("item.modifiers." + $$12.e()).a(n.h));
 
                for (Entry<bkh, bkk> $$14 : $$13.entries()) {
                   bkk $$15 = $$14.getValue();
@@ -612,12 +612,12 @@ public final class cjf {
                   }
 
                   if ($$17) {
-                     $$2.add(tk.a().b(tl.a("attribute.modifier.equals." + $$15.c().a(), c.format($$18), tl.c($$14.getKey().c()))).a(n.c));
+                     $$2.add(tl.a().b(tm.a("attribute.modifier.equals." + $$15.c().a(), c.format($$18), tm.c($$14.getKey().c()))).a(n.c));
                   } else if ($$16 > 0.0) {
-                     $$2.add(tl.a("attribute.modifier.plus." + $$15.c().a(), c.format($$18), tl.c($$14.getKey().c())).a(n.j));
+                     $$2.add(tm.a("attribute.modifier.plus." + $$15.c().a(), c.format($$18), tm.c($$14.getKey().c())).a(n.j));
                   } else if ($$16 < 0.0) {
                      $$18 *= -1.0;
-                     $$2.add(tl.a("attribute.modifier.take." + $$15.c().a(), c.format($$18), tl.c($$14.getKey().c())).a(n.m));
+                     $$2.add(tm.a("attribute.modifier.take." + $$15.c().a(), c.format($$18), tm.c($$14.getKey().c())).a(n.m));
                   }
                }
             }
@@ -626,14 +626,14 @@ public final class cjf {
 
       if (this.u()) {
          if (a($$5, cjf.a.c) && this.v.q("Unbreakable")) {
-            $$2.add(tl.c("item.unbreakable").a(n.j));
+            $$2.add(tm.c("item.unbreakable").a(n.j));
          }
 
          if (a($$5, cjf.a.d) && this.v.b("CanDestroy", 9)) {
-            rd $$21 = this.v.c("CanDestroy", 8);
+            re $$21 = this.v.c("CanDestroy", 8);
             if (!$$21.isEmpty()) {
-               $$2.add(tk.a);
-               $$2.add(tl.c("item.canBreak").a(n.h));
+               $$2.add(tl.a);
+               $$2.add(tm.c("item.canBreak").a(n.h));
 
                for (int $$22 = 0; $$22 < $$21.size(); $$22++) {
                   $$2.addAll(d($$21.j($$22)));
@@ -642,10 +642,10 @@ public final class cjf {
          }
 
          if (a($$5, cjf.a.e) && this.v.b("CanPlaceOn", 9)) {
-            rd $$23 = this.v.c("CanPlaceOn", 8);
+            re $$23 = this.v.c("CanPlaceOn", 8);
             if (!$$23.isEmpty()) {
-               $$2.add(tk.a);
-               $$2.add(tl.c("item.canPlace").a(n.h));
+               $$2.add(tl.a);
+               $$2.add(tm.c("item.canPlace").a(n.h));
 
                for (int $$24 = 0; $$24 < $$23.size(); $$24++) {
                   $$2.addAll(d($$23.j($$24)));
@@ -656,12 +656,12 @@ public final class cjf {
 
       if ($$1.a()) {
          if (this.j()) {
-            $$2.add(tl.a("item.durability", this.l() - this.k(), this.l()));
+            $$2.add(tm.a("item.durability", this.l() - this.k(), this.l()));
          }
 
-         $$2.add(tl.b(jd.i.b(this.d()).toString()).a(n.i));
+         $$2.add(tm.b(jd.i.b(this.d()).toString()).a(n.i));
          if (this.u()) {
-            $$2.add(tl.a("item.nbt_tags", this.v.e().size()).a(n.i));
+            $$2.add(tm.a("item.nbt_tags", this.v.e().size()).a(n.i));
          }
       }
 
@@ -681,26 +681,26 @@ public final class cjf {
    }
 
    public void a(cjf.a $$0) {
-      qx $$1 = this.w();
+      qy $$1 = this.w();
       $$1.a("HideFlags", $$1.h("HideFlags") | $$0.a());
    }
 
-   public static void a(List<tl> $$0, rd $$1) {
+   public static void a(List<tm> $$0, re $$1) {
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         qx $$3 = $$1.a($$2);
+         qy $$3 = $$1.a($$2);
          jd.g.b(cnq.b($$3)).ifPresent($$2x -> $$0.add($$2x.d(cnq.a($$3))));
       }
    }
 
-   private static Collection<tl> d(String $$0) {
+   private static Collection<tm> d(String $$0) {
       try {
-         return (Collection<tl>)fi.b(jd.f.p(), $$0, true)
+         return (Collection<tm>)fi.b(jd.f.p(), $$0, true)
             .map(
-               $$0x -> Lists.newArrayList(new tl[]{$$0x.a().b().e().a(n.i)}),
+               $$0x -> Lists.newArrayList(new tm[]{$$0x.a().b().e().a(n.i)}),
                $$0x -> $$0x.a().a().map($$0xx -> ((csv)$$0xx.a()).e().a(n.i)).collect(Collectors.toList())
             );
       } catch (CommandSyntaxException var2) {
-         return Lists.newArrayList(new tl[]{tl.b("missingno").a(n.i)});
+         return Lists.newArrayList(new tm[]{tm.b("missingno").a(n.i)});
       }
    }
 
@@ -719,10 +719,10 @@ public final class cjf {
    public void a(cno $$0, int $$1) {
       this.w();
       if (!this.v.b("Enchantments", 9)) {
-         this.v.a("Enchantments", new rd());
+         this.v.a("Enchantments", new re());
       }
 
-      rd $$2 = this.v.c("Enchantments", 10);
+      re $$2 = this.v.c("Enchantments", 10);
       $$2.add(cnq.a(cnq.a($$0), (byte)$$1));
    }
 
@@ -730,7 +730,7 @@ public final class cjf {
       return this.v != null && this.v.b("Enchantments", 9) ? !this.v.c("Enchantments", 10).isEmpty() : false;
    }
 
-   public void a(String $$0, rq $$1) {
+   public void a(String $$0, rr $$1) {
       this.w().a($$0, $$1);
    }
 
@@ -768,10 +768,10 @@ public final class cjf {
       Multimap<bkh, bkk> $$1;
       if (this.u() && this.v.b("AttributeModifiers", 9)) {
          $$1 = HashMultimap.create();
-         rd $$2 = this.v.c("AttributeModifiers", 10);
+         re $$2 = this.v.c("AttributeModifiers", 10);
 
          for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            qx $$4 = $$2.a($$3);
+            qy $$4 = $$2.a($$3);
             if (!$$4.b("Slot", 8) || $$4.l("Slot").equals($$0.e())) {
                Optional<bkh> $$5 = jd.v.b(aex.a($$4.l("AttributeName")));
                if (!$$5.isEmpty()) {
@@ -792,11 +792,11 @@ public final class cjf {
    public void a(bkh $$0, bkk $$1, @Nullable biv $$2) {
       this.w();
       if (!this.v.b("AttributeModifiers", 9)) {
-         this.v.a("AttributeModifiers", new rd());
+         this.v.a("AttributeModifiers", new re());
       }
 
-      rd $$3 = this.v.c("AttributeModifiers", 10);
-      qx $$4 = $$1.e();
+      re $$3 = this.v.c("AttributeModifiers", 10);
+      qy $$4 = $$1.e();
       $$4.a("AttributeName", jd.v.b($$0).toString());
       if ($$2 != null) {
          $$4.a("Slot", $$2.e());
@@ -805,15 +805,15 @@ public final class cjf {
       $$3.add($$4);
    }
 
-   public tl J() {
-      ty $$0 = tl.h().b(this.y());
+   public tm J() {
+      tz $$0 = tm.h().b(this.y());
       if (this.A()) {
          $$0.a(n.u);
       }
 
-      ty $$1 = tn.a((tl)$$0);
+      tz $$1 = to.a((tm)$$0);
       if (!this.b()) {
-         $$1.a(this.C().e).a($$0x -> $$0x.a(new tq(tq.a.b, new tq.c(this))));
+         $$1.a(this.C().e).a($$0x -> $$0x.a(new tr(tr.a.b, new tr.c(this))));
       }
 
       return $$1;

@@ -11,7 +11,7 @@ public class bpv extends bqb {
 
    @Override
    public boolean a() {
-      return this.a.aY() && this.a.b(apy.a) > this.a.df() || this.a.bm();
+      return this.a.aX() && this.a.b(apy.a) > this.a.de() || this.a.bl();
    }
 
    @Override

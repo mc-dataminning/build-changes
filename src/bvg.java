@@ -33,7 +33,7 @@ public class bvg extends bur {
    bvg.g cs;
    static final Predicate<byn> ct = $$0 -> {
       cjf $$1 = $$0.q();
-      return ($$1.a(csw.mZ.k()) || $$1.a(csw.eh.k())) && $$0.bw() && !$$0.y();
+      return ($$1.a(csw.mZ.k()) || $$1.a(csw.eh.k())) && $$0.bv() && !$$0.y();
    };
 
    public bvg(biu<? extends bvg> $$0, cpv $$1) {
@@ -166,14 +166,14 @@ public class bvg extends bur {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("MainGene", this.gl().c());
       $$0.a("HiddenGene", this.gm().c());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a(bvg.a.a($$0.l("MainGene")));
       this.b(bvg.a.a($$0.l("HiddenGene")));
@@ -267,7 +267,7 @@ public class bvg extends bur {
    public void l() {
       super.l();
       if (this.gr()) {
-         if (this.dL().Y() && !this.aY()) {
+         if (this.dL().Y() && !this.aX()) {
             this.w(true);
             this.y(false);
          } else if (!this.gj()) {
@@ -421,7 +421,7 @@ public class bvg extends bur {
             } else if ((float)this.bU != 7.0F && (float)this.bU != 15.0F && (float)this.bU != 23.0F) {
                this.o(this.cl.c, $$0.d, this.cl.e);
             } else {
-               this.o(0.0, this.aB() ? 0.27 : $$0.d, 0.0);
+               this.o(0.0, this.aA() ? 0.27 : $$0.d, 0.0);
             }
          }
       }
@@ -432,17 +432,17 @@ public class bvg extends bur {
       this.dL()
          .a(
             ix.aa,
-            this.dq() - (double)(this.dg() + 1.0F) * 0.5 * (double)arx.a(this.aU * (float) (Math.PI / 180.0)),
+            this.dq() - (double)(this.df() + 1.0F) * 0.5 * (double)arx.a(this.aU * (float) (Math.PI / 180.0)),
             this.du() - 0.1F,
-            this.dw() + (double)(this.dg() + 1.0F) * 0.5 * (double)arx.b(this.aU * (float) (Math.PI / 180.0)),
+            this.dw() + (double)(this.df() + 1.0F) * 0.5 * (double)arx.b(this.aU * (float) (Math.PI / 180.0)),
             $$0.c,
             0.0,
             $$0.e
          );
       this.a(ape.qL, 1.0F, 1.0F);
 
-      for (bvg $$2 : this.dL().a(bvg.class, this.cH().g(10.0))) {
-         if (!$$2.m_() && $$2.aB() && !$$2.aY() && $$2.gx()) {
+      for (bvg $$2 : this.dL().a(bvg.class, this.cG().g(10.0))) {
+         if (!$$2.m_() && $$2.aA() && !$$2.aX() && $$2.gx()) {
             $$2.fa();
          }
       }
@@ -460,7 +460,7 @@ public class bvg extends bur {
          this.a(biv.a, $$1);
          this.e(biv.a);
          this.a($$0, $$1.L());
-         $$0.al();
+         $$0.ak();
       }
    }
 
@@ -475,7 +475,7 @@ public class bvg extends bur {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       asc $$5 = $$0.D_();
       this.a(bvg.a.a($$5));
       this.b(bvg.a.a($$5));
@@ -528,7 +528,7 @@ public class bvg extends bur {
    }
 
    void gH() {
-      if (!this.aY()) {
+      if (!this.aX()) {
          this.A(0.0F);
          this.L().n();
          this.w(true);
@@ -555,7 +555,7 @@ public class bvg extends bur {
             this.a($$0, $$1, $$2);
             this.g($$0);
          } else {
-            if (this.dL().B || this.y() || this.aY()) {
+            if (this.dL().B || this.y() || this.aX()) {
                return bgy.d;
             }
 
@@ -735,7 +735,7 @@ public class bvg extends bur {
             if (this.e <= this.d.ah) {
                this.d.t(32);
                this.e = this.d.ah + 600;
-               if (this.d.cY()) {
+               if (this.d.cX()) {
                   cbu $$0 = this.b.a(bvg.cc, this.d);
                   this.d.cs.a($$0);
                }
@@ -809,7 +809,7 @@ public class bvg extends bur {
 
       @Override
       public boolean b() {
-         return !this.a.aY() && (this.a.gq() || this.a.ag.a(b(600)) != 1) ? this.a.ag.a(b(2000)) != 1 : false;
+         return !this.a.aX() && (this.a.gq() || this.a.ag.a(b(600)) != 1) ? this.a.ag.a(b(2000)) != 1 : false;
       }
 
       @Override
@@ -854,7 +854,7 @@ public class bvg extends bur {
                   this.c = this.b
                      .dL()
                      .a(
-                        this.b.dL().a(this.f, this.b.cH().c((double)this.d, 3.0, (double)this.d), $$0 -> true),
+                        this.b.dL().a(this.f, this.b.cG().c((double)this.d, 3.0, (double)this.d), $$0 -> true),
                         this.g,
                         this.b,
                         this.b.dq(),
@@ -902,7 +902,7 @@ public class bvg extends bur {
 
       @Override
       protected boolean h() {
-         return this.b.dA() || this.b.bN();
+         return this.b.dA() || this.b.bM();
       }
 
       @Override
@@ -926,7 +926,7 @@ public class bvg extends bur {
 
       @Override
       public boolean a() {
-         if ((this.a.m_() || this.a.gs()) && this.a.aB()) {
+         if ((this.a.m_() || this.a.gs()) && this.a.aA()) {
             if (!this.a.gx()) {
                return false;
             } else {
@@ -971,8 +971,8 @@ public class bvg extends bur {
 
       @Override
       public boolean a() {
-         if (this.b <= bvg.this.ah && !bvg.this.m_() && !bvg.this.aY() && bvg.this.gx() && bvg.this.s() <= 0) {
-            List<byn> $$0 = bvg.this.dL().a(byn.class, bvg.this.cH().c(6.0, 6.0, 6.0), bvg.ct);
+         if (this.b <= bvg.this.ah && !bvg.this.m_() && !bvg.this.aX() && bvg.this.gx() && bvg.this.s() <= 0) {
+            List<byn> $$0 = bvg.this.dL().a(byn.class, bvg.this.cG().c(6.0, 6.0, 6.0), bvg.ct);
             return !$$0.isEmpty() || !bvg.this.c(biv.a).b();
          } else {
             return false;
@@ -981,7 +981,7 @@ public class bvg extends bur {
 
       @Override
       public boolean b() {
-         return !bvg.this.aY() && (bvg.this.gq() || bvg.this.ag.a(b(600)) != 1) ? bvg.this.ag.a(b(2000)) != 1 : false;
+         return !bvg.this.aX() && (bvg.this.gq() || bvg.this.ag.a(b(600)) != 1) ? bvg.this.ag.a(b(2000)) != 1 : false;
       }
 
       @Override
@@ -993,7 +993,7 @@ public class bvg extends bur {
 
       @Override
       public void c() {
-         List<byn> $$0 = bvg.this.dL().a(byn.class, bvg.this.cH().c(8.0, 8.0, 8.0), bvg.ct);
+         List<byn> $$0 = bvg.this.dL().a(byn.class, bvg.this.cG().c(8.0, 8.0, 8.0), bvg.ct);
          if (!$$0.isEmpty() && bvg.this.c(biv.a).b()) {
             bvg.this.L().a($$0.get(0), 1.2F);
          } else if (!bvg.this.c(biv.a).b()) {

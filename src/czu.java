@@ -91,8 +91,8 @@ public class czu extends csi {
          if (!$$0.B && $$3.f() && !$$5.af_()) {
             cjf $$6 = b(this.a());
             $$4.e($$6);
-            if ($$5.ad()) {
-               $$6.a($$5.ae());
+            if ($$5.ac()) {
+               $$6.a($$5.ad());
             }
 
             byn $$7 = new byn($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$6);
@@ -143,12 +143,12 @@ public class czu extends csi {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpb $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpb $$1, List<tm> $$2, ckw $$3) {
       super.a($$0, $$1, $$2, $$3);
-      qx $$4 = cgy.a($$0);
+      qy $$4 = cgy.a($$0);
       if ($$4 != null) {
          if ($$4.b("LootTable", 8)) {
-            $$2.add(tl.c("container.shulkerBox.unknownContents"));
+            $$2.add(tm.c("container.shulkerBox.unknownContents"));
          }
 
          if ($$4.b("Items", 9)) {
@@ -162,13 +162,13 @@ public class czu extends csi {
                   $$7++;
                   if ($$6 <= 4) {
                      $$6++;
-                     $$2.add(tl.a("container.shulkerBox.itemCount", $$8.y(), String.valueOf($$8.L())));
+                     $$2.add(tm.a("container.shulkerBox.itemCount", $$8.y(), String.valueOf($$8.L())));
                   }
                }
             }
 
             if ($$7 - $$6 > 0) {
-               $$2.add(tl.a("container.shulkerBox.more", $$7 - $$6).a(n.u));
+               $$2.add(tm.a("container.shulkerBox.more", $$7 - $$6).a(n.u));
             }
          }
       }

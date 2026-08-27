@@ -73,8 +73,8 @@ public final class cmg implements Predicate<cjf> {
       return this.f;
    }
 
-   public void a(so $$0) {
-      $$0.a(Arrays.asList(this.a()), so::a);
+   public void a(sp $$0) {
+      $$0.a(Arrays.asList(this.a()), sp::a);
    }
 
    public JsonElement a(boolean $$0) {
@@ -116,8 +116,8 @@ public final class cmg implements Predicate<cjf> {
       return b(Stream.of(new cmg.b($$0)));
    }
 
-   public static cmg b(so $$0) {
-      return b($$0.<cjf>a(so::q).stream().map(cmg.a::new));
+   public static cmg b(sp $$0) {
+      return b($$0.<cjf>a(sp::q).stream().map(cmg.a::new));
    }
 
    private static Codec<cmg> b(boolean $$0) {

@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public class zk implements vd<ww> {
+public class zk implements ve<wx> {
    @Nullable
    private final aex a;
 
@@ -8,17 +8,17 @@ public class zk implements vd<ww> {
       this.a = $$0;
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public zk(so $$0) {
-      this.a = $$0.c(so::s);
+   public zk(sp $$0) {
+      this.a = $$0.c(sp::s);
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a, so::a);
+   public void a(sp $$0) {
+      $$0.a(this.a, sp::a);
    }
 
    @Nullable

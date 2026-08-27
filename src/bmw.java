@@ -10,7 +10,7 @@ public class bmw {
    }
 
    public static bky<bjg> a(biu<?> $$0, float $$1, bgj $$2) {
-      return a($$1, $$2, $$1x -> $$0.equals($$1x.ah()));
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ag()));
    }
 
    private static bky<bjg> a(float $$0, bgj $$1, Predicate<bjg> $$2) {

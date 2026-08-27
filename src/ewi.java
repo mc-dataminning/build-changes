@@ -1,7 +1,7 @@
 import com.google.common.collect.ImmutableList;
 
 public interface ewi {
-   default void a(ewh $$0, tl $$1) {
+   default void a(ewh $$0, tm $$1) {
       this.a($$0, ewk.a($$1.getString()));
    }
 
@@ -9,7 +9,7 @@ public interface ewi {
       this.a($$0, ewk.a($$1));
    }
 
-   default void a(ewh $$0, tl... $$1) {
+   default void a(ewh $$0, tm... $$1) {
       this.a($$0, ewk.a(ImmutableList.copyOf($$1)));
    }
 

@@ -5,18 +5,18 @@ public class ebs {
    private final gw a;
    private final cht b;
    @Nullable
-   private final tl c;
+   private final tm c;
 
-   public ebs(gw $$0, cht $$1, @Nullable tl $$2) {
+   public ebs(gw $$0, cht $$1, @Nullable tm $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public static ebs a(qx $$0) {
-      gw $$1 = rj.b($$0.p("Pos"));
+   public static ebs a(qy $$0) {
+      gw $$1 = rk.b($$0.p("Pos"));
       cht $$2 = cht.a($$0.l("Color"), cht.a);
-      tl $$3 = $$0.e("Name") ? tl.a.a($$0.l("Name")) : null;
+      tm $$3 = $$0.e("Name") ? tm.a.a($$0.l("Name")) : null;
       return new ebs($$1, $$2, $$3);
    }
 
@@ -24,7 +24,7 @@ public class ebs {
    public static ebs a(cpb $$0, gw $$1) {
       if ($$0.c_($$1) instanceof dcl $$3) {
          cht $$4 = $$3.g();
-         tl $$5 = $$3.ad() ? $$3.ae() : null;
+         tm $$5 = $$3.ac() ? $$3.ad() : null;
          return new ebs($$1, $$4, $$5);
       } else {
          return null;
@@ -78,7 +78,7 @@ public class ebs {
    }
 
    @Nullable
-   public tl d() {
+   public tm d() {
       return this.c;
    }
 
@@ -99,12 +99,12 @@ public class ebs {
       return Objects.hash(this.a, this.b, this.c);
    }
 
-   public qx e() {
-      qx $$0 = new qx();
-      $$0.a("Pos", rj.a(this.a));
+   public qy e() {
+      qy $$0 = new qy();
+      $$0.a("Pos", rk.a(this.a));
       $$0.a("Color", this.b.b());
       if (this.c != null) {
-         $$0.a("Name", tl.a.a(this.c));
+         $$0.a("Name", tm.a.a(this.c));
       }
 
       return $$0;

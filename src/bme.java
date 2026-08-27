@@ -8,7 +8,7 @@ public class bme {
       return boj.a(
          (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$1 -> $$1.group($$1.a(bsh.n), $$1.c(bsh.m), $$1.b(bsh.s))
                .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bO()) {
+                     if ($$6.bN()) {
                         return false;
                      } else {
                         biq $$8 = $$1.b($$4);

@@ -96,7 +96,7 @@ public class blv {
    private static boolean a(bjg $$0, gw $$1, Optional<List<bjg>> $$2) {
       return $$2.isEmpty()
          ? false
-         : $$2.get().stream().filter($$1x -> $$1x.ah() == $$0.ah()).filter($$1x -> $$1.a($$1x.dj(), 2.0)).anyMatch($$1x -> a($$1x.dN(), $$1));
+         : $$2.get().stream().filter($$1x -> $$1x.ag() == $$0.ag()).filter($$1x -> $$1.a($$1x.dj(), 2.0)).anyMatch($$1x -> a($$1x.dN(), $$1));
    }
 
    private static boolean a(bkg<?> $$0, gw $$1) {

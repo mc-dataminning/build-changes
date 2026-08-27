@@ -1,4 +1,4 @@
-public class xa implements vd<ww> {
+public class xa implements ve<wx> {
    public static final int a = 0;
    public static final int b = 2;
    public static final int c = 3;
@@ -8,22 +8,22 @@ public class xa implements vd<ww> {
    private final int g;
 
    public xa(biq $$0, int $$1) {
-      this.f = $$0.ai();
+      this.f = $$0.ah();
       this.g = $$1;
    }
 
-   public xa(so $$0) {
+   public xa(sp $$0) {
       this.f = $$0.m();
       this.g = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.f);
       $$0.k(this.g);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

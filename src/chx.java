@@ -6,17 +6,17 @@ public interface chx {
    int q_ = 10511680;
 
    default boolean a(cjf $$0) {
-      qx $$1 = $$0.b("display");
+      qy $$1 = $$0.b("display");
       return $$1 != null && $$1.b("color", 99);
    }
 
    default int e_(cjf $$0) {
-      qx $$1 = $$0.b("display");
+      qy $$1 = $$0.b("display");
       return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
    }
 
    default void f_(cjf $$0) {
-      qx $$1 = $$0.b("display");
+      qy $$1 = $$0.b("display");
       if ($$1 != null && $$1.e("color")) {
          $$1.r("color");
       }

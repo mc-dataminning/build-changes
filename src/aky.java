@@ -171,7 +171,7 @@ public class aky implements cqp {
       if ($$2 != null) {
          return $$2;
       } else {
-         qx $$3 = $$1.f($$0);
+         qy $$3 = $$1.f($$0);
          dfj $$4 = $$1.a_($$0);
          if ($$3 != null) {
             if ("DUMMY".equals($$3.l("id"))) {
@@ -250,7 +250,7 @@ public class aky implements cqp {
                   $$4.d($$0);
                }
             } else {
-               qx $$7 = new qx();
+               qy $$7 = new qy();
                $$7.a("x", $$0.u());
                $$7.a("y", $$0.v());
                $$7.a("z", $$0.w());

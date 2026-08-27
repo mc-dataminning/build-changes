@@ -39,7 +39,7 @@ public abstract class ana implements anh {
    @Nullable
    protected abstract anc a(ami var1);
 
-   protected abstract tl a(String var1);
+   protected abstract tm a(String var1);
 
    public aml a() {
       return this.d;
@@ -75,7 +75,7 @@ public abstract class ana implements anh {
    }
 
    @Nullable
-   protected abstract anc a(String var1, anc.c var2, tl var3);
+   protected abstract anc a(String var1, anc.c var2, tm var3);
 
    protected static anc.c b(final ami $$0) {
       return new anc.c() {

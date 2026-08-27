@@ -1,6 +1,6 @@
 import java.util.Optional;
 
-public class acn implements vd<abd> {
+public class acn implements ve<abd> {
    private final Optional<bib> a;
    private final Optional<bib> b;
 
@@ -9,13 +9,13 @@ public class acn implements vd<abd> {
       this.b = $$1;
    }
 
-   public acn(so $$0) {
-      this.a = $$0.b((so.a<bib>)($$0x -> $$0x.a(jd.e)));
-      this.b = $$0.b((so.a<bib>)($$0x -> $$0x.a(jd.e)));
+   public acn(sp $$0) {
+      this.a = $$0.b((sp.a<bib>)($$0x -> $$0x.a(jd.e)));
+      this.b = $$0.b((sp.a<bib>)($$0x -> $$0x.a(jd.e)));
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a, ($$0x, $$1) -> $$0x.a(jd.e, $$1));
       $$0.a(this.b, ($$0x, $$1) -> $$0x.a(jd.e, $$1));
    }

@@ -31,18 +31,18 @@ public class djc<T extends dja> {
    }
 
    public void a(T $$0) {
-      UUID $$1 = $$0.cw();
+      UUID $$1 = $$0.cv();
       if (this.c.containsKey($$1)) {
          a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
       } else {
          this.c.put($$1, $$0);
-         this.b.put($$0.ai(), $$0);
+         this.b.put($$0.ah(), $$0);
       }
    }
 
    public void b(T $$0) {
-      this.c.remove($$0.cw());
-      this.b.remove($$0.ai());
+      this.c.remove($$0.cv());
+      this.b.remove($$0.ah());
    }
 
    @Nullable

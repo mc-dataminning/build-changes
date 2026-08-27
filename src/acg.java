@@ -1,4 +1,4 @@
-public class acg implements vd<abd> {
+public class acg implements ve<abd> {
    private final int a;
    private final acg.a b;
    private final int c;
@@ -8,19 +8,19 @@ public class acg implements vd<abd> {
    }
 
    public acg(biq $$0, acg.a $$1, int $$2) {
-      this.a = $$0.ai();
+      this.a = $$0.ah();
       this.b = $$1;
       this.c = $$2;
    }
 
-   public acg(so $$0) {
+   public acg(sp $$0) {
       this.a = $$0.m();
       this.b = $$0.b(acg.a.class);
       this.c = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
       $$0.c(this.c);

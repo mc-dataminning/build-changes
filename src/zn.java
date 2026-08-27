@@ -1,4 +1,4 @@
-public class zn implements vd<ww> {
+public class zn implements ve<wx> {
    private final double a;
    private final double b;
 
@@ -7,18 +7,18 @@ public class zn implements vd<ww> {
       this.b = $$0.b();
    }
 
-   public zn(so $$0) {
+   public zn(sp $$0) {
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

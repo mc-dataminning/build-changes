@@ -111,7 +111,7 @@ public class fen<T extends bwd> extends ffm<T> {
 
    private void a(T $$0) {
       boolean $$1 = $$0.i();
-      boolean $$2 = $$0.bP();
+      boolean $$2 = $$0.bO();
 
       for (fic $$3 : this.m) {
          $$3.k = $$1;

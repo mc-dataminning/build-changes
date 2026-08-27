@@ -18,12 +18,12 @@ public class cpq extends ebr {
       this(new LongOpenHashSet());
    }
 
-   public static cpq b(qx $$0) {
+   public static cpq b(qy $$0) {
       return new cpq(new LongOpenHashSet($$0.o("Forced")));
    }
 
    @Override
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       $$0.a("Forced", this.c.toLongArray());
       return $$0;
    }

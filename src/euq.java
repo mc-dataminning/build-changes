@@ -1,7 +1,7 @@
 import java.util.function.Consumer;
 
 public interface euq {
-   tl a();
+   tm a();
 
    void a(Consumer<eso> var1);
 

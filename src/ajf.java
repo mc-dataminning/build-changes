@@ -9,15 +9,15 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Locale;
 
 public class ajf {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.worldborder.center.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.worldborder.set.failed.nochange"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.worldborder.set.failed.small"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.a("commands.worldborder.set.failed.big", 5.999997E7F));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.a("commands.worldborder.set.failed.far", 2.9999984E7));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tl.c("commands.worldborder.warning.time.failed"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tl.c("commands.worldborder.warning.distance.failed"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tl.c("commands.worldborder.damage.buffer.failed"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tl.c("commands.worldborder.damage.amount.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.worldborder.center.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.worldborder.set.failed.nochange"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.worldborder.set.failed.small"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.a("commands.worldborder.set.failed.big", 5.999997E7F));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.a("commands.worldborder.set.failed.far", 2.9999984E7));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tm.c("commands.worldborder.warning.time.failed"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tm.c("commands.worldborder.warning.distance.failed"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tm.c("commands.worldborder.damage.buffer.failed"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tm.c("commands.worldborder.damage.amount.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -109,7 +109,7 @@ public class ajf {
          throw h.create();
       } else {
          $$2.b((double)$$1);
-         $$0.a(() -> tl.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         $$0.a(() -> tm.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
          return (int)$$1;
       }
    }
@@ -120,7 +120,7 @@ public class ajf {
          throw i.create();
       } else {
          $$2.c((double)$$1);
-         $$0.a(() -> tl.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         $$0.a(() -> tm.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
          return (int)$$1;
       }
    }
@@ -131,7 +131,7 @@ public class ajf {
          throw f.create();
       } else {
          $$2.b($$1);
-         $$0.a(() -> tl.a("commands.worldborder.warning.time.success", $$1), true);
+         $$0.a(() -> tm.a("commands.worldborder.warning.time.success", $$1), true);
          return $$1;
       }
    }
@@ -142,14 +142,14 @@ public class ajf {
          throw g.create();
       } else {
          $$2.c($$1);
-         $$0.a(() -> tl.a("commands.worldborder.warning.distance.success", $$1), true);
+         $$0.a(() -> tm.a("commands.worldborder.warning.distance.success", $$1), true);
          return $$1;
       }
    }
 
    private static int a(dt $$0) {
       double $$1 = $$0.l().D().B_().i();
-      $$0.a(() -> tl.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
+      $$0.a(() -> tm.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
       return arx.a($$1 + 0.5);
    }
 
@@ -159,7 +159,7 @@ public class ajf {
          throw a.create();
       } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
          $$2.c((double)$$1.i, (double)$$1.j);
-         $$0.a(() -> tl.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
+         $$0.a(() -> tm.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
          return 0;
       } else {
          throw e.create();
@@ -179,13 +179,13 @@ public class ajf {
          if ($$2 > 0L) {
             $$3.a($$4, $$1, $$2);
             if ($$1 > $$4) {
-               $$0.a(() -> tl.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+               $$0.a(() -> tm.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
             } else {
-               $$0.a(() -> tl.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+               $$0.a(() -> tm.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
             }
          } else {
             $$3.a($$1);
-            $$0.a(() -> tl.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
+            $$0.a(() -> tm.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
          }
 
          return (int)($$1 - $$4);

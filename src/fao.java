@@ -11,7 +11,7 @@ public class fao extends ezh {
    }
 
    @Override
-   int C() {
+   int D() {
       return 150;
    }
 
@@ -24,7 +24,7 @@ public class fao extends ezh {
    @Override
    protected void a(cow $$0) {
       if ($$0 instanceof cdt.a $$1) {
-         this.f.J().b(new acq($$1.h().ai(), this.a.a(), $$0.o()));
+         this.f.J().b(new acq($$1.h().ah(), this.a.a(), $$0.o()));
       }
    }
 }

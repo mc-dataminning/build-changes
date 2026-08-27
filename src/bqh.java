@@ -13,7 +13,7 @@ public class bqh extends bqb {
 
    @Override
    public boolean a() {
-      if (this.a.cP()) {
+      if (this.a.cO()) {
          return false;
       } else {
          this.b = this.a.q();
@@ -24,7 +24,7 @@ public class bqh extends bqb {
             if ($$0 < 4.0 || $$0 > 16.0) {
                return false;
             } else {
-               return !this.a.aB() ? false : this.a.ef().a(b(5)) == 0;
+               return !this.a.aA() ? false : this.a.ef().a(b(5)) == 0;
             }
          }
       }
@@ -32,7 +32,7 @@ public class bqh extends bqb {
 
    @Override
    public boolean b() {
-      return !this.a.aB();
+      return !this.a.aA();
    }
 
    @Override

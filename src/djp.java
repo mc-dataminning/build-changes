@@ -21,11 +21,11 @@ public class djp implements djx {
    }
 
    public static class a implements djy<djp> {
-      public djp a(so $$0) {
+      public djp a(sp $$0) {
          return new djp($$0.e());
       }
 
-      public void a(so $$0, djp $$1) {
+      public void a(sp $$0, djp $$1) {
          $$0.a($$1.c);
       }
 

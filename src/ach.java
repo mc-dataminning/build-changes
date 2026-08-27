@@ -1,4 +1,4 @@
-public class ach implements vd<abd> {
+public class ach implements ve<abd> {
    private static final int a = 1;
    private static final int b = 2;
    private final float c;
@@ -13,7 +13,7 @@ public class ach implements vd<abd> {
       this.f = $$3;
    }
 
-   public ach(so $$0) {
+   public ach(sp $$0) {
       this.c = $$0.readFloat();
       this.d = $$0.readFloat();
       byte $$1 = $$0.readByte();
@@ -22,7 +22,7 @@ public class ach implements vd<abd> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.c);
       $$0.a(this.d);
       byte $$1 = 0;

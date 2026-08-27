@@ -24,7 +24,7 @@ public class aes {
    public static final List<aes.b<?>> a = List.of(
       new aes.b<>(je.au, dis.h),
       new aes.b<>(je.ap, cqt.a),
-      new aes.b<>(je.aq, th.a),
+      new aes.b<>(je.aq, ti.a),
       new aes.b<>(je.ar, dmv.a),
       new aes.b<>(je.as, dnj.a),
       new aes.b<>(je.ay, dum.a),

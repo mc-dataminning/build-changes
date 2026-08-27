@@ -30,16 +30,16 @@ public class djg {
 
    public void a(biq $$0) {
       this.a();
-      this.a.put($$0.ai(), $$0);
+      this.a.put($$0.ah(), $$0);
    }
 
    public void b(biq $$0) {
       this.a();
-      this.a.remove($$0.ai());
+      this.a.remove($$0.ah());
    }
 
    public boolean c(biq $$0) {
-      return this.a.containsKey($$0.ai());
+      return this.a.containsKey($$0.ah());
    }
 
    public void a(Consumer<biq> $$0) {

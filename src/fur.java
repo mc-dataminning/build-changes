@@ -56,7 +56,7 @@ public class fur extends ftg<byi> {
             int $$35 = $$2.dp();
             int $$36 = arx.a($$2.ds() + (double)(($$33 + $$34) / 2.0F / 16.0F));
             int $$37 = $$2.dv();
-            hc $$38 = $$2.cE();
+            hc $$38 = $$2.cD();
             if ($$38 == hc.c) {
                $$35 = arx.a($$2.dq() + (double)(($$31 + $$32) / 2.0F / 16.0F));
             }

@@ -27,7 +27,7 @@ public class bsm extends bsp {
 
    @Override
    protected boolean a(ehn $$0, ehn $$1) {
-      return this.a.bc() ? a(this.a, $$0, $$1, false) : false;
+      return this.a.bb() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override

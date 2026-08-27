@@ -19,12 +19,12 @@ public class age {
 
    private static int a(dt $$0, Collection<? extends aoc<?>> $$1) {
       if ($$1.isEmpty()) {
-         $$0.a(() -> tl.c("commands.banlist.none"), false);
+         $$0.a(() -> tm.c("commands.banlist.none"), false);
       } else {
-         $$0.a(() -> tl.a("commands.banlist.list", $$1.size()), false);
+         $$0.a(() -> tm.a("commands.banlist.list", $$1.size()), false);
 
          for (aoc<?> $$2 : $$1) {
-            $$0.a(() -> tl.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
+            $$0.a(() -> tm.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
          }
       }
 

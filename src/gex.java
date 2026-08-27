@@ -1,10 +1,10 @@
 public class gex extends gfb {
-   private final tl a;
+   private final tm a;
    private etj b = etj.a;
    private final eyk c;
    private int y;
 
-   public gex(eyk $$0, tl $$1, tl $$2) {
+   public gex(eyk $$0, tm $$1, tm $$2) {
       super($$1);
       this.c = $$0;
       this.a = $$2;
@@ -15,12 +15,12 @@ public class gex extends gfb {
       this.f.ac().a();
       this.b = etj.a(this.i, this.a, this.g - 50);
       this.y = this.b.a() * 9;
-      this.d(esq.a(tk.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.y / 2 + 9, 200, 20).a());
+      this.d(esq.a(tl.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.y / 2 + 9, 200, 20).a());
    }
 
    @Override
-   public tl g() {
-      return tl.h().b(this.e).f(": ").b(this.a);
+   public tm g() {
+      return tm.h().b(this.e).f(": ").b(this.a);
    }
 
    @Override

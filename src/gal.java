@@ -11,7 +11,7 @@ public record gal(String b, String c, boolean d) {
             .apply($$0, gal::new)
    );
 
-   public tl a() {
-      return tl.b(this.c + " (" + this.b + ")");
+   public tm a() {
+      return tm.b(this.c + " (" + this.b + ")");
    }
 }

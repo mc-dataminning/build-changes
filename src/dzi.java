@@ -7,7 +7,7 @@ public class dzi implements dzj {
 
    @Nullable
    @Override
-   public qx a(asc $$0, @Nullable qx $$1) {
+   public qy a(asc $$0, @Nullable qy $$1) {
       return $$1;
    }
 

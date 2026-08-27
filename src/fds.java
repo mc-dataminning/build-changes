@@ -5,8 +5,8 @@ import java.util.List;
 public class fds implements fdo, fdp {
    private static final aex a = new aex("spectator/teleport_to_player");
    private static final Comparator<fjf> b = Comparator.comparing($$0 -> $$0.a().getId());
-   private static final tl c = tl.c("spectatorMenu.teleport");
-   private static final tl d = tl.c("spectatorMenu.teleport.prompt");
+   private static final tm c = tm.c("spectatorMenu.teleport");
+   private static final tm d = tm.c("spectatorMenu.teleport.prompt");
    private final List<fdp> e;
 
    public fds() {
@@ -23,7 +23,7 @@ public class fds implements fdo, fdp {
    }
 
    @Override
-   public tl b() {
+   public tm b() {
       return d;
    }
 
@@ -33,7 +33,7 @@ public class fds implements fdo, fdp {
    }
 
    @Override
-   public tl aJ_() {
+   public tm aJ_() {
       return c;
    }
 

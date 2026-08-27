@@ -40,7 +40,7 @@ public class bzg extends bzs implements bzm {
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       this.a(biv.a, new cjf(cji.nG));
       return super.a($$0, $$1, $$2, $$3, $$4);
    }
@@ -52,13 +52,13 @@ public class bzg extends bzs implements bzm {
 
    @Override
    public ehi g_() {
-      return this.cH().c(3.0, 0.0, 3.0);
+      return this.cG().c(3.0, 0.0, 3.0);
    }
 
    @Override
    public void b_() {
       super.b_();
-      if (this.dL().B && this.ce()) {
+      if (this.dL().B && this.cd()) {
          this.bV--;
          if (this.bV < 0) {
             this.bV = 0;
@@ -80,7 +80,7 @@ public class bzg extends bzs implements bzm {
                this.dL().a(ix.f, this.d(0.5), this.dt(), this.f(0.5), 0.0, 0.0, 0.0);
             }
 
-            this.dL().a(this.dq(), this.ds(), this.dw(), ape.lG, this.db(), 1.0F, 1.0F, false);
+            this.dL().a(this.dq(), this.ds(), this.dw(), ape.lG, this.da(), 1.0F, 1.0F, false);
          } else if (this.aK == this.aL - 1) {
             this.bV = 3;
 
@@ -118,7 +118,7 @@ public class bzg extends bzs implements bzm {
       if (super.s($$0)) {
          return true;
       } else {
-         return $$0 instanceof bjg && ((bjg)$$0).eR() == bjl.d ? this.cg() == null && $$0.cg() == null : false;
+         return $$0 instanceof bjg && ((bjg)$$0).eR() == bjl.d ? this.cf() == null && $$0.cf() == null : false;
       }
    }
 
@@ -178,7 +178,7 @@ public class bzg extends bzs implements bzm {
          } else if (bzg.this.q() == null) {
             return false;
          } else {
-            return bzg.this.q().ai() == this.e ? false : bzg.this.dL().d_(bzg.this.dl()).a((float)bgv.c.ordinal());
+            return bzg.this.q().ah() == this.e ? false : bzg.this.dL().d_(bzg.this.dl()).a((float)bgv.c.ordinal());
          }
       }
 
@@ -187,7 +187,7 @@ public class bzg extends bzs implements bzm {
          super.c();
          bjg $$0 = bzg.this.q();
          if ($$0 != null) {
-            this.e = $$0.ai();
+            this.e = $$0.ah();
          }
       }
 

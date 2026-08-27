@@ -17,20 +17,20 @@ public class fue<T extends byg> extends ftg<T> {
    }
 
    protected int a(T $$0, gw $$1) {
-      return $$0.ah() == biu.S ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
+      return $$0.ag() == biu.S ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
    }
 
    public void a(T $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
       $$3.a();
-      hc $$6 = $$0.cE();
+      hc $$6 = $$0.cD();
       ehn $$7 = this.a($$0, $$2);
       $$3.a(-$$7.a(), -$$7.b(), -$$7.c());
       double $$8 = 0.46875;
       $$3.a((double)$$6.j() * 0.46875, (double)$$6.k() * 0.46875, (double)$$6.l() * 0.46875);
       $$3.a(a.b.rotationDegrees($$0.dD()));
       $$3.a(a.d.rotationDegrees(180.0F - $$0.dB()));
-      boolean $$9 = $$0.ce();
+      boolean $$9 = $$0.cd();
       cjf $$10 = $$0.F();
       if (!$$9) {
          gbl $$11 = this.l.a().a();
@@ -65,7 +65,7 @@ public class fue<T extends byg> extends ftg<T> {
          } else {
             int $$18 = this.a($$0, 15728880, $$5);
             $$3.b(0.5F, 0.5F, 0.5F);
-            this.k.a($$10, cjc.i, $$18, fyv.d, $$3, $$4, $$0.dL(), $$0.ai());
+            this.k.a($$10, cjc.i, $$18, fyv.d, $$3, $$4, $$0.dL(), $$0.ah());
          }
       }
 
@@ -73,11 +73,11 @@ public class fue<T extends byg> extends ftg<T> {
    }
 
    private int a(T $$0, int $$1, int $$2) {
-      return $$0.ah() == biu.S ? $$1 : $$2;
+      return $$0.ag() == biu.S ? $$1 : $$2;
    }
 
    private gbm a(T $$0, cjf $$1) {
-      boolean $$2 = $$0.ah() == biu.S;
+      boolean $$2 = $$0.ag() == biu.S;
       if ($$1.a(cji.rf)) {
          return $$2 ? j : h;
       } else {
@@ -86,7 +86,7 @@ public class fue<T extends byg> extends ftg<T> {
    }
 
    public ehn a(T $$0, float $$1) {
-      return new ehn((double)((float)$$0.cE().j() * 0.3F), -0.25, (double)((float)$$0.cE().l() * 0.3F));
+      return new ehn((double)((float)$$0.cD().j() * 0.3F), -0.25, (double)((float)$$0.cD().l() * 0.3F));
    }
 
    public aex a(T $$0) {
@@ -96,14 +96,14 @@ public class fue<T extends byg> extends ftg<T> {
    protected boolean b(T $$0) {
       if (eqv.K() && !$$0.F().b() && $$0.F().A() && this.c.c == $$0) {
          double $$1 = this.c.b($$0);
-         float $$2 = $$0.bV() ? 32.0F : 64.0F;
+         float $$2 = $$0.bU() ? 32.0F : 64.0F;
          return $$1 < (double)($$2 * $$2);
       } else {
          return false;
       }
    }
 
-   protected void a(T $$0, tl $$1, elp $$2, foe $$3, int $$4) {
+   protected void a(T $$0, tm $$1, elp $$2, foe $$3, int $$4) {
       super.a($$0, $$0.F().y(), $$2, $$3, $$4);
    }
 }

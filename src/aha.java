@@ -9,10 +9,10 @@ import it.unimi.dsi.fastutil.longs.LongSet;
 
 public class aha {
    private static final int a = 256;
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.forceload.toobig", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.forceload.query.failure", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("commands.forceload.added.failure"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("commands.forceload.removed.failure"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("commands.forceload.toobig", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("commands.forceload.query.failure", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.c("commands.forceload.added.failure"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("commands.forceload.removed.failure"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -47,7 +47,7 @@ public class aha {
       aew<cpv> $$4 = $$3.ac();
       boolean $$5 = $$3.u().contains($$2.a());
       if ($$5) {
-         $$0.a(() -> tl.a("commands.forceload.query.success", $$2, $$4.a()), false);
+         $$0.a(() -> tm.a("commands.forceload.query.success", $$2, $$4.a()), false);
          return 1;
       } else {
          throw c.create($$2, $$4.a());
@@ -62,12 +62,12 @@ public class aha {
       if ($$4 > 0) {
          String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(cpc::new).map(cpc::toString).iterator());
          if ($$4 == 1) {
-            $$0.a(() -> tl.a("commands.forceload.list.single", $$2.a(), $$5), false);
+            $$0.a(() -> tm.a("commands.forceload.list.single", $$2.a(), $$5), false);
          } else {
-            $$0.a(() -> tl.a("commands.forceload.list.multiple", $$4, $$2.a(), $$5), false);
+            $$0.a(() -> tm.a("commands.forceload.list.multiple", $$4, $$2.a(), $$5), false);
          }
       } else {
-         $$0.b(tl.a("commands.forceload.added.none", $$2.a()));
+         $$0.b(tm.a("commands.forceload.added.none", $$2.a()));
       }
 
       return $$4;
@@ -78,7 +78,7 @@ public class aha {
       aew<cpv> $$2 = $$1.ac();
       LongSet $$3 = $$1.u();
       $$3.forEach($$1x -> $$1.a(cpc.a($$1x), cpc.b($$1x), false));
-      $$0.a(() -> tl.a("commands.forceload.removed.all", $$2.a()), true);
+      $$0.a(() -> tm.a("commands.forceload.removed.all", $$2.a()), true);
       return 0;
    }
 
@@ -118,11 +118,11 @@ public class aha {
                throw ($$3 ? d : e).create();
             } else {
                if ($$16 == 1) {
-                  $$0.a(() -> tl.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", $$20, $$14.a()), true);
+                  $$0.a(() -> tm.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", $$20, $$14.a()), true);
                } else {
                   cpc $$21 = new cpc($$8, $$9);
                   cpc $$22 = new cpc($$10, $$11);
-                  $$0.a(() -> tl.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$20, $$14.a(), $$21, $$22), true);
+                  $$0.a(() -> tm.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$20, $$14.a(), $$21, $$22), true);
                }
 
                return $$16;

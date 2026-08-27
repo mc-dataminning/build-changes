@@ -151,7 +151,7 @@ public class cbh extends cbc implements bjv, cbj {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("villagerBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
@@ -188,7 +188,7 @@ public class cbh extends cbc implements bjv, cbj {
          this.gj();
       }
 
-      super.Y();
+      super.X();
    }
 
    @Override
@@ -204,7 +204,7 @@ public class cbh extends cbc implements bjv, cbj {
    @Override
    public bgy b(cbu $$0, bgx $$1) {
       cjf $$2 = $$0.b($$1);
-      if ($$2.a(cji.sR) || !this.bw() || this.ge() || this.fC()) {
+      if ($$2.a(cji.sR) || !this.bv() || this.ge() || this.fC()) {
          return super.b($$0, $$1);
       } else if (this.m_()) {
          this.gz();
@@ -377,11 +377,11 @@ public class cbh extends cbc implements bjv, cbj {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
-      cbi.c.encodeStart(ri.a, this.go()).resultOrPartial(bZ::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
+      cbi.c.encodeStart(rj.a, this.go()).resultOrPartial(bZ::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
       $$0.a("FoodLevel", (byte)this.co);
-      $$0.a("Gossips", this.cp.a(ri.a));
+      $$0.a("Gossips", this.cp.a(rj.a));
       $$0.a("Xp", this.cs);
       $$0.a("LastRestock", this.ct);
       $$0.a("LastGossipDecay", this.cr);
@@ -392,10 +392,10 @@ public class cbh extends cbc implements bjv, cbj {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("VillagerData", 10)) {
-         DataResult<cbi> $$1 = cbi.c.parse(new Dynamic(ri.a, $$0.c("VillagerData")));
+         DataResult<cbi> $$1 = cbi.c.parse(new Dynamic(rj.a, $$0.c("VillagerData")));
          $$1.resultOrPartial(bZ::error).ifPresent(this::a);
       }
 
@@ -407,8 +407,8 @@ public class cbh extends cbc implements bjv, cbj {
          this.co = $$0.f("FoodLevel");
       }
 
-      rd $$2 = $$0.c("Gossips", 10);
-      this.cp.a(new Dynamic(ri.a, $$2));
+      re $$2 = $$0.c("Gossips", 10);
+      this.cp.a(new Dynamic(rj.a, $$2));
       if ($$0.b("Xp", 3)) {
          this.cs = $$0.h("Xp");
       }
@@ -501,7 +501,7 @@ public class cbh extends cbc implements bjv, cbj {
    public void a(@Nullable bjg $$0) {
       if ($$0 != null && this.dL() instanceof akr) {
          ((akr)this.dL()).a(buc.c, $$0, this);
-         if (this.bw() && $$0 instanceof cbu) {
+         if (this.bv() && $$0 instanceof cbu) {
             this.dL().a(this, (byte)13);
          }
       }
@@ -587,7 +587,7 @@ public class cbh extends cbc implements bjv, cbj {
    }
 
    public int g(cbu $$0) {
-      return this.cp.a($$0.cw(), $$0x -> true);
+      return this.cp.a($$0.cv(), $$0x -> true);
    }
 
    private void v(int $$0) {
@@ -614,8 +614,8 @@ public class cbh extends cbc implements bjv, cbj {
    }
 
    @Override
-   protected tl co() {
-      return tl.c(this.ah().g() + "." + jd.A.b(this.go().b()).a());
+   protected tm cn() {
+      return tm.c(this.ag().g() + "." + jd.A.b(this.go().b()).a());
    }
 
    @Override
@@ -635,7 +635,7 @@ public class cbh extends cbc implements bjv, cbj {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if ($$2 == bjk.e) {
          this.a(this.go().a(cbk.b));
       }
@@ -677,15 +677,15 @@ public class cbh extends cbc implements bjv, cbj {
             $$2.b(this.dq(), this.ds(), this.dw(), this.dB(), this.dD());
             $$2.a($$0, $$0.d_($$2.dl()), bjk.i, null, null);
             $$2.t(this.fT());
-            if (this.ad()) {
-               $$2.b(this.ae());
-               $$2.n(this.cB());
+            if (this.ac()) {
+               $$2.b(this.ad());
+               $$2.n(this.cA());
             }
 
             $$2.fI();
             $$0.a_($$2);
             this.gG();
-            this.al();
+            this.ak();
          } else {
             super.a($$0, $$1);
          }
@@ -763,7 +763,7 @@ public class cbh extends cbc implements bjv, cbj {
 
    public void a(akr $$0, long $$1, int $$2) {
       if (this.a($$1)) {
-         ehi $$3 = this.cH().c(10.0, 10.0, 10.0);
+         ehi $$3 = this.cG().c(10.0, 10.0, 10.0);
          List<cbh> $$4 = $$0.a(cbh.class, $$3);
          List<cbh> $$5 = $$4.stream().filter($$1x -> $$1x.a($$1)).limit(5L).collect(Collectors.toList());
          if ($$5.size() >= $$2) {
@@ -781,14 +781,14 @@ public class cbh extends cbc implements bjv, cbj {
    @Override
    public void a(buc $$0, biq $$1) {
       if ($$0 == buc.a) {
-         this.cp.a($$1.cw(), bse.d, 20);
-         this.cp.a($$1.cw(), bse.c, 25);
+         this.cp.a($$1.cv(), bse.d, 20);
+         this.cp.a($$1.cv(), bse.c, 25);
       } else if ($$0 == buc.e) {
-         this.cp.a($$1.cw(), bse.e, 2);
+         this.cp.a($$1.cv(), bse.e, 2);
       } else if ($$0 == buc.c) {
-         this.cp.a($$1.cw(), bse.b, 25);
+         this.cp.a($$1.cv(), bse.b, 25);
       } else if ($$0 == buc.d) {
-         this.cp.a($$1.cw(), bse.a, 25);
+         this.cp.a($$1.cv(), bse.a, 25);
       }
    }
 
@@ -810,13 +810,13 @@ public class cbh extends cbc implements bjv, cbj {
       return this.cp;
    }
 
-   public void a(rq $$0) {
-      this.cp.a(new Dynamic(ri.a, $$0));
+   public void a(rr $$0) {
+      this.cp.a(new Dynamic(rj.a, $$0));
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 

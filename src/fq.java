@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class fq implements ArgumentType<fm> {
    private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.pos2d.incomplete"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("argument.pos2d.incomplete"));
    private final boolean c;
 
    public fq(boolean $$0) {

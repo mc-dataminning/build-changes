@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class agl {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("commands.datapack.unknown", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.datapack.enable.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("commands.datapack.disable.failed", $$0));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("commands.datapack.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.datapack.enable.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("commands.datapack.disable.failed", $$0));
    private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> tl.a("commands.datapack.enable.failed.no_flags", $$0, $$1)
+      ($$0, $$1) -> tm.a("commands.datapack.enable.failed.no_flags", $$0, $$1)
    );
    private static final SuggestionProvider<dt> e = ($$0, $$1) -> dw.b(
          ((dt)$$0.getSource()).l().aB().d().stream().map(StringArgumentType::escapeIfRequired), $$1
@@ -93,7 +93,7 @@ public class agl {
       anf $$3 = $$0.l().aB();
       List<anc> $$4 = Lists.newArrayList($$3.f());
       $$2.apply($$4, $$1);
-      $$0.a(() -> tl.a("commands.datapack.modify.enable", $$1.a(true)), true);
+      $$0.a(() -> tm.a("commands.datapack.modify.enable", $$1.a(true)), true);
       ahz.a($$4.stream().map(anc::f).collect(Collectors.toList()), $$0);
       return $$4.size();
    }
@@ -102,7 +102,7 @@ public class agl {
       anf $$2 = $$0.l().aB();
       List<anc> $$3 = Lists.newArrayList($$2.f());
       $$3.remove($$1);
-      $$0.a(() -> tl.a("commands.datapack.modify.disable", $$1.a(true)), true);
+      $$0.a(() -> tm.a("commands.datapack.modify.disable", $$1.a(true)), true);
       ahz.a($$3.stream().map(anc::f).collect(Collectors.toList()), $$0);
       return $$3.size();
    }
@@ -119,9 +119,9 @@ public class agl {
       cec $$4 = $$0.w();
       List<anc> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
       if ($$5.isEmpty()) {
-         $$0.a(() -> tl.c("commands.datapack.list.available.none"), false);
+         $$0.a(() -> tm.c("commands.datapack.list.available.none"), false);
       } else {
-         $$0.a(() -> tl.a("commands.datapack.list.available.success", $$5.size(), tn.b($$5, $$0xx -> $$0xx.a(false))), false);
+         $$0.a(() -> tm.a("commands.datapack.list.available.success", $$5.size(), to.b($$5, $$0xx -> $$0xx.a(false))), false);
       }
 
       return $$5.size();
@@ -132,9 +132,9 @@ public class agl {
       $$1.a();
       Collection<? extends anc> $$2 = $$1.f();
       if ($$2.isEmpty()) {
-         $$0.a(() -> tl.c("commands.datapack.list.enabled.none"), false);
+         $$0.a(() -> tm.c("commands.datapack.list.enabled.none"), false);
       } else {
-         $$0.a(() -> tl.a("commands.datapack.list.enabled.success", $$2.size(), tn.b($$2, $$0xx -> $$0xx.a(true))), false);
+         $$0.a(() -> tm.a("commands.datapack.list.enabled.success", $$2.size(), to.b($$2, $$0xx -> $$0xx.a(true))), false);
       }
 
       return $$2.size();

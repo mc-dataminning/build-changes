@@ -22,7 +22,7 @@ import java.util.Queue;
 import java.util.function.BiPredicate;
 import javax.annotation.Nullable;
 
-public class xp implements vd<ww> {
+public class xp implements ve<wx> {
    private static final byte a = 3;
    private static final byte b = 4;
    private static final byte c = 8;
@@ -39,14 +39,14 @@ public class xp implements vd<ww> {
       this.h = $$1.getInt($$0);
    }
 
-   public xp(so $$0) {
+   public xp(sp $$0) {
       this.i = $$0.a(xp::b);
       this.h = $$0.m();
       a(this.i);
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.i, ($$0x, $$1) -> $$1.a($$0x));
       $$0.c(this.h);
    }
@@ -100,7 +100,7 @@ public class xp implements vd<ww> {
       return $$1;
    }
 
-   private static xp.b b(so $$0) {
+   private static xp.b b(sp $$0) {
       byte $$1 = $$0.readByte();
       int[] $$2 = $$0.c();
       int $$3 = ($$1 & 8) != 0 ? $$0.m() : 0;
@@ -109,7 +109,7 @@ public class xp implements vd<ww> {
    }
 
    @Nullable
-   private static xp.e a(so $$0, byte $$1) {
+   private static xp.e a(sp $$0, byte $$1) {
       int $$2 = $$1 & 3;
       if ($$2 == 2) {
          String $$3 = $$0.r();
@@ -167,7 +167,7 @@ public class xp implements vd<ww> {
       return new xp.b($$5, $$2, $$3, $$11);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -208,7 +208,7 @@ public class xp implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
          a($$0, this.b);
          if (this.c != null) {
@@ -216,11 +216,11 @@ public class xp implements vd<ww> {
          }
       }
 
-      private static <A extends ArgumentType<?>> void a(so $$0, gi.a<A> $$1) {
+      private static <A extends ArgumentType<?>> void a(sp $$0, gi.a<A> $$1) {
          a($$0, $$1.a(), $$1);
       }
 
-      private static <A extends ArgumentType<?>, T extends gi.a<A>> void a(so $$0, gi<A, T> $$1, gi.a<A> $$2) {
+      private static <A extends ArgumentType<?>, T extends gi.a<A>> void a(sp $$0, gi<A, T> $$1, gi.a<A> $$2) {
          $$0.c(jd.x.a($$1));
          $$1.a((T)$$2, $$0);
       }
@@ -240,7 +240,7 @@ public class xp implements vd<ww> {
          this.d = $$3;
       }
 
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.k(this.b);
          $$0.a(this.d);
          if ((this.b & 8) != 0) {
@@ -280,7 +280,7 @@ public class xp implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
       }
    }
@@ -337,6 +337,6 @@ public class xp implements vd<ww> {
    interface e {
       ArgumentBuilder<dw, ?> a(dn var1);
 
-      void a(so var1);
+      void a(sp var1);
    }
 }

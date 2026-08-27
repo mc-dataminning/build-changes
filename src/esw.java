@@ -88,7 +88,7 @@ public abstract class esw<E extends esw.a<E>> extends esl<E> {
          }
       }
 
-      $$0.a(ewh.d, tl.c("narration.component_list.usage"));
+      $$0.a(ewh.d, tm.c("narration.component_list.usage"));
    }
 
    public abstract static class a<E extends esw.a<E>> extends esl.a<E> implements euj {
@@ -180,9 +180,9 @@ public abstract class esw<E extends esw.a<E>> extends esl<E> {
             }
 
             if ($$1.size() > 1) {
-               $$0.a(ewh.b, tl.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
+               $$0.a(ewh.b, tm.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
                if ($$2.c == ewg.a.c) {
-                  $$0.a(ewh.d, tl.c("narration.component_list.usage"));
+                  $$0.a(ewh.d, tm.c("narration.component_list.usage"));
                }
             }
 

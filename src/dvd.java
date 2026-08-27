@@ -52,7 +52,7 @@ public class dvd {
       "bastion_remnant"
    );
    private final boolean d;
-   private final Map<String, Long2ObjectMap<qx>> e = Maps.newHashMap();
+   private final Map<String, Long2ObjectMap<qy>> e = Maps.newHashMap();
    private final Map<String, dvl> f = Maps.newHashMap();
    private final List<String> g;
    private final List<String> h;
@@ -80,15 +80,15 @@ public class dvd {
       }
    }
 
-   public qx a(qx $$0) {
-      qx $$1 = $$0.p("Level");
+   public qy a(qy $$0) {
+      qy $$1 = $$0.p("Level");
       cpc $$2 = new cpc($$1.h("xPos"), $$1.h("zPos"));
       if (this.a($$2.e, $$2.f)) {
          $$0 = this.a($$0, $$2);
       }
 
-      qx $$3 = $$1.p("Structures");
-      qx $$4 = $$3.p("References");
+      qy $$3 = $$1.p("Structures");
+      qy $$4 = $$3.p("References");
 
       for (String $$5 : this.h) {
          boolean $$6 = c.contains($$5.toLowerCase(Locale.ROOT));
@@ -132,17 +132,17 @@ public class dvd {
       }
    }
 
-   private qx a(qx $$0, cpc $$1) {
-      qx $$2 = $$0.p("Level");
-      qx $$3 = $$2.p("Structures");
-      qx $$4 = $$3.p("Starts");
+   private qy a(qy $$0, cpc $$1) {
+      qy $$2 = $$0.p("Level");
+      qy $$3 = $$2.p("Structures");
+      qy $$4 = $$3.p("Starts");
 
       for (String $$5 : this.h) {
-         Long2ObjectMap<qx> $$6 = this.e.get($$5);
+         Long2ObjectMap<qy> $$6 = this.e.get($$5);
          if ($$6 != null) {
             long $$7 = $$1.a();
             if (this.f.get(a.get($$5)).c($$7)) {
-               qx $$8 = (qx)$$6.get($$7);
+               qy $$8 = (qy)$$6.get($$7);
                if ($$8 != null) {
                   $$4.a($$5, $$8);
                }
@@ -159,7 +159,7 @@ public class dvd {
    private void a(@Nullable ecc $$0) {
       if ($$0 != null) {
          for (String $$1 : this.g) {
-            qx $$2 = new qx();
+            qy $$2 = new qy();
 
             try {
                $$2 = $$0.a($$1, ata.o, 1493).p("data").p("Features");
@@ -170,9 +170,9 @@ public class dvd {
             }
 
             for (String $$3 : $$2.e()) {
-               qx $$4 = $$2.p($$3);
+               qy $$4 = $$2.p($$3);
                long $$5 = cpc.c($$4.h("ChunkX"), $$4.h("ChunkZ"));
-               rd $$6 = $$4.c("Children", 10);
+               re $$6 = $$4.c("Children", 10);
                if (!$$6.isEmpty()) {
                   String $$7 = $$6.a(0).l("id");
                   String $$8 = b.get($$7);
@@ -194,7 +194,7 @@ public class dvd {
                this.f.put($$1, $$12);
 
                for (String $$13 : $$2.e()) {
-                  qx $$14 = $$2.p($$13);
+                  qy $$14 = $$2.p($$13);
                   $$12.a(cpc.c($$14.h("ChunkX"), $$14.h("ChunkZ")));
                }
 

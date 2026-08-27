@@ -23,7 +23,7 @@ public class dih implements AutoCloseable {
       return this.a.a($$0, $$1);
    }
 
-   public qx a(aew<cpv> $$0, Supplier<ecc> $$1, qx $$2, Optional<aew<Codec<? extends dhg>>> $$3) {
+   public qy a(aew<cpv> $$0, Supplier<ecc> $$1, qy $$2, Optional<aew<Codec<? extends dhg>>> $$3) {
       int $$4 = a($$2);
       if ($$4 < 1493) {
          $$2 = ata.c.a(this.e, $$2, $$4, 1493);
@@ -36,7 +36,7 @@ public class dih implements AutoCloseable {
       a($$2, $$0, $$3);
       $$2 = ata.c.a(this.e, $$2, Math.max(1493, $$4));
       if ($$4 < aa.b().d().c()) {
-         rj.g($$2);
+         rk.g($$2);
       }
 
       $$2.r("__context");
@@ -57,22 +57,22 @@ public class dih implements AutoCloseable {
       return $$2;
    }
 
-   public static void a(qx $$0, aew<cpv> $$1, Optional<aew<Codec<? extends dhg>>> $$2) {
-      qx $$3 = new qx();
+   public static void a(qy $$0, aew<cpv> $$1, Optional<aew<Codec<? extends dhg>>> $$2) {
+      qy $$3 = new qy();
       $$3.a("dimension", $$1.a().toString());
       $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
       $$0.a("__context", $$3);
    }
 
-   public static int a(qx $$0) {
-      return rj.b($$0, -1);
+   public static int a(qy $$0) {
+      return rk.b($$0, -1);
    }
 
-   public CompletableFuture<Optional<qx>> e(cpc $$0) {
+   public CompletableFuture<Optional<qy>> e(cpc $$0) {
       return this.a.a($$0);
    }
 
-   public void a(cpc $$0, qx $$1) {
+   public void a(cpc $$0, qy $$1) {
       this.a.a($$0, $$1);
       if (this.b != null) {
          this.b.a($$0.a());

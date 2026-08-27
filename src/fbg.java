@@ -17,7 +17,7 @@ public class fbg extends eyk {
    private esq s;
    private esq t;
    @Nullable
-   private List<tl> u;
+   private List<tm> u;
    private fjh v;
    private gdf.b w;
    @Nullable
@@ -25,7 +25,7 @@ public class fbg extends eyk {
    private boolean y;
 
    public fbg(eyk $$0) {
-      super(tl.c("multiplayer.title"));
+      super(tm.c("multiplayer.title"));
       this.o = $$0;
    }
 
@@ -51,16 +51,16 @@ public class fbg extends eyk {
       }
 
       this.e(this.l);
-      this.s = this.d(esq.a(tl.c("selectServer.select"), $$0 -> this.l()).a(100).a());
-      esq $$1 = this.d(esq.a(tl.c("selectServer.direct"), $$0 -> {
+      this.s = this.d(esq.a(tm.c("selectServer.select"), $$0 -> this.l()).a(100).a());
+      esq $$1 = this.d(esq.a(tm.c("selectServer.direct"), $$0 -> {
          this.v = new fjh(gak.a("selectServer.defaultName"), "", fjh.b.c);
          this.f.a(new exl(this, this::g, this.v));
       }).a(100).a());
-      esq $$2 = this.d(esq.a(tl.c("selectServer.add"), $$0 -> {
+      esq $$2 = this.d(esq.a(tm.c("selectServer.add"), $$0 -> {
          this.v = new fjh(gak.a("selectServer.defaultName"), "", fjh.b.c);
          this.f.a(new exn(this, this::f, this.v));
       }).a(100).a());
-      this.q = this.d(esq.a(tl.c("selectServer.edit"), $$0 -> {
+      this.q = this.d(esq.a(tm.c("selectServer.edit"), $$0 -> {
          fbk.a $$1x = this.l.f();
          if ($$1x instanceof fbk.d) {
             fjh $$2x = ((fbk.d)$$1x).d();
@@ -69,21 +69,21 @@ public class fbg extends eyk {
             this.f.a(new exn(this, this::e, this.v));
          }
       }).a(74).a());
-      this.t = this.d(esq.a(tl.c("selectServer.delete"), $$0 -> {
+      this.t = this.d(esq.a(tm.c("selectServer.delete"), $$0 -> {
          fbk.a $$1x = this.l.f();
          if ($$1x instanceof fbk.d) {
             String $$2x = ((fbk.d)$$1x).d().a;
             if ($$2x != null) {
-               tl $$3x = tl.c("selectServer.deleteQuestion");
-               tl $$4x = tl.a("selectServer.deleteWarning", $$2x);
-               tl $$5x = tl.c("selectServer.deleteButton");
-               tl $$6x = tk.e;
+               tm $$3x = tm.c("selectServer.deleteQuestion");
+               tm $$4x = tm.a("selectServer.deleteWarning", $$2x);
+               tm $$5x = tm.c("selectServer.deleteButton");
+               tm $$6x = tl.e;
                this.f.a(new exd(this::c, $$3x, $$4x, $$5x, $$6x));
             }
          }
       }).a(74).a());
-      esq $$3 = this.d(esq.a(tl.c("selectServer.refresh"), $$0 -> this.F()).a(74).a());
-      esq $$4 = this.d(esq.a(tk.k, $$0 -> this.f.a(this.o)).a(74).a());
+      esq $$3 = this.d(esq.a(tm.c("selectServer.refresh"), $$0 -> this.G()).a(74).a());
+      esq $$4 = this.d(esq.a(tl.k, $$0 -> this.f.a(this.o)).a(74).a());
       ewd $$5 = ewd.d();
       evw $$6 = $$5.a(new evw(308, 20, evw.b.a));
       $$6.a(this.s);
@@ -97,7 +97,7 @@ public class fbg extends eyk {
       $$7.a($$4);
       $$5.a();
       evx.a($$5, 0, this.h - 64, this.g, 64);
-      this.C();
+      this.D();
    }
 
    @Override
@@ -122,7 +122,7 @@ public class fbg extends eyk {
       this.l.d();
    }
 
-   private void F() {
+   private void G() {
       this.f.a(new fbg(this.o));
    }
 
@@ -190,7 +190,7 @@ public class fbg extends eyk {
       if (super.a($$0, $$1, $$2)) {
          return true;
       } else if ($$0 == 294) {
-         this.F();
+         this.G();
          return true;
       } else if (this.l.f() != null) {
          if (ewn.a($$0)) {
@@ -231,11 +231,11 @@ public class fbg extends eyk {
 
    public void a(fbk.a $$0) {
       this.l.a($$0);
-      this.C();
+      this.D();
    }
 
    @Override
-   protected void C() {
+   protected void D() {
       this.s.i = false;
       this.q.i = false;
       this.t.i = false;
@@ -249,15 +249,15 @@ public class fbg extends eyk {
       }
    }
 
-   public fjj D() {
+   public fjj E() {
       return this.n;
    }
 
-   public void c(List<tl> $$0) {
+   public void c(List<tm> $$0) {
       this.u = $$0;
    }
 
-   public fji E() {
+   public fji F() {
       return this.p;
    }
 }

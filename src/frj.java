@@ -51,7 +51,7 @@ public class frj implements frn.a {
    private static final int I = -23296;
    private final eqv J;
    private final Map<gw, frj.a> K = Maps.newHashMap();
-   private final Map<UUID, vu.a> L = Maps.newHashMap();
+   private final Map<UUID, vv.a> L = Maps.newHashMap();
    @Nullable
    private UUID M;
 
@@ -83,7 +83,7 @@ public class frj implements frn.a {
       }
    }
 
-   public void a(vu.a $$0) {
+   public void a(vv.a $$0) {
       this.L.put($$0.a(), $$0);
    }
 
@@ -166,13 +166,13 @@ public class frj implements frn.a {
       a($$0, $$1, $$2.b, $$2, ++$$3, -1);
    }
 
-   private void a(elp $$0, foe $$1, vu.a $$2, double $$3, double $$4, double $$5) {
+   private void a(elp $$0, foe $$1, vv.a $$2, double $$3, double $$4, double $$5) {
       if ($$2.j() != null) {
          frv.a($$0, $$1, $$2.j(), 0.5F, false, false, $$3, $$4, $$5);
       }
    }
 
-   private void b(elp $$0, foe $$1, vu.a $$2, double $$3, double $$4, double $$5) {
+   private void b(elp $$0, foe $$1, vv.a $$2, double $$3, double $$4, double $$5) {
       boolean $$6 = this.b($$2);
       int $$7 = 0;
       a($$0, $$1, $$2.h(), $$7, $$2.c(), -1, 0.03F);
@@ -273,11 +273,11 @@ public class frj implements frn.a {
       return this.c($$0.a).stream().map(abb::a).collect(Collectors.toSet());
    }
 
-   private boolean b(vu.a $$0) {
+   private boolean b(vv.a $$0) {
       return Objects.equals(this.M, $$0.a());
    }
 
-   private boolean c(vu.a $$0) {
+   private boolean c(vv.a $$0) {
       cbu $$1 = this.J.s;
       gw $$2 = gw.a($$1.dq(), $$0.h().b(), $$1.dw());
       gw $$3 = gw.a($$0.h());
@@ -285,17 +285,17 @@ public class frj implements frn.a {
    }
 
    private Collection<UUID> b(gw $$0) {
-      return this.L.values().stream().filter($$1 -> $$1.a($$0)).map(vu.a::a).collect(Collectors.toSet());
+      return this.L.values().stream().filter($$1 -> $$1.a($$0)).map(vv.a::a).collect(Collectors.toSet());
    }
 
    private Collection<UUID> c(gw $$0) {
-      return this.L.values().stream().filter($$1 -> $$1.b($$0)).map(vu.a::a).collect(Collectors.toSet());
+      return this.L.values().stream().filter($$1 -> $$1.b($$0)).map(vv.a::a).collect(Collectors.toSet());
    }
 
    private Map<gw, List<String>> c() {
       Map<gw, List<String>> $$0 = Maps.newHashMap();
 
-      for (vu.a $$1 : this.L.values()) {
+      for (vv.a $$1 : this.L.values()) {
          for (gw $$2 : Iterables.concat($$1.q(), $$1.r())) {
             if (!this.K.containsKey($$2)) {
                $$0.computeIfAbsent($$2, $$0x -> Lists.newArrayList()).add($$1.c());
@@ -307,7 +307,7 @@ public class frj implements frn.a {
    }
 
    private void d() {
-      frn.a(this.J.am(), 8).ifPresent($$0 -> this.M = $$0.cw());
+      frn.a(this.J.am(), 8).ifPresent($$0 -> this.M = $$0.cv());
    }
 
    public static class a {

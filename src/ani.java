@@ -4,10 +4,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class ani extends ana {
-   private static final amw b = new amw(tl.c("dataPack.vanilla.description"), aa.b().a(amj.b), Optional.empty());
+   private static final amw b = new amw(tm.c("dataPack.vanilla.description"), aa.b().a(amj.b), Optional.empty());
    private static final amf c = new amf(cee.g);
    private static final amd d = amd.a(amw.b, b, amf.a, c);
-   private static final tl e = tl.c("dataPack.vanilla.name");
+   private static final tm e = tm.c("dataPack.vanilla.name");
    private static final aex f = new aex("minecraft", "datapacks");
 
    public ani(ehd $$0) {
@@ -20,8 +20,8 @@ public class ani extends ana {
    }
 
    @Override
-   protected tl a(String $$0) {
-      return tl.b($$0);
+   protected tm a(String $$0) {
+      return tm.b($$0);
    }
 
    @Nullable
@@ -32,7 +32,7 @@ public class ani extends ana {
 
    @Nullable
    @Override
-   protected anc a(String $$0, anc.c $$1, tl $$2) {
+   protected anc a(String $$0, anc.c $$1, tm $$2) {
       return anc.a($$0, $$2, false, $$1, amj.b, anc.b.a, ang.d);
    }
 

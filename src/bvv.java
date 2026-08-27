@@ -86,12 +86,12 @@ public class bvv extends bjp implements cbf, dkc {
 
    @Override
    public void h(ehn $$0) {
-      if (this.cX()) {
-         if (this.aY()) {
+      if (this.cW()) {
+         if (this.aX()) {
             this.a(0.02F, $$0);
             this.a(bjm.a, this.do());
             this.f(this.do().a(0.8F));
-         } else if (this.bm()) {
+         } else if (this.bl()) {
             this.a(0.02F, $$0);
             this.a(bjm.a, this.do());
             this.f(this.do().a(0.5));
@@ -114,7 +114,7 @@ public class bvv extends bjp implements cbf, dkc {
    public boolean a(bho $$0, float $$1) {
       if ($$0.d() instanceof cbu $$2) {
          Optional<UUID> $$3 = this.dN().c(bsh.aL);
-         if ($$3.isPresent() && $$2.cw().equals($$3.get())) {
+         if ($$3.isPresent() && $$2.cv().equals($$3.get())) {
             return false;
          }
       }
@@ -151,20 +151,20 @@ public class bvv extends bjp implements cbf, dkc {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("allayBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
       this.dL().ad().a("allayActivityUpdate");
       bvw.a(this);
       this.dL().ad().c();
-      super.Y();
+      super.X();
    }
 
    @Override
    public void b_() {
       super.b_();
-      if (!this.dL().B && this.bw() && this.ah % 10 == 0) {
+      if (!this.dL().B && this.bv() && this.ah % 10 == 0) {
          this.b(1.0F);
       }
 
@@ -243,7 +243,7 @@ public class bvv extends bjp implements cbf, dkc {
          this.a(bgx.a, $$4);
          this.a($$0, $$2);
          this.dL().a($$0, this, ape.e, apf.g, 2.0F, 1.0F);
-         this.dN().a(bsh.aL, $$0.cw());
+         this.dN().a(bsh.aL, $$0.cv());
          return bgy.a;
       } else if (!$$3.b() && $$1 == bgx.a && $$2.b()) {
          this.a(biv.a, cjf.b);
@@ -295,18 +295,18 @@ public class bvv extends bjp implements cbf, dkc {
    }
 
    private boolean e(cjf $$0, cjf $$1) {
-      qx $$2 = $$0.v();
+      qy $$2 = $$0.v();
       boolean $$3 = $$2 != null && $$2.e("Potion");
       if (!$$3) {
          return false;
       } else {
-         qx $$4 = $$1.v();
+         qy $$4 = $$1.v();
          boolean $$5 = $$4 != null && $$4.e("Potion");
          if (!$$5) {
             return true;
          } else {
-            rq $$6 = $$2.c("Potion");
-            rq $$7 = $$4.c("Potion");
+            rr $$6 = $$2.c("Potion");
+            rr $$7 = $$4.c("Potion");
             return $$6 != null && $$7 != null && !$$6.equals($$7);
          }
       }
@@ -318,14 +318,14 @@ public class bvv extends bjp implements cbf, dkc {
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 
    @Override
-   public boolean aS() {
-      return !this.aB();
+   public boolean aR() {
+      return !this.aA();
    }
 
    @Override
@@ -341,7 +341,7 @@ public class bvv extends bjp implements cbf, dkc {
    }
 
    public void w(boolean $$0) {
-      if (!this.dL().B && this.cY() && (!$$0 || !this.ga())) {
+      if (!this.dL().B && this.cX() && (!$$0 || !this.ga())) {
          this.an.b(ca, $$0);
       }
    }
@@ -385,20 +385,20 @@ public class bvv extends bjp implements cbf, dkc {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       this.a_($$0);
-      dkc.a.a.encodeStart(ri.a, this.cd).resultOrPartial(e::error).ifPresent($$1 -> $$0.a("listener", $$1));
+      dkc.a.a.encodeStart(rj.a, this.cd).resultOrPartial(e::error).ifPresent($$1 -> $$0.a("listener", $$1));
       $$0.a("DuplicationCooldown", this.ci);
       $$0.a("CanDuplicate", this.gm());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.c($$0);
       if ($$0.b("listener", 10)) {
-         dkc.a.a.parse(new Dynamic(ri.a, $$0.p("listener"))).resultOrPartial(e::error).ifPresent($$0x -> this.cd = $$0x);
+         dkc.a.a.parse(new Dynamic(rj.a, $$0.p("listener"))).resultOrPartial(e::error).ifPresent($$0x -> this.cd = $$0x);
       }
 
       this.ci = (long)$$0.h("DuplicationCooldown");
@@ -451,8 +451,8 @@ public class bvv extends bjp implements cbf, dkc {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)this.cI() * 0.6, (double)this.dg() * 0.1);
+   public ehn cI() {
+      return new ehn(0.0, (double)this.cH() * 0.6, (double)this.df() * 0.1);
    }
 
    @Override
@@ -523,7 +523,7 @@ public class bvv extends bjp implements cbf, dkc {
 
    class b implements dkc.d {
       private static final int b = 16;
-      private final djx c = new djr(bvv.this, bvv.this.cI());
+      private final djx c = new djr(bvv.this, bvv.this.cH());
 
       @Override
       public int a() {

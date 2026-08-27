@@ -2,13 +2,13 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fiv extends fiu implements ta, wp {
+public class fiv extends fiu implements tb, wq {
    private static final Logger g = LogUtils.getLogger();
    private final GameProfile h;
    private hu.b i;
    private cec j;
 
-   public fiv(eqv $$0, sm $$1, fjb $$2) {
+   public fiv(eqv $$0, sn $$1, fjb $$2) {
       super($$0, $$1, $$2);
       this.h = $$2.a();
       this.i = $$2.c();
@@ -26,17 +26,17 @@ public class fiv extends fiu implements ta, wp {
    }
 
    @Override
-   protected void a(vw $$0) {
+   protected void a(vx $$0) {
       this.b($$0);
    }
 
-   private void b(vw $$0) {
+   private void b(vx $$0) {
       g.warn("Unknown custom packet payload: {}", $$0.a());
    }
 
    @Override
-   public void a(wr $$0) {
-      vf.a($$0, this, this.a);
+   public void a(ws $$0) {
+      vg.a($$0, this, this.a);
       hu.b $$1 = fiz.a().a(fiz.b, $$0.a()).a();
       if (!this.b.g()) {
          $$1.b().forEach($$0x -> $$0x.b().m());
@@ -46,17 +46,17 @@ public class fiv extends fiu implements ta, wp {
    }
 
    @Override
-   public void a(ws $$0) {
+   public void a(wt $$0) {
       this.j = cee.d.a($$0.a());
    }
 
    @Override
-   public void a(wq $$0) {
+   public void a(wr $$0) {
       this.b.a();
-      vf.a($$0, this, this.a);
+      vg.a($$0, this, this.a);
       this.b.a(new fiy(this.a, this.b, new fjb(this.h, this.e, this.i, this.j, this.d, this.c, this.f)));
       this.b.b();
-      this.b.a(new wu());
+      this.b.a(new wv());
    }
 
    @Override

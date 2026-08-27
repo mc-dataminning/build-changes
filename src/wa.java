@@ -1,16 +1,14 @@
-public record wa(gw b, int c, String d, int e) implements vw {
-   public static final aex a = new aex("debug/game_test_add_marker");
+public record wa(djx b, int c) implements vx {
+   public static final aex a = new aex("debug/game_event_listeners");
 
-   public wa(so $$0) {
-      this($$0.e(), $$0.readInt(), $$0.r(), $$0.readInt());
+   public wa(sp $$0) {
+      this(djy.c($$0), $$0.m());
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
+   public void a(sp $$0) {
+      djy.a(this.b, $$0);
+      $$0.c(this.c);
    }
 
    @Override

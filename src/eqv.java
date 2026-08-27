@@ -61,7 +61,7 @@ public class eqv extends bfs<Runnable> implements eku {
    public static final aex d = new aex("alt");
    private static final aex H = new aex("regional_compliancies.json");
    private static final CompletableFuture<asx> I = CompletableFuture.completedFuture(asx.a);
-   private static final tl J = tl.c("multiplayer.socialInteractions.not_available");
+   private static final tm J = tm.c("multiplayer.socialInteractions.not_available");
    public static final String e = "Please make sure you have up-to-date drivers (see aka.ms/mcdriver for instructions).";
    private final Path K;
    private final CompletableFuture<ProfileResult> L;
@@ -138,7 +138,7 @@ public class eqv extends bfs<Runnable> implements eku {
    @Nullable
    private gdd aN;
    @Nullable
-   private sm aO;
+   private sn aO;
    private boolean aP;
    @Nullable
    public biq t;
@@ -223,7 +223,7 @@ public class eqv extends bfs<Runnable> implements eku {
       this.ag = !$$0.d.e;
       this.ad = bf();
       this.aN = null;
-      up.a(eqt::a);
+      uq.a(eqt::a);
       this.N = atb.a();
       this.aE = new euy(this);
       this.aX = Thread.currentThread();
@@ -502,7 +502,7 @@ public class eqv extends bfs<Runnable> implements eku {
       }
    }
 
-   public void a(Throwable $$0, @Nullable tl $$1, @Nullable eqv.b $$2) {
+   public void a(Throwable $$0, @Nullable tm $$1, @Nullable eqv.b $$2) {
       F.info("Caught error loading resourcepacks, removing all selected resourcepacks", $$0);
       this.bl.a($$0);
       this.ak.a(Collections.emptyList());
@@ -523,9 +523,9 @@ public class eqv extends bfs<Runnable> implements eku {
       this.a(null);
    }
 
-   private void a(@Nullable tl $$0) {
+   private void a(@Nullable tm $$0) {
       euy $$1 = this.ay();
-      euw.b($$1, euw.a.d, tl.c("resourcePack.load_fail"), $$0);
+      euw.b($$1, euw.a.d, tm.c("resourcePack.load_fail"), $$0);
    }
 
    public void f() {
@@ -593,6 +593,19 @@ public class eqv extends bfs<Runnable> implements eku {
                )
          );
       this.U.a(gcy.b, $$0 -> new gcs<>($$0x -> $$0x.f().map(aqi::b), $$0));
+      this.U
+         .a(
+            gcy.c,
+            $$0 -> new gcr<>(
+                  $$0x -> $$0x.e()
+                        .stream()
+                        .flatMap($$1 -> $$1.b().a($$0x.a()).a(null, ckw.a.a).stream())
+                        .map($$0xx -> n.a($$0xx.getString()).trim())
+                        .filter($$0xx -> !$$0xx.isEmpty()),
+                  $$0x -> $$0x.e().stream().map($$1 -> jd.i.b($$1.b().a($$0x.a()).d())),
+                  $$0
+               )
+         );
       chm.e().a($$0 -> {
          this.a(gcy.a, $$0);
          this.a(gcy.b, $$0);
@@ -730,7 +743,7 @@ public class eqv extends bfs<Runnable> implements eku {
       for (cja $$10 : jd.i) {
          cjf $$11 = $$10.ai_();
          String $$12 = $$11.q();
-         String $$13 = tl.c($$12).getString();
+         String $$13 = tm.c($$12).getString();
          if ($$13.toLowerCase(Locale.ROOT).equals($$10.a())) {
             F.debug("Missing translation for: {} {} {}", new Object[]{$$11, $$12, $$10});
          }
@@ -760,7 +773,7 @@ public class eqv extends bfs<Runnable> implements eku {
                this.a(null);
             }, eqv.a.e, "https://aka.ms/JavaAccountSettings", true));
          } else {
-            tl $$2 = $$1.a();
+            tm $$2 = $$1.a();
             this.l.a($$2, false);
             this.bq.c($$2);
             this.l.b($$1 == eqv.a.d);
@@ -1101,14 +1114,14 @@ public class eqv extends bfs<Runnable> implements eku {
             this.aN.a(true);
          }
 
-         this.b((eyk)(new exq(tl.c("menu.savingLevel"))));
+         this.b((eyk)(new exq(tm.c("menu.savingLevel"))));
       } catch (Throwable var2) {
       }
 
       System.gc();
    }
 
-   public boolean a(Consumer<tl> $$0) {
+   public boolean a(Consumer<tm> $$0) {
       if (this.bk.e()) {
          this.bi();
          return false;
@@ -1119,14 +1132,14 @@ public class eqv extends bfs<Runnable> implements eku {
                double $$3x = (double)$$1x.g() / (double)asu.a;
                this.execute(
                   () -> $$0.accept(
-                        tl.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3x), $$2x, String.format(Locale.ROOT, "%.2f", (double)$$2x / $$3x))
+                        tm.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3x), $$2x, String.format(Locale.ROOT, "%.2f", (double)$$2x / $$3x))
                      )
                );
             }
          };
          Consumer<Path> $$2 = $$1x -> {
-            tl $$2x = tl.b($$1x.toString()).a(n.t).a($$1xx -> $$1xx.a(new tj(tj.a.b, $$1x.toFile().getParent())));
-            this.execute(() -> $$0.accept(tl.a("debug.profiling.stop", $$2x)));
+            tm $$2x = tm.b($$1x.toString()).a(n.t).a($$1xx -> $$1xx.a(new tk(tk.a.b, $$1x.toFile().getParent())));
+            this.execute(() -> $$0.accept(tm.a("debug.profiling.stop", $$2x)));
          };
          ab $$3 = a(new ab(), this, this.al, this.Z, this.m);
          Consumer<List<Path>> $$4 = $$2x -> {
@@ -1570,8 +1583,8 @@ public class eqv extends bfs<Runnable> implements eku {
       if (this.r != null) {
          if (!this.aR) {
             if (!this.m.s && this.bu()) {
-               tl $$1 = tl.c("tutorial.socialInteractions.title");
-               tl $$2 = tl.a("tutorial.socialInteractions.description", get.a("socialInteractions"));
+               tm $$1 = tm.c("tutorial.socialInteractions.title");
+               tm $$2 = tm.a("tutorial.socialInteractions.description", get.a("socialInteractions"));
                this.bf = new euz(euz.a.f, $$1, $$2, true);
                this.aF.a(this.bf, 160);
                this.m.s = true;
@@ -1798,7 +1811,7 @@ public class eqv extends bfs<Runnable> implements eku {
       this.bg.c();
       Duration $$11 = Duration.between($$5, Instant.now());
       SocketAddress $$12 = this.aN.ad().a();
-      sm $$13 = sm.a($$12);
+      sn $$13 = sn.a($$12);
       $$13.a($$12.toString(), 0, new fiw($$13, this, null, null, $$4, $$11, $$0x -> {
       }));
       $$13.a(new adn(this.V().c(), this.V().b()));
@@ -1807,7 +1820,7 @@ public class eqv extends bfs<Runnable> implements eku {
 
    public void a(fix $$0) {
       eyi $$1 = new eyi(true);
-      $$1.a(tl.c("connect.joining"));
+      $$1.a(tm.c("connect.joining"));
       this.e($$1);
       this.r = $$0;
       this.b($$0);
@@ -1935,7 +1948,7 @@ public class eqv extends bfs<Runnable> implements eku {
    }
 
    public boolean a(UUID $$0) {
-      return this.H().a(false) ? this.aG.c($$0) : (this.s == null || !$$0.equals(this.s.cw())) && !$$0.equals(ac.d);
+      return this.H().a(false) ? this.aG.c($$0) : (this.s == null || !$$0.equals(this.s.cv())) && !$$0.equals(ac.d);
    }
 
    public eqv.a H() {
@@ -2012,7 +2025,7 @@ public class eqv extends bfs<Runnable> implements eku {
             if ($$2 == ehl.a.b) {
                $$10 = jd.f.b(this.r.a_(((ehj)this.v).a()).b()).toString();
             } else if ($$2 == ehl.a.c) {
-               $$10 = jd.h.b(((ehk)this.v).a().ah()).toString();
+               $$10 = jd.h.b(((ehk)this.v).a().ag()).toString();
             }
 
             F.warn("Picking on: [{}] {} gave null item", $$2, $$10);
@@ -2038,21 +2051,21 @@ public class eqv extends bfs<Runnable> implements eku {
    }
 
    private void a(cjf $$0, dcv $$1) {
-      qx $$2 = $$1.m();
+      qy $$2 = $$1.m();
       cgy.a($$0, $$1.u(), $$2);
       if ($$0.d() instanceof cjt && $$2.e("SkullOwner")) {
-         qx $$3 = $$2.p("SkullOwner");
-         qx $$4 = $$0.w();
+         qy $$3 = $$2.p("SkullOwner");
+         qy $$4 = $$0.w();
          $$4.a("SkullOwner", $$3);
-         qx $$5 = $$4.p("BlockEntityTag");
+         qy $$5 = $$4.p("BlockEntityTag");
          $$5.r("SkullOwner");
          $$5.r("x");
          $$5.r("y");
          $$5.r("z");
       } else {
-         qx $$6 = new qx();
-         rd $$7 = new rd();
-         $$7.add(ro.a("\"(+NBT)\""));
+         qy $$6 = new qy();
+         re $$7 = new re();
+         $$7.add(rp.a("\"(+NBT)\""));
          $$6.a("Lore", $$7);
          $$0.a("display", $$6);
       }
@@ -2119,6 +2132,7 @@ public class eqv extends bfs<Runnable> implements eku {
          $$0.a("Current Language", () -> $$2.a());
       }
 
+      $$0.a("Locale", String.valueOf(Locale.getDefault()));
       $$0.a("CPU", eki::b);
       return $$0;
    }
@@ -2226,7 +2240,7 @@ public class eqv extends bfs<Runnable> implements eku {
    }
 
    public apb aj() {
-      apb $$0 = x.a(this.y, eyk::B);
+      apb $$0 = x.a(this.y, eyk::C);
       if ($$0 != null) {
          return $$0;
       } else if (this.s != null) {
@@ -2234,7 +2248,7 @@ public class eqv extends bfs<Runnable> implements eku {
             return this.l.j().b() ? apc.d : apc.e;
          } else {
             hg<cqt> $$1 = this.s.dL().s(this.s.dl());
-            if (!this.aq.c(apc.f) && (!this.s.bd() || !$$1.a(aps.Y))) {
+            if (!this.aq.c(apc.f) && (!this.s.bc() || !$$1.a(aps.Y))) {
                return this.s.dL().ac() != cpv.i && this.s.fS().d && this.s.fS().c ? apc.b : $$1.a().o().orElse(apc.g);
             } else {
                return apc.f;
@@ -2264,7 +2278,7 @@ public class eqv extends bfs<Runnable> implements eku {
    }
 
    public boolean b(biq $$0) {
-      return $$0.cd() || this.s != null && this.s.M_() && this.m.S.e() && $$0.ah() == biu.bt;
+      return $$0.cc() || this.s != null && this.s.M_() && this.m.S.e() && $$0.ag() == biu.bt;
    }
 
    @Override
@@ -2363,7 +2377,7 @@ public class eqv extends bfs<Runnable> implements eku {
       this.bc = $$0;
    }
 
-   public tl a(File $$0, int $$1, int $$2) {
+   public tm a(File $$0, int $$1, int $$2) {
       int $$3 = this.P.k();
       int $$4 = this.P.l();
       ekb $$5 = new ekc($$1, $$2, true, a);
@@ -2373,7 +2387,7 @@ public class eqv extends bfs<Runnable> implements eku {
       float $$9 = this.s.N;
       this.j.b(false);
 
-      ty var12;
+      tz var12;
       try {
          this.j.c(true);
          this.f.e();
@@ -2422,11 +2436,11 @@ public class eqv extends bfs<Runnable> implements eku {
             });
          }
 
-         tl $$11 = tl.b($$0.getName()).a(n.t).a($$1x -> $$1x.a(new tj(tj.a.b, $$0.getAbsolutePath())));
-         return tl.a("screenshot.success", $$11);
+         tm $$11 = tm.b($$0.getName()).a(n.t).a($$1x -> $$1x.a(new tk(tk.a.b, $$0.getAbsolutePath())));
+         return tm.a("screenshot.success", $$11);
       } catch (Exception var18) {
          F.error("Couldn't save image", var18);
-         var12 = tl.a("screenshot.failure", var18.getMessage());
+         var12 = tm.a("screenshot.failure", var18.getMessage());
       } finally {
          this.s.s($$6);
          this.s.r($$7);
@@ -2444,7 +2458,7 @@ public class eqv extends bfs<Runnable> implements eku {
       return var12;
    }
 
-   private tl a(File $$0, int $$1, int $$2, int $$3, int $$4) {
+   private tm a(File $$0, int $$1, int $$2, int $$3, int $$4) {
       try {
          ByteBuffer $$5 = eki.a($$1 * $$2 * 3);
          erg $$6 = new erg($$0, $$3, $$4, $$2);
@@ -2472,11 +2486,11 @@ public class eqv extends bfs<Runnable> implements eku {
 
          File $$14 = $$6.b();
          eki.a($$5);
-         tl $$15 = tl.b($$14.getName()).a(n.t).a($$1x -> $$1x.a(new tj(tj.a.b, $$14.getAbsolutePath())));
-         return tl.a("screenshot.success", $$15);
+         tm $$15 = tm.b($$14.getName()).a(n.t).a($$1x -> $$1x.a(new tk(tk.a.b, $$14.getAbsolutePath())));
+         return tm.a("screenshot.success", $$15);
       } catch (Exception var15) {
          F.warn("Couldn't save screenshot", var15);
-         return tl.a("screenshot.failure", var15.getMessage());
+         return tm.a("screenshot.failure", var15.getMessage());
       }
    }
 
@@ -2581,39 +2595,39 @@ public class eqv extends bfs<Runnable> implements eku {
    }
 
    public static enum a {
-      a(tk.a) {
+      a(tl.a) {
          @Override
          public boolean a(boolean $$0) {
             return true;
          }
       },
-      b(tl.c("chat.disabled.options").a(n.m)) {
+      b(tm.c("chat.disabled.options").a(n.m)) {
          @Override
          public boolean a(boolean $$0) {
             return false;
          }
       },
-      c(tl.c("chat.disabled.launcher").a(n.m)) {
+      c(tm.c("chat.disabled.launcher").a(n.m)) {
          @Override
          public boolean a(boolean $$0) {
             return $$0;
          }
       },
-      d(tl.a("chat.disabled.profile", tl.d(eqv.E.m.K.h())).a(n.m)) {
+      d(tm.a("chat.disabled.profile", tm.d(eqv.E.m.K.h())).a(n.m)) {
          @Override
          public boolean a(boolean $$0) {
             return $$0;
          }
       };
 
-      static final tl e = tl.c("chat.disabled.profile.moreInfo");
-      private final tl f;
+      static final tm e = tm.c("chat.disabled.profile.moreInfo");
+      private final tm f;
 
-      a(tl $$0) {
+      a(tm $$0) {
          this.f = $$0;
       }
 
-      public tl a() {
+      public tm a() {
          return this.f;
       }
 

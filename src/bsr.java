@@ -7,14 +7,14 @@ public class bsr extends bsp {
 
    @Override
    protected ebd a(int $$0) {
-      this.p = this.a.ah() == biu.v;
+      this.p = this.a.ag() == biu.v;
       this.o = new ebe(this.p);
       return new ebd(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.p || this.a.bc();
+      return this.p || this.a.bb();
    }
 
    @Override

@@ -1,45 +1,84 @@
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
 
-public class qp implements ArgumentType<qo> {
-   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+public class qp {
+   private final String a;
+   private final String b;
+   private final String c;
+   private final boolean d;
+   private final int e;
+   private final int f;
+   private final Consumer<px> g;
+   private final int h;
+   private final long i;
+   private final czh j;
 
-   public qo a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      Optional<qo> $$2 = pz.e($$1);
-      if ($$2.isPresent()) {
-         return $$2.get();
-      } else {
-         Message $$3 = tl.b("No such test: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
-      }
+   public qp(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<px> $$6) {
+      this($$0, $$1, $$2, czh.a, $$3, $$4, $$5, 1, 1, $$6);
    }
 
-   public static qp a() {
-      return new qp();
+   public qp(String $$0, String $$1, String $$2, czh $$3, int $$4, long $$5, boolean $$6, Consumer<px> $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
    }
 
-   public static qo a(CommandContext<dt> $$0, String $$1) {
-      return (qo)$$0.getArgument($$1, qo.class);
+   public qp(String $$0, String $$1, String $$2, czh $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<px> $$9) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.j = $$3;
+      this.h = $$4;
+      this.d = $$6;
+      this.f = $$7;
+      this.e = $$8;
+      this.g = $$9;
+      this.i = $$5;
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      Stream<String> $$2 = pz.a().stream().map(qo::a);
-      return dw.b($$2, $$1);
+   public void a(px $$0) {
+      this.g.accept($$0);
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   public String a() {
+      return this.b;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.h;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   public long f() {
+      return this.i;
+   }
+
+   public czh g() {
+      return this.j;
+   }
+
+   public boolean h() {
+      return this.e > 1;
+   }
+
+   public int i() {
+      return this.e;
+   }
+
+   public int j() {
+      return this.f;
    }
 }

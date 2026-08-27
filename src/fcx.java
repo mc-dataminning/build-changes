@@ -2,9 +2,9 @@ import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.Collection;
 
 public class fcx extends eyk {
-   private static final tl a = tl.c("selectWorld.experimental.title");
-   private static final tl b = tl.c("selectWorld.experimental.message");
-   private static final tl c = tl.c("selectWorld.experimental.details");
+   private static final tm a = tm.c("selectWorld.experimental.title");
+   private static final tm b = tm.c("selectWorld.experimental.message");
+   private static final tm c = tm.c("selectWorld.experimental.details");
    private static final int k = 10;
    private static final int l = 100;
    private final BooleanConsumer m;
@@ -18,8 +18,8 @@ public class fcx extends eyk {
    }
 
    @Override
-   public tl g() {
-      return tk.a(super.g(), b);
+   public tm g() {
+      return tl.a(super.g(), b);
    }
 
    @Override
@@ -31,8 +31,8 @@ public class fcx extends eyk {
       etk $$2 = $$0.a(new etk(b, this.i).b(true), 2, $$1);
       $$2.j(310);
       $$0.a(esq.a(c, $$0x -> this.f.a(new fcx.a())).a(100).a(), 2, $$1);
-      $$0.a(esq.a(tk.i, $$0x -> this.m.accept(true)).a());
-      $$0.a(esq.a(tk.k, $$0x -> this.m.accept(false)).a());
+      $$0.a(esq.a(tl.i, $$0x -> this.m.accept(true)).a());
+      $$0.a(esq.a(tl.k, $$0x -> this.m.accept(false)).a());
       this.o.a($$1x -> {
          eso var10000 = this.d($$1x);
       });
@@ -54,7 +54,7 @@ public class fcx extends eyk {
       private fcx.a.a b;
 
       a() {
-         super(tl.c("selectWorld.experimental.details.title"));
+         super(tm.c("selectWorld.experimental.details.title"));
       }
 
       @Override
@@ -65,7 +65,7 @@ public class fcx extends eyk {
       @Override
       protected void aI_() {
          super.aI_();
-         this.d(esq.a(tk.k, $$0 -> this.az_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
+         this.d(esq.a(tl.k, $$0 -> this.az_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
          this.b = new fcx.a.a(this.f, fcx.this.n);
          this.e(this.b);
       }
@@ -84,8 +84,8 @@ public class fcx extends eyk {
             for (anc $$2 : $$1) {
                String $$3 = cee.a(cee.f, $$2.d());
                if (!$$3.isEmpty()) {
-                  tl $$4 = tn.a($$2.a().e(), uh.a.a(true));
-                  tl $$5 = tl.a("selectWorld.experimental.details.entry", $$3);
+                  tm $$4 = to.a($$2.a().e(), ui.a.a(true));
+                  tm $$5 = tm.a("selectWorld.experimental.details.entry", $$3);
                   this.b(a.this.new b($$4, $$5, etj.a(a.this.i, $$5, this.b())));
                }
             }
@@ -98,11 +98,11 @@ public class fcx extends eyk {
       }
 
       class b extends etm.a<fcx.a.b> {
-         private final tl b;
-         private final tl c;
+         private final tm b;
+         private final tm c;
          private final etj d;
 
-         b(tl $$0, tl $$1, etj $$2) {
+         b(tm $$0, tm $$1, etj $$2) {
             this.b = $$0;
             this.c = $$1;
             this.d = $$2;
@@ -115,8 +115,8 @@ public class fcx extends eyk {
          }
 
          @Override
-         public tl a() {
-            return tl.a("narrator.select", tk.a(this.b, this.c));
+         public tm a() {
+            return tm.a("narrator.select", tl.a(this.b, this.c));
          }
       }
    }

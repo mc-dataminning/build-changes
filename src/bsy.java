@@ -28,7 +28,7 @@ public class bsy extends btl<bjg> {
    public static void a(bjg $$0) {
       Optional<List<bjg>> $$1 = $$0.dN().c(bsh.g);
       if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ah().equals(biu.ac));
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ag().equals(biu.ac));
          if ($$2) {
             b($$0);
          }

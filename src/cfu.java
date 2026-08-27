@@ -17,13 +17,13 @@ public class cfu extends bhf {
    }
 
    @Override
-   public void a(rd $$0) {
+   public void a(re $$0) {
       for (int $$1 = 0; $$1 < this.b(); $$1++) {
          this.a($$1, cjf.b);
       }
 
       for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         qx $$3 = $$0.a($$2);
+         qy $$3 = $$0.a($$2);
          int $$4 = $$3.f("Slot") & 255;
          if ($$4 >= 0 && $$4 < this.b()) {
             this.a($$4, cjf.a($$3));
@@ -32,13 +32,13 @@ public class cfu extends bhf {
    }
 
    @Override
-   public rd g() {
-      rd $$0 = new rd();
+   public re g() {
+      re $$0 = new re();
 
       for (int $$1 = 0; $$1 < this.b(); $$1++) {
          cjf $$2 = this.a($$1);
          if (!$$2.b()) {
-            qx $$3 = new qx();
+            qy $$3 = new qy();
             $$3.a("Slot", (byte)$$1);
             $$2.b($$3);
             $$0.add($$3);

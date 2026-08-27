@@ -18,7 +18,7 @@ public class fub extends fua<bzg> {
    }
 
    public void a(bzg $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      if ($$0.ce()) {
+      if ($$0.cd()) {
          ehn[] $$6 = $$0.E($$2);
          float $$7 = this.a($$0, $$2);
 

@@ -7,12 +7,12 @@ public enum cxq implements asp {
 
    public static final Codec<cxq> d = asp.a(cxq::values);
    private final String e;
-   private final tl f;
+   private final tm f;
    private final h g;
 
    private cxq(String $$0, h $$1) {
       this.e = $$0;
-      this.f = tl.c("mirror." + $$0);
+      this.f = tm.c("mirror." + $$0);
       this.g = $$1;
    }
 
@@ -46,7 +46,7 @@ public enum cxq implements asp {
       return this.g;
    }
 
-   public tl b() {
+   public tm b() {
       return this.f;
    }
 

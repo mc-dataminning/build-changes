@@ -49,15 +49,15 @@ public class bin extends biq implements bkd {
 
    @Override
    protected void a_() {
-      this.am().a(g, 0);
-      this.am().a(f, 3.0F);
-      this.am().a(h, false);
-      this.am().a(i, ix.v);
+      this.al().a(g, 0);
+      this.al().a(f, 3.0F);
+      this.al().a(h, false);
+      this.al().a(i, ix.v);
    }
 
    public void a(float $$0) {
       if (!this.dL().B) {
-         this.am().b(f, arx.a($$0, 0.0F, 32.0F));
+         this.al().b(f, arx.a($$0, 0.0F, 32.0F));
       }
    }
 
@@ -71,7 +71,7 @@ public class bin extends biq implements bkd {
    }
 
    public float h() {
-      return this.am().b(f);
+      return this.al().b(f);
    }
 
    public void a(clc $$0) {
@@ -83,9 +83,9 @@ public class bin extends biq implements bkd {
 
    private void w() {
       if (this.n == clf.b && this.o.isEmpty()) {
-         this.am().b(g, 0);
+         this.al().b(g, 0);
       } else {
-         this.am().b(g, cle.a(cle.a(this.n, this.o)));
+         this.al().b(g, cle.a(cle.a(this.n, this.o)));
       }
    }
 
@@ -97,28 +97,28 @@ public class bin extends biq implements bkd {
    }
 
    public int i() {
-      return this.am().b(g);
+      return this.al().b(g);
    }
 
    public void a(int $$0) {
       this.t = true;
-      this.am().b(g, $$0);
+      this.al().b(g, $$0);
    }
 
    public iv j() {
-      return this.am().b(i);
+      return this.al().b(i);
    }
 
    public void a(iv $$0) {
-      this.am().b(i, $$0);
+      this.al().b(i, $$0);
    }
 
    protected void a(boolean $$0) {
-      this.am().b(h, $$0);
+      this.al().b(h, $$0);
    }
 
    public boolean k() {
-      return this.am().b(h);
+      return this.al().b(h);
    }
 
    public int m() {
@@ -178,7 +178,7 @@ public class bin extends biq implements bkd {
          }
       } else {
          if (this.ah >= this.r + this.q) {
-            this.al();
+            this.ak();
             return;
          }
 
@@ -194,7 +194,7 @@ public class bin extends biq implements bkd {
          if (this.aE != 0.0F) {
             $$1 += this.aE;
             if ($$1 < 0.5F) {
-               this.al();
+               this.ak();
                return;
             }
 
@@ -213,7 +213,7 @@ public class bin extends biq implements bkd {
             if ($$24.isEmpty()) {
                this.p.clear();
             } else {
-               List<bjg> $$26 = this.dL().a(bjg.class, this.cH());
+               List<bjg> $$26 = this.dL().a(bjg.class, this.cG());
                if (!$$26.isEmpty()) {
                   for (bjg $$27 : $$26) {
                      if (!this.p.containsKey($$27) && $$27.fx()) {
@@ -234,7 +234,7 @@ public class bin extends biq implements bkd {
                            if (this.v != 0.0F) {
                               $$1 += this.v;
                               if ($$1 < 0.5F) {
-                                 this.al();
+                                 this.ak();
                                  return;
                               }
 
@@ -244,7 +244,7 @@ public class bin extends biq implements bkd {
                            if (this.u != 0) {
                               this.q = this.q + this.u;
                               if (this.q <= 0) {
-                                 this.al();
+                                 this.ak();
                                  return;
                               }
                            }
@@ -291,7 +291,7 @@ public class bin extends biq implements bkd {
 
    public void a(@Nullable bjg $$0) {
       this.aF = $$0;
-      this.aG = $$0 == null ? null : $$0.cw();
+      this.aG = $$0 == null ? null : $$0.cv();
    }
 
    @Nullable
@@ -307,7 +307,7 @@ public class bin extends biq implements bkd {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       this.ah = $$0.h("Age");
       this.q = $$0.h("Duration");
       this.r = $$0.h("WaitTime");
@@ -337,7 +337,7 @@ public class bin extends biq implements bkd {
       }
 
       if ($$0.b("effects", 9)) {
-         rd $$2 = $$0.c("effects", 10);
+         re $$2 = $$0.c("effects", 10);
          this.o.clear();
 
          for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
@@ -350,7 +350,7 @@ public class bin extends biq implements bkd {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       $$0.a("Age", this.ah);
       $$0.a("Duration", this.q);
       $$0.a("WaitTime", this.r);
@@ -373,10 +373,10 @@ public class bin extends biq implements bkd {
       }
 
       if (!this.o.isEmpty()) {
-         rd $$1 = new rd();
+         re $$1 = new re();
 
          for (bid $$2 : this.o) {
-            $$1.add($$2.a(new qx()));
+            $$1.add($$2.a(new qy()));
          }
 
          $$0.a("effects", $$1);

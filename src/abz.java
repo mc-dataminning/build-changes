@@ -1,4 +1,4 @@
-public abstract class abz implements vd<abd> {
+public abstract class abz implements ve<abd> {
    protected final double a;
    protected final double b;
    protected final double c;
@@ -60,7 +60,7 @@ public abstract class abz implements vd<abd> {
          super($$0, $$1, $$2, 0.0F, 0.0F, $$3, true, false);
       }
 
-      public static abz.a b(so $$0) {
+      public static abz.a b(sp $$0) {
          double $$1 = $$0.readDouble();
          double $$2 = $$0.readDouble();
          double $$3 = $$0.readDouble();
@@ -69,7 +69,7 @@ public abstract class abz implements vd<abd> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
          $$0.a(this.b);
          $$0.a(this.c);
@@ -82,7 +82,7 @@ public abstract class abz implements vd<abd> {
          super($$0, $$1, $$2, $$3, $$4, $$5, true, true);
       }
 
-      public static abz.b b(so $$0) {
+      public static abz.b b(sp $$0) {
          double $$1 = $$0.readDouble();
          double $$2 = $$0.readDouble();
          double $$3 = $$0.readDouble();
@@ -93,7 +93,7 @@ public abstract class abz implements vd<abd> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.a);
          $$0.a(this.b);
          $$0.a(this.c);
@@ -108,7 +108,7 @@ public abstract class abz implements vd<abd> {
          super(0.0, 0.0, 0.0, $$0, $$1, $$2, false, true);
       }
 
-      public static abz.c b(so $$0) {
+      public static abz.c b(sp $$0) {
          float $$1 = $$0.readFloat();
          float $$2 = $$0.readFloat();
          boolean $$3 = $$0.readUnsignedByte() != 0;
@@ -116,7 +116,7 @@ public abstract class abz implements vd<abd> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.d);
          $$0.a(this.e);
          $$0.k(this.f ? 1 : 0);
@@ -128,13 +128,13 @@ public abstract class abz implements vd<abd> {
          super(0.0, 0.0, 0.0, 0.0F, 0.0F, $$0, false, false);
       }
 
-      public static abz.d b(so $$0) {
+      public static abz.d b(sp $$0) {
          boolean $$1 = $$0.readUnsignedByte() != 0;
          return new abz.d($$1);
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.k(this.f ? 1 : 0);
       }
    }

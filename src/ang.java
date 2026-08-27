@@ -1,21 +1,21 @@
 import java.util.function.UnaryOperator;
 
 public interface ang {
-   UnaryOperator<tl> a = UnaryOperator.identity();
+   UnaryOperator<tm> a = UnaryOperator.identity();
    ang b = a(a, true);
    ang c = a(a("pack.source.builtin"), true);
    ang d = a(a("pack.source.feature"), false);
    ang e = a(a("pack.source.world"), true);
    ang f = a(a("pack.source.server"), true);
 
-   tl a(tl var1);
+   tm a(tm var1);
 
    boolean a();
 
-   static ang a(final UnaryOperator<tl> $$0, final boolean $$1) {
+   static ang a(final UnaryOperator<tm> $$0, final boolean $$1) {
       return new ang() {
          @Override
-         public tl a(tl $$0x) {
+         public tm a(tm $$0x) {
             return $$0.apply($$0);
          }
 
@@ -26,8 +26,8 @@ public interface ang {
       };
    }
 
-   private static UnaryOperator<tl> a(String $$0) {
-      tl $$1 = tl.c($$0);
-      return $$1x -> tl.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   private static UnaryOperator<tm> a(String $$0) {
+      tm $$1 = tm.c($$0);
+      return $$1x -> tm.a("pack.nameAndSource", $$1x, $$1).a(n.h);
    }
 }

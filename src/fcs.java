@@ -8,17 +8,17 @@ import javax.annotation.Nullable;
 public class fcs extends eyk {
    private static final aex c = new aex("social_interactions/background");
    private static final aex k = new aex("icon/search");
-   private static final tl l = tl.c("gui.socialInteractions.tab_all");
-   private static final tl m = tl.c("gui.socialInteractions.tab_hidden");
-   private static final tl n = tl.c("gui.socialInteractions.tab_blocked");
-   private static final tl o = l.d().a(n.t);
-   private static final tl p = m.d().a(n.t);
-   private static final tl q = n.d().a(n.t);
-   private static final tl s = tl.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
-   static final tl t = tl.c("gui.socialInteractions.search_empty").a(n.h);
-   private static final tl u = tl.c("gui.socialInteractions.empty_hidden").a(n.h);
-   private static final tl v = tl.c("gui.socialInteractions.empty_blocked").a(n.h);
-   private static final tl w = tl.c("gui.socialInteractions.blocking_hint");
+   private static final tm l = tm.c("gui.socialInteractions.tab_all");
+   private static final tm m = tm.c("gui.socialInteractions.tab_hidden");
+   private static final tm n = tm.c("gui.socialInteractions.tab_blocked");
+   private static final tm o = l.d().a(n.t);
+   private static final tm p = m.d().a(n.t);
+   private static final tm q = n.d().a(n.t);
+   private static final tm s = tm.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
+   static final tm t = tm.c("gui.socialInteractions.search_empty").a(n.h);
+   private static final tm u = tm.c("gui.socialInteractions.empty_hidden").a(n.h);
+   private static final tm v = tm.c("gui.socialInteractions.empty_blocked").a(n.h);
+   private static final tm w = tm.c("gui.socialInteractions.blocking_hint");
    private static final int x = 8;
    private static final int y = 236;
    private static final int z = 16;
@@ -37,12 +37,12 @@ public class fcs extends eyk {
    private esq K;
    private esq L;
    @Nullable
-   private tl M;
+   private tm M;
    private int N;
    private boolean O;
 
    public fcs() {
-      super(tl.c("gui.socialInteractions.title"));
+      super(tm.c("gui.socialInteractions.title"));
       this.a(eqv.O());
    }
 
@@ -50,25 +50,25 @@ public class fcs extends eyk {
       return Math.max(52, this.h - 128 - 16);
    }
 
-   private int C() {
+   private int D() {
       return 80 + this.l() - 8;
    }
 
-   private int D() {
+   private int E() {
       return (this.g - 238) / 2;
    }
 
    @Override
-   public tl g() {
-      return (tl)(this.M != null ? tk.a(super.g(), this.M) : super.g());
+   public tm g() {
+      return (tm)(this.M != null ? tl.a(super.g(), this.M) : super.g());
    }
 
    @Override
    protected void aI_() {
       if (this.O) {
-         this.E.a(this.g, this.h, 88, this.C());
+         this.E.a(this.g, this.h, 88, this.D());
       } else {
-         this.E = new fcr(this, this.f, this.g, this.h, 88, this.C(), 36);
+         this.E = new fcr(this, this.f, this.g, this.h, 88, this.D(), 36);
       }
 
       int $$0 = this.E.b() / 3;
@@ -81,9 +81,9 @@ public class fcs extends eyk {
       this.J = this.d(esq.a(m, $$0x -> this.a(fcs.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
       this.K = this.d(esq.a(n, $$0x -> this.a(fcs.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
       String $$6 = this.F != null ? this.F.a() : "";
-      this.F = new esz(this.i, this.D() + 28, 74, 200, 15, s) {
+      this.F = new esz(this.i, this.E() + 28, 74, 200, 15, s) {
          @Override
-         protected ty aF_() {
+         protected tz aF_() {
             return !fcs.this.F.a().isEmpty() && fcs.this.E.d() ? super.aF_().f(", ").b(fcs.t) : super.aF_();
          }
       };
@@ -146,7 +146,7 @@ public class fcs extends eyk {
 
    @Override
    public void b(esf $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.D() + 3;
+      int $$4 = this.E() + 3;
       super.b($$0, $$1, $$2, $$3);
       $$0.a(c, $$4, 64, 236, this.l() + 16);
       $$0.a(k, $$4 + 10, 76, 12, 12);
@@ -157,17 +157,17 @@ public class fcs extends eyk {
       super.a($$0, $$1, $$2, $$3);
       this.a(this.f);
       if (this.M != null) {
-         $$0.b(this.f.h, this.M, this.D() + 8, 35, -1);
+         $$0.b(this.f.h, this.M, this.E() + 8, 35, -1);
       }
 
       if (!this.E.d()) {
          this.E.a($$0, $$1, $$2, $$3);
       } else if (!this.F.a().isEmpty()) {
-         $$0.a(this.f.h, t, this.g / 2, (72 + this.C()) / 2, -1);
+         $$0.a(this.f.h, t, this.g / 2, (72 + this.D()) / 2, -1);
       } else if (this.H == fcs.a.b) {
-         $$0.a(this.f.h, u, this.g / 2, (72 + this.C()) / 2, -1);
+         $$0.a(this.f.h, u, this.g / 2, (72 + this.D()) / 2, -1);
       } else if (this.H == fcs.a.c) {
-         $$0.a(this.f.h, v, this.g / 2, (72 + this.C()) / 2, -1);
+         $$0.a(this.f.h, v, this.g / 2, (72 + this.D()) / 2, -1);
       }
 
       this.F.a($$0, $$1, $$2, $$3);
@@ -210,9 +210,9 @@ public class fcs extends eyk {
          }
 
          if ($$1 > 1) {
-            this.M = tl.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
+            this.M = tm.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
          } else {
-            this.M = tl.a("gui.socialInteractions.server_label.single", $$2, $$1);
+            this.M = tm.a("gui.socialInteractions.server_label.single", $$2, $$1);
          }
 
          this.N = $$1;

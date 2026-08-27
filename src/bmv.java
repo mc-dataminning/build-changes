@@ -5,11 +5,11 @@ import java.util.function.Predicate;
 
 public class bmv {
    public static bky<bjg> a(bjj $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ah().f()), $$1);
+      return a($$1x -> $$0.equals($$1x.ag().f()), $$1);
    }
 
    public static bmh<bjg> a(biu<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ah()), $$1);
+      return a($$1x -> $$0.equals($$1x.ag()), $$1);
    }
 
    public static bmh<bjg> a(float $$0) {

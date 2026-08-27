@@ -75,16 +75,16 @@ public class gdz {
       return "TelemetryEventType[" + this.k + "]";
    }
 
-   public ty e() {
+   public tz e() {
       return this.a("title");
    }
 
-   public ty f() {
+   public tz f() {
       return this.a("description");
    }
 
-   private ty a(String $$0) {
-      return tl.c("telemetry.event." + this.k + "." + $$0);
+   private tz a(String $$0) {
+      return tm.c("telemetry.event." + this.k + "." + $$0);
    }
 
    public static List<gdz> g() {

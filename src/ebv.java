@@ -15,7 +15,7 @@ public class ebv extends ebr {
       this.b.defaultReturnValue(-1);
    }
 
-   public static ebv b(qx $$0) {
+   public static ebv b(qy $$0) {
       ebv $$1 = new ebv();
 
       for (String $$2 : $$0.e()) {
@@ -28,7 +28,7 @@ public class ebv extends ebr {
    }
 
    @Override
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       ObjectIterator var2 = this.b.object2IntEntrySet().iterator();
 
       while (var2.hasNext()) {

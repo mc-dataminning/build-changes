@@ -18,7 +18,7 @@ public class bmj {
                                     .stream()
                                     .filter($$1xxx -> $$1xxx instanceof cbh && $$1xxx != $$4)
                                     .map($$0xxxx -> (cbh)$$0xxxx)
-                                    .filter(bjg::bw)
+                                    .filter(bjg::bv)
                                     .filter($$2xxx -> a($$6, $$4x, $$2xxx))
                                     .reduce($$4, bmj::a)
                            );

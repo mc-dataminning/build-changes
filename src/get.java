@@ -105,8 +105,8 @@ public class get {
       return this.a.q == null ? false : this.a.q.l() == cps.a;
    }
 
-   public static tl a(String $$0) {
-      return tl.d("key." + $$0).a(n.r);
+   public static tm a(String $$0) {
+      return tm.d("key." + $$0).a(n.r);
    }
 
    public void a(cjf $$0, cjf $$1, cet $$2) {

@@ -3,7 +3,7 @@ public interface arz {
 
    String b();
 
-   default tl d() {
-      return tl.c(this.b());
+   default tm d() {
+      return tm.c(this.b());
    }
 }

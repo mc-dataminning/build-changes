@@ -1,4 +1,4 @@
-public class abt implements vd<abd> {
+public class abt implements ve<abd> {
    private final int a;
 
    public abt(int $$0) {
@@ -9,12 +9,12 @@ public class abt implements vd<abd> {
       $$0.a(this);
    }
 
-   public abt(so $$0) {
+   public abt(sp $$0) {
       this.a = $$0.readByte();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.a);
    }
 

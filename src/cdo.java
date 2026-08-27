@@ -30,13 +30,13 @@ public class cdo extends cdn implements biz, cdp {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       this.c($$0);
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       super.a($$0);
       this.b_($$0);
    }

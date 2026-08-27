@@ -41,7 +41,7 @@ public class daz extends ctd implements csx {
 
    @Override
    public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
-      if ($$3 instanceof bjg && $$3.ah() != biu.N && $$3.ah() != biu.h) {
+      if ($$3 instanceof bjg && $$3.ag() != biu.N && $$3.ag() != biu.h) {
          $$3.a($$0, new ehn(0.8F, 0.75, 0.8F));
          if (!$$1.B && $$0.c(b) > 0 && ($$3.ac != $$3.dq() || $$3.ae != $$3.dw())) {
             double $$4 = Math.abs($$3.dq() - $$3.ac);

@@ -51,7 +51,7 @@ public class esp {
          for (ete $$3 : this.h.values()) {
             int $$4 = $$1 / 2 - 91;
             this.a($$0, $$4, $$2, $$3);
-            tl $$6 = $$3.j();
+            tm $$6 = $$3.j();
             int $$7 = this.g.h.a($$6);
             int $$8 = $$1 / 2 - $$7 / 2;
             int $$9 = $$2 - 9;
@@ -84,7 +84,7 @@ public class esp {
    public void a(xh $$0) {
       $$0.a(new xh.b() {
          @Override
-         public void a(UUID $$0, tl $$1, float $$2, bgo.a $$3, bgo.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+         public void a(UUID $$0, tm $$1, float $$2, bgo.a $$3, bgo.b $$4, boolean $$5, boolean $$6, boolean $$7) {
             esp.this.h.put($$0, new ete($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
          }
 
@@ -99,7 +99,7 @@ public class esp {
          }
 
          @Override
-         public void a(UUID $$0, tl $$1) {
+         public void a(UUID $$0, tm $$1) {
             esp.this.h.get($$0).a($$1);
          }
 

@@ -1,14 +1,14 @@
 public final class bhg implements bhb {
-   private final tl a;
+   private final tm a;
    private final cfp b;
 
-   public bhg(cfp $$0, tl $$1) {
+   public bhg(cfp $$0, tm $$1) {
       this.b = $$0;
       this.a = $$1;
    }
 
    @Override
-   public tl N_() {
+   public tm N_() {
       return this.a;
    }
 

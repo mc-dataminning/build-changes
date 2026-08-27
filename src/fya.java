@@ -26,7 +26,7 @@ public class fya<T extends bjg & cbj, M extends ffd<T> & fhn> extends fxp<T, M> 
    }
 
    public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce()) {
+      if (!$$3.cd()) {
          cbi $$10 = $$3.go();
          cbm $$11 = $$10.a();
          cbk $$12 = $$10.b();

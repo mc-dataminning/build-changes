@@ -9,7 +9,7 @@ public class fbz extends eso {
    private static final float l = 15.0F;
    private static final int m = 25;
    public static final int a = 30;
-   private static final tl n = tl.c("gui.recipebook.moreRecipes");
+   private static final tm n = tm.c("gui.recipebook.moreRecipes");
    private cfv<?> o;
    private aph p;
    private fca q;
@@ -18,7 +18,7 @@ public class fbz extends eso {
    private int u;
 
    public fbz() {
-      super(0, 0, 25, 25, tk.a);
+      super(0, 0, 25, 25, tl.a);
    }
 
    public void a(fca $$0, fbx $$1) {
@@ -103,9 +103,9 @@ public class fbz extends eso {
       return $$0.get(this.u);
    }
 
-   public List<tl> f() {
+   public List<tm> f() {
       cjf $$0 = this.g().get(this.u).b().a(this.q.a());
-      List<tl> $$1 = Lists.newArrayList(eyk.a(eqv.O(), $$0));
+      List<tm> $$1 = Lists.newArrayList(eyk.a(eqv.O(), $$0));
       if (this.q.a(this.p.a(this.o)).size() > 1) {
          $$1.add(n);
       }
@@ -116,11 +116,11 @@ public class fbz extends eso {
    @Override
    public void a(ewi $$0) {
       cjf $$1 = this.g().get(this.u).b().a(this.q.a());
-      $$0.a(ewh.a, tl.a("narration.recipe", $$1.y()));
+      $$0.a(ewh.a, tm.a("narration.recipe", $$1.y()));
       if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$0.a(ewh.d, tl.c("narration.button.usage.hovered"), tl.c("narration.recipe.usage.more"));
+         $$0.a(ewh.d, tm.c("narration.button.usage.hovered"), tm.c("narration.recipe.usage.more"));
       } else {
-         $$0.a(ewh.d, tl.c("narration.button.usage.hovered"));
+         $$0.a(ewh.d, tm.c("narration.button.usage.hovered"));
       }
    }
 

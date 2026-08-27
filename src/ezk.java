@@ -14,34 +14,34 @@ public abstract class ezk extends eyk {
    private evh o;
 
    public ezk(ded $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, tl.c("sign.edit"));
+      this($$0, $$1, $$2, tm.c("sign.edit"));
    }
 
-   public ezk(ded $$0, boolean $$1, boolean $$2, tl $$3) {
+   public ezk(ded $$0, boolean $$1, boolean $$2, tm $$3) {
       super($$3);
       this.b = $$0;
       this.c = $$0.a($$1);
       this.l = $$1;
       this.a = czv.a($$0.q().b());
-      this.k = IntStream.range(0, 4).mapToObj($$1x -> this.c.a($$1x, $$2)).map(tl::getString).toArray(String[]::new);
+      this.k = IntStream.range(0, 4).mapToObj($$1x -> this.c.a($$1x, $$2)).map(tm::getString).toArray(String[]::new);
    }
 
    @Override
    protected void aI_() {
-      this.d(esq.a(tk.d, $$0 -> this.D()).a(this.g / 2 - 100, this.h / 4 + 144, 200, 20).a());
+      this.d(esq.a(tl.d, $$0 -> this.E()).a(this.g / 2 - 100, this.h / 4 + 144, 200, 20).a());
       this.o = new evh(() -> this.k[this.n], this::a, evh.a(this.f), evh.c(this.f), $$0 -> this.f.h.b($$0) <= this.b.d());
    }
 
    @Override
    public void c() {
       this.m++;
-      if (!this.C()) {
-         this.D();
+      if (!this.D()) {
+         this.E();
       }
    }
 
-   private boolean C() {
-      return this.f != null && this.f.s != null && !this.b.r() && !this.b.b(this.f.s.cw());
+   private boolean D() {
+      return this.f != null && this.f.s != null && !this.b.r() && !this.b.b(this.f.s.cv());
    }
 
    @Override
@@ -76,7 +76,7 @@ public abstract class ezk extends eyk {
 
    @Override
    public void az_() {
-      this.D();
+      this.E();
    }
 
    @Override
@@ -165,11 +165,11 @@ public abstract class ezk extends eyk {
 
    private void a(String $$0) {
       this.k[this.n] = $$0;
-      this.c = this.c.a(this.n, tl.b($$0));
+      this.c = this.c.a(this.n, tm.b($$0));
       this.b.a(this.c, this.l);
    }
 
-   private void D() {
+   private void E() {
       this.f.a(null);
    }
 }

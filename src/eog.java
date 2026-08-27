@@ -2,10 +2,10 @@ import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
 public class eog extends gfb {
    protected BooleanConsumer a;
-   private final tl b;
-   private final tl c;
+   private final tm b;
+   private final tm c;
 
-   public eog(BooleanConsumer $$0, tl $$1, tl $$2) {
+   public eog(BooleanConsumer $$0, tm $$1, tm $$2) {
       super(eqn.a);
       this.a = $$0;
       this.b = $$1;
@@ -14,8 +14,8 @@ public class eog extends gfb {
 
    @Override
    public void aI_() {
-      this.d(esq.a(tk.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(9), 100, 20).a());
-      this.d(esq.a(tk.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(9), 100, 20).a());
+      this.d(esq.a(tl.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(9), 100, 20).a());
+      this.d(esq.a(tl.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(9), 100, 20).a());
    }
 
    @Override

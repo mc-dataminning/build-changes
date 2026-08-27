@@ -48,7 +48,7 @@ public class cvv extends csv {
 
    @Override
    public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
-      if ($$3.ah().equals(biu.L)) {
+      if ($$3.ag().equals(biu.L)) {
          this.a($$1, $$2);
       }
    }

@@ -53,16 +53,16 @@ public abstract class bwp extends bwq {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("ChestedHorse", this.t());
       if (this.t()) {
-         rd $$1 = new rd();
+         re $$1 = new re();
 
          for (int $$2 = 2; $$2 < this.cp.b(); $$2++) {
             cjf $$3 = this.cp.a($$2);
             if (!$$3.b()) {
-               qx $$4 = new qx();
+               qy $$4 = new qy();
                $$4.a("Slot", (byte)$$2);
                $$3.b($$4);
                $$1.add($$4);
@@ -74,15 +74,15 @@ public abstract class bwp extends bwq {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.w($$0.q("ChestedHorse"));
       this.gz();
       if (this.t()) {
-         rd $$1 = $$0.c("Items", 10);
+         re $$1 = $$0.c("Items", 10);
 
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            qx $$3 = $$1.a($$2);
+            qy $$3 = $$1.a($$2);
             int $$4 = $$3.f("Slot") & 255;
             if ($$4 >= 2 && $$4 < this.cp.b()) {
                this.cp.a($$4, cjf.a($$3));
@@ -127,7 +127,7 @@ public abstract class bwp extends bwq {
    @Override
    public bgy b(cbu $$0, bgx $$1) {
       boolean $$2 = !this.m_() && this.gs() && $$0.fH();
-      if (!this.bP() && !$$2) {
+      if (!this.bO() && !$$2) {
          cjf $$3 = $$0.b($$1);
          if (!$$3.b()) {
             if (this.m($$3)) {

@@ -13,7 +13,7 @@ public class bpq extends bqb {
    @Override
    public boolean a() {
       boolean $$0 = this.a.aB || this.a.aA;
-      if ($$0 && this.a.ah().a(apw.f)) {
+      if ($$0 && this.a.ag().a(apw.f)) {
          gw $$1 = this.a.dl().c();
          dfj $$2 = this.b.a_($$1);
          return $$2.a(csw.qC) || $$2.k(this.b, $$1) == eid.a();

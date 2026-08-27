@@ -9,16 +9,16 @@ public class ebu {
       this.c = $$2;
    }
 
-   public static ebu a(qx $$0) {
-      gw $$1 = rj.b($$0.p("Pos"));
+   public static ebu a(qy $$0) {
+      gw $$1 = rk.b($$0.p("Pos"));
       int $$2 = $$0.h("Rotation");
       int $$3 = $$0.h("EntityId");
       return new ebu($$1, $$2, $$3);
    }
 
-   public qx a() {
-      qx $$0 = new qx();
-      $$0.a("Pos", rj.a(this.a));
+   public qy a() {
+      qy $$0 = new qy();
+      $$0.a("Pos", rk.a(this.a));
       $$0.a("Rotation", this.b);
       $$0.a("EntityId", this.c);
       return $$0;

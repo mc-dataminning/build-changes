@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class chl {
-   private final tl a;
+   private final tm a;
    String b = "items.png";
    boolean c = true;
    boolean d = true;
@@ -24,7 +24,7 @@ public class chl {
    private final Supplier<cjf> m;
    private final chl.b n;
 
-   chl(chl.f $$0, int $$1, chl.h $$2, tl $$3, Supplier<cjf> $$4, chl.b $$5) {
+   chl(chl.f $$0, int $$1, chl.h $$2, tm $$3, Supplier<cjf> $$4, chl.b $$5) {
       this.f = $$0;
       this.g = $$1;
       this.a = $$3;
@@ -37,7 +37,7 @@ public class chl {
       return new chl.a($$0, $$1);
    }
 
-   public tl a() {
+   public tm a() {
       return this.a;
    }
 
@@ -121,7 +121,7 @@ public class chl {
       };
       private final chl.f b;
       private final int c;
-      private tl d = tl.h();
+      private tm d = tm.h();
       private Supplier<cjf> e = () -> cjf.b;
       private chl.b f = a;
       private boolean g = true;
@@ -135,7 +135,7 @@ public class chl {
          this.c = $$1;
       }
 
-      public chl.a a(tl $$0) {
+      public chl.a a(tm $$0) {
          this.d = $$0;
          return this;
       }

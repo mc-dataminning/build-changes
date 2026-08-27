@@ -205,7 +205,7 @@ public class bhf implements bgr, cgg {
       }
    }
 
-   public void a(rd $$0) {
+   public void a(re $$0) {
       this.a();
 
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
@@ -216,13 +216,13 @@ public class bhf implements bgr, cgg {
       }
    }
 
-   public rd g() {
-      rd $$0 = new rd();
+   public re g() {
+      re $$0 = new re();
 
       for (int $$1 = 0; $$1 < this.b(); $$1++) {
          cjf $$2 = this.a($$1);
          if (!$$2.b()) {
-            $$0.add($$2.b(new qx()));
+            $$0.add($$2.b(new qy()));
          }
       }
 

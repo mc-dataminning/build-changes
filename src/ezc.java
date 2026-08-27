@@ -20,10 +20,10 @@ public class ezc extends esw<ezc.b> {
          String $$5 = $$4.f();
          if (!$$5.equals($$3)) {
             $$3 = $$5;
-            this.b(new ezc.a(tl.c($$5)));
+            this.b(new ezc.a(tm.c($$5)));
          }
 
-         tl $$6 = tl.c($$4.h());
+         tm $$6 = tm.c($$4.h());
          int $$7 = $$1.h.a($$6);
          if ($$7 > this.m) {
             this.m = $$7;
@@ -53,10 +53,10 @@ public class ezc extends esw<ezc.b> {
    }
 
    public class a extends ezc.b {
-      final tl b;
+      final tm b;
       private final int c;
 
-      public a(tl $$1) {
+      public a(tm $$1) {
          this.b = $$1;
          this.c = ezc.this.c.h.a(this.b);
       }
@@ -103,22 +103,22 @@ public class ezc extends esw<ezc.b> {
 
    public class c extends ezc.b {
       private final eqt b;
-      private final tl c;
+      private final tm c;
       private final esq d;
       private final esq e;
       private boolean f = false;
 
-      c(eqt $$1, tl $$2) {
+      c(eqt $$1, tm $$2) {
          this.b = $$1;
          this.c = $$2;
          this.d = esq.a($$2, $$1x -> {
             ezc.this.a.c = $$1;
             ezc.this.d();
-         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? tl.a("narrator.controls.unbound", $$2) : tl.a("narrator.controls.bound", $$2, $$2x.get())).a();
-         this.e = esq.a(tl.c("controls.reset"), $$1x -> {
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? tm.a("narrator.controls.unbound", $$2) : tm.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.e = esq.a(tm.c("controls.reset"), $$1x -> {
             ezc.this.c.m.a($$1, $$1.i());
             ezc.this.d();
-         }).a(0, 0, 50, 20).a($$1x -> tl.a("narrator.controls.reset", $$2)).a();
+         }).a(0, 0, 50, 20).a($$1x -> tm.a("narrator.controls.reset", $$2)).a();
          this.d();
       }
 
@@ -155,7 +155,7 @@ public class ezc extends esw<ezc.b> {
          this.d.b(this.b.k());
          this.e.i = !this.b.l();
          this.f = false;
-         ty $$0 = tl.h();
+         tz $$0 = tm.h();
          if (!this.b.j()) {
             for (eqt $$1 : ezc.this.c.m.X) {
                if ($$1 != this.b && this.b.b($$1)) {
@@ -164,20 +164,20 @@ public class ezc extends esw<ezc.b> {
                   }
 
                   this.f = true;
-                  $$0.b(tl.c($$1.h()));
+                  $$0.b(tm.c($$1.h()));
                }
             }
          }
 
          if (this.f) {
-            this.d.b(tl.b("[ ").b(this.d.m().e().a(n.p)).f(" ]").a(n.m));
-            this.d.a(eua.a(tl.a("controls.keybinds.duplicateKeybinds", $$0)));
+            this.d.b(tm.b("[ ").b(this.d.m().e().a(n.p)).f(" ]").a(n.m));
+            this.d.a(eua.a(tm.a("controls.keybinds.duplicateKeybinds", $$0)));
          } else {
             this.d.a(null);
          }
 
          if (ezc.this.a.c == this.b) {
-            this.d.b(tl.b("> ").b(this.d.m().e().a(n.p, n.t)).f(" <").a(n.o));
+            this.d.b(tm.b("> ").b(this.d.m().e().a(n.p, n.t)).f(" <").a(n.o));
          }
       }
    }

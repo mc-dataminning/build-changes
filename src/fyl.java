@@ -140,11 +140,11 @@ public class fyl {
       a(cji.uy, new aex("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fm() && $$2.fo() == $$0x ? 1.0F : 0.0F);
       a(cji.uV, new aex("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fm() && $$2.fo() == $$0x ? 1.0F : 0.0F);
       a(cji.hg, new aex("level"), ($$0x, $$1, $$2, $$3) -> {
-         qx $$4 = $$0x.b("BlockStateTag");
+         qy $$4 = $$0x.b("BlockStateTag");
 
          try {
             if ($$4 != null) {
-               rq $$5 = $$4.c(cxg.b.f());
+               rr $$5 = $$4.c(cxg.b.f());
                if ($$5 != null) {
                   return (float)Integer.parseInt($$5.r_()) / 16.0F;
                }

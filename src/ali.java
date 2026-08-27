@@ -1,15 +1,15 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public record ali(String b, to c) {
+public record ali(String b, tp c) {
    public static final ali a = a("");
 
    public static ali a(String $$0) {
-      return new ali($$0, to.c);
+      return new ali($$0, tp.c);
    }
 
    public static ali b(String $$0) {
-      return new ali($$0, to.b);
+      return new ali($$0, tp.b);
    }
 
    @Nullable
@@ -29,7 +29,7 @@ public record ali(String b, to c) {
       return this.b;
    }
 
-   public to e() {
+   public tp e() {
       return this.c;
    }
 }

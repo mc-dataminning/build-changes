@@ -36,7 +36,7 @@ public class cjm extends chk {
 
    @Nullable
    public static Integer d(cjf $$0) {
-      qx $$1 = $$0.v();
+      qy $$1 = $$0.v();
       return $$1 != null && $$1.b("map", 99) ? $$1.h("map") : null;
    }
 
@@ -277,7 +277,7 @@ public class cjm extends chk {
 
    @Nullable
    @Override
-   public vd<?> a(cjf $$0, cpv $$1, cbu $$2) {
+   public ve<?> a(cjf $$0, cpv $$1, cbu $$2) {
       Integer $$3 = d($$0);
       ebw $$4 = a($$3, $$1);
       return $$4 != null ? $$4.a($$3, $$2) : null;
@@ -285,7 +285,7 @@ public class cjm extends chk {
 
    @Override
    public void b(cjf $$0, cpv $$1, cbu $$2) {
-      qx $$3 = $$0.v();
+      qy $$3 = $$0.v();
       if ($$3 != null && $$3.b("map_scale_direction", 99)) {
          a($$0, $$1, $$3.h("map_scale_direction"));
          $$3.r("map_scale_direction");
@@ -316,10 +316,10 @@ public class cjm extends chk {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       Integer $$4 = d($$0);
       ebw $$5 = $$1 == null ? null : a($$4, $$1);
-      qx $$6 = $$0.v();
+      qy $$6 = $$0.v();
       boolean $$7;
       byte $$8;
       if ($$6 != null) {
@@ -331,7 +331,7 @@ public class cjm extends chk {
       }
 
       if ($$5 != null && ($$5.h || $$7)) {
-         $$2.add(tl.a("filled_map.locked", $$4).a(n.h));
+         $$2.add(tm.a("filled_map.locked", $$4).a(n.h));
       }
 
       if ($$3.a()) {
@@ -341,24 +341,24 @@ public class cjm extends chk {
             }
 
             int $$11 = Math.min($$5.f + $$8, 4);
-            $$2.add(tl.a("filled_map.scale", 1 << $$11).a(n.h));
-            $$2.add(tl.a("filled_map.level", $$11, 4).a(n.h));
+            $$2.add(tm.a("filled_map.scale", 1 << $$11).a(n.h));
+            $$2.add(tm.a("filled_map.level", $$11, 4).a(n.h));
          } else {
-            $$2.add(tl.c("filled_map.unknown").a(n.h));
+            $$2.add(tm.c("filled_map.unknown").a(n.h));
          }
       }
    }
 
-   private static tl c(int $$0) {
-      return tl.a("filled_map.id", $$0).a(n.h);
+   private static tm c(int $$0) {
+      return tm.a("filled_map.id", $$0).a(n.h);
    }
 
-   public static tl k(cjf $$0) {
+   public static tm k(cjf $$0) {
       return c(d($$0));
    }
 
    public static int o(cjf $$0) {
-      qx $$1 = $$0.b("display");
+      qy $$1 = $$0.b("display");
       if ($$1 != null && $$1.b("MapColor", 99)) {
          int $$2 = $$1.h("MapColor");
          return 0xFF000000 | $$2 & 16777215;

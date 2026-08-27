@@ -8,7 +8,7 @@ public class bvu extends bkb implements bjn {
    private static final aef<Integer> bY = aei.a(bvu.class, aeh.b);
    private static final aef<Integer> bZ = aei.a(bvu.class, aeh.b);
    public static final Predicate<bjg> bW = $$0 -> {
-      biu<?> $$1 = $$0.ah();
+      biu<?> $$1 = $$0.ag();
       return $$1 == biu.aF || $$1 == biu.aC || $$1 == biu.N;
    };
    private static final float ca = 8.0F;
@@ -72,14 +72,14 @@ public class bvu extends bkb implements bjn {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("CollarColor", (byte)this.gm().a());
       this.c($$0);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("CollarColor", 99)) {
          this.a(cht.a($$0.h("CollarColor")));
@@ -117,7 +117,7 @@ public class bvu extends bkb implements bjn {
    @Override
    public void b_() {
       super.b_();
-      if (!this.dL().B && this.ce && !this.cf && !this.fZ() && this.aB()) {
+      if (!this.dL().B && this.ce && !this.cf && !this.fZ() && this.aA()) {
          this.cf = true;
          this.cg = 0.0F;
          this.ch = 0.0F;
@@ -132,7 +132,7 @@ public class bvu extends bkb implements bjn {
    @Override
    public void l() {
       super.l();
-      if (this.bw()) {
+      if (this.bv()) {
          this.cd = this.cc;
          if (this.gn()) {
             this.cc = this.cc + (1.0F - this.cc) * 0.4F;
@@ -140,7 +140,7 @@ public class bvu extends bkb implements bjn {
             this.cc = this.cc + (0.0F - this.cc) * 0.4F;
          }
 
-         if (this.ba()) {
+         if (this.aZ()) {
             this.ce = true;
             if (this.cf && !this.dL().B) {
                this.dL().a(this, (byte)56);
@@ -167,8 +167,8 @@ public class bvu extends bkb implements bjn {
                ehn $$2 = this.do();
 
                for (int $$3 = 0; $$3 < $$1; $$3++) {
-                  float $$4 = (this.ag.i() * 2.0F - 1.0F) * this.dg() * 0.5F;
-                  float $$5 = (this.ag.i() * 2.0F - 1.0F) * this.dg() * 0.5F;
+                  float $$4 = (this.ag.i() * 2.0F - 1.0F) * this.df() * 0.5F;
+                  float $$5 = (this.ag.i() * 2.0F - 1.0F) * this.df() * 0.5F;
                   this.dL().a(ix.ag, this.dq() + (double)$$4, (double)($$0 + 0.8F), this.dw() + (double)$$5, $$2.c, $$2.d, $$2.e);
                }
             }
@@ -220,8 +220,8 @@ public class bvu extends bkb implements bjn {
    }
 
    @Override
-   public int Z() {
-      return this.y() ? 20 : super.Z();
+   public int Y() {
+      return this.y() ? 20 : super.Y();
    }
 
    @Override
@@ -449,8 +449,8 @@ public class bvu extends bkb implements bjn {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.6F * this.cI()), (double)(this.dg() * 0.4F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.6F * this.cH()), (double)(this.df() * 0.4F));
    }
 
    @Override
@@ -499,7 +499,7 @@ public class bvu extends bkb implements bjn {
 
       @Override
       protected boolean h() {
-         return this.b.dA() || this.b.bN();
+         return this.b.dA() || this.b.bM();
       }
    }
 }

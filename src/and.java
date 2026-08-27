@@ -3,12 +3,12 @@ public enum and {
    b("new"),
    c("compatible");
 
-   private final tl d;
-   private final tl e;
+   private final tm d;
+   private final tm e;
 
    private and(String $$0) {
-      this.d = tl.c("pack.incompatible." + $$0).a(n.h);
-      this.e = tl.c("pack.incompatible.confirm." + $$0);
+      this.d = tm.c("pack.incompatible." + $$0).a(n.h);
+      this.e = tm.c("pack.incompatible.confirm." + $$0);
    }
 
    public boolean a() {
@@ -23,11 +23,11 @@ public enum and {
       }
    }
 
-   public tl b() {
+   public tm b() {
       return this.d;
    }
 
-   public tl c() {
+   public tm c() {
       return this.e;
    }
 }

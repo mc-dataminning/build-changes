@@ -23,7 +23,7 @@ public class agr {
          }
       }
 
-      $$0.a(() -> tl.a("commands.defaultgamemode.success", $$1.d()), true);
+      $$0.a(() -> tm.a("commands.defaultgamemode.success", $$1.d()), true);
       return $$2;
    }
 }

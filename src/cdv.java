@@ -63,7 +63,7 @@ public class cdv extends cdm implements dds {
    @Override
    public void l() {
       super.l();
-      if (!this.dL().B && this.bw() && this.L() && this.P()) {
+      if (!this.dL().B && this.bv() && this.L() && this.P()) {
          this.e();
       }
    }
@@ -72,7 +72,7 @@ public class cdv extends cdm implements dds {
       if (ddt.a(this.dL(), this)) {
          return true;
       } else {
-         for (byn $$1 : this.dL().a(byn.class, this.cH().c(0.25, 0.0, 0.25), bit.a)) {
+         for (byn $$1 : this.dL().a(byn.class, this.cG().c(0.25, 0.0, 0.25), bit.a)) {
             if (ddt.a(this, $$1)) {
                return true;
             }
@@ -88,13 +88,13 @@ public class cdv extends cdm implements dds {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("Enabled", this.f);
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       super.a($$0);
       this.f = $$0.e("Enabled") ? $$0.q("Enabled") : true;
    }

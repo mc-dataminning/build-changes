@@ -8,7 +8,7 @@ public class exs extends exb {
    @Override
    protected void aI_() {
       super.aI_();
-      this.c = esq.a(tl.c("multiplayer.stopSleeping"), $$0 -> this.l()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
+      this.c = esq.a(tm.c("multiplayer.stopSleeping"), $$0 -> this.l()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
       this.d(this.c);
    }
 

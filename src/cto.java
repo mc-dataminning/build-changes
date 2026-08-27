@@ -53,7 +53,7 @@ public class cto extends cwo {
       $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
       $$0.b($$2);
 
-      for (aks $$4 : $$0.a(aks.class, $$2.cH().g(5.0))) {
+      for (aks $$4 : $$0.a(aks.class, $$2.cG().g(5.0))) {
          al.n.a($$4, $$2);
       }
 

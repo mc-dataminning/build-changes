@@ -8,7 +8,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class ahr {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.particle.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.particle.failed"));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -123,7 +123,7 @@ public class ahr {
       if ($$8 == 0) {
          throw a.create();
       } else {
-         $$0.a(() -> tl.a("commands.particle.success", jd.k.b($$1.b()).toString()), true);
+         $$0.a(() -> tm.a("commands.particle.success", jd.k.b($$1.b()).toString()), true);
          return $$8;
       }
    }

@@ -21,11 +21,11 @@ public class dej extends dek {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("Age", this.g);
       if (this.i != null) {
-         $$0.a("ExitPortal", rj.a(this.i));
+         $$0.a("ExitPortal", rk.a(this.i));
       }
 
       if (this.j) {
@@ -34,11 +34,11 @@ public class dej extends dek {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.g = $$0.i("Age");
       if ($$0.b("ExitPortal", 10)) {
-         gw $$1 = rj.b($$0.p("ExitPortal"));
+         gw $$1 = rk.b($$0.p("ExitPortal"));
          if (cpv.k($$1)) {
             this.i = $$1;
          }
@@ -77,7 +77,7 @@ public class dej extends dek {
    }
 
    public static boolean a(biq $$0) {
-      return bit.f.test($$0) && !$$0.cW().av();
+      return bit.f.test($$0) && !$$0.cV().au();
    }
 
    public boolean c() {
@@ -101,7 +101,7 @@ public class dej extends dek {
    }
 
    @Override
-   public qx as_() {
+   public qy as_() {
       return this.o();
    }
 
@@ -146,15 +146,15 @@ public class dej extends dek {
 
                if ($$8 != null) {
                   $$9 = $$8;
-                  $$3.al();
+                  $$3.ak();
                } else {
                   $$9 = $$3;
                }
             } else {
-               $$9 = $$3.cW();
+               $$9 = $$3.cV();
             }
 
-            $$9.at();
+            $$9.as();
             $$9.n((double)$$7.u() + 0.5, (double)$$7.v(), (double)$$7.w() + 0.5);
          }
 
@@ -175,7 +175,7 @@ public class dej extends dek {
       if ($$4 == null) {
          gw $$5 = gw.a($$2.c + 0.5, 75.0, $$2.e + 0.5);
          a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
-         $$0.G_().c(je.as).flatMap($$0x -> $$0x.b(or.e)).ifPresent($$2x -> ((dnj)$$2x.a()).a($$0, $$0.k().g(), asc.a($$5.a()), $$5));
+         $$0.G_().c(je.as).flatMap($$0x -> $$0x.b(os.e)).ifPresent($$2x -> ((dnj)$$2x.a()).a($$0, $$0.k().g(), asc.a($$5.a()), $$5));
          $$4 = $$5;
       } else {
          a.debug("Found suitable block to teleport to: {}", $$4);

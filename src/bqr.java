@@ -23,7 +23,7 @@ public class bqr extends bqb {
 
    @Override
    public boolean b() {
-      if (!this.b.bw()) {
+      if (!this.b.bv()) {
          return false;
       } else {
          return this.a.f(this.b) > 225.0 ? false : !this.a.L().l() || this.a();
@@ -44,7 +44,7 @@ public class bqr extends bqb {
    @Override
    public void e() {
       this.a.G().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dg() * 2.0F * this.a.dg() * 2.0F);
+      double $$0 = (double)(this.a.df() * 2.0F * this.a.df() * 2.0F);
       double $$1 = this.a.i(this.b.dq(), this.b.ds(), this.b.dw());
       double $$2 = 0.8;
       if ($$1 > $$0 && $$1 < 16.0) {

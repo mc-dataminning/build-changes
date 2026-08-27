@@ -57,7 +57,7 @@ public class bth extends btl<bjg> {
                $$9 = Optional.of($$18);
             }
          } else if (!$$3.isEmpty() || !($$14 instanceof bzz) && !($$14 instanceof byb)) {
-            if ($$7.isEmpty() && cal.a($$14.ah())) {
+            if ($$7.isEmpty() && cal.a($$14.ag())) {
                $$7 = Optional.of($$14);
             }
          } else {

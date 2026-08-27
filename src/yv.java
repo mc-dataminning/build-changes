@@ -1,4 +1,4 @@
-public class yv implements vd<ww> {
+public class yv implements ve<wx> {
    private static final int a = 1;
    private static final int b = 2;
    private static final int c = 4;
@@ -19,7 +19,7 @@ public class yv implements vd<ww> {
       this.j = $$0.b();
    }
 
-   public yv(so $$0) {
+   public yv(sp $$0) {
       byte $$1 = $$0.readByte();
       this.e = ($$1 & 1) != 0;
       this.f = ($$1 & 2) != 0;
@@ -30,7 +30,7 @@ public class yv implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       byte $$1 = 0;
       if (this.e) {
          $$1 = (byte)($$1 | 1);
@@ -53,7 +53,7 @@ public class yv implements vd<ww> {
       $$0.a(this.j);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

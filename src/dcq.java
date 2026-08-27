@@ -15,7 +15,7 @@ public class dcq extends dcv implements bhb, bhc {
    public static final int d = 2;
    public static final int e = 3;
    private static final int h = 10;
-   private static final tl i = tl.c("container.beacon");
+   private static final tm i = tm.c("container.beacon");
    private static final String j = "primary_effect";
    private static final String k = "secondary_effect";
    List<dcq.a> l = Lists.newArrayList();
@@ -27,7 +27,7 @@ public class dcq extends dcv implements bhb, bhc {
    @Nullable
    bib t;
    @Nullable
-   private tl u;
+   private tm u;
    private bha v = bha.a;
    private final cev w = new cev() {
       @Override
@@ -221,11 +221,11 @@ public class dcq extends dcv implements bhb, bhc {
    }
 
    @Override
-   public qx as_() {
+   public qy as_() {
       return this.o();
    }
 
-   private static void a(qx $$0, String $$1, @Nullable bib $$2) {
+   private static void a(qy $$0, String $$1, @Nullable bib $$2) {
       if ($$2 != null) {
          aex $$3 = jd.e.b($$2);
          if ($$3 != null) {
@@ -235,7 +235,7 @@ public class dcq extends dcv implements bhb, bhc {
    }
 
    @Nullable
-   private static bib a(qx $$0, String $$1) {
+   private static bib a(qy $$0, String $$1) {
       if ($$0.b($$1, 8)) {
          aex $$2 = aex.a($$0.l($$1));
          return a(jd.e.a($$2));
@@ -245,37 +245,37 @@ public class dcq extends dcv implements bhb, bhc {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.s = a($$0, "primary_effect");
       this.t = a($$0, "secondary_effect");
       if ($$0.b("CustomName", 8)) {
-         this.u = tl.a.a($$0.l("CustomName"));
+         this.u = tm.a.a($$0.l("CustomName"));
       }
 
       this.v = bha.b($$0);
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       a($$0, "primary_effect", this.s);
       a($$0, "secondary_effect", this.t);
       $$0.a("Levels", this.n);
       if (this.u != null) {
-         $$0.a("CustomName", tl.a.a(this.u));
+         $$0.a("CustomName", tm.a.a(this.u));
       }
 
       this.v.a($$0);
    }
 
-   public void a(@Nullable tl $$0) {
+   public void a(@Nullable tm $$0) {
       this.u = $$0;
    }
 
    @Nullable
    @Override
-   public tl ae() {
+   public tm ad() {
       return this.u;
    }
 
@@ -286,12 +286,12 @@ public class dcq extends dcv implements bhb, bhc {
    }
 
    @Override
-   public tl N_() {
-      return this.ac();
+   public tm N_() {
+      return this.ab();
    }
 
    @Override
-   public tl ac() {
+   public tm ab() {
       return this.u != null ? this.u : i;
    }
 

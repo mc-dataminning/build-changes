@@ -21,12 +21,12 @@ public enum bgv implements asp {
       return this.g;
    }
 
-   public tl b() {
-      return tl.c("options.difficulty." + this.h);
+   public tm b() {
+      return tm.c("options.difficulty." + this.h);
    }
 
-   public tl d() {
-      return tl.c("options.difficulty." + this.h + ".info");
+   public tm d() {
+      return tm.c("options.difficulty." + this.h + ".info");
    }
 
    public static bgv a(int $$0) {

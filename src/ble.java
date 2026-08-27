@@ -10,7 +10,7 @@ public class ble extends bkx<bwg> {
    }
 
    protected boolean a(akr $$0, bwg $$1) {
-      return $$1.ao() == bjs.a;
+      return $$1.an() == bjs.a;
    }
 
    protected boolean a(akr $$0, bwg $$1, long $$2) {
@@ -18,7 +18,7 @@ public class ble extends bkx<bwg> {
    }
 
    protected void b(akr $$0, bwg $$1, long $$2) {
-      if (!$$1.bc()) {
+      if (!$$1.bb()) {
          $$1.b(bjs.i);
          this.e = 0;
       }

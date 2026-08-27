@@ -44,7 +44,7 @@ public class bpl extends bps {
    @Override
    public void d() {
       super.d();
-      this.d.dL().a(this.d.ai(), this.e, -1);
+      this.d.dL().a(this.d.ah(), this.e, -1);
    }
 
    @Override
@@ -60,7 +60,7 @@ public class bpl extends bps {
       this.a++;
       int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
       if ($$0 != this.b) {
-         this.d.dL().a(this.d.ai(), this.e, $$0);
+         this.d.dL().a(this.d.ah(), this.e, $$0);
          this.b = $$0;
       }
 

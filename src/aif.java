@@ -3,7 +3,7 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class aif {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.save.alreadyOn"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.save.alreadyOn"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
@@ -20,7 +20,7 @@ public class aif {
          if (!$$2) {
             throw a.create();
          } else {
-            $$1.a(() -> tl.c("commands.save.enabled"), true);
+            $$1.a(() -> tm.c("commands.save.enabled"), true);
             return 1;
          }
       }));

@@ -19,7 +19,7 @@ public class aen<C extends bgr> implements aem<Integer> {
    }
 
    public void a(aks $$0, @Nullable cmk<? extends cmj<C>> $$1, boolean $$2) {
-      if ($$1 != null && (!$$0.dL().X().b(cpr.v) || $$0.G().b($$1))) {
+      if ($$1 != null && $$0.G().b($$1)) {
          this.b = $$0.fR();
          if (this.b() || $$0.f()) {
             this.a.a();

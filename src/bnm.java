@@ -12,7 +12,7 @@ public class bnm {
                         Optional.ofNullable($$2.a($$0.b($$1)))
                            .map($$0xxx -> $$0xxx instanceof bjg $$1xx ? $$1xx : null)
                            .filter(bjg::ev)
-                           .filter($$1xx -> $$1xx.ah() != biu.bt || $$2.X().b(cpr.J))
+                           .filter($$1xx -> $$1xx.ag() != biu.bt || $$2.X().b(cpr.J))
                            .ifPresent($$1xx -> $$1.b());
                         return true;
                      }

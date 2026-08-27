@@ -9,7 +9,7 @@ public class bnq extends bkx<bji> {
    }
 
    protected boolean a(akr $$0, bji $$1) {
-      return $$1.aY() && $$1.b(apy.a) > $$1.df() || $$1.bm();
+      return $$1.aX() && $$1.b(apy.a) > $$1.de() || $$1.bl();
    }
 
    protected boolean a(akr $$0, bji $$1, long $$2) {

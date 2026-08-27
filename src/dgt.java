@@ -5,11 +5,11 @@ public enum dgt implements asp {
    d("data");
 
    private final String e;
-   private final tl f;
+   private final tm f;
 
    private dgt(String $$0) {
       this.e = $$0;
-      this.f = tl.c("structure_block.mode_info." + $$0);
+      this.f = tm.c("structure_block.mode_info." + $$0);
    }
 
    @Override
@@ -17,7 +17,7 @@ public enum dgt implements asp {
       return this.e;
    }
 
-   public tl a() {
+   public tm a() {
       return this.f;
    }
 }

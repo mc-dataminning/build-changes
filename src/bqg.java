@@ -10,7 +10,7 @@ public class bqg extends bqb {
    @Override
    public boolean a() {
       aks $$0 = (aks)this.a.O_();
-      boolean $$1 = $$0 != null && !$$0.M_() && !$$0.fS().b && !$$0.aY() && !$$0.aA;
+      boolean $$1 = $$0 != null && !$$0.M_() && !$$0.fS().b && !$$0.aX() && !$$0.aA;
       return !this.a.gd() && $$1 && this.a.gm();
    }
 
@@ -28,7 +28,7 @@ public class bqg extends bqb {
    @Override
    public void e() {
       if (!this.c && !this.a.y() && !this.a.fR()) {
-         if (this.a.cH().c(this.b.cH())) {
+         if (this.a.cG().c(this.b.cG())) {
             this.c = this.a.b(this.b);
          }
       }

@@ -54,15 +54,15 @@ public class eqz {
    private static final Splitter aj = Splitter.on(':').limit(2);
    private static final float ak = 1.0F;
    public static final String g = "";
-   private static final tl al = tl.c("options.darkMojangStudiosBackgroundColor.tooltip");
+   private static final tm al = tm.c("options.darkMojangStudiosBackgroundColor.tooltip");
    private final eqy<Boolean> am = eqy.a("options.darkMojangStudiosBackgroundColor", eqy.a(al), false);
-   private static final tl an = tl.c("options.hideLightningFlashes.tooltip");
+   private static final tm an = tm.c("options.hideLightningFlashes.tooltip");
    private final eqy<Boolean> ao = eqy.a("options.hideLightningFlashes", eqy.a(an), false);
    private final eqy<Double> ap = new eqy<>("options.sensitivity", eqy.a(), ($$0x, $$1x) -> {
       if ($$1x == 0.0) {
-         return a($$0x, tl.c("options.sensitivity.min"));
+         return a($$0x, tm.c("options.sensitivity.min"));
       } else {
-         return $$1x == 1.0 ? a($$0x, tl.c("options.sensitivity.max")) : a($$0x, 2.0 * $$1x);
+         return $$1x == 1.0 ? a($$0x, tm.c("options.sensitivity.max")) : a($$0x, 2.0 * $$1x);
       }
    }, eqy.m.a, 0.5, $$0x -> {
    });
@@ -83,7 +83,7 @@ public class eqz {
    private final eqy<Integer> au = new eqy<>(
       "options.framerateLimit",
       eqy.a(),
-      ($$0x, $$1x) -> $$1x == 260 ? a($$0x, tl.c("options.framerateLimit.max")) : a($$0x, tl.a("options.framerate", $$1x)),
+      ($$0x, $$1x) -> $$1x == 260 ? a($$0x, tm.c("options.framerateLimit.max")) : a($$0x, tm.a("options.framerate", $$1x)),
       new eqy.f(1, 26).a($$0x -> $$0x * 10, $$0x -> $$0x / 10),
       Codec.intRange(10, 260),
       120,
@@ -104,9 +104,9 @@ public class eqz {
          }
       }
    );
-   private static final tl aw = tl.c("options.graphics.fast.tooltip");
-   private static final tl ax = tl.a("options.graphics.fabulous.tooltip", tl.c("options.graphics.fabulous").a(n.u));
-   private static final tl ay = tl.c("options.graphics.fancy.tooltip");
+   private static final tm aw = tm.c("options.graphics.fast.tooltip");
+   private static final tm ax = tm.a("options.graphics.fabulous.tooltip", tm.c("options.graphics.fabulous").a(n.u));
+   private static final tm ay = tm.c("options.graphics.fancy.tooltip");
    private final eqy<eqo> az = new eqy<>(
       "options.graphics",
       $$0x -> {
@@ -117,7 +117,7 @@ public class eqz {
          };
       },
       ($$0x, $$1x) -> {
-         ty $$2x = tl.c($$1x.b());
+         tz $$2x = tm.c($$1x.b());
          return $$1x == eqo.c ? $$2x.a(n.u) : $$2x;
       },
       new eqy.a<>(
@@ -141,9 +141,9 @@ public class eqz {
       }
    );
    private final eqy<Boolean> aA = eqy.a("options.ao", true, $$0x -> eqv.O().f.f());
-   private static final tl aB = tl.c("options.prioritizeChunkUpdates.none.tooltip");
-   private static final tl aC = tl.c("options.prioritizeChunkUpdates.byPlayer.tooltip");
-   private static final tl aD = tl.c("options.prioritizeChunkUpdates.nearby.tooltip");
+   private static final tm aB = tm.c("options.prioritizeChunkUpdates.none.tooltip");
+   private static final tm aC = tm.c("options.prioritizeChunkUpdates.byPlayer.tooltip");
+   private static final tm aD = tm.c("options.prioritizeChunkUpdates.nearby.tooltip");
    private final eqy<erc> aE = new eqy<>("options.prioritizeChunkUpdates", $$0x -> {
       return switch ($$0x) {
          case a -> eua.a(aB);
@@ -164,7 +164,7 @@ public class eqz {
    private final eqy<Double> aI = new eqy<>("options.accessibility.text_background_opacity", eqy.a(), eqz::a, eqy.m.a, 0.5, $$0x -> eqv.O().l.d().b());
    private final eqy<Double> aJ = new eqy<>("options.accessibility.panorama_speed", eqy.a(), eqz::a, eqy.m.a, 1.0, $$0x -> {
    });
-   private static final tl aK = tl.c("options.accessibility.high_contrast.tooltip");
+   private static final tm aK = tm.c("options.accessibility.high_contrast.tooltip");
    private final eqy<Boolean> aL = eqy.a("options.accessibility.high_contrast", eqy.a(aK), false, $$0x -> {
       anf $$1x = eqv.O().aa();
       boolean $$2x = $$1x.d().contains("high_contrast");
@@ -176,7 +176,7 @@ public class eqz {
          this.a($$1x);
       }
    });
-   private final eqy<Boolean> aM = eqy.a("options.accessibility.narrator_hotkey", eqy.a(tl.c("options.accessibility.narrator_hotkey.tooltip")), true);
+   private final eqy<Boolean> aM = eqy.a("options.accessibility.narrator_hotkey", eqy.a(tm.c("options.accessibility.narrator_hotkey.tooltip")), true);
    @Nullable
    public String k;
    public boolean l;
@@ -189,7 +189,7 @@ public class eqz {
    private final eqy<Double> aP = new eqy<>(
       "options.chat.scale",
       eqy.a(),
-      ($$0x, $$1x) -> (tl)($$1x == 0.0 ? tk.a($$0x, false) : a($$0x, $$1x.doubleValue())),
+      ($$0x, $$1x) -> (tm)($$1x == 0.0 ? tl.a($$0x, false) : a($$0x, $$1x.doubleValue())),
       eqy.m.a,
       1.0,
       $$0x -> eqv.O().l.d().b()
@@ -204,17 +204,17 @@ public class eqz {
    private final eqy<Double> aT = new eqy<>(
       "options.chat.delay_instant",
       eqy.a(),
-      ($$0x, $$1x) -> $$1x <= 0.0 ? tl.c("options.chat.delay_none") : tl.a("options.chat.delay", String.format(Locale.ROOT, "%.1f", $$1x)),
+      ($$0x, $$1x) -> $$1x <= 0.0 ? tm.c("options.chat.delay_none") : tm.a("options.chat.delay", String.format(Locale.ROOT, "%.1f", $$1x)),
       new eqy.f(0, 60).a($$0x -> (double)$$0x / 10.0, $$0x -> (int)($$0x * 10.0)),
       Codec.doubleRange(0.0, 6.0),
       0.0,
       $$0x -> eqv.O().aW().a($$0x)
    );
-   private static final tl aU = tl.c("options.notifications.display_time.tooltip");
+   private static final tm aU = tm.c("options.notifications.display_time.tooltip");
    private final eqy<Double> aV = new eqy<>(
       "options.notifications.display_time",
       eqy.a(aU),
-      ($$0x, $$1x) -> a($$0x, tl.a("options.multiplier", $$1x)),
+      ($$0x, $$1x) -> a($$0x, tm.a("options.multiplier", $$1x)),
       new eqy.f(5, 100).a($$0x -> (double)$$0x / 10.0, $$0x -> (int)($$0x * 10.0)),
       Codec.doubleRange(0.5, 10.0),
       1.0,
@@ -222,7 +222,7 @@ public class eqz {
       }
    );
    private final eqy<Integer> aW = new eqy<>(
-      "options.mipmapLevels", eqy.a(), ($$0x, $$1x) -> (tl)($$1x == 0 ? tk.a($$0x, false) : a($$0x, $$1x.intValue())), new eqy.f(0, 4), 4, $$0x -> {
+      "options.mipmapLevels", eqy.a(), ($$0x, $$1x) -> (tm)($$1x == 0 ? tl.a($$0x, false) : a($$0x, $$1x.intValue())), new eqy.f(0, 4), 4, $$0x -> {
       }
    );
    public boolean q = true;
@@ -235,12 +235,12 @@ public class eqz {
    public boolean t = false;
    private final eqy<Integer> aY = new eqy<>("options.biomeBlendRadius", eqy.a(), ($$0x, $$1x) -> {
       int $$2x = $$1x * 2 + 1;
-      return a($$0x, tl.c("options.biomeBlendRadius." + $$2x));
+      return a($$0x, tm.c("options.biomeBlendRadius." + $$2x));
    }, new eqy.f(0, 7), 2, $$0x -> eqv.O().f.f());
    private final eqy<Double> aZ = new eqy<>(
       "options.mouseWheelSensitivity",
       eqy.a(),
-      ($$0x, $$1x) -> a($$0x, tl.b(String.format(Locale.ROOT, "%.2f", $$1x))),
+      ($$0x, $$1x) -> a($$0x, tm.b(String.format(Locale.ROOT, "%.2f", $$1x))),
       new eqy.f(-200, 100).a(eqz::c, eqz::a),
       Codec.doubleRange(c(-200), c(100)),
       c(0),
@@ -276,7 +276,7 @@ public class eqz {
    private final eqy<Boolean> bk = eqy.a("options.invertMouse", false);
    private final eqy<Boolean> bl = eqy.a("options.discrete_mouse_scroll", false);
    private final eqy<Boolean> bm = eqy.a("options.realmsNotifications", true);
-   private static final tl bn = tl.c("options.allowServerListing.tooltip");
+   private static final tm bn = tm.c("options.allowServerListing.tooltip");
    private final eqy<Boolean> bo = eqy.a("options.allowServerListing", eqy.a(bn), true, $$0x -> this.at());
    private final eqy<Boolean> bp = eqy.a("options.reducedDebugInfo", false);
    private final Map<apf, eqy<Double>> bq = ac.a(new EnumMap<>(apf.class), $$0x -> {
@@ -285,8 +285,8 @@ public class eqz {
       }
    });
    private final eqy<Boolean> br = eqy.a("options.showSubtitles", false);
-   private static final tl bs = tl.c("options.directionalAudio.on.tooltip");
-   private static final tl bt = tl.c("options.directionalAudio.off.tooltip");
+   private static final tm bs = tm.c("options.directionalAudio.on.tooltip");
+   private static final tm bt = tm.c("options.directionalAudio.off.tooltip");
    private final eqy<Boolean> bu = eqy.a("options.directionalAudio", $$0x -> $$0x ? eua.a(bs) : eua.a(bt), false, $$0x -> {
       gdq $$1x = eqv.O().ai();
       $$1x.i();
@@ -295,7 +295,7 @@ public class eqz {
    private final eqy<Boolean> bv = new eqy<>(
       "options.accessibility.text_background",
       eqy.a(),
-      ($$0x, $$1x) -> $$1x ? tl.c("options.accessibility.text_background.chat") : tl.c("options.accessibility.text_background.everywhere"),
+      ($$0x, $$1x) -> $$1x ? tm.c("options.accessibility.text_background.chat") : tm.c("options.accessibility.text_background.everywhere"),
       eqy.a,
       true,
       $$0x -> {
@@ -310,18 +310,18 @@ public class eqz {
       }
    });
    private final eqy<Boolean> by = eqy.a("options.viewBobbing", true);
-   private static final tl bz = tl.c("options.key.toggle");
-   private static final tl bA = tl.c("options.key.hold");
+   private static final tm bz = tm.c("options.key.toggle");
+   private static final tm bA = tm.c("options.key.hold");
    private final eqy<Boolean> bB = new eqy<>("key.sneak", eqy.a(), ($$0x, $$1x) -> $$1x ? bz : bA, eqy.a, false, $$0x -> {
    });
    private final eqy<Boolean> bC = new eqy<>("key.sprint", eqy.a(), ($$0x, $$1x) -> $$1x ? bz : bA, eqy.a, false, $$0x -> {
    });
    public boolean v;
    public boolean w;
-   private static final tl bD = tl.c("options.hideMatchedNames.tooltip");
+   private static final tm bD = tm.c("options.hideMatchedNames.tooltip");
    private final eqy<Boolean> bE = eqy.a("options.hideMatchedNames", eqy.a(bD), true);
    private final eqy<Boolean> bF = eqy.a("options.autosaveIndicator", true);
-   private static final tl bG = tl.c("options.onlyShowSecureChat.tooltip");
+   private static final tm bG = tm.c("options.onlyShowSecureChat.tooltip");
    private final eqy<Boolean> bH = eqy.a("options.onlyShowSecureChat", eqy.a(bG), false);
    public final eqt x = new eqt("key.forward", 87, "key.categories.movement");
    public final eqt y = new eqt("key.left", 65, "key.categories.movement");
@@ -397,81 +397,81 @@ public class eqz {
    public boolean ab;
    private final eqy<Integer> bK = new eqy<>("options.fov", eqy.a(), ($$0x, $$1x) -> {
       return switch ($$1x) {
-         case 70 -> a($$0x, tl.c("options.fov.min"));
-         case 110 -> a($$0x, tl.c("options.fov.max"));
+         case 70 -> a($$0x, tm.c("options.fov.min"));
+         case 110 -> a($$0x, tm.c("options.fov.max"));
          default -> a($$0x, $$1x.intValue());
       };
    }, new eqy.f(30, 110), Codec.DOUBLE.xmap($$0x -> (int)($$0x * 40.0 + 70.0), $$0x -> ((double)$$0x.intValue() - 70.0) / 40.0), 70, $$0x -> eqv.O().f.r());
-   private static final tl bL = tl.a("options.telemetry.button.tooltip", tl.c("options.telemetry.state.minimal"), tl.c("options.telemetry.state.all"));
+   private static final tm bL = tm.a("options.telemetry.button.tooltip", tm.c("options.telemetry.state.minimal"), tm.c("options.telemetry.state.all"));
    private final eqy<Boolean> bM = eqy.a("options.telemetry.button", eqy.a(bL), ($$0x, $$1x) -> {
       eqv $$2x = eqv.O();
       if (!$$2x.C()) {
-         return tl.c("options.telemetry.state.none");
+         return tm.c("options.telemetry.state.none");
       } else {
-         return $$1x && $$2x.B() ? tl.c("options.telemetry.state.all") : tl.c("options.telemetry.state.minimal");
+         return $$1x && $$2x.B() ? tm.c("options.telemetry.state.all") : tm.c("options.telemetry.state.minimal");
       }
    }, false, $$0x -> {
    });
-   private static final tl bN = tl.c("options.screenEffectScale.tooltip");
+   private static final tm bN = tm.c("options.screenEffectScale.tooltip");
    private final eqy<Double> bO = new eqy<>(
-      "options.screenEffectScale", eqy.a(bN), ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tk.c) : a($$0x, $$1x.doubleValue()), eqy.m.a, 1.0, $$0x -> {
+      "options.screenEffectScale", eqy.a(bN), ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tl.c) : a($$0x, $$1x.doubleValue()), eqy.m.a, 1.0, $$0x -> {
       }
    );
-   private static final tl bP = tl.c("options.fovEffectScale.tooltip");
+   private static final tm bP = tm.c("options.fovEffectScale.tooltip");
    private final eqy<Double> bQ = new eqy<>(
       "options.fovEffectScale",
       eqy.a(bP),
-      ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tk.c) : a($$0x, $$1x.doubleValue()),
+      ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tl.c) : a($$0x, $$1x.doubleValue()),
       eqy.m.a.a(arx::k, Math::sqrt),
       Codec.doubleRange(0.0, 1.0),
       1.0,
       $$0x -> {
       }
    );
-   private static final tl bR = tl.c("options.darknessEffectScale.tooltip");
+   private static final tm bR = tm.c("options.darknessEffectScale.tooltip");
    private final eqy<Double> bS = new eqy<>(
       "options.darknessEffectScale",
       eqy.a(bR),
-      ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tk.c) : a($$0x, $$1x.doubleValue()),
+      ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tl.c) : a($$0x, $$1x.doubleValue()),
       eqy.m.a.a(arx::k, Math::sqrt),
       1.0,
       $$0x -> {
       }
    );
-   private static final tl bT = tl.c("options.glintSpeed.tooltip");
+   private static final tm bT = tm.c("options.glintSpeed.tooltip");
    private final eqy<Double> bU = new eqy<>(
-      "options.glintSpeed", eqy.a(bT), ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tk.c) : a($$0x, $$1x.doubleValue()), eqy.m.a, 0.5, $$0x -> {
+      "options.glintSpeed", eqy.a(bT), ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tl.c) : a($$0x, $$1x.doubleValue()), eqy.m.a, 0.5, $$0x -> {
       }
    );
-   private static final tl bV = tl.c("options.glintStrength.tooltip");
+   private static final tm bV = tm.c("options.glintStrength.tooltip");
    private final eqy<Double> bW = new eqy<>(
       "options.glintStrength",
       eqy.a(bV),
-      ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tk.c) : a($$0x, $$1x.doubleValue()),
+      ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tl.c) : a($$0x, $$1x.doubleValue()),
       eqy.m.a,
       0.75,
       RenderSystem::setShaderGlintAlpha
    );
-   private static final tl bX = tl.c("options.damageTiltStrength.tooltip");
+   private static final tm bX = tm.c("options.damageTiltStrength.tooltip");
    private final eqy<Double> bY = new eqy<>(
-      "options.damageTiltStrength", eqy.a(bX), ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tk.c) : a($$0x, $$1x.doubleValue()), eqy.m.a, 1.0, $$0x -> {
+      "options.damageTiltStrength", eqy.a(bX), ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tl.c) : a($$0x, $$1x.doubleValue()), eqy.m.a, 1.0, $$0x -> {
       }
    );
    private final eqy<Double> bZ = new eqy<>("options.gamma", eqy.a(), ($$0x, $$1x) -> {
       int $$2x = (int)($$1x * 100.0);
       if ($$2x == 0) {
-         return a($$0x, tl.c("options.gamma.min"));
+         return a($$0x, tm.c("options.gamma.min"));
       } else if ($$2x == 50) {
-         return a($$0x, tl.c("options.gamma.default"));
+         return a($$0x, tm.c("options.gamma.default"));
       } else {
-         return $$2x == 100 ? a($$0x, tl.c("options.gamma.max")) : a($$0x, $$2x);
+         return $$2x == 100 ? a($$0x, tm.c("options.gamma.max")) : a($$0x, $$2x);
       }
    }, eqy.m.a, 0.5, $$0x -> {
    });
    public static final int ac = 0;
    private static final int ca = 2147483646;
    private final eqy<Integer> cb = new eqy<>(
-      "options.guiScale", eqy.a(), ($$0x, $$1x) -> $$1x == 0 ? tl.c("options.guiScale.auto") : tl.b(Integer.toString($$1x)), new eqy.c(0, () -> {
+      "options.guiScale", eqy.a(), ($$0x, $$1x) -> $$1x == 0 ? tm.c("options.guiScale.auto") : tm.b(Integer.toString($$1x)), new eqy.c(0, () -> {
          eqv $$0x = eqv.O();
          return !$$0x.r() ? 2147483646 : $$0x.aM().a(0, $$0x.j());
       }, 2147483646), 0, $$0x -> {
@@ -484,7 +484,7 @@ public class eqz {
    private final eqy<eqx> cd = new eqy<>(
       "options.narrator",
       eqy.a(),
-      ($$0x, $$1x) -> (tl)(this.Y.aV().a() ? $$1x.b() : tl.c("options.narrator.notavailable")),
+      ($$0x, $$1x) -> (tm)(this.Y.aV().a() ? $$1x.b() : tm.c("options.narrator.notavailable")),
       new eqy.e<>(Arrays.asList(eqx.values()), Codec.INT.xmap(eqx::a, eqx::a)),
       eqx.a,
       $$0x -> this.Y.aV().a($$0x)
@@ -495,9 +495,9 @@ public class eqz {
       eqy.a(),
       ($$0x, $$1x) -> {
          if ("".equals($$1x)) {
-            return tl.c("options.audioDevice.default");
+            return tm.c("options.audioDevice.default");
          } else {
-            return $$1x.startsWith("OpenAL Soft on ") ? tl.b($$1x.substring(gdn.c)) : tl.b($$1x);
+            return $$1x.startsWith("OpenAL Soft on ") ? tm.b($$1x.substring(gdn.c)) : tm.b($$1x);
          }
       },
       new eqy.h<>(
@@ -730,7 +730,7 @@ public class eqz {
 
    private eqy<Double> a(String $$0, apf $$1) {
       return new eqy<>(
-         $$0, eqy.a(), ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tk.c) : a($$0x, $$1x.doubleValue()), eqy.m.a, 1.0, $$1x -> eqv.O().ai().a($$1, $$1x.floatValue())
+         $$0, eqy.a(), ($$0x, $$1x) -> $$1x == 0.0 ? a($$0x, tl.c) : a($$0x, $$1x.doubleValue()), eqy.m.a, 1.0, $$1x -> eqv.O().ai().a($$1, $$1x.floatValue())
       );
    }
 
@@ -838,13 +838,13 @@ public class eqz {
       this.aq = new eqy<>(
          "options.renderDistance",
          eqy.a(),
-         ($$0x, $$1x) -> a($$0x, tl.a("options.chunks", $$1x)),
+         ($$0x, $$1x) -> a($$0x, tm.a("options.chunks", $$1x)),
          new eqy.f(2, $$3 ? 32 : 16),
          $$2 ? 12 : 8,
          $$0x -> eqv.O().f.r()
       );
       this.ar = new eqy<>(
-         "options.simulationDistance", eqy.a(), ($$0x, $$1x) -> a($$0x, tl.a("options.chunks", $$1x)), new eqy.f(5, $$3 ? 32 : 16), $$2 ? 12 : 8, $$0x -> {
+         "options.simulationDistance", eqy.a(), ($$0x, $$1x) -> a($$0x, tm.a("options.chunks", $$1x)), new eqy.f(5, $$3 ? 32 : 16), $$2 ? 12 : 8, $$0x -> {
          }
       );
       this.af = ac.i() == ac.b.c;
@@ -983,7 +983,7 @@ public class eqz {
             return;
          }
 
-         qx $$0 = new qx();
+         qy $$0 = new qy();
 
          try (BufferedReader $$1 = Files.newReader(this.bI, Charsets.UTF_8)) {
             $$1.lines().forEach($$1x -> {
@@ -996,7 +996,7 @@ public class eqz {
             });
          }
 
-         final qx $$2 = this.a($$0);
+         final qy $$2 = this.a($$0);
          if (!$$2.e("graphicsMode") && $$2.e("fancyGraphics")) {
             if (a($$2.l("fancyGraphics"))) {
                this.az.a(eqo.b);
@@ -1095,7 +1095,7 @@ public class eqz {
       return "false".equals($$0);
    }
 
-   private qx a(qx $$0) {
+   private qy a(qy $$0) {
       int $$1 = 0;
 
       try {
@@ -1182,7 +1182,7 @@ public class eqz {
 
    public void at() {
       if (this.Y.s != null) {
-         this.Y.s.cn.b(new vo(this.as()));
+         this.Y.s.cn.b(new vp(this.as()));
       }
    }
 
@@ -1303,20 +1303,20 @@ public class eqz {
       return this.as > 0 ? Math.min(this.aq.c(), this.as) : this.aq.c();
    }
 
-   private static tl b(tl $$0, int $$1) {
-      return tl.a("options.pixel_value", $$0, $$1);
+   private static tm b(tm $$0, int $$1) {
+      return tm.a("options.pixel_value", $$0, $$1);
    }
 
-   private static tl a(tl $$0, double $$1) {
-      return tl.a("options.percent_value", $$0, (int)($$1 * 100.0));
+   private static tm a(tm $$0, double $$1) {
+      return tm.a("options.percent_value", $$0, (int)($$1 * 100.0));
    }
 
-   public static tl a(tl $$0, tl $$1) {
-      return tl.a("options.generic_value", $$0, $$1);
+   public static tm a(tm $$0, tm $$1) {
+      return tm.a("options.generic_value", $$0, $$1);
    }
 
-   public static tl a(tl $$0, int $$1) {
-      return a($$0, tl.b(Integer.toString($$1)));
+   public static tm a(tm $$0, int $$1) {
+      return a($$0, tm.b(Integer.toString($$1)));
    }
 
    interface a {

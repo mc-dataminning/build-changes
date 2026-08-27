@@ -1,73 +1,36 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface ug {
-   Logger a = LogUtils.getLogger();
-   ug b = $$0 -> {
-      if ($$0.h()) {
-         a.error("Received chat message with signature from {}, but they have no chat session initialized", $$0.f());
-         return false;
-      } else {
-         return true;
-      }
-   };
-   ug c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.f());
-      return false;
-   };
+public record ug(int b, UUID c, UUID d) {
+   public static final Codec<ug> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(arg.i.fieldOf("index").forGetter(ug::b), ia.a.fieldOf("sender").forGetter(ug::c), ia.a.fieldOf("session_id").forGetter(ug::d))
+            .apply($$0, ug::new)
+   );
 
-   boolean updateAndValidate(ua var1);
+   public static ug a(UUID $$0) {
+      return a($$0, ac.d);
+   }
 
-   public static class a implements ug {
-      private final ash d;
-      private final BooleanSupplier e;
-      @Nullable
-      private ua f;
-      private boolean g = true;
+   public static ug a(UUID $$0, UUID $$1) {
+      return new ug(0, $$0, $$1);
+   }
 
-      public a(ash $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public void a(asg.a $$0) throws SignatureException {
+      $$0.update(ia.b(this.c));
+      $$0.update(ia.b(this.d));
+      $$0.update(Ints.toByteArray(this.b));
+   }
 
-      private boolean a(ua $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.j().a(this.f.j())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.f(), this.f.j().b(), this.f.j().d(), $$0.j().b(), $$0.j().d()}
-            );
-            return false;
-         } else {
-            return true;
-         }
-      }
+   public boolean a(ug $$0) {
+      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   }
 
-      private boolean b(ua $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.f());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
-
-      @Override
-      public boolean updateAndValidate(ua $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return false;
-         } else {
-            this.f = $$0;
-            return true;
-         }
-      }
+   @Nullable
+   public ug a() {
+      return this.b == Integer.MAX_VALUE ? null : new ug(this.b + 1, this.c, this.d);
    }
 }

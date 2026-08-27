@@ -30,12 +30,12 @@ public class gd {
    private static final char t = 'r';
    private static final char u = 's';
    private static final char v = 'e';
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("argument.entity.invalid"));
-   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tl.a("argument.entity.selector.unknown", $$0));
-   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tl.c("argument.entity.selector.not_allowed"));
-   public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tl.c("argument.entity.selector.missing"));
-   public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tl.c("argument.entity.options.unterminated"));
-   public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> tl.a("argument.entity.options.valueless", $$0));
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("argument.entity.invalid"));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tm.a("argument.entity.selector.unknown", $$0));
+   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tm.c("argument.entity.selector.not_allowed"));
+   public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tm.c("argument.entity.selector.missing"));
+   public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tm.c("argument.entity.options.unterminated"));
+   public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> tm.a("argument.entity.options.valueless", $$0));
    public static final BiConsumer<ehn, List<? extends biq>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.e($$0), $$2.e($$0)));
    public static final BiConsumer<ehn, List<? extends biq>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.e($$0), $$1x.e($$0)));
    public static final BiConsumer<ehn, List<? extends biq>> m = ($$0, $$1) -> Collections.shuffle($$1);
@@ -189,7 +189,7 @@ public class gd {
             this.y = Integer.MAX_VALUE;
             this.z = true;
             this.M = gc.b;
-            this.L = biq::bw;
+            this.L = biq::bv;
          }
 
          this.R = this::e;
@@ -422,11 +422,11 @@ public class gd {
    }
 
    private static void a(SuggestionsBuilder $$0) {
-      $$0.suggest("@p", tl.c("argument.entity.selector.nearestPlayer"));
-      $$0.suggest("@a", tl.c("argument.entity.selector.allPlayers"));
-      $$0.suggest("@r", tl.c("argument.entity.selector.randomPlayer"));
-      $$0.suggest("@s", tl.c("argument.entity.selector.self"));
-      $$0.suggest("@e", tl.c("argument.entity.selector.allEntities"));
+      $$0.suggest("@p", tm.c("argument.entity.selector.nearestPlayer"));
+      $$0.suggest("@a", tm.c("argument.entity.selector.allPlayers"));
+      $$0.suggest("@r", tm.c("argument.entity.selector.randomPlayer"));
+      $$0.suggest("@s", tm.c("argument.entity.selector.self"));
+      $$0.suggest("@e", tm.c("argument.entity.selector.allEntities"));
    }
 
    private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0, Consumer<SuggestionsBuilder> $$1) {

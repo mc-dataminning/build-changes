@@ -43,11 +43,11 @@ public class bjc {
       return this.c.b(this.d);
    }
 
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       $$0.a("Saddle", this.d());
    }
 
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       this.a($$0.q("Saddle"));
    }
 

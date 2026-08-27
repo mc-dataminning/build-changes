@@ -40,7 +40,7 @@ public class bqq extends bqb {
 
    @Override
    public boolean b() {
-      return !this.a.L().l() && this.b.bw() && this.b.f(this.a) < (double)(this.g * this.g);
+      return !this.a.L().l() && this.b.bv() && this.b.f(this.a) < (double)(this.g * this.g);
    }
 
    @Override

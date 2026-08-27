@@ -38,7 +38,7 @@ public class bzb extends bzs {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
    }
 
@@ -48,13 +48,13 @@ public class bzb extends bzs {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
    }
 
    @Override
-   protected void Y() {
-      super.Y();
+   protected void X() {
+      super.X();
    }
 
    @Override
@@ -68,7 +68,7 @@ public class bzb extends bzs {
       } else if ($$0 instanceof bzw) {
          return this.s(((bzw)$$0).t());
       } else {
-         return $$0 instanceof bjg && ((bjg)$$0).eR() == bjl.d ? this.cg() == null && $$0.cg() == null : false;
+         return $$0 instanceof bjg && ((bjg)$$0).eR() == bjl.d ? this.cf() == null && $$0.cf() == null : false;
       }
    }
 
@@ -186,9 +186,9 @@ public class bzb extends bzs {
       @Override
       public void e() {
          if (bzb.this.q() != null) {
-            bzb.this.G().a(bzb.this.q(), (float)bzb.this.aa(), (float)bzb.this.Z());
+            bzb.this.G().a(bzb.this.q(), (float)bzb.this.Z(), (float)bzb.this.Y());
          } else if (bzb.this.gw() != null) {
-            bzb.this.G().a(bzb.this.gw(), (float)bzb.this.aa(), (float)bzb.this.Z());
+            bzb.this.G().a(bzb.this.gw(), (float)bzb.this.Z(), (float)bzb.this.Y());
          }
       }
    }
@@ -201,7 +201,7 @@ public class bzb extends bzs {
          if (!super.a()) {
             return false;
          } else {
-            int $$0 = bzb.this.dL().a(bzw.class, this.e, bzb.this, bzb.this.cH().g(16.0)).size();
+            int $$0 = bzb.this.dL().a(bzw.class, this.e, bzb.this, bzb.this.cG().g(16.0)).size();
             return bzb.this.ag.a(8) + 1 > $$0;
          }
       }
@@ -260,7 +260,7 @@ public class bzb extends bzs {
          } else if (!bzb.this.dL().X().b(cpr.c)) {
             return false;
          } else {
-            List<bvn> $$0 = bzb.this.dL().a(bvn.class, this.e, bzb.this, bzb.this.cH().c(16.0, 4.0, 16.0));
+            List<bvn> $$0 = bzb.this.dL().a(bvn.class, this.e, bzb.this, bzb.this.cG().c(16.0, 4.0, 16.0));
             if ($$0.isEmpty()) {
                return false;
             } else {
@@ -284,7 +284,7 @@ public class bzb extends bzs {
       @Override
       protected void k() {
          bvn $$0 = bzb.this.gw();
-         if ($$0 != null && $$0.bw()) {
+         if ($$0 != null && $$0.bv()) {
             $$0.b(cht.o);
          }
       }

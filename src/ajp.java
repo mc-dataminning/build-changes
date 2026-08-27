@@ -105,10 +105,10 @@ public class ajp extends ajs<ajp> {
    }
 
    @Nullable
-   private static tl c(String $$0) {
+   private static tm c(String $$0) {
       if (!Strings.isNullOrEmpty($$0)) {
          try {
-            return tl.a.a($$0);
+            return tm.a.a($$0);
          } catch (Exception var2) {
             aa.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
          }
@@ -140,7 +140,7 @@ public class ajp extends ajs<ajp> {
             aa.warn("Invalid sha1 for resource-pack-sha1");
          }
 
-         tl $$8 = c($$4);
+         tm $$8 = c($$4);
          return Optional.of(new MinecraftServer.b($$0, $$5, $$3, $$8));
       }
    }

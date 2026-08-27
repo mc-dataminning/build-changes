@@ -48,7 +48,7 @@ public class bma<E extends bji> extends bkx<E> {
    }
 
    protected boolean a(akr $$0, bji $$1) {
-      boolean $$2 = $$1.aB() && !$$1.aY() && !$$1.bm() && !$$0.a_($$1.dl()).a(csw.pg);
+      boolean $$2 = $$1.aA() && !$$1.aX() && !$$1.bl() && !$$0.a_($$1.dl()).a(csw.pg);
       if (!$$2) {
          $$1.dN().a(bsh.R, this.p.a($$0.z) / 2);
       }
@@ -57,7 +57,7 @@ public class bma<E extends bji> extends bkx<E> {
    }
 
    protected boolean b(akr $$0, bji $$1, long $$2) {
-      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dj()) && this.k > 0 && !$$1.bb() && (this.j != null || !this.h.isEmpty());
+      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dj()) && this.k > 0 && !$$1.ba() && (this.j != null || !this.h.isEmpty());
       if (!$$3 && $$1.dN().c(bsh.S).isEmpty()) {
          $$1.dN().a(bsh.R, this.p.a($$0.z) / 2);
          $$1.dN().b(bsh.n);

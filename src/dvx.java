@@ -34,8 +34,8 @@ public record dvx(List<dvm> a) {
       return false;
    }
 
-   public rq a(dvy $$0) {
-      rd $$1 = new rd();
+   public rr a(dvy $$0) {
+      re $$1 = new re();
 
       for (dvm $$2 : this.a) {
          $$1.add($$2.a($$0));
@@ -44,11 +44,11 @@ public record dvx(List<dvm> a) {
       return $$1;
    }
 
-   public static dvx a(rd $$0, dvy $$1) {
+   public static dvx a(re $$0, dvy $$1) {
       List<dvm> $$2 = Lists.newArrayList();
 
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         qx $$4 = $$0.a($$3);
+         qy $$4 = $$0.a($$3);
          String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
          aex $$6 = new aex($$5);
          aex $$7 = d.getOrDefault($$6, $$6);

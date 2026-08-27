@@ -15,13 +15,13 @@ public record bo(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, 
    );
 
    public boolean a(biq $$0) {
-      if (this.b.isPresent() && $$0.bN() != this.b.get()) {
+      if (this.b.isPresent() && $$0.bM() != this.b.get()) {
          return false;
-      } else if (this.c.isPresent() && $$0.bX() != this.c.get()) {
+      } else if (this.c.isPresent() && $$0.bW() != this.c.get()) {
          return false;
-      } else if (this.d.isPresent() && $$0.bY() != this.d.get()) {
+      } else if (this.d.isPresent() && $$0.bX() != this.d.get()) {
          return false;
-      } else if (this.e.isPresent() && $$0.bZ() != this.e.get()) {
+      } else if (this.e.isPresent() && $$0.bY() != this.e.get()) {
          return false;
       } else {
          if (this.f.isPresent() && $$0 instanceof bjg $$1 && $$1.m_() != this.f.get()) {

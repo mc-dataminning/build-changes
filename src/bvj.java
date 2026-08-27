@@ -54,13 +54,13 @@ public class bvj extends bur implements bjn {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.a(this.dL(), $$0);
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       this.c($$0);
    }
@@ -188,7 +188,7 @@ public class bvj extends bur implements bjn {
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       if ($$3 == null) {
          $$3 = new bil.a(1.0F);
       }
@@ -207,7 +207,7 @@ public class bvj extends bur implements bjn {
             return false;
          } else {
             if (super.a()) {
-               for (bvj $$1 : bvj.this.dL().a(bvj.class, bvj.this.cH().c(8.0, 4.0, 8.0))) {
+               for (bvj $$1 : bvj.this.dL().a(bvj.class, bvj.this.cG().c(8.0, 4.0, 8.0))) {
                   if ($$1.m_()) {
                      return true;
                   }
@@ -257,7 +257,7 @@ public class bvj extends bur implements bjn {
             this.h();
             this.a.C($$0);
             bvj.this.w(false);
-         } else if (this.a.f((biq)$$0) < (double)(($$0.dg() + 3.0F) * ($$0.dg() + 3.0F))) {
+         } else if (this.a.f((biq)$$0) < (double)(($$0.df() + 3.0F) * ($$0.df() + 3.0F))) {
             if (this.i()) {
                bvj.this.w(false);
                this.h();
@@ -287,7 +287,7 @@ public class bvj extends bur implements bjn {
 
       @Override
       protected boolean h() {
-         return this.b.eg() != null && this.b.m_() || this.b.bN();
+         return this.b.eg() != null && this.b.m_() || this.b.bM();
       }
    }
 }

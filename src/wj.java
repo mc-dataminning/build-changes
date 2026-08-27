@@ -1,15 +1,14 @@
-import java.util.List;
+public record wj(gw b, int c) implements vx {
+   public static final aex a = new aex("debug/poi_ticket_count");
 
-public record wj(List<gw> b) implements vw {
-   public static final aex a = new aex("debug/raids");
-
-   public wj(so $$0) {
-      this($$0.a(so::e));
+   public wj(sp $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.b, so::a);
+   public void a(sp $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
    }
 
    @Override

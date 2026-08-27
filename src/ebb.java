@@ -64,9 +64,9 @@ public class ebb {
 
    public ehn a(biq $$0, int $$1) {
       eaz $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dg() + 1.0F)) * 0.5;
+      double $$3 = (double)$$2.a + (double)((int)($$0.df() + 1.0F)) * 0.5;
       double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dg() + 1.0F)) * 0.5;
+      double $$5 = (double)$$2.c + (double)((int)($$0.df() + 1.0F)) * 0.5;
       return new ehn($$3, $$4, $$5);
    }
 
@@ -123,7 +123,7 @@ public class ebb {
       return this.b;
    }
 
-   public void a(so $$0) {
+   public void a(sp $$0) {
       if (this.b != null && !this.b.c.isEmpty()) {
          $$0.a(this.f);
          $$0.p(this.c);
@@ -133,7 +133,7 @@ public class ebb {
       }
    }
 
-   public static ebb b(so $$0) {
+   public static ebb b(sp $$0) {
       boolean $$1 = $$0.readBoolean();
       int $$2 = $$0.readInt();
       gw $$3 = $$0.e();
@@ -158,7 +158,7 @@ public class ebb {
       return this.e;
    }
 
-   static eaz[] c(so $$0) {
+   static eaz[] c(sp $$0) {
       eaz[] $$1 = new eaz[$$0.m()];
 
       for (int $$2 = 0; $$2 < $$1.length; $$2++) {
@@ -168,7 +168,7 @@ public class ebb {
       return $$1;
    }
 
-   static void a(so $$0, eaz[] $$1) {
+   static void a(sp $$0, eaz[] $$1) {
       $$0.c($$1.length);
 
       for (eaz $$2 : $$1) {
@@ -185,13 +185,13 @@ public class ebb {
 
    public static record a(eaz[] a, eaz[] b, Set<ebf> c) {
 
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
          ebb.a($$0, this.a);
          ebb.a($$0, this.b);
       }
 
-      public static ebb.a b(so $$0) {
+      public static ebb.a b(sp $$0) {
          HashSet<ebf> $$1 = $$0.a(HashSet::new, ebf::c);
          eaz[] $$2 = ebb.c($$0);
          eaz[] $$3 = ebb.c($$0);

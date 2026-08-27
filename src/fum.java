@@ -13,7 +13,7 @@ public class fum<T extends cdl> extends ftg<T> {
    public void a(T $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
       $$3.a();
-      long $$6 = (long)$$0.ai() * 493286711L;
+      long $$6 = (long)$$0.ah() * 493286711L;
       $$6 = $$6 * $$6 * 4392167121L + $$6 * 98761L;
       float $$7 = (((float)($$6 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
       float $$8 = (((float)($$6 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;

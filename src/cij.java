@@ -56,22 +56,22 @@ public class cij extends cja {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
-      qx $$4 = $$0.b("Fireworks");
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
+      qy $$4 = $$0.b("Fireworks");
       if ($$4 != null) {
          if ($$4.b("Flight", 99)) {
-            $$2.add(tl.c("item.minecraft.firework_rocket.flight").b(tk.u).f(String.valueOf($$4.f("Flight"))).a(n.h));
+            $$2.add(tm.c("item.minecraft.firework_rocket.flight").b(tl.u).f(String.valueOf($$4.f("Flight"))).a(n.h));
          }
 
-         rd $$5 = $$4.c("Explosions", 10);
+         re $$5 = $$4.c("Explosions", 10);
          if (!$$5.isEmpty()) {
             for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               qx $$7 = $$5.a($$6);
-               List<tl> $$8 = Lists.newArrayList();
+               qy $$7 = $$5.a($$6);
+               List<tm> $$8 = Lists.newArrayList();
                cik.a($$7, $$8);
                if (!$$8.isEmpty()) {
                   for (int $$9 = 1; $$9 < $$8.size(); $$9++) {
-                     $$8.set($$9, tl.b("  ").b($$8.get($$9)).a(n.h));
+                     $$8.set($$9, tm.b("  ").b($$8.get($$9)).a(n.h));
                   }
 
                   $$2.addAll($$8);

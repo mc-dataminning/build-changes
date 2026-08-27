@@ -16,7 +16,7 @@ public class brs extends bsb {
 
    @Override
    public boolean a() {
-      ehi $$0 = this.a.cH().c(10.0, 8.0, 10.0);
+      ehi $$0 = this.a.cG().c(10.0, 8.0, 10.0);
       List<? extends bjg> $$1 = this.a.dL().a(cbh.class, this.c, this.a, $$0);
       List<cbu> $$2 = this.a.dL().a(this.c, this.a, $$0);
 

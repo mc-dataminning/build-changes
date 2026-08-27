@@ -1,5 +1,5 @@
 public record adt(aex a) implements adr {
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
    }
 }

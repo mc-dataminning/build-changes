@@ -29,20 +29,20 @@ public class fan extends ezi<cfs> {
    private static final int W = 139;
    private static final int X = 18;
    private static final int Y = 94;
-   private static final tl Z = tl.c("merchant.trades");
-   private static final tl aa = tl.c("merchant.deprecated");
+   private static final tm Z = tm.c("merchant.trades");
+   private static final tm aa = tm.c("merchant.deprecated");
    private int ab;
    private final fan.a[] ac = new fan.a[7];
    int ad;
    private boolean ae;
 
-   public fan(cfs $$0, cbt $$1, tl $$2) {
+   public fan(cfs $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
       this.c = 276;
       this.n = 107;
    }
 
-   private void E() {
+   private void F() {
       this.p.e(this.ab);
       this.p.h(this.ab);
       this.f.J().b(new acm(this.ab));
@@ -59,7 +59,7 @@ public class fan extends ezi<cfs> {
          this.ac[$$3] = this.d(new fan.a($$0 + 5, $$2, $$3, $$0x -> {
             if ($$0x instanceof fan.a) {
                this.ab = ((fan.a)$$0x).a() + this.ad;
-               this.E();
+               this.F();
             }
          }));
          $$2 += 20;
@@ -70,7 +70,7 @@ public class fan extends ezi<cfs> {
    protected void b(esf $$0, int $$1, int $$2) {
       int $$3 = this.p.n();
       if ($$3 > 0 && $$3 <= 5 && this.p.q()) {
-         tl $$4 = tl.a("merchant.title", this.e, tl.c("merchant.level." + $$3));
+         tm $$4 = tm.a("merchant.title", this.e, tm.c("merchant.level." + $$3));
          int $$5 = this.i.a($$4);
          int $$6 = 49 + this.c / 2 - $$5 / 2;
          $$0.a(this.i, $$4, $$6, 6, 4210752, false);
@@ -275,7 +275,7 @@ public class fan extends ezi<cfs> {
       final int a;
 
       public a(int $$0, int $$1, int $$2, esq.c $$3) {
-         super($$0, $$1, 88, 20, tk.a, $$3, o);
+         super($$0, $$1, 88, 20, tl.a, $$3, o);
          this.a = $$2;
          this.j = false;
       }

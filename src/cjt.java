@@ -6,21 +6,21 @@ public class cjt extends cko {
    }
 
    @Override
-   public tl m(cjf $$0) {
+   public tm m(cjf $$0) {
       if ($$0.a(cji.tt) && $$0.u()) {
          String $$1 = null;
-         qx $$2 = $$0.v();
+         qy $$2 = $$0.v();
          if ($$2.b("SkullOwner", 8)) {
             $$1 = $$2.l("SkullOwner");
          } else if ($$2.b("SkullOwner", 10)) {
-            qx $$3 = $$2.p("SkullOwner");
+            qy $$3 = $$2.p("SkullOwner");
             if ($$3.b("Name", 8)) {
                $$1 = $$3.l("Name");
             }
          }
 
          if ($$1 != null) {
-            return tl.a(this.a() + ".named", $$1);
+            return tm.a(this.a() + ".named", $$1);
          }
       }
 
@@ -28,7 +28,7 @@ public class cjt extends cko {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       def.e($$0);
    }

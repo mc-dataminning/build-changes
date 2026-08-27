@@ -18,7 +18,7 @@ public abstract class ezi<T extends cel> extends eyk implements fam<T> {
    protected int n;
    protected int o;
    protected final T p;
-   protected final tl q;
+   protected final tm q;
    @Nullable
    protected cgd s;
    @Nullable
@@ -49,7 +49,7 @@ public abstract class ezi<T extends cel> extends eyk implements fam<T> {
    private boolean R;
    private cjf S = cjf.b;
 
-   public ezi(T $$0, cbt $$1, tl $$2) {
+   public ezi(T $$0, cbt $$1, tm $$2) {
       super($$2);
       this.p = $$0;
       this.q = $$1.N_();
@@ -145,7 +145,7 @@ public abstract class ezi<T extends cel> extends eyk implements fam<T> {
       }
    }
 
-   protected List<tl> a(cjf $$0) {
+   protected List<tm> a(cjf $$0) {
       return a(this.f, $$0);
    }
 
@@ -192,7 +192,7 @@ public abstract class ezi<T extends cel> extends eyk implements fam<T> {
             $$4 = $$7.c($$11);
          } else {
             this.v.remove($$1);
-            this.G();
+            this.H();
          }
       }
 
@@ -219,7 +219,7 @@ public abstract class ezi<T extends cel> extends eyk implements fam<T> {
       $$0.c().b();
    }
 
-   private void G() {
+   private void H() {
       cjf $$0 = this.p.g();
       if (!$$0.b() && this.w) {
          if (this.L == 2) {
@@ -377,7 +377,7 @@ public abstract class ezi<T extends cel> extends eyk implements fam<T> {
          }
       } else if (this.w && $$5 != null && !$$6.b() && ($$6.L() > this.v.size() || this.L == 2) && cel.a($$5, $$6, true) && $$5.a($$6) && this.p.b($$5)) {
          this.v.add($$5);
-         this.G();
+         this.H();
       }
 
       return true;
@@ -565,19 +565,19 @@ public abstract class ezi<T extends cel> extends eyk implements fam<T> {
    @Override
    public final void c() {
       super.c();
-      if (this.f.s.bw() && !this.f.s.dG()) {
-         this.C();
+      if (this.f.s.bv() && !this.f.s.dG()) {
+         this.D();
       } else {
          this.f.s.q();
       }
    }
 
    @Override
-   protected void C() {
+   protected void D() {
    }
 
    @Override
-   public T D() {
+   public T E() {
       return this.p;
    }
 

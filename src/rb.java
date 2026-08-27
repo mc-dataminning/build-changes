@@ -1,185 +1,127 @@
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
 
-public class rb extends qw<rc> {
-   private static final int b = 24;
-   public static final rs<rb> a = new rs.b<rb>() {
-      public rb a(DataInput $$0, int $$1, rg $$2) throws IOException {
-         $$2.a(24L);
-         int $$3 = $$0.readInt();
-         $$2.a(4L * (long)$$3);
-         int[] $$4 = new int[$$3];
-
-         for (int $$5 = 0; $$5 < $$3; $$5++) {
-            $$4[$$5] = $$0.readInt();
-         }
-
-         return new rb($$4);
+public class rb extends rl {
+   private static final int c = 12;
+   public static final rb a = new rb(0.0F);
+   public static final rt<rb> b = new rt.a<rb>() {
+      public rb a(DataInput $$0, int $$1, rh $$2) throws IOException {
+         $$2.a(12L);
+         return rb.a($$0.readFloat());
       }
 
       @Override
-      public rn.b a(DataInput $$0, rn $$1) throws IOException {
-         int $$2 = $$0.readInt();
-         int[] $$3 = new int[$$2];
-
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readInt();
-         }
-
-         return $$1.a($$3);
+      public ro.b a(DataInput $$0, ro $$1) throws IOException {
+         return $$1.a($$0.readFloat());
       }
 
       @Override
-      public void a(DataInput $$0) throws IOException {
-         $$0.skipBytes($$0.readInt() * 4);
+      public int c() {
+         return 4;
       }
 
       @Override
       public String a() {
-         return "INT[]";
+         return "FLOAT";
       }
 
       @Override
       public String b() {
-         return "TAG_Int_Array";
+         return "TAG_Float";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
       }
    };
-   private int[] c;
+   private final float w;
 
-   public rb(int[] $$0) {
-      this.c = $$0;
+   private rb(float $$0) {
+      this.w = $$0;
    }
 
-   public rb(List<Integer> $$0) {
-      this(a($$0));
-   }
-
-   private static int[] a(List<Integer> $$0) {
-      int[] $$1 = new int[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Integer $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0 : $$3;
-      }
-
-      return $$1;
+   public static rb a(float $$0) {
+      return $$0 == 0.0F ? a : new rb($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-
-      for (int $$1 : this.c) {
-         $$0.writeInt($$1);
-      }
+      $$0.writeFloat(this.w);
    }
 
    @Override
    public int a() {
-      return 24 + 4 * this.c.length;
+      return 12;
    }
 
    @Override
    public byte b() {
-      return 11;
+      return 5;
    }
 
    @Override
-   public rs<rb> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.r_();
+   public rt<rb> c() {
+      return b;
    }
 
    public rb e() {
-      int[] $$0 = new int[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new rb($$0);
+      return this;
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof rb && Arrays.equals(this.c, ((rb)$$0).c);
+      return this == $$0 ? true : $$0 instanceof rb && this.w == ((rb)$$0).w;
    }
 
    @Override
    public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   public int[] g() {
-      return this.c;
+      return Float.floatToIntBits(this.w);
    }
 
    @Override
-   public void a(ru $$0) {
+   public void a(rv $$0) {
       $$0.a(this);
    }
 
    @Override
-   public int size() {
-      return this.c.length;
-   }
-
-   public rc a(int $$0) {
-      return rc.a(this.c[$$0]);
-   }
-
-   public rc a(int $$0, rc $$1) {
-      int $$2 = this.c[$$0];
-      this.c[$$0] = $$1.g();
-      return rc.a($$2);
-   }
-
-   public void b(int $$0, rc $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.g());
+   public long f() {
+      return (long)this.w;
    }
 
    @Override
-   public boolean a(int $$0, rq $$1) {
-      if ($$1 instanceof rk) {
-         this.c[$$0] = ((rk)$$1).g();
-         return true;
-      } else {
-         return false;
-      }
+   public int g() {
+      return arx.d(this.w);
    }
 
    @Override
-   public boolean b(int $$0, rq $$1) {
-      if ($$1 instanceof rk) {
-         this.c = ArrayUtils.add(this.c, $$0, ((rk)$$1).g());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public rc b(int $$0) {
-      int $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return rc.a($$1);
+   public short h() {
+      return (short)(arx.d(this.w) & 65535);
    }
 
    @Override
-   public byte f() {
-      return 3;
+   public byte i() {
+      return (byte)(arx.d(this.w) & 0xFF);
    }
 
    @Override
-   public void clear() {
-      this.c = new int[0];
+   public double j() {
+      return (double)this.w;
    }
 
    @Override
-   public rn.b a(rn $$0) {
-      return $$0.a(this.c);
+   public float k() {
+      return this.w;
+   }
+
+   @Override
+   public Number l() {
+      return this.w;
+   }
+
+   @Override
+   public ro.b a(ro $$0) {
+      return $$0.a(this.w);
    }
 }

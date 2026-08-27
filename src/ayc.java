@@ -20,7 +20,7 @@ public class ayc extends DataFix {
                DSL.remainderFinder(),
                $$0xx -> $$0xx.update(
                      "DisplayName",
-                     $$1 -> (Dynamic)DataFixUtils.orElse($$1.asString().map($$0xxxx -> tl.a.a(tl.b($$0xxxx))).map($$0xx::createString).result(), $$1)
+                     $$1 -> (Dynamic)DataFixUtils.orElse($$1.asString().map($$0xxxx -> tm.a.a(tm.b($$0xxxx))).map($$0xx::createString).result(), $$1)
                   )
             )
       );

@@ -13,12 +13,12 @@ public class ddz extends dcv implements djv.b<ddz.a> {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.a.b.a($$0);
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       this.a.b.b($$0);
       super.b($$0);
    }

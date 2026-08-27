@@ -1,4 +1,4 @@
-public class aao implements vd<ww> {
+public class aao implements ve<wx> {
    public static final float a = 8.0F;
    private final hg<apd> b;
    private final apf c;
@@ -20,7 +20,7 @@ public class aao implements vd<ww> {
       this.i = $$7;
    }
 
-   public aao(so $$0) {
+   public aao(sp $$0) {
       this.b = $$0.a(jd.c.t(), apd::b);
       this.c = $$0.b(apf.class);
       this.d = $$0.readInt();
@@ -32,7 +32,7 @@ public class aao implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(jd.c.t(), this.b, ($$0x, $$1) -> $$1.a($$0x));
       $$0.a(this.c);
       $$0.p(this.d);
@@ -75,7 +75,7 @@ public class aao implements vd<ww> {
       return this.i;
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 }

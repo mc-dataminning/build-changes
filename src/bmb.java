@@ -10,7 +10,7 @@ public class bmb extends bkx<cbh> {
 
    protected boolean a(akr $$0, cbh $$1) {
       cbu $$2 = $$1.gd();
-      return $$1.bw() && $$2 != null && !$$1.aY() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bS != null;
+      return $$1.bv() && $$2 != null && !$$1.aX() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bS != null;
    }
 
    protected boolean a(akr $$0, cbh $$1, long $$2) {

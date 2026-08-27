@@ -91,8 +91,8 @@ public class fng extends fnd {
    }
 
    @Override
-   public void bC() {
-      super.bC();
+   public void bB() {
+      super.bB();
       this.cX = false;
    }
 
@@ -103,18 +103,18 @@ public class fng extends fnd {
 
    @Override
    public float h(float $$0) {
-      return this.bO() ? super.h($$0) : this.dB();
+      return this.bN() ? super.h($$0) : this.dB();
    }
 
    @Override
    public void l() {
       if (this.dL().f(this.dp(), this.dv())) {
          super.l();
-         if (this.bO()) {
-            this.cn.b(new abz.c(this.dB(), this.dD(), this.aB()));
+         if (this.bN()) {
+            this.cn.b(new abz.c(this.dB(), this.dD(), this.aA()));
             this.cn.b(new ach(this.bk, this.bm, this.co.g, this.co.h));
-            biq $$0 = this.cW();
-            if ($$0 != this && $$0.cX()) {
+            biq $$0 = this.cV();
+            if ($$0 != this && $$0.cW()) {
                this.cn.b(new aca($$0));
                this.C();
             }
@@ -140,7 +140,7 @@ public class fng extends fnd {
 
    private void B() {
       this.C();
-      boolean $$0 = this.bS();
+      boolean $$0 = this.bR();
       if ($$0 != this.cP) {
          acg.a $$1 = $$0 ? acg.a.a : acg.a.b;
          this.cn.b(new acg(this, $$1));
@@ -156,18 +156,18 @@ public class fng extends fnd {
          this.cR++;
          boolean $$7 = arx.f($$2, $$3, $$4) > arx.k(2.0E-4) || this.cR >= 20;
          boolean $$8 = $$5 != 0.0 || $$6 != 0.0;
-         if (this.bO()) {
+         if (this.bN()) {
             ehn $$9 = this.do();
-            this.cn.b(new abz.b($$9.c, -999.0, $$9.e, this.dB(), this.dD(), this.aB()));
+            this.cn.b(new abz.b($$9.c, -999.0, $$9.e, this.dB(), this.dD(), this.aA()));
             $$7 = false;
          } else if ($$7 && $$8) {
-            this.cn.b(new abz.b(this.dq(), this.ds(), this.dw(), this.dB(), this.dD(), this.aB()));
+            this.cn.b(new abz.b(this.dq(), this.ds(), this.dw(), this.dB(), this.dD(), this.aA()));
          } else if ($$7) {
-            this.cn.b(new abz.a(this.dq(), this.ds(), this.dw(), this.aB()));
+            this.cn.b(new abz.a(this.dq(), this.ds(), this.dw(), this.aA()));
          } else if ($$8) {
-            this.cn.b(new abz.c(this.dB(), this.dD(), this.aB()));
-         } else if (this.cN != this.aB()) {
-            this.cn.b(new abz.d(this.aB()));
+            this.cn.b(new abz.c(this.dB(), this.dD(), this.aA()));
+         } else if (this.cN != this.aA()) {
+            this.cn.b(new abz.d(this.aA()));
          }
 
          if ($$7) {
@@ -182,13 +182,13 @@ public class fng extends fnd {
             this.cM = this.dD();
          }
 
-         this.cN = this.aB();
+         this.cN = this.aA();
          this.cY = this.cp.m.E().c();
       }
    }
 
    private void C() {
-      boolean $$0 = this.bY();
+      boolean $$0 = this.bX();
       if ($$0 != this.cQ) {
          acg.a $$1 = $$0 ? acg.a.d : acg.a.e;
          this.cn.b(new acg(this, $$1));
@@ -270,8 +270,8 @@ public class fng extends fnd {
    }
 
    @Override
-   public boolean bk() {
-      return !this.fS().b && super.bk();
+   public boolean bj() {
+      return !this.fS().b && super.bj();
    }
 
    @Override
@@ -312,7 +312,7 @@ public class fng extends fnd {
    }
 
    @Override
-   public void a(tl $$0, boolean $$1) {
+   public void a(tm $$0, boolean $$1) {
       this.cp.aW().a($$0, $$1);
    }
 
@@ -346,7 +346,7 @@ public class fng extends fnd {
    }
 
    private boolean i(gw $$0) {
-      ehi $$1 = this.cH();
+      ehi $$1 = this.cG();
       ehi $$2 = new ehi((double)$$0.u(), $$1.b, (double)$$0.w(), (double)$$0.u() + 1.0, $$1.e, (double)$$0.w() + 1.0).h(1.0E-7);
       return this.dL().f(this, $$2);
    }
@@ -358,7 +358,7 @@ public class fng extends fnd {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       this.cp.l.d().a($$0);
    }
 
@@ -389,7 +389,7 @@ public class fng extends fnd {
 
    @Override
    public void a(apd $$0, float $$1, float $$2) {
-      this.dL().a(this.dq(), this.ds(), this.dw(), $$0, this.db(), $$1, $$2, false);
+      this.dL().a(this.dq(), this.ds(), this.dw(), $$0, this.da(), $$1, $$2, false);
    }
 
    @Override
@@ -398,7 +398,7 @@ public class fng extends fnd {
    }
 
    @Override
-   public boolean cY() {
+   public boolean cX() {
       return true;
    }
 
@@ -448,7 +448,7 @@ public class fng extends fnd {
 
    @Nullable
    public bjr s() {
-      if (this.da() instanceof bjr $$0 && $$0.a()) {
+      if (this.cZ() instanceof bjr $$0 && $$0.a()) {
          return $$0;
       }
 
@@ -460,7 +460,7 @@ public class fng extends fnd {
    }
 
    @Override
-   public boolean X() {
+   public boolean W() {
       return this.cp.aQ();
    }
 
@@ -511,17 +511,17 @@ public class fng extends fnd {
    }
 
    @Override
-   public boolean bS() {
+   public boolean bR() {
       return this.co != null && this.co.h;
    }
 
    @Override
-   public boolean bX() {
+   public boolean bW() {
       return this.cO;
    }
 
    public boolean u() {
-      return this.bX() || this.cb();
+      return this.bW() || this.ca();
    }
 
    @Override
@@ -573,11 +573,11 @@ public class fng extends fnd {
       boolean $$0 = this.co.g;
       boolean $$1 = this.co.h;
       boolean $$2 = this.K();
-      this.cO = !this.fS().b && !this.bZ() && !this.bO() && this.g(bjs.f) && (this.bS() || !this.fC() && !this.g(bjs.a));
+      this.cO = !this.fS().b && !this.bY() && !this.bN() && this.g(bjs.f) && (this.bR() || !this.fC() && !this.g(bjs.a));
       float $$3 = arx.a(0.3F + cnq.b(this), 0.0F, 1.0F);
       this.co.a(this.u(), $$3);
       this.cp.az().a(this.co);
-      if (this.fm() && !this.bO()) {
+      if (this.fm() && !this.bN()) {
          this.co.a *= 0.2F;
          this.co.b *= 0.2F;
          this.cq = 0;
@@ -591,10 +591,10 @@ public class fng extends fnd {
       }
 
       if (!this.af) {
-         this.c(this.dq() - (double)this.dg() * 0.35, this.dw() + (double)this.dg() * 0.35);
-         this.c(this.dq() - (double)this.dg() * 0.35, this.dw() - (double)this.dg() * 0.35);
-         this.c(this.dq() + (double)this.dg() * 0.35, this.dw() - (double)this.dg() * 0.35);
-         this.c(this.dq() + (double)this.dg() * 0.35, this.dw() + (double)this.dg() * 0.35);
+         this.c(this.dq() - (double)this.df() * 0.35, this.dw() + (double)this.df() * 0.35);
+         this.c(this.dq() - (double)this.df() * 0.35, this.dw() - (double)this.df() * 0.35);
+         this.c(this.dq() + (double)this.df() * 0.35, this.dw() - (double)this.df() * 0.35);
+         this.c(this.dq() + (double)this.df() * 0.35, this.dw() + (double)this.df() * 0.35);
       }
 
       if ($$1) {
@@ -602,9 +602,9 @@ public class fng extends fnd {
       }
 
       boolean $$5 = this.I();
-      boolean $$6 = this.bO() ? this.cZ().aB() : this.aB();
+      boolean $$6 = this.bN() ? this.cY().aA() : this.aA();
       boolean $$7 = !$$1 && !$$2;
-      if (($$6 || this.bd()) && $$7 && $$5) {
+      if (($$6 || this.bc()) && $$7 && $$5) {
          if (this.cq <= 0 && !this.cp.m.D.e()) {
             this.cq = 7;
          } else {
@@ -612,15 +612,15 @@ public class fng extends fnd {
          }
       }
 
-      if ((!this.aY() || this.bd()) && $$5 && this.cp.m.D.e()) {
+      if ((!this.aX() || this.bc()) && $$5 && this.cp.m.D.e()) {
          this.g(true);
       }
 
-      if (this.bY()) {
+      if (this.bX()) {
          boolean $$8 = !this.co.b() || !this.L();
-         boolean $$9 = $$8 || this.P && !this.S || this.aY() && !this.bd();
-         if (this.bZ()) {
-            if (!this.aB() && !this.co.h && $$8 || !this.aY()) {
+         boolean $$9 = $$8 || this.P && !this.S || this.aX() && !this.bc();
+         if (this.bY()) {
+            if (!this.aA() && !this.co.h && $$8 || !this.aX()) {
                this.g(false);
             }
          } else if ($$9) {
@@ -639,7 +639,7 @@ public class fng extends fnd {
          } else if (!$$0 && this.co.g && !$$4) {
             if (this.bU == 0) {
                this.bU = 7;
-            } else if (!this.bZ()) {
+            } else if (!this.bY()) {
                this.fS().b = !this.fS().b;
                $$10 = true;
                this.w();
@@ -648,7 +648,7 @@ public class fng extends fnd {
          }
       }
 
-      if (this.co.g && !$$10 && !$$0 && !this.fS().b && !this.bO() && !this.c_()) {
+      if (this.co.g && !$$10 && !$$0 && !this.fS().b && !this.bN() && !this.c_()) {
          cjf $$11 = this.c(biv.e);
          if ($$11.a(cji.nh) && chz.d($$11) && this.fW()) {
             this.cn.b(new acg(this, acg.a.i));
@@ -656,7 +656,7 @@ public class fng extends fnd {
       }
 
       this.da = this.fv();
-      if (this.aY() && this.co.h && this.dZ()) {
+      if (this.aX() && this.co.h && this.dZ()) {
          this.fb();
       }
 
@@ -712,7 +712,7 @@ public class fng extends fnd {
       }
 
       super.b_();
-      if (this.aB() && this.fS().b && !this.cp.q.j()) {
+      if (this.aA() && this.fS().b && !this.cp.q.j()) {
          this.fS().b = false;
          this.w();
       }
@@ -755,10 +755,10 @@ public class fng extends fnd {
    }
 
    @Override
-   public void bz() {
-      super.bz();
+   public void by() {
+      super.by();
       this.cX = false;
-      if (this.da() instanceof cdn $$0) {
+      if (this.cZ() instanceof cdn $$0) {
          $$0.a(this.co.e, this.co.f, this.co.c, this.co.d);
          this.cX = this.cX | (this.co.e || this.co.f || this.co.c || this.co.d);
       }
@@ -814,11 +814,11 @@ public class fng extends fnd {
 
          float $$12 = arx.i($$6);
          ehn $$13 = $$4.a((double)$$12);
-         ehn $$14 = this.bH();
+         ehn $$14 = this.bG();
          float $$15 = (float)($$14.c * $$13.c + $$14.e * $$13.e);
          if (!($$15 < -0.15F)) {
             ehs $$16 = ehs.a(this);
-            gw $$17 = gw.a(this.dq(), this.cH().e, this.dw());
+            gw $$17 = gw.a(this.dq(), this.cG().e, this.dw());
             dfj $$18 = this.dL().a_($$17);
             if ($$18.b(this.dL(), $$17, $$16).c()) {
                $$17 = $$17.c();
@@ -832,8 +832,8 @@ public class fng extends fnd {
 
                   float $$22 = Math.max($$5 * 7.0F, 1.0F / $$12);
                   ehn $$24 = $$3.e($$13.a((double)$$22));
-                  float $$25 = this.dg();
-                  float $$26 = this.dh();
+                  float $$25 = this.df();
+                  float $$26 = this.dg();
                   ehi $$27 = new ehi($$2, $$24.b(0.0, (double)$$26, 0.0)).c((double)$$25, 0.0, (double)$$25);
                   ehn $$23 = $$2.b(0.0, 0.51F, 0.0);
                   $$24 = $$24.b(0.0, 0.51F, 0.0);
@@ -908,7 +908,7 @@ public class fng extends fnd {
    }
 
    private boolean F() {
-      return this.z() && this.cZ <= 0 && this.aB() && !this.fJ() && !this.bO() && this.G() && (double)this.aJ() >= 1.0;
+      return this.z() && this.cZ <= 0 && this.aA() && !this.fJ() && !this.bN() && this.G() && (double)this.aI() >= 1.0;
    }
 
    private boolean G() {
@@ -917,20 +917,20 @@ public class fng extends fnd {
    }
 
    private boolean I() {
-      return !this.bY() && this.K() && this.L() && !this.fm() && !this.a(bif.o) && (!this.bO() || this.c(this.cZ())) && !this.fv();
+      return !this.bX() && this.K() && this.L() && !this.fm() && !this.a(bif.o) && (!this.bN() || this.c(this.cY())) && !this.fv();
    }
 
    private boolean c(biq $$0) {
-      return $$0.dE() && $$0.cX();
+      return $$0.dE() && $$0.cW();
    }
 
    private boolean K() {
       double $$0 = 0.8;
-      return this.bd() ? this.co.b() : (double)this.co.b >= 0.8;
+      return this.bc() ? this.co.b() : (double)this.co.b >= 0.8;
    }
 
    private boolean L() {
-      return this.bO() || (float)this.gb().a() > 6.0F || this.fS().c;
+      return this.bN() || (float)this.gb().a() > 6.0F || this.fS().c;
    }
 
    public float A() {
@@ -956,7 +956,7 @@ public class fng extends fnd {
    }
 
    @Override
-   public boolean bd() {
+   public boolean bc() {
       return this.ce;
    }
 

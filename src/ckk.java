@@ -91,7 +91,7 @@ public class ckk extends cja {
       }
    }
 
-   public boolean a(@Nullable qx $$0, biu<?> $$1) {
+   public boolean a(@Nullable qy $$0, biu<?> $$1) {
       return Objects.equals(this.a($$0), $$1);
    }
 
@@ -108,9 +108,9 @@ public class ckk extends cja {
       return Iterables.unmodifiableIterable(a.values());
    }
 
-   public biu<?> a(@Nullable qx $$0) {
+   public biu<?> a(@Nullable qy $$0) {
       if ($$0 != null && $$0.b("EntityTag", 10)) {
-         qx $$1 = $$0.p("EntityTag");
+         qy $$1 = $$0.p("EntityTag");
          if ($$1.b("id", 8)) {
             return biu.a($$1.l("id")).orElse(this.d);
          }

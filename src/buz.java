@@ -10,7 +10,7 @@ public class buz extends bvt {
    static final bts bU = bts.b().a(10.0).d();
    public static final int b = 4800;
    private static final int bV = 2400;
-   public static final Predicate<byn> c = $$0 -> !$$0.y() && $$0.bw() && $$0.aY();
+   public static final Predicate<byn> c = $$0 -> !$$0.y() && $$0.bv() && $$0.aX();
 
    public buz(biu<? extends buz> $$0, cpv $$1) {
       super($$0, $$1);
@@ -21,8 +21,8 @@ public class buz extends bvt {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
-      this.j(this.ch());
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
+      this.j(this.cg());
       this.s(0.0F);
       return super.a($$0, $$1, $$2, $$3, $$4);
    }
@@ -69,7 +69,7 @@ public class buz extends bvt {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("TreasurePosX", this.s().u());
       $$0.a("TreasurePosY", this.s().v());
@@ -79,7 +79,7 @@ public class buz extends bvt {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       int $$1 = $$0.h("TreasurePosX");
       int $$2 = $$0.h("TreasurePosY");
       int $$3 = $$0.h("TreasurePosZ");
@@ -127,13 +127,13 @@ public class buz extends bvt {
    }
 
    @Override
-   public int ch() {
+   public int cg() {
       return 4800;
    }
 
    @Override
    protected int n(int $$0) {
-      return this.ch();
+      return this.cg();
    }
 
    @Override
@@ -142,12 +142,12 @@ public class buz extends bvt {
    }
 
    @Override
-   public int Z() {
+   public int Y() {
       return 1;
    }
 
    @Override
-   public int aa() {
+   public int Z() {
       return 1;
    }
 
@@ -171,7 +171,7 @@ public class buz extends bvt {
             this.a(biv.a, $$1);
             this.e(biv.a);
             this.a($$0, $$1.L());
-            $$0.al();
+            $$0.ak();
          }
       }
    }
@@ -180,9 +180,9 @@ public class buz extends bvt {
    public void l() {
       super.l();
       if (this.fT()) {
-         this.j(this.ch());
+         this.j(this.cg());
       } else {
-         if (this.ba()) {
+         if (this.aZ()) {
             this.c(2400);
          } else {
             this.c(this.y() - 1);
@@ -190,7 +190,7 @@ public class buz extends bvt {
                this.a(this.dM().r(), 1.0F);
             }
 
-            if (this.aB()) {
+            if (this.aA()) {
                this.f(this.do().b((double)((this.ag.i() * 2.0F - 1.0F) * 0.2F), 0.5, (double)((this.ag.i() * 2.0F - 1.0F) * 0.2F)));
                this.r(this.ag.i() * 360.0F);
                this.c(false);
@@ -198,7 +198,7 @@ public class buz extends bvt {
             }
          }
 
-         if (this.dL().B && this.aY() && this.do().g() > 0.03) {
+         if (this.dL().B && this.aX() && this.do().g() > 0.03) {
             ehn $$0 = this.f(0.0F);
             float $$1 = arx.b(this.dB() * (float) (Math.PI / 180.0)) * 0.3F;
             float $$2 = arx.a(this.dB() * (float) (Math.PI / 180.0)) * 0.3F;
@@ -265,16 +265,16 @@ public class buz extends bvt {
    @Nullable
    @Override
    protected apd w() {
-      return this.aY() ? ape.fQ : ape.fP;
-   }
-
-   @Override
-   protected apd aN() {
-      return ape.fX;
+      return this.aX() ? ape.fQ : ape.fP;
    }
 
    @Override
    protected apd aM() {
+      return ape.fX;
+   }
+
+   @Override
+   protected apd aL() {
       return ape.fY;
    }
 
@@ -285,7 +285,7 @@ public class buz extends bvt {
 
    @Override
    public void h(ehn $$0) {
-      if (this.cY() && this.aY()) {
+      if (this.cX() && this.aX()) {
          this.a(this.fe(), $$0);
          this.a(bjm.a, this.do());
          this.f(this.do().a(0.9));
@@ -318,13 +318,13 @@ public class buz extends bvt {
 
       @Override
       public boolean a() {
-         return this.a.t() && this.a.ci() >= 100;
+         return this.a.t() && this.a.ch() >= 100;
       }
 
       @Override
       public boolean b() {
          gw $$0 = this.a.s();
-         return !gw.a((double)$$0.u(), this.a.ds(), (double)$$0.w()).a(this.a.dj(), 4.0) && !this.b && this.a.ci() >= 100;
+         return !gw.a((double)$$0.u(), this.a.ds(), (double)$$0.w()).a(this.a.dj(), 4.0) && !this.b && this.a.ch() >= 100;
       }
 
       @Override
@@ -374,7 +374,7 @@ public class buz extends bvt {
                return;
             }
 
-            this.a.G().a($$2.c, $$2.d, $$2.e, (float)(this.a.aa() + 20), (float)this.a.Z());
+            this.a.G().a($$2.c, $$2.d, $$2.e, (float)(this.a.Z() + 20), (float)this.a.Y());
             this.a.L().a($$2.c, $$2.d, $$2.e, 1.3);
             if ($$0.z.a(this.a(80)) == 0) {
                $$0.a(this.a, (byte)38);
@@ -398,12 +398,12 @@ public class buz extends bvt {
       @Override
       public boolean a() {
          this.c = this.a.dL().a(buz.bU, this.a);
-         return this.c == null ? false : this.c.bZ() && this.a.q() != this.c;
+         return this.c == null ? false : this.c.bY() && this.a.q() != this.c;
       }
 
       @Override
       public boolean b() {
-         return this.c != null && this.c.bZ() && this.a.f(this.c) < 256.0;
+         return this.c != null && this.c.bY() && this.a.f(this.c) < 256.0;
       }
 
       @Override
@@ -419,14 +419,14 @@ public class buz extends bvt {
 
       @Override
       public void e() {
-         this.a.G().a(this.c, (float)(this.a.aa() + 20), (float)this.a.Z());
+         this.a.G().a(this.c, (float)(this.a.Z() + 20), (float)this.a.Y());
          if (this.a.f(this.c) < 6.25) {
             this.a.L().n();
          } else {
             this.a.L().a(this.c, this.b);
          }
 
-         if (this.c.bZ() && this.c.dL().z.a(6) == 0) {
+         if (this.c.bY() && this.c.dL().z.a(6) == 0) {
             this.c.b(new bid(bif.D, 100), this.a);
          }
       }
@@ -440,14 +440,14 @@ public class buz extends bvt {
          if (this.b > buz.this.ah) {
             return false;
          } else {
-            List<byn> $$0 = buz.this.dL().a(byn.class, buz.this.cH().c(8.0, 8.0, 8.0), buz.c);
+            List<byn> $$0 = buz.this.dL().a(byn.class, buz.this.cG().c(8.0, 8.0, 8.0), buz.c);
             return !$$0.isEmpty() || !buz.this.c(biv.a).b();
          }
       }
 
       @Override
       public void c() {
-         List<byn> $$0 = buz.this.dL().a(byn.class, buz.this.cH().c(8.0, 8.0, 8.0), buz.c);
+         List<byn> $$0 = buz.this.dL().a(byn.class, buz.this.cG().c(8.0, 8.0, 8.0), buz.c);
          if (!$$0.isEmpty()) {
             buz.this.L().a($$0.get(0), 1.2F);
             buz.this.a(ape.fW, 1.0F, 1.0F);
@@ -468,7 +468,7 @@ public class buz extends bvt {
 
       @Override
       public void e() {
-         List<byn> $$0 = buz.this.dL().a(byn.class, buz.this.cH().c(8.0, 8.0, 8.0), buz.c);
+         List<byn> $$0 = buz.this.dL().a(byn.class, buz.this.cG().c(8.0, 8.0, 8.0), buz.c);
          cjf $$1 = buz.this.c(biv.a);
          if (!$$1.b()) {
             this.a($$1);
@@ -483,7 +483,7 @@ public class buz extends bvt {
             double $$1 = buz.this.du() - 0.3F;
             byn $$2 = new byn(buz.this.dL(), buz.this.dq(), $$1, buz.this.dw(), $$0);
             $$2.b(40);
-            $$2.c(buz.this.cw());
+            $$2.c(buz.this.cv());
             float $$3 = 0.3F;
             float $$4 = buz.this.ag.i() * (float) (Math.PI * 2);
             float $$5 = 0.02F * buz.this.ag.i();

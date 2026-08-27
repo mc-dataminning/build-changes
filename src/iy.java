@@ -13,7 +13,7 @@ public record iy(float c) implements iv {
          return new iy($$2);
       }
 
-      public iy a(iw<iy> $$0, so $$1) {
+      public iy a(iw<iy> $$0, sp $$1) {
          return new iy($$1.readFloat());
       }
    };
@@ -24,7 +24,7 @@ public record iy(float c) implements iv {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.c);
    }
 

@@ -41,7 +41,7 @@ public class fri implements frn.a {
    private static final int z = -65536;
    private final eqv A;
    private final Map<gw, fri.a> B = new HashMap<>();
-   private final Map<UUID, vt.a> C = new HashMap<>();
+   private final Map<UUID, vu.a> C = new HashMap<>();
    @Nullable
    private UUID D;
 
@@ -56,11 +56,11 @@ public class fri implements frn.a {
       this.D = null;
    }
 
-   public void a(wd.a $$0, long $$1) {
+   public void a(we.a $$0, long $$1) {
       this.B.put($$0.a(), new fri.a($$0, $$1));
    }
 
-   public void a(vt.a $$0) {
+   public void a(vu.a $$0) {
       this.C.put($$0.b(), $$0);
    }
 
@@ -159,7 +159,7 @@ public class fri implements frn.a {
       a($$0, $$1, "Ghost Hive", $$2, 1, -65536);
    }
 
-   private void a(elp $$0, foe $$1, wd.a $$2, Collection<UUID> $$3) {
+   private void a(elp $$0, foe $$1, we.a $$2, Collection<UUID> $$3) {
       int $$4 = 0;
       if (!$$3.isEmpty()) {
          a($$0, $$1, "Blacklisted by " + a($$3), $$2, $$4++, -65536);
@@ -178,13 +178,13 @@ public class fri implements frn.a {
       a($$0, $$1, $$2.b() + ($$2.e() ? " (sedated)" : ""), $$2, $$4++, -1);
    }
 
-   private void a(elp $$0, foe $$1, vt.a $$2) {
+   private void a(elp $$0, foe $$1, vu.a $$2) {
       if ($$2.e() != null) {
          frv.a($$0, $$1, $$2.e(), 0.5F, false, false, this.e().b().a(), this.e().b().b(), this.e().b().c());
       }
    }
 
-   private void b(elp $$0, foe $$1, vt.a $$2) {
+   private void b(elp $$0, foe $$1, vu.a $$2) {
       boolean $$3 = this.b($$2);
       int $$4 = 0;
       a($$0, $$1, $$2.d(), $$4++, $$2.toString(), -1, 0.03F);
@@ -214,7 +214,7 @@ public class fri implements frn.a {
       }
    }
 
-   private static void a(elp $$0, foe $$1, String $$2, wd.a $$3, int $$4, int $$5) {
+   private static void a(elp $$0, foe $$1, String $$2, we.a $$3, int $$4, int $$5) {
       a($$0, $$1, $$2, $$3.a(), $$4, $$5);
    }
 
@@ -242,21 +242,21 @@ public class fri implements frn.a {
       return this.A.j.m();
    }
 
-   private Set<String> a(wd.a $$0) {
+   private Set<String> a(we.a $$0) {
       return this.a($$0.a()).stream().map(abb::a).collect(Collectors.toSet());
    }
 
-   private String a(vt.a $$0, gw $$1) {
+   private String a(vu.a $$0, gw $$1) {
       double $$2 = Math.sqrt($$1.b($$0.d()));
       double $$3 = (double)Math.round($$2 * 10.0) / 10.0;
       return $$1.x() + " (dist " + $$3 + ")";
    }
 
-   private boolean b(vt.a $$0) {
+   private boolean b(vu.a $$0) {
       return Objects.equals(this.D, $$0.b());
    }
 
-   private boolean c(vt.a $$0) {
+   private boolean c(vu.a $$0) {
       cbu $$1 = this.A.s;
       gw $$2 = gw.a($$1.dq(), $$0.d().b(), $$1.dw());
       gw $$3 = gw.a($$0.d());
@@ -264,13 +264,13 @@ public class fri implements frn.a {
    }
 
    private Collection<UUID> a(gw $$0) {
-      return this.C.values().stream().filter($$1 -> $$1.a($$0)).map(vt.a::b).collect(Collectors.toSet());
+      return this.C.values().stream().filter($$1 -> $$1.a($$0)).map(vu.a::b).collect(Collectors.toSet());
    }
 
    private Map<gw, List<String>> f() {
       Map<gw, List<String>> $$0 = Maps.newHashMap();
 
-      for (vt.a $$1 : this.C.values()) {
+      for (vu.a $$1 : this.C.values()) {
          if ($$1.f() != null && !this.B.containsKey($$1.f())) {
             $$0.computeIfAbsent($$1.f(), $$0x -> Lists.newArrayList()).add($$1.a());
          }
@@ -280,9 +280,9 @@ public class fri implements frn.a {
    }
 
    private void g() {
-      frn.a(this.A.am(), 8).ifPresent($$0 -> this.D = $$0.cw());
+      frn.a(this.A.am(), 8).ifPresent($$0 -> this.D = $$0.cv());
    }
 
-   static record a(wd.a a, long b) {
+   static record a(we.a a, long b) {
    }
 }

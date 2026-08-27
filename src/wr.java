@@ -1,16 +1,18 @@
-public record wr(hu.b a) implements vd<wp> {
-   private static final aev<rq> b = aev.a(ri.a, hu.a(jd.ap));
-
-   public wr(so $$0) {
-      this($$0.<hu>a(b, hx.a).c());
+public record wr() implements ve<wq> {
+   public wr(sp $$0) {
+      this();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(b, hx.a, this.a);
+   public void a(sp $$0) {
    }
 
-   public void a(wp $$0) {
+   public void a(wq $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public so c() {
+      return so.b;
    }
 }

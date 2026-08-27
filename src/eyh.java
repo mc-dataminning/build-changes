@@ -20,17 +20,17 @@ public class eyh extends eyk {
    private static final int o = 2;
    private static final int p = 2;
    private static final aew<cqt> q = cra.b;
-   public static final tl a = tl.c("flat_world_preset.unknown");
+   public static final tm a = tm.c("flat_world_preset.unknown");
    private final exg s;
-   private tl t;
-   private tl u;
+   private tm t;
+   private tm u;
    private eyh.a v;
    private esq w;
    esz x;
    dtl y;
 
    public eyh(exg $$0) {
-      super(tl.c("createWorld.customize.presets.title"));
+      super(tm.c("createWorld.customize.presets.title"));
       this.s = $$0;
    }
 
@@ -132,8 +132,8 @@ public class eyh extends eyk {
 
    @Override
    protected void aI_() {
-      this.t = tl.c("createWorld.customize.presets.share");
-      this.u = tl.c("createWorld.customize.presets.list");
+      this.t = tm.c("createWorld.customize.presets.share");
+      this.u = tm.c("createWorld.customize.presets.list");
       this.x = new esz(this.i, 50, 40, this.g - 100, 20, this.t);
       this.x.l(1230);
       fdg $$0 = this.s.a.l().k();
@@ -148,12 +148,12 @@ public class eyh extends eyk {
       this.e(this.x);
       this.v = new eyh.a($$1, $$2);
       this.e(this.v);
-      this.w = this.d(esq.a(tl.c("createWorld.customize.presets.select"), $$4x -> {
+      this.w = this.d(esq.a(tm.c("createWorld.customize.presets.select"), $$4x -> {
          dtl $$5x = a($$6, $$3, $$4, $$5, this.x.a(), this.y);
          this.s.a($$5x);
          this.f.a(this.s);
       }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(esq.a(tk.e, $$0x -> this.f.a(this.s)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.d(esq.a(tl.e, $$0x -> this.f.a(this.s)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
       this.c(this.v.f() != null);
    }
 
@@ -232,11 +232,11 @@ public class eyh extends eyk {
       public class a extends etm.a<eyh.a.a> {
          private static final aex b = new aex("textures/gui/container/stats_icons.png");
          private final dtj c;
-         private final tl d;
+         private final tm d;
 
          public a(hg<dtj> $$1) {
             this.c = $$1.a();
-            this.d = $$1.e().map($$0x -> tl.c($$0x.a().f("flat_world_preset"))).orElse(eyh.a);
+            this.d = $$1.e().map($$0x -> tm.c($$0x.a().f("flat_world_preset"))).orElse(eyh.a);
          }
 
          @Override
@@ -268,8 +268,8 @@ public class eyh extends eyk {
          }
 
          @Override
-         public tl a() {
-            return tl.a("narrator.select", this.d);
+         public tm a() {
+            return tm.a("narrator.select", this.d);
          }
       }
    }

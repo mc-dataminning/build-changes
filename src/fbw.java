@@ -1,5 +1,6 @@
 import com.google.common.collect.Lists;
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -14,12 +15,12 @@ public class fbw implements aem<cmg>, ets, euk, ewg, fcb {
       new aex("recipe_book/filter_disabled_highlighted")
    );
    protected static final aex b = new aex("textures/gui/recipe_book.png");
-   private static final tl j = tl.c("gui.recipebook.search_hint").a(n.u).a(n.h);
+   private static final tm j = tm.c("gui.recipebook.search_hint").a(n.u).a(n.h);
    public static final int c = 147;
    public static final int d = 166;
    private static final int k = 86;
-   private static final tl l = tl.c("gui.recipebook.toggleRecipes.craftable");
-   private static final tl m = tl.c("gui.recipebook.toggleRecipes.all");
+   private static final tm l = tm.c("gui.recipebook.toggleRecipes.craftable");
+   private static final tm m = tm.c("gui.recipebook.toggleRecipes.all");
    private int n;
    private int o;
    private int p;
@@ -64,7 +65,7 @@ public class fbw implements aem<cmg>, ets, euk, ewg, fcb {
       this.h.s.fR().a(this.x);
       this.g.a(this.x);
       String $$2 = this.t != null ? this.t.a() : "";
-      this.t = new esz(this.h.h, $$0 + 25, $$1 + 13, 81, 9 + 5, tl.c("itemGroup.search"));
+      this.t = new esz(this.h.h, $$0 + 25, $$1 + 13, 81, 9 + 5, tm.c("itemGroup.search"));
       this.t.l(50);
       this.t.g(true);
       this.t.m(16777215);
@@ -150,38 +151,21 @@ public class fbw implements aem<cmg>, ets, euk, ewg, fcb {
 
    private void c(boolean $$0) {
       List<fca> $$1 = this.v.a(this.s.b());
-      boolean $$2 = this.h.r.X().b(cpr.v);
-      $$1.forEach($$1x -> $$1x.a(this.x, this.g.n(), this.g.o(), this.v, $$2));
-      List<fca> $$3 = Lists.newArrayList($$1);
-      $$3.removeIf($$0x -> !$$0x.d());
-      String $$4 = this.t.a();
-      if ($$4.isEmpty() || $$2) {
-         $$3.removeIf($$0x -> !$$0x.b());
-      }
-
-      if (!$$4.isEmpty()) {
-         $$3.removeIf(
-            $$1x -> $$1x.e()
-                  .stream()
-                  .noneMatch(
-                     $$1xx -> Arrays.stream($$1xx.b().a(this.h.r.G_()).y().getString().toLowerCase(Locale.ROOT).split("\\W+"))
-                           .anyMatch($$1xxx -> $$1xxx.startsWith($$4.toLowerCase(Locale.ROOT)))
-                  )
-         );
-         $$3.sort(($$0x, $$1x) -> {
-            if ($$0x.b() == $$1x.b()) {
-               return 0;
-            } else {
-               return $$0x.b() ? -1 : 1;
-            }
-         });
+      $$1.forEach($$0x -> $$0x.a(this.x, this.g.n(), this.g.o(), this.v));
+      List<fca> $$2 = Lists.newArrayList($$1);
+      $$2.removeIf($$0x -> !$$0x.b());
+      $$2.removeIf($$0x -> !$$0x.d());
+      String $$3 = this.t.a();
+      if (!$$3.isEmpty()) {
+         ObjectSet<fca> $$4 = new ObjectLinkedOpenHashSet(this.h.a(gcy.c).search($$3.toLowerCase(Locale.ROOT)));
+         $$2.removeIf($$1x -> !$$4.contains($$1x));
       }
 
       if (this.v.a(this.g)) {
-         $$3.removeIf($$0x -> !$$0x.c());
+         $$2.removeIf($$0x -> !$$0x.c());
       }
 
-      this.w.a($$3, $$0);
+      this.w.a($$2, $$0);
    }
 
    private void l() {
@@ -250,7 +234,7 @@ public class fbw implements aem<cmg>, ets, euk, ewg, fcb {
       }
    }
 
-   protected tl d() {
+   protected tm d() {
       return l;
    }
 

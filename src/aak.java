@@ -1,4 +1,4 @@
-public class aak implements vd<ww> {
+public class aak implements ve<wx> {
    private final long a;
    private final long b;
 
@@ -15,18 +15,18 @@ public class aak implements vd<ww> {
       this.b = $$3;
    }
 
-   public aak(so $$0) {
+   public aak(sp $$0) {
       this.a = $$0.readLong();
       this.b = $$0.readLong();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.b(this.a);
       $$0.b(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

@@ -6,7 +6,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class agm {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.deop.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.deop.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -27,7 +27,7 @@ public class agm {
          if ($$2.f($$4)) {
             $$2.b($$4);
             $$3++;
-            $$0.a(() -> tl.a("commands.deop.success", $$1.iterator().next().getName()), true);
+            $$0.a(() -> tm.a("commands.deop.success", $$1.iterator().next().getName()), true);
          }
       }
 

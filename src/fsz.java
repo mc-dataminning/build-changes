@@ -17,7 +17,7 @@ public class fsz extends fsf<byw, fez<byw>> {
       if ($$5 > 0.0F) {
          float $$6 = -10.0F - $$0.dD();
          float $$7 = arx.i($$5, 0.0F, $$6);
-         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dh() / 2.0F, 0.0F);
+         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dg() / 2.0F, 0.0F);
       }
    }
 }

@@ -1,16 +1,16 @@
-public class ack implements vd<abd> {
+public class ack implements ve<abd> {
    private final String a;
 
    public ack(String $$0) {
       this.a = $$0;
    }
 
-   public ack(so $$0) {
+   public ack(sp $$0) {
       this.a = $$0.r();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
    }
 

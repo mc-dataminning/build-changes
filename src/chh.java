@@ -88,9 +88,9 @@ public class chh extends cja {
 
    private static int b(cjf $$0, cjf $$1) {
       if (!$$1.b() && $$1.d().al_()) {
-         qx $$2 = $$0.w();
+         qy $$2 = $$0.w();
          if (!$$2.e("Items")) {
-            $$2.a("Items", new rd());
+            $$2.a("Items", new re());
          }
 
          int $$3 = o($$0);
@@ -99,10 +99,10 @@ public class chh extends cja {
          if ($$5 == 0) {
             return 0;
          } else {
-            rd $$6 = $$2.c("Items", 10);
-            Optional<qx> $$7 = a($$1, $$6);
+            re $$6 = $$2.c("Items", 10);
+            Optional<qy> $$7 = a($$1, $$6);
             if ($$7.isPresent()) {
-               qx $$8 = $$7.get();
+               qy $$8 = $$7.get();
                cjf $$9 = cjf.a($$8);
                $$9.g($$5);
                $$9.b($$8);
@@ -110,7 +110,7 @@ public class chh extends cja {
                $$6.c(0, $$8);
             } else {
                cjf $$10 = $$1.c($$5);
-               qx $$11 = new qx();
+               qy $$11 = new qy();
                $$10.b($$11);
                $$6.c(0, $$11);
             }
@@ -122,10 +122,10 @@ public class chh extends cja {
       }
    }
 
-   private static Optional<qx> a(cjf $$0, rd $$1) {
+   private static Optional<qy> a(cjf $$0, re $$1) {
       return $$0.a(cji.qg)
          ? Optional.empty()
-         : $$1.stream().filter(qx.class::isInstance).map(qx.class::cast).filter($$1x -> cjf.c(cjf.a($$1x), $$0)).findFirst();
+         : $$1.stream().filter(qy.class::isInstance).map(qy.class::cast).filter($$1x -> cjf.c(cjf.a($$1x), $$0)).findFirst();
    }
 
    private static int k(cjf $$0) {
@@ -133,7 +133,7 @@ public class chh extends cja {
          return 4 + o($$0);
       } else {
          if (($$0.a(cji.vC) || $$0.a(cji.vB)) && $$0.u()) {
-            qx $$1 = cgy.a($$0);
+            qy $$1 = cgy.a($$0);
             if ($$1 != null && !$$1.c("Bees", 10).isEmpty()) {
                return 64;
             }
@@ -148,16 +148,16 @@ public class chh extends cja {
    }
 
    private static Optional<cjf> p(cjf $$0) {
-      qx $$1 = $$0.w();
+      qy $$1 = $$0.w();
       if (!$$1.e("Items")) {
          return Optional.empty();
       } else {
-         rd $$2 = $$1.c("Items", 10);
+         re $$2 = $$1.c("Items", 10);
          if ($$2.isEmpty()) {
             return Optional.empty();
          } else {
             int $$3 = 0;
-            qx $$4 = $$2.a(0);
+            qy $$4 = $$2.a(0);
             cjf $$5 = cjf.a($$4);
             $$2.c(0);
             if ($$2.isEmpty()) {
@@ -170,15 +170,15 @@ public class chh extends cja {
    }
 
    private static boolean a(cjf $$0, cbu $$1) {
-      qx $$2 = $$0.w();
+      qy $$2 = $$0.w();
       if (!$$2.e("Items")) {
          return false;
       } else {
          if ($$1 instanceof aks) {
-            rd $$3 = $$2.c("Items", 10);
+            re $$3 = $$2.c("Items", 10);
 
             for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               qx $$5 = $$3.a($$4);
+               qy $$5 = $$3.a($$4);
                cjf $$6 = cjf.a($$5);
                $$1.a($$6, true);
             }
@@ -190,12 +190,12 @@ public class chh extends cja {
    }
 
    private static Stream<cjf> q(cjf $$0) {
-      qx $$1 = $$0.v();
+      qy $$1 = $$0.v();
       if ($$1 == null) {
          return Stream.empty();
       } else {
-         rd $$2 = $$1.c("Items", 10);
-         return $$2.stream().map(qx.class::cast).map(cjf::a);
+         re $$2 = $$1.c("Items", 10);
+         return $$2.stream().map(qy.class::cast).map(cjf::a);
       }
    }
 
@@ -207,8 +207,8 @@ public class chh extends cja {
    }
 
    @Override
-   public void a(cjf $$0, cpv $$1, List<tl> $$2, ckw $$3) {
-      $$2.add(tl.a("item.minecraft.bundle.fullness", o($$0), 64).a(n.h));
+   public void a(cjf $$0, cpv $$1, List<tm> $$2, ckw $$3) {
+      $$2.add(tm.a("item.minecraft.bundle.fullness", o($$0), 64).a(n.h));
    }
 
    @Override

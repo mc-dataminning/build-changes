@@ -2,11 +2,11 @@ import java.nio.file.Path;
 
 public class fcv extends eyk {
    private static final int a = 8;
-   private static final tl b = tl.c("telemetry_info.screen.title");
-   private static final tl c = tl.c("telemetry_info.screen.description").a(n.h);
-   private static final tl k = tl.c("telemetry_info.button.privacy_statement");
-   private static final tl l = tl.c("telemetry_info.button.give_feedback");
-   private static final tl m = tl.c("telemetry_info.button.show_data");
+   private static final tm b = tm.c("telemetry_info.screen.title");
+   private static final tm c = tm.c("telemetry_info.screen.description").a(n.h);
+   private static final tm k = tm.c("telemetry_info.button.privacy_statement");
+   private static final tm l = tm.c("telemetry_info.button.give_feedback");
+   private static final tm m = tm.c("telemetry_info.button.show_data");
    private final eyk n;
    private final eqz o;
    private fcu p;
@@ -19,8 +19,8 @@ public class fcv extends eyk {
    }
 
    @Override
-   public tl g() {
-      return tk.a(super.g(), c);
+   public tm g() {
+      return tl.a(super.g(), c);
    }
 
    @Override
@@ -36,7 +36,7 @@ public class fcv extends eyk {
       $$1.a($$2);
       evy $$3 = this.a(esq.a(l, this::c).a(), esq.a(m, this::d).a());
       $$1.a($$3);
-      evy $$4 = this.a(this.l(), esq.a(tk.d, this::a).a());
+      evy $$4 = this.a(this.l(), esq.a(tl.d, this::a).a());
       $$0.a($$4, $$0.b().a(0.5F, 1.0F));
       $$0.a();
       this.p = new fcu(0, 0, this.g - 40, $$4.t() - ($$3.t() + $$3.i()) - 16, this.f.h);

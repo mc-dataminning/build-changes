@@ -11,17 +11,17 @@ public class eof extends gfb {
    private static final aex c = new aex("realm_status/open");
    private static final aex y = new aex("realm_status/closed");
    private static final Logger z = LogUtils.getLogger();
-   private static final tl A = tl.c("mco.configure.worlds.title");
-   private static final tl B = tl.c("mco.configure.world.title");
-   private static final tl C = tl.c("mco.selectServer.expired");
-   private static final tl D = tl.c("mco.selectServer.expires.soon");
-   private static final tl E = tl.c("mco.selectServer.expires.day");
-   private static final tl F = tl.c("mco.selectServer.open");
-   private static final tl G = tl.c("mco.selectServer.closed");
+   private static final tm A = tm.c("mco.configure.worlds.title");
+   private static final tm B = tm.c("mco.configure.world.title");
+   private static final tm C = tm.c("mco.selectServer.expired");
+   private static final tm D = tm.c("mco.selectServer.expires.soon");
+   private static final tm E = tm.c("mco.selectServer.expires.day");
+   private static final tm F = tm.c("mco.selectServer.open");
+   private static final tm G = tm.c("mco.selectServer.closed");
    private static final int H = 80;
    private static final int I = 5;
    @Nullable
-   private tl J;
+   private tm J;
    private final ema K;
    @Nullable
    private emw L;
@@ -53,10 +53,10 @@ public class eof extends gfb {
 
       this.N = this.g / 2 - 187;
       this.O = this.g / 2 + 190;
-      this.P = this.d(esq.a(tl.c("mco.configure.world.buttons.players"), $$0x -> this.f.a(new eor(this, this.L))).a(this.a(0, 3), h(0), 100, 20).a());
-      this.Q = this.d(esq.a(tl.c("mco.configure.world.buttons.settings"), $$0x -> this.f.a(new eox(this, this.L.d()))).a(this.a(1, 3), h(0), 100, 20).a());
+      this.P = this.d(esq.a(tm.c("mco.configure.world.buttons.players"), $$0x -> this.f.a(new eor(this, this.L))).a(this.a(0, 3), h(0), 100, 20).a());
+      this.Q = this.d(esq.a(tm.c("mco.configure.world.buttons.settings"), $$0x -> this.f.a(new eox(this, this.L.d()))).a(this.a(1, 3), h(0), 100, 20).a());
       this.R = this.d(
-         esq.a(tl.c("mco.configure.world.buttons.subscription"), $$0x -> this.f.a(new eoz(this, this.L.d(), this.K))).a(this.a(2, 3), h(0), 100, 20).a()
+         esq.a(tm.c("mco.configure.world.buttons.subscription"), $$0x -> this.f.a(new eoz(this, this.L.d(), this.K))).a(this.a(2, 3), h(0), 100, 20).a()
       );
       this.Y.clear();
 
@@ -65,35 +65,35 @@ public class eof extends gfb {
       }
 
       this.V = this.d(
-         esq.a(tl.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.f.a(new eow(tl.c("mco.template.title.minigame"), this::a, emw.c.b)))
+         esq.a(tm.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.f.a(new eow(tm.c("mco.template.title.minigame"), this::a, emw.c.b)))
             .a(this.b(0), h(13) - 5, 100, 20)
             .a()
       );
       this.S = this.d(
-         esq.a(tl.c("mco.configure.world.buttons.options"), $$0x -> this.f.a(new eoy(this, this.L.i.get(this.L.n).d(), this.L.m, this.L.n)))
+         esq.a(tm.c("mco.configure.world.buttons.options"), $$0x -> this.f.a(new eoy(this, this.L.i.get(this.L.n).d(), this.L.m, this.L.n)))
             .a(this.b(0), h(13) - 5, 90, 20)
             .a()
       );
-      this.T = this.d(esq.a(tl.c("mco.configure.world.backup"), $$0x -> this.f.a(new eoc(this, this.L.d(), this.L.n))).a(this.b(1), h(13) - 5, 90, 20).a());
+      this.T = this.d(esq.a(tm.c("mco.configure.world.backup"), $$0x -> this.f.a(new eoc(this, this.L.d(), this.L.n))).a(this.b(1), h(13) - 5, 90, 20).a());
       this.U = this.d(
-         esq.a(tl.c("mco.configure.world.buttons.resetworld"), $$0x -> this.f.a(eou.b(this, this.L.d(), () -> this.f.execute(() -> this.f.a(this.f())))))
+         esq.a(tm.c("mco.configure.world.buttons.resetworld"), $$0x -> this.f.a(eou.b(this, this.L.d(), () -> this.f.execute(() -> this.f.a(this.f())))))
             .a(this.b(2), h(13) - 5, 90, 20)
             .a()
       );
-      this.d(esq.a(tk.k, $$0x -> this.C()).a(this.O - 80 + 8, h(13) - 5, 70, 20).a());
+      this.d(esq.a(tl.k, $$0x -> this.D()).a(this.O - 80 + 8, h(13) - 5, 70, 20).a());
       this.T.i = true;
       if (this.L == null) {
+         this.I();
          this.H();
-         this.G();
          this.P.i = false;
          this.Q.i = false;
          this.R.i = false;
       } else {
-         this.D();
-         if (this.F()) {
-            this.G();
-         } else {
+         this.E();
+         if (this.G()) {
             this.H();
+         } else {
+            this.I();
          }
       }
    }
@@ -112,7 +112,7 @@ public class eof extends gfb {
                   break;
                case b:
                   if ($$2x.b) {
-                     this.E();
+                     this.F();
                   } else if ($$2x.a) {
                      this.b($$0, this.L);
                   } else {
@@ -162,8 +162,8 @@ public class eof extends gfb {
          $$0.a(this.i, $$4, this.g / 2, 24, $$6);
          int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.g / 2 + $$5 / 2 + $$7 / 2 + 10);
          this.a($$0, $$8, 7, $$1, $$2);
-         if (this.F()) {
-            $$0.a(this.i, tl.a("mco.configure.world.minigame", this.L.c()), this.N + 80 + 20 + 10, h(13), -1, false);
+         if (this.G()) {
+            $$0.a(this.i, tm.a("mco.configure.world.minigame", this.L.c()), this.N + 80 + 20 + 10, h(13), -1, false);
          }
 
          if (this.J != null) {
@@ -179,14 +179,14 @@ public class eof extends gfb {
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.C();
+         this.D();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
    }
 
-   private void C() {
+   private void D() {
       if (this.W) {
          this.K.f();
       }
@@ -202,8 +202,8 @@ public class eof extends gfb {
             emw $$2 = $$1.a($$0);
             this.f.execute(() -> {
                this.L = $$2;
-               this.D();
-               if (this.F()) {
+               this.E();
+               if (this.G()) {
                   this.b(this.V);
                } else {
                   this.b(this.S);
@@ -218,7 +218,7 @@ public class eof extends gfb {
       }).start();
    }
 
-   private void D() {
+   private void E() {
       this.P.i = !this.L.j;
       this.Q.i = !this.L.j;
       this.R.i = true;
@@ -235,15 +235,15 @@ public class eof extends gfb {
       }
    }
 
-   private void E() {
-      eow $$0 = new eow(tl.c("mco.template.title.minigame"), this::a, emw.c.b);
-      $$0.a(tl.c("mco.minigame.world.info.line1"), tl.c("mco.minigame.world.info.line2"));
+   private void F() {
+      eow $$0 = new eow(tm.c("mco.template.title.minigame"), this::a, emw.c.b);
+      $$0.a(tm.c("mco.minigame.world.info.line1"), tm.c("mco.minigame.world.info.line2"));
       this.f.a($$0);
    }
 
    private void a(int $$0, emw $$1) {
-      tl $$2 = tl.c("mco.configure.world.slot.switch.question.line1");
-      tl $$3 = tl.c("mco.configure.world.slot.switch.question.line2");
+      tm $$2 = tm.c("mco.configure.world.slot.switch.question.line1");
+      tm $$3 = tm.c("mco.configure.world.slot.switch.question.line2");
       this.f.a(new eol($$2x -> {
          if ($$2x) {
             this.f.a(new eom(this.K, new eqc($$1.a, $$0, () -> this.f.execute(() -> this.f.a(this.f())))));
@@ -254,8 +254,8 @@ public class eof extends gfb {
    }
 
    private void b(int $$0, emw $$1) {
-      tl $$2 = tl.c("mco.configure.world.slot.switch.question.line1");
-      tl $$3 = tl.c("mco.configure.world.slot.switch.question.line2");
+      tm $$2 = tm.c("mco.configure.world.slot.switch.question.line1");
+      tm $$3 = tm.c("mco.configure.world.slot.switch.question.line2");
       this.f.a(new eol($$2x -> {
          if ($$2x) {
             eou $$3x = eou.a(this, $$0, $$1, () -> this.f.execute(() -> this.f.a(this.f())));
@@ -277,7 +277,7 @@ public class eof extends gfb {
                if (this.L.l <= 0) {
                   return D;
                } else {
-                  return (tl)(this.L.l == 1 ? E : tl.a("mco.selectServer.expires.days", this.L.l));
+                  return (tm)(this.L.l == 1 ? E : tm.a("mco.selectServer.expires.days", this.L.l));
                }
             });
          } else {
@@ -286,18 +286,18 @@ public class eof extends gfb {
       }
    }
 
-   private void a(esf $$0, int $$1, int $$2, int $$3, int $$4, aex $$5, Supplier<tl> $$6) {
+   private void a(esf $$0, int $$1, int $$2, int $$3, int $$4, aex $$5, Supplier<tm> $$6) {
       $$0.a($$5, $$1, $$2, 10, 28);
       if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
          this.J = $$6.get();
       }
    }
 
-   private boolean F() {
+   private boolean G() {
       return this.L != null && this.L.m == emw.c.b;
    }
 
-   private void G() {
+   private void H() {
       this.a(this.S);
       this.a(this.T);
       this.a(this.U);
@@ -311,7 +311,7 @@ public class eof extends gfb {
       $$0.j = true;
    }
 
-   private void H() {
+   private void I() {
       this.a(this.V);
    }
 

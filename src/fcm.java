@@ -2,9 +2,9 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class fcm extends eyk {
-   private static final tl a = tl.c("gui.abuseReport.reason.title");
-   private static final tl b = tl.c("gui.abuseReport.reason.description");
-   private static final tl c = tl.c("gui.abuseReport.read_info");
+   private static final tm a = tm.c("gui.abuseReport.reason.title");
+   private static final tm b = tm.c("gui.abuseReport.reason.description");
+   private static final tm c = tm.c("gui.abuseReport.read_info");
    private static final int k = 95;
    private static final int l = 150;
    private static final int m = 20;
@@ -40,7 +40,7 @@ public class fcm extends eyk {
             this.f.a(this);
          }, "https://aka.ms/aboutjavareporting", true))).a($$1, this.l(), 150, 20).a());
       int $$2 = this.g / 2 + 5;
-      this.d(esq.a(tk.d, $$0x -> {
+      this.d(esq.a(tl.d, $$0x -> {
          fcm.a.a $$1x = this.q.f();
          if ($$1x != null) {
             this.t.accept($$1x.b());
@@ -56,14 +56,14 @@ public class fcm extends eyk {
       super.a($$0, $$1, $$2, $$3);
       this.q.a($$0, $$1, $$2, $$3);
       $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.C(), this.E(), this.D(), this.F(), 2130706432);
-      $$0.b(this.i, b, this.C() + 4, this.E() + 4, -8421505);
+      $$0.a(this.D(), this.F(), this.E(), this.G(), 2130706432);
+      $$0.b(this.i, b, this.D() + 4, this.F() + 4, -8421505);
       fcm.a.a $$4 = this.q.f();
       if ($$4 != null) {
-         int $$5 = this.C() + 4 + 16;
-         int $$6 = this.D() - 4;
-         int $$7 = this.E() + 4 + 9 + 2;
-         int $$8 = this.F() - 4;
+         int $$5 = this.D() + 4 + 16;
+         int $$6 = this.E() - 4;
+         int $$7 = this.F() + 4 + 9 + 2;
+         int $$8 = this.G() - 4;
          int $$9 = $$6 - $$5;
          int $$10 = $$8 - $$7;
          int $$11 = this.i.b($$4.b.c(), $$9);
@@ -80,19 +80,19 @@ public class fcm extends eyk {
       return this.h - 20 - 4;
    }
 
-   private int C() {
+   private int D() {
       return (this.g - 320) / 2;
    }
 
-   private int D() {
+   private int E() {
       return (this.g + 320) / 2;
    }
 
-   private int E() {
+   private int F() {
       return this.h - 95 + 4;
    }
 
-   private int F() {
+   private int G() {
       return this.l() - 4;
    }
 
@@ -145,8 +145,8 @@ public class fcm extends eyk {
          }
 
          @Override
-         public tl a() {
-            return tl.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         public tm a() {
+            return tm.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
          }
 
          @Override

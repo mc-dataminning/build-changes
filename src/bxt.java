@@ -84,7 +84,7 @@ public class bxt extends bxk {
    @Override
    public void e() {
       if (this.g != null) {
-         this.g.al();
+         this.g.ak();
          this.g = null;
       }
    }

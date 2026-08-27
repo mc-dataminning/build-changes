@@ -109,7 +109,7 @@ public class bzt extends bzi {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       $$3 = super.a($$0, $$1, $$2, $$3, $$4);
       asc $$5 = $$0.D_();
       if ($$5.a(100) == 0) {
@@ -145,7 +145,7 @@ public class bzt extends bzi {
 
    @Override
    protected float l(biq $$0) {
-      return $$0.dg() <= this.dg() ? -0.3125F : 0.0F;
+      return $$0.df() <= this.df() ? -0.3125F : 0.0F;
    }
 
    static class a extends bql {
@@ -155,12 +155,12 @@ public class bzt extends bzi {
 
       @Override
       public boolean a() {
-         return super.a() && !this.a.bP();
+         return super.a() && !this.a.bO();
       }
 
       @Override
       public boolean b() {
-         float $$0 = this.a.bn();
+         float $$0 = this.a.bm();
          if ($$0 >= 0.5F && this.a.ef().a(100) == 0) {
             this.a.h(null);
             return false;
@@ -195,7 +195,7 @@ public class bzt extends bzi {
 
       @Override
       public boolean a() {
-         float $$0 = this.e.bn();
+         float $$0 = this.e.bm();
          return $$0 >= 0.5F ? false : super.a();
       }
    }

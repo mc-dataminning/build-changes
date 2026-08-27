@@ -2,12 +2,12 @@ public class etg extends esq {
    private boolean a;
 
    public etg(int $$0, int $$1, esq.c $$2) {
-      super($$0, $$1, 20, 20, tl.c("narrator.button.difficulty_lock"), $$2, o);
+      super($$0, $$1, 20, 20, tm.c("narrator.button.difficulty_lock"), $$2, o);
    }
 
    @Override
-   protected ty aF_() {
-      return tk.a(super.aF_(), this.a() ? tl.c("narrator.button.difficulty_lock.locked") : tl.c("narrator.button.difficulty_lock.unlocked"));
+   protected tz aF_() {
+      return tl.a(super.aF_(), this.a() ? tm.c("narrator.button.difficulty_lock.locked") : tm.c("narrator.button.difficulty_lock.unlocked"));
    }
 
    public boolean a() {

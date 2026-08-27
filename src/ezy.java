@@ -1,7 +1,7 @@
 public class ezy extends ezi<cfc> {
    private static final aex x = new aex("textures/gui/container/dispenser.png");
 
-   public ezy(cfc $$0, cbt $$1, tl $$2) {
+   public ezy(cfc $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
    }
 

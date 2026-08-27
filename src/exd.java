@@ -4,19 +4,19 @@ import java.util.List;
 
 public class exd extends eyk {
    private static final int k = 20;
-   private final tl l;
+   private final tm l;
    private etj m = etj.a;
-   protected tl a;
-   protected tl b;
+   protected tm a;
+   protected tm b;
    private int n;
    protected final BooleanConsumer c;
    private final List<esq> o = Lists.newArrayList();
 
-   public exd(BooleanConsumer $$0, tl $$1, tl $$2) {
-      this($$0, $$1, $$2, tk.f, tk.g);
+   public exd(BooleanConsumer $$0, tm $$1, tm $$2) {
+      this($$0, $$1, $$2, tl.f, tl.g);
    }
 
-   public exd(BooleanConsumer $$0, tl $$1, tl $$2, tl $$3, tl $$4) {
+   public exd(BooleanConsumer $$0, tm $$1, tm $$2, tm $$3, tm $$4) {
       super($$1);
       this.c = $$0;
       this.l = $$2;
@@ -25,15 +25,15 @@ public class exd extends eyk {
    }
 
    @Override
-   public tl g() {
-      return tk.a(super.g(), this.l);
+   public tm g() {
+      return tl.a(super.g(), this.l);
    }
 
    @Override
    protected void aI_() {
       super.aI_();
       this.m = etj.a(this.i, this.l, this.g - 50);
-      int $$0 = arx.a(this.C() + this.D() + 20, this.h / 6 + 96, this.h - 24);
+      int $$0 = arx.a(this.D() + this.E() + 20, this.h / 6 + 96, this.h - 24);
       this.o.clear();
       this.a($$0);
    }
@@ -51,19 +51,19 @@ public class exd extends eyk {
    public void a(esf $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       $$0.a(this.i, this.e, this.g / 2, this.l(), 16777215);
-      this.m.a($$0, this.g / 2, this.C());
+      this.m.a($$0, this.g / 2, this.D());
    }
 
    private int l() {
-      int $$0 = (this.h - this.D()) / 2;
+      int $$0 = (this.h - this.E()) / 2;
       return arx.a($$0 - 20 - 9, 10, 80);
    }
 
-   private int C() {
+   private int D() {
       return this.l() + 20;
    }
 
-   private int D() {
+   private int E() {
       return this.m.a() * 9;
    }
 

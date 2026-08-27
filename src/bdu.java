@@ -168,7 +168,7 @@ public class bdu implements bdv {
    }
 
    @Override
-   public void a(sn $$0, int $$1, SocketAddress $$2, int $$3) {
+   public void a(so $$0, int $$1, SocketAddress $$2, int $$3) {
       if (PacketReceivedEvent.TYPE.isEnabled()) {
          new PacketReceivedEvent($$0.a(), $$1, $$2, $$3).commit();
       }
@@ -179,7 +179,7 @@ public class bdu implements bdv {
    }
 
    @Override
-   public void b(sn $$0, int $$1, SocketAddress $$2, int $$3) {
+   public void b(so $$0, int $$1, SocketAddress $$2, int $$3) {
       if (PacketSentEvent.TYPE.isEnabled()) {
          new PacketSentEvent($$0.a(), $$1, $$2, $$3).commit();
       }

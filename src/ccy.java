@@ -39,10 +39,10 @@ public class ccy extends cca {
                this.a(this.w(), 0.1F);
             }
 
-            this.al();
+            this.ak();
          } else {
             this.p(true);
-            ehn $$2 = $$0.bq().d(this.dj());
+            ehn $$2 = $$0.bp().d(this.dj());
             this.p(this.dq(), this.ds() + $$2.d * 0.015 * (double)$$1, this.dw());
             if (this.dL().B) {
                this.ad = this.ds();
@@ -63,7 +63,7 @@ public class ccy extends cca {
 
    private boolean K() {
       biq $$0 = this.v();
-      return $$0 == null || !$$0.bw() ? false : !($$0 instanceof aks) || !$$0.M_();
+      return $$0 == null || !$$0.bv() ? false : !($$0 instanceof aks) || !$$0.M_();
    }
 
    @Override
@@ -95,7 +95,7 @@ public class ccy extends cca {
       this.j = true;
       apd $$6 = ape.xN;
       if ($$1.a($$5, $$2)) {
-         if ($$1.ah() == biu.E) {
+         if ($$1.ag() == biu.E) {
             return;
          }
 
@@ -150,7 +150,7 @@ public class ccy extends cca {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("Trident", 10)) {
          this.i = cjf.a($$0.p("Trident"));
@@ -161,9 +161,9 @@ public class ccy extends cca {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
-      $$0.a("Trident", this.i.b(new qx()));
+      $$0.a("Trident", this.i.b(new qy()));
       $$0.a("DealtDamage", this.j);
    }
 

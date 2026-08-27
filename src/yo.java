@@ -1,4 +1,4 @@
-public class yo implements vd<ww> {
+public class yo implements ve<wx> {
    private final int a;
    private final cou b;
    private final int c;
@@ -15,7 +15,7 @@ public class yo implements vd<ww> {
       this.f = $$5;
    }
 
-   public yo(so $$0) {
+   public yo(sp $$0) {
       this.a = $$0.m();
       this.b = cou.b($$0);
       this.c = $$0.m();
@@ -25,7 +25,7 @@ public class yo implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       this.b.a($$0);
       $$0.c(this.c);
@@ -34,7 +34,7 @@ public class yo implements vd<ww> {
       $$0.a(this.f);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

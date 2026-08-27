@@ -13,7 +13,7 @@ public class fst extends fun<bux, fet<bux>> {
       super.a($$0, $$1, $$2, $$3, $$4);
       float $$5 = 4.3F * arx.a(0.6F * $$2);
       $$1.a(a.d.rotationDegrees($$5));
-      if (!$$0.aY()) {
+      if (!$$0.aX()) {
          $$1.a(0.1F, 0.1F, -0.1F);
          $$1.a(a.f.rotationDegrees(90.0F));
       }

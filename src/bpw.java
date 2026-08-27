@@ -14,11 +14,11 @@ public class bpw extends bqb {
 
    @Override
    public boolean a() {
-      List<cdn> $$0 = this.b.dL().a(cdn.class, this.b.cH().g(5.0));
+      List<cdn> $$0 = this.b.dL().a(cdn.class, this.b.cG().g(5.0));
       boolean $$1 = false;
 
       for (cdn $$2 : $$0) {
-         biq $$3 = $$2.cO();
+         biq $$3 = $$2.cN();
          if ($$3 instanceof cbu && (arx.e(((cbu)$$3).bk) > 0.0F || arx.e(((cbu)$$3).bm) > 0.0F)) {
             $$1 = true;
             break;
@@ -35,13 +35,13 @@ public class bpw extends bqb {
 
    @Override
    public boolean b() {
-      return this.c != null && this.c.bO() && (arx.e(this.c.bk) > 0.0F || arx.e(this.c.bm) > 0.0F);
+      return this.c != null && this.c.bN() && (arx.e(this.c.bk) > 0.0F || arx.e(this.c.bm) > 0.0F);
    }
 
    @Override
    public void c() {
-      for (cdn $$1 : this.b.dL().a(cdn.class, this.b.cH().g(5.0))) {
-         if ($$1.cO() instanceof cbu $$2) {
+      for (cdn $$1 : this.b.dL().a(cdn.class, this.b.cG().g(5.0))) {
+         if ($$1.cN() instanceof cbu $$2) {
             this.c = $$2;
             break;
          }
@@ -65,7 +65,7 @@ public class bpw extends bqb {
       if (--this.a <= 0) {
          this.a = this.a(10);
          if (this.d == bpk.a) {
-            gw $$2 = this.c.dl().a(this.c.cE().g());
+            gw $$2 = this.c.dl().a(this.c.cD().g());
             $$2 = $$2.b(0, -1, 0);
             this.b.L().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
             if (this.b.e((biq)this.c) < 4.0F) {
@@ -73,7 +73,7 @@ public class bpw extends bqb {
                this.d = bpk.b;
             }
          } else if (this.d == bpk.b) {
-            hc $$3 = this.c.cF();
+            hc $$3 = this.c.cE();
             gw $$4 = this.c.dl().a($$3, 10);
             this.b.L().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
             if (this.b.e((biq)this.c) > 12.0F) {

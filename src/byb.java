@@ -59,22 +59,22 @@ public class byb extends bzi implements bjt, bzm {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Invul", this.y());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.s($$0.h("Invul"));
-      if (this.ad()) {
+      if (this.ac()) {
          this.cc.a(this.N_());
       }
    }
 
    @Override
-   public void b(@Nullable tl $$0) {
+   public void b(@Nullable tm $$0) {
       super.b($$0);
       this.cc.a(this.N_());
    }
@@ -171,13 +171,13 @@ public class byb extends bzi implements bjt, bzm {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       if (this.y() > 0) {
          int $$0 = this.y() - 1;
          this.cc.a(1.0F - (float)$$0 / 220.0F);
          if ($$0 <= 0) {
             this.dL().a(this, this.dq(), this.du(), this.dw(), 7.0F, false, cpv.a.c);
-            if (!this.aT()) {
+            if (!this.aS()) {
                this.dL().b(1023, this.dl(), 0);
             }
          }
@@ -187,7 +187,7 @@ public class byb extends bzi implements bjt, bzm {
             this.b(10.0F);
          }
       } else {
-         super.Y();
+         super.X();
 
          for (int $$1 = 1; $$1 < 3; $$1++) {
             if (this.ah >= this.bZ[$$1 - 1]) {
@@ -213,17 +213,17 @@ public class byb extends bzi implements bjt, bzm {
                      this.a($$1, 0);
                   }
                } else {
-                  List<bjg> $$9 = this.dL().a(bjg.class, ce, this, this.cH().c(20.0, 8.0, 20.0));
+                  List<bjg> $$9 = this.dL().a(bjg.class, ce, this, this.cG().c(20.0, 8.0, 20.0));
                   if (!$$9.isEmpty()) {
                      bjg $$10 = $$9.get(this.ag.a($$9.size()));
-                     this.a($$1, $$10.ai());
+                     this.a($$1, $$10.ah());
                   }
                }
             }
          }
 
          if (this.q() != null) {
-            this.a(0, this.q().ai());
+            this.a(0, this.q().ah());
          } else {
             this.a(0, 0);
          }
@@ -330,11 +330,11 @@ public class byb extends bzi implements bjt, bzm {
    }
 
    private void a(int $$0, bjg $$1) {
-      this.a($$0, $$1.dq(), $$1.ds() + (double)$$1.cI() * 0.5, $$1.dw(), $$0 == 0 && this.ag.i() < 0.001F);
+      this.a($$0, $$1.dq(), $$1.ds() + (double)$$1.cH() * 0.5, $$1.dw(), $$0 == 0 && this.ag.i() < 0.001F);
    }
 
    private void a(int $$0, double $$1, double $$2, double $$3, boolean $$4) {
-      if (!this.aT()) {
+      if (!this.aS()) {
          this.dL().a(null, 1024, this.dl(), 0);
       }
 
@@ -403,8 +403,8 @@ public class byb extends bzi implements bjt, bzm {
 
    @Override
    public void dx() {
-      if (this.dL().ai() == bgv.a && this.W()) {
-         this.al();
+      if (this.dL().ai() == bgv.a && this.V()) {
+         this.ak();
       } else {
          this.bb = 0;
       }
@@ -459,7 +459,7 @@ public class byb extends bzi implements bjt, bzm {
    }
 
    @Override
-   public boolean ct() {
+   public boolean cs() {
       return false;
    }
 

@@ -44,14 +44,14 @@ public class blb extends bkx<cbh> {
    private cjf a(cht $$0, int $$1) {
       cjf $$2 = new cjf(cji.tA, 1);
       cjf $$3 = new cjf(cji.tB);
-      qx $$4 = $$3.a("Explosion");
+      qy $$4 = $$3.a("Explosion");
       List<Integer> $$5 = Lists.newArrayList();
       $$5.add($$0.f());
       $$4.b("Colors", $$5);
       $$4.a("Type", (byte)cij.a.e.a());
-      qx $$6 = $$2.a("Fireworks");
-      rd $$7 = new rd();
-      qx $$8 = $$3.b("Explosion");
+      qy $$6 = $$2.a("Fireworks");
+      re $$7 = new re();
+      qy $$8 = $$3.b("Explosion");
       if ($$8 != null) {
          $$7.add($$8);
       }

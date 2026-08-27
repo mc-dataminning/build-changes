@@ -12,16 +12,16 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class agg {
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("commands.bossbar.create.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("commands.bossbar.unknown", $$0));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("commands.bossbar.set.players.unchanged"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("commands.bossbar.set.name.unchanged"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tl.c("commands.bossbar.set.color.unchanged"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tl.c("commands.bossbar.set.style.unchanged"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tl.c("commands.bossbar.set.value.unchanged"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tl.c("commands.bossbar.set.max.unchanged"));
-   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(tl.c("commands.bossbar.set.visibility.unchanged.hidden"));
-   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(tl.c("commands.bossbar.set.visibility.unchanged.visible"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.bossbar.create.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("commands.bossbar.unknown", $$0));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.c("commands.bossbar.set.players.unchanged"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("commands.bossbar.set.name.unchanged"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tm.c("commands.bossbar.set.color.unchanged"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tm.c("commands.bossbar.set.style.unchanged"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tm.c("commands.bossbar.set.value.unchanged"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tm.c("commands.bossbar.set.max.unchanged"));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(tm.c("commands.bossbar.set.visibility.unchanged.hidden"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(tm.c("commands.bossbar.set.visibility.unchanged.visible"));
    public static final SuggestionProvider<dt> a = ($$0, $$1) -> dw.a(((dt)$$0.getSource()).l().aJ().a(), $$1);
 
    public static void a(CommandDispatcher<dt> $$0) {
@@ -110,30 +110,30 @@ public class agg {
    }
 
    private static int a(dt $$0, afv $$1) {
-      $$0.a(() -> tl.a("commands.bossbar.get.value", $$1.e(), $$1.c()), true);
+      $$0.a(() -> tm.a("commands.bossbar.get.value", $$1.e(), $$1.c()), true);
       return $$1.c();
    }
 
    private static int b(dt $$0, afv $$1) {
-      $$0.a(() -> tl.a("commands.bossbar.get.max", $$1.e(), $$1.d()), true);
+      $$0.a(() -> tm.a("commands.bossbar.get.max", $$1.e(), $$1.d()), true);
       return $$1.d();
    }
 
    private static int c(dt $$0, afv $$1) {
       if ($$1.g()) {
-         $$0.a(() -> tl.a("commands.bossbar.get.visible.visible", $$1.e()), true);
+         $$0.a(() -> tm.a("commands.bossbar.get.visible.visible", $$1.e()), true);
          return 1;
       } else {
-         $$0.a(() -> tl.a("commands.bossbar.get.visible.hidden", $$1.e()), true);
+         $$0.a(() -> tm.a("commands.bossbar.get.visible.hidden", $$1.e()), true);
          return 0;
       }
    }
 
    private static int d(dt $$0, afv $$1) {
       if ($$1.h().isEmpty()) {
-         $$0.a(() -> tl.a("commands.bossbar.get.players.none", $$1.e()), true);
+         $$0.a(() -> tm.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> tl.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), tn.b($$1.h(), cbu::N_)), true);
+         $$0.a(() -> tm.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), to.b($$1.h(), cbu::N_)), true);
       }
 
       return $$1.h().size();
@@ -149,9 +149,9 @@ public class agg {
       } else {
          $$1.d($$2);
          if ($$2) {
-            $$0.a(() -> tl.a("commands.bossbar.set.visible.success.visible", $$1.e()), true);
+            $$0.a(() -> tm.a("commands.bossbar.set.visible.success.visible", $$1.e()), true);
          } else {
-            $$0.a(() -> tl.a("commands.bossbar.set.visible.success.hidden", $$1.e()), true);
+            $$0.a(() -> tm.a("commands.bossbar.set.visible.success.hidden", $$1.e()), true);
          }
 
          return 0;
@@ -163,7 +163,7 @@ public class agg {
          throw h.create();
       } else {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.bossbar.set.value.success", $$1.e(), $$2), true);
+         $$0.a(() -> tm.a("commands.bossbar.set.value.success", $$1.e(), $$2), true);
          return $$2;
       }
    }
@@ -173,7 +173,7 @@ public class agg {
          throw i.create();
       } else {
          $$1.b($$2);
-         $$0.a(() -> tl.a("commands.bossbar.set.max.success", $$1.e(), $$2), true);
+         $$0.a(() -> tm.a("commands.bossbar.set.max.success", $$1.e(), $$2), true);
          return $$2;
       }
    }
@@ -183,7 +183,7 @@ public class agg {
          throw f.create();
       } else {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.bossbar.set.color.success", $$1.e()), true);
+         $$0.a(() -> tm.a("commands.bossbar.set.color.success", $$1.e()), true);
          return 0;
       }
    }
@@ -193,18 +193,18 @@ public class agg {
          throw g.create();
       } else {
          $$1.a($$2);
-         $$0.a(() -> tl.a("commands.bossbar.set.style.success", $$1.e()), true);
+         $$0.a(() -> tm.a("commands.bossbar.set.style.success", $$1.e()), true);
          return 0;
       }
    }
 
-   private static int a(dt $$0, afv $$1, tl $$2) throws CommandSyntaxException {
-      tl $$3 = tn.a($$0, $$2, null, 0);
+   private static int a(dt $$0, afv $$1, tm $$2) throws CommandSyntaxException {
+      tm $$3 = to.a($$0, $$2, null, 0);
       if ($$1.j().equals($$3)) {
          throw e.create();
       } else {
          $$1.a($$3);
-         $$0.a(() -> tl.a("commands.bossbar.set.name.success", $$1.e()), true);
+         $$0.a(() -> tm.a("commands.bossbar.set.name.success", $$1.e()), true);
          return 0;
       }
    }
@@ -215,9 +215,9 @@ public class agg {
          throw d.create();
       } else {
          if ($$1.h().isEmpty()) {
-            $$0.a(() -> tl.a("commands.bossbar.set.players.success.none", $$1.e()), true);
+            $$0.a(() -> tm.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> tl.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), tn.b($$2, cbu::N_)), true);
+            $$0.a(() -> tm.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), to.b($$2, cbu::N_)), true);
          }
 
          return $$1.h().size();
@@ -227,21 +227,21 @@ public class agg {
    private static int a(dt $$0) {
       Collection<afv> $$1 = $$0.l().aJ().b();
       if ($$1.isEmpty()) {
-         $$0.a(() -> tl.c("commands.bossbar.list.bars.none"), false);
+         $$0.a(() -> tm.c("commands.bossbar.list.bars.none"), false);
       } else {
-         $$0.a(() -> tl.a("commands.bossbar.list.bars.some", $$1.size(), tn.b($$1, afv::e)), false);
+         $$0.a(() -> tm.a("commands.bossbar.list.bars.some", $$1.size(), to.b($$1, afv::e)), false);
       }
 
       return $$1.size();
    }
 
-   private static int a(dt $$0, aex $$1, tl $$2) throws CommandSyntaxException {
+   private static int a(dt $$0, aex $$1, tm $$2) throws CommandSyntaxException {
       afw $$3 = $$0.l().aJ();
       if ($$3.a($$1) != null) {
          throw b.create($$1.toString());
       } else {
-         afv $$4 = $$3.a($$1, tn.a($$0, $$2, null, 0));
-         $$0.a(() -> tl.a("commands.bossbar.create.success", $$4.e()), true);
+         afv $$4 = $$3.a($$1, to.a($$0, $$2, null, 0));
+         $$0.a(() -> tm.a("commands.bossbar.create.success", $$4.e()), true);
          return $$3.b().size();
       }
    }
@@ -250,7 +250,7 @@ public class agg {
       afw $$2 = $$0.l().aJ();
       $$1.b();
       $$2.a($$1);
-      $$0.a(() -> tl.a("commands.bossbar.remove.success", $$1.e()), true);
+      $$0.a(() -> tm.a("commands.bossbar.remove.success", $$1.e()), true);
       return $$2.b().size();
    }
 

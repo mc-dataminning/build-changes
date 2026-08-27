@@ -17,7 +17,7 @@ public class bsn extends bsp {
 
    @Override
    protected boolean a() {
-      return this.p() && this.a.bc() || !this.a.bO();
+      return this.p() && this.a.bb() || !this.a.bN();
    }
 
    @Override

@@ -81,14 +81,14 @@ public class fgi<T extends bjg> extends ffq<T> {
       this.w.a(this.n);
       this.z.a(this.m);
       if ($$0.c(biv.e).b()) {
-         if ($$0.bX()) {
+         if ($$0.bW()) {
             this.G.d = 1.4F;
             this.G.c = 1.85F;
          } else {
             this.G.d = 0.0F;
             this.G.c = 0.0F;
          }
-      } else if ($$0.bX()) {
+      } else if ($$0.bW()) {
          this.G.d = 0.3F;
          this.G.c = 0.8F;
       } else {

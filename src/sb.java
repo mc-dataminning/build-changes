@@ -1,89 +1,36 @@
-public interface sb extends rn {
-   sb a = new sb() {
-   };
+import java.util.HashMap;
+import java.util.Map;
 
-   @Override
-   default rn.b a() {
-      return rn.b.a;
+public record sb(int a, Map<String, rt<?>> b, Map<String, sb> c) {
+   private sb(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   @Override
-   default rn.b a(String $$0) {
-      return rn.b.a;
+   public static sb a() {
+      return new sb(1);
    }
 
-   @Override
-   default rn.b a(byte $$0) {
-      return rn.b.a;
+   public void a(sa $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new sb(this.a + 1)).a($$0);
+      } else {
+         this.b.put($$0.c(), $$0.b());
+      }
    }
 
-   @Override
-   default rn.b a(short $$0) {
-      return rn.b.a;
+   public boolean a(rt<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
    }
 
-   @Override
-   default rn.b a(int $$0) {
-      return rn.b.a;
+   public int b() {
+      return this.a;
    }
 
-   @Override
-   default rn.b a(long $$0) {
-      return rn.b.a;
+   public Map<String, rt<?>> c() {
+      return this.b;
    }
 
-   @Override
-   default rn.b a(float $$0) {
-      return rn.b.a;
-   }
-
-   @Override
-   default rn.b a(double $$0) {
-      return rn.b.a;
-   }
-
-   @Override
-   default rn.b a(byte[] $$0) {
-      return rn.b.a;
-   }
-
-   @Override
-   default rn.b a(int[] $$0) {
-      return rn.b.a;
-   }
-
-   @Override
-   default rn.b a(long[] $$0) {
-      return rn.b.a;
-   }
-
-   @Override
-   default rn.b a(rs<?> $$0, int $$1) {
-      return rn.b.a;
-   }
-
-   @Override
-   default rn.a b(rs<?> $$0, int $$1) {
-      return rn.a.b;
-   }
-
-   @Override
-   default rn.a a(rs<?> $$0) {
-      return rn.a.b;
-   }
-
-   @Override
-   default rn.a a(rs<?> $$0, String $$1) {
-      return rn.a.b;
-   }
-
-   @Override
-   default rn.b b() {
-      return rn.b.a;
-   }
-
-   @Override
-   default rn.b b(rs<?> $$0) {
-      return rn.b.a;
+   public Map<String, sb> d() {
+      return this.c;
    }
 }

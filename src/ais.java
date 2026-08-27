@@ -29,14 +29,14 @@ public class ais {
 
       if ($$2 != null) {
          if ($$3 != null) {
-            $$0.a(() -> tl.a("commands.stopsound.success.source.sound", $$3, $$2.a()), true);
+            $$0.a(() -> tm.a("commands.stopsound.success.source.sound", $$3, $$2.a()), true);
          } else {
-            $$0.a(() -> tl.a("commands.stopsound.success.source.any", $$2.a()), true);
+            $$0.a(() -> tm.a("commands.stopsound.success.source.any", $$2.a()), true);
          }
       } else if ($$3 != null) {
-         $$0.a(() -> tl.a("commands.stopsound.success.sourceless.sound", $$3), true);
+         $$0.a(() -> tm.a("commands.stopsound.success.sourceless.sound", $$3), true);
       } else {
-         $$0.a(() -> tl.c("commands.stopsound.success.sourceless.any"), true);
+         $$0.a(() -> tm.c("commands.stopsound.success.sourceless.any"), true);
       }
 
       return $$1.size();

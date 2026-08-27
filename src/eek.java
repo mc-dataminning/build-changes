@@ -31,9 +31,9 @@ public class eek extends eec {
       } else {
          hp<cjf> $$2 = hp.a();
          this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ecy.a($$1.d(), $$2::add), $$1)));
-         qx $$3 = new qx();
+         qy $$3 = new qy();
          bgs.a($$3, $$2);
-         qx $$4 = cgy.a($$0);
+         qy $$4 = cgy.a($$0);
          if ($$4 == null) {
             $$4 = $$3;
          } else {

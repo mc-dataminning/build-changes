@@ -17,14 +17,14 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public class dt implements dw {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("permissions.requires.player"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("permissions.requires.entity"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("permissions.requires.player"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("permissions.requires.entity"));
    private final ds c;
    private final ehn d;
    private final akr e;
    private final int f;
    private final String g;
-   private final tl h;
+   private final tm h;
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
@@ -37,7 +37,7 @@ public class dt implements dw {
    private final asr p;
    private final IntConsumer q;
 
-   public dt(ds $$0, ehn $$1, ehm $$2, akr $$3, int $$4, String $$5, tl $$6, MinecraftServer $$7, @Nullable biq $$8) {
+   public dt(ds $$0, ehn $$1, ehm $$2, akr $$3, int $$4, String $$5, tm $$6, MinecraftServer $$7, @Nullable biq $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, ($$0x, $$1x, $$2x) -> {
       }, ed.a.a, dr.a, asr.immediate($$7), $$0x -> {
       });
@@ -50,7 +50,7 @@ public class dt implements dw {
       akr $$3,
       int $$4,
       String $$5,
-      tl $$6,
+      tm $$6,
       MinecraftServer $$7,
       @Nullable biq $$8,
       boolean $$9,
@@ -84,7 +84,7 @@ public class dt implements dw {
    public dt a(biq $$0) {
       return this.k == $$0
          ? this
-         : new dt(this.c, this.d, this.n, this.e, this.f, $$0.ac().getString(), $$0.N_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p, this.q);
+         : new dt(this.c, this.d, this.n, this.e, this.f, $$0.ab().getString(), $$0.N_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
    public dt a(ehn $$0) {
@@ -161,7 +161,7 @@ public class dt implements dw {
       return $$0 == this.q ? this : new dt(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, $$0);
    }
 
-   public tl b() {
+   public tm b() {
       return this.h;
    }
 
@@ -239,10 +239,10 @@ public class dt implements dw {
 
    public boolean a(aks $$0) {
       aks $$1 = this.i();
-      return $$0 == $$1 ? false : $$1 != null && $$1.X() || $$0.X();
+      return $$0 == $$1 ? false : $$1 != null && $$1.W() || $$0.W();
    }
 
-   public void a(tz $$0, boolean $$1, th.a $$2) {
+   public void a(ua $$0, boolean $$1, ti.a $$2) {
       if (!this.j) {
          aks $$3 = this.i();
          if ($$3 != null) {
@@ -253,7 +253,7 @@ public class dt implements dw {
       }
    }
 
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       if (!this.j) {
          aks $$1 = this.i();
          if ($$1 != null) {
@@ -264,11 +264,11 @@ public class dt implements dw {
       }
    }
 
-   public void a(Supplier<tl> $$0, boolean $$1) {
+   public void a(Supplier<tm> $$0, boolean $$1) {
       boolean $$2 = this.c.j_() && !this.j;
       boolean $$3 = $$1 && this.c.T_() && !this.j;
       if ($$2 || $$3) {
-         tl $$4 = $$0.get();
+         tm $$4 = $$0.get();
          if ($$2) {
             this.c.a($$4);
          }
@@ -279,8 +279,8 @@ public class dt implements dw {
       }
    }
 
-   private void c(tl $$0) {
-      tl $$1 = tl.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
+   private void c(tm $$0) {
+      tm $$1 = tm.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
       if (this.i.aI().b(cpr.o)) {
          for (aks $$2 : this.i.ac().t()) {
             if ($$2 != this.c && this.i.ac().f($$2.fQ())) {
@@ -294,9 +294,9 @@ public class dt implements dw {
       }
    }
 
-   public void b(tl $$0) {
+   public void b(tm $$0) {
       if (this.c.v_() && !this.j) {
-         this.c.a(tl.h().b($$0).a(n.m));
+         this.c.a(tm.h().b($$0).a(n.m));
       }
    }
 

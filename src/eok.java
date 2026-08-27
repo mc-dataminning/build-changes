@@ -5,16 +5,16 @@ import org.slf4j.Logger;
 
 public class eok extends gfb {
    private static final Logger a = LogUtils.getLogger();
-   private static final tl b = tl.c("mco.configure.world.invite.profile.name").a($$0 -> $$0.a(-6250336));
-   private static final tl c = tl.c("mco.configure.world.players.inviting").a($$0 -> $$0.a(-6250336));
-   private static final tl y = tl.c("mco.configure.world.players.error").a($$0 -> $$0.a(-65536));
+   private static final tm b = tm.c("mco.configure.world.invite.profile.name").a($$0 -> $$0.a(-6250336));
+   private static final tm c = tm.c("mco.configure.world.players.inviting").a($$0 -> $$0.a(-6250336));
+   private static final tm y = tm.c("mco.configure.world.players.error").a($$0 -> $$0.a(-65536));
    private esz z;
    private esq A;
    private final emw B;
    private final eof C;
    private final eyk D;
    @Nullable
-   private tl E;
+   private tm E;
 
    public eok(eof $$0, eyk $$1, emw $$2) {
       super(eqn.a);
@@ -25,14 +25,14 @@ public class eok extends gfb {
 
    @Override
    public void aI_() {
-      this.z = new esz(this.f.h, this.g / 2 - 100, h(2), 200, 20, null, tl.c("mco.configure.world.invite.profile.name"));
+      this.z = new esz(this.f.h, this.g / 2 - 100, h(2), 200, 20, null, tm.c("mco.configure.world.invite.profile.name"));
       this.e(this.z);
       this.c(this.z);
-      this.A = this.d(esq.a(tl.c("mco.configure.world.buttons.invite"), $$0 -> this.C()).a(this.g / 2 - 100, h(10), 200, 20).a());
-      this.d(esq.a(tk.e, $$0 -> this.f.a(this.D)).a(this.g / 2 - 100, h(12), 200, 20).a());
+      this.A = this.d(esq.a(tm.c("mco.configure.world.buttons.invite"), $$0 -> this.D()).a(this.g / 2 - 100, h(10), 200, 20).a());
+      this.d(esq.a(tl.e, $$0 -> this.f.a(this.D)).a(this.g / 2 - 100, h(12), 200, 20).a());
    }
 
-   private void C() {
+   private void D() {
       if (ac.b(this.z.a())) {
          this.a(y);
       } else {
@@ -62,7 +62,7 @@ public class eok extends gfb {
       }
    }
 
-   private void a(tl $$0) {
+   private void a(tm $$0) {
       this.E = $$0;
       this.f.aV().c($$0);
    }

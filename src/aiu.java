@@ -9,8 +9,8 @@ import java.util.Collection;
 import java.util.Set;
 
 public class aiu {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.tag.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.tag.remove.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -41,7 +41,7 @@ public class aiu {
       Set<String> $$1 = Sets.newHashSet();
 
       for (biq $$2 : $$0) {
-         $$1.addAll($$2.aj());
+         $$1.addAll($$2.ai());
       }
 
       return $$1;
@@ -60,9 +60,9 @@ public class aiu {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.tag.add.success.single", $$2, $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.tag.add.success.single", $$2, $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+            $$0.a(() -> tm.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
          }
 
          return $$3;
@@ -82,9 +82,9 @@ public class aiu {
          throw b.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().N_()), true);
+            $$0.a(() -> tm.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().N_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+            $$0.a(() -> tm.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
          }
 
          return $$3;
@@ -95,20 +95,20 @@ public class aiu {
       Set<String> $$2 = Sets.newHashSet();
 
       for (biq $$3 : $$1) {
-         $$2.addAll($$3.aj());
+         $$2.addAll($$3.ai());
       }
 
       if ($$1.size() == 1) {
          biq $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
-            $$0.a(() -> tl.a("commands.tag.list.single.empty", $$4.N_()), false);
+            $$0.a(() -> tm.a("commands.tag.list.single.empty", $$4.N_()), false);
          } else {
-            $$0.a(() -> tl.a("commands.tag.list.single.success", $$4.N_(), $$2.size(), tn.a($$2)), false);
+            $$0.a(() -> tm.a("commands.tag.list.single.success", $$4.N_(), $$2.size(), to.a($$2)), false);
          }
       } else if ($$2.isEmpty()) {
-         $$0.a(() -> tl.a("commands.tag.list.multiple.empty", $$1.size()), false);
+         $$0.a(() -> tm.a("commands.tag.list.multiple.empty", $$1.size()), false);
       } else {
-         $$0.a(() -> tl.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), tn.a($$2)), false);
+         $$0.a(() -> tm.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), to.a($$2)), false);
       }
 
       return $$2.size();

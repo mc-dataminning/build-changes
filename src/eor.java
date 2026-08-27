@@ -8,10 +8,10 @@ import org.slf4j.Logger;
 public class eor extends gfb {
    private static final Logger a = LogUtils.getLogger();
    private static final aex b = new aex("minecraft", "textures/gui/options_background.png");
-   private static final tl c = tl.c("mco.question");
-   static final tl y = tl.c("mco.configure.world.invites.normal.tooltip");
-   static final tl z = tl.c("mco.configure.world.invites.ops.tooltip");
-   static final tl A = tl.c("mco.configure.world.invites.remove.tooltip");
+   private static final tm c = tm.c("mco.question");
+   static final tm y = tm.c("mco.configure.world.invites.normal.tooltip");
+   static final tm z = tm.c("mco.configure.world.invites.ops.tooltip");
+   static final tm A = tm.c("mco.configure.world.invites.remove.tooltip");
    private static final int B = -1;
    private final eof C;
    final emw D;
@@ -24,7 +24,7 @@ public class eor extends gfb {
    private boolean K;
 
    public eor(eof $$0, emw $$1) {
-      super(tl.c("mco.configure.world.players.title"));
+      super(tm.c("mco.configure.world.players.title"));
       this.C = $$0;
       this.D = $$1;
    }
@@ -43,21 +43,21 @@ public class eor extends gfb {
       }
 
       this.J = -1;
-      this.d(esq.a(tl.c("mco.configure.world.buttons.invite"), $$0x -> this.f.a(new eok(this.C, this, this.D))).a($$0, h(1), this.G + 10, 20).a());
-      this.H = this.d(esq.a(tl.c("mco.configure.world.invites.remove.tooltip"), $$0x -> this.l(this.J)).a($$0, h(7), this.G + 10, 20).a());
-      this.I = this.d(esq.a(tl.c("mco.configure.world.invites.ops.tooltip"), $$0x -> {
+      this.d(esq.a(tm.c("mco.configure.world.buttons.invite"), $$0x -> this.f.a(new eok(this.C, this, this.D))).a($$0, h(1), this.G + 10, 20).a());
+      this.H = this.d(esq.a(tm.c("mco.configure.world.invites.remove.tooltip"), $$0x -> this.l(this.J)).a($$0, h(7), this.G + 10, 20).a());
+      this.I = this.d(esq.a(tm.c("mco.configure.world.invites.ops.tooltip"), $$0x -> {
          if (this.D.h.get(this.J).c()) {
             this.k(this.J);
          } else {
             this.j(this.J);
          }
       }).a($$0, h(9), this.G + 10, 20).a());
-      this.d(esq.a(tk.k, $$0x -> this.D()).a($$0 + this.G / 2 + 2, h(12), this.G / 2 + 10 - 2, 20).a());
-      this.C();
+      this.d(esq.a(tl.k, $$0x -> this.E()).a($$0 + this.G / 2 + 2, h(12), this.G / 2 + 10 - 2, 20).a());
+      this.D();
    }
 
    @Override
-   void C() {
+   void D() {
       this.H.j = this.i(this.J);
       this.I.j = this.i(this.J);
       this.E.d();
@@ -70,14 +70,14 @@ public class eor extends gfb {
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.D();
+         this.E();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
    }
 
-   private void D() {
+   private void E() {
       if (this.K) {
          this.f.a(this.C.f());
       } else {
@@ -95,7 +95,7 @@ public class eor extends gfb {
          a.error("Couldn't op the user", var5);
       }
 
-      this.C();
+      this.D();
    }
 
    void k(int $$0) {
@@ -108,7 +108,7 @@ public class eor extends gfb {
          a.error("Couldn't deop the user", var5);
       }
 
-      this.C();
+      this.D();
    }
 
    private void a(emo $$0) {
@@ -118,7 +118,7 @@ public class eor extends gfb {
    }
 
    void l(int $$0) {
-      this.C();
+      this.D();
       if ($$0 >= 0 && $$0 < this.D.h.size()) {
          ems $$1 = this.D.h.get($$0);
          eog $$2 = new eog($$1x -> {
@@ -133,12 +133,12 @@ public class eor extends gfb {
 
                this.D.h.remove(this.J);
                this.J = -1;
-               this.C();
+               this.D();
             }
 
             this.K = true;
             this.f.a(this);
-         }, c, tl.a("mco.configure.world.uninvite.player", $$1.a()));
+         }, c, tm.a("mco.configure.world.uninvite.player", $$1.a()));
          this.f.a($$2);
       }
    }
@@ -153,7 +153,7 @@ public class eor extends gfb {
       $$0.a(b, 0, $$4, 0.0F, 0.0F, this.g, this.h - $$4, 32, 32);
       $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
       String $$5 = this.D.h != null ? Integer.toString(this.D.h.size()) : "0";
-      $$0.a(this.i, tl.a("mco.configure.world.invited.number", $$5), this.F, h(0), -6250336, false);
+      $$0.a(this.i, tm.a("mco.configure.world.invited.number", $$5), this.F, h(0), -6250336, false);
    }
 
    class a extends etm.a<eor.a> {
@@ -175,14 +175,14 @@ public class eor extends gfb {
          int $$1 = eor.this.D.h.indexOf(this.i);
          int $$2 = eor.this.E.p() - 16 - 9;
          int $$3 = eor.this.E.h($$1) + 1;
-         this.k = new etc($$2, $$3, 8, 7, f, $$1x -> eor.this.l($$1), tk.a);
+         this.k = new etc($$2, $$3, 8, 7, f, $$1x -> eor.this.l($$1), tl.a);
          this.k.a(eua.a(eor.A));
          this.j.add(this.k);
          $$2 += 11;
-         this.l = new etc($$2, $$3, 8, 7, g, $$1x -> eor.this.j($$1), tk.a);
+         this.l = new etc($$2, $$3, 8, 7, g, $$1x -> eor.this.j($$1), tl.a);
          this.l.a(eua.a(eor.y));
          this.j.add(this.l);
-         this.m = new etc($$2, $$3, 8, 7, h, $$1x -> eor.this.k($$1), tk.a);
+         this.m = new etc($$2, $$3, 8, 7, h, $$1x -> eor.this.k($$1), tl.a);
          this.m.a(eua.a(eor.z));
          this.j.add(this.m);
          this.b();
@@ -223,8 +223,8 @@ public class eor extends gfb {
       }
 
       @Override
-      public tl a() {
-         return tl.a("narrator.select", this.i.a());
+      public tm a() {
+         return tm.a("narrator.select", this.i.a());
       }
    }
 
@@ -256,13 +256,13 @@ public class eor extends gfb {
 
       public void b(int $$0) {
          eor.this.J = $$0;
-         eor.this.C();
+         eor.this.D();
       }
 
       public void a(@Nullable eor.a $$0) {
          super.a($$0);
          eor.this.J = this.i().indexOf($$0);
-         eor.this.C();
+         eor.this.D();
       }
 
       @Override

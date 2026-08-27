@@ -26,7 +26,7 @@ public class eay extends ebg {
    @Override
    public eaz a() {
       int $$0;
-      if (this.f() && this.b.aY()) {
+      if (this.f() && this.b.aX()) {
          $$0 = this.b.dr();
          gw.a $$1 = new gw.a(this.b.dq(), (double)$$0, this.b.dw());
 
@@ -281,7 +281,7 @@ public class eay extends ebg {
 
    private Iterable<gw> a(bji $$0) {
       float $$1 = 1.0F;
-      ehi $$2 = $$0.cH();
+      ehi $$2 = $$0.cG();
       boolean $$3 = $$2.a() < 1.0;
       if (!$$3) {
          return List.of(

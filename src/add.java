@@ -1,7 +1,7 @@
 public interface add extends abe {
    @Override
-   default sn b() {
-      return sn.a;
+   default so b() {
+      return so.a;
    }
 
    void a(adc var1);

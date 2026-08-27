@@ -1,5 +1,5 @@
 public interface fcc {
-   void E();
+   void F();
 
-   fbw F();
+   fbw G();
 }

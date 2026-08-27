@@ -40,7 +40,7 @@ public class ccv extends ccs {
                   }
                }
 
-               if ($$2.bO()) {
+               if ($$2.bN()) {
                   $$3.a(this.dq(), this.ds(), this.dw());
                } else {
                   $$2.b(this.dq(), this.ds(), this.dw());
@@ -54,15 +54,15 @@ public class ccv extends ccs {
             $$2.n();
          }
 
-         this.al();
+         this.ak();
       }
    }
 
    @Override
    public void l() {
       biq $$0 = this.v();
-      if ($$0 instanceof cbu && !$$0.bw() && this.dL().X().b(cpr.U)) {
-         this.al();
+      if ($$0 instanceof aks && !$$0.bv() && this.dL().X().b(cpr.U)) {
+         this.ak();
       } else {
          super.l();
       }

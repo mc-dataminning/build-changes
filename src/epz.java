@@ -4,10 +4,10 @@ import org.slf4j.Logger;
 public abstract class epz extends epv {
    private static final Logger b = LogUtils.getLogger();
    private final long c;
-   private final tl d;
+   private final tm d;
    private final Runnable e;
 
-   public epz(long $$0, tl $$1, Runnable $$2) {
+   public epz(long $$0, tm $$1, Runnable $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -53,7 +53,7 @@ public abstract class epz extends epv {
    }
 
    @Override
-   public tl a() {
+   public tm a() {
       return this.d;
    }
 }

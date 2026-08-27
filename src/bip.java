@@ -60,7 +60,7 @@ public abstract class bip extends biq {
       super($$0, $$1);
       this.af = true;
       this.at = true;
-      this.aU = this.cH();
+      this.aU = this.cG();
    }
 
    @Override
@@ -93,9 +93,9 @@ public abstract class bip extends biq {
 
    @Override
    public void l() {
-      biq $$0 = this.cZ();
+      biq $$0 = this.cY();
       if ($$0 != null && $$0.dG()) {
-         this.ab();
+         this.aa();
       }
 
       if (this.dL().B) {
@@ -125,7 +125,7 @@ public abstract class bip extends biq {
          if (this.aY != null) {
             if (this.aY.a == 0) {
                this.aY.a(this);
-               this.bo();
+               this.bn();
                this.aY = null;
             } else {
                this.aY.b(this);
@@ -160,9 +160,9 @@ public abstract class bip extends biq {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       if ($$0.e("transformation")) {
-         j.b.decode(ri.a, $$0.c("transformation")).resultOrPartial(ac.a("Display entity", p::error)).ifPresent($$0x -> this.a((j)$$0x.getFirst()));
+         j.b.decode(rj.a, $$0.c("transformation")).resultOrPartial(ac.a("Display entity", p::error)).ifPresent($$0x -> this.a((j)$$0x.getFirst()));
       }
 
       if ($$0.b("interpolation_duration", 99)) {
@@ -181,7 +181,7 @@ public abstract class bip extends biq {
       }
 
       if ($$0.b("billboard", 8)) {
-         bip.a.e.decode(ri.a, $$0.c("billboard")).resultOrPartial(ac.a("Display entity", p::error)).ifPresent($$0x -> this.a((bip.a)$$0x.getFirst()));
+         bip.a.e.decode(rj.a, $$0.c("billboard")).resultOrPartial(ac.a("Display entity", p::error)).ifPresent($$0x -> this.a((bip.a)$$0x.getFirst()));
       }
 
       if ($$0.b("view_range", 99)) {
@@ -209,7 +209,7 @@ public abstract class bip extends biq {
       }
 
       if ($$0.b("brightness", 10)) {
-         aqr.b.decode(ri.a, $$0.c("brightness")).resultOrPartial(ac.a("Display entity", p::error)).ifPresent($$0x -> this.a((aqr)$$0x.getFirst()));
+         aqr.b.decode(rj.a, $$0.c("brightness")).resultOrPartial(ac.a("Display entity", p::error)).ifPresent($$0x -> this.a((aqr)$$0x.getFirst()));
       } else {
          this.a(null);
       }
@@ -223,9 +223,9 @@ public abstract class bip extends biq {
    }
 
    @Override
-   protected void b(qx $$0) {
-      j.b.encodeStart(ri.a, a(this.an)).result().ifPresent($$1x -> $$0.a("transformation", $$1x));
-      bip.a.e.encodeStart(ri.a, this.w()).result().ifPresent($$1x -> $$0.a("billboard", $$1x));
+   protected void b(qy $$0) {
+      j.b.encodeStart(rj.a, a(this.an)).result().ifPresent($$1x -> $$0.a("transformation", $$1x));
+      bip.a.e.encodeStart(rj.a, this.w()).result().ifPresent($$1x -> $$0.a("billboard", $$1x));
       $$0.a("interpolation_duration", this.s());
       $$0.a("teleport_duration", this.v());
       $$0.a("view_range", this.z());
@@ -236,7 +236,7 @@ public abstract class bip extends biq {
       $$0.a("glow_color_override", this.E());
       aqr $$1 = this.x();
       if ($$1 != null) {
-         aqr.b.encodeStart(ri.a, $$1).result().ifPresent($$1x -> $$0.a("brightness", $$1x));
+         aqr.b.encodeStart(rj.a, $$1).result().ifPresent($$1x -> $$0.a("brightness", $$1x));
       }
    }
 
@@ -421,7 +421,7 @@ public abstract class bip extends biq {
 
    @Override
    public boolean a(double $$0) {
-      return $$0 < arx.k((double)this.z() * 64.0 * cA());
+      return $$0 < arx.k((double)this.z() * 64.0 * cz());
    }
 
    @Override
@@ -500,15 +500,15 @@ public abstract class bip extends biq {
       }
 
       @Override
-      protected void a(qx $$0) {
+      protected void a(qy $$0) {
          super.a($$0);
-         this.c(rj.a(this.dL().a(je.e), $$0.p("block_state")));
+         this.c(rk.a(this.dL().a(je.e), $$0.p("block_state")));
       }
 
       @Override
-      protected void b(qx $$0) {
+      protected void b(qy $$0) {
          super.b($$0);
-         $$0.a("block_state", rj.a(this.t()));
+         $$0.a("block_state", rk.a(this.t()));
       }
 
       @Nullable
@@ -615,19 +615,19 @@ public abstract class bip extends biq {
       }
 
       @Override
-      protected void a(qx $$0) {
+      protected void a(qy $$0) {
          super.a($$0);
          this.a(cjf.a($$0.p("item")));
          if ($$0.b("item_display", 8)) {
-            cjc.j.decode(ri.a, $$0.c("item_display")).resultOrPartial(ac.a("Display entity", bip.p::error)).ifPresent($$0x -> this.a((cjc)$$0x.getFirst()));
+            cjc.j.decode(rj.a, $$0.c("item_display")).resultOrPartial(ac.a("Display entity", bip.p::error)).ifPresent($$0x -> this.a((cjc)$$0x.getFirst()));
          }
       }
 
       @Override
-      protected void b(qx $$0) {
+      protected void b(qy $$0) {
          super.b($$0);
-         $$0.a("item", this.t().b(new qx()));
-         cjc.j.encodeStart(ri.a, this.v()).result().ifPresent($$1 -> $$0.a("item_display", $$1));
+         $$0.a("item", this.t().b(new qy()));
+         cjc.j.encodeStart(rj.a, this.v()).result().ifPresent($$1 -> $$0.a("item_display", $$1));
       }
 
       @Override
@@ -709,7 +709,7 @@ public abstract class bip extends biq {
       public static final byte u = 16;
       private static final byte aL = -1;
       public static final int v = 1073741824;
-      private static final aef<tl> aM = aei.a(bip.l.class, aeh.f);
+      private static final aef<tm> aM = aei.a(bip.l.class, aeh.f);
       private static final aef<Integer> aN = aei.a(bip.l.class, aeh.b);
       private static final aef<Integer> aO = aei.a(bip.l.class, aeh.b);
       private static final aef<Byte> aP = aei.a(bip.l.class, aeh.a);
@@ -727,7 +727,7 @@ public abstract class bip extends biq {
       @Override
       protected void a_() {
          super.a_();
-         this.an.a(aM, tl.h());
+         this.an.a(aM, tm.h());
          this.an.a(aN, 200);
          this.an.a(aO, 1073741824);
          this.an.a(aP, (byte)-1);
@@ -742,11 +742,11 @@ public abstract class bip extends biq {
          }
       }
 
-      private tl t() {
+      private tm t() {
          return this.an.b(aM);
       }
 
-      private void c(tl $$0) {
+      private void c(tm $$0) {
          this.an.b(aM, $$0);
       }
 
@@ -782,12 +782,12 @@ public abstract class bip extends biq {
          this.an.b(aQ, $$0);
       }
 
-      private static byte a(byte $$0, qx $$1, String $$2, byte $$3) {
+      private static byte a(byte $$0, qy $$1, String $$2, byte $$3) {
          return $$1.q($$2) ? (byte)($$0 | $$3) : $$0;
       }
 
       @Override
-      protected void a(qx $$0) {
+      protected void a(qy $$0) {
          super.a($$0);
          if ($$0.b("line_width", 99)) {
             this.b($$0.h("line_width"));
@@ -804,7 +804,7 @@ public abstract class bip extends biq {
          byte $$1 = a((byte)0, $$0, "shadow", (byte)1);
          $$1 = a($$1, $$0, "see_through", (byte)2);
          $$1 = a($$1, $$0, "default_background", (byte)4);
-         Optional<bip.l.a> $$2 = bip.l.a.d.decode(ri.a, $$0.c("alignment")).resultOrPartial(ac.a("Display entity", bip.p::error)).map(Pair::getFirst);
+         Optional<bip.l.a> $$2 = bip.l.a.d.decode(rj.a, $$0.c("alignment")).resultOrPartial(ac.a("Display entity", bip.p::error)).map(Pair::getFirst);
          if ($$2.isPresent()) {
             $$1 = switch ((bip.l.a)$$2.get()) {
                case a -> $$1;
@@ -818,13 +818,13 @@ public abstract class bip extends biq {
             String $$3 = $$0.l("text");
 
             try {
-               tl $$4 = tl.a.a($$3);
+               tm $$4 = tm.a.a($$3);
                if ($$4 != null) {
-                  dt $$5 = this.dd().a(2);
-                  tl $$6 = tn.a($$5, $$4, this, 0);
+                  dt $$5 = this.dc().a(2);
+                  tm $$6 = to.a($$5, $$4, this, 0);
                   this.c($$6);
                } else {
-                  this.c(tl.h());
+                  this.c(tm.h());
                }
             } catch (Exception var8) {
                bip.p.warn("Failed to parse display entity text {}", $$3, var8);
@@ -832,14 +832,14 @@ public abstract class bip extends biq {
          }
       }
 
-      private static void b(byte $$0, qx $$1, String $$2, byte $$3) {
+      private static void b(byte $$0, qy $$1, String $$2, byte $$3) {
          $$1.a($$2, ($$0 & $$3) != 0);
       }
 
       @Override
-      protected void b(qx $$0) {
+      protected void b(qy $$0) {
          super.b($$0);
-         $$0.a("text", tl.a.a(this.t()));
+         $$0.a("text", tm.a.a(this.t()));
          $$0.a("line_width", this.v());
          $$0.a("background", this.x());
          $$0.a("text_opacity", this.w());
@@ -847,7 +847,7 @@ public abstract class bip extends biq {
          b($$1, $$0, "shadow", (byte)1);
          b($$1, $$0, "see_through", (byte)2);
          b($$1, $$0, "default_background", (byte)4);
-         bip.l.a.d.encodeStart(ri.a, a($$1)).result().ifPresent($$1x -> $$0.a("alignment", $$1x));
+         bip.l.a.d.encodeStart(rj.a, a($$1)).result().ifPresent($$1x -> $$0.a("alignment", $$1x));
       }
 
       @Override
@@ -922,10 +922,10 @@ public abstract class bip extends biq {
 
       @FunctionalInterface
       public interface d {
-         bip.l.b split(tl var1, int var2);
+         bip.l.b split(tm var1, int var2);
       }
 
-      public static record e(tl a, int b, bip.f c, bip.f d, byte e) {
+      public static record e(tm a, int b, bip.f c, bip.f d, byte e) {
       }
    }
 

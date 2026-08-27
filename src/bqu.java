@@ -21,7 +21,7 @@ public class bqu extends bqb {
       if (!this.h()) {
          return false;
       } else {
-         if (this.b.bN()) {
+         if (this.b.bM()) {
             gw $$0 = this.a(this.b.dL(), this.b, 5);
             if ($$0 != null) {
                this.d = (double)$$0.u();
@@ -36,7 +36,7 @@ public class bqu extends bqb {
    }
 
    protected boolean h() {
-      return this.b.eg() != null || this.b.dA() || this.b.bN();
+      return this.b.eg() != null || this.b.dA() || this.b.bM();
    }
 
    protected boolean i() {

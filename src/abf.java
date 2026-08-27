@@ -1,3 +1,3 @@
-public interface abf extends su {
+public interface abf extends sv {
    void a(aec var1);
 }

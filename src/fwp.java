@@ -4,7 +4,7 @@ public class fwp extends fxp<fnd, fgi<fnd>> {
    }
 
    public void a(elp $$0, foe $$1, int $$2, fnd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce() && $$3.a(cbv.a)) {
+      if (!$$3.cd() && $$3.a(cbv.a)) {
          gae $$10 = $$3.b();
          if ($$10.c() != null) {
             cjf $$11 = $$3.c(biv.e);
@@ -29,7 +29,7 @@ public class fwp extends fxp<fnd, fgi<fnd>> {
 
                float $$21 = arx.i($$6, $$3.bV, $$3.bW);
                $$18 += arx.a(arx.i($$6, $$3.X, $$3.Y) * 6.0F) * 32.0F * $$21;
-               if ($$3.bX()) {
+               if ($$3.bW()) {
                   $$18 += 25.0F;
                }
 

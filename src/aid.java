@@ -5,7 +5,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import net.minecraft.server.MinecraftServer;
 
 public class aid {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.save.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.save.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -16,13 +16,13 @@ public class aid {
    }
 
    private static int a(dt $$0, boolean $$1) throws CommandSyntaxException {
-      $$0.a(() -> tl.c("commands.save.saving"), false);
+      $$0.a(() -> tm.c("commands.save.saving"), false);
       MinecraftServer $$2 = $$0.l();
       boolean $$3 = $$2.b(true, $$1, true);
       if (!$$3) {
          throw a.create();
       } else {
-         $$0.a(() -> tl.c("commands.save.success"), true);
+         $$0.a(() -> tm.c("commands.save.success"), true);
          return 1;
       }
    }

@@ -15,7 +15,7 @@ public enum fjm implements asp {
       this.e = $$0;
    }
 
-   public static fjm a(ua $$0, tl $$1, Instant $$2) {
+   public static fjm a(ub $$0, tm $$1, Instant $$2) {
       if (!$$0.h() || $$0.b($$2)) {
          return c;
       } else {
@@ -23,21 +23,21 @@ public enum fjm implements asp {
       }
    }
 
-   private static boolean a(ua $$0, tl $$1) {
+   private static boolean a(ub $$0, tm $$1) {
       if (!$$1.getString().contains($$0.b())) {
          return true;
       } else {
-         tl $$2 = $$0.m();
+         tm $$2 = $$0.m();
          return $$2 == null ? false : a($$2);
       }
    }
 
-   private static boolean a(tl $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), uh.a).orElse(false);
+   private static boolean a(tm $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), ui.a).orElse(false);
    }
 
-   private static boolean a(uh $$0) {
-      return !$$0.k().equals(uh.c);
+   private static boolean a(ui $$0) {
+      return !$$0.k().equals(ui.c);
    }
 
    public boolean a() {
@@ -45,7 +45,7 @@ public enum fjm implements asp {
    }
 
    @Nullable
-   public eqq a(ua $$0) {
+   public eqq a(ub $$0) {
       return switch (this) {
          case b -> eqq.a($$0.b());
          case c -> eqq.c();

@@ -14,13 +14,13 @@ public class bha {
       return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
    }
 
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       if (!this.c.isEmpty()) {
          $$0.a("Lock", this.c);
       }
    }
 
-   public static bha b(qx $$0) {
+   public static bha b(qy $$0) {
       return $$0.b("Lock", 8) ? new bha($$0.l("Lock")) : a;
    }
 }

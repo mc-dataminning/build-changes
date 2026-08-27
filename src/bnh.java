@@ -10,8 +10,8 @@ public class bnh {
                .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
                      hf $$9 = $$0.b($$3);
                      bsj $$10 = $$0.b($$4);
-                     if ($$6.D_().a(100) == 0 && $$6.ac() == $$9.a() && $$9.b().a($$7.dj(), 4.0) && $$10.d($$0xxx -> biu.bf.equals($$0xxx.ah()))) {
-                        $$10.a($$1xx -> biu.bf.equals($$1xx.ah()) && $$1xx.f((biq)$$7) <= 32.0).ifPresent($$3xx -> {
+                     if ($$6.D_().a(100) == 0 && $$6.ac() == $$9.a() && $$9.b().a($$7.dj(), 4.0) && $$10.d($$0xxx -> biu.bf.equals($$0xxx.ag()))) {
+                        $$10.a($$1xx -> biu.bf.equals($$1xx.ag()) && $$1xx.f((biq)$$7) <= 32.0).ifPresent($$3xx -> {
                            $$5.a($$3xx);
                            $$2.a(new bli($$3xx, true));
                            $$1.a(new bsk(new bli($$3xx, false), 0.3F, 1));

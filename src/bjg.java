@@ -132,13 +132,13 @@ public abstract class bjg extends biq implements bio {
       this.c(this.eL());
       this.I = true;
       this.aT = (float)((Math.random() + 1.0) * 0.01F);
-      this.aq();
+      this.ap();
       this.aS = (float)Math.random() * 12398.0F;
       this.r((float)(Math.random() * (float) (Math.PI * 2)));
       this.aW = this.dB();
       this.t(0.6F);
-      ri $$2 = ri.a;
-      this.bz = this.a(new Dynamic($$2, (rq)$$2.createMap(ImmutableMap.of($$2.a("memories"), (rq)$$2.emptyMap()))));
+      rj $$2 = rj.a;
+      this.bz = this.a(new Dynamic($$2, (rr)$$2.createMap(ImmutableMap.of($$2.a("memories"), (rr)$$2.emptyMap()))));
    }
 
    public bkg<?> dN() {
@@ -154,7 +154,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public void ak() {
+   public void aj() {
       this.a(this.dM().w(), Float.MAX_VALUE);
    }
 
@@ -179,8 +179,8 @@ public abstract class bjg extends biq implements bio {
 
    @Override
    protected void a(double $$0, boolean $$1, dfj $$2, gw $$3) {
-      if (!this.aY()) {
-         this.bg();
+      if (!this.aX()) {
+         this.bf();
       }
 
       if (!this.dL().B && $$1 && this.ab > 0.0F) {
@@ -222,7 +222,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public void ar() {
+   public void aq() {
       this.aN = this.aO;
       if (this.am) {
          this.fA().ifPresent(this::a);
@@ -232,18 +232,18 @@ public abstract class bjg extends biq implements bio {
          this.dS();
       }
 
-      super.ar();
+      super.aq();
       this.dL().ad().a("livingEntityBaseTick");
-      if (this.aX() || this.dL().B) {
-         this.az();
+      if (this.aW() || this.dL().B) {
+         this.ay();
       }
 
-      if (this.bw()) {
+      if (this.bv()) {
          boolean $$0 = this instanceof cbu;
          if (!this.dL().B) {
-            if (this.bx()) {
+            if (this.bw()) {
                this.a(this.dM().f(), 1.0F);
-            } else if ($$0 && !this.dL().B_().a(this.cH())) {
+            } else if ($$0 && !this.dL().B_().a(this.cG())) {
                double $$1 = this.dL().B_().a(this) + this.dL().B_().n();
                if ($$1 < 0.0) {
                   double $$2 = this.dL().B_().o();
@@ -257,8 +257,8 @@ public abstract class bjg extends biq implements bio {
          if (this.a(apy.a) && !this.dL().a_(gw.a(this.dq(), this.du(), this.dw())).a(csw.nd)) {
             boolean $$3 = !this.dQ() && !bie.c(this) && (!$$0 || !((cbu)this).fS().a);
             if ($$3) {
-               this.j(this.m(this.ci()));
-               if (this.ci() == -20) {
+               this.j(this.m(this.ch()));
+               if (this.ch() == -20) {
                   this.j(0);
                   ehn $$4 = this.do();
 
@@ -273,11 +273,11 @@ public abstract class bjg extends biq implements bio {
                }
             }
 
-            if (!this.dL().B && this.bO() && this.cZ() != null && this.cZ().bQ()) {
-               this.ab();
+            if (!this.dL().B && this.bN() && this.cY() != null && this.cY().bP()) {
+               this.aa();
             }
-         } else if (this.ci() < this.ch()) {
-            this.j(this.n(this.ci()));
+         } else if (this.ch() < this.cg()) {
+            this.j(this.n(this.ch()));
          }
 
          if (!this.dL().B) {
@@ -289,8 +289,8 @@ public abstract class bjg extends biq implements bio {
          }
       }
 
-      if (this.bw() && (this.ba() || this.aA)) {
-         this.aE();
+      if (this.bv() && (this.aZ() || this.aA)) {
+         this.aD();
       }
 
       if (this.aK > 0) {
@@ -311,12 +311,12 @@ public abstract class bjg extends biq implements bio {
          this.aY = null;
       }
 
-      if (this.bX != null && !this.bX.bw()) {
+      if (this.bX != null && !this.bX.bv()) {
          this.bX = null;
       }
 
       if (this.bV != null) {
-         if (!this.bV.bw()) {
+         if (!this.bV.bv()) {
             this.a(null);
          } else if (this.ah - this.bW > 100) {
             this.a(null);
@@ -341,9 +341,9 @@ public abstract class bjg extends biq implements bio {
       this.dL()
          .a(
             ix.I,
-            this.dq() + (this.ag.j() - 0.5) * (double)this.dg(),
+            this.dq() + (this.ag.j() - 0.5) * (double)this.df(),
             this.ds() + 0.1,
-            this.dw() + (this.ag.j() - 0.5) * (double)this.dg(),
+            this.dw() + (this.ag.j() - 0.5) * (double)this.df(),
             $$0.c * -0.2,
             0.1,
             $$0.e * -0.2
@@ -353,12 +353,12 @@ public abstract class bjg extends biq implements bio {
    }
 
    protected boolean dT() {
-      return this.dL().a_(this.aH()).a(apt.aM);
+      return this.dL().a_(this.aG()).a(apt.aM);
    }
 
    @Override
-   protected float aK() {
-      return this.dT() && cnq.a(cns.l, this) > 0 ? 1.0F : super.aK();
+   protected float aJ() {
+      return this.dT() && cnq.a(cns.l, this) > 0 ? 1.0F : super.aJ();
    }
 
    @Override
@@ -376,7 +376,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    protected void dV() {
-      if (!this.bi().i()) {
+      if (!this.bh().i()) {
          int $$0 = cnq.a(cns.l, this);
          if ($$0 > 0 && this.dT()) {
             bki $$1 = this.a(bkm.d);
@@ -403,15 +403,15 @@ public abstract class bjg extends biq implements bio {
    }
 
    protected void dX() {
-      if (!this.bi().i()) {
-         int $$0 = this.cj();
+      if (!this.bh().i()) {
+         int $$0 = this.ci();
          if ($$0 > 0) {
             bki $$1 = this.a(bkm.d);
             if ($$1 == null) {
                return;
             }
 
-            float $$2 = -0.05F * this.ck();
+            float $$2 = -0.05F * this.cj();
             $$1.b(new bkk(e, "Powder snow slow", (double)$$2, bkk.a.a));
          }
       }
@@ -423,7 +423,7 @@ public abstract class bjg extends biq implements bio {
          cnv.a(this, this.dL(), $$0, $$1);
       }
 
-      if (this.c(this.bi())) {
+      if (this.c(this.bh())) {
          this.dU();
       }
 
@@ -464,7 +464,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    protected int n(int $$0) {
-      return Math.min($$0 + 4, this.ch());
+      return Math.min($$0 + 4, this.cg());
    }
 
    public int ed() {
@@ -547,8 +547,8 @@ public abstract class bjg extends biq implements bio {
       if (!$$3 && !cjf.c($$1, $$2) && !this.am) {
          cig $$4 = cig.c_($$2);
          if (!this.dL().w_() && !this.M_()) {
-            if (!this.aT() && $$4 != null && $$4.g() == $$0) {
-               this.dL().a(null, this.dq(), this.ds(), this.dw(), $$4.ao_(), this.db(), 1.0F, 1.0F);
+            if (!this.aS() && $$4 != null && $$4.g() == $$0) {
+               this.dL().a(null, this.dq(), this.ds(), this.dw(), $$4.ao_(), this.da(), 1.0F, 1.0F);
             }
 
             if (this.a($$0)) {
@@ -565,7 +565,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       $$0.a("Health", this.eu());
       $$0.a("HurtTime", (short)this.aK);
       $$0.a("HurtByTimestamp", this.bW);
@@ -573,10 +573,10 @@ public abstract class bjg extends biq implements bio {
       $$0.a("AbsorptionAmount", this.fj());
       $$0.a("Attributes", this.eQ().c());
       if (!this.bQ.isEmpty()) {
-         rd $$1 = new rd();
+         re $$1 = new re();
 
          for (bid $$2 : this.bQ.values()) {
-            $$1.add($$2.a(new qx()));
+            $$1.add($$2.a(new qy()));
          }
 
          $$0.a("active_effects", $$1);
@@ -588,22 +588,22 @@ public abstract class bjg extends biq implements bio {
          $$0.a("SleepingY", $$1.v());
          $$0.a("SleepingZ", $$1.w());
       });
-      DataResult<rq> $$3 = this.bz.a(ri.a);
+      DataResult<rr> $$3 = this.bz.a(rj.a);
       $$3.resultOrPartial(b::error).ifPresent($$1 -> $$0.a("Brain", $$1));
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.z($$0.j("AbsorptionAmount"));
       if ($$0.b("Attributes", 9) && this.dL() != null && !this.dL().B) {
          this.eQ().a($$0.c("Attributes", 10));
       }
 
       if ($$0.b("active_effects", 9)) {
-         rd $$1 = $$0.c("active_effects", 10);
+         re $$1 = $$0.c("active_effects", 10);
 
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            qx $$3 = $$1.a($$2);
+            qy $$3 = $$1.a($$2);
             bid $$4 = bid.b($$3);
             if ($$4 != null) {
                this.bQ.put($$4.c(), $$4);
@@ -621,7 +621,7 @@ public abstract class bjg extends biq implements bio {
       if ($$0.b("Team", 8)) {
          String $$5 = $$0.l("Team");
          eik $$6 = this.dL().I().d($$5);
-         boolean $$7 = $$6 != null && this.dL().I().a(this.cx(), $$6);
+         boolean $$7 = $$6 != null && this.dL().I().a(this.cw(), $$6);
          if (!$$7) {
             b.warn("Unable to add mob to team \"{}\" (that team probably doesn't exist)", $$5);
          }
@@ -641,7 +641,7 @@ public abstract class bjg extends biq implements bio {
       }
 
       if ($$0.b("Brain", 10)) {
-         this.bz = this.a(new Dynamic(ri.a, $$0.c("Brain")));
+         this.bz = this.a(new Dynamic(rj.a, $$0.c("Brain")));
       }
    }
 
@@ -677,7 +677,7 @@ public abstract class bjg extends biq implements bio {
       boolean $$4 = this.an.b(bJ);
       if ($$3 > 0) {
          boolean $$5;
-         if (this.ce()) {
+         if (this.cd()) {
             $$5 = this.ag.a(15) == 0;
          } else {
             $$5 = this.ag.h();
@@ -709,7 +709,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    private void s() {
-      boolean $$0 = this.cd();
+      boolean $$0 = this.cc();
       if (this.i(6) != $$0) {
          this.b(6, $$0);
       }
@@ -717,11 +717,11 @@ public abstract class bjg extends biq implements bio {
 
    public double B(@Nullable biq $$0) {
       double $$1 = 1.0;
-      if (this.bV()) {
+      if (this.bU()) {
          $$1 *= 0.8;
       }
 
-      if (this.ce()) {
+      if (this.cd()) {
          float $$2 = this.eU();
          if ($$2 < 0.1F) {
             $$2 = 0.1F;
@@ -732,7 +732,7 @@ public abstract class bjg extends biq implements bio {
 
       if ($$0 != null) {
          cjf $$3 = this.c(biv.f);
-         biu<?> $$4 = $$0.ah();
+         biu<?> $$4 = $$0.ag();
          if ($$4 == biu.aJ && $$3.a(cji.tr)
             || $$4 == biu.bp && $$3.a(cji.tu)
             || $$4 == biu.aw && $$3.a(cji.tx)
@@ -754,11 +754,11 @@ public abstract class bjg extends biq implements bio {
    }
 
    public boolean en() {
-      return !this.cr() && this.eo();
+      return !this.cq() && this.eo();
    }
 
    public boolean eo() {
-      return !this.M_() && this.bw();
+      return !this.M_() && this.bv();
    }
 
    public static boolean c(Collection<bid> $$0) {
@@ -883,9 +883,9 @@ public abstract class bjg extends biq implements bio {
    }
 
    public void d(bid $$0) {
-      for (biq $$1 : this.cQ()) {
+      for (biq $$1 : this.cP()) {
          if ($$1 instanceof aks $$2) {
-            $$2.c.b(new aay(this.ai(), $$0));
+            $$2.c.b(new aay(this.ah(), $$0));
          }
       }
    }
@@ -910,9 +910,9 @@ public abstract class bjg extends biq implements bio {
          $$0.c().a(this.eQ());
          this.w();
 
-         for (biq $$1 : this.cQ()) {
+         for (biq $$1 : this.cP()) {
             if ($$1 instanceof aks $$2) {
-               $$2.c.b(new zg(this.ai(), $$0.c()));
+               $$2.c.b(new zg(this.ah(), $$0.c()));
             }
          }
       }
@@ -987,7 +987,7 @@ public abstract class bjg extends biq implements bio {
             $$3 = true;
          }
 
-         if ($$0.a(apv.o) && this.ah().a(apw.j)) {
+         if ($$0.a(apv.o) && this.ag().a(apw.j)) {
             $$1 *= 5.0F;
          }
 
@@ -1041,7 +1041,7 @@ public abstract class bjg extends biq implements bio {
             }
 
             if (!$$0.a(apv.r) && (!$$3 || $$1 > 0.0F)) {
-               this.bp();
+               this.bo();
             }
 
             if ($$8 != null && !$$0.a(apv.z)) {
@@ -1175,8 +1175,8 @@ public abstract class bjg extends biq implements bio {
 
    private void i(cjf $$0) {
       if (!$$0.b()) {
-         if (!this.aT()) {
-            this.dL().a(this.dq(), this.ds(), this.dw(), ape.lZ, this.db(), 0.8F, 0.8F + this.dL().z.i() * 0.4F, false);
+         if (!this.aS()) {
+            this.dL().a(this.dq(), this.ds(), this.dw(), ape.lZ, this.da(), 0.8F, 0.8F + this.dL().z.i() * 0.4F, false);
          }
 
          this.a($$0, 5);
@@ -1195,7 +1195,7 @@ public abstract class bjg extends biq implements bio {
             this.fD();
          }
 
-         if (!this.dL().B && this.ad()) {
+         if (!this.dL().B && this.ac()) {
             b.info("Named entity {} died: {}", this, this.eJ().a().getString());
          }
 
@@ -1268,7 +1268,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    public aex ez() {
-      return this.ah().j();
+      return this.ag().j();
    }
 
    public long eA() {
@@ -1293,7 +1293,7 @@ public abstract class bjg extends biq implements bio {
          this.au = true;
          ehn $$3 = this.do();
          ehn $$4 = new ehn($$1, 0.0, $$2).d().a($$0);
-         this.o($$3.c / 2.0 - $$4.c, this.aB() ? Math.min(0.4, $$3.d / 2.0 + $$0) : $$3.d, $$3.e / 2.0 - $$4.e);
+         this.o($$3.c / 2.0 - $$4.c, this.aA() ? Math.min(0.4, $$3.d / 2.0 + $$0) : $$3.d, $$3.e / 2.0 - $$4.e);
       }
    }
 
@@ -1327,8 +1327,8 @@ public abstract class bjg extends biq implements bio {
    }
 
    protected ehi eE() {
-      ehi $$0 = this.cH();
-      biq $$1 = this.cZ();
+      ehi $$0 = this.cG();
+      biq $$1 = this.cY();
       if ($$1 != null) {
          ehn $$2 = $$1.m(this);
          return $$0.b(Math.max($$2.d, $$0.b));
@@ -1383,7 +1383,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public boolean bw() {
+   public boolean bv() {
       return !this.dG() && this.eu() > 0.0F;
    }
 
@@ -1402,7 +1402,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    protected int d(float $$0, float $$1) {
-      if (this.ah().a(apw.l)) {
+      if (this.ag().a(apw.l)) {
          return 0;
       } else {
          bid $$2 = this.b(bif.h);
@@ -1412,7 +1412,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    protected void eH() {
-      if (!this.aT()) {
+      if (!this.aS()) {
          int $$0 = arx.a(this.dq());
          int $$1 = arx.a(this.ds() - 0.2F);
          int $$2 = arx.a(this.dw());
@@ -1477,7 +1477,7 @@ public abstract class bjg extends biq implements bio {
          } else if ($$0.a(apv.h)) {
             return $$1;
          } else {
-            int $$7 = cnq.a(this.bL(), $$0);
+            int $$7 = cnq.a(this.bK(), $$0);
             if ($$7 > 0) {
                $$1 = bhk.a($$1, (float)$$7);
             }
@@ -1617,9 +1617,9 @@ public abstract class bjg extends biq implements bio {
                float $$5 = (this.ag.i() - 0.5F) * 0.2F;
                float $$6 = (this.ag.i() - 0.5F) * 0.2F;
                float $$7 = (this.ag.i() - 0.5F) * 0.2F;
-               double $$8 = arx.d($$4, this.K, this.dq()) + (this.ag.j() - 0.5) * (double)this.dg() * 2.0;
-               double $$9 = arx.d($$4, this.L, this.ds()) + this.ag.j() * (double)this.dh();
-               double $$10 = arx.d($$4, this.M, this.dw()) + (this.ag.j() - 0.5) * (double)this.dg() * 2.0;
+               double $$8 = arx.d($$4, this.K, this.dq()) + (this.ag.j() - 0.5) * (double)this.df() * 2.0;
+               double $$9 = arx.d($$4, this.L, this.ds()) + this.ag.j() * (double)this.dg();
+               double $$10 = arx.d($$4, this.M, this.dw()) + (this.ag.j() - 0.5) * (double)this.df() * 2.0;
                this.dL().a(ix.X, $$8, $$9, $$10, (double)$$5, (double)$$6, (double)$$7);
             }
             break;
@@ -1671,7 +1671,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   protected void aA() {
+   protected void az() {
       this.a(this.dM().m(), 4.0F);
    }
 
@@ -1762,7 +1762,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public abstract Iterable<cjf> bL();
+   public abstract Iterable<cjf> bK();
 
    public abstract cjf c(biv var1);
 
@@ -1770,14 +1770,14 @@ public abstract class bjg extends biq implements bio {
    public abstract void a(biv var1, cjf var2);
 
    protected void e(cjf $$0) {
-      qx $$1 = $$0.v();
+      qy $$1 = $$0.v();
       if ($$1 != null) {
          $$0.d().b($$1);
       }
    }
 
    public float eU() {
-      Iterable<cjf> $$0 = this.bL();
+      Iterable<cjf> $$0 = this.bK();
       int $$1 = 0;
       int $$2 = 0;
 
@@ -1836,12 +1836,12 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public boolean cC() {
-      return this.cB();
+   public boolean cB() {
+      return this.cA();
    }
 
    protected float eY() {
-      return 0.42F * this.aJ() + this.eZ();
+      return 0.42F * this.aI() + this.eZ();
    }
 
    public float eZ() {
@@ -1851,7 +1851,7 @@ public abstract class bjg extends biq implements bio {
    protected void fa() {
       ehn $$0 = this.do();
       this.o($$0.c, (double)this.eY(), $$0.e);
-      if (this.bY()) {
+      if (this.bX()) {
          float $$1 = this.dB() * (float) (Math.PI / 180.0);
          this.f(this.do().b((double)(-arx.a($$1) * 0.2F), 0.0, (double)(arx.b($$1) * 0.2F)));
       }
@@ -1876,7 +1876,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    public void h(ehn $$0) {
-      if (this.cX()) {
+      if (this.cW()) {
          double $$1 = 0.08;
          boolean $$2 = this.do().d <= 0.0;
          if ($$2 && this.a(bif.B)) {
@@ -1884,16 +1884,16 @@ public abstract class bjg extends biq implements bio {
          }
 
          eam $$3 = this.dL().b_(this.dl());
-         if (this.aY() && this.dZ() && !this.a($$3)) {
+         if (this.aX() && this.dZ() && !this.a($$3)) {
             double $$4 = this.ds();
-            float $$5 = this.bY() ? 0.9F : this.fc();
+            float $$5 = this.bX() ? 0.9F : this.fc();
             float $$6 = 0.02F;
             float $$7 = (float)cnq.f(this);
             if ($$7 > 3.0F) {
                $$7 = 3.0F;
             }
 
-            if (!this.aB()) {
+            if (!this.aA()) {
                $$7 *= 0.5F;
             }
 
@@ -1919,11 +1919,11 @@ public abstract class bjg extends biq implements bio {
             if (this.P && this.g($$9.c, $$9.d + 0.6F - this.ds() + $$4, $$9.e)) {
                this.o($$9.c, 0.3F, $$9.e);
             }
-         } else if (this.bm() && this.dZ() && !this.a($$3)) {
+         } else if (this.bl() && this.dZ() && !this.a($$3)) {
             double $$10 = this.ds();
             this.a(0.02F, $$0);
             this.a(bjm.a, this.do());
-            if (this.b(apy.b) <= this.df()) {
+            if (this.b(apy.b) <= this.de()) {
                this.f(this.do().d(0.5, 0.8F, 0.5));
                ehn $$11 = this.a($$1, $$2, this.do());
                this.f($$11);
@@ -1931,7 +1931,7 @@ public abstract class bjg extends biq implements bio {
                this.f(this.do().a(0.5));
             }
 
-            if (!this.aU()) {
+            if (!this.aT()) {
                this.f(this.do().b(0.0, -$$1 / 4.0, 0.0));
             }
 
@@ -1940,9 +1940,9 @@ public abstract class bjg extends biq implements bio {
                this.o($$12.c, 0.3F, $$12.e);
             }
          } else if (this.fv()) {
-            this.cn();
+            this.cm();
             ehn $$13 = this.do();
-            ehn $$14 = this.bF();
+            ehn $$14 = this.bE();
             float $$15 = this.dD() * (float) (Math.PI / 180.0);
             double $$16 = Math.sqrt($$14.c * $$14.c + $$14.e * $$14.e);
             double $$17 = $$13.h();
@@ -1976,13 +1976,13 @@ public abstract class bjg extends biq implements bio {
                }
             }
 
-            if (this.aB() && !this.dL().B) {
+            if (this.aA() && !this.dL().B) {
                this.b(7, false);
             }
          } else {
-            gw $$25 = this.aH();
+            gw $$25 = this.aG();
             float $$26 = this.dL().a_($$25).b().h();
-            float $$27 = this.aB() ? $$26 * 0.91F : 0.91F;
+            float $$27 = this.aA() ? $$26 * 0.91F : 0.91F;
             ehn $$28 = this.a($$0, $$26);
             double $$29 = $$28.d;
             if (this.a(bif.y)) {
@@ -1993,7 +1993,7 @@ public abstract class bjg extends biq implements bio {
                } else {
                   $$29 = 0.0;
                }
-            } else if (!this.aU()) {
+            } else if (!this.aT()) {
                $$29 -= $$1;
             }
 
@@ -2011,13 +2011,13 @@ public abstract class bjg extends biq implements bio {
    private void c(cbu $$0, ehn $$1) {
       ehn $$2 = this.b($$0, $$1);
       this.a($$0, $$2);
-      if (this.cX()) {
+      if (this.cW()) {
          this.w(this.e($$0));
          this.h($$2);
       } else {
          this.q(false);
          this.f(ehn.b);
-         this.aC();
+         this.aB();
       }
    }
 
@@ -2055,7 +2055,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    public ehn a(double $$0, boolean $$1, ehn $$2) {
-      if (!this.aU() && !this.bY()) {
+      if (!this.aT() && !this.bX()) {
          double $$3;
          if ($$1 && Math.abs($$2.d - 0.005) >= 0.003 && Math.abs($$2.d - $$0 / 16.0) < 0.003) {
             $$3 = -0.003;
@@ -2087,11 +2087,11 @@ public abstract class bjg extends biq implements bio {
    }
 
    private float A(float $$0) {
-      return this.aB() ? this.fe() * (0.21600002F / ($$0 * $$0 * $$0)) : this.fd();
+      return this.aA() ? this.fe() * (0.21600002F / ($$0 * $$0 * $$0)) : this.fd();
    }
 
    protected float fd() {
-      return this.cO() instanceof cbu ? this.fe() * 0.1F : 0.02F;
+      return this.cN() instanceof cbu ? this.fe() * 0.1F : 0.02F;
    }
 
    public float fe() {
@@ -2174,7 +2174,7 @@ public abstract class bjg extends biq implements bio {
          $$5 = this.dB();
       }
 
-      if (!this.aB()) {
+      if (!this.aA()) {
          $$7 = 0.0F;
       }
 
@@ -2307,7 +2307,7 @@ public abstract class bjg extends biq implements bio {
                this.b($$1x, $$3);
          }
       });
-      ((akr)this.dL()).k().b(this, new aab(this.ai(), $$1));
+      ((akr)this.dL()).k().b(this, new aab(this.ah(), $$1));
    }
 
    private cjf e(biv $$0) {
@@ -2347,7 +2347,7 @@ public abstract class bjg extends biq implements bio {
          this.ca--;
       }
 
-      if (this.cX()) {
+      if (this.cW()) {
          this.bn = 0;
          this.f(this.dq(), this.ds(), this.dw());
       }
@@ -2355,7 +2355,7 @@ public abstract class bjg extends biq implements bio {
       if (this.bn > 0) {
          this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
          this.bn--;
-      } else if (!this.cY()) {
+      } else if (!this.cX()) {
          this.f(this.do().a(0.98));
       }
 
@@ -2386,7 +2386,7 @@ public abstract class bjg extends biq implements bio {
          this.bj = false;
          this.bk = 0.0F;
          this.bm = 0.0F;
-      } else if (this.cY()) {
+      } else if (this.cX()) {
          this.dL().ad().a("newAi");
          this.fg();
          this.dL().ad().c();
@@ -2396,17 +2396,17 @@ public abstract class bjg extends biq implements bio {
       this.dL().ad().a("jump");
       if (this.bj && this.dZ()) {
          double $$4;
-         if (this.bm()) {
+         if (this.bl()) {
             $$4 = this.b(apy.b);
          } else {
             $$4 = this.b(apy.a);
          }
 
-         boolean $$6 = this.aY() && $$4 > 0.0;
-         double $$7 = this.df();
-         if (!$$6 || this.aB() && !($$4 > $$7)) {
-            if (!this.bm() || this.aB() && !($$4 > $$7)) {
-               if ((this.aB() || $$6 && $$4 <= $$7) && this.ca == 0) {
+         boolean $$6 = this.aX() && $$4 > 0.0;
+         double $$7 = this.de();
+         if (!$$6 || this.aA() && !($$4 > $$7)) {
+            if (!this.bl() || this.aA() && !($$4 > $$7)) {
+               if ((this.aA() || $$6 && $$4 <= $$7) && this.ca == 0) {
                   this.fa();
                   this.ca = 10;
                }
@@ -2425,14 +2425,14 @@ public abstract class bjg extends biq implements bio {
       this.bk *= 0.98F;
       this.bm *= 0.98F;
       this.F();
-      ehi $$8 = this.cH();
+      ehi $$8 = this.cG();
       ehn $$9 = new ehn((double)this.bk, (double)this.bl, (double)this.bm);
       if (this.a(bif.B) || this.a(bif.y)) {
          this.n();
       }
 
       label104: {
-         if (this.cO() instanceof cbu $$10 && this.bw()) {
+         if (this.cN() instanceof cbu $$10 && this.bv()) {
             this.c($$10, $$9);
             break label104;
          }
@@ -2443,9 +2443,9 @@ public abstract class bjg extends biq implements bio {
       this.dL().ad().c();
       this.dL().ad().a("freezing");
       if (!this.dL().B && !this.ev()) {
-         int $$11 = this.cj();
+         int $$11 = this.ci();
          if (this.aA && this.dz()) {
-            this.k(Math.min(this.cm(), $$11 + 1));
+            this.k(Math.min(this.cl(), $$11 + 1));
          } else {
             this.k(Math.max(0, $$11 - 2));
          }
@@ -2453,7 +2453,7 @@ public abstract class bjg extends biq implements bio {
 
       this.dW();
       this.dX();
-      if (!this.dL().B && this.ah % 40 == 0 && this.cl() && this.dz()) {
+      if (!this.dL().B && this.ah % 40 == 0 && this.ck() && this.dz()) {
          this.a(this.dM().t(), 1.0F);
       }
 
@@ -2461,12 +2461,12 @@ public abstract class bjg extends biq implements bio {
       this.dL().ad().a("push");
       if (this.by > 0) {
          this.by--;
-         this.a($$8, this.cH());
+         this.a($$8, this.cG());
       }
 
       this.fh();
       this.dL().ad().c();
-      if (!this.dL().B && this.ff() && this.ba()) {
+      if (!this.dL().B && this.ff() && this.aZ()) {
          this.a(this.dM().h(), 1.0F);
       }
    }
@@ -2477,7 +2477,7 @@ public abstract class bjg extends biq implements bio {
 
    private void F() {
       boolean $$0 = this.i(7);
-      if ($$0 && !this.aB() && !this.bO() && !this.a(bif.y)) {
+      if ($$0 && !this.aA() && !this.bN() && !this.a(bif.y)) {
          cjf $$1 = this.c(biv.e);
          if ($$1.a(cji.nh) && chz.d($$1)) {
             $$0 = true;
@@ -2507,16 +2507,16 @@ public abstract class bjg extends biq implements bio {
 
    protected void fh() {
       if (this.dL().w_()) {
-         this.dL().a(djh.a(cbu.class), this.cH(), bit.a(this)).forEach(this::D);
+         this.dL().a(djh.a(cbu.class), this.cG(), bit.a(this)).forEach(this::D);
       } else {
-         List<biq> $$0 = this.dL().a(this, this.cH(), bit.a(this));
+         List<biq> $$0 = this.dL().a(this, this.cG(), bit.a(this));
          if (!$$0.isEmpty()) {
             int $$1 = this.dL().X().c(cpr.t);
             if ($$1 > 0 && $$0.size() > $$1 - 1 && this.ag.a(4) == 0) {
                int $$2 = 0;
 
                for (biq $$3 : $$0) {
-                  if (!$$3.bO()) {
+                  if (!$$3.bN()) {
                      $$2++;
                   }
                }
@@ -2566,17 +2566,17 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public void ab() {
-      biq $$0 = this.cZ();
-      super.ab();
-      if ($$0 != null && $$0 != this.cZ() && !this.dL().B) {
+   public void aa() {
+      biq $$0 = this.cY();
+      super.aa();
+      if ($$0 != null && $$0 != this.cY() && !this.dL().B) {
          this.a($$0);
       }
    }
 
    @Override
-   public void bz() {
-      super.bz();
+   public void by() {
+      super.by();
       this.bc = this.bd;
       this.bd = 0.0F;
       this.n();
@@ -2594,27 +2594,27 @@ public abstract class bjg extends biq implements bio {
 
    @Override
    public double n_() {
-      return this.bo;
+      return this.bn > 0 ? this.bo : this.dq();
    }
 
    @Override
    public double K_() {
-      return this.bp;
+      return this.bn > 0 ? this.bp : this.ds();
    }
 
    @Override
    public double L_() {
-      return this.bq;
+      return this.bn > 0 ? this.bq : this.dw();
    }
 
    @Override
    public float d_() {
-      return (float)this.bs;
+      return this.bn > 0 ? (float)this.bs : this.dD();
    }
 
    @Override
    public float o_() {
-      return (float)this.br;
+      return this.bn > 0 ? (float)this.br : this.dB();
    }
 
    @Override
@@ -2636,7 +2636,7 @@ public abstract class bjg extends biq implements bio {
 
    public void a(biq $$0, int $$1) {
       if (!$$0.dG() && !this.dL().B && ($$0 instanceof byn || $$0 instanceof cca || $$0 instanceof biw)) {
-         ((akr)this.dL()).k().b($$0, new aau($$0.ai(), this.ai(), $$1));
+         ((akr)this.dL()).k().b($$0, new aau($$0.ah(), this.ah(), $$1));
       }
    }
 
@@ -2665,17 +2665,17 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return !this.dG();
    }
 
    @Override
-   public boolean bt() {
-      return this.bw() && !this.M_() && !this.c_();
+   public boolean bs() {
+      return this.bv() && !this.M_() && !this.c_();
    }
 
    @Override
-   public float cp() {
+   public float co() {
       return this.aW;
    }
 
@@ -2762,7 +2762,7 @@ public abstract class bjg extends biq implements bio {
 
    private void K() {
       this.ch = this.cg;
-      if (this.ca()) {
+      if (this.bZ()) {
          this.cg = Math.min(1.0F, this.cg + 0.09F);
       } else {
          this.cg = Math.max(0.0F, this.cg - 0.09F);
@@ -2913,7 +2913,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    public boolean fu() {
-      return this.bS();
+      return this.bR();
    }
 
    public boolean fv() {
@@ -2921,8 +2921,8 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public boolean ca() {
-      return super.ca() || !this.fv() && this.c(bjs.b);
+   public boolean bZ() {
+      return super.bZ() || !this.fv() && this.c(bjs.b);
    }
 
    public int fw() {
@@ -2953,7 +2953,7 @@ public abstract class bjg extends biq implements bio {
 
          if ($$11) {
             this.b($$0, $$7, $$2);
-            if ($$10.g(this) && !$$10.d(this.cH())) {
+            if ($$10.g(this) && !$$10.d(this.cG())) {
                $$8 = true;
             }
          }
@@ -3010,8 +3010,8 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public boolean ct() {
-      return super.ct() && !this.fC();
+   public boolean cs() {
+      return super.cs() && !this.fC();
    }
 
    public Optional<gw> fA() {
@@ -3031,8 +3031,8 @@ public abstract class bjg extends biq implements bio {
    }
 
    public void b(gw $$0) {
-      if (this.bO()) {
-         this.ab();
+      if (this.bN()) {
+         this.aa();
       }
 
       dfj $$1 = this.dL().a_($$0);
@@ -3061,7 +3061,7 @@ public abstract class bjg extends biq implements bio {
          if ($$1.b() instanceof cso) {
             hc $$2 = $$1.c(cso.aC);
             this.dL().a($$0x, $$1.a(cso.b, Boolean.valueOf(false)), 3);
-            ehn $$3 = cso.a(this.ah(), this.dL(), $$0x, $$2, this.dB()).orElseGet(() -> {
+            ehn $$3 = cso.a(this.ag(), this.dL(), $$0x, $$2, this.dB()).orElseGet(() -> {
                gw $$1x = $$0x.c();
                return new ehn((double)$$1x.u() + 0.5, (double)$$1x.v() + 0.1, (double)$$1x.w() + 0.5);
             });
@@ -3085,8 +3085,8 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public boolean bx() {
-      return !this.fC() && super.bx();
+   public boolean bw() {
+      return !this.fC() && super.bw();
    }
 
    @Override
@@ -3158,7 +3158,7 @@ public abstract class bjg extends biq implements bio {
    public ehi g_() {
       if (this.c(biv.f).a(cji.tw)) {
          float $$0 = 0.5F;
-         return this.cH().c(0.5, 0.5, 0.5);
+         return this.cG().c(0.5, 0.5, 0.5);
       } else {
          return super.g_();
       }
@@ -3207,8 +3207,8 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public boolean cd() {
-      return !this.dL().w_() && this.a(bif.x) || super.cd();
+   public boolean cc() {
+      return !this.dL().w_() && this.a(bif.x) || super.cc();
    }
 
    @Override
@@ -3217,7 +3217,7 @@ public abstract class bjg extends biq implements bio {
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       double $$1 = $$0.f();
       double $$2 = $$0.g();
       double $$3 = $$0.h();
@@ -3241,12 +3241,12 @@ public abstract class bjg extends biq implements bio {
    @Override
    public float dF() {
       float $$0 = super.dF();
-      return this.cO() instanceof cbu ? Math.max($$0, 1.0F) : $$0;
+      return this.cN() instanceof cbu ? Math.max($$0, 1.0F) : $$0;
    }
 
    @Override
    public ehn m(biq $$0) {
-      return new ehn(this.a($$0, this.a(this.ao()), this.dY()).rotateY(-this.aU * (float) (Math.PI / 180.0))).e(this.dj());
+      return new ehn(this.a($$0, this.a(this.an()), this.dY()).rotateY(-this.aU * (float) (Math.PI / 180.0))).e(this.dj());
    }
 
    @Override

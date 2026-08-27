@@ -88,7 +88,7 @@ public class ffo<T extends bwq> extends feb<T> {
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       boolean $$6 = $$0.i();
-      boolean $$7 = $$0.bP();
+      boolean $$7 = $$0.bO();
 
       for (fic $$8 : this.G) {
          $$8.k = $$6;
@@ -141,7 +141,7 @@ public class ffo<T extends bwq> extends feb<T> {
       this.b.e = 0.0F;
       this.f.e = (float) (Math.PI / 6) + $$8;
       this.f.f = $$7 * (float) (Math.PI / 180.0);
-      float $$15 = $$0.aY() ? 0.2F : 1.0F;
+      float $$15 = $$0.aX() ? 0.2F : 1.0F;
       float $$16 = arx.b($$15 * $$1 * 0.6662F + (float) Math.PI);
       float $$17 = $$16 * 0.8F * $$2;
       float $$18 = (1.0F - Math.max($$10, $$9)) * ((float) (Math.PI / 6) + $$8 + $$12 * arx.a($$14) * 0.05F);

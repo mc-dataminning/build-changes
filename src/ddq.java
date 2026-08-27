@@ -4,8 +4,8 @@ public class ddq extends dck {
    }
 
    @Override
-   protected tl g() {
-      return tl.c("container.furnace");
+   protected tm g() {
+      return tm.c("container.furnace");
    }
 
    @Override

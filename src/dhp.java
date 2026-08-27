@@ -165,18 +165,18 @@ public class dhp extends dia {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
    }
 
    @Nullable
    @Override
-   public qx f(gw $$0) {
+   public qy f(gw $$0) {
       return this.n.f($$0);
    }
 
    @Nullable
    @Override
-   public qx g(gw $$0) {
+   public qy g(gw $$0) {
       return this.n.g($$0);
    }
 

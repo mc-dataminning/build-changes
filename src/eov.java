@@ -10,11 +10,11 @@ import org.slf4j.Logger;
 
 public class eov extends gfb {
    private static final Logger b = LogUtils.getLogger();
-   public static final tl a = tl.c("mco.upload.select.world.title");
-   private static final tl c = tl.c("selectWorld.unable_to_load");
-   static final tl y = tl.c("selectWorld.world");
-   static final tl z = tl.c("mco.upload.hardcore").a($$0 -> $$0.a(-65536));
-   static final tl A = tl.c("selectWorld.cheats");
+   public static final tm a = tm.c("mco.upload.select.world.title");
+   private static final tm c = tm.c("selectWorld.unable_to_load");
+   static final tm y = tm.c("selectWorld.world");
+   static final tm z = tm.c("mco.upload.hardcore").a($$0 -> $$0.a(-65536));
+   static final tm A = tm.c("selectWorld.cheats");
    private static final DateFormat B = new SimpleDateFormat();
    private final eou C;
    private final long D;
@@ -31,7 +31,7 @@ public class eov extends gfb {
       this.E = $$1;
    }
 
-   private void C() throws Exception {
+   private void D() throws Exception {
       ecg.a $$0 = this.f.l().b();
       this.G = this.f.l().a($$0).join().stream().filter($$0x -> !$$0x.d() && !$$0x.p()).collect(Collectors.toList());
 
@@ -45,29 +45,29 @@ public class eov extends gfb {
       this.I = new eov.b();
 
       try {
-         this.C();
+         this.D();
       } catch (Exception var2) {
          b.error("Couldn't load level list", var2);
-         this.f.a(new eoj(c, tl.a(var2.getMessage()), this.C));
+         this.f.a(new eoj(c, tm.a(var2.getMessage()), this.C));
          return;
       }
 
       this.e(this.I);
-      this.F = this.d(esq.a(tl.c("mco.upload.button.name"), $$0 -> this.D()).a(this.g / 2 - 154, this.h - 32, 153, 20).a());
+      this.F = this.d(esq.a(tm.c("mco.upload.button.name"), $$0 -> this.E()).a(this.g / 2 - 154, this.h - 32, 153, 20).a());
       this.F.i = this.H >= 0 && this.H < this.G.size();
-      this.d(esq.a(tk.k, $$0 -> this.f.a(this.C)).a(this.g / 2 + 6, this.h - 32, 153, 20).a());
-      this.a(new gez(tl.c("mco.upload.select.world.subtitle"), this.g / 2, h(-1), -6250336));
+      this.d(esq.a(tl.k, $$0 -> this.f.a(this.C)).a(this.g / 2 + 6, this.h - 32, 153, 20).a());
+      this.a(new gez(tm.c("mco.upload.select.world.subtitle"), this.g / 2, h(-1), -6250336));
       if (this.G.isEmpty()) {
-         this.a(new gez(tl.c("mco.upload.select.world.none"), this.g / 2, this.h / 2 - 20, -1));
+         this.a(new gez(tm.c("mco.upload.select.world.none"), this.g / 2, this.h / 2 - 20, -1));
       }
    }
 
    @Override
-   public tl g() {
-      return tk.a(this.m(), this.l());
+   public tm g() {
+      return tl.a(this.m(), this.l());
    }
 
-   private void D() {
+   private void E() {
       if (this.H != -1 && !this.G.get(this.H).i()) {
          ech $$0 = this.G.get(this.H);
          this.f.a(new epb(this.D, this.E, this.C, $$0));
@@ -91,7 +91,7 @@ public class eov extends gfb {
       }
    }
 
-   static tl a(ech $$0) {
+   static tm a(ech $$0) {
       return $$0.h().d();
    }
 
@@ -102,14 +102,14 @@ public class eov extends gfb {
    class a extends etm.a<eov.a> {
       private final ech b;
       private final String c;
-      private final tl d;
-      private final tl e;
+      private final tm d;
+      private final tm e;
 
       public a(ech $$0) {
          this.b = $$0;
          this.c = $$0.b();
-         this.d = tl.a("mco.upload.entry.id", $$0.a(), eov.b($$0));
-         tl $$1;
+         this.d = tm.a("mco.upload.entry.id", $$0.a(), eov.b($$0));
+         tm $$1;
          if ($$0.i()) {
             $$1 = eov.z;
          } else {
@@ -117,7 +117,7 @@ public class eov extends gfb {
          }
 
          if ($$0.j()) {
-            $$1 = tl.a("mco.upload.entry.cheats", $$1.getString(), eov.A);
+            $$1 = tm.a("mco.upload.entry.cheats", $$1.getString(), eov.A);
          }
 
          this.e = $$1;
@@ -148,9 +148,9 @@ public class eov extends gfb {
       }
 
       @Override
-      public tl a() {
-         tl $$0 = tk.b(tl.b(this.b.b()), tl.b(eov.b(this.b)), eov.a(this.b));
-         return tl.a("narrator.select", $$0);
+      public tm a() {
+         tm $$0 = tl.b(tm.b(this.b.b()), tm.b(eov.b(this.b)), eov.a(this.b));
+         return tm.a("narrator.select", $$0);
       }
    }
 

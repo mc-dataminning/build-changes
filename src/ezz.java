@@ -7,7 +7,7 @@ public abstract class ezz<T extends cel> extends ezi<T> {
    private static final aex x = new aex("container/inventory/effect_background_large");
    private static final aex y = new aex("container/inventory/effect_background_small");
 
-   public ezz(T $$0, cbt $$1, tl $$2) {
+   public ezz(T $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
    }
 
@@ -18,7 +18,7 @@ public abstract class ezz<T extends cel> extends ezi<T> {
    }
 
    @Override
-   public boolean G() {
+   public boolean H() {
       int $$0 = this.t + this.c + 2;
       int $$1 = this.g - $$0;
       return $$1 >= 32;
@@ -53,7 +53,7 @@ public abstract class ezz<T extends cel> extends ezi<T> {
             }
 
             if ($$10 != null) {
-               List<tl> $$12 = List.of(this.a($$10), bie.a($$10, 1.0F));
+               List<tm> $$12 = List.of(this.a($$10), bie.a($$10, 1.0F));
                $$0.a(this.i, $$12, Optional.empty(), $$1, $$2);
             }
          }
@@ -90,18 +90,18 @@ public abstract class ezz<T extends cel> extends ezi<T> {
       int $$4 = this.u;
 
       for (bid $$5 : $$3) {
-         tl $$6 = this.a($$5);
+         tm $$6 = this.a($$5);
          $$0.b(this.i, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
-         tl $$7 = bie.a($$5, 1.0F);
+         tm $$7 = bie.a($$5, 1.0F);
          $$0.b(this.i, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
          $$4 += $$2;
       }
    }
 
-   private tl a(bid $$0) {
-      ty $$1 = $$0.c().e().e();
+   private tm a(bid $$0) {
+      tz $$1 = $$0.c().e().e();
       if ($$0.e() >= 1 && $$0.e() <= 9) {
-         $$1.b(tk.u).b(tl.c("enchantment.level." + ($$0.e() + 1)));
+         $$1.b(tl.u).b(tm.c("enchantment.level." + ($$0.e() + 1)));
       }
 
       return $$1;

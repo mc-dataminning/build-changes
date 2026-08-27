@@ -7,9 +7,9 @@ public class ccl extends ccm {
       this(biu.ak, $$0);
       this.b($$1);
       this.e(
-         $$1.dq() - (double)($$1.dg() + 1.0F) * 0.5 * (double)arx.a($$1.aU * (float) (Math.PI / 180.0)),
+         $$1.dq() - (double)($$1.df() + 1.0F) * 0.5 * (double)arx.a($$1.aU * (float) (Math.PI / 180.0)),
          $$1.du() - 0.1F,
-         $$1.dw() + (double)($$1.dg() + 1.0F) * 0.5 * (double)arx.b($$1.aU * (float) (Math.PI / 180.0))
+         $$1.dw() + (double)($$1.df() + 1.0F) * 0.5 * (double)arx.b($$1.aU * (float) (Math.PI / 180.0))
       );
    }
 
@@ -25,13 +25,13 @@ public class ccl extends ccm {
       this.H();
       float $$5 = 0.99F;
       float $$6 = 0.06F;
-      if (this.dL().a(this.cH()).noneMatch(dfi.a::i)) {
-         this.al();
-      } else if (this.bb()) {
-         this.al();
+      if (this.dL().a(this.cG()).noneMatch(dfi.a::i)) {
+         this.ak();
+      } else if (this.ba()) {
+         this.ak();
       } else {
          this.f($$0.a(0.99F));
-         if (!this.aU()) {
+         if (!this.aT()) {
             this.f(this.do().b(0.0, -0.06F, 0.0));
          }
 
@@ -51,7 +51,7 @@ public class ccl extends ccm {
    protected void a(ehj $$0) {
       super.a($$0);
       if (!this.dL().B) {
-         this.al();
+         this.ak();
       }
    }
 
@@ -60,7 +60,7 @@ public class ccl extends ccm {
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       double $$1 = $$0.i();
       double $$2 = $$0.j();

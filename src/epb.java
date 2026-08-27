@@ -25,7 +25,7 @@ public class epb extends gfb {
    private static final int z = 95;
    private static final int A = 1;
    private static final String[] B = new String[]{"", ".", ". .", ". . ."};
-   private static final tl C = tl.c("mco.upload.verifying");
+   private static final tm C = tm.c("mco.upload.verifying");
    private final eou D;
    private final ech E;
    private final long F;
@@ -33,8 +33,8 @@ public class epb extends gfb {
    private final emj H;
    private final RateLimiter I;
    @Nullable
-   private volatile tl[] J;
-   private volatile tl K = tl.c("mco.upload.preparing");
+   private volatile tm[] J;
+   private volatile tm K = tm.c("mco.upload.preparing");
    private volatile String L;
    private volatile boolean M;
    private volatile boolean N;
@@ -61,29 +61,29 @@ public class epb extends gfb {
 
    @Override
    public void aI_() {
-      this.Q = this.d(esq.a(tk.k, $$0 -> this.C()).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
+      this.Q = this.d(esq.a(tl.k, $$0 -> this.D()).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
       this.Q.j = false;
-      this.R = this.d(esq.a(tk.e, $$0 -> this.D()).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
+      this.R = this.d(esq.a(tl.e, $$0 -> this.E()).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
       if (!this.P) {
          if (this.D.b == -1) {
-            this.F();
+            this.G();
          } else {
             this.D.a(() -> {
                if (!this.P) {
                   this.P = true;
                   this.f.a(this);
-                  this.F();
+                  this.G();
                }
             });
          }
       }
    }
 
-   private void C() {
+   private void D() {
       this.f.a(this.D);
    }
 
-   private void D() {
+   private void E() {
       this.M = true;
       this.f.a(this.D);
    }
@@ -92,9 +92,9 @@ public class epb extends gfb {
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
          if (this.O) {
-            this.D();
+            this.E();
          } else {
-            this.C();
+            this.D();
          }
 
          return true;
@@ -140,7 +140,7 @@ public class epb extends gfb {
       int $$3 = $$2 + (int)Math.round(200.0 * $$1);
       $$0.a($$2 - 1, 79, $$3 + 1, 96, -2501934);
       $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.i, tl.a("mco.upload.percent", this.L), this.g / 2, 84, 16777215);
+      $$0.a(this.i, tm.a("mco.upload.percent", this.L), this.g / 2, 84, 16777215);
    }
 
    private void e(esf $$0) {
@@ -175,26 +175,26 @@ public class epb extends gfb {
       super.c();
       this.S++;
       if (this.K != null && this.I.tryAcquire(1)) {
-         tl $$0 = this.E();
+         tm $$0 = this.F();
          this.f.aV().c($$0);
       }
    }
 
-   private tl E() {
-      List<tl> $$0 = Lists.newArrayList();
+   private tm F() {
+      List<tm> $$0 = Lists.newArrayList();
       $$0.add(this.K);
       if (this.L != null) {
-         $$0.add(tl.a("mco.upload.percent", this.L));
+         $$0.add(tm.a("mco.upload.percent", this.L));
       }
 
       if (this.J != null) {
          $$0.addAll(Arrays.asList(this.J));
       }
 
-      return tk.a($$0);
+      return tl.a($$0);
    }
 
-   private void F() {
+   private void G() {
       this.P = true;
       new Thread(
             () -> {
@@ -204,14 +204,14 @@ public class epb extends gfb {
 
                try {
                   if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                     this.K = tl.c("mco.upload.close.failure");
+                     this.K = tm.c("mco.upload.close.failure");
                   } else {
                      enk $$3 = null;
 
                      for (int $$4 = 0; $$4 < 20; $$4++) {
                         try {
                            if (this.M) {
-                              this.G();
+                              this.H();
                               return;
                            }
 
@@ -225,38 +225,38 @@ public class epb extends gfb {
                      }
 
                      if ($$3 == null) {
-                        this.K = tl.c("mco.upload.close.failure");
+                        this.K = tm.c("mco.upload.close.failure");
                      } else {
                         epo.a($$2, $$3.a());
                         if (!$$3.c()) {
-                           this.K = tl.c("mco.upload.close.failure");
+                           this.K = tm.c("mco.upload.close.failure");
                         } else if (this.M) {
-                           this.G();
+                           this.H();
                         } else {
                            File $$6 = new File(this.f.p.getAbsolutePath(), "saves");
                            $$0 = this.b(new File($$6, this.E.a()));
                            if (this.M) {
-                              this.G();
+                              this.H();
                            } else if (this.a($$0)) {
-                              this.K = tl.a("mco.upload.uploading", this.E.b());
+                              this.K = tm.a("mco.upload.uploading", this.E.b());
                               emd $$11 = new emd($$0, this.F, this.G, $$3, this.f.V(), aa.b().c(), this.H);
                               $$11.a($$1x -> {
                                  if ($$1x.a >= 200 && $$1x.a < 300) {
                                     this.N = true;
-                                    this.K = tl.c("mco.upload.done");
-                                    this.Q.b(tk.d);
+                                    this.K = tm.c("mco.upload.done");
+                                    this.Q.b(tl.d);
                                     epo.b($$2);
                                  } else if ($$1x.a == 400 && $$1x.b != null) {
-                                    this.a(tl.a("mco.upload.failed", $$1x.b));
+                                    this.a(tm.a("mco.upload.failed", $$1x.b));
                                  } else {
-                                    this.a(tl.a("mco.upload.failed", $$1x.a));
+                                    this.a(tm.a("mco.upload.failed", $$1x.a));
                                  }
                               });
 
                               while (!$$11.b()) {
                                  if (this.M) {
                                     $$11.a();
-                                    this.G();
+                                    this.H();
                                     return;
                                  }
 
@@ -273,13 +273,13 @@ public class epb extends gfb {
                               if (emb.b($$7, $$8).equals(emb.b(5368709120L, $$9)) && $$8 != emb.a) {
                                  emb $$10 = emb.values()[$$8.ordinal() - 1];
                                  this.a(
-                                    tl.a("mco.upload.size.failure.line1", this.E.b()),
-                                    tl.a("mco.upload.size.failure.line2", emb.b($$7, $$10), emb.b(5368709120L, $$10))
+                                    tm.a("mco.upload.size.failure.line1", this.E.b()),
+                                    tm.a("mco.upload.size.failure.line2", emb.b($$7, $$10), emb.b(5368709120L, $$10))
                                  );
                               } else {
                                  this.a(
-                                    tl.a("mco.upload.size.failure.line1", this.E.b()),
-                                    tl.a("mco.upload.size.failure.line2", emb.b($$7, $$8), emb.b(5368709120L, $$9))
+                                    tm.a("mco.upload.size.failure.line1", this.E.b()),
+                                    tm.a("mco.upload.size.failure.line2", emb.b($$7, $$8), emb.b(5368709120L, $$9))
                                  );
                               }
                            }
@@ -287,9 +287,9 @@ public class epb extends gfb {
                      }
                   }
                } catch (IOException var21) {
-                  this.a(tl.a("mco.upload.failed", var21.getMessage()));
+                  this.a(tm.a("mco.upload.failed", var21.getMessage()));
                } catch (ens var22) {
-                  this.a(tl.a("mco.upload.failed", var22.a.b()));
+                  this.a(tm.a("mco.upload.failed", var22.a.b()));
                } catch (InterruptedException var23) {
                   a.error("Could not acquire upload lock");
                } finally {
@@ -312,12 +312,12 @@ public class epb extends gfb {
          .start();
    }
 
-   private void a(tl... $$0) {
+   private void a(tm... $$0) {
       this.J = $$0;
    }
 
-   private void G() {
-      this.K = tl.c("mco.upload.cancelled");
+   private void H() {
+      this.K = tm.c("mco.upload.cancelled");
       a.debug("Upload was cancelled");
    }
 

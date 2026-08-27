@@ -63,7 +63,7 @@ public class fit extends dhj {
       return this.e;
    }
 
-   public void a(int $$0, int $$1, so $$2) {
+   public void a(int $$0, int $$1, sp $$2) {
       if (!this.d.b($$0, $$1)) {
          a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
       } else {
@@ -78,7 +78,7 @@ public class fit extends dhj {
    }
 
    @Nullable
-   public dhq a(int $$0, int $$1, so $$2, qx $$3, Consumer<yg.b> $$4) {
+   public dhq a(int $$0, int $$1, sp $$2, qy $$3, Consumer<yg.b> $$4) {
       if (!this.d.b($$0, $$1)) {
          a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
          return null;

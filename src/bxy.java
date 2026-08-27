@@ -22,7 +22,7 @@ public class bxy {
 
          this.d = this.b((bxx<bxr>)$$0);
          if (!this.b.dL().B) {
-            this.b.am().b(bxh.b, $$0.b());
+            this.b.al().b(bxh.b, $$0.b());
          }
 
          a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dL().B ? "client" : "server");

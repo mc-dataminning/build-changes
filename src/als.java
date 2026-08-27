@@ -18,14 +18,14 @@ import net.minecraft.server.MinecraftServer;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
-public class als implements adl, ta {
+public class als implements adl, tb {
    private static final AtomicInteger a = new AtomicInteger(0);
    static final Logger b = LogUtils.getLogger();
    private static final int c = 600;
-   private static final tl d = tl.c("multiplayer.disconnect.unexpected_query_response");
+   private static final tm d = tm.c("multiplayer.disconnect.unexpected_query_response");
    private final byte[] e;
    final MinecraftServer f;
-   final sm g;
+   final sn g;
    private volatile als.a h = als.a.a;
    private int i;
    @Nullable
@@ -34,7 +34,7 @@ public class als implements adl, ta {
    private GameProfile k;
    private final String l = "";
 
-   public als(MinecraftServer $$0, sm $$1) {
+   public als(MinecraftServer $$0, sn $$1) {
       this.f = $$0;
       this.g = $$1;
       this.e = Ints.toByteArray(asc.a().f());
@@ -51,7 +51,7 @@ public class als implements adl, ta {
       }
 
       if (this.i++ == 600) {
-         this.b(tl.c("multiplayer.disconnect.slow_login"));
+         this.b(tm.c("multiplayer.disconnect.slow_login"));
       }
    }
 
@@ -60,7 +60,7 @@ public class als implements adl, ta {
       return this.g.k();
    }
 
-   public void b(tl $$0) {
+   public void b(tm $$0) {
       try {
          b.info("Disconnecting {}: {}", this.f(), $$0.getString());
          this.g.a(new adk($$0));
@@ -75,7 +75,7 @@ public class als implements adl, ta {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       b.info("{} lost connection: {}", this.f(), $$0.getString());
    }
 
@@ -109,12 +109,12 @@ public class als implements adl, ta {
 
    private void c(GameProfile $$0) {
       aoh $$1 = this.f.ac();
-      tl $$2 = $$1.a(this.g.f(), $$0);
+      tm $$2 = $$1.a(this.g.f(), $$0);
       if ($$2 != null) {
          this.b($$2);
       } else {
          if (this.f.av() >= 0 && !this.g.g()) {
-            this.g.a(new adj(this.f.av()), sv.a(() -> this.g.a(this.f.av(), true)));
+            this.g.a(new adj(this.f.av()), sw.a(() -> this.g.a(this.f.av(), true)));
          }
 
          boolean $$3 = $$1.e($$0);
@@ -171,7 +171,7 @@ public class als implements adl, ta {
                   als.b.warn("Failed to verify username but will let them in anyway!");
                   als.this.b(als.b($$0));
                } else {
-                  als.this.b(tl.c("multiplayer.disconnect.unverified_username"));
+                  als.this.b(tm.c("multiplayer.disconnect.unverified_username"));
                   als.b.error("Username '{}' tried to join with an invalid session", $$0);
                }
             } catch (AuthenticationUnavailableException var4) {
@@ -179,7 +179,7 @@ public class als implements adl, ta {
                   als.b.warn("Authentication servers are down but will let them in anyway!");
                   als.this.b(als.b($$0));
                } else {
-                  als.this.b(tl.c("multiplayer.disconnect.authservers_down"));
+                  als.this.b(tm.c("multiplayer.disconnect.authservers_down"));
                   als.b.error("Couldn't verify username because servers are unavailable");
                }
             }

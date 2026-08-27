@@ -54,7 +54,7 @@ public class fsn extends ftg<cdn> {
       $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
       elt $$12 = $$4.getBuffer($$11.a($$10));
       $$11.a($$3, $$12, $$5, fyv.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      if (!$$0.bd()) {
+      if (!$$0.bc()) {
          elt $$13 = $$4.getBuffer(fom.j());
          if ($$11 instanceof fhq $$14) {
             $$14.c().a($$3, $$13, $$5, fyv.d);

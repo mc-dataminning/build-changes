@@ -5,7 +5,7 @@ public abstract class ezj<T extends cem> extends ezi<T> implements fcc {
    private final aex A;
    private final aex B;
 
-   public ezj(T $$0, fbs $$1, cbt $$2, tl $$3, aex $$4, aex $$5, aex $$6) {
+   public ezj(T $$0, fbs $$1, cbt $$2, tm $$3, aex $$4, aex $$5, aex $$6) {
       super($$0, $$2, $$3);
       this.x = $$1;
       this.z = $$4;
@@ -28,8 +28,8 @@ public abstract class ezj<T extends cem> extends ezi<T> implements fcc {
    }
 
    @Override
-   public void C() {
-      super.C();
+   public void D() {
+      super.D();
       this.x.h();
    }
 
@@ -96,12 +96,12 @@ public abstract class ezj<T extends cem> extends ezi<T> implements fcc {
    }
 
    @Override
-   public void E() {
+   public void F() {
       this.x.i();
    }
 
    @Override
-   public fbw F() {
+   public fbw G() {
       return this.x;
    }
 }

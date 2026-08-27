@@ -2,7 +2,7 @@ public class eyc extends eyk {
    protected final eyk a;
    protected final eqz b;
 
-   public eyc(eyk $$0, eqz $$1, tl $$2) {
+   public eyc(eyk $$0, eqz $$1, tm $$2) {
       super($$2);
       this.a = $$0;
       this.b = $$1;

@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class aik {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.setblock.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.setblock.failed"));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
@@ -47,7 +47,7 @@ public class aik {
             throw a.create();
          } else {
             $$5.b($$1, $$2.a().b());
-            $$0.a(() -> tl.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
+            $$0.a(() -> tm.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
             return 1;
          }
       }

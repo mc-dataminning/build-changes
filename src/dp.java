@@ -7,9 +7,12 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.Set;
 import javax.annotation.Nullable;
@@ -31,7 +34,7 @@ public class dp {
       return this.a;
    }
 
-   public dp a(@Nullable qx $$0, CommandDispatcher<dt> $$1, dt $$2) throws dv {
+   public dp a(@Nullable qy $$0, CommandDispatcher<dt> $$1, dt $$2) throws dv {
       return this;
    }
 
@@ -220,41 +223,42 @@ public class dp {
    }
 
    static class c extends dp {
-      private final List<String> a;
-      private static final int b = 8;
-      private final Object2ObjectLinkedOpenHashMap<List<String>, dp> c = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
+      private static final DecimalFormat a = new DecimalFormat("#");
+      private final List<String> b;
+      private static final int c = 8;
+      private final Object2ObjectLinkedOpenHashMap<List<String>, dp> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
 
       public c(aex $$0, dp.d[] $$1, List<String> $$2) {
          super($$0, $$1);
-         this.a = $$2;
+         this.b = $$2;
       }
 
       @Override
-      public dp a(@Nullable qx $$0, CommandDispatcher<dt> $$1, dt $$2) throws dv {
+      public dp a(@Nullable qy $$0, CommandDispatcher<dt> $$1, dt $$2) throws dv {
          if ($$0 == null) {
-            throw new dv(tl.a("commands.function.error.missing_arguments", this.a()));
+            throw new dv(tm.a("commands.function.error.missing_arguments", this.a()));
          } else {
-            List<String> $$3 = new ArrayList<>(this.a.size());
+            List<String> $$3 = new ArrayList<>(this.b.size());
 
-            for (String $$4 : this.a) {
+            for (String $$4 : this.b) {
                if (!$$0.e($$4)) {
-                  throw new dv(tl.a("commands.function.error.missing_argument", this.a(), $$4));
+                  throw new dv(tm.a("commands.function.error.missing_argument", this.a(), $$4));
                }
 
                $$3.add(a($$0.c($$4)));
             }
 
-            dp $$5 = (dp)this.c.getAndMoveToLast($$3);
+            dp $$5 = (dp)this.d.getAndMoveToLast($$3);
             if ($$5 != null) {
                return $$5;
             } else {
-               if (this.c.size() >= 8) {
-                  this.c.removeFirst();
+               if (this.d.size() >= 8) {
+                  this.d.removeFirst();
                }
 
                dp $$6 = this.a($$3, $$1, $$2);
                if ($$6 != null) {
-                  this.c.put($$3, $$6);
+                  this.d.put($$3, $$6);
                }
 
                return $$6;
@@ -262,17 +266,17 @@ public class dp {
          }
       }
 
-      private static String a(rq $$0) {
-         if ($$0 instanceof ra $$1) {
-            return String.valueOf($$1.k());
-         } else if ($$0 instanceof qy $$2) {
-            return String.valueOf($$2.j());
-         } else if ($$0 instanceof qv $$3) {
+      private static String a(rr $$0) {
+         if ($$0 instanceof rb $$1) {
+            return a.format((double)$$1.k());
+         } else if ($$0 instanceof qz $$2) {
+            return a.format($$2.j());
+         } else if ($$0 instanceof qw $$3) {
             return String.valueOf($$3.i());
-         } else if ($$0 instanceof rl $$4) {
+         } else if ($$0 instanceof rm $$4) {
             return String.valueOf($$4.h());
          } else {
-            return $$0 instanceof rf $$5 ? String.valueOf($$5.f()) : $$0.r_();
+            return $$0 instanceof rg $$5 ? String.valueOf($$5.f()) : $$0.r_();
          }
       }
 
@@ -289,7 +293,7 @@ public class dp {
                List<String> $$9 = new ArrayList<>($$8.size());
 
                for (String $$10 : $$8) {
-                  $$9.add($$0.get(this.a.indexOf($$10)));
+                  $$9.add($$0.get(this.b.indexOf($$10)));
                }
 
                String $$11 = $$7.a($$9);
@@ -302,13 +306,18 @@ public class dp {
 
                   $$4[$$5] = new dp.b($$12);
                } catch (CommandSyntaxException var13) {
-                  throw new dv(tl.a("commands.function.error.parse", this.a(), $$11, var13.getMessage()));
+                  throw new dv(tm.a("commands.function.error.parse", this.a(), $$11, var13.getMessage()));
                }
             }
          }
 
          aex $$14 = this.a();
          return new dp(new aex($$14.b(), $$14.a() + "/" + $$0.hashCode()), $$4);
+      }
+
+      static {
+         a.setMaximumFractionDigits(15);
+         a.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.US));
       }
    }
 

@@ -6,15 +6,15 @@ import javax.annotation.Nullable;
 public class exj extends eyk {
    private static final aex a = new aex("icon/draft_report");
    private int b;
-   private final tl c;
+   private final tm c;
    private final boolean k;
-   private tl l;
+   private tm l;
    private final List<esq> m = Lists.newArrayList();
    @Nullable
    private esq n;
 
-   public exj(@Nullable tl $$0, boolean $$1) {
-      super(tl.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+   public exj(@Nullable tm $$0, boolean $$1) {
+      super(tm.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
       this.c = $$0;
       this.k = $$1;
    }
@@ -23,17 +23,17 @@ public class exj extends eyk {
    protected void aI_() {
       this.b = 0;
       this.m.clear();
-      tl $$0 = this.k ? tl.c("deathScreen.spectate") : tl.c("deathScreen.respawn");
+      tm $$0 = this.k ? tm.c("deathScreen.spectate") : tm.c("deathScreen.respawn");
       this.m.add(this.d(esq.a($$0, $$0x -> {
          this.f.s.fP();
          $$0x.i = false;
       }).a(this.g / 2 - 100, this.h / 4 + 72, 200, 20).a()));
       this.n = this.d(
-         esq.a(tl.c("deathScreen.titleScreen"), $$0x -> this.f.aX().a(this.f, this, this::l, true)).a(this.g / 2 - 100, this.h / 4 + 96, 200, 20).a()
+         esq.a(tm.c("deathScreen.titleScreen"), $$0x -> this.f.aX().a(this.f, this, this::l, true)).a(this.g / 2 - 100, this.h / 4 + 96, 200, 20).a()
       );
       this.m.add(this.n);
       this.c(false);
-      this.l = tl.a("deathScreen.score.value", tl.b(Integer.toString(this.f.s.fM())).a(n.o));
+      this.l = tm.a("deathScreen.score.value", tm.b(Integer.toString(this.f.s.fM())).a(n.o));
    }
 
    @Override
@@ -43,27 +43,27 @@ public class exj extends eyk {
 
    private void l() {
       if (this.k) {
-         this.C();
+         this.D();
       } else {
          exd $$0 = new exj.a($$0x -> {
             if ($$0x) {
-               this.C();
+               this.D();
             } else {
                this.f.s.fP();
                this.f.a(null);
             }
-         }, tl.c("deathScreen.quit.confirm"), tk.a, tl.c("deathScreen.titleScreen"), tl.c("deathScreen.respawn"));
+         }, tm.c("deathScreen.quit.confirm"), tl.a, tm.c("deathScreen.titleScreen"), tm.c("deathScreen.respawn"));
          this.f.a($$0);
          $$0.b(20);
       }
    }
 
-   private void C() {
+   private void D() {
       if (this.f.r != null) {
          this.f.r.U();
       }
 
-      this.f.b(new exq(tl.c("menu.savingLevel")));
+      this.f.b(new exq(tm.c("menu.savingLevel")));
       this.f.a(new eyp());
    }
 
@@ -80,7 +80,7 @@ public class exj extends eyk {
 
       $$0.a(this.i, this.l, this.g / 2, 100, 16777215);
       if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         uh $$4 = this.a($$1);
+         ui $$4 = this.a($$1);
          $$0.a(this.i, $$4, $$1, $$2);
       }
 
@@ -95,7 +95,7 @@ public class exj extends eyk {
    }
 
    @Nullable
-   private uh a(int $$0) {
+   private ui a(int $$0) {
       if (this.c == null) {
          return null;
       } else {
@@ -109,8 +109,8 @@ public class exj extends eyk {
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
       if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         uh $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == tj.a.a) {
+         ui $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.h() != null && $$3.h().a() == tk.a.a) {
             this.a($$3);
             return false;
          }
@@ -140,7 +140,7 @@ public class exj extends eyk {
    }
 
    public static class a extends exd {
-      public a(BooleanConsumer $$0, tl $$1, tl $$2, tl $$3, tl $$4) {
+      public a(BooleanConsumer $$0, tm $$1, tm $$2, tm $$3, tm $$4) {
          super($$0, $$1, $$2, $$3, $$4);
       }
    }

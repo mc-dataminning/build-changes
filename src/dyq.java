@@ -45,7 +45,7 @@ public class dyq {
    }
 
    @Nullable
-   public qx a(asc $$0, @Nullable qx $$1) {
+   public qy a(asc $$0, @Nullable qy $$1) {
       return this.g.a($$0, $$1);
    }
 }

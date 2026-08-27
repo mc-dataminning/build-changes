@@ -16,8 +16,8 @@ public class gem {
          this.a.a(this.c);
       }
 
-      tl $$0 = tl.c("tutorial.bundleInsert.title");
-      tl $$1 = tl.c("tutorial.bundleInsert.description");
+      tm $$0 = tm.c("tutorial.bundleInsert.title");
+      tm $$1 = tm.c("tutorial.bundleInsert.description");
       this.c = new euz(euz.a.g, $$0, $$1, true);
       this.a.a(this.c, 160);
    }

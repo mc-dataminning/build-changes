@@ -38,8 +38,8 @@ public class arp {
          InputStream $$7 = null;
          OutputStream $$8 = null;
          if ($$4 != null) {
-            $$4.b(tl.c("resourcepack.downloading"));
-            $$4.c(tl.c("resourcepack.requesting"));
+            $$4.b(tm.c("resourcepack.downloading"));
+            $$4.c(tm.c("resourcepack.requesting"));
          }
 
          try {
@@ -60,7 +60,7 @@ public class arp {
             $$11 = (float)$$6.getContentLength();
             int $$13 = $$6.getContentLength();
             if ($$4 != null) {
-               $$4.c(tl.a("resourcepack.progress", String.format(Locale.ROOT, "%.2f", $$11 / 1000.0F / 1000.0F)));
+               $$4.c(tm.a("resourcepack.progress", String.format(Locale.ROOT, "%.2f", $$11 / 1000.0F / 1000.0F)));
             }
 
             if ($$0.exists()) {

@@ -245,7 +245,7 @@ public class cmp implements clz {
          return z;
       }
 
-      public cmp b(so $$0) {
+      public cmp b(sp $$0) {
          int $$1 = $$0.m();
          int $$2 = $$0.m();
          String $$3 = $$0.r();
@@ -261,7 +261,7 @@ public class cmp implements clz {
          return new cmp($$3, $$4, $$1, $$2, $$5, $$7, $$8);
       }
 
-      public void a(so $$0, cmp $$1) {
+      public void a(sp $$0, cmp $$1) {
          $$0.c($$1.a);
          $$0.c($$1.b);
          $$0.a($$1.e);

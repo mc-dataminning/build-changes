@@ -34,7 +34,7 @@ public class ccr extends cca {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.e("Duration")) {
          this.f = $$0.h("Duration");
@@ -42,7 +42,7 @@ public class ccr extends cca {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("Duration", this.f);
    }

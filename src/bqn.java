@@ -97,7 +97,7 @@ public class bqn extends bqb {
 
    @Override
    public boolean b() {
-      return this.a.L().l() ? false : !this.d.a(this.a.dj(), (double)(this.a.dg() + (float)this.g));
+      return this.a.L().l() ? false : !this.d.a(this.a.dj(), (double)(this.a.df() + (float)this.g));
    }
 
    @Override

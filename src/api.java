@@ -44,7 +44,7 @@ public final class api {
       this.b.get($$0).b = $$1;
    }
 
-   public static api a(so $$0) {
+   public static api a(sp $$0) {
       Map<cfw, api.a> $$1 = Maps.newEnumMap(cfw.class);
 
       for (cfw $$2 : cfw.values()) {
@@ -56,7 +56,7 @@ public final class api {
       return new api($$1);
    }
 
-   public void b(so $$0) {
+   public void b(sp $$0) {
       for (cfw $$1 : cfw.values()) {
          api.a $$2 = this.b.get($$1);
          if ($$2 == null) {
@@ -69,7 +69,7 @@ public final class api {
       }
    }
 
-   public static api a(qx $$0) {
+   public static api a(qy $$0) {
       Map<cfw, api.a> $$1 = Maps.newEnumMap(cfw.class);
       a.forEach(($$2, $$3) -> {
          boolean $$4 = $$0.q((String)$$3.getFirst());
@@ -79,7 +79,7 @@ public final class api {
       return new api($$1);
    }
 
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       a.forEach(($$1, $$2) -> {
          api.a $$3 = this.b.get($$1);
          $$0.a((String)$$2.getFirst(), $$3.a);

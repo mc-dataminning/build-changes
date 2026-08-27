@@ -69,17 +69,17 @@ public abstract class fjv {
       public abstract Either<fjv.c, fjv.b> a(fjz var1);
    }
 
-   public static record b(tl e) {
-      public static final fjv.b a = new fjv.b(tl.c("gui.abuseReport.send.no_reason"));
-      public static final fjv.b b = new fjv.b(tl.c("gui.chatReport.send.no_reported_messages"));
-      public static final fjv.b c = new fjv.b(tl.c("gui.chatReport.send.too_many_messages"));
-      public static final fjv.b d = new fjv.b(tl.c("gui.abuseReport.send.comment_too_long"));
+   public static record b(tm e) {
+      public static final fjv.b a = new fjv.b(tm.c("gui.abuseReport.send.no_reason"));
+      public static final fjv.b b = new fjv.b(tm.c("gui.chatReport.send.no_reported_messages"));
+      public static final fjv.b c = new fjv.b(tm.c("gui.chatReport.send.too_many_messages"));
+      public static final fjv.b d = new fjv.b(tm.c("gui.abuseReport.send.comment_too_long"));
 
       public eua a() {
          return eua.a(this.e);
       }
 
-      public tl b() {
+      public tm b() {
          return this.e;
       }
    }

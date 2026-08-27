@@ -77,7 +77,7 @@ public class bvd extends bup implements bjn {
    }
 
    @Override
-   public boolean bk() {
+   public boolean bj() {
       return this.do().i() > 2.5000003E-7F && this.ag.a(5) == 0;
    }
 
@@ -91,14 +91,14 @@ public class bvd extends bup implements bjn {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("PlayerCreated", this.ge());
       this.c($$0);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.x($$0.q("PlayerCreated"));
       this.a(this.dL(), $$0);
@@ -275,8 +275,8 @@ public class bvd extends bup implements bjn {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.875F * this.cI()), (double)(this.dg() * 0.4F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.875F * this.cH()), (double)(this.df() * 0.4F));
    }
 
    public static enum a {

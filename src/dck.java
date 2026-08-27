@@ -169,7 +169,7 @@ public abstract class dck extends dcp implements bhh, cfx, cgg {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.m = hp.a(this.b(), cjf.b);
       bgs.b($$0, this.m);
@@ -177,7 +177,7 @@ public abstract class dck extends dcp implements bhh, cfx, cgg {
       this.w = $$0.g("CookTime");
       this.x = $$0.g("CookTimeTotal");
       this.v = this.a(this.m.get(1));
-      qx $$1 = $$0.p("RecipesUsed");
+      qy $$1 = $$0.p("RecipesUsed");
 
       for (String $$2 : $$1.e()) {
          this.y.put(new aex($$2), $$1.h($$2));
@@ -185,13 +185,13 @@ public abstract class dck extends dcp implements bhh, cfx, cgg {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("BurnTime", (short)this.u);
       $$0.a("CookTime", (short)this.w);
       $$0.a("CookTimeTotal", (short)this.x);
       bgs.a($$0, this.m);
-      qx $$1 = new qx();
+      qy $$1 = new qy();
       this.y.forEach(($$1x, $$2) -> $$1.a($$1x.toString(), $$2));
       $$0.a("RecipesUsed", $$1);
    }

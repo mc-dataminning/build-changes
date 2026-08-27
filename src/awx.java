@@ -18,11 +18,11 @@ public class awx extends DataFix {
          Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
          Optional<String> $$3 = $$2.get("Name").asString().result();
          if ($$3.isPresent()) {
-            $$2 = $$2.set("Name", $$2.createString(tl.a.a(tl.b($$3.get()))));
+            $$2 = $$2.set("Name", $$2.createString(tm.a.a(tm.b($$3.get()))));
          } else {
             Optional<String> $$4 = $$2.get("LocName").asString().result();
             if ($$4.isPresent()) {
-               $$2 = $$2.set("Name", $$2.createString(tl.a.a(tl.c($$4.get()))));
+               $$2 = $$2.set("Name", $$2.createString(tm.a.a(tm.c($$4.get()))));
                $$2 = $$2.remove("LocName");
             }
          }

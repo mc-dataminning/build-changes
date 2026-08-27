@@ -10,13 +10,13 @@ public enum cbv {
    private final int h;
    private final int i;
    private final String j;
-   private final tl k;
+   private final tm k;
 
    private cbv(int $$0, String $$1) {
       this.h = $$0;
       this.i = 1 << $$0;
       this.j = $$1;
-      this.k = tl.c("options.modelPart." + $$1);
+      this.k = tm.c("options.modelPart." + $$1);
    }
 
    public int a() {
@@ -31,7 +31,7 @@ public enum cbv {
       return this.j;
    }
 
-   public tl d() {
+   public tm d() {
       return this.k;
    }
 }

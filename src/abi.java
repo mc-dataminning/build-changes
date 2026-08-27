@@ -1,4 +1,4 @@
-public class abi implements vd<abd> {
+public class abi implements ve<abd> {
    private final bgv a;
 
    public abi(bgv $$0) {
@@ -9,12 +9,12 @@ public class abi implements vd<abd> {
       $$0.a(this);
    }
 
-   public abi(so $$0) {
+   public abi(sp $$0) {
       this.a = bgv.a($$0.readUnsignedByte());
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.a.a());
    }
 

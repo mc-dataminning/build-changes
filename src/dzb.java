@@ -107,7 +107,7 @@ public class dzb {
 
       for (biq $$4 : $$3) {
          ehn $$5 = new ehn($$4.dq() - (double)$$1.u(), $$4.ds() - (double)$$1.v(), $$4.dw() - (double)$$1.w());
-         qx $$6 = new qx();
+         qy $$6 = new qy();
          $$4.e($$6);
          gw $$7;
          if ($$4 instanceof byi) {
@@ -160,7 +160,7 @@ public class dzb {
             dva $$7 = $$3.g();
             List<gw> $$8 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
             List<gw> $$9 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
-            List<Pair<gw, qx>> $$10 = Lists.newArrayListWithCapacity($$6.size());
+            List<Pair<gw, qy>> $$10 = Lists.newArrayListWithCapacity($$6.size());
             int $$11 = Integer.MAX_VALUE;
             int $$12 = Integer.MAX_VALUE;
             int $$13 = Integer.MAX_VALUE;
@@ -250,7 +250,7 @@ public class dzb {
                   int $$36 = $$12;
                   int $$37 = $$13;
 
-                  for (Pair<gw, qx> $$38 : $$10) {
+                  for (Pair<gw, qy> $$38 : $$10) {
                      gw $$39 = (gw)$$38.getFirst();
                      $$34.c($$39.u() - $$35, $$39.v() - $$36, $$39.w() - $$37);
                   }
@@ -258,7 +258,7 @@ public class dzb {
                   a($$0, $$5, $$34, $$35, $$36, $$37);
                }
 
-               for (Pair<gw, qx> $$40 : $$10) {
+               for (Pair<gw, qy> $$40 : $$10) {
                   gw $$41 = (gw)$$40.getFirst();
                   if (!$$3.h()) {
                      dfj $$42 = $$0.a_($$41);
@@ -338,13 +338,13 @@ public class dzb {
       for (dzb.d $$7 : this.m) {
          gw $$8 = a($$7.b, $$2, $$3, $$4).a((ib)$$1);
          if ($$5 == null || $$5.b($$8)) {
-            qx $$9 = $$7.c.h();
+            qy $$9 = $$7.c.h();
             ehn $$10 = a($$7.a, $$2, $$3, $$4);
             ehn $$11 = $$10.b((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            rd $$12 = new rd();
-            $$12.add(qy.a($$11.c));
-            $$12.add(qy.a($$11.d));
-            $$12.add(qy.a($$11.e));
+            re $$12 = new re();
+            $$12.add(qz.a($$11.c));
+            $$12.add(qz.a($$11.d));
+            $$12.add(qz.a($$11.e));
             $$9.a("Pos", $$12);
             $$9.r("UUID");
             a($$0, $$9).ifPresent($$6x -> {
@@ -361,7 +361,7 @@ public class dzb {
       }
    }
 
-   private static Optional<biq> a(cqk $$0, qx $$1) {
+   private static Optional<biq> a(cqk $$0, qy $$1) {
       try {
          return biu.a($$1, $$0.C());
       } catch (Exception var3) {
@@ -482,10 +482,10 @@ public class dzb {
       return dva.a($$6, $$7).a((ib)$$0);
    }
 
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       if (this.l.isEmpty()) {
-         $$0.a("blocks", new rd());
-         $$0.a("palette", new rd());
+         $$0.a("blocks", new re());
+         $$0.a("palette", new re());
       } else {
          List<dzb.b> $$1 = Lists.newArrayList();
          dzb.b $$2 = new dzb.b();
@@ -495,12 +495,12 @@ public class dzb {
             $$1.add(new dzb.b());
          }
 
-         rd $$4 = new rd();
+         re $$4 = new re();
          List<dzb.c> $$5 = this.l.get(0).a();
 
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
             dzb.c $$7 = $$5.get($$6);
-            qx $$8 = new qx();
+            qy $$8 = new qy();
             $$8.a("pos", this.a($$7.a.u(), $$7.a.v(), $$7.a.w()));
             int $$9 = $$2.a($$7.b);
             $$8.a("state", $$9);
@@ -518,21 +518,21 @@ public class dzb {
 
          $$0.a("blocks", $$4);
          if ($$1.size() == 1) {
-            rd $$12 = new rd();
+            re $$12 = new re();
 
             for (dfj $$13 : $$2) {
-               $$12.add(rj.a($$13));
+               $$12.add(rk.a($$13));
             }
 
             $$0.a("palette", $$12);
          } else {
-            rd $$14 = new rd();
+            re $$14 = new re();
 
             for (dzb.b $$15 : $$1) {
-               rd $$16 = new rd();
+               re $$16 = new re();
 
                for (dfj $$17 : $$15) {
-                  $$16.add(rj.a($$17));
+                  $$16.add(rk.a($$17));
                }
 
                $$14.add($$16);
@@ -542,10 +542,10 @@ public class dzb {
          }
       }
 
-      rd $$18 = new rd();
+      re $$18 = new re();
 
       for (dzb.d $$19 : this.m) {
-         qx $$20 = new qx();
+         qy $$20 = new qy();
          $$20.a("pos", this.a($$19.a.c, $$19.a.d, $$19.a.e));
          $$20.a("blockPos", this.a($$19.b.u(), $$19.b.v(), $$19.b.w()));
          if ($$19.c != null) {
@@ -557,17 +557,17 @@ public class dzb {
 
       $$0.a("entities", $$18);
       $$0.a("size", this.a(this.n.u(), this.n.v(), this.n.w()));
-      return rj.g($$0);
+      return rk.g($$0);
    }
 
-   public void a(hh<csv> $$0, qx $$1) {
+   public void a(hh<csv> $$0, qy $$1) {
       this.l.clear();
       this.m.clear();
-      rd $$2 = $$1.c("size", 3);
+      re $$2 = $$1.c("size", 3);
       this.n = new ib($$2.e(0), $$2.e(1), $$2.e(2));
-      rd $$3 = $$1.c("blocks", 10);
+      re $$3 = $$1.c("blocks", 10);
       if ($$1.b("palettes", 9)) {
-         rd $$4 = $$1.c("palettes", 9);
+         re $$4 = $$1.c("palettes", 9);
 
          for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
             this.a($$0, $$4.b($$5), $$3);
@@ -576,26 +576,26 @@ public class dzb {
          this.a($$0, $$1.c("palette", 10), $$3);
       }
 
-      rd $$6 = $$1.c("entities", 10);
+      re $$6 = $$1.c("entities", 10);
 
       for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
-         qx $$8 = $$6.a($$7);
-         rd $$9 = $$8.c("pos", 6);
+         qy $$8 = $$6.a($$7);
+         re $$9 = $$8.c("pos", 6);
          ehn $$10 = new ehn($$9.h(0), $$9.h(1), $$9.h(2));
-         rd $$11 = $$8.c("blockPos", 3);
+         re $$11 = $$8.c("blockPos", 3);
          gw $$12 = new gw($$11.e(0), $$11.e(1), $$11.e(2));
          if ($$8.e("nbt")) {
-            qx $$13 = $$8.p("nbt");
+            qy $$13 = $$8.p("nbt");
             this.m.add(new dzb.d($$10, $$12, $$13));
          }
       }
    }
 
-   private void a(hh<csv> $$0, rd $$1, rd $$2) {
+   private void a(hh<csv> $$0, re $$1, re $$2) {
       dzb.b $$3 = new dzb.b();
 
       for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-         $$3.a(rj.a($$0, $$1.a($$4)), $$4);
+         $$3.a(rk.a($$0, $$1.a($$4)), $$4);
       }
 
       List<dzb.c> $$5 = Lists.newArrayList();
@@ -603,11 +603,11 @@ public class dzb {
       List<dzb.c> $$7 = Lists.newArrayList();
 
       for (int $$8 = 0; $$8 < $$2.size(); $$8++) {
-         qx $$9 = $$2.a($$8);
-         rd $$10 = $$9.c("pos", 3);
+         qy $$9 = $$2.a($$8);
+         re $$10 = $$9.c("pos", 3);
          gw $$11 = new gw($$10.e(0), $$10.e(1), $$10.e(2));
          dfj $$12 = $$3.a($$9.h("state"));
-         qx $$13;
+         qy $$13;
          if ($$9.e("nbt")) {
             $$13 = $$9.p("nbt");
          } else {
@@ -622,21 +622,21 @@ public class dzb {
       this.l.add(new dzb.a($$16));
    }
 
-   private rd a(int... $$0) {
-      rd $$1 = new rd();
+   private re a(int... $$0) {
+      re $$1 = new re();
 
       for (int $$2 : $$0) {
-         $$1.add(rc.a($$2));
+         $$1.add(rd.a($$2));
       }
 
       return $$1;
    }
 
-   private rd a(double... $$0) {
-      rd $$1 = new rd();
+   private re a(double... $$0) {
+      re $$1 = new re();
 
       for (double $$2 : $$0) {
-         $$1.add(qy.a($$2));
+         $$1.add(qz.a($$2));
       }
 
       return $$1;
@@ -690,7 +690,7 @@ public class dzb {
       }
    }
 
-   public static record c(gw a, dfj b, @Nullable qx c) {
+   public static record c(gw a, dfj b, @Nullable qy c) {
 
       @Override
       public String toString() {
@@ -701,9 +701,9 @@ public class dzb {
    public static class d {
       public final ehn a;
       public final gw b;
-      public final qx c;
+      public final qy c;
 
-      public d(ehn $$0, gw $$1, qx $$2) {
+      public d(ehn $$0, gw $$1, qy $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

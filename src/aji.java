@@ -20,14 +20,14 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 public class aji {
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("commands.data.merge.failed"));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tl.a("commands.data.get.invalid", $$0));
-   private static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tl.a("commands.data.get.unknown", $$0));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tl.c("commands.data.get.multiple"));
-   private static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> tl.a("commands.data.modify.expected_object", $$0));
-   private static final DynamicCommandExceptionType i = new DynamicCommandExceptionType($$0 -> tl.a("commands.data.modify.expected_value", $$0));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.c("commands.data.merge.failed"));
+   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tm.a("commands.data.get.invalid", $$0));
+   private static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tm.a("commands.data.get.unknown", $$0));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tm.c("commands.data.get.multiple"));
+   private static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> tm.a("commands.data.modify.expected_object", $$0));
+   private static final DynamicCommandExceptionType i = new DynamicCommandExceptionType($$0 -> tm.a("commands.data.modify.expected_value", $$0));
    private static final Dynamic2CommandExceptionType j = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> tl.a("commands.data.modify.invalid_substring", $$0, $$1)
+      ($$0, $$1) -> tm.a("commands.data.modify.invalid_substring", $$0, $$1)
    );
    public static final List<Function<String, aji.c>> a = ImmutableList.of(ajj.a, ajg.a, ajk.a);
    public static final List<aji.c> b = a.stream().map($$0 -> $$0.apply("target")).collect(ImmutableList.toImmutableList());
@@ -69,31 +69,31 @@ public class aji {
                         )
                         .then(du.a("prepend").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(0, $$1xx, $$3))))
                         .then(du.a("append").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(-1, $$1xx, $$3))))
-                        .then(du.a("set").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a($$1xx, (rq)Iterables.getLast($$3)))))
+                        .then(du.a("set").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a($$1xx, (rr)Iterables.getLast($$3)))))
                         .then(du.a("merge").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> {
-                           qx $$4 = new qx();
+                           qy $$4 = new qy();
 
-                           for (rq $$5 : $$3) {
+                           for (rr $$5 : $$3) {
                               if (ej.g.a($$5, 0)) {
                                  throw ej.b.create();
                               }
 
-                              if (!($$5 instanceof qx $$6)) {
+                              if (!($$5 instanceof qy $$6)) {
                                  throw h.create($$5);
                               }
 
                               $$4.a($$6);
                            }
 
-                           Collection<rq> $$7 = $$2x.a($$1xx, qx::new);
+                           Collection<rr> $$7 = $$2x.a($$1xx, qy::new);
                            int $$8 = 0;
 
-                           for (rq $$9 : $$7) {
-                              if (!($$9 instanceof qx $$10)) {
+                           for (rr $$9 : $$7) {
+                              if (!($$9 instanceof qy $$10)) {
                                  throw h.create($$9);
                               }
 
-                              qx $$12 = $$10.h();
+                              qy $$12 = $$10.h();
                               $$10.a($$4);
                               $$8 += $$12.equals($$10) ? 0 : 1;
                            }
@@ -107,7 +107,7 @@ public class aji {
       $$0.register($$1);
    }
 
-   private static String a(rq $$0) throws CommandSyntaxException {
+   private static String a(rr $$0) throws CommandSyntaxException {
       if ($$0.c().d()) {
          return $$0.r_();
       } else {
@@ -115,12 +115,12 @@ public class aji {
       }
    }
 
-   private static List<rq> a(List<rq> $$0, aji.d $$1) throws CommandSyntaxException {
-      List<rq> $$2 = new ArrayList<>($$0.size());
+   private static List<rr> a(List<rr> $$0, aji.d $$1) throws CommandSyntaxException {
+      List<rr> $$2 = new ArrayList<>($$0.size());
 
-      for (rq $$3 : $$0) {
+      for (rr $$3 : $$0) {
          String $$4 = a($$3);
-         $$2.add(ro.a($$1.process($$4)));
+         $$2.add(rp.a($$1.process($$4)));
       }
 
       return $$2;
@@ -187,7 +187,7 @@ public class aji {
                }
 
                $$0.accept($$3, $$1xx -> du.a("value").then(du.a("value", ek.a()).executes($$2xx -> {
-                     List<rq> $$3x = Collections.singletonList(ek.a($$2xx, "value"));
+                     List<rr> $$3x = Collections.singletonList(ek.a($$2xx, "value"));
                      return a($$2xx, $$2, $$1xx, $$3x);
                   })));
                return $$2x.then($$3);
@@ -222,21 +222,21 @@ public class aji {
       return $$0 >= 0 ? $$0 : $$1 + $$0;
    }
 
-   private static List<rq> a(CommandContext<dt> $$0, aji.c $$1) throws CommandSyntaxException {
+   private static List<rr> a(CommandContext<dt> $$0, aji.c $$1) throws CommandSyntaxException {
       ajh $$2 = $$1.a($$0);
       return Collections.singletonList($$2.a());
    }
 
-   private static List<rq> b(CommandContext<dt> $$0, aji.c $$1) throws CommandSyntaxException {
+   private static List<rr> b(CommandContext<dt> $$0, aji.c $$1) throws CommandSyntaxException {
       ajh $$2 = $$1.a($$0);
       ej.g $$3 = ej.a($$0, "sourcePath");
       return $$3.a($$2.a());
    }
 
-   private static int a(CommandContext<dt> $$0, aji.c $$1, aji.a $$2, List<rq> $$3) throws CommandSyntaxException {
+   private static int a(CommandContext<dt> $$0, aji.c $$1, aji.a $$2, List<rr> $$3) throws CommandSyntaxException {
       ajh $$4 = $$1.a($$0);
       ej.g $$5 = ej.a($$0, "targetPath");
-      qx $$6 = $$4.a();
+      qy $$6 = $$4.a();
       int $$7 = $$2.modify($$0, $$6, $$5, $$3);
       if ($$7 == 0) {
          throw d.create();
@@ -248,7 +248,7 @@ public class aji {
    }
 
    private static int a(dt $$0, ajh $$1, ej.g $$2) throws CommandSyntaxException {
-      qx $$3 = $$1.a();
+      qy $$3 = $$1.a();
       int $$4 = $$2.c($$3);
       if ($$4 == 0) {
          throw d.create();
@@ -259,10 +259,10 @@ public class aji {
       }
    }
 
-   public static rq a(ej.g $$0, ajh $$1) throws CommandSyntaxException {
-      Collection<rq> $$2 = $$0.a($$1.a());
-      Iterator<rq> $$3 = $$2.iterator();
-      rq $$4 = $$3.next();
+   public static rr a(ej.g $$0, ajh $$1) throws CommandSyntaxException {
+      Collection<rr> $$2 = $$0.a($$1.a());
+      Iterator<rr> $$3 = $$2.iterator();
+      rr $$4 = $$3.next();
       if ($$3.hasNext()) {
          throw g.create();
       } else {
@@ -271,16 +271,16 @@ public class aji {
    }
 
    private static int b(dt $$0, ajh $$1, ej.g $$2) throws CommandSyntaxException {
-      rq $$3 = a($$2, $$1);
+      rr $$3 = a($$2, $$1);
       int $$4;
-      if ($$3 instanceof rk) {
-         $$4 = arx.a(((rk)$$3).j());
-      } else if ($$3 instanceof qw) {
-         $$4 = ((qw)$$3).size();
+      if ($$3 instanceof rl) {
+         $$4 = arx.a(((rl)$$3).j());
       } else if ($$3 instanceof qx) {
-         $$4 = ((qx)$$3).f();
+         $$4 = ((qx)$$3).size();
+      } else if ($$3 instanceof qy) {
+         $$4 = ((qy)$$3).f();
       } else {
-         if (!($$3 instanceof ro)) {
+         if (!($$3 instanceof rp)) {
             throw f.create($$2.toString());
          }
 
@@ -292,28 +292,28 @@ public class aji {
    }
 
    private static int a(dt $$0, ajh $$1, ej.g $$2, double $$3) throws CommandSyntaxException {
-      rq $$4 = a($$2, $$1);
-      if (!($$4 instanceof rk)) {
+      rr $$4 = a($$2, $$1);
+      if (!($$4 instanceof rl)) {
          throw e.create($$2.toString());
       } else {
-         int $$5 = arx.a(((rk)$$4).j() * $$3);
+         int $$5 = arx.a(((rl)$$4).j() * $$3);
          $$0.a(() -> $$1.a($$2, $$3, $$5), false);
          return $$5;
       }
    }
 
    private static int a(dt $$0, ajh $$1) throws CommandSyntaxException {
-      qx $$2 = $$1.a();
-      $$0.a(() -> $$1.a((rq)$$2), false);
+      qy $$2 = $$1.a();
+      $$0.a(() -> $$1.a((rr)$$2), false);
       return 1;
    }
 
-   private static int a(dt $$0, ajh $$1, qx $$2) throws CommandSyntaxException {
-      qx $$3 = $$1.a();
+   private static int a(dt $$0, ajh $$1, qy $$2) throws CommandSyntaxException {
+      qy $$3 = $$1.a();
       if (ej.g.a($$2, 0)) {
          throw ej.b.create();
       } else {
-         qx $$4 = $$3.h().a($$2);
+         qy $$4 = $$3.h().a($$2);
          if ($$3.equals($$4)) {
             throw d.create();
          } else {
@@ -326,7 +326,7 @@ public class aji {
 
    @FunctionalInterface
    interface a {
-      int modify(CommandContext<dt> var1, qx var2, ej.g var3, List<rq> var4) throws CommandSyntaxException;
+      int modify(CommandContext<dt> var1, qy var2, ej.g var3, List<rr> var4) throws CommandSyntaxException;
    }
 
    @FunctionalInterface

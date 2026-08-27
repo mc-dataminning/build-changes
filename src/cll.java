@@ -18,7 +18,7 @@ public class cll {
    public static final aew<clk> o = a("raiser");
    public static final aew<clk> p = a("host");
 
-   public static void a(ns<clk> $$0) {
+   public static void a(nt<clk> $$0) {
       a($$0, cji.wx, a);
       a($$0, cji.wy, b);
       a($$0, cji.wz, c);
@@ -41,8 +41,8 @@ public class cll {
       return $$0.d(je.aE).h().filter($$1x -> $$1.a(((clk)$$1x.a()).b())).findFirst();
    }
 
-   private static void a(ns<clk> $$0, cja $$1, aew<clk> $$2) {
-      clk $$3 = new clk($$2.a(), jd.i.d($$1), tl.c(ac.a("trim_pattern", $$2.a())), false);
+   private static void a(nt<clk> $$0, cja $$1, aew<clk> $$2) {
+      clk $$3 = new clk($$2.a(), jd.i.d($$1), tm.c(ac.a("trim_pattern", $$2.a())), false);
       $$0.a($$2, $$3);
    }
 

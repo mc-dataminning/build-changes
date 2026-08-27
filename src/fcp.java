@@ -32,15 +32,15 @@ public class fcp extends esw.a<fcp> {
    @Nullable
    private esq x;
    private float y;
-   private static final tl z = tl.c("gui.socialInteractions.status_hidden").a(n.u);
-   private static final tl A = tl.c("gui.socialInteractions.status_blocked").a(n.u);
-   private static final tl B = tl.c("gui.socialInteractions.status_offline").a(n.u);
-   private static final tl C = tl.c("gui.socialInteractions.status_hidden_offline").a(n.u);
-   private static final tl D = tl.c("gui.socialInteractions.status_blocked_offline").a(n.u);
-   private static final tl E = tl.c("gui.socialInteractions.tooltip.report.disabled");
-   private static final tl F = tl.c("gui.socialInteractions.tooltip.hide");
-   private static final tl G = tl.c("gui.socialInteractions.tooltip.show");
-   private static final tl H = tl.c("gui.socialInteractions.tooltip.report");
+   private static final tm z = tm.c("gui.socialInteractions.status_hidden").a(n.u);
+   private static final tm A = tm.c("gui.socialInteractions.status_blocked").a(n.u);
+   private static final tm B = tm.c("gui.socialInteractions.status_offline").a(n.u);
+   private static final tm C = tm.c("gui.socialInteractions.status_hidden_offline").a(n.u);
+   private static final tm D = tm.c("gui.socialInteractions.status_blocked_offline").a(n.u);
+   private static final tm E = tm.c("gui.socialInteractions.tooltip.report.disabled");
+   private static final tm F = tm.c("gui.socialInteractions.tooltip.hide");
+   private static final tm G = tm.c("gui.socialInteractions.tooltip.show");
+   private static final tm H = tm.c("gui.socialInteractions.tooltip.report");
    private static final int I = 24;
    private static final int J = 4;
    public static final int a = ari.b.a(190, 0, 0, 0);
@@ -59,15 +59,15 @@ public class fcp extends esw.a<fcp> {
       this.s = $$6.a().a();
       this.u = $$5;
       this.t = $$6.a($$2);
-      tl $$7 = tl.a("gui.socialInteractions.narration.hide", $$3);
-      tl $$8 = tl.a("gui.socialInteractions.narration.show", $$3);
+      tm $$7 = tm.a("gui.socialInteractions.narration.hide", $$3);
+      tm $$8 = tm.a("gui.socialInteractions.narration.show", $$3);
       fcq $$9 = $$0.aK();
       boolean $$10 = $$0.H().a($$0.R());
-      boolean $$11 = !$$0.s.cw().equals($$2);
+      boolean $$11 = !$$0.s.cv().equals($$2);
       if ($$11 && $$10 && !$$9.e($$2)) {
-         this.x = new etc(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fcl($$1, $$6, this)), false), tl.c("gui.socialInteractions.report")) {
+         this.x = new etc(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fcl($$1, $$6, this)), false), tm.c("gui.socialInteractions.report")) {
             @Override
-            protected ty aF_() {
+            protected tz aF_() {
                return fcp.this.a(super.aF_());
             }
          };
@@ -76,10 +76,10 @@ public class fcp extends esw.a<fcp> {
          this.x.b(10);
          this.v = new etc(0, 0, 20, 20, i, $$3x -> {
             $$9.a($$2);
-            this.a(true, tl.a("gui.socialInteractions.hidden_in_chat", $$3));
-         }, tl.c("gui.socialInteractions.hide")) {
+            this.a(true, tm.a("gui.socialInteractions.hidden_in_chat", $$3));
+         }, tm.c("gui.socialInteractions.hide")) {
             @Override
-            protected ty aF_() {
+            protected tz aF_() {
                return fcp.this.a(super.aF_());
             }
          };
@@ -87,10 +87,10 @@ public class fcp extends esw.a<fcp> {
          this.v.b(10);
          this.w = new etc(0, 0, 20, 20, j, $$3x -> {
             $$9.b($$2);
-            this.a(false, tl.a("gui.socialInteractions.shown_in_chat", $$3));
-         }, tl.c("gui.socialInteractions.show")) {
+            this.a(false, tm.a("gui.socialInteractions.shown_in_chat", $$3));
+         }, tm.c("gui.socialInteractions.show")) {
             @Override
-            protected ty aF_() {
+            protected tz aF_() {
                return fcp.this.a(super.aF_());
             }
          };
@@ -106,7 +106,7 @@ public class fcp extends esw.a<fcp> {
    }
 
    private eua k() {
-      return !this.s ? eua.a(E) : eua.a(H, tl.a("gui.socialInteractions.narration.report", this.n));
+      return !this.s ? eua.a(E) : eua.a(H, tm.a("gui.socialInteractions.narration.report", this.n));
    }
 
    @Override
@@ -114,9 +114,9 @@ public class fcp extends esw.a<fcp> {
       int $$10 = $$3 + 4;
       int $$11 = $$2 + ($$5 - 24) / 2;
       int $$12 = $$10 + 24 + 4;
-      tl $$13 = this.l();
+      tm $$13 = this.l();
       int $$14;
-      if ($$13 == tk.a) {
+      if ($$13 == tl.a) {
          $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
          $$14 = $$2 + ($$5 - 9) / 2;
       } else {
@@ -194,7 +194,7 @@ public class fcp extends esw.a<fcp> {
       return this.u;
    }
 
-   private void a(boolean $$0, tl $$1) {
+   private void a(boolean $$0, tm $$1) {
       this.e($$0);
       this.k.l.d().a($$1);
       this.k.aV().c($$1);
@@ -206,12 +206,12 @@ public class fcp extends esw.a<fcp> {
       this.l.set(0, $$0 ? this.w : this.v);
    }
 
-   ty a(ty $$0) {
-      tl $$1 = this.l();
-      return $$1 == tk.a ? tl.b(this.n).f(", ").b($$0) : tl.b(this.n).f(", ").b($$1).f(", ").b($$0);
+   tz a(tz $$0) {
+      tm $$1 = this.l();
+      return $$1 == tl.a ? tm.b(this.n).f(", ").b($$0) : tm.b(this.n).f(", ").b($$1).f(", ").b($$0);
    }
 
-   private tl l() {
+   private tm l() {
       boolean $$0 = this.k.aK().d(this.m);
       boolean $$1 = this.k.aK().e(this.m);
       if ($$1 && this.p) {
@@ -223,7 +223,7 @@ public class fcp extends esw.a<fcp> {
       } else if ($$0) {
          return z;
       } else {
-         return this.p ? B : tk.a;
+         return this.p ? B : tl.a;
       }
    }
 }

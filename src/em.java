@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class em implements ArgumentType<eip> {
    private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("argument.criteria.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("argument.criteria.invalid", $$0));
 
    private em() {
    }

@@ -21,13 +21,13 @@ public class ebz {
       return new ebr.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), ata.h);
    }
 
-   public qx a(aex $$0) {
+   public qy a(aex $$0) {
       String $$1 = $$0.b();
       ebz.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new qx();
+      return $$2 != null ? $$2.a($$0.a()) : new qy();
    }
 
-   public void a(aex $$0, qx $$1) {
+   public void a(aex $$0, qy $$1) {
       String $$2 = $$0.b();
       this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
    }
@@ -42,10 +42,10 @@ public class ebz {
 
    static class a extends ebr {
       private static final String a = "contents";
-      private final Map<String, qx> b = Maps.newHashMap();
+      private final Map<String, qy> b = Maps.newHashMap();
 
-      ebz.a b(qx $$0) {
-         qx $$1 = $$0.p("contents");
+      ebz.a b(qy $$0) {
+         qy $$1 = $$0.p("contents");
 
          for (String $$2 : $$1.e()) {
             this.b.put($$2, $$1.p($$2));
@@ -55,19 +55,19 @@ public class ebz {
       }
 
       @Override
-      public qx a(qx $$0) {
-         qx $$1 = new qx();
+      public qy a(qy $$0) {
+         qy $$1 = new qy();
          this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
          $$0.a("contents", $$1);
          return $$0;
       }
 
-      public qx a(String $$0) {
-         qx $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new qx();
+      public qy a(String $$0) {
+         qy $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new qy();
       }
 
-      public void a(String $$0, qx $$1) {
+      public void a(String $$0, qy $$1) {
          if ($$1.g()) {
             this.b.remove($$0);
          } else {

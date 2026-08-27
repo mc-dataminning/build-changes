@@ -18,7 +18,7 @@ public class bpg extends bpe {
 
    @Override
    public void a() {
-      if (this.r && this.d.aY()) {
+      if (this.r && this.d.aX()) {
          this.d.f(this.d.do().b(0.0, 0.005, 0.0));
       }
 
@@ -35,7 +35,7 @@ public class bpg extends bpe {
             this.d.aU = this.d.dB();
             this.d.aW = this.d.dB();
             float $$5 = (float)(this.h * this.d.b(bkm.d));
-            if (this.d.aY()) {
+            if (this.d.aX()) {
                this.d.w($$5 * this.p);
                double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
                if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {

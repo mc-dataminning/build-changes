@@ -1,31 +1,31 @@
 import java.util.List;
 
-public class aaf implements vd<ww> {
+public class aaf implements ve<wx> {
    private final int a;
    private final int[] b;
 
    public aaf(biq $$0) {
-      this.a = $$0.ai();
-      List<biq> $$1 = $$0.cQ();
+      this.a = $$0.ah();
+      List<biq> $$1 = $$0.cP();
       this.b = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.b[$$2] = $$1.get($$2).ai();
+         this.b[$$2] = $$1.get($$2).ah();
       }
    }
 
-   public aaf(so $$0) {
+   public aaf(sp $$0) {
       this.a = $$0.m();
       this.b = $$0.c();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

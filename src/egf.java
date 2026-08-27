@@ -14,7 +14,7 @@ public record egf(aex b) implements egd {
 
    @Nullable
    @Override
-   public rq a(ecq $$0) {
+   public rr a(ecq $$0) {
       return $$0.d().n().aG().a(this.b);
    }
 

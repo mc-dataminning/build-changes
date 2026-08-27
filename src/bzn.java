@@ -3,7 +3,7 @@ import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
 public class bzn extends cdc {
-   private static final Predicate<biq> e = $$0 -> $$0.bw() && !($$0 instanceof bzn);
+   private static final Predicate<biq> e = $$0 -> $$0.bv() && !($$0 instanceof bzn);
    private static final double bT = 0.3;
    private static final double bU = 0.35;
    private static final int bV = 8356754;
@@ -39,8 +39,8 @@ public class bzn extends cdc {
 
    @Override
    protected void R() {
-      boolean $$0 = !(this.cO() instanceof bji) || this.cO().ah().a(apw.b);
-      boolean $$1 = !(this.cZ() instanceof cdn);
+      boolean $$0 = !(this.cN() instanceof bji) || this.cN().ag().a(apw.b);
+      boolean $$1 = !(this.cY() instanceof cdn);
       this.bO.a(bqb.a.a, $$0);
       this.bO.a(bqb.a.c, $$0 && $$1);
       this.bO.a(bqb.a.b, $$0);
@@ -52,7 +52,7 @@ public class bzn extends cdc {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("AttackTick", this.ca);
       $$0.a("StunTick", this.cb);
@@ -60,7 +60,7 @@ public class bzn extends cdc {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.ca = $$0.h("AttackTick");
       this.cb = $$0.h("StunTick");
@@ -73,7 +73,7 @@ public class bzn extends cdc {
    }
 
    @Override
-   public int aa() {
+   public int Z() {
       return 45;
    }
 
@@ -85,7 +85,7 @@ public class bzn extends cdc {
    @Override
    public void b_() {
       super.b_();
-      if (this.bw()) {
+      if (this.bv()) {
          if (this.eX()) {
             this.a(bkm.d).a(0.0);
          } else {
@@ -96,7 +96,7 @@ public class bzn extends cdc {
 
          if (this.P && this.dL().X().b(cpr.c)) {
             boolean $$2 = false;
-            ehi $$3 = this.cH().g(0.2);
+            ehi $$3 = this.cG().g(0.2);
 
             for (gw $$4 : gw.b(arx.a($$3.a), arx.a($$3.b), arx.a($$3.c), arx.a($$3.d), arx.a($$3.e), arx.a($$3.f))) {
                dfj $$5 = this.dL().a_($$4);
@@ -106,7 +106,7 @@ public class bzn extends cdc {
                }
             }
 
-            if (!$$2 && this.aB()) {
+            if (!$$2 && this.aA()) {
                this.fa();
             }
          }
@@ -135,9 +135,9 @@ public class bzn extends cdc {
 
    private void go() {
       if (this.ag.a(6) == 0) {
-         double $$0 = this.dq() - (double)this.dg() * Math.sin((double)(this.aU * (float) (Math.PI / 180.0))) + (this.ag.j() * 0.6 - 0.3);
-         double $$1 = this.ds() + (double)this.dh() - 0.3;
-         double $$2 = this.dw() + (double)this.dg() * Math.cos((double)(this.aU * (float) (Math.PI / 180.0))) + (this.ag.j() * 0.6 - 0.3);
+         double $$0 = this.dq() - (double)this.df() * Math.sin((double)(this.aU * (float) (Math.PI / 180.0))) + (this.ag.j() * 0.6 - 0.3);
+         double $$1 = this.ds() + (double)this.dg() - 0.3;
+         double $$2 = this.dw() + (double)this.df() * Math.cos((double)(this.aU * (float) (Math.PI / 180.0))) + (this.ag.j() * 0.6 - 0.3);
          this.dL().a(ix.v, $$0, $$1, $$2, 0.4980392156862745, 0.5137254901960784, 0.5725490196078431);
       }
    }
@@ -169,8 +169,8 @@ public class bzn extends cdc {
    }
 
    private void gp() {
-      if (this.bw()) {
-         for (bjg $$1 : this.dL().a(bjg.class, this.cH().g(4.0), e)) {
+      if (this.bv()) {
+         for (bjg $$1 : this.dL().a(bjg.class, this.cG().g(4.0), e)) {
             if (!($$1 instanceof byq)) {
                $$1.a(this.dM().b((bjg)this), 6.0F);
             }
@@ -178,7 +178,7 @@ public class bzn extends cdc {
             this.a($$1);
          }
 
-         ehn $$2 = this.cH().f();
+         ehn $$2 = this.cG().f();
 
          for (int $$3 = 0; $$3 < 40; $$3++) {
             double $$4 = this.ag.k() * 0.2;
@@ -253,7 +253,7 @@ public class bzn extends cdc {
 
    @Override
    public boolean a(cpy $$0) {
-      return !$$0.d(this.cH());
+      return !$$0.d(this.cG());
    }
 
    @Override

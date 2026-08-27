@@ -8,7 +8,7 @@ public class ezr extends ezi<cer> {
    private static final aex B = new aex("container/cartography_table/locked");
    private static final aex C = new aex("textures/gui/container/cartography_table.png");
 
-   public ezr(cer $$0, cbt $$1, tl $$2) {
+   public ezr(cer $$0, cbt $$1, tm $$2) {
       super($$0, $$1, $$2);
       this.m -= 2;
    }

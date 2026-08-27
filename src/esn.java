@@ -2,7 +2,7 @@ public abstract class esn extends eso {
    private final esd a;
    private int b = 16777215;
 
-   public esn(int $$0, int $$1, int $$2, int $$3, tl $$4, esd $$5) {
+   public esn(int $$0, int $$1, int $$2, int $$3, tm $$4, esd $$5) {
       super($$0, $$1, $$2, $$3, $$4);
       this.a = $$5;
    }

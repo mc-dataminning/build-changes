@@ -6,10 +6,10 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class aje {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("commands.whitelist.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.whitelist.alreadyOn"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.whitelist.alreadyOff"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.whitelist.add.failed"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.c("commands.whitelist.remove.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
@@ -38,7 +38,7 @@ public class aje {
 
    private static int a(dt $$0) {
       $$0.l().ac().a();
-      $$0.a(() -> tl.c("commands.whitelist.reloaded"), true);
+      $$0.a(() -> tm.c("commands.whitelist.reloaded"), true);
       $$0.l().a($$0);
       return 1;
    }
@@ -51,7 +51,7 @@ public class aje {
          if (!$$2.a($$4)) {
             aoq $$5 = new aoq($$4);
             $$2.a($$5);
-            $$0.a(() -> tl.a("commands.whitelist.add.success", tl.b($$4.getName())), true);
+            $$0.a(() -> tm.a("commands.whitelist.add.success", tm.b($$4.getName())), true);
             $$3++;
          }
       }
@@ -71,7 +71,7 @@ public class aje {
          if ($$2.a($$4)) {
             aoq $$5 = new aoq($$4);
             $$2.b($$5);
-            $$0.a(() -> tl.a("commands.whitelist.remove.success", tl.b($$4.getName())), true);
+            $$0.a(() -> tm.a("commands.whitelist.remove.success", tm.b($$4.getName())), true);
             $$3++;
          }
       }
@@ -90,7 +90,7 @@ public class aje {
          throw a.create();
       } else {
          $$1.a(true);
-         $$0.a(() -> tl.c("commands.whitelist.enabled"), true);
+         $$0.a(() -> tm.c("commands.whitelist.enabled"), true);
          $$0.l().a($$0);
          return 1;
       }
@@ -102,7 +102,7 @@ public class aje {
          throw b.create();
       } else {
          $$1.a(false);
-         $$0.a(() -> tl.c("commands.whitelist.disabled"), true);
+         $$0.a(() -> tm.c("commands.whitelist.disabled"), true);
          return 1;
       }
    }
@@ -110,9 +110,9 @@ public class aje {
    private static int d(dt $$0) {
       String[] $$1 = $$0.l().ac().j();
       if ($$1.length == 0) {
-         $$0.a(() -> tl.c("commands.whitelist.none"), false);
+         $$0.a(() -> tm.c("commands.whitelist.none"), false);
       } else {
-         $$0.a(() -> tl.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+         $$0.a(() -> tm.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
       }
 
       return $$1.length;

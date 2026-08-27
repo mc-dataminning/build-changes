@@ -419,7 +419,7 @@ public class dha {
          return new dha.c($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
       }
 
-      public void a(qx $$0) {
+      public void a(qy $$0) {
          $$0.a("BorderCenterX", this.a);
          $$0.a("BorderCenterZ", this.b);
          $$0.a("BorderSize", this.g);

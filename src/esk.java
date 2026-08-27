@@ -6,7 +6,7 @@ public abstract class esk extends eso implements ets, euk {
    private double e;
    private boolean l;
 
-   public esk(int $$0, int $$1, int $$2, int $$3, tl $$4) {
+   public esk(int $$0, int $$1, int $$2, int $$3, tm $$4) {
       super($$0, $$1, $$2, $$3, $$4);
    }
 

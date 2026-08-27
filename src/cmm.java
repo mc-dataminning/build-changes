@@ -27,9 +27,9 @@ public interface cmm<T extends cmj<?>> {
 
    Codec<T> a();
 
-   T a(so var1);
+   T a(sp var1);
 
-   void a(so var1, T var2);
+   void a(sp var1, T var2);
 
    static <S extends cmm<T>, T extends cmj<?>> S a(String $$0, S $$1) {
       return ht.a(jd.u, $$0, $$1);

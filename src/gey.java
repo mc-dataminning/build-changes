@@ -8,7 +8,7 @@ public class gey {
    final eyk b;
    volatile boolean c;
    @Nullable
-   sm d;
+   sn d;
 
    public gey(eyk $$0) {
       this.b = $$0;
@@ -17,7 +17,7 @@ public class gey {
    public void a(final emw $$0, fki $$1) {
       final eqv $$2 = eqv.O();
       $$2.aR();
-      $$2.aV().c(tl.c("mco.connect.success"));
+      $$2.aV().c(tm.c("mco.connect.success"));
       final String $$3 = $$1.a();
       final int $$4 = $$1.b();
       (new Thread("Realms-connect-task") {
@@ -31,7 +31,7 @@ public class gey {
                   return;
                }
 
-               gey.this.d = sm.a($$0, $$2.m.av(), $$2.aN().l());
+               gey.this.d = sn.a($$0, $$2.m.av(), $$2.aN().l());
                if (gey.this.c) {
                   return;
                }
@@ -67,7 +67,7 @@ public class gey {
                   $$3 = $$3.replaceAll($$4, "");
                }
 
-               gex $$5 = new gex(gey.this.b, tk.q, tl.a("disconnect.genericReason", $$3));
+               gex $$5 = new gex(gey.this.b, tl.q, tm.a("disconnect.genericReason", $$3));
                $$2.execute(() -> $$2.a($$5));
             }
          }
@@ -77,7 +77,7 @@ public class gey {
    public void a() {
       this.c = true;
       if (this.d != null && this.d.k()) {
-         this.d.a(tl.c("disconnect.genericReason"));
+         this.d.a(tm.c("disconnect.genericReason"));
          this.d.p();
       }
    }

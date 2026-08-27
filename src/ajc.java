@@ -23,13 +23,13 @@ public class ajc {
 
    private static int a(dt $$0, Collection<? extends cbu> $$1, int $$2) {
       for (cbu $$3 : $$1) {
-         $$3.Z().ifPresent($$1x -> $$1x.a($$2));
+         $$3.Y().ifPresent($$1x -> $$1x.a($$2));
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().N_()), true);
+         $$0.a(() -> tm.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
+         $$0.a(() -> tm.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
       }
 
       return $$1.size();
@@ -37,13 +37,13 @@ public class ajc {
 
    private static int a(dt $$0, Collection<? extends cbu> $$1) {
       for (cbu $$2 : $$1) {
-         $$2.Z().ifPresent(cba::b);
+         $$2.Y().ifPresent(cba::b);
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().N_()), true);
+         $$0.a(() -> tm.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+         $$0.a(() -> tm.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
       }
 
       return $$1.size();

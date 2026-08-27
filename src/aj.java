@@ -45,7 +45,7 @@ public class aj {
                byn $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.w();
-                  $$5.b($$0.cw());
+                  $$5.b($$0.cv());
                }
             }
          }
@@ -60,7 +60,7 @@ public class aj {
       }
 
       MinecraftServer $$6 = $$0.d;
-      this.e.a($$6.aA()).ifPresent($$2x -> $$6.aA().a($$2x, $$0.dd().a().a(2)));
+      this.e.a($$6.aA()).ifPresent($$2x -> $$6.aA().a($$2x, $$0.dc().a().a(2)));
    }
 
    @Override

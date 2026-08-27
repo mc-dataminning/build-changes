@@ -1,10 +1,10 @@
 public class faj extends eyk {
    private static final int a = 7;
-   private static final tl b = tl.c("jigsaw_block.joint_label");
-   private static final tl c = tl.c("jigsaw_block.pool");
-   private static final tl k = tl.c("jigsaw_block.name");
-   private static final tl l = tl.c("jigsaw_block.target");
-   private static final tl m = tl.c("jigsaw_block.final_state");
+   private static final tm b = tm.c("jigsaw_block.joint_label");
+   private static final tm c = tm.c("jigsaw_block.pool");
+   private static final tm k = tm.c("jigsaw_block.name");
+   private static final tm l = tm.c("jigsaw_block.target");
+   private static final tm m = tm.c("jigsaw_block.final_state");
    private final ddu n;
    private esz o;
    private esz p;
@@ -23,45 +23,45 @@ public class faj extends eyk {
    }
 
    private void l() {
-      this.D();
-      this.f.a(null);
-   }
-
-   private void C() {
+      this.E();
       this.f.a(null);
    }
 
    private void D() {
-      this.f.J().b(new acs(this.n.p(), new aex(this.o.a()), new aex(this.p.a()), new aex(this.q.a()), this.s.a(), this.y));
+      this.f.a(null);
    }
 
    private void E() {
+      this.f.J().b(new acs(this.n.p(), new aex(this.o.a()), new aex(this.p.a()), new aex(this.q.a()), this.s.a(), this.y));
+   }
+
+   private void F() {
       this.f.J().b(new abx(this.n.p(), this.t, this.u));
    }
 
    @Override
    public void az_() {
-      this.C();
+      this.D();
    }
 
    @Override
    protected void aI_() {
-      this.q = new esz(this.i, this.g / 2 - 153, 20, 300, 20, tl.c("jigsaw_block.pool"));
+      this.q = new esz(this.i, this.g / 2 - 153, 20, 300, 20, tm.c("jigsaw_block.pool"));
       this.q.l(128);
       this.q.a(this.n.f().a().toString());
-      this.q.b($$0x -> this.F());
+      this.q.b($$0x -> this.G());
       this.e(this.q);
-      this.o = new esz(this.i, this.g / 2 - 153, 55, 300, 20, tl.c("jigsaw_block.name"));
+      this.o = new esz(this.i, this.g / 2 - 153, 55, 300, 20, tm.c("jigsaw_block.name"));
       this.o.l(128);
       this.o.a(this.n.c().toString());
-      this.o.b($$0x -> this.F());
+      this.o.b($$0x -> this.G());
       this.e(this.o);
-      this.p = new esz(this.i, this.g / 2 - 153, 90, 300, 20, tl.c("jigsaw_block.target"));
+      this.p = new esz(this.i, this.g / 2 - 153, 90, 300, 20, tm.c("jigsaw_block.target"));
       this.p.l(128);
       this.p.a(this.n.d().toString());
-      this.p.b($$0x -> this.F());
+      this.p.b($$0x -> this.G());
       this.e(this.p);
-      this.s = new esz(this.i, this.g / 2 - 153, 125, 300, 20, tl.c("jigsaw_block.final_state"));
+      this.s = new esz(this.i, this.g / 2 - 153, 125, 300, 20, tm.c("jigsaw_block.final_state"));
       this.s.l(256);
       this.s.a(this.n.g());
       this.e(this.s);
@@ -71,14 +71,14 @@ public class faj extends eyk {
       boolean $$1 = cwu.h(this.n.q()).o().b();
       this.v.i = $$1;
       this.v.j = $$1;
-      this.d(new esm(this.g / 2 - 154, 180, 100, 20, tk.a, 0.0) {
+      this.d(new esm(this.g / 2 - 154, 180, 100, 20, tl.a, 0.0) {
          {
             this.b();
          }
 
          @Override
          protected void b() {
-            this.b(tl.a("jigsaw_block.levels", faj.this.t));
+            this.b(tm.a("jigsaw_block.levels", faj.this.t));
          }
 
          @Override
@@ -86,18 +86,18 @@ public class faj extends eyk {
             faj.this.t = arx.a(arx.b(0.0, 7.0, this.c));
          }
       });
-      this.d(esx.b(this.u).a(this.g / 2 - 50, 180, 100, 20, tl.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1x) -> this.u = $$1x));
-      this.x = this.d(esq.a(tl.c("jigsaw_block.generate"), $$0x -> {
+      this.d(esx.b(this.u).a(this.g / 2 - 50, 180, 100, 20, tm.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1x) -> this.u = $$1x));
+      this.x = this.d(esq.a(tm.c("jigsaw_block.generate"), $$0x -> {
          this.l();
-         this.E();
+         this.F();
       }).a(this.g / 2 + 54, 180, 100, 20).a());
-      this.w = this.d(esq.a(tk.d, $$0x -> this.l()).a(this.g / 2 - 4 - 150, 210, 150, 20).a());
-      this.d(esq.a(tk.e, $$0x -> this.C()).a(this.g / 2 + 4, 210, 150, 20).a());
+      this.w = this.d(esq.a(tl.d, $$0x -> this.l()).a(this.g / 2 - 4 - 150, 210, 150, 20).a());
+      this.d(esq.a(tl.e, $$0x -> this.D()).a(this.g / 2 + 4, 210, 150, 20).a());
       this.c(this.q);
-      this.F();
+      this.G();
    }
 
-   private void F() {
+   private void G() {
       boolean $$0 = aex.i(this.o.a()) && aex.i(this.p.a()) && aex.i(this.q.a());
       this.w.i = $$0;
       this.x.i = $$0;

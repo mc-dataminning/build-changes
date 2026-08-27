@@ -1,7 +1,7 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class zx implements vd<ww> {
+public class zx implements ve<wx> {
    private final eii a;
    private final String b;
 
@@ -14,18 +14,18 @@ public class zx implements vd<ww> {
       }
    }
 
-   public zx(so $$0) {
+   public zx(sp $$0) {
       this.a = $$0.a(eii.u);
       this.b = $$0.r();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(eii::a, this.a);
       $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

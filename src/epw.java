@@ -3,7 +3,7 @@ import org.slf4j.Logger;
 
 public class epw extends epv {
    private static final Logger b = LogUtils.getLogger();
-   private static final tl c = tl.c("mco.configure.world.opening");
+   private static final tm c = tm.c("mco.configure.world.opening");
    private final emw d;
    private final eyk e;
    private final boolean f;
@@ -62,7 +62,7 @@ public class epw extends epv {
    }
 
    @Override
-   public tl a() {
+   public tm a() {
       return c;
    }
 }

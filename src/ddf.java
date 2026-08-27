@@ -42,7 +42,7 @@ public class ddf extends dcv {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       this.d.a($$0);
       $$0.a("powered", this.d());
@@ -51,7 +51,7 @@ public class ddf extends dcv {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.d.b($$0);
       this.a = $$0.q("powered");

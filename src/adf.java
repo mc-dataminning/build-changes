@@ -1,7 +1,7 @@
-public interface adf extends sj {
+public interface adf extends sk {
    @Override
-   default sn b() {
-      return sn.d;
+   default so b() {
+      return so.d;
    }
 
    void a(adi var1);

@@ -1,24 +1,24 @@
 import java.util.Optional;
 
-public record xw(int a, int b, int c, int d, Optional<ehn> e) implements vd<ww> {
+public record xw(int a, int b, int c, int d, Optional<ehn> e) implements ve<wx> {
    public xw(biq $$0, bho $$1) {
-      this($$0.ai(), $$0.dL().G_().d(je.p).a($$1.j()), $$1.d() != null ? $$1.d().ai() : -1, $$1.c() != null ? $$1.c().ai() : -1, Optional.ofNullable($$1.i()));
+      this($$0.ah(), $$0.dL().G_().d(je.p).a($$1.j()), $$1.d() != null ? $$1.d().ah() : -1, $$1.c() != null ? $$1.c().ah() : -1, Optional.ofNullable($$1.i()));
    }
 
-   public xw(so $$0) {
-      this($$0.m(), $$0.m(), b($$0), b($$0), $$0.b((so.a<ehn>)($$0x -> new ehn($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
+   public xw(sp $$0) {
+      this($$0.m(), $$0.m(), b($$0), b($$0), $$0.b((sp.a<ehn>)($$0x -> new ehn($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
    }
 
-   private static void a(so $$0, int $$1) {
+   private static void a(sp $$0, int $$1) {
       $$0.c($$1 + 1);
    }
 
-   private static int b(so $$0) {
+   private static int b(sp $$0) {
       return $$0.m() - 1;
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.c(this.a);
       $$0.c(this.b);
       a($$0, this.c);
@@ -30,7 +30,7 @@ public record xw(int a, int b, int c, int d, Optional<ehn> e) implements vd<ww> 
       });
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

@@ -179,11 +179,11 @@ public class dwl {
                dwl.a.warn("Empty or non-existent pool: {}", $$20.a());
             } else {
                hg<dwr> $$22 = (hg<dwr>)$$21.get();
-               if ($$22.a().b() == 0 && !$$22.a(nz.a)) {
+               if ($$22.a().b() == 0 && !$$22.a(oa.a)) {
                   dwl.a.warn("Empty or non-existent pool: {}", $$20.a());
                } else {
                   hg<dwr> $$23 = $$22.a().a();
-                  if ($$23.a().b() == 0 && !$$23.a(nz.a)) {
+                  if ($$23.a().b() == 0 && !$$23.a(oa.a)) {
                      dwl.a.warn("Empty or non-existent fallback pool: {}", $$23.e().map($$0x -> $$0x.a().toString()).orElse("<unregistered>"));
                   } else {
                      boolean $$24 = $$12.b($$17);

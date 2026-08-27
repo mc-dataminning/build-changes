@@ -1,4 +1,4 @@
-public class xt implements vd<ww> {
+public class xt implements ve<wx> {
    public static final int a = -1;
    public static final int b = -2;
    private final int c;
@@ -13,7 +13,7 @@ public class xt implements vd<ww> {
       this.f = $$3.p();
    }
 
-   public xt(so $$0) {
+   public xt(sp $$0) {
       this.c = $$0.readByte();
       this.d = $$0.m();
       this.e = $$0.readShort();
@@ -21,14 +21,14 @@ public class xt implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.k(this.c);
       $$0.c(this.d);
       $$0.l(this.e);
       $$0.a(this.f);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

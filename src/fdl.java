@@ -4,12 +4,12 @@ import java.util.function.Supplier;
 public class fdl implements fdp {
    private final GameProfile a;
    private final Supplier<gae> b;
-   private final tl c;
+   private final tm c;
 
    public fdl(GameProfile $$0) {
       this.a = $$0;
       this.b = eqv.O().al().a($$0);
-      this.c = tl.b($$0.getName());
+      this.c = tm.b($$0.getName());
    }
 
    @Override
@@ -18,7 +18,7 @@ public class fdl implements fdp {
    }
 
    @Override
-   public tl aJ_() {
+   public tm aJ_() {
       return this.c;
    }
 

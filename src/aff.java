@@ -168,7 +168,7 @@ public class aff {
             $$0.b().e().a(this.j);
             $$0.b().d().ifPresent($$1x -> {
                if ($$1x.i() && this.j.dL().X().b(cpr.y)) {
-                  this.c.a(tl.a("chat.type.advancement." + $$1x.e().a(), this.j.N_(), ae.a($$0)), false);
+                  this.c.a(tm.a("chat.type.advancement." + $$1x.e().a(), this.j.N_(), ae.a($$0)), false);
                }
             });
          }

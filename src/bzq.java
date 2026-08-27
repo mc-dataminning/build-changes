@@ -12,11 +12,11 @@ public class bzq extends byr {
    @Override
    protected void a_() {
       super.a_();
-      this.am().a(d, false);
+      this.al().a(d, false);
    }
 
    public boolean ge() {
-      return this.am().b(d);
+      return this.al().b(d);
    }
 
    public void w(boolean $$0) {
@@ -30,7 +30,7 @@ public class bzq extends byr {
 
    @Override
    public void l() {
-      if (!this.dL().B && this.bw() && !this.fT()) {
+      if (!this.dL().B && this.bv() && !this.fT()) {
          if (this.aA) {
             if (this.ge()) {
                this.bT--;
@@ -53,13 +53,13 @@ public class bzq extends byr {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("StrayConversionTime", this.ge() ? this.bT : -1);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
          this.b($$0.h("StrayConversionTime"));
@@ -73,7 +73,7 @@ public class bzq extends byr {
 
    protected void gf() {
       this.a(biu.aU, true);
-      if (!this.aT()) {
+      if (!this.aS()) {
          this.dL().a(null, 1048, this.dl(), 0);
       }
    }

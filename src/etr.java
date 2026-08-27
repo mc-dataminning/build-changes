@@ -31,9 +31,9 @@ public class etr {
    private final eqv q;
    private final ese r;
    @Nullable
-   private tl s;
+   private tm s;
    @Nullable
-   private tl t;
+   private tm t;
    private boolean u;
    private final Map<UUID, etr.a> v = new Object2ObjectOpenHashMap();
 
@@ -42,11 +42,11 @@ public class etr {
       this.r = $$1;
    }
 
-   public tl a(fjf $$0) {
-      return $$0.i() != null ? this.a($$0, $$0.i().e()) : this.a($$0, eik.a($$0.h(), tl.b($$0.a().getName())));
+   public tm a(fjf $$0) {
+      return $$0.i() != null ? this.a($$0, $$0.i().e()) : this.a($$0, eik.a($$0.h(), tm.b($$0.a().getName())));
    }
 
-   private tl a(fjf $$0, ty $$1) {
+   private tm a(fjf $$0, tz $$1) {
       return $$0.e() == cps.d ? $$1.a(n.u) : $$1;
    }
 
@@ -55,8 +55,8 @@ public class etr {
          this.v.clear();
          this.u = $$0;
          if ($$0) {
-            tl $$1 = tn.a(this.b(), tl.b(", "), this::a);
-            this.q.aV().c(tl.a("multiplayer.player.list.narration", $$1));
+            tm $$1 = to.a(this.b(), tm.b(", "), this::a);
+            this.q.aV().c(tm.a("multiplayer.player.list.narration", $$1));
          }
       }
    }
@@ -228,12 +228,12 @@ public class etr {
             float $$11 = arx.a((float)$$5 / 20.0F, 0.0F, 1.0F);
             int $$12 = (int)((1.0F - $$11) * 255.0F) << 16 | (int)($$11 * 255.0F) << 8;
             float $$13 = (float)$$5 / 2.0F;
-            tl $$14 = tl.a("multiplayer.player.list.hp", $$13);
-            tl $$15;
+            tm $$14 = tm.a("multiplayer.player.list.hp", $$13);
+            tm $$15;
             if ($$2 - this.q.h.a($$14) >= $$1) {
                $$15 = $$14;
             } else {
-               $$15 = tl.b($$13 + "");
+               $$15 = tm.b($$13 + "");
             }
 
             $$4.b(this.q.h, $$15, ($$2 + $$1 - this.q.h.a($$15)) / 2, $$0, $$12);
@@ -268,11 +268,11 @@ public class etr {
       }
    }
 
-   public void a(@Nullable tl $$0) {
+   public void a(@Nullable tm $$0) {
       this.s = $$0;
    }
 
-   public void b(@Nullable tl $$0) {
+   public void b(@Nullable tm $$0) {
       this.t = $$0;
    }
 

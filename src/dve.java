@@ -24,36 +24,36 @@ public class dve extends dvm {
       this.c = $$4;
    }
 
-   public dve(dvy $$0, qx $$1) {
+   public dve(dvy $$0, qy $$1) {
       super(dvz.ad, $$1);
       this.j = $$0.c();
       this.b = new gw($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
       this.h = $$1.h("ground_level_delta");
-      DynamicOps<rq> $$2 = aev.a(ri.a, $$0.b());
+      DynamicOps<rr> $$2 = aev.a(rj.a, $$0.b());
       this.a = (dwp)dwp.e
          .parse($$2, $$1.p("pool_element"))
          .resultOrPartial(d::error)
          .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
       this.c = czh.valueOf($$1.l("rotation"));
       this.f = this.a.a(this.j, this.b, this.c);
-      rd $$3 = $$1.c("junctions", 10);
+      re $$3 = $$1.c("junctions", 10);
       this.i.clear();
       $$3.forEach($$1x -> this.i.add(dwk.a(new Dynamic($$2, $$1x))));
    }
 
    @Override
-   protected void a(dvy $$0, qx $$1) {
+   protected void a(dvy $$0, qy $$1) {
       $$1.a("PosX", this.b.u());
       $$1.a("PosY", this.b.v());
       $$1.a("PosZ", this.b.w());
       $$1.a("ground_level_delta", this.h);
-      DynamicOps<rq> $$2 = aev.a(ri.a, $$0.b());
+      DynamicOps<rr> $$2 = aev.a(rj.a, $$0.b());
       dwp.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
       $$1.a("rotation", this.c.name());
-      rd $$3 = new rd();
+      re $$3 = new re();
 
       for (dwk $$4 : this.i) {
-         $$3.add((rq)$$4.a($$2).getValue());
+         $$3.add((rr)$$4.a($$2).getValue());
       }
 
       $$1.a("junctions", $$3);

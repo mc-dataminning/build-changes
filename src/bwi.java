@@ -33,7 +33,7 @@ public class bwi extends bkx<bwg> {
          this.b($$1, $$2);
       }
 
-      return $$3 && $$1.ao() != bjs.i && bwg.j($$2);
+      return $$3 && $$1.an() != bjs.i && bwg.j($$2);
    }
 
    protected boolean a(akr $$0, bwg $$1, long $$2) {
@@ -60,9 +60,9 @@ public class bwi extends bkx<bwg> {
       Optional<biq> $$2 = $$1.t();
       if ($$2.isPresent()) {
          biq $$3 = $$2.get();
-         if ($$3.bw()) {
+         if ($$3.bv()) {
             $$1.C($$3);
-            if (!$$3.bw()) {
+            if (!$$3.bv()) {
                $$3.a(biq.c.a);
             }
          }
@@ -111,13 +111,13 @@ public class bwi extends bkx<bwg> {
 
    private void b(bwg $$0, bjg $$1) {
       List<UUID> $$2 = $$0.dN().c(bsh.Z).orElseGet(ArrayList::new);
-      boolean $$3 = !$$2.contains($$1.cw());
+      boolean $$3 = !$$2.contains($$1.cv());
       if ($$2.size() == 5 && $$3) {
          $$2.remove(0);
       }
 
       if ($$3) {
-         $$2.add($$1.cw());
+         $$2.add($$1.cv());
       }
 
       $$0.dN().a(bsh.Z, $$2, 100L);

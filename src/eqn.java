@@ -4,7 +4,7 @@ import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 
 public class eqn {
-   public static final tl a = tk.a;
+   public static final tm a = tl.a;
    private static final Logger b = LogUtils.getLogger();
    private final eqv c;
    private final Narrator d = Narrator.getNarrator();
@@ -13,7 +13,7 @@ public class eqn {
       this.c = $$0;
    }
 
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       if (this.d().c()) {
          String $$1 = $$0.getString();
          this.b($$1);
@@ -21,7 +21,7 @@ public class eqn {
       }
    }
 
-   public void b(tl $$0) {
+   public void b(tm $$0) {
       String $$1 = $$0.getString();
       if (this.d().d() && !$$1.isEmpty()) {
          this.b($$1);
@@ -29,7 +29,7 @@ public class eqn {
       }
    }
 
-   public void c(tl $$0) {
+   public void c(tm $$0) {
       this.a($$0.getString());
    }
 
@@ -55,16 +55,16 @@ public class eqn {
 
    public void a(eqx $$0) {
       this.b();
-      this.d.say(tl.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
+      this.d.say(tm.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
       euy $$1 = eqv.O().ay();
       if (this.d.active()) {
          if ($$0 == eqx.a) {
-            euw.b($$1, euw.a.b, tl.c("narrator.toast.disabled"), null);
+            euw.b($$1, euw.a.b, tm.c("narrator.toast.disabled"), null);
          } else {
-            euw.b($$1, euw.a.b, tl.c("narrator.toast.enabled"), $$0.b());
+            euw.b($$1, euw.a.b, tm.c("narrator.toast.enabled"), $$0.b());
          }
       } else {
-         euw.b($$1, euw.a.b, tl.c("narrator.toast.disabled"), tl.c("options.narrator.notavailable"));
+         euw.b($$1, euw.a.b, tm.c("narrator.toast.disabled"), tm.c("options.narrator.notavailable"));
       }
    }
 

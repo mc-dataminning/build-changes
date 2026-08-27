@@ -16,7 +16,7 @@ public class brh extends bqb {
 
    @Override
    public boolean a() {
-      if (this.b.cP()) {
+      if (this.b.cO()) {
          return false;
       } else if (this.b.dL().N()) {
          return false;

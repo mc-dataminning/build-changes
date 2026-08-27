@@ -7,11 +7,11 @@ public class chq extends cja {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       $$2.add(this.d().a(n.h));
    }
 
-   public ty d() {
-      return tl.c(this.a() + ".desc");
+   public tz d() {
+      return tm.c(this.a() + ".desc");
    }
 }

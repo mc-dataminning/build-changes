@@ -12,7 +12,7 @@ import java.util.Set;
 import javax.annotation.Nullable;
 
 public class aix {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.teleport.invalidPosition"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.teleport.invalidPosition"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       LiteralCommandNode<dt> $$1 = $$0.register(
@@ -112,9 +112,9 @@ public class aix {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.teleport.success.entity.single", $$1.iterator().next().N_(), $$2.N_()), true);
+         $$0.a(() -> tm.a("commands.teleport.success.entity.single", $$1.iterator().next().N_(), $$2.N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.N_()), true);
+         $$0.a(() -> tm.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.N_()), true);
       }
 
       return $$1.size();
@@ -158,9 +158,9 @@ public class aix {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.teleport.success.location.single", $$1.iterator().next().N_(), a($$6.c), a($$6.d), a($$6.e)), true);
+         $$0.a(() -> tm.a("commands.teleport.success.location.single", $$1.iterator().next().N_(), a($$6.c), a($$6.d), a($$6.e)), true);
       } else {
-         $$0.a(() -> tl.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.c), a($$6.d), a($$6.e)), true);
+         $$0.a(() -> tm.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.c), a($$6.d), a($$6.e)), true);
       }
 
       return $$1.size();

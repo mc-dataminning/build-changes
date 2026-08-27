@@ -18,8 +18,8 @@ public class dtl {
                   Codec.BOOL.fieldOf("features").orElse(false).forGetter($$0x -> $$0x.h),
                   cqt.c.optionalFieldOf("biome").orElseGet(Optional::empty).forGetter($$0x -> Optional.of($$0x.e)),
                   aev.d(cra.b),
-                  aev.d(pe.g),
-                  aev.d(pe.h)
+                  aev.d(pf.g),
+                  aev.d(pf.h)
                )
                .apply($$0, dtl::new)
       )
@@ -127,7 +127,7 @@ public class dtl {
             dfj $$11 = $$9.get($$10);
             if (!dks.a.e.e().test($$11)) {
                $$9.set($$10, null);
-               $$2.a(dko.b.k, ph.a(dnw.ab, new dqe($$10, $$11)));
+               $$2.a(dko.b.k, pi.a(dnw.ab, new dqe($$10, $$11)));
             }
          }
 
@@ -178,6 +178,6 @@ public class dtl {
    }
 
    public static List<hg<dum>> b(hh<dum> $$0) {
-      return List.of($$0.b(pe.g), $$0.b(pe.h));
+      return List.of($$0.b(pf.g), $$0.b(pf.h));
    }
 }

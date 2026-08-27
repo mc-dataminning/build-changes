@@ -77,23 +77,23 @@ public class bxh extends bji implements bza {
    }
 
    @Override
-   public boolean aS() {
+   public boolean aR() {
       float $$0 = arx.b(this.bT * (float) (Math.PI * 2));
       float $$1 = arx.b(this.bS * (float) (Math.PI * 2));
       return $$1 <= -0.3F && $$0 >= -0.3F;
    }
 
    @Override
-   public void aR() {
-      if (this.dL().B && !this.aT()) {
-         this.dL().a(this.dq(), this.ds(), this.dw(), ape.gW, this.db(), 5.0F, 0.8F + this.ag.i() * 0.3F, false);
+   public void aQ() {
+      if (this.dL().B && !this.aS()) {
+         this.dL().a(this.dq(), this.ds(), this.dw(), ape.gW, this.da(), 5.0F, 0.8F + this.ag.i() * 0.3F, false);
       }
    }
 
    @Override
    protected void a_() {
       super.a_();
-      this.am().a(b, bxx.k.b());
+      this.al().a(b, bxx.k.b());
    }
 
    public double[] a(int $$0, float $$1) {
@@ -117,18 +117,18 @@ public class bxh extends bji implements bza {
 
    @Override
    public void b_() {
-      this.aF();
+      this.aE();
       if (this.dL().B) {
          this.c(this.eu());
-         if (!this.aT() && !this.cp.a().a() && --this.cq < 0) {
-            this.dL().a(this.dq(), this.ds(), this.dw(), ape.gX, this.db(), 2.5F, 0.8F + this.ag.i() * 0.3F, false);
+         if (!this.aS() && !this.cp.a().a() && --this.cq < 0) {
+            this.dL().a(this.dq(), this.ds(), this.dw(), ape.gX, this.da(), 2.5F, 0.8F + this.ag.i() * 0.3F, false);
             this.cq = 200 + this.ag.a(200);
          }
       }
 
       if (this.cn == null && this.dL() instanceof akr $$0) {
          div $$1 = $$0.B();
-         if ($$1 != null && this.cw().equals($$1.i())) {
+         if ($$1 != null && this.cv().equals($$1.i())) {
             this.cn = $$1;
          }
       }
@@ -241,10 +241,10 @@ public class bxh extends bji implements bza {
             this.a(this.cl, (double)($$31 * 4.5F), 2.0, (double)($$30 * 4.5F));
             this.a(this.cm, (double)($$31 * -4.5F), 2.0, (double)($$30 * -4.5F));
             if (!this.dL().B && this.aK == 0) {
-               this.b(this.dL().a(this, this.cl.cH().c(4.0, 2.0, 4.0).d(0.0, -2.0, 0.0), bit.e));
-               this.b(this.dL().a(this, this.cm.cH().c(4.0, 2.0, 4.0).d(0.0, -2.0, 0.0), bit.e));
-               this.c(this.dL().a(this, this.e.cH().g(1.0), bit.e));
-               this.c(this.dL().a(this, this.cg.cH().g(1.0), bit.e));
+               this.b(this.dL().a(this, this.cl.cG().c(4.0, 2.0, 4.0).d(0.0, -2.0, 0.0), bit.e));
+               this.b(this.dL().a(this, this.cm.cG().c(4.0, 2.0, 4.0).d(0.0, -2.0, 0.0), bit.e));
+               this.c(this.dL().a(this, this.e.cG().g(1.0), bit.e));
+               this.c(this.dL().a(this, this.cg.cG().g(1.0), bit.e));
             }
 
             float $$32 = arx.a(this.dB() * (float) (Math.PI / 180.0) - this.bW * 0.01F);
@@ -283,7 +283,7 @@ public class bxh extends bji implements bza {
             }
 
             if (!this.dL().B) {
-               this.bU = this.b(this.e.cH()) | this.b(this.cg.cH()) | this.b(this.ch.cH());
+               this.bU = this.b(this.e.cG()) | this.b(this.cg.cG()) | this.b(this.ch.cG());
                if (this.cn != null) {
                   this.cn.b(this);
                }
@@ -325,7 +325,7 @@ public class bxh extends bji implements bza {
       }
 
       if (this.ag.a(10) == 0) {
-         List<bxg> $$0 = this.dL().a(bxg.class, this.cH().g(32.0));
+         List<bxg> $$0 = this.dL().a(bxg.class, this.cG().g(32.0));
          bxg $$1 = null;
          double $$2 = Double.MAX_VALUE;
 
@@ -342,8 +342,8 @@ public class bxh extends bji implements bza {
    }
 
    private void b(List<biq> $$0) {
-      double $$1 = (this.ch.cH().a + this.ch.cH().d) / 2.0;
-      double $$2 = (this.ch.cH().c + this.ch.cH().f) / 2.0;
+      double $$1 = (this.ch.cG().a + this.ch.cG().d) / 2.0;
+      double $$2 = (this.ch.cG().c + this.ch.cG().f) / 2.0;
 
       for (biq $$3 : $$0) {
          if ($$3 instanceof bjg) {
@@ -450,7 +450,7 @@ public class bxh extends bji implements bza {
    }
 
    @Override
-   public void ak() {
+   public void aj() {
       this.a(biq.c.a);
       this.a(djt.p);
       if (this.cn != null) {
@@ -484,7 +484,7 @@ public class bxh extends bji implements bza {
             biw.a((akr)this.dL(), this.dj(), arx.d((float)$$4 * 0.08F));
          }
 
-         if (this.bV == 1 && !this.aT()) {
+         if (this.bV == 1 && !this.aS()) {
             this.dL().b(1028, this.dl(), 0);
          }
       }
@@ -677,14 +677,14 @@ public class bxh extends bji implements bza {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("DragonPhase", this.cp.a().i().b());
       $$0.a("DragonDeathTime", this.bV);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.e("DragonPhase")) {
          this.cp.a(bxx.a($$0.h("DragonPhase")));
@@ -704,12 +704,12 @@ public class bxh extends bji implements bza {
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return false;
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.f;
    }
 
@@ -791,7 +791,7 @@ public class bxh extends bji implements bza {
    @Override
    public void a(aef<?> $$0) {
       if (b.equals($$0) && this.dL().B) {
-         this.cp.a(bxx.a(this.am().b(b)));
+         this.cp.a(bxx.a(this.al().b(b)));
       }
 
       super.a($$0);
@@ -817,12 +817,12 @@ public class bxh extends bji implements bza {
    }
 
    @Override
-   public boolean ct() {
+   public boolean cs() {
       return false;
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       bxf[] $$1 = this.fZ();
 
@@ -838,6 +838,6 @@ public class bxh extends bji implements bza {
 
    @Override
    protected Vector3f a(biq $$0, bir $$1, float $$2) {
-      return new Vector3f(0.0F, this.ch.dh(), 0.0F);
+      return new Vector3f(0.0F, this.ch.dg(), 0.0F);
    }
 }

@@ -85,10 +85,10 @@ public class czq {
       this.l.clear();
    }
 
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       if ($$0.b("cursors", 9)) {
          this.l.clear();
-         List<czq.a> $$1 = (List<czq.a>)czq.a.b.listOf().parse(new Dynamic(ri.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
+         List<czq.a> $$1 = (List<czq.a>)czq.a.b.listOf().parse(new Dynamic(rj.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
          int $$2 = Math.min($$1.size(), 32);
 
          for (int $$3 = 0; $$3 < $$2; $$3++) {
@@ -97,8 +97,8 @@ public class czq {
       }
    }
 
-   public void b(qx $$0) {
-      czq.a.b.listOf().encodeStart(ri.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
+   public void b(qy $$0) {
+      czq.a.b.listOf().encodeStart(rj.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
    }
 
    public void a(gw $$0, int $$1) {

@@ -91,7 +91,7 @@ public class dct extends dcv {
 
       if (!this.o.B) {
          for (bjg $$2 : this.m) {
-            if ($$2.bw() && !$$2.dG() && $$0.a($$2.dj(), 32.0)) {
+            if ($$2.bv() && !$$2.dG() && $$0.a($$2.dj(), 32.0)) {
                $$2.dN().a(bsh.D, this.o.V());
             }
          }
@@ -100,7 +100,7 @@ public class dct extends dcv {
 
    private static boolean a(gw $$0, List<bjg> $$1) {
       for (bjg $$2 : $$1) {
-         if ($$2.bw() && !$$2.dG() && $$0.a($$2.dj(), 32.0) && $$2.ah().a(apw.b)) {
+         if ($$2.bv() && !$$2.dG() && $$0.a($$2.dj(), 32.0) && $$2.ag().a(apw.b)) {
             return true;
          }
       }
@@ -133,7 +133,7 @@ public class dct extends dcv {
    }
 
    private static boolean a(gw $$0, bjg $$1) {
-      return $$1.bw() && !$$1.dG() && $$0.a($$1.dj(), 48.0) && $$1.ah().a(apw.b);
+      return $$1.bv() && !$$1.dG() && $$0.a($$1.dj(), 48.0) && $$1.ag().a(apw.b);
    }
 
    private static void a(bjg $$0) {

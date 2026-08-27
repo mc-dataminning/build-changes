@@ -9,7 +9,7 @@ public class anc {
    private static final Logger a = LogUtils.getLogger();
    private final String b;
    private final anc.c c;
-   private final tl d;
+   private final tm d;
    private final anc.a e;
    private final anc.b f;
    private final boolean g;
@@ -17,17 +17,17 @@ public class anc {
    private final ang i;
 
    @Nullable
-   public static anc a(String $$0, tl $$1, boolean $$2, anc.c $$3, amj $$4, anc.b $$5, ang $$6) {
+   public static anc a(String $$0, tm $$1, boolean $$2, anc.c $$3, amj $$4, anc.b $$5, ang $$6) {
       int $$7 = aa.b().a($$4);
       anc.a $$8 = a($$0, $$3, $$7);
       return $$8 != null ? a($$0, $$1, $$2, $$3, $$8, $$5, false, $$6) : null;
    }
 
-   public static anc a(String $$0, tl $$1, boolean $$2, anc.c $$3, anc.a $$4, anc.b $$5, boolean $$6, ang $$7) {
+   public static anc a(String $$0, tm $$1, boolean $$2, anc.c $$3, anc.a $$4, anc.b $$5, boolean $$6, ang $$7) {
       return new anc($$0, $$2, $$3, $$1, $$4, $$5, $$6, $$7);
    }
 
-   private anc(String $$0, boolean $$1, anc.c $$2, tl $$3, anc.a $$4, anc.b $$5, boolean $$6, ang $$7) {
+   private anc(String $$0, boolean $$1, anc.c $$2, tm $$3, anc.a $$4, anc.b $$5, boolean $$6, ang $$7) {
       this.b = $$0;
       this.c = $$2;
       this.d = $$3;
@@ -80,17 +80,17 @@ public class anc {
       }
    }
 
-   public tl a() {
+   public tm a() {
       return this.d;
    }
 
-   public tl b() {
+   public tm b() {
       return this.e.a();
    }
 
-   public tl a(boolean $$0) {
-      return tn.a(this.i.a(tl.b(this.b)))
-         .a($$1 -> $$1.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.b)).a(new tq(tq.a.a, tl.h().b(this.d).f("\n").b(this.e.a))));
+   public tm a(boolean $$0) {
+      return to.a(this.i.a(tm.b(this.b)))
+         .a($$1 -> $$1.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.b)).a(new tr(tr.a.a, tm.h().b(this.d).f("\n").b(this.e.a))));
    }
 
    public and c() {
@@ -139,7 +139,7 @@ public class anc {
       return this.b.hashCode();
    }
 
-   public static record a(tl a, and b, cec c, List<String> d) {
+   public static record a(tm a, and b, cec c, List<String> d) {
    }
 
    public static enum b {

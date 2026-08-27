@@ -29,9 +29,9 @@ public class aim {
 
       String $$6 = $$4.a().toString();
       if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().N_()), true);
+         $$0.a(() -> tm.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().N_()), true);
       } else {
-         $$0.a(() -> tl.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+         $$0.a(() -> tm.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
       }
 
       return $$1.size();

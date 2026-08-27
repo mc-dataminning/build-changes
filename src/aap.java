@@ -1,18 +1,18 @@
-public record aap() implements vd<ww> {
-   public aap(so $$0) {
+public record aap() implements ve<wx> {
+   public aap(sp $$0) {
       this();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
    @Override
-   public sn c() {
-      return sn.e;
+   public so c() {
+      return so.e;
    }
 }

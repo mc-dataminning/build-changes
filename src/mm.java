@@ -20,9 +20,9 @@ public class mm {
          $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
             try {
                String $$1x = Files.readString($$0x);
-               qx $$2 = rj.a($$1x);
-               qx $$3 = mo.a($$0x.toString(), $$2);
-               ml.a(ji.a, $$0x, rj.c($$3));
+               qy $$2 = rk.a($$1x);
+               qy $$3 = mo.a($$0x.toString(), $$2);
+               ml.a(ji.a, $$0x, rk.c($$3));
             } catch (IOException | CommandSyntaxException var4) {
                throw new RuntimeException(var4);
             }

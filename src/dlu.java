@@ -26,7 +26,7 @@ public class dlu {
          return $$0;
       }
    };
-   private static final dzp b = dzp.b(new dlt(42L), nw.a);
+   private static final dzp b = dzp.b(new dlt(42L), nx.a);
    private static final int c = hs.d(7) - 1;
    private static final int d = hs.e(c + 3);
    private static final int e = 2;

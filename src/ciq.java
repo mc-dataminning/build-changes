@@ -3,7 +3,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class ciq extends cja {
-   private static final tl a = tl.c("painting.random").a(n.h);
+   private static final tm a = tm.c("painting.random").a(n.h);
    private final biu<? extends byf> b;
 
    public ciq(biu<? extends byf> $$0, cja.a $$1) {
@@ -40,7 +40,7 @@ public class ciq extends cja {
             $$8 = new bye($$6, $$3, $$2);
          }
 
-         qx $$12 = $$5.v();
+         qy $$12 = $$5.v();
          if ($$12 != null) {
             biu.a($$6, $$4, $$8, $$12);
          }
@@ -65,18 +65,18 @@ public class ciq extends cja {
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
+   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
       super.a($$0, $$1, $$2, $$3);
       if (this.b == biu.ar) {
-         qx $$4 = $$0.v();
+         qy $$4 = $$0.v();
          if ($$4 != null && $$4.b("EntityTag", 10)) {
-            qx $$5 = $$4.p("EntityTag");
+            qy $$5 = $$4.p("EntityTag");
             byi.c($$5).ifPresentOrElse($$1x -> {
                $$1x.e().ifPresent($$1xx -> {
-                  $$2.add(tl.c($$1xx.a().b("painting", "title")).a(n.o));
-                  $$2.add(tl.c($$1xx.a().b("painting", "author")).a(n.h));
+                  $$2.add(tm.c($$1xx.a().b("painting", "title")).a(n.o));
+                  $$2.add(tm.c($$1xx.a().b("painting", "author")).a(n.h));
                });
-               $$2.add(tl.a("painting.dimensions", arx.e(((byj)$$1x.a()).a(), 16), arx.e(((byj)$$1x.a()).b(), 16)));
+               $$2.add(tm.a("painting.dimensions", arx.e(((byj)$$1x.a()).a(), 16), arx.e(((byj)$$1x.a()).b(), 16)));
             }, () -> $$2.add(a));
          } else if ($$3.b()) {
             $$2.add(a);

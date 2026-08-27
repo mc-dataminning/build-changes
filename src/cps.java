@@ -14,14 +14,14 @@ public enum cps implements asp {
    private static final int h = -1;
    private final int i;
    private final String j;
-   private final tl k;
-   private final tl l;
+   private final tm k;
+   private final tm l;
 
    private cps(int $$0, String $$1) {
       this.i = $$0;
       this.j = $$1;
-      this.k = tl.c("selectWorld.gameMode." + $$1);
-      this.l = tl.c("gameMode." + $$1);
+      this.k = tm.c("selectWorld.gameMode." + $$1);
+      this.l = tm.c("gameMode." + $$1);
    }
 
    public int a() {
@@ -37,11 +37,11 @@ public enum cps implements asp {
       return this.j;
    }
 
-   public tl d() {
+   public tm d() {
       return this.l;
    }
 
-   public tl e() {
+   public tm e() {
       return this.k;
    }
 

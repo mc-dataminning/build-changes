@@ -22,7 +22,7 @@ public abstract class cro extends csv {
    }
 
    protected boolean a(dfj $$0, gw $$1, biq $$2) {
-      return $$2.ds() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
+      return $$2.ds() < (double)$$1.v() + this.b($$0) && $$2.cG().e > (double)$$1.v() + 0.25;
    }
 
    @Override

@@ -233,7 +233,7 @@ public class ekk {
       private final String a;
       private final ekk.b b;
       private final int c;
-      private final ars<tl> d;
+      private final ars<tm> d;
       static final Map<String, ekk.a> e = Maps.newHashMap();
 
       a(String $$0, ekk.b $$1, int $$2) {
@@ -256,7 +256,7 @@ public class ekk {
          return this.a;
       }
 
-      public tl d() {
+      public tm d() {
          return this.d.a();
       }
 
@@ -294,29 +294,29 @@ public class ekk {
    public static enum b {
       a("key.keyboard", ($$0, $$1) -> {
          if ("key.keyboard.unknown".equals($$1)) {
-            return tl.c($$1);
+            return tm.c($$1);
          } else {
             String $$2 = GLFW.glfwGetKeyName($$0, -1);
-            return $$2 != null ? tl.b($$2.toUpperCase(Locale.ROOT)) : tl.c($$1);
+            return $$2 != null ? tm.b($$2.toUpperCase(Locale.ROOT)) : tm.c($$1);
          }
       }),
       b("scancode", ($$0, $$1) -> {
          String $$2 = GLFW.glfwGetKeyName(-1, $$0);
-         return $$2 != null ? tl.b($$2) : tl.c($$1);
+         return $$2 != null ? tm.b($$2) : tm.c($$1);
       }),
-      c("key.mouse", ($$0, $$1) -> qs.a().b($$1) ? tl.c($$1) : tl.a("key.mouse", $$0 + 1));
+      c("key.mouse", ($$0, $$1) -> qt.a().b($$1) ? tm.c($$1) : tm.a("key.mouse", $$0 + 1));
 
       private static final String d = "key.keyboard.unknown";
       private final Int2ObjectMap<ekk.a> e = new Int2ObjectOpenHashMap();
       final String f;
-      final BiFunction<Integer, String, tl> g;
+      final BiFunction<Integer, String, tm> g;
 
       private static void a(ekk.b $$0, String $$1, int $$2) {
          ekk.a $$3 = new ekk.a($$1, $$0, $$2);
          $$0.e.put($$2, $$3);
       }
 
-      private b(String $$0, BiFunction<Integer, String, tl> $$1) {
+      private b(String $$0, BiFunction<Integer, String, tm> $$1) {
          this.f = $$0;
          this.g = $$1;
       }

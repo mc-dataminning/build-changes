@@ -1,16 +1,16 @@
-public class aec implements vd<abf> {
+public class aec implements ve<abf> {
    private final long a;
 
    public aec(long $$0) {
       this.a = $$0;
    }
 
-   public aec(so $$0) {
+   public aec(sp $$0) {
       this.a = $$0.readLong();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.b(this.a);
    }
 

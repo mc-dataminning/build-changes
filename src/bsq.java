@@ -38,8 +38,8 @@ public class bsq extends bso {
          super.c();
       } else {
          if (this.p != null) {
-            if (!this.p.a(this.a.dj(), (double)this.a.dg())
-               && (!(this.a.ds() > (double)this.p.v()) || !gw.a((double)this.p.u(), this.a.ds(), (double)this.p.w()).a(this.a.dj(), (double)this.a.dg()))) {
+            if (!this.p.a(this.a.dj(), (double)this.a.df())
+               && (!(this.a.ds() > (double)this.p.v()) || !gw.a((double)this.p.u(), this.a.ds(), (double)this.p.w()).a(this.a.dj(), (double)this.a.df()))) {
                this.a.I().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
             } else {
                this.p = null;

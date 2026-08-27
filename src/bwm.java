@@ -28,7 +28,7 @@ public class bwm extends bur {
    }
 
    public cjf s() {
-      asc $$0 = asc.a((long)this.cw().hashCode());
+      asc $$0 = asc.a((long)this.cv().hashCode());
       aqi<cix> $$1 = this.gn() ? aqa.b : aqa.a;
       hk<cix> $$2 = jd.am.a($$1);
       return ciy.a(cji.vi, $$2.a($$0).get());
@@ -107,24 +107,24 @@ public class bwm extends bur {
    }
 
    @Override
-   protected void Y() {
+   protected void X() {
       this.dL().ad().a("goatBrain");
       this.dN().a((akr)this.dL(), this);
       this.dL().ad().c();
       this.dL().ad().a("goatActivityUpdate");
       bwn.a(this);
       this.dL().ad().c();
-      super.Y();
+      super.X();
    }
 
    @Override
-   public int aa() {
+   public int Z() {
       return 15;
    }
 
    @Override
    public void n(float $$0) {
-      int $$1 = this.aa();
+      int $$1 = this.Z();
       float $$2 = arx.c(this.aU, $$0);
       float $$3 = arx.a($$2, (float)(-$$1), (float)$$1);
       super.n(this.aU + $$3);
@@ -154,7 +154,7 @@ public class bwm extends bur {
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       asc $$5 = $$0.D_();
       bwn.a(this, $$5);
       this.w($$5.j() < 0.02);
@@ -168,8 +168,8 @@ public class bwm extends bur {
    }
 
    @Override
-   protected void X() {
-      super.X();
+   protected void W() {
+      super.W();
       abc.a(this);
    }
 
@@ -179,7 +179,7 @@ public class bwm extends bur {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("IsScreamingGoat", this.gn());
       $$0.a("HasLeftHorn", this.gd());
@@ -187,7 +187,7 @@ public class bwm extends bur {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.w($$0.q("IsScreamingGoat"));
       this.an.b(cd, $$0.q("HasLeftHorn"));

@@ -266,7 +266,7 @@ public class aei {
          return new aei.b<>($$0.a(), $$2, $$2.a($$1));
       }
 
-      public void a(so $$0) {
+      public void a(sp $$0) {
          int $$1 = aeh.b(this.b);
          if ($$1 < 0) {
             throw new EncoderException("Unknown serializer type " + this.b);
@@ -277,7 +277,7 @@ public class aei {
          }
       }
 
-      public static aei.b<?> a(so $$0, int $$1) {
+      public static aei.b<?> a(sp $$0, int $$1) {
          int $$2 = $$0.m();
          aeg<?> $$3 = aeh.a($$2);
          if ($$3 == null) {
@@ -287,7 +287,7 @@ public class aei {
          }
       }
 
-      private static <T> aei.b<T> a(so $$0, int $$1, aeg<T> $$2) {
+      private static <T> aei.b<T> a(sp $$0, int $$1, aeg<T> $$2) {
          return new aei.b<>($$1, $$2, $$2.a($$0));
       }
    }

@@ -21,7 +21,7 @@ public record egp(ecq.b c) implements egs {
    @Override
    public String a(ecq $$0) {
       biq $$1 = $$0.c(this.c.a());
-      return $$1 != null ? $$1.cy() : null;
+      return $$1 != null ? $$1.cx() : null;
    }
 
    @Override

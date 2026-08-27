@@ -401,7 +401,7 @@ public class foc implements anv, AutoCloseable {
          String $$9 = "Failed to " + $$8 + " shader: " + $$0;
          foc.a $$10 = new foc.a($$9, var8);
          if (this.q.aa().d().size() > 1) {
-            tl $$11 = this.q.Z().b().findFirst().map($$0x -> tl.b($$0x.a())).orElse(null);
+            tm $$11 = this.q.Z().b().findFirst().map($$0x -> tm.b($$0x.a())).orElse(null);
             this.q.m.i().a(eqo.b);
             this.q.a($$10, $$11, null);
          } else {

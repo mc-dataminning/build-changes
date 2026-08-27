@@ -9,21 +9,21 @@ import java.util.Map.Entry;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public record ae(Optional<aex> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai e, boolean f, Optional<tl> g) {
+public record ae(Optional<aex> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai e, boolean f, Optional<tm> g) {
    public ae(Optional<aex> $$0, Optional<aq> $$1, aj $$2, Map<String, am<?>> $$3, ai $$4, boolean $$5) {
       this($$0, $$1, $$2, Map.copyOf($$3), $$4, $$5, $$1.map(ae::a));
    }
 
-   private static tl a(aq $$0) {
-      tl $$1 = $$0.a();
+   private static tm a(aq $$0) {
+      tm $$1 = $$0.a();
       n $$2 = $$0.e().b();
-      tl $$3 = tn.a($$1.e(), uh.a.a($$2)).f("\n").b($$0.b());
-      tl $$4 = $$1.e().a($$1x -> $$1x.a(new tq(tq.a.a, $$3)));
-      return tn.a($$4).a($$2);
+      tm $$3 = to.a($$1.e(), ui.a.a($$2)).f("\n").b($$0.b());
+      tm $$4 = $$1.e().a($$1x -> $$1x.a(new tr(tr.a.a, $$3)));
+      return to.a($$4).a($$2);
    }
 
-   public static tl a(af $$0) {
-      return $$0.b().i().orElseGet(() -> tl.b($$0.a().toString()));
+   public static tm a(af $$0) {
+      return $$0.b().i().orElseGet(() -> tm.b($$0.a().toString()));
    }
 
    public JsonObject a() {
@@ -64,15 +64,15 @@ public record ae(Optional<aex> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai
       }
    }
 
-   public void a(so $$0) {
-      $$0.a(this.a, so::a);
+   public void a(sp $$0) {
+      $$0.a(this.a, sp::a);
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
       this.e.a($$0);
       $$0.a(this.f);
    }
 
-   public static ae b(so $$0) {
-      return new ae($$0.b(so::s), $$0.b(aq::b), aj.a, Map.of(), new ai($$0), $$0.readBoolean());
+   public static ae b(sp $$0) {
+      return new ae($$0.b(sp::s), $$0.b(aq::b), aj.a, Map.of(), new ai($$0), $$0.readBoolean());
    }
 
    public boolean b() {
@@ -103,7 +103,7 @@ public record ae(Optional<aex> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai
       return this.f;
    }
 
-   public Optional<tl> i() {
+   public Optional<tm> i() {
       return this.g;
    }
 
@@ -137,11 +137,11 @@ public record ae(Optional<aex> a, Optional<aq> b, aj c, Map<String, am<?>> d, ai
          return this;
       }
 
-      public ae.a a(cjf $$0, tl $$1, tl $$2, @Nullable aex $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ae.a a(cjf $$0, tm $$1, tm $$2, @Nullable aex $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new aq($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
 
-      public ae.a a(cpu $$0, tl $$1, tl $$2, @Nullable aex $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ae.a a(cpu $$0, tm $$1, tm $$2, @Nullable aex $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new aq(new cjf($$0.k()), $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       }
 

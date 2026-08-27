@@ -66,8 +66,8 @@ public class bkk {
       return "AttributeModifier{amount=" + this.b + ", operation=" + this.c + ", name='" + this.d.get() + "', id=" + this.e + "}";
    }
 
-   public qx e() {
-      qx $$0 = new qx();
+   public qy e() {
+      qy $$0 = new qy();
       $$0.a("Name", this.b());
       $$0.a("Amount", this.b);
       $$0.a("Operation", this.c.a());
@@ -76,7 +76,7 @@ public class bkk {
    }
 
    @Nullable
-   public static bkk a(qx $$0) {
+   public static bkk a(qy $$0) {
       try {
          UUID $$1 = $$0.a("UUID");
          bkk.a $$2 = bkk.a.a($$0.h("Operation"));

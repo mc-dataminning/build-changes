@@ -2,7 +2,7 @@ import net.minecraft.server.MinecraftServer;
 
 public class aou implements ds {
    private static final String b = "Rcon";
-   private static final tl c = tl.b("Rcon");
+   private static final tm c = tm.b("Rcon");
    private final StringBuffer d = new StringBuffer();
    private final MinecraftServer e;
 
@@ -24,7 +24,7 @@ public class aou implements ds {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tm $$0) {
       this.d.append($$0.getString());
    }
 

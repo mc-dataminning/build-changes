@@ -1,4 +1,4 @@
-public class acy implements vd<abd> {
+public class acy implements ve<abd> {
    private final bgx a;
    private final int b;
 
@@ -7,13 +7,13 @@ public class acy implements vd<abd> {
       this.b = $$1;
    }
 
-   public acy(so $$0) {
+   public acy(sp $$0) {
       this.a = $$0.b(bgx.class);
       this.b = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.c(this.b);
    }

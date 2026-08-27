@@ -20,7 +20,7 @@ public class bzk extends bix implements bza {
    }
 
    @Override
-   public boolean aS() {
+   public boolean aR() {
       return (this.t() + this.ah) % c == 0;
    }
 
@@ -71,11 +71,11 @@ public class bzk extends bix implements bza {
    }
 
    public int t() {
-      return this.ai() * 3;
+      return this.ah() * 3;
    }
 
    @Override
-   protected boolean W() {
+   protected boolean V() {
       return true;
    }
 
@@ -86,7 +86,7 @@ public class bzk extends bix implements bza {
          float $$0 = arx.b((float)(this.t() + this.ah) * 7.448451F * (float) (Math.PI / 180.0) + (float) Math.PI);
          float $$1 = arx.b((float)(this.t() + this.ah + 1) * 7.448451F * (float) (Math.PI / 180.0) + (float) Math.PI);
          if ($$0 > 0.0F && $$1 <= 0.0F) {
-            this.dL().a(this.dq(), this.ds(), this.dw(), ape.rL, this.db(), 0.95F + this.ag.i() * 0.05F, 0.95F + this.ag.i() * 0.05F, false);
+            this.dL().a(this.dq(), this.ds(), this.dw(), ape.rL, this.da(), 0.95F + this.ag.i() * 0.05F, 0.95F + this.ag.i() * 0.05F, false);
          }
 
          int $$2 = this.s();
@@ -100,7 +100,7 @@ public class bzk extends bix implements bza {
 
    @Override
    public void b_() {
-      if (this.bw() && this.fX()) {
+      if (this.bv() && this.fX()) {
          this.g(8);
       }
 
@@ -108,19 +108,19 @@ public class bzk extends bix implements bza {
    }
 
    @Override
-   protected void Y() {
-      super.Y();
+   protected void X() {
+      super.X();
    }
 
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       this.bS = this.dl().b(5);
       this.b(0);
       return super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.e("AX")) {
          this.bS = new gw($$0.h("AX"), $$0.h("AY"), $$0.h("AZ"));
@@ -130,7 +130,7 @@ public class bzk extends bix implements bza {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("AX", this.bS.u());
       $$0.a("AY", this.bS.v());
@@ -144,7 +144,7 @@ public class bzk extends bix implements bza {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.f;
    }
 
@@ -211,7 +211,7 @@ public class bzk extends bix implements bza {
             return false;
          } else {
             this.c = b(60);
-            List<cbu> $$0 = bzk.this.dL().a(this.b, bzk.this, bzk.this.cH().c(16.0, 64.0, 16.0));
+            List<cbu> $$0 = bzk.this.dL().a(this.b, bzk.this, bzk.this.cG().c(16.0, 64.0, 16.0));
             if (!$$0.isEmpty()) {
                $$0.sort(Comparator.comparing(biq::ds).reversed());
 
@@ -434,7 +434,7 @@ public class bzk extends bix implements bza {
          bjg $$0 = bzk.this.q();
          if ($$0 == null) {
             return false;
-         } else if (!$$0.bw()) {
+         } else if (!$$0.bv()) {
             return false;
          } else {
             if ($$0 instanceof cbu $$1 && ($$0.M_() || $$1.f())) {
@@ -446,7 +446,7 @@ public class bzk extends bix implements bza {
             } else {
                if (bzk.this.ah > this.e) {
                   this.e = bzk.this.ah + 20;
-                  List<buu> $$2 = bzk.this.dL().a(buu.class, bzk.this.cH().g(16.0), bit.a);
+                  List<buu> $$2 = bzk.this.dL().a(buu.class, bzk.this.cG().g(16.0), bit.a);
 
                   for (buu $$3 : $$2) {
                      $$3.go();
@@ -475,10 +475,10 @@ public class bzk extends bix implements bza {
          bjg $$0 = bzk.this.q();
          if ($$0 != null) {
             bzk.this.e = new ehn($$0.dq(), $$0.e(0.5), $$0.dw());
-            if (bzk.this.cH().g(0.2F).c($$0.cH())) {
+            if (bzk.this.cG().g(0.2F).c($$0.cG())) {
                bzk.this.C($$0);
                bzk.this.bT = bzk.a.a;
-               if (!bzk.this.aT()) {
+               if (!bzk.this.aS()) {
                   bzk.this.dL().c(1039, bzk.this.dl(), 0);
                }
             } else if (bzk.this.P || bzk.this.aK > 0) {

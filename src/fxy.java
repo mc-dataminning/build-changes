@@ -9,7 +9,7 @@ public abstract class fxy<T extends bjg, M extends fgi<T>> extends fxp<T, M> {
 
    public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
       int $$10 = this.a($$3);
-      asc $$11 = asc.a((long)$$3.ai());
+      asc $$11 = asc.a((long)$$3.ah());
       if ($$10 > 0) {
          for (int $$12 = 0; $$12 < $$10; $$12++) {
             $$0.a();

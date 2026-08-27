@@ -62,11 +62,11 @@ public enum ata {
       return this.a($$0, $$1, $$2, a());
    }
 
-   public qx a(DataFixer $$0, qx $$1, int $$2, int $$3) {
-      return (qx)this.a($$0, new Dynamic(ri.a, $$1), $$2, $$3).getValue();
+   public qy a(DataFixer $$0, qy $$1, int $$2, int $$3) {
+      return (qy)this.a($$0, new Dynamic(rj.a, $$1), $$2, $$3).getValue();
    }
 
-   public qx a(DataFixer $$0, qx $$1, int $$2) {
+   public qy a(DataFixer $$0, qy $$1, int $$2) {
       return this.a($$0, $$1, $$2, a());
    }
 

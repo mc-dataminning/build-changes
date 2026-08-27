@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 
 public class epu extends epv {
    private static final Logger b = LogUtils.getLogger();
-   private static final tl c = tl.c("mco.connect.connecting");
+   private static final tm c = tm.c("mco.connect.connecting");
    private final emw d;
    private final eyk e;
    private final ema f;
@@ -41,7 +41,7 @@ public class epu extends epv {
                a(
                   (eyk)($$3
                      ? new eod(this.e, this.f, this.d.a, this.d.m == emw.c.b)
-                     : new eoj(tl.c("mco.brokenworld.nonowner.title"), tl.c("mco.brokenworld.nonowner.error"), this.e))
+                     : new eoj(tm.c("mco.brokenworld.nonowner.title"), tm.c("mco.brokenworld.nonowner.error"), this.e))
                );
                return;
             default:
@@ -50,7 +50,7 @@ public class epu extends epv {
                return;
          }
       } catch (TimeoutException var6) {
-         this.a(tl.c("mco.errorMessage.connectionFailure"));
+         this.a(tm.c("mco.errorMessage.connectionFailure"));
          return;
       } catch (Exception var7) {
          b.error("Couldn't connect to world", var7);
@@ -64,7 +64,7 @@ public class epu extends epv {
    }
 
    @Override
-   public tl a() {
+   public tm a() {
       return c;
    }
 
@@ -97,7 +97,7 @@ public class epu extends epv {
                this.b($$0).thenRun(() -> a($$1.apply($$0))).exceptionally($$1xx -> {
                   eqv.O().ac().a();
                   b.error("Failed to download resource pack from {}", $$0, $$1xx);
-                  a(new eoj(tl.c("mco.download.resourcePack.fail"), this.e));
+                  a(new eoj(tm.c("mco.download.resourcePack.fail"), this.e));
                   return null;
                });
                return;
@@ -110,7 +110,7 @@ public class epu extends epv {
             }
          }
       };
-      return new eol($$2, eol.a.b, tl.c("mco.configure.world.resourcepack.question.line1"), tl.c("mco.configure.world.resourcepack.question.line2"), true);
+      return new eol($$2, eol.a.b, tm.c("mco.configure.world.resourcepack.question.line1"), tm.c("mco.configure.world.resourcepack.question.line2"), true);
    }
 
    private CompletableFuture<?> b(emx $$0) {

@@ -4,9 +4,9 @@ public interface djy<T extends djx> {
    djy<djp> a = a("block", new djp.a());
    djy<djr> b = a("entity", new djr.a());
 
-   T b(so var1);
+   T b(sp var1);
 
-   void a(so var1, T var2);
+   void a(sp var1, T var2);
 
    Codec<T> a();
 
@@ -14,12 +14,12 @@ public interface djy<T extends djx> {
       return ht.a(jd.w, $$0, $$1);
    }
 
-   static djx c(so $$0) {
+   static djx c(sp $$0) {
       aex $$1 = $$0.s();
       return jd.w.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown position source type " + $$1)).b($$0);
    }
 
-   static <T extends djx> void a(T $$0, so $$1) {
+   static <T extends djx> void a(T $$0, sp $$1) {
       $$1.a(jd.w.b($$0.a()));
       ((djy<T>)$$0.a()).a($$1, $$0);
    }

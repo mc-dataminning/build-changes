@@ -131,9 +131,9 @@ public class dcs extends dcv {
 
    public void a(biq $$0, boolean $$1, int $$2) {
       if (this.l.size() < 3) {
-         $$0.ab();
-         $$0.bB();
-         qx $$3 = new qx();
+         $$0.aa();
+         $$0.bA();
+         qy $$3 = new qy();
          $$0.e($$3);
          this.a($$3, $$2, $$1);
          if (this.o != null) {
@@ -146,12 +146,12 @@ public class dcs extends dcv {
             this.o.a(djt.c, $$5, djt.a.a($$0, this.q()));
          }
 
-         $$0.al();
+         $$0.ak();
          super.e();
       }
    }
 
-   public void a(qx $$0, int $$1, boolean $$2) {
+   public void a(qy $$0, int $$1, boolean $$2) {
       this.l.add(new dcs.a($$0, $$1, $$2 ? 2400 : 600));
    }
 
@@ -159,9 +159,9 @@ public class dcs extends dcv {
       if (($$0.O() || $$0.Z()) && $$5 != dcs.b.c) {
          return false;
       } else {
-         qx $$7 = $$3.a.h();
+         qy $$7 = $$3.a.h();
          d($$7);
-         $$7.a("HivePos", rj.a($$1));
+         $$7.a("HivePos", rk.a($$1));
          $$7.a("NoGravity", true);
          hc $$8 = $$2.c(csp.a);
          gw $$9 = $$1.a($$8);
@@ -171,7 +171,7 @@ public class dcs extends dcv {
          } else {
             biq $$11 = biu.a($$7, $$0, $$0x -> $$0x);
             if ($$11 != null) {
-               if (!$$11.ah().a(apw.c)) {
+               if (!$$11.ag().a(apw.c)) {
                   return false;
                } else {
                   if ($$11 instanceof bus $$12) {
@@ -199,10 +199,10 @@ public class dcs extends dcv {
                         $$4.add($$12);
                      }
 
-                     float $$15 = $$11.dg();
+                     float $$15 = $$11.df();
                      double $$16 = $$10 ? 0.0 : 0.55 + (double)($$15 / 2.0F);
                      double $$17 = (double)$$1.u() + 0.5 + $$16 * (double)$$8.j();
-                     double $$18 = (double)$$1.v() + 0.5 - (double)($$11.dh() / 2.0F);
+                     double $$18 = (double)$$1.v() + 0.5 - (double)($$11.dg() / 2.0F);
                      double $$19 = (double)$$1.w() + 0.5 + $$16 * (double)$$8.l();
                      $$11.b($$17, $$18, $$19, $$11.dB(), $$11.dD());
                   }
@@ -218,7 +218,7 @@ public class dcs extends dcv {
       }
    }
 
-   static void d(qx $$0) {
+   static void d(qy $$0) {
       for (String $$1 : i) {
          $$0.r($$1);
       }
@@ -274,39 +274,39 @@ public class dcs extends dcv {
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.l.clear();
-      rd $$1 = $$0.c("Bees", 10);
+      re $$1 = $$0.c("Bees", 10);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         qx $$3 = $$1.a($$2);
+         qy $$3 = $$1.a($$2);
          dcs.a $$4 = new dcs.a($$3.p("EntityData"), $$3.h("TicksInHive"), $$3.h("MinOccupationTicks"));
          this.l.add($$4);
       }
 
       this.m = null;
       if ($$0.e("FlowerPos")) {
-         this.m = rj.b($$0.p("FlowerPos"));
+         this.m = rk.b($$0.p("FlowerPos"));
       }
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       $$0.a("Bees", this.j());
       if (this.v()) {
-         $$0.a("FlowerPos", rj.a(this.m));
+         $$0.a("FlowerPos", rk.a(this.m));
       }
    }
 
-   public rd j() {
-      rd $$0 = new rd();
+   public re j() {
+      re $$0 = new re();
 
       for (dcs.a $$1 : this.l) {
-         qx $$2 = $$1.a.h();
+         qy $$2 = $$1.a.h();
          $$2.r("UUID");
-         qx $$3 = new qx();
+         qy $$3 = new qy();
          $$3.a("EntityData", $$2);
          $$3.a("TicksInHive", $$1.b);
          $$3.a("MinOccupationTicks", $$1.c);
@@ -317,11 +317,11 @@ public class dcs extends dcv {
    }
 
    static class a {
-      final qx a;
+      final qy a;
       int b;
       final int c;
 
-      a(qx $$0, int $$1, int $$2) {
+      a(qy $$0, int $$1, int $$2) {
          dcs.d($$0);
          this.a = $$0;
          this.b = $$1;

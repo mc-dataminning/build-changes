@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 public class eyp extends eyk {
    private static final Logger c = LogUtils.getLogger();
    private static final String k = "Demo_World";
-   public static final tl a = tl.c("title.credits");
+   public static final tm a = tm.c("title.credits");
    public static final fns b = new fns(new aex("textures/gui/title/background/panorama"));
    private static final aex l = new aex("textures/gui/title/background/panorama_overlay.png");
    @Nullable
@@ -36,7 +36,7 @@ public class eyp extends eyk {
    }
 
    public eyp(boolean $$0, @Nullable eth $$1) {
-      super(tl.c("narrator.screen.title"));
+      super(tm.c("narrator.screen.title"));
       this.q = $$0;
       this.u = Objects.requireNonNullElseGet($$1, () -> new eth(false));
    }
@@ -86,8 +86,8 @@ public class eyp extends eyk {
 
       etu $$4 = this.d(esu.a(20, $$0x -> this.f.a(new ext(this, this.f.m, this.f.ae())), true));
       $$4.b(this.g / 2 - 124, $$3 + 72 + 12);
-      this.d(esq.a(tl.c("menu.options"), $$0x -> this.f.a(new eyb(this, this.f.m))).a(this.g / 2 - 100, $$3 + 72 + 12, 98, 20).a());
-      this.d(esq.a(tl.c("menu.quit"), $$0x -> this.f.q()).a(this.g / 2 + 2, $$3 + 72 + 12, 98, 20).a());
+      this.d(esq.a(tm.c("menu.options"), $$0x -> this.f.a(new eyb(this, this.f.m))).a(this.g / 2 - 100, $$3 + 72 + 12, 98, 20).a());
+      this.d(esq.a(tm.c("menu.quit"), $$0x -> this.f.q()).a(this.g / 2 + 2, $$3 + 72 + 12, 98, 20).a());
       etu $$5 = this.d(esu.b(20, $$0x -> this.f.a(new eww(this, this.f.m)), true));
       $$5.b(this.g / 2 + 104, $$3 + 72 + 12);
       this.d(new eto($$1, this.h - 10, $$0, 10, a, $$0x -> this.f.a(new exh(this)), this.i));
@@ -100,41 +100,41 @@ public class eyp extends eyk {
       }
 
       if (!this.f.af()) {
-         this.t = new eyp.a(this.i, etj.a(this.i, tl.c("title.32bit.deprecation"), 350, 2), this.g / 2, $$3 - 24);
+         this.t = new eyp.a(this.i, etj.a(this.i, tm.c("title.32bit.deprecation"), 350, 2), this.g / 2, $$3 - 24);
       }
    }
 
    private void a(int $$0, int $$1) {
-      this.d(esq.a(tl.c("menu.singleplayer"), $$0x -> this.f.a(new fde(this))).a(this.g / 2 - 100, $$0, 200, 20).a());
-      tl $$2 = this.C();
+      this.d(esq.a(tm.c("menu.singleplayer"), $$0x -> this.f.a(new fde(this))).a(this.g / 2 - 100, $$0, 200, 20).a());
+      tm $$2 = this.D();
       boolean $$3 = $$2 == null;
       eua $$4 = $$2 != null ? eua.a($$2) : null;
-      this.d(esq.a(tl.c("menu.multiplayer"), $$0x -> {
+      this.d(esq.a(tm.c("menu.multiplayer"), $$0x -> {
          eyk $$1x = (eyk)(this.f.m.v ? new fbg(this) : new fbi(this));
          this.f.a($$1x);
       }).a(this.g / 2 - 100, $$0 + $$1 * 1, 200, 20).a($$4).a()).i = $$3;
-      this.d(esq.a(tl.c("menu.online"), $$0x -> this.E()).a(this.g / 2 - 100, $$0 + $$1 * 2, 200, 20).a($$4).a()).i = $$3;
+      this.d(esq.a(tm.c("menu.online"), $$0x -> this.F()).a(this.g / 2 - 100, $$0 + $$1 * 2, 200, 20).a($$4).a()).i = $$3;
    }
 
    @Nullable
-   private tl C() {
+   private tm D() {
       if (this.f.D()) {
          return null;
       } else if (this.f.G()) {
-         return tl.c("title.multiplayer.disabled.banned.name");
+         return tm.c("title.multiplayer.disabled.banned.name");
       } else {
          BanDetails $$0 = this.f.F();
          if ($$0 != null) {
-            return $$0.expires() != null ? tl.c("title.multiplayer.disabled.banned.temporary") : tl.c("title.multiplayer.disabled.banned.permanent");
+            return $$0.expires() != null ? tm.c("title.multiplayer.disabled.banned.temporary") : tm.c("title.multiplayer.disabled.banned.permanent");
          } else {
-            return tl.c("title.multiplayer.disabled");
+            return tm.c("title.multiplayer.disabled");
          }
       }
    }
 
    private void b(int $$0, int $$1) {
-      boolean $$2 = this.D();
-      this.d(esq.a(tl.c("menu.playdemo"), $$1x -> {
+      boolean $$2 = this.E();
+      this.d(esq.a(tm.c("menu.playdemo"), $$1x -> {
          if ($$2) {
             this.f.y().a(this, "Demo_World");
          } else {
@@ -143,7 +143,7 @@ public class eyp extends eyk {
       }).a(this.g / 2 - 100, $$0, 200, 20).a());
       this.n = this.d(
          esq.a(
-               tl.c("menu.resetdemo"),
+               tm.c("menu.resetdemo"),
                $$0x -> {
                   ecg $$1x = this.f.l();
 
@@ -154,10 +154,10 @@ public class eyp extends eyk {
                            .a(
                               new exd(
                                  this::c,
-                                 tl.c("selectWorld.deleteQuestion"),
-                                 tl.a("selectWorld.deleteWarning", $$3.b()),
-                                 tl.c("selectWorld.deleteButton"),
-                                 tk.e
+                                 tm.c("selectWorld.deleteQuestion"),
+                                 tm.a("selectWorld.deleteWarning", $$3.b()),
+                                 tm.c("selectWorld.deleteButton"),
+                                 tl.e
                               )
                            );
                      }
@@ -173,7 +173,7 @@ public class eyp extends eyk {
       this.n.i = $$2;
    }
 
-   private boolean D() {
+   private boolean E() {
       try {
          boolean var2;
          try (ecg.c $$0 = this.f.l().d("Demo_World")) {
@@ -188,7 +188,7 @@ public class eyp extends eyk {
       }
    }
 
-   private void E() {
+   private void F() {
       this.f.a(new ema(this));
    }
 

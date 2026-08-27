@@ -1,4 +1,4 @@
-public class acx implements vd<abd> {
+public class acx implements ve<abd> {
    private final ehj a;
    private final bgx b;
    private final int c;
@@ -9,14 +9,14 @@ public class acx implements vd<abd> {
       this.c = $$2;
    }
 
-   public acx(so $$0) {
+   public acx(sp $$0) {
       this.b = $$0.b(bgx.class);
       this.a = $$0.x();
       this.c = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.b);
       $$0.a(this.a);
       $$0.c(this.c);

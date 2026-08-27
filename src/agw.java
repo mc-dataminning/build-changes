@@ -28,9 +28,9 @@ import java.util.stream.Stream;
 
 public class agw {
    private static final int a = 32768;
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.execute.blocks.toobig", $$0, $$1));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.execute.conditional.fail"));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.a("commands.execute.conditional.fail_count", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("commands.execute.blocks.toobig", $$0, $$1));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.execute.conditional.fail"));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tm.a("commands.execute.conditional.fail_count", $$0));
    private static final BinaryOperator<ResultConsumer<dt>> e = ($$0, $$1) -> ($$2, $$3, $$4) -> {
          $$0.onCommandComplete($$2, $$3, $$4);
          $$1.onCommandComplete($$2, $$3, $$4);
@@ -63,7 +63,7 @@ public class agw {
                                           List<dt> $$1x = Lists.newArrayList();
 
                                           for (biq $$2x : ee.c($$0x, "targets")) {
-                                             $$1x.add(((dt)$$0x.getSource()).a((akr)$$2x.dL()).a($$2x.dj()).a($$2x.bG()));
+                                             $$1x.add(((dt)$$0x.getSource()).a((akr)$$2x.dL()).a($$2x.dj()).a($$2x.bF()));
                                           }
 
                                           return $$1x;
@@ -101,7 +101,7 @@ public class agw {
                                        List<dt> $$1x = Lists.newArrayList();
 
                                        for (biq $$2x : ee.c($$0x, "targets")) {
-                                          $$1x.add(((dt)$$0x.getSource()).a($$2x.bG()));
+                                          $$1x.add(((dt)$$0x.getSource()).a($$2x.bF()));
                                        }
 
                                        return $$1x;
@@ -168,7 +168,7 @@ public class agw {
                                                          (dt)$$2xx.getSource(),
                                                          $$3.a($$2xx),
                                                          ej.a($$2xx, "path"),
-                                                         $$1xxx -> rc.a((int)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale"))),
+                                                         $$1xxx -> rd.a((int)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale"))),
                                                          $$2
                                                       )
                                                 )
@@ -184,7 +184,7 @@ public class agw {
                                                       (dt)$$2xx.getSource(),
                                                       $$3.a($$2xx),
                                                       ej.a($$2xx, "path"),
-                                                      $$1xxx -> ra.a((float)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale"))),
+                                                      $$1xxx -> rb.a((float)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale"))),
                                                       $$2
                                                    )
                                              )
@@ -200,7 +200,7 @@ public class agw {
                                                    (dt)$$2xx.getSource(),
                                                    $$3.a($$2xx),
                                                    ej.a($$2xx, "path"),
-                                                   $$1xxx -> rl.a((short)((int)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale")))),
+                                                   $$1xxx -> rm.a((short)((int)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale")))),
                                                    $$2
                                                 )
                                           )
@@ -216,7 +216,7 @@ public class agw {
                                                 (dt)$$2xx.getSource(),
                                                 $$3.a($$2xx),
                                                 ej.a($$2xx, "path"),
-                                                $$1xxx -> rf.a((long)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale"))),
+                                                $$1xxx -> rg.a((long)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale"))),
                                                 $$2
                                              )
                                        )
@@ -232,7 +232,7 @@ public class agw {
                                              (dt)$$2xx.getSource(),
                                              $$3.a($$2xx),
                                              ej.a($$2xx, "path"),
-                                             $$1xxx -> qy.a((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale")),
+                                             $$1xxx -> qz.a((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale")),
                                              $$2
                                           )
                                     )
@@ -248,7 +248,7 @@ public class agw {
                                           (dt)$$2xx.getSource(),
                                           $$3.a($$2xx),
                                           ej.a($$2xx, "path"),
-                                          $$1xxx -> qv.a((byte)((int)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale")))),
+                                          $$1xxx -> qw.a((byte)((int)((double)$$1xxx * DoubleArgumentType.getDouble($$2xx, "scale")))),
                                           $$2
                                        )
                                  )
@@ -283,10 +283,10 @@ public class agw {
       }, e);
    }
 
-   private static dt a(dt $$0, ajh $$1, ej.g $$2, IntFunction<rq> $$3, boolean $$4) {
+   private static dt a(dt $$0, ajh $$1, ej.g $$2, IntFunction<rr> $$3, boolean $$4) {
       return $$0.a(($$4x, $$5, $$6) -> {
          try {
-            qx $$7 = $$1.a();
+            qy $$7 = $$1.a();
             int $$8 = $$4 ? $$6 : ($$5 ? 1 : 0);
             $$2.a($$7, $$3.apply($$8));
             $$1.a($$7);
@@ -454,7 +454,7 @@ public class agw {
       return $$0 ? $$1x -> {
          int $$2 = $$1.test($$1x);
          if ($$2 > 0) {
-            ((dt)$$1x.getSource()).a(() -> tl.a("commands.execute.conditional.pass_count", $$2), false);
+            ((dt)$$1x.getSource()).a(() -> tm.a("commands.execute.conditional.pass_count", $$2), false);
             return $$2;
          } else {
             throw c.create();
@@ -462,7 +462,7 @@ public class agw {
       } : $$1x -> {
          int $$2 = $$1.test($$1x);
          if ($$2 == 0) {
-            ((dt)$$1x.getSource()).a(() -> tl.c("commands.execute.conditional.pass"), false);
+            ((dt)$$1x.getSource()).a(() -> tm.c("commands.execute.conditional.pass"), false);
             return 1;
          } else {
             throw d.create($$2);
@@ -511,7 +511,7 @@ public class agw {
    private static ArgumentBuilder<dt, ?> a(CommandNode<dt> $$0, ArgumentBuilder<dt, ?> $$1, boolean $$2, agw.b $$3) {
       return $$1.fork($$0, $$2x -> a($$2x, $$2, $$3.test($$2x))).executes($$2x -> {
          if ($$2 == $$3.test($$2x)) {
-            ((dt)$$2x.getSource()).a(() -> tl.c("commands.execute.conditional.pass"), false);
+            ((dt)$$2x.getSource()).a(() -> tm.c("commands.execute.conditional.pass"), false);
             return 1;
          } else {
             throw c.create();
@@ -526,7 +526,7 @@ public class agw {
    private static int a(CommandContext<dt> $$0, boolean $$1) throws CommandSyntaxException {
       OptionalInt $$2 = c($$0, $$1);
       if ($$2.isPresent()) {
-         ((dt)$$0.getSource()).a(() -> tl.a("commands.execute.conditional.pass_count", $$2.getAsInt()), false);
+         ((dt)$$0.getSource()).a(() -> tm.a("commands.execute.conditional.pass_count", $$2.getAsInt()), false);
          return $$2.getAsInt();
       } else {
          throw c.create();
@@ -538,7 +538,7 @@ public class agw {
       if ($$2.isPresent()) {
          throw d.create($$2.getAsInt());
       } else {
-         ((dt)$$0.getSource()).a(() -> tl.c("commands.execute.conditional.pass"), false);
+         ((dt)$$0.getSource()).a(() -> tm.c("commands.execute.conditional.pass"), false);
          return 1;
       }
    }
@@ -579,8 +579,8 @@ public class agw {
                            return OptionalInt.empty();
                         }
 
-                        qx $$18 = $$16.o();
-                        qx $$19 = $$17.o();
+                        qy $$18 = $$16.o();
+                        qy $$19 = $$17.o();
                         if (!$$18.equals($$19)) {
                            return OptionalInt.empty();
                         }
@@ -635,16 +635,16 @@ public class agw {
                         du.a("attacker")
                            .fork($$0, a((Function<biq, Optional<biq>>)($$0x -> $$0x instanceof bio $$1x ? Optional.ofNullable($$1x.S_()) : Optional.empty())))
                      ))
-                  .then(du.a("vehicle").fork($$0, a((Function<biq, Optional<biq>>)($$0x -> Optional.ofNullable($$0x.cZ()))))))
-               .then(du.a("controller").fork($$0, a((Function<biq, Optional<biq>>)($$0x -> Optional.ofNullable($$0x.cO()))))))
+                  .then(du.a("vehicle").fork($$0, a((Function<biq, Optional<biq>>)($$0x -> Optional.ofNullable($$0x.cY()))))))
+               .then(du.a("controller").fork($$0, a((Function<biq, Optional<biq>>)($$0x -> Optional.ofNullable($$0x.cN()))))))
             .then(
                du.a("origin").fork($$0, a((Function<biq, Optional<biq>>)($$0x -> $$0x instanceof bkd $$1x ? Optional.ofNullable($$1x.v()) : Optional.empty())))
             ))
-         .then(du.a("passengers").fork($$0, b((Function<biq, Stream<biq>>)($$0x -> $$0x.cQ().stream()))));
+         .then(du.a("passengers").fork($$0, b((Function<biq, Stream<biq>>)($$0x -> $$0x.cP().stream()))));
    }
 
    private static dt a(dt $$0, hg.c<biu<?>> $$1) throws CommandSyntaxException {
-      biq $$2 = ait.a($$0, $$1, $$0.d(), new qx(), true);
+      biq $$2 = ait.a($$0, $$1, $$0.d(), new qy(), true);
       return $$0.a($$2);
    }
 

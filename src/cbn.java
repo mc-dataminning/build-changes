@@ -15,8 +15,8 @@ public class cbn extends cbc {
    @Override
    protected void z() {
       this.bO.a(0, new bpv(this));
-      this.bO.a(0, new brm<>(this, cle.a(new cjf(cji.rv), clf.i), ape.zn, $$0 -> this.dL().O() && !$$0.ce()));
-      this.bO.a(0, new brm<>(this, new cjf(cji.pQ), ape.zs, $$0 -> this.dL().N() && $$0.ce()));
+      this.bO.a(0, new brm<>(this, cle.a(new cjf(cji.rv), clf.i), ape.zn, $$0 -> this.dL().O() && !$$0.cd()));
+      this.bO.a(0, new brm<>(this, new cjf(cji.pQ), ape.zs, $$0 -> this.dL().N() && $$0.cd()));
       this.bO.a(1, new brk(this));
       this.bO.a(1, new bpi<>(this, cab.class, 8.0F, 0.5, 0.5));
       this.bO.a(1, new bpi<>(this, bzb.class, 12.0F, 0.5, 0.5));
@@ -48,7 +48,7 @@ public class cbn extends cbc {
    @Override
    public bgy b(cbu $$0, bgx $$1) {
       cjf $$2 = $$0.b($$1);
-      if (!$$2.a(cji.sR) && this.bw() && !this.ge() && !this.m_()) {
+      if (!$$2.a(cji.sR) && this.bv() && !this.ge() && !this.m_()) {
          if ($$1 == bgx.a) {
             $$0.a(apo.S);
          }
@@ -98,23 +98,23 @@ public class cbn extends cbc {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       $$0.a("DespawnDelay", this.bX);
       if (this.bW != null) {
-         $$0.a("WanderTarget", rj.a(this.bW));
+         $$0.a("WanderTarget", rk.a(this.bW));
       }
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       if ($$0.b("DespawnDelay", 99)) {
          this.bX = $$0.h("DespawnDelay");
       }
 
       if ($$0.e("WanderTarget")) {
-         this.bW = rj.b($$0.p("WanderTarget"));
+         this.bW = rk.b($$0.p("WanderTarget"));
       }
 
       this.c_(Math.max(0, this.h()));
@@ -181,7 +181,7 @@ public class cbn extends cbc {
 
    private void go() {
       if (this.bX > 0 && !this.ge() && --this.bX == 0) {
-         this.al();
+         this.ak();
       }
    }
 

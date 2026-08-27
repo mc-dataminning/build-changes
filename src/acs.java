@@ -1,4 +1,4 @@
-public class acs implements vd<abd> {
+public class acs implements ve<abd> {
    private final gw a;
    private final aex b;
    private final aex c;
@@ -15,7 +15,7 @@ public class acs implements vd<abd> {
       this.f = $$5;
    }
 
-   public acs(so $$0) {
+   public acs(sp $$0) {
       this.a = $$0.e();
       this.b = $$0.s();
       this.c = $$0.s();
@@ -25,7 +25,7 @@ public class acs implements vd<abd> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);

@@ -55,8 +55,8 @@ public class bvz {
                      Pair.of(bmo.c(0.5F), 2),
                      Pair.of(bmo.a(0.15F, false), 2),
                      Pair.of(bnd.a(bvz::a, bvz::d, 3), 3),
-                     Pair.of(boj.a(biq::bb), 5),
-                     Pair.of(boj.a(biq::aB), 5)
+                     Pair.of(boj.a(biq::ba), 5),
+                     Pair.of(boj.a(biq::aA), 5)
                   )
                )
             )
@@ -69,7 +69,7 @@ public class bvz {
       Optional<bmk> $$2 = $$0.dN().c(bsh.n);
       if ($$2.isPresent()) {
          gw $$3 = $$2.get().b();
-         return $$1.y($$3) == $$0.bb();
+         return $$1.y($$3) == $$0.ba();
       } else {
          return false;
       }
@@ -87,15 +87,15 @@ public class bvz {
    }
 
    private static float b(bjg $$0) {
-      return $$0.bb() ? 0.6F : 0.15F;
+      return $$0.ba() ? 0.6F : 0.15F;
    }
 
    private static float c(bjg $$0) {
-      return $$0.bb() ? 0.6F : 0.15F;
+      return $$0.ba() ? 0.6F : 0.15F;
    }
 
    private static float d(bjg $$0) {
-      return $$0.bb() ? 0.5F : 0.15F;
+      return $$0.ba() ? 0.5F : 0.15F;
    }
 
    private static Optional<? extends bjg> b(bvy $$0) {

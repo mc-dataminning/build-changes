@@ -34,7 +34,7 @@ public class byn extends biq implements bkd {
    }
 
    private byn(byn $$0) {
-      super($$0.ah(), $$0.dL());
+      super($$0.ag(), $$0.dL());
       this.a($$0.q().p());
       this.v($$0);
       this.g = $$0.g;
@@ -42,7 +42,7 @@ public class byn extends biq implements bkd {
    }
 
    @Override
-   public boolean aW() {
+   public boolean aV() {
       return this.q().a(aqb.aB);
    }
 
@@ -53,19 +53,19 @@ public class byn extends biq implements bkd {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.a;
    }
 
    @Override
    protected void a_() {
-      this.am().a(c, cjf.b);
+      this.al().a(c, cjf.b);
    }
 
    @Override
    public void l() {
       if (this.q().b()) {
-         this.al();
+         this.ak();
       } else {
          super.l();
          if (this.h > 0 && this.h != 32767) {
@@ -76,33 +76,33 @@ public class byn extends biq implements bkd {
          this.L = this.ds();
          this.M = this.dw();
          ehn $$0 = this.do();
-         float $$1 = this.cI() - 0.11111111F;
-         if (this.aY() && this.b(apy.a) > (double)$$1) {
+         float $$1 = this.cH() - 0.11111111F;
+         if (this.aX() && this.b(apy.a) > (double)$$1) {
             this.E();
-         } else if (this.bm() && this.b(apy.b) > (double)$$1) {
+         } else if (this.bl() && this.b(apy.b) > (double)$$1) {
             this.F();
-         } else if (!this.aU()) {
+         } else if (!this.aT()) {
             this.f(this.do().b(0.0, -0.04, 0.0));
          }
 
          if (this.dL().B) {
             this.af = false;
          } else {
-            this.af = !this.dL().a(this, this.cH().h(1.0E-7));
+            this.af = !this.dL().a(this, this.cG().h(1.0E-7));
             if (this.af) {
-               this.m(this.dq(), (this.cH().b + this.cH().e) / 2.0, this.dw());
+               this.m(this.dq(), (this.cG().b + this.cG().e) / 2.0, this.dw());
             }
          }
 
-         if (!this.aB() || this.do().i() > 1.0E-5F || (this.ah + this.ai()) % 4 == 0) {
+         if (!this.aA() || this.do().i() > 1.0E-5F || (this.ah + this.ah()) % 4 == 0) {
             this.a(bjm.a, this.do());
             float $$2 = 0.98F;
-            if (this.aB()) {
-               $$2 = this.dL().a_(this.aH()).b().h() * 0.98F;
+            if (this.aA()) {
+               $$2 = this.dL().a_(this.aG()).b().h() * 0.98F;
             }
 
             this.f(this.do().d((double)$$2, 0.98, (double)$$2));
-            if (this.aB()) {
+            if (this.aA()) {
                ehn $$3 = this.do();
                if ($$3.d < 0.0) {
                   this.f($$3.d(1.0, -0.5, 1.0));
@@ -120,7 +120,7 @@ public class byn extends biq implements bkd {
             this.g++;
          }
 
-         this.au = this.au | this.bf();
+         this.au = this.au | this.be();
          if (!this.dL().B) {
             double $$6 = this.do().d($$0).g();
             if ($$6 > 0.01) {
@@ -129,13 +129,13 @@ public class byn extends biq implements bkd {
          }
 
          if (!this.dL().B && this.g >= 6000) {
-            this.al();
+            this.ak();
          }
       }
    }
 
    @Override
-   protected gw aH() {
+   protected gw aG() {
       return this.d(0.999999F);
    }
 
@@ -151,7 +151,7 @@ public class byn extends biq implements bkd {
 
    private void G() {
       if (this.H()) {
-         for (byn $$1 : this.dL().a(byn.class, this.cH().c(0.5, 0.0, 0.5), $$0 -> $$0 != this && $$0.H())) {
+         for (byn $$1 : this.dL().a(byn.class, this.cG().c(0.5, 0.0, 0.5), $$0 -> $$0 != this && $$0.H())) {
             if ($$1.H()) {
                this.a($$1);
                if (this.dG()) {
@@ -164,7 +164,7 @@ public class byn extends biq implements bkd {
 
    private boolean H() {
       cjf $$0 = this.q();
-      return this.bw() && this.h != 32767 && this.g != -32768 && this.g < 6000 && $$0.L() < $$0.g();
+      return this.bv() && this.h != 32767 && this.g != -32768 && this.g < 6000 && $$0.L() < $$0.g();
    }
 
    private void a(byn $$0) {
@@ -206,13 +206,13 @@ public class byn extends biq implements bkd {
       $$0.h = Math.max($$0.h, $$2.h);
       $$0.g = Math.min($$0.g, $$2.g);
       if ($$3.b()) {
-         $$2.al();
+         $$2.ak();
       }
    }
 
    @Override
-   public boolean aX() {
-      return this.q().d().w() || super.aX();
+   public boolean aW() {
+      return this.q().d().w() || super.aW();
    }
 
    @Override
@@ -226,12 +226,12 @@ public class byn extends biq implements bkd {
       } else if (this.dL().B) {
          return true;
       } else {
-         this.bp();
+         this.bo();
          this.i = (int)((float)this.i - $$1);
          this.a(djt.o, $$0.d());
          if (this.i <= 0) {
             this.q().a(this);
-            this.al();
+            this.ak();
          }
 
          return true;
@@ -239,7 +239,7 @@ public class byn extends biq implements bkd {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       $$0.a("Health", (short)this.i);
       $$0.a("Age", (short)this.g);
       $$0.a("PickupDelay", (short)this.h);
@@ -252,12 +252,12 @@ public class byn extends biq implements bkd {
       }
 
       if (!this.q().b()) {
-         $$0.a("Item", this.q().b(new qx()));
+         $$0.a("Item", this.q().b(new qy()));
       }
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       this.i = $$0.g("Health");
       this.g = $$0.g("Age");
       if ($$0.e("PickupDelay")) {
@@ -272,10 +272,10 @@ public class byn extends biq implements bkd {
          this.j = $$0.a("Thrower");
       }
 
-      qx $$1 = $$0.p("Item");
+      qy $$1 = $$0.p("Item");
       this.a(cjf.a($$1));
       if (this.q().b()) {
-         this.al();
+         this.ak();
       }
    }
 
@@ -285,10 +285,10 @@ public class byn extends biq implements bkd {
          cjf $$1 = this.q();
          cja $$2 = $$1.d();
          int $$3 = $$1.L();
-         if (this.h == 0 && (this.k == null || this.k.equals($$0.cw())) && $$0.fR().e($$1)) {
+         if (this.h == 0 && (this.k == null || this.k.equals($$0.cv())) && $$0.fR().e($$1)) {
             $$0.a(this, $$3);
             if ($$1.b()) {
-               this.al();
+               this.ak();
                $$1.f($$3);
             }
 
@@ -299,13 +299,13 @@ public class byn extends biq implements bkd {
    }
 
    @Override
-   public tl ac() {
-      tl $$0 = this.ae();
-      return (tl)($$0 != null ? $$0 : tl.c(this.q().q()));
+   public tm ab() {
+      tm $$0 = this.ad();
+      return (tm)($$0 != null ? $$0 : tm.c(this.q().q()));
    }
 
    @Override
-   public boolean cq() {
+   public boolean cp() {
       return false;
    }
 
@@ -321,11 +321,11 @@ public class byn extends biq implements bkd {
    }
 
    public cjf q() {
-      return this.am().b(c);
+      return this.al().b(c);
    }
 
    public void a(cjf $$0) {
-      this.am().b(c, $$0);
+      this.al().b(c, $$0);
    }
 
    @Override
@@ -392,7 +392,7 @@ public class byn extends biq implements bkd {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.i;
    }
 

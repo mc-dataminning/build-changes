@@ -4,9 +4,9 @@ import org.slf4j.Logger;
 
 public class epa extends gfb {
    private static final Logger a = LogUtils.getLogger();
-   private static final tl b = tl.c("mco.terms.title");
-   private static final tl c = tl.c("mco.terms.sentence.1");
-   private static final tl y = tk.a().b(tl.c("mco.terms.sentence.2").c(uh.a.c(true)));
+   private static final tm b = tm.c("mco.terms.title");
+   private static final tm c = tm.c("mco.terms.sentence.1");
+   private static final tm y = tl.a().b(tm.c("mco.terms.sentence.2").c(ui.a.c(true)));
    private final eyk z;
    private final ema A;
    private final emw B;
@@ -22,8 +22,8 @@ public class epa extends gfb {
    @Override
    public void aI_() {
       int $$0 = this.g / 4 - 2;
-      this.d(esq.a(tl.c("mco.terms.buttons.agree"), $$0x -> this.C()).a(this.g / 4, h(12), $$0, 20).a());
-      this.d(esq.a(tl.c("mco.terms.buttons.disagree"), $$0x -> this.f.a(this.z)).a(this.g / 2 + 4, h(12), $$0, 20).a());
+      this.d(esq.a(tm.c("mco.terms.buttons.agree"), $$0x -> this.D()).a(this.g / 4, h(12), $$0, 20).a());
+      this.d(esq.a(tm.c("mco.terms.buttons.disagree"), $$0x -> this.f.a(this.z)).a(this.g / 2 + 4, h(12), $$0, 20).a());
    }
 
    @Override
@@ -36,7 +36,7 @@ public class epa extends gfb {
       }
    }
 
-   private void C() {
+   private void D() {
       emf $$0 = emf.a();
 
       try {
@@ -59,8 +59,8 @@ public class epa extends gfb {
    }
 
    @Override
-   public tl g() {
-      return tk.a(super.g(), c).b(tk.u).b(y);
+   public tm g() {
+      return tl.a(super.g(), c).b(tl.u).b(y);
    }
 
    @Override

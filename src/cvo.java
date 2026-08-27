@@ -63,7 +63,7 @@ public class cvo extends csv {
 
    @Override
    public void a(cpv $$0, dfj $$1, gw $$2, biq $$3, float $$4) {
-      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof bjg && ($$3 instanceof cbu || $$0.X().b(cpr.c)) && $$3.dg() * $$3.dg() * $$3.dh() > 0.512F) {
+      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof bjg && ($$3 instanceof cbu || $$0.X().b(cpr.c)) && $$3.df() * $$3.df() * $$3.dg() > 0.512F) {
          a($$3, $$1, $$0, $$2);
       }
 

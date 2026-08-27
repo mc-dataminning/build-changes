@@ -1,4 +1,4 @@
-public class aci implements vd<abd> {
+public class aci implements ve<abd> {
    private final cfw a;
    private final boolean b;
    private final boolean c;
@@ -9,14 +9,14 @@ public class aci implements vd<abd> {
       this.c = $$2;
    }
 
-   public aci(so $$0) {
+   public aci(sp $$0) {
       this.a = $$0.b(cfw.class);
       this.b = $$0.readBoolean();
       this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);

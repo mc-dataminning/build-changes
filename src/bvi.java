@@ -31,8 +31,8 @@ public class bvi extends bur implements bjd, bjw {
 
    @Nullable
    @Override
-   public bjg cO() {
-      return (bjg)(this.i() && this.cR() instanceof cbu $$0 && $$0.b(cji.nf) ? $$0 : super.cO());
+   public bjg cN() {
+      return (bjg)(this.i() && this.cQ() instanceof cbu $$0 && $$0.b(cji.nf) ? $$0 : super.cN());
    }
 
    @Override
@@ -52,13 +52,13 @@ public class bvi extends bur implements bjd, bjw {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       this.bX.a($$0);
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
       this.bX.b($$0);
    }
@@ -86,7 +86,7 @@ public class bvi extends bur implements bjd, bjw {
    @Override
    public bgy b(cbu $$0, bgx $$1) {
       boolean $$2 = this.m($$0.b($$1));
-      if (!$$2 && this.i() && !this.bP() && !$$0.fH()) {
+      if (!$$2 && this.i() && !this.bO() && !$$0.fH()) {
          if (!this.dL().B) {
             $$0.n(this);
          }
@@ -105,7 +105,7 @@ public class bvi extends bur implements bjd, bjw {
 
    @Override
    public boolean g() {
-      return this.bw() && !this.m_();
+      return this.bv() && !this.m_();
    }
 
    @Override
@@ -131,7 +131,7 @@ public class bvi extends bur implements bjd, bjw {
 
    @Override
    public ehn b(bjg $$0) {
-      hc $$1 = this.cF();
+      hc $$1 = this.cE();
       if ($$1.o() == hc.a.b) {
          return super.b($$0);
       } else {
@@ -170,14 +170,14 @@ public class bvi extends bur implements bjd, bjw {
             $$2.b(this.dq(), this.ds(), this.dw(), this.dB(), this.dD());
             $$2.t(this.fT());
             $$2.a(this.m_());
-            if (this.ad()) {
-               $$2.b(this.ae());
-               $$2.n(this.cB());
+            if (this.ac()) {
+               $$2.b(this.ad());
+               $$2.n(this.cA());
             }
 
             $$2.fI();
             $$0.b($$2);
-            this.al();
+            this.ak();
          } else {
             super.a($$0, $$1);
          }
@@ -220,8 +220,8 @@ public class bvi extends bur implements bjd, bjw {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.6F * this.cI()), (double)(this.dg() * 0.4F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.6F * this.cH()), (double)(this.df() * 0.4F));
    }
 
    @Override

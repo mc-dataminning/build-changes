@@ -1,37 +1,37 @@
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
 public class exc extends exd {
-   private static final tl k = tl.c("chat.copy");
-   private static final tl l = tl.c("chat.link.warning");
+   private static final tm k = tm.c("chat.copy");
+   private static final tm l = tm.c("chat.link.warning");
    private final String m;
    private final boolean n;
 
    public exc(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), tl.b($$1), $$1, $$2 ? tk.e : tk.g, $$2);
+      this($$0, c($$2), tm.b($$1), $$1, $$2 ? tl.e : tl.g, $$2);
    }
 
-   public exc(BooleanConsumer $$0, tl $$1, String $$2, boolean $$3) {
-      this($$0, $$1, $$2, $$3 ? tk.e : tk.g, $$3);
+   public exc(BooleanConsumer $$0, tm $$1, String $$2, boolean $$3) {
+      this($$0, $$1, $$2, $$3 ? tl.e : tl.g, $$3);
    }
 
-   public exc(BooleanConsumer $$0, tl $$1, String $$2, tl $$3, boolean $$4) {
+   public exc(BooleanConsumer $$0, tm $$1, String $$2, tm $$3, boolean $$4) {
       this($$0, $$1, a($$4, $$2), $$2, $$3, $$4);
    }
 
-   public exc(BooleanConsumer $$0, tl $$1, tl $$2, String $$3, tl $$4, boolean $$5) {
+   public exc(BooleanConsumer $$0, tm $$1, tm $$2, String $$3, tm $$4, boolean $$5) {
       super($$0, $$1, $$2);
-      this.a = (tl)($$5 ? tl.c("chat.link.open") : tk.f);
+      this.a = (tm)($$5 ? tm.c("chat.link.open") : tl.f);
       this.b = $$4;
       this.n = !$$5;
       this.m = $$3;
    }
 
-   protected static ty a(boolean $$0, String $$1) {
-      return c($$0).b(tk.u).b(tl.b($$1));
+   protected static tz a(boolean $$0, String $$1) {
+      return c($$0).b(tl.u).b(tm.b($$1));
    }
 
-   protected static ty c(boolean $$0) {
-      return tl.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   protected static tz c(boolean $$0) {
+      return tm.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override

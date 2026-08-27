@@ -37,13 +37,13 @@ public class djr implements djx {
    }
 
    private UUID b() {
-      return (UUID)this.c.map(biq::cw, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+      return (UUID)this.c.map(biq::cv, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
             throw new RuntimeException("Unable to get entityId from uuid");
          }));
    }
 
    int c() {
-      return (Integer)this.c.map(biq::ai, $$0 -> (Integer)$$0.map($$0x -> {
+      return (Integer)this.c.map(biq::ah, $$0 -> (Integer)$$0.map($$0x -> {
             throw new IllegalStateException("Unable to get entityId from uuid");
          }, Function.identity()));
    }
@@ -54,11 +54,11 @@ public class djr implements djx {
    }
 
    public static class a implements djy<djr> {
-      public djr a(so $$0) {
+      public djr a(sp $$0) {
          return new djr(Either.right(Either.right($$0.m())), $$0.readFloat());
       }
 
-      public void a(so $$0, djr $$1) {
+      public void a(sp $$0, djr $$1) {
          $$0.c($$1.c());
          $$0.a($$1.d);
       }

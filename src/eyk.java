@@ -20,9 +20,9 @@ import org.slf4j.Logger;
 public abstract class eyk extends eui implements ets {
    private static final Logger a = LogUtils.getLogger();
    private static final Set<String> b = Sets.newHashSet(new String[]{"http", "https"});
-   private static final tl c = tl.c("narrator.screen.usage");
+   private static final tm c = tm.c("narrator.screen.usage");
    public static final aex d = new aex("textures/gui/options_background.png");
-   protected final tl e;
+   protected final tm e;
    private final List<euk> k = Lists.newArrayList();
    private final List<ewg> l = Lists.newArrayList();
    @Nullable
@@ -52,15 +52,15 @@ public abstract class eyk extends eui implements ets {
          }
       });
 
-   protected eyk(tl $$0) {
+   protected eyk(tm $$0) {
       this.e = $$0;
    }
 
-   public tl m() {
+   public tm m() {
       return this.e;
    }
 
-   public tl g() {
+   public tm g() {
       return this.m();
    }
 
@@ -100,7 +100,7 @@ public abstract class eyk extends eui implements ets {
          if ($$3 != null) {
             esc $$4 = super.a($$3);
             if ($$4 == null && $$3 instanceof ewo.c) {
-               this.C();
+               this.D();
                $$4 = super.a($$3);
             }
 
@@ -129,7 +129,7 @@ public abstract class eyk extends eui implements ets {
       }
    }
 
-   private void C() {
+   private void D() {
       esc $$0 = this.aG_();
       if ($$0 != null) {
          $$0.a(false);
@@ -138,7 +138,7 @@ public abstract class eyk extends eui implements ets {
 
    @VisibleForTesting
    protected void a(esc $$0) {
-      this.C();
+      this.D();
       $$0.a(true);
    }
 
@@ -184,24 +184,24 @@ public abstract class eyk extends eui implements ets {
       this.l.clear();
    }
 
-   public static List<tl> a(eqv $$0, cjf $$1) {
+   public static List<tm> a(eqv $$0, cjf $$1) {
       return $$1.a($$0.s, $$0.m.m ? ckw.a.b : ckw.a.a);
    }
 
    protected void a(String $$0, boolean $$1) {
    }
 
-   public boolean a(@Nullable uh $$0) {
+   public boolean a(@Nullable ui $$0) {
       if ($$0 == null) {
          return false;
       } else {
-         tj $$1 = $$0.h();
+         tk $$1 = $$0.h();
          if (q()) {
             if ($$0.j() != null) {
                this.a($$0.j(), false);
             }
          } else if ($$1 != null) {
-            if ($$1.a() == tj.a.a) {
+            if ($$1.a() == tk.a.a) {
                if (!this.f.m.I().c()) {
                   return false;
                }
@@ -226,12 +226,12 @@ public abstract class eyk extends eui implements ets {
                } catch (URISyntaxException var5) {
                   a.error("Can't open url for {}", $$1, var5);
                }
-            } else if ($$1.a() == tj.a.b) {
+            } else if ($$1.a() == tk.a.b) {
                URI $$5 = new File($$1.b()).toURI();
                this.a($$5);
-            } else if ($$1.a() == tj.a.d) {
+            } else if ($$1.a() == tk.a.d) {
                this.a(aa.a($$1.b()), true);
-            } else if ($$1.a() == tj.a.c) {
+            } else if ($$1.a() == tk.a.c) {
                String $$6 = aa.a($$1.b());
                if ($$6.startsWith("/")) {
                   if (!this.f.s.cn.d($$6.substring(1))) {
@@ -240,7 +240,7 @@ public abstract class eyk extends eui implements ets {
                } else {
                   a.error("Failed to run command without '/' prefix from click event: '{}'", $$6);
                }
-            } else if ($$1.a() == tj.a.f) {
+            } else if ($$1.a() == tk.a.f) {
                this.f.o.a($$1.b());
             } else {
                a.error("Don't know how to handle {}", $$1);
@@ -271,7 +271,7 @@ public abstract class eyk extends eui implements ets {
 
    protected void o() {
       this.n();
-      this.C();
+      this.D();
       this.aI_();
    }
 
@@ -418,12 +418,12 @@ public abstract class eyk extends eui implements ets {
       this.a(200L, true);
    }
 
-   private boolean G() {
+   private boolean H() {
       return this.f.aV().a();
    }
 
    public void z() {
-      if (this.G()) {
+      if (this.H()) {
          long $$0 = ac.b();
          if ($$0 > this.x && $$0 > this.w) {
             this.e(true);
@@ -433,7 +433,7 @@ public abstract class eyk extends eui implements ets {
    }
 
    public void d(boolean $$0) {
-      if (this.G()) {
+      if (this.H()) {
          this.e($$0);
       }
    }
@@ -469,14 +469,18 @@ public abstract class eyk extends eui implements ets {
          }
 
          if ($$1.size() > 1) {
-            $$0.a(ewh.b, tl.a("narrator.position.screen", $$2.b + 1, $$1.size()));
+            $$0.a(ewh.b, tm.a("narrator.position.screen", $$2.b + 1, $$1.size()));
             if ($$2.c == ewg.a.c) {
-               $$0.a(ewh.d, tl.c("narration.component_list.usage"));
+               $$0.a(ewh.d, this.A());
             }
          }
 
          $$2.a.b($$0.a());
       }
+   }
+
+   protected tm A() {
+      return tm.c("narration.component_list.usage");
    }
 
    @Nullable
@@ -502,7 +506,7 @@ public abstract class eyk extends eui implements ets {
       return $$2 != null ? $$2 : $$3;
    }
 
-   public void A() {
+   public void B() {
       this.a(q, false);
    }
 
@@ -516,7 +520,7 @@ public abstract class eyk extends eui implements ets {
       }
    }
 
-   protected void d(tl $$0) {
+   protected void d(tm $$0) {
       this.b(eua.a(this.f, $$0));
    }
 
@@ -536,7 +540,7 @@ public abstract class eyk extends eui implements ets {
    }
 
    @Nullable
-   public apb B() {
+   public apb C() {
       return null;
    }
 

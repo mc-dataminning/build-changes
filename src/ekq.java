@@ -55,6 +55,10 @@ public final class ekq implements AutoCloseable {
          } else {
             this.g = MemoryUtil.nmemAlloc(this.h);
          }
+
+         if (this.g == 0L) {
+            throw new IllegalStateException("Unable to allocate texture of size " + $$1 + "x" + $$2 + " (" + $$0.a() + " channels)");
+         }
       } else {
          throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
       }
@@ -592,34 +596,20 @@ public final class ekq implements AutoCloseable {
 
    public void h() {
       this.j();
-      MemoryStack $$0 = MemoryStack.stackPush();
+      int $$0 = this.c.a();
+      int $$1 = this.a() * $$0;
+      long $$2 = MemoryUtil.nmemAlloc((long)$$1);
 
       try {
-         int $$1 = this.c.a();
-         int $$2 = this.a() * $$1;
-         long $$3 = $$0.nmalloc($$2);
-
-         for (int $$4 = 0; $$4 < this.b() / 2; $$4++) {
-            int $$5 = $$4 * this.a() * $$1;
-            int $$6 = (this.b() - 1 - $$4) * this.a() * $$1;
-            MemoryUtil.memCopy(this.g + (long)$$5, $$3, (long)$$2);
-            MemoryUtil.memCopy(this.g + (long)$$6, this.g + (long)$$5, (long)$$2);
-            MemoryUtil.memCopy($$3, this.g + (long)$$6, (long)$$2);
+         for (int $$3 = 0; $$3 < this.b() / 2; $$3++) {
+            int $$4 = $$3 * this.a() * $$0;
+            int $$5 = (this.b() - 1 - $$3) * this.a() * $$0;
+            MemoryUtil.memCopy(this.g + (long)$$4, $$2, (long)$$1);
+            MemoryUtil.memCopy(this.g + (long)$$5, this.g + (long)$$4, (long)$$1);
+            MemoryUtil.memCopy($$2, this.g + (long)$$5, (long)$$1);
          }
-      } catch (Throwable var10) {
-         if ($$0 != null) {
-            try {
-               $$0.close();
-            } catch (Throwable var9) {
-               var10.addSuppressed(var9);
-            }
-         }
-
-         throw var10;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
+      } finally {
+         MemoryUtil.nmemFree($$2);
       }
    }
 

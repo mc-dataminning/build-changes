@@ -17,43 +17,43 @@ public class ei implements ex<ei.a> {
       return new ei();
    }
 
-   public static tl a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static tm a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       ei.a $$2 = (ei.a)$$0.getArgument($$1, ei.a.class);
       return $$2.a((dt)$$0.getSource());
    }
 
-   public static void a(CommandContext<dt> $$0, String $$1, Consumer<ua> $$2) throws CommandSyntaxException {
+   public static void a(CommandContext<dt> $$0, String $$1, Consumer<ub> $$2) throws CommandSyntaxException {
       ei.a $$3 = (ei.a)$$0.getArgument($$1, ei.a.class);
       dt $$4 = (dt)$$0.getSource();
-      tl $$5 = $$3.a($$4);
+      tm $$5 = $$3.a($$4);
       dr $$6 = $$4.n();
-      ua $$7 = $$6.a($$1);
+      ub $$7 = $$6.a($$1);
       if ($$7 != null) {
          a($$2, $$4, $$7.a($$5));
       } else {
-         b($$2, $$4, ua.a($$3.a).a($$5));
+         b($$2, $$4, ub.a($$3.a).a($$5));
       }
    }
 
-   private static void a(Consumer<ua> $$0, dt $$1, ua $$2) {
+   private static void a(Consumer<ub> $$0, dt $$1, ub $$2) {
       MinecraftServer $$3 = $$1.l();
       CompletableFuture<ali> $$4 = a($$1, $$2);
-      tl $$5 = $$3.bd().decorate($$1.i(), $$2.c());
+      tm $$5 = $$3.bd().decorate($$1.i(), $$2.c());
       $$1.o().append($$4x -> $$4.thenAcceptAsync($$3xx -> {
-            ua $$4xx = $$2.a($$5).a($$3xx.e());
+            ub $$4xx = $$2.a($$5).a($$3xx.e());
             $$0.accept($$4xx);
          }, $$4x));
    }
 
-   private static void b(Consumer<ua> $$0, dt $$1, ua $$2) {
-      tg $$3 = $$1.l().bd();
-      tl $$4 = $$3.decorate($$1.i(), $$2.c());
+   private static void b(Consumer<ub> $$0, dt $$1, ub $$2) {
+      th $$3 = $$1.l().bd();
+      tm $$4 = $$3.decorate($$1.i(), $$2.c());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<ali> a(dt $$0, ua $$1) {
+   private static CompletableFuture<ali> a(dt $$0, ub $$1) {
       aks $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cw()) ? $$2.W().a($$1.b()) : CompletableFuture.completedFuture(ali.a($$1.b()));
+      return $$2 != null && $$1.a($$2.cv()) ? $$2.V().a($$1.b()) : CompletableFuture.completedFuture(ali.a($$1.b()));
    }
 
    public ei.a a(StringReader $$0) throws CommandSyntaxException {
@@ -81,17 +81,17 @@ public class ei implements ex<ei.a> {
          return this.b;
       }
 
-      tl a(dt $$0) throws CommandSyntaxException {
+      tm a(dt $$0) throws CommandSyntaxException {
          return this.a($$0, $$0.c(2));
       }
 
-      public tl a(dt $$0, boolean $$1) throws CommandSyntaxException {
+      public tm a(dt $$0, boolean $$1) throws CommandSyntaxException {
          if (this.b.length != 0 && $$1) {
-            ty $$2 = tl.b(this.a.substring(0, this.b[0].a()));
+            tz $$2 = tm.b(this.a.substring(0, this.b[0].a()));
             int $$3 = this.b[0].a();
 
             for (ei.b $$4 : this.b) {
-               tl $$5 = $$4.a($$0);
+               tm $$5 = $$4.a($$0);
                if ($$3 < $$4.a()) {
                   $$2.f(this.a.substring($$3, $$4.a()));
                }
@@ -109,7 +109,7 @@ public class ei implements ex<ei.a> {
 
             return $$2;
          } else {
-            return tl.b(this.a);
+            return tm.b(this.a);
          }
       }
 
@@ -179,7 +179,7 @@ public class ei implements ex<ei.a> {
       }
 
       @Nullable
-      public tl a(dt $$0) throws CommandSyntaxException {
+      public tm a(dt $$0) throws CommandSyntaxException {
          return gc.a(this.c.b($$0));
       }
    }

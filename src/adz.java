@@ -1,10 +1,10 @@
-public record adz(aea a) implements vd<adx> {
-   public adz(so $$0) {
+public record adz(aea a) implements ve<adx> {
+   public adz(sp $$0) {
       this($$0.a(aea.a));
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(aea.a, this.a);
    }
 

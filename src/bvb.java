@@ -20,10 +20,10 @@ public class bvb extends bur implements bke<bvb.v> {
    private static final int cc = 128;
    private static final aef<Optional<UUID>> cd = aei.a(bvb.class, aeh.q);
    private static final aef<Optional<UUID>> ce = aei.a(bvb.class, aeh.q);
-   static final Predicate<byn> cf = $$0 -> !$$0.y() && $$0.bw();
+   static final Predicate<byn> cf = $$0 -> !$$0.y() && $$0.bv();
    private static final Predicate<biq> cg = $$0 -> !($$0 instanceof bjg $$1) ? false : $$1.ei() != null && $$1.ej() < $$1.ah + 600;
    static final Predicate<biq> ch = $$0 -> $$0 instanceof buw || $$0 instanceof bvl;
-   private static final Predicate<biq> ci = $$0 -> !$$0.bV() && bit.e.test($$0);
+   private static final Predicate<biq> ci = $$0 -> !$$0.bU() && bit.e.test($$0);
    private static final int cj = 600;
    private bqb ck;
    private bqb cl;
@@ -62,7 +62,7 @@ public class bvb extends bur implements bke<bvb.v> {
       this.bO.a(1, new bvb.b());
       this.bO.a(2, new bvb.n(2.2));
       this.bO.a(3, new bvb.e(1.0));
-      this.bO.a(4, new bpi<>(this, cbu.class, 16.0F, 1.6, 1.4, $$0 -> ci.test($$0) && !this.c($$0.cw()) && !this.gp()));
+      this.bO.a(4, new bpi<>(this, cbu.class, 16.0F, 1.6, 1.4, $$0 -> ci.test($$0) && !this.c($$0.cv()) && !this.gp()));
       this.bO.a(4, new bpi<>(this, bvu.class, 8.0F, 1.6, 1.4, $$0 -> !((bvu)$$0).s() && !this.gp()));
       this.bO.a(4, new bpi<>(this, bvj.class, 8.0F, 1.6, 1.4, $$0 -> !this.gp()));
       this.bO.a(5, new bvb.u());
@@ -78,7 +78,7 @@ public class bvb extends bur implements bke<bvb.v> {
       this.bO.a(11, new bvb.p());
       this.bO.a(12, new bvb.j(this, cbu.class, 24.0F));
       this.bO.a(13, new bvb.r());
-      this.bP.a(3, new bvb.a(bjg.class, false, false, $$0 -> cg.test($$0) && !this.c($$0.cw())));
+      this.bP.a(3, new bvb.a(bjg.class, false, false, $$0 -> cg.test($$0) && !this.c($$0.cv())));
    }
 
    @Override
@@ -88,7 +88,7 @@ public class bvb extends bur implements bke<bvb.v> {
 
    @Override
    public void b_() {
-      if (!this.dL().B && this.bw() && this.cY()) {
+      if (!this.dL().B && this.bv() && this.cX()) {
          this.cr++;
          cjf $$0 = this.c(biv.a);
          if (this.l($$0)) {
@@ -106,7 +106,7 @@ public class bvb extends bur implements bke<bvb.v> {
          }
 
          bjg $$2 = this.q();
-         if ($$2 == null || !$$2.bw()) {
+         if ($$2 == null || !$$2.bv()) {
             this.y(false);
             this.z(false);
          }
@@ -130,7 +130,7 @@ public class bvb extends bur implements bke<bvb.v> {
    }
 
    private boolean l(cjf $$0) {
-      return $$0.d().u() && this.q() == null && this.aB() && !this.fC();
+      return $$0.d().u() && this.q() == null && this.aA() && !this.fC();
    }
 
    @Override
@@ -165,7 +165,7 @@ public class bvb extends bur implements bke<bvb.v> {
                ehn $$3 = new ehn(((double)this.ag.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, 0.0)
                   .a(-this.dD() * (float) (Math.PI / 180.0))
                   .b(-this.dB() * (float) (Math.PI / 180.0));
-               this.dL().a(new it(ix.O, $$1), this.dq() + this.bF().c / 2.0, this.ds(), this.dw() + this.bF().e / 2.0, $$3.c, $$3.d + 0.05, $$3.e);
+               this.dL().a(new it(ix.O, $$1), this.dq() + this.bE().c / 2.0, this.ds(), this.dw() + this.bE().e / 2.0, $$3.c, $$3.d + 0.05, $$3.e);
             }
          }
       } else {
@@ -193,7 +193,7 @@ public class bvb extends bur implements bke<bvb.v> {
 
    @Nullable
    @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qx $$4) {
+   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qy $$4) {
       hg<cqt> $$5 = $$0.s(this.dl());
       bvb.v $$6 = bvb.v.a($$5);
       boolean $$7 = false;
@@ -269,14 +269,14 @@ public class bvb extends bur implements bke<bvb.v> {
    }
 
    @Override
-   public void b(qx $$0) {
+   public void b(qy $$0) {
       super.b($$0);
       List<UUID> $$1 = this.go();
-      rd $$2 = new rd();
+      re $$2 = new re();
 
       for (UUID $$3 : $$1) {
          if ($$3 != null) {
-            $$2.add(rj.a($$3));
+            $$2.add(rk.a($$3));
          }
       }
 
@@ -284,15 +284,15 @@ public class bvb extends bur implements bke<bvb.v> {
       $$0.a("Sleeping", this.fC());
       $$0.a("Type", this.t().c());
       $$0.a("Sitting", this.y());
-      $$0.a("Crouching", this.bX());
+      $$0.a("Crouching", this.bW());
    }
 
    @Override
-   public void a(qx $$0) {
+   public void a(qy $$0) {
       super.a($$0);
 
-      for (rq $$2 : $$0.c("Trusted", 11)) {
-         this.b(rj.a($$2));
+      for (rr $$2 : $$0.c("Trusted", 11)) {
+         this.b(rk.a($$2));
       }
 
       this.C($$0.q("Sleeping"));
@@ -364,9 +364,9 @@ public class bvb extends bur implements bke<bvb.v> {
 
    private void n(cjf $$0) {
       if (!$$0.b() && !this.dL().B) {
-         byn $$1 = new byn(this.dL(), this.dq() + this.bF().c, this.ds() + 1.0, this.dw() + this.bF().e, $$0);
+         byn $$1 = new byn(this.dL(), this.dq() + this.bE().c, this.ds() + 1.0, this.dw() + this.bE().e, $$0);
          $$1.b(40);
-         $$1.c(this.cw());
+         $$1.c(this.cv());
          this.a(ape.ih, 1.0F, 1.0F);
          this.dL().b($$1);
       }
@@ -391,7 +391,7 @@ public class bvb extends bur implements bke<bvb.v> {
          this.a(biv.a, $$1.a(1));
          this.e(biv.a);
          this.a($$0, $$1.L());
-         $$0.al();
+         $$0.ak();
          this.cr = 0;
       }
    }
@@ -399,8 +399,8 @@ public class bvb extends bur implements bke<bvb.v> {
    @Override
    public void l() {
       super.l();
-      if (this.cY()) {
-         boolean $$0 = this.aY();
+      if (this.cX()) {
+         boolean $$0 = this.aX();
          if ($$0 || this.q() != null || this.dL().Y()) {
             this.gq();
          }
@@ -424,7 +424,7 @@ public class bvb extends bur implements bke<bvb.v> {
       }
 
       this.cq = this.cp;
-      if (this.bX()) {
+      if (this.bW()) {
          this.cp += 0.2F;
          if (this.cp > 3.0F) {
             this.cp = 3.0F;
@@ -441,7 +441,7 @@ public class bvb extends bur implements bke<bvb.v> {
 
    @Override
    protected void a(cbu $$0, bji $$1) {
-      ((bvb)$$1).b($$0.cw());
+      ((bvb)$$1).b($$0.cv());
    }
 
    public boolean gj() {
@@ -465,7 +465,7 @@ public class bvb extends bur implements bke<bvb.v> {
    }
 
    @Override
-   public boolean bX() {
+   public boolean bW() {
       return this.t(4);
    }
 
@@ -533,7 +533,7 @@ public class bvb extends bur implements bke<bvb.v> {
          return ape.if;
       } else {
          if (!this.dL().N() && this.ag.i() < 0.1F) {
-            List<cbu> $$0 = this.dL().a(cbu.class, this.cH().c(16.0, 16.0, 16.0), bit.f);
+            List<cbu> $$0 = this.dL().a(cbu.class, this.cG().c(16.0, 16.0, 16.0), bit.f);
             if ($$0.isEmpty()) {
                return ape.ie;
             }
@@ -596,8 +596,8 @@ public class bvb extends bur implements bke<bvb.v> {
    }
 
    @Override
-   public ehn cJ() {
-      return new ehn(0.0, (double)(0.55F * this.cI()), (double)(this.dg() * 0.4F));
+   public ehn cI() {
+      return new ehn(0.0, (double)(0.55F * this.cH()), (double)(this.df() * 0.4F));
    }
 
    class a extends bru<bjg> {
@@ -686,7 +686,7 @@ public class bvb extends bur implements bke<bvb.v> {
          } else if ($$0 instanceof bkb) {
             return !((bkb)$$0).s();
          } else if (!($$0 instanceof cbu) || !$$0.M_() && !((cbu)$$0).f()) {
-            return bvb.this.c($$0.cw()) ? false : !$$0.fC() && !$$0.bV();
+            return bvb.this.c($$0.cv()) ? false : !$$0.fC() && !$$0.bU();
          } else {
             return false;
          }
@@ -697,12 +697,12 @@ public class bvb extends bur implements bke<bvb.v> {
       private final bts b = bts.a().a(12.0).d().a(bvb.this.new c());
 
       protected boolean h() {
-         gw $$0 = gw.a(bvb.this.dq(), bvb.this.cH().e, bvb.this.dw());
+         gw $$0 = gw.a(bvb.this.dq(), bvb.this.cG().e, bvb.this.dw());
          return !bvb.this.dL().g($$0) && bvb.this.h($$0) >= 0.0F;
       }
 
       protected boolean i() {
-         return !bvb.this.dL().a(bjg.class, this.b, bvb.this, bvb.this.cH().c(12.0, 6.0, 12.0)).isEmpty();
+         return !bvb.this.dL().a(bjg.class, this.b, bvb.this, bvb.this.cG().c(12.0, 6.0, 12.0)).isEmpty();
       }
    }
 
@@ -727,13 +727,13 @@ public class bvb extends bur implements bke<bvb.v> {
             aks $$3 = this.c.gg();
             aks $$4 = $$2;
             if ($$2 != null) {
-               $$1.b($$2.cw());
+               $$1.b($$2.cv());
             } else {
                $$4 = $$3;
             }
 
             if ($$3 != null && $$2 != $$3) {
-               $$1.b($$3.cw());
+               $$1.b($$3.cv());
             }
 
             if ($$4 != null) {
@@ -855,7 +855,7 @@ public class bvb extends bur implements bke<bvb.v> {
 
       @Override
       public boolean a() {
-         return bvb.this.aY() && bvb.this.b(apy.a) > 0.25 || bvb.this.bm();
+         return bvb.this.aX() && bvb.this.b(apy.a) > 0.25 || bvb.this.bl();
       }
    }
 
@@ -923,7 +923,7 @@ public class bvb extends bur implements bke<bvb.v> {
 
       @Override
       protected boolean c() {
-         return !bvb.this.gj() && !bvb.this.bX() && !bvb.this.gm() && !bvb.this.gd();
+         return !bvb.this.gj() && !bvb.this.bW() && !bvb.this.gm() && !bvb.this.gd();
       }
    }
 
@@ -949,7 +949,7 @@ public class bvb extends bur implements bke<bvb.v> {
 
       @Override
       public boolean a() {
-         return !bvb.this.y() && !bvb.this.fC() && !bvb.this.bX() && !bvb.this.gd() && super.a();
+         return !bvb.this.y() && !bvb.this.fC() && !bvb.this.bW() && !bvb.this.gd() && super.a();
       }
    }
 
@@ -984,8 +984,8 @@ public class bvb extends bur implements bke<bvb.v> {
             return false;
          } else {
             bjg $$0 = bvb.this.q();
-            if ($$0 != null && $$0.bw()) {
-               if ($$0.cF() != $$0.cE()) {
+            if ($$0 != null && $$0.bv()) {
+               if ($$0.cE() != $$0.cD()) {
                   return false;
                } else {
                   boolean $$1 = bvb.a(bvb.this, $$0);
@@ -1006,9 +1006,9 @@ public class bvb extends bur implements bke<bvb.v> {
       @Override
       public boolean b() {
          bjg $$0 = bvb.this.q();
-         if ($$0 != null && $$0.bw()) {
+         if ($$0 != null && $$0.bv()) {
             double $$1 = bvb.this.do().d;
-            return (!($$1 * $$1 < 0.05F) || !(Math.abs(bvb.this.dD()) < 15.0F) || !bvb.this.aB()) && !bvb.this.gd();
+            return (!($$1 * $$1 < 0.05F) || !(Math.abs(bvb.this.dD()) < 15.0F) || !bvb.this.aA()) && !bvb.this.gd();
          } else {
             return false;
          }
@@ -1063,7 +1063,7 @@ public class bvb extends bur implements bke<bvb.v> {
 
          if ($$0 != null && bvb.this.e((biq)$$0) <= 2.0F) {
             bvb.this.C($$0);
-         } else if (bvb.this.dD() > 0.0F && bvb.this.aB() && (float)bvb.this.do().d != 0.0F && bvb.this.dL().a_(bvb.this.dl()).a(csw.dN)) {
+         } else if (bvb.this.dD() > 0.0F && bvb.this.aA() && (float)bvb.this.do().d != 0.0F && bvb.this.dL().a_(bvb.this.dl()).a(csw.dN)) {
             bvb.this.s(60.0F);
             bvb.this.h(null);
             bvb.this.A(true);
@@ -1087,14 +1087,14 @@ public class bvb extends bur implements bke<bvb.v> {
          } else if (bvb.this.ef().a(b(10)) != 0) {
             return false;
          } else {
-            List<byn> $$0 = bvb.this.dL().a(byn.class, bvb.this.cH().c(8.0, 8.0, 8.0), bvb.cf);
+            List<byn> $$0 = bvb.this.dL().a(byn.class, bvb.this.cG().c(8.0, 8.0, 8.0), bvb.cf);
             return !$$0.isEmpty() && bvb.this.c(biv.a).b();
          }
       }
 
       @Override
       public void e() {
-         List<byn> $$0 = bvb.this.dL().a(byn.class, bvb.this.cH().c(8.0, 8.0, 8.0), bvb.cf);
+         List<byn> $$0 = bvb.this.dL().a(byn.class, bvb.this.cG().c(8.0, 8.0, 8.0), bvb.cf);
          cjf $$1 = bvb.this.c(biv.a);
          if ($$1.b() && !$$0.isEmpty()) {
             bvb.this.L().a($$0.get(0), 1.2F);
@@ -1103,7 +1103,7 @@ public class bvb extends bur implements bke<bvb.v> {
 
       @Override
       public void c() {
-         List<byn> $$0 = bvb.this.dL().a(byn.class, bvb.this.cH().c(8.0, 8.0, 8.0), bvb.cf);
+         List<byn> $$0 = bvb.this.dL().a(byn.class, bvb.this.cG().c(8.0, 8.0, 8.0), bvb.cf);
          if (!$$0.isEmpty()) {
             bvb.this.L().a($$0.get(0), 1.2F);
          }
@@ -1155,7 +1155,7 @@ public class bvb extends bur implements bke<bvb.v> {
             && bvb.this.L().l()
             && !this.i()
             && !bvb.this.gj()
-            && !bvb.this.bX();
+            && !bvb.this.bW();
       }
 
       @Override
@@ -1184,7 +1184,7 @@ public class bvb extends bur implements bke<bvb.v> {
             this.k();
          }
 
-         bvb.this.G().a(bvb.this.dq() + this.c, bvb.this.du(), bvb.this.dw() + this.d, (float)bvb.this.aa(), (float)bvb.this.Z());
+         bvb.this.G().a(bvb.this.dq() + this.c, bvb.this.du(), bvb.this.dw() + this.d, (float)bvb.this.Z(), (float)bvb.this.Y());
       }
 
       private void k() {
@@ -1283,7 +1283,7 @@ public class bvb extends bur implements bke<bvb.v> {
             return false;
          } else {
             bjg $$0 = bvb.this.q();
-            return $$0 != null && $$0.bw() && bvb.ch.test($$0) && bvb.this.f($$0) > 36.0 && !bvb.this.bX() && !bvb.this.gm() && !bvb.this.bj;
+            return $$0 != null && $$0.bv() && bvb.ch.test($$0) && bvb.this.f($$0) > 36.0 && !bvb.this.bW() && !bvb.this.gm() && !bvb.this.bj;
          }
       }
 
@@ -1300,7 +1300,7 @@ public class bvb extends bur implements bke<bvb.v> {
             bvb.this.z(true);
             bvb.this.y(true);
             bvb.this.L().n();
-            bvb.this.G().a($$0, (float)bvb.this.aa(), (float)bvb.this.Z());
+            bvb.this.G().a($$0, (float)bvb.this.Z(), (float)bvb.this.Y());
          } else {
             bvb.this.z(false);
             bvb.this.y(false);
@@ -1311,7 +1311,7 @@ public class bvb extends bur implements bke<bvb.v> {
       public void e() {
          bjg $$0 = bvb.this.q();
          if ($$0 != null) {
-            bvb.this.G().a($$0, (float)bvb.this.aa(), (float)bvb.this.Z());
+            bvb.this.G().a($$0, (float)bvb.this.Z(), (float)bvb.this.Y());
             if (bvb.this.f($$0) <= 36.0) {
                bvb.this.z(true);
                bvb.this.y(true);

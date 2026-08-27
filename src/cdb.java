@@ -32,9 +32,9 @@ public class cdb {
    public static final int d = 24000;
    public static final int e = 5;
    private static final int t = 2;
-   private static final tl u = tl.c("event.minecraft.raid");
-   private static final tl v = tl.c("event.minecraft.raid.victory.full");
-   private static final tl w = tl.c("event.minecraft.raid.defeat.full");
+   private static final tm u = tm.c("event.minecraft.raid");
+   private static final tm v = tm.c("event.minecraft.raid.victory.full");
+   private static final tm w = tm.c("event.minecraft.raid.defeat.full");
    private static final int x = 48000;
    public static final int f = 9216;
    public static final int g = 12544;
@@ -70,7 +70,7 @@ public class cdb {
       this.P = cdb.a.a;
    }
 
-   public cdb(akr $$0, qx $$1) {
+   public cdb(akr $$0, qy $$1) {
       this.D = $$0;
       this.F = $$1.h("Id");
       this.E = $$1.q("Started");
@@ -86,8 +86,8 @@ public class cdb {
       this.P = cdb.a.a($$1.l("Status"));
       this.A.clear();
       if ($$1.b("HeroesOfTheVillage", 9)) {
-         for (rq $$3 : $$1.c("HeroesOfTheVillage", 11)) {
-            this.A.add(rj.a($$3));
+         for (rr $$3 : $$1.c("HeroesOfTheVillage", 11)) {
+            this.A.add(rk.a($$3));
          }
       }
    }
@@ -145,7 +145,7 @@ public class cdb {
    private Predicate<aks> x() {
       return $$0 -> {
          gw $$1 = $$0.dl();
-         return $$0.bw() && this.D.c($$1) == this;
+         return $$0.bv() && this.D.c($$1) == this;
       };
    }
 
@@ -269,7 +269,7 @@ public class cdb {
                this.F();
                if ($$1 > 0) {
                   if ($$1 <= 2) {
-                     this.K.a(u.e().f(" - ").b(tl.a("event.minecraft.raid.raiders_remaining", $$1)));
+                     this.K.a(u.e().f(" - ").b(tm.a("event.minecraft.raid.raiders_remaining", $$1)));
                   } else {
                      this.K.a(u);
                   }
@@ -392,7 +392,7 @@ public class cdb {
             if ($$3.dG() || $$3.dL().ac() != this.D.ac() || this.C.j($$4) >= 12544.0) {
                $$1.add($$3);
             } else if ($$3.ah > 600) {
-               if (this.D.a($$3.cw()) == null) {
+               if (this.D.a($$3.cv()) == null) {
                   $$1.add($$3);
                }
 
@@ -545,12 +545,12 @@ public class cdb {
 
    public static cjf s() {
       cjf $$0 = new cjf(cji.tV);
-      qx $$1 = new qx();
-      rd $$2 = new dcm.a().a(dcn.z, cht.j).a(dcn.f, cht.i).a(dcn.j, cht.h).a(dcn.E, cht.i).a(dcn.k, cht.p).a(dcn.B, cht.i).a(dcn.y, cht.i).a(dcn.E, cht.p).a();
+      qy $$1 = new qy();
+      re $$2 = new dcm.a().a(dcn.z, cht.j).a(dcn.f, cht.i).a(dcn.j, cht.h).a(dcn.E, cht.i).a(dcn.k, cht.p).a(dcn.B, cht.i).a(dcn.y, cht.i).a(dcn.E, cht.p).a();
       $$1.a("Patterns", $$2);
       cgy.a($$0, dcx.t, $$1);
       $$0.a(cjf.a.f);
-      $$0.a(tl.c("block.minecraft.ominous_banner").a(n.g));
+      $$0.a(tm.c("block.minecraft.ominous_banner").a(n.g));
       return $$0;
    }
 
@@ -593,7 +593,7 @@ public class cdb {
       cdc $$4 = null;
 
       for (cdc $$5 : $$3) {
-         if ($$5.cw().equals($$1.cw())) {
+         if ($$5.cv().equals($$1.cv())) {
             $$4 = $$5;
             break;
          }
@@ -677,7 +677,7 @@ public class cdb {
       return this.I;
    }
 
-   public qx a(qx $$0) {
+   public qy a(qy $$0) {
       $$0.a("Id", this.F);
       $$0.a("Started", this.E);
       $$0.a("Active", this.I);
@@ -692,10 +692,10 @@ public class cdb {
       $$0.a("CX", this.C.u());
       $$0.a("CY", this.C.v());
       $$0.a("CZ", this.C.w());
-      rd $$1 = new rd();
+      re $$1 = new re();
 
       for (UUID $$2 : this.A) {
-         $$1.add(rj.a($$2));
+         $$1.add(rk.a($$2));
       }
 
       $$0.a("HeroesOfTheVillage", $$1);
@@ -729,7 +729,7 @@ public class cdb {
    }
 
    public void a(biq $$0) {
-      this.A.add($$0.cw());
+      this.A.add($$0.cv());
    }
 
    static enum a {

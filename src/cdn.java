@@ -63,7 +63,7 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    @Override
-   protected biq.b aV() {
+   protected biq.b aU() {
       return biq.b.c;
    }
 
@@ -84,16 +84,16 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    public static boolean a(biq $$0, biq $$1) {
-      return ($$1.by() || $$1.bt()) && !$$0.y($$1);
+      return ($$1.bx() || $$1.bs()) && !$$0.y($$1);
    }
 
    @Override
-   public boolean by() {
+   public boolean bx() {
       return true;
    }
 
    @Override
-   public boolean bt() {
+   public boolean bs() {
       return true;
    }
 
@@ -105,8 +105,8 @@ public class cdn extends biq implements bke<cdn.b> {
    @Override
    protected Vector3f a(biq $$0, bir $$1, float $$2) {
       float $$3 = this.w();
-      if (this.cQ().size() > 1) {
-         int $$4 = this.cQ().indexOf($$0);
+      if (this.cP().size() > 1) {
+         int $$4 = this.cP().indexOf($$0);
          if ($$4 == 0) {
             $$3 = 0.2F;
          } else {
@@ -129,7 +129,7 @@ public class cdn extends biq implements bke<cdn.b> {
          this.m(-this.z());
          this.d(10);
          this.a(this.x() + $$1 * 10.0F);
-         this.bp();
+         this.bo();
          this.a(djt.o, $$0.d());
          boolean $$2 = $$0.d() instanceof cbu && ((cbu)$$0.d()).fS().d;
          if ($$2 || this.x() > 40.0F) {
@@ -137,7 +137,7 @@ public class cdn extends biq implements bke<cdn.b> {
                this.a($$0);
             }
 
-            this.al();
+            this.ak();
          }
 
          return true;
@@ -162,18 +162,18 @@ public class cdn extends biq implements bke<cdn.b> {
 
       this.dL().a(ix.ag, this.dq() + (double)this.ag.i(), this.ds() + 0.7, this.dw() + (double)this.ag.i(), 0.0, 0.0, 0.0);
       if (this.ag.a(20) == 0) {
-         this.dL().a(this.dq(), this.ds(), this.dw(), this.aN(), this.db(), 1.0F, 0.8F + 0.4F * this.ag.i(), false);
-         this.a(djt.O, this.cO());
+         this.dL().a(this.dq(), this.ds(), this.dw(), this.aM(), this.da(), 1.0F, 0.8F + 0.4F * this.ag.i(), false);
+         this.a(djt.O, this.cN());
       }
    }
 
    @Override
    public void g(biq $$0) {
       if ($$0 instanceof cdn) {
-         if ($$0.cH().b < this.cH().e) {
+         if ($$0.cG().b < this.cG().e) {
             super.g($$0);
          }
-      } else if ($$0.cH().b <= this.cH().b) {
+      } else if ($$0.cG().b <= this.cG().b) {
          super.g($$0);
       }
    }
@@ -200,7 +200,7 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return !this.dG();
    }
 
@@ -216,32 +216,32 @@ public class cdn extends biq implements bke<cdn.b> {
 
    @Override
    public double n_() {
-      return this.t;
+      return this.s > 0 ? this.t : this.dq();
    }
 
    @Override
    public double K_() {
-      return this.u;
+      return this.s > 0 ? this.u : this.ds();
    }
 
    @Override
    public double L_() {
-      return this.v;
+      return this.s > 0 ? this.v : this.dw();
    }
 
    @Override
    public float d_() {
-      return (float)this.aF;
+      return this.s > 0 ? (float)this.aF : this.dD();
    }
 
    @Override
    public float o_() {
-      return (float)this.aE;
+      return this.s > 0 ? (float)this.aE : this.dB();
    }
 
    @Override
-   public hc cF() {
-      return this.cE().h();
+   public hc cE() {
+      return this.cD().h();
    }
 
    @Override
@@ -255,7 +255,7 @@ public class cdn extends biq implements bke<cdn.b> {
       }
 
       if (!this.dL().B && this.q >= 60.0F) {
-         this.bB();
+         this.bA();
       }
 
       if (this.y() > 0) {
@@ -268,8 +268,8 @@ public class cdn extends biq implements bke<cdn.b> {
 
       super.l();
       this.E();
-      if (this.cX()) {
-         if (!(this.cR() instanceof cbu)) {
+      if (this.cW()) {
+         if (!(this.cQ() instanceof cbu)) {
             this.a(false, false);
          }
 
@@ -288,7 +288,7 @@ public class cdn extends biq implements bke<cdn.b> {
 
       for (int $$0 = 0; $$0 <= 1; $$0++) {
          if (this.c($$0)) {
-            if (!this.aT()
+            if (!this.aS()
                && (double)(this.o[$$0] % (float) (Math.PI * 2)) <= (float) (Math.PI / 4)
                && (double)((this.o[$$0] + (float) (Math.PI / 8)) % (float) (Math.PI * 2)) >= (float) (Math.PI / 4)) {
                apd $$1 = this.s();
@@ -296,7 +296,7 @@ public class cdn extends biq implements bke<cdn.b> {
                   ehn $$2 = this.f(1.0F);
                   double $$3 = $$0 == 1 ? -$$2.e : $$2.e;
                   double $$4 = $$0 == 1 ? $$2.c : -$$2.c;
-                  this.dL().a(null, this.dq() + $$3, this.ds(), this.dw() + $$4, $$1, this.db(), 1.0F, 0.8F + 0.4F * this.ag.i());
+                  this.dL().a(null, this.dq() + $$3, this.ds(), this.dw() + $$4, $$1, this.da(), 1.0F, 0.8F + 0.4F * this.ag.i());
                }
             }
 
@@ -306,14 +306,14 @@ public class cdn extends biq implements bke<cdn.b> {
          }
       }
 
-      this.aP();
-      List<biq> $$5 = this.dL().a(this, this.cH().c(0.2F, -0.01F, 0.2F), bit.a(this));
+      this.aO();
+      List<biq> $$5 = this.dL().a(this, this.cG().c(0.2F, -0.01F, 0.2F), bit.a(this));
       if (!$$5.isEmpty()) {
-         boolean $$6 = !this.dL().B && !(this.cO() instanceof cbu);
+         boolean $$6 = !this.dL().B && !(this.cN() instanceof cbu);
 
          for (biq $$7 : $$5) {
             if (!$$7.x(this)) {
-               if ($$6 && this.cQ().size() < this.B() && !$$7.bO() && this.a($$7) && $$7 instanceof bjg && !($$7 instanceof bvt) && !($$7 instanceof cbu)) {
+               if ($$6 && this.cP().size() < this.B() && !$$7.bN() && this.a($$7) && $$7 instanceof bjg && !($$7 instanceof bvt) && !($$7 instanceof cbu)) {
                   $$7.n(this);
                } else {
                   this.g($$7);
@@ -349,7 +349,7 @@ public class cdn extends biq implements bke<cdn.b> {
                ehn $$3 = this.do();
                if (this.aQ) {
                   this.f($$3.b(0.0, -0.7, 0.0));
-                  this.bB();
+                  this.bA();
                } else {
                   this.o($$3.c, this.a($$0 -> $$0 instanceof cbu) ? 2.7 : 0.6, $$3.e);
                }
@@ -376,7 +376,7 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    private void E() {
-      if (this.cX()) {
+      if (this.cW()) {
          this.s = 0;
          this.f(this.dq(), this.ds(), this.dw());
       }
@@ -399,7 +399,7 @@ public class cdn extends biq implements bke<cdn.b> {
    private cdn.a F() {
       cdn.a $$0 = this.H();
       if ($$0 != null) {
-         this.aK = this.cH().e;
+         this.aK = this.cG().e;
          return $$0;
       } else if (this.G()) {
          return cdn.a.a;
@@ -415,7 +415,7 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    public float t() {
-      ehi $$0 = this.cH();
+      ehi $$0 = this.cG();
       int $$1 = arx.a($$0.a);
       int $$2 = arx.c($$0.d);
       int $$3 = arx.a($$0.e);
@@ -451,7 +451,7 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    public float v() {
-      ehi $$0 = this.cH();
+      ehi $$0 = this.cG();
       ehi $$1 = new ehi($$0.a, $$0.b - 0.001, $$0.c, $$0.d, $$0.b, $$0.f);
       int $$2 = arx.a($$1.a) - 1;
       int $$3 = arx.c($$1.d) + 1;
@@ -486,7 +486,7 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    private boolean G() {
-      ehi $$0 = this.cH();
+      ehi $$0 = this.cG();
       int $$1 = arx.a($$0.a);
       int $$2 = arx.c($$0.d);
       int $$3 = arx.a($$0.b);
@@ -516,7 +516,7 @@ public class cdn extends biq implements bke<cdn.b> {
 
    @Nullable
    private cdn.a H() {
-      ehi $$0 = this.cH();
+      ehi $$0 = this.cG();
       double $$1 = $$0.e + 0.001;
       int $$2 = arx.a($$0.a);
       int $$3 = arx.c($$0.d);
@@ -548,18 +548,18 @@ public class cdn extends biq implements bke<cdn.b> {
 
    private void I() {
       double $$0 = -0.04F;
-      double $$1 = this.aU() ? 0.0 : -0.04F;
+      double $$1 = this.aT() ? 0.0 : -0.04F;
       double $$2 = 0.0;
       this.p = 0.05F;
       if (this.aN == cdn.a.e && this.aM != cdn.a.e && this.aM != cdn.a.d) {
          this.aK = this.e(1.0);
-         this.e(this.dq(), (double)(this.t() - this.dh()) + 0.101, this.dw());
+         this.e(this.dq(), (double)(this.t() - this.dg()) + 0.101, this.dw());
          this.f(this.do().d(1.0, 0.0, 1.0));
          this.aO = 0.0;
          this.aM = cdn.a.a;
       } else {
          if (this.aM == cdn.a.a) {
-            $$2 = (this.aK - this.ds()) / (double)this.dh();
+            $$2 = (this.aK - this.ds()) / (double)this.dg();
             this.p = 0.9F;
          } else if (this.aM == cdn.a.c) {
             $$1 = -7.0E-4;
@@ -571,7 +571,7 @@ public class cdn extends biq implements bke<cdn.b> {
             this.p = 0.9F;
          } else if (this.aM == cdn.a.d) {
             this.p = this.aL;
-            if (this.cO() instanceof cbu) {
+            if (this.cN() instanceof cbu) {
                this.aL /= 2.0F;
             }
          }
@@ -587,7 +587,7 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    private void K() {
-      if (this.bP()) {
+      if (this.bO()) {
          float $$0 = 0.0F;
          if (this.aG) {
             this.r--;
@@ -620,28 +620,28 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    public boolean a(biq $$0) {
-      return $$0.dg() < this.dg();
+      return $$0.df() < this.df();
    }
 
    @Override
    protected void a(biq $$0, biq.a $$1) {
       super.a($$0, $$1);
       $$0.r($$0.dB() + this.r);
-      $$0.n($$0.cp() + this.r);
+      $$0.n($$0.co() + this.r);
       this.b($$0);
-      if ($$0 instanceof bur && this.cQ().size() == this.B()) {
-         int $$2 = $$0.ai() % 2 == 0 ? 90 : 270;
+      if ($$0 instanceof bur && this.cP().size() == this.B()) {
+         int $$2 = $$0.ah() % 2 == 0 ? 90 : 270;
          $$0.o(((bur)$$0).aU + (float)$$2);
-         $$0.n($$0.cp() + (float)$$2);
+         $$0.n($$0.co() + (float)$$2);
       }
    }
 
    @Override
    public ehn b(bjg $$0) {
-      ehn $$1 = a((double)(this.dg() * arx.g), (double)$$0.dg(), $$0.dB());
+      ehn $$1 = a((double)(this.df() * arx.g), (double)$$0.df(), $$0.dB());
       double $$2 = this.dq() + $$1.c;
       double $$3 = this.dw() + $$1.e;
-      gw $$4 = gw.a($$2, this.cH().e, $$3);
+      gw $$4 = gw.a($$2, this.cG().e, $$3);
       gw $$5 = $$4.d();
       if (!this.dL().y($$5)) {
          List<ehn> $$6 = Lists.newArrayList();
@@ -687,12 +687,12 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       $$0.a("Type", this.A().c());
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       if ($$0.b("Type", 8)) {
          this.a(cdn.b.a($$0.l("Type")));
       }
@@ -716,7 +716,7 @@ public class cdn extends biq implements bke<cdn.b> {
    @Override
    protected void a(double $$0, boolean $$1, dfj $$2, gw $$3) {
       this.aO = this.do().d;
-      if (!this.bO()) {
+      if (!this.bN()) {
          if ($$1) {
             if (this.ab > 3.0F) {
                if (this.aM != cdn.a.d) {
@@ -726,7 +726,7 @@ public class cdn extends biq implements bke<cdn.b> {
 
                this.a(this.ab, 1.0F, this.dM().k());
                if (!this.dL().B && !this.dG()) {
-                  this.ak();
+                  this.aj();
                   if (this.dL().X().b(cpr.h)) {
                      for (int $$4 = 0; $$4 < 3; $$4++) {
                         this.a(this.A().b());
@@ -747,7 +747,7 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    public boolean c(int $$0) {
-      return this.an.b($$0 == 0 ? j : k) && this.cO() != null;
+      return this.an.b($$0 == 0 ? j : k) && this.cN() != null;
    }
 
    public void a(float $$0) {
@@ -796,7 +796,7 @@ public class cdn extends biq implements bke<cdn.b> {
 
    @Override
    protected boolean r(biq $$0) {
-      return this.cQ().size() < this.B() && !this.a(apy.a);
+      return this.cP().size() < this.B() && !this.a(apy.a);
    }
 
    protected int B() {
@@ -805,8 +805,8 @@ public class cdn extends biq implements bke<cdn.b> {
 
    @Nullable
    @Override
-   public bjg cO() {
-      return this.cR() instanceof bjg $$0 ? $$0 : super.cO();
+   public bjg cN() {
+      return this.cQ() instanceof bjg $$0 ? $$0 : super.cN();
    }
 
    public void a(boolean $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -817,12 +817,12 @@ public class cdn extends biq implements bke<cdn.b> {
    }
 
    @Override
-   protected tl co() {
-      return tl.c(this.q().a());
+   protected tm cn() {
+      return tm.c(this.q().a());
    }
 
    @Override
-   public boolean bd() {
+   public boolean bc() {
       return this.aM == cdn.a.b || this.aM == cdn.a.c;
    }
 

@@ -36,15 +36,15 @@ public class cco extends ccm {
    }
 
    @Override
-   public apf db() {
+   public apf da() {
       return apf.f;
    }
 
    @Override
-   protected void b(qx $$0) {
+   protected void b(qy $$0) {
       super.b($$0);
       if (this.c != null) {
-         $$0.a("Target", this.c.cw());
+         $$0.a("Target", this.c.cv());
       }
 
       if (this.d != null) {
@@ -58,7 +58,7 @@ public class cco extends ccm {
    }
 
    @Override
-   protected void a(qx $$0) {
+   protected void a(qy $$0) {
       super.a($$0);
       this.e = $$0.h("Steps");
       this.f = $$0.k("TXD");
@@ -92,7 +92,7 @@ public class cco extends ccm {
       if (this.c == null) {
          $$2 = this.dl().d();
       } else {
-         $$1 = (double)this.c.dh() * 0.5;
+         $$1 = (double)this.c.dg() * 0.5;
          $$2 = gw.a(this.c.dq(), this.c.ds() + $$1, this.c.dw());
       }
 
@@ -163,7 +163,7 @@ public class cco extends ccm {
    @Override
    public void dx() {
       if (this.dL().ai() == bgv.a) {
-         this.al();
+         this.ak();
       }
    }
 
@@ -178,8 +178,8 @@ public class cco extends ccm {
             }
          }
 
-         if (this.c == null || !this.c.bw() || this.c instanceof cbu && this.c.M_()) {
-            if (!this.aU()) {
+         if (this.c == null || !this.c.bv() || this.c instanceof cbu && this.c.M_()) {
+            if (!this.aT()) {
                this.f(this.do().b(0.0, -0.04, 0.0));
             }
          } else {
@@ -196,7 +196,7 @@ public class cco extends ccm {
          }
       }
 
-      this.aP();
+      this.aO();
       ehn $$2 = this.do();
       this.e(this.dq() + $$2.c, this.ds() + $$2.d, this.dw() + $$2.e);
       ccn.a(this, 0.5F);
@@ -231,7 +231,7 @@ public class cco extends ccm {
    }
 
    @Override
-   public boolean bN() {
+   public boolean bM() {
       return false;
    }
 
@@ -241,7 +241,7 @@ public class cco extends ccm {
    }
 
    @Override
-   public float bn() {
+   public float bm() {
       return 1.0F;
    }
 
@@ -268,7 +268,7 @@ public class cco extends ccm {
    }
 
    private void s() {
-      this.al();
+      this.ak();
       this.dL().a(djt.o, this.dj(), djt.a.a(this));
    }
 
@@ -279,7 +279,7 @@ public class cco extends ccm {
    }
 
    @Override
-   public boolean bs() {
+   public boolean br() {
       return true;
    }
 
@@ -295,7 +295,7 @@ public class cco extends ccm {
    }
 
    @Override
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       super.a($$0);
       double $$1 = $$0.i();
       double $$2 = $$0.j();

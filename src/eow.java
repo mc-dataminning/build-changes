@@ -12,9 +12,9 @@ import org.slf4j.Logger;
 public class eow extends gfb {
    static final Logger a = LogUtils.getLogger();
    static final aex b = new aex("widget/slot_frame");
-   private static final tl c = tl.c("mco.template.button.select");
-   private static final tl y = tl.c("mco.template.button.trailer");
-   private static final tl z = tl.c("mco.template.button.publisher");
+   private static final tm c = tm.c("mco.template.button.select");
+   private static final tm y = tm.c("mco.template.button.trailer");
+   private static final tm z = tm.c("mco.template.button.publisher");
    private static final int A = 100;
    private static final int B = 10;
    private final evz C = new evz(this);
@@ -29,15 +29,15 @@ public class eow extends gfb {
    @Nullable
    String K;
    @Nullable
-   private tl[] L;
+   private tm[] L;
    @Nullable
    List<epn.a> M;
 
-   public eow(tl $$0, Consumer<enn> $$1, emw.c $$2) {
+   public eow(tm $$0, Consumer<enn> $$1, emw.c $$2) {
       this($$0, $$1, $$2, null);
    }
 
-   public eow(tl $$0, Consumer<enn> $$1, emw.c $$2, @Nullable eno $$3) {
+   public eow(tm $$0, Consumer<enn> $$1, emw.c $$2, @Nullable eno $$3) {
       super($$0);
       this.D = $$1;
       this.F = $$2;
@@ -50,7 +50,7 @@ public class eow extends gfb {
       }
    }
 
-   public void a(tl... $$0) {
+   public void a(tm... $$0) {
       this.L = $$0;
    }
 
@@ -61,11 +61,11 @@ public class eow extends gfb {
       this.d(this.E);
       ewd $$0 = this.C.b(ewd.e().a(10));
       $$0.c().b();
-      this.H = $$0.a(esq.a(y, $$0x -> this.E()).a(100).a());
-      this.G = $$0.a(esq.a(c, $$0x -> this.D()).a(100).a());
-      $$0.a(esq.a(tk.e, $$0x -> this.az_()).a(100).a());
-      this.I = $$0.a(esq.a(z, $$0x -> this.F()).a(100).a());
-      this.C();
+      this.H = $$0.a(esq.a(y, $$0x -> this.F()).a(100).a());
+      this.G = $$0.a(esq.a(c, $$0x -> this.E()).a(100).a());
+      $$0.a(esq.a(tl.e, $$0x -> this.az_()).a(100).a());
+      this.I = $$0.a(esq.a(z, $$0x -> this.G()).a(100).a());
+      this.D();
       this.C.a($$1 -> {
          eso var10000 = this.d($$1);
       });
@@ -74,23 +74,23 @@ public class eow extends gfb {
 
    @Override
    protected void b() {
-      this.E.a(this.g, this.h, this.G(), this.h - this.C.b());
+      this.E.a(this.g, this.h, this.H(), this.h - this.C.b());
       this.C.a();
    }
 
    @Override
-   public tl g() {
-      List<tl> $$0 = Lists.newArrayListWithCapacity(2);
+   public tm g() {
+      List<tm> $$0 = Lists.newArrayListWithCapacity(2);
       $$0.add(this.e);
       if (this.L != null) {
          $$0.addAll(Arrays.asList(this.L));
       }
 
-      return tk.a($$0);
+      return tl.a($$0);
    }
 
    @Override
-   void C() {
+   void D() {
       this.I.j = this.J != null && !this.J.e.isEmpty();
       this.H.j = this.J != null && !this.J.g.isEmpty();
       this.G.i = this.J != null;
@@ -101,13 +101,13 @@ public class eow extends gfb {
       this.D.accept(null);
    }
 
-   private void D() {
+   private void E() {
       if (this.J != null) {
          this.D.accept(this.J);
       }
    }
 
-   private void E() {
+   private void F() {
       if (this.J != null && !this.J.g.isBlank()) {
          this.f.a(new exc($$0 -> {
             if ($$0) {
@@ -119,7 +119,7 @@ public class eow extends gfb {
       }
    }
 
-   private void F() {
+   private void G() {
       if (this.J != null && !this.J.e.isBlank()) {
          exc.a(this.J.e, this, true);
       }
@@ -185,7 +185,7 @@ public class eow extends gfb {
 
       if (this.L != null) {
          for (int $$4 = 0; $$4 < this.L.length; $$4++) {
-            tl $$5 = this.L[$$4];
+            tm $$5 = this.L[$$4];
             $$0.a(this.i, $$5, this.g / 2, h(-1 + $$4), -6250336);
          }
       }
@@ -202,7 +202,7 @@ public class eow extends gfb {
             int $$10 = $$9.b() ? 3368635 : -1;
             int $$11 = $$0.b(this.i, $$9.a(), $$8, $$6, $$10);
             if ($$9.b() && $$1 > $$8 && $$1 < $$11 && $$2 > $$6 - 3 && $$2 < $$6 + 8) {
-               this.d(tl.b($$9.c()));
+               this.d(tm.b($$9.c()));
                this.K = $$9.c();
             }
 
@@ -211,15 +211,15 @@ public class eow extends gfb {
       }
    }
 
-   int G() {
+   int H() {
       return this.L != null ? h(1) : 36;
    }
 
    class a extends etm.a<eow.a> {
       private static final euc c = new euc(new aex("icon/link"), new aex("icon/link_highlighted"));
       private static final euc d = new euc(new aex("icon/video_link"), new aex("icon/video_link_highlighted"));
-      private static final tl e = tl.c("mco.template.info.tooltip");
-      private static final tl f = tl.c("mco.template.trailer.tooltip");
+      private static final tm e = tm.c("mco.template.info.tooltip");
+      private static final tm f = tm.c("mco.template.trailer.tooltip");
       public final enn a;
       private long g;
       @Nullable
@@ -244,7 +244,7 @@ public class eow extends gfb {
       public boolean a(double $$0, double $$1, int $$2) {
          if ($$2 == 0) {
             eow.this.J = this.a;
-            eow.this.C();
+            eow.this.D();
             if (ac.b() - this.g < 250L && this.aD_()) {
                eow.this.D.accept(this.a);
             }
@@ -291,11 +291,11 @@ public class eow extends gfb {
       }
 
       @Override
-      public tl a() {
-         tl $$0 = tk.b(
-            tl.b(this.a.b), tl.a("mco.template.select.narrate.authors", this.a.d), tl.b(this.a.h), tl.a("mco.template.select.narrate.version", this.a.c)
+      public tm a() {
+         tm $$0 = tl.b(
+            tm.b(this.a.b), tm.a("mco.template.select.narrate.authors", this.a.d), tm.b(this.a.h), tm.a("mco.template.select.narrate.version", this.a.c)
          );
-         return tl.a("narrator.select", $$0);
+         return tm.a("narrator.select", $$0);
       }
    }
 
@@ -305,7 +305,7 @@ public class eow extends gfb {
       }
 
       public b(Iterable<enn> $$0) {
-         super(eow.this.g, eow.this.h, eow.this.G(), eow.this.h - 36, 46);
+         super(eow.this.g, eow.this.h, eow.this.H(), eow.this.h - 36, 46);
          $$0.forEach(this::a);
       }
 
@@ -326,7 +326,7 @@ public class eow extends gfb {
       public void a(@Nullable eow.a $$0) {
          super.a($$0);
          eow.this.J = $$0 == null ? null : $$0.a;
-         eow.this.C();
+         eow.this.D();
       }
 
       @Override

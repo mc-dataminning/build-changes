@@ -8,7 +8,7 @@ public class eyo extends eyc {
    }
 
    public eyo(eyk $$0, eqz $$1) {
-      super($$0, $$1, tl.c("options.sounds.title"));
+      super($$0, $$1, tm.c("options.sounds.title"));
    }
 
    @Override
@@ -19,7 +19,7 @@ public class eyo extends eyc {
       this.c.a(this.b.ap());
       this.c.a(a(this.b));
       this.e(this.c);
-      this.d(esq.a(tk.d, $$0 -> {
+      this.d(esq.a(tl.d, $$0 -> {
          this.f.m.ar();
          this.f.a(this.a);
       }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());

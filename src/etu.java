@@ -5,19 +5,19 @@ public abstract class etu extends esq {
    protected final int b;
    protected final int c;
 
-   etu(int $$0, int $$1, tl $$2, int $$3, int $$4, aex $$5, esq.c $$6) {
+   etu(int $$0, int $$1, tm $$2, int $$3, int $$4, aex $$5, esq.c $$6) {
       super(0, 0, $$0, $$1, $$2, $$6, o);
       this.b = $$3;
       this.c = $$4;
       this.a = $$5;
    }
 
-   public static etu.a a(tl $$0, esq.c $$1, boolean $$2) {
+   public static etu.a a(tm $$0, esq.c $$1, boolean $$2) {
       return new etu.a($$0, $$1, $$2);
    }
 
    public static class a {
-      private final tl a;
+      private final tm a;
       private final esq.c b;
       private final boolean c;
       private int d = 150;
@@ -27,7 +27,7 @@ public abstract class etu extends esq {
       private int g;
       private int h;
 
-      public a(tl $$0, esq.c $$1, boolean $$2) {
+      public a(tm $$0, esq.c $$1, boolean $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -63,7 +63,7 @@ public abstract class etu extends esq {
    }
 
    public static class b extends etu {
-      protected b(int $$0, int $$1, tl $$2, int $$3, int $$4, aex $$5, esq.c $$6) {
+      protected b(int $$0, int $$1, tm $$2, int $$3, int $$4, aex $$5, esq.c $$6) {
          super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
 
@@ -81,7 +81,7 @@ public abstract class etu extends esq {
    }
 
    public static class c extends etu {
-      protected c(int $$0, int $$1, tl $$2, int $$3, int $$4, aex $$5, esq.c $$6) {
+      protected c(int $$0, int $$1, tm $$2, int $$3, int $$4, aex $$5, esq.c $$6) {
          super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
 

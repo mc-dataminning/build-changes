@@ -16,7 +16,7 @@ public class fxg extends fxp<bvd, ffs<bvd>> {
    }
 
    public void a(elp $$0, foe $$1, int $$2, bvd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce()) {
+      if (!$$3.cd()) {
          bvd.a $$10 = $$3.t();
          if ($$10 != bvd.a.a) {
             aex $$11 = a.get($$10);

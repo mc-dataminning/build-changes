@@ -14,22 +14,22 @@ public class chj extends cja implements ckz {
    }
 
    public static boolean d(cjf $$0) {
-      qx $$1 = $$0.v();
+      qy $$1 = $$0.v();
       return $$1 != null && ($$1.e("LodestoneDimension") || $$1.e("LodestonePos"));
    }
 
-   private static Optional<aew<cpv>> c(qx $$0) {
-      return cpv.g.parse(ri.a, $$0.c("LodestoneDimension")).result();
+   private static Optional<aew<cpv>> c(qy $$0) {
+      return cpv.g.parse(rj.a, $$0.c("LodestoneDimension")).result();
    }
 
    @Nullable
-   public static hf a(qx $$0) {
+   public static hf a(qy $$0) {
       boolean $$1 = $$0.e("LodestonePos");
       boolean $$2 = $$0.e("LodestoneDimension");
       if ($$1 && $$2) {
          Optional<aew<cpv>> $$3 = c($$0);
          if ($$3.isPresent()) {
-            gw $$4 = rj.b($$0.p("LodestonePos"));
+            gw $$4 = rk.b($$0.p("LodestonePos"));
             return hf.a($$3.get(), $$4);
          }
       }
@@ -51,14 +51,14 @@ public class chj extends cja implements ckz {
    public void a(cjf $$0, cpv $$1, biq $$2, int $$3, boolean $$4) {
       if (!$$1.B) {
          if (d($$0)) {
-            qx $$5 = $$0.w();
+            qy $$5 = $$0.w();
             if ($$5.e("LodestoneTracked") && !$$5.q("LodestoneTracked")) {
                return;
             }
 
             Optional<aew<cpv>> $$6 = c($$5);
             if ($$6.isPresent() && $$6.get() == $$1.ac() && $$5.e("LodestonePos")) {
-               gw $$7 = rj.b($$5.p("LodestonePos"));
+               gw $$7 = rk.b($$5.p("LodestonePos"));
                if (!$$1.j($$7) || !((akr)$$1).w().a(buj.s, $$7)) {
                   $$5.r("LodestonePos");
                }
@@ -82,7 +82,7 @@ public class chj extends cja implements ckz {
             this.a($$2.ac(), $$1, $$4.w());
          } else {
             cjf $$6 = new cjf(cji.qe, 1);
-            qx $$7 = $$4.u() ? $$4.v().h() : new qx();
+            qy $$7 = $$4.u() ? $$4.v().h() : new qy();
             $$6.c($$7);
             if (!$$3.fS().d) {
                $$4.h(1);
@@ -98,9 +98,9 @@ public class chj extends cja implements ckz {
       }
    }
 
-   private void a(aew<cpv> $$0, gw $$1, qx $$2) {
-      $$2.a("LodestonePos", rj.a($$1));
-      cpv.g.encodeStart(ri.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
+   private void a(aew<cpv> $$0, gw $$1, qy $$2) {
+      $$2.a("LodestonePos", rk.a($$1));
+      cpv.g.encodeStart(rj.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
       $$2.a("LodestoneTracked", true);
    }
 

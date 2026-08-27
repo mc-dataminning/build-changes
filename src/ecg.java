@@ -130,7 +130,7 @@ public class ecg {
 
    public ecg.a b() throws ecf {
       if (!Files.isDirectory(this.g)) {
-         throw new ecf(tl.c("selectWorld.load_folder_access"));
+         throw new ecf(tm.c("selectWorld.load_folder_access"));
       } else {
          try {
             ecg.a var3;
@@ -144,7 +144,7 @@ public class ecg {
 
             return var3;
          } catch (IOException var6) {
-            throw new ecf(tl.c("selectWorld.load_folder_access"));
+            throw new ecf(tm.c("selectWorld.load_folder_access"));
          }
       }
    }
@@ -159,27 +159,42 @@ public class ecg {
                   boolean $$1x;
                   try {
                      $$1x = are.b($$2.f());
-                  } catch (Exception var6) {
-                     b.warn("Failed to read {} lock", $$2.f(), var6);
+                  } catch (Exception var14) {
+                     b.warn("Failed to read {} lock", $$2.f(), var14);
                      return null;
                   }
 
                   try {
                      ech $$4 = this.a($$2, this.a($$2, $$1x));
                      return $$4 != null ? $$4 : null;
-                  } catch (OutOfMemoryError var4x) {
+                  } catch (OutOfMemoryError var12) {
                      arv.b();
                      System.gc();
-                     b.error(LogUtils.FATAL_MARKER, "Ran out of memory trying to read summary of {}", $$2.a());
-                     throw var4x;
-                  } catch (StackOverflowError var5) {
+                     String $$6 = "Ran out of memory trying to read summary of world folder \"" + $$2.a() + "\"";
+                     b.error(LogUtils.FATAL_MARKER, $$6);
+                     OutOfMemoryError $$7 = new OutOfMemoryError("Ran out of memory reading level data");
+                     $$7.initCause(var12);
+                     o $$8 = o.a($$7, $$6);
+                     p $$9 = $$8.a("World details");
+                     $$9.a("Folder Name", $$2.a());
+
+                     try {
+                        long $$10 = Files.size($$2.b());
+                        $$9.a("level.dat size", $$10);
+                     } catch (IOException var11) {
+                        $$9.a("level.dat size", (Throwable)var11);
+                     }
+
+                     throw new y($$8);
+                  } catch (StackOverflowError var13) {
                      b.error(
                         LogUtils.FATAL_MARKER,
-                        "Ran out of stack trying to read summary of {}. Assuming corruption; attempting to restore from from level.dat_old.",
-                        $$2.a()
+                        "Ran out of stack trying to read summary of world folder \"{}\". Assuming corruption; attempting to restore from from {}.",
+                        $$2.a(),
+                        $$2.c()
                      );
                      ac.a($$2.b(), $$2.c(), $$2.a(LocalDateTime.now()), true);
-                     throw var5;
+                     throw var13;
                   }
                },
                ac.f()
@@ -215,10 +230,10 @@ public class ecg {
    @Nullable
    private static cqo a(Path $$0, DataFixer $$1) {
       try {
-         if (c($$0) instanceof qx $$3) {
-            qx $$4 = $$3.p("Data");
-            int $$5 = rj.b($$4, -1);
-            Dynamic<?> $$6 = ata.a.a($$1, new Dynamic(ri.a, $$4), $$5);
+         if (c($$0) instanceof qy $$3) {
+            qy $$4 = $$3.p("Data");
+            int $$5 = rk.b($$4, -1);
+            Dynamic<?> $$6 = ata.a.a($$1, new Dynamic(rj.a, $$4), $$5);
             return a($$6);
          }
       } catch (Exception var7) {
@@ -228,19 +243,19 @@ public class ecg {
       return null;
    }
 
-   static BiFunction<Path, DataFixer, Pair<ecm, dln.b>> a(DynamicOps<rq> $$0, cqo $$1, ht<dit> $$2, Lifecycle $$3) {
+   static BiFunction<Path, DataFixer, Pair<ecm, dln.b>> a(DynamicOps<rr> $$0, cqo $$1, ht<dit> $$2, Lifecycle $$3) {
       return ($$4, $$5) -> {
-         qx $$6;
+         qy $$6;
          try {
-            $$6 = rh.a($$4.toFile());
+            $$6 = ri.a($$4.toFile());
          } catch (IOException var17) {
             throw new UncheckedIOException(var17);
          }
 
-         qx $$9 = $$6.p("Data");
-         qx $$10 = $$9.b("Player", 10) ? $$9.p("Player") : null;
+         qy $$9 = $$6.p("Data");
+         qy $$10 = $$9.b("Player", 10) ? $$9.p("Player") : null;
          $$9.r("Player");
-         int $$11 = rj.b($$9, -1);
+         int $$11 = rk.b($$9, -1);
          Dynamic<?> $$12 = ata.a.a($$5, new Dynamic($$0, $$9), $$11);
          dlo $$13 = (dlo)a($$12, $$5, $$11).getOrThrow(false, ac.a("WorldGenSettings: ", b::error));
          eci $$14 = eci.a($$12);
@@ -263,10 +278,10 @@ public class ecg {
                }
             }
 
-            if (c($$2) instanceof qx $$6) {
-               qx $$7 = $$6.p("Data");
-               int $$8 = rj.b($$7, -1);
-               Dynamic<?> $$9 = ata.a.a($$3, new Dynamic(ri.a, $$7), $$8);
+            if (c($$2) instanceof qy $$6) {
+               qy $$7 = $$6.p("Data");
+               int $$8 = rk.b($$7, -1);
+               Dynamic<?> $$9 = ata.a.a($$3, new Dynamic(rj.a, $$7), $$8);
                eci $$10 = eci.a($$9);
                int $$11 = $$10.a();
                if ($$11 == 19132 || $$11 == 19133) {
@@ -297,9 +312,9 @@ public class ecg {
    }
 
    @Nullable
-   private static rq c(Path $$0) throws IOException {
-      sc $$1 = new sc(new rz("Data", qx.b, "Player"), new rz("Data", qx.b, "WorldGenSettings"));
-      rh.a($$0.toFile(), $$1);
+   private static rr c(Path $$0) throws IOException {
+      sd $$1 = new sd(new sa("Data", qy.b, "Player"), new sa("Data", qy.b, "WorldGenSettings"));
+      ri.a($$0.toFile(), $$1);
       return $$1.d();
    }
 
@@ -449,7 +464,7 @@ public class ecg {
       }
 
       @Nullable
-      public Pair<ecm, dln.b> a(DynamicOps<rq> $$0, cqo $$1, ht<dit> $$2, Lifecycle $$3) {
+      public Pair<ecm, dln.b> a(DynamicOps<rr> $$0, cqo $$1, ht<dit> $$2, Lifecycle $$3) {
          this.i();
          return ecg.this.a(this.c, ecg.a($$0, $$1, $$2, $$3));
       }
@@ -464,15 +479,15 @@ public class ecg {
          this.a($$0, $$1, null);
       }
 
-      public void a(hu $$0, ecm $$1, @Nullable qx $$2) {
+      public void a(hu $$0, ecm $$1, @Nullable qy $$2) {
          File $$3 = this.c.f().toFile();
-         qx $$4 = $$1.a($$0, $$2);
-         qx $$5 = new qx();
+         qy $$4 = $$1.a($$0, $$2);
+         qy $$5 = new qy();
          $$5.a("Data", $$4);
 
          try {
             File $$6 = File.createTempFile("level", ".dat", $$3);
-            rh.a($$5, $$6);
+            ri.a($$5, $$6);
             File $$7 = this.c.c().toFile();
             File $$8 = this.c.b().toFile();
             ac.a($$8, $$6, $$7);
@@ -538,10 +553,10 @@ public class ecg {
          this.i();
          Path $$1 = this.c.b();
          if (Files.exists($$1)) {
-            qx $$2 = rh.a($$1.toFile());
-            qx $$3 = $$2.p("Data");
+            qy $$2 = ri.a($$1.toFile());
+            qy $$3 = $$2.p("Data");
             $$3.a("LevelName", $$0);
-            rh.a($$2, $$1.toFile());
+            ri.a($$2, $$1.toFile());
          }
       }
 

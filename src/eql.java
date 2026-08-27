@@ -3,24 +3,24 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public class eql {
-   private final List<tp> a = Lists.newArrayList();
+   private final List<tq> a = Lists.newArrayList();
 
-   public void a(tp $$0) {
+   public void a(tq $$0) {
       this.a.add($$0);
    }
 
    @Nullable
-   public tp a() {
+   public tq a() {
       if (this.a.isEmpty()) {
          return null;
       } else {
-         return this.a.size() == 1 ? this.a.get(0) : tp.a(this.a);
+         return this.a.size() == 1 ? this.a.get(0) : tq.a(this.a);
       }
    }
 
-   public tp b() {
-      tp $$0 = this.a();
-      return $$0 != null ? $$0 : tp.b;
+   public tq b() {
+      tq $$0 = this.a();
+      return $$0 != null ? $$0 : tq.b;
    }
 
    public void c() {

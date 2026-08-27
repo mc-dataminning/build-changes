@@ -2,7 +2,7 @@ import com.google.common.collect.Lists;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class ya implements vd<ww> {
+public class ya implements ve<wx> {
    private final double a;
    private final double b;
    private final double c;
@@ -29,7 +29,7 @@ public class ya implements vd<ww> {
       }
    }
 
-   public ya(so $$0) {
+   public ya(sp $$0) {
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
@@ -37,7 +37,7 @@ public class ya implements vd<ww> {
       int $$1 = arx.a(this.a);
       int $$2 = arx.a(this.b);
       int $$3 = arx.a(this.c);
-      this.e = $$0.a((so.a<gw>)($$3x -> {
+      this.e = $$0.a((sp.a<gw>)($$3x -> {
          int $$4 = $$3x.readByte() + $$1;
          int $$5 = $$3x.readByte() + $$2;
          int $$6 = $$3x.readByte() + $$3;
@@ -49,7 +49,7 @@ public class ya implements vd<ww> {
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(sp $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
@@ -70,7 +70,7 @@ public class ya implements vd<ww> {
       $$0.a(this.h);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

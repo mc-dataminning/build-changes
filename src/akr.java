@@ -201,19 +201,19 @@ public class akr extends cpv implements cqp {
          this.L.a($$1x -> {
             if (!$$1x.dG()) {
                if (this.i($$1x)) {
-                  $$1x.al();
+                  $$1x.ak();
                } else {
                   $$1.a("checkDespawn");
                   $$1x.dx();
                   $$1.c();
                   if (this.I.a.j().c($$1x.dn().a())) {
-                     biq $$2x = $$1x.cZ();
+                     biq $$2x = $$1x.cY();
                      if ($$2x != null) {
                         if (!$$2x.dG() && $$2x.x($$1x)) {
                            return;
                         }
 
-                        $$1x.ab();
+                        $$1x.aa();
                      }
 
                      $$1.a("tick");
@@ -382,7 +382,7 @@ public class akr extends cpv implements cqp {
          return $$2.get();
       } else {
          ehi $$3 = new ehi($$1, new gw($$1.u(), this.aj(), $$1.w())).g(3.0);
-         List<bjg> $$4 = this.a(bjg.class, $$3, $$0x -> $$0x != null && $$0x.bw() && this.g($$0x.dl()));
+         List<bjg> $$4 = this.a(bjg.class, $$3, $$0x -> $$0x != null && $$0x.bv() && this.g($$0x.dl()));
          if (!$$4.isEmpty()) {
             return $$4.get(this.z.a($$4.size())).dl();
          } else {
@@ -407,11 +407,11 @@ public class akr extends cpv implements cqp {
       if (this.d()) {
          if (!this.n().O() || this.n().p()) {
             int $$0 = this.X().c(cpr.L);
-            tl $$1;
+            tm $$1;
             if (this.O.a($$0)) {
-               $$1 = tl.c("sleep.skipping_night");
+               $$1 = tm.c("sleep.skipping_night");
             } else {
-               $$1 = tl.a("sleep.players_sleeping", this.O.b(), this.O.b($$0));
+               $$1 = tm.a("sleep.players_sleeping", this.O.b(), this.O.b($$0));
             }
 
             for (aks $$3 : this.H) {
@@ -539,32 +539,32 @@ public class akr extends cpv implements cqp {
    }
 
    public void a(biq $$0) {
-      $$0.bo();
+      $$0.bn();
       bdp $$1 = this.ad();
       $$0.ah++;
-      this.ad().a(() -> jd.h.b($$0.ah()).toString());
+      this.ad().a(() -> jd.h.b($$0.ag()).toString());
       $$1.d("tickNonPassenger");
       $$0.l();
       this.ad().c();
 
-      for (biq $$2 : $$0.cQ()) {
+      for (biq $$2 : $$0.cP()) {
          this.a($$0, $$2);
       }
    }
 
    private void a(biq $$0, biq $$1) {
-      if ($$1.dG() || $$1.cZ() != $$0) {
-         $$1.ab();
+      if ($$1.dG() || $$1.cY() != $$0) {
+         $$1.aa();
       } else if ($$1 instanceof cbu || this.L.c($$1)) {
-         $$1.bo();
+         $$1.bn();
          $$1.ah++;
          bdp $$2 = this.ad();
-         $$2.a(() -> jd.h.b($$1.ah()).toString());
+         $$2.a(() -> jd.h.b($$1.ag()).toString());
          $$2.d("tickPassenger");
-         $$1.bz();
+         $$1.by();
          $$2.c();
 
-         for (biq $$3 : $$1.cQ()) {
+         for (biq $$3 : $$1.cP()) {
             this.a($$1, $$3);
          }
       }
@@ -579,12 +579,12 @@ public class akr extends cpv implements cqp {
       akp $$3 = this.k();
       if (!$$2) {
          if ($$0 != null) {
-            $$0.a(tl.c("menu.savingLevel"));
+            $$0.a(tm.c("menu.savingLevel"));
          }
 
          this.at();
          if ($$0 != null) {
-            $$0.c(tl.c("menu.savingChunks"));
+            $$0.c(tm.c("menu.savingChunks"));
          }
 
          $$3.a($$1);
@@ -628,7 +628,7 @@ public class akr extends cpv implements cqp {
    }
 
    public List<? extends bxh> h() {
-      return this.a(biu.C, bjg::bw);
+      return this.a(biu.C, bjg::bv);
    }
 
    public List<aks> a(Predicate<? super aks> $$0) {
@@ -652,7 +652,7 @@ public class akr extends cpv implements cqp {
 
    @Nullable
    public aks i() {
-      List<aks> $$0 = this.a(bjg::bw);
+      List<aks> $$0 = this.a(bjg::bv);
       return $$0.isEmpty() ? null : $$0.get(this.z.a($$0.size()));
    }
 
@@ -686,10 +686,10 @@ public class akr extends cpv implements cqp {
    }
 
    private void e(aks $$0) {
-      biq $$1 = this.E().a($$0.cw());
+      biq $$1 = this.E().a($$0.cv());
       if ($$1 != null) {
-         E.warn("Force-added player with duplicate UUID {}", $$0.cw());
-         $$1.af();
+         E.warn("Force-added player with duplicate UUID {}", $$0.cv());
+         $$1.ae();
          this.a((aks)$$1, biq.c.b);
       }
 
@@ -698,7 +698,7 @@ public class akr extends cpv implements cqp {
 
    private boolean j(biq $$0) {
       if ($$0.dG()) {
-         E.warn("Tried to add entity {} but it was marked as removed already", biu.a($$0.ah()));
+         E.warn("Tried to add entity {} but it was marked as removed already", biu.a($$0.ag()));
          return false;
       } else {
          return this.M.a($$0);
@@ -706,7 +706,7 @@ public class akr extends cpv implements cqp {
    }
 
    public boolean e(biq $$0) {
-      if ($$0.cS().map(biq::cw).anyMatch(this.M::a)) {
+      if ($$0.cR().map(biq::cv).anyMatch(this.M::a)) {
          return false;
       } else {
          this.a_($$0);
@@ -726,7 +726,7 @@ public class akr extends cpv implements cqp {
    @Override
    public void a(int $$0, gw $$1, int $$2) {
       for (aks $$3 : this.J.ac().t()) {
-         if ($$3 != null && $$3.dL() == this && $$3.ai() != $$0) {
+         if ($$3 != null && $$3.dL() == this && $$3.ah() != $$0) {
             double $$4 = (double)$$1.u() - $$3.dq();
             double $$5 = (double)$$1.v() - $$3.ds();
             double $$6 = (double)$$1.w() - $$3.dw();
@@ -916,11 +916,11 @@ public class akr extends cpv implements cqp {
    }
 
    public <T extends iv> boolean a(aks $$0, T $$1, boolean $$2, double $$3, double $$4, double $$5, int $$6, double $$7, double $$8, double $$9, double $$10) {
-      vd<?> $$11 = new yj($$1, $$2, $$3, $$4, $$5, (float)$$7, (float)$$8, (float)$$9, (float)$$10, $$6);
+      ve<?> $$11 = new yj($$1, $$2, $$3, $$4, $$5, (float)$$7, (float)$$8, (float)$$9, (float)$$10, $$6);
       return this.a($$0, $$2, $$3, $$4, $$5, $$11);
    }
 
-   private boolean a(aks $$0, boolean $$1, double $$2, double $$3, double $$4, vd<?> $$5) {
+   private boolean a(aks $$0, boolean $$1, double $$2, double $$3, double $$4, ve<?> $$5) {
       if ($$0.dL() != this) {
          return false;
       } else {
@@ -1155,9 +1155,9 @@ public class akr extends cpv implements cqp {
       aqz $$2 = aqz.a().a("x").a("y").a("z").a("uuid").a("type").a("alive").a("display_name").a("custom_name").a($$0);
 
       for (biq $$3 : $$1) {
-         tl $$4 = $$3.ae();
-         tl $$5 = $$3.N_();
-         $$2.a($$3.dq(), $$3.ds(), $$3.dw(), $$3.cw(), jd.h.b($$3.ah()), $$3.bw(), $$5.getString(), $$4 != null ? $$4.getString() : null);
+         tm $$4 = $$3.ad();
+         tm $$5 = $$3.N_();
+         $$2.a($$3.dq(), $$3.ds(), $$3.dw(), $$3.cv(), jd.h.b($$3.ag()), $$3.bv(), $$5.getString(), $$4 != null ? $$4.getString() : null);
       }
    }
 
@@ -1222,7 +1222,7 @@ public class akr extends cpv implements cqp {
          "players: %s, entities: %s [%s], block_entities: %d [%s], block_ticks: %d, fluid_ticks: %d, chunk_source: %s",
          this.H.size(),
          this.M.e(),
-         a(this.M.d().a(), $$0 -> jd.h.b($$0.ah()).toString()),
+         a(this.M.d().a(), $$0 -> jd.h.b($$0.ag()).toString()),
          this.r.size(),
          a(this.r, del::d),
          this.l().a(),
@@ -1359,7 +1359,7 @@ public class akr extends cpv implements cqp {
 
          if ($$0 instanceof bxh $$4) {
             for (bxf $$5 : $$4.fZ()) {
-               akr.this.aa.put($$5.ai(), $$5);
+               akr.this.aa.put($$5.ah(), $$5);
             }
          }
 
@@ -1384,7 +1384,7 @@ public class akr extends cpv implements cqp {
 
          if ($$0 instanceof bxh $$4) {
             for (bxf $$5 : $$4.fZ()) {
-               akr.this.aa.remove($$5.ai());
+               akr.this.aa.remove($$5.ah());
             }
          }
 

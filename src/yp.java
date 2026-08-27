@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public abstract class yp implements vd<ww> {
+public abstract class yp implements ve<wx> {
    protected final int a;
    protected final short b;
    protected final short c;
@@ -23,7 +23,7 @@ public abstract class yp implements vd<ww> {
       this.i = $$8;
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -74,7 +74,7 @@ public abstract class yp implements vd<ww> {
          super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
       }
 
-      public static yp.a b(so $$0) {
+      public static yp.a b(sp $$0) {
          int $$1 = $$0.m();
          short $$2 = $$0.readShort();
          short $$3 = $$0.readShort();
@@ -84,7 +84,7 @@ public abstract class yp implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.c(this.a);
          $$0.l(this.b);
          $$0.l(this.c);
@@ -98,7 +98,7 @@ public abstract class yp implements vd<ww> {
          super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
       }
 
-      public static yp.b b(so $$0) {
+      public static yp.b b(sp $$0) {
          int $$1 = $$0.m();
          short $$2 = $$0.readShort();
          short $$3 = $$0.readShort();
@@ -110,7 +110,7 @@ public abstract class yp implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.c(this.a);
          $$0.l(this.b);
          $$0.l(this.c);
@@ -126,7 +126,7 @@ public abstract class yp implements vd<ww> {
          super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
       }
 
-      public static yp.c b(so $$0) {
+      public static yp.c b(sp $$0) {
          int $$1 = $$0.m();
          byte $$2 = $$0.readByte();
          byte $$3 = $$0.readByte();
@@ -135,7 +135,7 @@ public abstract class yp implements vd<ww> {
       }
 
       @Override
-      public void a(so $$0) {
+      public void a(sp $$0) {
          $$0.c(this.a);
          $$0.k(this.e);
          $$0.k(this.f);

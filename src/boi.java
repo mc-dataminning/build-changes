@@ -24,7 +24,7 @@ public class boi {
                                  .stream()
                                  .filter($$1xxx -> $$1xxx instanceof cbh && $$1xxx != $$7)
                                  .map($$0xxxx -> (cbh)$$0xxxx)
-                                 .filter(bjg::bw)
+                                 .filter(bjg::bv)
                                  .filter($$2xx -> a($$10.get(), $$2xx, $$9))
                                  .findFirst()
                                  .ifPresent($$6xx -> {
