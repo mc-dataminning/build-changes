@@ -1,43 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public class dzm extends dxv<eag> {
-   private static final ib a = new ib(8, 3, 8);
-   private static final cye b = new cye(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public dzm(Codec<eag> $$0) {
+public class dzm extends dye<ebb> {
+   public dzm(Codec<ebb> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(dxx<eag> $$0) {
-      czs $$1 = $$0.b();
-      cye $$2 = new cye($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         ib $$3 = a.h($$0.e().v() + a.v());
-         ib.a $$4 = new ib.a();
-
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, dca.m.n(), 2);
-                  } else {
-                     $$1.a($$4, dca.b.n(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   public boolean a(dyg<ebb> $$0) {
+      axt $$1 = $$0.d();
+      ebb $$2 = $$0.f();
+      dab $$3 = $$0.b();
+      id $$4 = $$0.e();
+      drf $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      eeu $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

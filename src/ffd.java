@@ -1,55 +1,111 @@
-import java.time.Duration;
 import javax.annotation.Nullable;
 
-public class ffd {
-   @Nullable
-   private ffa a;
-   private Duration b = Duration.ZERO;
-   private long c;
-   private boolean d;
+public abstract class ffd extends fdy {
+   protected final ajv a;
+   protected final int b;
+   protected final int c;
 
-   public void a(Duration $$0) {
-      this.b = $$0;
+   ffd(int $$0, int $$1, wi $$2, int $$3, int $$4, ajv $$5, fdy.c $$6, @Nullable fdy.b $$7) {
+      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
    }
 
-   public void a(@Nullable ffa $$0) {
-      this.a = $$0;
+   public static ffd.a a(wi $$0, fdy.c $$1, boolean $$2) {
+      return new ffd.a($$0, $$1, $$2);
    }
 
-   @Nullable
-   public ffa a() {
-      return this.a;
-   }
+   public static class a {
+      private final wi b;
+      private final fdy.c c;
+      private final boolean d;
+      private int e = 150;
+      private int f = 20;
+      @Nullable
+      private ajv g;
+      private int h;
+      private int i;
+      @Nullable
+      fdy.b a;
 
-   public void a(boolean $$0, boolean $$1, fhv $$2) {
-      if (this.a == null) {
-         this.d = false;
-      } else {
-         boolean $$3 = $$0 || $$1 && fbp.Q().aX().b();
-         if ($$3 != this.d) {
-            if ($$3) {
-               this.c = ac.b();
-            }
+      public a(wi $$0, fdy.c $$1, boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
 
-            this.d = $$3;
-         }
+      public ffd.a a(int $$0) {
+         this.e = $$0;
+         return this;
+      }
 
-         if ($$3 && ac.b() - this.c > this.b.toMillis()) {
-            fjo $$4 = fbp.Q().y;
-            if ($$4 != null) {
-               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
-            }
+      public ffd.a a(int $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public ffd.a a(ajv $$0, int $$1, int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      public ffd.a a(fdy.b $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public ffd a() {
+         if (this.g == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (ffd)(this.d
+               ? new ffd.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
+               : new ffd.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
          }
       }
    }
 
-   private fmg a(fhv $$0, boolean $$1, boolean $$2) {
-      return (fmg)(!$$1 && $$2 && fbp.Q().aX().b() ? new fmc($$0) : new fmi($$0));
+   public static class b extends ffd {
+      protected b(int $$0, int $$1, wi $$2, int $$3, int $$4, ajv $$5, fdy.c $$6, @Nullable fdy.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(fdl $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.C() + this.x() / 2 - this.b / 2;
+         int $$5 = this.D() + this.v() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(fdl $$0, fdj $$1, int $$2) {
+      }
    }
 
-   public void a(fhl $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
+   public static class c extends ffd {
+      protected c(int $$0, int $$1, wi $$2, int $$3, int $$4, ajv $$5, fdy.c $$6, @Nullable fdy.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(fdl $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.C() + this.x() - this.b - 2;
+         int $$5 = this.D() + this.v() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(fdl $$0, fdj $$1, int $$2) {
+         int $$3 = this.C() + 2;
+         int $$4 = this.C() + this.x() - this.b - 4;
+         int $$5 = this.C() + this.x() / 2;
+         a($$0, $$1, this.y(), $$5, $$3, this.D(), $$4, this.D() + this.v(), $$2);
       }
    }
 }

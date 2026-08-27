@@ -1,76 +1,90 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class cvd extends cvb {
-   private static final cvg a = cvg.a(crm.qN);
-   private static final cvg b = cvg.a(crm.pt);
-   private static final cvg c = cvg.a(crm.ut);
-
-   public cvd(cuz $$0) {
+public class cvd extends cvk {
+   public cvd(cvi $$0) {
       super($$0);
    }
 
-   public boolean a(cnf $$0, cyx $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
+   public boolean a(cnm $$0, czg $$1) {
+      cql $$2 = null;
+      crs $$3 = null;
+      crs $$4 = null;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         crj $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         crs $$6 = $$0.a($$5);
+         if (!$$6.d()) {
+            crn $$7 = $$6.f();
+            if (!($$7 instanceof cpn)) {
                return false;
             }
-         }
-      }
 
-      return $$2 && $$3 >= 1;
-   }
+            cpn $$8 = (cpn)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
 
-   public crj a(cnf $$0, iz $$1) {
-      List<ctx> $$2 = new ArrayList<>();
-      int $$3 = 0;
+            int $$9 = $$6.a(jr.N, dmf.a).b().size();
+            if ($$9 > 6) {
+               return false;
+            }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         crj $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if (b.a($$5)) {
-               $$3++;
-            } else if (c.a($$5)) {
-               ctx $$6 = $$5.a(jp.J);
-               if ($$6 != null) {
-                  $$2.add($$6);
+            if ($$9 > 0) {
+               if ($$3 != null) {
+                  return false;
                }
+
+               $$3 = $$6;
+            } else {
+               if ($$4 != null) {
+                  return false;
+               }
+
+               $$4 = $$6;
             }
          }
       }
 
-      crj $$7 = new crj(crm.us, 3);
-      $$7.b(jp.K, new cty($$3, $$2));
-      return $$7;
+      return $$3 != null && $$4 != null;
+   }
+
+   public crs a(cnm $$0, jb $$1) {
+      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+         crs $$3 = $$0.a($$2);
+         if (!$$3.d()) {
+            int $$4 = $$3.a(jr.N, dmf.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
+            }
+         }
+      }
+
+      return crs.i;
+   }
+
+   public iw<crs> a(cnm $$0) {
+      iw<crs> $$1 = iw.a($$0.b(), crs.i);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         crs $$3 = $$0.a($$2);
+         if (!$$3.d()) {
+            if ($$3.f().w()) {
+               $$1.set($$2, new crs($$3.f().v()));
+            } else if (!$$3.a(jr.N, dmf.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public cvw<?> ao_() {
+      return cvw.k;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
       return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public crj a(iz $$0) {
-      return new crj(crm.us);
-   }
-
-   @Override
-   public cvn<?> ap_() {
-      return cvn.g;
    }
 }

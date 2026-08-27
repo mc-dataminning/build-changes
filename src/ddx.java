@@ -1,26 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ddx extends dch {
-   public static final MapCodec<ddx> a = b(ddx::new);
-   protected static final float b = 6.0F;
-   protected static final est c = dby.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class ddx extends dbp {
+   public static final MapCodec<ddx> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddw.a.forGetter($$0x -> $$0x.c), u()).apply($$0, ddx::new));
+   private final dch c;
 
    @Override
    public MapCodec<ddx> a() {
-      return a;
+      return b;
    }
 
-   protected ddx(doy.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return c;
+   protected ddx(dch $$0, dph.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected boolean b(doz $$0, cyd $$1, ib $$2) {
-      return $$0.a(avc.cf);
+   protected void b(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
+      this.a($$0, (czh)$$1, $$2);
+   }
+
+   @Override
+   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.n().a(d, Boolean.valueOf(false)), 2);
+      }
+   }
+
+   @Override
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if ($$1 == ij.a && !$$0.a($$3, $$4)) {
+         return dcj.a.n();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, elc.c, elc.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

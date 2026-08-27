@@ -1,35 +1,31 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
 
-public class ko extends kk<ko> implements kj {
-   private static final kj.a<ko> a = new kj.a<ko>() {
-      public ko a(kk<ko> $$0, StringReader $$1, in.a $$2) {
-         return (ko)$$0;
+public record ko(float d) implements kl {
+   public static final Codec<ko> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.d)).apply($$0, ko::new));
+   public static final yg<vt, ko> b = yg.a(ye.h, $$0 -> $$0.d, ko::new);
+   public static final kl.a<ko> c = new kl.a<ko>() {
+      public ko a(km<ko> $$0, StringReader $$1, ip.a $$2) throws CommandSyntaxException {
+         $$1.expect(' ');
+         float $$3 = $$1.readFloat();
+         return new ko($$3);
       }
    };
-   private final Codec<ko> b = Codec.unit(this::f);
-   private final ye<vr, ko> c = ye.a(this);
 
-   protected ko(boolean $$0) {
-      super($$0, a);
-   }
-
-   public ko f() {
-      return this;
+   @Override
+   public km<ko> a() {
+      return kn.I;
    }
 
    @Override
-   public Codec<ko> d() {
-      return this.b;
+   public String a(ip.a $$0) {
+      return String.format(Locale.ROOT, "%s %.2f", kt.j.b(this.a()), this.d);
    }
 
-   @Override
-   public ye<vr, ko> e() {
-      return this.c;
-   }
-
-   @Override
-   public String a(in.a $$0) {
-      return kr.j.b(this).toString();
+   public float b() {
+      return this.d;
    }
 }

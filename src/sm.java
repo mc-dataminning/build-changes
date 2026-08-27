@@ -1,134 +1,148 @@
 import com.google.common.collect.Lists;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Supplier;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class sm {
-   final si a;
-   private final List<sf> b = Lists.newArrayList();
-   private long c;
+   private static final Collection<te> a = Lists.newArrayList();
+   private static final Set<String> b = Sets.newHashSet();
+   private static final Map<String, Consumer<apu>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<apu>> d = Maps.newHashMap();
+   private static final Set<te> e = Sets.newHashSet();
 
-   sm(si $$0) {
-      this.a = $$0;
-      this.c = $$0.o();
+   public static void a(Class<?> $$0) {
+      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(sm::a);
    }
 
-   public sm a(Runnable $$0) {
-      this.b.add(sf.a($$0));
-      return this;
+   public static void a(Method $$0) {
+      String $$1 = $$0.getDeclaringClass().getSimpleName();
+      sb $$2 = $$0.getAnnotation(sb.class);
+      if ($$2 != null) {
+         a.add(c($$0));
+         b.add($$1);
+      }
+
+      si $$3 = $$0.getAnnotation(si.class);
+      if ($$3 != null) {
+         a.addAll(b($$0));
+         b.add($$1);
+      }
+
+      a($$0, rz.class, rz::a, c);
+      a($$0, ry.class, ry::a, d);
    }
 
-   public sm a(long $$0, Runnable $$1) {
-      this.b.add(sf.a($$0, $$1));
-      return this;
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<apu>> $$3) {
+      T $$4 = $$0.getAnnotation($$1);
+      if ($$4 != null) {
+         String $$5 = $$2.apply($$4);
+         Consumer<apu> $$6 = $$3.putIfAbsent($$5, (Consumer<apu>)d($$0));
+         if ($$6 != null) {
+            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
+         }
+      }
    }
 
-   public sm a(int $$0) {
-      return this.a($$0, () -> {
+   public static Stream<te> a(String $$0) {
+      return a.stream().filter($$1 -> a($$1, $$0));
+   }
+
+   public static Collection<te> a() {
+      return a;
+   }
+
+   public static Collection<String> b() {
+      return b;
+   }
+
+   public static boolean b(String $$0) {
+      return b.contains($$0);
+   }
+
+   public static Consumer<apu> c(String $$0) {
+      return c.getOrDefault($$0, $$0x -> {
       });
    }
 
-   public sm b(Runnable $$0) {
-      this.b.add(sf.a(() -> this.c($$0)));
-      return this;
+   public static Consumer<apu> d(String $$0) {
+      return d.getOrDefault($$0, $$0x -> {
+      });
    }
 
-   public sm a(int $$0, Runnable $$1) {
-      this.b.add(sf.a(() -> {
-         if (this.a.o() < this.c + (long)$$0) {
-            throw new sa("Test timed out before sequence completed");
-         } else {
-            this.c($$1);
-         }
-      }));
-      return this;
+   public static Optional<te> e(String $$0) {
+      return a().stream().filter($$1 -> $$1.c().equalsIgnoreCase($$0)).findFirst();
    }
 
-   public sm b(int $$0, Runnable $$1) {
-      this.b.add(sf.a(() -> {
-         if (this.a.o() < this.c + (long)$$0) {
-            this.c($$1);
-            throw new sa("Test timed out before sequence completed");
-         }
-      }));
-      return this;
+   public static te f(String $$0) {
+      Optional<te> $$1 = e($$0);
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Can't find the test function for " + $$0);
+      } else {
+         return $$1.get();
+      }
    }
 
-   public void a() {
-      this.b.add(sf.a(this.a::l));
-   }
-
-   public void a(Supplier<Exception> $$0) {
-      this.b.add(sf.a(() -> this.a.a($$0.get())));
-   }
-
-   public sm.a b() {
-      sm.a $$0 = new sm.a();
-      this.b.add(sf.a(() -> $$0.a(this.a.o())));
-      return $$0;
-   }
-
-   public void a(long $$0) {
+   private static Collection<te> b(Method $$0) {
       try {
-         this.c($$0);
-      } catch (sa var4) {
+         Object $$1 = $$0.getDeclaringClass().newInstance();
+         return (Collection<te>)$$0.invoke($$1);
+      } catch (ReflectiveOperationException var2) {
+         throw new RuntimeException(var2);
       }
    }
 
-   public void b(long $$0) {
-      try {
-         this.c($$0);
-      } catch (sa var4) {
-         this.a.a(var4);
-      }
+   private static te c(Method $$0) {
+      sb $$1 = $$0.getAnnotation(sb.class);
+      String $$2 = $$0.getDeclaringClass().getSimpleName();
+      String $$3 = $$2.toLowerCase();
+      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
+      String $$5 = $$1.g().isEmpty() ? $$4 : $$3 + "." + $$1.g();
+      String $$6 = $$1.b();
+      dit $$7 = ta.a($$1.d());
+      return new te($$6, $$4, $$5, $$7, $$1.a(), $$1.h(), $$1.e(), $$1.f(), $$1.j(), $$1.i(), $$1.c(), (Consumer<sj>)d($$0));
    }
 
-   private void c(Runnable $$0) {
-      try {
-         $$0.run();
-      } catch (sa var3) {
-         this.a.a(var3);
-      }
-   }
-
-   private void c(long $$0) {
-      Iterator<sf> $$1 = this.b.iterator();
-
-      while ($$1.hasNext()) {
-         sf $$2 = $$1.next();
-         $$2.b.run();
-         $$1.remove();
-         long $$3 = $$0 - this.c;
-         long $$4 = this.c;
-         this.c = $$0;
-         if ($$2.a != null && $$2.a != $$3) {
-            this.a.a(new sa("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
-            break;
-         }
-      }
-   }
-
-   public class a {
-      private static final long b = -1L;
-      private long c = -1L;
-
-      void a(long $$0) {
-         if (this.c != -1L) {
-            throw new IllegalStateException("Condition already triggered at " + this.c);
-         } else {
-            this.c = $$0;
-         }
-      }
-
-      public void a() {
-         long $$0 = sm.this.a.o();
-         if (this.c != $$0) {
-            if (this.c == -1L) {
-               throw new sa("Condition not triggered (t=" + $$0 + ")");
+   private static Consumer<?> d(Method $$0) {
+      return $$1 -> {
+         try {
+            Object $$2 = $$0.getDeclaringClass().newInstance();
+            $$0.invoke($$2, $$1);
+         } catch (InvocationTargetException var3) {
+            if (var3.getCause() instanceof RuntimeException) {
+               throw (RuntimeException)var3.getCause();
             } else {
-               throw new sa("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
+               throw new RuntimeException(var3.getCause());
             }
+         } catch (ReflectiveOperationException var4) {
+            throw new RuntimeException(var4);
          }
-      }
+      };
+   }
+
+   private static boolean a(te $$0, String $$1) {
+      return $$0.c().toLowerCase().startsWith($$1.toLowerCase() + ".");
+   }
+
+   public static Stream<te> c() {
+      return e.stream();
+   }
+
+   public static void a(te $$0) {
+      e.add($$0);
+   }
+
+   public static void d() {
+      e.clear();
    }
 }

@@ -1,100 +1,116 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class cov {
-   private static final Codec<cov> e = av.a.flatComapMap($$0 -> new cov(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
-   private static final Codec<cov> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aws.a(av.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), aws.a(Codec.BOOL, "show_in_tooltip", true).forGetter(cov::a))
-            .apply($$0, cov::new)
-   );
-   public static final Codec<cov> a = aws.e(f, e);
-   public static final ye<vr, cov> b = ye.a(av.b.a(yc.a()), $$0 -> $$0.h, yc.b, cov::a, cov::new);
-   public static final wg c = wg.c("item.canBreak").a(n.h);
-   public static final wg d = wg.c("item.canPlace").a(n.h);
-   private static final wg g = wg.c("item.canUse.unknown").a(n.h);
-   private final List<av> h;
-   private final boolean i;
-   private final List<wg> j;
+public class cov extends cny {
+   public static final int k = 0;
+   public static final int l = 1;
+   public static final int m = 2;
+   public static final int n = 3;
+   public static final int s = 8;
+   public static final int t = 26;
+   public static final int u = 44;
+   private static final int w = 98;
+   public static final int v = 48;
+   private final czg x;
    @Nullable
-   private dpd k;
-   private boolean l;
-   private boolean m;
+   private cvu<cwi> y;
+   private final List<cvu<cwi>> z;
 
-   public cov(List<av> $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = a($$0);
+   public cov(int $$0, cjz $$1) {
+      this($$0, $$1, cnh.a);
    }
 
-   private static boolean a(dpd $$0, @Nullable dpd $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         iz $$3 = $$0.c().H_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(dpd $$0) {
-      if (a($$0, this.k, this.m)) {
-         return this.l;
-      } else {
-         this.k = $$0;
-         this.m = false;
-
-         for (av $$1 : this.h) {
-            if ($$1.a($$0)) {
-               this.m = this.m | $$1.a();
-               this.l = true;
-               return true;
-            }
-         }
-
-         this.l = false;
-         return false;
-      }
-   }
-
-   public void a(Consumer<wg> $$0) {
-      this.j.forEach($$0);
-   }
-
-   private static List<wg> a(List<av> $$0) {
-      for (av $$1 : $$0) {
-         if ($$1.b().isEmpty()) {
-            return List.of(g);
-         }
-      }
-
-      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dby)$$0x.a()).f().a(n.i)).toList();
-   }
-
-   public boolean a() {
-      return this.i;
+   public cov(int $$0, cjz $$1, cnh $$2) {
+      super(cod.v, $$0, $$1, $$2);
+      this.x = $$1.m.dM();
+      this.z = this.x.r().a(cvx.g);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof cov $$1 ? this.h.equals($$1.h) : false;
+   protected cnz l() {
+      return cnz.a()
+         .a(0, 8, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().a($$0)))
+         .a(1, 26, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().b($$0)))
+         .a(2, 44, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().c($$0)))
+         .a(3, 98, 48)
+         .a();
+   }
+
+   @Override
+   protected boolean a(dpi $$0) {
+      return $$0.a(dcj.ob);
+   }
+
+   @Override
+   protected boolean a(cka $$0, boolean $$1) {
+      return this.y != null && this.y.b().a(this.q, this.x);
+   }
+
+   @Override
+   protected void a(cka $$0, crs $$1) {
+      $$1.a($$0.dM(), $$0, $$1.G());
+      this.r.a($$0, this.n());
+      this.e(0);
+      this.e(1);
+      this.e(2);
+      this.o.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
+   }
+
+   private List<crs> n() {
+      return List.of(this.q.a(0), this.q.a(1), this.q.a(2));
+   }
+
+   private void e(int $$0) {
+      crs $$1 = this.q.a($$0);
+      if (!$$1.d()) {
+         $$1.g(1);
+         this.q.a($$0, $$1);
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.h.hashCode();
+   public void m() {
+      List<cvu<cwi>> $$0 = this.x.r().b(cvx.g, this.q, this.x);
+      if ($$0.isEmpty()) {
+         this.r.a(0, crs.i);
+      } else {
+         cvu<cwi> $$1 = $$0.get(0);
+         crs $$2 = $$1.b().a(this.q, this.x.H_());
+         if ($$2.a(this.x.J())) {
+            this.y = $$1;
+            this.r.a($$1);
+            this.r.a(0, $$2);
+         }
+      }
+   }
+
+   @Override
+   public int d(crs $$0) {
+      return this.e($$0).orElse(0);
+   }
+
+   private static OptionalInt a(cwi $$0, crs $$1) {
+      if ($$0.a($$1)) {
+         return OptionalInt.of(0);
+      } else if ($$0.b($$1)) {
+         return OptionalInt.of(1);
+      } else {
+         return $$0.c($$1) ? OptionalInt.of(2) : OptionalInt.empty();
+      }
+   }
+
+   @Override
+   public boolean a(crs $$0, cos $$1) {
+      return $$1.d != this.r && super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean c(crs $$0) {
+      return this.e($$0).isPresent();
+   }
+
+   private OptionalInt e(crs $$0) {
+      return this.z.stream().flatMapToInt($$1 -> a($$1.b(), $$0).stream()).filter($$0x -> !this.b($$0x).h()).findFirst();
    }
 }

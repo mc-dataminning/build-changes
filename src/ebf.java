@@ -1,34 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebf extends ebl {
-   public static final Codec<ebf> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ebf::new));
+public record ebf(int b, int c, int d) implements eai {
+   public static final Codec<ebf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awu.j.fieldOf("spread_width").forGetter(ebf::a), awu.j.fieldOf("spread_height").forGetter(ebf::b), awu.j.fieldOf("max_height").forGetter(ebf::c)
+            )
+            .apply($$0, ebf::new)
+   );
 
-   public ebf(bnf $$0, bnf $$1) {
-      super($$0, $$1);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected ebm<?> a() {
-      return ebm.d;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(czd $$0, ebl.b $$1, axr $$2, eav $$3, int $$4, ebl.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      ib $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
-   }
-
-   @Override
-   public int a(axr $$0, int $$1, eav $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(axr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public int c() {
+      return this.d;
    }
 }

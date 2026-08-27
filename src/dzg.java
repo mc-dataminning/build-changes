@@ -1,74 +1,108 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public class dzg extends dxv<eau> {
-   public dzg(Codec<eau> $$0) {
+public class dzg extends dye<eay> {
+   public dzg(Codec<eay> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dxx<eau> $$0) {
-      eau $$1 = $$0.f();
-      czs $$2 = $$0.b();
-      ib $$3 = $$0.e();
-      if (!$$2.a_($$3.c()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+   public boolean a(dyg<eay> $$0) {
+      dab $$1 = $$0.b();
+      id $$2 = $$0.e();
+      if (!$$1.a_($$2).i()) {
          return false;
       } else {
-         doz $$4 = $$2.a_($$3);
-         if (!$$4.i() && !$$4.a($$1.f)) {
+         axt $$3 = $$0.d();
+         id $$4 = $$0.e();
+         eay $$5 = $$0.f();
+         id.a $$6 = $$4.j();
+         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
+            a($$1, $$5, $$3, $$4, $$6);
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean a(dab $$0, eay $$1, id $$2) {
+      id.a $$3 = $$2.j();
+
+      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
+         $$3.c(ij.b);
+         dpi $$5 = $$0.a_($$3);
+         if (!a($$5, $$4, $$1.n)) {
             return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(dpi $$0, int $$1, int $$2) {
+      if ($$0.i()) {
+         return true;
+      } else {
+         int $$3 = $$1 + 1;
+         return $$3 <= $$2 && $$0.u().a(avj.a);
+      }
+   }
+
+   private static boolean a(dab $$0, drf $$1, eay $$2, axt $$3, id.a $$4, id $$5) {
+      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
+         $$4.c(ij.b);
+         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
+            id $$7 = $$4.d();
+            if ($$0.b_($$7).a(avj.b) || !$$0.a_($$7).e()) {
+               return false;
             }
 
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
+            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
+               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
+               return true;
             }
+         }
+      }
 
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
+      return false;
+   }
+
+   private static void a(id $$0, int $$1, dab $$2, eay $$3, axt $$4) {
+      int $$5 = $$0.u();
+      int $$6 = $$0.w();
+      id.a $$7 = $$0.j();
+
+      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
+         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      }
+   }
+
+   private static void a(dab $$0, eay $$1, axt $$2, int $$3, int $$4, id.a $$5) {
+      int $$6 = $$1.d;
+      Predicate<dpi> $$7 = $$1x -> $$1x.a($$1.e);
+
+      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
+         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
+         if ($$7.test($$0.a_($$5))) {
+            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+         }
+
+         $$5.p($$3);
+         $$5.r($$4);
+      }
+   }
+
+   private static void a(dab $$0, eay $$1, axt $$2, id $$3, id.a $$4) {
+      int $$5 = $$1.i;
+      int $$6 = $$1.j;
+
+      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
+         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
+         if ($$0.u($$4)) {
+            dpi $$8 = $$1.k.a($$2, $$4);
+            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, ij.a)) {
+               $$0.a($$4, $$8, 2);
             }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.d()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.d())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
          }
       }
    }

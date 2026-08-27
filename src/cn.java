@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record cn(Map<il<bpf>, cn.b> b) {
-   public static final Codec<cn> a = Codec.unboundedMap(kr.d.r(), cn.b.a).xmap(cn::new, cn::a);
+public record cn(Map<in<bpk>, cn.b> b) {
+   public static final Codec<cn> a = Codec.unboundedMap(kt.d.r(), cn.b.a).xmap(cn::new, cn::a);
 
-   public boolean a(bpv $$0) {
-      if ($$0 instanceof bqo $$1 && this.a($$1.ev())) {
+   public boolean a(bqa $$0) {
+      if ($$0 instanceof bqt $$1 && this.a($$1.ev())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bqo $$0) {
+   public boolean a(bqt $$0) {
       return this.a($$0.ev());
    }
 
-   public boolean a(Map<il<bpf>, bph> $$0) {
-      for (Entry<il<bpf>, cn.b> $$1 : this.b.entrySet()) {
-         bph $$2 = $$0.get($$1.getKey());
+   public boolean a(Map<in<bpk>, bpm> $$0) {
+      for (Entry<in<bpk>, cn.b> $$1 : this.b.entrySet()) {
+         bpm $$2 = $$0.get($$1.getKey());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record cn(Map<il<bpf>, cn.b> b) {
       return true;
    }
 
-   public Map<il<bpf>, cn.b> a() {
+   public Map<in<bpk>, cn.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<il<bpf>, cn.b> a = ImmutableMap.builder();
+      private final Builder<in<bpk>, cn.b> a = ImmutableMap.builder();
 
       public static cn.a a() {
          return new cn.a();
       }
 
-      public cn.a a(il<bpf> $$0) {
+      public cn.a a(in<bpk> $$0) {
          this.a.put($$0, new cn.b());
          return this;
       }
 
-      public cn.a a(il<bpf> $$0, cn.b $$1) {
+      public cn.a a(in<bpk> $$0, cn.b $$1) {
          this.a.put($$0, $$1);
          return this;
       }
@@ -62,10 +62,10 @@ public record cn(Map<il<bpf>, cn.b> b) {
    public static record b(cm.d b, cm.d c, Optional<Boolean> d, Optional<Boolean> e) {
       public static final Codec<cn.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  aws.a(cm.d.d, "amplifier", cm.d.c).forGetter(cn.b::a),
-                  aws.a(cm.d.d, "duration", cm.d.c).forGetter(cn.b::b),
-                  aws.a(Codec.BOOL, "ambient").forGetter(cn.b::c),
-                  aws.a(Codec.BOOL, "visible").forGetter(cn.b::d)
+                  awu.a(cm.d.d, "amplifier", cm.d.c).forGetter(cn.b::a),
+                  awu.a(cm.d.d, "duration", cm.d.c).forGetter(cn.b::b),
+                  awu.a(Codec.BOOL, "ambient").forGetter(cn.b::c),
+                  awu.a(Codec.BOOL, "visible").forGetter(cn.b::d)
                )
                .apply($$0, cn.b::new)
       );
@@ -74,7 +74,7 @@ public record cn(Map<il<bpf>, cn.b> b) {
          this(cm.d.c, cm.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable bph $$0) {
+      public boolean a(@Nullable bpm $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.d())) {

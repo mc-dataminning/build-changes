@@ -1,27 +1,40 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class eyz extends grl {
-   protected BooleanConsumer a;
-   private final wg b;
-   private final wg c;
+public class eyz implements Iterable<exy> {
+   private final fby a;
+   private final Set<exy> b = new HashSet<>();
+   private List<exy> c = List.of();
 
-   public eyz(BooleanConsumer $$0, wg $$1, wg $$2) {
-      super(fbh.a);
+   public eyz(fby $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   }
+
+   public void a(List<exy> $$0) {
+      List<exy> $$1 = new ArrayList<>($$0);
+      $$1.sort(new exy.b(this.a.X().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
+      }
+
+      this.c = $$1;
+   }
+
+   public void a(exy $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
    }
 
    @Override
-   public void aN_() {
-      this.c(fdp.a(wf.f, $$0 -> this.a.accept(true)).a(this.k / 2 - 105, g(9), 100, 20).a());
-      this.c(fdp.a(wf.g, $$0 -> this.a.accept(false)).a(this.k / 2 + 5, g(9), 100, 20).a());
+   public Iterator<exy> iterator() {
+      return this.c.iterator();
    }
 
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, this.b, this.k / 2, g(3), -1);
-      $$0.a(this.m, this.c, this.k / 2, g(5), -1);
+   public boolean a() {
+      return this.c.isEmpty();
    }
 }

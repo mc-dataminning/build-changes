@@ -1,54 +1,63 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class deu extends dby implements det {
-   public deu(doy.d $$0) {
+public class deu extends dbt {
+   public static final MapCodec<deu> a = b(deu::new);
+
+   @Override
+   public MapCodec<deu> a() {
+      return a;
+   }
+
+   protected deu(dph.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends deu> a();
-
-   @Override
-   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   public dmo a(id $$0, dpi $$1) {
+      return new doe($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      $$3.a($$4, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
+      return a($$2, dmq.v, $$0.B ? doe::a : doe::b);
    }
 
    @Override
-   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
-      if (m($$1.a_($$2.d())) && $$2.v() >= $$1.I_()) {
-         cgc $$4 = cgc.a($$1, $$2, $$0);
-         this.a($$4);
-      }
-   }
+   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
+      dmo $$4 = $$1.c_($$2);
+      if ($$4 instanceof doe) {
+         int $$5 = ((doe)$$4).f();
 
-   protected void a(cgc $$0) {
-   }
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j();
+            double $$9 = (double)$$2.w() + $$3.j();
+            double $$10 = ($$3.j() - 0.5) * 0.5;
+            double $$11 = ($$3.j() - 0.5) * 0.5;
+            double $$12 = ($$3.j() - 0.5) * 0.5;
+            int $$13 = $$3.a(2) * 2 - 1;
+            if ($$3.h()) {
+               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
+               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+            } else {
+               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
+               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+            }
 
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean m(doz $$0) {
-      return $$0.i() || $$0.a(avc.aK) || $$0.k() || $$0.r();
-   }
-
-   @Override
-   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
-      if ($$3.a(16) == 0) {
-         ib $$4 = $$2.d();
-         if (m($$1.a_($$4))) {
-            axn.a($$1, $$2, $$3, new kd(kl.C, $$0));
+            $$1.a(kn.aa, $$7, $$8, $$9, $$10, $$11, $$12);
          }
       }
    }
 
-   public int b(doz $$0, cyd $$1, ib $$2) {
-      return -16777216;
+   @Override
+   public crs a(czj $$0, id $$1, dpi $$2) {
+      return crs.i;
+   }
+
+   @Override
+   protected boolean a(dpi $$0, ela $$1) {
+      return false;
    }
 }

@@ -1,25 +1,21 @@
-public class dmb extends dmf {
-   private cqc a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dmb(ib $$0, doz $$1) {
-      super(dmh.y, $$0, $$1);
-      this.a = ((dbr)$$1.b()).b();
+public class dmb extends dcy {
+   public static final MapCodec<dmb> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cql.q.fieldOf("color").forGetter(dmb::b), u()).apply($$0, dmb::new));
+   private final cql d;
+
+   @Override
+   public MapCodec<dmb> a() {
+      return c;
    }
 
-   public dmb(ib $$0, doz $$1, cqc $$2) {
-      super(dmh.y, $$0, $$1);
-      this.a = $$2;
+   protected dmb(cql $$0, dph.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
-   public abf b() {
-      return abf.a(this);
-   }
-
-   public cqc c() {
-      return this.a;
-   }
-
-   public void a(cqc $$0) {
-      this.a = $$0;
+   public cql b() {
+      return this.d;
    }
 }

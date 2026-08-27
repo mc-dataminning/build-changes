@@ -1,34 +1,30 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
+import java.util.Optional;
 
 public class bej extends DataFix {
    public bej(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(bfa.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse(
-                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
-                  )
-            )
-      );
+   private static String a(String $$0) {
+      return $$0.equals("health") ? "hearts" : "integer";
    }
 
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bff.F);
+      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
+            if ($$1.isEmpty()) {
+               String $$2 = $$0xx.get("CriteriaName").asString("");
+               String $$3 = a($$2);
+               return $$0xx.set("RenderType", $$0xx.createString($$3));
+            } else {
+               return $$0xx;
+            }
+         }));
    }
 }

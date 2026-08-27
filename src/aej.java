@@ -1,44 +1,45 @@
-import java.util.List;
+public class aej implements yp<aba> {
+   public static final yg<vi, aej> a = yp.a(aej::a, aej::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-public class aej implements yn<aay> {
-   public static final ye<vg, aej> a = yn.a(aej::a, aej::new);
-   private final int b;
-   private final int[] c;
-
-   public aej(bpv $$0) {
-      this.b = $$0.aj();
-      List<bpv> $$1 = $$0.cP();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).aj();
-      }
+   public aej(float $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private aej(vg $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
+   private aej(vi $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(vg $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(vi $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yp<aej> a() {
-      return afj.aJ;
+   public yr<aej> a() {
+      return afl.aH;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
+   public float b() {
+      return this.b;
    }
 
    public int e() {
-      return this.b;
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

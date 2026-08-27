@@ -1,23 +1,27 @@
-import io.netty.buffer.ByteBuf;
+import java.util.UUID;
 
-public class aic implements yn<ahy> {
-   public static final aic a = new aic();
-   public static final ye<ByteBuf, aic> b = ye.a(a);
+public record aic(String b, UUID c) implements yp<aia> {
+   public static final yg<vi, aic> a = yp.a(aic::a, aic::new);
 
-   private aic() {
+   private aic(vi $$0) {
+      this($$0.d(16), $$0.n());
+   }
+
+   private void a(vi $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
    }
 
    @Override
-   public yp<aic> a() {
-      return ahw.i;
+   public yr<aic> a() {
+      return ahy.g;
    }
 
-   public void a(ahy $$0) {
+   public void a(aia $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public UUID e() {
+      return this.c;
    }
 }

@@ -1,20 +1,37 @@
-public record afq(int b) implements yn<afl> {
-   public static final ye<vg, afq> a = yn.a(afq::a, afq::new);
+public class afq implements yp<afn> {
+   public static final yg<vi, afq> a = yp.a(afq::a, afq::new);
+   private final int b;
+   private final id c;
 
-   private afq(vg $$0) {
-      this($$0.l());
+   public afq(int $$0, id $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vg $$0) {
+   private afq(vi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+   }
+
+   private void a(vi $$0) {
       $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yp<afq> a() {
-      return afj.bh;
+   public yr<afq> a() {
+      return afl.bf;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public id e() {
+      return this.c;
    }
 }

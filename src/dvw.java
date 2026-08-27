@@ -1,25 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dvw extends dwa {
-   public static final Codec<dvw> a = a(dvw::new);
+public record dvw(dvy b, dvv c) {
+   public static final Codec<dvw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dvy.a.forGetter(dvw::a), dvv.a.forGetter(dvw::b)).apply($$0, $$0.stable(dvw::new))
+   );
 
-   public dvw(List<dvy> $$0) {
-      super($$0);
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dvy $$1, dvv $$2) {
+      return a.encodeStart($$0, new dvw($$1, $$2));
    }
 
-   public boolean a(czs $$0, ib $$1) {
-      for (dvy $$2 : this.e) {
-         if (!$$2.test($$0, $$1)) {
-            return false;
-         }
-      }
-
-      return true;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dvy $$1, jb $$2) {
+      return a($$0, $$1, new dvv($$2.d(ku.aQ)));
    }
 
-   @Override
-   public dvz<?> a() {
-      return dvz.j;
+   public dvy a() {
+      return this.b;
+   }
+
+   public dvv b() {
+      return this.c;
    }
 }

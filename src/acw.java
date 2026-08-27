@@ -1,37 +1,29 @@
-public class acw implements yn<aay> {
-   public static final ye<vg, acw> a = yn.a(acw::a, acw::new);
-   private final ib b;
-   private final boolean c;
+public class acw implements yp<aba> {
+   public static final yg<vi, acw> a = yp.a(acw::a, acw::new);
+   private final boe b;
 
-   public acw(ib $$0, boolean $$1) {
+   public acw(boe $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private acw(vg $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private acw(vi $$0) {
+      this.b = $$0.b(boe.class);
    }
 
-   private void a(vg $$0) {
+   private void a(vi $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public yp<acw> a() {
-      return afj.X;
+   public yr<acw> a() {
+      return afl.V;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
+   public boe b() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

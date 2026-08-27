@@ -1,15 +1,28 @@
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eju {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
+public class eju implements ejy {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<eju> a = RecordCodecBuilder.create($$0 -> $$0.group(ajv.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, eju::new));
+   private final ajv d;
+
+   public eju(ajv $$0) {
+      this.d = $$0;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   @Override
+   public to a(axt $$0, @Nullable to $$1) {
+      to $$2 = $$1 == null ? new to() : $$1.h();
+      ajv.a.encodeStart(uc.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
+      $$2.a("LootTableSeed", $$0.g());
+      return $$2;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   @Override
+   public ejz<?> a() {
+      return ejz.d;
    }
 }

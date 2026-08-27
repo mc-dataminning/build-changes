@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import org.joml.Vector3f;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fcq {
+public record fcq(float a, Vector3f b, fco.a c) {
 }

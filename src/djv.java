@@ -1,84 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djv extends dbk implements dfg {
+public class djv extends dch {
    public static final MapCodec<djv> a = b(djv::new);
-   public static final dpx<dqj> b = dpp.bj;
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final ij[] d = ij.values();
 
    @Override
    public MapCodec<djv> a() {
       return a;
    }
 
-   protected djv(doy.d $$0) {
+   protected djv(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dqj.b));
    }
 
    @Override
-   public dmf a(ib $$0, doz $$1) {
-      return new dnu($$0, $$1);
-   }
-
-   @Override
-   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
-      dmf $$5 = $$1.c_($$2);
-      if ($$5 instanceof dnu) {
-         return ((dnu)$$5).a($$3) ? boa.a($$1.B) : boa.d;
-      } else {
-         return boa.d;
+   protected void b(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
    @Override
-   public void a(cyx $$0, ib $$1, doz $$2, @Nullable bqo $$3, crj $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dmf $$5 = $$0.c_($$1);
-            if ($$5 instanceof dnu) {
-               ((dnu)$$5).a($$3);
+   protected void a(dpi $$0, czg $$1, id $$2, dch $$3, id $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(czg $$0, id $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, dcj.aP.n(), 2);
+         $$0.a(null, $$1, auo.yA, aup.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(czg $$0, id $$1) {
+      return id.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (ij $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            dpi $$3 = $$0.a_($$2);
+            elb $$4 = $$0.b_($$2);
+            if (!$$4.a(avj.a)) {
+               return false;
+            } else {
+               if ($$3.b() instanceof dco $$6 && !$$6.a(null, $$0, $$2, $$3).d()) {
+                  return true;
+               }
+
+               if ($$3.b() instanceof dgw) {
+                  $$0.a($$2, dcj.a.n(), 3);
+               } else {
+                  if (!$$3.a(dcj.mc) && !$$3.a(dcj.md) && !$$3.a(dcj.bw) && !$$3.a(dcj.bx)) {
+                     return false;
+                  }
+
+                  dmo $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, dcj.a.n(), 3);
+               }
+
+               return true;
             }
          }
-      }
-   }
-
-   @Override
-   protected did b_(doz $$0) {
-      return did.c;
-   }
-
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, dby $$3, ib $$4, boolean $$5) {
-      if ($$1 instanceof aps) {
-         if ($$1.c_($$2) instanceof dnu $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.C();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((aps)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(aps $$0, dnu $$1) {
-      switch ($$1.u()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.A();
-         case d:
-      }
+      }) > 1;
    }
 }

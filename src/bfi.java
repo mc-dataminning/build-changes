@@ -1,44 +1,52 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.function.Function;
 
-public class bfi extends ayx {
-   private static final Logger b = LogUtils.getLogger();
+public class bfi extends DataFix {
+   final String a;
+   final Map<String, String> b;
 
-   public bfi(Schema $$0) {
-      super($$0, bfa.l);
+   public bfi(Schema $$0, String $$1, Map<String, String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "SavedDataUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> $$0x.update(
-                     "data",
-                     $$0xx -> $$0xx.update(
-                           "Raids",
-                           $$0xxx -> $$0xxx.createList(
-                                 $$0xxx.asStream()
-                                    .map(
-                                       $$0xxxx -> $$0xxxx.update(
-                                             "HeroesOfTheVillage",
-                                             $$0xxxxx -> $$0xxxxx.createList(
-                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
-                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
-                                                         return $$0xxxxxx;
-                                                      }))
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
+      Type<?> $$0 = this.getInputSchema().getType(bff.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = this.a($$0, "Enchantments");
+      return this.a($$0, "StoredEnchantments");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update(
+         $$1,
+         $$0x -> (Dynamic)$$0x.asStreamOpt()
+               .map(
+                  $$0xx -> $$0xx.map(
+                        $$0xxx -> $$0xxx.update(
+                              "id",
+                              $$1x -> (Dynamic)$$1x.asString()
+                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault($$1xx, $$1xx)))
+                                    .get()
+                                    .map(Function.identity(), $$1xx -> $$1x)
+                           )
+                     )
+               )
+               .map($$0x::createList)
+               .get()
+               .map(Function.identity(), $$1x -> $$0x)
       );
    }
 }

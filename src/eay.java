@@ -1,34 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eay implements dzz {
+public class eay implements eai {
    public static final Codec<eay> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avr.b(ks.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
-               eca.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
-               eel.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
-               eec.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
-               bnf.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
-               bnf.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+               eeu.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
+               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
+               avt.b(ku.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
+               ecj.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
+               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
+               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
+               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
+               ecj.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
+               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
+               dwh.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
             )
             .apply($$0, eay::new)
    );
-   public final avr<dby> b;
-   public final eca c;
-   public final il<eel> d;
-   public final eec e;
-   public final bnf f;
-   public final float g;
+   public final in<eeu> b;
+   public final int c;
+   public final int d;
+   public final avt<dch> e;
+   public final ecj f;
+   public final int g;
    public final int h;
-   public final float i;
-   public final bnf j;
-   public final float k;
+   public final int i;
+   public final int j;
+   public final ecj k;
+   public final int l;
+   public final int n;
+   public final dwh o;
 
-   public eay(avr<dby> $$0, eca $$1, il<eel> $$2, eec $$3, bnf $$4, float $$5, int $$6, float $$7, bnf $$8, float $$9) {
+   public eay(in<eeu> $$0, int $$1, int $$2, avt<dch> $$3, ecj $$4, int $$5, int $$6, int $$7, int $$8, ecj $$9, int $$10, int $$11, dwh $$12) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -39,5 +45,8 @@ public class eay implements dzz {
       this.i = $$7;
       this.j = $$8;
       this.k = $$9;
+      this.l = $$10;
+      this.n = $$11;
+      this.o = $$12;
    }
 }

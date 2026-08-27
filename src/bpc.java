@@ -1,36 +1,19 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-class bpc extends bpe {
-   private final boolean a;
+public enum bpc implements ayg {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
 
-   public bpc(bpg $$0, int $$1, boolean $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   public static final Codec<bpc> d = ayg.a(bpc::values);
+   private final String e;
+
+   private bpc(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(bqo $$0, int $$1) {
-      if (this.a == $$0.ew()) {
-         $$0.c((float)Math.max(4 << $$1, 0));
-      } else {
-         $$0.a($$0.dN().o(), (float)(6 << $$1));
-      }
-
-      return true;
-   }
-
-   @Override
-   public void a(@Nullable bpv $$0, @Nullable bpv $$1, bqo $$2, int $$3, double $$4) {
-      if (this.a == $$2.ew()) {
-         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
-         $$2.c((float)$$5);
-      } else {
-         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
-         if ($$0 == null) {
-            $$2.a($$2.dN().o(), (float)$$6);
-         } else {
-            $$2.a($$2.dN().c($$0, $$1), (float)$$6);
-         }
-      }
+   public String c() {
+      return this.e;
    }
 }

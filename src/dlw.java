@@ -1,64 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dlw(List<dlw.b> d) {
-   public static final dlw a = new dlw(List.of());
-   public static final Codec<dlw> b = dlw.b.a.listOf().xmap(dlw::new, dlw::b);
-   public static final ye<vr, dlw> c = dlw.b.b.a(yc.a()).a(dlw::new, dlw::b);
+public class dlw extends dbv {
+   public static final MapCodec<dlw> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dpx.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dlw::new)
+   );
+   public static final dqi f = dpy.aT;
+   private final int g;
 
-   public dlw a(cqc $$0) {
-      return new dlw.a().a(dlx.a, $$0).a(this).a();
+   @Override
+   public MapCodec<dlw> a() {
+      return e;
    }
 
-   public dlw a() {
-      return new dlw(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   protected dlw(int $$0, dpx $$1, dph.d $$2) {
+      super($$2, $$1);
+      this.k(this.E.b().a(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
-   public List<dlw.b> b() {
-      return this.d;
-   }
-
-   public static class a {
-      private final Builder<dlw.b> a = ImmutableList.builder();
-
-      public dlw.a a(ajs<dlv> $$0, cqc $$1) {
-         return this.a(kr.am.g($$0), $$1);
-      }
-
-      public dlw.a a(il<dlv> $$0, cqc $$1) {
-         return this.a(new dlw.b($$0, $$1));
-      }
-
-      public dlw.a a(dlw.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public dlw.a a(dlw $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public dlw a() {
-         return new dlw(this.a.build());
+   @Override
+   protected int b(czg $$0, id $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), bqa.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return axm.f($$3 * 15.0F);
+      } else {
+         return 0;
       }
    }
 
-   public static record b(il<dlv> c, cqc d) {
-      public static final Codec<dlw.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(kr.am.r().fieldOf("pattern").forGetter(dlw.b::a), cqc.q.fieldOf("color").forGetter(dlw.b::b)).apply($$0, dlw.b::new)
-      );
-      public static final ye<vr, dlw.b> b = ye.a(yc.b(ks.d), dlw.b::a, cqc.r, dlw.b::b, dlw.b::new);
+   @Override
+   protected int g(dpi $$0) {
+      return $$0.c(f);
+   }
 
-      public il<dlv> a() {
-         return this.c;
-      }
+   @Override
+   protected dpi a(dpi $$0, int $$1) {
+      return $$0.a(f, Integer.valueOf($$1));
+   }
 
-      public cqc b() {
-         return this.d;
-      }
+   @Override
+   protected int b() {
+      return 10;
+   }
+
+   @Override
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(f);
    }
 }

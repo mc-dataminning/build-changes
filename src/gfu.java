@@ -1,16 +1,18 @@
-public class gfu extends ghp<bqg> {
-   private static final ajt a = new ajt("textures/entity/squid/glow_squid.png");
+public class gfu<T extends chq> extends ggk<T> {
+   private static final ajv a = new ajv("textures/entity/illager/evoker.png");
 
-   public gfu(gfi.a $$0, fso<bqg> $$1) {
-      super($$0, $$1);
+   public gfu(gfr.a $$0) {
+      super($$0, new frj<>($$0.a(ftu.ab)), 0.5F);
+      this.a(new gjv<T, frj<T>>(this, $$0.d()) {
+         public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gx()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public ajt a(bqg $$0) {
+   public ajv a(T $$0) {
       return a;
-   }
-
-   protected int a(bqg $$0, ib $$1) {
-      int $$2 = (int)axk.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

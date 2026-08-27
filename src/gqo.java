@@ -1,51 +1,29 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public abstract class gqo {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
+public record gqo(gqs b, gqv c) {
+   public static final Codec<gqo> a = gqs.a.dispatchStable(gqo::a, gqs::c);
 
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+   public gqo(gqs b, gqv c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public void a(gqi $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
-      }
-
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
-      }
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   public gqs a() {
+      return this.b;
    }
 
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
+   public gqv b() {
       return this.c;
    }
-
-   public abstract void f();
-
-   public abstract void b(gqi var1);
 }

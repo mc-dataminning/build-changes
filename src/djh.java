@@ -1,36 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class djh extends dby {
-   public static final MapCodec<djh> b = b(djh::new);
-   public static final dpq c = dpp.z;
-
+public interface djh extends dco, dgx {
    @Override
-   protected MapCodec<? extends djh> a() {
-      return b;
-   }
-
-   protected djh(doy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+   default boolean a(@Nullable cka $$0, cym $$1, id $$2, dpi $$3, ela $$4) {
+      return $$4 == elc.c;
    }
 
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      return $$1 == ih.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   default boolean a(czh $$0, id $$1, dpi $$2, elb $$3) {
+      if (!$$2.c(dpy.C) && $$3.a() == elc.c) {
+         if (!$$0.x_()) {
+            $$0.a($$1, $$2.a(dpy.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public doz a(cuo $$0) {
-      doz $$1 = $$0.q().a_($$0.a().c());
-      return this.n().a(c, Boolean.valueOf(m($$1)));
-   }
+   default crs a(@Nullable cka $$0, czh $$1, id $$2, dpi $$3) {
+      if ($$3.c(dpy.C)) {
+         $$1.a($$2, $$3.a(dpy.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
 
-   private static boolean m(doz $$0) {
-      return $$0.a(avc.bz);
+         return new crs(crv.qy);
+      } else {
+         return crs.i;
+      }
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(c);
+   default Optional<aun> as_() {
+      return elc.c.j();
    }
 }

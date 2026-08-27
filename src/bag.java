@@ -4,45 +4,51 @@ import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Dynamic;
 
 public class bag extends DataFix {
-   public bag(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bag(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bfa.c);
-      OpticFinder<?> $$1 = $$0.findField("Level");
-      return this.fixTypeEverywhereTyped("Leaves fix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> {
-               Optional<IntStream> $$1xx = $$0xxx.get("Biomes").asIntStreamOpt().result();
-               if ($$1xx.isEmpty()) {
-                  return $$0xxx;
-               } else {
-                  int[] $$2 = $$1xx.get().toArray();
-                  if ($$2.length != 256) {
-                     return $$0xxx;
-                  } else {
-                     int[] $$3 = new int[1024];
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
+         this.getInputSchema().getType(bff.t)
+      );
+      Type<?> $$1 = this.getInputSchema().getType(bff.z);
+      return TypeRewriteRule.seq(
+         this.a($$0, $$1, "minecraft:llama"), new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
+      );
+   }
 
-                     for (int $$4 = 0; $$4 < 4; $$4++) {
-                        for (int $$5 = 0; $$5 < 4; $$5++) {
-                           int $$6 = ($$5 << 2) + 2;
-                           int $$7 = ($$4 << 2) + 2;
-                           int $$8 = $$7 << 4 | $$6;
-                           $$3[$$4 << 2 | $$5] = $$2[$$8];
-                        }
-                     }
-
-                     for (int $$9 = 1; $$9 < 64; $$9++) {
-                        System.arraycopy($$3, 0, $$3, $$9 * 16, 16);
-                     }
-
-                     return $$0xxx.set("Biomes", $$0xxx.createIntList(Arrays.stream($$3)));
-                  }
-               }
-            })));
+   private TypeRewriteRule a(
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0, Type<?> $$1, String $$2
+   ) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bff.z, $$2);
+      OpticFinder<?> $$4 = DSL.namedChoice($$2, $$3);
+      OpticFinder<?> $$5 = $$3.findField("Items");
+      return this.fixTypeEverywhereTyped(
+         "Fix non-zero indexing in chest horse type " + $$2,
+         $$1,
+         $$3x -> $$3x.updateTyped(
+               $$4,
+               $$2xx -> $$2xx.updateTyped(
+                     $$5,
+                     $$1xxx -> $$1xxx.update(
+                           $$0,
+                           $$0xxxx -> $$0xxxx.mapSecond(
+                                 $$0xxxxx -> $$0xxxxx.mapSecond(
+                                       $$0xxxxxx -> $$0xxxxxx.mapSecond(
+                                             $$0xxxxxxx -> $$0xxxxxxx.update("Slot", $$0xxxxxxxx -> $$0xxxxxxxx.createByte((byte)($$0xxxxxxxx.asInt(2) - 2)))
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 }

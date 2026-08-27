@@ -1,34 +1,28 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Date;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class exr extends eye {
-   private static final Logger b = LogUtils.getLogger();
-   public List<exp> a;
+public class exr extends eyn {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+   public UUID d;
+   public Date e;
 
-   public static exr a(String $$0) {
+   public static exr a(JsonObject $$0) {
       exr $$1 = new exr();
-      $$1.a = Lists.newArrayList();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("servers").isJsonArray()) {
-            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
-
-            while ($$5.hasNext()) {
-               $$1.a.add(exp.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse McoServerList: {}", var6.getMessage());
+         $$1.a = fak.b("invitationId", $$0, "");
+         $$1.b = fak.b("worldName", $$0, "");
+         $$1.c = fak.b("worldOwnerName", $$0, "");
+         $$1.d = fak.a("worldOwnerUuid", $$0, ac.e);
+         $$1.e = fak.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
       }
 
       return $$1;

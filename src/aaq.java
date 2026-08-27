@@ -1,15 +1,10 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-
-public record aaq(List<asj> b) implements yn<aao> {
-   public static final ye<ByteBuf, aaq> a = ye.a(asj.a.a(yc.c(64)), aaq::b, aaq::new);
-
+public interface aaq extends zg {
    @Override
-   public yp<aaq> a() {
-      return aam.f;
+   default vh b() {
+      return vh.e;
    }
 
-   public void a(aao $$0) {
-      $$0.a(this);
-   }
+   void a(aar var1);
+
+   void a(aas var1);
 }

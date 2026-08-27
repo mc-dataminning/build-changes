@@ -1,33 +1,61 @@
-public class acv implements yn<aay> {
-   public static final ye<vr, acv> a = ye.a(yc.f, acv::b, yc.a(ks.P), acv::e, wi.d, acv::f, acv::new);
-   private final int b;
-   private final cnw<?> c;
-   private final wg d;
+public class acv implements yp<aba> {
+   public static final yg<vi, acv> a = yp.a(acv::a, acv::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public acv(int $$0, cnw<?> $$1, wg $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public acv(bqa $$0) {
+      this.b = $$0.dr();
+      this.c = $$0.dt();
+      this.d = $$0.dx();
+      this.e = $$0.dC();
+      this.f = $$0.dE();
+   }
+
+   private acv(vi $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+   }
+
+   private void a(vi $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public yp<acv> a() {
-      return afj.W;
+   public yr<acv> a() {
+      return afl.U;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public cnw<?> e() {
+   public double e() {
       return this.c;
    }
 
-   public wg f() {
+   public double f() {
       return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

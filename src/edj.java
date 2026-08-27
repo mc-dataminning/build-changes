@@ -1,112 +1,44 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class edj {
-   public static final ajs<edi> a = a("classic_flat");
-   public static final ajs<edi> b = a("tunnelers_dream");
-   public static final ajs<edi> c = a("water_world");
-   public static final ajs<edi> d = a("overworld");
-   public static final ajs<edi> e = a("snowy_kingdom");
-   public static final ajs<edi> f = a("bottomless_pit");
-   public static final ajs<edi> g = a("desert");
-   public static final ajs<edi> h = a("redstone_ready");
-   public static final ajs<edi> i = a("the_void");
+public class edj extends edm {
+   public static final Codec<edj> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, edj::new));
 
-   public static void a(px<edi> $$0) {
-      new edj.a($$0).a();
+   public edj(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static ajs<edi> a(String $$0) {
-      return ajs.a(ks.aB, new ajt($$0));
+   @Override
+   protected edn<?> a() {
+      return edn.c;
    }
 
-   static class a {
-      private final px<edi> a;
+   @Override
+   public List<ebu.a> a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, int $$3, id $$4, ebe $$5) {
+      id $$6 = $$4.d();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.h(), $$5);
+      a($$0, $$1, $$2, $$6.f(), $$5);
+      a($$0, $$1, $$2, $$6.f().h(), $$5);
+      id.a $$7 = new id.a();
 
-      a(px<edi> $$0) {
-         this.a = $$0;
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         }
       }
 
-      private void a(ajs<edi> $$0, cyw $$1, ajs<czw> $$2, Set<ajs<efn>> $$3, boolean $$4, boolean $$5, edh... $$6) {
-         im<efn> $$7 = this.a.a(ks.aH);
-         im<eel> $$8 = this.a.a(ks.aE);
-         im<czw> $$9 = this.a.a(ks.av);
-         ip.a<efn> $$10 = ip.a($$3.stream().map($$7::b).collect(Collectors.toList()));
-         edk $$11 = new edk(Optional.of($$10), $$9.b($$2), edk.b($$8));
-         if ($$4) {
-            $$11.a();
-         }
+      return ImmutableList.of(new ebu.a($$4.b($$3), 0, true));
+   }
 
-         if ($$5) {
-            $$11.b();
-         }
-
-         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
-            $$11.e().add($$6[$$12]);
-         }
-
-         this.a.a($$0, new edi($$1.p().n(), $$11));
-      }
-
-      public void a() {
-         this.a(edj.a, dca.i, dad.b, ImmutableSet.of(efa.a), false, false, new edh(1, dca.i), new edh(2, dca.j), new edh(1, dca.F));
-         this.a(edj.b, dca.b, dad.t, ImmutableSet.of(efa.j, efa.r), true, false, new edh(1, dca.i), new edh(5, dca.j), new edh(230, dca.b), new edh(1, dca.F));
-         this.a(
-            edj.c,
-            crm.qy,
-            dad.T,
-            ImmutableSet.of(efa.m, efa.l, efa.g),
-            false,
-            false,
-            new edh(90, dca.G),
-            new edh(5, dca.L),
-            new edh(5, dca.j),
-            new edh(5, dca.b),
-            new edh(64, dca.sJ),
-            new edh(1, dca.F)
-         );
-         this.a(
-            edj.d,
-            dca.bt,
-            dad.b,
-            ImmutableSet.of(efa.a, efa.j, efa.f, efa.k, efa.r),
-            true,
-            true,
-            new edh(1, dca.i),
-            new edh(3, dca.j),
-            new edh(59, dca.b),
-            new edh(1, dca.F)
-         );
-         this.a(
-            edj.e,
-            dca.dN,
-            dad.d,
-            ImmutableSet.of(efa.a, efa.c),
-            false,
-            false,
-            new edh(1, dca.dN),
-            new edh(1, dca.i),
-            new edh(3, dca.j),
-            new edh(59, dca.b),
-            new edh(1, dca.F)
-         );
-         this.a(edj.f, crm.ps, dad.b, ImmutableSet.of(efa.a), false, false, new edh(1, dca.i), new edh(3, dca.j), new edh(2, dca.m));
-         this.a(
-            edj.g,
-            dca.I,
-            dad.f,
-            ImmutableSet.of(efa.a, efa.b, efa.j, efa.r),
-            true,
-            false,
-            new edh(8, dca.I),
-            new edh(52, dca.aV),
-            new edh(3, dca.b),
-            new edh(1, dca.F)
-         );
-         this.a(edj.h, crm.lG, dad.f, ImmutableSet.of(), false, false, new edh(116, dca.aV), new edh(3, dca.b), new edh(1, dca.F));
-         this.a(edj.i, dca.hW, dad.a, ImmutableSet.of(), true, false, new edh(1, dca.a));
-      }
+   private void a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, id.a $$3, ebe $$4, id $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

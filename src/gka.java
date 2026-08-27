@@ -1,12 +1,12 @@
-public class gka<T extends bpv, M extends fsn<T>> extends gjf<T, M> {
-   private static final gah a = gah.p(new ajt("textures/entity/spider_eyes.png"));
+public class gka<T extends chi> extends gjo<T, frw<T>> {
+   private static final gaq a = gaq.p(new ajv("textures/entity/phantom_eyes.png"));
 
-   public gka(ghd<T, M> $$0) {
+   public gka(ghm<T, frw<T>> $$0) {
       super($$0);
    }
 
    @Override
-   public gah a() {
+   public gaq a() {
       return a;
    }
 }

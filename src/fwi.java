@@ -1,66 +1,22 @@
-public class fwi extends fyn {
-   private final float a;
-   private final float b;
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   fwi(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, crj $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-   }
-
-   @Override
-   public fxr b() {
-      return fxr.a;
-   }
-
-   protected fwi(fuh $$0, double $$1, double $$2, double $$3, crj $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(fbp.Q().as().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements fxq<kh> {
-      public fxn a(kh $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwi($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+@FunctionalInterface
+public interface fwi {
+   Logger a = LogUtils.getLogger();
+   fwi b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(fwg.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
-   }
+   };
 
-   public static class b implements fxq<ko> {
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwi($$1, $$2, $$3, $$4, new crj(crm.qP));
-      }
-   }
-
-   public static class c implements fxq<ko> {
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwi($$1, $$2, $$3, $$4, new crj(crm.qB));
-      }
-   }
+   Optional<fwg> resolve(fwh var1);
 }

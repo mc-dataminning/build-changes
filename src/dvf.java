@@ -1,127 +1,117 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public final class dvf {
-   final dve a;
-   private final im<ejv.a> b;
-   private final dux c;
-   private final daf.f d;
-   private final dvj e;
-   private final dve f;
-   private final dve g;
-   private final Map<ajs<ejv.a>, ejv> h;
-   private final Map<ajt, dve> i;
+public record dvf(dvi j, dpi k, dpi l, dvg m, dvr.o n, List<dao.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<dvf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvi.a.fieldOf("noise").forGetter(dvf::f),
+               dpi.b.fieldOf("default_block").forGetter(dvf::g),
+               dpi.b.fieldOf("default_fluid").forGetter(dvf::h),
+               dvg.a.fieldOf("noise_router").forGetter(dvf::i),
+               dvr.o.b.fieldOf("surface_rule").forGetter(dvf::j),
+               dao.d.a.listOf().fieldOf("spawn_target").forGetter(dvf::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dvf::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dvf::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dvf::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dvf::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dvf::n)
+            )
+            .apply($$0, dvf::new)
+   );
+   public static final Codec<in<dvf>> b = ajr.a(ku.aD, a);
+   public static final aju<dvf> c = aju.a(ku.aD, new ajv("overworld"));
+   public static final aju<dvf> d = aju.a(ku.aD, new ajv("large_biomes"));
+   public static final aju<dvf> e = aju.a(ku.aD, new ajv("amplified"));
+   public static final aju<dvf> f = aju.a(ku.aD, new ajv("nether"));
+   public static final aju<dvf> g = aju.a(ku.aD, new ajv("end"));
+   public static final aju<dvf> h = aju.a(ku.aD, new ajv("caves"));
+   public static final aju<dvf> i = aju.a(ku.aD, new ajv("floating_islands"));
 
-   public static dvf a(im.a $$0, ajs<duw> $$1, long $$2) {
-      return a($$0.b(ks.aC).b($$1).a(), $$0.b(ks.aD), $$2);
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   public static dvf a(duw $$0, im<ejv.a> $$1, long $$2) {
-      return new dvf($$0, $$1, $$2);
+   public boolean b() {
+      return this.r;
    }
 
-   private dvf(duw $$0, im<ejv.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new ajt("aquifer")).e();
-      this.g = this.a.a(new ajt("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dvj(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements duk.f {
-         private final Map<duk, duk> d = new HashMap<>();
-
-         private axr a(long $$0) {
-            return new dus($$2 + $$0);
-         }
-
-         @Override
-         public duk.c a(duk.c $$0) {
-            il<ejv.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dva.a)) {
-                  ejv $$2 = ejv.a(this.a(0L), new ejv.a(-7, 1.0, 1.0));
-                  return new duk.c($$1, $$2);
-               }
-
-               if ($$1.a(dva.b)) {
-                  ejv $$3 = ejv.a(this.a(1L), new ejv.a(-7, 1.0, 1.0));
-                  return new duk.c($$1, $$3);
-               }
-
-               if ($$1.a(dva.j)) {
-                  ejv $$4 = ejv.b(dvf.this.a.a(dva.j.a()), new ejv.a(0, 0.0));
-                  return new duk.c($$1, $$4);
-               }
-            }
-
-            ejv $$5 = dvf.this.a($$1.e().orElseThrow());
-            return new duk.c($$1, $$5);
-         }
-
-         private duk a(duk $$0) {
-            if ($$0 instanceof ejs $$1) {
-               axr $$2 = $$3 ? this.a(0L) : dvf.this.a.a(new ajt("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (duk)($$0 instanceof dul.i ? new dul.i($$2) : $$0);
-            }
-         }
-
-         @Override
-         public duk apply(duk $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
-         }
-      }
-
-      this.c = $$0.i().a(new a());
-      duk.f $$4 = new duk.f() {
-         private final Map<duk, duk> b = new HashMap<>();
-
-         private duk a(duk $$0) {
-            if ($$0 instanceof dul.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dul.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public duk apply(duk $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new daf.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
+   public boolean c() {
+      return this.s;
    }
 
-   public ejv a(ajs<ejv.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dva.a(this.b, this.a, $$0));
+   public dvz.a d() {
+      return this.t ? dvz.a.a : dvz.a.b;
    }
 
-   public dve a(ajt $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
+   public static void a(pz<dvf> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   public dux a() {
-      return this.c;
+   private static dvf b(pz<?> $$0) {
+      return new dvf(dvi.d, dcj.fz.n(), dcj.a.n(), dvh.a($$0.a(ku.aA)), qm.c(), List.of(), 0, true, false, false, true);
    }
 
-   public daf.f b() {
-      return this.d;
+   private static dvf c(pz<?> $$0) {
+      return new dvf(dvi.c, dcj.dV.n(), dcj.H.n(), dvh.a($$0.a(ku.aA), $$0.a(ku.aE)), qm.b(), List.of(), 32, false, false, false, true);
    }
 
-   public dvj c() {
-      return this.e;
+   private static dvf a(pz<?> $$0, boolean $$1, boolean $$2) {
+      return new dvf(dvi.b, dcj.b.n(), dcj.G.n(), dvh.a($$0.a(ku.aA), $$0.a(ku.aE), $$2, $$1), qm.a(), new dav().a(), 63, false, true, true, false);
    }
 
-   public dve d() {
-      return this.f;
+   private static dvf d(pz<?> $$0) {
+      return new dvf(dvi.e, dcj.b.n(), dcj.G.n(), dvh.b($$0.a(ku.aA), $$0.a(ku.aE)), qm.a(false, true, true), List.of(), 32, false, false, false, true);
    }
 
-   public dve e() {
-      return this.g;
+   private static dvf e(pz<?> $$0) {
+      return new dvf(dvi.f, dcj.b.n(), dcj.G.n(), dvh.c($$0.a(ku.aA), $$0.a(ku.aE)), qm.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static dvf e() {
+      return new dvf(dvi.b, dcj.b.n(), dcj.a.n(), dvh.a(), qm.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public dvi f() {
+      return this.j;
+   }
+
+   public dpi g() {
+      return this.k;
+   }
+
+   public dpi h() {
+      return this.l;
+   }
+
+   public dvg i() {
+      return this.m;
+   }
+
+   public dvr.o j() {
+      return this.n;
+   }
+
+   public List<dao.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

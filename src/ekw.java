@@ -1,135 +1,213 @@
-import com.google.common.base.Preconditions;
+import it.unimi.dsi.fastutil.HashCommon;
+import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import java.util.NoSuchElementException;
 
-public class ekw {
-   private static final ekw[] am = new ekw[64];
-   public static final ekw a = new ekw(0, 0);
-   public static final ekw b = new ekw(1, 8368696);
-   public static final ekw c = new ekw(2, 16247203);
-   public static final ekw d = new ekw(3, 13092807);
-   public static final ekw e = new ekw(4, 16711680);
-   public static final ekw f = new ekw(5, 10526975);
-   public static final ekw g = new ekw(6, 10987431);
-   public static final ekw h = new ekw(7, 31744);
-   public static final ekw i = new ekw(8, 16777215);
-   public static final ekw j = new ekw(9, 10791096);
-   public static final ekw k = new ekw(10, 9923917);
-   public static final ekw l = new ekw(11, 7368816);
-   public static final ekw m = new ekw(12, 4210943);
-   public static final ekw n = new ekw(13, 9402184);
-   public static final ekw o = new ekw(14, 16776437);
-   public static final ekw p = new ekw(15, 14188339);
-   public static final ekw q = new ekw(16, 11685080);
-   public static final ekw r = new ekw(17, 6724056);
-   public static final ekw s = new ekw(18, 15066419);
-   public static final ekw t = new ekw(19, 8375321);
-   public static final ekw u = new ekw(20, 15892389);
-   public static final ekw v = new ekw(21, 5000268);
-   public static final ekw w = new ekw(22, 10066329);
-   public static final ekw x = new ekw(23, 5013401);
-   public static final ekw y = new ekw(24, 8339378);
-   public static final ekw z = new ekw(25, 3361970);
-   public static final ekw A = new ekw(26, 6704179);
-   public static final ekw B = new ekw(27, 6717235);
-   public static final ekw C = new ekw(28, 10040115);
-   public static final ekw D = new ekw(29, 1644825);
-   public static final ekw E = new ekw(30, 16445005);
-   public static final ekw F = new ekw(31, 6085589);
-   public static final ekw G = new ekw(32, 4882687);
-   public static final ekw H = new ekw(33, 55610);
-   public static final ekw I = new ekw(34, 8476209);
-   public static final ekw J = new ekw(35, 7340544);
-   public static final ekw K = new ekw(36, 13742497);
-   public static final ekw L = new ekw(37, 10441252);
-   public static final ekw M = new ekw(38, 9787244);
-   public static final ekw N = new ekw(39, 7367818);
-   public static final ekw O = new ekw(40, 12223780);
-   public static final ekw P = new ekw(41, 6780213);
-   public static final ekw Q = new ekw(42, 10505550);
-   public static final ekw R = new ekw(43, 3746083);
-   public static final ekw S = new ekw(44, 8874850);
-   public static final ekw T = new ekw(45, 5725276);
-   public static final ekw U = new ekw(46, 8014168);
-   public static final ekw V = new ekw(47, 4996700);
-   public static final ekw W = new ekw(48, 4993571);
-   public static final ekw X = new ekw(49, 5001770);
-   public static final ekw Y = new ekw(50, 9321518);
-   public static final ekw Z = new ekw(51, 2430480);
-   public static final ekw aa = new ekw(52, 12398641);
-   public static final ekw ab = new ekw(53, 9715553);
-   public static final ekw ac = new ekw(54, 6035741);
-   public static final ekw ad = new ekw(55, 1474182);
-   public static final ekw ae = new ekw(56, 3837580);
-   public static final ekw af = new ekw(57, 5647422);
-   public static final ekw ag = new ekw(58, 1356933);
-   public static final ekw ah = new ekw(59, 6579300);
-   public static final ekw ai = new ekw(60, 14200723);
-   public static final ekw aj = new ekw(61, 8365974);
-   public final int ak;
-   public final int al;
+public class ekw extends LongLinkedOpenHashSet {
+   private final ekw.a a;
 
-   private ekw(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
-      } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
-      }
+   public ekw(int $$0, float $$1) {
+      super($$0, $$1);
+      this.a = new ekw.a($$0 / 64, $$1);
    }
 
-   public int a(ekw.a $$0) {
-      if (this == a) {
-         return 0;
-      } else {
-         int $$1 = $$0.f;
-         int $$2 = (this.ak >> 16 & 0xFF) * $$1 / 255;
-         int $$3 = (this.ak >> 8 & 0xFF) * $$1 / 255;
-         int $$4 = (this.ak & 0xFF) * $$1 / 255;
-         return 0xFF000000 | $$4 << 16 | $$3 << 8 | $$2;
-      }
+   public boolean add(long $$0) {
+      return this.a.c($$0);
    }
 
-   public static ekw a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
+   public boolean rem(long $$0) {
+      return this.a.d($$0);
    }
 
-   private static ekw c(int $$0) {
-      ekw $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
+   public long removeFirstLong() {
+      return this.a.a();
    }
 
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(ekw.a.b($$1 & 3));
+   public int size() {
+      throw new UnsupportedOperationException();
    }
 
-   public byte b(ekw.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
+   public boolean isEmpty() {
+      return this.a.isEmpty();
    }
 
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
+   protected static class a extends Long2LongLinkedOpenHashMap {
+      private static final int a = axm.f(60000000);
+      private static final int b = axm.f(60000000);
+      private static final int c = 64 - a - b;
+      private static final int d = 0;
+      private static final int e = c;
+      private static final int g = c + b;
+      private static final long h = 3L << g | 3L | 3L << e;
+      private int i = -1;
+      private long j;
+      private final int k;
 
-      private static final ekw.a[] g = new ekw.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      public a(int $$0, float $$1) {
+         super($$0, $$1);
+         this.k = $$0;
       }
 
-      public static ekw.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+      static long a(long $$0) {
+         return $$0 & ~h;
       }
 
-      static ekw.a b(int $$0) {
-         return g[$$0];
+      static int b(long $$0) {
+         int $$1 = (int)($$0 >>> g & 3L);
+         int $$2 = (int)($$0 >>> 0 & 3L);
+         int $$3 = (int)($$0 >>> e & 3L);
+         return $$1 << 4 | $$3 << 2 | $$2;
+      }
+
+      static long a(long $$0, int $$1) {
+         $$0 |= (long)($$1 >>> 4 & 3) << g;
+         $$0 |= (long)($$1 >>> 2 & 3) << e;
+         return $$0 | (long)($$1 >>> 0 & 3) << 0;
+      }
+
+      public boolean c(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         int $$4;
+         if ($$1 == 0L) {
+            if (this.containsNullKey) {
+               return this.a(this.n, $$3);
+            }
+
+            this.containsNullKey = true;
+            $$4 = this.n;
+         } else {
+            if (this.i != -1 && $$1 == this.j) {
+               return this.a(this.i, $$3);
+            }
+
+            long[] $$5 = this.key;
+            $$4 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
+               if ($$7 == $$1) {
+                  this.i = $$4;
+                  this.j = $$1;
+                  return this.a($$4, $$3);
+               }
+
+               $$4 = $$4 + 1 & this.mask;
+            }
+         }
+
+         this.key[$$4] = $$1;
+         this.value[$$4] = $$3;
+         if (this.size == 0) {
+            this.first = this.last = $$4;
+            this.link[$$4] = -1L;
+         } else {
+            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
+            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
+            this.last = $$4;
+         }
+
+         if (this.size++ >= this.maxFill) {
+            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
+         }
+
+         return false;
+      }
+
+      private boolean a(int $$0, long $$1) {
+         boolean $$2 = (this.value[$$0] & $$1) != 0L;
+         this.value[$$0] = this.value[$$0] | $$1;
+         return $$2;
+      }
+
+      public boolean d(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         if ($$1 == 0L) {
+            return this.containsNullKey ? this.e($$3) : false;
+         } else if (this.i != -1 && $$1 == this.j) {
+            return this.b(this.i, $$3);
+         } else {
+            long[] $$4 = this.key;
+            int $$5 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
+               if ($$1 == $$6) {
+                  this.i = $$5;
+                  this.j = $$1;
+                  return this.b($$5, $$3);
+               }
+
+               $$5 = $$5 + 1 & this.mask;
+            }
+
+            return false;
+         }
+      }
+
+      private boolean e(long $$0) {
+         if ((this.value[this.n] & $$0) == 0L) {
+            return false;
+         } else {
+            this.value[this.n] = this.value[this.n] & ~$$0;
+            if (this.value[this.n] != 0L) {
+               return true;
+            } else {
+               this.containsNullKey = false;
+               this.size--;
+               this.fixPointers(this.n);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
+      }
+
+      private boolean b(int $$0, long $$1) {
+         if ((this.value[$$0] & $$1) == 0L) {
+            return false;
+         } else {
+            this.value[$$0] = this.value[$$0] & ~$$1;
+            if (this.value[$$0] != 0L) {
+               return true;
+            } else {
+               this.i = -1;
+               this.size--;
+               this.fixPointers($$0);
+               this.shiftKeys($$0);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
+      }
+
+      public long a() {
+         if (this.size == 0) {
+            throw new NoSuchElementException();
+         } else {
+            int $$0 = this.first;
+            long $$1 = this.key[$$0];
+            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
+            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
+            if (this.value[$$0] == 0L) {
+               this.removeFirstLong();
+               this.i = -1;
+            }
+
+            return a($$1, $$2);
+         }
+      }
+
+      protected void rehash(int $$0) {
+         if ($$0 > this.k) {
+            super.rehash($$0);
+         }
       }
    }
 }

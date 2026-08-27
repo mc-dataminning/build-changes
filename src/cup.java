@@ -1,62 +1,44 @@
-public class cup extends cuo {
-   private final ih b;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-   public cup(cyx $$0, ib $$1, ih $$2, crj $$3, ih $$4) {
-      super($$0, null, bnz.a, $$3, new erw(esa.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public record cup(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<cup> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awu.a(awu.u, "name").forGetter(cup::c), awu.a(jh.a, "id").forGetter(cup::d), awu.a(awu.t, "properties", new PropertyMap()).forGetter(cup::e)
+            )
+            .apply($$0, cup::new)
+   );
+   public static final Codec<cup> a = awu.a(g, awu.u, $$0 -> new cup(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final yg<ByteBuf, cup> b = yg.a(ye.b(16).a(ye::a), cup::c, jh.g.a(ye::a), cup::d, ye.s, cup::e, cup::new);
+
+   public cup(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   @Override
-   public ib a() {
-      return this.j().a();
+   public cup(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
    }
 
-   @Override
+   public CompletableFuture<cup> a() {
+      return this.b() ? CompletableFuture.completedFuture(this) : doa.a(this.c.orElseThrow()).thenApply($$0 -> {
+         GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ac.e, this.c.get()));
+         return new cup($$1);
+      });
+   }
+
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ac.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
+   }
+
    public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public ih d() {
-      return ih.a;
-   }
-
-   @Override
-   public ih[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new ih[]{ih.a, ih.c, ih.f, ih.d, ih.e, ih.b};
-         case b:
-            return new ih[]{ih.a, ih.b, ih.c, ih.f, ih.d, ih.e};
-         case c:
-            return new ih[]{ih.a, ih.c, ih.f, ih.e, ih.b, ih.d};
-         case d:
-            return new ih[]{ih.a, ih.d, ih.f, ih.e, ih.b, ih.c};
-         case e:
-            return new ih[]{ih.a, ih.e, ih.d, ih.b, ih.c, ih.f};
-         case f:
-            return new ih[]{ih.a, ih.f, ih.d, ih.b, ih.c, ih.e};
-      }
-   }
-
-   @Override
-   public ih g() {
-      return this.b.o() == ih.a.b ? ih.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+      return this.d.isPresent() || !this.e.isEmpty() || this.c.isEmpty();
    }
 }

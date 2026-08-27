@@ -1,84 +1,37 @@
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
 
 public class amp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wg.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.pardonip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("commands.pardonip.failed"));
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<dv> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-            .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("pardon-ip").requires($$0x -> $$0x.c(3)))
+            .then(
+               dw.a("target", StringArgumentType.word())
+                  .suggests(($$0x, $$1) -> ea.a(((dv)$$0x.getSource()).l().ah().g().a(), $$1))
+                  .executes($$0x -> a((dv)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
+            )
       );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aW()) {
-         throw c.create();
+   private static int a(dv $$0, String $$1) throws CommandSyntaxException {
+      if (!InetAddresses.isInetAddress($$1)) {
+         throw a.create();
       } else {
-         Consumer<bkn> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> wg.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
-
-   private static int b(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aW()) {
-         throw b.create();
-      } else {
-         $$1.aY();
-         return 0;
-      }
-   }
-
-   private static void a(du $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.bc().e(), aa.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(bmg.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(wg.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (awv $$7 = new awv(bmg.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> wg.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(du $$0, bkn $$1) {
-      if ($$1 != bkj.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)ayj.a;
-         $$0.a(() -> wg.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         ato $$2 = $$0.l().ah().g();
+         if (!$$2.a($$1)) {
+            throw b.create();
+         } else {
+            $$2.c($$1);
+            $$0.a(() -> wi.a("commands.pardonip.success", $$1), true);
+            return 1;
+         }
       }
    }
 }

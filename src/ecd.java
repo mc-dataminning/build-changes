@@ -1,30 +1,20 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ecd extends eca {
-   protected final long c;
-   protected final ejv.a d;
-   protected final float e;
-   protected final ejv f;
+public record ecd(ecj b, float c) {
+   public static final Codec<ecd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ecj.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, ecd::new)
+   );
 
-   protected static <P extends ecd> P3<Mu<P>, Long, ejv.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         ejv.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         aws.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public ecj a() {
+      return this.b;
    }
 
-   protected ecd(long $$0, ejv.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = ejv.b(new dvq(new dus($$0)), $$1);
-   }
-
-   protected double a(ib $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public float b() {
+      return this.c;
    }
 }

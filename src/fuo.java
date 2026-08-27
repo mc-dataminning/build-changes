@@ -1,68 +1,98 @@
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fuo extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter a = Splitter.on('\u0000').limit(6);
-   private final fvy b;
-   private final fuo.a c;
+public class fuo extends fun implements aaj, vw {
+   private static final Logger i = LogUtils.getLogger();
+   private final GameProfile j;
+   private cmn k;
+   private final jb.b l;
+   private final fvd m = new fvd();
+   @Nullable
+   private fuw n;
 
-   public fuo(fvy $$0, fuo.a $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fuo(fby $$0, vg $$1, fuu $$2) {
+      super($$0, $$1, $$2);
+      this.j = $$2.a();
+      this.l = $$2.c();
+      this.k = $$2.d();
    }
 
-   public void channelActive(ChannelHandlerContext $$0) throws Exception {
-      super.channelActive($$0);
-      ByteBuf $$1 = $$0.alloc().buffer();
+   @Override
+   public boolean c() {
+      return this.b.i();
+   }
 
-      try {
-         $$1.writeByte(254);
-         $$1.writeByte(1);
-         $$1.writeByte(250);
-         aql.a($$1, "MC|PingHost");
-         int $$2 = $$1.writerIndex();
-         $$1.writeShort(0);
-         int $$3 = $$1.writerIndex();
-         $$1.writeByte(127);
-         aql.a($$1, this.b.a());
-         $$1.writeInt(this.b.b());
-         int $$4 = $$1.writerIndex() - $$3;
-         $$1.setShort($$2, $$4);
-         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
-         $$1.release();
-         throw var6;
+   @Override
+   protected void a(zq $$0) {
+      this.b($$0);
+   }
+
+   private void b(zq $$0) {
+      i.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(aal $$0) {
+      ys.a($$0, this, this.a);
+      this.m.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(ze $$0) {
+      ys.a($$0, this, this.a);
+      this.m.a($$0.b());
+   }
+
+   @Override
+   public void a(aan $$0) {
+      this.k = cmp.e.a($$0.b());
+   }
+
+   @Override
+   public void a(aam $$0) {
+      ys.a($$0, this, this.a);
+      if (this.n == null) {
+         this.n = new fuw();
       }
+
+      List<asl> $$1 = this.n.a($$0.b());
+      this.b(new aas($$1));
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      short $$2 = $$1.readUnsignedByte();
-      if ($$2 == 255) {
-         String $$3 = aql.a($$1);
-         List<String> $$4 = a.splitToList($$3);
-         if ("§1".equals($$4.get(0))) {
-            int $$5 = axk.a($$4.get(1), 0);
-            String $$6 = $$4.get(2);
-            String $$7 = $$4.get(3);
-            int $$8 = axk.a($$4.get(4), -1);
-            int $$9 = axk.a($$4.get(5), -1);
-            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+   private <T> T a(Function<ath, T> $$0) {
+      if (this.n == null) {
+         return $$0.apply(ath.b);
+      } else {
+         Object var3;
+         try (asu $$1 = this.n.a()) {
+            var3 = $$0.apply($$1);
          }
+
+         return (T)var3;
       }
-
-      $$0.close();
    }
 
-   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      $$0.close();
+   @Override
+   public void a(aak $$0) {
+      ys.a($$0, this, this.a);
+      jb.b $$1 = this.a($$0x -> this.m.a($$0x, this.l, this.b.e()));
+      this.b.a(afm.b.bind(vt.a($$1)), new fur(this.a, this.b, new fuu(this.j, this.e, $$1, this.k, this.d, this.c, this.f, this.h)));
+      this.b.a(aar.a);
+      this.b.a(afm.a.bind(vt.a($$1)));
    }
 
-   @FunctionalInterface
-   public interface a {
-      void handleResponse(int var1, String var2, String var3, int var4, int var5);
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   @Override
+   public void a(wi $$0) {
+      super.a($$0);
+      this.a.B();
    }
 }

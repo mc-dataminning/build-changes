@@ -1,54 +1,24 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class oo extends pc<dlv> {
-   public oo(la $$0, CompletableFuture<in.a> $$1) {
-      super($$0, ks.d, $$1);
-   }
+public class oo implements on.a {
+   private static final Logger a = LogUtils.getLogger();
 
    @Override
-   protected void a(in.a $$0) {
-      this.b(ava.a)
-         .a(
-            dlx.b,
-            dlx.c,
-            dlx.d,
-            dlx.e,
-            dlx.f,
-            dlx.g,
-            dlx.h,
-            dlx.i,
-            dlx.j,
-            dlx.k,
-            dlx.l,
-            dlx.m,
-            dlx.n,
-            dlx.o,
-            dlx.p,
-            dlx.q,
-            dlx.r,
-            dlx.s,
-            dlx.t,
-            dlx.u,
-            dlx.v,
-            dlx.w,
-            dlx.x,
-            dlx.y,
-            dlx.z,
-            dlx.A,
-            dlx.B,
-            dlx.C,
-            dlx.D,
-            dlx.E,
-            dlx.F,
-            dlx.G,
-            dlx.H,
-            dlx.I
-         );
-      this.b(ava.b).a(dlx.M);
-      this.b(ava.c).a(dlx.K);
-      this.b(ava.d).a(dlx.L);
-      this.b(ava.e).a(dlx.N);
-      this.b(ava.f).a(dlx.J);
-      this.b(ava.g).a(dlx.O);
+   public to apply(String $$0, to $$1) {
+      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
+   }
+
+   public static to a(String $$0, to $$1) {
+      ejq $$2 = new ejq();
+      int $$3 = ud.b($$1, 500);
+      int $$4 = 3798;
+      if ($$3 < 3798) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3798, $$0});
+      }
+
+      to $$5 = ays.f.a(ayt.a(), $$1, $$3);
+      $$2.a(kt.e.p(), $$5);
+      return $$2.a(new to());
    }
 }

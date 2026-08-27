@@ -1,32 +1,30 @@
-public class bza extends bxv {
-   private final chs b;
-   private int c;
+public class bza extends bxq {
+   private final brb a;
 
-   public bza(chs $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+   public bza(brb $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(avj.a);
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
-   }
+      id $$0 = null;
 
-   @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
+      for (id $$2 : id.b(
+         axm.a(this.a.dr() - 2.0), axm.a(this.a.dt() - 2.0), axm.a(this.a.dx() - 2.0), axm.a(this.a.dr() + 2.0), this.a.ds(), axm.a(this.a.dx() + 2.0)
+      )) {
+         if (this.a.dM().b_($$2).a(avj.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
 
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

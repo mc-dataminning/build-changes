@@ -1,15 +1,22 @@
-public class cwi extends cwq {
-   public cwi(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bn, $$1);
+public interface cwi extends cvs<bny> {
+   @Override
+   default cvx<?> e() {
+      return cvx.g;
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   default crs g() {
+      return new crs(dcj.ob);
    }
+
+   boolean a(crs var1);
+
+   boolean b(crs var1);
+
+   boolean c(crs var1);
 }

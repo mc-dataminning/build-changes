@@ -1,15 +1,16 @@
-public class ghi extends ggo<chg, fsg<chg>> {
-   private static final ajt a = new ajt("textures/entity/silverfish.png");
+public class ghi extends ggx<cda, fsb<cda>> {
+   private static final ajv a = new ajv("textures/entity/bear/polarbear.png");
 
-   public ghi(gfi.a $$0) {
-      super($$0, new fsg<>($$0.a(ftl.bm)), 0.3F);
+   public ghi(gfr.a $$0) {
+      super($$0, new fsb<>($$0.a(ftu.ba)), 0.9F);
    }
 
-   protected float a(chg $$0) {
-      return 180.0F;
-   }
-
-   public ajt b(chg $$0) {
+   public ajv a(cda $$0) {
       return a;
+   }
+
+   protected void a(cda $$0, ewr $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

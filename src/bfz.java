@@ -1,61 +1,34 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class bfz extends DataFix {
-   private static final int a = 2;
-   private static final int[] b = new int[]{0, 10, 50, 100, 150};
-
-   public static int a(int $$0) {
-      return b[axk.a($$0 - 1, 0, b.length - 1)];
+public class bfz extends bef {
+   public bfz(Schema $$0) {
+      super($$0, false, "TippedArrowPotionToItemFix", bff.z, "minecraft:arrow");
    }
 
-   public bfz(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bfa.z, "minecraft:villager");
-      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:villager", $$0);
-      OpticFinder<?> $$2 = $$0.findField("Offers");
-      Type<?> $$3 = $$2.type();
-      OpticFinder<?> $$4 = $$3.findField("Recipes");
-      ListType<?> $$5 = (ListType<?>)$$4.type();
-      OpticFinder<?> $$6 = $$5.getElement().finder();
-      return this.fixTypeEverywhereTyped("Villager level and xp rebuild", this.getInputSchema().getType(bfa.z), $$5x -> $$5x.updateTyped($$1, $$0, $$3xx -> {
-            Dynamic<?> $$4xx = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
-            int $$5xx = $$4xx.get("VillagerData").get("level").asInt(0);
-            Typed<?> $$6x = $$3xx;
-            if ($$5xx == 0 || $$5xx == 1) {
-               int $$7 = $$3xx.getOptionalTyped($$2).flatMap($$1xxx -> $$1xxx.getOptionalTyped($$4)).map($$1xxx -> $$1xxx.getAllTyped($$6).size()).orElse(0);
-               $$5xx = axk.a($$7 / 2, 1, 5);
-               if ($$5xx > 1) {
-                  $$6x = a($$3xx, $$5xx);
-               }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Potion").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("custom_potion_effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Color").result();
+      return $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()
+         ? $$0
+         : $$0.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", $$3x -> {
+            Dynamic<?> $$4 = $$3x.get("tag").orElseEmptyMap();
+            if ($$1.isPresent()) {
+               $$4 = $$4.set("Potion", $$1.get());
             }
 
-            Optional<Number> $$8 = $$4xx.get("Xp").asNumber().result();
-            if ($$8.isEmpty()) {
-               $$6x = b($$6x, $$5xx);
+            if ($$2.isPresent()) {
+               $$4 = $$4.set("custom_potion_effects", $$2.get());
             }
 
-            return $$6x;
-         }));
-   }
+            if ($$3.isPresent()) {
+               $$4 = $$4.set("CustomPotionColor", $$3.get());
+            }
 
-   private static Typed<?> a(Typed<?> $$0, int $$1) {
-      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.update("VillagerData", $$1xx -> $$1xx.set("level", $$1xx.createInt($$1))));
-   }
-
-   private static Typed<?> b(Typed<?> $$0, int $$1) {
-      int $$2 = a($$1);
-      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.set("Xp", $$1x.createInt($$2)));
+            return $$3x.set("tag", $$4);
+         });
    }
 }

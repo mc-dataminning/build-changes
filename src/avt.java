@@ -1,45 +1,43 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
 
-public class avt implements asw {
-   private static final Map<ajs<? extends iy<?>>, String> a = Map.of(
-      ks.f, "tags/blocks", ks.u, "tags/entity_types", ks.y, "tags/fluids", ks.B, "tags/game_events", ks.F, "tags/items"
-   );
-   private final iz b;
-   private List<avt.a<?>> c = List.of();
+public record avt<T>(aju<? extends ja<T>> a, ajv b) {
+   private static final Interner<avt<?>> c = Interners.newWeakInterner();
 
-   public avt(iz $$0) {
-      this.b = $$0;
+   @Deprecated
+   public avt(aju<? extends ja<T>> a, ajv b) {
+      this.a = a;
+      this.b = b;
    }
 
-   public List<avt.a<?>> a() {
-      return this.c;
+   public static <T> Codec<avt<T>> a(aju<? extends ja<T>> $$0) {
+      return ajv.a.xmap($$1 -> a($$0, $$1), avt::b);
    }
 
-   public static String a(ajs<? extends iy<?>> $$0) {
-      String $$1 = a.get($$0);
-      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
+   public static <T> Codec<avt<T>> b(aju<? extends ja<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? ajv.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
+   }
+
+   public static <T> avt<T> a(aju<? extends ja<T>> $$0, ajv $$1) {
+      return (avt<T>)c.intern(new avt<>($$0, $$1));
+   }
+
+   public boolean c(aju<? extends ja<?>> $$0) {
+      return this.a == $$0;
+   }
+
+   public <E> Optional<avt<E>> d(aju<? extends ja<E>> $$0) {
+      return this.c($$0) ? Optional.of((avt<E>)this) : Optional.empty();
    }
 
    @Override
-   public CompletableFuture<Void> a(asw.a $$0, atc $$1, bko $$2, bko $$3, Executor $$4, Executor $$5) {
-      List<? extends CompletableFuture<? extends avt.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
-      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
-         .thenCompose($$0::a)
-         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
-   }
-
-   private <T> CompletableFuture<avt.a<T>> a(atc $$0, Executor $$1, iz.d<T> $$2) {
-      ajs<? extends iy<T>> $$3 = $$2.a();
-      iy<T> $$4 = $$2.b();
-      avs<il<T>> $$5 = new avs<>($$4::c, a($$3));
-      return CompletableFuture.supplyAsync(() -> new avt.a<>($$3, $$5.b($$0)), $$1);
-   }
-
-   public static record a<T>(ajs<? extends iy<T>> a, Map<ajt, Collection<il<T>>> b) {
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

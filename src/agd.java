@@ -1,38 +1,30 @@
-import java.util.List;
-import java.util.Optional;
+public record agd(int b, int c, boolean d) implements yp<afn> {
+   public static final yg<vi, agd> a = yp.a(agd::a, agd::new);
 
-public record agd(int c, List<String> d, Optional<String> e) implements yn<afl> {
-   public static final int a = 4;
-   private static final int f = 128;
-   private static final int g = 8192;
-   private static final int h = 200;
-   public static final ye<vg, agd> b = ye.a(yc.f, agd::b, yc.b(8192).a(yc.c(200)), agd::e, yc.b(128).a(yc::a), agd::f, agd::new);
+   private agd(vi $$0) {
+      this($$0.l(), $$0.l(), $$0.readBoolean());
+   }
 
-   public agd(int c, List<String> d, Optional<String> e) {
-      d = List.copyOf(d);
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   private void a(vi $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yp<agd> a() {
-      return afj.bu;
+   public yr<agd> a() {
+      return afl.bs;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public int e() {
       return this.c;
    }
 
-   public List<String> e() {
+   public boolean f() {
       return this.d;
-   }
-
-   public Optional<String> f() {
-      return this.e;
    }
 }

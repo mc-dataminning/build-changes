@@ -1,28 +1,44 @@
-public class giz extends gjt<fyy, frr<fyy>> {
-   public giz(ghd<fyy, frr<fyy>> $$0) {
+public class giz<T extends bqt, M extends fsa<T>> extends gkl<T, M> {
+   private static final ajv a = new ajv("textures/entity/bee/bee_stinger.png");
+
+   public giz(ggs<T, M> $$0) {
       super($$0);
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, fyy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ("deadmau5".equals($$3.ad().getString()) && !$$3.ce()) {
-         ewm $$10 = $$1.getBuffer(gah.c($$3.b().a()));
-         int $$11 = ggj.c($$3, 0.0F);
+   @Override
+   protected int a(T $$0) {
+      return $$0.eR();
+   }
 
-         for (int $$12 = 0; $$12 < 2; $$12++) {
-            float $$13 = axk.i($$6, $$3.N, $$3.dC()) - axk.i($$6, $$3.aY, $$3.aX);
-            float $$14 = axk.i($$6, $$3.O, $$3.dE());
-            $$0.a();
-            $$0.a(a.d.rotationDegrees($$13));
-            $$0.a(a.b.rotationDegrees($$14));
-            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
-            $$0.a(0.0F, -0.375F, 0.0F);
-            $$0.a(a.b.rotationDegrees(-$$14));
-            $$0.a(a.d.rotationDegrees(-$$13));
-            float $$15 = 1.3333334F;
-            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
-            this.c().a($$0, $$10, $$2, $$11);
-            $$0.b();
-         }
+   @Override
+   protected void a(ewr $$0, gai $$1, int $$2, bqa $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = axm.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      ewv $$16 = $$1.getBuffer(gaq.e(a));
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         ewr.a $$18 = $$0.c();
+         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
       }
+   }
+
+   private static void a(ewv $$0, ewr.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
+      $$0.a($$1, $$2, (float)$$3, 0.0F).a(255, 255, 255, 255).a($$4, $$5).c(glj.d).b($$6).b($$1, 0.0F, 1.0F, 0.0F).e();
    }
 }

@@ -1,54 +1,30 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class cvi extends cvq {
-   public cvi(cuz $$0) {
-      super("", $$0, cvr.a(Map.of('#', cvg.a(crm.qN), 'x', cvg.a(crm.rT)), "###", "#x#", "###"), new crj(crm.uh));
+public enum cvi implements ayg {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
+
+   public static final Codec<cvi> e = ayg.a(cvi::values);
+   public static final IntFunction<cvi> f = awd.a(cvi::a, values(), awd.a.a);
+   public static final yg<ByteBuf, cvi> g = ye.a(f, cvi::a);
+   private final String h;
+   private final int i;
+
+   private cvi(String $$0, int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean a(cnf $$0, cyx $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         crj $$2 = a($$0);
-         if ($$2.d()) {
-            return false;
-         } else {
-            emf $$3 = crq.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.g() ? false : $$3.f < 4;
-            }
-         }
-      }
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public crj a(cnf $$0, iz $$1) {
-      crj $$2 = a($$0).c(1);
-      $$2.b(jp.u, cuf.b);
-      return $$2;
-   }
-
-   private static crj a(cnf $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         crj $$2 = $$0.a($$1);
-         if ($$2.a(crm.rT)) {
-            return $$2;
-         }
-      }
-
-      return crj.i;
-   }
-
-   @Override
-   public boolean ao_() {
-      return true;
-   }
-
-   @Override
-   public cvn<?> ap_() {
-      return cvn.f;
+   private int a() {
+      return this.i;
    }
 }

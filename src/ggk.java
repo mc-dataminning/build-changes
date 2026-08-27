@@ -1,20 +1,11 @@
-public class ggk extends ggo<cei, frf<cei>> {
-   private static final ajt a = new ajt("textures/entity/llama/creamy.png");
-   private static final ajt i = new ajt("textures/entity/llama/white.png");
-   private static final ajt j = new ajt("textures/entity/llama/brown.png");
-   private static final ajt k = new ajt("textures/entity/llama/gray.png");
-
-   public ggk(gfi.a $$0, ftk $$1) {
-      super($$0, new frf<>($$0.a($$1)), 0.7F);
-      this.a(new gjn(this, $$0.f()));
+public abstract class ggk<T extends cgn> extends ggx<T, frj<T>> {
+   protected ggk(gfr.a $$0, frj<T> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new gjh<>(this, $$0.f(), $$0.d()));
    }
 
-   public ajt a(cei $$0) {
-      return switch ($$0.gz()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   protected void a(T $$0, ewr $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

@@ -1,21 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class glw implements gln {
-   public static final Codec<glw> b = RecordCodecBuilder.create($$0 -> $$0.group(axs.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, glw::new));
-   private final axs c;
+public interface glw {
+   ajo a = new ajo("textures", ".png");
 
-   public glw(axs $$0) {
-      this.c = $$0;
+   void a(ate var1, glw.a var2);
+
+   gly a();
+
+   public interface a {
+      default void a(ajv $$0, atc $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(ajv var1, glw.b var2);
+
+      void a(Predicate<ajv> var1);
    }
 
-   @Override
-   public void a(atc $$0, gln.a $$1) {
-      $$1.a(this.c.c());
-   }
-
-   @Override
-   public glp a() {
-      return glq.c;
+   public interface b extends Function<glv, glm> {
+      default void a() {
+      }
    }
 }

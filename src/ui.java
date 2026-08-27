@@ -1,138 +1,48 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Pattern;
+public interface ui {
+   ui.b a();
 
-public class ui implements un {
-   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
-   private final StringBuilder b = new StringBuilder();
+   ui.b a(String var1);
 
-   public String a(uj $$0) {
-      $$0.a(this);
-      return this.b.toString();
+   ui.b a(byte var1);
+
+   ui.b a(short var1);
+
+   ui.b a(int var1);
+
+   ui.b a(long var1);
+
+   ui.b a(float var1);
+
+   ui.b a(double var1);
+
+   ui.b a(byte[] var1);
+
+   ui.b a(int[] var1);
+
+   ui.b a(long[] var1);
+
+   ui.b a(un<?> var1, int var2);
+
+   ui.a a(un<?> var1);
+
+   ui.a a(un<?> var1, String var2);
+
+   ui.a b(un<?> var1, int var2);
+
+   ui.b b();
+
+   ui.b b(un<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   @Override
-   public void a(uh $$0) {
-      this.b.append(uh.b($$0.s_()));
-   }
-
-   @Override
-   public void a(tk $$0) {
-      this.b.append($$0.l()).append('b');
-   }
-
-   @Override
-   public void a(ue $$0) {
-      this.b.append($$0.l()).append('s');
-   }
-
-   @Override
-   public void a(tr $$0) {
-      this.b.append($$0.l());
-   }
-
-   @Override
-   public void a(tu $$0) {
-      this.b.append($$0.l()).append('L');
-   }
-
-   @Override
-   public void a(tp $$0) {
-      this.b.append($$0.k()).append('f');
-   }
-
-   @Override
-   public void a(tn $$0) {
-      this.b.append($$0.j()).append('d');
-   }
-
-   @Override
-   public void a(tj $$0) {
-      this.b.append("[B;");
-      byte[] $$1 = $$0.e();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append($$1[$$2]).append('B');
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(tq $$0) {
-      this.b.append("[I;");
-      int[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append($$1[$$2]);
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(tt $$0) {
-      this.b.append("[L;");
-      long[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append($$1[$$2]).append('L');
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(ts $$0) {
-      this.b.append('[');
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         if ($$1 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append(new ui().a($$0.k($$1)));
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(tm $$0) {
-      this.b.append('{');
-      List<String> $$1 = Lists.newArrayList($$0.e());
-      Collections.sort($$1);
-
-      for (String $$2 : $$1) {
-         if (this.b.length() != 1) {
-            this.b.append(',');
-         }
-
-         this.b.append(a($$2)).append(':').append(new ui().a($$0.c($$2)));
-      }
-
-      this.b.append('}');
-   }
-
-   protected static String a(String $$0) {
-      return a.matcher($$0).matches() ? $$0 : uh.b($$0);
-   }
-
-   @Override
-   public void a(to $$0) {
-      this.b.append("END");
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

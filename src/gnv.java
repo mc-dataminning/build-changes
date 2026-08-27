@@ -1,77 +1,67 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class gnv implements gnj {
-   private final int a;
-   private final List<bmm.b<gnj>> b;
-   private final gnj c;
+public class gnv {
+   public static final Comparator<gnv> a = Comparator.<gnv, ajv>comparing(gnv::a).thenComparing(gnv::b);
+   private final ajv b;
+   private final ajv c;
+   @Nullable
+   private gaq d;
 
-   public gnv(List<bmm.b<gnj>> $$0) {
+   public gnv(ajv $$0, ajv $$1) {
       this.b = $$0;
-      this.a = bmn.a($$0);
-      this.c = $$0.get(0).b();
+      this.c = $$1;
    }
 
-   @Override
-   public List<gaw> a(@Nullable doz $$0, @Nullable ih $$1, axr $$2) {
-      return bmn.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public ajv a() {
+      return this.b;
    }
 
-   @Override
-   public boolean a() {
-      return this.c.a();
+   public ajv b() {
+      return this.c;
    }
 
-   @Override
-   public boolean b() {
-      return this.c.b();
+   public gls c() {
+      return fby.Q().a(this.a()).apply(this.b());
    }
 
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public glj e() {
-      return this.c.e();
-   }
-
-   @Override
-   public gbi f() {
-      return this.c.f();
-   }
-
-   @Override
-   public gbg g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bmm.b<gnj>> a = Lists.newArrayList();
-
-      public gnv.a a(@Nullable gnj $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bmm.a($$0, $$1));
-         }
-
-         return this;
+   public gaq a(Function<ajv, gaq> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
       }
 
-      @Nullable
-      public gnj a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (gnj)(this.a.size() == 1 ? this.a.get(0).b() : new gnv(this.a));
-         }
+      return this.d;
+   }
+
+   public ewv a(gai $$0, Function<ajv, gaq> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public ewv a(gai $$0, Function<ajv, gaq> $$1, boolean $$2) {
+      return this.c().a(ggp.c($$0, this.a($$1), true, $$2));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         gnv $$1 = (gnv)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

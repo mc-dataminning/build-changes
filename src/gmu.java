@@ -1,71 +1,42 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class gmu implements asb<gmt> {
-   public gmt b(JsonObject $$0) {
-      Builder<gms> $$1 = ImmutableList.builder();
-      int $$2 = axa.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
+public abstract class gmu implements asy, AutoCloseable {
+   private final glr a;
+   private final ajv b;
+   private final Set<asd<?>> c;
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = axa.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gms $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = axa.a($$0, "width", -1);
-      int $$9 = axa.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = axa.a($$0, "interpolate", false);
-      return new gmt($$1.build(), $$8, $$9, $$2, $$10);
+   public gmu(glt $$0, ajv $$1, ajv $$2) {
+      this($$0, $$1, $$2, gln.a);
    }
 
-   @Nullable
-   private gms a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gms(axa.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = axa.m($$1, "frames[" + $$0 + "]");
-         int $$3 = axa.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
-         }
+   public gmu(glt $$0, ajv $$1, ajv $$2, Set<asd<?>> $$3) {
+      this.b = $$2;
+      this.a = new glr($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
+   }
 
-         int $$4 = axa.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gms($$4, $$3);
-      } else {
-         return null;
-      }
+   protected gls a(ajv $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public String a() {
-      return "animation";
+   public final CompletableFuture<Void> a(asy.a $$0, ate $$1, bkt $$2, bkt $$3, Executor $$4, Executor $$5) {
+      return gln.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gln.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   }
+
+   private void a(gln.a $$0, bkt $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
+   }
+
+   @Override
+   public void close() {
+      this.a.f();
    }
 }

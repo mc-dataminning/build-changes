@@ -1,16 +1,45 @@
-public record abw(cre b, int c) implements yn<aay> {
-   public static final ye<vr, abw> a = ye.a(yc.a(ks.F), abw::b, yc.f, abw::e, abw::new);
+public class abw implements yp<aba> {
+   public static final yg<vi, abw> a = yp.a(abw::a, abw::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   @Override
-   public yp<abw> a() {
-      return afj.x;
+   public abw(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(aay $$0) {
+   private abw(vi $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+   }
+
+   private void a(vi $$0) {
+      $$0.k(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+   }
+
+   @Override
+   public yr<abw> a() {
+      return afl.v;
+   }
+
+   public void a(aba $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 
    public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

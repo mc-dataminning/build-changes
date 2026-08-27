@@ -1,60 +1,65 @@
-import com.google.common.collect.MapMaker;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
 
-public class ajs<T> {
-   private static final ConcurrentMap<ajs.a, ajs<?>> a = new MapMaker().weakValues().makeMap();
-   private final ajt b;
-   private final ajt c;
+public final class ajs<E> implements Codec<in<E>> {
+   private final aju<? extends ja<E>> a;
 
-   public static <T> Codec<ajs<T>> a(ajs<? extends iy<T>> $$0) {
-      return ajt.a.xmap($$1 -> a($$0, $$1), ajs::a);
+   public static <E> ajs<E> a(aju<? extends ja<E>> $$0) {
+      return new ajs<>($$0);
    }
 
-   public static <T> ye<ByteBuf, ajs<T>> b(ajs<? extends iy<T>> $$0) {
-      return ajt.b.a($$1 -> a($$0, $$1), ajs::a);
+   private ajs(aju<? extends ja<E>> $$0) {
+      this.a = $$0;
    }
 
-   public static <T> ajs<T> a(ajs<? extends iy<T>> $$0, ajt $$1) {
-      return a($$0.c, $$1);
+   public <T> DataResult<T> a(in<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof ajt<?> $$3) {
+         Optional<iq<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d()
+               .map(
+                  $$2x -> ajv.a.encode($$2x.a(), $$1, $$2),
+                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
+               );
+         }
+      }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   public static <T> ajs<iy<T>> a(ajt $$0) {
-      return a(ks.a, $$0);
-   }
+   public <T> DataResult<Pair<in<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof ajt<?> $$2) {
+         Optional<io<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            return ajv.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$1x -> {
+                     ajv $$2x = (ajv)$$1x.getFirst();
+                     return $$3.get()
+                        .a(aju.a(this.a, $$2x))
+                        .<DataResult>map(DataResult::success)
+                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
+                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
+                        .setLifecycle(Lifecycle.stable());
+                  }
+               );
+         }
+      }
 
-   private static <T> ajs<T> a(ajt $$0, ajt $$1) {
-      return (ajs<T>)a.computeIfAbsent(new ajs.a($$0, $$1), $$0x -> new ajs($$0x.a, $$0x.b));
-   }
-
-   private ajs(ajt $$0, ajt $$1) {
-      this.b = $$0;
-      this.c = $$1;
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
    @Override
    public String toString() {
-      return "ResourceKey[" + this.b + " / " + this.c + "]";
-   }
-
-   public boolean c(ajs<? extends iy<?>> $$0) {
-      return this.b.equals($$0.a());
-   }
-
-   public <E> Optional<ajs<E>> d(ajs<? extends iy<E>> $$0) {
-      return this.c($$0) ? Optional.of((ajs<E>)this) : Optional.empty();
-   }
-
-   public ajt a() {
-      return this.c;
-   }
-
-   public ajt b() {
-      return this.b;
-   }
-
-   static record a(ajt a, ajt b) {
+      return "RegistryFixedCodec[" + this.a + "]";
    }
 }

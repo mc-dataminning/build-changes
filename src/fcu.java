@@ -1,164 +1,200 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
-
 public class fcu {
-   private static final int a = 256;
-   private final ThreadLocal<fcu.b> b = ThreadLocal.withInitial(fcu.b::new);
-   private final Long2ObjectLinkedOpenHashMap<fcu.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<ib> e;
-
-   public fcu(ToIntFunction<ib> $$0) {
-      this.e = $$0;
-   }
-
-   public int a(ib $$0) {
-      int $$1 = je.a($$0.u());
-      int $$2 = je.a($$0.w());
-      fcu.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
-      }
-
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
-      } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
-      }
-   }
-
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
-
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = cye.c($$0 + $$2, $$1 + $$3);
-               fcu.a $$5 = (fcu.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
-               }
-            }
-         }
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(fcu.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   private fcu.a b(int $$0, int $$1) {
-      long $$2 = cye.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         fcu.a $$3 = (fcu.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
-      }
-
-      this.d.writeLock().lock();
-
-      fcu.a $$5;
-      try {
-         fcu.a $$4 = (fcu.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new fcu.a();
-            if (this.c.size() >= 256) {
-               fcu.a $$6 = (fcu.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
-         }
-
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
-      }
-
-      return $$5;
-   }
-
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = axk.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
-      }
-
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
-      }
-   }
-
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      fcu.a c;
-
-      private b() {
-      }
-   }
+   public static final fcp a = fcp.a.a(1.125F)
+      .a(
+         "head",
+         new fco(
+            fco.d.b,
+            new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.25F, fcr.b(-12.5F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.75F, fcr.b(-12.5F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.9167F, fcr.b(5.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fco(
+            fco.d.a,
+            new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.25F, fcr.a(0.0F, -2.0F, 0.0F), fco.b.a),
+            new fcq(0.7917F, fcr.a(0.0F, -1.0F, 2.0F), fco.b.a),
+            new fcq(0.9583F, fcr.a(0.0F, -1.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a("wind_bottom", new fco(fco.d.b, new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a)))
+      .a(
+         "wind_mid",
+         new fco(
+            fco.d.b,
+            new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.25F, fcr.b(12.5F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.75F, fcr.b(12.5F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.9167F, fcr.b(-10.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "wind_mid",
+         new fco(
+            fco.d.a,
+            new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.25F, fcr.a(0.0F, 0.0F, 5.0F), fco.b.a),
+            new fcq(0.75F, fcr.a(0.0F, 0.0F, 6.0F), fco.b.a),
+            new fcq(0.9167F, fcr.a(0.0F, 0.0F, -2.0F), fco.b.a),
+            new fcq(1.125F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "wind_top",
+         new fco(
+            fco.d.b,
+            new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.25F, fcr.b(15.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.75F, fcr.b(15.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.9167F, fcr.b(-10.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "wind_top",
+         new fco(
+            fco.d.a,
+            new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.25F, fcr.a(0.0F, 0.0F, 3.0F), fco.b.a),
+            new fcq(0.8333F, fcr.a(0.0F, 0.0F, 4.0F), fco.b.a),
+            new fcq(0.9583F, fcr.a(0.0F, 0.0F, -2.0F), fco.b.a),
+            new fcq(1.125F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fco(
+            fco.d.b,
+            new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.25F, fcr.b(12.5F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.75F, fcr.b(12.5F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.9167F, fcr.b(-2.5F, 0.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fco(
+            fco.d.a,
+            new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.25F, fcr.a(0.0F, 3.0F, 5.0F), fco.b.a),
+            new fcq(0.8333F, fcr.a(0.0F, 3.0F, 6.0F), fco.b.a),
+            new fcq(0.9583F, fcr.a(0.0F, 3.0F, -1.0F), fco.b.a),
+            new fcq(1.125F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a("rods", new fco(fco.d.b, new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a), new fcq(1.0F, fcr.b(0.0F, 360.0F, 0.0F), fco.b.a)))
+      .b();
+   public static final fcp b = fcp.a.a(1.125F)
+      .a(
+         "body",
+         new fco(
+            fco.d.a,
+            new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.5F, fcr.a(0.0F, -10.0F, 0.0F), fco.b.a),
+            new fcq(0.625F, fcr.a(0.0F, -10.0F, 0.0F), fco.b.a),
+            new fcq(0.75F, fcr.a(0.0F, 11.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fco(
+            fco.d.b,
+            new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.5F, fcr.b(22.5F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.625F, fcr.b(22.5F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.8333F, fcr.b(-19.25F, 0.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "wind_body",
+         new fco(
+            fco.d.c,
+            new fcq(0.0F, fcr.a(1.0, 1.0, 1.0), fco.b.a),
+            new fcq(0.5F, fcr.a(1.0, 1.0, 1.0), fco.b.a),
+            new fcq(0.625F, fcr.a(1.0, 1.0, 1.0), fco.b.a),
+            new fcq(0.75F, fcr.a(1.0, 1.3F, 1.0), fco.b.a),
+            new fcq(1.125F, fcr.a(1.0, 1.0, 1.0), fco.b.a)
+         )
+      )
+      .a(
+         "wind_bottom",
+         new fco(
+            fco.d.b,
+            new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.625F, fcr.b(0.0F, 90.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.b(0.0F, 360.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "wind_bottom",
+         new fco(
+            fco.d.c,
+            new fcq(0.0F, fcr.a(1.0, 1.0, 1.0), fco.b.a),
+            new fcq(0.5F, fcr.a(1.0, 1.0, 1.0), fco.b.a),
+            new fcq(0.625F, fcr.a(1.0, 1.0, 1.0), fco.b.a),
+            new fcq(0.75F, fcr.a(1.0, 1.1F, 1.0), fco.b.a),
+            new fcq(1.125F, fcr.a(1.0, 1.0, 1.0), fco.b.a)
+         )
+      )
+      .a(
+         "wind_mid",
+         new fco(
+            fco.d.b,
+            new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.625F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.b(0.0F, 180.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "wind_mid",
+         new fco(
+            fco.d.a,
+            new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.5F, fcr.a(0.0F, -6.0F, 0.0F), fco.b.a),
+            new fcq(0.625F, fcr.a(0.0F, -6.0F, 0.0F), fco.b.a),
+            new fcq(0.75F, fcr.a(0.0F, 2.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "wind_top",
+         new fco(
+            fco.d.b,
+            new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.625F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.b(0.0F, 90.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a(
+         "wind_top",
+         new fco(
+            fco.d.a,
+            new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a),
+            new fcq(0.5F, fcr.a(0.0F, -5.0F, 0.0F), fco.b.a),
+            new fcq(0.625F, fcr.a(0.0F, -5.0F, 0.0F), fco.b.a),
+            new fcq(0.75F, fcr.a(0.0F, 2.0F, 0.0F), fco.b.a),
+            new fcq(1.125F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)
+         )
+      )
+      .a("rods", new fco(fco.d.b, new fcq(0.0F, fcr.b(0.0F, 0.0F, 0.0F), fco.b.a), new fcq(0.8333F, fcr.b(0.0F, 360.0F, 0.0F), fco.b.a)))
+      .b();
+   public static final fcp c = fcp.a.a(0.2F)
+      .a("body", new fco(fco.d.a, new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a), new fcq(0.2F, fcr.a(0.0F, 0.0F, -6.0F), fco.b.a)))
+      .a("wind_mid", new fco(fco.d.a, new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a), new fcq(0.2F, fcr.a(0.0F, 0.0F, -3.0F), fco.b.a)))
+      .a("wind_top", new fco(fco.d.a, new fcq(0.0F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a), new fcq(0.2F, fcr.a(0.0F, 0.0F, -2.0F), fco.b.a)))
+      .b();
+   public static final fcp d = fcp.a.a(0.1F)
+      .a("body", new fco(fco.d.a, new fcq(0.0F, fcr.a(0.0F, 0.0F, -6.0F), fco.b.a), new fcq(0.1F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)))
+      .a("wind_mid", new fco(fco.d.a, new fcq(0.0F, fcr.a(0.0F, 0.0F, -3.0F), fco.b.a), new fcq(0.1F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)))
+      .a("wind_top", new fco(fco.d.a, new fcq(0.0F, fcr.a(0.0F, 0.0F, -2.0F), fco.b.a), new fcq(0.1F, fcr.a(0.0F, 0.0F, 0.0F), fco.b.a)))
+      .b();
 }

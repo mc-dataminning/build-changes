@@ -1,52 +1,70 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class faw extends fap {
+public class faw extends fay {
    private static final Logger b = LogUtils.getLogger();
-   private static final wg c = wg.c("mco.minigame.world.starting.screen.title");
+   private static final wi c = wi.c("mco.download.preparing");
    private final long d;
-   private final eyg e;
-   private final eyy f;
+   private final int e;
+   private final fjx f;
+   private final String g;
 
-   public faw(long $$0, eyg $$1, eyy $$2) {
+   public faw(long $$0, int $$1, String $$2, fjx $$3) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
+      this.f = $$3;
+      this.g = $$2;
    }
 
    @Override
    public void run() {
-      ewy $$0 = ewy.a();
+      exh $$0 = exh.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
+            eyo $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
             }
-         } catch (eym var4) {
+
+            a(new ezk(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (eyv var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-         } catch (Exception var5) {
+            $$1++;
+         } catch (eyu var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't start mini game!");
-            this.a(var5);
+            b.error("Couldn't download world data", var5);
+            a(new ezl(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
          }
       }
    }
 
    @Override
-   public wg a() {
+   public wi a() {
       return c;
    }
 }

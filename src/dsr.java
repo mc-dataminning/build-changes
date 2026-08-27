@@ -1,232 +1,399 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.logging.LogUtils;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Optional;
-import java.util.OptionalLong;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record dsr(
-   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, avr<dby> v, ajt w, float x, dsr.a y
-) {
-   public static final int a = ib.d;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dsr> h = aws.c(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  aws.a(Codec.LONG.optionalFieldOf("fixed_time")).forGetter(dsr::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dsr::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dsr::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dsr::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dsr::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dsr::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dsr::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dsr::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dsr::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dsr::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dsr::p),
-                  avr.b(ks.f).fieldOf("infiniburn").forGetter(dsr::q),
-                  ajt.a.fieldOf("effects").orElse(dsp.e).forGetter(dsr::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dsr::s),
-                  dsr.a.a.forGetter(dsr::t)
-               )
-               .apply($$0, dsr::new)
-      )
-   );
-   private static final int z = 8;
-   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<il<dsr>> j = ajp.a(ks.aA, h);
+public class dsr implements AutoCloseable {
+   private static final Logger c = LogUtils.getLogger();
+   private static final int d = 4096;
+   @VisibleForTesting
+   protected static final int a = 1024;
+   private static final int e = 5;
+   private static final int f = 0;
+   private static final ByteBuffer g = ByteBuffer.allocateDirect(1);
+   private static final String h = ".mcc";
+   private static final int i = 128;
+   private static final int j = 256;
+   private static final int k = 0;
+   final dsu l;
+   private final Path m;
+   private final FileChannel n;
+   private final Path o;
+   final dst p;
+   private final ByteBuffer q = ByteBuffer.allocateDirect(8192);
+   private final IntBuffer r;
+   private final IntBuffer s;
+   @VisibleForTesting
+   protected final dsq b = new dsq();
 
-   public dsr(
-      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, avr<dby> v, ajt w, float x, dsr.a y
-   ) {
-      if (t < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (s + t > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (u > t) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (s % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
+   public dsr(dsu $$0, Path $$1, Path $$2, boolean $$3) throws IOException {
+      this($$0, $$1, $$2, dst.a(), $$3);
+   }
+
+   public dsr(dsu $$0, Path $$1, Path $$2, dst $$3, boolean $$4) throws IOException {
+      this.l = $$0;
+      this.m = $$1;
+      this.p = $$3;
+      if (!Files.isDirectory($$2)) {
+         throw new IllegalArgumentException("Expected directory, got " + $$2.toAbsolutePath());
       } else {
-         this.k = k;
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
+         this.o = $$2;
+         this.r = this.q.asIntBuffer();
+         this.r.limit(1024);
+         this.q.position(4096);
+         this.s = this.q.asIntBuffer();
+         if ($$4) {
+            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.DSYNC);
+         } else {
+            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE);
+         }
+
+         this.b.a(0, 2);
+         this.q.position(0);
+         int $$5 = this.n.read(this.q, 0L);
+         if ($$5 != -1) {
+            if ($$5 != 8192) {
+               c.warn("Region file {} has truncated header: {}", $$1, $$5);
+            }
+
+            long $$6 = Files.size($$1);
+
+            for (int $$7 = 0; $$7 < 1024; $$7++) {
+               int $$8 = this.r.get($$7);
+               if ($$8 != 0) {
+                  int $$9 = b($$8);
+                  int $$10 = a($$8);
+                  if ($$9 < 2) {
+                     c.warn("Region file {} has invalid sector at index: {}; sector {} overlaps with header", new Object[]{$$1, $$7, $$9});
+                     this.r.put($$7, 0);
+                  } else if ($$10 == 0) {
+                     c.warn("Region file {} has an invalid sector at index: {}; size has to be > 0", $$1, $$7);
+                     this.r.put($$7, 0);
+                  } else if ((long)$$9 * 4096L > $$6) {
+                     c.warn("Region file {} has an invalid sector at index: {}; sector {} is out of bounds", new Object[]{$$1, $$7, $$9});
+                     this.r.put($$7, 0);
+                  } else {
+                     this.b.a($$9, $$10);
+                  }
+               }
+            }
+         }
       }
    }
 
-   @Deprecated
-   public static DataResult<ajs<cyx>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(cyx.i);
-         }
-
-         if ($$2 == 0) {
-            return DataResult.success(cyx.h);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(cyx.j);
-         }
-      }
-
-      return cyx.g.parse($$0);
-   }
-
-   public static double a(dsr $$0, dsr $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
-   }
-
-   public static Path a(ajs<cyx> $$0, Path $$1) {
-      if ($$0 == cyx.h) {
-         return $$1;
-      } else if ($$0 == cyx.j) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == cyx.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
-      }
-   }
-
-   public boolean a() {
-      return this.k.isPresent();
-   }
-
-   public float a(long $$0) {
-      double $$1 = axk.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
-   }
-
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
-   }
-
-   public boolean b() {
-      return this.y.a();
-   }
-
-   public boolean c() {
-      return this.y.b();
-   }
-
-   public bnf d() {
-      return this.y.c();
-   }
-
-   public int e() {
-      return this.y.d();
-   }
-
-   public OptionalLong f() {
-      return this.k;
-   }
-
-   public boolean g() {
-      return this.l;
-   }
-
-   public boolean h() {
+   public Path a() {
       return this.m;
    }
 
-   public boolean i() {
-      return this.n;
+   private Path f(cyn $$0) {
+      String $$1 = "c." + $$0.e + "." + $$0.f + ".mcc";
+      return this.o.resolve($$1);
    }
 
-   public boolean j() {
-      return this.o;
+   @Nullable
+   public synchronized DataInputStream a(cyn $$0) throws IOException {
+      int $$1 = this.g($$0);
+      if ($$1 == 0) {
+         return null;
+      } else {
+         int $$2 = b($$1);
+         int $$3 = a($$1);
+         int $$4 = $$3 * 4096;
+         ByteBuffer $$5 = ByteBuffer.allocate($$4);
+         this.n.read($$5, (long)($$2 * 4096));
+         $$5.flip();
+         if ($$5.remaining() < 5) {
+            c.error("Chunk {} header is truncated: expected {} but read {}", new Object[]{$$0, $$4, $$5.remaining()});
+            return null;
+         } else {
+            int $$6 = $$5.getInt();
+            byte $$7 = $$5.get();
+            if ($$6 == 0) {
+               c.warn("Chunk {} is allocated, but stream is missing", $$0);
+               return null;
+            } else {
+               int $$8 = $$6 - 1;
+               if (a($$7)) {
+                  if ($$8 != 0) {
+                     c.warn("Chunk has both internal and external streams");
+                  }
+
+                  return this.a($$0, b($$7));
+               } else if ($$8 > $$5.remaining()) {
+                  c.error("Chunk {} stream is truncated: expected {} but read {}", new Object[]{$$0, $$8, $$5.remaining()});
+                  return null;
+               } else if ($$8 < 0) {
+                  c.error("Declared size {} of chunk {} is negative", $$6, $$0);
+                  return null;
+               } else {
+                  bkz.f.a(this.l, $$0, this.p, $$8);
+                  return this.a($$0, $$7, a($$5, $$8));
+               }
+            }
+         }
+      }
    }
 
-   public double k() {
-      return this.p;
+   private static int c() {
+      return (int)(ac.d() / 1000L);
    }
 
-   public boolean l() {
-      return this.q;
+   private static boolean a(byte $$0) {
+      return ($$0 & 128) != 0;
    }
 
-   public boolean m() {
-      return this.r;
+   private static byte b(byte $$0) {
+      return (byte)($$0 & -129);
    }
 
-   public int n() {
-      return this.s;
+   @Nullable
+   private DataInputStream a(cyn $$0, byte $$1, InputStream $$2) throws IOException {
+      dst $$3 = dst.a($$1);
+      if ($$3 == dst.e) {
+         String $$4 = new DataInputStream($$2).readUTF();
+         ajv $$5 = ajv.a($$4);
+         if ($$5 != null) {
+            c.error("Unrecognized custom compression {}", $$5);
+            return null;
+         } else {
+            c.error("Invalid custom compression id {}", $$4);
+            return null;
+         }
+      } else if ($$3 == null) {
+         c.error("Chunk {} has invalid chunk stream version {}", $$0, $$1);
+         return null;
+      } else {
+         return new DataInputStream($$3.a($$2));
+      }
    }
 
-   public int o() {
-      return this.t;
+   @Nullable
+   private DataInputStream a(cyn $$0, byte $$1) throws IOException {
+      Path $$2 = this.f($$0);
+      if (!Files.isRegularFile($$2)) {
+         c.error("External chunk path {} is not file", $$2);
+         return null;
+      } else {
+         return this.a($$0, $$1, Files.newInputStream($$2));
+      }
    }
 
-   public int p() {
-      return this.u;
+   private static ByteArrayInputStream a(ByteBuffer $$0, int $$1) {
+      return new ByteArrayInputStream($$0.array(), $$0.position(), $$1);
    }
 
-   public avr<dby> q() {
-      return this.v;
+   private int a(int $$0, int $$1) {
+      return $$0 << 8 | $$1;
    }
 
-   public ajt r() {
-      return this.w;
+   private static int a(int $$0) {
+      return $$0 & 0xFF;
    }
 
-   public float s() {
-      return this.x;
+   private static int b(int $$0) {
+      return $$0 >> 8 & 16777215;
    }
 
-   public dsr.a t() {
-      return this.y;
+   private static int c(int $$0) {
+      return ($$0 + 4096 - 1) / 4096;
    }
 
-   public static record a(boolean b, boolean c, bnf d, int e) {
-      public static final MapCodec<dsr.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dsr.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dsr.a::b),
-                  bnf.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dsr.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dsr.a::d)
-               )
-               .apply($$0, dsr.a::new)
-      );
+   public boolean b(cyn $$0) {
+      int $$1 = this.g($$0);
+      if ($$1 == 0) {
+         return false;
+      } else {
+         int $$2 = b($$1);
+         int $$3 = a($$1);
+         ByteBuffer $$4 = ByteBuffer.allocate(5);
 
-      public boolean a() {
-         return this.b;
+         try {
+            this.n.read($$4, (long)($$2 * 4096));
+            $$4.flip();
+            if ($$4.remaining() != 5) {
+               return false;
+            } else {
+               int $$5 = $$4.getInt();
+               byte $$6 = $$4.get();
+               if (a($$6)) {
+                  if (!dst.b(b($$6))) {
+                     return false;
+                  }
+
+                  if (!Files.isRegularFile(this.f($$0))) {
+                     return false;
+                  }
+               } else {
+                  if (!dst.b($$6)) {
+                     return false;
+                  }
+
+                  if ($$5 == 0) {
+                     return false;
+                  }
+
+                  int $$7 = $$5 - 1;
+                  if ($$7 < 0 || $$7 > 4096 * $$3) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }
+         } catch (IOException var9) {
+            return false;
+         }
+      }
+   }
+
+   public DataOutputStream c(cyn $$0) throws IOException {
+      return new DataOutputStream(this.p.a(new dsr.a($$0)));
+   }
+
+   public void b() throws IOException {
+      this.n.force(true);
+   }
+
+   public void d(cyn $$0) throws IOException {
+      int $$1 = h($$0);
+      int $$2 = this.r.get($$1);
+      if ($$2 != 0) {
+         this.r.put($$1, 0);
+         this.s.put($$1, c());
+         this.e();
+         Files.deleteIfExists(this.f($$0));
+         this.b.b(b($$2), a($$2));
+      }
+   }
+
+   protected synchronized void a(cyn $$0, ByteBuffer $$1) throws IOException {
+      int $$2 = h($$0);
+      int $$3 = this.r.get($$2);
+      int $$4 = b($$3);
+      int $$5 = a($$3);
+      int $$6 = $$1.remaining();
+      int $$7 = c($$6);
+      int $$9;
+      dsr.b $$10;
+      if ($$7 >= 256) {
+         Path $$8 = this.f($$0);
+         c.warn("Saving oversized chunk {} ({} bytes} to external file {}", new Object[]{$$0, $$6, $$8});
+         $$7 = 1;
+         $$9 = this.b.a($$7);
+         $$10 = this.a($$8, $$1);
+         ByteBuffer $$11 = this.d();
+         this.n.write($$11, (long)($$9 * 4096));
+      } else {
+         $$9 = this.b.a($$7);
+         $$10 = () -> Files.deleteIfExists(this.f($$0));
+         this.n.write($$1, (long)($$9 * 4096));
       }
 
-      public boolean b() {
-         return this.c;
+      this.r.put($$2, this.a($$9, $$7));
+      this.s.put($$2, c());
+      this.e();
+      $$10.run();
+      if ($$4 != 0) {
+         this.b.b($$4, $$5);
+      }
+   }
+
+   private ByteBuffer d() {
+      ByteBuffer $$0 = ByteBuffer.allocate(5);
+      $$0.putInt(1);
+      $$0.put((byte)(this.p.b() | 128));
+      $$0.flip();
+      return $$0;
+   }
+
+   private dsr.b a(Path $$0, ByteBuffer $$1) throws IOException {
+      Path $$2 = Files.createTempFile(this.o, "tmp", null);
+
+      try (FileChannel $$3 = FileChannel.open($$2, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
+         $$1.position(5);
+         $$3.write($$1);
       }
 
-      public bnf c() {
-         return this.d;
+      return () -> Files.move($$2, $$0, StandardCopyOption.REPLACE_EXISTING);
+   }
+
+   private void e() throws IOException {
+      this.q.position(0);
+      this.n.write(this.q, 0L);
+   }
+
+   private int g(cyn $$0) {
+      return this.r.get(h($$0));
+   }
+
+   public boolean e(cyn $$0) {
+      return this.g($$0) != 0;
+   }
+
+   private static int h(cyn $$0) {
+      return $$0.j() + $$0.k() * 32;
+   }
+
+   @Override
+   public void close() throws IOException {
+      try {
+         this.f();
+      } finally {
+         try {
+            this.n.force(true);
+         } finally {
+            this.n.close();
+         }
+      }
+   }
+
+   private void f() throws IOException {
+      int $$0 = (int)this.n.size();
+      int $$1 = c($$0) * 4096;
+      if ($$0 != $$1) {
+         ByteBuffer $$2 = g.duplicate();
+         $$2.position(0);
+         this.n.write($$2, (long)($$1 - 1));
+      }
+   }
+
+   class a extends ByteArrayOutputStream {
+      private final cyn b;
+
+      public a(cyn $$0) {
+         super(8096);
+         super.write(0);
+         super.write(0);
+         super.write(0);
+         super.write(0);
+         super.write(dsr.this.p.b());
+         this.b = $$0;
       }
 
-      public int d() {
-         return this.e;
+      @Override
+      public void close() throws IOException {
+         ByteBuffer $$0 = ByteBuffer.wrap(this.buf, 0, this.count);
+         int $$1 = this.count - 5 + 1;
+         bkz.f.b(dsr.this.l, this.b, dsr.this.p, $$1);
+         $$0.putInt(0, $$1);
+         dsr.this.a(this.b, $$0);
       }
+   }
+
+   interface b {
+      void run() throws IOException;
    }
 }

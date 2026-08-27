@@ -1,185 +1,122 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 
-public interface ip<T> extends Iterable<il<T>> {
-   Stream<il<T>> a();
+public interface ip<T> extends io<T> {
+   Stream<in.c<T>> b();
 
-   int b();
+   default Stream<aju<T>> c() {
+      return this.b().map(in.c::h);
+   }
 
-   Either<avr<T>, List<il<T>>> c();
+   Stream<ir.c<T>> d();
 
-   Optional<il<T>> a(axr var1);
+   default Stream<avt<T>> e() {
+      return this.d().map(ir.c::f);
+   }
 
-   il<T> a(int var1);
+   public interface a {
+      Stream<aju<? extends ja<?>>> a();
 
-   boolean a(il<T> var1);
+      <T> Optional<ip.b<T>> a(aju<? extends ja<? extends T>> var1);
 
-   boolean a(io<T> var1);
+      default <T> ip.b<T> b(aju<? extends ja<? extends T>> $$0) {
+         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      }
 
-   Optional<avr<T>> d();
+      default <V> ajt<V> a(DynamicOps<V> $$0) {
+         return ajt.a((DynamicOps<T>)$$0, this);
+      }
 
-   @Deprecated
-   @VisibleForTesting
-   static <T> ip.c<T> a(io<T> $$0, avr<T> $$1) {
-      return new ip.c<T>($$0, $$1) {
+      default io.a b() {
+         return new io.a() {
+            @Override
+            public <T> Optional<io<T>> a(aju<? extends ja<? extends T>> $$0) {
+               return a.this.a($$0).map($$0x -> $$0x);
+            }
+         };
+      }
+
+      static ip.a a(Stream<ip.b<?>> $$0) {
+         final Map<aju<? extends ja<?>>, ip.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(ip.b::f, $$0x -> $$0x));
+         return new ip.a() {
+            @Override
+            public Stream<aju<? extends ja<?>>> a() {
+               return $$1.keySet().stream();
+            }
+
+            @Override
+            public <T> Optional<ip.b<T>> a(aju<? extends ja<? extends T>> $$0) {
+               return Optional.ofNullable((ip.b<T>)$$1.get($$0));
+            }
+         };
+      }
+   }
+
+   public interface b<T> extends ip<T>, iq<T> {
+      aju<? extends ja<? extends T>> f();
+
+      Lifecycle g();
+
+      default ip.b<T> a(cmn $$0) {
+         return cmk.bz.contains(this.f()) ? this.a($$1 -> ((cmk)$$1).a($$0)) : this;
+      }
+
+      default ip.b<T> a(final Predicate<T> $$0) {
+         return new ip.b.a<T>() {
+            @Override
+            public ip.b<T> a() {
+               return b.this;
+            }
+
+            @Override
+            public Optional<in.c<T>> a(aju<T> $$0x) {
+               return this.a().a($$0).filter($$1 -> $$0.test($$1.a()));
+            }
+
+            @Override
+            public Stream<in.c<T>> b() {
+               return this.a().b().filter($$1 -> $$0.test($$1.a()));
+            }
+         };
+      }
+
+      public interface a<T> extends ip.b<T> {
+         ip.b<T> a();
+
          @Override
-         protected List<il<T>> e() {
-            throw new UnsupportedOperationException("Tag " + this.f() + " can't be dereferenced during construction");
-         }
-      };
-   }
-
-   @SafeVarargs
-   static <T> ip.a<T> a(il<T>... $$0) {
-      return new ip.a<>(List.of($$0));
-   }
-
-   static <T> ip.a<T> a(List<? extends il<T>> $$0) {
-      return new ip.a<>(List.copyOf($$0));
-   }
-
-   @SafeVarargs
-   static <E, T> ip.a<T> a(Function<E, il<T>> $$0, E... $$1) {
-      return a(Stream.of($$1).map($$0).toList());
-   }
-
-   static <E, T> ip.a<T> a(Function<E, il<T>> $$0, Collection<E> $$1) {
-      return a($$1.stream().map($$0).toList());
-   }
-
-   public static class a<T> extends ip.b<T> {
-      private final List<il<T>> a;
-      @Nullable
-      private Set<il<T>> b;
-
-      a(List<il<T>> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      protected List<il<T>> e() {
-         return this.a;
-      }
-
-      @Override
-      public Either<avr<T>, List<il<T>>> c() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public Optional<avr<T>> d() {
-         return Optional.empty();
-      }
-
-      @Override
-      public boolean a(il<T> $$0) {
-         if (this.b == null) {
-            this.b = Set.copyOf(this.a);
+         default aju<? extends ja<? extends T>> f() {
+            return this.a().f();
          }
 
-         return this.b.contains($$0);
-      }
+         @Override
+         default Lifecycle g() {
+            return this.a().g();
+         }
 
-      @Override
-      public String toString() {
-         return "DirectSet[" + this.a + "]";
-      }
-   }
+         @Override
+         default Optional<in.c<T>> a(aju<T> $$0) {
+            return this.a().a($$0);
+         }
 
-   public abstract static class b<T> implements ip<T> {
-      protected abstract List<il<T>> e();
+         @Override
+         default Stream<in.c<T>> b() {
+            return this.a().b();
+         }
 
-      @Override
-      public int b() {
-         return this.e().size();
-      }
+         @Override
+         default Optional<ir.c<T>> a(avt<T> $$0) {
+            return this.a().a($$0);
+         }
 
-      @Override
-      public Spliterator<il<T>> spliterator() {
-         return this.e().spliterator();
-      }
-
-      @Override
-      public Iterator<il<T>> iterator() {
-         return this.e().iterator();
-      }
-
-      @Override
-      public Stream<il<T>> a() {
-         return this.e().stream();
-      }
-
-      @Override
-      public Optional<il<T>> a(axr $$0) {
-         return ac.b(this.e(), $$0);
-      }
-
-      @Override
-      public il<T> a(int $$0) {
-         return this.e().get($$0);
-      }
-
-      @Override
-      public boolean a(io<T> $$0) {
-         return true;
-      }
-   }
-
-   public static class c<T> extends ip.b<T> {
-      private final io<T> a;
-      private final avr<T> b;
-      private List<il<T>> c = List.of();
-
-      c(io<T> $$0, avr<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void b(List<il<T>> $$0) {
-         this.c = List.copyOf($$0);
-      }
-
-      public avr<T> f() {
-         return this.b;
-      }
-
-      @Override
-      protected List<il<T>> e() {
-         return this.c;
-      }
-
-      @Override
-      public Either<avr<T>, List<il<T>>> c() {
-         return Either.left(this.b);
-      }
-
-      @Override
-      public Optional<avr<T>> d() {
-         return Optional.of(this.b);
-      }
-
-      @Override
-      public boolean a(il<T> $$0) {
-         return $$0.a(this.b);
-      }
-
-      @Override
-      public String toString() {
-         return "NamedSet(" + this.b + ")[" + this.c + "]";
-      }
-
-      @Override
-      public boolean a(io<T> $$0) {
-         return this.a.a($$0);
+         @Override
+         default Stream<ir.c<T>> d() {
+            return this.a().d();
+         }
       }
    }
 }

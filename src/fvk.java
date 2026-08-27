@@ -1,65 +1,67 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fvk extends fvl {
-   private final String f;
+public class fvk {
+   private final fvm[] a;
+   private int b;
 
-   fvk(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public static Codec<fvk> a(int $$0) {
+      return Codec.list(fvm.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fvk($$0, $$1));
+            },
+            fvk::c
+         );
    }
 
-   public String a() {
-      return this.f;
+   public fvk(int $$0) {
+      this.a = new fvm[$$0];
    }
 
-   public fvk c() {
-      fvk $$0 = new fvk(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
+   private fvk(int $$0, List<fvm> $$1) {
+      this.a = $$1.toArray(fvm[]::new);
+      this.b = $$1.size();
+   }
+
+   private List<fvm> c() {
+      List<fvm> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
+      }
+
       return $$0;
    }
 
-   @Override
-   public fjo a(fjo $$0, fvp $$1) {
-      return new fnp($$0, $$1, this);
+   public void a(fvm $$0) {
+      this.a[this.c(this.b++)] = $$0;
    }
 
-   public static class a extends fvl.a<fvk> {
-      public a(fvk $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   @Nullable
+   public fvm b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
 
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fvk(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
 
-      @Nullable
-      @Override
-      public fvl.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fvl.b.d : null;
-      }
+   public int b() {
+      return this.b - 1;
+   }
 
-      @Override
-      public Either<fvl.c, fvl.b> a(fvp $$0) {
-         fvl.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fvl.c(this.a.a, fvo.c, $$3));
-         }
-      }
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

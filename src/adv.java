@@ -1,29 +1,29 @@
-public class adv implements yn<aay> {
-   public static final ye<vg, adv> a = yn.a(adv::a, adv::new);
-   private final int b;
+public class adv implements yp<aba> {
+   public static final yg<vi, adv> a = yp.a(adv::a, adv::new);
+   private final double b;
 
-   public adv(dqq $$0) {
-      this.b = $$0.r();
+   public adv(dqz $$0) {
+      this.b = $$0.k();
    }
 
-   private adv(vg $$0) {
-      this.b = $$0.l();
+   private adv(vi $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(vg $$0) {
-      $$0.c(this.b);
+   private void a(vi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yp<adv> a() {
-      return afj.av;
+   public yr<adv> a() {
+      return afl.at;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 }

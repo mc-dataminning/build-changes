@@ -1,55 +1,44 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dip extends dbk {
-   public static final MapCodec<dip> a = b(dip::new);
-   public static final dpq b = dpp.E;
-   private final bnf c = bnc.a(5);
+public abstract class dip extends dek {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final etc h = dch.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final etc i = dch.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final etc j = dch.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dip> a() {
-      return a;
-   }
-
-   public dip(doy.d $$0) {
+   protected dip(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(b);
-   }
+   protected abstract MapCodec<? extends dip> a();
 
    @Override
-   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
       }
    }
 
-   @Nullable
    @Override
-   public dmf a(ib $$0, doz $$1) {
-      return new dnl($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
-      return $$0.B ? null : a($$2, dmh.K, dnl::a);
+   protected dpi a(dpi $$0, dit $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected did b_(doz $$0) {
-      return did.c;
+   protected dpi a(dpi $$0, dhd $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
    }
 
    @Override
-   protected void a(doz $$0, aps $$1, ib $$2, crj $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
-      }
+   protected boolean a(dpi $$0, elq $$1) {
+      return false;
    }
 }

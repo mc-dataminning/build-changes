@@ -1,22 +1,164 @@
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class fdd extends gml {
-   private static final Set<asb<?>> a = Set.of(gmt.a, gmz.c);
+public class fdd {
+   private static final int a = 256;
+   private final ThreadLocal<fdd.b> b = ThreadLocal.withInitial(fdd.b::new);
+   private final Long2ObjectLinkedOpenHashMap<fdd.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<id> e;
 
-   public fdd(glk $$0) {
-      super($$0, new ajt("textures/atlas/gui.png"), new ajt("gui"), a);
+   public fdd(ToIntFunction<id> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public glj a(ajt $$0) {
-      return super.a($$0);
+   public int a(id $$0) {
+      int $$1 = jg.a($$0.u());
+      int $$2 = jg.a($$0.w());
+      fdd.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
+      }
+
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
+      } else {
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
+      }
    }
 
-   public gna a(glj $$0) {
-      return this.b($$0).a();
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
+
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = cyn.c($$0 + $$2, $$1 + $$3);
+               fdd.a $$5 = (fdd.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
+               }
+            }
+         }
+      } finally {
+         this.d.writeLock().unlock();
+      }
    }
 
-   private gmz b(glj $$0) {
-      return $$0.e().f().a(gmz.c).orElse(gmz.a);
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(fdd.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
+      }
+   }
+
+   private fdd.a b(int $$0, int $$1) {
+      long $$2 = cyn.c($$0, $$1);
+      this.d.readLock().lock();
+
+      try {
+         fdd.a $$3 = (fdd.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
+         }
+      } finally {
+         this.d.readLock().unlock();
+      }
+
+      this.d.writeLock().lock();
+
+      fdd.a $$5;
+      try {
+         fdd.a $$4 = (fdd.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new fdd.a();
+            if (this.c.size() >= 256) {
+               fdd.a $$6 = (fdd.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
+               }
+            }
+
+            this.c.put($$2, $$5);
+            return $$5;
+         }
+
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
+      }
+
+      return $$5;
+   }
+
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = axm.h(16);
+      private volatile boolean d;
+
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
+         }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
+      }
+
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
+         return $$0;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
+   }
+
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      fdd.a c;
+
+      private b() {
+      }
    }
 }

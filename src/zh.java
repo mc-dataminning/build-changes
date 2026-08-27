@@ -1,29 +1,20 @@
-public class zh implements yn<ze> {
-   public static final ye<vg, zh> a = yn.a(zh::a, zh::new);
-   private final long b;
+public record zh(apj b) implements yp<zg> {
+   public static final yg<vi, zh> a = yp.a(zh::a, zh::new);
 
-   public zh(long $$0) {
-      this.b = $$0;
+   private zh(vi $$0) {
+      this(new apj($$0));
    }
 
-   private zh(vg $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vg $$0) {
-      $$0.b(this.b);
+   private void a(vi $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public yp<zh> a() {
-      return zd.l;
+   public yr<zh> a() {
+      return zf.j;
    }
 
-   public void a(ze $$0) {
+   public void a(zg $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

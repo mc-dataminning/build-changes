@@ -1,62 +1,61 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-public class ecg extends eca {
-   public static final Codec<ecg> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eca.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bnf.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ecg::new)
-   );
-   private final eca c;
-   private final String d;
-   @Nullable
-   private dpz e;
-   private final bnf f;
+public abstract class ecg {
+   public static final Codec<ecg> d = kt.Y.q().dispatch(ecg::a, ech::a);
+   protected final bnk e;
+   protected final ecj f;
+   protected final Optional<ecd> g;
 
-   public ecg(eca $$0, dpz $$1, bnf $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
+   protected static <P extends ecg> P3<Mu<P>, bnk, ecj, Optional<ecd>> a(Instance<P> $$0) {
+      return $$0.group(
+         bnk.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         ecj.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         ecd.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
+   }
 
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+   public ecg(bnk $$0, ecj $$1, Optional<ecd> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   protected abstract ech<?> a();
+
+   public abstract boolean a(czm var1, BiConsumer<id, dpi> var2, axt var3, id var4, id var5, ebe var6);
+
+   protected boolean a(czm $$0, id $$1) {
+      return dzq.c($$0, $$1);
+   }
+
+   protected void a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, id $$3, ebe $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            ecd $$5 = this.g.get();
+            id $$6 = $$3.c();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dph.a::i)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
          }
       }
    }
 
-   public ecg(eca $$0, String $$1, bnf $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   protected ecb<?> a() {
-      return ecb.g;
-   }
-
-   @Override
-   public doz a(axr $$0, ib $$1) {
-      doz $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
+   protected dpi a(czm $$0, id $$1, dpi $$2) {
+      if ($$2.b(dpy.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(avj.a));
+         return $$2.a(dpy.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
       }
-
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
    }
 
-   private static dpz a(doz $$0, String $$1) {
-      Collection<dqc<?>> $$2 = $$0.B();
-      Optional<dpz> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dpz).map($$0x -> (dpz)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   public id a(id $$0, axt $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

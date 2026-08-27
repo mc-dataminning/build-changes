@@ -1,8 +1,56 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fay {
+public abstract class fay implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
+
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
+      }
+   }
+
+   public static void a(fjx $$0) {
+      fby $$1 = fby.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(wi $$0) {
+      this.b();
+      fby $$1 = fby.Q();
+      $$1.execute(() -> $$1.a(new ezl($$0, new exc(new fkc()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof eyu $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(wi.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(eyu $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract wi a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
+   }
 }

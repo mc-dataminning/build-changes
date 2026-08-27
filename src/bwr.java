@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class bwr implements bwp {
+   private final bqv b;
+   protected boolean a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bwr {
+   public bwr(bqv $$0) {
+      this.b = $$0;
+   }
+
+   public void a() {
+      this.a = true;
+   }
+
+   public void b() {
+      this.b.r(this.a);
+      this.a = false;
+   }
 }

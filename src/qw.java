@@ -1,203 +1,70 @@
-public class qw {
-   public static czw a(im<eel> $$0, im<dwu<?>> $$1) {
-      dai $$2 = new dai.a()
-         .a(bqr.a, new dai.c(bqb.T, 50, 4, 4))
-         .a(bqr.a, new dai.c(bqb.bw, 100, 4, 4))
-         .a(bqr.a, new dai.c(bqb.ao, 2, 4, 4))
-         .a(bqr.a, new dai.c(bqb.H, 1, 4, 4))
-         .a(bqr.a, new dai.c(bqb.az, 15, 4, 4))
-         .a(bqr.b, new dai.c(bqb.aY, 60, 1, 2))
-         .a();
-      czx.a $$3 = new czx.a($$0, $$1).a(dun.a.a, py.d).a(dun.b.j, ro.p);
-      pw.ac($$3);
-      $$3.a(dun.b.h, rp.r)
-         .a(dun.b.h, rp.t)
-         .a(dun.b.h, rp.s)
-         .a(dun.b.h, rp.f)
-         .a(dun.b.h, rp.g)
-         .a(dun.b.h, rt.F)
-         .a(dun.b.h, rt.G)
-         .a(dun.b.h, rq.a)
-         .a(dun.b.h, rp.p);
-      pw.au($$3);
-      return new czw.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(new dac.a().b(4159204).c(329011).a(3344392).d(qx.a(2.0F)).a(aum.p).a(new czu(aum.q, 6000, 8, 2.0)).a(new czt(aum.o, 0.0111)).a(auk.a(aum.pU)).a())
-         .a($$2)
-         .a($$3.a())
-         .a();
-   }
-
-   public static czw b(im<eel> $$0, im<dwu<?>> $$1) {
-      double $$2 = 0.7;
-      double $$3 = 0.15;
-      dai $$4 = new dai.a()
-         .a(bqr.a, new dai.c(bqb.aM, 20, 5, 5))
-         .a(bqr.a, new dai.c(bqb.T, 50, 4, 4))
-         .a(bqr.a, new dai.c(bqb.H, 1, 4, 4))
-         .a(bqr.b, new dai.c(bqb.aY, 60, 1, 2))
-         .a(bqb.aM, 0.7, 0.15)
-         .a(bqb.T, 0.7, 0.15)
-         .a(bqb.H, 0.7, 0.15)
-         .a(bqb.aY, 0.7, 0.15)
-         .a();
-      czx.a $$5 = new czx.a($$0, $$1)
-         .a(dun.a.a, py.d)
-         .a(dun.b.j, ro.p)
-         .a(dun.b.c, rp.n)
-         .a(dun.b.h, rp.r)
-         .a(dun.b.h, rp.t)
-         .a(dun.b.h, rp.s)
-         .a(dun.b.h, rp.f)
-         .a(dun.b.h, rp.g)
-         .a(dun.b.h, rp.m)
-         .a(dun.b.h, rq.a)
-         .a(dun.b.h, rp.p)
-         .a(dun.b.h, rq.b);
-      pw.au($$5);
-      return new czw.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dac.a()
-               .b(4159204)
-               .c(329011)
-               .a(1787717)
-               .d(qx.a(2.0F))
-               .a(new czv(kl.ay, 0.00625F))
-               .a(aum.s)
-               .a(new czu(aum.t, 6000, 8, 2.0))
-               .a(new czt(aum.r, 0.0111))
-               .a(auk.a(aum.pX))
-               .a()
-         )
-         .a($$4)
-         .a($$5.a())
-         .a();
-   }
-
-   public static czw c(im<eel> $$0, im<dwu<?>> $$1) {
-      dai $$2 = new dai.a().a(bqr.a, new dai.c(bqb.T, 40, 1, 1)).a(bqr.a, new dai.c(bqb.ao, 100, 2, 5)).a(bqr.b, new dai.c(bqb.aY, 60, 1, 2)).a();
-      czx.a $$3 = new czx.a($$0, $$1)
-         .a(dun.a.a, py.d)
-         .a(dun.b.e, rp.a)
-         .a(dun.b.e, rp.b)
-         .a(dun.b.e, rp.c)
-         .a(dun.b.h, rp.d)
-         .a(dun.b.h, rp.e)
-         .a(dun.b.h, rp.o)
-         .a(dun.b.h, rp.t)
-         .a(dun.b.h, rp.s)
-         .a(dun.b.h, rp.f)
-         .a(dun.b.h, rp.g)
-         .a(dun.b.h, rt.F)
-         .a(dun.b.h, rt.G)
-         .a(dun.b.h, rq.a)
-         .a(dun.b.h, rp.q)
-         .a(dun.b.h, rq.c)
-         .a(dun.b.h, rq.d);
-      pw.av($$3);
-      return new czw.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dac.a()
-               .b(4159204)
-               .c(329011)
-               .a(6840176)
-               .d(qx.a(2.0F))
-               .a(new czv(kl.aG, 0.118093334F))
-               .a(aum.j)
-               .a(new czu(aum.k, 6000, 8, 2.0))
-               .a(new czt(aum.i, 0.0111))
-               .a(auk.a(aum.pI))
-               .a()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
-   }
-
-   public static czw d(im<eel> $$0, im<dwu<?>> $$1) {
-      dai $$2 = new dai.a()
-         .a(bqr.a, new dai.c(bqb.bw, 1, 2, 4))
-         .a(bqr.a, new dai.c(bqb.Z, 9, 3, 4))
-         .a(bqr.a, new dai.c(bqb.az, 5, 3, 4))
-         .a(bqr.b, new dai.c(bqb.aY, 60, 1, 2))
-         .a();
-      czx.a $$3 = new czx.a($$0, $$1).a(dun.a.a, py.d).a(dun.b.j, ro.p);
-      pw.ac($$3);
-      $$3.a(dun.b.h, rp.r)
-         .a(dun.b.h, rp.t)
-         .a(dun.b.h, rp.f)
-         .a(dun.b.h, rp.g)
-         .a(dun.b.h, rq.a)
-         .a(dun.b.h, rp.p)
-         .a(dun.b.j, rp.l)
-         .a(dun.b.j, rs.a)
-         .a(dun.b.j, rp.h);
-      pw.au($$3);
-      return new czw.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dac.a()
-               .b(4159204)
-               .c(329011)
-               .a(3343107)
-               .d(qx.a(2.0F))
-               .a(new czv(kl.az, 0.025F))
-               .a(aum.m)
-               .a(new czu(aum.n, 6000, 8, 2.0))
-               .a(new czt(aum.l, 0.0111))
-               .a(auk.a(aum.pJ))
-               .a()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
-   }
-
-   public static czw e(im<eel> $$0, im<dwu<?>> $$1) {
-      dai $$2 = new dai.a().a(bqr.a, new dai.c(bqb.H, 1, 4, 4)).a(bqr.b, new dai.c(bqb.aY, 60, 1, 2)).a(bqb.H, 1.0, 0.12).a();
-      czx.a $$3 = new czx.a($$0, $$1).a(dun.a.a, py.d).a(dun.b.j, ro.p);
-      pw.ac($$3);
-      $$3.a(dun.b.h, rp.r)
-         .a(dun.b.h, rp.t)
-         .a(dun.b.h, rp.s)
-         .a(dun.b.h, rp.f)
-         .a(dun.b.h, rp.g)
-         .a(dun.b.h, rq.a)
-         .a(dun.b.h, rp.p)
-         .a(dun.b.j, rs.b)
-         .a(dun.b.j, rp.i)
-         .a(dun.b.j, rp.j)
-         .a(dun.b.j, rp.k);
-      pw.au($$3);
-      return new czw.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dac.a()
-               .b(4159204)
-               .c(329011)
-               .a(1705242)
-               .d(qx.a(2.0F))
-               .a(new czv(kl.aA, 0.01428F))
-               .a(aum.v)
-               .a(new czu(aum.w, 6000, 8, 2.0))
-               .a(new czt(aum.u, 0.0111))
-               .a(auk.a(aum.pZ))
-               .a()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
+public abstract class qw {
+   public static void a(pz<daf> $$0) {
+      io<eeu> $$1 = $$0.a(ku.aF);
+      io<dxd<?>> $$2 = $$0.a(ku.ay);
+      $$0.a(dam.a, qz.j($$1, $$2));
+      $$0.a(dam.b, qz.a($$1, $$2, false, false, false));
+      $$0.a(dam.c, qz.a($$1, $$2, true, false, false));
+      $$0.a(dam.d, qz.a($$1, $$2, false, true, false));
+      $$0.a(dam.e, qz.a($$1, $$2, false, true, true));
+      $$0.a(dam.f, qz.d($$1, $$2));
+      $$0.a(dam.g, qz.h($$1, $$2));
+      $$0.a(dam.h, qz.i($$1, $$2));
+      $$0.a(dam.i, qz.b($$1, $$2, false, false, false));
+      $$0.a(dam.j, qz.b($$1, $$2, false, false, true));
+      $$0.a(dam.k, qz.b($$1, $$2, true, false, false));
+      $$0.a(dam.l, qz.g($$1, $$2));
+      $$0.a(dam.m, qz.b($$1, $$2, true, true, false));
+      $$0.a(dam.n, qz.a($$1, $$2, false));
+      $$0.a(dam.o, qz.a($$1, $$2, true));
+      $$0.a(dam.p, qz.h($$1, $$2, false));
+      $$0.a(dam.q, qz.h($$1, $$2, true));
+      $$0.a(dam.r, qz.a($$1, $$2, false, false));
+      $$0.a(dam.s, qz.a($$1, $$2, false, true));
+      $$0.a(dam.t, qz.b($$1, $$2, false));
+      $$0.a(dam.u, qz.b($$1, $$2, false));
+      $$0.a(dam.v, qz.b($$1, $$2, true));
+      $$0.a(dam.w, qz.a($$1, $$2, true, false));
+      $$0.a(dam.x, qz.b($$1, $$2));
+      $$0.a(dam.y, qz.a($$1, $$2));
+      $$0.a(dam.z, qz.c($$1, $$2));
+      $$0.a(dam.A, qz.c($$1, $$2, false));
+      $$0.a(dam.B, qz.c($$1, $$2, false));
+      $$0.a(dam.C, qz.c($$1, $$2, true));
+      $$0.a(dam.D, qz.j($$1, $$2, false));
+      $$0.a(dam.E, qz.j($$1, $$2, true));
+      $$0.a(dam.F, qz.o($$1, $$2));
+      $$0.a(dam.G, qz.n($$1, $$2));
+      $$0.a(dam.H, qz.k($$1, $$2));
+      $$0.a(dam.I, qz.l($$1, $$2));
+      $$0.a(dam.J, qz.m($$1, $$2));
+      $$0.a(dam.K, qz.i($$1, $$2, false));
+      $$0.a(dam.L, qz.i($$1, $$2, true));
+      $$0.a(dam.M, qz.b($$1, $$2, false, false));
+      $$0.a(dam.N, qz.b($$1, $$2, true, false));
+      $$0.a(dam.O, qz.b($$1, $$2, false, true));
+      $$0.a(dam.P, qz.f($$1, $$2));
+      $$0.a(dam.Q, qz.f($$1, $$2, false));
+      $$0.a(dam.R, qz.f($$1, $$2, true));
+      $$0.a(dam.S, qz.e($$1, $$2, false));
+      $$0.a(dam.T, qz.e($$1, $$2, true));
+      $$0.a(dam.U, qz.d($$1, $$2, false));
+      $$0.a(dam.V, qz.d($$1, $$2, true));
+      $$0.a(dam.W, qz.g($$1, $$2, false));
+      $$0.a(dam.X, qz.g($$1, $$2, true));
+      $$0.a(dam.Y, qz.e($$1, $$2));
+      $$0.a(dam.Z, qz.q($$1, $$2));
+      $$0.a(dam.aa, qz.p($$1, $$2));
+      $$0.a(dam.ab, qz.r($$1, $$2));
+      $$0.a(dam.ac, qy.a($$1, $$2));
+      $$0.a(dam.ad, qy.e($$1, $$2));
+      $$0.a(dam.ae, qy.d($$1, $$2));
+      $$0.a(dam.af, qy.b($$1, $$2));
+      $$0.a(dam.ag, qy.c($$1, $$2));
+      $$0.a(dam.ah, qx.b($$1, $$2));
+      $$0.a(dam.ai, qx.d($$1, $$2));
+      $$0.a(dam.aj, qx.c($$1, $$2));
+      $$0.a(dam.ak, qx.e($$1, $$2));
+      $$0.a(dam.al, qx.a($$1, $$2));
    }
 }

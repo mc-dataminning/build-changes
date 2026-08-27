@@ -1,124 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
 
-public class dgh extends dby implements diy {
-   public static final MapCodec<dgh> b = b(dgh::new);
-   public static final int c = 7;
-   public static final dpz d = dpp.aC;
-   public static final dpq e = dpp.v;
-   public static final dpq f = dpp.C;
-   private static final int a = 1;
+public class dgh extends ded {
+   public static final MapCodec<dgh> i = b(dgh::new);
 
    @Override
    public MapCodec<? extends dgh> a() {
-      return b;
+      return i;
    }
 
-   public dgh(doy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected est b_(doz $$0, cyd $$1, ib $$2) {
-      return esq.a();
-   }
-
-   @Override
-   protected boolean e_(doz $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
-   }
-
-   @Override
-   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
-      if (this.m($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   protected boolean m(doz $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
+   protected dgh(dph.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
+   public dpi a(cux $$0) {
+      cym $$1 = $$0.q();
+      id $$2 = $$0.a();
+      elb $$3 = $$0.q().b_($$0.a());
+      id $$4 = $$2.e();
+      id $$5 = $$2.f();
+      id $$6 = $$2.g();
+      id $$7 = $$2.h();
+      dpi $$8 = $$1.a_($$4);
+      dpi $$9 = $$1.a_($$5);
+      dpi $$10 = $$1.a_($$6);
+      dpi $$11 = $$1.a_($$7);
+      return this.n()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ij.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ij.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ij.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ij.e))))
+         .a(e, Boolean.valueOf($$3.a() == elc.c));
    }
 
    @Override
-   protected int g(doz $$0, cyd $$1, ib $$2) {
-      return 1;
-   }
-
-   @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, ekt.c, ekt.c.a($$3));
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, elc.c, elc.c.a($$3));
       }
 
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private static doz a(doz $$0, cyy $$1, ib $$2) {
-      int $$3 = 7;
-      ib.a $$4 = new ib.a();
+   @Override
+   protected etc c(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return esz.a();
+   }
 
-      for (ih $$5 : ih.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
+   @Override
+   protected boolean a(dpi $$0, dpi $$1, ij $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
+         }
+
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
          }
       }
 
-      return $$0.a(d, Integer.valueOf($$3));
+      return super.a($$0, $$1, $$2);
    }
 
-   private static int o(doz $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(doz $$0) {
-      if ($$0.a(avc.t)) {
-         return OptionalInt.of(0);
-      } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
-      }
+   public final boolean a(dpi $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof dgh || $$0.a(ave.L);
    }
 
    @Override
-   protected eks c_(doz $$0) {
-      return $$0.c(f) ? ekt.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
-      if ($$1.r($$2.c())) {
-         if ($$3.a(15) == 1) {
-            ib $$4 = $$2.d();
-            doz $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, ih.b)) {
-               axn.a($$1, $$2, $$3, kl.m);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(d, e, f);
-   }
-
-   @Override
-   public doz a(cuo $$0) {
-      eks $$1 = $$0.q().b_($$0.a());
-      doz $$2 = this.n().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == ekt.c));
-      return a($$2, $$0.q(), $$0.a());
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

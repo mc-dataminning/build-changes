@@ -1,23 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class eei extends eeo {
+public class eei extends eew {
    private static final eei c = new eei();
-   public static final Codec<eei> a = Codec.unit(() -> c);
+   public static Codec<eei> a = Codec.unit(() -> c);
+
+   private eei() {
+   }
 
    public static eei a() {
       return c;
    }
 
    @Override
-   public Stream<ib> a_(eem $$0, axr $$1, ib $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new ib($$3, $$2.v(), $$4));
+   protected boolean a(eev $$0, axt $$1, id $$2) {
+      eeu $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      in<daf> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public eep<?> b() {
-      return eep.m;
+   public eey<?> b() {
+      return eey.e;
    }
 }

@@ -1,29 +1,18 @@
-public class abp implements yn<aay> {
-   public static final ye<vg, abp> a = yn.a(abp::a, abp::new);
-   private final boolean b;
+import io.netty.buffer.ByteBuf;
 
-   public abp(boolean $$0) {
-      this.b = $$0;
-   }
+public class abp implements yp<aba> {
+   public static final abp a = new abp();
+   public static final yg<ByteBuf, abp> b = yg.a(a);
 
-   private abp(vg $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vg $$0) {
-      $$0.a(this.b);
+   private abp() {
    }
 
    @Override
-   public yp<abp> a() {
-      return afj.q;
+   public yr<abp> a() {
+      return afl.o;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

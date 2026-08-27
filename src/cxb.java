@@ -1,20 +1,10 @@
-public class cxb extends cwq {
-   public cxb(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bp, $$1);
-   }
+public class cxb extends bmr.a {
+   public final cwz a;
+   public final int b;
 
-   @Override
-   public int a(int $$0) {
-      return 20;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean a(cwq $$0) {
-      return super.a($$0) && $$0 != cwt.K;
+   public cxb(cwz $$0, int $$1) {
+      super($$0.e().a());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

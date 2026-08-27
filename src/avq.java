@@ -1,17 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
-public record avq(List<avp> b, boolean c) {
-   public static final Codec<avq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avp.a.listOf().fieldOf("values").forGetter(avq::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(avq::b)).apply($$0, avq::new)
-   );
+public class avq {
+   private final List<avr> a = new ArrayList<>();
 
-   public List<avp> a() {
-      return this.b;
+   public static avq a() {
+      return new avq();
    }
 
-   public boolean b() {
-      return this.c;
+   public List<avr> b() {
+      return List.copyOf(this.a);
+   }
+
+   public avq a(avr $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public avq a(ajv $$0) {
+      return this.a(avr.a($$0));
+   }
+
+   public avq b(ajv $$0) {
+      return this.a(avr.b($$0));
+   }
+
+   public avq c(ajv $$0) {
+      return this.a(avr.c($$0));
+   }
+
+   public avq d(ajv $$0) {
+      return this.a(avr.d($$0));
    }
 }

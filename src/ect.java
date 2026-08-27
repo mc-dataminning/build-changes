@@ -1,45 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public class ect extends ecr {
-   public static final Codec<ect> a = Codec.unit(() -> ect.b);
-   public static final ect b = new ect();
+public class ect extends ecj {
+   public static final Codec<ect> b = bmp.b(dpi.b).comapFlatMap(ect::a, $$0 -> $$0.c).fieldOf("entries").codec();
+   private final bmp<dpi> c;
 
-   @Override
-   protected ecs<?> a() {
-      return ecs.a;
+   private static DataResult<ect> a(bmp<dpi> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new ect($$0));
+   }
+
+   public ect(bmp<dpi> $$0) {
+      this.c = $$0;
+   }
+
+   public ect(bmp.a<dpi> $$0) {
+      this($$0.a());
    }
 
    @Override
-   public void a(ecr.a $$0) {
-      axr $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ib $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dkt.d);
-            }
-         }
+   protected eck<?> a() {
+      return eck.b;
+   }
 
-         if ($$1.a(3) > 0) {
-            ib $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dkt.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ib $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dkt.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ib $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dkt.c);
-            }
-         }
-      });
+   @Override
+   public dpi a(axt $$0, id $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

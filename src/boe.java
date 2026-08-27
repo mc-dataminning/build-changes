@@ -1,3 +1,4 @@
-public interface boe extends cnv {
-   wg O_();
+public enum boe {
+   a,
+   b;
 }

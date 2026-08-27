@@ -1,8 +1,28 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface atz {
+public class atz extends atw<GameProfile, aua> {
+   public atz(File $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected atv<GameProfile> a(JsonObject $$0) {
+      return new aua($$0);
+   }
+
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
+   }
+
+   @Override
+   public String[] a() {
+      return this.d().stream().map(atv::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   }
+
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
+   }
 }

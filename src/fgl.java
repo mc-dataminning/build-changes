@@ -1,13 +1,16 @@
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import javax.annotation.Nullable;
 
-public class fgl extends fgk {
-   public static final fgl a = new fgl();
-
-   public fgl() {
-      super(fgi.b(new ajt("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+public class fgl implements euu {
+   @Nullable
+   @Override
+   public eut a(int $$0) {
+      return fgv.b;
    }
 
    @Override
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, ewm $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+   public IntSet a() {
+      return IntSets.EMPTY_SET;
    }
 }

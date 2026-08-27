@@ -1,12 +1,12 @@
-public class ghf extends ggo<ccz, fsc<ccz>> {
-   private static final ajt a = new ajt("textures/entity/sheep/sheep.png");
+public class ghf extends ggx<ccz, frx<ccz>> {
+   private static final ajv a = new ajv("textures/entity/pig/pig.png");
 
-   public ghf(gfi.a $$0) {
-      super($$0, new fsc<>($$0.a(ftl.bh)), 0.7F);
-      this.a(new gjv(this, $$0.f()));
+   public ghf(gfr.a $$0) {
+      super($$0, new frx<>($$0.a(ftu.aI)), 0.7F);
+      this.a(new gkd<>(this, new frx<>($$0.a(ftu.aQ)), new ajv("textures/entity/pig/pig_saddle.png")));
    }
 
-   public ajt a(ccz $$0) {
+   public ajv a(ccz $$0) {
       return a;
    }
 }

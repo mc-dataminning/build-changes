@@ -1,78 +1,101 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dpx<T extends Enum<T> & aye> extends dqc<T> {
-   private final ImmutableSet<T> a;
-   private final Map<String, T> b = Maps.newHashMap();
+public record dpx(String r, boolean s, boolean t, boolean u, dpx.a v, djt w, aun x, aun y, aun z, aun A, aun B, aun C, aun D, aun E) {
+   private static final Map<String, dpx> F = new Object2ObjectArrayMap();
+   public static final Codec<dpx> a = awu.a(dpx::b, F::get);
+   public static final dpx b = a(new dpx("iron", false, false, false, dpx.a.a, djt.g, auo.mX, auo.mY, auo.nf, auo.ng, auo.oq, auo.or, auo.yI, auo.yJ));
+   public static final dpx c = a(new dpx("copper", true, true, false, dpx.a.a, djt.aj, auo.fI, auo.fJ, auo.fP, auo.fQ, auo.oq, auo.or, auo.yI, auo.yJ));
+   public static final dpx d = a(new dpx("gold", false, true, false, dpx.a.a, djt.g, auo.mX, auo.mY, auo.nf, auo.ng, auo.oq, auo.or, auo.yI, auo.yJ));
+   public static final dpx e = a(new dpx("stone", true, true, false, dpx.a.b, djt.f, auo.mX, auo.mY, auo.nf, auo.ng, auo.yN, auo.yO, auo.yI, auo.yJ));
+   public static final dpx f = a(
+      new dpx("polished_blackstone", true, true, false, dpx.a.b, djt.f, auo.mX, auo.mY, auo.nf, auo.ng, auo.yN, auo.yO, auo.yI, auo.yJ)
+   );
+   public static final dpx g = a(new dpx("oak"));
+   public static final dpx h = a(new dpx("spruce"));
+   public static final dpx i = a(new dpx("birch"));
+   public static final dpx j = a(new dpx("acacia"));
+   public static final dpx k = a(new dpx("cherry", true, true, true, dpx.a.a, djt.aU, auo.eE, auo.eF, auo.eG, auo.eH, auo.eK, auo.eL, auo.eI, auo.eJ));
+   public static final dpx l = a(new dpx("jungle"));
+   public static final dpx m = a(new dpx("dark_oak"));
+   public static final dpx n = a(new dpx("crimson", true, true, true, dpx.a.a, djt.aT, auo.qt, auo.qu, auo.qv, auo.qw, auo.qz, auo.qA, auo.qx, auo.qy));
+   public static final dpx o = a(new dpx("warped", true, true, true, dpx.a.a, djt.aT, auo.qt, auo.qu, auo.qv, auo.qw, auo.qz, auo.qA, auo.qx, auo.qy));
+   public static final dpx p = a(new dpx("mangrove"));
+   public static final dpx q = a(new dpx("bamboo", true, true, true, dpx.a.a, djt.aS, auo.bo, auo.bp, auo.bq, auo.br, auo.bu, auo.bv, auo.bs, auo.bt));
 
-   protected dpx(String $$0, Class<T> $$1, Collection<T> $$2) {
-      super($$0, $$1);
-      this.a = ImmutableSet.copyOf($$2);
-
-      for (T $$3 : $$2) {
-         String $$4 = $$3.c();
-         if (this.b.containsKey($$4)) {
-            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
-         }
-
-         this.b.put($$4, $$3);
-      }
+   public dpx(String $$0) {
+      this($$0, true, true, true, dpx.a.a, djt.b, auo.Cy, auo.Cz, auo.CA, auo.CB, auo.CE, auo.CF, auo.CC, auo.CD);
    }
 
-   @Override
-   public Collection<T> a() {
-      return this.a;
+   private static dpx a(dpx $$0) {
+      F.put($$0.r, $$0);
+      return $$0;
    }
 
-   @Override
-   public Optional<T> b(String $$0) {
-      return Optional.ofNullable(this.b.get($$0));
+   public static Stream<dpx> a() {
+      return F.values().stream();
    }
 
-   public String a(T $$0) {
-      return $$0.c();
+   public String b() {
+      return this.r;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dpx<?> $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a) && this.b.equals($$1.b);
-         }
-
-         return false;
-      }
+   public boolean c() {
+      return this.s;
    }
 
-   @Override
-   public int b() {
-      int $$0 = super.b();
-      $$0 = 31 * $$0 + this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
+   public boolean d() {
+      return this.t;
    }
 
-   public static <T extends Enum<T> & aye> dpx<T> a(String $$0, Class<T> $$1) {
-      return a($$0, $$1, $$0x -> true);
+   public boolean e() {
+      return this.u;
    }
 
-   public static <T extends Enum<T> & aye> dpx<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
-      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   public dpx.a f() {
+      return this.v;
    }
 
-   public static <T extends Enum<T> & aye> dpx<T> a(String $$0, Class<T> $$1, T... $$2) {
-      return a($$0, $$1, Lists.newArrayList($$2));
+   public djt g() {
+      return this.w;
    }
 
-   public static <T extends Enum<T> & aye> dpx<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
-      return new dpx<>($$0, $$1, $$2);
+   public aun h() {
+      return this.x;
+   }
+
+   public aun i() {
+      return this.y;
+   }
+
+   public aun j() {
+      return this.z;
+   }
+
+   public aun k() {
+      return this.A;
+   }
+
+   public aun l() {
+      return this.B;
+   }
+
+   public aun m() {
+      return this.C;
+   }
+
+   public aun n() {
+      return this.D;
+   }
+
+   public aun o() {
+      return this.E;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,77 +1,59 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
 
-public class ecz extends edd {
-   public static final Codec<ecz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ecz::new));
+public class ecz extends eda {
+   public static final Codec<ecz> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ecz::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   public ecz(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected edb<?> a() {
+      return edb.b;
+   }
+
+   public ecz(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected ede<?> a() {
-      return ede.b;
-   }
-
-   @Override
-   public List<ebl.a> a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, ib $$4, eav $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      List<ebl.a> $$6 = Lists.newArrayList();
-      ih $$7 = ih.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      ib.a $$10 = new ib.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new ebl.a(new ib($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      ih $$16 = ih.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
+   public void a(eda.a $$0) {
+      axt $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            id $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, dlc.d, $$0);
             }
-
-            $$19++;
          }
 
-         if ($$13.isPresent()) {
-            $$6.add(new ebl.a(new ib($$11, $$13.getAsInt(), $$12), 0, false));
+         if ($$1.i() < this.b) {
+            id $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, dlc.f, $$0);
+            }
          }
+
+         if ($$1.i() < this.b) {
+            id $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, dlc.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            id $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, dlc.c, $$0);
+            }
+         }
+      });
+   }
+
+   private static void a(id $$0, dpz $$1, eda.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (id var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
       }
-
-      return $$6;
    }
 }

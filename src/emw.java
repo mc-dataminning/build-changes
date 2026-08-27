@@ -1,67 +1,30 @@
 import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface emw extends emy {
-   @Override
-   String e();
+public interface emw {
+   id a();
 
-   void a(boolean var1);
+   float b();
 
-   int j();
+   long c();
 
-   void c(int var1);
+   long d();
 
-   void b(int var1);
+   boolean g();
 
-   int h();
+   boolean i();
 
-   @Override
-   default void a(p $$0, cyz $$1) {
-      emy.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   void b(boolean var1);
+
+   boolean l();
+
+   czc o();
+
+   boc q();
+
+   boolean r();
+
+   default void a(p $$0, czi $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
    }
-
-   int f();
-
-   void a(int var1);
-
-   int t();
-
-   void d(int var1);
-
-   int u();
-
-   void e(int var1);
-
-   @Nullable
-   UUID v();
-
-   void a(UUID var1);
-
-   cyu k();
-
-   void a(dqq.c var1);
-
-   dqq.c p();
-
-   boolean n();
-
-   void c(boolean var1);
-
-   boolean m();
-
-   void a(cyu var1);
-
-   ern<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
 }

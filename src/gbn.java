@@ -1,61 +1,255 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-public class gbn implements gbm {
-   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
-   private final String d;
-   private final String e;
+public class gbn {
+   public static final List<String> a = Lists.newArrayList(new String[]{"layer0", "layer1", "layer2", "layer3", "layer4"});
+   private static final float b = 7.5F;
+   private static final float c = 8.5F;
 
-   public gbn(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   public gbk a(Function<gnv, gls> $$0, gbk $$1) {
+      Map<String, Either<gnv, String>> $$2 = Maps.newHashMap();
+      List<gbg> $$3 = Lists.newArrayList();
 
-   @Override
-   public Predicate<doz> getPredicate(dpa<dby, doz> $$0) {
-      dqc<?> $$1 = $$0.a(this.d);
-      if ($$1 == null) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
-      } else {
-         String $$2 = this.e;
-         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
-         if ($$3) {
-            $$2 = $$2.substring(1);
+      for (int $$4 = 0; $$4 < a.size(); $$4++) {
+         String $$5 = a.get($$4);
+         if (!$$1.b($$5)) {
+            break;
          }
 
-         List<String> $$4 = a.splitToList($$2);
-         if ($$4.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
-         } else {
-            Predicate<doz> $$5;
-            if ($$4.size() == 1) {
-               $$5 = this.a($$0, $$1, $$2);
-            } else {
-               List<Predicate<doz>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
-               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+         gnv $$6 = $$1.c($$5);
+         $$2.put($$5, Either.left($$6));
+         glm $$7 = $$0.apply($$6).e();
+         $$3.addAll(this.a($$4, $$5, $$7));
+      }
+
+      $$2.put("particle", $$1.b("particle") ? Either.left($$1.c("particle")) : $$2.get("layer0"));
+      gbk $$8 = new gbk(null, $$3, $$2, false, $$1.c(), $$1.h(), $$1.e());
+      $$8.c = $$1.c;
+      return $$8;
+   }
+
+   private List<gbg> a(int $$0, String $$1, glm $$2) {
+      Map<ij, gbh> $$3 = Maps.newHashMap();
+      $$3.put(ij.d, new gbh(null, $$0, $$1, new gbj(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)));
+      $$3.put(ij.c, new gbh(null, $$0, $$1, new gbj(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0)));
+      List<gbg> $$4 = Lists.newArrayList();
+      $$4.add(new gbg(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3, null, true));
+      $$4.addAll(this.a($$2, $$1, $$0));
+      return $$4;
+   }
+
+   private List<gbg> a(glm $$0, String $$1, int $$2) {
+      float $$3 = (float)$$0.a();
+      float $$4 = (float)$$0.b();
+      List<gbg> $$5 = Lists.newArrayList();
+
+      for (gbn.a $$6 : this.a($$0)) {
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         float $$9 = 0.0F;
+         float $$10 = 0.0F;
+         float $$11 = 0.0F;
+         float $$12 = 0.0F;
+         float $$13 = 0.0F;
+         float $$14 = 0.0F;
+         float $$15 = 16.0F / $$3;
+         float $$16 = 16.0F / $$4;
+         float $$17 = (float)$$6.b();
+         float $$18 = (float)$$6.c();
+         float $$19 = (float)$$6.d();
+         gbn.b $$20 = $$6.a();
+         switch ($$20) {
+            case a:
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$13 = $$19;
+               $$8 = $$19;
+               $$10 = $$19;
+               $$14 = $$19 + 1.0F;
+               break;
+            case b:
+               $$13 = $$19;
+               $$14 = $$19 + 1.0F;
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$8 = $$19 + 1.0F;
+               $$10 = $$19 + 1.0F;
+               break;
+            case c:
+               $$11 = $$19;
+               $$7 = $$19;
+               $$9 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+               break;
+            case d:
+               $$11 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$7 = $$19 + 1.0F;
+               $$9 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+         }
+
+         $$7 *= $$15;
+         $$9 *= $$15;
+         $$8 *= $$16;
+         $$10 *= $$16;
+         $$8 = 16.0F - $$8;
+         $$10 = 16.0F - $$10;
+         $$11 *= $$15;
+         $$12 *= $$15;
+         $$13 *= $$16;
+         $$14 *= $$16;
+         Map<ij, gbh> $$21 = Maps.newHashMap();
+         $$21.put($$20.a(), new gbh(null, $$2, $$1, new gbj(new float[]{$$11, $$13, $$12, $$14}, 0)));
+         switch ($$20) {
+            case a:
+               $$5.add(new gbg(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21, null, true));
+               break;
+            case b:
+               $$5.add(new gbg(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
+               break;
+            case c:
+               $$5.add(new gbg(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21, null, true));
+               break;
+            case d:
+               $$5.add(new gbg(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
+         }
+      }
+
+      return $$5;
+   }
+
+   private List<gbn.a> a(glm $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      List<gbn.a> $$3 = Lists.newArrayList();
+      $$0.d().forEach($$4 -> {
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$1; $$6++) {
+               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
+               this.a(gbn.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gbn.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gbn.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gbn.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
             }
+         }
+      });
+      return $$3;
+   }
 
-            return $$3 ? $$5.negate() : $$5;
+   private void a(gbn.b $$0, List<gbn.a> $$1, glm $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
+      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
+      if ($$9) {
+         this.a($$1, $$0, $$4, $$5);
+      }
+   }
+
+   private void a(List<gbn.a> $$0, gbn.b $$1, int $$2, int $$3) {
+      gbn.a $$4 = null;
+
+      for (gbn.a $$5 : $$0) {
+         if ($$5.a() == $$1) {
+            int $$6 = $$1.d() ? $$3 : $$2;
+            if ($$5.d() == $$6) {
+               $$4 = $$5;
+               break;
+            }
          }
       }
-   }
 
-   private Predicate<doz> a(dpa<dby, doz> $$0, dqc<?> $$1, String $$2) {
-      Optional<?> $$3 = $$1.b($$2);
-      if ($$3.isEmpty()) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      int $$7 = $$1.d() ? $$3 : $$2;
+      int $$8 = $$1.d() ? $$2 : $$3;
+      if ($$4 == null) {
+         $$0.add(new gbn.a($$1, $$8, $$7));
       } else {
-         return $$2x -> $$2x.c($$1).equals($$3.get());
+         $$4.a($$8);
       }
    }
 
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
+   private boolean a(glm $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
+   }
+
+   static class a {
+      private final gbn.b a;
+      private int b;
+      private int c;
+      private final int d;
+
+      public a(gbn.b $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(int $$0) {
+         if ($$0 < this.b) {
+            this.b = $$0;
+         } else if ($$0 > this.c) {
+            this.c = $$0;
+         }
+      }
+
+      public gbn.b a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public int c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a(ij.b, 0, -1),
+      b(ij.a, 0, 1),
+      c(ij.f, -1, 0),
+      d(ij.e, 1, 0);
+
+      private final ij e;
+      private final int f;
+      private final int g;
+
+      private b(ij $$0, int $$1, int $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+      }
+
+      public ij a() {
+         return this.e;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      boolean d() {
+         return this == b || this == a;
+      }
    }
 }

@@ -1,96 +1,82 @@
-public class flf {
-   private static final ajt a = new ajt("minecraft", "alt");
-   private static final xd b = xd.a.a(a);
-   private static final flf c = new flf();
-   private final axr d = axr.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+public class flf extends fku {
+   private final dmy p;
+   private fef<dmy.a> q;
+   private fef<Boolean> r;
+   private fef<Boolean> s;
+   private dmy.a u = dmy.a.c;
+   private boolean v;
+   private boolean w;
 
-   private flf() {
+   public flf(dmy $$0) {
+      this.p = $$0;
    }
 
-   public static flf a() {
-      return c;
+   @Override
+   cyh m() {
+      return this.p.b();
    }
 
-   public wl a(fda $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
-
-         $$2.append(ac.a(this.e, this.d));
-      }
-
-      return $$0.b().a(wg.b($$2.toString()).c(b), $$1, xd.a);
+   @Override
+   int C() {
+      return 135;
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.q = this.c(fef.<dmy.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> wi.c("advMode.mode.sequence");
+            case b -> wi.c("advMode.mode.auto");
+            case c -> wi.c("advMode.mode.redstone");
+         };
+      }).a(dmy.a.values()).a().a(this.u).a(this.k / 2 - 50 - 100 - 4, 165, 100, 20, wi.c("advMode.mode"), ($$0, $$1) -> this.u = $$1));
+      this.r = this.c(
+         fef.a(wi.c("advMode.mode.conditional"), wi.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.v)
+            .a(this.k / 2 - 50, 165, 100, 20, wi.c("advMode.type"), ($$0, $$1) -> this.v = $$1)
+      );
+      this.s = this.c(
+         fef.a(wi.c("advMode.mode.autoexec.bat"), wi.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.w)
+            .a(this.k / 2 + 50 + 4, 165, 100, 20, wi.c("advMode.triggering"), ($$0, $$1) -> this.w = $$1)
+      );
+      this.e(false);
+   }
+
+   private void e(boolean $$0) {
+      this.c.j = $$0;
+      this.o.j = $$0;
+      this.q.j = $$0;
+      this.r.j = $$0;
+      this.s.j = $$0;
+   }
+
+   public void E() {
+      cyh $$0 = this.p.b();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.p();
+      this.u = this.p.l();
+      this.v = this.p.t();
+      this.w = this.p.d();
+      this.o.a($$1);
+      this.q.a(this.u);
+      this.r.a(this.v);
+      this.s.a(this.w);
+      this.c($$1);
+      this.e(true);
+   }
+
+   @Override
+   public void a(fby $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e(true);
+   }
+
+   @Override
+   protected void a(cyh $$0) {
+      this.j.L().b(new aha(id.a($$0.g()), this.a.a(), this.u, $$0.p(), this.v, this.w));
    }
 }

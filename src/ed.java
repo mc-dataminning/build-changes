@@ -3,33 +3,39 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public class ed implements ArgumentType<wg> {
-   private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wg.b("argument.component.invalid", $$0));
-   private final in.a c;
+public class ed implements ArgumentType<n> {
+   private static final Collection<String> b = Arrays.asList("red", "green");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wi.b("argument.color.invalid", $$0));
 
-   private ed(in.a $$0) {
-      this.c = $$0;
+   private ed() {
    }
 
-   public static wg a(CommandContext<du> $$0, String $$1) {
-      return (wg)$$0.getArgument($$1, wg.class);
+   public static ed a() {
+      return new ed();
    }
 
-   public static ed a(dq $$0) {
-      return new ed($$0);
+   public static n a(CommandContext<dv> $$0, String $$1) {
+      return (n)$$0.getArgument($$1, n.class);
    }
 
-   public wg a(StringReader $$0) throws CommandSyntaxException {
-      try {
-         return dy.a(this.c, $$0, wi.a);
-      } catch (Exception var4) {
-         String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
-         throw a.createWithContext($$0, $$2);
+   public n a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      n $$2 = n.b($$1);
+      if ($$2 != null && !$$2.d()) {
+         return $$2;
+      } else {
+         throw a.createWithContext($$0, $$1);
       }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return ea.b(n.a(true, false), $$1);
    }
 
    public Collection<String> getExamples() {

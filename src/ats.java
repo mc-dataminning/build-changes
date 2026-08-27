@@ -1,45 +1,29 @@
-import java.util.List;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class ats {
-   private int a;
-   private int b;
-
-   public boolean a(int $$0) {
-      return this.b >= this.b($$0);
+public class ats extends atw<GameProfile, att> {
+   public ats(File $$0) {
+      super($$0);
    }
 
-   public boolean a(int $$0, List<apt> $$1) {
-      int $$2 = (int)$$1.stream().filter(cjt::gc).count();
-      return $$2 >= this.b($$0);
+   @Override
+   protected atv<GameProfile> a(JsonObject $$0) {
+      return new att($$0);
    }
 
-   public int b(int $$0) {
-      return Math.max(1, axk.f((float)(this.a * $$0) / 100.0F));
+   @Override
+   public String[] a() {
+      return this.d().stream().map(atv::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   public void a() {
-      this.b = 0;
+   public boolean a(GameProfile $$0) {
+      att $$1 = this.b($$0);
+      return $$1 != null ? $$1.b() : false;
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public boolean a(List<apt> $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      this.a = 0;
-      this.b = 0;
-
-      for (apt $$3 : $$0) {
-         if (!$$3.N_()) {
-            this.a++;
-            if ($$3.fI()) {
-               this.b++;
-            }
-         }
-      }
-
-      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

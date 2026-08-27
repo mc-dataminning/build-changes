@@ -1,91 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dke extends dby {
+public class dke extends dbt implements dfp {
    public static final MapCodec<dke> a = b(dke::new);
-   private static final dpz b = dpp.aT;
-   private static final int c = 20;
-   private static final int d = 8;
+   public static final dqg<dqs> b = dpy.bj;
 
    @Override
    public MapCodec<dke> a() {
       return a;
    }
 
-   public dke(doy.d $$0) {
+   protected dke(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      this.k(this.E.b().a(b, dqs.b));
    }
 
    @Override
-   protected void a(cyx $$0, doz $$1, erw $$2, ckl $$3) {
-      int $$4 = a((cyy)$$0, $$1, $$2, (bpv)$$3);
-      if ($$3.u() instanceof apt $$6) {
-         $$6.a(auw.aE);
-         am.M.a($$6, $$3, $$2.e(), $$4);
-      }
+   public dmo a(id $$0, dpi $$1) {
+      return new dod($$0, $$1);
    }
 
-   private static int a(cyy $$0, doz $$1, erw $$2, bpv $$3) {
-      int $$4 = a($$2, $$2.e());
-      int $$5 = $$3 instanceof cjz ? 20 : 8;
-      if (!$$0.O().a($$2.a(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.a(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(erw $$0, esa $$1) {
-      ih $$2 = $$0.b();
-      double $$3 = Math.abs(axk.e($$1.c) - 0.5);
-      double $$4 = Math.abs(axk.e($$1.d) - 0.5);
-      double $$5 = Math.abs(axk.e($$1.e) - 0.5);
-      ih.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == ih.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == ih.a.c) {
-         $$7 = Math.max($$3, $$4);
+   @Override
+   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
+      dmo $$5 = $$1.c_($$2);
+      if ($$5 instanceof dod) {
+         return ((dod)$$5).a($$3) ? bof.a($$1.B) : bof.d;
       } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, axk.c(15.0 * axk.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(cyy $$0, doz $$1, int $$2, ib $$3, int $$4) {
-      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
-   }
-
-   @Override
-   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
+         return bof.d;
       }
    }
 
    @Override
-   protected int a(doz $$0, cyd $$1, ib $$2, ih $$3) {
-      return $$0.c(b);
+   public void a(czg $$0, id $$1, dpi $$2, @Nullable bqt $$3, crs $$4) {
+      if (!$$0.B) {
+         if ($$3 != null) {
+            dmo $$5 = $$0.c_($$1);
+            if ($$5 instanceof dod) {
+               ((dod)$$5).a($$3);
+            }
+         }
+      }
    }
 
    @Override
-   protected boolean f_(doz $$0) {
-      return true;
+   protected dim b_(dpi $$0) {
+      return dim.c;
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
+   protected void a(dpj.a<dch, dpi> $$0) {
       $$0.a(b);
    }
 
    @Override
-   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
-      if (!$$1.x_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.O().a($$2, this)) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
+   protected void a(dpi $$0, czg $$1, id $$2, dch $$3, id $$4, boolean $$5) {
+      if ($$1 instanceof apu) {
+         if ($$1.c_($$2) instanceof dod $$7) {
+            boolean $$8 = $$1.C($$2);
+            boolean $$9 = $$7.C();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((apu)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
+            }
          }
+      }
+   }
+
+   private void a(apu $$0, dod $$1) {
+      switch ($$1.u()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.A();
+         case d:
       }
    }
 }

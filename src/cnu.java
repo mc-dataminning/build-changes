@@ -1,278 +1,243 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class cnu extends cmp {
-   private static final int k = -1;
-   private static final int l = 4;
-   private static final int m = 31;
-   private static final int n = 31;
-   private static final int o = 40;
-   private final cna p;
-   final cnh q = cnh.a();
-   private List<il<dlv>> r = List.of();
-   Runnable s = () -> {
-   };
-   final cok t;
-   final cok u;
-   private final cok v;
-   private final cok w;
-   long x;
-   private final bnt y = new boj(3) {
+public class cnu extends cmw {
+   public static final int k = 35;
+   public static final int l = 0;
+   public static final int m = 1;
+   public static final int n = 2;
+   private static final int o = 3;
+   private static final int p = 30;
+   private static final int q = 30;
+   private static final int r = 39;
+   private final bny s = new com();
+   final bny t = new boo(2) {
       @Override
       public void e() {
          super.e();
          cnu.this.a(this);
-         cnu.this.s.run();
       }
    };
-   private final bnt z = new boj(1) {
-      @Override
-      public void e() {
-         super.e();
-         cnu.this.s.run();
-      }
-   };
+   private final cnh u;
 
-   public cnu(int $$0, cjs $$1) {
-      this($$0, $$1, cna.a);
+   public cnu(int $$0, cjz $$1) {
+      this($$0, $$1, cnh.a);
    }
 
-   public cnu(int $$0, cjs $$1, final cna $$2) {
-      super(cnw.s, $$0);
-      this.p = $$2;
-      this.t = this.a(new cok(this.y, 0, 13, 26) {
+   public cnu(int $$0, cjz $$1, final cnh $$2) {
+      super(cod.p, $$0);
+      this.u = $$2;
+      this.a(new cos(this.t, 0, 49, 19) {
          @Override
-         public boolean a(crj $$0) {
-            return $$0.f() instanceof cpe;
+         public boolean a(crs $$0) {
+            return $$0.k() || cxa.c($$0);
          }
       });
-      this.u = this.a(new cok(this.y, 1, 33, 26) {
+      this.a(new cos(this.t, 1, 49, 40) {
          @Override
-         public boolean a(crj $$0) {
-            return $$0.f() instanceof cqd;
+         public boolean a(crs $$0) {
+            return $$0.k() || cxa.c($$0);
          }
       });
-      this.v = this.a(new cok(this.y, 2, 23, 45) {
+      this.a(new cos(this.s, 2, 129, 34) {
          @Override
-         public boolean a(crj $$0) {
-            return $$0.f() instanceof cpf;
-         }
-      });
-      this.w = this.a(new cok(this.z, 0, 143, 57) {
-         @Override
-         public boolean a(crj $$0) {
+         public boolean a(crs $$0) {
             return false;
          }
 
          @Override
-         public void a(cjt $$0, crj $$1) {
-            cnu.this.t.a(1);
-            cnu.this.u.a(1);
-            if (!cnu.this.t.h() || !cnu.this.u.h()) {
-               cnu.this.q.a(-1);
+         public void a(cka $$0, crs $$1) {
+            $$2.a(($$0x, $$1x) -> {
+               if ($$0x instanceof apu) {
+                  bqj.a((apu)$$0x, esj.b($$1x), this.a($$0x));
+               }
+
+               $$0x.c(1042, $$1x, 0);
+            });
+            cnu.this.t.a(0, crs.i);
+            cnu.this.t.a(1, crs.i);
+         }
+
+         private int a(czg $$0) {
+            int $$1 = 0;
+            $$1 += this.g(cnu.this.t.a(0));
+            $$1 += this.g(cnu.this.t.a(1));
+            if ($$1 > 0) {
+               int $$2 = (int)Math.ceil((double)$$1 / 2.0);
+               return $$2 + $$0.z.a($$2);
+            } else {
+               return 0;
+            }
+         }
+
+         private int g(crs $$0) {
+            int $$1 = 0;
+            cxg $$2 = cxa.b($$0);
+
+            for (Entry<in<cwz>> $$3 : $$2.b()) {
+               cwz $$4 = (cwz)((in)$$3.getKey()).a();
+               int $$5 = $$3.getIntValue();
+               if (!$$4.c()) {
+                  $$1 += $$4.a($$5);
+               }
             }
 
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.Y();
-               if (cnu.this.x != $$2xx) {
-                  $$0x.a(null, $$1x, aum.zX, aun.e, 1.0F, 1.0F);
-                  cnu.this.x = $$2xx;
-               }
-            });
-            super.a($$0, $$1);
+            return $$1;
          }
       });
 
       for (int $$3 = 0; $$3 < 3; $$3++) {
          for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cok($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+            this.a(new cos($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
          }
       }
 
       for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a(new cok($$1, $$5, 8 + $$5 * 18, 142));
-      }
-
-      this.a(this.q);
-   }
-
-   @Override
-   public boolean a(cjt $$0) {
-      return a(this.p, $$0, dca.nT);
-   }
-
-   @Override
-   public boolean b(cjt $$0, int $$1) {
-      if ($$1 >= 0 && $$1 < this.r.size()) {
-         this.q.a($$1);
-         this.a(this.r.get($$1));
-         return true;
-      } else {
-         return false;
+         this.a(new cos($$1, $$5, 8 + $$5 * 18, 142));
       }
    }
 
-   private List<il<dlv>> c(crj $$0) {
-      if ($$0.d()) {
-         return kr.am.b(ava.a).<List<il<dlv>>>map(ImmutableList::copyOf).orElse(ImmutableList.of());
-      } else {
-         return $$0.f() instanceof cpf $$1 ? kr.am.b($$1.b()).<List<il<dlv>>>map(ImmutableList::copyOf).orElse(ImmutableList.of()) : List.of();
+   @Override
+   public void a(bny $$0) {
+      super.a($$0);
+      if ($$0 == this.t) {
+         this.l();
       }
    }
 
-   private boolean e(int $$0) {
-      return $$0 >= 0 && $$0 < this.r.size();
+   private void l() {
+      this.s.a(0, this.a(this.t.a(0), this.t.a(1)));
+      this.d();
    }
 
-   @Override
-   public void a(bnt $$0) {
-      crj $$1 = this.t.g();
-      crj $$2 = this.u.g();
-      crj $$3 = this.v.g();
-      if (!$$1.d() && !$$2.d()) {
-         int $$4 = this.q.b();
-         boolean $$5 = this.e($$4);
-         List<il<dlv>> $$6 = this.r;
-         this.r = this.c($$3);
-         il<dlv> $$7;
-         if (this.r.size() == 1) {
-            this.q.a(0);
-            $$7 = this.r.get(0);
-         } else if (!$$5) {
-            this.q.a(-1);
-            $$7 = null;
+   private crs a(crs $$0, crs $$1) {
+      boolean $$2 = !$$0.d() || !$$1.d();
+      if (!$$2) {
+         return crs.i;
+      } else if ($$0.G() <= 1 && $$1.G() <= 1) {
+         boolean $$3 = !$$0.d() && !$$1.d();
+         if (!$$3) {
+            crs $$4 = !$$0.d() ? $$0 : $$1;
+            return !cxa.c($$4) ? crs.i : this.c($$4.r());
          } else {
-            il<dlv> $$9 = $$6.get($$4);
-            int $$10 = this.r.indexOf($$9);
-            if ($$10 != -1) {
-               $$7 = $$9;
-               this.q.a($$10);
-            } else {
-               $$7 = null;
-               this.q.a(-1);
+            return this.b($$0, $$1);
+         }
+      } else {
+         return crs.i;
+      }
+   }
+
+   private crs b(crs $$0, crs $$1) {
+      if (!$$0.a($$1.f())) {
+         return crs.i;
+      } else {
+         crn $$2 = $$0.f();
+         int $$3 = $$2.r() - $$0.m();
+         int $$4 = $$2.r() - $$1.m();
+         int $$5 = $$3 + $$4 + $$2.r() * 5 / 100;
+         int $$6 = Math.max($$2.r() - $$5, 0);
+         int $$7 = 1;
+         if (!$$0.k()) {
+            if ($$0.i() < 2 || !crs.a($$0, $$1)) {
+               return crs.i;
             }
+
+            $$7 = 2;
          }
 
-         if ($$7 != null) {
-            dlw $$13 = $$1.a(jp.N, dlw.a);
-            boolean $$14 = $$13.b().size() >= 6;
-            if ($$14) {
-               this.q.a(-1);
-               this.w.f(crj.i);
-            } else {
-               this.a($$7);
-            }
-         } else {
-            this.w.f(crj.i);
+         crs $$8 = $$0.c($$7);
+         if ($$8.k()) {
+            $$8.b($$6);
          }
 
-         this.d();
-      } else {
-         this.w.f(crj.i);
-         this.r = List.of();
-         this.q.a(-1);
+         this.c($$0, $$1);
+         return this.c($$8);
       }
    }
 
-   public List<il<dlv>> l() {
-      return this.r;
+   private void c(crs $$0, crs $$1) {
+      cxa.a($$0, $$1x -> {
+         cxg $$2 = cxa.b($$1);
+
+         for (Entry<in<cwz>> $$3 : $$2.b()) {
+            cwz $$4 = (cwz)((in)$$3.getKey()).a();
+            if (!$$4.c() || $$1x.a($$4) == 0) {
+               $$1x.b($$4, $$3.getIntValue());
+            }
+         }
+      });
    }
 
-   public int m() {
-      return this.q.b();
-   }
+   private crs c(crs $$0) {
+      cxg $$1 = cxa.a($$0, $$0x -> $$0x.a($$0xx -> !((cwz)$$0xx.a()).c()));
+      if ($$0.a(crv.uu) && $$1.d()) {
+         $$0 = $$0.a(crv.qO, $$0.G());
+      }
 
-   public void a(Runnable $$0) {
-      this.s = $$0;
+      int $$2 = 0;
+
+      for (int $$3 = 0; $$3 < $$1.c(); $$3++) {
+         $$2 = cmy.e($$2);
+      }
+
+      $$0.b(jr.l, Integer.valueOf($$2));
+      return $$0;
    }
 
    @Override
-   public crj a(cjt $$0, int $$1) {
-      crj $$2 = crj.i;
-      cok $$3 = this.i.get($$1);
+   public void b(cka $$0) {
+      super.b($$0);
+      this.u.a(($$1, $$2) -> this.a($$0, this.t));
+   }
+
+   @Override
+   public boolean a(cka $$0) {
+      return a(this.u, $$0, dcj.nZ);
+   }
+
+   @Override
+   public crs a(cka $$0, int $$1) {
+      crs $$2 = crs.i;
+      cos $$3 = this.i.get($$1);
       if ($$3 != null && $$3.h()) {
-         crj $$4 = $$3.g();
+         crs $$4 = $$3.g();
          $$2 = $$4.r();
-         if ($$1 == this.w.e) {
-            if (!this.a($$4, 4, 40, true)) {
-               return crj.i;
+         crs $$5 = this.t.a(0);
+         crs $$6 = this.t.a(1);
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return crs.i;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 != this.u.e && $$1 != this.t.e && $$1 != this.v.e) {
-            if ($$4.f() instanceof cpe) {
-               if (!this.a($$4, this.t.e, this.t.e + 1, false)) {
-                  return crj.i;
+         } else if ($$1 != 0 && $$1 != 1) {
+            if (!$$5.d() && !$$6.d()) {
+               if ($$1 >= 3 && $$1 < 30) {
+                  if (!this.a($$4, 30, 39, false)) {
+                     return crs.i;
+                  }
+               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+                  return crs.i;
                }
-            } else if ($$4.f() instanceof cqd) {
-               if (!this.a($$4, this.u.e, this.u.e + 1, false)) {
-                  return crj.i;
-               }
-            } else if ($$4.f() instanceof cpf) {
-               if (!this.a($$4, this.v.e, this.v.e + 1, false)) {
-                  return crj.i;
-               }
-            } else if ($$1 >= 4 && $$1 < 31) {
-               if (!this.a($$4, 31, 40, false)) {
-                  return crj.i;
-               }
-            } else if ($$1 >= 31 && $$1 < 40 && !this.a($$4, 4, 31, false)) {
-               return crj.i;
+            } else if (!this.a($$4, 0, 2, false)) {
+               return crs.i;
             }
-         } else if (!this.a($$4, 4, 40, false)) {
-            return crj.i;
+         } else if (!this.a($$4, 3, 39, false)) {
+            return crs.i;
          }
 
          if ($$4.d()) {
-            $$3.e(crj.i);
+            $$3.e(crs.i);
          } else {
             $$3.b();
          }
 
          if ($$4.G() == $$2.G()) {
-            return crj.i;
+            return crs.i;
          }
 
          $$3.a($$0, $$4);
       }
 
       return $$2;
-   }
-
-   @Override
-   public void b(cjt $$0) {
-      super.b($$0);
-      this.p.a(($$1, $$2) -> this.a($$0, this.y));
-   }
-
-   private void a(il<dlv> $$0) {
-      crj $$1 = this.t.g();
-      crj $$2 = this.u.g();
-      crj $$3 = crj.i;
-      if (!$$1.d() && !$$2.d()) {
-         $$3 = $$1.c(1);
-         cqc $$4 = ((cqd)$$2.f()).c();
-         $$3.a(jp.N, dlw.a, $$2x -> new dlw.a().a($$2x).a($$0, $$4).a());
-      }
-
-      if (!crj.a($$3, this.w.g())) {
-         this.w.f($$3);
-      }
-   }
-
-   public cok n() {
-      return this.t;
-   }
-
-   public cok o() {
-      return this.u;
-   }
-
-   public cok p() {
-      return this.v;
-   }
-
-   public cok q() {
-      return this.w;
    }
 }

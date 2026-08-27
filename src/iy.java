@@ -1,204 +1,29 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import com.mojang.serialization.Lifecycle;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+public final class iy {
+   public static final int a = 2;
+   public static final int b = 4;
+   public static final int c = 3;
+   private static final int d = 2;
 
-public interface iy<T> extends Keyable, iq<T> {
-   ajs<? extends iy<T>> c();
-
-   default Codec<T> q() {
-      return this.a().flatComapMap(il.c::a, $$0 -> this.a(this.e((T)$$0)));
+   private iy() {
    }
 
-   default Codec<il<T>> r() {
-      return this.a().flatComapMap($$0 -> $$0, this::a);
+   public static int a(int $$0) {
+      return $$0 >> 2;
    }
 
-   private Codec<il.c<T>> a() {
-      Codec<il.c<T>> $$0 = ajt.a
-         .comapFlatMap(
-            $$0x -> this.c($$0x)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
-            $$0x -> $$0x.h().a()
-         );
-      return aws.a($$0, (Function<il.c<T>, Lifecycle>)($$0x -> this.c($$0x.h()).map(ix::b).orElse(Lifecycle.experimental())));
+   public static int b(int $$0) {
+      return $$0 & 3;
    }
 
-   private DataResult<il.c<T>> a(il<T> $$0) {
-      return $$0 instanceof il.c<T> $$1 ? DataResult.success($$1) : DataResult.error(() -> "Unregistered holder in " + this.c() + ": " + $$0);
+   public static int c(int $$0) {
+      return $$0 << 2;
    }
 
-   default <U> Stream<U> keys(DynamicOps<U> $$0) {
-      return this.e().stream().map($$1 -> (U)$$0.createString($$1.toString()));
+   public static int d(int $$0) {
+      return $$0 << 2;
    }
 
-   @Nullable
-   ajt b(T var1);
-
-   Optional<ajs<T>> d(T var1);
-
-   @Override
-   int a(@Nullable T var1);
-
-   @Nullable
-   T a(@Nullable ajs<T> var1);
-
-   @Nullable
-   T a(@Nullable ajt var1);
-
-   Optional<ix> c(ajs<T> var1);
-
-   Lifecycle d();
-
-   default Optional<T> b(@Nullable ajt $$0) {
-      return Optional.ofNullable(this.a($$0));
-   }
-
-   default Optional<T> e(@Nullable ajs<T> $$0) {
-      return Optional.ofNullable(this.a($$0));
-   }
-
-   default T f(ajs<T> $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
-      } else {
-         return $$1;
-      }
-   }
-
-   Set<ajt> e();
-
-   Set<Entry<ajs<T>, T>> g();
-
-   Set<ajs<T>> f();
-
-   Optional<il.c<T>> a(axr var1);
-
-   default Stream<T> s() {
-      return StreamSupport.stream(this.spliterator(), false);
-   }
-
-   boolean d(ajt var1);
-
-   boolean d(ajs<T> var1);
-
-   static <T> T a(iy<? super T> $$0, String $$1, T $$2) {
-      return a($$0, new ajt($$1), $$2);
-   }
-
-   static <V, T extends V> T a(iy<V> $$0, ajt $$1, T $$2) {
-      return a($$0, ajs.a($$0.c(), $$1), $$2);
-   }
-
-   static <V, T extends V> T a(iy<V> $$0, ajs<V> $$1, T $$2) {
-      ((jh)$$0).a($$1, (V)$$2, ix.a);
-      return $$2;
-   }
-
-   static <T> il.c<T> b(iy<T> $$0, ajs<T> $$1, T $$2) {
-      return ((jh)$$0).a($$1, $$2, ix.a);
-   }
-
-   static <T> il.c<T> b(iy<T> $$0, ajt $$1, T $$2) {
-      return b($$0, ajs.a($$0.c(), $$1), $$2);
-   }
-
-   iy<T> l();
-
-   il.c<T> f(T var1);
-
-   Optional<il.c<T>> c(int var1);
-
-   Optional<il.c<T>> c(ajt var1);
-
-   Optional<il.c<T>> b(ajs<T> var1);
-
-   il<T> e(T var1);
-
-   default il.c<T> g(ajs<T> $$0) {
-      return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
-   }
-
-   Stream<il.c<T>> h();
-
-   Optional<ip.c<T>> b(avr<T> var1);
-
-   default Iterable<il<T>> c(avr<T> $$0) {
-      return (Iterable<il<T>>)DataFixUtils.orElse(this.b($$0), List.of());
-   }
-
-   default Optional<il<T>> a(avr<T> $$0, axr $$1) {
-      return this.b($$0).flatMap($$1x -> $$1x.a($$1));
-   }
-
-   ip.c<T> a(avr<T> var1);
-
-   Stream<Pair<avr<T>, ip.c<T>>> i();
-
-   Stream<avr<T>> j();
-
-   void m();
-
-   void a(Map<avr<T>, List<il<T>>> var1);
-
-   default iq<il<T>> t() {
-      return new iq<il<T>>() {
-         public int a(il<T> $$0) {
-            return iy.this.a($$0.a());
-         }
-
-         @Nullable
-         public il<T> c(int $$0) {
-            return (il<T>)iy.this.c($$0).orElse(null);
-         }
-
-         @Override
-         public int b() {
-            return iy.this.b();
-         }
-
-         @Override
-         public Iterator<il<T>> iterator() {
-            return iy.this.h().map($$0 -> (il<T>)$$0).iterator();
-         }
-      };
-   }
-
-   io<T> o();
-
-   in.b<T> p();
-
-   default in.b<T> u() {
-      return new in.b.a<T>() {
-         @Override
-         public in.b<T> a() {
-            return iy.this.p();
-         }
-
-         @Override
-         public Optional<ip.c<T>> a(avr<T> $$0) {
-            return Optional.of(this.b($$0));
-         }
-
-         @Override
-         public ip.c<T> b(avr<T> $$0) {
-            return iy.this.a($$0);
-         }
-      };
+   public static int e(int $$0) {
+      return $$0 >> 2;
    }
 }

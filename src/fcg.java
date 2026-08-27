@@ -1,34 +1,46 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record fcg(float a, boolean b, Map<String, List<fcf>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<fcf>> b = Maps.newHashMap();
-      private boolean c;
+public class fcg {
+   private static final Logger a = LogUtils.getLogger();
+   private final fby b;
+   @Nullable
+   private CompletableFuture<Boolean> c;
+   private boolean d;
 
-      public static fcg.a a(float $$0) {
-         return new fcg.a($$0);
+   public fcg(fby $$0) {
+      this.b = $$0;
+   }
+
+   public void a(fjx $$0) {
+      if (!this.b.ah() && !this.b.m.w && !this.d && this.a()) {
+         this.b.a(new fmv($$0));
+         this.d = true;
+      }
+   }
+
+   private Boolean a() {
+      if (this.c == null) {
+         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
       }
 
-      private a(float $$0) {
-         this.a = $$0;
+      try {
+         return this.c.getNow(false);
+      } catch (CompletionException var2) {
+         a.warn("Failed to retrieve realms subscriptions", var2);
+         this.d = true;
+         return false;
       }
+   }
 
-      public fcg.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public fcg.a a(String $$0, fcf $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
-
-      public fcg b() {
-         return new fcg(this.a, this.c, this.b);
+   private boolean b() {
+      try {
+         return exh.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
+      } catch (eyu var2) {
+         return false;
       }
    }
 }

@@ -1,76 +1,36 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public class gcy implements gci<doc> {
+   private final gfp a;
 
-public class gcy {
-   private final Long2ObjectMap<gcy.a> a = new Long2ObjectOpenHashMap();
+   public gcy(gcj.a $$0) {
+      this.a = $$0.c();
+   }
 
-   @Nullable
-   public gcx a(cyx $$0, ib $$1, ib $$2, int $$3) {
-      int $$4 = je.a($$1.u() - $$3);
-      int $$5 = je.a($$1.w() - $$3);
-      int $$6 = je.a($$2.u() + $$3);
-      int $$7 = je.a($$2.w() + $$3);
-      gcy.a[][] $$8 = new gcy.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (gcy.a)this.a.computeIfAbsent(cye.c($$9, $$10), $$1x -> new gcy.a($$0.d(cye.a($$1x), cye.b($$1x))));
+   public void a(doc $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
+      czg $$6 = $$0.i();
+      if ($$6 != null) {
+         cyi $$7 = $$0.c();
+         bqa $$8 = $$7.b($$6, $$0.az_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
          }
-      }
-
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
-      } else {
-         gcw[][] $$11 = new gcw[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
-         }
-
-         return new gcx($$0, $$4, $$5, $$11);
       }
    }
 
-   private static boolean a(ib $$0, ib $$1, int $$2, int $$3, gcy.a[][] $$4) {
-      int $$5 = je.a($$0.u());
-      int $$6 = je.a($$0.w());
-      int $$7 = je.a($$1.u());
-      int $$8 = je.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            drf $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
+   public static void a(float $$0, ewr $$1, gai $$2, int $$3, bqa $$4, gfp $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dg(), $$4.dh());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
       }
 
-      return true;
-   }
-
-   static final class a {
-      private final drf a;
-      @Nullable
-      private gcw b;
-
-      a(drf $$0) {
-         this.a = $$0;
-      }
-
-      public drf a() {
-         return this.a;
-      }
-
-      public gcw b() {
-         if (this.b == null) {
-            this.b = new gcw(this.a);
-         }
-
-         return this.b;
-      }
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)axm.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

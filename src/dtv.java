@@ -1,34 +1,29 @@
-public interface dtv {
-   dtv a = new dtv() {
-      @Override
-      public boolean a() {
-         return true;
+public enum dtv {
+   a(false, false),
+   b(true, false),
+   c(true, true);
+
+   private final boolean d;
+   private final boolean e;
+
+   private dtv(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   public boolean a() {
+      return this.e;
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public static dtv a(apn $$0) {
+      if ($$0.a(apn.d)) {
+         return c;
+      } else {
+         return $$0.a(apn.b) ? b : a;
       }
-
-      @Override
-      public void a(dtu $$0) {
-      }
-
-      @Override
-      public void b(dtu $$0) {
-      }
-
-      @Override
-      public boolean a(il<dts> $$0, esa $$1, dts.a $$2, dtv.a $$3) {
-         return false;
-      }
-   };
-
-   boolean a();
-
-   void a(dtu var1);
-
-   void b(dtu var1);
-
-   boolean a(il<dts> var1, esa var2, dts.a var3, dtv.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dtu var1, esa var2);
    }
 }

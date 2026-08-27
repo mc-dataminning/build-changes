@@ -1,25 +1,15 @@
-public class cwm extends cwq {
-   public cwm(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bo, $$1);
+public class cwm extends cwg {
+   public cwm(String $$0, cvp $$1, crs $$2) {
+      super(cvx.f, cvw.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 25;
+   public boolean a(bny $$0, czg $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
+   public crs g() {
+      return new crs(dcj.oc);
    }
 }

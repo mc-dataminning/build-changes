@@ -1,69 +1,58 @@
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fam extends fap {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wg c = wg.c("mco.snapshot.creating");
-   private final long d;
-   private final fai e;
-   private final String f;
-   private final String g;
-   private final ewt h;
-   @Nullable
-   private far i;
-   @Nullable
-   private fas j;
+public class fam {
+   private static final String a = "realms_persistence.json";
+   private static final exp b = new exp();
+   private static final Logger c = LogUtils.getLogger();
 
-   public fam(ewt $$0, long $$1, fai $$2, String $$3, String $$4) {
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$0;
+   public fam.a a() {
+      return b();
    }
 
-   @Override
-   public void run() {
-      ewy $$0 = ewy.a();
+   public void a(fam.a $$0) {
+      b($$0);
+   }
+
+   public static fam.a b() {
+      Path $$0 = c();
 
       try {
-         exp $$1 = $$0.a(Long.valueOf(this.d));
-         this.i = new far($$1.a, this.f, this.g);
-         this.j = new fas(this.e, $$1.a, ezn.a, () -> fbp.Q().execute(() -> ewt.a($$1, this.h, true)));
-         if (this.d()) {
-            return;
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fam.a $$2 = b.a($$1, fam.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
-
-         this.i.run();
-         if (this.d()) {
-            return;
-         }
-
-         this.j.run();
-      } catch (eyl var3) {
-         b.error("Couldn't create snapshot world", var3);
-         this.a(var3);
+      } catch (NoSuchFileException var3) {
       } catch (Exception var4) {
-         b.error("Couldn't create snapshot world", var4);
-         this.a(var4);
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fam.a();
+   }
+
+   public static void b(fam.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   @Override
-   public wg a() {
-      return c;
+   private static Path c() {
+      return fby.Q().p.toPath().resolve("realms_persistence.json");
    }
 
-   @Override
-   public void b() {
-      super.b();
-      if (this.i != null) {
-         this.i.b();
-      }
-
-      if (this.j != null) {
-         this.j.b();
-      }
+   public static class a implements eyh {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

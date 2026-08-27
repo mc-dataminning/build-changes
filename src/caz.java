@@ -1,47 +1,24 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class caz extends cax<bqw> {
-   public static final int a = 10;
-   private static final cbe c = cbe.b().a(10.0).d();
-   private final cvg d;
-
-   public caz(cvg $$0) {
-      this.d = $$0;
-   }
-
-   protected void a(aps $$0, bqw $$1) {
-      brp<?> $$2 = $$1.dP();
-      List<cjt> $$3 = $$0.x()
-         .stream()
-         .filter(bqa.f)
-         .filter($$1x -> c.a($$1, $$1x))
-         .filter($$1x -> $$1.a($$1x, 10.0))
-         .filter(this::a)
-         .filter($$1x -> !$$1.x($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         cjt $$4 = $$3.get(0);
-         $$2.a(bzr.O, $$4);
-      } else {
-         $$2.b(bzr.O);
-      }
-   }
-
-   private boolean a(cjt $$0) {
-      return this.a($$0.eU()) || this.a($$0.eV());
-   }
-
-   private boolean a(crj $$0) {
-      return this.d.a($$0);
+public class caz extends cbc<bqt> {
+   @Override
+   public Set<bzw<?>> a() {
+      return ImmutableSet.of(bzw.j, bzw.k, bzw.l);
    }
 
    @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.of(bzr.O);
+   protected void a(apu $$0, bqt $$1) {
+      List<cka> $$2 = $$0.x().stream().filter(bqf.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::g)).collect(Collectors.toList());
+      bru<?> $$3 = $$1.dP();
+      $$3.a(bzw.j, $$2);
+      List<cka> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(bzw.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cka> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(bzw.l, $$5);
    }
 }

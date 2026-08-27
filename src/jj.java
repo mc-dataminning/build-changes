@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface jj<T> extends ja<T> {
+   in.c<T> a(aju<T> var1, T var2, iz var3);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface jj {
+   boolean k();
+
+   io<T> n();
 }

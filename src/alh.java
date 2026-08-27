@@ -1,76 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.function.Predicate;
 
 public class alh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.damage.invulnerable"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wi.b("clear.failed.single", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wi.b("clear.failed.multiple", $$0));
 
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+   public static void a(CommandDispatcher<dv> $$0, dr $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("damage").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("clear").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((dv)$$0x.getSource(), Collections.singleton(((dv)$$0x.getSource()).h()), $$0xx -> true)))
             .then(
-               dv.a("target", eh.a())
+               ((RequiredArgumentBuilder)dw.a("targets", ei.d()).executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), $$0xx -> true)))
                   .then(
-                     ((RequiredArgumentBuilder)dv.a("amount", FloatArgumentType.floatArg(0.0F))
-                           .executes(
-                              $$0x -> a(
-                                    (du)$$0x.getSource(), eh.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((du)$$0x.getSource()).e().ai().n()
-                                 )
-                           ))
+                     ((RequiredArgumentBuilder)dw.a("item", gf.a($$1)).executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), gf.a($$0x, "item"))))
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("damageType", et.a($$1, ks.r))
-                                    .executes(
-                                       $$0x -> a(
-                                             (du)$$0x.getSource(),
-                                             eh.a($$0x, "target"),
-                                             FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bot(et.a($$0x, "damageType", ks.r))
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("at")
-                                       .then(
-                                          dv.a("location", fv.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (du)$$0x.getSource(),
-                                                      eh.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bot(et.a($$0x, "damageType", ks.r), fv.a($$0x, "location"))
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 dv.a("by")
-                                    .then(
-                                       ((RequiredArgumentBuilder)dv.a("entity", eh.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (du)$$0x.getSource(),
-                                                      eh.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bot(et.a($$0x, "damageType", ks.r), eh.a($$0x, "entity"))
-                                                   )
-                                             ))
-                                          .then(
-                                             dv.a("from")
-                                                .then(
-                                                   dv.a("cause", eh.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (du)$$0x.getSource(),
-                                                               eh.a($$0x, "target"),
-                                                               FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bot(et.a($$0x, "damageType", ks.r), eh.a($$0x, "entity"), eh.a($$0x, "cause"))
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
+                           dw.a("maxCount", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), gf.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
                               )
                         )
                   )
@@ -78,12 +31,40 @@ public class alh {
       );
    }
 
-   private static int a(du $$0, bpv $$1, float $$2, bot $$3) throws CommandSyntaxException {
-      if ($$1.a($$3, $$2)) {
-         $$0.a(() -> wg.a("commands.damage.success", $$2, $$1.O_()), true);
-         return 1;
+   private static int a(dv $$0, Collection<apv> $$1, Predicate<crs> $$2) throws CommandSyntaxException {
+      return a($$0, $$1, $$2, -1);
+   }
+
+   private static int a(dv $$0, Collection<apv> $$1, Predicate<crs> $$2, int $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (apv $$5 : $$1) {
+         $$4 += $$5.fZ().a($$2, $$3, $$5.bZ.q());
+         $$5.ca.d();
+         $$5.bZ.a($$5.fZ());
+      }
+
+      if ($$4 == 0) {
+         if ($$1.size() == 1) {
+            throw a.create($$1.iterator().next().ad());
+         } else {
+            throw b.create($$1.size());
+         }
       } else {
-         throw a.create();
+         int $$6 = $$4;
+         if ($$3 == 0) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wi.a("commands.clear.test.single", $$6, $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> wi.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> wi.a("commands.clear.success.single", $$6, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wi.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+         }
+
+         return $$4;
       }
    }
 }

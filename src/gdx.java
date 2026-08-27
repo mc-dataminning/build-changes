@@ -1,74 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.List;
-import java.util.function.DoubleSupplier;
 
-public class gdx implements gdl.a {
-   private final fbp a;
-   private double b = Double.MIN_VALUE;
-   private List<bpv> c = Collections.emptyList();
+public class gdx implements gdu.a {
+   private static final int a = 160;
+   private final fby b;
+   private final Int2ObjectMap<gdx.a> c = new Int2ObjectOpenHashMap();
 
-   public gdx(fbp $$0) {
-      this.a = $$0;
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void a(int $$0, id $$1, List<zw.a> $$2) {
+      this.c.put($$0, new gdx.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public gdx(fby $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bpv $$6 = this.a.j.n().g();
-         this.c = ImmutableList.copyOf($$6.dM().a_($$6, $$6.cH().g(16.0)));
-      }
+   public void a(ewr $$0, gai $$1, double $$2, double $$3, double $$4) {
+      fbj $$5 = this.b.j.n();
+      id $$6 = id.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      cjt $$7 = this.a.s;
-      if ($$7 != null && $$7.aD.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (bpv $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+      while (var11.hasNext()) {
+         gdx.a $$7 = (gdx.a)var11.next();
+         id $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               zw.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               gdu.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
          }
       }
    }
 
-   private void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4, bpv $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.aD.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         ib $$12 = $$5.aJ();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         ib $$13 = $$5.aH();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
-
-   private double a(bpv $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(ib $$0, ewi $$1, double $$2, double $$3, double $$4, fzz $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      fzx.a($$1, $$5.getBuffer(gah.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      fzx.a(
-         $$1,
-         $$5.getBuffer(gah.y()),
-         this.a.r.a_($$0).b(this.a.r, $$0, esf.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
+   static record a(id a, List<zw.a> b) {
    }
 }

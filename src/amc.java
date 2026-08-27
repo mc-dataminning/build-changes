@@ -1,48 +1,35 @@
-import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
+import com.mojang.brigadier.context.CommandContext;
 
 public class amc {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.help.failed"));
-
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("help").executes($$1 -> {
-               Map<CommandNode<du>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (du)$$1.getSource());
-
-               for (String $$3 : $$2.values()) {
-                  ((du)$$1.getSource()).a(() -> wg.b("/" + $$3), false);
-               }
-
-               return $$2.size();
-            }))
-            .then(
-               dv.a("command", StringArgumentType.greedyString())
-                  .executes(
-                     $$1 -> {
-                        ParseResults<du> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (du)$$1.getSource());
-                        if ($$2.getContext().getNodes().isEmpty()) {
-                           throw a.create();
-                        } else {
-                           Map<CommandNode<du>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (du)$$1.getSource()
-                           );
-
-                           for (String $$4 : $$3.values()) {
-                              ((du)$$1.getSource()).a(() -> wg.b("/" + $$2.getReader().getString() + " " + $$4), false);
-                           }
-
-                           return $$3.size();
-                        }
-                     }
-                  )
-            )
+   public static void a(CommandDispatcher<dv> $$0) {
+      final LiteralArgumentBuilder<dv> $$1 = (LiteralArgumentBuilder<dv>)dw.a("gamerule").requires($$0x -> $$0x.c(2));
+      czc.a(
+         new czc.c() {
+            @Override
+            public <T extends czc.g<T>> void a(czc.e<T> $$0, czc.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)dw.a($$0.a()).executes($$1xxx -> amc.a((dv)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> amc.a($$1xxx, $$0)))
+               );
+            }
+         }
       );
+      $$0.register($$1);
+   }
+
+   static <T extends czc.g<T>> int a(CommandContext<dv> $$0, czc.e<T> $$1) {
+      dv $$2 = (dv)$$0.getSource();
+      T $$3 = $$2.l().aN().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> wi.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
+
+   static <T extends czc.g<T>> int a(dv $$0, czc.e<T> $$1) {
+      T $$2 = $$0.l().aN().a($$1);
+      $$0.a(() -> wi.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

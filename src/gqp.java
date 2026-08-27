@@ -1,74 +1,33 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public class gqp {
-   public static final gqp a = new gqp(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<gql<gqp.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public class gqp implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final bkg<gqo> b;
+   private final bmy<Runnable> c;
 
-   protected gqp(Ticker $$0) {
-      this.c = $$0;
+   public gqp(FileChannel $$0, Executor $$1) {
+      this.b = new bkg<>(gqo.a, $$0);
+      this.c = bmy.a($$1, "telemetry-event-log");
    }
 
-   public synchronized void a(gql<gqp.a> $$0) {
-      this.a($$0, (Function<gql<gqp.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   public gqq a() {
+      return $$0 -> this.c.a(() -> {
+            try {
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
+            }
+         });
    }
 
-   public synchronized void a(gql<gqp.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<gql<gqp.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(gql<gqp.a> $$0, Function<gql<gqp.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(gql<gqp.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
-      }
-   }
-
-   public void a(gqi $$0) {
-      $$0.send(gqj.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((gql<gqp.a>)$$1, new gqp.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gqj.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(gql.B, new gqp.a((int)$$1)));
-            this.d.clear();
-         }
-      });
-   }
-
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<gqp.a> a = Codec.INT.xmap(gqp.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
-      }
+   @Override
+   public void close() {
+      this.c.a(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

@@ -1,25 +1,34 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public interface eep<P extends eeo> {
-   eep<eea> a = a("block_predicate_filter", eea.a);
-   eep<eer> b = a("rarity_filter", eer.a);
-   eep<eet> c = a("surface_relative_threshold_filter", eet.a);
-   eep<eeu> d = a("surface_water_depth_filter", eeu.a);
-   eep<edz> e = a("biome", edz.a);
-   eep<eee> f = a("count", eee.a);
-   eep<eej> g = a("noise_based_count", eej.a);
-   eep<eek> h = a("noise_threshold_count", eek.a);
-   eep<eed> i = a("count_on_every_layer", eed.a);
-   eep<eef> j = a("environment_scan", eef.a);
-   eep<eeh> k = a("heightmap", eeh.a);
-   eep<eeg> l = a("height_range", eeg.a);
-   eep<eei> m = a("in_square", eei.a);
-   eep<eeq> n = a("random_offset", eeq.a);
-   eep<eeb> o = a("carving_mask", eeb.a);
+public class eep extends eex {
+   public static final Codec<eep> a = RecordCodecBuilder.create($$0 -> $$0.group(edx.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eep::new));
+   private final edx c;
 
-   Codec<P> codec();
+   private eep(edx $$0) {
+      this.c = $$0;
+   }
 
-   private static <P extends eeo> eep<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(kr.U, $$0, () -> $$1);
+   public static eep a(edx $$0) {
+      return new eep($$0);
+   }
+
+   public static eep a(dvu $$0, dvu $$1) {
+      return a(eea.a($$0, $$1));
+   }
+
+   public static eep b(dvu $$0, dvu $$1) {
+      return a(edz.a($$0, $$1));
+   }
+
+   @Override
+   public Stream<id> a_(eev $$0, axt $$1, id $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   }
+
+   @Override
+   public eey<?> b() {
+      return eey.l;
    }
 }

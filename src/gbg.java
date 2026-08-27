@@ -1,111 +1,174 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
 public class gbg {
-   public static final gbg a = new gbg();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final gbg.a[] c;
-   private final ajt[] d;
+   private static final boolean f = false;
+   private static final float g = -16.0F;
+   private static final float h = 32.0F;
+   public final Vector3f a;
+   public final Vector3f b;
+   public final Map<ij, gbh> c;
+   public final gbi d;
+   public final boolean e;
 
-   private gbg() {
-      this.c = new gbg.a[0];
-      this.d = new ajt[0];
+   public gbg(Vector3f $$0, Vector3f $$1, Map<ij, gbh> $$2, @Nullable gbi $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.a();
    }
 
-   public gbg(gnn $$0, gbb $$1, List<gbf> $$2) {
-      this.d = $$2.stream().flatMap(gbf::b).map(gbf.b::a).distinct().toArray(ajt[]::new);
-      Object2IntMap<ajt> $$3 = new Object2IntOpenHashMap();
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
+   private void a() {
+      for (Entry<ij, gbh> $$0 : this.c.entrySet()) {
+         float[] $$1 = this.a($$0.getKey());
+         $$0.getValue().e.a($$1);
       }
+   }
 
-      List<gbg.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         gbf $$7 = $$2.get($$6);
-         gnj $$8 = this.a($$0, $$1, $$7);
-         gbg.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new gbg.b($$2x, $$1x.b());
-         }).toArray(gbg.b[]::new);
-         $$5.add(new gbg.a($$9, $$8));
+   private float[] a(ij $$0) {
+      switch ($$0) {
+         case a:
+            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
+         case b:
+            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
+         case c:
+         default:
+            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
+         case d:
+            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
+         case e:
+            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
+         case f:
+            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
       }
-
-      this.c = $$5.toArray(new gbg.a[0]);
    }
 
-   @Nullable
-   private gnj a(gnn $$0, gbb $$1, gbf $$2) {
-      gnu $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gnk.a);
-   }
+   protected static class a implements JsonDeserializer<gbg> {
+      private static final boolean a = true;
 
-   @Nullable
-   public gnj a(gnj $$0, crj $$1, @Nullable fuh $$2, @Nullable bqo $$3, int $$4) {
-      if (this.c.length != 0) {
-         cre $$5 = $$1.f();
-         int $$6 = this.d.length;
-         float[] $$7 = new float[$$6];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            ajt $$9 = this.d[$$8];
-            gkr $$10 = gkq.a($$5, $$9);
-            if ($$10 != null) {
-               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
-            } else {
-               $$7[$$8] = Float.NEGATIVE_INFINITY;
-            }
-         }
-
-         for (gbg.a $$11 : this.c) {
-            if ($$11.a($$7)) {
-               gnj $$12 = $$11.b;
-               if ($$12 == null) {
-                  return $$0;
-               }
-
-               return $$12;
-            }
+      public gbg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         gbi $$6 = this.a($$3);
+         Map<ij, gbh> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !axc.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
+         } else {
+            boolean $$8 = axc.a($$3, "shade", true);
+            return new gbg($$4, $$5, $$7, $$6, $$8);
          }
       }
 
-      return $$0;
-   }
-
-   static class a {
-      private final gbg.b[] a;
       @Nullable
-      final gnj b;
-
-      a(gbg.b[] $$0, @Nullable gnj $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (gbg.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
+      private gbi a(JsonObject $$0) {
+         gbi $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = axc.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            ij.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = axc.a($$2, "rescale", false);
+            $$1 = new gbi($$3, $$4, $$5, $$6);
          }
 
-         return true;
+         return $$1;
       }
-   }
 
-   static class b {
-      public final int a;
-      public final float b;
+      private float b(JsonObject $$0) {
+         float $$1 = axc.m($$0, "angle");
+         if ($$1 != 0.0F && axm.e($$1) != 22.5F && axm.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
+         } else {
+            return $$1;
+         }
+      }
 
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      private ij.a c(JsonObject $$0) {
+         String $$1 = axc.i($$0, "axis");
+         ij.a $$2 = ij.a.a($$1.toLowerCase(Locale.ROOT));
+         if ($$2 == null) {
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<ij, gbh> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<ij, gbh> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<ij, gbh> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<ij, gbh> $$2 = Maps.newEnumMap(ij.class);
+         JsonObject $$3 = axc.u($$1, "faces");
+
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            ij $$5 = this.a($$4.getKey());
+            $$2.put($$5, (gbh)$$0.deserialize($$4.getValue(), gbh.class));
+         }
+
+         return $$2;
+      }
+
+      private ij a(String $$0) {
+         ij $$1 = ij.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
+         } else {
+            return $$1;
+         }
+      }
+
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = axc.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = axc.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
+         }
       }
    }
 }

@@ -1,12 +1,20 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.function.Function;
 
-public record cue(int d) {
-   public static final Codec<cue> a = Codec.INT.xmap(cue::new, cue::a);
-   public static final ye<ByteBuf, cue> b = yc.e.a(cue::new, cue::a);
-   public static final cue c = new cue(4603950);
+public record cue(Map<in<dch>, dql<?>> c) {
+   public static final cue a = new cue(Map.of());
+   public static final Codec<cue> b = awu.c(kt.e.r(), (Function)($$0 -> Codec.STRING.comapFlatMap($$1 -> {
+         dql<?> $$2 = ((dch)$$0.a()).l().a($$1);
+         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
+      }, dql::f))).xmap(cue::new, cue::a);
 
-   public int a() {
-      return this.d;
+   public cue a(in<dch> $$0, dql<?> $$1) {
+      return new cue(ac.a(this.c, $$0, $$1));
+   }
+
+   public Map<in<dch>, dql<?>> a() {
+      return this.c;
    }
 }

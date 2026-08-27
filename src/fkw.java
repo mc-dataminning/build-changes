@@ -1,82 +1,107 @@
-public class fkw extends fkl {
-   private final dmp p;
-   private fdw<dmp.a> q;
-   private fdw<Boolean> r;
-   private fdw<Boolean> s;
-   private dmp.a u = dmp.a.c;
-   private boolean v;
-   private boolean w;
+public abstract class fkw<T extends cmx> extends fkv<T> implements fnq {
+   public final fng A;
+   private boolean B;
+   private final ajv C;
+   private final ajv D;
+   private final ajv E;
 
-   public fkw(dmp $$0) {
-      this.p = $$0;
+   public fkw(T $$0, fng $$1, cjz $$2, wi $$3, ajv $$4, ajv $$5, ajv $$6) {
+      super($$0, $$2, $$3);
+      this.A = $$1;
+      this.C = $$4;
+      this.D = $$5;
+      this.E = $$6;
    }
 
    @Override
-   cxy m() {
-      return this.p.b();
+   public void aM_() {
+      super.aM_();
+      this.B = this.k < 379;
+      this.A.a(this.k, this.l, this.j, this.B, this.s);
+      this.w = this.A.a(this.k, this.c);
+      this.c(new fek(this.w + 20, this.l / 2 - 49, 20, 18, fnk.a, $$0 -> {
+         this.A.e();
+         this.w = this.A.a(this.k, this.c);
+         $$0.c(this.w + 20, this.l / 2 - 49);
+      }));
+      this.o = (this.c - this.m.a(this.i)) / 2;
    }
 
    @Override
-   int C() {
-      return 135;
+   public void C() {
+      super.C();
+      this.A.h();
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.q = this.c(fdw.<dmp.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> wg.c("advMode.mode.sequence");
-            case b -> wg.c("advMode.mode.auto");
-            case c -> wg.c("advMode.mode.redstone");
-         };
-      }).a(dmp.a.values()).a().a(this.u).a(this.k / 2 - 50 - 100 - 4, 165, 100, 20, wg.c("advMode.mode"), ($$0, $$1) -> this.u = $$1));
-      this.r = this.c(
-         fdw.a(wg.c("advMode.mode.conditional"), wg.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.v)
-            .a(this.k / 2 - 50, 165, 100, 20, wg.c("advMode.type"), ($$0, $$1) -> this.v = $$1)
-      );
-      this.s = this.c(
-         fdw.a(wg.c("advMode.mode.autoexec.bat"), wg.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.w)
-            .a(this.k / 2 + 50 + 4, 165, 100, 20, wg.c("advMode.triggering"), ($$0, $$1) -> this.w = $$1)
-      );
-      this.e(false);
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      if (this.A.f() && this.B) {
+         this.b($$0, $$1, $$2, $$3);
+         this.A.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.A.a($$0, $$1, $$2, $$3);
+         this.A.a($$0, this.w, this.x, true, $$3);
+      }
+
+      this.a($$0, $$1, $$2);
+      this.A.a($$0, this.w, this.x, $$1, $$2);
    }
 
-   private void e(boolean $$0) {
-      this.c.j = $$0;
-      this.o.j = $$0;
-      this.q.j = $$0;
-      this.r.j = $$0;
-      this.s.j = $$0;
+   @Override
+   protected void a(fdl $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.w;
+      int $$5 = this.x;
+      $$0.a(this.C, $$4, $$5, 0, 0, this.c, this.d);
+      if (this.s.s()) {
+         int $$6 = 14;
+         int $$7 = axm.f(this.s.r() * 13.0F) + 1;
+         $$0.a(this.D, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+      }
+
+      int $$8 = 24;
+      int $$9 = axm.f(this.s.q() * 24.0F);
+      $$0.a(this.E, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
    }
 
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.A.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.B && this.A.f() ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(cos $$0, int $$1, int $$2, cnf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.A.a($$0);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.A.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
+      return this.A.a($$0, $$1, this.w, this.x, this.c, this.d, $$4) && $$5;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.A.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
    public void E() {
-      cxy $$0 = this.p.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.u = this.p.l();
-      this.v = this.p.t();
-      this.w = this.p.d();
-      this.o.a($$1);
-      this.q.a(this.u);
-      this.r.a(this.v);
-      this.s.a(this.w);
-      this.c($$1);
-      this.e(true);
+      this.A.i();
    }
 
    @Override
-   public void a(fbp $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
-   }
-
-   @Override
-   protected void a(cxy $$0) {
-      this.j.L().b(new agy(ib.a($$0.g()), this.a.a(), this.u, $$0.p(), this.v, this.w));
+   public fnk F() {
+      return this.A;
    }
 }

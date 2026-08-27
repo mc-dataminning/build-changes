@@ -1,91 +1,98 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
+import javax.annotation.Nullable;
+import net.jpountz.lz4.LZ4BlockInputStream;
+import net.jpountz.lz4.LZ4BlockOutputStream;
+import org.slf4j.Logger;
 
-public enum dst {
-   a {
-      @Override
-      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
-         ib $$5 = new ib(0, 128, 0);
+public class dst {
+   private static final Logger g = LogUtils.getLogger();
+   private static final Int2ObjectMap<dst> h = new Int2ObjectOpenHashMap();
+   private static final Object2ObjectMap<String, dst> i = new Object2ObjectOpenHashMap();
+   public static final dst a = a(new dst(1, null, $$0 -> new awv(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final dst b = a(
+      new dst(2, "deflate", $$0 -> new awv(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
+   );
+   public static final dst c = a(new dst(3, "none", awv::new, BufferedOutputStream::new));
+   public static final dst d = a(
+      new dst(4, "lz4", $$0 -> new awv(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
+   );
+   public static final dst e = a(new dst(127, null, $$0 -> {
+      throw new UnsupportedOperationException();
+   }, $$0 -> {
+      throw new UnsupportedOperationException();
+   }));
+   public static final dst f = b;
+   private static volatile dst j = f;
+   private final int k;
+   @Nullable
+   private final String l;
+   private final dst.a<InputStream> m;
+   private final dst.a<OutputStream> n;
 
-         for (cew $$6 : $$2) {
-            $$6.a($$5);
-         }
+   private dst(int $$0, @Nullable String $$1, dst.a<InputStream> $$2, dst.a<OutputStream> $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+   }
 
-         $$1.a(b);
+   private static dst a(dst $$0) {
+      h.put($$0.k, $$0);
+      if ($$0.l != null) {
+         i.put($$0.l, $$0);
       }
-   },
-   b {
-      @Override
-      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new ib(0, 128, 0), 0);
-            }
-         } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<dzf.a> $$8 = dzf.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               dzf.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (cew $$11 : $$2) {
-                     $$11.a(new ib($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
 
-                  for (ib $$13 : ib.a(new ib($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new ib($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
+      return $$0;
+   }
 
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, cyx.a.b);
-                  eat $$14 = new eat(true, ImmutableList.of($$10), new ib(0, 128, 0));
-                  dxv.J.a($$14, $$0, $$0.l().g(), axr.a(), new ib($$10.a(), 45, $$10.b()));
-               }
-            } else if ($$6) {
-               $$1.a(d);
-            }
-         }
-      }
-   },
-   d {
-      @Override
-      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
+   @Nullable
+   public static dst a(int $$0) {
+      return (dst)h.get($$0);
+   }
 
-            for (cew $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dr(), $$5.dt(), $$5.dx(), 6.0F, cyx.a.a);
-               $$5.am();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new ib(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (cew $$6 : $$2) {
-               $$6.a(new ib(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new ib(0, 128, 0), 0);
-         }
+   public static void a(String $$0) {
+      dst $$1 = (dst)i.get($$0);
+      if ($$1 != null) {
+         j = $$1;
+      } else {
+         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
       }
-   },
-   e {
-      @Override
-      public void a(aps $$0, dsu $$1, List<cew> $$2, int $$3, ib $$4) {
-      }
-   };
+   }
 
-   public abstract void a(aps var1, dsu var2, List<cew> var3, int var4, ib var5);
+   public static dst a() {
+      return j;
+   }
+
+   public static boolean b(int $$0) {
+      return h.containsKey($$0);
+   }
+
+   public int b() {
+      return this.k;
+   }
+
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.n.wrap($$0);
+   }
+
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.m.wrap($$0);
+   }
+
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
+   }
 }

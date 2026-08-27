@@ -1,126 +1,57 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cew extends bpv {
-   private static final aiy<Optional<ib>> c = ajc.a(cew.class, aja.o);
-   private static final aiy<Boolean> d = ajc.a(cew.class, aja.k);
-   public int b;
+public class cew extends cem {
+   private static final bqd bX = bqg.bu.n().a(bqc.a().a(bqb.a, 0.0F, bqg.bu.l() - 0.03125F, 0.0F)).a(0.5F);
 
-   public cew(bqb<? extends cew> $$0, cyx $$1) {
+   public cew(bqg<? extends cew> $$0, czg $$1) {
       super($$0, $$1);
-      this.I = true;
-      this.b = this.ag.a(100000);
    }
 
-   public cew(cyx $$0, double $$1, double $$2, double $$3) {
-      this(bqb.E, $$0);
-      this.a_($$1, $$2, $$3);
+   public static brz.a r() {
+      return gM().a(bsa.q, 15.0).a(bsa.r, 0.2F);
    }
 
-   @Override
-   protected bpv.b aZ() {
-      return bpv.b.a;
+   public static boolean c(bqg<? extends cci> $$0, czh $$1, bqx $$2, id $$3, axt $$4) {
+      return !bqx.a($$2) ? cci.b($$0, $$1, $$2, $$3, $$4) : bqx.b($$2) || a($$1, $$3);
    }
 
    @Override
-   protected void a(ajc.a $$0) {
-      $$0.a(c, Optional.empty());
-      $$0.a(d, true);
+   protected void a(axt $$0) {
+      this.f(bsa.m).a(a($$0::j));
    }
 
    @Override
-   public void l() {
-      this.b++;
-      if (this.dM() instanceof aps) {
-         ib $$0 = this.dm();
-         if (((aps)this.dM()).D() != null && this.dM().a_($$0).i()) {
-            this.dM().b($$0, dbl.a(this.dM(), $$0));
-         }
-      }
+   protected aun v() {
+      return auo.Dd;
    }
 
    @Override
-   protected void b(tm $$0) {
-      if (this.p() != null) {
-         $$0.a("beam_target", ub.a(this.p()));
-      }
-
-      $$0.a("ShowBottom", this.r());
+   protected aun o_() {
+      return auo.De;
    }
 
    @Override
-   protected void a(tm $$0) {
-      ub.a($$0, "beam_target").ifPresent(this::a);
-      if ($$0.b("ShowBottom", 1)) {
-         this.a($$0.q("ShowBottom"));
-      }
-   }
-
-   @Override
-   public boolean bw() {
-      return true;
-   }
-
-   @Override
-   public boolean a(bot $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else if ($$0.d() instanceof cex) {
-         return false;
-      } else {
-         if (!this.dH() && !this.dM().B) {
-            this.a(bpv.c.a);
-            if (!$$0.a(ave.m)) {
-               bot $$2 = $$0.d() != null ? this.dN().d(this, $$0.d()) : null;
-               this.dM().a(this, $$2, null, this.dr(), this.dt(), this.dx(), 6.0F, false, cyx.a.b);
-            }
-
-            this.a($$0);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public void al() {
-      this.a(this.dN().n());
-      super.al();
-   }
-
-   private void a(bot $$0) {
-      if (this.dM() instanceof aps) {
-         dsu $$1 = ((aps)this.dM()).D();
-         if ($$1 != null) {
-            $$1.a(this, $$0);
-         }
-      }
-   }
-
-   public void a(@Nullable ib $$0) {
-      this.an().a(c, Optional.ofNullable($$0));
+   protected aun d(boy $$0) {
+      return auo.Df;
    }
 
    @Nullable
-   public ib p() {
-      return this.an().a(c).orElse(null);
-   }
-
-   public void a(boolean $$0) {
-      this.an().a(d, $$0);
-   }
-
-   public boolean r() {
-      return this.an().a(d);
+   @Override
+   public bpu a(apu $$0, bpu $$1) {
+      return bqg.bu.a((czg)$$0);
    }
 
    @Override
-   public boolean a(double $$0) {
-      return super.a($$0) || this.p() != null;
+   public bof b(cka $$0, boe $$1) {
+      return !this.gC() ? bof.d : super.b($$0, $$1);
    }
 
    @Override
-   public crj dz() {
-      return new crj(crm.vd);
+   protected void gD() {
+   }
+
+   @Override
+   public bqd e(bre $$0) {
+      return this.p_() ? bX : super.e($$0);
    }
 }

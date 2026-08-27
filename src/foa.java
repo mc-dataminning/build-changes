@@ -1,110 +1,165 @@
-import java.nio.file.Path;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class foa extends fjo {
-   private static final wg a = wg.c("telemetry_info.screen.title");
-   private static final wg b = wg.c("telemetry_info.screen.description").a(n.h);
-   private static final wg c = wg.c("telemetry_info.button.privacy_statement");
-   private static final wg d = wg.c("telemetry_info.button.give_feedback");
-   private static final wg o = wg.c("telemetry_info.button.show_data");
-   private static final wg p = wg.c("telemetry_info.opt_in.description");
-   private static final int q = 8;
-   private static final boolean r = fbp.Q().D();
-   private final fjo s;
-   private final fbt u;
-   private final fhc v = new fhc(this, 16 + 9 * 5 + 20, r ? 33 + fdr.a(fbp.Q().h) : 33);
+public class foa extends fjx {
+   private static final wi a = wi.c("gui.abuseReport.reason.title");
+   private static final wi b = wi.c("gui.abuseReport.reason.description");
+   private static final wi c = wi.c("gui.abuseReport.read_info");
+   private static final int d = 320;
+   private static final int o = 62;
+   private static final int p = 4;
    @Nullable
-   private fnz w;
+   private final fjx q;
    @Nullable
-   private fej x;
-   private double y;
+   private foa.a r;
+   @Nullable
+   fvw s;
+   private final Consumer<fvw> u;
+   final fhl v = new fhl(this);
 
-   public foa(fjo $$0, fbt $$1) {
+   public foa(@Nullable fjx $$0, @Nullable fvw $$1, Consumer<fvw> $$2) {
       super(a);
-      this.s = $$0;
-      this.u = $$1;
+      this.q = $$0;
+      this.s = $$1;
+      this.u = $$2;
    }
 
    @Override
-   public wg i() {
-      return wf.a(super.i(), b);
-   }
+   protected void aM_() {
+      this.v.a(a, this.m);
+      fhp $$0 = this.v.c(fhp.d().a(4));
+      this.r = $$0.a(new foa.a(this.j));
+      foa.a.a $$1 = x.a(this.s, this.r::a);
+      this.r.a($$1);
+      $$0.a(fhq.b(this.I()));
+      fhp $$2 = this.v.b(fhp.e().a(8));
+      $$2.a(fdy.a(c, fio.b(this, "https://aka.ms/aboutjavareporting")).a());
+      $$2.a(fdy.a(wh.d, $$0x -> {
+         foa.a.a $$1x = this.r.h();
+         if ($$1x != null) {
+            this.u.accept($$1x.b());
+         }
 
-   @Override
-   protected void aN_() {
-      fhg $$0 = this.v.a(fhg.d().a(4));
-      $$0.c().b();
-      $$0.a(new few(a, this.m));
-      this.x = $$0.a(new fej(b, this.m).b(true));
-      fhg $$1 = $$0.a(fhg.e().a(8));
-      $$1.a(fdp.a(c, this::a).a());
-      $$1.a(fdp.a(d, this::b).a());
-      fhg $$2 = this.v.b(fhg.d().a(4));
-      if (r) {
-         $$2.a(this.m());
-      }
-
-      fhg $$3 = $$2.a(fhg.e().a(8));
-      $$3.a(fdp.a(o, this::c).a());
-      $$3.a(fdp.a(wf.d, $$0x -> this.d()).a());
-      fhg $$4 = this.v.c(fhg.d().a(8));
-      this.w = $$4.a(new fnz(0, 0, this.k - 40, this.v.d(), this.m));
-      this.w.a($$0x -> this.y = $$0x);
+         this.j.a(this.q);
+      }).a());
       this.v.a($$1x -> {
-         fdn var10000 = this.c($$1x);
+         fdw var10000 = this.c($$1x);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      if (this.w != null) {
-         this.w.a(this.y);
-         this.w.k(this.k - 40);
-         this.w.l(this.v.d());
-         this.w.j();
-      }
-
-      if (this.x != null) {
-         this.x.d(this.k - 16);
-      }
-
       this.v.a();
+      if (this.r != null) {
+         this.r.b(this.k, this.J(), this.v.c());
+      }
    }
 
    @Override
-   protected void aD_() {
-      if (this.w != null) {
-         this.b(this.w);
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m(), this.D(), this.C(), this.E(), -16777216);
+      $$0.b(this.m(), this.D(), this.F(), this.I(), -1);
+      $$0.b(this.m, b, this.m() + 4, this.D() + 4, -1);
+      foa.a.a $$4 = this.r.h();
+      if ($$4 != null) {
+         int $$5 = this.m() + 4 + 16;
+         int $$6 = this.C() - 4;
+         int $$7 = this.D() + 4 + 9 + 2;
+         int $$8 = this.E() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.m.b($$4.b.c(), $$9);
+         $$0.a(this.m, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
       }
    }
 
-   private fdn m() {
-      fbs<Boolean> $$0 = this.u.ai();
-      return fdr.a(p, this.m).a($$0).a(this::a).a();
+   private int m() {
+      return (this.k - 320) / 2;
    }
 
-   private void a(fdn $$0, boolean $$1) {
-      if (this.w != null) {
-         this.w.b($$1);
-      }
+   private int C() {
+      return (this.k + 320) / 2;
    }
 
-   private void a(fdp $$0) {
-      fif.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
+   private int D() {
+      return this.E() - this.I();
    }
 
-   private void b(fdp $$0) {
-      fif.a(this, "https://aka.ms/javafeedback?ref=game");
+   private int E() {
+      return this.l - this.v.b() - 4;
    }
 
-   private void c(fdp $$0) {
-      Path $$1 = this.j.u().b();
-      ac.j().a($$1.toUri());
+   private int F() {
+      return 320;
+   }
+
+   private int I() {
+      return 62;
+   }
+
+   int J() {
+      return this.v.d() - this.I() - 8;
    }
 
    @Override
    public void d() {
-      this.j.a(this.s);
+      this.j.a(this.q);
+   }
+
+   public class a extends feu<foa.a.a> {
+      public a(fby $$1) {
+         super($$1, foa.this.k, foa.this.J(), foa.this.v.c(), 18);
+
+         for (fvw $$2 : fvw.values()) {
+            this.b(new foa.a.a($$2));
+         }
+      }
+
+      @Nullable
+      public foa.a.a a(fvw $$0) {
+         return this.aE_().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      }
+
+      @Override
+      public int b() {
+         return 320;
+      }
+
+      public void a(@Nullable foa.a.a $$0) {
+         super.a($$0);
+         foa.this.s = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends feu.a<foa.a.a> {
+         final fvw b;
+
+         public a(fvw $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(foa.this.m, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public wi a() {
+            return wi.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         public fvw b() {
+            return this.b;
+         }
+      }
    }
 }

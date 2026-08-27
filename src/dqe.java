@@ -1,12 +1,15 @@
-public enum dqe implements aye {
-   a("up"),
-   b("side"),
-   c("none");
+public enum dqe implements ayg {
+   a(ij.a),
+   b(ij.b);
 
-   private final String d;
+   private final ij c;
 
-   private dqe(String $$0) {
-      this.d = $$0;
+   private dqe(ij $$0) {
+      this.c = $$0;
+   }
+
+   public ij a() {
+      return this.c;
    }
 
    @Override
@@ -16,10 +19,10 @@ public enum dqe implements aye {
 
    @Override
    public String c() {
-      return this.d;
+      return this == a ? "upper" : "lower";
    }
 
-   public boolean a() {
-      return this != c;
+   public dqe b() {
+      return this == a ? b : a;
    }
 }

@@ -1,18 +1,27 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public interface vo {
+   yq a();
 
-public interface vo<T extends vm> {
-   vf a();
+   vh b();
 
-   yo b();
+   void a(wi var1);
 
-   ye<ByteBuf, yn<? super T>> c();
+   boolean c();
 
-   @Nullable
-   ym d();
+   default boolean a(yp<?> $$0) {
+      return this.c();
+   }
 
-   public interface a<T extends vm, B extends ByteBuf> {
-      vo<T> bind(Function<ByteBuf, B> var1);
+   default boolean d() {
+      return true;
+   }
+
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$1);
+   }
+
+   default void a(p $$0) {
    }
 }

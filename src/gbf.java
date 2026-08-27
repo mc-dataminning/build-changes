@@ -1,68 +1,39 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
-
 public class gbf {
-   private final ajt a;
-   private final List<gbf.b> b;
+   protected final int[] a;
+   protected final int b;
+   protected final ij c;
+   protected final gls d;
+   private final boolean e;
 
-   public gbf(ajt $$0, List<gbf.b> $$1) {
+   public gbf(int[] $$0, int $$1, ij $$2, gls $$3, boolean $$4) {
       this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public ajt a() {
+   public gls a() {
+      return this.d;
+   }
+
+   public int[] b() {
       return this.a;
    }
 
-   public Stream<gbf.b> b() {
-      return this.b.stream();
+   public boolean c() {
+      return this.b != -1;
    }
 
-   protected static class a implements JsonDeserializer<gbf> {
-      public gbf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ajt $$4 = new ajt(axa.i($$3, "model"));
-         List<gbf.b> $$5 = this.a($$3);
-         return new gbf($$4, $$5);
-      }
-
-      protected List<gbf.b> a(JsonObject $$0) {
-         Map<ajt, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = axa.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(new ajt($$3.getKey()), axa.e($$3.getValue(), $$3.getKey()));
-         }
-
-         return $$1.entrySet().stream().map($$0x -> new gbf.b((ajt)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
-      }
+   public int d() {
+      return this.b;
    }
 
-   public static class b {
-      private final ajt a;
-      private final float b;
+   public ij e() {
+      return this.c;
+   }
 
-      public b(ajt $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public ajt a() {
-         return this.a;
-      }
-
-      public float b() {
-         return this.b;
-      }
+   public boolean f() {
+      return this.e;
    }
 }

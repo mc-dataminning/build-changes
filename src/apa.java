@@ -1,45 +1,60 @@
-public class apa {
-   private static final int b = 33;
-   private static final int c = 32;
-   private static final int d = 31;
-   public static final int a = 33 + dru.b();
+public class apa implements Comparable<apa> {
+   private final int a;
+   private final id b;
+   private int c;
+   private int d;
 
-   public static dru a(int $$0) {
-      return $$0 < 33 ? dru.n : dru.a($$0 - 33);
+   public apa(int $$0, id $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static int a(dru $$0) {
-      return 33 + dru.a($$0);
+   public int a() {
+      return this.a;
    }
 
-   public static apl b(int $$0) {
-      if ($$0 <= 31) {
-         return apl.d;
-      } else if ($$0 <= 32) {
-         return apl.c;
+   public id b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      if ($$0 > 10) {
+         $$0 = 10;
+      }
+
+      this.c = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public void b(int $$0) {
+      this.d = $$0;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         apa $$1 = (apa)$$0;
+         return this.a == $$1.a;
       } else {
-         return $$0 <= 33 ? apl.b : apl.a;
+         return false;
       }
    }
 
-   public static int a(apl $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.a);
    }
 
-   public static boolean c(int $$0) {
-      return $$0 <= 31;
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 <= 32;
-   }
-
-   public static boolean e(int $$0) {
-      return $$0 <= a;
+   public int a(apa $$0) {
+      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

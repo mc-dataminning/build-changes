@@ -1,31 +1,6 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
 
-public class dsg extends dsn {
-   private final dse a;
-   private final Path b;
-
-   public dsg(dsl $$0, Path $$1, dsl $$2, Path $$3, DataFixer $$4, boolean $$5, ayq $$6) {
-      super($$0, $$1, $$4, $$5, $$6);
-      this.b = $$3;
-      this.a = new dse($$2, $$3, $$5);
-   }
-
-   @Override
-   public CompletableFuture<Void> a(cye $$0, @Nullable tm $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
-   }
+@FunctionalInterface
+public interface dsg {
+   CompletableFuture<dre> apply(dre var1);
 }

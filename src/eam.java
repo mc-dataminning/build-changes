@@ -1,30 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eam(int b, int c, int d, il<eel> e) implements dzz {
+public class eam implements eai {
    public static final Codec<eam> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aws.j.fieldOf("tries").orElse(128).forGetter(eam::a),
-               aws.i.fieldOf("xz_spread").orElse(7).forGetter(eam::b),
-               aws.i.fieldOf("y_spread").orElse(3).forGetter(eam::c),
-               eel.b.fieldOf("feature").forGetter(eam::d)
-            )
+      $$0 -> $$0.group(Codec.intRange(0, dta.c).fieldOf("height").forGetter($$0x -> $$0x.b), dpi.b.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, eam::new)
    );
+   public final int b;
+   public final dpi c;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public il<eel> d() {
-      return this.e;
+   public eam(int $$0, dpi $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 }

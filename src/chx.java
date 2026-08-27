@@ -1,16 +1,86 @@
-public class chx {
-   private static final double a = 50.0;
+import javax.annotation.Nullable;
 
-   public static esa a(bqo $$0, axr $$1) {
-      int $$2 = 90;
-      float $$3 = $$0.aZ + 180.0F + (float)$$1.k() * 90.0F / 2.0F;
-      float $$4 = axk.i($$1.i(), 4.0F, 8.0F);
-      esa $$5 = esa.a(0.0F, $$3).a((double)$$4);
-      return $$0.dk().e($$5);
+public class chx extends cgo {
+   public chx(bqg<? extends chx> $$0, czg $$1) {
+      super($$0, $$1);
+      this.a(els.i, 8.0F);
    }
 
-   public static boolean a(chv $$0, esa $$1) {
-      esa $$2 = new esa($$0.dr(), $$0.dt(), $$0.dx());
-      return $$1.f($$2) > 50.0 ? false : $$0.dM().a(new cyg($$2, $$1, cyg.a.a, cyg.b.a, $$0)).c() == ery.a.a;
+   @Override
+   protected void z() {
+      this.bS.a(3, new bzj<>(this, cip.class, true));
+      super.z();
+   }
+
+   @Override
+   protected aun v() {
+      return auo.Cg;
+   }
+
+   @Override
+   protected aun d(boy $$0) {
+      return auo.Ci;
+   }
+
+   @Override
+   protected aun o_() {
+      return auo.Ch;
+   }
+
+   @Override
+   aun u() {
+      return auo.Cj;
+   }
+
+   @Override
+   protected void a(boy $$0, int $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$0.d() instanceof cgs $$4 && $$4.go()) {
+         $$4.gp();
+         this.a((czf)crv.uk);
+      }
+   }
+
+   @Override
+   protected void a(axt $$0, bod $$1) {
+      this.a(bqh.a, new crs(crv.oP));
+   }
+
+   @Override
+   protected void b(axt $$0, bod $$1) {
+   }
+
+   @Nullable
+   @Override
+   public brl a(czv $$0, bod $$1, bqx $$2, @Nullable brl $$3) {
+      brl $$4 = super.a($$0, $$1, $$2, $$3);
+      this.f(bsa.c).a(4.0);
+      this.y();
+      return $$4;
+   }
+
+   @Override
+   public boolean C(bqa $$0) {
+      if (!super.C($$0)) {
+         return false;
+      } else {
+         if ($$0 instanceof bqt) {
+            ((bqt)$$0).b(new bpm(bpo.t, 200), this);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   protected ckg b(crs $$0, float $$1) {
+      ckg $$2 = super.b($$0, $$1);
+      $$2.g(100);
+      return $$2;
+   }
+
+   @Override
+   public boolean c(bpm $$0) {
+      return $$0.a(bpo.t) ? false : super.c($$0);
    }
 }

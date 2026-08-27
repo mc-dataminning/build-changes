@@ -1,40 +1,38 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
+import java.util.Set;
 
-public class eot implements eop {
-   public static final Codec<eot> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eor.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eot::new)
-   );
-   public static final Codec<eot> b = eor.b.listOf().xmap(eot::new, $$0 -> $$0.c);
-   private final List<eop> c;
-   private final BiFunction<crj, enb, crj> d;
+public class eot extends eox {
+   public static final Codec<eot> a = RecordCodecBuilder.create($$0 -> a($$0).and(enk.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, eot::new));
+   private final enk.b b;
 
-   private eot(List<eop> $$0) {
-      this.c = $$0;
-      this.d = eor.a($$0);
-   }
-
-   public static eot a(List<eop> $$0) {
-      return new eot(List.copyOf($$0));
-   }
-
-   public crj a(crj $$0, enb $$1) {
-      return this.d.apply($$0, $$1);
+   public eot(List<eql> $$0, enk.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public void a(enk $$0) {
-      eop.super.a($$0);
+   public eoz b() {
+      return epa.w;
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+   @Override
+   public Set<epu<?>> a() {
+      return ImmutableSet.of(this.b.a());
+   }
+
+   @Override
+   public crs a(crs $$0, enk $$1) {
+      if ($$0.a(crv.ul) && $$1.c(this.b.a()) instanceof cka $$2) {
+         $$0.b(jr.L, new cup($$2.fY()));
       }
+
+      return $$0;
    }
 
-   @Override
-   public eoq b() {
-      return eor.D;
+   public static eox.a<?> a(enk.b $$0) {
+      return a($$1 -> new eot($$1, $$0));
    }
 }

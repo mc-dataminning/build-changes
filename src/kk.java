@@ -1,23 +1,12 @@
-import com.mojang.serialization.Codec;
+public class kk {
+   private final int b;
+   public static final kk a = new kk(1000);
 
-public abstract class kk<T extends kj> {
-   private final boolean a;
-   private final kj.a<T> b;
-
-   protected kk(boolean $$0, kj.a<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public kk(int $$0) {
+      this.b = $$0;
    }
 
-   public boolean b() {
-      return this.a;
-   }
-
-   public kj.a<T> c() {
+   public int a() {
       return this.b;
    }
-
-   public abstract Codec<T> d();
-
-   public abstract ye<? super vr, T> e();
 }

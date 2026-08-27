@@ -1,16 +1,16 @@
-public class cxo extends cwq {
-   public cxo(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bq, $$1);
+public class cxo extends cwz {
+   public cxo(cwz.a $$0, bqh... $$1) {
+      super($$0, avm.bb, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return $$0 * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 15;
    }
 
    @Override
@@ -19,7 +19,17 @@ public class cxo extends cwq {
    }
 
    @Override
-   public boolean c() {
-      return true;
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

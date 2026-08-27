@@ -1,42 +1,29 @@
-import java.util.UUID;
+public class zj implements yp<zg> {
+   public static final yg<vi, zj> a = yp.a(zj::a, zj::new);
+   private final long b;
 
-public record zj(UUID b, zj.a c) implements yn<ze> {
-   public static final ye<vg, zj> a = yn.a(zj::a, zj::new);
-
-   private zj(vg $$0) {
-      this($$0.n(), $$0.b(zj.a.class));
+   public zj(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private zj(vi $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vi $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public yp<zj> a() {
-      return zd.n;
+   public yr<zj> a() {
+      return zf.l;
    }
 
-   public void a(ze $$0) {
+   public void a(zg $$0) {
       $$0.a(this);
    }
 
-   public zj.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public long b() {
+      return this.b;
    }
 }

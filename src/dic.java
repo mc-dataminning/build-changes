@@ -1,83 +1,253 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dic extends dib {
-   public static final MapCodec<dic> h = b(dic::new);
-   public static final dpt i = dft.aE;
-   public static final dpq j = dib.d;
+public class dic extends dbw {
+   public static final MapCodec<dic> d = b(dic::new);
+   public static final dqg<dqm> e = dpy.ah;
+   public static final dpz f = dpy.w;
 
    @Override
    public MapCodec<dic> a() {
-      return h;
+      return d;
    }
 
-   protected dic(doy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(i, ih.c).a(j, Boolean.valueOf(true)));
+   protected dic(dph.d $$0) {
+      super(true, $$0);
+      this.k(this.E.b().a(e, dqm.a).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
-   @Override
-   public String g() {
-      return this.p().a();
+   protected boolean a(czg $$0, id $$1, dpi $$2, boolean $$3, int $$4) {
+      if ($$4 >= 8) {
+         return false;
+      } else {
+         int $$5 = $$1.u();
+         int $$6 = $$1.v();
+         int $$7 = $$1.w();
+         boolean $$8 = true;
+         dqm $$9 = $$2.c(e);
+         switch ($$9) {
+            case a:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+               }
+               break;
+            case b:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+               }
+               break;
+            case c:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = dqm.b;
+               break;
+            case d:
+               if ($$3) {
+                  $$5--;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$5++;
+               }
+
+               $$9 = dqm.b;
+               break;
+            case e:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = dqm.a;
+               break;
+            case f:
+               if ($$3) {
+                  $$7++;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$7--;
+               }
+
+               $$9 = dqm.a;
+         }
+
+         return this.a($$0, new id($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new id($$5, $$6 - 1, $$7), $$3, $$4, $$9);
+      }
    }
 
-   @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return dkz.m($$0);
-   }
-
-   @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      return dkz.b($$1, $$2, $$0.c(i));
-   }
-
-   @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? dca.a.n() : $$0;
-   }
-
-   @Nullable
-   @Override
-   public doz a(cuo $$0) {
-      doz $$1 = dca.cq.a($$0);
-      return $$1 == null ? null : this.n().a(i, $$1.c(i));
-   }
-
-   @Override
-   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
-      if ($$0.c(j)) {
-         ih $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(kf.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   protected boolean a(czg $$0, id $$1, boolean $$2, int $$3, dqm $$4) {
+      dpi $$5 = $$0.a_($$1);
+      if (!$$5.a(this)) {
+         return false;
+      } else {
+         dqm $$6 = $$5.c(e);
+         if ($$4 != dqm.b || $$6 != dqm.a && $$6 != dqm.e && $$6 != dqm.f) {
+            if ($$4 != dqm.a || $$6 != dqm.b && $$6 != dqm.c && $$6 != dqm.d) {
+               if (!$$5.c(f)) {
+                  return false;
+               } else {
+                  return $$0.C($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
+               }
+            } else {
+               return false;
+            }
+         } else {
+            return false;
+         }
       }
    }
 
    @Override
-   protected boolean a(cyx $$0, ib $$1, doz $$2) {
-      ih $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   protected void a(dpi $$0, czg $$1, id $$2, dch $$3) {
+      boolean $$4 = $$0.c(f);
+      boolean $$5 = $$1.C($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
+      if ($$5 != $$4) {
+         $$1.a($$2, $$0.a(f, Boolean.valueOf($$5)), 3);
+         $$1.a($$2.d(), this);
+         if ($$0.c(e).b()) {
+            $$1.a($$2.c(), this);
+         }
+      }
    }
 
    @Override
-   protected int a(doz $$0, cyd $$1, ib $$2, ih $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   public dql<dqm> c() {
+      return e;
    }
 
    @Override
-   protected doz a(doz $$0, dik $$1) {
-      return $$0.a(i, $$1.a($$0.c(i)));
+   protected dpi a(dpi $$0, dit $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dqm)$$0.c(e)) {
+               case c:
+                  return $$0.a(e, dqm.d);
+               case d:
+                  return $$0.a(e, dqm.c);
+               case e:
+                  return $$0.a(e, dqm.f);
+               case f:
+                  return $$0.a(e, dqm.e);
+               case g:
+                  return $$0.a(e, dqm.i);
+               case h:
+                  return $$0.a(e, dqm.j);
+               case i:
+                  return $$0.a(e, dqm.g);
+               case j:
+                  return $$0.a(e, dqm.h);
+            }
+         case d:
+            switch ((dqm)$$0.c(e)) {
+               case a:
+                  return $$0.a(e, dqm.b);
+               case b:
+                  return $$0.a(e, dqm.a);
+               case c:
+                  return $$0.a(e, dqm.e);
+               case d:
+                  return $$0.a(e, dqm.f);
+               case e:
+                  return $$0.a(e, dqm.d);
+               case f:
+                  return $$0.a(e, dqm.c);
+               case g:
+                  return $$0.a(e, dqm.j);
+               case h:
+                  return $$0.a(e, dqm.g);
+               case i:
+                  return $$0.a(e, dqm.h);
+               case j:
+                  return $$0.a(e, dqm.i);
+            }
+         case b:
+            switch ((dqm)$$0.c(e)) {
+               case a:
+                  return $$0.a(e, dqm.b);
+               case b:
+                  return $$0.a(e, dqm.a);
+               case c:
+                  return $$0.a(e, dqm.f);
+               case d:
+                  return $$0.a(e, dqm.e);
+               case e:
+                  return $$0.a(e, dqm.c);
+               case f:
+                  return $$0.a(e, dqm.d);
+               case g:
+                  return $$0.a(e, dqm.h);
+               case h:
+                  return $$0.a(e, dqm.i);
+               case i:
+                  return $$0.a(e, dqm.j);
+               case j:
+                  return $$0.a(e, dqm.g);
+            }
+         default:
+            return $$0;
+      }
    }
 
    @Override
-   protected doz a(doz $$0, dgu $$1) {
-      return $$0.a($$1.a($$0.c(i)));
+   protected dpi a(dpi $$0, dhd $$1) {
+      dqm $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dqm.f);
+               case f:
+                  return $$0.a(e, dqm.e);
+               case g:
+                  return $$0.a(e, dqm.j);
+               case h:
+                  return $$0.a(e, dqm.i);
+               case i:
+                  return $$0.a(e, dqm.h);
+               case j:
+                  return $$0.a(e, dqm.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dqm.d);
+               case d:
+                  return $$0.a(e, dqm.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dqm.h);
+               case h:
+                  return $$0.a(e, dqm.g);
+               case i:
+                  return $$0.a(e, dqm.j);
+               case j:
+                  return $$0.a(e, dqm.i);
+            }
+      }
+
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(i, j);
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(e, f, c);
    }
 }

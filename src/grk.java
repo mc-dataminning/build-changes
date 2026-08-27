@@ -1,57 +1,38 @@
-import java.util.Collection;
+public class grk implements grn {
+   private static final int a = 600;
+   private static final wi b = wi.c("tutorial.open_inventory.title");
+   private static final wi c = wi.a("tutorial.open_inventory.description", grm.a("inventory"));
+   private final grm d;
+   private fgj e;
+   private int f;
 
-public abstract class grk<E extends fel.a<E>> extends fel<E> {
-   protected grk(int $$0, int $$1, int $$2, int $$3) {
-      super(fbp.Q(), $$0, $$1, $$2, $$3);
+   public grk(grm $$0) {
+      this.d = $$0;
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gro.f);
+      } else {
+         if (this.f >= 600 && this.e == null) {
+            this.e = new fgj(fgj.a.d, b, c, false);
+            this.d.e().aA().a(this.e);
+         }
       }
    }
 
-   public void b(int $$0) {
-      this.p($$0);
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
    @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int l() {
-      return super.l();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int r() {
-      return super.r();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void I() {
-      this.k();
+   public void c() {
+      this.d.a(gro.e);
    }
 }

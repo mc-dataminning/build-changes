@@ -1,86 +1,63 @@
-import com.google.common.collect.Lists;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fmz {
+public abstract class fmz extends fjx {
+   private static final int b = 100;
+   private final wi c;
    @Nullable
-   private cvl<?> a;
-   private final List<fmz.a> b = Lists.newArrayList();
-   float c;
-
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
-   }
-
-   public void a(cvg $$0, int $$1, int $$2) {
-      this.b.add(new fmz.a($$0, $$1, $$2));
-   }
-
-   public fmz.a a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int b() {
-      return this.b.size();
-   }
-
+   private final wi d;
+   private final wi o;
    @Nullable
-   public cvl<?> c() {
-      return this.a;
+   protected fea a;
+   @Nullable
+   private fej p;
+   private final fhj q;
+
+   protected fmz(wi $$0, wi $$1, wi $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   public void a(cvl<?> $$0) {
-      this.a = $$0;
+   protected fmz(wi $$0, wi $$1, @Nullable wi $$2, wi $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.o = $$3;
+      this.q = new fhj(0, 0, this.k, this.l);
    }
 
-   public void a(fdc $$0, fbp $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!fjo.r()) {
-         this.c += $$5;
+   protected abstract fhm m();
+
+   @Override
+   protected void aM_() {
+      fhp $$0 = this.q.a(fhp.d().a(8));
+      $$0.c().b();
+      $$0.a(new fff(this.n(), this.m));
+      this.p = $$0.a(new fej(this.k - 100, this.c, this.m, 12), $$0x -> $$0x.a(12));
+      this.p.b(false);
+      fhp $$1 = $$0.a(fhp.d().a(8));
+      $$1.c().b();
+      if (this.d != null) {
+         this.a = $$1.a(fea.a(this.d, this.m).a());
       }
 
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         fmz.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
-         }
-
-         crj $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(gah.G(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
-         }
-      }
+      $$1.a(this.m());
+      this.q.a($$1x -> {
+         fdw var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public class a {
-      private final cvg b;
-      private final int c;
-      private final int d;
-
-      public a(cvg $$1, int $$2, int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   @Override
+   protected void c() {
+      if (this.p != null) {
+         this.p.d(this.k - 100);
       }
 
-      public int a() {
-         return this.c;
-      }
+      this.q.a();
+      fhj.a(this.q, this.G());
+   }
 
-      public int b() {
-         return this.d;
-      }
-
-      public crj c() {
-         crj[] $$0 = this.b.a();
-         return $$0.length == 0 ? crj.i : $$0[axk.d(fmz.this.c / 30.0F) % $$0.length];
-      }
+   @Override
+   public wi i() {
+      return this.o;
    }
 }

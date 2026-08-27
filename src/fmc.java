@@ -1,26 +1,30 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fmc extends fku {
+   private final cyh p;
 
-public class fmc implements fmg {
-   private final fhv a;
-
-   public fmc(fhv $$0) {
-      this.a = $$0;
+   public fmc(cyh $$0) {
+      this.p = $$0;
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
-      }
+   public cyh m() {
+      return this.p;
+   }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
+   @Override
+   int C() {
+      return 150;
+   }
 
-      return $$6;
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(cyh $$0) {
+      if ($$0 instanceof cmd.a $$1) {
+         this.j.L().b(new ahb($$1.h().aj(), this.a.a(), $$0.p()));
+      }
    }
 }

@@ -1,13 +1,13 @@
-import javax.annotation.Nullable;
+public interface brd extends brc {
+   void b(int var1);
 
-public interface brd {
-   boolean f();
+   boolean a();
 
-   void a(@Nullable aun var1);
+   void c(int var1);
 
-   default aul X_() {
-      return aum.mB;
+   void b();
+
+   default int c() {
+      return 0;
    }
-
-   boolean i();
 }

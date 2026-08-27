@@ -1,28 +1,12 @@
-import javax.annotation.Nullable;
+public class aaw {
+   public static final yr<aav> a = a("cookie_request");
+   public static final yr<aay> b = b("cookie_response");
 
-public record aaw(ajt b, @Nullable byte[] c) implements yn<aav> {
-   public static final ye<vg, aaw> a = yn.a(aaw::a, aaw::new);
-
-   private aaw(vg $$0) {
-      this($$0.q(), $$0.c(za.b));
+   private static <T extends yp<aau>> yr<T> a(String $$0) {
+      return new yr<>(yq.b, new ajv($$0));
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, za.b);
-   }
-
-   @Override
-   public yp<aaw> a() {
-      return aau.b;
-   }
-
-   public void a(aav $$0) {
-      $$0.a(this);
-   }
-
-   @Nullable
-   public byte[] e() {
-      return this.c;
+   private static <T extends yp<aax>> yr<T> b(String $$0) {
+      return new yr<>(yq.a, new ajv($$0));
    }
 }

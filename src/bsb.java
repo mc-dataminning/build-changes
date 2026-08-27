@@ -1,79 +1,106 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bsb<E extends bqw> extends bsg<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<bqw> g = $$0 -> $$0.ej() != null || $$0.dB() || $$0.bN();
-   private final float h;
-   private final Predicate<E> i;
+public class bsb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bqg<? extends bqt>, brz> b = ImmutableMap.builder()
+      .put(bqg.a, cdo.r().a())
+      .put(bqg.c, cdr.r().a())
+      .put(bqg.d, cga.r().a())
+      .put(bqg.f, cdu.gu().a())
+      .put(bqg.g, ccd.r().a())
+      .put(bqg.h, ccj.gz().a())
+      .put(bqg.i, cgp.r().a())
+      .put(bqg.l, cgq.gq().a())
+      .put(bqg.p, ccl.gz().a())
+      .put(bqg.o, cdz.r().a())
+      .put(bqg.q, cgr.r().a())
+      .put(bqg.t, ccn.r().a())
+      .put(bqg.u, ccf.r().a())
+      .put(bqg.w, ccp.r().a())
+      .put(bqg.x, cgs.r().a())
+      .put(bqg.y, ccq.gn().a())
+      .put(bqg.z, cel.r().a())
+      .put(bqg.B, cgu.r().a())
+      .put(bqg.D, cgv.r().a())
+      .put(bqg.H, cgw.r().a())
+      .put(bqg.I, cgx.r().a())
+      .put(bqg.F, cfe.u().a())
+      .put(bqg.J, cgz.u().a())
+      .put(bqg.m, cic.r().a())
+      .put(bqg.Q, ccs.r().a())
+      .put(bqg.R, cec.gn().a())
+      .put(bqg.T, cha.y().a())
+      .put(bqg.U, chb.r().a())
+      .put(bqg.W, bql.gn().a())
+      .put(bqg.X, cei.u().a())
+      .put(bqg.Y, chc.gn().a())
+      .put(bqg.Z, cik.r().a())
+      .put(bqg.ab, cem.gM().a())
+      .put(bqg.ac, chz.gr().a())
+      .put(bqg.ad, che.u().a())
+      .put(bqg.af, ccu.r().a())
+      .put(bqg.am, cep.gy().a())
+      .put(bqg.ao, chf.r().a())
+      .put(bqg.ar, ccp.r().a())
+      .put(bqg.as, cel.r().a())
+      .put(bqg.at, ccw.r().a())
+      .put(bqg.av, ccx.gy().a())
+      .put(bqg.aw, ccy.gt().a())
+      .put(bqg.ax, chg.gt().a())
+      .put(bqg.ay, ccz.r().a())
+      .put(bqg.az, ciq.gu().a())
+      .put(bqg.aA, cit.y().a())
+      .put(bqg.aB, chj.u().a())
+      .put(bqg.bx, cka.fN().a())
+      .put(bqg.aC, cda.r().a())
+      .put(bqg.aE, ccf.r().a())
+      .put(bqg.aF, cdc.u().a())
+      .put(bqg.aG, chl.r().a())
+      .put(bqg.aH, ccf.r().a())
+      .put(bqg.aI, cde.r().a())
+      .put(bqg.aJ, chm.r().a())
+      .put(bqg.aL, chn.r().a())
+      .put(bqg.aM, cgo.r().a())
+      .put(bqg.aN, ces.r().a())
+      .put(bqg.aO, chg.gt().a())
+      .put(bqg.aQ, cez.r().a())
+      .put(bqg.aR, cdg.r().a())
+      .put(bqg.aV, chr.u().a())
+      .put(bqg.aW, cdh.gn().a())
+      .put(bqg.aX, cgo.r().a())
+      .put(bqg.aY, cht.u().a())
+      .put(bqg.aZ, cef.gp().a())
+      .put(bqg.bd, cep.gy().a())
+      .put(bqg.bf, ccf.r().a())
+      .put(bqg.bg, cdj.y().a())
+      .put(bqg.bh, chu.r().a())
+      .put(bqg.bi, cjn.gw().a())
+      .put(bqg.bj, chv.u().a())
+      .put(bqg.bl, cje.r().a())
+      .put(bqg.bk, bqv.A().a())
+      .put(bqg.bn, chw.u().a())
+      .put(bqg.bo, cfy.u().a())
+      .put(bqg.bp, cgo.r().a())
+      .put(bqg.br, cdl.gv().a())
+      .put(bqg.bs, chy.r().a())
+      .put(bqg.bt, chz.gr().a())
+      .put(bqg.bu, cew.r().a())
+      .put(bqg.bv, chz.gr().a())
+      .put(bqg.bw, cib.gx().a())
+      .build();
 
-   public bsb(float $$0) {
-      this($$0, g::test);
+   public static brz a(bqg<? extends bqt> $$0) {
+      return b.get($$0);
    }
 
-   public bsb(float $$0, Predicate<E> $$1) {
-      super(Map.of(bzr.Z, bzs.c, bzr.x, bzs.c), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
+   public static boolean b(bqg<?> $$0) {
+      return b.containsKey($$0);
    }
 
-   protected boolean a(aps $$0, E $$1) {
-      return this.i.test($$1) && ($$1.dP().a(bzr.x) || $$1.dP().a(bzr.Z));
-   }
-
-   protected boolean a(aps $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(aps $$0, E $$1, long $$2) {
-      $$1.dP().a(bzr.Z, true);
-      $$1.dP().b(bzr.m);
-   }
-
-   protected void c(aps $$0, E $$1, long $$2) {
-      brp<?> $$3 = $$1.dP();
-      $$3.b(bzr.Z);
-   }
-
-   protected void d(aps $$0, E $$1, long $$2) {
-      if ($$1.K().l()) {
-         esa $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dP().a(bzr.m, new bzu($$3, this.h, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private esa a(E $$0, aps $$1) {
-      if ($$0.bN()) {
-         Optional<esa> $$2 = this.a((cyd)$$1, $$0).map(esa::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return cbl.a($$0, 5, 4);
-   }
-
-   private Optional<ib> a(cyd $$0, bpv $$1) {
-      ib $$2 = $$1.dm();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<ib> $$3;
-         if (axk.f($$1.dg()) == 2) {
-            $$3 = $$1x -> ib.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(avh.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(avh.a);
-         }
-
-         return ib.a($$2, 5, 1, $$3);
-      }
+   public static void a() {
+      kt.g.s().filter($$0 -> $$0.f() != bqw.h).filter($$0 -> !b((bqg<?>)$$0)).map(kt.g::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
    }
 }

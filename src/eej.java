@@ -1,37 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eej extends ees {
-   public static final Codec<eej> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eej::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class eej extends eew {
+   public static final Codec<eej> a = RecordCodecBuilder.create($$0 -> $$0.group(dwh.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, eej::new));
+   private final dwh c;
 
-   private eej(int $$0, double $$1, double $$2) {
+   private eej(dwh $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static eej a(int $$0, double $$1, double $$2) {
-      return new eej($$0, $$1, $$2);
-   }
-
-   @Override
-   protected int a(axr $$0, ib $$1) {
-      double $$2 = czw.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public static eej a(dwh $$0) {
+      return new eej($$0);
    }
 
    @Override
-   public eep<?> b() {
-      return eep.g;
+   protected boolean a(eev $$0, axt $$1, id $$2) {
+      return this.c.test($$0.d(), $$2);
+   }
+
+   @Override
+   public eey<?> b() {
+      return eey.a;
    }
 }

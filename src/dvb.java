@@ -1,68 +1,77 @@
-public final class dvb {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-   private dvb() {
+public class dvb implements dup {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dvc i = new dvc(this);
+
+   public dvb(long $$0) {
+      this.b($$0);
    }
 
-   protected static duv.c a(duk $$0, duk $$1, duk $$2, dve $$3) {
-      doz $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dvb.a $$8 = $$6 > 0.0 ? dvb.a.a : dvb.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = axk.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               axr $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = axk.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
+   @Override
+   public axt d() {
+      return new dvb(this.g());
    }
 
-   protected static enum a {
-      a(dca.ra.n(), dca.tg.n(), dca.c.n(), 0, 50),
-      b(dca.Q.n(), dca.tf.n(), dca.qz.n(), -60, -8);
+   @Override
+   public dvn e() {
+      return new dvb.a(this.g());
+   }
 
-      final doz e;
-      final doz f;
-      final doz g;
-      protected final int c;
-      protected final int d;
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw ayj.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
+   }
 
-      private a(doz $$0, doz $$1, doz $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw ayj.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
+
+   public static class a implements dvn {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public axt a(int $$0, int $$1, int $$2) {
+         long $$3 = axm.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dvb($$4);
+      }
+
+      @Override
+      public axt a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new dvb((long)$$1 ^ this.a);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
       }
    }
 }

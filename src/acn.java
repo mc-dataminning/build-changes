@@ -1,48 +1,53 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class acn implements yn<aay> {
-   public static final ye<vg, acn> a = yn.a(acn::a, acn::new);
+public class acn implements yp<aba> {
+   public static final yg<vi, acn> a = yp.a(acn::a, acn::new);
    private final int b;
-   private final int c;
-   private final aco d;
+   private final id c;
+   private final int d;
+   private final boolean e;
 
-   public acn(cye $$0, ekh $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.e;
-      this.c = $$0.f;
-      this.d = new aco($$0, $$1, $$2, $$3);
+   public acn(int $$0, id $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.i();
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private acn(vg $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new aco($$0, this.b, this.c);
+   private acn(vi $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(vg $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
+   private void a(vi $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public yp<acn> a() {
-      return afj.N;
+   public yr<acn> a() {
+      return afl.L;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public boolean b() {
+      return this.e;
    }
 
    public int e() {
-      return this.c;
+      return this.b;
    }
 
-   public aco f() {
+   public int f() {
       return this.d;
+   }
+
+   public id g() {
+      return this.c;
    }
 }

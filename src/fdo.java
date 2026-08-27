@@ -1,165 +1,147 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import org.joml.Matrix4f;
 
-public class fdo {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final ajt[] c = new ajt[]{
-      new ajt("boss_bar/pink_background"),
-      new ajt("boss_bar/blue_background"),
-      new ajt("boss_bar/red_background"),
-      new ajt("boss_bar/green_background"),
-      new ajt("boss_bar/yellow_background"),
-      new ajt("boss_bar/purple_background"),
-      new ajt("boss_bar/white_background")
-   };
-   private static final ajt[] d = new ajt[]{
-      new ajt("boss_bar/pink_progress"),
-      new ajt("boss_bar/blue_progress"),
-      new ajt("boss_bar/red_progress"),
-      new ajt("boss_bar/green_progress"),
-      new ajt("boss_bar/yellow_progress"),
-      new ajt("boss_bar/purple_progress"),
-      new ajt("boss_bar/white_progress")
-   };
-   private static final ajt[] e = new ajt[]{
-      new ajt("boss_bar/notched_6_background"),
-      new ajt("boss_bar/notched_10_background"),
-      new ajt("boss_bar/notched_12_background"),
-      new ajt("boss_bar/notched_20_background")
-   };
-   private static final ajt[] f = new ajt[]{
-      new ajt("boss_bar/notched_6_progress"),
-      new ajt("boss_bar/notched_10_progress"),
-      new ajt("boss_bar/notched_12_progress"),
-      new ajt("boss_bar/notched_20_progress")
-   };
-   private final fbp g;
-   final Map<UUID, fed> h = Maps.newLinkedHashMap();
+public class fdo implements AutoCloseable {
+   private static final ajv a = new ajv("textures/map/map_icons.png");
+   static final gaq b = gaq.t(a);
+   private static final int c = 128;
+   private static final int d = 128;
+   final glt e;
+   private final Int2ObjectMap<fdo.a> f = new Int2ObjectOpenHashMap();
 
-   public fdo(fbp $$0) {
-      this.g = $$0;
+   public fdo(glt $$0) {
+      this.e = $$0;
    }
 
-   public void a(fdc $$0) {
-      if (!this.h.isEmpty()) {
-         this.g.aI().a("bossHealth");
-         int $$1 = $$0.a();
-         int $$2 = 12;
-
-         for (fed $$3 : this.h.values()) {
-            int $$4 = $$1 / 2 - 91;
-            this.a($$0, $$4, $$2, $$3);
-            wg $$6 = $$3.i();
-            int $$7 = this.g.h.a($$6);
-            int $$8 = $$1 / 2 - $$7 / 2;
-            int $$9 = $$2 - 9;
-            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
-            $$2 += 10 + 9;
-            if ($$2 >= $$0.b() / 3) {
-               break;
-            }
-         }
-
-         this.g.aI().c();
-      }
+   public void a(emm $$0, emo $$1) {
+      this.b($$0, $$1).a();
    }
 
-   private void a(fdc $$0, int $$1, int $$2, bnq $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = axk.b($$3.j(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
-      }
+   public void a(ewr $$0, gai $$1, emm $$2, emo $$3, boolean $$4, int $$5) {
+      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
    }
 
-   private void a(fdc $$0, int $$1, int $$2, bnq $$3, int $$4, ajt[] $$5, ajt[] $$6) {
-      $$0.a($$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.l() != bnq.b.a) {
-         RenderSystem.enableBlend();
-         $$0.a($$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-         RenderSystem.disableBlend();
-      }
-   }
-
-   public void a(abi $$0) {
-      $$0.a(new abi.b() {
-         @Override
-         public void a(UUID $$0, wg $$1, float $$2, bnq.a $$3, bnq.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            fdo.this.h.put($$0, new fed($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            fdo.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            fdo.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, wg $$1) {
-            fdo.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, bnq.a $$1, bnq.b $$2) {
-            fed $$3 = fdo.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fed $$4 = fdo.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
+   private fdo.a b(emm $$0, emo $$1) {
+      return (fdo.a)this.f.compute($$0.b(), ($$1x, $$2) -> {
+         if ($$2 == null) {
+            return new fdo.a($$1x, $$1);
+         } else {
+            $$2.a($$1);
+            return $$2;
          }
       });
    }
 
    public void a() {
-      this.h.clear();
+      ObjectIterator var1 = this.f.values().iterator();
+
+      while (var1.hasNext()) {
+         fdo.a $$0 = (fdo.a)var1.next();
+         $$0.close();
+      }
+
+      this.f.clear();
    }
 
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (bnq $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
+   @Override
+   public void close() {
+      this.a();
+   }
+
+   class a implements AutoCloseable {
+      private emo b;
+      private final glf c;
+      private final gaq d;
+      private boolean e = true;
+
+      a(int $$0, emo $$1) {
+         this.b = $$1;
+         this.c = new glf(128, 128, true);
+         ajv $$2 = fdo.this.e.a("map/" + $$0, this.c);
+         this.d = gaq.t($$2);
+      }
+
+      void a(emo $$0) {
+         boolean $$1 = this.b != $$0;
+         this.b = $$0;
+         this.e |= $$1;
+      }
+
+      public void a() {
+         this.e = true;
+      }
+
+      private void b() {
+         for (int $$0 = 0; $$0 < 128; $$0++) {
+            for (int $$1 = 0; $$1 < 128; $$1++) {
+               int $$2 = $$1 + $$0 * 128;
+               this.c.e().a($$1, $$0, elf.b(this.b.g[$$2]));
+            }
+         }
+
+         this.c.d();
+      }
+
+      void a(ewr $$0, gai $$1, boolean $$2, int $$3) {
+         if (this.e) {
+            this.b();
+            this.e = false;
+         }
+
+         int $$4 = 0;
+         int $$5 = 0;
+         float $$6 = 0.0F;
+         Matrix4f $$7 = $$0.c().a();
+         ewv $$8 = $$1.getBuffer(this.d);
+         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$3).e();
+         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$3).e();
+         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$3).e();
+         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$3).e();
+         int $$9 = 0;
+
+         for (emk $$10 : this.b.h()) {
+            if (!$$2 || $$10.b()) {
+               $$0.a();
+               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
+               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
+               $$0.b(4.0F, 4.0F, 3.0F);
+               $$0.a(-0.125F, 0.125F, 0.0F);
+               byte $$11 = $$10.a();
+               float $$12 = (float)($$11 % 16 + 0) / 16.0F;
+               float $$13 = (float)($$11 / 16 + 0) / 16.0F;
+               float $$14 = (float)($$11 % 16 + 1) / 16.0F;
+               float $$15 = (float)($$11 / 16 + 1) / 16.0F;
+               Matrix4f $$16 = $$0.c().a();
+               float $$17 = -0.001F;
+               ewv $$18 = $$1.getBuffer(fdo.b);
+               $$18.a($$16, -1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$13).b($$3).e();
+               $$18.a($$16, 1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$13).b($$3).e();
+               $$18.a($$16, 1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$15).b($$3).e();
+               $$18.a($$16, -1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$15).b($$3).e();
+               $$0.b();
+               if ($$10.g().isPresent()) {
+                  fdj $$19 = fby.Q().h;
+                  wi $$20 = $$10.g().get();
+                  float $$21 = (float)$$19.a($$20);
+                  float $$22 = axm.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
+                  $$0.a();
+                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
+                  $$0.b($$22, $$22, 1.0F);
+                  $$0.a(0.0F, 0.0F, -0.1F);
+                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, fdj.a.a, Integer.MIN_VALUE, $$3);
+                  $$0.b();
+               }
+
+               $$9++;
             }
          }
       }
 
-      return false;
-   }
-
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (bnq $$0 : this.h.values()) {
-            if ($$0.m()) {
-               return true;
-            }
-         }
+      @Override
+      public void close() {
+         this.c.close();
       }
-
-      return false;
-   }
-
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (bnq $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
    }
 }

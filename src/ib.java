@@ -1,558 +1,80 @@
-import com.google.common.collect.AbstractIterator;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.ArrayDeque;
-import java.util.Optional;
-import java.util.Queue;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.concurrent.Immutable;
-import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.tuple.Pair;
-import org.slf4j.Logger;
-
-@Immutable
-public class ib extends jg {
-   public static final Codec<ib> a = Codec.INT_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new ib($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
-      .stable();
-   public static final ye<ByteBuf, ib> b = new ye<ByteBuf, ib>() {
-      public ib a(ByteBuf $$0) {
-         return vg.b($$0);
+public enum ib {
+   a {
+      @Override
+      public int a(int $$0, int $$1, int $$2, ij.a $$3) {
+         return $$3.a($$0, $$1, $$2);
       }
 
-      public void a(ByteBuf $$0, ib $$1) {
-         vg.a($$0, $$1);
+      @Override
+      public double a(double $$0, double $$1, double $$2, ij.a $$3) {
+         return $$3.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public ij.a a(ij.a $$0) {
+         return $$0;
+      }
+
+      @Override
+      public ib a() {
+         return this;
+      }
+   },
+   b {
+      @Override
+      public int a(int $$0, int $$1, int $$2, ij.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
+
+      @Override
+      public double a(double $$0, double $$1, double $$2, ij.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
+
+      @Override
+      public ij.a a(ij.a $$0) {
+         return d[Math.floorMod($$0.ordinal() + 1, 3)];
+      }
+
+      @Override
+      public ib a() {
+         return c;
+      }
+   },
+   c {
+      @Override
+      public int a(int $$0, int $$1, int $$2, ij.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public double a(double $$0, double $$1, double $$2, ij.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public ij.a a(ij.a $$0) {
+         return d[Math.floorMod($$0.ordinal() - 1, 3)];
+      }
+
+      @Override
+      public ib a() {
+         return b;
       }
    };
-   private static final Logger e = LogUtils.getLogger();
-   public static final ib c = new ib(0, 0, 0);
-   private static final int h = 1 + axk.f(axk.c(30000000));
-   private static final int i = h;
-   public static final int d = 64 - h - i;
-   private static final long j = (1L << h) - 1L;
-   private static final long k = (1L << d) - 1L;
-   private static final long l = (1L << i) - 1L;
-   private static final int m = 0;
-   private static final int n = d;
-   private static final int o = d + i;
 
-   public ib(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   public static final ij.a[] d = ij.a.values();
+   public static final ib[] e = values();
 
-   public ib(jg $$0) {
-      this($$0.u(), $$0.v(), $$0.w());
-   }
+   public abstract int a(int var1, int var2, int var3, ij.a var4);
 
-   public static long a(long $$0, ih $$1) {
-      return a($$0, $$1.j(), $$1.k(), $$1.l());
-   }
+   public abstract double a(double var1, double var3, double var5, ij.a var7);
 
-   public static long a(long $$0, int $$1, int $$2, int $$3) {
-      return a(a($$0) + $$1, b($$0) + $$2, c($$0) + $$3);
-   }
+   public abstract ij.a a(ij.a var1);
 
-   public static int a(long $$0) {
-      return (int)($$0 << 64 - o - h >> 64 - h);
-   }
+   public abstract ib a();
 
-   public static int b(long $$0) {
-      return (int)($$0 << 64 - d >> 64 - d);
-   }
-
-   public static int c(long $$0) {
-      return (int)($$0 << 64 - n - i >> 64 - i);
-   }
-
-   public static ib d(long $$0) {
-      return new ib(a($$0), b($$0), c($$0));
-   }
-
-   public static ib a(double $$0, double $$1, double $$2) {
-      return new ib(axk.a($$0), axk.a($$1), axk.a($$2));
-   }
-
-   public static ib a(iv $$0) {
-      return a($$0.a(), $$0.b(), $$0.c());
-   }
-
-   public long a() {
-      return a(this.u(), this.v(), this.w());
-   }
-
-   public static long a(int $$0, int $$1, int $$2) {
-      long $$3 = 0L;
-      $$3 |= ((long)$$0 & j) << o;
-      $$3 |= ((long)$$1 & k) << 0;
-      return $$3 | ((long)$$2 & l) << n;
-   }
-
-   public static long e(long $$0) {
-      return $$0 & -16L;
-   }
-
-   public ib b(int $$0, int $$1, int $$2) {
-      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ib(this.u() + $$0, this.v() + $$1, this.w() + $$2);
-   }
-
-   public esa b() {
-      return esa.b(this);
-   }
-
-   public ib a(jg $$0) {
-      return this.b($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public ib b(jg $$0) {
-      return this.b(-$$0.u(), -$$0.v(), -$$0.w());
-   }
-
-   public ib a(int $$0) {
-      if ($$0 == 1) {
-         return this;
-      } else {
-         return $$0 == 0 ? c : new ib(this.u() * $$0, this.v() * $$0, this.w() * $$0);
-      }
-   }
-
-   public ib c() {
-      return this.a(ih.b);
-   }
-
-   public ib b(int $$0) {
-      return this.a(ih.b, $$0);
-   }
-
-   public ib d() {
-      return this.a(ih.a);
-   }
-
-   public ib c(int $$0) {
-      return this.a(ih.a, $$0);
-   }
-
-   public ib e() {
-      return this.a(ih.c);
-   }
-
-   public ib d(int $$0) {
-      return this.a(ih.c, $$0);
-   }
-
-   public ib f() {
-      return this.a(ih.d);
-   }
-
-   public ib e(int $$0) {
-      return this.a(ih.d, $$0);
-   }
-
-   public ib g() {
-      return this.a(ih.e);
-   }
-
-   public ib f(int $$0) {
-      return this.a(ih.e, $$0);
-   }
-
-   public ib h() {
-      return this.a(ih.f);
-   }
-
-   public ib g(int $$0) {
-      return this.a(ih.f, $$0);
-   }
-
-   public ib a(ih $$0) {
-      return new ib(this.u() + $$0.j(), this.v() + $$0.k(), this.w() + $$0.l());
-   }
-
-   public ib a(ih $$0, int $$1) {
-      return $$1 == 0 ? this : new ib(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
-   }
-
-   public ib a(ih.a $$0, int $$1) {
-      if ($$1 == 0) {
-         return this;
-      } else {
-         int $$2 = $$0 == ih.a.a ? $$1 : 0;
-         int $$3 = $$0 == ih.a.b ? $$1 : 0;
-         int $$4 = $$0 == ih.a.c ? $$1 : 0;
-         return new ib(this.u() + $$2, this.v() + $$3, this.w() + $$4);
-      }
-   }
-
-   public ib a(dik $$0) {
-      switch ($$0) {
-         case a:
-         default:
-            return this;
-         case b:
-            return new ib(-this.w(), this.v(), this.u());
-         case c:
-            return new ib(-this.u(), this.v(), -this.w());
-         case d:
-            return new ib(this.w(), this.v(), -this.u());
-      }
-   }
-
-   public ib c(jg $$0) {
-      return new ib(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
-   }
-
-   public ib h(int $$0) {
-      return new ib(this.u(), $$0, this.w());
-   }
-
-   public ib i() {
-      return this;
-   }
-
-   public ib.a j() {
-      return new ib.a(this.u(), this.v(), this.w());
-   }
-
-   public static Iterable<ib> a(axr $$0, int $$1, ib $$2, int $$3) {
-      return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
-   }
-
-   @Deprecated
-   public static Stream<ib> a(ib $$0) {
-      return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
-   }
-
-   public static Iterable<ib> a(axr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      int $$8 = $$5 - $$2 + 1;
-      int $$9 = $$6 - $$3 + 1;
-      int $$10 = $$7 - $$4 + 1;
-      return () -> new AbstractIterator<ib>() {
-            final ib.a a = new ib.a();
-            int b = $$1;
-
-            protected ib a() {
-               if (this.b <= 0) {
-                  return (ib)this.endOfData();
-               } else {
-                  ib $$0 = this.a.d($$2 + $$0.a($$8), $$3 + $$0.a($$9), $$4 + $$0.a($$10));
-                  this.b--;
-                  return $$0;
-               }
-            }
-         };
-   }
-
-   public static Iterable<ib> a(ib $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$1 + $$2 + $$3;
-      int $$5 = $$0.u();
-      int $$6 = $$0.v();
-      int $$7 = $$0.w();
-      return () -> new AbstractIterator<ib>() {
-            private final ib.a h = new ib.a();
-            private int i;
-            private int j;
-            private int k;
-            private int l;
-            private int m;
-            private boolean n;
-
-            protected ib a() {
-               if (this.n) {
-                  this.n = false;
-                  this.h.r($$7 - (this.h.w() - $$7));
-                  return this.h;
-               } else {
-                  ib $$0;
-                  for ($$0 = null; $$0 == null; this.m++) {
-                     if (this.m > this.k) {
-                        this.l++;
-                        if (this.l > this.j) {
-                           this.i++;
-                           if (this.i > $$4) {
-                              return (ib)this.endOfData();
-                           }
-
-                           this.j = Math.min($$1, this.i);
-                           this.l = -this.j;
-                        }
-
-                        this.k = Math.min($$2, this.i - Math.abs(this.l));
-                        this.m = -this.k;
-                     }
-
-                     int $$1 = this.l;
-                     int $$2 = this.m;
-                     int $$3 = this.i - Math.abs($$1) - Math.abs($$2);
-                     if ($$3 <= $$3) {
-                        this.n = $$3 != 0;
-                        $$0 = this.h.d($$5 + $$1, $$6 + $$2, $$7 + $$3);
-                     }
-                  }
-
-                  return $$0;
-               }
-            }
-         };
-   }
-
-   public static Optional<ib> a(ib $$0, int $$1, int $$2, Predicate<ib> $$3) {
-      for (ib $$4 : a($$0, $$1, $$2, $$1)) {
-         if ($$3.test($$4)) {
-            return Optional.of($$4);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public static Stream<ib> b(ib $$0, int $$1, int $$2, int $$3) {
-      return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
-   }
-
-   public static Iterable<ib> a(ib $$0, ib $$1) {
-      return b(
-         Math.min($$0.u(), $$1.u()),
-         Math.min($$0.v(), $$1.v()),
-         Math.min($$0.w(), $$1.w()),
-         Math.max($$0.u(), $$1.u()),
-         Math.max($$0.v(), $$1.v()),
-         Math.max($$0.w(), $$1.w())
-      );
-   }
-
-   public static Stream<ib> b(ib $$0, ib $$1) {
-      return StreamSupport.stream(a($$0, $$1).spliterator(), false);
-   }
-
-   public static Stream<ib> a(eez $$0) {
-      return a(
-         Math.min($$0.h(), $$0.k()),
-         Math.min($$0.i(), $$0.l()),
-         Math.min($$0.j(), $$0.m()),
-         Math.max($$0.h(), $$0.k()),
-         Math.max($$0.i(), $$0.l()),
-         Math.max($$0.j(), $$0.m())
-      );
-   }
-
-   public static Stream<ib> a(erv $$0) {
-      return a(axk.a($$0.a), axk.a($$0.b), axk.a($$0.c), axk.a($$0.d), axk.a($$0.e), axk.a($$0.f));
-   }
-
-   public static Stream<ib> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return StreamSupport.stream(b($$0, $$1, $$2, $$3, $$4, $$5).spliterator(), false);
-   }
-
-   public static Iterable<ib> b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$3 - $$0 + 1;
-      int $$7 = $$4 - $$1 + 1;
-      int $$8 = $$5 - $$2 + 1;
-      int $$9 = $$6 * $$7 * $$8;
-      return () -> new AbstractIterator<ib>() {
-            private final ib.a g = new ib.a();
-            private int h;
-
-            protected ib a() {
-               if (this.h == $$9) {
-                  return (ib)this.endOfData();
-               } else {
-                  int $$0 = this.h % $$6;
-                  int $$1 = this.h / $$6;
-                  int $$2 = $$1 % $$7;
-                  int $$3 = $$1 / $$7;
-                  this.h++;
-                  return this.g.d($$0 + $$0, $$1 + $$2, $$2 + $$3);
-               }
-            }
-         };
-   }
-
-   public static Iterable<ib.a> a(ib $$0, int $$1, ih $$2, ih $$3) {
-      Validate.validState($$2.o() != $$3.o(), "The two directions cannot be on the same axis", new Object[0]);
-      return () -> new AbstractIterator<ib.a>() {
-            private final ih[] e = new ih[]{$$2, $$3, $$2.g(), $$3.g()};
-            private final ib.a f = $$0.j().c($$3);
-            private final int g = 4 * $$1;
-            private int h = -1;
-            private int i;
-            private int j;
-            private int k = this.f.u();
-            private int l = this.f.v();
-            private int m = this.f.w();
-
-            protected ib.a a() {
-               this.f.d(this.k, this.l, this.m).c(this.e[(this.h + 4) % 4]);
-               this.k = this.f.u();
-               this.l = this.f.v();
-               this.m = this.f.w();
-               if (this.j >= this.i) {
-                  if (this.h >= this.g) {
-                     return (ib.a)this.endOfData();
-                  }
-
-                  this.h++;
-                  this.j = 0;
-                  this.i = this.h / 2 + 1;
-               }
-
-               this.j++;
-               return this.f;
-            }
-         };
-   }
-
-   public static int a(ib $$0, int $$1, int $$2, BiConsumer<ib, Consumer<ib>> $$3, Predicate<ib> $$4) {
-      Queue<Pair<ib, Integer>> $$5 = new ArrayDeque<>();
-      LongSet $$6 = new LongOpenHashSet();
-      $$5.add(Pair.of($$0, 0));
-      int $$7 = 0;
-
-      while (!$$5.isEmpty()) {
-         Pair<ib, Integer> $$8 = $$5.poll();
-         ib $$9 = (ib)$$8.getLeft();
-         int $$10 = (Integer)$$8.getRight();
-         long $$11 = $$9.a();
-         if ($$6.add($$11) && $$4.test($$9)) {
-            if (++$$7 >= $$2) {
-               return $$7;
-            }
-
-            if ($$10 < $$1) {
-               $$3.accept($$9, $$2x -> $$5.add(Pair.of($$2x, $$10 + 1)));
-            }
-         }
-      }
-
-      return $$7;
-   }
-
-   public static class a extends ib {
-      public a() {
-         this(0, 0, 0);
-      }
-
-      public a(int $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public a(double $$0, double $$1, double $$2) {
-         this(axk.a($$0), axk.a($$1), axk.a($$2));
-      }
-
-      @Override
-      public ib b(int $$0, int $$1, int $$2) {
-         return super.b($$0, $$1, $$2).i();
-      }
-
-      @Override
-      public ib a(int $$0) {
-         return super.a($$0).i();
-      }
-
-      @Override
-      public ib a(ih $$0, int $$1) {
-         return super.a($$0, $$1).i();
-      }
-
-      @Override
-      public ib a(ih.a $$0, int $$1) {
-         return super.a($$0, $$1).i();
-      }
-
-      @Override
-      public ib a(dik $$0) {
-         return super.a($$0).i();
-      }
-
-      public ib.a d(int $$0, int $$1, int $$2) {
-         this.p($$0);
-         this.q($$1);
-         this.r($$2);
-         return this;
-      }
-
-      public ib.a b(double $$0, double $$1, double $$2) {
-         return this.d(axk.a($$0), axk.a($$1), axk.a($$2));
-      }
-
-      public ib.a g(jg $$0) {
-         return this.d($$0.u(), $$0.v(), $$0.w());
-      }
-
-      public ib.a f(long $$0) {
-         return this.d(a($$0), b($$0), c($$0));
-      }
-
-      public ib.a a(hz $$0, int $$1, int $$2, int $$3) {
-         return this.d($$0.a($$1, $$2, $$3, ih.a.a), $$0.a($$1, $$2, $$3, ih.a.b), $$0.a($$1, $$2, $$3, ih.a.c));
-      }
-
-      public ib.a a(jg $$0, ih $$1) {
-         return this.d($$0.u() + $$1.j(), $$0.v() + $$1.k(), $$0.w() + $$1.l());
-      }
-
-      public ib.a a(jg $$0, int $$1, int $$2, int $$3) {
-         return this.d($$0.u() + $$1, $$0.v() + $$2, $$0.w() + $$3);
-      }
-
-      public ib.a a(jg $$0, jg $$1) {
-         return this.d($$0.u() + $$1.u(), $$0.v() + $$1.v(), $$0.w() + $$1.w());
-      }
-
-      public ib.a c(ih $$0) {
-         return this.c($$0, 1);
-      }
-
-      public ib.a c(ih $$0, int $$1) {
-         return this.d(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
-      }
-
-      public ib.a e(int $$0, int $$1, int $$2) {
-         return this.d(this.u() + $$0, this.v() + $$1, this.w() + $$2);
-      }
-
-      public ib.a h(jg $$0) {
-         return this.d(this.u() + $$0.u(), this.v() + $$0.v(), this.w() + $$0.w());
-      }
-
-      public ib.a a(ih.a $$0, int $$1, int $$2) {
-         switch ($$0) {
-            case a:
-               return this.d(axk.a(this.u(), $$1, $$2), this.v(), this.w());
-            case b:
-               return this.d(this.u(), axk.a(this.v(), $$1, $$2), this.w());
-            case c:
-               return this.d(this.u(), this.v(), axk.a(this.w(), $$1, $$2));
-            default:
-               throw new IllegalStateException("Unable to clamp axis " + $$0);
-         }
-      }
-
-      public ib.a p(int $$0) {
-         super.u($$0);
-         return this;
-      }
-
-      public ib.a q(int $$0) {
-         super.t($$0);
-         return this;
-      }
-
-      public ib.a r(int $$0) {
-         super.s($$0);
-         return this;
-      }
-
-      @Override
-      public ib i() {
-         return new ib(this);
-      }
+   public static ib a(ij.a $$0, ij.a $$1) {
+      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

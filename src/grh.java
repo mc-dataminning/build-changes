@@ -1,37 +1,65 @@
-public class grh extends grl {
-   private final wg a;
-   private fei b = fei.a;
-   private final fjo c;
-   private int y;
+public class grh implements grn {
+   private static final int a = 1200;
+   private static final wi b = wi.c("tutorial.craft_planks.title");
+   private static final wi c = wi.c("tutorial.craft_planks.description");
+   private final grm d;
+   private fgj e;
+   private int f;
 
-   public grh(fjo $$0, wg $$1, wg $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+   public grh(grm $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void aN_() {
-      this.j.ae().i();
-      this.b = fei.a(this.m, this.a, this.k - 50);
-      this.y = this.b.a() * 9;
-      this.c(fdp.a(wf.k, $$0 -> this.j.a(this.c)).a(this.k / 2 - 100, this.l / 2 + this.y / 2 + 9, 200, 20).a());
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gro.f);
+      } else {
+         if (this.f == 1) {
+            fzk $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fZ().a(avm.b)) {
+                  this.d.a(gro.f);
+                  return;
+               }
+
+               if (a($$0, avm.b)) {
+                  this.d.a(gro.f);
+                  return;
+               }
+            }
+         }
+
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new fgj(fgj.a.e, b, c, false);
+            this.d.e().aA().a(this.e);
+         }
+      }
    }
 
    @Override
-   public wg i() {
-      return wg.i().b(this.i).f(": ").b(this.a);
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
    @Override
-   public void d() {
-      fbp.Q().a(this.c);
+   public void a(crs $$0) {
+      if ($$0.a(avm.b)) {
+         this.d.a(gro.f);
+      }
    }
 
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, this.i, this.k / 2, this.l / 2 - this.y / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.k / 2, this.l / 2 - this.y / 2);
+   public static boolean a(fzk $$0, avt<crn> $$1) {
+      for (in<crn> $$2 : kt.h.c($$1)) {
+         if ($$0.j().a(auz.b.b($$2.a())) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

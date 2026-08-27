@@ -1,111 +1,83 @@
-import java.util.function.Consumer;
+public abstract class fhg implements fhm {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-public class fhg implements fhd {
-   private final fhb a;
-   private final fhg.a b;
-   private int c = 0;
-
-   private fhg(fhg.a $$0) {
-      this(0, 0, $$0);
-   }
-
-   public fhg(int $$0, int $$1, fhg.a $$2) {
-      this.a = new fhb($$0, $$1);
-      this.b = $$2;
-   }
-
-   public fhg a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public fhf b() {
-      return this.a.b();
-   }
-
-   public fhf c() {
-      return this.a.c();
-   }
-
-   public <T extends fhe> T a(T $$0, fhf $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends fhe> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fhe> T a(T $$0, Consumer<fhf> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fhe> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int x() {
-      return this.a.x();
-   }
-
-   @Override
-   public int v() {
-      return this.a.v();
+   public fhg(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
    public void m(int $$0) {
-      this.a.m($$0);
+      this.b($$1 -> {
+         int $$2 = $$1.C() + ($$0 - this.C());
+         $$1.m($$2);
+      });
+      this.c = $$0;
    }
 
    @Override
    public void n(int $$0) {
-      this.a.n($$0);
+      this.b($$1 -> {
+         int $$2 = $$1.D() + ($$0 - this.D());
+         $$1.n($$2);
+      });
+      this.d = $$0;
    }
 
    @Override
    public int C() {
-      return this.a.C();
+      return this.c;
    }
 
    @Override
    public int D() {
-      return this.a.D();
+      return this.d;
    }
 
-   public static fhg d() {
-      return new fhg(fhg.a.b);
+   @Override
+   public int x() {
+      return this.a;
    }
 
-   public static fhg e() {
-      return new fhg(fhg.a.a);
+   @Override
+   public int v() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b;
+   protected abstract static class a {
+      public final fhn a;
+      public final fho.a b;
 
-      void a(fhb $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+      protected a(fhn $$0, fho $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
       }
 
-      public <T extends fhe> T a(fhb $$0, T $$1, int $$2, fhf $$3) {
-         return (T)(switch (this) {
-            case a -> $$0.a($$1, 0, $$2, $$3);
-            case b -> $$0.a($$1, $$2, 0, $$3);
-         });
+      public int a() {
+         return this.a.v() + this.b.b + this.b.d;
+      }
+
+      public int b() {
+         return this.a.x() + this.b.a + this.b.c;
+      }
+
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.x() - this.b.c);
+         int $$4 = (int)axm.i(this.b.e, $$2, $$3);
+         this.a.m($$4 + $$0);
+      }
+
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.v() - this.b.d);
+         int $$4 = Math.round(axm.i(this.b.f, $$2, $$3));
+         this.a.n($$4 + $$0);
       }
    }
 }

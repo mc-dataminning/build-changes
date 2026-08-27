@@ -1,39 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class dzi extends dxv<eaw> {
-   public dzi(Codec<eaw> $$0) {
+public class dzi extends dye<eaz> {
+   public dzi(Codec<eaz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dxx<eaw> $$0) {
-      czs $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      if (a($$1, $$2)) {
+   public boolean a(dyg<eaz> $$0) {
+      dab $$1 = $$0.b();
+      id $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
          return false;
       } else {
-         axr $$3 = $$0.d();
-         eaw $$4 = $$0.f();
-         int $$5 = $$4.a();
-         int $$6 = $$4.b();
-         int $$7 = $$4.c();
-         ib.a $$8 = new ib.a();
+         eaz $$3 = $$0.f();
+         axt $$4 = $$0.d();
+         djb $$5 = djb.b();
+         int $$6 = $$3.f() + $$3.d();
 
-         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
-            $$8.g($$2).e(axk.a($$3, -$$5, $$5), axk.a($$3, -$$6, $$6), axk.a($$3, -$$5, $$5));
-            if (a($$1, $$8) && !a($$1, (ib)$$8)) {
-               int $$10 = axk.a($$3, 1, $$7);
-               if ($$3.a(6) == 0) {
-                  $$10 *= 2;
-               }
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
 
-               if ($$3.a(5) == 0) {
-                  $$10 = 1;
-               }
+            boolean $$9 = $$7 < $$3.f();
 
-               int $$11 = 17;
-               int $$12 = 25;
-               a($$1, $$3, $$8, $$10, 17, 25);
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         id $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, dcj.qU.n(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            id $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ij.b)) {
+               $$1.a($$14, dcj.qV.n().a(dja.d, Boolean.valueOf(true)), 3);
             }
          }
 
@@ -41,39 +49,12 @@ public class dzi extends dxv<eaw> {
       }
    }
 
-   private static boolean a(cyy $$0, ib.a $$1) {
-      do {
-         $$1.e(0, -1, 0);
-         if ($$0.s($$1)) {
-            return false;
-         }
-      } while ($$0.a_($$1).i());
-
-      $$1.e(0, 1, 0);
-      return true;
-   }
-
-   public static void a(cyy $$0, axr $$1, ib.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 1; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.c())) {
-               $$0.a($$2, dca.oB.n().a(dfn.e, Integer.valueOf(axk.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, dca.oC.n(), 2);
-         }
-
-         $$2.c(ih.b);
-      }
-   }
-
-   private static boolean a(cyy $$0, ib $$1) {
-      if (!$$0.u($$1)) {
+   private boolean a(czh $$0, id $$1) {
+      dpi $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof diw) {
          return true;
       } else {
-         doz $$2 = $$0.a_($$1.d());
-         return !$$2.a(dca.dV) && !$$2.a(dca.on) && !$$2.a(dca.op);
+         return !$$2.i() && (!$$2.a(dcj.G) || !$$2.u().b()) ? false : ij.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
       }
    }
 }

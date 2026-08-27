@@ -1,69 +1,144 @@
-public class cku extends cks {
-   public cku(bqb<? extends cku> $$0, cyx $$1) {
-      super($$0, $$1);
+import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public final class cku {
+   private static final float a = 0.3F;
+
+   public static esh a(bqa $$0, Predicate<bqa> $$1) {
+      esj $$2 = $$0.dp();
+      czg $$3 = $$0.dM();
+      esj $$4 = $$0.dk();
+      return a($$4, $$0, $$1, $$2, $$3, 0.3F, cyp.a.a);
    }
 
-   public cku(cyx $$0, bqo $$1) {
-      super(bqb.C, $$1, $$0);
+   public static esh a(bqa $$0, Predicate<bqa> $$1, cyp.a $$2) {
+      esj $$3 = $$0.dp();
+      czg $$4 = $$0.dM();
+      esj $$5 = $$0.dk();
+      return a($$5, $$0, $$1, $$3, $$4, 0.3F, $$2);
    }
 
-   public cku(cyx $$0, double $$1, double $$2, double $$3) {
-      super(bqb.C, $$1, $$2, $$3, $$0);
+   public static esh a(bqa $$0, Predicate<bqa> $$1, double $$2) {
+      esj $$3 = $$0.f(0.0F).a($$2);
+      czg $$4 = $$0.dM();
+      esj $$5 = $$0.bu();
+      return a($$5, $$0, $$1, $$3, $$4, 0.0F, cyp.a.a);
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dM()
-               .a(
-                  new kh(kl.R, this.p()),
-                  this.dr(),
-                  this.dt(),
-                  this.dx(),
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08
-               );
-         }
+   private static esh a(esj $$0, bqa $$1, Predicate<bqa> $$2, esj $$3, czg $$4, float $$5, cyp.a $$6) {
+      esj $$7 = $$0.e($$3);
+      esh $$8 = $$4.a(new cyp($$0, $$7, $$6, cyp.b.a, $$1));
+      if ($$8.c() != esh.a.a) {
+         $$7 = $$8.e();
       }
+
+      esh $$9 = a($$4, $$1, $$0, $$7, $$1.cH().b($$3).g(1.0), $$2, $$5);
+      if ($$9 != null) {
+         $$8 = $$9;
+      }
+
+      return $$8;
    }
 
-   @Override
-   protected void a(erx $$0) {
-      super.a($$0);
-      $$0.a().a(this.dN().b(this, this.u()), 0.0F);
-   }
+   @Nullable
+   public static esg a(bqa $$0, esj $$1, esj $$2, ese $$3, Predicate<bqa> $$4, double $$5) {
+      czg $$6 = $$0.dM();
+      double $$7 = $$5;
+      bqa $$8 = null;
+      esj $$9 = null;
 
-   @Override
-   protected void a(ery $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         if (this.ag.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ag.a(32) == 0) {
-               $$1 = 4;
+      for (bqa $$10 : $$6.a($$0, $$3, $$4)) {
+         ese $$11 = $$10.cH().g((double)$$10.bH());
+         Optional<esj> $$12 = $$11.b($$1, $$2);
+         if ($$11.d($$1)) {
+            if ($$7 >= 0.0) {
+               $$8 = $$10;
+               $$9 = $$12.orElse($$1);
+               $$7 = 0.0;
             }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cci $$3 = bqb.t.a(this.dM());
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dr(), this.dt(), this.dx(), this.dC(), 0.0F);
-                  this.dM().b($$3);
+         } else if ($$12.isPresent()) {
+            esj $$13 = $$12.get();
+            double $$14 = $$1.g($$13);
+            if ($$14 < $$7 || $$7 == 0.0) {
+               if ($$10.cW() == $$0.cW()) {
+                  if ($$7 == 0.0) {
+                     $$8 = $$10;
+                     $$9 = $$13;
+                  }
+               } else {
+                  $$8 = $$10;
+                  $$9 = $$13;
+                  $$7 = $$14;
                }
             }
          }
+      }
 
-         this.dM().a(this, (byte)3);
-         this.am();
+      return $$8 == null ? null : new esg($$8, $$9);
+   }
+
+   @Nullable
+   public static esg a(czg $$0, bqa $$1, esj $$2, esj $$3, ese $$4, Predicate<bqa> $$5) {
+      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
+   }
+
+   @Nullable
+   public static esg a(czg $$0, bqa $$1, esj $$2, esj $$3, ese $$4, Predicate<bqa> $$5, float $$6) {
+      double $$7 = Double.MAX_VALUE;
+      bqa $$8 = null;
+
+      for (bqa $$9 : $$0.a($$1, $$4, $$5)) {
+         ese $$10 = $$9.cH().g((double)$$6);
+         Optional<esj> $$11 = $$10.b($$2, $$3);
+         if ($$11.isPresent()) {
+            double $$12 = $$2.g($$11.get());
+            if ($$12 < $$7) {
+               $$8 = $$9;
+               $$7 = $$12;
+            }
+         }
+      }
+
+      return $$8 == null ? null : new esg($$8);
+   }
+
+   public static void a(bqa $$0, float $$1) {
+      esj $$2 = $$0.dp();
+      if ($$2.g() != 0.0) {
+         double $$3 = $$2.h();
+         $$0.r((float)(axm.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
+         $$0.s((float)(axm.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
+
+         while ($$0.dE() - $$0.O < -180.0F) {
+            $$0.O -= 360.0F;
+         }
+
+         while ($$0.dE() - $$0.O >= 180.0F) {
+            $$0.O += 360.0F;
+         }
+
+         while ($$0.dC() - $$0.N < -180.0F) {
+            $$0.N -= 360.0F;
+         }
+
+         while ($$0.dC() - $$0.N >= 180.0F) {
+            $$0.N += 360.0F;
+         }
+
+         $$0.s(axm.i($$1, $$0.O, $$0.dE()));
+         $$0.r(axm.i($$1, $$0.N, $$0.dC()));
       }
    }
 
-   @Override
-   protected cre r() {
-      return crm.qQ;
+   public static boe a(bqt $$0, crn $$1) {
+      return $$0.eU().a($$1) ? boe.a : boe.b;
+   }
+
+   public static ckg a(bqt $$0, crs $$1, float $$2) {
+      cpl $$3 = (cpl)($$1.f() instanceof cpl ? $$1.f() : crv.ou);
+      ckg $$4 = $$3.a($$0.dM(), $$1, $$0);
+      $$4.a($$0, $$2);
+      return $$4;
    }
 }

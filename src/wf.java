@@ -1,76 +1,88 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class wf {
-   public static final wg a = wg.i();
-   public static final wg b = wg.c("options.on");
-   public static final wg c = wg.c("options.off");
-   public static final wg d = wg.c("gui.done");
-   public static final wg e = wg.c("gui.cancel");
-   public static final wg f = wg.c("gui.yes");
-   public static final wg g = wg.c("gui.no");
-   public static final wg h = wg.c("gui.ok");
-   public static final wg i = wg.c("gui.proceed");
-   public static final wg j = wg.c("gui.continue");
-   public static final wg k = wg.c("gui.back");
-   public static final wg l = wg.c("gui.toTitle");
-   public static final wg m = wg.c("gui.acknowledge");
-   public static final wg n = wg.c("chat.link.open");
-   public static final wg o = wg.c("gui.copy_link_to_clipboard");
-   public static final wg p = wg.c("menu.disconnect");
-   public static final wg q = wg.c("connect.failed.transfer");
-   public static final wg r = wg.c("connect.failed");
-   public static final wg s = wg.b("\n");
-   public static final wg t = wg.b(". ");
-   public static final wg u = wg.b("...");
-   public static final wg v = a();
+public record wf(String b, List<wf.a> c, xf d) {
+   public static final Codec<wf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(wf::a),
+               wf.a.d.listOf().fieldOf("parameters").forGetter(wf::b),
+               xf.b.b.optionalFieldOf("style", xf.a).forGetter(wf::c)
+            )
+            .apply($$0, wf::new)
+   );
 
-   public static wu a() {
-      return wg.b(" ");
+   public static wf a(String $$0) {
+      return new wf($$0, List.of(wf.a.a, wf.a.c), xf.a);
    }
 
-   public static wu a(long $$0) {
-      return wg.a("gui.days", $$0);
+   public static wf b(String $$0) {
+      xf $$1 = xf.a.a(n.h).b(true);
+      return new wf($$0, List.of(wf.a.a, wf.a.c), $$1);
    }
 
-   public static wu b(long $$0) {
-      return wg.a("gui.hours", $$0);
+   public static wf c(String $$0) {
+      xf $$1 = xf.a.a(n.h).b(true);
+      return new wf($$0, List.of(wf.a.b, wf.a.c), $$1);
    }
 
-   public static wu c(long $$0) {
-      return wg.a("gui.minutes", $$0);
+   public static wf d(String $$0) {
+      return new wf($$0, List.of(wf.a.b, wf.a.a, wf.a.c), xf.a);
    }
 
-   public static wg a(boolean $$0) {
-      return $$0 ? b : c;
+   public wi a(wi $$0, we.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return wi.a(this.b, $$2).c(this.d);
    }
 
-   public static wu a(wg $$0, boolean $$1) {
-      return wg.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
-   }
+   private wi[] b(wi $$0, we.a $$1) {
+      wi[] $$2 = new wi[this.c.size()];
 
-   public static wu a(wg $$0, wg $$1) {
-      return wg.a("options.generic_value", $$0, $$1);
-   }
-
-   public static wu a(wg... $$0) {
-      wu $$1 = wg.i();
-
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(t);
-         }
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         wf.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
 
-      return $$1;
+      return $$2;
    }
 
-   public static wg b(wg... $$0) {
-      return a(Arrays.asList($$0));
+   public String a() {
+      return this.b;
    }
 
-   public static wg a(Collection<? extends wg> $$0) {
-      return wj.a($$0, s);
+   public List<wf.a> b() {
+      return this.c;
+   }
+
+   public xf c() {
+      return this.d;
+   }
+
+   public static enum a implements ayg {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c().orElse(wh.a)),
+      c("content", ($$0, $$1) -> $$0);
+
+      public static final Codec<wf.a> d = ayg.a(wf.a::values);
+      private final String e;
+      private final wf.a.a f;
+
+      private a(String $$0, wf.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wi a(wi $$0, we.a $$1) {
+         return this.f.select($$0, $$1);
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+
+      public interface a {
+         wi select(wi var1, we.a var2);
+      }
    }
 }

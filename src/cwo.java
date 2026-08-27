@@ -1,29 +1,51 @@
-public class cwo extends cwq {
-   protected cwo(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bm, $$1);
+public class cwo extends cvk {
+   public cwo(cvi $$0) {
+      super($$0);
+   }
+
+   public boolean a(cnm $$0, czg $$1) {
+      if ($$0.f() == 3 && $$0.g() == 3) {
+         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
+            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
+               crs $$4 = $$0.a($$2 + $$3 * $$0.f());
+               if ($$4.d()) {
+                  return false;
+               }
+
+               if ($$2 == 1 && $$3 == 1) {
+                  if (!$$4.a(crv.vp)) {
+                     return false;
+                  }
+               } else if (!$$4.a(crv.ou)) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public crs a(cnm $$0, jb $$1) {
+      crs $$2 = $$0.a(1 + $$0.f());
+      if (!$$2.a(crv.vp)) {
+         return crs.i;
+      } else {
+         crs $$3 = new crs(crv.vo, 8);
+         $$3.b(jr.x, $$2.a(jr.x));
+         return $$3;
+      }
    }
 
    @Override
-   public int a(int $$0) {
-      return 5 + ($$0 - 1) * 8;
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 2 && $$1 >= 2;
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(crj $$0) {
-      return $$0.b(jp.c) ? false : super.a($$0);
-   }
-
-   public static boolean a(crj $$0, int $$1, axr $$2) {
-      return $$0.f() instanceof coy && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
+   public cvw<?> ao_() {
+      return cvw.j;
    }
 }

@@ -1,40 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ebv(ip<dby> b, ip<dby> c, eca d, int e, int f, float g) {
-   public static final Codec<ebv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ja.a(ks.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               ja.a(ks.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               eca.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ebv::new)
-   );
+public class ebv<P extends ebu> {
+   public static final ebv<ebp> a = a("blob_foliage_placer", ebp.a);
+   public static final ebv<eca> b = a("spruce_foliage_placer", eca.a);
+   public static final ebv<eby> c = a("pine_foliage_placer", eby.a);
+   public static final ebv<ebo> d = a("acacia_foliage_placer", ebo.a);
+   public static final ebv<ebq> e = a("bush_foliage_placer", ebq.c);
+   public static final ebv<ebt> f = a("fancy_foliage_placer", ebt.c);
+   public static final ebv<ebw> g = a("jungle_foliage_placer", ebw.a);
+   public static final ebv<ebx> h = a("mega_pine_foliage_placer", ebx.a);
+   public static final ebv<ebs> i = a("dark_oak_foliage_placer", ebs.a);
+   public static final ebv<ebz> j = a("random_spread_foliage_placer", ebz.a);
+   public static final ebv<ebr> k = a("cherry_foliage_placer", ebr.a);
+   private final Codec<P> l;
 
-   public ip<dby> a() {
-      return this.b;
+   private static <P extends ebu> ebv<P> a(String $$0, Codec<P> $$1) {
+      return ja.a(kt.W, $$0, new ebv<>($$1));
    }
 
-   public ip<dby> b() {
-      return this.c;
+   private ebv(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   public eca c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   public Codec<P> a() {
+      return this.l;
    }
 }

@@ -1,13 +1,6 @@
+import java.util.Set;
+import java.util.function.Supplier;
+
 public interface bmc {
-   void a();
-
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bko f();
-
-   void d();
+   Set<bma> a(Supplier<bkr> var1);
 }

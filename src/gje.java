@@ -1,24 +1,16 @@
-public abstract class gje<T extends bpv & bra, M extends fqm<T>> extends gjt<T, M> {
-   public gje(ghd<T, M> $$0) {
+public class gje extends gkc<ccl, fqg<ccl>> {
+   private static final ajv a = new ajv("textures/entity/cat/cat_collar.png");
+   private final fqg<ccl> b;
+
+   public gje(ghm<ccl, fqg<ccl>> $$0, ftr $$1) {
       super($$0);
+      this.b = new fqg<>($$1.a(ftu.u));
    }
 
-   @Override
-   public void a(ewi $$0, fzz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         fqm<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         ewm $$12 = $$1.getBuffer(gah.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gla.d, 0.5F, 0.5F, 0.5F, 1.0F);
+   public void a(ewr $$0, gai $$1, int $$2, ccl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.r()) {
+         float[] $$10 = $$3.gx().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
       }
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract ajt a();
-
-   protected abstract fqm<T> b();
 }

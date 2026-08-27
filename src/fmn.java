@@ -1,32 +1,24 @@
-public class fmn extends fmq {
-   private static final wg b = wg.c("multiplayerWarning.header").a(n.r);
-   private static final wg c = wg.c("multiplayerWarning.message");
-   private static final wg d = wg.c("multiplayerWarning.check");
-   private static final wg o = b.f().f("\n").b(c);
-   private final fjo p;
+import org.joml.Matrix4f;
 
-   public fmn(fjo $$0) {
-      super(b, c, d, o);
-      this.p = $$0;
+public class fmn implements fmo {
+   private final awy a;
+
+   public fmn(awy $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected fhd m() {
-      fhg $$0 = fhg.e().a(8);
-      $$0.a(fdp.a(wf.i, $$0x -> {
-         if (this.a.a()) {
-            this.j.m.v = true;
-            this.j.m.av();
-         }
-
-         this.j.a(new fml(this.p));
-      }).a());
-      $$0.a(fdp.a(wf.k, $$0x -> this.d()).a());
-      return $$0;
+   public int a(fdj $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public void d() {
-      this.j.a(this.p);
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public void a(fdj $$0, int $$1, int $$2, Matrix4f $$3, gai.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fdj.a.a, 0, 15728880);
    }
 }

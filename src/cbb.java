@@ -1,36 +1,37 @@
-import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class cbb extends car {
-   private static final ImmutableMap<bqb<?>, Float> a = ImmutableMap.builder()
-      .put(bqb.B, 8.0F)
-      .put(bqb.J, 12.0F)
-      .put(bqb.ac, 8.0F)
-      .put(bqb.ad, 12.0F)
-      .put(bqb.aB, 15.0F)
-      .put(bqb.aG, 12.0F)
-      .put(bqb.bh, 8.0F)
-      .put(bqb.bj, 10.0F)
-      .put(bqb.bs, 10.0F)
-      .put(bqb.bt, 8.0F)
-      .put(bqb.bv, 8.0F)
-      .build();
+public class cbb {
+   private final bqv a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
 
-   @Override
-   protected boolean a(bqo $$0, bqo $$1) {
-      return this.b($$1) && this.e($$0, $$1);
+   public cbb(bqv $$0) {
+      this.a = $$0;
    }
 
-   private boolean e(bqo $$0, bqo $$1) {
-      float $$2 = (Float)a.get($$1.ai());
-      return $$1.g((bpv)$$0) <= (double)($$2 * $$2);
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   @Override
-   protected bzr<bqo> b() {
-      return bzr.A;
-   }
+   public boolean a(bqa $$0) {
+      int $$1 = $$0.aj();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         this.a.dM().af().a("hasLineOfSight");
+         boolean $$2 = this.a.E($$0);
+         this.a.dM().af().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   private boolean b(bqo $$0) {
-      return a.containsKey($$0.ai());
+         return $$2;
+      }
    }
 }

@@ -1,81 +1,84 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class we {
+public record we(wf j, wf k) {
    public static final Codec<we> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(we.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, we::new)
+      $$0 -> $$0.group(wf.a.fieldOf("chat").forGetter(we::a), wf.a.fieldOf("narration").forGetter(we::b)).apply($$0, we::new)
    );
-   private final we.a b;
-   private final String c;
+   public static final wf b = wf.a("chat.type.text");
+   public static final aju<we> c = a("chat");
+   public static final aju<we> d = a("say_command");
+   public static final aju<we> e = a("msg_command_incoming");
+   public static final aju<we> f = a("msg_command_outgoing");
+   public static final aju<we> g = a("team_msg_command_incoming");
+   public static final aju<we> h = a("team_msg_command_outgoing");
+   public static final aju<we> i = a("emote_command");
 
-   public we(we.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private static aju<we> a(String $$0) {
+      return aju.a(ku.ax, new ajv($$0));
    }
 
-   public we.a a() {
-      return this.b;
+   public static void a(pz<we> $$0) {
+      $$0.a(c, new we(b, wf.a("chat.type.text.narrate")));
+      $$0.a(d, new we(wf.a("chat.type.announcement"), wf.a("chat.type.text.narrate")));
+      $$0.a(e, new we(wf.b("commands.message.display.incoming"), wf.a("chat.type.text.narrate")));
+      $$0.a(f, new we(wf.c("commands.message.display.outgoing"), wf.a("chat.type.text.narrate")));
+      $$0.a(g, new we(wf.d("chat.type.team.text"), wf.a("chat.type.text.narrate")));
+      $$0.a(h, new we(wf.d("chat.type.team.sent"), wf.a("chat.type.text.narrate")));
+      $$0.a(i, new we(wf.a("chat.type.emote"), wf.a("chat.type.emote")));
    }
 
-   public String b() {
-      return this.c;
+   public static we.a a(aju<we> $$0, bqa $$1) {
+      return a($$0, $$1.dM().H_(), $$1.O_());
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         we $$1 = (we)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public static we.a a(aju<we> $$0, dv $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   public static we.a a(aju<we> $$0, jb $$1, wi $$2) {
+      ja<we> $$3 = $$1.d(ku.ax);
+      return new we.a($$3.g($$0), $$2);
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public wf a() {
+      return this.j;
    }
 
-   public static enum a implements aye {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
+   public wf b() {
+      return this.k;
+   }
 
-      public static final MapCodec<we.a> g = aye.a(we.a::values).fieldOf("action");
-      public static final MapCodec<we.a> h = aws.a(g, we.a::a);
-      private final boolean i;
-      private final String j;
+   public static record a(in<we> b, wi c, Optional<wi> d) {
+      public static final yg<vt, we.a> a = yg.a(ye.b(ku.ax), we.a::a, wk.d, we.a::b, wk.e, we.a::c, we.a::new);
 
-      private a(String $$0, boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+      a(in<we> $$0, wi $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      public boolean a() {
-         return this.i;
+      public wi a(wi $$0) {
+         return this.b.a().a().a($$0, this);
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      public wi b(wi $$0) {
+         return this.b.a().b().a($$0, this);
       }
 
-      public static DataResult<we.a> a(we.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      public we.a c(wi $$0) {
+         return new we.a(this.b, this.c, Optional.of($$0));
+      }
+
+      public in<we> a() {
+         return this.b;
+      }
+
+      public wi b() {
+         return this.c;
+      }
+
+      public Optional<wi> c() {
+         return this.d;
       }
    }
 }

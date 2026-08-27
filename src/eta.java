@@ -1,19 +1,24 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface eta {
-   int a();
+public class eta extends etc {
+   private final etc b;
+   private final ij.a c;
+   private static final DoubleList d = new esp(1);
 
-   boolean b();
-
-   @Nullable
-   xw c();
-
-   default wu a(xw $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   public eta(etc $$0, ij.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static wu a(@Nullable eta $$0, xw $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   private static ess a(ess $$0, ij.a $$1, int $$2) {
+      return new etb(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
+   }
+
+   @Override
+   protected DoubleList a(ij.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

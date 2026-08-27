@@ -1,42 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
 
 public class czu {
-   public static final Codec<czu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aul.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, czu::new)
-   );
-   public static final czu b = new czu(aum.h, 6000, 8, 2.0);
-   private final il<aul> c;
-   private final int d;
-   private final int e;
-   private final double f;
+   private final List<czu.a> a = Lists.newArrayList();
 
-   public czu(il<aul> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public void a(id $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new czu.a($$0, $$1));
+      }
    }
 
-   public il<aul> a() {
-      return this.c;
+   public double b(id $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (czu.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   public int b() {
-      return this.d;
-   }
+   static class a {
+      private final id a;
+      private final double b;
 
-   public int c() {
-      return this.e;
-   }
+      public a(id $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public double d() {
-      return this.f;
+      public double a(id $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

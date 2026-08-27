@@ -1,17 +1,25 @@
 import java.util.EnumSet;
 
-public class bxf extends bxl {
-   private final bqq a;
+public class bxf extends bxq {
+   private final bqv a;
+   private final czg b;
 
-   public bxf(bqq $$0) {
+   public bxf(bqv $$0, czg $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(bxl.a.c));
-      $$0.K().a(true);
+      this.b = $$1;
+      this.a(EnumSet.of(bxq.a.c));
    }
 
    @Override
    public boolean a() {
-      return this.a.bc() && this.a.b(avh.a) > this.a.df() || this.a.bq();
+      boolean $$0 = this.a.aB || this.a.aA;
+      if ($$0 && this.a.ai().a(avh.h)) {
+         id $$1 = this.a.dm().c();
+         dpi $$2 = this.b.a_($$1);
+         return $$2.a(dcj.qP) || $$2.k(this.b, $$1) == esz.a();
+      } else {
+         return false;
+      }
    }
 
    @Override
@@ -21,8 +29,6 @@ public class bxf extends bxl {
 
    @Override
    public void e() {
-      if (this.a.ei().i() < 0.8F) {
-         this.a.I().a();
-      }
+      this.a.I().a();
    }
 }

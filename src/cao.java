@@ -1,56 +1,41 @@
 import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cao extends cax<bqq> {
-   private static final int a = 40;
-   private static final int c = 5;
-   private static final int d = 20;
-   private final Long2LongMap e = new Long2LongOpenHashMap();
-   private int f;
-   private long g;
+public class cao extends cbc<bqt> {
+   private static final int a = 200;
+   private static final int c = 599;
 
    public cao() {
-      super(20);
+      this(200);
+   }
+
+   public cao(int $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.of(bzr.w);
+   protected void a(apu $$0, bqt $$1) {
+      a($$1);
    }
 
-   protected void a(aps $$0, bqq $$1) {
-      if ($$1.p_()) {
-         this.f = 0;
-         this.g = $$0.Y() + (long)$$0.E_().a(20);
-         cbr $$2 = $$0.y();
-         Predicate<ib> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.e.containsKey($$1x)) {
-               return false;
-            } else if (++this.f >= 5) {
-               return false;
-            } else {
-               this.e.put($$1x, this.g + 40L);
-               return true;
-            }
-         };
-         Set<Pair<il<cbu>, ib>> $$4 = $$2.b($$0x -> $$0x.a(cbv.n), $$3, $$1.dm(), 48, cbr.b.c).collect(Collectors.toSet());
-         elg $$5 = brz.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            ib $$6 = $$5.l();
-            Optional<il<cbu>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.dP().a(bzr.w, $$6);
-            }
-         } else if (this.f < 5) {
-            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+   @Override
+   public Set<bzw<?>> a() {
+      return ImmutableSet.of(bzw.g);
+   }
+
+   public static void a(bqt $$0) {
+      Optional<List<bqt>> $$1 = $$0.dP().c(bzw.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(bqg.af));
+         if ($$2) {
+            b($$0);
          }
       }
+   }
+
+   public static void b(bqt $$0) {
+      $$0.dP().a(bzw.F, true, 599L);
    }
 }

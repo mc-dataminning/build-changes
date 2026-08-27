@@ -1,32 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Locale;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public record awe(int b) {
-   private static final String c = "#";
-   public static final Codec<awe> a = Codec.STRING.comapFlatMap($$0 -> {
-      if (!$$0.startsWith("#")) {
-         return DataResult.error(() -> "Not a color code: " + $$0);
-      } else {
-         try {
-            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
-            return DataResult.success(new awe($$1));
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
-         }
-      }
-   }, awe::b);
+public class awe<T> extends AbstractCollection<T> {
+   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
+   private final Class<T> b;
+   private final List<T> c = Lists.newArrayList();
 
-   private String b() {
-      return String.format(Locale.ROOT, "#%08X", this.b);
+   public awe(Class<T> $$0) {
+      this.b = $$0;
+      this.a.put($$0, this.c);
    }
 
    @Override
-   public String toString() {
-      return this.b();
+   public boolean add(T $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            $$1 |= $$2.getValue().add($$0);
+         }
+      }
+
+      return $$1;
    }
 
-   public int a() {
-      return this.b;
+   @Override
+   public boolean remove(Object $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            List<T> $$3 = $$2.getValue();
+            $$1 |= $$3.remove($$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean contains(Object $$0) {
+      return this.a($$0.getClass()).contains($$0);
+   }
+
+   public <S> Collection<S> a(Class<S> $$0) {
+      if (!this.b.isAssignableFrom($$0)) {
+         throw new IllegalArgumentException("Don't know how to search for " + $$0);
+      } else {
+         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(Collectors.toList()));
+         return (Collection<S>)Collections.unmodifiableCollection($$1);
+      }
+   }
+
+   @Override
+   public Iterator<T> iterator() {
+      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
+   }
+
+   public List<T> a() {
+      return ImmutableList.copyOf(this.c);
+   }
+
+   @Override
+   public int size() {
+      return this.c.size();
    }
 }

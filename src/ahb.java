@@ -1,85 +1,49 @@
-public class ahb implements yn<afl> {
-   public static final ye<vg, ahb> a = yn.a(ahb::a, ahb::new);
-   private final ib b;
-   private final ajt c;
-   private final ajt d;
-   private final ajt e;
-   private final String f;
-   private final dnf.a g;
-   private final int h;
-   private final int i;
+import javax.annotation.Nullable;
 
-   public ahb(ib $$0, ajt $$1, ajt $$2, ajt $$3, String $$4, dnf.a $$5, int $$6, int $$7) {
+public class ahb implements yp<afn> {
+   public static final yg<vi, ahb> a = yp.a(ahb::a, ahb::new);
+   private final int b;
+   private final String c;
+   private final boolean d;
+
+   public ahb(int $$0, String $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
    }
 
-   private ahb(vg $$0) {
-      this.b = $$0.e();
-      this.c = $$0.q();
-      this.d = $$0.q();
-      this.e = $$0.q();
-      this.f = $$0.p();
-      this.g = dnf.a.a($$0.p()).orElse(dnf.a.b);
-      this.h = $$0.l();
-      this.i = $$0.l();
+   private ahb(vi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.p();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.b);
+   private void a(vi $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g.c());
-      $$0.c(this.h);
-      $$0.c(this.i);
    }
 
    @Override
-   public yp<ahb> a() {
-      return afj.bV;
+   public yr<ahb> a() {
+      return afl.bT;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
-      return this.b;
+   @Nullable
+   public cyh a(czg $$0) {
+      bqa $$1 = $$0.a(this.b);
+      return $$1 instanceof cmd ? ((cmd)$$1).B() : null;
    }
 
-   public ajt e() {
+   public String b() {
       return this.c;
    }
 
-   public ajt f() {
+   public boolean e() {
       return this.d;
-   }
-
-   public ajt g() {
-      return this.e;
-   }
-
-   public String h() {
-      return this.f;
-   }
-
-   public dnf.a i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.h;
-   }
-
-   public int k() {
-      return this.i;
    }
 }

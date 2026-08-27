@@ -1,23 +1,24 @@
-public class ggh extends gfh<cfx> {
-   private static final ajt a = new ajt("textures/entity/lead_knot.png");
-   private final frd<cfx> f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public ggh(gfi.a $$0) {
-      super($$0);
-      this.f = new frd<>($$0.a(ftl.aw));
+public final class ggh extends gel<ceo, frg<ceo>> {
+   private static final Map<cev, ajv> a = ac.a(Maps.newEnumMap(cev.class), $$0 -> {
+      $$0.put(cev.a, new ajv("textures/entity/horse/horse_white.png"));
+      $$0.put(cev.b, new ajv("textures/entity/horse/horse_creamy.png"));
+      $$0.put(cev.c, new ajv("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(cev.d, new ajv("textures/entity/horse/horse_brown.png"));
+      $$0.put(cev.e, new ajv("textures/entity/horse/horse_black.png"));
+      $$0.put(cev.f, new ajv("textures/entity/horse/horse_gray.png"));
+      $$0.put(cev.g, new ajv("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public ggh(gfr.a $$0) {
+      super($$0, new frg<>($$0.a(ftu.ap)), 1.1F);
+      this.a(new gjr(this));
+      this.a(new gjq(this, $$0.f()));
    }
 
-   public void a(cfx $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      ewm $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public ajt a(cfx $$0) {
-      return a;
+   public ajv a(ceo $$0) {
+      return a.get($$0.r());
    }
 }

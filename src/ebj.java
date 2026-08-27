@@ -1,51 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class ebj extends ebl {
-   public static final Codec<ebj> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ebj::new));
+public abstract class ebj {
+   public static final Codec<ebj> a = kt.aa.q().dispatch(ebj::b, ebk::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public ebj(bnf $$0, bnf $$1) {
-      super($$0, $$1);
+   protected static <S extends ebj> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   @Override
-   protected ebm<?> a() {
-      return ebm.i;
+   public ebj(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(czd $$0, ebl.b $$1, axr $$2, eav $$3, int $$4, ebl.a $$5, int $$6, int $$7, int $$8) {
-      ib $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
-      }
-   }
+   protected abstract ebk<?> b();
 
-   @Override
-   public int a(axr $$0, int $$1, eav $$2) {
-      return 4;
-   }
+   public abstract int a(int var1, int var2);
 
-   @Override
-   protected boolean b(axr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
-   }
-
-   @Override
-   protected boolean a(axr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+   public OptionalInt c() {
+      return this.c;
    }
 }

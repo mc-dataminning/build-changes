@@ -1,27 +1,23 @@
-public class ggm extends ggo<cgy, frc<cgy>> {
-   private static final ajt a = new ajt("textures/entity/slime/magmacube.png");
+public class ggm extends ggx<ccu, frk<ccu>> {
+   private static final ajv a = new ajv("textures/entity/iron_golem/iron_golem.png");
 
-   public ggm(gfi.a $$0) {
-      super($$0, new frc<>($$0.a(ftl.aA)), 0.25F);
+   public ggm(gfr.a $$0) {
+      super($$0, new frk<>($$0.a(ftu.av)), 0.7F);
+      this.a(new gjt(this));
+      this.a(new gju(this, $$0.c()));
    }
 
-   protected int a(cgy $$0, ib $$1) {
-      return 15;
-   }
-
-   public ajt a(cgy $$0) {
+   public ajv a(ccu $$0) {
       return a;
    }
 
-   public void a(cgy $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.go();
+   protected void a(ccu $$0, ewr $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cgy $$0, ewi $$1, float $$2) {
-      int $$3 = $$0.go();
-      float $$4 = axk.i($$2, $$0.bW, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
+      if (!((double)$$0.aT.a() < 0.01)) {
+         float $$6 = 13.0F;
+         float $$7 = $$0.aT.c($$4) + 6.0F;
+         float $$8 = (Math.abs($$7 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$8));
+      }
    }
 }

@@ -2,27 +2,27 @@ import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
 import javax.annotation.Nullable;
 
-public record co(tm c) {
-   public static final Codec<co> a = uk.i.xmap(co::new, co::a);
-   public static final ye<ByteBuf, co> b = yc.n.a(co::new, co::a);
+public record co(to c) {
+   public static final Codec<co> a = um.i.xmap(co::new, co::a);
+   public static final yg<ByteBuf, co> b = ye.n.a(co::new, co::a);
 
-   public boolean a(crj $$0) {
-      ctt $$1 = $$0.a(jp.a, ctt.a);
+   public boolean a(crs $$0) {
+      cuc $$1 = $$0.a(jr.a, cuc.a);
       return $$1.b(this.c);
    }
 
-   public boolean a(bpv $$0) {
+   public boolean a(bqa $$0) {
       return this.a(b($$0));
    }
 
-   public boolean a(@Nullable uj $$0) {
-      return $$0 != null && ub.a(this.c, $$0, true);
+   public boolean a(@Nullable ul $$0) {
+      return $$0 != null && ud.a(this.c, $$0, true);
    }
 
-   public static tm b(bpv $$0) {
-      tm $$1 = $$0.f(new tm());
-      if ($$0 instanceof cjt) {
-         crj $$2 = ((cjt)$$0).fZ().f();
+   public static to b(bqa $$0) {
+      to $$1 = $$0.f(new to());
+      if ($$0 instanceof cka) {
+         crs $$2 = ((cka)$$0).fZ().f();
          if (!$$2.d()) {
             $$1.a("SelectedItem", $$2.a($$0.dO()));
          }
@@ -31,7 +31,7 @@ public record co(tm c) {
       return $$1;
    }
 
-   public tm a() {
+   public to a() {
       return this.c;
    }
 }

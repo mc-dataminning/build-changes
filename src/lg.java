@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class lg {
-   public static lb a(la $$0, CompletableFuture<in.a> $$1) {
-      return new lb($$0, $$1, List.of(new ll(), new li(), new lh(), new lj(), new lk()));
+   public static ld a(lc $$0, CompletableFuture<ip.a> $$1) {
+      return new ld($$0, $$1, List.of(new lh()));
    }
 }

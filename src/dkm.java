@@ -1,48 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dkm extends dbk {
-   public static final MapCodec<dkm> a = b(dkm::new);
-   public static final dpx<dof> b = dpp.by;
+public class dkm extends dep implements dgx {
+   public static final MapCodec<dkm> c = b(dkm::new);
+   public static final dqg<dqe> d = dep.b;
+   protected static final float e = 6.0F;
+   protected static final etc f = dch.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dkm> a() {
-      return a;
+      return c;
    }
 
-   public dkm(doy.d $$0) {
+   public dkm(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dof.a));
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(b);
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return f;
    }
 
    @Override
-   protected did b_(doz $$0) {
-      return did.c;
+   protected boolean b(dpi $$0, cym $$1, id $$2) {
+      return $$0.d($$1, $$2, ij.b) && !$$0.a(dcj.kJ);
+   }
+
+   @Override
+   public crs a(czj $$0, id $$1, dpi $$2) {
+      return new crs(dcj.bw);
    }
 
    @Nullable
    @Override
-   public dmf a(ib $$0, doz $$1) {
-      return new dnz($$0, $$1);
+   public dpi a(cux $$0) {
+      dpi $$1 = super.a($$0);
+      if ($$1 != null) {
+         elb $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(avj.a) && $$2.e() == 8) {
+            return $$1;
+         }
+      }
+
+      return null;
    }
 
-   @Nullable
    @Override
-   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
-      return $$0 instanceof aps $$3
-         ? a($$2, dmh.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.c().b($$3, $$2x))
-         : a($$2, dmh.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x));
+   protected boolean a(dpi $$0, czj $$1, id $$2) {
+      if ($$0.c(d) == dqe.a) {
+         dpi $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dqe.b;
+      } else {
+         elb $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(avj.a) && $$4.e() == 8;
+      }
    }
 
    @Override
-   public void a(crj $$0, @Nullable cyd $$1, List<wg> $$2, csz $$3, @Nullable iz $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      czp.a($$0, $$2, "spawn_data");
+   protected elb c_(dpi $$0) {
+      return elc.c.a(false);
+   }
+
+   @Override
+   public boolean a(@Nullable cka $$0, cym $$1, id $$2, dpi $$3, ela $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(czh $$0, id $$1, dpi $$2, elb $$3) {
+      return false;
    }
 }

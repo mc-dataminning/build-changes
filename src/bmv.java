@@ -1,111 +1,148 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Queues;
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.locks.LockSupport;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import javax.annotation.CheckReturnValue;
+import org.slf4j.Logger;
 
-public interface bmv<T, F> {
-   @Nullable
-   F a();
+public abstract class bmv<R extends Runnable> implements bmd, bmx<R>, Executor {
+   private final String b;
+   private static final Logger c = LogUtils.getLogger();
+   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
+   private int e;
 
-   boolean a(T var1);
+   protected bmv(String $$0) {
+      this.b = $$0;
+      bmb.a.a(this);
+   }
 
-   boolean b();
+   protected abstract R f(Runnable var1);
 
-   int c();
+   protected abstract boolean e(R var1);
 
-   public static final class a implements bmv<bmv.b, Runnable> {
-      private final Queue<Runnable>[] a;
-      private final AtomicInteger b = new AtomicInteger();
+   public boolean bv() {
+      return Thread.currentThread() == this.az();
+   }
 
-      public a(int $$0) {
-         this.a = new Queue[$$0];
+   protected abstract Thread az();
 
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            this.a[$$1] = Queues.newConcurrentLinkedQueue();
-         }
+   protected boolean ay() {
+      return !this.bv();
+   }
+
+   public int bw() {
+      return this.d.size();
+   }
+
+   @Override
+   public String bx() {
+      return this.b;
+   }
+
+   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
+      return this.ay() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
+   }
+
+   private CompletableFuture<Void> a(Runnable $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.run();
+         return null;
+      }, this);
+   }
+
+   @CheckReturnValue
+   public CompletableFuture<Void> g(Runnable $$0) {
+      if (this.ay()) {
+         return this.a($$0);
+      } else {
+         $$0.run();
+         return CompletableFuture.completedFuture(null);
       }
+   }
 
-      @Nullable
-      public Runnable d() {
-         for (Queue<Runnable> $$0 : this.a) {
-            Runnable $$1 = $$0.poll();
-            if ($$1 != null) {
-               this.b.decrementAndGet();
-               return $$1;
+   public void h(Runnable $$0) {
+      if (!this.bv()) {
+         this.a($$0).join();
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void i(R $$0) {
+      this.d.add($$0);
+      LockSupport.unpark(this.az());
+   }
+
+   @Override
+   public void execute(Runnable $$0) {
+      if (this.ay()) {
+         this.i(this.f($$0));
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void c(Runnable $$0) {
+      this.execute($$0);
+   }
+
+   protected void by() {
+      this.d.clear();
+   }
+
+   protected void bz() {
+      while (this.A()) {
+      }
+   }
+
+   public boolean A() {
+      R $$0 = this.d.peek();
+      if ($$0 == null) {
+         return false;
+      } else if (this.e == 0 && !this.e($$0)) {
+         return false;
+      } else {
+         this.d(this.d.remove());
+         return true;
+      }
+   }
+
+   public void c(BooleanSupplier $$0) {
+      this.e++;
+
+      try {
+         while (!$$0.getAsBoolean()) {
+            if (!this.A()) {
+               this.z();
             }
          }
-
-         return null;
-      }
-
-      public boolean a(bmv.b $$0) {
-         int $$1 = $$0.a;
-         if ($$1 < this.a.length && $$1 >= 0) {
-            this.a[$$1].add($$0);
-            this.b.incrementAndGet();
-            return true;
-         } else {
-            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
-         }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.get() == 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b.get();
+      } finally {
+         this.e--;
       }
    }
 
-   public static final class b implements Runnable {
-      final int a;
-      private final Runnable b;
+   public void z() {
+      Thread.yield();
+      LockSupport.parkNanos("waiting for tasks", 100000L);
+   }
 
-      public b(int $$0, Runnable $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void run() {
-         this.b.run();
-      }
-
-      public int a() {
-         return this.a;
+   protected void d(R $$0) {
+      try {
+         $$0.run();
+      } catch (Exception var3) {
+         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bx(), var3);
+         throw var3;
       }
    }
 
-   public static final class c<T> implements bmv<T, T> {
-      private final Queue<T> a;
-
-      public c(Queue<T> $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public T a() {
-         return this.a.poll();
-      }
-
-      @Override
-      public boolean a(T $$0) {
-         return this.a.add($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return this.a.isEmpty();
-      }
-
-      @Override
-      public int c() {
-         return this.a.size();
-      }
+   @Override
+   public List<bma> bu() {
+      return ImmutableList.of(bma.a(this.b + "-pending-tasks", blz.b, this::bw));
    }
 }

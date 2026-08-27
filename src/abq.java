@@ -1,60 +1,79 @@
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import java.util.List;
-import java.util.Optional;
 
-public record abq(int b, int c, int d, List<abq.a> e) implements yn<aay> {
-   public static final ye<vr, abq> a = ye.a(yc.f, abq::e, yc.f, abq::f, yc.f, abq::g, abq.a.a.a(yc.a()), abq::h, abq::new);
+public record abq(List<abq.a> b) implements yp<aba> {
+   public static final yg<vi, abq> a = yp.a(abq::a, abq::new);
+   private static final int c = 2097152;
 
-   public abq(int $$0, Suggestions $$1) {
-      this(
-         $$0,
-         $$1.getRange().getStart(),
-         $$1.getRange().getLength(),
-         $$1.getList().stream().map($$0x -> new abq.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(wj::a))).toList()
-      );
+   private abq(vi $$0) {
+      this($$0.a(abq.a::new));
+   }
+
+   public static abq a(List<dro> $$0) {
+      return new abq($$0.stream().map(abq.a::new).toList());
+   }
+
+   private void a(vi $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public yp<abq> a() {
-      return afj.r;
+   public yr<abq> a() {
+      return afl.p;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public Suggestions b() {
-      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
-      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
-   }
-
-   public int e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.c;
-   }
-
-   public int g() {
-      return this.d;
-   }
-
-   public List<abq.a> h() {
-      return this.e;
-   }
-
-   public static record a(String b, Optional<wg> c) {
-      public static final ye<vr, abq.a> a = ye.a(yc.k, abq.a::a, wi.e, abq.a::b, abq.a::new);
-
-      public String a() {
-         return this.b;
+   public static record a(cyn a, byte[] b) {
+      public a(dro $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new vi(this.d()), $$0);
       }
 
-      public Optional<wg> b() {
-         return this.c;
+      public a(vi $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
+
+      private static int a(dro $$0) {
+         int $$1 = 0;
+
+         for (drp $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public vi a() {
+         return new vi(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(vi $$0, dro $$1) {
+         for (drp $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(vi $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public cyn b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
       }
    }
 }

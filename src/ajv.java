@@ -1,118 +1,243 @@
-import com.mojang.logging.LogUtils;
-import java.io.PrintStream;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import io.netty.buffer.ByteBuf;
+import java.lang.reflect.Type;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class ajv {
-   public static final PrintStream a = System.out;
-   private static volatile boolean c;
-   private static final Logger d = LogUtils.getLogger();
-   public static final AtomicLong b = new AtomicLong(-1L);
+public class ajv implements Comparable<ajv> {
+   public static final Codec<ajv> a = Codec.STRING.comapFlatMap(ajv::b, ajv::toString).stable();
+   public static final yg<ByteBuf, ajv> b = ye.k.a(ajv::new, ajv::toString);
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wi.c("argument.id.invalid"));
+   public static final char c = ':';
+   public static final String d = "minecraft";
+   public static final String e = "realms";
+   private final String g;
+   private final String h;
 
-   public static void a() {
-      if (!c) {
-         c = true;
-         Instant $$0 = Instant.now();
-         if (kr.au.e().isEmpty()) {
-            throw new IllegalStateException("Unable to load registries");
-         } else {
-            dey.b();
-            ddj.b();
-            if (bqb.a(bqb.bx) == null) {
-               throw new IllegalStateException("Failed loading EntityTypes");
-            } else {
-               ctg.a();
-               gk.a();
-               jx.c();
-               ji.a();
-               kr.a();
-               cpv.a();
-               d();
-               b.set(Duration.between($$0, Instant.now()).toMillis());
-            }
-         }
-      }
+   protected ajv(String $$0, String $$1, @Nullable ajv.a $$2) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
-      th $$3 = th.a();
-      $$0.forEach($$3x -> {
-         String $$4 = $$1.apply((T)$$3x);
-         if (!$$3.b($$4)) {
-            $$2.add($$4);
-         }
-      });
+   public ajv(String $$0, String $$1) {
+      this(c($$0, $$1), d($$0, $$1), null);
    }
 
-   private static void a(final Set<String> $$0) {
-      final th $$1 = th.a();
-      cyt.a(new cyt.c() {
-         @Override
-         public <T extends cyt.g<T>> void a(cyt.e<T> $$0x, cyt.f<T> $$1x) {
-            if (!$$1.b($$0.b())) {
-               $$0.add($$0.a());
-            }
-         }
-      });
+   private ajv(String[] $$0) {
+      this($$0[0], $$0[1]);
    }
 
-   public static Set<String> b() {
-      Set<String> $$0 = new TreeSet<>();
-      a(kr.u, brq::c, $$0);
-      a(kr.g, bqb::g, $$0);
-      a(kr.d, bpf::d, $$0);
-      a(kr.h, cre::a, $$0);
-      a(kr.f, cwq::h, $$0);
-      a(kr.e, dby::g, $$0);
-      a(kr.m, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
-      a($$0);
-      return $$0;
+   public ajv(String $$0) {
+      this(b($$0, ':'));
    }
 
-   public static void a(Supplier<String> $$0) {
-      if (!c) {
-         throw b($$0);
-      }
+   public static ajv a(String $$0, char $$1) {
+      return new ajv(b($$0, $$1));
    }
 
-   private static RuntimeException b(Supplier<String> $$0) {
+   @Nullable
+   public static ajv a(String $$0) {
       try {
-         String $$1 = $$0.get();
-         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
-      } catch (Exception var3) {
-         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         $$3.addSuppressed(var3);
-         return $$3;
+         return new ajv($$0);
+      } catch (z var2) {
+         return null;
       }
    }
 
-   public static void c() {
-      a(() -> "validate");
-      if (aa.aW) {
-         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
-         dv.b();
+   @Nullable
+   public static ajv a(String $$0, String $$1) {
+      try {
+         return new ajv($$0, $$1);
+      } catch (z var3) {
+         return null;
       }
-
-      brw.a();
    }
 
-   private static void d() {
-      if (d.isDebugEnabled()) {
-         System.setErr(new ajy("STDERR", System.err));
-         System.setOut(new ajy("STDOUT", a));
+   protected static String[] b(String $$0, char $$1) {
+      String[] $$2 = new String[]{"minecraft", $$0};
+      int $$3 = $$0.indexOf($$1);
+      if ($$3 >= 0) {
+         $$2[1] = $$0.substring($$3 + 1);
+         if ($$3 >= 1) {
+            $$2[0] = $$0.substring(0, $$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   public static DataResult<ajv> b(String $$0) {
+      try {
+         return DataResult.success(new ajv($$0));
+      } catch (z var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
+   }
+
+   public String a() {
+      return this.h;
+   }
+
+   public String b() {
+      return this.g;
+   }
+
+   public ajv c(String $$0) {
+      return new ajv(this.g, d(this.g, $$0), null);
+   }
+
+   public ajv a(UnaryOperator<String> $$0) {
+      return this.c($$0.apply(this.h));
+   }
+
+   public ajv d(String $$0) {
+      return this.c($$0 + this.h);
+   }
+
+   public ajv e(String $$0) {
+      return this.c(this.h + $$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.g + ":" + this.h;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         System.setErr(new aka("STDERR", System.err));
-         System.setOut(new aka("STDOUT", a));
+         return !($$0 instanceof ajv $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
       }
    }
 
-   public static void a(String $$0) {
-      a.println($$0);
+   @Override
+   public int hashCode() {
+      return 31 * this.g.hashCode() + this.h.hashCode();
+   }
+
+   public int a(ajv $$0) {
+      int $$1 = this.h.compareTo($$0.h);
+      if ($$1 == 0) {
+         $$1 = this.g.compareTo($$0.g);
+      }
+
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.g + "." + this.h;
+   }
+
+   public String e() {
+      return this.g.equals("minecraft") ? this.h : this.d();
+   }
+
+   public String f(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String b(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   public static ajv a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
+      }
+
+      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
+
+      try {
+         return new ajv($$2);
+      } catch (z var4) {
+         $$0.setCursor($$1);
+         throw f.createWithContext($$0);
+      }
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean g(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean h(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static String c(String $$0, String $$1) {
+      if (!h($$0)) {
+         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$0;
+      }
+   }
+
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
+
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
+
+   public static boolean i(String $$0) {
+      String[] $$1 = b($$0, ':');
+      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
+   }
+
+   private static String d(String $$0, String $$1) {
+      if (!g($$1)) {
+         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
+      }
+   }
+
+   protected interface a {
+   }
+
+   public static class b implements JsonDeserializer<ajv>, JsonSerializer<ajv> {
+      public ajv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new ajv(axc.a($$0, "location"));
+      }
+
+      public JsonElement a(ajv $$0, Type $$1, JsonSerializationContext $$2) {
+         return new JsonPrimitive($$0.toString());
+      }
    }
 }

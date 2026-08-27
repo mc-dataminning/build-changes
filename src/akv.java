@@ -1,141 +1,60 @@
-import com.google.common.base.Charsets;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.Socket;
-import java.util.List;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Scanner;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.Map;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
 public class akv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private final String c;
-   private final int d;
-   private final MinecraftServer e;
-   private volatile boolean f;
+   private final Map<ajv, aku> a = Maps.newHashMap();
+
    @Nullable
-   private Socket g;
-   @Nullable
-   private Thread h;
-
-   public akv(String $$0, int $$1, MinecraftServer $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public aku a(ajv $$0) {
+      return this.a.get($$0);
    }
 
-   public void a() {
-      if (this.h != null && this.h.isAlive()) {
-         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
+   public aku a(ajv $$0, wi $$1) {
+      aku $$2 = new aku($$0, $$1);
+      this.a.put($$0, $$2);
+      return $$2;
+   }
+
+   public void a(aku $$0) {
+      this.a.remove($$0.a());
+   }
+
+   public Collection<ajv> a() {
+      return this.a.keySet();
+   }
+
+   public Collection<aku> b() {
+      return this.a.values();
+   }
+
+   public to a(ip.a $$0) {
+      to $$1 = new to();
+
+      for (aku $$2 : this.a.values()) {
+         $$1.a($$2.a().toString(), $$2.a($$0));
       }
 
-      this.f = true;
-      this.h = new Thread(this::c, "chase-client");
-      this.h.setDaemon(true);
-      this.h.start();
+      return $$1;
    }
 
-   public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
-      this.h = null;
-   }
-
-   public void c() {
-      String $$0 = this.c + ":" + this.d;
-
-      while (this.f) {
-         try {
-            a.info("Connecting to remote control server {}", $$0);
-            this.g = new Socket(this.c, this.d);
-            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
-
-            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
-               while (this.f) {
-                  String $$2 = $$1.readLine();
-                  if ($$2 == null) {
-                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-                     break;
-                  }
-
-                  this.a($$2);
-               }
-            } catch (IOException var8) {
-               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-            }
-         } catch (IOException var9) {
-            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
-         }
-
-         if (this.f) {
-            try {
-               Thread.sleep(5000L);
-            } catch (InterruptedException var5) {
-            }
-         }
+   public void a(to $$0, ip.a $$1) {
+      for (String $$2 : $$0.e()) {
+         ajv $$3 = new ajv($$2);
+         this.a.put($$3, aku.a($$0.p($$2), $$3, $$1));
       }
    }
 
-   private void a(String $$0) {
-      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
-         $$1.useLocale(Locale.ROOT);
-         String $$2 = $$1.next();
-         if ("t".equals($$2)) {
-            this.a($$1);
-         } else {
-            a.warn("Unknown message type '{}'", $$2);
-         }
-      } catch (NoSuchElementException var7) {
-         a.warn("Could not parse message '{}', ignoring", $$0);
+   public void a(apv $$0) {
+      for (aku $$1 : this.a.values()) {
+         $$1.c($$0);
       }
    }
 
-   private void a(Scanner $$0) {
-      this.b($$0)
-         .ifPresent(
-            $$0x -> this.b(
-                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.c, $$0x.b.d, $$0x.b.e, $$0x.c.j, $$0x.c.i)
-               )
-         );
-   }
-
-   private Optional<akv.a> b(Scanner $$0) {
-      ajs<cyx> $$1 = (ajs<cyx>)ale.a.get($$0.next());
-      if ($$1 == null) {
-         return Optional.empty();
-      } else {
-         float $$2 = $$0.nextFloat();
-         float $$3 = $$0.nextFloat();
-         float $$4 = $$0.nextFloat();
-         float $$5 = $$0.nextFloat();
-         float $$6 = $$0.nextFloat();
-         return Optional.of(new akv.a($$1, new esa((double)$$2, (double)$$3, (double)$$4), new erz($$6, $$5)));
+   public void b(apv $$0) {
+      for (aku $$1 : this.a.values()) {
+         $$1.d($$0);
       }
-   }
-
-   private void b(String $$0) {
-      this.e.execute(() -> {
-         List<apt> $$1 = this.e.ah().t();
-         if (!$$1.isEmpty()) {
-            apt $$2 = $$1.get(0);
-            aps $$3 = this.e.I();
-            du $$4 = new du($$2, esa.a($$3.U()), erz.a, $$3, 4, "", wf.a, this.e, $$2);
-            dv $$5 = this.e.aH();
-            $$5.a($$4, $$0);
-         }
-      });
-   }
-
-   static record a(ajs<cyx> a, esa b, erz c) {
    }
 }

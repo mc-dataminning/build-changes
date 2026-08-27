@@ -1,59 +1,415 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
 import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class dtt {
-   private final aps a;
+public class dtt<T extends dti> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   final Set<UUID> b = Sets.newHashSet();
+   final dtq<T> c;
+   private final dtl<T> d;
+   private final dtk<T> e;
+   final dtn<T> f;
+   private final dtr<T> g;
+   private final Long2ObjectMap<dtv> h = new Long2ObjectOpenHashMap();
+   private final Long2ObjectMap<dtt.b> i = new Long2ObjectOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   private final Queue<dtg<T>> k = Queues.newConcurrentLinkedQueue();
 
-   public dtt(aps $$0) {
-      this.a = $$0;
+   public dtt(Class<T> $$0, dtq<T> $$1, dtl<T> $$2) {
+      this.e = new dtk<>();
+      this.f = new dtn<>($$0, this.h);
+      this.h.defaultReturnValue(dtv.a);
+      this.i.defaultReturnValue(dtt.b.a);
+      this.c = $$1;
+      this.d = $$2;
+      this.g = new dts<>(this.e, this.f);
    }
 
-   public void a(il<dts> $$0, esa $$1, dts.a $$2) {
-      int $$3 = $$0.a().a();
-      ib $$4 = ib.a($$1);
-      int $$5 = je.a($$4.u() - $$3);
-      int $$6 = je.a($$4.v() - $$3);
-      int $$7 = je.a($$4.w() - $$3);
-      int $$8 = je.a($$4.u() + $$3);
-      int $$9 = je.a($$4.v() + $$3);
-      int $$10 = je.a($$4.w() + $$3);
-      List<dts.b> $$11 = new ArrayList<>();
-      dtv.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == dtu.a.b) {
-            $$11.add(new dts.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
+   void a(long $$0, dtm<T> $$1) {
+      if ($$1.a()) {
+         this.f.e($$0);
+      }
+   }
 
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dqv $$16 = this.a.l().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+   private boolean b(T $$0) {
+      if (!this.b.add($$0.cw())) {
+         a.warn("UUID of added entity already exists: {}", $$0);
+         return false;
+      } else {
+         return true;
+      }
+   }
+
+   public boolean a(T $$0) {
+      return this.a($$0, false);
+   }
+
+   private boolean a(T $$0, boolean $$1) {
+      if (!this.b($$0)) {
+         return false;
+      } else {
+         long $$2 = jg.c($$0.dm());
+         dtm<T> $$3 = this.f.c($$2);
+         $$3.a($$0);
+         $$0.a(new dtt.a($$0, $$2, $$3));
+         if (!$$1) {
+            this.c.g($$0);
+         }
+
+         dtv $$4 = a($$0, $$3.c());
+         if ($$4.b()) {
+            this.e($$0);
+         }
+
+         if ($$4.a()) {
+            this.c($$0);
+         }
+
+         return true;
+      }
+   }
+
+   static <T extends dti> dtv a(T $$0, dtv $$1) {
+      return $$0.dL() ? dtv.c : $$1;
+   }
+
+   public void a(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, true));
+   }
+
+   public void b(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, false));
+   }
+
+   void c(T $$0) {
+      this.c.e($$0);
+   }
+
+   void d(T $$0) {
+      this.c.d($$0);
+   }
+
+   void e(T $$0) {
+      this.e.a($$0);
+      this.c.c($$0);
+   }
+
+   void f(T $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+   }
+
+   public void a(cyn $$0, apn $$1) {
+      dtv $$2 = dtv.a($$1);
+      this.a($$0, $$2);
+   }
+
+   public void a(cyn $$0, dtv $$1) {
+      long $$2 = $$0.a();
+      if ($$1 == dtv.a) {
+         this.h.remove($$2);
+         this.j.add($$2);
+      } else {
+         this.h.put($$2, $$1);
+         this.j.remove($$2);
+         this.b($$2);
+      }
+
+      this.f.b($$2).forEach($$1x -> {
+         dtv $$2x = $$1x.a($$1);
+         boolean $$3 = $$2x.b();
+         boolean $$4 = $$1.b();
+         boolean $$5 = $$2x.a();
+         boolean $$6 = $$1.a();
+         if ($$5 && !$$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::d);
+         }
+
+         if ($$3 && !$$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::f);
+         } else if (!$$3 && $$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::e);
+         }
+
+         if (!$$5 && $$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::c);
+         }
+      });
+   }
+
+   private void b(long $$0) {
+      dtt.b $$1 = (dtt.b)this.i.get($$0);
+      if ($$1 == dtt.b.a) {
+         this.c($$0);
+      }
+   }
+
+   private boolean a(long $$0, Consumer<T> $$1) {
+      dtt.b $$2 = (dtt.b)this.i.get($$0);
+      if ($$2 == dtt.b.b) {
+         return false;
+      } else {
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dti::dK)).collect(Collectors.toList());
+         if ($$3.isEmpty()) {
+            if ($$2 == dtt.b.c) {
+               this.d.a(new dtg<>(new cyn($$0), ImmutableList.of()));
+            }
+
+            return true;
+         } else if ($$2 == dtt.b.a) {
+            this.c($$0);
+            return false;
+         } else {
+            this.d.a(new dtg<>(new cyn($$0), $$3));
+            $$3.forEach($$1);
+            return true;
+         }
+      }
+   }
+
+   private void c(long $$0) {
+      this.i.put($$0, dtt.b.b);
+      cyn $$1 = new cyn($$0);
+      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
+         a.error("Failed to read chunk {}", $$1, $$1x);
+         return null;
+      });
+   }
+
+   private boolean d(long $$0) {
+      boolean $$1 = this.a($$0, $$0x -> $$0x.cS().forEach(this::g));
+      if (!$$1) {
+         return false;
+      } else {
+         this.i.remove($$0);
+         return true;
+      }
+   }
+
+   private void g(dti $$0) {
+      $$0.b(bqa.c.c);
+      $$0.a(dtj.a);
+   }
+
+   private void g() {
+      this.j.removeIf($$0 -> this.h.get($$0) != dtv.a ? true : this.d($$0));
+   }
+
+   private void h() {
+      dtg<T> $$0;
+      while (($$0 = this.k.poll()) != null) {
+         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
+         this.i.put($$0.a().a(), dtt.b.c);
+      }
+   }
+
+   public void a() {
+      this.h();
+      this.g();
+   }
+
+   private LongSet i() {
+      LongSet $$0 = this.f.a();
+      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+
+      while (var2.hasNext()) {
+         Entry<dtt.b> $$1 = (Entry<dtt.b>)var2.next();
+         if ($$1.getValue() == dtt.b.c) {
+            $$0.add($$1.getLongKey());
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      this.i().forEach($$0 -> {
+         boolean $$1 = this.h.get($$0) == dtv.a;
+         if ($$1) {
+            this.d($$0);
+         } else {
+            this.a($$0, $$0x -> {
+            });
+         }
+      });
+   }
+
+   public void c() {
+      LongSet $$0 = this.i();
+
+      while (!$$0.isEmpty()) {
+         this.d.a(false);
+         this.h();
+         $$0.removeIf($$0x -> {
+            boolean $$1 = this.h.get($$0x) == dtv.a;
+            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
+            });
+         });
+      }
+
+      this.d.a(true);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.c();
+      this.d.close();
+   }
+
+   public boolean a(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public dtr<T> d() {
+      return this.g;
+   }
+
+   public boolean a(id $$0) {
+      return ((dtv)this.h.get(cyn.a($$0))).a();
+   }
+
+   public boolean a(cyn $$0) {
+      return ((dtv)this.h.get($$0.a())).a();
+   }
+
+   public boolean a(long $$0) {
+      return this.i.get($$0) == dtt.b.c;
+   }
+
+   public void a(Writer $$0) throws IOException {
+      awm $$1 = awm.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
+      this.f.a().forEach($$1x -> {
+         dtt.b $$2 = (dtt.b)this.i.get($$1x);
+         this.f.a($$1x).forEach($$2x -> {
+            dtm<T> $$3 = this.f.d($$2x);
+            if ($$3 != null) {
+               try {
+                  $$1.a(jg.b($$2x), jg.c($$2x), jg.d($$2x), $$3.c(), $$2, $$3.d());
+               } catch (IOException var7) {
+                  throw new UncheckedIOException(var7);
                }
+            }
+         });
+      });
+   }
+
+   @ayp
+   public String e() {
+      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
+   }
+
+   @ayp
+   public int f() {
+      return this.e.b();
+   }
+
+   class a implements dtj {
+      private final T c;
+      private long d;
+      private dtm<T> e;
+
+      a(T $$0, long $$1, dtm<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      @Override
+      public void a() {
+         id $$0 = this.c.dm();
+         long $$1 = jg.c($$0);
+         if ($$1 != this.d) {
+            dtv $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               dtt.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, jg.a(this.d), $$1});
+            }
+
+            dtt.this.a(this.d, this.e);
+            dtm<T> $$3 = dtt.this.f.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            this.a($$2, $$3.c());
+         }
+      }
+
+      private void a(dtv $$0, dtv $$1) {
+         dtv $$2 = dtt.a(this.c, $$0);
+         dtv $$3 = dtt.a(this.c, $$1);
+         if ($$2 == $$3) {
+            if ($$3.b()) {
+               dtt.this.c.a(this.c);
+            }
+         } else {
+            boolean $$4 = $$2.b();
+            boolean $$5 = $$3.b();
+            if ($$4 && !$$5) {
+               dtt.this.f(this.c);
+            } else if (!$$4 && $$5) {
+               dtt.this.e(this.c);
+            }
+
+            boolean $$6 = $$2.a();
+            boolean $$7 = $$3.a();
+            if ($$6 && !$$7) {
+               dtt.this.d(this.c);
+            } else if (!$$6 && $$7) {
+               dtt.this.c(this.c);
+            }
+
+            if ($$5) {
+               dtt.this.c.a(this.c);
             }
          }
       }
 
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
+      @Override
+      public void a(bqa.c $$0) {
+         if (!this.e.b(this.c)) {
+            dtt.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, jg.a(this.d), $$0});
+         }
 
-      if ($$13) {
-         afi.a(this.a, $$0, $$1);
+         dtv $$1 = dtt.a(this.c, this.e.c());
+         if ($$1.a()) {
+            dtt.this.d(this.c);
+         }
+
+         if ($$1.b()) {
+            dtt.this.f(this.c);
+         }
+
+         if ($$0.a()) {
+            dtt.this.c.f(this.c);
+         }
+
+         dtt.this.b.remove(this.c.cw());
+         this.c.a(a);
+         dtt.this.a(this.d, this.e);
       }
    }
 
-   private void a(List<dts.b> $$0) {
-      Collections.sort($$0);
-
-      for (dts.b $$1 : $$0) {
-         dtu $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
-      }
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

@@ -1,15 +1,7 @@
-public class goi extends goj {
-   public goi(cce $$0) {
-      super($$0, aum.bR, aun.g);
-   }
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 
-   @Override
-   protected gof o() {
-      return new goh(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.Y_();
-   }
+public interface goi {
+   void a(Map<UUID, arl.c> var1, Consumer<arl.b> var2);
 }

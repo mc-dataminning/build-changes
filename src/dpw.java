@@ -1,23 +1,17 @@
-public enum dpw implements aye {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+public enum dpw implements ayg {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String f;
+   private final String e;
 
    private dpw(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.e;
    }
 }

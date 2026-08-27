@@ -1,45 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ebc extends eba {
-   public static final Codec<ebc> d = RecordCodecBuilder.create(
+public class ebc implements eai {
+   public static final Codec<ebc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               dzo.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               id.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, ebc::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+   private final boolean b;
+   private final List<dzo.a> c;
+   @Nullable
+   private final id d;
 
-   public ebc(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public ebc(boolean $$0, List<dzo.a> $$1, @Nullable id $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   @Override
-   protected ebb<?> b() {
-      return ebb.b;
+   private ebc(boolean $$0, List<dzo.a> $$1, Optional<id> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
-      } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
-      }
+   public boolean a() {
+      return this.b;
+   }
+
+   public List<dzo.a> b() {
+      return this.c;
+   }
+
+   @Nullable
+   public id c() {
+      return this.d;
    }
 }

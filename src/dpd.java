@@ -1,49 +1,22 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
 public class dpd {
-   private final cza a;
-   private final ib b;
-   private final boolean c;
-   @Nullable
-   private doz d;
-   @Nullable
-   private dmf e;
-   private boolean f;
-
-   public dpd(cza $$0, ib $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
-   }
-
-   public doz a() {
-      if (this.d == null && (this.c || this.a.B(this.b))) {
-         this.d = this.a.a_(this.b);
+   public static ese a(ese $$0, ij $$1, double $$2) {
+      double $$3 = $$2 * (double)$$1.f().a();
+      double $$4 = Math.min($$3, 0.0);
+      double $$5 = Math.max($$3, 0.0);
+      switch ($$1) {
+         case e:
+            return new ese($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
+         case f:
+            return new ese($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
+         case a:
+            return new ese($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
+         case b:
+         default:
+            return new ese($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
+         case c:
+            return new ese($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
+         case d:
+            return new ese($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
       }
-
-      return this.d;
-   }
-
-   @Nullable
-   public dmf b() {
-      if (this.e == null && !this.f) {
-         this.e = this.a.c_(this.b);
-         this.f = true;
-      }
-
-      return this.e;
-   }
-
-   public cza c() {
-      return this.a;
-   }
-
-   public ib d() {
-      return this.b;
-   }
-
-   public static Predicate<dpd> a(Predicate<doz> $$0) {
-      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

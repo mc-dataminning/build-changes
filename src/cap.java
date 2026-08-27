@@ -1,24 +1,43 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cap extends cax<bqq> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
-
+public class cap extends cbc<cik> {
    @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.of(bzr.L);
+   public Set<bzw<?>> a() {
+      return ImmutableSet.of(bzw.h, bzw.aw, bzw.aq, bzw.ap, bzw.as, bzw.at, new bzw[0]);
    }
 
-   protected void a(aps $$0, bqq $$1) {
-      brp<?> $$2 = $$1.dP();
-      List<cgd> $$3 = $$0.a(cgd.class, $$1.cH().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<cgd> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(bzr.L, $$4);
+   protected void a(apu $$0, cik $$1) {
+      bru<?> $$2 = $$1.dP();
+      $$2.a(bzw.aw, this.b($$0, $$1));
+      Optional<ciq> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cik> $$5 = Lists.newArrayList();
+      bzy $$6 = $$2.c(bzw.h).orElse(bzy.a());
+
+      for (bqt $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof ciq || $$0x instanceof cik))) {
+         if ($$7 instanceof ciq $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof cik $$9) {
+            $$5.add($$9);
+         }
+      }
+
+      $$2.a(bzw.aq, $$3);
+      $$2.a(bzw.ap, $$5);
+      $$2.a(bzw.as, $$4);
+      $$2.a(bzw.at, $$5.size());
+   }
+
+   private Optional<id> b(apu $$0, cik $$1) {
+      return id.a($$1.dm(), 8, 4, $$1x -> $$0.a_($$1x).a(ave.aS));
    }
 }

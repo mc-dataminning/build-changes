@@ -1,28 +1,31 @@
-public class gfn extends gfh<cgc> {
-   private final gat a;
+public class gfn extends ggx<cgw, fqt<cgw>> {
+   private static final ajv a = new ajv("textures/entity/enderman/enderman.png");
+   private final axt i = axt.a();
 
-   public gfn(gfi.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gfn(gfr.a $$0) {
+      super($$0, new fqt<>($$0.a(ftu.X)), 0.5F);
+      this.a(new gjm<>(this));
+      this.a(new gjd(this, $$0.c()));
    }
 
-   public void a(cgc $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
-      doz $$6 = $$0.u();
-      if ($$6.l() == did.c) {
-         cyx $$7 = $$0.dM();
-         if ($$6 != $$7.a_($$0.dm()) && $$6.l() != did.a) {
-            $$3.a();
-            ib $$8 = ib.a($$0.dr(), $$0.cH().e, $$0.dx());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fzu.b($$6)), false, axr.a(), $$6.a($$0.p()), gla.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
+   public void a(cgw $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
+      dpi $$6 = $$0.gn();
+      fqt<cgw> $$7 = this.a();
+      $$7.a = $$6 != null;
+      $$7.b = $$0.go();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public esj a(cgw $$0, float $$1) {
+      if ($$0.go()) {
+         double $$2 = 0.02 * (double)$$0.eb();
+         return new esj(this.i.k() * $$2, 0.0, this.i.k() * $$2);
+      } else {
+         return super.a($$0, $$1);
       }
    }
 
-   public ajt a(cgc $$0) {
-      return gli.e;
+   public ajv a(cgw $$0) {
+      return a;
    }
 }

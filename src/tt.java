@@ -1,187 +1,145 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
 
-public class tt extends tl<tu> {
-   private static final int b = 24;
-   public static final ul<tt> a = new ul.b<tt>() {
-      public tt a(DataInput $$0, tv $$1) throws IOException {
-         return new tt(d($$0, $$1));
+public class tt extends ue {
+   private static final int b = 12;
+   public static final un<tt> a = new un.a<tt>() {
+      public tt a(DataInput $$0, tx $$1) throws IOException {
+         return tt.a(d($$0, $$1));
       }
 
       @Override
-      public ug.b a(DataInput $$0, ug $$1, tv $$2) throws IOException {
+      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static long[] d(DataInput $$0, tv $$1) throws IOException {
-         $$1.b(24L);
-         int $$2 = $$0.readInt();
-         $$1.a(8L, (long)$$2);
-         long[] $$3 = new long[$$2];
-
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readLong();
-         }
-
-         return $$3;
+      private static int d(DataInput $$0, tx $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readInt();
       }
 
       @Override
-      public void b(DataInput $$0, tv $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 8);
+      public int c() {
+         return 4;
       }
 
       @Override
       public String a() {
-         return "LONG[]";
+         return "INT";
       }
 
       @Override
       public String b() {
-         return "TAG_Long_Array";
+         return "TAG_Int";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
       }
    };
-   private long[] c;
+   private final int c;
 
-   public tt(long[] $$0) {
+   tt(int $$0) {
       this.c = $$0;
    }
 
-   public tt(LongSet $$0) {
-      this.c = $$0.toLongArray();
-   }
-
-   public tt(List<Long> $$0) {
-      this(a($$0));
-   }
-
-   private static long[] a(List<Long> $$0) {
-      long[] $$1 = new long[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Long $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0L : $$3;
-      }
-
-      return $$1;
+   public static tt a(int $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? tt.a.a[$$0 - -128] : new tt($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-
-      for (long $$1 : this.c) {
-         $$0.writeLong($$1);
-      }
+      $$0.writeInt(this.c);
    }
 
    @Override
    public int a() {
-      return 24 + 8 * this.c.length;
-   }
-
-   @Override
-   public byte b() {
       return 12;
    }
 
    @Override
-   public ul<tt> c() {
-      return a;
+   public byte b() {
+      return 3;
    }
 
    @Override
-   public String toString() {
-      return this.s_();
+   public un<tt> c() {
+      return a;
    }
 
    public tt e() {
-      long[] $$0 = new long[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new tt($$0);
+      return this;
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tt && Arrays.equals(this.c, ((tt)$$0).c);
+      return this == $$0 ? true : $$0 instanceof tt && this.c == ((tt)$$0).c;
    }
 
    @Override
    public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   @Override
-   public void a(un $$0) {
-      $$0.a(this);
-   }
-
-   public long[] g() {
       return this.c;
    }
 
    @Override
-   public int size() {
-      return this.c.length;
-   }
-
-   public tu a(int $$0) {
-      return tu.a(this.c[$$0]);
-   }
-
-   public tu a(int $$0, tu $$1) {
-      long $$2 = this.c[$$0];
-      this.c[$$0] = $$1.f();
-      return tu.a($$2);
-   }
-
-   public void b(int $$0, tu $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
+   public void a(up $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public boolean a(int $$0, uj $$1) {
-      if ($$1 instanceof uc) {
-         this.c[$$0] = ((uc)$$1).f();
-         return true;
-      } else {
-         return false;
-      }
+   public long f() {
+      return (long)this.c;
    }
 
    @Override
-   public boolean b(int $$0, uj $$1) {
-      if ($$1 instanceof uc) {
-         this.c = ArrayUtils.add(this.c, $$0, ((uc)$$1).f());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public tu b(int $$0) {
-      long $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return tu.a($$1);
+   public int g() {
+      return this.c;
    }
 
    @Override
-   public byte f() {
-      return 4;
+   public short h() {
+      return (short)(this.c & 65535);
    }
 
    @Override
-   public void clear() {
-      this.c = new long[0];
+   public byte i() {
+      return (byte)(this.c & 0xFF);
    }
 
    @Override
-   public ug.b a(ug $$0) {
+   public double j() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.c;
+   }
+
+   @Override
+   public Number l() {
+      return this.c;
+   }
+
+   @Override
+   public ui.b a(ui $$0) {
       return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final tt[] a = new tt[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new tt(-128 + $$0);
+         }
+      }
    }
 }

@@ -1,15 +1,33 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bvp {
-   public static bsh<bqo> a() {
-      return bvt.a((Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$0 -> $$0.a((bvw<bqo>)(($$0x, $$1, $$2) -> {
-            if (!$$1.dP().c(cli.e) && $$1.fI()) {
-               $$1.fJ();
+   private static final int a = 10;
+   private static final int b = 7;
+
+   public static btw<brb> a(float $$0) {
+      return a($$0, 10, 7);
+   }
+
+   public static btw<brb> a(float $$0, int $$1, int $$2) {
+      return bvy.a((Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$3 -> $$3.group($$3.c(bzw.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               id $$7 = $$5.dm();
+               esj $$8;
+               if ($$4.c($$7)) {
+                  $$8 = cbq.a($$5, $$1, $$2);
+               } else {
+                  jg $$9 = jg.a($$7);
+                  jg $$10 = bsn.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cbn.a($$5, $$1, $$2, esj.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = cbq.a($$5, $$1, $$2);
+                  }
+               }
+
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bzz($$1xxxx, $$0, 0)));
                return true;
-            } else {
-               return false;
-            }
-         }))));
+            })));
    }
 }

@@ -1,26 +1,22 @@
-public abstract class fdm extends fdn {
-   private final fda a;
-   private int b = 16777215;
+import java.util.Set;
 
-   public fdm(int $$0, int $$1, int $$2, int $$3, wg $$4, fda $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
+public class fdm extends gmu {
+   private static final Set<asd<?>> a = Set.of(gnc.a, gni.c);
+
+   public fdm(glt $$0) {
+      super($$0, new ajv("textures/atlas/gui.png"), new ajv("gui"), a);
    }
 
    @Override
-   protected void a(fhl $$0) {
+   public gls a(ajv $$0) {
+      return super.a($$0);
    }
 
-   public fdm a(int $$0) {
-      this.b = $$0;
-      return this;
+   public gnj a(gls $$0) {
+      return this.b($$0).a();
    }
 
-   protected final fda a() {
-      return this.a;
-   }
-
-   protected final int b() {
-      return this.b;
+   private gni b(gls $$0) {
+      return $$0.e().f().a(gni.c).orElse(gni.a);
    }
 }

@@ -1,33 +1,32 @@
-import com.mojang.util.UndashedUuid;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
 
-public class awg {
-   public static final String a = "https://aka.ms/MinecraftGDPR";
-   public static final String b = "https://aka.ms/MinecraftEULA";
-   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
-   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
-   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
-   public static final String f = "https://aka.ms/BuyMinecraftJava";
-   public static final String g = "https://aka.ms/JavaAccountSettings";
-   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
-   public static final String i = "https://aka.ms/javafeedback?ref=game";
-   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
-   public static final String k = "https://aka.ms/Minecraft-Support";
-   public static final String l = "https://aka.ms/MinecraftJavaAccessibility";
-   public static final String m = "https://aka.ms/aboutjavareporting";
-   public static final String n = "https://aka.ms/mcjavamoderation";
-   public static final String o = "https://aka.ms/javablocking";
-   public static final String p = "https://aka.ms/MinecraftSymLinks";
-   public static final String q = "https://aka.ms/startjavarealmstrial";
-   public static final String r = "https://aka.ms/BuyJavaRealms";
-   public static final String s = "https://aka.ms/MinecraftRealmsTerms";
-   public static final String t = "https://aka.ms/MinecraftRealmsContentCreator";
+public record awg(int b) {
+   private static final String c = "#";
+   public static final Codec<awg> a = Codec.STRING.comapFlatMap($$0 -> {
+      if (!$$0.startsWith("#")) {
+         return DataResult.error(() -> "Not a color code: " + $$0);
+      } else {
+         try {
+            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
+            return DataResult.success(new awg($$1));
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
+         }
+      }
+   }, awg::b);
 
-   public static String a(String $$0, UUID $$1, boolean $$2) {
-      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
+   private String b() {
+      return String.format(Locale.ROOT, "#%08X", this.b);
    }
 
-   public static String a(String $$0, UUID $$1) {
-      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
+   @Override
+   public String toString() {
+      return this.b();
+   }
+
+   public int a() {
+      return this.b;
    }
 }

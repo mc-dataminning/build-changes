@@ -1,65 +1,74 @@
-public class gqy implements gre {
-   private static final int a = 1200;
-   private static final wg b = wg.c("tutorial.craft_planks.title");
-   private static final wg c = wg.c("tutorial.craft_planks.description");
-   private final grd d;
-   private fga e;
-   private int f;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-   public gqy(grd $$0) {
-      this.d = $$0;
+public class gqy {
+   public static final gqy a = new gqy(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<gqu<gqy.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
+
+   protected gqy(Ticker $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(grf.f);
+   public synchronized void a(gqu<gqy.a> $$0) {
+      this.a($$0, (Function<gqu<gqy.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
+
+   public synchronized void a(gqu<gqy.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<gqu<gqy.a>, Stopwatch>)($$1x -> $$1));
+   }
+
+   private synchronized void a(gqu<gqy.a> $$0, Function<gqu<gqy.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
+
+   public synchronized void b(gqu<gqy.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
       } else {
-         if (this.f == 1) {
-            fzb $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fZ().a(avk.b)) {
-                  this.d.a(grf.f);
-                  return;
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
+      }
+   }
+
+   public void a(gqr $$0) {
+      $$0.send(gqs.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((gqu<gqy.a>)$$1, new gqy.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gqs.g.a());
                }
-
-               if (a($$0, avk.b)) {
-                  this.d.a(grf.f);
-                  return;
-               }
-            }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(gqu.B, new gqy.a((int)$$1)));
+            this.d.clear();
          }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fga(fga.a.e, b, c, false);
-            this.d.e().aA().a(this.e);
-         }
-      }
+      });
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
    }
 
-   @Override
-   public void a(crj $$0) {
-      if ($$0.a(avk.b)) {
-         this.d.a(grf.f);
-      }
-   }
+   public static record a(int b) {
+      public static final Codec<gqy.a> a = Codec.INT.xmap(gqy.a::new, $$0 -> $$0.b);
 
-   public static boolean a(fzb $$0, avr<cre> $$1) {
-      for (il<cre> $$2 : kr.h.c($$1)) {
-         if ($$0.j().a(auw.b.b($$2.a())) > 0) {
-            return true;
-         }
+      public int a() {
+         return this.b;
       }
-
-      return false;
    }
 }

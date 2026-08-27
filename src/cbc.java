@@ -1,35 +1,47 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public class cbc extends caq<cix> {
-   @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bzr.B)));
+public abstract class cbc<E extends bqt> {
+   private static final axt a = axt.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final cbj d = cbj.b().a(16.0);
+   private static final cbj e = cbj.b().a(16.0).e();
+   private static final cbj f = cbj.a().a(16.0);
+   private static final cbj g = cbj.a().a(16.0).e();
+   private static final cbj h = cbj.a().a(16.0).d();
+   private static final cbj i = cbj.a().a(16.0).d().e();
+   private final int j;
+   private long k;
+
+   public cbc(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   protected void a(aps $$0, cix $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ai() == bqb.bx)
-         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bqb.bx))
-         .ifPresentOrElse($$1x -> $$1.dP().a(bzr.B, $$1x), () -> $$1.dP().b(bzr.B));
+   public cbc() {
+      this(20);
    }
 
-   private static Optional<bqo> a(cix $$0, Predicate<bqo> $$1) {
-      return $$0.dP().c(bzr.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   public final void b(apu $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
+      }
    }
 
-   @Override
-   protected int b() {
-      return 24;
+   protected abstract void a(apu var1, E var2);
+
+   public abstract Set<bzw<?>> a();
+
+   public static boolean b(bqt $$0, bqt $$1) {
+      return $$0.dP().b(bzw.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
    }
 
-   @Override
-   protected int c() {
-      return 24;
+   public static boolean c(bqt $$0, bqt $$1) {
+      return $$0.dP().b(bzw.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   }
+
+   public static boolean d(bqt $$0, bqt $$1) {
+      return $$0.dP().b(bzw.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

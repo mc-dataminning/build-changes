@@ -1,44 +1,66 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class dxm extends dxk {
-   public dxm(Codec<eag> $$0) {
+public class dxm extends dye<dzz> {
+   public dxm(Codec<dzz> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(cyy $$0, axr $$1, ib $$2, doz $$3) {
-      ib.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
+   public boolean a(dyg<dzz> $$0) {
+      dab $$1 = $$0.b();
+      dzz $$2 = $$0.f();
+      axt $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
-
-         $$4.c(ih.b);
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
       }
 
-      ib $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<ih> $$9 = ih.c.a.c($$1);
+      if ($$6 == 0) {
+         return false;
+      } else {
+         id.a $$8 = $$0.e().j();
+         id.a $$9 = $$8.j().c($$2.b());
 
-      for (ih $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
 
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(ih.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               dzz.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
             }
          }
-      }
 
-      return true;
+         return true;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
+      }
    }
 }

@@ -1,24 +1,21 @@
-import org.joml.Matrix4f;
+public class fme extends fkv<cop> {
+   private static final ajv A = new ajv("textures/gui/container/shulker_box.png");
 
-public class fme implements fmf {
-   private final aww a;
-
-   public fme(aww $$0) {
-      this.a = $$0;
+   public fme(cop $$0, cjz $$1, wi $$2) {
+      super($$0, $$1, $$2);
+      this.d++;
    }
 
    @Override
-   public int a(fda $$0) {
-      return $$0.a(this.a);
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public int a() {
-      return 10;
-   }
-
-   @Override
-   public void a(fda $$0, int $$1, int $$2, Matrix4f $$3, fzz.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fda.a.a, 0, 15728880);
+   protected void a(fdl $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.k - this.c) / 2;
+      int $$5 = (this.l - this.d) / 2;
+      $$0.a(A, $$4, $$5, 0, 0, this.c, this.d);
    }
 }

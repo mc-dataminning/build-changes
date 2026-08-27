@@ -1,116 +1,70 @@
-public enum dom implements aye {
-   a("inactive", dom.a.a) {
-      @Override
-      protected void a(aps $$0, ib $$1, doj $$2, dol $$3) {
-         $$3.a(crj.i);
-         $$0.c(3016, $$1, 0);
-      }
-   },
-   b("active", dom.a.b) {
-      @Override
-      protected void a(aps $$0, ib $$1, doj $$2, dol $$3) {
-         if (!$$3.b()) {
-            doh.b.a($$0, this, $$2, $$3, $$1);
-         }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-         $$0.c(3015, $$1, 0);
-      }
-   },
-   c("unlocking", dom.a.b) {
-      @Override
-      protected void a(aps $$0, ib $$1, doj $$2, dol $$3) {
-         $$0.a(null, $$1, aum.Am, aun.e);
-      }
-   },
-   d("ejecting", dom.a.b) {
-      @Override
-      protected void a(aps $$0, ib $$1, doj $$2, dol $$3) {
-         $$0.a(null, $$1, aum.Ao, aun.e);
-      }
+public record dom(int c, int d, float e, float f, float g, float h, int i, int j, bmp<czx> k, bmp<ajv> l) {
+   public static dom a = new dom(14, 4, 6.0F, 2.0F, 2.0F, 1.0F, 40, 36000, bmp.b(), bmp.<ajv>a().a(eni.aO).a(eni.aN).a());
+   public static MapCodec<dom> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 128).optionalFieldOf("required_player_range", a.c).forGetter(dom::a),
+               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dom::b),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dom::c),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dom::d),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dom::e),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dom::f),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dom::g),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", a.j).forGetter(dom::h),
+               czx.c.optionalFieldOf("spawn_potentials", bmp.b()).forGetter(dom::i),
+               bmp.a(ajv.a).optionalFieldOf("loot_tables_to_eject", a.l).forGetter(dom::j)
+            )
+            .apply($$0, dom::new)
+   );
 
-      @Override
-      protected void b(aps $$0, ib $$1, doj $$2, dol $$3) {
-         $$0.a(null, $$1, aum.Ah, aun.e);
-      }
-   };
-
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dom.a j;
-
-   dom(String $$0, dom.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public int a(int $$0) {
+      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   public int b(int $$0) {
+      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
    }
 
    public int a() {
-      return this.j.c;
+      return this.c;
    }
 
-   public dom a(aps $$0, ib $$1, doj $$2, dok $$3, dol $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.Y() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.Y() + (long)$$7);
-               yield d;
-            }
-         }
-      };
+   public int b() {
+      return this.d;
    }
 
-   private static dom a(aps $$0, ib $$1, doj $$2, dok $$3, dol $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.Y() + 20L);
-      return $$4.c() ? b : a;
+   public float c() {
+      return this.e;
    }
 
-   public void a(aps $$0, ib $$1, dom $$2, doj $$3, dol $$4) {
-      this.b($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4);
+   public float d() {
+      return this.f;
    }
 
-   protected void a(aps $$0, ib $$1, doj $$2, dol $$3) {
+   public float e() {
+      return this.g;
    }
 
-   protected void b(aps $$0, ib $$1, doj $$2, dol $$3) {
+   public float f() {
+      return this.h;
    }
 
-   private void a(aps $$0, ib $$1, crj $$2, float $$3) {
-      jw.a($$0, $$2, 2, ih.b, esa.c($$1).a(ih.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, aum.Aj, aun.e, 1.0F, 0.8F + 0.4F * $$3);
+   public int g() {
+      return this.i;
    }
 
-   static enum a {
-      a(6),
-      b(12);
+   public int h() {
+      return this.j;
+   }
 
-      final int c;
+   public bmp<czx> i() {
+      return this.k;
+   }
 
-      private a(int $$0) {
-         this.c = $$0;
-      }
+   public bmp<ajv> j() {
+      return this.l;
    }
 }

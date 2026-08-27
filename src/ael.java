@@ -1,30 +1,44 @@
-import java.util.Optional;
+import java.util.List;
 
-public record ael(String b, String c, int d, Optional<wg> e, Optional<xw> f) implements yn<aay> {
-   public static final ye<vr, ael> a = ye.a(yc.k, ael::b, yc.k, ael::e, yc.f, ael::f, wi.e, ael::g, xy.d, ael::h, ael::new);
+public class ael implements yp<aba> {
+   public static final yg<vi, ael> a = yp.a(ael::a, ael::new);
+   private final int b;
+   private final int[] c;
 
-   @Override
-   public yp<ael> a() {
-      return afj.aL;
+   public ael(bqa $$0) {
+      this.b = $$0.aj();
+      List<bqa> $$1 = $$0.cP();
+      this.c = new int[$$1.size()];
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c[$$2] = $$1.get($$2).aj();
+      }
    }
 
-   public void a(aay $$0) {
+   private ael(vi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.c();
+   }
+
+   private void a(vi $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public yr<ael> a() {
+      return afl.aJ;
+   }
+
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public String e() {
+   public int[] b() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<wg> g() {
-      return this.e;
-   }
-
-   public Optional<xw> h() {
-      return this.f;
+   public int e() {
+      return this.b;
    }
 }

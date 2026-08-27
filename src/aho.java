@@ -1,8 +1,7 @@
-public interface aho extends afm {
-   @Override
-   default vf b() {
-      return vf.a;
-   }
+public class aho {
+   public static final yr<ahn> a = a("intention");
 
-   void a(ahl var1);
+   private static <T extends yp<ahq>> yr<T> a(String $$0) {
+      return new yr<>(yq.a, new ajv($$0));
+   }
 }

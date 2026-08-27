@@ -1,29 +1,20 @@
-public class ahu implements yn<ahq> {
-   public static final ye<vg, ahu> a = yn.a(ahu::a, ahu::new);
-   private final int b;
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
 
-   public ahu(int $$0) {
-      this.b = $$0;
-   }
-
-   private ahu(vg $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vg $$0) {
-      $$0.c(this.b);
-   }
+public record ahu(GameProfile b) implements yp<ahs> {
+   public static final yg<ByteBuf, ahu> a = ye.t.a(ahu::new, ahu::b);
 
    @Override
-   public yp<ahu> a() {
-      return ahw.d;
+   public yr<ahu> a() {
+      return ahy.b;
    }
 
-   public void a(ahq $$0) {
+   public void a(ahs $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

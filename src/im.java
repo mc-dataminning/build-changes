@@ -1,23 +1,29 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public interface im<T> {
-   Optional<il.c<T>> a(ajs<T> var1);
+public record im(aju<czg> d, id e) {
+   public static final MapCodec<im> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(czg.g.fieldOf("dimension").forGetter(im::a), id.a.fieldOf("pos").forGetter(im::b)).apply($$0, im::a)
+   );
+   public static final Codec<im> b = a.codec();
+   public static final yg<ByteBuf, im> c = yg.a(aju.b(ku.aP), im::a, id.b, im::b, im::a);
 
-   default il.c<T> b(ajs<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
+   public static im a(aju<czg> $$0, id $$1) {
+      return new im($$0, $$1);
    }
 
-   Optional<ip.c<T>> a(avr<T> var1);
-
-   default ip.c<T> b(avr<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
+   @Override
+   public String toString() {
+      return this.d + " " + this.e;
    }
 
-   public interface a {
-      <T> Optional<im<T>> a(ajs<? extends iy<? extends T>> var1);
+   public aju<czg> a() {
+      return this.d;
+   }
 
-      default <T> im<T> b(ajs<? extends iy<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
-      }
+   public id b() {
+      return this.e;
    }
 }

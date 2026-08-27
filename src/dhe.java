@@ -1,57 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhe extends dch {
+public class dhe extends dch implements dck {
    public static final MapCodec<dhe> a = b(dhe::new);
-   public static final int b = 3;
-   public static final dpz c = dpp.as;
-   private static final est[] d = new est[]{
-      dby.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dby.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dby.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
-      dby.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
-   };
 
    @Override
    public MapCodec<dhe> a() {
       return a;
    }
 
-   protected dhe(doy.d $$0) {
+   public dhe(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return d[$$0.c(c)];
+   public boolean b(czj $$0, id $$1, dpi $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected boolean b(doz $$0, cyd $$1, ib $$2) {
-      return $$0.a(dca.dW);
+   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
+      return true;
    }
 
    @Override
-   protected boolean e_(doz $$0) {
-      return $$0.c(c) < 3;
+   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
+      $$0.H_().c(ku.az).flatMap($$0x -> $$0x.b(rc.n)).ifPresent($$3x -> ((dxr)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
    }
 
    @Override
-   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
-      int $$4 = $$0.c(c);
-      if ($$4 < 3 && $$3.a(10) == 0) {
-         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
-         $$1.a($$2, $$0, 2);
-      }
-   }
-
-   @Override
-   public crj a(cza $$0, ib $$1, doz $$2) {
-      return new crj(crm.si);
-   }
-
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(c);
+   public dck.a aq_() {
+      return dck.a.a;
    }
 }

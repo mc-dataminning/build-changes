@@ -3,33 +3,33 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
 public record ck(
-   Optional<ck.b> b, Optional<ip<czw>> c, Optional<ip<efh>> d, Optional<ajs<cyx>> e, Optional<Boolean> f, Optional<ch> g, Optional<av> h, Optional<by> i
+   Optional<ck.b> b, Optional<ir<daf>> c, Optional<ir<efq>> d, Optional<aju<czg>> e, Optional<Boolean> f, Optional<ch> g, Optional<av> h, Optional<by> i
 ) {
    public static final Codec<ck> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               aws.a(ck.b.a, "position").forGetter(ck::a),
-               aws.a(ja.a(ks.av), "biomes").forGetter(ck::b),
-               aws.a(ja.a(ks.aF), "structures").forGetter(ck::c),
-               aws.a(ajs.a(ks.aO), "dimension").forGetter(ck::d),
-               aws.a(Codec.BOOL, "smokey").forGetter(ck::e),
-               aws.a(ch.a, "light").forGetter(ck::f),
-               aws.a(av.a, "block").forGetter(ck::g),
-               aws.a(by.a, "fluid").forGetter(ck::h)
+               awu.a(ck.b.a, "position").forGetter(ck::a),
+               awu.a(jc.a(ku.aw), "biomes").forGetter(ck::b),
+               awu.a(jc.a(ku.aG), "structures").forGetter(ck::c),
+               awu.a(aju.a(ku.aP), "dimension").forGetter(ck::d),
+               awu.a(Codec.BOOL, "smokey").forGetter(ck::e),
+               awu.a(ch.a, "light").forGetter(ck::f),
+               awu.a(av.a, "block").forGetter(ck::g),
+               awu.a(by.a, "fluid").forGetter(ck::h)
             )
             .apply($$0, ck::new)
    );
 
-   public boolean a(aps $$0, double $$1, double $$2, double $$3) {
+   public boolean a(apu $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.ae()) {
          return false;
       } else {
-         ib $$4 = ib.a($$1, $$2, $$3);
+         id $$4 = id.a($$1, $$2, $$3);
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dcm.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dcv.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -51,15 +51,15 @@ public record ck(
       return this.b;
    }
 
-   public Optional<ip<czw>> b() {
+   public Optional<ir<daf>> b() {
       return this.c;
    }
 
-   public Optional<ip<efh>> c() {
+   public Optional<ir<efq>> c() {
       return this.d;
    }
 
-   public Optional<ajs<cyx>> d() {
+   public Optional<aju<czg>> d() {
       return this.e;
    }
 
@@ -83,9 +83,9 @@ public record ck(
       private cm.c a;
       private cm.c b;
       private cm.c c;
-      private Optional<ip<czw>> d;
-      private Optional<ip<efh>> e;
-      private Optional<ajs<cyx>> f;
+      private Optional<ir<daf>> d;
+      private Optional<ir<efq>> e;
+      private Optional<aju<czg>> f;
       private Optional<Boolean> g;
       private Optional<ch> h;
       private Optional<av> i;
@@ -108,16 +108,16 @@ public record ck(
          return new ck.a();
       }
 
-      public static ck.a a(il<czw> $$0) {
-         return a().a(ip.a($$0));
+      public static ck.a a(in<daf> $$0) {
+         return a().a(ir.a($$0));
       }
 
-      public static ck.a a(ajs<cyx> $$0) {
+      public static ck.a a(aju<czg> $$0) {
          return a().b($$0);
       }
 
-      public static ck.a b(il<efh> $$0) {
-         return a().b(ip.a($$0));
+      public static ck.a b(in<efq> $$0) {
+         return a().b(ir.a($$0));
       }
 
       public static ck.a a(cm.c $$0) {
@@ -139,17 +139,17 @@ public record ck(
          return this;
       }
 
-      public ck.a a(ip<czw> $$0) {
+      public ck.a a(ir<daf> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public ck.a b(ip<efh> $$0) {
+      public ck.a b(ir<efq> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public ck.a b(ajs<cyx> $$0) {
+      public ck.a b(aju<czg> $$0) {
          this.f = Optional.of($$0);
          return this;
       }
@@ -183,7 +183,7 @@ public record ck(
    static record b(cm.c b, cm.c c, cm.c d) {
       public static final Codec<ck.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  aws.a(cm.c.d, "x", cm.c.c).forGetter(ck.b::a), aws.a(cm.c.d, "y", cm.c.c).forGetter(ck.b::b), aws.a(cm.c.d, "z", cm.c.c).forGetter(ck.b::c)
+                  awu.a(cm.c.d, "x", cm.c.c).forGetter(ck.b::a), awu.a(cm.c.d, "y", cm.c.c).forGetter(ck.b::b), awu.a(cm.c.d, "z", cm.c.c).forGetter(ck.b::c)
                )
                .apply($$0, ck.b::new)
       );

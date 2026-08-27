@@ -1,15 +1,5 @@
-public interface dnd extends bnt {
-   erv w_ = dby.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
-
-   default erv ai_() {
-      return w_;
+public class dnd extends dmo {
+   public dnd(id $$0, dpi $$1) {
+      super(dmq.q, $$0, $$1);
    }
-
-   double H();
-
-   double I();
-
-   double J();
-
-   boolean K();
 }

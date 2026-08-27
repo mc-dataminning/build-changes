@@ -1,97 +1,210 @@
-import java.util.Objects;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class flp extends fkt implements flr<cnt> {
-   private final cnt u;
-   private final cnb v = new cnb() {
-      @Override
-      public void a(cmp $$0, int $$1, crj $$2) {
-         flp.this.K();
-      }
+public class flp extends fkv<cnq> {
+   private static final ajv[] H = new ajv[]{
+      new ajv("container/enchanting_table/level_1"), new ajv("container/enchanting_table/level_2"), new ajv("container/enchanting_table/level_3")
+   };
+   private static final ajv[] I = new ajv[]{
+      new ajv("container/enchanting_table/level_1_disabled"),
+      new ajv("container/enchanting_table/level_2_disabled"),
+      new ajv("container/enchanting_table/level_3_disabled")
+   };
+   private static final ajv J = new ajv("container/enchanting_table/enchantment_slot_disabled");
+   private static final ajv K = new ajv("container/enchanting_table/enchantment_slot_highlighted");
+   private static final ajv L = new ajv("container/enchanting_table/enchantment_slot");
+   private static final ajv M = new ajv("textures/gui/container/enchanting_table.png");
+   private static final ajv N = new ajv("textures/entity/enchanting_table_book.png");
+   private final axt O = axt.a();
+   private fqd P;
+   public int A;
+   public float B;
+   public float C;
+   public float D;
+   public float E;
+   public float F;
+   public float G;
+   private crs Q = crs.i;
 
-      @Override
-      public void a(cmp $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            flp.this.L();
+   public flp(cnq $$0, cjz $$1, wi $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.P = new fqd(this.j.aR().a(ftu.r));
+   }
+
+   @Override
+   public void C() {
+      super.C();
+      this.E();
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = (this.k - this.c) / 2;
+      int $$4 = (this.l - this.d) / 2;
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         double $$6 = $$0 - (double)($$3 + 60);
+         double $$7 = $$1 - (double)($$4 + 14 + 19 * $$5);
+         if ($$6 >= 0.0 && $$7 >= 0.0 && $$6 < 108.0 && $$7 < 19.0 && this.s.b(this.j.s, $$5)) {
+            this.j.q.a(this.s.j, $$5);
+            return true;
          }
       }
-   };
 
-   public flp(cnt $$0, cjs $$1, wg $$2) {
-      this.u = $$0;
-   }
-
-   public cnt J() {
-      return this.u;
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.u.a(this.v);
-   }
+   protected void a(fdl $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.k - this.c) / 2;
+      int $$5 = (this.l - this.d) / 2;
+      $$0.a(M, $$4, $$5, 0, 0, this.c, this.d);
+      this.d($$0, $$4, $$5, $$1);
+      flo.a().a((long)this.s.m());
+      int $$6 = this.s.l();
 
-   @Override
-   public void d() {
-      this.j.s.r();
-      super.d();
-   }
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         int $$8 = $$4 + 60;
+         int $$9 = $$8 + 20;
+         int $$10 = this.s.k[$$7];
+         if ($$10 == 0) {
+            $$0.a(J, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+         } else {
+            String $$11 = $$10 + "";
+            int $$12 = 86 - this.m.b($$11);
+            wn $$13 = flo.a().a(this.m, $$12);
+            int $$14 = 6839882;
+            if (($$6 < $$7 + 1 || this.j.s.cn < $$10) && !this.j.s.ga().d) {
+               $$0.a(J, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+               $$0.a(I[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
+               $$0.a(this.m, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, ($$14 & 16711422) >> 1);
+               $$14 = 4226832;
+            } else {
+               int $$15 = $$2 - ($$4 + 60);
+               int $$16 = $$3 - ($$5 + 14 + 19 * $$7);
+               if ($$15 >= 0 && $$16 >= 0 && $$15 < 108 && $$16 < 19) {
+                  $$0.a(K, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+                  $$14 = 16777088;
+               } else {
+                  $$0.a(L, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+               }
 
-   @Override
-   public void j() {
-      super.j();
-      this.u.b(this.v);
-   }
+               $$0.a(H[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
+               $$0.a(this.m, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, $$14);
+               $$14 = 8453920;
+            }
 
-   @Override
-   protected void m() {
-      if (this.j.s.gl()) {
-         this.c(fdp.a(wf.d, $$0 -> this.d()).a(this.k / 2 - 100, 196, 98, 20).a());
-         this.c(fdp.a(wg.c("lectern.take_book"), $$0 -> this.g(3)).a(this.k / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
+            $$0.b(this.m, $$11, $$9 + 86 - this.m.b($$11), $$5 + 16 + 19 * $$7 + 7, $$14);
+         }
       }
    }
 
-   @Override
-   protected void E() {
-      this.g(1);
+   private void d(fdl $$0, int $$1, int $$2, float $$3) {
+      float $$4 = axm.i($$3, this.G, this.F);
+      float $$5 = axm.i($$3, this.C, this.B);
+      evn.e();
+      $$0.c().a();
+      $$0.c().a((float)$$1 + 33.0F, (float)$$2 + 31.0F, 100.0F);
+      float $$6 = 40.0F;
+      $$0.c().b(-40.0F, 40.0F, 40.0F);
+      $$0.c().a(a.b.rotationDegrees(25.0F));
+      $$0.c().a((1.0F - $$4) * 0.2F, (1.0F - $$4) * 0.1F, (1.0F - $$4) * 0.25F);
+      float $$7 = -(1.0F - $$4) * 90.0F - 90.0F;
+      $$0.c().a(a.d.rotationDegrees($$7));
+      $$0.c().a(a.b.rotationDegrees(180.0F));
+      float $$8 = axm.a(axm.h($$5 + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
+      float $$9 = axm.a(axm.h($$5 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
+      this.P.a(0.0F, $$8, $$9, $$4);
+      ewv $$10 = $$0.d().getBuffer(this.P.a(N));
+      this.P.a($$0.c(), $$10, 15728880, glj.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$0.e();
+      $$0.c().b();
+      evn.d();
    }
 
    @Override
-   protected void F() {
-      this.g(2);
-   }
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      $$3 = this.j.au();
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+      boolean $$4 = this.j.s.ga().d;
+      int $$5 = this.s.l();
 
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.u.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
+      for (int $$6 = 0; $$6 < 3; $$6++) {
+         int $$7 = this.s.k[$$6];
+         cwz $$8 = cwz.c(this.s.l[$$6]);
+         int $$9 = this.s.m[$$6];
+         int $$10 = $$6 + 1;
+         if (this.a(60, 14 + 19 * $$6, 108, 17, (double)$$1, (double)$$2) && $$7 > 0 && $$9 >= 0 && $$8 != null) {
+            List<wi> $$11 = Lists.newArrayList();
+            $$11.add(wi.a("container.enchant.clue", $$8.d($$9)).a(n.p));
+            if (!$$4) {
+               $$11.add(wh.a);
+               if (this.j.s.cn < $$7) {
+                  $$11.add(wi.a("container.enchant.level.requirement", this.s.k[$$6]).a(n.m));
+               } else {
+                  ww $$12;
+                  if ($$10 == 1) {
+                     $$12 = wi.c("container.enchant.lapis.one");
+                  } else {
+                     $$12 = wi.a("container.enchant.lapis.many", $$10);
+                  }
+
+                  $$11.add($$12.a($$5 >= $$10 ? n.h : n.m));
+                  ww $$14;
+                  if ($$10 == 1) {
+                     $$14 = wi.c("container.enchant.level.one");
+                  } else {
+                     $$14 = wi.a("container.enchant.level.many", $$10);
+                  }
+
+                  $$11.add($$14.a(n.h));
+               }
+            }
+
+            $$0.a(this.m, $$11, $$1, $$2);
+            break;
+         }
       }
    }
 
-   private void g(int $$0) {
-      this.j.q.a(this.u.j, $$0);
-   }
+   public void E() {
+      crs $$0 = this.s.b(0).g();
+      if (!crs.a($$0, this.Q)) {
+         this.Q = $$0;
 
-   @Override
-   public boolean k() {
-      return false;
-   }
+         do {
+            this.D = this.D + (float)(this.O.a(4) - this.O.a(4));
+         } while (this.B <= this.D + 1.0F && this.B >= this.D - 1.0F);
+      }
 
-   void K() {
-      crj $$0 = this.u.l();
-      this.a(Objects.requireNonNullElse(fkt.a.a($$0), fkt.d));
-   }
+      this.A++;
+      this.C = this.B;
+      this.G = this.F;
+      boolean $$1 = false;
 
-   void L() {
-      this.a(this.u.m());
-   }
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (this.s.k[$$2] != 0) {
+            $$1 = true;
+         }
+      }
 
-   @Override
-   protected void I() {
-      this.j.s.r();
+      if ($$1) {
+         this.F += 0.2F;
+      } else {
+         this.F -= 0.2F;
+      }
+
+      this.F = axm.a(this.F, 0.0F, 1.0F);
+      float $$3 = (this.D - this.B) * 0.4F;
+      float $$4 = 0.2F;
+      $$3 = axm.a($$3, -0.2F, 0.2F);
+      this.E = this.E + ($$3 - this.E) * 0.9F;
+      this.B = this.B + this.E;
    }
 }

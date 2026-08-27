@@ -1,8 +1,25 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cxx extends cwz {
+   public cxx(cwz.a $$0, bqh... $$1) {
+      super($$0, avm.bq, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cxx {
+   @Override
+   public int a(int $$0) {
+      return 25;
+   }
+
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
+   }
 }

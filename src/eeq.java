@@ -2,41 +2,28 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
 
-public class eeq extends eeo {
-   public static final Codec<eeq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bnf.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bnf.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, eeq::new)
-   );
-   private final bnf c;
-   private final bnf d;
+public class eeq extends eex {
+   public static final Codec<eeq> a = RecordCodecBuilder.create($$0 -> $$0.group(dva.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, eeq::new));
+   private final dva.a c;
 
-   public static eeq a(bnf $$0, bnf $$1) {
-      return new eeq($$0, $$1);
-   }
-
-   public static eeq a(bnf $$0) {
-      return new eeq(bnc.a(0), $$0);
-   }
-
-   public static eeq b(bnf $$0) {
-      return new eeq($$0, bnc.a(0));
-   }
-
-   private eeq(bnf $$0, bnf $$1) {
+   private eeq(dva.a $$0) {
       this.c = $$0;
-      this.d = $$1;
+   }
+
+   public static eeq a(dva.a $$0) {
+      return new eeq($$0);
    }
 
    @Override
-   public Stream<ib> a_(eem $$0, axr $$1, ib $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new ib($$3, $$4, $$5));
+   public Stream<id> a_(eev $$0, axt $$1, id $$2) {
+      int $$3 = $$2.u();
+      int $$4 = $$2.w();
+      int $$5 = $$0.a(this.c, $$3, $$4);
+      return $$5 > $$0.c() ? Stream.of(new id($$3, $$5, $$4)) : Stream.of();
    }
 
    @Override
-   public eep<?> b() {
-      return eep.n;
+   public eey<?> b() {
+      return eey.k;
    }
 }

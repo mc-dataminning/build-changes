@@ -11,25 +11,25 @@ public class az extends cx<az.a> {
       return az.a.a;
    }
 
-   public void a(apt $$0, Collection<? extends bpv> $$1) {
-      List<enb> $$2 = $$1.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(apv $$0, Collection<? extends bqa> $$1) {
+      List<enk> $$2 = $$1.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
    public static record a(Optional<bc> b, List<bc> c) implements cx.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(az.a::a), aws.a(br.b.listOf(), "victims", List.of()).forGetter(az.a::b)).apply($$0, az.a::new)
+         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(az.a::a), awu.a(br.b.listOf(), "victims", List.of()).forGetter(az.a::b)).apply($$0, az.a::new)
       );
 
       public static an<az.a> a(br.a... $$0) {
          return am.F.a(new az.a(Optional.empty(), br.a($$0)));
       }
 
-      public boolean a(Collection<? extends enb> $$0) {
+      public boolean a(Collection<? extends enk> $$0) {
          for (bc $$1 : this.c) {
             boolean $$2 = false;
 
-            for (enb $$3 : $$0) {
+            for (enk $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

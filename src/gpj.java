@@ -1,5 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gpj<T> {
-   List<T> search(String var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gpj {
 }

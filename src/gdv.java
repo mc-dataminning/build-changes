@@ -1,84 +1,151 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class gdv implements gdl.a {
-   private final fbp a;
+public class gdv implements gdu.a {
+   private final fby a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<gdv.a> d = Lists.newArrayList();
+   private final List<gdv.b> e = Lists.newArrayList();
 
-   public gdv(fbp $$0) {
+   public gdv(fby $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      cyd $$6 = this.a.s.dM();
-      ib $$7 = ib.a($$2, $$3, $$4);
+   public void a(ewr $$0, gai $$1, double $$2, double $$3, double $$4) {
+      czg $$5 = this.a.r;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         esj $$6 = new esj($$2, 0.0, $$4);
+         this.d.removeIf(gdv.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         ewv $$7 = $$1.getBuffer(gaq.y());
 
-      for (ib $$8 : ib.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         doz $$9 = $$6.a_($$8);
-         if (!$$9.a(dca.a)) {
-            est $$10 = $$9.j($$6, $$8);
-
-            for (erv $$11 : $$10.e()) {
-               erv $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, ih.e)) {
-                  ewm $$23 = $$1.getBuffer(gah.A());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ih.d)) {
-                  ewm $$24 = $$1.getBuffer(gah.A());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ih.f)) {
-                  ewm $$25 = $$1.getBuffer(gah.A());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ih.c)) {
-                  ewm $$26 = $$1.getBuffer(gah.A());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ih.a)) {
-                  ewm $$27 = $$1.getBuffer(gah.A());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ih.b)) {
-                  ewm $$28 = $$1.getBuffer(gah.A());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-            }
+         for (gdv.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               gag.a($$0, $$7, esz.a(new ese($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
          }
+
+         ewv $$9 = $$1.getBuffer(gaq.A());
+
+         for (gdv.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> gag.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
+
+         for (gdv.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               gdu.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               gdu.a($$0, $$1, id.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (gdv.a $$12 : this.d) {
+            esj $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.c - 0.2F;
+            double $$16 = $$13.d - 0.2F;
+            double $$17 = $$13.e - 0.2F;
+            double $$18 = $$13.c + 0.2F;
+            double $$19 = $$13.d + 0.2F + 0.5;
+            double $$20 = $$13.e + 0.2F;
+            a($$0, $$1, new ese($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            gdu.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+         }
+      }
+   }
+
+   private static void a(ewr $$0, gai $$1, ese $$2, float $$3, float $$4, float $$5, float $$6) {
+      fbj $$7 = fby.Q().j.n();
+      if ($$7.h()) {
+         esj $$8 = $$7.b().e();
+         gdu.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public void a(aju<dub> $$0, esj $$1) {
+      this.d.add(new gdv.a(ac.b(), $$0, $$1));
+   }
+
+   public void a(duf $$0, int $$1) {
+      this.e.add(new gdv.b($$0, $$1));
+   }
+
+   static record a(long a, aju<dub> b, esj c) {
+
+      public boolean a() {
+         return ac.b() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public aju<dub> c() {
+         return this.b;
+      }
+
+      public esj d() {
+         return this.c;
+      }
+   }
+
+   static class b implements dud {
+      public final duf a;
+      public final int b;
+
+      public b(duf $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(czg $$0, esj $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<esj> a(czg $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public duf a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(apu $$0, in<dub> $$1, dub.a $$2, esj $$3) {
+         return false;
       }
    }
 }

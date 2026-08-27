@@ -1,36 +1,41 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record epz(eqc b) implements eqc {
-   public static final Codec<epz> a = RecordCodecBuilder.create($$0 -> $$0.group(eqe.a.fieldOf("term").forGetter(epz::c)).apply($$0, epz::new));
+public class epz extends eqc {
+   public static final Codec<epz> a = a(epz::new);
+   public static final Codec<epz> b = b(epz::new);
 
-   @Override
-   public eqd b() {
-      return eqe.b;
+   epz(List<eql> $$0) {
+      super($$0, ac.a($$0));
    }
 
-   public boolean a(enb $$0) {
-      return !this.b.test($$0);
-   }
-
-   @Override
-   public Set<epl<?>> a() {
-      return this.b.a();
+   public static epz a(List<eql> $$0) {
+      return new epz(List.copyOf($$0));
    }
 
    @Override
-   public void a(enk $$0) {
-      eqc.super.a($$0);
-      this.b.a($$0);
+   public eqm b() {
+      return eqn.d;
    }
 
-   public static eqc.a a(eqc.a $$0) {
-      epz $$1 = new epz($$0.build());
-      return () -> $$1;
+   public static epz.a a(eql.a... $$0) {
+      return new epz.a($$0);
    }
 
-   public eqc c() {
-      return this.b;
+   public static class a extends eqc.a {
+      public a(eql.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public epz.a and(eql.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected eql a(List<eql> $$0) {
+         return new epz($$0);
+      }
    }
 }

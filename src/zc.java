@@ -1,31 +1,33 @@
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
 
-public class zc implements yn<yt> {
-   public static final ye<vg, zc> a = yn.a(zc::a, zc::new);
-   private final Map<ajs<? extends iy<?>>, avu.a> b;
+public record zc(ajv c, byte[] d) implements yp<yv> {
+   public static final yg<vi, zc> a = yp.a(zc::a, zc::new);
+   private static final int e = 5120;
+   public static final yg<ByteBuf, byte[]> b = ye.a(5120);
 
-   public zc(Map<ajs<? extends iy<?>>, avu.a> $$0) {
-      this.b = $$0;
+   private zc(vi $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   private zc(vg $$0) {
-      this.b = $$0.a(vg::r, avu.a::b);
-   }
-
-   private void a(vg $$0) {
-      $$0.a(this.b, vg::b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vi $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
    @Override
-   public yp<zc> a() {
-      return zd.i;
+   public yr<zc> a() {
+      return zf.g;
    }
 
-   public void a(yt $$0) {
+   public void a(yv $$0) {
       $$0.a(this);
    }
 
-   public Map<ajs<? extends iy<?>>, avu.a> b() {
-      return this.b;
+   public ajv b() {
+      return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

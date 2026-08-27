@@ -1,30 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dza extends dxv<dzu> {
-   public dza(Codec<dzu> $$0) {
+public class dza extends dye<ear> {
+   public dza(Codec<ear> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dxx<dzu> $$0) {
-      int $$1 = 0;
-      axr $$2 = $$0.d();
-      czs $$3 = $$0.b();
-      ib $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(dyg<ear> $$0) {
+      czh $$1 = $$0.b();
+      id $$2 = $$0.e();
+      axt $$3 = $$0.d();
+      ear $$4 = $$0.f();
+      Optional<ij> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         id $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && dya.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         dya.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
+      }
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dur.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         ib $$10 = new ib($$4.u() + $$7, $$9, $$4.w() + $$8);
-         doz $$11 = dca.mV.n().a(diu.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(dca.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+   private static Optional<ij> a(czh $$0, id $$1, axt $$2) {
+      boolean $$3 = dya.b($$0.a_($$1.c()));
+      boolean $$4 = dya.b($$0.a_($$1.d()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? ij.a : ij.b);
+      } else if ($$3) {
+         return Optional.of(ij.a);
+      } else {
+         return $$4 ? Optional.of(ij.b) : Optional.empty();
+      }
+   }
+
+   private static void a(czh $$0, axt $$1, id $$2, ear $$3) {
+      dya.c($$0, $$2);
+
+      for (ij $$4 : ij.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            id $$5 = $$2.a($$4);
+            dya.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               id $$6 = $$5.a(ij.b($$1));
+               dya.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  id $$7 = $$6.a(ij.b($$1));
+                  dya.c($$0, $$7);
+               }
+            }
          }
       }
-
-      return $$1 > 0;
    }
 }

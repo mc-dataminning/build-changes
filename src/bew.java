@@ -1,18 +1,28 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bew extends DataFix {
+public class bew extends bee {
    public bew(Schema $$0) {
-      super($$0, false);
+      super($$0, false, "PlayerHeadBlockProfileFix", bff.s, "minecraft:skull");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "RandomSequenceSettingsFix",
-         this.getInputSchema().getType(bfa.m),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", $$0xx -> $$0xx.emptyMap().set("sequences", $$0xx)))
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("SkullOwner").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("ExtraType").result();
+      Optional<Dynamic<T>> $$3 = $$1.or(() -> $$2);
+      if ($$3.isEmpty()) {
+         return $$0;
+      } else {
+         $$0 = $$0.remove("SkullOwner").remove("ExtraType");
+         return $$0.set("profile", bdg.a($$3.get()));
+      }
    }
 }

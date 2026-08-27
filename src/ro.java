@@ -1,69 +1,65 @@
 public class ro {
-   public static final ajs<eel> a = rr.a("ice_spike");
-   public static final ajs<eel> b = rr.a("ice_patch");
-   public static final ajs<eel> c = rr.a("forest_rock");
-   public static final ajs<eel> d = rr.a("iceberg_packed");
-   public static final ajs<eel> e = rr.a("iceberg_blue");
-   public static final ajs<eel> f = rr.a("blue_ice");
-   public static final ajs<eel> g = rr.a("lake_lava_underground");
-   public static final ajs<eel> h = rr.a("lake_lava_surface");
-   public static final ajs<eel> i = rr.a("disk_clay");
-   public static final ajs<eel> j = rr.a("disk_gravel");
-   public static final ajs<eel> k = rr.a("disk_sand");
-   public static final ajs<eel> l = rr.a("disk_grass");
-   public static final ajs<eel> m = rr.a("freeze_top_layer");
-   public static final ajs<eel> n = rr.a("void_start_platform");
-   public static final ajs<eel> o = rr.a("desert_well");
-   public static final ajs<eel> p = rr.a("spring_lava");
-   public static final ajs<eel> q = rr.a("spring_lava_frozen");
-   public static final ajs<eel> r = rr.a("spring_water");
+   public static final aju<eeu> a = rt.a("monster_room");
+   public static final aju<eeu> b = rt.a("monster_room_deep");
+   public static final aju<eeu> c = rt.a("fossil_upper");
+   public static final aju<eeu> d = rt.a("fossil_lower");
+   public static final aju<eeu> e = rt.a("dripstone_cluster");
+   public static final aju<eeu> f = rt.a("large_dripstone");
+   public static final aju<eeu> g = rt.a("pointed_dripstone");
+   public static final aju<eeu> h = rt.a("underwater_magma");
+   public static final aju<eeu> i = rt.a("glow_lichen");
+   public static final aju<eeu> j = rt.a("rooted_azalea_tree");
+   public static final aju<eeu> k = rt.a("cave_vines");
+   public static final aju<eeu> l = rt.a("lush_caves_vegetation");
+   public static final aju<eeu> m = rt.a("lush_caves_clay");
+   public static final aju<eeu> n = rt.a("lush_caves_ceiling_vegetation");
+   public static final aju<eeu> o = rt.a("spore_blossom");
+   public static final aju<eeu> p = rt.a("classic_vines_cave_feature");
+   public static final aju<eeu> q = rt.a("amethyst_geode");
+   public static final aju<eeu> r = rt.a("sculk_patch_deep_dark");
+   public static final aju<eeu> s = rt.a("sculk_patch_ancient_city");
+   public static final aju<eeu> t = rt.a("sculk_vein");
 
-   public static void a(px<eel> $$0) {
-      im<dxi<?, ?>> $$1 = $$0.a(ks.ay);
-      il<dxi<?, ?>> $$2 = $$1.b(rd.a);
-      il<dxi<?, ?>> $$3 = $$1.b(rd.b);
-      il<dxi<?, ?>> $$4 = $$1.b(rd.c);
-      il<dxi<?, ?>> $$5 = $$1.b(rd.d);
-      il<dxi<?, ?>> $$6 = $$1.b(rd.e);
-      il<dxi<?, ?>> $$7 = $$1.b(rd.f);
-      il<dxi<?, ?>> $$8 = $$1.b(rd.g);
-      il<dxi<?, ?>> $$9 = $$1.b(rd.h);
-      il<dxi<?, ?>> $$10 = $$1.b(rd.i);
-      il<dxi<?, ?>> $$11 = $$1.b(rd.j);
-      il<dxi<?, ?>> $$12 = $$1.b(rd.l);
-      il<dxi<?, ?>> $$13 = $$1.b(rd.k);
-      il<dxi<?, ?>> $$14 = $$1.b(rd.n);
-      il<dxi<?, ?>> $$15 = $$1.b(rd.o);
-      il<dxi<?, ?>> $$16 = $$1.b(rd.p);
-      il<dxi<?, ?>> $$17 = $$1.b(rd.q);
-      il<dxi<?, ?>> $$18 = $$1.b(rd.r);
-      rr.a($$0, a, $$2, eee.a(3), eei.a(), rr.a, edz.a());
-      rr.a($$0, b, $$3, eee.a(2), eei.a(), rr.a, eeq.a(bnc.a(-1)), eea.a(dvy.a(dca.dP)), edz.a());
-      rr.a($$0, c, $$4, eee.a(2), eei.a(), rr.a, edz.a());
-      rr.a($$0, e, $$6, eer.a(200), eei.a(), edz.a());
-      rr.a($$0, d, $$5, eer.a(16), eei.a(), edz.a());
-      rr.a($$0, f, $$7, eee.a(bnl.a(0, 19)), eei.a(), eeg.a(dvl.a(30), dvl.a(61)), edz.a());
-      rr.a(
-         $$0,
-         g,
-         $$8,
-         eer.a(9),
-         eei.a(),
-         eeg.a(edr.a(dvl.a(0), dvl.b())),
-         eef.a(ih.a, dvy.a(dvy.a(dvy.c), dvy.d(new ib(0, -5, 0))), 32),
-         eet.a(dur.a.c, Integer.MIN_VALUE, -5),
-         edz.a()
-      );
-      rr.a($$0, h, $$8, eer.a(200), eei.a(), rr.c, edz.a());
-      rr.a($$0, i, $$9, eei.a(), rr.b, eea.a(dvy.a(ekt.c)), edz.a());
-      rr.a($$0, j, $$10, eei.a(), rr.b, eea.a(dvy.a(ekt.c)), edz.a());
-      rr.a($$0, k, $$11, eee.a(3), eei.a(), rr.b, eea.a(dvy.a(ekt.c)), edz.a());
-      rr.a($$0, l, $$12, eee.a(1), eei.a(), rr.b, eeq.a(bnc.a(-1)), eea.a(dvy.a(dca.sI)), edz.a());
-      rr.a($$0, m, $$13, edz.a());
-      rr.a($$0, n, $$14, edz.a());
-      rr.a($$0, o, $$15, eer.a(1000), eei.a(), rr.a, edz.a());
-      rr.a($$0, p, $$16, eee.a(20), eei.a(), eeg.a(eds.a(dvl.a(), dvl.c(8), 8)), edz.a());
-      rr.a($$0, q, $$17, eee.a(20), eei.a(), eeg.a(eds.a(dvl.a(), dvl.c(8), 8)), edz.a());
-      rr.a($$0, r, $$18, eee.a(25), eei.a(), eeg.a(dvl.a(), dvl.a(192)), edz.a());
+   public static void a(pz<eeu> $$0) {
+      io<dxr<?, ?>> $$1 = $$0.a(ku.az);
+      in<dxr<?, ?>> $$2 = $$1.b(rc.a);
+      in<dxr<?, ?>> $$3 = $$1.b(rc.b);
+      in<dxr<?, ?>> $$4 = $$1.b(rc.c);
+      in<dxr<?, ?>> $$5 = $$1.b(rc.d);
+      in<dxr<?, ?>> $$6 = $$1.b(rc.e);
+      in<dxr<?, ?>> $$7 = $$1.b(rc.f);
+      in<dxr<?, ?>> $$8 = $$1.b(rc.g);
+      in<dxr<?, ?>> $$9 = $$1.b(rc.h);
+      in<dxr<?, ?>> $$10 = $$1.b(rc.i);
+      in<dxr<?, ?>> $$11 = $$1.b(rc.j);
+      in<dxr<?, ?>> $$12 = $$1.b(rc.m);
+      in<dxr<?, ?>> $$13 = $$1.b(rc.r);
+      in<dxr<?, ?>> $$14 = $$1.b(rc.s);
+      in<dxr<?, ?>> $$15 = $$1.b(rc.t);
+      in<dxr<?, ?>> $$16 = $$1.b(rk.c);
+      in<dxr<?, ?>> $$17 = $$1.b(rc.u);
+      in<dxr<?, ?>> $$18 = $$1.b(rc.v);
+      in<dxr<?, ?>> $$19 = $$1.b(rc.w);
+      in<dxr<?, ?>> $$20 = $$1.b(rc.x);
+      rt.a($$0, a, $$2, een.a(10), eer.a(), eep.a(dvu.a(0), dvu.b()), eei.a());
+      rt.a($$0, b, $$2, een.a(4), eer.a(), eep.a(dvu.b(6), dvu.a(-1)), eei.a());
+      rt.a($$0, c, $$3, efa.a(64), eer.a(), eep.a(dvu.a(0), dvu.b()), eei.a());
+      rt.a($$0, d, $$4, efa.a(64), eer.a(), eep.a(dvu.a(), dvu.a(-8)), eei.a());
+      rt.a($$0, e, $$5, een.a(bnq.a(48, 96)), eer.a(), rt.i, eei.a());
+      rt.a($$0, f, $$6, een.a(bnq.a(10, 48)), eer.a(), rt.i, eei.a());
+      rt.a($$0, g, $$7, een.a(bnq.a(192, 256)), eer.a(), rt.i, een.a(bnq.a(1, 5)), eez.a(bnf.a(0.0F, 3.0F, -10, 10), bnf.a(0.0F, 0.6F, -2, 2)), eei.a());
+      rt.a($$0, h, $$8, een.a(bnq.a(44, 52)), eer.a(), rt.i, efc.a(dva.a.c, Integer.MIN_VALUE, -2), eei.a());
+      rt.a($$0, i, $$9, een.a(bnq.a(104, 157)), rt.i, eer.a(), efc.a(dva.a.c, Integer.MIN_VALUE, -13), eei.a());
+      rt.a($$0, j, $$10, een.a(bnq.a(1, 2)), eer.a(), rt.i, eeo.a(ij.b, dwh.c(), dwh.c, 12), eez.a(bnh.a(-1)), eei.a());
+      rt.a($$0, k, $$11, een.a(188), eer.a(), rt.i, eeo.a(ij.b, dwh.a(ij.a), dwh.c, 12), eez.a(bnh.a(-1)), eei.a());
+      rt.a($$0, l, $$12, een.a(125), eer.a(), rt.i, eeo.a(ij.a, dwh.c(), dwh.c, 12), eez.a(bnh.a(1)), eei.a());
+      rt.a($$0, m, $$13, een.a(62), eer.a(), rt.i, eeo.a(ij.a, dwh.c(), dwh.c, 12), eez.a(bnh.a(1)), eei.a());
+      rt.a($$0, n, $$14, een.a(125), eer.a(), rt.i, eeo.a(ij.b, dwh.c(), dwh.c, 12), eez.a(bnh.a(-1)), eei.a());
+      rt.a($$0, o, $$15, een.a(25), eer.a(), rt.i, eeo.a(ij.b, dwh.c(), dwh.c, 12), eez.a(bnh.a(-1)), eei.a());
+      rt.a($$0, p, $$16, een.a(256), eer.a(), rt.i, eei.a());
+      rt.a($$0, q, $$17, efa.a(24), eer.a(), eep.a(dvu.b(6), dvu.a(30)), eei.a());
+      rt.a($$0, r, $$18, een.a(bnh.a(256)), eer.a(), rt.i, eei.a());
+      rt.a($$0, s, $$19);
+      rt.a($$0, t, $$20, een.a(bnq.a(204, 250)), eer.a(), rt.i, eei.a());
    }
 }

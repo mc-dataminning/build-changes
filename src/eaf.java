@@ -1,21 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eaf extends dzr {
-   public static final Codec<eaf> c = RecordCodecBuilder.create(
+public record eaf(ecr b, dwh c, bnk d, int e) implements eai {
+   public static final Codec<eaf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eca.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               aws.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               aws.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+               ecr.a.fieldOf("state_provider").forGetter(eaf::a),
+               dwh.b.fieldOf("target").forGetter(eaf::b),
+               bnk.b(0, 8).fieldOf("radius").forGetter(eaf::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eaf::d)
             )
             .apply($$0, eaf::new)
    );
-   public final int d;
-   public final int e;
 
-   public eaf(eca $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public ecr a() {
+      return this.b;
+   }
+
+   public dwh b() {
+      return this.c;
+   }
+
+   public bnk c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

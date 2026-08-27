@@ -1,33 +1,81 @@
 import java.util.function.BiConsumer;
 
-public class mm implements lw {
+public class mm implements ly {
    @Override
-   public void generate(in.a $$0, BiConsumer<ajt, enj.a> $$1) {
+   public void generate(ip.a $$0, BiConsumer<ajv, ens.a> $$1) {
       $$1.accept(
-         emz.aM,
-         enj.b()
+         eni.aw,
+         ens.b()
             .a(
-               eni.a()
-                  .a(eqv.a(1.0F))
-                  .a(enr.a(crm.qO).a(5).a(new eoh.a().a(cwt.l)))
-                  .a(enr.a(crm.pI).a(8).a(new eoh.a().a(cwt.l)))
-                  .a(enr.a(crm.sj).a(8).a(epg.a(cti.l)))
-                  .a(enr.a(crm.vm).a(8).a(epg.a(cti.l)))
-                  .a(enr.a(crm.sj).a(10).a(epg.a(cti.a)))
-                  .a(enr.a(crm.vt).a(10).a(epc.a(era.a(10.0F, 36.0F))))
-                  .a(enr.a(crm.se).a(10).a(epc.a(era.a(2.0F, 4.0F))))
-                  .a(enr.a(crm.pr).a(20).a(epc.a(era.a(3.0F, 9.0F))))
-                  .a(enr.a(crm.oA).a(20).a(epc.a(era.a(5.0F, 12.0F))))
-                  .a(enr.a(crm.eD).a(40))
-                  .a(enr.a(crm.wy).a(40).a(epc.a(era.a(1.0F, 3.0F))))
-                  .a(enr.a(crm.tW).a(40))
-                  .a(enr.a(crm.qC).a(40).a(epc.a(era.a(2.0F, 4.0F))))
-                  .a(enr.a(crm.fn).a(40).a(epc.a(era.a(2.0F, 8.0F))))
-                  .a(enr.a(crm.uv).a(40).a(epc.a(era.a(2.0F, 8.0F))))
-                  .a(enr.a(crm.vn).a(40).a(epc.a(era.a(6.0F, 12.0F))))
-                  .a(enr.a(crm.aj).a(40).a(epc.a(era.a(8.0F, 16.0F))))
-                  .a(enr.a(crm.wz).a(40).a(epc.a(era.a(8.0F, 16.0F))))
+               enr.a()
+                  .a(ere.a(1.0F))
+                  .a(eoa.a(crv.uC).a(10))
+                  .a(eoa.a(crv.uB).a(10))
+                  .a(eoa.a(crv.sb).a(10))
+                  .a(eoa.a(crv.ps).a(10))
+                  .a(eoa.a(crv.sd).a(10))
+                  .a(eoa.a(crv.pr).a(10))
+                  .a(eoa.a(crv.vO).a(2))
             )
       );
+      $$1.accept(eni.ax, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.pB)).a(eoa.a(crv.pC)).a(eoa.a(crv.pD)).a(eoa.a(crv.pE))));
+      $$1.accept(eni.ay, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.uz)).a(eoa.a(crv.sc)).a(eoa.a(crv.pX)).a(eoa.a(crv.sa)).a(eoa.a(crv.uM))));
+      $$1.accept(eni.az, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.uh)).a(eoa.a(crv.qN))));
+      $$1.accept(eni.aA, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.lG)).a(eoa.a(crv.oz))));
+      $$1.accept(eni.aB, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.pw)).a(eoa.a(crv.ur)).a(eoa.a(crv.rR))));
+      $$1.accept(eni.aC, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.qY)).a(eoa.a(crv.qZ))));
+      $$1.accept(
+         eni.aD,
+         ens.b()
+            .a(
+               enr.a()
+                  .a(ere.a(1.0F))
+                  .a(eoa.a(crv.ou).a(26))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.n)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.q)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.I)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.y)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.A)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.i)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.F)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.l)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.w)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.g)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.e)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.L)))
+                  .a(eoa.a(crv.vo).a(epl.a(erj.a(0.0F, 1.0F))).a(epp.a(ctr.C)))
+            )
+      );
+      $$1.accept(eni.aE, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.qC))));
+      $$1.accept(eni.aF, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.qO))));
+      $$1.accept(eni.aG, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.eW))));
+      $$1.accept(
+         eni.aH,
+         ens.b()
+            .a(
+               enr.a()
+                  .a(ere.a(1.0F))
+                  .a(eoa.a(crv.cT))
+                  .a(eoa.a(crv.cU))
+                  .a(eoa.a(crv.cV))
+                  .a(eoa.a(crv.cW))
+                  .a(eoa.a(crv.cX))
+                  .a(eoa.a(crv.cY))
+                  .a(eoa.a(crv.cZ))
+                  .a(eoa.a(crv.da))
+                  .a(eoa.a(crv.db))
+                  .a(eoa.a(crv.dc))
+                  .a(eoa.a(crv.dd))
+                  .a(eoa.a(crv.de))
+                  .a(eoa.a(crv.df))
+                  .a(eoa.a(crv.dg))
+                  .a(eoa.a(crv.dh))
+                  .a(eoa.a(crv.di))
+            )
+      );
+      $$1.accept(eni.aI, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.oR)).a(eoa.a(crv.oS)).a(eoa.a(crv.oT)).a(eoa.a(crv.oQ))));
+      $$1.accept(eni.aJ, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.oS)).a(eoa.a(crv.oX)).a(eoa.a(crv.pc))));
+      $$1.accept(eni.aK, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.vg)).a(eoa.a(crv.vh))));
+      $$1.accept(eni.aL, ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a(crv.qP).a(1)).a(eny.b().a(699))));
    }
 }

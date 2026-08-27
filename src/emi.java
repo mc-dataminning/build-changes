@@ -1,84 +1,44 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public class emi {
-   private static final String a = "command_storage_";
-   private final Map<String, emi.a> b = Maps.newHashMap();
-   private final eml c;
+public abstract class emi {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
 
-   public emi(eml $$0) {
-      this.c = $$0;
+   public abstract to a(to var1, ip.a var2);
+
+   public void c() {
+      this.a(true);
    }
 
-   private emi.a a(String $$0) {
-      emi.a $$1 = new emi.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   public void a(boolean $$0) {
+      this.b = $$0;
    }
 
-   private elz.a<emi.a> b(String $$0) {
-      return new elz.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), ayq.h);
+   public boolean d() {
+      return this.b;
    }
 
-   public tm a(ajt $$0) {
-      String $$1 = $$0.b();
-      emi.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new tm();
-   }
+   public void a(File $$0, ip.a $$1) {
+      if (this.d()) {
+         to $$2 = new to();
+         $$2.a("data", this.a(new to(), $$1));
+         ud.e($$2);
 
-   public void a(ajt $$0, tm $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
-   }
-
-   public Stream<ajt> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
-   }
-
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends elz {
-      private static final String a = "contents";
-      private final Map<String, tm> b = Maps.newHashMap();
-
-      emi.a a(tm $$0) {
-         tm $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
+         try {
+            ub.a($$2, $$0.toPath());
+         } catch (IOException var5) {
+            a.error("Could not save data {}", this, var5);
          }
 
-         return this;
+         this.a(false);
       }
+   }
 
-      @Override
-      public tm a(tm $$0, in.a $$1) {
-         tm $$2 = new tm();
-         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.h()));
-         $$0.a("contents", $$2);
-         return $$0;
-      }
-
-      public tm a(String $$0) {
-         tm $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new tm();
-      }
-
-      public void a(String $$0, tm $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.c();
-      }
-
-      public Stream<ajt> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new ajt($$0, $$1));
-      }
+   public static record a<T extends emi>(Supplier<T> a, BiFunction<to, ip.a, T> b, ays c) {
    }
 }

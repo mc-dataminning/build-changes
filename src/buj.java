@@ -1,26 +1,65 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class buj {
-   public static bsh<bqo> a() {
-      return bvt.a((Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$0 -> $$0.a((bvw<bqo>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               brp<?> $$3 = $$1.dP();
-               cle $$4 = $$0x.d($$1.dm());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(cli.h);
-                     $$3.a(cli.h);
-                  } else {
-                     $$3.b(cli.i);
-                     $$3.a(cli.i);
-                  }
-               }
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private static final int d = 4;
 
-               return true;
-            }
-         }))));
+   public static bsm<brb> a(float $$0) {
+      Long2LongMap $$1 = new Long2LongOpenHashMap();
+      MutableLong $$2 = new MutableLong(0L);
+      return bvy.a(
+         (Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$3 -> $$3.group($$3.c(bzw.m), $$3.c(bzw.b))
+               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
+                     if ($$4x.Y() - $$2.getValue() < 20L) {
+                        return false;
+                     } else {
+                        cbw $$7 = $$4x.y();
+                        Optional<id> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(cca.n), $$5.dm(), 48, cbw.b.c);
+                        if (!$$8.isEmpty() && !($$8.get().j($$5.dm()) <= 4.0)) {
+                           MutableInt $$9 = new MutableInt(0);
+                           $$2.setValue($$4x.Y() + (long)$$4x.E_().a(20));
+                           Predicate<id> $$10 = $$3xxx -> {
+                              long $$4xx = $$3xxx.a();
+                              if ($$1.containsKey($$4xx)) {
+                                 return false;
+                              } else if ($$9.incrementAndGet() >= 5) {
+                                 return false;
+                              } else {
+                                 $$1.put($$4xx, $$2.getValue() + 40L);
+                                 return true;
+                              }
+                           };
+                           Set<Pair<in<cbz>, id>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(cca.n), $$10, $$5.dm(), 48, cbw.b.c).collect(Collectors.toSet());
+                           elp $$12 = bse.a($$5, $$11);
+                           if ($$12 != null && $$12.j()) {
+                              id $$13 = $$12.l();
+                              Optional<in<cbz>> $$14 = $$7.c($$13);
+                              if ($$14.isPresent()) {
+                                 $$3x.a(new bzz($$13, $$0, 1));
+                                 afk.c($$4x, $$13);
+                              }
+                           } else if ($$9.getValue() < 5) {
+                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
+                           }
+
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

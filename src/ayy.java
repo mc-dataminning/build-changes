@@ -2,34 +2,41 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
+import java.util.stream.Stream;
 
-public class ayy extends DataFix {
+public abstract class ayy extends DataFix {
    private final String a;
-   private final boolean b;
-   private final String c;
-   private final TypeReference d;
 
-   public ayy(Schema $$0, TypeReference $$1, String $$2, boolean $$3) {
-      super($$0, true);
-      this.b = $$3;
-      this.c = $$2;
-      this.a = "AddFlagIfNotPresentFix_" + this.c + "=" + this.b + " for " + $$0.getVersionKey();
-      this.d = $$1;
+   public ayy(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(this.d);
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         $$0,
-         $$0x -> $$0x.update(
-               DSL.remainderFinder(),
-               $$0xx -> $$0xx.set(this.c, (Dynamic)DataFixUtils.orElseGet($$0xx.get(this.c).result(), () -> $$0xx.createBoolean(this.b)))
-            )
-      );
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bff.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bff.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
    }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("Records", this::c);
+   }
+
+   private <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
+   }
+
+   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

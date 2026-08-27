@@ -1,77 +1,93 @@
-import com.google.common.collect.Lists;
-import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class iu<E> extends AbstractList<E> {
-   private final List<E> a;
-   @Nullable
-   private final E b;
+public class iu<T> {
+   private final List<T> a;
+   private final List<jb.b> b;
+   private final jb.b c;
 
-   public static <E> iu<E> a() {
-      return new iu<>(Lists.newArrayList(), null);
+   public iu(List<T> $$0) {
+      this($$0, ac.a(() -> {
+         jb.b[] $$1 = new jb.b[$$0.size()];
+         Arrays.fill($$1, jb.b);
+         return Arrays.asList($$1);
+      }));
    }
 
-   public static <E> iu<E> a(int $$0) {
-      return new iu<>(Lists.newArrayListWithCapacity($$0), null);
+   private iu(List<T> $$0, List<jb.b> $$1) {
+      this.a = List.copyOf($$0);
+      this.b = List.copyOf($$1);
+      this.c = new jb.c(a($$1.stream())).d();
    }
 
-   public static <E> iu<E> a(int $$0, E $$1) {
-      Validate.notNull($$1);
-      Object[] $$2 = new Object[$$0];
-      Arrays.fill($$2, $$1);
-      return new iu<>(Arrays.asList((E[])$$2), $$1);
-   }
-
-   @SafeVarargs
-   public static <E> iu<E> a(E $$0, E... $$1) {
-      return new iu<>(Arrays.asList($$1), $$0);
-   }
-
-   protected iu(List<E> $$0, @Nullable E $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Nonnull
-   @Override
-   public E get(int $$0) {
-      return this.a.get($$0);
-   }
-
-   @Override
-   public E set(int $$0, E $$1) {
-      Validate.notNull($$1);
-      return this.a.set($$0, $$1);
-   }
-
-   @Override
-   public void add(int $$0, E $$1) {
-      Validate.notNull($$1);
-      this.a.add($$0, $$1);
-   }
-
-   @Override
-   public E remove(int $$0) {
-      return this.a.remove($$0);
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public void clear() {
-      if (this.b == null) {
-         super.clear();
+   private int d(T $$0) {
+      int $$1 = this.a.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalStateException("Can't find " + $$0 + " inside " + this.a);
       } else {
-         for (int $$0 = 0; $$0 < this.size(); $$0++) {
-            this.set($$0, this.b);
-         }
+         return $$1;
       }
+   }
+
+   public jb.b a(T $$0) {
+      int $$1 = this.d($$0);
+      return this.b.get($$1);
+   }
+
+   public jb.b b(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a(0, $$1);
+   }
+
+   public jb.b c(T $$0) {
+      int $$1 = this.d($$0);
+      return this.a($$1, this.b.size());
+   }
+
+   private jb.b a(int $$0, int $$1) {
+      return new jb.c(a(this.b.subList($$0, $$1).stream())).d();
+   }
+
+   public iu<T> a(T $$0, jb.b... $$1) {
+      return this.a($$0, Arrays.asList($$1));
+   }
+
+   public iu<T> a(T $$0, List<jb.b> $$1) {
+      int $$2 = this.d($$0);
+      if ($$1.size() > this.b.size() - $$2) {
+         throw new IllegalStateException("Too many values to replace");
+      } else {
+         List<jb.b> $$3 = new ArrayList<>();
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(this.b.get($$4));
+         }
+
+         $$3.addAll($$1);
+
+         while ($$3.size() < this.b.size()) {
+            $$3.add(jb.b);
+         }
+
+         return new iu<>(this.a, $$3);
+      }
+   }
+
+   public jb.b a() {
+      return this.c;
+   }
+
+   private static Map<aju<? extends ja<?>>, ja<?>> a(Stream<? extends jb> $$0) {
+      Map<aju<? extends ja<?>>, ja<?>> $$1 = new HashMap<>();
+      $$0.forEach($$1x -> $$1x.c().forEach($$1xx -> {
+            if ($$1.put($$1xx.a(), $$1xx.b()) != null) {
+               throw new IllegalStateException("Duplicated registry " + $$1xx.a());
+            }
+         }));
+      return $$1;
    }
 }

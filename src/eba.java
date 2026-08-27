@@ -1,29 +1,10 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class eba {
-   public static final Codec<eba> a = kr.aa.q().dispatch(eba::b, ebb::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public record eba(ecj b) implements eai {
+   public static final Codec<eba> a = RecordCodecBuilder.create($$0 -> $$0.group(ecj.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, eba::new));
 
-   protected static <S extends eba> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
-   }
-
-   public eba(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract ebb<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
+   public ecj a() {
+      return this.b;
    }
 }

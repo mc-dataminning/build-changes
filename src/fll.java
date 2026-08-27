@@ -1,47 +1,50 @@
-public class fll extends fkm<cnp> {
-   private static final ajt A = new ajt("container/horse/chest_slots");
-   private static final ajt B = new ajt("container/horse/saddle_slot");
-   private static final ajt C = new ajt("container/horse/llama_armor_slot");
-   private static final ajt D = new ajt("container/horse/armor_slot");
-   private static final ajt E = new ajt("textures/gui/container/horse.png");
-   private final cef F;
-   private float G;
-   private float H;
+import java.util.List;
 
-   public fll(cnp $$0, cjs $$1, cef $$2) {
-      super($$0, $$1, $$2.O_());
-      this.F = $$2;
+public class fll {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<ajv> e = List.of();
+   private int f;
+   private int g;
+
+   public fll(int $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   protected void a(fdc $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.k - this.c) / 2;
-      int $$5 = (this.l - this.d) / 2;
-      $$0.a(E, $$4, $$5, 0, 0, this.c, this.d);
-      if (this.F instanceof cee $$6 && $$6.u()) {
-         $$0.a(A, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gv() * 18, 54);
+   public void a(List<ajv> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
       }
 
-      if (this.F.f()) {
-         $$0.a(B, $$4 + 7, $$5 + 35 - 18, 18, 18);
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
       }
+   }
 
-      if (this.F.fQ()) {
-         if (this.F instanceof cei) {
-            $$0.a(C, $$4 + 7, $$5 + 35, 18, 18);
-         } else {
-            $$0.a(D, $$4 + 7, $$5 + 35, 18, 18);
+   public void a(cmw $$0, fdl $$1, float $$2, int $$3, int $$4) {
+      cos $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
          }
-      }
 
-      flm.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.G, this.H, this.F);
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
    }
 
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      this.G = (float)$$1;
-      this.H = (float)$$2;
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   private void a(cos $$0, ajv $$1, float $$2, fdl $$3, int $$4, int $$5) {
+      gls $$6 = fby.Q().a(glr.e).apply($$1);
+      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   }
+
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

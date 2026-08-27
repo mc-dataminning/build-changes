@@ -1,15 +1,17 @@
-public class gij extends ghj<chq> {
-   private static final ajt a = new ajt("textures/entity/skeleton/wither_skeleton.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gij(gfi.a $$0) {
-      super($$0, ftl.bX, ftl.bY, ftl.bZ);
+public class gij extends gel<cem, frg<cem>> {
+   private static final Map<bqg<?>, ajv> a = Maps.newHashMap(
+      ImmutableMap.of(bqg.bu, new ajv("textures/entity/horse/horse_zombie.png"), bqg.aN, new ajv("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gij(gfr.a $$0, ftt $$1) {
+      super($$0, new frg<>($$0.a($$1)), 1.0F);
    }
 
-   public ajt a(chq $$0) {
-      return a;
-   }
-
-   protected void a(chq $$0, ewi $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
+   public ajv a(cem $$0) {
+      return a.get($$0.ai());
    }
 }

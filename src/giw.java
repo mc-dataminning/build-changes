@@ -1,24 +1,9 @@
-public class giw extends gje<cgl, fqg<cgl>> {
-   private static final ajt a = new ajt("textures/entity/creeper/creeper_armor.png");
-   private final fqg<cgl> b;
-
-   public giw(ghd<cgl, fqg<cgl>> $$0, fti $$1) {
-      super($$0);
-      this.b = new fqg<>($$1.a(ftl.I));
+public class giw extends gem<chz, ftn<chz>> {
+   public giw(gfr.a $$0) {
+      this($$0, ftu.cf, ftu.ci, ftu.cj);
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected ajt a() {
-      return a;
-   }
-
-   @Override
-   protected fqm<cgl> b() {
-      return this.b;
+   public giw(gfr.a $$0, ftt $$1, ftt $$2, ftt $$3) {
+      super($$0, new ftn<>($$0.a($$1)), new ftn<>($$0.a($$2)), new ftn<>($$0.a($$3)));
    }
 }

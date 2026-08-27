@@ -1,24 +1,39 @@
-public class ghj<T extends cgh> extends gfz<T, fsh<T>> {
-   private static final ajt a = new ajt("textures/entity/skeleton/skeleton.png");
+public class ghj extends ggx<cdb, fqv<cdb>> {
+   private static final ajv a = new ajv("textures/entity/fish/pufferfish.png");
+   private int i = 3;
+   private final fqv<cdb> j;
+   private final fqv<cdb> k;
+   private final fqv<cdb> l = this.a();
 
-   public ghj(gfi.a $$0) {
-      this($$0, ftl.bn, ftl.bp, ftl.bq);
+   public ghj(gfr.a $$0) {
+      super($$0, new fsc<>($$0.a(ftu.bb)), 0.2F);
+      this.k = new fsd<>($$0.a(ftu.bc));
+      this.j = new fse<>($$0.a(ftu.bd));
    }
 
-   public ghj(gfi.a $$0, ftk $$1, ftk $$2, ftk $$3) {
-      this($$0, $$2, $$3, new fsh<>($$0.a($$1)));
-   }
-
-   public ghj(gfi.a $$0, ftk $$1, ftk $$2, fsh<T> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new gjj<>(this, new fsh($$0.a($$1)), new fsh($$0.a($$2)), $$0.g()));
-   }
-
-   public ajt a(T $$0) {
+   public ajv a(cdb $$0) {
       return a;
    }
 
-   protected boolean b(T $$0) {
-      return $$0.gp();
+   public void a(cdb $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
+      int $$6 = $$0.gp();
+      if ($$6 != this.i) {
+         if ($$6 == 0) {
+            this.f = this.j;
+         } else if ($$6 == 1) {
+            this.f = this.k;
+         } else {
+            this.f = this.l;
+         }
+      }
+
+      this.i = $$6;
+      this.d = 0.1F + 0.1F * (float)$$6;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(cdb $$0, ewr $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$1.a(0.0F, axm.b($$2 * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

@@ -1,46 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
+public class ctl extends crn {
+   private static final int a = 10;
 
-public record ctl(String e, il<cre> f, float g, Map<il<coz>, String> h, wg i) {
-   public static final Codec<ctl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aws.y.fieldOf("asset_name").forGetter(ctl::a),
-               ajq.a(ks.F).fieldOf("ingredient").forGetter(ctl::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(ctl::c),
-               Codec.unboundedMap(coz.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(ctl::d),
-               wi.a.fieldOf("description").forGetter(ctl::e)
-            )
-            .apply($$0, ctl::new)
-   );
-   public static final ye<vr, ctl> b = ye.a(
-      yc.k, ctl::a, yc.b(ks.F), ctl::b, yc.h, ctl::c, yc.a(Object2ObjectOpenHashMap::new, yc.b(ks.at), yc.k), ctl::d, wi.b, ctl::e, ctl::new
-   );
-   public static final Codec<il<ctl>> c = ajp.a(ks.aK, a);
-   public static final ye<vr, il<ctl>> d = yc.a(ks.aK, b);
-
-   public static ctl a(String $$0, cre $$1, float $$2, wg $$3, Map<il<coz>, String> $$4) {
-      return new ctl($$0, kr.h.e($$1), $$2, $$4, $$3);
+   public ctl(crn.a $$0) {
+      super($$0);
    }
 
-   public String a() {
-      return this.e;
-   }
+   @Override
+   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
+      if (!$$0.x_()) {
+         esj $$3 = new esj($$1.dk().a(), $$1.dv(), $$1.dk().c()).e($$1.bK().a(0.8F));
+         if (!$$0.a_(id.a($$3)).r()) {
+            $$3 = new esj($$1.dk().a(), $$1.dv(), $$1.dk().c()).e($$1.bK().a(0.05F));
+         }
 
-   public il<cre> b() {
-      return this.f;
-   }
+         clk $$4 = new clk($$1, $$0, $$3.a(), $$3.b(), $$3.c());
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   public float c() {
-      return this.g;
-   }
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), auo.BU, aup.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      crs $$5 = $$1.b($$2);
+      $$1.gu().a(this, 10);
+      $$1.b(auz.c.b(this));
+      if (!$$1.f()) {
+         $$5.g(1);
+      }
 
-   public Map<il<coz>, String> d() {
-      return this.h;
-   }
-
-   public wg e() {
-      return this.i;
+      return bog.a($$5, $$0.x_());
    }
 }

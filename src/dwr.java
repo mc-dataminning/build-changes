@@ -1,31 +1,21 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwr extends dvo {
-   private final iz a;
-   private final duv b;
-   private final dvf c;
-   private final dvi.o d;
+@Deprecated
+public class dwr extends dws {
+   public static final Codec<dwr> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dwr::new));
 
-   public dwr(duu $$0, iz $$1, cyz $$2, duv $$3, dvf $$4, dvi.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public dwr(ji $$0) {
+      super($$0);
    }
 
-   @Deprecated
-   public Optional<doz> a(Function<ib, il<czw>> $$0, dqv $$1, ib $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   @Override
+   protected boolean a(dpi $$0) {
+      return $$0.e();
    }
 
-   @Deprecated
-   public iz c() {
-      return this.a;
-   }
-
-   public dvf d() {
-      return this.c;
+   @Override
+   public dwi<?> a() {
+      return dwi.e;
    }
 }

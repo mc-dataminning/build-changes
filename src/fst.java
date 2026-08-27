@@ -1,37 +1,33 @@
-public class fst<T extends bpv> extends fqe<T> {
-   private final ftm a;
-   private final ftm b;
+public class fst<T extends bqa> extends fre<T> {
+   private final ftv a;
 
-   public fst(ftm $$0) {
+   public fst(ftv $$0) {
       this.a = $$0;
-      this.b = $$0.b("tail");
    }
 
-   public static fts a(ftq $$0) {
-      ftu $$1 = new ftu();
-      ftv $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", ftr.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), fto.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", ftr.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), fto.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", ftr.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fto.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", ftr.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fto.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", ftr.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fto.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", ftr.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fto.a(0.0F, 22.0F, -3.0F));
-      return fts.a($$1, 32, 32);
+   public static fub b() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      $$1.a("cube", fua.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), ftx.a);
+      return fub.a($$0, 64, 32);
    }
 
-   @Override
-   public ftm a() {
-      return this.a;
+   public static fub c() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      $$1.a("cube", fua.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), ftx.a);
+      $$1.a("right_eye", fua.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), ftx.a);
+      $$1.a("left_eye", fua.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), ftx.a);
+      $$1.a("mouth", fua.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), ftx.a);
+      return fub.a($$0, 64, 32);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.bc()) {
-         $$6 = 1.5F;
-      }
+   }
 
-      this.b.f = -$$6 * 0.45F * axk.a(0.6F * $$3);
+   @Override
+   public ftv a() {
+      return this.a;
    }
 }

@@ -1,21 +1,87 @@
-public class fzl {
-   public static final cyi a = czw::a;
-   public static final cyi b = ($$0, $$1, $$2) -> $$0.f();
-   public static final cyi c = ($$0, $$1, $$2) -> $$0.i();
+import com.mojang.authlib.GameProfile;
 
-   private static int a(cya $$0, ib $$1, cyi $$2) {
-      return $$0.a($$1, $$2);
+public class fzl extends fzh {
+   private esj g = esj.b;
+   private int cv;
+
+   public fzl(fuq $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.af = true;
    }
 
-   public static int a(cya $$0, ib $$1) {
-      return a($$0, $$1, a);
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
+
+      $$1 *= 64.0 * cA();
+      return $$0 < $$1 * $$1;
    }
 
-   public static int b(cya $$0, ib $$1) {
-      return a($$0, $$1, b);
+   @Override
+   public boolean a(boy $$0, float $$1) {
+      return true;
    }
 
-   public static int c(cya $$0, ib $$1) {
-      return a($$0, $$1, c);
+   @Override
+   public void l() {
+      super.l();
+      this.q(false);
+   }
+
+   @Override
+   public void n_() {
+      if (this.bq > 0) {
+         this.a(this.bq, this.br, this.bs, this.bt, this.bu, this.bv);
+         this.bq--;
+      }
+
+      if (this.bx > 0) {
+         this.a(this.bx, this.bw);
+         this.bx--;
+      }
+
+      if (this.cv > 0) {
+         this.h(new esj((this.g.c - this.dp().c) / (double)this.cv, (this.g.d - this.dp().d) / (double)this.cv, (this.g.e - this.dp().e) / (double)this.cv));
+         this.cv--;
+      }
+
+      this.cd = this.ce;
+      this.eS();
+      float $$1;
+      if (this.aC() && !this.ey()) {
+         $$1 = (float)Math.min(0.1, this.dp().h());
+      } else {
+         $$1 = 0.0F;
+      }
+
+      this.ce = this.ce + ($$1 - this.ce) * 0.4F;
+      this.dM().af().a("push");
+      this.q();
+      this.dM().af().c();
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.g = new esj($$0, $$1, $$2);
+      this.cv = this.ai().p() + 1;
+   }
+
+   @Override
+   protected void fS() {
+   }
+
+   @Override
+   public void a(wi $$0) {
+      fby $$1 = fby.Q();
+      $$1.l.d().a($$0);
+   }
+
+   @Override
+   public void a(abb $$0) {
+      super.a($$0);
+      this.bs();
    }
 }

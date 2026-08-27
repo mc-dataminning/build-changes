@@ -1,773 +1,160 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cle {
-   private static final int h = 2;
-   private static final int i = 0;
-   private static final int j = 1;
-   private static final int k = 2;
-   private static final int l = 32;
-   private static final int m = 48000;
-   private static final int n = 3;
-   private static final wg o = wg.c("block.minecraft.ominous_banner").a(n.g);
-   private static final String p = "event.minecraft.raid.raiders_remaining";
-   public static final int a = 16;
-   private static final int q = 40;
-   private static final int r = 300;
-   public static final int b = 2400;
-   public static final int c = 600;
-   private static final int s = 30;
-   public static final int d = 24000;
-   public static final int e = 5;
-   private static final int t = 2;
-   private static final wg u = wg.c("event.minecraft.raid");
-   private static final wg v = wg.c("event.minecraft.raid.victory.full");
-   private static final wg w = wg.c("event.minecraft.raid.defeat.full");
-   private static final int x = 48000;
-   public static final int f = 9216;
-   public static final int g = 12544;
-   private final Map<Integer, clf> y = Maps.newHashMap();
-   private final Map<Integer, Set<clf>> z = Maps.newHashMap();
-   private final Set<UUID> A = Sets.newHashSet();
-   private long B;
-   private ib C;
-   private final aps D;
-   private boolean E;
-   private final int F;
-   private float G;
-   private int H;
-   private boolean I;
-   private int J;
-   private final app K = new app(u, bnq.a.c, bnq.b.c);
-   private int L;
-   private int M;
-   private final axr N = axr.a();
-   private final int O;
-   private cle.a P;
-   private int Q;
-   private Optional<ib> R = Optional.empty();
+public class cle extends ckz implements ckp {
+   public static final double b = 4.0;
+   private static final double d = 16.0;
+   public static final Predicate<bqt> c = $$0 -> $$0.fm() || $$0.bN();
 
-   public cle(int $$0, aps $$1, ib $$2) {
-      this.F = $$0;
-      this.D = $$1;
-      this.I = true;
-      this.M = 300;
-      this.K.a(0.0F);
-      this.C = $$2;
-      this.O = this.a($$1.ak());
-      this.P = cle.a.a;
+   public cle(bqg<? extends cle> $$0, czg $$1) {
+      super($$0, $$1);
    }
 
-   public cle(aps $$0, tm $$1) {
-      this.D = $$0;
-      this.F = $$1.h("Id");
-      this.E = $$1.q("Started");
-      this.I = $$1.q("Active");
-      this.B = $$1.i("TicksActive");
-      this.H = $$1.h("BadOmenLevel");
-      this.J = $$1.h("GroupsSpawned");
-      this.M = $$1.h("PreRaidTicks");
-      this.L = $$1.h("PostRaidTicks");
-      this.G = $$1.j("TotalHealth");
-      this.C = new ib($$1.h("CX"), $$1.h("CY"), $$1.h("CZ"));
-      this.O = $$1.h("NumGroups");
-      this.P = cle.a.a($$1.l("Status"));
-      this.A.clear();
-      if ($$1.b("HeroesOfTheVillage", 9)) {
-         for (uj $$3 : $$1.c("HeroesOfTheVillage", 11)) {
-            this.A.add(ub.a($$3));
+   public cle(czg $$0, bqt $$1) {
+      super(bqg.aD, $$1, $$0);
+   }
+
+   public cle(czg $$0, double $$1, double $$2, double $$3) {
+      super(bqg.aD, $$1, $$2, $$3, $$0);
+   }
+
+   @Override
+   protected crn r() {
+      return crv.vm;
+   }
+
+   @Override
+   protected double aW() {
+      return 0.05;
+   }
+
+   @Override
+   protected void a(esf $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         crs $$1 = this.p();
+         ij $$2 = $$0.b();
+         id $$3 = $$0.a();
+         id $$4 = $$3.a($$2);
+         ctq $$5 = $$1.a(jr.x, ctq.a);
+         if ($$5.a(ctr.a)) {
+            this.a($$4);
+            this.a($$4.a($$2.g()));
+
+            for (ij $$6 : ij.c.a) {
+               this.a($$4.a($$6));
+            }
          }
       }
    }
 
-   public boolean a() {
-      return this.e() || this.f();
-   }
+   @Override
+   protected void a(esh $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         crs $$1 = this.p();
+         ctq $$2 = $$1.a(jr.x, ctq.a);
+         if ($$2.a(ctr.a)) {
+            this.v();
+         } else if ($$2.d()) {
+            if (this.w()) {
+               this.a($$2);
+            } else {
+               this.a($$2.a(), $$0.c() == esh.a.c ? ((esg)$$0).a() : null);
+            }
+         }
 
-   public boolean b() {
-      return this.c() && this.r() == 0 && this.M > 0;
-   }
-
-   public boolean c() {
-      return this.J > 0;
-   }
-
-   public boolean d() {
-      return this.P == cle.a.d;
-   }
-
-   public boolean e() {
-      return this.P == cle.a.b;
-   }
-
-   public boolean f() {
-      return this.P == cle.a.c;
-   }
-
-   public float g() {
-      return this.G;
-   }
-
-   public Set<clf> h() {
-      Set<clf> $$0 = Sets.newHashSet();
-
-      for (Set<clf> $$1 : this.z.values()) {
-         $$0.addAll($$1);
+         int $$3 = $$2.f().isPresent() && $$2.f().get().a().b() ? 2007 : 2002;
+         this.dM().c($$3, this.dm(), $$2.b());
+         this.am();
       }
-
-      return $$0;
    }
 
-   public cyx i() {
-      return this.D;
-   }
+   private void v() {
+      ese $$0 = this.cH().c(4.0, 2.0, 4.0);
 
-   public boolean j() {
-      return this.E;
-   }
+      for (bqt $$2 : this.dM().a(bqt.class, $$0, c)) {
+         double $$3 = this.g($$2);
+         if ($$3 < 16.0) {
+            if ($$2.fm()) {
+               $$2.a(this.dN().c(this, this.u()), 1.0F);
+            }
 
-   public int k() {
-      return this.J;
-   }
-
-   private Predicate<apt> x() {
-      return $$0 -> {
-         ib $$1 = $$0.dm();
-         return $$0.bA() && this.D.d($$1) == this;
-      };
-   }
-
-   private void y() {
-      Set<apt> $$0 = Sets.newHashSet(this.K.g());
-      List<apt> $$1 = this.D.a(this.x());
-
-      for (apt $$2 : $$1) {
-         if (!$$0.contains($$2)) {
-            this.K.a($$2);
+            if ($$2.bN() && $$2.bA()) {
+               $$2.aF();
+            }
          }
       }
 
-      for (apt $$3 : $$0) {
-         if (!$$1.contains($$3)) {
-            this.K.b($$3);
-         }
+      for (cdu $$5 : this.dM().a(cdu.class, $$0)) {
+         $$5.r();
       }
    }
 
-   public int l() {
-      return 5;
-   }
+   private void a(Iterable<bpm> $$0, @Nullable bqa $$1) {
+      ese $$2 = this.cH().c(4.0, 2.0, 4.0);
+      List<bqt> $$3 = this.dM().a(bqt.class, $$2);
+      if (!$$3.isEmpty()) {
+         bqa $$4 = this.I();
 
-   public int m() {
-      return this.H;
-   }
-
-   public void a(int $$0) {
-      this.H = $$0;
-   }
-
-   public void a(cjt $$0) {
-      if ($$0.b(bpj.E)) {
-         this.H = this.H + $$0.c(bpj.E).d() + 1;
-         this.H = axk.a(this.H, 0, this.l());
-      }
-
-      $$0.e(bpj.E);
-   }
-
-   public void n() {
-      this.I = false;
-      this.K.b();
-      this.P = cle.a.d;
-   }
-
-   public void o() {
-      if (!this.d()) {
-         if (this.P == cle.a.a) {
-            boolean $$0 = this.I;
-            this.I = this.D.B(this.C);
-            if (this.D.ak() == bnx.a) {
-               this.n();
-               return;
-            }
-
-            if ($$0 != this.I) {
-               this.K.d(this.I);
-            }
-
-            if (!this.I) {
-               return;
-            }
-
-            if (!this.D.c(this.C)) {
-               this.z();
-            }
-
-            if (!this.D.c(this.C)) {
-               if (this.J > 0) {
-                  this.P = cle.a.c;
-               } else {
-                  this.n();
-               }
-            }
-
-            this.B++;
-            if (this.B >= 48000L) {
-               this.n();
-               return;
-            }
-
-            int $$1 = this.r();
-            if ($$1 == 0 && this.A()) {
-               if (this.M <= 0) {
-                  if (this.M == 0 && this.J > 0) {
-                     this.M = 300;
-                     this.K.a(u);
-                     return;
-                  }
-               } else {
-                  boolean $$2 = this.R.isPresent();
-                  boolean $$3 = !$$2 && this.M % 5 == 0;
-                  if ($$2 && !this.D.f(this.R.get())) {
-                     $$3 = true;
-                  }
-
-                  if ($$3) {
-                     int $$4 = 0;
-                     if (this.M < 100) {
-                        $$4 = 1;
-                     } else if (this.M < 40) {
-                        $$4 = 2;
-                     }
-
-                     this.R = this.d($$4);
-                  }
-
-                  if (this.M == 300 || this.M % 20 == 0) {
-                     this.y();
-                  }
-
-                  this.M--;
-                  this.K.a(axk.a((float)(300 - this.M) / 300.0F, 0.0F, 1.0F));
-               }
-            }
-
-            if (this.B % 20L == 0L) {
-               this.y();
-               this.F();
-               if ($$1 > 0) {
-                  if ($$1 <= 2) {
-                     this.K.a(u.f().f(" - ").b(wg.a("event.minecraft.raid.raiders_remaining", $$1)));
+         for (bqt $$5 : $$3) {
+            if ($$5.fD()) {
+               double $$6 = this.g($$5);
+               if ($$6 < 16.0) {
+                  double $$7;
+                  if ($$5 == $$1) {
+                     $$7 = 1.0;
                   } else {
-                     this.K.a(u);
+                     $$7 = 1.0 - Math.sqrt($$6) / 4.0;
                   }
-               } else {
-                  this.K.a(u);
-               }
-            }
 
-            boolean $$5 = false;
-            int $$6 = 0;
-
-            while (this.G()) {
-               ib $$7 = this.R.isPresent() ? this.R.get() : this.a($$6, 20);
-               if ($$7 != null) {
-                  this.E = true;
-                  this.b($$7);
-                  if (!$$5) {
-                     this.a($$7);
-                     $$5 = true;
-                  }
-               } else {
-                  $$6++;
-               }
-
-               if ($$6 > 3) {
-                  this.n();
-                  break;
-               }
-            }
-
-            if (this.j() && !this.A() && $$1 == 0) {
-               if (this.L < 40) {
-                  this.L++;
-               } else {
-                  this.P = cle.a.b;
-
-                  for (UUID $$8 : this.A) {
-                     bpv $$9 = this.D.a($$8);
-                     if ($$9 instanceof bqo) {
-                        bqo $$10 = (bqo)$$9;
-                        if (!$$9.N_()) {
-                           $$10.b(new bph(bpj.F, 48000, this.H - 1, false, false, true));
-                           if ($$10 instanceof apt $$11) {
-                              $$11.a(auw.aB);
-                              am.I.a($$11);
-                           }
+                  for (bpm $$9 : $$0) {
+                     in<bpk> $$10 = $$9.b();
+                     if ($$10.a().a()) {
+                        $$10.a().a(this, this.u(), $$5, $$9.d(), $$7);
+                     } else {
+                        int $$11 = $$9.a($$1x -> (int)($$7 * (double)$$1x + 0.5));
+                        bpm $$12 = new bpm($$10, $$11, $$9.d(), $$9.e(), $$9.f());
+                        if (!$$12.a(20)) {
+                           $$5.b($$12, $$4);
                         }
                      }
                   }
                }
             }
-
-            this.H();
-         } else if (this.a()) {
-            this.Q++;
-            if (this.Q >= 600) {
-               this.n();
-               return;
-            }
-
-            if (this.Q % 20 == 0) {
-               this.y();
-               this.K.d(true);
-               if (this.e()) {
-                  this.K.a(0.0F);
-                  this.K.a(v);
-               } else {
-                  this.K.a(w);
-               }
-            }
          }
       }
    }
 
-   private void z() {
-      Stream<je> $$0 = je.a(je.a(this.C), 2);
-      $$0.filter(this.D::a).map(je::q).min(Comparator.comparingDouble($$0x -> $$0x.j(this.C))).ifPresent(this::c);
-   }
-
-   private Optional<ib> d(int $$0) {
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         ib $$2 = this.a($$0, 1);
-         if ($$2 != null) {
-            return Optional.of($$2);
-         }
+   private void a(ctq $$0) {
+      bpw $$1 = new bpw(this.dM(), this.dr(), this.dt(), this.dx());
+      if (this.u() instanceof bqt $$2) {
+         $$1.a($$2);
       }
 
-      return Optional.empty();
+      $$1.a(3.0F);
+      $$1.b(-0.5F);
+      $$1.c(10);
+      $$1.c(-$$1.g() / (float)$$1.k());
+      $$1.a($$0);
+      this.dM().b($$1);
    }
 
-   private boolean A() {
-      return this.C() ? !this.D() : !this.B();
+   private boolean w() {
+      return this.p().a(crv.vp);
    }
 
-   private boolean B() {
-      return this.k() == this.O;
-   }
-
-   private boolean C() {
-      return this.H > 1;
-   }
-
-   private boolean D() {
-      return this.k() > this.O;
-   }
-
-   private boolean E() {
-      return this.B() && this.r() == 0 && this.C();
-   }
-
-   private void F() {
-      Iterator<Set<clf>> $$0 = this.z.values().iterator();
-      Set<clf> $$1 = Sets.newHashSet();
-
-      while ($$0.hasNext()) {
-         Set<clf> $$2 = $$0.next();
-
-         for (clf $$3 : $$2) {
-            ib $$4 = $$3.dm();
-            if ($$3.dH() || $$3.dM().ae() != this.D.ae() || this.C.j($$4) >= 12544.0) {
-               $$1.add($$3);
-            } else if ($$3.ah > 600) {
-               if (this.D.a($$3.cw()) == null) {
-                  $$1.add($$3);
-               }
-
-               if (!this.D.c($$4) && $$3.en() > 2400) {
-                  $$3.c($$3.gF() + 1);
-               }
-
-               if ($$3.gF() >= 30) {
-                  $$1.add($$3);
-               }
-            }
-         }
-      }
-
-      for (clf $$5 : $$1) {
-         this.a($$5, true);
-      }
-   }
-
-   private void a(ib $$0) {
-      float $$1 = 13.0F;
-      int $$2 = 64;
-      Collection<apt> $$3 = this.K.g();
-      long $$4 = this.N.g();
-
-      for (apt $$5 : this.D.x()) {
-         esa $$6 = $$5.dk();
-         esa $$7 = esa.b($$0);
-         double $$8 = Math.sqrt(($$7.c - $$6.c) * ($$7.c - $$6.c) + ($$7.e - $$6.e) * ($$7.e - $$6.e));
-         double $$9 = $$6.c + 13.0 / $$8 * ($$7.c - $$6.c);
-         double $$10 = $$6.e + 13.0 / $$8 * ($$7.e - $$6.e);
-         if ($$8 <= 64.0 || $$3.contains($$5)) {
-            $$5.d.b(new aes(aum.uG, aun.g, $$9, $$5.dt(), $$10, 64.0F, 1.0F, $$4));
-         }
-      }
-   }
-
-   private void b(ib $$0) {
-      boolean $$1 = false;
-      int $$2 = this.J + 1;
-      this.G = 0.0F;
-      bny $$3 = this.D.d_($$0);
-      boolean $$4 = this.E();
-
-      for (cle.b $$5 : cle.b.f) {
-         int $$6 = this.a($$5, $$2, $$4) + this.a($$5, this.N, $$2, $$3, $$4);
-         int $$7 = 0;
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            clf $$9 = $$5.g.a((cyx)this.D);
-            if ($$9 == null) {
-               break;
-            }
-
-            if (!$$1 && $$9.go()) {
-               $$9.w(true);
-               this.a($$2, $$9);
-               $$1 = true;
-            }
-
-            this.a($$2, $$9, $$0, false);
-            if ($$5.g == bqb.aG) {
-               clf $$10 = null;
-               if ($$2 == this.a(bnx.c)) {
-                  $$10 = bqb.aB.a((cyx)this.D);
-               } else if ($$2 >= this.a(bnx.d)) {
-                  if ($$7 == 0) {
-                     $$10 = bqb.J.a((cyx)this.D);
-                  } else {
-                     $$10 = bqb.bj.a((cyx)this.D);
-                  }
-               }
-
-               $$7++;
-               if ($$10 != null) {
-                  this.a($$2, $$10, $$0, false);
-                  $$10.a($$0, 0.0F, 0.0F);
-                  $$10.n($$9);
-               }
-            }
-         }
-      }
-
-      this.R = Optional.empty();
-      this.J++;
-      this.p();
-      this.H();
-   }
-
-   public void a(int $$0, clf $$1, @Nullable ib $$2, boolean $$3) {
-      boolean $$4 = this.b($$0, $$1);
-      if ($$4) {
-         $$1.a(this);
-         $$1.b($$0);
-         $$1.z(true);
-         $$1.c(0);
-         if (!$$3 && $$2 != null) {
-            $$1.a_((double)$$2.u() + 0.5, (double)$$2.v() + 1.0, (double)$$2.w() + 0.5);
-            $$1.a(this.D, this.D.d_($$2), bqs.h, null);
-            $$1.a($$0, false);
-            $$1.c(true);
-            this.D.a_($$1);
-         }
-      }
-   }
-
-   public void p() {
-      this.K.a(axk.a(this.q() / this.G, 0.0F, 1.0F));
-   }
-
-   public float q() {
-      float $$0 = 0.0F;
-
-      for (Set<clf> $$1 : this.z.values()) {
-         for (clf $$2 : $$1) {
-            $$0 += $$2.ex();
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean G() {
-      return this.M == 0 && (this.J < this.O || this.E()) && this.r() == 0;
-   }
-
-   public int r() {
-      return this.z.values().stream().mapToInt(Set::size).sum();
-   }
-
-   public void a(clf $$0, boolean $$1) {
-      Set<clf> $$2 = this.z.get($$0.gD());
-      if ($$2 != null) {
-         boolean $$3 = $$2.remove($$0);
-         if ($$3) {
-            if ($$1) {
-               this.G = this.G - $$0.ex();
-            }
-
-            $$0.a(null);
-            this.p();
-            this.H();
-         }
-      }
-   }
-
-   private void H() {
-      this.D.z().c();
-   }
-
-   public static crj s() {
-      crj $$0 = new crj(crm.uN);
-      dlw $$1 = new dlw.a().a(dlx.z, cqc.j).a(dlx.f, cqc.i).a(dlx.j, cqc.h).a(dlx.E, cqc.i).a(dlx.k, cqc.p).a(dlx.B, cqc.i).a(dlx.y, cqc.i).a(dlx.E, cqc.p).a();
-      $$0.b(jp.N, $$1);
-      $$0.b(jp.k, aym.a);
-      $$0.b(jp.d, o);
-      return $$0;
-   }
-
-   @Nullable
-   public clf b(int $$0) {
-      return this.y.get($$0);
-   }
-
-   @Nullable
-   private ib a(int $$0, int $$1) {
-      int $$2 = $$0 == 0 ? 2 : 2 - $$0;
-      ib.a $$3 = new ib.a();
-      brh $$4 = brj.a(bqb.aG);
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         float $$6 = this.D.z.i() * (float) (Math.PI * 2);
-         int $$7 = this.C.u() + axk.d(axk.b($$6) * 32.0F * (float)$$2) + this.D.z.a(5);
-         int $$8 = this.C.w() + axk.d(axk.a($$6) * 32.0F * (float)$$2) + this.D.z.a(5);
-         int $$9 = this.D.a(dur.a.b, $$7, $$8);
-         $$3.d($$7, $$9, $$8);
-         if (!this.D.c($$3) || $$0 >= 2) {
-            int $$10 = 10;
-            if (this.D.b($$3.u() - 10, $$3.w() - 10, $$3.u() + 10, $$3.w() + 10)
-               && this.D.f($$3)
-               && ($$4.isSpawnPositionOk(this.D, $$3, bqb.aG) || this.D.a_($$3.d()).a(dca.dN) && this.D.a_($$3).i())) {
-               return $$3;
-            }
-         }
-      }
-
-      return null;
-   }
-
-   private boolean b(int $$0, clf $$1) {
-      return this.a($$0, $$1, true);
-   }
-
-   public boolean a(int $$0, clf $$1, boolean $$2) {
-      this.z.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
-      Set<clf> $$3 = this.z.get($$0);
-      clf $$4 = null;
-
-      for (clf $$5 : $$3) {
-         if ($$5.cw().equals($$1.cw())) {
-            $$4 = $$5;
-            break;
-         }
-      }
-
-      if ($$4 != null) {
-         $$3.remove($$4);
-         $$3.add($$1);
-      }
-
-      $$3.add($$1);
-      if ($$2) {
-         this.G = this.G + $$1.ex();
-      }
-
-      this.p();
-      this.H();
-      return true;
-   }
-
-   public void a(int $$0, clf $$1) {
-      this.y.put($$0, $$1);
-      $$1.a(bqc.f, s());
-      $$1.a(bqc.f, 2.0F);
-   }
-
-   public void c(int $$0) {
-      this.y.remove($$0);
-   }
-
-   public ib t() {
-      return this.C;
-   }
-
-   private void c(ib $$0) {
-      this.C = $$0;
-   }
-
-   public int u() {
-      return this.F;
-   }
-
-   private int a(cle.b $$0, int $$1, boolean $$2) {
-      return $$2 ? $$0.h[this.O] : $$0.h[$$1];
-   }
-
-   private int a(cle.b $$0, axr $$1, int $$2, bny $$3, boolean $$4) {
-      bnx $$5 = $$3.a();
-      boolean $$6 = $$5 == bnx.b;
-      boolean $$7 = $$5 == bnx.c;
-      int $$9;
-      switch ($$0) {
-         case d:
-            if ($$6 || $$2 <= 2 || $$2 == 4) {
-               return 0;
-            }
-
-            $$9 = 1;
-            break;
-         case c:
-         case a:
-            if ($$6) {
-               $$9 = $$1.a(2);
-            } else if ($$7) {
-               $$9 = 1;
-            } else {
-               $$9 = 2;
-            }
-            break;
-         case e:
-            $$9 = !$$6 && $$4 ? 1 : 0;
-            break;
-         default:
-            return 0;
-      }
-
-      return $$9 > 0 ? $$1.a($$9 + 1) : 0;
-   }
-
-   public boolean v() {
-      return this.I;
-   }
-
-   public tm a(tm $$0) {
-      $$0.a("Id", this.F);
-      $$0.a("Started", this.E);
-      $$0.a("Active", this.I);
-      $$0.a("TicksActive", this.B);
-      $$0.a("BadOmenLevel", this.H);
-      $$0.a("GroupsSpawned", this.J);
-      $$0.a("PreRaidTicks", this.M);
-      $$0.a("PostRaidTicks", this.L);
-      $$0.a("TotalHealth", this.G);
-      $$0.a("NumGroups", this.O);
-      $$0.a("Status", this.P.a());
-      $$0.a("CX", this.C.u());
-      $$0.a("CY", this.C.v());
-      $$0.a("CZ", this.C.w());
-      ts $$1 = new ts();
-
-      for (UUID $$2 : this.A) {
-         $$1.add(ub.a($$2));
-      }
-
-      $$0.a("HeroesOfTheVillage", $$1);
-      return $$0;
-   }
-
-   public int a(bnx $$0) {
-      switch ($$0) {
-         case b:
-            return 3;
-         case c:
-            return 5;
-         case d:
-            return 7;
-         default:
-            return 0;
-      }
-   }
-
-   public float w() {
-      int $$0 = this.m();
-      if ($$0 == 2) {
-         return 0.1F;
-      } else if ($$0 == 3) {
-         return 0.25F;
-      } else if ($$0 == 4) {
-         return 0.5F;
-      } else {
-         return $$0 == 5 ? 0.75F : 0.0F;
-      }
-   }
-
-   public void a(bpv $$0) {
-      this.A.add($$0.cw());
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final cle.a[] e = values();
-
-      static cle.a a(String $$0) {
-         for (cle.a $$1 : e) {
-            if ($$0.equalsIgnoreCase($$1.name())) {
-               return $$1;
-            }
-         }
-
-         return a;
-      }
-
-      public String a() {
-         return this.name().toLowerCase(Locale.ROOT);
-      }
-   }
-
-   static enum b {
-      a(bqb.bj, new int[]{0, 0, 2, 0, 1, 4, 2, 5}),
-      b(bqb.J, new int[]{0, 0, 0, 0, 0, 1, 1, 2}),
-      c(bqb.aB, new int[]{0, 4, 3, 3, 4, 4, 4, 2}),
-      d(bqb.bn, new int[]{0, 0, 0, 0, 3, 0, 0, 1}),
-      e(bqb.aG, new int[]{0, 0, 0, 1, 0, 1, 0, 2});
-
-      static final cle.b[] f = values();
-      final bqb<? extends clf> g;
-      final int[] h;
-
-      private b(bqb<? extends clf> $$0, int[] $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   private void a(id $$0) {
+      dpi $$1 = this.dM().a_($$0);
+      if ($$1.a(ave.aK)) {
+         this.dM().a($$0, false, this);
+      } else if (daz.c($$1)) {
+         daz.a(null, $$1, this.dM(), $$0);
+      } else if (dcv.g($$1)) {
+         this.dM().a(null, 1009, $$0, 0);
+         dcv.a(this.u(), this.dM(), $$0, $$1);
+         this.dM().b($$0, $$1.a(dcv.c, Boolean.valueOf(false)));
       }
    }
 }

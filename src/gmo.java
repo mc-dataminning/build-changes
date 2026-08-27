@@ -1,26 +1,17 @@
-import java.util.IllegalFormatException;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class gmo {
-   private static volatile th a = th.a();
-
-   private gmo() {
-   }
-
-   static void a(th $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
+   @Deprecated
+   public static int[] a(ate $$0, ajv $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         evs $$3 = evs.a($$2);
+      ) {
+         var4 = $$3.e();
       }
-   }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+      return var4;
    }
 }

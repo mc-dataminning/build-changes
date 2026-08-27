@@ -1,76 +1,165 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-public final class nj {
-   public static final nj a = a("all");
-   public static final nj b = a("texture", a);
-   public static final nj c = a("particle", b);
-   public static final nj d = a("end", a);
-   public static final nj e = a("bottom", d);
-   public static final nj f = a("top", d);
-   public static final nj g = a("front", a);
-   public static final nj h = a("back", a);
-   public static final nj i = a("side", a);
-   public static final nj j = a("north", i);
-   public static final nj k = a("south", i);
-   public static final nj l = a("east", i);
-   public static final nj m = a("west", i);
-   public static final nj n = a("up");
-   public static final nj o = a("down");
-   public static final nj p = a("cross");
-   public static final nj q = a("plant");
-   public static final nj r = a("wall", a);
-   public static final nj s = a("rail");
-   public static final nj t = a("wool");
-   public static final nj u = a("pattern");
-   public static final nj v = a("pane");
-   public static final nj w = a("edge");
-   public static final nj x = a("fan");
-   public static final nj y = a("stem");
-   public static final nj z = a("upperstem");
-   public static final nj A = a("crop");
-   public static final nj B = a("dirt");
-   public static final nj C = a("fire");
-   public static final nj D = a("lantern");
-   public static final nj E = a("platform");
-   public static final nj F = a("unsticky");
-   public static final nj G = a("torch");
-   public static final nj H = a("layer0");
-   public static final nj I = a("layer1");
-   public static final nj J = a("layer2");
-   public static final nj K = a("lit_log");
-   public static final nj L = a("candle");
-   public static final nj M = a("inside");
-   public static final nj N = a("content");
-   public static final nj O = a("inner_top");
-   public static final nj P = a("flowerbed");
-   private final String Q;
-   @Nullable
-   private final nj R;
+public class nj {
+   public static final ni a = a("cube", nl.c, nl.j, nl.k, nl.l, nl.m, nl.n, nl.o);
+   public static final ni b = a("cube_directional", nl.c, nl.j, nl.k, nl.l, nl.m, nl.n, nl.o);
+   public static final ni c = a("cube_all", nl.a);
+   public static final ni d = a("cube_all_inner_faces", nl.a);
+   public static final ni e = a("cube_mirrored_all", "_mirrored", nl.a);
+   public static final ni f = a("cube_north_west_mirrored_all", "_north_west_mirrored", nl.a);
+   public static final ni g = a("cube_column_uv_locked_x", "_x", nl.d, nl.i);
+   public static final ni h = a("cube_column_uv_locked_y", "_y", nl.d, nl.i);
+   public static final ni i = a("cube_column_uv_locked_z", "_z", nl.d, nl.i);
+   public static final ni j = a("cube_column", nl.d, nl.i);
+   public static final ni k = a("cube_column_horizontal", "_horizontal", nl.d, nl.i);
+   public static final ni l = a("cube_column_mirrored", "_mirrored", nl.d, nl.i);
+   public static final ni m = a("cube_top", nl.f, nl.i);
+   public static final ni n = a("cube_bottom_top", nl.f, nl.e, nl.i);
+   public static final ni o = a("cube_bottom_top_inner_faces", nl.f, nl.e, nl.i);
+   public static final ni p = a("orientable", nl.f, nl.g, nl.i);
+   public static final ni q = a("orientable_with_bottom", nl.f, nl.e, nl.i, nl.g);
+   public static final ni r = a("orientable_vertical", "_vertical", nl.g, nl.i);
+   public static final ni s = a("button", nl.b);
+   public static final ni t = a("button_pressed", "_pressed", nl.b);
+   public static final ni u = a("button_inventory", "_inventory", nl.b);
+   public static final ni v = a("door_bottom_left", "_bottom_left", nl.f, nl.e);
+   public static final ni w = a("door_bottom_left_open", "_bottom_left_open", nl.f, nl.e);
+   public static final ni x = a("door_bottom_right", "_bottom_right", nl.f, nl.e);
+   public static final ni y = a("door_bottom_right_open", "_bottom_right_open", nl.f, nl.e);
+   public static final ni z = a("door_top_left", "_top_left", nl.f, nl.e);
+   public static final ni A = a("door_top_left_open", "_top_left_open", nl.f, nl.e);
+   public static final ni B = a("door_top_right", "_top_right", nl.f, nl.e);
+   public static final ni C = a("door_top_right_open", "_top_right_open", nl.f, nl.e);
+   public static final ni D = a("custom_fence_post", "_post", nl.b, nl.c);
+   public static final ni E = a("custom_fence_side_north", "_side_north", nl.b);
+   public static final ni F = a("custom_fence_side_east", "_side_east", nl.b);
+   public static final ni G = a("custom_fence_side_south", "_side_south", nl.b);
+   public static final ni H = a("custom_fence_side_west", "_side_west", nl.b);
+   public static final ni I = a("custom_fence_inventory", "_inventory", nl.b);
+   public static final ni J = a("fence_post", "_post", nl.b);
+   public static final ni K = a("fence_side", "_side", nl.b);
+   public static final ni L = a("fence_inventory", "_inventory", nl.b);
+   public static final ni M = a("template_wall_post", "_post", nl.r);
+   public static final ni N = a("template_wall_side", "_side", nl.r);
+   public static final ni O = a("template_wall_side_tall", "_side_tall", nl.r);
+   public static final ni P = a("wall_inventory", "_inventory", nl.r);
+   public static final ni Q = a("template_custom_fence_gate", nl.b, nl.c);
+   public static final ni R = a("template_custom_fence_gate_open", "_open", nl.b, nl.c);
+   public static final ni S = a("template_custom_fence_gate_wall", "_wall", nl.b, nl.c);
+   public static final ni T = a("template_custom_fence_gate_wall_open", "_wall_open", nl.b, nl.c);
+   public static final ni U = a("template_fence_gate", nl.b);
+   public static final ni V = a("template_fence_gate_open", "_open", nl.b);
+   public static final ni W = a("template_fence_gate_wall", "_wall", nl.b);
+   public static final ni X = a("template_fence_gate_wall_open", "_wall_open", nl.b);
+   public static final ni Y = a("pressure_plate_up", nl.b);
+   public static final ni Z = a("pressure_plate_down", "_down", nl.b);
+   public static final ni aa = a(nl.c);
+   public static final ni ab = a("slab", nl.e, nl.f, nl.i);
+   public static final ni ac = a("slab_top", "_top", nl.e, nl.f, nl.i);
+   public static final ni ad = a("leaves", nl.a);
+   public static final ni ae = a("stairs", nl.e, nl.f, nl.i);
+   public static final ni af = a("inner_stairs", "_inner", nl.e, nl.f, nl.i);
+   public static final ni ag = a("outer_stairs", "_outer", nl.e, nl.f, nl.i);
+   public static final ni ah = a("template_trapdoor_top", "_top", nl.b);
+   public static final ni ai = a("template_trapdoor_bottom", "_bottom", nl.b);
+   public static final ni aj = a("template_trapdoor_open", "_open", nl.b);
+   public static final ni ak = a("template_orientable_trapdoor_top", "_top", nl.b);
+   public static final ni al = a("template_orientable_trapdoor_bottom", "_bottom", nl.b);
+   public static final ni am = a("template_orientable_trapdoor_open", "_open", nl.b);
+   public static final ni an = a("pointed_dripstone", nl.p);
+   public static final ni ao = a("cross", nl.p);
+   public static final ni ap = a("tinted_cross", nl.p);
+   public static final ni aq = a("flower_pot_cross", nl.q);
+   public static final ni ar = a("tinted_flower_pot_cross", nl.q);
+   public static final ni as = a("rail_flat", nl.s);
+   public static final ni at = a("rail_curved", "_corner", nl.s);
+   public static final ni au = a("template_rail_raised_ne", "_raised_ne", nl.s);
+   public static final ni av = a("template_rail_raised_sw", "_raised_sw", nl.s);
+   public static final ni aw = a("carpet", nl.t);
+   public static final ni ax = a("flowerbed_1", "_1", nl.P, nl.y);
+   public static final ni ay = a("flowerbed_2", "_2", nl.P, nl.y);
+   public static final ni az = a("flowerbed_3", "_3", nl.P, nl.y);
+   public static final ni aA = a("flowerbed_4", "_4", nl.P, nl.y);
+   public static final ni aB = a("coral_fan", nl.x);
+   public static final ni aC = a("coral_wall_fan", nl.x);
+   public static final ni aD = a("template_glazed_terracotta", nl.u);
+   public static final ni aE = a("template_chorus_flower", nl.b);
+   public static final ni aF = a("template_daylight_detector", nl.f, nl.i);
+   public static final ni aG = a("template_glass_pane_noside", "_noside", nl.v);
+   public static final ni aH = a("template_glass_pane_noside_alt", "_noside_alt", nl.v);
+   public static final ni aI = a("template_glass_pane_post", "_post", nl.v, nl.w);
+   public static final ni aJ = a("template_glass_pane_side", "_side", nl.v, nl.w);
+   public static final ni aK = a("template_glass_pane_side_alt", "_side_alt", nl.v, nl.w);
+   public static final ni aL = a("template_command_block", nl.g, nl.h, nl.i);
+   public static final ni aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", nl.b);
+   public static final ni aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", nl.b);
+   public static final ni aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", nl.b);
+   public static final ni aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", nl.b);
+   public static final ni aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", nl.b);
+   public static final ni aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", nl.b);
+   public static final ni aS = a("template_anvil", nl.f);
+   public static final ni[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, nl.y)).toArray(ni[]::new);
+   public static final ni aU = a("stem_fruit", nl.y, nl.z);
+   public static final ni aV = a("crop", nl.A);
+   public static final ni aW = a("template_farmland", nl.B, nl.f);
+   public static final ni aX = a("template_fire_floor", nl.C);
+   public static final ni aY = a("template_fire_side", nl.C);
+   public static final ni aZ = a("template_fire_side_alt", nl.C);
+   public static final ni ba = a("template_fire_up", nl.C);
+   public static final ni bb = a("template_fire_up_alt", nl.C);
+   public static final ni bc = a("template_campfire", nl.C, nl.K);
+   public static final ni bd = a("template_lantern", nl.D);
+   public static final ni be = a("template_hanging_lantern", "_hanging", nl.D);
+   public static final ni bf = a("template_torch", nl.G);
+   public static final ni bg = a("template_torch_wall", nl.G);
+   public static final ni bh = a("template_piston", nl.E, nl.e, nl.i);
+   public static final ni bi = a("template_piston_head", nl.E, nl.i, nl.F);
+   public static final ni bj = a("template_piston_head_short", nl.E, nl.i, nl.F);
+   public static final ni bk = a("template_seagrass", nl.b);
+   public static final ni bl = a("template_turtle_egg", nl.a);
+   public static final ni bm = a("template_two_turtle_eggs", nl.a);
+   public static final ni bn = a("template_three_turtle_eggs", nl.a);
+   public static final ni bo = a("template_four_turtle_eggs", nl.a);
+   public static final ni bp = a("template_single_face", nl.b);
+   public static final ni bq = a("template_cauldron_level1", nl.N, nl.M, nl.c, nl.f, nl.e, nl.i);
+   public static final ni br = a("template_cauldron_level2", nl.N, nl.M, nl.c, nl.f, nl.e, nl.i);
+   public static final ni bs = a("template_cauldron_full", nl.N, nl.M, nl.c, nl.f, nl.e, nl.i);
+   public static final ni bt = a("template_azalea", nl.f, nl.i);
+   public static final ni bu = a("template_potted_azalea_bush", nl.q, nl.f, nl.i);
+   public static final ni bv = a("template_potted_azalea_bush", nl.q, nl.f, nl.i);
+   public static final ni bw = a("sniffer_egg", nl.f, nl.e, nl.j, nl.k, nl.l, nl.m);
+   public static final ni bx = b("generated", nl.H);
+   public static final ni by = b("template_music_disc", nl.H);
+   public static final ni bz = b("handheld", nl.H);
+   public static final ni bA = b("handheld_rod", nl.H);
+   public static final ni bB = b("generated", nl.H, nl.I);
+   public static final ni bC = b("generated", nl.H, nl.I, nl.J);
+   public static final ni bD = b("template_shulker_box", nl.c);
+   public static final ni bE = b("template_bed", nl.c);
+   public static final ni bF = b("template_banner");
+   public static final ni bG = b("template_skull");
+   public static final ni bH = a("template_candle", nl.a, nl.c);
+   public static final ni bI = a("template_two_candles", nl.a, nl.c);
+   public static final ni bJ = a("template_three_candles", nl.a, nl.c);
+   public static final ni bK = a("template_four_candles", nl.a, nl.c);
+   public static final ni bL = a("template_cake_with_candle", nl.L, nl.e, nl.i, nl.f, nl.c);
+   public static final ni bM = a("template_sculk_shrieker", nl.e, nl.i, nl.f, nl.c, nl.O);
+   public static final ni bN = a("template_vault", nl.f, nl.e, nl.i, nl.g);
 
-   private static nj a(String $$0) {
-      return new nj($$0, null);
+   private static ni a(nl... $$0) {
+      return new ni(Optional.empty(), Optional.empty(), $$0);
    }
 
-   private static nj a(String $$0, nj $$1) {
-      return new nj($$0, $$1);
+   private static ni a(String $$0, nl... $$1) {
+      return new ni(Optional.of(new ajv("minecraft", "block/" + $$0)), Optional.empty(), $$1);
    }
 
-   private nj(String $$0, @Nullable nj $$1) {
-      this.Q = $$0;
-      this.R = $$1;
+   private static ni b(String $$0, nl... $$1) {
+      return new ni(Optional.of(new ajv("minecraft", "item/" + $$0)), Optional.empty(), $$1);
    }
 
-   public String a() {
-      return this.Q;
-   }
-
-   @Nullable
-   public nj b() {
-      return this.R;
-   }
-
-   @Override
-   public String toString() {
-      return "#" + this.Q;
+   private static ni a(String $$0, String $$1, nl... $$2) {
+      return new ni(Optional.of(new ajv("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
    }
 }

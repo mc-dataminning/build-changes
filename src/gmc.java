@@ -1,17 +1,46 @@
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class gmc extends ath<int[]> {
-   private static final ajt a = new ajt("textures/colormap/foliage.png");
+public class gmc {
+   private final ajv a;
+   private final atc b;
+   private final AtomicReference<evs> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   protected int[] a(atc $$0, bko $$1) {
-      try {
-         return gmf.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
+   public gmc(ajv $$0, atc $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   protected void a(int[] $$0, atc $$1, bko $$2) {
-      cyr.a($$0);
+   public evs a() throws IOException {
+      evs $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = evs.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         evs $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

@@ -1,49 +1,39 @@
-public class gjv extends gjt<ccz, fsc<ccz>> {
-   private static final ajt a = new ajt("textures/entity/sheep/sheep_fur.png");
-   private final fsb<ccz> b;
+public class gjv<T extends bqt, M extends fqv<T> & fpu> extends gkc<T, M> {
+   private final gae a;
 
-   public gjv(ghd<ccz, fsc<ccz>> $$0, fti $$1) {
+   public gjv(ghm<T, M> $$0, gae $$1) {
       super($$0);
-      this.b = new fsb<>($$1.a(ftl.bi));
+      this.a = $$1;
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, ccz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.y()) {
-         if ($$3.ce()) {
-            fbp $$10 = fbp.Q();
-            boolean $$11 = $$10.b($$3);
-            if ($$11) {
-               this.c().a(this.b);
-               this.b.a($$3, $$4, $$5, $$6);
-               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-               ewm $$12 = $$1.getBuffer(gah.r(a));
-               this.b.a($$0, $$12, $$2, ggj.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
-            }
-         } else {
-            float $$21;
-            float $$22;
-            float $$23;
-            if ($$3.ae() && "jeb_".equals($$3.ad().getString())) {
-               int $$13 = 25;
-               int $$14 = $$3.ah / 25 + $$3.aj();
-               int $$15 = cqc.values().length;
-               int $$16 = $$14 % $$15;
-               int $$17 = ($$14 + 1) % $$15;
-               float $$18 = ((float)($$3.ah % 25) + $$6) / 25.0F;
-               float[] $$19 = ccz.a(cqc.a($$16));
-               float[] $$20 = ccz.a(cqc.a($$17));
-               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
-               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
-               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
-            } else {
-               float[] $$24 = ccz.a($$3.u());
-               $$21 = $$24[0];
-               $$22 = $$24[1];
-               $$23 = $$24[2];
-            }
-
-            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
+   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fr() == bqn.b;
+      crs $$11 = $$10 ? $$3.eV() : $$3.eU();
+      crs $$12 = $$10 ? $$3.eU() : $$3.eV();
+      if (!$$11.d() || !$$12.d()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
          }
+
+         this.a($$3, $$12, crp.c, bqn.b, $$0, $$1, $$2);
+         this.a($$3, $$11, crp.b, bqn.a, $$0, $$1, $$2);
+         $$0.b();
+      }
+   }
+
+   protected void a(bqt $$0, crs $$1, crp $$2, bqn $$3, ewr $$4, gai $$5, int $$6) {
+      if (!$$1.d()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == bqn.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
       }
    }
 }

@@ -1,45 +1,36 @@
-import java.util.List;
+public record zu(id c, int d, String e, int f) implements zq {
+   public static final yg<vi, zu> a = zq.a(zu::a, zu::new);
+   public static final zq.b<zu> b = zq.a("debug/game_test_add_marker");
 
-public record zu(int c, ib d, List<zu.a> e) implements zo {
-   public static final ye<vg, zu> a = zo.a(zu::a, zu::new);
-   public static final zo.b<zu> b = zo.a("debug/goal_selector");
-
-   private zu(vg $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(zu.a::new));
+   private zu(vi $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(vg $$0) {
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vi $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
+      $$0.p(this.f);
    }
 
    @Override
-   public zo.b<zu> a() {
+   public zq.b<zu> a() {
       return b;
    }
 
-   public int b() {
+   public id b() {
       return this.c;
    }
 
-   public ib c() {
+   public int c() {
       return this.d;
    }
 
-   public List<zu.a> d() {
+   public String d() {
       return this.e;
    }
 
-   public static record a(int a, boolean b, String c) {
-      public a(vg $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
-      }
-
-      public void a(vg $$0) {
-         $$0.p(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-      }
+   public int e() {
+      return this.f;
    }
 }

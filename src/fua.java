@@ -1,138 +1,83 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
-public class fua implements fut {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Duration c = Duration.ofHours(1L);
-   private static final Path d = Path.of("profilekeys");
-   private final UserApiService e;
-   private final Path f;
-   private CompletableFuture<Optional<cjv>> g;
-   private Instant h = Instant.EPOCH;
+public class fua {
+   private static final Set<ij> a = EnumSet.allOf(ij.class);
+   private final List<fty> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   public fua(UserApiService $$0, UUID $$1, Path $$2) {
+   public fua a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
+   }
+
+   public fua a() {
+      return this.a(true);
+   }
+
+   public fua a(boolean $$0) {
       this.e = $$0;
-      this.f = $$2.resolve(d).resolve($$1 + ".json");
-      this.g = CompletableFuture.<Optional<cjv>>supplyAsync(() -> this.c().filter($$0x -> !$$0x.c().b().a()), ac.f()).thenCompose(this::a);
+      return this;
    }
 
-   @Override
-   public CompletableFuture<Optional<cjv>> a() {
-      this.h = Instant.now().plus(c);
-      this.g = this.g.thenCompose(this::a);
-      return this.g;
+   public fua a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, ftz $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new fty($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public boolean b() {
-      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cjv::a).orElse(true) : false;
+   public fua a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new fty($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, ftz.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   private CompletableFuture<Optional<cjv>> a(Optional<cjv> $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$0.isPresent() && !$$0.get().a()) {
-            if (!aa.aW) {
-               this.a(null);
-            }
-
-            return $$0;
-         } else {
-            try {
-               cjv $$1 = this.a(this.e);
-               this.a($$1);
-               return Optional.of($$1);
-            } catch (awj | MinecraftClientException | IOException var3) {
-               b.error("Failed to retrieve profile key pair", var3);
-               this.a(null);
-               return $$0;
-            }
-         }
-      }, ac.f());
+   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ftz.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   private Optional<cjv> c() {
-      if (Files.notExists(this.f)) {
-         return Optional.empty();
-      } else {
-         try {
-            Optional var2;
-            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
-               var2 = cjv.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to read profile key pair file {}", this.f, var6);
-            return Optional.empty();
-         }
-      }
+   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ij> $$6) {
+      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ftz.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
    }
 
-   private void a(@Nullable cjv $$0) {
-      try {
-         Files.deleteIfExists(this.f);
-      } catch (IOException var3) {
-         b.error("Failed to delete profile key pair file {}", this.f, var3);
-      }
-
-      if ($$0 != null) {
-         if (aa.aW) {
-            cjv.a.encodeStart(JsonOps.INSTANCE, $$0).result().ifPresent($$0x -> {
-               try {
-                  Files.createDirectories(this.f.getParent());
-                  Files.writeString(this.f, $$0x.toString());
-               } catch (Exception var3x) {
-                  b.error("Failed to write profile key pair file {}", this.f, var3x);
-               }
-            });
-         }
-      }
+   public fua a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new fty($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, ftz.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   private cjv a(UserApiService $$0) throws awj, IOException {
-      KeyPairResponse $$1 = $$0.getKeyPair();
-      if ($$1 != null) {
-         cjw.a $$2 = a($$1);
-         return new cjv(awi.a($$1.keyPair().privateKey()), new cjw($$2), Instant.parse($$1.refreshedAfter()));
-      } else {
-         throw new IOException("Could not retrieve profile key pair");
-      }
+   public fua a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, ftz $$7) {
+      this.b.add(new fty($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   private static cjw.a a(KeyPairResponse $$0) throws awj {
-      KeyPair $$1 = $$0.keyPair();
-      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
-         try {
-            Instant $$2 = Instant.parse($$0.expiresAt());
-            PublicKey $$3 = awi.b($$1.publicKey());
-            ByteBuffer $$4 = $$0.publicKeySignature();
-            return new cjw.a($$2, $$3, $$4.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new awj(var5);
-         }
-      } else {
-         throw new awj(new MissingException("Missing public key"));
-      }
+   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ftz.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, ftz $$6, float $$7, float $$8) {
+      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, ftz $$6) {
+      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<fty> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static fua c() {
+      return new fua();
    }
 }

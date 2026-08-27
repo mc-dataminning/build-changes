@@ -1,19 +1,16 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dez extends dds {
-   public static final MapCodec<dez> b = b(dez::new);
+public interface dez {
+   @Nullable
+   dmo a(id var1, dpi var2);
 
-   @Override
-   public MapCodec<dez> a() {
-      return b;
+   @Nullable
+   default <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
+      return null;
    }
 
-   protected dez(doy.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
-      return boa.d;
+   @Nullable
+   default <T extends dmo> dud a(apu $$0, T $$1) {
+      return $$1 instanceof dud.b<?> $$2 ? $$2.c() : null;
    }
 }

@@ -1,51 +1,29 @@
-public class cwf extends cvb {
-   public cwf(cuz $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public boolean a(cnf $$0, cyx $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
-               crj $$4 = $$0.a($$2 + $$3 * $$0.f());
-               if ($$4.d()) {
-                  return false;
-               }
+public class cwf<T extends cvj> implements cvw<T> {
+   private final cwf.a<T> x;
+   private final Codec<T> y;
+   private final yg<vt, T> z;
 
-               if ($$2 == 1 && $$3 == 1) {
-                  if (!$$4.a(crm.vp)) {
-                     return false;
-                  }
-               } else if (!$$4.a(crm.ou)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public crj a(cnf $$0, iz $$1) {
-      crj $$2 = $$0.a(1 + $$0.f());
-      if (!$$2.a(crm.vp)) {
-         return crj.i;
-      } else {
-         crj $$3 = new crj(crm.vo, 8);
-         $$3.b(jp.x, $$2.a(jp.x));
-         return $$3;
-      }
+   public cwf(cwf.a<T> $$0) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create($$1 -> $$1.group(cvi.e.fieldOf("category").orElse(cvi.d).forGetter(cvj::d)).apply($$1, $$0::create));
+      this.z = yg.a(cvi.g, cvj::d, $$0::create);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   public Codec<T> a() {
+      return this.y;
    }
 
    @Override
-   public cvn<?> ap_() {
-      return cvn.j;
+   public yg<vt, T> b() {
+      return this.z;
+   }
+
+   @FunctionalInterface
+   public interface a<T extends cvj> {
+      T create(cvi var1);
    }
 }

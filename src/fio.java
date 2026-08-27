@@ -1,79 +1,69 @@
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fio extends fjo {
-   private static final wg a = wg.c("addServer.enterIp");
-   private fdp b;
-   private final fuv c;
-   private fdy d;
-   private final BooleanConsumer o;
-   private final fjo p;
+public class fio extends fip {
+   private static final wi d = wi.c("chat.copy");
+   private static final wi o = wi.c("chat.link.warning");
+   private final String p;
+   private final boolean q;
 
-   public fio(fjo $$0, BooleanConsumer $$1, fuv $$2) {
-      super(wg.c("selectServer.direct"));
-      this.p = $$0;
-      this.c = $$2;
-      this.o = $$1;
+   public fio(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), wi.b($$1), $$1, $$2 ? wh.e : wh.g, $$2);
+   }
+
+   public fio(BooleanConsumer $$0, wi $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wh.e : wh.g, $$3);
+   }
+
+   public fio(BooleanConsumer $$0, wi $$1, wi $$2, String $$3, wi $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (wi)($$5 ? wi.c("chat.link.open") : wh.f);
+      this.b = $$4;
+      this.q = !$$5;
+      this.p = $$3;
+   }
+
+   protected static ww a(boolean $$0, String $$1) {
+      return c($$0).b(wh.v).b(wi.b($$1));
+   }
+
+   protected static ww c(boolean $$0) {
+      return wi.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aI_() != this.d || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.m();
-         return true;
+   protected void a(int $$0) {
+      this.c(fdy.a(this.a, $$0x -> this.c.accept(true)).a(this.k / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fdy.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.k / 2 - 50, $$0, 100, 20).a());
+      this.c(fdy.a(this.b, $$0x -> this.c.accept(false)).a(this.k / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void l() {
+      this.j.o.a(this.p);
+   }
+
+   @Override
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.q) {
+         $$0.a(this.m, o, this.k / 2, 110, 16764108);
       }
    }
 
-   @Override
-   protected void aN_() {
-      this.d = new fdy(this.m, this.k / 2 - 100, 116, 200, 20, wg.c("addServer.enterIp"));
-      this.d.f(128);
-      this.d.a(this.j.m.aa);
-      this.d.b($$0 -> this.C());
-      this.d(this.d);
-      this.b = this.c(fdp.a(wg.c("selectServer.select"), $$0 -> this.m()).a(this.k / 2 - 100, this.l / 4 + 96 + 12, 200, 20).a());
-      this.c(fdp.a(wf.e, $$0 -> this.o.accept(false)).a(this.k / 2 - 100, this.l / 4 + 120 + 12, 200, 20).a());
-      this.C();
+   public static void a(fjx $$0, String $$1) {
+      fby $$2 = fby.Q();
+      $$2.a(new fio($$3 -> {
+         if ($$3) {
+            ac.j().a($$1);
+         }
+
+         $$2.a($$0);
+      }, $$1, true));
    }
 
-   @Override
-   protected void aD_() {
-      this.b(this.d);
-   }
-
-   @Override
-   public void a(fbp $$0, int $$1, int $$2) {
-      String $$3 = this.d.a();
-      this.b($$0, $$1, $$2);
-      this.d.a($$3);
-   }
-
-   private void m() {
-      this.c.b = this.d.a();
-      this.o.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.j.a(this.p);
-   }
-
-   @Override
-   public void j() {
-      this.j.m.aa = this.d.a();
-      this.j.m.av();
-   }
-
-   private void C() {
-      this.b.j = fvy.b(this.d.a());
-   }
-
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, this.i, this.k / 2, 20, 16777215);
-      $$0.b(this.m, a, this.k / 2 - 100 + 1, 100, 10526880);
-      this.d.a($$0, $$1, $$2, $$3);
+   public static fdy.c b(fjx $$0, String $$1) {
+      return $$2 -> a($$0, $$1);
    }
 }

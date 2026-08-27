@@ -1,36 +1,23 @@
-public record adl(afg e, byte f) implements yn<aay> {
-   public static final ye<vr, adl> a = yn.a(adl::a, adl::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import javax.annotation.Nullable;
 
-   private adl(vr $$0) {
-      this(new afg($$0), $$0.readByte());
-   }
-
-   private void a(vr $$0) {
-      this.e.a($$0);
-      $$0.k(this.f);
-   }
+public record adl(int b, in<bpk> c) implements yp<aba> {
+   public static final yg<vt, adl> a = yg.a(ye.f, $$0 -> $$0.b, ye.b(ku.R), adl::e, adl::new);
 
    @Override
-   public yp<adl> a() {
-      return afj.al;
+   public yr<adl> a() {
+      return afl.ak;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   @Nullable
+   public bqa a(czg $$0) {
+      return $$0.a(this.b);
    }
 
-   public afg b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public in<bpk> e() {
+      return this.c;
    }
 }

@@ -1,70 +1,42 @@
-public abstract class dad {
-   public static final ajs<czw> a = a("the_void");
-   public static final ajs<czw> b = a("plains");
-   public static final ajs<czw> c = a("sunflower_plains");
-   public static final ajs<czw> d = a("snowy_plains");
-   public static final ajs<czw> e = a("ice_spikes");
-   public static final ajs<czw> f = a("desert");
-   public static final ajs<czw> g = a("swamp");
-   public static final ajs<czw> h = a("mangrove_swamp");
-   public static final ajs<czw> i = a("forest");
-   public static final ajs<czw> j = a("flower_forest");
-   public static final ajs<czw> k = a("birch_forest");
-   public static final ajs<czw> l = a("dark_forest");
-   public static final ajs<czw> m = a("old_growth_birch_forest");
-   public static final ajs<czw> n = a("old_growth_pine_taiga");
-   public static final ajs<czw> o = a("old_growth_spruce_taiga");
-   public static final ajs<czw> p = a("taiga");
-   public static final ajs<czw> q = a("snowy_taiga");
-   public static final ajs<czw> r = a("savanna");
-   public static final ajs<czw> s = a("savanna_plateau");
-   public static final ajs<czw> t = a("windswept_hills");
-   public static final ajs<czw> u = a("windswept_gravelly_hills");
-   public static final ajs<czw> v = a("windswept_forest");
-   public static final ajs<czw> w = a("windswept_savanna");
-   public static final ajs<czw> x = a("jungle");
-   public static final ajs<czw> y = a("sparse_jungle");
-   public static final ajs<czw> z = a("bamboo_jungle");
-   public static final ajs<czw> A = a("badlands");
-   public static final ajs<czw> B = a("eroded_badlands");
-   public static final ajs<czw> C = a("wooded_badlands");
-   public static final ajs<czw> D = a("meadow");
-   public static final ajs<czw> E = a("cherry_grove");
-   public static final ajs<czw> F = a("grove");
-   public static final ajs<czw> G = a("snowy_slopes");
-   public static final ajs<czw> H = a("frozen_peaks");
-   public static final ajs<czw> I = a("jagged_peaks");
-   public static final ajs<czw> J = a("stony_peaks");
-   public static final ajs<czw> K = a("river");
-   public static final ajs<czw> L = a("frozen_river");
-   public static final ajs<czw> M = a("beach");
-   public static final ajs<czw> N = a("snowy_beach");
-   public static final ajs<czw> O = a("stony_shore");
-   public static final ajs<czw> P = a("warm_ocean");
-   public static final ajs<czw> Q = a("lukewarm_ocean");
-   public static final ajs<czw> R = a("deep_lukewarm_ocean");
-   public static final ajs<czw> S = a("ocean");
-   public static final ajs<czw> T = a("deep_ocean");
-   public static final ajs<czw> U = a("cold_ocean");
-   public static final ajs<czw> V = a("deep_cold_ocean");
-   public static final ajs<czw> W = a("frozen_ocean");
-   public static final ajs<czw> X = a("deep_frozen_ocean");
-   public static final ajs<czw> Y = a("mushroom_fields");
-   public static final ajs<czw> Z = a("dripstone_caves");
-   public static final ajs<czw> aa = a("lush_caves");
-   public static final ajs<czw> ab = a("deep_dark");
-   public static final ajs<czw> ac = a("nether_wastes");
-   public static final ajs<czw> ad = a("warped_forest");
-   public static final ajs<czw> ae = a("crimson_forest");
-   public static final ajs<czw> af = a("soul_sand_valley");
-   public static final ajs<czw> ag = a("basalt_deltas");
-   public static final ajs<czw> ah = a("the_end");
-   public static final ajs<czw> ai = a("end_highlands");
-   public static final ajs<czw> aj = a("end_midlands");
-   public static final ajs<czw> ak = a("small_end_islands");
-   public static final ajs<czw> al = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static ajs<czw> a(String $$0) {
-      return ajs.a(ks.av, new ajt($$0));
+public class dad {
+   public static final Codec<dad> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aun.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dad::new)
+   );
+   public static final dad b = new dad(auo.h, 6000, 8, 2.0);
+   private final in<aun> c;
+   private final int d;
+   private final int e;
+   private final double f;
+
+   public dad(in<aun> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public in<aun> a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
    }
 }

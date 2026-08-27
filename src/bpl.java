@@ -1,20 +1,15 @@
-class bpl extends bpf {
-   protected bpl(bpg $$0, int $$1) {
-      super($$0, $$1);
+public enum bpl {
+   a(n.j),
+   b(n.m),
+   c(n.j);
+
+   private final n d;
+
+   private bpl(n $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a(bqo $$0, int $$1) {
-      if ($$0.ex() < $$0.eO()) {
-         $$0.c(1.0F);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 50 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public n a() {
+      return this.d;
    }
 }

@@ -1,17 +1,15 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ejn implements ejp {
-   private static final ejn b = new ejn();
-   public static final Codec<ejn> a = Codec.unit(b);
-
-   @Override
-   public tm a(axr $$0, @Nullable tm $$1) {
-      return new tm();
+public abstract class ejn {
+   @Nullable
+   public ejq.c a(czj $$0, id $$1, id $$2, ejq.c $$3, ejq.c $$4, ejm $$5) {
+      return $$4;
    }
 
-   @Override
-   public ejq<?> a() {
-      return ejq.a;
+   protected abstract ejp<?> a();
+
+   public List<ejq.c> a(czv $$0, id $$1, id $$2, List<ejq.c> $$3, List<ejq.c> $$4, ejm $$5) {
+      return $$4;
    }
 }

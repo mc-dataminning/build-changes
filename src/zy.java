@@ -1,31 +1,26 @@
-public record zy(ib c, String d, int e) implements zo {
-   public static final ye<vg, zy> a = zo.a(zy::a, zy::new);
-   public static final zo.b<zy> b = zo.a("debug/poi_added");
+public record zy(long c, id d) implements zq {
+   public static final yg<vi, zy> a = zq.a(zy::a, zy::new);
+   public static final zq.b<zy> b = zq.a("debug/neighbors_update");
 
-   private zy(vg $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private zy(vi $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(vg $$0) {
+   private void a(vi $$0) {
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.p(this.e);
    }
 
    @Override
-   public zo.b<zy> a() {
+   public zq.b<zy> a() {
       return b;
    }
 
-   public ib b() {
+   public long b() {
       return this.c;
    }
 
-   public String c() {
+   public id c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

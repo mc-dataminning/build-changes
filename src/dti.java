@@ -1,19 +1,24 @@
 import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public interface dti<T extends dsz> {
-   @Nullable
-   T a(int var1);
+public interface dti {
+   int aj();
 
-   @Nullable
-   T a(UUID var1);
+   UUID cw();
 
-   Iterable<T> a();
+   id dm();
 
-   <U extends T> void a(dtg<T, U> var1, avx<U> var2);
+   ese cH();
 
-   void a(erv var1, Consumer<T> var2);
+   void a(dtj var1);
 
-   <U extends T> void a(dtg<T, U> var1, erv var2, avx<U> var3);
+   Stream<? extends dti> cR();
+
+   Stream<? extends dti> cS();
+
+   void b(bqa.c var1);
+
+   boolean dK();
+
+   boolean dL();
 }

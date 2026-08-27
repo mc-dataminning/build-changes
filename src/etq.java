@@ -1,90 +1,136 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public record etq<T>(T b, ib c, int d, etv e) {
-   private static final String f = "i";
-   private static final String g = "x";
-   private static final String h = "y";
-   private static final String i = "z";
-   private static final String j = "t";
-   private static final String k = "p";
-   public static final Strategy<etq<?>> a = new Strategy<etq<?>>() {
-      public int a(etq<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
-
-      public boolean a(@Nullable etq<?> $$0, @Nullable etq<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
-      }
+public class etq {
+   private static final Map<String, etq> a = Maps.newHashMap();
+   private static final Map<String, etq> o = Maps.newHashMap();
+   public static final etq b = b("dummy");
+   public static final etq c = b("trigger");
+   public static final etq d = b("deathCount");
+   public static final etq e = b("playerKillCount");
+   public static final etq f = b("totalKillCount");
+   public static final etq g = a("health", true, etq.a.b);
+   public static final etq h = a("food", true, etq.a.a);
+   public static final etq i = a("air", true, etq.a.a);
+   public static final etq j = a("armor", true, etq.a.a);
+   public static final etq k = a("xp", true, etq.a.a);
+   public static final etq l = a("level", true, etq.a.a);
+   public static final etq[] m = new etq[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
    };
+   public static final etq[] n = new etq[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final etq.a r;
 
-   public static <T> void a(ts $$0, Function<String, Optional<T>> $$1, cye $$2, Consumer<etq<T>> $$3) {
-      long $$4 = $$2.a();
+   private static etq a(String $$0, boolean $$1, etq.a $$2) {
+      etq $$3 = new etq($$0, $$1, $$2);
+      a.put($$0, $$3);
+      return $$3;
+   }
 
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         tm $$6 = $$0.a($$5);
-         a($$6, $$1).ifPresent($$2x -> {
-            if (cye.a($$2x.b()) == $$4) {
-               $$3.accept($$2x);
-            }
-         });
+   private static etq b(String $$0) {
+      return a($$0, false, etq.a.a);
+   }
+
+   protected etq(String $$0) {
+      this($$0, false, etq.a.a);
+   }
+
+   protected etq(String $$0, boolean $$1, etq.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
+   }
+
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(a.keySet());
+   }
+
+   public static Optional<etq> a(String $$0) {
+      etq $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : kt.x.b(ajv.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, ajv.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   public static <T> Optional<etq<T>> a(tm $$0, Function<String, Optional<T>> $$1) {
-      return $$1.apply($$0.l("i")).map($$1x -> {
-         ib $$2 = new ib($$0.h("x"), $$0.h("y"), $$0.h("z"));
-         return new etq<>((T)$$1x, $$2, $$0.h("t"), etv.a($$0.h("p")));
-      });
+   private static <T> Optional<etq> a(auy<T> $$0, ajv $$1) {
+      return $$0.b().b($$1).map($$0::b);
    }
 
-   private static tm a(String $$0, ib $$1, int $$2, etv $$3) {
-      tm $$4 = new tm();
-      $$4.a("i", $$0);
-      $$4.a("x", $$1.u());
-      $$4.a("y", $$1.v());
-      $$4.a("z", $$1.w());
-      $$4.a("t", $$2);
-      $$4.a("p", $$3.a());
-      return $$4;
+   public String d() {
+      return this.p;
    }
 
-   public static <T> tm a(etr<T> $$0, Function<T, String> $$1, long $$2) {
-      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
+   public boolean e() {
+      return this.q;
    }
 
-   public tm a(Function<T, String> $$0) {
-      return a($$0.apply(this.b), this.c, this.d, this.e);
+   public etq.a f() {
+      return this.r;
    }
 
-   public etr<T> a(long $$0, long $$1) {
-      return new etr<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
-   }
+   public static enum a implements ayg {
+      a("integer"),
+      b("hearts");
 
-   public static <T> etq<T> a(T $$0, ib $$1) {
-      return new etq<>($$0, $$1, 0, etv.d);
-   }
+      private final String d;
+      public static final ayg.a<etq.a> c = ayg.a(etq.a::values);
 
-   public T a() {
-      return this.b;
-   }
+      private a(String $$0) {
+         this.d = $$0;
+      }
 
-   public ib b() {
-      return this.c;
-   }
+      public String a() {
+         return this.d;
+      }
 
-   public int c() {
-      return this.d;
-   }
+      @Override
+      public String c() {
+         return this.d;
+      }
 
-   public etv d() {
-      return this.e;
+      public static etq.a a(String $$0) {
+         return c.a($$0, a);
+      }
    }
 }

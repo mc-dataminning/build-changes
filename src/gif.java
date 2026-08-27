@@ -1,20 +1,33 @@
-public class gif extends ggo<cix, fsy<cix>> {
-   private static final ajt a = new ajt("textures/entity/warden/warden.png");
-   private static final ajt i = new ajt("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final ajt j = new ajt("textures/entity/warden/warden_heart.png");
-   private static final ajt k = new ajt("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final ajt l = new ajt("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gif extends ggw<cmh> {
+   private final gbc f;
 
-   public gif(gfi.a $$0) {
-      super($$0, new fsy<>($$0.a(ftl.bR)), 0.9F);
-      this.a(new gkf<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fsy::e));
-      this.a(new gkf<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, axk.b($$2 * 0.045F) * 0.25F), fsy::f));
-      this.a(new gkf<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, axk.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fsy::f));
-      this.a(new gkf<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fsy::c));
-      this.a(new gkf<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fsy::d));
+   public gif(gfr.a $$0) {
+      super($$0, ftu.bG);
+      this.f = $$0.c();
    }
 
-   public ajt a(cix $$0) {
-      return a;
+   protected void a(cmh $$0, float $$1, dpi $$2, ewr $$3, gai $$4, int $$5) {
+      int $$6 = $$0.C();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = axm.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   }
+
+   public static void a(gbc $$0, dpi $$1, ewr $$2, gai $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = glj.a(glj.a(1.0F), 10);
+      } else {
+         $$6 = glj.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

@@ -1,142 +1,230 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dce extends dby implements dcf {
+public class dce extends dgc implements dck, djh {
    public static final MapCodec<dce> a = b(dce::new);
-   public static final dpq b = dpp.e;
-   private static final int c = 5;
+   private static final dpz b = dpy.C;
+   private static final dqg<dqt> c = dpy.bl;
+   private static final int d = -1;
+   private static final Object2IntMap<dqt> e = ac.a(new Object2IntArrayMap(), $$0 -> {
+      $$0.defaultReturnValue(-1);
+      $$0.put(dqt.b, 10);
+      $$0.put(dqt.c, 10);
+      $$0.put(dqt.d, 100);
+   });
+   private static final int f = 5;
+   private static final int g = 6;
+   private static final int h = 11;
+   private static final int i = 13;
+   private static final Map<dqt, etc> j = ImmutableMap.of(
+      dqt.a,
+      dch.a(0.0, 11.0, 0.0, 16.0, 15.0, 16.0),
+      dqt.b,
+      dch.a(0.0, 11.0, 0.0, 16.0, 15.0, 16.0),
+      dqt.c,
+      dch.a(0.0, 11.0, 0.0, 16.0, 13.0, 16.0),
+      dqt.d,
+      esz.a()
+   );
+   private static final etc k = dch.a(0.0, 13.0, 0.0, 16.0, 16.0, 16.0);
+   private static final Map<ij, etc> l = ImmutableMap.of(
+      ij.c, esz.b(dcf.b, k, esn.e), ij.d, esz.b(dcf.c, k, esn.e), ij.f, esz.b(dcf.d, k, esn.e), ij.e, esz.b(dcf.e, k, esn.e)
+   );
+   private final Map<dpi, etc> m;
 
    @Override
    public MapCodec<dce> a() {
       return a;
    }
 
-   public dce(doy.d $$0) {
+   protected dce(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(true)));
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(aE, ij.c).a(c, dqt.a));
+      this.m = this.a(dce::m);
+   }
+
+   private static etc m(dpi $$0) {
+      return esz.a(j.get($$0.c(c)), l.get($$0.c(aE)));
+   }
+
+   public static void a(czh $$0, axt $$1, id $$2, ij $$3) {
+      int $$4 = axm.a($$1, 2, 5);
+      id.a $$5 = $$2.j();
+      int $$6 = 0;
+
+      while ($$6 < $$4 && a($$0, $$5, $$0.a_($$5))) {
+         $$6++;
+         $$5.c(ij.b);
+      }
+
+      int $$7 = $$2.v() + $$6 - 1;
+      $$5.q($$2.v());
+
+      while ($$5.v() < $$7) {
+         dcf.a($$0, $$5, $$0.b_($$5), $$3);
+         $$5.c(ij.b);
+      }
+
+      a($$0, $$5, $$0.b_($$5), $$3);
+   }
+
+   private static boolean n(dpi $$0) {
+      return $$0.i() || $$0.a(dcj.G) || $$0.a(dcj.sF);
+   }
+
+   protected static boolean a(czi $$0, id $$1, dpi $$2) {
+      return !$$0.s($$1) && n($$2);
+   }
+
+   protected static boolean a(czh $$0, id $$1, elb $$2, ij $$3) {
+      dpi $$4 = dcj.sD.n().a(b, Boolean.valueOf($$2.a(elc.c))).a(aE, $$3);
+      return $$0.a($$1, $$4, 3);
    }
 
    @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, bpv $$3) {
-      doz $$4 = $$1.a_($$2.c());
-      if ($$4.i()) {
-         $$3.k($$0.c(b));
-         if (!$$1.B) {
-            aps $$5 = (aps)$$1;
+   protected void a(czg $$0, dpi $$1, esf $$2, cks $$3) {
+      this.a($$1, $$0, $$2.a(), dqt.d, auo.hw);
+   }
 
-            for (int $$6 = 0; $$6 < 2; $$6++) {
-               $$5.a(kl.ak, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
-               $$5.a(kl.e, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.01, 0.0, 0.2);
-            }
-         }
+   @Override
+   protected elb c_(dpi $$0) {
+      return $$0.c(b) ? elc.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected boolean a(dpi $$0, czj $$1, id $$2) {
+      id $$3 = $$2.d();
+      dpi $$4 = $$1.a_($$3);
+      return $$4.a(this) || $$4.a(dcj.sE) || $$4.a(ave.by);
+   }
+
+   @Override
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if ($$1 == ij.a && !$$0.a($$3, $$4)) {
+         return dcj.a.n();
       } else {
-         $$3.l($$0.c(b));
+         if ($$0.c(b)) {
+            $$3.a($$4, elc.c, elc.c.a($$3));
+         }
+
+         return $$1 == ij.b && $$2.a(this) ? dcj.sE.l($$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
-      a($$1, $$2, $$0, $$1.a_($$2.d()));
+   public boolean b(czj $$0, id $$1, dpi $$2) {
+      dpi $$3 = $$0.a_($$1.c());
+      return n($$3);
    }
 
    @Override
-   protected eks c_(doz $$0) {
-      return ekt.c.a(false);
+   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
+      return true;
    }
 
-   public static void b(cyy $$0, ib $$1, doz $$2) {
-      a($$0, $$1, $$0.a_($$1), $$2);
+   @Override
+   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
+      id $$4 = $$2.c();
+      dpi $$5 = $$0.a_($$4);
+      if (a($$0, $$4, $$5)) {
+         ij $$6 = $$3.c(aE);
+         dcf.a($$0, $$2, $$3.u(), $$6);
+         a($$0, $$4, $$5.u(), $$6);
+      }
    }
 
-   public static void a(cyy $$0, ib $$1, doz $$2, doz $$3) {
-      if (m($$2)) {
-         doz $$4 = n($$3);
-         $$0.a($$1, $$4, 2);
-         ib.a $$5 = $$1.j().c(ih.b);
-
-         while (m($$0.a_($$5))) {
-            if (!$$0.a($$5, $$4, 2)) {
-               return;
-            }
-
-            $$5.c(ih.b);
+   @Override
+   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
+      if (!$$1.B) {
+         if ($$0.c(c) == dqt.a && a($$2, $$3) && !$$1.C($$2)) {
+            this.a($$0, $$1, $$2, dqt.b, null);
          }
       }
    }
 
-   private static boolean m(doz $$0) {
-      return $$0.a(dca.nd) || $$0.a(dca.G) && $$0.u().e() >= 8 && $$0.u().b();
-   }
-
-   private static doz n(doz $$0) {
-      if ($$0.a(dca.nd)) {
-         return $$0;
-      } else if ($$0.a(dca.dW)) {
-         return dca.nd.n().a(b, Boolean.valueOf(false));
+   @Override
+   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
+      if ($$1.C($$2)) {
+         d($$0, $$1, $$2);
       } else {
-         return $$0.a(dca.kJ) ? dca.nd.n().a(b, Boolean.valueOf(true)) : dca.G.n();
-      }
-   }
-
-   @Override
-   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
-      double $$4 = (double)$$2.u();
-      double $$5 = (double)$$2.v();
-      double $$6 = (double)$$2.w();
-      if ($$0.c(b)) {
-         $$1.b(kl.an, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, aum.da, aun.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      } else {
-         $$1.b(kl.ao, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
-         $$1.b(kl.ao, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, aum.cY, aun.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         dqt $$4 = $$0.c(c);
+         if ($$4 == dqt.b) {
+            this.a($$0, $$1, $$2, dqt.c, auo.hw);
+         } else if ($$4 == dqt.c) {
+            this.a($$0, $$1, $$2, dqt.d, auo.hw);
+         } else if ($$4 == dqt.d) {
+            d($$0, $$1, $$2);
          }
       }
    }
 
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      $$3.a($$4, ekt.c, ekt.c.a($$3));
-      if (!$$0.a($$3, $$4) || $$1 == ih.a || $$1 == ih.b && !$$2.a(dca.nd) && m($$2)) {
-         $$3.a($$4, this, 5);
+   protected void a(dpi $$0, czg $$1, id $$2, dch $$3, id $$4, boolean $$5) {
+      if ($$1.C($$2)) {
+         d($$0, $$1, $$2);
+      }
+   }
+
+   private static void a(czg $$0, id $$1, aun $$2) {
+      float $$3 = axm.b($$0.z, 0.8F, 1.2F);
+      $$0.a(null, $$1, $$2, aup.e, 1.0F, $$3);
+   }
+
+   private static boolean a(id $$0, bqa $$1) {
+      return $$1.aC() && $$1.dk().d > (double)((float)$$0.v() + 0.6875F);
+   }
+
+   private void a(dpi $$0, czg $$1, id $$2, dqt $$3, @Nullable aun $$4) {
+      a($$0, $$1, $$2, $$3);
+      if ($$4 != null) {
+         a($$1, $$2, $$4);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      int $$5 = e.getInt($$3);
+      if ($$5 != -1) {
+         $$1.a($$2, this, $$5);
+      }
+   }
+
+   private static void d(dpi $$0, czg $$1, id $$2) {
+      a($$0, $$1, $$2, dqt.a);
+      if ($$0.c(c) != dqt.a) {
+         a($$1, $$2, auo.hx);
+      }
+   }
+
+   private static void a(dpi $$0, czg $$1, id $$2, dqt $$3) {
+      dqt $$4 = $$0.c(c);
+      $$1.a($$2, $$0.a(c, $$3), 2);
+      if ($$3.a() && $$3 != $$4) {
+         $$1.a(null, dub.c, $$2);
+      }
    }
 
    @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      doz $$3 = $$1.a_($$2.d());
-      return $$3.a(dca.nd) || $$3.a(dca.kJ) || $$3.a(dca.dW);
+   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return j.get($$0.c(c));
    }
 
    @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return esq.a();
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return this.m.get($$0);
    }
 
    @Override
-   protected did b_(doz $$0) {
-      return did.a;
+   public dpi a(cux $$0) {
+      dpi $$1 = $$0.q().a_($$0.a().d());
+      elb $$2 = $$0.q().b_($$0.a());
+      boolean $$3 = $$1.a(dcj.sD) || $$1.a(dcj.sE);
+      return this.n().a(b, Boolean.valueOf($$2.a(elc.c))).a(aE, $$3 ? $$1.c(aE) : $$0.g().g());
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public crj a(@Nullable cjt $$0, cyy $$1, ib $$2, doz $$3) {
-      $$1.a($$2, dca.a.n(), 11);
-      return new crj(crm.qy);
-   }
-
-   @Override
-   public Optional<aul> at_() {
-      return ekt.c.j();
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(b, aE, c);
    }
 }

@@ -1,40 +1,40 @@
-import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class ece extends ecd {
-   public static final Codec<ece> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ece::new));
-   protected final List<doz> h;
+public record ece(ir<dch> b, ir<dch> c, ecj d, int e, int f, float g) {
+   public static final Codec<ece> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jc.a(ku.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jc.a(ku.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               ecj.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ece::new)
+   );
 
-   protected static <P extends ece> P4<Mu<P>, Long, ejv.a, Float, List<doz>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(doz.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   public ir<dch> a() {
+      return this.b;
    }
 
-   public ece(long $$0, ejv.a $$1, float $$2, List<doz> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public ir<dch> b() {
+      return this.c;
    }
 
-   @Override
-   protected ecb<?> a() {
-      return ecb.d;
+   public ecj c() {
+      return this.d;
    }
 
-   @Override
-   public doz a(axr $$0, ib $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   public int d() {
+      return this.e;
    }
 
-   protected doz a(List<doz> $$0, ib $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   public int e() {
+      return this.f;
    }
 
-   protected doz a(List<doz> $$0, double $$1) {
-      double $$2 = axk.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   public float f() {
+      return this.g;
    }
 }

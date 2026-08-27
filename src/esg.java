@@ -1,21 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+public class esg extends esh {
+   private final bqa b;
 
-public class esg extends AbstractDoubleList {
-   private final int a;
-
-   esg(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
+   public esg(bqa $$0) {
+      this($$0, $$0.dk());
    }
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
+   public esg(bqa $$0, esj $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public int size() {
-      return this.a + 1;
+   public bqa a() {
+      return this.b;
+   }
+
+   @Override
+   public esh.a c() {
+      return esh.a.c;
    }
 }

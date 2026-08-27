@@ -1,151 +1,186 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public final class doo {
-   private static final Map<String, doo> k = new Object2ObjectArrayMap();
-   public static final Codec<doo> a = aws.a((Function<doo, String>)($$0 -> $$0.l), k::get);
-   public static final doo b = new doo(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rh.g), Optional.of(rh.n), Optional.of(rh.C), Optional.of(rh.I)
-   );
-   public static final doo c = new doo(
-      "spruce", 0.5F, Optional.of(rh.q), Optional.of(rh.r), Optional.of(rh.k), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final doo d = new doo(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rh.x), Optional.of(rh.y), Optional.empty(), Optional.empty()
-   );
-   public static final doo e = new doo("azalea", Optional.empty(), Optional.of(rh.w), Optional.empty());
-   public static final doo f = new doo("birch", Optional.empty(), Optional.of(rh.i), Optional.of(rh.F));
-   public static final doo g = new doo("jungle", Optional.of(rh.p), Optional.of(rh.o), Optional.empty());
-   public static final doo h = new doo("acacia", Optional.empty(), Optional.of(rh.j), Optional.empty());
-   public static final doo i = new doo("cherry", Optional.empty(), Optional.of(rh.z), Optional.of(rh.K));
-   public static final doo j = new doo("dark_oak", Optional.of(rh.h), Optional.empty(), Optional.empty());
-   private final String l;
-   private final float m;
-   private final Optional<ajs<dxi<?, ?>>> n;
-   private final Optional<ajs<dxi<?, ?>>> o;
-   private final Optional<ajs<dxi<?, ?>>> p;
-   private final Optional<ajs<dxi<?, ?>>> q;
-   private final Optional<ajs<dxi<?, ?>>> r;
-   private final Optional<ajs<dxi<?, ?>>> s;
+public enum doo implements ayg {
+   a("inactive", 0, doo.b.a, -1.0, false),
+   b("waiting_for_players", 4, doo.b.b, 200.0, true),
+   c("active", 8, doo.b.c, 1000.0, true),
+   d("waiting_for_reward_ejection", 8, doo.b.b, -1.0, false),
+   e("ejecting_reward", 8, doo.b.b, -1.0, false),
+   f("cooldown", 0, doo.b.d, -1.0, false);
 
-   public doo(String $$0, Optional<ajs<dxi<?, ?>>> $$1, Optional<ajs<dxi<?, ?>>> $$2, Optional<ajs<dxi<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   private static final float g = 40.0F;
+   private static final int h = axm.d(30.0F);
+   private final String i;
+   private final int j;
+   private final double k;
+   private final doo.b l;
+   private final boolean m;
+
+   private doo(String $$0, int $$1, doo.b $$2, double $$3, boolean $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l = $$2;
+      this.k = $$3;
+      this.m = $$4;
    }
 
-   public doo(
-      String $$0,
-      float $$1,
-      Optional<ajs<dxi<?, ?>>> $$2,
-      Optional<ajs<dxi<?, ?>>> $$3,
-      Optional<ajs<dxi<?, ?>>> $$4,
-      Optional<ajs<dxi<?, ?>>> $$5,
-      Optional<ajs<dxi<?, ?>>> $$6,
-      Optional<ajs<dxi<?, ?>>> $$7
-   ) {
-      this.l = $$0;
-      this.m = $$1;
-      this.n = $$2;
-      this.o = $$3;
-      this.p = $$4;
-      this.q = $$5;
-      this.r = $$6;
-      this.s = $$7;
-      k.put($$0, this);
-   }
+   doo a(id $$0, dol $$1, apu $$2) {
+      don $$3 = $$1.c();
+      dom $$4 = $$1.b();
+      dok $$5 = $$1.f();
+      dok.a $$6 = $$1.g();
 
-   @Nullable
-   private ajs<dxi<?, ?>> a(axr $$0, boolean $$1) {
-      if ($$0.i() < this.m) {
-         if ($$1 && this.s.isPresent()) {
-            return this.s.get();
-         }
-
-         if (this.q.isPresent()) {
-            return this.q.get();
-         }
-      }
-
-      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
-   }
-
-   @Nullable
-   private ajs<dxi<?, ?>> a(axr $$0) {
-      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
-   }
-
-   public boolean a(aps $$0, dqw $$1, ib $$2, doz $$3, axr $$4) {
-      ajs<dxi<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         il<dxi<?, ?>> $$6 = $$0.H_().d(ks.ay).b($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     dxi<?, ?> $$9 = $$6.a();
-                     doz $$10 = dca.a.n();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
-
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
-                     return false;
-                  }
-               }
-            }
-         }
-      }
-
-      ajs<dxi<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
-      } else {
-         il<dxi<?, ?>> $$12 = $$0.H_().d(ks.ay).b($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
-         } else {
-            dxi<?, ?> $$13 = $$12.a();
-            doz $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 4);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
-
-               return true;
+      return switch (this) {
+         case a -> $$3.a($$1, $$2, b) == null ? this : b;
+         case b -> {
+            if (!$$3.a($$1, $$2.z)) {
+               yield a;
             } else {
-               $$0.a($$2, $$3, 4);
-               return false;
+               $$3.a($$2, $$0, $$5, $$6, $$4.a());
+               yield $$3.c.isEmpty() ? this : c;
             }
          }
-      }
-   }
+         case c -> {
+            if (!$$3.a($$1, $$2.z)) {
+               yield a;
+            } else {
+               int $$7 = $$3.a($$0);
+               $$3.a($$2, $$0, $$5, $$6, $$4.a());
+               if ($$3.a($$4, $$7)) {
+                  if ($$3.b()) {
+                     $$3.e = $$2.Y() + (long)$$4.h();
+                     $$3.g = 0;
+                     $$3.f = 0L;
+                     yield d;
+                  }
+               } else if ($$3.a($$2, $$4, $$7)) {
+                  $$1.a($$2, $$0).ifPresent($$4x -> {
+                     $$3.d.add($$4x);
+                     $$3.g++;
+                     $$3.f = $$2.Y() + (long)$$4.g();
+                     $$3.j.b($$2.E_()).ifPresent($$2xx -> {
+                        $$3.h = Optional.of((czx)$$2xx.b());
+                        $$1.e();
+                     });
+                  });
+               }
 
-   private static boolean a(doz $$0, cyd $$1, ib $$2, int $$3, int $$4) {
-      dby $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
-   }
-
-   private boolean a(cyy $$0, ib $$1) {
-      for (ib $$2 : ib.a.a($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
-         if ($$0.a_($$2).a(avc.U)) {
-            return true;
+               yield this;
+            }
          }
+         case d -> {
+            if ($$3.a($$2, $$4, 40.0F)) {
+               $$2.a(null, $$0, auo.lV, aup.e);
+               yield e;
+            } else {
+               yield this;
+            }
+         }
+         case e -> {
+            if (!$$3.b($$2, $$4, (float)h)) {
+               yield this;
+            } else if ($$3.c.isEmpty()) {
+               $$2.a(null, $$0, auo.lW, aup.e);
+               $$3.i = Optional.empty();
+               yield f;
+            } else {
+               if ($$3.i.isEmpty()) {
+                  $$3.i = $$4.j().a($$2.E_());
+               }
+
+               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
+               $$3.c.remove($$3.c.iterator().next());
+               yield this;
+            }
+         }
+         case f -> {
+            if ($$3.a($$2)) {
+               $$3.e = 0L;
+               yield b;
+            } else {
+               yield this;
+            }
+         }
+      };
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public double b() {
+      return this.k;
+   }
+
+   public boolean d() {
+      return this.k >= 0.0;
+   }
+
+   public boolean e() {
+      return this.m;
+   }
+
+   public void a(czg $$0, id $$1) {
+      this.l.emit($$0, $$0.E_(), $$1);
+   }
+
+   @Override
+   public String c() {
+      return this.i;
+   }
+
+   static class a {
+      private static final int a = 0;
+      private static final int b = 4;
+      private static final int c = 8;
+
+      private a() {
+      }
+   }
+
+   interface b {
+      doo.b a = ($$0, $$1, $$2) -> {
+      };
+      doo.b b = ($$0, $$1, $$2) -> {
+         if ($$1.a(2) == 0) {
+            esj $$3 = $$2.b().a($$1, 0.9F);
+            a(kn.aH, $$3, $$0);
+         }
+      };
+      doo.b c = ($$0, $$1, $$2) -> {
+         esj $$3 = $$2.b().a($$1, 1.0F);
+         a(kn.ac, $$3, $$0);
+         a(kn.F, $$3, $$0);
+      };
+      doo.b d = ($$0, $$1, $$2) -> {
+         esj $$3 = $$2.b().a($$1, 0.9F);
+         if ($$1.a(3) == 0) {
+            a(kn.ac, $$3, $$0);
+         }
+
+         if ($$0.Y() % 20L == 0L) {
+            esj $$4 = $$2.b().b(0.0, 0.5, 0.0);
+            int $$5 = $$0.E_().a(4) + 20;
+
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               a(kn.ac, $$4, $$0);
+            }
+         }
+      };
+
+      private static void a(kq $$0, esj $$1, czg $$2) {
+         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
       }
 
-      return false;
+      void emit(czg var1, axt var2, id var3);
+   }
+
+   static class c {
+      private static final double a = -1.0;
+      private static final double b = 200.0;
+      private static final double c = 1000.0;
+
+      private c() {
+      }
    }
 }

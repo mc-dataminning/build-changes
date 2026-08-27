@@ -1,13 +1,35 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class cbh {
-   @Nullable
-   public static esa a(bqw $$0, int $$1, int $$2, int $$3, esa $$4, double $$5) {
-      esa $$6 = $$4.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$7 = cbj.a($$0, $$1);
-      return cbm.a($$0, () -> {
-         ib $$7x = cbg.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !cbj.a($$0, $$7x) ? $$7x : null;
-      });
+public class cbh extends cav<cje> {
+   @Override
+   public Set<bzw<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bzw.B)));
+   }
+
+   protected void a(apu $$0, cje $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ai() == bqg.bx)
+         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bqg.bx))
+         .ifPresentOrElse($$1x -> $$1.dP().a(bzw.B, $$1x), () -> $$1.dP().b(bzw.B));
+   }
+
+   private static Optional<bqt> a(cje $$0, Predicate<bqt> $$1) {
+      return $$0.dP().c(bzw.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   }
+
+   @Override
+   protected int b() {
+      return 24;
+   }
+
+   @Override
+   protected int c() {
+      return 24;
    }
 }

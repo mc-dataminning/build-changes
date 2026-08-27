@@ -1,141 +1,167 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fof extends fjo {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wg b = wg.c("selectWorld.enterName").a(n.h);
-   private static final wg c = wg.c("selectWorld.edit.resetIcon");
-   private static final wg d = wg.c("selectWorld.edit.openFolder");
-   private static final wg o = wg.c("selectWorld.edit.backup");
-   private static final wg p = wg.c("selectWorld.edit.backupFolder");
-   private static final wg q = wg.c("selectWorld.edit.optimize");
-   private static final wg r = wg.c("optimizeWorld.confirm.title");
-   private static final wg s = wg.c("optimizeWorld.confirm.description");
-   private static final wg u = wg.c("selectWorld.edit.save");
-   private static final int v = 200;
-   private static final int w = 4;
-   private static final int x = 98;
-   private final fhg y = fhg.d().a(5);
-   private final BooleanConsumer z;
-   private final emr.c A;
-   private final fdy B;
+public class fof extends fee<fod> {
+   private final fog a;
+   private final List<fod> m = Lists.newArrayList();
+   @Nullable
+   private String n;
 
-   public static fof a(fbp $$0, emr.c $$1, BooleanConsumer $$2) throws IOException {
-      ems $$3 = $$1.a($$1.h());
-      return new fof($$0, $$1, $$3.b(), $$2);
+   public fof(fog $$0, fby $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
    }
 
-   private fof(fbp $$0, emr.c $$1, String $$2, BooleanConsumer $$3) {
-      super(wg.c("selectWorld.edit.title"));
-      this.z = $$3;
-      this.A = $$1;
-      fda $$4 = $$0.h;
-      this.y.a(new fhh(200, 20));
-      this.y.a(new few(b, $$4));
-      this.B = this.y.a(new fdy($$4, 200, 20, b));
-      this.B.a($$2);
-      fhg $$5 = fhg.e().a(4);
-      fdp $$6 = $$5.a(fdp.a(u, $$0x -> this.a(this.B.a())).a(98).a());
-      $$5.a(fdp.a(wf.e, $$0x -> this.d()).a(98).a());
-      this.B.b($$1x -> $$6.j = !ayf.h($$1x));
-      this.y.a(fdp.a(c, $$1x -> {
-         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$1x.j = false;
-      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.y.a(fdp.a(d, $$1x -> ac.j().a($$1.a(emp.l).toFile())).a(200).a());
-      this.y.a(fdp.a(o, $$1x -> {
-         boolean $$2x = a($$1);
-         this.z.accept(!$$2x);
-      }).a(200).a());
-      this.y.a(fdp.a(p, $$1x -> {
-         emr $$2x = $$0.m();
-         Path $$3x = $$2x.d();
+   @Override
+   protected void b(fdl $$0) {
+   }
 
-         try {
-            v.c($$3x);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
+   @Override
+   protected void a(fdl $$0) {
+   }
+
+   @Override
+   protected void c(fdl $$0) {
+      $$0.c(this.C(), this.D() + 4, this.E(), this.F());
+   }
+
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fod> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
+   }
+
+   private void a(Collection<UUID> $$0, Map<UUID, fod> $$1) {
+      fur $$2 = this.c.s.cv;
+
+      for (UUID $$3 : $$0) {
+         fvb $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fod(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
+         }
+      }
+   }
+
+   private void a(Map<UUID, fod> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.ba().b())) {
+         fod $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fod $$2 = new fod(this.c, this.a, $$3.getId(), $$3.getName(), this.c.an().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
          }
 
-         ac.j().a($$3x.toFile());
-      }).a(200).a());
-      this.y.a(fdp.a(q, $$2x -> $$0.a(new fib(() -> $$0.a(this), ($$2xx, $$3x) -> {
-            if ($$2xx) {
-               a($$1);
+         $$4.d(true);
+      }
+   }
+
+   private static Collection<GameProfile> a(fvk $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         fvm $$3 = $$0.b($$2);
+         if ($$3 instanceof fvn.a) {
+            fvn.a $$4 = (fvn.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
             }
-
-            $$0.a(foh.a($$0, this.z, $$0.at(), $$1, $$3x));
-         }, r, s, true))).a(200).a());
-      this.y.a(new fhh(200, 20));
-      this.y.a($$5);
-      this.y.a($$1x -> {
-         fdn var10000 = this.c($$1x);
-      });
-   }
-
-   @Override
-   protected void aD_() {
-      this.b(this.B);
-   }
-
-   @Override
-   protected void aN_() {
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.y.a();
-      fha.a(this.y, this.G());
-   }
-
-   @Override
-   public void d() {
-      this.z.accept(false);
-   }
-
-   private void a(String $$0) {
-      try {
-         this.A.a($$0);
-      } catch (tx | ud | IOException var3) {
-         a.error("Failed to access world '{}'", this.A.f(), var3);
-         ffx.a(this.j, this.A.f());
+         }
       }
 
-      this.z.accept(true);
+      return $$1;
    }
 
-   public static boolean a(emr.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
+   private void I() {
+      this.m.sort(Comparator.<fod, Integer>comparing($$0 -> {
+         if (this.c.b($$0.d())) {
+            return 0;
+         } else if (this.c.ba().a($$0.d())) {
+            return 1;
+         } else if ($$0.d().version() == 2) {
+            return 4;
+         } else {
+            return $$0.j() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.c().isBlank()) {
+            int $$1 = $$0.c().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
 
-      try {
-         $$1 = $$0.l();
-      } catch (IOException var6) {
-         $$2 = var6;
-      }
+         return 1;
+      }).thenComparing(fod::c, String::compareToIgnoreCase));
+   }
 
-      if ($$2 != null) {
-         wg $$4 = wg.c("selectWorld.edit.backupFailed");
-         wg $$5 = wg.b($$2.getMessage());
-         fbp.Q().aA().a(new ffx(ffx.a.b, $$4, $$5));
-         return false;
-      } else {
-         wg $$6 = wg.a("selectWorld.edit.backupCreated", $$0.f());
-         wg $$7 = wg.a("selectWorld.edit.backupSize", axk.c((double)$$1 / 1048576.0));
-         fbp.Q().aA().a(new ffx(ffx.a.b, $$6, $$7));
-         return true;
+   private void a(Collection<fod> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.I();
+      this.J();
+      this.a(this.m);
+      this.a($$1);
+   }
+
+   private void J() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
       }
    }
 
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, this.i, this.k / 2, 15, 16777215);
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean d() {
+      return this.m.isEmpty();
+   }
+
+   public void a(fvb $$0, fog.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fod $$3 : this.m) {
+         if ($$3.d().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fog.a.a || this.c.aM().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fod $$5 = new fod(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b((fod)$$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fod $$1 : this.m) {
+         if ($$1.d().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
+      }
    }
 }

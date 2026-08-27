@@ -4,14 +4,16 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class biv extends bgk {
+public class biv extends bgp {
    public biv(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:decorated_pot", () -> DSL.optionalFields("sherds", DSL.list(bfa.B.in($$0)), "item", bfa.t.in($$0)));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:item_display", $$1x -> DSL.optionalFields("item", bff.t.in($$0)));
+      $$0.register($$1, "minecraft:block_display", $$1x -> DSL.optionalFields("block_state", bff.u.in($$0)));
+      $$0.registerSimple($$1, "minecraft:text_display");
       return $$1;
    }
 }

@@ -1,47 +1,61 @@
+import com.google.common.annotations.VisibleForTesting;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public abstract class ox<T> extends pc<T> {
-   private final Function<T, ajs<T>> d;
+public class ox extends pe<dub> {
+   @VisibleForTesting
+   static final List<aju<dub>> d = List.of(
+      dub.b.h(),
+      dub.c.h(),
+      dub.d.h(),
+      dub.f.h(),
+      dub.g.h(),
+      dub.h.h(),
+      dub.i.h(),
+      dub.a.h(),
+      dub.e.h(),
+      dub.j.h(),
+      dub.k.h(),
+      dub.l.h(),
+      dub.m.h(),
+      dub.n.h(),
+      dub.o.h(),
+      dub.p.h(),
+      dub.q.h(),
+      dub.r.h(),
+      dub.s.h(),
+      dub.t.h(),
+      dub.u.h(),
+      dub.v.h(),
+      dub.w.h(),
+      dub.y.h(),
+      dub.z.h(),
+      dub.A.h(),
+      dub.B.h(),
+      dub.C.h(),
+      dub.G.h(),
+      dub.H.h(),
+      dub.I.h(),
+      dub.J.h(),
+      dub.K.h(),
+      dub.M.h(),
+      dub.O.h(),
+      dub.P.h(),
+      dub.Q.h(),
+      dub.R.h(),
+      dub.S.h()
+   );
 
-   public ox(la $$0, ajs<? extends iy<T>> $$1, CompletableFuture<in.a> $$2, Function<T, ajs<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+   public ox(lc $$0, CompletableFuture<ip.a> $$1) {
+      super($$0, ku.C, $$1);
    }
 
-   public ox(la $$0, ajs<? extends iy<T>> $$1, CompletableFuture<in.a> $$2, CompletableFuture<pc.c<T>> $$3, Function<T, ajs<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected ox.a<T> a(avr<T> $$0) {
-      avo $$1 = this.c($$0);
-      return new ox.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends pc.b<T> {
-      private final Function<T, ajs<T>> a;
-
-      a(avo $$0, Function<T, ajs<T>> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public ox.a<T> a(avr<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final ox.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final ox.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+   @Override
+   protected void a(ip.a $$0) {
+      this.b(avk.a).a(d).a(duk.e_).a(dub.x.h());
+      this.b(avk.c).a(dub.L.h());
+      this.b(avk.b).a(d).a(duk.e_).a(dub.N.h()).b(avk.c);
+      this.b(avk.d).a(dub.A.h(), dub.K.h(), dub.P.h(), dub.Q.h(), dub.D.h(), dub.C.h());
+      this.b(avk.e).a(dub.H.h());
    }
 }

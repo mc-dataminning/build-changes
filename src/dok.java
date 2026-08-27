@@ -1,124 +1,51 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
+import java.util.function.Predicate;
 
-public class dok {
-   static final String a = "server_data";
-   static Codec<dok> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jf.c.optionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.optionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               crj.a.listOf().optionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.optionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dok::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<crj> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public interface dok {
+   dok a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.f() && !$$2x.N_()).stream().map(bqa::cw).toList();
+   dok b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.N_()).stream().map(bqa::cw).toList();
+   dok c = ($$0, $$1, $$2, $$3) -> {
+      ese $$4 = new ese($$2).g($$3);
+      return $$1.a($$0, bqg.aI, $$4, bqt::bA).stream().map(bqa::cw).toList();
+   };
 
-   dok(Set<UUID> $$0, long $$1, List<crj> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
-   }
+   List<UUID> detect(apu var1, dok.a var2, id var3, double var4);
 
-   dok() {
-   }
-
-   void a(long $$0) {
-      this.h = $$0;
-   }
-
-   long a() {
-      return this.h;
-   }
-
-   Set<UUID> b() {
-      return this.e;
-   }
-
-   boolean a(cjt $$0) {
-      return this.e.contains($$0.cw());
-   }
-
-   @VisibleForTesting
-   public void b(cjt $$0) {
-      this.e.add($$0.cw());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+   public interface a {
+      dok.a a = new dok.a() {
+         @Override
+         public List<apv> a(apu $$0, Predicate<? super cka> $$1) {
+            return $$0.a($$1);
          }
+
+         @Override
+         public <T extends bqa> List<T> a(apu $$0, dtp<bqa, T> $$1, ese $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
+
+      List<? extends cka> a(apu var1, Predicate<? super cka> var2);
+
+      <T extends bqa> List<T> a(apu var1, dtp<bqa, T> var2, ese var3, Predicate<? super T> var4);
+
+      static dok.a a(cka $$0) {
+         return a(List.of($$0));
       }
 
-      this.i();
-   }
+      static dok.a a(final List<cka> $$0) {
+         return new dok.a() {
+            @Override
+            public List<cka> a(apu $$0x, Predicate<? super cka> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
 
-   long c() {
-      return this.f;
-   }
-
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<crj> d() {
-      return this.g;
-   }
-
-   void e() {
-      this.i = 0;
-      this.i();
-   }
-
-   void a(List<crj> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   crj f() {
-      return this.g.isEmpty() ? crj.i : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), crj.i);
-   }
-
-   crj g() {
-      if (this.g.isEmpty()) {
-         return crj.i;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), crj.i);
+            @Override
+            public <T extends bqa> List<T> a(apu $$0x, dtp<bqa, T> $$1, ese $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-   }
-
-   void a(dok $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
-   }
-
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - axk.g((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

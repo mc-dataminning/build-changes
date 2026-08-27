@@ -1,49 +1,70 @@
-public class cvc extends cvb {
-   public cvc(cuz $$0) {
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class cvc extends cvk {
+   public cvc(cvi $$0) {
       super($$0);
    }
 
-   public boolean a(cnf $$0, cyx $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-            crj $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(avk.aR)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(crm.a)) {
-                     return false;
-                  }
+   public boolean a(cnm $$0, czg $$1) {
+      crs $$2 = crs.i;
+      List<crs> $$3 = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         crs $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(avm.ba)) {
+               if (!$$2.d()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            } else {
+               if (!($$5.f() instanceof cqm)) {
+                  return false;
+               }
+
+               $$3.add($$5);
             }
          }
-
-         return true;
       }
+
+      return !$$2.d() && !$$3.isEmpty();
    }
 
-   public crj a(cnf $$0, iz $$1) {
-      dnj $$2 = new dnj($$0.a(1).f(), $$0.a(3).f(), $$0.a(5).f(), $$0.a(7).f());
-      return dmv.a($$2);
+   public crs a(cnm $$0, jb $$1) {
+      List<cqm> $$2 = Lists.newArrayList();
+      crs $$3 = crs.i;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         crs $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(avm.ba)) {
+               if (!$$3.d()) {
+                  return crs.i;
+               }
+
+               $$3 = $$5.r();
+            } else {
+               if (!($$5.f() instanceof cqm $$6)) {
+                  return crs.i;
+               }
+
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.d() && !$$2.isEmpty() ? cuf.a($$3, $$2) : crs.i;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cvn<?> ap_() {
-      return cvn.w;
+   public cvw<?> ao_() {
+      return cvw.c;
    }
 }

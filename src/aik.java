@@ -1,3 +1,8 @@
-public interface aik extends vm {
-   void a(ail var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aik {
 }

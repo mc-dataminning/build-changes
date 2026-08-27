@@ -1,29 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-public record ik(ajs<cyx> d, ib e) {
-   public static final MapCodec<ik> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cyx.g.fieldOf("dimension").forGetter(ik::a), ib.a.fieldOf("pos").forGetter(ik::b)).apply($$0, ik::a)
-   );
-   public static final Codec<ik> b = a.codec();
-   public static final ye<ByteBuf, ik> c = ye.a(ajs.b(ks.aO), ik::a, ib.b, ik::b, ik::a);
+public enum ik {
+   a(ij.c),
+   b(ij.c, ij.f),
+   c(ij.f),
+   d(ij.d, ij.f),
+   e(ij.d),
+   f(ij.d, ij.e),
+   g(ij.e),
+   h(ij.c, ij.e);
 
-   public static ik a(ajs<cyx> $$0, ib $$1) {
-      return new ik($$0, $$1);
+   private final Set<ij> i;
+   private final ji j;
+
+   private ik(ij... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new ji(0, 0, 0);
+
+      for (ij $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
+      }
    }
 
-   @Override
-   public String toString() {
-      return this.d + " " + this.e;
+   public Set<ij> a() {
+      return this.i;
    }
 
-   public ajs<cyx> a() {
-      return this.d;
+   public int b() {
+      return this.j.u();
    }
 
-   public ib b() {
-      return this.e;
+   public int c() {
+      return this.j.w();
    }
 }

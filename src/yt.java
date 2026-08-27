@@ -1,19 +1,23 @@
-public interface yt extends aas, vb {
-   void a(yw var1);
+import io.netty.buffer.ByteBuf;
 
-   void a(yx var1);
+public class yt<B extends ByteBuf, L extends vo> {
+   private final yf.a<B, yp<? super L>, yr<? extends yp<? super L>>> a = yf.a(yp::a);
+   private final yq b;
 
-   void a(yu var1);
+   public yt(yq $$0) {
+      this.b = $$0;
+   }
 
-   void a(yv var1);
+   public <T extends yp<? super L>> yt<B, L> a(yr<T> $$0, yg<? super B, T> $$1) {
+      if ($$0.a() != this.b) {
+         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
+      } else {
+         this.a.a($$0, $$1);
+         return this;
+      }
+   }
 
-   void a(yz var1);
-
-   void a(yy var1);
-
-   void a(zc var1);
-
-   void a(za var1);
-
-   void a(zb var1);
+   public yg<B, yp<? super L>> a() {
+      return this.a.a();
+   }
 }

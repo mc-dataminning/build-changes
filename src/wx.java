@@ -1,44 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+public interface wx {
+   wi a();
 
-public record wx(UUID a, cjw b) {
-   public xc a(Duration $$0) {
-      return new xc.a(this.b.a(), () -> this.b.b().a($$0));
+   void a(apv var1, boolean var2, we.a var3);
+
+   static wx a(wy $$0) {
+      return (wx)($$0.h() ? new wx.a($$0.d()) : new wx.b($$0));
    }
 
-   public xa.b a(UUID $$0) {
-      return new xa($$0, this.a).a(this.b);
+   public static record a(wi a) implements wx {
+      @Override
+      public void a(apv $$0, boolean $$1, we.a $$2) {
+         $$0.d.a(this.a, $$2);
+      }
    }
 
-   public wx.a a() {
-      return new wx.a(this.a, this.b.b());
-   }
-
-   public boolean b() {
-      return this.b.b().a();
-   }
-
-   public UUID c() {
-      return this.a;
-   }
-
-   public cjw d() {
-      return this.b;
-   }
-
-   public static record a(UUID a, cjw.a b) {
-      public static wx.a a(vg $$0) {
-         return new wx.a($$0.n(), new cjw.a($$0));
+   public static record b(wy a) implements wx {
+      @Override
+      public wi a() {
+         return this.a.d();
       }
 
-      public static void a(vg $$0, wx.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+      @Override
+      public void a(apv $$0, boolean $$1, we.a $$2) {
+         wy $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.d.a($$3, $$2);
+         }
       }
 
-      public wx a(GameProfile $$0, axw $$1) throws cjw.b {
-         return new wx(this.a, cjw.a($$1, $$0.getId(), this.b));
+      public wy b() {
+         return this.a;
       }
    }
 }

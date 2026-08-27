@@ -1,33 +1,23 @@
-import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
 
-public record za(ajt c, byte[] d) implements yn<yt> {
-   public static final ye<vg, za> a = yn.a(za::a, za::new);
-   private static final int e = 5120;
-   public static final ye<ByteBuf, byte[]> b = yc.a(5120);
+public record za(Optional<UUID> b) implements yp<yv> {
+   public static final yg<vi, za> a = yp.a(za::a, za::new);
 
-   private za(vg $$0) {
-      this($$0.q(), b.decode($$0));
+   private za(vi $$0) {
+      this($$0.b(jh.g));
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+   private void a(vi $$0) {
+      $$0.a(this.b, jh.g);
    }
 
    @Override
-   public yp<za> a() {
-      return zd.g;
+   public yr<za> a() {
+      return zf.e;
    }
 
-   public void a(yt $$0) {
+   public void a(yv $$0) {
       $$0.a(this);
-   }
-
-   public ajt b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
    }
 }

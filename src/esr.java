@@ -1,24 +1,38 @@
+import com.google.common.math.IntMath;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class esr extends est {
-   private final est b;
-   private final ih.a c;
-   private static final DoubleList d = new esg(1);
+public final class esr implements esv {
+   private final esp a;
+   private final int b;
+   private final int c;
 
-   public esr(est $$0, ih.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private static esj a(esj $$0, ih.a $$1, int $$2) {
-      return new ess(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   esr(int $$0, int $$1) {
+      this.a = new esp((int)esz.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
    @Override
-   protected DoubleList a(ih.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public boolean a(esv.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

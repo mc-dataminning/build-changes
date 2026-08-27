@@ -1,40 +1,39 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 
 public class amm {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.pardon.failed"));
+   public static void a(CommandDispatcher<dv> $$0) {
+      LiteralCommandNode<dv> $$1 = $$0.register(
+         (LiteralArgumentBuilder)dw.a("msg").then(dw.a("targets", ei.d()).then(dw.a("message", em.a()).executes($$0x -> {
+            Collection<apv> $$1x = ei.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               em.a($$0x, "message", $$2 -> a((dv)$$0x.getSource(), $$1x, $$2));
+            }
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("pardon").requires($$0x -> $$0x.c(3)))
-            .then(
-               dv.a("targets", ej.a())
-                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ah().f().a(), $$1))
-                  .executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets")))
-            )
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)dw.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)dw.a("w").redirect($$1));
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      atv $$2 = $$0.l().ah().f();
-      int $$3 = 0;
+   private static void a(dv $$0, Collection<apv> $$1, wy $$2) {
+      we.a $$3 = we.a(we.e, $$0);
+      wx $$4 = wx.a($$2);
+      boolean $$5 = false;
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> wg.a("commands.pardon.success", wg.b($$4.getName())), true);
-         }
+      for (apv $$6 : $$1) {
+         we.a $$7 = we.a(we.f, $$0).c($$6.O_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
+      if ($$5) {
+         $$0.a(atr.f);
       }
    }
 }

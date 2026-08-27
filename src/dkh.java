@@ -1,31 +1,28 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public enum dkh {
+   a {
+      @Override
+      public boolean a(dpi $$0, cym $$1, id $$2, ij $$3) {
+         return dch.a($$0.l($$1, $$2), $$3);
+      }
+   },
+   b {
+      private final int d = 1;
+      private final etc e = dch.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
 
-public class dkh extends dbo {
-   protected static final MapCodec<ko> c = kr.j
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof ko $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<dkh> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dkh::new));
-   protected final ko e;
+      @Override
+      public boolean a(dpi $$0, cym $$1, id $$2, ij $$3) {
+         return !esz.c($$0.l($$1, $$2).a($$3), this.e, esn.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final etc e = esz.a(esz.b(), dch.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), esn.e);
 
-   @Override
-   public MapCodec<? extends dkh> a() {
-      return d;
-   }
+      @Override
+      public boolean a(dpi $$0, cym $$1, id $$2, ij $$3) {
+         return !esz.c($$0.l($$1, $$2).a($$3), this.e, esn.c);
+      }
+   };
 
-   protected dkh(ko $$0, doy.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(kl.ac, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
+   public abstract boolean a(dpi var1, cym var2, id var3, ij var4);
 }

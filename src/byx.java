@@ -1,16 +1,48 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class byx extends byy {
-   public byx(bqw $$0, double $$1) {
-      super($$0, $$1);
+public class byx extends bxq {
+   private final cgs a;
+   @Nullable
+   private bqt b;
+
+   public byx(cgs $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bxq.a.a));
    }
 
-   @Nullable
    @Override
-   protected esa h() {
-      esa $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      esa $$2 = cbk.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cbg.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      bqt $$0 = this.a.p();
+      return this.a.u() > 0 || $$0 != null && this.a.g((bqa)$$0) < 9.0;
+   }
+
+   @Override
+   public void c() {
+      this.a.K().n();
+      this.b = this.a.p();
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bqa)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.M().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
+      }
    }
 }

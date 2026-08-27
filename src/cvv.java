@@ -1,57 +1,177 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cvv<T extends cus> implements cvn<T> {
-   private final cus.a<T> x;
-   private final Codec<T> y;
-   private final ye<vr, T> z;
+public class cvv extends ati {
+   private static final Gson a = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private static final Logger b = LogUtils.getLogger();
+   private final ip.a c;
+   private Map<cvx<?>, Map<ajv, cvu<?>>> d = ImmutableMap.of();
+   private Map<ajv, cvu<?>> e = ImmutableMap.of();
+   private boolean f;
 
-   public cvv(cus.a<T> $$0, int $$1) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  aws.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                  cuy.d.fieldOf("category").orElse(cuy.c).forGetter($$0xx -> $$0xx.b),
-                  cvg.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
-                  kr.h.q().xmap(crj::new, crj::f).fieldOf("result").forGetter($$0xx -> $$0xx.e),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
-                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
-               )
-               .apply($$2, $$0::create)
-      );
-      this.z = ye.a(this::a, this::a);
+   public cvv(ip.a $$0) {
+      super(a, "recipes");
+      this.c = $$0;
    }
 
-   @Override
-   public Codec<T> a() {
-      return this.y;
+   protected void a(Map<ajv, JsonElement> $$0, ate $$1, bkt $$2) {
+      this.f = false;
+      Map<cvx<?>, Builder<ajv, cvu<?>>> $$3 = Maps.newHashMap();
+      Builder<ajv, cvu<?>> $$4 = ImmutableMap.builder();
+      ajt<JsonElement> $$5 = this.c.a(JsonOps.INSTANCE);
+
+      for (Entry<ajv, JsonElement> $$6 : $$0.entrySet()) {
+         ajv $$7 = $$6.getKey();
+
+         try {
+            JsonObject $$8 = axc.m($$6.getValue(), "top element");
+            cvs<?> $$9 = ac.a(cvs.h.parse($$5, $$8), JsonParseException::new);
+            cvu<?> $$10 = new cvu<>($$7, $$9);
+            $$3.computeIfAbsent($$9.e(), $$0x -> ImmutableMap.builder()).put($$7, $$10);
+            $$4.put($$7, $$10);
+         } catch (IllegalArgumentException | JsonParseException var13) {
+            b.error("Parsing error loading recipe {}", $$7, var13);
+         }
+      }
+
+      this.d = $$3.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((Builder)$$0x.getValue()).build()));
+      this.e = $$4.build();
+      b.info("Loaded {} recipes", $$3.size());
    }
 
-   @Override
-   public ye<vr, T> b() {
-      return this.z;
+   public boolean a() {
+      return this.f;
    }
 
-   private T a(vr $$0) {
-      String $$1 = $$0.p();
-      cuy $$2 = $$0.b(cuy.class);
-      cvg $$3 = cvg.b.decode($$0);
-      crj $$4 = crj.f.decode($$0);
-      float $$5 = $$0.readFloat();
-      int $$6 = $$0.l();
-      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
+   public <C extends bny, T extends cvs<C>> Optional<cvu<T>> a(cvx<T> $$0, C $$1, czg $$2) {
+      return this.c($$0).values().stream().filter($$2x -> $$2x.b().a($$1, $$2)).findFirst();
    }
 
-   private void a(vr $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.f());
-      cvg.b.encode($$0, $$1.d);
-      crj.f.encode($$0, $$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
+   public <C extends bny, T extends cvs<C>> Optional<Pair<ajv, cvu<T>>> a(cvx<T> $$0, C $$1, czg $$2, @Nullable ajv $$3) {
+      Map<ajv, cvu<T>> $$4 = this.c($$0);
+      if ($$3 != null) {
+         cvu<T> $$5 = $$4.get($$3);
+         if ($$5 != null && $$5.b().a($$1, $$2)) {
+            return Optional.of(Pair.of($$3, $$5));
+         }
+      }
+
+      return $$4.entrySet()
+         .stream()
+         .filter($$2x -> ((cvu)$$2x.getValue()).b().a($$1, $$2))
+         .findFirst()
+         .map($$0x -> Pair.of((ajv)$$0x.getKey(), (cvu)$$0x.getValue()));
    }
 
-   public cus a(String $$0, cuy $$1, cvg $$2, crj $$3, float $$4, int $$5) {
-      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
+   public <C extends bny, T extends cvs<C>> List<cvu<T>> a(cvx<T> $$0) {
+      return List.copyOf(this.c($$0).values());
+   }
+
+   public <C extends bny, T extends cvs<C>> List<cvu<T>> b(cvx<T> $$0, C $$1, czg $$2) {
+      return this.c($$0)
+         .values()
+         .stream()
+         .filter($$2x -> $$2x.b().a($$1, $$2))
+         .sorted(Comparator.comparing($$1x -> $$1x.b().a($$2.H_()).s()))
+         .collect(Collectors.toList());
+   }
+
+   private <C extends bny, T extends cvs<C>> Map<ajv, cvu<T>> c(cvx<T> $$0) {
+      return (Map<ajv, cvu<T>>)this.d.getOrDefault($$0, Collections.emptyMap());
+   }
+
+   public <C extends bny, T extends cvs<C>> iw<crs> c(cvx<T> $$0, C $$1, czg $$2) {
+      Optional<cvu<T>> $$3 = this.a($$0, $$1, $$2);
+      if ($$3.isPresent()) {
+         return $$3.get().b().a($$1);
+      } else {
+         iw<crs> $$4 = iw.a($$1.b(), crs.i);
+
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            $$4.set($$5, $$1.a($$5));
+         }
+
+         return $$4;
+      }
+   }
+
+   public Optional<cvu<?>> a(ajv $$0) {
+      return Optional.ofNullable(this.e.get($$0));
+   }
+
+   public Collection<cvu<?>> b() {
+      return this.d.values().stream().flatMap($$0 -> $$0.values().stream()).collect(Collectors.toSet());
+   }
+
+   public Stream<ajv> d() {
+      return this.d.values().stream().flatMap($$0 -> $$0.keySet().stream());
+   }
+
+   @VisibleForTesting
+   protected static cvu<?> a(ajv $$0, JsonObject $$1, ip.a $$2) {
+      cvs<?> $$3 = ac.a(cvs.h.parse($$2.a(JsonOps.INSTANCE), $$1), JsonParseException::new);
+      return new cvu<>($$0, $$3);
+   }
+
+   public void a(Iterable<cvu<?>> $$0) {
+      this.f = false;
+      Map<cvx<?>, Map<ajv, cvu<?>>> $$1 = Maps.newHashMap();
+      Builder<ajv, cvu<?>> $$2 = ImmutableMap.builder();
+      $$0.forEach($$2x -> {
+         Map<ajv, cvu<?>> $$3 = $$1.computeIfAbsent($$2x.b().e(), $$0xx -> Maps.newHashMap());
+         ajv $$4 = $$2x.a();
+         cvu<?> $$5 = $$3.put($$4, $$2x);
+         $$2.put($$4, $$2x);
+         if ($$5 != null) {
+            throw new IllegalStateException("Duplicate recipe ignored with ID " + $$4);
+         }
+      });
+      this.d = ImmutableMap.copyOf($$1);
+      this.e = $$2.build();
+   }
+
+   public static <C extends bny, T extends cvs<C>> cvv.a<C, T> b(final cvx<T> $$0) {
+      return new cvv.a<C, T>() {
+         @Nullable
+         private ajv b;
+
+         @Override
+         public Optional<cvu<T>> a(C $$0x, czg $$1) {
+            cvv $$2 = $$1.r();
+            Optional<Pair<ajv, cvu<T>>> $$3 = $$2.a($$0, $$0, $$1, this.b);
+            if ($$3.isPresent()) {
+               Pair<ajv, cvu<T>> $$4 = $$3.get();
+               this.b = (ajv)$$4.getFirst();
+               return Optional.of((cvu<T>)$$4.getSecond());
+            } else {
+               return Optional.empty();
+            }
+         }
+      };
+   }
+
+   public interface a<C extends bny, T extends cvs<C>> {
+      Optional<cvu<T>> a(C var1, czg var2);
    }
 }

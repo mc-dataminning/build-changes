@@ -1,95 +1,77 @@
-public abstract class bxc extends bxl {
-   protected bqq d;
-   protected ib e = ib.c;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public bxc(bqq $$0) {
-      this.d = $$0;
-      if (!cbj.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
+public class bxc extends bxq {
+   private static final cbj d = cbj.b().a(8.0).d();
+   protected final cci a;
+   private final Class<? extends cci> e;
+   protected final czg b;
+   @Nullable
+   protected cci c;
+   private int f;
+   private final double g;
+
+   public bxc(cci $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cci>)$$0.getClass());
    }
 
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         doz $$0 = this.d.dM().a_(this.e);
-         if (!($$0.b() instanceof dee)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(dee.c);
-         }
-      }
-   }
-
-   protected void a(boolean $$0) {
-      if (this.f) {
-         doz $$1 = this.d.dM().a_(this.e);
-         if ($$1.b() instanceof dee) {
-            ((dee)$$1.b()).a(this.d, this.d.dM(), $$1, this.e, $$0);
-         }
-      }
+   public bxc(cci $$0, double $$1, Class<? extends cci> $$2) {
+      this.a = $$0;
+      this.b = $$0.dM();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(bxq.a.a, bxq.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!cbj.a(this.d)) {
-         return false;
-      } else if (!this.d.P) {
+      if (!this.a.gr()) {
          return false;
       } else {
-         bzy $$0 = (bzy)this.d.K();
-         elg $$1 = $$0.j();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               ele $$3 = $$1.a($$2);
-               this.e = new ib($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dt(), (double)this.e.w()) > 2.25)) {
-                  this.f = dee.a(this.d.dM(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.dm().c();
-            this.f = dee.a(this.d.dM(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
+         this.c = this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public boolean b() {
-      return !this.a;
+      return this.c.bA() && this.c.gr() && this.f < 60 && !this.c.gk();
    }
 
    @Override
-   public void c() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dr());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dx());
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+   public void d() {
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void e() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dr());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dx());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
+      this.a.G().a(this.c, 10.0F, (float)this.a.Z());
+      this.a.K().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
       }
+   }
+
+   @Nullable
+   private cci h() {
+      List<? extends cci> $$0 = this.b.a(this.e, d, this.a, this.a.cH().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cci $$2 = null;
+
+      for (cci $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gk() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((apu)this.b, this.c);
    }
 }

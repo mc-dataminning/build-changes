@@ -1,154 +1,127 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.List;
 import javax.annotation.Nullable;
 
 public class amt {
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
-                                    "raid"
-                                 )
-                                 .requires($$0x -> $$0x.c(3)))
-                              .then(
-                                 dv.a("start")
-                                    .then(
-                                       dv.a("omenlvl", IntegerArgumentType.integer(0))
-                                          .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.playsound.failed"));
+
+   public static void a(CommandDispatcher<dv> $$0) {
+      RequiredArgumentBuilder<dv, ajv> $$1 = (RequiredArgumentBuilder<dv, ajv>)dw.a("sound", ew.a())
+         .suggests(ht.c)
+         .executes($$0x -> a((dv)$$0x.getSource(), a(((dv)$$0x.getSource()).i()), ew.e($$0x, "sound"), aup.a, ((dv)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
+
+      for (aup $$2 : aup.values()) {
+         $$1.then(a($$2));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
+   }
+
+   private static LiteralArgumentBuilder<dv> a(aup $$0) {
+      return (LiteralArgumentBuilder<dv>)((LiteralArgumentBuilder)dw.a($$0.a())
+            .executes($$1 -> a((dv)$$1.getSource(), a(((dv)$$1.getSource()).i()), ew.e($$1, "sound"), $$0, ((dv)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+         .then(
+            ((RequiredArgumentBuilder)dw.a("targets", ei.d())
+                  .executes($$1 -> a((dv)$$1.getSource(), ei.f($$1, "targets"), ew.e($$1, "sound"), $$0, ((dv)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+               .then(
+                  ((RequiredArgumentBuilder)dw.a("pos", fx.a())
+                        .executes($$1 -> a((dv)$$1.getSource(), ei.f($$1, "targets"), ew.e($$1, "sound"), $$0, fx.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
+                     .then(
+                        ((RequiredArgumentBuilder)dw.a("volume", FloatArgumentType.floatArg(0.0F))
+                              .executes(
+                                 $$1 -> a(
+                                       (dv)$$1.getSource(),
+                                       ei.f($$1, "targets"),
+                                       ew.e($$1, "sound"),
+                                       $$0,
+                                       fx.a($$1, "pos"),
+                                       (Float)$$1.getArgument("volume", Float.class),
+                                       1.0F,
+                                       0.0F
                                     )
                               ))
-                           .then(dv.a("stop").executes($$0x -> c((du)$$0x.getSource()))))
-                        .then(dv.a("check").executes($$0x -> d((du)$$0x.getSource()))))
-                     .then(dv.a("sound").then(dv.a("type", ed.a($$1)).executes($$0x -> a((du)$$0x.getSource(), ed.a($$0x, "type"))))))
-                  .then(dv.a("spawnleader").executes($$0x -> b((du)$$0x.getSource()))))
-               .then(
-                  dv.a("setomen")
-                     .then(
-                        dv.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
+                           .then(
+                              ((RequiredArgumentBuilder)dw.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
+                                    .executes(
+                                       $$1 -> a(
+                                             (dv)$$1.getSource(),
+                                             ei.f($$1, "targets"),
+                                             ew.e($$1, "sound"),
+                                             $$0,
+                                             fx.a($$1, "pos"),
+                                             (Float)$$1.getArgument("volume", Float.class),
+                                             (Float)$$1.getArgument("pitch", Float.class),
+                                             0.0F
+                                          )
+                                    ))
+                                 .then(
+                                    dw.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                       .executes(
+                                          $$1 -> a(
+                                                (dv)$$1.getSource(),
+                                                ei.f($$1, "targets"),
+                                                ew.e($$1, "sound"),
+                                                $$0,
+                                                fx.a($$1, "pos"),
+                                                (Float)$$1.getArgument("volume", Float.class),
+                                                (Float)$$1.getArgument("pitch", Float.class),
+                                                (Float)$$1.getArgument("minVolume", Float.class)
+                                             )
+                                       )
+                                 )
+                           )
                      )
-               ))
-            .then(dv.a("glow").executes($$0x -> a((du)$$0x.getSource())))
-      );
+               )
+         );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      cle $$1 = a($$0.h());
-      if ($$1 != null) {
-         for (clf $$3 : $$1.h()) {
-            $$3.b(new bph(bpj.x, 1000, 1));
+   private static Collection<apv> a(@Nullable apv $$0) {
+      return $$0 != null ? List.of($$0) : List.of();
+   }
+
+   private static int a(dv $$0, Collection<apv> $$1, ajv $$2, aup $$3, esj $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      in<aun> $$8 = in.a(aun.a($$2));
+      double $$9 = (double)axm.k($$8.a().a($$5));
+      int $$10 = 0;
+      long $$11 = $$0.e().E_().g();
+
+      for (apv $$12 : $$1) {
+         double $$13 = $$4.c - $$12.dr();
+         double $$14 = $$4.d - $$12.dt();
+         double $$15 = $$4.e - $$12.dx();
+         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
+         esj $$17 = $$4;
+         float $$18 = $$5;
+         if ($$16 > $$9) {
+            if ($$7 <= 0.0F) {
+               continue;
+            }
+
+            double $$19 = Math.sqrt($$16);
+            $$17 = new esj($$12.dr() + $$13 / $$19 * 2.0, $$12.dt() + $$14 / $$19 * 2.0, $$12.dx() + $$15 / $$19 * 2.0);
+            $$18 = $$7;
          }
+
+         $$12.d.b(new aeu($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
+         $$10++;
       }
 
-      return 1;
-   }
-
-   private static int a(du $$0, int $$1) throws CommandSyntaxException {
-      cle $$2 = a($$0.h());
-      if ($$2 != null) {
-         int $$3 = $$2.l();
-         if ($$1 > $$3) {
-            $$0.b(wg.b("Sorry, the max bad omen level you can set is " + $$3));
+      if ($$10 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wi.a("commands.playsound.success.single", wi.a($$2), $$1.iterator().next().O_()), true);
          } else {
-            int $$4 = $$2.m();
-            $$2.a($$1);
-            $$0.a(() -> wg.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
-         }
-      } else {
-         $$0.b(wg.b("No raid found here"));
-      }
-
-      return 1;
-   }
-
-   private static int b(du $$0) {
-      $$0.a(() -> wg.b("Spawned a raid captain"), false);
-      clf $$1 = bqb.aB.a((cyx)$$0.e());
-      if ($$1 == null) {
-         $$0.b(wg.b("Pillager failed to spawn"));
-         return 0;
-      } else {
-         $$1.w(true);
-         $$1.a(bqc.f, cle.s());
-         $$1.a_($$0.d().c, $$0.d().d, $$0.d().e);
-         $$1.a($$0.e(), $$0.e().d_(ib.a($$0.d())), bqs.n, null);
-         $$0.e().a_($$1);
-         return 1;
-      }
-   }
-
-   private static int a(du $$0, @Nullable wg $$1) {
-      if ($$1 != null && $$1.getString().equals("local")) {
-         aps $$2 = $$0.e();
-         esa $$3 = $$0.d().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.c, $$3.d, $$3.e, aum.uG, aun.g, 2.0F, 1.0F, $$2.z.g());
-      }
-
-      return 1;
-   }
-
-   private static int b(du $$0, int $$1) throws CommandSyntaxException {
-      apt $$2 = $$0.h();
-      ib $$3 = $$2.dm();
-      if ($$2.z().e($$3)) {
-         $$0.b(wg.b("Raid already started close by"));
-         return -1;
-      } else {
-         clg $$4 = $$2.z().z();
-         cle $$5 = $$4.a($$2);
-         if ($$5 != null) {
-            $$5.a($$1);
-            $$4.c();
-            $$0.a(() -> wg.b("Created a raid in your local village"), false);
-         } else {
-            $$0.b(wg.b("Failed to create a raid in your local village"));
+            $$0.a(() -> wi.a("commands.playsound.success.multiple", wi.a($$2), $$1.size()), true);
          }
 
-         return 1;
+         return $$10;
       }
-   }
-
-   private static int c(du $$0) throws CommandSyntaxException {
-      apt $$1 = $$0.h();
-      ib $$2 = $$1.dm();
-      cle $$3 = $$1.z().d($$2);
-      if ($$3 != null) {
-         $$3.n();
-         $$0.a(() -> wg.b("Stopped raid"), false);
-         return 1;
-      } else {
-         $$0.b(wg.b("No raid here"));
-         return -1;
-      }
-   }
-
-   private static int d(du $$0) throws CommandSyntaxException {
-      cle $$1 = a($$0.h());
-      if ($$1 != null) {
-         StringBuilder $$2 = new StringBuilder();
-         $$2.append("Found a started raid! ");
-         $$0.a(() -> wg.b($$2.toString()), false);
-         StringBuilder $$3 = new StringBuilder();
-         $$3.append("Num groups spawned: ");
-         $$3.append($$1.k());
-         $$3.append(" Bad omen level: ");
-         $$3.append($$1.m());
-         $$3.append(" Num mobs: ");
-         $$3.append($$1.r());
-         $$3.append(" Raid health: ");
-         $$3.append($$1.q());
-         $$3.append(" / ");
-         $$3.append($$1.g());
-         $$0.a(() -> wg.b($$3.toString()), false);
-         return 1;
-      } else {
-         $$0.b(wg.b("Found no started raids"));
-         return 0;
-      }
-   }
-
-   @Nullable
-   private static cle a(apt $$0) {
-      return $$0.z().d($$0.dm());
    }
 }

@@ -1,7 +1,20 @@
-import java.util.List;
+public interface ajb<T> {
+   yg<? super vt, T> codec();
 
-public interface ajb {
-   void a(aiy<?> var1);
+   default aja<T> a(int $$0) {
+      return new aja<>($$0, this);
+   }
 
-   void a(List<ajc.c<?>> var1);
+   T copy(T var1);
+
+   static <T> ajb<T> a(yg<? super vt, T> $$0) {
+      return () -> $$0;
+   }
+
+   public interface a<T> extends ajb<T> {
+      @Override
+      default T copy(T $$0) {
+         return $$0;
+      }
+   }
 }

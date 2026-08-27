@@ -1,65 +1,47 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public record eqb(il<dby> b, Optional<db> c) implements eqc {
-   public static final Codec<eqb> a = aws.b(
-      RecordCodecBuilder.create($$0 -> $$0.group(kr.e.r().fieldOf("block").forGetter(eqb::c), aws.a(db.a, "properties").forGetter(eqb::d)).apply($$0, eqb::new)),
-      eqb::a
+public record eqb(in<cwz> b, List<Float> c) implements eql {
+   public static final Codec<eqb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kt.f.r().fieldOf("enchantment").forGetter(eqb::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eqb::d)).apply($$0, eqb::new)
    );
 
-   private static DataResult<eqb> a(eqb $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   @Override
+   public eqm b() {
+      return eqn.l;
    }
 
    @Override
-   public eqd b() {
-      return eqe.j;
+   public Set<epu<?>> a() {
+      return ImmutableSet.of(epx.i);
    }
 
-   @Override
-   public Set<epl<?>> a() {
-      return Set.of(epo.g);
+   public boolean a(enk $$0) {
+      crs $$1 = $$0.c(epx.i);
+      int $$2 = $$1 != null ? cxa.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   public boolean a(enb $$0) {
-      doz $$1 = $$0.c(epo.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   public static eql.a a(cwz $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new eqb($$0.k(), $$2);
    }
 
-   public static eqb.a a(dby $$0) {
-      return new eqb.a($$0);
-   }
-
-   public il<dby> c() {
+   public in<cwz> c() {
       return this.b;
    }
 
-   public Optional<db> d() {
+   public List<Float> d() {
       return this.c;
-   }
-
-   public static class a implements eqc.a {
-      private final il<dby> a;
-      private Optional<db> b = Optional.empty();
-
-      public a(dby $$0) {
-         this.a = $$0.r();
-      }
-
-      public eqb.a a(db.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public eqc build() {
-         return new eqb(this.a, this.b);
-      }
    }
 }

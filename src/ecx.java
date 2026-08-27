@@ -1,72 +1,47 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ecx extends edd {
-   public static final Codec<ecx> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ecx::new));
+public class ecx extends eda {
+   public static final Codec<ecx> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ecx::new, $$0 -> $$0.d).codec();
+   private static final ij b = ij.d;
+   private static final ij[] c = ij.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ij[]::new);
+   private final float d;
 
-   public ecx(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public ecx(float $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected ede<?> a() {
-      return ede.e;
+   protected edb<?> a() {
+      return edb.d;
    }
 
    @Override
-   public List<ebl.a> a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, ib $$4, eav $$5) {
-      List<ebl.a> $$6 = Lists.newArrayList();
-      ib $$7 = $$4.d();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.h(), $$5);
-      a($$0, $$1, $$2, $$7.f(), $$5);
-      a($$0, $$1, $$2, $$7.f().h(), $$5);
-      ih $$8 = ih.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
+   public void a(eda.a $$0) {
+      axt $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<id> $$2 = $$0.d();
+         List<id> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<id> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<id> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), dcj.pe.n().a(dcb.b, b));
+               $$0.a().a($$6.get(), dmq.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         ib $$19 = new ib($$14, $$18, $$15);
-         if (dzh.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.h(), $$5);
-            this.b($$0, $$1, $$2, $$19.f(), $$5);
-            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
-         }
-      }
-
-      $$6.add(new ebl.a(new ib($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new ib($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new ebl.a(new ib($$14 + $$20, $$16, $$15 + $$21), 0, false));
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(dml.c.a($$1.a(599)));
+                  }
+               });
             }
          }
       }
-
-      return $$6;
    }
 }

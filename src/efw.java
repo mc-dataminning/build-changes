@@ -1,78 +1,44 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
 
-public record efw(List<efl> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ajt c = new ajt("jigsaw");
-   private static final Map<ajt, ajt> d = ImmutableMap.builder()
-      .put(new ajt("nvi"), c)
-      .put(new ajt("pcp"), c)
-      .put(new ajt("bastionremnant"), c)
-      .put(new ajt("runtime"), c)
-      .build();
+public record efw(List<efw.a> c, egn d) {
+   public static final Codec<efw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(efw.a.a.listOf().fieldOf("structures").forGetter(efw::a), egn.b.fieldOf("placement").forGetter(efw::b)).apply($$0, efw::new)
+   );
+   public static final Codec<in<efw>> b = ajr.a(ku.aI, a);
 
-   public efw(List<efl> a) {
-      this.a = List.copyOf(a);
+   public efw(in<efq> $$0, egn $$1) {
+      this(List.of(new efw.a($$0, 1)), $$1);
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   public static efw.a a(in<efq> $$0, int $$1) {
+      return new efw.a($$0, $$1);
    }
 
-   public boolean a(ib $$0) {
-      for (efl $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
+   public static efw.a a(in<efq> $$0) {
+      return new efw.a($$0, 1);
+   }
+
+   public List<efw.a> a() {
+      return this.c;
+   }
+
+   public egn b() {
+      return this.d;
+   }
+
+   public static record a(in<efq> b, int c) {
+      public static final Codec<efw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(efq.b.fieldOf("structure").forGetter(efw.a::a), awu.j.fieldOf("weight").forGetter(efw.a::b)).apply($$0, efw.a::new)
+      );
+
+      public in<efq> a() {
+         return this.b;
       }
 
-      return false;
-   }
-
-   public uj a(efx $$0) {
-      ts $$1 = new ts();
-
-      for (efl $$2 : this.a) {
-         $$1.add($$2.a($$0));
+      public int b() {
+         return this.c;
       }
-
-      return $$1;
-   }
-
-   public static efw a(ts $$0, efx $$1) {
-      List<efl> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         tm $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         ajt $$6 = new ajt($$5);
-         ajt $$7 = d.getOrDefault($$6, $$6);
-         efy $$8 = kr.S.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               efl $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new efw($$2);
-   }
-
-   public eez b() {
-      return efl.a(this.a.stream());
-   }
-
-   public List<efl> c() {
-      return this.a;
    }
 }

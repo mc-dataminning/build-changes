@@ -1,93 +1,65 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 
-public abstract class ekr {
-   public static final ir<eks> c = new ir<>();
-   protected final dpa<ekr, eks> d;
-   private eks a;
-   private final il.c<ekr> b = kr.c.f(this);
+public class ekr {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
 
-   protected ekr() {
-      dpa.a<ekr, eks> $$0 = new dpa.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(ekr::g, eks::new);
-      this.f(this.d.b());
-   }
-
-   protected void a(dpa.a<ekr, eks> $$0) {
-   }
-
-   public dpa<ekr, eks> f() {
-      return this.d;
-   }
-
-   protected final void f(eks $$0) {
+   public ekr(int $$0, final int $$1) {
       this.a = $$0;
+      this.b = new LongLinkedOpenHashSet[$$0];
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
+      }
+
+      this.c = $$0;
    }
 
-   public final eks g() {
-      return this.a;
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
    }
 
-   public abstract cre a();
-
-   protected void a(cyx $$0, ib $$1, eks $$2, axr $$3) {
+   public boolean b() {
+      return this.c >= this.a;
    }
 
-   protected void b(cyx $$0, ib $$1, eks $$2) {
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
    }
 
-   protected void b(cyx $$0, ib $$1, eks $$2, axr $$3) {
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
    }
 
-   @Nullable
-   protected kj h() {
-      return null;
-   }
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
 
-   protected abstract boolean a(eks var1, cyd var2, ib var3, ekr var4, ih var5);
-
-   protected abstract esa a(cyd var1, ib var2, eks var3);
-
-   public abstract int a(cza var1);
-
-   protected boolean i() {
-      return false;
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected abstract float c();
-
-   public abstract float a(eks var1, cyd var2, ib var3);
-
-   public abstract float a(eks var1);
-
-   protected abstract doz b(eks var1);
-
-   public abstract boolean c(eks var1);
-
-   public abstract int d(eks var1);
-
-   public boolean a(ekr $$0) {
-      return $$0 == this;
-   }
-
-   @Deprecated
-   public boolean a(avr<ekr> $$0) {
-      return this.b.a($$0);
-   }
-
-   public abstract est b(eks var1, cyd var2, ib var3);
-
-   public Optional<aul> j() {
-      return Optional.empty();
-   }
-
-   @Deprecated
-   public il.c<ekr> k() {
-      return this.b;
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
+      }
    }
 }

@@ -1,9 +1,18 @@
-public class gin extends ged<chs, fte<chs>> {
-   public gin(gfi.a $$0) {
-      this($$0, ftl.cf, ftl.ci, ftl.cj);
+public class gin extends ggx<cjt, ftg<cjt>> {
+   private static final ajv a = new ajv("textures/entity/wandering_trader.png");
+
+   public gin(gfr.a $$0) {
+      super($$0, new ftg<>($$0.a(ftu.bS)), 0.5F);
+      this.a(new gjh<>(this, $$0.f(), $$0.d()));
+      this.a(new gjg<>(this, $$0.d()));
    }
 
-   public gin(gfi.a $$0, ftk $$1, ftk $$2, ftk $$3) {
-      super($$0, new fte<>($$0.a($$1)), new fte<>($$0.a($$2)), new fte<>($$0.a($$3)));
+   public ajv a(cjt $$0) {
+      return a;
+   }
+
+   protected void a(cjt $$0, ewr $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

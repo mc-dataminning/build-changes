@@ -1,104 +1,155 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
+import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
+import java.util.BitSet;
+import java.util.EnumSet;
+import java.util.Set;
 
-public class gdj implements gdl.a {
-   final fbp a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
-   @Nullable
-   private gdj.a d;
+public class gdj {
+   private static final int a = 4;
+   private static final int b = 16;
+   private static final int c = 15;
+   private static final int d = 4096;
+   private static final int e = 0;
+   private static final int f = 4;
+   private static final int g = 8;
+   private static final int h = (int)Math.pow(16.0, 0.0);
+   private static final int i = (int)Math.pow(16.0, 1.0);
+   private static final int j = (int)Math.pow(16.0, 2.0);
+   private static final int k = -1;
+   private static final ij[] l = ij.values();
+   private final BitSet m = new BitSet(4096);
+   private static final int[] n = ac.a(new int[1352], $$0 -> {
+      int $$1 = 0;
+      int $$2 = 15;
+      int $$3 = 0;
 
-   public gdj(fbp $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         gpn $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gdj.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
-         }
-      }
-
-      if (this.d != null) {
-         Map<cye, String> $$7 = this.d.c.getNow(null);
-         double $$8 = this.a.j.n().b().d * 0.85;
-
-         for (Entry<cye, String> $$9 : this.d.b.entrySet()) {
-            cye $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
-
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               gdl.a($$0, $$1, $$14, (double)je.a($$10.e, 8), $$8 + (double)$$13, (double)je.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
+                  $$0[$$3++] = a($$4, $$5, $$6);
+               }
             }
          }
       }
+   });
+   private int o = 4096;
+
+   public void a(id $$0) {
+      this.m.set(b($$0), true);
+      this.o--;
    }
 
-   final class a {
-      final Map<cye, String> b;
-      final CompletableFuture<Map<cye, String>> c;
+   private static int b(id $$0) {
+      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   }
 
-      a(gpn $$0, double $$1, double $$2) {
-         fuh $$3 = gdj.this.a.r;
-         ajs<cyx> $$4 = $$3.ae();
-         int $$5 = je.a($$1);
-         int $$6 = je.a($$2);
-         Builder<cye, String> $$7 = ImmutableMap.builder();
-         fud $$8 = $$3.i();
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   }
 
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               cye $$11 = new cye($$9, $$10);
-               String $$12 = "";
-               drf $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.C() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
+   public gdk a() {
+      gdk $$0 = new gdk();
+      if (4096 - this.o < 256) {
+         $$0.a(true);
+      } else if (this.o == 0) {
+         $$0.a(false);
+      } else {
+         for (int $$1 : n) {
+            if (!this.m.get($$1)) {
+               $$0.a(this.a($$1));
             }
          }
+      }
 
-         this.b = $$7.build();
-         this.c = $$0.a(() -> {
-            aps $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<cye, String> $$5x = ImmutableMap.builder();
-               apq $$6x = $$4x.l();
+      return $$0;
+   }
 
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     cye $$9x = new cye($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
+   private Set<ij> a(int $$0) {
+      Set<ij> $$1 = EnumSet.noneOf(ij.class);
+      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
+      $$2.enqueue($$0);
+      this.m.set($$0, true);
 
-               return $$5x.build();
+      while (!$$2.isEmpty()) {
+         int $$3 = $$2.dequeueInt();
+         this.a($$3, $$1);
+
+         for (ij $$4 : l) {
+            int $$5 = this.a($$3, $$4);
+            if ($$5 >= 0 && !this.m.get($$5)) {
+               this.m.set($$5, true);
+               $$2.enqueue($$5);
             }
-         });
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(int $$0, Set<ij> $$1) {
+      int $$2 = $$0 >> 0 & 15;
+      if ($$2 == 0) {
+         $$1.add(ij.e);
+      } else if ($$2 == 15) {
+         $$1.add(ij.f);
+      }
+
+      int $$3 = $$0 >> 8 & 15;
+      if ($$3 == 0) {
+         $$1.add(ij.a);
+      } else if ($$3 == 15) {
+         $$1.add(ij.b);
+      }
+
+      int $$4 = $$0 >> 4 & 15;
+      if ($$4 == 0) {
+         $$1.add(ij.c);
+      } else if ($$4 == 15) {
+         $$1.add(ij.d);
+      }
+   }
+
+   private int a(int $$0, ij $$1) {
+      switch ($$1) {
+         case a:
+            if (($$0 >> 8 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - j;
+         case b:
+            if (($$0 >> 8 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + j;
+         case c:
+            if (($$0 >> 4 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - i;
+         case d:
+            if (($$0 >> 4 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + i;
+         case e:
+            if (($$0 >> 0 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - h;
+         case f:
+            if (($$0 >> 0 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + h;
+         default:
+            return -1;
       }
    }
 }

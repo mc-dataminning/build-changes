@@ -1,87 +1,56 @@
-import com.mojang.authlib.GameProfile;
+public class fzc extends fyw {
+   private float a;
 
-public class fzc extends fyy {
-   private esa g = esa.b;
-   private int ct;
-
-   public fzc(fuh $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.af = true;
+   fzc(fuq $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cA();
-      return $$0 < $$1 * $$1;
+   public fya b() {
+      return fya.b;
    }
 
    @Override
-   public boolean a(bot $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.q(false);
-   }
-
-   @Override
-   public void n_() {
-      if (this.bq > 0) {
-         this.a(this.bq, this.br, this.bs, this.bt, this.bu, this.bv);
-         this.bq--;
-      }
-
-      if (this.bx > 0) {
-         this.a(this.bx, this.bw);
-         this.bx--;
-      }
-
-      if (this.ct > 0) {
-         this.h(new esa((this.g.c - this.dp().c) / (double)this.ct, (this.g.d - this.dp().d) / (double)this.ct, (this.g.e - this.dp().e) / (double)this.ct));
-         this.ct--;
-      }
-
-      this.cb = this.cc;
-      this.eS();
-      float $$1;
-      if (this.aC() && !this.ey()) {
-         $$1 = (float)Math.min(0.1, this.dp().h());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         $$1 = 0.0F;
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * axm.b(this.a));
+         this.l = this.l + (double)(0.6F * axm.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(id.a(this.g, this.h, this.i)).a(avj.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
+      }
+   }
+
+   public static class a implements fxz<kq> {
+      private final fyr a;
+
+      public a(fyr $$0) {
+         this.a = $$0;
       }
 
-      this.cc = this.cc + ($$1 - this.cc) * 0.4F;
-      this.dM().af().a("push");
-      this.q();
-      this.dM().af().c();
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.g = new esa($$0, $$1, $$2);
-      this.ct = this.ai().p() + 1;
-   }
-
-   @Override
-   protected void fS() {
-   }
-
-   @Override
-   public void a(wg $$0) {
-      fbp $$1 = fbp.Q();
-      $$1.l.d().a($$0);
-   }
-
-   @Override
-   public void a(aaz $$0) {
-      super.a($$0);
-      this.bs();
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzc $$8 = new fzc($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

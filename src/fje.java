@@ -1,58 +1,82 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fje extends fjq {
-   private static final wg a = wg.c("options.online.title");
+public class fje extends fjx {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
    @Nullable
-   private final fbs<Unit> q;
+   private final wi d;
+   private final wi o;
+   private final Runnable p;
+   @Nullable
+   private fer q;
+   private fdy r;
+   private int s;
 
-   public static fje a(fbp $$0, fjo $$1, fbt $$2) {
-      List<fbs<?>> $$3 = new ArrayList<>();
-      $$3.add($$2.T());
-      $$3.add($$2.U());
-      fbs<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bnx $$1x = $$0x.ak();
-            return new fbs<>(
-               "options.difficulty.online",
-               fbs.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fbs.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new fje($$1, $$2, $$3.toArray(new fbs[0]), $$4);
+   public static fje a(wi $$0, wi $$1, Runnable $$2) {
+      return new fje($$0, null, $$1, $$2, 0);
    }
 
-   private fje(fjo $$0, fbt $$1, fbs<?>[] $$2, @Nullable fbs<Unit> $$3) {
-      super($$0, $$1, a, $$2);
-      this.q = $$3;
+   public static fje a(wi $$0, wi $$1, wi $$2, Runnable $$3) {
+      return new fje($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected fje(wi $$0, @Nullable wi $$1, wi $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.d = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.s = $$4;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      if (this.q != null) {
-         fdn $$0 = this.p.b(this.q);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
+   protected void aM_() {
+      super.aM_();
+      if (this.d != null) {
+         this.q = fer.a(this.m, this.d, 360);
       }
 
-      fdn $$1 = this.p.b(this.c.ai());
-      if ($$1 != null) {
-         $$1.j = this.j.D();
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.q != null ? this.q.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.l - 40);
+      this.r = this.c(fdy.a(this.o, $$0x -> this.d()).a((this.k - 150) / 2, $$4, 150, 20).a());
+   }
+
+   @Override
+   public void e() {
+      if (this.s > 0) {
+         this.s--;
       }
+
+      this.r.j = this.s == 0;
+   }
+
+   @Override
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.i, this.k / 2, 80, 16777215);
+      if (this.q == null) {
+         String $$4 = fji.a(ac.b());
+         $$0.a(this.m, $$4, this.k / 2, 120, 10526880);
+      } else {
+         this.q.a($$0, this.k / 2, 120);
+      }
+   }
+
+   @Override
+   public boolean aD_() {
+      return this.q != null && this.r.j;
+   }
+
+   @Override
+   public void d() {
+      this.p.run();
+   }
+
+   @Override
+   public wi i() {
+      return wh.a(this.i, this.d != null ? this.d : wh.a);
    }
 }

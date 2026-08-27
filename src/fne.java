@@ -1,136 +1,251 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class fne extends feu<fne.a> {
+   static final ajv a = new ajv("transferable_list/select_highlighted");
+   static final ajv m = new ajv("transferable_list/select");
+   static final ajv n = new ajv("transferable_list/unselect_highlighted");
+   static final ajv o = new ajv("transferable_list/unselect");
+   static final ajv p = new ajv("transferable_list/move_up_highlighted");
+   static final ajv q = new ajv("transferable_list/move_up");
+   static final ajv r = new ajv("transferable_list/move_down_highlighted");
+   static final ajv s = new ajv("transferable_list/move_down");
+   static final wi u = wi.c("pack.incompatible");
+   static final wi v = wi.c("pack.incompatible.confirm.title");
+   private final wi w;
+   final fnd x;
 
-public class fne extends fdn {
-   private static final ajt b = new ajt("recipe_book/slot_many_craftable");
-   private static final ajt c = new ajt("recipe_book/slot_craftable");
-   private static final ajt d = new ajt("recipe_book/slot_many_uncraftable");
-   private static final ajt e = new ajt("recipe_book/slot_uncraftable");
-   private static final float f = 15.0F;
-   private static final int m = 25;
-   public static final int a = 30;
-   private static final wg n = wg.c("gui.recipebook.moreRecipes");
-   private coc<?> o;
-   private aup p;
-   private fnf q;
-   private float r;
-   private float s;
-   private int u;
-
-   public fne() {
-      super(0, 0, 25, 25, wf.a);
-   }
-
-   public void a(fnf $$0, fnc $$1) {
-      this.q = $$0;
-      this.o = (coc<?>)$$1.d().s.bY;
-      this.p = $$1.e();
-      List<cvl<?>> $$2 = $$0.a(this.p.a(this.o));
-
-      for (cvl<?> $$3 : $$2) {
-         if (this.p.d($$3)) {
-            $$1.a($$2);
-            this.s = 15.0F;
-            break;
-         }
-      }
-   }
-
-   public fnf a() {
-      return this.q;
+   public fne(fby $$0, fnd $$1, int $$2, int $$3, wi $$4) {
+      super($$0, $$2, $$3, 33, 36);
+      this.x = $$1;
+      this.w = $$4;
+      this.e = false;
+      this.a(true, (int)(9.0F * 1.5F));
    }
 
    @Override
-   public void b(fdc $$0, int $$1, int $$2, float $$3) {
-      if (!fjo.r()) {
-         this.r += $$3;
+   protected void a(fdl $$0, int $$1, int $$2) {
+      wi $$3 = wi.i().b(this.w).a(n.t, n.r);
+      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.D() + 3, $$2), -1, false);
+   }
+
+   @Override
+   public int b() {
+      return this.g;
+   }
+
+   @Override
+   protected int p() {
+      return this.E() - 6;
+   }
+
+   @Override
+   protected void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      if (this.m()) {
+         int $$6 = 2;
+         int $$7 = this.r() - 2;
+         int $$8 = this.E() - 6 - 1;
+         int $$9 = $$1 - 2;
+         int $$10 = $$1 + $$3 + 2;
+         $$0.a($$7, $$9, $$8, $$10, $$4);
+         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.h() != null) {
+         switch ($$0) {
+            case 32:
+            case 257:
+               this.h().c();
+               return true;
+            default:
+               if (fjx.s()) {
+                  switch ($$0) {
+                     case 264:
+                        this.h().f();
+                        return true;
+                     case 265:
+                        this.h().e();
+                        return true;
+                  }
+               }
+         }
       }
 
-      ajt $$4;
-      if (this.q.c()) {
-         if (this.q.a(this.p.a(this.o)).size() > 1) {
-            $$4 = b;
+      return super.a($$0, $$1, $$2);
+   }
+
+   public static class a extends feu.a<fne.a> {
+      private static final int b = 157;
+      private static final int c = 157;
+      private static final String d = "...";
+      private final fne e;
+      protected final fby a;
+      private final fnc.a f;
+      private final awy g;
+      private final fer h;
+      private final awy i;
+      private final fer j;
+
+      public a(fby $$0, fne $$1, fnc.a $$2) {
+         this.a = $$0;
+         this.f = $$2;
+         this.e = $$1;
+         this.g = a($$0, $$2.d());
+         this.h = b($$0, $$2.g());
+         this.i = a($$0, fne.u);
+         this.j = b($$0, $$2.b().b());
+      }
+
+      private static awy a(fby $$0, wi $$1) {
+         int $$2 = $$0.h.a($$1);
+         if ($$2 > 157) {
+            wn $$3 = wn.a($$0.h.a($$1, 157 - $$0.h.b("...")), wn.e("..."));
+            return tj.a().a($$3);
          } else {
-            $$4 = c;
+            return $$1.g();
          }
-      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$4 = d;
-      } else {
-         $$4 = e;
       }
 
-      boolean $$8 = this.s > 0.0F;
-      if ($$8) {
-         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.s / 15.0F * (float) Math.PI));
-         $$0.c().a();
-         $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
-         $$0.c().b($$9, $$9, 1.0F);
-         $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
-         this.s -= $$3;
+      private static fer b(fby $$0, wi $$1) {
+         return fer.a($$0.h, $$1, 157, 2);
       }
 
-      $$0.a($$4, this.C(), this.D(), this.g, this.h);
-      List<cvl<?>> $$10 = this.f();
-      this.u = axk.d(this.r / 30.0F) % $$10.size();
-      crj $$11 = $$10.get(this.u).b().a(this.q.a());
-      int $$12 = 4;
-      if (this.q.f() && this.f().size() > 1) {
-         $$0.a($$11, this.C() + $$12 + 1, this.D() + $$12 + 1, 0, 10);
-         $$12--;
+      @Override
+      public wi a() {
+         return wi.a("narrator.select", this.f.d());
       }
 
-      $$0.b($$11, this.C() + $$12, this.D() + $$12);
-      if ($$8) {
-         $$0.c().b();
+      @Override
+      public void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         asn $$10 = this.f.b();
+         if (!$$10.a()) {
+            $$0.a($$3 - 1, $$2 - 1, $$3 + $$4 - 3, $$2 + $$5 + 1, -8978432);
+         }
+
+         $$0.a(this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+         awy $$11 = this.g;
+         fer $$12 = this.h;
+         if (this.d() && (this.a.m.Z().c() || $$8 || this.e.h() == this && this.e.aI_())) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$13 = $$6 - $$3;
+            int $$14 = $$7 - $$2;
+            if (!this.f.b().a()) {
+               $$11 = this.i;
+               $$12 = this.j;
+            }
+
+            if (this.f.o()) {
+               if ($$13 < 32) {
+                  $$0.a(fne.a, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(fne.m, $$3, $$2, 32, 32);
+               }
+            } else {
+               if (this.f.p()) {
+                  if ($$13 < 16) {
+                     $$0.a(fne.n, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(fne.o, $$3, $$2, 32, 32);
+                  }
+               }
+
+               if (this.f.q()) {
+                  if ($$13 < 32 && $$13 > 16 && $$14 < 16) {
+                     $$0.a(fne.p, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(fne.q, $$3, $$2, 32, 32);
+                  }
+               }
+
+               if (this.f.r()) {
+                  if ($$13 < 32 && $$13 > 16 && $$14 > 16) {
+                     $$0.a(fne.r, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(fne.s, $$3, $$2, 32, 32);
+                  }
+               }
+            }
+         }
+
+         $$0.b(this.a.h, $$11, $$3 + 32 + 2, $$2 + 1, 16777215);
+         $$12.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
       }
-   }
 
-   private List<cvl<?>> f() {
-      List<cvl<?>> $$0 = this.q.b(true);
-      if (!this.p.a(this.o)) {
-         $$0.addAll(this.q.b(false));
+      public String b() {
+         return this.f.c();
       }
 
-      return $$0;
-   }
-
-   public boolean b() {
-      return this.f().size() == 1;
-   }
-
-   public cvl<?> d() {
-      List<cvl<?>> $$0 = this.f();
-      return $$0.get(this.u);
-   }
-
-   public List<wg> e() {
-      crj $$0 = this.f().get(this.u).b().a(this.q.a());
-      List<wg> $$1 = Lists.newArrayList(fjo.a(fbp.Q(), $$0));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$1.add(n);
+      private boolean d() {
+         return !this.f.h() || !this.f.i();
       }
 
-      return $$1;
-   }
-
-   @Override
-   public void a(fhl $$0) {
-      crj $$1 = this.f().get(this.u).b().a(this.q.a());
-      $$0.a(fhk.a, wg.a("narration.recipe", $$1.w()));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$0.a(fhk.d, wg.c("narration.button.usage.hovered"), wg.c("narration.recipe.usage.more"));
-      } else {
-         $$0.a(fhk.d, wg.c("narration.button.usage.hovered"));
+      public void c() {
+         if (this.f.o() && this.h()) {
+            this.e.x.a(this.e);
+         } else if (this.f.p()) {
+            this.f.k();
+            this.e.x.a(this.e);
+         }
       }
-   }
 
-   @Override
-   public int x() {
-      return 25;
-   }
+      void e() {
+         if (this.f.q()) {
+            this.f.l();
+         }
+      }
 
-   @Override
-   protected boolean j(int $$0) {
-      return $$0 == 0 || $$0 == 1;
+      void f() {
+         if (this.f.r()) {
+            this.f.m();
+         }
+      }
+
+      private boolean h() {
+         if (this.f.b().a()) {
+            this.f.j();
+            return true;
+         } else {
+            wi $$0 = this.f.b().c();
+            this.a.a(new fip($$0x -> {
+               this.a.a(this.e.x);
+               if ($$0x) {
+                  this.f.j();
+               }
+            }, fne.v, $$0));
+            return false;
+         }
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         double $$3 = $$0 - (double)this.e.r();
+         double $$4 = $$1 - (double)this.e.g(this.e.aE_().indexOf(this));
+         if (this.d() && $$3 <= 32.0) {
+            this.e.x.m();
+            if (this.f.o()) {
+               this.h();
+               return true;
+            }
+
+            if ($$3 < 16.0 && this.f.p()) {
+               this.f.k();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
+               this.f.l();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
+               this.f.m();
+               return true;
+            }
+         }
+
+         return super.a($$0, $$1, $$2);
+      }
    }
 }

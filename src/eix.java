@@ -1,22 +1,44 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class eix extends eje {
-   public final avr<dby> a;
-   public static final Codec<eix> b = avr.b(ks.f).xmap(eix::new, $$0 -> $$0.a);
+public class eix extends ejn {
+   public static final Codec<eix> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dva.a.g.fieldOf("heightmap").orElse(dva.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+            .apply($$0, eix::new)
+   );
+   private final dva.a b;
+   private final int c;
 
-   public eix(avr<dby> $$0) {
-      this.a = $$0;
+   public eix(dva.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Nullable
    @Override
-   public ejh.c a(cza $$0, ib $$1, ib $$2, ejh.c $$3, ejh.c $$4, ejd $$5) {
-      return dxv.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public ejq.c a(czj $$0, id $$1, id $$2, ejq.c $$3, ejq.c $$4, ejm $$5) {
+      dva.a $$6;
+      if ($$0 instanceof apu) {
+         if (this.b == dva.a.a) {
+            $$6 = dva.a.b;
+         } else if (this.b == dva.a.c) {
+            $$6 = dva.a.d;
+         } else {
+            $$6 = this.b;
+         }
+      } else {
+         $$6 = this.b;
+      }
+
+      id $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new ejq.c(new id($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
    @Override
-   protected ejg<?> a() {
-      return ejg.n;
+   protected ejp<?> a() {
+      return ejp.g;
    }
 }

@@ -1,163 +1,89 @@
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class cma extends clo {
-   private static final byte c = 10;
-   private int d = -1;
-
-   public cma(bqb<? extends cma> $$0, cyx $$1) {
-      super($$0, $$1);
+public class cma {
+   public static int[][] a(ij $$0) {
+      ij $$1 = $$0.h();
+      ij $$2 = $$1.g();
+      ij $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cma(cyx $$0, double $$1, double $$2, double $$3) {
-      super(bqb.bc, $$0, $$1, $$2, $$3);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   public clo.a v() {
-      return clo.a.d;
-   }
-
-   @Override
-   public doz x() {
-      return dca.ck.n();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.d > 0) {
-         this.d--;
-         this.dM().a(kl.ac, this.dr(), this.dt() + 0.5, this.dx(), 0.0, 0.0, 0.0);
-      } else if (this.d == 0) {
-         this.h(this.dp().i());
-      }
-
-      if (this.P) {
-         double $$0 = this.dp().i();
-         if ($$0 >= 0.01F) {
-            this.h($$0);
+   public static boolean a(cyq $$0, bqt $$1, ese $$2) {
+      for (etc $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
       }
+
+      return $$0.C_().a($$2);
    }
 
-   @Override
-   public boolean a(bot $$0, float $$1) {
-      if ($$0.c() instanceof cjz $$3 && $$3.bN()) {
-         bot $$4 = this.dN().d(this, $$0.d());
-         this.a($$4, $$3.dp().g());
+   public static boolean a(cyq $$0, esj $$1, bqt $$2, bre $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
+   }
+
+   public static etc a(cym $$0, id $$1) {
+      dpi $$2 = $$0.a_($$1);
+      return !$$2.a(ave.aP) && (!($$2.b() instanceof dkt) || !$$2.c(dkt.b)) ? $$2.k($$0, $$1) : esz.a();
+   }
+
+   public static double a(id $$0, int $$1, Function<id, etc> $$2) {
+      id.a $$3 = $$0.j();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         etc $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ij.a.b);
+         }
+
+         $$4++;
+         $$3.c(ij.b);
       }
 
-      return super.a($$0, $$1);
+      return Double.POSITIVE_INFINITY;
    }
 
-   @Override
-   public void a(bot $$0) {
-      double $$1 = this.dp().i();
-      if (!e($$0) && !($$1 >= 0.01F)) {
-         this.b(this.ag_());
+   @Nullable
+   public static esj a(bqg<?> $$0, cyq $$1, id $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
       } else {
-         if (this.d < 0) {
-            this.B();
-            this.d = this.ag.a(20) + this.ag.a(20);
+         double $$4 = $$1.a(a((cym)$$1, $$2), () -> a((cym)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            esj $$5 = esj.a($$2, $$4);
+            ese $$6 = $$0.n().a($$5);
+
+            for (etc $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
+
+            if ($$0 != bqg.bx || !$$1.a_($$2).a(ave.ck) && !$$1.a_($$2.c()).a(ave.ck)) {
+               return !$$1.C_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
          }
       }
-   }
-
-   @Override
-   protected cre ag_() {
-      return crm.nO;
-   }
-
-   protected void h(double $$0) {
-      this.a(null, $$0);
-   }
-
-   protected void a(@Nullable bot $$0, double $$1) {
-      if (!this.dM().B) {
-         double $$2 = Math.sqrt($$1);
-         if ($$2 > 5.0) {
-            $$2 = 5.0;
-         }
-
-         this.dM().a(this, $$0, null, this.dr(), this.dt(), this.dx(), (float)(4.0 + this.ag.j() * 1.5 * $$2), false, cyx.a.d);
-         this.am();
-      }
-   }
-
-   @Override
-   public boolean a(float $$0, float $$1, bot $$2) {
-      if ($$0 >= 3.0F) {
-         float $$3 = $$0 / 10.0F;
-         this.h((double)($$3 * $$3));
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.d < 0) {
-         this.B();
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 10) {
-         this.B();
-      } else {
-         super.b($$0);
-      }
-   }
-
-   public void B() {
-      this.d = 80;
-      if (!this.dM().B) {
-         this.dM().a(this, (byte)10);
-         if (!this.aU()) {
-            this.dM().a(null, this.dr(), this.dt(), this.dx(), aum.zc, aun.e, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   public int C() {
-      return this.d;
-   }
-
-   public boolean D() {
-      return this.d > -1;
-   }
-
-   @Override
-   public float a(cyp $$0, cyd $$1, ib $$2, doz $$3, eks $$4, float $$5) {
-      return !this.D() || !$$3.a(avc.N) && !$$1.a_($$2.c()).a(avc.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
-   }
-
-   @Override
-   public boolean a(cyp $$0, cyd $$1, ib $$2, doz $$3, float $$4) {
-      return !this.D() || !$$3.a(avc.N) && !$$1.a_($$2.c()).a(avc.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected void a(tm $$0) {
-      super.a($$0);
-      if ($$0.b("TNTFuse", 99)) {
-         this.d = $$0.h("TNTFuse");
-      }
-   }
-
-   @Override
-   protected void b(tm $$0) {
-      super.b($$0);
-      $$0.a("TNTFuse", this.d);
-   }
-
-   @Override
-   boolean d(bot $$0) {
-      return e($$0);
-   }
-
-   private static boolean e(bot $$0) {
-      return $$0.a(ave.j) || $$0.a(ave.m);
    }
 }

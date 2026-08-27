@@ -1,95 +1,115 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class edf extends edd {
+public class edf extends edm {
+   private static final Codec<bnq> b = awu.b(
+      bnq.a,
+      (Function<bnq, DataResult<bnq>>)($$0 -> $$0.b() - $$0.a() < 1
+            ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
+            : DataResult.success($$0))
+   );
    public static final Codec<edf> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  bnf.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
-                  bnf.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
-                  ja.a(ks.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
+                  bnk.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
+                  bnk.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
+                  bnk.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
+                  bnk.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
                )
             )
             .apply($$0, edf::new)
    );
-   private final bnf b;
-   private final float h;
-   private final bnf i;
-   private final ip<dby> j;
+   private final bnk h;
+   private final bnk i;
+   private final bnq j;
+   private final bnq k;
+   private final bnk l;
 
-   public edf(int $$0, int $$1, int $$2, bnf $$3, float $$4, bnf $$5, ip<dby> $$6) {
+   public edf(int $$0, int $$1, int $$2, bnk $$3, bnk $$4, bnq $$5, bnk $$6) {
       super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = bnq.a($$5.a(), $$5.b() - 1);
+      this.l = $$6;
    }
 
    @Override
-   protected ede<?> a() {
-      return ede.h;
+   protected edn<?> a() {
+      return edn.i;
    }
 
    @Override
-   public List<ebl.a> a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, ib $$4, eav $$5) {
-      List<ebl.a> $$6 = Lists.newArrayList();
-      ib.a $$7 = new ib.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         int $$9 = $$4.v() + $$8;
-         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
-            ih $$10 = ih.c.a.a($$2);
-            int $$11 = this.i.a($$2);
-            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
-            int $$13 = this.b.a($$2);
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
-         }
-
-         if ($$8 == $$3 - 1) {
-            $$6.add(new ebl.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
-         }
+   public List<ebu.a> a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, int $$3, id $$4, ebe $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
+      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
+      if ($$7 >= $$6) {
+         $$7++;
       }
 
-      return $$6;
+      int $$8 = this.h.a($$2);
+      boolean $$9 = $$8 == 3;
+      boolean $$10 = $$8 >= 2;
+      int $$11;
+      if ($$9) {
+         $$11 = $$3;
+      } else if ($$10) {
+         $$11 = Math.max($$6, $$7) + 1;
+      } else {
+         $$11 = $$6 + 1;
+      }
+
+      for (int $$14 = 0; $$14 < $$11; $$14++) {
+         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
+      }
+
+      List<ebu.a> $$15 = new ArrayList<>();
+      if ($$9) {
+         $$15.add(new ebu.a($$4.b($$11), 0, false));
+      }
+
+      id.a $$16 = new id.a();
+      ij $$17 = ij.c.a.a($$2);
+      Function<dpi, dpi> $$18 = $$1x -> $$1x.b(dis.i, $$17.o());
+      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
+      if ($$10) {
+         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
+      }
+
+      return $$15;
    }
 
-   private void a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, eav $$4, List<ebl.a> $$5, ib.a $$6, int $$7, ih $$8, int $$9, int $$10) {
-      int $$11 = $$7 + $$9;
-      int $$12 = $$6.u();
-      int $$13 = $$6.w();
-      int $$14 = $$9;
+   private ebu.a a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, int $$3, id $$4, ebe $$5, Function<dpi, dpi> $$6, ij $$7, int $$8, boolean $$9, id.a $$10) {
+      $$10.g($$4).c(ij.b, $$8);
+      int $$11 = $$3 - 1 + this.l.a($$2);
+      boolean $$12 = $$9 || $$11 < $$8;
+      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
+      id $$14 = $$4.a($$7, $$13).b($$11);
+      int $$15 = $$12 ? 2 : 1;
 
-      while ($$14 < $$3 && $$10 > 0) {
-         if ($$14 >= 1) {
-            int $$15 = $$7 + $$14;
-            $$12 += $$8.j();
-            $$13 += $$8.l();
-            $$11 = $$15;
-            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
-               $$11 = $$15 + 1;
-            }
+      for (int $$16 = 0; $$16 < $$15; $$16++) {
+         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
+      }
 
-            $$5.add(new ebl.a($$6.i(), 0, false));
+      ij $$17 = $$14.v() > $$10.v() ? ij.b : ij.a;
+
+      while (true) {
+         int $$18 = $$10.k($$14);
+         if ($$18 == 0) {
+            return new ebu.a($$14.c(), 0, false);
          }
 
-         $$14++;
-         $$10--;
+         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
+         boolean $$20 = $$2.i() < $$19;
+         $$10.c($$20 ? $$17 : $$7);
+         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
       }
-
-      if ($$11 - $$7 > 1) {
-         ib $$16 = new ib($$12, $$11, $$13);
-         $$5.add(new ebl.a($$16, 0, false));
-         $$5.add(new ebl.a($$16.c(2), 0, false));
-      }
-   }
-
-   @Override
-   protected boolean a(czd $$0, ib $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
    }
 }

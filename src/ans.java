@@ -1,116 +1,44 @@
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Set;
+import javax.annotation.Nullable;
 
 public class ans {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("commands.tag.remove.failed"));
+   public static void a(CommandDispatcher<dv> $$0) {
+      RequiredArgumentBuilder<dv, gk> $$1 = (RequiredArgumentBuilder<dv, gk>)((RequiredArgumentBuilder)dw.a("targets", ei.d())
+            .executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), null, null)))
+         .then(dw.a("*").then(dw.a("sound", ew.a()).suggests(ht.c).executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), null, ew.e($$0x, "sound")))));
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tag").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("targets", eh.b())
-                        .then(
-                           dv.a("add")
-                              .then(
-                                 dv.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
-                     .then(
-                        dv.a("remove")
-                           .then(
-                              dv.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> dz.b(a(eh.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((du)$$0x.getSource(), eh.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                           )
-                     ))
-                  .then(dv.a("list").executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"))))
-            )
-      );
-   }
-
-   private static Collection<String> a(Collection<? extends bpv> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-
-      for (bpv $$2 : $$0) {
-         $$1.addAll($$2.ak());
+      for (aup $$2 : aup.values()) {
+         $$1.then(
+            ((LiteralArgumentBuilder)dw.a($$2.a()).executes($$1x -> a((dv)$$1x.getSource(), ei.f($$1x, "targets"), $$2, null)))
+               .then(dw.a("sound", ew.a()).suggests(ht.c).executes($$1x -> a((dv)$$1x.getSource(), ei.f($$1x, "targets"), $$2, ew.e($$1x, "sound"))))
+         );
       }
 
-      return $$1;
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static int a(du $$0, Collection<? extends bpv> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   private static int a(dv $$0, Collection<apv> $$1, @Nullable aup $$2, @Nullable ajv $$3) {
+      aew $$4 = new aew($$3, $$2);
 
-      for (bpv $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
+      for (apv $$5 : $$1) {
+         $$5.d.b($$4);
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wg.a("commands.tag.add.success.single", $$2, $$1.iterator().next().O_()), true);
+      if ($$2 != null) {
+         if ($$3 != null) {
+            $$0.a(() -> wi.a("commands.stopsound.success.source.sound", wi.a($$3), $$2.a()), true);
          } else {
-            $$0.a(() -> wg.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+            $$0.a(() -> wi.a("commands.stopsound.success.source.any", $$2.a()), true);
          }
-
-         return $$3;
-      }
-   }
-
-   private static int b(du $$0, Collection<? extends bpv> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bpv $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
+      } else if ($$3 != null) {
+         $$0.a(() -> wi.a("commands.stopsound.success.sourceless.sound", wi.a($$3)), true);
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wg.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wg.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int a(du $$0, Collection<? extends bpv> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (bpv $$3 : $$1) {
-         $$2.addAll($$3.ak());
+         $$0.a(() -> wi.c("commands.stopsound.success.sourceless.any"), true);
       }
 
-      if ($$1.size() == 1) {
-         bpv $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> wg.a("commands.tag.list.single.empty", $$4.O_()), false);
-         } else {
-            $$0.a(() -> wg.a("commands.tag.list.single.success", $$4.O_(), $$2.size(), wj.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> wg.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> wg.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), wj.a($$2)), false);
-      }
-
-      return $$2.size();
+      return $$1.size();
    }
 }

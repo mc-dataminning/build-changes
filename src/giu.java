@@ -1,24 +1,27 @@
-public class giu extends gjt<cgp, fqk<cgp>> {
-   private final gat a;
-
-   public giu(ghd<cgp, fqk<cgp>> $$0, gat $$1) {
-      super($$0);
-      this.a = $$1;
+public class giu extends ggx<cdl, ftm<cdl>> {
+   public giu(gfr.a $$0) {
+      super($$0, new ftm<>($$0.a(ftu.cc)), 0.5F);
+      this.a(new gkr(this, $$0.f()));
+      this.a(new gks(this));
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, cgp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      doz $$10 = $$3.gn();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, gla.d);
-         $$0.b();
+   protected float a(cdl $$0, float $$1) {
+      return $$0.gx();
+   }
+
+   public void a(cdl $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
+      if ($$0.gw()) {
+         float $$6 = $$0.G($$2);
+         this.f.a($$6, $$6, $$6);
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gw()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public ajv a(cdl $$0) {
+      return $$0.gt();
    }
 }

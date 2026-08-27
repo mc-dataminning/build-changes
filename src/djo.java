@@ -1,46 +1,79 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class djo extends djh {
-   protected djo(doy.d $$0) {
+public class djo extends dch {
+   public static final MapCodec<djo> a = b(djo::new);
+   public static final int b = 2;
+   public static final dqi c = dpy.aE;
+   private static final int d = 24000;
+   private static final int e = 12000;
+   private static final int f = 300;
+   private static final etc g = dch.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+
+   @Override
+   public MapCodec<djo> a() {
+      return a;
+   }
+
+   public djo(dph.d $$0) {
       super($$0);
-   }
-
-   private static boolean b(doz $$0, cza $$1, ib $$2) {
-      ib $$3 = $$2.c();
-      doz $$4 = $$1.a_($$3);
-      if ($$4.a(dca.dN) && $$4.c(djg.c) == 1) {
-         return true;
-      } else if ($$4.u().e() == 8) {
-         return false;
-      } else {
-         int $$5 = ekj.a($$1, $$0, $$2, $$4, $$3, ih.b, $$4.b($$1, $$3));
-         return $$5 < $$1.P();
-      }
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends djo> a();
-
-   private static boolean c(doz $$0, cza $$1, ib $$2) {
-      ib $$3 = $$2.c();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(avh.a);
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dca.j.n());
-      } else {
-         if ($$1.A($$2.c()) >= 9) {
-            doz $$4 = this.n();
+   public etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return g;
+   }
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               ib $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dca.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dca.dN))));
-               }
-            }
+   public int m(dpi $$0) {
+      return $$0.c(c);
+   }
+
+   private boolean n(dpi $$0) {
+      return this.m($$0) == 2;
+   }
+
+   @Override
+   public void a(dpi $$0, apu $$1, id $$2, axt $$3) {
+      if (!this.n($$0)) {
+         $$1.a(null, $$2, auo.yc, aup.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.a(c, Integer.valueOf(this.m($$0) + 1)), 2);
+      } else {
+         $$1.a(null, $$2, auo.yd, aup.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         cez $$4 = bqg.aQ.a((czg)$$1);
+         if ($$4 != null) {
+            esj $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), axm.g($$1.z.i() * 360.0F), 0.0F);
+            $$1.b($$4);
          }
       }
+   }
+
+   @Override
+   public void b(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.x_() && $$5) {
+         $$1.c(3009, $$2, 0);
+      }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(dub.i, $$2, dub.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.z.a(300));
+   }
+
+   @Override
+   public boolean a(dpi $$0, elq $$1) {
+      return false;
+   }
+
+   public static boolean a(cym $$0, id $$1) {
+      return $$0.a_($$1.d()).a(ave.cm);
    }
 }

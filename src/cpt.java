@@ -1,17 +1,15 @@
-import javax.annotation.Nullable;
-
-public class cpt extends cre {
-   public cpt(cre.a $$0) {
+public class cpt extends crn {
+   public cpt(crn.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean ak_() {
-      return true;
+   public boolean a(crs $$0) {
+      return $$0.G() == 1;
    }
 
-   @Nullable
-   public yn<?> a(crj $$0, cyx $$1, cjt $$2) {
-      return null;
+   @Override
+   public int g() {
+      return 1;
    }
 }

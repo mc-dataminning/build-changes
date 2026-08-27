@@ -3,40 +3,21 @@ import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bvd {
-   private static final int a = 60;
-
-   public static bsh<bqw> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bvt.a(
-         (Function<bvt.b<bqw>, ? extends App<bvt.c<bqw>, bvw<bqw>>>)($$3 -> $$3.group($$3.c(bzr.o), $$3.c(bzr.m), $$3.a(bzr.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dm()).a(avh.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     } else {
-                        ib $$8 = $$6.dm();
-                        ib.a $$9 = new ib.a();
-                        esf $$10 = esf.a($$6);
-
-                        for (ib $$11 : ib.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              doz $$12 = $$5x.a_($$11);
-                              doz $$13 = $$5x.a_($$9.a($$11, ih.a));
-                              if (!$$12.a(dca.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, ih.b)) {
-                                 ib $$14 = $$11.i();
-                                 $$5.a(new bsj($$14));
-                                 $$4.a(new bzu(new bsj($$14), $$1, 1));
-                                 break;
-                              }
-                           }
-                        }
-
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     }
-                  }))
+   public static bsm<brb> a(bzw<im> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return bvy.a(
+         (Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$5 -> $$5.group($$5.a(bzw.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  im $$10 = $$5.b($$6);
+                  if ($$7.ae() != $$10.a() || !$$10.b().a($$8.dk(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new bzz($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
       );
    }
 }

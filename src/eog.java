@@ -1,59 +1,54 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eog extends eoo {
-   public static final Codec<eog> a = RecordCodecBuilder.create($$0 -> a($$0).and(eog.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, eog::new));
-   private final eog.a b;
+public class eog extends eof {
+   public static final Codec<eog> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.either(ajv.a, ens.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eog::new)
+   );
+   private final Either<ajv, ens> j;
 
-   private eog(List<eqc> $$0, eog.a $$1) {
-      super($$0);
-      this.b = $$1;
+   private eog(Either<ajv, ens> $$0, int $$1, int $$2, List<eql> $$3, List<eoy> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public eoq b() {
-      return eor.p;
+   public eoe a() {
+      return eob.d;
    }
 
    @Override
-   public Set<epl<?>> a() {
-      return ImmutableSet.of(this.b.g);
+   public void a(Consumer<crs> $$0, enk $$1) {
+      ((ens)this.j.map($$1x -> $$1.a().getLootTable($$1x), $$0x -> $$0x)).a($$1, $$0);
    }
 
    @Override
-   public crj a(crj $$0, enb $$1) {
-      if ($$1.c(this.b.g) instanceof bof $$3) {
-         $$0.b(jp.d, $$3.af());
+   public void a(ent $$0) {
+      Optional<ajv> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         enm<ens> $$2 = new enm<>(enp.c, $$1.get());
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$1.get() + " is recursively called");
+            return;
+         }
       }
 
-      return $$0;
+      super.a($$0);
+      this.j.ifLeft($$1x -> {
+         enm<ens> $$2x = new enm<>(enp.c, $$1x);
+         $$0.a().getElementOptional($$2x).ifPresentOrElse($$3 -> $$3.a($$0.a("->{" + $$1x + "}", $$2x)), () -> $$0.b("Unknown loot table called " + $$1x));
+      }).ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
    }
 
-   public static eoo.a<?> a(eog.a $$0) {
-      return a($$1 -> new eog($$1, $$0));
+   public static eof.a<?> a(ajv $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eog(Either.left($$0), $$1, $$2, $$3, $$4));
    }
 
-   public static enum a implements aye {
-      a("this", epo.a),
-      b("killer", epo.d),
-      c("killer_player", epo.b),
-      d("block_entity", epo.h);
-
-      public static final Codec<eog.a> e = aye.a(eog.a::values);
-      private final String f;
-      final epl<?> g;
-
-      private a(String $$0, epl<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static eof.a<?> a(ens $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eog(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

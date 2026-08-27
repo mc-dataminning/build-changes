@@ -1,19 +1,31 @@
-public class cyv {
-   private static int[] a = new int[65536];
+import javax.annotation.Nullable;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+public enum cyv implements cym {
+   a;
+
+   @Nullable
+   @Override
+   public dmo c_(id $$0) {
+      return null;
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
+   @Override
+   public dpi a_(id $$0) {
+      return dcj.a.n();
    }
 
-   public static int a() {
-      return a(0.5, 1.0);
+   @Override
+   public elb b_(id $$0) {
+      return elc.a.g();
+   }
+
+   @Override
+   public int I_() {
+      return 0;
+   }
+
+   @Override
+   public int J_() {
+      return 0;
    }
 }

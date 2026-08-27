@@ -1,37 +1,138 @@
-public enum cju {
-   a(0, "cape"),
-   b(1, "jacket"),
-   c(2, "left_sleeve"),
-   d(3, "right_sleeve"),
-   e(4, "left_pants_leg"),
-   f(5, "right_pants_leg"),
-   g(6, "hat");
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private final int h;
-   private final int i;
-   private final String j;
-   private final wg k;
+public class cju implements cyt {
+   private static final int b = 1200;
+   public static final int a = 24000;
+   private static final int c = 25;
+   private static final int d = 75;
+   private static final int e = 25;
+   private static final int f = 10;
+   private static final int g = 10;
+   private final axt h = axt.a();
+   private final enf i;
+   private int j;
+   private int k;
+   private int l;
 
-   private cju(int $$0, String $$1) {
-      this.h = $$0;
-      this.i = 1 << $$0;
-      this.j = $$1;
-      this.k = wg.c("options.modelPart." + $$1);
+   public cju(enf $$0) {
+      this.i = $$0;
+      this.j = 1200;
+      this.k = $$0.t();
+      this.l = $$0.u();
+      if (this.k == 0 && this.l == 0) {
+         this.k = 24000;
+         $$0.d(this.k);
+         this.l = 25;
+         $$0.e(this.l);
+      }
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   public int a(apu $$0, boolean $$1, boolean $$2) {
+      if (!$$0.aa().b(czc.L)) {
+         return 0;
+      } else if (--this.j > 0) {
+         return 0;
+      } else {
+         this.j = 1200;
+         this.k -= 1200;
+         this.i.d(this.k);
+         if (this.k > 0) {
+            return 0;
+         } else {
+            this.k = 24000;
+            if (!$$0.aa().b(czc.e)) {
+               return 0;
+            } else {
+               int $$3 = this.l;
+               this.l = axm.a(this.l + 25, 25, 75);
+               this.i.e(this.l);
+               if (this.h.a(100) > $$3) {
+                  return 0;
+               } else if (this.a($$0)) {
+                  this.l = 25;
+                  return 1;
+               } else {
+                  return 0;
+               }
+            }
+         }
+      }
    }
 
-   public int b() {
-      return this.h;
+   private boolean a(apu $$0) {
+      cka $$1 = $$0.j();
+      if ($$1 == null) {
+         return true;
+      } else if (this.h.a(10) != 0) {
+         return false;
+      } else {
+         id $$2 = $$1.dm();
+         int $$3 = 48;
+         cbw $$4 = $$0.y();
+         Optional<id> $$5 = $$4.d($$0x -> $$0x.a(cca.o), $$0x -> true, $$2, 48, cbw.b.c);
+         id $$6 = $$5.orElse($$2);
+         id $$7 = this.a($$0, $$6, 48);
+         if ($$7 != null && this.a($$0, $$7)) {
+            if ($$0.t($$7).a(avd.ah)) {
+               return false;
+            }
+
+            cjt $$8 = bqg.bk.a($$0, $$7, bqx.h);
+            if ($$8 != null) {
+               for (int $$9 = 0; $$9 < 2; $$9++) {
+                  this.a($$0, $$8, 4);
+               }
+
+               this.i.a($$8.cw());
+               $$8.v(48000);
+               $$8.i($$6);
+               $$8.a($$6, 16);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   public String c() {
-      return this.j;
+   private void a(apu $$0, cjt $$1, int $$2) {
+      id $$3 = this.a($$0, $$1.dm(), $$2);
+      if ($$3 != null) {
+         ceu $$4 = bqg.bd.a($$0, $$3, bqx.h);
+         if ($$4 != null) {
+            $$4.b($$1, true);
+         }
+      }
    }
 
-   public wg d() {
-      return this.k;
+   @Nullable
+   private id a(czj $$0, id $$1, int $$2) {
+      id $$3 = null;
+      brm $$4 = bro.a(bqg.bk);
+
+      for (int $$5 = 0; $$5 < 10; $$5++) {
+         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
+         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
+         int $$8 = $$0.a(dva.a.b, $$6, $$7);
+         id $$9 = new id($$6, $$8, $$7);
+         if ($$4.isSpawnPositionOk($$0, $$9, bqg.bk)) {
+            $$3 = $$9;
+            break;
+         }
+      }
+
+      return $$3;
+   }
+
+   private boolean a(cym $$0, id $$1) {
+      for (id $$2 : id.a($$1, $$1.b(1, 2, 1))) {
+         if (!$$0.a_($$2).k($$0, $$2).c()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

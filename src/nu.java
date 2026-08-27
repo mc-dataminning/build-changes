@@ -1,101 +1,98 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class nu implements no {
-   private final np b;
-   private final cuy c;
-   private final cre d;
-   private final cvg e;
-   private final float f;
-   private final int g;
-   private final Map<String, an<?>> h = new LinkedHashMap<>();
+public class nu implements nq {
+   private final nr b;
+   private final crn c;
+   private final int d;
+   private final List<String> e = Lists.newArrayList();
+   private final Map<Character, cvp> f = Maps.newLinkedHashMap();
+   private final Map<String, an<?>> g = new LinkedHashMap<>();
    @Nullable
-   private String i;
-   private final cus.a<?> j;
+   private String h;
+   private boolean i = true;
 
-   private nu(np $$0, cuy $$1, cyw $$2, cvg $$3, float $$4, int $$5, cus.a<?> $$6) {
+   public nu(nr $$0, czf $$1, int $$2) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.p();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.j = $$6;
+      this.c = $$1.p();
+      this.d = $$2;
    }
 
-   public static <T extends cus> nu a(cvg $$0, np $$1, cyw $$2, float $$3, int $$4, cvn<T> $$5, cus.a<T> $$6) {
-      return new nu($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
+   public static nu a(nr $$0, czf $$1) {
+      return a($$0, $$1, 1);
    }
 
-   public static nu a(cvg $$0, np $$1, cyw $$2, float $$3, int $$4) {
-      return new nu($$1, cuy.a, $$2, $$0, $$3, $$4, cux::new);
+   public static nu a(nr $$0, czf $$1, int $$2) {
+      return new nu($$0, $$1, $$2);
    }
 
-   public static nu b(cvg $$0, np $$1, cyw $$2, float $$3, int $$4) {
-      return new nu($$1, c($$2), $$2, $$0, $$3, $$4, cuv::new);
+   public nu a(Character $$0, avt<crn> $$1) {
+      return this.a($$0, cvp.a($$1));
    }
 
-   public static nu c(cvg $$0, np $$1, cyw $$2, float $$3, int $$4) {
-      return new nu($$1, b($$2), $$2, $$0, $$3, $$4, cvy::new);
+   public nu a(Character $$0, czf $$1) {
+      return this.a($$0, cvp.a($$1));
    }
 
-   public static nu d(cvg $$0, np $$1, cyw $$2, float $$3, int $$4) {
-      return new nu($$1, cuy.a, $$2, $$0, $$3, $$4, cwc::new);
+   public nu a(Character $$0, cvp $$1) {
+      if (this.f.containsKey($$0)) {
+         throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
+      } else if ($$0 == ' ') {
+         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
+      } else {
+         this.f.put($$0, $$1);
+         return this;
+      }
+   }
+
+   public nu b(String $$0) {
+      if (!this.e.isEmpty() && $$0.length() != this.e.get(0).length()) {
+         throw new IllegalArgumentException("Pattern must be the same width on every line!");
+      } else {
+         this.e.add($$0);
+         return this;
+      }
    }
 
    public nu b(String $$0, an<?> $$1) {
-      this.h.put($$0, $$1);
+      this.g.put($$0, $$1);
       return this;
    }
 
-   public nu b(@Nullable String $$0) {
+   public nu c(@Nullable String $$0) {
+      this.h = $$0;
+      return this;
+   }
+
+   public nu a(boolean $$0) {
       this.i = $$0;
       return this;
    }
 
    @Override
-   public cre a() {
-      return this.d;
+   public crn a() {
+      return this.c;
    }
 
    @Override
-   public void a(nq $$0, ajt $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.h.forEach($$2::a);
-      cus $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new crj(this.d), this.f, this.g);
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
+   public void a(ns $$0, ajv $$1) {
+      cwa $$2 = this.a($$1);
+      ae.a $$3 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
+      this.g.forEach($$3::a);
+      cvz $$4 = new cvz(Objects.requireNonNullElse(this.h, ""), nq.a(this.b), $$2, new crs(this.c, this.d), this.i);
+      $$0.a($$1, $$4, $$3.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private static cuy b(cyw $$0) {
-      if ($$0.p().y()) {
-         return cuy.a;
-      } else {
-         return $$0.p() instanceof cph ? cuy.b : cuy.c;
-      }
-   }
-
-   private static cuy c(cyw $$0) {
-      return $$0.p() instanceof cph ? cuy.b : cuy.c;
-   }
-
-   private static cuy a(cvn<? extends cus> $$0, cyw $$1) {
-      if ($$0 == cvn.p) {
-         return b($$1);
-      } else if ($$0 == cvn.q) {
-         return c($$1);
-      } else if ($$0 != cvn.r && $$0 != cvn.s) {
-         throw new IllegalStateException("Unknown cooking recipe type");
-      } else {
-         return cuy.a;
-      }
-   }
-
-   private void a(ajt $$0) {
-      if (this.h.isEmpty()) {
+   private cwa a(ajv $$0) {
+      if (this.g.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
+      } else {
+         return cwa.a(this.f, this.e);
       }
    }
 }

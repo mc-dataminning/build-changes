@@ -1,37 +1,20 @@
-public class afw implements yn<afl> {
-   public static final ye<vg, afw> a = yn.a(afw::a, afw::new);
-   private final int b;
-   private final String c;
+public record afw(float b) implements yp<afn> {
+   public static final yg<vi, afw> a = yp.a(afw::a, afw::new);
 
-   public afw(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private afw(vi $$0) {
+      this($$0.readFloat());
    }
 
-   private afw(vg $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
-   }
-
-   private void a(vg $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
+   private void a(vi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yp<afw> a() {
-      return afj.bn;
+   public yr<afw> a() {
+      return afl.bl;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public String e() {
-      return this.c;
    }
 }

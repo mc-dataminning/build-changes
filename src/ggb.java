@@ -1,11 +1,19 @@
-public abstract class ggb<T extends cgg> extends ggo<T, fra<T>> {
-   protected ggb(gfi.a $$0, fra<T> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new giy<>(this, $$0.f(), $$0.d()));
+public class ggb extends ggx<cha, fqz<cha>> {
+   private static final ajv a = new ajv("textures/entity/ghast/ghast.png");
+   private static final ajv i = new ajv("textures/entity/ghast/ghast_shooting.png");
+
+   public ggb(gfr.a $$0) {
+      super($$0, new fqz<>($$0.a(ftu.ag)), 1.5F);
    }
 
-   protected void a(T $$0, ewi $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public ajv a(cha $$0) {
+      return $$0.r() ? i : a;
+   }
+
+   protected void a(cha $$0, ewr $$1, float $$2) {
+      float $$3 = 1.0F;
+      float $$4 = 4.5F;
+      float $$5 = 4.5F;
+      $$1.b(4.5F, 4.5F, 4.5F);
    }
 }

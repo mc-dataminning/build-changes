@@ -1,34 +1,74 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public class grl implements grn {
+   private static final int a = 600;
+   private static final wi b = wi.c("tutorial.punch_tree.title");
+   private static final wi c = wi.a("tutorial.punch_tree.description", grm.a("attack"));
+   private final grm d;
+   private fgj e;
+   private int f;
+   private int g;
 
-public abstract class grl extends fjo {
-   protected static final int d = 17;
-   protected static final int o = 7;
-   protected static final long p = 5368709120L;
-   protected static final int q = 5000268;
-   protected static final int r = 7105644;
-   protected static final int s = 8388479;
-   protected static final int u = 3368635;
-   protected static final int v = 7107012;
-   protected static final int w = 8226750;
-   protected static final int x = 32;
-   private final List<grj> a = Lists.newArrayList();
-
-   public grl(wg $$0) {
-      super($$0);
+   public grl(grm $$0) {
+      this.d = $$0;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gro.f);
+      } else {
+         if (this.f == 1) {
+            fzk $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fZ().a(avm.r)) {
+                  this.d.a(gro.e);
+                  return;
+               }
+
+               if (gri.a($$0)) {
+                  this.d.a(gro.e);
+                  return;
+               }
+            }
+         }
+
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new fgj(fgj.a.c, b, c, true);
+            this.d.e().aA().a(this.e);
+         }
+      }
    }
 
-   protected grj a(grj $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
-   public wg m() {
-      return wf.a(this.a.stream().map(grj::a).collect(Collectors.toList()));
+   @Override
+   public void a(fuq $$0, id $$1, dpi $$2, float $$3) {
+      boolean $$4 = $$2.a(ave.t);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(gro.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
+   }
+
+   @Override
+   public void a(crs $$0) {
+      if ($$0.a(avm.r)) {
+         this.d.a(gro.e);
+      }
    }
 }

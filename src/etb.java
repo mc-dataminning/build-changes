@@ -1,81 +1,46 @@
-import javax.annotation.Nullable;
+public final class etb extends ess {
+   private final ess d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public class etb implements eta {
-   private static final String a = "Score";
-   private static final String b = "Locked";
-   private static final String c = "display";
-   private static final String d = "format";
-   private int e;
-   private boolean f = true;
-   @Nullable
-   private wg g;
-   @Nullable
-   private xw h;
-
-   @Override
-   public int a() {
-      return this.e;
-   }
-
-   public void a(int $$0) {
-      this.e = $$0;
+   protected etb(ess $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
    @Override
-   public boolean b() {
-      return this.f;
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   public wg d() {
-      return this.g;
-   }
-
-   public void a(@Nullable wg $$0) {
-      this.g = $$0;
-   }
-
-   @Nullable
    @Override
-   public xw c() {
-      return this.h;
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public void b(@Nullable xw $$0) {
-      this.h = $$0;
+   @Override
+   public int a(ij.a $$0) {
+      return this.a($$0, this.d.a($$0));
    }
 
-   public tm a(in.a $$0) {
-      tm $$1 = new tm();
-      $$1.a("Score", this.e);
-      $$1.a("Locked", this.f);
-      if (this.g != null) {
-         $$1.a("display", wg.a.a(this.g, $$0));
-      }
-
-      if (this.h != null) {
-         xy.b.encodeStart($$0.a(ua.a), this.h).result().ifPresent($$1x -> $$1.a("format", $$1x));
-      }
-
-      return $$1;
+   @Override
+   public int b(ij.a $$0) {
+      return this.a($$0, this.d.b($$0));
    }
 
-   public static etb a(tm $$0, in.a $$1) {
-      etb $$2 = new etb();
-      $$2.e = $$0.h("Score");
-      $$2.f = $$0.q("Locked");
-      if ($$0.b("display", 8)) {
-         $$2.g = wg.a.a($$0.l("display"), $$1);
-      }
-
-      if ($$0.b("format", 10)) {
-         xy.b.parse($$1.a(ua.a), $$0.c("format")).result().ifPresent($$1x -> $$2.h = $$1x);
-      }
-
-      return $$2;
+   private int a(ij.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return axm.a($$1, $$2, $$3) - $$2;
    }
 }

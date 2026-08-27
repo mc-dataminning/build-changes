@@ -11,13 +11,13 @@ public class ca extends cx<ca.a> {
       return ca.a.a;
    }
 
-   public void a(apt $$0, cjs $$1, crj $$2) {
+   public void a(apv $$0, cjz $$1, crs $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         crj $$7 = $$1.a($$6);
+         crs $$7 = $$1.a($$6);
          if ($$7.d()) {
             $$4++;
          } else {
@@ -31,16 +31,16 @@ public class ca extends cx<ca.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(apt $$0, cjs $$1, crj $$2, int $$3, int $$4, int $$5) {
+   private void a(apv $$0, cjz $$1, crs $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
    public static record a(Optional<bc> b, ca.a.a c, List<cc> d) implements cx.a {
       public static final Codec<ca.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  aws.a(br.b, "player").forGetter(ca.a::a),
-                  aws.a(ca.a.a.a, "slots", ca.a.a.b).forGetter(ca.a::b),
-                  aws.a(cc.a.listOf(), "items", List.of()).forGetter(ca.a::c)
+                  awu.a(br.b, "player").forGetter(ca.a::a),
+                  awu.a(ca.a.a.a, "slots", ca.a.a.b).forGetter(ca.a::b),
+                  awu.a(cc.a.listOf(), "items", List.of()).forGetter(ca.a::c)
                )
                .apply($$0, ca.a::new)
       );
@@ -53,17 +53,17 @@ public class ca extends cx<ca.a> {
          return am.f.a(new ca.a(Optional.empty(), ca.a.a.b, List.of($$0)));
       }
 
-      public static an<ca.a> a(cyw... $$0) {
+      public static an<ca.a> a(czf... $$0) {
          cc[] $$1 = new cc[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-            $$1[$$2] = new cc(Optional.of(ip.a($$0[$$2].p().n())), cm.d.c, cm.d.c, List.of(), List.of(), Optional.empty(), Optional.empty(), jn.c);
+            $$1[$$2] = new cc(Optional.of(ir.a($$0[$$2].p().n())), cm.d.c, cm.d.c, List.of(), List.of(), Optional.empty(), Optional.empty(), jp.c);
          }
 
          return a($$1);
       }
 
-      public boolean a(cjs $$0, crj $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cjz $$0, crs $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -77,7 +77,7 @@ public class ca extends cx<ca.a> {
                   return true;
                }
 
-               crj $$8 = $$0.a($$7);
+               crs $$8 = $$0.a($$7);
                if (!$$8.d()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }
@@ -105,9 +105,9 @@ public class ca extends cx<ca.a> {
       public static record a(cm.d c, cm.d d, cm.d e) {
          public static final Codec<ca.a.a> a = RecordCodecBuilder.create(
             $$0 -> $$0.group(
-                     aws.a(cm.d.d, "occupied", cm.d.c).forGetter(ca.a.a::a),
-                     aws.a(cm.d.d, "full", cm.d.c).forGetter(ca.a.a::b),
-                     aws.a(cm.d.d, "empty", cm.d.c).forGetter(ca.a.a::c)
+                     awu.a(cm.d.d, "occupied", cm.d.c).forGetter(ca.a.a::a),
+                     awu.a(cm.d.d, "full", cm.d.c).forGetter(ca.a.a::b),
+                     awu.a(cm.d.d, "empty", cm.d.c).forGetter(ca.a.a::c)
                   )
                   .apply($$0, ca.a.a::new)
          );

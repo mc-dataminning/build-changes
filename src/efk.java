@@ -1,54 +1,40 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public interface efk {
+   aju<efq> a = a("pillager_outpost");
+   aju<efq> b = a("mineshaft");
+   aju<efq> c = a("mineshaft_mesa");
+   aju<efq> d = a("mansion");
+   aju<efq> e = a("jungle_pyramid");
+   aju<efq> f = a("desert_pyramid");
+   aju<efq> g = a("igloo");
+   aju<efq> h = a("shipwreck");
+   aju<efq> i = a("shipwreck_beached");
+   aju<efq> j = a("swamp_hut");
+   aju<efq> k = a("stronghold");
+   aju<efq> l = a("monument");
+   aju<efq> m = a("ocean_ruin_cold");
+   aju<efq> n = a("ocean_ruin_warm");
+   aju<efq> o = a("fortress");
+   aju<efq> p = a("nether_fossil");
+   aju<efq> q = a("end_city");
+   aju<efq> r = a("buried_treasure");
+   aju<efq> s = a("bastion_remnant");
+   aju<efq> t = a("village_plains");
+   aju<efq> u = a("village_desert");
+   aju<efq> v = a("village_savanna");
+   aju<efq> w = a("village_snowy");
+   aju<efq> x = a("village_taiga");
+   aju<efq> y = a("ruined_portal");
+   aju<efq> z = a("ruined_portal_desert");
+   aju<efq> A = a("ruined_portal_jungle");
+   aju<efq> B = a("ruined_portal_swamp");
+   aju<efq> C = a("ruined_portal_mountain");
+   aju<efq> D = a("ruined_portal_ocean");
+   aju<efq> E = a("ruined_portal_nether");
+   aju<efq> F = a("ancient_city");
+   aju<efq> G = a("trail_ruins");
+   aju<efq> H = a("trial_chambers");
 
-public class efk extends elz {
-   private static final String a = "Remaining";
-   private static final String b = "All";
-   private final LongSet c;
-   private final LongSet d;
-
-   public static elz.a<efk> a() {
-      return new elz.a<>(efk::new, efk::b, ayq.o);
-   }
-
-   private efk(LongSet $$0, LongSet $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public efk() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public static efk b(tm $$0, in.a $$1) {
-      return new efk(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
-   }
-
-   @Override
-   public tm a(tm $$0, in.a $$1) {
-      $$0.a("All", this.c.toLongArray());
-      $$0.a("Remaining", this.d.toLongArray());
-      return $$0;
-   }
-
-   public void a(long $$0) {
-      this.c.add($$0);
-      this.d.add($$0);
-   }
-
-   public boolean b(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void d(long $$0) {
-      this.d.remove($$0);
-   }
-
-   public LongSet b() {
-      return this.c;
+   private static aju<efq> a(String $$0) {
+      return aju.a(ku.aG, new ajv($$0));
    }
 }

@@ -1,37 +1,28 @@
-public class adm implements yn<aay> {
-   public static final ye<vg, adm> a = yn.a(adm::a, adm::new);
-   private final int b;
-   private final byte c;
+import javax.annotation.Nullable;
 
-   public adm(bpv $$0, byte $$1) {
-      this.b = $$0.aj();
-      this.c = $$1;
+public record adm(String b, @Nullable String c) implements yp<aba> {
+   public static final yg<vi, adm> a = yp.a(adm::a, adm::new);
+
+   private adm(vi $$0) {
+      this($$0.p(), $$0.c(vi::p));
    }
 
-   private adm(vg $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vg $$0) {
-      $$0.c(this.b);
-      $$0.k(this.c);
+   private void a(vi $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vi::a);
    }
 
    @Override
-   public yp<adm> a() {
-      return afj.am;
+   public yr<adm> a() {
+      return afl.cc;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public bpv a(cyx $$0) {
-      return $$0.a(this.b);
-   }
-
-   public byte b() {
+   @Nullable
+   public String e() {
       return this.c;
    }
 }

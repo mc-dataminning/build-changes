@@ -1,28 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebk extends ebg {
-   public static final Codec<ebk> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ebk::new));
+public class ebk<P extends ebj> {
+   public static final ebk<ebm> a = a("two_layers_feature_size", ebm.d);
+   public static final ebk<ebl> b = a("three_layers_feature_size", ebl.d);
+   private final Codec<P> c;
 
-   public ebk(bnf $$0, bnf $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends ebj> ebk<P> a(String $$0, Codec<P> $$1) {
+      return ja.a(kt.aa, $$0, new ebk<>($$1));
    }
 
-   @Override
-   protected ebm<?> a() {
-      return ebm.f;
+   private ebk(Codec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(czd $$0, ebl.b $$1, axr $$2, eav $$3, int $$4, ebl.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(axr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return axk.k((float)$$1 + 0.5F) + axk.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public Codec<P> a() {
+      return this.c;
    }
 }

@@ -1,68 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhf extends dby implements dcb {
+public class dhf extends dch {
    public static final MapCodec<dhf> a = b(dhf::new);
+   protected static final etc b = dch.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<dhf> a() {
       return a;
    }
 
-   public dhf(doy.d $$0) {
+   public dhf(dph.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(cza $$0, ib $$1, doz $$2) {
-      if (!$$0.a_($$1.c()).a((cyd)$$0, $$1)) {
-         return false;
-      } else {
-         for (ib $$3 : ib.a($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(avc.aL)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
+   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return b;
    }
 
    @Override
-   public boolean a(cyx $$0, axr $$1, ib $$2, doz $$3) {
-      return true;
+   protected etc b_(dpi $$0, cym $$1, id $$2) {
+      return esz.b();
    }
 
    @Override
-   public void a(aps $$0, axr $$1, ib $$2, doz $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (ib $$6 : ib.a($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         doz $$7 = $$0.a_($$6);
-         if ($$7.a(dca.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dca.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dca.on.n() : dca.ow.n(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dca.on.n(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dca.ow.n(), 3);
-      }
+   protected etc c(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return esz.b();
    }
 
    @Override
-   public dcb.a ar_() {
-      return dcb.a.a;
+   protected boolean a(dpi $$0, elq $$1) {
+      return false;
+   }
+
+   @Override
+   protected float d(dpi $$0, cym $$1, id $$2) {
+      return 0.2F;
    }
 }

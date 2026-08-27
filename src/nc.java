@@ -1,43 +1,47 @@
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class nc<T> {
-   final String a;
-   final Function<T, JsonElement> b;
+public class nc implements Supplier<JsonElement> {
+   private final Map<ne<?>, ne<?>.a> a = Maps.newLinkedHashMap();
 
-   public nc(String $$0, Function<T, JsonElement> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public <T> nc a(ne<T> $$0, T $$1) {
+      ne<?>.a $$2 = this.a.put($$0, $$0.a($$1));
+      if ($$2 != null) {
+         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
+      } else {
+         return this;
+      }
    }
 
-   public nc<T>.a a(T $$0) {
-      return new nc.a($$0);
+   public static nc a() {
+      return new nc();
    }
 
-   @Override
-   public String toString() {
-      return this.a;
+   public static nc a(nc $$0, nc $$1) {
+      nc $$2 = new nc();
+      $$2.a.putAll($$0.a);
+      $$2.a.putAll($$1.a);
+      return $$2;
    }
 
-   public class a {
-      private final T b;
+   public JsonElement b() {
+      JsonObject $$0 = new JsonObject();
+      this.a.values().forEach($$1 -> $$1.a($$0));
+      return $$0;
+   }
 
-      public a(T $$1) {
-         this.b = $$1;
-      }
-
-      public nc<T> a() {
-         return nc.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(nc.this.a, nc.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return nc.this.a + "=" + this.b;
+   public static JsonElement a(List<nc> $$0) {
+      if ($$0.size() == 1) {
+         return $$0.get(0).b();
+      } else {
+         JsonArray $$1 = new JsonArray();
+         $$0.forEach($$1x -> $$1.add($$1x.b()));
+         return $$1;
       }
    }
 }

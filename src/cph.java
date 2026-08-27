@@ -1,199 +1,154 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.UUID;
+import java.util.function.Supplier;
 
-public class cph extends cre {
-   @Deprecated
-   private final dby a;
-
-   public cph(dby $$0, cre.a $$1) {
-      super($$1);
-      this.a = $$0;
-   }
-
-   @Override
-   public boa a(cuq $$0) {
-      boa $$1 = this.a(new cuo($$0));
-      if (!$$1.a() && this.y()) {
-         boa $$2 = this.a($$0.q(), $$0.o(), $$0.p()).a();
-         return $$2 == boa.b ? boa.c : $$2;
-      } else {
-         return $$1;
+public class cph extends crn implements cqu {
+   private static final EnumMap<cph.a, UUID> j = ac.a(new EnumMap<>(cph.a.class), $$0 -> {
+      $$0.put(cph.a.d, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"));
+      $$0.put(cph.a.c, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"));
+      $$0.put(cph.a.b, UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"));
+      $$0.put(cph.a.a, UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"));
+      $$0.put(cph.a.e, UUID.fromString("C1C72771-8B8E-BA4A-ACE0-81A93C8928B2"));
+   });
+   public static final jz a = new jy() {
+      @Override
+      protected crs a(jw $$0, crs $$1) {
+         return cph.a($$0, $$1) ? $$1 : super.a($$0, $$1);
       }
-   }
+   };
+   protected final cph.a b;
+   protected final in<cpi> c;
+   private final Supplier<Multimap<in<brv>, bry>> k;
 
-   public boa a(cuo $$0) {
-      if (!this.d().a($$0.q().J())) {
-         return boa.e;
-      } else if (!$$0.b()) {
-         return boa.e;
-      } else {
-         cuo $$1 = this.b($$0);
-         if ($$1 == null) {
-            return boa.e;
-         } else {
-            doz $$2 = this.c($$1);
-            if ($$2 == null) {
-               return boa.e;
-            } else if (!this.a($$1, $$2)) {
-               return boa.e;
-            } else {
-               ib $$3 = $$1.a();
-               cyx $$4 = $$1.q();
-               cjt $$5 = $$1.o();
-               crj $$6 = $$1.n();
-               doz $$7 = $$4.a_($$3);
-               if ($$7.a($$2.b())) {
-                  $$7 = this.a($$3, $$4, $$6, $$7);
-                  this.a($$3, $$4, $$5, $$6, $$7);
-                  a($$4, $$3, $$6);
-                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
-                  if ($$5 instanceof apt) {
-                     am.z.a((apt)$$5, $$3, $$6);
-                  }
-               }
-
-               djk $$8 = $$7.w();
-               $$4.a($$5, $$3, this.a($$7), aun.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
-               $$4.a(dts.i, $$3, dts.a.a($$5, $$7));
-               $$6.a(1, $$5);
-               return boa.a($$4.B);
-            }
-         }
-      }
-   }
-
-   protected aul a(doz $$0) {
-      return $$0.w().e();
-   }
-
-   @Nullable
-   public cuo b(cuo $$0) {
-      return $$0;
-   }
-
-   private static void a(cyx $$0, ib $$1, crj $$2) {
-      dmf $$3 = $$0.c_($$1);
-      if ($$3 != null) {
-         $$3.a($$2.a());
-      }
-   }
-
-   protected boolean a(ib $$0, cyx $$1, @Nullable cjt $$2, crj $$3, doz $$4) {
-      return a($$1, $$2, $$0, $$3);
-   }
-
-   @Nullable
-   protected doz c(cuo $$0) {
-      doz $$1 = this.d().a($$0);
-      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
-   }
-
-   private doz a(ib $$0, cyx $$1, crj $$2, doz $$3) {
-      ctq $$4 = $$2.a(jp.R, ctq.a);
-      if ($$4.a()) {
-         return $$3;
-      } else {
-         doz $$5 = $$4.a($$3);
-         if ($$5 != $$3) {
-            $$1.a($$0, $$5, 2);
-         }
-
-         return $$5;
-      }
-   }
-
-   protected boolean b(cuo $$0, doz $$1) {
-      cjt $$2 = $$0.o();
-      esf $$3 = $$2 == null ? esf.a() : esf.a($$2);
-      return (!this.c() || $$1.a((cza)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
-   }
-
-   protected boolean c() {
-      return true;
-   }
-
-   protected boolean a(cuo $$0, doz $$1) {
-      return $$0.q().a($$0.a(), $$1, 11);
-   }
-
-   public static boolean a(cyx $$0, @Nullable cjt $$1, ib $$2, crj $$3) {
-      MinecraftServer $$4 = $$0.o();
-      if ($$4 == null) {
+   public static boolean a(jw $$0, crs $$1) {
+      id $$2 = $$0.c().a($$0.d().c(dem.b));
+      List<bqt> $$3 = $$0.b().a(bqt.class, new ese($$2), bqf.f.and(new bqf.a($$1)));
+      if ($$3.isEmpty()) {
          return false;
       } else {
-         ctt $$5 = $$3.a(jp.F, ctt.a);
-         if (!$$5.b()) {
-            dmf $$6 = $$0.c_($$2);
-            if ($$6 != null) {
-               if ($$0.B || !$$6.q() || $$1 != null && $$1.gw()) {
-                  return $$5.a($$6, $$0.H_());
-               }
-
-               return false;
-            }
+         bqt $$4 = $$3.get(0);
+         bqh $$5 = bqv.h($$1);
+         crs $$6 = $$1.a(1);
+         $$4.a($$5, $$6);
+         if ($$4 instanceof bqv) {
+            ((bqv)$$4).a($$5, 2.0F);
+            ((bqv)$$4).fS();
          }
 
-         return false;
+         return true;
       }
    }
 
-   @Override
-   public String a() {
-      return this.d().g();
-   }
-
-   @Override
-   public void a(crj $$0, @Nullable cyx $$1, List<wg> $$2, csz $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d().a($$0, $$1, $$2, $$3, $$1 != null ? $$1.H_() : null);
-   }
-
-   public dby d() {
-      return this.a;
-   }
-
-   public void a(Map<dby, cre> $$0, cre $$1) {
-      $$0.put(this.d(), $$1);
-   }
-
-   @Override
-   public boolean an_() {
-      return !(this.a instanceof diw);
-   }
-
-   @Override
-   public void a(cgd $$0) {
-      cua $$1 = $$0.p().b(jp.Q, cua.a);
-      if ($$1 != null) {
-         crl.a($$0, $$1.a());
-      }
-   }
-
-   public static void a(crj $$0, dmh<?> $$1, Consumer<tm> $$2) {
-      ctt.a(jp.F, $$0, $$2x -> {
-         $$2.accept($$2x);
-         $$2x.r("id");
-         if (!$$2x.g()) {
-            dmf.a($$2x, $$1);
+   public cph(in<cpi> $$0, cph.a $$1, crn.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
+      dem.a(this, a);
+      this.k = Suppliers.memoize(() -> {
+         int $$2x = $$0.a().a($$1);
+         float $$3 = $$0.a().f();
+         Builder<in<brv>, bry> $$4 = ImmutableMultimap.builder();
+         UUID $$5 = j.get($$1);
+         $$4.put(bsa.a, new bry($$5, "Armor modifier", (double)$$2x, bry.a.a));
+         $$4.put(bsa.b, new bry($$5, "Armor toughness", (double)$$3, bry.a.a));
+         float $$6 = $$0.a().g();
+         if ($$6 > 0.0F) {
+            $$4.put(bsa.n, new bry($$5, "Armor knockback resistance", (double)$$6, bry.a.a));
          }
+
+         return $$4.build();
       });
    }
 
-   public static void a(crj $$0, dmh<?> $$1, tm $$2) {
-      $$2.r("id");
-      if ($$2.g()) {
-         $$0.c(jp.F);
-      } else {
-         dmf.a($$2, $$1);
-         $$0.b(jp.F, ctt.a($$2));
-      }
+   public cph.a f() {
+      return this.b;
    }
 
    @Override
-   public cmg m() {
-      return this.d().m();
+   public int g() {
+      return this.c.a().b();
+   }
+
+   public in<cpi> h() {
+      return this.c;
+   }
+
+   @Override
+   public boolean a(crs $$0, crs $$1) {
+      return this.c.a().d().get().a($$1) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public Multimap<in<brv>, bry> a(bqh $$0) {
+      return $$0 == this.b.a() ? this.k.get() : super.a($$0);
+   }
+
+   public int i() {
+      return this.c.a().a(this.b);
+   }
+
+   public float j() {
+      return this.c.a().f();
+   }
+
+   @Override
+   public bqh k() {
+      return this.b.a();
+   }
+
+   @Override
+   public in<aun> ap_() {
+      return this.h().a().c();
+   }
+
+   public static enum a implements ayg {
+      a(bqh.f, 11, "helmet"),
+      b(bqh.e, 16, "chestplate"),
+      c(bqh.d, 15, "leggings"),
+      d(bqh.c, 13, "boots"),
+      e(bqh.g, 16, "body");
+
+      public static final Codec<cph.a> f = ayg.b(cph.a::values);
+      private final bqh g;
+      private final String h;
+      private final int i;
+
+      private a(bqh $$0, int $$1, String $$2) {
+         this.g = $$0;
+         this.h = $$2;
+         this.i = $$1;
+      }
+
+      public int a(int $$0) {
+         return this.i * $$0;
+      }
+
+      public bqh a() {
+         return this.g;
+      }
+
+      public String b() {
+         return this.h;
+      }
+
+      public boolean d() {
+         return this == a || this == b || this == c || this == d;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
    }
 }

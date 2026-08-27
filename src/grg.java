@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface grg {
+public class grg implements grn {
+   public grg(grm $$0) {
+   }
 }

@@ -1,161 +1,52 @@
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class ctr {
+   public static final in<cto> a = a("water", new cto());
+   public static final in<cto> b = a("mundane", new cto());
+   public static final in<cto> c = a("thick", new cto());
+   public static final in<cto> d = a("awkward", new cto());
+   public static final in<cto> e = a("night_vision", new cto(new bpm(bpo.p, 3600)));
+   public static final in<cto> f = a("long_night_vision", new cto("night_vision", new bpm(bpo.p, 9600)));
+   public static final in<cto> g = a("invisibility", new cto(new bpm(bpo.n, 3600)));
+   public static final in<cto> h = a("long_invisibility", new cto("invisibility", new bpm(bpo.n, 9600)));
+   public static final in<cto> i = a("leaping", new cto(new bpm(bpo.h, 3600)));
+   public static final in<cto> j = a("long_leaping", new cto("leaping", new bpm(bpo.h, 9600)));
+   public static final in<cto> k = a("strong_leaping", new cto("leaping", new bpm(bpo.h, 1800, 1)));
+   public static final in<cto> l = a("fire_resistance", new cto(new bpm(bpo.l, 3600)));
+   public static final in<cto> m = a("long_fire_resistance", new cto("fire_resistance", new bpm(bpo.l, 9600)));
+   public static final in<cto> n = a("swiftness", new cto(new bpm(bpo.a, 3600)));
+   public static final in<cto> o = a("long_swiftness", new cto("swiftness", new bpm(bpo.a, 9600)));
+   public static final in<cto> p = a("strong_swiftness", new cto("swiftness", new bpm(bpo.a, 1800, 1)));
+   public static final in<cto> q = a("slowness", new cto(new bpm(bpo.b, 1800)));
+   public static final in<cto> r = a("long_slowness", new cto("slowness", new bpm(bpo.b, 4800)));
+   public static final in<cto> s = a("strong_slowness", new cto("slowness", new bpm(bpo.b, 400, 3)));
+   public static final in<cto> t = a("turtle_master", new cto("turtle_master", new bpm(bpo.b, 400, 3), new bpm(bpo.k, 400, 2)));
+   public static final in<cto> u = a("long_turtle_master", new cto("turtle_master", new bpm(bpo.b, 800, 3), new bpm(bpo.k, 800, 2)));
+   public static final in<cto> v = a("strong_turtle_master", new cto("turtle_master", new bpm(bpo.b, 400, 5), new bpm(bpo.k, 400, 3)));
+   public static final in<cto> w = a("water_breathing", new cto(new bpm(bpo.m, 3600)));
+   public static final in<cto> x = a("long_water_breathing", new cto("water_breathing", new bpm(bpo.m, 9600)));
+   public static final in<cto> y = a("healing", new cto(new bpm(bpo.f, 1)));
+   public static final in<cto> z = a("strong_healing", new cto("healing", new bpm(bpo.f, 1, 1)));
+   public static final in<cto> A = a("harming", new cto(new bpm(bpo.g, 1)));
+   public static final in<cto> B = a("strong_harming", new cto("harming", new bpm(bpo.g, 1, 1)));
+   public static final in<cto> C = a("poison", new cto(new bpm(bpo.s, 900)));
+   public static final in<cto> D = a("long_poison", new cto("poison", new bpm(bpo.s, 1800)));
+   public static final in<cto> E = a("strong_poison", new cto("poison", new bpm(bpo.s, 432, 1)));
+   public static final in<cto> F = a("regeneration", new cto(new bpm(bpo.j, 900)));
+   public static final in<cto> G = a("long_regeneration", new cto("regeneration", new bpm(bpo.j, 1800)));
+   public static final in<cto> H = a("strong_regeneration", new cto("regeneration", new bpm(bpo.j, 450, 1)));
+   public static final in<cto> I = a("strength", new cto(new bpm(bpo.e, 3600)));
+   public static final in<cto> J = a("long_strength", new cto("strength", new bpm(bpo.e, 9600)));
+   public static final in<cto> K = a("strong_strength", new cto("strength", new bpm(bpo.e, 1800, 1)));
+   public static final in<cto> L = a("weakness", new cto(new bpm(bpo.r, 1800)));
+   public static final in<cto> M = a("long_weakness", new cto("weakness", new bpm(bpo.r, 4800)));
+   public static final in<cto> N = a("luck", new cto("luck", new bpm(bpo.z, 6000)));
+   public static final in<cto> O = a("slow_falling", new cto(new bpm(bpo.B, 1800)));
+   public static final in<cto> P = a("long_slow_falling", new cto("slow_falling", new bpm(bpo.B, 4800)));
 
-public final class ctr implements cot {
-   public static final int a = 64;
-   public static final ctr b = new ctr(List.of());
-   public static final Codec<ctr> c = aws.a(crj.a.listOf(), 64).xmap(ctr::new, $$0 -> $$0.g);
-   public static final ye<vr, ctr> d = crj.f.a(yc.c(64)).a(ctr::new, $$0 -> $$0.g);
-   private static final int e = 4;
-   private static final int f = -1;
-   final List<crj> g;
-   final int h;
-
-   ctr(List<crj> $$0, int $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   private static in<cto> a(String $$0, cto $$1) {
+      return ja.b(kt.i, new ajv($$0), $$1);
    }
 
-   public ctr(List<crj> $$0) {
-      this($$0, a($$0));
-   }
-
-   private static int a(List<crj> $$0) {
-      int $$1 = 0;
-
-      for (crj $$2 : $$0) {
-         $$1 += a($$2) * $$2.G();
-      }
-
-      return $$1;
-   }
-
-   static int a(crj $$0) {
-      ctr $$1 = $$0.a(jp.w);
-      if ($$1 != null) {
-         return 4 + $$1.c();
-      } else {
-         List<dmc.c> $$2 = $$0.a(jp.S, List.of());
-         return !$$2.isEmpty() ? 64 : 64 / $$0.i();
-      }
-   }
-
-   public crj a(int $$0) {
-      return this.g.get($$0);
-   }
-
-   public Stream<crj> a() {
-      return this.g.stream().map(crj::r);
-   }
-
-   public int b() {
-      return this.g.size();
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   public boolean d() {
-      return this.g.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ctr $$1) ? false : this.h == $$1.h && crj.a(this.g, $$1.g);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return crj.a(this.g);
-   }
-
-   @Override
-   public String toString() {
-      return "BundleContents" + this.g;
-   }
-
-   public static class a {
-      private final List<crj> a;
-      private int b;
-
-      public a(ctr $$0) {
-         this.a = new ArrayList<>($$0.g);
-         this.b = $$0.h;
-      }
-
-      private int b(crj $$0) {
-         if (!$$0.j()) {
-            return -1;
-         } else {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (crj.c(this.a.get($$1), $$0)) {
-                  return $$1;
-               }
-            }
-
-            return -1;
-         }
-      }
-
-      private int c(crj $$0) {
-         return Math.max(64 - this.b, 0) / ctr.a($$0);
-      }
-
-      public int a(crj $$0) {
-         if (!$$0.d() && $$0.f().an_()) {
-            int $$1 = Math.min($$0.G(), this.c($$0));
-            if ($$1 == 0) {
-               return 0;
-            } else {
-               this.b = this.b + ctr.a($$0) * $$1;
-               int $$2 = this.b($$0);
-               if ($$2 != -1) {
-                  crj $$3 = this.a.remove($$2);
-                  crj $$4 = $$3.c($$3.G() + $$1);
-                  $$0.g($$1);
-                  this.a.add(0, $$4);
-               } else {
-                  this.a.add(0, $$0.a($$1));
-               }
-
-               return $$1;
-            }
-         } else {
-            return 0;
-         }
-      }
-
-      public int a(cok $$0, cjt $$1) {
-         crj $$2 = $$0.g();
-         int $$3 = this.c($$2);
-         return this.a($$0.b($$2.G(), $$3, $$1));
-      }
-
-      @Nullable
-      public crj a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            crj $$0 = this.a.remove(0).r();
-            this.b = this.b - ctr.a($$0) * $$0.G();
-            return $$0;
-         }
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public ctr c() {
-         return new ctr(List.copyOf(this.a), this.b);
-      }
+   public static in<cto> a(ja<cto> $$0) {
+      return a;
    }
 }

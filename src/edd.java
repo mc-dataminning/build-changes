@@ -1,76 +1,8 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class edd {
-   public static final Codec<edd> c = kr.X.q().dispatch(edd::a, ede::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
-
-   protected static <P extends edd> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
-   }
-
-   public edd(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   protected abstract ede<?> a();
-
-   public abstract List<ebl.a> a(czd var1, BiConsumer<ib, doz> var2, axr var3, int var4, ib var5, eav var6);
-
-   public int a(axr $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
-
-   private static boolean c(czd $$0, ib $$1) {
-      return $$0.a($$1, $$0x -> dxv.b($$0x) && !$$0x.a(dca.i) && !$$0x.a(dca.fl));
-   }
-
-   protected static void a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, ib $$3, eav $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
-      }
-   }
-
-   protected boolean b(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, ib $$3, eav $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, ib $$3, eav $$4, Function<doz, doz> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, ib.a $$3, eav $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(czd $$0, ib $$1) {
-      return dzh.c($$0, $$1);
-   }
-
-   public boolean b(czd $$0, ib $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(avc.t));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface edd {
 }

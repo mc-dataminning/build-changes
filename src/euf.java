@@ -1,7 +1,29 @@
-public record euf(esa b, esa c, esa d) {
-   public static final euf a = new euf(esa.b, new esa(0.0, 0.0, -1.0), new esa(0.0, 1.0, 0.0));
+import java.util.function.Function;
 
-   public esa a() {
-      return this.c.c(this.d);
+public class euf<T> implements etw<T> {
+   private final Function<id, eud<T>> a;
+
+   public euf(Function<id, eud<T>> $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a(id $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
+   }
+
+   @Override
+   public void a(eua<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
+   }
+
+   @Override
+   public boolean b(id $$0, T $$1) {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 0;
    }
 }

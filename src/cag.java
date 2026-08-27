@@ -1,36 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+public class cag extends cae {
+   private boolean p;
 
-public class cag extends caq<chv> {
-   public static final int a = 24;
-
-   @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bzr.B)));
-   }
-
-   protected void a(aps $$0, chv $$1) {
-      super.a($$0, $$1);
-      $$1.dP()
-         .c(bzr.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bqa.e)
-         .filter($$1x -> cax.c($$1, $$1x))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.dP().a(bzr.B, $$1x), () -> $$1.dP().b(bzr.B));
+   public cag(bqv $$0, czg $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected int b() {
-      return 24;
+   protected elr a(int $$0) {
+      this.p = this.a.ai() == bqg.y;
+      this.o = new elv(this.p);
+      return new elr(this.o, $$0);
    }
 
    @Override
-   protected int c() {
-      return 24;
+   protected boolean a() {
+      return this.p || this.a.bg();
+   }
+
+   @Override
+   protected esj b() {
+      return new esj(this.a.dr(), this.a.e(0.5), this.a.dx());
+   }
+
+   @Override
+   protected double a(esj $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(esj $$0, esj $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(id $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

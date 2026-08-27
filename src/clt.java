@@ -1,89 +1,59 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
 public class clt {
-   public static int[][] a(ih $$0) {
-      ih $$1 = $$0.h();
-      ih $$2 = $$1.g();
-      ih $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
-      };
+   private final List<clq> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<clq> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
+   public clt a(int $$0, float $$1) {
+      this.a.add(new clq($$0, $$1));
+      this.b();
+      return this;
    }
 
-   public static boolean a(cyh $$0, bqo $$1, erv $$2) {
-      for (est $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
-            return false;
-         }
-      }
-
-      return $$0.C_().a($$2);
+   public clt a(Collection<clq> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   public static boolean a(cyh $$0, esa $$1, bqo $$2, bqz $$3) {
-      return a($$0, $$2, $$2.f($$3).c($$1));
+   private void b() {
+      Int2ObjectSortedMap<clq> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   public static est a(cyd $$0, ib $$1) {
-      doz $$2 = $$0.a_($$1);
-      return !$$2.a(avc.aP) && (!($$2.b() instanceof dkk) || !$$2.c(dkk.b)) ? $$2.k($$0, $$1) : esq.a();
-   }
-
-   public static double a(ib $$0, int $$1, Function<ib, est> $$2) {
-      ib.a $$3 = $$0.j();
-      int $$4 = 0;
-
-      while ($$4 < $$1) {
-         est $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(ih.a.b);
-         }
-
-         $$4++;
-         $$3.c(ih.b);
-      }
-
-      return Double.POSITIVE_INFINITY;
-   }
-
-   @Nullable
-   public static esa a(bqb<?> $$0, cyh $$1, ib $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
-         return null;
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         double $$4 = $$1.a(a((cyd)$$1, $$2), () -> a((cyd)$$1, $$2.d()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
-            return null;
-         } else {
-            esa $$5 = esa.a($$2, $$4);
-            erv $$6 = $$0.n().a($$5);
+         clq $$1 = this.a.get(this.b);
+         clq $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-            for (est $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            clq $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
             }
 
-            if ($$0 != bqb.bx || !$$1.a_($$2).a(avc.ck) && !$$1.a_($$2.c()).a(avc.ck)) {
-               return !$$1.C_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
+            this.b = $$6;
+            $$5 = $$7.b();
          }
+
+         return $$5;
       }
    }
 }

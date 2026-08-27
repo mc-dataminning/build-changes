@@ -1,13 +1,53 @@
-public class fat extends fau {
-   private final eyg b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fat(eyg $$0, long $$1, wg $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+public class fat extends fay {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wi c = wi.c("mco.configure.world.closing");
+   private final exy d;
+   private final ezh e;
+
+   public fat(exy $$0, ezh $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   protected void a(ewy $$0, long $$1) throws eyl {
-      $$0.d($$1, this.b.a);
+   public void run() {
+      exh $$0 = exh.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = exy.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (eyv var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
+   }
+
+   @Override
+   public wi a() {
+      return c;
    }
 }

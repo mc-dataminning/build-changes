@@ -1,29 +1,29 @@
-public class agv implements yn<afl> {
-   public static final ye<vg, agv> a = yn.a(agv::a, agv::new);
-   private final int b;
+public class agv implements yp<afn> {
+   public static final yg<vi, agv> a = yp.a(agv::a, agv::new);
+   private final String b;
 
-   public agv(int $$0) {
+   public agv(String $$0) {
       this.b = $$0;
    }
 
-   private agv(vg $$0) {
-      this.b = $$0.l();
+   private agv(vi $$0) {
+      this.b = $$0.p();
    }
 
-   private void a(vg $$0) {
-      $$0.c(this.b);
+   private void a(vi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yp<agv> a() {
-      return afj.bP;
+   public yr<agv> a() {
+      return afl.bN;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public String b() {
       return this.b;
    }
 }

@@ -1,44 +1,38 @@
-import java.util.Locale;
-import javax.annotation.Nullable;
+public class elw extends eln {
+   private float m = Float.MAX_VALUE;
+   private eln n;
+   private boolean o;
 
-public interface elw {
-   ih[] a = new ih[]{ih.e, ih.f, ih.a, ih.b, ih.c, ih.d};
+   public elw(eln $$0) {
+      super($$0.a, $$0.b, $$0.c);
+   }
 
-   void a(ih var1, doz var2, ib var3, ib var4, int var5, int var6);
+   public elw(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   void a(ib var1, dby var2, ib var3);
-
-   void a(doz var1, ib var2, dby var3, ib var4, boolean var5);
-
-   default void a(ib $$0, dby $$1, @Nullable ih $$2) {
-      for (ih $$3 : a) {
-         if ($$3 != $$2) {
-            this.a($$0.a($$3), $$1, $$0);
-         }
+   public void a(float $$0, eln $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
       }
    }
 
-   static void a(cyy $$0, ih $$1, doz $$2, ib $$3, ib $$4, int $$5, int $$6) {
-      doz $$7 = $$0.a_($$3);
-      doz $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
-      dby.a($$7, $$8, $$0, $$3, $$5, $$6);
+   public eln d() {
+      return this.n;
    }
 
-   static void a(cyx $$0, doz $$1, ib $$2, dby $$3, ib $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kr.e.b($$3), $$3.g(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + kr.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new y($$7);
-      }
+   public void e() {
+      this.o = true;
+   }
+
+   public boolean f() {
+      return this.o;
+   }
+
+   public static elw c(vi $$0) {
+      elw $$1 = new elw($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

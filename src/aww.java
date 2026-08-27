@@ -1,80 +1,77 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+public class aww {
+   public static class a {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-@FunctionalInterface
-public interface aww {
-   aww a = $$0 -> true;
+      public static int b(int $$0) {
+         return $$0 & 0xFF;
+      }
 
-   boolean accept(awx var1);
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
 
-   static aww codepoint(int $$0, xd $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
-   }
+      public static int d(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
 
-   static aww forward(String $$0, xd $$1) {
-      return $$0.isEmpty() ? a : $$2 -> ayd.a($$0, $$1, $$2);
-   }
+      public static int e(int $$0) {
+         return $$0 & 16777215;
+      }
 
-   static aww forward(String $$0, xd $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> ayd.a($$0, $$1, decorateOutput($$3, $$2));
-   }
+      public static int f(int $$0) {
+         return $$0 | 0xFF000000;
+      }
 
-   static aww backward(String $$0, xd $$1) {
-      return $$0.isEmpty() ? a : $$2 -> ayd.b($$0, $$1, $$2);
-   }
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
 
-   static aww backward(String $$0, xd $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> ayd.b($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static awx decorateOutput(awx $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
-   }
-
-   static aww composite() {
-      return a;
-   }
-
-   static aww composite(aww $$0) {
-      return $$0;
-   }
-
-   static aww composite(aww $$0, aww $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static aww composite(aww... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static aww composite(List<aww> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
+      public static int a(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
       }
    }
 
-   static aww fromPair(aww $$0, aww $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
-   }
+   public static class b {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-   static aww fromList(List<aww> $$0) {
-      return $$1 -> {
-         for (aww $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
-            }
-         }
+      public static int b(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
 
-         return true;
-      };
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1, int $$2) {
+         return a(255, $$0, $$1, $$2);
+      }
+
+      public static int a(int $$0, int $$1) {
+         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
+
+      public static int a(float $$0, int $$1, int $$2) {
+         int $$3 = axm.a($$0, a($$1), a($$2));
+         int $$4 = axm.a($$0, b($$1), b($$2));
+         int $$5 = axm.a($$0, c($$1), c($$2));
+         int $$6 = axm.a($$0, d($$1), d($$2));
+         return a($$3, $$4, $$5, $$6);
+      }
+
+      public static int e(int $$0) {
+         return $$0 | 0xFF000000;
+      }
    }
 }

@@ -1,33 +1,8 @@
-import java.util.List;
-import java.util.Map;
-
 public class ajm {
-   private final String a;
-   private final String b;
+   public static final aju<crn> a = a("pumpkin_seeds");
+   public static final aju<crn> b = a("melon_seeds");
 
-   public ajm(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public static ajm a(String $$0) {
-      return new ajm($$0, ".json");
-   }
-
-   public ajt a(ajt $$0) {
-      return $$0.c(this.a + "/" + $$0.a() + this.b);
-   }
-
-   public ajt b(ajt $$0) {
-      String $$1 = $$0.a();
-      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
-   }
-
-   public Map<ajt, ata> a(atc $$0) {
-      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
-   }
-
-   public Map<ajt, List<ata>> b(atc $$0) {
-      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   private static aju<crn> a(String $$0) {
+      return aju.a(ku.G, new ajv($$0));
    }
 }

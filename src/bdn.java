@@ -1,35 +1,46 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
 import java.util.Optional;
 
 public class bdn extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("down", "down_south")
-      .put("up", "up_north")
-      .put("north", "north_up")
-      .put("south", "south_up")
-      .put("west", "west_up")
-      .put("east", "east_up")
-      .build();
-
    public bdn(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      return $$1.equals(Optional.of("minecraft:jigsaw")) ? $$0.update("Properties", $$0x -> {
-         String $$1x = $$0x.get("facing").asString("north");
-         return $$0x.remove("facing").set("orientation", $$0x.createString(a.getOrDefault($$1x, $$1x)));
-      }) : $$0;
-   }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bff.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bff.B.typeName(), bgp.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "ItemWaterPotionFix",
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            if ($$3.isPresent()) {
+               String $$4 = (String)$$3.get().getSecond();
+               if ("minecraft:potion".equals($$4)
+                  || "minecraft:splash_potion".equals($$4)
+                  || "minecraft:lingering_potion".equals($$4)
+                  || "minecraft:tipped_arrow".equals($$4)) {
+                  Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+                  Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+                  if ($$6.get("Potion").asString().result().isEmpty()) {
+                     $$6 = $$6.set("Potion", $$6.createString("minecraft:water"));
+                  }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(bfa.u), $$0 -> $$0.update(DSL.remainderFinder(), bdn::a));
+                  return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+               }
+            }
+
+            return $$2x;
+         }
+      );
    }
 }

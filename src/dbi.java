@@ -1,72 +1,91 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class dbi extends dby implements diy {
-   public static final dpq d = dpp.C;
-   private static final est a = dby.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   protected dbi(doy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dbi> a();
-
-   protected void a(doz $$0, cyy $$1, ib $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.E_().a(40));
-      }
-   }
-
-   protected static boolean e(doz $$0, cyd $$1, ib $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (ih $$3 : ih.values()) {
-            if ($$1.b_($$2.a($$3)).a(avh.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public doz a(cuo $$0) {
-      eks $$1 = $$0.q().b_($$0.a());
-      return this.n().a(d, Boolean.valueOf($$1.a(avh.a) && $$1.e() == 8));
-   }
+public class dbi extends dcq {
+   public static final MapCodec<dbi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               aju.a(ku.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               aju.a(ku.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               aju.a(ku.G).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               u()
+            )
+            .apply($$0, dbi::new)
+   );
+   public static final dqc b = dgc.aE;
+   protected static final float c = 2.0F;
+   private static final Map<ij, etc> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         ij.d,
+         dch.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         ij.e,
+         dch.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         ij.c,
+         dch.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         ij.f,
+         dch.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final aju<dch> e;
+   private final aju<dch> f;
+   private final aju<crn> g;
 
    @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
+   public MapCodec<dbi> a() {
       return a;
    }
 
+   protected dbi(aju<dch> $$0, aju<dch> $$1, aju<crn> $$2, dph.d $$3) {
+      super($$3);
+      this.k(this.E.b().a(b, ij.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
+   }
+
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ekt.c, ekt.c.a($$3));
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return d.get($$0.c(b));
+   }
+
+   @Override
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
+         Optional<dch> $$6 = $$3.H_().d(ku.f).e(this.f);
+         if ($$6.isPresent()) {
+            return $$6.get().n().b(dkc.c, Integer.valueOf(7));
+         }
       }
 
-      return $$1 == ih.a && !this.a($$0, (cza)$$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      ib $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, ih.b);
+   protected boolean b(dpi $$0, cym $$1, id $$2) {
+      return $$0.a(dcj.cC);
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(d);
+   public crs a(czj $$0, id $$1, dpi $$2) {
+      return new crs((czf)DataFixUtils.orElse($$0.H_().d(ku.G).e(this.g), this));
    }
 
    @Override
-   protected eks c_(doz $$0) {
-      return $$0.c(d) ? ekt.c.a(false) : super.c_($$0);
+   protected dpi a(dpi $$0, dit $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dpi a(dpi $$0, dhd $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(b);
    }
 }

@@ -1,92 +1,66 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
-public class eod extends eoo {
-   public static final Codec<eod> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  kr.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dqc::f).toList())
-               )
-            )
-            .apply($$0, eod::new)
-   );
-   private final il<dby> b;
-   private final Set<dqc<?>> c;
+public abstract class eod implements env {
+   protected final List<eql> e;
+   private final Predicate<enk> a;
 
-   eod(List<eqc> $$0, il<dby> $$1, Set<dqc<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected eod(List<eql> $$0) {
+      this.e = $$0;
+      this.a = ac.a($$0);
    }
 
-   private eod(List<eqc> $$0, il<dby> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   protected static <T extends eod> P1<Mu<T>, List<eql>> a(Instance<T> $$0) {
+      return $$0.group(awu.a(eqn.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public eoq b() {
-      return eor.y;
+   public void a(ent $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<epl<?>> a() {
-      return ImmutableSet.of(epo.g);
+   protected final boolean a(enk $$0) {
+      return this.a.test($$0);
    }
 
-   @Override
-   protected crj a(crj $$0, enb $$1) {
-      doz $$2 = $$1.c(epo.g);
-      if ($$2 != null) {
-         $$0.a(jp.R, ctq.a, $$1x -> {
-            for (dqc<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
+   public abstract eoe a();
 
-            return $$1x;
-         });
+   public abstract static class a<T extends eod.a<T>> implements eqe<T> {
+      private final Builder<eql> a = ImmutableList.builder();
+
+      protected abstract T aB_();
+
+      public T a(eql.a $$0) {
+         this.a.add($$0.build());
+         return this.aB_();
       }
 
-      return $$0;
-   }
-
-   public static eod.a a(dby $$0) {
-      return new eod.a($$0);
-   }
-
-   public static class a extends eoo.a<eod.a> {
-      private final il<dby> a;
-      private final Builder<dqc<?>> b = ImmutableSet.builder();
-
-      a(dby $$0) {
-         this.a = $$0.r();
+      public final T e() {
+         return this.aB_();
       }
 
-      public eod.a a(dqc<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
-         }
+      protected List<eql> f() {
+         return this.a.build();
       }
 
-      protected eod.a a() {
-         return this;
+      public enu.a a(eod.a<?> $$0) {
+         return new enu.a(this, $$0);
       }
 
-      @Override
-      public eop b() {
-         return new eod(this.g(), this.a, this.b.build());
+      public enz.a b(eod.a<?> $$0) {
+         return new enz.a(this, $$0);
       }
+
+      public eoh.a c(eod.a<?> $$0) {
+         return new eoh.a(this, $$0);
+      }
+
+      public abstract eod b();
    }
 }

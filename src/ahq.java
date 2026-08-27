@@ -1,16 +1,8 @@
-public interface ahq extends aas, vb {
+public interface ahq extends afo {
    @Override
-   default vf b() {
-      return vf.d;
+   default vh b() {
+      return vh.a;
    }
 
-   void a(aht var1);
-
-   void a(ahs var1);
-
-   void a(ahv var1);
-
-   void a(ahu var1);
-
-   void a(ahr var1);
+   void a(ahn var1);
 }

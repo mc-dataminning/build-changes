@@ -1,23 +1,21 @@
-import java.util.List;
+public record aab(id c) implements zq {
+   public static final yg<vi, aab> a = zq.a(aab::a, aab::new);
+   public static final zq.b<aab> b = zq.a("debug/poi_removed");
 
-public record aab(List<ib> c) implements zo {
-   public static final ye<vg, aab> a = zo.a(aab::a, aab::new);
-   public static final zo.b<aab> b = zo.a("debug/raids");
-
-   private aab(vg $$0) {
-      this($$0.a(ib.b));
+   private aab(vi $$0) {
+      this($$0.e());
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.c, ib.b);
+   private void a(vi $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public zo.b<aab> a() {
+   public zq.b<aab> a() {
       return b;
    }
 
-   public List<ib> b() {
+   public id b() {
       return this.c;
    }
 }

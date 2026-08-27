@@ -1,37 +1,19 @@
-public abstract class btr<E extends bqo> implements bsh<E>, bvw<E> {
-   private bsg.a a;
+import com.google.common.collect.ImmutableMap;
 
-   public btr() {
-      this.a = bsg.a.a;
+public class btr extends bsl<bqv> {
+   public btr(int $$0, int $$1) {
+      super(ImmutableMap.of(bzw.n, bzx.a), $$0, $$1);
    }
 
-   @Override
-   public final bsg.a a() {
-      return this.a;
+   protected boolean a(apu $$0, bqv $$1, long $$2) {
+      return $$1.dP().c(bzw.n).filter($$1x -> $$1x.a($$1)).isPresent();
    }
 
-   @Override
-   public final boolean e(aps $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bsg.a.b;
-         return true;
-      } else {
-         return false;
-      }
+   protected void b(apu $$0, bqv $$1, long $$2) {
+      $$1.dP().b(bzw.n);
    }
 
-   @Override
-   public final void f(aps $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(aps $$0, E $$1, long $$2) {
-      this.a = bsg.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void c(apu $$0, bqv $$1, long $$2) {
+      $$1.dP().c(bzw.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
    }
 }

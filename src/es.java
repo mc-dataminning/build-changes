@@ -2,47 +2,55 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public interface es<T extends cm<?>> extends ArgumentType<T> {
-   static es.b a() {
-      return new es.b();
+public class es implements ArgumentType<kl> {
+   private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wi.b("particle.notFound", $$0));
+   private final ip.a c;
+
+   public es(dr $$0) {
+      this.c = $$0;
    }
 
-   static es.a b() {
-      return new es.a();
+   public static es a(dr $$0) {
+      return new es($$0);
    }
 
-   public static class a implements es<cm.c> {
-      private static final Collection<String> a = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
-
-      public static cm.c a(CommandContext<du> $$0, String $$1) {
-         return (cm.c)$$0.getArgument($$1, cm.c.class);
-      }
-
-      public cm.c a(StringReader $$0) throws CommandSyntaxException {
-         return cm.c.a($$0);
-      }
-
-      public Collection<String> getExamples() {
-         return a;
-      }
+   public static kl a(CommandContext<dv> $$0, String $$1) {
+      return (kl)$$0.getArgument($$1, kl.class);
    }
 
-   public static class b implements es<cm.d> {
-      private static final Collection<String> a = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
+   public kl a(StringReader $$0) throws CommandSyntaxException {
+      return a($$0, this.c);
+   }
 
-      public static cm.d a(CommandContext<du> $$0, String $$1) {
-         return (cm.d)$$0.getArgument($$1, cm.d.class);
-      }
+   public Collection<String> getExamples() {
+      return b;
+   }
 
-      public cm.d a(StringReader $$0) throws CommandSyntaxException {
-         return cm.d.a($$0);
-      }
+   public static kl a(StringReader $$0, ip.a $$1) throws CommandSyntaxException {
+      km<?> $$2 = a($$0, $$1.b(ku.T));
+      return a($$0, (km<kl>)$$2, $$1);
+   }
 
-      public Collection<String> getExamples() {
-         return a;
-      }
+   private static km<?> a(StringReader $$0, ip<km<?>> $$1) throws CommandSyntaxException {
+      ajv $$2 = ajv.a($$0);
+      aju<km<?>> $$3 = aju.a(ku.T, $$2);
+      return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
+   }
+
+   private static <T extends kl> T a(StringReader $$0, km<T> $$1, ip.a $$2) throws CommandSyntaxException {
+      return $$1.c().b($$1, $$0, $$2);
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      ip.b<km<?>> $$2 = this.c.b(ku.T);
+      return ea.a($$2.c().map(aju::a), $$1);
    }
 }

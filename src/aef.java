@@ -1,60 +1,39 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class aef implements yn<aay> {
-   public static final ye<vr, aef> a = yn.a(aef::a, aef::new);
-   private static final byte b = -128;
+public class aef implements yp<aba> {
+   public static final yg<vi, aef> a = yp.a(aef::a, aef::new);
+   private final int b;
    private final int c;
-   private final List<Pair<bqc, crj>> d;
 
-   public aef(int $$0, List<Pair<bqc, crj>> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public aef(bqa $$0, @Nullable bqa $$1) {
+      this.b = $$0.aj();
+      this.c = $$1 != null ? $$1.aj() : 0;
    }
 
-   private aef(vr $$0) {
-      this.c = $$0.l();
-      bqc[] $$1 = bqc.values();
-      this.d = Lists.newArrayList();
-
-      int $$2;
-      do {
-         $$2 = $$0.readByte();
-         bqc $$3 = $$1[$$2 & 127];
-         crj $$4 = crj.e.decode($$0);
-         this.d.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
+   private aef(vi $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.c);
-      int $$1 = this.d.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bqc, crj> $$3 = this.d.get($$2);
-         bqc $$4 = (bqc)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         crj.e.encode($$0, (crj)$$3.getSecond());
-      }
+   private void a(vi $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public yp<aef> a() {
-      return afj.aF;
+   public yr<aef> a() {
+      return afl.aD;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.c;
+      return this.b;
    }
 
-   public List<Pair<bqc, crj>> e() {
-      return this.d;
+   public int e() {
+      return this.c;
    }
 }

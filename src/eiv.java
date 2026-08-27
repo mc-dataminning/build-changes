@@ -1,13 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public interface eiv<P extends eiu> {
-   eiv<eit> a = a("always_true", eit.a);
-   eiv<eir> b = a("linear_pos", eir.a);
-   eiv<eig> c = a("axis_aligned_linear_pos", eig.a);
+public class eiv extends ejk {
+   public static final Codec<eiv> a = dpi.b.fieldOf("block_state").xmap(eiv::new, $$0 -> $$0.b).codec();
+   private final dpi b;
 
-   Codec<P> codec();
+   public eiv(dpi $$0) {
+      this.b = $$0;
+   }
 
-   static <P extends eiu> eiv<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(kr.q, $$0, () -> $$1);
+   @Override
+   public boolean a(dpi $$0, axt $$1) {
+      return $$0 == this.b;
+   }
+
+   @Override
+   protected ejl<?> a() {
+      return ejl.c;
    }
 }

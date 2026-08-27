@@ -1,205 +1,221 @@
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
 public class cye {
-   private static final int g = 1056;
-   public static final long a = c(1875066, 1875066);
-   public static final cye b = new cye(0, 0);
-   private static final long h = 32L;
-   private static final long i = 4294967295L;
-   private static final int j = 5;
-   public static final int c = 32;
-   private static final int k = 31;
-   public static final int d = 31;
-   public final int e;
-   public final int f;
-   private static final int l = 1664525;
-   private static final int m = 1013904223;
-   private static final int n = -559038737;
+   public static final Codec<cye> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cyc.a.fieldOf("buy").forGetter($$0x -> $$0x.c),
+               cyc.a.optionalFieldOf("buyB").forGetter($$0x -> $$0x.d),
+               crs.a.fieldOf("sell").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("uses", 0).forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("maxUses", 4).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.optionalFieldOf("rewardExp", true).forGetter($$0x -> $$0x.h),
+               Codec.INT.optionalFieldOf("specialPrice", 0).forGetter($$0x -> $$0x.i),
+               Codec.INT.optionalFieldOf("demand", 0).forGetter($$0x -> $$0x.j),
+               Codec.FLOAT.optionalFieldOf("priceMultiplier", 0.0F).forGetter($$0x -> $$0x.k),
+               Codec.INT.optionalFieldOf("xp", 1).forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, cye::new)
+   );
+   public static final yg<vt, cye> b = yg.a(cye::a, cye::a);
+   private final cyc c;
+   private final Optional<cyc> d;
+   private final crs e;
+   private int f;
+   private final int g;
+   private final boolean h;
+   private int i;
+   private int j;
+   private final float k;
+   private final int l;
 
-   public cye(int $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private cye(cyc $$0, Optional<cyc> $$1, crs $$2, int $$3, int $$4, boolean $$5, int $$6, int $$7, float $$8, int $$9) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
    }
 
-   public cye(ib $$0) {
-      this.e = je.a($$0.u());
-      this.f = je.a($$0.w());
+   public cye(cyc $$0, crs $$1, int $$2, int $$3, float $$4) {
+      this($$0, Optional.empty(), $$1, $$2, $$3, $$4);
    }
 
-   public cye(long $$0) {
-      this.e = (int)$$0;
-      this.f = (int)($$0 >> 32);
+   public cye(cyc $$0, Optional<cyc> $$1, crs $$2, int $$3, int $$4, float $$5) {
+      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
    }
 
-   public static cye a(int $$0, int $$1) {
-      return new cye($$0 << 5, $$1 << 5);
+   public cye(cyc $$0, Optional<cyc> $$1, crs $$2, int $$3, int $$4, int $$5, float $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
    }
 
-   public static cye b(int $$0, int $$1) {
-      return new cye(($$0 << 5) + 31, ($$1 << 5) + 31);
+   public cye(cyc $$0, Optional<cyc> $$1, crs $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
+      this($$0, $$1, $$2, $$3, $$4, true, 0, $$7, $$6, $$5);
    }
 
-   public long a() {
-      return c(this.e, this.f);
+   private cye(cye $$0) {
+      this($$0.c, $$0.d, $$0.e.r(), $$0.f, $$0.g, $$0.h, $$0.i, $$0.j, $$0.k, $$0.l);
    }
 
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   public crs a() {
+      return this.c.d();
    }
 
-   public static long a(ib $$0) {
-      return c(je.a($$0.u()), je.a($$0.w()));
+   public crs b() {
+      return this.c.d().c(this.a(this.c));
    }
 
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
+   private int a(cyc $$0) {
+      int $$1 = $$0.b();
+      int $$2 = Math.max(0, axm.d((float)($$1 * this.j) * this.k));
+      return axm.a($$1 + $$2 + this.i, 1, $$0.a().a().q());
    }
 
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
+   public crs c() {
+      return this.d.map(cyc::d).orElse(crs.i);
    }
 
-   @Override
-   public int hashCode() {
-      return d(this.e, this.f);
+   public cyc d() {
+      return this.c;
    }
 
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
+   public Optional<cyc> e() {
+      return this.d;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof cye $$1) ? false : this.e == $$1.e && this.f == $$1.f;
-      }
+   public crs f() {
+      return this.e;
    }
 
-   public int b() {
-      return this.a(8);
+   public void g() {
+      this.j = this.j + this.f - (this.g - this.f);
    }
 
-   public int c() {
-      return this.b(8);
-   }
-
-   public int d() {
-      return je.c(this.e);
-   }
-
-   public int e() {
-      return je.c(this.f);
-   }
-
-   public int f() {
-      return this.a(15);
-   }
-
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.e >> 5;
+   public crs h() {
+      return this.e.r();
    }
 
    public int i() {
-      return this.f >> 5;
+      return this.f;
    }
 
-   public int j() {
-      return this.e & 31;
+   public void j() {
+      this.f = 0;
    }
 
    public int k() {
-      return this.f & 31;
+      return this.g;
    }
 
-   public ib a(int $$0, int $$1, int $$2) {
-      return new ib(this.a($$0), $$1, this.b($$2));
+   public void l() {
+      this.f++;
    }
 
-   public int a(int $$0) {
-      return je.a(this.e, $$0);
+   public int m() {
+      return this.j;
    }
 
-   public int b(int $$0) {
-      return je.a(this.f, $$0);
+   public void a(int $$0) {
+      this.i += $$0;
    }
 
-   public ib c(int $$0) {
-      return new ib(this.b(), $$0, this.c());
+   public void n() {
+      this.i = 0;
    }
 
-   @Override
-   public String toString() {
-      return "[" + this.e + ", " + this.f + "]";
+   public int o() {
+      return this.i;
    }
 
-   public ib l() {
-      return new ib(this.d(), 0, this.e());
+   public void b(int $$0) {
+      this.i = $$0;
    }
 
-   public int a(cye $$0) {
-      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   public float p() {
+      return this.k;
    }
 
-   public int b(cye $$0) {
-      return this.e($$0.e, $$0.f);
+   public int q() {
+      return this.l;
    }
 
-   public int c(long $$0) {
-      return this.e(a($$0), b($$0));
+   public boolean r() {
+      return this.f >= this.g;
    }
 
-   private int e(int $$0, int $$1) {
-      int $$2 = $$0 - this.e;
-      int $$3 = $$1 - this.f;
-      return $$2 * $$2 + $$3 * $$3;
+   public void s() {
+      this.f = this.g;
    }
 
-   public static Stream<cye> a(cye $$0, int $$1) {
-      return a(new cye($$0.e - $$1, $$0.f - $$1), new cye($$0.e + $$1, $$0.f + $$1));
+   public boolean t() {
+      return this.f > 0;
    }
 
-   public static Stream<cye> a(final cye $$0, final cye $$1) {
-      int $$2 = Math.abs($$0.e - $$1.e) + 1;
-      int $$3 = Math.abs($$0.f - $$1.f) + 1;
-      final int $$4 = $$0.e < $$1.e ? 1 : -1;
-      final int $$5 = $$0.f < $$1.f ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<cye>((long)($$2 * $$3), 64) {
-         @Nullable
-         private cye e;
+   public boolean u() {
+      return this.h;
+   }
 
-         @Override
-         public boolean tryAdvance(Consumer<? super cye> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.e;
-               int $$2 = this.e.f;
-               if ($$1 == $$1.e) {
-                  if ($$2 == $$1.f) {
-                     return false;
-                  }
+   public boolean a(crs $$0, crs $$1) {
+      if (!this.c.a($$0) || $$0.G() < this.a(this.c)) {
+         return false;
+      } else {
+         return !this.d.isPresent() ? $$1.d() : this.d.get().a($$1) && $$1.G() >= this.d.get().b();
+      }
+   }
 
-                  this.e = new cye($$0.e, $$2 + $$5);
-               } else {
-                  this.e = new cye($$1 + $$4, $$2);
-               }
-            }
-
-            $$0.accept(this.e);
-            return true;
+   public boolean b(crs $$0, crs $$1) {
+      if (!this.a($$0, $$1)) {
+         return false;
+      } else {
+         $$0.g(this.b().G());
+         if (!this.c().d()) {
+            $$1.g(this.c().G());
          }
-      }, false);
+
+         return true;
+      }
+   }
+
+   public cye v() {
+      return new cye(this);
+   }
+
+   private static void a(vt $$0, cye $$1) {
+      cyc.b.encode($$0, $$1.d());
+      crs.f.encode($$0, $$1.f());
+      cyc.c.encode($$0, $$1.e());
+      $$0.a($$1.r());
+      $$0.p($$1.i());
+      $$0.p($$1.k());
+      $$0.p($$1.q());
+      $$0.p($$1.o());
+      $$0.a($$1.p());
+      $$0.p($$1.m());
+   }
+
+   public static cye a(vt $$0) {
+      cyc $$1 = cyc.b.decode($$0);
+      crs $$2 = crs.f.decode($$0);
+      Optional<cyc> $$3 = cyc.c.decode($$0);
+      boolean $$4 = $$0.readBoolean();
+      int $$5 = $$0.readInt();
+      int $$6 = $$0.readInt();
+      int $$7 = $$0.readInt();
+      int $$8 = $$0.readInt();
+      float $$9 = $$0.readFloat();
+      int $$10 = $$0.readInt();
+      cye $$11 = new cye($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
+      if ($$4) {
+         $$11.s();
+      }
+
+      $$11.b($$8);
+      return $$11;
    }
 }

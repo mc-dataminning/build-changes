@@ -1,29 +1,15 @@
-public class zi implements yn<ze> {
-   public static final ye<vg, zi> a = yn.a(zi::a, zi::new);
-   private final int b;
+import java.util.List;
 
-   public zi(int $$0) {
-      this.b = $$0;
-   }
-
-   private zi(vg $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vg $$0) {
-      $$0.p(this.b);
-   }
+public record zi(zq b) implements yp<zg> {
+   private static final int c = 32767;
+   public static final yg<vi, zi> a = zq.<vi>a($$0 -> zr.a($$0, 32767), List.of(new zq.c<>(zo.b, zo.a))).a(zi::new, zi::b);
 
    @Override
-   public yp<zi> a() {
-      return zd.m;
+   public yr<zi> a() {
+      return zf.k;
    }
 
-   public void a(ze $$0) {
+   public void a(zg $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

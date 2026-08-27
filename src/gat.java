@@ -1,84 +1,24 @@
-public class gat implements atd {
-   private final gas a;
-   private final gav b;
-   private final fzm c;
-   private final gau d;
-   private final axr e = axr.a();
-   private final fct f;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-   public gat(gas $$0, fzm $$1, fct $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new gav(this.f);
-      this.d = new gau();
+public class gat implements AutoCloseable {
+   public static final int a = gaq.H().stream().mapToInt(gaq::I).sum();
+   private final Map<gaq, ewm> b = gaq.H().stream().collect(Collectors.toMap($$0 -> (gaq)$$0, $$0 -> new ewm($$0.I())));
+
+   public ewm a(gaq $$0) {
+      return this.b.get($$0);
    }
 
-   public gas a() {
-      return this.a;
+   public void a() {
+      this.b.values().forEach(ewm::g);
    }
 
-   public void a(doz $$0, ib $$1, cya $$2, ewi $$3, ewm $$4) {
-      if ($$0.l() == did.c) {
-         gnj $$5 = this.a.b($$0);
-         long $$6 = $$0.a($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, gla.d);
-      }
-   }
-
-   public void a(doz $$0, ib $$1, cya $$2, ewi $$3, ewm $$4, boolean $$5, axr $$6) {
-      try {
-         did $$7 = $$0.l();
-         if ($$7 == did.c) {
-            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), gla.d);
-         }
-      } catch (Throwable var11) {
-         o $$9 = o.a(var11, "Tesselating block in world");
-         p $$10 = $$9.a("Block being tesselated");
-         p.a($$10, $$2, $$1, $$0);
-         throw new y($$9);
-      }
-   }
-
-   public void a(ib $$0, cya $$1, ewm $$2, doz $$3, eks $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new y($$6);
-      }
-   }
-
-   public gav b() {
-      return this.b;
-   }
-
-   public gnj a(doz $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(doz $$0, ewi $$1, fzz $$2, int $$3, int $$4) {
-      did $$5 = $$0.l();
-      if ($$5 != did.a) {
-         switch ($$5) {
-            case c:
-               gnj $$6 = this.a($$0);
-               int $$7 = this.f.a($$0, null, null, 0);
-               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-               float $$10 = (float)($$7 & 0xFF) / 255.0F;
-               this.b.a($$1.c(), $$2.getBuffer(fzu.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-               break;
-            case b:
-               this.c.a(new crj($$0.b()), crg.a, $$1, $$2, $$3, $$4);
-         }
-      }
+   public void b() {
+      this.b.values().forEach(ewm::h);
    }
 
    @Override
-   public void a(atc $$0) {
-      this.d.a();
+   public void close() {
+      this.b.values().forEach(ewm::i);
    }
 }

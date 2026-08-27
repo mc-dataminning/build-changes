@@ -1,3 +1,6 @@
-public interface vu extends vm {
-   void e();
+public interface vu extends vo {
+   @Override
+   default yq a() {
+      return yq.a;
+   }
 }

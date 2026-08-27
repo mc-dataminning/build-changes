@@ -1,157 +1,219 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Arrays;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class anx {
-   private static final float a = 10000.0F;
-   private static final String b = String.valueOf(20);
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.teleport.invalidPosition"));
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
-                                 "tick"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(dv.a("query").executes($$0x -> a((du)$$0x.getSource()))))
-                        .then(
-                           dv.a("rate")
-                              .then(
-                                 dv.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> dz.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((du)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
-                              )
-                        ))
-                     .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("step").executes($$0x -> b((du)$$0x.getSource(), 1)))
-                              .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource()))))
-                           .then(
-                              dv.a("time", fh.a(1))
-                                 .suggests(($$0x, $$1) -> dz.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                           )
-                     ))
+   public static void a(CommandDispatcher<dv> $$0) {
+      LiteralCommandNode<dv> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("teleport").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((LiteralArgumentBuilder)dv.a("sprint").then(dv.a("stop").executes($$0x -> c((du)$$0x.getSource()))))
-                        .then(
-                           dv.a("time", fh.a(1))
-                              .suggests(($$0x, $$1) -> dz.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                     dw.a("location", fx.a())
+                        .executes(
+                           $$0x -> a(
+                                 (dv)$$0x.getSource(),
+                                 Collections.singleton(((dv)$$0x.getSource()).g()),
+                                 ((dv)$$0x.getSource()).e(),
+                                 fx.b($$0x, "location"),
+                                 fz.d(),
+                                 null
+                              )
                         )
                   ))
-               .then(dv.a("unfreeze").executes($$0x -> a((du)$$0x.getSource(), false))))
-            .then(dv.a("freeze").executes($$0x -> a((du)$$0x.getSource(), true)))
+               .then(
+                  dw.a("destination", ei.a())
+                     .executes($$0x -> a((dv)$$0x.getSource(), Collections.singleton(((dv)$$0x.getSource()).g()), ei.a($$0x, "destination")))
+               ))
+            .then(
+               ((RequiredArgumentBuilder)dw.a("targets", ei.b())
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dw.a("location", fx.a())
+                                 .executes(
+                                    $$0x -> a((dv)$$0x.getSource(), ei.b($$0x, "targets"), ((dv)$$0x.getSource()).e(), fx.b($$0x, "location"), null, null)
+                                 ))
+                              .then(
+                                 dw.a("rotation", fu.a())
+                                    .executes(
+                                       $$0x -> a(
+                                             (dv)$$0x.getSource(),
+                                             ei.b($$0x, "targets"),
+                                             ((dv)$$0x.getSource()).e(),
+                                             fx.b($$0x, "location"),
+                                             fu.a($$0x, "rotation"),
+                                             null
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)dw.a("facing")
+                                    .then(
+                                       dw.a("entity")
+                                          .then(
+                                             ((RequiredArgumentBuilder)dw.a("facingEntity", ei.a())
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (dv)$$0x.getSource(),
+                                                            ei.b($$0x, "targets"),
+                                                            ((dv)$$0x.getSource()).e(),
+                                                            fx.b($$0x, "location"),
+                                                            null,
+                                                            new anx.b(ei.a($$0x, "facingEntity"), eh.a.a)
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dw.a("facingAnchor", eh.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (dv)$$0x.getSource(),
+                                                               ei.b($$0x, "targets"),
+                                                               ((dv)$$0x.getSource()).e(),
+                                                               fx.b($$0x, "location"),
+                                                               null,
+                                                               new anx.b(ei.a($$0x, "facingEntity"), eh.a($$0x, "facingAnchor"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    dw.a("facingLocation", fx.a())
+                                       .executes(
+                                          $$0x -> a(
+                                                (dv)$$0x.getSource(),
+                                                ei.b($$0x, "targets"),
+                                                ((dv)$$0x.getSource()).e(),
+                                                fx.b($$0x, "location"),
+                                                null,
+                                                new anx.c(fx.a($$0x, "facingLocation"))
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(dw.a("destination", ei.a()).executes($$0x -> a((dv)$$0x.getSource(), ei.b($$0x, "targets"), ei.a($$0x, "destination"))))
+            )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static String a(long $$0) {
-      return String.format("%.1f", (float)$$0 / (float)ayj.b);
-   }
+   private static int a(dv $$0, Collection<? extends bqa> $$1, bqa $$2) throws CommandSyntaxException {
+      for (bqa $$3 : $$1) {
+         a($$0, $$3, (apu)$$2.dM(), $$2.dr(), $$2.dt(), $$2.dx(), EnumSet.noneOf(brg.class), $$2.dC(), $$2.dE(), null);
+      }
 
-   private static int a(du $$0, float $$1) {
-      akl $$2 = $$0.l().aR();
-      $$2.a($$1);
-      String $$3 = String.format("%.1f", $$1);
-      $$0.a(() -> wg.a("commands.tick.rate.success", $$3), true);
-      return (int)$$1;
-   }
-
-   private static int a(du $$0) {
-      akl $$1 = $$0.l().aR();
-      String $$2 = a($$0.l().aS());
-      float $$3 = $$1.f();
-      String $$4 = String.format("%.1f", $$3);
-      if ($$1.a()) {
-         $$0.a(() -> wg.c("commands.tick.status.sprinting"), false);
-         $$0.a(() -> wg.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
+      if ($$1.size() == 1) {
+         $$0.a(() -> wi.a("commands.teleport.success.entity.single", $$1.iterator().next().O_(), $$2.O_()), true);
       } else {
-         if ($$1.l()) {
-            $$0.a(() -> wg.c("commands.tick.status.frozen"), false);
-         } else if ($$1.h() < $$0.l().aS()) {
-            $$0.a(() -> wg.c("commands.tick.status.lagging"), false);
+         $$0.a(() -> wi.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.O_()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(dv $$0, Collection<? extends bqa> $$1, apu $$2, fs $$3, @Nullable fs $$4, @Nullable anx.a $$5) throws CommandSyntaxException {
+      esj $$6 = $$3.a($$0);
+      esi $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<brg> $$8 = EnumSet.noneOf(brg.class);
+      if ($$3.a()) {
+         $$8.add(brg.a);
+      }
+
+      if ($$3.b()) {
+         $$8.add(brg.b);
+      }
+
+      if ($$3.c()) {
+         $$8.add(brg.c);
+      }
+
+      if ($$4 == null) {
+         $$8.add(brg.e);
+         $$8.add(brg.d);
+      } else {
+         if ($$4.a()) {
+            $$8.add(brg.e);
+         }
+
+         if ($$4.b()) {
+            $$8.add(brg.d);
+         }
+      }
+
+      for (bqa $$9 : $$1) {
+         if ($$4 == null) {
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dC(), $$9.dE(), $$5);
          } else {
-            $$0.a(() -> wg.c("commands.tick.status.running"), false);
-         }
-
-         String $$5 = a($$1.h());
-         $$0.a(() -> wg.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
-      }
-
-      long[] $$6 = Arrays.copyOf($$0.l().aT(), $$0.l().aT().length);
-      Arrays.sort($$6);
-      String $$7 = a($$6[$$6.length / 2]);
-      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
-      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
-      $$0.a(() -> wg.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
-      return (int)$$3;
-   }
-
-   private static int a(du $$0, int $$1) {
-      boolean $$2 = $$0.l().aR().b($$1);
-      if ($$2) {
-         $$0.a(() -> wg.c("commands.tick.sprint.stop.success"), true);
-      }
-
-      $$0.a(() -> wg.c("commands.tick.status.sprinting"), true);
-      return 1;
-   }
-
-   private static int a(du $$0, boolean $$1) {
-      akl $$2 = $$0.l().aR();
-      if ($$1) {
-         if ($$2.a()) {
-            $$2.c();
-         }
-
-         if ($$2.j()) {
-            $$2.b();
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$7.j, $$7.i, $$5);
          }
       }
 
-      $$2.a($$1);
-      if ($$1) {
-         $$0.a(() -> wg.c("commands.tick.status.frozen"), true);
+      if ($$1.size() == 1) {
+         $$0.a(() -> wi.a("commands.teleport.success.location.single", $$1.iterator().next().O_(), a($$6.c), a($$6.d), a($$6.e)), true);
       } else {
-         $$0.a(() -> wg.c("commands.tick.status.running"), true);
+         $$0.a(() -> wi.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.c), a($$6.d), a($$6.e)), true);
       }
 
-      return $$1 ? 1 : 0;
+      return $$1.size();
    }
 
-   private static int b(du $$0, int $$1) {
-      akl $$2 = $$0.l().aR();
-      boolean $$3 = $$2.a($$1);
-      if ($$3) {
-         $$0.a(() -> wg.a("commands.tick.step.success", $$1), true);
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%f", $$0);
+   }
+
+   private static void a(dv $$0, bqa $$1, apu $$2, double $$3, double $$4, double $$5, Set<brg> $$6, float $$7, float $$8, @Nullable anx.a $$9) throws CommandSyntaxException {
+      id $$10 = id.a($$3, $$4, $$5);
+      if (!czg.l($$10)) {
+         throw a.create();
       } else {
-         $$0.b(wg.c("commands.tick.step.fail"));
+         float $$11 = axm.g($$7);
+         float $$12 = axm.g($$8);
+         if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
+            if ($$9 != null) {
+               $$9.perform($$0, $$1);
+            }
+
+            if (!($$1 instanceof bqt $$13) || !$$13.fB()) {
+               $$1.g($$1.dp().d(1.0, 0.0, 1.0));
+               $$1.c(true);
+            }
+
+            if ($$1 instanceof brb $$14) {
+               $$14.K().n();
+            }
+         }
       }
-
-      return 1;
    }
 
-   private static int b(du $$0) {
-      akl $$1 = $$0.l().aR();
-      boolean $$2 = $$1.b();
-      if ($$2) {
-         $$0.a(() -> wg.c("commands.tick.step.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(wg.c("commands.tick.step.stop.fail"));
-         return 0;
+   @FunctionalInterface
+   interface a {
+      void perform(dv var1, bqa var2);
+   }
+
+   static record b(bqa a, eh.a b) implements anx.a {
+      @Override
+      public void perform(dv $$0, bqa $$1) {
+         if ($$1 instanceof apv $$2) {
+            $$2.a($$0.m(), this.a, this.b);
+         } else {
+            $$1.a($$0.m(), this.b.a(this.a));
+         }
       }
    }
 
-   private static int c(du $$0) {
-      akl $$1 = $$0.l().aR();
-      boolean $$2 = $$1.c();
-      if ($$2) {
-         $$0.a(() -> wg.c("commands.tick.sprint.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(wg.c("commands.tick.sprint.stop.fail"));
-         return 0;
+   static record c(esj a) implements anx.a {
+      @Override
+      public void perform(dv $$0, bqa $$1) {
+         $$1.a($$0.m(), this.a);
       }
    }
 }

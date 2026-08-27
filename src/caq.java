@@ -1,29 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
 
-public class caq<T extends bqo> extends cax<T> {
+public class caq extends cbc<bqt> {
    @Override
-   protected void a(aps $$0, T $$1) {
-      erv $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bqo> $$3 = $$0.a(bqo.class, $$2, $$1x -> $$1x != $$1 && $$1x.bA());
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      brp<?> $$4 = $$1.dP();
-      $$4.a(bzr.g, $$3);
-      $$4.a(bzr.h, new bzt($$1, $$3));
-   }
-
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public Set<bzw<?>> a() {
+      return ImmutableSet.of(bzw.x, bzw.y);
    }
 
    @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.of(bzr.g, bzr.h);
+   protected void a(apu $$0, bqt $$1) {
+      bru<?> $$2 = $$1.dP();
+      boy $$3 = $$1.ez();
+      if ($$3 != null) {
+         $$2.a(bzw.x, $$1.ez());
+         bqa $$4 = $$3.d();
+         if ($$4 instanceof bqt) {
+            $$2.a(bzw.y, (bqt)$$4);
+         }
+      } else {
+         $$2.b(bzw.x);
+      }
+
+      $$2.c(bzw.y).ifPresent($$2x -> {
+         if (!$$2x.bA() || $$2x.dM() != $$0) {
+            $$2.b(bzw.y);
+         }
+      });
    }
 }

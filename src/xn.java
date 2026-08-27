@@ -1,53 +1,10 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public interface xn extends wh {
-   MapCodec<xn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(xn::b)).apply($$0, xn::a));
-   wh.a<xn> b = new wh.a<>(a, "text");
-   xn c = new xn() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
+public class xn {
+   static Function<String, Supplier<wi>> a = $$0 -> () -> wi.b($$0);
 
-      @Override
-      public String b() {
-         return "";
-      }
-   };
-
-   static xn a(String $$0) {
-      return (xn)($$0.isEmpty() ? c : new xn.a($$0));
-   }
-
-   String b();
-
-   @Override
-   default wh.a<?> a() {
-      return b;
-   }
-
-   public static record a(String d) implements xn {
-      @Override
-      public <T> Optional<T> a(wl.a<T> $$0) {
-         return $$0.accept(this.d);
-      }
-
-      @Override
-      public <T> Optional<T> a(wl.b<T> $$0, xd $$1) {
-         return $$0.accept($$1, this.d);
-      }
-
-      @Override
-      public String toString() {
-         return "literal{" + this.d + "}";
-      }
-
-      @Override
-      public String b() {
-         return this.d;
-      }
+   public static void a(Function<String, Supplier<wi>> $$0) {
+      a = $$0;
    }
 }

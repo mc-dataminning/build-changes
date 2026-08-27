@@ -1,89 +1,60 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import java.time.Instant;
-import java.util.UUID;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class fvl {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
+public enum fvl implements ayg {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
+
+   public static final Codec<fvl> d = ayg.a(fvl::values);
+   private final String e;
+
+   private fvl(String $$0) {
+      this.e = $$0;
+   }
+
+   public static fvl a(wy $$0, wi $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
+   }
+
+   private static boolean a(wy $$0, wi $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         wi $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
+   }
+
+   private static boolean a(wi $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xf.a).orElse(false);
+   }
+
+   private static boolean a(xf $$0) {
+      return !$$0.k().equals(xf.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
    @Nullable
-   protected fvn e;
-
-   public fvl(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fbt a(wy $$0) {
+      return switch (this) {
+         case b -> fbt.a($$0.c());
+         case c -> fbt.c();
+         default -> null;
+      };
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
-   }
-
-   public abstract fvl b();
-
-   public abstract fjo a(fjo var1, fvp var2);
-
-   public abstract static class a<R extends fvl> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public R e() {
-         return this.a;
-      }
-
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public fvn h() {
-         return this.a.e;
-      }
-
-      public void a(fvn $$0) {
-         this.a.e = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public abstract fvl.b c();
-
-      public abstract Either<fvl.c, fvl.b> a(fvp var1);
-   }
-
-   public static record b(wg e) {
-      public static final fvl.b a = new fvl.b(wg.c("gui.abuseReport.send.no_reason"));
-      public static final fvl.b b = new fvl.b(wg.c("gui.chatReport.send.no_reported_messages"));
-      public static final fvl.b c = new fvl.b(wg.c("gui.chatReport.send.too_many_messages"));
-      public static final fvl.b d = new fvl.b(wg.c("gui.abuseReport.send.comment_too_long"));
-
-      public ffa a() {
-         return ffa.a(this.e);
-      }
-
-      public wg b() {
-         return this.e;
-      }
-   }
-
-   public static record c(UUID a, fvo b, AbuseReport c) {
+   @Override
+   public String c() {
+      return this.e;
    }
 }

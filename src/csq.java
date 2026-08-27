@@ -1,40 +1,59 @@
-public class csq extends cre {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public csq(cre.a $$0) {
-      super($$0);
+public class csq extends cqh {
+   protected static final Map<dch, dpi> a = Maps.newHashMap(
+      new Builder()
+         .put(dcj.i, dcj.kE.n())
+         .put(dcj.j, dcj.kE.n())
+         .put(dcj.l, dcj.kE.n())
+         .put(dcj.k, dcj.kE.n())
+         .put(dcj.fl, dcj.kE.n())
+         .put(dcj.sH, dcj.kE.n())
+         .build()
+   );
+
+   public csq(cte $$0, crn.a $$1) {
+      super($$0, ave.bD, $$1);
    }
 
    @Override
-   public int b(crj $$0) {
-      return 1200;
-   }
+   public bof a(cuz $$0) {
+      czg $$1 = $$0.q();
+      id $$2 = $$0.a();
+      dpi $$3 = $$1.a_($$2);
+      if ($$0.k() == ij.a) {
+         return bof.d;
+      } else {
+         cka $$4 = $$0.o();
+         dpi $$5 = a.get($$3.b());
+         dpi $$6 = null;
+         if ($$5 != null && $$1.a_($$2.c()).i()) {
+            $$1.a($$4, $$2, auo.wo, aup.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof dcv && $$3.c(dcv.c)) {
+            if (!$$1.x_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
 
-   @Override
-   public ctb c(crj $$0) {
-      return ctb.h;
-   }
+            dcv.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.a(dcv.c, Boolean.valueOf(false));
+         }
 
-   @Override
-   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
-      $$1.a(aum.yB, 1.0F, 1.0F);
-      $$1.b(auw.c.b(this));
-      return crl.a($$0, $$1, $$2);
-   }
+         if ($$6 != null) {
+            if (!$$1.B) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(dub.c, $$2, dub.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, bqt.d($$0.p()));
+               }
+            }
 
-   @Override
-   public crj a(crj $$0, cyx $$1, bqo $$2) {
-      this.a($$2);
-      return $$0;
-   }
-
-   @Override
-   public void a(crj $$0, cyx $$1, bqo $$2, int $$3) {
-      this.a($$2);
-   }
-
-   private void a(bqo $$0) {
-      $$0.a(aum.yC, 1.0F, 1.0F);
+            return bof.a($$1.B);
+         } else {
+            return bof.d;
+         }
+      }
    }
 }

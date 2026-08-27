@@ -1,77 +1,15 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public abstract class ekd<M extends ekd<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final dra[] d = new dra[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<dra> a;
-
-   protected ekd(Long2ObjectOpenHashMap<dra> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+public class ekd {
+   public static double a(double $$0, double $$1) {
+      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
    }
 
-   public abstract M b();
-
-   public dra a(long $$0) {
-      dra $$1 = ((dra)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
    }
 
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   @Nullable
-   public dra c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
-      }
-
-      dra $$2 = (dra)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
-      } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
-            }
-
-            this.c[0] = $$0;
-            this.d[0] = $$2;
-         }
-
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public dra d(long $$0) {
-      return (dra)this.a.remove($$0);
-   }
-
-   public void a(long $$0, dra $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
-      }
-   }
-
-   public void d() {
-      this.e = false;
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
    }
 }

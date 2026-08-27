@@ -1,128 +1,151 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.Products.P5;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class egn extends ego {
-   private static final Codec<Either<ajt, ejh>> a = Codec.of(egn::a, ajt.a.map(Either::left));
-   public static final Codec<egn> b = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, egn::new));
-   protected final Either<ajt, ejh> c;
-   protected final il<ejf> d;
+public abstract class egn {
+   public static final Codec<egn> b = kt.R.q().dispatch(egn::e, ego::codec);
+   private static final int a = 10387320;
+   private final ji c;
+   private final egn.c d;
+   private final float e;
+   private final int f;
+   private final Optional<egn.a> g;
 
-   private static <T> DataResult<T> a(Either<ajt, ejh> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<ajt> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : ajt.a.encode($$3.get(), $$1, $$2);
+   protected static <S extends egn> P5<Mu<S>, ji, egn.c, Float, Integer, Optional<egn.a>> a(Instance<S> $$0) {
+      return $$0.group(
+         ji.v(16).optionalFieldOf("locate_offset", ji.g).forGetter(egn::f),
+         egn.c.e.optionalFieldOf("frequency_reduction_method", egn.c.a).forGetter(egn::g),
+         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(egn::h),
+         awu.i.fieldOf("salt").forGetter(egn::i),
+         egn.a.a.optionalFieldOf("exclusion_zone").forGetter(egn::j)
+      );
    }
 
-   protected static <E extends egn> RecordCodecBuilder<E, il<ejf>> b() {
-      return ejg.d.fieldOf("processors").forGetter($$0 -> $$0.d);
-   }
-
-   protected static <E extends egn> RecordCodecBuilder<E, Either<ajt, ejh>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
-   }
-
-   protected egn(Either<ajt, ejh> $$0, il<ejf> $$1, egq.a $$2) {
-      super($$2);
+   protected egn(ji $$0, egn.c $$1, float $$2, int $$3, Optional<egn.a> $$4) {
       this.c = $$0;
       this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   @Override
-   public jg a(eji $$0, dik $$1) {
-      ejh $$2 = this.a($$0);
-      return $$2.a($$1);
+   protected ji f() {
+      return this.c;
    }
 
-   private ejh a(eji $$0) {
-      return (ejh)this.c.map($$0::a, Function.identity());
+   protected egn.c g() {
+      return this.d;
    }
 
-   public List<ejh.c> a(eji $$0, ib $$1, dik $$2, boolean $$3) {
-      ejh $$4 = this.a($$0);
-      List<ejh.c> $$5 = $$4.a($$1, new ejd().a($$2), dca.pa, $$3);
-      List<ejh.c> $$6 = Lists.newArrayList();
+   protected float h() {
+      return this.e;
+   }
 
-      for (ejh.c $$7 : $$5) {
-         tm $$8 = $$7.c();
-         if ($$8 != null) {
-            dqj $$9 = dqj.valueOf($$8.l("mode"));
-            if ($$9 == dqj.d) {
-               $$6.add($$7);
-            }
-         }
+   protected int i() {
+      return this.f;
+   }
+
+   protected Optional<egn.a> j() {
+      return this.g;
+   }
+
+   public boolean b(drg $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
+   }
+
+   public boolean a(int $$0, int $$1, long $$2) {
+      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
+   }
+
+   public boolean c(drg $$0, int $$1, int $$2) {
+      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
+   }
+
+   protected abstract boolean a(drg var1, int var2, int var3);
+
+   public id a(cyn $$0) {
+      return new id($$0.d(), 0, $$0.e()).a(this.f());
+   }
+
+   public abstract ego<?> e();
+
+   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      dvz $$5 = new dvz(new dvb(0L));
+      $$5.a($$0, $$1, $$2, $$3);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      dvz $$5 = new dvz(new dvb(0L));
+      $$5.c($$0, $$2, $$3);
+      return $$5.j() < (double)$$4;
+   }
+
+   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      dvz $$5 = new dvz(new dvb(0L));
+      $$5.a($$0, $$2, $$3, 10387320);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      int $$5 = $$2 >> 4;
+      int $$6 = $$3 >> 4;
+      dvz $$7 = new dvz(new dvb(0L));
+      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
+      $$7.f();
+      return $$7.a((int)(1.0F / $$4)) == 0;
+   }
+
+   @Deprecated
+   public static record a(in<efw> b, int c) {
+      public static final Codec<egn.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ajr.a(ku.aI, efw.a, false).fieldOf("other_set").forGetter(egn.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(egn.a::b))
+               .apply($$0, egn.a::new)
+      );
+
+      boolean a(drg $$0, int $$1, int $$2) {
+         return $$0.a(this.b, $$1, $$2, this.c);
       }
 
-      return $$6;
-   }
+      public in<efw> a() {
+         return this.b;
+      }
 
-   @Override
-   public List<ejh.c> a(eji $$0, ib $$1, dik $$2, axr $$3) {
-      ejh $$4 = this.a($$0);
-      ObjectArrayList<ejh.c> $$5 = $$4.a($$1, new ejd().a($$2), dca.pb, true);
-      ac.c($$5, $$3);
-      a($$5);
-      return $$5;
-   }
-
-   @VisibleForTesting
-   static void a(List<ejh.c> $$0) {
-      $$0.sort(Comparator.<ejh.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
-   }
-
-   @Override
-   public eez a(eji $$0, ib $$1, dik $$2) {
-      ejh $$3 = this.a($$0);
-      return $$3.b(new ejd().a($$2), $$1);
-   }
-
-   @Override
-   public boolean a(eji $$0, czs $$1, czq $$2, dqw $$3, ib $$4, ib $$5, dik $$6, eez $$7, axr $$8, boolean $$9) {
-      ejh $$10 = this.a($$0);
-      ejd $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (ejh.c $$13 : ejh.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
-         }
-
-         return true;
+      public int b() {
+         return this.c;
       }
    }
 
-   protected ejd a(dik $$0, eez $$1, boolean $$2) {
-      ejd $$3 = new ejd();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(eij.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(eip.b);
+   @FunctionalInterface
+   public interface b {
+      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
+   }
+
+   public static enum c implements ayg {
+      a("default", egn::a),
+      b("legacy_type_1", egn::d),
+      c("legacy_type_2", egn::c),
+      d("legacy_type_3", egn::b);
+
+      public static final Codec<egn.c> e = ayg.a(egn.c::values);
+      private final String f;
+      private final egn.b g;
+
+      private c(String $$0, egn.b $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
-   }
+      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
+      }
 
-   @Override
-   public egp<?> a() {
-      return egp.a;
-   }
-
-   @Override
-   public String toString() {
-      return "Single[" + this.c + "]";
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

@@ -1,39 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eet extends een {
+public class eet extends efb {
    public static final Codec<eet> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dur.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, eet::new)
    );
-   private final dur.a c;
+   private final double c;
    private final int d;
    private final int e;
 
-   private eet(dur.a $$0, int $$1, int $$2) {
+   private eet(double $$0, int $$1, int $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
    }
 
-   public static eet a(dur.a $$0, int $$1, int $$2) {
+   public static eet a(double $$0, int $$1, int $$2) {
       return new eet($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(eem $$0, axr $$1, ib $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   protected int a(axt $$0, id $$1) {
+      double $$2 = daf.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
    @Override
-   public eep<?> b() {
-      return eep.c;
+   public eey<?> b() {
+      return eey.h;
    }
 }

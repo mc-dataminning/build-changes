@@ -1,20 +1,25 @@
-public class cwv extends cwq {
-   protected cwv(cwq.a $$0, avr<cre> $$1, bqc... $$2) {
-      super($$0, $$1, $$2);
+public class cwv extends cwz {
+   public cwv(cwz.a $$0, bqh... $$1) {
+      super($$0, avm.bo, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+      return 25;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return 50;
    }
 
    @Override
-   public int a() {
-      return 3;
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

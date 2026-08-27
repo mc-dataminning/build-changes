@@ -1,36 +1,50 @@
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum grf {
-   a("movement", gra::new),
-   b("find_tree", gqz::new),
-   c("punch_tree", grc::new),
-   d("open_inventory", grb::new),
-   e("craft_planks", gqy::new),
-   f("none", gqx::new);
+public class grf {
+   private final grm a;
+   private final fcc b;
+   @Nullable
+   private fgj c;
 
-   private final String g;
-   private final Function<grd, ? extends gre> h;
-
-   private <T extends gre> grf(String $$0, Function<grd, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public grf(grm $$0, fcc $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public gre a(grd $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static grf a(String $$0) {
-      for (grf $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
       }
 
-      return f;
+      wi $$0 = wi.c("tutorial.bundleInsert.title");
+      wi $$1 = wi.c("tutorial.bundleInsert.description");
+      this.c = new fgj(fgj.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
+   }
+
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.av();
+      }
+   }
+
+   public void a(crs $$0, crs $$1, cne $$2) {
+      if (!this.b.t) {
+         if (!$$0.d() && $$1.a(crv.qT)) {
+            if ($$2 == cne.a) {
+               this.a();
+            } else if ($$2 == cne.b) {
+               this.b();
+            }
+         } else if ($$0.a(crv.qT) && !$$1.d() && $$2 == cne.b) {
+            this.b();
+         }
+      }
    }
 }

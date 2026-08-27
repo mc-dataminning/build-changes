@@ -1,21 +1,16 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public abstract class dwj implements dvy {
-   protected final jg f;
+abstract class dwj implements dwh {
+   protected final List<dwh> e;
 
-   protected static <P extends dwj> P1<Mu<P>, jg> a(Instance<P> $$0) {
-      return $$0.group(jg.v(16).optionalFieldOf("offset", jg.g).forGetter($$0x -> $$0x.f));
+   protected dwj(List<dwh> $$0) {
+      this.e = $$0;
    }
 
-   protected dwj(jg $$0) {
-      this.f = $$0;
+   public static <T extends dwj> Codec<T> a(Function<List<dwh>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dwh.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
-
-   public final boolean a(czs $$0, ib $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
-   }
-
-   protected abstract boolean a(doz var1);
 }

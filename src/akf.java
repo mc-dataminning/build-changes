@@ -1,81 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public class akf extends atg {
+public class akf {
    private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private Map<ajt, af> c = Map.of();
-   private ak d = new ak();
-   private final in.a e;
-   private final ene f;
+   private static final CompletableFuture<ayo> b = CompletableFuture.completedFuture(ayo.a);
+   private final akf.a c;
+   private final dw d;
+   private final cvv e;
+   private final avv f;
+   private final enn g;
+   private final akh h;
+   private final aki i;
 
-   public akf(in.a $$0, ene $$1) {
-      super(b, "advancements");
-      this.e = $$0;
-      this.f = $$1;
+   public akf(jb.b $$0, cmn $$1, dw.a $$2, int $$3) {
+      this.c = new akf.a($$0);
+      this.c.a(akf.b.a);
+      this.e = new cvv(this.c);
+      this.f = new avv($$0);
+      this.d = new dw($$2, dr.a(this.c, $$1));
+      this.g = new enn(this.c);
+      this.h = new akh(this.c, this.g);
+      this.i = new aki($$3, this.d.a());
    }
 
-   protected void a(Map<ajt, JsonElement> $$0, atc $$1, bko $$2) {
-      ajr<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
-      Builder<ajt, af> $$4 = ImmutableMap.builder();
-      $$0.forEach(($$2x, $$3x) -> {
-         try {
-            ae $$4x = ac.a(ae.a.parse($$3, $$3x), JsonParseException::new);
-            this.a($$2x, $$4x);
-            $$4.put($$2x, new af($$2x, $$4x));
-         } catch (Exception var6x) {
-            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
-         }
-      });
-      this.c = $$4.buildOrThrow();
-      ak $$5 = new ak();
-      $$5.a(this.c.values());
-
-      for (ag $$6 : $$5.b()) {
-         if ($$6.b().b().c().isPresent()) {
-            as.a($$6);
-         }
-      }
-
-      this.d = $$5;
+   public aki a() {
+      return this.i;
    }
 
-   private void a(ajt $$0, ae $$1) {
-      axp.a $$2 = new axp.a();
-      $$1.a($$2, this.f);
-      Multimap<String, String> $$3 = $$2.a();
-      if (!$$3.isEmpty()) {
-         String $$4 = $$3.asMap()
-            .entrySet()
-            .stream()
-            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-            .collect(Collectors.joining("\n"));
-         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
-      }
+   public enn b() {
+      return this.g;
    }
 
-   @Nullable
-   public af a(ajt $$0) {
-      return this.c.get($$0);
+   public cvv c() {
+      return this.e;
    }
 
-   public ak a() {
+   public dw d() {
       return this.d;
    }
 
-   public Collection<af> b() {
-      return this.c.values();
+   public akh e() {
+      return this.h;
+   }
+
+   public List<asy> f() {
+      return List.of(this.f, this.g, this.e, this.i, this.h);
+   }
+
+   public static CompletableFuture<akf> a(ate $$0, jb.b $$1, cmn $$2, dw.a $$3, int $$4, Executor $$5, Executor $$6) {
+      akf $$7 = new akf($$1, $$2, $$3, $$4);
+      return atk.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(akf.b.b)).thenApply($$1x -> $$7);
+   }
+
+   public void a(jb $$0) {
+      this.f.a().forEach($$1 -> a($$0, (avv.a<?>)$$1));
+      dmc.f();
+      dcj.a();
+   }
+
+   private static <T> void a(jb $$0, avv.a<T> $$1) {
+      aju<? extends ja<T>> $$2 = $$1.a();
+      Map<avt<T>, List<in<T>>> $$3 = $$1.b()
+         .entrySet()
+         .stream()
+         .collect(Collectors.toUnmodifiableMap($$1x -> avt.a($$2, (ajv)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends in<T>>)$$0x.getValue())));
+      $$0.d($$2).a($$3);
+   }
+
+   static class a implements ip.a {
+      private final jb a;
+      akf.b b;
+
+      a(jb $$0) {
+         this.b = akf.b.b;
+         this.a = $$0;
+      }
+
+      public void a(akf.b $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public Stream<aju<? extends ja<?>>> a() {
+         return this.a.a();
+      }
+
+      @Override
+      public <T> Optional<ip.b<T>> a(aju<? extends ja<? extends T>> $$0) {
+         return this.a.c($$0).map($$0x -> this.a($$0x.p(), $$0x.u()));
+      }
+
+      private <T> ip.b<T> a(final ip.b<T> $$0, final ip.b<T> $$1) {
+         return new ip.b.a<T>() {
+            @Override
+            public ip.b<T> a() {
+               return switch (a.this.b) {
+                  case b -> $$0;
+                  case a -> $$1;
+               };
+            }
+         };
+      }
+   }
+
+   static enum b {
+      a,
+      b;
    }
 }

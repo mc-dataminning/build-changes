@@ -1,219 +1,308 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.EnumSet;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
 
 public class anv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.teleport.invalidPosition"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.team.add.duplicate"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("commands.team.empty.unchanged"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wi.c("commands.team.option.name.unchanged"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wi.c("commands.team.option.color.unchanged"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wi.c("commands.team.option.friendlyfire.alreadyEnabled"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wi.c("commands.team.option.friendlyfire.alreadyDisabled"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(wi.c("commands.team.option.seeFriendlyInvisibles.alreadyEnabled"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wi.c("commands.team.option.seeFriendlyInvisibles.alreadyDisabled"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wi.c("commands.team.option.nametagVisibility.unchanged"));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(wi.c("commands.team.option.deathMessageVisibility.unchanged"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(wi.c("commands.team.option.collisionRule.unchanged"));
 
-   public static void a(CommandDispatcher<du> $$0) {
-      LiteralCommandNode<du> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("teleport").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dv.a("location", fv.a())
-                        .executes(
-                           $$0x -> a(
-                                 (du)$$0x.getSource(),
-                                 Collections.singleton(((du)$$0x.getSource()).g()),
-                                 ((du)$$0x.getSource()).e(),
-                                 fv.b($$0x, "location"),
-                                 fx.d(),
-                                 null
-                              )
-                        )
-                  ))
-               .then(
-                  dv.a("destination", eh.a())
-                     .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).g()), eh.a($$0x, "destination")))
-               ))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("targets", eh.b())
-                     .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("location", fv.a())
-                                 .executes(
-                                    $$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), ((du)$$0x.getSource()).e(), fv.b($$0x, "location"), null, null)
-                                 ))
+   public static void a(CommandDispatcher<dv> $$0, dr $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a(
+                                    "team"
+                                 )
+                                 .requires($$0x -> $$0x.c(2)))
                               .then(
-                                 dv.a("rotation", fs.a())
-                                    .executes(
-                                       $$0x -> a(
-                                             (du)$$0x.getSource(),
-                                             eh.b($$0x, "targets"),
-                                             ((du)$$0x.getSource()).e(),
-                                             fv.b($$0x, "location"),
-                                             fs.a($$0x, "rotation"),
-                                             null
-                                          )
-                                    )
+                                 ((LiteralArgumentBuilder)dw.a("list").executes($$0x -> a((dv)$$0x.getSource())))
+                                    .then(dw.a("team", fg.a()).executes($$0x -> c((dv)$$0x.getSource(), fg.a($$0x, "team"))))
                               ))
                            .then(
-                              ((LiteralArgumentBuilder)dv.a("facing")
-                                    .then(
-                                       dv.a("entity")
-                                          .then(
-                                             ((RequiredArgumentBuilder)dv.a("facingEntity", eh.a())
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (du)$$0x.getSource(),
-                                                            eh.b($$0x, "targets"),
-                                                            ((du)$$0x.getSource()).e(),
-                                                            fv.b($$0x, "location"),
-                                                            null,
-                                                            new anv.b(eh.a($$0x, "facingEntity"), eg.a.a)
-                                                         )
-                                                   ))
-                                                .then(
-                                                   dv.a("facingAnchor", eg.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (du)$$0x.getSource(),
-                                                               eh.b($$0x, "targets"),
-                                                               ((du)$$0x.getSource()).e(),
-                                                               fv.b($$0x, "location"),
-                                                               null,
-                                                               new anv.b(eh.a($$0x, "facingEntity"), eg.a($$0x, "facingAnchor"))
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    ))
+                              dw.a("add")
                                  .then(
-                                    dv.a("facingLocation", fv.a())
-                                       .executes(
-                                          $$0x -> a(
-                                                (du)$$0x.getSource(),
-                                                eh.b($$0x, "targets"),
-                                                ((du)$$0x.getSource()).e(),
-                                                fv.b($$0x, "location"),
-                                                null,
-                                                new anv.c(fv.a($$0x, "facingLocation"))
-                                             )
+                                    ((RequiredArgumentBuilder)dw.a("team", StringArgumentType.word())
+                                          .executes($$0x -> a((dv)$$0x.getSource(), StringArgumentType.getString($$0x, "team"))))
+                                       .then(
+                                          dw.a("displayName", ee.a($$1))
+                                             .executes($$0x -> a((dv)$$0x.getSource(), StringArgumentType.getString($$0x, "team"), ee.a($$0x, "displayName")))
                                        )
                                  )
-                           )
-                     ))
-                  .then(dv.a("destination", eh.a()).executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), eh.a($$0x, "destination"))))
+                           ))
+                        .then(dw.a("remove").then(dw.a("team", fg.a()).executes($$0x -> b((dv)$$0x.getSource(), fg.a($$0x, "team"))))))
+                     .then(dw.a("empty").then(dw.a("team", fg.a()).executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"))))))
+                  .then(
+                     dw.a("join")
+                        .then(
+                           ((RequiredArgumentBuilder)dw.a("team", fg.a())
+                                 .executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), Collections.singleton(((dv)$$0x.getSource()).g()))))
+                              .then(dw.a("members", ez.b()).suggests(ez.a).executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), ez.c($$0x, "members"))))
+                        )
+                  ))
+               .then(dw.a("leave").then(dw.a("members", ez.b()).suggests(ez.a).executes($$0x -> a((dv)$$0x.getSource(), ez.c($$0x, "members"))))))
+            .then(
+               dw.a("modify")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dw.a(
+                                                   "team", fg.a()
+                                                )
+                                                .then(
+                                                   dw.a("displayName")
+                                                      .then(
+                                                         dw.a("displayName", ee.a($$1))
+                                                            .executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), ee.a($$0x, "displayName")))
+                                                      )
+                                                ))
+                                             .then(
+                                                dw.a("color")
+                                                   .then(
+                                                      dw.a("value", ed.a()).executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), ed.a($$0x, "value")))
+                                                   )
+                                             ))
+                                          .then(
+                                             dw.a("friendlyFire")
+                                                .then(
+                                                   dw.a("allowed", BoolArgumentType.bool())
+                                                      .executes($$0x -> b((dv)$$0x.getSource(), fg.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
+                                                )
+                                          ))
+                                       .then(
+                                          dw.a("seeFriendlyInvisibles")
+                                             .then(
+                                                dw.a("allowed", BoolArgumentType.bool())
+                                                   .executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
+                                             )
+                                       ))
+                                    .then(
+                                       ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("nametagVisibility")
+                                                   .then(dw.a("never").executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.b.b))))
+                                                .then(dw.a("hideForOtherTeams").executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.b.c))))
+                                             .then(dw.a("hideForOwnTeam").executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.b.d))))
+                                          .then(dw.a("always").executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.b.a)))
+                                    ))
+                                 .then(
+                                    ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("deathMessageVisibility")
+                                                .then(dw.a("never").executes($$0x -> b((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.b.b))))
+                                             .then(dw.a("hideForOtherTeams").executes($$0x -> b((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.b.c))))
+                                          .then(dw.a("hideForOwnTeam").executes($$0x -> b((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.b.d))))
+                                       .then(dw.a("always").executes($$0x -> b((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.b.a)))
+                                 ))
+                              .then(
+                                 ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("collisionRule")
+                                             .then(dw.a("never").executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.a.b))))
+                                          .then(dw.a("pushOwnTeam").executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.a.d))))
+                                       .then(dw.a("pushOtherTeams").executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.a.c))))
+                                    .then(dw.a("always").executes($$0x -> a((dv)$$0x.getSource(), fg.a($$0x, "team"), etp.a.a)))
+                              ))
+                           .then(
+                              dw.a("prefix")
+                                 .then(dw.a("prefix", ee.a($$1)).executes($$0x -> b((dv)$$0x.getSource(), fg.a($$0x, "team"), ee.a($$0x, "prefix"))))
+                           ))
+                        .then(
+                           dw.a("suffix").then(dw.a("suffix", ee.a($$1)).executes($$0x -> c((dv)$$0x.getSource(), fg.a($$0x, "team"), ee.a($$0x, "suffix"))))
+                        )
+                  )
             )
       );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(du $$0, Collection<? extends bpv> $$1, bpv $$2) throws CommandSyntaxException {
-      for (bpv $$3 : $$1) {
-         a($$0, $$3, (aps)$$2.dM(), $$2.dr(), $$2.dt(), $$2.dx(), EnumSet.noneOf(brb.class), $$2.dC(), $$2.dE(), null);
+   private static wi a(Collection<etm> $$0) {
+      return $$0.iterator().next().hb();
+   }
+
+   private static int a(dv $$0, Collection<etm> $$1) {
+      etn $$2 = $$0.l().aK();
+
+      for (etm $$3 : $$1) {
+         $$2.d($$3.cy());
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> wg.a("commands.teleport.success.entity.single", $$1.iterator().next().O_(), $$2.O_()), true);
+         $$0.a(() -> wi.a("commands.team.leave.success.single", a($$1)), true);
       } else {
-         $$0.a(() -> wg.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.O_()), true);
+         $$0.a(() -> wi.a("commands.team.leave.success.multiple", $$1.size()), true);
       }
 
       return $$1.size();
    }
 
-   private static int a(du $$0, Collection<? extends bpv> $$1, aps $$2, fq $$3, @Nullable fq $$4, @Nullable anv.a $$5) throws CommandSyntaxException {
-      esa $$6 = $$3.a($$0);
-      erz $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<brb> $$8 = EnumSet.noneOf(brb.class);
-      if ($$3.a()) {
-         $$8.add(brb.a);
+   private static int a(dv $$0, eti $$1, Collection<etm> $$2) {
+      etn $$3 = $$0.l().aK();
+
+      for (etm $$4 : $$2) {
+         $$3.a($$4.cy(), $$1);
       }
 
-      if ($$3.b()) {
-         $$8.add(brb.b);
-      }
-
-      if ($$3.c()) {
-         $$8.add(brb.c);
-      }
-
-      if ($$4 == null) {
-         $$8.add(brb.e);
-         $$8.add(brb.d);
+      if ($$2.size() == 1) {
+         $$0.a(() -> wi.a("commands.team.join.success.single", a($$2), $$1.d()), true);
       } else {
-         if ($$4.a()) {
-            $$8.add(brb.e);
-         }
-
-         if ($$4.b()) {
-            $$8.add(brb.d);
-         }
+         $$0.a(() -> wi.a("commands.team.join.success.multiple", $$2.size(), $$1.d()), true);
       }
 
-      for (bpv $$9 : $$1) {
-         if ($$4 == null) {
-            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dC(), $$9.dE(), $$5);
+      return $$2.size();
+   }
+
+   private static int a(dv $$0, eti $$1, etp.b $$2) throws CommandSyntaxException {
+      if ($$1.j() == $$2) {
+         throw i.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> wi.a("commands.team.option.nametagVisibility.success", $$1.d(), $$2.b()), true);
+         return 0;
+      }
+   }
+
+   private static int b(dv $$0, eti $$1, etp.b $$2) throws CommandSyntaxException {
+      if ($$1.k() == $$2) {
+         throw j.create();
+      } else {
+         $$1.b($$2);
+         $$0.a(() -> wi.a("commands.team.option.deathMessageVisibility.success", $$1.d(), $$2.b()), true);
+         return 0;
+      }
+   }
+
+   private static int a(dv $$0, eti $$1, etp.a $$2) throws CommandSyntaxException {
+      if ($$1.l() == $$2) {
+         throw k.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> wi.a("commands.team.option.collisionRule.success", $$1.d(), $$2.a()), true);
+         return 0;
+      }
+   }
+
+   private static int a(dv $$0, eti $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.i() == $$2) {
+         if ($$2) {
+            throw g.create();
          } else {
-            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$7.j, $$7.i, $$5);
+            throw h.create();
          }
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wg.a("commands.teleport.success.location.single", $$1.iterator().next().O_(), a($$6.c), a($$6.d), a($$6.e)), true);
       } else {
-         $$0.a(() -> wg.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.c), a($$6.d), a($$6.e)), true);
+         $$1.b($$2);
+         $$0.a(() -> wi.a("commands.team.option.seeFriendlyInvisibles." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
+         return 0;
       }
-
-      return $$1.size();
    }
 
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%f", $$0);
+   private static int b(dv $$0, eti $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.h() == $$2) {
+         if ($$2) {
+            throw e.create();
+         } else {
+            throw f.create();
+         }
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> wi.a("commands.team.option.friendlyfire." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
+         return 0;
+      }
    }
 
-   private static void a(du $$0, bpv $$1, aps $$2, double $$3, double $$4, double $$5, Set<brb> $$6, float $$7, float $$8, @Nullable anv.a $$9) throws CommandSyntaxException {
-      ib $$10 = ib.a($$3, $$4, $$5);
-      if (!cyx.l($$10)) {
+   private static int a(dv $$0, eti $$1, wi $$2) throws CommandSyntaxException {
+      if ($$1.c().equals($$2)) {
+         throw c.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> wi.a("commands.team.option.name.success", $$1.d()), true);
+         return 0;
+      }
+   }
+
+   private static int a(dv $$0, eti $$1, n $$2) throws CommandSyntaxException {
+      if ($$1.n() == $$2) {
+         throw d.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> wi.a("commands.team.option.color.success", $$1.d(), $$2.g()), true);
+         return 0;
+      }
+   }
+
+   private static int a(dv $$0, eti $$1) throws CommandSyntaxException {
+      etn $$2 = $$0.l().aK();
+      Collection<String> $$3 = Lists.newArrayList($$1.g());
+      if ($$3.isEmpty()) {
+         throw b.create();
+      } else {
+         for (String $$4 : $$3) {
+            $$2.b($$4, $$1);
+         }
+
+         $$0.a(() -> wi.a("commands.team.empty.success", $$3.size(), $$1.d()), true);
+         return $$3.size();
+      }
+   }
+
+   private static int b(dv $$0, eti $$1) {
+      etn $$2 = $$0.l().aK();
+      $$2.d($$1);
+      $$0.a(() -> wi.a("commands.team.remove.success", $$1.d()), true);
+      return $$2.g().size();
+   }
+
+   private static int a(dv $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, wi.b($$1));
+   }
+
+   private static int a(dv $$0, String $$1, wi $$2) throws CommandSyntaxException {
+      etn $$3 = $$0.l().aK();
+      if ($$3.b($$1) != null) {
          throw a.create();
       } else {
-         float $$11 = axk.g($$7);
-         float $$12 = axk.g($$8);
-         if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
-            if ($$9 != null) {
-               $$9.perform($$0, $$1);
-            }
-
-            if (!($$1 instanceof bqo $$13) || !$$13.fB()) {
-               $$1.g($$1.dp().d(1.0, 0.0, 1.0));
-               $$1.c(true);
-            }
-
-            if ($$1 instanceof bqw $$14) {
-               $$14.K().n();
-            }
-         }
+         eti $$4 = $$3.c($$1);
+         $$4.a($$2);
+         $$0.a(() -> wi.a("commands.team.add.success", $$4.d()), true);
+         return $$3.g().size();
       }
    }
 
-   @FunctionalInterface
-   interface a {
-      void perform(du var1, bpv var2);
+   private static int c(dv $$0, eti $$1) {
+      Collection<String> $$2 = $$1.g();
+      if ($$2.isEmpty()) {
+         $$0.a(() -> wi.a("commands.team.list.members.empty", $$1.d()), false);
+      } else {
+         $$0.a(() -> wi.a("commands.team.list.members.success", $$1.d(), $$2.size(), wl.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 
-   static record b(bpv a, eg.a b) implements anv.a {
-      @Override
-      public void perform(du $$0, bpv $$1) {
-         if ($$1 instanceof apt $$2) {
-            $$2.a($$0.m(), this.a, this.b);
-         } else {
-            $$1.a($$0.m(), this.b.a(this.a));
-         }
+   private static int a(dv $$0) {
+      Collection<eti> $$1 = $$0.l().aK().g();
+      if ($$1.isEmpty()) {
+         $$0.a(() -> wi.c("commands.team.list.teams.empty"), false);
+      } else {
+         $$0.a(() -> wi.a("commands.team.list.teams.success", $$1.size(), wl.b($$1, eti::d)), false);
       }
+
+      return $$1.size();
    }
 
-   static record c(esa a) implements anv.a {
-      @Override
-      public void perform(du $$0, bpv $$1) {
-         $$1.a($$0.m(), this.a);
-      }
+   private static int b(dv $$0, eti $$1, wi $$2) {
+      $$1.b($$2);
+      $$0.a(() -> wi.a("commands.team.option.prefix.success", $$2), false);
+      return 1;
+   }
+
+   private static int c(dv $$0, eti $$1, wi $$2) {
+      $$1.c($$2);
+      $$0.a(() -> wi.a("commands.team.option.suffix.success", $$2), false);
+      return 1;
    }
 }

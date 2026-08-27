@@ -1,25 +1,50 @@
-public class caf extends car {
-   public static final float a = 8.0F;
+import javax.annotation.Nullable;
 
-   @Override
-   protected boolean a(bqo $$0, bqo $$1) {
-      return this.f($$0, $$1) && $$1.bf() && (this.b($$1) || this.e($$0, $$1)) && cax.c($$0, $$1);
-   }
+public class caf extends cad {
+   @Nullable
+   private id p;
 
-   private boolean e(bqo $$0, bqo $$1) {
-      return !$$0.dP().a(bzr.U) && $$1.ai().a(avf.j);
-   }
-
-   private boolean b(bqo $$0) {
-      return $$0.ai().a(avf.i);
-   }
-
-   private boolean f(bqo $$0, bqo $$1) {
-      return $$1.g((bpv)$$0) <= 64.0;
+   public caf(bqv $$0, czg $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected bzr<bqo> b() {
-      return bzr.B;
+   public elp a(id $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public elp a(bqa $$0, int $$1) {
+      this.p = $$0.dm();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bqa $$0, double $$1) {
+      elp $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dm();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dk(), (double)this.a.dg())
+               && (!(this.a.dt() > (double)this.p.v()) || !id.a((double)this.p.u(), this.a.dt(), (double)this.p.w()).a(this.a.dk(), (double)this.a.dg()))) {
+               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

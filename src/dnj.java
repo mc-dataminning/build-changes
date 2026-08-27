@@ -1,61 +1,69 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class dnj extends dmo implements dnr {
+   private final dmw a = new dmw();
+   private final dnb b = new dnb() {
+      @Override
+      protected void a(czg $$0, id $$1, dpi $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, auo.hU, aup.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
 
-public record dnj(Optional<cre> d, Optional<cre> e, Optional<cre> f, Optional<cre> g) {
-   public static final dnj a = new dnj(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<dnj> b = aws.a(kr.h.q().listOf(), 4).xmap(dnj::new, dnj::a);
-   public static final ye<vr, dnj> c = yc.a(ks.F).a(yc.c(4)).a(dnj::new, dnj::a);
+      @Override
+      protected void b(czg $$0, id $$1, dpi $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, auo.hT, aup.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
 
-   private dnj(List<cre> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+      @Override
+      protected void a(czg $$0, id $$1, dpi $$2, int $$3, int $$4) {
+         $$0.a(dnj.this.p, dcj.fG, 1, $$4);
+      }
+
+      @Override
+      protected boolean a(cka $$0) {
+         return $$0.gm().b(dnj.this);
+      }
+   };
+
+   public dnj(id $$0, dpi $$1) {
+      super(dmq.d, $$0, $$1);
    }
 
-   public dnj(cre $$0, cre $$1, cre $$2, cre $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
+   public static void a(czg $$0, id $$1, dpi $$2, dnj $$3) {
+      $$3.a.a();
    }
 
-   private static Optional<cre> a(List<cre> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.a.a($$1 > 0);
+         return true;
       } else {
-         cre $$2 = $$0.get($$1);
-         return $$2 == crm.qK ? Optional.empty() : Optional.of($$2);
+         return super.a_($$0, $$1);
       }
    }
 
-   public tm a(tm $$0) {
-      if (this.equals(a)) {
-         return $$0;
-      } else {
-         $$0.a("sherds", ac.a(b.encodeStart(ua.a, this), IllegalStateException::new));
-         return $$0;
+   public void a(cka $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.b.a($$0, this.i(), this.az_(), this.n());
       }
    }
 
-   public List<cre> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(crm.qK)).toList();
+   public void b(cka $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.b.b($$0, this.i(), this.az_(), this.n());
+      }
    }
 
-   public static dnj b(@Nullable tm $$0) {
-      return $$0 != null && $$0.e("sherds") ? b.parse(ua.a, $$0.c("sherds")).result().orElse(a) : a;
+   public boolean c(cka $$0) {
+      return bny.a(this, $$0);
    }
 
-   public Optional<cre> b() {
-      return this.d;
+   public void b() {
+      if (!this.q) {
+         this.b.c(this.i(), this.az_(), this.n());
+      }
    }
 
-   public Optional<cre> c() {
-      return this.e;
-   }
-
-   public Optional<cre> d() {
-      return this.f;
-   }
-
-   public Optional<cre> e() {
-      return this.g;
+   @Override
+   public float a(float $$0) {
+      return this.a.a($$0);
    }
 }

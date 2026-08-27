@@ -1,37 +1,31 @@
-import javax.annotation.Nullable;
+public class fjq extends fjx {
+   private static final wi a = wi.c("outOfMemory.title");
+   private static final wi b = wi.c("outOfMemory.message");
+   private static final int c = 300;
+   private final fhl d = new fhl(this);
 
-public abstract class fjq extends fjg {
-   protected final fbs<?>[] o;
-   @Nullable
-   private fdn a;
-   protected fem p;
-
-   public fjq(fjo $$0, fbt $$1, wg $$2, fbs<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.o = $$3;
+   public fjq() {
+      super(a);
    }
 
    @Override
-   protected void aN_() {
-      this.p = this.c(new fem(this.j, this.k, this.l, this));
-      this.p.a(this.o);
-      this.a = this.p.b(this.c.as());
-      if (this.a != null) {
-         this.a.j = this.j.aY().a();
-      }
-
-      super.aN_();
+   protected void aM_() {
+      this.d.a(a, this.m);
+      this.d.c(new fej(300, b, this.m));
+      fhp $$0 = this.d.b(fhp.e().a(8));
+      $$0.a(fdy.a(wh.l, $$0x -> this.j.a(new fkc())).a());
+      $$0.a(fdy.a(wi.c("menu.quit"), $$0x -> this.j.q()).a());
+      this.d.a(this::c);
+      this.c();
    }
 
    @Override
    protected void c() {
-      super.c();
-      this.p.a(this.k, this.d);
+      this.d.a();
    }
 
-   public void C() {
-      if (this.a instanceof fdw) {
-         ((fdw)this.a).a(this.c.as().c());
-      }
+   @Override
+   public boolean aD_() {
+      return false;
    }
 }

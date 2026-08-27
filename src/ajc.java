@@ -1,242 +1,132 @@
-import com.mojang.logging.LogUtils;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.ObjectUtils;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class ajc {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 254;
-   static final awd c = new awd();
-   private final ajb d;
-   private final ajc.b<?>[] e;
-   private boolean f;
+   private static final awj<ajb<?>> E = awj.c(16);
+   public static final ajb<Byte> a = ajb.a(ye.c);
+   public static final ajb<Integer> b = ajb.a(ye.f);
+   public static final ajb<Long> c = ajb.a(ye.g);
+   public static final ajb<Float> d = ajb.a(ye.h);
+   public static final ajb<String> e = ajb.a(ye.k);
+   public static final ajb<wi> f = ajb.a(wk.d);
+   public static final ajb<Optional<wi>> g = ajb.a(wk.e);
+   public static final ajb<crs> h = new ajb<crs>() {
+      @Override
+      public yg<? super vt, crs> codec() {
+         return crs.e;
+      }
 
-   ajc(ajb $$0, ajc.b<?>[] $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static <T> aiy<T> a(Class<? extends ajb> $$0, aiz<T> $$1) {
-      if (a.isDebugEnabled()) {
-         try {
-            Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
-            if (!$$2.equals($$0)) {
-               a.debug("defineId called for: {} from {}", new Object[]{$$0, $$2, new RuntimeException()});
-            }
-         } catch (ClassNotFoundException var3) {
+      public crs a(crs $$0) {
+         return $$0.r();
+      }
+   };
+   public static final ajb<dpi> i = ajb.a(ye.a(dch.q));
+   private static final yg<ByteBuf, Optional<dpi>> F = new yg<ByteBuf, Optional<dpi>>() {
+      public void a(ByteBuf $$0, Optional<dpi> $$1) {
+         if ($$1.isPresent()) {
+            vz.a($$0, dch.i($$1.get()));
+         } else {
+            vz.a($$0, 0);
          }
       }
 
-      int $$3 = c.c($$0);
-      if ($$3 > 254) {
-         throw new IllegalArgumentException("Data value id is too big with " + $$3 + "! (Max is 254)");
-      } else {
-         return $$1.a($$3);
+      public Optional<dpi> a(ByteBuf $$0) {
+         int $$1 = vz.a($$0);
+         return $$1 == 0 ? Optional.empty() : Optional.of(dch.a($$1));
       }
-   }
-
-   private <T> ajc.b<T> b(aiy<T> $$0) {
-      return (ajc.b<T>)this.e[$$0.a()];
-   }
-
-   public <T> T a(aiy<T> $$0) {
-      return this.b($$0).b();
-   }
-
-   public <T> void a(aiy<T> $$0, T $$1) {
-      this.a($$0, $$1, false);
-   }
-
-   public <T> void a(aiy<T> $$0, T $$1, boolean $$2) {
-      ajc.b<T> $$3 = this.b($$0);
-      if ($$2 || ObjectUtils.notEqual($$1, $$3.b())) {
-         $$3.a($$1);
-         this.d.a($$0);
-         $$3.a(true);
-         this.f = true;
+   };
+   public static final ajb<Optional<dpi>> j = ajb.a(F);
+   public static final ajb<Boolean> k = ajb.a(ye.b);
+   public static final ajb<kl> l = ajb.a(kn.aZ);
+   public static final ajb<jf> m = ajb.a(jf.a);
+   public static final ajb<id> n = ajb.a(id.b);
+   public static final ajb<Optional<id>> o = ajb.a(id.b.a(ye::a));
+   public static final ajb<ij> p = ajb.a(ij.j);
+   public static final ajb<Optional<UUID>> q = ajb.a(jh.g.a(ye::a));
+   public static final ajb<Optional<im>> r = ajb.a(im.c.a(ye::a));
+   public static final ajb<to> s = new ajb<to>() {
+      @Override
+      public yg<? super vt, to> codec() {
+         return ye.o;
       }
-   }
 
-   public boolean a() {
-      return this.f;
+      public to a(to $$0) {
+         return $$0.h();
+      }
+   };
+   public static final ajb<cjo> t = ajb.a(cjo.d);
+   private static final yg<ByteBuf, OptionalInt> G = new yg<ByteBuf, OptionalInt>() {
+      public OptionalInt a(ByteBuf $$0) {
+         int $$1 = vz.a($$0);
+         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
+      }
+
+      public void a(ByteBuf $$0, OptionalInt $$1) {
+         vz.a($$0, $$1.orElse(-1) + 1);
+      }
+   };
+   public static final ajb<OptionalInt> u = ajb.a(G);
+   public static final ajb<bre> v = ajb.a(bre.t);
+   public static final ajb<ccm> w = ajb.a(ye.a(ku.l));
+   public static final ajb<in<cdm>> x = ajb.a(ye.b(ku.m));
+   public static final ajb<cct> y = ajb.a(ye.a(ku.B));
+   public static final ajb<in<cgg>> z = ajb.a(ye.b(ku.S));
+   public static final ajb<cdr.a> A = ajb.a(cdr.a.e);
+   public static final ajb<cez.a> B = ajb.a(cez.a.i);
+   public static final ajb<Vector3f> C = ajb.a(ye.q);
+   public static final ajb<Quaternionf> D = ajb.a(ye.r);
+
+   public static void a(ajb<?> $$0) {
+      E.d($$0);
    }
 
    @Nullable
-   public List<ajc.c<?>> b() {
-      if (!this.f) {
-         return null;
-      } else {
-         this.f = false;
-         List<ajc.c<?>> $$0 = new ArrayList<>();
-
-         for (ajc.b<?> $$1 : this.e) {
-            if ($$1.c()) {
-               $$1.a(false);
-               $$0.add($$1.e());
-            }
-         }
-
-         return $$0;
-      }
+   public static ajb<?> a(int $$0) {
+      return E.a($$0);
    }
 
-   @Nullable
-   public List<ajc.c<?>> c() {
-      List<ajc.c<?>> $$0 = null;
-
-      for (ajc.b<?> $$1 : this.e) {
-         if (!$$1.d()) {
-            if ($$0 == null) {
-               $$0 = new ArrayList<>();
-            }
-
-            $$0.add($$1.e());
-         }
-      }
-
-      return $$0;
+   public static int b(ajb<?> $$0) {
+      return E.a($$0);
    }
 
-   public void a(List<ajc.c<?>> $$0) {
-      for (ajc.c<?> $$1 : $$0) {
-         ajc.b<?> $$2 = this.e[$$1.a];
-         this.a($$2, $$1);
-         this.d.a($$2.a());
-      }
-
-      this.d.a($$0);
+   private ajc() {
    }
 
-   private <T> void a(ajc.b<T> $$0, ajc.c<?> $$1) {
-      if (!Objects.equals($$1.b(), $$0.a.b())) {
-         throw new IllegalStateException(
-            String.format(
-               Locale.ROOT,
-               "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)",
-               $$0.a.a(),
-               this.d,
-               $$0.b,
-               $$0.b.getClass(),
-               $$1.c,
-               $$1.c.getClass()
-            )
-         );
-      } else {
-         $$0.a((T)$$1.c);
-      }
-   }
-
-   public static class a {
-      private final ajb a;
-      private final ajc.b<?>[] b;
-
-      public a(ajb $$0) {
-         this.a = $$0;
-         this.b = new ajc.b[ajc.c.b($$0.getClass())];
-      }
-
-      public <T> ajc.a a(aiy<T> $$0, T $$1) {
-         int $$2 = $$0.a();
-         if ($$2 > this.b.length) {
-            throw new IllegalArgumentException("Data value id is too big with " + $$2 + "! (Max is " + this.b.length + ")");
-         } else if (this.b[$$2] != null) {
-            throw new IllegalArgumentException("Duplicate id value for " + $$2 + "!");
-         } else if (aja.b($$0.b()) < 0) {
-            throw new IllegalArgumentException("Unregistered serializer " + $$0.b() + " for " + $$2 + "!");
-         } else {
-            this.b[$$0.a()] = new ajc.b<>($$0, $$1);
-            return this;
-         }
-      }
-
-      public ajc a() {
-         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
-            if (this.b[$$0] == null) {
-               throw new IllegalStateException("Entity " + this.a.getClass() + " has not defined synched data value " + $$0);
-            }
-         }
-
-         return new ajc(this.a, this.b);
-      }
-   }
-
-   public static class b<T> {
-      final aiy<T> a;
-      T b;
-      private final T c;
-      private boolean d;
-
-      public b(aiy<T> $$0, T $$1) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$1;
-      }
-
-      public aiy<T> a() {
-         return this.a;
-      }
-
-      public void a(T $$0) {
-         this.b = $$0;
-      }
-
-      public T b() {
-         return this.b;
-      }
-
-      public boolean c() {
-         return this.d;
-      }
-
-      public void a(boolean $$0) {
-         this.d = $$0;
-      }
-
-      public boolean d() {
-         return this.c.equals(this.b);
-      }
-
-      public ajc.c<T> e() {
-         return ajc.c.a(this.a, this.b);
-      }
-   }
-
-   public static record c<T>(int a, aiz<T> b, T c) {
-
-      public static <T> ajc.c<T> a(aiy<T> $$0, T $$1) {
-         aiz<T> $$2 = $$0.b();
-         return new ajc.c<>($$0.a(), $$2, $$2.copy($$1));
-      }
-
-      public void a(vr $$0) {
-         int $$1 = aja.b(this.b);
-         if ($$1 < 0) {
-            throw new EncoderException("Unknown serializer type " + this.b);
-         } else {
-            $$0.k(this.a);
-            $$0.c($$1);
-            this.b.codec().encode($$0, this.c);
-         }
-      }
-
-      public static ajc.c<?> a(vr $$0, int $$1) {
-         int $$2 = $$0.l();
-         aiz<?> $$3 = aja.a($$2);
-         if ($$3 == null) {
-            throw new DecoderException("Unknown serializer type " + $$2);
-         } else {
-            return a($$0, $$1, $$3);
-         }
-      }
-
-      private static <T> ajc.c<T> a(vr $$0, int $$1, aiz<T> $$2) {
-         return new ajc.c<>($$1, $$2, $$2.codec().decode($$0));
-      }
+   static {
+      a(a);
+      a(b);
+      a(c);
+      a(d);
+      a(e);
+      a(f);
+      a(g);
+      a(h);
+      a(k);
+      a(m);
+      a(n);
+      a(o);
+      a(p);
+      a(q);
+      a(i);
+      a(j);
+      a(s);
+      a(l);
+      a(t);
+      a(u);
+      a(v);
+      a(w);
+      a(x);
+      a(y);
+      a(r);
+      a(z);
+      a(B);
+      a(A);
+      a(C);
+      a(D);
    }
 }

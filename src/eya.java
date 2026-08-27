@@ -1,18 +1,34 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class eya extends eye {
-   public String a;
-   public long b;
-   public long c;
+public class eya extends eyn {
+   private static final Logger b = LogUtils.getLogger();
+   public List<exy> a;
 
-   public static eya a(JsonObject $$0) {
+   public static eya a(String $$0) {
       eya $$1 = new eya();
+      $$1.a = Lists.newArrayList();
 
       try {
-         $$1.a = fab.b("profileUuid", $$0, null);
-         $$1.b = fab.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fab.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("servers").isJsonArray()) {
+            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(exy.a($$5.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
 
       return $$1;

@@ -1,142 +1,313 @@
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.apache.commons.lang3.StringUtils;
 
-public class enb {
-   private final enh a;
-   private final axr b;
-   private final enf c;
-   private final Set<enb.c<?>> d = Sets.newLinkedHashSet();
-
-   enb(enh $$0, axr $$1, enf $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public boolean a(epl<?> $$0) {
-      return this.a.a($$0);
-   }
-
-   public <T> T b(epl<T> $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(ajt $$0, Consumer<crj> $$1) {
-      this.a.a($$0, $$1);
-   }
-
+public class enb implements Comparable<enb> {
+   public static final wi a = wi.c("selectWorld.select");
+   private final czk b;
+   private final enc c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
    @Nullable
-   public <T> T c(epl<T> $$0) {
-      return this.a.d($$0);
+   private wi i;
+
+   public enb(czk $$0, enc $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
    }
 
-   public boolean a(enb.c<?> $$0) {
-      return this.d.contains($$0);
+   public String a() {
+      return this.d;
    }
 
-   public boolean b(enb.c<?> $$0) {
-      return this.d.add($$0);
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
    }
 
-   public void c(enb.c<?> $$0) {
-      this.d.remove($$0);
+   public Path c() {
+      return this.h;
    }
 
-   public enf a() {
-      return this.c;
+   public boolean d() {
+      return this.e;
    }
 
-   public axr b() {
+   public boolean e() {
+      return this.g;
+   }
+
+   public long f() {
+      return this.c.b();
+   }
+
+   public int a(enb $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
+      } else {
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
+      }
+   }
+
+   public czk g() {
       return this.b;
    }
 
-   public float c() {
-      return this.a.b();
+   public czd h() {
+      return this.b.b();
    }
 
-   public aps d() {
-      return this.a.a();
+   public boolean i() {
+      return this.b.c();
    }
 
-   public static enb.c<enj> a(enj $$0) {
-      return new enb.c<>(eng.c, $$0);
+   public boolean j() {
+      return this.b.e();
    }
 
-   public static enb.c<eqc> a(eqc $$0) {
-      return new enb.c<>(eng.a, $$0);
+   public ww k() {
+      return ayh.b(this.c.c()) ? wi.c("selectWorld.versionUnknown") : wi.b(this.c.c());
    }
 
-   public static enb.c<eop> a(eop $$0) {
-      return new enb.c<>(eng.b, $$0);
+   public enc l() {
+      return this.c;
    }
 
-   public static class a {
-      private final enh a;
-      @Nullable
-      private axr b;
+   public boolean m() {
+      return this.o().a();
+   }
 
-      public a(enh $$0) {
-         this.a = $$0;
+   public boolean n() {
+      return this.o() == enb.a.b;
+   }
+
+   public enb.a o() {
+      ad $$0 = aa.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return enb.a.c;
+      } else {
+         return $$2 > $$1 ? enb.a.b : enb.a.a;
+      }
+   }
+
+   public boolean p() {
+      return this.f;
+   }
+
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
+
+   public boolean r() {
+      return aa.b().d().a(this.c.d());
+   }
+
+   public wi s() {
+      if (this.i == null) {
+         this.i = this.z();
       }
 
-      public enb.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = axr.a($$0);
+      return this.i;
+   }
+
+   private wi z() {
+      if (this.p()) {
+         return wi.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return wi.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return wi.a("selectWorld.incompatible.info", this.k()).a(n.m);
+      } else {
+         ww $$0 = this.i() ? wi.i().b(wi.c("gameMode.hardcore").b(-65536)) : wi.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(wi.c("selectWorld.commands"));
          }
 
-         return this;
-      }
+         if (this.e()) {
+            $$0.f(", ").b(wi.c("selectWorld.experimental").a(n.o));
+         }
 
-      public aps a() {
-         return this.a.a();
-      }
-
-      public enb a(Optional<ajt> $$0) {
-         aps $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         axr $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
-         return new enb(this.a, $$3, $$2.aM());
-      }
-   }
-
-   public static enum b implements aye {
-      a("this", epo.a),
-      b("killer", epo.d),
-      c("direct_killer", epo.e),
-      d("killer_player", epo.b);
-
-      public static final aye.a<enb.b> e = aye.a(enb.b::values);
-      private final String f;
-      private final epl<? extends bpv> g;
-
-      private b(String $$0, epl<? extends bpv> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public epl<? extends bpv> a() {
-         return this.g;
-      }
-
-      public static enb.b a(String $$0) {
-         enb.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
+         ww $$1 = this.k();
+         ww $$2 = wi.b(", ").b(wi.c("selectWorld.version")).b(wh.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
          } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
+            $$2.b($$1);
          }
+
+         $$0.b($$2);
+         return $$0;
+      }
+   }
+
+   public wi t() {
+      return a;
+   }
+
+   public boolean u() {
+      return !this.q();
+   }
+
+   public boolean v() {
+      return !this.d() && !this.p();
+   }
+
+   public boolean w() {
+      return !this.q();
+   }
+
+   public boolean x() {
+      return !this.q();
+   }
+
+   public boolean y() {
+      return true;
+   }
+
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(boolean $$0, boolean $$1, String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
       }
 
-      @Override
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
       public String c() {
          return this.f;
       }
    }
 
-   public static record c<T>(eng<T> a, T b) {
+   public static class b extends enb {
+      private static final wi b = wi.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final wi c = wi.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wi s() {
+         return b;
+      }
+
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wi t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends enb {
+      private static final wi b = wi.c("symlink_warning.more_info");
+      private static final wi c = wi.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wi s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wi t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
    }
 }

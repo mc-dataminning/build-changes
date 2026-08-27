@@ -1,76 +1,226 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.UUID;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ezt extends grl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wg b = wg.c("mco.terms.title");
-   private static final wg c = wg.c("mco.terms.sentence.1");
-   private static final wg y = wf.a().b(wg.c("mco.terms.sentence.2").c(xd.a.c(true)));
-   private final fjo z;
-   private final exp A;
-   private boolean B;
+public class ezt extends gru {
+   static final Logger a = LogUtils.getLogger();
+   private static final wi b = wi.c("mco.configure.world.players.title");
+   static final wi c = wi.c("mco.question");
+   private static final int y = 8;
+   final fhl z = new fhl(this);
+   private final ezh A;
+   final exy B;
+   @Nullable
+   private ezt.b C;
+   boolean D;
 
-   public ezt(fjo $$0, exp $$1) {
+   public ezt(ezh $$0, exy $$1) {
       super(b);
-      this.z = $$0;
-      this.A = $$1;
+      this.A = $$0;
+      this.B = $$1;
    }
 
    @Override
-   public void aN_() {
-      int $$0 = this.k / 4 - 2;
-      this.c(fdp.a(wg.c("mco.terms.buttons.agree"), $$0x -> this.C()).a(this.k / 4, g(12), $$0, 20).a());
-      this.c(fdp.a(wg.c("mco.terms.buttons.disagree"), $$0x -> this.j.a(this.z)).a(this.k / 2 + 4, g(12), $$0, 20).a());
-   }
+   public void aM_() {
+      this.z.a(b, this.m);
+      this.C = this.z.c(new ezt.b());
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.j.a(this.z);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      for (exu $$0 : this.B.h) {
+         this.C.aE_().add(new ezt.a($$0));
       }
+
+      fhp $$1 = this.z.b(fhp.e().a(8));
+      $$1.a(fdy.a(wi.c("mco.configure.world.buttons.invite"), $$0x -> this.j.a(new ezm(this.A, this, this.B))).a());
+      $$1.a(fdy.a(wh.k, $$0x -> this.d()).a());
+      this.z.a($$1x -> {
+         fdw var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.z.a();
+      if (this.C != null) {
+         this.C.a(this.k, this.z);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.C();
    }
 
    private void C() {
-      ewy $$0 = ewy.a();
-
-      try {
-         $$0.j();
-         this.j.a(new ezf(this.z, new fao(this.z, this.A)));
-      } catch (eyl var3) {
-         a.error("Couldn't agree to TOS", var3);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.B) {
-         this.j.o.a("https://aka.ms/MinecraftRealmsTerms");
-         ac.j().a("https://aka.ms/MinecraftRealmsTerms");
-         return true;
+      if (this.D) {
+         this.j.a(this.A.f());
       } else {
-         return super.a($$0, $$1, $$2);
+         this.j.a(this.A);
       }
    }
 
-   @Override
-   public wg i() {
-      return wf.a(super.i(), c).b(wf.v).b(y);
+   class a extends fee.a<ezt.a> {
+      private static final wi b = wi.c("mco.configure.world.invites.normal.tooltip");
+      private static final wi c = wi.c("mco.configure.world.invites.ops.tooltip");
+      private static final wi d = wi.c("mco.configure.world.invites.remove.tooltip");
+      private static final ajv e = new ajv("player_list/make_operator");
+      private static final ajv f = new ajv("player_list/remove_operator");
+      private static final ajv g = new ajv("player_list/remove_player");
+      private static final int h = 8;
+      private static final int i = 7;
+      private final exu j;
+      private final fdy k;
+      private final fdy l;
+      private final fdy m;
+
+      public a(exu $$0) {
+         this.j = $$0;
+         int $$1 = ezt.this.B.h.indexOf(this.j);
+         this.l = ffd.a(b, $$1x -> this.a($$1), false)
+            .a(e, 8, 7)
+            .a(16 + ezt.this.m.a(b))
+            .a($$1x -> wh.a(wi.a("mco.invited.player.narration", $$0.a()), (wi)$$1x.get(), wi.a("narration.cycle_button.usage.focused", c)))
+            .a();
+         this.m = ffd.a(c, $$1x -> this.b($$1), false)
+            .a(f, 8, 7)
+            .a(16 + ezt.this.m.a(c))
+            .a($$1x -> wh.a(wi.a("mco.invited.player.narration", $$0.a()), (wi)$$1x.get(), wi.a("narration.cycle_button.usage.focused", b)))
+            .a();
+         this.k = ffd.a(d, $$1x -> this.c($$1), false)
+            .a(g, 8, 7)
+            .a(16 + ezt.this.m.a(d))
+            .a($$1x -> wh.a(wi.a("mco.invited.player.narration", $$0.a()), (wi)$$1x.get()))
+            .a();
+         this.c();
+      }
+
+      private void a(int $$0) {
+         exh $$1 = exh.a();
+         UUID $$2 = ezt.this.B.h.get($$0).b();
+
+         try {
+            this.a($$1.b(ezt.this.B.a, $$2));
+         } catch (eyu var5) {
+            ezt.a.error("Couldn't op the user", var5);
+         }
+
+         this.c();
+      }
+
+      private void b(int $$0) {
+         exh $$1 = exh.a();
+         UUID $$2 = ezt.this.B.h.get($$0).b();
+
+         try {
+            this.a($$1.c(ezt.this.B.a, $$2));
+         } catch (eyu var5) {
+            ezt.a.error("Couldn't deop the user", var5);
+         }
+
+         this.c();
+      }
+
+      private void c(int $$0) {
+         if ($$0 >= 0 && $$0 < ezt.this.B.h.size()) {
+            exu $$1 = ezt.this.B.h.get($$0);
+            ezi $$2 = new ezi($$2x -> {
+               if ($$2x) {
+                  exh $$3 = exh.a();
+
+                  try {
+                     $$3.a(ezt.this.B.a, $$1.b());
+                  } catch (eyu var6) {
+                     ezt.a.error("Couldn't uninvite user", var6);
+                  }
+
+                  ezt.this.B.h.remove($$0);
+               }
+
+               ezt.this.D = true;
+               ezt.this.j.a(ezt.this);
+            }, ezt.c, wi.a("mco.configure.world.uninvite.player", $$1.a()));
+            ezt.this.j.a($$2);
+         }
+      }
+
+      private void a(exq $$0) {
+         for (exu $$1 : ezt.this.B.h) {
+            $$1.a($$0.a.contains($$1.a()));
+         }
+      }
+
+      private void c() {
+         this.l.k = !this.j.c();
+         this.m.k = !this.l.k;
+      }
+
+      private fdy d() {
+         return this.l.k ? this.l : this.m;
+      }
+
+      @Override
+      public List<? extends ffu> aE_() {
+         return ImmutableList.of(this.d(), this.k);
+      }
+
+      @Override
+      public List<? extends fhs> b() {
+         return ImmutableList.of(this.d(), this.k);
+      }
+
+      @Override
+      public void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10;
+         if (!this.j.d()) {
+            $$10 = -6250336;
+         } else if (this.j.e()) {
+            $$10 = 8388479;
+         } else {
+            $$10 = -1;
+         }
+
+         int $$13 = $$2 + $$5 / 2 - 16;
+         fao.a($$0, $$3, $$13, 32, this.j.b());
+         int $$14 = $$2 + $$5 / 2 - 9 / 2;
+         $$0.a(ezt.this.m, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
+         int $$15 = $$2 + $$5 / 2 - 10;
+         int $$16 = $$3 + $$4 - this.k.x();
+         this.k.c($$16, $$15);
+         this.k.a($$0, $$6, $$7, $$9);
+         int $$17 = $$16 - this.d().x() - 8;
+         this.l.c($$17, $$15);
+         this.l.a($$0, $$6, $$7, $$9);
+         this.m.c($$17, $$15);
+         this.m.a($$0, $$6, $$7, $$9);
+      }
    }
 
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, this.i, this.k / 2, 17, -1);
-      $$0.a(this.m, c, this.k / 2 - 120, g(5), -1, false);
-      int $$4 = this.m.a(c);
-      int $$5 = this.k / 2 - 121 + $$4;
-      int $$6 = g(5);
-      int $$7 = $$5 + this.m.a(y) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.B = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.a(this.m, y, this.k / 2 - 120 + $$4, g(5), this.B ? 7107012 : 3368635, false);
+   class b extends fee<ezt.a> {
+      private static final int m = 36;
+
+      public b() {
+         super(fby.Q(), ezt.this.k, ezt.this.z.d(), ezt.this.z.c(), 36);
+         this.a(true, (int)(9.0F * 1.5F));
+      }
+
+      @Override
+      protected void a(fdl $$0, int $$1, int $$2) {
+         String $$3 = ezt.this.B.h != null ? Integer.toString(ezt.this.B.h.size()) : "0";
+         wi $$4 = wi.a("mco.configure.world.invited.number", $$3).a(n.t);
+         $$0.a(ezt.this.m, $$4, $$1 + this.b() / 2 - ezt.this.m.a($$4) / 2, $$2, -1, false);
+      }
+
+      @Override
+      public int a() {
+         return this.l() * this.d + this.f;
+      }
+
+      @Override
+      public int b() {
+         return 300;
+      }
    }
 }

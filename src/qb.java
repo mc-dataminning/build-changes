@@ -1,72 +1,219 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class qb {
-   @Deprecated
-   public static final ejv.a a = new ejv.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final aju<egz> a = qg.a("village/desert/town_centers");
+   private static final aju<egz> b = qg.a("village/desert/terminators");
+   private static final aju<egz> c = qg.a("village/desert/zombie/terminators");
 
-   public static void a(px<ejv.a> $$0) {
-      a($$0, 0, dva.a, dva.b, dva.c, dva.d);
-      a($$0, -2, dva.e, dva.f, dva.g, dva.h);
-      a($$0, dva.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dva.j, a);
-      a($$0, dva.k, -3, 1.0);
-      a($$0, dva.l, -7, 1.0);
-      a($$0, dva.m, -1, 1.0);
-      a($$0, dva.n, -5, 1.0);
-      a($$0, dva.o, -7, 1.0, 1.0);
-      a($$0, dva.p, -8, 1.0);
-      a($$0, dva.q, -8, 1.0);
-      a($$0, dva.r, -7, 1.0);
-      a($$0, dva.s, -8, 1.0);
-      a($$0, dva.t, -11, 1.0);
-      a($$0, dva.u, -11, 1.0);
-      a($$0, dva.v, -7, 1.0);
-      a($$0, dva.w, -7, 1.0);
-      a($$0, dva.x, -11, 1.0);
-      a($$0, dva.y, -8, 1.0);
-      a($$0, dva.z, -5, 1.0);
-      a($$0, dva.A, -8, 1.0);
-      a($$0, dva.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dva.C, -8, 1.0);
-      a($$0, dva.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dva.E, -8, 1.0);
-      a($$0, dva.F, -7, 1.0);
-      a($$0, dva.G, -7, 1.0);
-      a($$0, dva.H, -5, 1.0);
-      a($$0, dva.I, -8, 1.0);
-      a($$0, dva.J, -8, 1.0);
-      a($$0, dva.K, -7, 1.0);
-      a($$0, dva.L, -7, 1.0);
-      a($$0, dva.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dva.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dva.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dva.P, -8, 1.0);
-      a($$0, dva.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dva.R, -8, 1.0);
-      a($$0, dva.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dva.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dva.U, -3, 1.0);
-      a($$0, dva.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dva.W, -2, 1.0);
-      a($$0, dva.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dva.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dva.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dva.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dva.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dva.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dva.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dva.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dva.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dva.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dva.ah, -4, 1.0);
-   }
-
-   private static void a(px<ejv.a> $$0, int $$1, ajs<ejv.a> $$2, ajs<ejv.a> $$3, ajs<ejv.a> $$4, ajs<ejv.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(px<ejv.a> $$0, ajs<ejv.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new ejv.a($$2, $$3, $$4));
+   public static void a(pz<egz> $$0) {
+      io<eeu> $$1 = $$0.a(ku.aF);
+      in<eeu> $$2 = $$1.b(rw.j);
+      in<eeu> $$3 = $$1.b(rw.a);
+      io<ejo> $$4 = $$0.a(ku.aH);
+      in<ejo> $$5 = $$4.b(qh.e);
+      in<ejo> $$6 = $$4.b(qh.p);
+      io<egz> $$7 = $$0.a(ku.aJ);
+      in<egz> $$8 = $$7.b(qg.a);
+      in<egz> $$9 = $$7.b(b);
+      in<egz> $$10 = $$7.b(c);
+      $$0.a(
+         a,
+         new egz(
+            $$8,
+            ImmutableList.of(
+               Pair.of(egx.a("village/desert/town_centers/desert_meeting_point_1"), 98),
+               Pair.of(egx.a("village/desert/town_centers/desert_meeting_point_2"), 98),
+               Pair.of(egx.a("village/desert/town_centers/desert_meeting_point_3"), 49),
+               Pair.of(egx.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
+            ),
+            egz.a.b
+         )
+      );
+      qg.a(
+         $$0,
+         "village/desert/streets",
+         new egz(
+            $$9,
+            ImmutableList.of(
+               Pair.of(egx.a("village/desert/streets/corner_01"), 3),
+               Pair.of(egx.a("village/desert/streets/corner_02"), 3),
+               Pair.of(egx.a("village/desert/streets/straight_01"), 4),
+               Pair.of(egx.a("village/desert/streets/straight_02"), 4),
+               Pair.of(egx.a("village/desert/streets/straight_03"), 3),
+               Pair.of(egx.a("village/desert/streets/crossroad_01"), 3),
+               Pair.of(egx.a("village/desert/streets/crossroad_02"), 3),
+               Pair.of(egx.a("village/desert/streets/crossroad_03"), 3),
+               Pair.of(egx.a("village/desert/streets/square_01"), 3),
+               Pair.of(egx.a("village/desert/streets/square_02"), 3),
+               Pair.of(egx.a("village/desert/streets/turn_01"), 3)
+            ),
+            egz.a.a
+         )
+      );
+      qg.a(
+         $$0,
+         "village/desert/zombie/streets",
+         new egz(
+            $$10,
+            ImmutableList.of(
+               Pair.of(egx.a("village/desert/zombie/streets/corner_01"), 3),
+               Pair.of(egx.a("village/desert/zombie/streets/corner_02"), 3),
+               Pair.of(egx.a("village/desert/zombie/streets/straight_01"), 4),
+               Pair.of(egx.a("village/desert/zombie/streets/straight_02"), 4),
+               Pair.of(egx.a("village/desert/zombie/streets/straight_03"), 3),
+               Pair.of(egx.a("village/desert/zombie/streets/crossroad_01"), 3),
+               Pair.of(egx.a("village/desert/zombie/streets/crossroad_02"), 3),
+               Pair.of(egx.a("village/desert/zombie/streets/crossroad_03"), 3),
+               Pair.of(egx.a("village/desert/zombie/streets/square_01"), 3),
+               Pair.of(egx.a("village/desert/zombie/streets/square_02"), 3),
+               Pair.of(egx.a("village/desert/zombie/streets/turn_01"), 3)
+            ),
+            egz.a.a
+         )
+      );
+      qg.a(
+         $$0,
+         "village/desert/houses",
+         new egz(
+            $$9,
+            ImmutableList.of(
+               Pair.of(egx.a("village/desert/houses/desert_small_house_1"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_small_house_2"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_small_house_3"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_small_house_4"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_small_house_5"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_small_house_6"), 1),
+               Pair.of(egx.a("village/desert/houses/desert_small_house_7"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_small_house_8"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_medium_house_1"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_medium_house_2"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_butcher_shop_1"), 2),
+               Pair.of(egx.a("village/desert/houses/desert_tool_smith_1"), 2),
+               new Pair[]{
+                  Pair.of(egx.a("village/desert/houses/desert_fletcher_house_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_shepherd_house_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_armorer_1"), 1),
+                  Pair.of(egx.a("village/desert/houses/desert_fisher_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_tannery_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_cartographer_house_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_library_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_mason_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_weaponsmith_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_temple_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_temple_2"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_large_farm_1", $$6), 11),
+                  Pair.of(egx.a("village/desert/houses/desert_farm_1", $$6), 4),
+                  Pair.of(egx.a("village/desert/houses/desert_farm_2", $$6), 4),
+                  Pair.of(egx.a("village/desert/houses/desert_animal_pen_1"), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_animal_pen_2"), 2),
+                  Pair.of(egx.g(), 5)
+               }
+            ),
+            egz.a.b
+         )
+      );
+      qg.a(
+         $$0,
+         "village/desert/zombie/houses",
+         new egz(
+            $$10,
+            ImmutableList.of(
+               Pair.of(egx.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
+               Pair.of(egx.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
+               Pair.of(egx.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
+               Pair.of(egx.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
+               Pair.of(egx.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
+               new Pair[]{
+                  Pair.of(egx.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_armorer_1", $$5), 1),
+                  Pair.of(egx.a("village/desert/houses/desert_fisher_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_tannery_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_library_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_mason_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_temple_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_temple_2", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_large_farm_1", $$5), 7),
+                  Pair.of(egx.a("village/desert/houses/desert_farm_1", $$5), 4),
+                  Pair.of(egx.a("village/desert/houses/desert_farm_2", $$5), 4),
+                  Pair.of(egx.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
+                  Pair.of(egx.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
+                  Pair.of(egx.g(), 5)
+               }
+            ),
+            egz.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new egz(
+            $$8,
+            ImmutableList.of(Pair.of(egx.a("village/desert/terminators/terminator_01"), 1), Pair.of(egx.a("village/desert/terminators/terminator_02"), 1)),
+            egz.a.a
+         )
+      );
+      $$0.a(
+         c,
+         new egz(
+            $$8,
+            ImmutableList.of(
+               Pair.of(egx.a("village/desert/terminators/terminator_01"), 1), Pair.of(egx.a("village/desert/zombie/terminators/terminator_02"), 1)
+            ),
+            egz.a.a
+         )
+      );
+      qg.a(
+         $$0,
+         "village/desert/decor",
+         new egz(
+            $$8,
+            ImmutableList.of(Pair.of(egx.a("village/desert/desert_lamp_1"), 10), Pair.of(egx.a($$2), 4), Pair.of(egx.a($$3), 4), Pair.of(egx.g(), 10)),
+            egz.a.b
+         )
+      );
+      qg.a(
+         $$0,
+         "village/desert/zombie/decor",
+         new egz(
+            $$8,
+            ImmutableList.of(Pair.of(egx.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(egx.a($$2), 4), Pair.of(egx.a($$3), 4), Pair.of(egx.g(), 10)),
+            egz.a.b
+         )
+      );
+      qg.a(
+         $$0,
+         "village/desert/villagers",
+         new egz(
+            $$8,
+            ImmutableList.of(
+               Pair.of(egx.a("village/desert/villagers/nitwit"), 1),
+               Pair.of(egx.a("village/desert/villagers/baby"), 1),
+               Pair.of(egx.a("village/desert/villagers/unemployed"), 10)
+            ),
+            egz.a.b
+         )
+      );
+      qg.a($$0, "village/desert/camel", new egz($$8, ImmutableList.of(Pair.of(egx.a("village/desert/camel_spawn"), 1)), egz.a.b));
+      qg.a(
+         $$0,
+         "village/desert/zombie/villagers",
+         new egz(
+            $$8,
+            ImmutableList.of(Pair.of(egx.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(egx.a("village/desert/zombie/villagers/unemployed"), 10)),
+            egz.a.b
+         )
+      );
    }
 }

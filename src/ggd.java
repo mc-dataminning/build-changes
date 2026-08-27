@@ -1,23 +1,16 @@
-public class ggd extends ggo<ccp, frb<ccp>> {
-   private static final ajt a = new ajt("textures/entity/iron_golem/iron_golem.png");
+public class ggd extends ghy<bql> {
+   private static final ajv a = new ajv("textures/entity/squid/glow_squid.png");
 
-   public ggd(gfi.a $$0) {
-      super($$0, new frb<>($$0.a(ftl.av)), 0.7F);
-      this.a(new gjk(this));
-      this.a(new gjl(this, $$0.c()));
+   public ggd(gfr.a $$0, fsx<bql> $$1) {
+      super($$0, $$1);
    }
 
-   public ajt a(ccp $$0) {
+   public ajv a(bql $$0) {
       return a;
    }
 
-   protected void a(ccp $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!((double)$$0.aT.a() < 0.01)) {
-         float $$6 = 13.0F;
-         float $$7 = $$0.aT.c($$4) + 6.0F;
-         float $$8 = (Math.abs($$7 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$8));
-      }
+   protected int a(bql $$0, id $$1) {
+      int $$2 = (int)axm.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

@@ -1,15 +1,13 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public abstract class eje {
-   @Nullable
-   public ejh.c a(cza $$0, ib $$1, ib $$2, ejh.c $$3, ejh.c $$4, ejd $$5) {
-      return $$4;
-   }
+public interface eje<P extends ejd> {
+   eje<ejc> a = a("always_true", ejc.a);
+   eje<eja> b = a("linear_pos", eja.a);
+   eje<eip> c = a("axis_aligned_linear_pos", eip.a);
 
-   protected abstract ejg<?> a();
+   Codec<P> codec();
 
-   public List<ejh.c> a(czm $$0, ib $$1, ib $$2, List<ejh.c> $$3, List<ejh.c> $$4, ejd $$5) {
-      return $$4;
+   static <P extends ejd> eje<P> a(String $$0, Codec<P> $$1) {
+      return ja.a(kt.q, $$0, () -> $$1);
    }
 }

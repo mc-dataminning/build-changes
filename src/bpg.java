@@ -1,15 +1,22 @@
-public enum bpg {
-   a(n.j),
-   b(n.m),
-   c(n.j);
-
-   private final n d;
-
-   private bpg(n $$0) {
-      this.d = $$0;
+class bpg extends bpk {
+   protected bpg(bpl $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public boolean a(bqt $$0, int $$1) {
+      if ($$0 instanceof apv $$2 && !$$0.N_()) {
+         apu $$3 = $$2.z();
+         if ($$3.ak() != boc.a && $$3.c($$0.dm())) {
+            $$3.z().a($$2);
+         }
+      }
+
+      return true;
    }
 }

@@ -1,37 +1,28 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjg extends bgk {
+public class bjg extends bgp {
    public bjg(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         bfa.w,
-         () -> ays.a(
-               Pair.of("minecraft:bees", DSL.list(DSL.optionalFields("entity_data", bfa.y.in($$0)))),
-               Pair.of("minecraft:block_entity_data", bfa.s.in($$0)),
-               Pair.of("minecraft:bundle_contents", DSL.list(bfa.t.in($$0))),
-               Pair.of(
-                  "minecraft:can_break",
-                  DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bfa.A.in($$0), DSL.list(bfa.A.in($$0))))))
-               ),
-               Pair.of(
-                  "minecraft:can_place_on",
-                  DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bfa.A.in($$0), DSL.list(bfa.A.in($$0))))))
-               ),
-               Pair.of("minecraft:charged_projectiles", DSL.list(bfa.t.in($$0))),
-               Pair.of("minecraft:container", DSL.list(DSL.optionalFields("item", bfa.t.in($$0)))),
-               Pair.of("minecraft:entity_data", bfa.y.in($$0)),
-               Pair.of("minecraft:pot_decorations", DSL.list(bfa.B.in($$0)))
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register(
+         $$1,
+         "minecraft:vault",
+         () -> DSL.optionalFields(
+               "config",
+               DSL.optionalFields("key_item", bff.t.in($$0)),
+               "server_data",
+               DSL.optionalFields("items_to_eject", DSL.list(bff.t.in($$0))),
+               "shared_data",
+               DSL.optionalFields("display_item", bff.t.in($$0))
             )
       );
+      return $$1;
    }
 }

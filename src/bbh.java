@@ -1,14 +1,15 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class bbh extends bea {
-   public bbh(Schema $$0) {
-      super($$0, false, "EntityGoatMissingStateFix", bfa.z, "minecraft:goat");
+public class bbh extends bfp {
+   public bbh(Schema $$0, boolean $$1) {
+      super("EntityElderGuardianSplitFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("HasLeftHorn", $$0x.createBoolean(true)).set("HasRightHorn", $$0x.createBoolean(true)));
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      return Pair.of(Objects.equals($$0, "Guardian") && $$1.get("Elder").asBoolean(false) ? "ElderGuardian" : $$0, $$1);
    }
 }

@@ -1,40 +1,54 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class eyc extends eye {
-   private static final Logger d = LogUtils.getLogger();
+public class eyc extends eyn {
+   private static final Logger c = LogUtils.getLogger();
    public long a;
-   public int b;
-   public eyc.a c = eyc.a.a;
+   public List<UUID> b;
 
-   public static eyc a(String $$0) {
+   public static eyc a(JsonObject $$0) {
       eyc $$1 = new eyc();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fab.a("startDate", $$3, 0L);
-         $$1.b = fab.a("daysLeft", $$3, 0);
-         $$1.c = b(fab.b("subscriptionType", $$3, eyc.a.a.name()));
+         $$1.a = fak.a("serverId", $$0, -1L);
+         String $$2 = fak.b("playerList", $$0, null);
+         if ($$2 != null) {
+            JsonElement $$3 = JsonParser.parseString($$2);
+            if ($$3.isJsonArray()) {
+               $$1.b = a($$3.getAsJsonArray());
+            } else {
+               $$1.b = Lists.newArrayList();
+            }
+         } else {
+            $$1.b = Lists.newArrayList();
+         }
       } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
+         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
       }
 
       return $$1;
    }
 
-   private static eyc.a b(String $$0) {
-      try {
-         return eyc.a.valueOf($$0);
-      } catch (Exception var2) {
-         return eyc.a.a;
-      }
-   }
+   private static List<UUID> a(JsonArray $$0) {
+      List<UUID> $$1 = new ArrayList<>($$0.size());
 
-   public static enum a {
-      a,
-      b;
+      for (JsonElement $$2 : $$0) {
+         if ($$2.isJsonObject()) {
+            UUID $$3 = fak.a("playerId", $$2.getAsJsonObject(), null);
+            if ($$3 != null) {
+               $$1.add($$3);
+            }
+         }
+      }
+
+      return $$1;
    }
 }

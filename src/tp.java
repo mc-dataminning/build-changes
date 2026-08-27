@@ -2,37 +2,37 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class tp extends uc {
-   private static final int c = 12;
-   public static final tp a = new tp(0.0F);
-   public static final ul<tp> b = new ul.a<tp>() {
-      public tp a(DataInput $$0, tv $$1) throws IOException {
+public class tp extends ue {
+   private static final int c = 16;
+   public static final tp a = new tp(0.0);
+   public static final un<tp> b = new un.a<tp>() {
+      public tp a(DataInput $$0, tx $$1) throws IOException {
          return tp.a(d($$0, $$1));
       }
 
       @Override
-      public ug.b a(DataInput $$0, ug $$1, tv $$2) throws IOException {
+      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static float d(DataInput $$0, tv $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      private static double d(DataInput $$0, tx $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
 
       @Override
       public int c() {
-         return 4;
+         return 8;
       }
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "DOUBLE";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_Double";
       }
 
       @Override
@@ -40,33 +40,33 @@ public class tp extends uc {
          return true;
       }
    };
-   private final float w;
+   private final double w;
 
-   private tp(float $$0) {
+   private tp(double $$0) {
       this.w = $$0;
    }
 
-   public static tp a(float $$0) {
-      return $$0 == 0.0F ? a : new tp($$0);
+   public static tp a(double $$0) {
+      return $$0 == 0.0 ? a : new tp($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+      $$0.writeDouble(this.w);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 16;
    }
 
    @Override
    public byte b() {
-      return 5;
+      return 6;
    }
 
    @Override
-   public ul<tp> c() {
+   public un<tp> c() {
       return b;
    }
 
@@ -81,42 +81,43 @@ public class tp extends uc {
 
    @Override
    public int hashCode() {
-      return Float.floatToIntBits(this.w);
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
    }
 
    @Override
-   public void a(un $$0) {
+   public void a(up $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.w;
+      return (long)Math.floor(this.w);
    }
 
    @Override
    public int g() {
-      return axk.d(this.w);
+      return axm.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(axk.d(this.w) & 65535);
+      return (short)(axm.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(axk.d(this.w) & 0xFF);
+      return (byte)(axm.a(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.w;
+      return this.w;
    }
 
    @Override
    public float k() {
-      return this.w;
+      return (float)this.w;
    }
 
    @Override
@@ -125,7 +126,7 @@ public class tp extends uc {
    }
 
    @Override
-   public ug.b a(ug $$0) {
+   public ui.b a(ui $$0) {
       return $$0.a(this.w);
    }
 }

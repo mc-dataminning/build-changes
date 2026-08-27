@@ -1,27 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+public class fxo extends fyw {
+   private final fyr a;
 
-public class fxo {
-   private final List<ajt> a;
-
-   private fxo(List<ajt> $$0) {
-      this.a = $$0;
+   protected fxo(fuq $$0, double $$1, double $$2, double $$3, double $$4, fyr $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
-   public List<ajt> a() {
-      return this.a;
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static fxo a(JsonObject $$0) {
-      JsonArray $$1 = axa.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new fxo(List.of());
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         List<ajt> $$2 = Streams.stream($$1).map($$0x -> axa.a($$0x, "texture")).map(ajt::new).collect(ImmutableList.toImmutableList());
-         return new fxo($$2);
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public fya b() {
+      return fya.d;
+   }
+
+   public static class a implements fxz<kq> {
+      private final fyr a;
+
+      public a(fyr $$0) {
+         this.a = $$0;
+      }
+
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fxo($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

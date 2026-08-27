@@ -1,283 +1,181 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class drp extends dqv {
-   @Nullable
-   private volatile ekh n;
-   private volatile dru o = dru.c;
-   private final List<tm> p = Lists.newArrayList();
-   private final Map<dun.a, dqu> q = new Object2ObjectArrayMap();
-   @Nullable
-   private duf r;
-   private final etp<dby> s;
-   private final etp<ekr> t;
+public class drp {
+   public static final int a = 16;
+   public static final int b = 16;
+   public static final int c = 4096;
+   public static final int d = 2;
+   private short e;
+   private short f;
+   private short g;
+   private final drw<dpi> h;
+   private drx<in<daf>> i;
 
-   public drp(cye $$0, drs $$1, cyz $$2, iy<czw> $$3, @Nullable dvu $$4) {
-      this($$0, $$1, null, new etp<>(), new etp<>(), $$2, $$3, $$4);
+   public drp(drw<dpi> $$0, drx<in<daf>> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.g();
    }
 
-   public drp(cye $$0, drs $$1, @Nullable drg[] $$2, etp<dby> $$3, etp<ekr> $$4, cyz $$5, iy<czw> $$6, @Nullable dvu $$7) {
-      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
-      this.s = $$3;
-      this.t = $$4;
+   public drp(ja<daf> $$0) {
+      this.h = new drw<>(dch.q, dcj.a.n(), drw.d.d);
+      this.i = new drw<>($$0.t(), $$0.g(dam.b), drw.d.e);
    }
 
-   @Override
-   public etu<dby> o() {
-      return this.s;
+   public dpi a(int $$0, int $$1, int $$2) {
+      return this.h.a($$0, $$1, $$2);
    }
 
-   @Override
-   public etu<ekr> p() {
-      return this.t;
+   public elb b(int $$0, int $$1, int $$2) {
+      return this.h.a($$0, $$1, $$2).u();
    }
 
-   @Override
-   public dqv.a q() {
-      return new dqv.a(this.s, this.t);
+   public void a() {
+      this.h.a();
    }
 
-   @Override
-   public doz a_(ib $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return dca.nb.n();
+   public void b() {
+      this.h.b();
+   }
+
+   public dpi a(int $$0, int $$1, int $$2, dpi $$3) {
+      return this.a($$0, $$1, $$2, $$3, true);
+   }
+
+   public dpi a(int $$0, int $$1, int $$2, dpi $$3, boolean $$4) {
+      dpi $$5;
+      if ($$4) {
+         $$5 = this.h.a($$0, $$1, $$2, $$3);
       } else {
-         drg $$2 = this.b(this.e($$1));
-         return $$2.c() ? dca.a.n() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+         $$5 = this.h.b($$0, $$1, $$2, $$3);
       }
-   }
 
-   @Override
-   public eks b_(ib $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return ekt.a.g();
-      } else {
-         drg $$2 = this.b(this.e($$1));
-         return $$2.c() ? ekt.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
-      }
-   }
-
-   @Nullable
-   @Override
-   public doz a(ib $$0, doz $$1, boolean $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      if ($$4 >= this.I_() && $$4 < this.al()) {
-         int $$6 = this.e($$4);
-         drg $$7 = this.b($$6);
-         boolean $$8 = $$7.c();
-         if ($$8 && $$1.a(dca.a)) {
-            return $$1;
-         } else {
-            int $$9 = je.b($$3);
-            int $$10 = je.b($$4);
-            int $$11 = je.b($$5);
-            doz $$12 = $$7.a($$9, $$10, $$11, $$1);
-            if (this.o.b(dru.k)) {
-               boolean $$13 = $$7.c();
-               if ($$13 != $$8) {
-                  this.n.a($$0, $$13);
-               }
-
-               if (ekj.a(this, $$0, $$12, $$1)) {
-                  this.i.a(this, $$9, $$4, $$11);
-                  this.n.a($$0);
-               }
-            }
-
-            EnumSet<dur.a> $$14 = this.j().h();
-            EnumSet<dur.a> $$15 = null;
-
-            for (dur.a $$16 : $$14) {
-               dur $$17 = this.h.get($$16);
-               if ($$17 == null) {
-                  if ($$15 == null) {
-                     $$15 = EnumSet.noneOf(dur.a.class);
-                  }
-
-                  $$15.add($$16);
-               }
-            }
-
-            if ($$15 != null) {
-               dur.a(this, $$15);
-            }
-
-            for (dur.a $$18 : $$14) {
-               this.h.get($$18).a($$9, $$4, $$11, $$1);
-            }
-
-            return $$12;
-         }
-      } else {
-         return dca.nb.n();
-      }
-   }
-
-   @Override
-   public void a(dmf $$0) {
-      this.k.put($$0.aA_(), $$0);
-   }
-
-   @Nullable
-   @Override
-   public dmf c_(ib $$0) {
-      return this.k.get($$0);
-   }
-
-   public Map<ib, dmf> D() {
-      return this.k;
-   }
-
-   public void b(tm $$0) {
-      this.p.add($$0);
-   }
-
-   @Override
-   public void a(bpv $$0) {
-      if (!$$0.bO()) {
-         tm $$1 = new tm();
-         $$0.e($$1);
-         this.b($$1);
-      }
-   }
-
-   @Override
-   public void a(efh $$0, efp $$1) {
-      duf $$2 = this.x();
-      if ($$2 != null && $$1.b()) {
-         eez $$3 = $$1.a();
-         cyz $$4 = this.z();
-         if ($$3.i() < $$4.I_() || $$3.l() >= $$4.al()) {
-            return;
+      elb $$7 = $$5.u();
+      elb $$8 = $$3.u();
+      if (!$$5.i()) {
+         this.e--;
+         if ($$5.v()) {
+            this.f--;
          }
       }
 
-      super.a($$0, $$1);
-   }
-
-   public List<tm> E() {
-      return this.p;
-   }
-
-   @Override
-   public dru j() {
-      return this.o;
-   }
-
-   public void a(dru $$0) {
-      this.o = $$0;
-      if (this.r != null && $$0.b(this.r.a())) {
-         this.a(null);
+      if (!$$7.c()) {
+         this.g--;
       }
 
-      this.a(true);
-   }
-
-   @Override
-   public il<czw> getNoiseBiome(int $$0, int $$1, int $$2) {
-      if (this.k().b(dru.f)) {
-         return super.getNoiseBiome($$0, $$1, $$2);
-      } else {
-         throw new IllegalStateException("Asking for biomes before we have biomes");
+      if (!$$3.i()) {
+         this.e++;
+         if ($$3.v()) {
+            this.f++;
+         }
       }
-   }
 
-   public static short g(ib $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      int $$4 = $$1 & 15;
-      int $$5 = $$2 & 15;
-      int $$6 = $$3 & 15;
-      return (short)($$4 | $$5 << 4 | $$6 << 8);
-   }
-
-   public static ib a(short $$0, int $$1, cye $$2) {
-      int $$3 = je.a($$2.e, $$0 & 15);
-      int $$4 = je.a($$1, $$0 >>> 4 & 15);
-      int $$5 = je.a($$2.f, $$0 >>> 8 & 15);
-      return new ib($$3, $$4, $$5);
-   }
-
-   @Override
-   public void e(ib $$0) {
-      if (!this.s($$0)) {
-         dqv.a(this.b, this.e($$0.v())).add(g($$0));
+      if (!$$8.c()) {
+         this.g++;
       }
+
+      return $$5;
    }
 
-   @Override
-   public void a(short $$0, int $$1) {
-      dqv.a(this.b, $$1).add($$0);
+   public boolean c() {
+      return this.e == 0;
    }
 
-   public Map<ib, tm> F() {
-      return Collections.unmodifiableMap(this.j);
+   public boolean d() {
+      return this.e() || this.f();
    }
 
-   @Nullable
-   @Override
-   public tm a(ib $$0, in.a $$1) {
-      dmf $$2 = this.c_($$0);
-      return $$2 != null ? $$2.b($$1) : this.j.get($$0);
+   public boolean e() {
+      return this.f > 0;
    }
 
-   @Override
-   public void d(ib $$0) {
-      this.k.remove($$0);
-      this.j.remove($$0);
+   public boolean f() {
+      return this.g > 0;
    }
 
-   @Nullable
-   public dqu a(dun.a $$0) {
-      return this.q.get($$0);
+   public void g() {
+      class a implements drw.b<dpi> {
+         public int a;
+         public int b;
+         public int c;
+
+         public void a(dpi $$0, int $$1) {
+            elb $$2 = $$0.u();
+            if (!$$0.i()) {
+               this.a += $$1;
+               if ($$0.v()) {
+                  this.b += $$1;
+               }
+            }
+
+            if (!$$2.c()) {
+               this.a += $$1;
+               if ($$2.f()) {
+                  this.c += $$1;
+               }
+            }
+         }
+      }
+
+      a $$0 = new a();
+      this.h.a($$0);
+      this.e = (short)$$0.a;
+      this.f = (short)$$0.b;
+      this.g = (short)$$0.c;
    }
 
-   public dqu b(dun.a $$0) {
-      return this.q.computeIfAbsent($$0, $$0x -> new dqu(this.J_(), this.I_()));
+   public drw<dpi> h() {
+      return this.h;
    }
 
-   public void a(dun.a $$0, dqu $$1) {
-      this.q.put($$0, $$1);
+   public drx<in<daf>> i() {
+      return this.i;
    }
 
-   public void a(ekh $$0) {
-      this.n = $$0;
+   public void a(vi $$0) {
+      this.e = $$0.readShort();
+      this.h.a($$0);
+      drw<in<daf>> $$1 = this.i.e();
+      $$1.a($$0);
+      this.i = $$1;
    }
 
-   public void a(@Nullable duf $$0) {
-      this.r = $$0;
+   public void b(vi $$0) {
+      drw<in<daf>> $$1 = this.i.e();
+      $$1.a($$0);
+      this.i = $$1;
    }
 
-   @Nullable
-   @Override
-   public duf x() {
-      return this.r;
+   public void c(vi $$0) {
+      $$0.l(this.e);
+      this.h.b($$0);
+      this.i.b($$0);
    }
 
-   private static <T> etm<T> a(etp<T> $$0) {
-      return new etm<>($$0.b());
+   public int j() {
+      return 2 + this.h.c() + this.i.c();
    }
 
-   public etm<dby> G() {
-      return a(this.s);
+   public boolean a(Predicate<dpi> $$0) {
+      return this.h.a($$0);
    }
 
-   public etm<ekr> H() {
-      return a(this.t);
+   public in<daf> c(int $$0, int $$1, int $$2) {
+      return this.i.a($$0, $$1, $$2);
    }
 
-   @Override
-   public cyz z() {
-      return (cyz)(this.y() ? duf.b : this);
+   public void a(dai $$0, dao.f $$1, int $$2, int $$3, int $$4) {
+      drw<in<daf>> $$5 = this.i.e();
+      int $$6 = 4;
+
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            for (int $$9 = 0; $$9 < 4; $$9++) {
+               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
+            }
+         }
+      }
+
+      this.i = $$5;
    }
 }

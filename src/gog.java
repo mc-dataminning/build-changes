@@ -1,3 +1,8 @@
-public interface gog {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gog {
 }

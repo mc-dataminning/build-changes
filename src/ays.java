@@ -1,76 +1,76 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicLike;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-import java.util.stream.IntStream;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public class ays {
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("X").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
-      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
-      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
-         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
-         : $$0;
+public enum ays {
+   a(bff.a),
+   b(bff.b),
+   c(bff.c),
+   d(bff.d),
+   e(bff.e),
+   f(bff.f),
+   g(bff.g),
+   h(bff.h),
+   i(bff.i),
+   j(bff.j),
+   k(bff.k),
+   l(bff.l),
+   m(bff.m),
+   n(bff.o),
+   o(bff.n),
+   p(bff.p),
+   q(bff.q),
+   r(bff.K),
+   s(bff.r);
+
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private ays(TypeReference $$0) {
+      this.u = $$0;
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, Optional<? extends Dynamic<?>> $$2) {
-      return $$2.isEmpty() ? $$0 : $$0.set($$1, $$2.get());
+   static int a() {
+      return aa.b().d().c();
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2) {
-      return a($$0, $$1, $$2, UnaryOperator.identity());
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(ays.a())));
+         }
+
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = ays.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Optional<? extends Dynamic<?>> $$3) {
-      return a($$0.remove($$1), $$2, $$3);
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, UnaryOperator<Dynamic<?>> $$3) {
-      return a($$0.remove($$1), $$2, $$0.get($$1).result().map($$3));
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
    }
 
-   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, Dynamic<?> $$2, String $$3) {
-      return a($$0, $$1, $$2, $$3, UnaryOperator.identity());
+   public to a(DataFixer $$0, to $$1, int $$2, int $$3) {
+      return (to)this.a($$0, new Dynamic(uc.a, $$1), $$2, $$3).getValue();
    }
 
-   public static <T> Dynamic<?> a(Dynamic<T> $$0, String $$1, Dynamic<?> $$2, String $$3, UnaryOperator<Dynamic<T>> $$4) {
-      Optional<Dynamic<T>> $$5 = $$0.get($$1).result();
-      return $$5.isPresent() ? $$2.set($$3, $$4.apply($$5.get())) : $$2;
+   public to a(DataFixer $$0, to $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
    }
 
-   @SafeVarargs
-   public static TypeTemplate a(Pair<String, TypeTemplate>... $$0) {
-      List<TypeTemplate> $$1 = Arrays.stream($$0).map($$0x -> DSL.optional(DSL.field((String)$$0x.getFirst(), (TypeTemplate)$$0x.getSecond()))).toList();
-      return DSL.allWithRemainder($$1.get(0), $$1.subList(1, $$1.size()).toArray(new TypeTemplate[0]));
-   }
-
-   private static <T> DataResult<Boolean> b(Dynamic<T> $$0) {
-      return $$0.getOps().getBooleanValue($$0.getValue());
-   }
-
-   public static DataResult<Boolean> a(DynamicLike<?> $$0) {
-      if ($$0 instanceof Dynamic<?> $$1) {
-         return b($$1);
-      } else {
-         return $$0 instanceof OptionalDynamic<?> $$2 ? $$2.get().flatMap(ays::b) : DataResult.error(() -> "Unknown dynamic value: " + $$0);
-      }
-   }
-
-   public static boolean a(DynamicLike<?> $$0, boolean $$1) {
-      return a($$0).result().orElse($$1);
-   }
-
-   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
-      return new Typed($$0, $$1.getOps(), $$1.getValue());
+   static {
+      t = Set.of(a.u);
    }
 }

@@ -1,86 +1,85 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class bxg extends bxu {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final ccq b;
+   private final int c;
+   private boolean d;
 
-public class bxg extends bxl {
-   private int a;
-   private final bqw b;
-   @Nullable
-   private cjt c;
-   private bwu d;
-
-   public bxg(bqw $$0) {
+   public bxg(ccq $$0, int $$1) {
       this.b = $$0;
+      this.c = b($$1);
    }
 
    @Override
    public boolean a() {
-      List<clq> $$0 = this.b.dM().a(clq.class, this.b.cH().g(5.0));
-      boolean $$1 = false;
+      if (this.b.ei().a(this.c) != 0) {
+         return false;
+      } else {
+         ij $$0 = this.b.cF();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         id $$3 = this.b.dm();
 
-      for (clq $$2 : $$0) {
-         bpv $$3 = $$2.cN();
-         if ($$3 instanceof cjt && (axk.e(((cjt)$$3).bn) > 0.0F || axk.e(((cjt)$$3).bp) > 0.0F)) {
-            $$1 = true;
-            break;
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
+            }
          }
-      }
 
-      return this.c != null && (axk.e(this.c.bn) > 0.0F || axk.e(this.c.bp) > 0.0F) || $$1;
+         return true;
+      }
    }
 
-   @Override
-   public boolean Q_() {
-      return true;
+   private boolean a(id $$0, int $$1, int $$2, int $$3) {
+      id $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dM().b_($$4).a(avj.a) && !this.b.dM().a_($$4).d();
+   }
+
+   private boolean b(id $$0, int $$1, int $$2, int $$3) {
+      return this.b.dM().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dM().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
    }
 
    @Override
    public boolean b() {
-      return this.c != null && this.c.bO() && (axk.e(this.c.bn) > 0.0F || axk.e(this.c.bp) > 0.0F);
+      double $$0 = this.b.dp().d;
+      return (!($$0 * $$0 < 0.03F) || this.b.dE() == 0.0F || !(Math.abs(this.b.dE()) < 10.0F) || !this.b.bc()) && !this.b.aC();
+   }
+
+   @Override
+   public boolean Q_() {
+      return false;
    }
 
    @Override
    public void c() {
-      for (clq $$1 : this.b.dM().a(clq.class, this.b.cH().g(5.0))) {
-         if ($$1.cN() instanceof cjt $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = bwu.a;
+      ij $$0 = this.b.cF();
+      this.b.g(this.b.dp().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.K().n();
    }
 
    @Override
    public void d() {
-      this.c = null;
+      this.b.s(0.0F);
    }
 
    @Override
    public void e() {
-      boolean $$0 = axk.e(this.c.bn) > 0.0F || axk.e(this.c.bp) > 0.0F;
-      float $$1 = this.d == bwu.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new esa((double)this.b.bn, (double)this.b.bo, (double)this.b.bp));
-      this.b.a(bqt.a, this.b.dp());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == bwu.a) {
-            ib $$2 = this.c.dm().a(this.c.cE().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.K().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = bwu.b;
-            }
-         } else if (this.d == bwu.b) {
-            ih $$3 = this.c.cF();
-            ib $$4 = this.c.dm().a($$3, 10);
-            this.b.K().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = bwu.a;
-            }
-         }
+      boolean $$0 = this.d;
+      if (!$$0) {
+         elb $$1 = this.b.dM().b_(this.b.dm());
+         this.d = $$1.a(avj.a);
+      }
+
+      if (this.d && !$$0) {
+         this.b.a(auo.gW, 1.0F, 1.0F);
+      }
+
+      esj $$2 = this.b.dp();
+      if ($$2.d * $$2.d < 0.03F && this.b.dE() != 0.0F) {
+         this.b.s(axm.j(0.2F, this.b.dE(), 0.0F));
+      } else if ($$2.f() > 1.0E-5F) {
+         double $$3 = $$2.h();
+         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
+         this.b.s((float)$$4);
       }
    }
 }

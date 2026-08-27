@@ -5,22 +5,22 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Optional<ip<ctf>> g, Optional<co> h, jn i) {
+public record cc(Optional<ir<crn>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Optional<ir<cto>> g, Optional<co> h, jp i) {
    public static final Codec<cc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               aws.a(ja.a(ks.F), "items").forGetter(cc::a),
-               aws.a(cm.d.d, "count", cm.d.c).forGetter(cc::b),
-               aws.a(cm.d.d, "durability", cm.d.c).forGetter(cc::c),
-               aws.a(bm.a.listOf(), "enchantments", List.of()).forGetter(cc::d),
-               aws.a(bm.a.listOf(), "stored_enchantments", List.of()).forGetter(cc::e),
-               aws.a(ja.a(ks.X), "potions").forGetter(cc::f),
-               aws.a(co.a, "custom_data").forGetter(cc::g),
-               aws.a(jn.a, "components", jn.c).forGetter(cc::h)
+               awu.a(jc.a(ku.G), "items").forGetter(cc::a),
+               awu.a(cm.d.d, "count", cm.d.c).forGetter(cc::b),
+               awu.a(cm.d.d, "durability", cm.d.c).forGetter(cc::c),
+               awu.a(bm.a.listOf(), "enchantments", List.of()).forGetter(cc::d),
+               awu.a(bm.a.listOf(), "stored_enchantments", List.of()).forGetter(cc::e),
+               awu.a(jc.a(ku.Y), "potions").forGetter(cc::f),
+               awu.a(co.a, "custom_data").forGetter(cc::g),
+               awu.a(jp.a, "components", jp.c).forGetter(cc::h)
             )
             .apply($$0, cc::new)
    );
 
-   public boolean a(crj $$0) {
+   public boolean a(crs $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (!this.c.d($$0.G())) {
@@ -33,7 +33,7 @@ public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Op
          return false;
       } else {
          if (!this.e.isEmpty()) {
-            cwx $$1 = $$0.a(jp.f, cwx.a);
+            cxg $$1 = $$0.a(jr.f, cxg.a);
 
             for (bm $$2 : this.e) {
                if (!$$2.a($$1)) {
@@ -43,7 +43,7 @@ public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Op
          }
 
          if (!this.f.isEmpty()) {
-            cwx $$3 = $$0.a(jp.p, cwx.a);
+            cxg $$3 = $$0.a(jr.p, cxg.a);
 
             for (bm $$4 : this.f) {
                if (!$$4.a($$3)) {
@@ -53,7 +53,7 @@ public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Op
          }
 
          if (this.g.isPresent()) {
-            Optional<il<ctf>> $$5 = $$0.a(jp.x, cth.a).f();
+            Optional<in<cto>> $$5 = $$0.a(jr.x, ctq.a).f();
             if ($$5.isEmpty() || !this.g.get().a($$5.get())) {
                return false;
             }
@@ -63,7 +63,7 @@ public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Op
       }
    }
 
-   public Optional<ip<cre>> a() {
+   public Optional<ir<crn>> a() {
       return this.b;
    }
 
@@ -83,7 +83,7 @@ public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Op
       return this.f;
    }
 
-   public Optional<ip<ctf>> f() {
+   public Optional<ir<cto>> f() {
       return this.g;
    }
 
@@ -91,19 +91,19 @@ public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Op
       return this.h;
    }
 
-   public jn h() {
+   public jp h() {
       return this.i;
    }
 
    public static class a {
       private final Builder<bm> a = ImmutableList.builder();
       private final Builder<bm> b = ImmutableList.builder();
-      private Optional<ip<cre>> c = Optional.empty();
+      private Optional<ir<crn>> c = Optional.empty();
       private cm.d d = cm.d.c;
       private cm.d e = cm.d.c;
-      private Optional<ip<ctf>> f = Optional.empty();
+      private Optional<ir<cto>> f = Optional.empty();
       private Optional<co> g = Optional.empty();
-      private jn h = jn.c;
+      private jp h = jp.c;
 
       private a() {
       }
@@ -112,13 +112,13 @@ public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Op
          return new cc.a();
       }
 
-      public cc.a a(cyw... $$0) {
-         this.c = Optional.of(ip.a($$0x -> $$0x.p().n(), $$0));
+      public cc.a a(czf... $$0) {
+         this.c = Optional.of(ir.a($$0x -> $$0x.p().n(), $$0));
          return this;
       }
 
-      public cc.a a(avr<cre> $$0) {
-         this.c = Optional.of(kr.h.a($$0));
+      public cc.a a(avt<crn> $$0) {
+         this.c = Optional.of(kt.h.a($$0));
          return this;
       }
 
@@ -132,12 +132,12 @@ public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Op
          return this;
       }
 
-      public cc.a a(ip<ctf> $$0) {
+      public cc.a a(ir<cto> $$0) {
          this.f = Optional.of($$0);
          return this;
       }
 
-      public cc.a a(tm $$0) {
+      public cc.a a(to $$0) {
          this.g = Optional.of(new co($$0));
          return this;
       }
@@ -152,7 +152,7 @@ public record cc(Optional<ip<cre>> b, cm.d c, cm.d d, List<bm> e, List<bm> f, Op
          return this;
       }
 
-      public cc.a a(jn $$0) {
+      public cc.a a(jp $$0) {
          this.h = $$0;
          return this;
       }

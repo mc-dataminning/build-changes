@@ -1,163 +1,64 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Consumer;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fgz extends fgx {
-   private final fgz.b c;
-   private final List<fgz.a> d = new ArrayList<>();
-   private final fhf e = fhf.i();
+public class fgz {
+   private static long a = 0L;
 
-   public fgz(int $$0, int $$1, fgz.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
+   public static long a() {
+      if (a == 0L) {
+         MemoryStack $$0 = MemoryStack.stackPush();
 
-   public fgz(int $$0, int $$1, int $$2, int $$3, fgz.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
-
-         for (fgz.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
-         }
-
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<fgz.a> $$5 = this.d.iterator();
-         fgz.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
-
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               fgz.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
+         try {
+            PointerBuffer $$1 = $$0.mallocPointer(1);
+            a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
+            a = $$1.get();
+         } catch (Throwable var4) {
+            if ($$0 != null) {
+               try {
+                  $$0.close();
+               } catch (Throwable var3) {
+                  var4.addSuppressed(var3);
+               }
             }
+
+            throw var4;
          }
 
-         int $$9 = this.c.d(this);
-
-         for (fgz.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
-         }
-
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
-      }
-   }
-
-   @Override
-   public void b(Consumer<fhe> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public fhf b() {
-      return this.e.g();
-   }
-
-   public fhf c() {
-      return this.e;
-   }
-
-   public <T extends fhe> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fhe> T a(T $$0, fhf $$1) {
-      this.d.add(new fgz.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fhe> T a(T $$0, Consumer<fhf> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   static class a extends fgx.a {
-      protected a(fhe $$0, fhf $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(fhe $$0) {
-         return switch (this) {
-            case a -> $$0.x();
-            case b -> $$0.v();
-         };
-      }
-
-      int a(fgz.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
-      }
-
-      int b(fhe $$0) {
-         return switch (this) {
-            case a -> $$0.v();
-            case b -> $$0.x();
-         };
-      }
-
-      int b(fgz.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
-      }
-
-      void a(fgz.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
+         if ($$0 != null) {
+            $$0.close();
          }
       }
 
-      void a(fgz.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
-      }
+      return a;
+   }
 
-      int c(fhe $$0) {
-         return switch (this) {
-            case a -> $$0.C();
-            case b -> $$0.D();
-         };
+   public static void a(int $$0, String $$1) {
+      if ($$0 != 0) {
+         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
       }
+   }
 
-      int d(fhe $$0) {
-         return switch (this) {
-            case a -> $$0.D();
-            case b -> $$0.C();
-         };
+   private static String a(int $$0) {
+      String $$1 = FreeType.FT_Error_String($$0);
+      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
+   }
+
+   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
+      long $$3 = (long)Math.round($$1 * 64.0F);
+      long $$4 = (long)Math.round($$2 * 64.0F);
+      return $$0.set($$3, $$4);
+   }
+
+   public static float a(FT_Vector $$0) {
+      return (float)$$0.x() / 64.0F;
+   }
+
+   public static void b() {
+      if (a != 0L) {
+         FreeType.FT_Done_Library(a);
+         a = 0L;
       }
    }
 }

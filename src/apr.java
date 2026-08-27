@@ -1,273 +1,127 @@
+import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class apr {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 1;
-   private static final double d = 7.6293945E-6F;
-   public static final int a = 60;
-   private static final int e = 400;
-   private final aps f;
-   private final bpv g;
-   private final int h;
-   private final boolean i;
-   private final Consumer<yn<?>> j;
-   private final ahi k = new ahi();
-   private int l;
-   private int m;
-   private int n;
-   private esa o = esa.b;
-   private int p;
-   private int q;
-   private List<bpv> r = Collections.emptyList();
-   private boolean s;
-   private boolean t;
-   @Nullable
-   private List<ajc.c<?>> u;
+public class apr extends bnv {
+   private final Set<apv> h = Sets.newHashSet();
+   private final Set<apv> i = Collections.unmodifiableSet(this.h);
+   private boolean j = true;
 
-   public apr(aps $$0, bpv $$1, int $$2, boolean $$3, Consumer<yn<?>> $$4) {
-      this.f = $$0;
-      this.j = $$4;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.k.e($$1.dl());
-      this.l = axk.d($$1.dC() * 256.0F / 360.0F);
-      this.m = axk.d($$1.dE() * 256.0F / 360.0F);
-      this.n = axk.d($$1.cp() * 256.0F / 360.0F);
-      this.t = $$1.aC();
-      this.u = $$1.an().c();
+   public apr(wi $$0, bnv.a $$1, bnv.b $$2) {
+      super(axm.a(), $$0, $$1, $$2);
    }
 
-   public void a() {
-      List<bpv> $$0 = this.g.cP();
-      if (!$$0.equals(this.r)) {
-         this.j.accept(new aej(this.g));
-         a($$0, this.r).forEach($$0x -> {
-            if ($$0x instanceof apt $$1) {
-               $$1.d.a($$1.dr(), $$1.dt(), $$1.dx(), $$1.dC(), $$1.dE());
-            }
-         });
-         this.r = $$0;
-      }
-
-      if (this.g instanceof cfw $$1 && this.p % 10 == 0) {
-         crj $$2 = $$1.E();
-         if ($$2.f() instanceof crq) {
-            emd $$3 = $$2.a(jp.s);
-            emf $$4 = crq.a($$3, this.f);
-            if ($$4 != null) {
-               for (apt $$5 : this.f.x()) {
-                  $$4.a($$5, $$2);
-                  yn<?> $$6 = $$4.a($$3, $$5);
-                  if ($$6 != null) {
-                     $$5.d.b($$6);
-                  }
-               }
-            }
-         }
-
-         this.b();
-      }
-
-      if (this.p % this.h == 0 || this.g.au || this.g.an().a()) {
-         if (this.g.bO()) {
-            int $$7 = axk.d(this.g.dC() * 256.0F / 360.0F);
-            int $$8 = axk.d(this.g.dE() * 256.0F / 360.0F);
-            boolean $$9 = Math.abs($$7 - this.l) >= 1 || Math.abs($$8 - this.m) >= 1;
-            if ($$9) {
-               this.j.accept(new acs.c(this.g.aj(), (byte)$$7, (byte)$$8, this.g.aC()));
-               this.l = $$7;
-               this.m = $$8;
-            }
-
-            this.k.e(this.g.dl());
-            this.b();
-            this.s = true;
-         } else {
-            this.q++;
-            int $$10 = axk.d(this.g.dC() * 256.0F / 360.0F);
-            int $$11 = axk.d(this.g.dE() * 256.0F / 360.0F);
-            esa $$12 = this.g.dl();
-            boolean $$13 = this.k.d($$12).g() >= 7.6293945E-6F;
-            yn<?> $$14 = null;
-            boolean $$15 = $$13 || this.p % 60 == 0;
-            boolean $$16 = Math.abs($$10 - this.l) >= 1 || Math.abs($$11 - this.m) >= 1;
-            boolean $$17 = false;
-            boolean $$18 = false;
-            if (this.p > 0 || this.g instanceof cjz) {
-               long $$19 = this.k.a($$12);
-               long $$20 = this.k.b($$12);
-               long $$21 = this.k.c($$12);
-               boolean $$22 = $$19 < -32768L || $$19 > 32767L || $$20 < -32768L || $$20 > 32767L || $$21 < -32768L || $$21 > 32767L;
-               if ($$22 || this.q > 400 || this.s || this.t != this.g.aC()) {
-                  this.t = this.g.aC();
-                  this.q = 0;
-                  $$14 = new aez(this.g);
-                  $$17 = true;
-                  $$18 = true;
-               } else if ((!$$15 || !$$16) && !(this.g instanceof cjz)) {
-                  if ($$15) {
-                     $$14 = new acs.a(this.g.aj(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aC());
-                     $$17 = true;
-                  } else if ($$16) {
-                     $$14 = new acs.c(this.g.aj(), (byte)$$10, (byte)$$11, this.g.aC());
-                     $$18 = true;
-                  }
-               } else {
-                  $$14 = new acs.b(this.g.aj(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), (byte)$$10, (byte)$$11, this.g.aC());
-                  $$17 = true;
-                  $$18 = true;
-               }
-            }
-
-            if ((this.i || this.g.au || this.g instanceof bqo && ((bqo)this.g).fB()) && this.p > 0) {
-               esa $$23 = this.g.dp();
-               double $$24 = $$23.g(this.o);
-               if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.g() == 0.0) {
-                  this.o = $$23;
-                  this.j.accept(new aee(this.g.aj(), this.o));
-               }
-            }
-
-            if ($$14 != null) {
-               this.j.accept($$14);
-            }
-
-            this.b();
-            if ($$17) {
-               this.k.e($$12);
-            }
-
-            if ($$18) {
-               this.l = $$10;
-               this.m = $$11;
-            }
-
-            this.s = false;
-         }
-
-         int $$25 = axk.d(this.g.cp() * 256.0F / 360.0F);
-         if (Math.abs($$25 - this.n) >= 1) {
-            this.j.accept(new adm(this.g, (byte)$$25));
-            this.n = $$25;
-         }
-
-         this.g.au = false;
-      }
-
-      this.p++;
-      if (this.g.T) {
-         this.a(new aee(this.g));
-         this.g.T = false;
+   @Override
+   public void a(float $$0) {
+      if ($$0 != this.b) {
+         super.a($$0);
+         this.a(abk::b);
       }
    }
 
-   private static Stream<bpv> a(List<bpv> $$0, List<bpv> $$1) {
-      return $$1.stream().filter($$1x -> !$$0.contains($$1x));
-   }
-
-   public void a(apt $$0) {
-      this.g.d($$0);
-      $$0.d.b(new adi(this.g.aj()));
-   }
-
-   public void b(apt $$0) {
-      List<yn<? super aay>> $$1 = new ArrayList<>();
-      this.a($$0, $$1::add);
-      $$0.d.b(new abk($$1));
-      this.g.c($$0);
-   }
-
-   public void a(apt $$0, Consumer<yn<aay>> $$1) {
-      if (this.g.dH()) {
-         b.warn("Fetching packet for removed entity {}", this.g);
-      }
-
-      yn<aay> $$2 = this.g.di();
-      this.n = axk.d(this.g.cp() * 256.0F / 360.0F);
-      $$1.accept($$2);
-      if (this.u != null) {
-         $$1.accept(new aec(this.g.aj(), this.u));
-      }
-
-      boolean $$3 = this.i;
-      if (this.g instanceof bqo) {
-         Collection<brr> $$4 = ((bqo)this.g).eT().b();
-         if (!$$4.isEmpty()) {
-            $$1.accept(new afd(this.g.aj(), $$4));
-         }
-
-         if (((bqo)this.g).fB()) {
-            $$3 = true;
-         }
-      }
-
-      this.o = this.g.dp();
-      if ($$3 && !(this.g instanceof bqo)) {
-         $$1.accept(new aee(this.g.aj(), this.o));
-      }
-
-      if (this.g instanceof bqo) {
-         List<Pair<bqc, crj>> $$5 = Lists.newArrayList();
-
-         for (bqc $$6 : bqc.values()) {
-            crj $$7 = ((bqo)this.g).d($$6);
-            if (!$$7.d()) {
-               $$5.add(Pair.of($$6, $$7.r()));
-            }
-         }
-
-         if (!$$5.isEmpty()) {
-            $$1.accept(new aef(this.g.aj(), $$5));
-         }
-      }
-
-      if (!this.g.cP().isEmpty()) {
-         $$1.accept(new aej(this.g));
-      }
-
-      if (this.g.bO()) {
-         $$1.accept(new aej(this.g.cZ()));
-      }
-
-      if (this.g instanceof bqq $$8 && $$8.gb()) {
-         $$1.accept(new aed($$8, $$8.gc()));
+   @Override
+   public void a(bnv.a $$0) {
+      if ($$0 != this.c) {
+         super.a($$0);
+         this.a(abk::d);
       }
    }
 
-   private void b() {
-      ajc $$0 = this.g.an();
-      List<ajc.c<?>> $$1 = $$0.b();
-      if ($$1 != null) {
-         this.u = $$0.c();
-         this.a(new aec(this.g.aj(), $$1));
-      }
-
-      if (this.g instanceof bqo) {
-         Set<brr> $$2 = ((bqo)this.g).eT().a();
-         if (!$$2.isEmpty()) {
-            this.a(new afd(this.g.aj(), $$2));
-         }
-
-         $$2.clear();
+   @Override
+   public void a(bnv.b $$0) {
+      if ($$0 != this.d) {
+         super.a($$0);
+         this.a(abk::d);
       }
    }
 
-   private void a(yn<?> $$0) {
-      this.j.accept($$0);
-      if (this.g instanceof apt) {
-         ((apt)this.g).d.b($$0);
+   @Override
+   public bnv a(boolean $$0) {
+      if ($$0 != this.e) {
+         super.a($$0);
+         this.a(abk::e);
       }
+
+      return this;
+   }
+
+   @Override
+   public bnv b(boolean $$0) {
+      if ($$0 != this.f) {
+         super.b($$0);
+         this.a(abk::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public bnv c(boolean $$0) {
+      if ($$0 != this.g) {
+         super.c($$0);
+         this.a(abk::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void a(wi $$0) {
+      if (!Objects.equal($$0, this.a)) {
+         super.a($$0);
+         this.a(abk::c);
+      }
+   }
+
+   private void a(Function<bnv, abk> $$0) {
+      if (this.j) {
+         abk $$1 = $$0.apply(this);
+
+         for (apv $$2 : this.h) {
+            $$2.d.b($$1);
+         }
+      }
+   }
+
+   public void a(apv $$0) {
+      if (this.h.add($$0) && this.j) {
+         $$0.d.b(abk.a(this));
+      }
+   }
+
+   public void b(apv $$0) {
+      if (this.h.remove($$0) && this.j) {
+         $$0.d.b(abk.a(this.h()));
+      }
+   }
+
+   public void b() {
+      if (!this.h.isEmpty()) {
+         for (apv $$0 : Lists.newArrayList(this.h)) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public boolean f() {
+      return this.j;
+   }
+
+   public void d(boolean $$0) {
+      if ($$0 != this.j) {
+         this.j = $$0;
+
+         for (apv $$1 : this.h) {
+            $$1.d.b($$0 ? abk.a(this) : abk.a(this.h()));
+         }
+      }
+   }
+
+   public Collection<apv> g() {
+      return this.i;
    }
 }

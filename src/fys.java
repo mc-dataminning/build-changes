@@ -1,55 +1,54 @@
-public class fys extends fyn {
-   private final fyi a;
-
-   fys(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fyi $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$7;
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.b($$7);
-      this.u = 0.0F;
+public class fys extends fyi {
+   fys(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fyr $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)aww.b.b($$7), (float)aww.b.c($$7), (float)aww.b.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
       this.j = $$4;
       this.k = $$5;
       this.l = $$6;
    }
 
    @Override
-   public fxr b() {
-      return fxr.b;
-   }
-
-   @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      int $$0 = 60 - this.t;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         float $$1 = (float)$$0 * 0.001F;
-         this.b($$1, $$1);
-         this.a(this.a.a($$0 % 4, 4));
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
+
+         if (this.c.a_(id.a(this.g, this.h, this.i)).i()) {
+            this.k -= 0.0074F;
+         }
       }
    }
 
-   public static class a implements fxq<ko> {
-      private final fyi a;
+   public static class a implements fxz<kq> {
+      private final fyr a;
 
-      public a(fyi $$0) {
+      public a(fyr $$0) {
          this.a = $$0;
       }
 
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fys($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fys($$1, $$2, $$3, $$4, $$5, $$6, $$7, aww.b.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements fxz<kq> {
+      private final fyr a;
+
+      public b(fyr $$0) {
+         this.a = $$0;
+      }
+
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fys($$1, $$2, $$3, $$4, $$5, $$6, $$7, aww.b.a(255, 255, 255, 255), this.a);
       }
    }
 }

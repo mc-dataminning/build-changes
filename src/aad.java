@@ -1,29 +1,23 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public record aad(Set<je> c, Set<je> d) implements zo {
-   public static final ye<vg, aad> a = zo.a(aad::a, aad::new);
-   public static final zo.b<aad> b = zo.a("debug/village_sections");
+public record aad(List<id> c) implements zq {
+   public static final yg<vi, aad> a = zq.a(aad::a, aad::new);
+   public static final zq.b<aad> b = zq.a("debug/raids");
 
-   private aad(vg $$0) {
-      this($$0.a(HashSet::new, vg::g), $$0.a(HashSet::new, vg::g));
+   private aad(vi $$0) {
+      this($$0.a(id.b));
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.c, vg::a);
-      $$0.a(this.d, vg::a);
+   private void a(vi $$0) {
+      $$0.a(this.c, id.b);
    }
 
    @Override
-   public zo.b<aad> a() {
+   public zq.b<aad> a() {
       return b;
    }
 
-   public Set<je> b() {
+   public List<id> b() {
       return this.c;
-   }
-
-   public Set<je> c() {
-      return this.d;
    }
 }

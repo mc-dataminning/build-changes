@@ -1,58 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class des extends dft {
-   public static final dpx<dpk> K = dpp.U;
+public class des extends dem {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<des> d = b(des::new);
+   private static final jz f = new jy();
 
-   protected des(doy.d $$0) {
+   @Override
+   public MapCodec<des> a() {
+      return d;
+   }
+
+   public des(dph.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends des> a();
-
-   @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      return b($$1, $$2, m($$0).g());
+   protected jz a(crs $$0) {
+      return f;
    }
 
-   public static boolean b(cza $$0, ib $$1, ih $$2) {
-      ib $$3 = $$1.a($$2);
-      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   @Override
+   public dmo a(id $$0, dpi $$1) {
+      return new dnh($$0, $$1);
    }
 
-   @Nullable
    @Override
-   public doz a(cuo $$0) {
-      for (ih $$1 : $$0.f()) {
-         doz $$2;
-         if ($$1.o() == ih.a.b) {
-            $$2 = this.n().a(K, $$1 == ih.b ? dpk.c : dpk.a).a(aE, $$0.g());
+   protected void a(apu $$0, dpi $$1, id $$2) {
+      dng $$3 = $$0.a($$2, dmq.g).orElse(null);
+      if ($$3 == null) {
+         e.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+      } else {
+         jw $$4 = new jw($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
          } else {
-            $$2 = this.n().a(K, dpk.b).a(aE, $$1.g());
+            crs $$6 = $$3.a($$5);
+            if (!$$6.d()) {
+               ij $$7 = $$0.a_($$2).c(b);
+               bny $$8 = dnn.a($$0, $$2.a($$7));
+               crs $$9;
+               if ($$8 == null) {
+                  $$9 = f.dispense($$4, $$6);
+               } else {
+                  $$9 = dnn.a($$3, $$8, $$6.r().a(1), $$7.g());
+                  if ($$9.d()) {
+                     $$9 = $$6.r();
+                     $$9.g(1);
+                  } else {
+                     $$9 = $$6.r();
+                  }
+               }
+
+               $$3.a($$5, $$9);
+            }
          }
-
-         if ($$2.a((cza)$$0.q(), $$0.a())) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected static ih m(doz $$0) {
-      switch ((dpk)$$0.c(K)) {
-         case c:
-            return ih.a;
-         case a:
-            return ih.b;
-         default:
-            return $$0.c(aE);
       }
    }
 }

@@ -1,98 +1,112 @@
-public class fpi extends fqv<cdh> implements fpl {
-   private final ftm a;
-   private final ftm b;
-   private final ftm f;
-   private final ftm g;
-   private final ftm h;
-   private final ftm i;
-   private final ftm j;
-   private static final float k = (float) (Math.PI / 4);
-   private static final float l = -1.134464F;
-   private static final float m = (float) (-Math.PI / 3);
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   public fpi(ftm $$0) {
-      super(gah::i);
-      this.a = $$0.b("root");
-      this.b = this.a.b("head");
-      this.f = this.a.b("body");
-      this.g = this.f.b("right_arm");
-      this.h = this.f.b("left_arm");
-      this.i = this.f.b("right_wing");
-      this.j = this.f.b("left_wing");
+public class fpi implements fpd, fpe {
+   private static final ajv a = new ajv("spectator/teleport_to_team");
+   private static final wi b = wi.c("spectatorMenu.team_teleport");
+   private static final wi c = wi.c("spectatorMenu.team_teleport.prompt");
+   private final List<fpe> d;
+
+   public fpi() {
+      fby $$0 = fby.Q();
+      this.d = a($$0, $$0.r.L());
+   }
+
+   private static List<fpe> a(fby $$0, etn $$1) {
+      return $$1.g().stream().flatMap($$1x -> fpi.a.a($$0, $$1x).stream()).toList();
    }
 
    @Override
-   public ftm a() {
-      return this.a;
+   public List<fpe> a() {
+      return this.d;
    }
 
-   public static fts b() {
-      ftu $$0 = new ftu();
-      ftv $$1 = $$0.a();
-      ftv $$2 = $$1.a("root", ftr.c(), fto.a(0.0F, 23.5F, 0.0F));
-      $$2.a("head", ftr.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new ftq(0.0F)), fto.a(0.0F, -3.99F, 0.0F));
-      ftv $$3 = $$2.a(
-         "body",
-         ftr.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new ftq(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new ftq(-0.2F)),
-         fto.a(0.0F, -4.0F, 0.0F)
-      );
-      $$3.a("right_arm", ftr.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new ftq(-0.01F)), fto.a(-1.75F, 0.5F, 0.0F));
-      $$3.a("left_arm", ftr.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new ftq(-0.01F)), fto.a(1.75F, 0.5F, 0.0F));
-      $$3.a("right_wing", ftr.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new ftq(0.0F)), fto.a(-0.5F, 0.0F, 0.6F));
-      $$3.a("left_wing", ftr.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new ftq(0.0F)), fto.a(0.5F, 0.0F, 0.6F));
-      return fts.a($$0, 32, 32);
+   @Override
+   public wi b() {
+      return c;
    }
 
-   public void a(cdh $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(ftm::c);
-      float $$6 = $$3 * 20.0F * (float) (Math.PI / 180.0) + $$1;
-      float $$7 = axk.b($$6) * (float) Math.PI * 0.15F + $$2;
-      float $$8 = $$3 - (float)$$0.ah;
-      float $$9 = $$3 * 9.0F * (float) (Math.PI / 180.0);
-      float $$10 = Math.min($$2 / 0.3F, 1.0F);
-      float $$11 = 1.0F - $$10;
-      float $$12 = $$0.G($$8);
-      if ($$0.gn()) {
-         float $$13 = $$3 * 8.0F * (float) (Math.PI / 180.0) + $$2;
-         float $$14 = axk.b($$13) * 16.0F * (float) (Math.PI / 180.0);
-         float $$15 = $$0.H($$8);
-         float $$16 = axk.b($$13) * 14.0F * (float) (Math.PI / 180.0);
-         float $$17 = axk.b($$13) * 30.0F * (float) (Math.PI / 180.0);
-         this.a.f = $$0.go() ? (float) (Math.PI * 4) * $$15 : this.a.f;
-         this.a.g = $$14 * (1.0F - $$15);
-         this.b.f = $$17 * (1.0F - $$15);
-         this.b.g = $$16 * (1.0F - $$15);
-      } else {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = $$4 * (float) (Math.PI / 180.0);
+   @Override
+   public void a(fpc $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public wi aN_() {
+      return b;
+   }
+
+   @Override
+   public void a(fdl $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aO_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fpe {
+      private final eti a;
+      private final Supplier<gmr> b;
+      private final List<fvb> c;
+
+      private a(eti $$0, List<fvb> $$1, Supplier<gmr> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      this.i.e = 0.43633232F * (1.0F - $$10);
-      this.i.f = (float) (-Math.PI / 4) + $$7;
-      this.j.e = 0.43633232F * (1.0F - $$10);
-      this.j.f = (float) (Math.PI / 4) - $$7;
-      this.f.e = $$10 * (float) (Math.PI / 4);
-      float $$18 = $$12 * axk.i($$10, (float) (-Math.PI / 3), -1.134464F);
-      this.a.c = this.a.c + (float)Math.cos((double)$$9) * 0.25F * $$11;
-      this.g.e = $$18;
-      this.h.e = $$18;
-      float $$19 = $$11 * (1.0F - $$12);
-      float $$20 = 0.43633232F - axk.b($$9 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$19;
-      this.h.g = -$$20;
-      this.g.g = $$20;
-      this.g.f = 0.27925268F * $$12;
-      this.h.f = -0.27925268F * $$12;
-   }
+      public static Optional<fpe> a(fby $$0, eti $$1) {
+         List<fvb> $$2 = new ArrayList<>();
 
-   @Override
-   public void a(bqi $$0, ewi $$1) {
-      float $$2 = 1.0F;
-      float $$3 = 3.0F;
-      this.a.a($$1);
-      this.f.a($$1);
-      $$1.a(0.0F, 0.0625F, 0.1875F);
-      $$1.a(a.b.rotation(this.g.e));
-      $$1.b(0.7F, 0.7F, 0.7F);
-      $$1.a(0.0625F, 0.0F, 0.0F);
+         for (String $$3 : $$1.g()) {
+            fvb $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != czd.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(axt.a().a($$2.size())).a();
+            Supplier<gmr> $$6 = $$0.an().a($$5);
+            return Optional.of(new fpi.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(fpc $$0) {
+         $$0.a(new fph(this.c));
+      }
+
+      @Override
+      public wi aN_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(fdl $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, axm.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         fex.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aO_() {
+         return true;
+      }
    }
 }

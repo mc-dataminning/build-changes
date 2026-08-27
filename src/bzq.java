@@ -1,59 +1,127 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bzq<T> {
-   private final T a;
-   private long b;
+public abstract class bzq extends bxq {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int c = 2;
+   protected final bqv e;
+   protected final boolean f;
+   private final boolean d;
+   private int i;
+   private int j;
+   private int k;
+   @Nullable
+   protected bqt g;
+   protected int h = 60;
 
-   public bzq(T $$0, long $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bzq(bqv $$0, boolean $$1) {
+      this($$0, $$1, false);
    }
 
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> bzq<T> a(T $$0) {
-      return new bzq<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> bzq<T> a(T $$0, long $$1) {
-      return new bzq<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+   public bzq(bqv $$0, boolean $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean b() {
+      bqt $$0 = this.e.p();
+      if ($$0 == null) {
+         $$0 = this.g;
+      }
+
+      if ($$0 == null) {
+         return false;
+      } else if (!this.e.c($$0)) {
+         return false;
+      } else {
+         etp $$1 = this.e.cg();
+         etp $$2 = $$0.cg();
+         if ($$1 != null && $$2 == $$1) {
+            return false;
+         } else {
+            double $$3 = this.l();
+            if (this.e.g($$0) > $$3 * $$3) {
+               return false;
+            } else {
+               if (this.f) {
+                  if (this.e.M().a($$0)) {
+                     this.k = 0;
+                  } else if (++this.k > b(this.h)) {
+                     return false;
+                  }
+               }
+
+               this.e.h($$0);
+               return true;
+            }
+         }
+      }
    }
 
-   @ayn
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   protected double l() {
+      return this.e.g(bsa.k);
    }
 
-   public static <T> Codec<bzq<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new bzq<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void c() {
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   @Override
+   public void d() {
+      this.e.h(null);
+      this.g = null;
+   }
+
+   protected boolean a(@Nullable bqt $$0, cbj $$1) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$1.a(this.e, $$0)) {
+         return false;
+      } else if (!this.e.a($$0.dm())) {
+         return false;
+      } else {
+         if (this.d) {
+            if (--this.j <= 0) {
+               this.i = 0;
+            }
+
+            if (this.i == 0) {
+               this.i = this.a($$0) ? 1 : 2;
+            }
+
+            if (this.i == 2) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(bqt $$0) {
+      this.j = b(10 + this.e.ei().a(5));
+      elp $$1 = this.e.K().a($$0, 0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         eln $$2 = $$1.d();
+         if ($$2 == null) {
+            return false;
+         } else {
+            int $$3 = $$2.a - $$0.dq();
+            int $$4 = $$2.c - $$0.dw();
+            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+         }
+      }
+   }
+
+   public bzq c(int $$0) {
+      this.h = $$0;
+      return this;
    }
 }

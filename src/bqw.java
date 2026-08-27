@@ -1,83 +1,57 @@
-public abstract class bqw extends bqq {
-   protected static final float bW = 0.0F;
+import com.mojang.serialization.Codec;
 
-   protected bqw(bqb<? extends bqw> $$0, cyx $$1) {
-      super($$0, $$1);
+public enum bqw implements ayg {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
+
+   public static final Codec<bqw> i = ayg.a(bqw::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
+
+   private bqw(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
    }
 
-   public float h(ib $$0) {
-      return this.a($$0, this.dM());
-   }
-
-   public float a(ib $$0, cza $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean a(cyy $$0, bqs $$1) {
-      return this.a(this.dm(), $$0) >= 0.0F;
-   }
-
-   public boolean gj() {
-      return !this.K().l();
-   }
-
-   public boolean gk() {
-      if (this.bC.a(bzr.Z)) {
-         return this.bC.c(bzr.Z).isPresent();
-      } else {
-         for (byz $$0 : this.bR.b()) {
-            if ($$0.h() && $$0.k() instanceof bye) {
-               return true;
-            }
-         }
-
-         return false;
-      }
+   public String a() {
+      return this.m;
    }
 
    @Override
-   protected void ga() {
-      super.ga();
-      bpv $$0 = this.gc();
-      if ($$0 != null && $$0.dM() == this.dM()) {
-         this.a($$0.dm(), 5);
-         float $$1 = this.f($$0);
-         if (this instanceof brk && ((brk)this).y()) {
-            if ($$1 > 10.0F) {
-               this.a(true, true);
-            }
-
-            return;
-         }
-
-         this.F($$1);
-         if ($$1 > 10.0F) {
-            this.a(true, true);
-            this.bR.a(bxl.a.a);
-         } else if ($$1 > 6.0F) {
-            double $$2 = ($$0.dr() - this.dr()) / (double)$$1;
-            double $$3 = ($$0.dt() - this.dt()) / (double)$$1;
-            double $$4 = ($$0.dx() - this.dx()) / (double)$$1;
-            this.g(this.dp().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.cn();
-         } else if (this.gl() && !this.gk()) {
-            this.bR.b(bxl.a.a);
-            float $$5 = 2.0F;
-            esa $$6 = new esa($$0.dr() - this.dr(), $$0.dt() - this.dt(), $$0.dx() - this.dx()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
-            this.K().a(this.dr() + $$6.c, this.dt() + $$6.d, this.dx() + $$6.e, this.gm());
-         }
-      }
+   public String c() {
+      return this.m;
    }
 
-   protected boolean gl() {
-      return true;
+   public int b() {
+      return this.j;
    }
 
-   protected double gm() {
-      return 1.0;
+   public boolean d() {
+      return this.k;
    }
 
-   protected void F(float $$0) {
+   public boolean e() {
+      return this.l;
+   }
+
+   public int f() {
+      return this.o;
+   }
+
+   public int g() {
+      return 32;
    }
 }

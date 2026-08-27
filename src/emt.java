@@ -1,54 +1,184 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class emt {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final emj d;
-   private final boolean e;
+public class emt implements enf {
+   private final eng a;
+   private final enf b;
 
-   private emt(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+   public emt(eng $$0, enf $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = new emj($$3, $$4);
-      this.e = $$5;
    }
 
-   public static emt a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new emt(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(aa.b().c()),
-            $$3.get("Id").asInt(aa.b().d().c()),
-            $$3.get("Series").asString(emj.a),
-            $$3.get("Snapshot").asBoolean(!aa.b().g())
-         )
-         : new emt($$1, $$2, "", 0, emj.a, false);
+   @Override
+   public id a() {
+      return this.b.a();
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public float b() {
+      return this.b.b();
    }
 
-   public long b() {
-      return this.b;
+   @Override
+   public long c() {
+      return this.b.c();
    }
 
-   public String c() {
-      return this.c;
+   @Override
+   public long d() {
+      return this.b.d();
    }
 
-   public emj d() {
-      return this.d;
+   @Override
+   public String e() {
+      return this.a.e();
    }
 
-   public boolean e() {
-      return this.e;
+   @Override
+   public int f() {
+      return this.b.f();
+   }
+
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public czd k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(id $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(czd $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public czc o() {
+      return this.a.o();
+   }
+
+   @Override
+   public dqz.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(dqz.c $$0) {
+   }
+
+   @Override
+   public boc q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public erw<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, czi $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

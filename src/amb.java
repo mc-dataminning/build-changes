@@ -1,72 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.context.CommandContext;
 import java.util.Collection;
+import java.util.Collections;
 
 public class amb {
-   public static final int a = 100;
+   public static final int a = 2;
 
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+   public static void a(CommandDispatcher<dv> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("give").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("gamemode").requires($$0x -> $$0x.c(2)))
             .then(
-               dv.a("targets", eh.d())
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("item", ga.a($$1)).executes($$0x -> a((du)$$0x.getSource(), ga.a($$0x, "item"), eh.f($$0x, "targets"), 1)))
-                        .then(
-                           dv.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((du)$$0x.getSource(), ga.a($$0x, "item"), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
+               ((RequiredArgumentBuilder)dw.a("gamemode", ej.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((dv)$$0x.getSource()).h()), ej.a($$0x, "gamemode"))))
+                  .then(dw.a("target", ei.d()).executes($$0x -> a($$0x, ei.f($$0x, "target"), ej.a($$0x, "gamemode"))))
             )
       );
    }
 
-   private static int a(du $$0, gb $$1, Collection<apt> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = $$1.a().q();
-      int $$5 = $$4 * 100;
-      crj $$6 = $$1.a(1, false);
-      if ($$3 > $$5) {
-         $$0.b(wg.a("commands.give.failed.toomanyitems", $$5, $$6.E()));
-         return 0;
+   private static void a(dv $$0, apv $$1, czd $$2) {
+      wi $$3 = wi.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> wi.a("commands.gamemode.success.self", $$3), true);
       } else {
-         for (apt $$7 : $$2) {
-            int $$8 = $$3;
-
-            while ($$8 > 0) {
-               int $$9 = Math.min($$4, $$8);
-               $$8 -= $$9;
-               crj $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.fZ().e($$10);
-               if ($$11 && $$10.d()) {
-                  cgd $$13 = $$7.a($$6, false);
-                  if ($$13 != null) {
-                     $$13.B();
-                  }
-
-                  $$7.dM().a(null, $$7.dr(), $$7.dt(), $$7.dx(), aum.nn, aun.h, 0.2F, (($$7.ei().i() - $$7.ei().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.bY.d();
-               } else {
-                  cgd $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.w();
-                     $$12.b($$7.cw());
-                  }
-               }
-            }
+         if ($$0.e().aa().b(czc.p)) {
+            $$1.a(wi.a("gameMode.changed", $$3));
          }
 
-         if ($$2.size() == 1) {
-            $$0.a(() -> wg.a("commands.give.success.single", $$3, $$6.E(), $$2.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wg.a("commands.give.success.single", $$3, $$6.E(), $$2.size()), true);
-         }
-
-         return $$2.size();
+         $$0.a(() -> wi.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
       }
+   }
+
+   private static int a(CommandContext<dv> $$0, Collection<apv> $$1, czd $$2) {
+      int $$3 = 0;
+
+      for (apv $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((dv)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 }

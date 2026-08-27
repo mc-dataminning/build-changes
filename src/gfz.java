@@ -1,12 +1,27 @@
-public abstract class gfz<T extends bqq, M extends fqz<T>> extends ggo<T, M> {
-   public gfz(gfi.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+public class gfz extends ggx<ccs, fqx<ccs>> {
+   private static final ajv a = new ajv("textures/entity/fox/fox.png");
+   private static final ajv i = new ajv("textures/entity/fox/fox_sleep.png");
+   private static final ajv j = new ajv("textures/entity/fox/snow_fox.png");
+   private static final ajv k = new ajv("textures/entity/fox/snow_fox_sleep.png");
+
+   public gfz(gfr.a $$0) {
+      super($$0, new fqx<>($$0.a(ftu.ad)), 0.4F);
+      this.a(new gjp(this, $$0.d()));
    }
 
-   public gfz(gfi.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new giy<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new gjc<>(this, $$0.f()));
-      this.a(new gjm<>(this, $$0.d()));
+   protected void a(ccs $$0, ewr $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gt() || $$0.gn()) {
+         float $$6 = -axm.i($$4, $$0.O, $$0.dE());
+         $$1.a(a.b.rotationDegrees($$6));
+      }
+   }
+
+   public ajv a(ccs $$0) {
+      if ($$0.u() == ccs.v.a) {
+         return $$0.fI() ? i : a;
+      } else {
+         return $$0.fI() ? k : j;
+      }
    }
 }

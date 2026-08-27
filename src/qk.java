@@ -1,202 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
+import java.util.Optional;
 
-public class qk {
-   private static final dvi.o a = a(dca.a);
-   private static final dvi.o b = a(dca.F);
-   private static final dvi.o c = a(dca.hj);
-   private static final dvi.o d = a(dca.hk);
-   private static final dvi.o e = a(dca.iA);
-   private static final dvi.o f = a(dca.K);
-   private static final dvi.o g = a(dca.jp);
-   private static final dvi.o h = a(dca.b);
-   private static final dvi.o i = a(dca.sJ);
-   private static final dvi.o j = a(dca.j);
-   private static final dvi.o k = a(dca.l);
-   private static final dvi.o l = a(dca.k);
-   private static final dvi.o m = a(dca.fl);
-   private static final dvi.o n = a(dca.i);
-   private static final dvi.o o = a(dca.qN);
-   private static final dvi.o p = a(dca.L);
-   private static final dvi.o q = a(dca.I);
-   private static final dvi.o r = a(dca.aV);
-   private static final dvi.o s = a(dca.iC);
-   private static final dvi.o t = a(dca.dP);
-   private static final dvi.o u = a(dca.sI);
-   private static final dvi.o v = a(dca.qP);
-   private static final dvi.o w = a(dca.dO);
-   private static final dvi.o x = a(dca.G);
-   private static final dvi.o y = a(dca.H);
-   private static final dvi.o z = a(dca.dV);
-   private static final dvi.o A = a(dca.dW);
-   private static final dvi.o B = a(dca.dX);
-   private static final dvi.o C = a(dca.dY);
-   private static final dvi.o D = a(dca.pr);
-   private static final dvi.o E = a(dca.op);
-   private static final dvi.o F = a(dca.on);
-   private static final dvi.o G = a(dca.kK);
-   private static final dvi.o H = a(dca.ow);
-   private static final dvi.o I = a(dca.fz);
-
-   private static dvi.o a(dby $$0) {
-      return dvi.a($$0.n());
-   }
-
-   public static dvi.o a() {
-      return a(true, false, true);
-   }
-
-   public static dvi.o a(boolean $$0, boolean $$1, boolean $$2) {
-      dvi.f $$3 = dvi.a(dvl.a(97), 2);
-      dvi.f $$4 = dvi.a(dvl.a(256), 0);
-      dvi.f $$5 = dvi.b(dvl.a(63), -1);
-      dvi.f $$6 = dvi.b(dvl.a(74), 1);
-      dvi.f $$7 = dvi.a(dvl.a(60), 0);
-      dvi.f $$8 = dvi.a(dvl.a(62), 0);
-      dvi.f $$9 = dvi.a(dvl.a(63), 0);
-      dvi.f $$10 = dvi.a(-1, 0);
-      dvi.f $$11 = dvi.a(0, 0);
-      dvi.f $$12 = dvi.b(-6, -1);
-      dvi.f $$13 = dvi.b();
-      dvi.f $$14 = dvi.a(dad.W, dad.X);
-      dvi.f $$15 = dvi.a();
-      dvi.o $$16 = dvi.a(dvi.a($$11, n), j);
-      dvi.o $$17 = dvi.a(dvi.a(dvi.e, r), q);
-      dvi.o $$18 = dvi.a(dvi.a(dvi.e, h), p);
-      dvi.f $$19 = dvi.a(dad.P, dad.M, dad.N);
-      dvi.f $$20 = dvi.a(dad.f);
-      dvi.o $$21 = dvi.a(
-         dvi.a(dvi.a(dad.J), dvi.a(dvi.a(dvi.a(dva.X, -0.0125, 0.0125), o), h)),
-         dvi.a(dvi.a(dad.O), dvi.a(dvi.a(dvi.a(dva.Y, -0.05, 0.05), $$18), h)),
-         dvi.a(dvi.a(dad.t), dvi.a(a(1.0), h)),
-         dvi.a($$19, $$17),
-         dvi.a($$20, $$17),
-         dvi.a(dvi.a(dad.Z), h)
+public interface qk {
+   static void a(pz<efw> $$0) {
+      io<efq> $$1 = $$0.a(ku.aG);
+      io<daf> $$2 = $$0.a(ku.aw);
+      in.c<efw> $$3 = $$0.a(
+         efj.a,
+         new efw(
+            List.of(efw.a($$1.b(efk.t)), efw.a($$1.b(efk.u)), efw.a($$1.b(efk.v)), efw.a($$1.b(efk.w)), efw.a($$1.b(efk.x))), new egl(34, 8, egm.a, 10387312)
+         )
       );
-      dvi.o $$22 = dvi.a(dvi.a(dva.Z, 0.45, 0.58), dvi.a($$11, v));
-      dvi.o $$23 = dvi.a(dvi.a(dva.Z, 0.35, 0.6), dvi.a($$11, v));
-      dvi.o $$24 = dvi.a(
-         dvi.a(dvi.a(dad.H), dvi.a(dvi.a($$15, s), dvi.a(dvi.a(dva.aa, -0.5, 0.2), s), dvi.a(dvi.a(dva.ab, -0.0625, 0.025), w), dvi.a($$11, t))),
-         dvi.a(dvi.a(dad.G), dvi.a(dvi.a($$15, h), $$22, dvi.a($$11, t))),
-         dvi.a(dvi.a(dad.I), h),
-         dvi.a(dvi.a(dad.F), dvi.a($$22, j)),
-         $$21,
-         dvi.a(dvi.a(dad.w), dvi.a(a(1.75), h)),
-         dvi.a(dvi.a(dad.u), dvi.a(dvi.a(a(2.0), $$18), dvi.a(a(1.0), h), dvi.a(a(-1.0), j), $$18)),
-         dvi.a(dvi.a(dad.h), u),
-         j
+      $$0.a(efj.b, new efw($$1.b(efk.f), new egl(32, 8, egm.a, 14357617)));
+      $$0.a(efj.c, new efw($$1.b(efk.g), new egl(32, 8, egm.a, 14357618)));
+      $$0.a(efj.d, new efw($$1.b(efk.e), new egl(32, 8, egm.a, 14357619)));
+      $$0.a(efj.e, new efw($$1.b(efk.j), new egl(32, 8, egm.a, 14357620)));
+      $$0.a(efj.f, new efw($$1.b(efk.a), new egl(ji.g, egn.c.b, 0.2F, 165745296, Optional.of(new egn.a($$3, 10)), 32, 8, egm.a)));
+      $$0.a(efj.q, new efw($$1.b(efk.F), new egl(24, 8, egm.a, 20083232)));
+      $$0.a(efj.g, new efw($$1.b(efk.l), new egl(32, 5, egm.b, 10387313)));
+      $$0.a(efj.h, new efw($$1.b(efk.d), new egl(80, 20, egm.b, 10387319)));
+      $$0.a(efj.i, new efw($$1.b(efk.r), new egl(new ji(9, 0, 9), egn.c.c, 0.01F, 0, Optional.empty(), 1, 0, egm.a)));
+      $$0.a(efj.j, new efw(List.of(efw.a($$1.b(efk.b)), efw.a($$1.b(efk.c))), new egl(ji.g, egn.c.d, 0.004F, 0, Optional.empty(), 1, 0, egm.a)));
+      $$0.a(
+         efj.k,
+         new efw(
+            List.of(
+               efw.a($$1.b(efk.y)),
+               efw.a($$1.b(efk.z)),
+               efw.a($$1.b(efk.A)),
+               efw.a($$1.b(efk.B)),
+               efw.a($$1.b(efk.C)),
+               efw.a($$1.b(efk.D)),
+               efw.a($$1.b(efk.E))
+            ),
+            new egl(40, 15, egm.a, 34222645)
+         )
       );
-      dvi.o $$25 = dvi.a(
-         dvi.a(dvi.a(dad.H), dvi.a(dvi.a($$15, s), dvi.a(dvi.a(dva.aa, 0.0, 0.2), s), dvi.a(dvi.a(dva.ab, 0.0, 0.025), w), dvi.a($$11, t))),
-         dvi.a(dvi.a(dad.G), dvi.a(dvi.a($$15, h), $$23, dvi.a($$11, t))),
-         dvi.a(dvi.a(dad.I), dvi.a(dvi.a($$15, h), dvi.a($$11, t))),
-         dvi.a(dvi.a(dad.F), dvi.a($$23, dvi.a($$11, t))),
-         $$21,
-         dvi.a(dvi.a(dad.w), dvi.a(dvi.a(a(1.75), h), dvi.a(a(-0.5), l))),
-         dvi.a(dvi.a(dad.u), dvi.a(dvi.a(a(2.0), $$18), dvi.a(a(1.0), h), dvi.a(a(-1.0), $$16), $$18)),
-         dvi.a(dvi.a(dad.n, dad.o), dvi.a(dvi.a(a(1.75), l), dvi.a(a(-0.95), k))),
-         dvi.a(dvi.a(dad.e), dvi.a($$11, t)),
-         dvi.a(dvi.a(dad.h), u),
-         dvi.a(dvi.a(dad.Y), m),
-         $$16
-      );
-      dvi.f $$26 = dvi.a(dva.N, -0.909, -0.5454);
-      dvi.f $$27 = dvi.a(dva.N, -0.1818, 0.1818);
-      dvi.f $$28 = dvi.a(dva.N, 0.5454, 0.909);
-      dvi.o $$29 = dvi.a(
-         dvi.a(
-            dvi.a,
-            dvi.a(
-               dvi.a(dvi.a(dad.C), dvi.a($$3, dvi.a(dvi.a($$26, l), dvi.a($$27, l), dvi.a($$28, l), $$16))),
-               dvi.a(dvi.a(dad.g), dvi.a($$8, dvi.a(dvi.a($$9), dvi.a(dvi.a(dva.W, 0.0), x)))),
-               dvi.a(dvi.a(dad.h), dvi.a($$7, dvi.a(dvi.a($$9), dvi.a(dvi.a(dva.W, 0.0), x))))
-            )
-         ),
-         dvi.a(
-            dvi.a(dad.A, dad.B, dad.C),
-            dvi.a(
-               dvi.a(
-                  dvi.a,
-                  dvi.a(
-                     dvi.a($$4, d),
-                     dvi.a($$6, dvi.a(dvi.a($$26, e), dvi.a($$27, e), dvi.a($$28, e), dvi.e())),
-                     dvi.a($$10, dvi.a(dvi.a(dvi.e, g), f)),
-                     dvi.a(dvi.a($$13), d),
-                     dvi.a($$12, c),
-                     $$18
-                  )
-               ),
-               dvi.a($$5, dvi.a(dvi.a($$9, dvi.a(dvi.a($$6), d)), dvi.e())),
-               dvi.a(dvi.b, dvi.a($$12, c))
-            )
-         ),
-         dvi.a(dvi.a, dvi.a($$10, dvi.a(dvi.a($$14, dvi.a($$13, dvi.a(dvi.a($$11, a), dvi.a(dvi.d(), w), x))), $$25))),
-         dvi.a($$12, dvi.a(dvi.a(dvi.a, dvi.a($$14, dvi.a($$13, x))), dvi.a(dvi.b, $$24), dvi.a($$19, dvi.a(dvi.c, r)), dvi.a($$20, dvi.a(dvi.d, r)))),
-         dvi.a(dvi.a, dvi.a(dvi.a(dvi.a(dad.H, dad.I), h), dvi.a(dvi.a(dad.P, dad.Q, dad.R), $$17), $$18))
-      );
-      Builder<dvi.o> $$30 = ImmutableList.builder();
-      if ($$1) {
-         $$30.add(dvi.a(dvi.a(dvi.a("bedrock_roof", dvl.c(5), dvl.b())), b));
-      }
-
-      if ($$2) {
-         $$30.add(dvi.a(dvi.a("bedrock_floor", dvl.a(), dvl.b(5)), b));
-      }
-
-      dvi.o $$31 = dvi.a(dvi.c(), $$29);
-      $$30.add($$0 ? $$31 : $$29);
-      $$30.add(dvi.a(dvi.a("deepslate", dvl.a(0), dvl.a(8)), i));
-      return dvi.a((dvi.o[])$$30.build().toArray(dvi.o[]::new));
-   }
-
-   public static dvi.o b() {
-      dvi.f $$0 = dvi.a(dvl.a(31), 0);
-      dvi.f $$1 = dvi.a(dvl.a(32), 0);
-      dvi.f $$2 = dvi.b(dvl.a(30), 0);
-      dvi.f $$3 = dvi.a(dvi.b(dvl.a(35), 0));
-      dvi.f $$4 = dvi.a(dvl.c(5), 0);
-      dvi.f $$5 = dvi.b();
-      dvi.f $$6 = dvi.a(dva.ac, -0.012);
-      dvi.f $$7 = dvi.a(dva.ad, -0.012);
-      dvi.f $$8 = dvi.a(dva.ae, -0.012);
-      dvi.f $$9 = dvi.a(dva.af, 0.54);
-      dvi.f $$10 = dvi.a(dva.ag, 1.17);
-      dvi.f $$11 = dvi.a(dva.ah, 0.0);
-      dvi.o $$12 = dvi.a($$8, dvi.a($$2, dvi.a($$3, p)));
-      return dvi.a(
-         dvi.a(dvi.a("bedrock_floor", dvl.a(), dvl.b(5)), b),
-         dvi.a(dvi.a(dvi.a("bedrock_roof", dvl.c(5), dvl.b())), b),
-         dvi.a($$4, z),
-         dvi.a(dvi.a(dad.ag), dvi.a(dvi.a(dvi.f, C), dvi.a(dvi.b, dvi.a($$12, dvi.a($$11, C), D)))),
-         dvi.a(dvi.a(dad.af), dvi.a(dvi.a(dvi.f, dvi.a(dvi.a($$11, A), B)), dvi.a(dvi.b, dvi.a($$12, dvi.a($$11, A), B)))),
-         dvi.a(
-            dvi.a,
-            dvi.a(
-               dvi.a(dvi.a($$1), dvi.a($$5, y)),
-               dvi.a(dvi.a(dad.ad), dvi.a(dvi.a($$9), dvi.a($$0, dvi.a(dvi.a($$10, E), F)))),
-               dvi.a(dvi.a(dad.ae), dvi.a(dvi.a($$9), dvi.a($$0, dvi.a(dvi.a($$10, G), H))))
-            )
-         ),
-         dvi.a(
-            dvi.a(dad.ac),
-            dvi.a(
-               dvi.a(dvi.b, dvi.a($$6, dvi.a(dvi.a(dvi.a($$5), dvi.a($$2, dvi.a($$3, A))), z))),
-               dvi.a(dvi.a, dvi.a($$0, dvi.a($$3, dvi.a($$7, dvi.a(dvi.a($$1, p), dvi.a(dvi.a($$5), p))))))
-            )
-         ),
-         z
-      );
-   }
-
-   public static dvi.o c() {
-      return I;
-   }
-
-   public static dvi.o d() {
-      return a;
-   }
-
-   private static dvi.f a(double $$0) {
-      return dvi.a(dva.N, $$0 / 8.25, Double.MAX_VALUE);
+      $$0.a(efj.l, new efw(List.of(efw.a($$1.b(efk.h)), efw.a($$1.b(efk.i))), new egl(24, 4, egm.a, 165745295)));
+      $$0.a(efj.m, new efw(List.of(efw.a($$1.b(efk.m)), efw.a($$1.b(efk.n))), new egl(20, 8, egm.a, 14357621)));
+      $$0.a(efj.n, new efw(List.of(efw.a($$1.b(efk.o), 2), efw.a($$1.b(efk.s), 3)), new egl(27, 4, egm.a, 30084232)));
+      $$0.a(efj.o, new efw($$1.b(efk.p), new egl(2, 1, egm.a, 14357921)));
+      $$0.a(efj.p, new efw($$1.b(efk.q), new egl(20, 11, egm.b, 10387313)));
+      $$0.a(efj.r, new efw($$1.b(efk.k), new egk(32, 3, 128, $$2.b(avd.o))));
+      $$0.a(efj.s, new efw($$1.b(efk.G), new egl(34, 8, egm.a, 83469867)));
    }
 }

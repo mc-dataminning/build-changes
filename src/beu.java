@@ -1,19 +1,29 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public class beu extends ayw {
-   private final Function<String, String> a;
+public class beu extends DataFix {
+   private final String a;
+   private final String b;
+   private final String c;
 
-   public beu(Schema $$0, String $$1, Function<String, String> $$2) {
+   public beu(Schema $$0, boolean $$1, String $$2, String $$3, String $$4) {
       super($$0, $$1);
       this.a = $$2;
+      this.b = $$3;
+      this.c = $$4;
    }
 
-   @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         this.getInputSchema().getType(bff.e),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(), $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get(this.b).result().map($$1 -> $$0x.set(this.c, $$1).remove(this.b)), $$0x)
+            )
+      );
    }
 }

@@ -1,208 +1,151 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.io.File;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public class arl extends arf {
-   static final Logger c = LogUtils.getLogger();
-   private final arl.b d;
-   private final String e;
+public class arl implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 20;
+   private final Path c;
+   private final bkg<arl.e> d;
+   private final bmy<Runnable> e = bmy.a(ac.h(), "download-queue");
 
-   arl(arn $$0, arl.b $$1, String $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public arl(Path $$0) throws IOException {
+      this.c = $$0;
+      v.c($$0);
+      this.d = bkg.a(arl.e.a, $$0.resolve("log.json"));
+      ark.a($$0, 20);
    }
 
-   private static String b(arq $$0, ajt $$1) {
-      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
-   }
+   private arl.b b(arl.a $$0, Map<UUID, arl.c> $$1) {
+      arl.b $$2 = new arl.b();
+      $$1.forEach(
+         ($$2x, $$3) -> {
+            Path $$4 = this.c.resolve($$2x.toString());
+            Path $$5 = null;
 
-   @Nullable
-   @Override
-   public asu<InputStream> a(String... $$0) {
-      return this.b(String.join("/", $$0));
-   }
+            try {
+               $$5 = axd.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$2.a.put($$2x, $$5);
+            } catch (Exception var9) {
+               a.error("Failed to download {}", $$3.a, var9);
+               $$2.b.add($$2x);
+            }
 
-   @Override
-   public asu<InputStream> a(arq $$0, ajt $$1) {
-      return this.b(b($$0, $$1));
-   }
-
-   private String a(String $$0) {
-      return this.e.isEmpty() ? $$0 : this.e + "/" + $$0;
-   }
-
-   @Nullable
-   private asu<InputStream> b(String $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return null;
-      } else {
-         ZipEntry $$2 = $$1.getEntry(this.a($$0));
-         return $$2 == null ? null : asu.create($$1, $$2);
-      }
-   }
-
-   @Override
-   public Set<String> a(arq $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return Set.of();
-      } else {
-         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
-         Set<String> $$3 = Sets.newHashSet();
-         String $$4 = this.a($$0.a() + "/");
-
-         while ($$2.hasMoreElements()) {
-            ZipEntry $$5 = $$2.nextElement();
-            String $$6 = $$5.getName();
-            String $$7 = a($$4, $$6);
-            if (!$$7.isEmpty()) {
-               if (ajt.h($$7)) {
-                  $$3.add($$7);
-               } else {
-                  c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
-               }
+            try {
+               this.d
+                  .a(
+                     new arl.e(
+                        $$2x,
+                        $$3.a.toString(),
+                        Instant.now(),
+                        Optional.ofNullable($$3.b).map(HashCode::toString),
+                        $$5 != null ? this.a($$5) : Either.left("download_failed")
+                     )
+                  );
+            } catch (Exception var8) {
+               a.error("Failed to log download of {}", $$3.a, var8);
             }
          }
+      );
+      return $$2;
+   }
 
-         return $$3;
+   private Either<String, arl.d> a(Path $$0) {
+      try {
+         long $$1 = Files.size($$0);
+         Path $$2 = this.c.relativize($$0);
+         return Either.right(new arl.d($$2.toString(), $$1));
+      } catch (IOException var5) {
+         a.error("Failed to get file size of {}", $$0, var5);
+         return Either.left("no_access");
       }
    }
 
-   @VisibleForTesting
-   public static String a(String $$0, String $$1) {
-      if (!$$1.startsWith($$0)) {
-         return "";
-      } else {
-         int $$2 = $$0.length();
-         int $$3 = $$1.indexOf(47, $$2);
-         return $$3 == -1 ? $$1.substring($$2) : $$1.substring($$2, $$3);
-      }
+   public CompletableFuture<arl.b> a(arl.a $$0, Map<UUID, arl.c> $$1) {
+      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a);
    }
 
    @Override
-   public void close() {
+   public void close() throws IOException {
+      this.e.close();
       this.d.close();
    }
 
-   @Override
-   public void a(arq $$0, String $$1, String $$2, aro.a $$3) {
-      ZipFile $$4 = this.d.a();
-      if ($$4 != null) {
-         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
-         String $$6 = this.a($$0.a() + "/" + $$1 + "/");
-         String $$7 = $$6 + $$2 + "/";
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, axd.a e) {
+   }
 
-         while ($$5.hasMoreElements()) {
-            ZipEntry $$8 = $$5.nextElement();
-            if (!$$8.isDirectory()) {
-               String $$9 = $$8.getName();
-               if ($$9.startsWith($$7)) {
-                  String $$10 = $$9.substring($$6.length());
-                  ajt $$11 = ajt.a($$1, $$10);
-                  if ($$11 != null) {
-                     $$3.accept($$11, asu.create($$4, $$8));
-                  } else {
-                     c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
-                  }
-               }
-            }
-         }
+   public static record b(Map<UUID, Path> a, Set<UUID> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashSet<>());
       }
    }
 
-   public static class a implements ask.c {
-      private final File a;
+   public static record c(URL a, @Nullable HashCode b) {
+   }
 
-      public a(Path $$0) {
-         this($$0.toFile());
+   static record d(String b, long c) {
+      public static final Codec<arl.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(arl.d::a), Codec.LONG.fieldOf("size").forGetter(arl.d::b)).apply($$0, arl.d::new)
+      );
+
+      public String a() {
+         return this.b;
       }
 
-      public a(File $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public aro a(arn $$0) {
-         arl.b $$1 = new arl.b(this.a);
-         return new arl($$0, $$1, "");
-      }
-
-      @Override
-      public aro a(arn $$0, ask.a $$1) {
-         arl.b $$2 = new arl.b(this.a);
-         aro $$3 = new arl($$0, $$2, "");
-         List<String> $$4 = $$1.d();
-         if ($$4.isEmpty()) {
-            return $$3;
-         } else {
-            List<aro> $$5 = new ArrayList<>($$4.size());
-
-            for (String $$6 : $$4) {
-               $$5.add(new arl($$0, $$2, $$6));
-            }
-
-            return new arh($$3, $$5);
-         }
+      public long b() {
+         return this.c;
       }
    }
 
-   static class b implements AutoCloseable {
-      final File a;
-      @Nullable
-      private ZipFile b;
-      private boolean c;
+   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, arl.d> f) {
+      public static final Codec<arl.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  jh.d.fieldOf("id").forGetter(arl.e::a),
+                  Codec.STRING.fieldOf("url").forGetter(arl.e::b),
+                  awu.m.fieldOf("time").forGetter(arl.e::c),
+                  Codec.STRING.optionalFieldOf("hash").forGetter(arl.e::d),
+                  Codec.mapEither(Codec.STRING.fieldOf("error"), arl.d.a.fieldOf("file")).forGetter(arl.e::e)
+               )
+               .apply($$0, arl.e::new)
+      );
 
-      b(File $$0) {
-         this.a = $$0;
+      public UUID a() {
+         return this.b;
       }
 
-      @Nullable
-      ZipFile a() {
-         if (this.c) {
-            return null;
-         } else {
-            if (this.b == null) {
-               try {
-                  this.b = new ZipFile(this.a);
-               } catch (IOException var2) {
-                  arl.c.error("Failed to open pack {}", this.a, var2);
-                  this.c = true;
-                  return null;
-               }
-            }
-
-            return this.b;
-         }
+      public String b() {
+         return this.c;
       }
 
-      @Override
-      public void close() {
-         if (this.b != null) {
-            IOUtils.closeQuietly(this.b);
-            this.b = null;
-         }
+      public Instant c() {
+         return this.d;
       }
 
-      @Override
-      protected void finalize() throws Throwable {
-         this.close();
-         super.finalize();
+      public Optional<String> d() {
+         return this.e;
+      }
+
+      public Either<String, arl.d> e() {
+         return this.f;
       }
    }
 }

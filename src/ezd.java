@@ -1,99 +1,125 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class ezd extends grl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wg b = wg.c("mco.configure.world.buttons.invite");
-   private static final wg c = wg.c("mco.configure.world.invite.profile.name").b(-6250336);
-   private static final wg y = wg.c("mco.configure.world.players.inviting").b(-6250336);
-   private static final wg z = wg.c("mco.configure.world.players.error").b(-65536);
-   private final fhc A = new fhc(this);
-   private fdy B;
-   private fdp C;
-   private final exp D;
-   private final eyy E;
-   private final fjo F;
-   @Nullable
-   private wg G;
+public class ezd extends gru {
+   private static final wi a = wi.c("mco.backup.info.title");
+   private static final wi b = wi.c("mco.backup.unknown");
+   private final fjx c;
+   final exn y;
+   final fhl z = new fhl(this);
+   private ezd.a A;
 
-   public ezd(eyy $$0, fjo $$1, exp $$2) {
-      super(b);
-      this.E = $$0;
-      this.F = $$1;
-      this.D = $$2;
+   public ezd(fjx $$0, exn $$1) {
+      super(a);
+      this.c = $$0;
+      this.y = $$1;
    }
 
    @Override
-   public void aN_() {
-      this.A.a(b, this.m);
-      fhg $$0 = this.A.c(fhg.d().a(8));
-      this.B = new fdy(this.j.h, 200, 20, wg.c("mco.configure.world.invite.profile.name"));
-      $$0.a(fgy.a(this.m, this.B, c));
-      this.C = $$0.a(fdp.a(b, $$0x -> this.C()).a(200).a());
-      this.A.b(fdp.a(wf.k, $$0x -> this.d()).a(200).a());
-      this.A.a($$1 -> {
-         fdn var10000 = this.c($$1);
-      });
+   public void aM_() {
+      this.z.a(a, this.m);
+      this.A = this.z.c(new ezd.a(this.j));
+      this.z.b(fdy.a(wh.k, $$0 -> this.d()).a());
       this.c();
+      this.z.a($$1 -> {
+         fdw var10000 = this.c($$1);
+      });
    }
 
    @Override
    protected void c() {
-      this.A.a();
-   }
-
-   @Override
-   protected void aD_() {
-      this.b(this.B);
-   }
-
-   private void C() {
-      if (ayf.h(this.B.a())) {
-         this.a(z);
-      } else {
-         long $$0 = this.D.a;
-         String $$1 = this.B.a().trim();
-         this.C.j = false;
-         this.B.e(false);
-         this.a(y);
-         CompletableFuture.<exp>supplyAsync(() -> {
-            try {
-               return ewy.a().a($$0, $$1);
-            } catch (Exception var4) {
-               a.error("Couldn't invite user");
-               return null;
-            }
-         }, ac.g()).thenAcceptAsync($$0x -> {
-            if ($$0x != null) {
-               this.D.h = $$0x.h;
-               this.j.a(new ezk(this.E, this.D));
-            } else {
-               this.a(z);
-            }
-
-            this.B.e(true);
-            this.C.j = true;
-         }, this.n);
-      }
-   }
-
-   private void a(wg $$0) {
-      this.G = $$0;
-      this.j.aY().c($$0);
+      this.A.b(this.k, this.z.d());
+      this.z.a();
    }
 
    @Override
    public void d() {
-      this.j.a(this.F);
+      this.j.a(this.c);
    }
 
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.G != null) {
-         $$0.a(this.m, this.G, this.k / 2, this.C.D() + this.C.v() + 8, -1);
+   wi a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
+      } else {
+         return (wi)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wi.b($$1));
+      }
+   }
+
+   private wi a(String $$0) {
+      try {
+         return faa.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   private wi b(String $$0) {
+      try {
+         return faa.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   class a extends feu<ezd.b> {
+      public a(fby $$0) {
+         super($$0, ezd.this.k, ezd.this.z.d(), ezd.this.z.c(), 36);
+         if (ezd.this.y.e != null) {
+            ezd.this.y.e.forEach(($$0x, $$1) -> this.b(ezd.this.new b($$0x, $$1)));
+         }
+      }
+   }
+
+   class b extends feu.a<ezd.b> {
+      private static final wi b = wi.c("mco.backup.entry.templateName");
+      private static final wi c = wi.c("mco.backup.entry.gameDifficulty");
+      private static final wi d = wi.c("mco.backup.entry.name");
+      private static final wi e = wi.c("mco.backup.entry.gameServerVersion");
+      private static final wi f = wi.c("mco.backup.entry.uploaded");
+      private static final wi g = wi.c("mco.backup.entry.enabledPack");
+      private static final wi h = wi.c("mco.backup.entry.description");
+      private static final wi i = wi.c("mco.backup.entry.gameMode");
+      private static final wi j = wi.c("mco.backup.entry.seed");
+      private static final wi k = wi.c("mco.backup.entry.worldType");
+      private static final wi l = wi.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(String $$0, String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      @Override
+      public void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(ezd.this.m, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(ezd.this.m, ezd.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
+
+      private wi a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public wi a() {
+         return wi.a("narrator.select", this.m + " " + this.n);
       }
    }
 }

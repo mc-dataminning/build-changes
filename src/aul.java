@@ -1,51 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
 
 public class aul {
    public static final Codec<aul> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajt.a.fieldOf("sound_id").forGetter(aul::a), Codec.FLOAT.optionalFieldOf("range").forGetter(aul::b)).apply($$0, aul::a)
+      $$0 -> $$0.group(
+               aun.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, aul::new)
    );
-   public static final Codec<il<aul>> b = ajp.a(ks.af, a);
-   public static final ye<ByteBuf, aul> c = ye.a(ajt.b, aul::a, yc.h.a(yc::a), aul::b, aul::a);
-   public static final ye<vr, il<aul>> d = yc.a(ks.af, c);
-   private static final float e = 16.0F;
-   private final ajt f;
-   private final float g;
-   private final boolean h;
+   private final in<aun> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
 
-   private static aul a(ajt $$0, Optional<Float> $$1) {
-      return $$1.<aul>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   public aul(in<aun> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static aul a(ajt $$0) {
-      return new aul($$0, 16.0F, false);
+   public in<aun> a() {
+      return this.b;
    }
 
-   public static aul a(ajt $$0, float $$1) {
-      return new aul($$0, $$1, true);
+   public int b() {
+      return this.c;
    }
 
-   private aul(ajt $$0, float $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public int c() {
+      return this.d;
    }
 
-   public ajt a() {
-      return this.f;
-   }
-
-   public float a(float $$0) {
-      if (this.h) {
-         return this.g;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
-      }
-   }
-
-   private Optional<Float> b() {
-      return this.h ? Optional.of(this.g) : Optional.empty();
+   public boolean d() {
+      return this.e;
    }
 }

@@ -1,53 +1,43 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
-public class awp<K, V extends awp.a<K>> {
-   private final Map<K, V> a = new HashMap<>();
+public class awp<T> {
+   private final AtomicReferenceArray<T> a;
+   private final AtomicInteger b;
 
-   public awp<K, V> a(K $$0, V $$1) {
-      this.a.put($$0, $$1);
-      return this;
+   public awp(int $$0) {
+      this.a = new AtomicReferenceArray<>($$0);
+      this.b = new AtomicInteger(0);
    }
 
-   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
-      if ($$1.add($$2)) {
-         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
-         V $$4 = this.a.get($$2);
+   public void a(T $$0) {
+      int $$1 = this.a.length();
+
+      int $$2;
+      int $$3;
+      do {
+         $$2 = this.b.get();
+         $$3 = ($$2 + 1) % $$1;
+      } while (!this.b.compareAndSet($$2, $$3));
+
+      this.a.set($$3, $$0);
+   }
+
+   public List<T> a() {
+      int $$0 = this.b.get();
+      Builder<T> $$1 = ImmutableList.builder();
+
+      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
+         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
+         T $$4 = this.a.get($$3);
          if ($$4 != null) {
-            $$3.accept($$2, $$4);
+            $$1.add($$4);
          }
       }
-   }
 
-   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
-      Collection<K> $$3 = $$0.get($$2);
-      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
-   }
-
-   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
-      if (!a($$0, $$1, $$2)) {
-         $$0.put($$1, $$2);
-      }
-   }
-
-   public void a(BiConsumer<K, V> $$0) {
-      Multimap<K, K> $$1 = HashMultimap.create();
-      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
-      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
-      Set<K> $$2 = new HashSet<>();
-      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
-   }
-
-   public interface a<K> {
-      void a(Consumer<K> var1);
-
-      void b(Consumer<K> var1);
+      return $$1.build();
    }
 }

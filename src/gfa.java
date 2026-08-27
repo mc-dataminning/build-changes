@@ -1,23 +1,17 @@
-public class gfa extends ged<cgn, fqi<cgn>> {
-   private static final ajt a = new ajt("textures/entity/zombie/drowned.png");
+public class gfa extends ghx<cgr> {
+   private static final ajv a = new ajv("textures/entity/spider/cave_spider.png");
+   private static final float i = 0.7F;
 
-   public gfa(gfi.a $$0) {
-      super($$0, new fqi<>($$0.a(ftl.R)), new fqi<>($$0.a(ftl.S)), new fqi<>($$0.a(ftl.T)));
-      this.a(new gjb<>(this, $$0.f()));
+   public gfa(gfr.a $$0) {
+      super($$0, ftu.w);
+      this.d *= 0.7F;
    }
 
-   @Override
-   public ajt a(chs $$0) {
+   protected void a(cgr $$0, ewr $$1, float $$2) {
+      $$1.b(0.7F, 0.7F, 0.7F);
+   }
+
+   public ajv a(cgr $$0) {
       return a;
-   }
-
-   protected void a(cgn $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.a($$4);
-      if ($$6 > 0.0F) {
-         float $$7 = -10.0F - $$0.dE();
-         float $$8 = axk.i($$6, 0.0F, $$7);
-         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.dh() / 2.0F / $$5, 0.0F);
-      }
    }
 }

@@ -1,35 +1,68 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public interface cvn<T extends cvj<?>> {
-   cvn<cvq> a = a("crafting_shaped", new cvq.a());
-   cvn<cvs> b = a("crafting_shapeless", new cvs.a());
-   cvn<cut> c = a("crafting_special_armordye", new cvw<>(cut::new));
-   cvn<cuw> d = a("crafting_special_bookcloning", new cvw<>(cuw::new));
-   cvn<cvh> e = a("crafting_special_mapcloning", new cvw<>(cvh::new));
-   cvn<cvi> f = a("crafting_special_mapextending", new cvw<>(cvi::new));
-   cvn<cvd> g = a("crafting_special_firework_rocket", new cvw<>(cvd::new));
-   cvn<cvf> h = a("crafting_special_firework_star", new cvw<>(cvf::new));
-   cvn<cve> i = a("crafting_special_firework_star_fade", new cvw<>(cve::new));
-   cvn<cwf> j = a("crafting_special_tippedarrow", new cvw<>(cwf::new));
-   cvn<cuu> k = a("crafting_special_bannerduplicate", new cvw<>(cuu::new));
-   cvn<cvt> l = a("crafting_special_shielddecoration", new cvw<>(cvt::new));
-   cvn<cvu> m = a("crafting_special_shulkerboxcoloring", new cvw<>(cvu::new));
-   cvn<cwe> n = a("crafting_special_suspiciousstew", new cvw<>(cwe::new));
-   cvn<cvp> o = a("crafting_special_repairitem", new cvw<>(cvp::new));
-   cvn<cvy> p = a("smelting", new cvv<>(cvy::new, 200));
-   cvn<cuv> q = a("blasting", new cvv<>(cuv::new, 100));
-   cvn<cwc> r = a("smoking", new cvv<>(cwc::new, 100));
-   cvn<cux> s = a("campfire_cooking", new cvv<>(cux::new, 100));
-   cvn<cwd> t = a("stonecutting", new cvx.b<>(cwd::new));
-   cvn<cwa> u = a("smithing_transform", new cwa.a());
-   cvn<cwb> v = a("smithing_trim", new cwb.a());
-   cvn<cvc> w = a("crafting_decorated_pot", new cvw<>(cvc::new));
+public class cvn extends cvk {
+   private static final cvp a = cvp.a(crv.ut);
 
-   Codec<T> a();
+   public cvn(cvi $$0) {
+      super($$0);
+   }
 
-   ye<vr, T> b();
+   public boolean a(cnm $$0, czg $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
 
-   static <S extends cvn<T>, T extends cvj<?>> S a(String $$0, S $$1) {
-      return iy.a(kr.t, $$0, $$1);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         crs $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.f() instanceof cqm) {
+               $$2 = true;
+            } else {
+               if (!a.a($$5)) {
+                  return false;
+               }
+
+               if ($$3) {
+                  return false;
+               }
+
+               $$3 = true;
+            }
+         }
+      }
+
+      return $$3 && $$2;
+   }
+
+   public crs a(cnm $$0, jb $$1) {
+      IntList $$2 = new IntArrayList();
+      crs $$3 = null;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         crs $$5 = $$0.a($$4);
+         crn $$6 = $$5.f();
+         if ($$6 instanceof cqm) {
+            $$2.add(((cqm)$$6).c().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
+         }
+      }
+
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(jr.J, cug.a, $$2, cug::a);
+         return $$3;
+      } else {
+         return crs.i;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cvw<?> ao_() {
+      return cvw.i;
    }
 }

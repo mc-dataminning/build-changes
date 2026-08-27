@@ -1,94 +1,67 @@
-public class fsp<T extends chm> extends fqv<T> {
-   private static final String a = "right_bottom_bristle";
-   private static final String b = "right_middle_bristle";
-   private static final String f = "right_top_bristle";
-   private static final String g = "left_top_bristle";
-   private static final String h = "left_middle_bristle";
-   private static final String i = "left_bottom_bristle";
-   private final ftm j;
-   private final ftm k;
-   private final ftm l;
-   private final ftm m;
-   private final ftm n;
-   private final ftm o;
-   private final ftm p;
-   private final ftm q;
-   private final ftm r;
-   private final ftm s;
+import java.util.Arrays;
 
-   public fsp(ftm $$0) {
-      this.j = $$0;
-      this.k = $$0.b("right_leg");
-      this.l = $$0.b("left_leg");
-      this.m = $$0.b("body");
-      this.n = this.m.b("right_bottom_bristle");
-      this.o = this.m.b("right_middle_bristle");
-      this.p = this.m.b("right_top_bristle");
-      this.q = this.m.b("left_top_bristle");
-      this.r = this.m.b("left_middle_bristle");
-      this.s = this.m.b("left_bottom_bristle");
+public class fsp<T extends bqa> extends fre<T> {
+   private static final int a = 7;
+   private final ftv b;
+   private final ftv[] f = new ftv[7];
+   private final ftv[] g = new ftv[3];
+   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
+   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+
+   public fsp(ftv $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
+      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fts b() {
-      ftu $$0 = new ftu();
-      ftv $$1 = $$0.a();
-      $$1.a("right_leg", ftr.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), fto.a(-4.0F, 8.0F, 0.0F));
-      $$1.a("left_leg", ftr.c().a(0, 55).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), fto.a(4.0F, 8.0F, 0.0F));
-      ftv $$2 = $$1.a("body", ftr.c().a(0, 0).a(-8.0F, -6.0F, -8.0F, 16.0F, 14.0F, 16.0F), fto.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_bottom_bristle", ftr.c().a(16, 65).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fto.a(-8.0F, 4.0F, -8.0F, 0.0F, 0.0F, -1.2217305F));
-      $$2.a("right_middle_bristle", ftr.c().a(16, 49).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fto.a(-8.0F, -1.0F, -8.0F, 0.0F, 0.0F, -1.134464F));
-      $$2.a("right_top_bristle", ftr.c().a(16, 33).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fto.a(-8.0F, -5.0F, -8.0F, 0.0F, 0.0F, -0.87266463F));
-      $$2.a("left_top_bristle", ftr.c().a(16, 33).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fto.a(8.0F, -6.0F, -8.0F, 0.0F, 0.0F, 0.87266463F));
-      $$2.a("left_middle_bristle", ftr.c().a(16, 49).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fto.a(8.0F, -2.0F, -8.0F, 0.0F, 0.0F, 1.134464F));
-      $$2.a("left_bottom_bristle", ftr.c().a(16, 65).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fto.a(8.0F, 3.0F, -8.0F, 0.0F, 0.0F, 1.2217305F));
-      return fts.a($$0, 64, 128);
+   private static String a(int $$0) {
+      return "layer" + $$0;
    }
 
-   public void a(chm $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$2 = Math.min(0.25F, $$2);
-      if (!$$0.bP()) {
-         this.m.e = $$5 * (float) (Math.PI / 180.0);
-         this.m.f = $$4 * (float) (Math.PI / 180.0);
-      } else {
-         this.m.e = 0.0F;
-         this.m.f = 0.0F;
+   private static String b(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static fub b() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      float[] $$2 = new float[7];
+      float $$3 = -3.5F;
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         $$1.a(
+            b($$4),
+            fua.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
+            ftx.a(0.0F, (float)(24 - h[$$4][1]), $$3)
+         );
+         $$2[$$4] = $$3;
+         if ($$4 < 6) {
+            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
+         }
       }
 
-      float $$6 = 1.5F;
-      this.m.g = 0.1F * axk.a($$1 * 1.5F) * 4.0F * $$2;
-      this.m.c = 2.0F;
-      this.m.c = this.m.c - 2.0F * axk.b($$1 * 1.5F) * 2.0F * $$2;
-      this.l.e = axk.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
-      this.k.e = axk.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
-      this.l.g = (float) (Math.PI / 18) * axk.b($$1 * 1.5F * 0.5F) * $$2;
-      this.k.g = (float) (Math.PI / 18) * axk.b($$1 * 1.5F * 0.5F + (float) Math.PI) * $$2;
-      this.l.c = 8.0F + 2.0F * axk.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
-      this.k.c = 8.0F + 2.0F * axk.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
-      this.n.g = -1.2217305F;
-      this.o.g = -1.134464F;
-      this.p.g = -0.87266463F;
-      this.q.g = 0.87266463F;
-      this.r.g = 1.134464F;
-      this.s.g = 1.2217305F;
-      float $$7 = axk.b($$1 * 1.5F + (float) Math.PI) * $$2;
-      this.n.g += $$7 * 1.3F;
-      this.o.g += $$7 * 1.2F;
-      this.p.g += $$7 * 0.6F;
-      this.q.g += $$7 * 0.6F;
-      this.r.g += $$7 * 1.2F;
-      this.s.g += $$7 * 1.3F;
-      float $$8 = 1.0F;
-      float $$9 = 1.0F;
-      this.n.g = this.n.g + 0.05F * axk.a($$3 * 1.0F * -0.4F);
-      this.o.g = this.o.g + 0.1F * axk.a($$3 * 1.0F * 0.2F);
-      this.p.g = this.p.g + 0.1F * axk.a($$3 * 1.0F * 0.4F);
-      this.q.g = this.q.g + 0.1F * axk.a($$3 * 1.0F * 0.4F);
-      this.r.g = this.r.g + 0.1F * axk.a($$3 * 1.0F * 0.2F);
-      this.s.g = this.s.g + 0.05F * axk.a($$3 * 1.0F * -0.4F);
+      $$1.a(a(0), fua.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), ftx.a(0.0F, 16.0F, $$2[2]));
+      $$1.a(a(1), fua.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), ftx.a(0.0F, 20.0F, $$2[4]));
+      $$1.a(a(2), fua.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), ftx.a(0.0F, 19.0F, $$2[1]));
+      return fub.a($$0, 64, 32);
    }
 
    @Override
-   public ftm a() {
-      return this.j;
+   public ftv a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
+         this.f[$$6].f = axm.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
+         this.f[$$6].b = axm.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
+      }
+
+      this.g[0].f = this.f[2].f;
+      this.g[1].f = this.f[4].f;
+      this.g[1].b = this.f[4].b;
+      this.g[2].f = this.f[1].f;
+      this.g[2].b = this.f[1].b;
    }
 }

@@ -1,25 +1,25 @@
-public class agx implements yn<afl> {
-   public static final ye<vg, agx> a = yn.a(agx::a, agx::new);
+public class agx implements yp<afn> {
+   public static final yg<vi, agx> a = yp.a(agx::a, agx::new);
    private final int b;
 
    public agx(int $$0) {
       this.b = $$0;
    }
 
-   private agx(vg $$0) {
-      this.b = $$0.readShort();
+   private agx(vi $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vg $$0) {
-      $$0.l(this.b);
+   private void a(vi $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yp<agx> a() {
-      return afj.bR;
+   public yr<agx> a() {
+      return afl.bP;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 

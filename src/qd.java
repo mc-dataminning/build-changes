@@ -1,318 +1,72 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class qd {
-   public static final ajs<egq> a = qe.a("village/plains/town_centers");
-   private static final ajs<egq> b = qe.a("village/plains/terminators");
+   @Deprecated
+   public static final eke.a a = new eke.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(px<egq> $$0) {
-      im<eel> $$1 = $$0.a(ks.aE);
-      il<eel> $$2 = $$1.b(ru.f);
-      il<eel> $$3 = $$1.b(ru.k);
-      il<eel> $$4 = $$1.b(ru.a);
-      im<ejf> $$5 = $$0.a(ks.aG);
-      il<ejf> $$6 = $$5.b(qf.f);
-      il<ejf> $$7 = $$5.b(qf.g);
-      il<ejf> $$8 = $$5.b(qf.h);
-      il<ejf> $$9 = $$5.b(qf.a);
-      il<ejf> $$10 = $$5.b(qf.i);
-      il<ejf> $$11 = $$5.b(qf.l);
-      im<egq> $$12 = $$0.a(ks.aI);
-      il<egq> $$13 = $$12.b(qe.a);
-      il<egq> $$14 = $$12.b(b);
-      $$0.a(
-         a,
-         new egq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ego.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
-               Pair.of(ego.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
-               Pair.of(ego.a("village/plains/town_centers/plains_meeting_point_2"), 50),
-               Pair.of(ego.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
-               Pair.of(ego.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
-               Pair.of(ego.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
-               Pair.of(ego.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
-               Pair.of(ego.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
-            ),
-            egq.a.b
-         )
-      );
-      qe.a(
-         $$0,
-         "village/plains/streets",
-         new egq(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ego.a("village/plains/streets/corner_01", $$10), 2),
-               Pair.of(ego.a("village/plains/streets/corner_02", $$10), 2),
-               Pair.of(ego.a("village/plains/streets/corner_03", $$10), 2),
-               Pair.of(ego.a("village/plains/streets/straight_01", $$10), 4),
-               Pair.of(ego.a("village/plains/streets/straight_02", $$10), 4),
-               Pair.of(ego.a("village/plains/streets/straight_03", $$10), 7),
-               Pair.of(ego.a("village/plains/streets/straight_04", $$10), 7),
-               Pair.of(ego.a("village/plains/streets/straight_05", $$10), 3),
-               Pair.of(ego.a("village/plains/streets/straight_06", $$10), 4),
-               Pair.of(ego.a("village/plains/streets/crossroad_01", $$10), 2),
-               Pair.of(ego.a("village/plains/streets/crossroad_02", $$10), 1),
-               Pair.of(ego.a("village/plains/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(ego.a("village/plains/streets/crossroad_04", $$10), 2),
-                  Pair.of(ego.a("village/plains/streets/crossroad_05", $$10), 2),
-                  Pair.of(ego.a("village/plains/streets/crossroad_06", $$10), 2),
-                  Pair.of(ego.a("village/plains/streets/turn_01", $$10), 3)
-               }
-            ),
-            egq.a.a
-         )
-      );
-      qe.a(
-         $$0,
-         "village/plains/zombie/streets",
-         new egq(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ego.a("village/plains/zombie/streets/corner_01", $$10), 2),
-               Pair.of(ego.a("village/plains/zombie/streets/corner_02", $$10), 2),
-               Pair.of(ego.a("village/plains/zombie/streets/corner_03", $$10), 2),
-               Pair.of(ego.a("village/plains/zombie/streets/straight_01", $$10), 4),
-               Pair.of(ego.a("village/plains/zombie/streets/straight_02", $$10), 4),
-               Pair.of(ego.a("village/plains/zombie/streets/straight_03", $$10), 7),
-               Pair.of(ego.a("village/plains/zombie/streets/straight_04", $$10), 7),
-               Pair.of(ego.a("village/plains/zombie/streets/straight_05", $$10), 3),
-               Pair.of(ego.a("village/plains/zombie/streets/straight_06", $$10), 4),
-               Pair.of(ego.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
-               Pair.of(ego.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
-               Pair.of(ego.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
-               new Pair[]{
-                  Pair.of(ego.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
-                  Pair.of(ego.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
-                  Pair.of(ego.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
-                  Pair.of(ego.a("village/plains/zombie/streets/turn_01", $$10), 3)
-               }
-            ),
-            egq.a.a
-         )
-      );
-      qe.a(
-         $$0,
-         "village/plains/houses",
-         new egq(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ego.a("village/plains/houses/plains_small_house_1", $$6), 2),
-               Pair.of(ego.a("village/plains/houses/plains_small_house_2", $$6), 2),
-               Pair.of(ego.a("village/plains/houses/plains_small_house_3", $$6), 2),
-               Pair.of(ego.a("village/plains/houses/plains_small_house_4", $$6), 2),
-               Pair.of(ego.a("village/plains/houses/plains_small_house_5", $$6), 2),
-               Pair.of(ego.a("village/plains/houses/plains_small_house_6", $$6), 1),
-               Pair.of(ego.a("village/plains/houses/plains_small_house_7", $$6), 2),
-               Pair.of(ego.a("village/plains/houses/plains_small_house_8", $$6), 3),
-               Pair.of(ego.a("village/plains/houses/plains_medium_house_1", $$6), 2),
-               Pair.of(ego.a("village/plains/houses/plains_medium_house_2", $$6), 2),
-               Pair.of(ego.a("village/plains/houses/plains_big_house_1", $$6), 2),
-               Pair.of(ego.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
-               new Pair[]{
-                  Pair.of(ego.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_shepherds_house_1"), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_tannery_1", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_cartographer_1", $$6), 1),
-                  Pair.of(ego.a("village/plains/houses/plains_library_1", $$6), 5),
-                  Pair.of(ego.a("village/plains/houses/plains_library_2", $$6), 1),
-                  Pair.of(ego.a("village/plains/houses/plains_masons_house_1", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_temple_3", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_temple_4", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_stable_1", $$6), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_stable_2"), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_large_farm_1", $$11), 4),
-                  Pair.of(ego.a("village/plains/houses/plains_small_farm_1", $$11), 4),
-                  Pair.of(ego.a("village/plains/houses/plains_animal_pen_1"), 1),
-                  Pair.of(ego.a("village/plains/houses/plains_animal_pen_2"), 1),
-                  Pair.of(ego.a("village/plains/houses/plains_animal_pen_3"), 5),
-                  Pair.of(ego.a("village/plains/houses/plains_accessory_1"), 1),
-                  Pair.of(ego.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
-                  Pair.of(ego.a("village/plains/houses/plains_meeting_point_5"), 1),
-                  Pair.of(ego.g(), 10)
-               }
-            ),
-            egq.a.b
-         )
-      );
-      qe.a(
-         $$0,
-         "village/plains/zombie/houses",
-         new egq(
-            $$14,
-            ImmutableList.of(
-               Pair.of(ego.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
-               Pair.of(ego.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
-               Pair.of(ego.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
-               new Pair[]{
-                  Pair.of(ego.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
-                  Pair.of(ego.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
-                  Pair.of(ego.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_tannery_1", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_cartographer_1", $$9), 1),
-                  Pair.of(ego.a("village/plains/houses/plains_library_1", $$9), 3),
-                  Pair.of(ego.a("village/plains/houses/plains_library_2", $$9), 1),
-                  Pair.of(ego.a("village/plains/houses/plains_masons_house_1", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_temple_3", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_temple_4", $$9), 2),
-                  Pair.of(ego.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_stable_2", $$9), 2),
-                  Pair.of(ego.a("village/plains/houses/plains_large_farm_1", $$9), 4),
-                  Pair.of(ego.a("village/plains/houses/plains_small_farm_1", $$9), 4),
-                  Pair.of(ego.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
-                  Pair.of(ego.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
-                  Pair.of(ego.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
-                  Pair.of(ego.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
-                  Pair.of(ego.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
-                  Pair.of(ego.g(), 10)
-               }
-            ),
-            egq.a.b
-         )
-      );
-      $$0.a(
-         b,
-         new egq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ego.a("village/plains/terminators/terminator_01", $$10), 1),
-               Pair.of(ego.a("village/plains/terminators/terminator_02", $$10), 1),
-               Pair.of(ego.a("village/plains/terminators/terminator_03", $$10), 1),
-               Pair.of(ego.a("village/plains/terminators/terminator_04", $$10), 1)
-            ),
-            egq.a.a
-         )
-      );
-      qe.a($$0, "village/plains/trees", new egq($$13, ImmutableList.of(Pair.of(ego.a($$2), 1)), egq.a.b));
-      qe.a(
-         $$0,
-         "village/plains/decor",
-         new egq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ego.a("village/plains/plains_lamp_1"), 2), Pair.of(ego.a($$2), 1), Pair.of(ego.a($$3), 1), Pair.of(ego.a($$4), 1), Pair.of(ego.g(), 2)
-            ),
-            egq.a.b
-         )
-      );
-      qe.a(
-         $$0,
-         "village/plains/zombie/decor",
-         new egq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ego.a("village/plains/plains_lamp_1", $$9), 1),
-               Pair.of(ego.a($$2), 1),
-               Pair.of(ego.a($$3), 1),
-               Pair.of(ego.a($$4), 1),
-               Pair.of(ego.g(), 2)
-            ),
-            egq.a.b
-         )
-      );
-      qe.a(
-         $$0,
-         "village/plains/villagers",
-         new egq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ego.a("village/plains/villagers/nitwit"), 1),
-               Pair.of(ego.a("village/plains/villagers/baby"), 1),
-               Pair.of(ego.a("village/plains/villagers/unemployed"), 10)
-            ),
-            egq.a.b
-         )
-      );
-      qe.a(
-         $$0,
-         "village/plains/zombie/villagers",
-         new egq(
-            $$13,
-            ImmutableList.of(Pair.of(ego.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(ego.a("village/plains/zombie/villagers/unemployed"), 10)),
-            egq.a.b
-         )
-      );
-      qe.a(
-         $$0,
-         "village/common/animals",
-         new egq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ego.a("village/common/animals/cows_1"), 7),
-               Pair.of(ego.a("village/common/animals/pigs_1"), 7),
-               Pair.of(ego.a("village/common/animals/horses_1"), 1),
-               Pair.of(ego.a("village/common/animals/horses_2"), 1),
-               Pair.of(ego.a("village/common/animals/horses_3"), 1),
-               Pair.of(ego.a("village/common/animals/horses_4"), 1),
-               Pair.of(ego.a("village/common/animals/horses_5"), 1),
-               Pair.of(ego.a("village/common/animals/sheep_1"), 1),
-               Pair.of(ego.a("village/common/animals/sheep_2"), 1),
-               Pair.of(ego.g(), 5)
-            ),
-            egq.a.b
-         )
-      );
-      qe.a(
-         $$0,
-         "village/common/sheep",
-         new egq($$13, ImmutableList.of(Pair.of(ego.a("village/common/animals/sheep_1"), 1), Pair.of(ego.a("village/common/animals/sheep_2"), 1)), egq.a.b)
-      );
-      qe.a(
-         $$0,
-         "village/common/cats",
-         new egq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ego.a("village/common/animals/cat_black"), 1),
-               Pair.of(ego.a("village/common/animals/cat_british"), 1),
-               Pair.of(ego.a("village/common/animals/cat_calico"), 1),
-               Pair.of(ego.a("village/common/animals/cat_persian"), 1),
-               Pair.of(ego.a("village/common/animals/cat_ragdoll"), 1),
-               Pair.of(ego.a("village/common/animals/cat_red"), 1),
-               Pair.of(ego.a("village/common/animals/cat_siamese"), 1),
-               Pair.of(ego.a("village/common/animals/cat_tabby"), 1),
-               Pair.of(ego.a("village/common/animals/cat_white"), 1),
-               Pair.of(ego.a("village/common/animals/cat_jellie"), 1),
-               Pair.of(ego.g(), 3)
-            ),
-            egq.a.b
-         )
-      );
-      qe.a(
-         $$0,
-         "village/common/butcher_animals",
-         new egq(
-            $$13,
-            ImmutableList.of(
-               Pair.of(ego.a("village/common/animals/cows_1"), 3),
-               Pair.of(ego.a("village/common/animals/pigs_1"), 3),
-               Pair.of(ego.a("village/common/animals/sheep_1"), 1),
-               Pair.of(ego.a("village/common/animals/sheep_2"), 1)
-            ),
-            egq.a.b
-         )
-      );
-      qe.a($$0, "village/common/iron_golem", new egq($$13, ImmutableList.of(Pair.of(ego.a("village/common/iron_golem"), 1)), egq.a.b));
-      qe.a($$0, "village/common/well_bottoms", new egq($$13, ImmutableList.of(Pair.of(ego.a("village/common/well_bottom"), 1)), egq.a.b));
+   public static void a(pz<eke.a> $$0) {
+      a($$0, 0, dvj.a, dvj.b, dvj.c, dvj.d);
+      a($$0, -2, dvj.e, dvj.f, dvj.g, dvj.h);
+      a($$0, dvj.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(dvj.j, a);
+      a($$0, dvj.k, -3, 1.0);
+      a($$0, dvj.l, -7, 1.0);
+      a($$0, dvj.m, -1, 1.0);
+      a($$0, dvj.n, -5, 1.0);
+      a($$0, dvj.o, -7, 1.0, 1.0);
+      a($$0, dvj.p, -8, 1.0);
+      a($$0, dvj.q, -8, 1.0);
+      a($$0, dvj.r, -7, 1.0);
+      a($$0, dvj.s, -8, 1.0);
+      a($$0, dvj.t, -11, 1.0);
+      a($$0, dvj.u, -11, 1.0);
+      a($$0, dvj.v, -7, 1.0);
+      a($$0, dvj.w, -7, 1.0);
+      a($$0, dvj.x, -11, 1.0);
+      a($$0, dvj.y, -8, 1.0);
+      a($$0, dvj.z, -5, 1.0);
+      a($$0, dvj.A, -8, 1.0);
+      a($$0, dvj.B, -7, 0.4, 0.5, 1.0);
+      a($$0, dvj.C, -8, 1.0);
+      a($$0, dvj.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, dvj.E, -8, 1.0);
+      a($$0, dvj.F, -7, 1.0);
+      a($$0, dvj.G, -7, 1.0);
+      a($$0, dvj.H, -5, 1.0);
+      a($$0, dvj.I, -8, 1.0);
+      a($$0, dvj.J, -8, 1.0);
+      a($$0, dvj.K, -7, 1.0);
+      a($$0, dvj.L, -7, 1.0);
+      a($$0, dvj.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dvj.N, -6, 1.0, 1.0, 1.0);
+      a($$0, dvj.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, dvj.P, -8, 1.0);
+      a($$0, dvj.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dvj.R, -8, 1.0);
+      a($$0, dvj.S, -6, 1.0, 1.0, 1.0);
+      a($$0, dvj.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dvj.U, -3, 1.0);
+      a($$0, dvj.V, -6, 1.0, 1.0, 1.0);
+      a($$0, dvj.W, -2, 1.0);
+      a($$0, dvj.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dvj.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dvj.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dvj.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dvj.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dvj.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dvj.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dvj.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dvj.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, dvj.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, dvj.ah, -4, 1.0);
+   }
+
+   private static void a(pz<eke.a> $$0, int $$1, aju<eke.a> $$2, aju<eke.a> $$3, aju<eke.a> $$4, aju<eke.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(pz<eke.a> $$0, aju<eke.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new eke.a($$2, $$3, $$4));
    }
 }

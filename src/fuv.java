@@ -1,169 +1,28 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.EnumMap;
 
 public class fuv {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public wg c;
-   public wg d;
-   @Nullable
-   public ais.b e;
-   public long f;
-   public int g = aa.b().e();
-   public wg h = wg.b(aa.b().c());
-   public List<wg> i = Collections.emptyList();
-   private fuv.a l = fuv.a.c;
-   @Nullable
-   private byte[] m;
-   private fuv.c n;
-   private fuv.b o = fuv.b.a;
+   public static final int a = 5000;
+   private final fur b;
+   private final feg c;
+   private final EnumMap<bka, Long> d;
 
-   public fuv(String $$0, String $$1, fuv.c $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
+   public fuv(fur $$0, feg $$1) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = new EnumMap<>(bka.class);
    }
 
-   public tm a() {
-      tm $$0 = new tm();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
-      }
-
-      if (this.l == fuv.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == fuv.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
-   }
-
-   public fuv.a b() {
-      return this.l;
-   }
-
-   public void a(fuv.a $$0) {
-      this.l = $$0;
-   }
-
-   public static fuv a(tm $$0) {
-      fuv $$1 = new fuv($$0.l("name"), $$0.l("ip"), fuv.c.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
-            $$1.a(b($$2));
-         } catch (IllegalArgumentException var3) {
-            j.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 1)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(fuv.a.a);
-         } else {
-            $$1.a(fuv.a.b);
-         }
-      } else {
-         $$1.a(fuv.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == fuv.c.a;
-   }
-
-   public boolean e() {
-      return this.n == fuv.c.b;
-   }
-
-   public fuv.c f() {
-      return this.n;
-   }
-
-   public void a(fuv $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(fuv $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public fuv.b g() {
-      return this.o;
-   }
-
-   public void a(fuv.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            axo $$1 = axo.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
-            }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
-         }
-      }
-
-      return null;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final wg d;
-
-      private a(String $$0) {
-         this.d = wg.c("addServer.resourcePack." + $$0);
-      }
-
-      public wg a() {
-         return this.d;
+   public void a() {
+      if (this.c.g()) {
+         this.a(bka.a);
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum c {
-      a,
-      b,
-      c;
+   private void a(bka $$0) {
+      long $$1 = ac.b();
+      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
+         this.b.b(new age($$0));
+         this.d.put($$0, $$1);
+      }
    }
 }

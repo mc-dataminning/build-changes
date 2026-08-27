@@ -1,17 +1,17 @@
-public class gix<T extends bqo, M extends fqm<T>> extends gjt<T, M> {
-   private final fzv a;
+public class gix extends ggi<cia, fto<cia>> {
+   private static final ajv a = new ajv("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gix(ghd<T, M> $$0, fzv $$1) {
-      super($$0);
-      this.a = $$1;
+   public gix(gfr.a $$0) {
+      super($$0, new fto<>($$0.a(ftu.ck)), 0.5F);
+      this.a(new gjs<>(this, new fto($$0.a(ftu.cl)), new fto($$0.a(ftu.cm)), $$0.g()));
+      this.a(new gkn<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      crj $$10 = $$3.d(bqc.a);
-      this.a.a($$3, $$10, crg.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public ajv a(cia $$0) {
+      return a;
+   }
+
+   protected boolean b(cia $$0) {
+      return super.a($$0) || $$0.gx();
    }
 }

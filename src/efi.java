@@ -1,179 +1,259 @@
-import com.mojang.datafixers.DataFixer;
+import com.google.common.base.MoreObjects;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
-import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
 public class efi {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = -1;
-   private final dsa c;
-   private final iz d;
-   private final eji e;
-   private final ajs<cyx> f;
-   private final dqw g;
-   private final dvf h;
-   private final cyz i;
-   private final daa j;
-   private final long k;
-   private final DataFixer l;
-   private final Long2ObjectMap<Object2IntMap<efh>> m = new Long2ObjectOpenHashMap();
-   private final Map<efh, Long2BooleanMap> n = new HashMap<>();
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<efi> a = Codec.INT_STREAM
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 6).map($$0x -> new efi($$0x[0], $$0x[1], $$0x[2], $$0x[3], $$0x[4], $$0x[5])),
+         $$0 -> IntStream.of($$0.c, $$0.d, $$0.e, $$0.f, $$0.g, $$0.h)
+      )
+      .stable();
+   private int c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public efi(dsa $$0, iz $$1, eji $$2, ajs<cyx> $$3, dqw $$4, dvf $$5, cyz $$6, daa $$7, long $$8, DataFixer $$9) {
+   public efi(id $$0) {
+      this($$0.u(), $$0.v(), $$0.w(), $$0.u(), $$0.v(), $$0.w());
+   }
+
+   public efi(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
       this.f = $$3;
       this.g = $$4;
       this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
+      if ($$3 < $$0 || $$4 < $$1 || $$5 < $$2) {
+         String $$6 = "Invalid bounding box data, inverted bounds for: " + this;
+         if (aa.aW) {
+            throw new IllegalStateException($$6);
+         }
+
+         b.error($$6);
+         this.c = Math.min($$0, $$3);
+         this.d = Math.min($$1, $$4);
+         this.e = Math.min($$2, $$5);
+         this.f = Math.max($$0, $$3);
+         this.g = Math.max($$1, $$4);
+         this.h = Math.max($$2, $$5);
+      }
    }
 
-   public efj a(cye $$0, efh $$1, ege $$2, boolean $$3) {
-      long $$4 = $$0.a();
-      Object2IntMap<efh> $$5 = (Object2IntMap<efh>)this.m.get($$4);
-      if ($$5 != null) {
-         return this.a($$5, $$1, $$3);
+   public static efi a(ji $$0, ji $$1) {
+      return new efi(
+         Math.min($$0.u(), $$1.u()),
+         Math.min($$0.v(), $$1.v()),
+         Math.min($$0.w(), $$1.w()),
+         Math.max($$0.u(), $$1.u()),
+         Math.max($$0.v(), $$1.v()),
+         Math.max($$0.w(), $$1.w())
+      );
+   }
+
+   public static efi a() {
+      return new efi(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+   }
+
+   public static efi a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, ij $$9) {
+      switch ($$9) {
+         case d:
+         default:
+            return new efi($$0 + $$3, $$1 + $$4, $$2 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$8 - 1 + $$5);
+         case c:
+            return new efi($$0 + $$3, $$1 + $$4, $$2 - $$8 + 1 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$5);
+         case e:
+            return new efi($$0 - $$8 + 1 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+         case f:
+            return new efi($$0 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$8 - 1 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+      }
+   }
+
+   public Stream<cyn> b() {
+      int $$0 = jg.a(this.h());
+      int $$1 = jg.a(this.j());
+      int $$2 = jg.a(this.k());
+      int $$3 = jg.a(this.m());
+      return cyn.a(new cyn($$0, $$1), new cyn($$2, $$3));
+   }
+
+   public boolean a(efi $$0) {
+      return this.f >= $$0.c && this.c <= $$0.f && this.h >= $$0.e && this.e <= $$0.h && this.g >= $$0.d && this.d <= $$0.g;
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, int $$3) {
+      return this.f >= $$0 && this.c <= $$2 && this.h >= $$1 && this.e <= $$3;
+   }
+
+   public static Optional<efi> a(Iterable<id> $$0) {
+      Iterator<id> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
       } else {
-         efj $$6 = this.a($$0, $$1, $$3, $$4);
-         if ($$6 != null) {
-            return $$6;
-         } else if (!$$2.a($$0.e, $$0.f, this.k)) {
-            return efj.b;
-         } else {
-            boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));
-            return !$$7 ? efj.b : efj.c;
-         }
+         efi $$2 = new efi($$1.next());
+         $$1.forEachRemaining($$2::a);
+         return Optional.of($$2);
       }
    }
 
-   private boolean b(cye $$0, efh $$1) {
-      return $$1.b(new efh.a(this.d, this.g, this.j, this.h, this.e, this.k, $$0, this.i, $$1.a()::a)).isPresent();
-   }
-
-   @Nullable
-   private efj a(cye $$0, efh $$1, boolean $$2, long $$3) {
-      uq $$4 = new uq(new us(tr.a, "DataVersion"), new us("Level", "Structures", tm.b, "Starts"), new us("structures", tm.b, "starts"));
-
-      try {
-         this.c.a($$0, $$4).join();
-      } catch (Exception var13) {
-         a.warn("Failed to read chunk {}", $$0, var13);
-         return efj.c;
-      }
-
-      if (!($$4.d() instanceof tm $$7)) {
-         return null;
+   public static Optional<efi> b(Iterable<efi> $$0) {
+      Iterator<efi> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
       } else {
-         int $$8 = dsc.a($$7);
-         if ($$8 <= 1493) {
-            return efj.c;
-         } else {
-            dsc.a($$7, this.f, this.g.b());
-
-            tm $$9;
-            try {
-               $$9 = ayq.c.a(this.l, $$7, $$8);
-            } catch (Exception var12) {
-               a.warn("Failed to partially datafix chunk {}", $$0, var12);
-               return efj.c;
-            }
-
-            Object2IntMap<efh> $$12 = this.a($$9);
-            if ($$12 == null) {
-               return null;
-            } else {
-               this.a($$3, $$12);
-               return this.a($$12, $$1, $$2);
-            }
-         }
+         efi $$2 = $$1.next();
+         efi $$3 = new efi($$2.c, $$2.d, $$2.e, $$2.f, $$2.g, $$2.h);
+         $$1.forEachRemaining($$3::b);
+         return Optional.of($$3);
       }
    }
 
-   @Nullable
-   private Object2IntMap<efh> a(tm $$0) {
-      if (!$$0.b("structures", 10)) {
-         return null;
+   @Deprecated
+   public efi b(efi $$0) {
+      this.c = Math.min(this.c, $$0.c);
+      this.d = Math.min(this.d, $$0.d);
+      this.e = Math.min(this.e, $$0.e);
+      this.f = Math.max(this.f, $$0.f);
+      this.g = Math.max(this.g, $$0.g);
+      this.h = Math.max(this.h, $$0.h);
+      return this;
+   }
+
+   @Deprecated
+   public efi a(id $$0) {
+      this.c = Math.min(this.c, $$0.u());
+      this.d = Math.min(this.d, $$0.v());
+      this.e = Math.min(this.e, $$0.w());
+      this.f = Math.max(this.f, $$0.u());
+      this.g = Math.max(this.g, $$0.v());
+      this.h = Math.max(this.h, $$0.w());
+      return this;
+   }
+
+   @Deprecated
+   public efi a(int $$0, int $$1, int $$2) {
+      this.c += $$0;
+      this.d += $$1;
+      this.e += $$2;
+      this.f += $$0;
+      this.g += $$1;
+      this.h += $$2;
+      return this;
+   }
+
+   @Deprecated
+   public efi a(ji $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public efi b(int $$0, int $$1, int $$2) {
+      return new efi(this.c + $$0, this.d + $$1, this.e + $$2, this.f + $$0, this.g + $$1, this.h + $$2);
+   }
+
+   public efi a(int $$0) {
+      return new efi(this.h() - $$0, this.i() - $$0, this.j() - $$0, this.k() + $$0, this.l() + $$0, this.m() + $$0);
+   }
+
+   public boolean b(ji $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public boolean c(int $$0, int $$1, int $$2) {
+      return $$0 >= this.c && $$0 <= this.f && $$2 >= this.e && $$2 <= this.h && $$1 >= this.d && $$1 <= this.g;
+   }
+
+   public ji c() {
+      return new ji(this.f - this.c, this.g - this.d, this.h - this.e);
+   }
+
+   public int d() {
+      return this.f - this.c + 1;
+   }
+
+   public int e() {
+      return this.g - this.d + 1;
+   }
+
+   public int f() {
+      return this.h - this.e + 1;
+   }
+
+   public id g() {
+      return new id(this.c + (this.f - this.c + 1) / 2, this.d + (this.g - this.d + 1) / 2, this.e + (this.h - this.e + 1) / 2);
+   }
+
+   public void a(Consumer<id> $$0) {
+      id.a $$1 = new id.a();
+      $$0.accept($$1.d(this.f, this.g, this.h));
+      $$0.accept($$1.d(this.c, this.g, this.h));
+      $$0.accept($$1.d(this.f, this.d, this.h));
+      $$0.accept($$1.d(this.c, this.d, this.h));
+      $$0.accept($$1.d(this.f, this.g, this.e));
+      $$0.accept($$1.d(this.c, this.g, this.e));
+      $$0.accept($$1.d(this.f, this.d, this.e));
+      $$0.accept($$1.d(this.c, this.d, this.e));
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("minX", this.c)
+         .add("minY", this.d)
+         .add("minZ", this.e)
+         .add("maxX", this.f)
+         .add("maxY", this.g)
+         .add("maxZ", this.h)
+         .toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         tm $$1 = $$0.p("structures");
-         if (!$$1.b("starts", 10)) {
-            return null;
-         } else {
-            tm $$2 = $$1.p("starts");
-            if ($$2.g()) {
-               return Object2IntMaps.emptyMap();
-            } else {
-               Object2IntMap<efh> $$3 = new Object2IntOpenHashMap();
-               iy<efh> $$4 = this.d.d(ks.aF);
-
-               for (String $$5 : $$2.e()) {
-                  ajt $$6 = ajt.a($$5);
-                  if ($$6 != null) {
-                     efh $$7 = $$4.a($$6);
-                     if ($$7 != null) {
-                        tm $$8 = $$2.p($$5);
-                        if (!$$8.g()) {
-                           String $$9 = $$8.l("id");
-                           if (!"INVALID".equals($$9)) {
-                              int $$10 = $$8.h("references");
-                              $$3.put($$7, $$10);
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$3;
-            }
-         }
+         return !($$0 instanceof efi $$1)
+            ? false
+            : this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f && this.g == $$1.g && this.h == $$1.h;
       }
    }
 
-   private static Object2IntMap<efh> a(Object2IntMap<efh> $$0) {
-      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h);
    }
 
-   private efj a(Object2IntMap<efh> $$0, efh $$1, boolean $$2) {
-      int $$3 = $$0.getOrDefault($$1, -1);
-      return $$3 == -1 || $$2 && $$3 != 0 ? efj.b : efj.a;
+   public int h() {
+      return this.c;
    }
 
-   public void a(cye $$0, Map<efh, efp> $$1) {
-      long $$2 = $$0.a();
-      Object2IntMap<efh> $$3 = new Object2IntOpenHashMap();
-      $$1.forEach(($$1x, $$2x) -> {
-         if ($$2x.b()) {
-            $$3.put($$1x, $$2x.f());
-         }
-      });
-      this.a($$2, $$3);
+   public int i() {
+      return this.d;
    }
 
-   private void a(long $$0, Object2IntMap<efh> $$1) {
-      this.m.put($$0, a($$1));
-      this.n.values().forEach($$1x -> $$1x.remove($$0));
+   public int j() {
+      return this.e;
    }
 
-   public void a(cye $$0, efh $$1) {
-      this.m.compute($$0.a(), ($$1x, $$2) -> {
-         if ($$2 == null || $$2.isEmpty()) {
-            $$2 = new Object2IntOpenHashMap();
-         }
+   public int k() {
+      return this.f;
+   }
 
-         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
-         return $$2;
-      });
+   public int l() {
+      return this.g;
+   }
+
+   public int m() {
+      return this.h;
    }
 }

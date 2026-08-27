@@ -1,36 +1,22 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public record eql(eqx b, ena c) implements eqc {
-   public static final Codec<eql> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eqy.a.fieldOf("value").forGetter(eql::c), ena.a.fieldOf("range").forGetter(eql::d)).apply($$0, eql::new)
-   );
+public interface eql extends enl, Predicate<enk> {
+   eqm b();
 
-   @Override
-   public eqd b() {
-      return eqe.s;
-   }
+   @FunctionalInterface
+   public interface a {
+      eql build();
 
-   @Override
-   public Set<epl<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
+      default eql.a invert() {
+         return eqi.a(this);
+      }
 
-   public boolean a(enb $$0) {
-      return this.c.b($$0, this.b.a($$0));
-   }
+      default eqa.a or(eql.a $$0) {
+         return eqa.a(this, $$0);
+      }
 
-   public static eqc.a a(eqx $$0, ena $$1) {
-      return () -> new eql($$0, $$1);
-   }
-
-   public eqx c() {
-      return this.b;
-   }
-
-   public ena d() {
-      return this.c;
+      default epz.a and(eql.a $$0) {
+         return epz.a(this, $$0);
+      }
    }
 }

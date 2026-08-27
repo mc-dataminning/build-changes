@@ -1,25 +1,68 @@
-public final class bkq implements Comparable<bkq> {
-   public final double a;
-   public final double b;
-   public final long c;
-   public final String d;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-   public bkq(String $$0, double $$1, double $$2, long $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class bkq implements bkr {
+   public static final bkq a = new bkq();
+
+   private bkq() {
    }
 
-   public int a(bkq $$0) {
-      if ($$0.a < this.a) {
-         return -1;
-      } else {
-         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
-      }
+   @Override
+   public void a() {
    }
 
-   public int a() {
-      return (this.d.hashCode() & 11184810) + 4473924;
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void a(String $$0) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(blz $$0) {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void b(String $$0) {
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
+
+   @Override
+   public bks d() {
+      return bko.a;
+   }
+
+   @Nullable
+   @Override
+   public bkm.a c(String $$0) {
+      return null;
+   }
+
+   @Override
+   public Set<Pair<String, blz>> e() {
+      return ImmutableSet.of();
    }
 }

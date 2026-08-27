@@ -1,34 +1,27 @@
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface dt {
    dt a = new dt() {
+      @Nullable
       @Override
-      public void a(wg $$0) {
-      }
-
-      @Override
-      public boolean l_() {
-         return false;
-      }
-
-      @Override
-      public boolean w_() {
-         return false;
-      }
-
-      @Override
-      public boolean U_() {
-         return false;
+      public wy a(String $$0) {
+         return null;
       }
    };
 
-   void a(wg var1);
+   @Nullable
+   wy a(String var1);
 
-   boolean l_();
+   public static record a(Map<String, wy> b) implements dt {
+      @Nullable
+      @Override
+      public wy a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   boolean w_();
-
-   boolean U_();
-
-   default boolean m_() {
-      return false;
+      public Map<String, wy> a() {
+         return this.b;
+      }
    }
 }

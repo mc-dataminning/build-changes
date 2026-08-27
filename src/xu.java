@@ -1,29 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Locale;
 
-public class xu implements xw {
-   public static final xu a = new xu();
-   public static final xx<xu> b = new xx<xu>() {
-      private static final MapCodec<xu> a = MapCodec.unit(xu.a);
-      private static final ye<vr, xu> b = ye.a(xu.a);
-
-      @Override
-      public MapCodec<xu> a() {
-         return a;
-      }
-
-      @Override
-      public ye<vr, xu> b() {
-         return b;
-      }
-   };
-
-   @Override
-   public wu a(int $$0) {
-      return wg.i();
+public class xu extends IllegalArgumentException {
+   public xu(xt $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   @Override
-   public xx<xu> a() {
-      return b;
+   public xu(xt $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
+
+   public xu(xt $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

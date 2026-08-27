@@ -1,10 +1,9 @@
-public class avl {
-   public static final avr<cfz> a = a("placeable");
+public interface avl {
+   avt<crk> a = a("regular_goat_horns");
+   avt<crk> b = a("screaming_goat_horns");
+   avt<crk> c = a("goat_horns");
 
-   private avl() {
-   }
-
-   private static avr<cfz> a(String $$0) {
-      return avr.a(ks.R, new ajt($$0));
+   private static avt<crk> a(String $$0) {
+      return avt.a(ku.E, new ajv($$0));
    }
 }

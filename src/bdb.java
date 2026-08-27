@@ -7,51 +7,39 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 public class bdb extends DataFix {
-   public static final String[] a = new String[]{
-      "minecraft:white_shulker_box",
-      "minecraft:orange_shulker_box",
-      "minecraft:magenta_shulker_box",
-      "minecraft:light_blue_shulker_box",
-      "minecraft:yellow_shulker_box",
-      "minecraft:lime_shulker_box",
-      "minecraft:pink_shulker_box",
-      "minecraft:gray_shulker_box",
-      "minecraft:silver_shulker_box",
-      "minecraft:cyan_shulker_box",
-      "minecraft:purple_shulker_box",
-      "minecraft:blue_shulker_box",
-      "minecraft:brown_shulker_box",
-      "minecraft:green_shulker_box",
-      "minecraft:red_shulker_box",
-      "minecraft:black_shulker_box"
-   };
+   private final Set<String> a;
 
-   public bdb(Schema $$0, boolean $$1) {
+   public bdb(Schema $$0, boolean $$1, Set<String> $$2) {
       super($$0, $$1);
+      this.a = $$2;
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bfa.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bfa.B.typeName(), bgk.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bff.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bff.B.typeName(), bgp.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
       OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
+      return this.fixTypeEverywhereTyped("ItemRemoveBlockEntityTagFix", $$0, $$3x -> {
          Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
-         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:shulker_box")) {
+         if ($$4.isPresent() && this.a.contains($$4.get().getSecond())) {
             Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
             if ($$5.isPresent()) {
                Typed<?> $$6 = (Typed<?>)$$5.get();
                Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
                if ($$7.isPresent()) {
-                  Typed<?> $$8 = (Typed<?>)$$7.get();
-                  Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
-                  int $$10 = $$9.get("Color").asInt(0);
-                  $$9.remove("Color");
-                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(bfa.B.typeName(), a[$$10 % 16]));
+                  Optional<? extends Dynamic<?>> $$8 = $$6.write().result();
+                  Dynamic<?> $$9 = (Dynamic<?>)($$8.isPresent() ? $$8.get() : (Dynamic)$$6.get(DSL.remainderFinder()));
+                  Dynamic<?> $$10 = $$9.remove("BlockEntityTag");
+                  Optional<? extends Pair<? extends Typed<?>, ?>> $$11 = $$2.type().readTyped($$10).result();
+                  if ($$11.isEmpty()) {
+                     return $$3x;
+                  }
+
+                  return $$3x.set($$2, (Typed)$$11.get().getFirst());
                }
             }
          }

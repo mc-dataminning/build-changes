@@ -1,50 +1,47 @@
-import com.mojang.datafixers.util.Either;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-public interface bms<Msg> extends AutoCloseable {
-   String bx();
-
-   void a(Msg var1);
-
-   @Override
-   default void close() {
+public class bms {
+   private bms() {
    }
 
-   default <Source> CompletableFuture<Source> b(Function<? super bms<Source>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
-      this.a($$2);
-      return $$1;
+   public static int a(List<? extends bmr> $$0) {
+      long $$1 = 0L;
+
+      for (bmr $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
+      }
    }
 
-   default <Source> CompletableFuture<Source> c(Function<? super bms<Either<Source, Exception>>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
-         $$1x.ifLeft($$1::complete);
-         $$1x.ifRight($$1::completeExceptionally);
-      }));
-      this.a($$2);
-      return $$1;
+   public static <T extends bmr> Optional<T> a(axt $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
    }
 
-   static <Msg> bms<Msg> a(final String $$0, final Consumer<Msg> $$1) {
-      return new bms<Msg>() {
-         @Override
-         public String bx() {
-            return $$0;
+   public static <T extends bmr> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
          }
+      }
 
-         @Override
-         public void a(Msg $$0x) {
-            $$1.accept($$0);
-         }
+      return Optional.empty();
+   }
 
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   public static <T extends bmr> Optional<T> a(axt $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

@@ -1,63 +1,54 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
 
 public class aoa {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.transfer.error.no_players"));
-
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<dv> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("transfer").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("hostname", StringArgumentType.string())
-                     .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((du)$$0x.getSource()).h()))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((RequiredArgumentBuilder)dv.a("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              $$0x -> a(
-                                    (du)$$0x.getSource(),
-                                    StringArgumentType.getString($$0x, "hostname"),
-                                    IntegerArgumentType.getInteger($$0x, "port"),
-                                    List.of(((du)$$0x.getSource()).h())
-                                 )
-                           ))
-                        .then(
-                           dv.a("players", eh.d())
-                              .executes(
-                                 $$0x -> a(
-                                       (du)$$0x.getSource(),
-                                       StringArgumentType.getString($$0x, "hostname"),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       eh.f($$0x, "players")
-                                    )
-                              )
-                        )
-                  )
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("set")
+                                    .then(dw.a("day").executes($$0x -> a((dv)$$0x.getSource(), 1000))))
+                                 .then(dw.a("noon").executes($$0x -> a((dv)$$0x.getSource(), 6000))))
+                              .then(dw.a("night").executes($$0x -> a((dv)$$0x.getSource(), 13000))))
+                           .then(dw.a("midnight").executes($$0x -> a((dv)$$0x.getSource(), 18000))))
+                        .then(dw.a("time", fj.a()).executes($$0x -> a((dv)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(dw.a("add").then(dw.a("time", fj.a()).executes($$0x -> b((dv)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("query")
+                        .then(dw.a("daytime").executes($$0x -> c((dv)$$0x.getSource(), a(((dv)$$0x.getSource()).e())))))
+                     .then(dw.a("gametime").executes($$0x -> c((dv)$$0x.getSource(), (int)(((dv)$$0x.getSource()).e().Y() % 2147483647L)))))
+                  .then(dw.a("day").executes($$0x -> c((dv)$$0x.getSource(), (int)(((dv)$$0x.getSource()).e().Z() / 24000L % 2147483647L))))
             )
       );
    }
 
-   private static int a(du $$0, String $$1, int $$2, Collection<apt> $$3) throws CommandSyntaxException {
-      if ($$3.isEmpty()) {
-         throw a.create();
-      } else {
-         for (apt $$4 : $$3) {
-            $$4.d.b(new zb($$1, $$2));
-         }
+   private static int a(apu $$0) {
+      return (int)($$0.Z() % 24000L);
+   }
 
-         if ($$3.size() == 1) {
-            $$0.a(() -> wg.a("commands.transfer.success.single", $$3.iterator().next().O_(), $$1, $$2), true);
-         } else {
-            $$0.a(() -> wg.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
-         }
+   private static int c(dv $$0, int $$1) {
+      $$0.a(() -> wi.a("commands.time.query", $$1), false);
+      return $$1;
+   }
 
-         return $$3.size();
+   public static int a(dv $$0, int $$1) {
+      for (apu $$2 : $$0.l().K()) {
+         $$2.b((long)$$1);
       }
+
+      $$0.a(() -> wi.a("commands.time.set", $$1), true);
+      return a($$0.e());
+   }
+
+   public static int b(dv $$0, int $$1) {
+      for (apu $$2 : $$0.l().K()) {
+         $$2.b($$2.Z() + (long)$$1);
+      }
+
+      int $$3 = a($$0.e());
+      $$0.a(() -> wi.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

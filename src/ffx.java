@@ -1,180 +1,130 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class ffx implements ffy {
-   private static final ajt a = new ajt("toast/system");
-   private static final int d = 200;
-   private static final int e = 12;
-   private static final int f = 10;
-   private final ffx.a g;
-   private wg h;
-   private List<aww> i;
-   private long j;
-   private boolean k;
-   private final int l;
-   private boolean m;
+public class ffx implements fpf {
+   private static final ajv a = new ajv("hud/hotbar");
+   private static final ajv b = new ajv("hud/hotbar_selection");
+   private static final long c = 5000L;
+   private static final long d = 2000L;
+   private final fby e;
+   private long f;
+   @Nullable
+   private fpc g;
 
-   public ffx(ffx.a $$0, wg $$1, @Nullable wg $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(fbp.Q().h.a($$1), $$2 == null ? 0 : fbp.Q().h.a($$2))));
+   public ffx(fby $$0) {
+      this.e = $$0;
    }
 
-   public static ffx a(fbp $$0, ffx.a $$1, wg $$2, wg $$3) {
-      fda $$4 = $$0.h;
-      List<aww> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new ffx($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private ffx(ffx.a $$0, wg $$1, List<aww> $$2, int $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.l = $$3;
-   }
-
-   private static ImmutableList<aww> a(@Nullable wg $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
-   }
-
-   @Override
-   public int a() {
-      return this.l;
-   }
-
-   @Override
-   public int b() {
-      return 20 + Math.max(this.i.size(), 1) * 12;
-   }
-
-   public void c() {
-      this.m = true;
-   }
-
-   @Override
-   public ffy.a a(fdc $$0, ffz $$1, long $$2) {
-      if (this.k) {
-         this.j = $$2;
-         this.k = false;
-      }
-
-      int $$3 = this.a();
-      if ($$3 == 160 && this.i.size() <= 1) {
-         $$0.a(a, 0, 0, $$3, this.b());
+   public void a(int $$0) {
+      this.f = ac.b();
+      if (this.g != null) {
+         this.g.b($$0);
       } else {
-         int $$4 = this.b();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
-
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
-         }
-
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
+         this.g = new fpc(this);
       }
+   }
 
-      if (this.i.isEmpty()) {
-         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
-      } else {
-         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
+   private float c() {
+      long $$0 = this.f - ac.b() + 5000L;
+      return axm.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
+   }
 
-         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
-            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
+   public void a(fdl $$0) {
+      if (this.g != null) {
+         float $$1 = this.c();
+         if ($$1 <= 0.0F) {
+            this.g.d();
+         } else {
+            int $$2 = $$0.a() / 2;
+            $$0.c().a();
+            $$0.c().a(0.0F, 0.0F, -90.0F);
+            int $$3 = axm.d((float)$$0.b() - 22.0F * $$1);
+            fpg $$4 = this.g.f();
+            this.a($$0, $$1, $$2, $$3, $$4);
+            $$0.c().b();
          }
       }
-
-      double $$9 = (double)this.g.k * $$1.c();
-      long $$10 = $$2 - this.j;
-      return !this.m && (double)$$10 < $$9 ? ffy.a.a : ffy.a.b;
    }
 
-   private void a(fdc $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      ajt $$7 = a;
-      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
-
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
+   protected void a(fdl $$0, float $$1, int $$2, int $$3, fpg $$4) {
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$1);
+      $$0.a(a, $$2 - 91, $$3, 182, 22);
+      if ($$4.a() >= 0) {
+         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
       }
 
-      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
+      }
+
+      RenderSystem.disableBlend();
    }
 
-   public void a(wg $$0, @Nullable wg $$1) {
-      this.h = $$0;
-      this.i = a($$1);
-      this.k = true;
+   private void a(fdl $$0, int $$1, int $$2, float $$3, float $$4, fpe $$5) {
+      if ($$5 != fpc.a) {
+         int $$6 = (int)($$4 * 255.0F);
+         $$0.c().a();
+         $$0.c().a((float)$$2, $$3, 0.0F);
+         float $$7 = $$5.aO_() ? 1.0F : 0.25F;
+         $$0.a($$7, $$7, $$7, $$4);
+         $$5.a($$0, $$7, $$6);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
+         if ($$6 > 3 && $$5.aO_()) {
+            wi $$8 = this.e.m.U[$$1].k();
+            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
+         }
+      }
    }
 
-   public ffx.a d() {
-      return this.g;
+   public void b(fdl $$0) {
+      int $$1 = (int)(this.c() * 255.0F);
+      if ($$1 > 3 && this.g != null) {
+         fpe $$2 = this.g.b();
+         wi $$3 = $$2 == fpc.a ? this.g.c().b() : $$2.aN_();
+         if ($$3 != null) {
+            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
+            int $$5 = $$0.b() - 35;
+            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
+         }
+      }
    }
 
-   public static void a(ffz $$0, ffx.a $$1, wg $$2, @Nullable wg $$3) {
-      $$0.a(new ffx($$1, $$2, $$3));
+   @Override
+   public void a(fpc $$0) {
+      this.g = null;
+      this.f = 0L;
    }
 
-   public static void b(ffz $$0, ffx.a $$1, wg $$2, @Nullable wg $$3) {
-      ffx $$4 = $$0.a(ffx.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
+   public boolean a() {
+      return this.g != null;
+   }
+
+   public void b(int $$0) {
+      int $$1 = this.g.e() + $$0;
+
+      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fpc.a || !this.g.a($$1).aO_())) {
+         $$1 += $$0;
+      }
+
+      if ($$1 >= 0 && $$1 <= 8) {
+         this.g.b($$1);
+         this.f = ac.b();
+      }
+   }
+
+   public void b() {
+      this.f = ac.b();
+      if (this.a()) {
+         int $$0 = this.g.e();
+         if ($$0 != -1) {
+            this.g.b($$0);
+         }
       } else {
-         $$4.a($$2, $$3);
-      }
-   }
-
-   public static void a(ffz $$0, ffx.a $$1) {
-      ffx $$2 = $$0.a(ffx.class, $$1);
-      if ($$2 != null) {
-         $$2.c();
-      }
-   }
-
-   public static void a(fbp $$0, String $$1) {
-      a($$0.aA(), ffx.a.d, wg.c("selectWorld.access_failure"), wg.b($$1));
-   }
-
-   public static void b(fbp $$0, String $$1) {
-      a($$0.aA(), ffx.a.d, wg.c("selectWorld.delete_failure"), wg.b($$1));
-   }
-
-   public static void c(fbp $$0, String $$1) {
-      a($$0.aA(), ffx.a.e, wg.c("pack.copyFailure"), wg.b($$1));
-   }
-
-   public static void a(fbp $$0) {
-      b($$0.aA(), ffx.a.g, wg.c("chunk.toast.lowDiskSpace"), wg.c("chunk.toast.lowDiskSpace.description"));
-   }
-
-   public static void a(fbp $$0, cye $$1) {
-      b($$0.aA(), ffx.a.h, wg.a("chunk.toast.loadFailure", $$1).a(n.m), wg.c("chunk.toast.checkLog"));
-   }
-
-   public static void b(fbp $$0, cye $$1) {
-      b($$0.aA(), ffx.a.i, wg.a("chunk.toast.saveFailure", $$1).a(n.m), wg.c("chunk.toast.checkLog"));
-   }
-
-   public static class a {
-      public static final ffx.a a = new ffx.a();
-      public static final ffx.a b = new ffx.a();
-      public static final ffx.a c = new ffx.a();
-      public static final ffx.a d = new ffx.a();
-      public static final ffx.a e = new ffx.a();
-      public static final ffx.a f = new ffx.a();
-      public static final ffx.a g = new ffx.a(10000L);
-      public static final ffx.a h = new ffx.a();
-      public static final ffx.a i = new ffx.a();
-      public static final ffx.a j = new ffx.a(10000L);
-      final long k;
-
-      public a(long $$0) {
-         this.k = $$0;
-      }
-
-      public a() {
-         this(5000L);
+         this.g = new fpc(this);
       }
    }
 }

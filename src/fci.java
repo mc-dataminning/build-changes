@@ -1,49 +1,99 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
-import java.util.Optional;
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fci {
-   public static void a(fqv<?> $$0, fcg $$1, long $$2, float $$3, Vector3f $$4) {
-      float $$5 = a($$1, $$2);
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private fci.c b;
+   private int c;
 
-      for (Entry<String, List<fcf>> $$6 : $$1.c().entrySet()) {
-         Optional<ftm> $$7 = $$0.a($$6.getKey());
-         List<fcf> $$8 = $$6.getValue();
-         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
-               fch[] $$5x = $$4xx.b();
-               int $$6x = Math.max(0, axk.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
-               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
-               fch $$8x = $$5x[$$6x];
-               fch $$9 = $$5x[$$7x];
-               float $$10 = $$5 - $$8x.a();
-               float $$11;
-               if ($$7x != $$6x) {
-                  $$11 = axk.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
-               } else {
-                  $$11 = 0.0F;
-               }
+   public void a(fci.b $$0, List<arq> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
 
-               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
-               $$4xx.a().apply($$4x, $$4);
-            }));
+      this.b = new fci.c($$0, $$1.stream().map(arq::b).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new fci.c(fci.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new fci.a($$0);
+   }
+
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
+      } else {
+         this.b.d = true;
       }
    }
 
-   private static float a(fcg $$0, long $$1) {
-      float $$2 = (float)$$1 / 1000.0F;
-      return $$0.b() ? $$2 % $$0.a() : $$2;
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
    }
 
-   public static Vector3f a(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0, -$$1, $$2);
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
    }
 
-   public static Vector3f b(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
    }
 
-   public static Vector3f a(double $$0, double $$1, double $$2) {
-      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+   static class c {
+      private final fci.b a;
+      private final List<String> b;
+      @Nullable
+      fci.a c;
+      boolean d;
+
+      c(fci.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
+      }
    }
 }

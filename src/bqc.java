@@ -1,76 +1,98 @@
-public enum bqc implements aye {
-   a(bqc.a.a, 0, 0, "mainhand"),
-   b(bqc.a.a, 1, 5, "offhand"),
-   c(bqc.a.b, 0, 1, "feet"),
-   d(bqc.a.b, 1, 2, "legs"),
-   e(bqc.a.b, 2, 3, "chest"),
-   f(bqc.a.b, 3, 4, "head"),
-   g(bqc.a.c, 0, 6, "body");
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-   public static final aye.a<bqc> h = aye.a(bqc::values);
-   private final bqc.a i;
-   private final int j;
-   private final int k;
-   private final String l;
+public class bqc {
+   private final Map<bqb, List<esj>> a;
 
-   private bqc(bqc.a $$0, int $$1, int $$2, String $$3) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
+   bqc(Map<bqb, List<esj>> $$0) {
+      this.a = $$0;
    }
 
-   public bqc.a a() {
-      return this.i;
+   public static bqc a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   public int b() {
-      return this.j;
+   public static bqc.a a() {
+      return new bqc.a();
    }
 
-   public int a(int $$0) {
-      return $$0 + this.j;
+   public bqc a(float $$0, float $$1, float $$2) {
+      Map<bqb, List<esj>> $$3 = new EnumMap<>(bqb.class);
+
+      for (Entry<bqb, List<esj>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
+      }
+
+      return new bqc($$3);
    }
 
-   public int d() {
-      return this.k;
+   private static List<esj> a(List<esj> $$0, float $$1, float $$2, float $$3) {
+      List<esj> $$4 = new ArrayList<>($$0.size());
+
+      for (esj $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
    }
 
-   public String e() {
-      return this.l;
+   @Nullable
+   public esj a(bqb $$0, int $$1, float $$2) {
+      List<esj> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
    }
 
-   public boolean f() {
-      return this.i == bqc.a.b;
-   }
-
-   @Override
-   public String c() {
-      return this.l;
-   }
-
-   public static bqc a(String $$0) {
-      bqc $$1 = h.a($$0);
-      if ($$1 != null) {
-         return $$1;
+   public esj b(bqb $$0, int $$1, float $$2) {
+      esj $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
       } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+         return $$3;
       }
    }
 
-   public static bqc a(bqc.a $$0, int $$1) {
-      for (bqc $$2 : values()) {
-         if ($$2.a() == $$0 && $$2.b() == $$1) {
-            return $$2;
+   public esj c(bqb $$0, int $$1, float $$2) {
+      List<esj> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         esj $$4 = $$3.get(axm.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
+   }
+
+   private static esj a(esj $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
+   }
+
+   public static class a {
+      private final Map<bqb, List<esj>> a = new EnumMap<>(bqb.class);
+
+      a() {
+      }
+
+      public bqc.a a(bqb $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new esj((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bqc.a a(bqb $$0, esj $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bqc a(float $$0, float $$1) {
+         Map<bqb, List<esj>> $$2 = new EnumMap<>(bqb.class);
+
+         for (bqb $$3 : bqb.values()) {
+            List<esj> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
          }
+
+         return new bqc($$2);
       }
-
-      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

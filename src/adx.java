@@ -1,25 +1,25 @@
-public class adx implements yn<aay> {
-   public static final ye<vg, adx> a = yn.a(adx::a, adx::new);
+public class adx implements yp<aba> {
+   public static final yg<vi, adx> a = yp.a(adx::a, adx::new);
    private final int b;
 
-   public adx(int $$0) {
-      this.b = $$0;
+   public adx(dqz $$0) {
+      this.b = $$0.r();
    }
 
-   private adx(vg $$0) {
-      this.b = $$0.readByte();
+   private adx(vi $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vg $$0) {
-      $$0.k(this.b);
+   private void a(vi $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yp<adx> a() {
-      return afj.ax;
+   public yr<adx> a() {
+      return afl.av;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 

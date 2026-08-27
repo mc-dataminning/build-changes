@@ -1,118 +1,151 @@
-public class clw extends clo {
-   static final aiy<String> c = ajc.a(clw.class, aja.e);
-   static final aiy<wg> d = ajc.a(clw.class, aja.f);
-   private final cxy e = new clw.a();
-   private static final int i = 4;
-   private int j;
+import javax.annotation.Nullable;
 
-   public clw(bqb<? extends clw> $$0, cyx $$1) {
+public abstract class clw extends clv implements clz {
+   private iw<crs> c = iw.a(36, crs.i);
+   @Nullable
+   private ajv d;
+   private long e;
+
+   protected clw(bqg<?> $$0, czg $$1) {
       super($$0, $$1);
    }
 
-   public clw(cyx $$0, double $$1, double $$2, double $$3) {
-      super(bqb.v, $$0, $$1, $$2, $$3);
+   protected clw(bqg<?> $$0, double $$1, double $$2, double $$3, czg $$4) {
+      super($$0, $$4, $$1, $$2, $$3);
    }
 
    @Override
-   protected cre ag_() {
-      return crm.nL;
-   }
-
-   @Override
-   protected void a(ajc.a $$0) {
+   public void a(boy $$0) {
       super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, wf.a);
+      this.a($$0, this.dM(), this);
    }
 
    @Override
-   protected void a(tm $$0) {
+   public crs a(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public crs a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public crs b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, crs $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public brk a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cka $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bqa.c $$0) {
+      if (!this.dM().B && $$0.a()) {
+         bob.a(this.dM(), this, this);
+      }
+
       super.a($$0);
-      this.e.b($$0, this.dO());
-      this.an().a(c, this.B().m());
-      this.an().a(d, this.B().l());
    }
 
    @Override
-   protected void b(tm $$0) {
+   protected void b(to $$0) {
       super.b($$0);
-      this.e.a($$0, this.dO());
+      this.a($$0, this.dO());
    }
 
    @Override
-   public clo.a v() {
-      return clo.a.g;
+   protected void a(to $$0) {
+      super.a($$0);
+      this.b($$0, this.dO());
    }
 
    @Override
-   public doz x() {
-      return dca.fN.n();
+   public bof a(cka $$0, boe $$1) {
+      return this.c_($$0);
    }
 
-   public cxy B() {
+   @Override
+   protected void u() {
+      float $$0 = 0.98F;
+      if (this.d == null) {
+         int $$1 = 15 - cmw.b(this);
+         $$0 += (float)$$1 * 0.001F;
+      }
+
+      if (this.bc()) {
+         $$0 *= 0.95F;
+      }
+
+      this.g(this.dp().d((double)$$0, 0.0, (double)$$0));
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   public void a(ajv $$0, long $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Nullable
+   @Override
+   public cmw createMenu(int $$0, cjz $$1, cka $$2) {
+      if (this.d != null && $$2.N_()) {
+         return null;
+      } else {
+         this.f($$1.m);
+         return this.a($$0, $$1);
+      }
+   }
+
+   protected abstract cmw a(int var1, cjz var2);
+
+   @Nullable
+   @Override
+   public ajv B() {
+      return this.d;
+   }
+
+   @Override
+   public void a(@Nullable ajv $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public long C() {
       return this.e;
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ah - this.j >= 4) {
-         this.B().a(this.dM());
-         this.j = this.ah;
-      }
+   public void a(long $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boa a(cjt $$0, bnz $$1) {
-      return this.e.a($$0);
+   public iw<crs> D() {
+      return this.c;
    }
 
    @Override
-   public void a(aiy<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.an().a(d));
-         } catch (Throwable var3) {
-         }
-      } else if (c.equals($$0)) {
-         this.e.a(this.an().a(c));
-      }
-   }
-
-   @Override
-   public boolean cM() {
-      return true;
-   }
-
-   public class a extends cxy {
-      @Override
-      public aps e() {
-         return (aps)clw.this.dM();
-      }
-
-      @Override
-      public void f() {
-         clw.this.an().a(clw.c, this.m());
-         clw.this.an().a(clw.d, this.l());
-      }
-
-      @Override
-      public esa g() {
-         return clw.this.dk();
-      }
-
-      public clw h() {
-         return clw.this;
-      }
-
-      @Override
-      public du i() {
-         return new du(this, clw.this.dk(), clw.this.bJ(), this.e(), 2, this.n().getString(), clw.this.O_(), this.e().o(), clw.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !clw.this.dH();
-      }
+   public void E() {
+      this.c = iw.a(this.b(), crs.i);
    }
 }

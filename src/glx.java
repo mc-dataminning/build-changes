@@ -1,123 +1,75 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class glx implements gln {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<glx> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ajt.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               aws.a(glx.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, glx::new)
-   );
-   private final ajt d;
-   private final List<glx.a> e;
-   private final double f;
-   private final double g;
+public class glx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ajo b = new ajo("atlases", ".json");
+   private final List<glw> c;
 
-   public glx(ajt $$0, List<glx.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   private glx(List<glw> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a(atc $$0, gln.a $$1) {
-      ajt $$2 = a.a(this.d);
-      Optional<ata> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         glt $$4 = new glt($$2, $$3.get(), this.e.size());
-
-         for (glx.a $$5 : this.e) {
-            $$1.a($$5.b, new glx.b($$4, $$5, this.f, this.g));
-         }
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
-   }
-
-   @Override
-   public glp a() {
-      return glq.d;
-   }
-
-   static record a(ajt b, double c, double d, double e, double f) {
-      public static final Codec<glx.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ajt.a.fieldOf("sprite").forGetter(glx.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(glx.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(glx.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(glx.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(glx.a::e)
-               )
-               .apply($$0, glx.a::new)
-      );
-
-      public ajt a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements gln.b {
-      private final glt a;
-      private final glx.a b;
-      private final double c;
-      private final double d;
-
-      b(glt $$0, glx.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public gld a(glm $$0) {
-         try {
-            evj $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = axk.a(this.b.c * $$2);
-            int $$5 = axk.a(this.b.d * $$3);
-            int $$6 = axk.a(this.b.e * $$2);
-            int $$7 = axk.a(this.b.f * $$3);
-            evj $$8 = new evj(evj.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new gld(this.b.b, new gmv($$6, $$7), $$8, ate.a);
-         } catch (Exception var16) {
-            glx.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
+   public List<Function<glv, glm>> a(ate $$0) {
+      final Map<ajv, glw.b> $$1 = new HashMap<>();
+      glw.a $$2 = new glw.a() {
+         @Override
+         public void a(ajv $$0, glw.b $$1x) {
+            glw.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
          }
 
-         return gkz.a();
+         @Override
+         public void a(Predicate<ajv> $$0) {
+            Iterator<Entry<ajv, glw.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<ajv, glw.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<glv, glm>> $$3 = ImmutableList.builder();
+      $$3.add((Function<glv, glm>)$$0x -> gli.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static glx a(ate $$0, ajv $$1) {
+      ajv $$2 = b.a($$1);
+      List<glw> $$3 = new ArrayList<>();
+
+      for (atc $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends glw>)glz.h.parse($$6).getOrThrow(false, a::error));
+         } catch (Exception var11) {
+            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
       }
 
-      @Override
-      public void a() {
-         this.a.b();
-      }
+      return new glx($$3);
    }
 }

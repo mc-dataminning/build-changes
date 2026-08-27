@@ -1,36 +1,25 @@
-public class gjz extends gjt<cdb, fsm<cdb>> {
-   private final gat a;
-   private final ggg b;
+public class gjz<T extends cka> extends gkc<T, fsa<T>> {
+   private final frv a;
 
-   public gjz(ghd<cdb, fsm<cdb>> $$0, gat $$1, ggg $$2) {
+   public gjz(ghm<T, fsa<T>> $$0, ftr $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.a = new frv($$1.a(ftu.aG));
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, cdb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u()) {
-         boolean $$10 = fbp.Q().b($$3) && $$3.ce();
-         if (!$$3.ce() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            crj $$12 = new crj(dca.ee);
-            if ($$10) {
-               doz $$13 = dca.ee.n();
-               gnj $$14 = this.a.a($$13);
-               int $$15 = ggj.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(gah.r(gli.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
-            } else {
-               this.b.a($$3, $$12, crg.f, false, $$0, $$1, $$3.dM(), $$2, ggj.c($$3, 0.0F), $$3.aj());
-            }
+   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   }
 
-            $$0.b();
-         }
-      }
+   private void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      to $$9 = $$8 ? $$3.gq() : $$3.gr();
+      bqg.a($$9.l("id")).filter($$0x -> $$0x == bqg.aw).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
+         ccy.b $$11 = ccy.b.a($$9.h("Variant"));
+         ewv $$12 = $$1.getBuffer(this.a.a(ghd.a($$11)));
+         this.a.a($$0, $$12, $$2, glj.d, $$4, $$5, $$6, $$7, $$3.ah);
+         $$0.b();
+      });
    }
 }

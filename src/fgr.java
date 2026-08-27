@@ -1,34 +1,17 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-
-public interface fgr {
-   MapCodec<fgr> b = fgs.f.dispatchMap(fgr::a, $$0 -> $$0.a().codec());
-
-   fgs a();
-
-   Either<fgr.b, fgr.c> b();
-
-   public static record a(fgr b, fgf.a c) {
-      public static final Codec<fgr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fgr.b.forGetter(fgr.a::a), aws.a(fgf.a.a, "filter", fgf.a.b).forGetter(fgr.a::b)).apply($$0, fgr.a::new)
-      );
-
-      public fgr a() {
-         return this.b;
-      }
-
-      public fgf.a b() {
-         return this.c;
-      }
+public record fgr(gaq a, gaq b, gaq c) {
+   public static fgr a(ajv $$0) {
+      return new fgr(gaq.u($$0), gaq.y($$0), gaq.w($$0));
    }
 
-   public interface b {
-      eul load(atc var1) throws IOException;
+   public static fgr b(ajv $$0) {
+      return new fgr(gaq.t($$0), gaq.x($$0), gaq.v($$0));
    }
 
-   public static record c(ajt a) {
+   public gaq a(fdj.a $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+         case c -> this.c;
+      };
    }
 }

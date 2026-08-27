@@ -1,41 +1,36 @@
-public class gcr extends gcs<dnv> {
-   private static final ajt c = new ajt("textures/entity/end_gateway_beam.png");
+public class gcr implements gci<dni> {
+   public static final gnv a = new gnv(glr.e, new ajv("entity/enchanting_table_book"));
+   private final fqd b;
 
-   public gcr(gca.a $$0) {
-      super($$0);
+   public gcr(gcj.a $$0) {
+      this.b = new fqd($$0.a(ftu.r));
    }
 
-   public void a(dnv $$0, float $$1, ewi $$2, fzz $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().al() : 50.0;
-         $$6 = axk.a($$6 * (float) Math.PI);
-         int $$8 = axk.a((double)$$6 * $$7);
-         float[] $$9 = $$0.b() ? cqc.c.d() : cqc.k.d();
-         long $$10 = $$0.i().Y();
-         gbv.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public void a(dni $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + axm.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
+
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
 
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected gah d() {
-      return gah.v();
-   }
-
-   @Override
-   public int aQ_() {
-      return 256;
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = axm.i($$1, $$0.c, $$0.b);
+      float $$10 = axm.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = axm.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = axm.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, axm.a($$10, 0.0F, 1.0F), axm.a($$11, 0.0F, 1.0F), $$12);
+      ewv $$13 = a.a($$3, gaq::c);
+      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

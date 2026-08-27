@@ -1,68 +1,86 @@
-import javax.annotation.Nullable;
+public class aeu implements yp<aba> {
+   public static final yg<vt, aeu> a = yp.a(aeu::a, aeu::new);
+   public static final float b = 8.0F;
+   private final in<aun> c;
+   private final aup d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final float h;
+   private final float i;
+   private final long j;
 
-public class aeu implements yn<aay> {
-   public static final ye<vg, aeu> a = yn.a(aeu::a, aeu::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   @Nullable
-   private final ajt d;
-   @Nullable
-   private final aun e;
-
-   public aeu(@Nullable ajt $$0, @Nullable aun $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public aeu(in<aun> $$0, aup $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = (int)($$2 * 8.0);
+      this.f = (int)($$3 * 8.0);
+      this.g = (int)($$4 * 8.0);
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
    }
 
-   private aeu(vg $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.e = $$0.b(aun.class);
-      } else {
-         this.e = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.d = $$0.q();
-      } else {
-         this.d = null;
-      }
+   private aeu(vt $$0) {
+      this.c = aun.d.decode($$0);
+      this.d = $$0.b(aup.class);
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readInt();
+      this.h = $$0.readFloat();
+      this.i = $$0.readFloat();
+      this.j = $$0.readLong();
    }
 
-   private void a(vg $$0) {
-      if (this.e != null) {
-         if (this.d != null) {
-            $$0.k(3);
-            $$0.a(this.e);
-            $$0.a(this.d);
-         } else {
-            $$0.k(1);
-            $$0.a(this.e);
-         }
-      } else if (this.d != null) {
-         $$0.k(2);
-         $$0.a(this.d);
-      } else {
-         $$0.k(0);
-      }
+   private void a(vt $$0) {
+      aun.d.encode($$0, this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
+      $$0.p(this.f);
+      $$0.p(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.b(this.j);
    }
 
    @Override
-   public yp<aeu> a() {
-      return afj.aU;
+   public yr<aeu> a() {
+      return afl.aS;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public ajt b() {
+   public in<aun> b() {
+      return this.c;
+   }
+
+   public aup e() {
       return this.d;
    }
 
-   @Nullable
-   public aun e() {
-      return this.e;
+   public double f() {
+      return (double)((float)this.e / 8.0F);
+   }
+
+   public double g() {
+      return (double)((float)this.f / 8.0F);
+   }
+
+   public double h() {
+      return (double)((float)this.g / 8.0F);
+   }
+
+   public float i() {
+      return this.h;
+   }
+
+   public float j() {
+      return this.i;
+   }
+
+   public long k() {
+      return this.j;
    }
 }

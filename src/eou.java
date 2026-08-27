@@ -1,147 +1,60 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.EnumSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class eou extends eoo {
-   public static final Codec<eou> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(aws.a(eou.b.a.listOf()).fieldOf("modifiers").forGetter($$0x -> $$0x.b)).apply($$0, eou::new)
-   );
-   private final List<eou.b> b;
+public class eou extends eox {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<eou> a = RecordCodecBuilder.create($$0 -> a($$0).and(ajv.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, eou::new));
+   private final ajv c;
 
-   eou(List<eqc> $$0, List<eou.b> $$1) {
+   private eou(List<eql> $$0, ajv $$1) {
       super($$0);
-      this.b = List.copyOf($$1);
+      this.c = $$1;
    }
 
    @Override
-   public eoq b() {
-      return eor.l;
+   public eoz b() {
+      return epa.C;
    }
 
    @Override
-   public Set<epl<?>> a() {
-      return this.b.stream().flatMap($$0 -> $$0.e.a().stream()).collect(ImmutableSet.toImmutableSet());
+   public void a(ent $$0) {
+      enm<eoy> $$1 = new enm<>(enp.b, this.c);
+      if ($$0.a($$1)) {
+         $$0.b("Function " + this.c + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.b("Unknown function table called " + this.c));
+      }
    }
 
    @Override
-   public crj a(crj $$0, enb $$1) {
-      $$0.a(jp.i, ctz.a, $$1x -> {
-         axr $$2 = $$1.b();
+   protected crs a(crs $$0, enk $$1) {
+      eoy $$2 = $$1.a().getElement(enp.b, this.c);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c);
+         return $$0;
+      } else {
+         enk.c<?> $$3 = enk.a($$2);
+         if ($$1.b($$3)) {
+            crs var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
 
-         for (eou.b $$3 : this.b) {
-            UUID $$4 = $$3.g.orElseGet(UUID::randomUUID);
-            bqd $$5 = ac.a($$3.f, $$2);
-            $$1x = $$1x.a($$3.c, new brt($$4, $$3.b, (double)$$3.e.b($$1), $$3.d), $$5);
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
          }
-
-         return $$1x;
-      });
-      return $$0;
-   }
-
-   public static eou.c a(String $$0, il<brq> $$1, brt.a $$2, eqx $$3) {
-      return new eou.c($$0, $$1, $$2, $$3);
-   }
-
-   public static eou.a c() {
-      return new eou.a();
-   }
-
-   public static class a extends eoo.a<eou.a> {
-      private final List<eou.b> a = Lists.newArrayList();
-
-      protected eou.a a() {
-         return this;
-      }
-
-      public eou.a a(eou.c $$0) {
-         this.a.add($$0.a());
-         return this;
-      }
-
-      @Override
-      public eop b() {
-         return new eou(this.g(), this.a);
       }
    }
 
-   static record b(String b, il<brq> c, brt.a d, eqx e, List<bqd> f, Optional<UUID> g) {
-      private static final Codec<List<bqd>> h = aws.a(
-         Codec.either(bqd.k, bqd.k.listOf())
-            .xmap($$0 -> (List)$$0.map(List::of, Function.identity()), $$0 -> $$0.size() == 1 ? Either.left((bqd)$$0.get(0)) : Either.right($$0))
-      );
-      public static final Codec<eou.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("name").forGetter(eou.b::a),
-                  kr.u.r().fieldOf("attribute").forGetter(eou.b::b),
-                  brt.a.f.fieldOf("operation").forGetter(eou.b::c),
-                  eqy.a.fieldOf("amount").forGetter(eou.b::d),
-                  h.fieldOf("slot").forGetter(eou.b::e),
-                  aws.a(jf.d, "id").forGetter(eou.b::f)
-               )
-               .apply($$0, eou.b::new)
-      );
-
-      public String a() {
-         return this.b;
-      }
-
-      public il<brq> b() {
-         return this.c;
-      }
-
-      public brt.a c() {
-         return this.d;
-      }
-
-      public eqx d() {
-         return this.e;
-      }
-
-      public List<bqd> e() {
-         return this.f;
-      }
-
-      public Optional<UUID> f() {
-         return this.g;
-      }
-   }
-
-   public static class c {
-      private final String a;
-      private final il<brq> b;
-      private final brt.a c;
-      private final eqx d;
-      private Optional<UUID> e = Optional.empty();
-      private final Set<bqd> f = EnumSet.noneOf(bqd.class);
-
-      public c(String $$0, il<brq> $$1, brt.a $$2, eqx $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public eou.c a(bqd $$0) {
-         this.f.add($$0);
-         return this;
-      }
-
-      public eou.c a(UUID $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public eou.b a() {
-         return new eou.b(this.a, this.b, this.c, this.d, List.copyOf(this.f), this.e);
-      }
+   public static eox.a<?> a(ajv $$0) {
+      return a($$1 -> new eou($$1, $$0));
    }
 }

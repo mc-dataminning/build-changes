@@ -1,117 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import java.util.function.Function;
 
 public class ciz {
-   public static final Codec<ciz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aws.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               aws.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               aws.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, ciz::new)
-   );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
+   public static bsm<bqt> a(int $$0, int $$1) {
+      return bvy.a(
+         (Function<bvy.b<bqt>, ? extends App<bvy.c<bqt>, bwb<bqt>>>)($$2 -> $$2.group($$2.b(bzw.ad), $$2.b(bzw.L), $$2.a(bzw.ae), $$2.a(bzw.af))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.eV().d()) {
+                        return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
 
-   public ciz(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-   }
-
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
-      } else {
-         this.g++;
-      }
-
-      if (this.i > 0) {
-         this.i--;
-      }
-   }
-
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(aps $$0, ib $$1, apt $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<apt> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.aa().map(ciz::d).orElse(false))) {
-            return OptionalInt.empty();
-         } else {
-            Optional<ciz> $$4 = $$3.stream().flatMap($$0x -> $$0x.aa().stream()).max(Comparator.comparingInt(ciz::c));
-            if ($$4.isPresent()) {
-               ciz $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.aa().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
-         }
-      }
-   }
-
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(aps $$0, ib $$1) {
-      erv $$2 = erv.a(esa.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(cix.class, $$2).isEmpty();
-   }
-
-   private static List<apt> b(aps $$0, ib $$1) {
-      esa $$2 = esa.b($$1);
-      Predicate<apt> $$3 = $$1x -> $$1x.dk().a((iv)$$2, 16.0);
-      return $$0.a($$3.and(bqo::bA).and(bqa.f));
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
-      }
-   }
-
-   private void f() {
-      this.a(this.c() - 1);
-   }
-
-   public void a(int $$0) {
-      this.h = axk.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(ciz $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
+                        return true;
+                     }
+                  }))
+      );
    }
 }

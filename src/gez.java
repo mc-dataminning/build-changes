@@ -1,35 +1,32 @@
-public class gez extends gfh<ckc> {
-   private static final ajt a = new ajt("textures/entity/enderdragon/dragon_fireball.png");
-   private static final gah f = gah.e(a);
-
-   public gez(gfi.a $$0) {
-      super($$0);
+public class gez extends ggx<ccl, fqg<ccl>> {
+   public gez(gfr.a $$0) {
+      super($$0, new fqg<>($$0.a(ftu.t)), 0.4F);
+      this.a(new gje(this, $$0.f()));
    }
 
-   protected int a(ckc $$0, ib $$1) {
-      return 15;
+   public ajv a(ccl $$0) {
+      return $$0.gt();
    }
 
-   public void a(ckc $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      ewi.a $$6 = $$3.c();
-      ewm $$7 = $$4.getBuffer(f);
-      a($$7, $$6, $$5, 0.0F, 0, 0, 1);
-      a($$7, $$6, $$5, 1.0F, 0, 1, 1);
-      a($$7, $$6, $$5, 1.0F, 1, 1, 0);
-      a($$7, $$6, $$5, 0.0F, 1, 0, 0);
-      $$3.b();
+   protected void a(ccl $$0, ewr $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
+   }
+
+   protected void a(ccl $$0, ewr $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      float $$6 = $$0.G($$4);
+      if ($$6 > 0.0F) {
+         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
+         $$1.a(a.f.rotationDegrees(axm.j($$6, 0.0F, 90.0F)));
+         id $$7 = $$0.dm();
 
-   private static void a(ewm $$0, ewi.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$5, (float)$$6).c(gla.d).b($$2).b($$1, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public ajt a(ckc $$0) {
-      return a;
+         for (cka $$9 : $$0.dM().a(cka.class, new ese($$7).c(2.0, 2.0, 2.0))) {
+            if ($$9.fI()) {
+               $$1.a(0.15F * $$6, 0.0F, 0.0F);
+               break;
+            }
+         }
+      }
    }
 }

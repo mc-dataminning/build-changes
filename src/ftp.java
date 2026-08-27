@@ -1,61 +1,46 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class ftp extends fss {
+   private final ftv a;
+   private final ftv b;
 
-public final class ftp {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final ftq d;
-   private final boolean e;
-   private final ftw f;
-   private final ftw g;
-   private final Set<ih> h;
-
-   protected ftp(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      ftq $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<ih> $$13
-   ) {
-      this.a = $$0;
-      this.f = new ftw($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new ftw($$11, $$12);
-      this.h = $$13;
+   public ftp(ftv $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("jaw");
    }
 
-   public ftm.a a(int $$0, int $$1) {
-      return new ftm.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
+   public static fub a() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      float $$2 = -16.0F;
+      fue $$3 = $$1.a(
+         "head",
+         fua.c()
+            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a(true)
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a(false)
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         ftx.a
       );
+      $$3.a("jaw", fua.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), ftx.a(0.0F, 4.0F, -8.0F));
+      return fub.a($$0, 256, 256);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public void a(ewr $$0, ewv $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$0.a();
+      $$0.a(0.0F, -0.374375F, 0.0F);
+      $$0.b(0.75F, 0.75F, 0.75F);
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      $$0.b();
    }
 }

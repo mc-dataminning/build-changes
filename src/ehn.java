@@ -1,42 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class ehn extends efh {
-   public static final bmo<dai.c> d = bmo.a(
-      new dai.c(bqb.i, 10, 2, 3), new dai.c(bqb.bw, 5, 4, 4), new dai.c(bqb.bp, 8, 5, 5), new dai.c(bqb.aM, 2, 5, 5), new dai.c(bqb.ao, 3, 4, 4)
-   );
-   public static final Codec<ehn> e = a(ehn::new);
+public class ehn extends efq {
+   public static final Codec<ehn> d = a(ehn::new);
 
-   public ehn(efh.c $$0) {
+   public ehn(efq.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<efh.b> a(efh.a $$0) {
-      cye $$1 = $$0.h();
-      ib $$2 = new ib($$1.d(), 64, $$1.e());
-      return Optional.of(new efh.b($$2, (Consumer<efz>)($$1x -> a($$1x, $$0))));
+   public Optional<efq.b> a(efq.a $$0) {
+      dit $$1 = dit.a($$0.f());
+      id $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new efq.b($$2, (Consumer<egi>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   private static void a(efz $$0, efh.a $$1) {
-      ehm.q $$2 = new ehm.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<efl> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         efl $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
-      }
-
-      $$0.a($$1.f(), 48, 70);
+   private void a(egi $$0, id $$1, dit $$2, efq.a $$3) {
+      List<efu> $$4 = Lists.newArrayList();
+      ehm.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public efq<?> e() {
-      return efq.d;
+   public efz<?> e() {
+      return efz.c;
    }
 }

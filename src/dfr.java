@@ -1,114 +1,72 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class dfr extends dfo {
+public class dfr extends dhg implements dck, djh {
    public static final MapCodec<dfr> a = b(dfr::new);
-   private static final double c = 0.13;
-   private static final double e = 0.08;
-   private static final double f = 0.05;
-   private static final int g = 20;
-   protected static final est b = dby.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   private static final dpz c = dpy.C;
+   private final dhh d = new dhh(this);
 
    @Override
    public MapCodec<dfr> a() {
       return a;
    }
 
-   public dfr(doy.d $$0) {
+   public dfr(dph.d $$0) {
       super($$0);
+      this.k(this.n().a(c, Boolean.valueOf(false)));
    }
 
-   private static boolean c(bpv $$0) {
-      return $$0 instanceof bqo || $$0 instanceof clo || $$0 instanceof cge || $$0 instanceof clq;
-   }
-
-   @Override
-   protected est b(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return b;
+   public static ToIntFunction<dpi> b(int $$0) {
+      return $$1 -> dhg.n($$1) ? $$0 : 0;
    }
 
    @Override
-   public void a(cyx $$0, doz $$1, ib $$2, bpv $$3, float $$4) {
-      $$3.a(aum.ml, 1.0F, 1.0F);
-      if (!$$0.B) {
-         $$0.a($$3, (byte)54);
-      }
-
-      if ($$3.a($$4, 0.2F, $$0.ai().k())) {
-         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
-      }
+   protected void a(dpj.a<dch, dpi> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, bpv $$3) {
-      if (this.a($$2, $$3)) {
-         this.a($$3, $$2);
-         this.d($$3);
-         this.a($$1, $$3);
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, elc.c, elc.c.a($$3));
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private boolean a(ib $$0, bpv $$1) {
-      if ($$1.aC()) {
-         return false;
-      } else if ($$1.dt() > (double)$$0.v() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if ($$1.dp().d >= -0.08) {
-         return false;
-      } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dr());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dx());
-         double $$4 = 0.4375 + (double)($$1.dg() / 2.0F);
-         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
-      }
+   @Override
+   protected boolean a(dpi $$0, cux $$1) {
+      return !$$1.n().a(crv.fV) || super.a($$0, $$1);
    }
 
-   private void a(bpv $$0, ib $$1) {
-      if ($$0 instanceof apt && $$0.dM().Y() % 20L == 0L) {
-         am.K.a((apt)$$0, $$0.dM().a_($$1));
-      }
+   @Override
+   public boolean b(czj $$0, id $$1, dpi $$2) {
+      return ij.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
    }
 
-   private void d(bpv $$0) {
-      esa $$1 = $$0.dp();
-      if ($$1.d < -0.13) {
-         double $$2 = -0.05 / $$1.d;
-         $$0.g(new esa($$1.c * $$2, -0.05, $$1.e * $$2));
-      } else {
-         $$0.g(new esa($$1.c, -0.05, $$1.e));
-      }
-
-      $$0.n();
+   @Override
+   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
+      return true;
    }
 
-   private void a(cyx $$0, bpv $$1) {
-      if (c($$1)) {
-         if ($$0.z.a(5) == 0) {
-            $$1.a(aum.ml, 1.0F, 1.0F);
-         }
-
-         if (!$$0.B && $$0.z.a(5) == 0) {
-            $$0.a($$1, (byte)53);
-         }
-      }
+   @Override
+   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
    }
 
-   public static void a(bpv $$0) {
-      a($$0, 5);
+   @Override
+   protected elb c_(dpi $$0) {
+      return $$0.c(c) ? elc.c.a(false) : super.c_($$0);
    }
 
-   public static void b(bpv $$0) {
-      a($$0, 10);
+   @Override
+   protected boolean a_(dpi $$0, cym $$1, id $$2) {
+      return $$0.u().c();
    }
 
-   private static void a(bpv $$0, int $$1) {
-      if ($$0.dM().B) {
-         doz $$2 = dca.pg.n();
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dM().a(new kd(kl.c, $$2), $$0.dr(), $$0.dt(), $$0.dx(), 0.0, 0.0, 0.0);
-         }
-      }
+   @Override
+   public dhh c() {
+      return this.d;
    }
 }

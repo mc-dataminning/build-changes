@@ -8,20 +8,20 @@ public class cv extends cx<cv.a> {
       return cv.a.a;
    }
 
-   public void a(apt $$0, cvl<?> $$1) {
+   public void a(apv $$0, cvu<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static an<cv.a> a(ajt $$0) {
+   public static an<cv.a> a(ajv $$0) {
       return am.g.a(new cv.a(Optional.empty(), $$0));
    }
 
-   public static record a(Optional<bc> b, ajt c) implements cx.a {
+   public static record a(Optional<bc> b, ajv c) implements cx.a {
       public static final Codec<cv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(cv.a::a), ajt.a.fieldOf("recipe").forGetter(cv.a::b)).apply($$0, cv.a::new)
+         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(cv.a::a), ajv.a.fieldOf("recipe").forGetter(cv.a::b)).apply($$0, cv.a::new)
       );
 
-      public boolean a(cvl<?> $$0) {
+      public boolean a(cvu<?> $$0) {
          return this.c.equals($$0.a());
       }
 
@@ -30,7 +30,7 @@ public class cv extends cx<cv.a> {
          return this.b;
       }
 
-      public ajt b() {
+      public ajv b() {
          return this.c;
       }
    }

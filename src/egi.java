@@ -1,59 +1,70 @@
 import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class egi extends ego {
-   public static final Codec<egi> a = RecordCodecBuilder.create($$0 -> $$0.group(eel.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, egi::new));
-   private final il<eel> b;
-   private final tm c;
-
-   protected egi(il<eel> $$0, egq.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
-   }
-
-   private tm b() {
-      tm $$0 = new tm();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dnf.a.a.c());
-      return $$0;
-   }
+public class egi implements efv {
+   private final List<efu> a = Lists.newArrayList();
 
    @Override
-   public jg a(eji $$0, dik $$1) {
-      return jg.g;
+   public void a(efu $$0) {
+      this.a.add($$0);
    }
 
+   @Nullable
    @Override
-   public List<ejh.c> a(eji $$0, ib $$1, dik $$2, axr $$3) {
-      List<ejh.c> $$4 = Lists.newArrayList();
-      $$4.add(new ejh.c($$1, dca.pb.n().a(dfz.b, ij.a(ih.a, ih.d)), this.c));
-      return $$4;
+   public efu a(efi $$0) {
+      return efu.a(this.a, $$0);
    }
 
-   @Override
-   public eez a(eji $$0, ib $$1, dik $$2) {
-      jg $$3 = this.a($$0, $$2);
-      return new eez($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   @Deprecated
+   public void a(int $$0) {
+      for (efu $$1 : this.a) {
+         $$1.a(0, $$0, 0);
+      }
    }
 
-   @Override
-   public boolean a(eji $$0, czs $$1, czq $$2, dqw $$3, ib $$4, ib $$5, dik $$6, eez $$7, axr $$8, boolean $$9) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
+   @Deprecated
+   public int a(int $$0, int $$1, axt $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      efi $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
    }
 
-   @Override
-   public egp<?> a() {
-      return egp.c;
+   /** @deprecated */
+   public void a(axt $$0, int $$1, int $$2) {
+      efi $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
    }
 
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public egf a() {
+      return new egf(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public efi d() {
+      return efu.a(this.a.stream());
    }
 }

@@ -1,34 +1,17 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class buf {
-   public static bsh<bqo> a(bqr $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ai().f()), $$1);
-   }
-
-   public static btr<bqo> a(bqb<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ai()), $$1);
-   }
-
-   public static btr<bqo> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static btr<bqo> a(Predicate<bqo> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return bvt.a(
-         (Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$2x -> $$2x.group($$2x.c(bzr.n), $$2x.b(bzr.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bqo> $$8 = $$2x.<bzt>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bpv)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bsr($$8.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   public static bsm<cjn> a() {
+      return bvy.a((Function<bvy.b<cjn>, ? extends App<bvy.c<cjn>, bwb<cjn>>>)($$0 -> $$0.group($$0.c(bzw.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cjo $$3 = $$1.gy();
+               if ($$3.b() != cjq.b && $$3.b() != cjq.m && $$1.u() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gy().a(cjq.b));
+                  $$1.c($$0xx);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

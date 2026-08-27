@@ -1,39 +1,27 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
 
 public class ann {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.spectate.self"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wg.b("commands.spectate.not_spectator", $$0));
-
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<dv> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spectate").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), null, ((du)$$0x.getSource()).h())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("setworldspawn").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((dv)$$0x.getSource(), id.a(((dv)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((RequiredArgumentBuilder)dv.a("target", eh.a()).executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), ((du)$$0x.getSource()).h())))
-                  .then(dv.a("player", eh.c()).executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), eh.e($$0x, "player"))))
+               ((RequiredArgumentBuilder)dw.a("pos", fq.a()).executes($$0x -> a((dv)$$0x.getSource(), fq.c($$0x, "pos"), 0.0F)))
+                  .then(dw.a("angle", eb.a()).executes($$0x -> a((dv)$$0x.getSource(), fq.c($$0x, "pos"), eb.a($$0x, "angle"))))
             )
       );
    }
 
-   private static int a(du $$0, @Nullable bpv $$1, apt $$2) throws CommandSyntaxException {
-      if ($$2 == $$1) {
-         throw a.create();
-      } else if ($$2.f.b() != cyu.d) {
-         throw b.create($$2.O_());
+   private static int a(dv $$0, id $$1, float $$2) {
+      apu $$3 = $$0.e();
+      if ($$3.ae() != czg.h) {
+         $$0.b(wi.c("commands.setworldspawn.failure.not_overworld"));
+         return 0;
       } else {
-         $$2.d($$1);
-         if ($$1 != null) {
-            $$0.a(() -> wg.a("commands.spectate.success.started", $$1.O_()), false);
-         } else {
-            $$0.a(() -> wg.c("commands.spectate.success.stopped"), false);
-         }
-
+         $$3.a($$1, $$2);
+         $$0.a(() -> wi.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
          return 1;
       }
    }

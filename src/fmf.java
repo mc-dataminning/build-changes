@@ -1,25 +1,47 @@
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public interface fmf {
-   static fmf a(aww $$0) {
-      return new fme($$0);
+public class fmf extends fkx {
+   public static final float b = 62.500004F;
+   public static final float c = 0.9765628F;
+   private static final Vector3f d = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private gcw.a o;
+
+   public fmf(dny $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
-   static fmf a(cot $$0) {
-      if ($$0 instanceof cos $$1) {
-         return new fmd($$1.a());
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.o = gcw.a(this.j.aR(), this.a);
+   }
+
+   @Override
+   protected void b(fdl $$0, dpi $$1) {
+      super.b($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dkb;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
       }
    }
 
-   int a();
-
-   int a(fda var1);
-
-   default void a(fda $$0, int $$1, int $$2, Matrix4f $$3, fzz.a $$4) {
+   @Override
+   protected void a(fdl $$0, dpi $$1) {
+      if (this.o != null) {
+         boolean $$2 = $$1.b() instanceof dkb;
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         gnv $$3 = gax.a(this.a);
+         ewv $$4 = $$3.a($$0.d(), this.o::a);
+         this.o.b.k = $$2;
+         this.o.a.a($$0.c(), $$4, 15728880, glj.d);
+      }
    }
 
-   default void a(fda $$0, int $$1, int $$2, fdc $$3) {
+   @Override
+   protected Vector3f m() {
+      return d;
    }
 }

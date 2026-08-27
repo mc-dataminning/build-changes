@@ -1,84 +1,141 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class daj extends daa {
-   private static final MapCodec<il<czw>> d = czw.c.fieldOf("biome");
-   public static final MapCodec<daf.c<il<czw>>> b = daf.c.a(d).fieldOf("biomes");
-   private static final MapCodec<il<dak>> e = dak.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<daj> c = Codec.mapEither(b, e).xmap(daj::new, $$0 -> $$0.f).codec();
-   private final Either<daf.c<il<czw>>, il<dak>> f;
+public abstract class daj implements dai {
+   public static final Codec<daj> a = kt.ab.q().dispatchStable(daj::a, Function.identity());
+   private final Supplier<Set<in<daf>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   private daj(Either<daf.c<il<czw>>, il<dak>> $$0) {
-      this.f = $$0;
+   protected daj() {
    }
 
-   public static daj a(daf.c<il<czw>> $$0) {
-      return new daj(Either.left($$0));
+   protected abstract Codec<? extends daj> a();
+
+   protected abstract Stream<in<daf>> b();
+
+   public Set<in<daf>> c() {
+      return this.b.get();
    }
 
-   public static daj a(il<dak> $$0) {
-      return new daj(Either.right($$0));
+   public Set<in<daf>> a(int $$0, int $$1, int $$2, int $$3, dao.f $$4) {
+      int $$5 = iy.a($$0 - $$3);
+      int $$6 = iy.a($$1 - $$3);
+      int $$7 = iy.a($$2 - $$3);
+      int $$8 = iy.a($$0 + $$3);
+      int $$9 = iy.a($$1 + $$3);
+      int $$10 = iy.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<in<daf>> $$14 = Sets.newHashSet();
+
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
+         }
+      }
+
+      return $$14;
    }
 
-   private daf.c<il<czw>> d() {
-      return (daf.c<il<czw>>)this.f.map($$0 -> $$0, $$0 -> ((dak)$$0.a()).a());
+   @Nullable
+   public Pair<id, in<daf>> a(int $$0, int $$1, int $$2, int $$3, Predicate<in<daf>> $$4, axt $$5, dao.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
+
+   @Nullable
+   public Pair<id, in<daf>> a(id $$0, int $$1, int $$2, int $$3, Predicate<in<daf>> $$4, dao.f $$5, czj $$6) {
+      Set<in<daf>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = axm.a($$0.v(), $$6.I_() + 1, $$6.al(), $$3).toArray();
+
+         for (id.a $$10 : id.a(id.c, $$8, ij.f, ij.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = iy.a($$11);
+            int $$14 = iy.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = iy.a($$15);
+               in<daf> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new id($$11, $$15, $$12), $$17);
+               }
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Nullable
+   public Pair<id, in<daf>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<in<daf>> $$5, axt $$6, boolean $$7, dao.f $$8) {
+      int $$9 = iy.a($$0);
+      int $$10 = iy.a($$2);
+      int $$11 = iy.a($$3);
+      int $$12 = iy.a($$1);
+      Pair<id, in<daf>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               in<daf> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     id $$24 = new id(iy.c($$21), $$1, iy.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
+      }
+
+      return $$13;
    }
 
    @Override
-   protected Stream<il<czw>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
-   }
+   public abstract in<daf> getNoiseBiome(int var1, int var2, int var3, dao.f var4);
 
-   @Override
-   protected Codec<? extends daa> a() {
-      return c;
-   }
-
-   public boolean a(ajs<dak> $$0) {
-      Optional<il<dak>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
-   }
-
-   @Override
-   public il<czw> getNoiseBiome(int $$0, int $$1, int $$2, daf.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @ayn
-   public il<czw> a(daf.h $$0) {
-      return this.d().a($$0);
-   }
-
-   @Override
-   public void a(List<String> $$0, ib $$1, daf.f $$2) {
-      int $$3 = iw.a($$1.u());
-      int $$4 = iw.a($$1.v());
-      int $$5 = iw.a($$1.w());
-      daf.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = daf.a($$6.d());
-      float $$8 = daf.a($$6.e());
-      float $$9 = daf.a($$6.b());
-      float $$10 = daf.a($$6.c());
-      float $$11 = daf.a($$6.g());
-      double $$12 = (double)duy.a($$11);
-      dam $$13 = new dam();
-      $$0.add(
-         "Biome builder PV: "
-            + dam.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public void a(List<String> $$0, id $$1, dao.f $$2) {
    }
 }

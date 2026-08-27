@@ -1,75 +1,56 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dfu extends dby {
-   public static final MapCodec<dfu> a = b(dfu::new);
-   public static final dpq b = dhl.b;
-   public static final dpq c = dhl.c;
-   public static final dpq d = dhl.d;
-   public static final dpq e = dhl.e;
-   public static final dpq f = dhl.f;
-   public static final dpq g = dhl.g;
-   private static final Map<ih, dpq> h = dhl.h;
+public abstract class dfu extends dch {
+   protected final ij a;
+   protected final boolean b;
+   protected final etc d;
 
-   @Override
-   public MapCodec<dfu> a() {
-      return a;
-   }
-
-   public dfu(doy.d $$0) {
+   protected dfu(dph.d $$0, ij $$1, etc $$2, boolean $$3) {
       super($$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(true))
-            .a(c, Boolean.valueOf(true))
-            .a(d, Boolean.valueOf(true))
-            .a(e, Boolean.valueOf(true))
-            .a(f, Boolean.valueOf(true))
-            .a(g, Boolean.valueOf(true))
-      );
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public doz a(cuo $$0) {
-      cyd $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      return this.n()
-         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
-         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
-         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
+   protected abstract MapCodec<? extends dfu> a();
+
+   @Nullable
+   @Override
+   public dpi a(cux $$0) {
+      dpi $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().n();
+   }
+
+   public dpi a(czh $$0) {
+      return this.n();
    }
 
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean a(dpi $$0, czj $$1, id $$2) {
+      id $$3 = $$2.a(this.a.g());
+      dpi $$4 = $$1.a_($$3);
+      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
    }
 
    @Override
-   protected doz a(doz $$0, dik $$1) {
-      return $$0.a(h.get($$1.a(ih.c)), $$0.c(b))
-         .a(h.get($$1.a(ih.d)), $$0.c(d))
-         .a(h.get($$1.a(ih.f)), $$0.c(c))
-         .a(h.get($$1.a(ih.e)), $$0.c(e))
-         .a(h.get($$1.a(ih.b)), $$0.c(f))
-         .a(h.get($$1.a(ih.a)), $$0.c(g));
+   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   protected boolean m(dpi $$0) {
+      return true;
    }
 
    @Override
-   protected doz a(doz $$0, dgu $$1) {
-      return $$0.a(h.get($$1.b(ih.c)), $$0.c(b))
-         .a(h.get($$1.b(ih.d)), $$0.c(d))
-         .a(h.get($$1.b(ih.f)), $$0.c(c))
-         .a(h.get($$1.b(ih.e)), $$0.c(e))
-         .a(h.get($$1.b(ih.b)), $$0.c(f))
-         .a(h.get($$1.b(ih.a)), $$0.c(g));
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return this.d;
    }
 
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(f, g, b, c, d, e);
-   }
+   protected abstract dfw c();
+
+   protected abstract dch b();
 }

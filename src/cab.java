@@ -1,40 +1,38 @@
-public class cab extends bzz {
-   private boolean p;
-
-   public cab(bqq $$0, cyx $$1) {
+public class cab extends cae {
+   public cab(bqv $$0, czg $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eli a(int $$0) {
-      this.p = this.a.ai() == bqb.y;
-      this.o = new elm(this.p);
-      return new eli(this.o, $$0);
+   protected elr a(int $$0) {
+      this.o = new elk(false);
+      this.o.a(true);
+      return new elr(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.p || this.a.bg();
+      return true;
    }
 
    @Override
-   protected esa b() {
-      return new esa(this.a.dr(), this.a.e(0.5), this.a.dx());
+   protected esj b() {
+      return new esj(this.a.dr(), this.a.e(0.5), this.a.dx());
    }
 
    @Override
-   protected double a(esa $$0) {
+   protected double a(esj $$0) {
       return $$0.d;
    }
 
    @Override
-   protected boolean a(esa $$0, esa $$1) {
-      return a(this.a, $$0, $$1, false);
+   protected boolean a(esj $$0, esj $$1) {
+      return this.a.bg() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override
-   public boolean a(ib $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
+   public boolean a(id $$0) {
+      return !this.b.a_($$0.d()).i();
    }
 
    @Override

@@ -1,47 +1,29 @@
-import javax.annotation.Nullable;
+public class gow extends goo {
+   private final bqa n;
 
-public interface gow {
-   ajt a();
-
-   @Nullable
-   gqb a(gqa var1);
-
-   got b();
-
-   aun c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gow.a k();
-
-   default boolean r() {
-      return false;
+   public gow(aun $$0, aup $$1, float $$2, float $$3, bqa $$4, long $$5) {
+      super($$0, $$1, axt.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dr());
+      this.g = (double)((float)this.n.dt());
+      this.h = (double)((float)this.n.dx());
    }
 
-   default boolean s() {
-      return true;
+   @Override
+   public boolean s() {
+      return !this.n.aU();
    }
 
-   static axr t() {
-      return axr.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   public void q() {
+      if (this.n.dH()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dr());
+         this.g = (double)((float)this.n.dt());
+         this.h = (double)((float)this.n.dx());
+      }
    }
 }

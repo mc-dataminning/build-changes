@@ -8,38 +8,46 @@ public class dg extends cx<dg.a> {
       return dg.a.a;
    }
 
-   public void a(apt $$0, cjb $$1, crj $$2) {
-      enb $$3 = br.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$3, $$2));
+   public void a(apv $$0, bqa $$1, esj $$2, int $$3) {
+      enk $$4 = br.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
-   public static record a(Optional<bc> b, Optional<bc> c, Optional<cc> d) implements cx.a {
+   public static record a(Optional<bc> b, cm.d c, Optional<bc> d) implements cx.a {
       public static final Codec<dg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(dg.a::a), aws.a(br.b, "villager").forGetter(dg.a::c), aws.a(cc.a, "item").forGetter(dg.a::d))
+         $$0 -> $$0.group(
+                  awu.a(br.b, "player").forGetter(dg.a::a),
+                  awu.a(cm.d.d, "signal_strength", cm.d.c).forGetter(dg.a::b),
+                  awu.a(br.b, "projectile").forGetter(dg.a::c)
+               )
                .apply($$0, dg.a::new)
       );
 
-      public static an<dg.a> b() {
-         return am.t.a(new dg.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      public static an<dg.a> a(cm.d $$0, Optional<bc> $$1) {
+         return am.M.a(new dg.a(Optional.empty(), $$0, $$1));
       }
 
-      public static an<dg.a> a(br.a $$0) {
-         return am.t.a(new dg.a(Optional.of(br.a($$0)), Optional.empty(), Optional.empty()));
-      }
-
-      public boolean a(enb $$0, crj $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
+      public boolean a(enk $$0, esj $$1, int $$2) {
+         return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
       @Override
       public void a(bd $$0) {
          cx.a.super.a($$0);
-         $$0.a(this.c, ".villager");
+         $$0.a(this.d, ".projectile");
       }
 
       @Override
       public Optional<bc> a() {
          return this.b;
+      }
+
+      public cm.d b() {
+         return this.c;
+      }
+
+      public Optional<bc> c() {
+         return this.d;
       }
    }
 }

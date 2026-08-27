@@ -1,23 +1,18 @@
-import java.util.List;
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record add(List<UUID> b) implements yn<aay> {
-   public static final ye<vg, add> a = yn.a(add::a, add::new);
+public class add implements yp<aba> {
+   public static final add a = new add();
+   public static final yg<ByteBuf, add> b = yg.a(a);
 
-   private add(vg $$0) {
-      this($$0.a(jf.g));
-   }
-
-   private void a(vg $$0) {
-      $$0.a(this.b, jf.g);
+   private add() {
    }
 
    @Override
-   public yp<add> a() {
-      return afj.ae;
+   public yr<add> a() {
+      return afl.ac;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 }

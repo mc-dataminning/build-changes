@@ -1,70 +1,68 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public record dtz(il<dts> b, float c, esa d, @Nullable UUID e, @Nullable UUID f, @Nullable bpv g) {
+public class dtz implements duf {
    public static final Codec<dtz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kr.a.r().fieldOf("game_event").forGetter(dtz::a),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dtz::b),
-               esa.a.fieldOf("pos").forGetter(dtz::c),
-               jf.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
-               jf.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dtz($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+      $$0 -> $$0.group(jh.a.fieldOf("source_entity").forGetter(dtz::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new dtz(Either.right(Either.left($$0x)), $$1))
    );
+   public static final yg<vt, dtz> b = yg.a(ye.f, dtz::c, ye.h, $$0 -> $$0.f, ($$0, $$1) -> new dtz(Either.right(Either.right($$0)), $$1));
+   private Either<bqa, Either<UUID, Integer>> e;
+   private final float f;
 
-   public dtz(il<dts> $$0, float $$1, esa $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
-      this($$0, $$1, $$2, $$3, $$4, null);
+   public dtz(bqa $$0, float $$1) {
+      this(Either.left($$0), $$1);
    }
 
-   public dtz(il<dts> $$0, float $$1, esa $$2, @Nullable bpv $$3) {
-      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
+   private dtz(Either<bqa, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Nullable
-   private static UUID a(@Nullable bpv $$0) {
-      if ($$0 instanceof ckl $$1 && $$1.u() != null) {
-         return $$1.u().cw();
+   @Override
+   public Optional<esj> a(czg $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
       }
 
-      return null;
+      return this.e.left().map($$0x -> $$0x.dk().b(0.0, (double)this.f, 0.0));
    }
 
-   public Optional<bpv> a(aps $$0) {
-      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   private void b(czg $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bqa)$$1.map($$1x -> $$0 instanceof apu $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
    }
 
-   public Optional<bpv> b(aps $$0) {
-      return this.a($$0).filter($$0x -> $$0x instanceof ckl).map($$0x -> (ckl)$$0x).map(ckl::u).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   private UUID b() {
+      return (UUID)this.e.map(bqa::cw, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
    }
 
-   public il<dts> a() {
-      return this.b;
+   private int c() {
+      return (Integer)this.e.map(bqa::aj, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   public dug<dtz> a() {
+      return dug.b;
    }
 
-   public esa c() {
-      return this.d;
-   }
+   public static class a implements dug<dtz> {
+      @Override
+      public Codec<dtz> a() {
+         return dtz.a;
+      }
 
-   @Nullable
-   public UUID d() {
-      return this.e;
-   }
-
-   @Nullable
-   public UUID e() {
-      return this.f;
-   }
-
-   @Nullable
-   public bpv f() {
-      return this.g;
+      @Override
+      public yg<vt, dtz> b() {
+         return dtz.b;
+      }
    }
 }

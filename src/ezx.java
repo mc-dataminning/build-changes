@@ -1,167 +1,167 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ezx {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final ayi d;
+public class ezx extends gru {
+   private static final Logger b = LogUtils.getLogger();
+   public static final wi a = wi.c("mco.upload.select.world.title");
+   private static final wi c = wi.c("selectWorld.unable_to_load");
+   static final wi y = wi.c("selectWorld.world");
+   private static final wi z = wi.c("mco.upload.hardcore").b(-65536);
+   private static final wi A = wi.c("selectWorld.commands");
+   private static final DateFormat B = new SimpleDateFormat();
+   @Nullable
+   private final fba C;
+   private final ezw D;
+   private final long E;
+   private final int F;
+   fdy G;
+   List<enb> H = Lists.newArrayList();
+   int I = -1;
+   ezx.b J;
 
-   public ezx(Executor $$0, TimeUnit $$1, ayi $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ezx(@Nullable fba $$0, long $$1, int $$2, ezw $$3) {
+      super(a);
+      this.C = $$0;
+      this.D = $$3;
+      this.E = $$1;
+      this.F = $$2;
    }
 
-   public <T> ezx.e<T> a(String $$0, Callable<T> $$1, Duration $$2, ezy $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   private void C() {
+      ena.a $$0 = this.j.m().b();
+      this.H = this.j.m().a($$0).join().stream().filter(enb::v).collect(Collectors.toList());
+
+      for (enb $$1 : this.H) {
+         this.J.a($$1);
+      }
+   }
+
+   @Override
+   public void aM_() {
+      this.J = this.c(new ezx.b());
+
+      try {
+         this.C();
+      } catch (Exception var2) {
+         b.error("Couldn't load level list", var2);
+         this.j.a(new ezl(c, wi.a(var2.getMessage()), this.D));
+         return;
+      }
+
+      this.G = this.c(fdy.a(wi.c("mco.upload.button.name"), $$0 -> this.D()).a(this.k / 2 - 154, this.l - 32, 153, 20).a());
+      this.G.j = this.I >= 0 && this.I < this.H.size();
+      this.c(fdy.a(wh.k, $$0 -> this.j.a(this.D)).a(this.k / 2 + 6, this.l - 32, 153, 20).a());
+      this.a(new grs(wi.c("mco.upload.select.world.subtitle"), this.k / 2, g(-1), -6250336));
+      if (this.H.isEmpty()) {
+         this.a(new grs(wi.c("mco.upload.select.world.none"), this.k / 2, this.l / 2 - 20, -1));
+      }
+   }
+
+   @Override
+   public wi i() {
+      return wh.a(this.n(), this.m());
+   }
+
+   private void D() {
+      if (this.I != -1 && !this.H.get(this.I).i()) {
+         enb $$0 = this.H.get(this.I);
+         this.j.a(new fad(this.C, this.E, this.F, this.D, $$0));
+      }
+   }
+
+   @Override
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.i, this.k / 2, 13, -1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.j.a(this.D);
+         return true;
       } else {
-         return new ezx.e<>($$0, $$1, $$4, $$3);
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public ezx.c a() {
-      return new ezx.c();
+   static wi a(enb $$0) {
+      return $$0.h().d();
    }
 
-   static record a<T>(Either<T, Exception> a, long b) {
+   static String b(enb $$0) {
+      return B.format(new Date($$0.f()));
    }
 
-   class b<T> {
-      private final ezx.e<T> b;
-      private final Consumer<T> c;
-      private long d = -1L;
+   class a extends feu.a<ezx.a> {
+      private final enb b;
+      private final String c;
+      private final wi d;
+      private final wi e;
 
-      b(ezx.e<T> $$0, Consumer<T> $$1) {
+      public a(enb $$0) {
          this.b = $$0;
-         this.c = $$1;
+         this.c = $$0.b();
+         this.d = wi.a("mco.upload.entry.id", $$0.a(), ezx.b($$0));
+         this.e = $$0.s();
       }
 
-      void a(long $$0) {
-         this.b.a($$0);
-         this.a();
+      @Override
+      public void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$1, $$3, $$2);
       }
 
-      void a() {
-         ezx.d<T> $$0 = this.b.g;
-         if ($$0 != null && this.d < $$0.b) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         ezx.this.J.b(ezx.this.H.indexOf(this.b));
+         return super.a($$0, $$1, $$2);
+      }
+
+      protected void a(fdl $$0, int $$1, int $$2, int $$3) {
+         String $$4;
+         if (this.c.isEmpty()) {
+            $$4 = ezx.y + " " + ($$1 + 1);
+         } else {
+            $$4 = this.c;
          }
+
+         $$0.a(ezx.this.m, $$4, $$2 + 2, $$3 + 1, 16777215, false);
+         $$0.a(ezx.this.m, this.d, $$2 + 2, $$3 + 12, -8355712, false);
+         $$0.a(ezx.this.m, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
       }
 
-      void b() {
-         ezx.d<T> $$0 = this.b.g;
-         if ($$0 != null) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void c() {
-         this.b.a();
-         this.d = -1L;
+      @Override
+      public wi a() {
+         wi $$0 = wh.b(wi.b(this.b.b()), wi.b(ezx.b(this.b)), ezx.a(this.b));
+         return wi.a("narrator.select", $$0);
       }
    }
 
-   public class c {
-      private final List<ezx.b<?>> b = new ArrayList<>();
-
-      public <T> void a(ezx.e<T> $$0, Consumer<T> $$1) {
-         ezx.b<T> $$2 = ezx.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
+   class b extends grt<ezx.a> {
+      public b() {
+         super(ezx.this.k, ezx.this.l - 40 - ezx.g(0), ezx.g(0), 36);
       }
 
-      public void a() {
-         for (ezx.b<?> $$0 : this.b) {
-            $$0.b();
-         }
+      public void a(enb $$0) {
+         this.a((ezx.a)(ezx.this.new a($$0)));
       }
 
-      public void b() {
-         for (ezx.b<?> $$0 : this.b) {
-            $$0.a(ezx.this.d.get(ezx.this.c));
-         }
+      @Override
+      public int a() {
+         return ezx.this.H.size() * 36;
       }
 
-      public void c() {
-         for (ezx.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final ezy e;
-      @Nullable
-      private CompletableFuture<ezx.a<T>> f;
-      @Nullable
-      ezx.d<T> g;
-      private long h = -1L;
-
-      e(String $$1, Callable<T> $$2, long $$3, ezy $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            ezx.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
-            }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new ezx.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               ezx.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
-
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = ezx.this.d.get(ezx.this.c);
-                  return new ezx.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = ezx.this.d.get(ezx.this.c);
-                  return new ezx.a<>(Either.right(var4x), $$3);
-               }
-            }, ezx.this.b);
-         }
-      }
-
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
+      public void a(@Nullable ezx.a $$0) {
+         super.a($$0);
+         ezx.this.I = this.aE_().indexOf($$0);
+         ezx.this.G.j = ezx.this.I >= 0 && ezx.this.I < this.l() && !ezx.this.H.get(ezx.this.I).i();
       }
    }
 }

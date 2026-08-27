@@ -1,3 +1,8 @@
-public interface eus {
-   void execute();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@euk
+@euj
+interface eus {
 }

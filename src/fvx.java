@@ -1,35 +1,17 @@
-import java.net.InetSocketAddress;
+import java.util.Locale;
 
-public interface fvx {
-   String a();
+public enum fvx {
+   a("chat"),
+   b("skin"),
+   c("username");
 
-   String b();
+   private final String d;
 
-   int c();
+   private fvx(String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
+   }
 
-   InetSocketAddress d();
-
-   static fvx a(final InetSocketAddress $$0) {
-      return new fvx() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+   public String a() {
+      return this.d;
    }
 }

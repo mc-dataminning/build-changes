@@ -1,42 +1,29 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-public class cav extends cax<cjg> {
-   private static final int a = 40;
-
-   public cav() {
-      super(40);
+public class cav<T extends bqt> extends cbc<T> {
+   @Override
+   protected void a(apu $$0, T $$1) {
+      ese $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<bqt> $$3 = $$0.a(bqt.class, $$2, $$1x -> $$1x != $$1 && $$1x.bA());
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      bru<?> $$4 = $$1.dP();
+      $$4.a(bzw.g, $$3);
+      $$4.a(bzw.h, new bzy($$1, $$3));
    }
 
-   protected void a(aps $$0, cjg $$1) {
-      ajs<cyx> $$2 = $$0.ae();
-      ib $$3 = $$1.dm();
-      List<ik> $$4 = Lists.newArrayList();
-      int $$5 = 4;
+   protected int b() {
+      return 16;
+   }
 
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ib $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gy().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(ik.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      brp<?> $$10 = $$1.dP();
-      if (!$$4.isEmpty()) {
-         $$10.a(bzr.f, $$4);
-      } else {
-         $$10.b(bzr.f);
-      }
+   protected int c() {
+      return 16;
    }
 
    @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.of(bzr.f);
+   public Set<bzw<?>> a() {
+      return ImmutableSet.of(bzw.g, bzw.h);
    }
 }

@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
-public enum box implements aye {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public enum box implements ayg {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
 
-   public static final Codec<box> d = aye.a(box::values);
+   public static final Codec<box> d = ayg.a(box::values);
    private final String e;
 
    private box(String $$0) {

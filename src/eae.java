@@ -1,62 +1,41 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 
-public class eae implements dzz {
+public class eae implements eai {
    public static final Codec<eae> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               kr.e.q().fieldOf("block").flatXmap(eae::a, DataResult::success).orElse((dgx)dca.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               ja.a(ks.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
+               dpi.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dpi.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bnk.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bnk.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, eae::new)
    );
-   public final dgx b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final ip<dby> h;
-   private final ObjectArrayList<ih> i;
+   private final dpi b;
+   private final dpi c;
+   private final bnk d;
+   private final bnk e;
 
-   private static DataResult<dgx> a(dby $$0) {
-      return $$0 instanceof dgx $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
-   }
-
-   public eae(dgx $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, ip<dby> $$6) {
+   public eae(dpi $$0, dpi $$1, bnk $$2, bnk $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(ih.b);
-      }
-
-      if ($$2) {
-         this.i.add(ih.a);
-      }
-
-      if ($$4) {
-         ih.c.a.forEach(this.i::add);
-      }
    }
 
-   public List<ih> a(axr $$0, ih $$1) {
-      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   public dpi a() {
+      return this.b;
    }
 
-   public List<ih> a(axr $$0) {
-      return ac.a(this.i, $$0);
+   public dpi b() {
+      return this.c;
+   }
+
+   public bnk c() {
+      return this.d;
+   }
+
+   public bnk d() {
+      return this.e;
    }
 }

@@ -1,53 +1,30 @@
-public class fxe extends fyn {
-   fxe(fuh $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class fxe extends fyi {
+   fxe(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fyr $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.c(15916745);
+      this.b($$7);
    }
 
    @Override
-   public fxr b() {
-      return fxr.b;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * axk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements fxz<kq> {
+      private final fyr a;
 
-   public static class a implements fxq<ko> {
-      private final fyi a;
-
-      public a(fyi $$0) {
+      public a(fyr $$0) {
          this.a = $$0;
       }
 
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fxe $$8 = new fxe($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements fxq<ko> {
-      private final fyi a;
-
-      public b(fyi $$0) {
-         this.a = $$0;
-      }
-
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fxe $$8 = new fxe($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fxe($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

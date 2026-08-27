@@ -1,23 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class ecs<P extends ecr> {
-   public static final ecs<ect> a = a("trunk_vine", ect.a);
-   public static final ecs<ecq> b = a("leave_vine", ecq.a);
-   public static final ecs<ecp> c = a("cocoa", ecp.a);
-   public static final ecs<eco> d = a("beehive", eco.a);
-   public static final ecs<ecm> e = a("alter_ground", ecm.a);
-   public static final ecs<ecn> f = a("attached_to_leaves", ecn.a);
-   private final Codec<P> g;
+public class ecs extends ecj {
+   public static final Codec<ecs> b = dpi.b.fieldOf("state").xmap(ecs::new, $$0 -> $$0.c).codec();
+   private final dpi c;
 
-   private static <P extends ecr> ecs<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(kr.Z, $$0, new ecs<>($$1));
+   protected ecs(dpi $$0) {
+      this.c = $$0;
    }
 
-   private ecs(Codec<P> $$0) {
-      this.g = $$0;
+   @Override
+   protected eck<?> a() {
+      return eck.a;
    }
 
-   public Codec<P> a() {
-      return this.g;
+   @Override
+   public dpi a(axt $$0, id $$1) {
+      return this.c;
    }
 }

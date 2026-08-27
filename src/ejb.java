@@ -1,9 +1,14 @@
 import com.mojang.serialization.Codec;
 
-public abstract class ejb {
-   public static final Codec<ejb> c = kr.o.q().dispatch("predicate_type", ejb::a, ejc::codec);
+public class ejb extends ejn {
+   public static final Codec<ejb> a = Codec.unit(() -> ejb.b);
+   public static final ejb b = new ejb();
 
-   public abstract boolean a(doz var1, axr var2);
+   private ejb() {
+   }
 
-   protected abstract ejc<?> a();
+   @Override
+   protected ejp<?> a() {
+      return ejp.j;
+   }
 }

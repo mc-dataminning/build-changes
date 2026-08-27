@@ -1,57 +1,82 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public enum dgu implements aye {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dgu extends dch implements djh {
+   public static final MapCodec<dgu> a = b(dgu::new);
+   public static final int b = 15;
+   public static final dqi c = dpy.aP;
+   public static final dpz d = dpy.C;
+   public static final ToIntFunction<dpi> e = $$0 -> $$0.c(c);
 
-   public static final Codec<dgu> d = aye.a(dgu::values);
-   private final String e;
-   private final wg f;
-   private final h g;
-
-   private dgu(String $$0, h $$1) {
-      this.e = $$0;
-      this.f = wg.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<dgu> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dik a(ih $$0) {
-      ih.a $$1 = $$0.o();
-      return (this != b || $$1 != ih.a.c) && (this != c || $$1 != ih.a.a) ? dik.a : dik.c;
-   }
-
-   public ih b(ih $$0) {
-      if (this == c && $$0.o() == ih.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == ih.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public wg b() {
-      return this.f;
+   public dgu(dph.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
+      if (!$$1.B && $$3.gw()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bof.a;
+      } else {
+         return bof.b;
+      }
+   }
+
+   @Override
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return $$3.a(crv.hB) ? esz.b() : esz.a();
+   }
+
+   @Override
+   protected boolean a_(dpi $$0, cym $$1, id $$2) {
+      return true;
+   }
+
+   @Override
+   protected dim b_(dpi $$0) {
+      return dim.a;
+   }
+
+   @Override
+   protected float d(dpi $$0, cym $$1, id $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, elc.c, elc.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected elb c_(dpi $$0) {
+      return $$0.c(d) ? elc.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public crs a(czj $$0, id $$1, dpi $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(c));
+   }
+
+   public static crs a(crs $$0, int $$1) {
+      if ($$1 != 15) {
+         $$0.b(jr.R, ctz.a.a(c, $$1));
+      }
+
+      return $$0;
    }
 }

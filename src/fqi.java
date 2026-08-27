@@ -1,51 +1,30 @@
-public class fqi<T extends chs> extends fte<T> {
-   public fqi(ftm $$0) {
+import com.google.common.collect.ImmutableList.Builder;
+
+public class fqi extends fsh {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
+
+   public fqi(ftv $$0) {
       super($$0);
    }
 
-   public static fts a(ftq $$0) {
-      ftu $$1 = fqz.a($$0, 0.0F);
-      ftv $$2 = $$1.a();
-      $$2.a("left_arm", ftr.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fto.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", ftr.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fto.a(1.9F, 12.0F, 0.0F));
-      return fts.a($$1, 64, 64);
+   @Override
+   protected Builder<ftv> a(ftv $$0) {
+      Builder<ftv> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fqz.a.a;
-      this.r = fqz.a.a;
-      crj $$4 = $$0.b(bnz.a);
-      if ($$4.a(crm.vN) && $$0.gf()) {
-         if ($$0.fr() == bqi.b) {
-            this.s = fqz.a.e;
-         } else {
-            this.r = fqz.a.e;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.r == fqz.a.e) {
-         this.o.e = this.o.e * 0.5F - (float) Math.PI;
-         this.o.f = 0.0F;
-      }
-
-      if (this.s == fqz.a.e) {
-         this.n.e = this.n.e * 0.5F - (float) Math.PI;
-         this.n.f = 0.0F;
-      }
-
-      if (this.u > 0.0F) {
-         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * axk.a(0.1F * $$3);
-         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * axk.a(0.1F * $$3);
-         this.n.g = this.a(this.u, this.n.g, -0.15F);
-         this.o.g = this.a(this.u, this.o.g, 0.15F);
-         this.q.e = this.q.e - this.u * 0.55F * axk.a(0.1F * $$3);
-         this.p.e = this.p.e + this.u * 0.55F * axk.a(0.1F * $$3);
-         this.k.e = 0.0F;
-      }
+   public static fub a() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      fsh.a($$1);
+      $$1.a("chest_bottom", fua.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), ftx.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fua.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), ftx.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fua.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), ftx.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fub.a($$0, 128, 128);
    }
 }

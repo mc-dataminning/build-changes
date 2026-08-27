@@ -1,96 +1,114 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dga extends dbk {
+public class dga extends dfx {
    public static final MapCodec<dga> a = b(dga::new);
-   public static final dpq b = dpp.n;
+   private static final double c = 0.13;
+   private static final double e = 0.08;
+   private static final double f = 0.05;
+   private static final int g = 20;
+   protected static final etc b = dch.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
    @Override
    public MapCodec<dga> a() {
       return a;
    }
 
-   protected dga(doy.d $$0) {
+   public dga(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   }
+
+   private static boolean c(bqa $$0) {
+      return $$0 instanceof bqt || $$0 instanceof clv || $$0 instanceof cgl || $$0 instanceof clx;
    }
 
    @Override
-   public void a(cyx $$0, ib $$1, doz $$2, @Nullable bqo $$3, crj $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      ctt $$5 = $$4.a(jp.F, ctt.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return b;
+   }
+
+   @Override
+   public void a(czg $$0, dpi $$1, id $$2, bqa $$3, float $$4) {
+      $$3.a(auo.ml, 1.0F, 1.0F);
+      if (!$$0.B) {
+         $$0.a($$3, (byte)54);
+      }
+
+      if ($$3.a($$4, 0.2F, $$0.ai().k())) {
+         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
       }
    }
 
    @Override
-   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dng $$5) {
-         $$5.l();
-         return boa.a($$1.B);
+   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private boolean a(id $$0, bqa $$1) {
+      if ($$1.aC()) {
+         return false;
+      } else if ($$1.dt() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if ($$1.dp().d >= -0.08) {
+         return false;
       } else {
-         return boa.d;
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dr());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dx());
+         double $$4 = 0.4375 + (double)($$1.dg() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
       }
    }
 
-   @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dng $$5) {
-            $$5.l();
+   private void a(bqa $$0, id $$1) {
+      if ($$0 instanceof apv && $$0.dM().Y() % 20L == 0L) {
+         am.K.a((apv)$$0, $$0.dM().a_($$1));
+      }
+   }
+
+   private void d(bqa $$0) {
+      esj $$1 = $$0.dp();
+      if ($$1.d < -0.13) {
+         double $$2 = -0.05 / $$1.d;
+         $$0.g(new esj($$1.c * $$2, -0.05, $$1.e * $$2));
+      } else {
+         $$0.g(new esj($$1.c, -0.05, $$1.e));
+      }
+
+      $$0.n();
+   }
+
+   private void a(czg $$0, bqa $$1) {
+      if (c($$1)) {
+         if ($$0.z.a(5) == 0) {
+            $$1.a(auo.ml, 1.0F, 1.0F);
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+         if (!$$0.B && $$0.z.a(5) == 0) {
+            $$0.a($$1, (byte)53);
+         }
       }
    }
 
-   @Override
-   public dmf a(ib $$0, doz $$1) {
-      return new dng($$0, $$1);
+   public static void a(bqa $$0) {
+      a($$0, 5);
    }
 
-   @Override
-   public boolean f_(doz $$0) {
-      return true;
+   public static void b(bqa $$0) {
+      a($$0, 10);
    }
 
-   @Override
-   public int a(doz $$0, cyd $$1, ib $$2, ih $$3) {
-      if ($$1.c_($$2) instanceof dng $$4 && $$4.j()) {
-         return 15;
+   private static void a(bqa $$0, int $$1) {
+      if ($$0.dM().B) {
+         dpi $$2 = dcj.pg.n();
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dM().a(new kf(kn.c, $$2), $$0.dr(), $$0.dt(), $$0.dx(), 0.0, 0.0, 0.0);
+         }
       }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean d_(doz $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(doz $$0, cyx $$1, ib $$2) {
-      if ($$1.c_($$2) instanceof dng $$3 && $$3.f().f() instanceof csb $$4) {
-         return $$4.h();
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected did b_(doz $$0) {
-      return did.c;
-   }
-
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
-      return $$1.c(b) ? a($$2, dmh.e, dng::a) : null;
    }
 }

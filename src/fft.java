@@ -1,156 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.datafixers.util.Pair;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-public class fft extends ffj implements fes, fhj {
-   private static final int a = -1;
-   private static final int b = 400;
-   private static final int c = 24;
-   private static final int d = 14;
-   private static final wg e = wg.c("narration.tab_navigation.usage");
-   private final fhg f = fhg.e();
-   private int g;
-   private final ffs h;
-   private final ImmutableList<ffr> i;
-   private final ImmutableList<fey> j;
+public interface fft extends ffu {
+   List<? extends ffu> aE_();
 
-   fft(int $$0, ffs $$1, Iterable<ffr> $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = ImmutableList.copyOf($$2);
-      this.f.c().b();
-      Builder<fey> $$3 = ImmutableList.builder();
-
-      for (ffr $$4 : $$2) {
-         $$3.add(this.f.a(new fey($$1, $$4, 0, 24)));
-      }
-
-      this.j = $$3.build();
-   }
-
-   public static fft.a a(ffs $$0, int $$1) {
-      return new fft.a($$0, $$1);
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (this.aI_() != null) {
-         this.aI_().a($$0);
-      }
-   }
-
-   @Override
-   public void a(@Nullable ffl $$0) {
-      super.a($$0);
-      if ($$0 instanceof fey $$1) {
-         this.h.a($$1.a(), true);
-      }
-   }
-
-   @Nullable
-   @Override
-   public fcz a(fhr $$0) {
-      if (!this.aJ_()) {
-         fey $$1 = this.d();
-         if ($$1 != null) {
-            return fcz.a(this, fcz.a($$1));
+   default Optional<ffu> b_(double $$0, double $$1) {
+      for (ffu $$2 : this.aE_()) {
+         if ($$2.c($$0, $$1)) {
+            return Optional.of($$2);
          }
       }
 
-      return $$0 instanceof fhr.c ? null : super.a($$0);
+      return Optional.empty();
    }
 
    @Override
-   public List<? extends ffl> aF_() {
-      return this.j;
-   }
+   default boolean a(double $$0, double $$1, int $$2) {
+      for (ffu $$3 : this.aE_()) {
+         if ($$3.a($$0, $$1, $$2)) {
+            this.a($$3);
+            if ($$2 == 0) {
+               this.b(true);
+            }
 
-   @Override
-   public fhj.a t() {
-      return this.j.stream().map(fdn::t).max(Comparator.naturalOrder()).orElse(fhj.a.a);
-   }
-
-   @Override
-   public void b(fhl $$0) {
-      Optional<fey> $$1 = this.j.stream().filter(fdn::z).findFirst().or(() -> Optional.ofNullable(this.d()));
-      $$1.ifPresent($$1x -> {
-         this.a($$0.a(), $$1x);
-         $$1x.b($$0);
-      });
-      if (this.aJ_()) {
-         $$0.a(fhk.d, e);
-      }
-   }
-
-   protected void a(fhl $$0, fey $$1) {
-      if (this.i.size() > 1) {
-         int $$2 = this.j.indexOf($$1);
-         if ($$2 != -1) {
-            $$0.a(fhk.b, wg.a("narrator.position.tab", $$2 + 1, this.i.size()));
-         }
-      }
-   }
-
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      RenderSystem.enableBlend();
-      $$0.a(fod.a, 0, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, ((fey)this.j.get(0)).C(), 2, 32, 2);
-      int $$4 = ((fey)this.j.get(this.j.size() - 1)).E();
-      $$0.a(fod.a, $$4, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
-      RenderSystem.disableBlend();
-      UnmodifiableIterator var6 = this.j.iterator();
-
-      while (var6.hasNext()) {
-         fey $$5 = (fey)var6.next();
-         $$5.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public fhv G() {
-      return this.f.G();
-   }
-
-   public void b() {
-      int $$0 = Math.min(400, this.g) - 28;
-      int $$1 = axk.d($$0 / this.i.size(), 2);
-      UnmodifiableIterator var3 = this.j.iterator();
-
-      while (var3.hasNext()) {
-         fey $$2 = (fey)var3.next();
-         $$2.k($$1);
-      }
-
-      this.f.a();
-      this.f.m(axk.d((this.g - $$0) / 2, 2));
-      this.f.n(0);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.aJ_()) {
-         this.a((ffl)this.j.get($$0));
-      } else {
-         this.h.a((ffr)this.i.get($$0), $$1);
-      }
-   }
-
-   public boolean b(int $$0) {
-      if (fjo.r()) {
-         int $$1 = this.c($$0);
-         if ($$1 != -1) {
-            this.a(axk.a($$1, 0, this.i.size() - 1), true);
             return true;
          }
       }
@@ -158,51 +39,187 @@ public class fft extends ffj implements fes, fhj {
       return false;
    }
 
-   private int c(int $$0) {
-      if ($$0 >= 49 && $$0 <= 57) {
-         return $$0 - 49;
-      } else {
-         if ($$0 == 258) {
-            int $$1 = this.c();
-            if ($$1 != -1) {
-               int $$2 = fjo.s() ? $$1 - 1 : $$1 + 1;
-               return Math.floorMod($$2, this.i.size());
-            }
-         }
-
-         return -1;
-      }
+   @Override
+   default boolean b(double $$0, double $$1, int $$2) {
+      this.b(false);
+      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
    }
 
-   private int c() {
-      ffr $$0 = this.h.a();
-      int $$1 = this.i.indexOf($$0);
-      return $$1 != -1 ? $$1 : -1;
+   @Override
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return this.aH_() != null && this.aG_() && $$2 == 0 ? this.aH_().a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   boolean aG_();
+
+   void b(boolean var1);
+
+   @Override
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
+   }
+
+   @Override
+   default boolean a(int $$0, int $$1, int $$2) {
+      return this.aH_() != null && this.aH_().a($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean c(int $$0, int $$1, int $$2) {
+      return this.aH_() != null && this.aH_().c($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean a(char $$0, int $$1) {
+      return this.aH_() != null && this.aH_().a($$0, $$1);
    }
 
    @Nullable
-   private fey d() {
-      int $$0 = this.c();
-      return $$0 != -1 ? (fey)this.j.get($$0) : null;
+   ffu aH_();
+
+   void a(@Nullable ffu var1);
+
+   @Override
+   default void a(boolean $$0) {
    }
 
-   public static class a {
-      private final int a;
-      private final ffs b;
-      private final List<ffr> c = new ArrayList<>();
+   @Override
+   default boolean aI_() {
+      return this.aH_() != null;
+   }
 
-      a(ffs $$0, int $$1) {
-         this.b = $$0;
-         this.a = $$1;
+   @Nullable
+   @Override
+   default fdi aJ_() {
+      ffu $$0 = this.aH_();
+      return $$0 != null ? fdi.a(this, $$0.aJ_()) : null;
+   }
+
+   @Nullable
+   @Override
+   default fdi a(fia $$0) {
+      ffu $$1 = this.aH_();
+      if ($$1 != null) {
+         fdi $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return fdi.a(this, $$2);
+         }
       }
 
-      public fft.a a(ffr... $$0) {
-         Collections.addAll(this.c, $$0);
-         return this;
+      if ($$0 instanceof fia.c $$3) {
+         return this.a($$3);
+      } else {
+         return $$0 instanceof fia.a $$4 ? this.a($$4) : null;
+      }
+   }
+
+   @Nullable
+   private fdi a(fia.c $$0) {
+      boolean $$1 = $$0.b();
+      ffu $$2 = this.aH_();
+      List<? extends ffu> $$3 = new ArrayList<>(this.aE_());
+      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.H()));
+      int $$4 = $$3.indexOf($$2);
+      int $$5;
+      if ($$2 != null && $$4 >= 0) {
+         $$5 = $$4 + ($$1 ? 1 : 0);
+      } else if ($$1) {
+         $$5 = 0;
+      } else {
+         $$5 = $$3.size();
       }
 
-      public fft a() {
-         return new fft(this.a, this.b, this.c);
+      ListIterator<? extends ffu> $$8 = $$3.listIterator($$5);
+      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
+      Supplier<? extends ffu> $$10 = $$1 ? $$8::next : $$8::previous;
+
+      while ($$9.getAsBoolean()) {
+         ffu $$11 = $$10.get();
+         fdi $$12 = $$11.a($$0);
+         if ($$12 != null) {
+            return fdi.a(this, $$12);
+         }
       }
+
+      return null;
+   }
+
+   @Nullable
+   private fdi a(fia.a $$0) {
+      ffu $$1 = this.aH_();
+      if ($$1 == null) {
+         fic $$2 = $$0.b();
+         fie $$3 = this.G().c($$2.b());
+         return fdi.a(this, this.a($$3, $$2, null, $$0));
+      } else {
+         fie $$4 = $$1.G();
+         return fdi.a(this, this.a($$4, $$0.b(), $$1, $$0));
+      }
+   }
+
+   @Nullable
+   private fdi a(fie $$0, fic $$1, @Nullable ffu $$2, fia $$3) {
+      fib $$4 = $$1.a();
+      fib $$5 = $$4.a();
+      fic $$6 = $$5.b();
+      int $$7 = $$0.b($$1.b());
+      List<ffu> $$8 = new ArrayList<>();
+
+      for (ffu $$9 : this.aE_()) {
+         if ($$9 != $$2) {
+            fie $$10 = $$9.G();
+            if ($$10.a($$0, $$5)) {
+               int $$11 = $$10.b($$1.b());
+               if ($$1.a($$11, $$7)) {
+                  $$8.add($$9);
+               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
+                  $$8.add($$9);
+               }
+            }
+         }
+      }
+
+      Comparator<ffu> $$12 = Comparator.comparing($$1x -> $$1x.G().b($$1.b()), $$1.d());
+      Comparator<ffu> $$13 = Comparator.comparing($$1x -> $$1x.G().b($$6.b()), $$6.d());
+      $$8.sort($$12.thenComparing($$13));
+
+      for (ffu $$14 : $$8) {
+         fdi $$15 = $$14.a($$3);
+         if ($$15 != null) {
+            return $$15;
+         }
+      }
+
+      return this.b($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   private fdi b(fie $$0, fic $$1, @Nullable ffu $$2, fia $$3) {
+      fib $$4 = $$1.a();
+      fib $$5 = $$4.a();
+      List<Pair<ffu, Long>> $$6 = new ArrayList<>();
+      fid $$7 = fid.a($$4, $$0.b($$1), $$0.b($$5));
+
+      for (ffu $$8 : this.aE_()) {
+         if ($$8 != $$2) {
+            fie $$9 = $$8.G();
+            fid $$10 = fid.a($$4, $$9.b($$1.b()), $$9.b($$5));
+            if ($$1.a($$10.a($$4), $$7.a($$4))) {
+               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
+               $$6.add(Pair.of($$8, $$11));
+            }
+         }
+      }
+
+      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
+
+      for (Pair<ffu, Long> $$12 : $$6) {
+         fdi $$13 = ((ffu)$$12.getFirst()).a($$3);
+         if ($$13 != null) {
+            return $$13;
+         }
+      }
+
+      return null;
    }
 }

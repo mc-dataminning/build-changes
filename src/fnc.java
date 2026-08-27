@@ -1,183 +1,255 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class fnc {
-   public static final int a = 20;
-   private static final ffc b = new ffc(new ajt("recipe_book/page_forward"), new ajt("recipe_book/page_forward_highlighted"));
-   private static final ffc c = new ffc(new ajt("recipe_book/page_backward"), new ajt("recipe_book/page_backward_highlighted"));
-   private final List<fne> d = Lists.newArrayListWithCapacity(20);
-   @Nullable
-   private fne e;
-   private final fna f = new fna();
-   private fbp g;
-   private final List<fng> h = Lists.newArrayList();
-   private List<fnf> i = ImmutableList.of();
-   private fev j;
-   private fev k;
-   private int l;
-   private int m;
-   private aup n;
-   @Nullable
-   private cvl<?> o;
-   @Nullable
-   private fnf p;
+   private final asp a;
+   final List<asm> b;
+   final List<asm> c;
+   final Function<asm, ajv> d;
+   final Runnable e;
+   private final Consumer<asp> f;
 
-   public fnc() {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         this.d.add(new fne());
-      }
+   public fnc(Runnable $$0, Function<asm, ajv> $$1, asp $$2, Consumer<asp> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public void a(fbp $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.s.m();
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
-      }
-
-      this.j = new fev($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new fev($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
+   public Stream<fnc.a> a() {
+      return this.c.stream().map($$0 -> new fnc.d($$0));
    }
 
-   public void a(fnb $$0) {
-      this.h.remove($$0);
-      this.h.add($$0);
+   public Stream<fnc.a> b() {
+      return this.b.stream().map($$0 -> new fnc.c($$0));
    }
 
-   public void a(List<fnf> $$0, boolean $$1) {
-      this.i = $$0;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
-      }
-
-      this.f();
-   }
-
-   private void f() {
-      int $$0 = 20 * this.m;
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         fne $$2 = this.d.get($$1);
-         if ($$0 + $$1 < this.i.size()) {
-            fnf $$3 = this.i.get($$0 + $$1);
-            $$2.a($$3, this);
-            $$2.k = true;
-         } else {
-            $$2.k = false;
-         }
-      }
-
-      this.g();
-   }
-
-   private void g() {
-      this.j.k = this.l > 1 && this.m < this.l - 1;
-      this.k.k = this.l > 1 && this.m > 0;
-   }
-
-   public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         wg $$6 = wg.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
-      }
-
-      this.e = null;
-
-      for (fne $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.k && $$8.A()) {
-            this.e = $$8;
-         }
-      }
-
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
-   }
-
-   public void a(fdc $$0, int $$1, int $$2) {
-      if (this.g.y != null && this.e != null && !this.f.c()) {
-         $$0.a(this.g.h, this.e.e(), $$1, $$2);
-      }
-   }
-
-   @Nullable
-   public cvl<?> a() {
-      return this.o;
-   }
-
-   @Nullable
-   public fnf b() {
-      return this.p;
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(asm::g).collect(ImmutableList.toImmutableList()));
    }
 
    public void c() {
-      this.f.b(false);
+      this.e();
+      this.f.accept(this.a);
    }
 
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      ajv a();
+
+      asn b();
+
+      String c();
+
+      wi d();
+
+      wi e();
+
+      asq f();
+
+      default wi g() {
+         return this.f().a(this.e());
+      }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements fnc.a {
+      private final asm b;
+
+      public b(asm $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<asm> s();
+
+      protected abstract List<asm> t();
+
+      @Override
+      public ajv a() {
+         return fnc.this.d.apply(this.b);
+      }
+
+      @Override
+      public asn b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public wi d() {
+         return this.b.b();
+      }
+
+      @Override
+      public wi e() {
+         return this.b.c();
+      }
+
+      @Override
+      public asq f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, asm::h, true);
+         fnc.this.e.run();
+         fnc.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fcb<Boolean> $$0 = fby.Q().m.t();
+            $$0.a(!$$0.c());
          }
+      }
 
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.f();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.f();
-         return true;
-      } else {
-         for (fne $$7 : this.d) {
-            if ($$7.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$7.d();
-                  this.p = $$7.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
-                  this.f.a(this.g, $$7.a(), $$7.C(), $$7.D(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.x());
-               }
+      protected void a(int $$0) {
+         List<asm> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fnc.this.e.run();
+      }
 
-               return true;
-            }
-         }
+      @Override
+      public boolean q() {
+         List<asm> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
 
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<asm> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
+      }
+   }
+
+   class c extends fnc.b {
+      public c(asm $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<asm> s() {
+         return fnc.this.b;
+      }
+
+      @Override
+      protected List<asm> t() {
+         return fnc.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends fnc.b {
+      public d(asm $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<asm> s() {
+         return fnc.this.c;
+      }
+
+      @Override
+      protected List<asm> t() {
+         return fnc.this.b;
+      }
+
+      @Override
+      public boolean n() {
          return false;
       }
-   }
 
-   public void a(List<cvl<?>> $$0) {
-      for (fng $$1 : this.h) {
-         $$1.a($$0);
+      @Override
+      public void j() {
+         this.u();
       }
-   }
 
-   public fbp d() {
-      return this.g;
-   }
-
-   public aup e() {
-      return this.n;
-   }
-
-   protected void a(Consumer<fdn> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
+      @Override
+      public void k() {
+      }
    }
 }

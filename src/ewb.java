@@ -1,90 +1,140 @@
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
+import java.util.Locale;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
 
 public class ewb {
-   private int a;
+   @Nullable
+   private static ewb a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final boolean g;
+   private final boolean h;
 
-   public static Optional<ewb> a() {
-      return ewb.b.a;
+   private ewb(boolean $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.g = $$0;
+      this.b = $$2;
+      this.d = $$3;
+      this.c = $$4;
+      this.e = $$5;
+      this.h = $$1;
+      this.f = $$6;
    }
 
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
-      }
+   public ewb() {
+      this(false, true, 1, 0, 1, 0, 32774);
    }
 
-   public ewb.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         ewb.a $$0 = new ewb.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
+   public ewb(int $$0, int $$1, int $$2) {
+      this(false, false, $$0, $$1, $$0, $$1, $$2);
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
+   public ewb(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      this(true, false, $$0, $$1, $$2, $$3, $$4);
+   }
 
-      a(int $$0) {
-         this.c = $$0;
-      }
+   public void a() {
+      if (!this.equals(a)) {
+         if (a == null || this.h != a.b()) {
+            a = this;
+            if (this.h) {
+               RenderSystem.disableBlend();
+               return;
+            }
 
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
+            RenderSystem.enableBlend();
          }
-      }
 
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
+         RenderSystem.blendEquation(this.f);
+         if (this.g) {
+            RenderSystem.blendFuncSeparate(this.b, this.d, this.c, this.e);
          } else {
-            return false;
+            RenderSystem.blendFunc(this.b, this.d);
          }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
       }
    }
 
-   static class b {
-      static final Optional<ewb> a = Optional.ofNullable(a());
-
-      private b() {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof ewb $$1)) {
+         return false;
+      } else if (this.f != $$1.f) {
+         return false;
+      } else if (this.e != $$1.e) {
+         return false;
+      } else if (this.d != $$1.d) {
+         return false;
+      } else if (this.h != $$1.h) {
+         return false;
+      } else if (this.g != $$1.g) {
+         return false;
+      } else {
+         return this.c != $$1.c ? false : this.b == $$1.b;
       }
+   }
 
-      @Nullable
-      private static ewb a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new ewb();
+   @Override
+   public int hashCode() {
+      int $$0 = this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      $$0 = 31 * $$0 + this.e;
+      $$0 = 31 * $$0 + this.f;
+      $$0 = 31 * $$0 + (this.g ? 1 : 0);
+      return 31 * $$0 + (this.h ? 1 : 0);
+   }
+
+   public boolean b() {
+      return this.h;
+   }
+
+   public static int a(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      if ("add".equals($$1)) {
+         return 32774;
+      } else if ("subtract".equals($$1)) {
+         return 32778;
+      } else if ("reversesubtract".equals($$1)) {
+         return 32779;
+      } else if ("reverse_subtract".equals($$1)) {
+         return 32779;
+      } else if ("min".equals($$1)) {
+         return 32775;
+      } else {
+         return "max".equals($$1) ? 32776 : 32774;
+      }
+   }
+
+   public static int b(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      $$1 = $$1.replaceAll("_", "");
+      $$1 = $$1.replaceAll("one", "1");
+      $$1 = $$1.replaceAll("zero", "0");
+      $$1 = $$1.replaceAll("minus", "-");
+      if ("0".equals($$1)) {
+         return 0;
+      } else if ("1".equals($$1)) {
+         return 1;
+      } else if ("srccolor".equals($$1)) {
+         return 768;
+      } else if ("1-srccolor".equals($$1)) {
+         return 769;
+      } else if ("dstcolor".equals($$1)) {
+         return 774;
+      } else if ("1-dstcolor".equals($$1)) {
+         return 775;
+      } else if ("srcalpha".equals($$1)) {
+         return 770;
+      } else if ("1-srcalpha".equals($$1)) {
+         return 771;
+      } else if ("dstalpha".equals($$1)) {
+         return 772;
+      } else {
+         return "1-dstalpha".equals($$1) ? 773 : -1;
       }
    }
 }

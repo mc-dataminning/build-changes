@@ -1,37 +1,20 @@
-public class age implements yn<afl> {
-   public static final ye<vg, age> a = yn.a(age::a, age::new);
-   private final int b;
-   private final int c;
+public record age(bka b) implements yp<afn> {
+   public static final yg<vi, age> a = yp.a(age::a, age::new);
 
-   public age(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private age(vi $$0) {
+      this($$0.b(bka.class));
    }
 
-   private age(vg $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vg $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(vi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yp<age> a() {
-      return afj.bv;
+   public yr<age> a() {
+      return afl.bt;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

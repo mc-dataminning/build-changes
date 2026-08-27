@@ -1,23 +1,33 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import java.util.List;
 import java.util.function.Consumer;
 
-public record cuk(boolean c) implements cuj {
-   public static final Codec<cuk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aws.a(Codec.BOOL, "show_in_tooltip", true).forGetter(cuk::a)).apply($$0, cuk::new)
-   );
-   public static final ye<ByteBuf, cuk> b = yc.b.a(cuk::new, cuk::a);
-   private static final wg d = wg.c("item.unbreakable").a(n.j);
+public record cuk(List<wi> d, List<wi> e) implements cus {
+   public static final cuk a = new cuk(List.of());
+   private static final int f = 256;
+   private static final xf g = xf.a.a(n.f).b(true);
+   public static final Codec<cuk> b = awu.a(wk.g.listOf(), 256).xmap(cuk::new, cuk::a);
+   public static final yg<vt, cuk> c = wk.b.a(ye.c(256)).a(cuk::new, cuk::a);
 
-   @Override
-   public void a(Consumer<wg> $$0, csz $$1) {
-      if (this.c) {
-         $$0.accept(d);
-      }
+   public cuk(List<wi> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> wl.a($$0x.f(), g)));
    }
 
-   public boolean a() {
-      return this.c;
+   public cuk a(wi $$0) {
+      return new cuk(ac.a(this.d, $$0));
+   }
+
+   @Override
+   public void a(Consumer<wi> $$0, cti $$1) {
+      this.e.forEach($$0);
+   }
+
+   public List<wi> a() {
+      return this.d;
+   }
+
+   public List<wi> b() {
+      return this.e;
    }
 }

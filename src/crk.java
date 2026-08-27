@@ -1,20 +1,26 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class crk {
-   private static final Strategy<? super crj> a = new Strategy<crj>() {
-      public int a(@Nullable crj $$0) {
-         return crj.a($$0);
-      }
+public record crk(in<aun> e, int f, float g) {
+   public static final Codec<crk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aun.b.fieldOf("sound_event").forGetter(crk::a), awu.j.fieldOf("use_duration").forGetter(crk::b), awu.k.fieldOf("range").forGetter(crk::c)
+            )
+            .apply($$0, crk::new)
+   );
+   public static final yg<vt, crk> b = yg.a(aun.d, crk::a, ye.f, crk::b, ye.h, crk::c, crk::new);
+   public static final Codec<in<crk>> c = ajr.a(ku.E, a);
+   public static final yg<vt, in<crk>> d = ye.a(ku.E, b);
 
-      public boolean a(@Nullable crj $$0, @Nullable crj $$1) {
-         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.d() == $$1.d() && crj.c($$0, $$1);
-      }
-   };
+   public in<aun> a() {
+      return this.e;
+   }
 
-   public static Set<crj> a() {
-      return new ObjectLinkedOpenCustomHashSet(a);
+   public int b() {
+      return this.f;
+   }
+
+   public float c() {
+      return this.g;
    }
 }

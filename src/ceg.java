@@ -1,59 +1,47 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public class ceg extends cee {
-   public ceg(bqb<? extends ceg> $$0, cyx $$1) {
-      super($$0, $$1);
+public class ceg {
+   private static final float a = 2.0F;
+   private static final float b = 0.5F;
+   private static final float c = 1.25F;
+
+   protected static bru<?> a(bru<cef> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(clp.a));
+      $$0.b(clp.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   protected aul v() {
-      return aum.ha;
+   private static void b(bru<cef> $$0) {
+      $$0.a(clp.a, 0, ImmutableList.of(new bsg(2.0F), new btr(45, 90), new btv(), new bsr(bzw.P)));
    }
 
-   @Override
-   protected aul gL() {
-      return aum.hb;
+   private static void c(bru<cef> $$0) {
+      $$0.a(
+         clp.b,
+         ImmutableList.of(
+            Pair.of(0, bul.a(bqg.bx, 6.0F, bnq.a(30, 60))),
+            Pair.of(1, new bsy($$0x -> 1.25F)),
+            Pair.of(
+               2,
+               new bsz(
+                  ImmutableMap.of(bzw.m, bzx.b),
+                  ImmutableSet.of(),
+                  bsz.a.a,
+                  bsz.b.b,
+                  ImmutableList.of(Pair.of(bud.c(0.5F), 2), Pair.of(bus.a(0.5F, 3), 3), Pair.of(bvy.a(bqa::bf), 5))
+               )
+            )
+         )
+      );
    }
 
-   @Override
-   protected aul o_() {
-      return aum.hd;
-   }
-
-   @Nullable
-   @Override
-   protected aul gu() {
-      return aum.he;
-   }
-
-   @Override
-   protected aul d(bot $$0) {
-      return aum.hf;
-   }
-
-   @Override
-   public boolean a(ccd $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof ceg) && !($$0 instanceof ceh) ? false : this.gU() && ((cef)$$0).gU();
-      }
-   }
-
-   @Override
-   protected void gT() {
-      this.a(aum.hg, 0.4F, 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bpp a(aps $$0, bpp $$1) {
-      bqb<? extends cef> $$2 = $$1 instanceof ceh ? bqb.as : bqb.z;
-      cef $$3 = $$2.a((cyx)$$0);
-      if ($$3 != null) {
-         this.a($$1, $$3);
-      }
-
-      return $$3;
+   public static void a(cef $$0) {
+      $$0.dP().a(ImmutableList.of(clp.b));
    }
 }

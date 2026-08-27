@@ -1,20 +1,15 @@
-public class cwh extends cwq {
-   public cwh(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bn, $$1);
+public class cwh extends cvb {
+   public cwh(String $$0, cvh $$1, cvp $$2, crs $$3, float $$4, int $$5) {
+      super(cvx.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   public crs g() {
+      return new crs(dcj.cD);
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public int a() {
-      return 5;
+   public cvw<?> ao_() {
+      return cvw.p;
    }
 }

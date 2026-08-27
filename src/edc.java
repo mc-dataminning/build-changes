@@ -1,29 +1,45 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class edc extends edd {
-   public static final Codec<edc> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, edc::new));
+public class edc extends eda {
+   public static final Codec<edc> a = Codec.unit(() -> edc.b);
+   public static final edc b = new edc();
 
-   public edc(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected edb<?> a() {
+      return edb.a;
    }
 
    @Override
-   protected ede<?> a() {
-      return ede.a;
-   }
+   public void a(eda.a $$0) {
+      axt $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            id $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dlc.d);
+            }
+         }
 
-   @Override
-   public List<ebl.a> a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, ib $$4, eav $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
+         if ($$1.a(3) > 0) {
+            id $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dlc.f);
+            }
+         }
 
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
+         if ($$1.a(3) > 0) {
+            id $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dlc.e);
+            }
+         }
 
-      return ImmutableList.of(new ebl.a($$4.b($$3), 0, false));
+         if ($$1.a(3) > 0) {
+            id $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dlc.c);
+            }
+         }
+      });
    }
 }

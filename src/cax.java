@@ -1,47 +1,30 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public abstract class cax<E extends bqo> {
-   private static final axr a = axr.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final cbe d = cbe.b().a(16.0);
-   private static final cbe e = cbe.b().a(16.0).e();
-   private static final cbe f = cbe.a().a(16.0);
-   private static final cbe g = cbe.a().a(16.0).e();
-   private static final cbe h = cbe.a().a(16.0).d();
-   private static final cbe i = cbe.a().a(16.0).d().e();
-   private final int j;
-   private long k;
-
-   public cax(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+public class cax extends cbc<bqt> {
+   @Override
+   public Set<bzw<?>> a() {
+      return ImmutableSet.of(bzw.h, bzw.M, bzw.an);
    }
 
-   public cax() {
-      this(20);
-   }
+   @Override
+   protected void a(apu $$0, bqt $$1) {
+      bru<?> $$2 = $$1.dP();
+      List<cip> $$3 = Lists.newArrayList();
+      bzy $$4 = $$2.c(bzw.h).orElse(bzy.a());
+      Optional<bqv> $$5 = $$4.a($$0x -> $$0x instanceof chx || $$0x instanceof cfy).map(bqv.class::cast);
 
-   public final void b(aps $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
+      for (bqt $$7 : $$2.c(bzw.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cip && ((cip)$$7).go()) {
+            $$3.add((cip)$$7);
+         }
       }
-   }
 
-   protected abstract void a(aps var1, E var2);
-
-   public abstract Set<bzr<?>> a();
-
-   public static boolean b(bqo $$0, bqo $$1) {
-      return $$0.dP().b(bzr.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
-   }
-
-   public static boolean c(bqo $$0, bqo $$1) {
-      return $$0.dP().b(bzr.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
-   }
-
-   public static boolean d(bqo $$0, bqo $$1) {
-      return $$0.dP().b(bzr.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+      $$2.a(bzw.M, $$5);
+      $$2.a(bzw.an, $$3);
    }
 }

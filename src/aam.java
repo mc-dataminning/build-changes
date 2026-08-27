@@ -1,16 +1,15 @@
-public class aam {
-   public static final yp<aai> a = a("finish_configuration");
-   public static final yp<aaj> b = a("registry_data");
-   public static final yp<aal> c = a("update_enabled_features");
-   public static final yp<aak> d = a("select_known_packs");
-   public static final yp<aap> e = b("finish_configuration");
-   public static final yp<aaq> f = b("select_known_packs");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private static <T extends yn<aah>> yp<T> a(String $$0) {
-      return new yp<>(yo.b, new ajt($$0));
+public record aam(List<asl> b) implements yp<aaj> {
+   public static final yg<ByteBuf, aam> a = yg.a(asl.a.a(ye.a()), aam::b, aam::new);
+
+   @Override
+   public yr<aam> a() {
+      return aao.d;
    }
 
-   private static <T extends yn<aao>> yp<T> b(String $$0) {
-      return new yp<>(yo.a, new ajt($$0));
+   public void a(aaj $$0) {
+      $$0.a(this);
    }
 }

@@ -1,96 +1,185 @@
-import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
 
 public class dpf {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<dpd>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+   public static final int a = 12;
+   private final czg b;
+   private final id c;
+   private final boolean d;
+   private final id e;
+   private final ij f;
+   private final List<id> g = Lists.newArrayList();
+   private final List<id> h = Lists.newArrayList();
+   private final ij i;
 
-   private dpf() {
-      this.c.put(' ', $$0 -> true);
-   }
-
-   public dpf a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
-         }
-
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
-
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
-            }
-
-            this.b.add($$0);
-            return this;
-         }
+   public dpf(czg $$0, id $$1, ij $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.i = $$2;
+      this.d = $$3;
+      if ($$3) {
+         this.f = $$2;
+         this.e = $$1.a($$2);
       } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
+         this.f = $$2.g();
+         this.e = $$1.a($$2, 2);
       }
    }
 
-   public static dpf a() {
-      return new dpf();
+   public boolean a() {
+      this.g.clear();
+      this.h.clear();
+      dpi $$0 = this.b.a_(this.e);
+      if (!dpb.a($$0, this.b, this.e, this.f, false, this.i)) {
+         if (this.d && $$0.o() == elg.b) {
+            this.h.add(this.e);
+            return true;
+         } else {
+            return false;
+         }
+      } else if (!this.a(this.e, this.f)) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+            id $$2 = this.g.get($$1);
+            if (a(this.b.a_($$2)) && !this.a($$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public dpf a(char $$0, Predicate<dpd> $$1) {
-      this.c.put($$0, $$1);
-      return this;
+   private static boolean a(dpi $$0) {
+      return $$0.a(dcj.hV) || $$0.a(dcj.pg);
    }
 
-   public dpe b() {
-      return new dpe(this.c());
+   private static boolean a(dpi $$0, dpi $$1) {
+      if ($$0.a(dcj.pg) && $$1.a(dcj.hV)) {
+         return false;
+      } else {
+         return $$0.a(dcj.hV) && $$1.a(dcj.pg) ? false : a($$0) || a($$1);
+      }
    }
 
-   private Predicate<dpd>[][][] c() {
-      this.d();
-      Predicate<dpd>[][][] $$0 = (Predicate<dpd>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+   private boolean a(id $$0, ij $$1) {
+      dpi $$2 = this.b.a_($$0);
+      if ($$2.i()) {
+         return true;
+      } else if (!dpb.a($$2, this.b, $$0, this.f, false, $$1)) {
+         return true;
+      } else if ($$0.equals(this.c)) {
+         return true;
+      } else if (this.g.contains($$0)) {
+         return true;
+      } else {
+         int $$3 = 1;
+         if ($$3 + this.g.size() > 12) {
+            return false;
+         } else {
+            while (a($$2)) {
+               id $$4 = $$0.a(this.f.g(), $$3);
+               dpi $$5 = $$2;
+               $$2 = this.b.a_($$4);
+               if ($$2.i() || !a($$5, $$2) || !dpb.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
+                  break;
+               }
 
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+               if (++$$3 + this.g.size() > 12) {
+                  return false;
+               }
+            }
+
+            int $$6 = 0;
+
+            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
+               this.g.add($$0.a(this.f.g(), $$7));
+               $$6++;
+            }
+
+            int $$8 = 1;
+
+            while (true) {
+               id $$9 = $$0.a(this.f, $$8);
+               int $$10 = this.g.indexOf($$9);
+               if ($$10 > -1) {
+                  this.a($$6, $$10);
+
+                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
+                     id $$12 = this.g.get($$11);
+                     if (a(this.b.a_($$12)) && !this.a($$12)) {
+                        return false;
+                     }
+                  }
+
+                  return true;
+               }
+
+               $$2 = this.b.a_($$9);
+               if ($$2.i()) {
+                  return true;
+               }
+
+               if (!dpb.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
+                  return false;
+               }
+
+               if ($$2.o() == elg.b) {
+                  this.h.add($$9);
+                  return true;
+               }
+
+               if (this.g.size() >= 12) {
+                  return false;
+               }
+
+               this.g.add($$9);
+               $$6++;
+               $$8++;
+            }
+         }
+      }
+   }
+
+   private void a(int $$0, int $$1) {
+      List<id> $$2 = Lists.newArrayList();
+      List<id> $$3 = Lists.newArrayList();
+      List<id> $$4 = Lists.newArrayList();
+      $$2.addAll(this.g.subList(0, $$1));
+      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
+      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
+      this.g.clear();
+      this.g.addAll($$2);
+      this.g.addAll($$3);
+      this.g.addAll($$4);
+   }
+
+   private boolean a(id $$0) {
+      dpi $$1 = this.b.a_($$0);
+
+      for (ij $$2 : ij.values()) {
+         if ($$2.o() != this.f.o()) {
+            id $$3 = $$0.a($$2);
+            dpi $$4 = this.b.a_($$3);
+            if (a($$4, $$1) && !this.a($$3, $$2)) {
+               return false;
             }
          }
       }
 
-      return $$0;
+      return true;
    }
 
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
+   public ij b() {
+      return this.f;
+   }
 
-      for (Entry<Character, Predicate<dpd>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
+   public List<id> c() {
+      return this.g;
+   }
 
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
-      }
+   public List<id> d() {
+      return this.h;
    }
 }

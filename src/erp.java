@@ -1,25 +1,18 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class erp extends Exception {
-   private final Path a;
-   private final List<err> b;
+public class erp {
+   private static final Codec<ero> d = kt.K.q().dispatch(ero::a, ern::a);
+   public static final Codec<ero> a = awu.a(
+      (Supplier<Codec<ero>>)(() -> Codec.either(erl.b, d)
+            .xmap($$0 -> (ero)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof erl $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final ern b = a("fixed", erm.a);
+   public static final ern c = a("context", erl.a);
 
-   public erp(Path $$0, List<err> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
-   }
-
-   public static String a(Path $$0, List<err> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   private static ern a(String $$0, Codec<? extends ero> $$1) {
+      return ja.a(kt.K, new ajv($$0), new ern($$1));
    }
 }

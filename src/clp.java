@@ -1,151 +1,65 @@
-import javax.annotation.Nullable;
+public class clp {
+   public static final clp a = a("core");
+   public static final clp b = a("idle");
+   public static final clp c = a("work");
+   public static final clp d = a("play");
+   public static final clp e = a("rest");
+   public static final clp f = a("meet");
+   public static final clp g = a("panic");
+   public static final clp h = a("raid");
+   public static final clp i = a("pre_raid");
+   public static final clp j = a("hide");
+   public static final clp k = a("fight");
+   public static final clp l = a("celebrate");
+   public static final clp m = a("admire_item");
+   public static final clp n = a("avoid");
+   public static final clp o = a("ride");
+   public static final clp p = a("play_dead");
+   public static final clp q = a("long_jump");
+   public static final clp r = a("ram");
+   public static final clp s = a("tongue");
+   public static final clp t = a("swim");
+   public static final clp u = a("lay_spawn");
+   public static final clp v = a("sniff");
+   public static final clp w = a("investigate");
+   public static final clp x = a("roar");
+   public static final clp y = a("emerge");
+   public static final clp z = a("dig");
+   private final String A;
+   private final int B;
 
-public abstract class clp extends clo implements cls {
-   private iu<crj> c = iu.a(36, crj.i);
-   @Nullable
-   private ajt d;
-   private long e;
-
-   protected clp(bqb<?> $$0, cyx $$1) {
-      super($$0, $$1);
+   private clp(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   protected clp(bqb<?> $$0, double $$1, double $$2, double $$3, cyx $$4) {
-      super($$0, $$4, $$1, $$2, $$3);
+   public String a() {
+      return this.A;
    }
 
-   @Override
-   public void a(bot $$0) {
-      super.a($$0);
-      this.a($$0, this.dM(), this);
-   }
-
-   @Override
-   public crj a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public crj a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public crj b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, crj $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public brf a_(int $$0) {
-      return this.g_($$0);
+   private static clp a(String $$0) {
+      return ja.a(kt.E, $$0, new clp($$0));
    }
 
    @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cjt $$0) {
-      return this.g($$0);
-   }
-
-   @Override
-   public void a(bpv.c $$0) {
-      if (!this.dM().B && $$0.a()) {
-         bnw.a(this.dM(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   protected void b(tm $$0) {
-      super.b($$0);
-      this.a($$0, this.dO());
-   }
-
-   @Override
-   protected void a(tm $$0) {
-      super.a($$0);
-      this.b($$0, this.dO());
-   }
-
-   @Override
-   public boa a(cjt $$0, bnz $$1) {
-      return this.c_($$0);
-   }
-
-   @Override
-   protected void u() {
-      float $$0 = 0.98F;
-      if (this.d == null) {
-         int $$1 = 15 - cmp.b(this);
-         $$0 += (float)$$1 * 0.001F;
-      }
-
-      if (this.bc()) {
-         $$0 *= 0.95F;
-      }
-
-      this.g(this.dp().d((double)$$0, 0.0, (double)$$0));
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   public void a(ajt $$0, long $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Nullable
-   @Override
-   public cmp createMenu(int $$0, cjs $$1, cjt $$2) {
-      if (this.d != null && $$2.N_()) {
-         return null;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         clp $$1 = (clp)$$0;
+         return this.A.equals($$1.A);
       } else {
-         this.f($$1.m);
-         return this.a($$0, $$1);
+         return false;
       }
    }
 
-   protected abstract cmp a(int var1, cjs var2);
-
-   @Nullable
    @Override
-   public ajt B() {
-      return this.d;
+   public int hashCode() {
+      return this.B;
    }
 
    @Override
-   public void a(@Nullable ajt $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public long C() {
-      return this.e;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public iu<crj> D() {
-      return this.c;
-   }
-
-   @Override
-   public void E() {
-      this.c = iu.a(this.b(), crj.i);
+   public String toString() {
+      return this.a();
    }
 }

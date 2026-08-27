@@ -1,7 +1,7 @@
 import com.mojang.serialization.Codec;
 
 public class am {
-   public static final Codec<ap<?>> a = kr.aq.q();
+   public static final Codec<ap<?>> a = kt.ap.q();
    public static final bz b = a("impossible", new bz());
    public static final cf c = a("player_killed_entity", new cf());
    public static final cf d = a("entity_killed_player", new cf());
@@ -14,22 +14,22 @@ public class am {
    public static final bv k = a("filled_bucket", new bv());
    public static final ax l = a("brewed_potion", new ax());
    public static final ba m = a("construct_beacon", new ba());
-   public static final dh n = a("used_ender_eye", new dh());
-   public static final dc o = a("summoned_entity", new dc());
+   public static final di n = a("used_ender_eye", new di());
+   public static final dd o = a("summoned_entity", new dd());
    public static final aw p = a("bred_animals", new aw());
    public static final ct q = a("location", new ct());
    public static final ct r = a("slept_in_bed", new ct());
    public static final be s = a("cured_zombie_villager", new be());
-   public static final dg t = a("villager_trade", new dg());
+   public static final dh t = a("villager_trade", new dh());
    public static final cb u = a("item_durability_changed", new cb());
    public static final cg v = a("levitation", new cg());
    public static final ay w = a("changed_dimension", new ay());
    public static final ct x = a("tick", new ct());
-   public static final de y = a("tame_animal", new de());
+   public static final df y = a("tame_animal", new df());
    public static final cd z = a("placed_block", new cd());
    public static final bb A = a("consume_item", new bb());
    public static final bk B = a("effects_changed", new bk());
-   public static final di C = a("used_totem", new di());
+   public static final dj C = a("used_totem", new dj());
    public static final bj D = a("nether_travel", new bj());
    public static final bx E = a("fishing_rod_hooked", new bx());
    public static final az F = a("channeled_lightning", new az());
@@ -39,7 +39,7 @@ public class am {
    public static final ct J = a("voluntary_exile", new ct());
    public static final cy K = a("slide_down_block", new cy());
    public static final au L = a("bee_nest_destroyed", new au());
-   public static final df M = a("target_hit", new df());
+   public static final dg M = a("target_hit", new dg());
    public static final cd N = a("item_used_on_block", new cd());
    public static final bh O = a("default_block_use", new bh());
    public static final at P = a("any_block_use", new at());
@@ -47,9 +47,9 @@ public class am {
    public static final cp R = a("thrown_item_picked_up_by_entity", new cp());
    public static final cp S = a("thrown_item_picked_up_by_player", new cp());
    public static final cr T = a("player_interacted_with_entity", new cr());
-   public static final da U = a("started_riding", new da());
+   public static final db U = a("started_riding", new db());
    public static final cj V = a("lightning_strike", new cj());
-   public static final dj W = a("using_item", new dj());
+   public static final dk W = a("using_item", new dk());
    public static final bj X = a("fall_from_height", new bj());
    public static final bj Y = a("ride_entity_in_lava", new bj());
    public static final cf Z = a("kill_mob_near_sculk_catalyst", new cf());
@@ -58,10 +58,10 @@ public class am {
    public static final cu ac = a("recipe_crafted", new cu());
 
    private static <T extends ap<?>> T a(String $$0, T $$1) {
-      return iy.a(kr.aq, $$0, $$1);
+      return ja.a(kt.ap, $$0, $$1);
    }
 
-   public static ap<?> a(iy<ap<?>> $$0) {
+   public static ap<?> a(ja<ap<?>> $$0) {
       return b;
    }
 }

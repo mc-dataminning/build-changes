@@ -1,24 +1,78 @@
-public record afb(int b) implements yn<aay> {
-   public static final ye<vg, afb> a = yn.a(afb::a, afb::new);
+public class afb implements yp<aba> {
+   public static final yg<vi, afb> a = yp.a(afb::a, afb::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-   private afb(vg $$0) {
-      this($$0.l());
+   public afb(bqa $$0) {
+      this.b = $$0.aj();
+      esj $$1 = $$0.dl();
+      this.c = $$1.c;
+      this.d = $$1.d;
+      this.e = $$1.e;
+      this.f = (byte)((int)($$0.dC() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dE() * 256.0F / 360.0F));
+      this.h = $$0.aC();
    }
 
-   public static afb a(bol $$0) {
-      return new afb($$0.k());
+   private afb(vi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
    }
 
-   private void a(vg $$0) {
+   private void a(vi $$0) {
       $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public yp<afb> a() {
-      return afj.ce;
+   public yr<afb> a() {
+      return afl.aZ;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public byte i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

@@ -1,84 +1,35 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class fep {
+   public static final ajv a = new ajv("textures/gui/title/minecraft.png");
+   public static final ajv b = new ajv("textures/gui/title/minceraft.png");
+   public static final ajv c = new ajv("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)axt.a().i() < 1.0E-4;
+   private final boolean o;
 
-public class fep extends fdn {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final fep.a n;
-   private final Supplier<gmi> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
-
-   public fep(int $$0, int $$1, fti $$2, Supplier<gmi> $$3) {
-      super(0, 0, $$0, $$1, wf.a);
-      this.n = fep.a.a($$2);
-      this.o = $$3;
+   public fep(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   protected void b(fdc $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.C() + (float)this.x() / 2.0F, (float)(this.D() + this.v()), 100.0F);
-      float $$4 = (float)this.v() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      $$0.e();
-      eve.a(a.b.rotationDegrees(this.p));
-      this.n.a($$0, this.o.get());
-      $$0.e();
-      eve.d();
-      $$0.c().b();
+   public void a(fdl $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = axk.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
-   }
-
-   @Override
-   public void a(gqa $$0) {
-   }
-
-   @Override
-   protected void a(fhl $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fcz a(fhr $$0) {
-      return null;
-   }
-
-   static record a(frr<?> a, frr<?> b) {
-      public static fep.a a(fti $$0) {
-         frr<?> $$1 = new frr($$0.a(ftl.aS), false);
-         frr<?> $$2 = new frr($$0.a(ftl.aW), true);
-         $$1.e = false;
-         $$2.e = false;
-         return new fep.a($$1, $$2);
-      }
-
-      public void a(fdc $$0, gmi $$1) {
-         $$0.c().a();
-         $$0.c().b(1.0F, 1.0F, -1.0F);
-         $$0.c().a(0.0F, -1.5F, 0.0F);
-         frr<?> $$2 = $$1.e() == gmi.a.a ? this.b : this.a;
-         gah $$3 = $$2.a($$1.a());
-         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-      }
+   public void a(fdl $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

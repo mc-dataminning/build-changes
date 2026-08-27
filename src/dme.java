@@ -1,20 +1,19 @@
-public class dme extends dlt {
-   public dme(ib $$0, doz $$1) {
-      super(dmh.C, $$0, $$1, cvo.c);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dme(ajv e, String f) {
+   public static final Codec<dme> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajv.a.fieldOf("asset_id").forGetter(dme::a), Codec.STRING.fieldOf("translation_key").forGetter(dme::b)).apply($$0, dme::new)
+   );
+   public static final yg<vt, dme> b = yg.a(ajv.b, dme::a, ye.k, dme::b, dme::new);
+   public static final Codec<in<dme>> c = ajr.a(ku.d, a);
+   public static final yg<vt, in<dme>> d = ye.a(ku.d, b);
+
+   public ajv a() {
+      return this.e;
    }
 
-   @Override
-   protected wg k() {
-      return wg.c("container.blast_furnace");
-   }
-
-   @Override
-   protected int a(crj $$0) {
-      return super.a($$0) / 2;
-   }
-
-   @Override
-   protected cmp a(int $$0, cjs $$1) {
-      return new cmt($$0, $$1, this, this.n);
+   public String b() {
+      return this.f;
    }
 }

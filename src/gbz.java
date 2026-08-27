@@ -1,15 +1,82 @@
-public interface gbz<T extends dmf> {
-   void a(T var1, float var2, ewi var3, fzz var4, int var5, int var6);
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   default boolean a(T $$0) {
-      return false;
+public class gbz {
+   private final gbv a;
+   private final gbs b;
+
+   public gbz(gbv $$0, gbs $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   default int aQ_() {
-      return 64;
+   public gbs a() {
+      return this.b;
    }
 
-   default boolean a(T $$0, esa $$1) {
-      return esa.b($$0.aA_()).a((iv)$$1, (double)this.aQ_());
+   public Predicate<dpi> a(dpj<dch, dpi> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<gbz> {
+      public gbz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new gbz(this.b($$3), (gbs)$$2.deserialize($$3.get("apply"), gbs.class));
+      }
+
+      private gbv b(JsonObject $$0) {
+         return $$0.has("when") ? a(axc.u($$0, "when")) : gbv.b;
+      }
+
+      @VisibleForTesting
+      static gbv a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gbv> $$2 = Streams.stream(axc.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gby($$2);
+            } else if ($$0.has("AND")) {
+               List<gbv> $$3 = Streams.stream(axc.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gbu($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new gbu($$1.stream().map(gbz.a::a).collect(Collectors.toList()));
+         }
+      }
+
+      private static gbv a(Entry<String, JsonElement> $$0) {
+         return new gbw($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

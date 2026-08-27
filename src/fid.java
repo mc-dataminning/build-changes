@@ -1,30 +1,24 @@
-public class fid extends fjq {
-   private static final wg a = wg.c("options.chat.title");
+public record fid(int a, int b) {
+   public static fid a(fib $$0, int $$1, int $$2) {
+      return switch ($$0) {
+         case a -> new fid($$1, $$2);
+         case b -> new fid($$2, $$1);
+      };
+   }
 
-   public fid(fjo $$0, fbt $$1) {
-      super(
-         $$0,
-         $$1,
-         a,
-         new fbs[]{
-            $$1.m(),
-            $$1.K(),
-            $$1.L(),
-            $$1.M(),
-            $$1.n(),
-            $$1.r(),
-            $$1.w(),
-            $$1.o(),
-            $$1.A(),
-            $$1.x(),
-            $$1.z(),
-            $$1.y(),
-            $$1.as(),
-            $$1.J(),
-            $$1.ae(),
-            $$1.V(),
-            $$1.ag()
-         }
-      );
+   public fid a(fic $$0) {
+      return switch ($$0) {
+         case b -> new fid(this.a, this.b + 1);
+         case a -> new fid(this.a, this.b - 1);
+         case c -> new fid(this.a - 1, this.b);
+         case d -> new fid(this.a + 1, this.b);
+      };
+   }
+
+   public int a(fib $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+      };
    }
 }

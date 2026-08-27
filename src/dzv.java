@@ -1,41 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzv implements dzz {
-   public static final Codec<dzv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               doz.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               doz.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bnf.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bnf.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dzv::new)
-   );
-   private final doz b;
-   private final doz c;
-   private final bnf d;
-   private final bnf e;
+public class dzv extends dye<eap> {
+   private static final id a = new id(8, 3, 8);
+   private static final cyn b = new cyn(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public dzv(doz $$0, doz $$1, bnf $$2, bnf $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public dzv(Codec<eap> $$0) {
+      super($$0);
    }
 
-   public doz a() {
-      return this.b;
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
    }
 
-   public doz b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dyg<eap> $$0) {
+      dab $$1 = $$0.b();
+      cyn $$2 = new cyn($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
+      } else {
+         id $$3 = a.h($$0.e().v() + a.v());
+         id.a $$4 = new id.a();
 
-   public bnf c() {
-      return this.d;
-   }
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, dcj.m.n(), 2);
+                  } else {
+                     $$1.a($$4, dcj.b.n(), 2);
+                  }
+               }
+            }
+         }
 
-   public bnf d() {
-      return this.e;
+         return true;
+      }
    }
 }

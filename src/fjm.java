@@ -1,48 +1,59 @@
-import java.util.function.BooleanSupplier;
+public class fjm extends fjx {
+   private static final wi a = wi.c("symlink_warning.title.world").a(n.r);
+   private static final wi b = wi.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final wi c = wi.c("symlink_warning.title.pack").a(n.r);
+   private static final wi d = wi.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final wi o;
+   private final String p;
+   private final Runnable q;
+   private final fhk r = new fhk().b(10);
 
-public class fjm extends fjo {
-   private static final wg a = wg.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier d;
+   public fjm(wi $$0, wi $$1, String $$2, Runnable $$3) {
+      super($$0);
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
+   }
 
-   public fjm(BooleanSupplier $$0) {
-      super(fbh.a);
-      this.d = $$0;
-      this.c = System.currentTimeMillis();
+   public static fjx a(Runnable $$0) {
+      return new fjm(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   public static fjx b(Runnable $$0) {
+      return new fjm(c, d, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
    @Override
-   public boolean aE_() {
-      return false;
+   protected void aM_() {
+      super.aM_();
+      this.r.c().b();
+      fhk.b $$0 = this.r.d(1);
+      $$0.a(new fff(this.i, this.m));
+      $$0.a(new fes(this.o, this.m).d(this.k - 50).b(true));
+      int $$1 = 120;
+      fhk $$2 = new fhk().a(5);
+      fhk.b $$3 = $$2.d(3);
+      $$3.a(fdy.a(wh.n, $$0x -> ac.j().a(this.p)).b(120, 20).a());
+      $$3.a(fdy.a(wh.o, $$0x -> this.j.o.a(this.p)).b(120, 20).a());
+      $$3.a(fdy.a(wh.k, $$0x -> this.d()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.r.a(this::c);
    }
 
    @Override
-   protected boolean aM_() {
-      return false;
+   protected void c() {
+      this.r.a();
+      fhj.a(this.r, this.G());
    }
 
    @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, a, this.k / 2, this.l / 2 - 50, 16777215);
-   }
-
-   @Override
-   public void e() {
-      if (this.d.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
-         this.d();
-      }
+   public wi i() {
+      return wh.a(super.i(), this.o);
    }
 
    @Override
    public void d() {
-      this.j.aY().c(wg.c("narrator.ready_to_play"));
-      super.d();
-   }
-
-   @Override
-   public boolean k() {
-      return false;
+      this.q.run();
    }
 }

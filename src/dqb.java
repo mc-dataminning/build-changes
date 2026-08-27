@@ -1,6 +1,6 @@
-public enum dqb implements aye {
-   a("normal"),
-   b("sticky");
+public enum dqb implements ayg {
+   a("compare"),
+   b("subtract");
 
    private final String c;
 

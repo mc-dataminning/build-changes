@@ -1,32 +1,30 @@
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import javax.annotation.Nullable;
+public record gp(byte b) {
+   public static final gp a = new gp((byte)0);
+   private static final byte c = 1;
+   private static final byte d = 2;
 
-public interface gp<T> {
-   void a(T var1, ContextChain<T> var2, gn var3, gt<T> var4);
-
-   public interface a<T> extends Command<T>, gp<T> {
-      default int run(CommandContext<T> $$0) throws CommandSyntaxException {
-         throw new UnsupportedOperationException("This function should not run");
-      }
+   private gp a(byte $$0) {
+      int $$1 = this.b | $$0;
+      return $$1 != this.b ? new gp((byte)$$1) : this;
    }
 
-   public abstract static class b<T extends dw<T>> implements gp<T> {
-      public final void a(T $$0, ContextChain<T> $$1, gn $$2, gt<T> $$3) {
-         try {
-            this.b($$0, $$1, $$2, $$3);
-         } catch (CommandSyntaxException var6) {
-            this.a(var6, $$0, $$2, $$3.a());
-            $$0.p().onFailure();
-         }
-      }
+   public boolean a() {
+      return (this.b & 1) != 0;
+   }
 
-      protected void a(CommandSyntaxException $$0, T $$1, gn $$2, @Nullable gv $$3) {
-         $$1.a($$0, $$2.a(), $$3);
-      }
+   public gp b() {
+      return this.a((byte)1);
+   }
 
-      protected abstract void b(T var1, ContextChain<T> var2, gn var3, gt<T> var4) throws CommandSyntaxException;
+   public boolean c() {
+      return (this.b & 2) != 0;
+   }
+
+   public gp d() {
+      return this.a((byte)2);
+   }
+
+   public byte e() {
+      return this.b;
    }
 }

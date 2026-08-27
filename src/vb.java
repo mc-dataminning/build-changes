@@ -1,6 +1,17 @@
-public interface vb extends vm {
-   @Override
-   default yo a() {
-      return yo.b;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.crypto.Cipher;
+
+public class vb extends MessageToMessageDecoder<ByteBuf> {
+   private final va a;
+
+   public vb(Cipher $$0) {
+      this.a = new va($$0);
+   }
+
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      $$2.add(this.a.a($$0, $$1));
    }
 }

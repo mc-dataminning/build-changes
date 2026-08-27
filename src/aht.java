@@ -1,55 +1,41 @@
-import java.security.PublicKey;
+public record aht(int b, aig c) implements yp<ahs> {
+   public static final yg<vi, aht> a = yp.a(aht::a, aht::new);
+   private static final int d = 1048576;
 
-public class aht implements yn<ahq> {
-   public static final ye<vg, aht> a = yn.a(aht::a, aht::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
-
-   public aht(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private aht(vi $$0) {
+      this($$0.l(), a($$0.q(), $$0));
    }
 
-   private aht(vg $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
+   private static aig a(ajv $$0, vi $$1) {
+      return b($$0, $$1);
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private static aii b(ajv $$0, vi $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.j($$2);
+         return new aii($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void a(vi $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
    }
 
    @Override
-   public yp<aht> a() {
-      return ahw.c;
+   public yr<aht> a() {
+      return ahy.a;
    }
 
-   public void a(ahq $$0) {
+   public void a(ahs $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public PublicKey e() throws awj {
-      return awi.a(this.c);
-   }
-
-   public byte[] f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
+   public aig e() {
+      return this.c;
    }
 }

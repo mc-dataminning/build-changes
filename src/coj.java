@@ -1,22 +1,28 @@
-public class coj implements cmz {
-   private final int[] a;
-
-   public coj(int $$0) {
-      this.a = new int[$$0];
+public abstract class coj<C extends bny> extends cmw {
+   public coj(cod<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public int a(int $$0) {
-      return this.a[$$0];
+   public void a(boolean $$0, cvu<?> $$1, apv $$2) {
+      new ajj<>(this).a($$2, (cvu<? extends cvs<C>>)$$1, $$0);
    }
 
-   @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
+   public abstract void a(cke var1);
 
    @Override
-   public int a() {
-      return this.a.length;
-   }
+   public abstract void l();
+
+   public abstract boolean a(cvu<? extends cvs<C>> var1);
+
+   public abstract int m();
+
+   public abstract int n();
+
+   public abstract int o();
+
+   public abstract int p();
+
+   public abstract cok t();
+
+   public abstract boolean e(int var1);
 }

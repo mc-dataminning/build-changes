@@ -1,38 +1,41 @@
-public class ghg extends gfh<cko> {
-   private static final ajt a = new ajt("textures/entity/shulker/spark.png");
-   private static final gah f = gah.i(a);
-   private final fse<cko> g;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public ghg(gfi.a $$0) {
-      super($$0);
-      this.g = new fse<>($$0.a(ftl.bl));
+public class ghg extends ggi<bqv, frz<bqv>> {
+   private static final Map<bqg<?>, ajv> a = ImmutableMap.of(
+      bqg.az,
+      new ajv("textures/entity/piglin/piglin.png"),
+      bqg.bw,
+      new ajv("textures/entity/piglin/zombified_piglin.png"),
+      bqg.aA,
+      new ajv("textures/entity/piglin/piglin_brute.png")
+   );
+   private static final float i = 1.0019531F;
+
+   public ghg(gfr.a $$0, ftt $$1, ftt $$2, ftt $$3, boolean $$4) {
+      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
+      this.a(new gjs<>(this, new frh($$0.a($$2)), new frh($$0.a($$3)), $$0.g()));
    }
 
-   protected int a(cko $$0, ib $$1) {
-      return 15;
+   private static frz<bqv> a(ftr $$0, ftt $$1, boolean $$2) {
+      frz<bqv> $$3 = new frz<>($$0.a($$1));
+      if ($$2) {
+         $$3.a.k = false;
+      }
+
+      return $$3;
    }
 
-   public void a(cko $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
-      $$3.a();
-      float $$6 = axk.j($$2, $$0.N, $$0.dC());
-      float $$7 = axk.i($$2, $$0.O, $$0.dE());
-      float $$8 = (float)$$0.ah + $$2;
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(axk.a($$8 * 0.1F) * 180.0F));
-      $$3.a(a.b.rotationDegrees(axk.b($$8 * 0.1F) * 180.0F));
-      $$3.a(a.f.rotationDegrees(axk.a($$8 * 0.15F) * 360.0F));
-      $$3.b(-0.5F, -0.5F, 0.5F);
-      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
-      ewm $$9 = $$4.getBuffer(this.g.a(a));
-      this.g.a($$3, $$9, $$5, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b(1.5F, 1.5F, 1.5F);
-      ewm $$10 = $$4.getBuffer(f);
-      this.g.a($$3, $$10, $$5, gla.d, 1.0F, 1.0F, 1.0F, 0.15F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ajv c(bqv $$0) {
+      ajv $$1 = a.get($$0.ai());
+      if ($$1 == null) {
+         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ai());
+      } else {
+         return $$1;
+      }
    }
 
-   public ajt a(cko $$0) {
-      return a;
+   protected boolean d(bqv $$0) {
+      return super.a($$0) || $$0 instanceof cip && ((cip)$$0).gn();
    }
 }

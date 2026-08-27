@@ -1,564 +1,149 @@
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
 
-public class tm implements uj {
-   public static final Codec<tm> a = Codec.PASSTHROUGH.comapFlatMap($$0 -> {
-      uj $$1 = (uj)$$0.convert(ua.a).getValue();
-      return $$1 instanceof tm $$2 ? DataResult.success($$2 == $$0.getValue() ? $$2.h() : $$2) : DataResult.error(() -> "Not a compound tag: " + $$1);
-   }, $$0 -> new Dynamic(ua.a, $$0.h()));
-   private static final int c = 48;
-   private static final int w = 32;
-   public static final ul<tm> b = new ul.b<tm>() {
-      public tm a(DataInput $$0, tv $$1) throws IOException {
-         $$1.b();
-
-         tm var3;
-         try {
-            var3 = d($$0, $$1);
-         } finally {
-            $$1.c();
-         }
-
-         return var3;
-      }
-
-      private static tm d(DataInput $$0, tv $$1) throws IOException {
-         $$1.b(48L);
-         Map<String, uj> $$2 = Maps.newHashMap();
-
-         byte $$3;
-         while (($$3 = $$0.readByte()) != 0) {
-            String $$4 = e($$0, $$1);
-            uj $$5 = tm.a(um.a($$3), $$4, $$0, $$1);
-            if ($$2.put($$4, $$5) == null) {
-               $$1.b(36L);
-            }
-         }
-
-         return new tm($$2);
+public class tm extends ue {
+   private static final int w = 9;
+   public static final un<tm> a = new un.a<tm>() {
+      public tm a(DataInput $$0, tx $$1) throws IOException {
+         return tm.a(d($$0, $$1));
       }
 
       @Override
-      public ug.b a(DataInput $$0, ug $$1, tv $$2) throws IOException {
-         $$2.b();
-
-         ug.b var4;
-         try {
-            var4 = c($$0, $$1, $$2);
-         } finally {
-            $$2.c();
-         }
-
-         return var4;
+      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
       }
 
-      private static ug.b c(DataInput $$0, ug $$1, tv $$2) throws IOException {
-         $$2.b(48L);
-
-         byte $$3;
-         label35:
-         while (($$3 = $$0.readByte()) != 0) {
-            ul<?> $$4 = um.a($$3);
-            switch ($$1.a($$4)) {
-               case d:
-                  return ug.b.c;
-               case c:
-                  uh.a($$0);
-                  $$4.b($$0, $$2);
-                  break label35;
-               case b:
-                  uh.a($$0);
-                  $$4.b($$0, $$2);
-                  break;
-               default:
-                  String $$5 = e($$0, $$2);
-                  switch ($$1.a($$4, $$5)) {
-                     case d:
-                        return ug.b.c;
-                     case c:
-                        $$4.b($$0, $$2);
-                        break label35;
-                     case b:
-                        $$4.b($$0, $$2);
-                        break;
-                     default:
-                        $$2.b(36L);
-                        switch ($$4.a($$0, $$1, $$2)) {
-                           case c:
-                              return ug.b.c;
-                           case b:
-                        }
-                  }
-            }
-         }
-
-         if ($$3 != 0) {
-            while (($$3 = $$0.readByte()) != 0) {
-               uh.a($$0);
-               um.a($$3).b($$0, $$2);
-            }
-         }
-
-         return $$1.b();
-      }
-
-      private static String e(DataInput $$0, tv $$1) throws IOException {
-         String $$2 = $$0.readUTF();
-         $$1.b(28L);
-         $$1.a(2L, (long)$$2.length());
-         return $$2;
+      private static byte d(DataInput $$0, tx $$1) throws IOException {
+         $$1.b(9L);
+         return $$0.readByte();
       }
 
       @Override
-      public void b(DataInput $$0, tv $$1) throws IOException {
-         $$1.b();
-
-         byte $$2;
-         try {
-            while (($$2 = $$0.readByte()) != 0) {
-               uh.a($$0);
-               um.a($$2).b($$0, $$1);
-            }
-         } finally {
-            $$1.c();
-         }
+      public int c() {
+         return 1;
       }
 
       @Override
       public String a() {
-         return "COMPOUND";
+         return "BYTE";
       }
 
       @Override
       public String b() {
-         return "TAG_Compound";
+         return "TAG_Byte";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
       }
    };
-   private final Map<String, uj> x;
+   public static final tm b = a((byte)0);
+   public static final tm c = a((byte)1);
+   private final byte x;
 
-   protected tm(Map<String, uj> $$0) {
+   tm(byte $$0) {
       this.x = $$0;
    }
 
-   public tm() {
-      this(Maps.newHashMap());
+   public static tm a(byte $$0) {
+      return tm.a.a[128 + $$0];
+   }
+
+   public static tm a(boolean $$0) {
+      return $$0 ? c : b;
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      for (String $$1 : this.x.keySet()) {
-         uj $$2 = this.x.get($$1);
-         a($$1, $$2, $$0);
-      }
-
-      $$0.writeByte(0);
+      $$0.writeByte(this.x);
    }
 
    @Override
    public int a() {
-      int $$0 = 48;
-
-      for (Entry<String, uj> $$1 : this.x.entrySet()) {
-         $$0 += 28 + 2 * $$1.getKey().length();
-         $$0 += 36;
-         $$0 += $$1.getValue().a();
-      }
-
-      return $$0;
-   }
-
-   public Set<String> e() {
-      return this.x.keySet();
+      return 9;
    }
 
    @Override
    public byte b() {
-      return 10;
+      return 1;
    }
 
    @Override
-   public ul<tm> c() {
-      return b;
+   public un<tm> c() {
+      return a;
    }
 
-   public int f() {
-      return this.x.size();
-   }
-
-   @Nullable
-   public uj a(String $$0, uj $$1) {
-      return this.x.put($$0, $$1);
-   }
-
-   public void a(String $$0, byte $$1) {
-      this.x.put($$0, tk.a($$1));
-   }
-
-   public void a(String $$0, short $$1) {
-      this.x.put($$0, ue.a($$1));
-   }
-
-   public void a(String $$0, int $$1) {
-      this.x.put($$0, tr.a($$1));
-   }
-
-   public void a(String $$0, long $$1) {
-      this.x.put($$0, tu.a($$1));
-   }
-
-   public void a(String $$0, UUID $$1) {
-      this.x.put($$0, ub.a($$1));
-   }
-
-   public UUID a(String $$0) {
-      return ub.a(this.c($$0));
-   }
-
-   public boolean b(String $$0) {
-      uj $$1 = this.c($$0);
-      return $$1 != null && $$1.c() == tq.a && ((tq)$$1).g().length == 4;
-   }
-
-   public void a(String $$0, float $$1) {
-      this.x.put($$0, tp.a($$1));
-   }
-
-   public void a(String $$0, double $$1) {
-      this.x.put($$0, tn.a($$1));
-   }
-
-   public void a(String $$0, String $$1) {
-      this.x.put($$0, uh.a($$1));
-   }
-
-   public void a(String $$0, byte[] $$1) {
-      this.x.put($$0, new tj($$1));
-   }
-
-   public void a(String $$0, List<Byte> $$1) {
-      this.x.put($$0, new tj($$1));
-   }
-
-   public void a(String $$0, int[] $$1) {
-      this.x.put($$0, new tq($$1));
-   }
-
-   public void b(String $$0, List<Integer> $$1) {
-      this.x.put($$0, new tq($$1));
-   }
-
-   public void a(String $$0, long[] $$1) {
-      this.x.put($$0, new tt($$1));
-   }
-
-   public void c(String $$0, List<Long> $$1) {
-      this.x.put($$0, new tt($$1));
-   }
-
-   public void a(String $$0, boolean $$1) {
-      this.x.put($$0, tk.a($$1));
-   }
-
-   @Nullable
-   public uj c(String $$0) {
-      return this.x.get($$0);
-   }
-
-   public byte d(String $$0) {
-      uj $$1 = this.x.get($$0);
-      return $$1 == null ? 0 : $$1.b();
-   }
-
-   public boolean e(String $$0) {
-      return this.x.containsKey($$0);
-   }
-
-   public boolean b(String $$0, int $$1) {
-      int $$2 = this.d($$0);
-      if ($$2 == $$1) {
-         return true;
-      } else {
-         return $$1 != 99 ? false : $$2 == 1 || $$2 == 2 || $$2 == 3 || $$2 == 4 || $$2 == 5 || $$2 == 6;
-      }
-   }
-
-   public byte f(String $$0) {
-      try {
-         if (this.b($$0, 99)) {
-            return ((uc)this.x.get($$0)).i();
-         }
-      } catch (ClassCastException var3) {
-      }
-
-      return 0;
-   }
-
-   public short g(String $$0) {
-      try {
-         if (this.b($$0, 99)) {
-            return ((uc)this.x.get($$0)).h();
-         }
-      } catch (ClassCastException var3) {
-      }
-
-      return 0;
-   }
-
-   public int h(String $$0) {
-      try {
-         if (this.b($$0, 99)) {
-            return ((uc)this.x.get($$0)).g();
-         }
-      } catch (ClassCastException var3) {
-      }
-
-      return 0;
-   }
-
-   public long i(String $$0) {
-      try {
-         if (this.b($$0, 99)) {
-            return ((uc)this.x.get($$0)).f();
-         }
-      } catch (ClassCastException var3) {
-      }
-
-      return 0L;
-   }
-
-   public float j(String $$0) {
-      try {
-         if (this.b($$0, 99)) {
-            return ((uc)this.x.get($$0)).k();
-         }
-      } catch (ClassCastException var3) {
-      }
-
-      return 0.0F;
-   }
-
-   public double k(String $$0) {
-      try {
-         if (this.b($$0, 99)) {
-            return ((uc)this.x.get($$0)).j();
-         }
-      } catch (ClassCastException var3) {
-      }
-
-      return 0.0;
-   }
-
-   public String l(String $$0) {
-      try {
-         if (this.b($$0, 8)) {
-            return this.x.get($$0).s_();
-         }
-      } catch (ClassCastException var3) {
-      }
-
-      return "";
-   }
-
-   public byte[] m(String $$0) {
-      try {
-         if (this.b($$0, 7)) {
-            return ((tj)this.x.get($$0)).e();
-         }
-      } catch (ClassCastException var3) {
-         throw new y(this.a($$0, tj.a, var3));
-      }
-
-      return new byte[0];
-   }
-
-   public int[] n(String $$0) {
-      try {
-         if (this.b($$0, 11)) {
-            return ((tq)this.x.get($$0)).g();
-         }
-      } catch (ClassCastException var3) {
-         throw new y(this.a($$0, tq.a, var3));
-      }
-
-      return new int[0];
-   }
-
-   public long[] o(String $$0) {
-      try {
-         if (this.b($$0, 12)) {
-            return ((tt)this.x.get($$0)).g();
-         }
-      } catch (ClassCastException var3) {
-         throw new y(this.a($$0, tt.a, var3));
-      }
-
-      return new long[0];
-   }
-
-   public tm p(String $$0) {
-      try {
-         if (this.b($$0, 10)) {
-            return (tm)this.x.get($$0);
-         }
-      } catch (ClassCastException var3) {
-         throw new y(this.a($$0, b, var3));
-      }
-
-      return new tm();
-   }
-
-   public ts c(String $$0, int $$1) {
-      try {
-         if (this.d($$0) == 9) {
-            ts $$2 = (ts)this.x.get($$0);
-            if (!$$2.isEmpty() && $$2.f() != $$1) {
-               return new ts();
-            }
-
-            return $$2;
-         }
-      } catch (ClassCastException var4) {
-         throw new y(this.a($$0, ts.a, var4));
-      }
-
-      return new ts();
-   }
-
-   public boolean q(String $$0) {
-      return this.f($$0) != 0;
-   }
-
-   public void r(String $$0) {
-      this.x.remove($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.s_();
-   }
-
-   public boolean g() {
-      return this.x.isEmpty();
-   }
-
-   private o a(String $$0, ul<?> $$1, ClassCastException $$2) {
-      o $$3 = o.a($$2, "Reading NBT data");
-      p $$4 = $$3.a("Corrupt NBT tag", 1);
-      $$4.a("Tag type found", () -> this.x.get($$0).c().a());
-      $$4.a("Tag type expected", $$1::a);
-      $$4.a("Tag name", $$0);
-      return $$3;
-   }
-
-   public tm h() {
-      Map<String, uj> $$0 = Maps.newHashMap(Maps.transformValues(this.x, uj::d));
-      return new tm($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tm && Objects.equals(this.x, ((tm)$$0).x);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.x.hashCode();
-   }
-
-   private static void a(String $$0, uj $$1, DataOutput $$2) throws IOException {
-      $$2.writeByte($$1.b());
-      if ($$1.b() != 0) {
-         $$2.writeUTF($$0);
-         $$1.a($$2);
-      }
-   }
-
-   static uj a(ul<?> $$0, String $$1, DataInput $$2, tv $$3) {
-      try {
-         return $$0.c($$2, $$3);
-      } catch (IOException var7) {
-         o $$5 = o.a(var7, "Loading NBT data");
-         p $$6 = $$5.a("NBT Tag");
-         $$6.a("Tag name", $$1);
-         $$6.a("Tag type", $$0.a());
-         throw new ud($$5);
-      }
-   }
-
-   public tm a(tm $$0) {
-      for (String $$1 : $$0.x.keySet()) {
-         uj $$2 = $$0.x.get($$1);
-         if ($$2.b() == 10) {
-            if (this.b($$1, 10)) {
-               tm $$3 = this.p($$1);
-               $$3.a((tm)$$2);
-            } else {
-               this.a($$1, $$2.d());
-            }
-         } else {
-            this.a($$1, $$2.d());
-         }
-      }
-
+   public tm e() {
       return this;
    }
 
    @Override
-   public void a(un $$0) {
-      $$0.a(this);
-   }
-
-   protected Map<String, uj> i() {
-      return Collections.unmodifiableMap(this.x);
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof tm && this.x == ((tm)$$0).x;
    }
 
    @Override
-   public ug.b a(ug $$0) {
-      for (Entry<String, uj> $$1 : this.x.entrySet()) {
-         uj $$2 = $$1.getValue();
-         ul<?> $$3 = $$2.c();
-         ug.a $$4 = $$0.a($$3);
-         switch ($$4) {
-            case d:
-               return ug.b.c;
-            case c:
-               return $$0.b();
-            case b:
-               break;
-            default:
-               $$4 = $$0.a($$3, $$1.getKey());
-               switch ($$4) {
-                  case d:
-                     return ug.b.c;
-                  case c:
-                     return $$0.b();
-                  case b:
-                     break;
-                  default:
-                     ug.b $$5 = $$2.a($$0);
-                     switch ($$5) {
-                        case c:
-                           return ug.b.c;
-                        case b:
-                           return $$0.b();
-                     }
-               }
-         }
+   public int hashCode() {
+      return this.x;
+   }
+
+   @Override
+   public void a(up $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.x;
+   }
+
+   @Override
+   public int g() {
+      return this.x;
+   }
+
+   @Override
+   public short h() {
+      return (short)this.x;
+   }
+
+   @Override
+   public byte i() {
+      return this.x;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.x;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.x;
+   }
+
+   @Override
+   public Number l() {
+      return this.x;
+   }
+
+   @Override
+   public ui.b a(ui $$0) {
+      return $$0.a(this.x);
+   }
+
+   static class a {
+      static final tm[] a = new tm[256];
+
+      private a() {
       }
 
-      return $$0.b();
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new tm((byte)($$0 - 128));
+         }
+      }
    }
 }

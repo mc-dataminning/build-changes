@@ -1,25 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class dzl extends dxv<eag> {
-   public dzl(Codec<eag> $$0) {
+public class dzl extends dye<eba> {
+   public dzl(Codec<eba> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dxx<eag> $$0) {
-      czs $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      $$0.f();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         for (ih $$3 : ih.values()) {
-            if ($$3 != ih.a && dkt.a($$1, $$2.a($$3), $$3)) {
-               $$1.a($$2, dca.ff.n().a(dkt.a($$3), Boolean.valueOf(true)), 2);
-               return true;
+   public boolean a(dyg<eba> $$0) {
+      eba $$1 = $$0.f();
+      dab $$2 = $$0.b();
+      id $$3 = $$0.e();
+      dpi $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dep) {
+            if (!$$2.u($$3.c())) {
+               return false;
             }
+
+            dep.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
          }
 
+         return true;
+      } else {
          return false;
       }
    }

@@ -1,12 +1,12 @@
-public record aep(wg b) implements yn<aay> {
-   public static final ye<vr, aep> a = ye.a(wi.d, aep::b, aep::new);
+public record aep(wi b) implements yp<aba> {
+   public static final yg<vt, aep> a = yg.a(wk.d, aep::b, aep::new);
 
    @Override
-   public yp<aep> a() {
-      return afj.aP;
+   public yr<aep> a() {
+      return afl.aN;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 }

@@ -1,16 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public interface bng<P extends bnf> {
-   bng<bnc> a = a("constant", bnc.b);
-   bng<bnl> b = a("uniform", bnl.a);
-   bng<bmx> c = a("biased_to_bottom", bmx.a);
-   bng<bmy> d = a("clamped", bmy.a);
-   bng<bnm> e = a("weighted_list", bnm.a);
-   bng<bna> f = a("clamped_normal", bna.a);
+public class bng extends bni {
+   public static final bng a = new bng(0.0F);
+   public static final Codec<bng> b = awu.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bng::new, bng::d);
+   private final float d;
 
-   Codec<P> codec();
+   public static bng a(float $$0) {
+      return $$0 == 0.0F ? a : new bng($$0);
+   }
 
-   static <P extends bnf> bng<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(kr.M, $$0, () -> $$1);
+   private bng(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
+   }
+
+   @Override
+   public float a(axt $$0) {
+      return this.d;
+   }
+
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bnj<?> c() {
+      return bnj.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

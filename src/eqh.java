@@ -1,23 +1,36 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record eqh(float b) implements eqc {
-   public static final Codec<eqh> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eqh::c)).apply($$0, eqh::new));
+public class eqh implements eql {
+   private static final eqh b = new eqh();
+   public static final Codec<eqh> a = Codec.unit(b);
+
+   private eqh() {
+   }
 
    @Override
-   public eqd b() {
-      return eqe.e;
+   public eqm b() {
+      return eqn.m;
    }
 
-   public boolean a(enb $$0) {
-      return $$0.b().i() < this.b;
+   @Override
+   public Set<epu<?>> a() {
+      return ImmutableSet.of(epx.j);
    }
 
-   public static eqc.a a(float $$0) {
-      return () -> new eqh($$0);
+   public boolean a(enk $$0) {
+      Float $$1 = $$0.c(epx.j);
+      if ($$1 != null) {
+         axt $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public float c() {
-      return this.b;
+   public static eql.a c() {
+      return () -> b;
    }
 }

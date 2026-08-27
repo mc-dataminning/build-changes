@@ -1,100 +1,118 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class elb extends elo {
-   private final boolean l;
-   private float m;
-   private float n;
+public final class elb extends dpk<ela, elb> {
+   public static final Codec<elb> a = a(kt.c.q(), ela::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   public elb(boolean $$0) {
-      this.l = $$0;
+   public elb(ela $$0, Reference2ObjectArrayMap<dql<?>, Comparable<?>> $$1, MapCodec<elb> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(czk $$0, bqq $$1) {
-      super.a($$0, $$1);
-      $$1.a(elj.j, 0.0F);
-      this.m = $$1.a(elj.c);
-      $$1.a(elj.c, 6.0F);
-      this.n = $$1.a(elj.k);
-      $$1.a(elj.k, 4.0F);
+   public ela a() {
+      return this.e;
    }
 
-   @Override
-   public void b() {
-      this.b.a(elj.c, this.m);
-      this.b.a(elj.k, this.n);
-      super.b();
+   public boolean b() {
+      return this.a().c(this);
    }
 
-   @Override
-   public ele a() {
-      return !this.b.bc() ? super.a() : this.c(new ib(axk.a(this.b.cH().a), axk.a(this.b.cH().b + 0.5), axk.a(this.b.cH().c)));
+   public boolean a(ela $$0) {
+      return this.e == $$0 && this.e.c(this);
    }
 
-   @Override
-   public eln a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
+   public boolean c() {
+      return this.a().b();
    }
 
-   @Override
-   public int a(ele[] $$0, ele $$1) {
-      int $$2 = super.a($$0, $$1);
-      elj $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      elj $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.b.a($$3) >= 0.0F && $$4 != elj.w) {
-         $$5 = axk.d(Math.max(1.0F, this.b.dG()));
-      } else {
-         $$5 = 0;
-      }
-
-      double $$7 = this.d(new ib($$1.a, $$1.b, $$1.c));
-      ele $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, ih.b, $$4);
-      ele $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, ih.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
-      }
-
-      if (this.b($$9, $$1) && $$4 != elj.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         ele $$11 = $$0[$$10];
-         if ($$11.l == elj.j && this.l && $$11.b < this.b.dM().z_() - 10) {
-            $$11.k++;
-         }
-      }
-
-      return $$2;
+   public float a(cym $$0, id $$1) {
+      return this.a().a(this, $$0, $$1);
    }
 
-   private boolean b(@Nullable ele $$0, ele $$1) {
-      return this.a($$0, $$1) && $$0.l == elj.j;
+   public float d() {
+      return this.a().a(this);
    }
 
-   @Override
-   protected boolean c() {
-      return true;
+   public int e() {
+      return this.a().d(this);
    }
 
-   @Override
-   public elj a(ell $$0, int $$1, int $$2, int $$3) {
-      elj $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == elj.j) {
-         ib.a $$5 = new ib.a();
-
-         for (ih $$6 : ih.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            elj $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == elj.a) {
-               return elj.k;
+   public boolean b(cym $$0, id $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            id $$4 = $$1.b($$2, 0, $$3);
+            elb $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
             }
          }
-
-         return elj.j;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
       }
+
+      return false;
+   }
+
+   public void a(czg $$0, id $$1) {
+      this.a().b($$0, $$1, this);
+   }
+
+   public void a(czg $$0, id $$1, axt $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(czg $$0, id $$1, axt $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public esj c(cym $$0, id $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public dpi g() {
+      return this.a().b(this);
+   }
+
+   @Nullable
+   public kl h() {
+      return this.a().h();
+   }
+
+   public boolean a(avt<ela> $$0) {
+      return this.a().k().a($$0);
+   }
+
+   public boolean a(ir<ela> $$0) {
+      return $$0.a(this.a().k());
+   }
+
+   public boolean b(ela $$0) {
+      return this.a() == $$0;
+   }
+
+   public float i() {
+      return this.a().c();
+   }
+
+   public boolean a(cym $$0, id $$1, ela $$2, ij $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
+
+   public etc d(cym $$0, id $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public in<ela> j() {
+      return this.e.k();
+   }
+
+   public Stream<avt<ela>> k() {
+      return this.e.k().c();
    }
 }

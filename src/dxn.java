@@ -1,67 +1,45 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class dxn extends dxv<dzv> {
-   private static final ImmutableList<dby> a = ImmutableList.of(dca.F, dca.fn, dca.fo, dca.fp, dca.fq, dca.cv, dca.ct);
-   private static final ih[] b = ih.values();
-   private static final double c = 0.9;
-
-   public dxn(Codec<dzv> $$0) {
+public class dxn extends dye<eaa> {
+   public dxn(Codec<eaa> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dxx<dzv> $$0) {
-      boolean $$1 = false;
-      axr $$2 = $$0.d();
-      czs $$3 = $$0.b();
-      dzv $$4 = $$0.f();
-      ib $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (ib $$13 : ib.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            ib $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private static boolean a(cyy $$0, ib $$1, dzv $$2) {
-      doz $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
+   public boolean a(dyg<eaa> $$0) {
+      id $$1 = $$0.e();
+      dab $$2 = $$0.b();
+      axt $$3 = $$0.d();
+      eaa $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
          return false;
       } else {
-         for (ih $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != ih.b || !$$5 && $$4 == ih.b) {
-               return false;
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
+
+         for (id $$7 : id.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
 
          return true;
+      }
+   }
+
+   private boolean a(czh $$0, id $$1, axt $$2) {
+      id $$3 = $$1.d();
+      dpi $$4 = $$0.a_($$3);
+      return $$4.a(dcj.kE) ? $$2.h() : $$4.d($$0, $$3, ij.b);
+   }
+
+   private void a(czh $$0, id $$1, axt $$2, eaa $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
    }
 }

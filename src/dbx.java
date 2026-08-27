@@ -1,56 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dbx extends dat {
-   public static final MapCodec<dbx> c = b(dbx::new);
+public abstract class dbx extends dch {
+   protected static final int a = 2;
+   protected static final etc b = dch.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dbx> a() {
-      return c;
-   }
-
-   protected dbx(doy.d $$0) {
+   protected dbx(dph.d $$0) {
       super($$0);
    }
 
    @Override
-   public dmf a(ib $$0, doz $$1) {
-      return new dme($$0, $$1);
-   }
+   protected abstract MapCodec<? extends dbx> a();
 
-   @Nullable
    @Override
-   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
-      return a($$0, $$2, dmh.C);
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return b;
    }
 
    @Override
-   protected void a(cyx $$0, ib $$1, cjt $$2) {
-      dmf $$3 = $$0.c_($$1);
-      if ($$3 instanceof dme) {
-         $$2.a((boe)$$3);
-         $$2.a(auw.as);
-      }
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      return $$1 == ij.a && !this.a($$0, $$3, $$4) ? dcj.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aum.cA, aun.e, 1.0F, 1.0F, false);
-         }
-
-         ih $$7 = $$0.c(a);
-         ih.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == ih.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == ih.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(kl.ac, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   protected boolean a(dpi $$0, czj $$1, id $$2) {
+      return a($$1, $$2.d(), ij.b);
    }
 }

@@ -1,33 +1,63 @@
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.function.Consumer;
 
-public record cub(List<wg> d, List<wg> e) implements cuj {
+public final class cub {
    public static final cub a = new cub(List.of());
-   private static final int f = 64;
-   private static final xd g = xd.a.a(n.f).b(true);
-   public static final Codec<cub> b = aws.a(wi.g.listOf(), 64).xmap(cub::new, cub::a);
-   public static final ye<vr, cub> c = wi.b.a(yc.c(64)).a(cub::new, cub::a);
+   public static final Codec<cub> b = crs.a.listOf().xmap(cub::new, $$0 -> $$0.d);
+   public static final yg<vt, cub> c = crs.f.a(ye.a()).a(cub::new, $$0 -> $$0.d);
+   private final List<crs> d;
 
-   public cub(List<wg> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> wj.a($$0x.f(), g)));
+   private cub(List<crs> $$0) {
+      this.d = $$0;
    }
 
-   public cub a(wg $$0) {
-      return new cub(ac.a(this.d, $$0));
+   public static cub a(crs $$0) {
+      return new cub(List.of($$0.r()));
+   }
+
+   public static cub a(List<crs> $$0) {
+      return new cub(Lists.transform($$0, crs::r));
+   }
+
+   public boolean a(crn $$0) {
+      for (crs $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public List<crs> a() {
+      return Lists.transform(this.d, crs::r);
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
    }
 
    @Override
-   public void a(Consumer<wg> $$0, csz $$1) {
-      this.e.forEach($$0);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cub $$1 && crs.a(this.d, $$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public List<wg> a() {
-      return this.d;
+   @Override
+   public int hashCode() {
+      return crs.a(this.d);
    }
 
-   public List<wg> b() {
-      return this.e;
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

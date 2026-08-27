@@ -1,45 +1,45 @@
-public class aeq implements yn<aay> {
-   public static final ye<vg, aeq> a = yn.a(aeq::a, aeq::new);
-   private final int b;
-   private final int c;
-   private final int d;
+public class aeq implements yp<aba> {
+   public static final yg<vi, aeq> a = yp.a(aeq::a, aeq::new);
+   private final long b;
+   private final long c;
 
-   public aeq(int $$0, int $$1, int $$2) {
+   public aeq(long $$0, long $$1, boolean $$2) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.c = $$3;
    }
 
-   private aeq(vg $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = $$0.readInt();
+   private aeq(vi $$0) {
+      this.b = $$0.readLong();
+      this.c = $$0.readLong();
    }
 
-   private void a(vg $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.p(this.d);
+   private void a(vi $$0) {
+      $$0.b(this.b);
+      $$0.b(this.c);
    }
 
    @Override
-   public yp<aeq> a() {
-      return afj.aQ;
+   public yr<aeq> a() {
+      return afl.aO;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 
-   public int e() {
+   public long e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

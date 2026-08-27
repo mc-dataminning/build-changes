@@ -1,69 +1,50 @@
-import java.util.OptionalInt;
+public class fej extends fes {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public class fej extends fdm {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final axz<fej.a, fei> c;
-   private boolean d = false;
-
-   public fej(wg $$0, fda $$1) {
-      this(0, 0, $$0, $$1);
+   public fej(int $$0, wi $$1, fdj $$2) {
+      this($$0, $$1, $$2, 4);
    }
 
-   public fej(int $$0, int $$1, wg $$2, fda $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ac.a($$1x -> $$1x.c.isPresent() ? fei.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : fei.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
+   public fej(int $$0, wi $$1, fdj $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
    }
 
-   public fej c(int $$0) {
-      super.a($$0);
-      return this;
+   public fej(int $$0, wi $$1, fdj $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
    }
 
-   public fej d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fej e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fej b(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   public int x() {
-      return this.c.a(this.d()).b();
+   protected void a(fhu $$0) {
+      $$0.a(fht.a, this.y());
    }
 
    @Override
-   public int v() {
-      return this.c.a(this.d()).a() * 9;
-   }
-
-   @Override
-   public void b(fdc $$0, int $$1, int $$2, float $$3) {
-      fei $$4 = this.c.a(this.d());
-      int $$5 = this.C();
-      int $$6 = this.D();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.x() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+   public void b(fdl $$0, int $$1, int $$2, float $$3) {
+      if (this.aI_() || this.b) {
+         int $$4 = this.C() - this.c;
+         int $$5 = this.D() - this.c;
+         int $$6 = this.x() + this.c * 2;
+         int $$7 = this.v() + this.c * 2;
+         int $$8 = this.b ? (this.aI_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
       }
+
+      super.b($$0, $$1, $$2, $$3);
    }
 
-   private fej.a d() {
-      return new fej.a(this.y(), this.a.orElse(Integer.MAX_VALUE), this.b);
-   }
-
-   static record a(wg a, int b, OptionalInt c) {
+   @Override
+   public void a(gqj $$0) {
    }
 }

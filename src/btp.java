@@ -1,37 +1,72 @@
-import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class btp {
-   public static btr<bqo> a(float $$0) {
-      return bvt.a((Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$1 -> $$1.group($$1.c(bzr.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dm())) {
-                  return false;
-               } else {
-                  Optional<esa> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new bzu($$2x, $$0, 0)));
-                  return true;
+public final class btp {
+   public static Optional<esj> a(bqv $$0, esj $$1, float $$2, int $$3, boolean $$4) {
+      esj $$5 = $$0.dk();
+      esj $$6 = new esj($$1.c - $$5.c, 0.0, $$1.e - $$5.e).d().a(0.5);
+      esj $$7 = $$1.d($$6);
+      esj $$8 = $$7.d($$5);
+      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
+      double $$10 = Math.atan2($$8.e, $$8.c);
+      double $$11 = $$8.a(0.0, $$8.d, 0.0).g();
+      double $$12 = Math.sqrt($$11);
+      double $$13 = $$8.d;
+      double $$14 = $$0.aX();
+      double $$15 = Math.sin((double)(2.0F * $$9));
+      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
+      double $$17 = Math.sin((double)$$9);
+      double $$18 = Math.cos((double)$$9);
+      double $$19 = Math.sin($$10);
+      double $$20 = Math.cos($$10);
+      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
+      if ($$21 < 0.0) {
+         return Optional.empty();
+      } else {
+         double $$22 = Math.sqrt($$21);
+         if ($$22 > (double)$$2) {
+            return Optional.empty();
+         } else {
+            double $$23 = $$22 * $$18;
+            double $$24 = $$22 * $$17;
+            if ($$4) {
+               int $$25 = axm.c($$12 / $$23) * 2;
+               double $$26 = 0.0;
+               esj $$27 = null;
+               bqd $$28 = $$0.a(bre.g);
+
+               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
+                  $$26 += $$12 / (double)$$25;
+                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
+                  double $$31 = $$26 * $$20;
+                  double $$32 = $$26 * $$19;
+                  esj $$33 = new esj($$5.c + $$31, $$5.d + $$30, $$5.e + $$32);
+                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
+                     return Optional.empty();
+                  }
+
+                  $$27 = $$33;
                }
-            })));
+            }
+
+            return Optional.of(new esj($$23 * $$20, $$24, $$23 * $$19).a(0.95F));
+         }
+      }
    }
 
-   @Nullable
-   private static esa a(aps $$0, bqo $$1) {
-      axr $$2 = $$1.ei();
-      ib $$3 = $$1.dm();
+   private static boolean a(bqv $$0, bqd $$1, esj $$2, esj $$3) {
+      esj $$4 = $$3.d($$2);
+      double $$5 = (double)Math.min($$1.a(), $$1.b());
+      int $$6 = axm.c($$4.f() / $$5);
+      esj $$7 = $$4.d();
+      esj $$8 = $$2;
 
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         ib $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return esa.c($$5);
+      for (int $$9 = 0; $$9 < $$6; $$9++) {
+         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.a($$5 * 0.9F));
+         if (!$$0.dM().a($$0, $$1.a($$8))) {
+            return false;
          }
       }
 
-      return null;
-   }
-
-   public static boolean a(aps $$0, bqo $$1, ib $$2) {
-      return $$0.h($$2) && (double)$$0.a(dur.a.e, $$2).v() <= $$1.dt();
+      return true;
    }
 }

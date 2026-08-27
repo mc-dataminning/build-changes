@@ -1,20 +1,14 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-
-public record aaj(ajs<? extends iy<?>> b, List<jc.a> c) implements yn<aah> {
-   private static final ye<ByteBuf, ajs<? extends iy<?>>> d = ajt.b.a(ajs::a, ajs::a);
-   public static final ye<vg, aaj> a = ye.a(d, aaj::b, jc.a.a.a(yc.a()), aaj::e, aaj::new);
-
+public interface aaj extends yv {
    @Override
-   public yp<aaj> a() {
-      return aam.b;
+   default vh b() {
+      return vh.e;
    }
 
-   public void a(aah $$0) {
-      $$0.a(this);
-   }
+   void a(aak var1);
 
-   public List<jc.a> e() {
-      return this.c;
-   }
+   void a(aal var1);
+
+   void a(aan var1);
+
+   void a(aam var1);
 }

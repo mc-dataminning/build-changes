@@ -1,45 +1,48 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eip extends eje {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<eip> a = Codec.unit(() -> eip.b);
-   public static final eip b = new eip();
+public class eip extends ejd {
+   public static final Codec<eip> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               ij.a.e.fieldOf("axis").orElse(ij.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eip::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final ij.a g;
 
-   private eip() {
-   }
-
-   @Nullable
-   @Override
-   public ejh.c a(cza $$0, ib $$1, ib $$2, ejh.c $$3, ejh.c $$4, ejd $$5) {
-      doz $$6 = $$4.b();
-      if ($$6.a(dca.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
-
-            doz $$9;
-            try {
-               fm.a $$8 = fm.a($$0.a(ks.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               throw new RuntimeException(var11);
-            }
-
-            return $$9.a(dca.kN) ? null : new ejh.c($$4.a(), $$9, null);
-         }
+   public eip(float $$0, float $$1, int $$2, int $$3, ij.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         return $$4;
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
       }
    }
 
    @Override
-   protected ejg<?> a() {
-      return ejg.h;
+   public boolean a(id $$0, id $$1, id $$2, axt $$3) {
+      ij $$4 = ij.a(ij.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= axm.b(this.b, this.d, axm.g((float)$$8, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected eje<?> a() {
+      return eje.c;
    }
 }

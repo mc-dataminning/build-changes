@@ -1,24 +1,27 @@
-public class ggv extends ggo<chb, frn<chb>> {
-   private static final ajt a = new ajt("textures/entity/phantom.png");
+public class ggv extends ggx<chf, frl<chf>> {
+   private static final ajv a = new ajv("textures/entity/slime/magmacube.png");
 
-   public ggv(gfi.a $$0) {
-      super($$0, new frn<>($$0.a(ftl.aH)), 0.75F);
-      this.a(new gjr<>(this));
+   public ggv(gfr.a $$0) {
+      super($$0, new frl<>($$0.a(ftu.aA)), 0.25F);
    }
 
-   public ajt a(chb $$0) {
+   protected int a(chf $$0, id $$1) {
+      return 15;
+   }
+
+   public ajv a(chf $$0) {
       return a;
    }
 
-   protected void a(chb $$0, ewi $$1, float $$2) {
-      int $$3 = $$0.r();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
+   public void a(chf $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.go();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(chb $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$1.a(a.b.rotationDegrees($$0.dE()));
+   protected void a(chf $$0, ewr $$1, float $$2) {
+      int $$3 = $$0.go();
+      float $$4 = axm.i($$2, $$0.bW, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
    }
 }

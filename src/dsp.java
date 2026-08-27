@@ -1,13 +1,31 @@
-public class dsp {
-   public static final ajs<dsr> a = a("overworld");
-   public static final ajs<dsr> b = a("the_nether");
-   public static final ajs<dsr> c = a("the_end");
-   public static final ajs<dsr> d = a("overworld_caves");
-   public static final ajt e = new ajt("overworld");
-   public static final ajt f = new ajt("the_nether");
-   public static final ajt g = new ajt("the_end");
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.apache.commons.io.FileUtils;
 
-   private static ajs<dsr> a(String $$0) {
-      return ajs.a(ks.aA, new ajt($$0));
+public class dsp extends dsw {
+   private final dsn a;
+   private final Path b;
+
+   public dsp(dsu $$0, Path $$1, dsu $$2, Path $$3, DataFixer $$4, boolean $$5, ays $$6) {
+      super($$0, $$1, $$4, $$5, $$6);
+      this.b = $$3;
+      this.a = new dsn($$2, $$3, $$5);
+   }
+
+   @Override
+   public CompletableFuture<Void> a(cyn $$0, @Nullable to $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
    }
 }

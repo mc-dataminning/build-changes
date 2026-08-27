@@ -1,47 +1,107 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class aod {
-   private static final int a = -1;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.trigger.failed.unprimed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("commands.trigger.failed.invalid"));
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<dv> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), -1)))
-                        .then(dv.a("duration", fh.a(1)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)dv.a("rain").executes($$0x -> b((du)$$0x.getSource(), -1)))
-                     .then(dv.a("duration", fh.a(1)).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
+         (LiteralArgumentBuilder)dw.a("trigger")
             .then(
-               ((LiteralArgumentBuilder)dv.a("thunder").executes($$0x -> c((du)$$0x.getSource(), -1)))
-                  .then(dv.a("duration", fh.a(1)).executes($$0x -> c((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dw.a("objective", ep.a())
+                        .suggests(($$0x, $$1) -> a((dv)$$0x.getSource(), $$1))
+                        .executes($$0x -> a((dv)$$0x.getSource(), ((dv)$$0x.getSource()).h(), ep.a($$0x, "objective"))))
+                     .then(
+                        dw.a("add")
+                           .then(
+                              dw.a("value", IntegerArgumentType.integer())
+                                 .executes(
+                                    $$0x -> a(
+                                          (dv)$$0x.getSource(),
+                                          ((dv)$$0x.getSource()).h(),
+                                          ep.a($$0x, "objective"),
+                                          IntegerArgumentType.getInteger($$0x, "value")
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(
+                     dw.a("set")
+                        .then(
+                           dw.a("value", IntegerArgumentType.integer())
+                              .executes(
+                                 $$0x -> b(
+                                       (dv)$$0x.getSource(), ((dv)$$0x.getSource()).h(), ep.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(du $$0, int $$1, bnf $$2) {
-      return $$1 == -1 ? $$2.a($$0.e().E_()) : $$1;
+   public static CompletableFuture<Suggestions> a(dv $$0, SuggestionsBuilder $$1) {
+      etm $$2 = $$0.f();
+      List<String> $$3 = Lists.newArrayList();
+      if ($$2 != null) {
+         etn $$4 = $$0.l().aK();
+
+         for (etf $$5 : $$4.c()) {
+            if ($$5.c() == etq.c) {
+               etj $$6 = $$4.d($$2, $$5);
+               if ($$6 != null && !$$6.b()) {
+                  $$3.add($$5.b());
+               }
+            }
+         }
+      }
+
+      return ea.b($$3, $$1);
    }
 
-   private static int a(du $$0, int $$1) {
-      $$0.e().a(a($$0, $$1, aps.b), 0, false, false);
-      $$0.a(() -> wg.c("commands.weather.set.clear"), true);
-      return $$1;
+   private static int a(dv $$0, apv $$1, etf $$2, int $$3) throws CommandSyntaxException {
+      etl $$4 = a($$0.l().aK(), $$1, $$2);
+      int $$5 = $$4.b($$3);
+      $$0.a(() -> wi.a("commands.trigger.add.success", $$2.g(), $$3), true);
+      return $$5;
    }
 
-   private static int b(du $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, aps.c), true, false);
-      $$0.a(() -> wg.c("commands.weather.set.rain"), true);
-      return $$1;
+   private static int b(dv $$0, apv $$1, etf $$2, int $$3) throws CommandSyntaxException {
+      etl $$4 = a($$0.l().aK(), $$1, $$2);
+      $$4.a($$3);
+      $$0.a(() -> wi.a("commands.trigger.set.success", $$2.g(), $$3), true);
+      return $$3;
    }
 
-   private static int c(du $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, aps.d), true, true);
-      $$0.a(() -> wg.c("commands.weather.set.thunder"), true);
-      return $$1;
+   private static int a(dv $$0, apv $$1, etf $$2) throws CommandSyntaxException {
+      etl $$3 = a($$0.l().aK(), $$1, $$2);
+      int $$4 = $$3.b(1);
+      $$0.a(() -> wi.a("commands.trigger.simple.success", $$2.g()), true);
+      return $$4;
+   }
+
+   private static etl a(etn $$0, etm $$1, etf $$2) throws CommandSyntaxException {
+      if ($$2.c() != etq.c) {
+         throw b.create();
+      } else {
+         etj $$3 = $$0.d($$1, $$2);
+         if ($$3 != null && !$$3.b()) {
+            etl $$4 = $$0.c($$1, $$2);
+            $$4.f();
+            return $$4;
+         } else {
+            throw a.create();
+         }
+      }
    }
 }

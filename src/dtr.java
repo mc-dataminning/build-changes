@@ -1,104 +1,19 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dtr implements dtv {
-   private final List<dtu> b = Lists.newArrayList();
-   private final Set<dtu> c = Sets.newHashSet();
-   private final List<dtu> d = Lists.newArrayList();
-   private boolean e;
-   private final aps f;
-   private final int g;
-   private final dtr.a h;
+public interface dtr<T extends dti> {
+   @Nullable
+   T a(int var1);
 
-   public dtr(aps $$0, int $$1, dtr.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
+   @Nullable
+   T a(UUID var1);
 
-   @Override
-   public boolean a() {
-      return this.b.isEmpty();
-   }
+   Iterable<T> a();
 
-   @Override
-   public void a(dtu $$0) {
-      if (this.e) {
-         this.d.add($$0);
-      } else {
-         this.b.add($$0);
-      }
+   <U extends T> void a(dtp<T, U> var1, avz<U> var2);
 
-      afi.a(this.f, $$0);
-   }
+   void a(ese var1, Consumer<T> var2);
 
-   @Override
-   public void b(dtu $$0) {
-      if (this.e) {
-         this.c.add($$0);
-      } else {
-         this.b.remove($$0);
-      }
-
-      if (this.b.isEmpty()) {
-         this.h.apply(this.g);
-      }
-   }
-
-   @Override
-   public boolean a(il<dts> $$0, esa $$1, dts.a $$2, dtv.a $$3) {
-      this.e = true;
-      boolean $$4 = false;
-
-      try {
-         Iterator<dtu> $$5 = this.b.iterator();
-
-         while ($$5.hasNext()) {
-            dtu $$6 = $$5.next();
-            if (this.c.remove($$6)) {
-               $$5.remove();
-            } else {
-               Optional<esa> $$7 = a(this.f, $$1, $$6);
-               if ($$7.isPresent()) {
-                  $$3.visit($$6, $$7.get());
-                  $$4 = true;
-               }
-            }
-         }
-      } finally {
-         this.e = false;
-      }
-
-      if (!this.d.isEmpty()) {
-         this.b.addAll(this.d);
-         this.d.clear();
-      }
-
-      if (!this.c.isEmpty()) {
-         this.b.removeAll(this.c);
-         this.c.clear();
-      }
-
-      return $$4;
-   }
-
-   private static Optional<esa> a(aps $$0, esa $$1, dtu $$2) {
-      Optional<esa> $$3 = $$2.a().a($$0);
-      if ($$3.isEmpty()) {
-         return Optional.empty();
-      } else {
-         double $$4 = ib.a($$3.get()).j(ib.a($$1));
-         int $$5 = $$2.b() * $$2.b();
-         return $$4 > (double)$$5 ? Optional.empty() : $$3;
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(int var1);
-   }
+   <U extends T> void a(dtp<T, U> var1, ese var2, avz<U> var3);
 }

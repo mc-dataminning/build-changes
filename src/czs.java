@@ -1,13 +1,25 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public final class czs implements drb {
+   private final int a;
+   private final dpi[] b;
 
-public interface czs extends czm {
-   long C();
-
-   default boolean f_(ib $$0) {
-      return true;
+   public czs(int $$0, dpi[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default void a(@Nullable Supplier<String> $$0) {
+   @Override
+   public dpi a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dcj.a.n();
+   }
+
+   @Override
+   public void a(int $$0, dpi $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
+      }
    }
 }

@@ -1,21 +1,51 @@
-class bpa extends bpf {
-   protected bpa(bpg $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record bpa(String b, box c, float d, bow e, bpc f) {
+   public static final Codec<bpa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bpa::a),
+               box.d.fieldOf("scaling").forGetter(bpa::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bpa::c),
+               bow.g.optionalFieldOf("effects", bow.a).forGetter(bpa::d),
+               bpc.d.optionalFieldOf("death_message_type", bpc.a).forGetter(bpa::e)
+            )
+            .apply($$0, bpa::new)
+   );
+
+   public bpa(String $$0, box $$1, float $$2) {
+      this($$0, $$1, $$2, bow.a, bpc.a);
    }
 
-   @Override
-   public boolean a(bqo $$0, int $$1) {
-      return $$0.fp() > 0.0F || $$0.dM().B;
+   public bpa(String $$0, box $$1, float $$2, bow $$3) {
+      this($$0, $$1, $$2, $$3, bpc.a);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public bpa(String $$0, float $$1, bow $$2) {
+      this($$0, box.b, $$1, $$2);
    }
 
-   @Override
-   public void b(bqo $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.A(Math.max($$0.fp(), (float)(4 * (1 + $$1))));
+   public bpa(String $$0, float $$1) {
+      this($$0, box.b, $$1);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public box b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public bow d() {
+      return this.e;
+   }
+
+   public bpc e() {
+      return this.f;
    }
 }

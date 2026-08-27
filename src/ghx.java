@@ -1,34 +1,20 @@
-public class ghx extends gfh<cge> {
-   private final gat a;
+public class ghx<T extends chr> extends ggx<T, fsw<T>> {
+   private static final ajv a = new ajv("textures/entity/spider/spider.png");
 
-   public ghx(gfi.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public ghx(gfr.a $$0) {
+      this($$0, ftu.bx);
    }
 
-   public void a(cge $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.r();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = axk.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      ghw.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ghx(gfr.a $$0, ftt $$1) {
+      super($$0, new fsw<>($$0.a($$1)), 0.8F);
+      this.a(new gkj<>(this));
    }
 
-   public ajt a(cge $$0) {
-      return gli.e;
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public ajv a(T $$0) {
+      return a;
    }
 }

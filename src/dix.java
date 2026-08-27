@@ -1,146 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.UUID;
-import javax.annotation.Nullable;
 
-public abstract class dix extends dbk implements diy {
-   public static final dpq f = dpp.C;
-   protected static final float g = 4.0F;
-   protected static final est h = dby.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-   private final dqm a;
+public class dix extends der implements diw {
+   public static final MapCodec<dix> b = b(dix::new);
 
-   protected dix(dqm $$0, doy.d $$1) {
-      super($$1);
-      this.a = $$0;
+   @Override
+   public MapCodec<dix> a() {
+      return b;
+   }
+
+   public dix(dph.d $$0) {
+      super(bnh.a(1), $$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dix> a();
-
-   @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, ekt.c, ekt.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return h;
-   }
-
-   @Override
-   public boolean a(doz $$0) {
-      return true;
-   }
-
-   @Override
-   public dmf a(ib $$0, doz $$1) {
-      return new dnp($$0, $$1);
-   }
-
-   @Override
-   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
-      if ($$2.c_($$3) instanceof dnp $$7) {
-         csi $$10 = $$0.f() instanceof csi $$9 ? $$9 : null;
-         boolean $$11 = $$10 != null && $$4.gl();
-         if (!$$2.B) {
-            if ($$11 && !$$7.u() && !this.a($$4, $$7)) {
-               boolean $$12 = $$7.a($$4);
-               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
-                  $$7.a($$4, $$2, $$3, $$12);
-                  $$4.b(auw.c.b($$0.f()));
-                  $$2.a(dts.c, $$7.aA_(), dts.a.a($$4, $$7.n()));
-                  if (!$$4.f()) {
-                     $$0.g(1);
-                  }
-
-                  return boc.a;
-               } else {
-                  return boc.d;
-               }
-            } else {
-               return boc.d;
+   public int a(djb.a $$0, czh $$1, id $$2, axt $$3, djb $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         id $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               id $$10 = $$7.c();
+               dpi $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), aup.e, 1.0F, 1.0F);
             }
+
+            return Math.max(0, $$6 - $$9);
          } else {
-            return !$$11 && !$$7.u() ? boc.b : boc.a;
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
       } else {
-         return boc.e;
+         return $$6;
+      }
+   }
+
+   private static int a(djb $$0, id $$1, id $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = axm.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = axm.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private dpi a(czh $$0, id $$1, axt $$2, boolean $$3) {
+      dpi $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dcj.qV.n().a(dja.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dcj.qQ.n();
+      }
+
+      return $$4.b(dpy.C) && !$$0.b_($$1).c() ? $$4.a(dpy.C, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(czh $$0, id $$1) {
+      dpi $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(dcj.G) && $$2.u().b(elc.c)) {
+         int $$3 = 0;
+
+         for (id $$4 : id.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dpi $$5 = $$0.a_($$4);
+            if ($$5.a(dcj.qQ) || $$5.a(dcj.qV)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
-      if ($$1.c_($$2) instanceof dnp $$5) {
-         if ($$1.B) {
-            ac.b(new IllegalStateException("Expected to only call this on server"));
-         }
-
-         boolean $$7 = $$5.a($$3);
-         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
-         if ($$5.u()) {
-            $$1.a(null, $$5.aA_(), $$5.d(), aun.e);
-            return boa.a;
-         } else if ($$8) {
-            return boa.a;
-         } else if (!this.a($$3, $$5) && $$3.gl() && this.b($$3, $$5, $$7)) {
-            this.a($$3, $$5, $$7);
-            return boa.a;
-         } else {
-            return boa.d;
-         }
-      } else {
-         return boa.d;
-      }
-   }
-
-   private boolean b(cjt $$0, dnp $$1, boolean $$2) {
-      dnq $$3 = $$1.a($$2);
-      return Arrays.stream($$3.b($$0.Y())).allMatch($$0x -> $$0x.equals(wf.a) || $$0x.b() instanceof xn);
-   }
-
-   public abstract float g(doz var1);
-
-   public esa m(doz $$0) {
-      return new esa(0.5, 0.5, 0.5);
-   }
-
-   @Override
-   protected eks c_(doz $$0) {
-      return $$0.c(f) ? ekt.c.a(false) : super.c_($$0);
-   }
-
-   public dqm d() {
-      return this.a;
-   }
-
-   public static dqm a(dby $$0) {
-      dqm $$1;
-      if ($$0 instanceof dix) {
-         $$1 = ((dix)$$0).d();
-      } else {
-         $$1 = dqm.b;
-      }
-
-      return $$1;
-   }
-
-   public void a(cjt $$0, dnp $$1, boolean $$2) {
-      $$1.a($$0.cw());
-      $$0.a($$1, $$2);
-   }
-
-   private boolean a(cjt $$0, dnp $$1) {
-      UUID $$2 = $$1.t();
-      return $$2 != null && !$$2.equals($$0.cw());
-   }
-
-   @Nullable
-   @Override
-   public <T extends dmf> dmg<T> a(cyx $$0, doz $$1, dmh<T> $$2) {
-      return a($$2, dmh.h, dnp::a);
+   public boolean d() {
+      return false;
    }
 }

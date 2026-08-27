@@ -1,34 +1,25 @@
-import javax.annotation.Nullable;
+public class dmk extends dmo {
+   private cql a;
 
-public class dmk extends dnm {
-   public dmk(ib $$0, doz $$1) {
-      super(dmh.J, $$0, $$1);
+   public dmk(id $$0, dpi $$1) {
+      super(dmq.y, $$0, $$1);
+      this.a = ((dca)$$1.b()).b();
    }
 
-   @Override
-   public dub.d b() {
-      return new dmk.a(this.aA_());
+   public dmk(id $$0, dpi $$1, cql $$2) {
+      super(dmq.y, $$0, $$1);
+      this.a = $$2;
    }
 
-   protected class a extends dnm.a {
-      public a(ib $$1) {
-         super($$1);
-      }
+   public abh b() {
+      return abh.a(this);
+   }
 
-      @Override
-      public int a() {
-         return 16;
-      }
+   public cql c() {
+      return this.a;
+   }
 
-      @Override
-      public boolean a(aps $$0, ib $$1, il<dts> $$2, @Nullable dts.a $$3) {
-         int $$4 = this.a($$0, this.c, dmk.this.n());
-         return $$4 != 0 && dub.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
-
-      private int a(cyx $$0, ib $$1, doz $$2) {
-         ih $$3 = $$2.c(dcl.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+   public void a(cql $$0) {
+      this.a = $$0;
    }
 }

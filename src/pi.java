@@ -1,17 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class pi extends ox<bqb<?>> {
-   public pi(la $$0, CompletableFuture<in.a> $$1) {
-      super($$0, ks.u, $$1, $$0x -> $$0x.r().h());
+public class pi extends pe<bpa> {
+   public pi(lc $$0, CompletableFuture<ip.a> $$1) {
+      super($$0, ku.s, $$1);
    }
 
    @Override
-   protected void a(in.a $$0) {
-      this.a(avf.o).a(bqb.m);
-      this.a(avf.r).a(bqb.m);
-      this.a(avf.s).a(bqb.m);
-      this.a(avf.g).a(bqb.bm, bqb.n);
-      this.a(avf.D).a(bqb.m, bqb.aM, bqb.l, bqb.aX, bqb.bt, bqb.ac, bqb.aV, bqb.q, bqb.aO);
-      this.a(avf.a).a(bqb.l);
+   protected void a(ip.a $$0) {
+      this.b(avg.b).a(bpb.C, bpb.D);
+      this.b(avg.k).a(bpb.G);
+      this.b(avg.B).a(bpb.G);
    }
 }

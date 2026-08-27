@@ -1,25 +1,13 @@
-public class ayl<A, B> {
-   private A a;
-   private B b;
+import java.util.concurrent.TimeUnit;
 
-   public ayl(A $$0, B $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public class ayl {
+   public static final long a = TimeUnit.SECONDS.toNanos(1L);
+   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
+   public static final long c = TimeUnit.SECONDS.toMillis(1L);
+   public static final long d = TimeUnit.HOURS.toSeconds(1L);
+   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   public A a() {
-      return this.a;
-   }
-
-   public void a(A $$0) {
-      this.a = $$0;
-   }
-
-   public B b() {
-      return this.b;
-   }
-
-   public void b(B $$0) {
-      this.b = $$0;
+   public static bnq a(int $$0, int $$1) {
+      return bnq.a($$0 * 20, $$1 * 20);
    }
 }

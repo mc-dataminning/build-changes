@@ -1,68 +1,75 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record cjj(String q, Predicate<il<cbu>> r, Predicate<il<cbu>> s, ImmutableSet<cre> t, ImmutableSet<dby> u, @Nullable aul v) {
-   public static final Predicate<il<cbu>> a = $$0 -> $$0.a(avm.a);
-   public static final cjj b = a("none", cbu.a, a, null);
-   public static final cjj c = a("armorer", cbv.a, aum.AC);
-   public static final cjj d = a("butcher", cbv.b, aum.AD);
-   public static final cjj e = a("cartographer", cbv.c, aum.AE);
-   public static final cjj f = a("cleric", cbv.d, aum.AF);
-   public static final cjj g = a("farmer", cbv.e, ImmutableSet.of(crm.pv, crm.pu, crm.vj, crm.rx), ImmutableSet.of(dca.cC), aum.AG);
-   public static final cjj h = a("fisherman", cbv.f, aum.AH);
-   public static final cjj i = a("fletcher", cbv.g, aum.AI);
-   public static final cjj j = a("leatherworker", cbv.h, aum.AJ);
-   public static final cjj k = a("librarian", cbv.i, aum.AK);
-   public static final cjj l = a("mason", cbv.j, aum.AL);
-   public static final cjj m = a("nitwit", cbu.a, cbu.a, null);
-   public static final cjj n = a("shepherd", cbv.k, aum.AM);
-   public static final cjj o = a("toolsmith", cbv.l, aum.AN);
-   public static final cjj p = a("weaponsmith", cbv.m, aum.AO);
+public class cjj implements cyt {
+   private static final int a = 1200;
+   private int b;
 
    @Override
-   public String toString() {
-      return this.q;
+   public int a(apu $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.aa().b(czc.e)) {
+         this.b--;
+         if (this.b > 0) {
+            return 0;
+         } else {
+            this.b = 1200;
+            cka $$3 = $$0.j();
+            if ($$3 == null) {
+               return 0;
+            } else {
+               axt $$4 = $$0.z;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               id $$7 = $$3.dm().b($$5, 0, $$6);
+               int $$8 = 10;
+               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  return 0;
+               } else {
+                  if (bro.a(bqg.p, $$0, $$7)) {
+                     if ($$0.a($$7, 2)) {
+                        return this.a($$0, $$7);
+                     }
+
+                     if ($$0.a().a($$7, avp.m).b()) {
+                        return this.b($$0, $$7);
+                     }
+                  }
+
+                  return 0;
+               }
+            }
+         }
+      } else {
+         return 0;
+      }
    }
 
-   private static cjj a(String $$0, ajs<cbu> $$1, @Nullable aul $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   private int a(apu $$0, id $$1) {
+      int $$2 = 48;
+      if ($$0.y().a($$0x -> $$0x.a(cca.n), $$1, 48, cbw.b.b) > 4L) {
+         List<ccl> $$3 = $$0.a(ccl.class, new ese($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            return this.a($$1, $$0);
+         }
+      }
+
+      return 0;
    }
 
-   private static cjj a(String $$0, Predicate<il<cbu>> $$1, Predicate<il<cbu>> $$2, @Nullable aul $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   private int b(apu $$0, id $$1) {
+      int $$2 = 16;
+      List<ccl> $$3 = $$0.a(ccl.class, new ese($$1).c(16.0, 8.0, 16.0));
+      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
    }
 
-   private static cjj a(String $$0, ajs<cbu> $$1, ImmutableSet<cre> $$2, ImmutableSet<dby> $$3, @Nullable aul $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
-   }
-
-   private static cjj a(String $$0, Predicate<il<cbu>> $$1, Predicate<il<cbu>> $$2, ImmutableSet<cre> $$3, ImmutableSet<dby> $$4, @Nullable aul $$5) {
-      return iy.a(kr.z, new ajt($$0), new cjj($$0, $$1, $$2, $$3, $$4, $$5));
-   }
-
-   public String a() {
-      return this.q;
-   }
-
-   public Predicate<il<cbu>> b() {
-      return this.r;
-   }
-
-   public Predicate<il<cbu>> c() {
-      return this.s;
-   }
-
-   public ImmutableSet<cre> d() {
-      return this.t;
-   }
-
-   public ImmutableSet<dby> e() {
-      return this.u;
-   }
-
-   @Nullable
-   public aul f() {
-      return this.v;
+   private int a(id $$0, apu $$1) {
+      ccl $$2 = bqg.p.a((czg)$$1);
+      if ($$2 == null) {
+         return 0;
+      } else {
+         $$2.a($$1, $$1.d_($$0), bqx.a, null);
+         $$2.a($$0, 0.0F, 0.0F);
+         $$1.a_($$2);
+         return 1;
+      }
    }
 }

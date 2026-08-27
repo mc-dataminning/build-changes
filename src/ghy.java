@@ -1,41 +1,25 @@
-public class ghy extends ggo<cdd, fqe<cdd>> {
-   private final fqe<cdd> a = this.a();
-   private final fqe<cdd> i;
-   private static final ajt j = new ajt("textures/entity/fish/tropical_a.png");
-   private static final ajt k = new ajt("textures/entity/fish/tropical_b.png");
+public class ghy<T extends cdh> extends ggx<T, fsx<T>> {
+   private static final ajv a = new ajv("textures/entity/squid/squid.png");
 
-   public ghy(gfi.a $$0) {
-      super($$0, new fss<>($$0.a(ftl.bL)), 0.15F);
-      this.i = new fst<>($$0.a(ftl.bJ));
-      this.a(new gkd(this, $$0.f()));
+   public ghy(gfr.a $$0, fsx<T> $$1) {
+      super($$0, $$1, 0.7F);
    }
 
-   public ajt a(cdd $$0) {
-      return switch ($$0.gy().a()) {
-         case a -> j;
-         case b -> k;
-      };
+   public ajv a(T $$0) {
+      return a;
    }
 
-   public void a(cdd $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
-      fqe<cdd> $$6 = switch ($$0.gy().a()) {
-         case a -> this.a;
-         case b -> this.i;
-      };
-      this.f = $$6;
-      float[] $$7 = $$0.gw().d();
-      $$6.a($$7[0], $$7[1], $$7[2]);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$6.a(1.0F, 1.0F, 1.0F);
+   protected void a(T $$0, ewr $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = axm.i($$4, $$0.c, $$0.b);
+      float $$7 = axm.i($$4, $$0.e, $$0.d);
+      $$1.a(0.0F, 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      $$1.a(a.b.rotationDegrees($$6));
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, -1.2F, 0.0F);
    }
 
-   protected void a(cdd $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 4.3F * axk.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.bc()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   protected float a(T $$0, float $$1) {
+      return axm.i($$1, $$0.ca, $$0.bZ);
    }
 }

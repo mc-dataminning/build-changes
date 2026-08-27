@@ -1,166 +1,84 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public class gbc implements atf {
+   private final gbb a;
+   private final gbe b;
+   private final fzv c;
+   private final gbd d;
+   private final axt e = axt.a();
+   private final fdc f;
 
-public class gbc {
-   private final Map<String, gbj> a = Maps.newLinkedHashMap();
-   private gbo b;
-
-   public static gbc a(gbc.a $$0, Reader $$1) {
-      return axa.a($$0.a, $$1, gbc.class);
+   public gbc(gbb $$0, fzv $$1, fdc $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new gbe(this.f);
+      this.d = new gbd();
    }
 
-   public static gbc a(gbc.a $$0, JsonElement $$1) {
-      return (gbc)$$0.a.fromJson($$1, gbc.class);
-   }
-
-   public gbc(Map<String, gbj> $$0, gbo $$1) {
-      this.b = $$1;
-      this.a.putAll($$0);
-   }
-
-   public gbc(List<gbc> $$0) {
-      gbc $$1 = null;
-
-      for (gbc $$2 : $$0) {
-         if ($$2.c()) {
-            this.a.clear();
-            $$1 = $$2;
-         }
-
-         this.a.putAll($$2.a);
-      }
-
-      if ($$1 != null) {
-         this.b = $$1.b;
-      }
-   }
-
-   @VisibleForTesting
-   public boolean a(String $$0) {
-      return this.a.get($$0) != null;
-   }
-
-   @VisibleForTesting
-   public gbj b(String $$0) {
-      gbj $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new gbc.c();
-      } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof gbc $$1 && this.a.equals($$1.a)) {
-            return this.c() ? this.b.equals($$1.b) : !$$1.c();
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
-   }
-
-   public Map<String, gbj> a() {
+   public gbb a() {
       return this.a;
    }
 
-   @VisibleForTesting
-   public Set<gbj> b() {
-      Set<gbj> $$0 = Sets.newHashSet(this.a.values());
-      if (this.c()) {
-         $$0.addAll(this.b.b());
+   public void a(dpi $$0, id $$1, cyj $$2, ewr $$3, ewv $$4) {
+      if ($$0.l() == dim.c) {
+         gns $$5 = this.a.b($$0);
+         long $$6 = $$0.a($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, glj.d);
       }
-
-      return $$0;
    }
 
-   public boolean c() {
-      return this.b != null;
+   public void a(dpi $$0, id $$1, cyj $$2, ewr $$3, ewv $$4, boolean $$5, axt $$6) {
+      try {
+         dim $$7 = $$0.l();
+         if ($$7 == dim.c) {
+            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), glj.d);
+         }
+      } catch (Throwable var11) {
+         o $$9 = o.a(var11, "Tesselating block in world");
+         p $$10 = $$9.a("Block being tesselated");
+         p.a($$10, $$2, $$1, $$0);
+         throw new y($$9);
+      }
    }
 
-   public gbo d() {
+   public void a(id $$0, cyj $$1, ewv $$2, dpi $$3, elb $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new y($$6);
+      }
+   }
+
+   public gbe b() {
       return this.b;
    }
 
-   public static final class a {
-      protected final Gson a = new GsonBuilder()
-         .registerTypeAdapter(gbc.class, new gbc.b())
-         .registerTypeAdapter(gbk.class, new gbk.a())
-         .registerTypeAdapter(gbj.class, new gbj.a())
-         .registerTypeAdapter(gbo.class, new gbo.a(this))
-         .registerTypeAdapter(gbq.class, new gbq.a())
-         .create();
-      private dpa<dby, doz> b;
-
-      public dpa<dby, doz> a() {
-         return this.b;
-      }
-
-      public void a(dpa<dby, doz> $$0) {
-         this.b = $$0;
-      }
+   public gns a(dpi $$0) {
+      return this.a.b($$0);
    }
 
-   public static class b implements JsonDeserializer<gbc> {
-      public gbc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, gbj> $$4 = this.a($$2, $$3);
-         gbo $$5 = this.b($$2, $$3);
-         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
-            return new gbc($$4, $$5);
-         } else {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
-         }
-      }
-
-      protected Map<String, gbj> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, gbj> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = axa.u($$1, "variants");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (gbj)$$0.deserialize($$4.getValue(), gbj.class));
-            }
-         }
-
-         return $$2;
-      }
-
-      @Nullable
-      protected gbo b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = axa.v($$1, "multipart");
-            return (gbo)$$0.deserialize($$2, gbo.class);
+   public void a(dpi $$0, ewr $$1, gai $$2, int $$3, int $$4) {
+      dim $$5 = $$0.l();
+      if ($$5 != dim.a) {
+         switch ($$5) {
+            case c:
+               gns $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(gad.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new crs($$0.b()), crp.a, $$1, $$2, $$3, $$4);
          }
       }
    }
 
-   protected class c extends RuntimeException {
+   @Override
+   public void a(ate $$0) {
+      this.d.a();
    }
 }

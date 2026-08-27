@@ -1,9 +1,9 @@
-import java.util.List;
-
-public interface cnf extends bnt, coo {
-   int f();
-
-   int g();
-
-   List<crj> h();
+public enum cnf {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g;
 }

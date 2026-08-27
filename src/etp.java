@@ -1,54 +1,83 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class etp<T> implements ets<T>, etu<T> {
-   private final List<etq<T>> a = Lists.newArrayList();
-   private final Set<etq<?>> b = new ObjectOpenCustomHashSet(etq.a);
-
-   @Override
-   public void a(etr<T> $$0) {
-      etq<T> $$1 = new etq<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+public abstract class etp {
+   public boolean a(@Nullable etp $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   private void a(etq<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   public abstract String b();
+
+   public abstract ww d(wi var1);
+
+   public abstract boolean i();
+
+   public abstract boolean h();
+
+   public abstract etp.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract etp.b k();
+
+   public abstract etp.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, etp.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (etp.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static etp.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wi a() {
+         return wi.c("team.collision." + this.e);
       }
    }
 
-   @Override
-   public boolean a(ib $$0, T $$1) {
-      return this.b.contains(etq.a($$1, $$0));
-   }
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   @Override
-   public int a() {
-      return this.a.size();
-   }
+      private static final Map<String, etp.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (etp.b)$$0));
+      public final String e;
+      public final int f;
 
-   @Override
-   public uj b(long $$0, Function<T, String> $$1) {
-      ts $$2 = new ts();
-
-      for (etq<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
       }
 
-      return $$2;
-   }
+      @Nullable
+      public static etp.b a(String $$0) {
+         return g.get($$0);
+      }
 
-   public List<etq<T>> b() {
-      return List.copyOf(this.a);
-   }
+      private b(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
 
-   public static <T> etp<T> a(ts $$0, Function<String, Optional<T>> $$1, cye $$2) {
-      etp<T> $$3 = new etp<>();
-      etq.a($$0, $$1, $$2, $$3::a);
-      return $$3;
+      public wi b() {
+         return wi.c("team.visibility." + this.e);
+      }
    }
 }

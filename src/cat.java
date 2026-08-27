@@ -1,98 +1,56 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cat extends cax<bqo> {
-   @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.of(bzr.h, bzr.g, bzr.M, bzr.am, bzr.au, bzr.ak, new bzr[]{bzr.al, bzr.ao, bzr.an, bzr.as, bzr.at, bzr.aw});
+public class cat extends cbc<bqv> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
+
+   public cat() {
+      super(20);
    }
 
    @Override
-   protected void a(aps $$0, bqo $$1) {
-      brp<?> $$2 = $$1.dP();
-      $$2.a(bzr.aw, c($$0, $$1));
-      Optional<bqq> $$3 = Optional.empty();
-      Optional<cid> $$4 = Optional.empty();
-      Optional<cid> $$5 = Optional.empty();
-      Optional<cij> $$6 = Optional.empty();
-      Optional<bqo> $$7 = Optional.empty();
-      Optional<cjt> $$8 = Optional.empty();
-      Optional<cjt> $$9 = Optional.empty();
-      int $$10 = 0;
-      List<cii> $$11 = Lists.newArrayList();
-      List<cii> $$12 = Lists.newArrayList();
-      bzt $$13 = $$2.c(bzr.h).orElse(bzt.a());
-
-      for (bqo $$14 : $$13.b($$0x -> true)) {
-         if ($$14 instanceof cid) {
-            cid $$15 = (cid)$$14;
-            if ($$15.p_() && $$5.isEmpty()) {
-               $$5 = Optional.of($$15);
-            } else if ($$15.u()) {
-               $$10++;
-               if ($$4.isEmpty() && $$15.gt()) {
-                  $$4 = Optional.of($$15);
-               }
-            }
-         } else if ($$14 instanceof cim $$16) {
-            $$11.add($$16);
-         } else if ($$14 instanceof cij) {
-            cij $$17 = (cij)$$14;
-            if ($$17.p_() && $$6.isEmpty()) {
-               $$6 = Optional.of($$17);
-            } else if ($$17.go()) {
-               $$11.add($$17);
-            }
-         } else if ($$14 instanceof cjt) {
-            cjt $$18 = (cjt)$$14;
-            if ($$8.isEmpty() && !cik.a($$18) && $$1.c($$14)) {
-               $$8 = Optional.of($$18);
-            }
-
-            if ($$9.isEmpty() && !$$18.N_() && cik.b($$18)) {
-               $$9 = Optional.of($$18);
-            }
-         } else if (!$$3.isEmpty() || !($$14 instanceof chq) && !($$14 instanceof cfr)) {
-            if ($$7.isEmpty() && cik.a($$14.ai())) {
-               $$7 = Optional.of($$14);
-            }
-         } else {
-            $$3 = Optional.of((bqq)$$14);
-         }
-      }
-
-      for (bqo $$20 : $$2.c(bzr.g).orElse(ImmutableList.of())) {
-         if ($$20 instanceof cii) {
-            cii $$21 = (cii)$$20;
-            if ($$21.go()) {
-               $$12.add($$21);
-            }
-         }
-      }
-
-      $$2.a(bzr.M, $$3);
-      $$2.a(bzr.ak, $$4);
-      $$2.a(bzr.al, $$5);
-      $$2.a(bzr.ar, $$7);
-      $$2.a(bzr.am, $$8);
-      $$2.a(bzr.au, $$9);
-      $$2.a(bzr.an, $$12);
-      $$2.a(bzr.ao, $$11);
-      $$2.a(bzr.as, $$11.size());
-      $$2.a(bzr.at, $$10);
+   public Set<bzw<?>> a() {
+      return ImmutableSet.of(bzw.w);
    }
 
-   private static Optional<ib> c(aps $$0, bqo $$1) {
-      return ib.a($$1.dm(), 8, 4, $$1x -> a($$0, $$1x));
-   }
-
-   private static boolean a(aps $$0, ib $$1) {
-      doz $$2 = $$0.a_($$1);
-      boolean $$3 = $$2.a(avc.V);
-      return $$3 && $$2.a(dca.oh) ? dcm.g($$2) : $$3;
+   protected void a(apu $$0, bqv $$1) {
+      if ($$1.p_()) {
+         this.f = 0;
+         this.g = $$0.Y() + (long)$$0.E_().a(20);
+         cbw $$2 = $$0.y();
+         Predicate<id> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<in<cbz>, id>> $$4 = $$2.b($$0x -> $$0x.a(cca.n), $$3, $$1.dm(), 48, cbw.b.c).collect(Collectors.toSet());
+         elp $$5 = bse.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            id $$6 = $$5.l();
+            Optional<in<cbz>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dP().a(bzw.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+         }
+      }
    }
 }

@@ -1,46 +1,44 @@
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
+import javax.annotation.Nullable;
 
-public class aib implements yn<ahy> {
-   public static final ye<vg, aib> a = yn.a(aib::a, aib::new);
-   private final byte[] b;
-   private final byte[] c;
+public record aib(int b, @Nullable aif c) implements yp<aia> {
+   public static final yg<vi, aib> a = yp.a(aib::c, aib::a);
+   private static final int d = 1048576;
 
-   public aib(SecretKey $$0, PublicKey $$1, byte[] $$2) throws awj {
-      this.b = awi.a($$1, $$0.getEncoded());
-      this.c = awi.a($$1, $$2);
+   private static aib a(vi $$0) {
+      int $$1 = $$0.l();
+      return new aib($$1, a($$1, $$0));
    }
 
-   private aib(vg $$0) {
-      this.b = $$0.b();
-      this.c = $$0.b();
+   private static aif a(int $$0, vi $$1) {
+      return b($$1);
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private static aif b(vi $$0) {
+      int $$1 = $$0.readableBytes();
+      if ($$1 >= 0 && $$1 <= 1048576) {
+         $$0.j($$1);
+         return aih.a;
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void c(vi $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public yp<aib> a() {
-      return ahw.h;
+   public yr<aib> a() {
+      return ahy.f;
    }
 
-   public void a(ahy $$0) {
+   public void a(aia $$0) {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws awj {
-      return awi.a($$0, this.b);
-   }
-
-   public boolean a(byte[] $$0, PrivateKey $$1) {
-      try {
-         return Arrays.equals($$0, awi.b($$1, this.c));
-      } catch (awj var4) {
-         return false;
-      }
+   @Nullable
+   public aif e() {
+      return this.c;
    }
 }

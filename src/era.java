@@ -1,42 +1,18 @@
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record era(eqx b, eqx c) implements eqx {
-   public static final Codec<era> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eqy.a.fieldOf("min").forGetter(era::c), eqy.a.fieldOf("max").forGetter(era::d)).apply($$0, era::new)
+public class era {
+   private static final Codec<eqz> d = kt.J.q().dispatch(eqz::a, eqy::a);
+   public static final Codec<eqz> a = awu.a(
+      (Supplier<Codec<eqz>>)(() -> Codec.either(eqx.c, d)
+            .xmap($$0 -> (eqz)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof eqx $$1 ? Either.left($$1) : Either.right($$0)))
    );
+   public static final eqy b = a("storage", erb.a);
+   public static final eqy c = a("context", eqx.b);
 
-   @Override
-   public eqw b() {
-      return eqy.c;
-   }
-
-   public static era a(float $$0, float $$1) {
-      return new era(eqv.a($$0), eqv.a($$1));
-   }
-
-   @Override
-   public int a(enb $$0) {
-      return axk.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(enb $$0) {
-      return axk.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<epl<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public eqx c() {
-      return this.b;
-   }
-
-   public eqx d() {
-      return this.c;
+   private static eqy a(String $$0, Codec<? extends eqz> $$1) {
+      return ja.a(kt.J, new ajv($$0), new eqy($$1));
    }
 }

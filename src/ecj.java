@@ -1,20 +1,17 @@
 import com.mojang.serialization.Codec;
 
-public class ecj extends eca {
-   public static final Codec<ecj> b = doz.b.fieldOf("state").xmap(ecj::new, $$0 -> $$0.c).codec();
-   private final doz c;
+public abstract class ecj {
+   public static final Codec<ecj> a = kt.V.q().dispatch(ecj::a, eck::a);
 
-   protected ecj(doz $$0) {
-      this.c = $$0;
+   public static ecs a(dpi $$0) {
+      return new ecs($$0);
    }
 
-   @Override
-   protected ecb<?> a() {
-      return ecb.a;
+   public static ecs a(dch $$0) {
+      return new ecs($$0.n());
    }
 
-   @Override
-   public doz a(axr $$0, ib $$1) {
-      return this.c;
-   }
+   protected abstract eck<?> a();
+
+   public abstract dpi a(axt var1, id var2);
 }

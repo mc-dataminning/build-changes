@@ -1,37 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record ctn(ajt e, il<cre> f, wg g, boolean h) {
-   public static final Codec<ctn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ajt.a.fieldOf("asset_id").forGetter(ctn::a),
-               ajq.a(ks.F).fieldOf("template_item").forGetter(ctn::b),
-               wi.a.fieldOf("description").forGetter(ctn::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(ctn::d)
-            )
-            .apply($$0, ctn::new)
-   );
-   public static final ye<vr, ctn> b = ye.a(ajt.b, ctn::a, yc.b(ks.F), ctn::b, wi.b, ctn::c, yc.b, ctn::d, ctn::new);
-   public static final Codec<il<ctn>> c = ajp.a(ks.aL, a);
-   public static final ye<vr, il<ctn>> d = yc.a(ks.aL, b);
-
-   public wg a(il<ctl> $$0) {
-      return this.g.f().c($$0.a().e().a());
+public class ctn extends crn {
+   public ctn(crn.a $$0) {
+      super($$0);
    }
 
-   public ajt a() {
-      return this.e;
+   @Override
+   public wi o(crs $$0) {
+      cuv $$1 = $$0.a(jr.A);
+      if ($$1 != null) {
+         String $$2 = $$1.c().a();
+         if (!ayh.h($$2)) {
+            return wi.b($$2);
+         }
+      }
+
+      return super.o($$0);
    }
 
-   public il<cre> b() {
-      return this.f;
+   @Override
+   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
+      cuv $$4 = $$0.a(jr.A);
+      if ($$4 != null) {
+         if (!ayh.h($$4.d())) {
+            $$2.add(wi.a("book.byAuthor", $$4.d()).a(n.h));
+         }
+
+         $$2.add(wi.c("book.generation." + $$4.e()).a(n.h));
+      }
    }
 
-   public wg c() {
-      return this.g;
+   @Override
+   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
+      crs $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(auz.c.b(this));
+      return bog.a($$3, $$0.x_());
    }
 
-   public boolean d() {
-      return this.h;
+   public static boolean a(crs $$0, dv $$1, @Nullable cka $$2) {
+      cuv $$3 = $$0.a(jr.A);
+      if ($$3 != null && !$$3.g()) {
+         cuv $$4 = $$3.a($$1, $$2);
+         if ($$4 != null) {
+            $$0.b(jr.A, $$4);
+            return true;
+         }
+
+         $$0.b(jr.A, $$3.b());
+      }
+
+      return false;
    }
 }

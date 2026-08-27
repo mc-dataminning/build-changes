@@ -1,17 +1,27 @@
-public class fyu extends fyn {
-   protected fyu(fuh $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class fyu extends fyw {
+   fyu(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public fxr b() {
-      return fxr.b;
+   public fya b() {
+      return fya.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
@@ -22,39 +32,85 @@ public class fyu extends fyn {
       if (this.t-- <= 0) {
          this.k();
       } else {
-         this.k = this.k - (double)this.u;
          this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         ib $$0 = ib.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).k(this.c, $$0).b(ih.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((cyd)this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
-         }
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
       }
    }
 
-   public static class a implements fxq<ko> {
-      private final fyi a;
+   public static class a implements fxz<kq> {
+      private final fyr a;
 
-      public a(fyi $$0) {
+      public a(fyr $$0) {
          this.a = $$0;
       }
 
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fyu $$8 = new fyu($$1, $$2, $$3, $$4);
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyu $$8 = new fyu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.E_().a(5));
+         return $$8;
+      }
+   }
+
+   public static class b implements fxz<kq> {
+      private final fyr a;
+
+      public b(fyr $$0) {
+         this.a = $$0;
+      }
+
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyu $$8 = new fyu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.z.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
+   }
+
+   public static class c implements fxz<kq> {
+      private final fyr a;
+
+      public c(fyr $$0) {
+         this.a = $$0;
+      }
+
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyu $$8 = new fyu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements fxz<kq> {
+      private final fyr a;
+
+      public d(fyr $$0) {
+         this.a = $$0;
+      }
+
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyu $$8 = new fyu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements fxz<kq> {
+      private final fyr a;
+
+      public e(fyr $$0) {
+         this.a = $$0;
+      }
+
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fyu $$8 = new fyu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;
       }

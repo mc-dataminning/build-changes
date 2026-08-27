@@ -1,48 +1,145 @@
-public interface ug {
-   ug.b a();
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-   ug.b a(String var1);
+public class ug extends ue {
+   private static final int b = 10;
+   public static final un<ug> a = new un.a<ug>() {
+      public ug a(DataInput $$0, tx $$1) throws IOException {
+         return ug.a(d($$0, $$1));
+      }
 
-   ug.b a(byte var1);
+      @Override
+      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
 
-   ug.b a(short var1);
+      private static short d(DataInput $$0, tx $$1) throws IOException {
+         $$1.b(10L);
+         return $$0.readShort();
+      }
 
-   ug.b a(int var1);
+      @Override
+      public int c() {
+         return 2;
+      }
 
-   ug.b a(long var1);
+      @Override
+      public String a() {
+         return "SHORT";
+      }
 
-   ug.b a(float var1);
+      @Override
+      public String b() {
+         return "TAG_Short";
+      }
 
-   ug.b a(double var1);
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final short c;
 
-   ug.b a(byte[] var1);
-
-   ug.b a(int[] var1);
-
-   ug.b a(long[] var1);
-
-   ug.b a(ul<?> var1, int var2);
-
-   ug.a a(ul<?> var1);
-
-   ug.a a(ul<?> var1, String var2);
-
-   ug.a b(ul<?> var1, int var2);
-
-   ug.b b();
-
-   ug.b b(ul<?> var1);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   ug(short $$0) {
+      this.c = $$0;
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   public static ug a(short $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? ug.a.a[$$0 - -128] : new ug($$0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeShort(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public byte b() {
+      return 2;
+   }
+
+   @Override
+   public un<ug> c() {
+      return a;
+   }
+
+   public ug e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ug && this.c == ((ug)$$0).c;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c;
+   }
+
+   @Override
+   public void a(up $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.c;
+   }
+
+   @Override
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public short h() {
+      return this.c;
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(this.c & 255);
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.c;
+   }
+
+   @Override
+   public Number l() {
+      return this.c;
+   }
+
+   @Override
+   public ui.b a(ui $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final ug[] a = new ug[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new ug((short)(-128 + $$0));
+         }
+      }
    }
 }

@@ -1,6 +1,31 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 
-@FunctionalInterface
-public interface drx {
-   CompletableFuture<dqv> apply(dqv var1);
+public interface drx<T> {
+   T a(int var1, int var2, int var3);
+
+   void a(Consumer<T> var1);
+
+   void b(vi var1);
+
+   int c();
+
+   boolean a(Predicate<T> var1);
+
+   void a(drw.b<T> var1);
+
+   drw<T> e();
+
+   drx.a<T> a(is<T> var1, drw.d var2);
+
+   public static record a<T>(List<T> a, Optional<LongStream> b) {
+   }
+
+   public interface b<T, C extends drx<T>> {
+      DataResult<C> read(is<T> var1, drw.d var2, drx.a<T> var3);
+   }
 }

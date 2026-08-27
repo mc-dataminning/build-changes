@@ -1,14 +1,7 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
+public interface ix {
+   double a();
 
-public record ix(Optional<asj> b, Lifecycle c) {
-   public static final ix a = new ix(Optional.empty(), Lifecycle.stable());
+   double b();
 
-   public Optional<asj> a() {
-      return this.b;
-   }
-
-   public Lifecycle b() {
-      return this.c;
-   }
+   double c();
 }

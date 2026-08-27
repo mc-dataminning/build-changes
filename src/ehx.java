@@ -1,32 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public class ehx {
+   private static final ajv[] a = new ajv[]{
+      new ajv("nether_fossils/fossil_1"),
+      new ajv("nether_fossils/fossil_2"),
+      new ajv("nether_fossils/fossil_3"),
+      new ajv("nether_fossils/fossil_4"),
+      new ajv("nether_fossils/fossil_5"),
+      new ajv("nether_fossils/fossil_6"),
+      new ajv("nether_fossils/fossil_7"),
+      new ajv("nether_fossils/fossil_8"),
+      new ajv("nether_fossils/fossil_9"),
+      new ajv("nether_fossils/fossil_10"),
+      new ajv("nether_fossils/fossil_11"),
+      new ajv("nether_fossils/fossil_12"),
+      new ajv("nether_fossils/fossil_13"),
+      new ajv("nether_fossils/fossil_14")
+   };
 
-public class ehx extends efh {
-   public static final Codec<ehx> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, ehx::new)
-   );
-   public final boolean e;
-
-   public ehx(efh.c $$0, boolean $$1) {
-      super($$0);
-      this.e = $$1;
+   public static void a(ejr $$0, efv $$1, axt $$2, id $$3) {
+      dit $$4 = dit.a($$2);
+      $$1.a(new ehx.a($$0, ac.a(a, $$2), $$3, $$4));
    }
 
-   @Override
-   public Optional<efh.b> a(efh.a $$0) {
-      dur.a $$1 = this.e ? dur.a.a : dur.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
-   }
+   public static class a extends ega {
+      public a(ejr $$0, ajv $$1, id $$2, dit $$3) {
+         super(egh.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+      }
 
-   private void a(efz $$0, efh.a $$1) {
-      dik $$2 = dik.a($$1.f());
-      ib $$3 = new ib($$1.h().d(), 90, $$1.h().e());
-      ehw.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
-   }
+      public a(ejr $$0, to $$1) {
+         super(egh.ac, $$1, $$0, $$1x -> a(dit.valueOf($$1.l("Rot"))));
+      }
 
-   @Override
-   public efq<?> e() {
-      return efq.m;
+      private static ejm a(dit $$0) {
+         return new ejm().a($$0).a(dhd.a).a(eis.d);
+      }
+
+      @Override
+      protected void a(egg $$0, to $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, id $$1, czv $$2, axt $$3, efi $$4) {
+      }
+
+      @Override
+      public void a(dab $$0, czz $$1, drf $$2, axt $$3, efi $$4, cyn $$5, id $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

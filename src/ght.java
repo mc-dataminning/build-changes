@@ -1,40 +1,27 @@
-public class ght<T extends bpv & cki> extends gfh<T> {
-   private static final float a = 12.25F;
-   private final ggg f;
-   private final float g;
-   private final boolean h;
+public class ght extends ggx<chp, fst<chp>> {
+   private static final ajv a = new ajv("textures/entity/slime/slime.png");
 
-   public ght(gfi.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public ght(gfr.a $$0) {
+      super($$0, new fst<>($$0.a(ftu.bs)), 0.25F);
+      this.a(new gkh<>(this, $$0.f()));
    }
 
-   public ght(gfi.a $$0) {
-      this($$0, 1.0F, false);
+   public void a(chp $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.go();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected int a(T $$0, ib $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   protected void a(chp $$0, ewr $$1, float $$2) {
+      float $$3 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$4 = (float)$$0.go();
+      float $$5 = axm.i($$2, $$0.bW, $$0.e) / ($$4 * 0.5F + 1.0F);
+      float $$6 = 1.0F / ($$5 + 1.0F);
+      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5) {
-      if ($$0.ah >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.p(), crg.h, $$5, gla.d, $$3, $$4, $$0.dM(), $$0.aj());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public ajt a(bpv $$0) {
-      return gli.e;
+   public ajv a(chp $$0) {
+      return a;
    }
 }

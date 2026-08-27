@@ -1,348 +1,1426 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Suppliers;
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
+import it.unimi.dsi.fastutil.doubles.Double2DoubleFunction;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public final class duu extends dqw {
-   public static final Codec<duu> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(daa.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), duw.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
-            .apply($$0, $$0.stable(duu::new))
-   );
-   private static final doz d = dca.a.n();
-   private final il<duw> e;
-   private final Supplier<dud.a> f;
+public final class duu {
+   private static final Codec<dut> c = kt.af.q().dispatch($$0 -> $$0.c().a(), Function.identity());
+   protected static final double a = 1000000.0;
+   static final Codec<Double> d = Codec.doubleRange(-1000000.0, 1000000.0);
+   public static final Codec<dut> b = Codec.either(d, c)
+      .xmap($$0 -> (dut)$$0.map(duu::a, Function.identity()), $$0 -> $$0 instanceof duu.h $$1 ? Either.left($$1.j()) : Either.right($$0));
 
-   public duu(daa $$0, il<duw> $$1) {
-      super($$0);
-      this.e = $$1;
-      this.f = Suppliers.memoize(() -> a($$1.a()));
+   public static Codec<? extends dut> a(ja<Codec<? extends dut>> $$0) {
+      a($$0, "blend_alpha", duu.d.e);
+      a($$0, "blend_offset", duu.f.e);
+      a($$0, "beardifier", duu.b.e);
+      a($$0, "old_blended_noise", ekb.a);
+
+      for (duu.l.a $$1 : duu.l.a.values()) {
+         a($$0, $$1.c(), $$1.g);
+      }
+
+      a($$0, "noise", duu.o.e);
+      a($$0, "end_islands", duu.i.a);
+      a($$0, "weird_scaled_sampler", duu.z.a);
+      a($$0, "shifted_noise", duu.v.a);
+      a($$0, "range_choice", duu.q.e);
+      a($$0, "shift_a", duu.s.e);
+      a($$0, "shift_b", duu.t.e);
+      a($$0, "shift", duu.r.e);
+      a($$0, "blend_density", duu.e.e);
+      a($$0, "clamp", duu.g.a);
+
+      for (duu.k.a $$2 : duu.k.a.values()) {
+         a($$0, $$2.c(), $$2.h);
+      }
+
+      for (duu.y.a $$3 : duu.y.a.values()) {
+         a($$0, $$3.c(), $$3.e);
+      }
+
+      a($$0, "spline", duu.w.a);
+      a($$0, "constant", duu.h.e);
+      return a($$0, "y_clamped_gradient", duu.aa.a);
    }
 
-   private static dud.a a(duw $$0) {
-      dud.b $$1 = new dud.b(-54, dca.H.n());
-      int $$2 = $$0.l();
-      dud.b $$3 = new dud.b($$2, $$0.h());
-      dud.b $$4 = new dud.b(dsr.e * 2, dca.a.n());
-      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
+   private static Codec<? extends dut> a(ja<Codec<? extends dut>> $$0, String $$1, axg<? extends dut> $$2) {
+      return ja.a($$0, $$1, $$2.a());
    }
 
-   @Override
-   public CompletableFuture<dqv> a(Executor $$0, dvf $$1, dvt $$2, czq $$3, dqv $$4) {
-      return CompletableFuture.supplyAsync(ac.a("init_biomes", () -> {
-         this.a($$2, $$1, $$3, $$4);
-         return $$4;
-      }), ac.f());
+   static <A, O> axg<O> a(Codec<A> $$0, Function<A, O> $$1, Function<O, A> $$2) {
+      return axg.a($$0.fieldOf("argument").xmap($$1, $$2));
    }
 
-   private void a(dvt $$0, dvf $$1, czq $$2, dqv $$3) {
-      duv $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
-      czz $$5 = duf.a($$0.a(this.b), $$3);
-      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
+   static <O> axg<O> a(Function<dut, O> $$0, Function<O, dut> $$1) {
+      return a(dut.d, $$0, $$1);
    }
 
-   private duv a(dqv $$0, czq $$1, dvt $$2, dvf $$3) {
-      return duv.a($$0, $$3, due.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
-   }
-
-   @Override
-   protected Codec<? extends dqw> a() {
-      return c;
-   }
-
-   public il<duw> g() {
-      return this.e;
-   }
-
-   public boolean a(ajs<duw> $$0) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dur.a $$2, cyz $$3, dvf $$4) {
-      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.I_());
-   }
-
-   @Override
-   public czj a(int $$0, int $$1, cyz $$2, dvf $$3) {
-      MutableObject<czj> $$4 = new MutableObject();
-      this.a($$2, $$3, $$0, $$1, $$4, null);
-      return (czj)$$4.getValue();
-   }
-
-   @Override
-   public void a(List<String> $$0, dvf $$1, ib $$2) {
-      DecimalFormat $$3 = new DecimalFormat("0.000");
-      dux $$4 = $$1.a();
-      duk.e $$5 = new duk.e($$2.u(), $$2.v(), $$2.w());
-      double $$6 = $$4.j().a($$5);
-      $$0.add(
-         "NoiseRouter T: "
-            + $$3.format($$4.e().a($$5))
-            + " V: "
-            + $$3.format($$4.f().a($$5))
-            + " C: "
-            + $$3.format($$4.g().a($$5))
-            + " E: "
-            + $$3.format($$4.h().a($$5))
-            + " D: "
-            + $$3.format($$4.i().a($$5))
-            + " W: "
-            + $$3.format($$6)
-            + " PV: "
-            + $$3.format((double)duy.a((float)$$6))
-            + " AS: "
-            + $$3.format($$4.k().a($$5))
-            + " N: "
-            + $$3.format($$4.l().a($$5))
+   static <O> axg<O> a(BiFunction<dut, dut, O> $$0, Function<O, dut> $$1, Function<O, dut> $$2) {
+      return axg.a(
+         RecordCodecBuilder.mapCodec($$3 -> $$3.group(dut.d.fieldOf("argument1").forGetter($$1), dut.d.fieldOf("argument2").forGetter($$2)).apply($$3, $$0))
       );
    }
 
-   private OptionalInt a(cyz $$0, dvf $$1, int $$2, int $$3, @Nullable MutableObject<czj> $$4, @Nullable Predicate<doz> $$5) {
-      duz $$6 = this.e.a().f().a($$0);
-      int $$7 = $$6.a();
-      int $$8 = $$6.c();
-      int $$9 = axk.a($$8, $$7);
-      int $$10 = axk.a($$6.d(), $$7);
-      if ($$10 <= 0) {
-         return OptionalInt.empty();
+   static <O> axg<O> a(MapCodec<O> $$0) {
+      return axg.a($$0);
+   }
+
+   private duu() {
+   }
+
+   public static dut a(dut $$0) {
+      return new duu.l(duu.l.a.a, $$0);
+   }
+
+   public static dut b(dut $$0) {
+      return new duu.l(duu.l.a.b, $$0);
+   }
+
+   public static dut c(dut $$0) {
+      return new duu.l(duu.l.a.c, $$0);
+   }
+
+   public static dut d(dut $$0) {
+      return new duu.l(duu.l.a.d, $$0);
+   }
+
+   public static dut e(dut $$0) {
+      return new duu.l(duu.l.a.e, $$0);
+   }
+
+   public static dut a(in<eke.a> $$0, @Deprecated double $$1, double $$2, double $$3, double $$4) {
+      return a(new duu.o(new dut.c($$0), $$1, $$2), $$3, $$4);
+   }
+
+   public static dut a(in<eke.a> $$0, double $$1, double $$2, double $$3) {
+      return a($$0, 1.0, $$1, $$2, $$3);
+   }
+
+   public static dut a(in<eke.a> $$0, double $$1, double $$2) {
+      return a($$0, 1.0, 1.0, $$1, $$2);
+   }
+
+   public static dut a(dut $$0, dut $$1, double $$2, in<eke.a> $$3) {
+      return new duu.v($$0, a(), $$1, $$2, 0.0, new dut.c($$3));
+   }
+
+   public static dut a(in<eke.a> $$0) {
+      return b($$0, 1.0, 1.0);
+   }
+
+   public static dut b(in<eke.a> $$0, double $$1, double $$2) {
+      return new duu.o(new dut.c($$0), $$1, $$2);
+   }
+
+   public static dut a(in<eke.a> $$0, double $$1) {
+      return b($$0, 1.0, $$1);
+   }
+
+   public static dut a(dut $$0, double $$1, double $$2, dut $$3, dut $$4) {
+      return new duu.q($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static dut b(in<eke.a> $$0) {
+      return new duu.s(new dut.c($$0));
+   }
+
+   public static dut c(in<eke.a> $$0) {
+      return new duu.t(new dut.c($$0));
+   }
+
+   public static dut d(in<eke.a> $$0) {
+      return new duu.r(new dut.c($$0));
+   }
+
+   public static dut f(dut $$0) {
+      return new duu.e($$0);
+   }
+
+   public static dut a(long $$0) {
+      return new duu.i($$0);
+   }
+
+   public static dut a(dut $$0, in<eke.a> $$1, duu.z.a $$2) {
+      return new duu.z($$0, new dut.c($$1), $$2);
+   }
+
+   public static dut a(dut $$0, dut $$1) {
+      return duu.y.a(duu.y.a.a, $$0, $$1);
+   }
+
+   public static dut b(dut $$0, dut $$1) {
+      return duu.y.a(duu.y.a.b, $$0, $$1);
+   }
+
+   public static dut c(dut $$0, dut $$1) {
+      return duu.y.a(duu.y.a.c, $$0, $$1);
+   }
+
+   public static dut d(dut $$0, dut $$1) {
+      return duu.y.a(duu.y.a.d, $$0, $$1);
+   }
+
+   public static dut a(awo<duu.w.b, duu.w.a> $$0) {
+      return new duu.w($$0);
+   }
+
+   public static dut a() {
+      return duu.h.f;
+   }
+
+   public static dut a(double $$0) {
+      return new duu.h($$0);
+   }
+
+   public static dut a(int $$0, int $$1, double $$2, double $$3) {
+      return new duu.aa($$0, $$1, $$2, $$3);
+   }
+
+   public static dut a(dut $$0, duu.k.a $$1) {
+      return duu.k.a($$1, $$0);
+   }
+
+   private static dut a(dut $$0, double $$1, double $$2) {
+      double $$3 = ($$1 + $$2) * 0.5;
+      double $$4 = ($$2 - $$1) * 0.5;
+      return a(a($$3), b(a($$4), $$0));
+   }
+
+   public static dut b() {
+      return duu.d.a;
+   }
+
+   public static dut c() {
+      return duu.f.a;
+   }
+
+   public static dut a(dut $$0, dut $$1, dut $$2) {
+      if ($$1 instanceof duu.h $$3) {
+         return a($$0, $$3.a, $$2);
       } else {
-         doz[] $$11;
-         if ($$4 == null) {
-            $$11 = null;
+         dut $$4 = d($$0);
+         dut $$5 = a(b($$4, a(-1.0)), a(1.0));
+         return a(b($$1, $$5), b($$2, $$4));
+      }
+   }
+
+   public static dut a(dut $$0, double $$1, dut $$2) {
+      return a(b($$0, a($$2, a(-$$1))), a($$1));
+   }
+
+   static record a(duu.y.a e, dut f, dut g, double h, double i) implements duu.y {
+      @Override
+      public double a(dut.b $$0) {
+         double $$1 = this.f.a($$0);
+
+         return switch (this.e) {
+            case a -> $$1 + this.g.a($$0);
+            case d -> $$1 > this.g.b() ? $$1 : Math.max($$1, this.g.a($$0));
+            case c -> $$1 < this.g.a() ? $$1 : Math.min($$1, this.g.a($$0));
+            case b -> $$1 == 0.0 ? 0.0 : $$1 * this.g.a($$0);
+         };
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         this.f.a($$0, $$1);
+         switch (this.e) {
+            case a:
+               double[] $$2 = new double[$$0.length];
+               this.g.a($$2, $$1);
+
+               for (int $$3 = 0; $$3 < $$0.length; $$3++) {
+                  $$0[$$3] += $$2[$$3];
+               }
+               break;
+            case d:
+               double $$9 = this.g.b();
+
+               for (int $$10 = 0; $$10 < $$0.length; $$10++) {
+                  double $$11 = $$0[$$10];
+                  $$0[$$10] = $$11 > $$9 ? $$11 : Math.max($$11, this.g.a($$1.a($$10)));
+               }
+               break;
+            case c:
+               double $$6 = this.g.a();
+
+               for (int $$7 = 0; $$7 < $$0.length; $$7++) {
+                  double $$8 = $$0[$$7];
+                  $$0[$$7] = $$8 < $$6 ? $$8 : Math.min($$8, this.g.a($$1.a($$7)));
+               }
+               break;
+            case b:
+               for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+                  double $$5 = $$0[$$4];
+                  $$0[$$4] = $$5 == 0.0 ? 0.0 : $$5 * this.g.a($$1.a($$4));
+               }
+         }
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(duu.y.a(this.e, this.f.a($$0), this.g.a($$0)));
+      }
+
+      @Override
+      public double a() {
+         return this.h;
+      }
+
+      @Override
+      public double b() {
+         return this.i;
+      }
+
+      @Override
+      public duu.y.a j() {
+         return this.e;
+      }
+
+      @Override
+      public dut k() {
+         return this.f;
+      }
+
+      @Override
+      public dut l() {
+         return this.g;
+      }
+   }
+
+   static record aa(int e, int f, double g, double h) implements dut.d {
+      private static final MapCodec<duu.aa> i = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.intRange(dta.e * 2, dta.d * 2).fieldOf("from_y").forGetter(duu.aa::j),
+                  Codec.intRange(dta.e * 2, dta.d * 2).fieldOf("to_y").forGetter(duu.aa::k),
+                  duu.d.fieldOf("from_value").forGetter(duu.aa::l),
+                  duu.d.fieldOf("to_value").forGetter(duu.aa::m)
+               )
+               .apply($$0, duu.aa::new)
+      );
+      public static final axg<duu.aa> a = duu.a(i);
+
+      @Override
+      public double a(dut.b $$0) {
+         return axm.a((double)$$0.b(), (double)this.e, (double)this.f, this.g, this.h);
+      }
+
+      @Override
+      public double a() {
+         return Math.min(this.g, this.h);
+      }
+
+      @Override
+      public double b() {
+         return Math.max(this.g, this.h);
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return a;
+      }
+
+      public int j() {
+         return this.e;
+      }
+
+      public int k() {
+         return this.f;
+      }
+
+      public double l() {
+         return this.g;
+      }
+
+      public double m() {
+         return this.h;
+      }
+   }
+
+   protected static enum b implements duu.c {
+      a;
+
+      @Override
+      public double a(dut.b $$0) {
+         return 0.0;
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         Arrays.fill($$0, 0.0);
+      }
+
+      @Override
+      public double a() {
+         return 0.0;
+      }
+
+      @Override
+      public double b() {
+         return 0.0;
+      }
+   }
+
+   public interface c extends dut.d {
+      axg<dut> e = axg.a(MapCodec.unit(duu.b.a));
+
+      @Override
+      default axg<? extends dut> c() {
+         return e;
+      }
+   }
+
+   protected static enum d implements dut.d {
+      a;
+
+      public static final axg<dut> e = axg.a(MapCodec.unit(a));
+
+      @Override
+      public double a(dut.b $$0) {
+         return 1.0;
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         Arrays.fill($$0, 1.0);
+      }
+
+      @Override
+      public double a() {
+         return 1.0;
+      }
+
+      @Override
+      public double b() {
+         return 1.0;
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return e;
+      }
+   }
+
+   static record e(dut a) implements duu.x {
+      static final axg<duu.e> e = duu.a(duu.e::new, duu.e::j);
+
+      @Override
+      public double a(dut.b $$0, double $$1) {
+         return $$0.d().a($$0, $$1);
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.e(this.a.a($$0)));
+      }
+
+      @Override
+      public double a() {
+         return Double.NEGATIVE_INFINITY;
+      }
+
+      @Override
+      public double b() {
+         return Double.POSITIVE_INFINITY;
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return e;
+      }
+
+      @Override
+      public dut j() {
+         return this.a;
+      }
+   }
+
+   protected static enum f implements dut.d {
+      a;
+
+      public static final axg<dut> e = axg.a(MapCodec.unit(a));
+
+      @Override
+      public double a(dut.b $$0) {
+         return 0.0;
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         Arrays.fill($$0, 0.0);
+      }
+
+      @Override
+      public double a() {
+         return 0.0;
+      }
+
+      @Override
+      public double b() {
+         return 0.0;
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return e;
+      }
+   }
+
+   protected static record g(dut e, double f, double g) implements duu.p {
+      private static final MapCodec<duu.g> h = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(dut.b.fieldOf("input").forGetter(duu.g::aA_), duu.d.fieldOf("min").forGetter(duu.g::a), duu.d.fieldOf("max").forGetter(duu.g::b))
+               .apply($$0, duu.g::new)
+      );
+      public static final axg<duu.g> a = duu.a(h);
+
+      @Override
+      public double a(double $$0) {
+         return axm.a($$0, this.f, this.g);
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return new duu.g(this.e.a($$0), this.f, this.g);
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return a;
+      }
+
+      @Override
+      public dut aA_() {
+         return this.e;
+      }
+
+      @Override
+      public double a() {
+         return this.f;
+      }
+
+      @Override
+      public double b() {
+         return this.g;
+      }
+   }
+
+   static record h(double a) implements dut.d {
+      static final axg<duu.h> e = duu.a(duu.d, duu.h::new, duu.h::j);
+      static final duu.h f = new duu.h(0.0);
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         Arrays.fill($$0, this.a);
+      }
+
+      @Override
+      public double b() {
+         return this.a;
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return e;
+      }
+
+      public double j() {
+         return this.a;
+      }
+   }
+
+   protected static final class i implements dut.d {
+      public static final axg<duu.i> a = axg.a(MapCodec.unit(new duu.i(0L)));
+      private static final float e = -0.9F;
+      private final ekh f;
+
+      public i(long $$0) {
+         axt $$1 = new dvb($$0);
+         $$1.b(17292);
+         this.f = new ekh($$1);
+      }
+
+      private static float a(ekh $$0, int $$1, int $$2) {
+         int $$3 = $$1 / 2;
+         int $$4 = $$2 / 2;
+         int $$5 = $$1 % 2;
+         int $$6 = $$2 % 2;
+         float $$7 = 100.0F - axm.c((float)($$1 * $$1 + $$2 * $$2)) * 8.0F;
+         $$7 = axm.a($$7, -100.0F, 80.0F);
+
+         for (int $$8 = -12; $$8 <= 12; $$8++) {
+            for (int $$9 = -12; $$9 <= 12; $$9++) {
+               long $$10 = (long)($$3 + $$8);
+               long $$11 = (long)($$4 + $$9);
+               if ($$10 * $$10 + $$11 * $$11 > 4096L && $$0.a((double)$$10, (double)$$11) < -0.9F) {
+                  float $$12 = (axm.e((float)$$10) * 3439.0F + axm.e((float)$$11) * 147.0F) % 13.0F + 9.0F;
+                  float $$13 = (float)($$5 - $$8 * 2);
+                  float $$14 = (float)($$6 - $$9 * 2);
+                  float $$15 = 100.0F - axm.c($$13 * $$13 + $$14 * $$14) * $$12;
+                  $$15 = axm.a($$15, -100.0F, 80.0F);
+                  $$7 = Math.max($$7, $$15);
+               }
+            }
+         }
+
+         return $$7;
+      }
+
+      @Override
+      public double a(dut.b $$0) {
+         return ((double)a(this.f, $$0.a() / 8, $$0.c() / 8) - 8.0) / 128.0;
+      }
+
+      @Override
+      public double a() {
+         return -0.84375;
+      }
+
+      @Override
+      public double b() {
+         return 0.5625;
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return a;
+      }
+   }
+
+   @ayp
+   public static record j(in<dut> a) implements dut {
+      @Override
+      public double a(dut.b $$0) {
+         return this.a.a().a($$0);
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         this.a.a().a($$0, $$1);
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.j(new in.a<>(this.a.a().a($$0))));
+      }
+
+      @Override
+      public double a() {
+         return this.a.b() ? this.a.a().a() : Double.NEGATIVE_INFINITY;
+      }
+
+      @Override
+      public double b() {
+         return this.a.b() ? this.a.a().b() : Double.POSITIVE_INFINITY;
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         throw new UnsupportedOperationException("Calling .codec() on HolderHolder");
+      }
+
+      public in<dut> j() {
+         return this.a;
+      }
+   }
+
+   protected static record k(duu.k.a a, dut e, double f, double g) implements duu.p {
+      public static duu.k a(duu.k.a $$0, dut $$1) {
+         double $$2 = $$1.a();
+         double $$3 = a($$0, $$2);
+         double $$4 = a($$0, $$1.b());
+         return $$0 != duu.k.a.a && $$0 != duu.k.a.b ? new duu.k($$0, $$1, $$3, $$4) : new duu.k($$0, $$1, Math.max(0.0, $$2), Math.max($$3, $$4));
+      }
+
+      private static double a(duu.k.a $$0, double $$1) {
+         return switch ($$0) {
+            case a -> Math.abs($$1);
+            case b -> $$1 * $$1;
+            case c -> $$1 * $$1 * $$1;
+            case d -> $$1 > 0.0 ? $$1 : $$1 * 0.5;
+            case e -> $$1 > 0.0 ? $$1 : $$1 * 0.25;
+            case f -> {
+               double $$2 = axm.a($$1, -1.0, 1.0);
+               yield $$2 / 2.0 - $$2 * $$2 * $$2 / 24.0;
+            }
+         };
+      }
+
+      @Override
+      public double a(double $$0) {
+         return a(this.a, $$0);
+      }
+
+      public duu.k b(dut.f $$0) {
+         return a(this.a, this.e.a($$0));
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return this.a.h;
+      }
+
+      public duu.k.a k() {
+         return this.a;
+      }
+
+      @Override
+      public dut aA_() {
+         return this.e;
+      }
+
+      @Override
+      public double a() {
+         return this.f;
+      }
+
+      @Override
+      public double b() {
+         return this.g;
+      }
+
+      static enum a implements ayg {
+         a("abs"),
+         b("square"),
+         c("cube"),
+         d("half_negative"),
+         e("quarter_negative"),
+         f("squeeze");
+
+         private final String g;
+         final axg<duu.k> h = duu.a($$0x -> duu.k.a(this, $$0x), duu.k::aA_);
+
+         private a(String $$0) {
+            this.g = $$0;
+         }
+
+         @Override
+         public String c() {
+            return this.g;
+         }
+      }
+   }
+
+   protected static record l(duu.l.a a, dut e) implements duu.m {
+      @Override
+      public double a(dut.b $$0) {
+         return this.e.a($$0);
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         this.e.a($$0, $$1);
+      }
+
+      @Override
+      public double a() {
+         return this.e.a();
+      }
+
+      @Override
+      public double b() {
+         return this.e.b();
+      }
+
+      @Override
+      public duu.l.a j() {
+         return this.a;
+      }
+
+      @Override
+      public dut k() {
+         return this.e;
+      }
+
+      static enum a implements ayg {
+         a("interpolated"),
+         b("flat_cache"),
+         c("cache_2d"),
+         d("cache_once"),
+         e("cache_all_in_cell");
+
+         private final String f;
+         final axg<duu.m> g = duu.a($$0x -> new duu.l(this, $$0x), duu.m::k);
+
+         private a(String $$0) {
+            this.f = $$0;
+         }
+
+         @Override
+         public String c() {
+            return this.f;
+         }
+      }
+   }
+
+   public interface m extends dut {
+      duu.l.a j();
+
+      dut k();
+
+      @Override
+      default axg<? extends dut> c() {
+         return this.j().g;
+      }
+
+      @Override
+      default dut a(dut.f $$0) {
+         return $$0.apply(new duu.l(this.j(), this.k().a($$0)));
+      }
+   }
+
+   static record n(duu.n.a e, dut f, double g, double h, double i) implements duu.p, duu.y {
+      @Override
+      public duu.y.a j() {
+         return this.e == duu.n.a.a ? duu.y.a.b : duu.y.a.a;
+      }
+
+      @Override
+      public dut k() {
+         return duu.a(this.i);
+      }
+
+      @Override
+      public dut l() {
+         return this.f;
+      }
+
+      @Override
+      public double a(double $$0) {
+         return switch (this.e) {
+            case a -> $$0 * this.i;
+            case b -> $$0 + this.i;
+         };
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         dut $$1 = this.f.a($$0);
+         double $$2 = $$1.a();
+         double $$3 = $$1.b();
+         double $$4;
+         double $$5;
+         if (this.e == duu.n.a.b) {
+            $$4 = $$2 + this.i;
+            $$5 = $$3 + this.i;
+         } else if (this.i >= 0.0) {
+            $$4 = $$2 * this.i;
+            $$5 = $$3 * this.i;
          } else {
-            $$11 = new doz[$$6.d()];
-            $$4.setValue(new czj($$8, $$11));
+            $$4 = $$3 * this.i;
+            $$5 = $$2 * this.i;
          }
 
-         int $$13 = $$6.b();
-         int $$14 = Math.floorDiv($$2, $$13);
-         int $$15 = Math.floorDiv($$3, $$13);
-         int $$16 = Math.floorMod($$2, $$13);
-         int $$17 = Math.floorMod($$3, $$13);
-         int $$18 = $$14 * $$13;
-         int $$19 = $$15 * $$13;
-         double $$20 = (double)$$16 / (double)$$13;
-         double $$21 = (double)$$17 / (double)$$13;
-         duv $$22 = new duv(1, $$1, $$18, $$19, $$6, dul.b.a, this.e.a(), this.f.get(), dvt.a());
-         $$22.f();
-         $$22.b(0);
+         return new duu.n(this.e, $$1, $$4, $$5, this.i);
+      }
 
-         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
-            $$22.b($$23, 0);
+      public duu.n.a m() {
+         return this.e;
+      }
 
-            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
-               int $$25 = ($$9 + $$23) * $$7 + $$24;
-               double $$26 = (double)$$24 / (double)$$7;
-               $$22.a($$25, $$26);
-               $$22.b($$2, $$20);
-               $$22.c($$3, $$21);
-               doz $$27 = $$22.e();
-               doz $$28 = $$27 == null ? this.e.a().g() : $$27;
-               if ($$11 != null) {
-                  int $$29 = $$23 * $$7 + $$24;
-                  $$11[$$29] = $$28;
+      @Override
+      public dut aA_() {
+         return this.f;
+      }
+
+      @Override
+      public double a() {
+         return this.g;
+      }
+
+      @Override
+      public double b() {
+         return this.h;
+      }
+
+      public double n() {
+         return this.i;
+      }
+
+      static enum a {
+         a,
+         b;
+      }
+   }
+
+   protected static record o(dut.c f, @Deprecated double g, double h) implements dut {
+      public static final MapCodec<duu.o> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dut.c.a.fieldOf("noise").forGetter(duu.o::j),
+                  Codec.DOUBLE.fieldOf("xz_scale").forGetter(duu.o::k),
+                  Codec.DOUBLE.fieldOf("y_scale").forGetter(duu.o::l)
+               )
+               .apply($$0, duu.o::new)
+      );
+      public static final axg<duu.o> e = duu.a(a);
+
+      @Override
+      public double a(dut.b $$0) {
+         return this.f.a((double)$$0.a() * this.g, (double)$$0.b() * this.h, (double)$$0.c() * this.g);
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.o($$0.a(this.f), this.g, this.h));
+      }
+
+      @Override
+      public double a() {
+         return -this.b();
+      }
+
+      @Override
+      public double b() {
+         return this.f.a();
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return e;
+      }
+
+      public dut.c j() {
+         return this.f;
+      }
+
+      @Deprecated
+      public double k() {
+         return this.g;
+      }
+
+      public double l() {
+         return this.h;
+      }
+   }
+
+   interface p extends dut {
+      dut aA_();
+
+      @Override
+      default double a(dut.b $$0) {
+         return this.a(this.aA_().a($$0));
+      }
+
+      @Override
+      default void a(double[] $$0, dut.a $$1) {
+         this.aA_().a($$0, $$1);
+
+         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+            $$0[$$2] = this.a($$0[$$2]);
+         }
+      }
+
+      double a(double var1);
+   }
+
+   static record q(dut f, double g, double h, dut i, dut j) implements dut {
+      public static final MapCodec<duu.q> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dut.d.fieldOf("input").forGetter(duu.q::j),
+                  duu.d.fieldOf("min_inclusive").forGetter(duu.q::k),
+                  duu.d.fieldOf("max_exclusive").forGetter(duu.q::l),
+                  dut.d.fieldOf("when_in_range").forGetter(duu.q::m),
+                  dut.d.fieldOf("when_out_of_range").forGetter(duu.q::n)
+               )
+               .apply($$0, duu.q::new)
+      );
+      public static final axg<duu.q> e = duu.a(a);
+
+      @Override
+      public double a(dut.b $$0) {
+         double $$1 = this.f.a($$0);
+         return $$1 >= this.g && $$1 < this.h ? this.i.a($$0) : this.j.a($$0);
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         this.f.a($$0, $$1);
+
+         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+            double $$3 = $$0[$$2];
+            if ($$3 >= this.g && $$3 < this.h) {
+               $$0[$$2] = this.i.a($$1.a($$2));
+            } else {
+               $$0[$$2] = this.j.a($$1.a($$2));
+            }
+         }
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.q(this.f.a($$0), this.g, this.h, this.i.a($$0), this.j.a($$0)));
+      }
+
+      @Override
+      public double a() {
+         return Math.min(this.i.a(), this.j.a());
+      }
+
+      @Override
+      public double b() {
+         return Math.max(this.i.b(), this.j.b());
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return e;
+      }
+
+      public dut j() {
+         return this.f;
+      }
+
+      public double k() {
+         return this.g;
+      }
+
+      public double l() {
+         return this.h;
+      }
+
+      public dut m() {
+         return this.i;
+      }
+
+      public dut n() {
+         return this.j;
+      }
+   }
+
+   protected static record r(dut.c a) implements duu.u {
+      static final axg<duu.r> e = duu.a(dut.c.a, duu.r::new, duu.r::j);
+
+      @Override
+      public double a(dut.b $$0) {
+         return this.a((double)$$0.a(), (double)$$0.b(), (double)$$0.c());
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.r($$0.a(this.a)));
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return e;
+      }
+
+      @Override
+      public dut.c j() {
+         return this.a;
+      }
+   }
+
+   protected static record s(dut.c a) implements duu.u {
+      static final axg<duu.s> e = duu.a(dut.c.a, duu.s::new, duu.s::j);
+
+      @Override
+      public double a(dut.b $$0) {
+         return this.a((double)$$0.a(), 0.0, (double)$$0.c());
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.s($$0.a(this.a)));
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return e;
+      }
+
+      @Override
+      public dut.c j() {
+         return this.a;
+      }
+   }
+
+   protected static record t(dut.c a) implements duu.u {
+      static final axg<duu.t> e = duu.a(dut.c.a, duu.t::new, duu.t::j);
+
+      @Override
+      public double a(dut.b $$0) {
+         return this.a((double)$$0.c(), (double)$$0.a(), 0.0);
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.t($$0.a(this.a)));
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return e;
+      }
+
+      @Override
+      public dut.c j() {
+         return this.a;
+      }
+   }
+
+   interface u extends dut {
+      dut.c j();
+
+      @Override
+      default double a() {
+         return -this.b();
+      }
+
+      @Override
+      default double b() {
+         return this.j().a() * 4.0;
+      }
+
+      default double a(double $$0, double $$1, double $$2) {
+         return this.j().a($$0 * 0.25, $$1 * 0.25, $$2 * 0.25) * 4.0;
+      }
+
+      @Override
+      default void a(double[] $$0, dut.a $$1) {
+         $$1.a($$0, this);
+      }
+   }
+
+   protected static record v(dut e, dut f, dut g, double h, double i, dut.c j) implements dut {
+      private static final MapCodec<duu.v> k = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dut.d.fieldOf("shift_x").forGetter(duu.v::j),
+                  dut.d.fieldOf("shift_y").forGetter(duu.v::k),
+                  dut.d.fieldOf("shift_z").forGetter(duu.v::l),
+                  Codec.DOUBLE.fieldOf("xz_scale").forGetter(duu.v::m),
+                  Codec.DOUBLE.fieldOf("y_scale").forGetter(duu.v::n),
+                  dut.c.a.fieldOf("noise").forGetter(duu.v::o)
+               )
+               .apply($$0, duu.v::new)
+      );
+      public static final axg<duu.v> a = duu.a(k);
+
+      @Override
+      public double a(dut.b $$0) {
+         double $$1 = (double)$$0.a() * this.h + this.e.a($$0);
+         double $$2 = (double)$$0.b() * this.i + this.f.a($$0);
+         double $$3 = (double)$$0.c() * this.h + this.g.a($$0);
+         return this.j.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.v(this.e.a($$0), this.f.a($$0), this.g.a($$0), this.h, this.i, $$0.a(this.j)));
+      }
+
+      @Override
+      public double a() {
+         return -this.b();
+      }
+
+      @Override
+      public double b() {
+         return this.j.a();
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return a;
+      }
+
+      public dut j() {
+         return this.e;
+      }
+
+      public dut k() {
+         return this.f;
+      }
+
+      public dut l() {
+         return this.g;
+      }
+
+      public double m() {
+         return this.h;
+      }
+
+      public double n() {
+         return this.i;
+      }
+
+      public dut.c o() {
+         return this.j;
+      }
+   }
+
+   public static record w(awo<duu.w.b, duu.w.a> e) implements dut {
+      private static final Codec<awo<duu.w.b, duu.w.a>> f = awo.a(duu.w.a.b);
+      private static final MapCodec<duu.w> g = f.fieldOf("spline").xmap(duu.w::new, duu.w::j);
+      public static final axg<duu.w> a = duu.a(g);
+
+      @Override
+      public double a(dut.b $$0) {
+         return (double)this.e.a(new duu.w.b($$0));
+      }
+
+      @Override
+      public double a() {
+         return (double)this.e.b();
+      }
+
+      @Override
+      public double b() {
+         return (double)this.e.c();
+      }
+
+      @Override
+      public void a(double[] $$0, dut.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.w(this.e.a((awo.d<duu.w.a>)($$1 -> $$1.a($$0)))));
+      }
+
+      @Override
+      public axg<? extends dut> c() {
+         return a;
+      }
+
+      public awo<duu.w.b, duu.w.a> j() {
+         return this.e;
+      }
+
+      public static record a(in<dut> c) implements aym<duu.w.b> {
+         public static final Codec<duu.w.a> b = dut.c.xmap(duu.w.a::new, duu.w.a::a);
+
+         @Override
+         public String toString() {
+            Optional<aju<dut>> $$0 = this.c.e();
+            if ($$0.isPresent()) {
+               aju<dut> $$1 = $$0.get();
+               if ($$1 == dvh.d) {
+                  return "continents";
                }
 
-               if ($$5 != null && $$5.test($$28)) {
-                  $$22.g();
-                  return OptionalInt.of($$25 + 1);
+               if ($$1 == dvh.e) {
+                  return "erosion";
                }
+
+               if ($$1 == dvh.f) {
+                  return "weirdness";
+               }
+
+               if ($$1 == dvh.g) {
+                  return "ridges";
+               }
+            }
+
+            return "Coordinate[" + this.c + "]";
+         }
+
+         public float a(duu.w.b $$0) {
+            return (float)this.c.a().a($$0.a());
+         }
+
+         @Override
+         public float b() {
+            return this.c.b() ? (float)this.c.a().a() : Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return this.c.b() ? (float)this.c.a().b() : Float.POSITIVE_INFINITY;
+         }
+
+         public duu.w.a a(dut.f $$0) {
+            return new duu.w.a(new in.a<>(this.c.a().a($$0)));
+         }
+
+         public in<dut> a() {
+            return this.c;
+         }
+      }
+
+      public static record b(dut.b a) {
+      }
+   }
+
+   interface x extends dut {
+      dut j();
+
+      @Override
+      default double a(dut.b $$0) {
+         return this.a($$0, this.j().a($$0));
+      }
+
+      @Override
+      default void a(double[] $$0, dut.a $$1) {
+         this.j().a($$0, $$1);
+
+         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+            $$0[$$2] = this.a($$1.a($$2), $$0[$$2]);
+         }
+      }
+
+      double a(dut.b var1, double var2);
+   }
+
+   interface y extends dut {
+      Logger a = LogUtils.getLogger();
+
+      static duu.y a(duu.y.a $$0, dut $$1, dut $$2) {
+         double $$3 = $$1.a();
+         double $$4 = $$2.a();
+         double $$5 = $$1.b();
+         double $$6 = $$2.b();
+         if ($$0 == duu.y.a.c || $$0 == duu.y.a.d) {
+            boolean $$7 = $$3 >= $$6;
+            boolean $$8 = $$4 >= $$5;
+            if ($$7 || $$8) {
+               a.warn("Creating a " + $$0 + " function between two non-overlapping inputs: " + $$1 + " and " + $$2);
+            }
+         }
+         double $$9 = switch ($$0) {
+            case a -> $$3 + $$4;
+            case d -> Math.max($$3, $$4);
+            case c -> Math.min($$3, $$4);
+            case b -> $$3 > 0.0 && $$4 > 0.0 ? $$3 * $$4 : ($$5 < 0.0 && $$6 < 0.0 ? $$5 * $$6 : Math.min($$3 * $$6, $$5 * $$4));
+         };
+
+         double $$10 = switch ($$0) {
+            case a -> $$5 + $$6;
+            case d -> Math.max($$5, $$6);
+            case c -> Math.min($$5, $$6);
+            case b -> $$3 > 0.0 && $$4 > 0.0 ? $$5 * $$6 : ($$5 < 0.0 && $$6 < 0.0 ? $$3 * $$4 : Math.max($$3 * $$4, $$5 * $$6));
+         };
+         if ($$0 == duu.y.a.b || $$0 == duu.y.a.a) {
+            if ($$1 instanceof duu.h $$11) {
+               return new duu.n($$0 == duu.y.a.a ? duu.n.a.b : duu.n.a.a, $$2, $$9, $$10, $$11.a);
+            }
+
+            if ($$2 instanceof duu.h $$12) {
+               return new duu.n($$0 == duu.y.a.a ? duu.n.a.b : duu.n.a.a, $$1, $$9, $$10, $$12.a);
             }
          }
 
-         $$22.g();
-         return OptionalInt.empty();
+         return new duu.a($$0, $$1, $$2, $$9, $$10);
       }
-   }
 
-   @Override
-   public void a(apz $$0, czq $$1, dvf $$2, dqv $$3) {
-      if (!aa.a($$3.f())) {
-         dvo $$4 = new dvo(this, $$0);
-         this.a($$3, $$4, $$2, $$1, $$0.F_(), $$0.H_().d(ks.av), dvt.a($$0));
+      duu.y.a j();
+
+      dut k();
+
+      dut l();
+
+      @Override
+      default axg<? extends dut> c() {
+         return this.j().e;
       }
-   }
 
-   @VisibleForTesting
-   public void a(dqv $$0, dvo $$1, dvf $$2, czq $$3, czy $$4, iy<czw> $$5, dvt $$6) {
-      duv $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
-      duw $$8 = this.e.a();
-      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
-   }
+      public static enum a implements ayg {
+         a("add"),
+         b("mul"),
+         c("min"),
+         d("max");
 
-   @Override
-   public void a(apz $$0, long $$1, dvf $$2, czy $$3, czq $$4, dqv $$5, dun.a $$6) {
-      czy $$7 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
-      dvq $$8 = new dvq(new dus(dvg.a()));
-      int $$9 = 8;
-      cye $$10 = $$5.f();
-      duv $$11 = $$5.a($$3x -> this.a($$3x, $$4, dvt.a($$0), $$2));
-      dud $$12 = $$11.i();
-      dwr $$13 = new dwr(this, $$0.H_(), $$5.z(), $$11, $$2, this.e.a().j());
-      dqu $$14 = ((drp)$$5).b($$6);
+         final axg<duu.y> e = duu.a((BiFunction<dut, dut, duu.y>)(($$0x, $$1) -> duu.y.a(this, $$0x, $$1)), duu.y::k, duu.y::l);
+         private final String f;
 
-      for (int $$15 = -8; $$15 <= 8; $$15++) {
-         for (int $$16 = -8; $$16 <= 8; $$16++) {
-            cye $$17 = new cye($$10.e + $$15, $$10.f + $$16);
-            dqv $$18 = $$0.a($$17.e, $$17.f);
-            czx $$19 = $$18.a(() -> this.a(this.b.getNoiseBiome(iw.a($$17.d()), 0, iw.a($$17.e()), $$2.b())));
-            Iterable<il<dwu<?>>> $$20 = $$19.a($$6);
-            int $$21 = 0;
+         private a(String $$0) {
+            this.f = $$0;
+         }
 
-            for (il<dwu<?>> $$22 : $$20) {
-               dwu<?> $$23 = $$22.a();
-               $$8.c($$1 + (long)$$21, $$17.e, $$17.f);
-               if ($$23.a($$8)) {
-                  $$23.a($$13, $$5, $$7::a, $$8, $$12, $$17, $$14);
-               }
-
-               $$21++;
-            }
+         @Override
+         public String c() {
+            return this.f;
          }
       }
    }
 
-   @Override
-   public CompletableFuture<dqv> a(Executor $$0, dvt $$1, dvf $$2, czq $$3, dqv $$4) {
-      duz $$5 = this.e.a().f().a($$4.z());
-      int $$6 = $$5.c();
-      int $$7 = axk.a($$6, $$5.a());
-      int $$8 = axk.a($$5.d(), $$5.a());
-      if ($$8 <= 0) {
-         return CompletableFuture.completedFuture($$4);
-      } else {
-         int $$9 = $$4.e($$8 * $$5.a() - 1 + $$6);
-         int $$10 = $$4.e($$6);
-         Set<drg> $$11 = Sets.newHashSet();
+   protected static record z(dut e, dut.c f, duu.z.a g) implements duu.x {
+      private static final MapCodec<duu.z> h = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dut.d.fieldOf("input").forGetter(duu.z::j),
+                  dut.c.a.fieldOf("noise").forGetter(duu.z::k),
+                  duu.z.a.c.fieldOf("rarity_value_mapper").forGetter(duu.z::l)
+               )
+               .apply($$0, duu.z::new)
+      );
+      public static final axg<duu.z> a = duu.a(h);
 
-         for (int $$12 = $$9; $$12 >= $$10; $$12--) {
-            drg $$13 = $$4.b($$12);
-            $$13.a();
-            $$11.add($$13);
-         }
-
-         return CompletableFuture.supplyAsync(ac.a("wgen_fill_noise", () -> this.a($$1, $$3, $$2, $$4, $$7, $$8)), ac.f()).whenCompleteAsync(($$1x, $$2x) -> {
-            for (drg $$3x : $$11) {
-               $$3x.b();
-            }
-         }, $$0);
-      }
-   }
-
-   private dqv a(dvt $$0, czq $$1, dvf $$2, dqv $$3, int $$4, int $$5) {
-      duv $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
-      dur $$7 = $$3.a(dur.a.c);
-      dur $$8 = $$3.a(dur.a.a);
-      cye $$9 = $$3.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      dud $$12 = $$6.i();
-      $$6.f();
-      ib.a $$13 = new ib.a();
-      int $$14 = $$6.j();
-      int $$15 = $$6.k();
-      int $$16 = 16 / $$14;
-      int $$17 = 16 / $$14;
-
-      for (int $$18 = 0; $$18 < $$16; $$18++) {
-         $$6.b($$18);
-
-         for (int $$19 = 0; $$19 < $$17; $$19++) {
-            int $$20 = $$3.am() - 1;
-            drg $$21 = $$3.b($$20);
-
-            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
-               $$6.b($$22, $$19);
-
-               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
-                  int $$24 = ($$4 + $$22) * $$15 + $$23;
-                  int $$25 = $$24 & 15;
-                  int $$26 = $$3.e($$24);
-                  if ($$20 != $$26) {
-                     $$20 = $$26;
-                     $$21 = $$3.b($$26);
-                  }
-
-                  double $$27 = (double)$$23 / (double)$$15;
-                  $$6.a($$24, $$27);
-
-                  for (int $$28 = 0; $$28 < $$14; $$28++) {
-                     int $$29 = $$10 + $$18 * $$14 + $$28;
-                     int $$30 = $$29 & 15;
-                     double $$31 = (double)$$28 / (double)$$14;
-                     $$6.b($$29, $$31);
-
-                     for (int $$32 = 0; $$32 < $$14; $$32++) {
-                        int $$33 = $$11 + $$19 * $$14 + $$32;
-                        int $$34 = $$33 & 15;
-                        double $$35 = (double)$$32 / (double)$$14;
-                        $$6.c($$33, $$35);
-                        doz $$36 = $$6.e();
-                        if ($$36 == null) {
-                           $$36 = this.e.a().g();
-                        }
-
-                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
-                        if ($$36 != d && !aa.a($$3.f())) {
-                           $$21.a($$30, $$25, $$34, $$36, false);
-                           $$7.a($$30, $$24, $$34, $$36);
-                           $$8.a($$30, $$24, $$34, $$36);
-                           if ($$12.a() && !$$36.u().c()) {
-                              $$13.d($$29, $$24, $$33);
-                              $$3.e($$13);
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         $$6.h();
+      @Override
+      public double a(dut.b $$0, double $$1) {
+         double $$2 = this.g.e.get($$1);
+         return $$2 * Math.abs(this.f.a((double)$$0.a() / $$2, (double)$$0.b() / $$2, (double)$$0.c() / $$2));
       }
 
-      $$6.g();
-      return $$3;
-   }
+      @Override
+      public dut a(dut.f $$0) {
+         return $$0.apply(new duu.z(this.e.a($$0), $$0.a(this.f), this.g));
+      }
 
-   private doz a(duv $$0, int $$1, int $$2, int $$3, doz $$4) {
-      return $$4;
-   }
+      @Override
+      public double a() {
+         return 0.0;
+      }
 
-   @Override
-   public int d() {
-      return this.e.a().f().d();
-   }
+      @Override
+      public double b() {
+         return this.g.f * this.f.a();
+      }
 
-   @Override
-   public int e() {
-      return this.e.a().l();
-   }
+      @Override
+      public axg<? extends dut> c() {
+         return a;
+      }
 
-   @Override
-   public int f() {
-      return this.e.a().f().c();
-   }
+      @Override
+      public dut j() {
+         return this.e;
+      }
 
-   @Override
-   public void a(apz $$0) {
-      if (!this.e.a().a()) {
-         cye $$1 = $$0.a();
-         il<czw> $$2 = $$0.t($$1.l().h($$0.al() - 1));
-         dvq $$3 = new dvq(new dus(dvg.a()));
-         $$3.a($$0.C(), $$1.d(), $$1.e());
-         czi.a($$0, $$2, $$1, $$3);
+      public dut.c k() {
+         return this.f;
+      }
+
+      public duu.z.a l() {
+         return this.g;
+      }
+
+      public static enum a implements ayg {
+         a("type_1", dvh.a::b, 2.0),
+         b("type_2", dvh.a::a, 3.0);
+
+         public static final Codec<duu.z.a> c = ayg.a(duu.z.a::values);
+         private final String d;
+         final Double2DoubleFunction e;
+         final double f;
+
+         private a(String $$0, Double2DoubleFunction $$1, double $$2) {
+            this.d = $$0;
+            this.e = $$1;
+            this.f = $$2;
+         }
+
+         @Override
+         public String c() {
+            return this.d;
+         }
       }
    }
 }

@@ -1,167 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+public class dvm implements cyt {
+   private int a;
 
-public record dvm(Map<ajs<dss>, dss> b) {
-   public static final MapCodec<dvm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(ajs.a(ks.aP), dss.a).fieldOf("dimensions").forGetter(dvm::d)).apply($$0, $$0.stable(dvm::new))
-   );
-   private static final Set<ajs<dss>> c = ImmutableSet.of(dss.b, dss.c, dss.d);
-   private static final int d = c.size();
-
-   public dvm(Map<ajs<dss>, dss> b) {
-      dss $$1 = b.get(dss.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
+   @Override
+   public int a(apu $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.aa().b(czc.C)) {
+         return 0;
       } else {
-         this.b = b;
-      }
-   }
-
-   public dvm(iy<dss> $$0) {
-      this($$0.h().collect(Collectors.toMap(il.c::h, il.c::a)));
-   }
-
-   public static Stream<ajs<dss>> a(Stream<ajs<dss>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
-   }
-
-   public dvm a(iz $$0, dqw $$1) {
-      iy<dsr> $$2 = $$0.d(ks.aA);
-      Map<ajs<dss>, dss> $$3 = a($$2, this.b, $$1);
-      return new dvm($$3);
-   }
-
-   public static Map<ajs<dss>, dss> a(iy<dsr> $$0, Map<ajs<dss>, dss> $$1, dqw $$2) {
-      dss $$3 = $$1.get(dss.b);
-      il<dsr> $$4 = (il<dsr>)($$3 == null ? $$0.g(dsp.a) : $$3.a());
-      return a($$1, $$4, $$2);
-   }
-
-   public static Map<ajs<dss>, dss> a(Map<ajs<dss>, dss> $$0, il<dsr> $$1, dqw $$2) {
-      Builder<ajs<dss>, dss> $$3 = ImmutableMap.builder();
-      $$3.putAll($$0);
-      $$3.put(dss.b, new dss($$1, $$2));
-      return $$3.buildKeepingLast();
-   }
-
-   public dqw a() {
-      dss $$0 = this.b.get(dss.b);
-      if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return $$0.b();
-      }
-   }
-
-   public Optional<dss> a(ajs<dss> $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public ImmutableSet<ajs<cyx>> b() {
-      return this.d().keySet().stream().map(ks::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof dui;
-   }
-
-   private static emv.a b(iy<dss> $$0) {
-      return $$0.e(dss.b).map($$0x -> {
-         dqw $$1 = $$0x.b();
-         if ($$1 instanceof dui) {
-            return emv.a.c;
+         axt $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
          } else {
-            return $$1 instanceof dum ? emv.a.b : emv.a.a;
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.B_() < 5 && $$0.D_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
+
+               for (apv $$5 : $$0.x()) {
+                  if (!$$5.N_()) {
+                     id $$6 = $$5.dm();
+                     if (!$$0.D_().g() || $$6.v() >= $$0.z_() && $$0.h($$6)) {
+                        bod $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           auu $$8 = $$5.H();
+                           int $$9 = axm.a($$8.a(auz.i.b(auz.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              id $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dpi $$12 = $$0.a_($$11);
+                              elb $$13 = $$0.b_($$11);
+                              if (czr.a($$0, $$11, $$12, $$13, bqg.ax)) {
+                                 brl $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    chi $$17 = bqg.ax.a((czg)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bqx.a, $$14);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+
+               return $$4;
+            }
          }
-      }).orElse(emv.a.a);
-   }
-
-   static Lifecycle a(ajs<dss> $$0, dss $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
-
-   private static boolean b(ajs<dss> $$0, dss $$1) {
-      if ($$0 == dss.b) {
-         return a($$1);
-      } else if ($$0 == dss.c) {
-         return b($$1);
-      } else {
-         return $$0 == dss.d ? c($$1) : false;
-      }
-   }
-
-   private static boolean a(dss $$0) {
-      il<dsr> $$1 = $$0.a();
-      if (!$$1.a(dsp.a) && !$$1.a(dsp.d)) {
-         return false;
-      } else {
-         if ($$0.b().c() instanceof daj $$2 && !$$2.a(dal.b)) {
-            return false;
-         }
-
-         return true;
-      }
-   }
-
-   private static boolean b(dss $$0) {
-      return $$0.a().a(dsp.b) && $$0.b() instanceof duu $$1 && $$1.a(duw.f) && $$1.c() instanceof daj $$2 && $$2.a(dal.a);
-   }
-
-   private static boolean c(dss $$0) {
-      return $$0.a().a(dsp.c) && $$0.b() instanceof duu $$1 && $$1.a(duw.g) && $$1.c() instanceof dan;
-   }
-
-   public dvm.b a(iy<dss> $$0) {
-      Stream<ajs<dss>> $$1 = Stream.concat($$0.f().stream(), this.b.keySet().stream()).distinct();
-
-      record a(ajs<dss> a, dss b) {
-
-         ix c() {
-            return new ix(Optional.empty(), dvm.a(this.a, this.b));
-         }
-      }
-
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.e($$2x).or(() -> Optional.ofNullable(this.b.get($$2x))).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      jh<dss> $$4 = new it<>(ks.aP, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      iy<dss> $$5 = $$4.l();
-      emv.a $$6 = b($$5);
-      return new dvm.b($$5.l(), $$6);
-   }
-
-   public Map<ajs<dss>, dss> d() {
-      return this.b;
-   }
-
-   public static record b(iy<dss> a, emv.a b) {
-      public Lifecycle a() {
-         return this.a.d();
-      }
-
-      public iz.b b() {
-         return new iz.c(List.of(this.a)).d();
-      }
-
-      public iy<dss> c() {
-         return this.a;
-      }
-
-      public emv.a d() {
-         return this.b;
       }
    }
 }

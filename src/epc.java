@@ -1,45 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.BiFunction;
 
-public class epc extends eoo {
+public class epc implements eoy {
    public static final Codec<epc> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(eqy.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, epc::new)
+      $$0 -> $$0.group(epa.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, epc::new)
    );
-   private final eqx b;
-   private final boolean c;
+   public static final Codec<epc> b = epa.b.listOf().xmap(epc::new, $$0 -> $$0.c);
+   private final List<eoy> c;
+   private final BiFunction<crs, enk, crs> d;
 
-   private epc(List<eqc> $$0, eqx $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   private epc(List<eoy> $$0) {
+      this.c = $$0;
+      this.d = epa.a($$0);
+   }
+
+   public static epc a(List<eoy> $$0) {
+      return new epc(List.copyOf($$0));
+   }
+
+   public crs a(crs $$0, enk $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public eoq b() {
-      return eor.c;
+   public void a(ent $$0) {
+      eoy.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public Set<epl<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public crj a(crj $$0, enb $$1) {
-      int $$2 = this.c ? $$0.G() : 0;
-      $$0.e(axk.a($$2 + this.b.a($$1), 0, $$0.i()));
-      return $$0;
-   }
-
-   public static eoo.a<?> a(eqx $$0) {
-      return a($$1 -> new epc($$1, $$0, false));
-   }
-
-   public static eoo.a<?> a(eqx $$0, boolean $$1) {
-      return a($$2 -> new epc($$2, $$0, $$1));
+   public eoz b() {
+      return epa.D;
    }
 }

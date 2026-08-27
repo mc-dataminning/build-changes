@@ -1,38 +1,18 @@
-import com.google.common.collect.Sets;
-import java.util.Arrays;
-import java.util.Set;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public enum ii {
-   a(ih.c),
-   b(ih.c, ih.f),
-   c(ih.f),
-   d(ih.d, ih.f),
-   e(ih.d),
-   f(ih.d, ih.e),
-   g(ih.e),
-   h(ih.c, ih.e);
+public interface ii<T> extends ja<T> {
+   @Nonnull
+   @Override
+   ajv b(T var1);
 
-   private final Set<ih> i;
-   private final jg j;
+   @Nonnull
+   @Override
+   T a(@Nullable ajv var1);
 
-   private ii(ih... $$0) {
-      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
-      this.j = new jg(0, 0, 0);
+   @Nonnull
+   @Override
+   T a(int var1);
 
-      for (ih $$1 : $$0) {
-         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
-      }
-   }
-
-   public Set<ih> a() {
-      return this.i;
-   }
-
-   public int b() {
-      return this.j.u();
-   }
-
-   public int c() {
-      return this.j.w();
-   }
+   ajv a();
 }

@@ -1,20 +1,14 @@
-public record abm(int b) implements yn<aay> {
-   public static final ye<vg, abm> a = yn.a(abm::a, abm::new);
-
-   private abm(vg $$0) {
-      this($$0.l());
-   }
-
-   private void a(vg $$0) {
-      $$0.c(this.b);
+public class abm extends yn<aba> {
+   public abm(Iterable<yp<? super aba>> $$0) {
+      super($$0);
    }
 
    @Override
-   public yp<abm> a() {
-      return afj.n;
+   public yr<abm> a() {
+      return afl.a;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 }

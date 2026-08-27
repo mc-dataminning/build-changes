@@ -1,50 +1,65 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class cro extends cre {
-   public cro(cre.a $$0) {
-      super($$0);
+public class cro {
+   private final Map<crn, cro.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(crn $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public boa a(cuq $$0) {
-      cyx $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      doz $$3 = $$1.a_($$2);
-      if ($$3.a(avc.S)) {
-         cjt $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return boa.a($$1.B);
+   public float a(crn $$0, float $$1) {
+      cro.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return axm.a($$4 / $$3, 0.0F, 1.0F);
       } else {
-         return boa.d;
+         return 0.0F;
       }
    }
 
-   public static boa a(cjt $$0, cyx $$1, ib $$2) {
-      cfx $$3 = null;
-      double $$4 = 7.0;
-      int $$5 = $$2.u();
-      int $$6 = $$2.v();
-      int $$7 = $$2.w();
-      erv $$8 = new erv((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
-      List<bqq> $$9 = $$1.a(bqq.class, $$8, $$1x -> $$1x.gc() == $$0);
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<crn, cro.a>> $$0 = this.a.entrySet().iterator();
 
-      for (bqq $$10 : $$9) {
-         if ($$3 == null) {
-            $$3 = cfx.b($$1, $$2);
-            $$3.C();
+         while ($$0.hasNext()) {
+            Entry<crn, cro.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
          }
-
-         $$10.b($$3, true);
       }
+   }
 
-      if (!$$9.isEmpty()) {
-         $$1.a(dts.b, $$2, dts.a.a($$0));
-         return boa.a;
-      } else {
-         return boa.d;
+   public void a(crn $$0, int $$1) {
+      this.a.put($$0, new cro.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(crn $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(crn $$0, int $$1) {
+   }
+
+   protected void c(crn $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

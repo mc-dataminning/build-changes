@@ -1,88 +1,101 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.BitSet;
-import java.util.List;
-import javax.annotation.Nullable;
+public class aco implements yp<aba> {
+   public static final yg<vt, aco> a = yp.a(aco::a, aco::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final int i;
+   private final boolean j;
+   private final kl k;
 
-public class aco {
-   private static final ye<ByteBuf, byte[]> a = yc.a(2048);
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final BitSet e;
-   private final List<byte[]> f;
-   private final List<byte[]> g;
-
-   public aco(cye $$0, ekh $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = new BitSet();
-      this.f = Lists.newArrayList();
-      this.g = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, czg.a, $$4, this.b, this.d, this.f);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, czg.b, $$4, this.c, this.e, this.g);
-         }
-      }
+   public <T extends kl> aco(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      this.k = $$0;
+      this.j = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+      this.f = $$6;
+      this.g = $$7;
+      this.h = $$8;
+      this.i = $$9;
    }
 
-   public aco(vg $$0, int $$1, int $$2) {
-      this.b = $$0.w();
-      this.c = $$0.w();
-      this.d = $$0.w();
-      this.e = $$0.w();
-      this.f = $$0.a(a);
-      this.g = $$0.a(a);
+   private aco(vt $$0) {
+      this.j = $$0.readBoolean();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readInt();
+      this.k = kn.aZ.decode($$0);
    }
 
-   public void a(vg $$0) {
+   private void a(vt $$0) {
+      $$0.a(this.j);
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f, a);
-      $$0.a(this.g, a);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.p(this.i);
+      kn.aZ.encode($$0, this.k);
    }
 
-   private void a(cye $$0, ekh $$1, czg $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dra $$7 = $$1.a($$2).a(je.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   @Override
+   public yr<aco> a() {
+      return afl.M;
    }
 
-   public BitSet a() {
+   public void a(aba $$0) {
+      $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.j;
+   }
+
+   public double e() {
       return this.b;
    }
 
-   public BitSet b() {
-      return this.d;
-   }
-
-   public List<byte[]> c() {
-      return this.f;
-   }
-
-   public BitSet d() {
+   public double f() {
       return this.c;
    }
 
-   public BitSet e() {
+   public double g() {
+      return this.d;
+   }
+
+   public float h() {
       return this.e;
    }
 
-   public List<byte[]> f() {
+   public float i() {
+      return this.f;
+   }
+
+   public float j() {
       return this.g;
+   }
+
+   public float k() {
+      return this.h;
+   }
+
+   public int l() {
+      return this.i;
+   }
+
+   public kl m() {
+      return this.k;
    }
 }

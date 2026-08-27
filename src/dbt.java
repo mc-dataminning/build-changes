@@ -1,59 +1,35 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dbt extends ddt {
-   public static final MapCodec<dbt> a = b(dbt::new);
-   public static final int b = 3;
-   public static final dpz c = dpp.as;
-   private static final est[] g = new est[]{
-      dby.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dby.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dby.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dby.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
-
-   @Override
-   public MapCodec<dbt> a() {
-      return a;
-   }
-
-   public dbt(doy.d $$0) {
+public abstract class dbt extends dch implements dez {
+   protected dbt(dph.d $$0) {
       super($$0);
    }
 
    @Override
-   protected dpz b() {
-      return c;
+   protected abstract MapCodec<? extends dbt> a();
+
+   @Override
+   protected dim b_(dpi $$0) {
+      return dim.a;
    }
 
    @Override
-   public int c() {
-      return 3;
+   protected boolean a(dpi $$0, czg $$1, id $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dmo $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
    }
 
+   @Nullable
    @Override
-   protected cyw d() {
-      return crm.vj;
+   protected boj b(dpi $$0, czg $$1, id $$2) {
+      dmo $$3 = $$1.c_($$2);
+      return $$3 instanceof boj ? (boj)$$3 : null;
    }
 
-   @Override
-   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(cyx $$0) {
-      return super.a($$0) / 3;
-   }
-
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return g[this.g($$0)];
+   @Nullable
+   protected static <E extends dmo, A extends dmo> dmp<A> a(dmq<A> $$0, dmq<E> $$1, dmp<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

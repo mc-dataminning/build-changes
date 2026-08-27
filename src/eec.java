@@ -1,30 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum eec implements aye {
-   a(ih.b, 1, "ceiling"),
-   b(ih.a, -1, "floor");
+public class eec extends edx {
+   public static final Codec<eec> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bmp.b(edx.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, eec::new)
+   );
+   private final bmp<edx> b;
 
-   public static final Codec<eec> c = aye.a(eec::values);
-   private final ih d;
-   private final int e;
-   private final String f;
-
-   private eec(ih $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public ih a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public eec(bmp<edx> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public int a(axt $$0, dvx $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   }
+
+   @Override
+   public edy<?> a() {
+      return edy.f;
    }
 }

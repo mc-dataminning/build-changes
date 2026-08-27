@@ -1,66 +1,84 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fey extends fdn {
-   private static final ffc a = new ffc(
-      new ajt("widget/tab_selected"), new ajt("widget/tab"), new ajt("widget/tab_selected_highlighted"), new ajt("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int f = 2;
-   private final ffs m;
-   private final ffr n;
+public class fey extends fdw {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fey.a n;
+   private final Supplier<gmr> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   public fey(ffs $$0, ffr $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+   public fey(int $$0, int $$1, ftr $$2, Supplier<gmr> $$3) {
+      super(0, 0, $$0, $$1, wh.a);
+      this.n = fey.a.a($$2);
+      this.o = $$3;
    }
 
    @Override
-   public void b(fdc $$0, int $$1, int $$2, float $$3) {
-      RenderSystem.enableBlend();
-      $$0.a(a.a(this.b(), this.A()), this.C(), this.D(), this.g, this.h);
-      RenderSystem.disableBlend();
-      fda $$4 = fbp.Q().h;
-      int $$5 = this.j ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.b($$0, this.C() + 2, this.D() + 2, this.E() - 2, this.F());
-         this.b($$0, $$4, $$5);
+   protected void b(fdl $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.C() + (float)this.x() / 2.0F, (float)(this.D() + this.v()), 100.0F);
+      float $$4 = (float)this.v() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      $$0.e();
+      evn.a(a.b.rotationDegrees(this.p));
+      this.n.a($$0, this.o.get());
+      $$0.e();
+      evn.d();
+      $$0.c().b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = axm.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
+   }
+
+   @Override
+   public void a(gqj $$0) {
+   }
+
+   @Override
+   protected void a(fhu $$0) {
+   }
+
+   @Override
+   public boolean B() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fdi a(fia $$0) {
+      return null;
+   }
+
+   static record a(fsa<?> a, fsa<?> b) {
+      public static fey.a a(ftr $$0) {
+         fsa<?> $$1 = new fsa($$0.a(ftu.aS), false);
+         fsa<?> $$2 = new fsa($$0.a(ftu.aW), true);
+         $$1.e = false;
+         $$2.e = false;
+         return new fey.a($$1, $$2);
       }
-   }
 
-   public void a(fdc $$0, fda $$1, int $$2) {
-      int $$3 = this.C() + 1;
-      int $$4 = this.D() + (this.b() ? 0 : 3);
-      int $$5 = this.C() + this.x() - 1;
-      int $$6 = this.D() + this.v();
-      a($$0, $$1, this.y(), $$3, $$4, $$5, $$6, $$2);
-   }
-
-   private void b(fdc $$0, fda $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.y()), this.x() - 4);
-      int $$4 = this.C() + (this.x() - $$3) / 2;
-      int $$5 = this.D() + this.v() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
-
-   @Override
-   protected void a(fhl $$0) {
-      $$0.a(fhk.a, wg.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(gqa $$0) {
-   }
-
-   public ffr a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
+      public void a(fdl $$0, gmr $$1) {
+         $$0.c().a();
+         $$0.c().b(1.0F, 1.0F, -1.0F);
+         $$0.c().a(0.0F, -1.5F, 0.0F);
+         fsa<?> $$2 = $$1.e() == gmr.a.a ? this.b : this.a;
+         gaq $$3 = $$2.a($$1.a());
+         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, glj.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
+      }
    }
 }

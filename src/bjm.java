@@ -4,19 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjm extends Schema {
+public class bjm extends bgp {
    public bjm(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("EntityHorse");
-      $$0.register($$1, "Horse", () -> DSL.optionalFields("ArmorItem", bfa.t.in($$0), "SaddleItem", bfa.t.in($$0), bgl.a($$0)));
-      $$0.register($$1, "Donkey", () -> DSL.optionalFields("Items", DSL.list(bfa.t.in($$0)), "SaddleItem", bfa.t.in($$0), bgl.a($$0)));
-      $$0.register($$1, "Mule", () -> DSL.optionalFields("Items", DSL.list(bfa.t.in($$0)), "SaddleItem", bfa.t.in($$0), bgl.a($$0)));
-      $$0.register($$1, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", bfa.t.in($$0), bgl.a($$0)));
-      $$0.register($$1, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", bfa.t.in($$0), bgl.a($$0)));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, bff.t, () -> DSL.optionalFields("id", bff.B.in($$0), "components", bff.w.in($$0)));
    }
 }

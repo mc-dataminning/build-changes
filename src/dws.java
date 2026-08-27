@@ -1,32 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dws extends dwp {
-   public static final Codec<dws> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwp.d.forGetter($$0x -> $$0x),
-               bnd.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bnd.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bnd.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, dws::new)
-   );
-   public final bnd b;
-   public final bnd c;
-   final bnd j;
+public abstract class dws implements dwh {
+   protected final ji f;
 
-   public dws(float $$0, edo $$1, bnd $$2, dvl $$3, dwq $$4, ip<dby> $$5, bnd $$6, bnd $$7, bnd $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   protected static <P extends dws> P1<Mu<P>, ji> a(Instance<P> $$0) {
+      return $$0.group(ji.v(16).optionalFieldOf("offset", ji.g).forGetter($$0x -> $$0x.f));
    }
 
-   public dws(float $$0, edo $$1, bnd $$2, dvl $$3, ip<dby> $$4, bnd $$5, bnd $$6, bnd $$7) {
-      this($$0, $$1, $$2, $$3, dwq.a, $$4, $$5, $$6, $$7);
+   protected dws(ji $$0) {
+      this.f = $$0;
    }
 
-   public dws(dwp $$0, bnd $$1, bnd $$2, bnd $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   public final boolean a(dab $$0, id $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(dpi var1);
 }

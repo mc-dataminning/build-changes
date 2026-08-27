@@ -1,45 +1,154 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.brigadier.RedirectModifier;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.context.ContextChain.Stage;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class ha<T, P> implements gr<T> {
-   private final ha.a<T, P> a;
-   private final List<P> b;
-   private final go<T> c;
-   private int d;
+public class ha<T extends dx<T>> {
+   @VisibleForTesting
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wi.b("command.forkLimit", $$0));
+   private final String b;
+   private final ContextChain<T> c;
 
-   private ha(ha.a<T, P> $$0, List<P> $$1, gu $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = new go<>($$2, this);
+   public ha(String $$0, ContextChain<T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   protected void a(T $$0, List<T> $$1, gu<T> $$2, gw $$3, gp $$4) {
+      ContextChain<T> $$5 = this.c;
+      gp $$6 = $$4;
+      List<T> $$7 = $$1;
+      if ($$5.getStage() != Stage.EXECUTE) {
+         $$2.c().a(() -> "prepare " + this.b);
+
+         try {
+            for (int $$8 = $$2.d(); $$5.getStage() != Stage.EXECUTE; $$5 = $$5.nextStage()) {
+               CommandContext<T> $$9 = $$5.getTopContext();
+               if ($$9.isForked()) {
+                  $$6 = $$6.b();
+               }
+
+               RedirectModifier<T> $$10 = $$9.getRedirectModifier();
+               if ($$10 instanceof gs<T> $$11) {
+                  $$11.a($$0, $$7, $$5, $$6, gv.a($$2, $$3));
+                  return;
+               }
+
+               if ($$10 != null) {
+                  $$2.e();
+                  boolean $$12 = $$6.a();
+                  List<T> $$13 = new ObjectArrayList();
+
+                  for (T $$14 : $$7) {
+                     try {
+                        Collection<T> $$15 = ContextChain.runModifier($$9, $$14, ($$0x, $$1x, $$2x) -> {
+                        }, $$12);
+                        if ($$13.size() + $$15.size() >= $$8) {
+                           $$0.a(a.create($$8), $$12, $$2.b());
+                           return;
+                        }
+
+                        $$13.addAll($$15);
+                     } catch (CommandSyntaxException var20) {
+                        $$14.a(var20, $$12, $$2.b());
+                        if (!$$12) {
+                           return;
+                        }
+                     }
+                  }
+
+                  $$7 = $$13;
+               }
+            }
+         } finally {
+            $$2.c().c();
+         }
+      }
+
+      if ($$7.isEmpty()) {
+         if ($$6.c()) {
+            $$2.a(new gq<>($$3, he.a()));
+         }
+      } else {
+         CommandContext<T> $$17 = $$5.getTopContext();
+         if ($$17.getCommand() instanceof gr<T> $$19) {
+            gv<T> $$20 = gv.a($$2, $$3);
+
+            for (T $$21 : $$7) {
+               $$19.a($$21, $$5, $$6, $$20);
+            }
+         } else {
+            if ($$6.c()) {
+               T $$22 = $$7.get(0);
+               $$22 = $$22.b(ds.chain($$22.p(), $$3.d()));
+               $$7 = List.of($$22);
+            }
+
+            hd<T> $$23 = new hd<>(this.b, $$6, $$17);
+            hc.a($$2, $$3, $$7, ($$1x, $$2x) -> new gq<>($$1x, $$23.bind((T)$$2x)));
+         }
+      }
+   }
+
+   protected void a(gu<T> $$0, gw $$1) {
+      gx $$2 = $$0.b();
+      if ($$2 != null) {
+         $$2.a($$1.c(), this.b);
+      }
    }
 
    @Override
-   public void execute(gs<T> $$0, gu $$1) {
-      P $$2 = this.b.get(this.d);
-      $$0.a(this.a.create($$1, $$2));
-      if (++this.d < this.b.size()) {
-         $$0.a(this.c);
+   public String toString() {
+      return this.b;
+   }
+
+   public static class a<T extends dx<T>> extends ha<T> implements gt<T> {
+      private final gp b;
+      private final T c;
+      private final List<T> d;
+
+      public a(String $$0, ContextChain<T> $$1, gp $$2, T $$3, List<T> $$4) {
+         super($$0, $$1);
+         this.c = $$3;
+         this.d = $$4;
+         this.b = $$2;
+      }
+
+      @Override
+      public void execute(gu<T> $$0, gw $$1) {
+         this.a(this.c, this.d, $$0, $$1, this.b);
       }
    }
 
-   public static <T, P> void a(gs<T> $$0, gu $$1, List<P> $$2, ha.a<T, P> $$3) {
-      int $$4 = $$2.size();
-      switch ($$4) {
-         case 0:
-            break;
-         case 1:
-            $$0.a($$3.create($$1, $$2.get(0)));
-            break;
-         case 2:
-            $$0.a($$3.create($$1, $$2.get(0)));
-            $$0.a($$3.create($$1, $$2.get(1)));
-            break;
-         default:
-            $$0.a((new ha<>($$3, $$2, $$1)).c);
+   public static class b<T extends dx<T>> extends ha<T> implements gt<T> {
+      private final T b;
+
+      public b(String $$0, ContextChain<T> $$1, T $$2) {
+         super($$0, $$1);
+         this.b = $$2;
+      }
+
+      @Override
+      public void execute(gu<T> $$0, gw $$1) {
+         this.a($$0, $$1);
+         this.a(this.b, List.of(this.b), $$0, $$1, gp.a);
       }
    }
 
-   @FunctionalInterface
-   public interface a<T, P> {
-      go<T> create(gu var1, P var2);
+   public static class c<T extends dx<T>> extends ha<T> implements gy<T> {
+      public c(String $$0, ContextChain<T> $$1) {
+         super($$0, $$1);
+      }
+
+      public void a(T $$0, gu<T> $$1, gw $$2) {
+         this.a($$1, $$2);
+         this.a($$0, List.of($$0), $$1, $$2, gp.a);
+      }
    }
 }

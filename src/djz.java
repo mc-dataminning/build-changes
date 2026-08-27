@@ -1,25 +1,31 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface djz {
-   cui b();
+public class djz extends dgh implements dby {
+   public static final MapCodec<djz> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cql.q.fieldOf("color").forGetter(djz::b), u()).apply($$0, djz::new));
+   private final cql k;
 
-   static List<djz> c() {
-      return kr.h.s().map(djz::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<djz> a() {
+      return j;
    }
 
-   @Nullable
-   static djz a(cyw $$0) {
-      if ($$0.p() instanceof cph $$1) {
-         dby var6 = $$1.d();
-         if (var6 instanceof djz) {
-            return (djz)var6;
-         }
-      }
+   public djz(cql $$0, dph.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
+   }
 
-      cre $$2 = $$0.p();
-      return $$2 instanceof djz ? (djz)$$2 : null;
+   @Override
+   public cql b() {
+      return this.k;
    }
 }

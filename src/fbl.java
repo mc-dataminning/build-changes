@@ -1,66 +1,113 @@
-import com.mojang.datafixers.DataFixer;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 
-public class fbl {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final fzd[] e = new fzd[9];
-   private boolean f;
+public class fbl extends aur {
+   private static final Logger c = LogUtils.getLogger();
+   private Map<fch, List<fno>> d = ImmutableMap.of();
+   private List<fno> e = ImmutableList.of();
 
-   public fbl(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
+   public void a(Iterable<cvu<?>> $$0, jb $$1) {
+      Map<fch, List<List<cvu<?>>>> $$2 = a($$0);
+      Map<fch, List<fno>> $$3 = Maps.newHashMap();
+      Builder<fno> $$4 = ImmutableList.builder();
+      $$2.forEach(($$3x, $$4x) -> $$3.put($$3x, $$4x.stream().map($$1xx -> new fno($$1, $$1xx)).peek($$4::add).collect(ImmutableList.toImmutableList())));
+      fch.w
+         .forEach(
+            ($$1x, $$2x) -> $$3.put(
+                  $$1x, $$2x.stream().flatMap($$1xx -> $$3.getOrDefault($$1xx, ImmutableList.of()).stream()).collect(ImmutableList.toImmutableList())
+               )
+         );
+      this.d = ImmutableMap.copyOf($$3);
+      this.e = $$4.build();
+   }
 
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new fzd();
+   private static Map<fch, List<List<cvu<?>>>> a(Iterable<cvu<?>> $$0) {
+      Map<fch, List<List<cvu<?>>>> $$1 = Maps.newHashMap();
+      Table<fch, String, List<cvu<?>>> $$2 = HashBasedTable.create();
+
+      for (cvu<?> $$3 : $$0) {
+         cvs<?> $$4 = $$3.b();
+         if (!$$4.an_() && !$$4.i()) {
+            fch $$5 = g($$3);
+            String $$6 = $$4.c();
+            if ($$6.isEmpty()) {
+               $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add(ImmutableList.of($$3));
+            } else {
+               List<cvu<?>> $$7 = (List<cvu<?>>)$$2.get($$5, $$6);
+               if ($$7 == null) {
+                  $$7 = Lists.newArrayList();
+                  $$2.put($$5, $$6, $$7);
+                  $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add($$7);
+               }
+
+               $$7.add($$3);
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private static fch g(cvu<?> $$0) {
+      cvs<?> $$1 = $$0.b();
+      if ($$1 instanceof cvj $$2) {
+         return switch ($$2.d()) {
+            case a -> fch.b;
+            case c -> fch.d;
+            case b -> fch.c;
+            case d -> fch.e;
+         };
+      } else {
+         cvx<?> $$3 = $$1.e();
+         if ($$1 instanceof cvb $$4) {
+            cvh $$5 = $$4.f();
+            if ($$3 == cvx.b) {
+               return switch ($$5) {
+                  case b -> fch.h;
+                  case a -> fch.g;
+                  case c -> fch.i;
+               };
+            }
+
+            if ($$3 == cvx.c) {
+               return $$5 == cvh.b ? fch.k : fch.l;
+            }
+
+            if ($$3 == cvx.d) {
+               return fch.n;
+            }
+
+            if ($$3 == cvx.e) {
+               return fch.q;
+            }
+         }
+
+         if ($$3 == cvx.f) {
+            return fch.o;
+         } else if ($$3 == cvx.g) {
+            return fch.p;
+         } else {
+            c.warn("Unknown recipe category: {}/{}", LogUtils.defer(() -> kt.s.b($$1.e())), LogUtils.defer($$0::a));
+            return fch.r;
+         }
       }
    }
 
-   private void b() {
-      try {
-         tm $$0 = tz.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = ub.b($$0, 1343);
-         $$0 = ayq.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = fzd.a.parse(ua.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(fzd::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
+   public List<fno> b() {
+      return this.e;
    }
 
-   public void a() {
-      try {
-         tm $$0 = ub.f(new tm());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            fzd $$2 = this.a($$1);
-            DataResult<uj> $$3 = fzd.a.encodeStart(ua.a, $$2);
-            $$0.a(String.valueOf($$1), ac.a($$3, IllegalStateException::new));
-         }
-
-         tz.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
-      }
-   }
-
-   public fzd a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
-      }
-
-      return this.e[$$0];
+   public List<fno> a(fch $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

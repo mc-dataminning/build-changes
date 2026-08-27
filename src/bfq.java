@@ -3,19 +3,38 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
+import java.util.Locale;
+import java.util.Objects;
 
-public class bfq extends DataFix {
-   public bfq(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class bfq extends DataFix {
+   private final String a;
+
+   public bfq(String $$0, Schema $$1, boolean $$2) {
+      super($$1, $$2);
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bfa.E);
-      return this.fixTypeEverywhereTyped("Structure Reference Fix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bfq::a));
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bff.z);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bff.z);
+      Type<Pair<String, String>> $$2 = DSL.named(bff.x.typeName(), bgp.a());
+      if (!Objects.equals(this.getOutputSchema().getType(bff.x), $$2)) {
+         throw new IllegalStateException("Entity name type is not what was expected.");
+      } else {
+         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
+                  String $$3 = this.a($$2xxx);
+                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
+                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
+                  if (!$$5.equals($$4, true, true)) {
+                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
+                  } else {
+                     return $$3;
+                  }
+               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
+      }
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("references", $$0x -> $$0x.createInt($$0x.asNumber().map(Number::intValue).result().filter($$0xx -> $$0xx > 0).orElse(1)));
-   }
+   protected abstract String a(String var1);
 }

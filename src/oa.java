@@ -1,12 +1,21 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 
-public class oa extends nr {
-   public oa(la $$0, CompletableFuture<in.a> $$1) {
-      super($$0, $$1);
+public class oa {
+   private final Function<cvi, cvs<?>> a;
+
+   public oa(Function<cvi, cvs<?>> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void a(nq $$0) {
-      ns.a(np.e, crm.qT).a('#', crm.uC).a('-', crm.pr).b("-#-").b("# #").b("###").b("has_string", a(crm.pr)).a($$0);
+   public static oa a(Function<cvi, cvs<?>> $$0) {
+      return new oa($$0);
+   }
+
+   public void a(ns $$0, String $$1) {
+      this.a($$0, new ajv($$1));
+   }
+
+   public void a(ns $$0, ajv $$1) {
+      $$0.a($$1, this.a.apply(cvi.d), null);
    }
 }

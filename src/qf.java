@@ -1,485 +1,318 @@
 import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
 
 public class qf {
-   private static final ajs<ejf> M = a("empty");
-   public static final ajs<ejf> a = a("zombie_plains");
-   public static final ajs<ejf> b = a("zombie_savanna");
-   public static final ajs<ejf> c = a("zombie_snowy");
-   public static final ajs<ejf> d = a("zombie_taiga");
-   public static final ajs<ejf> e = a("zombie_desert");
-   public static final ajs<ejf> f = a("mossify_10_percent");
-   public static final ajs<ejf> g = a("mossify_20_percent");
-   public static final ajs<ejf> h = a("mossify_70_percent");
-   public static final ajs<ejf> i = a("street_plains");
-   public static final ajs<ejf> j = a("street_savanna");
-   public static final ajs<ejf> k = a("street_snowy_or_taiga");
-   public static final ajs<ejf> l = a("farm_plains");
-   public static final ajs<ejf> m = a("farm_savanna");
-   public static final ajs<ejf> n = a("farm_snowy");
-   public static final ajs<ejf> o = a("farm_taiga");
-   public static final ajs<ejf> p = a("farm_desert");
-   public static final ajs<ejf> q = a("outpost_rot");
-   public static final ajs<ejf> r = a("bottom_rampart");
-   public static final ajs<ejf> s = a("treasure_rooms");
-   public static final ajs<ejf> t = a("housing");
-   public static final ajs<ejf> u = a("side_wall_degradation");
-   public static final ajs<ejf> v = a("stable_degradation");
-   public static final ajs<ejf> w = a("bastion_generic_degradation");
-   public static final ajs<ejf> x = a("rampart_degradation");
-   public static final ajs<ejf> y = a("entrance_replacement");
-   public static final ajs<ejf> z = a("bridge");
-   public static final ajs<ejf> A = a("roof");
-   public static final ajs<ejf> B = a("high_wall");
-   public static final ajs<ejf> C = a("high_rampart");
-   public static final ajs<ejf> D = a("fossil_rot");
-   public static final ajs<ejf> E = a("fossil_coal");
-   public static final ajs<ejf> F = a("fossil_diamonds");
-   public static final ajs<ejf> G = a("ancient_city_start_degradation");
-   public static final ajs<ejf> H = a("ancient_city_generic_degradation");
-   public static final ajs<ejf> I = a("ancient_city_walls_degradation");
-   public static final ajs<ejf> J = a("trail_ruins_houses_archaeology");
-   public static final ajs<ejf> K = a("trail_ruins_roads_archaeology");
-   public static final ajs<ejf> L = a("trail_ruins_tower_top_archaeology");
+   public static final aju<egz> a = qg.a("village/plains/town_centers");
+   private static final aju<egz> b = qg.a("village/plains/terminators");
 
-   private static ajs<ejf> a(String $$0) {
-      return ajs.a(ks.aG, new ajt($$0));
-   }
-
-   private static void a(px<ejf> $$0, ajs<ejf> $$1, List<eje> $$2) {
-      $$0.a($$1, new ejf($$2));
-   }
-
-   public static void a(px<ejf> $$0) {
-      im<dby> $$1 = $$0.a(ks.f);
-      eiw $$2 = new eiw(new eiy(dca.pr, 0.01F), eif.b, dca.pC.n());
-      eiw $$3 = new eiw(new eiy(dca.pC, 0.5F), eif.b, dca.pr.n());
-      a($$0, M, ImmutableList.of());
-      a(
-         $$0,
+   public static void a(pz<egz> $$0) {
+      io<eeu> $$1 = $$0.a(ku.aF);
+      in<eeu> $$2 = $$1.b(rw.f);
+      in<eeu> $$3 = $$1.b(rw.k);
+      in<eeu> $$4 = $$1.b(rw.a);
+      io<ejo> $$5 = $$0.a(ku.aH);
+      in<ejo> $$6 = $$5.b(qh.f);
+      in<ejo> $$7 = $$5.b(qh.g);
+      in<ejo> $$8 = $$5.b(qh.h);
+      in<ejo> $$9 = $$5.b(qh.a);
+      in<ejo> $$10 = $$5.b(qh.i);
+      in<ejo> $$11 = $$5.b(qh.l);
+      io<egz> $$12 = $$0.a(ku.aJ);
+      in<egz> $$13 = $$12.b(qg.a);
+      in<egz> $$14 = $$12.b(b);
+      $$0.a(
          a,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.m, 0.8F), eif.b, dca.cn.n()),
-                  new eiw(new ejj(avc.p), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cp), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cq), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.m, 0.07F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.cn, 0.07F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.hj, 0.07F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.U, 0.05F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.n, 0.1F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.cu, 0.1F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.al, 0.02F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.eY, 0.5F), eif.b, dca.bs.n()),
-                  new eiw[]{
-                     new eiw(
-                        new eim(dca.eY.n().a(dfy.a, Boolean.valueOf(true)).a(dfy.c, Boolean.valueOf(true))),
-                        eif.b,
-                        dca.hL.n().a(dfy.a, Boolean.valueOf(true)).a(dfy.c, Boolean.valueOf(true))
-                     ),
-                     new eiw(
-                        new eim(dca.eY.n().a(dfy.b, Boolean.valueOf(true)).a(dfy.d, Boolean.valueOf(true))),
-                        eif.b,
-                        dca.hL.n().a(dfy.b, Boolean.valueOf(true)).a(dfy.d, Boolean.valueOf(true))
-                     ),
-                     new eiw(new eiy(dca.cB, 0.3F), eif.b, dca.gt.n()),
-                     new eiw(new eiy(dca.cB, 0.2F), eif.b, dca.gu.n()),
-                     new eiw(new eiy(dca.cB, 0.1F), eif.b, dca.kD.n())
-                  }
-               )
-            )
+         new egz(
+            $$13,
+            ImmutableList.of(
+               Pair.of(egx.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
+               Pair.of(egx.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
+               Pair.of(egx.a("village/plains/town_centers/plains_meeting_point_2"), 50),
+               Pair.of(egx.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
+               Pair.of(egx.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
+               Pair.of(egx.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
+               Pair.of(egx.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
+               Pair.of(egx.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
+            ),
+            egz.a.b
          )
       );
-      a(
+      qg.a(
          $$0,
+         "village/plains/streets",
+         new egz(
+            $$14,
+            ImmutableList.of(
+               Pair.of(egx.a("village/plains/streets/corner_01", $$10), 2),
+               Pair.of(egx.a("village/plains/streets/corner_02", $$10), 2),
+               Pair.of(egx.a("village/plains/streets/corner_03", $$10), 2),
+               Pair.of(egx.a("village/plains/streets/straight_01", $$10), 4),
+               Pair.of(egx.a("village/plains/streets/straight_02", $$10), 4),
+               Pair.of(egx.a("village/plains/streets/straight_03", $$10), 7),
+               Pair.of(egx.a("village/plains/streets/straight_04", $$10), 7),
+               Pair.of(egx.a("village/plains/streets/straight_05", $$10), 3),
+               Pair.of(egx.a("village/plains/streets/straight_06", $$10), 4),
+               Pair.of(egx.a("village/plains/streets/crossroad_01", $$10), 2),
+               Pair.of(egx.a("village/plains/streets/crossroad_02", $$10), 1),
+               Pair.of(egx.a("village/plains/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(egx.a("village/plains/streets/crossroad_04", $$10), 2),
+                  Pair.of(egx.a("village/plains/streets/crossroad_05", $$10), 2),
+                  Pair.of(egx.a("village/plains/streets/crossroad_06", $$10), 2),
+                  Pair.of(egx.a("village/plains/streets/turn_01", $$10), 3)
+               }
+            ),
+            egz.a.a
+         )
+      );
+      qg.a(
+         $$0,
+         "village/plains/zombie/streets",
+         new egz(
+            $$14,
+            ImmutableList.of(
+               Pair.of(egx.a("village/plains/zombie/streets/corner_01", $$10), 2),
+               Pair.of(egx.a("village/plains/zombie/streets/corner_02", $$10), 2),
+               Pair.of(egx.a("village/plains/zombie/streets/corner_03", $$10), 2),
+               Pair.of(egx.a("village/plains/zombie/streets/straight_01", $$10), 4),
+               Pair.of(egx.a("village/plains/zombie/streets/straight_02", $$10), 4),
+               Pair.of(egx.a("village/plains/zombie/streets/straight_03", $$10), 7),
+               Pair.of(egx.a("village/plains/zombie/streets/straight_04", $$10), 7),
+               Pair.of(egx.a("village/plains/zombie/streets/straight_05", $$10), 3),
+               Pair.of(egx.a("village/plains/zombie/streets/straight_06", $$10), 4),
+               Pair.of(egx.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
+               Pair.of(egx.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(egx.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(egx.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(egx.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(egx.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(egx.a("village/plains/zombie/streets/turn_01", $$10), 3)
+               }
+            ),
+            egz.a.a
+         )
+      );
+      qg.a(
+         $$0,
+         "village/plains/houses",
+         new egz(
+            $$14,
+            ImmutableList.of(
+               Pair.of(egx.a("village/plains/houses/plains_small_house_1", $$6), 2),
+               Pair.of(egx.a("village/plains/houses/plains_small_house_2", $$6), 2),
+               Pair.of(egx.a("village/plains/houses/plains_small_house_3", $$6), 2),
+               Pair.of(egx.a("village/plains/houses/plains_small_house_4", $$6), 2),
+               Pair.of(egx.a("village/plains/houses/plains_small_house_5", $$6), 2),
+               Pair.of(egx.a("village/plains/houses/plains_small_house_6", $$6), 1),
+               Pair.of(egx.a("village/plains/houses/plains_small_house_7", $$6), 2),
+               Pair.of(egx.a("village/plains/houses/plains_small_house_8", $$6), 3),
+               Pair.of(egx.a("village/plains/houses/plains_medium_house_1", $$6), 2),
+               Pair.of(egx.a("village/plains/houses/plains_medium_house_2", $$6), 2),
+               Pair.of(egx.a("village/plains/houses/plains_big_house_1", $$6), 2),
+               Pair.of(egx.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
+               new Pair[]{
+                  Pair.of(egx.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_shepherds_house_1"), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_tannery_1", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_cartographer_1", $$6), 1),
+                  Pair.of(egx.a("village/plains/houses/plains_library_1", $$6), 5),
+                  Pair.of(egx.a("village/plains/houses/plains_library_2", $$6), 1),
+                  Pair.of(egx.a("village/plains/houses/plains_masons_house_1", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_temple_3", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_temple_4", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_stable_1", $$6), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_stable_2"), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_large_farm_1", $$11), 4),
+                  Pair.of(egx.a("village/plains/houses/plains_small_farm_1", $$11), 4),
+                  Pair.of(egx.a("village/plains/houses/plains_animal_pen_1"), 1),
+                  Pair.of(egx.a("village/plains/houses/plains_animal_pen_2"), 1),
+                  Pair.of(egx.a("village/plains/houses/plains_animal_pen_3"), 5),
+                  Pair.of(egx.a("village/plains/houses/plains_accessory_1"), 1),
+                  Pair.of(egx.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
+                  Pair.of(egx.a("village/plains/houses/plains_meeting_point_5"), 1),
+                  Pair.of(egx.g(), 10)
+               }
+            ),
+            egz.a.b
+         )
+      );
+      qg.a(
+         $$0,
+         "village/plains/zombie/houses",
+         new egz(
+            $$14,
+            ImmutableList.of(
+               Pair.of(egx.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
+               Pair.of(egx.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
+               Pair.of(egx.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(egx.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
+                  Pair.of(egx.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
+                  Pair.of(egx.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_tannery_1", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_cartographer_1", $$9), 1),
+                  Pair.of(egx.a("village/plains/houses/plains_library_1", $$9), 3),
+                  Pair.of(egx.a("village/plains/houses/plains_library_2", $$9), 1),
+                  Pair.of(egx.a("village/plains/houses/plains_masons_house_1", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_temple_3", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_temple_4", $$9), 2),
+                  Pair.of(egx.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_stable_2", $$9), 2),
+                  Pair.of(egx.a("village/plains/houses/plains_large_farm_1", $$9), 4),
+                  Pair.of(egx.a("village/plains/houses/plains_small_farm_1", $$9), 4),
+                  Pair.of(egx.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
+                  Pair.of(egx.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
+                  Pair.of(egx.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
+                  Pair.of(egx.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
+                  Pair.of(egx.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
+                  Pair.of(egx.g(), 10)
+               }
+            ),
+            egz.a.b
+         )
+      );
+      $$0.a(
          b,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new ejj(avc.p), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cp), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cq), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.r, 0.2F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.hP, 0.2F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.Y, 0.05F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.as, 0.05F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.hk, 0.05F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.hn, 0.05F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.hx, 0.05F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.eY, 0.5F), eif.b, dca.bs.n()),
-                  new eiw(
-                     new eim(dca.eY.n().a(dfy.a, Boolean.valueOf(true)).a(dfy.c, Boolean.valueOf(true))),
-                     eif.b,
-                     dca.hL.n().a(dfy.a, Boolean.valueOf(true)).a(dfy.c, Boolean.valueOf(true))
-                  ),
-                  new eiw[]{
-                     new eiw(
-                        new eim(dca.eY.n().a(dfy.b, Boolean.valueOf(true)).a(dfy.d, Boolean.valueOf(true))),
-                        eif.b,
-                        dca.hL.n().a(dfy.b, Boolean.valueOf(true)).a(dfy.d, Boolean.valueOf(true))
-                     ),
-                     new eiw(new eiy(dca.cB, 0.1F), eif.b, dca.fe.n())
-                  }
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         c,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new ejj(avc.p), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cp), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cq), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.oe), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.o, 0.2F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.ju, 0.4F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.af, 0.05F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.ax, 0.05F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.eY, 0.5F), eif.b, dca.bs.n()),
-                  new eiw(
-                     new eim(dca.eY.n().a(dfy.a, Boolean.valueOf(true)).a(dfy.c, Boolean.valueOf(true))),
-                     eif.b,
-                     dca.hL.n().a(dfy.a, Boolean.valueOf(true)).a(dfy.c, Boolean.valueOf(true))
-                  ),
-                  new eiw(
-                     new eim(dca.eY.n().a(dfy.b, Boolean.valueOf(true)).a(dfy.d, Boolean.valueOf(true))),
-                     eif.b,
-                     dca.hL.n().a(dfy.b, Boolean.valueOf(true)).a(dfy.d, Boolean.valueOf(true))
-                  ),
-                  new eiw(new eiy(dca.cB, 0.1F), eif.b, dca.gt.n()),
-                  new eiw[]{new eiw(new eiy(dca.cB, 0.8F), eif.b, dca.gu.n())}
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         d,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.m, 0.8F), eif.b, dca.cn.n()),
-                  new eiw(new ejj(avc.p), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cp), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cq), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.og), eif.b, dca.og.n().a(dcm.c, Boolean.valueOf(false))),
-                  new eiw(new eiy(dca.m, 0.08F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.V, 0.08F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.eY, 0.5F), eif.b, dca.bs.n()),
-                  new eiw(
-                     new eim(dca.eY.n().a(dfy.a, Boolean.valueOf(true)).a(dfy.c, Boolean.valueOf(true))),
-                     eif.b,
-                     dca.hL.n().a(dfy.a, Boolean.valueOf(true)).a(dfy.c, Boolean.valueOf(true))
-                  ),
-                  new eiw(
-                     new eim(dca.eY.n().a(dfy.b, Boolean.valueOf(true)).a(dfy.d, Boolean.valueOf(true))),
-                     eif.b,
-                     dca.hL.n().a(dfy.b, Boolean.valueOf(true)).a(dfy.d, Boolean.valueOf(true))
-                  ),
-                  new eiw(new eiy(dca.cB, 0.3F), eif.b, dca.fd.n()),
-                  new eiw(new eiy(dca.cB, 0.2F), eif.b, dca.gu.n()),
-                  new eiw[0]
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         e,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new ejj(avc.p), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cp), eif.b, dca.a.n()),
-                  new eiw(new eik(dca.cq), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.jS, 0.08F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.aX, 0.1F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.iA, 0.08F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.nl, 0.08F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.ny, 0.08F), eif.b, dca.bs.n()),
-                  new eiw(new eiy(dca.cB, 0.2F), eif.b, dca.kD.n()),
-                  new eiw(new eiy(dca.cB, 0.1F), eif.b, dca.fe.n())
-               )
-            )
-         )
-      );
-      a($$0, f, ImmutableList.of(new eja(ImmutableList.of(new eiw(new eiy(dca.m, 0.1F), eif.b, dca.cn.n())))));
-      a($$0, g, ImmutableList.of(new eja(ImmutableList.of(new eiw(new eiy(dca.m, 0.2F), eif.b, dca.cn.n())))));
-      a($$0, h, ImmutableList.of(new eja(ImmutableList.of(new eiw(new eiy(dca.m, 0.7F), eif.b, dca.cn.n())))));
-      a(
-         $$0,
-         i,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eik(dca.kE), new eik(dca.G), dca.n.n()),
-                  new eiw(new eiy(dca.kE, 0.1F), eif.b, dca.i.n()),
-                  new eiw(new eik(dca.i), new eik(dca.G), dca.G.n()),
-                  new eiw(new eik(dca.j), new eik(dca.G), dca.G.n())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         j,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eik(dca.kE), new eik(dca.G), dca.r.n()),
-                  new eiw(new eiy(dca.kE, 0.2F), eif.b, dca.i.n()),
-                  new eiw(new eik(dca.i), new eik(dca.G), dca.G.n()),
-                  new eiw(new eik(dca.j), new eik(dca.G), dca.G.n())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         k,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eik(dca.kE), new eik(dca.G), dca.o.n()),
-                  new eiw(new eik(dca.kE), new eik(dca.dO), dca.o.n()),
-                  new eiw(new eiy(dca.kE, 0.2F), eif.b, dca.i.n()),
-                  new eiw(new eik(dca.i), new eik(dca.G), dca.G.n()),
-                  new eiw(new eik(dca.j), new eik(dca.G), dca.G.n())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         l,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.cB, 0.3F), eif.b, dca.gt.n()),
-                  new eiw(new eiy(dca.cB, 0.2F), eif.b, dca.gu.n()),
-                  new eiw(new eiy(dca.cB, 0.1F), eif.b, dca.kD.n())
-               )
-            )
-         )
-      );
-      a($$0, m, ImmutableList.of(new eja(ImmutableList.of(new eiw(new eiy(dca.cB, 0.1F), eif.b, dca.fe.n())))));
-      a(
-         $$0,
-         n,
-         ImmutableList.of(new eja(ImmutableList.of(new eiw(new eiy(dca.cB, 0.1F), eif.b, dca.gt.n()), new eiw(new eiy(dca.cB, 0.8F), eif.b, dca.gu.n()))))
-      );
-      a(
-         $$0,
-         o,
-         ImmutableList.of(new eja(ImmutableList.of(new eiw(new eiy(dca.cB, 0.3F), eif.b, dca.fd.n()), new eiw(new eiy(dca.cB, 0.2F), eif.b, dca.gu.n()))))
-      );
-      a(
-         $$0,
-         p,
-         ImmutableList.of(new eja(ImmutableList.of(new eiw(new eiy(dca.cB, 0.2F), eif.b, dca.kD.n()), new eiw(new eiy(dca.cB, 0.1F), eif.b, dca.fe.n()))))
-      );
-      a($$0, q, ImmutableList.of(new eil(0.05F)));
-      a(
-         $$0,
-         r,
-         ImmutableList.of(
-            new eja(ImmutableList.of(new eiw(new eiy(dca.kJ, 0.75F), eif.b, dca.px.n()), new eiw(new eiy(dca.px, 0.15F), eif.b, dca.pw.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         s,
-         ImmutableList.of(
-            new eja(ImmutableList.of(new eiw(new eiy(dca.pw, 0.35F), eif.b, dca.px.n()), new eiw(new eiy(dca.py, 0.1F), eif.b, dca.px.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         t,
-         ImmutableList.of(
-            new eja(ImmutableList.of(new eiw(new eiy(dca.pw, 0.3F), eif.b, dca.px.n()), new eiw(new eiy(dca.pr, 1.0E-4F), eif.b, dca.a.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         u,
-         ImmutableList.of(
-            new eja(ImmutableList.of(new eiw(new eiy(dca.py, 0.5F), eif.b, dca.a.n()), new eiw(new eiy(dca.ch, 0.1F), eif.b, dca.px.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         v,
-         ImmutableList.of(
-            new eja(ImmutableList.of(new eiw(new eiy(dca.pw, 0.1F), eif.b, dca.px.n()), new eiw(new eiy(dca.pr, 1.0E-4F), eif.b, dca.a.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         w,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.pw, 0.3F), eif.b, dca.px.n()),
-                  new eiw(new eiy(dca.pr, 1.0E-4F), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.ch, 0.3F), eif.b, dca.px.n()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         x,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.pw, 0.4F), eif.b, dca.px.n()),
-                  new eiw(new eiy(dca.pr, 0.01F), eif.b, dca.px.n()),
-                  new eiw(new eiy(dca.pw, 1.0E-4F), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.pr, 1.0E-4F), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.ch, 0.3F), eif.b, dca.px.n()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         y,
-         ImmutableList.of(
-            new eja(ImmutableList.of(new eiw(new eiy(dca.py, 0.5F), eif.b, dca.a.n()), new eiw(new eiy(dca.ch, 0.6F), eif.b, dca.px.n()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         z,
-         ImmutableList.of(new eja(ImmutableList.of(new eiw(new eiy(dca.pw, 0.3F), eif.b, dca.px.n()), new eiw(new eiy(dca.pr, 1.0E-4F), eif.b, dca.a.n()))))
-      );
-      a(
-         $$0,
-         A,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.pw, 0.3F), eif.b, dca.px.n()),
-                  new eiw(new eiy(dca.pw, 0.15F), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.pw, 0.3F), eif.b, dca.pr.n())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         B,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.pw, 0.01F), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.pw, 0.5F), eif.b, dca.px.n()),
-                  new eiw(new eiy(dca.pw, 0.3F), eif.b, dca.pr.n()),
-                  $$3
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         C,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(new eiw(new eiy(dca.ch, 0.3F), eif.b, dca.px.n()), new eiw(eif.b, eif.b, new eig(0.0F, 0.05F, 0, 100, ih.a.b), dca.a.n()), $$3)
-            )
-         )
-      );
-      a($$0, D, ImmutableList.of(new eil(0.9F), new eix(avc.bI)));
-      a($$0, E, ImmutableList.of(new eil(0.1F), new eix(avc.bI)));
-      a($$0, F, ImmutableList.of(new eil(0.1F), new eja(ImmutableList.of(new eiw(new eik(dca.R), eif.b, dca.cy.n()))), new eix(avc.bI)));
-      a(
-         $$0,
-         G,
-         ImmutableList.of(
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.sW, 0.3F), eif.b, dca.tb.n()),
-                  new eiw(new eiy(dca.sS, 0.3F), eif.b, dca.tc.n()),
-                  new eiw(new eiy(dca.of, 0.05F), eif.b, dca.a.n())
-               )
+         new egz(
+            $$13,
+            ImmutableList.of(
+               Pair.of(egx.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(egx.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(egx.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(egx.a("village/plains/terminators/terminator_04", $$10), 1)
             ),
-            new eix(avc.bI)
+            egz.a.a
          )
       );
-      a(
+      qg.a($$0, "village/plains/trees", new egz($$13, ImmutableList.of(Pair.of(egx.a($$2), 1)), egz.a.b));
+      qg.a(
          $$0,
-         H,
-         ImmutableList.of(
-            new eil($$1.b(avc.bO), 0.95F),
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.sW, 0.3F), eif.b, dca.tb.n()),
-                  new eiw(new eiy(dca.sS, 0.3F), eif.b, dca.tc.n()),
-                  new eiw(new eiy(dca.of, 0.05F), eif.b, dca.a.n())
-               )
+         "village/plains/decor",
+         new egz(
+            $$13,
+            ImmutableList.of(
+               Pair.of(egx.a("village/plains/plains_lamp_1"), 2), Pair.of(egx.a($$2), 1), Pair.of(egx.a($$3), 1), Pair.of(egx.a($$4), 1), Pair.of(egx.g(), 2)
             ),
-            new eix(avc.bI)
+            egz.a.b
          )
       );
-      a(
+      qg.a(
          $$0,
-         I,
-         ImmutableList.of(
-            new eil($$1.b(avc.bO), 0.95F),
-            new eja(
-               ImmutableList.of(
-                  new eiw(new eiy(dca.sW, 0.3F), eif.b, dca.tb.n()),
-                  new eiw(new eiy(dca.sS, 0.3F), eif.b, dca.tc.n()),
-                  new eiw(new eiy(dca.sU, 0.3F), eif.b, dca.a.n()),
-                  new eiw(new eiy(dca.of, 0.05F), eif.b, dca.a.n())
-               )
+         "village/plains/zombie/decor",
+         new egz(
+            $$13,
+            ImmutableList.of(
+               Pair.of(egx.a("village/plains/plains_lamp_1", $$9), 1),
+               Pair.of(egx.a($$2), 1),
+               Pair.of(egx.a($$3), 1),
+               Pair.of(egx.a($$4), 1),
+               Pair.of(egx.g(), 2)
             ),
-            new eix(avc.bI)
+            egz.a.b
          )
       );
-      a(
+      qg.a(
          $$0,
-         J,
-         List.of(
-            new eja(
-               List.of(
-                  new eiw(new eiy(dca.L, 0.2F), eif.b, dca.j.n()),
-                  new eiw(new eiy(dca.L, 0.1F), eif.b, dca.k.n()),
-                  new eiw(new eiy(dca.eM, 0.1F), eif.b, dca.eL.n())
-               )
+         "village/plains/villagers",
+         new egz(
+            $$13,
+            ImmutableList.of(
+               Pair.of(egx.a("village/plains/villagers/nitwit"), 1),
+               Pair.of(egx.a("village/plains/villagers/baby"), 1),
+               Pair.of(egx.a("village/plains/villagers/unemployed"), 10)
             ),
-            a(emz.aS, 6),
-            a(emz.aT, 3)
+            egz.a.b
          )
       );
-      a(
+      qg.a(
          $$0,
-         K,
-         List.of(
-            new eja(
-               List.of(
-                  new eiw(new eiy(dca.L, 0.2F), eif.b, dca.j.n()),
-                  new eiw(new eiy(dca.L, 0.1F), eif.b, dca.k.n()),
-                  new eiw(new eiy(dca.eM, 0.1F), eif.b, dca.eL.n())
-               )
-            ),
-            a(emz.aS, 2)
+         "village/plains/zombie/villagers",
+         new egz(
+            $$13,
+            ImmutableList.of(Pair.of(egx.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(egx.a("village/plains/zombie/villagers/unemployed"), 10)),
+            egz.a.b
          )
       );
-      a($$0, L, List.of(a(emz.aS, 2)));
-   }
-
-   private static ein a(ajt $$0, int $$1) {
-      return new ein(new eja(List.of(new eiw(new ejj(avc.cn), eif.b, eit.b, dca.M.n(), new ejl($$0)))), bnc.a($$1));
+      qg.a(
+         $$0,
+         "village/common/animals",
+         new egz(
+            $$13,
+            ImmutableList.of(
+               Pair.of(egx.a("village/common/animals/cows_1"), 7),
+               Pair.of(egx.a("village/common/animals/pigs_1"), 7),
+               Pair.of(egx.a("village/common/animals/horses_1"), 1),
+               Pair.of(egx.a("village/common/animals/horses_2"), 1),
+               Pair.of(egx.a("village/common/animals/horses_3"), 1),
+               Pair.of(egx.a("village/common/animals/horses_4"), 1),
+               Pair.of(egx.a("village/common/animals/horses_5"), 1),
+               Pair.of(egx.a("village/common/animals/sheep_1"), 1),
+               Pair.of(egx.a("village/common/animals/sheep_2"), 1),
+               Pair.of(egx.g(), 5)
+            ),
+            egz.a.b
+         )
+      );
+      qg.a(
+         $$0,
+         "village/common/sheep",
+         new egz($$13, ImmutableList.of(Pair.of(egx.a("village/common/animals/sheep_1"), 1), Pair.of(egx.a("village/common/animals/sheep_2"), 1)), egz.a.b)
+      );
+      qg.a(
+         $$0,
+         "village/common/cats",
+         new egz(
+            $$13,
+            ImmutableList.of(
+               Pair.of(egx.a("village/common/animals/cat_black"), 1),
+               Pair.of(egx.a("village/common/animals/cat_british"), 1),
+               Pair.of(egx.a("village/common/animals/cat_calico"), 1),
+               Pair.of(egx.a("village/common/animals/cat_persian"), 1),
+               Pair.of(egx.a("village/common/animals/cat_ragdoll"), 1),
+               Pair.of(egx.a("village/common/animals/cat_red"), 1),
+               Pair.of(egx.a("village/common/animals/cat_siamese"), 1),
+               Pair.of(egx.a("village/common/animals/cat_tabby"), 1),
+               Pair.of(egx.a("village/common/animals/cat_white"), 1),
+               Pair.of(egx.a("village/common/animals/cat_jellie"), 1),
+               Pair.of(egx.g(), 3)
+            ),
+            egz.a.b
+         )
+      );
+      qg.a(
+         $$0,
+         "village/common/butcher_animals",
+         new egz(
+            $$13,
+            ImmutableList.of(
+               Pair.of(egx.a("village/common/animals/cows_1"), 3),
+               Pair.of(egx.a("village/common/animals/pigs_1"), 3),
+               Pair.of(egx.a("village/common/animals/sheep_1"), 1),
+               Pair.of(egx.a("village/common/animals/sheep_2"), 1)
+            ),
+            egz.a.b
+         )
+      );
+      qg.a($$0, "village/common/iron_golem", new egz($$13, ImmutableList.of(Pair.of(egx.a("village/common/iron_golem"), 1)), egz.a.b));
+      qg.a($$0, "village/common/well_bottoms", new egz($$13, ImmutableList.of(Pair.of(egx.a("village/common/well_bottom"), 1)), egz.a.b));
    }
 }

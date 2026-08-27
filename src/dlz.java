@@ -1,87 +1,77 @@
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dlz extends dmf implements bnt, boe, bof {
-   private bod e = bod.a;
+public class dlz extends dji {
+   public static final MapCodec<dlz> b = b(dlz::new);
    @Nullable
-   private wg f;
+   private static dpn h;
+   @Nullable
+   private static dpn i;
 
-   protected dlz(dmh<?> $$0, ib $$1, doz $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   public MapCodec<dlz> a() {
+      return b;
+   }
+
+   protected dlz(dph.d $$0) {
+      super(dji.b.d, $$0);
    }
 
    @Override
-   public void a(tm $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.e = bod.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.f = wg.a.a($$0.l("CustomName"), $$1);
+   public void a(czg $$0, id $$1, dpi $$2, @Nullable bqt $$3, crs $$4) {
+      a($$0, $$1);
+   }
+
+   public static void a(czg $$0, id $$1) {
+      if ($$0.c_($$1) instanceof doa $$2) {
+         a($$0, $$1, $$2);
       }
    }
 
-   @Override
-   protected void b(tm $$0, in.a $$1) {
-      super.b($$0, $$1);
-      this.e.a($$0);
-      if (this.f != null) {
-         $$0.a("CustomName", wg.a.a(this.f, $$1));
+   public static void a(czg $$0, id $$1, doa $$2) {
+      if (!$$0.B) {
+         dpi $$3 = $$2.n();
+         boolean $$4 = $$3.a(dcj.gG) || $$3.a(dcj.gH);
+         if ($$4 && $$1.v() >= $$0.I_() && $$0.ak() != boc.a) {
+            dpn.b $$5 = s().a($$0, $$1);
+            if ($$5 != null) {
+               cfy $$6 = bqg.bo.a($$0);
+               if ($$6 != null) {
+                  ddb.a($$0, $$5);
+                  id $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ij.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aX = $$5.b().o() == ij.a.a ? 0.0F : 90.0F;
+                  $$6.r();
+
+                  for (apv $$8 : $$0.a(apv.class, $$6.cH().g(50.0))) {
+                     am.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  ddb.b($$0, $$5);
+               }
+            }
+         }
       }
    }
 
-   @Override
-   public wg ad() {
-      return this.f != null ? this.f : this.k();
+   public static boolean b(czg $$0, id $$1, crs $$2) {
+      return $$2.a(crv.uk) && $$1.v() >= $$0.I_() + 2 && $$0.ak() != boc.a && !$$0.B ? y().a($$0, $$1) != null : false;
    }
 
-   @Override
-   public wg O_() {
-      return this.ad();
-   }
-
-   @Nullable
-   @Override
-   public wg af() {
-      return this.f;
-   }
-
-   protected abstract wg k();
-
-   public boolean d(cjt $$0) {
-      return a($$0, this.e, this.O_());
-   }
-
-   public static boolean a(cjt $$0, bod $$1, wg $$2) {
-      if (!$$0.N_() && !$$1.a($$0.eU())) {
-         $$0.a(wg.a("container.isLocked", $$2), true);
-         $$0.a(aum.eP, aun.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
+   private static dpn s() {
+      if (h == null) {
+         h = dpo.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(ave.aF)).a('^', dpm.a(dpr.a(dcj.gG).or(dpr.a(dcj.gH)))).a('~', $$0 -> $$0.a().i()).b();
       }
+
+      return h;
    }
 
-   @Nullable
-   @Override
-   public cmp createMenu(int $$0, cjs $$1, cjt $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
+   private static dpn y() {
+      if (i == null) {
+         i = dpo.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(ave.aF)).a('~', $$0 -> $$0.a().i()).b();
+      }
 
-   protected abstract cmp a(int var1, cjs var2);
-
-   @Override
-   public void a(jl $$0) {
-      this.f = $$0.a(jp.d);
-      this.e = $$0.a(jp.T, bod.a);
-   }
-
-   @Override
-   public void a(jl.a $$0) {
-      $$0.a(jp.d, this.f);
-      $$0.a(jp.T, this.e);
-   }
-
-   @Override
-   public void a(tm $$0) {
-      $$0.r("CustomName");
-      $$0.r("Lock");
+      return i;
    }
 }

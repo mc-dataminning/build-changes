@@ -1,45 +1,51 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class auv<T> implements Iterable<aut<T>> {
-   private final iy<T> a;
-   private final Map<T, aut<T>> b = new IdentityHashMap<>();
-   private final wg c;
-   private final ye<vr, aut<T>> d;
+public class auv<T> extends etq {
+   public static final yg<vt, auv<?>> a = ye.a(ku.ah).b(auv::a, auy::a);
+   private final auw o;
+   private final T p;
+   private final auy<T> q;
 
-   public auv(iy<T> $$0, wg $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = yc.a($$0.c()).a(this::b, aut::b);
+   protected auv(auy<T> $$0, T $$1, auw $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
    }
 
-   public ye<vr, aut<T>> a() {
-      return this.d;
+   public static <T> String a(auy<T> $$0, T $$1) {
+      return a(kt.x.b($$0)) + ":" + a($$0.b().b($$1));
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   private static <T> String a(@Nullable ajv $$0) {
+      return $$0.toString().replace(':', '.');
    }
 
-   public aut<T> a(T $$0, auu $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new aut<>(this, (T)$$1x, $$1));
+   public auy<T> a() {
+      return this.q;
    }
 
-   public iy<T> b() {
-      return this.a;
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
    }
 
    @Override
-   public Iterator<aut<T>> iterator() {
-      return this.b.values().iterator();
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof auv && Objects.equals(this.d(), ((auv)$$0).d());
    }
 
-   public aut<T> b(T $$0) {
-      return this.a($$0, auu.b);
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
    }
 
-   public wg c() {
-      return this.c;
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

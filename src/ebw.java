@@ -1,108 +1,39 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public class ebw extends ebx {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final Codec<ebw> c = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(ebv.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, ebw::new)
+public class ebw extends ebu {
+   public static final Codec<ebw> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ebw::new)
    );
-   private final ebv h;
+   protected final int b;
 
-   public ebw(bnf $$0, eca $$1, Optional<ebu> $$2, ebv $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public ebw(bnk $$0, bnk $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   public boolean a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, ib $$3, ib $$4, eav $$5) {
-      List<ib> $$6 = Lists.newArrayList();
-      ib.a $$7 = $$3.j();
-
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
-         }
-
-         $$7.c(ih.b);
-      }
-
-      $$6.add($$4.d());
-
-      for (ih $$8 : ih.c.a) {
-         ib $$9 = $$4.a($$8);
-         List<ib> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (ib $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
+   protected ebv<?> a() {
+      return ebv.g;
    }
 
-   private boolean a(czd $$0, axr $$1, ib $$2, ih $$3, ib $$4, List<ib> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (ib $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
-         }
+   @Override
+   protected void a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, int $$4, ebu.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
 
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected List<ib> a(ib $$0, ih $$1, axr $$2, ib $$3) {
-      ib $$4 = $$0.d();
-      ib $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
       }
    }
 
    @Override
-   protected boolean a(czd $$0, ib $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   public int a(axt $$0, int $$1, ebe $$2) {
+      return this.b;
    }
 
    @Override
-   protected void a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, ib $$3, eav $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         doz $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected eby<?> a() {
-      return eby.a;
+   protected boolean a(axt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

@@ -1,29 +1,42 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class erj implements erl<MinecraftServer> {
-   final ajt a;
+public record erj(erg b, erg c) implements erg {
+   public static final Codec<erj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(erh.a.fieldOf("min").forGetter(erj::c), erh.a.fieldOf("max").forGetter(erj::d)).apply($$0, erj::new)
+   );
 
-   public erj(ajt $$0) {
-      this.a = $$0;
+   @Override
+   public erf b() {
+      return erh.c;
    }
 
-   public void a(MinecraftServer $$0, ern<MinecraftServer> $$1, long $$2) {
-      akh $$3 = $$0.aF();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   public static erj a(float $$0, float $$1) {
+      return new erj(ere.a($$0), ere.a($$1));
    }
 
-   public static class a extends erl.a<MinecraftServer, erj> {
-      public a() {
-         super(new ajt("function"), erj.class);
-      }
+   @Override
+   public int a(enk $$0) {
+      return axm.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
 
-      public void a(tm $$0, erj $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public float b(enk $$0) {
+      return axm.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
 
-      public erj a(tm $$0) {
-         ajt $$1 = new ajt($$0.l("Name"));
-         return new erj($$1);
-      }
+   @Override
+   public Set<epu<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public erg c() {
+      return this.b;
+   }
+
+   public erg d() {
+      return this.c;
    }
 }

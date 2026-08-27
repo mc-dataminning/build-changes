@@ -1,47 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
-public enum fvh {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
+public class fvh {
+   private final Map<aju<? extends ja<?>>, avw.a> a = new HashMap<>();
 
-   private final wg n;
-
-   private fvh(String $$0) {
-      this.n = wg.c("gui.banned.reason." + $$0);
+   public void a(aju<? extends ja<?>> $$0, avw.a $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public wg a() {
-      return this.n;
+   private static void a() {
+      cqe.e().n();
    }
 
-   @Nullable
-   public static fvh a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
-         default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
-      };
+   private static void b() {
+      dmc.f();
+      dcj.a();
+   }
+
+   private void a(jb $$0, Predicate<aju<? extends ja<?>>> $$1) {
+      this.a.forEach(($$2, $$3) -> {
+         if ($$1.test((aju<? extends ja<?>>)$$2)) {
+            $$3.a($$0.d((aju<? extends ja<?>>)$$2));
+         }
+      });
+   }
+
+   public void a(jb $$0, boolean $$1) {
+      if ($$1) {
+         this.a($$0, je.a::contains);
+      } else {
+         $$0.c().filter($$0x -> !je.a.contains($$0x.a())).forEach($$0x -> $$0x.b().m());
+         this.a($$0, $$0x -> true);
+         b();
+      }
+
+      a();
    }
 }

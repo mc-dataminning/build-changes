@@ -1,59 +1,65 @@
-public class axt {
-   private final int a;
-   private final int b;
-   private final float c;
-   private final float d;
+import io.netty.util.internal.ThreadLocalRandom;
 
-   public axt(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
-      } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
+public interface axt {
+   @Deprecated
+   double a = 2.297;
+
+   static axt a() {
+      return a(dvp.a());
+   }
+
+   @Deprecated
+   static axt b() {
+      return new dvt(dvp.a());
+   }
+
+   static axt a(long $$0) {
+      return new dvb($$0);
+   }
+
+   static axt c() {
+      return new dvq(ThreadLocalRandom.current().nextLong());
+   }
+
+   axt d();
+
+   dvn e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
       }
    }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
-   }
-
-   public int a(ih $$0) {
-      if ($$0.o().b()) {
-         return 0;
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
       } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
+         return $$0 + this.a($$1 - $$0);
       }
-   }
-
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
-   }
-
-   public int b(float $$0) {
-      return this.c(this.a($$0));
-   }
-
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
-   }
-
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
-   }
-
-   public int c(int $$0) {
-      return $$0 & this.a;
-   }
-
-   public int a() {
-      return this.a;
    }
 }

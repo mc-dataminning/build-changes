@@ -1,149 +1,59 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.DoubleConsumer;
-import javax.annotation.Nullable;
+public class fnz extends fjx {
+   private static final wi a = wi.c("gui.abuseReport.title");
+   private static final wi b = wi.c("gui.abuseReport.message");
+   private static final wi c = wi.c("gui.abuseReport.type.chat");
+   private static final wi d = wi.c("gui.abuseReport.type.skin");
+   private static final wi o = wi.c("gui.abuseReport.type.name");
+   private static final int p = 6;
+   private final fjx q;
+   private final fvy r;
+   private final fod s;
+   private final fhp u = fhp.d().a(6);
 
-public class fnz extends fdj {
-   private static final int a = 32;
-   private static final String b = "telemetry.event.required";
-   private static final String c = "telemetry.event.optional";
-   private static final String d = "telemetry.event.optional.disabled";
-   private static final wg e = wg.c("telemetry_info.property_title").a(n.t);
-   private final fda f;
-   private fnz.a m;
-   @Nullable
-   private DoubleConsumer n;
-
-   public fnz(int $$0, int $$1, int $$2, int $$3, fda $$4) {
-      super($$0, $$1, $$2, $$3, wg.i());
-      this.f = $$4;
-      this.m = this.c(fbp.Q().C());
-   }
-
-   public void b(boolean $$0) {
-      this.m = this.c($$0);
-      this.a(this.c());
-   }
-
-   public void j() {
-      this.m = this.c(fbp.Q().C());
-      this.a(this.c());
-   }
-
-   private fnz.a c(boolean $$0) {
-      fnz.b $$1 = new fnz.b(this.k());
-      List<gqj> $$2 = new ArrayList<>(gqj.g());
-      $$2.sort(Comparator.comparing(gqj::d));
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         gqj $$4 = $$2.get($$3);
-         boolean $$5 = $$4.d() && !$$0;
-         this.a($$1, $$4, $$5);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
-         }
-      }
-
-      return $$1.a();
-   }
-
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.n = $$0;
+   public fnz(fjx $$0, fvy $$1, fod $$2) {
+      super(a);
+      this.q = $$0;
+      this.r = $$1;
+      this.s = $$2;
    }
 
    @Override
-   protected void a(double $$0) {
-      super.a($$0);
-      if (this.n != null) {
-         this.n.accept(this.c());
-      }
+   public wi i() {
+      return wh.a(super.i(), b);
    }
 
    @Override
-   protected int h() {
-      return this.m.a().v();
+   protected void aM_() {
+      this.u.c().b();
+      this.u.a(new fff(this.i, this.m), this.u.b().e(6));
+      this.u.a(new fes(b, this.m).b(true), this.u.b().e(6));
+      fdy $$0 = this.u.a(fdy.a(c, $$0x -> this.j.a(new fnv(this.q, this.r, this.s.d()))).a());
+      if (!this.s.k()) {
+         $$0.j = false;
+         $$0.a(ffj.a(wi.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.s.j()) {
+         $$0.j = false;
+         $$0.a(ffj.a(wi.a("gui.socialInteractions.tooltip.report.no_messages", this.s.c())));
+      }
+
+      this.u.a(fdy.a(d, $$0x -> this.j.a(new fob(this.q, this.r, this.s.d(), this.s.h()))).a());
+      this.u.a(fdy.a(o, $$0x -> this.j.a(new fny(this.q, this.r, this.s.d(), this.s.c()))).a());
+      this.u.a(fhq.b(20));
+      this.u.a(fdy.a(wh.e, $$0x -> this.d()).a());
+      this.u.a($$1 -> {
+         fdw var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   protected double i() {
-      return 9.0;
+   protected void c() {
+      this.u.a();
+      fhj.a(this.u, this.G());
    }
 
    @Override
-   protected void c(fdc $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.D() + this.a();
-      int $$5 = this.C() + this.a();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(fhl $$0) {
-      $$0.a(fhk.a, this.m.b());
-   }
-
-   private wg a(wg $$0, boolean $$1) {
-      return (wg)($$1 ? $$0.f().a(n.h) : $$0);
-   }
-
-   private void a(fnz.b $$0, gqj $$1, boolean $$2) {
-      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
-      $$0.b(this.f, this.a(wg.a($$3, $$1.e()), $$2));
-      $$0.b(this.f, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.f, this.a(e, $$2), 2);
-      this.a($$1, $$0, $$2);
-   }
-
-   private void a(gqj $$0, fnz.b $$1, boolean $$2) {
-      for (gql<?> $$3 : $$0.b()) {
-         $$1.a(this.f, this.a($$3.a(), $$2));
-      }
-   }
-
-   private int k() {
-      return this.g - this.b();
-   }
-
-   static record a(fhd a, wg b) {
-   }
-
-   static class b {
-      private final int a;
-      private final fhg b;
-      private final wu c = wg.i();
-
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = fhg.d();
-         this.b.c().a();
-         this.b.a(fhh.a($$0));
-      }
-
-      public void a(fda $$0, wg $$1) {
-         this.a($$0, $$1, 0);
-      }
-
-      public void a(fda $$0, wg $$1, int $$2) {
-         this.b.a(new fej($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
-      }
-
-      public void b(fda $$0, wg $$1) {
-         this.b.a(new fej($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
-      }
-
-      public void a(int $$0) {
-         this.b.a(fhh.b($$0));
-      }
-
-      public fnz.a a() {
-         this.b.a();
-         return new fnz.a(this.b, this.c);
-      }
+   public void d() {
+      this.j.a(this.q);
    }
 }

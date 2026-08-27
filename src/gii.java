@@ -1,28 +1,16 @@
-public class gii extends ggo<cfr, ftc<cfr>> {
-   private static final ajt a = new ajt("textures/entity/wither/wither_invulnerable.png");
-   private static final ajt i = new ajt("textures/entity/wither/wither.png");
+public class gii extends ggx<cdj, ftd<cdj>> {
+   private static final ajv a = new ajv("textures/entity/turtle/big_sea_turtle.png");
 
-   public gii(gfi.a $$0) {
-      super($$0, new ftc<>($$0.a(ftl.bV)), 1.0F);
-      this.a(new gkh(this, $$0.f()));
+   public gii(gfr.a $$0) {
+      super($$0, new ftd<>($$0.a(ftu.bN)), 0.7F);
    }
 
-   protected int a(cfr $$0, ib $$1) {
-      return 15;
+   protected float a(cdj $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.83F : $$1;
    }
 
-   public ajt a(cfr $$0) {
-      int $$1 = $$0.y();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(cfr $$0, ewi $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   public ajv b(cdj $$0) {
+      return a;
    }
 }

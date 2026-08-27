@@ -1,5 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bly {
-   List<blv> bu();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bly {
 }

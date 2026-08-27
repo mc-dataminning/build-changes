@@ -1,125 +1,87 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class byn extends bxy {
-   private final dby g;
-   private final bqq h;
-   private int i;
-   private static final int j = 20;
+public class byn extends bxq {
+   public static final int a = 120;
+   protected final brb b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public byn(dby $$0, bqw $$1, double $$2, int $$3) {
-      super($$1, $$2, 24, $$3);
-      this.g = $$0;
-      this.h = $$1;
+   public byn(brb $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public byn(brb $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public byn(brb $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(bxq.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.h.dM().aa().b(cyt.c)) {
+      if (this.b.cO()) {
          return false;
-      } else if (this.c > 0) {
-         this.c--;
-         return false;
-      } else if (this.n()) {
-         this.c = b(20);
-         return true;
       } else {
-         this.c = this.a(this.a);
-         return false;
-      }
-   }
+         if (!this.h) {
+            if (this.i && this.b.en() >= 100) {
+               return false;
+            }
 
-   @Override
-   public void d() {
-      super.d();
-      this.h.ab = 1.0F;
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.i = 0;
-   }
-
-   public void a(cyy $$0, ib $$1) {
-   }
-
-   public void a(cyx $$0, ib $$1) {
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      cyx $$0 = this.h.dM();
-      ib $$1 = this.h.dm();
-      ib $$2 = this.a($$1, $$0);
-      axr $$3 = this.h.ei();
-      if (this.m() && $$2 != null) {
-         if (this.i > 0) {
-            esa $$4 = this.h.dp();
-            this.h.o($$4.c, 0.3, $$4.e);
-            if (!$$0.B) {
-               double $$5 = 0.08;
-               ((aps)$$0)
-                  .a(
-                     new kh(kl.R, new crj(crm.qQ)),
-                     (double)$$2.u() + 0.5,
-                     (double)$$2.v() + 0.7,
-                     (double)$$2.w() + 0.5,
-                     3,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     0.15F
-                  );
+            if (this.b.ei().a(b(this.g)) != 0) {
+               return false;
             }
          }
 
-         if (this.i % 2 == 0) {
-            esa $$6 = this.h.dp();
-            this.h.o($$6.c, -0.3, $$6.e);
-            if (this.i % 6 == 0) {
-               this.a((cyy)$$0, this.e);
-            }
+         esj $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            this.h = false;
+            return true;
          }
-
-         if (this.i > 60) {
-            $$0.a($$2, false);
-            if (!$$0.B) {
-               for (int $$7 = 0; $$7 < 20; $$7++) {
-                  double $$8 = $$3.k() * 0.02;
-                  double $$9 = $$3.k() * 0.02;
-                  double $$10 = $$3.k() * 0.02;
-                  ((aps)$$0).a(kl.Z, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
-               }
-
-               this.a($$0, $$2);
-            }
-         }
-
-         this.i++;
       }
    }
 
    @Nullable
-   private ib a(ib $$0, cyd $$1) {
-      if ($$1.a_($$0).a(this.g)) {
-         return $$0;
-      } else {
-         ib[] $$2 = new ib[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
-
-         for (ib $$3 : $$2) {
-            if ($$1.a_($$3).a(this.g)) {
-               return $$3;
-            }
-         }
-
-         return null;
-      }
+   protected esj h() {
+      return cbn.a(this.b, 10, 7);
    }
 
    @Override
-   protected boolean a(cza $$0, ib $$1) {
-      dqv $$2 = $$0.a(je.a($$1.u()), je.a($$1.w()), dru.n, false);
-      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
+   public boolean b() {
+      return !this.b.K().l() && !this.b.cO();
+   }
+
+   @Override
+   public void c() {
+      this.b.K().a(this.c, this.d, this.e, this.f);
+   }
+
+   @Override
+   public void d() {
+      this.b.K().n();
+      super.d();
+   }
+
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

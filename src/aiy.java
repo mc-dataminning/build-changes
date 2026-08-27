@@ -1,23 +1,4 @@
-public record aiy<T>(int a, aiz<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aiy<?> $$1 = (aiy<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
-   }
+public class aiy {
+   public static final vq<aiv> a = yu.a(vh.c, $$0 -> $$0.a(aix.b, aiw.b).a(aio.b, aiq.a));
+   public static final vq<ais> b = yu.b(vh.c, $$0 -> $$0.a(aix.a, ait.a).a(aio.a, ain.a));
 }

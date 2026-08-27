@@ -1,59 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwz extends dxv<eaj> {
-   private static final doz a = dca.mZ.n().a(dbc.h, Integer.valueOf(1)).a(dbc.i, dpl.a).a(dbc.j, Integer.valueOf(0));
-   private static final doz b = a.a(dbc.i, dpl.c).a(dbc.j, Integer.valueOf(1));
-   private static final doz c = a.a(dbc.i, dpl.c);
-   private static final doz d = a.a(dbc.i, dpl.b);
+public class dwz {
+   public static final dwz a = new dwz(false, dcj.gz.n(), dcj.pL.n(), dcj.ej.n(), dcj.aQ.n());
+   public static final Codec<dwz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dwz::a),
+               dpi.b.optionalFieldOf("air_state", a.b()).forGetter(dwz::b),
+               dpi.b.optionalFieldOf("water_state", a.b()).forGetter(dwz::c),
+               dpi.b.optionalFieldOf("lava_state", a.b()).forGetter(dwz::d),
+               dpi.b.optionalFieldOf("barrier_state", a.b()).forGetter(dwz::e)
+            )
+            .apply($$0, dwz::new)
+   );
+   private final boolean c;
+   private final dpi d;
+   private final dpi e;
+   private final dpi f;
+   private final dpi g;
 
-   public dwz(Codec<eaj> $$0) {
-      super($$0);
+   public static dwz a(boolean $$0, dpi $$1, dpi $$2, dpi $$3, dpi $$4) {
+      return new dwz($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(dxx<eaj> $$0) {
-      int $$1 = 0;
-      ib $$2 = $$0.e();
-      czs $$3 = $$0.b();
-      axr $$4 = $$0.d();
-      eaj $$5 = $$0.f();
-      ib.a $$6 = $$2.j();
-      ib.a $$7 = $$2.j();
-      if ($$3.u($$6)) {
-         if (dca.mZ.n().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public static dwz a(dpi $$0, dpi $$1, dpi $$2, dpi $$3) {
+      return new dwz(false, $$0, $$1, $$2, $$3);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dur.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dca.l.n(), 2);
-                        }
-                     }
-                  }
-               }
-            }
+   public static dwz a(boolean $$0, dpi $$1) {
+      return new dwz($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(ih.b, 1);
-            }
+   private dwz(boolean $$0, dpi $$1, dpi $$2, dpi $$3, dpi $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
 
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(ih.a, 1), c, 2);
-               $$3.a($$6.c(ih.a, 1), d, 2);
-            }
-         }
+   public boolean a() {
+      return this.c;
+   }
 
-         $$1++;
-      }
+   public dpi b() {
+      return this.d;
+   }
 
-      return $$1 > 0;
+   public dpi c() {
+      return this.e;
+   }
+
+   public dpi d() {
+      return this.f;
+   }
+
+   public dpi e() {
+      return this.g;
    }
 }

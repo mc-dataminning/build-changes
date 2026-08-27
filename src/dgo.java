@@ -1,7 +1,36 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dgo {
-   boolean a(@Nullable cjt var1, cyd var2, ib var3, doz var4, ekr var5);
+public class dgo extends dba {
+   public static final MapCodec<dgo> d = b(dgo::new);
 
-   boolean a(cyy var1, ib var2, doz var3, eks var4);
+   @Override
+   public MapCodec<dgo> a() {
+      return d;
+   }
+
+   public dgo(dph.d $$0) {
+      super($$0, jk.e);
+   }
+
+   @Override
+   protected double b(dpi $$0) {
+      return 0.9375;
+   }
+
+   @Override
+   public boolean d(dpi $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
+      if (this.a($$0, $$2, $$3)) {
+         $$3.ay();
+      }
+   }
+
+   @Override
+   protected int a(dpi $$0, czg $$1, id $$2) {
+      return 3;
+   }
 }

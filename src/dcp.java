@@ -1,30 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcp extends dby {
-   public static final MapCodec<dcp> a = b(dcp::new);
-   protected static final est b = dby.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+public class dcp extends dbf {
+   public static final MapCodec<dcp> b = b(dcp::new);
+   public static final int c = 5;
+   private static final ij[] d = ij.values();
 
    @Override
-   public MapCodec<? extends dcp> a() {
-      return a;
+   public MapCodec<dcp> a() {
+      return b;
    }
 
-   public dcp(doy.d $$0) {
+   public dcp(dph.d $$0) {
       super($$0);
    }
 
    @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return b;
+   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
+      if ($$3.a(5) == 0) {
+         ij $$4 = d[$$3.a(d.length)];
+         id $$5 = $$2.a($$4);
+         dpi $$6 = $$1.a_($$5);
+         dch $$7 = null;
+         if (g($$6)) {
+            $$7 = dcj.qy;
+         } else if ($$6.a(dcj.qy) && $$6.c(dbg.d) == $$4) {
+            $$7 = dcj.qx;
+         } else if ($$6.a(dcj.qx) && $$6.c(dbg.d) == $$4) {
+            $$7 = dcj.qw;
+         } else if ($$6.a(dcj.qw) && $$6.c(dbg.d) == $$4) {
+            $$7 = dcj.qv;
+         }
+
+         if ($$7 != null) {
+            dpi $$8 = $$7.n().a(dbg.d, $$4).a(dbg.c, Boolean.valueOf($$6.u().a() == elc.c));
+            $$1.b($$5, $$8);
+         }
+      }
    }
 
-   @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      return !$$0.a($$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      return !$$1.u($$2.d());
+   public static boolean g(dpi $$0) {
+      return $$0.i() || $$0.a(dcj.G) && $$0.u().e() == 8;
    }
 }

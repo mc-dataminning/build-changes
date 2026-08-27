@@ -1,48 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dij extends dby {
-   public static final MapCodec<dij> h = b(dij::new);
-   public static final dpx<ih.a> i = dpp.I;
+public class dij extends dch {
+   public static final MapCodec<dij> a = b(dij::new);
+   public static final dpz b = dik.d;
 
    @Override
-   public MapCodec<? extends dij> a() {
-      return h;
+   public MapCodec<dij> a() {
+      return a;
    }
 
-   public dij(doy.d $$0) {
+   public dij(dph.d $$0) {
       super($$0);
-      this.k(this.n().a(i, ih.a.b));
+      this.k(this.n().a(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dpi a(cux $$0) {
+      return this.n().a(b, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected doz a(doz $$0, dik $$1) {
-      return b($$0, $$1);
-   }
-
-   public static doz b(doz $$0, dik $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((ih.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, ih.a.c);
-               case c:
-                  return $$0.a(i, ih.a.a);
-               default:
-                  return $$0;
+   protected void a(dpi $$0, czg $$1, id $$2, dch $$3, id $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.C($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
             }
-         default:
-            return $$0;
+         }
       }
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(i);
+   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
+      if ($$0.c(b) && !$$1.C($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
    }
 
    @Override
-   public doz a(cuo $$0) {
-      return this.n().a(i, $$0.k().o());
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(b);
    }
 }

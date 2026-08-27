@@ -1,85 +1,58 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dfb extends dby {
-   public static final MapCodec<dfb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kr.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dfb::new)
-   );
-   private static final Map<dby, dby> d = Maps.newHashMap();
-   public static final float b = 3.0F;
-   protected static final est c = dby.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final dby e;
+public abstract class dfb extends dgc {
+   public static final dqg<dpt> K = dpy.U;
 
-   @Override
-   public MapCodec<dfb> a() {
-      return a;
-   }
-
-   public dfb(dby $$0, doy.d $$1) {
-      super($$1);
-      this.e = $$0;
-      d.put($$0, this);
+   protected dfb(dph.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return c;
-   }
+   protected abstract MapCodec<? extends dfb> a();
 
    @Override
-   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
-      doz $$8 = ($$0.f() instanceof cph $$7 ? d.getOrDefault($$7.d(), dca.a) : dca.a).n();
-      if ($$8.i()) {
-         return boc.d;
-      } else if (!this.k()) {
-         return boc.b;
-      } else {
-         $$2.a($$3, $$8, 3);
-         $$2.a($$4, dts.c, $$3);
-         $$4.a(auw.ah);
-         $$0.a(1, $$4);
-         return boc.a($$2.B);
-      }
+   protected boolean a(dpi $$0, czj $$1, id $$2) {
+      return b($$1, $$2, m($$0).g());
    }
 
+   public static boolean b(czj $$0, id $$1, ij $$2) {
+      id $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
+
+   @Nullable
    @Override
-   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
-      if (this.k()) {
-         return boa.b;
-      } else {
-         crj $$5 = new crj(this.e);
-         if (!$$3.i($$5)) {
-            $$3.a($$5, false);
+   public dpi a(cux $$0) {
+      for (ij $$1 : $$0.f()) {
+         dpi $$2;
+         if ($$1.o() == ij.a.b) {
+            $$2 = this.n().a(K, $$1 == ij.b ? dpt.c : dpt.a).a(aE, $$0.g());
+         } else {
+            $$2 = this.n().a(K, dpt.b).a(aE, $$1.g());
          }
 
-         $$1.a($$2, dca.fR.n(), 3);
-         $$1.a($$3, dts.c, $$2);
-         return boa.a($$1.B);
+         if ($$2.a((czj)$$0.q(), $$0.a())) {
+            return $$2;
+         }
       }
+
+      return null;
    }
 
    @Override
-   public crj a(cza $$0, ib $$1, doz $$2) {
-      return this.k() ? super.a($$0, $$1, $$2) : new crj(this.e);
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dcj.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private boolean k() {
-      return this.e == dca.a;
-   }
-
-   @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      return $$1 == ih.a && !$$0.a($$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public dby b() {
-      return this.e;
-   }
-
-   @Override
-   protected boolean a(doz $$0, elh $$1) {
-      return false;
+   protected static ij m(dpi $$0) {
+      switch ((dpt)$$0.c(K)) {
+         case c:
+            return ij.a;
+         case a:
+            return ij.b;
+         default:
+            return $$0.c(aE);
+      }
    }
 }

@@ -1,46 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bve {
-   public static bsh<bqw> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bvt.a(
-         (Function<bvt.b<bqw>, ? extends App<bvt.c<bqw>, bvw<bqw>>>)($$3 -> $$3.group($$3.c(bzr.o), $$3.c(bzr.m), $$3.a(bzr.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dm()).a(avh.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           esf $$8 = esf.a($$6);
-                           ib $$9 = $$6.dm();
-                           ib.a $$10 = new ib.a();
-
-                           label45:
-                           for (ib $$11 : ib.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, ih.a)).b($$5x, $$11, $$8).c()) {
-                                 for (ih $$12 : ih.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(ih.a)).a(dca.G)) {
-                                       $$5.a(new bsj($$11));
-                                       $$4.a(new bzu(new bsj($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
+   public static bsm<cjn> a(bzw<List<im>> $$0, float $$1, int $$2, int $$3, bzw<im> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return bvy.a(
+         (Function<bvy.b<cjn>, ? extends App<bvy.c<cjn>, bwb<cjn>>>)($$6 -> $$6.group($$6.a(bzw.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<im> $$11 = $$6.b($$6x);
+                     im $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        im $$13 = $$11.get($$8.E_().a($$11.size()));
+                        if ($$13 != null && $$8.ae() == $$13.a() && $$12.b().a($$9.dk(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new bzz($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
                            }
 
-                           $$2.setValue($$7 + 40L);
                            return true;
+                        } else {
+                           return false;
                         }
                      }
-               ))
+                  }))
       );
    }
 }

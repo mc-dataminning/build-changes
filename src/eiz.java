@@ -1,26 +1,20 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class eiz extends ejb {
-   public static final Codec<eiz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(doz.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, eiz::new)
-   );
-   private final doz b;
-   private final float d;
+public class eiz extends ejn {
+   public static final Codec<eiz> a = Codec.unit(() -> eiz.b);
+   public static final eiz b = new eiz();
 
-   public eiz(doz $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   @Nullable
+   @Override
+   public ejq.c a(czj $$0, id $$1, id $$2, ejq.c $$3, ejq.c $$4, ejm $$5) {
+      id $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(dcj.H);
+      return $$7 && !dch.a($$4.b().j($$0, $$6)) ? new ejq.c($$6, dcj.H.n(), $$4.c()) : $$4;
    }
 
    @Override
-   public boolean a(doz $$0, axr $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected ejc<?> a() {
-      return ejc.f;
+   protected ejp<?> a() {
+      return ejp.m;
    }
 }

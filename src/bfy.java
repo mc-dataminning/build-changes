@@ -1,32 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class bfy extends bea {
-   private static final double a = 16.0;
-   private static final double b = 48.0;
-
-   public bfy(Schema $$0) {
-      super($$0, false, "Villager Follow Range Fix", bfa.z, "minecraft:villager");
+public class bfy extends DataFix {
+   public bfy(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bfy::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "Attributes",
-         $$1 -> $$0.createList(
-               $$1.asStream()
-                  .map(
-                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
-                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
-                           : $$0xx
-                  )
-            )
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bff.G.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bff.G))) {
+         throw new IllegalStateException("Team type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", ayr::a)));
+      }
    }
 }

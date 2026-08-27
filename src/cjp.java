@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface cjp extends brs<cjs> {
+   cjo gy();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@u
-@w
-interface cjp {
+   void a(cjo var1);
+
+   default cjs a() {
+      return this.gy().a();
+   }
+
+   default void a(cjs $$0) {
+      this.a(this.gy().a($$0));
+   }
 }

@@ -1,25 +1,25 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class eha extends efh {
-   public static final Codec<eha> d = a(eha::new);
+record eha(aju<egz> c, aju<egz> d) implements ehb {
+   static Codec<eha> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aju.a(ku.aJ).fieldOf("alias").forGetter(eha::c), aju.a(ku.aJ).fieldOf("target").forGetter(eha::d)).apply($$0, eha::new)
+   );
 
-   public eha(efh.c $$0) {
-      super($$0);
+   @Override
+   public void a(axt $$0, BiConsumer<aju<egz>, aju<egz>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
    @Override
-   public Optional<efh.b> a(efh.a $$0) {
-      return a($$0, dur.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(efz $$0, efh.a $$1) {
-      ib $$2 = new ib($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new egz.a($$2));
+   public Stream<aju<egz>> a() {
+      return Stream.of(this.d);
    }
 
    @Override
-   public efq<?> e() {
-      return efq.a;
+   public Codec<eha> b() {
+      return a;
    }
 }

@@ -1,9 +1,46 @@
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
-public class og {
-   private static final jb a = new jb().a(ks.aI, qp::a).a(ks.aF, qs::a).a(ks.aH, qr::a).a(ks.aG, qq::a).a(ks.r, ph::a);
+public class og implements la {
+   private static final Logger d = LogUtils.getLogger();
+   private final lc e;
+   private final CompletableFuture<ip.a> f;
 
-   public static CompletableFuture<jb.g> a(CompletableFuture<in.a> $$0) {
-      return of.a($$0, a);
+   public og(lc $$0, CompletableFuture<ip.a> $$1) {
+      this.f = $$1;
+      this.e = $$0;
+   }
+
+   @Override
+   public CompletableFuture<?> a(ky $$0) {
+      return this.f.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         return CompletableFuture.allOf(ajq.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (ajq.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private <T> Optional<CompletableFuture<?>> a(ky $$0, ip.a $$1, DynamicOps<JsonElement> $$2, ajq.c<T> $$3) {
+      aju<? extends ja<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         lc.a $$5 = this.e.a(lc.b.a, $$4.a().a());
+         return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private static <E> CompletableFuture<?> a(Path $$0, ky $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
+      return $$5.isPresent() ? la.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
+   }
+
+   @Override
+   public final String a() {
+      return "Registries";
    }
 }

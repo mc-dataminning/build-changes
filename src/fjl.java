@@ -1,71 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class fjl extends fjo implements axq {
-   @Nullable
-   private wg a;
-   @Nullable
-   private wg b;
-   private int c;
-   private boolean d;
-   private final boolean o;
+public class fjl extends fjp {
+   private static final wi a = wi.c("options.mouse_settings.title");
+   private final fhl o = new fhl(this);
+   private fev p;
 
-   public fjl(boolean $$0) {
-      super(fbh.a);
-      this.o = $$0;
+   private static fcb<?>[] a(fcc $$0) {
+      return new fcb[]{$$0.d(), $$0.R(), $$0.F(), $$0.S(), $$0.Z()};
+   }
+
+   public fjl(fjx $$0, fcc $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   public boolean aE_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aM_() {
-      return false;
-   }
-
-   @Override
-   public void a(wg $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(wg $$0) {
-      this.a = $$0;
-      this.c(wg.c("menu.working"));
-   }
-
-   @Override
-   public void c(wg $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.d = true;
-   }
-
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      if (this.d) {
-         if (this.o) {
-            this.j.a(null);
-         }
+   protected void aM_() {
+      this.p = this.c(new fev(this.j, this.k, this.l, this));
+      if (evm.a()) {
+         this.p.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.G())).toArray(fcb[]::new));
       } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.m, this.a, this.k / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.m, wg.i().b(this.b).f(" " + this.c + "%"), this.k / 2, 90, 16777215);
-         }
+         this.p.a(a(this.c));
       }
+
+      super.aM_();
+   }
+
+   @Override
+   public void d() {
+      this.c.av();
+      super.d();
+   }
+
+   @Override
+   protected void c() {
+      super.c();
+      this.p.a(this.k, this.o);
    }
 }

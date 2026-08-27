@@ -1,34 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class gpm extends atp {
-   private tm a;
+public class gpm<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   public gpm(gpn $$0, is<akc> $$1, emu $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public gpm(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   @Override
-   protected void b(apt $$0) {
-      if (this.b().a($$0.fY())) {
-         this.a = $$0.f(new tm());
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
+         }
+
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
       }
 
-      super.b($$0);
-   }
-
-   @Override
-   public wg a(SocketAddress $$0, GameProfile $$1) {
-      return (wg)(this.b().a($$1) && this.a($$1.getName()) != null ? wg.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gpn b() {
-      return (gpn)super.c();
-   }
-
-   @Override
-   public tm r() {
-      return this.a;
+      return (T)this.endOfData();
    }
 }

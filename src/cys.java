@@ -1,34 +1,25 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cys extends elz {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static elz.a<cys> a() {
-      return new elz.a<>(cys::new, cys::b, ayq.i);
-   }
-
-   private cys(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public cys() {
-      this(new LongOpenHashSet());
-   }
-
-   public static cys b(tm $$0, in.a $$1) {
-      return new cys(new LongOpenHashSet($$0.o("Forced")));
+public interface cys extends cyx, czj, czl {
+   @Override
+   default <T extends dmo> Optional<T> a(id $$0, dmq<T> $$1) {
+      return czj.super.a($$0, $$1);
    }
 
    @Override
-   public tm a(tm $$0, in.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   default List<etc> c(@Nullable bqa $$0, ese $$1) {
+      return cyx.super.c($$0, $$1);
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   default boolean a(@Nullable bqa $$0, etc $$1) {
+      return cyx.super.a($$0, $$1);
+   }
+
+   @Override
+   default id a(dva.a $$0, id $$1) {
+      return czj.super.a($$0, $$1);
    }
 }

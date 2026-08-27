@@ -1,4 +1,8 @@
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record fai(String a, fac b, boolean c, Set<String> d) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fai {
 }

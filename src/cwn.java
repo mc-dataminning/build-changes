@@ -1,54 +1,60 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class cwn extends cwq {
-   private final int b;
-   private final int c;
-   private final int d;
-   private final Optional<avr<bqb<?>>> e;
-
-   public cwn(cwq.a $$0, int $$1, int $$2, int $$3, Optional<avr<bqb<?>>> $$4, bqc... $$5) {
-      super($$0, avk.bh, $$5);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+public class cwn extends cvk {
+   public cwn(cvi $$0) {
+      super($$0);
    }
 
-   @Override
-   public int a(int $$0) {
-      return this.b + ($$0 - 1) * this.c;
-   }
+   public boolean a(cnm $$0, czg $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
 
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + this.d;
-   }
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         crs $$7 = $$0.a($$6);
+         if (!$$7.d()) {
+            if ($$7.a(dcj.cf.p()) && !$$4) {
+               $$4 = true;
+            } else if ($$7.a(dcj.cg.p()) && !$$3) {
+               $$3 = true;
+            } else if ($$7.a(avm.O) && !$$2) {
+               $$2 = true;
+            } else {
+               if (!$$7.a(crv.pp) || $$5) {
+                  return false;
+               }
 
-   @Override
-   public int a() {
-      return 5;
-   }
-
-   @Override
-   public float a(int $$0, @Nullable bqb<?> $$1) {
-      if (this.e.isEmpty()) {
-         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
-      } else {
-         return $$1 != null && $$1.a(this.e.get()) ? (float)$$0 * 2.5F : 0.0F;
+               $$5 = true;
+            }
+         }
       }
+
+      return $$2 && $$4 && $$3 && $$5;
    }
 
-   @Override
-   public boolean a(cwq $$0) {
-      return !($$0 instanceof cwn);
-   }
+   public crs a(cnm $$0, jb $$1) {
+      crs $$2 = new crs(crv.vS, 1);
 
-   @Override
-   public void a(bqo $$0, bpv $$1, int $$2) {
-      if (this.e.isPresent() && $$1 instanceof bqo $$3 && this.e.get() == avf.v && $$2 > 0 && $$3.ai().a(this.e.get())) {
-         int $$4 = 20 + $$0.ei().a(10 * $$2);
-         $$3.b(new bph(bpj.b, $$4, 3));
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         crs $$4 = $$0.a($$3);
+         if (!$$4.d()) {
+            dki $$5 = dki.a($$4.f());
+            if ($$5 != null) {
+               $$2.b(jr.y, $$5.b());
+               break;
+            }
+         }
       }
+
+      return $$2;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 2 && $$1 >= 2;
+   }
+
+   @Override
+   public cvw<?> ao_() {
+      return cvw.n;
    }
 }

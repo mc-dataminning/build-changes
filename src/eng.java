@@ -1,54 +1,94 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eng<T> {
-   private static final Logger d = LogUtils.getLogger();
-   public static final eng<eqc> a = new eng<>(eqe.a, "predicates", c());
-   public static final eng<eop> b = new eng<>(eor.b, "item_modifiers", c());
-   public static final eng<enj> c = new eng<>(enj.d, "loot_tables", d());
-   private final Codec<T> e;
-   private final String f;
-   private final eng.a<T> g;
+public interface eng {
+   int d = 19133;
+   int e = 19132;
 
-   private eng(Codec<T> $$0, String $$1, eng.a<T> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   daa D();
+
+   void a(daa var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   public String a() {
-      return this.f;
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
+      }
    }
 
-   public void a(enk $$0, end<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
-   }
+   @Nullable
+   to E();
 
-   public <V> Optional<T> a(ajt $$0, DynamicOps<V> $$1, V $$2) {
-      DataResult<T> $$3 = this.e.parse($$1, $$2);
-      $$3.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$3.result();
-   }
+   void a(@Nullable to var1);
 
-   public static Stream<eng<?>> b() {
-      return Stream.of(a, b, c);
-   }
+   enf I();
 
-   private static <T extends enc> eng.a<T> c() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
-   }
+   czk J();
 
-   private static eng.a<enj> d() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
-   }
+   to a(jb var1, @Nullable to var2);
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(enk var1, end<T> var2, T var3);
+   boolean l();
+
+   int x();
+
+   String e();
+
+   czd k();
+
+   void a(czd var1);
+
+   boolean m();
+
+   boc q();
+
+   void a(boc var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   czc o();
+
+   @Nullable
+   to w();
+
+   dtd.a C();
+
+   void a(dtd.a var1);
+
+   dvy y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default cmn K() {
+      return this.D().b();
    }
 }

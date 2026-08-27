@@ -1,22 +1,45 @@
-public class fyw extends fwg {
-   private static final int a = 12235202;
+public abstract class fyw extends fyj {
+   protected gls E;
 
-   protected fyw(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fyi $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+   protected fyw(fuq $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public static class a implements fxq<ko> {
-      private final fyi a;
+   protected fyw(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public a(fyi $$0) {
-         this.a = $$0;
-      }
+   protected void a(gls $$0) {
+      this.E = $$0;
+   }
 
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyw($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+   @Override
+   protected float c() {
+      return this.E.c();
+   }
+
+   @Override
+   protected float d() {
+      return this.E.d();
+   }
+
+   @Override
+   protected float e() {
+      return this.E.g();
+   }
+
+   @Override
+   protected float f() {
+      return this.E.h();
+   }
+
+   public void a(fyr $$0) {
+      this.a($$0.a(this.r));
+   }
+
+   public void b(fyr $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

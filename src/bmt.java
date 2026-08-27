@@ -1,151 +1,48 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class bmt<T> implements bly, bms<T>, AutoCloseable, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1;
-   private static final int c = 2;
-   private final AtomicInteger d = new AtomicInteger(0);
-   private final bmv<? super T, ? extends Runnable> e;
-   private final Executor f;
-   private final String g;
+public class bmt<E extends bmr> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   public static bmt<Runnable> a(Executor $$0, String $$1) {
-      return new bmt<>(new bmv.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
+   bmt(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bms.a($$0);
    }
 
-   public bmt(bmv<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
-      this.f = $$1;
-      this.e = $$0;
-      this.g = $$2;
-      blw.a.a(this);
+   public static <E extends bmr> bmt<E> c() {
+      return new bmt<>(ImmutableList.of());
    }
 
-   private boolean d() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-         if (($$0 & 3) != 0) {
-            return false;
-         }
-      } while (!this.d.compareAndSet($$0, $$0 | 2));
-
-      return true;
+   @SafeVarargs
+   public static <E extends bmr> bmt<E> a(E... $$0) {
+      return new bmt<>(ImmutableList.copyOf($$0));
    }
 
-   private void e() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 & -3));
+   public static <E extends bmr> bmt<E> a(List<E> $$0) {
+      return new bmt<>($$0);
    }
 
-   private boolean f() {
-      return (this.d.get() & 1) != 0 ? false : !this.e.b();
+   public boolean d() {
+      return this.b.isEmpty();
    }
 
-   @Override
-   public void close() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 | 1));
-   }
-
-   private boolean g() {
-      return (this.d.get() & 2) != 0;
-   }
-
-   private boolean h() {
-      if (!this.g()) {
-         return false;
+   public Optional<E> b(axt $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
       } else {
-         Runnable $$0 = this.e.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ac.a(this.g, $$0).run();
-            return true;
-         }
+         int $$1 = $$0.a(this.a);
+         return bms.a(this.b, $$1);
       }
    }
 
-   @Override
-   public void run() {
-      try {
-         this.a($$0 -> $$0 == 0);
-      } finally {
-         this.e();
-         this.i();
-      }
+   public List<E> e() {
+      return this.b;
    }
 
-   public void a() {
-      try {
-         this.a($$0 -> true);
-      } finally {
-         this.e();
-         this.i();
-      }
-   }
-
-   @Override
-   public void a(T $$0) {
-      this.e.a($$0);
-      this.i();
-   }
-
-   private void i() {
-      if (this.f() && this.d()) {
-         try {
-            this.f.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.f.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Cound not schedule mailbox", var3);
-            }
-         }
-      }
-   }
-
-   private int a(Int2BooleanFunction $$0) {
-      int $$1 = 0;
-
-      while ($$0.get($$1) && this.h()) {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   public int b() {
-      return this.e.c();
-   }
-
-   public boolean c() {
-      return this.g() && !this.e.b();
-   }
-
-   @Override
-   public String toString() {
-      return this.g + " " + this.d.get() + " " + this.e.b();
-   }
-
-   @Override
-   public String bx() {
-      return this.g;
-   }
-
-   @Override
-   public List<blv> bu() {
-      return ImmutableList.of(blv.a(this.g + "-queue-size", blu.c, this::b));
+   public static <E extends bmr> Codec<bmt<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bmt::a, bmt::e);
    }
 }

@@ -1,12 +1,26 @@
-import com.google.gson.JsonObject;
+import java.util.IllegalFormatException;
 
-public class gmx implements asb<gmw> {
-   public gmw b(JsonObject $$0) {
-      return new gmw(gmw.a.a(axa.a($$0, "hat", "none")));
+public class gmx {
+   private static volatile tj a = tj.a();
+
+   private gmx() {
    }
 
-   @Override
-   public String a() {
-      return "villager";
+   static void a(tj $$0) {
+      a = $$0;
+   }
+
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

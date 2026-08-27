@@ -4,52 +4,33 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Locale;
 
-public class kp implements kj {
-   public static final Codec<kp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dtw.c.fieldOf("destination").forGetter(kp::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(kp::c)).apply($$0, kp::new)
-   );
-   public static final ye<vr, kp> b = ye.a(dtw.d, kp::b, yc.f, kp::c, kp::new);
-   public static final kj.a<kp> c = new kj.a<kp>() {
-      public kp a(kk<kp> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
+public class kp implements kl {
+   public static final Codec<kp> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.d)).apply($$0, kp::new));
+   public static final yg<vt, kp> b = yg.a(ye.f, $$0 -> $$0.d, kp::new);
+   public static final kl.a<kp> c = new kl.a<kp>() {
+      public kp a(km<kp> $$0, StringReader $$1, ip.a $$2) throws CommandSyntaxException {
          $$1.expect(' ');
-         float $$3 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         float $$4 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         float $$5 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         int $$6 = $$1.readInt();
-         ib $$7 = ib.a((double)$$3, (double)$$4, (double)$$5);
-         return new kp(new dto($$7), $$6);
+         int $$3 = $$1.readInt();
+         return new kp($$3);
       }
    };
-   private final dtw d;
-   private final int e;
+   private final int d;
 
-   public kp(dtw $$0, int $$1) {
+   public kp(int $$0) {
       this.d = $$0;
-      this.e = $$1;
    }
 
    @Override
-   public String a(in.a $$0) {
-      esa $$1 = this.d.a(null).get();
-      double $$2 = $$1.a();
-      double $$3 = $$1.b();
-      double $$4 = $$1.c();
-      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %d", kr.j.b(this.a()), $$2, $$3, $$4, this.e);
+   public String a(ip.a $$0) {
+      return String.format(Locale.ROOT, "%s %d", kt.j.b(this.a()), this.d);
    }
 
    @Override
-   public kk<kp> a() {
-      return kl.S;
+   public km<kp> a() {
+      return kn.aT;
    }
 
-   public dtw b() {
+   public int b() {
       return this.d;
-   }
-
-   public int c() {
-      return this.e;
    }
 }

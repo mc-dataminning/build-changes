@@ -1,26 +1,30 @@
-import java.util.function.BooleanSupplier;
+import java.util.function.IntFunction;
 
-public class fcd extends fbn {
-   private final BooleanSupplier h;
+public enum fcd implements axo {
+   a(0, "options.particles.all"),
+   b(1, "options.particles.decreased"),
+   c(2, "options.particles.minimal");
 
-   public fcd(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, evd.b.a, $$1, $$2);
-      this.h = $$3;
+   private static final IntFunction<fcd> d = awd.a(fcd::a, values(), awd.a.b);
+   private final int e;
+   private final String f;
+
+   private fcd(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
+   public String b() {
+      return this.f;
    }
 
    @Override
-   protected void n() {
-      super.a(false);
+   public int a() {
+      return this.e;
+   }
+
+   public static fcd a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -1,38 +1,60 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class esi {
+   public static final esi a = new esi(0.0F, 0.0F);
+   public static final esi b = new esi(1.0F, 1.0F);
+   public static final esi c = new esi(1.0F, 0.0F);
+   public static final esi d = new esi(-1.0F, 0.0F);
+   public static final esi e = new esi(0.0F, 1.0F);
+   public static final esi f = new esi(0.0F, -1.0F);
+   public static final esi g = new esi(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final esi h = new esi(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public final class esi implements esm {
-   private final esg a;
-   private final int b;
-   private final int c;
-
-   esi(int $$0, int $$1) {
-      this.a = new esg((int)esq.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   public esi(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   @Override
-   public boolean a(esm.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public esi a(float $$0) {
+      return new esi(this.i * $$0, this.j * $$0);
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
+   public float a(esi $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public esi b(esi $$0) {
+      return new esi(this.i + $$0.i, this.j + $$0.j);
+   }
+
+   public esi b(float $$0) {
+      return new esi(this.i + $$0, this.j + $$0);
+   }
+
+   public boolean c(esi $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
+   }
+
+   public esi a() {
+      float $$0 = axm.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new esi(this.i / $$0, this.j / $$0);
+   }
+
+   public float b() {
+      return axm.c(this.i * this.i + this.j * this.j);
+   }
+
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
+
+   public float d(esi $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public esi d() {
+      return new esi(-this.i, -this.j);
    }
 }

@@ -1,39 +1,45 @@
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class aed implements yn<aay> {
-   public static final ye<vg, aed> a = yn.a(aed::a, aed::new);
-   private final int b;
-   private final int c;
+public class aed implements yp<aba> {
+   public static final yg<vi, aed> a = yp.a(aed::a, aed::new);
+   private final ete b;
+   private final String c;
 
-   public aed(bpv $$0, @Nullable bpv $$1) {
-      this.b = $$0.aj();
-      this.c = $$1 != null ? $$1.aj() : 0;
+   public aed(ete $$0, @Nullable etf $$1) {
+      this.b = $$0;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
-   private aed(vg $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   private aed(vi $$0) {
+      this.b = $$0.a(ete.u);
+      this.c = $$0.p();
    }
 
-   private void a(vg $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
+   private void a(vi $$0) {
+      $$0.a(ete::a, this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yp<aed> a() {
-      return afj.aD;
+   public yr<aed> a() {
+      return afl.aB;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ete b() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

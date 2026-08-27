@@ -1,33 +1,31 @@
-public enum asl {
-   a("old"),
-   b("new"),
-   c("compatible");
+import io.netty.buffer.ByteBuf;
 
-   private final wg d;
-   private final wg e;
+public record asl(String c, String d, String e) {
+   public static final yg<ByteBuf, asl> a = yg.a(ye.k, asl::b, ye.k, asl::c, ye.k, asl::d, asl::new);
+   public static final String b = "minecraft";
 
-   private asl(String $$0) {
-      this.d = wg.c("pack.incompatible." + $$0).a(n.h);
-      this.e = wg.c("pack.incompatible.confirm." + $$0);
+   public static asl a(String $$0) {
+      return new asl("minecraft", $$0, aa.b().b());
    }
 
    public boolean a() {
-      return this == c;
+      return this.c.equals("minecraft");
    }
 
-   public static asl a(axc<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
-      }
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
    }
 
-   public wg b() {
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
       return this.d;
    }
 
-   public wg c() {
+   public String d() {
       return this.e;
    }
 }

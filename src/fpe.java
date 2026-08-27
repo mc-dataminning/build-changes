@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fpe {
+   void a(fpc var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fpe {
+   wi aN_();
+
+   void a(fdl var1, float var2, int var3);
+
+   boolean aO_();
 }

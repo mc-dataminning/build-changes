@@ -1,159 +1,113 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dpa<O, S extends dpb<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dqc<?>> c;
-   private final ImmutableList<S> d;
-
-   protected dpa(Function<O, S> $$0, O $$1, dpa.b<O, S> $$2, Map<String, dqc<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, dqc<?>> $$6 = (Entry<String, dqc<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
-      }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dqc<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dqc<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dqc<?> $$11 = (dqc<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dqc<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         Reference2ObjectArrayMap<dqc<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
-
-         for (Pair<dqc<?>, Comparable<?>> $$7xx : $$5x) {
-            $$6.put((dqc)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
-         }
-
-         S $$8x = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$8x);
-         $$9.add($$8x);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
-   }
-
-   private static <S extends dpb<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dqc<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dpb)((dpb)$$1x.getFirst()).a($$3, ((dqc.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dqc<?>> d() {
-      return this.c.values();
-   }
+public class dpa extends dbt {
+   public static final MapCodec<dpa> a = b(dpa::new);
+   public static final dqc b = dpc.a;
+   public static final dqg<dqk> c = dpc.c;
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dqc::f).collect(Collectors.toList()))
-         .toString();
+   public MapCodec<dpa> a() {
+      return a;
+   }
+
+   public dpa(dph.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ij.c).a(c, dqk.a));
    }
 
    @Nullable
-   public dqc<?> a(String $$0) {
-      return (dqc<?>)this.c.get($$0);
+   @Override
+   public dmo a(id $$0, dpi $$1) {
+      return null;
    }
 
-   public static class a<O, S extends dpb<O, S>> {
-      private final O a;
-      private final Map<String, dqc<?>> b = Maps.newHashMap();
+   public static dmo a(id $$0, dpi $$1, dpi $$2, ij $$3, boolean $$4, boolean $$5) {
+      return new dpe($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      public a(O $$0) {
-         this.a = $$0;
-      }
+   @Nullable
+   @Override
+   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
+      return a($$2, dmq.k, dpe::a);
+   }
 
-      public dpa.a<O, S> a(dqc<?>... $$0) {
-         for (dqc<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
+   @Override
+   protected void a(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dmo $$5 = $$1.c_($$2);
+         if ($$5 instanceof dpe) {
+            ((dpe)$$5).k();
          }
-
-         return this;
-      }
-
-      private <T extends Comparable<T>> void a(dqc<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dpa.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dpa.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
-
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
-               }
-            }
-         }
-      }
-
-      public dpa<O, S> a(Function<O, S> $$0, dpa.b<O, S> $$1) {
-         return new dpa<>($$0, this.a, $$1, this.b);
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, Reference2ObjectArrayMap<dqc<?>, Comparable<?>> var2, MapCodec<S> var3);
+   @Override
+   public void a(czh $$0, id $$1, dpi $$2) {
+      id $$3 = $$1.a($$2.c(b).g());
+      dpi $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof dpb && $$4.c(dpb.c)) {
+         $$0.a($$3, false);
+      }
+   }
+
+   @Override
+   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
+      if (!$$1.B && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return bof.b;
+      } else {
+         return bof.d;
+      }
+   }
+
+   @Override
+   protected List<crs> a(dpi $$0, enq.a $$1) {
+      dpe $$2 = this.a($$1.a(), id.a($$1.a(epx.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
+   }
+
+   @Override
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return esz.a();
+   }
+
+   @Override
+   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
+      dpe $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : esz.a();
+   }
+
+   @Nullable
+   private dpe a(cym $$0, id $$1) {
+      dmo $$2 = $$0.c_($$1);
+      return $$2 instanceof dpe ? (dpe)$$2 : null;
+   }
+
+   @Override
+   public crs a(czj $$0, id $$1, dpi $$2) {
+      return crs.i;
+   }
+
+   @Override
+   protected dpi a(dpi $$0, dit $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dpi a(dpi $$0, dhd $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(dpi $$0, elq $$1) {
+      return false;
    }
 }

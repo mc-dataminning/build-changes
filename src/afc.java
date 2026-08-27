@@ -1,59 +1,29 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public record afc(float b, boolean c) implements yp<aba> {
+   public static final yg<vi, afc> a = yp.a(afc::a, afc::new);
 
-public class afc implements yn<aay> {
-   public static final ye<vr, afc> a = yn.a(afc::a, afc::new);
-   private final boolean b;
-   private final List<af> c;
-   private final Set<ajt> d;
-   private final Map<ajt, ah> e;
-
-   public afc(boolean $$0, Collection<af> $$1, Set<ajt> $$2, Map<ajt, ah> $$3) {
-      this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
+   private afc(vi $$0) {
+      this($$0.readFloat(), $$0.readBoolean());
    }
 
-   private afc(vr $$0) {
-      this.b = $$0.readBoolean();
-      this.c = af.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vg::q);
-      this.e = $$0.a(vg::q, ah::b);
+   public static afc a(boq $$0) {
+      return new afc($$0.f(), $$0.l());
    }
 
-   private void a(vr $$0) {
+   private void a(vi $$0) {
       $$0.a(this.b);
-      af.b.encode($$0, this.c);
-      $$0.a(this.d, vg::a);
-      $$0.a(this.e, vg::a, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c);
    }
 
    @Override
-   public yp<afc> a() {
-      return afj.ba;
+   public yr<afc> a() {
+      return afl.cd;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public List<af> b() {
+   public boolean e() {
       return this.c;
-   }
-
-   public Set<ajt> e() {
-      return this.d;
-   }
-
-   public Map<ajt, ah> f() {
-      return this.e;
-   }
-
-   public boolean g() {
-      return this.b;
    }
 }

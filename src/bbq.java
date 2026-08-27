@@ -1,32 +1,15 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
 
-public class bbq extends bea {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("donkeykong", "donkey_kong");
-      $$0.put("burningskull", "burning_skull");
-      $$0.put("skullandroses", "skull_and_roses");
-   });
-
-   public bbq(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityPaintingMotiveFix", bfa.z, "minecraft:painting");
+public class bbq extends bee {
+   public bbq(Schema $$0) {
+      super($$0, false, "EntityPaintingFieldsRenameFix", bff.z, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Motive").asString().result();
-      if ($$1.isPresent()) {
-         String $$2 = $$1.get().toLowerCase(Locale.ROOT);
-         return $$0.set("Motive", $$0.createString(new ajt(a.getOrDefault($$2, $$2)).toString()));
-      } else {
-         return $$0;
-      }
+      return ayu.a(ayu.a($$0, "Motive", "variant"), "Facing", "facing");
    }
 
    @Override

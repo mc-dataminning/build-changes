@@ -1,11 +1,37 @@
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ees extends eeo {
-   protected abstract int a(axr var1, ib var2);
+public class ees extends efb {
+   public static final Codec<ees> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ees::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
+
+   private ees(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static ees a(int $$0, double $$1, double $$2) {
+      return new ees($$0, $$1, $$2);
+   }
 
    @Override
-   public Stream<ib> a_(eem $$0, axr $$1, ib $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   protected int a(axt $$0, id $$1) {
+      double $$2 = daf.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   }
+
+   @Override
+   public eey<?> b() {
+      return eey.g;
    }
 }

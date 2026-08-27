@@ -1,93 +1,95 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+public class dvl implements cyt {
+   private int a;
 
-public interface dvl {
-   Codec<dvl> a = aws.a(dvl.b.d, aws.a(dvl.a.d, dvl.c.d)).xmap(dvl::a, dvl::a);
-   dvl b = b(0);
-   dvl c = c(0);
+   @Override
+   public int a(apu $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.aa().b(czc.K)) {
+         return 0;
+      } else {
+         axt $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.Z() / 24000L;
+            if ($$4 < 5L || !$$0.Q()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cka $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.N_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dm(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     id.a $$9 = $$6.dm().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        in<daf> $$11 = $$0.t($$9);
+                        if ($$11.a(avd.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-   static dvl a(int $$0) {
-      return new dvl.b($$0);
-   }
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dva.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
 
-   static dvl b(int $$0) {
-      return new dvl.a($$0);
-   }
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
 
-   static dvl c(int $$0) {
-      return new dvl.c($$0);
-   }
-
-   static dvl a() {
-      return b;
-   }
-
-   static dvl b() {
-      return c;
-   }
-
-   private static dvl a(Either<dvl.b, Either<dvl.a, dvl.c>> $$0) {
-      return (dvl)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
-   }
-
-   private static Either<dvl.b, Either<dvl.a, dvl.c>> a(dvl $$0) {
-      return $$0 instanceof dvl.b ? Either.left((dvl.b)$$0) : Either.right($$0 instanceof dvl.a ? Either.left((dvl.a)$$0) : Either.right((dvl.c)$$0));
-   }
-
-   int a(dvo var1);
-
-   public static record a(int e) implements dvl {
-      public static final Codec<dvl.a> d = Codec.intRange(dsr.e, dsr.d).fieldOf("above_bottom").xmap(dvl.a::new, dvl.a::c).codec();
-
-      @Override
-      public int a(dvo $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements dvl {
-      public static final Codec<dvl.b> d = Codec.intRange(dsr.e, dsr.d).fieldOf("absolute").xmap(dvl.b::new, dvl.b::c).codec();
-
-      @Override
-      public int a(dvo $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
    }
 
-   public static record c(int e) implements dvl {
-      public static final Codec<dvl.c> d = Codec.intRange(dsr.e, dsr.d).fieldOf("below_top").xmap(dvl.c::new, dvl.c::c).codec();
+   private boolean a(apu $$0, id $$1, axt $$2, boolean $$3) {
+      dpi $$4 = $$0.a_($$1);
+      if (!czr.a($$0, $$1, $$4, $$4.u(), bqg.aB)) {
+         return false;
+      } else if (!chh.b(bqg.aB, $$0, bqx.p, $$1, $$2)) {
+         return false;
+      } else {
+         chh $$5 = bqg.aB.a((czg)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gv();
+            }
 
-      @Override
-      public int a(dvo $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bqx.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

@@ -1,31 +1,35 @@
-public record zx(int c, elg d, float e) implements zo {
-   public static final ye<vg, zx> a = zo.a(zx::a, zx::new);
-   public static final zo.b<zx> b = zo.a("debug/path");
+public record zx(zx.a c) implements zq {
+   public static final yg<vi, zx> a = zq.a(zx::a, zx::new);
+   public static final zq.b<zx> b = zq.a("debug/hive");
 
-   private zx(vg $$0) {
-      this($$0.readInt(), elg.b($$0), $$0.readFloat());
+   private zx(vi $$0) {
+      this(new zx.a($$0));
    }
 
-   private void a(vg $$0) {
-      $$0.p(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(vi $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public zo.b<zx> a() {
+   public zq.b<zx> a() {
       return b;
    }
 
-   public int b() {
+   public zx.a b() {
       return this.c;
    }
 
-   public elg c() {
-      return this.d;
-   }
+   public static record a(id a, String b, int c, int d, boolean e) {
+      public a(vi $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
 
-   public float d() {
-      return this.e;
+      public void a(vi $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

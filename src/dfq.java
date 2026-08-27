@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfq extends dij {
+public class dfq extends dgc {
    public static final MapCodec<dfq> a = b(dfq::new);
 
    @Override
@@ -8,13 +8,17 @@ public class dfq extends dij {
       return a;
    }
 
-   public dfq(doy.d $$0) {
+   public dfq(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, ih.a.b));
    }
 
    @Override
-   public void a(cyx $$0, doz $$1, ib $$2, bpv $$3, float $$4) {
-      $$3.a($$4, 0.2F, $$0.ai().k());
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(aE);
+   }
+
+   @Override
+   public dpi a(cux $$0) {
+      return this.n().a(aE, $$0.g().g());
    }
 }

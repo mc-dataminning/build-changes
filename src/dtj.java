@@ -1,45 +1,15 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public interface dtj {
+   dtj a = new dtj() {
+      @Override
+      public void a() {
+      }
 
-public class dtj<T extends dsz> implements dti<T> {
-   private final dtb<T> a;
-   private final dte<T> b;
+      @Override
+      public void a(bqa.c $$0) {
+      }
+   };
 
-   public dtj(dtb<T> $$0, dte<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void a();
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
-
-   @Override
-   public <U extends T> void a(dtg<T, U> $$0, avx<U> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void a(erv $$0, Consumer<T> $$1) {
-      this.b.b($$0, avx.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(dtg<T, U> $$0, erv $$1, avx<U> $$2) {
-      this.b.a($$0, $$1, $$2);
-   }
+   void a(bqa.c var1);
 }

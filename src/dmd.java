@@ -1,147 +1,107 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dmd extends dmf {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public ih c;
-   private List<bqo> m;
-   private boolean n;
-   private int r;
+public class dmd extends dmo implements bok {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 6;
+   private static final String c = "patterns";
+   @Nullable
+   private wi d;
+   private cql e;
+   private dmf f = dmf.a;
 
-   public dmd(ib $$0, doz $$1) {
-      super(dmh.E, $$0, $$1);
+   public dmd(id $$0, dpi $$1) {
+      super(dmq.t, $$0, $$1);
+      this.e = ((day)$$1.b()).b();
+   }
+
+   public dmd(id $$0, dpi $$1, cql $$2) {
+      this($$0, $$1);
+      this.e = $$2;
+   }
+
+   public void a(crs $$0, cql $$1) {
+      this.e = $$1;
+      this.a($$0.a());
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.b();
-         this.r = 0;
-         this.c = ih.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   public wi ad() {
+      return (wi)(this.d != null ? this.d : wi.c("block.minecraft.banner"));
+   }
+
+   @Nullable
+   @Override
+   public wi af() {
+      return this.d;
+   }
+
+   @Override
+   protected void b(to $$0, ip.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f.equals(dmf.a)) {
+         $$0.a("patterns", ac.a(dmf.b.encodeStart($$1.a(uc.a), this.f), IllegalStateException::new));
+      }
+
+      if (this.d != null) {
+         $$0.a("CustomName", wi.a.a(this.d, $$1));
       }
    }
 
-   private static void a(cyx $$0, ib $$1, doz $$2, dmd $$3, dmd.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
+   @Override
+   public void a(to $$0, ip.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.d = wi.a.a($$0.l("CustomName"), $$1);
       }
 
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
-
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.n = true;
-         $$0.a(null, $$1, aum.ca, aun.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.n) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.n = false;
-         }
+      if ($$0.e("patterns")) {
+         dmf.b
+            .parse($$1.a(uc.a), $$0.c("patterns"))
+            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
+            .ifPresent($$0x -> this.f = $$0x);
       }
    }
 
-   public static void a(cyx $$0, ib $$1, doz $$2, dmd $$3) {
-      a($$0, $$1, $$2, $$3, dmd::b);
+   public abh a() {
+      return abh.a(this);
    }
 
-   public static void b(cyx $$0, ib $$1, doz $$2, dmd $$3) {
-      a($$0, $$1, $$2, $$3, dmd::a);
+   @Override
+   public to a(ip.a $$0) {
+      return this.d($$0);
    }
 
-   public void a(ih $$0) {
-      ib $$1 = this.aA_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.o.a($$1, this.n().b(), 1, $$0.d());
+   public dmf b() {
+      return this.f;
    }
 
-   private void b() {
-      ib $$0 = this.aA_();
-      if (this.o.Y() > this.l + 60L || this.m == null) {
-         this.l = this.o.Y();
-         erv $$1 = new erv($$0).g(48.0);
-         this.m = this.o.a(bqo.class, $$1);
-      }
-
-      if (!this.o.B) {
-         for (bqo $$2 : this.m) {
-            if ($$2.bA() && !$$2.dH() && $$0.a($$2.dk(), 32.0)) {
-               $$2.dP().a(bzr.D, this.o.Y());
-            }
-         }
-      }
+   public crs c() {
+      crs $$0 = new crs(dbm.a(this.e));
+      $$0.a(this.s());
+      return $$0;
    }
 
-   private static boolean a(ib $$0, List<bqo> $$1) {
-      for (bqo $$2 : $$1) {
-         if ($$2.bA() && !$$2.dH() && $$0.a($$2.dk(), 32.0) && $$2.ai().a(avf.c)) {
-            return true;
-         }
-      }
-
-      return false;
+   public cql f() {
+      return this.e;
    }
 
-   private static void a(cyx $$0, ib $$1, List<bqo> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dmd::a);
+   @Override
+   public void a(jn $$0) {
+      this.f = $$0.a(jr.N, dmf.a);
+      this.d = $$0.a(jr.d);
    }
 
-   private static void b(cyx $$0, ib $$1, List<bqo> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dk(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dr() - (double)$$1.u()) * ($$4x.dr() - (double)$$1.u()) + ($$4x.dx() - (double)$$1.w()) * ($$4x.dx() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dr() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dx() - (double)$$1.w());
-         int $$9 = axk.a(($$4 - 21) / -2, 3, 15);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            double $$12 = (double)awu.b.b($$11) / 255.0;
-            double $$13 = (double)awu.b.c($$11) / 255.0;
-            double $$14 = (double)awu.b.d($$11) / 255.0;
-            $$0.a(kl.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
-         }
-      });
+   @Override
+   public void a(jn.a $$0) {
+      $$0.a(jr.N, this.f);
+      $$0.a(jr.d, this.d);
    }
 
-   private static boolean a(ib $$0, bqo $$1) {
-      return $$1.bA() && !$$1.dH() && $$0.a($$1.dk(), 48.0) && $$1.ai().a(avf.c);
-   }
-
-   private static void a(bqo $$0) {
-      $$0.b(new bph(bpj.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(cyx var1, ib var2, List<bqo> var3);
+   @Override
+   public void a(to $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

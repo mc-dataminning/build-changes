@@ -1,66 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class dxd extends dxv<dzq> {
-   public dxd(Codec<dzq> $$0) {
-      super($$0);
+public record dxd<WC extends dwy>(dxf<WC> d, WC e) {
+   public static final Codec<dxd<?>> a = kt.P.q().dispatch($$0 -> $$0.d, dxf::c);
+   public static final Codec<in<dxd<?>>> b = ajr.a(ku.ay, a);
+   public static final Codec<ir<dxd<?>>> c = jc.a(ku.ay, a);
+
+   public boolean a(axt $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(dxx<dzq> $$0) {
-      czs $$1 = $$0.b();
-      dzq $$2 = $$0.f();
-      axr $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
-
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
-         return false;
-      } else {
-         ib.a $$8 = $$0.e().j();
-         ib.a $$9 = $$8.j().c($$2.b());
-
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
-
-            $$9.c($$2.b());
-         }
-
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               dzq.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
-               }
-            }
-         }
-
-         return true;
-      }
+   public boolean a(dxa $$0, dre $$1, Function<id, in<daf>> $$2, axt $$3, dum $$4, cyn $$5, drd $$6) {
+      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
+   public dxf<WC> a() {
+      return this.d;
+   }
 
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
-      }
+   public WC b() {
+      return this.e;
    }
 }

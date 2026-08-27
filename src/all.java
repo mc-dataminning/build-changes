@@ -1,58 +1,41 @@
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class all {
-   public static void a(CommandDispatcher<du> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.deop.failed"));
+
+   public static void a(CommandDispatcher<dv> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debugconfig").requires($$0x -> $$0x.c(3)))
-               .then(dv.a("config").then(dv.a("target", eh.c()).executes($$0x -> a((du)$$0x.getSource(), eh.e($$0x, "target"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("deop").requires($$0x -> $$0x.c(3)))
             .then(
-               dv.a("unconfig")
-                  .then(
-                     dv.a("target", fi.a())
-                        .suggests(($$0x, $$1) -> dz.b(a(((du)$$0x.getSource()).l()), $$1))
-                        .executes($$0x -> a((du)$$0x.getSource(), fi.a($$0x, "target")))
-                  )
+               dw.a("targets", ek.a())
+                  .suggests(($$0x, $$1) -> ea.a(((dv)$$0x.getSource()).l().ah().l(), $$1))
+                  .executes($$0x -> a((dv)$$0x.getSource(), ek.a($$0x, "targets")))
             )
       );
    }
 
-   private static Iterable<String> a(MinecraftServer $$0) {
-      Set<String> $$1 = new HashSet<>();
+   private static int a(dv $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      atr $$2 = $$0.l().ah();
+      int $$3 = 0;
 
-      for (ve $$2 : $$0.ai().e()) {
-         if ($$2.k() instanceof aqq $$3) {
-            $$1.add($$3.k().getId().toString());
+      for (GameProfile $$4 : $$1) {
+         if ($$2.f($$4)) {
+            $$2.b($$4);
+            $$3++;
+            $$0.a(() -> wi.a("commands.deop.success", $$1.iterator().next().getName()), true);
          }
       }
 
-      return $$1;
-   }
-
-   private static int a(du $$0, apt $$1) {
-      GameProfile $$2 = $$1.fY();
-      $$1.d.o();
-      $$0.a(() -> wg.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
-      return 1;
-   }
-
-   private static int a(du $$0, UUID $$1) {
-      for (ve $$2 : $$0.l().ai().e()) {
-         vm var5 = $$2.k();
-         if (var5 instanceof aqq) {
-            aqq $$3 = (aqq)var5;
-            if ($$3.k().getId().equals($$1)) {
-               $$3.n();
-            }
-         }
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         $$0.l().a($$0);
+         return $$3;
       }
-
-      $$0.b(wg.b("Can't find player to unconfig"));
-      return 0;
    }
 }

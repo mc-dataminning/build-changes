@@ -1,100 +1,76 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import jdk.jfr.Category;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public record ble(
-   Instant a,
-   Instant b,
-   Duration c,
-   @Nullable Duration d,
-   List<blq> e,
-   List<blk> f,
-   blm.a g,
-   blp.a h,
-   bln<blo> i,
-   bln<blo> j,
-   bln<blj> k,
-   bln<blj> l,
-   bll.a m,
-   bll.a n,
-   List<bli> o
-) {
-   public List<Pair<dru, bls<bli>>> a() {
-      Map<dru, List<bli>> $$0 = this.o.stream().collect(Collectors.groupingBy(bli::d));
-      return $$0.entrySet()
-         .stream()
-         .map($$0x -> Pair.of((dru)$$0x.getKey(), bls.a((List)$$0x.getValue())))
-         .sorted(Comparator.<Pair<dru, bls<bli>>, Duration>comparing($$0x -> ((bls)$$0x.getSecond()).f()).reversed())
-         .toList();
+@Category({"Minecraft", "Storage"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class ble extends Event {
+   @Name("regionPosX")
+   @Label("Region X Position")
+   public final int regionPosX;
+   @Name("regionPosZ")
+   @Label("Region Z Position")
+   public final int regionPosZ;
+   @Name("localPosX")
+   @Label("Local X Position")
+   public final int localChunkPosX;
+   @Name("localPosZ")
+   @Label("Local Z Position")
+   public final int localChunkPosZ;
+   @Name("chunkPosX")
+   @Label("Chunk X Position")
+   public final int chunkPosX;
+   @Name("chunkPosZ")
+   @Label("Chunk Z Position")
+   public final int chunkPosZ;
+   @Name("level")
+   @Label("Level Id")
+   public final String levelId;
+   @Name("dimension")
+   @Label("Dimension")
+   public final String dimension;
+   @Name("type")
+   @Label("Type")
+   public final String type;
+   @Name("compression")
+   @Label("Compression")
+   public final String compression;
+   @Name("bytes")
+   @Label("Bytes")
+   public final int bytes;
+
+   public ble(dsu $$0, cyn $$1, dst $$2, int $$3) {
+      this.regionPosX = $$1.h();
+      this.regionPosZ = $$1.i();
+      this.localChunkPosX = $$1.j();
+      this.localChunkPosZ = $$1.k();
+      this.chunkPosX = $$1.e;
+      this.chunkPosZ = $$1.f;
+      this.levelId = $$0.a();
+      this.dimension = $$0.b().a().toString();
+      this.type = $$0.c();
+      this.compression = "standard:" + $$2.b();
+      this.bytes = $$3;
    }
 
-   public String b() {
-      return new blg().a(this);
-   }
+   public static class a {
+      public static final String a = "regionPosX";
+      public static final String b = "regionPosZ";
+      public static final String c = "localPosX";
+      public static final String d = "localPosZ";
+      public static final String e = "chunkPosX";
+      public static final String f = "chunkPosZ";
+      public static final String g = "level";
+      public static final String h = "dimension";
+      public static final String i = "type";
+      public static final String j = "compression";
+      public static final String k = "bytes";
 
-   public Instant c() {
-      return this.a;
-   }
-
-   public Instant d() {
-      return this.b;
-   }
-
-   public Duration e() {
-      return this.c;
-   }
-
-   @Nullable
-   public Duration f() {
-      return this.d;
-   }
-
-   public List<blq> g() {
-      return this.e;
-   }
-
-   public List<blk> h() {
-      return this.f;
-   }
-
-   public blm.a i() {
-      return this.g;
-   }
-
-   public blp.a j() {
-      return this.h;
-   }
-
-   public bln<blo> k() {
-      return this.i;
-   }
-
-   public bln<blo> l() {
-      return this.j;
-   }
-
-   public bln<blj> m() {
-      return this.k;
-   }
-
-   public bln<blj> n() {
-      return this.l;
-   }
-
-   public bll.a o() {
-      return this.m;
-   }
-
-   public bll.a p() {
-      return this.n;
-   }
-
-   public List<bli> q() {
-      return this.o;
+      private a() {
+      }
    }
 }

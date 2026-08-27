@@ -1,230 +1,106 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class enj {
-   private static final Logger e = LogUtils.getLogger();
-   public static final enj a = new enj(epn.b, Optional.empty(), List.of(), List.of());
-   public static final epm b = epn.p;
-   public static final long c = 0L;
-   public static final Codec<enj> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               epn.a.optionalFieldOf("type", b).forGetter($$0x -> $$0x.f),
-               aws.a(ajt.a, "random_sequence").forGetter($$0x -> $$0x.g),
-               aws.a(eni.a.listOf(), "pools", List.of()).forGetter($$0x -> $$0x.h),
-               aws.a(eor.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.i)
-            )
+   private static final Codec<enj> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(awu.a(erh.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), awu.a(erh.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
             .apply($$0, enj::new)
    );
-   private final epm f;
-   private final Optional<ajt> g;
-   private final List<eni> h;
-   private final List<eop> i;
-   private final BiFunction<crj, enb, crj> j;
+   public static final Codec<enj> a = Codec.either(Codec.INT, b).xmap($$0 -> (enj)$$0.map(enj::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final erg c;
+   @Nullable
+   private final erg d;
+   private final enj.b e;
+   private final enj.a f;
 
-   enj(epm $$0, Optional<ajt> $$1, List<eni> $$2, List<eop> $$3) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = eor.a($$3);
+   public Set<epu<?>> a() {
+      Builder<epu<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   public static Consumer<crj> a(aps $$0, Consumer<crj> $$1) {
-      return $$2 -> {
-         if ($$2.a($$0.J())) {
-            if ($$2.G() < $$2.i()) {
-               $$1.accept($$2);
-            } else {
-               int $$3 = $$2.G();
+   private enj(Optional<erg> $$0, Optional<erg> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
 
-               while ($$3 > 0) {
-                  crj $$4 = $$2.c(Math.min($$2.i(), $$3));
-                  $$3 -= $$4.G();
-                  $$1.accept($$4);
-               }
-            }
+   private enj(@Nullable erg $$0, @Nullable erg $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-      };
-   }
-
-   public void a(enh $$0, Consumer<crj> $$1) {
-      this.a(new enb.a($$0).a(this.g), $$1);
-   }
-
-   public void a(enb $$0, Consumer<crj> $$1) {
-      enb.c<?> $$2 = enb.a(this);
-      if ($$0.b($$2)) {
-         Consumer<crj> $$3 = eop.a(this.j, $$1, $$0);
-
-         for (eni $$4 : this.h) {
-            $$4.a($$3, $$0);
-         }
-
-         $$0.c($$2);
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
       } else {
-         e.warn("Detected infinite loop in loot tables");
+         this.e = ($$2, $$3) -> axm.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public void a(enh $$0, long $$1, Consumer<crj> $$2) {
-      this.a(new enb.a($$0).a($$1).a(this.g), a($$0.a(), $$2));
+   public static enj a(int $$0) {
+      ere $$1 = ere.a((float)$$0);
+      return new enj(Optional.of($$1), Optional.of($$1));
    }
 
-   public void b(enh $$0, Consumer<crj> $$1) {
-      this.a($$0, a($$0.a(), $$1));
+   public static enj a(int $$0, int $$1) {
+      return new enj(Optional.of(ere.a((float)$$0)), Optional.of(ere.a((float)$$1)));
    }
 
-   public void b(enb $$0, Consumer<crj> $$1) {
-      this.a($$0, a($$0.d(), $$1));
+   public static enj b(int $$0) {
+      return new enj(Optional.of(ere.a((float)$$0)), Optional.empty());
    }
 
-   public ObjectArrayList<crj> a(enh $$0, long $$1) {
-      return this.a(new enb.a($$0).a($$1).a(this.g));
+   public static enj c(int $$0) {
+      return new enj(Optional.empty(), Optional.of(ere.a((float)$$0)));
    }
 
-   public ObjectArrayList<crj> a(enh $$0) {
-      return this.a(new enb.a($$0).a(this.g));
+   public int a(enk $$0, int $$1) {
+      return this.e.apply($$0, $$1);
    }
 
-   private ObjectArrayList<crj> a(enb $$0) {
-      ObjectArrayList<crj> $$1 = new ObjectArrayList();
-      this.b($$0, $$1::add);
-      return $$1;
+   public boolean b(enk $$0, int $$1) {
+      return this.f.test($$0, $$1);
    }
 
-   public epm a() {
-      return this.f;
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof ere $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
    }
 
-   public void a(enk $$0) {
-      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         this.h.get($$1).a($$0.a(".pools[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.i.size(); $$2++) {
-         this.i.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
+   @FunctionalInterface
+   interface a {
+      boolean test(enk var1, int var2);
    }
 
-   public void a(bnt $$0, enh $$1, long $$2) {
-      enb $$3 = new enb.a($$1).a($$2).a(this.g);
-      ObjectArrayList<crj> $$4 = this.a($$3);
-      axr $$5 = $$3.b();
-      List<Integer> $$6 = this.a($$0, $$5);
-      this.a($$4, $$6.size(), $$5);
-      ObjectListIterator var9 = $$4.iterator();
-
-      while (var9.hasNext()) {
-         crj $$7 = (crj)var9.next();
-         if ($$6.isEmpty()) {
-            e.warn("Tried to over-fill a container");
-            return;
-         }
-
-         if ($$7.d()) {
-            $$0.a($$6.remove($$6.size() - 1), crj.i);
-         } else {
-            $$0.a($$6.remove($$6.size() - 1), $$7);
-         }
-      }
-   }
-
-   private void a(ObjectArrayList<crj> $$0, int $$1, axr $$2) {
-      List<crj> $$3 = Lists.newArrayList();
-      Iterator<crj> $$4 = $$0.iterator();
-
-      while ($$4.hasNext()) {
-         crj $$5 = $$4.next();
-         if ($$5.d()) {
-            $$4.remove();
-         } else if ($$5.G() > 1) {
-            $$3.add($$5);
-            $$4.remove();
-         }
-      }
-
-      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
-         crj $$6 = $$3.remove(axk.a($$2, 0, $$3.size() - 1));
-         int $$7 = axk.a($$2, 1, $$6.G() / 2);
-         crj $$8 = $$6.a($$7);
-         if ($$6.G() > 1 && $$2.h()) {
-            $$3.add($$6);
-         } else {
-            $$0.add($$6);
-         }
-
-         if ($$8.G() > 1 && $$2.h()) {
-            $$3.add($$8);
-         } else {
-            $$0.add($$8);
-         }
-      }
-
-      $$0.addAll($$3);
-      ac.c($$0, $$2);
-   }
-
-   private List<Integer> a(bnt $$0, axr $$1) {
-      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         if ($$0.a($$3).d()) {
-            $$2.add($$3);
-         }
-      }
-
-      ac.c($$2, $$1);
-      return $$2;
-   }
-
-   public static enj.a b() {
-      return new enj.a();
-   }
-
-   public static class a implements eom<enj.a> {
-      private final Builder<eni> a = ImmutableList.builder();
-      private final Builder<eop> b = ImmutableList.builder();
-      private epm c = enj.b;
-      private Optional<ajt> d = Optional.empty();
-
-      public enj.a a(eni.a $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public enj.a a(epm $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public enj.a a(ajt $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public enj.a a(eop.a $$0) {
-         this.b.add($$0.b());
-         return this;
-      }
-
-      public enj.a a() {
-         return this;
-      }
-
-      public enj b() {
-         return new enj(this.c, this.d, this.a.build(), this.b.build());
-      }
+   @FunctionalInterface
+   interface b {
+      int apply(enk var1, int var2);
    }
 }

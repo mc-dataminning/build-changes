@@ -1,44 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class btl extends bsg<cjg> {
-   private final float c;
-
-   public btl(float $$0) {
-      super(ImmutableMap.of(bzr.m, bzs.c, bzr.n, bzs.c), Integer.MAX_VALUE);
-      this.c = $$0;
-   }
-
-   protected boolean a(aps $$0, cjg $$1) {
-      cjt $$2 = $$1.gn();
-      return $$1.bA() && $$2 != null && !$$1.bc() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bY != null;
-   }
-
-   protected boolean a(aps $$0, cjg $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aps $$0, cjg $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(aps $$0, cjg $$1, long $$2) {
-      brp<?> $$3 = $$1.dP();
-      $$3.b(bzr.m);
-      $$3.b(bzr.n);
-   }
-
-   protected void d(aps $$0, cjg $$1, long $$2) {
-      this.a($$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   private void a(cjg $$0) {
-      brp<?> $$1 = $$0.dP();
-      $$1.a(bzr.m, new bzu(new bsr($$0.gn(), false), this.c, 2));
-      $$1.a(bzr.n, new bsr($$0.gn(), true));
+public class btl {
+   public static btw<bqt> a(int $$0, float $$1, int $$2) {
+      return bvy.a(
+         (Function<bvy.b<bqt>, ? extends App<bvy.c<bqt>, bwb<bqt>>>)($$3 -> $$3.group(
+                  $$3.c(bzw.m), $$3.a(bzw.b), $$3.a(bzw.C), $$3.a(bzw.t), $$3.a(bzw.n), $$3.a(bzw.r), $$3.a(bzw.q)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.y()
+                           .d($$0xxxx -> $$0xxxx.a(cca.n), $$0xxxx -> true, $$12.dm(), $$2 + 1, cbw.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dk(), (double)$$2))
+                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(cca.n), $$0xxxxx -> true, cbw.b.c, $$12.dm(), $$0, $$12.ei()))
+                           .or(() -> $$3.<im>a($$5).map(im::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(im.a($$11.ae(), $$10xx));
+                              if (!$$10xx.a($$12.dk(), (double)$$2)) {
+                                 $$4.a(new bzz($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
+                     }
+               ))
+      );
    }
 }

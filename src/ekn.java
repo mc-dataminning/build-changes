@@ -1,213 +1,166 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import java.util.NoSuchElementException;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.util.function.LongPredicate;
 
-public class ekn extends LongLinkedOpenHashSet {
-   private final ekn.a a;
+public abstract class ekn {
+   public static final long e = Long.MAX_VALUE;
+   private static final int a = 255;
+   protected final int f;
+   private final ekr b;
+   private final Long2ByteMap c;
+   private volatile boolean d;
 
-   public ekn(int $$0, float $$1) {
-      super($$0, $$1);
-      this.a = new ekn.a($$0 / 64, $$1);
-   }
-
-   public boolean add(long $$0) {
-      return this.a.c($$0);
-   }
-
-   public boolean rem(long $$0) {
-      return this.a.d($$0);
-   }
-
-   public long removeFirstLong() {
-      return this.a.a();
-   }
-
-   public int size() {
-      throw new UnsupportedOperationException();
-   }
-
-   public boolean isEmpty() {
-      return this.a.isEmpty();
-   }
-
-   protected static class a extends Long2LongLinkedOpenHashMap {
-      private static final int a = axk.f(60000000);
-      private static final int b = axk.f(60000000);
-      private static final int c = 64 - a - b;
-      private static final int d = 0;
-      private static final int e = c;
-      private static final int g = c + b;
-      private static final long h = 3L << g | 3L | 3L << e;
-      private int i = -1;
-      private long j;
-      private final int k;
-
-      public a(int $$0, float $$1) {
-         super($$0, $$1);
-         this.k = $$0;
-      }
-
-      static long a(long $$0) {
-         return $$0 & ~h;
-      }
-
-      static int b(long $$0) {
-         int $$1 = (int)($$0 >>> g & 3L);
-         int $$2 = (int)($$0 >>> 0 & 3L);
-         int $$3 = (int)($$0 >>> e & 3L);
-         return $$1 << 4 | $$3 << 2 | $$2;
-      }
-
-      static long a(long $$0, int $$1) {
-         $$0 |= (long)($$1 >>> 4 & 3) << g;
-         $$0 |= (long)($$1 >>> 2 & 3) << e;
-         return $$0 | (long)($$1 >>> 0 & 3) << 0;
-      }
-
-      public boolean c(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         int $$4;
-         if ($$1 == 0L) {
-            if (this.containsNullKey) {
-               return this.a(this.n, $$3);
+   protected ekn(int $$0, int $$1, final int $$2) {
+      if ($$0 >= 254) {
+         throw new IllegalArgumentException("Level count must be < 254.");
+      } else {
+         this.f = $$0;
+         this.b = new ekr($$0, $$1);
+         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$2) {
+                  super.rehash($$0);
+               }
             }
+         };
+         this.c.defaultReturnValue((byte)-1);
+      }
+   }
 
-            this.containsNullKey = true;
-            $$4 = this.n;
+   protected void e(long $$0) {
+      int $$1 = this.c.remove($$0) & 255;
+      if ($$1 != 255) {
+         int $$2 = this.c($$0);
+         int $$3 = this.a($$2, $$1);
+         this.b.a($$0, $$3, this.f);
+         this.d = !this.b.b();
+      }
+   }
+
+   public void a(LongPredicate $$0) {
+      LongList $$1 = new LongArrayList();
+      this.c.keySet().forEach($$2 -> {
+         if ($$0.test($$2)) {
+            $$1.add($$2);
+         }
+      });
+      $$1.forEach(this::e);
+   }
+
+   private int a(int $$0, int $$1) {
+      return Math.min(Math.min($$0, $$1), this.f - 1);
+   }
+
+   protected void f(long $$0) {
+      this.a($$0, $$0, this.f - 1, false);
+   }
+
+   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
+      this.d = !this.b.b();
+   }
+
+   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if (!this.a($$1)) {
+         $$2 = axm.a($$2, 0, this.f - 1);
+         $$3 = axm.a($$3, 0, this.f - 1);
+         boolean $$6 = $$4 == 255;
+         if ($$6) {
+            $$4 = $$3;
+         }
+
+         int $$7;
+         if ($$5) {
+            $$7 = Math.min($$4, $$2);
          } else {
-            if (this.i != -1 && $$1 == this.j) {
-               return this.a(this.i, $$3);
+            $$7 = axm.a(this.a($$1, $$0, $$2), 0, this.f - 1);
+         }
+
+         int $$9 = this.a($$3, $$4);
+         if ($$3 != $$7) {
+            int $$10 = this.a($$3, $$7);
+            if ($$9 != $$10 && !$$6) {
+               this.b.a($$1, $$9, $$10);
             }
 
-            long[] $$5 = this.key;
-            $$4 = (int)HashCommon.mix($$1) & this.mask;
+            this.b.a($$1, $$10);
+            this.c.put($$1, (byte)$$7);
+         } else if (!$$6) {
+            this.b.a($$1, $$9, this.f);
+            this.c.remove($$1);
+         }
+      }
+   }
 
-            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
-               if ($$7 == $$1) {
-                  this.i = $$4;
-                  this.j = $$1;
-                  return this.a($$4, $$3);
+   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
+      int $$4 = this.c.get($$1) & 255;
+      int $$5 = axm.a(this.b($$0, $$1, $$2), 0, this.f - 1);
+      if ($$3) {
+         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
+      } else {
+         boolean $$6 = $$4 == 255;
+         int $$7;
+         if ($$6) {
+            $$7 = axm.a(this.c($$1), 0, this.f - 1);
+         } else {
+            $$7 = $$4;
+         }
+
+         if ($$5 == $$7) {
+            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
+         }
+      }
+   }
+
+   protected final boolean b() {
+      return this.d;
+   }
+
+   protected final int b(int $$0) {
+      if (this.b.b()) {
+         return $$0;
+      } else {
+         while (!this.b.b() && $$0 > 0) {
+            $$0--;
+            long $$1 = this.b.a();
+            int $$2 = axm.a(this.c($$1), 0, this.f - 1);
+            int $$3 = this.c.remove($$1) & 255;
+            if ($$3 < $$2) {
+               this.a($$1, $$3);
+               this.a($$1, $$3, true);
+            } else if ($$3 > $$2) {
+               this.a($$1, this.f - 1);
+               if ($$3 != this.f - 1) {
+                  this.b.a($$1, this.a(this.f - 1, $$3));
+                  this.c.put($$1, (byte)$$3);
                }
 
-               $$4 = $$4 + 1 & this.mask;
+               this.a($$1, $$2, false);
             }
          }
 
-         this.key[$$4] = $$1;
-         this.value[$$4] = $$3;
-         if (this.size == 0) {
-            this.first = this.last = $$4;
-            this.link[$$4] = -1L;
-         } else {
-            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
-            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
-            this.last = $$4;
-         }
-
-         if (this.size++ >= this.maxFill) {
-            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
-         }
-
-         return false;
-      }
-
-      private boolean a(int $$0, long $$1) {
-         boolean $$2 = (this.value[$$0] & $$1) != 0L;
-         this.value[$$0] = this.value[$$0] | $$1;
-         return $$2;
-      }
-
-      public boolean d(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         if ($$1 == 0L) {
-            return this.containsNullKey ? this.e($$3) : false;
-         } else if (this.i != -1 && $$1 == this.j) {
-            return this.b(this.i, $$3);
-         } else {
-            long[] $$4 = this.key;
-            int $$5 = (int)HashCommon.mix($$1) & this.mask;
-
-            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
-               if ($$1 == $$6) {
-                  this.i = $$5;
-                  this.j = $$1;
-                  return this.b($$5, $$3);
-               }
-
-               $$5 = $$5 + 1 & this.mask;
-            }
-
-            return false;
-         }
-      }
-
-      private boolean e(long $$0) {
-         if ((this.value[this.n] & $$0) == 0L) {
-            return false;
-         } else {
-            this.value[this.n] = this.value[this.n] & ~$$0;
-            if (this.value[this.n] != 0L) {
-               return true;
-            } else {
-               this.containsNullKey = false;
-               this.size--;
-               this.fixPointers(this.n);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
-
-               return true;
-            }
-         }
-      }
-
-      private boolean b(int $$0, long $$1) {
-         if ((this.value[$$0] & $$1) == 0L) {
-            return false;
-         } else {
-            this.value[$$0] = this.value[$$0] & ~$$1;
-            if (this.value[$$0] != 0L) {
-               return true;
-            } else {
-               this.i = -1;
-               this.size--;
-               this.fixPointers($$0);
-               this.shiftKeys($$0);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
-
-               return true;
-            }
-         }
-      }
-
-      public long a() {
-         if (this.size == 0) {
-            throw new NoSuchElementException();
-         } else {
-            int $$0 = this.first;
-            long $$1 = this.key[$$0];
-            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
-            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
-            if (this.value[$$0] == 0L) {
-               this.removeFirstLong();
-               this.i = -1;
-            }
-
-            return a($$1, $$2);
-         }
-      }
-
-      protected void rehash(int $$0) {
-         if ($$0 > this.k) {
-            super.rehash($$0);
-         }
+         this.d = !this.b.b();
+         return $$0;
       }
    }
+
+   public int c() {
+      return this.c.size();
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 == Long.MAX_VALUE;
+   }
+
+   protected abstract int a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, int var3, boolean var4);
+
+   protected abstract int c(long var1);
+
+   protected abstract void a(long var1, int var3);
+
+   protected abstract int b(long var1, long var3, int var5);
 }

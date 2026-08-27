@@ -1,60 +1,111 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class djj extends dby {
+public class djj extends dch implements djh {
    public static final MapCodec<djj> a = b(djj::new);
-   protected static final est b = dby.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int c = 20;
+   public static final dqg<dqq> b = dpy.bh;
+   public static final dpz c = dpy.C;
+   protected static final etc d = dch.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final etc e = dch.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
 
    @Override
-   public MapCodec<djj> a() {
+   public MapCodec<? extends djj> a() {
       return a;
    }
 
-   public djj(doy.d $$0) {
+   public djj(dph.d $$0) {
       super($$0);
+      this.k(this.n().a(b, dqq.b).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected est b(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return b;
+   protected boolean g_(dpi $$0) {
+      return $$0.c(b) != dqq.c;
    }
 
    @Override
-   protected est b_(doz $$0, cyd $$1, ib $$2) {
-      return esq.b();
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(b, c);
    }
 
    @Override
-   protected est c(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return esq.b();
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      dqq $$4 = $$0.c(b);
+      switch ($$4) {
+         case c:
+            return esz.b();
+         case a:
+            return e;
+         default:
+            return d;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dpi a(cux $$0) {
+      id $$1 = $$0.a();
+      dpi $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.a(b, dqq.c).a(c, Boolean.valueOf(false));
+      } else {
+         elb $$3 = $$0.q().b_($$1);
+         dpi $$4 = this.n().a(b, dqq.b).a(c, Boolean.valueOf($$3.a() == elc.c));
+         ij $$5 = $$0.k();
+         return $$5 != ij.a && ($$5 == ij.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, dqq.a);
+      }
    }
 
    @Override
-   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
-      dce.b($$1, $$2.c(), $$0);
+   protected boolean a(dpi $$0, cux $$1) {
+      crs $$2 = $$1.n();
+      dqq $$3 = $$0.c(b);
+      if ($$3 == dqq.c || !$$2.a(this.p())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
+         ij $$5 = $$1.k();
+         return $$3 == dqq.b ? $$5 == ij.b || $$4 && $$5.o().d() : $$5 == ij.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
+      }
    }
 
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.b && $$2.a(dca.G)) {
-         $$3.a($$4, this, 20);
+   protected elb c_(dpi $$0) {
+      return $$0.c(c) ? elc.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(czh $$0, id $$1, dpi $$2, elb $$3) {
+      return $$2.c(b) != dqq.c ? djh.super.a($$0, $$1, $$2, $$3) : false;
+   }
+
+   @Override
+   public boolean a(@Nullable cka $$0, cym $$1, id $$2, dpi $$3, ela $$4) {
+      return $$3.c(b) != dqq.c ? djh.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, elc.c, elc.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
-
-   @Override
-   protected boolean a(doz $$0, elh $$1) {
-      return false;
-   }
-
-   @Override
-   protected float d(doz $$0, cyd $$1, ib $$2) {
-      return 0.2F;
+   protected boolean a(dpi $$0, elq $$1) {
+      switch ($$1) {
+         case a:
+            return false;
+         case b:
+            return $$0.u().a(avj.a);
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 }

@@ -1,22 +1,11 @@
-import java.util.function.Consumer;
+public class avx {
+   public static final avt<eff> a = a("normal");
+   public static final avt<eff> b = a("extended");
 
-@FunctionalInterface
-public interface avx<T> {
-   avx.a accept(T var1);
-
-   static <T> avx<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return avx.a.a;
-      };
+   private avx() {
    }
 
-   public static enum a {
-      a,
-      b;
-
-      public boolean a() {
-         return this == b;
-      }
+   private static avt<eff> a(String $$0) {
+      return avt.a(ku.aN, new ajv($$0));
    }
 }

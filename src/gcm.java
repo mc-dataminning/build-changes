@@ -1,39 +1,58 @@
-public class gcm implements gbz<dno> {
-   private final fsf<?> a;
+public class gcm implements gci<dms> {
+   private final ggp a;
 
-   public gcm(gca.a $$0) {
-      this.a = new fsf($$0.a(ftl.bk));
+   public gcm(gcj.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(dno $$0, float $$1, ewi $$2, fzz $$3, int $$4, int $$5) {
-      ih $$6 = ih.b;
-      if ($$0.m()) {
-         doz $$7 = $$0.i().a_($$0.aA_());
-         if ($$7.b() instanceof diw) {
-            $$6 = $$7.c(diw.b);
+   public void a(dms $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.n().c(dpy.bv);
+         if ($$6 > 0) {
+            ij $$7 = $$0.d();
+            if ($$7 != null) {
+               crs $$8 = $$0.f();
+               if (!$$8.d()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == ij.f || $$7 == ij.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = gag.a($$0.i(), $$0.n(), $$0.az_().a($$7));
+                  this.a.a($$8, crp.i, $$11, glj.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
+            }
          }
       }
+   }
 
-      cqc $$8 = $$0.t();
-      gnm $$9;
-      if ($$8 == null) {
-         $$9 = gao.i;
-      } else {
-         $$9 = gao.j.get($$8.a());
+   private float[] a(ij $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
       }
 
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      ftm $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      ewm $$13 = $$9.a($$3, gah::e);
-      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+      return $$2;
    }
 }

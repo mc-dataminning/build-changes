@@ -1,34 +1,20 @@
-public class afv implements yn<afl> {
-   public static final ye<vg, afv> a = yn.a(afv::a, afv::new);
-   private final afv.a b;
+public record afv(wz.a b) implements yp<afn> {
+   public static final yg<vi, afv> a = yp.a(afv::a, afv::new);
 
-   public afv(afv.a $$0) {
-      this.b = $$0;
+   private afv(vi $$0) {
+      this(wz.a.a($$0));
    }
 
-   private afv(vg $$0) {
-      this.b = $$0.b(afv.a.class);
-   }
-
-   private void a(vg $$0) {
-      $$0.a(this.b);
+   private void a(vi $$0) {
+      wz.a.a($$0, this.b);
    }
 
    @Override
-   public yp<afv> a() {
-      return afj.bm;
+   public yr<afv> a() {
+      return afl.bk;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
-   }
-
-   public afv.a b() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

@@ -1,29 +1,61 @@
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface dcu {
-   est q_ = dby.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dpq r_ = dpp.D;
+public class dcu extends diz {
+   public static final MapCodec<dcu> a = b(dcu::new);
+   public static final dqc b = dpy.R;
 
-   static boa a(@Nullable bpv $$0, doz $$1, cyx $$2, ib $$3) {
-      if ($$1.c(r_)) {
-         dby.a($$2, $$3, new crj(crm.wo, 1));
-         float $$4 = axk.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, aum.ee, aun.e, 1.0F, $$4);
-         doz $$5 = $$1.a(r_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dts.c, $$3, dts.a.a($$0, $$5));
-         return boa.a($$2.B);
-      } else {
-         return boa.d;
-      }
+   @Override
+   public MapCodec<dcu> a() {
+      return a;
    }
 
-   static boolean i_(doz $$0) {
-      return $$0.b(r_) && $$0.c(r_);
+   public dcu(dph.d $$0) {
+      super($$0);
+      this.k(this.n().a(b, ij.c));
    }
 
-   static ToIntFunction<doz> h_(int $$0) {
-      return $$1 -> $$1.c(dpp.D) ? $$0 : 0;
+   @Nullable
+   @Override
+   public dmo a(id $$0, dpi $$1) {
+      return new dmt($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
+      return !$$0.B ? a($$2, dmq.J, ($$0x, $$1x, $$2x, $$3) -> duk.c.a($$0x, $$3.gp(), $$3.gq())) : null;
+   }
+
+   @Nullable
+   @Override
+   public dpi a(cux $$0) {
+      return super.a($$0).a(b, $$0.g());
+   }
+
+   @Override
+   public int a(dpi $$0, cym $$1, id $$2, ij $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   protected void a(dpj.a<dch, dpi> $$0) {
+      super.a($$0);
+      $$0.a(b);
+   }
+
+   @Override
+   public dpi a(dpi $$0, dit $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dpi a(dpi $$0, dhd $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   public int c() {
+      return 10;
    }
 }

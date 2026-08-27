@@ -1,204 +1,119 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class eof extends eoo {
-   public static final Codec<eof> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(eqr.a.fieldOf("source").forGetter($$0x -> $$0x.b), eof.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eof::new)
-   );
-   private final eqq b;
-   private final List<eof.b> c;
+public abstract class eof extends eod {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<eoy> i;
+   final BiFunction<crs, enk, crs> a;
+   private final eoc j = new eof.c() {
+      @Override
+      public void a(Consumer<crs> $$0, enk $$1) {
+         eof.this.a(eoy.a(eof.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   eof(List<eqc> $$0, eqq $$1, List<eof.b> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+   protected eof(int $$0, int $$1, List<eql> $$2, List<eoy> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = epa.a($$3);
+   }
+
+   protected static <T extends eof> P4<Mu<T>, Integer, Integer, List<eql>, List<eoy>> b(Instance<T> $$0) {
+      return $$0.group(
+            awu.a(Codec.INT, "weight", Integer.valueOf(1)).forGetter($$0x -> $$0x.g), awu.a(Codec.INT, "quality", Integer.valueOf(0)).forGetter($$0x -> $$0x.h)
+         )
+         .and(a($$0).t1())
+         .and(awu.a(epa.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public eoq b() {
-      return eor.x;
+   public void a(ent $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<epl<?>> a() {
-      return this.b.b();
-   }
+   protected abstract void a(Consumer<crs> var1, enk var2);
 
    @Override
-   public crj a(crj $$0, enb $$1) {
-      uj $$2 = this.b.a($$1);
-      if ($$2 == null) {
-         return $$0;
+   public boolean expand(enk $$0, Consumer<eoc> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
       } else {
-         MutableObject<tm> $$3 = new MutableObject();
-         Supplier<uj> $$4 = () -> {
-            if ($$3.getValue() == null) {
-               $$3.setValue($$0.a(jp.a, ctt.a).c());
-            }
-
-            return (uj)$$3.getValue();
-         };
-         this.c.forEach($$2x -> $$2x.a($$4, $$2));
-         tm $$5 = (tm)$$3.getValue();
-         if ($$5 != null) {
-            ctt.a(jp.a, $$0, $$5);
-         }
-
-         return $$0;
+         return false;
       }
    }
 
-   @Deprecated
-   public static eof.a a(eqq $$0) {
-      return new eof.a($$0);
+   public static eof.a<?> a(eof.d $$0) {
+      return new eof.b($$0);
    }
 
-   public static eof.a a(enb.b $$0) {
-      return new eof.a(eqo.a($$0));
-   }
+   public abstract static class a<T extends eof.a<T>> extends eod.a<T> implements eov<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<eoy> c = ImmutableList.builder();
 
-   public static class a extends eoo.a<eof.a> {
-      private final eqq a;
-      private final List<eof.b> b = Lists.newArrayList();
+      public T a(eoy.a $$0) {
+         this.c.add($$0.b());
+         return this.aB_();
+      }
 
-      a(eqq $$0) {
+      protected List<eoy> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
          this.a = $$0;
+         return this.aB_();
       }
 
-      public eof.a a(String $$0, String $$1, eof.c $$2) {
-         try {
-            this.b.add(new eof.b(eof.d.a($$0), eof.d.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
-         }
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aB_();
+      }
+   }
+
+   static class b extends eof.a<eof.b> {
+      private final eof.d c;
+
+      public b(eof.d $$0) {
+         this.c = $$0;
       }
 
-      public eof.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, eof.c.a);
-      }
-
-      protected eof.a a() {
+      protected eof.b g() {
          return this;
       }
 
       @Override
-      public eop b() {
-         return new eof(this.g(), this.a, this.b);
+      public eod b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
    }
 
-   static record b(eof.d b, eof.d c, eof.c d) {
-      public static final Codec<eof.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eof.d.a.fieldOf("source").forGetter(eof.b::a), eof.d.a.fieldOf("target").forGetter(eof.b::b), eof.c.d.fieldOf("op").forGetter(eof.b::c)
-               )
-               .apply($$0, eof.b::new)
-      );
-
-      public void a(Supplier<uj> $$0, uj $$1) {
-         try {
-            List<uj> $$2 = this.b.b().a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c.b(), $$2);
-            }
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      public eof.d a() {
-         return this.b;
-      }
-
-      public eof.d b() {
-         return this.c;
-      }
-
-      public eof.c c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements aye {
-      a("replace") {
-         @Override
-         public void a(uj $$0, em.g $$1, List<uj> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (uj)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(uj $$0, em.g $$1, List<uj> $$2) throws CommandSyntaxException {
-            List<uj> $$3 = $$1.a($$0, ts::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof ts) {
-                  $$2.forEach($$1xx -> ((ts)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(uj $$0, em.g $$1, List<uj> $$2) throws CommandSyntaxException {
-            List<uj> $$3 = $$1.a($$0, tm::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof tm) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof tm) {
-                        ((tm)$$1x).a((tm)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<eof.c> d = aye.a(eof.c::values);
-      private final String e;
-
-      public abstract void a(uj var1, em.g var2, List<uj> var3) throws CommandSyntaxException;
-
-      c(String $$0) {
-         this.e = $$0;
-      }
-
+   protected abstract class c implements eoc {
       @Override
-      public String c() {
-         return this.e;
+      public int a(float $$0) {
+         return Math.max(axm.d((float)eof.this.g + (float)eof.this.h * $$0), 0);
       }
    }
 
-   static record d(String b, em.g c) {
-      public static final Codec<eof.d> a = Codec.STRING.comapFlatMap($$0 -> {
-         try {
-            return DataResult.success(a($$0));
-         } catch (CommandSyntaxException var2) {
-            return DataResult.error(() -> "Failed to parse path " + $$0 + ": " + var2.getMessage());
-         }
-      }, eof.d::a);
-
-      public static eof.d a(String $$0) throws CommandSyntaxException {
-         em.g $$1 = new em().a(new StringReader($$0));
-         return new eof.d($$0, $$1);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public em.g b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   protected interface d {
+      eof build(int var1, int var2, List<eql> var3, List<eoy> var4);
    }
 }

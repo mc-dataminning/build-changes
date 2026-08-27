@@ -1,154 +1,220 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
-import com.mojang.serialization.Codec;
-import java.util.EnumMap;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
 
-public class coy extends cre implements cql {
-   private static final EnumMap<coy.a, UUID> j = ac.a(new EnumMap<>(coy.a.class), $$0 -> {
-      $$0.put(coy.a.d, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"));
-      $$0.put(coy.a.c, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"));
-      $$0.put(coy.a.b, UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"));
-      $$0.put(coy.a.a, UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"));
-      $$0.put(coy.a.e, UUID.fromString("C1C72771-8B8E-BA4A-ACE0-81A93C8928B2"));
-   });
-   public static final jx a = new jw() {
+public class coy extends cmw {
+   public static final int k = 0;
+   public static final int l = 1;
+   private static final int p = 2;
+   private static final int q = 29;
+   private static final int r = 29;
+   private static final int s = 38;
+   private final cnh t;
+   private final cno u = cno.a();
+   private final czg v;
+   private List<cvu<cwm>> w = Lists.newArrayList();
+   private crs x = crs.i;
+   long y;
+   final cos m;
+   final cos n;
+   Runnable z = () -> {
+   };
+   public final bny o = new boo(1) {
       @Override
-      protected crj a(ju $$0, crj $$1) {
-         return coy.a($$0, $$1) ? $$1 : super.a($$0, $$1);
+      public void e() {
+         super.e();
+         coy.this.a(this);
+         coy.this.z.run();
       }
    };
-   protected final coy.a b;
-   protected final il<coz> c;
-   private final Supplier<Multimap<il<brq>, brt>> k;
+   final com A = new com();
 
-   public static boolean a(ju $$0, crj $$1) {
-      ib $$2 = $$0.c().a($$0.d().c(ded.b));
-      List<bqo> $$3 = $$0.b().a(bqo.class, new erv($$2), bqa.f.and(new bqa.a($$1)));
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         bqo $$4 = $$3.get(0);
-         bqc $$5 = bqq.h($$1);
-         crj $$6 = $$1.a(1);
-         $$4.a($$5, $$6);
-         if ($$4 instanceof bqq) {
-            ((bqq)$$4).a($$5, 2.0F);
-            ((bqq)$$4).fS();
-         }
-
-         return true;
-      }
+   public coy(int $$0, cjz $$1) {
+      this($$0, $$1, cnh.a);
    }
 
-   public coy(il<coz> $$0, coy.a $$1, cre.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.b = $$1;
-      ded.a(this, a);
-      this.k = Suppliers.memoize(() -> {
-         int $$2x = $$0.a().a($$1);
-         float $$3 = $$0.a().f();
-         Builder<il<brq>, brt> $$4 = ImmutableMultimap.builder();
-         UUID $$5 = j.get($$1);
-         $$4.put(brv.a, new brt($$5, "Armor modifier", (double)$$2x, brt.a.a));
-         $$4.put(brv.b, new brt($$5, "Armor toughness", (double)$$3, brt.a.a));
-         float $$6 = $$0.a().g();
-         if ($$6 > 0.0F) {
-            $$4.put(brv.n, new brt($$5, "Armor knockback resistance", (double)$$6, brt.a.a));
+   public coy(int $$0, cjz $$1, final cnh $$2) {
+      super(cod.y, $$0);
+      this.t = $$2;
+      this.v = $$1.m.dM();
+      this.m = this.a(new cos(this.o, 0, 20, 33));
+      this.n = this.a(new cos(this.A, 1, 143, 33) {
+         @Override
+         public boolean a(crs $$0) {
+            return false;
          }
 
-         return $$4.build();
+         @Override
+         public void a(cka $$0, crs $$1) {
+            $$1.a($$0.dM(), $$0, $$1.G());
+            coy.this.A.a($$0, this.j());
+            crs $$2 = coy.this.m.a(1);
+            if (!$$2.d()) {
+               coy.this.p();
+            }
+
+            $$2.a(($$0x, $$1x) -> {
+               long $$2xxx = $$0x.Y();
+               if (coy.this.y != $$2xxx) {
+                  $$0x.a(null, $$1x, auo.zZ, aup.e, 1.0F, 1.0F);
+                  coy.this.y = $$2xxx;
+               }
+            });
+            super.a($$0, $$1);
+         }
+
+         private List<crs> j() {
+            return List.of(coy.this.m.g());
+         }
       });
+
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cos($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a(new cos($$1, $$5, 8 + $$5 * 18, 142));
+      }
+
+      this.a(this.u);
    }
 
-   public coy.a f() {
-      return this.b;
+   public int l() {
+      return this.u.b();
+   }
+
+   public List<cvu<cwm>> m() {
+      return this.w;
+   }
+
+   public int n() {
+      return this.w.size();
+   }
+
+   public boolean o() {
+      return this.m.h() && !this.w.isEmpty();
    }
 
    @Override
-   public int g() {
-      return this.c.a().b();
-   }
-
-   public il<coz> h() {
-      return this.c;
+   public boolean a(cka $$0) {
+      return a(this.t, $$0, dcj.oc);
    }
 
    @Override
-   public boolean a(crj $$0, crj $$1) {
-      return this.c.a().d().get().a($$1) || super.a($$0, $$1);
+   public boolean b(cka $$0, int $$1) {
+      if (this.e($$1)) {
+         this.u.a($$1);
+         this.p();
+      }
+
+      return true;
+   }
+
+   private boolean e(int $$0) {
+      return $$0 >= 0 && $$0 < this.w.size();
    }
 
    @Override
-   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
-      return this.a(this, $$0, $$1, $$2);
+   public void a(bny $$0) {
+      crs $$1 = this.m.g();
+      if (!$$1.a(this.x.f())) {
+         this.x = $$1.r();
+         this.a($$0, $$1);
+      }
+   }
+
+   private void a(bny $$0, crs $$1) {
+      this.w.clear();
+      this.u.a(-1);
+      this.n.f(crs.i);
+      if (!$$1.d()) {
+         this.w = this.v.r().b(cvx.f, $$0, this.v);
+      }
+   }
+
+   void p() {
+      if (!this.w.isEmpty() && this.e(this.u.b())) {
+         cvu<cwm> $$0 = this.w.get(this.u.b());
+         crs $$1 = $$0.b().a(this.o, this.v.H_());
+         if ($$1.a(this.v.J())) {
+            this.A.a($$0);
+            this.n.f($$1);
+         } else {
+            this.n.f(crs.i);
+         }
+      } else {
+         this.n.f(crs.i);
+      }
+
+      this.d();
    }
 
    @Override
-   public Multimap<il<brq>, brt> a(bqc $$0) {
-      return $$0 == this.b.a() ? this.k.get() : super.a($$0);
+   public cod<?> a() {
+      return cod.y;
    }
 
-   public int i() {
-      return this.c.a().a(this.b);
-   }
-
-   public float j() {
-      return this.c.a().f();
+   public void a(Runnable $$0) {
+      this.z = $$0;
    }
 
    @Override
-   public bqc k() {
-      return this.b.a();
+   public boolean a(crs $$0, cos $$1) {
+      return $$1.d != this.A && super.a($$0, $$1);
    }
 
    @Override
-   public il<aul> aq_() {
-      return this.h().a().c();
+   public crs a(cka $$0, int $$1) {
+      crs $$2 = crs.i;
+      cos $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         crs $$4 = $$3.g();
+         crn $$5 = $$4.f();
+         $$2 = $$4.r();
+         if ($$1 == 1) {
+            $$5.b($$4, $$0.dM(), $$0);
+            if (!this.a($$4, 2, 38, true)) {
+               return crs.i;
+            }
+
+            $$3.b($$4, $$2);
+         } else if ($$1 == 0) {
+            if (!this.a($$4, 2, 38, false)) {
+               return crs.i;
+            }
+         } else if (this.v.r().a(cvx.f, new boo($$4), this.v).isPresent()) {
+            if (!this.a($$4, 0, 1, false)) {
+               return crs.i;
+            }
+         } else if ($$1 >= 2 && $$1 < 29) {
+            if (!this.a($$4, 29, 38, false)) {
+               return crs.i;
+            }
+         } else if ($$1 >= 29 && $$1 < 38 && !this.a($$4, 2, 29, false)) {
+            return crs.i;
+         }
+
+         if ($$4.d()) {
+            $$3.e(crs.i);
+         }
+
+         $$3.b();
+         if ($$4.G() == $$2.G()) {
+            return crs.i;
+         }
+
+         $$3.a($$0, $$4);
+         this.d();
+      }
+
+      return $$2;
    }
 
-   public static enum a implements aye {
-      a(bqc.f, 11, "helmet"),
-      b(bqc.e, 16, "chestplate"),
-      c(bqc.d, 15, "leggings"),
-      d(bqc.c, 13, "boots"),
-      e(bqc.g, 16, "body");
-
-      public static final Codec<coy.a> f = aye.b(coy.a::values);
-      private final bqc g;
-      private final String h;
-      private final int i;
-
-      private a(bqc $$0, int $$1, String $$2) {
-         this.g = $$0;
-         this.h = $$2;
-         this.i = $$1;
-      }
-
-      public int a(int $$0) {
-         return this.i * $$0;
-      }
-
-      public bqc a() {
-         return this.g;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public boolean d() {
-         return this == a || this == b || this == c || this == d;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
+   @Override
+   public void b(cka $$0) {
+      super.b($$0);
+      this.A.b(1);
+      this.t.a(($$1, $$2) -> this.a($$0, this.o));
    }
 }

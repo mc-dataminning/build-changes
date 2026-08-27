@@ -1,44 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class de extends cx<de.a> {
-   @Override
-   public Codec<de.a> a() {
-      return de.a.a;
-   }
-
-   public void a(apt $$0, ccd $$1) {
-      enb $$2 = br.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
-   }
-
-   public static record a(Optional<bc> b, Optional<bc> c) implements cx.a {
-      public static final Codec<de.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(de.a::a), aws.a(br.b, "entity").forGetter(de.a::c)).apply($$0, de.a::new)
+public record de<T>(avt<T> a, boolean b) {
+   public static <T> Codec<de<T>> a(aju<? extends ja<T>> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(avt.a($$0).fieldOf("id").forGetter(de::a), Codec.BOOL.fieldOf("expected").forGetter(de::b)).apply($$1, de::new)
       );
+   }
 
-      public static an<de.a> b() {
-         return am.y.a(new de.a(Optional.empty(), Optional.empty()));
-      }
+   public static <T> de<T> a(avt<T> $$0) {
+      return new de<>($$0, true);
+   }
 
-      public static an<de.a> a(br.a $$0) {
-         return am.y.a(new de.a(Optional.empty(), Optional.of(br.a($$0))));
-      }
+   public static <T> de<T> b(avt<T> $$0) {
+      return new de<>($$0, false);
+   }
 
-      public boolean a(enb $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
-      }
-
-      @Override
-      public void a(bd $$0) {
-         cx.a.super.a($$0);
-         $$0.a(this.c, ".entity");
-      }
-
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
+   public boolean a(in<T> $$0) {
+      return $$0.a(this.a) == this.b;
    }
 }

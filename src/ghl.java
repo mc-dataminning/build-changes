@@ -1,11 +1,11 @@
-public class ghl extends ggo<ces, fsl<ces>> {
-   private static final ajt a = new ajt("textures/entity/sniffer/sniffer.png");
+public class ghl extends ggx<chl, fsi> {
+   private static final ajv a = new ajv("textures/entity/illager/ravager.png");
 
-   public ghl(gfi.a $$0) {
-      super($$0, new fsl<>($$0.a(ftl.bu)), 1.1F);
+   public ghl(gfr.a $$0) {
+      super($$0, new fsi($$0.a(ftu.bf)), 1.1F);
    }
 
-   public ajt a(ces $$0) {
+   public ajv a(chl $$0) {
       return a;
    }
 }

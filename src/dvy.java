@@ -1,119 +1,83 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-public interface dvy extends BiPredicate<czs, ib> {
-   Codec<dvy> b = kr.O.q().dispatch(dvy::a, dvz::codec);
-   dvy c = a(dca.a);
-   dvy d = a(dca.a, dca.G);
+public class dvy {
+   public static final MapCodec<dvy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(dvy::b),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dvy::c),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dvy::d),
+               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(dvy::new))
+   );
+   public static final dvy b = new dvy((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
 
-   dvz<?> a();
-
-   static dvy a(List<dvy> $$0) {
-      return new dvw($$0);
+   public dvy(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   static dvy a(dvy... $$0) {
-      return a(List.of($$0));
+   public static dvy a() {
+      return new dvy(f(), true, false);
    }
 
-   static dvy a(dvy $$0, dvy $$1) {
-      return a(List.of($$0, $$1));
+   private dvy(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   static dvy b(List<dvy> $$0) {
-      return new dvx($$0);
+   public long b() {
+      return this.c;
    }
 
-   static dvy b(dvy... $$0) {
-      return b(List.of($$0));
+   public boolean c() {
+      return this.d;
    }
 
-   static dvy b(dvy $$0, dvy $$1) {
-      return b(List.of($$0, $$1));
+   public boolean d() {
+      return this.e;
    }
 
-   static dvy a(jg $$0, List<dby> $$1) {
-      return new dwe($$0, ip.a(dby::r, $$1));
+   public boolean e() {
+      return this.f.isPresent();
    }
 
-   static dvy c(List<dby> $$0) {
-      return a(jg.g, $$0);
+   public dvy a(boolean $$0) {
+      return new dvy(this.c, this.d, $$0, this.f);
    }
 
-   static dvy a(jg $$0, dby... $$1) {
-      return a($$0, List.of($$1));
+   public dvy b(boolean $$0) {
+      return new dvy(this.c, $$0, this.e, this.f);
    }
 
-   static dvy a(dby... $$0) {
-      return a(jg.g, $$0);
+   public dvy a(OptionalLong $$0) {
+      return new dvy($$0.orElse(f()), this.d, this.e, this.f);
    }
 
-   static dvy a(jg $$0, avr<dby> $$1) {
-      return new dwd($$0, $$1);
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
+         }
+      }
    }
 
-   static dvy a(avr<dby> $$0) {
-      return a(jg.g, $$0);
-   }
-
-   static dvy b(jg $$0, List<ekr> $$1) {
-      return new dwf($$0, ip.a(ekr::k, $$1));
-   }
-
-   static dvy a(jg $$0, ekr... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static dvy a(ekr... $$0) {
-      return a(jg.g, $$0);
-   }
-
-   static dvy a(dvy $$0) {
-      return new dwg($$0);
-   }
-
-   static dvy a(jg $$0) {
-      return new dwh($$0);
-   }
-
-   static dvy b() {
-      return a(jg.g);
-   }
-
-   static dvy a(doz $$0, jg $$1) {
-      return new dwl($$1, $$0);
-   }
-
-   static dvy a(jg $$0, ih $$1) {
-      return new dwb($$0, $$1);
-   }
-
-   static dvy a(ih $$0) {
-      return a(jg.g, $$0);
-   }
-
-   static dvy b(jg $$0) {
-      return new dwi($$0);
-   }
-
-   static dvy c() {
-      return b(jg.g);
-   }
-
-   static dvy d() {
-      return c(jg.g);
-   }
-
-   static dvy c(jg $$0) {
-      return a($$0, ekt.a);
-   }
-
-   static dvy d(jg $$0) {
-      return new dwc($$0);
-   }
-
-   static dvy e() {
-      return dwk.a;
+   public static long f() {
+      return axt.a().g();
    }
 }

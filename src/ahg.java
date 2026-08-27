@@ -1,45 +1,29 @@
-public class ahg implements yn<afl> {
-   public static final ye<vg, ahg> a = yn.a(ahg::a, ahg::new);
-   private final erw b;
-   private final bnz c;
-   private final int d;
+public class ahg implements yp<afn> {
+   public static final yg<vi, ahg> a = yp.a(ahg::a, ahg::new);
+   private final boe b;
 
-   public ahg(bnz $$0, erw $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+   public ahg(boe $$0) {
+      this.b = $$0;
    }
 
-   private ahg(vg $$0) {
-      this.c = $$0.b(bnz.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private ahg(vi $$0) {
+      this.b = $$0.b(boe.class);
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.c);
+   private void a(vi $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
    }
 
    @Override
-   public yp<ahg> a() {
-      return afj.ca;
+   public yr<ahg> a() {
+      return afl.bY;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public bnz b() {
-      return this.c;
-   }
-
-   public erw e() {
+   public boe b() {
       return this.b;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

@@ -1,29 +1,14 @@
-public class yx implements yn<yt> {
-   public static final ye<vg, yx> a = yn.a(yx::a, yx::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public yx(int $$0) {
-      this.b = $$0;
-   }
-
-   private yx(vg $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vg $$0) {
-      $$0.p(this.b);
-   }
+public record yx(wi b) implements yp<yv> {
+   public static final yg<ByteBuf, yx> a = wk.f.a(yx::new, yx::b);
 
    @Override
-   public yp<yx> a() {
-      return zd.d;
+   public yr<yx> a() {
+      return zf.b;
    }
 
-   public void a(yt $$0) {
+   public void a(yv $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

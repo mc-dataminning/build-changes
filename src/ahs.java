@@ -1,20 +1,16 @@
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
-
-public record ahs(GameProfile b) implements yn<ahq> {
-   public static final ye<ByteBuf, ahs> a = yc.t.a(ahs::new, ahs::b);
-
+public interface ahs extends aau, vd {
    @Override
-   public yp<ahs> a() {
-      return ahw.b;
+   default vh b() {
+      return vh.d;
    }
 
-   public void a(ahq $$0) {
-      $$0.a(this);
-   }
+   void a(ahv var1);
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(ahu var1);
+
+   void a(ahx var1);
+
+   void a(ahw var1);
+
+   void a(aht var1);
 }

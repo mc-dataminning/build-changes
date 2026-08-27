@@ -1,105 +1,99 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dhi extends deb {
-   public static final MapCodec<dhi> b = b(dhi::new);
-   public static final dpq c = dpp.w;
+public class dhi extends dcq implements dck {
+   public static final MapCodec<dhi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aju.a(ku.az).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dhi::new)
+   );
+   protected static final float b = 3.0F;
+   protected static final etc c = dch.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final aju<dxr<?, ?>> d;
 
    @Override
    public MapCodec<dhi> a() {
-      return b;
+      return a;
    }
 
-   public dhi(doy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, ih.d).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(a, c);
+   public dhi(aju<dxr<?, ?>> $$0, dph.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   protected doz a(doz $$0, dik $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return c;
    }
 
    @Override
-   protected doz a(doz $$0, dgu $$1) {
-      return $$0.a($$1.a($$0.c(a)));
+   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
+
+         for (id $$6 : id.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
+         }
+
+         id $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.u($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.u($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
+      }
    }
 
    @Override
-   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
-      if ($$0.c(c)) {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+   protected boolean b(dpi $$0, cym $$1, id $$2) {
+      return $$0.i($$1, $$2);
+   }
+
+   @Override
+   protected boolean a(dpi $$0, czj $$1, id $$2) {
+      id $$3 = $$2.d();
+      dpi $$4 = $$1.a_($$3);
+      return $$4.a(ave.ba) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   }
+
+   public boolean a(apu $$0, id $$1, dpi $$2, axt $$3) {
+      Optional<? extends in<dxr<?, ?>>> $$4 = $$0.H_().d(ku.az).b(this.d);
+      if ($$4.isEmpty()) {
+         return false;
       } else {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-         $$1.a($$2, this, 2);
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
+            return false;
+         }
       }
-
-      this.a($$1, $$2, $$0);
    }
 
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      if ($$0.c(a) == $$1 && !$$0.c(c)) {
-         this.a($$3, $$4);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private void a(cyy $$0, ib $$1) {
-      if (!$$0.x_() && !$$0.O().a($$1, this)) {
-         $$0.a($$1, this, 2);
-      }
-   }
-
-   protected void a(cyx $$0, ib $$1, doz $$2) {
-      ih $$3 = $$2.c(a);
-      ib $$4 = $$1.a($$3.g());
-      $$0.a($$4, this, $$1);
-      $$0.a($$4, this, $$3);
-   }
-
-   @Override
-   protected boolean f_(doz $$0) {
+   public boolean b(czj $$0, id $$1, dpi $$2) {
       return true;
    }
 
    @Override
-   protected int b(doz $$0, cyd $$1, ib $$2, ih $$3) {
-      return $$0.b($$1, $$2, $$3);
+   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected int a(doz $$0, cyd $$1, ib $$2, ih $$3) {
-      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
-   }
-
-   @Override
-   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.x_() && $$0.c(c) && !$$1.O().a($$2, this)) {
-            doz $$5 = $$0.a(c, Boolean.valueOf(false));
-            $$1.a($$2, $$5, 18);
-            this.a($$1, $$2, $$5);
-         }
-      }
-   }
-
-   @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.B && $$0.c(c) && $$1.O().a($$2, this)) {
-            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
-         }
-      }
-   }
-
-   @Override
-   public doz a(cuo $$0) {
-      return this.n().a(a, $$0.d().g().g());
+   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

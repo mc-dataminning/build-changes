@@ -1,13 +1,16 @@
-public class gen extends ghj<cgj> {
-   private static final ajt a = new ajt("textures/entity/skeleton/bogged.png");
-   private static final ajt i = new ajt("textures/entity/skeleton/bogged_overlay.png");
+public class gen extends ggx<cdo, fpr> {
+   private static final ajv a = new ajv("textures/entity/allay/allay.png");
 
-   public gen(gfi.a $$0) {
-      super($$0, ftl.o, ftl.p, new fpt($$0.a(ftl.n)));
-      this.a(new gjx<>(this, $$0.f(), ftl.q, i));
+   public gen(gfr.a $$0) {
+      super($$0, new fpr($$0.a(ftu.a)), 0.4F);
+      this.a(new gjv<>(this, $$0.d()));
    }
 
-   public ajt a(cgj $$0) {
+   public ajv a(cdo $$0) {
       return a;
+   }
+
+   protected int a(cdo $$0, id $$1) {
+      return 15;
    }
 }

@@ -1,34 +1,22 @@
-public class fal extends fap {
-   private static final wg b = wg.c("mco.connect.connecting");
-   private final gri c;
-   private final exp d;
-   private final exq e;
+public enum fal {
+   a(0, efg.a),
+   b(1, efg.b),
+   c(2, efg.c),
+   d(3, efg.d);
 
-   public fal(fjo $$0, exp $$1, exq $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gri($$0);
+   private final int e;
+   private final wi f;
+
+   private fal(int $$0, aju<eff> $$1) {
+      this.e = $$0;
+      this.f = wi.c($$1.a().f("generator"));
    }
 
-   @Override
-   public void run() {
-      this.c.a(this.d, fvy.a(this.e.a));
+   public wi a() {
+      return this.f;
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      fbp.Q().ae().i();
-   }
-
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public wg a() {
-      return b;
+   public int b() {
+      return this.e;
    }
 }

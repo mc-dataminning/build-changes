@@ -4,11 +4,11 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 public record bi(cm.c b, cm.c c, cm.c d, cm.c e, cm.c f) {
    public static final Codec<bi> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               aws.a(cm.c.d, "x", cm.c.c).forGetter(bi::a),
-               aws.a(cm.c.d, "y", cm.c.c).forGetter(bi::b),
-               aws.a(cm.c.d, "z", cm.c.c).forGetter(bi::c),
-               aws.a(cm.c.d, "horizontal", cm.c.c).forGetter(bi::d),
-               aws.a(cm.c.d, "absolute", cm.c.c).forGetter(bi::e)
+               awu.a(cm.c.d, "x", cm.c.c).forGetter(bi::a),
+               awu.a(cm.c.d, "y", cm.c.c).forGetter(bi::b),
+               awu.a(cm.c.d, "z", cm.c.c).forGetter(bi::c),
+               awu.a(cm.c.d, "horizontal", cm.c.c).forGetter(bi::d),
+               awu.a(cm.c.d, "absolute", cm.c.c).forGetter(bi::e)
             )
             .apply($$0, bi::new)
    );
@@ -29,7 +29,7 @@ public record bi(cm.c b, cm.c c, cm.c d, cm.c e, cm.c f) {
       float $$6 = (float)($$0 - $$3);
       float $$7 = (float)($$1 - $$4);
       float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)axk.e($$6)) || !this.c.d((double)axk.e($$7)) || !this.d.d((double)axk.e($$8))) {
+      if (!this.b.d((double)axm.e($$6)) || !this.c.d((double)axm.e($$7)) || !this.d.d((double)axm.e($$8))) {
          return false;
       } else {
          return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));

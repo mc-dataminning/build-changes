@@ -1,140 +1,125 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import java.util.Optional;
 
-public class gaj {
-   private static final ajt a = new ajt("textures/misc/underwater.png");
+public class gaj implements gai {
+   private final gai.a a;
+   private final gai.a b = gai.a(new ewm(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public static void a(fbp $$0, ewi $$1) {
-      cjt $$2 = $$0.s;
-      if (!$$2.af) {
-         doz $$3 = a($$2);
-         if ($$3 != null) {
-            a($$0.ap().a().a($$3), $$1);
-         }
-      }
+   public gaj(gai.a $$0) {
+      this.a = $$0;
+   }
 
-      if (!$$0.s.N_()) {
-         if ($$0.s.a(avh.a)) {
-            b($$0, $$1);
-         }
-
-         if ($$0.s.bN()) {
-            c($$0, $$1);
+   @Override
+   public ewv getBuffer(gaq $$0) {
+      if ($$0.M()) {
+         ewv $$1 = this.b.getBuffer($$0);
+         return new gaj.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         ewv $$2 = this.a.getBuffer($$0);
+         Optional<gaq> $$3 = $$0.L();
+         if ($$3.isPresent()) {
+            ewv $$4 = this.b.getBuffer($$3.get());
+            gaj.a $$5 = new gaj.a($$4, this.c, this.d, this.e, this.f);
+            return ewy.a($$5, $$2);
+         } else {
+            return $$2;
          }
       }
    }
 
-   @Nullable
-   private static doz a(cjt $$0) {
-      ib.a $$1 = new ib.a();
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
 
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         double $$3 = $$0.dr() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dg() * 0.8F);
-         double $$4 = $$0.dv() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.eb());
-         double $$5 = $$0.dx() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dg() * 0.8F);
-         $$1.b($$3, $$4, $$5);
-         doz $$6 = $$0.dM().a_($$1);
-         if ($$6.l() != did.a && $$6.p($$0.dM(), $$1)) {
-            return $$6;
-         }
+   public void a() {
+      this.b.b();
+   }
+
+   static class a extends ewq {
+      private final ewv f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(ewv $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
       }
 
-      return null;
-   }
-
-   private static void a(glj $$0, ewi $$1) {
-      RenderSystem.setShaderTexture(0, $$0.i());
-      RenderSystem.setShader(fzs::s);
-      ewd $$2 = ewk.b().d();
-      float $$3 = 0.1F;
-      float $$4 = -1.0F;
-      float $$5 = 1.0F;
-      float $$6 = -1.0F;
-      float $$7 = 1.0F;
-      float $$8 = -0.5F;
-      float $$9 = $$0.c();
-      float $$10 = $$0.d();
-      float $$11 = $$0.g();
-      float $$12 = $$0.h();
-      Matrix4f $$13 = $$1.c().a();
-      $$2.a(ewn.b.h, ewg.r);
-      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
-      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
-      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
-      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
-      ewe.a($$2.d());
-   }
-
-   private static void b(fbp $$0, ewi $$1) {
-      RenderSystem.setShader(fzs::t);
-      RenderSystem.setShaderTexture(0, a);
-      ewd $$2 = ewk.b().d();
-      ib $$3 = ib.a($$0.s.dr(), $$0.s.dv(), $$0.s.dx());
-      float $$4 = fzy.a($$0.s.dM().D_(), $$0.s.dM().A($$3));
-      RenderSystem.enableBlend();
-      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
-      float $$5 = 4.0F;
-      float $$6 = -1.0F;
-      float $$7 = 1.0F;
-      float $$8 = -1.0F;
-      float $$9 = 1.0F;
-      float $$10 = -0.5F;
-      float $$11 = -$$0.s.dC() / 64.0F;
-      float $$12 = $$0.s.dE() / 64.0F;
-      Matrix4f $$13 = $$1.c().a();
-      $$2.a(ewn.b.h, ewg.q);
-      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
-      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
-      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
-      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
-      ewe.a($$2.d());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-   }
-
-   private static void c(fbp $$0, ewi $$1) {
-      ewd $$2 = ewk.b().d();
-      RenderSystem.setShader(fzs::s);
-      RenderSystem.depthFunc(519);
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      glj $$3 = gno.b.c();
-      RenderSystem.setShaderTexture(0, $$3.i());
-      float $$4 = $$3.c();
-      float $$5 = $$3.d();
-      float $$6 = ($$4 + $$5) / 2.0F;
-      float $$7 = $$3.g();
-      float $$8 = $$3.h();
-      float $$9 = ($$7 + $$8) / 2.0F;
-      float $$10 = $$3.k();
-      float $$11 = axk.i($$10, $$4, $$6);
-      float $$12 = axk.i($$10, $$5, $$6);
-      float $$13 = axk.i($$10, $$7, $$9);
-      float $$14 = axk.i($$10, $$8, $$9);
-      float $$15 = 1.0F;
-
-      for (int $$16 = 0; $$16 < 2; $$16++) {
-         $$1.a();
-         float $$17 = -0.5F;
-         float $$18 = 0.5F;
-         float $$19 = -0.5F;
-         float $$20 = 0.5F;
-         float $$21 = -0.5F;
-         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
-         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
-         Matrix4f $$22 = $$1.c().a();
-         $$2.a(ewn.b.h, ewg.r);
-         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
-         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
-         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
-         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
-         ewe.a($$2.d());
-         $$1.b();
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
       }
 
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.depthFunc(515);
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public ewv a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public ewv a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public ewv a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public ewv a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ewv b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ewv a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      }
    }
 }

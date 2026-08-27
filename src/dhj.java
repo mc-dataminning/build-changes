@@ -1,33 +1,22 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class dhj extends dky {
-   public static final MapCodec<dhj> b = b(dhj::new);
-   private static final Map<ih, est> e = Maps.immutableEnumMap(
-      Map.of(
-         ih.c,
-         dby.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         ih.d,
-         dby.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         ih.f,
-         dby.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         ih.e,
-         dby.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class dhj extends djx {
+   public static final MapCodec<dhj> a = b(dhj::new);
 
    @Override
    public MapCodec<dhj> a() {
-      return b;
+      return a;
    }
 
-   public dhj(doy.d $$0) {
-      super(diz.b.h, $$0);
+   public dhj(dph.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return e.get($$0.c(d));
+   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(kn.X, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
    }
 }

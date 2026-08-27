@@ -3,18 +3,18 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public record bm(Optional<il<cwq>> b, cm.d c) {
+public record bm(Optional<in<cwz>> b, cm.d c) {
    public static final Codec<bm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aws.a(kr.f.r(), "enchantment").forGetter(bm::a), aws.a(cm.d.d, "levels", cm.d.c).forGetter(bm::b)).apply($$0, bm::new)
+      $$0 -> $$0.group(awu.a(kt.f.r(), "enchantment").forGetter(bm::a), awu.a(cm.d.d, "levels", cm.d.c).forGetter(bm::b)).apply($$0, bm::new)
    );
 
-   public bm(cwq $$0, cm.d $$1) {
+   public bm(cwz $$0, cm.d $$1) {
       this(Optional.of($$0.k()), $$1);
    }
 
-   public boolean a(cwx $$0) {
+   public boolean a(cxg $$0) {
       if (this.b.isPresent()) {
-         cwq $$1 = this.b.get().a();
+         cwz $$1 = this.b.get().a();
          int $$2 = $$0.a($$1);
          if ($$2 == 0) {
             return false;
@@ -24,7 +24,7 @@ public record bm(Optional<il<cwq>> b, cm.d c) {
             return false;
          }
       } else if (this.c != cm.d.c) {
-         for (Entry<il<cwq>> $$3 : $$0.b()) {
+         for (Entry<in<cwz>> $$3 : $$0.b()) {
             if (this.c.d($$3.getIntValue())) {
                return true;
             }
@@ -36,7 +36,7 @@ public record bm(Optional<il<cwq>> b, cm.d c) {
       return true;
    }
 
-   public Optional<il<cwq>> a() {
+   public Optional<in<cwz>> a() {
       return this.b;
    }
 

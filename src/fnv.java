@@ -1,78 +1,84 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
-public class fnv {
-   private final fbp a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+public class fnv extends fnu<fvr.a> {
+   private static final int v = 120;
+   private static final wi w = wi.c("gui.chatReport.title");
+   private static final wi x = wi.c("gui.chatReport.select_chat");
+   private final fhp y = fhp.d().a(8);
+   private feq z;
+   private fdy A;
+   private fdy B;
+   private fdy C;
 
-   public fnv(fbp $$0, UserApiService $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   private fnv(fjx $$0, fvy $$1, fvr.a $$2) {
+      super(w, $$0, $$1, $$2);
    }
 
-   public void a(UUID $$0) {
-      this.b.add($$0);
+   public fnv(fjx $$0, fvy $$1, UUID $$2) {
+      this($$0, $$1, new fvr.a($$2, $$1.a().b()));
    }
 
-   public void b(UUID $$0) {
-      this.b.remove($$0);
+   public fnv(fjx $$0, fvy $$1, fvr $$2) {
+      this($$0, $$1, new fvr.a($$2, $$1.a().b()));
    }
 
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
+   @Override
+   protected void aM_() {
+      this.y.c().b();
+      this.y.a(new fff(this.i, this.m));
+      this.B = this.y.a(fdy.a(x, $$0x -> this.j.a(new fnx(this, this.s, this.u, $$0xx -> {
+            this.u = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.C = fdy.a(c, $$0x -> this.j.a(new foa(this, this.u.h(), $$0xx -> {
+            this.u.a($$0xx);
+            this.C();
+         }))).a(280).a();
+      this.y.a(fhh.a(this.m, this.C, b));
+      this.z = this.a(280, 9 * 8, $$0x -> {
+         this.u.a($$0x);
+         this.C();
+      });
+      this.y.a(fhh.a(this.m, this.z, d, $$0x -> $$0x.e(12)));
+      fhp $$0 = this.y.a(fhp.e().a(8));
+      $$0.a(fdy.a(wh.k, $$0x -> this.d()).a(120).a());
+      this.A = $$0.a(fdy.a(a, $$0x -> this.m()).a(120).a());
+      this.y.a($$1 -> {
+         fdw var10000 = this.c($$1);
+      });
+      this.c();
+      this.C();
    }
 
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
+   @Override
+   protected void c() {
+      this.y.a();
+      fhj.a(this.y, this.G());
    }
 
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
-   }
-
-   public void b() {
-      this.e = false;
-   }
-
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
+   private void C() {
+      IntSet $$0 = this.u.a();
+      if ($$0.isEmpty()) {
+         this.B.b(x);
       } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
+         this.B.b(wi.a("gui.chatReport.selected_chat", $$0.size()));
       }
-   }
 
-   public Set<UUID> c() {
-      return this.b;
-   }
-
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ac.e);
-   }
-
-   public void a(fus $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.y instanceof fnx $$2) {
-         $$2.a($$0);
+      fvw $$1 = this.u.h();
+      if ($$1 != null) {
+         this.C.b($$1.b());
+      } else {
+         this.C.b(c);
       }
+
+      fvu.b $$2 = this.u.c();
+      this.A.j = $$2 == null;
+      this.A.a(x.a($$2, fvu.b::a));
    }
 
-   public void f(UUID $$0) {
-      if (this.a.y instanceof fnx $$1) {
-         $$1.a($$0);
-      }
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.z.b($$0, $$1, $$2);
    }
 }

@@ -1,34 +1,48 @@
-public abstract class gkc<T extends bqo, M extends frr<T>> extends gjt<T, M> {
-   public gkc(ggj<T, M> $$0) {
-      super($$0);
+public abstract class gkc<T extends bqa, M extends fqv<T>> {
+   private final ghm<T, M> a;
+
+   public gkc(ghm<T, M> $$0) {
+      this.a = $$0;
    }
 
-   protected abstract int a(T var1);
-
-   protected abstract void a(ewi var1, fzz var2, int var3, bpv var4, float var5, float var6, float var7, float var8);
-
-   public void a(ewi $$0, fzz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      axr $$11 = axr.a((long)$$3.aj());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            ftm $$13 = this.c().a($$11);
-            ftm.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = axk.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = axk.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = axk.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
-         }
+   protected static <T extends bqt> void a(
+      fqv<T> $$0,
+      fqv<T> $$1,
+      ajv $$2,
+      ewr $$3,
+      gai $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.ce()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
       }
    }
+
+   protected static <T extends bqt> void a(fqv<T> $$0, ajv $$1, ewr $$2, gai $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      ewv $$9 = $$3.getBuffer(gaq.e($$1));
+      $$0.a($$2, $$9, $$4, ggs.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected ajv a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(ewr var1, gai var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

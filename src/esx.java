@@ -1,34 +1,53 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public record esx(String a, int b, @Nullable wg c, @Nullable xw d) {
-   public boolean a() {
-      return this.a.startsWith("#");
+public class esx extends AbstractDoubleList implements esv {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
+
+   protected esx(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public wg b() {
-      return (wg)(this.c != null ? this.c : wg.b(this.c()));
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
-   public wu a(xw $$0) {
-      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
+   @Override
+   public boolean a(esv.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
    }
 
-   public String c() {
-      return this.a;
+   private boolean b(esv.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
+      }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public int d() {
-      return this.b;
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
    }
 
-   @Nullable
-   public wg e() {
-      return this.c;
-   }
-
-   @Nullable
-   public xw f() {
-      return this.d;
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

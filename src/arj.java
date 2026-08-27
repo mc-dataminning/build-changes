@@ -1,151 +1,80 @@
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
 import java.io.IOException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class arj implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 20;
-   private final Path c;
-   private final bkb<arj.e> d;
-   private final bmt<Runnable> e = bmt.a(ac.h(), "download-queue");
+public class arj implements arq {
+   private final arq c;
+   private final List<arq> d;
 
-   public arj(Path $$0) throws IOException {
+   public arj(arq $$0, List<arq> $$1) {
       this.c = $$0;
-      v.c($$0);
-      this.d = bkb.a(arj.e.a, $$0.resolve("log.json"));
-      ari.a($$0, 20);
+      List<arq> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
-   private arj.b b(arj.a $$0, Map<UUID, arj.c> $$1) {
-      arj.b $$2 = new arj.b();
-      $$1.forEach(
-         ($$2x, $$3) -> {
-            Path $$4 = this.c.resolve($$2x.toString());
-            Path $$5 = null;
+   @Nullable
+   @Override
+   public asw<InputStream> a(String... $$0) {
+      return this.c.a($$0);
+   }
 
-            try {
-               $$5 = axb.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
-               $$2.a.put($$2x, $$5);
-            } catch (Exception var9) {
-               a.error("Failed to download {}", $$3.a, var9);
-               $$2.b.add($$2x);
-            }
-
-            try {
-               this.d
-                  .a(
-                     new arj.e(
-                        $$2x,
-                        $$3.a.toString(),
-                        Instant.now(),
-                        Optional.ofNullable($$3.b).map(HashCode::toString),
-                        $$5 != null ? this.a($$5) : Either.left("download_failed")
-                     )
-                  );
-            } catch (Exception var8) {
-               a.error("Failed to log download of {}", $$3.a, var8);
-            }
+   @Nullable
+   @Override
+   public asw<InputStream> a(ars $$0, ajv $$1) {
+      for (arq $$2 : this.d) {
+         asw<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
          }
-      );
-      return $$2;
-   }
-
-   private Either<String, arj.d> a(Path $$0) {
-      try {
-         long $$1 = Files.size($$0);
-         Path $$2 = this.c.relativize($$0);
-         return Either.right(new arj.d($$2.toString(), $$1));
-      } catch (IOException var5) {
-         a.error("Failed to get file size of {}", $$0, var5);
-         return Either.left("no_access");
       }
-   }
 
-   public CompletableFuture<arj.b> a(arj.a $$0, Map<UUID, arj.c> $$1) {
-      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a);
+      return null;
    }
 
    @Override
-   public void close() throws IOException {
-      this.e.close();
-      this.d.close();
+   public void a(ars $$0, String $$1, String $$2, arq.a $$3) {
+      Map<ajv, asw<InputStream>> $$4 = new HashMap<>();
+
+      for (arq $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
+      }
+
+      $$4.forEach($$3);
    }
 
-   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, axb.a e) {
+   @Override
+   public Set<String> a(ars $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (arq $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public static record b(Map<UUID, Path> a, Set<UUID> b) {
-
-      public b() {
-         this(new HashMap<>(), new HashSet<>());
-      }
+   @Nullable
+   @Override
+   public <T> T a(asd<T> $$0) throws IOException {
+      return this.c.a($$0);
    }
 
-   public static record c(URL a, @Nullable HashCode b) {
+   @Override
+   public arp a() {
+      return this.c.a();
    }
 
-   static record d(String b, long c) {
-      public static final Codec<arj.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(arj.d::a), Codec.LONG.fieldOf("size").forGetter(arj.d::b)).apply($$0, arj.d::new)
-      );
-
-      public String a() {
-         return this.b;
-      }
-
-      public long b() {
-         return this.c;
-      }
-   }
-
-   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, arj.d> f) {
-      public static final Codec<arj.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jf.d.fieldOf("id").forGetter(arj.e::a),
-                  Codec.STRING.fieldOf("url").forGetter(arj.e::b),
-                  aws.m.fieldOf("time").forGetter(arj.e::c),
-                  Codec.STRING.optionalFieldOf("hash").forGetter(arj.e::d),
-                  Codec.mapEither(Codec.STRING.fieldOf("error"), arj.d.a.fieldOf("file")).forGetter(arj.e::e)
-               )
-               .apply($$0, arj.e::new)
-      );
-
-      public UUID a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public Instant c() {
-         return this.d;
-      }
-
-      public Optional<String> d() {
-         return this.e;
-      }
-
-      public Either<String, arj.d> e() {
-         return this.f;
-      }
+   @Override
+   public void close() {
+      this.d.forEach(arq::close);
    }
 }

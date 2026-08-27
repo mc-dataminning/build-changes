@@ -1,70 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class enq extends enn {
-   public static final Codec<enq> a = a(enq::new);
+public class enq {
+   private final apu a;
+   private final Map<epu<?>, Object> b;
+   private final Map<ajv, enq.b> c;
+   private final float d;
 
-   enq(List<enu> $$0, List<eqc> $$1) {
-      super($$0, $$1);
+   public enq(apu $$0, Map<epu<?>, Object> $$1, Map<ajv, enq.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public env a() {
-      return ens.i;
+   public apu a() {
+      return this.a;
    }
 
-   @Override
-   protected enm a(List<? extends enm> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (enm)$$0.get(0);
-         case 2 -> {
-            enm $$1 = $$0.get(0);
-            enm $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (enm $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public boolean a(epu<?> $$0) {
+      return this.b.containsKey($$0);
    }
 
-   public static enq.a a(enu.a<?>... $$0) {
-      return new enq.a($$0);
+   public <T> T b(epu<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
    }
 
-   public static class a extends enu.a<enq.a> {
-      private final Builder<enu> a = ImmutableList.builder();
+   @Nullable
+   public <T> T c(epu<T> $$0) {
+      return (T)this.b.get($$0);
+   }
 
-      public a(enu.a<?>... $$0) {
-         for (enu.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
+   @Nullable
+   public <T> T d(epu<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(ajv $$0, Consumer<crs> $$1) {
+      enq.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final apu a;
+      private final Map<epu<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<ajv, enq.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(apu $$0) {
+         this.a = $$0;
       }
 
-      protected enq.a a() {
+      public apu a() {
+         return this.a;
+      }
+
+      public <T> enq.a a(epu<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
          return this;
       }
 
-      @Override
-      public enq.a b(enu.a<?> $$0) {
-         this.a.add($$0.b());
+      public <T> enq.a b(epu<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
          return this;
       }
 
-      @Override
-      public enu b() {
-         return new enq(this.a.build(), this.f());
+      public <T> T a(epu<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
       }
+
+      @Nullable
+      public <T> T b(epu<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public enq.a a(ajv $$0, enq.b $$1) {
+         enq.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public enq.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public enq a(epv $$0) {
+         Set<epu<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<epu<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new enq(this.a, this.b, this.c, this.d);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<crs> var1);
    }
 }

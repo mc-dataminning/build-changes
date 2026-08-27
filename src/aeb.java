@@ -1,45 +1,29 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class aeb implements yp<aba> {
+   public static final yg<vi, aeb> a = yp.a(aeb::a, aeb::new);
+   private final int b;
 
-public class aeb implements yn<aay> {
-   public static final ye<vg, aeb> a = yn.a(aeb::a, aeb::new);
-   private final esv b;
-   private final String c;
-
-   public aeb(esv $$0, @Nullable esw $$1) {
+   public aeb(int $$0) {
       this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
    }
 
-   private aeb(vg $$0) {
-      this.b = $$0.a(esv.u);
-      this.c = $$0.p();
+   private aeb(vi $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vg $$0) {
-      $$0.a(esv::a, this.b);
-      $$0.a(this.c);
+   private void a(vi $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yp<aeb> a() {
-      return afj.aB;
+   public yr<aeb> a() {
+      return afl.az;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public esv b() {
+   public int b() {
       return this.b;
-   }
-
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

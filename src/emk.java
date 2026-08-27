@@ -1,184 +1,140 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-public class emk implements emw {
-   private final emx a;
-   private final emw b;
+public record emk(emk.a b, byte c, byte d, byte e, Optional<wi> f) {
+   public static final yg<vt, emk> a = yg.a(emk.a.K, emk::c, ye.c, emk::d, ye.c, emk::e, ye.c, emk::f, wk.c, emk::g, emk::new);
 
-   public emk(emx $$0, emw $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public emk(emk.a b, byte c, byte d, byte e, Optional<wi> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   @Override
-   public ib a() {
-      return this.b.a();
-   }
-
-   @Override
-   public float b() {
+   public byte a() {
       return this.b.b();
    }
 
-   @Override
-   public long c() {
-      return this.b.c();
+   public boolean b() {
+      return this.b.e();
    }
 
-   @Override
-   public long d() {
-      return this.b.d();
+   public emk.a c() {
+      return this.b;
    }
 
-   @Override
-   public String e() {
-      return this.a.e();
+   public byte d() {
+      return this.c;
    }
 
-   @Override
-   public int f() {
-      return this.b.f();
+   public byte e() {
+      return this.d;
    }
 
-   @Override
-   public void a(int $$0) {
+   public byte f() {
+      return this.e;
    }
 
-   @Override
-   public boolean g() {
-      return this.b.g();
+   public Optional<wi> g() {
+      return this.f;
    }
 
-   @Override
-   public int h() {
-      return this.b.h();
-   }
+   public static enum a implements ayg {
+      a(0, "player", false, true),
+      b(1, "frame", true, true),
+      c(2, "red_marker", false, true),
+      d(3, "blue_marker", false, true),
+      e(4, "target_x", true, false),
+      f(5, "target_point", true, false),
+      g(6, "player_off_map", false, true),
+      h(7, "player_off_limits", false, true),
+      i(8, "mansion", true, 5393476, false, true),
+      j(9, "monument", true, 3830373, false, true),
+      k(10, "banner_white", true, true),
+      l(11, "banner_orange", true, true),
+      m(12, "banner_magenta", true, true),
+      n(13, "banner_light_blue", true, true),
+      o(14, "banner_yellow", true, true),
+      p(15, "banner_lime", true, true),
+      q(16, "banner_pink", true, true),
+      r(17, "banner_gray", true, true),
+      s(18, "banner_light_gray", true, true),
+      t(19, "banner_cyan", true, true),
+      u(20, "banner_purple", true, true),
+      v(21, "banner_blue", true, true),
+      w(22, "banner_brown", true, true),
+      x(23, "banner_green", true, true),
+      y(24, "banner_red", true, true),
+      z(25, "banner_black", true, true),
+      A(26, "red_x", true, false),
+      B(27, "village_desert", true, elf.w.ak, false, true),
+      C(28, "village_plains", true, elf.w.ak, false, true),
+      D(29, "village_savanna", true, elf.w.ak, false, true),
+      E(30, "village_snowy", true, elf.w.ak, false, true),
+      F(31, "village_taiga", true, elf.w.ak, false, true),
+      G(32, "jungle_temple", true, elf.w.ak, false, true),
+      H(33, "swamp_hut", true, elf.w.ak, false, true);
 
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
+      public static final IntFunction<emk.a> I = awd.a(emk.a::a, values(), awd.a.a);
+      public static final Codec<emk.a> J = ayg.a(emk.a::values);
+      public static final yg<ByteBuf, emk.a> K = ye.a(I, emk.a::a);
+      private final int L;
+      private final String M;
+      private final byte N;
+      private final boolean O;
+      private final int P;
+      private final boolean Q;
+      private final boolean R;
 
-   @Override
-   public int j() {
-      return this.b.j();
-   }
+      private a(int $$0, String $$1, boolean $$2, boolean $$3) {
+         this($$0, $$1, $$2, -1, $$3, false);
+      }
 
-   @Override
-   public cyu k() {
-      return this.a.k();
-   }
+      private a(int $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
+         this.L = $$0;
+         this.M = $$1;
+         this.R = $$4;
+         this.N = (byte)this.ordinal();
+         this.O = $$2;
+         this.P = $$3;
+         this.Q = $$5;
+      }
 
-   @Override
-   public void a(long $$0) {
-   }
+      public int a() {
+         return this.L;
+      }
 
-   @Override
-   public void b(long $$0) {
-   }
+      public byte b() {
+         return this.N;
+      }
 
-   @Override
-   public void a(ib $$0, float $$1) {
-   }
+      public boolean d() {
+         return this.Q;
+      }
 
-   @Override
-   public void a(boolean $$0) {
-   }
+      public boolean e() {
+         return this.O;
+      }
 
-   @Override
-   public void b(int $$0) {
-   }
+      public boolean f() {
+         return this.P >= 0;
+      }
 
-   @Override
-   public void b(boolean $$0) {
-   }
+      public int g() {
+         return this.P;
+      }
 
-   @Override
-   public void c(int $$0) {
-   }
+      public boolean h() {
+         return this.R;
+      }
 
-   @Override
-   public void a(cyu $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public cyt o() {
-      return this.a.o();
-   }
-
-   @Override
-   public dqq.c p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(dqq.c $$0) {
-   }
-
-   @Override
-   public bnx q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public ern<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, cyz $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+      @Override
+      public String c() {
+         return this.M;
+      }
    }
 }

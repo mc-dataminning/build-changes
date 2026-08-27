@@ -1,17 +1,48 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eca {
-   public static final Codec<eca> a = kr.V.q().dispatch(eca::a, ecb::a);
+public class eca extends ebu {
+   public static final Codec<eca> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bnk.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, eca::new)
+   );
+   private final bnk b;
 
-   public static ecj a(doz $$0) {
-      return new ecj($$0);
+   public eca(bnk $$0, bnk $$1, bnk $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public static ecj a(dby $$0) {
-      return new ecj($$0.n());
+   @Override
+   protected ebv<?> a() {
+      return ebv.b;
    }
 
-   protected abstract ecb<?> a();
+   @Override
+   protected void a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, int $$4, ebu.a $$5, int $$6, int $$7, int $$8) {
+      id $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
 
-   public abstract doz a(axr var1, ib var2);
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
+      }
+   }
+
+   @Override
+   public int a(axt $$0, int $$1, ebe $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(axt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   }
 }

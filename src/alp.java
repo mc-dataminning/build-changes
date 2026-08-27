@@ -1,34 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class alp {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wg.b("commands.difficulty.failure", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wi.b("Target not reached"));
 
-   public static void a(CommandDispatcher<du> $$0) {
-      LiteralArgumentBuilder<du> $$1 = dv.a("difficulty");
-
-      for (bnx $$2 : bnx.values()) {
-         $$1.then(dv.a($$2.e()).executes($$1x -> a((du)$$1x.getSource(), $$2)));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         bnx $$1x = ((du)$$0x.getSource()).e().ak();
-         ((du)$$0x.getSource()).a(() -> wg.a("commands.difficulty.query", $$1x.b()), false);
-         return $$1x.a();
-      }));
+   public static void a(CommandDispatcher<dv> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(dw.a("to", fq.a()).executes($$0x -> a((dv)$$0x.getSource(), fq.a($$0x, "to"))))
+      );
    }
 
-   public static int a(du $$0, bnx $$1) throws CommandSyntaxException {
-      MinecraftServer $$2 = $$0.l();
-      if ($$2.bc().q() == $$1) {
-         throw a.create($$1.e());
+   private static int a(dv $$0, id $$1) throws CommandSyntaxException {
+      if (!($$0.f() instanceof bqv $$3)) {
+         throw a.create();
       } else {
-         $$2.a($$1, true);
-         $$0.a(() -> wg.a("commands.difficulty.success", $$1.b()), true);
-         return 0;
+         cae $$4 = new cad($$3, $$0.e());
+         elp $$5 = $$4.a($$1, 0);
+         afk.a($$0.e(), $$3, $$5, $$4.q());
+         if ($$5 == null) {
+            throw b.create();
+         } else if (!$$5.j()) {
+            throw c.create();
+         } else {
+            $$0.a(() -> wi.b("Made path"), true);
+            return 1;
+         }
       }
    }
 }

@@ -1,42 +1,29 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class epi extends eoo {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<epi> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, epi::new));
+public class epi extends eox {
+   public static final Codec<epi> a = RecordCodecBuilder.create($$0 -> a($$0).and(um.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, epi::new));
+   private final to b;
 
-   private epi(List<eqc> $$0) {
+   private epi(List<eql> $$0, to $$1) {
       super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public eoq b() {
-      return eor.i;
+   public eoz b() {
+      return epa.g;
    }
 
    @Override
-   public crj a(crj $$0, enb $$1) {
-      if ($$0.d()) {
-         return $$0;
-      } else {
-         Optional<cvl<cvy>> $$2 = $$1.d().r().a(cvo.b, new boj($$0), $$1.d());
-         if ($$2.isPresent()) {
-            crj $$3 = $$2.get().b().a($$1.d().H_());
-            if (!$$3.d()) {
-               return $$3.c($$0.G());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+   public crs a(crs $$0, enk $$1) {
+      cuc.a(jr.a, $$0, $$0x -> $$0x.a(this.b));
+      return $$0;
    }
 
-   public static eoo.a<?> c() {
-      return a(epi::new);
+   @Deprecated
+   public static eox.a<?> a(to $$0) {
+      return a($$1 -> new epi($$1, $$0));
    }
 }

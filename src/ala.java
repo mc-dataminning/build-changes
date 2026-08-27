@@ -1,59 +1,336 @@
-import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import javax.annotation.Nullable;
 
 public class ala {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("commands.banip.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> (wi)$$0);
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> wi.a("commands.advancement.criterionNotFound", $$0, $$1)
+   );
+   private static final SuggestionProvider<dv> c = ($$0, $$1) -> {
+      Collection<af> $$2 = ((dv)$$0.getSource()).l().aE().b();
+      return ea.a($$2.stream().map(af::a), $$1);
+   };
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<dv> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ban-ip").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("advancement").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dw.a("grant")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dw.a("targets", ei.d())
+                                       .then(
+                                          dw.a("only")
+                                             .then(
+                                                ((RequiredArgumentBuilder)dw.a("advancement", ew.a())
+                                                      .suggests(c)
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (dv)$$0x.getSource(),
+                                                               ei.f($$0x, "targets"),
+                                                               ala.a.a,
+                                                               a($$0x, ew.a($$0x, "advancement"), ala.b.a)
+                                                            )
+                                                      ))
+                                                   .then(
+                                                      dw.a("criterion", StringArgumentType.greedyString())
+                                                         .suggests(($$0x, $$1) -> ea.b(ew.a($$0x, "advancement").b().e().keySet(), $$1))
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (dv)$$0x.getSource(),
+                                                                  ei.f($$0x, "targets"),
+                                                                  ala.a.a,
+                                                                  ew.a($$0x, "advancement"),
+                                                                  StringArgumentType.getString($$0x, "criterion")
+                                                               )
+                                                         )
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       dw.a("from")
+                                          .then(
+                                             dw.a("advancement", ew.a())
+                                                .suggests(c)
+                                                .executes(
+                                                   $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), ala.a.a, a($$0x, ew.a($$0x, "advancement"), ala.b.c))
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    dw.a("until")
+                                       .then(
+                                          dw.a("advancement", ew.a())
+                                             .suggests(c)
+                                             .executes(
+                                                $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), ala.a.a, a($$0x, ew.a($$0x, "advancement"), ala.b.d))
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dw.a("through")
+                                    .then(
+                                       dw.a("advancement", ew.a())
+                                          .suggests(c)
+                                          .executes(
+                                             $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), ala.a.a, a($$0x, ew.a($$0x, "advancement"), ala.b.b))
+                                          )
+                                    )
+                              ))
+                           .then(
+                              dw.a("everything").executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), ala.a.a, ((dv)$$0x.getSource()).l().aE().b()))
+                           )
+                     )
+               ))
             .then(
-               ((RequiredArgumentBuilder)dv.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(dv.a("reason", el.a()).executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), el.a($$0x, "reason"))))
+               dw.a("revoke")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dw.a("targets", ei.d())
+                                    .then(
+                                       dw.a("only")
+                                          .then(
+                                             ((RequiredArgumentBuilder)dw.a("advancement", ew.a())
+                                                   .suggests(c)
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (dv)$$0x.getSource(), ei.f($$0x, "targets"), ala.a.b, a($$0x, ew.a($$0x, "advancement"), ala.b.a)
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dw.a("criterion", StringArgumentType.greedyString())
+                                                      .suggests(($$0x, $$1) -> ea.b(ew.a($$0x, "advancement").b().e().keySet(), $$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (dv)$$0x.getSource(),
+                                                               ei.f($$0x, "targets"),
+                                                               ala.a.b,
+                                                               ew.a($$0x, "advancement"),
+                                                               StringArgumentType.getString($$0x, "criterion")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    dw.a("from")
+                                       .then(
+                                          dw.a("advancement", ew.a())
+                                             .suggests(c)
+                                             .executes(
+                                                $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), ala.a.b, a($$0x, ew.a($$0x, "advancement"), ala.b.c))
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dw.a("until")
+                                    .then(
+                                       dw.a("advancement", ew.a())
+                                          .suggests(c)
+                                          .executes(
+                                             $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), ala.a.b, a($$0x, ew.a($$0x, "advancement"), ala.b.d))
+                                          )
+                                    )
+                              ))
+                           .then(
+                              dw.a("through")
+                                 .then(
+                                    dw.a("advancement", ew.a())
+                                       .suggests(c)
+                                       .executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), ala.a.b, a($$0x, ew.a($$0x, "advancement"), ala.b.b)))
+                                 )
+                           ))
+                        .then(dw.a("everything").executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), ala.a.b, ((dv)$$0x.getSource()).l().aE().b())))
+                  )
             )
       );
    }
 
-   private static int a(du $$0, String $$1, @Nullable wg $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
-      } else {
-         apt $$3 = $$0.l().ah().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.A(), $$2);
+   private static int a(dv $$0, Collection<apv> $$1, ala.a $$2, Collection<af> $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (apv $$5 : $$1) {
+         $$4 += $$2.a($$5, $$3);
+      }
+
+      if ($$4 == 0) {
+         if ($$3.size() == 1) {
+            if ($$1.size() == 1) {
+               throw a.create(wi.a($$2.a() + ".one.to.one.failure", ae.a($$3.iterator().next()), $$1.iterator().next().O_()));
+            } else {
+               throw a.create(wi.a($$2.a() + ".one.to.many.failure", ae.a($$3.iterator().next()), $$1.size()));
+            }
+         } else if ($$1.size() == 1) {
+            throw a.create(wi.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().O_()));
          } else {
-            throw a.create();
+            throw a.create(wi.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
+         }
+      } else {
+         if ($$3.size() == 1) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wi.a($$2.a() + ".one.to.one.success", ae.a($$3.iterator().next()), $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> wi.a($$2.a() + ".one.to.many.success", ae.a($$3.iterator().next()), $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> wi.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wi.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
+         }
+
+         return $$4;
+      }
+   }
+
+   private static int a(dv $$0, Collection<apv> $$1, ala.a $$2, af $$3, String $$4) throws CommandSyntaxException {
+      int $$5 = 0;
+      ae $$6 = $$3.b();
+      if (!$$6.e().containsKey($$4)) {
+         throw b.create(ae.a($$3), $$4);
+      } else {
+         for (apv $$7 : $$1) {
+            if ($$2.a($$7, $$3, $$4)) {
+               $$5++;
+            }
+         }
+
+         if ($$5 == 0) {
+            if ($$1.size() == 1) {
+               throw a.create(wi.a($$2.a() + ".criterion.to.one.failure", $$4, ae.a($$3), $$1.iterator().next().O_()));
+            } else {
+               throw a.create(wi.a($$2.a() + ".criterion.to.many.failure", $$4, ae.a($$3), $$1.size()));
+            }
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wi.a($$2.a() + ".criterion.to.one.success", $$4, ae.a($$3), $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> wi.a($$2.a() + ".criterion.to.many.success", $$4, ae.a($$3), $$1.size()), true);
+            }
+
+            return $$5;
          }
       }
    }
 
-   private static int b(du $$0, String $$1, @Nullable wg $$2) throws CommandSyntaxException {
-      atm $$3 = $$0.l().ah().g();
-      if ($$3.a($$1)) {
-         throw b.create();
+   private static List<af> a(CommandContext<dv> $$0, af $$1, ala.b $$2) {
+      ak $$3 = ((dv)$$0.getSource()).l().aE().a();
+      ag $$4 = $$3.a($$1);
+      if ($$4 == null) {
+         return List.of($$1);
       } else {
-         List<apt> $$4 = $$0.l().ah().b($$1);
-         atn $$5 = new atn($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> wg.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> wg.a("commands.banip.info", $$4.size(), gi.a($$4)), true);
+         List<af> $$5 = new ArrayList<>();
+         if ($$2.f) {
+            for (ag $$6 = $$4.c(); $$6 != null; $$6 = $$6.c()) {
+               $$5.add($$6.b());
+            }
          }
 
-         for (apt $$6 : $$4) {
-            $$6.d.b(wg.c("multiplayer.disconnect.ip_banned"));
+         $$5.add($$1);
+         if ($$2.g) {
+            a($$4, $$5);
          }
 
-         return $$4.size();
+         return $$5;
+      }
+   }
+
+   private static void a(ag $$0, List<af> $$1) {
+      for (ag $$2 : $$0.e()) {
+         $$1.add($$2.b());
+         a($$2, $$1);
+      }
+   }
+
+   static enum a {
+      a("grant") {
+         @Override
+         protected boolean a(apv $$0, af $$1) {
+            ah $$2 = $$0.Q().b($$1);
+            if ($$2.a()) {
+               return false;
+            } else {
+               for (String $$3 : $$2.e()) {
+                  $$0.Q().a($$1, $$3);
+               }
+
+               return true;
+            }
+         }
+
+         @Override
+         protected boolean a(apv $$0, af $$1, String $$2) {
+            return $$0.Q().a($$1, $$2);
+         }
+      },
+      b("revoke") {
+         @Override
+         protected boolean a(apv $$0, af $$1) {
+            ah $$2 = $$0.Q().b($$1);
+            if (!$$2.b()) {
+               return false;
+            } else {
+               for (String $$3 : $$2.f()) {
+                  $$0.Q().b($$1, $$3);
+               }
+
+               return true;
+            }
+         }
+
+         @Override
+         protected boolean a(apv $$0, af $$1, String $$2) {
+            return $$0.Q().b($$1, $$2);
+         }
+      };
+
+      private final String c;
+
+      a(String $$0) {
+         this.c = "commands.advancement." + $$0;
+      }
+
+      public int a(apv $$0, Iterable<af> $$1) {
+         int $$2 = 0;
+
+         for (af $$3 : $$1) {
+            if (this.a($$0, $$3)) {
+               $$2++;
+            }
+         }
+
+         return $$2;
+      }
+
+      protected abstract boolean a(apv var1, af var2);
+
+      protected abstract boolean a(apv var1, af var2, String var3);
+
+      protected String a() {
+         return this.c;
+      }
+   }
+
+   static enum b {
+      a(false, false),
+      b(true, true),
+      c(false, true),
+      d(true, false),
+      e(true, true);
+
+      final boolean f;
+      final boolean g;
+
+      private b(boolean $$0, boolean $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
    }
 }

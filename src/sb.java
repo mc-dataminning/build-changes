@@ -1,35 +1,28 @@
-import javax.annotation.Nullable;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class sb extends sa {
-   private final ib a;
-   private final ib b;
-   private final long c;
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sb {
+   int a() default 100;
 
-   public sb(String $$0, ib $$1, ib $$2, long $$3) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-   }
+   String b() default "defaultBatch";
 
-   @Override
-   public String getMessage() {
-      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
-      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
-   }
+   boolean c() default false;
 
-   @Nullable
-   public String a() {
-      return super.getMessage();
-   }
+   int d() default 0;
 
-   @Nullable
-   public ib b() {
-      return this.b;
-   }
+   boolean e() default true;
 
-   @Nullable
-   public ib c() {
-      return this.a;
-   }
+   boolean f() default false;
+
+   String g() default "";
+
+   long h() default 0L;
+
+   int i() default 1;
+
+   int j() default 1;
 }

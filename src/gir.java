@@ -1,13 +1,28 @@
-public class gir extends gjt<chv, fpv<chv>> {
-   private static final gah a = gah.q(new ajt("textures/entity/breeze/breeze_eyes.png"));
+public class gir extends ggx<cfy, ftl<cfy>> {
+   private static final ajv a = new ajv("textures/entity/wither/wither_invulnerable.png");
+   private static final ajv i = new ajv("textures/entity/wither/wither.png");
 
-   public gir(ghd<chv, fpv<chv>> $$0) {
-      super($$0);
+   public gir(gfr.a $$0) {
+      super($$0, new ftl<>($$0.a(ftu.bV)), 1.0F);
+      this.a(new gkq(this, $$0.f()));
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, chv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ewm $$10 = $$1.getBuffer(a);
-      fpv<chv> $$11 = this.c();
-      geo.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected int a(cfy $$0, id $$1) {
+      return 15;
+   }
+
+   public ajv a(cfy $$0) {
+      int $$1 = $$0.y();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(cfy $$0, ewr $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.y();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

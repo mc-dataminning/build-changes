@@ -1,21 +1,23 @@
-public record aev(wg b, boolean c) implements yn<aay> {
-   public static final ye<vr, aev> a = ye.a(wi.d, aev::b, yc.b, aev::e, aev::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public yp<aev> a() {
-      return afj.aV;
+public class aev implements yp<aba> {
+   public static final aev a = new aev();
+   public static final yg<ByteBuf, aev> b = yg.a(a);
+
+   private aev() {
    }
 
-   public void a(aay $$0) {
+   @Override
+   public yr<aev> a() {
+      return afl.aT;
+   }
+
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
    @Override
-   public boolean c() {
+   public boolean d() {
       return true;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

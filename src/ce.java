@@ -14,11 +14,11 @@ public class ce extends cx<ce.a> {
       return ce.a.a;
    }
 
-   public void a(apt $$0, Collection<bpv> $$1) {
-      List<enb> $$2 = Lists.newArrayList();
-      Set<bqb<?>> $$3 = Sets.newHashSet();
+   public void a(apv $$0, Collection<bqa> $$1) {
+      List<enk> $$2 = Lists.newArrayList();
+      Set<bqg<?>> $$3 = Sets.newHashSet();
 
-      for (bpv $$4 : $$1) {
+      for (bqa $$4 : $$1) {
          $$3.add($$4.ai());
          $$2.add(br.b($$0, $$4));
       }
@@ -29,9 +29,9 @@ public class ce extends cx<ce.a> {
    public static record a(Optional<bc> b, List<bc> c, cm.d d) implements cx.a {
       public static final Codec<ce.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  aws.a(br.b, "player").forGetter(ce.a::a),
-                  aws.a(br.b.listOf(), "victims", List.of()).forGetter(ce.a::b),
-                  aws.a(cm.d.d, "unique_entity_types", cm.d.c).forGetter(ce.a::c)
+                  awu.a(br.b, "player").forGetter(ce.a::a),
+                  awu.a(br.b.listOf(), "victims", List.of()).forGetter(ce.a::b),
+                  awu.a(cm.d.d, "unique_entity_types", cm.d.c).forGetter(ce.a::c)
                )
                .apply($$0, ce.a::new)
       );
@@ -44,16 +44,16 @@ public class ce extends cx<ce.a> {
          return am.H.a(new ce.a(Optional.empty(), List.of(), $$0));
       }
 
-      public boolean a(Collection<enb> $$0, int $$1) {
+      public boolean a(Collection<enk> $$0, int $$1) {
          if (!this.c.isEmpty()) {
-            List<enb> $$2 = Lists.newArrayList($$0);
+            List<enk> $$2 = Lists.newArrayList($$0);
 
             for (bc $$3 : this.c) {
                boolean $$4 = false;
-               Iterator<enb> $$5 = $$2.iterator();
+               Iterator<enk> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  enb $$6 = $$5.next();
+                  enk $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;

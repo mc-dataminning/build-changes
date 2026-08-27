@@ -1,73 +1,76 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dkd extends deg implements dgo {
-   public static final MapCodec<dkd> c = b(dkd::new);
-   public static final dpx<dpv> d = deg.b;
-   protected static final float e = 6.0F;
-   protected static final est f = dby.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class dkd extends dch {
+   public static final MapCodec<dkd> a = b(dkd::new);
+   private static final wi d = wi.c("container.stonecutter");
+   public static final dqc b = dgc.aE;
+   protected static final etc c = dch.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dkd> a() {
-      return c;
+      return a;
    }
 
-   public dkd(doy.d $$0) {
+   public dkd(dph.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, ij.c));
    }
 
    @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return f;
+   public dpi a(cux $$0) {
+      return this.n().a(b, $$0.g().g());
    }
 
    @Override
-   protected boolean b(doz $$0, cyd $$1, ib $$2) {
-      return $$0.d($$1, $$2, ih.b) && !$$0.a(dca.kJ);
-   }
-
-   @Override
-   public crj a(cza $$0, ib $$1, doz $$2) {
-      return new crj(dca.bw);
+   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
+      if ($$1.B) {
+         return bof.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(auz.ay);
+         return bof.b;
+      }
    }
 
    @Nullable
    @Override
-   public doz a(cuo $$0) {
-      doz $$1 = super.a($$0);
-      if ($$1 != null) {
-         eks $$2 = $$0.q().b_($$0.a().c());
-         if ($$2.a(avh.a) && $$2.e() == 8) {
-            return $$1;
-         }
-      }
-
-      return null;
+   protected boj b(dpi $$0, czg $$1, id $$2) {
+      return new bop(($$2x, $$3, $$4) -> new coy($$2x, $$3, cnh.a($$1, $$2)), d);
    }
 
    @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      if ($$0.c(d) == dpv.a) {
-         doz $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(d) == dpv.b;
-      } else {
-         eks $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(avh.a) && $$4.e() == 8;
-      }
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return c;
    }
 
    @Override
-   protected eks c_(doz $$0) {
-      return ekt.c.a(false);
+   protected boolean g_(dpi $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(@Nullable cjt $$0, cyd $$1, ib $$2, doz $$3, ekr $$4) {
-      return false;
+   protected dim b_(dpi $$0) {
+      return dim.c;
    }
 
    @Override
-   public boolean a(cyy $$0, ib $$1, doz $$2, eks $$3) {
+   protected dpi a(dpi $$0, dit $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dpi a(dpi $$0, dhd $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dpi $$0, elq $$1) {
       return false;
    }
 }

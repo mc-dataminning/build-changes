@@ -1,19 +1,18 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import io.netty.channel.ChannelHandlerContext;
 
-public class vr extends vg {
-   private final iz d;
-
-   public vr(ByteBuf $$0, iz $$1) {
-      super($$0);
-      this.d = $$1;
+public interface vr {
+   static void a(ChannelHandlerContext $$0, yp<?> $$1) {
+      if ($$1.d()) {
+         $$0.channel().config().setAutoRead(false);
+         $$0.pipeline().addBefore($$0.name(), "inbound_config", new vx.a());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 
-   public iz G() {
-      return this.d;
-   }
-
-   public static Function<ByteBuf, vr> a(iz $$0) {
-      return $$1 -> new vr($$1, $$0);
+   static void b(ChannelHandlerContext $$0, yp<?> $$1) {
+      if ($$1.d()) {
+         $$0.pipeline().addAfter($$0.name(), "outbound_config", new vx.c());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 }

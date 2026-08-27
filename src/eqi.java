@@ -1,42 +1,36 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record eqi(float b, float c) implements eqc {
-   public static final Codec<eqi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eqi::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(eqi::d)).apply($$0, eqi::new)
-   );
+public record eqi(eql b) implements eql {
+   public static final Codec<eqi> a = RecordCodecBuilder.create($$0 -> $$0.group(eqn.a.fieldOf("term").forGetter(eqi::c)).apply($$0, eqi::new));
 
    @Override
-   public eqd b() {
-      return eqe.f;
+   public eqm b() {
+      return eqn.b;
+   }
+
+   public boolean a(enk $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public Set<epl<?>> a() {
-      return ImmutableSet.of(epo.d);
+   public Set<epu<?>> a() {
+      return this.b.a();
    }
 
-   public boolean a(enb $$0) {
-      bpv $$1 = $$0.c(epo.d);
-      int $$2 = 0;
-      if ($$1 instanceof bqo) {
-         $$2 = cwr.h((bqo)$$1);
-      }
-
-      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   @Override
+   public void a(ent $$0) {
+      eql.super.a($$0);
+      this.b.a($$0);
    }
 
-   public static eqc.a a(float $$0, float $$1) {
-      return () -> new eqi($$0, $$1);
+   public static eql.a a(eql.a $$0) {
+      eqi $$1 = new eqi($$0.build());
+      return () -> $$1;
    }
 
-   public float c() {
+   public eql c() {
       return this.b;
-   }
-
-   public float d() {
-      return this.c;
    }
 }

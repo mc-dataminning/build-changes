@@ -1,66 +1,81 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Function;
 
-public abstract class enu implements enm {
-   protected final List<eqc> e;
-   private final Predicate<enb> a;
+public class enu extends enw {
+   public static final Codec<enu> a = a(enu::new);
 
-   protected enu(List<eqc> $$0) {
-      this.e = $$0;
-      this.a = ac.a($$0);
+   enu(List<eod> $$0, List<eql> $$1) {
+      super($$0, $$1);
    }
 
-   protected static <T extends enu> P1<Mu<T>, List<eqc>> a(Instance<T> $$0) {
-      return $$0.group(aws.a(eqe.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
+   @Override
+   public eoe a() {
+      return eob.g;
    }
 
-   public void a(enk $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+   @Override
+   protected env a(List<? extends env> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (env)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (env $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(ent $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
       }
    }
 
-   protected final boolean a(enb $$0) {
-      return this.a.test($$0);
+   public static enu.a a(eod.a<?>... $$0) {
+      return new enu.a($$0);
    }
 
-   public abstract env a();
+   public static <E> enu.a a(Collection<E> $$0, Function<E, eod.a<?>> $$1) {
+      return new enu.a($$0.stream().map($$1::apply).toArray(eod.a[]::new));
+   }
 
-   public abstract static class a<T extends enu.a<T>> implements epv<T> {
-      private final Builder<eqc> a = ImmutableList.builder();
+   public static class a extends eod.a<enu.a> {
+      private final Builder<eod> a = ImmutableList.builder();
 
-      protected abstract T aC_();
-
-      public T a(eqc.a $$0) {
-         this.a.add($$0.build());
-         return this.aC_();
+      public a(eod.a<?>... $$0) {
+         for (eod.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      public final T e() {
-         return this.aC_();
+      protected enu.a a() {
+         return this;
       }
 
-      protected List<eqc> f() {
-         return this.a.build();
+      @Override
+      public enu.a a(eod.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
 
-      public enl.a a(enu.a<?> $$0) {
-         return new enl.a(this, $$0);
+      @Override
+      public eod b() {
+         return new enu(this.a.build(), this.f());
       }
-
-      public enq.a b(enu.a<?> $$0) {
-         return new enq.a(this, $$0);
-      }
-
-      public eny.a c(enu.a<?> $$0) {
-         return new eny.a(this, $$0);
-      }
-
-      public abstract enu b();
    }
 }

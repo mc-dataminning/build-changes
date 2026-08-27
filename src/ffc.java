@@ -1,17 +1,23 @@
-public record ffc(ajt a, ajt b, ajt c, ajt d) {
-   public ffc(ajt $$0, ajt $$1) {
-      this($$0, $$0, $$1, $$1);
+public class ffc {
+   public static final ffc a = new ffc("Merry X-mas!");
+   public static final ffc b = new ffc("Happy new year!");
+   public static final ffc c = new ffc("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
+
+   public ffc(String $$0) {
+      this.f = $$0;
    }
 
-   public ffc(ajt $$0, ajt $$1, ajt $$2) {
-      this($$0, $$1, $$2, $$1);
-   }
-
-   public ajt a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
-      }
+   public void a(fdl $$0, int $$1, fdj $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - axm.e(axm.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

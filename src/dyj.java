@@ -1,44 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dyj extends dxv<eag> {
-   public dyj(Codec<eag> $$0) {
-      super($$0);
-   }
+public class dyj implements eai {
+   public static final Codec<dyj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ajv.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               ajv.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               ejp.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               ejp.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dyj::new)
+   );
+   public final List<ajv> b;
+   public final List<ajv> c;
+   public final in<ejo> d;
+   public final in<ejo> e;
+   public final int f;
 
-   @Override
-   public boolean a(dxx<eag> $$0) {
-      int $$1 = 0;
-      czs $$2 = $$0.b();
-      ib $$3 = $$0.e();
-      axr $$4 = $$0.d();
-      int $$5 = $$2.a(dur.a.d, $$3.u(), $$3.w());
-      ib $$6 = new ib($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(dca.G)) {
-         doz $$7 = dca.mc.n();
-         doz $$8 = dca.md.n();
-         int $$9 = 1 + $$4.a(10);
-
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(dca.G) && $$2.a_($$6.c()).a(dca.G) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.a(dgb.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               ib $$11 = $$6.d();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.d()).a(dca.mc)) {
-                  $$2.a($$11, $$7.a(dgb.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
-            }
-
-            $$6 = $$6.c();
-         }
+   public dyj(List<ajv> $$0, List<ajv> $$1, in<ejo> $$2, in<ejo> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
-
-      return $$1 > 0;
    }
 }

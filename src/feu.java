@@ -1,111 +1,62 @@
 import javax.annotation.Nullable;
 
-public abstract class feu extends fdp {
-   protected final ajt a;
-   protected final int b;
-   protected final int c;
+public abstract class feu<E extends feu.a<E>> extends fdt<E> {
+   private static final wi a = wi.c("narration.selection.usage");
 
-   feu(int $$0, int $$1, wg $$2, int $$3, int $$4, ajt $$5, fdp.c $$6, @Nullable fdp.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public feu(fby $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static feu.a a(wg $$0, fdp.c $$1, boolean $$2) {
-      return new feu.a($$0, $$1, $$2);
+   @Nullable
+   @Override
+   public fdi a(fia $$0) {
+      if (this.l() == 0) {
+         return null;
+      } else if (this.aI_() && $$0 instanceof fia.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? fdi.a(this, fdi.a($$2)) : null;
+      } else if (!this.aI_()) {
+         E $$3 = this.h();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
+
+         return $$3 == null ? null : fdi.a(this, fdi.a($$3));
+      } else {
+         return null;
+      }
    }
 
-   public static class a {
-      private final wg b;
-      private final fdp.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private ajt g;
-      private int h;
-      private int i;
-      @Nullable
-      fdp.b a;
-
-      public a(wg $$0, fdp.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public feu.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public feu.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public feu.a a(ajt $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public feu.a a(fdp.b $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public feu a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (feu)(this.d
-               ? new feu.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new feu.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+   @Override
+   public void a(fhu $$0) {
+      E $$1 = this.u();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.h();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
          }
       }
-   }
 
-   public static class b extends feu {
-      protected b(int $$0, int $$1, wg $$2, int $$3, int $$4, ajt $$5, fdp.c $$6, @Nullable fdp.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fdc $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.C() + this.x() / 2 - this.b / 2;
-         int $$5 = this.D() + this.v() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fdc $$0, fda $$1, int $$2) {
+      if (this.aI_()) {
+         $$0.a(fht.d, a);
       }
    }
 
-   public static class c extends feu {
-      protected c(int $$0, int $$1, wg $$2, int $$3, int $$4, ajt $$5, fdp.c $$6, @Nullable fdp.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public abstract static class a<E extends feu.a<E>> extends fdt.a<E> implements fhv {
+      public abstract wi a();
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
       }
 
       @Override
-      public void b(fdc $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.C() + this.x() - this.b - 2;
-         int $$5 = this.D() + this.v() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fdc $$0, fda $$1, int $$2) {
-         int $$3 = this.C() + 2;
-         int $$4 = this.C() + this.x() - this.b - 4;
-         int $$5 = this.C() + this.x() / 2;
-         a($$0, $$1, this.y(), $$5, $$3, this.D(), $$4, this.D() + this.v(), $$2);
+      public void b(fhu $$0) {
+         $$0.a(fht.a, this.a());
       }
    }
 }

@@ -1,60 +1,70 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class enz extends enw {
-   public static final Codec<enz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avr.a(ks.F).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, enz::new)
-   );
-   private final avr<cre> j;
-   private final boolean k;
+   public static final Codec<enz> a = a(enz::new);
 
-   private enz(avr<cre> $$0, boolean $$1, int $$2, int $$3, List<eqc> $$4, List<eop> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   enz(List<eod> $$0, List<eql> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public env a() {
-      return ens.f;
+   public eoe a() {
+      return eob.i;
    }
 
    @Override
-   public void a(Consumer<crj> $$0, enb $$1) {
-      kr.h.c(this.j).forEach($$1x -> $$0.accept(new crj($$1x)));
-   }
-
-   private boolean a(enb $$0, Consumer<ent> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final il<cre> $$2 : kr.h.c(this.j)) {
-            $$1.accept(new enw.c() {
-               @Override
-               public void a(Consumer<crj> $$0, enb $$1) {
-                  $$0.accept(new crj($$2));
-               }
-            });
+   protected env a(List<? extends env> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (env)$$0.get(0);
+         case 2 -> {
+            env $$1 = $$0.get(0);
+            env $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (env $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
          }
 
          return true;
+      };
+      };
+   }
+
+   public static enz.a a(eod.a<?>... $$0) {
+      return new enz.a($$0);
+   }
+
+   public static class a extends eod.a<enz.a> {
+      private final Builder<eod> a = ImmutableList.builder();
+
+      public a(eod.a<?>... $$0) {
+         for (eod.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
-   }
 
-   @Override
-   public boolean expand(enb $$0, Consumer<ent> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
+      protected enz.a a() {
+         return this;
+      }
 
-   public static enw.a<?> a(avr<cre> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new enz($$0, false, $$1, $$2, $$3, $$4));
-   }
+      @Override
+      public enz.a b(eod.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static enw.a<?> b(avr<cre> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new enz($$0, true, $$1, $$2, $$3, $$4));
+      @Override
+      public eod b() {
+         return new enz(this.a.build(), this.f());
+      }
    }
 }

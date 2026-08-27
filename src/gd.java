@@ -1,43 +1,57 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class gd implements ArgumentType<gd.a> {
-   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo:'bar'}");
-   private final ge b;
+public class gd {
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wi.b("arguments.item.overstacked", $$0, $$1));
+   private final in<crn> b;
+   private final jn c;
 
-   public gd(dq $$0) {
-      this.b = new ge($$0);
+   public gd(in<crn> $$0, jn $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static gd a(dq $$0) {
-      return new gd($$0);
+   public crn a() {
+      return this.b.a();
    }
 
-   public gd.a a(StringReader $$0) throws CommandSyntaxException {
-      Predicate<crj> $$1 = this.b.a($$0);
-      return $$1::test;
+   public crs a(int $$0, boolean $$1) throws CommandSyntaxException {
+      crs $$2 = new crs(this.b, $$0);
+      if ($$1 && $$0 > $$2.i()) {
+         throw a.create(this.b(), $$2.i());
+      } else {
+         $$2.a(this.c);
+         return $$2;
+      }
    }
 
-   public static gd.a a(CommandContext<du> $$0, String $$1) {
-      return (gd.a)$$0.getArgument($$1, gd.a.class);
+   public String a(ip.a $$0) {
+      StringBuilder $$1 = new StringBuilder(this.b());
+      String $$2 = this.b($$0);
+      if (!$$2.isEmpty()) {
+         $$1.append('[');
+         $$1.append($$2);
+         $$1.append(']');
+      }
+
+      return $$1.toString();
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return this.b.a($$1);
+   private String b(ip.a $$0) {
+      DynamicOps<ul> $$1 = $$0.a(uc.a);
+      return this.c.c().flatMap($$1x -> {
+         jq<?> $$2 = $$1x.a();
+         ajv $$3 = kt.as.b($$2);
+         Optional<ul> $$4 = $$1x.a($$1).result();
+         return $$3 != null && !$$4.isEmpty() ? Stream.of($$3.toString() + "=" + $$4.get()) : Stream.empty();
+      }).collect(Collectors.joining(String.valueOf(',')));
    }
 
-   public Collection<String> getExamples() {
-      return a;
-   }
-
-   public interface a extends Predicate<crj> {
+   private String b() {
+      return this.b.e().map(aju::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
    }
 }

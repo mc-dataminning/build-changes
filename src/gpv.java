@@ -1,62 +1,34 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 
-public class gpv {
-   private static final int a = 100;
-   private final axr b = axr.a();
-   private final fbp c;
-   @Nullable
-   private gow d;
-   private int e = 100;
+public class gpv extends atr {
+   private to a;
 
-   public gpv(fbp $$0) {
-      this.c = $$0;
+   public gpv(gpw $$0, iu<ake> $$1, end $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
-   public void a() {
-      auj $$0 = this.c.al();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.ak().b(this.d);
-            this.e = axk.a(this.b, 0, $$0.b() / 2);
-         }
-
-         if (!this.c.ak().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, axk.a(this.b, $$0.b(), $$0.c()));
-         }
+   @Override
+   protected void b(apv $$0) {
+      if (this.b().a($$0.fY())) {
+         this.a = $$0.f(new to());
       }
 
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
+      super.b($$0);
    }
 
-   public void a(auj $$0) {
-      this.d = gor.a($$0.a().a());
-      if (this.d.b() != gqa.a) {
-         this.c.ak().a(this.d);
-      }
-
-      this.e = Integer.MAX_VALUE;
+   @Override
+   public wi a(SocketAddress $$0, GameProfile $$1) {
+      return (wi)(this.b().a($$1) && this.a($$1.getName()) != null ? wi.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
    }
 
-   public void b(auj $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
+   public gpw b() {
+      return (gpw)super.c();
    }
 
-   public void b() {
-      if (this.d != null) {
-         this.c.ak().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
-   }
-
-   public boolean c(auj $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
+   @Override
+   public to r() {
+      return this.a;
    }
 }

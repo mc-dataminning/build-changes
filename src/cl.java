@@ -8,20 +8,20 @@ public class cl extends cx<cl.a> {
       return cl.a.a;
    }
 
-   public void a(apt $$0, ajt $$1) {
+   public void a(apv $$0, ajv $$1) {
       this.a($$0, $$1x -> $$1x.b($$1));
    }
 
-   public static record a(Optional<bc> b, ajt c) implements cx.a {
+   public static record a(Optional<bc> b, ajv c) implements cx.a {
       public static final Codec<cl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(cl.a::a), ajt.a.fieldOf("loot_table").forGetter(cl.a::b)).apply($$0, cl.a::new)
+         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(cl.a::a), ajv.a.fieldOf("loot_table").forGetter(cl.a::b)).apply($$0, cl.a::new)
       );
 
-      public static an<cl.a> a(ajt $$0) {
+      public static an<cl.a> a(ajv $$0) {
          return am.Q.a(new cl.a(Optional.empty(), $$0));
       }
 
-      public boolean b(ajt $$0) {
+      public boolean b(ajv $$0) {
          return this.c.equals($$0);
       }
 
@@ -30,7 +30,7 @@ public class cl extends cx<cl.a> {
          return this.b;
       }
 
-      public ajt b() {
+      public ajv b() {
          return this.c;
       }
    }

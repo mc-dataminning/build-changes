@@ -1,75 +1,44 @@
-import java.util.List;
+import java.util.Arrays;
 
-public class cjc implements cyk {
-   private static final int a = 1200;
-   private int b;
+public enum cjc {
+   a(0, auo.Bk, auo.Bs),
+   b(40, auo.Bj, auo.Bt),
+   c(80, auo.Bl, auo.Bt);
 
-   @Override
-   public int a(aps $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.aa().b(cyt.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
-         } else {
-            this.b = 1200;
-            cjt $$3 = $$0.j();
-            if ($$3 == null) {
-               return 0;
-            } else {
-               axr $$4 = $$0.z;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               ib $$7 = $$3.dm().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (brj.a(bqb.p, $$0, $$7)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
-                     }
+   private static final cjc[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
+   private final int e;
+   private final aun f;
+   private final aun g;
 
-                     if ($$0.a().a($$7, avn.m).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
-
-                  return 0;
-               }
-            }
-         }
-      } else {
-         return 0;
-      }
+   private cjc(int $$0, aun $$1, aun $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   private int a(aps $$0, ib $$1) {
-      int $$2 = 48;
-      if ($$0.y().a($$0x -> $$0x.a(cbv.n), $$1, 48, cbr.b.b) > 4L) {
-         List<ccg> $$3 = $$0.a(ccg.class, new erv($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
+   public int a() {
+      return this.e;
+   }
+
+   public aun b() {
+      return this.f;
+   }
+
+   public aun c() {
+      return this.g;
+   }
+
+   public static cjc a(int $$0) {
+      for (cjc $$1 : d) {
+         if ($$0 >= $$1.e) {
+            return $$1;
          }
       }
 
-      return 0;
+      return a;
    }
 
-   private int b(aps $$0, ib $$1) {
-      int $$2 = 16;
-      List<ccg> $$3 = $$0.a(ccg.class, new erv($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
-   }
-
-   private int a(ib $$0, aps $$1) {
-      ccg $$2 = bqb.p.a((cyx)$$1);
-      if ($$2 == null) {
-         return 0;
-      } else {
-         $$2.a($$1, $$1.d_($$0), bqs.a, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
-      }
+   public boolean d() {
+      return this == c;
    }
 }

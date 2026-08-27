@@ -1,42 +1,55 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface diy extends dcf, dgo {
+public class diy extends dbt {
+   public static final MapCodec<diy> a = b(diy::new);
+   public static final dpz b = dpy.E;
+   private final bnk c = bnh.a(5);
+
    @Override
-   default boolean a(@Nullable cjt $$0, cyd $$1, ib $$2, doz $$3, ekr $$4) {
-      return $$4 == ekt.c;
+   public MapCodec<diy> a() {
+      return a;
+   }
+
+   public diy(dph.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   default boolean a(cyy $$0, ib $$1, doz $$2, eks $$3) {
-      if (!$$2.c(dpp.C) && $$3.a() == ekt.c) {
-         if (!$$0.x_()) {
-            $$0.a($$1, $$2.a(dpp.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(b);
+   }
 
-         return true;
-      } else {
-         return false;
+   @Override
+   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
       }
    }
 
+   @Nullable
    @Override
-   default crj a(@Nullable cjt $$0, cyy $$1, ib $$2, doz $$3) {
-      if ($$3.c(dpp.C)) {
-         $$1.a($$2, $$3.a(dpp.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
+   public dmo a(id $$0, dpi $$1) {
+      return new dnu($$0, $$1);
+   }
 
-         return new crj(crm.qy);
-      } else {
-         return crj.i;
-      }
+   @Nullable
+   @Override
+   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
+      return $$0.B ? null : a($$2, dmq.K, dnu::a);
    }
 
    @Override
-   default Optional<aul> at_() {
-      return ekt.c.j();
+   protected dim b_(dpi $$0) {
+      return dim.c;
+   }
+
+   @Override
+   protected void a(dpi $$0, apu $$1, id $$2, crs $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
+      }
    }
 }

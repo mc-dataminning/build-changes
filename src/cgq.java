@@ -1,101 +1,123 @@
-public class cgq extends cgz {
-   private static final int b = 2400;
-   private int c;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-   public cgq(bqb<? extends cgq> $$0, cyx $$1) {
+public class cgq extends cgo implements brj {
+   private static final int c = 50;
+   private static final int d = 70;
+   private static final aja<Boolean> e = aje.a(cgq.class, ajc.k);
+   public static final String b = "sheared";
+
+   public static brz.a gq() {
+      return cgo.r().a(bsa.q, 16.0);
+   }
+
+   public cgq(bqg<? extends cgq> $$0, czg $$1) {
       super($$0, $$1);
-      this.bM = 3;
    }
 
    @Override
-   protected void z() {
-      this.bR.a(1, new bxf(this));
-      this.bR.a(1, new bxa(this, this.dM()));
-      this.bR.a(2, new bxv(this, 1.0, false));
-      this.bR.a(3, new byy(this, 1.0));
-      this.bR.a(7, new bxt(this, cjt.class, 8.0F));
-      this.bR.a(8, new byg(this));
-      this.bS.a(1, new bzd(this).a());
-      this.bS.a(2, new bze<>(this, cjt.class, true));
-   }
-
-   public static bru.a r() {
-      return cgz.gt().a(brv.q, 8.0).a(brv.r, 0.25).a(brv.c, 2.0);
-   }
-
-   @Override
-   protected bpv.b aZ() {
-      return bpv.b.c;
-   }
-
-   @Override
-   protected aul v() {
-      return aum.ik;
-   }
-
-   @Override
-   protected aul d(bot $$0) {
-      return aum.im;
-   }
-
-   @Override
-   protected aul o_() {
-      return aum.il;
-   }
-
-   @Override
-   protected void b(ib $$0, doz $$1) {
-      this.a(aum.in, 0.15F, 1.0F);
-   }
-
-   @Override
-   public void a(tm $$0) {
+   protected void a(aje.a $$0) {
       super.a($$0);
-      this.c = $$0.h("Lifetime");
+      $$0.a(e, false);
    }
 
    @Override
-   public void b(tm $$0) {
+   public void b(to $$0) {
       super.b($$0);
-      $$0.a("Lifetime", this.c);
+      $$0.a("sheared", this.gr());
    }
 
    @Override
-   public void l() {
-      this.aX = this.dC();
-      super.l();
+   public void a(to $$0) {
+      super.a($$0);
+      this.w($$0.q("sheared"));
+   }
+
+   public boolean gr() {
+      return this.an.a(e);
+   }
+
+   public void w(boolean $$0) {
+      this.an.a(e, $$0);
    }
 
    @Override
-   public void o(float $$0) {
-      this.r($$0);
-      super.o($$0);
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      if (this.dM().B) {
-         for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dM().a(kl.aa, this.d(0.5), this.du(), this.g(0.5), (this.ag.j() - 0.5) * 2.0, -this.ag.j(), (this.ag.j() - 0.5) * 2.0);
+   protected bof b(cka $$0, boe $$1) {
+      crs $$2 = $$0.b($$1);
+      if ($$2.a(crv.rU) && this.a()) {
+         this.a(aup.h);
+         this.a(dub.M, $$0);
+         if (!this.dM().B) {
+            $$2.a(1, $$0, d($$1));
          }
+
+         return bof.a(this.dM().B);
       } else {
-         if (!this.fU()) {
-            this.c++;
-         }
+         return super.b($$0, $$1);
+      }
+   }
 
-         if (this.c >= 2400) {
-            this.am();
+   @Override
+   protected aun v() {
+      return auo.cn;
+   }
+
+   @Override
+   protected aun d(boy $$0) {
+      return auo.cp;
+   }
+
+   @Override
+   protected aun o_() {
+      return auo.co;
+   }
+
+   @Override
+   protected aun u() {
+      return auo.cr;
+   }
+
+   @Override
+   protected ckg b(crs $$0, float $$1) {
+      ckg $$2 = super.b($$0, $$1);
+      if ($$2 instanceof cki $$3) {
+         $$3.a(new bpm(bpo.s, 100));
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected int gn() {
+      return 50;
+   }
+
+   @Override
+   protected int go() {
+      return 70;
+   }
+
+   @Override
+   public void a(aup $$0) {
+      this.dM().a(null, this, auo.cq, $$0, 1.0F, 1.0F);
+      this.gu();
+      this.w(true);
+   }
+
+   private void gu() {
+      if (this.dM() instanceof apu $$0 && $$0.aa().b(czc.f)) {
+         ens $$1 = $$0.o().aM().getLootTable(eni.aP);
+         enq $$2 = new enq.a($$0).a(epx.f, this.dk()).a(epx.a, this).a(epw.r);
+         ObjectListIterator var4 = $$1.a($$2).iterator();
+
+         while (var4.hasNext()) {
+            crs $$3 = (crs)var4.next();
+            this.b($$3);
          }
       }
    }
 
-   public static boolean b(bqb<cgq> $$0, cyy $$1, bqs $$2, ib $$3, axr $$4) {
-      if (c($$0, $$1, $$2, $$3, $$4)) {
-         cjt $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
-         return $$5 == null;
-      } else {
-         return false;
-      }
+   @Override
+   public boolean a() {
+      return !this.gr() && this.bA();
    }
 }

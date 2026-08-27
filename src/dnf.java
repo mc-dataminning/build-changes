@@ -1,143 +1,110 @@
-import java.util.Arrays;
-import java.util.Optional;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dnf extends dmf {
-   public static final String a = "target";
-   public static final String b = "pool";
-   public static final String c = "joint";
-   public static final String d = "placement_priority";
-   public static final String e = "selection_priority";
-   public static final String f = "name";
-   public static final String g = "final_state";
-   private ajt h = new ajt("empty");
-   private ajt i = new ajt("empty");
-   private ajs<egq> j = ajs.a(ks.aI, new ajt("empty"));
-   private dnf.a k = dnf.a.a;
-   private String l = "minecraft:air";
-   private int m;
-   private int n;
+public class dnf {
+   private static final String b = "decorated_pot_base";
+   public static final aju<String> a = a("decorated_pot_base");
+   private static final String c = "decorated_pot_side";
+   private static final String d = "angler_pottery_pattern";
+   private static final String e = "archer_pottery_pattern";
+   private static final String f = "arms_up_pottery_pattern";
+   private static final String g = "blade_pottery_pattern";
+   private static final String h = "brewer_pottery_pattern";
+   private static final String i = "burn_pottery_pattern";
+   private static final String j = "danger_pottery_pattern";
+   private static final String k = "explorer_pottery_pattern";
+   private static final String l = "friend_pottery_pattern";
+   private static final String m = "heart_pottery_pattern";
+   private static final String n = "heartbreak_pottery_pattern";
+   private static final String o = "howl_pottery_pattern";
+   private static final String p = "miner_pottery_pattern";
+   private static final String q = "mourner_pottery_pattern";
+   private static final String r = "plenty_pottery_pattern";
+   private static final String s = "prize_pottery_pattern";
+   private static final String t = "sheaf_pottery_pattern";
+   private static final String u = "shelter_pottery_pattern";
+   private static final String v = "skull_pottery_pattern";
+   private static final String w = "snort_pottery_pattern";
+   private static final aju<String> x = a("decorated_pot_side");
+   private static final aju<String> y = a("angler_pottery_pattern");
+   private static final aju<String> z = a("archer_pottery_pattern");
+   private static final aju<String> A = a("arms_up_pottery_pattern");
+   private static final aju<String> B = a("blade_pottery_pattern");
+   private static final aju<String> C = a("brewer_pottery_pattern");
+   private static final aju<String> D = a("burn_pottery_pattern");
+   private static final aju<String> E = a("danger_pottery_pattern");
+   private static final aju<String> F = a("explorer_pottery_pattern");
+   private static final aju<String> G = a("friend_pottery_pattern");
+   private static final aju<String> H = a("heart_pottery_pattern");
+   private static final aju<String> I = a("heartbreak_pottery_pattern");
+   private static final aju<String> J = a("howl_pottery_pattern");
+   private static final aju<String> K = a("miner_pottery_pattern");
+   private static final aju<String> L = a("mourner_pottery_pattern");
+   private static final aju<String> M = a("plenty_pottery_pattern");
+   private static final aju<String> N = a("prize_pottery_pattern");
+   private static final aju<String> O = a("sheaf_pottery_pattern");
+   private static final aju<String> P = a("shelter_pottery_pattern");
+   private static final aju<String> Q = a("skull_pottery_pattern");
+   private static final aju<String> R = a("snort_pottery_pattern");
+   private static final Map<crn, aju<String>> S = Map.ofEntries(
+      Map.entry(crv.qK, x),
+      Map.entry(crv.xF, y),
+      Map.entry(crv.xG, z),
+      Map.entry(crv.xH, A),
+      Map.entry(crv.xI, B),
+      Map.entry(crv.xJ, C),
+      Map.entry(crv.xK, D),
+      Map.entry(crv.xL, E),
+      Map.entry(crv.xM, F),
+      Map.entry(crv.xN, G),
+      Map.entry(crv.xO, H),
+      Map.entry(crv.xP, I),
+      Map.entry(crv.xQ, J),
+      Map.entry(crv.xR, K),
+      Map.entry(crv.xS, L),
+      Map.entry(crv.xT, M),
+      Map.entry(crv.xU, N),
+      Map.entry(crv.xV, O),
+      Map.entry(crv.xW, P),
+      Map.entry(crv.xX, Q),
+      Map.entry(crv.xY, R)
+   );
 
-   public dnf(ib $$0, doz $$1) {
-      super(dmh.F, $$0, $$1);
+   private static aju<String> a(String $$0) {
+      return aju.a(ku.as, new ajv($$0));
    }
 
-   public ajt b() {
-      return this.h;
+   public static ajv a(aju<String> $$0) {
+      return $$0.a().d("entity/decorated_pot/");
    }
 
-   public ajt c() {
-      return this.i;
+   @Nullable
+   public static aju<String> a(crn $$0) {
+      return S.get($$0);
    }
 
-   public ajs<egq> d() {
-      return this.j;
-   }
-
-   public String f() {
-      return this.l;
-   }
-
-   public dnf.a j() {
-      return this.k;
-   }
-
-   public int k() {
-      return this.m;
-   }
-
-   public int l() {
-      return this.n;
-   }
-
-   public void a(ajt $$0) {
-      this.h = $$0;
-   }
-
-   public void b(ajt $$0) {
-      this.i = $$0;
-   }
-
-   public void a(ajs<egq> $$0) {
-      this.j = $$0;
-   }
-
-   public void a(String $$0) {
-      this.l = $$0;
-   }
-
-   public void a(dnf.a $$0) {
-      this.k = $$0;
-   }
-
-   public void a(int $$0) {
-      this.m = $$0;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   protected void b(tm $$0, in.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("name", this.h.toString());
-      $$0.a("target", this.i.toString());
-      $$0.a("pool", this.j.a().toString());
-      $$0.a("final_state", this.l);
-      $$0.a("joint", this.k.c());
-      $$0.a("placement_priority", this.m);
-      $$0.a("selection_priority", this.n);
-   }
-
-   @Override
-   public void a(tm $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.h = new ajt($$0.l("name"));
-      this.i = new ajt($$0.l("target"));
-      this.j = ajs.a(ks.aI, new ajt($$0.l("pool")));
-      this.l = $$0.l("final_state");
-      this.k = dnf.a.a($$0.l("joint")).orElseGet(() -> dfz.m(this.n()).o().d() ? dnf.a.b : dnf.a.a);
-      this.m = $$0.h("placement_priority");
-      this.n = $$0.h("selection_priority");
-   }
-
-   public abf t() {
-      return abf.a(this);
-   }
-
-   @Override
-   public tm a(in.a $$0) {
-      return this.d($$0);
-   }
-
-   public void a(aps $$0, int $$1, boolean $$2) {
-      ib $$3 = this.aA_().a(this.n().c(dfz.b).a());
-      iy<egq> $$4 = $$0.H_().d(ks.aI);
-      il<egq> $$5 = $$4.g(this.j);
-      egk.a($$0, $$5, this.i, $$1, $$3, $$2);
-   }
-
-   public static enum a implements aye {
-      a("rollable"),
-      b("aligned");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.c;
-      }
-
-      public static Optional<dnf.a> a(String $$0) {
-         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
-      }
-
-      public wg a() {
-         return wg.c("jigsaw_block.joint." + this.c);
-      }
+   public static String a(ja<String> $$0) {
+      ja.a($$0, x, "decorated_pot_side");
+      ja.a($$0, y, "angler_pottery_pattern");
+      ja.a($$0, z, "archer_pottery_pattern");
+      ja.a($$0, A, "arms_up_pottery_pattern");
+      ja.a($$0, B, "blade_pottery_pattern");
+      ja.a($$0, C, "brewer_pottery_pattern");
+      ja.a($$0, D, "burn_pottery_pattern");
+      ja.a($$0, E, "danger_pottery_pattern");
+      ja.a($$0, F, "explorer_pottery_pattern");
+      ja.a($$0, G, "friend_pottery_pattern");
+      ja.a($$0, H, "heart_pottery_pattern");
+      ja.a($$0, I, "heartbreak_pottery_pattern");
+      ja.a($$0, J, "howl_pottery_pattern");
+      ja.a($$0, K, "miner_pottery_pattern");
+      ja.a($$0, L, "mourner_pottery_pattern");
+      ja.a($$0, M, "plenty_pottery_pattern");
+      ja.a($$0, N, "prize_pottery_pattern");
+      ja.a($$0, O, "sheaf_pottery_pattern");
+      ja.a($$0, P, "shelter_pottery_pattern");
+      ja.a($$0, Q, "skull_pottery_pattern");
+      ja.a($$0, R, "snort_pottery_pattern");
+      return ja.a($$0, a, "decorated_pot_base");
    }
 }

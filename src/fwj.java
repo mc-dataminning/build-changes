@@ -1,40 +1,30 @@
-public class fwj extends fyn {
-   fwj(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+
+public class fwj {
+   public static final fwj a = new fwj(fwi.b, fwk.createDnsSrvRedirectHandler(), fwf.a());
+   private final fwi b;
+   private final fwk c;
+   private final fwf d;
+
+   @VisibleForTesting
+   fwj(fwi $$0, fwk $$1, fwf $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(ib.a(this.g, this.h, this.i)).a(avh.a)) {
-         this.k();
-      }
-   }
+   public Optional<fwg> a(fwh $$0) {
+      Optional<fwg> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fwh> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public fxr b() {
-      return fxr.b;
-   }
-
-   public static class a implements fxq<ko> {
-      private final fyi a;
-
-      public a(fyi $$0) {
-         this.a = $$0;
-      }
-
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fwj $$8 = new fwj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

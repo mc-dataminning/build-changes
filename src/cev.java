@@ -1,63 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class cev extends bpv {
-   public final cex b;
-   public final String c;
-   private final bpy d;
+public enum cev implements ayg {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public cev(cex $$0, String $$1, float $$2, float $$3) {
-      super($$0.ai(), $$0.dM());
-      this.d = bpy.b($$2, $$3);
-      this.j_();
-      this.b = $$0;
-      this.c = $$1;
+   public static final Codec<cev> h = ayg.a(cev::values);
+   private static final IntFunction<cev> i = awd.a(cev::a, values(), awd.a.b);
+   private final int j;
+   private final String k;
+
+   private cev(int $$0, String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public static cev a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   protected void a(ajc.a $$0) {
-   }
-
-   @Override
-   protected void a(tm $$0) {
-   }
-
-   @Override
-   protected void b(tm $$0) {
-   }
-
-   @Override
-   public boolean bw() {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public crj dz() {
-      return this.b.dz();
-   }
-
-   @Override
-   public boolean a(bot $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
-   }
-
-   @Override
-   public boolean t(bpv $$0) {
-      return this == $$0 || this.b == $$0;
-   }
-
-   @Override
-   public yn<aay> di() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public bpy a(bqz $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean dK() {
-      return false;
+   public String c() {
+      return this.k;
    }
 }

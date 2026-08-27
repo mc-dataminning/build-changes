@@ -1,59 +1,34 @@
-public interface etl extends bnt {
-   crj f();
+import javax.annotation.Nullable;
 
-   default crj c(int $$0) {
-      return this.f().a($$0);
+public interface etl {
+   int a();
+
+   void a(int var1);
+
+   default int b(int $$0) {
+      int $$1 = this.a() + $$0;
+      this.a($$1);
+      return $$1;
    }
 
-   void a(crj var1);
-
-   default crj h() {
-      return this.c(this.aj_());
-   }
-
-   @Override
    default int b() {
-      return 1;
+      return this.b(1);
    }
 
-   @Override
-   default boolean ah_() {
-      return this.f().d();
+   default void c() {
+      this.a(0);
    }
 
-   @Override
-   default void a() {
-      this.h();
-   }
+   boolean d();
 
-   @Override
-   default crj b(int $$0) {
-      return this.a($$0, this.aj_());
-   }
+   void e();
 
-   @Override
-   default crj a(int $$0) {
-      return $$0 == 0 ? this.f() : crj.i;
-   }
+   void f();
 
-   @Override
-   default crj a(int $$0, int $$1) {
-      return $$0 != 0 ? crj.i : this.c($$1);
-   }
+   @Nullable
+   wi g();
 
-   @Override
-   default void a(int $$0, crj $$1) {
-      if ($$0 == 0) {
-         this.a($$1);
-      }
-   }
+   void a(@Nullable wi var1);
 
-   public interface a extends etl {
-      dmf u();
-
-      @Override
-      default boolean a(cjt $$0) {
-         return bnt.a(this.u(), $$0);
-      }
-   }
+   void a(@Nullable xy var1);
 }

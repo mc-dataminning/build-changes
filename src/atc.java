@@ -1,52 +1,56 @@
-import java.util.List;
-import java.util.Map;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface atc extends atf {
-   Set<String> a();
+public class atc {
+   private final arq a;
+   private final asw<InputStream> b;
+   private final asw<atg> c;
+   @Nullable
+   private atg d;
 
-   List<ata> a(ajt var1);
+   public atc(arq $$0, asw<InputStream> $$1, asw<atg> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   Map<ajt, ata> b(String var1, Predicate<ajt> var2);
+   public atc(arq $$0, asw<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = atg.b;
+      this.d = atg.a;
+   }
 
-   Map<ajt, List<ata>> c(String var1, Predicate<ajt> var2);
+   public arq a() {
+      return this.a;
+   }
 
-   Stream<aro> b();
+   public String b() {
+      return this.a.b();
+   }
 
-   public static enum a implements atc {
-      a;
+   public Optional<asl> c() {
+      return this.a.c();
+   }
 
-      @Override
-      public Set<String> a() {
-         return Set.of();
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public atg f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
       }
 
-      @Override
-      public Optional<ata> getResource(ajt $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<ata> a(ajt $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<ajt, ata> b(String $$0, Predicate<ajt> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<ajt, List<ata>> c(String $$0, Predicate<ajt> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<aro> b() {
-         return Stream.of();
-      }
+      return this.d;
    }
 }

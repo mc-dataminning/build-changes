@@ -1,18 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public class dzu implements dzz {
-   public static final Codec<dzu> a = bnf.b(0, 256).fieldOf("count").xmap(dzu::new, dzu::a).codec();
-   private final bnf b;
-
-   public dzu(int $$0) {
-      this.b = bnc.a($$0);
+public class dzu extends dye<eap> {
+   public dzu(Codec<eap> $$0) {
+      super($$0);
    }
 
-   public dzu(bnf $$0) {
-      this.b = $$0;
-   }
+   @Override
+   public boolean a(dyg<eap> $$0) {
+      dab $$1 = $$0.b();
+      id $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (ij $$3 : ij.values()) {
+            if ($$3 != ij.a && dlc.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dcj.ff.n().a(dlc.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
 
-   public bnf a() {
-      return this.b;
+         return false;
+      }
    }
 }

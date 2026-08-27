@@ -1,26 +1,32 @@
-import java.util.function.Consumer;
+import java.util.Locale;
 
-public class ffq implements ffr {
-   private final wg b;
-   protected final fhb a = new fhb();
+public class ffq extends ffn {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private static final int i = 500;
 
-   public ffq(wg $$0) {
-      this.b = $$0;
+   public ffq(fdj $$0, bkd $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public wg a() {
-      return this.b;
+   protected void d(fdl $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
    }
 
    @Override
-   public void a(Consumer<fdn> $$0) {
-      this.a.a($$0);
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
    }
 
    @Override
-   public void a(fhv $$0) {
-      this.a.a();
-      fha.a(this.a, $$0, 0.5F, 0.16666667F);
+   protected int b(double $$0) {
+      return (int)Math.round($$0 * 60.0 / 500.0);
+   }
+
+   @Override
+   protected int a(long $$0) {
+      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
    }
 }

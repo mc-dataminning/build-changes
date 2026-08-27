@@ -1,28 +1,45 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-public class auy {
-   protected final Object2IntMap<aut<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+public class auy<T> implements Iterable<auv<T>> {
+   private final ja<T> a;
+   private final Map<T, auv<T>> b = new IdentityHashMap<>();
+   private final wi c;
+   private final yg<vt, auv<T>> d;
 
-   public auy() {
-      this.a.defaultReturnValue(0);
+   public auy(ja<T> $$0, wi $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = ye.a($$0.c()).a(this::b, auv::b);
    }
 
-   public void b(cjt $$0, aut<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
+   public yg<vt, auv<T>> a() {
+      return this.d;
    }
 
-   public void a(cjt $$0, aut<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
    }
 
-   public <T> int a(auv<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   public auv<T> a(T $$0, auw $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new auv<>(this, (T)$$1x, $$1));
    }
 
-   public int a(aut<?> $$0) {
-      return this.a.getInt($$0);
+   public ja<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<auv<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public auv<T> b(T $$0) {
+      return this.a($$0, auw.b);
+   }
+
+   public wi c() {
+      return this.c;
    }
 }

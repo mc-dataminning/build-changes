@@ -1,31 +1,25 @@
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class fed extends bnq {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+public class fed {
+   private static final awy a = awy.codepoint(32, xf.a);
 
-   public fed(UUID $$0, wg $$1, float $$2, bnq.a $$3, bnq.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.b();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   private static String a(String $$0) {
+      return fby.Q().m.K().c() ? $$0 : n.a($$0);
    }
 
-   @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.h = $$0;
-      this.i = ac.b();
-   }
-
-   @Override
-   public float j() {
-      long $$0 = ac.b() - this.i;
-      float $$1 = axk.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return axk.i($$1, this.b, this.h);
+   public static List<awy> a(wn $$0, int $$1, fdj $$2) {
+      fbo $$3 = new fbo();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(wn.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, xf.a);
+      List<awy> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, xf.a, ($$1x, $$2x) -> {
+         awy $$3x = tj.a().a($$1x);
+         $$4.add($$2x ? awy.composite(a, $$3x) : $$3x);
+      });
+      return (List<awy>)($$4.isEmpty() ? Lists.newArrayList(new awy[]{awy.a}) : $$4);
    }
 }

@@ -1,29 +1,17 @@
-public enum fhs {
-   a,
-   b;
+public interface fhs extends ffi, fhv {
+   fhs.a t();
 
-   public fhs a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+   default boolean B() {
+      return true;
    }
 
-   public fht b() {
-      return switch (this) {
-         case a -> fht.d;
-         case b -> fht.b;
-      };
-   }
+   public static enum a {
+      a,
+      b,
+      c;
 
-   public fht c() {
-      return switch (this) {
-         case a -> fht.c;
-         case b -> fht.a;
-      };
-   }
-
-   public fht a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+      public boolean a() {
+         return this == c;
+      }
    }
 }

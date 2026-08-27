@@ -1,20 +1,12 @@
-public class gho<T extends chk> extends ggo<T, fsn<T>> {
-   private static final ajt a = new ajt("textures/entity/spider/spider.png");
+public class gho extends ggx<cde, fsl<cde>> {
+   private static final ajv a = new ajv("textures/entity/sheep/sheep.png");
 
-   public gho(gfi.a $$0) {
-      this($$0, ftl.bx);
+   public gho(gfr.a $$0) {
+      super($$0, new fsl<>($$0.a(ftu.bh)), 0.7F);
+      this.a(new gke(this, $$0.f()));
    }
 
-   public gho(gfi.a $$0, ftk $$1) {
-      super($$0, new fsn<>($$0.a($$1)), 0.8F);
-      this.a(new gka<>(this));
-   }
-
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public ajt a(T $$0) {
+   public ajv a(cde $$0) {
       return a;
    }
 }

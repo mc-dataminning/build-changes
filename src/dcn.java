@@ -1,137 +1,142 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
-import java.util.function.ToIntFunction;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dcn extends daq implements diy {
-   public static final MapCodec<dcn> c = b(dcn::new);
-   public static final int d = 1;
-   public static final int e = 4;
-   public static final dpz f = dpp.az;
-   public static final dpq g = daq.b;
-   public static final dpq h = dpp.C;
-   public static final ToIntFunction<doz> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
-   private static final Int2ObjectMap<List<esa>> j = ac.a(() -> {
-      Int2ObjectMap<List<esa>> $$0 = new Int2ObjectOpenHashMap();
-      $$0.defaultReturnValue(ImmutableList.of());
-      $$0.put(1, ImmutableList.of(new esa(0.5, 0.5, 0.5)));
-      $$0.put(2, ImmutableList.of(new esa(0.375, 0.44, 0.5), new esa(0.625, 0.5, 0.44)));
-      $$0.put(3, ImmutableList.of(new esa(0.5, 0.313, 0.625), new esa(0.375, 0.44, 0.5), new esa(0.56, 0.5, 0.44)));
-      $$0.put(4, ImmutableList.of(new esa(0.44, 0.313, 0.56), new esa(0.625, 0.44, 0.56), new esa(0.375, 0.44, 0.375), new esa(0.56, 0.5, 0.375)));
-      return Int2ObjectMaps.unmodifiable($$0);
-   });
-   private static final est k = dby.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
-   private static final est l = dby.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
-   private static final est m = dby.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
-   private static final est n = dby.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
+public class dcn extends dch implements dco {
+   public static final MapCodec<dcn> a = b(dcn::new);
+   public static final dpz b = dpy.e;
+   private static final int c = 5;
 
    @Override
    public MapCodec<dcn> a() {
-      return c;
+      return a;
    }
 
-   public dcn(doy.d $$0) {
+   public dcn(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
-      if ($$0.d() && $$4.ga().e && $$1.c(g)) {
-         a($$4, $$1, $$2, $$3);
-         return boc.a($$2.B);
+   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
+      dpi $$4 = $$1.a_($$2.c());
+      if ($$4.i()) {
+         $$3.k($$0.c(b));
+         if (!$$1.B) {
+            apu $$5 = (apu)$$1;
+
+            for (int $$6 = 0; $$6 < 2; $$6++) {
+               $$5.a(kn.ak, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+               $$5.a(kn.e, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.01, 0.0, 0.2);
+            }
+         }
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         $$3.l($$0.c(b));
       }
    }
 
    @Override
-   protected boolean a(doz $$0, cuo $$1) {
-      return !$$1.h() && $$1.n().f() == this.p() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
+      a($$1, $$2, $$0, $$1.a_($$2.d()));
    }
 
    @Override
-   public doz a(cuo $$0) {
-      doz $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         return $$1.a(f);
+   protected elb c_(dpi $$0) {
+      return elc.c.a(false);
+   }
+
+   public static void b(czh $$0, id $$1, dpi $$2) {
+      a($$0, $$1, $$0.a_($$1), $$2);
+   }
+
+   public static void a(czh $$0, id $$1, dpi $$2, dpi $$3) {
+      if (m($$2)) {
+         dpi $$4 = n($$3);
+         $$0.a($$1, $$4, 2);
+         id.a $$5 = $$1.j().c(ij.b);
+
+         while (m($$0.a_($$5))) {
+            if (!$$0.a($$5, $$4, 2)) {
+               return;
+            }
+
+            $$5.c(ij.b);
+         }
+      }
+   }
+
+   private static boolean m(dpi $$0) {
+      return $$0.a(dcj.nd) || $$0.a(dcj.G) && $$0.u().e() >= 8 && $$0.u().b();
+   }
+
+   private static dpi n(dpi $$0) {
+      if ($$0.a(dcj.nd)) {
+         return $$0;
+      } else if ($$0.a(dcj.dW)) {
+         return dcj.nd.n().a(b, Boolean.valueOf(false));
       } else {
-         eks $$2 = $$0.q().b_($$0.a());
-         boolean $$3 = $$2.a() == ekt.c;
-         return super.a($$0).a(h, Boolean.valueOf($$3));
+         return $$0.a(dcj.kJ) ? dcj.nd.n().a(b, Boolean.valueOf(true)) : dcj.G.n();
       }
    }
 
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      if ($$0.c(h)) {
-         $$3.a($$4, ekt.c, ekt.c.a($$3));
+   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
+      double $$4 = (double)$$2.u();
+      double $$5 = (double)$$2.v();
+      double $$6 = (double)$$2.w();
+      if ($$0.c(b)) {
+         $$1.b(kn.an, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, auo.da, aup.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      } else {
+         $$1.b(kn.ao, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
+         $$1.b(kn.ao, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, auo.cY, aup.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      }
+   }
+
+   @Override
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      $$3.a($$4, elc.c, elc.c.a($$3));
+      if (!$$0.a($$3, $$4) || $$1 == ij.a || $$1 == ij.b && !$$2.a(dcj.nd) && m($$2)) {
+         $$3.a($$4, this, 5);
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eks c_(doz $$0) {
-      return $$0.c(h) ? ekt.c.a(false) : super.c_($$0);
+   protected boolean a(dpi $$0, czj $$1, id $$2) {
+      dpi $$3 = $$1.a_($$2.d());
+      return $$3.a(dcj.nd) || $$3.a(dcj.kJ) || $$3.a(dcj.dW);
    }
 
    @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      switch ($$0.c(f)) {
-         case 1:
-         default:
-            return k;
-         case 2:
-            return l;
-         case 3:
-            return m;
-         case 4:
-            return n;
-      }
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return esz.a();
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(f, g, h);
+   protected dim b_(dpi $$0) {
+      return dim.a;
    }
 
    @Override
-   public boolean a(cyy $$0, ib $$1, doz $$2, eks $$3) {
-      if (!$$2.c(h) && $$3.a() == ekt.c) {
-         doz $$4 = $$2.a(h, Boolean.valueOf(true));
-         if ($$2.c(g)) {
-            a(null, $$4, $$0, $$1);
-         } else {
-            $$0.a($$1, $$4, 3);
-         }
-
-         $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean g(doz $$0) {
-      return $$0.a(avc.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected Iterable<esa> b(doz $$0) {
-      return (Iterable<esa>)j.get($$0.c(f));
+   public crs a(@Nullable cka $$0, czh $$1, id $$2, dpi $$3) {
+      $$1.a($$2, dcj.a.n(), 11);
+      return new crs(crv.qy);
    }
 
    @Override
-   protected boolean d(doz $$0) {
-      return !$$0.c(h) && super.d($$0);
-   }
-
-   @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      return dby.a($$1, $$2.d(), ih.b);
+   public Optional<aun> as_() {
+      return elc.c.j();
    }
 }

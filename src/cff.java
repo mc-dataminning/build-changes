@@ -1,80 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class cff extends cez {
-   private static final cbe b = cbe.a().d();
-   @Nullable
-   private elg c;
-   @Nullable
-   private esa d;
-
-   public cff(cex $$0) {
-      super($$0);
-   }
-
-   @Override
-   public cfn<cff> i() {
-      return cfn.c;
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
-   }
-
-   @Override
-   public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
-         this.j();
-      }
-   }
-
-   @Nullable
-   @Override
-   public esa g() {
-      return this.d;
-   }
-
-   private void j() {
-      if (this.c == null || this.c.c()) {
-         int $$0 = this.a.y();
-         ib $$1 = this.a.dM().a(dur.a.f, dxu.a(this.a.r()));
-         cjt $$2 = this.a.dM().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         int $$4;
-         if ($$2 != null) {
-            esa $$3 = new esa($$2.dr(), 0.0, $$2.dx()).d();
-            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
-         } else {
-            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
-         }
-
-         ele $$6 = new ele($$1.u(), $$1.v(), $$1.w());
-         this.c = this.a.a($$0, $$4, $$6);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.k();
-      if (this.c != null && this.c.c()) {
-         this.a.gk().a(cfn.d);
-      }
-   }
-
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         jg $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.ei().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new esa($$1, $$3, $$2);
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cff {
 }

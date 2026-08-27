@@ -1,64 +1,115 @@
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class fgq {
-   private static long a = 0L;
+public class fgq extends gld implements gle {
+   private static final int e = 256;
+   private final fgr f;
+   private final boolean g;
+   private final fgq.a h;
 
-   public static long a() {
-      if (a == 0L) {
-         MemoryStack $$0 = MemoryStack.stackPush();
+   public fgq(fgr $$0, boolean $$1) {
+      this.g = $$1;
+      this.h = new fgq.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? evs.b.a : evs.b.d, this.a(), 256, 256);
+      this.f = $$0;
+   }
 
-         try {
-            PointerBuffer $$1 = $$0.mallocPointer(1);
-            a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-            a = $$1.get();
-         } catch (Throwable var4) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var3) {
-                  var4.addSuppressed(var3);
-               }
+   @Override
+   public void a(ate $$0) {
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @Nullable
+   public fgt a(euv $$0) {
+      if ($$0.c() != this.g) {
+         return null;
+      } else {
+         fgq.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fgt(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
+         }
+      }
+   }
+
+   @Override
+   public void a(ajv $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   }
+
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private fgq.a e;
+      @Nullable
+      private fgq.a f;
+      private boolean g;
+
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Nullable
+      fgq.a a(euv $$0) {
+         if (this.e != null && this.f != null) {
+            fgq.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
             }
 
-            throw var4;
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new fgq.a(this.a, this.b, $$2, this.d);
+                  this.f = new fgq.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new fgq.a(this.a, this.b, this.c, $$3);
+                  this.f = new fgq.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
+
+               return this.e.a($$0);
+            }
          }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-      }
-
-      return a;
-   }
-
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
-      }
-   }
-
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
-   }
-
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
-   }
-
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
-   }
-
-   public static void b() {
-      if (a != 0L) {
-         FreeType.FT_Done_Library(a);
-         a = 0L;
       }
    }
 }

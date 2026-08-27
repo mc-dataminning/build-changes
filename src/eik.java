@@ -1,20 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class eik extends ejb {
-   public static final Codec<eik> a = kr.e.q().fieldOf("block").xmap(eik::new, $$0 -> $$0.b).codec();
-   private final dby b;
+public class eik extends efq {
+   public static final Codec<eik> d = a(eik::new);
 
-   public eik(dby $$0) {
-      this.b = $$0;
+   public eik(efq.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(doz $$0, axr $$1) {
-      return $$0.a(this.b);
+   public Optional<efq.b> a(efq.a $$0) {
+      return a($$0, dva.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(egi $$0, efq.a $$1) {
+      $$0.a(new eij($$1.f(), $$1.h().d(), $$1.h().e()));
    }
 
    @Override
-   protected ejc<?> a() {
-      return ejc.b;
+   public efz<?> e() {
+      return efz.o;
    }
 }

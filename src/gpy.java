@@ -1,59 +1,101 @@
-import java.util.concurrent.locks.LockSupport;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gpy extends bmq<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public class gpy {
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   public gpy() {
-      super("Sound executor");
-   }
+   public static class a extends Thread {
+      private final gpy.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
-   }
+      public a(gpy.b $$0) throws IOException {
+         super("LanServerDetector #" + gpy.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(gpy.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
+      }
 
-   @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
-   }
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
 
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
 
-   @Override
-   protected Thread az() {
-      return this.a;
-   }
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               gpy.b.error("Couldn't ping server", var6);
+               break;
+            }
 
-   private void c() {
-      while (!this.b) {
-         this.c(() -> this.b);
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            gpy.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
+         }
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
       }
    }
 
-   @Override
-   protected void z() {
-      LockSupport.park("waiting for tasks");
-   }
+   public static class b {
+      private final List<gpx> a = Lists.newArrayList();
+      private boolean b;
 
-   public void a() {
-      this.b = true;
-      this.a.interrupt();
-
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
+      @Nullable
+      public synchronized List<gpx> a() {
+         if (this.b) {
+            List<gpx> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
       }
 
-      this.by();
-      this.b = false;
-      this.a = this.b();
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = gpz.a($$0);
+         String $$3 = gpz.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (gpx $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
+
+            if (!$$4) {
+               this.a.add(new gpx($$2, $$3));
+               this.b = true;
+            }
+         }
+      }
    }
 }

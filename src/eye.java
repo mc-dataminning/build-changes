@@ -1,32 +1,54 @@
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public abstract class eye {
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
+public class eye {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
-            }
+   private eye(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public wi a(wi $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public wi a() {
+      if (!gmx.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? wi.c(this.c) : wi.a(this.c, this.d);
+      }
+   }
+
+   public static eye a(JsonObject $$0) {
+      String $$1 = fak.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
          }
+      } else {
+         $$5 = null;
       }
 
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
+      return new eye($$1, $$5);
    }
 
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
-   }
-
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

@@ -1,29 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+import java.util.BitSet;
+import java.util.Set;
 
-public class gdk implements gdl.a {
-   private final fbp a;
-   private double b = Double.MIN_VALUE;
-   private List<est> c = Collections.emptyList();
+public class gdk {
+   private static final int a = ij.values().length;
+   private final BitSet b = new BitSet(a * a);
 
-   public gdk(fbp $$0) {
-      this.a = $$0;
+   public void a(Set<ij> $$0) {
+      for (ij $$1 : $$0) {
+         for (ij $$2 : $$0) {
+            this.a($$1, $$2, true);
+         }
+      }
+   }
+
+   public void a(ij $$0, ij $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   }
+
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
+   }
+
+   public boolean a(ij $$0, ij $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
    }
 
    @Override
-   public void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bpv $$6 = this.a.j.n().g();
-         this.c = ImmutableList.copyOf($$6.dM().d($$6, $$6.cH().g(6.0)));
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
+
+      for (ij $$1 : ij.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
       }
 
-      ewm $$7 = $$1.getBuffer(gah.y());
+      $$0.append('\n');
 
-      for (est $$8 : this.c) {
-         fzx.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      for (ij $$2 : ij.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
+
+         for (ij $$3 : ij.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
+         }
+
+         $$0.append('\n');
       }
+
+      return $$0.toString();
    }
 }

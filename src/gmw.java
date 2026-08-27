@@ -1,38 +1,31 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
 public class gmw {
-   public static final gmx a = new gmx();
-   public static final String b = "villager";
-   private final gmw.a c;
+   public static awy a(wn $$0, boolean $$1) {
+      xg $$2 = xg.a($$0, UCharacter::getMirror, gmw::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<awy> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public gmw(gmw.a $$0) {
-      this.c = $$0;
-   }
-
-   public gmw.a a() {
-      return this.c;
-   }
-
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
-
-      private static final Map<String, gmw.a> d = Arrays.stream(values()).collect(Collectors.toMap(gmw.a::a, $$0 -> (gmw.a)$$0));
-      private final String e;
-
-      private a(String $$0) {
-         this.e = $$0;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
       }
 
-      public String a() {
-         return this.e;
-      }
+      return awy.composite($$4);
+   }
 
-      public static gmw.a a(String $$0) {
-         return d.getOrDefault($$0, a);
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
       }
    }
 }

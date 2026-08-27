@@ -1,33 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record eaq(int b, int c, int d, int e, int f, bnf g, float h) implements dzz {
+public class eaq implements eai {
    public static final Codec<eaq> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eaq::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eaq::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eaq::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eaq::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eaq::f),
-               bnf.c.fieldOf("extra_rare_growths").forGetter(eaq::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eaq::h)
+               Codec.list(eaq.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, eaq::new)
    );
+   public final List<eaq.a> b;
+   public final int c;
+   public final float d;
 
-   public int a() {
-      return this.b;
+   public eaq(List<eaq.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
    }
 
-   public int b() {
-      return this.c;
+   public eaq(List<eaq.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
    }
 
-   public int c() {
-      return this.d;
+   public eaq(ejk $$0, dpi $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new eaq.a($$0, $$1)), $$2, $$3);
    }
 
-   public int d() {
-      return this.e;
+   public eaq(ejk $$0, dpi $$1, int $$2) {
+      this(ImmutableList.of(new eaq.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static eaq.a a(ejk $$0, dpi $$1) {
+      return new eaq.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<eaq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ejk.c.fieldOf("target").forGetter($$0x -> $$0x.b), dpi.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, eaq.a::new)
+      );
+      public final ejk b;
+      public final dpi c;
+
+      a(ejk $$0, dpi $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

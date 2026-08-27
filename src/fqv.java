@@ -1,45 +1,26 @@
-import java.util.Optional;
 import java.util.function.Function;
-import org.joml.Vector3f;
 
-public abstract class fqv<E extends bpv> extends fqm<E> {
-   private static final Vector3f a = new Vector3f();
+public abstract class fqv<T extends bqa> extends frr {
+   public float c;
+   public boolean d;
+   public boolean e = true;
 
-   public fqv() {
-      this(gah::e);
+   protected fqv() {
+      this(gaq::e);
    }
 
-   public fqv(Function<ajt, gah> $$0) {
+   protected fqv(Function<ajv, gaq> $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(ewi $$0, ewm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
    }
 
-   public abstract ftm a();
-
-   public Optional<ftm> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   protected void a(bpq $$0, fcg $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(fcg $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fci.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bpq $$0, fcg $$1, float $$2, float $$3) {
-      $$0.a($$2, $$3);
-      $$0.a($$1x -> fci.a(this, $$1, $$1x.b(), 1.0F, a));
-   }
-
-   protected void a(fcg $$0) {
-      fci.a(this, $$0, 0L, 1.0F, a);
+   public void a(fqv<T> $$0) {
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
    }
 }

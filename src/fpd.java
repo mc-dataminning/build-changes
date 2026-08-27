@@ -1,9 +1,7 @@
-public class fpd extends RuntimeException {
-   public fpd(String $$0) {
-      super($$0);
-   }
+import java.util.List;
 
-   public fpd(String $$0, Throwable $$1) {
-      super($$0, $$1);
-   }
+public interface fpd {
+   List<fpe> a();
+
+   wi b();
 }

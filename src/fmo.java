@@ -1,50 +1,25 @@
-public class fmo extends fjo {
-   private static final int a = 600;
-   private final ve b;
-   private fdp c;
-   private int d;
-   private final fhg o = fhg.d();
+import org.joml.Matrix4f;
 
-   public fmo(wg $$0, ve $$1) {
-      super($$0);
-      this.b = $$1;
+public interface fmo {
+   static fmo a(awy $$0) {
+      return new fmn($$0);
    }
 
-   @Override
-   public boolean aE_() {
-      return false;
-   }
-
-   @Override
-   protected void aN_() {
-      this.o.c().b().a(10);
-      this.o.a(new few(this.i, this.m));
-      this.c = this.o.a(fdp.a(wf.p, $$0 -> this.b.a(fih.a)).a());
-      this.c.j = false;
-      this.o.a();
-      this.o.a($$1 -> {
-         fdn var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      fha.a(this.o, this.G());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
-      }
-
-      if (this.b.i()) {
-         this.b.b();
+   static fmo a(cpc $$0) {
+      if ($$0 instanceof cpb $$1) {
+         return new fmm($$1.a());
       } else {
-         this.b.n();
+         throw new IllegalArgumentException("Unknown TooltipComponent");
       }
+   }
+
+   int a();
+
+   int a(fdj var1);
+
+   default void a(fdj $$0, int $$1, int $$2, Matrix4f $$3, gai.a $$4) {
+   }
+
+   default void a(fdj $$0, int $$1, int $$2, fdl $$3) {
    }
 }

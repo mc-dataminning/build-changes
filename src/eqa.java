@@ -1,45 +1,36 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public record eqa(Optional<ck> b, ib c) implements eqc {
-   private static final MapCodec<ib> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aws.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(jg::u),
-               aws.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(jg::v),
-               aws.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(jg::w)
-            )
-            .apply($$0, ib::new)
-   );
-   public static final Codec<eqa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aws.a(ck.a, "predicate").forGetter(eqa::c), d.forGetter(eqa::d)).apply($$0, eqa::new)
-   );
+public class eqa extends eqc {
+   public static final Codec<eqa> a = a(eqa::new);
+
+   eqa(List<eql> $$0) {
+      super($$0, ac.b($$0));
+   }
 
    @Override
-   public eqd b() {
-      return eqe.o;
+   public eqm b() {
+      return eqn.c;
    }
 
-   public boolean a(enb $$0) {
-      esa $$1 = $$0.c(epo.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   public static eqa.a a(eql.a... $$0) {
+      return new eqa.a($$0);
    }
 
-   public static eqc.a a(ck.a $$0) {
-      return () -> new eqa(Optional.of($$0.b()), ib.c);
-   }
+   public static class a extends eqc.a {
+      public a(eql.a... $$0) {
+         super($$0);
+      }
 
-   public static eqc.a a(ck.a $$0, ib $$1) {
-      return () -> new eqa(Optional.of($$0.b()), $$1);
-   }
+      @Override
+      public eqa.a or(eql.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public Optional<ck> c() {
-      return this.b;
-   }
-
-   public ib d() {
-      return this.c;
+      @Override
+      protected eql a(List<eql> $$0) {
+         return new eqa($$0);
+      }
    }
 }

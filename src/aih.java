@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record aih() implements aif {
+   public static final aih a = new aih();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aih {
+   @Override
+   public void a(vi $$0) {
+   }
 }

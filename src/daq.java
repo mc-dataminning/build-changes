@@ -1,76 +1,57 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class daq extends dby {
-   public static final int a = 3;
-   public static final dpq b = dpp.r;
+public class daq extends daj implements dah.a {
+   public static final Codec<daq> b = daf.c.fieldOf("biome").xmap(daq::new, $$0 -> $$0.c).stable().codec();
+   private final in<daf> c;
 
-   @Override
-   protected abstract MapCodec<? extends daq> a();
-
-   protected daq(doy.d $$0) {
-      super($$0);
-   }
-
-   protected abstract Iterable<esa> b(doz var1);
-
-   public static boolean c(doz $$0) {
-      return $$0.b(b) && ($$0.a(avc.ae) || $$0.a(avc.bk)) && $$0.c(b);
+   public daq(in<daf> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected void a(cyx $$0, doz $$1, erw $$2, ckl $$3) {
-      if (!$$0.B && $$3.bN() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
-      }
-   }
-
-   protected boolean d(doz $$0) {
-      return !$$0.c(b);
+   protected Stream<in<daf>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(cyx $$0, esa $$1, axr $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(kl.ac, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, aum.dJ, aun.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
-         }
-      }
-
-      $$0.a(kl.aH, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cjt $$0, doz $$1, cyy $$2, ib $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof daq) {
-         ((daq)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(kl.ac, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
-      }
-
-      $$2.a(null, $$3, aum.dL, aun.e, 1.0F, 1.0F);
-      $$2.a($$0, dts.c, $$3);
-   }
-
-   private static void a(cyy $$0, doz $$1, ib $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
+   protected Codec<? extends daj> a() {
+      return b;
    }
 
    @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, cyp $$3, BiConsumer<crj, ib> $$4) {
-      if ($$3.j() == cyp.a.d && !$$1.x_() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
-      }
+   public in<daf> getNoiseBiome(int $$0, int $$1, int $$2, dao.f $$3) {
+      return this.c;
+   }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+   @Override
+   public in<daf> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<id, in<daf>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<in<daf>> $$5, axt $$6, boolean $$7, dao.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new id($$0, $$1, $$2), this.c) : Pair.of(new id($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<id, in<daf>> a(id $$0, int $$1, int $$2, int $$3, Predicate<in<daf>> $$4, dao.f $$5, czj $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<in<daf>> a(int $$0, int $$1, int $$2, int $$3, dao.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

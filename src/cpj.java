@@ -1,127 +1,81 @@
-import javax.annotation.Nullable;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.function.Supplier;
 
-public class cpj extends cre {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+public class cpj {
+   public static final in<cpi> a = a("leather", ac.a(new EnumMap<>(cph.a.class), $$0 -> {
+      $$0.put(cph.a.d, 1);
+      $$0.put(cph.a.c, 2);
+      $$0.put(cph.a.b, 3);
+      $$0.put(cph.a.a, 1);
+      $$0.put(cph.a.e, 3);
+   }), 15, auo.av, 0.0F, 0.0F, () -> cvp.a(crv.qC), List.of(new cpi.a(new ajv("leather"), "", true), new cpi.a(new ajv("leather"), "_overlay", false)));
+   public static final in<cpi> b = a("chainmail", ac.a(new EnumMap<>(cph.a.class), $$0 -> {
+      $$0.put(cph.a.d, 1);
+      $$0.put(cph.a.c, 4);
+      $$0.put(cph.a.b, 5);
+      $$0.put(cph.a.a, 2);
+      $$0.put(cph.a.e, 4);
+   }), 12, auo.ap, 0.0F, 0.0F, () -> cvp.a(crv.oD));
+   public static final in<cpi> c = a("iron", ac.a(new EnumMap<>(cph.a.class), $$0 -> {
+      $$0.put(cph.a.d, 2);
+      $$0.put(cph.a.c, 5);
+      $$0.put(cph.a.b, 6);
+      $$0.put(cph.a.a, 2);
+      $$0.put(cph.a.e, 5);
+   }), 9, auo.au, 0.0F, 0.0F, () -> cvp.a(crv.oD));
+   public static final in<cpi> d = a("gold", ac.a(new EnumMap<>(cph.a.class), $$0 -> {
+      $$0.put(cph.a.d, 1);
+      $$0.put(cph.a.c, 3);
+      $$0.put(cph.a.b, 5);
+      $$0.put(cph.a.a, 2);
+      $$0.put(cph.a.e, 7);
+   }), 25, auo.at, 0.0F, 0.0F, () -> cvp.a(crv.oH));
+   public static final in<cpi> e = a("diamond", ac.a(new EnumMap<>(cph.a.class), $$0 -> {
+      $$0.put(cph.a.d, 3);
+      $$0.put(cph.a.c, 6);
+      $$0.put(cph.a.b, 8);
+      $$0.put(cph.a.a, 3);
+      $$0.put(cph.a.e, 11);
+   }), 10, auo.aq, 2.0F, 0.0F, () -> cvp.a(crv.ox));
+   public static final in<cpi> f = a("turtle", ac.a(new EnumMap<>(cph.a.class), $$0 -> {
+      $$0.put(cph.a.d, 2);
+      $$0.put(cph.a.c, 5);
+      $$0.put(cph.a.b, 6);
+      $$0.put(cph.a.a, 2);
+      $$0.put(cph.a.e, 5);
+   }), 9, auo.ax, 0.0F, 0.0F, () -> cvp.a(crv.oo));
+   public static final in<cpi> g = a("netherite", ac.a(new EnumMap<>(cph.a.class), $$0 -> {
+      $$0.put(cph.a.d, 3);
+      $$0.put(cph.a.c, 6);
+      $$0.put(cph.a.b, 8);
+      $$0.put(cph.a.a, 3);
+      $$0.put(cph.a.e, 11);
+   }), 15, auo.aw, 3.0F, 0.1F, () -> cvp.a(crv.oI));
+   public static final in<cpi> h = a("armadillo", ac.a(new EnumMap<>(cph.a.class), $$0 -> {
+      $$0.put(cph.a.d, 3);
+      $$0.put(cph.a.c, 6);
+      $$0.put(cph.a.b, 8);
+      $$0.put(cph.a.a, 3);
+      $$0.put(cph.a.e, 11);
+   }), 10, auo.ay, 0.0F, 0.0F, () -> cvp.a(crv.op));
 
-   public cpj(cre.a $$0) {
-      super($$0);
+   public static in<cpi> a(ja<cpi> $$0) {
+      return a;
    }
 
-   @Override
-   public boa a(cuq $$0) {
-      cyx $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      ib $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.B) {
-            $$0.o().a(dts.C);
-            $$1.c(1505, $$2, 15);
-         }
-
-         return boa.a($$1.B);
-      } else {
-         doz $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.d($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.B) {
-               $$0.o().a(dts.C);
-               $$1.c(1505, $$3, 15);
-            }
-
-            return boa.a($$1.B);
-         } else {
-            return boa.d;
-         }
-      }
+   private static in<cpi> a(String $$0, EnumMap<cph.a, Integer> $$1, int $$2, in<aun> $$3, float $$4, float $$5, Supplier<cvp> $$6) {
+      List<cpi.a> $$7 = List.of(new cpi.a(new ajv($$0)));
+      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public static boolean a(crj $$0, cyx $$1, ib $$2) {
-      doz $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dcb $$4 && $$4.b($$1, $$2, $$3)) {
-         if ($$1 instanceof aps) {
-            if ($$4.a($$1, $$1.z, $$2, $$3)) {
-               $$4.a((aps)$$1, $$1.z, $$2, $$3);
-            }
+   private static in<cpi> a(String $$0, EnumMap<cph.a, Integer> $$1, int $$2, in<aun> $$3, float $$4, float $$5, Supplier<cvp> $$6, List<cpi.a> $$7) {
+      EnumMap<cph.a, Integer> $$8 = new EnumMap<>(cph.a.class);
 
-            $$0.g(1);
-         }
-
-         return true;
+      for (cph.a $$9 : cph.a.values()) {
+         $$8.put($$9, $$1.get($$9));
       }
 
-      return false;
-   }
-
-   public static boolean a(crj $$0, cyx $$1, ib $$2, @Nullable ih $$3) {
-      if ($$1.a_($$2).a(dca.G) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof aps)) {
-            return true;
-         } else {
-            axr $$4 = $$1.E_();
-
-            label78:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               ib $$6 = $$2;
-               doz $$7 = dca.bw.n();
-
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).r($$1, $$6)) {
-                     continue label78;
-                  }
-               }
-
-               il<czw> $$9 = $$1.t($$6);
-               if ($$9.a(avb.ac)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = kr.e.a(avc.ar, $$1.z).map($$0x -> ((dby)$$0x.a()).n()).orElse($$7);
-                     if ($$7.b(dbj.c)) {
-                        $$7 = $$7.a(dbj.c, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = kr.e.a(avc.ap, $$1.z).map($$0x -> ((dby)$$0x.a()).n()).orElse($$7);
-                  }
-               }
-
-               if ($$7.a(avc.ar, $$0x -> $$0x.b(dbj.c))) {
-                  for (int $$10 = 0; !$$7.a((cza)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.a(dbj.c, ih.c.a.a($$4));
-                  }
-               }
-
-               if ($$7.a((cza)$$1, $$6)) {
-                  doz $$11 = $$1.a_($$6);
-                  if ($$11.a(dca.G) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(dca.bw) && $$4.a(10) == 0) {
-                     ((dcb)dca.bw).a((aps)$$1, $$4, $$6, $$11);
-                  }
-               }
-            }
-
-            $$0.g(1);
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public static void a(cyy $$0, ib $$1, int $$2) {
-      doz $$3 = $$0.a_($$1);
-      if ($$3.b() instanceof dcb $$4) {
-         ib $$5 = $$4.a($$1);
-         switch ($$4.ar_()) {
-            case a:
-               axn.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, kl.N);
-               break;
-            case b:
-               axn.a($$0, $$5, $$2, kl.N);
-         }
-      } else if ($$3.a(dca.G)) {
-         axn.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, kl.N);
-      }
+      return ja.b(kt.ar, new ajv($$0), new cpi($$8, $$2, $$3, $$6, $$7, $$4, $$5));
    }
 }

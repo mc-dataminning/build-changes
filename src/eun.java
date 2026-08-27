@@ -1,47 +1,32 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
-import javax.annotation.Nullable;
+import org.lwjgl.openal.AL10;
 
-public class eun implements eul {
-   private final Int2ObjectMap<euk.a> b;
+public class eun {
+   private float a = 1.0F;
+   private euo b = euo.a;
 
-   public eun(Map<Integer, Float> $$0) {
-      this.b = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (euk.a)() -> $$1));
+   public void a(euo $$0) {
+      this.b = $$0;
+      esj $$1 = $$0.b();
+      esj $$2 = $$0.c();
+      esj $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
    }
 
-   @Nullable
-   @Override
-   public euk a(int $$0) {
-      return (euk)this.b.get($$0);
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.b.keySet());
+   public float a() {
+      return this.a;
    }
 
-   public static record a(Map<Integer, Float> c) implements fgr {
-      public static final MapCodec<eun.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(aws.x, Codec.FLOAT).fieldOf("advances").forGetter(eun.a::c)).apply($$0, eun.a::new)
-      );
+   public void b() {
+      this.a(euo.a);
+   }
 
-      @Override
-      public fgs a() {
-         return fgs.c;
-      }
-
-      @Override
-      public Either<fgr.b, fgr.c> b() {
-         fgr.b $$0 = $$0x -> new eun(this.c);
-         return Either.left($$0);
-      }
+   public euo c() {
+      return this.b;
    }
 }

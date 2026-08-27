@@ -1,26 +1,13 @@
-public enum fbb {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+public class fbb extends fbd {
+   private final far b;
 
-   private static final fbb[] d = values();
-   private final boolean e;
-   private final boolean f;
-
-   private fbb(boolean $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fbb(far $$0, long $$1, wi $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
-      return this.f;
-   }
-
-   public fbb c() {
-      return d[(this.ordinal() + 1) % d.length];
+   @Override
+   protected void a(exh $$0, long $$1) throws eyu {
+      $$0.a($$1, this.b);
    }
 }

@@ -1,26 +1,49 @@
-public enum boc {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-   public boolean a() {
-      return this.b().a();
+public enum boc implements ayg {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
+
+   public static final ayg.a<boc> e = ayg.a(boc::values);
+   private static final IntFunction<boc> f = awd.a(boc::a, values(), awd.a.b);
+   private final int g;
+   private final String h;
+
+   private boc(int $$0, String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static boc a(boolean $$0) {
-      return $$0 ? a : b;
+   public int a() {
+      return this.g;
    }
 
-   public boa b() {
-      return switch (this) {
-         case a -> boa.a;
-         case b -> boa.b;
-         case c -> boa.c;
-         case d, e -> boa.d;
-         case f -> boa.e;
-      };
+   public wi b() {
+      return wi.c("options.difficulty." + this.h);
+   }
+
+   public wi d() {
+      return wi.c("options.difficulty." + this.h + ".info");
+   }
+
+   public static boc a(int $$0) {
+      return f.apply($$0);
+   }
+
+   @Nullable
+   public static boc a(String $$0) {
+      return e.a($$0);
+   }
+
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

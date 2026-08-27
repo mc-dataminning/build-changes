@@ -1,25 +1,15 @@
-public class cwl extends cwq {
-   public cwl(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bp, $$1);
+public class cwl extends cvb {
+   public cwl(String $$0, cvh $$1, cvp $$2, crs $$3, float $$4, int $$5) {
+      super(cvx.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   public crs g() {
+      return new crs(dcj.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public int a() {
-      return 4;
-   }
-
-   @Override
-   public boolean a(cwq $$0) {
-      return super.a($$0) && $$0 != cwt.I;
+   public cvw<?> ao_() {
+      return cvw.r;
    }
 }

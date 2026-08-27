@@ -1,42 +1,57 @@
-public class fik extends fjo {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final wg c = wg.c("credits_and_attribution.screen.title");
-   private static final wg d = wg.c("credits_and_attribution.button.credits");
-   private static final wg o = wg.c("credits_and_attribution.button.attribution");
-   private static final wg p = wg.c("credits_and_attribution.button.licenses");
-   private final fjo q;
-   private final fhc r = new fhc(this);
+public class fik extends fjx {
+   private final Runnable c;
+   protected final fik.a a;
+   private final wi d;
+   private final boolean o;
+   private fer p = fer.a;
+   protected int b;
+   private fea q;
 
-   public fik(fjo $$0) {
-      super(c);
-      this.q = $$0;
+   public fik(Runnable $$0, fik.a $$1, wi $$2, wi $$3, boolean $$4) {
+      super($$2);
+      this.c = $$0;
+      this.a = $$1;
+      this.d = $$3;
+      this.o = $$4;
    }
 
    @Override
-   protected void aN_() {
-      this.r.a(c, this.m);
-      fhg $$0 = this.r.c(fhg.d()).a(8);
-      $$0.c().b();
-      $$0.a(fdp.a(d, $$0x -> this.m()).a(210).a());
-      $$0.a(fdp.a(o, fif.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
-      $$0.a(fdp.a(p, fif.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
-      this.r.b(fdp.a(wf.d, $$0x -> this.d()).a(200).a());
-      this.r.a();
-      this.r.a(this::c);
+   protected void aM_() {
+      super.aM_();
+      this.p = fer.a(this.m, this.d, this.k - 50);
+      int $$0 = (this.p.a() + 1) * 9;
+      this.c(fdy.a(wi.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.q.a())).a(this.k / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fdy.a(wi.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.q.a())).a(this.k / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fdy.a(wh.e, $$0x -> this.c.run()).a(this.k / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+      this.q = fea.a(wi.c("selectWorld.backupEraseCache"), this.m).a(this.k / 2 - 155 + 80, 76 + $$0).a();
+      if (this.o) {
+         this.c(this.q);
+      }
    }
 
    @Override
-   protected void c() {
-      this.r.a();
-   }
-
-   private void m() {
-      this.j.a(new fjw(false, () -> this.j.a(this)));
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.i, this.k / 2, 50, 16777215);
+      this.p.a($$0, this.k / 2, 70);
    }
 
    @Override
-   public void d() {
-      this.j.a(this.q);
+   public boolean aD_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.run();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

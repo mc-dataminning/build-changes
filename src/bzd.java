@@ -1,102 +1,26 @@
-import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class bzd extends bzl {
-   private static final cbe a = cbe.a().d().e();
-   private static final int b = 10;
-   private boolean c;
-   private int d;
-   private final Class<?>[] i;
+public class bzd extends byn {
+   public static final float i = 0.001F;
+   protected final float j;
+
+   public bzd(brb $$0, double $$1) {
+      this($$0, $$1, 0.001F);
+   }
+
+   public bzd(brb $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
+   }
+
    @Nullable
-   private Class<?>[] j;
-
-   public bzd(bqw $$0, Class<?>... $$1) {
-      super($$0, true);
-      this.i = $$1;
-      this.a(EnumSet.of(bxl.a.d));
-   }
-
    @Override
-   public boolean a() {
-      int $$0 = this.e.ek();
-      bqo $$1 = this.e.ej();
-      if ($$0 != this.d && $$1 != null) {
-         if ($$1.ai() == bqb.bx && this.e.dM().aa().b(cyt.O)) {
-            return false;
-         } else {
-            for (Class<?> $$2 : this.i) {
-               if ($$2.isAssignableFrom($$1.getClass())) {
-                  return false;
-               }
-            }
-
-            return this.a($$1, a);
-         }
+   protected esj h() {
+      if (this.b.bf()) {
+         esj $$0 = cbq.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         return false;
+         return this.b.ei().i() >= this.j ? cbq.a(this.b, 10, 7) : super.h();
       }
-   }
-
-   public bzd a(Class<?>... $$0) {
-      this.c = true;
-      this.j = $$0;
-      return this;
-   }
-
-   @Override
-   public void c() {
-      this.e.h(this.e.ej());
-      this.g = this.e.p();
-      this.d = this.e.ek();
-      this.h = 300;
-      if (this.c) {
-         this.h();
-      }
-
-      super.c();
-   }
-
-   protected void h() {
-      double $$0 = this.l();
-      erv $$1 = erv.a(this.e.dk()).c($$0, 10.0, $$0);
-      List<? extends bqq> $$2 = this.e.dM().a((Class<? extends bqq>)this.e.getClass(), $$1, bqa.f);
-      Iterator var5 = $$2.iterator();
-
-      while (true) {
-         bqq $$3;
-         while (true) {
-            if (!var5.hasNext()) {
-               return;
-            }
-
-            $$3 = (bqq)var5.next();
-            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof brk) || ((brk)this.e).P_() == ((brk)$$3).P_()) && !$$3.s(this.e.ej())) {
-               if (this.j == null) {
-                  break;
-               }
-
-               boolean $$4 = false;
-
-               for (Class<?> $$5 : this.j) {
-                  if ($$3.getClass() == $$5) {
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  break;
-               }
-            }
-         }
-
-         this.a($$3, this.e.ej());
-      }
-   }
-
-   protected void a(bqq $$0, bqo $$1) {
-      $$0.h($$1);
    }
 }

@@ -1,37 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class eek extends ees {
-   public static final Codec<eek> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eek::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+public class eek extends eex {
+   public static final Codec<eek> a = duw.a.c.fieldOf("step").xmap(eek::new, $$0 -> $$0.c).codec();
+   private final duw.a c;
 
-   private eek(double $$0, int $$1, int $$2) {
+   private eek(duw.a $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static eek a(double $$0, int $$1, int $$2) {
-      return new eek($$0, $$1, $$2);
-   }
-
-   @Override
-   protected int a(axr $$0, ib $$1) {
-      double $$2 = czw.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public static eek a(duw.a $$0) {
+      return new eek($$0);
    }
 
    @Override
-   public eep<?> b() {
-      return eep.h;
+   public Stream<id> a_(eev $$0, axt $$1, id $$2) {
+      cyn $$3 = new cyn($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public eey<?> b() {
+      return eey.o;
    }
 }

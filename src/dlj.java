@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlj extends dkk implements dlc {
-   public static final MapCodec<dlj> m = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dpo.a.fieldOf("block_set_type").forGetter(dkk::k), dlc.a.e.fieldOf("weathering_state").forGetter(dlj::s), u()).apply($$0, dlj::new)
-   );
-   private final dlc.a n;
+public class dlj extends dcq {
+   public static final MapCodec<dlj> a = b(dlj::new);
+   protected static final etc b = dch.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
    public MapCodec<dlj> a() {
-      return m;
+      return a;
    }
 
-   protected dlj(dpo $$0, dlc.a $$1, doy.d $$2) {
-      super($$0, $$2);
-      this.n = $$1;
-   }
-
-   @Override
-   protected void b(doz $$0, aps $$1, ib $$2, axr $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dlj(dph.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean e_(doz $$0) {
-      return dlc.c($$0.b()).isPresent();
+   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof apu && $$3 instanceof clx) {
+         $$1.a(new id($$2), true, $$3);
+      }
    }
 
-   public dlc.a s() {
-      return this.n;
+   @Override
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(dpi $$0, cym $$1, id $$2) {
+      elb $$3 = $$1.b_($$2);
+      elb $$4 = $$1.b_($$2.c());
+      return ($$3.a() == elc.c || $$0.b() instanceof dge) && $$4.a() == elc.a;
    }
 }

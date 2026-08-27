@@ -1,31 +1,25 @@
-public class ggu extends ggo<cct, frm> {
-   private static final ajt a = new ajt("textures/entity/parrot/parrot_red_blue.png");
-   private static final ajt i = new ajt("textures/entity/parrot/parrot_blue.png");
-   private static final ajt j = new ajt("textures/entity/parrot/parrot_green.png");
-   private static final ajt k = new ajt("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final ajt l = new ajt("textures/entity/parrot/parrot_grey.png");
+public class ggu extends gfq<ckr> {
+   private static final ajv a = new ajv("textures/entity/llama/spit.png");
+   private final frp<ckr> f;
 
-   public ggu(gfi.a $$0) {
-      super($$0, new frm($$0.a(ftl.aG)), 0.3F);
+   public ggu(gfr.a $$0) {
+      super($$0);
+      this.f = new frp<>($$0.a(ftu.az));
    }
 
-   public ajt a(cct $$0) {
-      return a($$0.gv());
+   public void a(ckr $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(axm.i($$2, $$0.N, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(axm.i($$2, $$0.O, $$0.dE())));
+      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      ewv $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, glj.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static ajt a(cct.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
-
-   public float a(cct $$0, float $$1) {
-      float $$2 = axk.i($$1, $$0.cd, $$0.ca);
-      float $$3 = axk.i($$1, $$0.cc, $$0.cb);
-      return (axk.a($$2) + 1.0F) * $$3;
+   public ajv a(ckr $$0) {
+      return a;
    }
 }

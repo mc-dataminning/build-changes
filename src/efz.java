@@ -1,70 +1,26 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class efz implements efm {
-   private final List<efl> a = Lists.newArrayList();
+public interface efz<S extends efq> {
+   efz<ehj> a = a("buried_treasure", ehj.d);
+   efz<ehl> b = a("desert_pyramid", ehl.d);
+   efz<ehn> c = a("end_city", ehn.d);
+   efz<ehw> d = a("fortress", ehw.e);
+   efz<ehp> e = a("igloo", ehp.d);
+   efz<ehq> f = a("jigsaw", ehq.g);
+   efz<ehs> g = a("jungle_temple", ehs.d);
+   efz<ehu> h = a("mineshaft", ehu.d);
+   efz<ehy> i = a("nether_fossil", ehy.d);
+   efz<eia> j = a("ocean_monument", eia.d);
+   efz<eic> k = a("ocean_ruin", eic.d);
+   efz<eie> l = a("ruined_portal", eie.d);
+   efz<eig> m = a("shipwreck", eig.d);
+   efz<eii> n = a("stronghold", eii.d);
+   efz<eik> o = a("swamp_hut", eik.d);
+   efz<eim> p = a("woodland_mansion", eim.d);
 
-   @Override
-   public void a(efl $$0) {
-      this.a.add($$0);
-   }
+   Codec<S> codec();
 
-   @Nullable
-   @Override
-   public efl a(eez $$0) {
-      return efl.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (efl $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, axr $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      eez $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(axr $$0, int $$1, int $$2) {
-      eez $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
-   }
-
-   public efw a() {
-      return new efw(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public eez d() {
-      return efl.a(this.a.stream());
+   private static <S extends efq> efz<S> a(String $$0, Codec<S> $$1) {
+      return ja.a(kt.T, $$0, () -> $$1);
    }
 }

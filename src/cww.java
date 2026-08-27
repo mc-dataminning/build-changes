@@ -1,52 +1,54 @@
-public class cww extends cwq {
-   public cww(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bb, $$1);
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class cww extends cwz {
+   private final int b;
+   private final int c;
+   private final int d;
+   private final Optional<avt<bqg<?>>> e;
+
+   public cww(cwz.a $$0, int $$1, int $$2, int $$3, Optional<avt<bqg<?>>> $$4, bqh... $$5) {
+      super($$0, avm.bh, $$5);
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return this.b + ($$0 - 1) * this.c;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+      return this.a($$0) + this.d;
    }
 
    @Override
    public int a() {
-      return 2;
+      return 5;
    }
 
-   public static void a(bqo $$0, cyx $$1, ib $$2, int $$3) {
-      if ($$0.aC()) {
-         doz $$4 = dca.kI.n();
-         int $$5 = Math.min(16, 2 + $$3);
-         ib.a $$6 = new ib.a();
-
-         for (ib $$7 : ib.a($$2.b(-$$5, -1, -$$5), $$2.b($$5, -1, $$5))) {
-            if ($$7.a($$0.dk(), (double)$$5)) {
-               $$6.d($$7.u(), $$7.v() + 1, $$7.w());
-               doz $$8 = $$1.a_($$6);
-               if ($$8.i()) {
-                  doz $$9 = $$1.a_($$7);
-                  if ($$9 == dfd.b() && $$4.a((cza)$$1, $$7) && $$1.a($$4, $$7, esf.a())) {
-                     $$1.b($$7, $$4);
-                     $$1.a($$7, dca.kI, axk.a($$0.ei(), 60, 120));
-                  }
-               }
-            }
-         }
+   @Override
+   public float a(int $$0, @Nullable bqg<?> $$1) {
+      if (this.e.isEmpty()) {
+         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
+      } else {
+         return $$1 != null && $$1.a(this.e.get()) ? (float)$$0 * 2.5F : 0.0F;
       }
    }
 
    @Override
-   public boolean a(cwq $$0) {
-      return super.a($$0) && $$0 != cwt.i;
+   public boolean a(cwz $$0) {
+      return !($$0 instanceof cww);
+   }
+
+   @Override
+   public void a(bqt $$0, bqa $$1, int $$2) {
+      if (this.e.isPresent() && $$1 instanceof bqt $$3 && this.e.get() == avh.v && $$2 > 0 && $$3.ai().a(this.e.get())) {
+         int $$4 = 20 + $$0.ei().a(10 * $$2);
+         $$3.b(new bpm(bpo.b, $$4, 3));
+      }
    }
 }

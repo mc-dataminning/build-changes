@@ -1,11 +1,11 @@
-public class cwy extends cwq {
-   protected cwy(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bg, $$1);
+public class cwy extends cwz {
+   protected cwy(cwz.a $$0, bqh... $$1) {
+      super($$0, avm.bi, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 5 + 20 * ($$0 - 1);
+      return 1 + 10 * ($$0 - 1);
    }
 
    @Override
@@ -15,6 +15,6 @@ public class cwy extends cwq {
 
    @Override
    public int a() {
-      return 2;
+      return 5;
    }
 }

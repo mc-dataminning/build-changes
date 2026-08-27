@@ -1,27 +1,14 @@
-import java.util.UUID;
-
-public record aia(String b, UUID c) implements yn<ahy> {
-   public static final ye<vg, aia> a = yn.a(aia::a, aia::new);
-
-   private aia(vg $$0) {
-      this($$0.d(16), $$0.n());
-   }
-
-   private void a(vg $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
-   }
-
+public interface aia extends aax, afo {
    @Override
-   public yp<aia> a() {
-      return ahw.g;
+   default vh b() {
+      return vh.d;
    }
 
-   public void a(ahy $$0) {
-      $$0.a(this);
-   }
+   void a(aic var1);
 
-   public UUID e() {
-      return this.c;
-   }
+   void a(aid var1);
+
+   void a(aib var1);
+
+   void a(aie var1);
 }

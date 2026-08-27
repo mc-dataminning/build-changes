@@ -1,29 +1,48 @@
+import com.google.common.base.Charsets;
 import java.nio.ByteBuffer;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
 
 public class evg {
-   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
+   public static final int a = 65545;
+   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
 
-   public static ByteBuffer a(int $$0) {
-      long $$1 = a.malloc((long)$$0);
-      if ($$1 == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
-      } else {
-         return MemoryUtil.memByteBuffer($$1, $$0);
+   public String a(long $$0, GLFWErrorCallbackI $$1) {
+      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
+      String $$3 = GLFW.glfwGetClipboardString($$0);
+      $$3 = $$3 != null ? ayf.a($$3) : "";
+      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
+      if ($$4 != null) {
+         $$4.free();
       }
+
+      return $$3;
    }
 
-   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
-      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
-      if ($$2 == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
-      } else {
-         return MemoryUtil.memByteBuffer($$2, $$1);
-      }
+   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
+      $$1.clear();
+      $$1.put($$2);
+      $$1.put((byte)0);
+      $$1.flip();
+      GLFW.glfwSetClipboardString($$0, $$1);
    }
 
-   public static void a(ByteBuffer $$0) {
-      a.free(MemoryUtil.memAddress0($$0));
+   public void a(long $$0, String $$1) {
+      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
+      int $$3 = $$2.length + 1;
+      if ($$3 < this.b.capacity()) {
+         a($$0, this.b, $$2);
+      } else {
+         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
+
+         try {
+            a($$0, $$4, $$2);
+         } finally {
+            MemoryUtil.memFree($$4);
+         }
+      }
    }
 }

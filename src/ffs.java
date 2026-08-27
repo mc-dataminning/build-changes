@@ -1,48 +1,36 @@
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class ffs {
-   private final Consumer<fdn> a;
-   private final Consumer<fdn> b;
+public abstract class ffs implements fft {
    @Nullable
-   private ffr c;
-   @Nullable
-   private fhv d;
+   private ffu a;
+   private boolean b;
 
-   public ffs(Consumer<fdn> $$0, Consumer<fdn> $$1) {
+   @Override
+   public final boolean aG_() {
+      return this.b;
+   }
+
+   @Override
+   public final void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public ffu aH_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable ffu $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
       this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a(fhv $$0) {
-      this.d = $$0;
-      ffr $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
-   }
-
-   public void a(ffr $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            fbp.Q().ak().a(gor.a(aum.zV, 1.0F));
-         }
-      }
-   }
-
-   @Nullable
-   public ffr a() {
-      return this.c;
    }
 }

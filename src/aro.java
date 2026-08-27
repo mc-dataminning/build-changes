@@ -1,41 +1,34 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.regex.Pattern;
 
-public interface aro extends AutoCloseable {
-   String a = ".mcmeta";
-   String b = "pack.mcmeta";
+public record aro(List<aro.a> b) {
+   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
+   private static final Codec<aro> d = RecordCodecBuilder.create($$0 -> $$0.group(aro.a.c.listOf().fieldOf("entries").forGetter(aro::a)).apply($$0, aro::new));
+   public static final ase<aro> a = ase.a("overlays", d);
 
-   @Nullable
-   asu<InputStream> a(String... var1);
-
-   @Nullable
-   asu<InputStream> a(arq var1, ajt var2);
-
-   void a(arq var1, String var2, String var3, aro.a var4);
-
-   Set<String> a(arq var1);
-
-   @Nullable
-   <T> T a(asb<T> var1) throws IOException;
-
-   arn a();
-
-   default String b() {
-      return this.a().a();
+   private static DataResult<String> a(String $$0) {
+      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
    }
 
-   default Optional<asj> c() {
-      return this.a().d();
+   public List<String> a(int $$0) {
+      return this.b.stream().filter($$1 -> $$1.a($$0)).map(aro.a::b).toList();
    }
 
-   @Override
-   void close();
+   public List<aro.a> a() {
+      return this.b;
+   }
 
-   @FunctionalInterface
-   public interface a extends BiConsumer<ajt, asu<InputStream>> {
+   public static record a(axe<Integer> a, String b) {
+      static final Codec<aro.a> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(axe.a(Codec.INT).fieldOf("formats").forGetter(aro.a::a), awu.<String>b(Codec.STRING, aro::a).fieldOf("directory").forGetter(aro.a::b))
+               .apply($$0, aro.a::new)
+      );
+
+      public boolean a(int $$0) {
+         return this.a.a($$0);
+      }
    }
 }

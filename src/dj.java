@@ -8,21 +8,25 @@ public class dj extends cx<dj.a> {
       return dj.a.a;
    }
 
-   public void a(apt $$0, crj $$1) {
+   public void a(apv $$0, crs $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static record a(Optional<bc> b, Optional<cc> c) implements cx.a {
       public static final Codec<dj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(aws.a(br.b, "player").forGetter(dj.a::a), aws.a(cc.a, "item").forGetter(dj.a::b)).apply($$0, dj.a::new)
+         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(dj.a::a), awu.a(cc.a, "item").forGetter(dj.a::b)).apply($$0, dj.a::new)
       );
 
-      public static an<dj.a> a(br.a $$0, cc.a $$1) {
-         return am.W.a(new dj.a(Optional.of(br.a($$0)), Optional.of($$1.b())));
+      public static an<dj.a> a(cc $$0) {
+         return am.C.a(new dj.a(Optional.empty(), Optional.of($$0)));
       }
 
-      public boolean a(crj $$0) {
-         return !this.c.isPresent() || this.c.get().a($$0);
+      public static an<dj.a> a(czf $$0) {
+         return am.C.a(new dj.a(Optional.empty(), Optional.of(cc.a.a().a($$0).b())));
+      }
+
+      public boolean a(crs $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override

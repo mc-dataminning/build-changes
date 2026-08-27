@@ -1,138 +1,234 @@
 import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ezs extends grl {
-   static final Logger a = LogUtils.getLogger();
-   private static final wg b = wg.c("mco.configure.world.subscription.title");
-   private static final wg c = wg.c("mco.configure.world.subscription.start");
-   private static final wg y = wg.c("mco.configure.world.subscription.timeleft");
-   private static final wg z = wg.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final wg A = wg.c("mco.configure.world.subscription.expired");
-   private static final wg B = wg.c("mco.configure.world.subscription.less_than_a_day");
-   private static final wg C = wg.c("mco.configure.world.subscription.unknown");
-   private static final wg D = wg.c("mco.configure.world.subscription.recurring.info");
-   private final fjo E;
-   final exp F;
-   final fjo G;
-   private wg H = C;
-   private wg I = C;
-   @Nullable
-   private eyc.a J;
-
-   public ezs(fjo $$0, exp $$1, fjo $$2) {
-      super(fbh.a);
-      this.E = $$0;
-      this.F = $$1;
-      this.G = $$2;
-   }
-
-   @Override
-   public void aN_() {
-      this.a(this.F.a);
-      this.c(fdp.a(wg.c("mco.configure.world.subscription.extend"), $$0 -> fif.a(this, awg.a(this.F.b, this.j.X().b()))).a(this.k / 2 - 100, g(6), 200, 20).a());
-      if (this.F.j) {
-         this.c(fdp.a(wg.c("mco.configure.world.delete.button"), $$0 -> {
-            wg $$1 = wg.c("mco.configure.world.delete.question.line1");
-            wg $$2 = wg.c("mco.configure.world.delete.question.line2");
-            this.j.a(new eze(this::c, eze.a.a, $$1, $$2, true));
-         }).a(this.k / 2 - 100, g(10), 200, 20).a());
-      } else if (ewt.b() && this.F.s != null) {
-         this.c(new fdz(this.k / 2 - 100, g(8), 200, 46, wg.a("mco.snapshot.subscription.info", this.F.s), this.m).a(-6250336));
-      } else {
-         this.c(new fdz(this.k / 2 - 100, g(8), 200, 46, D, this.m).a(-6250336));
-      }
-
-      this.c(fdp.a(wf.k, $$0 -> this.d()).a(this.k / 2 - 100, g(12), 200, 20).a());
-   }
-
-   @Override
-   public wg i() {
-      return wf.b(b, c, this.I, y, this.H);
-   }
-
-   private void c(boolean $$0) {
-      if ($$0) {
-         (new Thread("Realms-delete-realm") {
-            @Override
-            public void run() {
-               try {
-                  ewy $$0 = ewy.a();
-                  $$0.i(ezs.this.F.a);
-               } catch (eyl var2) {
-                  ezs.a.error("Couldn't delete world", var2);
-               }
-
-               ezs.this.j.execute(() -> ezs.this.j.a(ezs.this.G));
-            }
-         }).start();
-      }
-
-      this.j.a(this);
-   }
-
-   private void a(long $$0) {
-      ewy $$1 = ewy.a();
-
+public class ezs extends gru {
+   static final ajv a = new ajv("pending_invite/accept_highlighted");
+   static final ajv b = new ajv("pending_invite/accept");
+   static final ajv c = new ajv("pending_invite/reject_highlighted");
+   static final ajv y = new ajv("pending_invite/reject");
+   private static final Logger z = LogUtils.getLogger();
+   private static final wi A = wi.c("mco.invites.nopending");
+   static final wi B = wi.c("mco.invites.button.accept");
+   static final wi C = wi.c("mco.invites.button.reject");
+   private final fjx D;
+   private final CompletableFuture<List<exr>> E = CompletableFuture.supplyAsync(() -> {
       try {
-         eyc $$2 = $$1.h($$0);
-         this.H = this.a($$2.b);
-         this.I = b($$2.a);
-         this.J = $$2.c;
-      } catch (eyl var5) {
-         a.error("Couldn't get subscription", var5);
-         this.j.a(new ezc(var5, this.E));
+         return exh.a().i().a;
+      } catch (eyu var1x) {
+         z.error("Couldn't list invites", var1x);
+         return List.of();
       }
+   }, ac.g());
+   @Nullable
+   wi F;
+   ezs.b G;
+   int H = -1;
+   private fdy I;
+   private fdy J;
+
+   public ezs(fjx $$0, wi $$1) {
+      super($$1);
+      this.D = $$0;
    }
 
-   private static wg b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return wg.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   @Override
+   public void aM_() {
+      exc.f();
+      this.G = new ezs.b();
+      this.E.thenAcceptAsync($$0 -> {
+         List<ezs.a> $$1 = $$0.stream().map($$0x -> new ezs.a($$0x)).toList();
+         this.G.a($$1);
+         if ($$1.isEmpty()) {
+            this.j.aY().b(A);
+         }
+      }, this.n);
+      this.c(this.G);
+      this.I = this.c((fdy)fdy.a(B, $$0 -> {
+         this.a(this.H, true);
+         this.H = -1;
+         this.C();
+      }).a(this.k / 2 - 174, this.l - 32, 100, 20).a());
+      this.c((fdy)fdy.a(wh.d, $$0 -> this.d()).a(this.k / 2 - 50, this.l - 32, 100, 20).a());
+      this.J = this.c((fdy)fdy.a(C, $$0 -> {
+         this.a(this.H, false);
+         this.H = -1;
+         this.C();
+      }).a(this.k / 2 + 74, this.l - 32, 100, 20).a());
+      this.C();
    }
 
    @Override
    public void d() {
-      this.j.a(this.E);
+      this.j.a(this.D);
+   }
+
+   void a(int $$0, boolean $$1) {
+      if ($$0 < this.G.l()) {
+         String $$2 = this.G.aE_().get($$0).c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               exh $$2x = exh.a();
+               if ($$1) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
+               }
+
+               return true;
+            } catch (eyu var3x) {
+               z.error("Couldn't handle invite", var3x);
+               return false;
+            }
+         }, ac.g()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.G.a($$0);
+               eyx $$3 = this.j.bb();
+               if ($$1) {
+                  $$3.c.a();
+               }
+
+               $$3.d.a();
+            }
+         }, this.n);
+      }
    }
 
    @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.k / 2 - 100;
-      $$0.a(this.m, b, this.k / 2, 17, -1);
-      $$0.a(this.m, c, $$4, g(0), -6250336, false);
-      $$0.a(this.m, this.I, $$4, g(1), -1, false);
-      if (this.J == eyc.a.a) {
-         $$0.a(this.m, y, $$4, g(3), -6250336, false);
-      } else if (this.J == eyc.a.b) {
-         $$0.a(this.m, z, $$4, g(3), -6250336, false);
+      this.F = null;
+      $$0.a(this.m, this.i, this.k / 2, 12, -1);
+      if (this.F != null) {
+         $$0.a(this.m, this.F, $$1, $$2);
       }
 
-      $$0.a(this.m, this.H, $$4, g(4), -1, false);
+      if (this.E.isDone() && this.G.l() == 0) {
+         $$0.a(this.m, A, this.k / 2, this.l / 2 - 20, -1);
+      }
    }
 
-   private wg a(int $$0) {
-      if ($$0 < 0 && this.F.j) {
-         return A;
-      } else if ($$0 <= 1) {
-         return B;
-      } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return wg.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return wg.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? wg.a("mco.configure.world.subscription.remaining.days", $$2) : wg.i();
+   void C() {
+      this.I.k = this.a(this.H);
+      this.J.k = this.a(this.H);
+   }
+
+   private boolean a(int $$0) {
+      return $$0 != -1;
+   }
+
+   class a extends feu.a<ezs.a> {
+      private static final int b = 38;
+      final exr c;
+      private final List<ezb> d;
+
+      a(exr $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new ezs.a.a(), new ezs.a.b());
+      }
+
+      @Override
+      public void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         ezb.a(ezs.this.G, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(fdl $$0, exr $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.a(ezs.this.m, $$1.b, $$2 + 38, $$3 + 1, -1, false);
+         $$0.a(ezs.this.m, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
+         $$0.a(ezs.this.m, fao.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
+         ezb.a($$0, this.d, ezs.this.G, $$2, $$3, $$4, $$5);
+         fao.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public wi a() {
+         wi $$0 = wh.b(wi.b(this.c.b), wi.b(this.c.c), fao.a(this.c.e));
+         return wi.a("narrator.select", $$0);
+      }
+
+      class a extends ezb {
+         a() {
+            super(15, 15, 215, 5);
          }
+
+         @Override
+         protected void a(fdl $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? ezs.a : ezs.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               ezs.this.F = ezs.B;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            ezs.this.a($$0, true);
+         }
+      }
+
+      class b extends ezb {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(fdl $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? ezs.c : ezs.y, $$1, $$2, 18, 18);
+            if ($$3) {
+               ezs.this.F = ezs.C;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            ezs.this.a($$0, false);
+         }
+      }
+   }
+
+   class b extends grt<ezs.a> {
+      public b() {
+         super(ezs.this.k, ezs.this.l - 72, 32, 36);
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.i($$0);
+      }
+
+      @Override
+      public int a() {
+         return this.l() * 36;
+      }
+
+      @Override
+      public int b() {
+         return 260;
+      }
+
+      @Override
+      public void b(int $$0) {
+         super.b($$0);
+         this.c($$0);
+      }
+
+      public void c(int $$0) {
+         ezs.this.H = $$0;
+         ezs.this.C();
+      }
+
+      public void a(@Nullable ezs.a $$0) {
+         super.a($$0);
+         ezs.this.H = this.aE_().indexOf($$0);
+         ezs.this.C();
       }
    }
 }

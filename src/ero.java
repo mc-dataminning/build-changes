@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ero {
+public interface ero {
+   @Nullable
+   etm a(enk var1);
+
+   ern a();
+
+   Set<epu<?>> b();
 }

@@ -1,25 +1,36 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class cbg {
-   @Nullable
-   public static esa a(bqw $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = cbj.a($$0, $$1);
-      return cbm.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class cbg extends caw {
+   private static final ImmutableMap<bqg<?>, Float> a = ImmutableMap.builder()
+      .put(bqg.B, 8.0F)
+      .put(bqg.J, 12.0F)
+      .put(bqg.ac, 8.0F)
+      .put(bqg.ad, 12.0F)
+      .put(bqg.aB, 15.0F)
+      .put(bqg.aG, 12.0F)
+      .put(bqg.bh, 8.0F)
+      .put(bqg.bj, 10.0F)
+      .put(bqg.bs, 10.0F)
+      .put(bqg.bt, 8.0F)
+      .put(bqg.bv, 8.0F)
+      .build();
+
+   @Override
+   protected boolean a(bqt $$0, bqt $$1) {
+      return this.b($$1) && this.e($$0, $$1);
    }
 
-   @Nullable
-   public static ib a(bqw $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      ib $$8 = cbm.a($$0.ei(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         ib $$9 = cbm.a($$0, $$1, $$0.ei(), $$8);
-         if (!cbj.a($$9, $$0) && !cbj.a($$7, $$0, $$9)) {
-            $$9 = cbm.a($$9, $$0.dM().al(), $$1x -> cbj.c($$0, $$1x));
-            return cbj.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   private boolean e(bqt $$0, bqt $$1) {
+      float $$2 = (Float)a.get($$1.ai());
+      return $$1.g((bqa)$$0) <= (double)($$2 * $$2);
+   }
+
+   @Override
+   protected bzw<bqt> b() {
+      return bzw.A;
+   }
+
+   private boolean b(bqt $$0) {
+      return a.containsKey($$0.ai());
    }
 }

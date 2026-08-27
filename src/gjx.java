@@ -1,14 +1,52 @@
-public class gjx<T extends bqq & chd, M extends fqm<T>> extends gjt<T, M> {
-   private final fsh<T> a;
-   private final ajt b;
+public class gjx<T extends ccv> extends gkc<T, fqo<T>> {
+   private final gbc a;
 
-   public gjx(ghd<T, M> $$0, fti $$1, ftk $$2, ajt $$3) {
+   public gjx(ghm<T, fqo<T>> $$0, gbc $$1) {
       super($$0);
-      this.b = $$3;
-      this.a = new fsh<>($$1.a($$2));
+      this.a = $$1;
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.a, this.b, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.p_()) {
+         fby $$10 = fby.Q();
+         boolean $$11 = $$10.b($$3) && $$3.ce();
+         if (!$$3.ce() || $$11) {
+            dpi $$12 = $$3.u().a();
+            int $$13 = ggs.c($$3, 0.0F);
+            gns $$14 = this.a.a($$12);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            this.c().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+         }
+      }
+   }
+
+   private void a(ewr $$0, gai $$1, int $$2, boolean $$3, dpi $$4, int $$5, gns $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(gaq.r(glr.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
 }

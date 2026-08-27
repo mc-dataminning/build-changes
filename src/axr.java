@@ -1,65 +1,49 @@
-import io.netty.util.internal.ThreadLocalRandom;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public interface axr {
-   @Deprecated
-   double a = 2.297;
+   axr a(String var1);
 
-   static axr a() {
-      return a(dvg.a());
-   }
+   void b(String var1);
 
-   @Deprecated
-   static axr b() {
-      return new dvk(dvg.a());
-   }
+   public static class a implements axr {
+      private final Multimap<String, String> a;
+      private final Supplier<String> b;
+      @Nullable
+      private String c;
 
-   static axr a(long $$0) {
-      return new dus($$0);
-   }
-
-   static axr c() {
-      return new dvh(ThreadLocalRandom.current().nextLong());
-   }
-
-   axr d();
-
-   dve e();
-
-   void b(long var1);
-
-   int f();
-
-   int a(int var1);
-
-   default int a(int $$0, int $$1) {
-      return this.a($$1 - $$0 + 1) + $$0;
-   }
-
-   long g();
-
-   boolean h();
-
-   float i();
-
-   double j();
-
-   double k();
-
-   default double a(double $$0, double $$1) {
-      return $$0 + $$1 * (this.j() - this.j());
-   }
-
-   default void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.f();
+      public a() {
+         this(HashMultimap.create(), () -> "");
       }
-   }
 
-   default int b(int $$0, int $$1) {
-      if ($$0 >= $$1) {
-         throw new IllegalArgumentException("bound - origin is non positive");
-      } else {
-         return $$0 + this.a($$1 - $$0);
+      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private String b() {
+         if (this.c == null) {
+            this.c = this.b.get();
+         }
+
+         return this.c;
+      }
+
+      @Override
+      public axr a(String $$0) {
+         return new axr.a(this.a, () -> this.b() + $$0);
+      }
+
+      @Override
+      public void b(String $$0) {
+         this.a.put(this.b(), $$0);
+      }
+
+      public Multimap<String, String> a() {
+         return ImmutableMultimap.copyOf(this.a);
       }
    }
 }

@@ -1,40 +1,94 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public enum evc {
-   a("icons"),
-   b("icons", "snapshot");
+public class evc {
+   private final List<ConcurrentLinkedQueue<evb>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
 
-   private final String[] c;
-
-   private evc(String... $$0) {
-      this.c = $$0;
+   public evc() {
+      this.c = this.e = this.f + 1;
    }
 
-   public List<asu<InputStream>> a(aro $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
-      );
+   public boolean a() {
+      return !this.b && this.c == this.e;
    }
 
-   public asu<InputStream> b(aro $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
-   }
-
-   private asu<InputStream> a(aro $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      asu<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
       } else {
-         return $$3;
+         return false;
       }
+   }
+
+   public void a(evb $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<evb> $$1 = this.i();
+         $$1.add($$0);
+      }
+   }
+
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
+      }
+   }
+
+   public boolean d() {
+      return !this.d && this.c != this.e;
+   }
+
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public ConcurrentLinkedQueue<evb> h() {
+      return this.a.get(this.f);
+   }
+
+   public ConcurrentLinkedQueue<evb> i() {
+      return this.a.get(this.c);
+   }
+
+   public ConcurrentLinkedQueue<evb> j() {
+      return this.a.get(this.e);
    }
 }

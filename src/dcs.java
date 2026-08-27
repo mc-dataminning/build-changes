@@ -1,130 +1,98 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class dcs extends dft {
+public class dcs extends dch {
    public static final MapCodec<dcs> a = b(dcs::new);
-   public static final dpt b = dft.aE;
-   @Nullable
-   private dpe c;
-   @Nullable
-   private dpe d;
-   @Nullable
-   private dpe e;
-   @Nullable
-   private dpe f;
-   private static final Predicate<doz> g = $$0 -> $$0 != null && ($$0.a(dca.ee) || $$0.a(dca.ef));
+   public static final dqi b = dpy.aw;
+   public static final int c = 15;
+   protected static final int d = 1;
+   protected static final etc e = dch.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final etc f = dch.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
-   public MapCodec<? extends dcs> a() {
+   public MapCodec<dcs> a() {
       return a;
    }
 
-   protected dcs(doy.d $$0) {
+   protected dcs(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ih.c));
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void b(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   public boolean a(cza $$0, ib $$1) {
-      return this.b().a($$0, $$1) != null || this.s().a($$0, $$1) != null;
-   }
+   @Override
+   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
+      id $$4 = $$2.c();
+      if ($$1.u($$4)) {
+         int $$5 = 1;
 
-   private void a(cyx $$0, ib $$1) {
-      dpe.b $$2 = this.k().a($$0, $$1);
-      if ($$2 != null) {
-         cdb $$3 = bqb.aR.a($$0);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
          }
-      } else {
-         dpe.b $$4 = this.y().a($$0, $$1);
-         if ($$4 != null) {
-            ccp $$5 = bqb.af.a($$0);
-            if ($$5 != null) {
-               $$5.x(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
+
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.n());
+               dpi $$7 = $$0.a(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, $$2, false);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
             }
          }
       }
    }
 
-   private static void a(cyx $$0, dpe.b $$1, bpv $$2, ib $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (apt $$4 : $$0.a(apt.class, $$2.cH().g(5.0))) {
-         am.o.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(cyx $$0, dpe.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dpd $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), dca.a.n(), 2);
-            $$0.c(2001, $$4.d(), dby.i($$4.a()));
-         }
-      }
-   }
-
-   public static void b(cyx $$0, dpe.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dpd $$4 = $$1.a($$2, $$3, 0);
-            $$0.b($$4.d(), dca.a);
-         }
-      }
+   @Override
+   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return e;
    }
 
    @Override
-   public doz a(cuo $$0) {
-      return this.n().a(b, $$0.g().g());
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return f;
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dpi $$0, czj $$1, id $$2) {
+      for (ij $$3 : ij.c.a) {
+         dpi $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(avj.b)) {
+            return false;
+         }
+      }
+
+      dpi $$5 = $$1.a_($$2.d());
+      return ($$5.a(dcj.dQ) || $$5.a(ave.H)) && !$$1.a_($$2.c()).k();
+   }
+
+   @Override
+   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
+      $$3.a($$1.ai().j(), 1.0F);
+   }
+
+   @Override
+   protected void a(dpj.a<dch, dpi> $$0) {
       $$0.a(b);
    }
 
-   private dpe b() {
-      if (this.c == null) {
-         this.c = dpf.a().a(" ", "#", "#").a('#', dpd.a(dpi.a(dca.dP))).b();
-      }
-
-      return this.c;
-   }
-
-   private dpe k() {
-      if (this.d == null) {
-         this.d = dpf.a().a("^", "#", "#").a('^', dpd.a(g)).a('#', dpd.a(dpi.a(dca.dP))).b();
-      }
-
-      return this.d;
-   }
-
-   private dpe s() {
-      if (this.e == null) {
-         this.e = dpf.a().a("~ ~", "###", "~#~").a('#', dpd.a(dpi.a(dca.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return this.e;
-   }
-
-   private dpe y() {
-      if (this.f == null) {
-         this.f = dpf.a().a("~^~", "###", "~#~").a('^', dpd.a(g)).a('#', dpd.a(dpi.a(dca.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return this.f;
+   @Override
+   protected boolean a(dpi $$0, elq $$1) {
+      return false;
    }
 }

@@ -1,18 +1,26 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public abstract class esh {
+   protected final esj a;
 
-public final class esh extends est {
    protected esh(esj $$0) {
-      super($$0);
+      this.a = $$0;
    }
 
-   @Override
-   protected DoubleList a(ih.a $$0) {
-      return new esg(this.a.c($$0));
+   public double a(bqa $$0) {
+      double $$1 = this.a.c - $$0.dr();
+      double $$2 = this.a.d - $$0.dt();
+      double $$3 = this.a.e - $$0.dx();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   @Override
-   protected int a(ih.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return axk.a(axk.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public abstract esh.a c();
+
+   public esj e() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,91 +1,54 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gpq extends Thread {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   private static final Logger d = LogUtils.getLogger();
-   public static final String a = "224.0.2.60";
-   public static final int b = 4445;
-   private static final long e = 1500L;
-   private final String f;
-   private final DatagramSocket g;
-   private boolean h = true;
-   private final String i;
-
-   public gpq(String $$0, String $$1) throws IOException {
-      super("LanServerPinger #" + c.incrementAndGet());
-      this.f = $$0;
-      this.i = $$1;
-      this.setDaemon(true);
-      this.setUncaughtExceptionHandler(new r(d));
-      this.g = new DatagramSocket();
-   }
-
-   @Override
-   public void run() {
-      String $$0 = a(this.f, this.i);
-      byte[] $$1 = $$0.getBytes(StandardCharsets.UTF_8);
-
-      while (!this.isInterrupted() && this.h) {
-         try {
-            InetAddress $$2 = InetAddress.getByName("224.0.2.60");
-            DatagramPacket $$3 = new DatagramPacket($$1, $$1.length, $$2, 4445);
-            this.g.send($$3);
-         } catch (IOException var6) {
-            d.warn("LanServerPinger: {}", var6.getMessage());
-            break;
+public interface gpq<T> {
+   static <T> gpq<T> a() {
+      return new gpq<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
 
-         try {
-            sleep(1500L);
-         } catch (InterruptedException var5) {
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
          }
-      }
+      };
    }
 
-   @Override
-   public void interrupt() {
-      super.interrupt();
-      this.h = false;
-   }
-
-   public static String a(String $$0, String $$1) {
-      return "[MOTD]" + $$0 + "[/MOTD][AD]" + $$1 + "[/AD]";
-   }
-
-   public static String a(String $$0) {
-      int $$1 = $$0.indexOf("[MOTD]");
-      if ($$1 < 0) {
-         return "missing no";
+   static <T> gpq<T> a(List<T> $$0, Function<T, Stream<ajv>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
       } else {
-         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[MOTD]".length());
-         return $$2 < $$1 ? "missing no" : $$0.substring($$1 + "[MOTD]".length(), $$2);
-      }
-   }
+         final gpt<T> $$2 = new gpt<>();
+         final gpt<T> $$3 = new gpt<>();
 
-   public static String b(String $$0) {
-      int $$1 = $$0.indexOf("[/MOTD]");
-      if ($$1 < 0) {
-         return null;
-      } else {
-         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[/MOTD]".length());
-         if ($$2 >= 0) {
-            return null;
-         } else {
-            int $$3 = $$0.indexOf("[AD]", $$1 + "[/MOTD]".length());
-            if ($$3 < 0) {
-               return null;
-            } else {
-               int $$4 = $$0.indexOf("[/AD]", $$3 + "[AD]".length());
-               return $$4 < $$3 ? null : $$0.substring($$3 + "[AD]".length(), $$4);
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new gpq<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
             }
-         }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
+
+   List<T> a(String var1);
+
+   List<T> b(String var1);
 }

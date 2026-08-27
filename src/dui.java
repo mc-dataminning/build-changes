@@ -1,108 +1,70 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dui extends dqw {
-   public static final Codec<dui> c = RecordCodecBuilder.create($$0 -> $$0.group(ajr.d(dad.b)).apply($$0, $$0.stable(dui::new)));
-   private static final int h = 2;
-   private static final List<doz> i = StreamSupport.stream(kr.e.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
-   private static final int j = axk.f(axk.c((float)i.size()));
-   private static final int k = axk.f((float)i.size() / (float)j);
-   protected static final doz d = dca.a.n();
-   protected static final doz e = dca.hW.n();
-   public static final int f = 70;
-   public static final int g = 60;
+public record dui(in<dub> b, float c, esj d, @Nullable UUID e, @Nullable UUID f, @Nullable bqa g) {
+   public static final Codec<dui> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kt.a.r().fieldOf("game_event").forGetter(dui::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dui::b),
+               esj.a.fieldOf("pos").forGetter(dui::c),
+               jh.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               jh.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dui($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
 
-   public dui(il.c<czw> $$0) {
-      super(new dah($$0));
+   public dui(in<dub> $$0, float $$1, esj $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   @Override
-   protected Codec<? extends dqw> a() {
-      return c;
+   public dui(in<dub> $$0, float $$1, esj $$2, @Nullable bqa $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
    }
 
-   @Override
-   public void a(apz $$0, czq $$1, dvf $$2, dqv $$3) {
-   }
-
-   @Override
-   public void a(czs $$0, dqv $$1, czq $$2) {
-      ib.a $$3 = new ib.a();
-      cye $$4 = $$1.f();
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            int $$9 = je.a($$5, $$7);
-            int $$10 = je.a($$6, $$8);
-            $$0.a($$3.d($$9, 60, $$10), e, 2);
-            doz $$11 = a($$9, $$10);
-            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
-         }
-      }
-   }
-
-   @Override
-   public CompletableFuture<dqv> a(Executor $$0, dvt $$1, dvf $$2, czq $$3, dqv $$4) {
-      return CompletableFuture.completedFuture($$4);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dur.a $$2, cyz $$3, dvf $$4) {
-      return 0;
-   }
-
-   @Override
-   public czj a(int $$0, int $$1, cyz $$2, dvf $$3) {
-      return new czj(0, new doz[0]);
-   }
-
-   @Override
-   public void a(List<String> $$0, dvf $$1, ib $$2) {
-   }
-
-   public static doz a(int $$0, int $$1) {
-      doz $$2 = d;
-      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
-         $$0 /= 2;
-         $$1 /= 2;
-         if ($$0 <= j && $$1 <= k) {
-            int $$3 = axk.a($$0 * j + $$1);
-            if ($$3 < i.size()) {
-               $$2 = i.get($$3);
-            }
-         }
+   @Nullable
+   private static UUID a(@Nullable bqa $$0) {
+      if ($$0 instanceof cks $$1 && $$1.u() != null) {
+         return $$1.u().cw();
       }
 
-      return $$2;
+      return null;
    }
 
-   @Override
-   public void a(apz $$0, long $$1, dvf $$2, czy $$3, czq $$4, dqv $$5, dun.a $$6) {
+   public Optional<bqa> a(apu $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
    }
 
-   @Override
-   public void a(apz $$0) {
+   public Optional<bqa> b(apu $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cks).map($$0x -> (cks)$$0x).map(cks::u).or(() -> Optional.ofNullable(this.f).map($$0::a));
    }
 
-   @Override
-   public int f() {
-      return 0;
+   public in<dub> a() {
+      return this.b;
    }
 
-   @Override
-   public int d() {
-      return 384;
+   public float b() {
+      return this.c;
    }
 
-   @Override
-   public int e() {
-      return 63;
+   public esj c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public bqa f() {
+      return this.g;
    }
 }

@@ -1,53 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djs extends dix {
-   public static final MapCodec<djs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqm.a.fieldOf("wood_type").forGetter(dix::d), u()).apply($$0, djs::new));
-   public static final dpz b = dpp.ba;
+public class djs extends dch {
+   public static final MapCodec<djs> a = b(djs::new);
+   protected static final etc b = dch.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<djs> a() {
       return a;
    }
 
-   public djs(dqm $$0, doy.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
+   public djs(dph.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      return $$1.a_($$2.d()).e();
+   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return b;
    }
 
    @Override
-   public doz a(cuo $$0) {
-      eks $$1 = $$0.q().b_($$0.a());
-      return this.n().a(b, Integer.valueOf(dqf.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == ekt.c));
+   protected etc b_(dpi $$0, cym $$1, id $$2) {
+      return esz.b();
    }
 
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      return $$1 == ih.a && !this.a($$0, $$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected etc c(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return esz.b();
    }
 
    @Override
-   public float g(doz $$0) {
-      return dqf.b($$0.c(b));
+   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
+      dcn.b($$1, $$2.c(), $$0);
    }
 
    @Override
-   protected doz a(doz $$0, dik $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if ($$1 == ij.b && $$2.a(dcj.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected doz a(doz $$0, dgu $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected void b(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(b, f);
+   protected boolean a(dpi $$0, elq $$1) {
+      return false;
+   }
+
+   @Override
+   protected float d(dpi $$0, cym $$1, id $$2) {
+      return 0.2F;
    }
 }

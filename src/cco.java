@@ -1,13 +1,30 @@
-public record cco(ajt d) {
-   public static final cco a = a("temperate", "textures/entity/frog/temperate_frog.png");
-   public static final cco b = a("warm", "textures/entity/frog/warm_frog.png");
-   public static final cco c = a("cold", "textures/entity/frog/cold_frog.png");
-
-   private static cco a(String $$0, String $$1) {
-      return iy.a(kr.al, $$0, new cco(new ajt($$1)));
+public class cco extends cch {
+   public cco(bqg<? extends cco> $$0, czg $$1) {
+      super($$0, $$1);
    }
 
-   public ajt a() {
-      return this.d;
+   @Override
+   public crs b() {
+      return new crs(crv.qG);
+   }
+
+   @Override
+   protected aun v() {
+      return auo.fi;
+   }
+
+   @Override
+   protected aun o_() {
+      return auo.fj;
+   }
+
+   @Override
+   protected aun d(boy $$0) {
+      return auo.fl;
+   }
+
+   @Override
+   protected aun go() {
+      return auo.fk;
    }
 }

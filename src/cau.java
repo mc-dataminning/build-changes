@@ -3,22 +3,22 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class cau extends cax<bqo> {
+public class cau extends cbc<bqv> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
+
    @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.of(bzr.j, bzr.k, bzr.l);
+   public Set<bzw<?>> a() {
+      return ImmutableSet.of(bzw.L);
    }
 
-   @Override
-   protected void a(aps $$0, bqo $$1) {
-      List<cjt> $$2 = $$0.x().stream().filter(bqa.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::g)).collect(Collectors.toList());
-      brp<?> $$3 = $$1.dP();
-      $$3.a(bzr.j, $$2);
-      List<cjt> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(bzr.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cjt> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(bzr.l, $$5);
+   protected void a(apu $$0, bqv $$1) {
+      bru<?> $$2 = $$1.dP();
+      List<cgk> $$3 = $$0.a(cgk.class, $$1.cH().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<cgk> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(bzw.L, $$4);
    }
 }

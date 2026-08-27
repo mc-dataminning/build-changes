@@ -1,127 +1,52 @@
-import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class app extends bnq {
-   private final Set<apt> h = Sets.newHashSet();
-   private final Set<apt> i = Collections.unmodifiableSet(this.h);
-   private boolean j = true;
+public class app {
+   @Nullable
+   protected static id a(apu $$0, int $$1, int $$2) {
+      boolean $$3 = $$0.D_().h();
+      dro $$4 = $$0.d(jg.a($$1), jg.a($$2));
+      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dva.a.e, $$1 & 15, $$2 & 15);
+      if ($$5 < $$0.I_()) {
+         return null;
+      } else {
+         int $$6 = $$4.a(dva.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(dva.a.d, $$1 & 15, $$2 & 15)) {
+            return null;
+         } else {
+            id.a $$7 = new id.a();
 
-   public app(wg $$0, bnq.a $$1, bnq.b $$2) {
-      super(axk.a(), $$0, $$1, $$2);
-   }
+            for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
+               $$7.d($$1, $$8, $$2);
+               dpi $$9 = $$0.a_($$7);
+               if (!$$9.u().c()) {
+                  break;
+               }
 
-   @Override
-   public void a(float $$0) {
-      if ($$0 != this.b) {
-         super.a($$0);
-         this.a(abi::b);
-      }
-   }
+               if (dch.a($$9.k($$0, $$7), ij.b)) {
+                  return $$7.c().i();
+               }
+            }
 
-   @Override
-   public void a(bnq.a $$0) {
-      if ($$0 != this.c) {
-         super.a($$0);
-         this.a(abi::d);
-      }
-   }
-
-   @Override
-   public void a(bnq.b $$0) {
-      if ($$0 != this.d) {
-         super.a($$0);
-         this.a(abi::d);
-      }
-   }
-
-   @Override
-   public bnq a(boolean $$0) {
-      if ($$0 != this.e) {
-         super.a($$0);
-         this.a(abi::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public bnq b(boolean $$0) {
-      if ($$0 != this.f) {
-         super.b($$0);
-         this.a(abi::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public bnq c(boolean $$0) {
-      if ($$0 != this.g) {
-         super.c($$0);
-         this.a(abi::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void a(wg $$0) {
-      if (!Objects.equal($$0, this.a)) {
-         super.a($$0);
-         this.a(abi::c);
-      }
-   }
-
-   private void a(Function<bnq, abi> $$0) {
-      if (this.j) {
-         abi $$1 = $$0.apply(this);
-
-         for (apt $$2 : this.h) {
-            $$2.d.b($$1);
+            return null;
          }
       }
    }
 
-   public void a(apt $$0) {
-      if (this.h.add($$0) && this.j) {
-         $$0.d.b(abi.a(this));
-      }
-   }
-
-   public void b(apt $$0) {
-      if (this.h.remove($$0) && this.j) {
-         $$0.d.b(abi.a(this.h()));
-      }
-   }
-
-   public void b() {
-      if (!this.h.isEmpty()) {
-         for (apt $$0 : Lists.newArrayList(this.h)) {
-            this.b($$0);
+   @Nullable
+   public static id a(apu $$0, cyn $$1) {
+      if (aa.a($$1)) {
+         return null;
+      } else {
+         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
+            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
+               id $$4 = a($$0, $$2, $$3);
+               if ($$4 != null) {
+                  return $$4;
+               }
+            }
          }
+
+         return null;
       }
-   }
-
-   public boolean f() {
-      return this.j;
-   }
-
-   public void d(boolean $$0) {
-      if ($$0 != this.j) {
-         this.j = $$0;
-
-         for (apt $$1 : this.h) {
-            $$1.d.b($$0 ? abi.a(this) : abi.a(this.h()));
-         }
-      }
-   }
-
-   public Collection<apt> g() {
-      return this.i;
    }
 }

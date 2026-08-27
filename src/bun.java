@@ -1,22 +1,23 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bun {
-   public static btr<bqo> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
-   }
-
-   public static btr<bqo> a(Predicate<bqo> $$0, Function<bqo, Float> $$1, int $$2) {
-      return bvt.a(
-         (Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$3 -> $$3.group($$3.c(bzr.m), $$3.b(bzr.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new bzu($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
-                  }
-               }))
+   public static bsm<bqt> a(bqg<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return bvy.a(
+         (Function<bvy.b<bqt>, ? extends App<bvy.c<bqt>, bwb<bqt>>>)($$2x -> $$2x.group($$2x.a(bzw.n), $$2x.c(bzw.q), $$2x.b(bzw.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bqt> $$9 = $$2x.<bzy>b($$5).a($$3xx -> $$3xx.g((bqa)$$7) <= (double)$$2 && $$0.equals($$3xx.ai()));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else {
+                        bqt $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bsw($$10, true));
+                        return true;
+                     }
+                  }))
       );
    }
 }

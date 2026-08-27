@@ -1,13 +1,15 @@
-public final class ake extends RuntimeException {
-   public static final ake a = new ake();
+import java.util.List;
 
-   private ake() {
-      this.setStackTrace(new StackTraceElement[0]);
-   }
+public enum ake {
+   a,
+   b,
+   c,
+   d;
 
-   @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
+   private static final List<ake> e = List.of(values());
+   private static final jb.b f = jb.a(kt.at);
+
+   public static iu<ake> a() {
+      return new iu<>(e).a(a, f);
    }
 }

@@ -1,25 +1,33 @@
-public record abz(long[] b, bjv c) implements yn<aay> {
-   public static final ye<vg, abz> a = yn.a(abz::a, abz::new);
+import java.util.List;
 
-   private abz(vg $$0) {
-      this($$0.d(), $$0.b(bjv.class));
+public record abz(abz.a b, List<String> c) implements yp<aba> {
+   public static final yg<vi, abz> a = yp.a(abz::a, abz::new);
+
+   private abz(vi $$0) {
+      this($$0.b(abz.a.class), $$0.a(vi::p));
    }
 
-   private void a(vg $$0) {
+   private void a(vi $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.a(this.c, vi::a);
    }
 
    @Override
-   public yp<abz> a() {
-      return afj.A;
+   public yr<abz> a() {
+      return afl.y;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public bjv e() {
+   public List<String> e() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

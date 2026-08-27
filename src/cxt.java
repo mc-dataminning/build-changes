@@ -1,57 +1,27 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record cxt(il<cre> d, int e, jn f, crj g) {
-   public static final Codec<cxt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kr.h.r().fieldOf("id").forGetter(cxt::a),
-               aws.a(aws.j, "count", Integer.valueOf(1)).forGetter(cxt::b),
-               aws.a(jn.a, "components", jn.c).forGetter(cxt::c)
-            )
-            .apply($$0, cxt::new)
-   );
-   public static final ye<vr, cxt> b = ye.a(yc.b(ks.F), cxt::a, yc.f, cxt::b, jn.b, cxt::c, cxt::new);
-   public static final ye<vr, Optional<cxt>> c = b.a(yc::a);
-
-   public cxt(cyw $$0) {
-      this($$0, 1);
+public class cxt extends cwz {
+   public cxt(cwz.a $$0, bqh... $$1) {
+      super($$0, avm.bl, $$1);
    }
 
-   public cxt(cyw $$0, int $$1) {
-      this($$0.p().n(), $$1, jn.c);
+   @Override
+   public int a(int $$0) {
+      return 1 + ($$0 - 1) * 8;
    }
 
-   public cxt(il<cre> $$0, int $$1, jn $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 20;
    }
 
-   public cxt a(UnaryOperator<jn.a> $$0) {
-      return new cxt(this.d, this.e, $$0.apply(jn.a()).a());
+   @Override
+   public int a() {
+      return 5;
    }
 
-   private static crj a(il<cre> $$0, int $$1, jn $$2) {
-      return new crj($$0, $$1, $$2.c());
-   }
-
-   public boolean a(crj $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
-   }
-
-   public il<cre> a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public jn c() {
-      return this.f;
-   }
-
-   public crj d() {
-      return this.g;
+   @Override
+   public float a(int $$0, @Nullable bqg<?> $$1) {
+      return $$1 != null && $$1.a(avh.u) ? (float)$$0 * 2.5F : 0.0F;
    }
 }

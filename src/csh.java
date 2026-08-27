@@ -1,59 +1,111 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class csh extends cpy {
-   protected static final Map<dby, doz> a = Maps.newHashMap(
-      new Builder()
-         .put(dca.i, dca.kE.n())
-         .put(dca.j, dca.kE.n())
-         .put(dca.l, dca.kE.n())
-         .put(dca.k, dca.kE.n())
-         .put(dca.fl, dca.kE.n())
-         .put(dca.sH, dca.kE.n())
-         .build()
-   );
+public class csh extends crn {
+   private static final int a = 32;
 
-   public csh(csv $$0, cre.a $$1) {
-      super($$0, avc.bD, $$1);
+   public csh(crn.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boa a(cuq $$0) {
-      cyx $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      doz $$3 = $$1.a_($$2);
-      if ($$0.k() == ih.a) {
-         return boa.d;
+   public crs x() {
+      crs $$0 = super.x();
+      $$0.b(jr.x, new ctq(ctr.a));
+      return $$0;
+   }
+
+   @Override
+   public crs a(crs $$0, czg $$1, bqt $$2) {
+      cka $$3 = $$2 instanceof cka ? (cka)$$2 : null;
+      if ($$3 instanceof apv) {
+         am.A.a((apv)$$3, $$0);
+      }
+
+      if (!$$1.B) {
+         ctq $$4 = $$0.a(jr.x, ctq.a);
+         $$4.a($$2x -> {
+            if ($$2x.b().a().a()) {
+               $$2x.b().a().a($$3, $$3, $$2, $$2x.d(), 1.0);
+            } else {
+               $$2.b($$2x);
+            }
+         });
+      }
+
+      if ($$3 != null) {
+         $$3.b(auz.c.b(this));
+         $$0.a(1, $$3);
+      }
+
+      if ($$3 == null || !$$3.fM()) {
+         if ($$0.d()) {
+            return new crs(crv.sk);
+         }
+
+         if ($$3 != null) {
+            $$3.fZ().e(new crs(crv.sk));
+         }
+      }
+
+      $$2.a(dub.l);
+      return $$0;
+   }
+
+   @Override
+   public bof a(cuz $$0) {
+      czg $$1 = $$0.q();
+      id $$2 = $$0.a();
+      cka $$3 = $$0.o();
+      crs $$4 = $$0.n();
+      ctq $$5 = $$4.a(jr.x, ctq.a);
+      dpi $$6 = $$1.a_($$2);
+      if ($$0.k() != ij.a && $$6.a(ave.cc) && $$5.a(ctr.a)) {
+         $$1.a(null, $$2, auo.kd, aup.e, 1.0F, 1.0F);
+         $$3.a($$0.p(), cru.a($$4, $$3, new crs(crv.sk)));
+         $$3.b(auz.c.b($$4.f()));
+         if (!$$1.B) {
+            apu $$7 = (apu)$$1;
+
+            for (int $$8 = 0; $$8 < 5; $$8++) {
+               $$7.a(kn.ak, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+            }
+         }
+
+         $$1.a(null, $$2, auo.cB, aup.e, 1.0F, 1.0F);
+         $$1.a(null, dub.z, $$2);
+         $$1.b($$2, dcj.sI.n());
+         return bof.a($$1.B);
       } else {
-         cjt $$4 = $$0.o();
-         doz $$5 = a.get($$3.b());
-         doz $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, aum.wo, aun.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dcm && $$3.c(dcm.c)) {
-            if (!$$1.x_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
+         return bof.d;
+      }
+   }
 
-            dcm.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(dcm.c, Boolean.valueOf(false));
-         }
+   @Override
+   public int b(crs $$0) {
+      return 32;
+   }
 
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dts.c, $$2, dts.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bqo.d($$0.p()));
-               }
-            }
+   @Override
+   public ctk c(crs $$0) {
+      return ctk.c;
+   }
 
-            return boa.a($$1.B);
-         } else {
-            return boa.d;
-         }
+   @Override
+   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
+      return cru.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public String i(crs $$0) {
+      return cto.a($$0.a(jr.x, ctq.a).f(), this.a() + ".effect.");
+   }
+
+   @Override
+   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
+      ctq $$4 = $$0.a(jr.x);
+      if ($$4 != null) {
+         $$4.a($$2::add, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
       }
    }
 }

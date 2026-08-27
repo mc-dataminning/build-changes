@@ -1,25 +1,44 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
 
-public class bnh implements bni {
-   private final bni[] a;
+public class bnh extends bnk {
+   public static final bnh a = new bnh(0);
+   public static final Codec<bnh> b = awu.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bnh::new, bnh::d);
+   private final int f;
 
-   public bnh(bni... $$0) {
-      this.a = $$0;
+   public static bnh a(int $$0) {
+      return $$0 == 0 ? a : new bnh($$0);
+   }
+
+   private bnh(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
    }
 
    @Override
-   public float a(axr $$0) {
-      float $$1 = 1.0F;
+   public int a(axt $$0) {
+      return this.f;
+   }
 
-      for (bni $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
+   @Override
+   public int a() {
+      return this.f;
+   }
 
-      return $$1;
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bnl<?> c() {
+      return bnl.a;
    }
 
    @Override
    public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+      return Integer.toString(this.f);
    }
 }

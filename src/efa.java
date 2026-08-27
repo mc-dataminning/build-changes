@@ -1,26 +1,24 @@
-public interface efa {
-   ajs<efn> a = a("villages");
-   ajs<efn> b = a("desert_pyramids");
-   ajs<efn> c = a("igloos");
-   ajs<efn> d = a("jungle_temples");
-   ajs<efn> e = a("swamp_huts");
-   ajs<efn> f = a("pillager_outposts");
-   ajs<efn> g = a("ocean_monuments");
-   ajs<efn> h = a("woodland_mansions");
-   ajs<efn> i = a("buried_treasures");
-   ajs<efn> j = a("mineshafts");
-   ajs<efn> k = a("ruined_portals");
-   ajs<efn> l = a("shipwrecks");
-   ajs<efn> m = a("ocean_ruins");
-   ajs<efn> n = a("nether_complexes");
-   ajs<efn> o = a("nether_fossils");
-   ajs<efn> p = a("end_cities");
-   ajs<efn> q = a("ancient_cities");
-   ajs<efn> r = a("strongholds");
-   ajs<efn> s = a("trail_ruins");
-   ajs<efn> t = a("trial_chambers");
+import com.mojang.serialization.Codec;
 
-   private static ajs<efn> a(String $$0) {
-      return ajs.a(ks.aH, new ajt($$0));
+public class efa extends eew {
+   public static final Codec<efa> a = awu.j.fieldOf("chance").xmap(efa::new, $$0 -> $$0.c).codec();
+   private final int c;
+
+   private efa(int $$0) {
+      this.c = $$0;
+   }
+
+   public static efa a(int $$0) {
+      return new efa($$0);
+   }
+
+   @Override
+   protected boolean a(eev $$0, axt $$1, id $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
+   }
+
+   @Override
+   public eey<?> b() {
+      return eey.b;
    }
 }

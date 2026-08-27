@@ -1,19 +1,44 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+public class gei implements gdu.a {
+   private final fby a;
 
-public class gei extends ggo<cdn, fpo<cdn>> {
-   private static final Map<cdn.d, ajt> a = ac.a(Maps.newHashMap(), $$0 -> {
-      for (cdn.d $$1 : cdn.d.values()) {
-         $$0.put($$1, new ajt(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
-
-   public gei(gfi.a $$0) {
-      super($$0, new fpo<>($$0.a(ftl.f)), 0.5F);
+   public gei(fby $$0) {
+      this.a = $$0;
    }
 
-   public ajt a(cdn $$0) {
-      return a.get($$0.gn());
+   @Override
+   public void a(ewr $$0, gai $$1, double $$2, double $$3, double $$4) {
+      id $$5 = this.a.s.dm();
+      czj $$6 = this.a.s.dM();
+
+      for (id $$7 : id.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         elb $$8 = $$6.b_($$7);
+         if ($$8.a(avj.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            gdu.a(
+               $$0,
+               $$1,
+               new ese(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
+
+      for (id $$10 : id.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         elb $$11 = $$6.b_($$10);
+         if ($$11.a(avj.a)) {
+            gdu.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

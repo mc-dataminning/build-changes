@@ -1,48 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class bxr extends bxl {
-   private final bqq a;
-   private bqo b;
-   private final float c;
+public class bxr {
+   private static final bze a = new bze(Integer.MAX_VALUE, new bxq() {
+      @Override
+      public boolean a() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<bxq.a, bze> b = new EnumMap<>(bxq.a.class);
+   private final Set<bze> c = new ObjectLinkedOpenHashSet();
+   private final Supplier<bkt> d;
+   private final EnumSet<bxq.a> e = EnumSet.noneOf(bxq.a.class);
 
-   public bxr(bqq $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bxl.a.c, bxl.a.a));
+   public bxr(Supplier<bkt> $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a() {
-      if (this.a.cO()) {
-         return false;
-      } else {
-         this.b = this.a.p();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aC() ? false : this.a.ei().a(b(5)) == 0;
-            }
+   public void a(int $$0, bxq $$1) {
+      this.c.add(new bze($$0, $$1));
+   }
+
+   @VisibleForTesting
+   public void a(Predicate<bxq> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   }
+
+   public void a(bxq $$0) {
+      for (bze $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.d();
          }
       }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   @Override
-   public boolean b() {
-      return !this.a.aC();
-   }
-
-   @Override
-   public void c() {
-      esa $$0 = this.a.dp();
-      esa $$1 = new esa(this.b.dr() - this.a.dr(), 0.0, this.b.dx() - this.a.dx());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
+   private static boolean a(bze $$0, EnumSet<bxq.a> $$1) {
+      for (bxq.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
       }
 
-      this.a.o($$1.c, (double)this.c, $$1.e);
+      return false;
+   }
+
+   private static boolean a(bze $$0, Map<bxq.a, bze> $$1) {
+      for (bxq.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bkt $$0 = this.d.get();
+      $$0.a("goalCleanup");
+
+      for (bze $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
+            $$1.d();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((bze)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (bze $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
+            for (bxq.a $$3 : $$2.j()) {
+               bze $$4 = this.b.getOrDefault($$3, a);
+               $$4.d();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.c();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bkt $$1 = this.d.get();
+      $$1.a("goalTick");
+
+      for (bze $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.R_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<bze> b() {
+      return this.c;
+   }
+
+   public void a(bxq.a $$0) {
+      this.e.add($$0);
+   }
+
+   public void b(bxq.a $$0) {
+      this.e.remove($$0);
+   }
+
+   public void a(bxq.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
+      }
    }
 }

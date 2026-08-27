@@ -1,30 +1,31 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dkq extends dfn {
-   public static final MapCodec<dkq> c = b(dkq::new);
-   public static final est g = dby.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
-
-   @Override
-   public MapCodec<dkq> a() {
-      return c;
-   }
-
-   public dkq(doy.d $$0) {
-      super($$0, ih.b, g, false, 0.1);
-   }
+public class dkq extends dbx {
+   protected static final MapCodec<kq> c = kt.j
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof kq $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dkq> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dkq::new));
+   protected final kq e;
 
    @Override
-   protected int a(axr $$0) {
-      return dhd.a($$0);
+   public MapCodec<? extends dkq> a() {
+      return d;
    }
 
-   @Override
-   protected dby b() {
-      return dca.oC;
+   protected dkq(kq $$0, dph.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected boolean g(doz $$0) {
-      return dhd.a($$0);
+   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(kn.ac, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

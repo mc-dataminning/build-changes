@@ -1,18 +1,60 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 
 public class anj {
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<dv> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("setidletimeout").requires($$0x -> $$0x.c(3)))
-            .then(dv.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("serverpack").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dw.a("push")
+                     .then(
+                        ((RequiredArgumentBuilder)dw.a("url", StringArgumentType.string())
+                              .then(
+                                 ((RequiredArgumentBuilder)dw.a("uuid", fk.a())
+                                       .then(
+                                          dw.a("hash", StringArgumentType.word())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dv)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "url"),
+                                                      Optional.of(fk.a($$0x, "uuid")),
+                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
+                                                   )
+                                             )
+                                       ))
+                                    .executes(
+                                       $$0x -> a(
+                                             (dv)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(fk.a($$0x, "uuid")), Optional.empty()
+                                          )
+                                    )
+                              ))
+                           .executes($$0x -> a((dv)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                     )
+               ))
+            .then(dw.a("pop").then(dw.a("uuid", fk.a()).executes($$0x -> a((dv)$$0x.getSource(), fk.a($$0x, "uuid")))))
       );
    }
 
-   private static int a(du $$0, int $$1) {
-      $$0.l().c($$1);
-      $$0.a(() -> wg.a("commands.setidletimeout.success", $$1), true);
-      return $$1;
+   private static void a(dv $$0, yp<?> $$1) {
+      $$0.l().ai().e().forEach($$1x -> $$1x.a($$1));
+   }
+
+   private static int a(dv $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
+      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
+      String $$5 = $$3.orElse("");
+      zb $$6 = new zb($$4, $$1, $$5, false, null);
+      a($$0, $$6);
+      return 0;
+   }
+
+   private static int a(dv $$0, UUID $$1) {
+      za $$2 = new za(Optional.of($$1));
+      a($$0, $$2);
+      return 0;
    }
 }

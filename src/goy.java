@@ -1,31 +1,48 @@
-public class goy implements gog {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final fzb e;
-   private final gqa f;
-   private int g = 0;
+public class goy extends goo {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final clv s;
+   private float t = 0.0F;
 
-   public goy(fzb $$0, gqa $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public goy(clv $$0) {
+      super(auo.ov, aup.g, gpf.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dr());
+      this.g = (double)((float)$$0.dt());
+      this.h = (double)((float)$$0.dx());
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bh()) {
-         float $$0 = this.e.dM().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gow)(new goz.a(this.e, aum.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gow)(new goz.a(this.e, aum.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gow)(new goz.a(this.e, aum.A)));
+   public boolean s() {
+      return !this.s.aU();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.s.dH()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dr());
+         this.g = (double)((float)this.s.dt());
+         this.h = (double)((float)this.s.dx());
+         float $$0 = (float)this.s.dp().h();
+         if ($$0 >= 0.01F && this.s.dM().s().i()) {
+            this.t = axm.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = axm.i(axm.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
          }
       }
    }

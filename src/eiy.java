@@ -1,25 +1,45 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eiy extends ejb {
-   public static final Codec<eiy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kr.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, eiy::new)
-   );
-   private final dby b;
-   private final float d;
+public class eiy extends ejn {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<eiy> a = Codec.unit(() -> eiy.b);
+   public static final eiy b = new eiy();
 
-   public eiy(dby $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   private eiy() {
+   }
+
+   @Nullable
+   @Override
+   public ejq.c a(czj $$0, id $$1, id $$2, ejq.c $$3, ejq.c $$4, ejm $$5) {
+      dpi $$6 = $$4.b();
+      if ($$6.a(dcj.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dpi $$9;
+            try {
+               fo.a $$8 = fo.a($$0.a(ku.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               throw new RuntimeException(var11);
+            }
+
+            return $$9.a(dcj.kN) ? null : new ejq.c($$4.a(), $$9, null);
+         }
+      } else {
+         return $$4;
+      }
    }
 
    @Override
-   public boolean a(doz $$0, axr $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected ejc<?> a() {
-      return ejc.e;
+   protected ejp<?> a() {
+      return ejp.h;
    }
 }

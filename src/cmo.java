@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cmo {
+   private final String a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cmo {
+   public cmo(String $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
+   }
 }

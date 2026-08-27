@@ -1,77 +1,122 @@
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
+import java.io.DataInputStream;
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PushbackInputStream;
+import java.util.Map;
+import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class emu {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = emm.a();
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, emi> b = Maps.newHashMap();
+   private final DataFixer c;
+   private final ip.a d;
+   private final File e;
 
-   public emu(emr.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(emp.c).toFile();
-      this.c.mkdirs();
+   public emu(File $$0, DataFixer $$1, ip.a $$2) {
+      this.c = $$1;
+      this.e = $$0;
+      this.d = $$2;
    }
 
-   public void a(cjt $$0) {
+   private File a(String $$0) {
+      return new File(this.e, $$0 + ".dat");
+   }
+
+   public <T extends emi> T a(emi.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
+      }
+   }
+
+   @Nullable
+   public <T extends emi> T b(emi.a<T> $$0, String $$1) {
+      emi $$2 = this.b.get($$1);
+      if ($$2 == null && !this.b.containsKey($$1)) {
+         $$2 = this.a($$0.b(), $$0.c(), $$1);
+         this.b.put($$1, $$2);
+      }
+
+      return (T)$$2;
+   }
+
+   @Nullable
+   private <T extends emi> T a(BiFunction<to, ip.a, T> $$0, ays $$1, String $$2) {
       try {
-         tm $$1 = $$0.f(new tm());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cx() + "-", ".dat");
-         tz.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cx() + ".dat");
-         Path $$5 = $$2.resolve($$0.cx() + ".dat_old");
-         ac.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ad().getString());
+         File $$3 = this.a($$2);
+         if ($$3.exists()) {
+            to $$4 = this.a($$2, $$1, aa.b().d().c());
+            return $$0.apply($$4.p("data"), this.d);
+         }
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
       }
+
+      return null;
    }
 
-   private void a(cjt $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cx() + $$1);
-      Path $$4 = $$2.resolve($$0.cx() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.ad().getString(), var7);
+   public void a(String $$0, emi $$1) {
+      this.b.put($$0, $$1);
+   }
+
+   public to a(String $$0, ays $$1, int $$2) throws IOException {
+      File $$3 = this.a($$0);
+
+      to var9;
+      try (
+         InputStream $$4 = new FileInputStream($$3);
+         PushbackInputStream $$5 = new PushbackInputStream(new awv($$4), 2);
+      ) {
+         to $$6;
+         if (this.a($$5)) {
+            $$6 = ub.a($$5, tx.a());
+         } else {
+            try (DataInputStream $$7 = new DataInputStream($$5)) {
+               $$6 = ub.a($$7);
+            }
+         }
+
+         int $$10 = ud.b($$6, 1343);
+         var9 = $$1.a(this.c, $$6, $$10, $$2);
+      }
+
+      return var9;
+   }
+
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
          }
       }
+
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
+      }
+
+      return $$2;
    }
 
-   private Optional<tm> b(cjt $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cx() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(tz.a($$2.toPath(), tv.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.ad().getString());
+   public void a() {
+      this.b.forEach(($$0, $$1) -> {
+         if ($$1 != null) {
+            $$1.a(this.a($$0), this.d);
          }
-      }
-
-      return Optional.empty();
-   }
-
-   public Optional<tm> b(cjt $$0) {
-      Optional<tm> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
-      }
-
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = ub.b($$1x, -1);
-         $$1x = ayq.b.a(this.a, $$1x, $$2);
-         $$0.g($$1x);
-         return $$1x;
       });
    }
 }

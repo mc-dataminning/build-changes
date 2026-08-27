@@ -1,54 +1,80 @@
-public class fyj extends fxz {
-   fyj(fuh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fyi $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)awu.b.b($$7), (float)awu.b.c($$7), (float)awu.b.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+
+public abstract class fyj extends fxw {
+   protected float D;
+   private final Quaternionf a = new Quaternionf();
+
+   protected fyj(fuq $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+   }
+
+   protected fyj(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+   }
+
+   public fyj.a p() {
+      return fyj.a.a;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(ib.a(this.g, this.h, this.i)).i()) {
-            this.k -= 0.0074F;
-         }
+   public void a(ewv $$0, fbj $$1, float $$2) {
+      esj $$3 = $$1.b();
+      float $$4 = (float)(axm.d((double)$$2, this.d, this.g) - $$3.a());
+      float $$5 = (float)(axm.d((double)$$2, this.e, this.h) - $$3.b());
+      float $$6 = (float)(axm.d((double)$$2, this.f, this.i) - $$3.c());
+      this.p().setRotation(this.a, $$1, $$2);
+      if (this.z != 0.0F) {
+         this.a.rotateZ(axm.i($$2, this.A, this.z));
       }
+
+      Vector3f[] $$7 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$8 = this.b($$2);
+
+      for (int $$9 = 0; $$9 < 4; $$9++) {
+         Vector3f $$10 = $$7[$$9];
+         $$10.rotate(this.a);
+         $$10.mul($$8);
+         $$10.add($$4, $$5, $$6);
+      }
+
+      float $$11 = this.c();
+      float $$12 = this.d();
+      float $$13 = this.e();
+      float $$14 = this.f();
+      int $$15 = this.a($$2);
+      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
    }
 
-   public static class a implements fxq<ko> {
-      private final fyi a;
-
-      public a(fyi $$0) {
-         this.a = $$0;
-      }
-
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyj($$1, $$2, $$3, $$4, $$5, $$6, $$7, awu.b.a(255, 204, 31, 102), this.a);
-      }
+   public float b(float $$0) {
+      return this.D;
    }
 
-   public static class b implements fxq<ko> {
-      private final fyi a;
+   @Override
+   public fxw d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
+   }
 
-      public b(fyi $$0) {
-         this.a = $$0;
-      }
+   protected abstract float c();
 
-      public fxn a(ko $$0, fuh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyj($$1, $$2, $$3, $$4, $$5, $$6, $$7, awu.b.a(255, 255, 255, 255), this.a);
-      }
+   protected abstract float d();
+
+   protected abstract float e();
+
+   protected abstract float f();
+
+   public interface a {
+      fyj.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      fyj.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+
+      void setRotation(Quaternionf var1, fbj var2, float var3);
    }
 }

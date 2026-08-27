@@ -1,16 +1,17 @@
-public record zt() implements zo {
-   public static final ye<vg, zt> a = zo.a(zt::a, zt::new);
-   public static final zo.b<zt> b = zo.a("debug/game_test_clear");
-
-   private zt(vg $$0) {
-      this();
-   }
-
-   private void a(vg $$0) {
-   }
+public record zt(duf c, int d) implements zq {
+   public static final yg<vt, zt> a = yg.a(duf.d, zt::b, ye.f, zt::c, zt::new);
+   public static final zq.b<zt> b = zq.a("debug/game_event_listeners");
 
    @Override
-   public zo.b<zt> a() {
+   public zq.b<zt> a() {
       return b;
+   }
+
+   public duf b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

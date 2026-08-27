@@ -1,37 +1,102 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 
-public interface egs {
-   Codec<egs> b = kr.aj.q().dispatch(egs::b, Function.identity());
+public class egs {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final egz.a e;
 
-   void a(axr var1, BiConsumer<ajs<egq>, ajs<egq>> var2);
-
-   Stream<ajs<egq>> a();
-
-   static egr a(String $$0, String $$1) {
-      return a(qe.a($$0), qe.a($$1));
+   public egs(int $$0, int $$1, int $$2, int $$3, egz.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   static egr a(ajs<egq> $$0, ajs<egq> $$1) {
-      return new egr($$0, $$1);
+   public int a() {
+      return this.a;
    }
 
-   static egv a(String $$0, bmk<String> $$1) {
-      bmk.a<ajs<egq>> $$2 = bmk.a();
-      $$1.e().forEach($$1x -> $$2.a(qe.a((String)$$1x.b()), $$1x.a().a()));
-      return a(qe.a($$0), $$2.a());
+   public int b() {
+      return this.b;
    }
 
-   static egv a(ajs<egq> $$0, bmk<ajs<egq>> $$1) {
-      return new egv($$0, $$1);
+   public int c() {
+      return this.c;
    }
 
-   static egw a(bmk<List<egs>> $$0) {
-      return new egw($$0);
+   public int d() {
+      return this.d;
    }
 
-   Codec<? extends egs> b();
+   public egz.a e() {
+      return this.e;
+   }
+
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
+
+   public static <T> egs a(Dynamic<T> $$0) {
+      return new egs(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         egz.a.a($$0.get("dest_proj").asString(""))
+      );
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         egs $$1 = (egs)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
+   }
 }

@@ -1,39 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dze extends dxv<eag> {
-   public dze(Codec<eag> $$0) {
+public class dze extends dye<eax> {
+   public dze(Codec<eax> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dxx<eag> $$0) {
-      czs $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      ib.a $$3 = new ib.a();
-      ib.a $$4 = new ib.a();
+   public boolean a(dyg<eax> $$0) {
+      eax $$1 = $$0.f();
+      dab $$2 = $$0.b();
+      axt $$3 = $$0.d();
+      dch $$4 = $$1.b.b();
+      id $$5 = a($$2, $$0.e().j().a(ij.a.b, $$2.I_() + 1, $$2.al() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(dur.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(ih.a, 1);
-            czw $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, dca.dO.n(), 2);
+         for (id $$11 : id.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, dca.dN.n(), 2);
-               doz $$11 = $$1.a_($$4);
-               if ($$11.b(djh.c)) {
-                  $$1.a($$4, $$11.a(djh.c, Boolean.valueOf(true)), 2);
-               }
+            dpi $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
             }
          }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static id a(czh $$0, id.a $$1, dch $$2) {
+      while ($$1.v() > $$0.I_() + 1) {
+         dpi $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ij.a);
       }
 
-      return true;
+      return null;
    }
 }

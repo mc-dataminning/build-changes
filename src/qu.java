@@ -1,70 +1,24 @@
-public abstract class qu {
-   public static void a(px<czw> $$0) {
-      im<eel> $$1 = $$0.a(ks.aE);
-      im<dwu<?>> $$2 = $$0.a(ks.ax);
-      $$0.a(dad.a, qx.j($$1, $$2));
-      $$0.a(dad.b, qx.a($$1, $$2, false, false, false));
-      $$0.a(dad.c, qx.a($$1, $$2, true, false, false));
-      $$0.a(dad.d, qx.a($$1, $$2, false, true, false));
-      $$0.a(dad.e, qx.a($$1, $$2, false, true, true));
-      $$0.a(dad.f, qx.d($$1, $$2));
-      $$0.a(dad.g, qx.h($$1, $$2));
-      $$0.a(dad.h, qx.i($$1, $$2));
-      $$0.a(dad.i, qx.b($$1, $$2, false, false, false));
-      $$0.a(dad.j, qx.b($$1, $$2, false, false, true));
-      $$0.a(dad.k, qx.b($$1, $$2, true, false, false));
-      $$0.a(dad.l, qx.g($$1, $$2));
-      $$0.a(dad.m, qx.b($$1, $$2, true, true, false));
-      $$0.a(dad.n, qx.a($$1, $$2, false));
-      $$0.a(dad.o, qx.a($$1, $$2, true));
-      $$0.a(dad.p, qx.h($$1, $$2, false));
-      $$0.a(dad.q, qx.h($$1, $$2, true));
-      $$0.a(dad.r, qx.a($$1, $$2, false, false));
-      $$0.a(dad.s, qx.a($$1, $$2, false, true));
-      $$0.a(dad.t, qx.b($$1, $$2, false));
-      $$0.a(dad.u, qx.b($$1, $$2, false));
-      $$0.a(dad.v, qx.b($$1, $$2, true));
-      $$0.a(dad.w, qx.a($$1, $$2, true, false));
-      $$0.a(dad.x, qx.b($$1, $$2));
-      $$0.a(dad.y, qx.a($$1, $$2));
-      $$0.a(dad.z, qx.c($$1, $$2));
-      $$0.a(dad.A, qx.c($$1, $$2, false));
-      $$0.a(dad.B, qx.c($$1, $$2, false));
-      $$0.a(dad.C, qx.c($$1, $$2, true));
-      $$0.a(dad.D, qx.j($$1, $$2, false));
-      $$0.a(dad.E, qx.j($$1, $$2, true));
-      $$0.a(dad.F, qx.o($$1, $$2));
-      $$0.a(dad.G, qx.n($$1, $$2));
-      $$0.a(dad.H, qx.k($$1, $$2));
-      $$0.a(dad.I, qx.l($$1, $$2));
-      $$0.a(dad.J, qx.m($$1, $$2));
-      $$0.a(dad.K, qx.i($$1, $$2, false));
-      $$0.a(dad.L, qx.i($$1, $$2, true));
-      $$0.a(dad.M, qx.b($$1, $$2, false, false));
-      $$0.a(dad.N, qx.b($$1, $$2, true, false));
-      $$0.a(dad.O, qx.b($$1, $$2, false, true));
-      $$0.a(dad.P, qx.f($$1, $$2));
-      $$0.a(dad.Q, qx.f($$1, $$2, false));
-      $$0.a(dad.R, qx.f($$1, $$2, true));
-      $$0.a(dad.S, qx.e($$1, $$2, false));
-      $$0.a(dad.T, qx.e($$1, $$2, true));
-      $$0.a(dad.U, qx.d($$1, $$2, false));
-      $$0.a(dad.V, qx.d($$1, $$2, true));
-      $$0.a(dad.W, qx.g($$1, $$2, false));
-      $$0.a(dad.X, qx.g($$1, $$2, true));
-      $$0.a(dad.Y, qx.e($$1, $$2));
-      $$0.a(dad.Z, qx.q($$1, $$2));
-      $$0.a(dad.aa, qx.p($$1, $$2));
-      $$0.a(dad.ab, qx.r($$1, $$2));
-      $$0.a(dad.ac, qw.a($$1, $$2));
-      $$0.a(dad.ad, qw.e($$1, $$2));
-      $$0.a(dad.ae, qw.d($$1, $$2));
-      $$0.a(dad.af, qw.b($$1, $$2));
-      $$0.a(dad.ag, qw.c($$1, $$2));
-      $$0.a(dad.ah, qv.b($$1, $$2));
-      $$0.a(dad.ai, qv.d($$1, $$2));
-      $$0.a(dad.aj, qv.c($$1, $$2));
-      $$0.a(dad.ak, qv.e($$1, $$2));
-      $$0.a(dad.al, qv.a($$1, $$2));
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class qu {
+   public static void a(pz<efq> $$0) {
+      io<daf> $$1 = $$0.a(ku.aw);
+      io<egz> $$2 = $$0.a(ku.aJ);
+      $$0.a(
+         efk.H,
+         new ehq(
+            ql.a($$1.b(avd.I), Arrays.stream(bqw.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new efx(efx.a.a, bmt.c()))), duw.b.d, egb.b),
+            $$2.b(qq.a),
+            Optional.empty(),
+            20,
+            eea.a(dvu.a(-40), dvu.a(-20)),
+            false,
+            Optional.empty(),
+            116,
+            qq.d
+         )
+      );
    }
 }

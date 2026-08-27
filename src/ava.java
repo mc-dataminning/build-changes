@@ -1,16 +1,28 @@
-public class ava {
-   public static final avr<dlv> a = a("no_item_required");
-   public static final avr<dlv> b = a("pattern_item/flower");
-   public static final avr<dlv> c = a("pattern_item/creeper");
-   public static final avr<dlv> d = a("pattern_item/skull");
-   public static final avr<dlv> e = a("pattern_item/mojang");
-   public static final avr<dlv> f = a("pattern_item/globe");
-   public static final avr<dlv> g = a("pattern_item/piglin");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private ava() {
+public class ava {
+   protected final Object2IntMap<auv<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public ava() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static avr<dlv> a(String $$0) {
-      return avr.a(ks.d, new ajt($$0));
+   public void b(cka $$0, auv<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cka $$0, auv<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(auy<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(auv<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

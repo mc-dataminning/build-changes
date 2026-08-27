@@ -1,97 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.BiConsumer;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public record ctz(List<ctz.b> e, boolean f) {
-   public static final ctz a = new ctz(List.of(), true);
-   public static final Codec<ctz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ctz.b.a.listOf().fieldOf("modifiers").forGetter(ctz::b), aws.a(Codec.BOOL, "show_in_tooltip", true).forGetter(ctz::c))
-            .apply($$0, ctz::new)
-   );
-   public static final ye<vr, ctz> c = ye.a(ctz.b.b.a(yc.a()), ctz::b, yc.b, ctz::c, ctz::new);
-   public static final DecimalFormat d = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+public record ctz(Map<String, String> d) {
+   public static final ctz a = new ctz(Map.of());
+   public static final Codec<ctz> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(ctz::new, ctz::b);
+   private static final yg<ByteBuf, Map<String, String>> e = ye.a(Object2ObjectOpenHashMap::new, ye.k, ye.k);
+   public static final yg<ByteBuf, ctz> c = e.a(ctz::new, ctz::b);
 
-   public static ctz.a a() {
-      return new ctz.a();
+   public <T extends Comparable<T>> ctz a(dql<T> $$0, T $$1) {
+      return new ctz(ac.a(this.d, $$0.f(), $$0.a($$1)));
    }
 
-   public ctz a(il<brq> $$0, brt $$1, bqd $$2) {
-      return new ctz(ac.a(this.e, new ctz.b($$0, $$1, $$2)), this.f);
+   public <T extends Comparable<T>> ctz a(dql<T> $$0, dpi $$1) {
+      return this.a($$0, $$1.c($$0));
    }
 
-   public void a(bqc $$0, BiConsumer<il<brq>, brt> $$1) {
-      for (ctz.b $$2 : this.e) {
-         if ($$2.e.a($$0)) {
-            $$1.accept($$2.c, $$2.d);
-         }
-      }
+   @Nullable
+   public <T extends Comparable<T>> T a(dql<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
    }
 
-   public double a(double $$0, bqc $$1) {
-      double $$2 = $$0;
+   public dpi a(dpi $$0) {
+      dpj<dch, dpi> $$1 = $$0.b().l();
 
-      for (ctz.b $$3 : this.e) {
-         if ($$3.e.a($$1)) {
-            double $$4 = $$3.d.c();
-
-            $$2 += switch ($$3.d.b()) {
-               case a -> $$4;
-               case b -> $$4 * $$0;
-               case c -> $$4 * $$2;
-            };
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         dql<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
          }
       }
 
-      return $$2;
+      return $$0;
    }
 
-   public List<ctz.b> b() {
-      return this.e;
+   private static <T extends Comparable<T>> dpi a(dpi $$0, dql<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
    }
 
-   public boolean c() {
-      return this.f;
+   public boolean a() {
+      return this.d.isEmpty();
    }
 
-   public static class a {
-      private final Builder<ctz.b> a = ImmutableList.builder();
-
-      a() {
-      }
-
-      public ctz.a a(il<brq> $$0, brt $$1, bqd $$2) {
-         this.a.add(new ctz.b($$0, $$1, $$2));
-         return this;
-      }
-
-      public ctz a() {
-         return new ctz(this.a.build(), true);
-      }
-   }
-
-   public static record b(il<brq> c, brt d, bqd e) {
-      public static final Codec<ctz.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(kr.u.r().fieldOf("type").forGetter(ctz.b::a), brt.a.forGetter(ctz.b::b), aws.a(bqd.k, "slot", bqd.a).forGetter(ctz.b::c))
-               .apply($$0, ctz.b::new)
-      );
-      public static final ye<vr, ctz.b> b = ye.a(yc.b(ks.c), ctz.b::a, brt.c, ctz.b::b, bqd.l, ctz.b::c, ctz.b::new);
-
-      public il<brq> a() {
-         return this.c;
-      }
-
-      public brt b() {
-         return this.d;
-      }
-
-      public bqd c() {
-         return this.e;
-      }
+   public Map<String, String> b() {
+      return this.d;
    }
 }

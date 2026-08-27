@@ -1,66 +1,49 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class ecr {
-   public static final Codec<ecr> h = kr.Z.q().dispatch(ecr::a, ecs::a);
+public record ecr(ecj b, List<ecr.a> c) {
+   public static final Codec<ecr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ecj.a.fieldOf("fallback").forGetter(ecr::a), ecr.a.a.listOf().fieldOf("rules").forGetter(ecr::b)).apply($$0, ecr::new)
+   );
 
-   protected abstract ecs<?> a();
+   public static ecr a(ecj $$0) {
+      return new ecr($$0, List.of());
+   }
 
-   public abstract void a(ecr.a var1);
+   public static ecr a(dch $$0) {
+      return a(ecj.a($$0));
+   }
 
-   public static final class a {
-      private final czd a;
-      private final BiConsumer<ib, doz> b;
-      private final axr c;
-      private final ObjectArrayList<ib> d;
-      private final ObjectArrayList<ib> e;
-      private final ObjectArrayList<ib> f;
-
-      public a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, Set<ib> $$3, Set<ib> $$4, Set<ib> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(jg::v));
-         this.e.sort(Comparator.comparingInt(jg::v));
-         this.f.sort(Comparator.comparingInt(jg::v));
+   public dpi a(dab $$0, axt $$1, id $$2) {
+      for (ecr.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
       }
 
-      public void a(ib $$0, dpq $$1) {
-         this.a($$0, dca.ff.n().a($$1, Boolean.valueOf(true)));
+      return this.b.a($$1, $$2);
+   }
+
+   public ecj a() {
+      return this.b;
+   }
+
+   public List<ecr.a> b() {
+      return this.c;
+   }
+
+   public static record a(dwh b, ecj c) {
+      public static final Codec<ecr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dwh.b.fieldOf("if_true").forGetter(ecr.a::a), ecj.a.fieldOf("then").forGetter(ecr.a::b)).apply($$0, ecr.a::new)
+      );
+
+      public dwh a() {
+         return this.b;
       }
 
-      public void a(ib $$0, doz $$1) {
-         this.b.accept($$0, $$1);
-      }
-
-      public boolean a(ib $$0) {
-         return this.a.a($$0, doy.a::i);
-      }
-
-      public czd a() {
-         return this.a;
-      }
-
-      public axr b() {
+      public ecj b() {
          return this.c;
-      }
-
-      public ObjectArrayList<ib> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<ib> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<ib> e() {
-         return this.f;
       }
    }
 }

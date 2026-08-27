@@ -1,15 +1,11 @@
-import java.util.List;
+public interface zg extends aax, afo {
+   void a(zj var1);
 
-public record zg(zo b) implements yn<ze> {
-   private static final int c = 32767;
-   public static final ye<vg, zg> a = zo.<vg>a($$0 -> zp.a($$0, 32767), List.of(new zo.c<>(zm.b, zm.a))).a(zg::new, zg::b);
+   void a(zk var1);
 
-   @Override
-   public yp<zg> a() {
-      return zd.k;
-   }
+   void a(zi var1);
 
-   public void a(ze $$0) {
-      $$0.a(this);
-   }
+   void a(zl var1);
+
+   void a(zh var1);
 }

@@ -1,97 +1,161 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMaps;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Objects;
+import java.util.Set;
+import java.util.Spliterators;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public final class jn implements Predicate<jl> {
-   public static final Codec<jn> a = aws.c(jo.a, jo::c)
-      .xmap($$0 -> new jn($$0.entrySet().stream().map(jr::a).collect(Collectors.toList())), $$0 -> $$0.d.stream().collect(Collectors.toMap(jr::a, jr::b)));
-   public static final ye<vr, jn> b = jr.a.a(yc.a()).a(jn::new, $$0 -> $$0.d);
-   public static final jn c = new jn(List.of());
-   private final List<jr<?>> d;
+public interface jn extends Iterable<jt<?>> {
+   jn a = new jn() {
+      @Nullable
+      @Override
+      public <T> T a(jq<? extends T> $$0) {
+         return null;
+      }
 
-   jn(List<jr<?>> $$0) {
-      this.d = $$0;
-   }
+      @Override
+      public Set<jq<?>> b() {
+         return Set.of();
+      }
 
-   public static jn.a a() {
+      @Override
+      public Iterator<jt<?>> iterator() {
+         return Collections.emptyIterator();
+      }
+   };
+
+   static jn.a a() {
       return new jn.a();
    }
 
-   public static jn a(jl $$0) {
-      return new jn(ImmutableList.copyOf($$0));
+   @Nullable
+   <T> T a(jq<? extends T> var1);
+
+   Set<jq<?>> b();
+
+   default boolean b(jq<?> $$0) {
+      return this.a($$0) != null;
+   }
+
+   default <T> T a(jq<? extends T> $$0, T $$1) {
+      T $$2 = this.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   default <T> jt<T> c(jq<T> $$0) {
+      T $$1 = this.a($$0);
+      return $$1 != null ? new jt<>($$0, $$1) : null;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if ($$0 instanceof jn $$1 && this.d.equals($$1.d)) {
-         return true;
-      }
-
-      return false;
+   default Iterator<jt<?>> iterator() {
+      return Iterators.transform(this.b().iterator(), $$0 -> Objects.requireNonNull(this.c($$0)));
    }
 
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
+   default Stream<jt<?>> c() {
+      return StreamSupport.stream(Spliterators.spliterator(this.iterator(), (long)this.d(), 1345), false);
    }
 
-   @Override
-   public String toString() {
-      return this.d.toString();
+   default int d() {
+      return this.b().size();
    }
 
-   public boolean b(jl $$0) {
-      for (jr<?> $$1 : this.d) {
-         Object $$2 = $$0.a($$1.a());
-         if (!Objects.equals($$1.b(), $$2)) {
-            return false;
+   default boolean e() {
+      return this.d() == 0;
+   }
+
+   default jn a(final Predicate<jq<?>> $$0) {
+      return new jn() {
+         @Nullable
+         @Override
+         public <T> T a(jq<? extends T> $$0x) {
+            return $$0.test($$0) ? jn.this.a($$0) : null;
          }
-      }
 
-      return true;
-   }
-
-   public boolean a(jk $$0) {
-      return this.b($$0.a());
-   }
-
-   public boolean b() {
-      return this.d.isEmpty();
-   }
-
-   public jm c() {
-      jm.a $$0 = jm.a();
-
-      for (jr<?> $$1 : this.d) {
-         $$0.a($$1);
-      }
-
-      return $$0.a();
+         @Override
+         public Set<jq<?>> b() {
+            return Sets.filter(jn.this.b(), $$0::test);
+         }
+      };
    }
 
    public static class a {
-      private final List<jr<?>> a = new ArrayList<>();
+      private final Reference2ObjectMap<jq<?>, Object> a = new Reference2ObjectArrayMap();
 
       a() {
       }
 
-      public <T> jn.a a(jo<? super T> $$0, T $$1) {
-         for (jr<?> $$2 : this.a) {
-            if ($$2.a() == $$0) {
-               throw new IllegalArgumentException("Predicate already has component of type: '" + $$0 + "'");
-            }
+      public <T> jn.a a(jq<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         } else {
+            this.a.remove($$0);
          }
 
-         this.a.add(new jr<>($$0, $$1));
+         return this;
+      }
+
+      public jn.a a(jn $$0) {
+         for (jt<?> $$1 : $$0) {
+            this.a.put($$1.a(), $$1.b());
+         }
+
          return this;
       }
 
       public jn a() {
-         return new jn(List.copyOf(this.a));
+         if (this.a.isEmpty()) {
+            return jn.a;
+         } else {
+            return this.a.size() < 8 ? new jn.a.a(new Reference2ObjectArrayMap(this.a)) : new jn.a.a(new Reference2ObjectOpenHashMap(this.a));
+         }
+      }
+
+      static record a(Reference2ObjectMap<jq<?>, Object> b) implements jn {
+         @Nullable
+         @Override
+         public <T> T a(jq<? extends T> $$0) {
+            return (T)this.b.get($$0);
+         }
+
+         @Override
+         public boolean b(jq<?> $$0) {
+            return this.b.containsKey($$0);
+         }
+
+         @Override
+         public Set<jq<?>> b() {
+            return this.b.keySet();
+         }
+
+         @Override
+         public Iterator<jt<?>> iterator() {
+            return Iterators.transform(Reference2ObjectMaps.fastIterator(this.b), jt::a);
+         }
+
+         @Override
+         public int d() {
+            return this.b.size();
+         }
+
+         @Override
+         public String toString() {
+            return this.b.toString();
+         }
+
+         public Reference2ObjectMap<jq<?>, Object> f() {
+            return this.b;
+         }
       }
    }
 }

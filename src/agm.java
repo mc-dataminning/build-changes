@@ -1,45 +1,37 @@
-public class agm implements yn<afl> {
-   public static final ye<vg, agm> a = yn.a(agm::a, agm::new);
-   private final int b;
-   private final ajt c;
-   private final boolean d;
+public class agm implements yp<afn> {
+   public static final yg<vi, agm> a = yp.a(agm::a, agm::new);
+   private final boolean b;
+   private final boolean c;
 
-   public agm(int $$0, cvl<?> $$1, boolean $$2) {
+   public agm(boolean $$0, boolean $$1) {
       this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
+      this.c = $$1;
    }
 
-   private agm(vg $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
-      this.d = $$0.readBoolean();
+   private agm(vi $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vg $$0) {
-      $$0.k(this.b);
+   private void a(vi $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
    }
 
-   @Override
-   public yp<agm> a() {
-      return afj.bG;
-   }
-
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   @Override
+   public yr<agm> a() {
+      return afl.bE;
+   }
+
+   public boolean b() {
       return this.b;
    }
 
-   public ajt e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

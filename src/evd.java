@@ -1,468 +1,264 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.OptionalInt;
-import java.util.function.BiFunction;
-import javax.annotation.Nullable;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWCharModsCallbackI;
-import org.lwjgl.glfw.GLFWCursorPosCallbackI;
-import org.lwjgl.glfw.GLFWDropCallbackI;
-import org.lwjgl.glfw.GLFWKeyCallbackI;
-import org.lwjgl.glfw.GLFWMouseButtonCallbackI;
-import org.lwjgl.glfw.GLFWScrollCallbackI;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Matrix4f;
 
-public class evd {
-   @Nullable
-   private static final MethodHandle bw;
-   private static final int bx;
-   public static final int a = 48;
-   public static final int b = 49;
-   public static final int c = 50;
-   public static final int d = 51;
-   public static final int e = 52;
-   public static final int f = 53;
-   public static final int g = 54;
-   public static final int h = 55;
-   public static final int i = 56;
-   public static final int j = 57;
-   public static final int k = 65;
-   public static final int l = 66;
-   public static final int m = 67;
-   public static final int n = 68;
-   public static final int o = 69;
-   public static final int p = 70;
-   public static final int q = 71;
-   public static final int r = 72;
-   public static final int s = 73;
-   public static final int t = 74;
-   public static final int u = 75;
-   public static final int v = 76;
-   public static final int w = 77;
-   public static final int x = 78;
-   public static final int y = 79;
-   public static final int z = 80;
-   public static final int A = 81;
-   public static final int B = 82;
-   public static final int C = 83;
-   public static final int D = 84;
-   public static final int E = 85;
-   public static final int F = 86;
-   public static final int G = 87;
-   public static final int H = 88;
-   public static final int I = 89;
-   public static final int J = 90;
-   public static final int K = 290;
-   public static final int L = 291;
-   public static final int M = 292;
-   public static final int N = 293;
-   public static final int O = 294;
-   public static final int P = 295;
-   public static final int Q = 296;
-   public static final int R = 297;
-   public static final int S = 298;
-   public static final int T = 299;
-   public static final int U = 300;
-   public static final int V = 301;
-   public static final int W = 302;
-   public static final int X = 303;
-   public static final int Y = 304;
-   public static final int Z = 305;
-   public static final int aa = 306;
-   public static final int ab = 307;
-   public static final int ac = 308;
-   public static final int ad = 309;
-   public static final int ae = 310;
-   public static final int af = 311;
-   public static final int ag = 312;
-   public static final int ah = 313;
-   public static final int ai = 314;
-   public static final int aj = 282;
-   public static final int ak = 320;
-   public static final int al = 321;
-   public static final int am = 322;
-   public static final int an = 323;
-   public static final int ao = 324;
-   public static final int ap = 325;
-   public static final int aq = 326;
-   public static final int ar = 327;
-   public static final int as = 328;
-   public static final int at = 329;
-   public static final int au = 330;
-   public static final int av = 335;
-   public static final int aw = 336;
-   public static final int ax = 264;
-   public static final int ay = 263;
-   public static final int az = 262;
-   public static final int aA = 265;
-   public static final int aB = 334;
-   public static final int aC = 39;
-   public static final int aD = 92;
-   public static final int aE = 44;
-   public static final int aF = 61;
-   public static final int aG = 96;
-   public static final int aH = 91;
-   public static final int aI = 45;
-   public static final int aJ = 332;
-   public static final int aK = 46;
-   public static final int aL = 93;
-   public static final int aM = 59;
-   public static final int aN = 47;
-   public static final int aO = 32;
-   public static final int aP = 258;
-   public static final int aQ = 342;
-   public static final int aR = 341;
-   public static final int aS = 340;
-   public static final int aT = 343;
-   public static final int aU = 346;
-   public static final int aV = 345;
-   public static final int aW = 344;
-   public static final int aX = 347;
-   public static final int aY = 257;
-   public static final int aZ = 256;
-   public static final int ba = 259;
-   public static final int bb = 261;
-   public static final int bc = 269;
-   public static final int bd = 268;
-   public static final int be = 260;
-   public static final int bf = 267;
-   public static final int bg = 266;
-   public static final int bh = 280;
-   public static final int bi = 284;
-   public static final int bj = 281;
-   public static final int bk = 283;
-   public static final int bl = 1;
-   public static final int bm = 0;
-   public static final int bn = 2;
-   public static final int bo = 0;
-   public static final int bp = 2;
-   public static final int bq = 1;
-   public static final int br = 2;
-   public static final int bs = 208897;
-   public static final int bt = 212995;
-   public static final int bu = 212993;
-   public static final evd.a bv;
+public abstract class evd {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int l = 2;
+   private static final int m = 3;
+   public int c;
+   public int d;
+   public int e;
+   public int f;
+   public final boolean g;
+   public int h;
+   protected int i;
+   protected int j;
+   private final float[] n = ac.a(() -> new float[]{1.0F, 1.0F, 1.0F, 0.0F});
+   public int k;
 
-   public static evd.a a(int $$0, int $$1) {
-      return $$0 == -1 ? evd.b.b.a($$1) : evd.b.a.a($$0);
+   public evd(boolean $$0) {
+      this.g = $$0;
+      this.h = -1;
+      this.i = -1;
+      this.j = -1;
    }
 
-   public static evd.a a(String $$0) {
-      if (evd.a.e.containsKey($$0)) {
-         return evd.a.e.get($$0);
+   public void a(int $$0, int $$1, boolean $$2) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.d($$0, $$1, $$2));
       } else {
-         for (evd.b $$1 : evd.b.values()) {
-            if ($$0.startsWith($$1.f)) {
-               String $$2 = $$0.substring($$1.f.length() + 1);
-               int $$3 = Integer.parseInt($$2);
-               if ($$1 == evd.b.c) {
-                  $$3--;
-               }
+         this.d($$0, $$1, $$2);
+      }
+   }
 
-               return $$1.a($$3);
-            }
+   private void d(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._enableDepthTest();
+      if (this.h >= 0) {
+         this.a();
+      }
+
+      this.b($$0, $$1, $$2);
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.d();
+      this.e();
+      if (this.j > -1) {
+         TextureUtil.releaseTextureId(this.j);
+         this.j = -1;
+      }
+
+      if (this.i > -1) {
+         TextureUtil.releaseTextureId(this.i);
+         this.i = -1;
+      }
+
+      if (this.h > -1) {
+         GlStateManager._glBindFramebuffer(36160, 0);
+         GlStateManager._glDeleteFramebuffers(this.h);
+         this.h = -1;
+      }
+   }
+
+   public void a(evd $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36008, $$0.h);
+      GlStateManager._glBindFramebuffer(36009, this.h);
+      GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.c, this.d, 256, 9728);
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void b(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$3 = RenderSystem.maxSupportedTextureSize();
+      if ($$0 > 0 && $$0 <= $$3 && $$1 > 0 && $$1 <= $$3) {
+         this.e = $$0;
+         this.f = $$1;
+         this.c = $$0;
+         this.d = $$1;
+         this.h = GlStateManager.glGenFramebuffers();
+         this.i = TextureUtil.generateTextureId();
+         if (this.g) {
+            this.j = TextureUtil.generateTextureId();
+            GlStateManager._bindTexture(this.j);
+            GlStateManager._texParameter(3553, 10241, 9728);
+            GlStateManager._texParameter(3553, 10240, 9728);
+            GlStateManager._texParameter(3553, 34892, 0);
+            GlStateManager._texParameter(3553, 10242, 33071);
+            GlStateManager._texParameter(3553, 10243, 33071);
+            GlStateManager._texImage2D(3553, 0, 6402, this.c, this.d, 0, 6402, 5126, null);
          }
 
-         throw new IllegalArgumentException("Unknown key name: " + $$0);
+         this.a(9728);
+         GlStateManager._bindTexture(this.i);
+         GlStateManager._texParameter(3553, 10242, 33071);
+         GlStateManager._texParameter(3553, 10243, 33071);
+         GlStateManager._texImage2D(3553, 0, 32856, this.c, this.d, 0, 6408, 5121, null);
+         GlStateManager._glBindFramebuffer(36160, this.h);
+         GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+         if (this.g) {
+            GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+         }
+
+         this.b();
+         this.b($$2);
+         this.d();
+      } else {
+         throw new IllegalArgumentException("Window " + $$0 + "x" + $$1 + " size out of bounds (max. size: " + $$3 + ")");
       }
    }
 
-   public static boolean a(long $$0, int $$1) {
-      return GLFW.glfwGetKey($$0, $$1) == 1;
+   public void a(int $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.k = $$0;
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texParameter(3553, 10241, $$0);
+      GlStateManager._texParameter(3553, 10240, $$0);
+      GlStateManager._bindTexture(0);
    }
 
-   public static void a(long $$0, GLFWKeyCallbackI $$1, GLFWCharModsCallbackI $$2) {
-      GLFW.glfwSetKeyCallback($$0, $$1);
-      GLFW.glfwSetCharModsCallback($$0, $$2);
-   }
-
-   public static void a(long $$0, GLFWCursorPosCallbackI $$1, GLFWMouseButtonCallbackI $$2, GLFWScrollCallbackI $$3, GLFWDropCallbackI $$4) {
-      GLFW.glfwSetCursorPosCallback($$0, $$1);
-      GLFW.glfwSetMouseButtonCallback($$0, $$2);
-      GLFW.glfwSetScrollCallback($$0, $$3);
-      GLFW.glfwSetDropCallback($$0, $$4);
-   }
-
-   public static void a(long $$0, int $$1, double $$2, double $$3) {
-      GLFW.glfwSetCursorPos($$0, $$2, $$3);
-      GLFW.glfwSetInputMode($$0, 208897, $$1);
-   }
-
-   public static boolean a() {
-      try {
-         return bw != null && (boolean)bw.invokeExact();
-      } catch (Throwable var1) {
-         throw new RuntimeException(var1);
-      }
-   }
-
-   public static void a(long $$0, boolean $$1) {
-      if (a()) {
-         GLFW.glfwSetInputMode($$0, bx, $$1 ? 1 : 0);
-      }
-   }
-
-   static {
-      Lookup $$0 = MethodHandles.lookup();
-      MethodType $$1 = MethodType.methodType(boolean.class);
-      MethodHandle $$2 = null;
-      int $$3 = 0;
-
-      try {
-         $$2 = $$0.findStatic(GLFW.class, "glfwRawMouseMotionSupported", $$1);
-         MethodHandle $$4 = $$0.findStaticGetter(GLFW.class, "GLFW_RAW_MOUSE_MOTION", int.class);
-         $$3 = (int)$$4.invokeExact();
-      } catch (NoSuchFieldException | NoSuchMethodException var5) {
-      } catch (Throwable var6) {
-         throw new RuntimeException(var6);
-      }
-
-      bw = $$2;
-      bx = $$3;
-      bv = evd.b.a.a(-1);
-   }
-
-   public static final class a {
-      private final String a;
-      private final evd.b b;
-      private final int c;
-      private final axf<wg> d;
-      static final Map<String, evd.a> e = Maps.newHashMap();
-
-      a(String $$0, evd.b $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = new axf<>(() -> $$1.g.apply($$2, $$0));
-         e.put($$0, this);
-      }
-
-      public evd.b a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.a;
-      }
-
-      public wg d() {
-         return this.d.a();
-      }
-
-      public OptionalInt e() {
-         if (this.c >= 48 && this.c <= 57) {
-            return OptionalInt.of(this.c - 48);
+   public void b() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$0 = GlStateManager.glCheckFramebufferStatus(36160);
+      if ($$0 != 36053) {
+         if ($$0 == 36054) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT");
+         } else if ($$0 == 36055) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
+         } else if ($$0 == 36059) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER");
+         } else if ($$0 == 36060) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER");
+         } else if ($$0 == 36061) {
+            throw new RuntimeException("GL_FRAMEBUFFER_UNSUPPORTED");
+         } else if ($$0 == 1285) {
+            throw new RuntimeException("GL_OUT_OF_MEMORY");
          } else {
-            return this.c >= 320 && this.c <= 329 ? OptionalInt.of(this.c - 320) : OptionalInt.empty();
+            throw new RuntimeException("glCheckFramebufferStatus returned unknown status:" + $$0);
          }
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            evd.a $$1 = (evd.a)$$0;
-            return this.c == $$1.c && this.b == $$1.b;
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.b, this.c);
-      }
-
-      @Override
-      public String toString() {
-         return this.a;
       }
    }
 
-   public static enum b {
-      a("key.keyboard", ($$0, $$1) -> {
-         if ("key.keyboard.unknown".equals($$1)) {
-            return wg.c($$1);
-         } else {
-            String $$2 = GLFW.glfwGetKeyName($$0, -1);
-            return $$2 != null ? wg.b($$2.toUpperCase(Locale.ROOT)) : wg.c($$1);
-         }
-      }),
-      b("scancode", ($$0, $$1) -> {
-         String $$2 = GLFW.glfwGetKeyName(-1, $$0);
-         return $$2 != null ? wg.b($$2) : wg.c($$1);
-      }),
-      c("key.mouse", ($$0, $$1) -> th.a().b($$1) ? wg.c($$1) : wg.a("key.mouse", $$0 + 1));
+   public void c() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._bindTexture(this.i);
+   }
 
-      private static final String d = "key.keyboard.unknown";
-      private final Int2ObjectMap<evd.a> e = new Int2ObjectOpenHashMap();
-      final String f;
-      final BiFunction<Integer, String, wg> g;
+   public void d() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._bindTexture(0);
+   }
 
-      private static void a(evd.b $$0, String $$1, int $$2) {
-         evd.a $$3 = new evd.a($$1, $$0, $$2);
-         $$0.e.put($$2, $$3);
+   public void a(boolean $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.c($$0));
+      } else {
+         this.c($$0);
+      }
+   }
+
+   private void c(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      if ($$0) {
+         GlStateManager._viewport(0, 0, this.e, this.f);
+      }
+   }
+
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._glBindFramebuffer(36160, 0));
+      } else {
+         GlStateManager._glBindFramebuffer(36160, 0);
+      }
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      this.n[0] = $$0;
+      this.n[1] = $$1;
+      this.n[2] = $$2;
+      this.n[3] = $$3;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.c($$0, $$1, true);
+   }
+
+   public void c(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (!RenderSystem.isInInitPhase()) {
+         RenderSystem.recordRenderCall(() -> this.e($$0, $$1, $$2));
+      } else {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   private void e(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._colorMask(true, true, true, false);
+      GlStateManager._disableDepthTest();
+      GlStateManager._depthMask(false);
+      GlStateManager._viewport(0, 0, $$0, $$1);
+      if ($$2) {
+         GlStateManager._disableBlend();
       }
 
-      private b(String $$0, BiFunction<Integer, String, wg> $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      fby $$3 = fby.Q();
+      gaw $$4 = $$3.j.e;
+      $$4.a("DiffuseSampler", this.i);
+      Matrix4f $$5 = new Matrix4f().setOrtho(0.0F, (float)$$0, (float)$$1, 0.0F, 1000.0F, 3000.0F);
+      RenderSystem.setProjectionMatrix($$5, ewz.b);
+      if ($$4.b != null) {
+         $$4.b.a(new Matrix4f().translation(0.0F, 0.0F, -2000.0F));
       }
 
-      public evd.a a(int $$0) {
-         return (evd.a)this.e.computeIfAbsent($$0, $$0x -> {
-            int $$1 = $$0x;
-            if (this == c) {
-               $$1 = $$0x + 1;
-            }
-
-            String $$2 = this.f + "." + $$1;
-            return new evd.a($$2, this, $$0x);
-         });
+      if ($$4.c != null) {
+         $$4.c.a($$5);
       }
 
-      static {
-         a(a, "key.keyboard.unknown", -1);
-         a(c, "key.mouse.left", 0);
-         a(c, "key.mouse.right", 1);
-         a(c, "key.mouse.middle", 2);
-         a(c, "key.mouse.4", 3);
-         a(c, "key.mouse.5", 4);
-         a(c, "key.mouse.6", 5);
-         a(c, "key.mouse.7", 6);
-         a(c, "key.mouse.8", 7);
-         a(a, "key.keyboard.0", 48);
-         a(a, "key.keyboard.1", 49);
-         a(a, "key.keyboard.2", 50);
-         a(a, "key.keyboard.3", 51);
-         a(a, "key.keyboard.4", 52);
-         a(a, "key.keyboard.5", 53);
-         a(a, "key.keyboard.6", 54);
-         a(a, "key.keyboard.7", 55);
-         a(a, "key.keyboard.8", 56);
-         a(a, "key.keyboard.9", 57);
-         a(a, "key.keyboard.a", 65);
-         a(a, "key.keyboard.b", 66);
-         a(a, "key.keyboard.c", 67);
-         a(a, "key.keyboard.d", 68);
-         a(a, "key.keyboard.e", 69);
-         a(a, "key.keyboard.f", 70);
-         a(a, "key.keyboard.g", 71);
-         a(a, "key.keyboard.h", 72);
-         a(a, "key.keyboard.i", 73);
-         a(a, "key.keyboard.j", 74);
-         a(a, "key.keyboard.k", 75);
-         a(a, "key.keyboard.l", 76);
-         a(a, "key.keyboard.m", 77);
-         a(a, "key.keyboard.n", 78);
-         a(a, "key.keyboard.o", 79);
-         a(a, "key.keyboard.p", 80);
-         a(a, "key.keyboard.q", 81);
-         a(a, "key.keyboard.r", 82);
-         a(a, "key.keyboard.s", 83);
-         a(a, "key.keyboard.t", 84);
-         a(a, "key.keyboard.u", 85);
-         a(a, "key.keyboard.v", 86);
-         a(a, "key.keyboard.w", 87);
-         a(a, "key.keyboard.x", 88);
-         a(a, "key.keyboard.y", 89);
-         a(a, "key.keyboard.z", 90);
-         a(a, "key.keyboard.f1", 290);
-         a(a, "key.keyboard.f2", 291);
-         a(a, "key.keyboard.f3", 292);
-         a(a, "key.keyboard.f4", 293);
-         a(a, "key.keyboard.f5", 294);
-         a(a, "key.keyboard.f6", 295);
-         a(a, "key.keyboard.f7", 296);
-         a(a, "key.keyboard.f8", 297);
-         a(a, "key.keyboard.f9", 298);
-         a(a, "key.keyboard.f10", 299);
-         a(a, "key.keyboard.f11", 300);
-         a(a, "key.keyboard.f12", 301);
-         a(a, "key.keyboard.f13", 302);
-         a(a, "key.keyboard.f14", 303);
-         a(a, "key.keyboard.f15", 304);
-         a(a, "key.keyboard.f16", 305);
-         a(a, "key.keyboard.f17", 306);
-         a(a, "key.keyboard.f18", 307);
-         a(a, "key.keyboard.f19", 308);
-         a(a, "key.keyboard.f20", 309);
-         a(a, "key.keyboard.f21", 310);
-         a(a, "key.keyboard.f22", 311);
-         a(a, "key.keyboard.f23", 312);
-         a(a, "key.keyboard.f24", 313);
-         a(a, "key.keyboard.f25", 314);
-         a(a, "key.keyboard.num.lock", 282);
-         a(a, "key.keyboard.keypad.0", 320);
-         a(a, "key.keyboard.keypad.1", 321);
-         a(a, "key.keyboard.keypad.2", 322);
-         a(a, "key.keyboard.keypad.3", 323);
-         a(a, "key.keyboard.keypad.4", 324);
-         a(a, "key.keyboard.keypad.5", 325);
-         a(a, "key.keyboard.keypad.6", 326);
-         a(a, "key.keyboard.keypad.7", 327);
-         a(a, "key.keyboard.keypad.8", 328);
-         a(a, "key.keyboard.keypad.9", 329);
-         a(a, "key.keyboard.keypad.add", 334);
-         a(a, "key.keyboard.keypad.decimal", 330);
-         a(a, "key.keyboard.keypad.enter", 335);
-         a(a, "key.keyboard.keypad.equal", 336);
-         a(a, "key.keyboard.keypad.multiply", 332);
-         a(a, "key.keyboard.keypad.divide", 331);
-         a(a, "key.keyboard.keypad.subtract", 333);
-         a(a, "key.keyboard.down", 264);
-         a(a, "key.keyboard.left", 263);
-         a(a, "key.keyboard.right", 262);
-         a(a, "key.keyboard.up", 265);
-         a(a, "key.keyboard.apostrophe", 39);
-         a(a, "key.keyboard.backslash", 92);
-         a(a, "key.keyboard.comma", 44);
-         a(a, "key.keyboard.equal", 61);
-         a(a, "key.keyboard.grave.accent", 96);
-         a(a, "key.keyboard.left.bracket", 91);
-         a(a, "key.keyboard.minus", 45);
-         a(a, "key.keyboard.period", 46);
-         a(a, "key.keyboard.right.bracket", 93);
-         a(a, "key.keyboard.semicolon", 59);
-         a(a, "key.keyboard.slash", 47);
-         a(a, "key.keyboard.space", 32);
-         a(a, "key.keyboard.tab", 258);
-         a(a, "key.keyboard.left.alt", 342);
-         a(a, "key.keyboard.left.control", 341);
-         a(a, "key.keyboard.left.shift", 340);
-         a(a, "key.keyboard.left.win", 343);
-         a(a, "key.keyboard.right.alt", 346);
-         a(a, "key.keyboard.right.control", 345);
-         a(a, "key.keyboard.right.shift", 344);
-         a(a, "key.keyboard.right.win", 347);
-         a(a, "key.keyboard.enter", 257);
-         a(a, "key.keyboard.escape", 256);
-         a(a, "key.keyboard.backspace", 259);
-         a(a, "key.keyboard.delete", 261);
-         a(a, "key.keyboard.end", 269);
-         a(a, "key.keyboard.home", 268);
-         a(a, "key.keyboard.insert", 260);
-         a(a, "key.keyboard.page.down", 267);
-         a(a, "key.keyboard.page.up", 266);
-         a(a, "key.keyboard.caps.lock", 280);
-         a(a, "key.keyboard.pause", 284);
-         a(a, "key.keyboard.scroll.lock", 281);
-         a(a, "key.keyboard.menu", 348);
-         a(a, "key.keyboard.print.screen", 283);
-         a(a, "key.keyboard.world.1", 161);
-         a(a, "key.keyboard.world.2", 162);
+      $$4.g();
+      float $$6 = (float)$$0;
+      float $$7 = (float)$$1;
+      float $$8 = (float)this.e / (float)this.c;
+      float $$9 = (float)this.f / (float)this.d;
+      ewt $$10 = RenderSystem.renderThreadTesselator();
+      ewm $$11 = $$10.d();
+      $$11.a(eww.b.h, ewp.s);
+      $$11.a(0.0, (double)$$7, 0.0).a(0.0F, 0.0F).a(255, 255, 255, 255).e();
+      $$11.a((double)$$6, (double)$$7, 0.0).a($$8, 0.0F).a(255, 255, 255, 255).e();
+      $$11.a((double)$$6, 0.0, 0.0).a($$8, $$9).a(255, 255, 255, 255).e();
+      $$11.a(0.0, 0.0, 0.0).a(0.0F, $$9).a(255, 255, 255, 255).e();
+      ewn.b($$11.d());
+      $$4.f();
+      GlStateManager._depthMask(true);
+      GlStateManager._colorMask(true, true, true, true);
+   }
+
+   public void b(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a(true);
+      GlStateManager._clearColor(this.n[0], this.n[1], this.n[2], this.n[3]);
+      int $$1 = 16384;
+      if (this.g) {
+         GlStateManager._clearDepth(1.0);
+         $$1 |= 256;
       }
+
+      GlStateManager._clear($$1, $$0);
+      this.e();
+   }
+
+   public int f() {
+      return this.i;
+   }
+
+   public int g() {
+      return this.j;
    }
 }

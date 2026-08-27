@@ -1,56 +1,41 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class gmk extends ath<List<String>> {
-   private static final ajt a = new ajt("texts/splashes.txt");
-   private static final axr b = axr.a();
-   private final List<String> c = Lists.newArrayList();
-   private final fce d;
+public class gmk {
+   private static final gmr[] a = new gmr[]{
+      a("textures/entity/player/slim/alex.png", gmr.a.a),
+      a("textures/entity/player/slim/ari.png", gmr.a.a),
+      a("textures/entity/player/slim/efe.png", gmr.a.a),
+      a("textures/entity/player/slim/kai.png", gmr.a.a),
+      a("textures/entity/player/slim/makena.png", gmr.a.a),
+      a("textures/entity/player/slim/noor.png", gmr.a.a),
+      a("textures/entity/player/slim/steve.png", gmr.a.a),
+      a("textures/entity/player/slim/sunny.png", gmr.a.a),
+      a("textures/entity/player/slim/zuri.png", gmr.a.a),
+      a("textures/entity/player/wide/alex.png", gmr.a.b),
+      a("textures/entity/player/wide/ari.png", gmr.a.b),
+      a("textures/entity/player/wide/efe.png", gmr.a.b),
+      a("textures/entity/player/wide/kai.png", gmr.a.b),
+      a("textures/entity/player/wide/makena.png", gmr.a.b),
+      a("textures/entity/player/wide/noor.png", gmr.a.b),
+      a("textures/entity/player/wide/steve.png", gmr.a.b),
+      a("textures/entity/player/wide/sunny.png", gmr.a.b),
+      a("textures/entity/player/wide/zuri.png", gmr.a.b)
+   };
 
-   public gmk(fce $$0) {
-      this.d = $$0;
+   public static ajv a() {
+      return a[6].a();
    }
 
-   protected List<String> a(atc $$0, bko $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = fbp.Q().ab().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
-
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
-      }
+   public static gmr a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
    }
 
-   protected void a(List<String> $$0, atc $$1, bko $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
+   public static gmr a(GameProfile $$0) {
+      return a($$0.getId());
    }
 
-   @Nullable
-   public fet a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return fet.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return fet.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return fet.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new fet(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fet(this.c.get(b.a(this.c.size())));
-      }
+   private static gmr a(String $$0, gmr.a $$1) {
+      return new gmr(new ajv($$0), null, null, null, $$1, true);
    }
 }

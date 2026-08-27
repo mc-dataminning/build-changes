@@ -1,29 +1,29 @@
-public class afp implements yn<afl> {
-   public static final ye<vg, afp> a = yn.a(afp::a, afp::new);
-   private final bnx b;
+public class afp implements yp<afn> {
+   public static final yg<vi, afp> a = yp.a(afp::a, afp::new);
+   private final int b;
 
-   public afp(bnx $$0) {
+   public afp(int $$0) {
       this.b = $$0;
    }
 
-   private afp(vg $$0) {
-      this.b = bnx.a($$0.readUnsignedByte());
+   private afp(vi $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vg $$0) {
-      $$0.k(this.b.a());
+   private void a(vi $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yp<afp> a() {
-      return afj.bg;
+   public yr<afp> a() {
+      return afl.be;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public bnx b() {
+   public int b() {
       return this.b;
    }
 }

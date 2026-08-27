@@ -1,69 +1,75 @@
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class ecv extends edd {
-   public static final Codec<ecv> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aws.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bnf.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, ecv::new)
-   );
-   private final int b;
-   private final bnf h;
+public class ecv extends eda {
+   public static final Codec<ecv> a = ecj.a.fieldOf("provider").xmap(ecv::new, $$0 -> $$0.b).codec();
+   private final ecj b;
 
-   public ecv(int $$0, int $$1, int $$2, int $$3, bnf $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   public ecv(ecj $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected ede<?> a() {
-      return ede.g;
+   protected edb<?> a() {
+      return edb.e;
    }
 
    @Override
-   public List<ebl.a> a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, int $$3, ib $$4, eav $$5) {
-      ih $$6 = ih.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      ib.a $$8 = $$4.j();
-      ib $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<ebl.a> $$10 = Lists.newArrayList();
-
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (dzh.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new ebl.a($$8.i(), 0, false));
-         }
-
-         $$8.c(ih.b);
+   public void a(eda.a $$0) {
+      List<id> $$1 = Lists.newArrayList();
+      List<id> $$2 = $$0.e();
+      List<id> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
       }
 
-      int $$12 = this.h.a($$2);
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.g().e());
+            this.a($$0, $$1x.g(2).e());
+            this.a($$0, $$1x.g().e(2));
+            this.a($$0, $$1x.g(2).e(2));
 
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (dzh.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
+            }
+         });
+      }
+   }
+
+   private void a(eda.a $$0, id $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
+      }
+   }
+
+   private void b(eda.a $$0, id $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         id $$3 = $$1.b($$2);
+         if (dye.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
          }
 
-         $$10.add(new ebl.a($$8.i(), 0, false));
-         $$8.c($$6);
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
       }
-
-      return $$10;
    }
 }

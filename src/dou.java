@@ -1,22 +1,76 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 public class dou {
-   public static erv a(erv $$0, ih $$1, double $$2) {
-      double $$3 = $$2 * (double)$$1.f().a();
-      double $$4 = Math.min($$3, 0.0);
-      double $$5 = Math.max($$3, 0.0);
-      switch ($$1) {
-         case e:
-            return new erv($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
-         case f:
-            return new erv($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
-         case a:
-            return new erv($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
-         case b:
-         default:
-            return new erv($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
-         case c:
-            return new erv($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
-         case d:
-            return new erv($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
+   static final String a = "shared_data";
+   static Codec<dou> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               crs.a("display_item").forGetter($$0x -> $$0x.d),
+               jh.c.optionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.optionalFieldOf("connected_particles_range", dos.b.d()).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dou::new)
+   );
+   private crs d = crs.i;
+   private Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private double f = dos.b.d();
+   boolean c;
+
+   dou(crs $$0, Set<UUID> $$1, double $$2) {
+      this.d = $$0;
+      this.e.addAll($$1);
+      this.f = $$2;
+   }
+
+   dou() {
+   }
+
+   public crs a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return !this.d.d();
+   }
+
+   public void a(crs $$0) {
+      if (!crs.a(this.d, $$0)) {
+         this.d = $$0.r();
+         this.f();
       }
+   }
+
+   boolean c() {
+      return !this.e.isEmpty();
+   }
+
+   Set<UUID> d() {
+      return this.e;
+   }
+
+   double e() {
+      return this.f;
+   }
+
+   void a(apu $$0, id $$1, dot $$2, dos $$3, double $$4) {
+      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
+      if (!this.e.equals($$5)) {
+         this.e = $$5;
+         this.f();
+      }
+   }
+
+   private void f() {
+      this.c = true;
+   }
+
+   void a(dou $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
    }
 }

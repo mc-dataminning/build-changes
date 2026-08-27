@@ -1,18 +1,18 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ejo implements ejp {
-   public static final ejo a = new ejo();
-   public static final Codec<ejo> b = Codec.unit(a);
+public class ejo {
+   private final List<ejn> a;
 
-   @Nullable
-   @Override
-   public tm a(axr $$0, @Nullable tm $$1) {
-      return $$1;
+   public ejo(List<ejn> $$0) {
+      this.a = $$0;
+   }
+
+   public List<ejn> a() {
+      return this.a;
    }
 
    @Override
-   public ejq<?> a() {
-      return ejq.b;
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

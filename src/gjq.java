@@ -1,25 +1,34 @@
-public class gjq<T extends cjt> extends gjt<T, frr<T>> {
-   private final frm a;
+public class gjq extends gkc<ceo, frg<ceo>> {
+   private final frg<ceo> a;
 
-   public gjq(ghd<T, frr<T>> $$0, fti $$1) {
+   public gjq(ghm<ceo, frg<ceo>> $$0, ftr $$1) {
       super($$0);
-      this.a = new frm($$1.a(ftl.aG));
+      this.a = new frg<>($$1.a(ftu.aq));
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
+   public void a(ewr $$0, gai $$1, int $$2, ceo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      crs $$10 = $$3.fP();
+      if ($$10.f() instanceof cpg $$11 && $$11.d() == cpg.a.a) {
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$15;
+         float $$16;
+         float $$14;
+         if ($$10.a(avm.ba)) {
+            int $$13 = cuf.a($$10, -6265536);
+            $$14 = (float)aww.b.b($$13) / 255.0F;
+            $$15 = (float)aww.b.c($$13) / 255.0F;
+            $$16 = (float)aww.b.d($$13) / 255.0F;
+         } else {
+            $$14 = 1.0F;
+            $$15 = 1.0F;
+            $$16 = 1.0F;
+         }
 
-   private void a(ewi $$0, fzz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      tm $$9 = $$8 ? $$3.gq() : $$3.gr();
-      bqb.a($$9.l("id")).filter($$0x -> $$0x == bqb.aw).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
-         cct.b $$11 = cct.b.a($$9.h("Variant"));
-         ewm $$12 = $$1.getBuffer(this.a.a(ggu.a($$11)));
-         this.a.a($$0, $$12, $$2, gla.d, $$4, $$5, $$6, $$7, $$3.ah);
-         $$0.b();
-      });
+         ewv $$20 = $$1.getBuffer(gaq.e($$11.b()));
+         this.a.a($$0, $$20, $$2, glj.d, $$14, $$15, $$16, 1.0F);
+         return;
+      }
    }
 }

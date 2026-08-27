@@ -1,64 +1,88 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-public class fqb<T extends bpv> extends fph<T> {
-   public static final String a = "red_thing";
-   private final ftm b;
-   private final ftm f;
-   private final ftm g;
-   private final ftm h;
-   private final ftm i;
-   private final ftm j;
-   private final ftm k;
-   private final ftm l;
+public class fqb extends frn<clx> implements fti {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "water_patch";
+   private static final String g = "bottom";
+   private static final String h = "back";
+   private static final String i = "front";
+   private static final String j = "right";
+   private static final String k = "left";
+   private final ftv l;
+   private final ftv m;
+   private final ftv n;
+   private final ImmutableList<ftv> o;
 
-   public fqb(ftm $$0) {
-      this.b = $$0.b("head");
-      this.k = $$0.b("beak");
-      this.l = $$0.b("red_thing");
-      this.f = $$0.b("body");
-      this.g = $$0.b("right_leg");
-      this.h = $$0.b("left_leg");
-      this.i = $$0.b("right_wing");
-      this.j = $$0.b("left_wing");
+   public fqb(ftv $$0) {
+      this.l = $$0.b("left_paddle");
+      this.m = $$0.b("right_paddle");
+      this.n = $$0.b("water_patch");
+      this.o = this.a($$0).build();
    }
 
-   public static fts c() {
-      ftu $$0 = new ftu();
-      ftv $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", ftr.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fto.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", ftr.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fto.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", ftr.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fto.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", ftr.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fto.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      ftr $$3 = ftr.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, fto.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, fto.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", ftr.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fto.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", ftr.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fto.a(4.0F, 13.0F, 0.0F));
-      return fts.a($$0, 64, 32);
+   protected Builder<ftv> a(ftv $$0) {
+      Builder<ftv> $$1 = new Builder();
+      $$1.add(new ftv[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
+      return $$1;
+   }
+
+   public static void a(fue $$0) {
+      int $$1 = 32;
+      int $$2 = 6;
+      int $$3 = 20;
+      int $$4 = 4;
+      int $$5 = 28;
+      $$0.a("bottom", fua.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), ftx.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$0.a("back", fua.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), ftx.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$0.a("front", fua.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), ftx.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$0.a("right", fua.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), ftx.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$0.a("left", fua.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), ftx.a(0.0F, 4.0F, 9.0F));
+      int $$6 = 20;
+      int $$7 = 7;
+      int $$8 = 6;
+      float $$9 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fua.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         ftx.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fua.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         ftx.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
+      $$0.a("water_patch", fua.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), ftx.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+   }
+
+   public static fub a() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      a($$1);
+      return fub.a($$0, 128, 64);
+   }
+
+   public void a(clx $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.l, $$1);
+      a($$0, 1, this.m, $$1);
+   }
+
+   public ImmutableList<ftv> b() {
+      return this.o;
    }
 
    @Override
-   protected Iterable<ftm> a() {
-      return ImmutableList.of(this.b, this.k, this.l);
+   public ftv c() {
+      return this.n;
    }
 
-   @Override
-   protected Iterable<ftm> b() {
-      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = this.b.e;
-      this.k.f = this.b.f;
-      this.l.e = this.b.e;
-      this.l.f = this.b.f;
-      this.g.e = axk.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.h.e = axk.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.g = $$3;
-      this.j.g = -$$3;
+   private static void a(clx $$0, int $$1, ftv $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = axm.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (axm.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = axm.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (axm.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

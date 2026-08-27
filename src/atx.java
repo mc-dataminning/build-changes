@@ -3,13 +3,13 @@ import com.mojang.authlib.GameProfile;
 import java.io.File;
 import java.util.Objects;
 
-public class atx extends atu<GameProfile, aty> {
+public class atx extends atw<GameProfile, aty> {
    public atx(File $$0) {
       super($$0);
    }
 
    @Override
-   protected att<GameProfile> a(JsonObject $$0) {
+   protected atv<GameProfile> a(JsonObject $$0) {
       return new aty($$0);
    }
 
@@ -19,7 +19,7 @@ public class atx extends atu<GameProfile, aty> {
 
    @Override
    public String[] a() {
-      return this.d().stream().map(att::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+      return this.d().stream().map(atv::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
    protected String b(GameProfile $$0) {

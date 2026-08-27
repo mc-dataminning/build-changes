@@ -1,33 +1,89 @@
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
 public class cbj {
-   public static boolean a(bqq $$0) {
-      return $$0.K() instanceof bzy;
+   public static final cbj a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
+   @Nullable
+   private Predicate<bqt> g;
+
+   private cbj(boolean $$0) {
+      this.c = $$0;
    }
 
-   public static boolean a(bqw $$0, int $$1) {
-      return $$0.fZ() && $$0.fW().a($$0.dk(), (double)($$0.fX() + (float)$$1) + 1.0);
+   public static cbj a() {
+      return new cbj(true);
    }
 
-   public static boolean a(ib $$0, bqw $$1) {
-      return $$0.v() < $$1.dM().I_() || $$0.v() > $$1.dM().al();
+   public static cbj b() {
+      return new cbj(false);
    }
 
-   public static boolean a(boolean $$0, bqw $$1, ib $$2) {
-      return $$0 && !$$1.a($$2);
+   public cbj c() {
+      cbj $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
    }
 
-   public static boolean a(bzz $$0, ib $$1) {
-      return !$$0.a($$1);
+   public cbj a(double $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   public static boolean a(bqw $$0, ib $$1) {
-      return $$0.dM().b_($$1).a(avh.a);
+   public cbj d() {
+      this.e = false;
+      return this;
    }
 
-   public static boolean b(bqw $$0, ib $$1) {
-      return $$0.a(elo.b($$0, $$1)) != 0.0F;
+   public cbj e() {
+      this.f = false;
+      return this;
    }
 
-   public static boolean c(bqw $$0, ib $$1) {
-      return $$0.dM().a_($$1).e();
+   public cbj a(@Nullable Predicate<bqt> $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(@Nullable bqt $$0, bqt $$1) {
+      if ($$0 == $$1) {
+         return false;
+      } else if (!$$1.er()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$1)) {
+         return false;
+      } else {
+         if ($$0 == null) {
+            if (this.c && (!$$1.eq() || $$1.dM().ak() == boc.a)) {
+               return false;
+            }
+         } else {
+            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ai()) || $$0.s($$1))) {
+               return false;
+            }
+
+            if (this.d > 0.0) {
+               double $$2 = this.f ? $$1.B($$0) : 1.0;
+               double $$3 = Math.max(this.d * $$2, 2.0);
+               double $$4 = $$0.i($$1.dr(), $$1.dt(), $$1.dx());
+               if ($$4 > $$3 * $$3) {
+                  return false;
+               }
+            }
+
+            if (this.e && $$0 instanceof bqv $$5 && !$$5.M().a($$1)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

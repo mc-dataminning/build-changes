@@ -1,8 +1,98 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class auz {
+   public static final auy<dch> a = a("mined", kt.e);
+   public static final auy<crn> b = a("crafted", kt.h);
+   public static final auy<crn> c = a("used", kt.h);
+   public static final auy<crn> d = a("broken", kt.h);
+   public static final auy<crn> e = a("picked_up", kt.h);
+   public static final auy<crn> f = a("dropped", kt.h);
+   public static final auy<bqg<?>> g = a("killed", kt.g);
+   public static final auy<bqg<?>> h = a("killed_by", kt.g);
+   public static final auy<ajv> i = a("custom", kt.m);
+   public static final ajv j = a("leave_game", auw.b);
+   public static final ajv k = a("play_time", auw.e);
+   public static final ajv l = a("total_world_time", auw.e);
+   public static final ajv m = a("time_since_death", auw.e);
+   public static final ajv n = a("time_since_rest", auw.e);
+   public static final ajv o = a("sneak_time", auw.e);
+   public static final ajv p = a("walk_one_cm", auw.d);
+   public static final ajv q = a("crouch_one_cm", auw.d);
+   public static final ajv r = a("sprint_one_cm", auw.d);
+   public static final ajv s = a("walk_on_water_one_cm", auw.d);
+   public static final ajv t = a("fall_one_cm", auw.d);
+   public static final ajv u = a("climb_one_cm", auw.d);
+   public static final ajv v = a("fly_one_cm", auw.d);
+   public static final ajv w = a("walk_under_water_one_cm", auw.d);
+   public static final ajv x = a("minecart_one_cm", auw.d);
+   public static final ajv y = a("boat_one_cm", auw.d);
+   public static final ajv z = a("pig_one_cm", auw.d);
+   public static final ajv A = a("horse_one_cm", auw.d);
+   public static final ajv B = a("aviate_one_cm", auw.d);
+   public static final ajv C = a("swim_one_cm", auw.d);
+   public static final ajv D = a("strider_one_cm", auw.d);
+   public static final ajv E = a("jump", auw.b);
+   public static final ajv F = a("drop", auw.b);
+   public static final ajv G = a("damage_dealt", auw.c);
+   public static final ajv H = a("damage_dealt_absorbed", auw.c);
+   public static final ajv I = a("damage_dealt_resisted", auw.c);
+   public static final ajv J = a("damage_taken", auw.c);
+   public static final ajv K = a("damage_blocked_by_shield", auw.c);
+   public static final ajv L = a("damage_absorbed", auw.c);
+   public static final ajv M = a("damage_resisted", auw.c);
+   public static final ajv N = a("deaths", auw.b);
+   public static final ajv O = a("mob_kills", auw.b);
+   public static final ajv P = a("animals_bred", auw.b);
+   public static final ajv Q = a("player_kills", auw.b);
+   public static final ajv R = a("fish_caught", auw.b);
+   public static final ajv S = a("talked_to_villager", auw.b);
+   public static final ajv T = a("traded_with_villager", auw.b);
+   public static final ajv U = a("eat_cake_slice", auw.b);
+   public static final ajv V = a("fill_cauldron", auw.b);
+   public static final ajv W = a("use_cauldron", auw.b);
+   public static final ajv X = a("clean_armor", auw.b);
+   public static final ajv Y = a("clean_banner", auw.b);
+   public static final ajv Z = a("clean_shulker_box", auw.b);
+   public static final ajv aa = a("interact_with_brewingstand", auw.b);
+   public static final ajv ab = a("interact_with_beacon", auw.b);
+   public static final ajv ac = a("inspect_dropper", auw.b);
+   public static final ajv ad = a("inspect_hopper", auw.b);
+   public static final ajv ae = a("inspect_dispenser", auw.b);
+   public static final ajv af = a("play_noteblock", auw.b);
+   public static final ajv ag = a("tune_noteblock", auw.b);
+   public static final ajv ah = a("pot_flower", auw.b);
+   public static final ajv ai = a("trigger_trapped_chest", auw.b);
+   public static final ajv aj = a("open_enderchest", auw.b);
+   public static final ajv ak = a("enchant_item", auw.b);
+   public static final ajv al = a("play_record", auw.b);
+   public static final ajv am = a("interact_with_furnace", auw.b);
+   public static final ajv an = a("interact_with_crafting_table", auw.b);
+   public static final ajv ao = a("open_chest", auw.b);
+   public static final ajv ap = a("sleep_in_bed", auw.b);
+   public static final ajv aq = a("open_shulker_box", auw.b);
+   public static final ajv ar = a("open_barrel", auw.b);
+   public static final ajv as = a("interact_with_blast_furnace", auw.b);
+   public static final ajv at = a("interact_with_smoker", auw.b);
+   public static final ajv au = a("interact_with_lectern", auw.b);
+   public static final ajv av = a("interact_with_campfire", auw.b);
+   public static final ajv aw = a("interact_with_cartography_table", auw.b);
+   public static final ajv ax = a("interact_with_loom", auw.b);
+   public static final ajv ay = a("interact_with_stonecutter", auw.b);
+   public static final ajv az = a("bell_ring", auw.b);
+   public static final ajv aA = a("raid_trigger", auw.b);
+   public static final ajv aB = a("raid_win", auw.b);
+   public static final ajv aC = a("interact_with_anvil", auw.b);
+   public static final ajv aD = a("interact_with_grindstone", auw.b);
+   public static final ajv aE = a("target_hit", auw.b);
+   public static final ajv aF = a("interact_with_smithing_table", auw.b);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface auz {
+   private static ajv a(String $$0, auw $$1) {
+      ajv $$2 = new ajv($$0);
+      ja.a(kt.m, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
+   }
+
+   private static <T> auy<T> a(String $$0, ja<T> $$1) {
+      wi $$2 = wi.c("stat_type.minecraft." + $$0);
+      return ja.a(kt.x, $$0, new auy<>($$1, $$2));
+   }
 }

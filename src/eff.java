@@ -1,84 +1,44 @@
-public abstract class eff extends efl {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-   protected eff(efy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ih $$7) {
-      super($$0, 0, efl.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
+public class eff {
+   public static final Codec<eff> a = awu.b(
+      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(aju.a(ku.aQ), dtb.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, eff::new)),
+      eff::a
+   );
+   public static final Codec<in<eff>> b = ajr.a(ku.aN, a);
+   private final Map<aju<dtb>, dtb> c;
+
+   public eff(Map<aju<dtb>, dtb> $$0) {
+      this.c = $$0;
    }
 
-   protected eff(efy $$0, tm $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   private ImmutableMap<aju<dtb>, dtb> c() {
+      Builder<aju<dtb>, dtb> $$0 = ImmutableMap.builder();
+      dvv.a(this.c.keySet().stream()).forEach($$1 -> {
+         dtb $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2);
+         }
+      });
+      return $$0.build();
    }
 
-   @Override
-   protected void a(efx $$0, tm $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
+   public dvv a() {
+      return new dvv(this.c());
    }
 
-   protected boolean a(cyy $$0, eez $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         ib.a $$5 = new ib.a();
-
-         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
-            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dur.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.i() + $$2, 0);
-            return true;
-         }
-      }
+   public Optional<dtb> b() {
+      return Optional.ofNullable(this.c.get(dtb.b));
    }
 
-   protected boolean a(cyy $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.al();
-         boolean $$3 = false;
-         ib.a $$4 = new ib.a();
-
-         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
-            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dur.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
-
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.i() + $$1, 0);
-            return true;
-         }
-      }
+   private static DataResult<eff> a(eff $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

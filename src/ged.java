@@ -1,16 +1,45 @@
-public abstract class ged<T extends chs, M extends fte<T>> extends gfz<T, M> {
-   private static final ajt a = new ajt("textures/entity/zombie/zombie.png");
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-   protected ged(gfi.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new gjj<>(this, $$2, $$3, $$0.g()));
+public class ged implements gdu.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final fby c;
+   private Collection<id> d = Lists.newArrayList();
+
+   public ged(fby $$0) {
+      this.c = $$0;
    }
 
-   public ajt a(chs $$0) {
-      return a;
+   public void a(Collection<id> $$0) {
+      this.d = $$0;
    }
 
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gu();
+   @Override
+   public void a(ewr $$0, gai $$1, double $$2, double $$3, double $$4) {
+      id $$5 = this.b().c();
+
+      for (id $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
+      }
+   }
+
+   private static void a(ewr $$0, gai $$1, id $$2) {
+      gdu.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(ewr $$0, gai $$1, String $$2, id $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gdu.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private fbj b() {
+      return this.c.j.n();
    }
 }

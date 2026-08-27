@@ -1,26 +1,25 @@
-public class gjy<T extends bqo> extends gjt<T, fsk<T>> {
-   private final fqm<T> a;
+public class gjy extends gkc<ccx, fru<ccx>> {
+   private final gae a;
 
-   public gjy(ghd<T, fsk<T>> $$0, fti $$1) {
+   public gjy(ghm<ccx, fru<ccx>> $$0, gae $$1) {
       super($$0);
-      this.a = new fsk<>($$1.a(ftl.bt));
+      this.a = $$1;
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      fbp $$10 = fbp.Q();
-      boolean $$11 = $$10.b($$3) && $$3.ce();
-      if (!$$3.ce() || $$11) {
-         ewm $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(gah.r(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(gah.i(this.a($$3)));
+   public void a(ewr $$0, gai $$1, int $$2, ccx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      crs $$10 = $$3.d(bqh.a);
+      if ($$3.y() && !$$3.gF()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gt()) {
+            $$11 -= 0.2F * axm.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * axm.a($$7 * 0.6F);
          }
 
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, ggj.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, crp.h, false, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 }

@@ -1,53 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
 
-public class bvf {
-   public static bsh<bqw> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bvt.a(
-         (Function<bvt.b<bqw>, ? extends App<bvt.c<bqw>, bvw<bqw>>>)($$3 -> $$3.group($$3.c(bzr.o), $$3.c(bzr.m), $$3.a(bzr.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dm()).a(avh.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        ib $$8 = null;
-                        ib $$9 = null;
-                        ib $$10 = $$6.dm();
+public class bvf extends bsl<bqv> {
+   private final float c;
 
-                        for (ib $$12 : ib.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              doz $$13 = $$6.dM().a_($$12.c());
-                              doz $$14 = $$6.dM().a_($$12);
-                              if ($$14.a(dca.G)) {
-                                 if ($$13.i()) {
-                                    $$8 = $$12.i();
-                                    break;
-                                 }
+   public bvf(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
+   }
 
-                                 if ($$9 == null && !$$12.a($$6.dk(), 1.5)) {
-                                    $$9 = $$12.i();
-                                 }
-                              }
-                           }
-                        }
+   public static boolean a(bqv $$0) {
+      return $$0.bc() && $$0.b(avj.a) > $$0.df() || $$0.bq();
+   }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
+   protected boolean a(apu $$0, bqv $$1) {
+      return a($$1);
+   }
 
-                        if ($$8 != null) {
-                           $$5.a(new bsj($$8));
-                           $$4.a(new bzu(new bsj($$8), $$1, 0));
-                        }
+   protected boolean a(apu $$0, bqv $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
 
-                        $$2.setValue($$7 + 40L);
-                        return true;
-                     }
-                  }))
-      );
+   protected void b(apu $$0, bqv $$1, long $$2) {
+      if ($$1.ei().i() < this.c) {
+         $$1.I().a();
+      }
    }
 }

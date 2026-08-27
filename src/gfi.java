@@ -1,60 +1,35 @@
-@FunctionalInterface
-public interface gfi<T extends bpv> {
-   gfh<T> create(gfi.a var1);
+public class gfi extends gfq<ckj> {
+   private static final ajv a = new ajv("textures/entity/enderdragon/dragon_fireball.png");
+   private static final gaq f = gaq.e(a);
 
-   public static class a {
-      private final gfg a;
-      private final ggg b;
-      private final gat c;
-      private final fzv d;
-      private final atc e;
-      private final fti f;
-      private final fda g;
+   public gfi(gfr.a $$0) {
+      super($$0);
+   }
 
-      public a(gfg $$0, ggg $$1, gat $$2, fzv $$3, atc $$4, fti $$5, fda $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
+   protected int a(ckj $$0, id $$1) {
+      return 15;
+   }
 
-      public gfg a() {
-         return this.a;
-      }
+   public void a(ckj $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
+      $$3.a();
+      $$3.b(2.0F, 2.0F, 2.0F);
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      ewr.a $$6 = $$3.c();
+      ewv $$7 = $$4.getBuffer(f);
+      a($$7, $$6, $$5, 0.0F, 0, 0, 1);
+      a($$7, $$6, $$5, 1.0F, 0, 1, 1);
+      a($$7, $$6, $$5, 1.0F, 1, 1, 0);
+      a($$7, $$6, $$5, 0.0F, 1, 0, 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      public ggg b() {
-         return this.b;
-      }
+   private static void a(ewv $$0, ewr.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$5, (float)$$6).c(glj.d).b($$2).b($$1, 0.0F, 1.0F, 0.0F).e();
+   }
 
-      public gat c() {
-         return this.c;
-      }
-
-      public fzv d() {
-         return this.d;
-      }
-
-      public atc e() {
-         return this.e;
-      }
-
-      public fti f() {
-         return this.f;
-      }
-
-      public gnp g() {
-         return this.c.a().a();
-      }
-
-      public ftm a(ftk $$0) {
-         return this.f.a($$0);
-      }
-
-      public fda h() {
-         return this.g;
-      }
+   public ajv a(ckj $$0) {
+      return a;
    }
 }

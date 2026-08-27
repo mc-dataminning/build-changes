@@ -1,36 +1,26 @@
-public record zs(ib c, int d, String e, int f) implements zo {
-   public static final ye<vg, zs> a = zo.a(zs::a, zs::new);
-   public static final zo.b<zs> b = zo.a("debug/game_test_add_marker");
+public record zs(aju<dub> c, esj d) implements zq {
+   public static final yg<vi, zs> a = zq.a(zs::a, zs::new);
+   public static final zq.b<zs> b = zq.a("debug/game_event");
 
-   private zs(vg $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
+   private zs(vi $$0) {
+      this($$0.a(ku.C), $$0.k());
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
-      $$0.p(this.f);
+   private void a(vi $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zo.b<zs> a() {
+   public zq.b<zs> a() {
       return b;
    }
 
-   public ib b() {
+   public aju<dub> b() {
       return this.c;
    }
 
-   public int c() {
+   public esj c() {
       return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
    }
 }

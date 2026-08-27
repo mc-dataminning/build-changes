@@ -1,99 +1,40 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class byz extends bxl {
-   private final bxl a;
-   private final int b;
-   private boolean c;
+public class byz extends bxq {
+   private final cji a;
 
-   public byz(int $$0, bxl $$1) {
-      this.b = $$0;
-      this.a = $$1;
-   }
-
-   public boolean a(byz $$0) {
-      return this.Q_() && $$0.i() < this.i();
+   public byz(cji $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bxq.a.c, bxq.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean Q_() {
-      return this.a.Q_();
+      if (!this.a.bA()) {
+         return false;
+      } else if (this.a.bc()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cka $$0 = this.a.gn();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.ca != null;
+         }
+      }
    }
 
    @Override
    public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
-      }
+      this.a.K().n();
    }
 
    @Override
    public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
-      }
-   }
-
-   @Override
-   public boolean R_() {
-      return this.a.R_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<bxl.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<bxl.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public bxl k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((byz)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+      this.a.f(null);
    }
 }

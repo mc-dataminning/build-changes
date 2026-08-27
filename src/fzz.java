@@ -1,94 +1,51 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+public enum fzz {
+   a(new fzz.b(fzz.a.f, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.a)),
+   b(new fzz.b(fzz.a.f, fzz.a.b, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.b, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.b, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.b, fzz.a.d)),
+   c(new fzz.b(fzz.a.c, fzz.a.b, fzz.a.d), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.b, fzz.a.d)),
+   d(new fzz.b(fzz.a.f, fzz.a.b, fzz.a.a), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.b, fzz.a.a)),
+   e(new fzz.b(fzz.a.f, fzz.a.b, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.f, fzz.a.b, fzz.a.a)),
+   f(new fzz.b(fzz.a.c, fzz.a.b, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.c, fzz.a.b, fzz.a.d));
 
-public interface fzz {
-   static fzz.a a(ewd $$0) {
-      return a(ImmutableMap.of(), $$0);
+   private static final fzz[] g = ac.a(new fzz[6], $$0 -> {
+      $$0[fzz.a.e] = a;
+      $$0[fzz.a.b] = b;
+      $$0[fzz.a.d] = c;
+      $$0[fzz.a.a] = d;
+      $$0[fzz.a.f] = e;
+      $$0[fzz.a.c] = f;
+   });
+   private final fzz.b[] h;
+
+   public static fzz a(ij $$0) {
+      return g[$$0.d()];
    }
 
-   static fzz.a a(Map<gah, ewd> $$0, ewd $$1) {
-      return new fzz.a($$1, $$0);
+   private fzz(fzz.b... $$0) {
+      this.h = $$0;
    }
 
-   ewm getBuffer(gah var1);
+   public fzz.b a(int $$0) {
+      return this.h[$$0];
+   }
 
-   public static class a implements fzz {
-      protected final ewd a;
-      protected final Map<gah, ewd> b;
-      protected Optional<gah> c = Optional.empty();
-      protected final Set<ewd> d = Sets.newHashSet();
+   public static final class a {
+      public static final int a = ij.d.d();
+      public static final int b = ij.b.d();
+      public static final int c = ij.f.d();
+      public static final int d = ij.c.d();
+      public static final int e = ij.a.d();
+      public static final int f = ij.e.d();
+   }
 
-      protected a(ewd $$0, Map<gah, ewd> $$1) {
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
+
+      b(int $$0, int $$1, int $$2) {
          this.a = $$0;
          this.b = $$1;
-      }
-
-      @Override
-      public ewm getBuffer(gah $$0) {
-         Optional<gah> $$1 = $$0.P();
-         ewd $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.O()) {
-            if (this.c.isPresent()) {
-               gah $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
-
-            if (this.d.add($$2)) {
-               $$2.a($$0.K(), $$0.J());
-            }
-
-            this.c = $$1;
-         }
-
-         return $$2;
-      }
-
-      private ewd b(gah $$0) {
-         return this.b.getOrDefault($$0, this.a);
-      }
-
-      public void a() {
-         if (this.c.isPresent()) {
-            gah $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
-      }
-
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            ewm $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (gah $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(gah $$0) {
-         ewd $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.P());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
+         this.c = $$2;
       }
    }
 }

@@ -1,57 +1,73 @@
-public class cnz extends cok {
-   private final cnx a;
-   private final cjt b;
-   private int c;
-   private final cxu h;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public cnz(cjt $$0, cxu $$1, cnx $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+public class cnz {
+   private final List<cnz.b> a;
+   private final cnz.b b;
+
+   cnz(List<cnz.b> $$0, cnz.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cnz.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+      }
    }
 
-   @Override
-   public boolean a(crj $$0) {
-      return false;
+   public static cnz.a a() {
+      return new cnz.a();
    }
 
-   @Override
-   public crj a(int $$0) {
-      if (this.h()) {
-         this.c = this.c + Math.min($$0, this.g().G());
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
+   }
+
+   public cnz.b b(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public cnz.b b() {
+      return this.b;
+   }
+
+   public List<cnz.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public List<Integer> f() {
+      return this.a.stream().map(cnz.b::a).collect(Collectors.toList());
+   }
+
+   public static class a {
+      private final List<cnz.b> a = new ArrayList<>();
+      private cnz.b b = cnz.b.e;
+
+      public cnz.a a(int $$0, int $$1, int $$2, Predicate<crs> $$3) {
+         this.a.add(new cnz.b($$0, $$1, $$2, $$3));
+         return this;
       }
 
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(crj $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(crj $$0) {
-      $$0.a(this.b.dM(), this.b, this.c);
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cjt $$0, crj $$1) {
-      this.b_($$1);
-      cxv $$2 = this.a.g();
-      if ($$2 != null) {
-         crj $$3 = this.a.a(0);
-         crj $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(auw.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
-         }
-
-         this.h.u(this.h.u() + $$2.q());
+      public cnz.a a(int $$0, int $$1, int $$2) {
+         this.b = new cnz.b($$0, $$1, $$2, $$0x -> false);
+         return this;
       }
+
+      public cnz a() {
+         return new cnz(this.a, this.b);
+      }
+   }
+
+   public static record b(int a, int b, int c, Predicate<crs> d) {
+      static final cnz.b e = new cnz.b(0, 0, 0, $$0 -> true);
    }
 }

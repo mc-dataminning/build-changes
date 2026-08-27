@@ -1,21 +1,20 @@
-public class csl extends cre {
-   public csl(cre.a $$0) {
+public class csl extends crn {
+   public csl(crn.a $$0) {
       super($$0);
    }
 
    @Override
-   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
-      crj $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aum.ye, aun.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         ckq $$4 = new ckq($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   public bof a(crs $$0, cka $$1, bqt $$2, boe $$3) {
+      if ($$2 instanceof bri $$4 && $$2.bA() && !$$4.i() && $$4.f()) {
+         if (!$$1.dM().B) {
+            $$4.a(aup.g);
+            $$2.dM().a($$2, dub.v, $$2.dk());
+            $$0.g(1);
+         }
+
+         return bof.a($$1.dM().B);
       }
 
-      $$1.b(auw.c.b(this));
-      $$3.a(1, $$1);
-      return bob.a($$3, $$0.x_());
+      return bof.d;
    }
 }

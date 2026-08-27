@@ -1,96 +1,72 @@
 import com.mojang.serialization.MapCodec;
 
-public class dde extends dhl {
-   public static final MapCodec<dde> a = b(dde::new);
+public class dde extends dfw implements dck, ddd {
+   public static final MapCodec<dde> c = b(dde::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<dde> a() {
-      return a;
+      return c;
    }
 
-   protected dde(doy.d $$0) {
-      super(0.3125F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-            .a(g, Boolean.valueOf(false))
-      );
+   public dde(dph.d $$0) {
+      super($$0, ij.a, q_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(r_, Boolean.valueOf(false)));
    }
 
    @Override
-   public doz a(cuo $$0) {
-      return a($$0.q(), $$0.a(), this.n());
-   }
-
-   public static doz a(cyd $$0, ib $$1, doz $$2) {
-      doz $$3 = $$0.a_($$1.d());
-      doz $$4 = $$0.a_($$1.c());
-      doz $$5 = $$0.a_($$1.e());
-      doz $$6 = $$0.a_($$1.h());
-      doz $$7 = $$0.a_($$1.f());
-      doz $$8 = $$0.a_($$1.g());
-      dby $$9 = $$2.b();
-      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(dca.kv) || $$3.a(dca.fz)))
-         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(dca.kv)))
-         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(dca.kv)))
-         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(dca.kv)))
-         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(dca.kv)))
-         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(dca.kv)));
+   protected int a(axt $$0) {
+      return 1;
    }
 
    @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         boolean $$6 = $$2.a(this) || $$2.a(dca.kv) || $$1 == ih.a && $$2.a(dca.fz);
-         return $$0.a(h.get($$1), Boolean.valueOf($$6));
-      }
+   protected boolean g(dpi $$0) {
+      return $$0.i();
    }
 
    @Override
-   protected void a(doz $$0, aps $$1, ib $$2, axr $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected dch b() {
+      return dcj.sw;
    }
 
    @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      doz $$3 = $$1.a_($$2.d());
-      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
-
-      for (ih $$5 : ih.c.a) {
-         ib $$6 = $$2.a($$5);
-         doz $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
-
-            doz $$8 = $$1.a_($$6.d());
-            if ($$8.a(this) || $$8.a(dca.fz)) {
-               return true;
-            }
-         }
-      }
-
-      return $$3.a(this) || $$3.a(dca.fz);
+   protected dpi a(dpi $$0, dpi $$1) {
+      return $$1.a(r_, $$0.c(r_));
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   protected dpi a(dpi $$0, axt $$1) {
+      return super.a($$0, $$1).a(r_, Boolean.valueOf($$1.i() < 0.11F));
    }
 
    @Override
-   protected boolean a(doz $$0, elh $$1) {
-      return false;
+   public crs a(czj $$0, id $$1, dpi $$2) {
+      return new crs(crv.wo);
+   }
+
+   @Override
+   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
+      return ddd.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dpj.a<dch, dpi> $$0) {
+      super.a($$0);
+      $$0.a(r_);
+   }
+
+   @Override
+   public boolean b(czj $$0, id $$1, dpi $$2) {
+      return !$$2.c(r_);
+   }
+
+   @Override
+   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
+      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
    }
 }

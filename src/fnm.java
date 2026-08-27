@@ -1,84 +1,89 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
 
-public class fnm extends fnl<fvi.a> {
-   private static final int v = 120;
-   private static final wg w = wg.c("gui.chatReport.title");
-   private static final wg x = wg.c("gui.chatReport.select_chat");
-   private final fhg y = fhg.d().a(8);
-   private feh z;
-   private fdp A;
-   private fdp B;
-   private fdp C;
+public class fnm extends ffe {
+   private static final ffl c = new ffl(new ajv("recipe_book/tab"), new ajv("recipe_book/tab_selected"));
+   private final fch d;
+   private static final float e = 15.0F;
+   private float f;
 
-   private fnm(fjo $$0, fvp $$1, fvi.a $$2) {
-      super(w, $$0, $$1, $$2);
+   public fnm(fch $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
    }
 
-   public fnm(fjo $$0, fvp $$1, UUID $$2) {
-      this($$0, $$1, new fvi.a($$2, $$1.a().b()));
-   }
-
-   public fnm(fjo $$0, fvp $$1, fvi $$2) {
-      this($$0, $$1, new fvi.a($$2, $$1.a().b()));
-   }
-
-   @Override
-   protected void aN_() {
-      this.y.c().b();
-      this.y.a(new few(this.i, this.m));
-      this.B = this.y.a(fdp.a(x, $$0x -> this.j.a(new fno(this, this.s, this.u, $$0xx -> {
-            this.u = $$0xx;
-            this.C();
-         }))).a(280).a());
-      this.C = fdp.a(c, $$0x -> this.j.a(new fnr(this, this.u.h(), $$0xx -> {
-            this.u.a($$0xx);
-            this.C();
-         }))).a(280).a();
-      this.y.a(fgy.a(this.m, this.C, b));
-      this.z = this.a(280, 9 * 8, $$0x -> {
-         this.u.a($$0x);
-         this.C();
-      });
-      this.y.a(fgy.a(this.m, this.z, d, $$0x -> $$0x.e(12)));
-      fhg $$0 = this.y.a(fhg.e().a(8));
-      $$0.a(fdp.a(wf.k, $$0x -> this.d()).a(120).a());
-      this.A = $$0.a(fdp.a(a, $$0x -> this.m()).a(120).a());
-      this.y.a($$1 -> {
-         fdn var10000 = this.c($$1);
-      });
-      this.c();
-      this.C();
-   }
-
-   @Override
-   protected void c() {
-      this.y.a();
-      fha.a(this.y, this.G());
-   }
-
-   private void C() {
-      IntSet $$0 = this.u.a();
-      if ($$0.isEmpty()) {
-         this.B.b(x);
-      } else {
-         this.B.b(wg.a("gui.chatReport.selected_chat", $$0.size()));
+   public void a(fby $$0) {
+      fbl $$1 = $$0.s.m();
+      List<fno> $$2 = $$1.a(this.d);
+      if ($$0.s.ca instanceof coj) {
+         for (fno $$3 : $$2) {
+            for (cvu<?> $$4 : $$3.a($$1.a((coj<?>)$$0.s.ca))) {
+               if ($$1.d($$4)) {
+                  this.f = 15.0F;
+                  return;
+               }
+            }
+         }
       }
+   }
 
-      fvn $$1 = this.u.h();
+   @Override
+   public void b(fdl $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.f > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
+         }
+
+         fby $$5 = fby.Q();
+         RenderSystem.disableDepthTest();
+         ajv $$6 = this.a.a(true, this.b);
+         int $$7 = this.C();
+         if (this.b) {
+            $$7 -= 2;
+         }
+
+         $$0.a($$6, $$7, this.D(), this.g, this.h);
+         RenderSystem.enableDepthTest();
+         this.a($$0, $$5.as());
+         if (this.f > 0.0F) {
+            $$0.c().b();
+            this.f -= $$3;
+         }
+      }
+   }
+
+   private void a(fdl $$0, ggp $$1) {
+      List<crs> $$2 = this.d.a();
+      int $$3 = this.b ? -2 : 0;
+      if ($$2.size() == 1) {
+         $$0.b($$2.get(0), this.C() + 9 + $$3, this.D() + 5);
+      } else if ($$2.size() == 2) {
+         $$0.b($$2.get(0), this.C() + 3 + $$3, this.D() + 5);
+         $$0.b($$2.get(1), this.C() + 14 + $$3, this.D() + 5);
+      }
+   }
+
+   public fch b() {
+      return this.d;
+   }
+
+   public boolean a(fbl $$0) {
+      List<fno> $$1 = $$0.a(this.d);
+      this.k = false;
       if ($$1 != null) {
-         this.C.b($$1.b());
-      } else {
-         this.C.b(c);
+         for (fno $$2 : $$1) {
+            if ($$2.b() && $$2.d()) {
+               this.k = true;
+               break;
+            }
+         }
       }
 
-      fvl.b $$2 = this.u.c();
-      this.A.j = $$2 == null;
-      this.A.a(x.a($$2, fvl.b::a));
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.z.b($$0, $$1, $$2);
+      return this.k;
    }
 }

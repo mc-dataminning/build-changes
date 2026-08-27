@@ -1,46 +1,24 @@
-public class gjn extends gjt<cei, frf<cei>> {
-   private static final ajt[] a = new ajt[]{
-      new ajt("textures/entity/llama/decor/white.png"),
-      new ajt("textures/entity/llama/decor/orange.png"),
-      new ajt("textures/entity/llama/decor/magenta.png"),
-      new ajt("textures/entity/llama/decor/light_blue.png"),
-      new ajt("textures/entity/llama/decor/yellow.png"),
-      new ajt("textures/entity/llama/decor/lime.png"),
-      new ajt("textures/entity/llama/decor/pink.png"),
-      new ajt("textures/entity/llama/decor/gray.png"),
-      new ajt("textures/entity/llama/decor/light_gray.png"),
-      new ajt("textures/entity/llama/decor/cyan.png"),
-      new ajt("textures/entity/llama/decor/purple.png"),
-      new ajt("textures/entity/llama/decor/blue.png"),
-      new ajt("textures/entity/llama/decor/brown.png"),
-      new ajt("textures/entity/llama/decor/green.png"),
-      new ajt("textures/entity/llama/decor/red.png"),
-      new ajt("textures/entity/llama/decor/black.png")
-   };
-   private static final ajt b = new ajt("textures/entity/llama/decor/trader_llama.png");
-   private final frf<cei> c;
-
-   public gjn(ghd<cei, frf<cei>> $$0, fti $$1) {
+public abstract class gjn<T extends bqa & brf, M extends fqv<T>> extends gkc<T, M> {
+   public gjn(ghm<T, M> $$0) {
       super($$0);
-      this.c = new frf<>($$1.a(ftl.ay));
    }
 
-   public void a(ewi $$0, fzz $$1, int $$2, cei $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cqc $$10 = $$3.gA();
-      ajt $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gw()) {
-            return;
-         }
-
-         $$11 = b;
+   @Override
+   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.a()) {
+         float $$10 = (float)$$3.ah + $$6;
+         fqv<T> $$11 = this.b();
+         $$11.a($$3, $$4, $$5, $$6);
+         this.c().a($$11);
+         ewv $$12 = $$1.getBuffer(gaq.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
+         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
+         $$11.a($$0, $$12, $$2, glj.d, 0.5F, 0.5F, 0.5F, 1.0F);
       }
-
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      ewm $$14 = $$1.getBuffer(gah.e($$11));
-      this.c.a($$0, $$14, $$2, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
+
+   protected abstract float a(float var1);
+
+   protected abstract ajv a();
+
+   protected abstract fqv<T> b();
 }

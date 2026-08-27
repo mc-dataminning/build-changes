@@ -1,40 +1,44 @@
-public class cqr extends cre {
-   public cqr(cre.a $$0) {
+import java.util.List;
+
+public class cqr extends crn {
+   public cqr(crn.a $$0) {
       super($$0);
    }
 
    @Override
-   public boa a(cuq $$0) {
-      cjt $$1 = $$0.o();
-      cyx $$2 = $$0.q();
-      ib $$3 = $$0.a();
-      doz $$4 = $$2.a_($$3);
-      if (!dcm.h($$4) && !dcn.g($$4) && !dco.g($$4)) {
-         ib $$5 = $$3.a($$0.k());
-         if (dbl.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, aum.iU, aun.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-            doz $$6 = dbl.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, dts.i, $$3);
-            crj $$7 = $$0.n();
-            if ($$1 instanceof apt) {
-               am.z.a((apt)$$1, $$5, $$7);
-               $$7.a(1, $$1, bqo.d($$0.p()));
-            }
-
-            return boa.a($$2.x_());
-         } else {
-            return boa.e;
-         }
+   public bof a(cuz $$0) {
+      czg $$1 = $$0.q();
+      id $$2 = $$0.a();
+      dpi $$3 = $$1.a_($$2);
+      if (!$$3.a(dcj.co) && !$$3.a(dcj.F)) {
+         return bof.e;
       } else {
-         $$2.a($$1, $$3, aum.iU, aun.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.a(dpp.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, dts.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, bqo.d($$0.p()));
-         }
+         id $$4 = $$2.c();
+         if (!$$1.u($$4)) {
+            return bof.e;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bqa> $$8 = $$1.a_(null, new ese($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bof.e;
+            } else {
+               if ($$1 instanceof apu) {
+                  cfd $$9 = new cfd($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), dub.t, $$4);
+                  dtd $$10 = ((apu)$$1).D();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-         return boa.a($$2.x_());
+               $$0.n().g(1);
+               return bof.a($$1.B);
+            }
+         }
       }
    }
 }

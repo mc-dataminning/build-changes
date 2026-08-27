@@ -1,118 +1,79 @@
-public class fix extends fjg {
-   private static final wg a = wg.c("options.languageAccuracyWarning").a(n.h);
-   private static final int o = 53;
-   private fix.a p;
-   final gmq q;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fix(fjo $$0, fbt $$1, gmq $$2) {
-      super($$0, $$1, wg.c("options.language.title"));
-      this.q = $$2;
-   }
+public class fix extends fjx {
+   private static final wi a = wi.c("addServer.enterIp");
+   private fdy b;
+   private final fve c;
+   private feh d;
+   private final BooleanConsumer o;
+   private final fjx p;
 
-   @Override
-   protected void aN_() {
-      this.p = this.c(new fix.a(this.j));
-      this.d.a(53);
-      super.aN_();
-   }
-
-   @Override
-   protected void c() {
-      super.c();
-      this.p.a(this.k, this.d);
-   }
-
-   @Override
-   protected void h() {
-      fhg $$0 = this.d.b(fhg.d()).a(8);
-      $$0.c().b();
-      $$0.a(new few(a, this.m));
-      fhg $$1 = $$0.a(fhg.e().a(8));
-      $$1.a(fdp.a(wg.c("options.font"), $$0x -> this.j.a(new fit(this, this.c))).a());
-      $$1.a(fdp.a(wf.d, $$0x -> this.d()).a());
-   }
-
-   void C() {
-      fix.a.a $$0 = this.p.h();
-      if ($$0 != null && !$$0.b.equals(this.q.a())) {
-         this.q.a($$0.b);
-         this.c.ad = $$0.b;
-         this.j.l();
-         this.c.av();
-      }
-
-      this.j.a(this.b);
+   public fix(fjx $$0, BooleanConsumer $$1, fve $$2) {
+      super(wi.c("selectServer.direct"));
+      this.p = $$0;
+      this.c = $$2;
+      this.o = $$1;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (fhq.a($$0)) {
-         fix.a.a $$3 = this.p.h();
-         if ($$3 != null) {
-            $$3.b();
-            this.C();
-            return true;
-         }
+      if (!this.b.j || this.aH_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.m();
+         return true;
       }
-
-      return super.a($$0, $$1, $$2);
    }
 
-   class a extends fel<fix.a.a> {
-      public a(fbp $$0) {
-         super($$0, fix.this.k, fix.this.l - 33 - 53, 33, 18);
-         String $$1 = fix.this.q.a();
-         fix.this.q.b().forEach(($$1x, $$2) -> {
-            fix.a.a $$3 = new fix.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.h() != null) {
-            this.e(this.h());
-         }
-      }
+   @Override
+   protected void aM_() {
+      this.d = new feh(this.m, this.k / 2 - 100, 116, 200, 20, wi.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.j.m.aa);
+      this.d.b($$0 -> this.C());
+      this.d(this.d);
+      this.b = this.c(fdy.a(wi.c("selectServer.select"), $$0 -> this.m()).a(this.k / 2 - 100, this.l / 4 + 96 + 12, 200, 20).a());
+      this.c(fdy.a(wh.e, $$0 -> this.o.accept(false)).a(this.k / 2 - 100, this.l / 4 + 120 + 12, 200, 20).a());
+      this.C();
+   }
 
-      @Override
-      public int b() {
-         return super.b() + 50;
-      }
+   @Override
+   protected void aC_() {
+      this.b(this.d);
+   }
 
-      public class a extends fel.a<fix.a.a> {
-         final String b;
-         private final wg c;
-         private long d;
+   @Override
+   public void a(fby $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
 
-         public a(String $$1, gmp $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
+   private void m() {
+      this.c.b = this.d.a();
+      this.o.accept(true);
+   }
 
-         @Override
-         public void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fix.this.m, this.c, a.this.g / 2, $$2 + 1, -1);
-         }
+   @Override
+   public void d() {
+      this.j.a(this.p);
+   }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.b() - this.d < 250L) {
-               fix.this.C();
-            }
+   @Override
+   public void j() {
+      this.j.m.aa = this.d.a();
+      this.j.m.av();
+   }
 
-            this.d = ac.b();
-            return super.a($$0, $$1, $$2);
-         }
+   private void C() {
+      this.b.j = fwh.b(this.d.a());
+   }
 
-         void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public wg a() {
-            return wg.a("narrator.select", this.c);
-         }
-      }
+   @Override
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m, this.i, this.k / 2, 20, 16777215);
+      $$0.b(this.m, a, this.k / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

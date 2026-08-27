@@ -1,145 +1,124 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
 
-public class dot extends deb {
-   public static final MapCodec<dot> b = b(dot::new);
-   public static final dpx<dqb> c = dpp.bg;
-   public static final dpq d = dpp.x;
-   public static final float e = 4.0F;
-   protected static final est f = dby.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final est g = dby.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
-   protected static final est h = dby.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
-   protected static final est i = dby.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
-   protected static final est j = dby.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final est k = dby.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
-   protected static final float l = 2.0F;
-   protected static final float m = 6.0F;
-   protected static final float n = 10.0F;
-   protected static final est o = dby.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
-   protected static final est F = dby.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
-   protected static final est G = dby.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
-   protected static final est H = dby.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
-   protected static final est I = dby.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
-   protected static final est J = dby.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
-   protected static final est K = dby.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
-   protected static final est L = dby.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final est M = dby.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
-   protected static final est N = dby.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
-   protected static final est O = dby.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
-   protected static final est P = dby.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
-   private static final est[] Q = a(true);
-   private static final est[] R = a(false);
+public class dot {
+   static final String a = "server_data";
+   static Codec<dot> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jh.c.optionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.LONG.optionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
+               crs.a.listOf().optionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
+               Codec.INT.optionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dot::new)
+   );
+   private static final int d = 128;
+   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private long f;
+   private final List<crs> g = new ObjectArrayList();
+   private long h;
+   private int i;
+   boolean c;
 
-   @Override
-   protected MapCodec<dot> a() {
-      return b;
+   dot(Set<UUID> $$0, long $$1, List<crs> $$2, int $$3) {
+      this.e.addAll($$0);
+      this.f = $$1;
+      this.g.addAll($$2);
+      this.i = $$3;
    }
 
-   private static est[] a(boolean $$0) {
-      return Arrays.stream(ih.values()).map($$1 -> a($$1, $$0)).toArray(est[]::new);
+   dot() {
    }
 
-   private static est a(ih $$0, boolean $$1) {
-      switch ($$0) {
-         case a:
-         default:
-            return esq.a(k, $$1 ? L : F);
-         case b:
-            return esq.a(j, $$1 ? K : o);
-         case c:
-            return esq.a(i, $$1 ? N : H);
-         case d:
-            return esq.a(h, $$1 ? M : G);
-         case e:
-            return esq.a(g, $$1 ? P : J);
-         case f:
-            return esq.a(f, $$1 ? O : I);
-      }
+   void a(long $$0) {
+      this.h = $$0;
    }
 
-   public dot(doy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, ih.c).a(c, dqb.a).a(d, Boolean.valueOf(false)));
+   long a() {
+      return this.h;
    }
 
-   @Override
-   protected boolean g_(doz $$0) {
-      return true;
+   Set<UUID> b() {
+      return this.e;
    }
 
-   @Override
-   protected est a(doz $$0, cyd $$1, ib $$2, esf $$3) {
-      return ($$0.c(d) ? Q : R)[$$0.c(a).ordinal()];
+   boolean a(cka $$0) {
+      return this.e.contains($$0.cw());
    }
 
-   private boolean a(doz $$0, doz $$1) {
-      dby $$2 = $$0.c(c) == dqb.a ? dca.by : dca.br;
-      return $$1.a($$2) && $$1.c(dos.c) && $$1.c(a) == $$0.c(a);
-   }
-
-   @Override
-   public doz a(cyx $$0, ib $$1, doz $$2, cjt $$3) {
-      if (!$$0.B && $$3.ga().d) {
-         ib $$4 = $$1.a($$2.c(a).g());
-         if (this.a($$2, $$0.a_($$4))) {
-            $$0.b($$4, false);
+   @VisibleForTesting
+   public void b(cka $$0) {
+      this.e.add($$0.cw());
+      if (this.e.size() > 128) {
+         Iterator<UUID> $$1 = this.e.iterator();
+         if ($$1.hasNext()) {
+            $$1.next();
+            $$1.remove();
          }
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      this.i();
    }
 
-   @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         ib $$5 = $$2.a($$0.c(a).g());
-         if (this.a($$0, $$1.a_($$5))) {
-            $$1.b($$5, true);
-         }
+   long c() {
+      return this.f;
+   }
+
+   void b(long $$0) {
+      this.f = $$0;
+      this.i();
+   }
+
+   List<crs> d() {
+      return this.g;
+   }
+
+   void e() {
+      this.i = 0;
+      this.i();
+   }
+
+   void a(List<crs> $$0) {
+      this.g.clear();
+      this.g.addAll($$0);
+      this.i = this.g.size();
+      this.i();
+   }
+
+   crs f() {
+      return this.g.isEmpty() ? crs.i : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), crs.i);
+   }
+
+   crs g() {
+      if (this.g.isEmpty()) {
+         return crs.i;
+      } else {
+         this.i();
+         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), crs.i);
       }
    }
 
-   @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? dca.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   void a(dot $$0) {
+      this.f = $$0.c();
+      this.g.clear();
+      this.g.addAll($$0.g);
+      this.e.clear();
+      this.e.addAll($$0.e);
    }
 
-   @Override
-   protected boolean a(doz $$0, cza $$1, ib $$2) {
-      doz $$3 = $$1.a_($$2.a($$0.c(a).g()));
-      return this.a($$0, $$3) || $$3.a(dca.bQ) && $$3.c(a) == $$0.c(a);
+   private void i() {
+      this.c = true;
    }
 
-   @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, dby $$3, ib $$4, boolean $$5) {
-      if ($$0.a((cza)$$1, $$2)) {
-         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
-      }
-   }
-
-   @Override
-   public crj a(cza $$0, ib $$1, doz $$2) {
-      return new crj($$2.c(c) == dqb.b ? dca.br : dca.by);
-   }
-
-   @Override
-   protected doz a(doz $$0, dik $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected doz a(doz $$0, dgu $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(a, c, d);
-   }
-
-   @Override
-   protected boolean a(doz $$0, elh $$1) {
-      return false;
+   public float h() {
+      return this.i == 1 ? 1.0F : 1.0F - axm.g((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

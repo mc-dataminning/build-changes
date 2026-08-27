@@ -1,21 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class ech extends eca {
-   public static final Codec<ech> b = doz.b.fieldOf("state").xmap(doy.a::b, dby::n).xmap(ech::new, $$0 -> $$0.c).codec();
-   private final dby c;
+public class ech<P extends ecg> {
+   public static final ech<ecf> a = a("mangrove_root_placer", ecf.c);
+   private final Codec<P> b;
 
-   public ech(dby $$0) {
-      this.c = $$0;
+   private static <P extends ecg> ech<P> a(String $$0, Codec<P> $$1) {
+      return ja.a(kt.Y, $$0, new ech<>($$1));
    }
 
-   @Override
-   protected ecb<?> a() {
-      return ecb.f;
+   private ech(Codec<P> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public doz a(axr $$0, ib $$1) {
-      ih.a $$2 = ih.a.a($$0);
-      return this.c.n().a(dij.i, $$2);
+   public Codec<P> a() {
+      return this.b;
    }
 }

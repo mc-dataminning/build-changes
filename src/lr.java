@@ -1,46 +1,27 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.mojang.brigadier.CommandDispatcher;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
-public class lr implements ky {
-   private final la d;
+public class lr implements la {
+   private final lc d;
+   private final CompletableFuture<ip.a> e;
 
-   public lr(la $$0) {
+   public lr(lc $$0, CompletableFuture<ip.a> $$1) {
       this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(kw $$0) {
-      JsonObject $$1 = new JsonObject();
-      kr.au.h().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((iy)$$1x.a())));
-      Path $$2 = this.d.a(la.b.c).resolve("registries.json");
-      return ky.a($$0, $$1, $$2);
-   }
-
-   private static <T> JsonElement a(iy<T> $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 instanceof ig) {
-         ajt $$2 = ((ig)$$0).a();
-         $$1.addProperty("default", $$2.toString());
-      }
-
-      int $$3 = kr.au.a($$0);
-      $$1.addProperty("protocol_id", $$3);
-      JsonObject $$4 = new JsonObject();
-      $$0.h().forEach($$2 -> {
-         T $$3x = $$2.a();
-         int $$4x = $$0.a($$3x);
-         JsonObject $$5 = new JsonObject();
-         $$5.addProperty("protocol_id", $$4x);
-         $$4.add($$2.h().a().toString(), $$5);
+   public CompletableFuture<?> a(ky $$0) {
+      Path $$1 = this.d.a(lc.b.c).resolve("commands.json");
+      return this.e.thenCompose($$2 -> {
+         CommandDispatcher<dv> $$3 = new dw(dw.a.a, dw.a($$2)).a();
+         return la.a($$0, hr.a($$3, $$3.getRoot()), $$1);
       });
-      $$1.add("entries", $$4);
-      return $$1;
    }
 
    @Override
    public final String a() {
-      return "Registry Dump";
+      return "Command Syntax";
    }
 }

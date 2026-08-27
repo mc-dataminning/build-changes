@@ -1,85 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class dat extends dbk {
-   public static final dpt a = dft.aE;
-   public static final dpq b = dpp.r;
+public class dat {
+   public static final Codec<dat> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dat.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ajt.c(ku.aw)).apply($$0, dat::new)
+   );
+   public static final Codec<in<dat>> b = ajr.a(ku.aO, a);
+   private final dat.a c;
+   private final dao.c<in<daf>> d;
 
-   protected dat(doy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, ih.c).a(b, Boolean.valueOf(false)));
+   public dat(dat.a $$0, io<daf> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   @Override
-   protected abstract MapCodec<? extends dat> a();
-
-   @Override
-   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
-      if ($$1.B) {
-         return boa.a;
-      } else {
-         this.a($$1, $$2, $$3);
-         return boa.b;
-      }
+   public dao.c<in<daf>> a() {
+      return this.d;
    }
 
-   protected abstract void a(cyx var1, ib var2, cjt var3);
-
-   @Override
-   public doz a(cuo $$0) {
-      return this.n().a(a, $$0.g().g());
+   public static Map<dat.a, dao.c<aju<daf>>> b() {
+      return dat.a.f.values().stream().collect(Collectors.toMap($$0 -> (dat.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, doz $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dmf $$5 = $$1.c_($$2);
-         if ($$5 instanceof dlt) {
-            if ($$1 instanceof aps) {
-               bnw.a($$1, $$2, (dlt)$$5);
-               ((dlt)$$5).a((aps)$$1, esa.b($$2));
+   public static record a(ajv d, dat.a.a e) {
+      public static final dat.a a = new dat.a(
+         new ajv("nether"),
+         new dat.a.a() {
+            @Override
+            public <T> dao.c<T> apply(Function<aju<daf>, T> $$0) {
+               return new dao.c<>(
+                  List.of(
+                     Pair.of(dao.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dam.ac)),
+                     Pair.of(dao.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dam.af)),
+                     Pair.of(dao.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dam.ae)),
+                     Pair.of(dao.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dam.ad)),
+                     Pair.of(dao.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dam.ag))
+                  )
+               );
             }
-
-            super.a($$0, $$1, $$2, $$3, $$4);
-            $$1.c($$2, this);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4);
          }
+      );
+      public static final dat.a b = new dat.a(new ajv("overworld"), new dat.a.a() {
+         @Override
+         public <T> dao.c<T> apply(Function<aju<daf>, T> $$0) {
+            return dat.a.a($$0);
+         }
+      });
+      static final Map<ajv, dat.a> f = Stream.of(a, b).collect(Collectors.toMap(dat.a::b, $$0 -> (dat.a)$$0));
+      public static final Codec<dat.a> c = ajv.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> dao.c<T> a(Function<aju<daf>, T> $$0) {
+         Builder<Pair<dao.d, T>> $$1 = ImmutableList.builder();
+         new dav().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new dao.c<>($$1.build());
       }
-   }
 
-   @Override
-   protected boolean d_(doz $$0) {
-      return true;
-   }
+      public Stream<aju<daf>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<aju<daf>>map(Pair::getSecond).distinct();
+      }
 
-   @Override
-   protected int a(doz $$0, cyx $$1, ib $$2) {
-      return cmp.a($$1.c_($$2));
-   }
+      public ajv b() {
+         return this.d;
+      }
 
-   @Override
-   protected did b_(doz $$0) {
-      return did.c;
-   }
+      public dat.a.a c() {
+         return this.e;
+      }
 
-   @Override
-   protected doz a(doz $$0, dik $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected doz a(doz $$0, dgu $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Nullable
-   protected static <T extends dmf> dmg<T> a(cyx $$0, dmh<T> $$1, dmh<? extends dlt> $$2) {
-      return $$0.B ? null : a($$1, $$2, dlt::a);
+      @FunctionalInterface
+      interface a {
+         <T> dao.c<T> apply(Function<aju<daf>, T> var1);
+      }
    }
 }

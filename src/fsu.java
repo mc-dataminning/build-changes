@@ -1,78 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
+public class fsu<T extends cez> extends fpp<T> {
+   private static final float a = 9.0F;
+   private static final float b = 100.0F;
+   private final ftv f;
+   private final ftv g;
 
-public class fsu<T extends cde> extends frw<T> {
-   private static final String j = "egg_belly";
-   private final ftm k;
-
-   public fsu(ftm $$0) {
-      super($$0, true, 120.0F, 0.0F, 9.0F, 6.0F, 120);
-      this.k = $$0.b("egg_belly");
+   public fsu(ftv $$0) {
+      super(0.5F, 24.0F);
+      this.f = $$0.b("root");
+      this.g = this.f.b("bone").b("body").b("head");
    }
 
-   public static fts c() {
-      ftu $$0 = new ftu();
-      ftv $$1 = $$0.a();
-      $$1.a("head", ftr.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), fto.a(0.0F, 19.0F, -10.0F));
-      $$1.a(
+   public static fub b() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a().a("root", fua.c(), ftx.a(0.0F, 5.0F, 0.0F));
+      fue $$2 = $$1.a("bone", fua.c(), ftx.a(0.0F, 0.0F, 0.0F));
+      fue $$3 = $$2.a(
          "body",
-         ftr.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
-         fto.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+         fua.c()
+            .a(62, 68)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new ftz(0.0F))
+            .a(62, 0)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new ftz(0.5F))
+            .a(87, 68)
+            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new ftz(0.0F)),
+         ftx.a(0.0F, 0.0F, 0.0F)
       );
-      $$1.a("egg_belly", ftr.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), fto.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 1;
-      $$1.a("right_hind_leg", ftr.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fto.a(-3.5F, 22.0F, 11.0F));
-      $$1.a("left_hind_leg", ftr.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fto.a(3.5F, 22.0F, 11.0F));
-      $$1.a("right_front_leg", ftr.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fto.a(-5.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", ftr.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fto.a(5.0F, 21.0F, -4.0F));
-      return fts.a($$0, 128, 64);
-   }
-
-   @Override
-   protected Iterable<ftm> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.k));
+      $$2.a("right_front_leg", fua.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new ftz(0.0F)), ftx.a(-7.5F, 10.0F, -15.0F));
+      $$2.a("right_mid_leg", fua.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new ftz(0.0F)), ftx.a(-7.5F, 10.0F, 0.0F));
+      $$2.a("right_hind_leg", fua.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new ftz(0.0F)), ftx.a(-7.5F, 10.0F, 15.0F));
+      $$2.a("left_front_leg", fua.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new ftz(0.0F)), ftx.a(7.5F, 10.0F, -15.0F));
+      $$2.a("left_mid_leg", fua.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new ftz(0.0F)), ftx.a(7.5F, 10.0F, 0.0F));
+      $$2.a("left_hind_leg", fua.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new ftz(0.0F)), ftx.a(7.5F, 10.0F, 15.0F));
+      fue $$4 = $$3.a(
+         "head",
+         fua.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new ftz(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new ftz(0.0F)),
+         ftx.a(0.0F, 6.5F, -19.48F)
+      );
+      $$4.a("left_ear", fua.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new ftz(0.0F)), ftx.a(6.51F, -7.5F, -4.51F));
+      $$4.a("right_ear", fua.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new ftz(0.0F)), ftx.a(-6.51F, -7.5F, -4.51F));
+      $$4.a("nose", fua.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new ftz(0.0F)), ftx.a(0.0F, -4.5F, -11.5F));
+      $$4.a("lower_beak", fua.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new ftz(0.0F)), ftx.a(0.0F, 2.5F, -12.5F));
+      return fub.a($$0, 192, 192);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.f.e = axk.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.g.e = axk.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.h.g = axk.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.i.g = axk.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.h.e = 0.0F;
-      this.i.e = 0.0F;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-      this.f.f = 0.0F;
-      this.g.f = 0.0F;
-      if (!$$0.bc() && $$0.aC()) {
-         float $$6 = $$0.u() ? 4.0F : 1.0F;
-         float $$7 = $$0.u() ? 2.0F : 1.0F;
-         float $$8 = 5.0F;
-         this.h.f = axk.b($$6 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$7;
-         this.h.g = 0.0F;
-         this.i.f = axk.b($$6 * $$1 * 5.0F) * 8.0F * $$2 * $$7;
-         this.i.g = 0.0F;
-         this.f.f = axk.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
-         this.f.e = 0.0F;
-         this.g.f = axk.b($$1 * 5.0F) * 3.0F * $$2;
-         this.g.e = 0.0F;
+      this.a().e().forEach(ftv::c);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$0.u()) {
+         this.a(fcx.e, $$1, $$2, 9.0F, 100.0F);
+      } else {
+         this.a(fcx.d, $$1, $$2, 9.0F, 100.0F);
       }
 
-      this.k.k = !this.e && $$0.r();
+      this.a($$0.cb, fcx.f, $$3);
+      this.a($$0.ca, fcx.c, $$3);
+      this.a($$0.cc, fcx.g, $$3);
+      this.a($$0.bX, fcx.i, $$3);
+      this.a($$0.bY, fcx.b, $$3);
+      if (this.e) {
+         this.a(fcx.a);
+      }
    }
 
    @Override
-   public void a(ewi $$0, ewm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      boolean $$8 = this.k.k;
-      if ($$8) {
-         $$0.a();
-         $$0.a(0.0F, -0.08F, 0.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if ($$8) {
-         $$0.b();
-      }
+   public ftv a() {
+      return this.f;
    }
 }

@@ -1,66 +1,34 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import javax.annotation.Nonnull;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DynamicOps;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class ie<T> extends it<T> implements ig<T> {
-   private final ajt b;
-   private il.c<T> c;
+public class ie<T> {
+   private final Codec<T> a;
 
-   public ie(String $$0, ajs<? extends iy<T>> $$1, Lifecycle $$2, boolean $$3) {
-      super($$1, $$2, $$3);
-      this.b = new ajt($$0);
+   ie(Codec<T> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public il.c<T> a(ajs<T> $$0, T $$1, ix $$2) {
-      il.c<T> $$3 = super.a($$0, $$1, $$2);
-      if (this.b.equals($$0.a())) {
-         this.c = $$3;
+   public T a(T $$0, ip.a $$1, ip.a $$2) {
+      DynamicOps<Object> $$3 = $$1.a(axf.a);
+      DynamicOps<Object> $$4 = $$2.a(axf.a);
+      Object $$5 = ac.a(this.a.encodeStart($$3, $$0), $$0x -> new IllegalStateException("Failed to encode: " + $$0x));
+      return ac.a(this.a.parse($$4, $$5), $$0x -> new IllegalStateException("Failed to decode: " + $$0x));
+   }
+
+   public static class a {
+      private final Map<aju<? extends ja<?>>, ie<?>> a = new HashMap<>();
+
+      public <T> ie.a a(aju<? extends ja<? extends T>> $$0, Codec<T> $$1) {
+         this.a.put($$0, new ie($$1));
+         return this;
       }
 
-      return $$3;
-   }
-
-   @Override
-   public int a(@Nullable T $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == -1 ? super.a(this.c.a()) : $$1;
-   }
-
-   @Nonnull
-   @Override
-   public ajt b(T $$0) {
-      ajt $$1 = super.b($$0);
-      return $$1 == null ? this.b : $$1;
-   }
-
-   @Nonnull
-   @Override
-   public T a(@Nullable ajt $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
-
-   @Override
-   public Optional<T> b(@Nullable ajt $$0) {
-      return Optional.ofNullable(super.a($$0));
-   }
-
-   @Nonnull
-   @Override
-   public T a(int $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
-
-   @Override
-   public Optional<il.c<T>> a(axr $$0) {
-      return super.a($$0).or(() -> Optional.of(this.c));
-   }
-
-   @Override
-   public ajt a() {
-      return this.b;
+      @Nullable
+      public <T> ie<T> a(aju<? extends ja<? extends T>> $$0) {
+         return (ie<T>)this.a.get($$0);
+      }
    }
 }

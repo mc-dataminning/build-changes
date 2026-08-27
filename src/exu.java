@@ -1,36 +1,55 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.UUID;
 
-public class exu extends eye {
-   private static final Logger b = LogUtils.getLogger();
-   public List<ext> a;
+public class exu extends eyn implements eyh {
+   @SerializedName("name")
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   public static exu a(String $$0) {
-      exu $$1 = new exu();
-      $$1.a = Lists.newArrayList();
+   public String a() {
+      return this.a;
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("lists").isJsonArray()) {
-            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
+   public void a(String $$0) {
+      this.a = $$0;
+   }
 
-            while ($$5.hasNext()) {
-               $$1.a.add(ext.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
-      }
+   public UUID b() {
+      return this.b;
+   }
 
-      return $$1;
+   public void a(UUID $$0) {
+      this.b = $$0;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public void b(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

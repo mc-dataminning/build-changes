@@ -1,37 +1,37 @@
-public class aea implements yn<aay> {
-   public static final ye<vg, aea> a = yn.a(aea::a, aea::new);
-   private final ib b;
-   private final float c;
+public class aea implements yp<aba> {
+   public static final yg<vi, aea> a = yp.a(aea::a, aea::new);
+   private final int b;
+   private final int c;
 
-   public aea(ib $$0, float $$1) {
+   public aea(int $$0, int $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private aea(vg $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private aea(vi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vi $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public yp<aea> a() {
-      return afj.aA;
+   public yr<aea> a() {
+      return afl.ay;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
+   public int b() {
       return this.b;
    }
 
-   public float e() {
+   public int e() {
       return this.c;
    }
 }

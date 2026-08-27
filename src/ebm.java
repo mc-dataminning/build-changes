@@ -1,28 +1,39 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class ebm<P extends ebl> {
-   public static final ebm<ebg> a = a("blob_foliage_placer", ebg.a);
-   public static final ebm<ebr> b = a("spruce_foliage_placer", ebr.a);
-   public static final ebm<ebp> c = a("pine_foliage_placer", ebp.a);
-   public static final ebm<ebf> d = a("acacia_foliage_placer", ebf.a);
-   public static final ebm<ebh> e = a("bush_foliage_placer", ebh.c);
-   public static final ebm<ebk> f = a("fancy_foliage_placer", ebk.c);
-   public static final ebm<ebn> g = a("jungle_foliage_placer", ebn.a);
-   public static final ebm<ebo> h = a("mega_pine_foliage_placer", ebo.a);
-   public static final ebm<ebj> i = a("dark_oak_foliage_placer", ebj.a);
-   public static final ebm<ebq> j = a("random_spread_foliage_placer", ebq.a);
-   public static final ebm<ebi> k = a("cherry_foliage_placer", ebi.a);
-   private final Codec<P> l;
+public class ebm extends ebj {
+   public static final Codec<ebm> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, ebm::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   private static <P extends ebl> ebm<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(kr.W, $$0, new ebm<>($$1));
+   public ebm(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
    }
 
-   private ebm(Codec<P> $$0) {
-      this.l = $$0;
+   public ebm(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   @Override
+   protected ebk<?> b() {
+      return ebk.a;
+   }
+
+   @Override
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

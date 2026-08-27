@@ -1,100 +1,121 @@
-public class fky extends fkm<cnd> {
-   private static final ajt A = new ajt("container/crafter/disabled_slot");
-   private static final ajt B = new ajt("container/crafter/powered_redstone");
-   private static final ajt C = new ajt("container/crafter/unpowered_redstone");
-   private static final ajt D = new ajt("textures/gui/container/crafter.png");
-   private static final wg E = wg.c("gui.togglable_slot");
-   private final cjt F;
+public class fky extends flw<cmy> {
+   private static final ajv A = new ajv("container/anvil/text_field");
+   private static final ajv B = new ajv("container/anvil/text_field_disabled");
+   private static final ajv C = new ajv("container/anvil/error");
+   private static final ajv D = new ajv("textures/gui/container/anvil.png");
+   private static final wi E = wi.c("container.repair.expensive");
+   private feh F;
+   private final cka G;
 
-   public fky(cnd $$0, cjs $$1, wg $$2) {
-      super($$0, $$1, $$2);
-      this.F = $$1.m;
+   public fky(cmy $$0, cjz $$1, wi $$2) {
+      super($$0, $$1, $$2, D);
+      this.G = $$1.m;
+      this.o = 60;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.o = (this.c - this.m.a(this.i)) / 2;
+   protected void E() {
+      int $$0 = (this.k - this.c) / 2;
+      int $$1 = (this.l - this.d) / 2;
+      this.F = new feh(this.m, $$0 + 62, $$1 + 24, 103, 12, wi.c("container.repair"));
+      this.F.f(false);
+      this.F.g(-1);
+      this.F.h(-1);
+      this.F.d(false);
+      this.F.f(50);
+      this.F.b(this::a);
+      this.F.a("");
+      this.d(this.F);
+      this.F.e(this.s.b(0).h());
    }
 
    @Override
-   protected void a(cok $$0, int $$1, int $$2, cmy $$3) {
-      if ($$0 instanceof cne && !$$0.h() && !this.F.N_()) {
-         switch ($$3) {
-            case a:
-               if (this.s.e($$1)) {
-                  this.a($$1);
-               } else if (this.s.g().d()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               crj $$4 = this.F.fZ().a($$2);
-               if (this.s.e($$1) && !$$4.d()) {
-                  this.a($$1);
-               }
+   protected void aC_() {
+      this.b(this.F);
+   }
+
+   @Override
+   public void a(fby $$0, int $$1, int $$2) {
+      String $$3 = this.F.a();
+      this.b($$0, $$1, $$2);
+      this.F.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.j.s.r();
+      }
+
+      return !this.F.a($$0, $$1, $$2) && !this.F.d() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cos $$1 = this.s.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().b(jr.d) && $$0.equals($$1.g().w().getString())) {
+            $$2 = "";
+         }
+
+         if (this.s.a($$2)) {
+            this.j.s.cv.b(new agv($$2));
          }
       }
+   }
 
+   @Override
+   protected void b(fdl $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.s.n();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         wi $$5;
+         if ($$3 >= 40 && !this.j.s.ga().d) {
+            $$5 = E;
+            $$4 = 16736352;
+         } else if (!this.s.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = wi.a("container.repair.cost", $$3);
+            if (!this.s.b(2).a(this.G)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.c - 8 - this.m.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
+            $$0.b(this.m, $$5, $$8, 69, $$4);
+         }
+      }
+   }
+
+   @Override
+   protected void a(fdl $$0, float $$1, int $$2, int $$3) {
       super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.s.a($$0, $$1);
-      super.a($$0, this.s.j, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.F.a(aum.zV.a(), 0.4F, $$2);
+      $$0.a(this.s.b(0).h() ? A : B, this.w + 59, this.x + 20, 110, 16);
    }
 
    @Override
-   public void a(fdc $$0, cok $$1) {
-      if ($$1 instanceof cne $$2 && this.s.e($$1.e)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(fdc $$0, cne $$1) {
-      $$0.a(A, $$1.f - 1, $$1.g - 1, 18, 18);
+   public void d(fdl $$0, int $$1, int $$2, float $$3) {
+      this.F.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.a($$0, $$1, $$2);
-      if (this.v instanceof cne && !this.s.e(this.v.e) && this.s.g().d() && !this.v.h() && !this.F.N_()) {
-         $$0.a(this.m, E, $$1, $$2);
+   protected void c(fdl $$0, int $$1, int $$2) {
+      if ((this.s.b(0).h() || this.s.b(1).h()) && !this.s.b(this.s.o()).h()) {
+         $$0.a(C, $$1 + 99, $$2 + 45, 28, 21);
       }
-   }
-
-   private void c(fdc $$0) {
-      int $$1 = this.k / 2 + 9;
-      int $$2 = this.l / 2 - 48;
-      ajt $$3;
-      if (this.s.l()) {
-         $$3 = B;
-      } else {
-         $$3 = C;
-      }
-
-      $$0.a($$3, $$1, $$2, 16, 16);
    }
 
    @Override
-   protected void a(fdc $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.k - this.c) / 2;
-      int $$5 = (this.l - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public void a(cmw $$0, int $$1, crs $$2) {
+      if ($$1 == 0) {
+         this.F.a($$2.d() ? "" : $$2.w().getString());
+         this.F.e(!$$2.d());
+         this.a(this.F);
+      }
    }
 }

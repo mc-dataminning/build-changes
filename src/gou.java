@@ -1,28 +1,31 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gou implements gop {
+   private final fzk a;
+   private boolean b;
+   private boolean c = true;
 
-public class gou {
-   private final List<got> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gou(List<got> $$0, boolean $$1, @Nullable String $$2) {
+   public gou(fzk $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public List<got> a() {
-      return this.a;
-   }
+   @Override
+   public void a() {
+      czg $$0 = this.a.dM();
+      dpi $$1 = $$0.c(this.a.cH().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dcj.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dcj.nd) && !this.a.N_()) {
+            boolean $$2 = $$1.c(dcn.b);
+            if ($$2) {
+               this.a.a(auo.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(auo.cZ, 1.0F, 1.0F);
+            }
+         }
 
-   public boolean b() {
-      return this.b;
-   }
+         this.b = true;
+      } else {
+         this.b = false;
+      }
 
-   @Nullable
-   public String c() {
-      return this.c;
+      this.c = false;
    }
 }

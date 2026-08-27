@@ -1,37 +1,84 @@
-public class aha implements yn<afl> {
-   public static final ye<vr, aha> a = yn.a(aha::a, aha::new);
-   private final int b;
-   private final crj c;
+public class aha implements yp<afn> {
+   public static final yg<vi, aha> a = yp.a(aha::a, aha::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private final id e;
+   private final String f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final dmy.a j;
 
-   public aha(int $$0, crj $$1) {
-      this.b = $$0;
-      this.c = $$1.r();
+   public aha(id $$0, String $$1, dmy.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$2;
    }
 
-   private aha(vr $$0) {
-      this.b = $$0.readShort();
-      this.c = crj.e.decode($$0);
+   private aha(vi $$0) {
+      this.e = $$0.e();
+      this.f = $$0.p();
+      this.j = $$0.b(dmy.a.class);
+      int $$1 = $$0.readByte();
+      this.g = ($$1 & 1) != 0;
+      this.h = ($$1 & 2) != 0;
+      this.i = ($$1 & 4) != 0;
    }
 
-   private void a(vr $$0) {
-      $$0.l(this.b);
-      crj.e.encode($$0, this.c);
+   private void a(vi $$0) {
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.j);
+      int $$1 = 0;
+      if (this.g) {
+         $$1 |= 1;
+      }
+
+      if (this.h) {
+         $$1 |= 2;
+      }
+
+      if (this.i) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
    @Override
-   public yp<aha> a() {
-      return afj.bU;
+   public yr<aha> a() {
+      return afl.bS;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public id b() {
+      return this.e;
    }
 
-   public crj e() {
-      return this.c;
+   public String e() {
+      return this.f;
+   }
+
+   public boolean f() {
+      return this.g;
+   }
+
+   public boolean g() {
+      return this.h;
+   }
+
+   public boolean h() {
+      return this.i;
+   }
+
+   public dmy.a i() {
+      return this.j;
    }
 }

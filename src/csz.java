@@ -1,32 +1,40 @@
-public interface csz {
-   csz.a a = new csz.a(false, false);
-   csz.a b = new csz.a(true, false);
+public class csz extends crn {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-   boolean a();
+   public csz(crn.a $$0) {
+      super($$0);
+   }
 
-   boolean b();
+   @Override
+   public int b(crs $$0) {
+      return 1200;
+   }
 
-   public static record a(boolean c, boolean d) implements csz {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
+   @Override
+   public ctk c(crs $$0) {
+      return ctk.h;
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
+   @Override
+   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
+      $$1.a(auo.yB, 1.0F, 1.0F);
+      $$1.b(auz.c.b(this));
+      return cru.a($$0, $$1, $$2);
+   }
 
-      public csz.a c() {
-         return new csz.a(this.c, true);
-      }
+   @Override
+   public crs a(crs $$0, czg $$1, bqt $$2) {
+      this.a($$2);
+      return $$0;
+   }
 
-      public boolean d() {
-         return this.c;
-      }
+   @Override
+   public void a(crs $$0, czg $$1, bqt $$2, int $$3) {
+      this.a($$2);
+   }
 
-      public boolean e() {
-         return this.d;
-      }
+   private void a(bqt $$0) {
+      $$0.a(auo.yC, 1.0F, 1.0F);
    }
 }

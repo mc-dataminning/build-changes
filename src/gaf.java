@@ -1,62 +1,47 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
 public class gaf {
-   private final gak a = new gak();
-   private final gal b;
-   private final fzz.a c;
-   private final fzz.a d;
-   private final gaa e;
+   public final Int2ObjectMap<gnz> a = new Int2ObjectOpenHashMap(256);
+   private final Int2ObjectMap<gns> b = new Int2ObjectOpenHashMap(256);
+   private final gny c;
 
-   public gaf(int $$0) {
-      this.b = gal.a($$0);
-      SortedMap<gah, ewd> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gao.h(), this.a.a(gah.c()));
-         $$0x.put(gao.i(), this.a.a(gah.e()));
-         $$0x.put(gao.a(), this.a.a(gah.d()));
-         $$0x.put(gao.k(), this.a.a(gah.f()));
-         a($$0x, gao.b());
-         a($$0x, gao.c());
-         a($$0x, gao.d());
-         a($$0x, gao.e());
-         a($$0x, gao.f());
-         $$0x.put(gao.g(), new ewd(786432));
-         a($$0x, gah.j());
-         a($$0x, gah.k());
-         a($$0x, gah.m());
-         a($$0x, gah.n());
-         a($$0x, gah.l());
-         a($$0x, gah.o());
-         a($$0x, gah.p());
-         a($$0x, gah.i());
-         gno.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = fzz.a(new ewd(1536));
-      this.c = fzz.a($$1, new ewd(786432));
-      this.e = new gaa(this.c);
+   public gaf(gny $$0) {
+      this.c = $$0;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gah, ewd> $$0, gah $$1) {
-      $$0.put($$1, new ewd($$1.I()));
+   public gns a(crs $$0) {
+      gns $$1 = this.a($$0.f());
+      return $$1 == null ? this.c.a() : $$1;
    }
 
-   public gak a() {
-      return this.a;
+   @Nullable
+   public gns a(crn $$0) {
+      return (gns)this.b.get(b($$0));
    }
 
-   public gal b() {
-      return this.b;
+   private static int b(crn $$0) {
+      return crn.a($$0);
    }
 
-   public fzz.a c() {
+   public void a(crn $$0, gnz $$1) {
+      this.a.put(b($$0), $$1);
+   }
+
+   public gny a() {
       return this.c;
    }
 
-   public fzz.a d() {
-      return this.d;
-   }
+   public void b() {
+      this.b.clear();
+      ObjectIterator var1 = this.a.entrySet().iterator();
 
-   public gaa e() {
-      return this.e;
+      while (var1.hasNext()) {
+         Entry<Integer, gnz> $$0 = (Entry<Integer, gnz>)var1.next();
+         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+      }
    }
 }

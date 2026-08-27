@@ -1,41 +1,18 @@
-public class bsq implements bsh<bqo> {
-   private final int a;
-   private final int b;
-   private bsg.a c = bsg.a.a;
-   private long d;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public bsq(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public bsg.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(aps $$0, bqo $$1, long $$2) {
-      this.c = bsg.a.b;
-      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
-   }
-
-   @Override
-   public final void f(aps $$0, bqo $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(aps $$0, bqo $$1, long $$2) {
-      this.c = bsg.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+public class bsq {
+   public static <E extends bqt, T> bsm<E> a(Predicate<E> $$0, bzw<? extends T> $$1, bzw<T> $$2, bnq $$3) {
+      return bvy.a(
+         (Function<bvy.b<E>, ? extends App<bvy.c<E>, bwb<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
+                  }
+               }))
+      );
    }
 }

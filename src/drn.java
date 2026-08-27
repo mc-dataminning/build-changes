@@ -1,371 +1,262 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntUnaryOperator;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Predicate;
-import java.util.stream.LongStream;
 import javax.annotation.Nullable;
 
-public class drn<T> implements drm<T>, dro<T> {
-   private static final int a = 0;
-   private final drm<T> b = ($$0x, $$1x) -> 0;
-   private final iq<T> c;
-   private volatile drn.c<T> d;
-   private final drn.d e;
-   private final ayh f = new ayh("PalettedContainer");
+public class drn extends dry {
+   private final dro n;
+   private final boolean o;
 
-   public void a() {
-      this.f.a();
+   public drn(dro $$0, boolean $$1) {
+      super($$0.f(), dsb.a, $$0.l, $$0.F().H_().d(ku.aw), $$0.t());
+      this.n = $$0;
+      this.o = $$1;
    }
 
-   public void b() {
-      this.f.b();
-   }
-
-   public static <T> Codec<drn<T>> a(iq<T> $$0, Codec<T> $$1, drn.d $$2, T $$3) {
-      dro.b<T, drn<T>> $$4 = drn::a;
-      return a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static <T> Codec<dro<T>> b(iq<T> $$0, Codec<T> $$1, drn.d $$2, T $$3) {
-      dro.b<T, dro<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
-      return a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   private static <T, C extends dro<T>> Codec<C> a(iq<T> $$0, Codec<T> $$1, drn.d $$2, T $$3, dro.b<T, C> $$4) {
-      return RecordCodecBuilder.create(
-            $$2x -> $$2x.group(
-                     $$1.mapResult(aws.a($$3)).listOf().fieldOf("palette").forGetter(dro.a::a), Codec.LONG_STREAM.optionalFieldOf("data").forGetter(dro.a::b)
-                  )
-                  .apply($$2x, dro.a::new)
-         )
-         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
-   }
-
-   public drn(iq<T> $$0, drn.d $$1, drn.a<T> $$2, avz $$3, List<T> $$4) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new drn.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
-   }
-
-   private drn(iq<T> $$0, drn.d $$1, drn.c<T> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$2;
-   }
-
-   public drn(iq<T> $$0, T $$1, drn.d $$2) {
-      this.e = $$2;
-      this.c = $$0;
-      this.d = this.a(null, 0);
-      this.d.c.a($$1);
-   }
-
-   private drn.c<T> a(@Nullable drn.c<T> $$0, int $$1) {
-      drn.a<T> $$2 = this.e.a(this.c, $$1);
-      return $$0 != null && $$2.equals($$0.c()) ? $$0 : $$2.a(this.c, this, this.e.a());
+   @Nullable
+   @Override
+   public dmo c_(id $$0) {
+      return this.n.c_($$0);
    }
 
    @Override
-   public int onResize(int $$0, T $$1) {
-      drn.c<T> $$2 = this.d;
-      drn.c<T> $$3 = this.a($$2, $$0);
-      $$3.a($$2.c, $$2.b);
-      this.d = $$3;
-      return $$3.c.a($$1);
-   }
-
-   public T a(int $$0, int $$1, int $$2, T $$3) {
-      this.a();
-
-      Object var5;
-      try {
-         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
-      } finally {
-         this.b();
-      }
-
-      return (T)var5;
-   }
-
-   public T b(int $$0, int $$1, int $$2, T $$3) {
-      return this.a(this.e.a($$0, $$1, $$2), $$3);
-   }
-
-   private T a(int $$0, T $$1) {
-      int $$2 = this.d.c.a($$1);
-      int $$3 = this.d.b.a($$0, $$2);
-      return this.d.c.a($$3);
-   }
-
-   public void c(int $$0, int $$1, int $$2, T $$3) {
-      this.a();
-
-      try {
-         this.b(this.e.a($$0, $$1, $$2), $$3);
-      } finally {
-         this.b();
-      }
-   }
-
-   private void b(int $$0, T $$1) {
-      int $$2 = this.d.c.a($$1);
-      this.d.b.b($$0, $$2);
+   public dpi a_(id $$0) {
+      return this.n.a_($$0);
    }
 
    @Override
-   public T a(int $$0, int $$1, int $$2) {
-      return this.a(this.e.a($$0, $$1, $$2));
-   }
-
-   protected T a(int $$0) {
-      drn.c<T> $$1 = this.d;
-      return $$1.c.a($$1.b.a($$0));
+   public elb b_(id $$0) {
+      return this.n.b_($$0);
    }
 
    @Override
-   public void a(Consumer<T> $$0) {
-      drl<T> $$1 = this.d.e();
-      IntSet $$2 = new IntArraySet();
-      this.d.b.a($$2::add);
-      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
+   public int P() {
+      return this.n.P();
    }
 
-   public void a(vg $$0) {
-      this.a();
+   @Override
+   public drp b(int $$0) {
+      return this.o ? this.n.b($$0) : super.b($$0);
+   }
 
-      try {
-         int $$1 = $$0.readByte();
-         drn.c<T> $$2 = this.a(this.d, $$1);
-         $$2.c.a($$0);
-         $$0.b($$2.b.a());
-         this.d = $$2;
-      } finally {
-         this.b();
+   @Nullable
+   @Override
+   public dpi a(id $$0, dpi $$1, boolean $$2) {
+      return this.o ? this.n.a($$0, $$1, $$2) : null;
+   }
+
+   @Override
+   public void a(dmo $$0) {
+      if (this.o) {
+         this.n.a($$0);
       }
    }
 
    @Override
-   public void b(vg $$0) {
-      this.a();
-
-      try {
-         this.d.a($$0);
-      } finally {
-         this.b();
+   public void a(bqa $$0) {
+      if (this.o) {
+         this.n.a($$0);
       }
    }
 
-   private static <T> DataResult<drn<T>> a(iq<T> $$0, drn.d $$1, dro.a<T> $$2) {
-      List<T> $$3 = $$2.a();
-      int $$4 = $$1.a();
-      int $$5 = $$1.b($$0, $$3.size());
-      drn.a<T> $$6 = $$1.a($$0, $$5);
-      avz $$7;
-      if ($$5 == 0) {
-         $$7 = new ayo($$4);
+   @Override
+   public void a(dsd $$0) {
+      if (this.o) {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public drp[] d() {
+      return this.n.d();
+   }
+
+   @Override
+   public void a(dva.a $$0, long[] $$1) {
+   }
+
+   private dva.a c(dva.a $$0) {
+      if ($$0 == dva.a.a) {
+         return dva.a.b;
       } else {
-         Optional<LongStream> $$8 = $$2.b();
-         if ($$8.isEmpty()) {
-            return DataResult.error(() -> "Missing values for non-zero storage");
-         }
-
-         long[] $$9 = $$8.get().toArray();
-
-         try {
-            if ($$6.a() == drn.d.f) {
-               drl<T> $$10 = new drd<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
-               axy $$11 = new axy($$5, $$4, $$9);
-               int[] $$12 = new int[$$4];
-               $$11.a($$12);
-               a($$12, $$2x -> $$0.a($$10.a($$2x)));
-               $$7 = new axy($$6.b(), $$4, $$12);
-            } else {
-               $$7 = new axy($$6.b(), $$4, $$9);
-            }
-         } catch (axy.a var13) {
-            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
-         }
-      }
-
-      return DataResult.success(new drn<>($$0, $$1, $$6, $$7, $$3));
-   }
-
-   @Override
-   public dro.a<T> a(iq<T> $$0, drn.d $$1) {
-      this.a();
-
-      dro.a var12;
-      try {
-         drd<T> $$2 = new drd<>($$0, this.d.b.c(), this.b);
-         int $$3 = $$1.a();
-         int[] $$4 = new int[$$3];
-         this.d.b.a($$4);
-         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
-         int $$5 = $$1.b($$0, $$2.b());
-         Optional<LongStream> $$7;
-         if ($$5 != 0) {
-            axy $$6 = new axy($$5, $$3, $$4);
-            $$7 = Optional.of(Arrays.stream($$6.a()));
-         } else {
-            $$7 = Optional.empty();
-         }
-
-         var12 = new dro.a<>($$2.d(), $$7);
-      } finally {
-         this.b();
-      }
-
-      return var12;
-   }
-
-   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
-      int $$2 = -1;
-      int $$3 = -1;
-
-      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
-         int $$5 = $$0[$$4];
-         if ($$5 != $$2) {
-            $$2 = $$5;
-            $$3 = $$1.applyAsInt($$5);
-         }
-
-         $$0[$$4] = $$3;
+         return $$0 == dva.a.c ? dva.a.d : $$0;
       }
    }
 
    @Override
-   public int c() {
-      return this.d.a();
+   public dva a(dva.a $$0) {
+      return this.n.a($$0);
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
-      return this.d.c.a($$0);
-   }
-
-   public drn<T> d() {
-      return new drn<>(this.c, this.e, this.d.b());
+   public int a(dva.a $$0, int $$1, int $$2) {
+      return this.n.a(this.c($$0), $$1, $$2);
    }
 
    @Override
-   public drn<T> e() {
-      return new drn<>(this.c, this.d.c.a(0), this.e);
+   public in<daf> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n.getNoiseBiome($$0, $$1, $$2);
    }
 
    @Override
-   public void a(drn.b<T> $$0) {
-      if (this.d.c.b() == 1) {
-         $$0.accept(this.d.c.a(0), this.d.b.b());
+   public cyn f() {
+      return this.n.f();
+   }
+
+   @Nullable
+   @Override
+   public efy a(efq $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public void a(efq $$0, efy $$1) {
+   }
+
+   @Override
+   public Map<efq, efy> g() {
+      return this.n.g();
+   }
+
+   @Override
+   public void a(Map<efq, efy> $$0) {
+   }
+
+   @Override
+   public LongSet b(efq $$0) {
+      return this.n.b($$0);
+   }
+
+   @Override
+   public void a(efq $$0, long $$1) {
+   }
+
+   @Override
+   public Map<efq, LongSet> h() {
+      return this.n.h();
+   }
+
+   @Override
+   public void b(Map<efq, LongSet> $$0) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public dsd j() {
+      return this.n.j();
+   }
+
+   @Override
+   public void d(id $$0) {
+   }
+
+   @Override
+   public void e(id $$0) {
+   }
+
+   @Override
+   public void a(to $$0) {
+   }
+
+   @Nullable
+   @Override
+   public to f(id $$0) {
+      return this.n.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public to a(id $$0, ip.a $$1) {
+      return this.n.a($$0, $$1);
+   }
+
+   @Override
+   public void a(Predicate<dpi> $$0, BiConsumer<id, dpi> $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   @Override
+   public eud<dch> o() {
+      return this.o ? this.n.o() : ett.a();
+   }
+
+   @Override
+   public eud<ela> p() {
+      return this.o ? this.n.p() : ett.a();
+   }
+
+   @Override
+   public dre.a q() {
+      return this.n.q();
+   }
+
+   @Nullable
+   @Override
+   public dwd t() {
+      return this.n.t();
+   }
+
+   @Override
+   public void a(dwd $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public drd a(duw.a $$0) {
+      if (this.o) {
+         return super.a($$0);
       } else {
-         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
-         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
-         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
       }
    }
 
-   static record a<T>(drl.a a, int b) {
-      public drn.c<T> a(iq<T> $$0, drm<T> $$1, int $$2) {
-         avz $$3 = (avz)(this.b == 0 ? new ayo($$2) : new axy(this.b, $$2));
-         drl<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
-         return new drn.c<>(this, $$3, $$4);
+   @Override
+   public drd b(duw.a $$0) {
+      if (this.o) {
+         return super.b($$0);
+      } else {
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
       }
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(T var1, int var2);
+   public dro C() {
+      return this.n;
    }
 
-   static record c<T>(drn.a<T> a, avz b, drl<T> c) {
+   @Override
+   public boolean v() {
+      return this.n.v();
+   }
 
-      public void a(drl<T> $$0, avz $$1) {
-         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
-            T $$3 = $$0.a($$1.a($$2));
-            this.b.b($$2, this.c.a($$3));
-         }
-      }
+   @Override
+   public void b(boolean $$0) {
+      this.n.b($$0);
+   }
 
-      public int a() {
-         return 1 + this.c.a() + vx.a(this.b.a().length) + this.b.a().length * 8;
-      }
-
-      public void a(vg $$0) {
-         $$0.k(this.b.c());
-         this.c.b($$0);
-         $$0.a(this.b.a());
-      }
-
-      public drn.c<T> b() {
-         return new drn.c<>(this.a, this.b.d(), this.c.c());
-      }
-
-      public drn.a<T> c() {
-         return this.a;
-      }
-
-      public avz d() {
-         return this.b;
-      }
-
-      public drl<T> e() {
-         return this.c;
+   @Override
+   public void a(dai $$0, dao.f $$1) {
+      if (this.o) {
+         this.n.a($$0, $$1);
       }
    }
 
-   public abstract static class d {
-      public static final drl.a a = drq::a;
-      public static final drl.a b = drj::a;
-      public static final drl.a c = drd::a;
-      static final drl.a f = drc::a;
-      public static final drn.d d = new drn.d(4) {
-         @Override
-         public <A> drn.a<A> a(iq<A> $$0, int $$1) {
-            return switch ($$1) {
-               case 0 -> new drn.a(a, $$1);
-               case 1, 2, 3, 4 -> new drn.a(b, 4);
-               case 5, 6, 7, 8 -> new drn.a(c, $$1);
-               default -> new drn.a(drn.d.f, axk.e($$0.b()));
-            };
-         }
-      };
-      public static final drn.d e = new drn.d(2) {
-         @Override
-         public <A> drn.a<A> a(iq<A> $$0, int $$1) {
-            return switch ($$1) {
-               case 0 -> new drn.a(a, $$1);
-               case 1, 2, 3 -> new drn.a(b, $$1);
-               default -> new drn.a(drn.d.f, axk.e($$0.b()));
-            };
-         }
-      };
-      private final int g;
+   @Override
+   public void A() {
+      this.n.A();
+   }
 
-      d(int $$0) {
-         this.g = $$0;
-      }
-
-      public int a() {
-         return 1 << this.g * 3;
-      }
-
-      public int a(int $$0, int $$1, int $$2) {
-         return ($$1 << this.g | $$2) << this.g | $$0;
-      }
-
-      public abstract <A> drn.a<A> a(iq<A> var1, int var2);
-
-      <A> int b(iq<A> $$0, int $$1) {
-         int $$2 = axk.e($$1);
-         drn.a<A> $$3 = this.a($$0, $$2);
-         return $$3.a() == f ? $$2 : $$3.b();
-      }
+   @Override
+   public ekl B() {
+      return this.n.B();
    }
 }

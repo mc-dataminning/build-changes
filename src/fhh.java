@@ -1,61 +1,20 @@
 import java.util.function.Consumer;
 
-public class fhh implements fhe {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public class fhh {
+   private static final int a = 4;
 
-   public fhh(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   private fhh() {
    }
 
-   public fhh(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static fhm a(fdj $$0, fhn $$1, wi $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   public static fhh a(int $$0) {
-      return new fhh($$0, 0);
-   }
-
-   public static fhh b(int $$0) {
-      return new fhh(0, $$0);
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public int C() {
-      return this.a;
-   }
-
-   @Override
-   public int D() {
-      return this.b;
-   }
-
-   @Override
-   public int x() {
-      return this.c;
-   }
-
-   @Override
-   public int v() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<fdn> $$0) {
+   public static fhm a(fdj $$0, fhn $$1, wi $$2, Consumer<fho> $$3) {
+      fhp $$4 = fhp.d().a(4);
+      $$4.a(new fff($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

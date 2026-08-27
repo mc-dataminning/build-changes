@@ -1,35 +1,44 @@
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class glv implements gln {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<glv> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajt.a.fieldOf("resource").forGetter($$0x -> $$0x.d), ajt.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, glv::new)
-   );
-   private final ajt d;
-   private final Optional<ajt> e;
+@FunctionalInterface
+public interface glv {
+   Logger a = LogUtils.getLogger();
 
-   public glv(ajt $$0, Optional<ajt> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   static glv create(Collection<asd<?>> $$0) {
+      return ($$1, $$2) -> {
+         atg $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         evs $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = evs.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         gnc $$11 = $$3.a(gnc.a).orElse(gnc.e);
+         gne $$12 = $$11.a($$7.a(), $$7.b());
+         if (axm.c($$7.a(), $$12.a()) && axm.c($$7.b(), $$12.b())) {
+            return new glm($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   @Override
-   public void a(atc $$0, gln.a $$1) {
-      ajt $$2 = a.a(this.d);
-      Optional<ata> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
-   }
-
-   @Override
-   public glp a() {
-      return glq.a;
-   }
+   @Nullable
+   glm loadSprite(ajv var1, atc var2);
 }

@@ -2,22 +2,17 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
 public class bep extends DataFix {
-   public bep(Schema $$0) {
-      super($$0, false);
+   public bep(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsProgrammerArtFix",
-         this.getInputSchema().getType(bfa.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
+         "OptionsForceVBOFix",
+         this.getInputSchema().getType(bff.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("useVbo", $$0x.createString("true")))
       );
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
    }
 }

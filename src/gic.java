@@ -1,24 +1,40 @@
-public class gic extends ggo<cjg, fsx<cjg>> {
-   private static final ajt a = new ajt("textures/entity/villager/villager.png");
+public class gic<T extends bqa & ckp> extends gfq<T> {
+   private static final float a = 12.25F;
+   private final ggp f;
+   private final float g;
+   private final boolean h;
 
-   public gic(gfi.a $$0) {
-      super($$0, new fsx<>($$0.a(ftl.bP)), 0.5F);
-      this.a(new giy<>(this, $$0.f(), $$0.d()));
-      this.a(new gke<>(this, $$0.e(), "villager"));
-      this.a(new gix<>(this, $$0.d()));
+   public gic(gfr.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.f = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public ajt a(cjg $$0) {
-      return a;
+   public gic(gfr.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   protected void a(cjg $$0, ewi $$1, float $$2) {
-      float $$3 = 0.9375F * $$0.ea();
-      $$1.b($$3, $$3, $$3);
+   @Override
+   protected int a(T $$0, id $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
-   protected float b(cjg $$0) {
-      float $$1 = super.b($$0);
-      return $$0.p_() ? $$1 * 0.5F : $$1;
+   @Override
+   public void a(T $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
+      if ($$0.ah >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
+         $$3.a();
+         $$3.b(this.g, this.g, this.g);
+         $$3.a(this.c.b());
+         $$3.a(a.d.rotationDegrees(180.0F));
+         this.f.a($$0.p(), crp.h, $$5, glj.d, $$3, $$4, $$0.dM(), $$0.aj());
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public ajv a(bqa $$0) {
+      return glr.e;
    }
 }

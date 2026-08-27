@@ -1,32 +1,55 @@
-public class geq extends ggo<ccg, fpx<ccg>> {
-   public geq(gfi.a $$0) {
-      super($$0, new fpx<>($$0.a(ftl.t)), 0.4F);
-      this.a(new giv(this, $$0.f()));
+public abstract class geq<T extends ckg> extends gfq<T> {
+   public geq(gfr.a $$0) {
+      super($$0);
    }
 
-   public ajt a(ccg $$0) {
-      return $$0.gt();
-   }
-
-   protected void a(ccg $$0, ewi $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b(0.8F, 0.8F, 0.8F);
-   }
-
-   protected void a(ccg $$0, ewi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.G($$4);
-      if ($$6 > 0.0F) {
-         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
-         $$1.a(a.f.rotationDegrees(axk.j($$6, 0.0F, 90.0F)));
-         ib $$7 = $$0.dm();
-
-         for (cjt $$9 : $$0.dM().a(cjt.class, new erv($$7).c(2.0, 2.0, 2.0))) {
-            if ($$9.fI()) {
-               $$1.a(0.15F * $$6, 0.0F, 0.0F);
-               break;
-            }
-         }
+   public void a(T $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(axm.i($$2, $$0.N, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(axm.i($$2, $$0.O, $$0.dE())));
+      int $$6 = 0;
+      float $$7 = 0.0F;
+      float $$8 = 0.5F;
+      float $$9 = 0.0F;
+      float $$10 = 0.15625F;
+      float $$11 = 0.0F;
+      float $$12 = 0.15625F;
+      float $$13 = 0.15625F;
+      float $$14 = 0.3125F;
+      float $$15 = 0.05625F;
+      float $$16 = (float)$$0.e - $$2;
+      if ($$16 > 0.0F) {
+         float $$17 = -axm.a($$16 * 3.0F) * $$16;
+         $$3.a(a.f.rotationDegrees($$17));
       }
+
+      $$3.a(a.b.rotationDegrees(45.0F));
+      $$3.b(0.05625F, 0.05625F, 0.05625F);
+      $$3.a(-4.0F, 0.0F, 0.0F);
+      ewv $$18 = $$4.getBuffer(gaq.d(this.a($$0)));
+      ewr.a $$19 = $$3.c();
+      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
+      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
+      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
+      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
+      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
+      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
+      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
+      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
+
+      for (int $$20 = 0; $$20 < 4; $$20++) {
+         $$3.a(a.b.rotationDegrees(90.0F));
+         this.a($$19, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
+         this.a($$19, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
+         this.a($$19, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
+         this.a($$19, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
+      }
+
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(ewr.a $$0, ewv $$1, int $$2, int $$3, int $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
+      $$1.a($$0, (float)$$2, (float)$$3, (float)$$4).a(255, 255, 255, 255).a($$5, $$6).c(glj.d).b($$10).b($$0, (float)$$7, (float)$$9, (float)$$8).e();
    }
 }

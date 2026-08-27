@@ -1,120 +1,200 @@
 import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dmo extends dmf implements bnt {
-   public static final int c = 6;
-   private static final Logger d = LogUtils.getLogger();
-   private final iu<crj> e = iu.a(6, crj.i);
-   private int f = -1;
+public abstract class dmo {
+   private static final Logger e = LogUtils.getLogger();
+   private final dmq<?> f;
+   @Nullable
+   protected czg o;
+   protected final id p;
+   protected boolean q;
+   private dpi g;
 
-   public dmo(ib $$0, doz $$1) {
-      super(dmh.M, $$0, $$1);
+   public dmo(dmq<?> $$0, id $$1, dpi $$2) {
+      this.f = $$0;
+      this.p = $$1.i();
+      this.g = $$2;
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.f = $$0;
-         doz $$1 = this.n();
+   public static id b(to $$0) {
+      return new id($$0.h("x"), $$0.h("y"), $$0.h("z"));
+   }
 
-         for (int $$2 = 0; $$2 < ddc.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).d();
-            dpq $$4 = ddc.c.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
-         }
+   @Nullable
+   public czg i() {
+      return this.o;
+   }
 
-         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
-         this.o.a(dts.c, this.p, dts.a.a($$1));
+   public void a(czg $$0) {
+      this.o = $$0;
+   }
+
+   public boolean m() {
+      return this.o != null;
+   }
+
+   public void a(to $$0, ip.a $$1) {
+   }
+
+   protected void b(to $$0, ip.a $$1) {
+   }
+
+   public final to b(ip.a $$0) {
+      to $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   public final to c(ip.a $$0) {
+      to $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
+   }
+
+   public final to d(ip.a $$0) {
+      to $$1 = new to();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   private void c(to $$0) {
+      ajv $$1 = dmq.a(this.r());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
       } else {
-         d.error("Expected slot 0-5, got {}", $$0);
+         $$0.a("id", $$1.toString());
       }
    }
 
-   @Override
-   public void a(tm $$0, in.a $$1) {
-      this.e.clear();
-      bnu.b($$0, this.e, $$1);
-      this.f = $$0.h("last_interacted_slot");
+   public static void a(to $$0, dmq<?> $$1) {
+      $$0.a("id", dmq.a($$1).toString());
    }
 
-   @Override
-   protected void b(tm $$0, in.a $$1) {
-      bnu.a($$0, this.e, true, $$1);
-      $$0.a("last_interacted_slot", this.f);
+   public void a(crs $$0, ip.a $$1) {
+      to $$2 = this.d($$1);
+      this.a($$2);
+      cpq.a($$0, this.r(), $$2);
+      $$0.a(this.s());
    }
 
-   public int f() {
-      return (int)this.e.stream().filter(Predicate.not(crj::d)).count();
+   private void d(to $$0) {
+      this.c($$0);
+      $$0.a("x", this.p.u());
+      $$0.a("y", this.p.v());
+      $$0.a("z", this.p.w());
    }
 
-   @Override
-   public void a() {
-      this.e.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean ah_() {
-      return this.e.stream().allMatch(crj::d);
-   }
-
-   @Override
-   public crj a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Override
-   public crj a(int $$0, int $$1) {
-      crj $$2 = Objects.requireNonNullElse(this.e.get($$0), crj.i);
-      this.e.set($$0, crj.i);
-      if (!$$2.d()) {
-         this.c($$0);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public crj b(int $$0) {
-      return this.a($$0, 1);
-   }
-
-   @Override
-   public void a(int $$0, crj $$1) {
-      if ($$1.a(avk.av)) {
-         this.e.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.d()) {
-         this.a($$0, 1);
+   @Nullable
+   public static dmo a(id $$0, dpi $$1, to $$2, ip.a $$3) {
+      String $$4 = $$2.l("id");
+      ajv $$5 = ajv.a($$4);
+      if ($$5 == null) {
+         e.error("Block entity has invalid type: {}", $$4);
+         return null;
+      } else {
+         return kt.k.b($$5).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5x) {
+               e.error("Failed to create block entity {}", $$4, var5x);
+               return null;
+            }
+         }).map($$3x -> {
+            try {
+               $$3x.a($$2, $$3);
+               return $$3x;
+            } catch (Throwable var5x) {
+               e.error("Failed to load data for block entity {}", $$4, var5x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            e.warn("Skipping BlockEntity with id {}", $$4);
+            return null;
+         });
       }
    }
 
-   @Override
-   public boolean a(bnt $$0, int $$1, crj $$2) {
-      return $$0.a_($$2x -> $$2x.d() ? true : crj.c($$2, $$2x) && $$2x.G() + $$2.G() <= Math.min($$2x.i(), $$0.aj_()));
+   public void e() {
+      if (this.o != null) {
+         a(this.o, this.p, this.g);
+      }
    }
 
-   @Override
-   public int aj_() {
-      return 1;
+   protected static void a(czg $$0, id $$1, dpi $$2) {
+      $$0.q($$1);
+      if (!$$2.i()) {
+         $$0.c($$1, $$2.b());
+      }
    }
 
-   @Override
-   public boolean a(cjt $$0) {
-      return bnt.a(this, $$0);
+   public id az_() {
+      return this.p;
    }
 
-   @Override
-   public boolean b(int $$0, crj $$1) {
-      return $$1.a(avk.av) && this.a($$0).d() && $$1.G() == this.aj_();
+   public dpi n() {
+      return this.g;
    }
 
-   public int j() {
+   @Nullable
+   public yp<aba> av_() {
+      return null;
+   }
+
+   public to a(ip.a $$0) {
+      return new to();
+   }
+
+   public boolean o() {
+      return this.q;
+   }
+
+   public void aw_() {
+      this.q = true;
+   }
+
+   public void p() {
+      this.q = false;
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", () -> kt.k.b(this.r()) + " // " + this.getClass().getCanonicalName());
+      if (this.o != null) {
+         p.a($$0, this.o, this.p, this.n());
+         p.a($$0, this.o, this.p, this.o.a_(this.p));
+      }
+   }
+
+   public boolean q() {
+      return false;
+   }
+
+   public dmq<?> r() {
       return this.f;
+   }
+
+   @Deprecated
+   public void b(dpi $$0) {
+      this.g = $$0;
+   }
+
+   public void a(jn $$0) {
+   }
+
+   public void a(jn.a $$0) {
+   }
+
+   @Deprecated
+   public void a(to $$0) {
+   }
+
+   public final jn s() {
+      jn.a $$0 = jn.a();
+      this.a($$0);
+      return $$0.a();
    }
 }

@@ -1,74 +1,112 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Calendar;
 
-public class gco implements gbz<dnr> {
-   private final Map<diz.a, fsj> a;
-   private static final Map<diz.a, ajt> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(diz.b.c, new ajt("textures/entity/skeleton/skeleton.png"));
-      $$0.put(diz.b.d, new ajt("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(diz.b.f, new ajt("textures/entity/zombie/zombie.png"));
-      $$0.put(diz.b.g, new ajt("textures/entity/creeper/creeper.png"));
-      $$0.put(diz.b.i, new ajt("textures/entity/enderdragon/dragon.png"));
-      $$0.put(diz.b.h, new ajt("textures/entity/piglin/piglin.png"));
-      $$0.put(diz.b.e, gmb.a());
-   });
+public class gco<T extends dmo & dnr> implements gci<T> {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final ftv d;
+   private final ftv e;
+   private final ftv f;
+   private final ftv g;
+   private final ftv h;
+   private final ftv i;
+   private final ftv j;
+   private final ftv k;
+   private final ftv l;
+   private boolean m;
 
-   public static Map<diz.a, fsj> a(fti $$0) {
-      Builder<diz.a, fsj> $$1 = ImmutableMap.builder();
-      $$1.put(diz.b.c, new fsi($$0.a(ftl.br)));
-      $$1.put(diz.b.d, new fsi($$0.a(ftl.ca)));
-      $$1.put(diz.b.e, new fsi($$0.a(ftl.aT)));
-      $$1.put(diz.b.f, new fsi($$0.a(ftl.cg)));
-      $$1.put(diz.b.g, new fsi($$0.a(ftl.J)));
-      $$1.put(diz.b.i, new ftg($$0.a(ftl.Q)));
-      $$1.put(diz.b.h, new frp($$0.a(ftl.aN)));
-      return $$1.build();
-   }
-
-   public gco(gca.a $$0) {
-      this.a = a($$0.e());
-   }
-
-   public void a(dnr $$0, float $$1, ewi $$2, fzz $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      doz $$7 = $$0.n();
-      boolean $$8 = $$7.b() instanceof dky;
-      ih $$9 = $$8 ? $$7.c(dky.d) : null;
-      int $$10 = $$8 ? dqf.a($$9.g()) : $$7.c(diz.e);
-      float $$11 = dqf.b($$10);
-      diz.a $$12 = ((dau)$$7.b()).b();
-      fsj $$13 = this.a.get($$12);
-      gah $$14 = a($$12, $$0.c());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
-   }
-
-   public static void a(@Nullable ih $$0, float $$1, float $$2, ewi $$3, fzz $$4, int $$5, fsj $$6, gah $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
-      } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+   public gco(gcj.a $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
+         this.m = true;
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      ewm $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, gla.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
+      ftv $$2 = $$0.a(ftu.x);
+      this.e = $$2.b("bottom");
+      this.d = $$2.b("lid");
+      this.f = $$2.b("lock");
+      ftv $$3 = $$0.a(ftu.O);
+      this.h = $$3.b("bottom");
+      this.g = $$3.b("lid");
+      this.i = $$3.b("lock");
+      ftv $$4 = $$0.a(ftu.P);
+      this.k = $$4.b("bottom");
+      this.j = $$4.b("lid");
+      this.l = $$4.b("lock");
    }
 
-   public static gah a(diz.a $$0, @Nullable GameProfile $$1) {
-      ajt $$2 = b.get($$0);
-      if ($$0 == diz.b.e && $$1 != null) {
-         gmj $$3 = fbp.Q().an();
-         return gah.i($$3.b($$1).a());
-      } else {
-         return gah.f($$2);
+   public static fub b() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      $$1.a("bottom", fua.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), ftx.a);
+      $$1.a("lid", fua.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), ftx.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fua.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), ftx.a(0.0F, 9.0F, 1.0F));
+      return fub.a($$0, 64, 64);
+   }
+
+   public static fub c() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      $$1.a("bottom", fua.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), ftx.a);
+      $$1.a("lid", fua.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), ftx.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fua.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), ftx.a(0.0F, 9.0F, 1.0F));
+      return fub.a($$0, 64, 64);
+   }
+
+   public static fub d() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      $$1.a("bottom", fua.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), ftx.a);
+      $$1.a("lid", fua.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), ftx.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fua.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), ftx.a(0.0F, 9.0F, 1.0F));
+      return fub.a($$0, 64, 64);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
+      czg $$6 = $$0.i();
+      boolean $$7 = $$6 != null;
+      dpi $$8 = $$7 ? $$0.n() : dcj.cv.n().a(ddk.c, ij.d);
+      dqa $$9 = $$8.b(ddk.d) ? $$8.c(ddk.d) : dqa.a;
+      if ($$8.b() instanceof dbb<?> $$11) {
+         boolean $$12 = $$9 != dqa.a;
+         $$2.a();
+         float $$13 = $$8.c(ddk.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         deo.c<? extends dmv> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.az_(), true);
+         } else {
+            $$14 = deo.b::b;
+         }
+
+         float $$16 = $$14.apply(ddk.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new gcl<>()).applyAsInt($$4);
+         gnv $$18 = gax.a($$0, $$9, this.m);
+         ewv $$19 = $$18.a($$3, gaq::d);
+         if ($$12) {
+            if ($$9 == dqa.b) {
+               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
+            } else {
+               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
+            }
+         } else {
+            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
+         }
+
+         $$2.b();
       }
+   }
+
+   private void a(ewr $$0, ewv $$1, ftv $$2, ftv $$3, ftv $$4, float $$5, int $$6, int $$7) {
+      $$2.e = -($$5 * (float) (Math.PI / 2));
+      $$3.e = $$2.e;
+      $$2.a($$0, $$1, $$6, $$7);
+      $$3.a($$0, $$1, $$6, $$7);
+      $$4.a($$0, $$1, $$6, $$7);
    }
 }

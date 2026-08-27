@@ -1,36 +1,57 @@
-public class bxq extends bxl {
-   private final cda a;
-   private apt b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public bxq(cda $$0) {
-      this.a = $$0;
+public abstract class bxq {
+   private final EnumSet<bxq.a> a = EnumSet.noneOf(bxq.a.class);
+
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
    }
 
-   @Override
-   public boolean a() {
-      apt $$0 = (apt)this.a.P_();
-      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.ga().b && !$$0.bc() && !$$0.aA;
-      return !this.a.gn() && $$1 && this.a.gw();
-   }
-
-   @Override
    public boolean Q_() {
-      return !this.c;
+      return true;
    }
 
-   @Override
    public void c() {
-      this.b = (apt)this.a.P_();
-      this.c = false;
+   }
+
+   public void d() {
+   }
+
+   public boolean R_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bxq.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public void e() {
-      if (!this.c && !this.a.y() && !this.a.gb()) {
-         if (this.a.cH().c(this.b.cH())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<bxq.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.R_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return axm.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

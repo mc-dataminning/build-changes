@@ -1,19 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class eit extends eiu {
-   public static final Codec<eit> a = Codec.unit(() -> eit.b);
-   public static final eit b = new eit();
+public class eit extends ejk {
+   public static final Codec<eit> a = kt.e.q().fieldOf("block").xmap(eit::new, $$0 -> $$0.b).codec();
+   private final dch b;
 
-   private eit() {
+   public eit(dch $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean a(ib $$0, ib $$1, ib $$2, axr $$3) {
-      return true;
+   public boolean a(dpi $$0, axt $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   protected eiv<?> a() {
-      return eiv.a;
+   protected ejl<?> a() {
+      return ejl.b;
    }
 }

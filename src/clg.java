@@ -1,176 +1,109 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class clg extends ckh {
+   private static final aja<Boolean> e = aje.a(clg.class, ajc.k);
 
-public class clg extends elz {
-   private static final String a = "raids";
-   private final Map<Integer, cle> b = Maps.newHashMap();
-   private final aps c;
-   private int d;
-   private int e;
-
-   public static elz.a<clg> a(aps $$0) {
-      return new elz.a<>(() -> new clg($$0), ($$1, $$2) -> a($$0, $$1), ayq.l);
+   public clg(bqg<? extends clg> $$0, czg $$1) {
+      super($$0, $$1);
    }
 
-   public clg(aps $$0) {
-      this.c = $$0;
-      this.d = 1;
-      this.c();
-   }
-
-   public cle a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public void a() {
-      this.e++;
-      Iterator<cle> $$0 = this.b.values().iterator();
-
-      while ($$0.hasNext()) {
-         cle $$1 = $$0.next();
-         if (this.c.aa().b(cyt.B)) {
-            $$1.n();
-         }
-
-         if ($$1.d()) {
-            $$0.remove();
-            this.c();
-         } else {
-            $$1.o();
-         }
-      }
-
-      if (this.e % 200 == 0) {
-         this.c();
-      }
-
-      afi.a(this.c, this.b.values());
-   }
-
-   public static boolean a(clf $$0, cle $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bA() && $$0.gA() && $$0.en() <= 2400 && $$0.dM().D_() == $$1.i().D_() : false;
-   }
-
-   @Nullable
-   public cle a(apt $$0) {
-      if ($$0.N_()) {
-         return null;
-      } else if (this.c.aa().b(cyt.B)) {
-         return null;
-      } else {
-         dsr $$1 = $$0.dM().D_();
-         if (!$$1.c()) {
-            return null;
-         } else {
-            ib $$2 = $$0.dm();
-            List<cbs> $$3 = this.c.y().c($$0x -> $$0x.a(avm.b), $$2, 64, cbr.b.b).toList();
-            int $$4 = 0;
-            esa $$5 = esa.b;
-
-            for (cbs $$6 : $$3) {
-               ib $$7 = $$6.f();
-               $$5 = $$5.b((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
-               $$4++;
-            }
-
-            ib $$8;
-            if ($$4 > 0) {
-               $$5 = $$5.a(1.0 / (double)$$4);
-               $$8 = ib.a($$5);
-            } else {
-               $$8 = $$2;
-            }
-
-            cle $$10 = this.a($$0.z(), $$8);
-            boolean $$11 = false;
-            if (!$$10.j()) {
-               if (!this.b.containsKey($$10.u())) {
-                  this.b.put($$10.u(), $$10);
-               }
-
-               $$11 = true;
-            } else if ($$10.m() < $$10.l()) {
-               $$11 = true;
-            } else {
-               $$0.e(bpj.E);
-               $$0.d.b(new acc($$0, (byte)43));
-            }
-
-            if ($$11) {
-               $$10.a((cjt)$$0);
-               $$0.d.b(new acc($$0, (byte)43));
-               if (!$$10.c()) {
-                  $$0.a(auw.aA);
-                  am.J.a($$0);
-               }
-            }
-
-            this.c();
-            return $$10;
-         }
-      }
-   }
-
-   private cle a(aps $$0, ib $$1) {
-      cle $$2 = $$0.d($$1);
-      return $$2 != null ? $$2 : new cle(this.b(), $$0, $$1);
-   }
-
-   public static clg a(aps $$0, tm $$1) {
-      clg $$2 = new clg($$0);
-      $$2.d = $$1.h("NextAvailableID");
-      $$2.e = $$1.h("Tick");
-      ts $$3 = $$1.c("Raids", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         tm $$5 = $$3.a($$4);
-         cle $$6 = new cle($$0, $$5);
-         $$2.b.put($$6.u(), $$6);
-      }
-
-      return $$2;
+   public clg(czg $$0, bqt $$1, double $$2, double $$3, double $$4) {
+      super(bqg.bq, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public tm a(tm $$0, in.a $$1) {
-      $$0.a("NextAvailableID", this.d);
-      $$0.a("Tick", this.e);
-      ts $$2 = new ts();
-
-      for (cle $$3 : this.b.values()) {
-         tm $$4 = new tm();
-         $$3.a($$4);
-         $$2.add($$4);
-      }
-
-      $$0.a("Raids", $$2);
-      return $$0;
+   protected float w() {
+      return this.y() ? 0.73F : super.w();
    }
 
-   public static String a(il<dsr> $$0) {
-      return $$0.a(dsp.c) ? "raids_end" : "raids";
+   @Override
+   public boolean bN() {
+      return false;
    }
 
-   private int b() {
-      return ++this.d;
+   @Override
+   public float a(cyy $$0, cym $$1, id $$2, dpi $$3, elb $$4, float $$5) {
+      return this.y() && cfy.d($$3) ? Math.min(0.8F, $$5) : $$5;
    }
 
-   @Nullable
-   public cle a(ib $$0, int $$1) {
-      cle $$2 = null;
-      double $$3 = (double)$$1;
+   @Override
+   protected void a(esg $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         bqa $$1 = $$0.a();
+         boolean $$4;
+         if (this.u() instanceof bqt $$3) {
+            $$4 = $$1.a(this.dN().a(this, $$3), 8.0F);
+            if ($$4) {
+               if ($$1.bA()) {
+                  this.a($$3, $$1);
+               } else {
+                  $$3.c(5.0F);
+               }
+            }
+         } else {
+            $$4 = $$1.a(this.dN().o(), 5.0F);
+         }
 
-      for (cle $$4 : this.b.values()) {
-         double $$5 = $$4.t().j($$0);
-         if ($$4.v() && $$5 < $$3) {
-            $$2 = $$4;
-            $$3 = $$5;
+         if ($$4 && $$1 instanceof bqt $$6) {
+            int $$7 = 0;
+            if (this.dM().ak() == boc.c) {
+               $$7 = 10;
+            } else if (this.dM().ak() == boc.d) {
+               $$7 = 40;
+            }
+
+            if ($$7 > 0) {
+               $$6.b(new bpm(bpo.t, 20 * $$7, 1), this.I());
+            }
          }
       }
+   }
 
-      return $$2;
+   @Override
+   protected void a(esh $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.dM().a(this, this.dr(), this.dt(), this.dx(), 1.0F, false, czg.a.c);
+         this.am();
+      }
+   }
+
+   @Override
+   public boolean bw() {
+      return false;
+   }
+
+   @Override
+   public boolean a(boy $$0, float $$1) {
+      return false;
+   }
+
+   @Override
+   protected void a(aje.a $$0) {
+      $$0.a(e, false);
+   }
+
+   public boolean y() {
+      return this.an.a(e);
+   }
+
+   public void a(boolean $$0) {
+      this.an.a(e, $$0);
+   }
+
+   @Override
+   protected boolean r() {
+      return false;
+   }
+
+   @Override
+   public void b(to $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.y());
+   }
+
+   @Override
+   public void a(to $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

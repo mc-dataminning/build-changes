@@ -1,121 +1,133 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cge extends bpv implements brm {
-   private static final aiy<Integer> c = ajc.a(cge.class, aja.b);
-   private static final aiy<doz> d = ajc.a(cge.class, aja.i);
-   private static final int e = 80;
-   private static final String f = "block_state";
-   public static final String b = "fuse";
-   @Nullable
-   private bqo g;
+public class cge extends cgc {
+   public static final double e = 0.375;
 
-   public cge(bqb<? extends cge> $$0, cyx $$1) {
+   public cge(bqg<? extends cge> $$0, czg $$1) {
       super($$0, $$1);
-      this.I = true;
    }
 
-   public cge(cyx $$0, double $$1, double $$2, double $$3, @Nullable bqo $$4) {
-      this(bqb.bb, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
-      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.g = $$4;
+   public cge(czg $$0, id $$1) {
+      super(bqg.ak, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
    @Override
-   protected void a(ajc.a $$0) {
-      $$0.a(c, 80);
-      $$0.a(d, dca.ck.n());
+   protected void y() {
+      this.p((double)this.c.u() + 0.5, (double)this.c.v() + 0.375, (double)this.c.w() + 0.5);
+      double $$0 = (double)this.ai().k() / 2.0;
+      double $$1 = (double)this.ai().l();
+      this.a(new ese(this.dr() - $$0, this.dt(), this.dx() - $$0, this.dr() + $$0, this.dt() + $$1, this.dx() + $$0));
    }
 
    @Override
-   protected bpv.b aZ() {
-      return bpv.b.a;
+   public void a(ij $$0) {
    }
 
    @Override
-   public boolean bw() {
-      return !this.dH();
+   public int A() {
+      return 9;
    }
 
    @Override
-   protected double aW() {
-      return 0.04;
+   public int B() {
+      return 9;
    }
 
    @Override
-   public void l() {
-      this.aY();
-      this.a(bqt.a, this.dp());
-      this.g(this.dp().a(0.98));
-      if (this.aC()) {
-         this.g(this.dp().d(0.7, -0.5, 0.7));
-      }
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
 
-      int $$0 = this.r() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.am();
-         if (!this.dM().B) {
-            this.w();
-         }
+   @Override
+   public void b(@Nullable bqa $$0) {
+      this.a(auo.nD, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(to $$0) {
+   }
+
+   @Override
+   public void a(to $$0) {
+   }
+
+   @Override
+   public bof a(cka $$0, boe $$1) {
+      if (this.dM().B) {
+         return bof.a;
       } else {
-         this.bj();
-         if (this.dM().B) {
-            this.dM().a(kl.ac, this.dr(), this.dt() + 0.5, this.dx(), 0.0, 0.0, 0.0);
+         boolean $$2 = false;
+         double $$3 = 7.0;
+         List<bqv> $$4 = this.dM().a(bqv.class, new ese(this.dr() - 7.0, this.dt() - 7.0, this.dx() - 7.0, this.dr() + 7.0, this.dt() + 7.0, this.dx() + 7.0));
+
+         for (bqv $$5 : $$4) {
+            if ($$5.gc() == $$0) {
+               $$5.b(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$6 = false;
+         if (!$$2) {
+            this.am();
+            if ($$0.ga().d) {
+               for (bqv $$7 : $$4) {
+                  if ($$7.gb() && $$7.gc() == this) {
+                     $$7.a(true, false);
+                     $$6 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$6) {
+            this.a(dub.b, $$0);
+         }
+
+         return bof.b;
+      }
+   }
+
+   @Override
+   public boolean z() {
+      return this.dM().a_(this.c).a(ave.S);
+   }
+
+   public static cge b(czg $$0, id $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (cge $$6 : $$0.a(cge.class, new ese((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.D().equals($$1)) {
+            return $$6;
          }
       }
-   }
 
-   private void w() {
-      float $$0 = 4.0F;
-      this.dM().a(this, this.dr(), this.e(0.0625), this.dx(), 4.0F, cyx.a.d);
-   }
-
-   @Override
-   protected void b(tm $$0) {
-      $$0.a("fuse", (short)this.r());
-      $$0.a("block_state", ub.a(this.v()));
+      cge $$7 = new cge($$0, $$1);
+      $$0.b($$7);
+      return $$7;
    }
 
    @Override
-   protected void a(tm $$0) {
-      this.b($$0.g("fuse"));
-      if ($$0.b("block_state", 10)) {
-         this.c(ub.a(this.dM().a(ks.f), $$0.p("block_state")));
-      }
-   }
-
-   @Nullable
-   public bqo p() {
-      return this.g;
+   public void C() {
+      this.a(auo.nE, 1.0F, 1.0F);
    }
 
    @Override
-   public void w(bpv $$0) {
-      super.w($$0);
-      if ($$0 instanceof cge $$1) {
-         this.g = $$1.g;
-      }
+   public yp<aba> di() {
+      return new abb(this, 0, this.D());
    }
 
-   public void b(int $$0) {
-      this.an.a(c, $$0);
+   @Override
+   public esj q(float $$0) {
+      return this.l($$0).b(0.0, 0.2, 0.0);
    }
 
-   public int r() {
-      return this.an.a(c);
-   }
-
-   public void c(doz $$0) {
-      this.an.a(d, $$0);
-   }
-
-   public doz v() {
-      return this.an.a(d);
+   @Override
+   public crs dz() {
+      return new crs(crv.uI);
    }
 }

@@ -1,96 +1,28 @@
-public interface bow {
-   ajs<bov> a = ajs.a(ks.r, new ajt("in_fire"));
-   ajs<bov> b = ajs.a(ks.r, new ajt("lightning_bolt"));
-   ajs<bov> c = ajs.a(ks.r, new ajt("on_fire"));
-   ajs<bov> d = ajs.a(ks.r, new ajt("lava"));
-   ajs<bov> e = ajs.a(ks.r, new ajt("hot_floor"));
-   ajs<bov> f = ajs.a(ks.r, new ajt("in_wall"));
-   ajs<bov> g = ajs.a(ks.r, new ajt("cramming"));
-   ajs<bov> h = ajs.a(ks.r, new ajt("drown"));
-   ajs<bov> i = ajs.a(ks.r, new ajt("starve"));
-   ajs<bov> j = ajs.a(ks.r, new ajt("cactus"));
-   ajs<bov> k = ajs.a(ks.r, new ajt("fall"));
-   ajs<bov> l = ajs.a(ks.r, new ajt("fly_into_wall"));
-   ajs<bov> m = ajs.a(ks.r, new ajt("out_of_world"));
-   ajs<bov> n = ajs.a(ks.r, new ajt("generic"));
-   ajs<bov> o = ajs.a(ks.r, new ajt("magic"));
-   ajs<bov> p = ajs.a(ks.r, new ajt("wither"));
-   ajs<bov> q = ajs.a(ks.r, new ajt("dragon_breath"));
-   ajs<bov> r = ajs.a(ks.r, new ajt("dry_out"));
-   ajs<bov> s = ajs.a(ks.r, new ajt("sweet_berry_bush"));
-   ajs<bov> t = ajs.a(ks.r, new ajt("freeze"));
-   ajs<bov> u = ajs.a(ks.r, new ajt("stalagmite"));
-   ajs<bov> v = ajs.a(ks.r, new ajt("falling_block"));
-   ajs<bov> w = ajs.a(ks.r, new ajt("falling_anvil"));
-   ajs<bov> x = ajs.a(ks.r, new ajt("falling_stalactite"));
-   ajs<bov> y = ajs.a(ks.r, new ajt("sting"));
-   ajs<bov> z = ajs.a(ks.r, new ajt("mob_attack"));
-   ajs<bov> A = ajs.a(ks.r, new ajt("mob_attack_no_aggro"));
-   ajs<bov> B = ajs.a(ks.r, new ajt("player_attack"));
-   ajs<bov> C = ajs.a(ks.r, new ajt("arrow"));
-   ajs<bov> D = ajs.a(ks.r, new ajt("trident"));
-   ajs<bov> E = ajs.a(ks.r, new ajt("mob_projectile"));
-   ajs<bov> F = ajs.a(ks.r, new ajt("spit"));
-   ajs<bov> G = ajs.a(ks.r, new ajt("wind_charge"));
-   ajs<bov> H = ajs.a(ks.r, new ajt("fireworks"));
-   ajs<bov> I = ajs.a(ks.r, new ajt("fireball"));
-   ajs<bov> J = ajs.a(ks.r, new ajt("unattributed_fireball"));
-   ajs<bov> K = ajs.a(ks.r, new ajt("wither_skull"));
-   ajs<bov> L = ajs.a(ks.r, new ajt("thrown"));
-   ajs<bov> M = ajs.a(ks.r, new ajt("indirect_magic"));
-   ajs<bov> N = ajs.a(ks.r, new ajt("thorns"));
-   ajs<bov> O = ajs.a(ks.r, new ajt("explosion"));
-   ajs<bov> P = ajs.a(ks.r, new ajt("player_explosion"));
-   ajs<bov> Q = ajs.a(ks.r, new ajt("sonic_boom"));
-   ajs<bov> R = ajs.a(ks.r, new ajt("bad_respawn_point"));
-   ajs<bov> S = ajs.a(ks.r, new ajt("outside_border"));
-   ajs<bov> T = ajs.a(ks.r, new ajt("generic_kill"));
+import com.mojang.serialization.Codec;
 
-   static void a(px<bov> $$0) {
-      $$0.a(a, new bov("inFire", 0.1F, bor.d));
-      $$0.a(b, new bov("lightningBolt", 0.1F));
-      $$0.a(c, new bov("onFire", 0.0F, bor.d));
-      $$0.a(d, new bov("lava", 0.1F, bor.d));
-      $$0.a(e, new bov("hotFloor", 0.1F, bor.d));
-      $$0.a(f, new bov("inWall", 0.0F));
-      $$0.a(g, new bov("cramming", 0.0F));
-      $$0.a(h, new bov("drown", 0.0F, bor.c));
-      $$0.a(i, new bov("starve", 0.0F));
-      $$0.a(j, new bov("cactus", 0.1F));
-      $$0.a(k, new bov("fall", bos.b, 0.0F, bor.a, box.b));
-      $$0.a(l, new bov("flyIntoWall", 0.0F));
-      $$0.a(m, new bov("outOfWorld", 0.0F));
-      $$0.a(n, new bov("generic", 0.0F));
-      $$0.a(o, new bov("magic", 0.0F));
-      $$0.a(p, new bov("wither", 0.0F));
-      $$0.a(q, new bov("dragonBreath", 0.0F));
-      $$0.a(r, new bov("dryout", 0.1F));
-      $$0.a(s, new bov("sweetBerryBush", 0.1F, bor.e));
-      $$0.a(t, new bov("freeze", 0.0F, bor.f));
-      $$0.a(u, new bov("stalagmite", 0.0F));
-      $$0.a(v, new bov("fallingBlock", 0.1F));
-      $$0.a(w, new bov("anvil", 0.1F));
-      $$0.a(x, new bov("fallingStalactite", 0.1F));
-      $$0.a(y, new bov("sting", 0.1F));
-      $$0.a(z, new bov("mob", 0.1F));
-      $$0.a(A, new bov("mob", 0.1F));
-      $$0.a(B, new bov("player", 0.1F));
-      $$0.a(C, new bov("arrow", 0.1F));
-      $$0.a(D, new bov("trident", 0.1F));
-      $$0.a(E, new bov("mob", 0.1F));
-      $$0.a(F, new bov("mob", 0.1F));
-      $$0.a(H, new bov("fireworks", 0.1F));
-      $$0.a(J, new bov("onFire", 0.1F, bor.d));
-      $$0.a(I, new bov("fireball", 0.1F, bor.d));
-      $$0.a(K, new bov("witherSkull", 0.1F));
-      $$0.a(L, new bov("thrown", 0.1F));
-      $$0.a(M, new bov("indirectMagic", 0.0F));
-      $$0.a(N, new bov("thorns", 0.1F, bor.b));
-      $$0.a(O, new bov("explosion", bos.c, 0.1F));
-      $$0.a(P, new bov("explosion.player", bos.c, 0.1F));
-      $$0.a(Q, new bov("sonic_boom", bos.c, 0.0F));
-      $$0.a(R, new bov("badRespawnPoint", bos.c, 0.1F, bor.a, box.c));
-      $$0.a(S, new bov("outsideBorder", 0.0F));
-      $$0.a(T, new bov("genericKill", 0.0F));
+public enum bow implements ayg {
+   a("hurt", auo.tP),
+   b("thorns", auo.zb),
+   c("drowning", auo.tQ),
+   d("burning", auo.tS),
+   e("poking", auo.tT),
+   f("freezing", auo.tR);
+
+   public static final Codec<bow> g = ayg.a(bow::values);
+   private final String h;
+   private final aun i;
+
+   private bow(String $$0, aun $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
+   }
+
+   public aun a() {
+      return this.i;
    }
 }

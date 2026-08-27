@@ -1,40 +1,20 @@
-import javax.annotation.Nullable;
+public record acc(wu.a b) implements yp<aba> {
+   public static final yg<vi, acc> a = yp.a(acc::a, acc::new);
 
-public class acc implements yn<aay> {
-   public static final ye<vg, acc> a = yn.a(acc::a, acc::new);
-   private final int b;
-   private final byte c;
-
-   public acc(bpv $$0, byte $$1) {
-      this.b = $$0.aj();
-      this.c = $$1;
+   private acc(vi $$0) {
+      this(wu.a.a($$0));
    }
 
-   private acc(vg $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vg $$0) {
-      $$0.p(this.b);
-      $$0.k(this.c);
+   private void a(vi $$0) {
+      wu.a.a($$0, this.b);
    }
 
    @Override
-   public yp<acc> a() {
-      return afj.D;
+   public yr<acc> a() {
+      return afl.B;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public bpv a(cyx $$0) {
-      return $$0.a(this.b);
-   }
-
-   public byte b() {
-      return this.c;
    }
 }

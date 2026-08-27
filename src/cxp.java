@@ -1,11 +1,11 @@
-public class cxp extends cwq {
-   public cxp(cwq.a $$0, bqc... $$1) {
-      super($$0, avk.bb, $$1);
+public class cxp extends cwz {
+   public cxp(cwz.a $$0, bqh... $$1) {
+      super($$0, avm.bg, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 5 + ($$0 - 1) * 9;
    }
 
    @Override
@@ -18,8 +18,7 @@ public class cxp extends cwq {
       return 3;
    }
 
-   @Override
-   public boolean a(cwq $$0) {
-      return super.a($$0) && $$0 != cwt.j;
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

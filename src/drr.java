@@ -1,18 +1,11 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
 import javax.annotation.Nullable;
 
 public interface drr {
    @Nullable
-   efp a(efh var1);
+   drq c(int var1, int var2);
 
-   void a(efh var1, efp var2);
+   default void a(czp $$0, jg $$1) {
+   }
 
-   LongSet b(efh var1);
-
-   void a(efh var1, long var2);
-
-   Map<efh, LongSet> h();
-
-   void b(Map<efh, LongSet> var1);
+   cym q();
 }

@@ -1,37 +1,64 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class gdy implements gdl.a {
-   private static final int a = 60;
-   private final Set<je> b = Sets.newHashSet();
+public class gdy implements gdu.a {
+   private final fby a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   gdy() {
+   public gdy(fby $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(ewr $$0, gai $$1, double $$2, double $$3, double $$4) {
+      czh $$5 = this.a.r;
+      ewv $$6 = $$1.getBuffer(gaq.A());
+      id $$7 = id.a($$2, 0.0, $$4);
 
-   public void a(je $$0) {
-      this.b.add($$0);
-   }
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dre $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
 
-   public void b(je $$0) {
-      this.b.remove($$0);
-   }
+            for (Entry<dva.a, dva> $$11 : $$10.e()) {
+               dva.a $$12 = $$11.getKey();
+               cyn $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
 
-   @Override
-   public void a(ewi $$0, fzz $$1, double $$2, double $$3, double $$4) {
-      ib $$5 = ib.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = jg.a($$13.e, $$15);
+                     int $$18 = jg.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gag.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
          }
-      });
+      }
    }
 
-   private static void a(ewi $$0, fzz $$1, je $$2) {
-      gdl.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
+   private Vector3f a(dva.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

@@ -1,68 +1,41 @@
-public class frb<T extends ccp> extends fqv<T> {
-   private final ftm a;
-   private final ftm b;
-   private final ftm f;
-   private final ftm g;
-   private final ftm h;
-   private final ftm i;
-
-   public frb(ftm $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = $$0.b("right_arm");
-      this.g = $$0.b("left_arm");
-      this.h = $$0.b("right_leg");
-      this.i = $$0.b("left_leg");
+public class frb<T extends cei> extends fsf<T> {
+   public frb(ftv $$0) {
+      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
    }
 
-   public static fts b() {
-      ftu $$0 = new ftu();
-      ftv $$1 = $$0.a();
-      $$1.a("head", ftr.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), fto.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         ftr.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new ftq(0.5F)),
-         fto.a(0.0F, -7.0F, 0.0F)
+   public static fub c() {
+      fud $$0 = new fud();
+      fue $$1 = $$0.a();
+      fue $$2 = $$1.a(
+         "head",
+         fua.c()
+            .a(2, 61)
+            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(2, 61)
+            .a()
+            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(23, 52)
+            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
+         ftx.a(1.0F, 14.0F, 0.0F)
       );
-      $$1.a("right_arm", ftr.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fto.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", ftr.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fto.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", ftr.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fto.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", ftr.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fto.a(5.0F, 11.0F, 0.0F));
-      return fts.a($$0, 128, 128);
-   }
-
-   @Override
-   public ftm a() {
-      return this.a;
+      $$2.a("left_horn", fua.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), ftx.a(0.0F, 0.0F, 0.0F));
+      $$2.a("right_horn", fua.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), ftx.a(0.0F, 0.0F, 0.0F));
+      $$2.a("nose", fua.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), ftx.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
+      $$1.a("body", fua.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), ftx.a(0.0F, 24.0F, 0.0F));
+      $$1.a("left_hind_leg", fua.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), ftx.a(1.0F, 14.0F, 4.0F));
+      $$1.a("right_hind_leg", fua.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), ftx.a(-3.0F, 14.0F, 4.0F));
+      $$1.a("left_front_leg", fua.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), ftx.a(1.0F, 14.0F, -6.0F));
+      $$1.a("right_front_leg", fua.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), ftx.a(-3.0F, 14.0F, -6.0F));
+      return fub.a($$0, 64, 64);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.e = -1.5F * axk.e($$1, 13.0F) * $$2;
-      this.i.e = 1.5F * axk.e($$1, 13.0F) * $$2;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         this.f.e = -2.0F + 1.5F * axk.e((float)$$4 - $$3, 10.0F);
-         this.g.e = -2.0F + 1.5F * axk.e((float)$$4 - $$3, 10.0F);
-      } else {
-         int $$5 = $$0.gn();
-         if ($$5 > 0) {
-            this.f.e = -0.8F + 0.025F * axk.e((float)$$5, 70.0F);
-            this.g.e = 0.0F;
-         } else {
-            this.f.e = (-0.2F + 1.5F * axk.e($$1, 13.0F)) * $$2;
-            this.g.e = (-0.2F - 1.5F * axk.e($$1, 13.0F)) * $$2;
-         }
+      this.a.b("left_horn").k = $$0.gn();
+      this.a.b("right_horn").k = $$0.gt();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.gy();
+      if ($$6 != 0.0F) {
+         this.a.e = $$6;
       }
-   }
-
-   public ftm c() {
-      return this.f;
    }
 }

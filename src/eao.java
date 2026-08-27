@@ -1,26 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eao implements dzz {
-   public static final Codec<eao> a = RecordCodecBuilder.create(
+public class eao extends eaa {
+   public static final Codec<eao> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               doz.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               doz.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bnf.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+               ecj.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               awu.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               awu.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, eao::new)
    );
-   public final doz b;
-   public final doz c;
-   private final bnf d;
+   public final int d;
+   public final int e;
 
-   public eao(doz $$0, doz $$1, bnf $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   public bnf a() {
-      return this.d;
+   public eao(ecj $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

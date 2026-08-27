@@ -1,21 +1,25 @@
-public record acb(wg b, wc.a c) implements yn<aay> {
-   public static final ye<vr, acb> a = ye.a(wi.d, acb::b, wc.a.a, acb::e, acb::new);
+public record acb(long[] b, bka c) implements yp<aba> {
+   public static final yg<vi, acb> a = yp.a(acb::a, acb::new);
 
-   @Override
-   public yp<acb> a() {
-      return afj.C;
+   private acb(vi $$0) {
+      this($$0.d(), $$0.b(bka.class));
    }
 
-   public void a(aay $$0) {
+   private void a(vi $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public yr<acb> a() {
+      return afl.A;
+   }
+
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wc.a e() {
+   public bka e() {
       return this.c;
    }
 }

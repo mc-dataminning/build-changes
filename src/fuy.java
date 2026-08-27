@@ -1,40 +1,41 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Predicate;
-
 public class fuy {
-   private final Map<ajs<? extends iy<?>>, avu.a> a = new HashMap<>();
+   private final fzk a;
+   private final fuq b;
+   private final gag c;
+   private fuy.a d = fuy.a.a;
 
-   public void a(ajs<? extends iy<?>> $$0, avu.a $$1) {
-      this.a.put($$0, $$1);
+   public fuy(fzk $$0, fuq $$1, gag $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private static void a() {
-      cpv.e().n();
-   }
-
-   private static void b() {
-      dlt.f();
-      dca.a();
-   }
-
-   private void a(iz $$0, Predicate<ajs<? extends iy<?>>> $$1) {
-      this.a.forEach(($$2, $$3) -> {
-         if ($$1.test((ajs<? extends iy<?>>)$$2)) {
-            $$3.a($$0.d((ajs<? extends iy<?>>)$$2));
-         }
-      });
-   }
-
-   public void a(iz $$0, boolean $$1) {
-      if ($$1) {
-         this.a($$0, jc.a::contains);
-      } else {
-         $$0.c().filter($$0x -> !jc.a.contains($$0x.a())).forEach($$0x -> $$0x.b().m());
-         this.a($$0, $$0x -> true);
-         b();
+   public void a() {
+      switch (this.d) {
+         case b:
+            id $$0 = this.a.dm();
+            boolean $$1 = this.b.d($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.N_() || !this.a.bA()) {
+               this.d = fuy.a.c;
+            }
+         case a:
+         case c:
       }
+   }
 
-      a();
+   public boolean b() {
+      return this.d == fuy.a.c;
+   }
+
+   public void c() {
+      if (this.d == fuy.a.a) {
+         this.d = fuy.a.b;
+      }
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

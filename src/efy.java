@@ -1,92 +1,128 @@
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface efy {
-   efy a = a(ehk.a::new, "MSCorridor");
-   efy b = a(ehk.b::new, "MSCrossing");
-   efy c = a(ehk.d::new, "MSRoom");
-   efy d = a(ehk.e::new, "MSStairs");
-   efy e = a(ehm.a::new, "NeBCr");
-   efy f = a(ehm.b::new, "NeBEF");
-   efy g = a(ehm.c::new, "NeBS");
-   efy h = a(ehm.d::new, "NeCCS");
-   efy i = a(ehm.e::new, "NeCTB");
-   efy j = a(ehm.f::new, "NeCE");
-   efy k = a(ehm.g::new, "NeSCSC");
-   efy l = a(ehm.h::new, "NeSCLT");
-   efy m = a(ehm.i::new, "NeSC");
-   efy n = a(ehm.j::new, "NeSCRT");
-   efy o = a(ehm.k::new, "NeCSR");
-   efy p = a(ehm.l::new, "NeMT");
-   efy q = a(ehm.o::new, "NeRC");
-   efy r = a(ehm.p::new, "NeSR");
-   efy s = a(ehm.q::new, "NeStart");
-   efy t = a(ehy.a::new, "SHCC");
-   efy u = a(ehy.b::new, "SHFC");
-   efy v = a(ehy.c::new, "SH5C");
-   efy w = a(ehy.d::new, "SHLT");
-   efy x = a(ehy.e::new, "SHLi");
-   efy y = a(ehy.g::new, "SHPR");
-   efy z = a(ehy.h::new, "SHPH");
-   efy A = a(ehy.i::new, "SHRT");
-   efy B = a(ehy.j::new, "SHRC");
-   efy C = a(ehy.l::new, "SHSD");
-   efy D = a(ehy.m::new, "SHStart");
-   efy E = a(ehy.n::new, "SHS");
-   efy F = a(ehy.o::new, "SHSSD");
-   efy G = a(ehi::new, "TeJP");
-   efy H = a(ehs.a::a, "ORP");
-   efy I = a(ehf.a::new, "Iglu");
-   efy J = a(ehu::new, "RUPO");
-   efy K = a(eia::new, "TeSH");
-   efy L = a(ehb::new, "TeDP");
-   efy M = a(ehq.h::new, "OMB");
-   efy N = a(ehq.j::new, "OMCR");
-   efy O = a(ehq.k::new, "OMDXR");
-   efy P = a(ehq.l::new, "OMDXYR");
-   efy Q = a(ehq.m::new, "OMDYR");
-   efy R = a(ehq.n::new, "OMDYZR");
-   efy S = a(ehq.o::new, "OMDZR");
-   efy T = a(ehq.p::new, "OMEntry");
-   efy U = a(ehq.q::new, "OMPenthouse");
-   efy V = a(ehq.s::new, "OMSimple");
-   efy W = a(ehq.t::new, "OMSimpleT");
-   efy X = a(ehq.u::new, "OMWR");
-   efy Y = a(ehd.a::new, "ECP");
-   efy Z = a(eic.i::new, "WMP");
-   efy aa = a(egz.a::new, "BTP");
-   efy ab = a(ehw.a::new, "Shipwreck");
-   efy ac = a(eho.a::new, "NeFos");
-   efy ad = a(efd::new, "jigsaw");
+public final class efy {
+   public static final String a = "INVALID";
+   public static final efy b = new efy(null, new cyn(0, 0), 0, new egf(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final efq d;
+   private final egf e;
+   private final cyn f;
+   private int g;
+   @Nullable
+   private volatile efi h;
 
-   efl load(efx var1, tm var2);
-
-   private static efy a(efy $$0, String $$1) {
-      return iy.a(kr.S, $$1.toLowerCase(Locale.ROOT), $$0);
+   public efy(efq $$0, cyn $$1, int $$2, egf $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   private static efy a(efy.a $$0, String $$1) {
-      return a((efy)$$0, $$1);
-   }
+   @Nullable
+   public static efy a(egg $$0, to $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         ja<efq> $$4 = $$0.b().d(ku.aG);
+         efq $$5 = $$4.a(new ajv($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            cyn $$6 = new cyn($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            tu $$8 = $$1.c("Children", 10);
 
-   private static efy a(efy.b $$0, String $$1) {
-      return a((efy)$$0, $$1);
-   }
+            try {
+               egf $$9 = egf.a($$8, $$0);
+               if ($$5 instanceof eia) {
+                  $$9 = eia.a($$6, $$2, $$9);
+               }
 
-   public interface a extends efy {
-      efl load(tm var1);
-
-      @Override
-      default efl load(efx $$0, tm $$1) {
-         return this.load($$1);
+               return new efy($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
+            }
+         }
       }
    }
 
-   public interface b extends efy {
-      efl load(eji var1, tm var2);
-
-      @Override
-      default efl load(efx $$0, tm $$1) {
-         return this.load($$0.c(), $$1);
+   public efi a() {
+      efi $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
       }
+
+      return $$0;
+   }
+
+   public void a(dab $$0, czz $$1, drf $$2, axt $$3, efi $$4, cyn $$5) {
+      List<efu> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         efi $$7 = $$6.get(0).f;
+         id $$8 = $$7.g();
+         id $$9 = new id($$8.u(), $$7.i(), $$8.w());
+
+         for (efu $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
+   }
+
+   public to a(egg $$0, cyn $$1) {
+      to $$2 = new to();
+      if (this.b()) {
+         $$2.a("id", $$0.b().d(ku.aG).b(this.d).toString());
+         $$2.a("ChunkX", $$1.e);
+         $$2.a("ChunkZ", $$1.f);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public cyn c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public efq h() {
+      return this.d;
+   }
+
+   public List<efu> i() {
+      return this.e.c();
    }
 }

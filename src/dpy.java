@@ -1,20 +1,132 @@
-public enum dpy implements aye {
-   a("top"),
-   b("bottom");
-
-   private final String c;
-
-   private dpy(String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
+public class dpy {
+   public static final dpz a = dpz.a("attached");
+   public static final dpz b = dpz.a("bottom");
+   public static final dpz c = dpz.a("conditional");
+   public static final dpz d = dpz.a("disarmed");
+   public static final dpz e = dpz.a("drag");
+   public static final dpz f = dpz.a("enabled");
+   public static final dpz g = dpz.a("extended");
+   public static final dpz h = dpz.a("eye");
+   public static final dpz i = dpz.a("falling");
+   public static final dpz j = dpz.a("hanging");
+   public static final dpz k = dpz.a("has_bottle_0");
+   public static final dpz l = dpz.a("has_bottle_1");
+   public static final dpz m = dpz.a("has_bottle_2");
+   public static final dpz n = dpz.a("has_record");
+   public static final dpz o = dpz.a("has_book");
+   public static final dpz p = dpz.a("inverted");
+   public static final dpz q = dpz.a("in_wall");
+   public static final dpz r = dpz.a("lit");
+   public static final dpz s = dpz.a("locked");
+   public static final dpz t = dpz.a("occupied");
+   public static final dpz u = dpz.a("open");
+   public static final dpz v = dpz.a("persistent");
+   public static final dpz w = dpz.a("powered");
+   public static final dpz x = dpz.a("short");
+   public static final dpz y = dpz.a("signal_fire");
+   public static final dpz z = dpz.a("snowy");
+   public static final dpz A = dpz.a("triggered");
+   public static final dpz B = dpz.a("unstable");
+   public static final dpz C = dpz.a("waterlogged");
+   public static final dpz D = dpz.a("berries");
+   public static final dpz E = dpz.a("bloom");
+   public static final dpz F = dpz.a("shrieking");
+   public static final dpz G = dpz.a("can_summon");
+   public static final dqg<ij.a> H = dqg.a("axis", ij.a.class, ij.a.a, ij.a.c);
+   public static final dqg<ij.a> I = dqg.a("axis", ij.a.class);
+   public static final dpz J = dpz.a("up");
+   public static final dpz K = dpz.a("down");
+   public static final dpz L = dpz.a("north");
+   public static final dpz M = dpz.a("east");
+   public static final dpz N = dpz.a("south");
+   public static final dpz O = dpz.a("west");
+   public static final dqc P = dqc.a("facing", ij.c, ij.f, ij.d, ij.e, ij.b, ij.a);
+   public static final dqc Q = dqc.a("facing", $$0 -> $$0 != ij.b);
+   public static final dqc R = dqc.a("facing", ij.c.a);
+   public static final dqi S = dqi.a("flower_amount", 1, 4);
+   public static final dqg<il> T = dqg.a("orientation", il.class);
+   public static final dqg<dpt> U = dqg.a("face", dpt.class);
+   public static final dqg<dpw> V = dqg.a("attachment", dpw.class);
+   public static final dqg<dqu> W = dqg.a("east", dqu.class);
+   public static final dqg<dqu> X = dqg.a("north", dqu.class);
+   public static final dqg<dqu> Y = dqg.a("south", dqu.class);
+   public static final dqg<dqu> Z = dqg.a("west", dqu.class);
+   public static final dqg<dqn> aa = dqg.a("east", dqn.class);
+   public static final dqg<dqn> ab = dqg.a("north", dqn.class);
+   public static final dqg<dqn> ac = dqg.a("south", dqn.class);
+   public static final dqg<dqn> ad = dqg.a("west", dqn.class);
+   public static final dqg<dqe> ae = dqg.a("half", dqe.class);
+   public static final dqg<dqh> af = dqg.a("half", dqh.class);
+   public static final dqg<dqm> ag = dqg.a("shape", dqm.class);
+   public static final dqg<dqm> ah = dqg.a("shape", dqm.class, $$0 -> $$0 != dqm.j && $$0 != dqm.i && $$0 != dqm.g && $$0 != dqm.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dqi aq = dqi.a("age", 0, 1);
+   public static final dqi ar = dqi.a("age", 0, 2);
+   public static final dqi as = dqi.a("age", 0, 3);
+   public static final dqi at = dqi.a("age", 0, 4);
+   public static final dqi au = dqi.a("age", 0, 5);
+   public static final dqi av = dqi.a("age", 0, 7);
+   public static final dqi aw = dqi.a("age", 0, 15);
+   public static final dqi ax = dqi.a("age", 0, 25);
+   public static final dqi ay = dqi.a("bites", 0, 6);
+   public static final dqi az = dqi.a("candles", 1, 4);
+   public static final dqi aA = dqi.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dqi aC = dqi.a("distance", 1, 7);
+   public static final dqi aD = dqi.a("eggs", 1, 4);
+   public static final dqi aE = dqi.a("hatch", 0, 2);
+   public static final dqi aF = dqi.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dqi aK = dqi.a("level", 1, 3);
+   public static final dqi aL = dqi.a("level", 0, 8);
+   public static final dqi aM = dqi.a("level", 1, 8);
+   public static final dqi aN = dqi.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dqi aP = dqi.a("level", 0, 15);
+   public static final dqi aQ = dqi.a("moisture", 0, 7);
+   public static final dqi aR = dqi.a("note", 0, 24);
+   public static final dqi aS = dqi.a("pickles", 1, 4);
+   public static final dqi aT = dqi.a("power", 0, 15);
+   public static final dqi aU = dqi.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dqi aW = dqi.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dqi aZ = dqi.a("charges", 0, 4);
+   public static final dqi ba = dqi.a("rotation", 0, dqo.a());
+   public static final dqg<dpv> bb = dqg.a("part", dpv.class);
+   public static final dqg<dqa> bc = dqg.a("type", dqa.class);
+   public static final dqg<dqb> bd = dqg.a("mode", dqb.class);
+   public static final dqg<dqd> be = dqg.a("hinge", dqd.class);
+   public static final dqg<dqj> bf = dqg.a("instrument", dqj.class);
+   public static final dqg<dqk> bg = dqg.a("type", dqk.class);
+   public static final dqg<dqq> bh = dqg.a("type", dqq.class);
+   public static final dqg<dqr> bi = dqg.a("shape", dqr.class);
+   public static final dqg<dqs> bj = dqg.a("mode", dqs.class);
+   public static final dqg<dpu> bk = dqg.a("leaves", dpu.class);
+   public static final dqg<dqt> bl = dqg.a("tilt", dqt.class);
+   public static final dqc bm = dqc.a("vertical_direction", ij.b, ij.a);
+   public static final dqg<dqf> bn = dqg.a("thickness", dqf.class);
+   public static final dqg<dqp> bo = dqg.a("sculk_sensor_phase", dqp.class);
+   public static final dpz bp = dpz.a("slot_0_occupied");
+   public static final dpz bq = dpz.a("slot_1_occupied");
+   public static final dpz br = dpz.a("slot_2_occupied");
+   public static final dpz bs = dpz.a("slot_3_occupied");
+   public static final dpz bt = dpz.a("slot_4_occupied");
+   public static final dpz bu = dpz.a("slot_5_occupied");
+   public static final dqi bv = dqi.a("dusted", 0, 3);
+   public static final dpz bw = dpz.a("cracked");
+   public static final dpz bx = dpz.a("crafting");
+   public static final dqg<doo> by = dqg.a("trial_spawner_state", doo.class);
+   public static final dqg<dov> bz = dqg.a("vault_state", dov.class);
 }

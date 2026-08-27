@@ -1,87 +1,85 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleLists;
 
-public class esw {
-   private final ete a;
-   private final String b;
-   private final eth c;
-   private wg d;
-   private wg e;
-   private eth.a f;
-   private boolean g;
-   @Nullable
-   private xw h;
+public class esw implements esv {
+   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
+   private final double[] b;
+   private final int[] c;
+   private final int[] d;
+   private final int e;
 
-   public esw(ete $$0, String $$1, eth $$2, wg $$3, eth.a $$4, boolean $$5, @Nullable xw $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.i();
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
+   public esw(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
+      double $$4 = Double.NaN;
+      int $$5 = $$0.size();
+      int $$6 = $$1.size();
+      int $$7 = $$5 + $$6;
+      this.b = new double[$$7];
+      this.c = new int[$$7];
+      this.d = new int[$$7];
+      boolean $$8 = !$$2;
+      boolean $$9 = !$$3;
+      int $$10 = 0;
+      int $$11 = 0;
+      int $$12 = 0;
+
+      while (true) {
+         boolean $$13 = $$11 >= $$5;
+         boolean $$14 = $$12 >= $$6;
+         if ($$13 && $$14) {
+            this.e = Math.max(1, $$10);
+            return;
+         }
+
+         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
+         if ($$15) {
+            $$11++;
+            if ($$8 && ($$12 == 0 || $$14)) {
+               continue;
+            }
+         } else {
+            $$12++;
+            if ($$9 && ($$11 == 0 || $$13)) {
+               continue;
+            }
+         }
+
+         int $$16 = $$11 - 1;
+         int $$17 = $$12 - 1;
+         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
+         if (!($$4 >= $$18 - 1.0E-7)) {
+            this.c[$$10] = $$16;
+            this.d[$$10] = $$17;
+            this.b[$$10] = $$18;
+            $$10++;
+            $$4 = $$18;
+         } else {
+            this.c[$$10 - 1] = $$16;
+            this.d[$$10 - 1] = $$17;
+         }
+      }
    }
 
-   public ete a() {
-      return this.a;
+   @Override
+   public boolean a(esv.a $$0) {
+      int $$1 = this.e - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public eth c() {
-      return this.c;
-   }
-
-   public wg d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   @Nullable
-   public xw f() {
-      return this.h;
-   }
-
-   public xw a(xw $$0) {
-      return Objects.requireNonNullElse(this.h, $$0);
-   }
-
-   private wg i() {
-      return wj.a((wg)this.d.f().a($$0 -> $$0.a(new wm(wm.a.a, wg.b(this.b)))));
-   }
-
-   public wg g() {
+   @Override
+   public int size() {
       return this.e;
    }
 
-   public void a(wg $$0) {
-      this.d = $$0;
-      this.e = this.i();
-      this.a.b(this);
-   }
-
-   public eth.a h() {
-      return this.f;
-   }
-
-   public void a(eth.a $$0) {
-      this.f = $$0;
-      this.a.b(this);
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-      this.a.b(this);
-   }
-
-   public void b(@Nullable xw $$0) {
-      this.h = $$0;
-      this.a.b(this);
+   @Override
+   public DoubleList a() {
+      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
    }
 }

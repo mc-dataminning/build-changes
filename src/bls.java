@@ -1,22 +1,56 @@
+import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public record bls<T extends blr>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends blr> bls<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(blr::a)).toList();
-         Duration $$2 = $$1.stream().map(blr::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bkv.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new bls<>($$3, $$4, $$5, $$6, $$7, $$2);
+public final class bls<T> {
+   private final bls.a a;
+   private final List<Pair<T, bls.a>> b;
+   private final Duration c;
+
+   public bls(Duration $$0, List<Pair<T, bls.a>> $$1) {
+      this.c = $$0;
+      this.a = $$1.stream().<bls.a>map(Pair::getSecond).reduce(new bls.a(0L, 0L), bls.a::a);
+      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bls.a.c)).limit(10L).toList();
+   }
+
+   public double a() {
+      return (double)this.a.a / (double)this.c.getSeconds();
+   }
+
+   public double b() {
+      return (double)this.a.b / (double)this.c.getSeconds();
+   }
+
+   public long c() {
+      return this.a.a;
+   }
+
+   public long d() {
+      return this.a.b;
+   }
+
+   public List<Pair<T, bls.a>> e() {
+      return this.b;
+   }
+
+   public static record a(long a, long b) {
+      static final Comparator<bls.a> c = Comparator.comparing(bls.a::c).thenComparing(bls.a::b).reversed();
+
+      bls.a a(bls.a $$0) {
+         return new bls.a(this.a + $$0.a, this.b + $$0.b);
+      }
+
+      public float a() {
+         return (float)this.b / (float)this.a;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
       }
    }
 }

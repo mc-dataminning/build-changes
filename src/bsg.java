@@ -1,101 +1,79 @@
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public abstract class bsg<E extends bqo> implements bsh<E> {
-   public static final int a = 60;
-   protected final Map<bzr<?>, bzs> b;
-   private bsg.a c = bsg.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class bsg<E extends brb> extends bsl<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private static final Predicate<brb> g = $$0 -> $$0.ej() != null || $$0.dB() || $$0.bN();
+   private final float h;
+   private final Predicate<E> i;
 
-   public bsg(Map<bzr<?>, bzs> $$0) {
-      this($$0, 60);
+   public bsg(float $$0) {
+      this($$0, g::test);
    }
 
-   public bsg(Map<bzr<?>, bzs> $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public bsg(float $$0, Predicate<E> $$1) {
+      super(Map.of(bzw.Z, bzx.c, bzw.x, bzx.c), 100, 120);
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   public bsg(Map<bzr<?>, bzs> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
+   protected boolean a(apu $$0, E $$1) {
+      return this.i.test($$1) && ($$1.dP().a(bzw.x) || $$1.dP().a(bzw.Z));
    }
 
-   @Override
-   public bsg.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(aps $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bsg.a.b;
-         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(aps $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(aps $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(aps $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(aps $$0, E $$1, long $$2) {
-      this.c = bsg.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(aps $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(aps $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(aps $$0, E $$1) {
+   protected boolean a(apu $$0, E $$1, long $$2) {
       return true;
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void b(apu $$0, E $$1, long $$2) {
+      $$1.dP().a(bzw.Z, true);
+      $$1.dP().b(bzw.m);
    }
 
-   protected boolean a(E $$0) {
-      for (Entry<bzr<?>, bzs> $$1 : this.b.entrySet()) {
-         bzr<?> $$2 = $$1.getKey();
-         bzs $$3 = $$1.getValue();
-         if (!$$0.dP().a($$2, $$3)) {
-            return false;
+   protected void c(apu $$0, E $$1, long $$2) {
+      bru<?> $$3 = $$1.dP();
+      $$3.b(bzw.Z);
+   }
+
+   protected void d(apu $$0, E $$1, long $$2) {
+      if ($$1.K().l()) {
+         esj $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dP().a(bzw.m, new bzz($$3, this.h, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private esj a(E $$0, apu $$1) {
+      if ($$0.bN()) {
+         Optional<esj> $$2 = this.a((cym)$$1, $$0).map(esj::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
          }
       }
 
-      return true;
+      return cbq.a($$0, 5, 4);
    }
 
-   public static enum a {
-      a,
-      b;
+   private Optional<id> a(cym $$0, bqa $$1) {
+      id $$2 = $$1.dm();
+      if (!$$0.a_($$2).k($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<id> $$3;
+         if (axm.f($$1.dg()) == 2) {
+            $$3 = $$1x -> id.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(avj.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(avj.a);
+         }
+
+         return id.a($$2, 5, 1, $$3);
+      }
    }
 }

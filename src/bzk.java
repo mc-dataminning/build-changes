@@ -1,39 +1,19 @@
-import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bzk<T extends bqq & bqu> extends bxl {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class bzk<T extends bqt> extends bzj<T> {
+   private boolean i = true;
 
-   public bzk(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public bzk(clm $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bqt> $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.b.dM().aa().b(cyt.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ej() != null && this.b.ej().ai() == bqb.bx && this.b.ek() > this.d;
-   }
-
-   @Override
-   public void c() {
-      this.d = this.b.ek();
-      this.b.Z_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bqu)$$0).forEach(bqu::Z_);
-      }
-
-      super.c();
-   }
-
-   private List<? extends bqq> i() {
-      double $$0 = this.b.g(brv.k);
-      erv $$1 = erv.a(this.b.dk()).c($$0, 10.0, $$0);
-      return this.b.dM().a((Class<? extends bqq>)this.b.getClass(), $$1, bqa.f);
+      return this.i && super.a();
    }
 }

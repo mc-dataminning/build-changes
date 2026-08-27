@@ -1,150 +1,60 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public class hi<T extends dw<T>> implements hf<T> {
-   private static final DecimalFormat a = ac.a(new DecimalFormat("#"), $$0 -> {
-      $$0.setMaximumFractionDigits(15);
-      $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.US));
-   });
-   private static final int b = 8;
-   private final List<String> c;
-   private final Object2ObjectLinkedOpenHashMap<List<String>, hh<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final ajt e;
-   private final List<hi.a<T>> f;
+class hi<T extends dx<T>> {
+   @Nullable
+   private List<gy<T>> a = new ArrayList<>();
+   @Nullable
+   private List<hk.a<T>> b;
+   private final List<String> c = new ArrayList<>();
 
-   public hi(ajt $$0, List<hi.a<T>> $$1, List<String> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c = $$2;
-   }
-
-   @Override
-   public ajt a() {
-      return this.e;
-   }
-
-   @Override
-   public hh<T> a(@Nullable tm $$0, CommandDispatcher<T> $$1) throws dx {
-      if ($$0 == null) {
-         throw new dx(wg.a("commands.function.error.missing_arguments", wg.a(this.a())));
+   public void a(gy<T> $$0) {
+      if (this.b != null) {
+         this.b.add(new hk.c<>($$0));
       } else {
-         List<String> $$2 = new ArrayList<>(this.c.size());
+         this.a.add($$0);
+      }
+   }
 
-         for (String $$3 : this.c) {
-            uj $$4 = $$0.c($$3);
-            if ($$4 == null) {
-               throw new dx(wg.a("commands.function.error.missing_argument", wg.a(this.a()), $$3));
-            }
+   private int a(String $$0) {
+      int $$1 = this.c.indexOf($$0);
+      if ($$1 == -1) {
+         $$1 = this.c.size();
+         this.c.add($$0);
+      }
 
-            $$2.add(a($$4));
+      return $$1;
+   }
+
+   private IntList a(List<String> $$0) {
+      IntArrayList $$1 = new IntArrayList($$0.size());
+
+      for (String $$2 : $$0) {
+         $$1.add(this.a($$2));
+      }
+
+      return $$1;
+   }
+
+   public void a(String $$0, int $$1, T $$2) {
+      hm $$3 = hm.a($$0, $$1);
+      if (this.a != null) {
+         this.b = new ArrayList<>(this.a.size() + 1);
+
+         for (gy<T> $$4 : this.a) {
+            this.b.add(new hk.c<>($$4));
          }
 
-         hh<T> $$5 = (hh<T>)this.d.getAndMoveToLast($$2);
-         if ($$5 != null) {
-            return $$5;
-         } else {
-            if (this.d.size() >= 8) {
-               this.d.removeFirst();
-            }
-
-            hh<T> $$6 = this.a(this.c, $$2, $$1);
-            this.d.put($$2, $$6);
-            return $$6;
-         }
+         this.a = null;
       }
+
+      this.b.add(new hk.b<>($$3, this.a($$3.b()), $$2));
    }
 
-   private static String a(uj $$0) {
-      if ($$0 instanceof tp $$1) {
-         return a.format((double)$$1.k());
-      } else if ($$0 instanceof tn $$2) {
-         return a.format($$2.j());
-      } else if ($$0 instanceof tk $$3) {
-         return String.valueOf($$3.i());
-      } else if ($$0 instanceof ue $$4) {
-         return String.valueOf($$4.h());
-      } else {
-         return $$0 instanceof tu $$5 ? String.valueOf($$5.f()) : $$0.s_();
-      }
-   }
-
-   private static void a(List<String> $$0, IntList $$1, List<String> $$2) {
-      $$2.clear();
-      $$1.forEach($$2x -> $$2.add($$0.get($$2x)));
-   }
-
-   private hh<T> a(List<String> $$0, List<String> $$1, CommandDispatcher<T> $$2) throws dx {
-      List<gw<T>> $$3 = new ArrayList<>(this.f.size());
-      List<String> $$4 = new ArrayList<>($$1.size());
-
-      for (hi.a<T> $$5 : this.f) {
-         a($$1, $$5.a(), $$4);
-         $$3.add($$5.a($$4, $$2, this.e));
-      }
-
-      return new hj<>(this.a().a((UnaryOperator<String>)($$1x -> $$1x + "/" + $$0.hashCode())), $$3);
-   }
-
-   interface a<T> {
-      IntList a();
-
-      gw<T> a(List<String> var1, CommandDispatcher<T> var2, ajt var3) throws dx;
-   }
-
-   static class b<T extends dw<T>> implements hi.a<T> {
-      private final hk a;
-      private final IntList b;
-      private final T c;
-
-      public b(hk $$0, IntList $$1, T $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public IntList a() {
-         return this.b;
-      }
-
-      @Override
-      public gw<T> a(List<String> $$0, CommandDispatcher<T> $$1, ajt $$2) throws dx {
-         String $$3 = this.a.a($$0);
-
-         try {
-            return hf.a($$1, this.c, new StringReader($$3));
-         } catch (CommandSyntaxException var6) {
-            throw new dx(wg.a("commands.function.error.parse", wg.a($$2), $$3, var6.getMessage()));
-         }
-      }
-   }
-
-   static class c<T> implements hi.a<T> {
-      private final gw<T> a;
-
-      public c(gw<T> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public IntList a() {
-         return IntLists.emptyList();
-      }
-
-      @Override
-      public gw<T> a(List<String> $$0, CommandDispatcher<T> $$1, ajt $$2) {
-         return this.a;
-      }
+   public hh<T> a(ajv $$0) {
+      return (hh<T>)(this.b != null ? new hk<>($$0, this.b, this.c) : new hl<>($$0, this.a));
    }
 }

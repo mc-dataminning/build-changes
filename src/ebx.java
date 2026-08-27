@@ -1,61 +1,49 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ebx {
-   public static final Codec<ebx> d = kr.Y.q().dispatch(ebx::a, eby::a);
-   protected final bnf e;
-   protected final eca f;
-   protected final Optional<ebu> g;
+public class ebx extends ebu {
+   public static final Codec<ebx> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bnk.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, ebx::new)
+   );
+   private final bnk b;
 
-   protected static <P extends ebx> P3<Mu<P>, bnf, eca, Optional<ebu>> a(Instance<P> $$0) {
-      return $$0.group(
-         bnf.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         eca.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         ebu.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public ebx(bnk $$0, bnk $$1, bnk $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public ebx(bnf $$0, eca $$1, Optional<ebu> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected ebv<?> a() {
+      return ebv.h;
    }
 
-   protected abstract eby<?> a();
+   @Override
+   protected void a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, int $$4, ebu.a $$5, int $$6, int $$7, int $$8) {
+      id $$9 = $$5.a();
+      int $$10 = 0;
 
-   public abstract boolean a(czd var1, BiConsumer<ib, doz> var2, axr var3, ib var4, ib var5, eav var6);
-
-   protected boolean a(czd $$0, ib $$1) {
-      return dzh.c($$0, $$1);
-   }
-
-   protected void a(czd $$0, BiConsumer<ib, doz> $$1, axr $$2, ib $$3, eav $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            ebu $$5 = this.g.get();
-            ib $$6 = $$3.c();
-            if ($$2.i() < $$5.b() && $$0.a($$6, doy.a::i)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + axm.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
          }
+
+         this.a($$0, $$1, $$2, $$3, new id($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
       }
    }
 
-   protected doz a(czd $$0, ib $$1, doz $$2) {
-      if ($$2.b(dpp.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(avh.a));
-         return $$2.a(dpp.C, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
+   @Override
+   public int a(axt $$0, int $$1, ebe $$2) {
+      return this.b.a($$0);
    }
 
-   public ib a(ib $$0, axr $$1) {
-      return $$0.b(this.e.a($$1));
+   @Override
+   protected boolean a(axt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

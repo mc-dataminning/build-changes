@@ -1,83 +1,304 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.IntStream;
 
-public class lv implements ky {
-   private static final Logger d = LogUtils.getLogger();
-   private final la.a e;
-   private final Set<ajt> f;
-   private final List<lv.a> g;
-   private final CompletableFuture<in.a> h;
+public abstract class lv implements ly {
+   protected static final eql.a a = eqs.a(cc.a.a().a(new bm(cxc.v, cm.d.b(1))));
+   protected static final eql.a b = a.invert();
+   protected static final eql.a c = eqs.a(cc.a.a().a(crv.rU));
+   private static final eql.a h = c.or(a);
+   private static final eql.a i = h.invert();
+   protected final Set<crn> d;
+   protected final cmn e;
+   protected final Map<ajv, ens.a> f;
+   protected static final float[] g = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
+   private static final float[] j = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
-   public lv(la $$0, Set<ajt> $$1, List<lv.a> $$2, CompletableFuture<in.a> $$3) {
-      this.e = $$0.a(la.b.a, "loot_tables");
-      this.g = $$2;
-      this.f = $$1;
-      this.h = $$3;
+   protected lv(Set<crn> $$0, cmn $$1) {
+      this($$0, $$1, new HashMap<>());
    }
+
+   protected lv(Set<crn> $$0, cmn $$1, Map<ajv, ens.a> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   protected <T extends eov<T>> T a(czf $$0, eov<T> $$1) {
+      return !this.d.contains($$0.p()) ? $$1.b(eol.c()) : $$1.c();
+   }
+
+   protected <T extends eqe<T>> T a(czf $$0, eqe<T> $$1) {
+      return !this.d.contains($$0.p()) ? $$1.b(eqh.c()) : $$1.d();
+   }
+
+   public ens.a a(czf $$0) {
+      return ens.b().a(this.a($$0, enr.a().a(ere.a(1.0F)).a(eoa.a($$0))));
+   }
+
+   private static ens.a a(dch $$0, eql.a $$1, eod.a<?> $$2) {
+      return ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a($$0).a($$1).a($$2)));
+   }
+
+   protected static ens.a a(dch $$0, eod.a<?> $$1) {
+      return a($$0, a, $$1);
+   }
+
+   protected static ens.a b(dch $$0, eod.a<?> $$1) {
+      return a($$0, c, $$1);
+   }
+
+   protected static ens.a c(dch $$0, eod.a<?> $$1) {
+      return a($$0, h, $$1);
+   }
+
+   protected ens.a a(dch $$0, czf $$1) {
+      return a($$0, (eod.a<?>)this.a((czf)$$0, eoa.a($$1)));
+   }
+
+   protected ens.a a(czf $$0, erg $$1) {
+      return ens.b().a(enr.a().a(ere.a(1.0F)).a((eod.a<?>)this.a($$0, eoa.a($$0).a(epl.a($$1)))));
+   }
+
+   protected ens.a a(dch $$0, czf $$1, erg $$2) {
+      return a($$0, (eod.a<?>)this.a((czf)$$0, eoa.a($$1).a(epl.a($$2))));
+   }
+
+   private static ens.a c(czf $$0) {
+      return ens.b().a(enr.a().a(a).a(ere.a(1.0F)).a(eoa.a($$0)));
+   }
+
+   private ens.a d(czf $$0) {
+      return ens.b().a(this.a(dcj.fR, enr.a().a(ere.a(1.0F)).a(eoa.a(dcj.fR)))).a(this.a($$0, enr.a().a(ere.a(1.0F)).a(eoa.a($$0))));
+   }
+
+   protected ens.a a(dch $$0) {
+      return ens.b().a(enr.a().a(ere.a(1.0F)).a((eod.a<?>)this.a((czf)$$0, eoa.a($$0).a(epl.a(ere.a(2.0F)).a(eqk.a($$0).a(dc.a.a().a(djj.b, dqq.c)))))));
+   }
+
+   protected <T extends Comparable<T> & ayg> ens.a a(dch $$0, dql<T> $$1, T $$2) {
+      return ens.b().a(this.a($$0, enr.a().a(ere.a(1.0F)).a(eoa.a($$0).a(eqk.a($$0).a(dc.a.a().a($$1, $$2))))));
+   }
+
+   protected ens.a b(dch $$0) {
+      return ens.b().a(this.a($$0, enr.a().a(ere.a(1.0F)).a(eoa.a($$0).a(eon.a(eon.b.a).a(jr.d)))));
+   }
+
+   protected ens.a c(dch $$0) {
+      return ens.b().a(this.a($$0, enr.a().a(ere.a(1.0F)).a(eoa.a($$0).a(eon.a(eon.b.a).a(jr.d).a(jr.Q).a(jr.T).a(jr.U)))));
+   }
+
+   protected ens.a d(dch $$0) {
+      return a($$0, (eod.a<?>)this.a((czf)$$0, eoa.a(crv.oE).a(epl.a(erj.a(2.0F, 5.0F))).a(eok.a(cxc.x))));
+   }
+
+   protected ens.a e(dch $$0) {
+      return a($$0, (eod.a<?>)this.a((czf)$$0, eoa.a(crv.oz).a(epl.a(erj.a(4.0F, 9.0F))).a(eok.a(cxc.x))));
+   }
+
+   protected ens.a f(dch $$0) {
+      return a($$0, (eod.a<?>)this.a((czf)$$0, eoa.a(crv.lG).a(epl.a(erj.a(4.0F, 5.0F))).a(eok.b(cxc.x))));
+   }
+
+   protected ens.a g(dch $$0) {
+      return ens.b().a(this.a($$0, enr.a().a(ere.a(1.0F)).a(eoa.a($$0).a(eon.a(eon.b.a).a(jr.d).a(jr.N)))));
+   }
+
+   protected static ens.a h(dch $$0) {
+      return ens.b().a(enr.a().a(a).a(ere.a(1.0F)).a(eoa.a($$0).a(eon.a(eon.b.a).a(jr.S)).a(eom.a($$0).a(dcb.c))));
+   }
+
+   protected static ens.a i(dch $$0) {
+      return ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a($$0).a(a).a(eon.a(eon.b.a).a(jr.S)).a(eom.a($$0).a(dcb.c)).a(eoa.a($$0))));
+   }
+
+   protected static ens.a j(dch $$0) {
+      return ens.b().a(enr.a().a(eoa.a(crv.wo)).a(eqk.a($$0).a(dc.a.a().a(ddd.r_, true))));
+   }
+
+   protected ens.a a(dch $$0, crn $$1) {
+      return a($$0, (eod.a<?>)this.a((czf)$$0, eoa.a($$1).a(eok.a(cxc.x))));
+   }
+
+   protected ens.a b(dch $$0, czf $$1) {
+      return a($$0, (eod.a<?>)this.a((czf)$$0, eoa.a($$1).a(epl.a(erj.a(-6.0F, 2.0F))).a(eow.a(enj.b(0)))));
+   }
+
+   protected ens.a k(dch $$0) {
+      return b($$0, (eod.a<?>)this.a((czf)$$0, eoa.a(crv.pu).a(eqq.a(0.125F)).a(eok.a(cxc.x, 2))));
+   }
+
+   public ens.a b(dch $$0, crn $$1) {
+      return ens.b()
+         .a(
+            this.a(
+               $$0,
+               enr.a()
+                  .a(ere.a(1.0F))
+                  .a(eoa.a($$1).a(dkc.c.a(), $$1x -> epl.a(erd.a(3, (float)($$1x + 1) / 15.0F)).a(eqk.a($$0).a(dc.a.a().a(dkc.c, $$1x.intValue())))))
+            )
+         );
+   }
+
+   public ens.a c(dch $$0, crn $$1) {
+      return ens.b().a(this.a($$0, enr.a().a(ere.a(1.0F)).a(eoa.a($$1).a(epl.a(erd.a(3, 0.53333336F))))));
+   }
+
+   protected static ens.a b(czf $$0) {
+      return ens.b().a(enr.a().a(ere.a(1.0F)).a(c).a(eoa.a($$0)));
+   }
+
+   protected ens.a a(dch $$0, eql.a $$1) {
+      return ens.b()
+         .a(
+            enr.a()
+               .a(
+                  (eod.a<?>)this.a(
+                     (czf)$$0,
+                     eoa.a($$0)
+                        .a($$1)
+                        .a(ij.values(), $$1x -> epl.a(ere.a(1.0F), true).a(eqk.a($$0).a(dc.a.a().a(dhg.b($$1x), true))))
+                        .a(epl.a(ere.a(-1.0F), true))
+                  )
+               )
+         );
+   }
+
+   protected ens.a a(dch $$0, dch $$1, float... $$2) {
+      return c($$0, ((eof.a)this.a((czf)$$0, eoa.a($$1))).a(eqb.a(cxc.x, $$2)))
+         .a(enr.a().a(ere.a(1.0F)).a(i).a(((eof.a)this.a((czf)$$0, eoa.a(crv.po).a(epl.a(erj.a(1.0F, 2.0F))))).a(eqb.a(cxc.x, j))));
+   }
+
+   protected ens.a b(dch $$0, dch $$1, float... $$2) {
+      return this.a($$0, $$1, $$2)
+         .a(enr.a().a(ere.a(1.0F)).a(i).a(((eof.a)this.a((czf)$$0, eoa.a(crv.os))).a(eqb.a(cxc.x, 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F))));
+   }
+
+   protected ens.a l(dch $$0) {
+      return c($$0, ((eof.a)this.a((czf)dcj.aL, eoa.a(crv.po).a(epl.a(erj.a(1.0F, 2.0F))))).a(eqb.a(cxc.x, j)));
+   }
+
+   protected ens.a a(dch $$0, crn $$1, crn $$2, eql.a $$3) {
+      return this.a((czf)$$0, ens.b().a(enr.a().a(eoa.a($$1).a($$3).a(eoa.a($$2)))).a(enr.a().a($$3).a(eoa.a($$2).a(eok.a(cxc.x, 0.5714286F, 3)))));
+   }
+
+   protected static ens.a m(dch $$0) {
+      return ens.b().a(enr.a().a(c).a(eoa.a($$0).a(epl.a(ere.a(2.0F)))));
+   }
+
+   protected ens.a a(dch $$0, dch $$1) {
+      eod.a<?> $$2 = eoa.a($$1).a(epl.a(ere.a(2.0F))).a(c).a(((eof.a)this.a((czf)$$0, eoa.a(crv.pu))).a(eqq.a(0.125F)));
+      return ens.b()
+         .a(enr.a().a($$2).a(eqk.a($$0).a(dc.a.a().a(dep.b, dqe.b))).a(eqj.a(ck.a.a().a(av.a.a().a($$0).a(dc.a.a().a(dep.b, dqe.a))), new id(0, 1, 0))))
+         .a(enr.a().a($$2).a(eqk.a($$0).a(dc.a.a().a(dep.b, dqe.a))).a(eqj.a(ck.a.a().a(av.a.a().a($$0).a(dc.a.a().a(dep.b, dqe.b))), new id(0, -1, 0))));
+   }
+
+   protected ens.a n(dch $$0) {
+      return ens.b()
+         .a(
+            enr.a()
+               .a(ere.a(1.0F))
+               .a(
+                  (eod.a<?>)this.a(
+                     $$0, eoa.a($$0).a(List.of(2, 3, 4), $$1 -> epl.a(ere.a((float)$$1.intValue())).a(eqk.a($$0).a(dc.a.a().a(dcw.f, $$1.intValue()))))
+                  )
+               )
+         );
+   }
+
+   protected ens.a o(dch $$0) {
+      return ens.b()
+         .a(
+            enr.a()
+               .a(ere.a(1.0F))
+               .a(
+                  (eod.a<?>)this.a(
+                     $$0,
+                     eoa.a($$0)
+                        .a(
+                           IntStream.rangeClosed(1, 4).boxed().toList(),
+                           $$1 -> epl.a(ere.a((float)$$1.intValue())).a(eqk.a($$0).a(dc.a.a().a(dht.e, $$1.intValue())))
+                        )
+                  )
+               )
+         );
+   }
+
+   protected static ens.a p(dch $$0) {
+      return ens.b().a(enr.a().a(ere.a(1.0F)).a(eoa.a($$0)));
+   }
+
+   public static ens.a a() {
+      return ens.b();
+   }
+
+   protected abstract void b();
 
    @Override
-   public CompletableFuture<?> a(kw $$0) {
-      return this.h.thenCompose($$1 -> this.a($$0, $$1));
-   }
+   public void generate(ip.a $$0, BiConsumer<ajv, ens.a> $$1) {
+      this.b();
+      Set<ajv> $$2 = new HashSet<>();
 
-   private CompletableFuture<?> a(kw $$0, in.a $$1) {
-      final Map<ajt, enj> $$2 = Maps.newHashMap();
-      Map<dvg.a, ajt> $$3 = new Object2ObjectOpenHashMap();
-      this.g.forEach($$3x -> $$3x.a().get().generate($$1, ($$3xx, $$4x) -> {
-            ajt $$5x = $$3.put(bog.a($$3xx), $$3xx);
-            if ($$5x != null) {
-               ac.a("Loot table random sequence seed collision on " + $$5x + " and " + $$3xx);
-            }
+      for (dch $$3 : kt.e) {
+         if ($$3.a(this.e)) {
+            ajv $$4 = $$3.v();
+            if ($$4 != eni.a && $$2.add($$4)) {
+               ens.a $$5 = this.f.remove($$4);
+               if ($$5 == null) {
+                  throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$4, kt.e.b($$3)));
+               }
 
-            $$4x.a($$3xx);
-            if ($$2.put($$3xx, $$4x.a($$3x.b).b()) != null) {
-               throw new IllegalStateException("Duplicate loot table " + $$3xx);
+               $$1.accept($$4, $$5);
             }
-         }));
-      axp.a $$4 = new axp.a();
-      enk $$5 = new enk($$4, epn.p, new enf() {
-         @Nullable
-         @Override
-         public <T> T getElement(end<T> $$0) {
-            return (T)($$0.a() == eng.c ? $$2.get($$0.b()) : null);
          }
-      });
-
-      for (ajt $$7 : Sets.difference(this.f, $$2.keySet())) {
-         $$4.b("Missing built-in table: " + $$7);
       }
 
-      $$2.forEach(($$1x, $$2x) -> $$2x.a($$5.a($$2x.a()).a("{" + $$1x + "}", new end<>(eng.c, $$1x))));
-      Multimap<String, String> $$8 = $$4.a();
-      if (!$$8.isEmpty()) {
-         $$8.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
-         throw new IllegalStateException("Failed to validate loot tables, see logs");
-      } else {
-         return CompletableFuture.allOf($$2.entrySet().stream().map($$2x -> {
-            ajt $$3x = (ajt)$$2x.getKey();
-            enj $$4x = (enj)$$2x.getValue();
-            Path $$5x = this.e.a($$3x);
-            return ky.a($$0, $$1, enj.d, $$4x, $$5x);
-         }).toArray(CompletableFuture[]::new));
+      if (!this.f.isEmpty()) {
+         throw new IllegalStateException("Created block loot tables for non-blocks: " + this.f.keySet());
       }
    }
 
-   @Override
-   public final String a() {
-      return "Loot Tables";
+   protected void b(dch $$0, dch $$1) {
+      ens.a $$2 = c($$0, eoa.a($$0).a(eqb.a(cxc.x, 0.33F, 0.55F, 0.77F, 1.0F)));
+      this.a($$0, $$2);
+      this.a($$1, $$2);
    }
 
-   public static record a(Supplier<lw> a, epm b) {
+   protected ens.a q(dch $$0) {
+      return this.a($$0, den.f, dqe.b);
+   }
+
+   protected void r(dch $$0) {
+      this.a($$0, $$0x -> this.d((czf)((dfk)$$0x).b()));
+   }
+
+   protected void c(dch $$0, dch $$1) {
+      this.a($$0, c((czf)$$1));
+   }
+
+   protected void c(dch $$0, czf $$1) {
+      this.a($$0, this.a($$1));
+   }
+
+   protected void s(dch $$0) {
+      this.c($$0, $$0);
+   }
+
+   protected void t(dch $$0) {
+      this.c($$0, (czf)$$0);
+   }
+
+   protected void a(dch $$0, Function<dch, ens.a> $$1) {
+      this.a($$0, $$1.apply($$0));
+   }
+
+   protected void a(dch $$0, ens.a $$1) {
+      this.f.put($$0.v(), $$1);
    }
 }

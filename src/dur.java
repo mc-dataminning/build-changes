@@ -1,171 +1,108 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-public class dur {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<doz> b = $$0 -> !$$0.i();
-   static final Predicate<doz> c = doy.a::d;
-   private final avz d;
-   private final Predicate<doz> e;
-   private final dqv f;
+public class dur extends drf {
+   public static final Codec<dur> c = RecordCodecBuilder.create($$0 -> $$0.group(ajt.d(dam.b)).apply($$0, $$0.stable(dur::new)));
+   private static final int h = 2;
+   private static final List<dpi> i = StreamSupport.stream(kt.e.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
+   private static final int j = axm.f(axm.c((float)i.size()));
+   private static final int k = axm.f((float)i.size() / (float)j);
+   protected static final dpi d = dcj.a.n();
+   protected static final dpi e = dcj.hW.n();
+   public static final int f = 70;
+   public static final int g = 60;
 
-   public dur(dqv $$0, dur.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = axk.e($$0.J_() + 1);
-      this.d = new axy($$2, 256);
+   public dur(in.c<daf> $$0) {
+      super(new daq($$0));
    }
 
-   public static void a(dqv $$0, Set<dur.a> $$1) {
-      int $$2 = $$1.size();
-      ObjectList<dur> $$3 = new ObjectArrayList($$2);
-      ObjectListIterator<dur> $$4 = $$3.iterator();
-      int $$5 = $$0.b() + 16;
-      ib.a $$6 = new ib.a();
+   @Override
+   protected Codec<? extends drf> a() {
+      return c;
+   }
+
+   @Override
+   public void a(aqb $$0, czz $$1, dvo $$2, dre $$3) {
+   }
+
+   @Override
+   public void a(dab $$0, dre $$1, czz $$2) {
+      id.a $$3 = new id.a();
+      cyn $$4 = $$1.f();
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
 
       for (int $$7 = 0; $$7 < 16; $$7++) {
          for (int $$8 = 0; $$8 < 16; $$8++) {
-            for (dur.a $$9 : $$1) {
-               $$3.add($$0.a($$9));
-            }
-
-            for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
-               $$6.d($$7, $$10, $$8);
-               doz $$11 = $$0.a_($$6);
-               if (!$$11.a(dca.a)) {
-                  while ($$4.hasNext()) {
-                     dur $$12 = (dur)$$4.next();
-                     if ($$12.e.test($$11)) {
-                        $$12.a($$7, $$8, $$10 + 1);
-                        $$4.remove();
-                     }
-                  }
-
-                  if ($$3.isEmpty()) {
-                     break;
-                  }
-
-                  $$4.back($$2);
-               }
-            }
+            int $$9 = jg.a($$5, $$7);
+            int $$10 = jg.a($$6, $$8);
+            $$0.a($$3.d($$9, 60, $$10), e, 2);
+            dpi $$11 = a($$9, $$10);
+            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
          }
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, doz $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            ib.a $$5 = new ib.a();
+   @Override
+   public CompletableFuture<dre> a(Executor $$0, dwc $$1, dvo $$2, czz $$3, dre $$4) {
+      return CompletableFuture.completedFuture($$4);
+   }
 
-            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
+   @Override
+   public int a(int $$0, int $$1, dva.a $$2, czi $$3, dvo $$4) {
+      return 0;
+   }
 
-            this.a($$0, $$2, this.f.I_());
-            return true;
+   @Override
+   public czs a(int $$0, int $$1, czi $$2, dvo $$3) {
+      return new czs(0, new dpi[0]);
+   }
+
+   @Override
+   public void a(List<String> $$0, dvo $$1, id $$2) {
+   }
+
+   public static dpi a(int $$0, int $$1) {
+      dpi $$2 = d;
+      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
+         $$0 /= 2;
+         $$1 /= 2;
+         if ($$0 <= j && $$1 <= k) {
+            int $$3 = axm.a($$0 * j + $$1);
+            if ($$3 < i.size()) {
+               $$2 = i.get($$3);
+            }
          }
-
-         return false;
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
-
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.I_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.I_());
-   }
-
-   public void a(dqv $$0, dur.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements aye {
-      a("WORLD_SURFACE_WG", dur.b.a, dur.b),
-      b("WORLD_SURFACE", dur.b.c, dur.b),
-      c("OCEAN_FLOOR_WG", dur.b.a, dur.c),
-      d("OCEAN_FLOOR", dur.b.b, dur.c),
-      e("MOTION_BLOCKING", dur.b.c, $$0 -> $$0.d() || !$$0.u().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", dur.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof dgh));
-
-      public static final Codec<dur.a> g = aye.a(dur.a::values);
-      private final String h;
-      private final dur.b i;
-      private final Predicate<doz> j;
-
-      private a(String $$0, dur.b $$1, Predicate<doz> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
       }
 
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == dur.b.c;
-      }
-
-      public boolean d() {
-         return this.i != dur.b.a;
-      }
-
-      public Predicate<doz> e() {
-         return this.j;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
+      return $$2;
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   @Override
+   public void a(aqb $$0, long $$1, dvo $$2, dah $$3, czz $$4, dre $$5, duw.a $$6) {
+   }
+
+   @Override
+   public void a(aqb $$0) {
+   }
+
+   @Override
+   public int f() {
+      return 0;
+   }
+
+   @Override
+   public int d() {
+      return 384;
+   }
+
+   @Override
+   public int e() {
+      return 63;
    }
 }

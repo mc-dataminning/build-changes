@@ -1,57 +1,53 @@
-public class acr implements yn<aay> {
-   public static final ye<vr, acr> a = yn.a(acr::a, acr::new);
-   private final int b;
-   private final cxw c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public acr(int $$0, cxw $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public record acr(int b, boolean c, Set<aju<czg>> d, int e, int f, int g, boolean h, boolean i, boolean j, afi k, boolean l) implements yp<aba> {
+   public static final yg<vt, acr> a = yp.a(acr::a, acr::new);
+
+   private acr(vt $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(ku.aP)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new afi($$0),
+         $$0.readBoolean()
+      );
    }
 
-   private acr(vr $$0) {
-      this.b = $$0.l();
-      this.c = cxw.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
-   }
-
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      cxw.b.encode($$0, this.c);
-      $$0.c(this.d);
+   private void a(vt $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, vi::b);
       $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public yp<acr> a() {
-      return afj.Q;
+   public yr<acr> a() {
+      return afl.O;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public cxw e() {
+   public boolean e() {
       return this.c;
    }
 
-   public int f() {
+   public Set<aju<czg>> f() {
       return this.d;
    }
 
@@ -59,11 +55,31 @@ public class acr implements yn<aay> {
       return this.e;
    }
 
-   public boolean h() {
+   public int h() {
       return this.f;
    }
 
-   public boolean i() {
+   public int i() {
       return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public afi m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

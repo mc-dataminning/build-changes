@@ -1,9 +1,6 @@
-public class qt {
-   public static void a(px<egq> $$0) {
-      qd.a($$0);
-      qh.a($$0);
-      qg.a($$0);
-      pz.a($$0);
-      ql.a($$0);
+public interface qt {
+   static void a(pz<efw> $$0) {
+      io<efq> $$1 = $$0.a(ku.aG);
+      $$0.a(efj.t, new efw($$1.b(efk.H), new egl(32, 8, egm.a, 94251327)));
    }
 }

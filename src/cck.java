@@ -1,73 +1,90 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cck extends ccd {
-   private static final bpy bX = bqb.w.n().a(0.5F).b(0.665F);
+public interface cck {
+   boolean u();
 
-   public cck(bqb<? extends cck> $$0, cyx $$1) {
-      super($$0, $$1);
+   void w(boolean var1);
+
+   void n(crs var1);
+
+   void c(to var1);
+
+   crs b();
+
+   aun y();
+
+   @Deprecated
+   static void a(bqv $$0, crs $$1) {
+      $$1.b(jr.d, $$0.af());
+      cuc.a(jr.E, $$1, $$1x -> {
+         if ($$0.gd()) {
+            $$1x.a("NoAI", $$0.gd());
+         }
+
+         if ($$0.aU()) {
+            $$1x.a("Silent", $$0.aU());
+         }
+
+         if ($$0.aV()) {
+            $$1x.a("NoGravity", $$0.aV());
+         }
+
+         if ($$0.cc()) {
+            $$1x.a("Glowing", $$0.cc());
+         }
+
+         if ($$0.cr()) {
+            $$1x.a("Invulnerable", $$0.cr());
+         }
+
+         $$1x.a("Health", $$0.ex());
+      });
    }
 
-   @Override
-   protected void z() {
-      this.bR.a(0, new bxf(this));
-      this.bR.a(1, new bye(this, 2.0));
-      this.bR.a(2, new bwx(this, 1.0));
-      this.bR.a(3, new byt(this, 1.25, cvg.a(crm.pv), false));
-      this.bR.a(4, new bxk(this, 1.25));
-      this.bR.a(5, new byy(this, 1.0));
-      this.bR.a(6, new bxt(this, cjt.class, 6.0F));
-      this.bR.a(7, new byg(this));
-   }
+   @Deprecated
+   static void a(bqv $$0, to $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
+      }
 
-   public static bru.a r() {
-      return bqq.A().a(brv.q, 10.0).a(brv.r, 0.2F);
-   }
+      if ($$1.e("Silent")) {
+         $$0.d($$1.q("Silent"));
+      }
 
-   @Override
-   protected aul v() {
-      return aum.fW;
-   }
+      if ($$1.e("NoGravity")) {
+         $$0.e($$1.q("NoGravity"));
+      }
 
-   @Override
-   protected aul d(bot $$0) {
-      return aum.fY;
-   }
+      if ($$1.e("Glowing")) {
+         $$0.i($$1.q("Glowing"));
+      }
 
-   @Override
-   protected aul o_() {
-      return aum.fX;
-   }
+      if ($$1.e("Invulnerable")) {
+         $$0.m($$1.q("Invulnerable"));
+      }
 
-   @Override
-   protected void b(ib $$0, doz $$1) {
-      this.a(aum.ga, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float fb() {
-      return 0.4F;
-   }
-
-   @Override
-   public boa b(cjt $$0, bnz $$1) {
-      crj $$2 = $$0.b($$1);
-      if ($$2.a(crm.qx) && !this.p_()) {
-         $$0.a(aum.fZ, 1.0F, 1.0F);
-         crj $$3 = crl.a($$2, $$0, crm.qD.x());
-         $$0.a($$1, $$3);
-         return boa.a(this.dM().B);
-      } else {
-         return super.b($$0, $$1);
+      if ($$1.b("Health", 99)) {
+         $$0.t($$1.j("Health"));
       }
    }
 
-   @Nullable
-   public cck b(aps $$0, bpp $$1) {
-      return bqb.w.a((cyx)$$0);
-   }
+   static <T extends bqt & cck> Optional<bof> a(cka $$0, boe $$1, T $$2) {
+      crs $$3 = $$0.b($$1);
+      if ($$3.f() == crv.qy && $$2.bA()) {
+         $$2.a($$2.y(), 1.0F, 1.0F);
+         crs $$4 = $$2.b();
+         $$2.n($$4);
+         crs $$5 = cru.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         czg $$6 = $$2.dM();
+         if (!$$6.B) {
+            am.k.a((apv)$$0, $$4);
+         }
 
-   @Override
-   public bpy e(bqz $$0) {
-      return this.p_() ? bX : super.e($$0);
+         $$2.am();
+         return Optional.of(bof.a($$6.B));
+      } else {
+         return Optional.empty();
+      }
    }
 }

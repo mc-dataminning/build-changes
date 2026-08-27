@@ -1,21 +1,61 @@
-public class fyz {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
+public class fyz extends fyw {
+   private final fyr a;
+   private static final int b = 8;
 
-   public void a(boolean $$0, float $$1) {
+   protected fyz(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fyr $$8) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$8;
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.j *= 0.0;
+      this.k *= 0.9;
+      this.l *= 0.0;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      this.D *= 0.75F * $$7;
+      this.t = (int)(8.0F / axm.b(this.r, 0.5F, 1.0F) * $$7);
+      this.t = Math.max(this.t, 1);
+      this.b($$8);
+      this.n = true;
    }
 
-   public erz a() {
-      return new erz(this.a, this.b);
+   @Override
+   public fya b() {
+      return fya.b;
    }
 
-   public boolean b() {
-      return this.b > 1.0E-5F;
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fyj.a p() {
+      return fyj.a.b;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * axm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fxz<kq> {
+      private final fyr a;
+
+      public a(fyr $$0) {
+         this.a = $$0;
+      }
+
+      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fyz($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
+      }
    }
 }

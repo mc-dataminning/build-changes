@@ -1,34 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class bxa extends bxl {
-   private final bqq a;
-   private final cyx b;
+public class bxa extends bxh {
+   private static final int g = 240;
+   private final Predicate<boc> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public bxa(bqq $$0, cyx $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bxl.a.c));
+   public bxa(bqv $$0, Predicate<boc> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public bxa(bqv $$0, int $$1, Predicate<boc> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean a() {
-      boolean $$0 = this.a.aB || this.a.aA;
-      if ($$0 && this.a.ai().a(avf.h)) {
-         ib $$1 = this.a.dm().c();
-         doz $$2 = this.b.a_($$1);
-         return $$2.a(dca.qP) || $$2.k(this.b, $$1) == esq.a();
-      } else {
+      if (!super.a()) {
          return false;
+      } else {
+         return !this.d.dM().aa().b(czc.c) ? false : this.a(this.d.dM().ak()) && !this.h();
       }
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public void c() {
+      super.c();
+      this.a = 0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dk(), 2.0) && this.a(this.d.dM().ak());
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.d.dM().a(this.d.aj(), this.e, -1);
    }
 
    @Override
    public void e() {
-      this.a.I().a();
+      super.e();
+      if (this.d.ei().a(20) == 0) {
+         this.d.dM().c(1019, this.e, 0);
+         if (!this.d.aI) {
+            this.d.a(this.d.ft());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dM().a(this.d.aj(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dM().ak())) {
+         this.d.dM().a(this.e, false);
+         this.d.dM().c(1021, this.e, 0);
+         this.d.dM().c(2001, this.e, dch.i(this.d.dM().a_(this.e)));
+      }
+   }
+
+   private boolean a(boc $$0) {
+      return this.h.test($$0);
    }
 }

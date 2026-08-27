@@ -1,166 +1,41 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
 
 public class fuw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bmt<Runnable> b = bmt.a(ac.f(), "server-list-io");
-   private static final int c = 16;
-   private final fbp d;
-   private final List<fuv> e = Lists.newArrayList();
-   private final List<fuv> f = Lists.newArrayList();
+   private final asp a = ass.c();
+   private final Map<asl, String> b;
 
-   public fuw(fbp $$0) {
-      this.d = $$0;
-   }
-
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         tm $$0 = tz.a(this.d.p.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         ts $$1 = $$0.c("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            tm $$3 = $$1.a($$2);
-            fuv $$4 = fuv.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
-      }
-   }
-
-   public void b() {
-      try {
-         ts $$0 = new ts();
-
-         for (fuv $$1 : this.e) {
-            tm $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (fuv $$3 : this.f) {
-            tm $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         tm $$5 = new tm();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.p.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         tz.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ac.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
-   }
-
-   public fuv a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Nullable
-   public fuv a(String $$0) {
-      for (fuv $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      for (fuv $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   public fuv b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         fuv $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(fuv $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(fuv $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
-      } else {
-         this.e.add($$0);
-      }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      fuv $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, fuv $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(fuv $$0, List<fuv> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         fuv $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void b(fuv $$0) {
-      b.a(() -> {
-         fuw $$1 = new fuw(fbp.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
+   public fuw() {
+      this.a.a();
+      Builder<asl, String> $$0 = ImmutableMap.builder();
+      this.a.c().forEach($$1 -> {
+         arp $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
       });
+      this.b = $$0.build();
+   }
+
+   public List<asl> a(List<asl> $$0) {
+      List<asl> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
+
+      for (asl $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
+      }
+
+      this.a.a($$2);
+      return $$1;
+   }
+
+   public asu a() {
+      List<arq> $$0 = this.a.g();
+      return new asx(ars.b, $$0);
    }
 }

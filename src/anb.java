@@ -1,28 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class anb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("commands.save.alreadyOff"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wi.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wi.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wi.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wi.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wi.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wi.c("commands.ride.mount.failure.wrong_dimension"));
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
-         du $$1 = (du)$$0x.getSource();
-         boolean $$2 = false;
+   public static void a(CommandDispatcher<dv> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("ride").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dw.a("target", ei.a())
+                     .then(dw.a("mount").then(dw.a("vehicle", ei.a()).executes($$0x -> a((dv)$$0x.getSource(), ei.a($$0x, "target"), ei.a($$0x, "vehicle"))))))
+                  .then(dw.a("dismount").executes($$0x -> a((dv)$$0x.getSource(), ei.a($$0x, "target"))))
+            )
+      );
+   }
 
-         for (aps $$3 : $$1.l().K()) {
-            if ($$3 != null && !$$3.e) {
-               $$3.e = true;
-               $$2 = true;
-            }
-         }
+   private static int a(dv $$0, bqa $$1, bqa $$2) throws CommandSyntaxException {
+      bqa $$3 = $$1.cZ();
+      if ($$3 != null) {
+         throw b.create($$1.O_(), $$3.O_());
+      } else if ($$2.ai() == bqg.bx) {
+         throw d.create();
+      } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dM() != $$2.dM()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.O_(), $$2.O_());
+      } else {
+         $$0.a(() -> wi.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
+      }
+   }
 
-         if (!$$2) {
-            throw a.create();
-         } else {
-            $$1.a(() -> wg.c("commands.save.disabled"), true);
-            return 1;
-         }
-      }));
+   private static int a(dv $$0, bqa $$1) throws CommandSyntaxException {
+      bqa $$2 = $$1.cZ();
+      if ($$2 == null) {
+         throw a.create($$1.O_());
+      } else {
+         $$1.ac();
+         $$0.a(() -> wi.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
+      }
    }
 }

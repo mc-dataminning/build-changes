@@ -1,31 +1,59 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddv extends dby {
+public class ddv extends dch {
    public static final MapCodec<ddv> a = b(ddv::new);
+   public static final dpz b = dpy.w;
+   public static final dpz c = dpy.r;
 
    @Override
-   public MapCodec<ddv> a() {
+   protected MapCodec<? extends ddv> a() {
       return a;
    }
 
-   public ddv(doy.d $$0) {
+   public ddv(dph.d $$0) {
       super($$0);
+      this.k(this.n().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
-      if ($$3.a(5) == 0) {
-         ih $$4 = ih.b($$3);
-         if ($$4 != ih.b) {
-            ib $$5 = $$2.a($$4);
-            doz $$6 = $$1.a_($$5);
-            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
-               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
-               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
-               $$1.a(kl.aC, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
-            }
-         }
+   protected void b(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof apu $$5) {
+         this.a($$0, $$5, $$2);
       }
+   }
+
+   @Override
+   protected void a(dpi $$0, czg $$1, id $$2, dch $$3, id $$4, boolean $$5) {
+      if ($$1 instanceof apu $$6) {
+         this.a($$0, $$6, $$2);
+      }
+   }
+
+   public void a(dpi $$0, apu $$1, id $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         dpi $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? auo.fB : auo.fC, aup.e);
+         }
+
+         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
+      }
+   }
+
+   @Override
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Override
+   protected boolean d_(dpi $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dpi $$0, czg $$1, id $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

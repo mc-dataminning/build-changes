@@ -1,29 +1,29 @@
-public class afy implements yn<afl> {
-   public static final ye<vg, afy> a = yn.a(afy::a, afy::new);
+public class afy implements yp<afn> {
+   public static final yg<vi, afy> a = yp.a(afy::a, afy::new);
    private final int b;
-   private final int c;
+   private final String c;
 
-   public afy(int $$0, int $$1) {
+   public afy(int $$0, String $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private afy(vg $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.readByte();
+   private afy(vi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
    }
 
-   private void a(vg $$0) {
-      $$0.k(this.b);
-      $$0.k(this.c);
+   private void a(vi $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, 32500);
    }
 
    @Override
-   public yp<afy> a() {
-      return afj.bp;
+   public yr<afy> a() {
+      return afl.bn;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
@@ -31,7 +31,7 @@ public class afy implements yn<afl> {
       return this.b;
    }
 
-   public int e() {
+   public String e() {
       return this.c;
    }
 }

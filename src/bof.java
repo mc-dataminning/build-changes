@@ -1,18 +1,23 @@
-import javax.annotation.Nullable;
+public enum bof {
+   a,
+   b,
+   c,
+   d,
+   e;
 
-public interface bof {
-   wg ad();
-
-   default boolean ae() {
-      return this.af() != null;
+   public boolean a() {
+      return this == a || this == b || this == c;
    }
 
-   default wg O_() {
-      return this.ad();
+   public boolean b() {
+      return this == a;
    }
 
-   @Nullable
-   default wg af() {
-      return null;
+   public boolean c() {
+      return this == a || this == b;
+   }
+
+   public static bof a(boolean $$0) {
+      return $$0 ? a : b;
    }
 }

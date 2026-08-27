@@ -1,104 +1,101 @@
-public interface ewf extends ewm {
-   ewo j();
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
-   void f();
+public class ewf {
+   private static final int a = 32768;
+   private final ewf.a b;
+   private final String c;
+   private int d;
 
-   void a(int var1, byte var2);
+   protected ewf(ewf.a $$0, int $$1, String $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = $$2;
+   }
 
-   void a(int var1, short var2);
+   public void a(ewh $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager.glAttachShader($$0.a(), this.c());
+   }
 
-   void a(int var1, float var2);
-
-   @Override
-   default ewm a(double $$0, double $$1, double $$2) {
-      if (this.j().b() != ewo.b.a) {
-         return this;
-      } else if (this.j().a() == ewo.a.a && this.j().c() == 3) {
-         this.a(0, (float)$$0);
-         this.a(4, (float)$$1);
-         this.a(8, (float)$$2);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
+   public void a() {
+      if (this.d != -1) {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.d);
+         this.d = -1;
+         this.b.c().remove(this.c);
       }
    }
 
-   @Override
-   default ewm a(int $$0, int $$1, int $$2, int $$3) {
-      ewo $$4 = this.j();
-      if ($$4.b() != ewo.b.c) {
-         return this;
-      } else if ($$4.a() == ewo.a.b && $$4.c() == 4) {
-         this.a(0, (byte)$$0);
-         this.a(1, (byte)$$1);
-         this.a(2, (byte)$$2);
-         this.a(3, (byte)$$3);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
+   public String b() {
+      return this.c;
    }
 
-   @Override
-   default ewm a(float $$0, float $$1) {
-      ewo $$2 = this.j();
-      if ($$2.b() == ewo.b.d && $$2.d() == 0) {
-         if ($$2.a() == ewo.a.a && $$2.c() == 2) {
-            this.a(0, $$0);
-            this.a(4, $$1);
-            this.f();
-            return this;
+   public static ewf a(ewf.a $$0, String $$1, InputStream $$2, String $$3, evy $$4) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$5 = b($$0, $$1, $$2, $$3, $$4);
+      ewf $$6 = new ewf($$0, $$5, $$1);
+      $$0.c().put($$1, $$6);
+      return $$6;
+   }
+
+   protected static int b(ewf.a $$0, String $$1, InputStream $$2, String $$3, evy $$4) throws IOException {
+      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
+      if ($$5 == null) {
+         throw new IOException("Could not load program " + $$0.a());
+      } else {
+         int $$6 = GlStateManager.glCreateShader($$0.d());
+         GlStateManager.glShaderSource($$6, $$4.a($$5));
+         GlStateManager.glCompileShader($$6);
+         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
+            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
+            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
          } else {
-            throw new IllegalStateException();
+            return $$6;
          }
-      } else {
-         return this;
       }
    }
 
-   @Override
-   default ewm a(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 1);
+   protected int c() {
+      return this.d;
    }
 
-   @Override
-   default ewm b(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 2);
-   }
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
 
-   default ewm a(short $$0, short $$1, int $$2) {
-      ewo $$3 = this.j();
-      if ($$3.b() != ewo.b.d || $$3.d() != $$2) {
-         return this;
-      } else if ($$3.a() == ewo.a.e && $$3.c() == 2) {
-         this.a(0, $$0);
-         this.a(2, $$1);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
+      private final String c;
+      private final String d;
+      private final int e;
+      private final Map<String, ewf> f = Maps.newHashMap();
+
+      private a(String $$0, String $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
-   }
 
-   @Override
-   default ewm a(float $$0, float $$1, float $$2) {
-      ewo $$3 = this.j();
-      if ($$3.b() != ewo.b.b) {
-         return this;
-      } else if ($$3.a() == ewo.a.c && $$3.c() == 3) {
-         this.a(0, a($$0));
-         this.a(1, a($$1));
-         this.a(2, a($$2));
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
+      public String a() {
+         return this.c;
       }
-   }
 
-   static byte a(float $$0) {
-      return (byte)((int)(axk.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+      public String b() {
+         return this.d;
+      }
+
+      int d() {
+         return this.e;
+      }
+
+      public Map<String, ewf> c() {
+         return this.f;
+      }
    }
 }

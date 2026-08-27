@@ -18,30 +18,32 @@ public record br(
    Optional<br> l,
    Optional<br> m,
    Optional<br> n,
-   Optional<String> o
+   Optional<String> o,
+   Optional<da> p
 ) {
-   public static final Codec<br> a = aws.a(
+   public static final Codec<br> a = awu.a(
       "EntityPredicate",
       $$0 -> RecordCodecBuilder.create(
             $$1 -> $$1.group(
-                     aws.a(bt.a, "type").forGetter(br::a),
-                     aws.a(bi.a, "distance").forGetter(br::b),
-                     aws.a(ck.a, "location").forGetter(br::c),
-                     aws.a(ck.a, "stepping_on").forGetter(br::d),
-                     aws.a(cn.a, "effects").forGetter(br::e),
-                     aws.a(co.a, "nbt").forGetter(br::f),
-                     aws.a(bp.a, "flags").forGetter(br::g),
-                     aws.a(bo.a, "equipment").forGetter(br::h),
-                     aws.a(bs.a, "type_specific").forGetter(br::i),
-                     aws.a($$0, "vehicle").forGetter(br::j),
-                     aws.a($$0, "passenger").forGetter(br::k),
-                     aws.a($$0, "targeted_entity").forGetter(br::l),
-                     aws.a(Codec.STRING, "team").forGetter(br::m)
+                     awu.a(bt.a, "type").forGetter(br::a),
+                     awu.a(bi.a, "distance").forGetter(br::b),
+                     awu.a(ck.a, "location").forGetter(br::c),
+                     awu.a(ck.a, "stepping_on").forGetter(br::d),
+                     awu.a(cn.a, "effects").forGetter(br::e),
+                     awu.a(co.a, "nbt").forGetter(br::f),
+                     awu.a(bp.a, "flags").forGetter(br::g),
+                     awu.a(bo.a, "equipment").forGetter(br::h),
+                     awu.a(bs.a, "type_specific").forGetter(br::i),
+                     awu.a($$0, "vehicle").forGetter(br::j),
+                     awu.a($$0, "passenger").forGetter(br::k),
+                     awu.a($$0, "targeted_entity").forGetter(br::l),
+                     awu.a(Codec.STRING, "team").forGetter(br::m),
+                     awu.a(da.a, "slots").forGetter(br::n)
                   )
                   .apply($$1, br::new)
          )
    );
-   public static final Codec<bc> b = aws.a(bc.a, a, br::a);
+   public static final Codec<bc> b = awu.a(bc.a, a, br::a);
 
    public static bc a(br.a $$0) {
       return a($$0.b());
@@ -56,15 +58,15 @@ public record br(
    }
 
    public static bc a(br $$0) {
-      eqc $$1 = eqf.a(enb.b.a, $$0).build();
+      eql $$1 = eqo.a(enk.b.a, $$0).build();
       return new bc(List.of($$1));
    }
 
-   public boolean a(apt $$0, @Nullable bpv $$1) {
+   public boolean a(apv $$0, @Nullable bqa $$1) {
       return this.a($$0.z(), $$0.dk(), $$1);
    }
 
-   public boolean a(aps $$0, @Nullable esa $$1, @Nullable bpv $$2) {
+   public boolean a(apu $$0, @Nullable esj $$1, @Nullable bqa $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.c.isPresent() && !this.c.get().b($$2.ai())) {
@@ -82,7 +84,7 @@ public record br(
             return false;
          } else {
             if (this.f.isPresent()) {
-               esa $$3 = esa.b($$2.aJ());
+               esj $$3 = esj.b($$2.aJ());
                if (!this.f.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -102,25 +104,25 @@ public record br(
                return false;
             } else if (this.m.isPresent() && $$2.cP().stream().noneMatch($$2x -> this.m.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bqq ? ((bqq)$$2).p() : null)) {
+            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bqv ? ((bqv)$$2).p() : null)) {
                return false;
             } else {
                if (this.o.isPresent()) {
-                  etg $$4 = $$2.cg();
+                  etp $$4 = $$2.cg();
                   if ($$4 == null || !this.o.get().equals($$4.b())) {
                      return false;
                   }
                }
 
-               return true;
+               return !this.p.isPresent() || this.p.get().a($$2);
             }
          }
       }
    }
 
-   public static enb b(apt $$0, bpv $$1) {
-      enh $$2 = new enh.a($$0.z()).a(epo.a, $$1).a(epo.f, $$0.dk()).a(epn.m);
-      return new enb.a($$2).a(Optional.empty());
+   public static enk b(apv $$0, bqa $$1) {
+      enq $$2 = new enq.a($$0.z()).a(epx.a, $$1).a(epx.f, $$0.dk()).a(epw.m);
+      return new enk.a($$2).a(Optional.empty());
    }
 
    public Optional<bt> a() {
@@ -175,6 +177,10 @@ public record br(
       return this.o;
    }
 
+   public Optional<da> n() {
+      return this.p;
+   }
+
    public static class a {
       private Optional<bt> a = Optional.empty();
       private Optional<bi> b = Optional.empty();
@@ -189,17 +195,18 @@ public record br(
       private Optional<br> k = Optional.empty();
       private Optional<br> l = Optional.empty();
       private Optional<String> m = Optional.empty();
+      private Optional<da> n = Optional.empty();
 
       public static br.a a() {
          return new br.a();
       }
 
-      public br.a a(bqb<?> $$0) {
+      public br.a a(bqg<?> $$0) {
          this.a = Optional.of(bt.a($$0));
          return this;
       }
 
-      public br.a a(avr<bqb<?>> $$0) {
+      public br.a a(avt<bqg<?>> $$0) {
          this.a = Optional.of(bt.a($$0));
          return this;
       }
@@ -274,8 +281,13 @@ public record br(
          return this;
       }
 
+      public br.a a(da $$0) {
+         this.n = Optional.of($$0);
+         return this;
+      }
+
       public br b() {
-         return new br(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m);
+         return new br(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n);
       }
    }
 }

@@ -1,30 +1,48 @@
-import java.util.Locale;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public interface emn {
-   ib a();
+public class emn extends emi {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   float b();
+   public static emi.a<emn> a() {
+      return new emi.a<>(emn::new, emn::b, ays.k);
+   }
 
-   long c();
+   public emn() {
+      this.b.defaultReturnValue(-1);
+   }
 
-   long d();
+   public static emn b(to $$0, ip.a $$1) {
+      emn $$2 = new emn();
 
-   boolean g();
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
+         }
+      }
 
-   boolean i();
+      return $$2;
+   }
 
-   void b(boolean var1);
+   @Override
+   public to a(to $$0, ip.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
 
-   boolean l();
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
 
-   cyt o();
+      return $$0;
+   }
 
-   bnx q();
-
-   boolean r();
-
-   default void a(p $$0, cyz $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   public emm b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new emm($$0);
    }
 }

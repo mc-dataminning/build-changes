@@ -1,119 +1,343 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.io.FilterInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class asv implements ass {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, ast> c;
-   private final List<aro> d;
+public class asv implements ate {
+   static final Logger c = LogUtils.getLogger();
+   protected final List<asv.d> a = Lists.newArrayList();
+   private final ars d;
+   private final String e;
 
-   public asv(arq $$0, List<aro> $$1) {
-      this.d = List.copyOf($$1);
-      Map<String, ast> $$2 = new HashMap<>();
-      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
-
-      for (aro $$4 : $$1) {
-         atb $$5 = this.a($$4);
-         Set<String> $$6 = $$4.a($$0);
-         Predicate<ajt> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
-
-         for (String $$8 : $$3) {
-            boolean $$9 = $$6.contains($$8);
-            boolean $$10 = $$5 != null && $$5.a($$8);
-            if ($$9 || $$10) {
-               ast $$11 = $$2.get($$8);
-               if ($$11 == null) {
-                  $$11 = new ast($$0, $$8);
-                  $$2.put($$8, $$11);
-               }
-
-               if ($$9 && $$10) {
-                  $$11.a($$4, $$7);
-               } else if ($$9) {
-                  $$11.a($$4);
-               } else {
-                  $$11.a($$4.b(), $$7);
-               }
-            }
-         }
-      }
-
-      this.c = $$2;
+   public asv(ars $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Nullable
-   private atb a(aro $$0) {
-      try {
-         return $$0.a(atb.a);
-      } catch (IOException var3) {
-         a.error("Failed to get filter section from pack {}", $$0.b());
-         return null;
-      }
+   public void a(arq $$0) {
+      this.a($$0.b(), $$0, null);
+   }
+
+   public void a(arq $$0, Predicate<ajv> $$1) {
+      this.a($$0.b(), $$0, $$1);
+   }
+
+   public void a(String $$0, Predicate<ajv> $$1) {
+      this.a($$0, null, $$1);
+   }
+
+   private void a(String $$0, @Nullable arq $$1, @Nullable Predicate<ajv> $$2) {
+      this.a.add(new asv.d($$0, $$1, $$2));
    }
 
    @Override
    public Set<String> a() {
-      return this.c.keySet();
+      return ImmutableSet.of(this.e);
    }
 
    @Override
-   public Optional<ata> getResource(ajt $$0) {
-      atc $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
-   }
+   public Optional<atc> getResource(ajv $$0) {
+      for (int $$1 = this.a.size() - 1; $$1 >= 0; $$1--) {
+         asv.d $$2 = this.a.get($$1);
+         arq $$3 = $$2.b;
+         if ($$3 != null) {
+            asw<InputStream> $$4 = $$3.a(this.d, $$0);
+            if ($$4 != null) {
+               asw<atg> $$5 = this.a($$0, $$1);
+               return Optional.of(a($$3, $$0, $$4, $$5));
+            }
+         }
 
-   @Override
-   public List<ata> a(ajt $$0) {
-      atc $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.a($$0) : List.of();
-   }
-
-   @Override
-   public Map<ajt, ata> b(String $$0, Predicate<ajt> $$1) {
-      a($$0);
-      Map<ajt, ata> $$2 = new TreeMap<>();
-
-      for (ast $$3 : this.c.values()) {
-         $$2.putAll($$3.b($$0, $$1));
+         if ($$2.a($$0)) {
+            c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$2.a);
+            return Optional.empty();
+         }
       }
 
-      return $$2;
+      return Optional.empty();
+   }
+
+   private static atc a(arq $$0, ajv $$1, asw<InputStream> $$2, asw<atg> $$3) {
+      return new atc($$0, a($$1, $$0, $$2), $$3);
+   }
+
+   private static asw<InputStream> a(ajv $$0, arq $$1, asw<InputStream> $$2) {
+      return c.isDebugEnabled() ? () -> new asv.c($$2.get(), $$0, $$1.b()) : $$2;
    }
 
    @Override
-   public Map<ajt, List<ata>> c(String $$0, Predicate<ajt> $$1) {
-      a($$0);
-      Map<ajt, List<ata>> $$2 = new TreeMap<>();
+   public List<atc> a(ajv $$0) {
+      ajv $$1 = d($$0);
+      List<atc> $$2 = new ArrayList<>();
+      boolean $$3 = false;
+      String $$4 = null;
 
-      for (ast $$3 : this.c.values()) {
-         $$2.putAll($$3.c($$0, $$1));
+      for (int $$5 = this.a.size() - 1; $$5 >= 0; $$5--) {
+         asv.d $$6 = this.a.get($$5);
+         arq $$7 = $$6.b;
+         if ($$7 != null) {
+            asw<InputStream> $$8 = $$7.a(this.d, $$0);
+            if ($$8 != null) {
+               asw<atg> $$9;
+               if ($$3) {
+                  $$9 = atg.b;
+               } else {
+                  $$9 = () -> {
+                     asw<InputStream> $$2x = $$7.a(this.d, $$1);
+                     return $$2x != null ? b($$2x) : atg.a;
+                  };
+               }
+
+               $$2.add(new atc($$7, $$8, $$9));
+            }
+         }
+
+         if ($$6.a($$0)) {
+            $$4 = $$6.a;
+            break;
+         }
+
+         if ($$6.a($$1)) {
+            $$3 = true;
+         }
       }
 
-      return $$2;
+      if ($$2.isEmpty() && $$4 != null) {
+         c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$4);
+      }
+
+      return Lists.reverse($$2);
    }
 
-   private static void a(String $$0) {
-      if ($$0.endsWith("/")) {
-         throw new IllegalArgumentException("Trailing slash in path " + $$0);
+   private static boolean b(ajv $$0) {
+      return $$0.a().endsWith(".mcmeta");
+   }
+
+   private static ajv c(ajv $$0) {
+      String $$1 = $$0.a().substring(0, $$0.a().length() - ".mcmeta".length());
+      return $$0.c($$1);
+   }
+
+   static ajv d(ajv $$0) {
+      return $$0.c($$0.a() + ".mcmeta");
+   }
+
+   @Override
+   public Map<ajv, atc> b(String $$0, Predicate<ajv> $$1) {
+      record a(arq a, asw<InputStream> b, int c) {
+      }
+
+      Map<ajv, a> $$2 = new HashMap<>();
+      Map<ajv, a> $$3 = new HashMap<>();
+      int $$4 = this.a.size();
+
+      for (int $$5 = 0; $$5 < $$4; $$5++) {
+         asv.d $$6 = this.a.get($$5);
+         $$6.a($$2.keySet());
+         $$6.a($$3.keySet());
+         arq $$7 = $$6.b;
+         if ($$7 != null) {
+            int $$8 = $$5;
+            $$7.a(this.d, this.e, $$0, ($$5x, $$6x) -> {
+               if (b($$5x)) {
+                  if ($$1.test(c($$5x))) {
+                     $$3.put($$5x, new a($$7, $$6x, $$8));
+                  }
+               } else if ($$1.test($$5x)) {
+                  $$2.put($$5x, new a($$7, $$6x, $$8));
+               }
+            });
+         }
+      }
+
+      Map<ajv, atc> $$9 = Maps.newTreeMap();
+      $$2.forEach(($$2x, $$3x) -> {
+         ajv $$4x = d($$2x);
+         a $$5x = $$3.get($$4x);
+         asw<atg> $$6x;
+         if ($$5x != null && $$5x.c >= $$3x.c) {
+            $$6x = a($$5x.b);
+         } else {
+            $$6x = atg.b;
+         }
+
+         $$9.put($$2x, a($$3x.a, $$2x, $$3x.b, $$6x));
+      });
+      return $$9;
+   }
+
+   private asw<atg> a(ajv $$0, int $$1) {
+      return () -> {
+         ajv $$2 = d($$0);
+
+         for (int $$3 = this.a.size() - 1; $$3 >= $$1; $$3--) {
+            asv.d $$4 = this.a.get($$3);
+            arq $$5 = $$4.b;
+            if ($$5 != null) {
+               asw<InputStream> $$6 = $$5.a(this.d, $$2);
+               if ($$6 != null) {
+                  return b($$6);
+               }
+            }
+
+            if ($$4.a($$2)) {
+               break;
+            }
+         }
+
+         return atg.a;
+      };
+   }
+
+   private static asw<atg> a(asw<InputStream> $$0) {
+      return () -> b($$0);
+   }
+
+   private static atg b(asw<InputStream> $$0) throws IOException {
+      atg var2;
+      try (InputStream $$1 = $$0.get()) {
+         var2 = atg.a($$1);
+      }
+
+      return var2;
+   }
+
+   private static void a(asv.d $$0, Map<ajv, asv.b> $$1) {
+      for (asv.b $$2 : $$1.values()) {
+         if ($$0.a($$2.a)) {
+            $$2.c.clear();
+         } else if ($$0.a($$2.b())) {
+            $$2.d.clear();
+         }
+      }
+   }
+
+   private void a(asv.d $$0, String $$1, Predicate<ajv> $$2, Map<ajv, asv.b> $$3) {
+      arq $$4 = $$0.b;
+      if ($$4 != null) {
+         $$4.a(this.d, this.e, $$1, ($$3x, $$4x) -> {
+            if (b($$3x)) {
+               ajv $$5 = c($$3x);
+               if (!$$2.test($$5)) {
+                  return;
+               }
+
+               $$3.computeIfAbsent($$5, asv.b::new).d.put($$4, $$4x);
+            } else {
+               if (!$$2.test($$3x)) {
+                  return;
+               }
+
+               $$3.computeIfAbsent($$3x, asv.b::new).c.add(new asv.e($$4, $$4x));
+            }
+         });
       }
    }
 
    @Override
-   public Stream<aro> b() {
-      return this.d.stream();
+   public Map<ajv, List<atc>> c(String $$0, Predicate<ajv> $$1) {
+      Map<ajv, asv.b> $$2 = Maps.newHashMap();
+
+      for (asv.d $$3 : this.a) {
+         a($$3, $$2);
+         this.a($$3, $$0, $$1, $$2);
+      }
+
+      TreeMap<ajv, List<atc>> $$4 = Maps.newTreeMap();
+
+      for (asv.b $$5 : $$2.values()) {
+         if (!$$5.c.isEmpty()) {
+            List<atc> $$6 = new ArrayList<>();
+
+            for (asv.e $$7 : $$5.c) {
+               arq $$8 = $$7.a;
+               asw<InputStream> $$9 = $$5.d.get($$8);
+               asw<atg> $$10 = $$9 != null ? a($$9) : atg.b;
+               $$6.add(a($$8, $$5.a, $$7.b, $$10));
+            }
+
+            $$4.put($$5.a, $$6);
+         }
+      }
+
+      return $$4;
    }
 
    @Override
-   public void close() {
-      this.d.forEach(aro::close);
+   public Stream<arq> b() {
+      return this.a.stream().map($$0 -> $$0.b).filter(Objects::nonNull);
+   }
+
+   static record b(ajv a, ajv b, List<asv.e> c, Map<arq, asw<InputStream>> d) {
+
+      b(ajv $$0) {
+         this($$0, asv.d($$0), new ArrayList<>(), new Object2ObjectArrayMap());
+      }
+   }
+
+   static class c extends FilterInputStream {
+      private final Supplier<String> a;
+      private boolean b;
+
+      public c(InputStream $$0, ajv $$1, String $$2) {
+         super($$0);
+         Exception $$3 = new Exception("Stacktrace");
+         this.a = () -> {
+            StringWriter $$3x = new StringWriter();
+            $$3.printStackTrace(new PrintWriter($$3x));
+            return "Leaked resource: '" + $$1 + "' loaded from pack: '" + $$2 + "'\n" + $$3x;
+         };
+      }
+
+      @Override
+      public void close() throws IOException {
+         super.close();
+         this.b = true;
+      }
+
+      @Override
+      protected void finalize() throws Throwable {
+         if (!this.b) {
+            asv.c.warn("{}", this.a.get());
+         }
+
+         super.finalize();
+      }
+   }
+
+   static record d(String a, @Nullable arq b, @Nullable Predicate<ajv> c) {
+
+      public void a(Collection<ajv> $$0) {
+         if (this.c != null) {
+            $$0.removeIf(this.c);
+         }
+      }
+
+      public boolean a(ajv $$0) {
+         return this.c != null && this.c.test($$0);
+      }
+   }
+
+   static record e(arq a, asw<InputStream> b) {
    }
 }

@@ -1,152 +1,183 @@
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.function.Consumer;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public abstract class fnl<B extends fvl.a<?>> extends fjo {
-   private static final wg v = wg.c("gui.abuseReport.report_sent_msg");
-   private static final wg w = wg.c("gui.abuseReport.sending.title").a(n.r);
-   private static final wg x = wg.c("gui.abuseReport.sent.title").a(n.r);
-   private static final wg y = wg.c("gui.abuseReport.error.title").a(n.r);
-   private static final wg z = wg.c("gui.abuseReport.send.generic_error");
-   protected static final wg a = wg.c("gui.abuseReport.send");
-   protected static final wg b = wg.c("gui.abuseReport.observed_what");
-   protected static final wg c = wg.c("gui.abuseReport.select_reason");
-   private static final wg A = wg.c("gui.abuseReport.describe");
-   protected static final wg d = wg.c("gui.abuseReport.more_comments");
-   private static final wg B = wg.c("gui.abuseReport.comments");
-   protected static final int o = 20;
-   protected static final int p = 280;
-   protected static final int q = 8;
-   private static final Logger C = LogUtils.getLogger();
-   protected final fjo r;
-   protected final fvp s;
-   protected B u;
+public class fnl {
+   public static final int a = 20;
+   private static final ffl b = new ffl(new ajv("recipe_book/page_forward"), new ajv("recipe_book/page_forward_highlighted"));
+   private static final ffl c = new ffl(new ajv("recipe_book/page_backward"), new ajv("recipe_book/page_backward_highlighted"));
+   private final List<fnn> d = Lists.newArrayListWithCapacity(20);
+   @Nullable
+   private fnn e;
+   private final fnj f = new fnj();
+   private fby g;
+   private final List<fnp> h = Lists.newArrayList();
+   private List<fno> i = ImmutableList.of();
+   private ffe j;
+   private ffe k;
+   private int l;
+   private int m;
+   private aur n;
+   @Nullable
+   private cvu<?> o;
+   @Nullable
+   private fno p;
 
-   protected fnl(wg $$0, fjo $$1, fvp $$2, B $$3) {
-      super($$0);
-      this.r = $$1;
-      this.s = $$2;
-      this.u = $$3;
+   public fnl() {
+      for (int $$0 = 0; $$0 < 20; $$0++) {
+         this.d.add(new fnn());
+      }
    }
 
-   protected feh a(int $$0, int $$1, Consumer<String> $$2) {
-      AbuseReportLimits $$3 = this.s.a().b();
-      feh $$4 = new feh(this.m, 0, 0, $$0, $$1, A, B);
-      $$4.a(this.u.g());
-      $$4.a($$3.maxOpinionCommentsLength());
-      $$4.b($$2);
-      return $$4;
+   public void a(fby $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.s.m();
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
+      }
+
+      this.j = new ffe($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new ffe($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
    }
 
-   protected void m() {
-      this.u.a(this.s).ifLeft($$0 -> {
-         CompletableFuture<?> $$1 = this.s.a().a($$0.a(), $$0.b(), $$0.c());
-         this.j.a(fiv.a(w, wf.e, () -> {
-            this.j.a(this);
-            $$1.cancel(true);
-         }));
-         $$1.handleAsync(($$0x, $$1x) -> {
-            if ($$1x == null) {
-               this.C();
-            } else {
-               if ($$1x instanceof CancellationException) {
-                  return null;
+   public void a(fnk $$0) {
+      this.h.remove($$0);
+      this.h.add($$0);
+   }
+
+   public void a(List<fno> $$0, boolean $$1) {
+      this.i = $$0;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
+      }
+
+      this.f();
+   }
+
+   private void f() {
+      int $$0 = 20 * this.m;
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         fnn $$2 = this.d.get($$1);
+         if ($$0 + $$1 < this.i.size()) {
+            fno $$3 = this.i.get($$0 + $$1);
+            $$2.a($$3, this);
+            $$2.k = true;
+         } else {
+            $$2.k = false;
+         }
+      }
+
+      this.g();
+   }
+
+   private void g() {
+      this.j.k = this.l > 1 && this.m < this.l - 1;
+      this.k.k = this.l > 1 && this.m > 0;
+   }
+
+   public void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         wi $$6 = wi.a("gui.recipebook.page", this.m + 1, this.l);
+         int $$7 = this.g.h.a($$6);
+         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
+      }
+
+      this.e = null;
+
+      for (fnn $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.k && $$8.A()) {
+            this.e = $$8;
+         }
+      }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
+   }
+
+   public void a(fdl $$0, int $$1, int $$2) {
+      if (this.g.y != null && this.e != null && !this.f.c()) {
+         $$0.a(this.g.h, this.e.e(), $$1, $$2);
+      }
+   }
+
+   @Nullable
+   public cvu<?> a() {
+      return this.o;
+   }
+
+   @Nullable
+   public fno b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.c()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
+         } else {
+            this.f.b(false);
+         }
+
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.f();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.f();
+         return true;
+      } else {
+         for (fnn $$7 : this.d) {
+            if ($$7.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$7.d();
+                  this.p = $$7.a();
+               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
+                  this.f.a(this.g, $$7.a(), $$7.C(), $$7.D(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.x());
                }
 
-               this.a($$1x);
+               return true;
             }
+         }
 
-            return null;
-         }, this.j);
-      }).ifRight($$0 -> this.a($$0.b()));
-   }
-
-   private void C() {
-      this.E();
-      this.j.a(fiv.a(x, v, wf.d, () -> this.j.a(null)));
-   }
-
-   private void a(Throwable $$0) {
-      C.error("Encountered error while sending abuse report", $$0);
-      wg $$2;
-      if ($$0.getCause() instanceof xg $$1) {
-         $$2 = $$1.b();
-      } else {
-         $$2 = z;
-      }
-
-      this.a($$2);
-   }
-
-   private void a(wg $$0) {
-      wg $$1 = $$0.f().a(n.m);
-      this.j.a(fiv.a(y, $$1, wf.k, () -> this.j.a(this)));
-   }
-
-   void D() {
-      if (this.u.b()) {
-         this.s.a(this.u.e().b());
-      }
-   }
-
-   void E() {
-      this.s.a(null);
-   }
-
-   @Override
-   public void d() {
-      if (this.u.b()) {
-         this.j.a(new fnl.a());
-      } else {
-         this.j.a(this.r);
-      }
-   }
-
-   @Override
-   public void j() {
-      this.D();
-      super.j();
-   }
-
-   class a extends fmq {
-      private static final wg c = wg.c("gui.abuseReport.discard.title").a(n.r);
-      private static final wg d = wg.c("gui.abuseReport.discard.content");
-      private static final wg o = wg.c("gui.abuseReport.discard.return");
-      private static final wg p = wg.c("gui.abuseReport.discard.draft");
-      private static final wg q = wg.c("gui.abuseReport.discard.discard");
-
-      protected a() {
-         super(c, d, d);
-      }
-
-      @Override
-      protected fhd m() {
-         fhg $$0 = fhg.d().a(8);
-         $$0.c().b();
-         fhg $$1 = $$0.a(fhg.e().a(8));
-         $$1.a(fdp.a(o, $$0x -> this.d()).a());
-         $$1.a(fdp.a(p, $$0x -> {
-            fnl.this.D();
-            this.j.a(fnl.this.r);
-         }).a());
-         $$0.a(fdp.a(q, $$0x -> {
-            fnl.this.E();
-            this.j.a(fnl.this.r);
-         }).a());
-         return $$0;
-      }
-
-      @Override
-      public void d() {
-         this.j.a(fnl.this);
-      }
-
-      @Override
-      public boolean aE_() {
          return false;
       }
+   }
+
+   public void a(List<cvu<?>> $$0) {
+      for (fnp $$1 : this.h) {
+         $$1.a($$0);
+      }
+   }
+
+   public fby d() {
+      return this.g;
+   }
+
+   public aur e() {
+      return this.n;
+   }
+
+   protected void a(Consumer<fdw> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
    }
 }

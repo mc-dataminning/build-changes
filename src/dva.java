@@ -1,71 +1,171 @@
-public class dva {
-   public static final ajs<ejv.a> a = a("temperature");
-   public static final ajs<ejv.a> b = a("vegetation");
-   public static final ajs<ejv.a> c = a("continentalness");
-   public static final ajs<ejv.a> d = a("erosion");
-   public static final ajs<ejv.a> e = a("temperature_large");
-   public static final ajs<ejv.a> f = a("vegetation_large");
-   public static final ajs<ejv.a> g = a("continentalness_large");
-   public static final ajs<ejv.a> h = a("erosion_large");
-   public static final ajs<ejv.a> i = a("ridge");
-   public static final ajs<ejv.a> j = a("offset");
-   public static final ajs<ejv.a> k = a("aquifer_barrier");
-   public static final ajs<ejv.a> l = a("aquifer_fluid_level_floodedness");
-   public static final ajs<ejv.a> m = a("aquifer_lava");
-   public static final ajs<ejv.a> n = a("aquifer_fluid_level_spread");
-   public static final ajs<ejv.a> o = a("pillar");
-   public static final ajs<ejv.a> p = a("pillar_rareness");
-   public static final ajs<ejv.a> q = a("pillar_thickness");
-   public static final ajs<ejv.a> r = a("spaghetti_2d");
-   public static final ajs<ejv.a> s = a("spaghetti_2d_elevation");
-   public static final ajs<ejv.a> t = a("spaghetti_2d_modulator");
-   public static final ajs<ejv.a> u = a("spaghetti_2d_thickness");
-   public static final ajs<ejv.a> v = a("spaghetti_3d_1");
-   public static final ajs<ejv.a> w = a("spaghetti_3d_2");
-   public static final ajs<ejv.a> x = a("spaghetti_3d_rarity");
-   public static final ajs<ejv.a> y = a("spaghetti_3d_thickness");
-   public static final ajs<ejv.a> z = a("spaghetti_roughness");
-   public static final ajs<ejv.a> A = a("spaghetti_roughness_modulator");
-   public static final ajs<ejv.a> B = a("cave_entrance");
-   public static final ajs<ejv.a> C = a("cave_layer");
-   public static final ajs<ejv.a> D = a("cave_cheese");
-   public static final ajs<ejv.a> E = a("ore_veininess");
-   public static final ajs<ejv.a> F = a("ore_vein_a");
-   public static final ajs<ejv.a> G = a("ore_vein_b");
-   public static final ajs<ejv.a> H = a("ore_gap");
-   public static final ajs<ejv.a> I = a("noodle");
-   public static final ajs<ejv.a> J = a("noodle_thickness");
-   public static final ajs<ejv.a> K = a("noodle_ridge_a");
-   public static final ajs<ejv.a> L = a("noodle_ridge_b");
-   public static final ajs<ejv.a> M = a("jagged");
-   public static final ajs<ejv.a> N = a("surface");
-   public static final ajs<ejv.a> O = a("surface_secondary");
-   public static final ajs<ejv.a> P = a("clay_bands_offset");
-   public static final ajs<ejv.a> Q = a("badlands_pillar");
-   public static final ajs<ejv.a> R = a("badlands_pillar_roof");
-   public static final ajs<ejv.a> S = a("badlands_surface");
-   public static final ajs<ejv.a> T = a("iceberg_pillar");
-   public static final ajs<ejv.a> U = a("iceberg_pillar_roof");
-   public static final ajs<ejv.a> V = a("iceberg_surface");
-   public static final ajs<ejv.a> W = a("surface_swamp");
-   public static final ajs<ejv.a> X = a("calcite");
-   public static final ajs<ejv.a> Y = a("gravel");
-   public static final ajs<ejv.a> Z = a("powder_snow");
-   public static final ajs<ejv.a> aa = a("packed_ice");
-   public static final ajs<ejv.a> ab = a("ice");
-   public static final ajs<ejv.a> ac = a("soul_sand_layer");
-   public static final ajs<ejv.a> ad = a("gravel_layer");
-   public static final ajs<ejv.a> ae = a("patch");
-   public static final ajs<ejv.a> af = a("netherrack");
-   public static final ajs<ejv.a> ag = a("nether_wart");
-   public static final ajs<ejv.a> ah = a("nether_state_selector");
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-   private static ajs<ejv.a> a(String $$0) {
-      return ajs.a(ks.aD, new ajt($$0));
+public class dva {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dpi> b = $$0 -> !$$0.i();
+   static final Predicate<dpi> c = dph.a::d;
+   private final awb d;
+   private final Predicate<dpi> e;
+   private final dre f;
+
+   public dva(dre $$0, dva.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = axm.e($$0.J_() + 1);
+      this.d = new aya($$2, 256);
    }
 
-   public static ejv a(im<ejv.a> $$0, dve $$1, ajs<ejv.a> $$2) {
-      il<ejv.a> $$3 = $$0.b($$2);
-      return ejv.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   public static void a(dre $$0, Set<dva.a> $$1) {
+      int $$2 = $$1.size();
+      ObjectList<dva> $$3 = new ObjectArrayList($$2);
+      ObjectListIterator<dva> $$4 = $$3.iterator();
+      int $$5 = $$0.b() + 16;
+      id.a $$6 = new id.a();
+
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            for (dva.a $$9 : $$1) {
+               $$3.add($$0.a($$9));
+            }
+
+            for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
+               $$6.d($$7, $$10, $$8);
+               dpi $$11 = $$0.a_($$6);
+               if (!$$11.a(dcj.a)) {
+                  while ($$4.hasNext()) {
+                     dva $$12 = (dva)$$4.next();
+                     if ($$12.e.test($$11)) {
+                        $$12.a($$7, $$8, $$10 + 1);
+                        $$4.remove();
+                     }
+                  }
+
+                  if ($$3.isEmpty()) {
+                     break;
+                  }
+
+                  $$4.back($$2);
+               }
+            }
+         }
+      }
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, dpi $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
+         return false;
+      } else {
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            id.a $$5 = new id.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
+
+            this.a($$0, $$2, this.f.I_());
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
+   }
+
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
+   }
+
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.I_();
+   }
+
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.I_());
+   }
+
+   public void a(dre $$0, dva.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements ayg {
+      a("WORLD_SURFACE_WG", dva.b.a, dva.b),
+      b("WORLD_SURFACE", dva.b.c, dva.b),
+      c("OCEAN_FLOOR_WG", dva.b.a, dva.c),
+      d("OCEAN_FLOOR", dva.b.b, dva.c),
+      e("MOTION_BLOCKING", dva.b.c, $$0 -> $$0.d() || !$$0.u().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", dva.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof dgq));
+
+      public static final Codec<dva.a> g = ayg.a(dva.a::values);
+      private final String h;
+      private final dva.b i;
+      private final Predicate<dpi> j;
+
+      private a(String $$0, dva.b $$1, Predicate<dpi> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public boolean b() {
+         return this.i == dva.b.c;
+      }
+
+      public boolean d() {
+         return this.i != dva.b.a;
+      }
+
+      public Predicate<dpi> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

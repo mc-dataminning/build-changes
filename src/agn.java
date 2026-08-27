@@ -1,36 +1,29 @@
-public class agn implements yn<afl> {
-   public static final ye<vg, agn> a = yn.a(agn::a, agn::new);
-   private static final int b = 2;
-   private final boolean c;
+public class agn implements yp<afn> {
+   public static final yg<vi, agn> a = yp.a(agn::a, agn::new);
+   private final int b;
 
-   public agn(cjq $$0) {
-      this.c = $$0.b;
+   public agn(int $$0) {
+      this.b = $$0;
    }
 
-   private agn(vg $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
+   private agn(vi $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vg $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   private void a(vi $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yp<agn> a() {
-      return afj.bH;
+   public yr<agn> a() {
+      return afl.bF;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

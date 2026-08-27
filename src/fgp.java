@@ -1,242 +1,178 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class fgp implements eul {
-   static final Logger b = LogUtils.getLogger();
-   private final evj c;
-   private final fgd<fgp.b> d;
+public class fgp implements AutoCloseable {
+   private static final axt a = axt.a();
+   private static final float b = 32.0F;
+   private final glt c;
+   private final ajv d;
+   private fgt e;
+   private fgt f;
+   private List<euu.a> g = List.of();
+   private List<euu> h = List.of();
+   private final fgm<fgt> i = new fgm<>(fgt[]::new, fgt[][]::new);
+   private final fgm<fgp.a> j = new fgm<>(fgp.a[]::new, fgp.a[][]::new);
+   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
+   private final List<fgq> l = Lists.newArrayList();
 
-   fgp(evj $$0, fgd<fgp.b> $$1) {
+   public fgp(glt $$0, ajv $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
+   public void a(List<euu.a> $$0, Set<fgo> $$1) {
+      this.g = $$0;
+      this.a($$1);
+   }
+
+   public void a(Set<fgo> $$0) {
+      this.h = List.of();
+      this.c();
+      this.h = this.b(this.g, $$0);
+   }
+
+   private void c() {
+      this.d();
+      this.i.a();
+      this.j.a();
+      this.k.clear();
+      this.e = fgv.b.bake(this::a);
+      this.f = fgv.a.bake(this::a);
+   }
+
+   private List<euu> b(List<euu.a> $$0, Set<fgo> $$1) {
+      IntSet $$2 = new IntOpenHashSet();
+      List<euu> $$3 = new ArrayList<>();
+
+      for (euu.a $$4 : $$0) {
+         if ($$4.b().a($$1)) {
+            $$3.add($$4.a());
+            $$2.addAll($$4.a().a());
+         }
+      }
+
+      Set<euu> $$5 = Sets.newHashSet();
+      $$2.forEach($$2x -> {
+         for (euu $$3x : $$3) {
+            eut $$4x = $$3x.a($$2x);
+            if ($$4x != null) {
+               $$5.add($$3x);
+               if ($$4x != fgv.b) {
+                  ((IntList)this.k.computeIfAbsent(axm.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+               }
+               break;
+            }
+         }
+      });
+      return $$3.stream().filter($$5::contains).toList();
+   }
+
    @Override
    public void close() {
-      this.c.close();
+      this.d();
    }
 
-   @Nullable
-   @Override
-   public euk a(int $$0) {
-      return this.d.a($$0);
+   private void d() {
+      for (fgq $$0 : this.l) {
+         $$0.close();
+      }
+
+      this.l.clear();
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.d.b());
-   }
-
-   public static record a(ajt c, int d, int e, int[][] f) implements fgr {
-      private static final Codec<int[][]> g = aws.b(Codec.STRING.listOf().xmap($$0 -> {
-         int $$1 = $$0.size();
-         int[][] $$2 = new int[$$1][];
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
-         }
-
-         return $$2;
-      }, $$0 -> {
-         List<String> $$1 = new ArrayList<>($$0.length);
-
-         for (int[] $$2 : $$0) {
-            $$1.add(new String($$2, 0, $$2.length));
-         }
-
-         return $$1;
-      }), fgp.a::a);
-      public static final MapCodec<fgp.a> a = aws.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ajt.a.fieldOf("file").forGetter(fgp.a::c),
-                     Codec.INT.optionalFieldOf("height", 8).forGetter(fgp.a::d),
-                     Codec.INT.fieldOf("ascent").forGetter(fgp.a::e),
-                     g.fieldOf("chars").forGetter(fgp.a::f)
-                  )
-                  .apply($$0, fgp.a::new)
-         ),
-         fgp.a::a
-      );
-
-      private static DataResult<int[][]> a(int[][] $$0) {
-         int $$1 = $$0.length;
-         if ($$1 == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
-         } else {
-            int[] $$2 = $$0[0];
-            int $$3 = $$2.length;
-            if ($$3 == 0) {
-               return DataResult.error(() -> "Expected to find data in codepoint grid");
-            } else {
-               for (int $$4 = 1; $$4 < $$1; $$4++) {
-                  int[] $$5 = $$0[$$4];
-                  if ($$5.length != $$3) {
-                     return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                              + $$5.length
-                              + " codepoints, expected: "
-                              + $$3
-                              + "), pad with \\u0000"
-                     );
-                  }
-               }
-
-               return DataResult.success($$0);
-            }
-         }
-      }
-
-      private static DataResult<fgp.a> a(fgp.a $$0) {
-         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
-      }
-
-      @Override
-      public fgs a() {
-         return fgs.a;
-      }
-
-      @Override
-      public Either<fgr.b, fgr.c> b() {
-         return Either.left(this::a);
-      }
-
-      private eul a(atc $$0) throws IOException {
-         ajt $$1 = this.c.d("textures/");
-
-         fgp var22;
-         try (InputStream $$2 = $$0.open($$1)) {
-            evj $$3 = evj.a(evj.a.a, $$2);
-            int $$4 = $$3.a();
-            int $$5 = $$3.b();
-            int $$6 = $$4 / this.f[0].length;
-            int $$7 = $$5 / this.f.length;
-            float $$8 = (float)this.d / (float)$$7;
-            fgd<fgp.b> $$9 = new fgd<>(fgp.b[]::new, fgp.b[][]::new);
-
-            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
-               int $$11 = 0;
-
-               for (int $$12 : this.f[$$10]) {
-                  int $$13 = $$11++;
-                  if ($$12 != 0) {
-                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
-                     fgp.b $$15 = $$9.a($$12, new fgp.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
-                     if ($$15 != null) {
-                        fgp.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
-                     }
-                  }
-               }
-            }
-
-            var22 = new fgp($$3, $$9);
-         }
-
-         return var22;
-      }
-
-      private int a(evj $$0, int $$1, int $$2, int $$3, int $$4) {
-         int $$5;
-         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
-            int $$6 = $$3 * $$1 + $$5;
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               int $$8 = $$4 * $$2 + $$7;
-               if ($$0.e($$6, $$8) != 0) {
-                  return $$5 + 1;
-               }
-            }
-         }
-
-         return $$5 + 1;
+   private static boolean b(eut $$0) {
+      float $$1 = $$0.a(false);
+      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
+         float $$2 = $$0.a(true);
+         return $$2 < 0.0F || $$2 > 32.0F;
+      } else {
+         return true;
       }
    }
 
-   static record b(float a, evj b, int c, int d, int e, int f, int g, int h) implements euk {
+   private fgp.a b(int $$0) {
+      eut $$1 = null;
 
-      @Override
-      public float getAdvance() {
-         return (float)this.g;
-      }
-
-      @Override
-      public fgk bake(Function<eum, fgk> $$0) {
-         return $$0.apply(new eum() {
-            @Override
-            public float d() {
-               return 1.0F / b.this.a;
+      for (euu $$2 : this.h) {
+         eut $$3 = $$2.a($$0);
+         if ($$3 != null) {
+            if ($$1 == null) {
+               $$1 = $$3;
             }
 
-            @Override
-            public int a() {
-               return b.this.e;
+            if (!b($$3)) {
+               return new fgp.a($$1, $$3);
             }
-
-            @Override
-            public int b() {
-               return b.this.f;
-            }
-
-            @Override
-            public float j() {
-               return (float)b.this.h;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
-            }
-
-            @Override
-            public boolean c() {
-               return b.this.b.c().a() > 1;
-            }
-         });
+         }
       }
 
-      public float c() {
-         return this.a;
+      return $$1 != null ? new fgp.a($$1, fgv.b) : fgp.a.c;
+   }
+
+   public eut a(int $$0, boolean $$1) {
+      return this.j.a($$0, this::b).a($$1);
+   }
+
+   private fgt c(int $$0) {
+      for (euu $$1 : this.h) {
+         eut $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2.bake(this::a);
+         }
       }
 
-      public evj d() {
-         return this.b;
+      return this.e;
+   }
+
+   public fgt a(int $$0) {
+      return this.i.a($$0, this::c);
+   }
+
+   private fgt a(euv $$0) {
+      for (fgq $$1 : this.l) {
+         fgt $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
       }
 
-      public int e() {
-         return this.c;
-      }
+      ajv $$3 = this.d.e("/" + this.l.size());
+      boolean $$4 = $$0.c();
+      fgr $$5 = $$4 ? fgr.b($$3) : fgr.a($$3);
+      fgq $$6 = new fgq($$5, $$4);
+      this.l.add($$6);
+      this.c.a($$3, $$6);
+      fgt $$7 = $$6.a($$0);
+      return $$7 == null ? this.e : $$7;
+   }
 
-      public int f() {
-         return this.d;
-      }
+   public fgt a(eut $$0) {
+      IntList $$1 = (IntList)this.k.get(axm.f($$0.a(false)));
+      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   }
 
-      public int g() {
-         return this.e;
-      }
+   public ajv a() {
+      return this.d;
+   }
 
-      public int h() {
-         return this.f;
-      }
+   public fgt b() {
+      return this.f;
+   }
 
-      public int i() {
-         return this.g;
-      }
+   static record a(eut a, eut b) {
+      static final fgp.a c = new fgp.a(fgv.b, fgv.b);
 
-      public int j() {
-         return this.h;
+      eut a(boolean $$0) {
+         return $$0 ? this.b : this.a;
       }
    }
 }

@@ -1,54 +1,148 @@
-import com.mojang.serialization.Codec;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public class dun {
-   public static enum a implements aye {
-      a("air"),
-      b("liquid");
+public class dun implements duu.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
+      }
+   });
+   private final ObjectListIterator<dun.a> h;
+   private final ObjectListIterator<egs> i;
 
-      public static final Codec<dun.a> c = aye.a(dun.a::values);
-      private final String d;
+   public static dun a(czz $$0, cyn $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dun.a> $$4 = new ObjectArrayList(10);
+      ObjectList<egs> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != egb.a).forEach($$5x -> {
+         egb $$6 = $$5x.h().d();
 
-      private a(String $$0) {
-         this.d = $$0;
+         for (efu $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof efm) {
+                  efm $$8 = (efm)$$7;
+                  egz.a $$9 = $$8.b().e();
+                  if ($$9 == egz.a.b) {
+                     $$4.add(new dun.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (egs $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new dun.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new dun($$4.iterator(), $$5.iterator());
+   }
+
+   @VisibleForTesting
+   public dun(ObjectListIterator<dun.a> $$0, ObjectListIterator<egs> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public double a(dut.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         dun.a $$5 = (dun.a)this.h.next();
+         efi $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a($$8, $$12, $$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+         };
       }
 
-      public String a() {
-         return this.d;
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         egs $$13 = (egs)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
+   }
+
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
+   }
+
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
+   }
+
+   private static double a(int $$0, int $$1, int $$2) {
+      double $$3 = axm.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
+      return axm.a($$3, 0.0, 6.0, 1.0, 0.0);
+   }
+
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = axm.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * axm.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
       }
    }
 
-   public static enum b implements aye {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
+   }
 
-      public static final Codec<dun.b> l = aye.a(dun.b::values);
-      private final String m;
+   private static double b(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
 
-      private b(String $$0) {
-         this.m = $$0;
-      }
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = axm.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
 
-      public String a() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.m;
-      }
+   @VisibleForTesting
+   public static record a(efi a, egb b, int c) {
    }
 }

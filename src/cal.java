@@ -1,30 +1,36 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
-public class cal extends cax<bqo> {
+public class cal extends cav<cic> {
+   public static final int a = 24;
+
    @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.of(bzr.x, bzr.y);
+   public Set<bzw<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bzw.B)));
+   }
+
+   protected void a(apu $$0, cic $$1) {
+      super.a($$0, $$1);
+      $$1.dP()
+         .c(bzw.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bqf.e)
+         .filter($$1x -> cbc.c($$1, $$1x))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.dP().a(bzw.B, $$1x), () -> $$1.dP().b(bzw.B));
    }
 
    @Override
-   protected void a(aps $$0, bqo $$1) {
-      brp<?> $$2 = $$1.dP();
-      bot $$3 = $$1.ez();
-      if ($$3 != null) {
-         $$2.a(bzr.x, $$1.ez());
-         bpv $$4 = $$3.d();
-         if ($$4 instanceof bqo) {
-            $$2.a(bzr.y, (bqo)$$4);
-         }
-      } else {
-         $$2.b(bzr.x);
-      }
+   protected int b() {
+      return 24;
+   }
 
-      $$2.c(bzr.y).ifPresent($$2x -> {
-         if (!$$2x.bA() || $$2x.dM() != $$0) {
-            $$2.b(bzr.y);
-         }
-      });
+   @Override
+   protected int c() {
+      return 24;
    }
 }

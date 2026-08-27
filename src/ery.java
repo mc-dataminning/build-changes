@@ -1,26 +1,25 @@
-public abstract class ery {
-   protected final esa a;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
-   protected ery(esa $$0) {
+public class ery extends Exception {
+   private final Path a;
+   private final List<esa> b;
+
+   public ery(Path $$0, List<esa> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public double a(bpv $$0) {
-      double $$1 = this.a.c - $$0.dr();
-      double $$2 = this.a.d - $$0.dt();
-      double $$3 = this.a.e - $$0.dx();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   @Override
+   public String getMessage() {
+      return a(this.a, this.b);
    }
 
-   public abstract ery.a c();
-
-   public esa e() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   public static String a(Path $$0, List<esa> $$1) {
+      return "Failed to validate '"
+         + $$0
+         + "'. Found forbidden symlinks: "
+         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
    }
 }

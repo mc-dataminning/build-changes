@@ -1,31 +1,46 @@
-public class ctc extends cre {
-   private static final int a = 10;
+public class ctc extends ctf {
+   public ctc(cte $$0, crn.a $$1) {
+      super($$0, $$1);
+   }
 
-   public ctc(cre.a $$0) {
-      super($$0);
+   public static cui a(cte $$0, int $$1, float $$2) {
+      return cui.a()
+         .a(bsa.c, new bry(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), bry.a.a), bqi.b)
+         .a(bsa.e, new bry(f, "Weapon modifier", (double)$$2, bry.a.a), bqi.b)
+         .a();
    }
 
    @Override
-   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
-      if (!$$0.x_()) {
-         esa $$3 = new esa($$1.dk().a(), $$1.dv(), $$1.dk().c()).e($$1.bK().a(0.8F));
-         if (!$$0.a_(ib.a($$3)).r()) {
-            $$3 = new esa($$1.dk().a(), $$1.dv(), $$1.dk().c()).e($$1.bK().a(0.05F));
-         }
+   public boolean a(dpi $$0, czg $$1, id $$2, cka $$3) {
+      return !$$3.f();
+   }
 
-         cld $$4 = new cld($$1, $$0, $$3.a(), $$3.b(), $$3.c());
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   @Override
+   public float a(crs $$0, dpi $$1) {
+      if ($$1.a(dcj.bs)) {
+         return 15.0F;
+      } else {
+         return $$1.a(ave.bE) ? 1.5F : 1.0F;
+      }
+   }
+
+   @Override
+   public boolean a(crs $$0, bqt $$1, bqt $$2) {
+      $$0.a(1, $$2, bqh.a);
+      return true;
+   }
+
+   @Override
+   public boolean a(crs $$0, czg $$1, dpi $$2, id $$3, bqt $$4) {
+      if ($$2.h($$1, $$3) != 0.0F) {
+         $$0.a(2, $$4, bqh.a);
       }
 
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aum.BU, aun.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      crj $$5 = $$1.b($$2);
-      $$1.gu().a(this, 10);
-      $$1.b(auw.c.b(this));
-      if (!$$1.f()) {
-         $$5.g(1);
-      }
+      return true;
+   }
 
-      return bob.a($$5, $$0.x_());
+   @Override
+   public boolean a_(dpi $$0) {
+      return $$0.a(dcj.bs);
    }
 }

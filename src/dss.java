@@ -1,19 +1,106 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public record dss(il<dsr> e, dqw f) {
-   public static final Codec<dss> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dsr.j.fieldOf("type").forGetter(dss::a), dqw.a.fieldOf("generator").forGetter(dss::b)).apply($$0, $$0.stable(dss::new))
-   );
-   public static final ajs<dss> b = ajs.a(ks.aP, new ajt("overworld"));
-   public static final ajs<dss> c = ajs.a(ks.aP, new ajt("the_nether"));
-   public static final ajs<dss> d = ajs.a(ks.aP, new ajt("the_end"));
+public final class dss implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<dsr> c = new Long2ObjectLinkedOpenHashMap();
+   private final dsu d;
+   private final Path e;
+   private final boolean f;
 
-   public il<dsr> a() {
-      return this.e;
+   dss(dsu $$0, Path $$1, boolean $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.d = $$0;
    }
 
-   public dqw b() {
-      return this.f;
+   private dsr b(cyn $$0) throws IOException {
+      long $$1 = cyn.c($$0.h(), $$0.i());
+      dsr $$2 = (dsr)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         if (this.c.size() >= 256) {
+            ((dsr)this.c.removeLast()).close();
+         }
+
+         v.c(this.e);
+         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         dsr $$4 = new dsr(this.d, $$3, this.e, this.f);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
+      }
+   }
+
+   @Nullable
+   public to a(cyn $$0) throws IOException {
+      dsr $$1 = this.b($$0);
+
+      to var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = ub.a($$2);
+      }
+
+      return var4;
+   }
+
+   public void a(cyn $$0, ui $$1) throws IOException {
+      dsr $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            ub.a((DataInput)$$3, $$1, tx.a());
+         }
+      }
+   }
+
+   protected void a(cyn $$0, @Nullable to $$1) throws IOException {
+      dsr $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
+      } else {
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            ub.a($$1, (DataOutput)$$3);
+         }
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      awt<IOException> $$0 = new awt<>();
+      ObjectIterator var2 = this.c.values().iterator();
+
+      while (var2.hasNext()) {
+         dsr $$1 = (dsr)var2.next();
+
+         try {
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
+         }
+      }
+
+      $$0.a();
+   }
+
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
+
+      while (var1.hasNext()) {
+         dsr $$0 = (dsr)var1.next();
+         $$0.b();
+      }
    }
 }

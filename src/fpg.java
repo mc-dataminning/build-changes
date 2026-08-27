@@ -1,29 +1,21 @@
-import java.util.function.Function;
+import com.google.common.base.MoreObjects;
+import java.util.List;
 
-public abstract class fpg<E extends bpv> extends fqv<E> {
-   private final float a;
-   private final float b;
+public class fpg {
+   public static final int a = -1;
+   private final List<fpe> b;
+   private final int c;
 
-   public fpg(float $$0, float $$1) {
-      this($$0, $$1, gah::e);
+   public fpg(List<fpe> $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fpg(float $$0, float $$1, Function<ajt, gah> $$2) {
-      super($$2);
-      this.b = $$1;
-      this.a = $$0;
+   public fpe a(int $$0) {
+      return $$0 >= 0 && $$0 < this.b.size() ? (fpe)MoreObjects.firstNonNull(this.b.get($$0), fpc.a) : fpc.a;
    }
 
-   @Override
-   public void a(ewi $$0, ewm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   public int a() {
+      return this.c;
    }
 }

@@ -1,95 +1,81 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class akh {
+public class akh extends ati {
    private static final Logger a = LogUtils.getLogger();
-   private static final ajt b = new ajt("tick");
-   private static final ajt c = new ajt("load");
-   private final MinecraftServer d;
-   private List<hf<du>> e = ImmutableList.of();
-   private boolean f;
-   private akg g;
+   private static final Gson b = new GsonBuilder().create();
+   private Map<ajv, af> c = Map.of();
+   private ak d = new ak();
+   private final ip.a e;
+   private final enn f;
 
-   public akh(MinecraftServer $$0, akg $$1) {
-      this.d = $$0;
-      this.g = $$1;
-      this.b($$1);
+   public akh(ip.a $$0, enn $$1) {
+      super(b, "advancements");
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public CommandDispatcher<du> a() {
-      return this.d.aH().a();
-   }
-
-   public void b() {
-      if (this.d.aR().i()) {
-         if (this.f) {
-            this.f = false;
-            Collection<hf<du>> $$0 = this.g.b(c);
-            this.a($$0, c);
+   protected void a(Map<ajv, JsonElement> $$0, ate $$1, bkt $$2) {
+      ajt<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
+      Builder<ajv, af> $$4 = ImmutableMap.builder();
+      $$0.forEach(($$2x, $$3x) -> {
+         try {
+            ae $$4x = ac.a(ae.a.parse($$3, $$3x), JsonParseException::new);
+            this.a($$2x, $$4x);
+            $$4.put($$2x, new af($$2x, $$4x));
+         } catch (Exception var6x) {
+            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
          }
+      });
+      this.c = $$4.buildOrThrow();
+      ak $$5 = new ak();
+      $$5.a(this.c.values());
 
-         this.a(this.e, b);
+      for (ag $$6 : $$5.b()) {
+         if ($$6.b().b().c().isPresent()) {
+            as.a($$6);
+         }
+      }
+
+      this.d = $$5;
+   }
+
+   private void a(ajv $$0, ae $$1) {
+      axr.a $$2 = new axr.a();
+      $$1.a($$2, this.f);
+      Multimap<String, String> $$3 = $$2.a();
+      if (!$$3.isEmpty()) {
+         String $$4 = $$3.asMap()
+            .entrySet()
+            .stream()
+            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
+            .collect(Collectors.joining("\n"));
+         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
       }
    }
 
-   private void a(Collection<hf<du>> $$0, ajt $$1) {
-      this.d.aU().a($$1::toString);
-
-      for (hf<du> $$2 : $$0) {
-         this.a($$2, this.c());
-      }
-
-      this.d.aU().c();
+   @Nullable
+   public af a(ajv $$0) {
+      return this.c.get($$0);
    }
 
-   public void a(hf<du> $$0, du $$1) {
-      bko $$2 = this.d.aU();
-      $$2.a(() -> "function " + $$0.a());
-
-      try {
-         hh<du> $$3 = $$0.a(null, this.a());
-         dv.a($$1, $$2x -> gs.a($$2x, $$3, $$1, dr.a));
-      } catch (dx var9) {
-      } catch (Exception var10) {
-         a.warn("Failed to execute function {}", $$0.a(), var10);
-      } finally {
-         $$2.c();
-      }
+   public ak a() {
+      return this.d;
    }
 
-   public void a(akg $$0) {
-      this.g = $$0;
-      this.b($$0);
-   }
-
-   private void b(akg $$0) {
-      this.e = ImmutableList.copyOf($$0.b(b));
-      this.f = true;
-   }
-
-   public du c() {
-      return this.d.aI().a(2).a();
-   }
-
-   public Optional<hf<du>> a(ajt $$0) {
-      return this.g.a($$0);
-   }
-
-   public Collection<hf<du>> b(ajt $$0) {
-      return this.g.b($$0);
-   }
-
-   public Iterable<ajt> d() {
-      return this.g.a().keySet();
-   }
-
-   public Iterable<ajt> e() {
-      return this.g.b();
+   public Collection<af> b() {
+      return this.c.values();
    }
 }

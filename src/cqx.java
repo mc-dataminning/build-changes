@@ -1,73 +1,51 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cqx extends cpy {
-   protected static final Map<dby, Pair<Predicate<cuq>, Consumer<cuq>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         dca.i,
-         Pair.of(cqx::b, b(dca.cC.n())),
-         dca.kE,
-         Pair.of(cqx::b, b(dca.cC.n())),
-         dca.j,
-         Pair.of(cqx::b, b(dca.cC.n())),
-         dca.k,
-         Pair.of(cqx::b, b(dca.j.n())),
-         dca.sH,
-         Pair.of((Predicate<cuq>)$$0 -> true, a(dca.j.n(), crm.dN))
-      )
-   );
+public class cqx extends crn {
+   public static final byte[] a = new byte[]{1, 2, 3};
+   public static final double b = 0.15;
 
-   public cqx(csv $$0, cre.a $$1) {
-      super($$0, avc.bB, $$1);
+   public cqx(crn.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boa a(cuq $$0) {
-      cyx $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      Pair<Predicate<cuq>, Consumer<cuq>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return boa.d;
-      } else {
-         Predicate<cuq> $$4 = (Predicate<cuq>)$$3.getFirst();
-         Consumer<cuq> $$5 = (Consumer<cuq>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            cjt $$6 = $$0.o();
-            $$1.a($$6, $$2, aum.lY, aun.e, 1.0F, 1.0F);
-            if (!$$1.B) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, bqo.d($$0.p()));
-               }
-            }
+   public bof a(cuz $$0) {
+      czg $$1 = $$0.q();
+      if (!$$1.B) {
+         crs $$2 = $$0.n();
+         esj $$3 = $$0.l();
+         ij $$4 = $$0.k();
+         ckn $$5 = new ckn($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
+         $$1.b($$5);
+         $$2.g(1);
+      }
 
-            return boa.a($$1.B);
-         } else {
-            return boa.d;
+      return bof.a($$1.B);
+   }
+
+   @Override
+   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
+      if ($$1.fB()) {
+         crs $$3 = $$1.b($$2);
+         if (!$$0.B) {
+            ckn $$4 = new ckn($$0, $$3, $$1);
+            $$0.b($$4);
+            $$3.a(1, $$1);
+            $$1.b(auz.c.b(this));
          }
+
+         return bog.a($$1.b($$2), $$0.x_());
+      } else {
+         return bog.c($$1.b($$2));
       }
    }
 
-   public static Consumer<cuq> b(doz $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(dts.c, $$1.a(), dts.a.a($$1.o(), $$0));
-      };
-   }
-
-   public static Consumer<cuq> a(doz $$0, cyw $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(dts.c, $$2.a(), dts.a.a($$2.o(), $$0));
-         dby.a($$2.q(), $$2.a(), $$2.k(), new crj($$1));
-      };
-   }
-
-   public static boolean b(cuq $$0) {
-      return $$0.k() != ih.a && $$0.q().a_($$0.a().c()).i();
+   @Override
+   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
+      cuh $$4 = $$0.a(jr.K);
+      if ($$4 != null) {
+         $$4.a($$2::add, $$3);
+      }
    }
 }

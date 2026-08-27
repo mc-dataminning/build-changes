@@ -1,37 +1,32 @@
-public class ady implements yn<aay> {
-   public static final ye<vg, ady> a = yn.a(ady::a, ady::new);
+import javax.annotation.Nullable;
+
+public class ady implements yp<aba> {
+   public static final yg<vi, ady> a = yp.a(ady::a, ady::new);
    private final int b;
-   private final int c;
 
-   public ady(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ady(bqa $$0) {
+      this.b = $$0.aj();
    }
 
-   private ady(vg $$0) {
+   private ady(vi $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
    }
 
-   private void a(vg $$0) {
+   private void a(vi $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
    }
 
    @Override
-   public yp<ady> a() {
-      return afj.ay;
+   public yr<ady> a() {
+      return afl.aw;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Nullable
+   public bqa a(czg $$0) {
+      return $$0.a(this.b);
    }
 }

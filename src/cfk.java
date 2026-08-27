@@ -1,61 +1,124 @@
-public class cfk extends cfa {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final cbe f = cbe.a().a(150.0);
-   private final cbe g;
-   private int h;
+import javax.annotation.Nullable;
 
-   public cfk(cex $$0) {
+public class cfk extends cfg {
+   private static final cbj b = cbj.a().d();
+   @Nullable
+   private elp c;
+   @Nullable
+   private esj d;
+   private boolean e;
+
+   public cfk(cfe $$0) {
       super($$0);
-      this.g = cbe.a().a(20.0).a($$1 -> Math.abs($$1.dt() - $$0.dt()) <= 10.0);
+   }
+
+   @Override
+   public cfu<cfk> i() {
+      return cfu.a;
    }
 
    @Override
    public void c() {
-      this.h++;
-      bqo $$0 = this.a.dM().a(this.g, this.a, this.a.dr(), this.a.dt(), this.a.dx());
-      if ($$0 != null) {
-         if (this.h > 25) {
-            this.a.gk().a(cfn.h);
-         } else {
-            esa $$1 = new esa($$0.dr() - this.a.dr(), 0.0, $$0.dx() - this.a.dx()).d();
-            esa $$2 = new esa((double)axk.a(this.a.dC() * (float) (Math.PI / 180.0)), 0.0, (double)(-axk.b(this.a.dC() * (float) (Math.PI / 180.0)))).d();
-            float $$3 = (float)$$2.b($$1);
-            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$4 < 0.0F || $$4 > 10.0F) {
-               double $$5 = $$0.dr() - this.a.e.dr();
-               double $$6 = $$0.dx() - this.a.e.dx();
-               double $$7 = axk.a(axk.d(180.0 - axk.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dC()), -100.0, 100.0);
-               this.a.ca *= 0.8F;
-               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
-               float $$9 = $$8;
-               if ($$8 > 40.0F) {
-                  $$8 = 40.0F;
-               }
-
-               this.a.ca += (float)$$7 * (0.7F / $$8 / $$9);
-               this.a.r(this.a.dC() + this.a.ca);
-            }
-         }
-      } else if (this.h >= 100) {
-         $$0 = this.a.dM().a(f, this.a, this.a.dr(), this.a.dt(), this.a.dx());
-         this.a.gk().a(cfn.e);
-         if ($$0 != null) {
-            this.a.gk().a(cfn.i);
-            this.a.gk().b(cfn.i).a(new esa($$0.dr(), $$0.dt(), $$0.dx()));
-         }
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+         this.j();
       }
    }
 
    @Override
    public void d() {
-      this.h = 0;
+      this.c = null;
+      this.d = null;
+   }
+
+   @Nullable
+   @Override
+   public esj g() {
+      return this.d;
+   }
+
+   private void j() {
+      if (this.c != null && this.c.c()) {
+         id $$0 = this.a.dM().a(dva.a.f, new id(dyd.a(this.a.r())));
+         int $$1 = this.a.gl() == null ? 0 : this.a.gl().e();
+         if (this.a.ei().a($$1 + 3) == 0) {
+            this.a.gk().a(cfu.c);
+            return;
+         }
+
+         cka $$2 = this.a.dM().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+         double $$3;
+         if ($$2 != null) {
+            $$3 = $$0.b($$2.dk()) / 512.0;
+         } else {
+            $$3 = 64.0;
+         }
+
+         if ($$2 != null && (this.a.ei().a((int)($$3 + 2.0)) == 0 || this.a.ei().a($$1 + 2) == 0)) {
+            this.a($$2);
+            return;
+         }
+      }
+
+      if (this.c == null || this.c.c()) {
+         int $$5 = this.a.y();
+         int $$6 = $$5;
+         if (this.a.ei().a(8) == 0) {
+            this.e = !this.e;
+            $$6 = $$5 + 6;
+         }
+
+         if (this.e) {
+            $$6++;
+         } else {
+            $$6--;
+         }
+
+         if (this.a.gl() != null && this.a.gl().e() >= 0) {
+            $$6 %= 12;
+            if ($$6 < 0) {
+               $$6 += 12;
+            }
+         } else {
+            $$6 -= 12;
+            $$6 &= 7;
+            $$6 += 12;
+         }
+
+         this.c = this.a.a($$5, $$6, null);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+   }
+
+   private void a(cka $$0) {
+      this.a.gk().a(cfu.b);
+      this.a.gk().b(cfu.b).a($$0);
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         ji $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.ei().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new esj($$1, $$3, $$2);
+      }
    }
 
    @Override
-   public cfn<cfk> i() {
-      return cfn.g;
+   public void a(cfd $$0, id $$1, boy $$2, @Nullable cka $$3) {
+      if ($$3 != null && this.a.c($$3)) {
+         this.a($$3);
+      }
    }
 }

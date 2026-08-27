@@ -1,30 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public class dzc extends dxv<ear> {
-   public dzc(Codec<ear> $$0) {
+public class dzc extends dye<eav> {
+   public dzc(Codec<eav> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dxx<ear> $$0) {
-      ear $$1 = $$0.f();
-      czs $$2 = $$0.b();
-      ib $$3 = $$0.e();
-      doz $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof deg) {
-            if (!$$2.u($$3.c())) {
-               return false;
-            }
+   public boolean a(dyg<eav> $$0) {
+      eav $$1 = $$0.f();
+      axt $$2 = $$0.d();
+      id $$3 = $$0.e();
+      dab $$4 = $$0.b();
+      int $$5 = 0;
+      id.a $$6 = new id.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-            deg.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return $$5 > 0;
    }
 }

@@ -1,29 +1,45 @@
-public record afa(float b, boolean c) implements yn<aay> {
-   public static final ye<vg, afa> a = yn.a(afa::a, afa::new);
+public class afa implements yp<aba> {
+   public static final yg<vi, afa> a = yp.a(afa::a, afa::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   private afa(vg $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+   public afa(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static afa a(bol $$0) {
-      return new afa($$0.f(), $$0.l());
+   private afa(vi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
    }
 
-   private void a(vg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vi $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public yp<afa> a() {
-      return afj.cd;
+   public yr<afa> a() {
+      return afl.aY;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

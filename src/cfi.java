@@ -1,30 +1,56 @@
-public class cfi extends cfa {
-   private static final int b = 40;
-   private int c;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public cfi(cex $$0) {
+public class cfi extends cfg {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   @Nullable
+   private esj d;
+   private int e;
+
+   public cfi(cfe $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), aum.hZ, this.a.db(), 2.5F, 0.8F + this.a.ei().i() * 0.3F, false);
-   }
-
-   @Override
    public void c() {
-      if (this.c++ >= 40) {
-         this.a.gk().a(cfn.f);
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gk().a(cfu.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gk().a(cfu.a);
+      } else {
+         double $$0 = this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+            this.e++;
+         }
       }
    }
 
    @Override
    public void d() {
-      this.c = 0;
+      this.d = null;
+      this.e = 0;
+   }
+
+   public void a(esj $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public cfn<cfi> i() {
-      return cfn.h;
+   public float f() {
+      return 3.0F;
+   }
+
+   @Nullable
+   @Override
+   public esj g() {
+      return this.d;
+   }
+
+   @Override
+   public cfu<cfi> i() {
+      return cfu.i;
    }
 }

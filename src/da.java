@@ -1,27 +1,34 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class da extends cx<da.a> {
-   @Override
-   public Codec<da.a> a() {
-      return da.a.a;
-   }
+public record da(Map<cot, cc> b) {
+   public static final Codec<da> a = Codec.unboundedMap(cou.a, cc.a).xmap(da::new, da::a);
 
-   public void a(apt $$0) {
-      this.a($$0, $$0x -> true);
-   }
-
-   public static record a(Optional<bc> b) implements cx.a {
-      public static final Codec<da.a> a = RecordCodecBuilder.create($$0 -> $$0.group(aws.a(br.b, "player").forGetter(da.a::a)).apply($$0, da.a::new));
-
-      public static an<da.a> a(br.a $$0) {
-         return am.U.a(new da.a(Optional.of(br.a($$0))));
+   public boolean a(bqa $$0) {
+      for (Entry<cot, cc> $$1 : this.b.entrySet()) {
+         if (!a($$0, $$1.getValue(), $$1.getKey().a())) {
+            return false;
+         }
       }
 
-      @Override
-      public Optional<bc> a() {
-         return this.b;
+      return true;
+   }
+
+   private static boolean a(bqa $$0, cc $$1, IntList $$2) {
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         int $$4 = $$2.getInt($$3);
+         brk $$5 = $$0.a_($$4);
+         if ($$1.a($$5.a())) {
+            return true;
+         }
       }
+
+      return false;
+   }
+
+   public Map<cot, cc> a() {
+      return this.b;
    }
 }

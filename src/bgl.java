@@ -1,90 +1,19 @@
-import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class bgl extends Schema {
-   public bgl(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bgl extends DataFix {
+   private final String a;
+   private final TypeReference b;
+
+   public bgl(Schema $$0, String $$1, TypeReference $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   protected static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("ArmorItems", DSL.list(bfa.t.in($$0)), "HandItems", DSL.list(bfa.t.in($$0)), "body_armor_item", bfa.t.in($$0));
-   }
-
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "ArmorStand");
-      a($$0, $$1, "Creeper");
-      a($$0, $$1, "Skeleton");
-      a($$0, $$1, "Spider");
-      a($$0, $$1, "Giant");
-      a($$0, $$1, "Zombie");
-      a($$0, $$1, "Slime");
-      a($$0, $$1, "Ghast");
-      a($$0, $$1, "PigZombie");
-      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bfa.A.in($$0), a($$0)));
-      a($$0, $$1, "CaveSpider");
-      a($$0, $$1, "Silverfish");
-      a($$0, $$1, "Blaze");
-      a($$0, $$1, "LavaSlime");
-      a($$0, $$1, "EnderDragon");
-      a($$0, $$1, "WitherBoss");
-      a($$0, $$1, "Bat");
-      a($$0, $$1, "Witch");
-      a($$0, $$1, "Endermite");
-      a($$0, $$1, "Guardian");
-      a($$0, $$1, "Pig");
-      a($$0, $$1, "Sheep");
-      a($$0, $$1, "Cow");
-      a($$0, $$1, "Chicken");
-      a($$0, $$1, "Squid");
-      a($$0, $$1, "Wolf");
-      a($$0, $$1, "MushroomCow");
-      a($$0, $$1, "SnowMan");
-      a($$0, $$1, "Ozelot");
-      a($$0, $$1, "VillagerGolem");
-      $$0.register(
-         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(bfa.t.in($$0)), "ArmorItem", bfa.t.in($$0), "SaddleItem", bfa.t.in($$0), a($$0))
-      );
-      a($$0, $$1, "Rabbit");
-      $$0.register(
-         $$1,
-         "Villager",
-         $$1x -> DSL.optionalFields(
-               "Inventory",
-               DSL.list(bfa.t.in($$0)),
-               "Offers",
-               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", bfa.t.in($$0), "buyB", bfa.t.in($$0), "sell", bfa.t.in($$0)))),
-               a($$0)
-            )
-      );
-      a($$0, $$1, "Shulker");
-      $$0.registerSimple($$1, "AreaEffectCloud");
-      $$0.registerSimple($$1, "ShulkerBullet");
-      return $$1;
-   }
-
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bfa.f,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(DSL.optionalFields("nbt", bfa.y.in($$0))),
-               "blocks",
-               DSL.list(DSL.optionalFields("nbt", bfa.s.in($$0))),
-               "palette",
-               DSL.list(bfa.u.in($$0))
-            )
-      );
-      $$0.registerType(false, bfa.u, DSL::remainder);
-      $$0.registerType(false, bfa.v, DSL::remainder);
+   protected TypeRewriteRule makeRule() {
+      return this.writeAndRead(this.a, this.getInputSchema().getType(this.b), this.getOutputSchema().getType(this.b));
    }
 }

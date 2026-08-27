@@ -1,95 +1,73 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gri implements grn {
+   private static final int a = 6000;
+   private static final wi b = wi.c("tutorial.find_tree.title");
+   private static final wi c = wi.c("tutorial.find_tree.description");
+   private final grm d;
+   private fgj e;
+   private int f;
 
-public class gri {
-   static final Logger a = LogUtils.getLogger();
-   final fjo b;
-   volatile boolean c;
-   @Nullable
-   ve d;
-
-   public gri(fjo $$0) {
-      this.b = $$0;
+   public gri(grm $$0) {
+      this.d = $$0;
    }
 
-   public void a(final exp $$0, fvy $$1) {
-      final fbp $$2 = fbp.Q();
-      $$2.aT();
-      $$2.aY().c(wg.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (gri.this.c) {
-                  return;
-               }
-
-               gri.this.d = ve.a($$0, $$2.m.az(), $$2.aP().n());
-               if (gri.this.c) {
-                  return;
-               }
-
-               fug $$1 = new fug(gri.this.d, $$2, $$0.e($$3), gri.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.m == exp.d.b) {
-                  $$1.a($$0.o);
-               }
-
-               if (gri.this.c) {
-                  return;
-               }
-
-               gri.this.d.a($$3, $$4, $$1);
-               if (gri.this.c) {
-                  return;
-               }
-
-               gri.this.d.a(new aia($$2.X().c(), $$2.X().b()));
-               $$2.a(fvm.a($$0));
-               $$2.bc().a(fzj.c.c, String.valueOf($$0.a), $$0.c);
-               $$2.ae().a(gri.this.d, goc.c.b);
-            } catch (Exception var5) {
-               $$2.ae().i();
-               if (gri.this.c) {
-                  return;
-               }
-
-               gri.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               grh $$5 = new grh(gri.this.b, wf.r, wg.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gro.f);
+      } else {
+         if (this.f == 1) {
+            fzk $$0 = this.d.e().s;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(gro.e);
+               return;
             }
          }
-      }).start();
-   }
 
-   public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(wg.c("disconnect.genericReason"));
-         this.d.n();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
-         } else {
-            this.d.n();
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new fgj(fgj.a.c, b, c, false);
+            this.d.e().aA().a(this.e);
          }
       }
+   }
+
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void a(fuq $$0, esh $$1) {
+      if ($$1.c() == esh.a.b) {
+         dpi $$2 = $$0.a_(((esf)$$1).a());
+         if ($$2.a(ave.aj)) {
+            this.d.a(gro.c);
+         }
+      }
+   }
+
+   @Override
+   public void a(crs $$0) {
+      if ($$0.a(avm.al)) {
+         this.d.a(gro.e);
+      }
+   }
+
+   private static boolean b(fzk $$0) {
+      return $$0.fZ().a_($$0x -> $$0x.a(avm.al));
+   }
+
+   public static boolean a(fzk $$0) {
+      for (in<dch> $$1 : kt.e.c(ave.aj)) {
+         dch $$2 = $$1.a();
+         if ($$0.j().a(auz.a.b($$2)) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

@@ -1,32 +1,29 @@
-import javax.annotation.Nullable;
-
-public class adw implements yn<aay> {
-   public static final ye<vg, adw> a = yn.a(adw::a, adw::new);
+public class adw implements yp<aba> {
+   public static final yg<vi, adw> a = yp.a(adw::a, adw::new);
    private final int b;
 
-   public adw(bpv $$0) {
-      this.b = $$0.aj();
+   public adw(dqz $$0) {
+      this.b = $$0.q();
    }
 
-   private adw(vg $$0) {
+   private adw(vi $$0) {
       this.b = $$0.l();
    }
 
-   private void a(vg $$0) {
+   private void a(vi $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public yp<adw> a() {
-      return afj.aw;
+   public yr<adw> a() {
+      return afl.au;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bpv a(cyx $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 }

@@ -1,18 +1,13 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 
-public class cam extends cax<bqo> {
+public class cam extends cbc<bqt> {
    @Override
-   public Set<bzr<?>> a() {
-      return ImmutableSet.of(bzr.X);
+   protected void a(apu $$0, bqt $$1) {
    }
 
    @Override
-   protected void a(aps $$0, bqo $$1) {
-      if ($$1.bc()) {
-         $$1.dP().a(bzr.X, aym.a);
-      } else {
-         $$1.dP().b(bzr.X);
-      }
+   public Set<bzw<?>> a() {
+      return ImmutableSet.of();
    }
 }

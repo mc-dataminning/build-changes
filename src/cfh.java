@@ -1,26 +1,20 @@
-import javax.annotation.Nullable;
+public abstract class cfh extends cfg {
+   public cfh(cfe $$0) {
+      super($$0);
+   }
 
-public interface cfh {
-   boolean a();
+   @Override
+   public boolean a() {
+      return true;
+   }
 
-   void b();
-
-   void c();
-
-   void a(cew var1, ib var2, bot var3, @Nullable cjt var4);
-
-   void d();
-
-   void e();
-
-   float f();
-
-   float h();
-
-   cfn<? extends cfh> i();
-
-   @Nullable
-   esa g();
-
-   float a(bot var1, float var2);
+   @Override
+   public float a(boy $$0, float $$1) {
+      if ($$0.c() instanceof ckg) {
+         $$0.c().g(1);
+         return 0.0F;
+      } else {
+         return super.a($$0, $$1);
+      }
+   }
 }

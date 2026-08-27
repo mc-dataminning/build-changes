@@ -1,111 +1,29 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dxr {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
+public record dxr<FC extends eai, F extends dye<FC>>(F d, FC e) {
+   public static final Codec<dxr<?, ?>> a = kt.Q.q().dispatch($$0 -> $$0.d, dye::a);
+   public static final Codec<in<dxr<?, ?>>> b = ajr.a(ku.az, a);
+   public static final Codec<ir<dxr<?, ?>>> c = jc.a(ku.az, a);
 
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+   public boolean a(dab $$0, drf $$1, axt $$2, id $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
    }
 
-   protected static boolean a(czs $$0, ib $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
-
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(axk.b($$5) * (float)$$2);
-            int $$7 = (int)(axk.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   public Stream<dxr<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
-   protected static boolean a(cyy $$0, ib $$1) {
-      return $$0.a($$1, dxr::c);
+   @Override
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
    }
 
-   protected static boolean b(cyy $$0, ib $$1) {
-      return $$0.a($$1, dxr::e);
+   public F b() {
+      return this.d;
    }
 
-   protected static void a(ih $$0, int $$1, boolean $$2, Consumer<doz> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dpw.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dpw.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dpw.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dpw.a : dpw.b));
-      }
-   }
-
-   protected static void a(cyy $$0, ib $$1, ih $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         ib.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dca.st)) {
-               $$3x = $$3x.a(dhp.d, Boolean.valueOf($$0.z($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(cyy $$0, ib $$1) {
-      doz $$2 = $$0.a_($$1);
-      if ($$2.a(avc.bs)) {
-         $$0.a($$1, dca.su.n(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static doz a(ih $$0, dpw $$1) {
-      return dca.st.n().a(dhp.b, $$0).a(dhp.c, $$1);
-   }
-
-   public static boolean a(doz $$0) {
-      return b($$0) || $$0.a(dca.H);
-   }
-
-   public static boolean b(doz $$0) {
-      return $$0.a(dca.su) || $$0.a(avc.bs);
-   }
-
-   public static boolean c(doz $$0) {
-      return $$0.i() || $$0.a(dca.G);
-   }
-
-   public static boolean d(doz $$0) {
-      return !$$0.i() && !$$0.a(dca.G);
-   }
-
-   public static boolean e(doz $$0) {
-      return $$0.i() || $$0.a(dca.G) || $$0.a(dca.H);
+   public FC c() {
+      return this.e;
    }
 }

@@ -50,50 +50,50 @@ import javax.imageio.ImageIO;
 import net.minecraft.obfuscate.DontObfuscate;
 import org.slf4j.Logger;
 
-public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoCloseable {
+public abstract class MinecraftServer extends bmz<akp> implements akk, du, AutoCloseable {
    private static final Logger k = LogUtils.getLogger();
    public static final String b = "vanilla";
    private static final float l = 0.8F;
    private static final int m = 100;
-   private static final long n = 20L * ayj.a / 20L;
+   private static final long n = 20L * ayl.a / 20L;
    private static final int o = 20;
-   private static final long p = 10L * ayj.a;
+   private static final long p = 10L * ayl.a;
    private static final int q = 100;
-   private static final long r = 5L * ayj.a;
-   private static final long s = 10L * ayj.b;
+   private static final long r = 5L * ayl.a;
+   private static final long s = 10L * ayl.b;
    private static final int t = 12;
    private static final int u = 5;
    private static final int v = 6000;
    private static final int w = 100;
    private static final int x = 3;
    public static final int c = 29999984;
-   public static final czb d = new czb("Demo World", cyu.a, false, bnx.c, false, new cyt(), czr.c);
+   public static final czk d = new czk("Demo World", czd.a, false, boc.c, false, new czc(), daa.c);
    public static final GameProfile e = new GameProfile(ac.e, "Anonymous Player");
-   protected final emr.c f;
-   protected final emu g;
+   protected final ena.c f;
+   protected final end g;
    private final List<Runnable> y = Lists.newArrayList();
-   private bmc z = bmb.a;
-   private bko A = this.z.f();
-   private Consumer<bkn> B = $$0x -> this.aX();
+   private bmh z = bmg.a;
+   private bkt A = this.z.f();
+   private Consumer<bks> B = $$0x -> this.aX();
    private Consumer<Path> C = $$0x -> {
    };
    private boolean D;
    @Nullable
    private MinecraftServer.c E;
    private boolean F;
-   private final aqr G;
-   private final aqc H;
+   private final aqt G;
+   private final aqe H;
    @Nullable
-   private ais I;
+   private aiu I;
    @Nullable
-   private ais.a J;
-   private final axr K = axr.a();
+   private aiu.a J;
+   private final axt K = axt.a();
    private final DataFixer L;
    private String M;
    private int N = -1;
-   private final is<akc> O;
-   private final Map<ajs<cyx>, aps> P = Maps.newLinkedHashMap();
-   private atp Q;
+   private final iu<ake> O;
+   private final Map<aju<czg>, apu> P = Maps.newLinkedHashMap();
+   private atr Q;
    private volatile boolean R = true;
    private boolean S;
    private int T;
@@ -115,7 +115,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    private boolean af;
    private volatile boolean ag;
    private long ah;
-   protected final akm i;
+   protected final ako i;
    private long ai;
    private final Thread aj;
    private long ak = ac.c();
@@ -124,21 +124,21 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    private long an = ac.c();
    private long ao;
    private boolean ap;
-   private final asn aq;
-   private final akk ar = new akk(this);
+   private final asp aq;
+   private final akm ar = new akm(this);
    @Nullable
-   private emi as;
-   private final akt at = new akt();
-   private final akh au;
+   private emr as;
+   private final akv at = new akv();
+   private final akj au;
    private boolean av;
    private float aw;
    private final Executor ax;
    @Nullable
    private String ay;
    private MinecraftServer.a az;
-   private final eji aA;
-   private final akl aB;
-   protected final emx j;
+   private final ejr aA;
+   private final akn aB;
+   protected final eng j;
    private volatile boolean aC;
 
    public static <S extends MinecraftServer> S a(Function<Thread, S> $$0) {
@@ -155,11 +155,11 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return $$3;
    }
 
-   public MinecraftServer(Thread $$0, emr.c $$1, asn $$2, akp $$3, Proxy $$4, DataFixer $$5, akm $$6, aqc $$7) {
+   public MinecraftServer(Thread $$0, ena.c $$1, asp $$2, akr $$3, Proxy $$4, DataFixer $$5, ako $$6, aqe $$7) {
       super("Server");
       this.O = $$3.c();
       this.j = $$3.d();
-      if (!this.O.a().d(ks.aP).d(dss.b)) {
+      if (!this.O.a().d(ku.aQ).d(dtb.b)) {
          throw new IllegalStateException("Missing Overworld dimension data");
       } else {
          this.h = $$4;
@@ -170,34 +170,34 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
             $$6.f().a(this);
          }
 
-         this.G = new aqr(this);
-         this.aB = new akl(this);
+         this.G = new aqt(this);
+         this.aB = new akn(this);
          this.H = $$7;
          this.f = $$1;
          this.g = $$1.g();
          this.L = $$5;
-         this.au = new akh(this, this.az.b.a());
-         im<dby> $$8 = this.O.a().d(ks.f).p().a(this.j.K());
-         this.aA = new eji($$3.a(), $$1, $$5, $$8);
+         this.au = new akj(this, this.az.b.a());
+         io<dch> $$8 = this.O.a().d(ku.f).p().a(this.j.K());
+         this.aA = new ejr($$3.a(), $$1, $$5, $$8);
          this.aj = $$0;
          this.ax = ac.f();
       }
    }
 
-   private void a(eml $$0) {
+   private void a(emu $$0) {
       $$0.a(this.aK().b(), "scoreboard");
    }
 
    protected abstract boolean e() throws IOException;
 
    protected void t_() {
-      if (!bku.f.c()) {
+      if (!bkz.f.c()) {
       }
 
       boolean $$0 = false;
-      bkx $$1 = bku.f.e();
+      blc $$1 = bkz.f.e();
       this.j.a(this.getServerModName(), this.P().a());
-      aqb $$2 = this.H.create(this.j.o().c(cyt.Z));
+      aqd $$2 = this.H.create(this.j.o().c(czc.Z));
       this.a($$2);
       this.t();
       this.b($$2);
@@ -207,7 +207,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
       if ($$0) {
          try {
-            bku.f.b();
+            bkz.f.b();
          } catch (Throwable var5) {
             k.warn("Failed to stop JFR profiling", var5);
          }
@@ -217,21 +217,21 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    protected void t() {
    }
 
-   protected void a(aqb $$0) {
-      emw $$1 = this.j.I();
+   protected void a(aqd $$0) {
+      enf $$1 = this.j.I();
       boolean $$2 = this.j.A();
-      iy<dss> $$3 = this.O.a().d(ks.aP);
-      dvp $$4 = this.j.y();
+      ja<dtb> $$3 = this.O.a().d(ku.aQ);
+      dvy $$4 = this.j.y();
       long $$5 = $$4.b();
-      long $$6 = czy.a($$5);
-      List<cyk> $$7 = ImmutableList.of(new dvd(), new dvc(), new cjc(), new cbp(), new cjn($$1));
-      dss $$8 = $$3.a(dss.b);
-      aps $$9 = new aps(this, this.ax, this.f, $$1, cyx.h, $$8, $$0, $$2, $$6, $$7, true, null);
-      this.P.put(cyx.h, $$9);
-      eml $$10 = $$9.u();
+      long $$6 = dah.a($$5);
+      List<cyt> $$7 = ImmutableList.of(new dvm(), new dvl(), new cjj(), new cbu(), new cju($$1));
+      dtb $$8 = $$3.a(dtb.b);
+      apu $$9 = new apu(this, this.ax, this.f, $$1, czg.h, $$8, $$0, $$2, $$6, $$7, true, null);
+      this.P.put(czg.h, $$9);
+      emu $$10 = $$9.u();
       this.a($$10);
-      this.as = new emi($$10);
-      dqq $$11 = $$9.C_();
+      this.as = new emr($$10);
+      dqz $$11 = $$9.C_();
       if (!$$1.n()) {
          try {
             a($$9, $$1, $$4.d(), $$2);
@@ -258,15 +258,15 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
          this.aO().a(this.j.E(), this.bd());
       }
 
-      boh $$14 = $$9.K();
+      bom $$14 = $$9.K();
 
-      for (Entry<ajs<dss>, dss> $$15 : $$3.g()) {
-         ajs<dss> $$16 = $$15.getKey();
-         if ($$16 != dss.b) {
-            ajs<cyx> $$17 = ajs.a(ks.aO, $$16.a());
-            emk $$18 = new emk(this.j, $$1);
-            aps $$19 = new aps(this, this.ax, this.f, $$18, $$17, $$15.getValue(), $$0, $$2, $$6, ImmutableList.of(), false, $$14);
-            $$11.a(new dqo.a($$19.C_()));
+      for (Entry<aju<dtb>, dtb> $$15 : $$3.g()) {
+         aju<dtb> $$16 = $$15.getKey();
+         if ($$16 != dtb.b) {
+            aju<czg> $$17 = aju.a(ku.aP, $$16.a());
+            emt $$18 = new emt(this.j, $$1);
+            apu $$19 = new apu(this, this.ax, this.f, $$18, $$17, $$15.getValue(), $$0, $$2, $$6, ImmutableList.of(), false, $$14);
+            $$11.a(new dqx.a($$19.C_()));
             this.P.put($$17, $$19);
          }
       }
@@ -274,16 +274,16 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       $$11.a($$1.p());
    }
 
-   private static void a(aps $$0, emw $$1, boolean $$2, boolean $$3) {
+   private static void a(apu $$0, enf $$1, boolean $$2, boolean $$3) {
       if ($$3) {
-         $$1.a(ib.c.b(80), 0.0F);
+         $$1.a(id.c.b(80), 0.0F);
       } else {
-         apq $$4 = $$0.l();
-         cye $$5 = new cye($$4.i().b().a());
+         aps $$4 = $$0.l();
+         cyn $$5 = new cyn($$4.i().b().a());
          int $$6 = $$4.g().a($$0);
          if ($$6 < $$0.I_()) {
-            ib $$7 = $$5.l();
-            $$6 = $$0.a(dur.a.b, $$7.u() + 8, $$7.w() + 8);
+            id $$7 = $$5.l();
+            $$6 = $$0.a(dva.a.b, $$7.u() + 8, $$7.w() + 8);
          }
 
          $$1.a($$5.l().b(8, $$6, 8), 0.0F);
@@ -292,9 +292,9 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
          int $$10 = 0;
          int $$11 = -1;
 
-         for (int $$12 = 0; $$12 < axk.h(11); $$12++) {
+         for (int $$12 = 0; $$12 < axm.h(11); $$12++) {
             if ($$8 >= -5 && $$8 <= 5 && $$9 >= -5 && $$9 <= 5) {
-               ib $$13 = apn.a($$0, new cye($$5.e + $$8, $$5.f + $$9));
+               id $$13 = app.a($$0, new cyn($$5.e + $$8, $$5.f + $$9));
                if ($$13 != null) {
                   $$1.a($$13, 0.0F);
                   break;
@@ -312,32 +312,32 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
          }
 
          if ($$2) {
-            $$0.H_().c(ks.ay).flatMap($$0x -> $$0x.b(rd.m)).ifPresent($$3x -> ((dxi)$$3x.a()).a($$0, $$4.g(), $$0.z, $$1.a()));
+            $$0.H_().c(ku.az).flatMap($$0x -> $$0x.b(rf.m)).ifPresent($$3x -> ((dxr)$$3x.a()).a($$0, $$4.g(), $$0.z, $$1.a()));
          }
       }
    }
 
-   private void a(emx $$0) {
-      $$0.a(bnx.a);
+   private void a(eng $$0) {
+      $$0.a(boc.a);
       $$0.d(true);
-      emw $$1 = $$0.I();
+      enf $$1 = $$0.I();
       $$1.b(false);
       $$1.a(false);
       $$1.a(1000000000);
       $$1.b(6000L);
-      $$1.a(cyu.d);
+      $$1.a(czd.d);
    }
 
-   private void b(aqb $$0) {
-      aps $$1 = this.I();
+   private void b(aqd $$0) {
+      apu $$1 = this.I();
       k.info("Preparing start region for dimension {}", $$1.ae().a());
-      ib $$2 = $$1.U();
-      $$0.a(new cye($$2));
-      apq $$3 = $$1.l();
+      id $$2 = $$1.U();
+      $$0.a(new cyn($$2));
+      aps $$3 = $$1.l();
       this.an = ac.c();
       $$1.a($$2, $$1.V());
-      int $$4 = this.aN().c(cyt.Z);
-      int $$5 = $$4 > 0 ? axk.h(aqb.a($$4)) : 0;
+      int $$4 = this.aN().c(czc.Z);
+      int $$5 = $$4 > 0 ? axm.h(aqd.a($$4)) : 0;
 
       while ($$3.b() < $$5) {
          this.an = ac.c() + s;
@@ -347,14 +347,14 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       this.an = ac.c() + s;
       this.v_();
 
-      for (aps $$6 : this.P.values()) {
-         cys $$7 = $$6.u().b(cys.a(), "chunks");
+      for (apu $$6 : this.P.values()) {
+         czb $$7 = $$6.u().b(czb.a(), "chunks");
          if ($$7 != null) {
             LongIterator $$8 = $$7.b().iterator();
 
             while ($$8.hasNext()) {
                long $$9 = $$8.nextLong();
-               cye $$10 = new cye($$9);
+               cyn $$10 = new cyn($$9);
                $$6.l().a($$10, true);
             }
          }
@@ -366,7 +366,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       this.bF();
    }
 
-   public cyu u_() {
+   public czd u_() {
       return this.j.k();
    }
 
@@ -383,7 +383,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    public boolean a(boolean $$0, boolean $$1, boolean $$2) {
       boolean $$3 = false;
 
-      for (aps $$4 : this.K()) {
+      for (apu $$4 : this.K()) {
          if (!$$0) {
             k.info("Saving chunks for level '{}'/{}", $$4, $$4.ae().a());
          }
@@ -392,13 +392,13 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
          $$3 = true;
       }
 
-      aps $$5 = this.I();
-      emw $$6 = this.j.I();
+      apu $$5 = this.I();
+      enf $$6 = this.j.I();
       $$6.a($$5.C_().t());
       this.j.a(this.aO().a(this.bd()));
       this.f.a(this.bd(), this.j, this.ah().r());
       if ($$1) {
-         for (aps $$7 : this.K()) {
+         for (apu $$7 : this.K()) {
             k.info("ThreadedAnvilChunkStorage ({}): All chunks are saved", $$7.l().a.n());
          }
 
@@ -442,16 +442,16 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
       k.info("Saving worlds");
 
-      for (aps $$0 : this.K()) {
+      for (apu $$0 : this.K()) {
          if ($$0 != null) {
             $$0.e = false;
          }
       }
 
       while (this.P.values().stream().anyMatch($$0x -> $$0x.l().a.f())) {
-         this.an = ac.c() + ayj.b;
+         this.an = ac.c() + ayl.b;
 
-         for (aps $$1 : this.K()) {
+         for (apu $$1 : this.K()) {
             $$1.l().o();
             $$1.l().a(() -> true, false);
          }
@@ -461,7 +461,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
       this.a(false, true, false);
 
-      for (aps $$2 : this.K()) {
+      for (apu $$2 : this.K()) {
          if ($$2 != null) {
             try {
                $$2.close();
@@ -525,7 +525,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
                long $$2 = ac.c() - this.an;
                if ($$2 > n + 20L * $$0 && this.an - this.ah >= p + 100L * $$0) {
                   long $$3 = $$2 / $$0;
-                  k.warn("Can't keep up! Is the server overloaded? Running {}ms or {} ticks behind", $$2 / ayj.b, $$3);
+                  k.warn("Can't keep up! Is the server overloaded? Running {}ms or {} ticks behind", $$2 / ayl.b, $$3);
                   this.an += $$3 * $$0;
                   this.ah = this.an;
                }
@@ -555,7 +555,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
             this.bp();
             this.aV();
             this.ag = true;
-            bku.f.a(this.aw);
+            bkz.f.a(this.aw);
          }
       } catch (Throwable var46) {
          k.error("Encountered an unexpected exception", var46);
@@ -603,9 +603,9 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
    private void br() {
       if (this.g()) {
-         bjx $$0 = this.f();
-         $$0.a(ac.c() - this.al - this.am, bjz.c.ordinal());
-         $$0.a(this.am, bjz.d.ordinal());
+         bkc $$0 = this.f();
+         $$0.a(ac.c() - this.al - this.am, bke.c.ordinal());
+         $$0.a(this.am, bke.d.ordinal());
       }
    }
 
@@ -650,11 +650,11 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       }
    }
 
-   protected akn a(Runnable $$0) {
-      return new akn(this.T, $$0);
+   protected akp a(Runnable $$0) {
+      return new akp(this.T, $$0);
    }
 
-   protected boolean a(akn $$0) {
+   protected boolean a(akp $$0) {
       return $$0.a() + 3 < this.T || this.bs();
    }
 
@@ -670,7 +670,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
          return true;
       } else {
          if (this.aB.a() || this.bs()) {
-            for (aps $$0 : this.K()) {
+            for (apu $$0 : this.K()) {
                if ($$0.l().d()) {
                   return true;
                }
@@ -681,12 +681,12 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       }
    }
 
-   protected void b(akn $$0) {
+   protected void b(akp $$0) {
       this.aU().d("runTask");
       super.d($$0);
    }
 
-   private Optional<ais.a> bB() {
+   private Optional<aiu.a> bB() {
       Optional<Path> $$0 = Optional.of(this.c("server-icon.png").toPath())
          .filter($$0x -> Files.isRegularFile($$0x))
          .or(() -> this.f.j().filter($$0x -> Files.isRegularFile($$0x)));
@@ -697,7 +697,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
             Preconditions.checkState($$1.getHeight() == 64, "Must be 64 pixels high");
             ByteArrayOutputStream $$2 = new ByteArrayOutputStream();
             ImageIO.write($$1, "PNG", $$2);
-            return Optional.of(new ais.a($$2.toByteArray()));
+            return Optional.of(new aiu.a($$2.toByteArray()));
          } catch (Exception var3) {
             k.error("Couldn't load server icon", var3);
             return Optional.empty();
@@ -749,14 +749,14 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       this.ac = this.ac - this.ab[$$3];
       this.ac += $$2;
       this.ab[$$3] = $$2;
-      this.aw = this.aw * 0.8F + (float)$$2 / (float)ayj.b * 0.19999999F;
+      this.aw = this.aw * 0.8F + (float)$$2 / (float)ayl.b * 0.19999999F;
       this.a($$1);
       this.A.c();
    }
 
    private void a(long $$0) {
       if (this.g()) {
-         this.f().a(ac.c() - $$0, bjz.b.ordinal());
+         this.f().a(ac.c() - $$0, bke.b.ordinal());
       }
    }
 
@@ -764,7 +764,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       float $$1;
       if (this.aB.a()) {
          long $$0 = this.aS() + 1L;
-         $$1 = (float)ayj.a / (float)$$0;
+         $$1 = (float)ayl.a / (float)$$0;
       } else {
          $$1 = this.aB.f();
       }
@@ -780,32 +780,32 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       }
    }
 
-   protected abstract bjx f();
+   protected abstract bkc f();
 
    public abstract boolean g();
 
-   private ais bD() {
-      ais.b $$0 = this.bE();
-      return new ais(wg.a(this.Z), Optional.of($$0), Optional.of(ais.c.a()), Optional.ofNullable(this.J), this.aB());
+   private aiu bD() {
+      aiu.b $$0 = this.bE();
+      return new aiu(wi.a(this.Z), Optional.of($$0), Optional.of(aiu.c.a()), Optional.ofNullable(this.J), this.aB());
    }
 
-   private ais.b bE() {
-      List<apt> $$0 = this.Q.t();
+   private aiu.b bE() {
+      List<apv> $$0 = this.Q.t();
       int $$1 = this.N();
       if (this.ao()) {
-         return new ais.b($$1, $$0.size(), List.of());
+         return new aiu.b($$1, $$0.size(), List.of());
       } else {
          int $$2 = Math.min($$0.size(), 12);
          ObjectArrayList<GameProfile> $$3 = new ObjectArrayList($$2);
-         int $$4 = axk.a(this.K, 0, $$0.size() - $$2);
+         int $$4 = axm.a(this.K, 0, $$0.size() - $$2);
 
          for (int $$5 = 0; $$5 < $$2; $$5++) {
-            apt $$6 = $$0.get($$4 + $$5);
+            apv $$6 = $$0.get($$4 + $$5);
             $$3.add($$6.Z() ? $$6.fY() : e);
          }
 
          ac.c($$3, this.K);
-         return new ais.b($$1, $$0.size(), $$3);
+         return new aiu.b($$1, $$0.size(), $$3);
       }
    }
 
@@ -815,7 +815,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       this.aF().b();
       this.A.b("levels");
 
-      for (aps $$1 : this.K()) {
+      for (apu $$1 : this.K()) {
          this.A.a(() -> $$1 + " " + $$1.ae().a());
          if (this.T % 20 == 0) {
             this.A.a("timeSync");
@@ -842,7 +842,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       this.A.b("players");
       this.Q.d();
       if (aa.aW && this.aB.i()) {
-         so.a.b();
+         sq.a.b();
       }
 
       this.A.b("server gui refresh");
@@ -853,7 +853,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
       this.A.b("send chunks");
 
-      for (apt $$5 : this.Q.t()) {
+      for (apv $$5 : this.Q.t()) {
          $$5.d.f.a($$5);
          $$5.d.h();
       }
@@ -861,14 +861,14 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       this.A.c();
    }
 
-   private void b(aps $$0) {
-      this.Q.a(new aeo($$0.Y(), $$0.Z(), $$0.aa().b(cyt.l)), $$0.ae());
+   private void b(apu $$0) {
+      this.Q.a(new aeq($$0.Y(), $$0.Z(), $$0.aa().b(czc.l)), $$0.ae());
    }
 
    public void F() {
       this.A.a("timeSync");
 
-      for (aps $$0 : this.K()) {
+      for (apu $$0 : this.K()) {
          this.b($$0);
       }
 
@@ -895,20 +895,20 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return new File(this.C(), $$0);
    }
 
-   public final aps I() {
-      return this.P.get(cyx.h);
+   public final apu I() {
+      return this.P.get(czg.h);
    }
 
    @Nullable
-   public aps a(ajs<cyx> $$0) {
+   public apu a(aju<czg> $$0) {
       return this.P.get($$0);
    }
 
-   public Set<ajs<cyx>> J() {
+   public Set<aju<czg>> J() {
       return this.P.keySet();
    }
 
-   public Iterable<aps> K() {
+   public Iterable<apu> K() {
       return this.P.values();
    }
 
@@ -943,7 +943,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       }
 
       $$0.a("Data Packs", () -> this.aq.f().stream().map($$0x -> $$0x.g() + ($$0x.d().a() ? "" : " (incompatible)")).collect(Collectors.joining(", ")));
-      $$0.a("Enabled Feature Flags", () -> cmi.e.b(this.j.K()).stream().map(ajt::toString).collect(Collectors.joining(", ")));
+      $$0.a("Enabled Feature Flags", () -> cmp.e.b(this.j.K()).stream().map(ajv::toString).collect(Collectors.joining(", ")));
       $$0.a("World Generation", () -> this.j.B().toString());
       $$0.a("World Seed", () -> String.valueOf(this.j.y().b()));
       if (this.ay != null) {
@@ -955,12 +955,12 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
    public abstract ab a(ab var1);
 
-   public axj P() {
-      return axj.a("vanilla", this::getServerModName, "Server", MinecraftServer.class);
+   public axl P() {
+      return axl.a("vanilla", this::getServerModName, "Server", MinecraftServer.class);
    }
 
    @Override
-   public void a(wg $$0) {
+   public void a(wi $$0) {
       k.info($$0.getString());
    }
 
@@ -993,15 +993,15 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       k.info("Generating keypair");
 
       try {
-         this.ad = awi.b();
-      } catch (awj var2) {
+         this.ad = awk.b();
+      } catch (awl var2) {
          throw new IllegalStateException("Failed to generate key pair", var2);
       }
    }
 
-   public void a(bnx $$0, boolean $$1) {
+   public void a(boc $$0, boolean $$1) {
       if ($$1 || !this.j.r()) {
-         this.j.a(this.j.l() ? bnx.d : $$0);
+         this.j.a(this.j.l() ? boc.d : $$0);
          this.bF();
          this.ah().t().forEach(this::c);
       }
@@ -1012,7 +1012,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    }
 
    private void bF() {
-      for (aps $$0 : this.K()) {
+      for (apu $$0 : this.K()) {
          $$0.b(this.V(), this.ab());
       }
    }
@@ -1022,13 +1022,13 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       this.ah().t().forEach(this::c);
    }
 
-   private void c(apt $$0) {
-      emn $$1 = $$0.dM().A_();
-      $$0.d.b(new abl($$1.q(), $$1.r()));
+   private void c(apv $$0) {
+      emw $$1 = $$0.dM().A_();
+      $$0.d.b(new abn($$1.q(), $$1.r()));
    }
 
    public boolean V() {
-      return this.j.q() != bnx.a;
+      return this.j.q() != boc.a;
    }
 
    public boolean W() {
@@ -1108,21 +1108,21 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return this.S;
    }
 
-   public atp ah() {
+   public atr ah() {
       return this.Q;
    }
 
-   public void a(atp $$0) {
+   public void a(atr $$0) {
       this.Q = $$0;
    }
 
    public abstract boolean r();
 
-   public void a(cyu $$0) {
+   public void a(czd $$0) {
       this.j.a($$0);
    }
 
-   public aqr ai() {
+   public aqt ai() {
       return this.G;
    }
 
@@ -1134,7 +1134,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return false;
    }
 
-   public boolean a(@Nullable cyu $$0, boolean $$1, int $$2) {
+   public boolean a(@Nullable czd $$0, boolean $$1, int $$2) {
       return false;
    }
 
@@ -1146,7 +1146,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return 16;
    }
 
-   public boolean a(aps $$0, ib $$1, cjt $$2) {
+   public boolean a(apu $$0, id $$1, cka $$2) {
       return false;
    }
 
@@ -1175,7 +1175,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    }
 
    @Nullable
-   public axw as() {
+   public axy as() {
       return this.i.a();
    }
 
@@ -1184,12 +1184,12 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    }
 
    @Nullable
-   public atl au() {
+   public atn au() {
       return this.i.f();
    }
 
    @Nullable
-   public ais av() {
+   public aiu av() {
       return this.I;
    }
 
@@ -1236,26 +1236,26 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return this.L;
    }
 
-   public int a(@Nullable aps $$0) {
-      return $$0 != null ? $$0.aa().c(cyt.s) : 10;
+   public int a(@Nullable apu $$0) {
+      return $$0 != null ? $$0.aa().c(czc.s) : 10;
    }
 
-   public akf aE() {
+   public akh aE() {
       return this.az.b.e();
    }
 
-   public akh aF() {
+   public akj aF() {
       return this.au;
    }
 
    public CompletableFuture<Void> a(Collection<String> $$0) {
-      iz.b $$1 = this.O.b(akc.d);
+      jb.b $$1 = this.O.b(ake.d);
       CompletableFuture<Void> $$2 = CompletableFuture.<ImmutableList>supplyAsync(
-            () -> $$0.stream().map(this.aq::c).filter(Objects::nonNull).map(ask::f).collect(ImmutableList.toImmutableList()), this
+            () -> $$0.stream().map(this.aq::c).filter(Objects::nonNull).map(asm::f).collect(ImmutableList.toImmutableList()), this
          )
          .thenCompose($$1x -> {
-            ass $$2x = new asv(arq.b, $$1x);
-            return akd.a($$2x, $$1, this.j.K(), this.n() ? dv.a.b : dv.a.c, this.l(), this.ax, this).whenComplete(($$1xx, $$2xx) -> {
+            asu $$2x = new asx(ars.b, $$1x);
+            return akf.a($$2x, $$1, this.j.K(), this.n() ? dw.a.b : dw.a.c, this.l(), this.ax, this).whenComplete(($$1xx, $$2xx) -> {
                if ($$2xx != null) {
                   $$2x.close();
                }
@@ -1265,7 +1265,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
             this.az.close();
             this.az = $$1x;
             this.aq.a($$0);
-            czr $$2x = new czr(a(this.aq), this.j.K());
+            daa $$2x = new daa(a(this.aq), this.j.K());
             this.j.a($$2x);
             this.az.b.a(this.bd());
             this.ah().h();
@@ -1280,11 +1280,11 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return $$2;
    }
 
-   public static czr a(asn $$0, cyl $$1, boolean $$2, cmg $$3) {
+   public static daa a(asp $$0, cyu $$1, boolean $$2, cmn $$3) {
       $$0.a();
       if ($$2) {
          $$0.a(Collections.singleton("vanilla"));
-         return czr.c;
+         return daa.c;
       } else {
          Set<String> $$4 = Sets.newLinkedHashSet();
 
@@ -1296,22 +1296,22 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
             }
          }
 
-         for (ask $$6 : $$0.c()) {
+         for (asm $$6 : $$0.c()) {
             String $$7 = $$6.g();
             if (!$$1.b().contains($$7)) {
-               cmg $$8 = $$6.e();
+               cmn $$8 = $$6.e();
                boolean $$9 = $$4.contains($$7);
                if (!$$9 && $$6.l().a()) {
                   if ($$8.a($$3)) {
                      k.info("Found new data pack {}, loading it automatically", $$7);
                      $$4.add($$7);
                   } else {
-                     k.info("Found new data pack {}, but can't load it due to missing features {}", $$7, cmi.a($$3, $$8));
+                     k.info("Found new data pack {}, but can't load it due to missing features {}", $$7, cmp.a($$3, $$8));
                   }
                }
 
                if ($$9 && !$$8.a($$3)) {
-                  k.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$7, cmi.a($$3, $$8));
+                  k.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$7, cmp.a($$3, $$8));
                   $$4.remove($$7);
                }
             }
@@ -1323,43 +1323,43 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
          }
 
          $$0.a($$4);
-         cyl $$10 = a($$0);
-         cmg $$11 = $$0.e();
-         return new czr($$10, $$11);
+         cyu $$10 = a($$0);
+         cmn $$11 = $$0.e();
+         return new daa($$10, $$11);
       }
    }
 
-   private static cyl a(asn $$0) {
+   private static cyu a(asp $$0) {
       Collection<String> $$1 = $$0.d();
       List<String> $$2 = ImmutableList.copyOf($$1);
       List<String> $$3 = $$0.b().stream().filter($$1x -> !$$1.contains($$1x)).collect(ImmutableList.toImmutableList());
-      return new cyl($$2, $$3);
+      return new cyu($$2, $$3);
    }
 
-   public void a(du $$0) {
+   public void a(dv $$0) {
       if (this.aP()) {
-         atp $$1 = $$0.l().ah();
-         atx $$2 = $$1.i();
+         atr $$1 = $$0.l().ah();
+         atz $$2 = $$1.i();
 
-         for (apt $$4 : Lists.newArrayList($$1.t())) {
+         for (apv $$4 : Lists.newArrayList($$1.t())) {
             if (!$$2.a($$4.fY())) {
-               $$4.d.b(wg.c("multiplayer.disconnect.not_whitelisted"));
+               $$4.d.b(wi.c("multiplayer.disconnect.not_whitelisted"));
             }
          }
       }
    }
 
-   public asn aG() {
+   public asp aG() {
       return this.aq;
    }
 
-   public dv aH() {
+   public dw aH() {
       return this.az.b.d();
    }
 
-   public du aI() {
-      aps $$0 = this.I();
-      return new du(this, $$0 == null ? esa.b : esa.a($$0.U()), erz.a, $$0, 4, "Server", wg.b("Server"), this, null);
+   public dv aI() {
+      apu $$0 = this.I();
+      return new dv(this, $$0 == null ? esj.b : esj.a($$0.U()), esi.a, $$0, 4, "Server", wi.b("Server"), this, null);
    }
 
    @Override
@@ -1375,15 +1375,15 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    @Override
    public abstract boolean U_();
 
-   public cvm aJ() {
+   public cvv aJ() {
       return this.az.b.c();
    }
 
-   public akk aK() {
+   public akm aK() {
       return this.ar;
    }
 
-   public emi aL() {
+   public emr aL() {
       if (this.as == null) {
          throw new NullPointerException("Called before server init");
       } else {
@@ -1391,15 +1391,15 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       }
    }
 
-   public ene aM() {
+   public enn aM() {
       return this.az.b.b();
    }
 
-   public cyt aN() {
+   public czc aN() {
       return this.I().aa();
    }
 
-   public akt aO() {
+   public akv aO() {
       return this.at;
    }
 
@@ -1415,7 +1415,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return this.aw;
    }
 
-   public akl aR() {
+   public akn aR() {
       return this.aB;
    }
 
@@ -1429,7 +1429,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
    public int c(GameProfile $$0) {
       if (this.ah().f($$0)) {
-         atr $$1 = this.ah().k().b($$0);
+         att $$1 = this.ah().k().b($$0);
          if ($$1 != null) {
             return $$1.a();
          } else if (this.a($$0)) {
@@ -1444,7 +1444,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       }
    }
 
-   public bko aU() {
+   public bkt aU() {
       return this.A;
    }
 
@@ -1457,8 +1457,8 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       Path $$1 = $$0.resolve("levels");
 
       try {
-         for (Entry<ajs<cyx>, aps> $$2 : this.P.entrySet()) {
-            ajt $$3 = $$2.getKey().a();
+         for (Entry<aju<czg>, apu> $$2 : this.P.entrySet()) {
+            ajv $$3 = $$2.getKey().a();
             Path $$4 = $$1.resolve($$3.b()).resolve($$3.a());
             Files.createDirectories($$4);
             $$2.getValue().a($$4);
@@ -1487,10 +1487,10 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    private void d(Path $$0) throws IOException {
       try (Writer $$1 = Files.newBufferedWriter($$0)) {
          final List<String> $$2 = Lists.newArrayList();
-         final cyt $$3 = this.aN();
-         cyt.a(new cyt.c() {
+         final czc $$3 = this.aN();
+         czc.a(new czc.c() {
             @Override
-            public <T extends cyt.g<T>> void a(cyt.e<T> $$0, cyt.f<T> $$1) {
+            public <T extends czc.g<T>> void a(czc.e<T> $$0, czc.f<T> $$1) {
                $$2.add(String.format(Locale.ROOT, "%s=%s\n", $$0.a(), $$3.a($$0)));
             }
          });
@@ -1528,9 +1528,9 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
    private void g(Path $$0) throws IOException {
       try (Writer $$1 = Files.newBufferedWriter($$0)) {
-         List<axl.a> $$2;
+         List<axn.a> $$2;
          try {
-            $$2 = Lists.newArrayList(axl.a());
+            $$2 = Lists.newArrayList(axn.a());
          } catch (Throwable var7) {
             k.warn("Failed to list native modules", var7);
             return;
@@ -1538,7 +1538,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
          $$2.sort(Comparator.comparing($$0x -> $$0x.a));
 
-         for (axl.a $$5 : $$2) {
+         for (axn.a $$5 : $$2) {
             $$1.write($$5.toString());
             $$1.write(10);
          }
@@ -1547,14 +1547,14 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
 
    private void bG() {
       if (this.D) {
-         this.z = bma.a(new bme(ac.c, this.n()), ac.c, ac.g(), new bmg("server"), this.B, $$0 -> {
+         this.z = bmf.a(new bmj(ac.c, this.n()), ac.c, ac.g(), new bml("server"), this.B, $$0 -> {
             this.h(() -> this.b($$0.resolve("server")));
             this.C.accept($$0);
          });
          this.D = false;
       }
 
-      this.A = bkr.a(this.z.f(), bkr.a("Server"));
+      this.A = bkw.a(this.z.f(), bkw.a("Server"));
       this.z.c();
       this.A.a();
    }
@@ -1568,7 +1568,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return this.z.e();
    }
 
-   public void a(Consumer<bkn> $$0, Consumer<Path> $$1) {
+   public void a(Consumer<bks> $$0, Consumer<Path> $$1) {
       this.B = $$1x -> {
          this.aX();
          $$0.accept($$1x);
@@ -1578,7 +1578,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
    }
 
    public void aX() {
-      this.z = bmb.a;
+      this.z = bmg.a;
    }
 
    public void aY() {
@@ -1590,7 +1590,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       this.A = this.z.f();
    }
 
-   public Path a(emp $$0) {
+   public Path a(emy $$0) {
       return this.f.a($$0);
    }
 
@@ -1598,36 +1598,36 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return true;
    }
 
-   public eji bb() {
+   public ejr bb() {
       return this.aA;
    }
 
-   public emx bc() {
+   public eng bc() {
       return this.j;
    }
 
-   public iz.b bd() {
+   public jb.b bd() {
       return this.O.a();
    }
 
-   public is<akc> be() {
+   public iu<ake> be() {
       return this.O;
    }
 
-   public aqx a(apt $$0) {
-      return aqx.a;
+   public aqz a(apv $$0) {
+      return aqz.a;
    }
 
-   public apu b(apt $$0) {
-      return (apu)(this.W() ? new apj($$0) : new apu($$0));
+   public apw b(apv $$0) {
+      return (apw)(this.W() ? new apl($$0) : new apw($$0));
    }
 
    @Nullable
-   public cyu bf() {
+   public czd bf() {
       return null;
    }
 
-   public atc bg() {
+   public ate bg() {
       return this.az.a;
    }
 
@@ -1643,11 +1643,11 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       this.F = true;
    }
 
-   public bkn bk() {
+   public bks bk() {
       if (this.E == null) {
-         return bkj.a;
+         return bko.a;
       } else {
-         bkn $$0 = this.E.a(ac.c(), this.T);
+         bks $$0 = this.E.a(ac.c(), this.T);
          this.E = null;
          return $$0;
       }
@@ -1657,7 +1657,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       return 1000000;
    }
 
-   public void a(wg $$0, wc.a $$1, @Nullable String $$2) {
+   public void a(wi $$0, we.a $$1, @Nullable String $$2) {
       String $$3 = $$1.a($$0).getString();
       if ($$2 != null) {
          k.info("[{}] {}", $$2, $$3);
@@ -1666,28 +1666,28 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       }
    }
 
-   public wb bm() {
-      return wb.a;
+   public wd bm() {
+      return wd.a;
    }
 
    public boolean bn() {
       return true;
    }
 
-   public void a(apt $$0, bjv $$1) {
+   public void a(apv $$0, bka $$1) {
    }
 
    public boolean bo() {
       return false;
    }
 
-   public void a(cye $$0) {
+   public void a(cyn $$0) {
    }
 
-   public void b(cye $$0) {
+   public void b(cyn $$0) {
    }
 
-   static record a(ass a, akd b) implements AutoCloseable {
+   static record a(asu a, akf b) implements AutoCloseable {
 
       @Override
       public void close() {
@@ -1695,7 +1695,7 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
       }
    }
 
-   public static record b(UUID a, String b, String c, boolean d, @Nullable wg e) {
+   public static record b(UUID a, String b, String c, boolean d, @Nullable wi e) {
    }
 
    static class c {
@@ -1707,10 +1707,10 @@ public abstract class MinecraftServer extends bmu<akn> implements aki, dt, AutoC
          this.b = $$1;
       }
 
-      bkn a(final long $$0, final int $$1) {
-         return new bkn() {
+      bks a(final long $$0, final int $$1) {
+         return new bks() {
             @Override
-            public List<bkq> a(String $$0x) {
+            public List<bkv> a(String $$0x) {
                return Collections.emptyList();
             }
 

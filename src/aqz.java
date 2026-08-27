@@ -1,15 +1,33 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class aqz implements aqi {
-   public static final aqi.a a = new aqi.a("join_world");
+public interface aqz {
+   aqz a = new aqz() {
+      @Override
+      public void a() {
+      }
 
-   @Override
-   public void a(Consumer<yn<?>> $$0) {
-      $$0.accept(aai.a);
-   }
+      @Override
+      public void b() {
+      }
 
-   @Override
-   public aqi.a a() {
-      return a;
-   }
+      @Override
+      public CompletableFuture<aqm> a(String $$0) {
+         return CompletableFuture.completedFuture(aqm.a($$0));
+      }
+
+      @Override
+      public CompletableFuture<List<aqm>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(aqm::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   void a();
+
+   void b();
+
+   CompletableFuture<aqm> a(String var1);
+
+   CompletableFuture<List<aqm>> a(List<String> var1);
 }

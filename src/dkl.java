@@ -1,39 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkl extends ddb {
-   public static final MapCodec<dkl> n = b(dkl::new);
+public class dkl extends dcq implements dck {
+   public static final MapCodec<dkl> a = b(dkl::new);
+   protected static final float b = 6.0F;
+   protected static final etc c = dch.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dkl> a() {
-      return n;
+      return a;
    }
 
-   public dkl(doy.d $$0) {
-      super($$0, () -> dmh.c);
-   }
-
-   @Override
-   public dmf a(ib $$0, doz $$1) {
-      return new dny($$0, $$1);
+   protected dkl(dph.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected aut<ajt> c() {
-      return auw.i.b(auw.ai);
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return c;
    }
 
    @Override
-   protected boolean f_(doz $$0) {
+   public boolean b(czj $$0, id $$1, dpi $$2) {
       return true;
    }
 
    @Override
-   protected int a(doz $$0, cyd $$1, ib $$2, ih $$3) {
-      return axk.a(dmm.a($$1, $$2), 0, 15);
+   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
+      return true;
    }
 
    @Override
-   protected int b(doz $$0, cyd $$1, ib $$2, ih $$3) {
-      return $$3 == ih.b ? $$0.b($$1, $$2, $$3) : 0;
+   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
+      dep $$4 = (dep)($$3.a(dcj.bu) ? dcj.iI : dcj.iH);
+      if ($$4.n().a($$0, $$2) && $$0.u($$2.c())) {
+         dep.a($$0, $$4.n(), $$2, 2);
+      }
    }
 }

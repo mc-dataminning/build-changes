@@ -1,47 +1,50 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public abstract class flw<T extends cny> extends fkv<T> implements cni {
+   private final ajv A;
 
-public class flw extends fko {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f d = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private gcn.a o;
-
-   public flw(dnp $$0, boolean $$1, boolean $$2) {
+   public flw(T $$0, cjz $$1, wi $$2, ajv $$3) {
       super($$0, $$1, $$2);
+      this.A = $$3;
+   }
+
+   protected void E() {
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.o = gcn.a(this.j.aR(), this.a);
+   protected void aM_() {
+      super.aM_();
+      this.E();
+      this.s.a(this);
    }
 
    @Override
-   protected void b(fdc $$0, doz $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof djs;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
-      }
+   public void j() {
+      super.j();
+      this.s.b(this);
    }
 
    @Override
-   protected void a(fdc $$0, doz $$1) {
-      if (this.o != null) {
-         boolean $$2 = $$1.b() instanceof djs;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gnm $$3 = gao.a(this.a);
-         ewm $$4 = $$3.a($$0.d(), this.o::a);
-         this.o.b.k = $$2;
-         this.o.a.a($$0.c(), $$4, 15728880, gla.d);
-      }
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(fdl $$0, int $$1, int $$2, float $$3) {
    }
 
    @Override
-   protected Vector3f m() {
-      return d;
+   protected void a(fdl $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.A, this.w, this.x, 0, 0, this.c, this.d);
+      this.c($$0, this.w, this.x);
+   }
+
+   protected abstract void c(fdl var1, int var2, int var3);
+
+   @Override
+   public void a(cmw $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(cmw $$0, int $$1, crs $$2) {
    }
 }

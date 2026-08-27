@@ -1,53 +1,45 @@
-public class abg implements yn<aay> {
-   public static final ye<vr, abg> a = yn.a(abg::a, abg::new);
-   private final ib b;
-   private final int c;
+public class abg implements yp<aba> {
+   public static final yg<vi, abg> a = yp.a(abg::a, abg::new);
+   private final int b;
+   private final id c;
    private final int d;
-   private final dby e;
 
-   public abg(ib $$0, dby $$1, int $$2, int $$3) {
+   public abg(int $$0, id $$1, int $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private abg(vr $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
+   private abg(vi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
       this.d = $$0.readUnsignedByte();
-      this.e = yc.a(ks.f).decode($$0);
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.k(this.c);
+   private void a(vi $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
       $$0.k(this.d);
-      yc.a(ks.f).encode($$0, this.e);
    }
 
    @Override
-   public yp<abg> a() {
-      return afj.j;
+   public yr<abg> a() {
+      return afl.h;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
+   public int b() {
       return this.b;
    }
 
-   public int e() {
+   public id e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
-   }
-
-   public dby g() {
-      return this.e;
    }
 }

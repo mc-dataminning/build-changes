@@ -1,23 +1,72 @@
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record wr(UUID a, cjv b) {
-   public static wr a(cjv $$0) {
-      return new wr(UUID.randomUUID(), $$0);
+public class wr {
+   private final int a;
+   private final ObjectList<ws> b = new ObjectArrayList();
+   @Nullable
+   private wu c;
+
+   public wr(int $$0) {
+      this.a = $$0;
+
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
+      }
    }
 
-   public xa.c a(UUID $$0) {
-      return new xa($$0, this.a).a(axx.a(this.b.b(), "SHA256withRSA"));
+   public void a(wu $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new ws($$0, true));
+         this.c = $$0;
+      }
    }
 
-   public wx a() {
-      return new wx(this.a, this.b.c());
+   public int a() {
+      return this.b.size();
    }
 
-   public UUID b() {
-      return this.a;
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public cjv c() {
-      return this.b;
+   public Optional<wp> a(wp.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<wu> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               ws $$4 = (ws)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, null);
+               }
+            }
+
+            return Optional.of(new wp($$1));
+         }
+      }
    }
 }

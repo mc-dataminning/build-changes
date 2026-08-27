@@ -1,29 +1,45 @@
-public class agt implements yn<afl> {
-   public static final ye<vg, agt> a = yn.a(agt::a, agt::new);
-   private final String b;
+public class agt implements yp<afn> {
+   public static final yg<vi, agt> a = yp.a(agt::a, agt::new);
+   private final cok b;
+   private final boolean c;
+   private final boolean d;
 
-   public agt(String $$0) {
+   public agt(cok $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private agt(vg $$0) {
-      this.b = $$0.p();
+   private agt(vi $$0) {
+      this.b = $$0.b(cok.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vg $$0) {
+   private void a(vi $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yp<agt> a() {
-      return afj.bN;
+   public yr<agt> a() {
+      return afl.bL;
    }
 
-   public void a(afl $$0) {
+   public void a(afn $$0) {
       $$0.a(this);
    }
 
-   public String b() {
+   public cok b() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

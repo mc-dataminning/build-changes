@@ -1,133 +1,91 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
-public final class ctt {
-   public static final ctt a = new ctt(new tm());
-   public static final Codec<ctt> b = tm.a.xmap(ctt::new, $$0 -> $$0.e);
-   public static final Codec<ctt> c = aws.b(
-      b, (Function<ctt, DataResult<ctt>>)($$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0))
+public class ctt implements cus {
+   public static final Codec<ctt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ctu.c.fieldOf("material").forGetter(ctt::b),
+               ctw.c.fieldOf("pattern").forGetter(ctt::a),
+               awu.a(Codec.BOOL, "show_in_tooltip", true).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ctt::new)
    );
-   @Deprecated
-   public static final ye<ByteBuf, ctt> d = yc.n.a(ctt::new, $$0 -> $$0.e);
-   private final tm e;
+   public static final yg<vt, ctt> b = yg.a(ctu.d, ctt::b, ctw.d, ctt::a, ye.b, $$0 -> $$0.f, ctt::new);
+   private static final wi c = wi.c(ac.a("item", new ajv("smithing_template.upgrade"))).a(n.h);
+   private final in<ctu> d;
+   private final in<ctw> e;
+   private final boolean f;
+   private final Function<in<cpi>, ajv> g;
+   private final Function<in<cpi>, ajv> h;
 
-   private ctt(tm $$0) {
-      this.e = $$0;
+   public ctt(in<ctu> $$0, in<ctw> $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.g = ac.b($$1x -> {
+         ajv $$2x = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2x.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
+      });
+      this.h = ac.b($$1x -> {
+         ajv $$2x = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2x.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
+      });
+      this.f = $$2;
    }
 
-   public static ctt a(tm $$0) {
-      return new ctt($$0.h());
+   public ctt(in<ctu> $$0, in<ctw> $$1) {
+      this($$0, $$1, true);
    }
 
-   public static Predicate<crj> a(jo<ctt> $$0, tm $$1) {
-      return $$2 -> {
-         ctt $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
+   private String c(in<cpi> $$0) {
+      Map<in<cpi>, String> $$1 = this.d.a().d();
+      String $$2 = $$1.get($$0);
+      return $$2 != null ? $$2 : this.d.a().a();
    }
 
-   public boolean b(tm $$0) {
-      return ub.a($$0, this.e, true);
+   public boolean a(in<ctw> $$0, in<ctu> $$1) {
+      return $$0.equals(this.e) && $$1.equals(this.d);
    }
 
-   public static void a(jo<ctt> $$0, crj $$1, Consumer<tm> $$2) {
-      ctt $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.e.g()) {
-         $$1.c($$0);
-      } else {
-         $$1.b($$0, $$3);
-      }
+   public in<ctw> a() {
+      return this.e;
    }
 
-   public static void a(jo<ctt> $$0, crj $$1, tm $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.c($$0);
-      }
+   public in<ctu> b() {
+      return this.d;
    }
 
-   public ctt a(Consumer<tm> $$0) {
-      tm $$1 = this.e.h();
-      $$0.accept($$1);
-      return new ctt($$1);
+   public ajv a(in<cpi> $$0) {
+      return this.g.apply($$0);
    }
 
-   public void a(bpv $$0) {
-      tm $$1 = $$0.f(new tm());
-      UUID $$2 = $$0.cw();
-      $$1.a(this.e);
-      $$0.g($$1);
-      $$0.a_($$2);
-   }
-
-   public boolean a(dmf $$0, in.a $$1) {
-      tm $$2 = $$0.d($$1);
-      tm $$3 = $$2.h();
-      $$2.a(this.e);
-      if (!$$2.equals($$3)) {
-         $$0.a($$2, $$1);
-         $$0.e();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public <T> DataResult<ctt> a(MapEncoder<T> $$0, T $$1) {
-      return $$0.encode($$1, ua.a, ua.a.mapBuilder()).build(this.e).map($$0x -> new ctt((tm)$$0x));
-   }
-
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      MapLike<uj> $$1 = ac.a(ua.a.e(this.e), IllegalStateException::new);
-      return $$0.decode(ua.a, $$1);
-   }
-
-   public int a() {
-      return this.e.f();
-   }
-
-   public boolean b() {
-      return this.e.g();
-   }
-
-   public tm c() {
-      return this.e.h();
-   }
-
-   public boolean a(String $$0) {
-      return this.e.e($$0);
+   public ajv b(in<cpi> $$0) {
+      return this.h.apply($$0);
    }
 
    @Override
    public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return $$0 instanceof ctt $$1 ? this.e.equals($$1.e) : false;
-      }
+      return !($$0 instanceof ctt $$1) ? false : this.f == $$1.f && this.e.equals($$1.e) && this.d.equals($$1.d);
    }
 
    @Override
    public int hashCode() {
-      return this.e.hashCode();
+      int $$0 = this.d.hashCode();
+      $$0 = 31 * $$0 + this.e.hashCode();
+      return 31 * $$0 + (this.f ? 1 : 0);
    }
 
    @Override
-   public String toString() {
-      return this.e.toString();
-   }
-
-   @Deprecated
-   public tm d() {
-      return this.e;
+   public void a(Consumer<wi> $$0, cti $$1) {
+      if (this.f) {
+         $$0.accept(c);
+         $$0.accept(wh.a().b(this.e.a().a(this.d)));
+         $$0.accept(wh.a().b(this.d.a().e()));
+      }
    }
 }

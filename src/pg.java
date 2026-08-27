@@ -1,14 +1,12 @@
 import java.util.concurrent.CompletableFuture;
 
-public class pg extends pc<bov> {
-   public pg(la $$0, CompletableFuture<in.a> $$1) {
-      super($$0, ks.r, $$1);
+public class pg extends pe<daf> {
+   public pg(lc $$0, CompletableFuture<ip.a> $$1, CompletableFuture<pe.c<daf>> $$2) {
+      super($$0, ku.aw, $$1, $$2);
    }
 
    @Override
-   protected void a(in.a $$0) {
-      this.b(ave.b).a(bow.C, bow.D);
-      this.b(ave.k).a(bow.G);
-      this.b(ave.B).a(bow.G);
+   protected void a(ip.a $$0) {
+      this.b(avd.I).b(avd.l);
    }
 }

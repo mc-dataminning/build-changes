@@ -1,18 +1,42 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class eqr {
-   private static final Codec<eqq> d = kr.J.q().dispatch(eqq::a, eqp::a);
-   public static final Codec<eqq> a = aws.a(
-      (Supplier<Codec<eqq>>)(() -> Codec.either(eqo.c, d)
-            .xmap($$0 -> (eqq)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof eqo $$1 ? Either.left($$1) : Either.right($$0)))
+public record eqr(float b, float c) implements eql {
+   public static final Codec<eqr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eqr::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(eqr::d)).apply($$0, eqr::new)
    );
-   public static final eqp b = a("storage", eqs.a);
-   public static final eqp c = a("context", eqo.b);
 
-   private static eqp a(String $$0, Codec<? extends eqq> $$1) {
-      return iy.a(kr.J, new ajt($$0), new eqp($$1));
+   @Override
+   public eqm b() {
+      return eqn.f;
+   }
+
+   @Override
+   public Set<epu<?>> a() {
+      return ImmutableSet.of(epx.d);
+   }
+
+   public boolean a(enk $$0) {
+      bqa $$1 = $$0.c(epx.d);
+      int $$2 = 0;
+      if ($$1 instanceof bqt) {
+         $$2 = cxa.h((bqt)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   }
+
+   public static eql.a a(float $$0, float $$1) {
+      return () -> new eqr($$0, $$1);
+   }
+
+   public float c() {
+      return this.b;
+   }
+
+   public float d() {
+      return this.c;
    }
 }

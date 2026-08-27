@@ -1,20 +1,37 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class crp extends csu {
-   public crp(cre.a $$0) {
-      super($$0);
+public enum crp implements ayg {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
+
+   public static final Codec<crp> j = ayg.a(crp::values);
+   public static final IntFunction<crp> k = awd.a(crp::a, values(), awd.a.a);
+   private final byte l;
+   private final String m;
+
+   private crp(int $$0, String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
    @Override
-   public void a(crj $$0, @Nullable cyx $$1, List<wg> $$2, csz $$3) {
-      cth $$4 = $$0.a(jp.x, cth.a);
-      $$4.a($$2::add, 0.25F, $$1 == null ? 20.0F : $$1.s().f());
+   public String c() {
+      return this.m;
    }
 
-   @Override
-   public bob<crj> a(cyx $$0, cjt $$1, bnz $$2) {
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aum.nI, aun.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public byte a() {
+      return this.l;
+   }
+
+   public boolean b() {
+      return this == d || this == e;
    }
 }

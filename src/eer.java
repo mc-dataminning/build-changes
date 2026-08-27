@@ -1,24 +1,23 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class eer extends een {
-   public static final Codec<eer> a = aws.j.fieldOf("chance").xmap(eer::new, $$0 -> $$0.c).codec();
-   private final int c;
+public class eer extends eex {
+   private static final eer c = new eer();
+   public static final Codec<eer> a = Codec.unit(() -> c);
 
-   private eer(int $$0) {
-      this.c = $$0;
-   }
-
-   public static eer a(int $$0) {
-      return new eer($$0);
+   public static eer a() {
+      return c;
    }
 
    @Override
-   protected boolean a(eem $$0, axr $$1, ib $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public Stream<id> a_(eev $$0, axt $$1, id $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new id($$3, $$2.v(), $$4));
    }
 
    @Override
-   public eep<?> b() {
-      return eep.b;
+   public eey<?> b() {
+      return eey.m;
    }
 }

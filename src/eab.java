@@ -1,22 +1,10 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eab implements dzz {
-   public static final Codec<eab> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eca.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               eca.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eab::new)
-   );
-   public final eca b;
-   public final eca c;
-   public final int d;
+public class eab implements eai {
+   public static final Codec<eab> a = dpi.b.fieldOf("state").xmap(eab::new, $$0 -> $$0.b).codec();
+   public final dpi b;
 
-   public eab(eca $$0, eca $$1, int $$2) {
+   public eab(dpi $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 }

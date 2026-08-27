@@ -1,41 +1,29 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gmb {
-   private static final gmi[] a = new gmi[]{
-      a("textures/entity/player/slim/alex.png", gmi.a.a),
-      a("textures/entity/player/slim/ari.png", gmi.a.a),
-      a("textures/entity/player/slim/efe.png", gmi.a.a),
-      a("textures/entity/player/slim/kai.png", gmi.a.a),
-      a("textures/entity/player/slim/makena.png", gmi.a.a),
-      a("textures/entity/player/slim/noor.png", gmi.a.a),
-      a("textures/entity/player/slim/steve.png", gmi.a.a),
-      a("textures/entity/player/slim/sunny.png", gmi.a.a),
-      a("textures/entity/player/slim/zuri.png", gmi.a.a),
-      a("textures/entity/player/wide/alex.png", gmi.a.b),
-      a("textures/entity/player/wide/ari.png", gmi.a.b),
-      a("textures/entity/player/wide/efe.png", gmi.a.b),
-      a("textures/entity/player/wide/kai.png", gmi.a.b),
-      a("textures/entity/player/wide/makena.png", gmi.a.b),
-      a("textures/entity/player/wide/noor.png", gmi.a.b),
-      a("textures/entity/player/wide/steve.png", gmi.a.b),
-      a("textures/entity/player/wide/sunny.png", gmi.a.b),
-      a("textures/entity/player/wide/zuri.png", gmi.a.b)
-   };
+public class gmb implements glw {
+   public static final Codec<gmb> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gmb::new)
+   );
+   private final String c;
+   private final String d;
 
-   public static ajt a() {
-      return a[6].a();
+   public gmb(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static gmi a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Override
+   public void a(ate $$0, glw.a $$1) {
+      ajo $$2 = new ajo("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         ajv $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
-   public static gmi a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static gmi a(String $$0, gmi.a $$1) {
-      return new gmi(new ajt($$0), null, null, null, $$1, true);
+   @Override
+   public gly a() {
+      return glz.b;
    }
 }

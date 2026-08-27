@@ -1,55 +1,27 @@
-public interface cyz {
-   int J_();
+import java.util.Optional;
 
-   int I_();
-
-   default int al() {
-      return this.I_() + this.J_();
+public class cyz {
+   public Optional<Float> a(cyy $$0, cym $$1, id $$2, dpi $$3, elb $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   default int am() {
-      return this.ao() - this.an();
+   public boolean a(cyy $$0, cym $$1, id $$2, dpi $$3, float $$4) {
+      return true;
    }
 
-   default int an() {
-      return je.a(this.I_());
+   public boolean a(cyy $$0, bqa $$1) {
+      return true;
    }
 
-   default int ao() {
-      return je.a(this.al() - 1) + 1;
+   public float a() {
+      return 1.0F;
    }
 
-   default boolean s(ib $$0) {
-      return this.d($$0.v());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 < this.I_() || $$0 >= this.al();
-   }
-
-   default int e(int $$0) {
-      return this.f(je.a($$0));
-   }
-
-   default int f(int $$0) {
-      return $$0 - this.an();
-   }
-
-   default int g(int $$0) {
-      return $$0 + this.an();
-   }
-
-   static cyz e(final int $$0, final int $$1) {
-      return new cyz() {
-         @Override
-         public int J_() {
-            return $$1;
-         }
-
-         @Override
-         public int I_() {
-            return $$0;
-         }
-      };
+   public float b(cyy $$0, bqa $$1) {
+      float $$2 = $$0.a() * 2.0F;
+      esj $$3 = $$0.b();
+      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
+      double $$5 = (1.0 - $$4) * (double)cyy.a($$3, $$1);
+      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
    }
 }

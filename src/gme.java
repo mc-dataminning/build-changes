@@ -1,45 +1,35 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import org.slf4j.Logger;
 
-public class gme {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public class gme implements glw {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<gme> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajv.a.fieldOf("resource").forGetter($$0x -> $$0x.d), ajv.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gme::new)
+   );
+   private final ajv d;
+   private final Optional<ajv> e;
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      ary.a $$3 = ary.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public gme(ajv $$0, Optional<ajv> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = axa.a($$5);
-         JsonObject $$7 = axa.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = axa.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
-         }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
+   @Override
+   public void a(ate $$0, glw.a $$1) {
+      ajv $$2 = a.a(this.d);
+      Optional<atc> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
       }
+   }
 
-      return $$3.a("index-" + $$1).getPath("/");
+   @Override
+   public gly a() {
+      return glz.a;
    }
 }

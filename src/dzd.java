@@ -1,19 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class dzd extends dxv<eas> {
-   public dzd(Codec<eas> $$0) {
+public class dzd extends dye<eau> {
+   public dzd(Codec<eau> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dxx<eas> $$0) {
-      axr $$1 = $$0.d();
-      eas $$2 = $$0.f();
-      czs $$3 = $$0.b();
-      ib $$4 = $$0.e();
-      dqw $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      eel $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   public boolean a(dyg<eau> $$0) {
+      eau $$1 = $$0.f();
+      axt $$2 = $$0.d();
+      dab $$3 = $$0.b();
+      drf $$4 = $$0.c();
+      id $$5 = $$0.e();
+
+      for (dzy $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
+         }
+      }
+
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

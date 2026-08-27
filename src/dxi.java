@@ -1,29 +1,59 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public record dxi<FC extends dzz, F extends dxv<FC>>(F d, FC e) {
-   public static final Codec<dxi<?, ?>> a = kr.Q.q().dispatch($$0 -> $$0.d, dxv::a);
-   public static final Codec<il<dxi<?, ?>>> b = ajp.a(ks.ay, a);
-   public static final Codec<ip<dxi<?, ?>>> c = ja.a(ks.ay, a);
+public class dxi extends dye<eas> {
+   private static final dpi a = dcj.mZ.n().a(dbl.h, Integer.valueOf(1)).a(dbl.i, dpu.a).a(dbl.j, Integer.valueOf(0));
+   private static final dpi b = a.a(dbl.i, dpu.c).a(dbl.j, Integer.valueOf(1));
+   private static final dpi c = a.a(dbl.i, dpu.c);
+   private static final dpi d = a.a(dbl.i, dpu.b);
 
-   public boolean a(czs $$0, dqw $$1, axr $$2, ib $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<dxi<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+   public dxi(Codec<eas> $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
-   }
+   public boolean a(dyg<eas> $$0) {
+      int $$1 = 0;
+      id $$2 = $$0.e();
+      dab $$3 = $$0.b();
+      axt $$4 = $$0.d();
+      eas $$5 = $$0.f();
+      id.a $$6 = $$2.j();
+      id.a $$7 = $$2.j();
+      if ($$3.u($$6)) {
+         if (dcj.mZ.n().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-   public F b() {
-      return this.d;
-   }
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(dva.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dcj.l.n(), 2);
+                        }
+                     }
+                  }
+               }
+            }
 
-   public FC c() {
-      return this.e;
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(ij.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(ij.a, 1), c, 2);
+               $$3.a($$6.c(ij.a, 1), d, 2);
+            }
+         }
+
+         $$1++;
+      }
+
+      return $$1 > 0;
    }
 }

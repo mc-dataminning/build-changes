@@ -1,29 +1,18 @@
 import com.mojang.logging.LogUtils;
 import java.io.OutputStream;
-import java.io.PrintStream;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aka extends PrintStream {
+public class aka extends akc {
    private static final Logger b = LogUtils.getLogger();
-   protected final String a;
 
    public aka(String $$0, OutputStream $$1) {
-      super($$1);
-      this.a = $$0;
+      super($$0, $$1);
    }
 
    @Override
-   public void println(@Nullable String $$0) {
-      this.a($$0);
-   }
-
-   @Override
-   public void println(Object $$0) {
-      this.a(String.valueOf($$0));
-   }
-
-   protected void a(@Nullable String $$0) {
-      b.info("[{}]: {}", this.a, $$0);
+   protected void a(String $$0) {
+      StackTraceElement[] $$1 = Thread.currentThread().getStackTrace();
+      StackTraceElement $$2 = $$1[Math.min(3, $$1.length)];
+      b.info("[{}]@.({}:{}): {}", new Object[]{this.a, $$2.getFileName(), $$2.getLineNumber(), $$0});
    }
 }

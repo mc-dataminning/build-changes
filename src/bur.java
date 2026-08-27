@@ -1,25 +1,41 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bur {
-   private static final float a = 0.3F;
+   public static btw<cjn> a(bzw<im> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return bvy.a(
+         (Function<bvy.b<cjn>, ? extends App<bvy.c<cjn>, bwb<cjn>>>)($$5 -> $$5.group($$5.a(bzw.E), $$5.c(bzw.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     im $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ae() && (!$$13.isPresent() || $$9.Y() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dm()) > $$3) {
+                           esj $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public static btr<bqo> a() {
-      return bvt.a(
-         (Function<bvt.b<bqo>, ? extends App<bvt.c<bqo>, bvw<bqo>>>)($$0 -> $$0.group($$0.a(bzr.m), $$0.a(bzr.n), $$0.b(bzr.e), $$0.b(bzr.h), $$0.c(bzr.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     ik $$9 = $$0.b($$3);
-                     bzt $$10 = $$0.b($$4);
-                     if ($$6.E_().a(100) == 0 && $$6.ae() == $$9.a() && $$9.b().a($$7.dk(), 4.0) && $$10.d($$0xxx -> bqb.bi.equals($$0xxx.ai()))) {
-                        $$10.a($$1xx -> bqb.bi.equals($$1xx.ai()) && $$1xx.g((bpv)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bsr($$3xx, true));
-                           $$1.a(new bzu(new bsr($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
+                           while ($$14 == null || id.a($$14).k($$10.dm()) > $$3) {
+                              $$14 = cbn.a($$10, 15, 7, esj.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
+
+                           $$7.a(new bzz($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dm()) > $$2) {
+                           $$7.a(new bzz($$12.b(), $$1, $$2));
+                        }
                      } else {
-                        return false;
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
                      }
+
+                     return true;
                   }))
       );
    }

@@ -1,9 +1,13 @@
-public class axg {
-   private static final long a = 6364136223846793005L;
-   private static final long b = 1442695040888963407L;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public static long a(long $$0, long $$1) {
-      $$0 *= $$0 * 6364136223846793005L + 1442695040888963407L;
-      return $$0 + $$1;
+public record axg<A>(Codec<A> a) {
+   @Deprecated
+   public static <A> axg<A> a(Codec<A> $$0) {
+      return new axg<>($$0);
+   }
+
+   public static <A> axg<A> a(MapCodec<A> $$0) {
+      return new axg<>($$0.codec());
    }
 }

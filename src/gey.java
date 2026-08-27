@@ -1,12 +1,11 @@
-public class gey extends ggo<ccl, fqh<ccl>> {
-   private static final ajt a = new ajt("textures/entity/dolphin.png");
+public class gey extends ggx<cdz, fqf<cdz>> {
+   private static final ajv a = new ajv("textures/entity/camel/camel.png");
 
-   public gey(gfi.a $$0) {
-      super($$0, new fqh<>($$0.a(ftl.M)), 0.7F);
-      this.a(new gja(this, $$0.d()));
+   public gey(gfr.a $$0, ftt $$1) {
+      super($$0, new fqf<>($$0.a($$1)), 0.7F);
    }
 
-   public ajt a(ccl $$0) {
+   public ajv a(cdz $$0) {
       return a;
    }
 }

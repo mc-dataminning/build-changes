@@ -1,47 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class dxp extends dxv<dzw> {
-   public dxp(Codec<dzw> $$0) {
+public class dxp extends dye<eap> {
+   public dxp(Codec<eap> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dxx<dzw> $$0) {
-      dzw $$1 = $$0.f();
-      ib $$2 = $$0.e();
-      czs $$3 = $$0.b();
-      axr $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      ib.a $$10 = new ib.a();
+   public boolean a(dyg<eap> $$0) {
+      axt $$1 = $$0.d();
+      dab $$2 = $$0.b();
+      cyn $$3 = new cyn($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      id.a $$6 = new id.a();
+      IntListIterator var8 = $$4.iterator();
 
-      for (ib $$11 : ib.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            id $$9 = $$2.a(dva.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, dcj.cv.n(), 2);
+               bon.a($$2, $$1, $$9, eni.b);
+               dpi $$10 = dcj.cp.n();
+
+               for (ij $$11 : ij.c.a) {
+                  id $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
+            }
          }
       }
 
-      return $$5;
-   }
-
-   protected boolean a(dzw $$0, czs $$1, axr $$2, int $$3, int $$4, ib.a $$5) {
-      boolean $$6 = false;
-
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            doz $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
-         }
-      }
-
-      return $$6;
+      return false;
    }
 }

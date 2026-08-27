@@ -1,84 +1,177 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dio extends dei implements din {
-   public static final MapCodec<dio> b = b(dio::new);
+public class dio extends dch {
+   public static final MapCodec<dio> a = b(dio::new);
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final dqi d = dpy.aZ;
+   private static final ImmutableList<ji> e = ImmutableList.of(
+      new ji(0, 0, -1), new ji(-1, 0, 0), new ji(0, 0, 1), new ji(1, 0, 0), new ji(-1, 0, -1), new ji(1, 0, -1), new ji(-1, 0, 1), new ji(1, 0, 1)
+   );
+   private static final ImmutableList<ji> f = new Builder()
+      .addAll(e)
+      .addAll(e.stream().map(ji::o).iterator())
+      .addAll(e.stream().map(ji::p).iterator())
+      .add(new ji(0, 1, 0))
+      .build();
 
    @Override
    public MapCodec<dio> a() {
-      return b;
+      return a;
    }
 
-   public dio(doy.d $$0) {
-      super(bnc.a(1), $$0);
+   public dio(dph.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Integer.valueOf(0)));
    }
 
    @Override
-   public int a(dis.a $$0, cyy $$1, ib $$2, axr $$3, dis $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         ib $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               ib $$10 = $$7.c();
-               doz $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.w().e(), aun.e, 1.0F, 1.0F);
-            }
-
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
-         }
+   protected boh a(crs $$0, dpi $$1, czg $$2, id $$3, cka $$4, boe $$5, esf $$6) {
+      if (a($$0) && m($$1)) {
+         a($$4, $$2, $$3, $$1);
+         $$0.a(1, $$4);
+         return boh.a($$2.B);
       } else {
-         return $$6;
+         return $$5 == boe.a && a($$4.b(boe.b)) && m($$1) ? boh.e : boh.d;
       }
    }
 
-   private static int a(dis $$0, ib $$1, ib $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = axk.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = axk.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
-   }
+   @Override
+   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
+      if ($$0.c(d) == 0) {
+         return bof.d;
+      } else if (!a($$1)) {
+         if (!$$1.B) {
+            this.d($$0, $$1, $$2);
+         }
 
-   private doz a(cyy $$0, ib $$1, axr $$2, boolean $$3) {
-      doz $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = dca.qV.n().a(dir.d, Boolean.valueOf($$3));
+         return bof.a($$1.B);
       } else {
-         $$4 = dca.qQ.n();
-      }
-
-      return $$4.b(dpp.C) && !$$0.b_($$1).c() ? $$4.a(dpp.C, Boolean.valueOf(true)) : $$4;
-   }
-
-   private static boolean a(cyy $$0, ib $$1) {
-      doz $$2 = $$0.a_($$1.c());
-      if ($$2.i() || $$2.a(dca.G) && $$2.u().b(ekt.c)) {
-         int $$3 = 0;
-
-         for (ib $$4 : ib.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            doz $$5 = $$0.a_($$4);
-            if ($$5.a(dca.qQ) || $$5.a(dca.qV)) {
-               $$3++;
-            }
-
-            if ($$3 > 2) {
-               return false;
+         if (!$$1.B) {
+            apv $$5 = (apv)$$3;
+            if ($$5.T() != $$1.ae() || !$$2.equals($$5.R())) {
+               $$5.a($$1.ae(), $$2, 0.0F, false, true);
+               $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, auo.vd, aup.e, 1.0F, 1.0F);
+               return bof.a;
             }
          }
 
+         return bof.b;
+      }
+   }
+
+   private static boolean a(crs $$0) {
+      return $$0.a(crv.ft);
+   }
+
+   private static boolean m(dpi $$0) {
+      return $$0.c(d) < 4;
+   }
+
+   private static boolean a(id $$0, czg $$1) {
+      elb $$2 = $$1.b_($$0);
+      if (!$$2.a(avj.a)) {
+         return false;
+      } else if ($$2.b()) {
          return true;
       } else {
-         return false;
+         float $$3 = (float)$$2.e();
+         if ($$3 < 2.0F) {
+            return false;
+         } else {
+            elb $$4 = $$1.b_($$0.d());
+            return !$$4.a(avj.a);
+         }
+      }
+   }
+
+   private void d(dpi $$0, czg $$1, final id $$2) {
+      $$1.a($$2, false);
+      boolean $$3 = ij.c.a.a().map($$2::a).anyMatch($$1x -> a($$1x, $$1));
+      final boolean $$4 = $$3 || $$1.b_($$2.c()).a(avj.a);
+      cyz $$5 = new cyz() {
+         @Override
+         public Optional<Float> a(cyy $$0, cym $$1, id $$2x, dpi $$3, elb $$4x) {
+            return $$2.equals($$2) && $$4 ? Optional.of(dcj.G.e()) : super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      };
+      esj $$6 = $$2.b();
+      $$1.a(null, $$1.ai().a($$6), $$5, $$6, 5.0F, true, czg.a.b);
+   }
+
+   public static boolean a(czg $$0) {
+      return $$0.D_().m();
+   }
+
+   public static void a(@Nullable bqa $$0, czg $$1, id $$2, dpi $$3) {
+      dpi $$4 = $$3.a(d, Integer.valueOf($$3.c(d) + 1));
+      $$1.a($$2, $$4, 3);
+      $$1.a(dub.c, $$2, dub.a.a($$0, $$4));
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, auo.vb, aup.e, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
+      if ($$0.c(d) != 0) {
+         if ($$3.a(100) == 0) {
+            $$1.a($$2, auo.va, aup.e, 1.0F, 1.0F, false);
+         }
+
+         double $$4 = (double)$$2.u() + 0.5 + (0.5 - $$3.j());
+         double $$5 = (double)$$2.v() + 1.0;
+         double $$6 = (double)$$2.w() + 0.5 + (0.5 - $$3.j());
+         double $$7 = (double)$$3.i() * 0.04;
+         $$1.a(kn.aF, $$4, $$5, $$6, 0.0, $$7, 0.0);
       }
    }
 
    @Override
-   public boolean d() {
+   protected void a(dpj.a<dch, dpi> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   protected boolean d_(dpi $$0) {
+      return true;
+   }
+
+   public static int a(dpi $$0, int $$1) {
+      return axm.d((float)($$0.c(d) - 0) / 4.0F * (float)$$1);
+   }
+
+   @Override
+   protected int a(dpi $$0, czg $$1, id $$2) {
+      return a($$0, 15);
+   }
+
+   public static Optional<esj> a(bqg<?> $$0, cyq $$1, id $$2) {
+      Optional<esj> $$3 = a($$0, $$1, $$2, true);
+      return $$3.isPresent() ? $$3 : a($$0, $$1, $$2, false);
+   }
+
+   private static Optional<esj> a(bqg<?> $$0, cyq $$1, id $$2, boolean $$3) {
+      id.a $$4 = new id.a();
+      UnmodifiableIterator var5 = f.iterator();
+
+      while (var5.hasNext()) {
+         ji $$5 = (ji)var5.next();
+         $$4.g($$2).h($$5);
+         esj $$6 = cma.a($$0, $$1, $$4, $$3);
+         if ($$6 != null) {
+            return Optional.of($$6);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   @Override
+   protected boolean a(dpi $$0, elq $$1) {
       return false;
    }
 }

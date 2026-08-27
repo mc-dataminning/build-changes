@@ -1,8 +1,8 @@
-public interface cva extends cvj<cnf> {
-   @Override
-   default cvo<?> e() {
-      return cvo.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   cuz d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cva {
 }

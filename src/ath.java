@@ -1,13 +1,29 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class ath<T> implements asw {
-   @Override
-   public final CompletableFuture<Void> a(asw.a $$0, atc $$1, bko $$2, bko $$3, Executor $$4, Executor $$5) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
+@FunctionalInterface
+public interface ath {
+   ath b = $$0 -> Optional.empty();
+
+   Optional<atc> getResource(ajv var1);
+
+   default atc getResourceOrThrow(ajv $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   protected abstract T b(atc var1, bko var2);
+   default InputStream open(ajv $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
+   }
 
-   protected abstract void a(T var1, atc var2, bko var3);
+   default BufferedReader openAsReader(ajv $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
+   }
+
+   static ath fromMap(Map<ajv, atc> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
+   }
 }

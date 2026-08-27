@@ -1,140 +1,187 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class flx extends fjx {
+   private static final wi a = wi.c("jigsaw_block.joint_label");
+   private static final wi b = wi.c("jigsaw_block.pool");
+   private static final wi c = wi.c("jigsaw_block.name");
+   private static final wi d = wi.c("jigsaw_block.target");
+   private static final wi o = wi.c("jigsaw_block.final_state");
+   private static final wi p = wi.c("jigsaw_block.placement_priority");
+   private static final wi q = wi.c("jigsaw_block.placement_priority.tooltip");
+   private static final wi r = wi.c("jigsaw_block.selection_priority");
+   private static final wi s = wi.c("jigsaw_block.selection_priority.tooltip");
+   private final dno u;
+   private feh v;
+   private feh w;
+   private feh x;
+   private feh y;
+   private feh z;
+   private feh A;
+   int B;
+   private boolean C = true;
+   private fef<dno.a> D;
+   private fdy E;
+   private fdy F;
+   private dno.a G;
 
-public class flx extends fln<col> {
-   private static final ajt A = new ajt("container/smithing/error");
-   private static final ajt B = new ajt("item/empty_slot_smithing_template_armor_trim");
-   private static final ajt C = new ajt("item/empty_slot_smithing_template_netherite_upgrade");
-   private static final wg D = wg.c("container.upgrade.missing_template_tooltip");
-   private static final wg E = wg.c("container.upgrade.error_tooltip");
-   private static final List<ajt> F = List.of(B, C);
-   private static final int G = 44;
-   private static final int H = 15;
-   private static final int I = 28;
-   private static final int J = 21;
-   private static final int K = 65;
-   private static final int L = 46;
-   private static final int M = 115;
-   private static final int N = 210;
-   private static final int O = 25;
-   private static final Vector3f P = new Vector3f();
-   private static final Quaternionf Q = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
-   private static final int R = 25;
-   private static final int S = 75;
-   private static final int T = 141;
-   private final flc U = new flc(0);
-   private final flc V = new flc(1);
-   private final flc W = new flc(2);
-   @Nullable
-   private cft X;
+   public flx(dno $$0) {
+      super(fbq.a);
+      this.u = $$0;
+   }
 
-   public flx(col $$0, cjs $$1, wg $$2) {
-      super($$0, $$1, $$2, new ajt("textures/gui/container/smithing.png"));
-      this.o = 44;
-      this.p = 15;
+   private void m() {
+      this.D();
+      this.j.a(null);
+   }
+
+   private void C() {
+      this.j.a(null);
+   }
+
+   private void D() {
+      this.j
+         .L()
+         .b(new ahd(this.u.az_(), new ajv(this.v.a()), new ajv(this.w.a()), new ajv(this.x.a()), this.y.a(), this.G, this.a(this.z.a()), this.a(this.A.a())));
+   }
+
+   private int a(String $$0) {
+      try {
+         return Integer.parseInt($$0);
+      } catch (NumberFormatException var3) {
+         return 0;
+      }
+   }
+
+   private void E() {
+      this.j.L().b(new agi(this.u.az_(), this.B, this.C));
    }
 
    @Override
-   protected void E() {
-      this.X = new cft(this.j.r, 0.0, 0.0, 0.0);
-      this.X.s(true);
-      this.X.a(true);
-      this.X.aX = 210.0F;
-      this.X.s(25.0F);
-      this.X.aZ = this.X.dC();
-      this.X.ba = this.X.dC();
-      this.b(this.s.b(3).g());
+   public void d() {
+      this.C();
    }
 
    @Override
-   public void C() {
-      super.C();
-      Optional<csk> $$0 = this.F();
-      this.U.a(F);
-      this.V.a($$0.map(csk::k).orElse(List.of()));
-      this.W.a($$0.map(csk::l).orElse(List.of()));
-   }
+   protected void aM_() {
+      this.x = new feh(this.m, this.k / 2 - 153, 20, 300, 20, b);
+      this.x.f(128);
+      this.x.a(this.u.d().a().toString());
+      this.x.b($$0x -> this.F());
+      this.d(this.x);
+      this.v = new feh(this.m, this.k / 2 - 153, 55, 300, 20, c);
+      this.v.f(128);
+      this.v.a(this.u.b().toString());
+      this.v.b($$0x -> this.F());
+      this.d(this.v);
+      this.w = new feh(this.m, this.k / 2 - 153, 90, 300, 20, d);
+      this.w.f(128);
+      this.w.a(this.u.c().toString());
+      this.w.b($$0x -> this.F());
+      this.d(this.w);
+      this.y = new feh(this.m, this.k / 2 - 153, 125, 300, 20, o);
+      this.y.f(256);
+      this.y.a(this.u.f());
+      this.d(this.y);
+      this.z = new feh(this.m, this.k / 2 - 153, 160, 98, 20, r);
+      this.z.f(3);
+      this.z.a(Integer.toString(this.u.l()));
+      this.z.a(ffj.a(s));
+      this.d(this.z);
+      this.A = new feh(this.m, this.k / 2 - 50, 160, 98, 20, p);
+      this.A.f(3);
+      this.A.a(Integer.toString(this.u.k()));
+      this.A.a(ffj.a(q));
+      this.d(this.A);
+      this.G = this.u.j();
+      this.D = this.c(fef.<dno.a>a(dno.a::a).a(dno.a.values()).a(this.G).a().a(this.k / 2 + 54, 160, 100, 20, a, ($$0x, $$1) -> this.G = $$1));
+      boolean $$0 = dgi.m(this.u.n()).o().b();
+      this.D.j = $$0;
+      this.D.k = $$0;
+      this.c(new fdu(this.k / 2 - 154, 185, 100, 20, wh.a, 0.0) {
+         {
+            this.b();
+         }
 
-   private Optional<csk> F() {
-      crj $$0 = this.s.b(0).g();
-      return !$$0.d() && $$0.f() instanceof csk $$1 ? Optional.of($$1) : Optional.empty();
+         @Override
+         protected void b() {
+            this.b(wi.a("jigsaw_block.levels", flx.this.B));
+         }
+
+         @Override
+         protected void a() {
+            flx.this.B = axm.a(axm.b(0.0, 20.0, this.c));
+         }
+      });
+      this.c(fef.b(this.C).a(this.k / 2 - 50, 185, 100, 20, wi.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1) -> this.C = $$1));
+      this.F = this.c((fdy)fdy.a(wi.c("jigsaw_block.generate"), $$0x -> {
+         this.m();
+         this.E();
+      }).a(this.k / 2 + 54, 185, 100, 20).a());
+      this.E = this.c((fdy)fdy.a(wh.d, $$0x -> this.m()).a(this.k / 2 - 4 - 150, 210, 150, 20).a());
+      this.c((fdy)fdy.a(wh.e, $$0x -> this.C()).a(this.k / 2 + 4, 210, 150, 20).a());
+      this.F();
    }
 
    @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
+   protected void aC_() {
+      this.b(this.x);
+   }
+
+   private void F() {
+      boolean $$0 = ajv.i(this.v.a()) && ajv.i(this.w.a()) && ajv.i(this.x.a());
+      this.E.j = $$0;
+      this.F.j = $$0;
+   }
+
+   @Override
+   public void a(fby $$0, int $$1, int $$2) {
+      String $$3 = this.v.a();
+      String $$4 = this.w.a();
+      String $$5 = this.x.a();
+      String $$6 = this.y.a();
+      String $$7 = this.z.a();
+      String $$8 = this.A.a();
+      int $$9 = this.B;
+      dno.a $$10 = this.G;
+      this.b($$0, $$1, $$2);
+      this.v.a($$3);
+      this.w.a($$4);
+      this.x.a($$5);
+      this.y.a($$6);
+      this.B = $$9;
+      this.G = $$10;
+      this.D.a($$10);
+      this.z.a($$7);
+      this.A.a($$8);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if (!this.E.j || $$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.m();
+         return true;
+      }
+   }
+
+   @Override
+   public void a(fdl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fdc $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.U.a(this.s, $$0, $$1, this.w, this.x);
-      this.V.a(this.s, $$0, $$1, this.w, this.x);
-      this.W.a(this.s, $$0, $$1, this.w, this.x);
-      flm.a($$0, (float)(this.w + 141), (float)(this.x + 75), 25.0F, P, Q, null, this.X);
-   }
-
-   @Override
-   public void a(cmp $$0, int $$1, crj $$2) {
-      if ($$1 == 3) {
-         this.b($$2);
+      $$0.b(this.m, b, this.k / 2 - 153, 10, 10526880);
+      this.x.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, c, this.k / 2 - 153, 45, 10526880);
+      this.v.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, d, this.k / 2 - 153, 80, 10526880);
+      this.w.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, o, this.k / 2 - 153, 115, 10526880);
+      this.y.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, r, this.k / 2 - 153, 150, 10526880);
+      this.A.a($$0, $$1, $$2, $$3);
+      $$0.b(this.m, p, this.k / 2 - 50, 150, 10526880);
+      this.z.a($$0, $$1, $$2, $$3);
+      if (dgi.m(this.u.n()).o().b()) {
+         $$0.b(this.m, a, this.k / 2 + 53, 150, 10526880);
       }
-   }
-
-   private void b(crj $$0) {
-      if (this.X != null) {
-         for (bqc $$1 : bqc.values()) {
-            this.X.a($$1, crj.i);
-         }
-
-         if (!$$0.d()) {
-            crj $$2 = $$0.r();
-            if ($$0.f() instanceof coy $$3) {
-               this.X.a($$3.k(), $$2);
-            } else {
-               this.X.a(bqc.b, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void c(fdc $$0, int $$1, int $$2) {
-      if (this.I()) {
-         $$0.a(A, $$1 + 65, $$2 + 46, 28, 21);
-      }
-   }
-
-   private void d(fdc $$0, int $$1, int $$2) {
-      Optional<wg> $$3 = Optional.empty();
-      if (this.I() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
-         $$3 = Optional.of(E);
-      }
-
-      if (this.v != null) {
-         crj $$4 = this.s.b(0).g();
-         crj $$5 = this.v.g();
-         if ($$4.d()) {
-            if (this.v.e == 0) {
-               $$3 = Optional.of(D);
-            }
-         } else if ($$4.f() instanceof csk $$6 && $$5.d()) {
-            if (this.v.e == 1) {
-               $$3 = Optional.of($$6.i());
-            } else if (this.v.e == 2) {
-               $$3 = Optional.of($$6.j());
-            }
-         }
-      }
-
-      $$3.ifPresent($$3x -> $$0.b(this.m, this.m.c($$3x, 115), $$1, $$2));
-   }
-
-   private boolean I() {
-      return this.s.b(0).h() && this.s.b(1).h() && this.s.b(2).h() && !this.s.b(this.s.o()).h();
    }
 }

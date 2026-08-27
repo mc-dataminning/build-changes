@@ -1,60 +1,49 @@
-import java.util.function.Function;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
-public abstract class fph<E extends bpv> extends fqm<E> {
-   private final boolean a;
-   private final float b;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class fph implements fpd, fpe {
+   private static final ajv a = new ajv("spectator/teleport_to_player");
+   private static final Comparator<fvb> b = Comparator.comparing($$0 -> $$0.a().getId());
+   private static final wi c = wi.c("spectatorMenu.teleport");
+   private static final wi d = wi.c("spectatorMenu.teleport.prompt");
+   private final List<fpe> e;
 
-   protected fph(boolean $$0, float $$1, float $$2) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
+   public fph() {
+      this(fby.Q().L().m());
    }
 
-   protected fph(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this(gah::e, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected fph(Function<ajt, gah> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-   }
-
-   protected fph() {
-      this(false, 5.0F, 2.0F);
+   public fph(Collection<fvb> $$0) {
+      this.e = $$0.stream().filter($$0x -> $$0x.e() != czd.d).sorted(b).map($$0x -> new fpa($$0x.a())).toList();
    }
 
    @Override
-   public void a(ewi $$0, ewm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         if (this.a) {
-            float $$8 = 1.5F / this.g;
-            $$0.b($$8, $$8, $$8);
-         }
-
-         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-         $$0.a();
-         float $$9 = 1.0F / this.h;
-         $$0.b($$9, $$9, $$9);
-         $$0.a(0.0F, this.i / 16.0F, 0.0F);
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-      } else {
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-      }
+   public List<fpe> a() {
+      return this.e;
    }
 
-   protected abstract Iterable<ftm> a();
+   @Override
+   public wi b() {
+      return d;
+   }
 
-   protected abstract Iterable<ftm> b();
+   @Override
+   public void a(fpc $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public wi aN_() {
+      return c;
+   }
+
+   @Override
+   public void a(fdl $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aO_() {
+      return !this.e.isEmpty();
+   }
 }

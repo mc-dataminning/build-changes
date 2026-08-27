@@ -1,5 +1,61 @@
-public class fhq {
-   public static boolean a(int $$0) {
-      return $$0 == 257 || $$0 == 32 || $$0 == 335;
+import java.util.function.Consumer;
+
+public class fhq implements fhn {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
+
+   public fhq(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public fhq(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public static fhq a(int $$0) {
+      return new fhq($$0, 0);
+   }
+
+   public static fhq b(int $$0) {
+      return new fhq(0, $$0);
+   }
+
+   @Override
+   public void m(int $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int C() {
+      return this.a;
+   }
+
+   @Override
+   public int D() {
+      return this.b;
+   }
+
+   @Override
+   public int x() {
+      return this.c;
+   }
+
+   @Override
+   public int v() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fdw> $$0) {
    }
 }

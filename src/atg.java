@@ -1,46 +1,71 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.Optional;
 
-public abstract class atg extends ath<Map<ajt, JsonElement>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
+public interface atg {
+   atg a = new atg() {
+      @Override
+      public <T> Optional<T> a(asd<T> $$0) {
+         return Optional.empty();
+      }
+   };
+   asw<atg> b = () -> a;
 
-   public atg(Gson $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   protected Map<ajt, JsonElement> a(atc $$0, bko $$1) {
-      Map<ajt, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
-   }
-
-   public static void a(atc $$0, String $$1, Gson $$2, Map<ajt, JsonElement> $$3) {
-      ajm $$4 = ajm.a($$1);
-
-      for (Entry<ajt, ata> $$5 : $$4.a($$0).entrySet()) {
-         ajt $$6 = $$5.getKey();
-         ajt $$7 = $$4.b($$6);
-
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = axa.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
+   static atg a(InputStream $$0) throws IOException {
+      atg var3;
+      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
+         final JsonObject $$2 = axc.a($$1);
+         var3 = new atg() {
+            @Override
+            public <T> Optional<T> a(asd<T> $$0) {
+               String $$1 = $$0.a();
+               return $$2.has($$1) ? Optional.of($$0.a(axc.u($$2, $$1))) : Optional.empty();
             }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
-         }
+         };
+      }
+
+      return var3;
+   }
+
+   <T> Optional<T> a(asd<T> var1);
+
+   default atg a(Collection<asd<?>> $$0) {
+      atg.a $$1 = new atg.a();
+
+      for (asd<?> $$2 : $$0) {
+         this.a($$1, $$2);
+      }
+
+      return $$1.a();
+   }
+
+   private <T> void a(atg.a $$0, asd<T> $$1) {
+      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   }
+
+   public static class a {
+      private final Builder<asd<?>, Object> a = ImmutableMap.builder();
+
+      public <T> atg.a a(asd<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public atg a() {
+         final ImmutableMap<asd<?>, Object> $$0 = this.a.build();
+         return $$0.isEmpty() ? atg.a : new atg() {
+            @Override
+            public <T> Optional<T> a(asd<T> $$0x) {
+               return Optional.ofNullable((T)$$0.get($$0));
+            }
+         };
       }
    }
 }

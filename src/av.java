@@ -4,14 +4,14 @@ import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record av(Optional<ip<dby>> c, Optional<db> d, Optional<co> e) {
+public record av(Optional<ir<dch>> c, Optional<dc> d, Optional<co> e) {
    public static final Codec<av> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aws.a(ja.a(ks.f), "blocks").forGetter(av::b), aws.a(db.a, "state").forGetter(av::c), aws.a(co.a, "nbt").forGetter(av::d))
+      $$0 -> $$0.group(awu.a(jc.a(ku.f), "blocks").forGetter(av::b), awu.a(dc.a, "state").forGetter(av::c), awu.a(co.a, "nbt").forGetter(av::d))
             .apply($$0, av::new)
    );
-   public static final ye<vr, av> b = ye.a(yc.a(yc.c(ks.f)), av::b, yc.a(db.b), av::c, yc.a(co.b), av::d, av::new);
+   public static final yg<vt, av> b = yg.a(ye.a(ye.c(ku.f)), av::b, ye.a(dc.b), av::c, ye.a(co.b), av::d, av::new);
 
-   public boolean a(aps $$0, ib $$1) {
+   public boolean a(apu $$0, id $$1) {
       if (!$$0.p($$1)) {
          return false;
       } else {
@@ -19,15 +19,15 @@ public record av(Optional<ip<dby>> c, Optional<db> d, Optional<co> e) {
       }
    }
 
-   public boolean a(dpd $$0) {
+   public boolean a(dpm $$0) {
       return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
    }
 
-   private boolean a(doz $$0) {
+   private boolean a(dpi $$0) {
       return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
    }
 
-   private static boolean a(cza $$0, @Nullable dmf $$1, co $$2) {
+   private static boolean a(czj $$0, @Nullable dmo $$1, co $$2) {
       return $$1 != null && $$2.a($$1.b($$0.H_()));
    }
 
@@ -35,11 +35,11 @@ public record av(Optional<ip<dby>> c, Optional<db> d, Optional<co> e) {
       return this.e.isPresent();
    }
 
-   public Optional<ip<dby>> b() {
+   public Optional<ir<dch>> b() {
       return this.c;
    }
 
-   public Optional<db> c() {
+   public Optional<dc> c() {
       return this.d;
    }
 
@@ -48,8 +48,8 @@ public record av(Optional<ip<dby>> c, Optional<db> d, Optional<co> e) {
    }
 
    public static class a {
-      private Optional<ip<dby>> a = Optional.empty();
-      private Optional<db> b = Optional.empty();
+      private Optional<ir<dch>> a = Optional.empty();
+      private Optional<dc> b = Optional.empty();
       private Optional<co> c = Optional.empty();
 
       private a() {
@@ -59,27 +59,27 @@ public record av(Optional<ip<dby>> c, Optional<db> d, Optional<co> e) {
          return new av.a();
       }
 
-      public av.a a(dby... $$0) {
-         this.a = Optional.of(ip.a(dby::r, $$0));
+      public av.a a(dch... $$0) {
+         this.a = Optional.of(ir.a(dch::r, $$0));
          return this;
       }
 
-      public av.a a(Collection<dby> $$0) {
-         this.a = Optional.of(ip.a(dby::r, $$0));
+      public av.a a(Collection<dch> $$0) {
+         this.a = Optional.of(ir.a(dch::r, $$0));
          return this;
       }
 
-      public av.a a(avr<dby> $$0) {
-         this.a = Optional.of(kr.e.a($$0));
+      public av.a a(avt<dch> $$0) {
+         this.a = Optional.of(kt.e.a($$0));
          return this;
       }
 
-      public av.a a(tm $$0) {
+      public av.a a(to $$0) {
          this.c = Optional.of(new co($$0));
          return this;
       }
 
-      public av.a a(db.a $$0) {
+      public av.a a(dc.a $$0) {
          this.b = $$0.b();
          return this;
       }

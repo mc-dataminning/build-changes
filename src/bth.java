@@ -1,34 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-public class bth extends bsg<bqq> {
-   public static final int c = 100;
-   private final bnl d;
-   private final aul e;
-
-   public bth(bnl $$0, aul $$1) {
-      super(ImmutableMap.of(bzr.n, bzs.c, bzr.T, bzs.a), 100);
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   protected boolean a(aps $$0, bqq $$1, long $$2) {
-      return !$$1.aC();
-   }
-
-   protected void b(aps $$0, bqq $$1, long $$2) {
-      $$1.p(true);
-      $$1.b(bqz.g);
-   }
-
-   protected void c(aps $$0, bqq $$1, long $$2) {
-      if ($$1.aC()) {
-         $$1.g($$1.dp().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, aun.g, 2.0F, 1.0F);
-      }
-
-      $$1.p(false);
-      $$1.b(bqz.a);
-      $$1.dP().b(bzr.T);
-      $$1.dP().a(bzr.S, this.d.a($$0.z));
+public class bth {
+   public static bsm<brb> a(float $$0) {
+      return bvy.a(
+         (Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$1 -> $$1.group($$1.c(bzw.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dm())) {
+                           return false;
+                        } else {
+                           id $$5 = $$3.dm();
+                           List<id> $$6 = id.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(id::i).collect(Collectors.toList());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new bzz($$2x, $$0, 0)));
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

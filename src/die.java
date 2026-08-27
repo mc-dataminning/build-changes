@@ -1,81 +1,37 @@
 import com.mojang.serialization.MapCodec;
 
-public class die extends dea {
+public class die extends dch {
    public static final MapCodec<die> a = b(die::new);
-   public static final dpq b = dpp.s;
-   public static final dpz e = dpp.aA;
 
    @Override
    public MapCodec<die> a() {
       return a;
    }
 
-   protected die(doy.d $$0) {
+   protected die(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, ih.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
-      if (!$$3.ga().e) {
-         return boa.d;
+   protected boh a(crs $$0, dpi $$1, czg $$2, id $$3, cka $$4, boe $$5, esf $$6) {
+      if (!$$0.a(crv.rU)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.B) {
+         return boh.a($$2.B);
       } else {
-         $$1.a($$2, $$0.a(e), 3);
-         return boa.a($$1.B);
+         ij $$7 = $$6.b();
+         ij $$8 = $$7.o() == ij.a.b ? $$4.cE().g() : $$7;
+         $$2.a(null, $$3, auo.uA, aup.e, 1.0F, 1.0F);
+         $$2.a($$3, dcj.ee.n().a(ddb.b, $$8), 11);
+         cgk $$9 = new cgk(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new crs(crv.rX, 4)
+         );
+         $$9.o(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bqt.d($$5));
+         $$2.a($$4, dub.M, $$3);
+         $$4.b(auz.c.b(crv.rU));
+         return boh.a($$2.B);
       }
-   }
-
-   @Override
-   protected int g(doz $$0) {
-      return $$0.c(e) * 2;
-   }
-
-   @Override
-   public doz a(cuo $$0) {
-      doz $$1 = super.a($$0);
-      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
-   }
-
-   @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.a && !this.b($$3, $$5, $$2)) {
-         return dca.a.n();
-      } else {
-         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public boolean c(cza $$0, ib $$1, doz $$2) {
-      return this.a((czn)$$0, $$1, $$2) > 0;
-   }
-
-   @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   public void a(doz $$0, cyx $$1, ib $$2, axr $$3) {
-      if ($$0.c(d)) {
-         ih $$4 = $$0.c(aE);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(e) * 2 - 1);
-         }
-
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(kf.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(aE, e, b, d);
    }
 }

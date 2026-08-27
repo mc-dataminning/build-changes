@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
 class dwf extends dwj {
-   private final ip<ekr> e;
-   public static final Codec<dwf> a = RecordCodecBuilder.create($$0 -> a($$0).and(ja.a(ks.y).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dwf::new));
+   public static final Codec<dwf> a = a(dwf::new);
 
-   public dwf(jg $$0, ip<ekr> $$1) {
+   public dwf(List<dwh> $$0) {
       super($$0);
-      this.e = $$1;
+   }
+
+   public boolean a(dab $$0, id $$1) {
+      for (dwh $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   protected boolean a(doz $$0) {
-      return $$0.u().a(this.e);
-   }
-
-   @Override
-   public dvz<?> a() {
-      return dvz.c;
+   public dwi<?> a() {
+      return dwi.j;
    }
 }

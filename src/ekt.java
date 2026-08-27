@@ -1,24 +1,17 @@
-import com.google.common.collect.UnmodifiableIterator;
+public interface ekt {
+   void a(id var1);
 
-public class ekt {
-   public static final ekr a = a("empty", new ekp());
-   public static final ekq b = a("flowing_water", new eky.a());
-   public static final ekq c = a("water", new eky.b());
-   public static final ekq d = a("flowing_lava", new ekv.a());
-   public static final ekq e = a("lava", new ekv.b());
+   boolean K_();
 
-   private static <T extends ekr> T a(String $$0, T $$1) {
-      return iy.a(kr.c, $$0, $$1);
+   int a();
+
+   default void a(id $$0, boolean $$1) {
+      this.a(jg.a($$0), $$1);
    }
 
-   static {
-      for (ekr $$0 : kr.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   void a(jg var1, boolean var2);
 
-         while (var2.hasNext()) {
-            eks $$1 = (eks)var2.next();
-            ekr.c.b($$1);
-         }
-      }
-   }
+   void a(cyn var1, boolean var2);
+
+   void b(cyn var1);
 }

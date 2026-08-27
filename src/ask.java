@@ -1,180 +1,98 @@
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ask {
-   private static final Logger a = LogUtils.getLogger();
-   private final arn b;
-   private final ask.c c;
-   private final ask.a d;
-   private final arp e;
+public class ask implements asr {
+   static final Logger a = LogUtils.getLogger();
+   private static final arr b = new arr(false, asm.b.a, false);
+   private final Path c;
+   private final ars d;
+   private final asq e;
+   private final erz f;
 
-   @Nullable
-   public static ask a(arn $$0, ask.c $$1, arq $$2, arp $$3) {
-      int $$4 = aa.b().a($$2);
-      ask.a $$5 = a($$0, $$1, $$4);
-      return $$5 != null ? new ask($$0, $$1, $$5, $$3) : null;
+   public ask(Path $$0, ars $$1, asq $$2, erz $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public ask(arn $$0, ask.c $$1, ask.a $$2, arp $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
    }
 
-   @Nullable
-   public static ask.a a(arn $$0, ask.c $$1, int $$2) {
+   @Override
+   public void loadPacks(Consumer<asm> $$0) {
       try {
-         ask.a var11;
-         try (aro $$3 = $$1.a($$0)) {
-            asd $$4 = $$3.a(asd.b);
-            if ($$4 == null) {
-               a.warn("Missing metadata in pack {}", $$0.a());
-               return null;
+         v.c(this.c);
+         a(this.c, this.f, ($$1, $$2) -> {
+            arp $$3 = this.b($$1);
+            asm $$4 = asm.a($$3, $$2, this.d, b);
+            if ($$4 != null) {
+               $$0.accept($$4);
             }
-
-            ark $$5 = $$3.a(ark.a);
-            cmg $$6 = $$5 != null ? $$5.a() : cmg.a();
-            axc<Integer> $$7 = a($$0.a(), $$4);
-            asl $$8 = asl.a($$7, $$2);
-            arm $$9 = $$3.a(arm.a);
-            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
-            var11 = new ask.a($$4.a(), $$8, $$6, $$10);
-         }
-
-         return var11;
-      } catch (Exception var14) {
-         a.warn("Failed to read pack {} metadata", $$0.a(), var14);
-         return null;
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.c, var3);
       }
    }
 
-   private static axc<Integer> a(String $$0, asd $$1) {
-      int $$2 = $$1.b();
-      if ($$1.c().isEmpty()) {
-         return new axc<>($$2);
-      } else {
-         axc<Integer> $$3 = $$1.c().get();
-         if (!$$3.a($$2)) {
-            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new axc<>($$2);
-         } else {
-            return $$3;
-         }
-      }
+   private arp b(Path $$0) {
+      String $$1 = a($$0);
+      return new arp("file/" + $$1, wi.b($$1), this.e, Optional.empty());
    }
 
-   public arn a() {
-      return this.b;
-   }
+   public static void a(Path $$0, erz $$1, BiConsumer<Path, asm.c> $$2) throws IOException {
+      ask.a $$3 = new ask.a($$1);
 
-   public wg b() {
-      return this.b.b();
-   }
-
-   public wg c() {
-      return this.d.a();
-   }
-
-   public wg a(boolean $$0) {
-      return this.b.a($$0, this.d.a);
-   }
-
-   public asl d() {
-      return this.d.b();
-   }
-
-   public cmg e() {
-      return this.d.c();
-   }
-
-   public aro f() {
-      return this.c.a(this.b, this.d);
-   }
-
-   public String g() {
-      return this.b.a();
-   }
-
-   public arp h() {
-      return this.e;
-   }
-
-   public boolean i() {
-      return this.e.a();
-   }
-
-   public boolean j() {
-      return this.e.c();
-   }
-
-   public ask.b k() {
-      return this.e.b();
-   }
-
-   public aso l() {
-      return this.b.c();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ask $$1) ? false : this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static record a(wg a, asl b, cmg c, List<String> d) {
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      public <T> int a(List<T> $$0, T $$1, Function<T, arp> $$2, boolean $$3) {
-         ask.b $$4 = $$3 ? this.a() : this;
-         if ($$4 == b) {
-            int $$5;
-            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
-               arp $$6 = $$2.apply($$0.get($$5));
-               if (!$$6.c() || $$6.b() != this) {
-                  break;
+      try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
+         for (Path $$5 : $$4) {
+            try {
+               List<esa> $$6 = new ArrayList<>();
+               asm.c $$7 = $$3.a($$5, $$6);
+               if (!$$6.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", ery.a($$5, $$6));
+               } else if ($$7 != null) {
+                  $$2.accept($$5, $$7);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$5);
                }
+            } catch (IOException var10) {
+               a.warn("Failed to read properties of '{}', ignoring", $$5, var10);
             }
-
-            $$0.add($$5, $$1);
-            return $$5;
-         } else {
-            int $$7;
-            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
-               arp $$8 = $$2.apply($$0.get($$7));
-               if (!$$8.c() || $$8.b() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$7 + 1, $$1);
-            return $$7 + 1;
          }
-      }
-
-      public ask.b a() {
-         return this == a ? b : a;
       }
    }
 
-   public interface c {
-      aro a(arn var1);
+   static class a extends aso<asm.c> {
+      protected a(erz $$0) {
+         super($$0);
+      }
 
-      aro a(arn var1, ask.a var2);
+      @Nullable
+      protected asm.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof asa)) {
+            ask.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new arn.a($$0);
+         }
+      }
+
+      protected asm.c b(Path $$0) {
+         return new art.a($$0);
+      }
    }
 }

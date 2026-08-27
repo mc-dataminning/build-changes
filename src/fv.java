@@ -3,60 +3,45 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
+import java.util.EnumSet;
 
-public class fv implements ArgumentType<fq> {
-   private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wg.c("argument.pos3d.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wg.c("argument.pos.mixed"));
-   private final boolean d;
-
-   public fv(boolean $$0) {
-      this.d = $$0;
-   }
+public class fv implements ArgumentType<EnumSet<ij.a>> {
+   private static final Collection<String> a = Arrays.asList("xyz", "x");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("arguments.swizzle.invalid"));
 
    public static fv a() {
-      return new fv(true);
+      return new fv();
    }
 
-   public static fv a(boolean $$0) {
-      return new fv($$0);
+   public static EnumSet<ij.a> a(CommandContext<dv> $$0, String $$1) {
+      return (EnumSet<ij.a>)$$0.getArgument($$1, EnumSet.class);
    }
 
-   public static esa a(CommandContext<du> $$0, String $$1) {
-      return ((fq)$$0.getArgument($$1, fq.class)).a((du)$$0.getSource());
-   }
+   public EnumSet<ij.a> a(StringReader $$0) throws CommandSyntaxException {
+      EnumSet<ij.a> $$1 = EnumSet.noneOf(ij.a.class);
 
-   public static fq b(CommandContext<du> $$0, String $$1) {
-      return (fq)$$0.getArgument($$1, fq.class);
-   }
+      while ($$0.canRead() && $$0.peek() != ' ') {
+         char $$2 = $$0.read();
 
-   public fq a(StringReader $$0) throws CommandSyntaxException {
-      return (fq)($$0.canRead() && $$0.peek() == '^' ? fr.a($$0) : fx.a($$0, this.d));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if (!($$0.getSource() instanceof dz)) {
-         return Suggestions.empty();
-      } else {
-         String $$2 = $$1.getRemaining();
-         Collection<dz.b> $$3;
-         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
-            $$3 = Collections.singleton(dz.b.a);
-         } else {
-            $$3 = ((dz)$$0.getSource()).C();
+         ij.a $$6 = switch ($$2) {
+            case 'x' -> ij.a.a;
+            case 'y' -> ij.a.b;
+            case 'z' -> ij.a.c;
+            default -> throw b.createWithContext($$0);
+         };
+         if ($$1.contains($$6)) {
+            throw b.createWithContext($$0);
          }
 
-         return dz.a($$2, $$3, $$1, dv.a(this::a));
+         $$1.add($$6);
       }
+
+      return $$1;
    }
 
    public Collection<String> getExamples() {
-      return c;
+      return a;
    }
 }

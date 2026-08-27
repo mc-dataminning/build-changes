@@ -1,128 +1,279 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gqj {
-   static final Map<String, gqj> h = new Object2ObjectLinkedOpenHashMap();
-   public static final Codec<gqj> a = Codec.STRING.comapFlatMap($$0 -> {
-      gqj $$1 = h.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
-   }, gqj::a);
-   private static final List<gql<?>> i = List.of(gql.a, gql.b, gql.c, gql.d, gql.e, gql.f, gql.g, gql.h, gql.m, gql.l);
-   private static final List<gql<?>> j = Stream.concat(i.stream(), Stream.of(gql.i, gql.j, gql.k)).toList();
-   public static final gqj b = a("world_loaded", "WorldLoaded").a(j).a(gql.n).a(gql.o).b();
-   public static final gqj c = a("performance_metrics", "PerformanceMetrics").a(j).a(gql.r).a(gql.s).a(gql.t).a(gql.u).a(gql.v).a(gql.w).a().b();
-   public static final gqj d = a("world_load_times", "WorldLoadTimes").a(j).a(gql.x).a(gql.y).a().b();
-   public static final gqj e = a("world_unloaded", "WorldUnloaded").a(j).a(gql.p).a(gql.q).b();
-   public static final gqj f = a("advancement_made", "AdvancementMade").a(j).a(gql.D).a(gql.E).a().b();
-   public static final gqj g = a("game_load_times", "GameLoadTimes").a(i).a(gql.z).a(gql.A).a(gql.B).a(gql.C).a().b();
-   private final String k;
-   private final String l;
-   private final List<gql<?>> m;
-   private final boolean n;
-   private final Codec<gqf> o;
+public class gqj extends atj<gqj.a> {
+   public static final gpc a = new gpc("minecraft:empty", bng.a(1.0F), bng.a(1.0F), 1, gpc.a.a, false, false, 16);
+   public static final ajv b = new ajv("minecraft", "intentionally_empty");
+   public static final gqk c = new gqk(b, null);
+   public static final gpc d = new gpc(b.toString(), bng.a(1.0F), bng.a(1.0F), 1, gpc.a.a, false, false, 16);
+   static final Logger e = LogUtils.getLogger();
+   private static final String f = "sounds.json";
+   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(wi.class, new wi.b(jb.b)).registerTypeAdapter(gpd.class, new gpe()).create();
+   private static final TypeToken<Map<String, gpd>> h = new TypeToken<Map<String, gpd>>() {
+   };
+   private final Map<ajv, gqk> i = Maps.newHashMap();
+   private final gqg j;
+   private final Map<ajv, atc> k = new HashMap<>();
 
-   gqj(String $$0, String $$1, List<gql<?>> $$2, boolean $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = gqm.a($$2).xmap($$0x -> new gqf(this, $$0x), gqf::b);
+   public gqj(fcc $$0) {
+      this.j = new gqg(this, $$0, ath.fromMap(this.k));
    }
 
-   public static gqj.a a(String $$0, String $$1) {
-      return new gqj.a($$0, $$1);
-   }
+   protected gqj.a a(ate $$0, bkt $$1) {
+      gqj.a $$2 = new gqj.a();
+      $$1.a();
+      $$1.a("list");
+      $$2.a($$0);
+      $$1.c();
 
-   public String a() {
-      return this.k;
-   }
+      for (String $$3 : $$0.a()) {
+         $$1.a($$3);
 
-   public List<gql<?>> b() {
-      return this.m;
-   }
+         try {
+            for (atc $$5 : $$0.a(new ajv($$3, "sounds.json"))) {
+               $$1.a($$5.b());
 
-   public Codec<gqf> c() {
-      return this.o;
-   }
+               try (Reader $$6 = $$5.e()) {
+                  $$1.a("parse");
+                  Map<String, gpd> $$7 = axc.a(g, $$6, h);
+                  $$1.b("register");
 
-   public boolean d() {
-      return this.n;
-   }
+                  for (Entry<String, gpd> $$8 : $$7.entrySet()) {
+                     $$2.a(new ajv($$3, $$8.getKey()), $$8.getValue());
+                  }
 
-   public TelemetryEvent a(TelemetrySession $$0, gqm $$1) {
-      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
+                  $$1.c();
+               } catch (RuntimeException var15) {
+                  e.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$5.b(), var15});
+               }
 
-      for (gql<?> $$3 : this.m) {
-         $$3.a($$1, $$2);
+               $$1.c();
+            }
+         } catch (IOException var16) {
+         }
+
+         $$1.c();
       }
 
+      $$1.b();
       return $$2;
    }
 
-   public <T> boolean a(gql<T> $$0) {
-      return this.m.contains($$0);
-   }
-
-   @Override
-   public String toString() {
-      return "TelemetryEventType[" + this.k + "]";
-   }
-
-   public wu e() {
-      return this.a("title");
-   }
-
-   public wu f() {
-      return this.a("description");
-   }
-
-   private wu a(String $$0) {
-      return wg.c("telemetry.event." + this.k + "." + $$0);
-   }
-
-   public static List<gqj> g() {
-      return List.copyOf(h.values());
-   }
-
-   public static class a {
-      private final String a;
-      private final String b;
-      private final List<gql<?>> c = new ArrayList<>();
-      private boolean d;
-
-      a(String $$0, String $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   protected void a(gqj.a $$0, ate $$1, bkt $$2) {
+      $$0.a(this.i, this.k, this.j);
+      if (aa.aW) {
+         for (ajv $$3 : this.i.keySet()) {
+            gqk $$4 = this.i.get($$3);
+            if (!wl.b($$4.a()) && kt.b.d($$3)) {
+               e.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
+            }
+         }
       }
 
-      public gqj.a a(List<gql<?>> $$0) {
-         this.c.addAll($$0);
-         return this;
+      if (e.isDebugEnabled()) {
+         for (ajv $$5 : this.i.keySet()) {
+            if (!kt.b.d($$5)) {
+               e.debug("Not having sound event for: {}", $$5);
+            }
+         }
       }
 
-      public <T> gqj.a a(gql<T> $$0) {
-         this.c.add($$0);
-         return this;
+      this.j.a();
+   }
+
+   public List<String> a() {
+      return this.j.h();
+   }
+
+   public euo b() {
+      return this.j.i();
+   }
+
+   static boolean a(gpc $$0, ajv $$1, ath $$2) {
+      ajv $$3 = $$0.b();
+      if ($$2.getResource($$3).isEmpty()) {
+         e.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
+         return false;
+      } else {
+         return true;
+      }
+   }
+
+   @Nullable
+   public gqk a(ajv $$0) {
+      return this.i.get($$0);
+   }
+
+   public Collection<ajv> d() {
+      return this.i.keySet();
+   }
+
+   public void a(gpg $$0) {
+      this.j.a($$0);
+   }
+
+   public void a(gpf $$0) {
+      this.j.c($$0);
+   }
+
+   public void a(gpf $$0, int $$1) {
+      this.j.a($$0, $$1);
+   }
+
+   public void a(fbj $$0) {
+      this.j.a($$0);
+   }
+
+   public void e() {
+      this.j.e();
+   }
+
+   public void f() {
+      this.j.d();
+   }
+
+   public void g() {
+      this.j.b();
+   }
+
+   public void h() {
+      this.j.c();
+   }
+
+   public void a(boolean $$0) {
+      this.j.a($$0);
+   }
+
+   public void i() {
+      this.j.f();
+   }
+
+   public void a(aup $$0, float $$1) {
+      if ($$0 == aup.a && $$1 <= 0.0F) {
+         this.f();
       }
 
-      public gqj.a a() {
-         this.d = true;
-         return this;
+      this.j.a($$0, $$1);
+   }
+
+   public void b(gpf $$0) {
+      this.j.a($$0);
+   }
+
+   public boolean c(gpf $$0) {
+      return this.j.b($$0);
+   }
+
+   public void a(gqi $$0) {
+      this.j.a($$0);
+   }
+
+   public void b(gqi $$0) {
+      this.j.b($$0);
+   }
+
+   public void a(@Nullable ajv $$0, @Nullable aup $$1) {
+      this.j.a($$0, $$1);
+   }
+
+   public String j() {
+      return this.j.g();
+   }
+
+   public void k() {
+      this.j.a();
+   }
+
+   protected static class a {
+      final Map<ajv, gqk> a = Maps.newHashMap();
+      private Map<ajv, atc> b = Map.of();
+
+      void a(ate $$0) {
+         this.b = gpc.a.a($$0);
       }
 
-      public gqj b() {
-         gqj $$0 = new gqj(this.a, this.b, List.copyOf(this.c), this.d);
-         if (gqj.h.putIfAbsent(this.a, $$0) != null) {
-            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
-         } else {
-            return $$0;
+      void a(ajv $$0, gpd $$1) {
+         gqk $$2 = this.a.get($$0);
+         boolean $$3 = $$2 == null;
+         if ($$3 || $$1.b()) {
+            if (!$$3) {
+               gqj.e.debug("Replaced sound event location {}", $$0);
+            }
+
+            $$2 = new gqk($$0, $$1.c());
+            this.a.put($$0, $$2);
+         }
+
+         ath $$4 = ath.fromMap(this.b);
+
+         for (final gpc $$5 : $$1.a()) {
+            final ajv $$6 = $$5.a();
+            gql<gpc> $$8;
+            switch ($$5.f()) {
+               case a:
+                  if (!gqj.a($$5, $$0, $$4)) {
+                     continue;
+                  }
+
+                  $$8 = $$5;
+                  break;
+               case b:
+                  $$8 = new gql<gpc>() {
+                     @Override
+                     public int e() {
+                        gqk $$0 = a.this.a.get($$6);
+                        return $$0 == null ? 0 : $$0.e();
+                     }
+
+                     public gpc a(axt $$0) {
+                        gqk $$1 = a.this.a.get($$6);
+                        if ($$1 == null) {
+                           return gqj.a;
+                        } else {
+                           gpc $$2 = $$1.a($$0);
+                           return new gpc(
+                              $$2.a().toString(), new bnm($$2.c(), $$5.c()), new bnm($$2.d(), $$5.d()), $$5.e(), gpc.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i()
+                           );
+                        }
+                     }
+
+                     @Override
+                     public void a(gqg $$0) {
+                        gqk $$1 = a.this.a.get($$6);
+                        if ($$1 != null) {
+                           $$1.a($$0);
+                        }
+                     }
+                  };
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
+            }
+
+            $$2.a($$8);
+         }
+      }
+
+      public void a(Map<ajv, gqk> $$0, Map<ajv, atc> $$1, gqg $$2) {
+         $$0.clear();
+         $$1.clear();
+         $$1.putAll(this.b);
+
+         for (Entry<ajv, gqk> $$3 : this.a.entrySet()) {
+            $$0.put($$3.getKey(), $$3.getValue());
+            $$3.getValue().a($$2);
          }
       }
    }

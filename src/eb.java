@@ -1,59 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Arrays;
+import java.util.Collection;
 
-public record eb(List<eb.a> b) {
-   public static final eb a = new eb(List.of());
-   private static final int c = 8;
-   private static final int d = 16;
+public class eb implements ArgumentType<eb.a> {
+   private static final Collection<String> c = Arrays.asList("0", "~", "~-5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("argument.angle.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("argument.angle.invalid"));
 
-   public eb(vg $$0) {
-      this($$0.a(vg.a(ArrayList::new, 8), eb.a::new));
+   public static eb a() {
+      return new eb();
    }
 
-   @Nullable
-   public ws a(String $$0) {
-      for (eb.a $$1 : this.b) {
-         if ($$1.a.equals($$0)) {
-            return $$1.b;
+   public static float a(CommandContext<dv> $$0, String $$1) {
+      return ((eb.a)$$0.getArgument($$1, eb.a.class)).a((dv)$$0.getSource());
+   }
+
+   public eb.a a(StringReader $$0) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         boolean $$1 = fy.b($$0);
+         float $$2 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readFloat() : 0.0F;
+         if (!Float.isNaN($$2) && !Float.isInfinite($$2)) {
+            return new eb.a($$2, $$1);
+         } else {
+            throw b.createWithContext($$0);
          }
       }
-
-      return null;
    }
 
-   public void a(vg $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   public Collection<String> getExamples() {
+      return c;
    }
 
-   public static eb a(wy<?> $$0, eb.b $$1) {
-      List<eb.a> $$2 = $$0.a().stream().map($$1x -> {
-         ws $$2x = $$1.sign($$1x.c());
-         return $$2x != null ? new eb.a($$1x.a(), $$2x) : null;
-      }).filter(Objects::nonNull).toList();
-      return new eb($$2);
-   }
+   public static final class a {
+      private final float a;
+      private final boolean b;
 
-   public List<eb.a> a() {
-      return this.b;
-   }
-
-   public static record a(String a, ws b) {
-
-      public a(vg $$0) {
-         this($$0.d(16), ws.a($$0));
+      a(float $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public void a(vg $$0) {
-         $$0.a(this.a, 16);
-         ws.a($$0, this.b);
+      public float a(dv $$0) {
+         return axm.g(this.b ? this.a + $$0.k().j : this.a);
       }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      @Nullable
-      ws sign(String var1);
    }
 }

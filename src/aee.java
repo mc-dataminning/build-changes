@@ -1,61 +1,52 @@
-public class aee implements yn<aay> {
-   public static final ye<vg, aee> a = yn.a(aee::a, aee::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
+import java.util.ArrayList;
+import java.util.List;
 
-   public aee(bpv $$0) {
-      this($$0.aj(), $$0.dp());
+public record aee(int c, List<aje.c<?>> d) implements yp<aba> {
+   public static final yg<vt, aee> a = yp.a(aee::b, aee::new);
+   public static final int b = 255;
+
+   private aee(vt $$0) {
+      this($$0.l(), a($$0));
    }
 
-   public aee(int $$0, esa $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = axk.a($$1.c, -3.9, 3.9);
-      double $$4 = axk.a($$1.d, -3.9, 3.9);
-      double $$5 = axk.a($$1.e, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+   private static void a(List<aje.c<?>> $$0, vt $$1) {
+      for (aje.c<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.k(255);
    }
 
-   private aee(vg $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
+   private static List<aje.c<?>> a(vt $$0) {
+      List<aje.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(aje.c.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
-   private void a(vg $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
-      $$0.l(this.e);
+   private void b(vt $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public yp<aee> a() {
-      return afj.aE;
+   public yr<aee> a() {
+      return afl.aC;
    }
 
-   public void a(aay $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.b;
-   }
-
-   public int e() {
       return this.c;
    }
 
-   public int f() {
+   public List<aje.c<?>> e() {
       return this.d;
-   }
-
-   public int g() {
-      return this.e;
    }
 }

@@ -1,129 +1,253 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dhg extends dby {
-   public static final MapCodec<dhg> a = b(dhg::new);
-   public static final dpx<dqa> b = dpp.bf;
-   public static final dpq c = dpp.w;
-   public static final dpz d = dpp.aR;
-   public static final int e = 3;
+public abstract class dhg extends dch {
+   private static final float a = 1.0F;
+   private static final etc c = dch.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final etc d = dch.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final etc e = dch.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final etc f = dch.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final etc g = dch.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final etc h = dch.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final Map<ij, dpz> i = dhu.h;
+   private static final Map<ij, etc> j = ac.a(Maps.newEnumMap(ij.class), $$0 -> {
+      $$0.put(ij.c, g);
+      $$0.put(ij.f, f);
+      $$0.put(ij.d, h);
+      $$0.put(ij.e, e);
+      $$0.put(ij.b, c);
+      $$0.put(ij.a, d);
+   });
+   protected static final ij[] b = ij.values();
+   private final ImmutableMap<dpi, etc> k;
+   private final boolean l;
+   private final boolean m;
+   private final boolean n;
 
-   @Override
-   public MapCodec<dhg> a() {
-      return a;
-   }
-
-   public dhg(doy.d $$0) {
+   public dhg(dph.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dqa.a).a(d, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
+      this.k(a(this.E));
+      this.k = this.a(dhg::o);
+      this.l = ij.c.a.a().allMatch(this::a);
+      this.m = ij.c.a.a().filter(ij.a.a).filter(this::a).count() % 2L == 0L;
+      this.n = ij.c.a.a().filter(ij.a.c).filter(this::a).count() % 2L == 0L;
    }
 
-   private doz b(cyy $$0, ib $$1, doz $$2) {
-      dqa $$3 = $$0.a_($$1.c()).A();
-      if ($$3.e()) {
-         return $$2.a(b, $$3);
+   @Override
+   protected abstract MapCodec<? extends dhg> a();
+
+   public static Set<ij> m(dpi $$0) {
+      if (!($$0.b() instanceof dhg)) {
+         return Set.of();
       } else {
-         dqa $$4 = $$0.a_($$1.d()).A();
-         dqa $$5 = $$4.e() ? dqa.a : $$4;
-         return $$2.a(b, $$5);
-      }
-   }
+         Set<ij> $$1 = EnumSet.noneOf(ij.class);
 
-   @Override
-   public doz a(cuo $$0) {
-      return this.b($$0.q(), $$0.a(), this.n());
-   }
-
-   @Override
-   protected doz a(doz $$0, ih $$1, doz $$2, cyy $$3, ib $$4, ib $$5) {
-      boolean $$6 = $$1.o() == ih.a.b;
-      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, dby $$3, ib $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      if ($$6 != $$0.c(c)) {
-         if ($$6) {
-            this.a(null, $$0, $$1, $$2);
+         for (ij $$2 : ij.values()) {
+            if (a($$0, $$2)) {
+               $$1.add($$2);
+            }
          }
 
-         $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)), 3);
+         return $$1;
       }
    }
 
-   private void a(@Nullable bpv $$0, doz $$1, cyx $$2, ib $$3) {
-      if ($$1.c(b).e() || $$2.a_($$3.c()).i()) {
-         $$2.a($$3, this, 0, 0);
-         $$2.a($$0, dts.H, $$3);
-      }
-   }
+   public static Set<ij> a(byte $$0) {
+      Set<ij> $$1 = EnumSet.noneOf(ij.class);
 
-   @Override
-   protected boc a(crj $$0, doz $$1, cyx $$2, ib $$3, cjt $$4, bnz $$5, erw $$6) {
-      return $$0.a(avk.aG) && $$6.b() == ih.b ? boc.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   @Override
-   protected boa a(doz $$0, cyx $$1, ib $$2, cjt $$3, erw $$4) {
-      if ($$1.B) {
-         return boa.a;
-      } else {
-         $$0 = $$0.a(d);
-         $$1.a($$2, $$0, 3);
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(auw.ag);
-         return boa.b;
-      }
-   }
-
-   @Override
-   protected void a(doz $$0, cyx $$1, ib $$2, cjt $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(auw.af);
-      }
-   }
-
-   public static float b(int $$0) {
-      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
-   }
-
-   @Override
-   protected boolean a(doz $$0, cyx $$1, ib $$2, int $$3, int $$4) {
-      dqa $$5 = $$0.c(b);
-      float $$7;
-      if ($$5.b()) {
-         int $$6 = $$0.c(d);
-         $$7 = b($$6);
-         $$1.a(kl.Y, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
-      } else {
-         $$7 = 1.0F;
-      }
-
-      il<aul> $$10;
-      if ($$5.d()) {
-         ajt $$9 = this.a($$1, $$2);
-         if ($$9 == null) {
-            return false;
+      for (ij $$2 : ij.values()) {
+         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
+            $$1.add($$2);
          }
-
-         $$10 = il.a(aul.a($$9));
-      } else {
-         $$10 = $$5.a();
       }
 
-      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, aun.c, 3.0F, $$7, $$1.z.g());
+      return $$1;
+   }
+
+   public static byte a(Collection<ij> $$0) {
+      byte $$1 = 0;
+
+      for (ij $$2 : $$0) {
+         $$1 = (byte)($$1 | 1 << $$2.ordinal());
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(ij $$0) {
       return true;
    }
 
-   @Nullable
-   private ajt a(cyx $$0, ib $$1) {
-      return $$0.c_($$1.c()) instanceof dnr $$2 ? $$2.d() : null;
+   @Override
+   protected void a(dpj.a<dch, dpi> $$0) {
+      for (ij $$1 : b) {
+         if (this.a($$1)) {
+            $$0.a(b($$1));
+         }
+      }
    }
 
    @Override
-   protected void a(dpa.a<dby, doz> $$0) {
-      $$0.a(b, c, d);
+   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
+      if (!n($$0)) {
+         return dcj.a.n();
+      } else {
+         return a($$0, $$1) && !a($$3, $$1, $$5, $$2) ? a($$0, b($$1)) : $$0;
+      }
    }
+
+   @Override
+   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
+      return (etc)this.k.get($$0);
+   }
+
+   @Override
+   protected boolean a(dpi $$0, czj $$1, id $$2) {
+      boolean $$3 = false;
+
+      for (ij $$4 : b) {
+         if (a($$0, $$4)) {
+            id $$5 = $$2.a($$4);
+            if (!a($$1, $$4, $$5, $$1.a_($$5))) {
+               return false;
+            }
+
+            $$3 = true;
+         }
+      }
+
+      return $$3;
+   }
+
+   @Override
+   protected boolean a(dpi $$0, cux $$1) {
+      return p($$0);
+   }
+
+   @Nullable
+   @Override
+   public dpi a(cux $$0) {
+      czg $$1 = $$0.q();
+      id $$2 = $$0.a();
+      dpi $$3 = $$1.a_($$2);
+      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
+   }
+
+   public boolean a(cym $$0, dpi $$1, id $$2, ij $$3) {
+      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
+         id $$4 = $$2.a($$3);
+         return a($$0, $$3, $$4, $$0.a_($$4));
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   public dpi c(dpi $$0, cym $$1, id $$2, ij $$3) {
+      if (!this.a($$1, $$0, $$2, $$3)) {
+         return null;
+      } else {
+         dpi $$4;
+         if ($$0.a(this)) {
+            $$4 = $$0;
+         } else if (this.k() && $$0.u().a(elc.c)) {
+            $$4 = this.n().a(dpy.C, Boolean.valueOf(true));
+         } else {
+            $$4 = this.n();
+         }
+
+         return $$4.a(b($$3), Boolean.valueOf(true));
+      }
+   }
+
+   @Override
+   protected dpi a(dpi $$0, dit $$1) {
+      return !this.l ? $$0 : this.a($$0, $$1::a);
+   }
+
+   @Override
+   protected dpi a(dpi $$0, dhd $$1) {
+      if ($$1 == dhd.c && !this.m) {
+         return $$0;
+      } else {
+         return $$1 == dhd.b && !this.n ? $$0 : this.a($$0, $$1::b);
+      }
+   }
+
+   private dpi a(dpi $$0, Function<ij, ij> $$1) {
+      dpi $$2 = $$0;
+
+      for (ij $$3 : b) {
+         if (this.a($$3)) {
+            $$2 = $$2.a(b($$1.apply($$3)), $$0.c(b($$3)));
+         }
+      }
+
+      return $$2;
+   }
+
+   public static boolean a(dpi $$0, ij $$1) {
+      dpz $$2 = b($$1);
+      return $$0.b($$2) && $$0.c($$2);
+   }
+
+   public static boolean a(cym $$0, ij $$1, id $$2, dpi $$3) {
+      return dch.a($$3.l($$0, $$2), $$1.g()) || dch.a($$3.k($$0, $$2), $$1.g());
+   }
+
+   private boolean k() {
+      return this.E.d().contains(dpy.C);
+   }
+
+   private static dpi a(dpi $$0, dpz $$1) {
+      dpi $$2 = $$0.a($$1, Boolean.valueOf(false));
+      return n($$2) ? $$2 : dcj.a.n();
+   }
+
+   public static dpz b(ij $$0) {
+      return i.get($$0);
+   }
+
+   private static dpi a(dpj<dch, dpi> $$0) {
+      dpi $$1 = $$0.b();
+
+      for (dpz $$2 : i.values()) {
+         if ($$1.b($$2)) {
+            $$1 = $$1.a($$2, Boolean.valueOf(false));
+         }
+      }
+
+      return $$1;
+   }
+
+   private static etc o(dpi $$0) {
+      etc $$1 = esz.a();
+
+      for (ij $$2 : b) {
+         if (a($$0, $$2)) {
+            $$1 = esz.a($$1, j.get($$2));
+         }
+      }
+
+      return $$1.c() ? esz.b() : $$1;
+   }
+
+   protected static boolean n(dpi $$0) {
+      return Arrays.stream(b).anyMatch($$1 -> a($$0, $$1));
+   }
+
+   private static boolean p(dpi $$0) {
+      return Arrays.stream(b).anyMatch($$1 -> !a($$0, $$1));
+   }
+
+   public abstract dhh c();
 }

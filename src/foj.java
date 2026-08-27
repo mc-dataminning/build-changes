@@ -1,75 +1,110 @@
-import com.mojang.logging.LogUtils;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class foj extends fjo {
-   private static final Logger d = LogUtils.getLogger();
-   public static final dvp a = new dvp((long)"test1".hashCode(), true, false);
-   protected final fjo b;
-   private fdp o;
-   private fdp p;
-   private fdp q;
-   private fdp r;
-   protected fdy c;
-   private foo s;
+public class foj extends fjx {
+   private static final wi a = wi.c("telemetry_info.screen.title");
+   private static final wi b = wi.c("telemetry_info.screen.description").a(n.h);
+   private static final wi c = wi.c("telemetry_info.button.privacy_statement");
+   private static final wi d = wi.c("telemetry_info.button.give_feedback");
+   private static final wi o = wi.c("telemetry_info.button.show_data");
+   private static final wi p = wi.c("telemetry_info.opt_in.description");
+   private static final int q = 8;
+   private static final boolean r = fby.Q().D();
+   private final fjx s;
+   private final fcc u;
+   private final fhl v = new fhl(this, 16 + 9 * 5 + 20, r ? 33 + fea.a(fby.Q().h) : 33);
+   @Nullable
+   private foi w;
+   @Nullable
+   private fes x;
+   private double y;
 
-   public foj(fjo $$0) {
-      super(wg.c("selectWorld.title"));
-      this.b = $$0;
+   public foj(fjx $$0, fcc $$1) {
+      super(a);
+      this.s = $$0;
+      this.u = $$1;
    }
 
    @Override
-   protected void aN_() {
-      this.c = new fdy(this.m, this.k / 2 - 100, 22, 200, 20, this.c, wg.c("selectWorld.search"));
-      this.c.b($$0 -> this.s.a($$0));
-      this.d(this.c);
-      this.s = this.c(new foo(this, this.j, this.k, this.l - 112, 48, 36, this.c.a(), this.s));
-      this.p = this.c(fdp.a(ems.a, $$0 -> this.s.d().ifPresent(foo.c::c)).a(this.k / 2 - 154, this.l - 52, 150, 20).a());
-      this.c(fdp.a(wg.c("selectWorld.create"), $$0 -> fod.a(this.j, this)).a(this.k / 2 + 4, this.l - 52, 150, 20).a());
-      this.q = this.c(fdp.a(wg.c("selectWorld.edit"), $$0 -> this.s.d().ifPresent(foo.c::f)).a(this.k / 2 - 154, this.l - 28, 72, 20).a());
-      this.o = this.c(fdp.a(wg.c("selectWorld.delete"), $$0 -> this.s.d().ifPresent(foo.c::d)).a(this.k / 2 - 76, this.l - 28, 72, 20).a());
-      this.r = this.c(fdp.a(wg.c("selectWorld.recreate"), $$0 -> this.s.d().ifPresent(foo.c::h)).a(this.k / 2 + 4, this.l - 28, 72, 20).a());
-      this.c(fdp.a(wf.k, $$0 -> this.j.a(this.b)).a(this.k / 2 + 82, this.l - 28, 72, 20).a());
-      this.a(null);
+   public wi i() {
+      return wh.a(super.i(), b);
    }
 
    @Override
-   protected void aD_() {
-      this.b(this.c);
+   protected void aM_() {
+      fhp $$0 = this.v.a(fhp.d().a(4));
+      $$0.c().b();
+      $$0.a(new fff(a, this.m));
+      this.x = $$0.a(new fes(b, this.m).b(true));
+      fhp $$1 = $$0.a(fhp.e().a(8));
+      $$1.a(fdy.a(c, this::a).a());
+      $$1.a(fdy.a(d, this::b).a());
+      fhp $$2 = this.v.b(fhp.d().a(4));
+      if (r) {
+         $$2.a(this.m());
+      }
+
+      fhp $$3 = $$2.a(fhp.e().a(8));
+      $$3.a(fdy.a(o, this::c).a());
+      $$3.a(fdy.a(wh.d, $$0x -> this.d()).a());
+      fhp $$4 = this.v.c(fhp.d().a(8));
+      this.w = $$4.a(new foi(0, 0, this.k - 40, this.v.d(), this.m));
+      this.w.a($$0x -> this.y = $$0x);
+      this.v.a($$1x -> {
+         fdw var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      if (this.w != null) {
+         this.w.a(this.y);
+         this.w.k(this.k - 40);
+         this.w.l(this.v.d());
+         this.w.j();
+      }
+
+      if (this.x != null) {
+         this.x.d(this.k - 16);
+      }
+
+      this.v.a();
+   }
+
+   @Override
+   protected void aC_() {
+      if (this.w != null) {
+         this.b(this.w);
+      }
+   }
+
+   private fdw m() {
+      fcb<Boolean> $$0 = this.u.ai();
+      return fea.a(p, this.m).a($$0).a(this::a).a();
+   }
+
+   private void a(fdw $$0, boolean $$1) {
+      if (this.w != null) {
+         this.w.b($$1);
+      }
+   }
+
+   private void a(fdy $$0) {
+      fio.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
+   }
+
+   private void b(fdy $$0) {
+      fio.a(this, "https://aka.ms/javafeedback?ref=game");
+   }
+
+   private void c(fdy $$0) {
+      Path $$1 = this.j.u().b();
+      ac.j().a($$1.toUri());
    }
 
    @Override
    public void d() {
-      this.j.a(this.b);
-   }
-
-   @Override
-   public void a(fdc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, this.i, this.k / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable ems $$0) {
-      if ($$0 == null) {
-         this.p.b(ems.a);
-         this.p.j = false;
-         this.q.j = false;
-         this.r.j = false;
-         this.o.j = false;
-      } else {
-         this.p.b($$0.t());
-         this.p.j = $$0.u();
-         this.q.j = $$0.w();
-         this.r.j = $$0.x();
-         this.o.j = $$0.y();
-      }
-   }
-
-   @Override
-   public void j() {
-      if (this.s != null) {
-         this.s.aF_().forEach(foo.a::close);
-      }
+      this.j.a(this.s);
    }
 }

@@ -1,39 +1,49 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class feo extends fdy {
+   private boolean a;
 
-public class feo {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
-
-   public static void a(fdc $$0, gmi $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1.a(), $$2, $$3, $$4);
+   public feo(int $$0, int $$1, fdy.c $$2) {
+      super($$0, $$1, 20, 20, wi.c("narrator.button.difficulty_lock"), $$2, q);
    }
 
-   public static void a(fdc $$0, ajt $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, true, false);
+   @Override
+   protected ww aK_() {
+      return wh.a(super.aK_(), this.a() ? wi.c("narrator.button.difficulty_lock.locked") : wi.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   public static void a(fdc $$0, ajt $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
-      int $$7 = 8 + ($$6 ? 8 : 0);
-      int $$8 = 8 * ($$6 ? -1 : 1);
-      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6);
+   public boolean a() {
+      return this.a;
+   }
+
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(fdl $$0, int $$1, int $$2, float $$3) {
+      feo.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? feo.a.c : feo.a.f;
+      } else if (this.A()) {
+         $$4 = this.a ? feo.a.b : feo.a.e;
+      } else {
+         $$4 = this.a ? feo.a.a : feo.a.d;
       }
+
+      $$0.a($$4.g, this.C(), this.D(), this.g, this.h);
    }
 
-   private static void a(fdc $$0, ajt $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = 8 + ($$5 ? 8 : 0);
-      int $$7 = 8 * ($$5 ? -1 : 1);
-      RenderSystem.enableBlend();
-      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
-      RenderSystem.disableBlend();
+   static enum a {
+      a(new ajv("widget/locked_button")),
+      b(new ajv("widget/locked_button_highlighted")),
+      c(new ajv("widget/locked_button_disabled")),
+      d(new ajv("widget/unlocked_button")),
+      e(new ajv("widget/unlocked_button_highlighted")),
+      f(new ajv("widget/unlocked_button_disabled"));
+
+      final ajv g;
+
+      private a(ajv $$0) {
+         this.g = $$0;
+      }
    }
 }
